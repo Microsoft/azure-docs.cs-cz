@@ -3,7 +3,7 @@ title: Řešení potíží s vynuceným delegováním protokolu Kerberos – pro
 description: Řešení potíží s konfigurací vynuceného delegování protokolu Kerberos pro proxy aplikací
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,14 +11,14 @@ ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
 ms.reviewer: asteen, japere
-ms.openlocfilehash: c28e79c9a6f8c489a97d360c4fe142d431b5ab5d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 65d68924fbc3a777ef7ef59d2532a1ae20e23c48
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656543"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258214"
 ---
-# <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Řešení potíží s konfigurací vynuceného delegování protokolu Kerberos pro proxy aplikací
+# <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Řešení potíží s konfiguracemi omezeného delegování Kerberos pro proxy aplikací
 
 Metody dostupné pro jednotné přihlašování k publikovaným aplikacím se můžou v různých aplikacích lišit. Jedna z možností, kterou služba proxy aplikací Azure Active Directory (Azure AD) nabízí standardně omezené delegování protokolu Kerberos (KCD). Pro vaše uživatele můžete nakonfigurovat konektor pro spouštění omezeného ověřování pomocí protokolu Kerberos pro back-endové aplikace.
 
@@ -81,7 +81,7 @@ Jak už bylo zmíněno dříve, chybové zprávy prohlížeče poskytují nějak
 
 ![Příklad: nesprávná chyba konfigurace KCD](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
-Odpovídající záznamy, které se zobrazují v protokolu událostí, se zobrazí jako události 13019 nebo 12027. Najděte protokoly událostí konektoru v **aplikacích a službách protokoluje** &gt; **Microsoft** &gt; **AadApplicationProxy** &gt; **správce konektoru** Microsoft AadApplicationProxy &gt; **Admin**.
+Odpovídající záznamy, které se zobrazují v protokolu událostí, se zobrazí jako události 13019 nebo 12027. Najděte protokoly událostí konektoru v **aplikacích a službách protokoluje** &gt;  &gt;  &gt; **správce konektoru** Microsoft AadApplicationProxy &gt; .
 
 ![Událost 13019 z protokolu událostí proxy aplikace](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic4.png)
 

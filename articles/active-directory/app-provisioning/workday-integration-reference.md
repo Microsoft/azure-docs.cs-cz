@@ -3,19 +3,19 @@ title: Referenční informace o integraci Azure Active Directory a Workday
 description: Technická rozsáhlá podrobněa v Workday – zřizování řízené hodinou
 services: active-directory
 author: cmmdesai
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
 ms.date: 01/18/2021
 ms.author: chmutali
-ms.openlocfilehash: 38a93d5db6f8331da6e7afdef3e91b2764537459
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: f260bca196839a091ae7d12be6d5f85912bf92db
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954017"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255980"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>Jak se Azure Active Directory zřizování integruje s Workday
 
@@ -356,52 +356,52 @@ Následující tabulka uvádí pokyny k mapování konfigurace, která se má po
 
 | \# | Entita Workday                       | Zahrnuto ve výchozím nastavení | Vzor XPATH pro určení v mapování pro načtení jiných než výchozích entit             |
 |----|--------------------------------------|---------------------|-------------------------------------------------------------------------------|
-| 1  | Osobní údaje                        | Yes                 | nepřenosná data pracovního procesu/podprocesu \_ : osobní \_ data                                             |
-| 2  | Data o zaměstnání                      | Yes                 | nepracovní data pracovního procesu/přenosová data \_ : data o zaměstnání \_                                           |
-| 3  | Další data úlohy                  | Yes                 | nečinnost: data pracovního procesu/přenosová data/meziprocesy \_ \_ : \_ úloha dat úlohy pracovního procesu \_ \[ @wd:Primary \_ = 0\]|
-| 4  | Data organizace                    | Yes                 | nepřenosová data pracovního procesu/podprocesu \_ : \_ data organizace                                         |
-| 5  | Data řetězu pro správu                | Yes                 | nepřenosová data pracovního procesu/meziprocesu \_ : \_ data řetězu správy \_                                    |
-| 6  | Dozorčí organizace             | Yes                 | NAD                                                                 |
-| 7  | Společnost                              | Yes                 | PODNIKOVÝ                                                                     |
-| 8  | Organizační jednotka                        | No                  | ' obchodní \_ jednotka '                                                              |
-| 9  | Hierarchie organizačních jednotek              | No                  | hierarchie BUSINESS \_ Unit \_                                                   |
-| 10 | Hierarchie společnosti                    | No                  | hierarchie společnosti \_                                                          |
+| 1  | Osobní údaje                        | Ano                 | nepřenosná data pracovního procesu/podprocesu \_ : osobní \_ data                                             |
+| 2  | Data o zaměstnání                      | Ano                 | nepracovní data pracovního procesu/přenosová data \_ : data o zaměstnání \_                                           |
+| 3  | Další data úlohy                  | Ano                 | nečinnost: data pracovního procesu/přenosová data/meziprocesy \_ \_ : \_ úloha dat úlohy pracovního procesu \_ \[ @wd:Primary \_ = 0\]|
+| 4  | Data organizace                    | Ano                 | nepřenosová data pracovního procesu/podprocesu \_ : \_ data organizace                                         |
+| 5  | Data řetězu pro správu                | Ano                 | nepřenosová data pracovního procesu/meziprocesu \_ : \_ data řetězu správy \_                                    |
+| 6  | Dozorčí organizace             | Ano                 | NAD                                                                 |
+| 7  | Společnost                              | Ano                 | PODNIKOVÝ                                                                     |
+| 8  | Organizační jednotka                        | Ne                  | ' obchodní \_ jednotka '                                                              |
+| 9  | Hierarchie organizačních jednotek              | Ne                  | hierarchie BUSINESS \_ Unit \_                                                   |
+| 10 | Hierarchie společnosti                    | Ne                  | hierarchie společnosti \_                                                          |
 | 11 | Cost Center                          | No                  | NÁKLADové \_ středisko                                                                |
-| 12 | Hierarchie nákladového centra                | No                  | ' hierarchie NÁKLADového \_ centra \_ '                                                     |
-| 13 | Obrat                                 | No                  | OBRAT                                                                        |
-| 14 | Hierarchie fondů                       | No                  | ' \_ hierarchie fondů '                                                             |
-| 15 | Dárkový                                 | No                  | Dárkový                                                                        |
-| 16 | Hierarchie dárku                       | No                  | ' hierarchie DÁRKů \_ '                                                             |
-| 17 | Oprávnění                                | No                  | UDĚLIT                                                                       |
-| 18 | Udělit hierarchii                      | No                  | ' udělit \_ hierarchii '                                                            |
-| 19 | Hierarchie firemních webů              | No                  | hierarchie obchodních \_ lokalit \_                                                   |
-| 20 | Maticová organizace                  | No                  | SLUŽBU                                                                      |
-| 21 | Skupina plateb                            | No                  | ' PAY – \_ Skupina '                                                                  |
-| 22 | Programy                             | No                  | SPUŠTĚN                                                                    |
-| 23 | Hierarchie programu                    | No                  | ' \_ hierarchie programu '                                                          |
-| 24 | Region (Oblast)                               | No                  | hierarchie REGION \_                                                           |
-| 25 | Hierarchie umístění                   | No                  | ' LOCATION \_ HIERARCHY '                                                         |
-| 26 | Data zřizování účtů            | No                  | meziprocesový: data pracovního procesu/přenosová data \_ : \_ zřizování účtů \_                                |
-| 27 | Data kontroly na pozadí                | No                  | nepřenosová data/podprocesy: data \_ \_ kontroly pozadí \_                                    |
-| 28 | Data nároku na zvýhodnění             | No                  | nevyužitý: data pracovního procesu \_ / \_ přenosová data: zaměstnanecký nárok \_                                 |
-| 29 | Data registrace výhod              | No                  | nevyužitý: data pracovního procesu/podprocesy \_ : \_ data registrace výhod \_                                  |
-| 30 | Data kariéry                          | No                  | meziprocesový: data pracovního procesu/přenosová data \_ : kariéry \_                                               |
-| 31 | Data kompenzace                    | No                  | nečinnost: data pracovního procesu/přenosová \_ data: data kompenzace \_                                         |
-| 32 | Podmíněná data finančního úřadu pracovního procesu | No                  | meziforma: data pracovního procesu/podprocesu \_ : \_ \_ \_ \_ \_ data typu \_ podmíněných pracovních autorit pro daňové úřady       |
-| 33 | Data vývojových položek                | No                  | nepřenosová data pracovního procesu/podprocesu \_ : \_ data vývoje položky \_                                    |
-| 34 | Data o kontraktech zaměstnanců              | No                  | nepřenosová data pracovního procesu/meziprocesu \_ : \_ data smluv zaměstnanců \_                                  |
-| 35 | Data kontroly zaměstnanců                 | No                  | nepřenosová data pracovního procesu/přenosová \_ data: zaměstnanci – \_ Revize \_ dat                                     |
-| 36 | Data přijatá zpětná vazba               | No                  | nedoručení: data pracovního procesu/podprocesy \_ : \_ data přijatá zpětná vazba \_                                   |
-| 37 | Data cíle pracovního procesu                     | No                  | přenos dat pracovního procesu/meziprocesu \_ : \_ data cíle pracovního procesu \_                                         |
-| 38 | Data fotky                           | No                  | MS: data pracovního procesu/přenosová data \_ : \_ data fotky                                                |
-| 39 | Data kvalifikace                   | No                  | nepřenosová data pracovního procesu/meziprocesový: \_ \_ data kvalifikace                                        |
-| 40 | Data souvisejících osob                 | No                  | nepřenosová data pracovního procesu/meziprocesu \_ : související \_ \_ data osob                                     |
-| 41 | Data role                            | No                  | nepřenosová data pracovního procesu/podprocesu \_ : \_ data role                                                 |
-| 42 | Data dovedností                           | No                  | nepřenosová data pracovních procesů: data o \_ dovednostech \_                                                |
-| 43 | Data profilu úspěšnosti              | No                  | meziprocesový: data pracovního procesu \_ / \_ přenosová data: data profilu pro úspěch \_                                  |
-| 44 | Data posouzení talentů               | No                  | nepřenosová data pracovního procesu/podprocesu \_ : talentů \_ \_ data posouzení                                   |
-| 45 | Data uživatelského účtu                    | No                  | nepřenosová data pracovního procesu/podprocesu \_ : \_ data uživatelského účtu \_                                        |
-| 46 | Data dokumentů pracovního procesu                 | No                  | nepřenosová data pracovního procesu/podprocesu \_ : \_ data pracovního dokumentu \_                                     |
+| 12 | Hierarchie nákladového centra                | Ne                  | ' hierarchie NÁKLADového \_ centra \_ '                                                     |
+| 13 | Obrat                                 | Ne                  | OBRAT                                                                        |
+| 14 | Hierarchie fondů                       | Ne                  | ' \_ hierarchie fondů '                                                             |
+| 15 | Dárkový                                 | Ne                  | Dárkový                                                                        |
+| 16 | Hierarchie dárku                       | Ne                  | ' hierarchie DÁRKů \_ '                                                             |
+| 17 | Oprávnění                                | Ne                  | UDĚLIT                                                                       |
+| 18 | Udělit hierarchii                      | Ne                  | ' udělit \_ hierarchii '                                                            |
+| 19 | Hierarchie firemních webů              | Ne                  | hierarchie obchodních \_ lokalit \_                                                   |
+| 20 | Maticová organizace                  | Ne                  | SLUŽBU                                                                      |
+| 21 | Skupina plateb                            | Ne                  | ' PAY – \_ Skupina '                                                                  |
+| 22 | Programy                             | Ne                  | SPUŠTĚN                                                                    |
+| 23 | Hierarchie programu                    | Ne                  | ' \_ hierarchie programu '                                                          |
+| 24 | Oblast                               | Ne                  | hierarchie REGION \_                                                           |
+| 25 | Hierarchie umístění                   | Ne                  | ' LOCATION \_ HIERARCHY '                                                         |
+| 26 | Data zřizování účtů            | Ne                  | meziprocesový: data pracovního procesu/přenosová data \_ : \_ zřizování účtů \_                                |
+| 27 | Data kontroly na pozadí                | Ne                  | nepřenosová data/podprocesy: data \_ \_ kontroly pozadí \_                                    |
+| 28 | Data nároku na zvýhodnění             | Ne                  | nevyužitý: data pracovního procesu \_ / \_ přenosová data: zaměstnanecký nárok \_                                 |
+| 29 | Data registrace výhod              | Ne                  | nevyužitý: data pracovního procesu/podprocesy \_ : \_ data registrace výhod \_                                  |
+| 30 | Data kariéry                          | Ne                  | meziprocesový: data pracovního procesu/přenosová data \_ : kariéry \_                                               |
+| 31 | Data kompenzace                    | Ne                  | nečinnost: data pracovního procesu/přenosová \_ data: data kompenzace \_                                         |
+| 32 | Podmíněná data finančního úřadu pracovního procesu | Ne                  | meziforma: data pracovního procesu/podprocesu \_ : \_ \_ \_ \_ \_ data typu \_ podmíněných pracovních autorit pro daňové úřady       |
+| 33 | Data vývojových položek                | Ne                  | nepřenosová data pracovního procesu/podprocesu \_ : \_ data vývoje položky \_                                    |
+| 34 | Data o kontraktech zaměstnanců              | Ne                  | nepřenosová data pracovního procesu/meziprocesu \_ : \_ data smluv zaměstnanců \_                                  |
+| 35 | Data kontroly zaměstnanců                 | Ne                  | nepřenosová data pracovního procesu/přenosová \_ data: zaměstnanci – \_ Revize \_ dat                                     |
+| 36 | Data přijatá zpětná vazba               | Ne                  | nedoručení: data pracovního procesu/podprocesy \_ : \_ data přijatá zpětná vazba \_                                   |
+| 37 | Data cíle pracovního procesu                     | Ne                  | přenos dat pracovního procesu/meziprocesu \_ : \_ data cíle pracovního procesu \_                                         |
+| 38 | Data fotky                           | Ne                  | MS: data pracovního procesu/přenosová data \_ : \_ data fotky                                                |
+| 39 | Data kvalifikace                   | Ne                  | nepřenosová data pracovního procesu/meziprocesový: \_ \_ data kvalifikace                                        |
+| 40 | Data souvisejících osob                 | Ne                  | nepřenosová data pracovního procesu/meziprocesu \_ : související \_ \_ data osob                                     |
+| 41 | Data role                            | Ne                  | nepřenosová data pracovního procesu/podprocesu \_ : \_ data role                                                 |
+| 42 | Data dovedností                           | Ne                  | nepřenosová data pracovních procesů: data o \_ dovednostech \_                                                |
+| 43 | Data profilu úspěšnosti              | Ne                  | meziprocesový: data pracovního procesu \_ / \_ přenosová data: data profilu pro úspěch \_                                  |
+| 44 | Data posouzení talentů               | Ne                  | nepřenosová data pracovního procesu/podprocesu \_ : talentů \_ \_ data posouzení                                   |
+| 45 | Data uživatelského účtu                    | Ne                  | nepřenosová data pracovního procesu/podprocesu \_ : \_ data uživatelského účtu \_                                        |
+| 46 | Data dokumentů pracovního procesu                 | Ne                  | nepřenosová data pracovního procesu/podprocesu \_ : \_ data pracovního dokumentu \_                                     |
 
 >[!NOTE]
 >Každá entita Workday uvedená v tabulce je chráněná **zásadami zabezpečení domény** v Workday. Pokud po nastavení pravého výrazu XPATH nemůžete načíst žádný atribut přidružený k entitě, obraťte se na správce Workday a ujistěte se, že jsou pro uživatele integračního systému přidruženého k zřizovací aplikaci nakonfigurované příslušné zásady zabezpečení domény. Chcete-li například načíst *data o dovednostech*, je třeba *získat* přístup k *datům pracovního procesu pracovní postup v doméně: dovednosti a zkušenosti*. 

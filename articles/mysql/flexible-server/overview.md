@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: cdf029e0dd9ae126310842b8919c818f4721218e
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 7841affc7a8988cb113af3b728ae117093000011
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054733"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257453"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – flexibilní Server (Preview)
 
@@ -132,20 +132,20 @@ Služba spouští komunitní verze MySQL. To umožňuje úplnou kompatibilitu ap
 
 Jednou z výhod spouštění úloh v Azure je globální dosah. Flexibilní Server pro Azure Database for MySQL je k dispozici v současnosti v následujících oblastech Azure:
 
-| Region (Oblast) | Vysoká dostupnost | 
-| --- | --- |
-| West Europe | :heavy_check_mark: | 
-| Severní Evropa | :heavy_check_mark: | 
-| Spojené království – jih | znak | 
-| USA – východ 2 | :heavy_check_mark: | 
-| Západní USA 2 | :heavy_check_mark: | 
-| USA – střed | znak | 
-| East US | :heavy_check_mark: | 
-| Střední Kanada | znak | 
-| Southeast Asia | :heavy_check_mark: | 
-| Jižní Korea – střed | znak | 
-| Japonsko – východ | znak | 
-| Austrálie – východ | :heavy_check_mark: |
+| Oblast | Dostupnost | Redundantní HA zóny | 
+| --- | --- | --- |
+| West Europe | :heavy_check_mark: | :heavy_check_mark: |
+| Severní Evropa | :heavy_check_mark: | :heavy_check_mark: |
+| Spojené království – jih | :heavy_check_mark: | znak | 
+| USA – východ 2 | :heavy_check_mark: | :heavy_check_mark: |
+| Západní USA 2 | :heavy_check_mark: | :heavy_check_mark: |
+| USA – střed | :heavy_check_mark: | znak | 
+| East US | :heavy_check_mark: | :heavy_check_mark: |
+| Střední Kanada | :heavy_check_mark: | znak | 
+| Southeast Asia | :heavy_check_mark: | :heavy_check_mark: |
+| Jižní Korea – střed | :heavy_check_mark: | znak | 
+| Japonsko – východ | :heavy_check_mark: | znak | 
+| Austrálie – východ | :heavy_check_mark: | :heavy_check_mark: |
 
 V tuto chvíli pracujeme na přidávání nových oblastí.
 

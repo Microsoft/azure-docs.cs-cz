@@ -4,7 +4,7 @@ description: Problémy s adresou, se kterými se můžete setkat, když ve skupi
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a9b43660889a318b2085f3aa8c1060daebe0244
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cec028dec2bf2e6295f59aae9c2e243da2209827
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764736"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257030"
 ---
 # <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>Nenašla se žádná skupina pracovních konektorů pro aplikaci proxy aplikace.
 
@@ -46,7 +46,7 @@ Chcete-li zjistit problém, otevřete v aplikaci nabídku "proxy aplikací" a po
 
    ![Výběr skupiny konektorů v Azure Portal](./media/application-proxy-connectivity-no-working-connector/no-active-connector.png)
 
-Podrobnosti o každé z těchto možností najdete v odpovídající části níže. V pokynech se předpokládá, že začínáte ze stránky pro správu konektoru. Pokud se vám zobrazí chybová zpráva, můžete přejít na tuto stránku kliknutím na zprávu upozornění. Stránku můžete zobrazit také tak, že přejdete na **Azure Active Directory**, kliknete na **podnikové aplikace**a pak na **proxy aplikace.**
+Podrobnosti o každé z těchto možností najdete v odpovídající části níže. V pokynech se předpokládá, že začínáte ze stránky pro správu konektoru. Pokud se vám zobrazí chybová zpráva, můžete přejít na tuto stránku kliknutím na zprávu upozornění. Stránku můžete zobrazit také tak, že přejdete na **Azure Active Directory**, kliknete na **podnikové aplikace** a pak na **proxy aplikace.**
 
    ![Správa skupin konektorů v Azure Portal](./media/application-proxy-connectivity-no-working-connector/app-proxy.png)
 

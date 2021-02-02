@@ -3,7 +3,7 @@ title: Povolení automatického zřizování uživatelů pro aplikace s více kl
 description: Průvodce pro nezávislé výrobce softwaru pro povolení automatického zřizování
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: d4c6c5b51e00f7f2ed7e29c27aa8e8bb88a2ea94
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 7bd0fc634109beb6cc674d89f56666e7035d33ef
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861353"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255691"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Povolení automatického zřizování uživatelů pro aplikaci s více klienty
 
@@ -64,13 +64,13 @@ Pokud chcete zjistit, která možnost integrace se má použít pro vaši aplika
 |---|---|---|---|
 | Správa uživatelů a skupin ve službě Azure AD| √| √| Pouze uživatel |
 | Správa uživatelů a skupin synchronizovaných z místní služby Active Directory| √*| √*| Jenom uživatel * |
-| Přístup k datům mimo uživatele a skupiny během zřizování přístupu k Microsoft 365 dat (týmy, SharePoint, E-mail, kalendář, dokumenty atd.)| X +| √| X |
+| Přístup k datům mimo uživatele a skupiny během zřizování přístupu k Microsoft 365 dat (týmy, SharePoint, E-mail, kalendář, dokumenty atd.)| X +| √| × |
 | Vytváření, čtení a aktualizace uživatelů na základě obchodních pravidel| √| √| √ |
-| Odstranění uživatelů na základě obchodních pravidel| √| √| X |
-| Správa automatického zřizování uživatelů pro všechny aplikace z Azure Portal| √| X| √ |
-| Podpora více zprostředkovatelů identity| √| X| √ |
+| Odstranění uživatelů na základě obchodních pravidel| √| √| × |
+| Správa automatického zřizování uživatelů pro všechny aplikace z Azure Portal| √| ×| √ |
+| Podpora více zprostředkovatelů identity| √| ×| √ |
 | Podpora účtů hostů (B2B)| √| √| √ |
-| Podpora účtů mimo podnik (B2C)| X| √| √ |
+| Podpora účtů mimo podnik (B2C)| ×| √| √ |
 
 <sup>*</sup> – Azure AD Connect instalační program je nutný k synchronizaci uživatelů ze služby AD do Azure AD.  
 <sup>+</sup >– Použití SCIM pro zřizování vám nevylučuje integraci aplikace s Microsoft Graph pro jiné účely.

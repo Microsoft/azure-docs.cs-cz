@@ -3,7 +3,7 @@ title: Ověřování pomocí hlaviček s PingAccess pro Azure Proxy aplikací sl
 description: Publikování aplikací pomocí PingAccess a proxy aplikací pro podporu ověřování na základě hlaviček.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e09bb0b07112a962b709c380c48f2a656c16097b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 128e053016faf3ed2a9c53ad21f35a13f3ac1265
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663560"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258163"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Ověřování založené na hlavičkách pro jednotné přihlašování s Proxy aplikací a PingAccess
 
@@ -48,7 +48,7 @@ Pokud jste povolili proxy aplikací a už jste konektor nainstalovali, můžete 
 Konektor proxy aplikací je služba systému Windows Server, která směruje provoz od vzdálených zaměstnanců do publikovaných aplikací. Podrobnější pokyny k instalaci najdete v tématu [kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](application-proxy-add-on-premises-application.md).
 
 1. Přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com/) jako správce aplikace. Zobrazí se stránka **Centrum pro správu Azure Active Directory** .
-1. Vyberte **Azure Active Directory**  >  **Application proxy**  >  **Služba konektoru pro stahování** proxy aplikací. Zobrazí se stránka pro **stažení konektoru proxy aplikace** .
+1. Vyberte **Azure Active Directory**  >    >  **Služba konektoru pro stahování** proxy aplikací. Zobrazí se stránka pro **stažení konektoru proxy aplikace** .
 
    ![Stažení konektoru proxy aplikací](./media/application-proxy-configure-single-sign-on-with-ping-access/application-proxy-connector-download.png)
 
@@ -91,7 +91,7 @@ Publikování vlastní místní aplikace:
    > [!NOTE]
    > Pokud se jedná o vaši první aplikaci, spusťte pomocí portu 3000 a vraťte se k aktualizaci tohoto nastavení, pokud změníte konfiguraci PingAccess. Pro následné aplikace bude port muset odpovídat Naslouchacímu procesu, který jste nakonfigurovali v PingAccess. Přečtěte si další informace o [posluchačích v PingAccess](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=reference/ui/pa_c_Listeners.html).
 
-1. Vyberte možnost **Přidat**. Zobrazí se stránka s přehledem pro novou aplikaci.
+1. Vyberte **Přidat**. Zobrazí se stránka s přehledem pro novou aplikaci.
 
 Teď přiřaďte uživatele k testování aplikací a vyberte jednotné přihlašování založené na hlavičkách:
 
@@ -101,7 +101,7 @@ Teď přiřaďte uživatele k testování aplikací a vyberte jednotné přihla�
 
 1. Vyberte uživatele pro testování aplikace a vyberte **Vybrat**. Ujistěte se, že tento testovací účet má přístup k místní aplikaci.
 1. Vyberte **Přiřadit**.
-1. Z bočního panelu aplikace vyberte **Single sign-on**  >  **záhlaví na základě** jednotného přihlašování.
+1. Z bočního panelu aplikace vyberte   >  **záhlaví na základě** jednotného přihlašování.
 
    > [!TIP]
    > Pokud používáte jednotné přihlašování založené na hlavičkách, je potřeba nainstalovat PingAccess. Pokud chcete zajistit, aby se vaše předplatné Azure automaticky přidružil k instalaci PingAccess, použijte odkaz na této stránce jednotného přihlašování ke stažení PingAccess. Nyní můžete otevřít web pro stahování nebo se na tuto stránku vrátit později.
@@ -158,7 +158,7 @@ Shromažďování těchto informací:
 
 1. Do **popisu** zadejte `PingAccess key` .
 1. V části **vypršení platnosti** vyberte, jak se má PingAccess klíč nastavit: **1 rok**, **2 roky** nebo **nikdy**.
-1. Vyberte možnost **Přidat**. Klíč PingAccess se zobrazí v tabulce tajných klíčů klienta s náhodným řetězcem, který do pole **hodnota** plní text.
+1. Vyberte **Přidat**. Klíč PingAccess se zobrazí v tabulce tajných klíčů klienta s náhodným řetězcem, který do pole **hodnota** plní text.
 1. Vedle pole **hodnota** klíče PingAccess vyberte ikonu **Kopírovat do schránky** a potom ji zkopírujte a uložte. Tuto hodnotu zadáte později jako tajný klíč klienta PingAccess.
 
 **Aktualizujte `acceptMappedClaims` pole:**

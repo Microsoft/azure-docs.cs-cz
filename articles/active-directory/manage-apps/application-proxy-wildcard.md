@@ -4,7 +4,7 @@ description: Naučte se používat aplikace se zástupnými znaky v proxy aplika
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b2563b238bae310d662220d2c244e863249c9c4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c2f3d1d47bd26167253296f06af5470818760850
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997507"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257976"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Aplikace se zástupnými znaky v proxy aplikace Azure Active Directory
 
@@ -156,9 +156,9 @@ Konfigurace implementuje následující strukturu:
 
 ![Zobrazuje strukturu implementovanou ukázkovou konfigurací.](./media/application-proxy-wildcard/05.png)
 
-| Color | Description |
+| Barva | Popis |
 | ---   | ---         |
-| Modrý  | Aplikace jsou explicitně publikované a viditelné v Azure Portal. |
+| Blue  | Aplikace jsou explicitně publikované a viditelné v Azure Portal. |
 | Les  | Aplikace, ke kterým můžete přistupovat přes nadřazenou aplikaci. |
 
 ## <a name="scenario-2-general-wildcard-application-with-exception"></a>Scénář 2: Obecná aplikace se zástupnými znaky s výjimkou

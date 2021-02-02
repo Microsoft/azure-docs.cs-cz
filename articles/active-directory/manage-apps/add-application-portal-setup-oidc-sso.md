@@ -3,19 +3,19 @@ title: 'Rychlý Start: nastavení jednotného přihlašování (SSO) založenéh
 description: Tento rychlý Start vás provede procesem nastavení jednotného přihlašování (SSO) založeného na OIDC pro aplikaci ve vašem tenantovi Azure Active Directory (Azure AD).
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 2ff35a8d86534a99b8957a9272f9a1eb59fc27ab
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: e5695d5ded92e9bb41d39a082790cfbb456dbc38
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399974"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258350"
 ---
 # <a name="quickstart-set-up-oidc-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Rychlý Start: nastavení jednotného přihlašování (SSO) založeného na OIDC pro aplikaci ve vašem tenantovi Azure Active Directory (Azure AD)
 
@@ -23,7 +23,7 @@ Začněte s zjednodušeným přihlášením uživatelů nastavením jednotného 
 
 Další informace o jednotném přihlašování založeném na OIDC najdete v tématu [Principy jednotného přihlašování](configure-oidc-single-sign-on.md)založeného na OIDC.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K nastavení jednotného přihlašování pro aplikaci, kterou jste přidali do tenanta Azure AD, budete potřebovat:
 

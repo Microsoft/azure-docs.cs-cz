@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: 0ca5f6a853852acbb4ef97adfce2364592bae270
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 4e39d7f15e3ca3c6e241c767a5f881d7170c6379
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559836"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255963"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Přihlášení k Azure Active Directory používání e-mailu jako alternativního přihlašovacího ID (Preview)
 
@@ -113,7 +113,7 @@ Během období Preview můžete v současné době povolit jenom přihlášení 
 1. Pomocí rutiny [Get-AzureADPolicy][Get-AzureADPolicy] ověřte, jestli zásady *HomeRealmDiscoveryPolicy* už ve vašem tenantovi existují:
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 1. Pokud není aktuálně nakonfigurována žádná zásada, příkaz nevrátí žádnou hodnotu. Pokud se vrátí zásada, přeskočte tento krok a přejděte k dalšímu kroku, abyste aktualizovali existující zásady.
@@ -121,10 +121,22 @@ Během období Preview můžete v současné době povolit jenom přihlášení 
     Pokud chcete do tenanta přidat zásady *HomeRealmDiscoveryPolicy* , použijte rutinu [New-AzureADPolicy][New-AzureADPolicy] a nastavte atribut *AlternateIdLogin* na *Enabled: true* , jak je znázorněno v následujícím příkladu:
 
     ```powershell
-    New-AzureADPolicy -Definition @('{"HomeRealmDiscoveryPolicy" :{"AlternateIdLogin":{"Enabled": true}}}') `
-        -DisplayName "BasicAutoAccelerationPolicy" `
-        -IsOrganizationDefault $true `
-        -Type "HomeRealmDiscoveryPolicy"
+    $AzureADPolicyDefinition = @(
+      @{
+         "HomeRealmDiscoveryPolicy" = @{
+            "AlternateIdLogin" = @{
+               "Enabled" = $true
+            }
+         }
+      } | ConvertTo-JSON -Compress
+    )
+    $AzureADPolicyParameters = @{
+      Definition            = $AzureADPolicyDefinition
+      DisplayName           = "BasicAutoAccelerationPolicy"
+      IsOrganizationDefault = $true
+      Type                  = "HomeRealmDiscoveryPolicy"
+    }
+    New-AzureADPolicy @AzureADPolicyParameters
     ```
 
     Po úspěšném vytvoření zásady vrátí příkaz ID zásady, jak je znázorněno v následujícím příkladu výstupu:
@@ -156,17 +168,31 @@ Během období Preview můžete v současné době povolit jenom přihlášení 
     Následující příklad přidá atribut *AlternateIdLogin* a zachová atribut *AllowCloudPasswordValidation* , který již mohl být nastaven:
 
     ```powershell
-    Set-AzureADPolicy -id b581c39c-8fe3-4bb5-b53d-ea3de05abb4b `
-        -Definition @('{"HomeRealmDiscoveryPolicy" :{"AllowCloudPasswordValidation":true,"AlternateIdLogin":{"Enabled": true}}}') `
-        -DisplayName "BasicAutoAccelerationPolicy" `
-        -IsOrganizationDefault $true `
-        -Type "HomeRealmDiscoveryPolicy"
+    $AzureADPolicyDefinition = @(
+      @{
+         "HomeRealmDiscoveryPolicy" = @{
+            "AllowCloudPasswordValidation" = $true
+            "AlternateIdLogin" = @{
+               "Enabled" = $true
+            }
+         }
+      } | ConvertTo-JSON -Compress
+    )
+    $AzureADPolicyParameters = @{
+      ID                    = "b581c39c-8fe3-4bb5-b53d-ea3de05abb4b"
+      Definition            = $AzureADPolicyDefinition
+      DisplayName           = "BasicAutoAccelerationPolicy"
+      IsOrganizationDefault = $true
+      Type                  = "HomeRealmDiscoveryPolicy"
+    }
+    
+    Set-AzureADPolicy @AzureADPolicyParameters
     ```
 
     Potvrďte, že aktualizovaná zásada zobrazuje vaše změny a že je teď povolený atribut *AlternateIdLogin* :
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 Při použití těchto zásad může trvat až hodinu, než se rozšíří a uživatelé se budou moct přihlašovat pomocí svého alternativního přihlašovacího ID.
@@ -207,7 +233,12 @@ K provedení následujících kroků potřebujete oprávnění *správce tenanta
 4. Pokud pro tuto funkci neexistují žádné zásady dvoufázového zavedení, vytvořte nové zásady dvoufázové zavedení a poznamenejte si ID zásady:
 
    ```powershell
-   New-AzureADMSFeatureRolloutPolicy -Feature EmailAsAlternateId -DisplayName "EmailAsAlternateId Rollout Policy" -IsEnabled $true
+   $AzureADMSFeatureRolloutPolicy = @{
+      Feature    = "EmailAsAlternateId"
+      DisplayName = "EmailAsAlternateId Rollout Policy"
+      IsEnabled   = $true
+   }
+   New-AzureADMSFeatureRolloutPolicy @AzureADMSFeatureRolloutPolicy
    ```
 
 5. Najděte ID directoryObject skupiny, která se má přidat do zásady dvoufázové zavedení. Všimněte si hodnoty vrácené pro parametr *ID* , protože se použije v dalším kroku.
@@ -250,7 +281,7 @@ Pokud uživatelé mají problémy s přihlašovacími událostmi pomocí své e-
 1. Potvrďte, že zásada Azure AD *HomeRealmDiscoveryPolicy* má atribut *AlternateIdLogin* nastavený na *Enabled: true*:
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 ## <a name="next-steps"></a>Další kroky

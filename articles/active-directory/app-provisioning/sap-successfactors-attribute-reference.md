@@ -3,7 +3,7 @@ title: Reference k atributu SAP SuccessFactors
 description: Informace o tom, které atributy z SuccessFactors jsou podporované SuccessFactors zřizováním na základě lidských zdrojů
 services: active-directory
 author: cmmdesai
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
 ms.reviewer: celested
-ms.openlocfilehash: ef2da377c7720cfb7b431d1ce0fed56656a2b8c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d1a25f67d3550e79b2339ee060d37acaea0c1c4
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87808503"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255538"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>Reference k atributu SAP SuccessFactors
 
@@ -45,35 +45,35 @@ Další atributy najdete v [referenčních informacích k integraci SAP SuccessF
 | 7  | PerPersonal                            | lastName                     | Číst           |
 | 8  | PerPersonal                            | middleName                   | Číst           |
 | 9  | PerPersonal                            | preferované                | Číst           |
-| 10 | Uživatel                                   | addressLine1                 | Číst           |
-| 11 | Uživatel                                   | addressLine2                 | Číst           |
-| 12 | Uživatel                                   | addressLIne3                 | Číst           |
-| 13 | Uživatel                                   | businessPhone                | Číst           |
-| 14 | Uživatel                                   | cellPhone                    | Číst           |
-| 15 | Uživatel                                   | city                         | Číst           |
-| 16 | Uživatel                                   | country                      | Číst           |
-| 17 | Uživatel                                   | custom01                     | Číst           |
-| 18 | Uživatel                                   | custom02                     | Číst           |
-| 19 | Uživatel                                   | custom03                     | Číst           |
-| 20 | Uživatel                                   | custom04                     | Číst           |
-| 21 | Uživatel                                   | custom05                     | Číst           |
-| 22 | Uživatel                                   | custom06                     | Číst           |
-| 23 | Uživatel                                   | custom07                     | Číst           |
-| 24 | Uživatel                                   | custom08                     | Číst           |
-| 25 | Uživatel                                   | custom09                     | Číst           |
-| 26 | Uživatel                                   | vlastní10                     | Číst           |
-| 27 | Uživatel                                   | custom11                     | Číst           |
-| 28 | Uživatel                                   | custom12                     | Číst           |
-| 29 | Uživatel                                   | custom13                     | Číst           |
-| 30 | Uživatel                                   | custom14                     | Číst           |
-| 31 | Uživatel                                   | empId                        | Číst           |
-| 32 | Uživatel                                   | homePhone                    | Číst           |
-| 33 | Uživatel                                   | jobFamily                    | Číst           |
-| 34 | Uživatel                                   | zdívek                     | Číst           |
-| 35 | Uživatel                                   | state                        | Číst           |
-| 36 | Uživatel                                   | timeZone                     | Číst           |
-| 37 | Uživatel                                   | username                     | Číst           |
-| 38 | Uživatel                                   | PSČ                      | Číst           |
+| 10 | User                                   | addressLine1                 | Číst           |
+| 11 | User                                   | addressLine2                 | Číst           |
+| 12 | User                                   | addressLIne3                 | Číst           |
+| 13 | User                                   | businessPhone                | Číst           |
+| 14 | User                                   | cellPhone                    | Číst           |
+| 15 | User                                   | city                         | Číst           |
+| 16 | User                                   | country                      | Číst           |
+| 17 | User                                   | custom01                     | Číst           |
+| 18 | User                                   | custom02                     | Číst           |
+| 19 | User                                   | custom03                     | Číst           |
+| 20 | User                                   | custom04                     | Číst           |
+| 21 | User                                   | custom05                     | Číst           |
+| 22 | User                                   | custom06                     | Číst           |
+| 23 | User                                   | custom07                     | Číst           |
+| 24 | User                                   | custom08                     | Číst           |
+| 25 | User                                   | custom09                     | Číst           |
+| 26 | User                                   | vlastní10                     | Číst           |
+| 27 | User                                   | custom11                     | Číst           |
+| 28 | User                                   | custom12                     | Číst           |
+| 29 | User                                   | custom13                     | Číst           |
+| 30 | User                                   | custom14                     | Číst           |
+| 31 | User                                   | empId                        | Číst           |
+| 32 | User                                   | homePhone                    | Číst           |
+| 33 | User                                   | jobFamily                    | Číst           |
+| 34 | User                                   | zdívek                     | Číst           |
+| 35 | User                                   | state                        | Číst           |
+| 36 | User                                   | timeZone                     | Číst           |
+| 37 | User                                   | username                     | Číst           |
+| 38 | User                                   | PSČ                      | Číst           |
 | 39 | PerPhone                               | areaCode                     | Číst           |
 | 40 | PerPhone                               | countryCode                  | Číst           |
 | 41 | PerPhone                               | přípona                    | Číst           |
@@ -124,21 +124,21 @@ Následující tabulka uvádí výchozí mapování atributů mezi SuccessFactor
 |----|----------------------------------------|--------------------------|-----------------------------------------|----------------------------------------------------------------------------------------------|
 | 1  | PerPerson                              | personIdExternal         | Zaměstnance                              | Použito jako shodný atribut                                                                   |
 | 2  | PerPerson                              | perPersonUuid            | \[Nenamapováno se \- používá jako zdrojové ukotvení.\] | Při počáteční synchronizaci propojuje služba zřizování personUuid existující objectGuid\..  |
-| 3  | PerPersonal                            | displayName              | displayName                             | Není k dispozici                                                                                           |
-| 4  | PerPersonal                            | firstName                | givenName                               | Není k dispozici                                                                                           |
-| 5  | PerPersonal                            | lastName                 | sn                                      | Není k dispozici                                                                                           |
-| 6  | Uživatel                                   | addressLine1             | streetAddress                           | Není k dispozici                                                                                           |
-| 7  | Uživatel                                   | city                     | l                                       | Není k dispozici                                                                                           |
-| 8  | Uživatel                                   | country                  | co                                      | Není k dispozici                                                                                           |
-| 9  | Uživatel                                   | state                    | st                                      | Není k dispozici                                                                                           |
-| 10 | Uživatel                                   | username                 | samAccountName                          | Není k dispozici                                                                                           |
-| 11 | Uživatel                                   | PSČ                  | Ovládacím                              | Není k dispozici                                                                                           |
-| 12 | PerEmail                               | emailAddress             | pošta                                    | Není k dispozici                                                                                           |
-| 13 | EmpJob                                 | jobTitle                 | title                                   | Není k dispozici                                                                                           |
-| 14 | EmpJob                                 | managerId                | manager                                 | Není k dispozici                                                                                           |
-| 15 | \.CountryOfRegistration společnosti \. EmpJob | twoCharCountryCode       | c                                       | Není k dispozici                                                                                           |
-| 16 | EmpJob \. oddělení                     | Oddělení               | Oddělení                              | Není k dispozici                                                                                           |
-| 17 | EmpJob \. rozdělení                       | dělení                 | company                                 | Není k dispozici                                                                                           |
-| 18 | \.Umístění EmpJob                       | officeLocationAddress    | streetAddress                           | Není k dispozici                                                                                           |
-| 19 | \.Umístění EmpJob                       | officeLocationZipCode    | Ovládacím                              | Není k dispozici                                                                                           |
+| 3  | PerPersonal                            | displayName              | displayName                             | NA                                                                                           |
+| 4  | PerPersonal                            | firstName                | givenName                               | NA                                                                                           |
+| 5  | PerPersonal                            | lastName                 | sn                                      | NA                                                                                           |
+| 6  | User                                   | addressLine1             | streetAddress                           | NA                                                                                           |
+| 7  | User                                   | city                     | l                                       | NA                                                                                           |
+| 8  | User                                   | country                  | co                                      | NA                                                                                           |
+| 9  | User                                   | state                    | st                                      | NA                                                                                           |
+| 10 | User                                   | username                 | samAccountName                          | NA                                                                                           |
+| 11 | User                                   | PSČ                  | postalCode                              | NA                                                                                           |
+| 12 | PerEmail                               | emailAddress             | pošta                                    | NA                                                                                           |
+| 13 | EmpJob                                 | jobTitle                 | title                                   | NA                                                                                           |
+| 14 | EmpJob                                 | managerId                | manager                                 | NA                                                                                           |
+| 15 | \.CountryOfRegistration společnosti \. EmpJob | twoCharCountryCode       | c                                       | NA                                                                                           |
+| 16 | EmpJob \. oddělení                     | Oddělení               | Oddělení                              | NA                                                                                           |
+| 17 | EmpJob \. rozdělení                       | dělení                 | company                                 | NA                                                                                           |
+| 18 | \.Umístění EmpJob                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
+| 19 | \.Umístění EmpJob                       | officeLocationZipCode    | postalCode                              | NA                                                                                           |
 | 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | Pokud activeEmploymentsCount = 0, zakažte Account\..                                           |

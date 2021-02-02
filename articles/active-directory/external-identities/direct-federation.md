@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5beae56a5d38c4620481c27c3f42c52602984e6b
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: c9afb5a078d5359ed236b44c0a6712985bf8c305
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860622"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257181"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Přímá federace pomocí AD FS a poskytovatelů třetích stran pro uživatele typu Host (Preview)
 
@@ -78,7 +78,8 @@ Ano. Pokud se doména neověřila a tenant neprošel [převzetím správce](../e
 Pokud je v partnerské organizaci vytvořená přímá federace, má přednost před ověřováním jednorázovým heslem e-mailu pro nové uživatele typu host z této organizace. Pokud uživatel typu Host znovu nastavil pozvánku pomocí jednorázového ověřování hesla před nastavením přímé federace, bude používat jednorázové ověřování pomocí hesla. 
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>Jsou problémy s přihlašováním přímo v rámci federačních adres způsobeny částečně synchronizovanými tenantů?
 Ne, v tomto scénáři by měla být použita funkce pro [jednorázové heslo e-mailu](one-time-passcode.md) . "Částečně synchronizovaná tenant" odkazuje na partnera Azure AD, u kterého nejsou místní identity uživatelů plně synchronizovány do cloudu. Host, jehož identita ještě v cloudu neexistuje, ale pokud se pokusí uplatnit uplatnění pozvánky B2B, nebude se moct přihlásit. Funkce jednorázového hesla umožní tomuto hostovi přihlašovat se. Funkce přímé federace adresuje scénáře, kde má host svůj vlastní účet organizace spravovaný IdP, ale organizace nemá žádnou přítomnost Azure AD vůbec.
-
+### <a name="once-direct-federation-is-configured-with-an-organization-does-each-guest-need-to-be-sent-and-redeem-an-individual-invitation"></a>Po nakonfigurování přímé federace s organizací musí každý host Odeslat a uplatnit individuální pozvánku?
+Nastavením přímé federace se nemění metoda ověřování pro uživatele typu Host, kteří už od vás pozvánku vypovažovali. Metodu ověřování uživatele typu Host můžete aktualizovat tak, že z adresáře odstraníte uživatelský účet hosta a znovu je zadáte.
 ## <a name="step-1-configure-the-partner-organizations-identity-provider"></a>Krok 1: Konfigurace zprostředkovatele identity partnerské organizace
 Nejdřív vaše partnerská organizace potřebuje nakonfigurovat poskytovatele identity o požadované deklarace identity a vztahy důvěryhodnosti předávající strany. 
 

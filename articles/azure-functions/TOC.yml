@@ -281,9 +281,10 @@
               href: functions-create-storage-queue-triggered-function.md
             - name: Trigger časovače
               href: functions-create-scheduled-function.md
-        - name: Přidání vazeb
+        - name: Připojení ke službám
           items:
-            - name: Postup při přidávání vazby
+            - name: Jak se připojit ke službám
+              displayName: 'bindings,integrate'
               href: add-bindings-existing-function.md
             - name: Azure Cosmos DB – portál
               href: functions-integrate-store-unstructured-data-cosmosdb.md
@@ -395,7 +396,7 @@
           href: configure-encrypt-at-rest-using-cmk.md
     - name: Integrace
       items:
-        - name: Přidání vazeb
+        - name: Připojení ke službám
           items:
             - name: Azure Cosmos DB – portál
               href: functions-integrate-store-unstructured-data-cosmosdb.md

@@ -3,7 +3,7 @@ title: Proxy aplikací služby Azure Active Directory nejčastějších dotazech
 description: Přečtěte si odpovědi na nejčastější dotazy k používání služby Azure Proxy aplikací služby AD k publikování interních místních aplikací pro vzdálené uživatele.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: f1a1d43f9bfc960628447a3c20e7dab2ac701dc5
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 121dcdf51374f625ad7393bb181b1be215775a0b
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762583"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257773"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)
 
@@ -183,7 +183,7 @@ Další informace najdete [v tématu Povolení vzdáleného přístupu ke služb
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>Můžu použít Azure Proxy aplikací služby AD jako proxy server AD FS (jako je proxy webových aplikací)?
 
-Ne. Služba Azure Proxy aplikací služby AD je navržená tak, aby spolupracovala s Azure AD a nesplňovala požadavky, které by fungovaly jako proxy AD FS.
+No. Služba Azure Proxy aplikací služby AD je navržená tak, aby spolupracovala s Azure AD a nesplňovala požadavky, které by fungovaly jako proxy AD FS.
 
 ## <a name="websocket"></a>WebSocket
 

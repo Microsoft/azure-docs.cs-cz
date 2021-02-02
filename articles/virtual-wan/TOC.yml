@@ -49,6 +49,8 @@
           href: scenario-isolate-vnets.md
         - name: Izolování virtuálních sítí – vlastní
           href: scenario-isolate-vnets-custom.md
+        - name: Izolace virtuálních sítí a větví
+          href: scenario-isolate-virtual-networks-branches.md
         - name: Virtuální sítě sdílených služeb
           href: scenario-shared-services-vnet.md
         - name: Směrování přes NVA

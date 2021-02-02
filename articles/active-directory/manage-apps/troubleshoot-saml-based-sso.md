@@ -1,23 +1,23 @@
 ---
-title: Řešení jednotného přihlašování založeného na SAML v Azure Active Directory
+title: Řešení potíží s jednotným přihlašováním založeným na SAML v Azure Active Directory
 description: Řešení potíží s aplikací Azure AD, která je nakonfigurovaná pro jednotné přihlašování založené na SAML
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 2e8508d4fceb1e7fb580350c726dd70eeaea31c6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b169616042892c379196dd1d38c2343704aa1030
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658872"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257522"
 ---
-# <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>Řešení jednotného přihlašování založeného na SAML v Azure Active Directory
+# <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>Řešení potíží s jednotným přihlašováním založeným na SAML v Azure Active Directory
 Pokud narazíte na problém při konfiguraci aplikace. Ověřte, že jste postupovali podle všech kroků v kurzu pro aplikaci. V konfiguraci aplikace máte vloženou dokumentaci týkající se konfigurace aplikace. Můžete také získat přístup k [seznamu kurzů, jak integrovat aplikace SaaS s Azure Active Directory](../saas-apps/tutorial-list.md) pro podrobné pokyny.
 
 ## <a name="cant-add-another-instance-of-the-application"></a>Nejde přidat další instanci aplikace.
@@ -46,7 +46,7 @@ Chcete-li zjistit, jaké jsou vzory předem nakonfigurované pro aplikaci:
     * Pokud není tento vzor podporován, zobrazí se při pokusu o zadání hodnoty do textového pole červený vykřičník. Pokud najedete myší na červený vykřičník, uvidíte podporované vzory.
     * V tomto kurzu pro aplikaci můžete získat také informace o podporovaných vzorcích. V části **Konfigurace jednotného přihlašování Azure AD** . Pro konfiguraci hodnot v části **doména a adresy URL** použijte krok.
 
-Pokud se hodnoty neshodují se vzorci předem konfigurovanými v Azure AD. Můžete:
+Pokud se hodnoty neshodují se vzorci předem konfigurovanými v Azure AD. Další možnosti:
 -   Spolupracovat s dodavatelem aplikace a získat hodnoty, které odpovídají vzoru předkonfigurovanému ve službě Azure AD
 -   Nebo můžete kontaktovat tým Azure AD na adrese <aadapprequest@microsoft.com> nebo v tomto kurzu zanechat komentář, který požádá o aktualizaci podporovaných vzorů pro aplikaci.
 
@@ -69,7 +69,7 @@ Pokud chcete stáhnout metadata aplikace nebo certifikát z Azure AD, postupujte
 
 Azure AD neposkytuje adresu URL pro získání metadat. Metadata lze načíst pouze jako soubor XML.
 
-## <a name="customize-saml-claims-sent-to-an-application"></a>Přizpůsobení deklarací SAML odeslaných do aplikace
+## <a name="customize-saml-claims-sent-to-an-application"></a>Přizpůsobení deklarací identit SAML odesílaných do aplikace
 Další informace o tom, jak přizpůsobit deklarace identity atributů SAML odeslané do vaší aplikace, najdete v tématu [mapování deklarací v Azure Active Directory](../develop/active-directory-claims-mapping.md) .
 
 ## <a name="next-steps"></a>Další kroky

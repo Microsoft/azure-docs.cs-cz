@@ -1,5 +1,5 @@
 ---
-title: Co je nového ve službě Face?
+title: Co je nového ve službě Rozpoznávání tváře?
 titleSuffix: Azure Cognitive Services
 description: Zpráva k vydání verze pro službu obličeje obsahuje historii změn verzí pro různé verze.
 services: cognitive-services
@@ -10,19 +10,31 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 8a409d66065a7ccd2b34365bd565202f207ac0e8
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 5e537166352f242d54819477a4dc0051aad684b0
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560742"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258078"
 ---
-# <a name="whats-new-in-face-service"></a>Co je nového ve službě Face?
+# <a name="whats-new-in-face-service"></a>Co je nového ve službě Rozpoznávání tváře?
 
 Služba Azure Faceer se průběžně aktualizuje. Tento článek vám umožní udržovat aktuální informace o vylepšeních, opravách a dokumentaci k funkcím.
 
+## <a name="january-2021"></a>Leden 2021
+* Zmírnění latence při použití rozhraní API pro rozpoznávání tváře: obličejový tým publikoval nový článek s podrobnostmi o potenciálních příčinách latence při používání služby a možných strategiích pro zmírnění rizik. Viz [zmírňující latence při používání služby obličeje](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/how-to-mitigate-latency).
+
+## <a name="december-2020"></a>Prosinec 2020
+* Konfigurace zákazníků pro úložiště s ID obličeje: i když služba obličeje neukládá image zákazníků, na serveru se budou odeberou funkce, na kterých se nachází extrahovaný obličej. ID obličeje je identifikátor funkce Face a bude se používat v rámci [Identifikace obličeje](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), [obličejového ověřování](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)a [obličeje – najít podobné](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237). Na uložené funkce Face vyprší platnost a odstraní se 24 hodin po původním volání detekce. Zákazníci teď můžou určit dobu, po kterou se tato ID obličeje ukládají do mezipaměti. Maximální hodnota je stále až 24 hodin, ale nyní lze nastavit minimální hodnotu 60 sekund. Nové časové rozsahy pro ID tváře v mezipaměti jsou jakákoli hodnota mezi 60 sekundami a 24 hodinami. Další podrobnosti najdete v referenčních informacích k rozhraní API [pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) (parametr *faceIdTimeToLive* ).
+
 ## <a name="november-2020"></a>Listopad 2020
-* Publikovali jsme aplikaci pro registraci ukázkového obličeje, která předvádí osvědčené postupy pro stanovení smysluplného souhlasu a vytváření vysoce přesností systémů rozpoznávání obličeje pomocí vysoce kvalitních registrací. Ukázku Open Source najdete v průvodci [vytvořením aplikace pro zápis](build-enrollment-app.md) a na [GitHubu](https://github.com/Azure-Samples/cognitive-services-FaceAPIEnrollmentSample), která je připravená pro vývojáře k nasazení nebo přizpůsobení.  
+* Publikovali jsme aplikaci pro registraci ukázkového obličeje, která předvádí osvědčené postupy pro stanovení smysluplného souhlasu a vytváření vysoce přesností systémů rozpoznávání obličeje pomocí vysoce kvalitních registrací. Ukázku Open Source najdete v průvodci [vytvořením aplikace pro zápis](build-enrollment-app.md) a na [GitHubu](https://github.com/Azure-Samples/cognitive-services-FaceAPIEnrollmentSample), která je připravená pro vývojáře k nasazení nebo přizpůsobení. 
+
+## <a name="august-2020"></a>Srpen 2020
+* Šifrování neaktivních uložených dat spravované zákazníkem: služba obličeje automaticky šifruje vaše data při jejich uchování do cloudu. Šifrování služby Face chrání vaše data, aby vám pomohla splnit závazky zabezpečení vaší organizace a dodržování předpisů. Vaše předplatné ve výchozím nastavení používá šifrovací klíče spravované Microsoftem. K dispozici je také nová možnost pro správu předplatného s použitím vlastních klíčů nazývaných klíče spravované zákazníkem (CMK). Další podrobnosti najdete v [klíčích spravovaných zákazníky](https://docs.microsoft.com/azure/cognitive-services/face/face-encryption-of-data-at-rest).
+
+## <a name="april-2020"></a>Duben 2020
+* Nový model rozpoznávání rozhraní API pro rozpoznávání tváře: nový model pro rozpoznávání 03 je nejpřesnější model, který je aktuálně k dispozici. Pokud jste nový zákazník, doporučujeme použít tento model. Rozpoznávání 03 poskytne lepší přesnost pro porovnání podobnosti a porovnávání porovnávání s osobami. Další podrobnosti najdete v [určitém modelu rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model).
 
 ## <a name="june-2019"></a>Červen 2019
 
@@ -98,4 +110,4 @@ Služba Azure Faceer se průběžně aktualizuje. Tento článek vám umožní u
 
 * Údaje o osobě a osobě se zastaraly v tváři v0. K těmto datům nelze přidružit službu FACET V 1.0.
 
-* Konec platnosti koncového bodu v0 Face API dne 30. června 2016.
+* Konec platnosti koncového bodu v0 rozhraní API pro rozpoznávání tváře dne 30. června 2016.

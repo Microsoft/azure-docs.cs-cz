@@ -3,7 +3,7 @@ title: Zřízení uživatele na vyžádání pomocí Azure Active Directory
 description: Vynutit synchronizaci
 services: active-directory
 author: msmimart
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: f7cbe9e9f81b3b71ee7da2feac2908c36f1777e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be03a149f34c16621905081a2f9bb663d85bc53c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629008"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255657"
 ---
 # <a name="on-demand-provisioning"></a>Zřizování na vyžádání
 Pomocí zřizování na vyžádání můžete zřídit uživatele v aplikaci během několika sekund. Mimo jiné můžete tuto možnost využít k těmto účelům:
@@ -27,8 +27,8 @@ Pomocí zřizování na vyžádání můžete zřídit uživatele v aplikaci bě
 
 ## <a name="how-to-use-on-demand-provisioning"></a>Jak používat zřizování na vyžádání
 
-1. Přihlaste se k **portálu Azure Portal**.
-1. Přejít na **všechny služby**v  >  **podnikových aplikacích**.
+1. Přihlaste se na **Azure Portal**.
+1. Přejít na **všechny služby** v  >  **podnikových aplikacích**.
 1. Vyberte svou aplikaci a pak klikněte na stránku konfigurace zřizování.
 1. Nakonfigurujte zřizování poskytnutím přihlašovacích údajů správce.
 1. Vyberte **zřídit na vyžádání**.
@@ -124,7 +124,7 @@ Služba zřizování pak provede akci, jako je například vytvoření, aktualiz
 
 Tady je příklad toho, co se může zobrazit po úspěšném zřízení uživatele na vyžádání:
 
-:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Snímek obrazovky, který zobrazuje uživatelské rozhraní Azure Portal pro zřizování uživatele na vyžádání.":::
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Snímek obrazovky, který ukazuje úspěšné zřízení uživatele na vyžádání.":::
 
 #### <a name="view-details"></a>Zobrazit podrobnosti
 

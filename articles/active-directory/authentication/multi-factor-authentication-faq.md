@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1dfe99a2ed57ecc953c69d1bad89e2b2c8816ca3
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a58fbf874339bf287ce1af62e1edb39ec6227d99
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741441"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257098"
 ---
 # <a name="frequently-asked-questions-about-azure-ad-multi-factor-authentication"></a>Nejčastější dotazy týkající se Multi-Factor Authentication Azure AD
 
@@ -124,7 +124,7 @@ Další informace o poskytovatelích VÍCEFAKTOROVÉHO ověřování najdete v �
 
 V některých případech Ano.
 
-Pokud má váš adresář poskytovatele Azure Multi-Factor Authentication *pro každého uživatele* , můžete přidat licence MFA. Uživatelům s licencemi se nepočítají při fakturaci na základě spotřeby podle uživatele. Uživatelům bez licencí je stále možné povolit vícefaktorové ověřování prostřednictvím poskytovatele MFA. Pokud si koupíte a přiřadíte licence pro všechny uživatele, kteří jsou nakonfigurováni pro použití Multi-Factor Authentication, můžete poskytovatele služby Azure Multi-Factor Authentication odstranit. Pokud v budoucnu máte více uživatelů, než kolik jich máte, můžete vždy vytvořit dalšího zprostředkovatele vícefaktorového ověřování pro každého uživatele.
+Pokud má váš adresář poskytovatele Azure Multi-Factor Authentication *pro každého uživatele* , můžete přidat licence MFA. Uživatelé s licencemi se nepočítají při fakturaci na základě spotřeby podle uživatele. Uživatelům bez licencí je stále možné povolit vícefaktorové ověřování prostřednictvím poskytovatele MFA. Pokud si koupíte a přiřadíte licence pro všechny uživatele, kteří jsou nakonfigurováni pro použití Multi-Factor Authentication, můžete poskytovatele služby Azure Multi-Factor Authentication odstranit. Pokud v budoucnu máte více uživatelů, než kolik jich máte, můžete vždy vytvořit dalšího zprostředkovatele vícefaktorového ověřování pro každého uživatele.
 
 Pokud má váš adresář poskytovatele služby Azure Multi-Factor Authentication *pro ověřování* , bude se vám vždycky účtovat každé ověřování, pokud je poskytovatel MFA propojený s vaším předplatným. Uživatelům můžete přiřadit licence MFA, ale pořád se vám bude účtovat každá žádost o dvoustupňové ověření, ať už pochází od někoho, kdo má přiřazenou licenci MFA.
 

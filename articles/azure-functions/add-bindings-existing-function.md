@@ -1,16 +1,16 @@
 ---
-title: Přidání vazeb do existující funkce v Azure Functions
-description: Naučte se, jak přidat vazby do existující funkce v projektu Azure Functions.
+title: Připojení funkcí k ostatním službám Azure
+description: Naučte se, jak přidat vazby, které se připojují k jiným službám Azure, k existující funkci v projektu Azure Functions.
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 23b7b05f9a9f9da5a48511ee555e3b6184a74179
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1c6f5bb8ca5fcf995b8a8d326abbec96f1d2e35
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91654121"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258197"
 ---
-# <a name="add-bindings-to-an-existing-function-in-azure-functions"></a>Přidání vazeb do existující funkce v Azure Functions
+# <a name="connect-functions-to-azure-services-using-bindings"></a>Připojení funkcí ke službám Azure pomocí vazeb
 
 Při vytváření funkce se do projektu přidá kód triggeru specifický pro jazyk ze sady šablon triggerů. Pokud chcete svou funkci připojit k jiným službám pomocí vstupních nebo výstupních vazeb, musíte do své funkce přidat konkrétní definice vazeb. Další informace o vazbách naleznete v tématu [Azure Functions triggery a koncepty vazeb](functions-triggers-bindings.md).
 

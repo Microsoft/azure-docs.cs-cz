@@ -3,7 +3,7 @@ title: Jak používat Samoobslužný přístup k aplikacím v Azure AD
 description: Povolit samoobslužné služby, aby uživatelé mohli najít aplikace v Azure AD
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere,asteen
-ms.openlocfilehash: d99f0021ee53e972dacfdadb3e488498a3fc4ad0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 13f91fdd9e2d9501fba426bd6facbf9824a39285
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372459"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257013"
 ---
 # <a name="how-to-use-self-service-application-access"></a>Jak používat Samoobslužný přístup k aplikacím
 
@@ -43,8 +43,8 @@ Pokud chcete aplikaci povolit Samoobslužný přístup k aplikacím, postupujte 
 1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 2. Otevřete **rozšíření Azure Active Directory** tím, že vyberete **všechny služby** v horní části hlavní navigační nabídky vlevo.
 3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
-4. Vyberte **podnikové aplikace** z navigační nabídky Azure Active Directory vlevo.
-5. Výběrem **všech aplikací** zobrazíte seznam všech aplikací.
+4. V levé navigační nabídce Azure Active Directory vyberte **Podnikové aplikace**.
+5. Vyberte **Všechny aplikace**. Zobrazí se seznam všech vašich aplikací.
    * Pokud se vám nezobrazí aplikace, kterou chcete zobrazit, použijte ovládací prvek **filtru** v horní části **seznamu všechny aplikace** a nastavte možnost **Zobrazit** pro **všechny aplikace.**
 6. Vyberte aplikaci, ke které chcete povolit Samoobslužný přístup ze seznamu.
 7. Po načtení aplikace vyberte **Samoobslužná služba** z nabídky navigace na levé straně aplikace.

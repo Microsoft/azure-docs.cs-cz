@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: d5dbb7b71e2d67ed5b3f624c93c3c143d6c98e5d
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 6da1d285440daa5d1d5a230905a77057728d4ae6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618531"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256538"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Konfigurace zabezpečeného protokolu LDAP pro Azure Active Directory Domain Services spravovanou doménu
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -213,6 +213,12 @@ Povolení zabezpečeného protokolu LDAP pro spravovanou doménu trvá několik 
 
 Některé běžné důvody selhání jsou v případě, že je název domény nesprávný, šifrovací algoritmus pro daný certifikát není *TripleDES-SHA1*, nebo brzy vyprší platnost certifikátu nebo již vypršela jeho platnost. Certifikát můžete znovu vytvořit s platnými parametry a pak povolit zabezpečený protokol LDAP pomocí tohoto aktualizovaného certifikátu.
 
+## <a name="change-an-expiring-certificate"></a>Změna certifikátu s vypršenou platností
+
+1. Pomocí postupu pro [Vytvoření certifikátu protokolu Secure LDAP](#create-a-certificate-for-secure-ldap)vytvořte náhradní certifikát zabezpečeného protokolu LDAP.
+1. Pokud chcete použít náhradní certifikát pro Azure služba AD DS, v levé nabídce pro Azure služba AD DS v Azure Portal vyberte **protokol Secure LDAP** a pak vyberte **změnit certifikát**.
+1. Distribuujte certifikát pro všechny klienty, kteří se připojují pomocí zabezpečeného LDAP. 
+
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>Uzamknout zabezpečený přístup LDAP přes Internet
 
 Když povolíte zabezpečený přístup pomocí protokolu LDAP přes Internet do spravované domény, vytvoří se bezpečnostní hrozba. Spravovaná doména je dosažitelná z Internetu na portu TCP 636. Doporučuje se omezit přístup ke spravované doméně na konkrétní známé IP adresy vašeho prostředí. Pravidlo skupiny zabezpečení sítě Azure se dá použít k omezení přístupu k zabezpečenému LDAP.
@@ -222,7 +228,7 @@ Pojďme vytvořit pravidlo, které umožní příchozí zabezpečený přístup 
 1. V Azure Portal na levé straně navigace vyberte *skupiny prostředků* .
 1. Zvolte skupinu prostředků, třeba *myResourceGroup*, a pak vyberte skupinu zabezpečení sítě, třeba *aaads-NSG*.
 1. Zobrazí se seznam existujících příchozích a odchozích pravidel zabezpečení. Na levé straně okna skupiny zabezpečení sítě vyberte **nastavení > příchozí pravidla zabezpečení**.
-1. Vyberte **Přidat** a pak vytvořit pravidlo, které povolí *TCP* port TCP *636*. Pro lepší zabezpečení zvolte zdroj jako *IP adresy* a pak zadejte vlastní platnou IP adresu nebo rozsah pro vaši organizaci.
+1. Vyberte **Přidat** a pak vytvořit pravidlo, které povolí  port TCP *636*. Pro lepší zabezpečení zvolte zdroj jako *IP adresy* a pak zadejte vlastní platnou IP adresu nebo rozsah pro vaši organizaci.
 
     | Nastavení                           | Hodnota        |
     |-----------------------------------|--------------|
@@ -234,7 +240,7 @@ Pojďme vytvořit pravidlo, které umožní příchozí zabezpečený přístup 
     | Protokol                          | TCP          |
     | Akce                            | Povolit        |
     | Priorita                          | 401          |
-    | Název                              | AllowLDAPS   |
+    | Name                              | AllowLDAPS   |
 
 1. Až budete připraveni, vyberte **Přidat** a uložte a použijte pravidlo.
 

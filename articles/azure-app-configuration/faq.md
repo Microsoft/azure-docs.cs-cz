@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: alkemper
-ms.openlocfilehash: 4e19574e5848d1ee86d13aa02a9cf583b92eff02
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 39ad20bd57e3da6345c63d4601f34b19e640c1d6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929561"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256471"
 ---
 # <a name="azure-app-configuration-faq"></a>Nejčastější dotazy ke konfiguraci aplikací Azure
 
@@ -105,7 +105,7 @@ Nemůžete downgradovat úložiště z úrovně Standard na úroveň Free. Můž
 
 ## <a name="are-there-any-limits-on-the-number-of-requests-made-to-app-configuration"></a>Existují nějaká omezení počtu požadavků na konfiguraci aplikace?
 
-Úložiště konfigurací v bezplatné úrovni jsou omezená na 1 000 požadavků za den. V úložištích konfigurace na úrovni Standard se může vyskytnout dočasné omezení, pokud rychlost požadavků překročí 20 000 požadavků za hodinu.
+V konfiguraci aplikace se při čtení hodnot klíčů budou stránkování dat a každý požadavek může číst až 100 hodnot klíč-hodnota. Při zápisu hodnot klíč-hodnota může každý požadavek vytvořit nebo aktualizovat jednu hodnotu klíče. To je podporováno prostřednictvím REST API, sad Configuration SDK aplikace a poskytovatelů konfigurace. Úložiště konfigurací v bezplatné úrovni jsou omezená na 1 000 požadavků za den. V úložištích konfigurace na úrovni Standard se může vyskytnout dočasné omezení, pokud rychlost požadavků překročí 20 000 požadavků za hodinu.
 
 Když obchod dosáhne svého limitu, vrátí stavový kód HTTP 429 pro všechny požadavky provedené do vypršení časového období. `retry-after-ms`Hlavička v odpovědi poskytuje navrhovanou čekací dobu (v milisekundách) před opakováním žádosti.
 

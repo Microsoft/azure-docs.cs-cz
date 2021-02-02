@@ -3,12 +3,12 @@ title: Osvědčené postupy pro šablony
 description: Popisuje doporučené přístupy k vytváření Azure Resource Manager šablon (šablon ARM). Nabízí návrhy, aby se předešlo běžným problémům při používání šablon.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: c0b26c300a9474cc5db0b1a7b732c4416a9e6f5f
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 583a113df9cdb1951daf1002dd69531f050cfb54
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696342"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257993"
 ---
 # <a name="arm-template-best-practices"></a>Osvědčené postupy pro šablonu ARM
 
@@ -176,7 +176,7 @@ Při rozhodování, jaké [závislosti](define-resource-dependency.md) se mají 
 
 * Pokud je možné určit hodnotu před nasazením, zkuste prostředek nasadit bez závislosti. Pokud například hodnota konfigurace potřebuje název jiného prostředku, možná nebudete potřebovat závislost. Tyto pokyny nefungují vždycky, protože některé prostředky ověřují existenci druhého prostředku. Pokud se zobrazí chyba, přidejte závislost.
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 
 Následující informace můžou být užitečné při práci s [prostředky](template-syntax.md#resources):
 
@@ -276,6 +276,8 @@ Následující informace můžou být užitečné při práci s [prostředky](te
 
    > [!NOTE]
    > Aby se zajistilo šifrování tajných kódů při jejich předání jako parametrů virtuálním počítačům a rozšířením, použijte `protectedSettings` vlastnost příslušných rozšíření.
+
+* Zadejte explicitní hodnoty pro vlastnosti, které mají výchozí hodnoty, které by se mohly v průběhu času měnit. Například pokud nasazujete cluster AKS, můžete buď zadat nebo vynechat `kubernetesVersion` vlastnost. Pokud ho nezadáte, použije se [výchozí verze N-1 a nejnovější oprava](../../aks/supported-kubernetes-versions.md#azure-portal-and-cli-versions). Když nasadíte cluster pomocí šablony ARM, toto výchozí chování nemusí být to, co očekáváte. Opětovné nasazení šablony může mít za následek neočekávaně upgradovaný cluster na novou verzi Kubernetes. Místo toho zvažte zadání explicitního čísla verze a jeho ručním změnou, až budete připraveni upgradovat cluster.
 
 ## <a name="use-test-toolkit"></a>Použít sadu testů
 

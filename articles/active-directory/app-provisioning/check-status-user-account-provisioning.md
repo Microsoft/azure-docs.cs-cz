@@ -3,7 +3,7 @@ title: Vykázat Automatické zřizování uživatelských účtů do aplikací S
 description: Zjistěte, jak kontrolovat stav automatických úloh zřizování uživatelských účtů a jak řešit problémy zřizování jednotlivých uživatelů.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 3dcbb2567b9a92ea7d806acedb5d1cc6a31a966e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: e6839026c83a10a4acebd7b7a6ab55b210e7ef14
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069802"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256673"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Kurz: vytváření sestav o automatickém zřizování uživatelských účtů
 
@@ -48,7 +48,7 @@ Odtud můžete přístup k řádku průběh zřizování i k protokolům zřizov
 
 ## <a name="provisioning-progress-bar"></a>Indikátor průběhu zřizování
 
-[Indikátor průběhu zřizování](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) se zobrazuje na kartě **zřizování** pro danou aplikaci. Je umístěný v části **aktuální stav** pod položkou **Nastavení**a zobrazuje stav aktuálního počátečního nebo přírůstkového cyklu. Tato část také obsahuje:
+[Indikátor průběhu zřizování](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) se zobrazuje na kartě **zřizování** pro danou aplikaci. Je umístěný v části **aktuální stav** pod položkou **Nastavení** a zobrazuje stav aktuálního počátečního nebo přírůstkového cyklu. Tato část také obsahuje:
 
 * Celkový počet uživatelů a skupin, které byly synchronizovány a které jsou aktuálně v rozsahu pro zřizování mezi zdrojovým systémem a cílovým systémem.
 * Čas posledního spuštění synchronizace. K synchronizaci obvykle dochází každých 20-40 minut po dokončení [počátečního cyklu](../app-provisioning/how-provisioning-works.md#provisioning-cycles-initial-and-incremental) .
@@ -57,11 +57,11 @@ Odtud můžete přístup k řádku průběh zřizování i k protokolům zřizov
 
 **Aktuální stav** by měl být prvním místem, kde správci hledají provozní stav úlohy zřizování.
 
- ![Souhrnná sestava](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
+ ![Souhrnná sestava](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
 
 ## <a name="provisioning-logs-preview"></a>Zřizování protokolů (Preview)
 
-Všechny aktivity prováděné službou zřizování se zaznamenávají v [protokolech zřizování](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)Azure AD. K protokolům zřizování v Azure Portal můžete získat přístup tak, že **Azure Active Directory** &gt; v části aktivita vyberete Azure Active Directory protokoly zřizování **podnikových aplikací** &gt; **(Preview)** . **Activity** Data zřizování můžete vyhledat na základě jména uživatele nebo identifikátoru v systému zdrojového systému nebo v cílovém systému. Podrobnosti najdete v tématu [zřizování protokolů (Preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Typy událostí protokolovaných aktivit zahrnují:
+Všechny aktivity prováděné službou zřizování se zaznamenávají v [protokolech zřizování](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)Azure AD. K protokolům zřizování v Azure Portal můžete získat přístup tak, že  &gt; v části aktivita vyberete Azure Active Directory protokoly zřizování **podnikových aplikací** &gt; **(Preview)** .  Data zřizování můžete vyhledat na základě jména uživatele nebo identifikátoru v systému zdrojového systému nebo v cílovém systému. Podrobnosti najdete v tématu [zřizování protokolů (Preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Typy událostí protokolovaných aktivit zahrnují:
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

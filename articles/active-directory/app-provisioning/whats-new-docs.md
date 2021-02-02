@@ -1,24 +1,36 @@
 ---
 title: Co je nového v Azure Active Directory zřizování aplikací
 description: Nová a aktualizovaná dokumentace k zřizování Azure Active Directory aplikací.
-ms.date: 12/15/2020
+ms.date: 02/01/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
 ms.author: kenwith
 author: kenwith
-manager: CelesteDG
-ms.openlocfilehash: 053d342c8fbdd506ac5d4ba0916a1ae9361e7189
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+manager: daveba
+ms.openlocfilehash: a127552c47b9e1ee86d2164926971c8628367dc0
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562204"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255997"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory zřizování aplikací: co je nového
 
 Vítá vás novinky v Azure Active Directory dokumentaci zřizování aplikací. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace. Informace o tom, co je nového ve službě zřizování, najdete v tématu [novinky v Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="january-2021"></a>Leden 2021
+
+### <a name="new-articles"></a>Nové články
+- [Jak se Azure Active Directory zřizování integruje s Workday](workday-integration-reference.md)
+
+### <a name="updated-articles"></a>Aktualizované články
+- [Kurz: vývoj ukázkového koncového bodu SCIM](use-scim-to-build-users-and-groups-endpoints.md)
+- [Kurz – přizpůsobení atributů zřizování uživatelů – mapování pro SaaS aplikace v Azure Active Directory](customize-application-attributes.md)
+- [Jak se Azure Active Directory zřizování integruje s SAP SuccessFactors](sap-successfactors-integration-reference.md)
+- [Stav zřizování aplikace v karanténě](application-provisioning-quarantine-status.md)
+
 
 ## <a name="december-2020"></a>Prosinec 2020
 

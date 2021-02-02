@@ -15,12 +15,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9be6efeba101dc922a1045042b64ac64bc6cd093
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e339e88bb62e81b1f873e8cf7e855f4dff8daade
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322530"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257402"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Najděte nápovědu a otevřete lístek podpory pro Azure Active Directory
 Microsoft poskytuje globální technickou, předprodejní, fakturační a předplacenou podporu pro Azure Active Directory (Azure AD). Podpora je k dispozici online a po telefonu Microsoft Azure placené a zkušební předplatné. V dalších jazycích je k dispozici podpora po telefonu a online podpora k fakturaci. 
@@ -41,22 +41,22 @@ Pokud nemůžete najít odpovědi pomocí prostředků pro samoobslužnou pomoc,
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-azure-portal"></a>Postup otevření lístku podpory pro Azure AD v Azure Portal
 
 > [!NOTE]
-> V případě problémů s fakturací nebo předplatným je nutné použít [Centrum pro správu Microsoft 365](https://admin.microsoft.com).
-> 
+> * V případě problémů s fakturací nebo předplatným je nutné použít [Centrum pro správu Microsoft 365](https://admin.microsoft.com).  
+> * Pokud používáte Azure AD B2C, otevřete lístek podpory tak, že nejprve přepnete na tenanta Azure AD, ke kterému je přidružené předplatné Azure. Obvykle se jedná o vašeho tenanta zaměstnance nebo výchozího tenanta vytvořeného pro vás, když jste si zaregistrovali předplatné Azure. Další informace najdete v tématu [jak předplatné Azure souvisí se službou Azure AD](active-directory-how-subscriptions-associated-directory.md).
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a otevřete **Azure Active Directory**.
    
 1. Přejděte dolů na **řešení potíží a podporu** a vyberte **nový požadavek na podporu**.
    
-1. V okně **základy** pro **typ problému**vyberte možnost **technický**.
+1. V okně **základy** pro **typ problému** vyberte možnost **technický**.
 
 1. Vyberte své **předplatné**.
 
-1. V případě **služby**vyberte **Azure Active Directory**.
+1. V případě **služby** vyberte **Azure Active Directory**.
 
 1. Vytvořte **Souhrn** pro požadavek. Souhrn musí mít 140 znaků.
   
-1. Vyberte **typ problému**a potom vyberte kategorii pro daný typ. V tuto chvíli jste také nabízeli informace o samoobslužné nápovědě pro kategorii problému.
+1. Vyberte **typ problému** a potom vyberte kategorii pro daný typ. V tuto chvíli jste také nabízeli informace o samoobslužné nápovědě pro kategorii problému.
   
 1. Přidejte zbývající informace o problému a klikněte na tlačítko **Další**. 
 
@@ -74,7 +74,7 @@ Pokud nemůžete najít odpovědi pomocí prostředků pro samoobslužnou pomoc,
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>Postup otevření lístku podpory pro Azure AD v centru pro správu Microsoft 365
 
 > [!NOTE]
-> Podpora pro Azure AD v [centru pro správu Microsoft 365](https://admin.microsoft.com) se nabízí jenom správcům. 
+> Podpora pro Azure AD v [centru pro správu Microsoft 365](https://admin.microsoft.com) se nabízí jenom správcům.
 
 1. Přihlaste se k [centru pro správu Microsoft 365](https://admin.microsoft.com) pomocí účtu, který má licenci Enterprise mobility + Security (EMS).
 
@@ -82,9 +82,9 @@ Pokud nemůžete najít odpovědi pomocí prostředků pro samoobslužnou pomoc,
 
 1. Na stránce **Přehled podpory** vyberte **Správa identit** nebo **Správa uživatelů a domén**:
 
-1. V části **funkce**vyberte funkci Azure AD, pro kterou chcete podporu.
+1. V části **funkce** vyberte funkci Azure AD, pro kterou chcete podporu.
 
-1. Jako **příznak**vyberte příslušný příznak, Shrňte problém a poskytněte relevantní podrobnosti a pak vyberte **Další**.
+1. Jako **příznak** vyberte příslušný příznak, Shrňte problém a poskytněte relevantní podrobnosti a pak vyberte **Další**.
 
 1. Vyberte jeden z nabízených prostředků samoobslužné podpory nebo vyberte **Ano, pokračovat** nebo **Ne, zrušit požadavek**.
 

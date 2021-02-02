@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 1c9c07d3770d2b71bee8f8e789022be6f831cc8f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4393607d6714bc4c1b10ac89d5ac69c173f8fef4
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092864"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257317"
 ---
 # <a name="speech-service-release-notes"></a>Poznámky k verzi služby Speech Service
 
@@ -26,7 +26,7 @@ ms.locfileid: "99092864"
 
 **Souhrn nejdůležitějších**
 - Menší nároky na paměť a na disku díky sadě SDK efektivněji.
-- Vylepšení vlastní kvality hlasu a snadného použití. 
+- Formáty výstupu s vyšší přesností dostupné pro vlastní neuronové hlas Private Preview.
 - Nástroj pro rozpoznávání záměrů teď může vracet více než nejvyšší záměr, což vám dává možnost udělat si samostatné posouzení záměru zákazníka.
 - Hlasového asistenta nebo robota se teď snáze nastavují a můžete ho okamžitě zastavit a zajistit větší kontrolu nad tím, jak na chyby reaguje.
 - Vylepšení výkonu zařízení pomocí nastavení komprese je volitelné.
@@ -43,7 +43,7 @@ ms.locfileid: "99092864"
   - Knihovny pro Android jsou v 3-5% menší.
 
 **Nové funkce**
-- **Vše**: kvalita vlastního hlasu zajišťuje lepší zlepšení. Byl přidán formát 48kHz pro vlastní hlasy TTS, což zlepšuje kvalitu zvuku pro vlastní hlasy, jejichž nativní výstupní vzorkovací sazby jsou vyšší než 24kHz.
+- **All**: nové výstupní formáty 48KHz dostupné pro privátní verzi Preview vlastního neuronového hlasu prostřednictvím rozhraní API pro syntézu řeči pro řeč: Audio48Khz192KBitRateMonoMp3, audio-48KHz-192kbitrate-mono-MP3, Audio48Khz96KBitRateMonoMp3, audio-48KHz-96kbitrate-mono-MP3, Raw48Khz16BitMonoPcm, RAW-48KHz-16bitový-mono-PCM, Riff48Khz16BitMonoPcm, RIFF-48KHz-16bitový-mono-PCM.
 - **Vše**: vlastní hlas je také snazší použít. Přidání podpory pro nastavení vlastního hlasu `EndpointId` prostřednictvím ([C++](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setendpointid), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.endpointid?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EndpointId), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setendpointid?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setEndpointId_String_), [JavaScript](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#endpointId), [cíl-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#endpointid), [Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#endpoint-id)). Před touto změnou je potřeba, aby vlastní uživatelé hlasu nastavili adresu URL koncového bodu prostřednictvím `FromEndpoint` metody. Zákazníci teď můžou používat `FromSubscription` metodu stejně jako veřejné hlasy a pak zadat ID nasazení podle nastavení `EndpointId` . Tím se zjednoduší nastavení vlastních hlasů. 
 - **C++/c #/Java/Objective-C/Python**: Získejte více než nejvyšší záměr z `IntentRecognizer` . Nyní podporuje konfiguraci výsledku JSON obsahujícího všechny záměry a nejen nejvyšší záměr vyhodnocení prostřednictvím `LanguageUnderstandingModel FromEndpoint` metody pomocí `verbose=true` parametru identifikátoru URI. Tím se vyřeší [problém #880 GitHubu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/880). [Tady](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition/#add-a-languageunderstandingmodel-and-intents)najdete aktualizovanou dokumentaci.
 - **C++/c #/Java**: nastavte hlasového asistenta nebo robota přestane naslouchat immediatedly. `DialogServiceConnector` ([C++](https://docs.microsoft.com/cpp/cognitive-services/speech/dialog-dialogserviceconnector), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-dotnet), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-java-stable)) teď má `StopListeningAsync()` metodu doprovázet `ListenOnceAsync()` . Tím se okamžitě zastaví záznam zvuku a řádným čekáním na výsledek, takže bude ideální pro použití se scénáři stisknutým tlačítkem zastavit.

@@ -3,7 +3,7 @@ title: Ladit konektory proxy aplikací – Azure Active Directory | Microsoft Do
 description: Ladění problémů s konektory proxy aplikací služby Azure Active Directory (Azure AD).
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: cbbb5328f2d7e814be9b5b94ec522bbb01df39e5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c656bfe7f9cc8923859a99f31210cd554aa66a41
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658243"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256962"
 ---
 # <a name="debug-application-proxy-connector-issues"></a>Ladění problémů s konektorem Proxy aplikací 
 
