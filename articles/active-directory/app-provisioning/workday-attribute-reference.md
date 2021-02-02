@@ -3,7 +3,7 @@ title: Referenční informace k atributu Workday
 description: Zjistěte, které atributy můžete načíst z Workday pomocí dotazů XPATH.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/25/2020
 ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 5892100140c6022763453a4141d87e6a7ba4ed75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ff9b3d4cc3bee28c8e5e95d8854f64eaa546b0c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266560"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255470"
 ---
 # <a name="workday-attribute-reference"></a>Referenční informace k atributu Workday
 
@@ -117,7 +117,7 @@ Následující tabulka zachycuje seznam atributů Workday a odpovídající výr
 
 Pokud v adrese URL připojení používáte rozhraní WWS API v 30.0 nebo vyšší, jak je znázorněno níže:
 
-:::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-version-info.png" alt-text="Pracovní den – žádné informace o verzi":::
+:::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-version-info.png" alt-text="Informace o verzi Workday":::
 
 ... než zapnete úlohu zřizování, aktualizujte prosím **výrazy rozhraní API XPath** v části **mapování atributů – > upřesnit možnosti – > upravit seznam atributů pro Workday** , aby používal hodnoty uvedené v tabulce. 
 

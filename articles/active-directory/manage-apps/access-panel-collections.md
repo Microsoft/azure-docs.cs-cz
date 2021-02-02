@@ -4,7 +4,7 @@ description: Pomocí kolekcí moje aplikace můžete přizpůsobit stránky Moje
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -14,12 +14,12 @@ ms.date: 02/10/2020
 ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 967ac34ddb736f58f66639181cdf10e4aaa8ffab
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 7743a1af54b01f848c4ac6f0cb1d4526d66f8132
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656781"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254978"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>Vytváření kolekcí na portálu Moje aplikace
 
@@ -69,7 +69,7 @@ Chcete-li vytvořit kolekci, musíte mít licenci Azure AD Premium P1 nebo P2.
 
    ![Přidat uživatele a skupiny](media/acces-panel-collections/add-users-and-groups.png)
 
-11. Vyberte **zkontrolovat + vytvořit**. Zobrazí se vlastnosti nové kolekce.
+11. Vyberte **Zkontrolovat a vytvořit**. Zobrazí se vlastnosti nové kolekce.
 
 
 ## <a name="view-audit-logs"></a>Zobrazení protokolů auditu
@@ -83,7 +83,7 @@ Protokoly auditu zaznamenávají operace kolekcí moje aplikace, včetně akcí 
 * Samoobslužné přidávání aplikací (koncový uživatel)
 * Samoobslužné odstraňování aplikací (koncový uživatel)
 
-Protokoly auditu můžete získat v [Azure Portal](https://portal.azure.com) tak, že **Azure Active Directory**  >  v části aktivita vyberete Azure Active Directory protokoly auditu **podnikových aplikací**  >  **Audit logs** . V případě **služby** vyberte **Moje aplikace**.
+Protokoly auditu můžete získat v [Azure Portal](https://portal.azure.com) tak, že   >  v části aktivita vyberete Azure Active Directory protokoly auditu **podnikových aplikací**  >   . V případě **služby** vyberte **Moje aplikace**.
 
 ## <a name="get-support-for-my-account-pages"></a>Získat podporu pro stránky Můj účet
 
@@ -93,7 +93,7 @@ V případě, že potřebujete odeslat žádost o podporu k problému na stránc
 
 * Pokud máte problémy se stránkou **můj účet služby Azure AD** , otevřete žádost o podporu v rámci Azure Portal. Přejít na **Azure Portal**  >  **Azure Active Directory**  >  **novou žádost o podporu**.
 
-* Pokud máte problémy se stránkou **Office můj účet** , otevřete žádost o podporu v centru pro správu Microsoft 365. Přejít na **Microsoft 365 podpora centra pro správu**  >  **Support** 
+* Pokud máte problémy se stránkou **Office můj účet** , otevřete žádost o podporu v centru pro správu Microsoft 365. Přejít na **Microsoft 365 podpora centra pro správu**  >   
 
 ## <a name="next-steps"></a>Další kroky
 [Prostředí koncových uživatelů pro aplikace v Azure Active Directory](end-user-experiences.md)

@@ -1,7 +1,7 @@
 ---
 title: Co je nového v Azure Active Directory obchodních na zákazníky (B2C)
 description: Nová a aktualizovaná dokumentace pro Azure Active Directory B2C (Business-to-zákazníka).
-ms.date: 12/15/2020
+ms.date: 02/01/2021
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,53 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 8805caad990cd472b3199bda27130d8d63be3071
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 5e58f54d991cd190aba6eeb851e6cf2aec78e695
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559723"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255165"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C: co je nového
 
 Vítá vás novinky v Azure Active Directory B2C dokumentaci. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace. Další informace o tom, co je nového ve službě B2C, najdete v tématu [novinky v Azure Active Directory](../active-directory/fundamentals/whats-new.md).
+
+## <a name="january-2021"></a>Leden 2021
+
+### <a name="new-articles"></a>Nové články
+
+- [Přizpůsobení uživatelského rozhraní v Azure Active Directory B2C](customize-ui.md)
+- [Omezení a omezení služby Azure Active Directory B2C](service-limits.md)
+- [Nastavení registrace a přihlášení pomocí účtu Azure AD B2C z jiného tenanta Azure AD B2C](identity-provider-azure-ad-b2c.md)
+- [Nastavení zprostředkovatele identity místního účtu](identity-provider-local.md)
+- [Nastavení toku přihlášení v Azure Active Directory B2C](add-sign-in-policy.md)
+
+### <a name="updated-articles"></a>Aktualizované články
+
+- [Sledovat chování uživatele v Azure Active Directory B2C pomocí Application Insights](analytics-with-application-insights.md)
+- [TechnicalProfiles](technicalprofiles.md)
+- [Přizpůsobení uživatelského rozhraní šablonami HTML v Azure Active Directory B2C](customize-ui-with-html.md)
+- [Správa Azure AD B2C s využitím Microsoft Graph](microsoft-graph-operations.md)
+- [Přidání AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad v Azure Active Directory B2C](identity-provider-adfs.md)
+- [Nastavte přihlášení pomocí poskytovatele služby Salesforce SAML pomocí protokolu SAML v Azure Active Directory B2C](identity-provider-salesforce-saml.md)
+- [Kurz: registrace webové aplikace v Azure Active Directory B2C](tutorial-register-applications.md)
+- [Nastavte si registraci a přihlaste se pomocí účtu Amazon pomocí Azure Active Directory B2C](identity-provider-amazon.md)
+- [Nastavení registrace a přihlášení pomocí účtu Azure AD B2C z jiného tenanta Azure AD B2C](identity-provider-azure-ad-b2c.md)
+- [Nastavení přihlášení pro více tenantů Azure Active Directory používání vlastních zásad v Azure Active Directory B2C](identity-provider-azure-ad-multi-tenant.md)
+- [Nastavení přihlášení pro konkrétní organizaci Azure Active Directory v Azure Active Directory B2C](identity-provider-azure-ad-single-tenant.md)
+- [Nastavení registrace a přihlášení pomocí účtu Facebook pomocí Azure Active Directory B2C](identity-provider-facebook.md)
+- [Nastavení registrace a přihlášení pomocí účtu GitHubu pomocí Azure Active Directory B2C](identity-provider-github.md)
+- [Nastavte si registraci a přihlaste se pomocí účtu Google pomocí Azure Active Directory B2C](identity-provider-google.md)
+- [Nastavte si registraci a přihlaste se pomocí účtu ID.me pomocí Azure Active Directory B2C](identity-provider-id-me.md)
+- [Nastavení registrace a přihlášení pomocí účtu LinkedIn pomocí Azure Active Directory B2C](identity-provider-linkedin.md)
+- [Nastavení registrace a přihlášení pomocí účet Microsoft s využitím Azure Active Directory B2C](identity-provider-microsoft-account.md)
+- [Nastavte si registraci a přihlaste se pomocí účtu QQ pomocí Azure Active Directory B2C](identity-provider-qq.md)
+- [Nastavte si registraci a přihlaste se pomocí účtu Salesforce pomocí Azure Active Directory B2C](identity-provider-salesforce.md)
+- [Nastavte si registraci a přihlaste se pomocí účtu Twitteru pomocí Azure Active Directory B2C](identity-provider-twitter.md)
+- [Nastavte si registraci a přihlaste se pomocí účtu WeChat pomocí Azure Active Directory B2C](identity-provider-wechat.md)
+- [Nastavte si registraci a přihlaste se pomocí účtu Weibo pomocí Azure Active Directory B2C](identity-provider-weibo.md)
+- [Přehled Azure AD B2C vlastní zásady](custom-policy-trust-frameworks.md)
+
 
 ## <a name="december-2020"></a>Prosinec 2020
 
