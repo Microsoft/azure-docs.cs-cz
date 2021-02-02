@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c69e919c76c0aecb6cf8a3ee5e9b7e5d286c168a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: fccd1bd6f808fad11946c6f0b0dff1f453b61d66
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046039"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430624"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Vytvoření a zřízení zařízení IoT Edge s čipem TPM v systému Linux
 
@@ -31,7 +31,7 @@ Tento článek ukazuje, jak otestovat Automatické zřizování na zařízení s
 >
 > Pokud používáte fyzické zařízení, můžete přeskočit k [informacím o načtení zřizování z fyzického zařízení](#retrieve-provisioning-information-from-a-physical-device) v tomto článku.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * Vývojový počítač s Windows, který má [povolenou technologii Hyper-V](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v). Tento článek používá Windows 10, na kterém běží virtuální počítač s Ubuntu serverem.
 * Aktivní IoT Hub.
@@ -91,7 +91,7 @@ Po vytvoření virtuálního počítače otevřete jeho nastavení, abyste povol
 
 ### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>Spustit virtuální počítač a shromažďovat data TPM
 
-Na virtuálním počítači Sestavte nástroj, který můžete použít k načtení **ID registrace** a **ověřovacího klíče**zařízení.
+Na virtuálním počítači Sestavte nástroj, který můžete použít k načtení **ID registrace** a **ověřovacího klíče** zařízení.
 
 1. Ve Správci technologie Hyper-V spusťte virtuální počítač a připojte se k němu.
 
@@ -112,7 +112,7 @@ Na virtuálním počítači Sestavte nástroj, který můžete použít k načte
    sudo ./tpm_device_provision
    ```
 
-1. V okně výstup se zobrazí **ID registrace** a **ověřovací klíč**zařízení. Zkopírujte tyto hodnoty pro pozdější použití při vytváření jednotlivých zápisů pro vaše zařízení.
+1. V okně výstup se zobrazí **ID registrace** a **ověřovací klíč** zařízení. Zkopírujte tyto hodnoty pro pozdější použití při vytváření jednotlivých zápisů pro vaše zařízení.
 
 Jakmile budete mít registrační kód a ověřovací klíč, pokračujte k části [nastavení IoT Hub Device Provisioning Service](#set-up-the-iot-hub-device-provisioning-service)
 
@@ -144,18 +144,18 @@ Po spuštění služby Device Provisioning zkopírujte na stránce Přehled hodn
 
 Načtěte informace o zřizování z virtuálního počítače a pomocí tohoto prostředí vytvořte jednotlivé registrace ve službě Device Provisioning.
 
-Když vytvoříte registraci v DPS, budete mít možnost deklarovat **počáteční stav**dopředných zařízení. V případě zařízení můžete nastavit značky pro seskupení zařízení podle libovolné metriky, kterou potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo typ zařízení. Tyto značky slouží k vytváření [automatických nasazení](how-to-deploy-at-scale.md).
+Když vytvoříte registraci v DPS, budete mít možnost deklarovat **počáteční stav** dopředných zařízení. V případě zařízení můžete nastavit značky pro seskupení zařízení podle libovolné metriky, kterou potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo typ zařízení. Tyto značky slouží k vytváření [automatických nasazení](how-to-deploy-at-scale.md).
 
 > [!TIP]
 > V rozhraní příkazového řádku Azure můžete vytvořit [registraci](/cli/azure/ext/azure-iot/iot/dps/enrollment) a pomocí příznaku s **povoleným okrajem** určit, že se jedná o zařízení IoT Edge.
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do vaší instance IoT Hub Device Provisioning Service.
 
-2. V části **Nastavení**vyberte **spravovat registrace**.
+2. V části **Nastavení** vyberte **spravovat registrace**.
 
 3. Vyberte **přidat jednotlivou registraci** a potom proveďte následující kroky, abyste nakonfigurovali registraci:  
 
-   1. V případě **mechanismu**vyberte **TPM**.
+   1. V případě **mechanismu** vyberte **TPM**.
 
    2. Zadejte **ověřovací klíč** a **ID registrace** , které jste zkopírovali z virtuálního počítače.
 
@@ -205,7 +205,11 @@ Po nainstalování modulu runtime do zařízení nakonfigurujte zařízení s in
      attestation:
        method: "tpm"
        registration_id: "<REGISTRATION_ID>"
+   # always_reprovision_on_startup: true
+   # dynamic_reprovisioning: false
    ```
+
+   Volitelně můžete pomocí `always_reprovision_on_startup` řádků nebo `dynamic_reprovisioning` nakonfigurovat chování při opětovném zřizování zařízení. Pokud je zařízení nastavené tak, aby se při spuštění znovu zřídilo, vždy se nejprve pokusí zřídit pomocí DPS a pak se vrátit k záložnímu zálohování, pokud se nezdaří. Pokud je zařízení nastavené tak, aby se dynamicky znovu zřídilo, IoT Edge se restartuje a znovu zřídí, pokud se zjistí událost opětovného zřízení. Další informace najdete v tématu [IoT Hub konceptů opětovného zřízení zařízení](../iot-dps/concepts-device-reprovision.md).
 
 1. Aktualizujte hodnoty `scope_id` a `registration_id` pomocí informací DPS a Device.
 

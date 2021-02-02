@@ -9,12 +9,12 @@ ms.date: 01/28/2021
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3b768a4fba7474c863ff8a9bce538f0a0b67e191
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 0b3959ba3ec80f3113ea0358db550c86f1f276b1
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072619"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430305"
 ---
 # <a name="use-coarse-relocalization-without-an-anchor-session"></a>Použít hrubou reprostředí bez relace kotvy
 
@@ -146,3 +146,10 @@ sensorProvider.Stop();
 ```
 
 ---
+
+### <a name="next-steps"></a>Další kroky
+
+Tento článek ukázal, jak pomocí hrubých rozhraní API pro celé prostředí získat odhad pozice vašeho zařízení. Pokud se chcete dozvědět víc o hrubé reprostředí, přejděte k další příručce.
+
+> [!div class="nextstepaction"]
+> [Přibližná relokalizace](../concepts/coarse-reloc.md)

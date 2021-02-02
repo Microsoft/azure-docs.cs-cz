@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: efee1e1cda7767620931ef81825708d94a1925c3
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: fb3a77291d8b24d5774094533f8c214f1527d771
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063175"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430441"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mapování polí a transformace pomocí indexerů Azure Kognitivní hledání
 
@@ -42,7 +42,7 @@ Mapování polí se skládá ze tří částí:
 Mapování polí jsou přidána do `fieldMappings` pole definice indexeru.
 
 > [!NOTE]
-> Pokud nejsou přidána žádná mapování polí, předpokládají indexery pole zdroje dat, které by měly být mapovány na indexová pole se stejným názvem. Přidáním mapování polí dojde k odebrání těchto výchozích mapování polí pro zdrojové a cílové pole. Některé indexery, jako [je indexer úložiště objektů BLOB](search-howto-indexing-azure-blob-storage.md), přidají mapování výchozích polí pro pole klíč indexu.
+> Pokud nejsou přidána žádná mapování polí, předpokládají indexery pole zdroje dat, které by měly být mapovány na indexová pole se stejným názvem. Přidáním mapování polí dojde k odebrání těchto výchozích mapování polí pro zdrojové a cílové pole. Některé indexery, jako je [indexer úložiště objektů BLOB](search-howto-indexing-azure-blob-storage.md), přidají mapování výchozích polí pro pole klíč indexu.
 
 ## <a name="map-fields-using-rest"></a>Mapování polí pomocí REST
 
@@ -51,7 +51,6 @@ Mapování polí můžete přidat při vytváření nového indexeru pomocí po�
 Tady je příklad, jak namapovat zdrojové pole na cílové pole s jiným názvem:
 
 ```JSON
-
 PUT https://[service name].search.windows.net/indexers/myindexer?api-version=[api-version]
 Content-Type: application/json
 api-key: [admin key]

@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: ed86cc76984388618c177590b3f6358421f09f65
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f684aff58f441fb0642779e54de39dff941e818c
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878489"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430658"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Řešení potíží s sdílenými složkami Azure NFS
 
@@ -67,7 +67,6 @@ NFS je k dispozici jenom pro účty úložiště s následující konfigurací:
 
 - Úroveň Premium
 - Druh účtu – úložiště
-- Redundance – LRS
 - Oblasti – [seznam podporovaných oblastí](./storage-files-how-to-create-nfs-shares.md?tabs=azure-portal#regional-availability)
 
 #### <a name="solution"></a>Řešení
@@ -150,6 +149,17 @@ Protokol NFS komunikuje s jeho serverem přes port 2049. Zajistěte, aby byl ten
 #### <a name="solution"></a>Řešení
 
 Spuštěním následujícího příkazu ověřte, že je ve vašem klientovi otevřený port 2049: `telnet <storageaccountnamehere>.file.core.windows.net 2049` . Pokud port není otevřený, otevřete ho.
+
+## <a name="ls-list-files-shows-incorrectinconsistent-results"></a>LS (soubory seznamu) zobrazuje nesprávné nebo nekonzistentní výsledky.
+
+### <a name="cause-inconsistency-between-cached-values-and-server-file-metadata-values-when-the-file-handle-is-open"></a>Příčina: nekonzistence mezi hodnotami v mezipaměti a hodnotami metadat souborů serveru, když je popisovač souboru otevřený
+V některých případech příkaz Zobrazit soubory zobrazuje nenulovou velikost podle očekávání a v příkazu s dalšími soubory seznamu se místo toho zobrazuje velikost 0 nebo velmi staré časové razítko. Jedná se o známý problém kvůli nekonzistentnímu ukládání hodnot metadat souborů v době, kdy je soubor otevřený. K vyřešení tohoto problému můžete použít jedno z následujících řešení:
+
+#### <a name="workaround-1-for-fetching-file-size-use-wc--c-instead-of-ls--l"></a>Alternativní řešení 1: Pokud chcete načíst velikost souboru, použijte místo ls-l WC-c.
+Použití WC-c vždy načte nejnovější hodnotu ze serveru a nebude mít žádnou nekonzistenci.
+
+#### <a name="workaround-2-use-noac-mount-flag"></a>Alternativní řešení 2: použití příznaku "noac" Mount
+Znovu připojte systém souborů pomocí příznaku "noac" pomocí příkazu Mount. Tato akce vždy načte všechny hodnoty metadat ze serveru. V případě použití tohoto alternativního řešení může docházet k menší režii výkonu pro všechny operace s metadaty.
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Obraťte se na podporu.
 Pokud stále potřebujete pomoc, obraťte se na [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , abyste mohli rychle vyřešit problém.

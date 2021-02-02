@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 01/22/2021
-ms.openlocfilehash: a4d1543c5c4ce7a44825a879b838e7829b8c84fd
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.date: 02/01/2021
+ms.openlocfilehash: 5db0214e9b985df5c5aedb1dbe9878e484af2a55
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760628"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430793"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Přehled: Azure Logic Apps Preview
 
@@ -168,6 +168,8 @@ Další informace o cenových modelech, které se vztahují na tento nový typ p
 ## <a name="changed-limited-unavailable-or-unsupported-capabilities"></a>Změněné, omezené, nedostupné nebo nepodporované možnosti
 
 V Azure Logic Apps ve verzi Preview se tyto možnosti změnily nebo jsou aktuálně omezené, nedostupné nebo nepodporované:
+
+* **Podpora OS**: návrhář v Visual Studio Code v současnosti nefunguje v operačním systému Linux, ale stále můžete nasazovat Logic Apps, které používají modul runtime Preview Logic Apps na virtuální počítače se systémem Linux. Prozatím můžete vytvářet aplikace logiky v Visual Studio Code ve Windows nebo macOS a pak je nasadit do virtuálního počítače se systémem Linux.
 
 * **Aktivační události a akce**: některé vestavěné triggery nejsou k dispozici, například posuvné okno a dávku. Pokud chcete spustit pracovní postup, použijte [integrované opakování, požadavek, http, Webhook http, Event Hubs nebo aktivační událost Service Bus](../connectors/apis-list.md). Integrované triggery a akce se spouštějí nativně v modulu runtime služby Azure Logic Apps Preview, zatímco spravované konektory se nasazují v Azure. V návrháři se předdefinované triggery a akce zobrazí pod **integrovanou** kartou, zatímco triggery a akce spravovaného konektoru se zobrazí na kartě **Azure** .
 

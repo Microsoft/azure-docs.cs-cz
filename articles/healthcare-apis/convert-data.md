@@ -8,14 +8,17 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 01/19/2021
 ms.author: ranku
-ms.openlocfilehash: c794af26fdfe2d3706d8d8d266d0756eff391b50
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 7518f5e2984029c087eec1e6697f3237410bda4b
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747678"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430272"
 ---
-# <a name="how-to-convert-data-to-fhir"></a>Jak převést data na FHIR
+# <a name="how-to-convert-data-to-fhir-preview"></a>Jak převést data na FHIR (Preview)
+
+> [!IMPORTANT]
+> Tato funkce je ve verzi Public Preview, poskytuje se bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Vlastní koncový bod $convert dat v rozhraní API Azure pro FHIR je určený pro převod dat z různých formátů na FHIR. Používá modul šablon Liquid a šablony z projektu [převaděče FHIR](https://github.com/microsoft/FHIR-Converter) jako výchozí šablony. Tyto šablony převodu můžete přizpůsobit podle potřeby. V současné době podporuje HL7v2 převod na FHIR.
 
@@ -27,7 +30,7 @@ $convert – data přebírají v textu požadavku prostředek [parametru](http:/
 
 **Prostředek parametru:**
 
-| Název parametru      | Popis | Přípustné hodnoty |
+| Název parametru      | Description | Přípustné hodnoty |
 | ----------- | ----------- | ----------- |
 | inputData      | Data, která mají být převedena. | Platná hodnota datového typu řetězce JSON|
 | inputDataType   | Datový typ vstupu | ```HL7v2``` |

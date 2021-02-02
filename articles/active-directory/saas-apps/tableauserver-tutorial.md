@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/27/2020
+ms.date: 01/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 3c9d79ef4fd73adbe3ba376f1723693ea8e85197
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 7ee22121fd023f3942eed64bd605bf87b961d893
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736503"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429821"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Kurz: Azure Active Directory integrace jednotného přihlašování se serverem Tableau
 
@@ -40,7 +40,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Tableau Server podporuje jednotné přihlašování iniciované v **SP**
 
-## <a name="adding-tableau-server-from-the-gallery"></a>Přidání serveru Tableau z Galerie
+## <a name="add-tableau-server-from-the-gallery"></a>Přidání serveru Tableau z Galerie
 
 Pokud chcete nakonfigurovat integraci serveru Tableau do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat Tableau Server z galerie.
 
@@ -83,7 +83,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://azure.<domain name>.link/wg/saml/SSO/index.html`
 
     > [!NOTE]
-    > Předchozí hodnoty nejsou reálné hodnoty. Aktualizujte hodnoty skutečnou adresou URL a identifikátorem na stránce konfigurace serveru Tableau, která je vysvětlena dále v tomto kurzu.
+    > Předchozí hodnoty nejsou reálné hodnoty. Aktualizujte hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a adresy URL odpovědi na stránce konfigurace serveru Tableau, která je vysvětlena dále v tomto kurzu.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
@@ -123,21 +123,21 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. Na kartě **Konfigurace** vyberte **identita uživatele & přístup** a pak vyberte kartu metoda **ověřování** .
 
-    ![Snímek obrazovky ukazuje ověřování vybrané z identity uživatele & přístupu.](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
+    ![Snímek obrazovky ukazuje ověřování vybrané z identity uživatele & přístupu.](./media/tableauserver-tutorial/auth.png)
 
 3. Na stránce **Konfigurace** proveďte následující kroky:
 
-    ![Snímek obrazovky se zobrazí stránka konfigurace, kde můžete zadat hodnoty, které jsou popsány.](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
+    ![Snímek obrazovky se zobrazí stránka konfigurace, kde můžete zadat hodnoty, které jsou popsány.](./media/tableauserver-tutorial/config.png)
 
     a. V případě **metody ověřování** vyberte SAML.
 
     b. Zaškrtněte políčko **Povolit ověřování SAML pro server**.
 
-    c. Tableau návratová adresa URL serveru: adresa URL, na kterou budou uživatelé serveru Tableau přístup, například `http://tableau_server` . Použití `http://localhost` se nedoporučuje. Použití adresy URL s koncovým lomítkem (například) není `http://tableau_server/` podporováno. Zkopírujte **návratovou adresu URL serveru Tableau** a vložte ji do TEXTOVÉHO pole **URL pro přihlášení** v **základní části Konfigurace SAML** v Azure Portal
+    c. Tableau návratová adresa URL serveru: adresa URL, na kterou budou uživatelé serveru Tableau přístup, například `http://tableau_server` . Použití `http://localhost` se nedoporučuje. Použití adresy URL s koncovým lomítkem (například) není `http://tableau_server/` podporováno. Zkopírujte **návratovou adresu URL serveru Tableau** a vložte ji do textového pole **Adresa URL pro přihlášení** v **základní části Konfigurace SAML** v Azure Portal.
 
-    d. ID entity SAML – ID entity jednoznačně identifikuje vaši instalaci serveru Tableau na IdP. Sem můžete zadat adresu URL serveru Tableau, pokud se vám to líbí, ale nemusí se jednat o adresu URL vašeho serveru Tableau. Zkopírujte **ID entity SAML** a vložte je do textového pole **identifikátor** v **základní části Konfigurace SAML** v Azure Portal
+    d. ID entity SAML – ID entity jednoznačně identifikuje vaši instalaci serveru Tableau na IdP. Sem můžete zadat adresu URL serveru Tableau, pokud se vám to líbí, ale nemusí se jednat o adresu URL vašeho serveru Tableau. Zkopírujte **ID entity SAML** a vložte je do textového pole **identifikátor** v **základní části Konfigurace SAML** v Azure Portal.
 
-    e. Klikněte na **Stáhnout soubor METADAT XML** a otevřete ho v aplikaci textový editor. Vyhledejte adresu URL služby pro příjemce kontrolního výrazu s http post a index 0 a zkopírujte adresu URL. Nyní jej vložte do pole Komu **Adresa URL odpovědi** v **základní části konfigurace SAML** v Azure Portal
+    e. Klikněte na **Stáhnout soubor METADAT XML** a otevřete ho v aplikaci textový editor. Vyhledejte adresu URL služby pro příjemce kontrolního výrazu s http post a index 0 a zkopírujte adresu URL. Nyní ji vložte do pole Komu **Adresa URL odpovědi** v **základní části konfigurace SAML** v Azure Portal.
 
     f. Vyhledejte soubor federačních metadat stažený z Azure Portal a pak ho nahrajte do **souboru metadat SAML IDP**.
 
@@ -165,9 +165,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Přejít na adresu URL pro přihlášení k serveru Tableau přímo a zahájit tok přihlášení.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Po kliknutí na dlaždici Server Tableau v okně moje aplikace se přesměruje na přihlašovací adresu URL serveru Tableau. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
-
+* Můžete použít aplikaci Microsoft moje aplikace. Po kliknutí na dlaždici Server Tableau v okně moje aplikace se přesměruje na přihlašovací adresu URL serveru Tableau. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování serveru Tableau můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace se rozšíří z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
+Po nakonfigurování Tableau serveru můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

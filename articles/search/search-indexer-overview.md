@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: ceeaad64734099f8669590d39f1629b9f4173e19
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: df393f54e7dfa83c8fc0feab3dbf42a156b296b7
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097142"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430458"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexery ve službě Azure Cognitive Search
 
@@ -47,6 +47,8 @@ Indexer můžete použít jako jediný způsob příjmu dat nebo jako součást 
 + [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 + [Spravovaná instance SQL](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 + [SQL Server na Azure Virtual Machines](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+
+Připojení indexeru ke vzdáleným zdrojům dat se dají provádět pomocí standardních připojení k Internetu (veřejných) nebo šifrovaných privátních připojení, když používáte Azure Virtual Networks pro klientské aplikace. Můžete také nastavit připojení pro ověřování pomocí identity důvěryhodné služby. Další informace o zabezpečených připojeních najdete v tématu [udělení přístupu přes soukromé koncové body](search-indexer-securing-resources.md#granting-access-via-private-endpoints) a [připojení ke zdroji dat pomocí spravované identity](search-howto-managed-identities-data-sources.md).
 
 ## <a name="stages-of-indexing"></a>Fáze indexování
 

@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: andalmia
-ms.openlocfilehash: 70d03b4aeeaecee522552b381ce1309485719dc6
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
-ms.translationtype: HT
+ms.openlocfilehash: 5267b333e66a0ae7b2ad05399406fecc32af74b0
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686679"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430122"
 ---
 # <a name="azure-subscription-states"></a>Stavy předplatných Azure
 
@@ -28,4 +28,4 @@ Tento článek popisuje různé stavy, které může mít předplatné Azure. Ty
 | **Disabled** (Zakázáno) | Vaše předplatné Azure je zakázané a už ho nejde používat k vytváření nebo správě prostředků Azure. V tomto stavu se zruší přidělení vašich virtuálních počítačů, uvolní se dočasné IP adresy, úložiště přejde do režimu jen pro čtení a ostatní služby jsou zablokované. K zablokování předplatného může dojít z následujících důvodů: Možná vypršela platnost vašeho kreditu. Možná jste dosáhli svého limitu útraty. Máte fakturu po splatnosti. Překročili jste limit své platební karty. Případně mohlo dojít k explicitnímu zablokování nebo zrušení předplatného. V závislosti na typu předplatného může předplatné zůstat zablokované 1 až 90 dnů. Po uplynutí této doby se trvale odstraní. Další informace najdete v tématu [Opětovná aktivace zablokovaného předplatného Azure](subscription-disabled.md).<br><br>Operace pro vytváření nebo aktualizaci prostředků (PUT, PATCH) jsou zakázané. Operace, které provádějí akci (POST), jsou také zakázané. Můžete načítat nebo odstraňovat prostředky (GET, DELETE). Vaše prostředky jsou stále k dispozici. |
 | **Platnost vypršela** | Platnost vašeho předplatného Azure vypršela, protože se zrušilo. Předplatné, jehož platnost vypršela, můžete znovu aktivovat. Další informace najdete v tématu [Opětovná aktivace zablokovaného předplatného Azure](subscription-disabled.md).<br><br>Operace pro vytváření nebo aktualizaci prostředků (PUT, PATCH) jsou zakázané. Operace, které provádějí akci (POST), jsou také zakázané. Můžete načítat nebo odstraňovat prostředky (GET, DELETE).|
 | **Po splatnosti** | Vaše předplatné Azure má neuhrazenou platbu. Vaše předplatné je stále aktivní, ale neuhrazení poplatků může vést k jeho zablokování. Další informace najdete v tématu [Řešení zůstatku po splatnosti u předplatného Azure](resolve-past-due-balance.md).<br><br>Jsou dostupné všechny operace. |
-| **S upozorněním** | Vaše předplatné Azure je ve stavu s upozorněním a dá se používat normálně. Pokud se ale důvod upozornění rychle nevyřeší, brzy se zablokuje. Předplatné může být ve stavu s upozorněním, pokud je po splatnosti, bylo zrušeno uživatelem, vypršela jeho platnost atd.<br><br>Jsou dostupné všechny operace. |
+| **S upozorněním** | Vaše předplatné Azure je ve stavu upozornění a bude brzy zakázáno, pokud není důvod upozornění vyřešen. Předplatné může být ve stavu s upozorněním, pokud je po splatnosti, bylo zrušeno uživatelem, vypršela jeho platnost atd.<br><br>Můžete načíst nebo odstranit prostředky (získat nebo odstranit), ale nebudete moct vytvářet žádné prostředky (PUT/PATCH nebo POST). |

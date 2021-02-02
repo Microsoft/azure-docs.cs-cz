@@ -11,15 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/12/2020
-ms.openlocfilehash: 930c7e7881a00cd0cb1f4abc6b219c0fbdeebac5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/02/2020
+ms.openlocfilehash: ca8fad59e581ef3f5a3ebf585356564d539f0bbd
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533406"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430726"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopírování dat z SAP Business Warehouse přes Open hub pomocí Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z SAP Business Warehouse (ČERNOBÍLého) prostřednictvím otevřeného centra. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
@@ -38,8 +39,8 @@ Data z SAP Business Warehouse můžete kopírovat prostřednictvím otevřeného
 
 Konkrétně konektor Open hub pro SAP Business Warehouse podporuje:
 
-- SAP Business Warehouse **verze 7,01 nebo vyšší (v nedávných balíčcích balíčku podpory SAP vydané po roce 2015)**. Tento konektor nepodporuje SAP BW4/HANA.
-- Kopírování dat prostřednictvím místní tabulky Open hub, která je v této části může být DSO, InfoCube, s více dodanými, zdroji dat atd.
+- SAP Business Warehouse **verze 7,01 nebo vyšší (v nedávných balíčcích balíčku podpory SAP vydané po roce 2015)**. Tento konektor nepodporuje SAP BW/4HANA.
+- Kopírování dat prostřednictvím místní tabulky v otevřeném centru, která se může nacházet na DSO, InfoCube, s více dodávajících, zdroji dat atd.
 - Kopírování dat pomocí základního ověřování.
 - Připojování k aplikačnímu serveru SAP nebo serveru zpráv SAP.
 - Načítání dat prostřednictvím RFC.
@@ -69,7 +70,7 @@ Extrakce z SAP InfoProviders to Azure Data Factory (ADF) se skládá ze dvou kro
 
 V prvním kroku se spustí DTP. Každé spuštění vytvoří nové ID požadavku SAP. ID žádosti je uloženo v otevřené tabulce centra a pak ji použije konektor ADF k identifikaci rozdílu. Dva kroky se spouštějí asynchronně: DTP se aktivuje pomocí SAP a v rámci ADF se aktivuje kopie dat ADF. 
 
-Ve výchozím nastavení ADF nečte poslední rozdíl z otevřené tabulky hub (možnost "vyloučit poslední žádost" je true). V tomto případě nejsou data v ADF 100% v aktuálním stavu s daty v otevřené tabulce hub (poslední Delta chybí). V rámci tohoto postupu zajišťuje tento postup, aby se žádné řádky neztratily kvůli asynchronní extrakci. Funguje správně i v případě, že ADF čte otevřenou tabulku hub, zatímco DTP stále zapisuje do stejné tabulky. 
+Ve výchozím nastavení ADF nečte poslední rozdíl z otevřené tabulky hub (možnost "vyloučit poslední žádost" je true). V případě, že data v ADF neobsahují 100%, data v otevřené tabulce hub (poslední Delta chybí). V rámci tohoto postupu zajišťuje tento postup, aby se žádné řádky neztratily kvůli asynchronní extrakci. Funguje správně i v případě, že ADF čte otevřenou tabulku hub, zatímco DTP stále zapisuje do stejné tabulky. 
 
 V pracovním úložišti dat (jako je Azure Blob ve výše uvedeném diagramu) obvykle ukládáte maximální zkopírované ID žádosti v posledním spuštění pomocí ADF. Proto se stejný požadavek během následného spuštění v rámci ADF nepřečte podruhé. Mezitím si všimněte, že data se v otevřené tabulce hub automaticky neodstraní.
 
@@ -81,7 +82,7 @@ Pokud chcete použít tento konektor pro SAP Business Warehouse, musíte:
 
 - Nastavte Integration Runtime v místním prostředí s verzí 3,13 nebo vyšší. Podrobnosti najdete v článku [Integration runtime](create-self-hosted-integration-runtime.md) v místním prostředí.
 
-- Stáhněte si **64-bit [SAP .net Connector 3,0](https://support.sap.com/en/product/connectors/msnet.html) ** z webu SAP a nainstalujte ho na místně hostovaný počítač IR. Při instalaci nástroje v okně volitelné kroky instalace se ujistěte, že jste vybrali možnost **instalovat sestavení do GAC** , jak je znázorněno na následujícím obrázku. 
+- Stáhněte si **64-bit [SAP .net Connector 3,0](https://support.sap.com/en/product/connectors/msnet.html)** z webu SAP a nainstalujte ho na místně hostovaný počítač IR. Při instalaci nástroje v okně volitelné kroky instalace se ujistěte, že jste vybrali možnost **instalovat sestavení do GAC** , jak je znázorněno na následujícím obrázku. 
 
     ![Nainstalovat konektor SAP .NET](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
 
@@ -90,7 +91,7 @@ Pokud chcete použít tento konektor pro SAP Business Warehouse, musíte:
     - Autorizace pro RFC a SAP BW. 
     - Oprávnění pro aktivitu Execute objektu autorizace S_SDSAUTH.
 
-- Vytvoří cílový typ pro SAP otevřený rozbočovač jako **databázovou tabulku** se zaškrtnutou možností "technický klíč".  Doporučuje se také nechat odstranit data z tabulky jako nezaškrtnutá, i když se nevyžaduje. Využijte DTP (přímo spouštěný nebo integrovaný do stávajícího řetězce procesu) a využívejte data ze zdrojového objektu (například datové krychle), který jste zvolili v otevřené cílové tabulce centra.
+- Vytvoří cílový typ pro SAP otevřený rozbočovač jako **databázovou tabulku** se zaškrtnutou možností "technický klíč".  Doporučuje se také nechat odstranit data z tabulky jako nezaškrtnutá, i když se nevyžaduje. Použijte DTP (přímo spouštěný nebo integrovaný do stávajícího řetězce procesu) k vytvoření pozemku dat ze zdrojového objektu (například datové krychle), který jste zvolili v otevřené cílové tabulce centra.
 
 ## <a name="getting-started"></a>Začínáme
 

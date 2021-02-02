@@ -3,14 +3,14 @@ title: Kurz Kubernetes v Azure – Vytvoření registru kontejneru
 description: V tomto kurzu Azure Kubernetes Service (AKS) vytvoříte instanci služby Azure Container Registry a nahrajete image kontejneru ukázkové aplikace.
 services: container-service
 ms.topic: tutorial
-ms.date: 01/12/2021
+ms.date: 01/31/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d1dce1c59c4bf40eaead89e4a8a088e9a8ea4f76
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 9f6ec14cea20192aef7d3010201e6613c5d03a9e
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250617"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430960"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Kurz: Nasazení a použití služby Azure Container Registry
 
@@ -61,7 +61,7 @@ Příkaz po dokončení vrátí zprávu o *úspěšném přihlášení* .
 Seznam aktuálních místních imagí můžete zobrazit pomocí příkazu [docker images][docker-images]:
 
 ```console
-$ docker images
+docker images
 ```
 Výstup výše uvedeného příkazu zobrazuje seznam aktuálních místních imagí:
 
@@ -88,8 +88,8 @@ docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azur
 
 Pokud chcete ověřit, že se značky použily, znovu spusťte příkaz [docker images][docker-images].
 
-```azurecli
-$ docker images
+```console
+docker images
 ```
 
 Image je označená pomocí adresy instance ACR a čísla verze.

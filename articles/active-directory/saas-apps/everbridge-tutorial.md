@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/18/2019
+ms.date: 01/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 732362ef7099e93697320d8e47180c1207e8cb32
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 37a59d6da6fdc844b0b3647c029d716429b50ef6
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995892"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430830"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Kurz: Azure Active Directory integrace s EverBridge
 
@@ -26,8 +26,6 @@ Když integrujete EverBridge s Azure AD, můžete:
 * Řízení ve službě Azure AD, která má přístup k EverBridge.
 * Umožněte uživatelům, aby se automaticky přihlásili k EverBridge pomocí svých účtů Azure AD. Toto řízení přístupu se nazývá jednotné přihlašování (SSO).
 * Spravujte své účty v jednom centrálním umístění pomocí Azure Portal.
-Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
-Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,60 +40,39 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * EverBridge podporuje jednotné přihlašování iniciované IDP.
 
-## <a name="add-everbridge-from-the-azure-marketplace"></a>Přidat EverBridge z Azure Marketplace
+## <a name="add-everbridge-from-the-gallery"></a>Přidání EverBridge z Galerie
 
-Pokud chcete nakonfigurovat integraci EverBridge do služby Azure AD, přidejte EverBridge z Azure Marketplace do seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci EverBridge do služby Azure AD, musíte přidat EverBridge z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-Pokud chcete přidat EverBridge z Azure Marketplace, postupujte podle těchto kroků.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **EverBridge** .
+1. Na panelu výsledků vyberte **EverBridge** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V [Azure Portal](https://portal.azure.com)v levém navigačním podokně vyberte **Azure Active Directory**.
+## <a name="configure-and-test-azure-ad-sso-for-everbridge"></a>Konfigurace a testování jednotného přihlašování Azure AD pro EverBridge
 
-    ![Azure Active Directory – tlačítko](common/select-azuread.png)
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí EverBridge pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v EverBridge.
 
-2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
+K nakonfigurování a testování jednotného přihlašování Azure AD pomocí EverBridge postupujte takto:
 
-    ![Okno Podnikové aplikace](common/enterprise-applications.png)
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte EVERBRIDGE SSO](#configure-everbridge-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte EverBridge Test User](#create-everbridge-test-user)** -to, abyste měli protějšek B. Simon v EverBridge, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-3. Chcete-li přidat novou aplikaci, vyberte v horní části dialogového okna možnost **Nová aplikace** .
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-4. Do vyhledávacího pole zadejte **EverBridge**. Z panelu výsledek vyberte **EverBridge** a vyberte **Přidat**.
+1. V Azure Portal na stránce integrace aplikací **EverBridge** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
-     ![EverBridge v seznamu výsledků](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
-
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí EverBridge na základě testovacího uživatele Britta Simon.
-Pokud chcete jednotné přihlašování pracovat, vytvořte vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v EverBridge.
-
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí EverBridge, dokončete následující stavební bloky:
-
-- [Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on) , aby mohli vaši uživatelé používat tuto funkci.
-- [Nakonfigurujte EverBridge jako jednotné přihlašování na portále správce EverBridge](#configure-everbridge-as-everbridge-manager-portal-single-sign-on) a nakonfigurujte nastavení jednotného přihlašování na straně aplikace.
-- [Nakonfigurujte EverBridge jako jednotné přihlašování pro členské portál EverBridge](#configure-everbridge-as-everbridge-member-portal-single-sign-on) a nakonfigurujte nastavení jednotného přihlašování na straně aplikace.
-- [Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user) pro testování jednotného přihlašování Azure AD pomocí Britta Simon.
-- [Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user) , aby mohl Britta Simon používat jednotné přihlašování Azure AD.
-- [Vytvořte testovacího uživatele EverBridge](#create-an-everbridge-test-user) , který bude mít protějšek Britta Simon v EverBridge, který je propojený s zastoupením uživatele v Azure AD.
-- [Otestujte jednotné přihlašování](#test-single-sign-on) a ověřte, jestli konfigurace funguje.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
-
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
-
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí EverBridge, postupujte podle těchto kroků.
-
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **EverBridge** vyberte **jednotné přihlašování**.
-
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
-
-2. V dialogovém okně **Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS** , abyste mohli povolit jednotné přihlašování.
-
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
-
-3. Na stránce **nastavit jeden Sign-On s SAML** vyberte **Upravit** a otevřete tak základní dialogové okno **Konfigurace SAML** .
-
-    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
     >[!NOTE]
     >Nakonfigurujte aplikaci buď jako portál správce, *nebo* jako členský portál na Azure Portal i na portálu EverBridge.
@@ -104,9 +81,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí EverBrid
 
     ![Informace o jednotném přihlašování v doméně EverBridge a adresách URL](common/idp-intiated.png)
 
-    a. Do pole **identifikátor** zadejte adresu URL, která následuje za vzorem. `https://sso.everbridge.net/<API_Name>`
+    a. Do pole **identifikátor** zadejte adresu URL, která následuje za vzorem.
+    `https://sso.everbridge.net/<API_Name>`
 
-    b. Do pole **Adresa URL odpovědi** zadejte adresu URL, která následuje za vzorem. `https://manager.everbridge.net/saml/SSO/<API_Name>/alias/defaultAlias`
+    b. Do pole **Adresa URL odpovědi** zadejte adresu URL, která následuje za vzorem.
+    `https://manager.everbridge.net/saml/SSO/<API_Name>/alias/defaultAlias`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a hodnotami adresy URL odpovědi. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory EverBridge](mailto:support@everbridge.com). Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -138,11 +117,31 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí EverBrid
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    - Přihlašovací adresa URL
-    - Identifikátor Azure AD
-    - Odhlašovací adresa URL
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-### <a name="configure-everbridge-as-everbridge-manager-portal-single-sign-on"></a>Konfigurace EverBridge jako jednotného přihlašování portálu EverBridge Manager
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
+
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
+
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k EverBridge.
+
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **EverBridge**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+
+### <a name="configure-everbridge-sso"></a>Konfigurace jednotného přihlašování EverBridge
 
 Pokud chcete nakonfigurovat jednotné přihlašování na **EverBridge** jako aplikaci **portálu EverBridge Manager** , postupujte podle těchto kroků.
  
@@ -150,7 +149,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování na **EverBridge** jako ap
 
 1. V nabídce v horní části vyberte kartu **Nastavení** . V části **zabezpečení** vyberte **jednotné přihlašování**.
    
-     ![Konfigurace jednotného přihlašování](./media/everbridge-tutorial/tutorial_everbridge_002.png)
+     ![Konfigurace jednotného přihlašování](./media/everbridge-tutorial/sso.png)
    
      a. Do pole **název** zadejte název poskytovatele identifikátoru. Příkladem je název vaší společnosti.
    
@@ -166,72 +165,22 @@ Pokud chcete nakonfigurovat jednotné přihlašování na **EverBridge** jako ap
 
      například Vyberte **Uložit**.
 
-### <a name="configure-everbridge-as-everbridge-member-portal-single-sign-on"></a>Konfigurace EverBridge jako jednotného přihlašování pro členské portály EverBridge
+### <a name="configure-everbridge-as-everbridge-member-portal-sso"></a>Konfigurace EverBridge jako jednotného přihlašování EverBridge pro členské portály
 
 Pokud chcete nakonfigurovat jednotné přihlašování na **EverBridge** jako **portál pro členské EverBridge**, pošlete stažený **kód XML federačních metadat** do [týmu podpory EverBridge](mailto:support@everbridge.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
-
-Chcete-li vytvořit testovacího uživatele Britta Simon v Azure Portal, postupujte podle následujících kroků.
-
-1. V Azure Portal v levém podokně vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
-
-    ![Odkazy uživatelů a všech uživatelů](common/users.png)
-
-2. V horní části obrazovky vyberte **Nový uživatel** .
-
-    ![Tlačítko pro nového uživatele](common/new-user.png)
-
-3. V dialogovém okně **uživatel** postupujte podle těchto kroků.
-
-    ![Uživatel – dialogové okno](common/user-properties.png)
-
-    a. Do pole **název** zadejte **BrittaSimon**.
-  
-    b. Do pole **Uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Příklad: BrittaSimon@contoso.com.
-
-    c. Zaškrtněte políčko **Zobrazit heslo** . Zapište hodnotu, která se zobrazí v poli **heslo** .
-
-    d. Vyberte **Vytvořit**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
-
-Povolit Britta Simon pro použití jednotného přihlašování pomocí Azure udělením přístupu k EverBridge.
-
-1. V Azure Portal vyberte možnost **podnikové aplikace**  >  **všechny aplikace**  > **EverBridge**.
-
-    ![Okno Podnikové aplikace](common/enterprise-applications.png)
-
-2. V seznamu aplikace vyberte **EverBridge**.
-
-    ![Odkaz EverBridge v seznamu aplikací](common/all-applications.png)
-
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
-
-    ![Odkaz na uživatele a skupiny](common/users-groups-blade.png)
-
-4. Vyberte možnost **Přidat uživatele**. V dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
-
-    ![Dialogové okno Přidat přiřazení](common/add-assign-user.png)
-
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** . Zvolte **Vybrat** v dolní části obrazovky.
-
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele. Zvolte **Vybrat** v dolní části obrazovky.
-
-7. V dialogovém okně **Přidat přiřazení** vyberte **přiřadit**.
-
-### <a name="create-an-everbridge-test-user"></a>Vytvořit testovacího uživatele v EverBridge
+### <a name="create-everbridge-test-user"></a>Vytvořit testovacího uživatele EverBridge
 
 V této části vytvoříte testovacího uživatele Britta Simon v EverBridge. Pokud chcete přidat uživatele na platformě EverBridge, pracujte s [týmem podpory EverBridge](mailto:support@everbridge.com). Než začnete používat jednotné přihlašování, musí se uživatelé vytvořit a aktivovat v EverBridge. 
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-sso"></a>Test SSO
 
-Otestujte konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností.
 
-Když na přístupovém panelu vyberete dlaždici EverBridge, měli byste se automaticky přihlásit k účtu EverBridge, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+* Klikněte na testovat tuto aplikaci v Azure Portal a měli byste se automaticky přihlášeni k EverBridge, pro které jste nastavili jednotné přihlašování.
 
-## <a name="additional-resources"></a>Další zdroje informací
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici EverBridge v okně moje aplikace, měli byste se automaticky přihlásit k EverBridge, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
-- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
+## <a name="next-steps"></a>Další kroky
+
+Po nakonfigurování EverBridge můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

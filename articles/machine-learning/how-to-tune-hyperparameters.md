@@ -2,24 +2,23 @@
 title: Ladění modelu pomocí parametrů
 titleSuffix: Azure Machine Learning
 description: Automatizujte optimalizaci parametrů pro obsáhlý Learning a modely strojového učení pomocí Azure Machine Learning.
-ms.author: swatig
-author: swatig007
+ms.author: anumamah
+author: Aniththa
 ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 03/30/2020
+ms.date: 01/29/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: e9f9f73a8e0dbc851efdba07bf1e103f58ae9e75
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: a4be95561c097191803f2faa271c5d6bba875869
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133842"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430335"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Ladění modelu pomocí Azure Machine Learning
-
 
 Automatizujte efektivní ladění parametrů pomocí Azure Machine Learning [balíčku Hyperdrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py). Naučte se, jak provést kroky potřebné k optimalizaci parametrů s [Azure Machine Learning SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py):
 
@@ -382,6 +381,30 @@ hd_config = HyperDriveConfig(run_config=src,
 
 ## <a name="visualize-hyperparameter-tuning-runs"></a>Vizualizace spuštění laděním parametrů
 
+Pomocí widgetu poznámkového bloku můžete vizualizovat vaše běhy ladění vašich parametrů v Azure Machine Learning Studiu.
+
+### <a name="studio"></a>Studio
+
+V [Azure Machine Learning Studiu](https://ml.azure.com)můžete vizualizovat všechna spuštění ladění vašich parametrů. Další informace o tom, jak zobrazit experiment na portálu, najdete v tématu [zobrazení záznamů spuštění v nástroji Studio](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal).
+
+- **Graf metrik**: Tato vizualizace sleduje metriky zaznamenané pro každou podřízenou položku Hyperdrive, která se spouští po dobu trvání ladění parametrů. Každý řádek představuje podřízený běh a každý bod měří primární hodnotu metriky v této iteraci modulu runtime.  
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-metrics.png" alt-text="Graf metrik ladění parametrů":::
+
+- **Graf paralelních souřadnic**: Tato vizualizace zobrazuje korelaci mezi primárním výkonem metriky a hodnotami jednotlivých parametrů. Graf je interaktivní přes pohyb osy (klikněte na popisek osy a přetáhněte ho) a zvýrazněním hodnot napříč jednou osou (kliknutím a přetažením svisle podél jedné osy zvýrazněte rozsah požadovaných hodnot).
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png" alt-text="Graf paralelních souřadnic ladění parametrů":::
+
+- **dvojrozměrný bodový graf**: Tato vizualizace znázorňuje korelaci mezi dvěma jednotlivými parametry a spolu s jejich přidruženou primární hodnotou metriky.
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-2-dimensional-scatter.png" alt-text="Hyparameter vyladění 2 – prostorový bodový graf":::
+
+- **prostorový bodový graf**: Tato vizualizace je stejná jako 2D, ale umožňuje tři dimenze základních parametrů korelace s primární hodnotou metriky. Můžete také kliknutím a přetažením změnit orientaci grafu tak, aby se zobrazily různé korelace v 3D prostoru.
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-3-dimensional-scatter.png" alt-text="Hyparameter optimalizace trojrozměrného bodového grafu":::
+
+### <a name="notebook-widget"></a>Widget Poznámkový blok
+
 Pomocí [widgetu poznámkového bloku](/python/api/azureml-widgets/azureml.widgets.rundetails?preserve-view=true&view=azure-ml-py) Vizualizujte průběh vašich školicích běhů. Následující fragment kódu vizualizuje všechna vaše ladění vašich parametrů na jednom místě v Jupyter poznámkovém bloku:
 
 ```Python
@@ -391,17 +414,9 @@ RunDetails(hyperdrive_run).show()
 
 Tento kód zobrazí tabulku s podrobnostmi o spuštěních školení pro jednotlivé konfigurace parametrů.
 
-![Tabulka ladění předaných parametrů](./media/how-to-tune-hyperparameters/hyperparameter-tuning-table.png)
+:::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-table.png" alt-text="Tabulka ladění předaných parametrů":::
 
-Můžete také vizualizovat výkon každého spuštění jako školicí průběh. 
-
-![vykreslení pro vyladění parametrů](./media/how-to-tune-hyperparameters/hyperparameter-tuning-plot.png)
-
-Můžete vizuálně identifikovat korelaci mezi výkonem a hodnotami jednotlivých parametrů, a to pomocí paralelního vykreslení souřadnic. 
-
-[![paralelní souřadnice ladění parametrů](./media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
-
-Na webovém portálu Azure můžete také vizualizovat všechny spuštěné ladění vašich parametrů. Další informace o tom, jak zobrazit experiment na portálu, najdete v tématu [jak sledovat experimenty](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal).
+Můžete také vizualizovat výkon každého spuštění jako školicí průběh.
 
 ## <a name="find-the-best-model"></a>Najít nejlepší model
 

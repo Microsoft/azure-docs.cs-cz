@@ -11,15 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/12/2020
-ms.openlocfilehash: 3874d3b2b0938b6fd0f763b42ef15f8250b42f1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/02/2021
+ms.openlocfilehash: 9578b87e16f418a7923cd71aa0638fa4e9279cfd
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87529615"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430878"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Kopírování dat z SAP cloudu pro zákazníky (C4C) pomocí Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z/do SAP cloudu pro zákazníka (C4C). Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
@@ -54,10 +55,7 @@ Pro propojenou službu SAP Cloud pro zákazníka jsou podporovány následujíc�
 | url | Adresa URL služby SAP C4C OData | Yes |
 | username | Zadejte uživatelské jméno pro připojení k SAP C4C. | Yes |
 | heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku |
-
->[!IMPORTANT]
->Pokud chcete zkopírovat data do služby SAP Cloud pro zákazníka, explicitně [vytvořte Azure IR](create-azure-integration-runtime.md#create-azure-ir) s umístěním poblíž vašeho cloudu SAP pro zákazníka a přidružte se k propojené službě jako v následujícím příkladu:
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Pokud není zadaný, použije se výchozí Azure Integration Runtime. | No |
 
 **Příklad:**
 
@@ -167,8 +165,8 @@ Pokud chcete zkopírovat data do SAP cloudu pro zákazníka, nastavte typ jímky
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na: **SapCloudForCustomerSink** .  | Yes |
-| writeBehavior | Chování operace zápisu. Může být "vložení", "Update". | Ne. Výchozí hodnota "Insert". |
-| writeBatchSize | Velikost dávky operace zápisu. Velikost dávky, která má dosáhnout nejlepšího výkonu, se může lišit pro různé tabulky nebo servery. | Ne. Výchozí hodnota 10. |
+| writeBehavior | Chování operace zápisu. Může být "vložení", "Update". | No. Výchozí hodnota "Insert". |
+| writeBatchSize | Velikost dávky operace zápisu. Velikost dávky, která má dosáhnout nejlepšího výkonu, se může lišit pro různé tabulky nebo servery. | No. Výchozí hodnota 10. |
 
 **Příklad:**
 
@@ -215,14 +213,14 @@ Při kopírování dat z cloudu SAP pro zákazníka se z cloudu SAP pro typy zá
 
 | Datový typ OData C4C SAP | Typ dat interim Data Factory |
 |:--- |:--- |
-| EDM. Binary | Byte [] |
+| EDM. Binary | Byte [] |
 | Edm.Boolean | Logická hodnota |
-| EDM. Byte | Byte [] |
+| EDM. Byte | Byte [] |
 | EDM. DateTime | DateTime |
 | EDM. Decimal | Decimal |
 | Edm.Double | dvojité |
 | EDM. Single | Jednoduché |
-| EDM. GUID | Identifikátor GUID |
+| EDM. GUID | Identifikátor GUID |
 | EDM. Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |

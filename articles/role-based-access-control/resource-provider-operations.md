@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: a521623447f4415e35a06c5c60e3723a69b4aa15
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 72735dad6a52fffd6e6e94ad4fb0fb7a9558b4c4
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98700597"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430075"
 ---
 # <a name="azure-resource-provider-operations"></a>Operace poskytovatele prostředků Azure
 
@@ -82,6 +82,7 @@ Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v ná
 | [Microsoft. PowerBIDedicated](#microsoftpowerbidedicated) |
 | [Microsoft. dosah](#microsoftpurview) |
 | [Microsoft. StreamAnalytics](#microsoftstreamanalytics) |
+| [Microsoft. synapse](#microsoftsynapse) |
 | **Blockchain** |
 | [Microsoft. blockchain](#microsoftblockchain) |
 | **AI a strojové učení** |
@@ -94,7 +95,7 @@ Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v ná
 | [Microsoft. IoTCentral](#microsoftiotcentral) |
 | [Microsoft. NotificationHubs](#microsoftnotificationhubs) |
 | [Microsoft. TimeSeriesInsights](#microsofttimeseriesinsights) |
-| **Smíšená realita** |
+| **Mixed realita** |
 | [Microsoft. IoTSpaces](#microsoftiotspaces) |
 | [Microsoft. MixedReality](#microsoftmixedreality) |
 | **Integrace** |
@@ -272,7 +273,7 @@ Služba Azure: jádro
 > | Microsoft. support/supportTickets/Communications/Read | Uvádí jednu nebo všechny komunikace lístků podpory. |
 > | Microsoft. support/supportTickets/Communications/Write | Přidá novou komunikaci k lístku podpory. |
 
-## <a name="compute"></a>Výpočetní prostředky
+## <a name="compute"></a>Compute
 
 ### <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
@@ -4765,6 +4766,169 @@ Služba Azure: [Stream Analytics](../stream-analytics/index.yml)
 > | Microsoft. StreamAnalytics/streamingjobs/transformes/DELETE | Odstranění transformace úlohy Stream Analytics |
 > | Microsoft. StreamAnalytics/streamingjobs/transformes/Read | Transformace úlohy Stream Analytics čtení |
 > | Microsoft. StreamAnalytics/streamingjobs/transformes/Write | Transformace úlohy Stream Analytics zápisu |
+
+### <a name="microsoftsynapse"></a>Microsoft. synapse
+
+Služba Azure: [Analýza synapse](../synapse-analytics/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. synapse/checkNameAvailability/Action | Kontroluje dostupnost názvu pracovního prostoru. |
+> | Microsoft. synapse/Register/Action | Zaregistruje poskytovatele prostředků Azure synapse Analytics (pracovní prostory) a povolí vytváření pracovních prostorů. |
+> | Microsoft. synapse/zrušit registraci/akce | Zruší registraci poskytovatele prostředků Azure synapse Analytics (pracovní prostory) a zakáže vytváření pracovních prostorů. |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/číst | Získejte libovolné Integration Runtime. |
+> | Microsoft. synapse/pracovní prostory/integrationruntimes/Write | Vytvoří nebo aktualizuje všechny prostředí Integration runtime. |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/DELETE | Odstranit všechny Integration Runtime |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/GetStatus/Action | Získat stav Integration Runtime |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/createExpressSHIRInstallLink/Action | Vytvoří odkaz pro instalaci Integration Runtime. |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/Start/Action | Spustit libovolné Integration Runtime |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/stop/Action | Zastavit všechny Integration Runtime |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/getConnectionInfo/Action | Získat informace o připojení libovolného Integration Runtime |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/regenerateAuthKey/Action | Znovu vygenerovat ověřovací klíč pro všechny Integration Runtime |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/listAuthKeys/Action | Vypsat klíče ověřování libovolného Integration Runtime |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/removeNode/Action | Odebrat všechny Integration Runtime uzlu |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/monitoringData/Action | Získat data monitorování Integration Runtime |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/syncCredentials/Action | Synchronizovat přihlašovací údaje u libovolného Integration Runtime |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/upgrade/akce | Upgradovat všechny Integration Runtime |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/removeLinks/Action | Odebrat všechny odkazy na Integration Runtime |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/enableInteractiveQuery/Action | Povolit interaktivní dotaz na jakémkoli Integration Runtime |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/disableInteractiveQuery/Action | Zakázat interaktivní dotaz u libovolného Integration Runtime |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/refreshObjectMetadata/Action | Aktualizace metadat objektu u jakékoli disběhové prostředí |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/getObjectMetadata/Action | Získání metadat objektu na jakémkoli prostředí pro mezisebou |
+> | Microsoft. synapse/pracovní prostory/managedIdentitySqlControlSettings/Write | Aktualizace nastavení řízení SQL spravované identity v pracovním prostoru |
+> | Microsoft. synapse/pracovní prostory/managedIdentitySqlControlSettings/číst | Získat nastavení řízení SQL spravované identity |
+> | Microsoft. synapse/pracovní prostory/scopePools/Write | Vytvořte nebo aktualizujte všechny fondy oborů. |
+> | Microsoft. synapse/pracovní prostory/scopePools/číst | Přečtěte si všechny fondy oborů. |
+> | Microsoft. synapse/pracovní prostory/scopePools/DELETE | Odstraňte všechny fondy oborů. |
+> | Microsoft. synapse/Operations/Read | Přečtěte si dostupné operace od poskytovatele prostředků Azure synapse Analytics. |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/Nodes/Read | Získá libovolný uzel Integration Runtime. |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/Nodes/DELETE | Odstraňte libovolný uzel Integration Runtime. |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/Nodes/Write | Opravte všechny Integration Runtime uzlu. |
+> | Microsoft. synapse/pracovní prostory/integrationRuntimes/Nodes/ipAddress/Action | Získat IP adresu Integration Runtime |
+> | Microsoft. synapse/pracovní prostory/firewallRules/Write | Vytvoří nebo aktualizuje všechna pravidla brány firewall protokolu IP. |
+> | Microsoft. synapse/pracovní prostory/firewallRules/číst | Číst pravidlo brány firewall protokolu IP |
+> | Microsoft. synapse/pracovní prostory/firewallRules/DELETE | Odstraňte všechna pravidla brány firewall protokolu IP. |
+> | Microsoft. synapse/pracovní prostory/replaceAllIpFirewallRules/Action | Nahrazuje všechna pravidla brány firewall protokolu IP pro pracovní prostor. |
+> | Microsoft. synapse/pracovní prostory/zápis | Vytvořte nebo aktualizujte všechny pracovní prostory. |
+> | Microsoft. synapse/pracovní prostory/číst | Přečtěte si všechny pracovní prostory. |
+> | Microsoft. synapse/pracovní prostory/odstranit | Odstraňte všechny pracovní prostory. |
+> | Microsoft. synapse/pracovní prostory/checkDefaultStorageAccountStatus/Action | Kontroluje výchozí stav účtu úložiště. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/Write | Vytvořte nebo aktualizujte všechny fondy SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/číst | Přečtěte si všechny fondy SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/DELETE | Odstraňte všechny fondy SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/pozastavit/Action | Pozastaví všechny fondy SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/Resume/Action | Obnoví všechny fondy SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/restorePoints/Action | Vytvoří bod obnovení fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/Move/Action | Přejmenujte všechny fondy SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/dataWarehouseQueries/číst | Přečtěte si všechny dotazy fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/geoBackupPolicies/číst | Přečtěte si všechny zásady geografického zálohování ve fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/dataWarehouseUserActivities/číst | Přečtěte si všechny uživatelské aktivity fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/restorePoints/číst | Načte všechny body obnovení fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/restorePoints/DELETE | Odstraní bod obnovení. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/dataWarehouseQueries/dataWarehouseQuerySteps/Read | Přečtěte si všechny kroky dotazu na fond SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/maintenanceWindows/číst | Přečtěte si všechna okna údržby fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/maintenanceWindows/Write | Přečtěte si všechna okna údržby fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/maintenanceWindowOptions/číst | Přečtěte si možnosti okna údržby fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/replicationLinks/číst | Přečtěte si všechny odkazy na replikaci fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/transparentDataEncryption/číst | Přečtěte si transparentní šifrování dat konfiguraci všech fondů SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/transparentDataEncryption/Write | Vytvoří nebo aktualizuje libovolný fond SQL Analytics transparentní šifrování dat konfiguraci. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/transparentDataEncryption/operationResults/Read | Načtěte si výsledky operace konfigurace transparentní šifrování dat všech fondů SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/auditingSettings/číst | Přečtěte si všechna nastavení auditování fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/auditingSettings/Write | Vytvoří nebo aktualizuje všechna nastavení auditování fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/operace/číst | Přečtěte si všechny operace fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/použití/číst | Přečtěte si všechna využití fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/currentSensitivityLabels/číst | Přečtěte si aktuální popisky citlivosti všech fondů SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/currentSensitivityLabels/Write | Aktualizovat aktuální popisky citlivosti v dávce |
+> | Microsoft. synapse/pracovní prostory/sqlPools/recommendedSensitivityLabels/číst | Přečtěte si doporučené popisky citlivosti pro všechny fondy SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/recommendedSensitivityLabels/Write | Doporučené popisky citlivosti aktualizace Batch |
+> | Microsoft. synapse/pracovní prostory/sqlPools/schémata/číst | Přečtěte si všechna schémata fondů SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/schémata/tabulky/čtení | Přečtěte si všechny tabulky schématu fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/schémata/tabulky/sloupce/číst | Načte všechny sloupce tabulky schématu fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/connectionPolicies/číst | Přečtěte si všechny zásady připojení ke fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/vulnerabilityAssessments/číst | Přečtěte si posouzení ohrožení zabezpečení ve fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/vulnerabilityAssessments/Write | Vytvoří nebo aktualizuje posouzení ohrožení zabezpečení pro fond SQL. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/vulnerabilityAssessments/DELETE | Odstraňte všechny posouzení ohrožení zabezpečení ve fondu SQL Analytics. |
+> | Microsoft. synapse/Workspaces/sqlPools/vulnerabilityAssessments/prověřování/čtení | Přečtěte si všechny záznamy kontroly posouzení ohrožení zabezpečení ve fondu SQL Analytics. |
+> | Microsoft. synapse/Workspaces/sqlPools/vulnerabilityAssessments/prověřování/initiateScan/Action | Zahajte všechny záznamy kontroly posouzení ohrožení zabezpečení ve fondu SQL Analytics. |
+> | Microsoft. synapse/Workspaces/sqlPools/vulnerabilityAssessments/prověřování/export/akce | Exportujte všechny záznamy kontroly posouzení ohrožení zabezpečení ve fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/securityAlertPolicies/číst | Přečtěte si všechny zásady detekce hrozeb ve fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/securityAlertPolicies/Write | Vytvoří nebo aktualizuje všechny zásady detekce hrozeb fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/schémata/tabulky/sloupce/sensitivityLabels/čtení | Získá popisek citlivosti daného sloupce. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/schémata/tabulky/sloupce/sensitivityLabels/povolit/akce | Povolte všechny popisky citlivosti fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/schémata/tabulky/sloupce/sensitivityLabels/zakázat/akce | Zakažte všechny popisky citlivosti fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/schémata/tabulky/sloupce/sensitivityLabels/Write | Vytvoří nebo aktualizuje všechny popisky citlivosti fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/schémata/tabulky/sloupce/sensitivityLabels/odstranit | Odstraňte všechny popisky citlivosti fondu SQL Analytics. |
+> | Microsoft. synapse/Workspaces/sqlPools/vulnerabilityAssessments/Rules/směrný plán/číst | Načte směrný plán pravidla posouzení ohrožení zabezpečení fondu SQL Analytics. |
+> | Microsoft. synapse/Workspaces/sqlPools/vulnerabilityAssessments/Rules/směrný plán/Write | Vytvoří nebo aktualizuje jakékoli standardní hodnoty pravidla posouzení ohrožení zabezpečení fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/vulnerabilityAssessments/Rules/směrný plán/odstranit | Odstraňte všechny směrné plány pravidla posouzení ohrožení zabezpečení ve fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/operationStatuses/číst | Přečtěte si stav asynchronní operace. |
+> | Microsoft. synapse/pracovní prostory/operationResults/číst | Přečtěte si výsledek asynchronní operace. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/operationResults/číst | Přečtěte si výsledek asynchronní operace. |
+> | Microsoft. synapse/pracovní prostory/bigDataPools/Write | Vytvořte nebo aktualizujte všechny fondy Spark. |
+> | Microsoft. synapse/pracovní prostory/bigDataPools/číst | Přečtěte si všechny fondy Spark. |
+> | Microsoft. synapse/pracovní prostory/bigDataPools/DELETE | Odstraňte všechny fondy Spark. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/metadataSync/Write | Vytvoří nebo aktualizuje konfiguraci synchronizace metadat fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/metadataSync/číst | Přečíst konfiguraci synchronizace metadat fondu SQL Analytics |
+> | Microsoft. synapse/pracovní prostory/recoverableSqlpools/číst | Získá obnovitelné fondy SQL Analytics, které jsou prostředky reprezentující geografické zálohy fondů SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/správci/zápis | Nastavení správce služby Active Directory v pracovním prostoru |
+> | Microsoft. synapse/pracovní prostory/správci/číst | Získat správce služby Active Directory pracovního prostoru |
+> | Microsoft. synapse/pracovní prostory/správci/odstranit | Odstranit správce služby Active Directory pracovního prostoru |
+> | Microsoft. synapse/pracovní prostory/privateEndpointConnections/Write | Vytvořit nebo aktualizovat připojení privátního koncového bodu |
+> | Microsoft. synapse/pracovní prostory/privateEndpointConnections/číst | Číst jakékoli připojení privátního koncového bodu |
+> | Microsoft. synapse/pracovní prostory/privateEndpointConnections/DELETE | Odstranit připojení privátního koncového bodu |
+> | Microsoft. synapse/pracovní prostory/privateLinkResources/číst | Získat seznam prostředků privátního propojení |
+> | Microsoft. synapse/pracovní prostory/sqlPools/rozšíření/číst | Získat rozšíření pro fond SQL Analytics |
+> | Microsoft. synapse/Workspaces/sqlPools/Extensions/Write | Změna rozšíření pro daný fond SQL Analytics |
+> | Microsoft. synapse/privateLinkHubs/Write | Vytvořte libovolný PrivateLinkHubs. |
+> | Microsoft. synapse/privateLinkHubs/Read | Přečtěte si všechny PrivateLinkHubs. |
+> | Microsoft. synapse/privateLinkHubs/DELETE | Odstraňte PrivateLinkHubs. |
+> | Microsoft. synapse/Locations/operationStatuses/Read | Přečtěte si stav asynchronní operace. |
+> | Microsoft. synapse/Locations/operationResults/Read | Přečtěte si výsledek asynchronní operace. |
+> | Microsoft. synapse/privateLinkHubs/privateLinkResources/Read | Získat seznam prostředků privátního propojení |
+> | Microsoft. synapse/privateLinkHubs/privateEndpointConnections/Write | Vytvořit nebo aktualizovat připojení privátního koncového bodu pro PrivateLinkHub |
+> | Microsoft. synapse/privateLinkHubs/privateEndpointConnections/Read | Číst jakékoliv připojení privátního koncového bodu pro PrivateLinkHub |
+> | Microsoft. synapse/privateLinkHubs/privateEndpointConnections/DELETE | Odstranit připojení privátního koncového bodu pro PrivateLinkHub |
+> | Microsoft. synapse/pracovní prostory/sqlPools/operationStatuses/číst | Přečtěte si výsledek asynchronní operace. |
+> | Microsoft. synapse/pracovní prostory/klíče/zápis | Vytvořit nebo aktualizovat klíče pracovního prostoru |
+> | Microsoft. synapse/pracovní prostory/klíče/číst | Přečtěte si libovolné definice klíče pracovního prostoru. |
+> | Microsoft. synapse/pracovní prostory/klíče/odstranit | Odstraňte libovolný klíč pracovního prostoru. |
+> | Microsoft. synapse/pracovní prostory/knihovny/čtení | Čtení artefaktů knihovny |
+> | Microsoft. synapse/pracovní prostory/sqlPools/workloadGroups/číst | Vypíše skupiny úloh pro vybraný fond SQL. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/workloadGroups/Write | Nastaví vlastnosti pro určitou skupinu úloh. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/workloadGroups/DELETE | Uvolní konkrétní skupinu úloh. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/workloadGroups/workloadClassifiers/Read | Vypisuje klasifikátory úloh pro vybraný fond SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/workloadGroups/workloadClassifiers/Write | Nastaví vlastnosti pro konkrétní třídění úloh. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/workloadGroups/workloadClassifiers/DELETE | Zruší konkrétní třídění úloh. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/extendedAuditingSettings/číst | Přečtěte si rozšířené nastavení auditování fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/extendedAuditingSettings/Write | Vytvořte nebo aktualizujte rozšířené nastavení auditování fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/dataMaskingPolicies/číst | Vrátí seznam zásad pro maskování dat ve fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/dataMaskingPolicies/Write | Vytvoří nebo aktualizuje zásadu maskování dat ve fondu SQL Analytics. |
+> | Microsoft. synapse/Workspaces/sqlPools/dataMaskingPolicies/Rules/Read | Načte seznam pravidel maskování dat ve fondu SQL Analytics. |
+> | Microsoft. synapse/Workspaces/sqlPools/dataMaskingPolicies/Rules/Write | Vytvoří nebo aktualizuje pravidlo maskování dat ve fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/sloupce/číst | Vrátí seznam sloupců pro fond SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/sensitivityLabels/číst | Získá popisek citlivosti daného sloupce. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/auditRecords/číst | Získat záznamy auditu objektů BLOB fondu SQL |
+> | Microsoft. synapse/resourceGroups/operationStatuses/Read | Přečtěte si stav asynchronní operace. |
+> | Microsoft. synapse/pracovní prostory/extendedAuditingSettings/Write | Vytvoří nebo aktualizuje rozšířené nastavení auditování pro SQL Server. |
+> | Microsoft. synapse/pracovní prostory/extendedAuditingSettings/číst | Přečte výchozí nastavení rozšířeného auditování SQL serveru. |
+> | Microsoft. synapse/pracovní prostory/auditingSettings/Write | Vytvoří nebo aktualizuje nastavení auditování SQL serveru. |
+> | Microsoft. synapse/pracovní prostory/auditingSettings/číst | Přečte výchozí nastavení auditování SQL serveru. |
+> | Microsoft. synapse/pracovní prostory/securityAlertPolicies/Write | Vytvořte nebo aktualizujte zásady výstrah zabezpečení systému SQL Server. |
+> | Microsoft. synapse/pracovní prostory/securityAlertPolicies/číst | Číst výchozí zásady výstrah zabezpečení systému SQL Server. |
+> | Microsoft. synapse/pracovní prostory/vulnerabilityAssessments/Write | Vytvoří nebo aktualizuje assementou zprávu o ohrožení zabezpečení SQL serveru. |
+> | Microsoft. synapse/pracovní prostory/vulnerabilityAssessments/číst | Přečte výchozí assementou zprávu o ohrožení zabezpečení SQL serveru. |
+> | Microsoft. synapse/pracovní prostory/vulnerabilityAssessments/DELETE | Odstraní assementou zprávu o ohrožení zabezpečení SQL serveru. |
+> | Microsoft. synapse/pracovní prostory/restorableDroppedSqlPools/číst | Načte odstraněný fond SQL, který se dá obnovit. |
+> | Microsoft. synapse/Workspaces/sqlPools/dataWarehouseQueries/Step/Read | Přečtěte si všechny kroky dotazu na fond SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/workloadGroups/operationStatuses/Read | Stav operace skupiny úloh fondu SQL Analytics |
+> | Microsoft. synapse/Workspaces/sqlPools/workloadGroups/workloadClassifiers/operationStatuses/číst | Stav operace klasifikátoru úloh ve fondu SQL Analytics |
+> | Microsoft. synapse/Workspaces/sqlPools/workloadGroups/workloadClassifiers/operationResults/číst | Výsledek operace klasifikátoru úlohy fondu SQL Analytics |
+> | Microsoft. synapse/pracovní prostory/sqlUsages/číst | Získá omezení využití dostupná pro fondy SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/auditingSettings/operationResults/číst | Nastavení auditování SQL Server |
+> | Microsoft. synapse/pracovní prostory/sqlAdministrators/Write | Nastavení správce služby Active Directory v pracovním prostoru |
+> | Microsoft. synapse/pracovní prostory/sqlAdministrators/číst | Získat správce služby Active Directory pracovního prostoru |
+> | Microsoft. synapse/pracovní prostory/sqlAdministrators/DELETE | Odstranit správce služby Active Directory pracovního prostoru |
 
 ## <a name="blockchain"></a>Blockchain
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e884ceab652136c505ce7032f0e78588fb20be89
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: b493ee7d77fc45018dbf8d2bac748b03e3d74b8a
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986950"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430205"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Řízení přístupu k účtu úložiště pro fond SQL bez serveru ve službě Azure synapse Analytics
 
@@ -93,6 +93,9 @@ Můžete použít následující kombinace autorizačních a Azure Storagech typ
 ### <a name="querying-firewall-protected-storage"></a>Dotazování úložiště chráněného bránou firewall
 
 Při přístupu k úložišti chráněnému bránou firewall můžete použít **identitu uživatele** nebo **spravovanou identitu**.
+
+> [!NOTE]
+> Funkce brány firewall v úložišti je ve verzi Public Preview a je dostupná ve všech oblastech veřejného cloudu. 
 
 #### <a name="user-identity"></a>Identita uživatele
 
