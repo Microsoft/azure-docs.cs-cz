@@ -4,19 +4,19 @@ description: Ladění jednotného přihlašování založeného na SAML pro apli
 services: active-directory
 ms.author: kenwith
 author: kenwith
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: troubleshooting
 ms.workload: identity
 ms.date: 02/18/2019
 ms.reviewer: luleon, hirsin, paulgarn
-ms.openlocfilehash: f8eb00a2a88c6e26dd5361097f17990469caa8f3
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4a5fbef3380db8c9b357c83b4cb8240a41a0012c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326013"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259283"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Ladění jednotného přihlašování k aplikacím v Azure Active Directory založeného na SAML
 
@@ -37,7 +37,7 @@ Pokud chcete stáhnout a nainstalovat zabezpečené přihlašování pro moje ap
 Testování jednotného přihlašování založeného na SAML mezi Azure AD a cílovou aplikací:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce nebo jiného správce, který je autorizován pro správu aplikací.
-1. V levém okně vyberte **Azure Active Directory**a pak vyberte **podnikové aplikace**. 
+1. V levém okně vyberte **Azure Active Directory** a pak vyberte **podnikové aplikace**. 
 1. V seznamu podnikových aplikací vyberte aplikaci, pro kterou chcete testovat jednotné přihlašování, a potom z možností na levém panelu vyberte **jednotné přihlašování**.
 1. Chcete-li otevřít prostředí pro testování jednotného přihlašování založené na SAML, použijte **test jednotného přihlašování** (krok 5). Pokud je tlačítko **test** šedé, je nutné nejprve vyplnit a uložit požadované atributy v **základním oddílu konfigurace SAML** .
 1. V okně **test jednotného přihlašování** pomocí podnikových přihlašovacích údajů se přihlaste k cílové aplikaci. Můžete se přihlásit jako aktuální uživatel nebo jako jiný uživatel. Pokud se přihlásíte jako jiný uživatel, zobrazí se výzva k ověření.
@@ -71,7 +71,7 @@ Pokud není pro chybu přihlášení k dispozici žádné řešení, doporučuje
     - ID korelace a časové razítko. Tyto hodnoty jsou důležité při vytváření případu podpory u Microsoftu, protože pomohou technikům identifikovat váš problém a poskytnout přesné řešení problému.
     - Příkaz, který identifikuje hlavní příčinu problému.
 1. Vraťte se do Azure AD a najděte okno **test jednotného přihlašování** .
-1. V textovém poli nahoře **získat pokyny k řešení**vložte chybovou zprávu.
+1. V textovém poli nahoře **získat pokyny k řešení** vložte chybovou zprávu.
 1. Kliknutím na **získat pokyny k řešení** můžete zobrazit kroky pro řešení tohoto problému. Doprovodné materiály mohou vyžadovat informace od žádosti SAML nebo odpovědi SAML. Pokud nepoužíváte rozšíření pro zabezpečené přihlašování k aplikacím, možná budete potřebovat nástroj, například [Fiddler](https://www.telerik.com/fiddler) , který načte požadavek a odpověď SAML.
 1. Ověřte, že cíl v žádosti SAML odpovídá adrese URL služby SAML s jednou Sign-On získanou z Azure AD.
 1. Ověřte, že Vystavitel v požadavku SAML je stejný identifikátor, který jste nakonfigurovali pro aplikaci ve službě Azure AD. Azure AD používá vystavitele k vyhledání aplikace ve vašem adresáři.

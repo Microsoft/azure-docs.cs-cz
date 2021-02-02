@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 12/10/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: d0d5434de747b48464df1c07f8c7b6a7e785c858
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: c63b71ad00a5621babe07597720a1e9ea87f1e4a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070908"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260244"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Použití služby Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure umožňují umístit jakékoli prostředky Azure do jiné než internetové sítě podporující směrování, ke které můžete řídit přístup. Tyto sítě je pak možné připojit k místním sítím pomocí různých technologií VPN. Další informace o virtuálních sítích Azure najdete tady: [Přehled Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -117,7 +117,7 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 | */443                  | Odchozí           | TCP                | VIRTUAL_NETWORK/úložiště             | **Závislost na Azure Storage**                             | Externí & interní  |
 | */443                  | Odchozí           | TCP                | VIRTUAL_NETWORK/Azureactivedirectory selhala | [Azure Active Directory](api-management-howto-aad.md) a závislost Azure klíčů v trezoru                  | Externí & interní  |
 | */1433                     | Odchozí           | TCP                | VIRTUAL_NETWORK/SQL                 | **Přístup k koncovým bodům SQL Azure**                           | Externí & interní  |
-| */433                     | Odchozí           | TCP                | VIRTUAL_NETWORK/AzureKeyVault                 | **Přístup k trezoru klíčů Azure**                           | Externí & interní  |
+| */443                     | Odchozí           | TCP                | VIRTUAL_NETWORK/AzureKeyVault                 | **Přístup k trezoru klíčů Azure**                           | Externí & interní  |
 | */5671, 5672, 443          | Odchozí           | TCP                | VIRTUAL_NETWORK/EventHub            | Závislost pro [protokolování do zásad centra událostí](api-management-howto-log-event-hubs.md) a agenta monitorování | Externí & interní  |
 | */445                      | Odchozí           | TCP                | VIRTUAL_NETWORK/úložiště             | Závislost na sdílené složce Azure pro [Git](api-management-configuration-repository-git.md)                      | Externí & interní  |
 | */443, 12000                     | Odchozí           | TCP                | VIRTUAL_NETWORK/AzureCloud            | Rozšíření stavu a monitorování         | Externí & interní  |
@@ -175,7 +175,7 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 ## <a name="troubleshooting"></a><a name="troubleshooting"> </a>Řešení potíží
 * **Počáteční nastavení**: když počáteční nasazení služby API Management do podsítě neproběhne úspěšně, doporučuje se nejdřív nasadit virtuální počítač do stejné podsítě. Další Vzdálená plocha na virtuální počítač a ověřte, že existuje připojení k jednomu z prostředků níže v předplatném Azure.
     * Azure Storage objekt BLOB
-    * Databáze Azure SQL
+    * Azure SQL Database
     * Azure Storage tabulka
 
   > [!IMPORTANT]
@@ -232,11 +232,11 @@ IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa přích
 | Veřejný partnerský vztah Azure| Západní Indie| 40.81.89.24|
 | Veřejný partnerský vztah Azure| East US| 52.224.186.99|
 | Veřejný partnerský vztah Azure| West Europe| 51.145.179.78|
-| Veřejný partnerský vztah Azure| Japan East| 52.140.238.179|
+| Veřejný partnerský vztah Azure| Japonsko – východ| 52.140.238.179|
 | Veřejný partnerský vztah Azure| Francie – střed| 40.66.60.111|
 | Veřejný partnerský vztah Azure| Kanada – východ| 52.139.80.117|
 | Veřejný partnerský vztah Azure| Spojené arabské emiráty sever| 20.46.144.85|
-| Veřejný partnerský vztah Azure| Brazil South| 191.233.24.179|
+| Veřejný partnerský vztah Azure| Brazílie – jih| 191.233.24.179|
 | Veřejný partnerský vztah Azure| Brazílie – jihovýchod| 191.232.18.181|
 | Veřejný partnerský vztah Azure| Southeast Asia| 40.90.185.46|
 | Veřejný partnerský vztah Azure| Jižní Afrika – sever| 102.133.130.197|
@@ -244,10 +244,10 @@ IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa přích
 | Veřejný partnerský vztah Azure| Jižní Korea – jih| 40.80.232.185|
 | Veřejný partnerský vztah Azure| Indie – střed| 13.71.49.1|
 | Veřejný partnerský vztah Azure| USA – západ| 13.64.39.16|
-| Veřejný partnerský vztah Azure| Australia Southeast| 20.40.160.107|
+| Veřejný partnerský vztah Azure| Austrálie – jihovýchod| 20.40.160.107|
 | Veřejný partnerský vztah Azure| Austrálie – střed| 20.37.52.67|
 | Veřejný partnerský vztah Azure| Indie – jih| 20.44.33.246|
-| Veřejný partnerský vztah Azure| Střední USA| 13.86.102.66|
+| Veřejný partnerský vztah Azure| USA – střed| 13.86.102.66|
 | Veřejný partnerský vztah Azure| Austrálie – východ| 20.40.125.155|
 | Veřejný partnerský vztah Azure| Západní USA 2| 51.143.127.203|
 | Veřejný partnerský vztah Azure| Východní USA 2 EUAP| 52.253.229.253|

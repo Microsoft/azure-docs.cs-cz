@@ -1472,30 +1472,11 @@
     - name: Vlastní data
       href: custom-data.md
     - name: Ansible
-      items:
-        - name: Instalace a konfigurace
-          href: /azure/developer/ansible/install-on-linux-vm
-        - name: Vytvoření virtuálního počítače s Linuxem
-          href: /azure/developer/ansible/vm-configure
-        - name: Správa virtuálního počítače s Linuxem
-          href: /azure/developer/ansible/vm-manage
+      href: 'https://docs.microsoft.com/azure/developer/ansible/'
     - name: Terraform
-      items:
-        - name: Instalace a konfigurace
-          href: /azure/developer/terraform/install-configure
-        - name: Vytvoření kompletního virtuálního počítače
-          href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
+      href: 'https://docs.microsoft.com/azure/developer/terraform/'
     - name: Jenkins
-      href: /azure/developer/jenkins/overview
-      items:
-        - name: Vytvoření serveru Jenkins
-          href: /azure/developer/jenkins/configure-on-linux-vm
-        - name: Škálování pomocí agentů virtuálních počítačů
-          href: /azure/developer/jenkins/scale-deployments-using-vm-agents
-        - name: Publikování artefaktů do Storage
-          href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository
-        - name: Zabezpečení Jenkinse
-          href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
+      href: 'https://docs.microsoft.com/en-us/azure/developer/jenkins/'
     - name: Azure DevOps
       href: ./linux/tutorial-azure-devops-blue-green-strategy.md
 - name: Řešení potíží

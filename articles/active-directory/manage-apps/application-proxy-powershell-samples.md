@@ -3,7 +3,7 @@ title: Ukázky PowerShellu pro Azure Proxy aplikací služby AD
 description: Tyto ukázky PowerShellu pro Azure Proxy aplikací služby AD slouží k získání informací o aplikacích proxy aplikací a konektorech v adresáři, přiřazení uživatelů a skupin k aplikacím a získání informací o certifikátu.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,19 +12,19 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f10e2b0aa5c7e178ae6b58805703fcb1b0ff3e2b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 117b4fec13c22ffb2f3163d50be44734d24ef3fa
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352486"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259097"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Příklady Azure AD PowerShellu pro Azure Proxy aplikací služby AD
 
-Následující tabulka obsahuje odkazy na příklady skriptu PowerShellu pro Azure Proxy aplikací služby AD. Pokud není uvedeno jinak, vyžadují tyto ukázky pro [modul grafu AzureAD v2 PowerShell pro graf](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) nebo [pro verzi Preview AzureAD v2 PowerShellu](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview).
+Následující tabulka obsahuje odkazy na příklady skriptu PowerShellu pro Azure Proxy aplikací služby AD. Pokud není uvedeno jinak, vyžadují tyto ukázky pro [modul grafu AzureAD v2 PowerShell pro graf](/powershell/azure/active-directory/install-adv2) nebo [pro verzi Preview AzureAD v2 PowerShellu](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview).
 
 
-Další informace o rutinách použitých v těchto ukázkách najdete v tématu Správa [aplikací proxy](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management) aplikací a [Správa konektoru proxy aplikací](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management).
+Další informace o rutinách použitých v těchto ukázkách najdete v tématu Správa [aplikací proxy](/powershell/module/azuread/#application_proxy_application_management) aplikací a [Správa konektoru proxy aplikací](/powershell/module/azuread/#application_proxy_connector_management).
 
 | Odkaz | Popis |
 |---|---|

@@ -1,17 +1,17 @@
 ---
-title: Zabezpečený přístup ke Key Vaultu s využitím služby Batch
+title: Použití certifikátů a zabezpečeného přístupu Azure Key Vault pomocí Batch
 description: Naučte se programově přistupovat k přihlašovacím údajům z Key Vault pomocí Azure Batch.
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b8b3d2655e79862c068aa48c29c7e89b7df85482
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: eaaeaa05caca7897eb649b56504b643038f08d53
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350683"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260125"
 ---
-# <a name="securely-access-key-vault-with-batch"></a>Zabezpečený přístup ke Key Vaultu s využitím služby Batch
+# <a name="use-certificates-and-securely-access-azure-key-vault-with-batch"></a>Použití certifikátů a zabezpečeného přístupu Azure Key Vault pomocí Batch
 
 V tomto článku se dozvíte, jak nastavit uzly Batch pro zabezpečený přístup k přihlašovacím údajům uloženým v [Azure Key Vault](../key-vault/general/overview.md). K dispozici není žádný bod pro vložení přihlašovacích údajů správce do Key Vault a pak pevně zakódování přihlašovacích údajů pro přístup Key Vault ze skriptu. Řešením je použít certifikát, který uděluje uzlům služby Batch přístup k Key Vault.
 

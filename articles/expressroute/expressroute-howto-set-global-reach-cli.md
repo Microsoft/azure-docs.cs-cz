@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/07/2021
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 27f16ac7d7d799c5467b11fd93352dc5fdef666c
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 55f1e4c030dc0e7c8d0011dcff0cc1c9f8fec06e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028059"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260227"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>Konfigurace Global Reach ExpressRoute pomocí Azure CLI
 
@@ -54,9 +54,9 @@ ExpressRoute Global Reach můžete povolit mezi dvěma ExpressRoute okruhy. Okru
 
 Při spuštění příkazu pro povolení připojení si všimněte následujících požadavků pro hodnoty parametrů:
 
-* *okruh partnerského vztahu* by měl být úplné ID prostředku. Například:
+* *okruh partnerského vztahu* by měl být úplné ID prostředku. Příklad:
 
-  > /Subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}
+  > /Subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}/peerings/AzurePrivatePeering
 
 * *předpona adresy* musí být podsíť IPv4 "/29" (například "10.0.0.0/29"). IP adresy v této podsíti používáme k navázání připojení mezi dvěma okruhy ExpressRoute. V této podsíti nemůžete používat adresy v Azure Virtual Networks ani v místních sítích.
 

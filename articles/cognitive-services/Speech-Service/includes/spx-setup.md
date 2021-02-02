@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 68362b61aa0d919bd0e95f3cebb1cf1189f9f0f3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: d6ae9585ce5b5a6f666a96ae8c5e7e9e3c5e248a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095173"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427273"
 ---
 ## <a name="download-and-install"></a>Stažení a instalace
 
@@ -29,14 +29,6 @@ Zadáním `spx` zobrazíte nápovědu k rozhraní příkazového řádku pro roz
 > [!NOTE]
 > Jako alternativu k NuGet můžete stáhnout a extrahovat [komprimovaný archiv zip](https://aka.ms/speech/spx-zips.zip)CLI, najít a extrahovat vaši platformu z `spx-zips` adresáře a přidat `spx` cestu k proměnné systémové **cesty** .
 
-### <a name="run-the-speech-cli"></a>Spuštění funkce CLI pro rozpoznávání řeči
-
-1. Otevřete příkazový řádek nebo PowerShell a potom přejděte do adresáře, do kterého jste extrahovali rozhraní příkazového řádku pro rozpoznávání řeči.  
-2. Zadejte `spx` , chcete-li zobrazit příkazy Help pro rozhraní příkazového řádku pro rozpoznávání řeči.
-
-> [!NOTE]
-> PowerShell při hledání příkazu nekontroluje místní adresář. V prostředí PowerShell změňte adresář na umístění `spx` a zavolejte nástroj zadáním `.\spx` .
-> Pokud přidáte tento adresář do vaší cesty, PowerShell a příkazový řádek Windows se najde `spx` z libovolného adresáře bez zahrnutí `.\` předpony.
 
 ### <a name="font-limitations"></a>Omezení písem
 

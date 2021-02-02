@@ -3,7 +3,7 @@ title: Pomocí sestavy aktivita můžete přesunout AD FS aplikace do Azure Acti
 description: Sestava aktivity aplikace Active Directory Federation Services (AD FS) (AD FS) umožňuje rychle migrovat aplikace z AD FS na Azure Active Directory (Azure AD). Tento nástroj pro migraci pro AD FS identifikuje kompatibilitu s Azure AD a poskytuje pokyny k migraci.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77a43d5bd5f2b228d5ed4384fc1efdca76f8ea0b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 3665c5b82095004ddf7dc1f503b54f5164d49c7f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573880"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260058"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Použití sestavy aktivity aplikace AD FS (Preview) k migraci aplikací do služby Azure AD
 
@@ -33,7 +33,7 @@ Sestava aktivita aplikace AD FS (Preview) v Azure Portal umožňuje rychle urči
 
 Data aktivity aplikace AD FS jsou k dispozici uživatelům, kteří mají přiřazenou některou z těchto rolí správce: globální správce, čtenář sestav, čtenář zabezpečení, správce aplikace nebo správce cloudové aplikace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Vaše organizace musí aktuálně používat AD FS k přístupu k aplikacím.
 * Azure AD Connect Health musí být ve vašem tenantovi Azure AD povolené.
@@ -78,7 +78,7 @@ Sestava aktivity aplikace AD FS je k dispozici v Azure Portal v části Azure AD
 
 V následující tabulce jsou uvedeny všechny testy konfigurace, které se provádí v AD FSch aplikacích.
 
-|Result  |Úspěch/upozornění/selhání  |Popis  |
+|Výsledek  |Úspěch/upozornění/selhání  |Popis  |
 |---------|---------|---------|
 |Test-ADFSRPAdditionalAuthenticationRules <br> Pro AdditionalAuthentication se zjistilo aspoň jedno pravidlo, které není migrovat.       | Úspěch/upozornění          | Předávající strana obsahuje pravidla pro dotazování služby Multi-Factor Authentication (MFA). Pokud se chcete přesunout do služby Azure AD, přeložte tato pravidla na zásady podmíněného přístupu. Pokud používáte místní MFA, doporučujeme přejít na Azure AD MFA. [Přečtěte si další informace o podmíněném přístupu](../authentication/concept-mfa-howitworks.md).        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> Předávající strana má AdditionalWSFedEndpoint nastavenou na hodnotu true.       | Úspěch/neúspěch          | Předávající strana v AD FS umožňuje více koncových bodů kontrolního výrazu pro WS-Fed.V současné době Azure AD podporuje jenom jeden.Pokud máte scénář, kde tento výsledek blokuje migraci, [dejte nám prosím jistotu](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |
@@ -126,7 +126,7 @@ V následující tabulce jsou uvedeny všechny testy pravidel deklarací identit
 |UNSUPPORTED_ISSUANCE_CLASS      | Příkaz vystavení pomocí příkazu přidat přidá deklarace do příchozí sady deklarací. V Azure AD to může být nakonfigurované jako vícenásobné transformace deklarací identity.Další informace najdete v tématu [přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace](../develop/active-directory-claims-mapping.md).         |
 |UNSUPPORTED_ISSUANCE_TRANSFORMATION      | Příkaz vystavení používá regulární výrazy k transformaci hodnoty deklarace, která se má vygenerovat.Chcete-li dosáhnout podobných funkcí v Azure AD, můžete použít předdefinovanou transformaci, jako je například Extract (), trim (), ToLower, mimo jiné. Další informace najdete v tématu [přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace](../develop/active-directory-saml-claims-customization.md).          |
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="cant-see-all-my-ad-fs-applications-in-the-report"></a>V sestavě se nezobrazuje všechny aplikace AD FS.
 

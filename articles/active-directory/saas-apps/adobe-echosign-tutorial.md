@@ -9,33 +9,29 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 01/19/2021
 ms.author: jeedes
-ms.openlocfilehash: bd7d05225ef0583c8d56804fb2164cfc73ad4a6a
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: f8566386e73ab361f3078d5e6d27f92c51856afa
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673269"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259434"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Kurz: Azure Active Directory integrací pomocí Adobe Sign
 
-V tomto kurzu se dozvíte, jak integrovat znaménko Adobe pomocí Azure Active Directory (Azure AD).
-Integrace společnosti Adobe Sign with Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat znaménko Adobe pomocí Azure Active Directory (Azure AD). Když integrujete přihlašování Adobe s Azure AD, můžete:
 
-* Můžete řídit v Azure AD, který má přístup k Adobe Sign.
-* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k programu Adobe Signing (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
-
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
+* Řízení ve službě Azure AD, která má přístup k Adobe Sign.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili pomocí svých účtů Azure AD do programu Adobe Sign.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD pomocí podepisování Adobe budete potřebovat následující položky:
-
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* Přihlášení k odběru s povoleným jednotným přihlašováním společnosti Adobe
+Chcete-li začít, potřebujete následující položky:
+ 
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Přihlášení k odběru s jednotným přihlašováním (SSO) společnosti Adobe.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -43,63 +39,46 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Adobe **Sign podporuje jednotné** přihlašování.
 
-## <a name="adding-adobe-sign-from-the-gallery"></a>Přidání znaménka Adobe z Galerie
+## <a name="add-adobe-sign-from-the-gallery"></a>Přidání znaménka Adobe z Galerie
 
 Pokud chcete nakonfigurovat integraci Adobe přihlašování do Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat znaménko Adobe z galerie.
 
-**Chcete-li přidat znaménko Adobe z Galerie, proveďte následující kroky:**
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **symbol Adobe** .
+1. Na panelu výsledků vyberte **symbol Adobe** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
-
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
-
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
-
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
-
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
-
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
-
-4. Do vyhledávacího pole zadejte text **Adobe Sign**, na panelu výsledků vyberte **Adobe Sign** (podepsat) a pak klikněte na **Přidat** tlačítko a přidejte aplikaci.
-
-    ![Symbol Adobe v seznamu výsledků](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
+## <a name="configure-and-test-azure-ad-sso-for-adobe-sign"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Adobe Sign
 
 V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí programu Adobe Signing na základě testovacího uživatele s názvem **Britta Simon**.
 Aby se jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v symbolech Adobe.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí přihlášení Adobe, musíte dokončit tyto stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí přihlášení Adobe, musíte provést následující kroky:
 
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurovat Adobe Sign Single Sign-on](#configure-adobe-sign-single-sign-on)** – ke konfiguraci nastavení jednoho Sign-On na straně aplikace
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvořit Adobe Sign Test User](#create-adobe-sign-test-user)** – abyste měli protějšek Britta Simon v symbolech Adobe, který je propojený s reprezentací uživatele v Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+1. **[Nakonfigurujte přihlašování Adobe Sign SSO](#configure-adobe-sign-sso)** – ke konfiguraci nastavení jednoho Sign-On na straně aplikace.
+    1. **[Vytvořit Adobe Sign Test User](#create-adobe-sign-test-user)** – abyste měli protějšek Britta Simon v symbolech Adobe, který je propojený s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí přihlášení Adobe, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce **Adobe Sign** aplikace Integration vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce **Adobe Sign** aplikace Integration vyberte **jednotné přihlašování**.
 
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
+1. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
-
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
-
-3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu tužky a otevřete dialogové okno **základní konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. V části **základní konfigurace SAML** proveďte následující kroky:
-
-    ![Informace o jednotném přihlašování v doméně a adresách URL společnosti Adobe](common/sp-identifier.png)
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.echosign.com/`
 
@@ -108,7 +87,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí přihlá
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory společnosti Adobe Signer support](https://helpx.adobe.com/in/contact/support.html) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-4. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -116,13 +95,31 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí přihlá
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-    b. Identifikátor Azure AD
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-    c. Odhlašovací adresa URL
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
-### <a name="configure-adobe-sign-single-sign-on"></a>Nakonfigurovat Adobe Sign Single Sign-On
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Adobe Sign.
+
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte možnost **Adobe Sign**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+
+### <a name="configure-adobe-sign-sso"></a>Konfigurace přihlašování Adobe SSO
 
 1. Před konfigurací se obraťte na [tým podpory společnosti Adobe Signer support](https://helpx.adobe.com/in/contact/support.html) , který přidá vaši doménu do seznamu povolených podpisů Adobe. Tady je postup, jak přidat doménu:
 
@@ -147,13 +144,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí přihlá
 
 1. V nabídce SAML vyberte **Nastavení účtu**  >  **Nastavení SAML**.
 
-    ![Snímek obrazovky se stránkou nastavení pro Adobe – podepsání SAML](./media/adobe-echosign-tutorial/ic789520.png "Účet")
+    ![Snímek obrazovky se stránkou nastavení pro Adobe – podepsání SAML](./media/adobe-echosign-tutorial/settings.png "Účet")
 
 1. V části **Nastavení SAML** proveďte následující kroky:
 
-    ![Snímek obrazovky, který zvýrazní nastavení SAML, včetně povinného SAML.](./media/adobe-echosign-tutorial/ic789521.png "Nastavení SAML")
+    ![Snímek obrazovky, který zvýrazní nastavení SAML, včetně povinného SAML.](./media/adobe-echosign-tutorial/saml1.png "Nastavení SAML")
 
-   ![Snímek obrazovky s nastavením SAML](./media/adobe-echosign-tutorial/ic789522.png "Nastavení SAML")
+   ![Snímek obrazovky s nastavením SAML](./media/adobe-echosign-tutorial/saml.png "Nastavení SAML")
 
    a. V části **režim SAML** vyberte **SAML povinný**.
 
@@ -171,57 +168,6 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí přihlá
 
    h. Vyberte **Uložit změny**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
-
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
-
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
-
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
-
-2. V horní části obrazovky vyberte **Nový uživatel** .
-
-    ![Tlačítko pro nového uživatele](common/new-user.png)
-
-3. Ve vlastnostech uživatele proveďte následující kroky.
-
-    ![Uživatelský dialog](common/user-properties.png)
-
-    a. Do pole **název** zadejte **BrittaSimon**.
-
-    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
-    Například BrittaSimon@contoso.com.
-
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na **Vytvořit**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
-
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Adobe Sign.
-
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Adobe Sign (podepsat**).
-
-    ![Okno Podnikové aplikace](common/enterprise-applications.png)
-
-2. V seznamu aplikace zadejte a vyberte **symbol Adobe**.
-
-    ![Odkaz na symbol Adobe v seznamu aplikací](common/all-applications.png)
-
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
-
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Podokno přidat přiřazení](common/add-assign-user.png)
-
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
-
 ### <a name="create-adobe-sign-test-user"></a>Vytvořit Adobe Sign Test User
 
 Aby se uživatelé Azure AD mohli přihlásit k přihlašování do Adobe, musí se zřídit v symbolech Adobe. Toto je ruční úloha.
@@ -233,11 +179,11 @@ Aby se uživatelé Azure AD mohli přihlásit k přihlašování do Adobe, musí
 
 2. V nabídce v horní části vyberte **účet**. Pak v levém podokně vyberte **Uživatelé & skupiny**  >  **vytvořit nového uživatele**.
 
-    ![Snímek obrazovky společnosti Adobe podepsat firemní web, s účtem, uživateli &skupin a vytvořit nově zvýrazněného uživatele](./media/adobe-echosign-tutorial/ic789524.png "Účet")
+    ![Snímek obrazovky společnosti Adobe podepsat firemní web, s účtem, uživateli &skupin a vytvořit nově zvýrazněného uživatele](./media/adobe-echosign-tutorial/account.png "Účet")
 
 3. V části **vytvořit nového uživatele** proveďte následující kroky:
 
-    ![Snímek obrazovky s oddílem pro vytvoření nového uživatele](./media/adobe-echosign-tutorial/ic789525.png "Vytvořit uživatele")
+    ![Snímek obrazovky s oddílem pro vytvoření nového uživatele](./media/adobe-echosign-tutorial/user.png "Vytvořit uživatele")
 
     a. Zadejte **e-mailovou adresu**, **jméno** a **příjmení** platného účtu Azure AD, který chcete zřídit, do příslušných textových polí.
 
@@ -246,16 +192,16 @@ Aby se uživatelé Azure AD mohli přihlásit k přihlašování do Adobe, musí
 >[!NOTE]
 >Držitel účtu Azure Active Directory obdrží e-mail, který obsahuje odkaz na potvrzení účtu, než bude aktivní. 
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-sso"></a>Test SSO
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-Když kliknete na dlaždici symbol Adobe na přístupovém panelu, měli byste se automaticky přihlásit k přihlašovacímu znaku Adobe, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro přihlášení k Adobe, kde můžete spustit tok přihlášení. 
 
-## <a name="additional-resources"></a>Další materiály
+* Přejít přímo na adresu URL pro přihlášení k Adobe a zahájit tok přihlášení.
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici symbol Adobe v části Moje aplikace, měli byste se automaticky přihlásit k znaménku Adobe, pro který jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Další kroky
 
-- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
+Po nakonfigurování podepisování Adobe můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

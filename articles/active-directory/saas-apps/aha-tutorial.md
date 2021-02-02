@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/09/2019
+ms.date: 01/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 82f3a2dc7f43bd484d6a81efaa8d07f13b746d9e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: a8a33290c7fa904fc16b728a6e2411bd5b42683f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97671059"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259649"
 ---
 # <a name="tutorial-integrate-aha-with-azure-active-directory"></a>Kurz: integrace programu Aha! s Azure Active Directory
 
@@ -25,8 +25,6 @@ V tomto kurzu se dozvíte, jak integrovat program Aha! s Azure Active Directory 
 * Řízení ve službě Azure AD, která má přístup k Aha!
 * Umožněte uživatelům, aby se automaticky přihlásili do Aha! se svými účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
-
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,22 +43,22 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * Aha! podporuje jednotné přihlašování iniciované v **SP**
 * Aha! podporuje zřizování uživatelů **jenom v čase**
 
-## <a name="adding-aha-from-the-gallery"></a>Přidává se Aha! z Galerie
+## <a name="add-aha-from-the-gallery"></a>Přidejte Aha. z Galerie
 
 Ke konfiguraci integrace programu Aha! do Azure AD je nutné přidat Aha! z Galerie do vašeho seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte **Aha!** do vyhledávacího pole.
 1. Vyberte možnost **Aha!** z panelu výsledků a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-aha"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Aha!
+## <a name="configure-and-test-azure-ad-sso-for-aha"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Aha!
 
 Konfigurace a testování jednotného přihlašování Azure AD pomocí programu Aha! pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Aha!.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí programu Aha!, dokončete následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí programu Aha!, proveďte následující kroky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
@@ -73,9 +71,9 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)v **Aha!** Stránka integrace aplikace, najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. V Azure Portal v **Aha!** Stránka integrace aplikace, najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -115,15 +113,9 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte možnost **Aha!**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
 1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
-
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ## <a name="configure-aha-sso"></a>Nakonfigurujte Aha. Jednotné přihlašování
@@ -140,23 +132,23 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 4. V nabídce v horní části klikněte na **Nastavení**.
 
-    ![Nastavení](./media/aha-tutorial/IC798950.png "Nastavení")
+    ![Nastavení](./media/aha-tutorial/setting.png "Nastavení")
 
 5. Klikněte na **účet**.
 
-    ![Profil](./media/aha-tutorial/IC798951.png "Profil")
+    ![Profil](./media/aha-tutorial/account.png "Profil")
 
 6. Klikněte na **zabezpečení a jednotné přihlašování**.
 
-    ![Snímek obrazovky, který zvýrazní možnost nabídky zabezpečení a jednotného přihlašování](./media/aha-tutorial/IC798952.png "Zabezpečení a jednotné přihlašování")
+    ![Snímek obrazovky, který zvýrazní možnost nabídky zabezpečení a jednotného přihlašování](./media/aha-tutorial/security.png "Zabezpečení a jednotné přihlašování")
 
 7. V části **jednotné přihlašování** jako **zprostředkovatel identity** vyberte **SAML 2.0**.
 
-    ![Zabezpečení a jednotné přihlašování](./media/aha-tutorial/IC798953.png "Zabezpečení a jednotné přihlašování")
+    ![Zabezpečení a jednotné přihlašování](./media/aha-tutorial/saml.png "Zabezpečení a jednotné přihlašování")
 
 8. Na stránce konfigurace **jednotného přihlašování** proveďte následující kroky:
 
-    ![Jednotné přihlašování](./media/aha-tutorial/IC798954.png "Jednotné přihlašování")
+    ![Jednotné přihlašování](./media/aha-tutorial/sso.png "Jednotné přihlašování")
 
     a. Do textového pole **název** zadejte název konfigurace.
 
@@ -172,14 +164,14 @@ V této části se v Aha! vytvoří uživatel s názvem B. Simon. Aha! podporuje
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-Po kliknutí na ikonu Aha! dlaždice na přístupovém panelu, měli byste být automaticky přihlášení do Aha! pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na Aha! Přihlašovací adresa URL, kde můžete spustit tok přihlášení. 
 
-## <a name="additional-resources"></a>Další materiály
+* Přejít na Aha! Přihlašovací adresa URL přímo a zahájit tok přihlášení.
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
+* Můžete použít aplikaci Microsoft moje aplikace. Po kliknutí na ikonu Aha! dlaždice se v mých aplikacích přesměruje na Aha! Přihlašovací adresa URL: Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Další kroky
 
-- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
+Jakmile nakonfigurujete Aha! můžete vyhovět řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

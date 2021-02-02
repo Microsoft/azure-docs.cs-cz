@@ -7,14 +7,14 @@ ms.date: 02/11/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: d94bc2fde63090d66da7e98cc239386d958e6bb2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a3ee7f3fca3fff1cd401f26489b01fb9cc4e09c5
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950960"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259515"
 ---
-# <a name="how-to-transfer-a-payload-between-device-and-dps"></a>Jak přenést datovou část mezi zařízením a DPS
+# <a name="how-to-transfer-payloads-between-devices-and-dps"></a>Jak přenášet datové části mezi zařízeními a DPS
 V některých případech potřebuje služba DPS větší data ze zařízení, aby je správně zřídila do správného IoT Hub a aby je mohl zařízení poskytnout. A naopak, DPS může vrátit data do zařízení, aby se usnadnily logiky na straně klienta. 
 
 ## <a name="when-to-use-it"></a>Kdy ji použít

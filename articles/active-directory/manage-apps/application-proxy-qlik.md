@@ -4,7 +4,7 @@ description: Zapněte proxy aplikace v Azure Portal a nainstalujte konektory pro
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9696d48db7d051f3a8bdf16f93438fb71f025dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a03f3c57d3fbc7efe20055343eab3db33aa8194
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84760044"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259080"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Proxy aplikace a Qlik – smysl 
 Proxy aplikací služby Azure Active Directory a Qliký smysl spolupracovali společně, aby bylo zajištěno, že k zajištění vzdáleného přístupu pro nasazení rozpoznávání Qlik budete moct snadno používat proxy aplikace.  
@@ -43,9 +43,9 @@ Při publikování aplikace postupujte podle těchto kroků. Podrobnější náv
 4. Vyberte **místní aplikaci**. 
 5. Vyplňte požadovaná pole informacemi o vaší nové aplikaci. Pro nastavení použijte následující pokyny: 
    - **Interní adresa URL**: Tato aplikace by měla mít interní adresu URL, která je QlikSense adresou URL. Například **https&#58;//demo.qlikemm.com:4244** 
-   - **Metoda**předběžného ověřování: Azure Active Directory (doporučeno, ale není nutné) 
+   - **Metoda** předběžného ověřování: Azure Active Directory (doporučeno, ale není nutné) 
 1. V dolní části okna vyberte **Přidat** . Vaše aplikace se přidá a otevře se nabídka rychlý Start. 
-2. V nabídce rychlý Start vyberte **přiřadit uživatele pro testování**a přidejte alespoň jednoho uživatele do aplikace. Ujistěte se, že tento testovací účet má přístup k místní aplikaci. 
+2. V nabídce rychlý Start vyberte **přiřadit uživatele pro testování** a přidejte alespoň jednoho uživatele do aplikace. Ujistěte se, že tento testovací účet má přístup k místní aplikaci. 
 3. Vyberte **přiřadit** a uložte přiřazení testovacího uživatele. 
 4. Volitelné V okně Správa aplikací vyberte jednotné přihlašování. V rozevírací nabídce vyberte **omezené delegování Kerberos** a vyplňte požadovaná pole na základě konfigurace Qlik. Vyberte **Uložit**. 
 

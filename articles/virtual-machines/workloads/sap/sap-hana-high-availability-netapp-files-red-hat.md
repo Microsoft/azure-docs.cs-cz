@@ -11,14 +11,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/16/2020
+ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: cfa68bde2462cefd6f690247cfd1e3bd2e3dbc74
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b90d703a44cf89961eb0dca02abb1b8ea9cff166
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489203"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259198"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA škálování s využitím Azure NetApp Files na Red Hat Enterprise Linux
 
@@ -91,6 +91,7 @@ Nejprve si přečtěte následující poznámky a dokumenty SAP:
     - [Nainstalujte SAP HANA na Red Hat Enterprise Linux pro použití v Microsoft Azure.](https://access.redhat.com/solutions/3193782)
     - [Konfigurace SAP HANA Pacemaker replikace systému do clusteru s možností horizontálního navýšení kapacity, když jsou systémy souborů HANA ve sdílených složkách NFS](https://access.redhat.com/solutions/5156571)
 - [NetApp aplikace SAP na Microsoft Azure pomocí Azure NetApp Files](https://www.netapp.com/us/media/tr-4746.pdf)
+- [Svazky NFS v4.1 ve službě Azure NetApp Files pro SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
 
 ## <a name="overview"></a>Přehled
 
@@ -694,3 +695,10 @@ Tato část popisuje, jak můžete otestovat instalaci.
     ```
 
    Doporučujeme důkladně otestovat SAP HANA konfiguraci clusteru, a to tak, že provedete testy popsané v [nastavení SAP HANA systémová replikace v RHEL](./sap-hana-high-availability-rhel.md#test-the-cluster-setup).
+
+## <a name="next-steps"></a>Další kroky
+
+* [Plánování a implementace Azure Virtual Machines pro SAP][planning-guide]
+* [Nasazení Azure Virtual Machines pro SAP][deployment-guide]
+* [Nasazení Azure Virtual Machines DBMS pro SAP][dbms-guide]
+* [Svazky NFS v4.1 ve službě Azure NetApp Files pro SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)

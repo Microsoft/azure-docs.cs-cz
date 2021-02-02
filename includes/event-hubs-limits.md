@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 09/10/2020
+ms.date: 02/01/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 262783e83bdb846a3ea7e3015212c01048a00125
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 45cc5120072f2a8c7742f79cfb79161042345505
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96152698"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427315"
 ---
 Následující tabulky poskytují kvóty a omezení specifické pro [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Informace o cenách Event Hubs najdete v článku [Event Hubs ceny](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -30,7 +30,8 @@ Následující omezení jsou společná napříč všemi úrovněmi.
 | Počet neepochach přijímačů na skupinu uživatelů |- |5 |
 | Počet autorizačních pravidel na obor názvů | Následné žádosti o vytvoření autorizačního pravidla jsou odmítnuté.|12 |
 | Počet volání metody Getruntimeinformation – |  - | 50 za sekundu | 
-| Počet pravidel virtuální sítě (VNet) a konfigurace protokolu IP | - | 128 | 
+| Počet virtuálních sítí (VNet) | - | 128 | 
+| Počet pravidel konfigurace protokolu IP | - | 128 | 
 
 
 ### <a name="basic-vs-standard-tiers"></a>Úrovně Basic a Standard
@@ -66,7 +67,7 @@ V tomto [dokumentu](../articles/event-hubs/event-hubs-dedicated-cluster-create-p
 ### <a name="schema-registry-limitations"></a>Omezení registru schématu
 
 #### <a name="limits-that-are-the-same-for-standard-and-dedicated-tiers"></a>Omezení, která jsou stejná pro standardní a vyhrazené úrovně 
-| Funkce | Omezení | 
+| Příznak | Omezení | 
 |---|---|
 | Maximální délka názvu skupiny schémat | 50 |  
 | Maximální délka názvu schématu | 100 |    

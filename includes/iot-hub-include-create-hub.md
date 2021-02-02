@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: a6a01b3a71a7e391c680e6c9547ccd9649dc0e89
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4ad619fa5f0fb8f8e87333f2681727dabedda42b
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98605228"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427216"
 ---
 Tato část popisuje, jak vytvořit centrum IoT pomocí [Azure Portal](https://portal.azure.com).
 
@@ -35,17 +35,17 @@ Tato část popisuje, jak vytvořit centrum IoT pomocí [Azure Portal](https://p
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-   ![Vytvoření centra v Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
+   :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png" alt-text="Vytvořte centrum v Azure Portal.":::
 
 1. Vyberte **Další: sítě** a pokračujte v vytváření vašeho centra.
 
    Vyberte koncové body, které se můžou připojit k vašemu IoT Hub. Můžete vybrat výchozí nastavení **veřejný koncový bod (všechny sítě)** nebo zvolit **veřejný koncový bod (vybrané rozsahy IP adres)** nebo **soukromý koncový bod**. Pro tento příklad přijměte výchozí nastavení.
 
-   ![Výběr koncových bodů, které se můžou připojit](./media/iot-hub-include-create-hub/iot-hub-create-network-screen.png)
+   :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-create-network-screen.png" alt-text="Vyberte koncové body, které se mohou připojit.":::
 
 1. Vyberte **Další: Správa** pro pokračování ve vytváření vašeho centra.
 
-    ![Nastavení velikosti a měřítka pro nové centrum pomocí Azure Portal](./media/iot-hub-include-create-hub/iot-hub-management-screen.png)
+   :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-management-screen.png" alt-text="Nastavte velikost a měřítko pro nové centrum pomocí Azure Portal.":::
 
     Tady můžete přijmout výchozí nastavení. V případě potřeby můžete změnit libovolné z následujících polí:
 
@@ -60,14 +60,14 @@ Tato část popisuje, jak vytvořit centrum IoT pomocí [Azure Portal](https://p
 
     - **Rozšířená nastavení**  >  **Oddíly zařízení-Cloud**: Tato vlastnost spojuje zprávy typu zařízení-Cloud s počtem souběžných čtenářů zpráv. Většina Center potřebuje jenom čtyři oddíly.
 
-1.  Vyberte **Další: značky** a pokračujte na další obrazovku.
+1. Vyberte **Další: značky** a pokračujte na další obrazovku.
 
     Značky jsou páry název-hodnota. Stejnou značku můžete přiřadit více prostředkům a skupinám prostředků pro kategorizaci prostředků a konsolidaci fakturace. Další informace najdete v tématu [použití značek k uspořádání prostředků Azure](../articles/azure-resource-manager/management/tag-resources.md).
 
-    ![Přiřaďte značky pro centrum pomocí Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-tags.png)
+    :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-create-tags.png" alt-text="Přiřaďte značky pro centrum pomocí Azure Portal.":::
 
-1.  Vyberte **Další: zkontrolovat + vytvořit** a zkontrolujte své volby. Na této obrazovce vidíte něco podobného, ale s hodnotami, které jste vybrali při vytváření centra. 
+1. Vyberte **Další: zkontrolovat + vytvořit** a zkontrolujte své volby. Na této obrazovce vidíte něco podobného, ale s hodnotami, které jste vybrali při vytváření centra.
 
-    ![Přečtěte si informace o vytvoření nového centra.](./media/iot-hub-include-create-hub/iot-hub-review-and-create.png)
+    :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-review-and-create.png" alt-text="Přečtěte si informace o vytvoření nového centra.":::
 
-1.  Vyberte **vytvořit** a vytvořte nové centrum. Vytvoření centra může trvat několik minut.
+1. Vyberte **vytvořit** a vytvořte nové centrum. Vytvoření centra může trvat několik minut.

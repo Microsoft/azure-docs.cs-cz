@@ -11,14 +11,14 @@ ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/20/2020
+ms.date: 02/01/2021
 ms.author: amverma
-ms.openlocfilehash: c0ec18ae4a7d6020299660adbeba6f993cd4eeca
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 767d6da7701261836b367ccad121bf3569b43b72
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966016"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260159"
 ---
 # <a name="infiniband-driver-extension-for-windows"></a>Rozšíření ovladače InfiniBand pro Windows
 
@@ -30,15 +30,15 @@ K dispozici je také rozšíření pro instalaci ovladačů InfiniBand pro [virt
 
 ### <a name="operating-system"></a>Operační systém
 
-Toto rozšíření podporuje následující distribuce operačního systému, v závislosti na podpoře ovladačů pro konkrétní verzi operačního systému.
+Toto rozšíření podporuje následující distribuce operačního systému, v závislosti na podpoře ovladačů pro konkrétní verzi operačního systému. Poznamenejte si odpovídající InfiniBand síťovou kartu pro velikosti virtuálních počítačů H a N-Series, které vás zajímají.
 
-| Distribuce | Verze |
+| Distribuce | Ovladače InfiniBand NIC |
 |---|---|
-| Windows 10 | Jádro |
-| Windows Server 2019 | Jádro |
-| Windows Server 2016 | Jádro |
-| Windows Server 2012 R2 | Jádro |
-| Windows Server 2012 | Jádro |
+| Windows 10 | CX5, CX6 |
+| Windows Server 2019 | CX5, CX6 |
+| Windows Server 2016 | CX3-pro, CX5, CX6 |
+| Windows Server 2012 R2 | CX3-pro, CX5, CX6 |
+| Windows Server 2012 | CX3-pro, CX5, CX6 |
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
@@ -72,10 +72,10 @@ Následující JSON zobrazuje schéma pro rozšíření.
 
 | Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | datum |
+| apiVersion | 2015-06-15 | date |
 | vydavatel | Microsoft. HpcCompute | řetězec |
 | typ | InfiniBandDriverWindows | řetězec |
-| typeHandlerVersion | 1,2 | int |
+| typeHandlerVersion | 1.2 | int |
 
 
 

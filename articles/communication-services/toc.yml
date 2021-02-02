@@ -43,6 +43,8 @@
   items:
     - name: Vytvoření důvěryhodné ověřovací služby s využitím Azure Functions
       href: tutorials/trusted-service-tutorial.md
+    - name: Příprava webové aplikace pro komunikační služby (Node.js)
+      href: tutorials/building-app-start.md
 - name: Koncepty
   expanded: false
   items:
