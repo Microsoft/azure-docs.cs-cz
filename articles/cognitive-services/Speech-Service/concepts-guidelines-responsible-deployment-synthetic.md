@@ -10,21 +10,33 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: 7d80ffb575c6aa15695279584b58288cbc16be43
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 715c09ef65358b21e78cfde204b4819db0c7875d
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024972"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428415"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>Pokyny pro zodpovědnost nasazení syntetické hlasové technologie
+
+## <a name="general-considerations-to-keep-in-mind-when-implementing-ai-systems"></a>Obecné pokyny, které je potřeba vzít v úvahu při implementaci systémů AI 
+
+Tento článek se týká konkrétně syntetického rozpoznávání řeči a vlastního neuronové hlasu a klíčových důležitých informací o používání této technologie zodpovědnou. Obecně platí, že existuje několik věcí, které je třeba pečlivě zvážit při rozhodování o použití a implementaci produktů a funkcí s podporou AI: 
+
+* Bude tento produkt nebo funkce ve svém scénáři dobře fungovat? Před nasazením AI do svého scénáře otestujte, jak se provádí pomocí dat v reálném čase, a ujistěte se, že vám může doručovat přesnost, kterou potřebujete. 
+* Jsou zařízeny k identifikaci a reakci na chyby? Produkty a funkce s podporou AI nebudou vždy 100% přesné, takže zvažte, jak budete identifikovat a reagovat na případné chyby, ke kterým může dojít. 
+
+## <a name="general-guidelines-for-using-synthetic-voice-technology"></a>Obecné pokyny pro používání syntetické hlasové technologie 
 Tady jsou obecné pokyny pro návrh Microsoftu pro používání syntetické hlasové technologie. Tyto aplikace byly vyvinuty v studiích, které společnost Microsoft provedla s talentůmi hlasem, spotřebiteli a také jednotlivcům s poruchami řeči.
 
-## <a name="general-considerations"></a>Obecné aspekty
 Pro nasazení syntetické technologie řeči se ve většině scénářů platí následující pokyny.
 
 ### <a name="disclose-when-the-voice-is-synthetic"></a>Rozvírat po syntetickém hlasu
 V případě, že hlas je vygenerovaný počítačem, je vygenerována nejen minimalizace rizika škodlivých výsledků, ale také zvyšuje důvěryhodnost v organizaci, která hlas poskytuje. Přečtěte si další informace o [tom, jak zveřejnit](concepts-disclosure-guidelines.md).
+
+Společnost Microsoft vyžaduje, aby její zákazníci uzavřeli syntetickou povahu vlastního neuronové hlasu svým uživatelům. 
+* Ujistěte se, že máte k dispozici dostatečné informace pro cílové skupiny, zejména v případě, že používáte hlas známek známých osob, na základě informací o osobě, která ji doručuje, ať už je v vědomí nebo nevědomá.  Zveřejnění může být například na začátku všesměrového vysílání sdíleno. Další informace najdete v části [vzory zveřejnění](concepts-disclosure-patterns.md).   
+* Zvažte správné zpřístupnění rodičům nebo jiným stranám v případech použití, které jsou určeny pro mladistvé a podřízené položky – Pokud je váš případ použití určený pro mladistvé nebo podřízené objekty, budete muset zajistit, aby rodiče nebo právní strážce dokázali porozumět informacím o používání syntetického média a učinit správné rozhodnutí pro nezletilých nebo podřízených, ať už se jedná o používání prostředí. 
 
 ### <a name="select-appropriate-voice-types-for-your-scenario"></a>Vyberte vhodné typy hlasu pro váš scénář.
 Pečlivě zvažte kontext použití a potenciální poškození související s používáním syntetického hlasu. Například vysoce věrné syntetické hlasy nemusí být vhodné ve vysoce rizikových scénářích, například pro osobní zasílání zpráv, finanční transakce nebo složité situace, které vyžadují lidskou přizpůsobivost nebo soucit. Uživatelé mohou mít také různá očekávání pro typy hlasu. Například při naslouchání citlivých zpráv, které jsou čteny syntetickým hlasem, někteří uživatelé upřednostňují další empatického a podobné čtení zpráv, zatímco ostatní jsou upřednostňovány ještě více monotone, nevyváženého hlasu. Zvažte testování aplikace pro lepší pochopení uživatelských předvoleb.
@@ -39,8 +51,9 @@ V nejednoznačných transakčních scénářích (například na portálu pro po
 Pokud při práci se službou Voice talentů, jako jsou třeba hlasové objekty Actors, vytváříte syntetické hlasy, platí níže uvedená směrnice.
 
 ### <a name="obtain-meaningful-consent-from-voice-talent"></a>Získání smysluplného souhlasu ze služby Voice talentů
-Hlasový talentů očekává, že má ovládací prvek pro hlasová písma (jak a kde se bude používat) a že se bude na jejich použití kompenzovat kdykoli. Vlastníci systému by proto měli získat explicitní zapsané oprávnění ze služby Voice talentů a mít jasné smluvní specifikace pro případy použití, dobu trvání použití, kompenzaci atd. Některé hlasové talentůy nevědí o potenciálních škodlivých použitích technologií a měly by být určené pro vlastníky systému na schopnosti technologie. Pokud chcete získat další informace o talentů a souhlasech, přečtěte si naše [zveřejnění pro Voice talentů](/legal/cognitive-services/speech-service/disclosure-voice-talent).
+Hlasový zkušeností by měl mít kontrolu nad svým hlasovým modelem (jak a kde se bude používat) a bude kompenzovat jeho použití. Společnost Microsoft vyžaduje, aby zákazníci s vlastním hlasem získali explicitní zapsané oprávnění ze svých hlasových talentůů, aby mohli vytvořit syntetický hlas, a jeho smlouvu se šablonou Voice zkušeností pro dobu trvání, používání a omezení obsahu.  Pokud vytváříte syntetický hlas známé osoby, měli byste určit způsob, jakým může osoba za hlasem upravovat nebo schvalovat obsah.
 
+Některé hlasové zkušenostíy nevědí o potenciálních škodlivých použitích technologií a měly by být určené pro vlastníky systému na schopnosti technologie. Společnost Microsoft vyžaduje, aby zákazníci sdíleli [poskytování hlasu společnosti Microsoft pro hlasové talentů](/legal/cognitive-services/speech-service/disclosure-voice-talent) pomocí hlasových talentůů přímo nebo prostřednictvím autorizovaného zástupce hlasového talentůu, který popisuje, jak se syntetické hlasy vyvíjí a pracují ve spojení s textem pro služby řeči.
 
 ## <a name="considerations-for-those-with-speech-disorders"></a>Požadavky na ty s poruchami řeči
 Při práci s jednotlivými uživateli s poruchami řeči, aby mohli vytvářet nebo nasazovat syntetickou hlasovou technologii, platí následující pokyny.

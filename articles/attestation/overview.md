@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: a2b26ae8debf1c52693018ce9a758bfa9b029fa2
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 85585b771d9c0ed7c6fcdba9cfef7b589a987c8c
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093372"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429258"
 ---
 # <a name="microsoft-azure-attestation"></a>Microsoft Azure Attestation 
 
@@ -67,7 +67,7 @@ Ověření identity Azure je upřednostňovanou volbou pro ověřování TEEs, p
 
 - Sjednocené rozhraní pro ověřování více prostředí, jako jsou čipy TPM, SGX enclaves a VBS enclaves 
 - Víceklientská služba, která umožňuje konfiguraci vlastních poskytovatelů a zásad ověřování identity pro omezení generování tokenů
-- Nabízí výchozí poskytovatele, kteří můžou potvrzovat bez konfigurace od uživatelů.
+- Nabízí regionálním sdíleným poskytovatelům, které se můžou ověřit bez konfigurace uživatelů.
 - Chrání data při použití s implementací v SGX enklávy.
 - Služba s vysokou dostupností 
 

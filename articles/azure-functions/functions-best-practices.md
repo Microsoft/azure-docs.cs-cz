@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f05afb3c23fc720bb0100a751a6943d7bb03453f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 89ff49b3ea5abae7ced046f714d34943a58c64a6
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954779"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428296"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimalizace výkonu a spolehlivosti Azure Functions
 
@@ -63,6 +63,31 @@ Jak váš kód reaguje, když po vložení 5 000 těchto položek do fronty ke z
 Pokud byla položka fronty již zpracována, povolte funkci no-op.
 
 Využijte výhod obrannou liniích opatření, která už jsou k dispozici pro komponenty, které používáte v Azure Functions platformě. Například viz **zpracování zpráv o nepoškozených frontách** v dokumentaci pro [aktivační události a vazby fronty Azure Storage](functions-bindings-storage-queue-trigger.md#poison-messages). 
+
+## <a name="function-organization-best-practices"></a>Osvědčené postupy pro organizaci funkcí
+
+V rámci vašeho řešení můžete vyvíjet a publikovat více funkcí. Tyto funkce jsou často zkombinovány do jediné aplikace Function App, ale mohou být také spuštěny v samostatných aplikacích Function App. V plánech hostování na úrovni Premium a vyhrazené (App Service) můžou několik aplikací Function App sdílet stejné prostředky také spuštěním ve stejném plánu. Způsob seskupení funkcí a aplikací funkcí může mít vliv na výkon, škálování, konfiguraci, nasazení a zabezpečení vašeho celkového řešení. Neexistují pravidla, která se vztahují na všechny scénáře, takže při plánování a vývoji vašich funkcí zvažte informace v této části.
+
+### <a name="organize-functions-for-performance-and-scaling"></a>Uspořádání funkcí pro výkon a škálování
+
+Každá vytvořená funkce má paměťové nároky. I když je tato činnost obvykle nízká, může mít příliš mnoho funkcí v rámci aplikace Function App způsobit pomalejší spuštění aplikace na nových instancích. Také to znamená, že celkové využití paměti aplikace Function App může být vyšší. Je těžké říci, kolik funkcí by mělo být v jedné aplikaci, což závisí na konkrétním zatížení. Pokud však vaše funkce ukládá velké množství dat do paměti, zvažte, že v jedné aplikaci máte méně funkcí.
+
+Pokud spouštíte více aplikací funkcí v rámci jednoho plánu Premium nebo vyhrazeného (App Serviceho) plánu, všechny tyto aplikace se škálují společně. Pokud máte jednu aplikaci funkcí, která má mnohem větší požadavky na paměť než ostatní, používá v každé instanci, do které je aplikace nasazená, neúměrné množství paměťových prostředků. Vzhledem k tomu, že to může pro ostatní aplikace na jednotlivých instancích zůstat nedostupné méně paměti, můžete chtít spustit aplikaci Function App s vysokou pamětí, jako je to ve vlastním samostatném plánu hostování.
+
+> [!NOTE]
+> Při použití [plánu spotřeby](./functions-scale.md)doporučujeme, abyste každou aplikaci vždycky umístili do svého vlastního plánu, protože aplikace se pořád škálovat nezávisle.
+
+Zvažte, zda chcete seskupit funkce s různými profily zatížení. Například pokud máte funkci, která zpracovává mnoho tisíc zpráv fronty a druhý, který je používán pouze občas, ale má vysoké nároky na paměť, můžete je chtít nasadit v samostatných aplikacích funkcí, aby získaly vlastní sady prostředků a škálovat nezávisle na sobě.
+
+### <a name="organize-functions-for-configuration-and-deployment"></a>Uspořádání funkcí pro konfiguraci a nasazení
+
+Aplikace Function App mají `host.json` soubor, který se používá ke konfiguraci pokročilého chování triggerů funkcí a Azure Functions modulu runtime. Změny souboru se `host.json` vztahují na všechny funkce v rámci aplikace. Pokud máte některé funkce, které vyžadují vlastní konfigurace, zvažte jejich přesun do své vlastní aplikace Function App.
+
+Všechny funkce v místním projektu se nasazují společně jako sada souborů do aplikace Function App v Azure. Jednotlivé funkce možná budete muset nasadit samostatně nebo můžete použít funkce, jako jsou [sloty nasazení](./functions-deployment-slots.md) pro některé funkce, a ne jiné. V takových případech byste tyto funkce měli nasadit (v samostatných kódových projektech) do různých aplikací Function App.
+
+### <a name="organize-functions-by-privilege"></a>Uspořádání funkcí podle oprávnění 
+
+Připojovací řetězce a další přihlašovací údaje uložené v nastavení aplikace poskytují všem funkcím aplikace Function App stejnou sadu oprávnění v přidruženém prostředku. Pomocí přesunu funkcí, které tyto přihlašovací údaje nepoužívají, do samostatné aplikace Function App zvažte minimalizaci počtu funkcí s přístupem k určitým přihlašovacím údajům. K předávání dat mezi funkcemi v různých aplikacích funkcí můžete vždy použít techniky, jako je například [řetězení funkcí](/learn/modules/chain-azure-functions-data-using-bindings/) .  
 
 ## <a name="scalability-best-practices"></a>Osvědčené postupy škálovatelnosti
 

@@ -8,25 +8,24 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/12/2021
+ms.date: 02/01/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6895a47bc6d99a09408ca002ec48405a5c78682
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: ba000fd4cf79f2bb4a176bd7d5c33fc2dfff3781
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255674"
+ms.locfileid: "99428398"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Kurz: vývoj a plánování zřizování pro koncový bod SCIM
 
 Jako vývojář aplikace můžete použít systém pro rozhraní API pro správu uživatelů mezi doménami (SCIM) a povolit tak Automatické zřizování uživatelů a skupin mezi vaší aplikací a službou Azure AD. Tento článek popisuje, jak vytvořit koncový bod SCIM a jak ho integrovat se službou zřizování Azure AD. Specifikace SCIM poskytuje společné uživatelské schéma pro zřizování. Při použití ve spojení s federačními standardy, jako je SAML nebo OpenID Connect, SCIM poskytuje správcům ucelené řešení založené na standardech pro správu přístupu.
 
-SCIM je standardizovaná definice dvou koncových bodů: `/Users` koncový bod a `/Groups` koncový bod. Používá běžné operace REST k vytváření, aktualizaci a odstraňování objektů a předdefinované schéma pro běžné atributy, jako je název skupiny, uživatelské jméno, křestní jméno, příjmení a e-mail. Aplikace, které nabízejí SCIM 2,0 REST API můžou snížit nebo eliminovat přehlednost práce s rozhraním API pro správu uživatelů. Například libovolný kompatibilní klient SCIM ví, jak vytvořit novou položku uživatele pomocí HTTP POST objektu JSON pro `/Users` koncový bod. Místo toho, aby pro stejné základní akce bylo nutné trochu odlišné rozhraní API, můžou aplikace, které odpovídají standardu SCIM, okamžitě využít výhod existujících klientů, nástrojů a kódu. 
-
 ![Zřizování z Azure AD do aplikace pomocí SCIM](media/use-scim-to-provision-users-and-groups/scim-provisioning-overview.png)
+
+SCIM je standardizovaná definice dvou koncových bodů: `/Users` koncový bod a `/Groups` koncový bod. Používá běžné operace REST k vytváření, aktualizaci a odstraňování objektů a předdefinované schéma pro běžné atributy, jako je název skupiny, uživatelské jméno, křestní jméno, příjmení a e-mail. Aplikace, které nabízejí SCIM 2,0 REST API můžou snížit nebo eliminovat přehlednost práce s rozhraním API pro správu uživatelů. Například libovolný kompatibilní klient SCIM ví, jak vytvořit novou položku uživatele pomocí HTTP POST objektu JSON pro `/Users` koncový bod. Místo toho, aby pro stejné základní akce bylo nutné trochu odlišné rozhraní API, můžou aplikace, které odpovídají standardu SCIM, okamžitě využít výhod existujících klientů, nástrojů a kódu. 
 
 Standardní schéma uživatelského objektu a rozhraní REST API pro správu definovaná v SCIM 2,0 (RFC [7642](https://tools.ietf.org/html/rfc7642), [7643](https://tools.ietf.org/html/rfc7643), [7644](https://tools.ietf.org/html/rfc7644)) umožňují snazší integraci zprostředkovatelů identity a aplikací. Vývojáři aplikací, kteří vytvářejí koncový bod SCIM, mohou být integrováni s jakýmkoli klientem kompatibilním s SCIM, aniž by museli provádět vlastní práci.
 
@@ -70,6 +69,7 @@ Výše definované schéma by představovalo použití datové části JSON ní�
       "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
       "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
      "userName":"bjensen@testuser.com",
+     "id": "48af03ac28ad4fb88478",
      "externalId":"bjensen",
      "name":{
        "familyName":"Jensen",
@@ -914,7 +914,7 @@ Odeslání požadavku GET kontroleru tokenu k získání platného tokenu nosič
 
 ### <a name="handling-provisioning-and-deprovisioning-of-users"></a>Řízení zřizování a rušení zřizování uživatelů
 
-***Příklad 1. Dotazování služby pro odpovídajícího uživatele** _
+***Příklad 1. Dotazování služby pro odpovídajícího uživatele***
 
 Azure Active Directory dotazuje službu pro uživatele s `externalId` hodnotou atributu, která odpovídá hodnotě atributu mailNickname uživatele v Azure AD. Dotaz se vyjadřuje jako požadavek HTTP (Hypertext Transfer Protocol), jako je například tento příklad, kde jyoung je ukázka mailNickname uživatele v Azure Active Directory.
 
@@ -942,12 +942,12 @@ V ukázkovém kódu je požadavek přeložen do volání metody QueryAsync posky
 
 V ukázkovém dotazu pro uživatele s danou hodnotou pro `externalId` atribut jsou hodnoty argumentů předaných metodě QueryAsync:
 
-ukazatelů. AlternateFilters. Count: 1
+* ukazatelů. AlternateFilters. Count: 1
 * ukazatelů. AlternateFilters. ElementAt (0). AttributePath: "externalId"
 * ukazatelů. AlternateFilters. ElementAt (0). ComparisonOperator: ComparisonOperator. Equals
 * ukazatelů. AlternateFilter. ElementAt (0). ComparisonValue: "jyoung"
 
-***Příklad 2. Zřídit uživatele**
+***Příklad 2. Zřídit uživatele***
 
 Pokud odpověď na dotaz na webovou službu pro uživatele s `externalId` hodnotou atributu mailNickname uživatele nevrátí žádné uživatele, Azure Active Directory požadavky, které zajišťují, že služba zřídí uživatele, který odpovídá vašemu Azure Active Directory.  Tady je příklad takového požadavku: 
 
@@ -996,7 +996,7 @@ V ukázkovém kódu je požadavek přeložen do volání metody CreateAsync posk
 
 V žádosti o zřízení uživatele je hodnota argumentu prostředku instancí třídy Microsoft. SCIM. Core2EnterpriseUser definované v knihovně Microsoft. SCIM. schemas.  Pokud požadavek na zřízení uživatele uspěje, pak implementace metody očekává, že se vrátí instance třídy Microsoft. SCIM. Core2EnterpriseUser s hodnotou vlastnosti identifikátor nastavenou na jedinečný identifikátor nově zřízeného uživatele.  
 
-_*_Příklad 3. Dotaz na aktuální stav uživatele_*_ 
+***Příklad 3. Dotaz na aktuální stav uživatele*** 
 
 Chcete-li aktualizovat uživatele, který je známý jako v úložišti identit, front-SCIM, Azure Active Directory pokračuje tím, že požádá o aktuální stav tohoto uživatele ze služby s požadavkem, jako například: 
 
@@ -1020,14 +1020,14 @@ V ukázkovém kódu je požadavek přeložen do volání metody RetrieveAsync po
 
 V příkladu žádosti o načtení aktuálního stavu uživatele jsou hodnoty vlastností objektu, které jsou k dispozici jako hodnota argumentu Parameters, následující: 
   
-_ Identifikátor: "54D382A4-2050-4C03-94D1-E769F1D15682"
+* Identifikátor: "54D382A4-2050-4C03-94D1-E769F1D15682"
 * SchemaIdentifier: "urn: IETF: param: SCIM: schemas: Extension: Enterprise: 2.0: User"
 
-***Příklad 4. Dotaz na hodnotu referenčního atributu, který** se má aktualizovat _ 
+***Příklad 4. Dotaz na hodnotu referenčního atributu, který se má aktualizovat*** 
 
 Pokud má být aktualizován atribut reference, pak Azure Active Directory dotazování služby, aby zjistila, zda aktuální hodnota atributu reference v úložišti identit, na kterou služba zachází, se již shoduje s hodnotou tohoto atributu v Azure Active Directory. Pro uživatele je jediným atributem, pro který je aktuální hodnota dotazována tímto způsobem atribut správce. Tady je příklad žádosti o zjištění, zda má atribut Manager objektu User Object aktuálně určitou hodnotu: v ukázkovém kódu je požadavek přeložen do volání metody QueryAsync poskytovatele služby. Hodnota vlastností objektu poskytnutého jako hodnota argumentu parameters je následující: 
   
-ukazatelů. AlternateFilters. Count: 2
+* ukazatelů. AlternateFilters. Count: 2
 * ukazatelů. AlternateFilters. ElementAt (x). AttributePath: "ID"
 * ukazatelů. AlternateFilters. ElementAt (x). ComparisonOperator: ComparisonOperator. Equals
 * ukazatelů. AlternateFilter. ElementAt (x). ComparisonValue: "54D382A4-2050-4C03-94D1-E769F1D15682"
@@ -1039,7 +1039,7 @@ ukazatelů. AlternateFilters. Count: 2
 
 V tomto případě může být hodnota indexu x rovna 0 a hodnota indexu y může být 1 nebo hodnota x může být 1 a hodnota y může být 0 v závislosti na pořadí výrazů parametru dotazu filtru.   
 
-***Příklad 5. Požadavek od Azure AD do služby SCIM k aktualizaci uživatele** _ 
+***Příklad 5. Požadavek od Azure AD do služby SCIM k aktualizaci uživatele*** 
 
 Tady je příklad požadavku z Azure Active Directory na službu SCIM k aktualizaci uživatele: 
 
@@ -1078,7 +1078,7 @@ V ukázkovém kódu je požadavek přeložen do volání metody UpdateAsync posk
 
 V příkladu žádosti o aktualizaci uživatele má objekt zadaný jako hodnota argumentu patch tyto hodnoty vlastností: 
   
-_ ResourceIdentifier. Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
+* ResourceIdentifier. Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
 * ResourceIdentifier. SchemaIdentifier: "urn: IETF: Paras: SCIM: schemas: Enterprise: 2.0: User"
 * (PatchRequest as PatchRequest2). Operace. Count: 1
 * (PatchRequest as PatchRequest2). Operations. ElementAt (0). OperationName: OperationName. Add
@@ -1087,7 +1087,7 @@ _ ResourceIdentifier. Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
 * (PatchRequest as PatchRequest2). Operations. ElementAt (0). Value. ElementAt (0). Referenční informace: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
 * (PatchRequest as PatchRequest2). Operations. ElementAt (0). Value. ElementAt (0). Hodnota: 2819c223-7f76-453A-919d-413861904646
 
-***Příklad 6. Zrušení zřízení uživatele** _
+***Příklad 6. Zrušení zřízení uživatele***
 
 Pokud chcete zrušit zřízení uživatele z úložiště identit, které přednáší služba SCIM, Azure AD pošle žádost, například:
 
@@ -1110,7 +1110,7 @@ V ukázkovém kódu je požadavek přeložen do volání metody DeleteAsync posk
 
 Objekt poskytnutý jako hodnota argumentu resourceIdentifier má tyto hodnoty vlastností v příkladu požadavku na zrušení zřízení uživatele: 
 
-_ ResourceIdentifier. Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
+* ResourceIdentifier. Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
 * ResourceIdentifier. SchemaIdentifier: "urn: IETF: Paras: SCIM: schemas: Enterprise: 2.0: User"
 
 ## <a name="step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client"></a>Krok 4: integrace koncového bodu SCIM s klientem Azure AD SCIM
@@ -1151,8 +1151,8 @@ Aplikace, které podporují profil SCIM popsané v tomto článku, se dají při
 7. Do pole **Adresa URL tenanta** zadejte adresu URL koncového bodu SCIM aplikace. Příklad: `https://api.contoso.com/scim/`
 8. Pokud koncový bod SCIM vyžaduje token nosiče OAuth od jiného vydavatele než Azure AD, Zkopírujte požadovaný token Bearer OAuth do pole volitelného **tajného tokenu** . Pokud toto pole zůstane prázdné, Azure AD zahrnuje token nosiče OAuth vydaný z Azure AD s každým požadavkem. Aplikace, které používají Azure AD jako zprostředkovatel identity, můžou ověřit tento token vydaný službou Azure AD. 
    > [!NOTE]
-   > *_* Nedoporučujeme_* toto pole nechat prázdné a spoléhat se na token generovaný službou Azure AD. Tato možnost je primárně k dispozici pro účely testování.
-9. Vyberte _ *test Connection**, aby se Azure Active Directory pokus o připojení ke koncovému bodu SCIM. Pokud se pokus nezdaří, zobrazí se informace o chybě.  
+   > ***Nedoporučujeme*** toto pole nechat prázdné a spoléhat se na token generovaný službou Azure AD. Tato možnost je primárně k dispozici pro účely testování.
+9. Vyberte **Test připojení** , aby se Azure Active Directory pokus o připojení ke koncovému bodu SCIM. Pokud se pokus nezdaří, zobrazí se informace o chybě.  
 
     > [!NOTE]
     > **Test Connection** se dotazuje na koncový bod SCIM pro uživatele, který neexistuje, pomocí NÁHODNÉho identifikátoru GUID jako odpovídající vlastnosti vybrané v konfiguraci služby Azure AD. Očekávaná správná odpověď je HTTP 200 OK s prázdnou SCIM zprávou ListResponse.

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 59e60dadda7c0de37cfabadbc36ca53bc3c2b336
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: cfb75b6383d8ca449b4bc54b9d21cb16b3a4ad40
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563728"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428179"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globální přenosová architektura sítě a virtuální síť WAN
 
@@ -133,9 +133,6 @@ Rozbočovače Azure Virtual WAN propojování všech koncových bodů sítě v r
 
 **Obrázek 5: zabezpečené virtuální centrum s Azure Firewall**
 
-> [!NOTE]
-> Mezi centrem s bránou firewall se aktuálně nepodporují. Provoz mezi rozbočovači se přesune přímo z Azure Firewall v každém centru.
-
 Azure Firewall k virtuální síti WAN podporuje následující cesty globálního připojení pro zabezpečené průjezdy. Písmena v závorkách se mapují na obrázek 5.
 
 * Zabezpečený přenos VNet-to-VNet (e)
@@ -152,6 +149,23 @@ Připojení typu VNet-to-Internet umožňuje virtuální sítě připojit se k I
 
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>Služba zabezpečení z více stran na Internet nebo pro službu zabezpečení třetí strany (j)
 Síť s připojením k Internetu umožňuje větví připojit se k Internetu prostřednictvím Azure Firewall ve virtuálním centru WAN. Provoz do Internetu prostřednictvím podporovaných služeb zabezpečení třetích stran neprovádí tok prostřednictvím Azure Firewall. Pomocí správce Azure Firewall můžete nakonfigurovat cestu k síti Internet prostřednictvím podporované služby zabezpečení třetí strany. 
+
+### <a name="branch-to-branch-secured-transit-cross-region-f"></a>Zabezpečený tranzitní přechod mezi jednotlivými větvemi (f)
+
+Větve je možné připojit k zabezpečenému virtuálnímu rozbočovači pomocí Azure Firewall s využitím okruhů ExpressRoute a připojení VPN typu Site-to-site. Větve můžete připojit k virtuálnímu rozbočovači WAN, který je v oblasti nejbližší k této větvi.
+
+Tato možnost umožňuje podnikům využít páteřní síť Azure pro připojení větví. I když je tato možnost k dispozici, měli byste zvážit výhody propojení větví přes Azure Virtual WAN vs. pomocí privátní sítě WAN.  
+
+> [!NOTE]
+> V současné době není podporováno souběžné zpracování provozu přes bránu firewall. Provoz mezi rozbočovači bude směrován do správné větve v rámci zabezpečeného virtuálního rozbočovače, ale přenosy budou obejít Azure Firewall v každém centru.
+
+### <a name="branch-to-vnet-secured-transit-g"></a>Zabezpečený tranzitní větev mezi virtuálními sítěmi (g)
+
+Zabezpečený přenos větví na virtuální síť umožňuje větvím komunikovat s virtuálními sítěmi ve stejné oblasti jako virtuální síť WAN a také v jiné virtuální síti připojené k jinému virtuálnímu rozbočovači WAN v jiné oblasti.
+
+> [!NOTE]
+> Mezi centrem s bránou firewall se aktuálně nepodporují. Provoz mezi rozbočovači se přesune přímo z Azure Firewall v každém centru.  Přenos prostřednictvím připojení určeného pro virtuální síť ve stejné oblasti bude zpracován Azure Firewall v zabezpečeném centru.
+
 
 ### <a name="how-do-i-enable-default-route-00000-in-a-secured-virtual-hub"></a>Návody povolit výchozí trasu (0.0.0.0/0) v zabezpečeném virtuálním centru
 

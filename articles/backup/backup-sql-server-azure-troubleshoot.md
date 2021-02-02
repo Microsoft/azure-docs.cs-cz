@@ -3,12 +3,12 @@ title: Řešení potíží se zálohováním databáze SQL Server
 description: Informace o řešení potíží při zálohování SQL Server databází běžících na virtuálních počítačích Azure s Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: d702959be70716f0c2bc85920bdb7aa3e061aff1
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: d502a4188b4f9f383188804f86abbb9a6d05d146
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733913"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429462"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup
 
@@ -164,7 +164,7 @@ Pokud chcete aktivovat obnovení v dobré instanci SQL, proveďte následující
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Záloha protokolů použitá k obnovení obsahuje hromadně protokolované změny. Nedá se použít k zastavení v libovolném bodě v čase podle pokynů SQL. | Když je databáze v režimu hromadného obnovení, data mezi hromadně protokolovanými transakcemi a další transakce protokolu se nedají obnovit. | Vyberte jiný bod v čase pro obnovení. [Přečtěte si další informace](/sql/relational-databases/backup-restore/recovery-models-sql-server).
+| Záloha protokolů použitá k obnovení obsahuje hromadně protokolované změny. Nedá se použít k zastavení v libovolném bodě v čase podle pokynů SQL. | Když je databáze v režimu hromadného obnovení, data mezi hromadně protokolovanými transakcemi a další transakce protokolu se nedají obnovit. | Vyberte jiný bod v čase pro obnovení. [Další informace](/sql/relational-databases/backup-restore/recovery-models-sql-server).
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -217,7 +217,7 @@ Než zahájíte operaci opětovného zápisu, proveďte kontrolu jednoho nebo v�
 
   - Nemáte oprávnění k provádění operací souvisejících se zálohováním virtuálního počítače.
   - Vypnutí virtuálního počítače, takže zálohy nejdou uskutečnit.
-  - Problémy se sítí.
+  - [Problémy se sítí](#usererrorvminternetconnectivityissue)
 
    ![opětovné registrace virtuálního počítače](./media/backup-azure-sql-database/re-register-vm.png)
 

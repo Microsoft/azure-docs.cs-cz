@@ -7,12 +7,13 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c6c09dc771692cb2fc2f36840e729874cfaf2d09
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.custom: references_regions
+ms.openlocfilehash: 3cd7d2541cb980fc5ca6a1a9c42a430eac1ecb1b
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572812"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429275"
 ---
 # <a name="basic-concepts"></a>Základní koncepty
 
@@ -30,9 +31,9 @@ Níže jsou uvedené základní koncepty týkající se Microsoft Azure ověřen
 
 Zprostředkovatel ověření identity patří do poskytovatele prostředků Azure s názvem Microsoft. Attestation. Poskytovatel prostředků je koncový bod služby, který poskytuje kontrakt Azure pro ověření identity REST a je nasazený pomocí [Azure Resource Manager](../azure-resource-manager/management/overview.md). Každý poskytovatel ověření identity respektuje konkrétní, zjistitelnou zásadu. Poskytovatelé ověřování identity se vytvoří s výchozími zásadami pro každý typ ověření identity (Všimněte si, že VBS enklávy nemá žádné výchozí zásady). Další podrobnosti o výchozích zásadách pro SGX najdete v tématu [Příklady zásad ověřování](policy-examples.md) .
 
-### <a name="regional-default-provider"></a>Regionální výchozí zprostředkovatel
+### <a name="regional-shared-provider"></a>Oblastní sdílený poskytovatel
 
-Azure Attestation poskytuje v každé oblasti výchozího zprostředkovatele. Zákazníci se můžou rozhodnout použít výchozího poskytovatele pro ověření identity nebo vytvořit vlastní poskytovatele s vlastními zásadami. Výchozí poskytovatelé jsou přístupné pro všechny uživatele Azure AD a zásady přidružené k výchozímu zprostředkovateli se nedají změnit.
+Azure Attestation poskytuje regionálnímu sdílenému poskytovateli v každé oblasti, která je k dispozici. Zákazníci si můžou zvolit použití regionálního sdíleného poskytovatele pro ověření identity nebo vytvořit vlastní poskytovatele s vlastními zásadami. Shared Providers je přístupná pro všechny uživatele Azure AD a zásady, které s ní souvisejí, se nedají změnit.
 
 | Oblast | Identifikátor URI ověření | 
 |--|--|

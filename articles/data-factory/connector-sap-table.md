@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/01/2020
-ms.openlocfilehash: 4505deaa4cc11c00c7283ef686827d6893c2742a
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.date: 02/01/2021
+ms.openlocfilehash: b796b9eb065a221904fe4487c900efa2db1955af
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280424"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429501"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopírování dat z tabulky SAP pomocí Azure Data Factory
 
@@ -53,7 +53,7 @@ Konkrétně tato konektorová tabulka SAP podporuje:
 Verze 7,01 nebo novější odkazuje na verzi SAP NetWeaver namísto verze SAP ECC. Například SAP ECC 6,0 EHP 7 obecně má NetWeaver verzi >= 7,4. V případě, že si nejste jisti vaším prostředím, tady je postup, jak ověřit verzi ze systému SAP:
 
 1. Pomocí grafického uživatelského rozhraní SAP se připojte k systému SAP. 
-2. Přejít na **System**  ->  **stav** systému. 
+2. Přejít na   ->  **stav** systému. 
 3. Zkontrolujte vydání SAP_BASIS, ujistěte se, že je větší nebo rovno 701.  
       ![Kontrolovat SAP_BASIS](./media/connector-sap-table/sap-basis.png)
 
@@ -84,25 +84,25 @@ Následující vlastnosti jsou podporovány pro propojenou službu SAP BW Open h
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| `type` | `type`Vlastnost musí být nastavena na hodnotu `SapTable` . | Ano |
-| `server` | Název serveru, na kterém je umístěna instance SAP.<br/>Slouží k připojení k aplikačnímu serveru SAP. | Ne |
-| `systemNumber` | Číslo systému systému SAP.<br/>Slouží k připojení k aplikačnímu serveru SAP.<br/>Povolená hodnota: dvoumístné desetinné číslo reprezentované jako řetězec. | Ne |
-| `messageServer` | Název hostitele serveru zpráv SAP.<br/>Slouží k připojení k serveru zpráv SAP. | Ne |
-| `messageServerService` | Název služby nebo číslo portu serveru zpráv.<br/>Slouží k připojení k serveru zpráv SAP. | Ne |
-| `systemId` | ID systému SAP, ve kterém je tabulka umístěna.<br/>Slouží k připojení k serveru zpráv SAP. | Ne |
-| `logonGroup` | Přihlašovací skupina pro systém SAP.<br/>Slouží k připojení k serveru zpráv SAP. | Ne |
-| `clientId` | ID klienta v systému SAP.<br/>Povolená hodnota: desítkové číslo se třemi číslicemi reprezentované jako řetězec. | Ano |
-| `language` | Jazyk, který používá systém SAP.<br/>Výchozí hodnota je `EN`.| Ne |
-| `userName` | Jméno uživatele, který má přístup k serveru SAP. | Ano |
-| `password` | Heslo pro uživatele. Označte toto pole `SecureString` typem pro bezpečné uložení v Data Factory nebo [odkaz na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| `sncMode` | Indikátor aktivace SNC pro přístup k serveru SAP, na kterém je tabulka umístěna.<br/>Použijte, pokud chcete použít SNC pro připojení k serveru SAP.<br/>Povolené hodnoty jsou `0` (vypnuto, výchozí) nebo `1` (zapnuto). | Ne |
-| `sncMyName` | Název SNC iniciátoru pro přístup k serveru SAP, na kterém je tabulka umístěna.<br/>Platí `sncMode` , pokud je zapnutý. | Ne |
-| `sncPartnerName` | Název SNC komunikačního partnera pro přístup k serveru SAP, na kterém je tabulka umístěna.<br/>Platí `sncMode` , pokud je zapnutý. | Ne |
-| `sncLibraryPath` | Knihovna externího produktu zabezpečení pro přístup k serveru SAP, na kterém je tabulka umístěna.<br/>Platí `sncMode` , pokud je zapnutý. | Ne |
-| `sncQop` | Úroveň ochrany SNC kvality, kterou chcete použít.<br/>Platí `sncMode` , pokud je zapnutý. <br/>Povolené hodnoty jsou `1` (ověřování), `2` (integrita), ( `3` Ochrana osobních údajů), `8` (výchozí), `9` (maximum). | Ne |
-| `connectVia` | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Vyžaduje se místní prostředí Integration runtime, jak bylo zmíněno dříve v [požadavcích](#prerequisites). |Ano |
+| `type` | `type`Vlastnost musí být nastavena na hodnotu `SapTable` . | Yes |
+| `server` | Název serveru, na kterém je umístěna instance SAP.<br/>Slouží k připojení k aplikačnímu serveru SAP. | No |
+| `systemNumber` | Číslo systému systému SAP.<br/>Slouží k připojení k aplikačnímu serveru SAP.<br/>Povolená hodnota: dvoumístné desetinné číslo reprezentované jako řetězec. | No |
+| `messageServer` | Název hostitele serveru zpráv SAP.<br/>Slouží k připojení k serveru zpráv SAP. | No |
+| `messageServerService` | Název služby nebo číslo portu serveru zpráv.<br/>Slouží k připojení k serveru zpráv SAP. | No |
+| `systemId` | ID systému SAP, ve kterém je tabulka umístěna.<br/>Slouží k připojení k serveru zpráv SAP. | No |
+| `logonGroup` | Přihlašovací skupina pro systém SAP.<br/>Slouží k připojení k serveru zpráv SAP. | No |
+| `clientId` | ID klienta v systému SAP.<br/>Povolená hodnota: desítkové číslo se třemi číslicemi reprezentované jako řetězec. | Yes |
+| `language` | Jazyk, který používá systém SAP.<br/>Výchozí hodnota je `EN`.| No |
+| `userName` | Jméno uživatele, který má přístup k serveru SAP. | Yes |
+| `password` | Heslo pro uživatele. Označte toto pole `SecureString` typem pro bezpečné uložení v Data Factory nebo [odkaz na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| `sncMode` | Indikátor aktivace SNC pro přístup k serveru SAP, na kterém je tabulka umístěna.<br/>Použijte, pokud chcete použít SNC pro připojení k serveru SAP.<br/>Povolené hodnoty jsou `0` (vypnuto, výchozí) nebo `1` (zapnuto). | No |
+| `sncMyName` | Název SNC iniciátoru pro přístup k serveru SAP, na kterém je tabulka umístěna.<br/>Platí `sncMode` , pokud je zapnutý. | No |
+| `sncPartnerName` | Název SNC komunikačního partnera pro přístup k serveru SAP, na kterém je tabulka umístěna.<br/>Platí `sncMode` , pokud je zapnutý. | No |
+| `sncLibraryPath` | Knihovna externího produktu zabezpečení pro přístup k serveru SAP, na kterém je tabulka umístěna.<br/>Platí `sncMode` , pokud je zapnutý. | No |
+| `sncQop` | Úroveň ochrany SNC kvality, kterou chcete použít.<br/>Platí `sncMode` , pokud je zapnutý. <br/>Povolené hodnoty jsou `1` (ověřování), `2` (integrita), ( `3` Ochrana osobních údajů), `8` (výchozí), `9` (maximum). | No |
+| `connectVia` | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Vyžaduje se místní prostředí Integration runtime, jak bylo zmíněno dříve v [požadavcích](#prerequisites). |Yes |
 
-**Příklad 1: připojení k aplikačnímu serveru SAP**
+### <a name="example-1-connect-to-an-sap-application-server"></a>Příklad 1: připojení k aplikačnímu serveru SAP
 
 ```json
 {
@@ -192,8 +192,8 @@ Chcete-li kopírovat data z a do propojené služby SAP BW Open hub, jsou podpor
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| `type` | `type`Vlastnost musí být nastavena na hodnotu `SapTableResource` . | Ano |
-| `tableName` | Název tabulky SAP, ze které se mají kopírovat data | Ano |
+| `type` | `type`Vlastnost musí být nastavena na hodnotu `SapTableResource` . | Yes |
+| `tableName` | Název tabulky SAP, ze které se mají kopírovat data | Yes |
 
 ### <a name="example"></a>Příklad
 
@@ -224,17 +224,17 @@ Chcete-li kopírovat data z tabulky SAP, jsou podporovány následující vlastn
 
 | Vlastnost                         | Popis                                                  | Povinné |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
-| `type`                             | `type`Vlastnost musí být nastavena na hodnotu `SapTableSource` .         | Ano      |
-| `rowCount`                         | Počet řádků, které mají být načteny.                              | Ne       |
-| `rfcTableFields`                 | Pole (sloupce), která se mají kopírovat z tabulky SAP Například, `column0, column1`. | Ne       |
-| `rfcTableOptions`                | Možnosti pro filtrování řádků v tabulce SAP Například, `COLUMN0 EQ 'SOMEVALUE'`. Další informace najdete v tabulce operátor dotazů SAP dále v tomto článku. | Ne       |
-| `customRfcReadTableFunctionModule` | Vlastní modul funkcí RFC, který lze použít ke čtení dat z tabulky SAP.<br>Pomocí vlastního modulu funkce RFC můžete definovat, jak se data načítají z vašeho systému SAP a vrátit se do Data Factory. Vlastní modul funkcí musí mít implementované rozhraní (import, export, tabulky), které `/SAPDS/RFC_READ_TABLE2` je podobné, což je výchozí rozhraní používané Data Factory.<br>Data Factory | Ne       |
-| `partitionOption`                  | Mechanismus oddílu pro čtení z tabulky SAP. Mezi podporované možnosti patří: <ul><li>`None`</li><li>`PartitionOnInt` (normální celé číslo nebo celočíselné hodnoty s nulovým odsazením vlevo, například `0000012345` )</li><li>`PartitionOnCalendarYear` (4 číslice ve formátu "rrrr")</li><li>`PartitionOnCalendarMonth` (6 číslic ve formátu "YYYYMM")</li><li>`PartitionOnCalendarDate` (8 číslic ve formátu "RRRRMMDD")</li><li>`PartitionOntime` (6 číslic ve formátu "HHMMSS", například `235959` )</li></ul> | Ne       |
-| `partitionColumnName`              | Název sloupce, který se používá k vytvoření oddílů dat                | Ne       |
-| `partitionUpperBound`              | Maximální hodnota sloupce určeného v `partitionColumnName` , která bude použita pro pokračování v dělení. | Ne       |
-| `partitionLowerBound`              | Minimální hodnota sloupce zadaného v `partitionColumnName` , který bude použit pro pokračování v dělení. (Poznámka: `partitionLowerBound` při volbě oddílu nemůže být "0" `PartitionOnInt` ) | Ne       |
-| `maxPartitionsNumber`              | Maximální počet oddílů, do kterých se mají rozdělit data     | Ne       |
-| `sapDataColumnDelimiter` | Jeden znak, který se používá jako oddělovač předaný do SAP RFC pro rozdělení výstupních dat. | Ne |
+| `type`                             | `type`Vlastnost musí být nastavena na hodnotu `SapTableSource` .         | Yes      |
+| `rowCount`                         | Počet řádků, které mají být načteny.                              | No       |
+| `rfcTableFields`                 | Pole (sloupce), která se mají kopírovat z tabulky SAP Například `column0, column1`. | No       |
+| `rfcTableOptions`                | Možnosti pro filtrování řádků v tabulce SAP Například `COLUMN0 EQ 'SOMEVALUE'`. Další informace najdete v tabulce operátor dotazů SAP dále v tomto článku. | No       |
+| `customRfcReadTableFunctionModule` | Vlastní modul funkcí RFC, který lze použít ke čtení dat z tabulky SAP.<br>Pomocí vlastního modulu funkce RFC můžete definovat, jak se data načítají z vašeho systému SAP a vrátit se do Data Factory. Vlastní modul funkcí musí mít implementované rozhraní (import, export, tabulky), které `/SAPDS/RFC_READ_TABLE2` je podobné, což je výchozí rozhraní používané Data Factory.<br>Data Factory | No       |
+| `partitionOption`                  | Mechanismus oddílu pro čtení z tabulky SAP. Mezi podporované možnosti patří: <ul><li>`None`</li><li>`PartitionOnInt` (normální celé číslo nebo celočíselné hodnoty s nulovým odsazením vlevo, například `0000012345` )</li><li>`PartitionOnCalendarYear` (4 číslice ve formátu "rrrr")</li><li>`PartitionOnCalendarMonth` (6 číslic ve formátu "YYYYMM")</li><li>`PartitionOnCalendarDate` (8 číslic ve formátu "RRRRMMDD")</li><li>`PartitionOntime` (6 číslic ve formátu "HHMMSS", například `235959` )</li></ul> | No       |
+| `partitionColumnName`              | Název sloupce, který se používá k vytvoření oddílů dat                | No       |
+| `partitionUpperBound`              | Maximální hodnota sloupce určeného v `partitionColumnName` , která bude použita pro pokračování v dělení. | No       |
+| `partitionLowerBound`              | Minimální hodnota sloupce zadaného v `partitionColumnName` , který bude použit pro pokračování v dělení. (Poznámka: `partitionLowerBound` při volbě oddílu nemůže být "0" `PartitionOnInt` ) | No       |
+| `maxPartitionsNumber`              | Maximální počet oddílů, do kterých se mají rozdělit data     | No       |
+| `sapDataColumnDelimiter` | Jeden znak, který se používá jako oddělovač předaný do SAP RFC pro rozdělení výstupních dat. | No |
 
 >[!TIP]
 >Pokud má tabulka SAP velký objem dat, například několik miliard řádků, použijte `partitionOption` a `partitionSetting` k rozdělení dat do menších oddílů. V takovém případě se data čtou na oddíl a každý datový oddíl se načte ze serveru SAP prostřednictvím jednoho volání RFC.<br/>
@@ -294,6 +294,60 @@ V nástroji `rfcTableOptions` můžete použít následující běžné operáto
     }
 ]
 ```
+
+## <a name="join-sap-tables"></a>Připojit tabulky SAP
+
+Konektor SAP TABLE Connector podporuje pouze jednu jednu tabulku s výchozím modulem Function. Chcete-li získat připojená data více tabulek, můžete využít vlastnost [customRfcReadTableFunctionModule](#copy-activity-properties) v konektoru SAP TABLE Connector následujícím postupem:
+
+- [Napište vlastní modul funkcí](#create-custom-function-module), který může přijímat dotazy jako možnosti a použít vlastní logiku pro načtení dat.
+- Pro vlastní modul Function zadejte název vlastního modulu Function.
+- Pro možnosti tabulky RFC zadejte příkaz JOIN, který se má použít jako možnosti, jako je například `<TABLE1>` vnitřní spojení `<TABLE2>` v COLUMN0.
+
+Níže je příklad:
+
+![Spojení s tabulkou SAP](./media/connector-sap-table/sap-table-join.png) 
+
+>[!TIP]
+>Můžete také zvážit, že jsou připojená data agregovaná v zobrazení, které podporuje konektor tabulky SAP.
+>Můžete se také pokusit extrahovat související tabulky, abyste se mohli připojit k Azure (např. Azure Storage, Azure SQL Database), pak pomocí toku dat můžete pokračovat s dalšími připojeními nebo filtry.
+
+## <a name="create-custom-function-module"></a>Vytvořit vlastní modul funkcí
+
+Pro tabulku SAP aktuálně podporujeme vlastnost [customRfcReadTableFunctionModule](#copy-activity-properties) ve zdroji kopie, která umožňuje využívat vlastní logiku a zpracovat data.
+
+Tady je stručný přehled některých požadavků, které vám pomohou začít s "vlastním modulem Function":
+
+- Definice:
+
+    ![Definice](./media/connector-sap-table/custom-function-module-definition.png) 
+
+- Exportujte data do jedné z následujících tabulek:
+
+    ![Exportovat tabulku 1](./media/connector-sap-table/export-table-1.png) 
+
+    ![Exportovat tabulku 2](./media/connector-sap-table/export-table-2.png)
+ 
+Níže najdete ilustraci, jak funguje konektor Table SAP s modulem Custom Function:
+
+1. Sestavujte připojení k serveru SAP prostřednictvím SAP NCO.
+
+1. Vyvolejte "Custom Function Module" s parametry nastavenými níže:
+
+    - QUERY_TABLE: název tabulky, který jste nastavili v datové sadě tabulky SAP pro rozhraní ADF. 
+    - Oddělovač: oddělovač, který jste nastavili ve zdroji tabulky nástroje ADF pro SAP; 
+    - ROWCOUNT/Option/pole: RowCount/agregovaná možnost/pole, která jste nastavili ve zdroji tabulky ADF.
+
+1. Získejte výsledek a analyzujte data níže uvedenými způsoby:
+
+    1. Chcete-li získat schémata, analyzujte hodnotu v tabulce Fields.
+
+        ![Analyzovat hodnoty v polích](./media/connector-sap-table/parse-values.png)
+
+    1. Získejte hodnoty výstupní tabulky, abyste viděli, která tabulka tyto hodnoty obsahuje.
+
+        ![Načíst hodnoty ve výstupní tabulce](./media/connector-sap-table/get-values.png)
+
+    1. Získejte hodnoty v OUT_TABLE, analyzujte data a pak je zapište do jímky.
 
 ## <a name="data-type-mappings-for-an-sap-table"></a>Mapování datových typů pro tabulku SAP
 

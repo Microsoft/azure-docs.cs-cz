@@ -4,15 +4,15 @@ description: Řešení běžných problémů v nasazení na Synchronizace soubor
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 1/15/2021
+ms.date: 2/1/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 49184778c7d6592f074e04df535b9bc221f3162e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 65a1f8ef82ba9ec35e01a61d9682ebed0b9ba04c
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878795"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428330"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Synchronizace souborů Azure můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -210,18 +210,10 @@ Na serveru, na kterém se zobrazuje stav "je v režimu offline" na portálu, se 
         - Pokud chcete používat rutiny protokolu TLS, přečtěte si téma [Konfigurace pořadí šifrovacích sad TLS pomocí rutin prostředí PowerShell pro TLS](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets).
     
         Synchronizace souborů Azure aktuálně podporuje následující šifrovací sady pro protokol TLS 1,2:  
-        - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384  
-        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256  
-        - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384  
-        - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256  
         - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256  
         - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256  
         - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256  
         - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256  
-        - TLS_RSA_WITH_AES_256_GCM_SHA384  
-        - TLS_RSA_WITH_AES_128_GCM_SHA256  
-        - TLS_RSA_WITH_AES_256_CBC_SHA256  
-        - TLS_RSA_WITH_AES_128_CBC_SHA256  
 
 - Pokud byl **dokončen GetNextJob se stavem:-2134347764** , server nebude schopen komunikovat se službou synchronizace souborů Azure z důvodu vypršení platnosti nebo odstranění certifikátu.  
     - Spusťte na serveru následující příkaz PowerShellu pro resetování certifikátu použitého pro ověřování:

@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: 36eac4c60e0d7fd54ec304f0f17c2ecb454f0629
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: ce37e26730fbef9e5e40fd95190727062f9044ac
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063407"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428935"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>Připojení Data Factory k Azure dosah (Preview)
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -36,7 +36,7 @@ Azure dosah je nová cloudová služba, kterou můžou uživatelé dat centráln
 3. Po připojení byste měli být schopni zobrazit název účtu dosah v **účtu dosah** karty. 
 4. K vyhledání dat můžete použít panel hledání v horním středu portálu Azure Data Factory. 
 
-Pokud se zobrazí upozornění na portálu Azure Data Factor po registraci účtu Azure dosah do Data Factory, vyřešte tento problém podle následujících kroků:
+Pokud se zobrazí upozornění na portálu Azure Data Factory po registraci účtu Azure dosah, který se má Data Factory, vyřešte tento problém podle následujících kroků:
 
 :::image type="content" source="./media/data-factory-purview/register-purview-account-warning.png" alt-text="Snímek obrazovky s upozorněním na registraci účtu dosah":::
 

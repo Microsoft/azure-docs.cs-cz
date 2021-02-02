@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 11/09/2020
+ms.date: 02/01/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: fa6fc11441811589967ddd7728501b521f9f9155
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b948de6ad9e07a650df98ef38104c02462ab532d
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169269"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428027"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Kódy chyb ověřování a autorizace Azure AD
 
@@ -60,7 +60,7 @@ Tady je Ukázková chybová odpověď:
 
 `error`Pole má několik možných hodnot – Přečtěte si odkazy na dokumentaci k protokolu a specifikace OAuth 2,0, abyste se dozvěděli víc o specifických chybách (například `authorization_pending` v [toku kódu zařízení](v2-oauth2-device-code.md)) a jak na ně reagovat.  Zde jsou uvedeny některé běžné položky:
 
-| Kód chyby         | Popis        | Akce klienta    |
+| Kód chyby         | Description        | Akce klienta    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Chyba protokolu, například chybějící požadovaný parametr. | Opravte a odešlete požadavek znovu.|
 | `invalid_grant`    | Některé materiály pro ověřování (ověřovací kód, token aktualizace, přístupový token, PKCE) byly neplatné, neanalyzovatelné, chybějící nebo jinak nepoužitelné. | Vyzkoušejte nový požadavek na `/authorize` koncový bod, abyste získali nový autorizační kód.  Zvažte možnost zkontrolovat a ověřit používání protokolů v této aplikaci. |
@@ -95,6 +95,7 @@ Pokud například obdržíte kód chyby "AADSTS50058", proveďte hledání [http
 | AADSTS50000 | TokenIssuanceError – došlo k potížím s přihlašovací službou. Pokud chcete tento problém vyřešit, [otevřete požadavek na podporu](../fundamentals/active-directory-troubleshooting-support-howto.md). |
 | AADSTS50001 | InvalidResource – prostředek je zakázaný nebo neexistuje. Zkontrolujte kód vaší aplikace a ujistěte se, že jste zadali přesnou adresu URL prostředku pro prostředek, ke kterému se pokoušíte získat přístup.  |
 | AADSTS50002 | NotAllowedTenant – přihlášení nebylo úspěšné kvůli omezenému přístupu k proxy serveru v tenantovi. Pokud se jedná o vaše vlastní zásady tenanta, můžete tento problém vyřešit změnou nastavení zakázaného tenanta. |
+| AADSTS500021 | Přístup k tenantovi {tenant} je odepřený. AADSTS500021 označuje, že je nakonfigurovaná funkce omezení tenanta a že se uživatel pokouší získat přístup k tenantovi, který není v seznamu povolených tenantů uvedených v hlavičce `Restrict-Access-To-Tenant` . Další informace najdete v tématu [použití omezení tenanta ke správě přístupu k SaaS cloudovým aplikacím](/azure/active-directory/manage-apps/tenant-restrictions).|
 | AADSTS50003 | MissingSigningKey – přihlášení nebylo úspěšné, protože chybí podpisový klíč nebo certifikát. To může být způsobeno tím, že v aplikaci nebyl nakonfigurován žádný podpisový klíč. Podívejte se na řešení popsaných na [... /Manage-apps/application-Sign-in-problem-Federated-SSO-Gallery.MD # Certificate-nebo-Key – Nenakonfigurováno](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured). Pokud se pořád zobrazují problémy, obraťte se na vlastníka aplikace nebo správce aplikace. |
 | AADSTS50005 | DevicePolicyError – uživatel se pokusil přihlásit k zařízení z platformy, která není aktuálně podporovaná pomocí zásad podmíněného přístupu. |
 | AADSTS50006 | Ověření podpisu InvalidSignature se nezdařilo kvůli neplatnému podpisu. |

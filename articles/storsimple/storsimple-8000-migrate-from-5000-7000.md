@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: f6fffadd3c53f67af2e4c833a6a1d442c18efa0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58b7b67842e9ba385b34ea4d8fdbcac190076218
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398182"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428162"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Migrace dat z řady StorSimple 5000-7000 na zařízení 8000 series
 
@@ -137,9 +137,9 @@ Provedením následujících kroků nainstalujete nástroj pro migraci StorSimpl
 2. Upravte hodnoty odpovídající klíčům a nahraďte:
 
     * `UserName` – Uživatelské jméno pro přihlášení k Azure Portal.
-    * `SubscriptionName and SubscriptionId` – Název a ID vašeho předplatného Azure. Na úvodní stránce služby StorSimple Device Manager v části **Obecné**klikněte na **vlastnosti**. Zkopírujte název předplatného a ID předplatného přidruženého k vaší službě.
-    * `ResourceName` – Název služby StorSimple Device Manager v Azure Portal. Zobrazuje se také v části vlastnosti služby.
-    * `ResourceGroup` – Název skupiny prostředků přidružené ke službě StorSimple Device Manager v Azure Portal. Zobrazuje se také v části vlastnosti služby.
+    * `SubscriptionName and SubscriptionId` – Název a ID vašeho předplatného Azure. Na úvodní stránce služby StorSimple Správce zařízení v části **Obecné** klikněte na **vlastnosti**. Zkopírujte název předplatného a ID předplatného přidruženého k vaší službě.
+    * `ResourceName` – Název služby StorSimple Správce zařízení v Azure Portal. Zobrazuje se také v části vlastnosti služby.
+    * `ResourceGroup` – Název skupiny prostředků přidružené ke službě StorSimple Správce zařízení v Azure Portal. Zobrazuje se také v části vlastnosti služby.
     ![Ověřte vlastnosti služby pro cílové zařízení.](media/storsimple-8000-migrate-from-5000-7000/check-service-properties1.png)
     * `TenantId` – Azure Active Directory ID tenanta v Azure Portal. Přihlaste se k Microsoft Azure jako správce. V portál Microsoft Azure klikněte na **Azure Active Directory**. V části **Spravovat** klikněte na **Vlastnosti**. ID tenanta se zobrazí v poli **ID adresáře** .
     ![Ověřte ID tenanta pro Azure Active Directory](media/storsimple-8000-migrate-from-5000-7000/check-tenantid-aad.png)
@@ -150,4 +150,4 @@ Provedením následujících kroků nainstalujete nástroj pro migraci StorSimpl
   
 
 ## <a name="next-steps"></a>Další kroky
-Stáhněte si podrobné pokyny, jak [migrovat data z řady StorSimple 5000-7000 na zařízení řady 8000](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b).
+Stáhněte si podrobné pokyny, jak [migrovat data z řady StorSimple 5000-7000 na zařízení řady 8000](https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_Migration_Guide_20171115.pdf).

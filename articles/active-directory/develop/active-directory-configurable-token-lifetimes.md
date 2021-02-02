@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/04/2021
+ms.date: 02/01/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: f4ae26a489b823e2347841cf72690d6cd8462611
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 1bd60a60aa5f6fffcc459f0e14d550740e48496d
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755308"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428145"
 ---
 # <a name="configurable-token-lifetimes-in-the-microsoft-identity-platform-preview"></a>Konfigurovatelné životnosti tokenů na platformě Microsoft identity (verze Preview)
 
@@ -77,16 +77,14 @@ Příklad najdete v tématu [Vytvoření zásady pro web signing-in](configure-t
 
 ## <a name="token-lifetime-policies-for-refresh-tokens-and-session-tokens"></a>Zásady životnosti tokenů pro aktualizační tokeny a tokeny relací
 
-Můžete nastavit zásady životnosti tokenů pro aktualizační tokeny a tokeny relací.
+Nemůžete nastavit zásady životnosti tokenů pro aktualizační tokeny a tokeny relací.
 
 > [!IMPORTANT]
-> Od května 2020 nemohou noví klienti konfigurovat dobu platnosti tokenů aktualizace a relace.  Klienti se stávající konfigurací můžou upravovat zásady aktualizace a tokenu relace až do 30. ledna 2021.   Azure Active Directory přestane dodržovat stávající konfiguraci tokenu aktualizace a tokenu relace v zásadách po 30. lednu 2021. Po vyřazení stále můžete nakonfigurovat přístup, SAML a životnosti tokenů ID.
->
-> Pokud potřebujete pokračovat v definování časového období, než se uživateli zobrazí výzva k opětovnému přihlášení, nakonfigurujte četnost přihlášení v podmíněném přístupu. Pokud chcete získat další informace o podmíněném přístupu, přečtěte si téma [Konfigurace správy relací ověřování pomocí podmíněného přístupu](../conditional-access/howto-conditional-access-session-lifetime.md).
->
-> Pokud nechcete používat podmíněný přístup po datu vyřazení, vaše tokeny aktualizace a relace budou nastavené na [výchozí konfiguraci](#configurable-token-lifetime-properties-after-the-retirement) v tomto datu a už nebudete moct měnit jejich životnost.
+> Od 30. ledna 2021 nemůžete konfigurovat aktualizace a životnosti tokenů relace. Azure Active Directory už v existujících zásadách nedodržuje aktualizace a konfiguraci tokenu relace.  Nové tokeny vydané po vypršení platnosti existujících tokenů jsou teď nastavené na [výchozí konfiguraci](#configurable-token-lifetime-properties-after-the-retirement). Po dokončení aktualizace a vyřazení konfigurace tokenu relace můžete i nadále konfigurovat přístup, SAML a životnosti tokenů ID.
 >
 > Doba života existujícího tokenu se nezmění. Po vypršení platnosti se na základě výchozí hodnoty vygeneruje nový token.
+>
+> Pokud potřebujete pokračovat v definování časového období, než se uživateli zobrazí výzva k opětovnému přihlášení, nakonfigurujte četnost přihlášení v podmíněném přístupu. Pokud chcete získat další informace o podmíněném přístupu, přečtěte si téma [Konfigurace správy relací ověřování pomocí podmíněného přístupu](../conditional-access/howto-conditional-access-session-lifetime.md).
 
 :::image type="content" source="./media/active-directory-configurable-token-lifetimes/roadmap.svg" alt-text="Informace o vyřazení":::
 

@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 7ef4a1542a050918249f602bbc63567cc8e13f2a
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 962fb8cbd4c64aa2ef625b478afa587099234617
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091710"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427630"
 ---
 # <a name="mv2-series"></a>Řada Mv2
 
@@ -24,7 +24,7 @@ Funkce virtuálního počítače Mv2-Series Hyper-Threading technologie Intel®
 [Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
 [Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
-[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 2<br>
 [Akcelerátor zápisu](./how-to-enable-write-accelerator.md): podporováno<br>
 [Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
 [Dočasné disky s operačním systémem](ephemeral-os-disks.md): nepodporované <br>

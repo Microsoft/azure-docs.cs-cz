@@ -11,15 +11,16 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 02/01/2021
-ms.openlocfilehash: d11125ed00491f87844c7b0b344473825ad52a99
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.date: 02/02/2021
+ms.openlocfilehash: 63816a40aa710d26dc036dfe82018883e917beb6
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223470"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428466"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 (Common Data Service) nebo Dynamics CRM pomocí Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z a do Microsoft Dynamics 365 a Microsoft Dynamics CRM. Vytvoří se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
@@ -88,7 +89,7 @@ Následující vlastnosti jsou podporovány pro propojenou službu Dynamics.
 | servicePrincipalCredential | Přihlašovací údaje instančního objektu. <br/><br/>Když jako typ přihlašovacích údajů použijete "ServicePrincipalKey", `servicePrincipalCredential` může se jednat o řetězec, který Azure Data Factory šifrování při nasazení propojené služby. Nebo se může jednat o odkaz na tajný kód v Azure Key Vault. <br/><br/>Pokud jako přihlašovací údaje použijete "ServicePrincipalCert", `servicePrincipalCredential` musí se jednat o odkaz na certifikát v Azure Key Vault. | Ano, pokud je ověřování "AADServicePrincipal" |
 | username | Uživatelské jméno pro připojení k Dynamics. | Ano, pokud je ověřování "Office 365" |
 | heslo | Heslo pro uživatelský účet, který jste zadali jako uživatelské jméno. Označte toto pole pomocí "SecureString", abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano, pokud je ověřování "Office 365" |
-| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Pokud není zadaná žádná hodnota, použije vlastnost výchozí prostředí Azure Integration runtime. | Ne pro zdroj a Ano pro jímku, pokud zdrojová propojená služba nemá modul runtime integrace |
+| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Pokud není zadaná žádná hodnota, použije vlastnost výchozí prostředí Azure Integration runtime. | No |
 
 >[!NOTE]
 >Konektor Dynamics dřív používal volitelnou vlastnost **NázevOrganizace** k identifikaci vaší online instance Dynamics CRM nebo Dynamics 365. I když tato vlastnost stále funguje, doporučujeme místo toho zadat novou vlastnost **ServiceUri** , abyste získali lepší výkon pro zjišťování instancí.
@@ -184,7 +185,7 @@ Další vlastnosti, které se porovnávají s Dynamics Online, jsou **název hos
 | authenticationType | Typ ověřování pro připojení k Dynamics serveru. Zadejte "IFD" pro místní prostředí Dynamics pomocí internetového nasazení. | Ano. |
 | username | Uživatelské jméno pro připojení k Dynamics. | Ano. |
 | heslo | Heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Toto pole můžete označit jako "SecureString" a bezpečně ho ukládat do Data Factory. Můžete také uložit heslo v Key Vault a nechat si aktivitu kopírování vyžádat z toho, kdy se data zkopírují. Další informace o [přihlašovacích údajích pro Store najdete v Key Vault](store-credentials-in-key-vault.md). | Ano. |
-| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Pokud není zadaná žádná hodnota, použije vlastnost výchozí prostředí Azure Integration runtime. | Ne pro zdroj a Ano pro jímku |
+| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Pokud není zadaná žádná hodnota, použije vlastnost výchozí prostředí Azure Integration runtime. | No |
 
 #### <a name="example-dynamics-on-premises-with-ifd-using-ifd-authentication"></a>Příklad: místní prostředí Dynamics s IFD pomocí ověřování IFD
 

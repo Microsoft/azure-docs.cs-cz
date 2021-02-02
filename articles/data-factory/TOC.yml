@@ -223,6 +223,8 @@
           href: source-control.md
         - name: Průběžná integrace a doručování
           href: continuous-integration-deployment.md
+        - name: Automatizované publikování
+          href: continuous-integration-deployment-improvements.md
     - name: Konektory
       items:
         - name: Přehled konektorů

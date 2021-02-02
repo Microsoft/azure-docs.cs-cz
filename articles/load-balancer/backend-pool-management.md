@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: 8887474f07928462afe7863ffe2b3667ece536dc
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e5efbf695b85f474e5d7c84c86809acb2f5a1035
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575295"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429598"
 ---
 # <a name="backend-pool-management"></a>Správa fondu back-endu
 Back-end fond je kritickou součástí nástroje pro vyrovnávání zatížení. Back-end fond definuje skupinu prostředků, které budou obsluhovat provoz pro dané pravidlo vyrovnávání zatížení.
@@ -25,6 +25,8 @@ Existují dva způsoby konfigurace fondu back-endu:
 Nakonfigurujte svůj fond back-end podle síťových adaptérů při použití existujících virtuálních počítačů a služby Virtual Machine Scale Sets. Tato metoda vytváří nejpřímější propojení mezi vaším prostředkem a back-end fondem. 
 
 Při předrozdělování back-endu s rozsahem IP adres, který plánujete později vytvořit virtuální počítače a služby Virtual Machine Scale Sets, nakonfigurujte svůj fond back-end podle kombinace IP adresy a ID virtuální sítě.
+
+Pro stejný nástroj pro vyrovnávání zatížení můžete nakonfigurovat fondy back-endu založených na protokolu IP a síťových adaptérů, ale nemůžete vytvořit jeden back-end fond, který kombinuje zálohované adresy, na které cílí síťové karty a IP adresy v rámci stejného fondu.
 
 Konfigurační oddíly tohoto článku se zaměří na:
 
@@ -110,7 +112,7 @@ New-AzVMConfig -VMName $vmname -VMSize $vmsize | Set-AzVMOperatingSystem -Window
 $vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -VM $vmConfig
 ```
 
-### <a name="cli"></a>CLI
+### <a name="cli"></a>Rozhraní příkazového řádku
 Vytvořte back-end fond:
 
 ```azurecli-interactive
@@ -320,7 +322,7 @@ New-AzVMConfig -VMName $vmname -VMSize $vmsize | Set-AzVMOperatingSystem -Window
 $vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -VM $vmConfig
 ```
 
-### <a name="cli"></a>CLI
+### <a name="cli"></a>Rozhraní příkazového řádku
 Pomocí rozhraní příkazového řádku můžete buď naplnit back-end fond prostřednictvím parametrů příkazového řádku nebo pomocí konfiguračního souboru JSON. 
 
 Vytvořte a naplňte back-end fond prostřednictvím parametrů příkazového řádku:

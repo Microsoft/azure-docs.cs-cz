@@ -2,18 +2,20 @@
 title: Uzamknout prostředky, aby nedocházelo ke změnám
 description: Zabrání uživatelům aktualizovat nebo odstraňovat prostředky Azure pomocí zámku pro všechny uživatele a role.
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 02/01/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0e8fc74b2da0c253ec9c5bf34ec7543398aea48f
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 912c7e86d253aa18b9a6c60717ceaa70e32fcf0e
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98802450"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428313"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Zamknutí prostředků, aby se zabránilo neočekávaným změnám
 
-Jako správce můžete považovat za nutné uzamknout určité předplatné, skupinu prostředků nebo prostředek, abyste ostatním uživatelům v organizaci zabránili v nechtěném odstranění nebo úpravě důležitých prostředků. Zámek můžete nastavit na úroveň **CanNotDelete** nebo **ReadOnly**. Na portálu se zámky nazývají **Delete** a **jen pro čtení** .
+Jako správce můžete uzamknout předplatné, skupinu prostředků nebo prostředek a zabránit tak ostatním uživatelům ve vaší organizaci v neúmyslném odstranění nebo úpravě důležitých prostředků. Zámek přepíše všechna oprávnění, která uživatel může mít.
+
+Zámek můžete nastavit na úroveň **CanNotDelete** nebo **ReadOnly**. Na portálu se zámky nazývají **Delete** a **jen pro čtení** .
 
 * **CanNotDelete** znamená, že autorizovaní uživatelé můžou pořád číst a upravovat prostředek, ale nemůžou prostředek odstranit.
 * **ReadOnly** znamená, že autorizovaní uživatelé můžou číst prostředek, ale nemůžou prostředek odstranit ani aktualizovat. Použití tohoto zámku je podobné jako omezení všech autorizovaných uživatelů na oprávnění udělené rolí **Čtenář** .

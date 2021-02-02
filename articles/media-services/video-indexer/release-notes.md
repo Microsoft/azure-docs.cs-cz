@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 01/06/2021
+ms.date: 02/01/2021
 ms.author: juliako
-ms.openlocfilehash: b6e18e077b717da65ca8d70b9bda6a133dba1f5c
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: c0d332c00635444ab4d694e46486a498b43137f2
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120083"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427650"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
@@ -30,7 +30,23 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 * Opravy chyb
 * Zastaralé funkce
 
-##  <a name="december-2020"></a>Prosinec 2020
+## <a name="january-2021"></a>Leden 2021
+
+### <a name="video-indexer-is-deployed-on-us-government-cloud"></a>Video Indexer je nasazený v cloudu pro státní správu USA. 
+
+V cloudu pro státní správu USA teď můžete vytvořit Video Indexer placeného účtu v oblastech) – Virginia a Arizona. V uvedené oblasti není dostupná Video Indexer nabídka bezplatné zkušební verze. Další informace najdete v dokumentaci k Video Indexer. 
+
+### <a name="video-indexer-deployed-in-the-india-central-region"></a>Video Indexer nasazené v oblasti Indie – střed 
+
+Nyní můžete vytvořit placený účet Video Indexer v oblasti Indie – střed. 
+
+### <a name="new-dark-mode-for-the-video-indexer-website-experience"></a>Nový tmavý režim pro prostředí Video Indexer webu
+
+Prostředí Video Indexer webů je teď dostupné v tmavém režimu. Chcete-li povolit režim tmavosti, otevřete panel nastavení a přepněte na možnost **tmavý režim** . 
+
+:::image type="content" source="./media/release-notes/dark-mode.png" alt-text="Nastavení tmavého režimu":::
+
+## <a name="december-2020"></a>Prosinec 2020
 
 ### <a name="video-indexer-deployed-in-the-switzerland-west-and-switzerland-north"></a>Video Indexer nasazena v Švýcarsko – západ a Švýcarsko – sever
 

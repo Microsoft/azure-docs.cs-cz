@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.date: 06/02/2020
-ms.openlocfilehash: aa1246a65dc6971107abe35f4a418b0bbb05641b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 02/01/2021
+ms.openlocfilehash: c3366b7ba0eb0b49d4d5b89481b7bed843e52c8e
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486126"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428989"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Centrum správy v Azure Data Factory
 
@@ -34,13 +34,17 @@ Propojené služby definují informace o připojení pro Azure Data Factory pro 
 
 Prostředí Integration runtime je výpočetní infrastruktura, kterou používá Azure Data Factory k poskytování možností integrace dat napříč různými síťovými prostředími. Další informace získáte v [konceptech modulu runtime integrace](concepts-integration-runtime.md). V centru pro správu můžete vytvořit, odstranit a monitorovat prostředí Integration runtime.
 
-![Spravovat prostředí Integration runtime](media/author-management-hub/management-hub-integration-runtime.png)
+![Správa modulů runtime integrace](media/author-management-hub/management-hub-integration-runtime.png)
 
 ## <a name="manage-source-control"></a>Spravovat správu zdrojového kódu
 
 ### <a name="git-configuration"></a>Konfigurace Gitu
 
-Zobrazení a úprava nakonfigurovaných nastavení úložiště Git v centru pro správu. Další informace o [správě zdrojového kódu najdete v Azure Data Factory](source-control.md).
+Všechny informace týkající se Gitu můžete zobrazit nebo upravit v nastavení konfigurace Gitu v centru pro správu. 
+
+V seznamu jsou uvedené informace o naposledy publikovaných potvrzeních, které vám pomůžou pochopit přesné potvrzení, které bylo naposledy Publikováno nebo nasazeno v různých prostředích. Může to být užitečné i při opravách v produkčním prostředí.
+
+Další informace o [správě zdrojového kódu najdete v Azure Data Factory](source-control.md).
 
 ![Spravovat úložiště Git](media/author-management-hub/management-hub-git.png)
 

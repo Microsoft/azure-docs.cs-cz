@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 01/29/2020
+ms.date: 02/01/2020
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f0c8d237e270177ef38c60c523364054bae15af
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: da85c80dd6450fd4427f83586e75cf1e9d62a605
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090854"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428770"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -69,13 +69,7 @@ Uživatelé v této roli můžou vytvářet registrace aplikací, když je nasta
 
 ### <a name="authentication-administrator"></a>[Správce ověřování](#authentication-administrator-permissions)
 
-Uživatelé s touto rolí můžou pro některé uživatele nastavit nebo resetovat přihlašovací údaje neheslem a můžou aktualizovat hesla pro všechny uživatele. Správci ověřování můžou vyžadovat, aby uživatelé, kteří jsou bez oprávnění správce nebo se k některým rolím přiřadili, zaregistrovali v rámci stávajících přihlašovacích údajů, které nepoužívají heslo (například MFA nebo FIDO), a taky můžou **zapomenout** MFA na zařízení, která při příštím přihlášení VYZVE k MFA. Tyto akce platí pouze pro uživatele, kteří nejsou správci, nebo kteří mají přiřazenu jednu nebo více následujících rolí:
-
-* Správce ověřování
-* Čtečky adresářů
-* Pozvánka hosta
-* Čtenář centra zpráv
-* Čtečka sestav
+Uživatelé s touto rolí můžou pro některé uživatele nastavit nebo resetovat přihlašovací údaje neheslem a můžou aktualizovat hesla pro všechny uživatele. Správci ověřování můžou vyžadovat, aby uživatelé, kteří jsou bez oprávnění správce nebo se k některým rolím přiřadili, zaregistrovali v rámci stávajících přihlašovacích údajů, které nepoužívají heslo (například MFA nebo FIDO), a taky můžou **zapomenout** MFA na zařízení, která při příštím přihlášení VYZVE k MFA. Zda může správce ověřování resetovat heslo uživatele, závisí na roli, kterou uživatel přiřadí. Seznam rolí, pro které Správce ověřování může resetovat hesla pro, najdete v tématu [oprávnění k resetování hesla](#password-reset-permissions).
 
 Role [správce privilegovaného ověřování](#privileged-authentication-administrator) má oprávnění k vynucení opakované registrace a ověřování Multi-Factor Authentication pro všechny uživatele.
 
@@ -253,14 +247,7 @@ Uživatelé v této roli můžou spravovat Azure Active Directory pozvání uži
 
 ### <a name="helpdesk-administrator"></a>[Správce helpdesku](#helpdesk-administrator-permissions)
 
-Uživatelé s touto rolí můžou měnit hesla, zrušit platnost tokenů aktualizace, spravovat žádosti o služby a monitorovat stav služby. Zrušení platnosti aktualizačního tokenu vynutí, aby se uživatel znovu přihlásil. Správci helpdesku můžou resetovat hesla a zrušit platnost tokenů aktualizace jiných uživatelů, kteří nejsou správci, nebo jim přiřadit jenom následující role:
-
-* Čtečky adresářů
-* Pozvánka hosta
-* Správce helpdesku
-* Čtenář centra zpráv
-* Správce hesel
-* Čtečka sestav
+Uživatelé s touto rolí můžou měnit hesla, zrušit platnost tokenů aktualizace, spravovat žádosti o služby a monitorovat stav služby. Zrušení platnosti aktualizačního tokenu vynutí, aby se uživatel znovu přihlásil. Zda může správce helpdesku resetovat heslo uživatele a zrušit platnost tokenů aktualizace, závisí na roli, kterou uživatel přiřadí. Seznam rolí, u kterých správce helpdesku může resetovat hesla pro a zrušit platnost obnovovacích tokenů, najdete v tématu [oprávnění k resetování hesla](#password-reset-permissions).
 
 > [!IMPORTANT]
 > Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
@@ -271,7 +258,7 @@ Uživatelé s touto rolí můžou měnit hesla, zrušit platnost tokenů aktuali
 >- Správci v jiných službách mimo Azure AD, jako je Exchange Online, Centrum zabezpečení a dodržování předpisů pro Office a systémy lidských zdrojů.
 >- Nesprávci jako vedoucí pracovníci, právní poradce a zaměstnanci lidských zdrojů, kteří mohou mít přístup k citlivým nebo soukromým informacím.
 
-Delegování oprávnění pro správu pro podmnožiny uživatelů a používání zásad u podmnožiny uživatelů je možné s [jednotkami pro správu (nyní ve verzi Public Preview)](administrative-units.md).
+Delegování oprávnění pro správu pro podmnožiny uživatelů a používání zásad u podmnožiny uživatelů je možné s [jednotkami pro správu](administrative-units.md).
 
 Tato role se dřív nazývala "správce hesel" ve [Azure Portal](https://portal.azure.com/). Název "správce helpdesku" ve službě Azure AD se teď shoduje s názvem v Azure AD PowerShellu a rozhraním Microsoft Graph API.
 
@@ -344,11 +331,7 @@ Nepoužívat. Tato role se už nepoužívá a v budoucnu se odebere z Azure AD. 
 
 ### <a name="password-administrator"></a>[Správce hesel](#password-administrator-permissions)
 
-Uživatelé s touto rolí mají omezené možnosti správy hesel. Tato role neuděluje schopnost spravovat žádosti o služby nebo monitorovat stav služby. Správci hesel můžou resetovat hesla jiných uživatelů, kteří nejsou správci, nebo členové následujících rolí:
-
-* Čtečky adresářů
-* Pozvánka hosta
-* Správce hesel
+Uživatelé s touto rolí mají omezené možnosti správy hesel. Tato role neuděluje schopnost spravovat žádosti o služby nebo monitorovat stav služby. Zda může správce hesla resetovat heslo uživatele, závisí na roli, kterou uživatel přiřadí. Seznam rolí, pro které může správce hesel resetovat hesla pro, najdete v tématu [oprávnění k resetování hesla](#password-reset-permissions).
 
 ### <a name="power-bi-administrator"></a>[Správce Power BI](#power-bi-service-administrator-permissions)
 
@@ -371,13 +354,7 @@ Uživatelé s touto rolí můžou registrovat tiskárny a spravovat stav tiskár
 
 ### <a name="privileged-authentication-administrator"></a>[Správce privilegovaného ověřování](#privileged-authentication-administrator-permissions)
 
-Uživatelé s touto rolí můžou nastavit nebo resetovat přihlašovací údaje hesla pro všechny uživatele, včetně globálních správců, a můžou aktualizovat hesla pro všechny uživatele. Správci privilegovaného ověřování můžou vynutit, aby uživatelé znovu zaregistrovali u stávajících přihlašovacích údajů bez hesla (například MFA nebo FIDO) a odvolali si MFA na zařízení. při příštím přihlášení všech uživatelů se zobrazí dotaz na MFA. Role [Správce ověřování](#authentication-administrator) může vynutit opětovnou registraci a MFA jenom pro uživatele, kteří jsou přiřazeni k těmto rolím Azure AD:
-
-* Správce ověřování
-* Čtečky adresářů
-* Pozvánka hosta
-* Čtenář centra zpráv
-* Čtečka sestav
+Uživatelé s touto rolí můžou nastavit nebo resetovat přihlašovací údaje hesla pro všechny uživatele, včetně globálních správců, a můžou aktualizovat hesla pro všechny uživatele. Správci privilegovaného ověřování můžou vynutit, aby uživatelé znovu zaregistrovali u stávajících přihlašovacích údajů bez hesla (například MFA nebo FIDO) a odvolali si MFA na zařízení. při příštím přihlášení všech uživatelů se zobrazí dotaz na MFA.
 
 ### <a name="privileged-role-administrator"></a>[Správce privilegovaných rolí](#privileged-role-administrator-permissions)
 
@@ -500,11 +477,12 @@ Uživatelé s touto rolí mají přístup ke agregovaným datům na úrovni tena
 
 Uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny aspekty uživatelů s některými omezeními (viz tabulku) a můžou aktualizovat zásady vypršení platnosti hesla. Uživatelé s touto rolí můžou navíc vytvářet a spravovat všechny skupiny. Tato role také zahrnuje možnost vytvářet a spravovat zobrazení uživatelů, spravovat lístky podpory a monitorovat stav služby. Správci uživatelů nemají oprávnění ke správě některých uživatelských vlastností pro uživatele ve většině rolí správce. Uživatel s touto rolí nemá oprávnění ke správě vícefaktorového ověřování. Role, které jsou výjimkou tohoto omezení, jsou uvedeny v následující tabulce.
 
-| **Oprávnění** | **Může** |
+| Oprávnění správce uživatele | Poznámky |
 | --- | --- |
-|Obecná oprávnění|<p>Vytváření uživatelů a skupin</p><p>Vytvářet a spravovat zobrazení uživatelů</p><p>Správa lístků podpory Office<p>Aktualizace zásad vypršení platnosti hesla|
-| <p>U všech uživatelů, včetně všech správců</p>|<p>Správa licencí</p><p>Spravovat všechny vlastnosti uživatele kromě hlavního názvu uživatele</p>
-| Pouze pro uživatele, kteří nejsou správci, nebo v některé z následujících rolí s omezeným oprávněním správce:<ul><li>Čtečky adresářů<li>Správce skupin<li>Pozvánka hosta<li>Správce helpdesku<li>Čtenář centra zpráv<li>Správce hesel<li>Čtečka sestav<li>Správce uživatelů|<p>Odstranění a obnovení</p><p>Zakázat a povolit</p><p>Zrušit platnost obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavního názvu uživatele</p><p>Resetování hesla</p><p>Aktualizace (FIDO) – klíče zařízení</p>|
+| Vytváření uživatelů a skupin<br/>Vytvářet a spravovat zobrazení uživatelů<br/>Správa lístků podpory Office<br/>Aktualizace zásad vypršení platnosti hesla |  |
+| Správa licencí<br/>Spravovat všechny vlastnosti uživatele kromě hlavního názvu uživatele | Platí pro všechny uživatele, včetně všech správců. |
+| Odstranění a obnovení<br/>Zakázat a povolit<br/>Spravovat všechny vlastnosti uživatele včetně hlavního názvu uživatele<br/>Aktualizace (FIDO) – klíče zařízení | Platí pro uživatele, kteří nejsou správci, nebo v některé z následujících rolí:<ul><li>Správce helpdesku</li><li>Uživatel bez role</li><li>Správce uživatelů</li></ul> |
+| Zrušit platnost obnovovacích tokenů<br/>Resetování hesla | Seznam rolí, které může správce uživatelů resetovat a devalidate aktualizovat tokeny, najdete v tématu oprávnění k [resetování hesla](#password-reset-permissions). |
 
 > [!IMPORTANT]
 > Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
@@ -572,6 +550,7 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+| Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="application-developer-permissions"></a>Oprávnění pro vývojáře aplikace
 
@@ -647,6 +626,7 @@ Může spravovat všechny aspekty služby Azure Information Protection.
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+| Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="b2c-ief-keyset-administrator-permissions"></a>B2C IEF, oprávnění správce sady klíčů
 
@@ -725,6 +705,7 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+| Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="cloud-device-administrator-permissions"></a>Oprávnění správce cloudového zařízení
 
@@ -2064,6 +2045,31 @@ Podpora partnerské úrovně 2 | Nezobrazeno, protože by neměl být použit | 
 Omezený uživatel typu Host | Nezobrazeno, protože nemůže být použit | NA
 User | Nezobrazeno, protože nemůže být použit | NA
 Připojení zařízení na pracovišti | Zastaralé | [Dokumentace k zastaralým rolím](permissions-reference.md#deprecated-roles)
+
+## <a name="password-reset-permissions"></a>Oprávnění pro resetování hesla
+
+Záhlaví sloupců reprezentují role, které můžou resetovat hesla. Řádky tabulky obsahují role, pro které je možné resetovat heslo.
+
+Heslo je možné resetovat. | Správce ověřování | Správce helpdesku | Správce hesel | Správce uživatelů | Správce privilegovaného ověřování | Globální správce
+------ | ------ | ------ | ------ | ------ | ------ | ------
+Správce ověřování | :heavy_check_mark: | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+Čtečky adresářů | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Globální správce | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:\*
+Správce skupin | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Host | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Pozvánka hosta | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Správce helpdesku | &nbsp; | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Čtenář centra zpráv | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Správce hesel | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Správce privilegovaného ověřování | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+Správce privilegovaných rolí | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+Čtečka sestav | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Omezený Host | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Uživatel (bez role správce) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Správce uživatelů | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Čtečka sestav Souhrn využití | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+
+\* Globální správce nemůže odebrat vlastní globální přiřazení správce. K tomu je potřeba zabránit situaci, kdy má organizace 0 globálních správců.
 
 ## <a name="next-steps"></a>Další kroky
 
