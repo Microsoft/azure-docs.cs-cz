@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: b353fad64b08f5fc50af2b8d31abab77cd797e25
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 506e568f44d8dd5354ed7bd3ec20d0c71d484b85
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055038"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475180"
 ---
 # <a name="virtual-network-service-tags"></a>Značky služby virtuální sítě
 <a name="network-service-tags"></a>
@@ -97,6 +97,7 @@ Ve výchozím nastavení značky služby odráží rozsahy celého cloudu. Někt
 | **LogicAppsManagement** | Provoz správy pro Logic Apps. | Příchozí | No | No |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security. | Odchozí | No | No |
 | **MicrosoftContainerRegistry** | Registr kontejnerů pro Image Microsoft Container. <br/><br/>*Poznámka:* Tato značka má závislost na značce **AzureFrontDoor. FirstParty** . | Odchozí | Yes | Yes |
+| **PowerBI** | PowerBi. *Poznámka: Tato značka se v tuto chvíli nedá nakonfigurovat přes Azure Portal.* | Obojí | No | No|
 | **PowerQueryOnline** | Power Query online. | Obojí | No | No |
 | **ServiceBus** | Azure Service Bus provoz, který využívá úroveň služby Premium. | Odchozí | Yes | Yes |
 | **ServiceFabric** | Service Fabric Azure.<br/><br/>*Poznámka:* Tato značka představuje koncový bod služby Service Fabric pro rovinu ovládacího prvku na oblast. To zákazníkům umožňuje provádět operace správy pro své Service Fabric clustery ze své virtuální sítě (koncové body). https://westus.servicefabric.azure.com) | Obojí | No | No |

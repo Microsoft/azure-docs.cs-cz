@@ -36,7 +36,7 @@
   items:
     - name: Privátní cloudy a clustery
       href: concepts-private-clouds-clusters.md
-    - name: Sítě a propojení privátních cloudů
+    - name: Sítě a vzájemné propojení privátních cloudů
       href: concepts-networking.md
     - name: Úložiště v privátních cloudech
       href: concepts-storage.md

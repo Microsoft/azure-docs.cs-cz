@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 23a741e96807acdb7b162b65597c651a2a6c3235
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: eefc47e1308dc5b59d8b57d7481a5250a7d2af93
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92509229"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475739"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-travelperk"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s TravelPerk
 
@@ -26,12 +26,12 @@ V tomto kurzu se dozvíte, jak integrovat TravelPerk s Azure Active Directory (A
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k TravelPerk svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* TravelPerk odběr s povoleným jednotným přihlašováním (SSO).
+* Účet TravelPerk s předplatným Premium.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -85,9 +85,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<COMPANY>.travelperk.com/accounts/saml2/callback/<APPLICATION_ID>/?acs`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, adresy URL odpovědi a identifikátoru. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta TravelPerk](mailto:trex@travelperk.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, adresy URL odpovědi a identifikátoru. Hodnoty najdete v účtu TravelPerk: Přejít na integrace **nastavení společnosti**  >    >  **jednotné přihlašování**. Pomoc najdete na webu [TravelPerk HelpCenter](https://support.travelperk.com/hc/en-us/articles/360052450271-How-can-I-setup-SSO-for-Azure-SAML-).
 
-1. Vaše aplikace TravelPerk očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde **EmailAddress** je mapován pomocí **User. mail**. Aplikace TravelPerk očekává, že **EmailAddress** budou mapovány pomocí **User. userPrincipalName**, takže je nutné upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
+1. Vaše aplikace TravelPerk očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Ve výchozím mapování je **EmailAddress** mapován pomocí **User. mail**. Aplikace TravelPerk však očekává, že **EmailAddress** bude mapován pomocí **User. userPrincipalName**. Pro TravelPerk je nutné upravit mapování atributu: klikněte na ikonu **Upravit** a pak změňte mapování atributu. Chcete-li upravit atribut, stačí kliknout na atribut a otevřít tak režim úprav.
 
     ![image](common/default-attributes.png)
 
@@ -102,11 +102,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -114,10 +114,10 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k TravelPerk.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **TravelPerk**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .

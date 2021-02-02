@@ -3,12 +3,12 @@ title: Matice podpory pro zotavení po havárii VMware/fyzický v Azure Site Rec
 description: Shrnuje podporu pro zotavení po havárii virtuálních počítačů VMware a fyzického serveru do Azure pomocí Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: f525666e91a482a6c23128e266b4f5669437a502
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 48eba42548287b54d99d1a2188786437f4b05a2b
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956017"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475467"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -32,7 +32,7 @@ Zotavení po havárii fyzických serverů | Replikace místních fyzických serv
 **Server** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
 vCenter Server | Verze 7,0 & následné aktualizace v této verzi, 6,7, 6,5, 6,0 nebo 5,5 | V nasazení zotavení po havárii doporučujeme použít Server vCenter.
-vSphere hostitelé | Verze 7,0 & následné aktualizace v této verzi, 6,7, 6,5, 6,0 nebo 5,5 | Doporučujeme, aby se hostitelé vSphere a vCenter servery nacházely ve stejné síti jako procesový Server. Ve výchozím nastavení běží procesový Server na konfiguračním serveru. [Přečtěte si další informace](vmware-physical-azure-config-process-server-overview.md).
+vSphere hostitelé | Verze 7,0 & následné aktualizace v této verzi, 6,7, 6,5, 6,0 nebo 5,5 | Doporučujeme, aby se hostitelé vSphere a vCenter servery nacházely ve stejné síti jako procesový Server. Ve výchozím nastavení běží procesový Server na konfiguračním serveru. [Další informace](vmware-physical-azure-config-process-server-overview.md).
 
 ## <a name="site-recovery-configuration-server"></a>Site Recovery konfigurační server
 
@@ -68,7 +68,7 @@ Site Recovery podporuje replikaci všech úloh spuštěných v podporovaném po�
 **Komponenta** | **Podrobnosti**
 --- | ---
 Nastavení počítače | Počítače, které se replikují do Azure, musí splňovat [požadavky Azure](#azure-vm-requirements).
-Zatížení počítače | Site Recovery podporuje replikaci všech úloh spuštěných v podporovaném počítači. [Přečtěte si další informace](./site-recovery-workload.md).
+Zatížení počítače | Site Recovery podporuje replikaci všech úloh spuštěných v podporovaném počítači. [Další informace](./site-recovery-workload.md).
 Název počítače | Ujistěte se, že zobrazované názvy počítačů nespadají do [rezervovaných názvů prostředků Azure](../azure-resource-manager/templates/error-reserved-resource-name.md) .<br/><br/> V názvech logických svazků se nerozlišují velká a malá písmena. Zajistěte, aby žádné dva svazky v zařízení neměly stejný název. Např. svazky s názvy "voLUME1", "voLUME1" nelze chránit prostřednictvím Azure Site Recovery.
 
 ### <a name="for-windows"></a>Pro Windows
@@ -79,7 +79,7 @@ Windows Server 2019 | Podporováno z [kumulativní aktualizace 34](https://suppo
 Windows Server 2016 64 – bit | Podporováno pro jádro serveru, server s desktopovým prostředím.
 Windows Server 2012 R2/Windows Server 2012 | Podporuje se.
 Windows Server 2008 R2 s aktualizací SP1 a vyšší. | Podporuje se.<br/><br/> Od agenta služby mobility verze [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) potřebujete aktualizaci [cestou nadřazené (Servicing Stack Update)](https://support.microsoft.com/help/4490628) a [SHA-2](https://support.microsoft.com/help/4474419) nainstalovanou na počítačích se systémem Windows 2008 R2 s aktualizací SP1 nebo novějším. SHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://support.microsoft.com/topic/sha-2-code-signing-support-update-for-windows-server-2008-r2-windows-7-and-windows-server-2008-september-23-2019-84a8aad5-d8d9-2d5c-6d78-34f9aa5f8339).
-Windows Server 2008 s aktualizací SP2 nebo novější (64bitová/32bitová verze) |  Podporováno pouze pro migraci. [Přečtěte si další informace](migrate-tutorial-windows-server-2008.md).<br/><br/> Od agenta služby mobility verze [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) potřebujete aktualizaci [cestou nadřazené (Servicing Stack Update)](https://support.microsoft.com/help/4493730) a [SHA-2](https://support.microsoft.com/help/4474419) nainstalovanou na počítačích s Windows 2008 SP2. SHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://support.microsoft.com/topic/sha-2-code-signing-support-update-for-windows-server-2008-r2-windows-7-and-windows-server-2008-september-23-2019-84a8aad5-d8d9-2d5c-6d78-34f9aa5f8339).
+Windows Server 2008 s aktualizací SP2 nebo novější (64bitová/32bitová verze) |  Podporováno pouze pro migraci. [Další informace](migrate-tutorial-windows-server-2008.md).<br/><br/> Od agenta služby mobility verze [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) potřebujete aktualizaci [cestou nadřazené (Servicing Stack Update)](https://support.microsoft.com/help/4493730) a [SHA-2](https://support.microsoft.com/help/4474419) nainstalovanou na počítačích s Windows 2008 SP2. SHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://support.microsoft.com/topic/sha-2-code-signing-support-update-for-windows-server-2008-r2-windows-7-and-windows-server-2008-september-23-2019-84a8aad5-d8d9-2d5c-6d78-34f9aa5f8339).
 Windows 10, Windows 8.1, Windows 8 | Podporuje se jenom 64-bit systému. 32 bitový systém není podporován.
 Windows 7 s aktualizací SP1 64-bit | Podporováno z [kumulativní aktualizace 36](https://support.microsoft.com/help/4503156) (verze 9,22 služby mobility) a vyšší. </br></br> Od agenta služby mobility [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) potřebujete aktualizaci [cestou nadřazené (Servicing Stack Update)](https://support.microsoft.com/help/4490628) a [SHA-2](https://support.microsoft.com/help/4474419) nainstalovanou na počítačích se systémem Windows 7 SP1.  SHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://support.microsoft.com/topic/sha-2-code-signing-support-update-for-windows-server-2008-r2-windows-7-and-windows-server-2008-september-23-2019-84a8aad5-d8d9-2d5c-6d78-34f9aa5f8339).
 
@@ -196,7 +196,7 @@ Síť s protokolem IPv6 Host/Server | No.
 Statická IP adresa sítě hosta/serveru (Windows) | Ano.
 Statická IP adresa sítě hosta nebo serveru (Linux) | Ano. <br/><br/>Virtuální počítače jsou nakonfigurovány na používání protokolu DHCP při navrácení služeb po obnovení.
 Síť s více síťovými kartami Host/Server | Ano.
-Přístup k Site Recovery službě přes soukromé odkazy | Ano. [Přečtěte si další informace](hybrid-how-to-enable-replication-private-endpoints.md).
+Přístup k Site Recovery službě přes soukromé odkazy | Ano. [Další informace](hybrid-how-to-enable-replication-private-endpoints.md).
 
 
 ## <a name="azure-vm-network-after-failover"></a>Síť virtuálních počítačů Azure (po převzetí služeb při selhání)
@@ -231,7 +231,7 @@ Host/Server NFS NFS | No
 ISCSI Host/Server | Migrace – Ano<br/>V případě zotavení po havárii – technologie iSCSI navrácení služeb po obnovení jako připojeného disku k virtuálnímu počítači.
 Host/server SMB 3,0 | No
 Host/Server – RDM | Yes<br/><br/> Není k dispozici pro fyzické servery
-Disk hosta/Server > 1 TB | Ano, disk musí být větší než 1024 MB.<br/><br/>Až 8 192 GB při replikaci do spravovaných disků (9,26 verze a vyšší)<br></br> Až 4 095 GB při replikaci do účtů úložiště
+Disk hosta/Server > 1 TB | Ano, disk musí být větší než 1024 MB.<br/><br/>Až 32 TB při replikaci na spravované disky (9,40 verze a vyšší)<br></br> Až 4 095 GB při replikaci do účtů úložiště
 Disk hosta/Server s velikostí logického sektoru 4K a 4k | No
 Disk hosta/serveru s velikostí logického sektoru 4K a 512-byte | No
 Svazek typu Host/Server s prokládaným diskem >4 TB | Yes
@@ -292,7 +292,7 @@ Architektura hostovaného operačního systému | 64-bit. | Pokud je tato operac
 Velikost disku s operačním systémem | Až 2 048 GB. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Počet disků s operačním systémem | 1 </br> spouštěcí a systémový oddíl na různých discích není podporovaný. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Počet datových disků | 64 nebo méně. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-Velikost datového disku | Až 8 192 GB při replikaci na spravovaný disk (9,26 verze a vyšší)<br></br>Až 4 095 GB při replikaci do účtu úložiště| Pokud je tato operace Nepodporovaná, ověřte chybu.
+Velikost datového disku | Až 32 TB při replikaci na spravovaný disk (9,40 verze a vyšší)<br></br>Až 4 095 GB při replikaci do účtu úložiště| Pokud je tato operace Nepodporovaná, ověřte chybu.
 Síťové adaptéry | Podporuje se několik adaptérů. |
 Sdílený virtuální pevný disk | Nepodporováno | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Disk FC | Nepodporováno | Pokud je tato operace Nepodporovaná, ověřte chybu.

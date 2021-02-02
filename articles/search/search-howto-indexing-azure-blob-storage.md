@@ -7,332 +7,268 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: e3419711c9a7358914f85574f6dbd5af29def1cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/03/2021
+ms.openlocfilehash: 266538a7aff11bff0b6dc5c2d2b6a7a3d25c18ab
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403602"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99474977"
 ---
-# <a name="how-to-configure-a-blob-indexer-in-azure-cognitive-search"></a>Jak nakonfigurovat indexer objektů BLOB v Azure Kognitivní hledání
+# <a name="how-to-configure-blob-indexing-in-cognitive-search"></a>Jak nakonfigurovat indexování objektů BLOB v Kognitivní hledání
 
-V tomto článku se dozvíte, jak používat Azure Kognitivní hledání k indexování textových dokumentů (například PDF, systém Microsoft Office dokumentů a několika dalších běžných formátů) uložených v úložišti objektů BLOB v Azure. Nejprve se vysvětlují základy nastavení a konfigurace indexeru objektů BLOB. Potom nabízí hlubší průzkum chování a scénářů, se kterými se pravděpodobně setkáte.
+V tomto článku se dozvíte, jak nakonfigurovat indexer objektů BLOB pro indexování textových dokumentů (jako jsou soubory PDF, systém Microsoft Office dokumenty a další) v Azure Kognitivní hledání. Pokud neznáte koncepty indexeru, začněte s [indexery ve službě Azure kognitivní hledání](search-indexer-overview.md) a [vytvořte indexer vyhledávání](search-howto-create-indexers.md) před začnete do indexování objektů BLOB.
 
 <a name="SupportedFormats"></a>
 
-## <a name="supported-formats"></a>Podporované formáty
+## <a name="supported-document-formats"></a>Podporované formáty dokumentů
 
-Indexer objektů BLOB může extrahovat text z následujících formátů dokumentů:
+Indexer objektů BLOB v Azure Kognitivní hledání může extrahovat text z následujících formátů dokumentů:
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
-## <a name="set-up-blob-indexing"></a>Nastavení indexování objektů BLOB
+## <a name="data-source-definitions"></a>Definice zdrojů dat
 
-Službu Azure Blob Storage indexer můžete nastavit pomocí:
+Rozdíl mezi indexerem objektů BLOB a jakýmkoli jiným indexerem je definice zdroje dat, která je přiřazena indexeru. Zdroj dat zapouzdřuje všechny vlastnosti, které určují typ, připojení a umístění obsahu, který se má indexovat.
 
-* [Azure Portal](https://ms.portal.azure.com)
-* [REST API](/rest/api/searchservice/Indexer-operations) kognitivní hledání Azure
-* Sada Azure Kognitivní hledání [.NET SDK](/dotnet/api/overview/azure/search)
-
-> [!NOTE]
-> Některé funkce (například mapování polí) ještě nejsou k dispozici na portálu a je nutné je použít programově.
->
-
-Tady předvádíme tok pomocí REST API.
-
-### <a name="step-1-create-a-data-source"></a>Krok 1: Vytvoření zdroje dat
-
-Zdroj dat určuje, která data se mají indexovat, přihlašovací údaje potřebné pro přístup k datům a zásady pro efektivní identifikaci změn dat (nové, změněné nebo odstraněné řádky). Zdroj dat může použít více indexerů ve stejné vyhledávací službě.
-
-Pro indexování objektů BLOB musí mít zdroj dat následující požadované vlastnosti:
-
-* **název** je jedinečný název zdroje dat v rámci vyhledávací služby.
-* **typ** musí být `azureblob` .
-* * * přihlašovací údaje poskytují jako parametr připojovací řetězec účtu úložiště `credentials.connectionString` . Podrobnosti najdete v tématu [jak zadat přihlašovací údaje](#Credentials) níže.
-* **kontejner** určuje kontejner v účtu úložiště. Ve výchozím nastavení jsou všechny objekty BLOB v kontejneru navýšené. Pokud chcete indexovat objekty blob pouze v konkrétním virtuálním adresáři, můžete tento adresář zadat pomocí volitelného parametru **dotazu** .
-
-Vytvoření zdroje dat:
+Definice zdroje dat objektu BLOB vypadá podobně jako v následujícím příkladu:
 
 ```http
-    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-        "name" : "blob-datasource",
-        "type" : "azureblob",
-        "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
-        "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
-    }
+{
+    "name" : "my-blob-datasource",
+    "type" : "azureblob",
+    "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
+    "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
+}
 ```
 
-Další informace o rozhraní API Create DataSource najdete v tématu [Create DataSource](/rest/api/searchservice/create-data-source).
+`"credentials"`Vlastnost může být připojovací řetězec, jak je znázorněno v předchozím příkladu, nebo jeden z alternativních přístupů popsaných v následující části. `"container"`Vlastnost poskytuje umístění obsahu v rámci Azure Storage a `"query"` slouží k určení podsložky v kontejneru. Další informace o definicích zdrojů dat najdete v tématu [Vytvoření zdroje dat (REST)](/rest/api/searchservice/create-data-source).
 
 <a name="Credentials"></a>
 
-#### <a name="how-to-specify-credentials"></a>Jak zadat přihlašovací údaje
+## <a name="credentials"></a>Přihlašovací údaje
 
 Přihlašovací údaje pro kontejner objektů blob můžete zadat jedním z těchto způsobů:
 
-* **Připojovací řetězec spravované identity**: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Storage/storageAccounts/<your storage account name>/;` 
+**Připojovací řetězec spravované identity**: `{ "connectionString" : "ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Storage/storageAccounts/<your storage account name>/;" }`
 
-  Tento připojovací řetězec nevyžaduje klíč účtu, ale je nutné postupovat podle pokynů pro [nastavení připojení k účtu Azure Storage pomocí spravované identity](search-howto-managed-identities-storage.md).
+Tento připojovací řetězec nevyžaduje klíč účtu, ale je nutné postupovat podle pokynů pro [nastavení připojení k účtu Azure Storage pomocí spravované identity](search-howto-managed-identities-storage.md).
 
-* **Připojovací řetězec pro úplný přístup k účtu úložiště**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`
+**Připojovací řetězec pro úplný přístup k účtu úložiště**: `{ "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>;" }`
 
-  Připojovací řetězec můžete z Azure Portal získat tak, že přejdete do okna účtu úložiště > nastavení > klíče (pro účty klasického úložiště) nebo nastavení > přístupových klíčů (pro Azure Resource Manager účty úložiště).
+Připojovací řetězec můžete z Azure Portal získat tak, že přejdete do okna účtu úložiště > nastavení > klíče (pro účty klasického úložiště) nebo nastavení > přístupových klíčů (pro Azure Resource Manager účty úložiště).
 
-* Připojovací řetězec **sdíleného přístupového podpisu** (SAS) účtu úložiště:`BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`
+Připojovací řetězec **sdíleného přístupového podpisu** (SAS) účtu úložiště:`{ "connectionString" : "BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl;" }`
 
-  SAS by měl mít seznam a oprávnění číst pro kontejnery a objekty (v tomto případě objekty BLOB).
+SAS by měl mít seznam a oprávnění číst pro kontejnery a objekty (v tomto případě objekty BLOB).
 
-* **Sdílený přístupový podpis kontejneru**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`
+**Sdílený přístupový podpis kontejneru**: `{ "connectionString" : "ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl;" }`
 
-  SAS by měl mít v kontejneru oprávnění list a Read.
-
-Další informace o sdílených přístupových podpisech úložiště najdete v tématu [použití sdílených přístupových podpisů](../storage/common/storage-sas-overview.md).
+SAS by měl mít v kontejneru oprávnění list a Read. Další informace o sdílených přístupových podpisech úložiště najdete v tématu [použití sdílených přístupových podpisů](../storage/common/storage-sas-overview.md).
 
 > [!NOTE]
-> Pokud používáte přihlašovací údaje SAS, budete muset pravidelně aktualizovat přihlašovací údaje ke zdroji dat pomocí obnovených signatur, aby se předešlo jejich vypršení platnosti. Pokud vyprší platnost přihlašovacích údajů SAS, indexer selže a zobrazí se chybová zpráva podobná této `Credentials provided in the connection string are invalid or have expired.` .  
+> Pokud používáte přihlašovací údaje SAS, budete muset pravidelně aktualizovat přihlašovací údaje ke zdroji dat pomocí obnovených signatur, aby se předešlo jejich vypršení platnosti. Pokud vyprší platnost přihlašovacích údajů SAS, indexer selže s chybovou zprávou podobnou "přihlašovací údaje zadané v připojovacím řetězci jsou neplatné nebo vypršely".  
 
-### <a name="step-2-create-an-index"></a>Krok 2: Vytvoření indexu
+## <a name="index-definitions"></a>Definice indexu
 
-Index určuje pole v dokumentu, atributech a dalších konstrukcích, které prohledají možnosti vyhledávání.
-
-Tady je postup, jak vytvořit index s `content` polem, které lze prohledávat a který ukládá text extrahovaný z objektů BLOB:
+Index určuje pole v dokumentu, atributech a dalších konstrukcích, které prohledají možnosti vyhledávání. Následující příklad vytvoří jednoduchý index pomocí [indexu Create (REST API)](/rest/api/searchservice/create-index). 
 
 ```http
-    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
-    Content-Type: application/json
-    api-key: [admin key]
+POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
+Content-Type: application/json
+api-key: [admin key]
 
-    {
-          "name" : "my-target-index",
-          "fields": [
-            { "name": "id", "type": "Edm.String", "key": true, "searchable": false },
-            { "name": "content", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false }
-          ]
-    }
+{
+      "name" : "my-target-index",
+      "fields": [
+        { "name": "id", "type": "Edm.String", "key": true, "searchable": false },
+        { "name": "content", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false }
+      ]
+}
 ```
 
-Další informace najdete v tématu [vytvoření indexu (REST API)](/rest/api/searchservice/create-index).
+Definice indexu vyžadují, aby jedno pole v `"fields"` kolekci fungovalo jako klíč dokumentu. Definice indexu by měly také zahrnovat pole pro obsah a metadata.
 
-### <a name="step-3-create-an-indexer"></a>Krok 3: vytvoření indexeru
+**`content`** Pole se používá k uložení textu extrahovaného z objektů BLOB. Vaše definice tohoto pole může vypadat podobně jako v předchozím příkladu. Tento název nemusíte používat, ale umožňuje využít výhod mapování implicitních polí. Indexer objektů BLOB může odeslat obsah objektu blob do pole Content EDM. String v indexu, ale nevyžadují se žádné mapování polí.
 
-Indexer připojuje zdroj dat k cílovému vyhledávacímu indexu a poskytuje plán pro automatizaci aktualizace dat.
-
-Po vytvoření indexu a zdroje dat jste připraveni vytvořit indexer:
-
-```http
-    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-      "name" : "blob-indexer",
-      "dataSourceName" : "blob-datasource",
-      "targetIndexName" : "my-target-index",
-      "schedule" : { "interval" : "PT2H" }
-    }
-```
-
-Tento indexer se spustí každé dvě hodiny (časový interval je nastaven na "PT2H"). Pokud chcete indexer spustit každých 30 minut, nastavte interval na "PT30M". Nejkratší podporovaný interval je 5 minut. Plán je nepovinný – Pokud je vynechaný, indexer se při vytvoření spustí jenom jednou. Můžete ale kdykoli spustit indexer na vyžádání.   
-
-Další informace najdete v tématu [Vytvoření indexeru (REST API)](/rest/api/searchservice/create-indexer). Další informace o definování plánů indexerů najdete v tématu [postup plánování indexerů pro Azure kognitivní hledání](search-howto-schedule-indexers.md).
-
-<a name="how-azure-search-indexes-blobs"></a>
-
-## <a name="how-blobs-are-indexed"></a>Způsob indexování objektů BLOB
-
-V závislosti na [konfiguraci indexeru](#PartsOfBlobToIndex)může indexer objektů BLOB indexovat jenom metadata úložiště (užitečné v případě, že se jenom zajímáte o metadata a nepotřebujete indexovat obsah objektů BLOB), úložiště a metadata obsahu nebo metadata i textový obsah. Ve výchozím nastavení indexer extrahuje metadata i obsah.
-
-> [!NOTE]
-> Ve výchozím nastavení jsou objekty BLOB se strukturovaným obsahem, jako je JSON nebo CSV, indexované jako jeden blok textu. Pokud chcete indexovat objekty blob JSON a CSV strukturovaným způsobem, přečtěte si další informace v tématu indexování objektů BLOB [JSON](search-howto-index-json-blobs.md) a [indexování objektů BLOB ve formátu CSV](search-howto-index-csv-blobs.md) .
->
-> Složený nebo vložený dokument (například archiv ZIP, dokument aplikace Word s vloženým e-mailem Outlooku obsahující přílohy nebo. Soubor MSG s přílohami) je také indexován jako jeden dokument. Například všechny obrázky extrahované z příloh. V poli normalized_images se vrátí soubor MSG.
-
-* Textový obsah dokumentu se extrahuje do pole řetězce s názvem `content` .
-
-  > [!NOTE]
-  > Azure Kognitivní hledání omezuje množství využívaného textu v závislosti na cenové úrovni: 32 000 znaků pro úroveň Free, 64 000 pro Basic, 4 000 000 pro standard, 8 000 000 pro standard S2 a 16 000 000 pro standard S3. V odpovědi na stav indexeru pro zkrácené dokumenty je k dispozici upozornění.  
-
-* Uživatelsky definované vlastnosti metadat přítomné v objektu blob, pokud existují, jsou extrahovány do doslovného znění. Všimněte si, že to vyžaduje, aby pole bylo definováno v indexu se stejným názvem jako klíč metadat objektu BLOB. Pokud má váš objekt BLOB například klíč metadat `Sensitivity` s hodnotou `High` , měli byste definovat pole s názvem `Sensitivity` v indexu vyhledávání a bude vyplněno hodnotou `High` .
-
-* Vlastnosti standardních metadat objektů BLOB jsou extrahovány do následujících polí:
-
-  * ** \_ \_ název úložiště metadat** (EDM. String) – název souboru objektu BLOB. Pokud máte například objekt BLOB/my-Container/My-Folder/subfolder/resume.pdf, hodnota tohoto pole je `resume.pdf` .
-
-  * ** \_ \_ cesta úložiště metadat** (EDM. String) – úplný identifikátor URI objektu blob, včetně účtu úložiště. Například `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`.
-
-  * ** \_ \_ \_ typ obsahu úložiště metadat** (EDM. String) – typ obsahu určený kódem, který jste použili k nahrání objektu BLOB. Například, `application/octet-stream`.
-
-  * ** \_ \_ naposledy \_ upravená metadata úložiště** (EDM. DateTimeOffset) – poslední změněné časové razítko pro objekt BLOB. Azure Kognitivní hledání používá toto časové razítko k identifikaci změněných objektů blob, aby nedocházelo k přeindexování všeho po počátečním indexování.
-
-  * ** \_ \_ velikost úložiště metadat** (EDM. Int64) – velikost objektu BLOB v bajtech
-
-  * **Metadata \_ úložiště \_ \_ MD5** (EDM. String) – hash MD5 obsahu objektů blob, pokud je k dispozici.
-
-  * ** \_ \_ \_ token SAS úložiště metadat** (EDM. String) – dočasný token SAS, který může být používán [vlastní dovedností](cognitive-search-custom-skill-interface.md) k získání přístupu k objektu BLOB. Tento token by neměl být uložen pro pozdější použití, protože může vypršet jeho platnost.
-
-* Vlastnosti metadat specifické pro jednotlivé formáty dokumentů jsou extrahovány do [zde](#ContentSpecificMetadata)uvedených polí.
-
-Nemusíte definovat pole pro všechny výše uvedené vlastnosti v indexu vyhledávání – stačí zachytit vlastnosti, které pro aplikaci potřebujete.
-
-> [!NOTE]
-> Názvy polí v existujícím indexu se často liší od názvů polí generovaných během extrakce dokumentu. **Mapování polí** můžete použít k mapování názvů vlastností, které poskytuje Azure kognitivní hledání, na názvy polí v indexu vyhledávání. Zobrazí se příklad použití mapování polí níže.
->
+Můžete také přidat pole pro všechna metadata objektů blob, která chcete v indexu. Indexer může číst vlastnosti vlastních metadat, standardní vlastnosti [metadat](#indexing-blob-metadata) a vlastnosti [metadat specifické pro obsah](search-blob-metadata-properties.md) . Další informace o indexech najdete v tématu [vytvoření indexu](search-what-is-an-index.md).
 
 <a name="DocumentKeys"></a>
 
 ### <a name="defining-document-keys-and-field-mappings"></a>Definování klíčů dokumentu a mapování polí
 
-V Azure Kognitivní hledání klíč dokumentu jednoznačně identifikuje dokument. Každý index vyhledávání musí mít přesně jedno pole klíče typu EDM. String. Klíčové pole je vyžadováno pro každý dokument, který je přidán do indexu (ve skutečnosti je to jediné povinné pole).  
+V indexu vyhledávání klíč dokumentu jednoznačně identifikuje každý dokument. Pole, které zvolíte, musí být typu `Edm.String` . V případě obsahu objektů BLOB jsou v objektu BLOB vlastnosti metadat nejlepší kandidáti pro klíč dokumentu.
 
-Měli byste pečlivě zvážit, které extrahované pole by mělo být namapováno na pole klíče pro váš index. Kandidáti:
++ **`metadata_storage_name`** – Tato vlastnost je kandidát, ale pouze v případě, že jsou názvy jedinečné ve všech kontejnerech a složkách, které indexuje. Bez ohledu na umístění objektu BLOB je konečným výsledkem to, že klíč dokumentu (název) musí být v indexu vyhledávání jedinečný po indexování veškerého obsahu. 
 
-* ** \_ \_ název úložiště metadat** – může to být praktický kandidát, ale Všimněte si, že 1) názvy nemusí být jedinečné, protože v různých složkách můžete mít objekty BLOB se stejným názvem a 2) název může obsahovat znaky, které jsou v klíčích dokumentů neplatné, například pomlčky. Pomocí funkce mapování polí můžete pracovat s neplatnými znaky `base64Encode` [field mapping function](search-indexer-field-mappings.md#base64EncodeFunction) – Pokud to uděláte, nezapomeňte kódovat klíče dokumentů při jejich předávání v voláních rozhraní API, jako je například vyhledávání. (Například v .NET můžete k tomuto účelu použít [metodu UrlTokenEncode](/dotnet/api/system.web.httpserverutility.urltokenencode) ).
+  Dalším možným problémem s názvem úložiště je, že může obsahovat znaky, které jsou pro klíče dokumentu neplatné, například pomlčky. Pomocí `base64Encode` [funkce mapování polí](search-indexer-field-mappings.md#base64EncodeFunction)můžete zpracovat neplatné znaky. Pokud to uděláte, nezapomeňte při jejich předávání v voláních rozhraní API, jako je například [vyhledávací dokument (REST)](/rest/api/searchservice/lookup-document), zakódovat klíče dokumentů. V rozhraní .NET můžete použít [metodu UrlTokenEncode](/dotnet/api/system.web.httpserverutility.urltokenencode) ke kódování znaků.
 
-* ** \_ \_ cesta úložiště metadat** – při použití úplné cesty je zajištěna jedinečnost, ale cesta má jednoznačně `/` znaky, které jsou [v klíči dokumentu neplatné](/rest/api/searchservice/naming-rules).  Jak je uvedeno výše, máte možnost kódování klíčů pomocí `base64Encode` [funkce](search-indexer-field-mappings.md#base64EncodeFunction).
++ **`metadata_storage_path`** -použití úplné cesty zaručuje jedinečnost, ale cesta má jednoznačně `/` znaky, které jsou [v klíči dokumentu neplatné](/rest/api/searchservice/naming-rules). Jak je uvedeno výše, můžete použít `base64Encode` [funkci](search-indexer-field-mappings.md#base64EncodeFunction) ke kódování znaků.
 
-* Třetí možností je přidat do objektů BLOB vlastnost vlastní metadata. Tato možnost ale vyžaduje, aby váš proces nahrání objektu BLOB přidal tuto vlastnost metadat do všech objektů BLOB. Vzhledem k tomu, že klíč je povinná vlastnost, všechny objekty blob, které tuto vlastnost nemají, nebudou indexovány.
++ Třetí možností je přidat do objektů BLOB vlastnost vlastní metadata. Tato možnost vyžaduje, aby váš proces nahrání objektu BLOB přidal tuto vlastnost metadat do všech objektů BLOB. Vzhledem k tomu, že klíč je povinná vlastnost, všechny objekty blob, u kterých chybí hodnota, nebudou indexovány.
 
 > [!IMPORTANT]
 > Pokud pro klíčové pole v indexu neexistuje explicitní mapování, Azure Kognitivní hledání automaticky používá `metadata_storage_path` jako klíčová a základní-64 kódování hodnot klíče (druhá možnost výše).
 >
->
 
-V tomto příkladu vybereme `metadata_storage_name` pole jako klíč dokumentu. Předpokládejme také, že váš index obsahuje klíčové pole s názvem `key` a pole `fileSize` pro uložení velikosti dokumentu. Pokud chcete, aby se při vytváření nebo aktualizaci indexeru vytvořily co nejvíce, zadejte následující mapování polí:
+#### <a name="example"></a>Příklad
 
-```http
-    "fieldMappings" : [
-      { "sourceFieldName" : "metadata_storage_name", "targetFieldName" : "key", "mappingFunction" : { "name" : "base64Encode" } },
-      { "sourceFieldName" : "metadata_storage_size", "targetFieldName" : "fileSize" }
-    ]
-```
-
-Pokud to chcete uvést dohromady, můžete přidat mapování polí a povolit kódování Base-64 klíčů pro existující indexer:
+Následující příklad znázorňuje `metadata_storage_name` klíč dokumentu. Předpokládat, že index obsahuje klíčové pole s názvem `key` a jiné pole s názvem `fileSize` pro uložení velikosti dokumentu. [Mapování polí](search-indexer-field-mappings.md) v přidružení polí definice indexeru vytvoří a `metadata_storage_name` má [ `base64Encode` funkci mapování polí](search-indexer-field-mappings.md#base64EncodeFunction) , která zpracovává nepodporované znaky.
 
 ```http
-    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2020-06-30
-    Content-Type: application/json
-    api-key: [admin key]
+PUT https://[service name].search.windows.net/indexers/my-blob-indexer?api-version=2020-06-30
+Content-Type: application/json
+api-key: [admin key]
 
-    {
-      "dataSourceName" : " blob-datasource ",
-      "targetIndexName" : "my-target-index",
-      "schedule" : { "interval" : "PT2H" },
-      "fieldMappings" : [
-        { "sourceFieldName" : "metadata_storage_name", "targetFieldName" : "key", "mappingFunction" : { "name" : "base64Encode" } },
-        { "sourceFieldName" : "metadata_storage_size", "targetFieldName" : "fileSize" }
-      ]
-    }
+{
+  "dataSourceName" : "my-blob-datasource ",
+  "targetIndexName" : "my-target-index",
+  "schedule" : { "interval" : "PT2H" },
+  "fieldMappings" : [
+    { "sourceFieldName" : "metadata_storage_name", "targetFieldName" : "key", "mappingFunction" : { "name" : "base64Encode" } },
+    { "sourceFieldName" : "metadata_storage_size", "targetFieldName" : "fileSize" }
+  ]
+}
 ```
 
-Další informace najdete v tématu [mapování polí a transformace](search-indexer-field-mappings.md).
+#### <a name="how-to-make-an-encoded-field-searchable"></a>Jak nastavit zakódované pole "prohledávatelné"
 
-#### <a name="what-if-you-need-to-encode-a-field-to-use-it-as-a-key-but-you-also-want-to-search-it"></a>Co když potřebujete kódovat pole, abyste ho mohli použít jako klíč, ale chcete ho také vyhledat?
-
-Existují situace, kdy potřebujete jako klíč použít zakódovanou verzi pole, jako je metadata_storage_path, ale také je potřeba, aby toto pole bylo možné prohledávat (bez kódování). Chcete-li tento problém vyřešit, můžete jej namapovat do dvou polí. ten, který se použije pro klíč, a druhý, který se použije pro účely vyhledávání. V příkladu pod polem *Key* obsahuje kódovanou cestu, zatímco pole *cesta* není zakódované a bude použito jako vyhledávací pole v indexu.
+K dispozici jsou situace, kdy potřebujete použít zakódovanou verzi pole jako `metadata_storage_path` klíč, ale také je potřeba, aby toto pole bylo možné prohledávat (bez kódování) v indexu vyhledávání. Aby bylo možné podporovat oba případy použití, lze namapovat `metadata_storage_path` na dvě pole; jeden pro klíč (kódovaný) a druhý pro pole cesty, které můžeme předpokládat, má ve schématu indexu označení "prohledávatelné". Následující příklad ukazuje dvě mapování polí pro `metadata_storage_path` .
 
 ```http
-    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2020-06-30
-    Content-Type: application/json
-    api-key: [admin key]
+PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2020-06-30
+Content-Type: application/json
+api-key: [admin key]
 
-    {
-      "dataSourceName" : " blob-datasource ",
-      "targetIndexName" : "my-target-index",
-      "schedule" : { "interval" : "PT2H" },
-      "fieldMappings" : [
-        { "sourceFieldName" : "metadata_storage_path", "targetFieldName" : "key", "mappingFunction" : { "name" : "base64Encode" } },
-        { "sourceFieldName" : "metadata_storage_path", "targetFieldName" : "path" }
-      ]
-    }
+{
+  "dataSourceName" : " blob-datasource ",
+  "targetIndexName" : "my-target-index",
+  "schedule" : { "interval" : "PT2H" },
+  "fieldMappings" : [
+    { "sourceFieldName" : "metadata_storage_path", "targetFieldName" : "key", "mappingFunction" : { "name" : "base64Encode" } },
+    { "sourceFieldName" : "metadata_storage_path", "targetFieldName" : "path" }
+  ]
+}
 ```
-<a name="WhichBlobsAreIndexed"></a>
-
-## <a name="index-by-file-type"></a>Index podle typu souboru
-
-Můžete určit, které objekty blob budou indexovány a které se přeskočí.
-
-### <a name="include-blobs-having-specific-file-extensions"></a>Zahrnout objekty BLOB s konkrétními příponami souborů
-
-Pomocí parametru konfigurace indexeru můžete indexovat pouze objekty BLOB s příponami názvů souborů, které zadáte `indexedFileNameExtensions` . Hodnota je řetězec obsahující čárkami oddělený seznam přípon souborů (s počáteční tečkou). Například chcete-li indexovat pouze. Soubory PDF a. Objekty blob DOCX:
-
-```http
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }
-    }
-```
-
-### <a name="exclude-blobs-having-specific-file-extensions"></a>Vyloučení objektů BLOB s konkrétními příponami souborů
-
-Můžete vyloučit objekty BLOB s konkrétní příponou názvu souboru z indexování pomocí `excludedFileNameExtensions` parametru konfigurace. Hodnota je řetězec obsahující čárkami oddělený seznam přípon souborů (s počáteční tečkou). Například pro indexování všech objektů BLOB s výjimkou. PNG a. Rozšíření JPEG:
-
-```http
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "excludedFileNameExtensions" : ".png,.jpeg" } }
-    }
-```
-
-Pokud `indexedFileNameExtensions` `excludedFileNameExtensions` jsou přítomny parametry i a, Azure kognitivní hledání nejprve vyhledá `indexedFileNameExtensions` , a potom na `excludedFileNameExtensions` . To znamená, že pokud se stejná Přípona souboru nachází v obou seznamech, bude vyloučena z indexování.
 
 <a name="PartsOfBlobToIndex"></a>
 
-## <a name="index-parts-of-a-blob"></a>Indexovat části objektu BLOB
+## <a name="index-content-and-metadata"></a>Obsah a metadata indexu
 
-Můžete určit, které části objektů BLOB budou indexovány pomocí `dataToExtract` parametru konfigurace. Může mít následující hodnoty:
+Objekty blob obsahují obsah a metadata. Můžete určit, které části objektů BLOB budou indexovány pomocí `dataToExtract` parametru konfigurace. Může mít následující hodnoty:
 
-* `storageMetadata` – Určuje, že se indexují jenom [standardní vlastnosti objektů BLOB a metadata zadaná uživatelem](../storage/blobs/storage-blob-container-properties-metadata.md) .
-* `allMetadata` – Určuje, že se indexují metadata úložiště a [metadata specifická pro typ obsahu](#ContentSpecificMetadata) extrahovaná z obsahu objektu BLOB.
-* `contentAndMetadata` – Určuje, že se indexuje všechna metadata a textový obsah extrahovaný z objektu BLOB. Toto je výchozí hodnota.
++ `contentAndMetadata` – Určuje, že se indexuje všechna metadata a textový obsah extrahovaný z objektu BLOB. Toto je výchozí hodnota.
+
++ `storageMetadata` – Určuje, že se indexují jenom [standardní vlastnosti objektů BLOB a metadata zadaná uživatelem](../storage/blobs/storage-blob-container-properties-metadata.md) .
+
++ `allMetadata` – Určuje, že standardní vlastnosti objektů BLOB a všechna [metadata pro nalezené typy obsahu](search-blob-metadata-properties.md) se extrahují z obsahu objektu BLOB a indexovaného.
 
 Chcete-li například indexovat pouze metadata úložiště, použijte:
 
 ```http
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
-    Content-Type: application/json
-    api-key: [admin key]
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
+Content-Type: application/json
+api-key: [admin key]
 
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "dataToExtract" : "storageMetadata" } }
-    }
+{
+  ... other parts of indexer definition
+  "parameters" : { "configuration" : { "dataToExtract" : "storageMetadata" } }
+}
 ```
 
-### <a name="using-blob-metadata-to-control-how-blobs-are-indexed"></a>Použití metadat objektů BLOB k řízení, jak jsou objekty blob indexovány
+<a name="how-azure-search-indexes-blobs"></a>
 
-Výše popsané parametry konfigurace se vztahují na všechny objekty blob. V některých případech můžete chtít určit, jak jsou *jednotlivé objekty blob* indexovány. Můžete to udělat přidáním následujících vlastností a hodnot metadat objektu BLOB:
+### <a name="indexing-blob-content"></a>Indexování obsahu objektů BLOB
+
+Ve výchozím nastavení jsou objekty BLOB se strukturovaným obsahem, jako je JSON nebo CSV, indexované jako jeden blok textu. Pokud ale dokumenty JSON nebo CSV mají interní strukturu (oddělovače), můžete přiřadit režimy analýzy pro generování jednotlivých dokumentů hledání pro každý řádek nebo prvek. Další informace najdete v tématu [indexování](search-howto-index-json-blobs.md) objektů BLOB JSON a [indexování objektů BLOB ve formátu CSV](search-howto-index-csv-blobs.md).
+
+Složený nebo vložený dokument (například archiv ZIP, dokument aplikace Word s vloženým e-mailem Outlooku obsahující přílohy nebo. Soubor MSG s přílohami) je také indexován jako jeden dokument. Například všechny obrázky extrahované z příloh. V poli normalized_images se vrátí soubor MSG.
+
+Textový obsah dokumentu se extrahuje do pole řetězce s názvem `content` .
+
+  > [!NOTE]
+  > Azure Kognitivní hledání v závislosti na cenové úrovni omezuje množství textu, který extrahuje. Aktuální [omezení služby](search-limits-quotas-capacity.md#indexer-limits) jsou 32 000 znaků pro úroveň Free, 64 000 pro Basic, 4 000 000 pro standard, 8 000 000 pro standard S2 a 16 000 000 pro standard S3. V odpovědi na stav indexeru pro zkrácené dokumenty je k dispozici upozornění.  
+
+<a name="indexing-blob-metadata"></a>
+
+### <a name="indexing-blob-metadata"></a>Indexování metadat objektů BLOB
+
+Indexery můžou také indexovat metadata objektů BLOB. Nejprve mohou být všechny uživatelsky definované vlastnosti metadat extrahovány do doslovného znění. Chcete-li získat hodnoty, je nutné definovat pole v indexu hledání typu se `Edm.String` stejným názvem jako klíč metadat objektu BLOB. Pokud má například objekt BLOB klíč metadat `Sensitivity` s hodnotou `High` , měli byste definovat pole s názvem `Sensitivity` v indexu vyhledávání a bude vyplněno hodnotou `High` .
+
+Druhý, vlastnosti standardních metadat objektů BLOB se dají extrahovat do níže uvedených polí. Indexer objektů BLOB automaticky vytvoří mapování interních polí pro tyto vlastnosti metadat objektů BLOB. Stále musíte přidat pole, do kterých chcete definici indexu použít, ale můžete vynechat vytváření mapování polí v indexeru.
+
+  + **metadata_storage_name** ( `Edm.String` ) – název souboru objektu BLOB. Pokud máte například objekt BLOB/my-Container/My-Folder/subfolder/resume.pdf, hodnota tohoto pole je `resume.pdf` .
+
+  + **metadata_storage_path** ( `Edm.String` ) – úplný identifikátor URI objektu blob, včetně účtu úložiště. Například `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`.
+
+  + **metadata_storage_content_type** ( `Edm.String` ) – typ obsahu určený kódem, který jste použili k nahrání objektu BLOB. Například `application/octet-stream`.
+
+  + **metadata_storage_last_modified** ( `Edm.DateTimeOffset` ) – časové razítko posledního upraveného objektu BLOB. Azure Kognitivní hledání používá toto časové razítko k identifikaci změněných objektů blob, aby nedocházelo k přeindexování všeho po počátečním indexování.
+
+  + **metadata_storage_size** ( `Edm.Int64` ) – velikost objektu BLOB v bajtech
+
+  + **metadata_storage_content_md5** ( `Edm.String` ) – hodnota hash MD5 obsahu objektu blob, je-li k dispozici.
+
+  + **metadata_storage_sas_token** ( `Edm.String` ) – dočasný token SAS, který mohou používat [vlastní dovednosti](cognitive-search-custom-skill-interface.md) k získání přístupu k objektu BLOB. Tento token by neměl být uložen pro pozdější použití, protože může vypršet jeho platnost.
+
+A konečně všechny vlastnosti metadat specifické pro formát dokumentu objektů blob, které indexuje, můžete také znázornit ve schématu indexu. Další informace o metadatech specifických pro obsah najdete v tématu [vlastnosti metadat obsahu](search-blob-metadata-properties.md).
+
+Je důležité, abyste odkazovali na to, že nemusíte definovat pole pro všechny výše uvedené vlastnosti v indexu vyhledávání – stačí zachytit vlastnosti, které pro vaši aplikaci potřebujete.
+
+<a name="WhichBlobsAreIndexed"></a>
+
+## <a name="how-to-control-which-blobs-are-indexed"></a>Jak řídit indexování indexovaných objektů
+
+Můžete určit, které objekty blob budou indexovány a které jsou vynechány typem souboru objektu BLOB nebo nastavením vlastností samotného objektu blob, což způsobí, že indexer bude přeskočí.
+
+### <a name="include-specific-file-extensions"></a>Zahrnout konkrétní přípony souborů
+
+Slouží `indexedFileNameExtensions` k zadání čárkami odděleného seznamu přípon souborů, které se mají indexovat (s počáteční tečkou). Například chcete-li indexovat pouze. Soubory PDF a. Objekty blob DOCX:
+
+```http
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
+Content-Type: application/json
+api-key: [admin key]
+
+{
+  ... other parts of indexer definition
+  "parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }
+}
+```
+
+### <a name="exclude-specific-file-extensions"></a>Vyloučit konkrétní přípony souborů
+
+Slouží `excludedFileNameExtensions` k zadání čárkami odděleného seznamu přípon souborů, které se mají přeskočit (znovu s počáteční tečkou). Například pro indexování všech objektů BLOB s výjimkou. PNG a. Rozšíření JPEG:
+
+```http
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
+Content-Type: application/json
+api-key: [admin key]
+
+{
+  ... other parts of indexer definition
+  "parameters" : { "configuration" : { "excludedFileNameExtensions" : ".png,.jpeg" } }
+}
+```
+
+Pokud `indexedFileNameExtensions` `excludedFileNameExtensions` jsou přítomny parametry a a, indexer se nejprve vyhledá a `indexedFileNameExtensions` potom na `excludedFileNameExtensions` . Pokud je stejná Přípona souboru v obou seznamech, bude vyloučena z indexování.
+
+### <a name="add-skip-metadata-the-blob"></a>Přidat "Přeskočit" metadata objektu BLOB
+
+Parametry konfigurace indexeru se vztahují na všechny objekty BLOB v kontejneru nebo složce. V některých případech je třeba určit, jak jsou *jednotlivé objekty blob* indexovány. To můžete provést přidáním následujících vlastností a hodnot metadat do objektů BLOB v úložišti objektů BLOB. Když indexer narazí na tyto vlastnosti, přeskočí objekt BLOB nebo jeho obsah v běhu indexování.
 
 | Název vlastnosti | Hodnota vlastnosti | Vysvětlení |
-| --- | --- | --- |
-| AzureSearch_Skip |podmínka |Dá indexeru objektů BLOB úplný skok objektu BLOB. Nezkouší se žádná metadata ani extrakce obsahu. To je užitečné, když určitý objekt BLOB opakovaně selhává a přerušuje proces indexování. |
-| AzureSearch_SkipContent |podmínka |Jedná se o ekvivalent `"dataToExtract" : "allMetadata"` Nastavení popsaného [výše](#PartsOfBlobToIndex) na konkrétní objekt BLOB. |
-
-## <a name="index-from-multiple-sources"></a>Index z více zdrojů
-
-Můžete chtít "sestavovat" dokumenty z více zdrojů v indexu. Například můžete chtít sloučit text z objektů BLOB s jinými metadaty uloženými v Cosmos DB. Rozhraní API pro indexování nabízených oznámení můžete dokonce použít spolu s různými indexery k vytváření dokumentů hledání z více částí.
-
-Aby to fungovalo, všechny indexery a další součásti musí souhlasit s klíčem dokumentu. Další podrobnosti o tomto tématu najdete v článku [indexování více zdrojů dat Azure](./tutorial-multiple-data-sources.md) nebo tohoto příspěvku na blogu v tématu [kombinování dokumentů s ostatními daty v Azure kognitivní hledání](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
+| ------------- | -------------- | ----------- |
+| `AzureSearch_Skip` |`"true"` |Dá indexeru objektů BLOB úplný skok objektu BLOB. Nezkouší se žádná metadata ani extrakce obsahu. To je užitečné, když určitý objekt BLOB opakovaně selhává a přerušuje proces indexování. |
+| `AzureSearch_SkipContent` |`"true"` |Jedná se o ekvivalent `"dataToExtract" : "allMetadata"` Nastavení popsaného [výše](#PartsOfBlobToIndex) na konkrétní objekt BLOB. |
 
 ## <a name="index-large-datasets"></a>Indexování velkých datových sad
 
-Indexování objektů BLOB může být časově náročný proces. V případech, kdy máte v indexu miliony objektů blob, můžete urychlit indexování pomocí dělení dat a používání více indexerů k paralelnímu zpracování dat. Tady je postup, jak to můžete nastavit:
+Indexování objektů BLOB může být časově náročný proces. V případech, kdy máte v indexu miliony objektů blob, můžete urychlit indexování pomocí dělení dat a používání více indexerů k [paralelnímu zpracování dat](search-howto-large-index.md#parallel-indexing). Tady je postup, jak to můžete nastavit:
 
-* Rozdělit data do více kontejnerů objektů BLOB nebo virtuálních složek
++ Rozdělit data do více kontejnerů objektů BLOB nebo virtuálních složek
 
-* Nastavte několik zdrojů dat Azure Kognitivní hledání, jeden pro každý kontejner nebo složku. Chcete-li odkazovat na složku objektů blob, použijte `query` parametr:
++ Nastavte několik zdrojů dat, jeden pro každý kontejner nebo složku. Chcete-li odkazovat na složku objektů blob, použijte `query` parametr:
 
     ```json
     {
@@ -343,84 +279,63 @@ Indexování objektů BLOB může být časově náročný proces. V případech
     }
     ```
 
-* Vytvořte odpovídající indexer pro každý zdroj dat. Všechny indexery mohou ukazovat na stejný index vyhledávání cíle.  
++ Vytvořte odpovídající indexer pro každý zdroj dat. Všechny indexery by měly ukazovat na stejný index vyhledávání cíle.  
 
-* Jedna jednotka pro hledání ve vaší službě může spustit jeden indexer v daném okamžiku. Vytvoření více indexerů, jak je popsáno výše, je užitečné pouze v případě, že jsou skutečně spouštěny paralelně. Pokud chcete spustit více indexerů paralelně, Škálujte vyhledávací službu tím, že vytvoříte příslušný počet oddílů a replik. Pokud například služba vyhledávání obsahuje 6 jednotek hledání (například 2 oddíly × 3 repliky), pak 6 indexerů může běžet současně, což má za následek zvětšení v propustnosti indexování po šesti rozložení. Další informace o škálování a plánování kapacity najdete v tématu [Úprava kapacity služby Azure kognitivní hledání](search-capacity-planning.md).
++ Jedna jednotka pro hledání ve vaší službě může spustit jeden indexer v daném okamžiku. Vytvoření více indexerů, jak je popsáno výše, je užitečné pouze v případě, že jsou skutečně spouštěny paralelně.
+
+  Pokud chcete spustit více indexerů paralelně, Škálujte vyhledávací službu tím, že vytvoříte příslušný počet oddílů a replik. Pokud například služba vyhledávání obsahuje 6 jednotek hledání (například 2 oddíly × 3 repliky), pak 6 indexerů může běžet současně, což má za následek zvětšení v propustnosti indexování po šesti rozložení. Další informace o škálování a plánování kapacity najdete v tématu [Úprava kapacity služby Azure kognitivní hledání](search-capacity-planning.md).
 
 <a name="DealingWithErrors"></a>
 
-## <a name="handle-errors"></a>Ošetření chyb
+## <a name="handling-errors"></a>Zpracování chyb
 
-Ve výchozím nastavení se indexer objektů BLOB zastaví, jakmile narazí na objekt BLOB s nepodporovaným typem obsahu (například obrázek). Můžete samozřejmě použít `excludedFileNameExtensions` parametr k přeskočení určitých typů obsahu. Je ale možné, že budete muset indexovat objekty blob bez znalosti všech možných typů obsahu předem. Pokud chcete pokračovat v indexování, když je nalezen nepodporovaný typ obsahu, nastavte `failOnUnsupportedContentType` parametr konfigurace na `false` :
+K chybám, které se běžně vyskytují během indexování, patří nepodporované typy obsahu, chybějící obsah nebo objekty BLOB s větší velikostí.
 
-```http
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
-    Content-Type: application/json
-    api-key: [admin key]
+Ve výchozím nastavení se indexer objektů BLOB zastaví, jakmile narazí na objekt BLOB s nepodporovaným typem obsahu (například obrázek). Pomocí `excludedFileNameExtensions` parametru můžete přeskočit určité typy obsahu. Můžete ale chtít indexovat, aby pokračoval i v případě, že dojde k chybám, a pak později ladit jednotlivé dokumenty. Další informace o chybách indexeru najdete v tématu [řešení běžných potíží indexerů](search-indexer-troubleshooting.md) a [chyb a upozornění indexerů](cognitive-search-common-errors-warnings.md).
 
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "failOnUnsupportedContentType" : false } }
-    }
-```
+### <a name="respond-to-errors"></a>Reakce na chyby
 
-U některých objektů BLOB nedokáže Azure Kognitivní hledání určit typ obsahu nebo nemůže zpracovat dokument jiného podporovaného typu obsahu. Chcete-li tento režim selhání ignorovat, nastavte `failOnUnprocessableDocument` parametr konfigurace na hodnotu false:
+Existují čtyři vlastnosti indexeru, které ovládají odpověď indexeru, když dojde k chybám. Následující příklady znázorňují způsob nastavení těchto vlastností v definici indexeru. Pokud indexer již existuje, můžete tyto vlastnosti přidat úpravou definice na portálu.
+
+#### <a name="maxfaileditems-and-maxfaileditemsperbatch"></a>`"maxFailedItems"` a `"maxFailedItemsPerBatch"`
+
+Pokud dojde k chybám v jakémkoli okamžiku zpracování, při analýze objektů BLOB nebo při přidávání dokumentů do indexu můžete pokračovat v indexování. Nastavte tyto vlastnosti na počet přijatelných chyb. Hodnota `-1` umožňuje zpracování bez ohledu na to, kolik chyb nastane. V opačném případě je hodnota kladné celé číslo.
 
 ```http
-      "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
+Content-Type: application/json
+api-key: [admin key]
+
+{
+  ... other parts of indexer definition
+  "parameters" : { "maxFailedItems" : 10, "maxFailedItemsPerBatch" : 10 }
+}
 ```
 
-Azure Kognitivní hledání omezuje velikost indexovaných objektů BLOB. Tato omezení jsou popsaná v [omezení služby v Azure kognitivní hledání](./search-limits-quotas-capacity.md). Ve výchozím nastavení jsou objekty BLOB s příliš velikostí považovány za chyby. Pokud ale nastavíte `indexStorageMetadataOnlyForOversizedDocuments` parametr konfigurace na hodnotu true, pořád ale můžete indexovat metadata úložiště objektů BLOB s více velikostmi.
+#### <a name="failonunsupportedcontenttype-and-failonunprocessabledocument"></a>`"failOnUnsupportedContentType"` a `"failOnUnprocessableDocument"` 
+
+U některých objektů BLOB nedokáže Azure Kognitivní hledání určit typ obsahu nebo nemůže zpracovat dokument jiného podporovaného typu obsahu. Pokud chcete tyto chybové podmínky ignorovat, nastavte parametry konfigurace na `false` :
 
 ```http
-    "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
+Content-Type: application/json
+api-key: [admin key]
+
+{
+  ... other parts of indexer definition
+  "parameters" : { "configuration" : { "failOnUnsupportedContentType" : false, "failOnUnprocessableDocument" : false } }
+}
 ```
 
-Můžete také pokračovat v indexování, pokud dojde k chybám v jakémkoli okamžiku zpracování, při analýze objektů BLOB nebo při přidávání dokumentů do indexu. Chcete-li ignorovat určitý počet chyb, nastavte `maxFailedItems` `maxFailedItemsPerBatch` parametry konfigurace a na požadované hodnoty. Například:
+### <a name="relax-indexer-constraints"></a>Uvolnit omezení indexeru
 
-```http
-    {
-      ... other parts of indexer definition
-      "parameters" : { "maxFailedItems" : 10, "maxFailedItemsPerBatch" : 10 }
-    }
-```
+Můžete také nastavit [Vlastnosti konfigurace objektů BLOB](/rest/api/searchservice/create-indexer#blob-configuration-parameters) , které účinně určují, jestli existuje chybový stav. Následující vlastnost může zmírnit omezení a potlačit chyby, k nimž by jinak mohlo dojít.
 
-<a name="ContentSpecificMetadata"></a>
-
-## <a name="content-type-specific-metadata-properties"></a>Vlastnosti metadat specifických pro typ obsahu
-
-Následující tabulka shrnuje zpracování pro jednotlivé formáty dokumentů a popisuje vlastnosti metadat extrahované službou Azure Kognitivní hledání.
-
-| Formát dokumentu/typ obsahu | Extrahovaná metadata | Podrobnosti zpracování |
-| --- | --- | --- |
-| HTML (text/HTML) |`metadata_content_encoding`<br/>`metadata_content_type`<br/>`metadata_language`<br/>`metadata_description`<br/>`metadata_keywords`<br/>`metadata_title` |Obložení kódu HTML a extrakce textu |
-| PDF (aplikace/PDF) |`metadata_content_type`<br/>`metadata_language`<br/>`metadata_author`<br/>`metadata_title` |Extrakce textu, včetně vložených dokumentů (s výjimkou obrázků) |
-| DOCX (Application/vnd.openxmlformats-officedocument.wordprocessingml.document) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Extrakce textu, včetně vložených dokumentů |
-| DOC (Application/MSWord) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Extrakce textu, včetně vložených dokumentů |
-| DOCM (Application/vnd.ms-word.document. macroenabled. 12) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Extrakce textu, včetně vložených dokumentů |
-| WORD XML (application/vnd. MS-word2006ml) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Obložení kódu XML a extrakce textu |
-| WORD 2003 XML (application/vnd. MS-WordML) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date` |Obložení kódu XML a extrakce textu |
-| XLSX (application/vnd. openxmlformats-officedocument. SpreadsheetML. list) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Extrakce textu, včetně vložených dokumentů |
-| XLS (application/vnd. MS-Excel) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Extrakce textu, včetně vložených dokumentů |
-| XLSM (application/vnd. MS-Excel. list. macroenabled. 12) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Extrakce textu, včetně vložených dokumentů |
-| PPTX (application/vnd. openxmlformats-officedocument. presentationml. Presentation) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Extrakce textu, včetně vložených dokumentů |
-| PPT (application/vnd. MS-PowerPoint) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Extrakce textu, včetně vložených dokumentů |
-| PPTM (application/vnd. MS-PowerPoint. Presentation. macroenabled. 12) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Extrakce textu, včetně vložených dokumentů |
-| MSG (application/vnd. MS-Outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_from_email`<br/>`metadata_message_to`<br/>`metadata_message_to_email`<br/>`metadata_message_cc`<br/>`metadata_message_cc_email`<br/>`metadata_message_bcc`<br/>`metadata_message_bcc_email`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |Extrahujte text, včetně textu extrahovaného z příloh. `metadata_message_to_email``metadata_message_cc_email`a `metadata_message_bcc_email` jsou kolekce řetězců, zbývající pole jsou řetězce.|
-| ODT (application/vnd. Oasis. OpenDocument. text) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Extrakce textu, včetně vložených dokumentů |
-| ODS (application/vnd. Oasis. OpenDocument. Spreadsheet) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Extrakce textu, včetně vložených dokumentů |
-| ODP (application/vnd. Oasis. OpenDocument. Presentation) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`title` |Extrakce textu, včetně vložených dokumentů |
-| ZIP (aplikace/ZIP) |`metadata_content_type` |Extrakce textu ze všech dokumentů v archivu |
-| GZ (Application/gzip) |`metadata_content_type` |Extrakce textu ze všech dokumentů v archivu |
-| EPUB (Application/EPUB + zip) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_title`<br/>`metadata_description`<br/>`metadata_language`<br/>`metadata_keywords`<br/>`metadata_identifier`<br/>`metadata_publisher` |Extrakce textu ze všech dokumentů v archivu |
-| XML (Application/XML) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> |Obložení kódu XML a extrakce textu |
-| JSON (Application/JSON) |`metadata_content_type`<br/>`metadata_content_encoding` |Extrakce textu<br/>Poznámka: Pokud potřebujete extrahovat více polí dokumentů z objektu BLOB JSON, přečtěte si podrobnosti v tématu [indexování objektů BLOB JSON](search-howto-index-json-blobs.md) . |
-| EML (zpráva/RFC822) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` |Extrakce textu, včetně příloh |
-| RTF (aplikace/RTF) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_page_count`<br/>`metadata_word_count`<br/> | Extrakce textu|
-| Prostý text (text/prostý) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> | Extrakce textu|
++ `"indexStorageMetadataOnlyForOversizedDocuments"` indexování metadat úložiště pro obsah objektu blob, který je příliš velký pro zpracování. Ve výchozím nastavení jsou objekty BLOB s příliš velikostí považovány za chyby. Omezení velikosti objektů BLOB najdete v tématu [omezení služby](search-limits-quotas-capacity.md).
 
 ## <a name="see-also"></a>Viz také
 
-* [Indexery ve službě Azure Cognitive Search](search-indexer-overview.md)
-* [Principy objektů BLOB pomocí AI](search-blob-ai-integration.md)
-* [Přehled indexování objektů BLOB](search-blob-storage-integration.md)
++ [Indexery ve službě Azure Cognitive Search](search-indexer-overview.md)
++ [Vytvoření indexeru](search-howto-create-indexers.md)
++ [Přehled objektů pro obohacení AI nad objekty blob](search-blob-ai-integration.md)
++ [Přehled hledání objektů BLOB](search-blob-storage-integration.md)

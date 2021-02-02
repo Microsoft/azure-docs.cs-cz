@@ -412,6 +412,10 @@
       items:
         - name: Co je Flexibilní server?
           href: flexible-server/overview.md
+        - name: Podporované verze
+          href: flexible-server/concepts-supported-versions.md
+        - name: Výpočetní výkon a úložiště
+          href: flexible-server/concepts-compute-storage.md
     - name: Rychlé starty
       expanded: true
       items:
@@ -437,93 +441,8 @@
               href: flexible-server/connect-java.md
             - name: .NET
               href: flexible-server/connect-csharp.md
-    - name: Kurzy
-      items:
-        - name: WordPress v Azure Kubernetes
-          href: flexible-server/tutorial-deploy-wordpress-on-aks.md
-        - name: Sestavení aplikace v PHP (Laravel) s databází
-          href: flexible-server/tutorial-php-database-app.md
-        - name: Připojení s privátní webovou aplikací
-          href: flexible-server/tutorial-webapp-server-vnet.md
-    - name: Koncepty
-      items:
-        - name: Servery
-          href: flexible-server/concept-servers.md
-        - name: Podporované verze
-          href: flexible-server/concepts-supported-versions.md
-        - name: Omezení
-          href: flexible-server/concepts-limitations.md
-        - name: Výpočetní výkon a úložiště
-          href: flexible-server/concepts-compute-storage.md
-        - name: Sítě
-          href: flexible-server/concepts-networking.md
-          displayName: 'virtual network, IP address, public access'
-        - name: Údržba
-          href: flexible-server/concepts-maintenance.md
-        - name: Kontinuita podnikových procesů
-          items:
-            - name: Přehled provozní kontinuity
-              href: flexible-server/concepts-business-continuity.md
-            - name: Zálohování a obnovení
-              href: flexible-server/concepts-backup-restore.md
-            - name: Vysoká dostupnost
-              href: flexible-server/concepts-high-availability.md
-        - name: Monitorování a protokoly
-          items:
-            - name: Parametry serveru
-              href: flexible-server/concepts-server-parameters.md
-            - name: Protokoly pomalých dotazů
-              href: flexible-server/concepts-slow-query-logs.md
-            - name: Protokoly auditu
-              href: flexible-server/concepts-audit-logs.md
-            - name: Metriky
-              href: flexible-server/concepts-monitoring.md
-        - name: Replikace
-          items:
-            - name: Čtení replik
-              href: flexible-server/concepts-read-replicas.md
-    - name: Návody
-      items:
-        - name: Správa serveru
-          items:
-            - name: portál Azure
-              href: flexible-server/how-to-manage-server-portal.md
-            - name: Azure CLI
-              href: flexible-server/how-to-manage-server-cli.md
-        - name: Údržba
-          items:
-            - name: portál Azure
-              href: flexible-server/how-to-maintenance-portal.md
-        - name: Zastavení/spuštění serveru
-          items:
-            - name: portál Azure
-              href: flexible-server/how-to-stop-start-server-portal.md
-        - name: Obnovení serveru
-          items:
-            - name: portál Azure
-              href: flexible-server/how-to-restore-server-portal.md
-        - name: Vysoká dostupnost
-          items:
-            - name: portál Azure
-              href: flexible-server/how-to-configure-high-availability.md
-        - name: Sítě
-          items:
-            - name: Privátní přístup (integrace virtuální sítě)
-              items:
-                - name: portál Azure
-                  href: flexible-server/how-to-manage-virtual-network-portal.md
-                - name: Azure CLI
-                  href: flexible-server/how-to-manage-virtual-network-cli.md
-            - name: Veřejný přístup (povolené IP adresy)
-              items:
-                - name: portál Azure
-                  href: flexible-server/how-to-manage-firewall-portal.md
-                - name: Azure CLI
-                  href: flexible-server/how-to-manage-firewall-cli.md
-            - name: TLS/SSL
-              items:
-                - name: Připojení pomocí protokolu TLS/SSL
-                  href: flexible-server/how-to-connect-tls-ssl.md
+        - name: Připojení pomocí protokolu TLS/SSL
+          href: flexible-server/how-to-connect-tls-ssl.md
         - name: Konfigurace parametrů serveru
           items:
             - name: portál Azure
@@ -532,32 +451,104 @@
             - name: Azure CLI
               href: flexible-server/how-to-configure-server-parameters-cli.md
               displayName: 'server parameters, cli'
-        - name: Monitorování a protokoly
-          items:
-            - name: Vytváření upozornění na metriky
-              href: flexible-server/how-to-alert-on-metric.md
-            - name: Protokoly pomalých dotazů
-              items:
-                - name: portál Azure
-                  href: flexible-server/how-to-configure-slow-query-logs-portal.md
-            - name: Protokoly auditu
-              items:
-                - name: portál Azure
-                  href: flexible-server/how-to-configure-audit-logs-portal.md
-        - name: Restartování serveru
+        - name: Vytváření databází a uživatelů
+          href: howto-create-users.md
+          displayName: users
+        - name: Monitorovací Server
+          href: flexible-server/how-to-alert-on-metric.md
+    - name: Vývoj aplikací
+      items:
+        - name: WordPress v Azure Kubernetes
+          href: flexible-server/tutorial-deploy-wordpress-on-aks.md
+        - name: Sestavení aplikace v PHP (Laravel) s databází
+          href: flexible-server/tutorial-php-database-app.md
+        - name: Připojení s privátní webovou aplikací
+          href: flexible-server/tutorial-webapp-server-vnet.md
+    - name: Správa serveru
+      items:
+        - name: Koncepty
+          href: flexible-server/concept-servers.md
+        - name: Parametry serveru
+          href: flexible-server/concepts-server-parameters.md
+        - name: Omezení
+          href: flexible-server/concepts-limitations.md
+        - name: Správa serveru
           items:
             - name: portál Azure
-              href: flexible-server/how-to-restart-server-portal.md
-        - name: Replikace
+              href: flexible-server/how-to-manage-server-portal.md
+            - name: Azure CLI
+              href: flexible-server/how-to-manage-server-cli.md
+        - name: Zastavení/spuštění serveru pomocí Azure Portal
+          href: flexible-server/how-to-stop-start-server-portal.md
+        - name: Restartujte server pomocí Azure Portal
+          href: flexible-server/how-to-restart-server-portal.md
+    - name: Sítě
+      items:
+        - name: Koncepty
+          href: flexible-server/concepts-networking.md
+          displayName: 'virtual network, IP address, public access'
+        - name: Privátní přístup (integrace virtuální sítě)
           items:
-            - name: Vytváření replik pro čtení – Azure Portal
+            - name: Konfigurace privátního přístupu pomocí Azure Portal
+              href: flexible-server/how-to-manage-virtual-network-portal.md
+            - name: Konfigurace privátního přístupu pomocí Azure CLI
+              href: flexible-server/how-to-manage-virtual-network-cli.md
+        - name: Veřejný přístup (povolené IP adresy)
+          items:
+            - name: Konfigurace veřejného přístupu pomocí Azure Portal
+              href: flexible-server/how-to-manage-firewall-portal.md
+            - name: Konfigurace veřejného přístupu pomocí Azure CLI
+              href: flexible-server/how-to-manage-firewall-cli.md
+    - name: Údržba služby
+      items:
+        - name: Plánovaná údržba
+          href: flexible-server/concepts-maintenance.md
+        - name: Konfigurace naplánované údržby pomocí Azure Portal
+          href: flexible-server/how-to-maintenance-portal.md
+    - name: Vysoká dostupnost
+      items:
+        - name: Přehled provozní kontinuity
+          href: flexible-server/concepts-business-continuity.md
+        - name: Vysoká dostupnost
+          href: flexible-server/concepts-high-availability.md
+        - name: Konfigurace vysoké dostupnosti pomocí Azure Portal
+          href: flexible-server/how-to-configure-high-availability.md
+    - name: Monitorování a protokoly
+      items:
+        - name: Koncepty
+          href: flexible-server/concepts-monitoring.md
+        - name: Protokoly pomalých dotazů
+          items:
+            - name: Koncepty
+              href: flexible-server/concepts-slow-query-logs.md
+            - name: Konfigurace pomalých protokolů dotazů pomocí Azure Portal
+              href: flexible-server/how-to-configure-slow-query-logs-portal.md
+        - name: Protokoly auditu
+          items:
+            - name: Koncepty
+              href: flexible-server/concepts-audit-logs.md
+            - name: Konfigurovat protokoly auditu
+              href: flexible-server/how-to-configure-audit-logs-portal.md
+    - name: Replikace
+      items:
+        - name: Čtení replik
+          href: flexible-server/concepts-read-replicas.md
+        - name: Vytváření replik pro čtení
+          items:
+            - name: Vytváření replik pro čtení pomocí Azure Portal
               href: flexible-server/how-to-read-replicas-portal.md
-            - name: Vytváření replik pro čtení – Azure CLI
+            - name: Vytvoření replik pro čtení pomocí Azure CLI
               href: flexible-server/how-to-read-replicas-cli.md
-        - name: Řešení potíží
-          items:
-            - name: Chyby připojení
-              href: flexible-server/how-to-troubleshoot-common-connection-issues.md
+    - name: Zálohování & obnovení
+      items:
+        - name: Koncepty
+          href: flexible-server/concepts-backup-restore.md
+        - name: Obnovení serveru s využitím webu Azure Portal
+          href: flexible-server/how-to-restore-server-portal.md
+    - name: Řešení potíží
+      items:
+        - name: Řešení chyb připojení
+          href: flexible-server/how-to-troubleshoot-common-connection-issues.md
 - name: Migrace
   items:
     - name: Migrace dat pomocí mysqldump nebo phpmyadmin

@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: abd30c22aa2b4df20cdb795013768cd175cfef4c
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 69f7ec5114ad650f33eae740a54a3821b76ef2ac
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780735"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475535"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Načtení protokolů z nasazení IoT Edge
 
@@ -51,8 +51,8 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
              "id": "regex string",
              "filter": {
                 "tail": "int",
-                "since": "int",
-                "until": "int",
+                "since": "string",
+                "until": "string",
                 "loglevel": "int",
                 "regex": "regex string"
              }
@@ -63,15 +63,15 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
     }
 ```
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 |-|-|-|
 | schemaVersion | řetězec | Nastavit na `1.0` |
 | položek | Pole JSON | Pole s `id` a `filter` řazenými kolekcemi členů. |
 | ID | řetězec | Regulární výraz, který poskytuje název modulu. Může odpovídat několika modulům na hraničním zařízení. Očekává se formát [regulárních výrazů .NET](/dotnet/standard/base-types/regular-expressions) . |
 | filter | Oddíl JSON | Filtry protokolu, které se mají použít pro moduly, které odpovídají `id` regulárnímu výrazu v řazené kolekci členů. |
 | kompatibilní | integer | Počet řádků protokolu v minulosti pro načtení od nejnovějšího. Volitelné. |
-| doby | integer | Jenom od této doby vrátí protokoly, jako je doba trvání (1 d, 90 m, 2 dny 3 hodiny 2 minuty), časové razítko rfc3339 nebo UNIXové časové razítko.  Pokud `tail` `since` jsou zadány oba a, protokoly se načtou pomocí `since` hodnoty jako první. Pak se `tail` hodnota aplikuje na výsledek a vrátí se konečný výsledek. Volitelné. |
-| Vrátí | integer | Vrátí jenom protokoly před určenou dobu, jako rfc3339 časové razítko, časové razítko v systému UNIX nebo doba trvání (1 d, 90 m, 2 dny 3 hodiny 2 minuty). Volitelné. |
+| doby | řetězec | Jenom od této doby vrátí protokoly, jako je doba trvání (1 d, 90 m, 2 dny 3 hodiny 2 minuty), časové razítko rfc3339 nebo UNIXové časové razítko.  Pokud `tail` `since` jsou zadány oba a, protokoly se načtou pomocí `since` hodnoty jako první. Pak se `tail` hodnota aplikuje na výsledek a vrátí se konečný výsledek. Volitelné. |
+| Vrátí | řetězec | Vrátí jenom protokoly před určenou dobu, jako rfc3339 časové razítko, časové razítko v systému UNIX nebo doba trvání (1 d, 90 m, 2 dny 3 hodiny 2 minuty). Volitelné. |
 | úroveň protokolování | integer | Filtrovat řádky protokolu menší nebo rovny zadané úrovni protokolu. Řádky protokolu by měly následovat za doporučeným formátem protokolování a používáním standardu [úrovně závažnosti SYSLOG](https://en.wikipedia.org/wiki/Syslog#Severity_level) . Volitelné. |
 | regulární | řetězec | Filtruje řádky protokolu, které mají obsah odpovídající zadanému regulárnímu výrazu pomocí formátu [regulárních výrazů .NET](/dotnet/standard/base-types/regular-expressions) . Volitelné. |
 | encoding | řetězec | `gzip` nebo `none`. Výchozí je `none`. |
@@ -82,7 +82,7 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
 
 Úspěšné načtení protokolů vrátí **"stav": 200** následovaný datovou částí, která obsahuje protokoly načtené z modulu, filtrované podle nastavení, které zadáte v žádosti.
 
-Například:
+Příklad:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'GetModuleLogs' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -123,7 +123,7 @@ V Azure Portal volejte metodu s názvem metody `GetModuleLogs` a následující 
 
 ![Vyvolat přímo metodu GetModuleLogs v Azure Portal](./media/how-to-retrieve-iot-edge-logs/invoke-get-module-logs.png)
 
-Výstup rozhraní příkazového řádku (CLI) můžete také přesměrovat na nástroje pro Linux, jako je třeba [gzip](https://en.wikipedia.org/wiki/Gzip), a zpracovat tak komprimovanou odpověď. Například:
+Výstup rozhraní příkazového řádku (CLI) můžete také přesměrovat na nástroje pro Linux, jako je třeba [gzip](https://en.wikipedia.org/wiki/Gzip), a zpracovat tak komprimovanou odpověď. Příklad:
 
 ```azurecli
 az iot hub invoke-module-method \
@@ -160,8 +160,8 @@ Tato metoda přijímá datovou část JSON podobnou **GetModuleLogs** a přidán
              "id": "regex string",
              "filter": {
                 "tail": "int",
-                "since": "int",
-                "until": "int",
+                "since": "string",
+                "until": "string",
                 "loglevel": "int",
                 "regex": "regex string"
              }
@@ -172,7 +172,7 @@ Tato metoda přijímá datovou část JSON podobnou **GetModuleLogs** a přidán
     }
 ```
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 |-|-|-|
 | sasURL | řetězec (URI) | [Adresa URL sdíleného přístupového podpisu s přístupem pro zápis do kontejneru Azure Blob Storage](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer). |
 
@@ -186,13 +186,13 @@ Tato metoda přijímá datovou část JSON podobnou **GetModuleLogs** a přidán
     }
 ```
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 |-|-|-|
 | status | řetězec | Jedna z `NotStarted` , `Running` , `Completed` , `Failed` , nebo `Unknown` . |
 | zpráva | řetězec | Zpráva v případě chyby, v opačném případě prázdný řetězec. |
 | correlationId | řetězec   | ID, které se má dotazovat na stav žádosti o nahrání |
 
-Například:
+Příklad:
 
 Následující vyvolání nahraje poslední řádky protokolu 100 ze všech modulů v komprimovaném formátu JSON:
 
@@ -289,12 +289,12 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
     }
 ```
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 |-|-|-|
 | schemaVersion | řetězec | Nastavit na `1.0` |
 | sasURL | řetězec (URI) | [Adresa URL sdíleného přístupového podpisu s přístupem k zápisu do služby Azure Blob Storage Container](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
-| doby | integer | Jenom od této doby vrátí protokoly, jako je doba trvání (1 d, 90 m, 2 dny 3 hodiny 2 minuty), časové razítko rfc3339 nebo UNIXové časové razítko. Volitelné. |
-| Vrátí | integer | Vrátí jenom protokoly před určenou dobu, jako rfc3339 časové razítko, časové razítko v systému UNIX nebo doba trvání (1 d, 90 m, 2 dny 3 hodiny 2 minuty). Volitelné. |
+| doby | řetězec | Jenom od této doby vrátí protokoly, jako je doba trvání (1 d, 90 m, 2 dny 3 hodiny 2 minuty), časové razítko rfc3339 nebo UNIXové časové razítko. Volitelné. |
+| Vrátí | řetězec | Vrátí jenom protokoly před určenou dobu, jako rfc3339 časové razítko, časové razítko v systému UNIX nebo doba trvání (1 d, 90 m, 2 dny 3 hodiny 2 minuty). Volitelné. |
 | edgeRuntimeOnly | boolean | Pokud má hodnotu true, vrátí jenom protokoly z agenta Edge, centra Edge a démona zabezpečení Edge. Výchozí hodnota: false.  Volitelné. |
 
 > [!IMPORTANT]
@@ -310,13 +310,13 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
     }
 ```
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 |-|-|-|
 | status | řetězec | Jedna z `NotStarted` , `Running` , `Completed` , `Failed` , nebo `Unknown` . |
 | zpráva | řetězec | Zpráva v případě chyby, v opačném případě prázdný řetězec. |
 | correlationId | řetězec   | ID, které se má dotazovat na stav žádosti o nahrání |
 
-Například:
+Příklad:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'UploadSupportBundle' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -368,13 +368,13 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
     }
 ```
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 |-|-|-|
 | status | řetězec | Jedna z `NotStarted` , `Running` , `Completed` , `Failed` , nebo `Unknown` . |
 | zpráva | řetězec | Zpráva v případě chyby, v opačném případě prázdný řetězec. |
 | correlationId | řetězec   | ID, které se má dotazovat na stav žádosti o nahrání |
 
-Například:
+Příklad:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'GetTaskStatus' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \

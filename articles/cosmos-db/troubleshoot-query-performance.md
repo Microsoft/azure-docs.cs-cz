@@ -4,16 +4,16 @@ description: Naučte se identifikovat, diagnostikovat a řešit potíže s Azure
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 10/12/2020
+ms.date: 02/02/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 42f01b140a44d7aa6d75dece9a4398fd7b41bf5a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: d50893fc3bf5d890efbdc1f5b59cf52f35d91a15
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905107"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475722"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Řešení potíží s dotazy při používání služby Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -62,6 +62,8 @@ V následujících částech najdete informace o relevantních optimalizaci dota
 - [Do zásad indexování zahrňte potřebné cesty.](#include-necessary-paths-in-the-indexing-policy)
 
 - [Zjistěte, které systémové funkce používají index.](#understand-which-system-functions-use-the-index)
+
+- [Vylepšete provádění řetězcové funkce systému.](#improve-string-system-function-execution)
 
 - [Pochopení, které agregační dotazy používají index.](#understand-which-aggregate-queries-use-the-index)
 
@@ -198,10 +200,11 @@ Můžete kdykoli přidat vlastnosti k zásadě indexování bez vlivu na zápis 
 
 Většina systémových funkcí používá indexy. Tady je seznam některých běžných řetězcových funkcí, které používají indexy:
 
-- STARTSWITH (str_expr1, str_expr2, bool_expr)  
-- OBSAHUJE (str_expr, str_expr, bool_expr)
-- LEFT(str_expr, num_expr) = str_expr
-- Substring (str_expr, num_expr, num_expr) = str_expr, ale pouze v případě, že první num_expr je 0
+- StartsWith
+- Contains
+- RegexMatch
+- Left
+- Dílčí řetězec – ale pouze v případě, že první num_expr je 0
 
 Níže jsou uvedeny některé běžné systémové funkce, které nepoužívají index a vyžadují načtení každého dokumentu:
 
@@ -210,11 +213,21 @@ Níže jsou uvedeny některé běžné systémové funkce, které nepoužívají
 | HORNÍ/DOLNÍ                             | Namísto použití systémové funkce k normalizování dat pro porovnání, Normalizujte při vložení velká a malá písmena. Dotaz, jako ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` se má ```SELECT * FROM c WHERE c.name = 'BOB'``` . |
 | Matematické funkce (neagregace) | Pokud v dotazu potřebujete často vypočítat hodnotu, zvažte uložení hodnoty jako vlastnosti v dokumentu JSON. |
 
-------
+### <a name="improve-string-system-function-execution"></a>Zlepšení provádění řetězcové funkce systému
 
-Pokud systémová funkce používá indexy a má stále vysoké poplatky, můžete se pokusit o přidání `ORDER BY` do dotazu. V některých případech může přidání `ORDER BY` zlepšit využití indexu systémové funkce, zejména v případě, že je dotaz dlouhotrvající nebo pokrývá více stránek.
+U některých systémových funkcí, které používají indexy, můžete vylepšit spouštění dotazů přidáním `ORDER BY` klauzule do dotazu. 
 
-Například zvažte následující dotaz s `CONTAINS` . `CONTAINS` měl by se použít index, ale Představte si, že po přidání relevantního indexu se při spuštění následujícího dotazu stále sleduje velmi vysoký poplatek:
+Přesněji řečeno, jakákoli systémová funkce, jejíž poplatek za RU se zvyšuje, protože mohutnost vlastnosti se zvyšuje, může být výhodné `ORDER BY` v dotazu. Tyto dotazy provedou prohledávání indexů, takže výsledkem řazení výsledků dotazu může být dotaz efektivnější.
+
+Tato optimalizace může zlepšit spuštění následujících systémových funkcí:
+
+- StartsWith (kde nerozlišuje velká a malá písmena = true)
+- StringEquals (kde nerozlišuje velká a malá písmena = true)
+- Contains
+- RegexMatch
+- EndsWith
+
+Například zvažte následující dotaz s `CONTAINS` . `CONTAINS` bude používat indexy, ale v některých případech i po přidání relevantního indexu, můžete při spuštění níže uvedeného dotazu stále sledovat velmi vysoký poplatek.
 
 Původní dotaz:
 
@@ -224,13 +237,32 @@ FROM c
 WHERE CONTAINS(c.town, "Sea")
 ```
 
-Aktualizovaný dotaz s `ORDER BY` :
+Můžete zlepšit spouštění dotazů přidáním `ORDER BY` :
 
 ```sql
 SELECT *
 FROM c
 WHERE CONTAINS(c.town, "Sea")
 ORDER BY c.town
+```
+
+Stejná optimalizace vám může pomáhat v dotazech s dalšími filtry. V takovém případě je nejlepší také přidat vlastnosti s filtry rovnosti do `ORDER BY` klauzule.
+
+Původní dotaz:
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Samer" AND CONTAINS(c.town, "Sea")
+```
+
+Můžete zlepšit spouštění dotazů přidáním `ORDER BY` a [složeného indexu](index-policy.md#composite-indexes) pro (c.Name, c. město):
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Samer" AND CONTAINS(c.town, "Sea")
+ORDER BY c.name, c.town
 ```
 
 ### <a name="understand-which-aggregate-queries-use-the-index"></a>Vysvětlení, které agregační dotazy používají index

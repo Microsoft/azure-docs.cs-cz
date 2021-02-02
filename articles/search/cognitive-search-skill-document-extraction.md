@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: chalton
-ms.openlocfilehash: 5098d897d84ff6af31d430c0ddd2e26d8d6b08a7
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: d6dd2b891cb3bf9ebb5442f541021c20a34ce1a1
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814291"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99474842"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Rozpoznávání extrakce dokumentů – dovednost
 
@@ -34,13 +34,13 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 
 U parametrů se rozlišují malá a velká písmena.
 
-| Vstupy | Povolené hodnoty | Popis |
+| Vstupy | Povolené hodnoty | Description |
 |-----------------|----------------|-------------|
 | `parsingMode`   | `default` <br/> `text` <br/> `json`  | Nastavte na `default` pro extrakci dokumentů ze souborů, které nejsou čistě textové nebo JSON. Nastavte na `text` , aby se zlepšil výkon souborů ve formátu prostého textu. Nastavte na `json` extrakci strukturovaného obsahu ze souborů JSON. Pokud `parsingMode` není definováno explicitně, bude nastaveno na `default` . |
-| `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | Nastavte na `contentAndMetadata` pro extrakci všech metadat a textových obsahu z každého souboru. Nastavte na `allMetadata` extrakci pouze [metadat specifických pro typ obsahu](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata) (například metadata jedinečná pouze pro soubory PNG). Pokud `dataToExtract` není definováno explicitně, bude nastaveno na `contentAndMetadata` . |
+| `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | Nastavte na `contentAndMetadata` pro extrakci všech metadat a textových obsahu z každého souboru. Nastavte na `allMetadata` k extrakci pouze [vlastností metadat pro daný typ obsahu](search-blob-metadata-properties.md) (například metadata jsou jedinečná pouze pro soubory PNG). Pokud `dataToExtract` není definováno explicitně, bude nastaveno na `contentAndMetadata` . |
 | `configuration` | Viz níže. | Slovník volitelných parametrů, který upravuje způsob, jakým se provádí extrakce dokumentu. Popisy podporovaných vlastností konfigurace najdete v následující tabulce. |
 
-| Konfigurační parametr   | Povolené hodnoty | Popis |
+| Konfigurační parametr   | Povolené hodnoty | Description |
 |-------------------------|----------------|-------------|
 | `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Nastavte na `none` Ignorovat vložené obrázky nebo soubory obrázků v sadě dat. Tato možnost je výchozí. <br/>V případě [analýzy obrázků s využitím zkušeností s rozpoznáváním](cognitive-search-concept-image-scenarios.md)nastavte, aby `generateNormalizedImages` dovednost vytvořila pole normalizovaných imagí jako součást odhalující dokumentu. Tato akce vyžaduje, aby `parsingMode` byl nastaven na hodnotu `default` a `dataToExtract` byl nastaven na hodnotu `contentAndMetadata` . Normalizovaná bitová kopie odkazuje na další zpracování, které vede k podpoře konzistentního vykreslování při zahrnutí obrázků do výsledků vizuálního vyhledávání (například fotografií stejné velikosti v ovládacím prvku graf, jak je vidět v [ukázce JFK](https://github.com/Microsoft/AzureSearch_JFK_Files)). Tyto informace jsou vygenerovány pro každý obrázek při použití této možnosti.  <br/>Pokud nastavíte na `generateNormalizedImagePerPage` , soubory PDF budou zpracovávány jinak než při extrakci vložených obrázků, každá stránka bude vygenerována jako obrázek a v odpovídajícím způsobem provede normální nastavení.  Typy souborů, které nejsou v PDF, se budou považovat za stejné, jako kdyby `generateNormalizedImages` byla nastavena.
 | `normalizedImageMaxWidth` | Libovolné celé číslo mezi 50-10000 | Maximální šířka (v pixelech) pro vygenerované normalizované bitové kopie. Výchozí hodnota je 2000. | 
@@ -50,7 +50,7 @@ U parametrů se rozlišují malá a velká písmena.
 > Výchozí hodnota 2000 pixelů pro normalizované maximální šířky a výšky obrázků je založena na maximální velikosti podporované [dovedností OCR](cognitive-search-skill-ocr.md) a [dovedností analýzy obrázků](cognitive-search-skill-image-analysis.md). [Dovednost optického rozpoznávání znaků](cognitive-search-skill-ocr.md) podporuje maximální šířku a výšku 4200 pro jiné než anglické jazyky a 10000 pro angličtinu.  Pokud zvýšíte maximální limity, zpracování na větších obrázcích může selhat v závislosti na definici dovednosti a jazyku dokumentů. 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Název vstupu     | Popis |
+| Název vstupu     | Description |
 |--------------------|-------------|
 | `file_data` | Soubor, ze kterého má být extrahován obsah. |
 
@@ -73,7 +73,7 @@ Tento objekt odkazu na soubor může být vygenerován jedním ze tří způsob�
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-| Název výstupu    | Popis |
+| Název výstupu    | Description |
 |--------------|-------------|
 | `content` | Textový obsah dokumentu |
 | `normalized_images`   | Pokud `imageAction` je hodnota nastavena na jinou hodnotu `none` , pole nový *normalized_images* bude obsahovat pole obrázků. Další podrobnosti o výstupním formátu jednotlivých imagí najdete v [dokumentaci k extrakci imagí](cognitive-search-concept-image-scenarios.md) . |

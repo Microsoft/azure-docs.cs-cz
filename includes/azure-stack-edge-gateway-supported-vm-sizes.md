@@ -4,14 +4,14 @@ ms.service: databox
 ms.topic: include
 ms.date: 12/09/2020
 ms.author: alkohli
-ms.openlocfilehash: 9ea5fb26a52c967c5296f1a83976e748c86c9e18
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: ae7cb05aeda296ffb3aa9d7f6e2c88fe59364975
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763768"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475032"
 ---
-Velikost virtuálního počítače určuje množství výpočetních prostředků, jako jsou CPU, GPU a paměť, které jsou k dispozici pro virtuální počítač. Virtuální počítače by měly být vytvořené pomocí velikosti virtuálního počítače vhodné pro zatížení. I když všechny počítače budou spuštěné na stejném hardwaru, velikosti počítačů mají různá omezení pro přístup k disku, což vám umožní spravovat celkový přístup k disku napříč virtuálními počítači. Pokud se pracovní zátěž zvýší, je také možné velikost existujícího virtuálního počítače změnit.
+Velikost virtuálního počítače určuje množství výpočetních prostředků (jako je CPU, GPU a paměť), které jsou k dispozici pro virtuální počítač. Virtuální počítače byste měli vytvořit pomocí velikosti virtuálního počítače, která je vhodná pro úlohu. I když všechny počítače budou spuštěné na stejném hardwaru, velikosti počítačů mají různá omezení pro přístup k disku. To vám může pomáhat spravovat celkový přístup k disku v rámci virtuálních počítačů. Pokud se zatížení zvýší, můžete také změnit velikost stávajícího virtuálního počítače.
 
 Následující virtuální počítače se podporují pro vytváření Azure Stack hraničních zařízení.
 
@@ -40,7 +40,7 @@ Následující virtuální počítače se podporují pro vytváření Azure Stac
 |**Standard_DS13_v2**|8   |56  |112|32000 |1000 |16 |8 |
 
 
-Další informace najdete na [Dv2 Series v pro obecné účely velikosti virtuálních počítačů](../articles/virtual-machines/dv2-dsv2-series.md#dv2-series).
+Další informace najdete v tématu [Dv2 a DSv2-Series](../articles/virtual-machines/dv2-dsv2-series.md#dv2-series).
 
 ### <a name="ncast4_v3-series-preview"></a>NCasT4_v3-Series (Preview)
 
@@ -51,7 +51,7 @@ Tyto velikosti se podporují pro virtuální počítače GPU na vašem zařízen
 |**Standard_NC4as_T4_v3** |4   |28  |180   |1000|1 |16   |4 |
 |**Standard_NC8as_T4_v3** |8   |56  |360   |1000|1 |16  |8 |
 
-Další informace najdete na webu [NCasT4_v3-Series na velikostech virtuálních počítačů optimalizovaných pro grafické procesory](../articles/virtual-machines/nct4-v3-series.md).
+Další informace najdete v tématu [NCasT4_v3-Series](../articles/virtual-machines/nct4-v3-series.md).
 
 ### <a name="f-series"></a>F-series
 
@@ -70,5 +70,5 @@ Tyto řady jsou optimalizované pro výpočetní úlohy a běží na procesorech
 | Standard_F8s | 8 | 16 |32 |1000| 32 |  8 |
 | Standard_F16s | 16 | 32 |64 |1000| 64 |  8 |
 
-Další informace najdete na webu [Fsv2-Series na výpočetních optimalizovaných velikostech virtuálních počítačů](../articles/virtual-machines/fsv2-series.md).
+Další informace najdete v tématu [Fsv2-Series](../articles/virtual-machines/fsv2-series.md).
 

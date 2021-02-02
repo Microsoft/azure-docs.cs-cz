@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: f560a01c4ec00649157a9c43aedf0ed6cfc2e050
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 440dd561beddc9696ec703142fe82655b69fbb48
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83871913"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99474943"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Kopírování dat ze seznamu SharePointu Online pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -79,7 +79,7 @@ Následující části obsahují podrobné informace o vlastnostech, které mů�
 
 Pro propojenou službu seznamu SharePointu Online jsou podporovány následující vlastnosti:
 
-| **Vlastnost**        | **Popis**                                              | **Požadováno** |
+| **Vlastnost**        | **Popis**                                              | **Povinné** |
 | ------------------- | ------------------------------------------------------------ | ------------ |
 | typ                | Vlastnost Type musí být nastavená na: **SharePointOnlineList**.  | Yes          |
 | siteUrl             | Adresa URL webu SharePointu Online, např `https://contoso.sharepoint.com/sites/siteName` . | Yes          |
@@ -182,6 +182,9 @@ Pro kopírování dat ze seznamu SharePointu Online jsou v části **zdroje** ak
     }
 ]
 ```
+
+> [!NOTE]
+> V Azure Data Factory nemůžete pro zdroj seznamu SharePointu Online vybrat více než jeden datový typ *volby* .
 
 ## <a name="data-type-mapping-for-sharepoint-online-list"></a>Mapování datových typů pro seznam SharePointu Online
 

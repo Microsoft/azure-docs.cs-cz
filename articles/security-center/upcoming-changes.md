@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: 83c1d8ac316703d9d22d0716c86c5731c3db7133
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: d5de16c8156762a229d6c707080bc197dc206a7c
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226467"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475586"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Důležité nadcházející změny Azure Security Center
 
@@ -38,7 +38,7 @@ Pokud hledáte nejnovější poznámky k verzi, najdete je v [Azure Security Cen
 
 ### <a name="kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga"></a>Doporučení pro ochranu úloh Kubernetes se brzy uvolní pro obecnou dostupnost (GA).
 
-**Odhadované datum změny:** Leden 2021
+**Odhadované datum změny:** Únor 2021
 
 Doporučení pro ochranu úloh Kubernetes, která jsou popsaná v tématu [ochrana úloh Kubernetes](kubernetes-workload-protections.md) , jsou momentálně ve verzi Preview. I když je doporučení ve verzi Preview, nevystavuje prostředek není v pořádku a není zahrnutý do výpočtů vašeho zabezpečeného skóre.
 

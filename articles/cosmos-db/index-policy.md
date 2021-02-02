@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 02/02/2021
 ms.author: tisande
-ms.openlocfilehash: 4d2ad9cf6b47d8307d9652419b82de8ffcbcb099
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 79791bf2db888912d5c1f016f4bf357e76bddcba
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681646"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475096"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zásady indexování ve službě Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -42,10 +42,7 @@ V Azure Cosmos DB celkové spotřebované úložiště je kombinací velikosti d
 
 * Velikost indexu závisí na zásadách indexování. Pokud jsou všechny vlastnosti indexovány, velikost indexu může být větší než velikost dat.
 * Při odstranění dat jsou indexy komprimovány téměř nepřetržitě. U malých odstranění dat ale nemusíte okamžitě sledovat velikost indexu.
-* Velikost indexu může růst v následujících případech:
-
-  * Doba rozdělení oddílu – index se uvolní po dokončení rozdělení oddílu.
-  * Při rozdělování oddílu se během rozdělení oddílu dočasný prostor zvětšuje. 
+* Velikost indexu může být dočasně zvětšena při rozdělení fyzických oddílů. Indexový prostor je vydaný po dokončení rozdělení oddílu.
 
 ## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Zahrnutí a vyloučení cest k vlastnostem
 
@@ -186,33 +183,35 @@ Zásady indexování byste měli přizpůsobit, abyste mohli obsluhovat všechny
 
 Pokud dotaz obsahuje filtry na dvě nebo více vlastností, může být užitečné vytvořit složený index pro tyto vlastnosti.
 
-Zvažte například následující dotaz, který má filtr rovnosti na dvou vlastnostech:
+Zvažte například následující dotaz, který má filtr rovnosti a rozsahu:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" AND c.age = 18
+SELECT *
+FROM c
+WHERE c.name = "John" AND c.age > 18
 ```
 
-Tento dotaz bude efektivnější a bude trvat méně času a bude využívat méně RU, pokud dokáže využít složený index (název ASC, věk ASC).
+Tento dotaz bude efektivnější, bude trvat méně času a bude využívat méně RU, pokud je schopný využít složený index na `(name ASC, age ASC)` .
 
-Dotazy s filtry rozsahu lze také optimalizovat pomocí složeného indexu. Dotaz však může mít pouze jeden filtr rozsahu. Mezi filtry rozsahu patří `>` ,,, a `<` `<=` `>=` `!=` . Filtr rozsahu by měl být definován jako poslední ve složeném indexu.
+Dotazy s více filtry rozsahu lze také optimalizovat pomocí složeného indexu. U každého samostatného složeného indexu ale můžete optimalizovat jenom jeden filtr rozsahu. Mezi filtry rozsahu patří `>` ,,, a `<` `<=` `>=` `!=` . Filtr rozsahu by měl být definován jako poslední ve složeném indexu.
 
-Vezměte v úvahu následující dotaz s filtry rovnosti a rozsahu:
+Vezměte v úvahu následující dotaz s filtrem rovnosti a dvěma filtry rozsahu:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" AND c.age > 18
+SELECT *
+FROM c
+WHERE c.name = "John" AND c.age > 18 AND c._ts > 1612212188
 ```
 
-Tento dotaz bude efektivnější u složeného indexu (název ASC, věk ASC). Dotaz však nevyužívá složený index na (věk ASC, název ASC), protože filtry rovnosti musí být definovány jako první ve složeném indexu.
+Tento dotaz bude efektivnější díky složenému indexu v systémech `(name ASC, age ASC)` a `(name ASC, _ts ASC)` . Dotaz však nevyužívá složený index, `(age ASC, name ASC)` protože vlastnosti s filtry rovnosti musí být v složeném indexu definovány jako první. Místo jediného složeného indexu jsou požadovány dva samostatné složené indexy `(name ASC, age ASC, _ts ASC)` , protože každý složený index může optimalizovat pouze jeden filtr rozsahu.
 
 Při vytváření složených indexů pro dotazy s filtry na více vlastností se používají následující požadavky.
 
+- Výrazy filtru můžou používat víc složených indexů.
 - Vlastnosti ve filtru dotazu by měly odpovídat hodnotám ve složeném indexu. Pokud je vlastnost ve složeném indexu, ale není obsažena v dotazu jako filtr, dotaz nebude používat složený index.
 - Pokud má dotaz další vlastnosti, které nebyly definovány ve složeném indexu, pak se pro vyhodnocení dotazu použije kombinace složených a rozsahových indexů. To bude vyžadovat méně RU než výhradně pomocí indexů rozsahu.
-- Pokud má vlastnost filtr rozsahu ( `>` ,,, `<` `<=` `>=` nebo `!=` ), měla by být tato vlastnost definována jako poslední ve složeném indexu. Pokud má dotaz více než jeden filtr rozsahu, nebude složený index využívat.
+- Pokud má vlastnost filtr rozsahu ( `>` ,,, `<` `<=` `>=` nebo `!=` ), měla by být tato vlastnost definována jako poslední ve složeném indexu. Pokud má dotaz více než jeden filtr rozsahu, může to přinést více složených indexů.
 - Při vytváření složeného indexu pro optimalizaci dotazů s více filtry `ORDER` nebude mít složený index žádný vliv na výsledky. Tato vlastnost je nepovinná.
-- Pokud nedefinujete složený index pro dotaz s filtry na více vlastností, dotaz bude stále úspěšný. Náklady na dotaz na RU se ale můžou snížit pomocí složeného indexu.
-- Dotazy s agregačními typy (například COUNT nebo SUM) a filtry také využívají složené indexy.
-- Výrazy filtru můžou používat víc složených indexů.
 
 Vezměte v úvahu následující příklady, kde je pro název, stáří a časové razítko definováno složený index:
 
@@ -227,43 +226,76 @@ Vezměte v úvahu následující příklady, kde je pro název, stáří a časo
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp = 123049923``` | ```No```            |
 | ```(name ASC, age ASC) and (name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp > 123049923``` | ```Yes```            |
 
-### <a name="queries-with-a-filter-as-well-as-an-order-by-clause"></a>Dotazy s filtrem i klauzulí ORDER BY
+### <a name="queries-with-a-filter-and-order-by"></a>Dotazy s filtrem a POŘADÍm podle
 
 Pokud dotaz filtruje jednu nebo více vlastností a má jiné vlastnosti v klauzuli ORDER BY, může být užitečné přidat vlastnosti ve filtru k `ORDER BY` klauzuli.
 
-Například přidáním vlastností ve filtru do klauzule ORDER by může být přepsán následující dotaz pro využití složeného indexu:
+Například přidáním vlastností do klauzule Filter by bylo možné `ORDER BY` přepsat následující dotaz, který využívá složený index:
 
 Dotaz pomocí indexu rozsahu:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp
+SELECT *
+FROM c 
+WHERE c.name = "John" 
+ORDER BY c.timestamp
 ```
 
 Dotaz používající složený index:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" ORDER BY c.name, c.timestamp
+SELECT * 
+FROM c 
+WHERE c.name = "John"
+ORDER BY c.name, c.timestamp
 ```
 
-Stejné optimalizace vzorů a dotazů je možné zobecnit pro dotazy s více filtry rovnosti:
+Stejné optimalizace dotazů je možné zobecnit pro všechny `ORDER BY` dotazy s filtry. Mějte na paměti, že jednotlivé složené indexy můžou podporovat maximálně jeden filtr rozsahu.
 
 Dotaz pomocí indexu rozsahu:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.timestamp
+SELECT * 
+FROM c 
+WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 1611947901 
+ORDER BY c.timestamp
 ```
 
 Dotaz používající složený index:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.timestamp
+SELECT * 
+FROM c 
+WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 1611947901 
+ORDER BY c.name, c.age, c.timestamp
+```
+
+Kromě toho můžete použít složené indexy k optimalizaci dotazů se systémovými funkcemi a seřadit podle:
+
+Dotaz pomocí indexu rozsahu:
+
+```sql
+SELECT * 
+FROM c 
+WHERE c.firstName = "John" AND Contains(c.lastName, "Smith", true) 
+ORDER BY c.lastName
+```
+
+Dotaz používající složený index:
+
+```sql
+SELECT * 
+FROM c 
+WHERE c.firstName = "John" AND Contains(c.lastName, "Smith", true) 
+ORDER BY c.firstName, c.lastName
 ```
 
 Při vytváření složených indexů k optimalizaci dotazu pomocí filtru a klauzule se používají následující požadavky `ORDER BY` :
 
+* Pokud nedefinujete složený index pro dotaz s filtrem na jednu vlastnost a samostatnou `ORDER BY` klauzulí s použitím jiné vlastnosti, dotaz bude stále úspěšný. Náklady na dotaz na dotaz se ale dají snížit pomocí složeného indexu, zejména pokud vlastnost v `ORDER BY` klauzuli má vysokou mohutnost.
 * Pokud dotaz filtruje vlastnosti, měly by být zahrnuty do `ORDER BY` klauzule First.
 * Pokud dotaz filtruje více vlastností, musí být filtry rovnosti prvními vlastnostmi v `ORDER BY` klauzuli.
-* Pokud nedefinujete složený index pro dotaz s filtrem na jednu vlastnost a samostatnou `ORDER BY` klauzulí s použitím jiné vlastnosti, dotaz bude stále úspěšný. Náklady na dotaz na dotaz se ale dají snížit pomocí složeného indexu, zejména pokud vlastnost v `ORDER BY` klauzuli má vysokou mohutnost.
+* Pokud se dotaz filtruje u více vlastností, můžete mít maximálně jeden filtr rozsahu nebo funkci systému vydanou na složeném indexu. Vlastnost použitá ve filtru rozsahu nebo v systémové funkci by měla být definována jako poslední ve složeném indexu.
 * Všechny požadavky na vytváření složených indexů pro `ORDER BY` dotazy s více vlastnostmi a dotazy s filtry na více vlastností jsou stále používány.
 
 
@@ -276,6 +308,7 @@ Při vytváření složených indexů k optimalizaci dotazu pomocí filtru a kla
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC``` | ```No```   |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.age ASC, c.name ASC,c.timestamp ASC``` | `Yes` |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.timestamp ASC``` | `No` |
+
 
 ## <a name="modifying-the-indexing-policy"></a>Změna zásad indexování
 

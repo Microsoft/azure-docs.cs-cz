@@ -4,12 +4,12 @@ description: Vytvoření a správa instančního objektu služby Azure Active Di
 services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: c6f50b152174cee1ee2cc37baa22432957107d2c
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: b7f8060666612049026f2602ab7c8511aea22757
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614791"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475433"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Instanční objekty se službou Azure Kubernetes Service (AKS)
 
@@ -17,7 +17,7 @@ Pro interakci s rozhraními API Azure vyžaduje cluster AKS buď [instanční ob
 
 Tento článek ukazuje, jak vytvořit a používat instanční objekt pro vaše clustery služby AKS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Abyste mohli vytvořit instanční objekt služby Azure AD, musíte mít oprávnění k registraci aplikace v tenantu Azure AD a přiřazení aplikace k roli v předplatném. Pokud nemáte potřebná oprávnění, možná budete muset požádat správce služby Azure AD nebo předplatného o jejich přiřazení nebo vytvořit instanční objekt pro použití se službou AKS předem.
 
@@ -128,13 +128,13 @@ Při použití instančních objektů služeb Azure AD a AKS mějte na paměti n
 - Pokud instanční objekt nebudete výslovně předávat v dalších příkazech rozhraní příkazového řádku AKS, použije se výchozí instanční objekt umístěný v `~/.azure/aksServicePrincipal.json` .  
 - Volitelně můžete také odebrat aksServicePrincipal.jsv souboru a AKS vytvořit nový instanční objekt.
 - Při odstraňování clusteru AKS vytvořeného příkazem [az aks create][az-aks-create] se instanční objekt, který se vytvořil automaticky, neodstraní.
-    - Pokud chcete odstranit instanční objekt, zadejte dotaz na svůj cluster *servicePrincipalProfile. ClientID* a pak ho odstraňte pomocí příkazu [AZ AD App Delete][az-ad-app-delete]. Nahraďte následující názvy skupin prostředků a názvů clusterů vlastními hodnotami:
+    - Chcete-li odstranit instanční objekt, zadejte dotaz na svůj cluster *servicePrincipalProfile. ClientID* a pak jej odstraňte pomocí příkazu [az AD SP Delete] [az-AD-SP-Delete]. Nahraďte následující názvy skupin prostředků a názvů clusterů vlastními hodnotami:
 
         ```azurecli
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
         ```
 
-## <a name="troubleshoot"></a>Odstraňování potíží
+## <a name="troubleshoot"></a>Řešení potíží
 
 Přihlašovací údaje instančního objektu pro cluster AKS se ukládají do mezipaměti rozhraní příkazového řádku Azure CLI. Pokud vypršela platnost těchto přihlašovacích údajů, narazíte na chyby při nasazování AKS clusterů. Při spuštění [AZ AKS Create][az-aks-create] může znamenat problém s přihlašovacími údaji instančního objektu uloženého v mezipaměti následující chybová zpráva:
 

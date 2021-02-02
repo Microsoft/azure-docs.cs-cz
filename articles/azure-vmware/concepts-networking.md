@@ -3,12 +3,12 @@ title: Koncepty – Network vzájemné propojení
 description: Přečtěte si o klíčových aspektech a případech použití sítě a vzájemné propojení v řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 9369c0fff31de4c6575d8e4903420cfa01461bf4
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: eb701a7fca2be08d70e603734b9c4d8e266959cd
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062116"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475416"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Sítě řešení Azure VMware a koncepty vzájemné propojení
 
@@ -58,8 +58,11 @@ V následujícím diagramu vidíte místní vzájemné propojení privátního c
 V případě úplného vzájemné propojení do privátního cloudu povolte ExpressRoute Global Reach a pak si vyžádejte autorizační klíč a ID privátního partnerského vztahu pro Global Reach v Azure Portal. Autorizační klíč a ID partnerského vztahu se používají k navázání Global Reach mezi okruhem ExpressRoute v rámci vašeho předplatného a okruhem ExpressRoute pro nový privátní cloud. Po propojení dva okruhy ExpressRoute směrují síťový provoz mezi místními prostředími do privátního cloudu.  Další informace o postupech vyžádání a používání autorizačního klíče a ID partnerského vztahu najdete v [kurzu Vytvoření ExpressRoute Global REACH partnerských vztahů k privátnímu cloudu](tutorial-expressroute-global-reach-private-cloud.md).
 
 ## <a name="next-steps"></a>Další kroky 
-Přečtěte si o [konceptech úložiště privátního cloudu](concepts-storage.md).
 
+Teď, když jste pokryli tyto koncepty sítě a vzájemné propojení, se můžete setkat s následujícími informacemi:
+
+- [Koncepty úložiště řešení Azure VMware](concepts-storage.md).
+- [Koncepty identity řešení Azure VMware](concepts-identity.md)
 
 <!-- LINKS - external -->
 [enable Global Reach]: ../expressroute/expressroute-howto-set-global-reach.md

@@ -9,16 +9,16 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 11/10/2020
 ms.author: mbaldwin
-ms.openlocfilehash: bb49523858f07e54887a67d9df68eb894e27ad34
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 04b68899b796088bd4b89509a413c7a1fe5369bb
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881244"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475348"
 ---
 # <a name="azure-tls-certificate-changes"></a>Změny certifikátu Azure TLS  
 
-Microsoft aktualizuje služby Azure tak, aby používaly certifikáty TLS z jiné sady kořenových certifikačních autorit (CAs). Tato změna se provádí, protože aktuální certifikáty certifikační autority nejsou v rozporu s jedním z požadavků na základní hodnoty fóra CA nebo prohlížeče.
+Microsoft aktualizuje služby Azure tak, aby používaly certifikáty TLS z jiné sady kořenových certifikačních autorit (CAs). Tato změna se provádí, protože aktuální certifikáty certifikační autority nejsou v rozporu s jedním z požadavků na základní hodnoty fóra CA nebo prohlížeče a odvolají se 15. února 2021.
 
 ## <a name="when-will-this-change-happen"></a>Kdy bude tato změna provedena?
 

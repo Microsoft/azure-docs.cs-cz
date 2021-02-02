@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 40b44fd277eac14a5bf2c15f58fccfd9d5b156c4
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5c43d61b1e7cd98674eab4c6d857cc1114a06013
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881481"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475316"
 ---
 # <a name="reset-an-azure-cloud-service-extended-support"></a>Resetování cloudové služby Azure (Rozšířená podpora) 
 Tyto ukázky zahrnují různé způsoby obnovení stávajícího nasazení cloudové služby Azure (Rozšířená podpora).
@@ -21,24 +21,47 @@ Tyto ukázky zahrnují různé způsoby obnovení stávajícího nasazení cloud
 ## <a name="reimage-role-instances-of-cloud-service"></a>Obnovení instancí role cloudové služby z Image
 ```powershell
 $roleInstances = @("ContosoFrontEnd_IN_0", "ContosoBackEnd_IN_1")
-Reset-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance $roleInstances -Reimage
+Invoke-AzCloudServiceReimage -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance $roleInstances
 ```
-Tento příkaz obnoví z image 2 instance rolí **ContosoFrontEnd \_ v \_ 0** a **ContosoBackEnd \_ v \_ 1** cloudové službě s názvem ContosoCS, která patří do skupiny prostředků s názvem ContosOrg.
+Tento příkaz přeimagí 2 instance rolí ContosoFrontEnd_IN_0 a ContosoBackEnd_IN_1 cloudové služby s názvem ContosoCS, která patří do skupiny prostředků s názvem ContosOrg.
 
 ## <a name="reimage-all-roles-of-cloud-service"></a>Obnovení imagí všech rolí cloudové služby
 ```powershell
-Reset-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance "*" -Reimage
+Invoke-AzCloudServiceReimage -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance "*"
 ```
+Tento příkaz obnoví z image všechny instance rolí cloudové služby s názvem ContosoCS, které patří do skupiny prostředků s názvem ContosOrg.
 
 ## <a name="reimage-a-single-role-instance-of-a-cloud-service"></a>Obnovení jedné instance role v cloudové službě
 ```powershell
-Reset-AzCloudServiceRoleInstance -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "ContosoFrontEnd_IN_0" -Reimage
+Invoke-AzCloudServiceRoleInstanceReimage -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "ContosoFrontEnd_IN_0"
 ```
+Tento příkaz obnoví instanci role s názvem ContosoFrontEnd_IN_0 cloudové služby s názvem ContosoCS, která patří do skupiny prostředků s názvem ContosOrg.
 
-## <a name="restart-a-single-role-instance-of-a-cloud-service"></a>Restartování jedné instance role cloudové služby
+## <a name="rebuild-role-instances-of-cloud-service"></a>Opětovné sestavení instancí rolí cloudové služby
 ```powershell
-Reset-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance "*" -Restart
+$roleInstances = @("ContosoFrontEnd_IN_0", "ContosoBackEnd_IN_1")
+Invoke-AzCloudServiceRebuild -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance $roleInstances
 ```
+Tento příkaz znovu sestaví 2 instance rolí ContosoFrontEnd_IN_0 a ContosoBackEnd_IN_1 cloudové služby s názvem ContosoCS, která patří do skupiny prostředků s názvem ContosOrg.
+
+## <a name="rebuild-all-roles-of-cloud-service"></a>Opětovné sestavení všech rolí cloudové služby
+```powershell
+Invoke-AzCloudServiceRebuild -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance "*"
+```
+Tento příkaz znovu sestaví všechny instance rolí cloudové služby s názvem ContosoCS, které patří do skupiny prostředků s názvem ContosOrg.
+
+## <a name="restart-role-instances-of-cloud-service"></a>Restartovat instance rolí cloudové služby
+```powershell
+$roleInstances = @("ContosoFrontEnd_IN_0", "ContosoBackEnd_IN_1")
+Restart-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance $roleInstances
+```
+Tento příkaz restartuje 2 instance rolí ContosoFrontEnd_IN_0 a ContosoBackEnd_IN_1 cloudové služby s názvem ContosoCS, která patří do skupiny prostředků s názvem ContosOrg.
+
+## <a name="restart-all-roles-of-cloud-service"></a>Restartujte všechny role cloudové služby.
+```powershell
+Restart-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstance "*"
+```
+Tento příkaz restartuje všechny instance rolí cloudové služby s názvem ContosoCS, které patří do skupiny prostředků s názvem ContosOrg.
 
 ## <a name="next-steps"></a>Další kroky
 
