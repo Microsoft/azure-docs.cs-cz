@@ -3,25 +3,25 @@ title: 'Rychlý Start: přiřazení uživatelů k aplikaci, která používá Az
 description: Tento rychlý Start vás provede procesem, který uživatelům umožňuje používat aplikaci, kterou jste nastavili pro použití Azure AD jako zprostředkovatele identity.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 889ad3b74a2f7c0baa006a0c45e3f14664d6cd0c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 53dd2d15565149c3a9888ba063a6194ae033d8e0
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91325874"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258367"
 ---
 # <a name="quickstart-assign-users-to-an-app-that-is-using-azure-ad-as-an-identity-provider"></a>Rychlý Start: přiřazení uživatelů k aplikaci, která používá službu Azure AD jako zprostředkovatele identity
 
 V předchozím rychlém startu jste nakonfigurovali vlastnosti pro aplikaci. Při nastavování vlastností jste nakonfigurovali prostředí pro přiřazené i nepřiřazené uživatele. Tento rychlý Start vás provede procesem přiřazování uživatelů k aplikaci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete přiřadit uživatele k aplikaci, kterou jste přidali do svého tenanta Azure AD, budete potřebovat:
 

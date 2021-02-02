@@ -1,45 +1,40 @@
 ---
-title: Spravované identity a důvěryhodné úložiště
-description: Media Services lze použít se spravovanými identitami k povolení důvěryhodného úložiště.
+title: Spravované identity
+description: Media Services lze použít se spravovanými identitami Azure.
+keywords: ''
 services: media-services
 author: IngridAtMicrosoft
 manager: femila
 ms.service: media-services
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: 291508a6beaa687b3a10f55df4591ce601ab51a0
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 71a2b8f0734de80f71dbb2372f8600b464d6c606
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956170"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258435"
 ---
-# <a name="managed-identities-and-trusted-storage-with-media-services"></a>Spravované identity a důvěryhodné úložiště pomocí Media Services
+# <a name="managed-identities"></a>Spravované identity
 
-Media Services lze použít se [spravovanými identitami](../../active-directory/managed-identities-azure-resources/overview.md) k povolení důvěryhodného úložiště. Když vytváříte účet Media Services, musíte ho přidružit k účtu úložiště. Media Services mají přístup k tomuto účtu úložiště pomocí ověřování systému. Media Services ověří, že účet Media Services a účet úložiště jsou ve stejném předplatném, a ověří, že uživatel přidávající přidružení má přístup k účtu úložiště s Azure Resource Manager RBAC.
+Běžnou výzvou pro vývojáře je Správa tajných klíčů a přihlašovacích údajů pro zabezpečení komunikace mezi různými službami. V Azure spravované identity eliminují nutnost vývojářů spravovat přihlašovací údaje tím, že poskytuje identitu prostředku Azure ve službě Azure AD a použije ho k získání tokenů Azure Active Directory (Azure AD).
 
-## <a name="trusted-storage"></a>Důvěryhodné úložiště
-
-Pokud ale chcete použít bránu firewall k zabezpečení svého účtu úložiště, musíte použít spravované ověřování identity. Umožňuje Media Services získat přístup k účtu úložiště, který byl nakonfigurován s bránou firewall nebo omezením virtuální sítě prostřednictvím důvěryhodného přístupu k úložišti.  Další informace o důvěryhodných službách Microsoftu najdete v tématu [konfigurace Azure Storage bran firewall a virtuálních sítí](../../storage/common/storage-network-security.md#trusted-microsoft-services).
-
-## <a name="media-services-managed-identity-scenarios"></a>Spravované scénáře identity služby Media Services
-
-V současné době existují dva scénáře, ve kterých lze použít spravovanou identitu s Media Services:
+V současné době existují dva scénáře, kdy lze spravované identity použít s Media Services:
 
 - Pro přístup k účtům úložiště použijte spravovanou identitu účtu Media Services.
 
 - Pomocí spravované identity účtu Media Services můžete získat přístup k Key Vault přístup k klíčům zákazníka.
 
-V dalších dvou částech jsou popsány rozdíly ve dvou scénářích.
+Následující dvě části popisují kroky dvou scénářů.
 
-### <a name="use-the-managed-identity-of-the-media-services-account-to-access-storage-accounts"></a>Použití spravované identity účtu Media Services k přístupu k účtům úložiště
+## <a name="use-the-managed-identity-of-the-media-services-account-to-access-storage-accounts"></a>Použití spravované identity účtu Media Services k přístupu k účtům úložiště
 
 1. Vytvořte účet Media Services se spravovanou identitou.
 1. Udělte spravovanému hlavnímu objektu identity přístup k účtu úložiště, který vlastníte.
 1. Služba Media Services potom může k účtu úložiště přistupovat za použití spravované identity.
 
-### <a name="use-the-managed-identity-of-the-media-services-account-to-access-key-vault-to-access-customer-keys"></a>Key Vault přístup k klíčům zákazníka získáte pomocí spravované identity účtu Media Services.
+## <a name="use-the-managed-identity-of-the-media-services-account-to-access-key-vault-to-access-customer-keys"></a>Key Vault přístup k klíčům zákazníka získáte pomocí spravované identity účtu Media Services.
 
 1. Vytvořte účet Media Services se spravovanou identitou.
 1. Udělte spravovanému hlavnímu objektu identity přístup k Key Vault, který vlastníte.
