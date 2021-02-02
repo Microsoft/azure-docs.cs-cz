@@ -1,7 +1,7 @@
 ---
 title: Co je nového v Azure Active Directory externích identit
 description: Nová a aktualizovaná dokumentace pro Azure Active Directory externích identit.
-ms.date: 12/15/2020
+ms.date: 02/01/2021
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,21 +9,27 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: e614507fbcfce5fc006983e0be7963223bb0b7ed
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 84adb08231589ae636c6a6926a4019a8a070a62e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562374"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258859"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory externích identit: co je nového
 
 Vítá vás, co je nového v dokumentaci Azure Active Directory externích identit. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace. Další informace o tom, co je nového u služby External identity, najdete v tématu [co je nového v Azure Active Directory](../fundamentals/whats-new.md).
 
+## <a name="january-2021"></a>Leden 2021
+
+### <a name="updated-articles"></a>Aktualizované články
+- [Povolení nebo blokování pozvánek uživatelům B2B z konkrétních organizací](allow-deny-list.md)
+- [Způsob, jakým uživatelé ve vaší organizaci můžou pozvat uživatele typu Host do aplikace](add-users-information-worker.md)
+
+
 ## <a name="december-2020"></a>Prosinec 2020
 
 ### <a name="updated-articles"></a>Aktualizované články
-
 - [Nejčastější dotazy k Azure Active Directory spolupráci B2B](faq.md)
 - [Přidat Google jako zprostředkovatele identity pro uživatele typu Host B2B](google-federation.md)
 - [Zprostředkovatelé identity pro externí identity](identity-providers.md)

@@ -3,7 +3,7 @@ title: Ukázka PowerShellu – seznam rozšířených informací pro aplikace pr
 description: Příklad PowerShellu, který obsahuje seznam všech aplikací proxy aplikace Azure Active Directory (Azure AD) spolu s ID aplikace (AppId), názvem (DisplayName), externí adresou URL (ExternalUrl), interní adresou URL (InternalUrl) a typem ověřování (ExternalAuthenticationType).
 services: active-directory
 author: kenwith
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 62dae175b529bd54b2f139eece89bbde6f98cd38
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: ccd0c7be7fd0dd533028faa0dc2bbdad30d74c79
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055004"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258672"
 ---
 # <a name="get-all-application-proxy-apps-and-list-extended-information"></a>Načte všechny aplikace proxy aplikací a seznam rozšířených informací.
 

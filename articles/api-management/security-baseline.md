@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1825767d8140421d4f0e22f9ebfde42f8262da5e
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8a572221ca8899c5e4f4cf76e4b89c995952a2f3
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201072"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258553"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Základní hodnoty zabezpečení Azure pro API Management
 
@@ -90,15 +90,11 @@ Kombinování API Management zřízené v interní virtuální síti s Applicati
 
 Poznámka: Tato funkce je dostupná na úrovních API Management úrovně Premium a Developer.
 
-Povolením Azure DDoS Protection Standard ve virtuální síti přidružené k vašemu nasazení API Management zajistíte ochranu před distribuovanými útoky DDoS (Denial of Service).
-
 K odepření komunikace se známými škodlivými nebo nepoužívanými internetovými IP adresami použijte Azure Security Center integrovanou analýzu hrozeb.
 
 * [Jak integrovat API Management do interní virtuální sítě s Application Gateway](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
 * [Pochopení Application Gateway Azure](../application-gateway/index.yml)
-
-* [Postup konfigurace Azure DDoS Protection úrovně Standard](../ddos-protection/manage-ddos-protection.md)
 
 * [Pochopení Azure Security Center integrované analýzy hrozeb](../security-center/azure-defender.md)
 
@@ -184,8 +180,7 @@ Upozornění: při konfiguraci NSG v podsíti API Management existuje sada port�
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: Udržujte standardní konfigurace zabezpečení pro síťová zařízení.
 
-**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro nastavení sítě související s nasazeními Azure API Management. Pomocí aliasů Azure Policy v oborech názvů Microsoft. ApiManagement a Microsoft. Network můžete vytvářet vlastní zásady pro auditování nebo vymáhání konfigurace sítě pro nasazení API Management Azure a souvisejících prostředků. Můžete také využít integrované definice zásad pro virtuální sítě Azure, například:
-- Měla by být povolená DDoS Protection Standard.
+**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro nastavení sítě související s nasazeními Azure API Management. Pomocí aliasů Azure Policy v oborech názvů Microsoft. ApiManagement a Microsoft. Network můžete vytvářet vlastní zásady pro auditování nebo vymáhání konfigurace sítě pro nasazení API Management Azure a souvisejících prostředků. 
 
 Plány Azure můžete použít také ke zjednodušení rozsáhlých nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manager, řízení přístupu na základě role Azure (Azure RBAC) a zásady v jediné definici podrobného plánu. V rámci správy verzí můžete snadno použít podrobný plán na nová předplatná, prostředí a vyladit řízení a správu.
 

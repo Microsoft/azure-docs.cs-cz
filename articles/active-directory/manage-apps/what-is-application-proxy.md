@@ -3,7 +3,7 @@ title: Publikování místních aplikací pomocí Azure Proxy aplikací služby 
 description: Zjistěte, proč používat proxy aplikace k externímu publikování místních webových aplikací pro vzdálené uživatele. Přečtěte si o architektuře proxy aplikací, konektorech, metodách ověřování a výhodách zabezpečení.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/31/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 02b08e6fcdd6714886f8afea1c0a461eb6128fe4
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 1569e577ec535a4680cfaec6f7975c056275ecbe
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832637"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258774"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Použití Azure Proxy aplikací služby AD k publikování místních aplikací pro vzdálené uživatele
 
@@ -80,7 +80,7 @@ Po přihlášení mohou externí uživatelé přistupovat k místním webovým a
 
 ![Architektura Azure Proxy aplikací služby AD](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 Existuje několik způsobů konfigurace aplikace pro jednotné přihlašování a vybraná metoda závisí na ověřování, které vaše aplikace používá. Proxy aplikace podporuje následující typy aplikací:
 

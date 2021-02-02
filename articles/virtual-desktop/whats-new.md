@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: 56013a51937915cc240e2bd0ec26342c24c79807
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f34a5b957f64558b468c456686f0f86172630135
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095902"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258791"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Co je nového ve virtuálním počítači s Windows?
 
@@ -38,7 +38,7 @@ V těchto článcích najdete informace o aktualizacích pro naše klienty pro v
 
 ## <a name="fslogix-updates"></a>FSLogix aktualizace
 
-Zajímá se o nejnovějších aktualizacích pro FSLogix? Podívejte se, [co je nového na FSLogix](/fslogix/whats-new.md).
+Zajímá se o nejnovějších aktualizacích pro FSLogix? Podívejte se, [co je nového na FSLogix](/fslogix/whats-new).
 
 ## <a name="january-2021"></a>Leden 2021
 
@@ -248,7 +248,7 @@ Další informace o nových funkcích najdete v [tomto blogovém příspěvku](h
 
 Nejnovější verze nástroje pro automatické škálování, který je ve verzi Preview, je teď všeobecně dostupná. Tento nástroj používá účet Azure Automation a aplikaci logiky Azure k automatickému vypnutí a restartování virtuálních počítačů hostitele relace v rámci fondu hostitelů, což snižuje náklady na infrastrukturu. Další informace najdete v informacích o [škálování hostitelů relací pomocí Azure Automation](set-up-scaling-script.md).
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Pomocí Azure Portal ve virtuální ploše Windows teď můžete provádět následující akce: 
 

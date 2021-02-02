@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 8c3c1d28a7fbb3e3c9c449feb03a75d48178b718
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: fdefcabdda64402610f115832976ec9f7af81b80
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97609033"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258825"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>Známé problémy/omezení migrace pro online migrace z PostgreSQL do Azure DB pro PostgreSQL
 
@@ -123,3 +123,4 @@ Při pokusu o provedení online migrace z AWS VP PostgreSQL pro Azure Database f
 - Migrace více tabulek se stejným názvem, ale jiným případem (například Tabulka1, Tabulka1 a Tabulka1), může způsobit nepředvídatelné chování a není proto podporována.
 - Změnit zpracování [vytvořit | ZMĚNIT | DROP | ZKRÁCENí] tabulka DDLs není podporována.
 - V Azure Database Migration Service může jedna aktivita migrace pojmout pouze až čtyři databáze.
+- Migrace pg_largeobject tabulky není podporována. 

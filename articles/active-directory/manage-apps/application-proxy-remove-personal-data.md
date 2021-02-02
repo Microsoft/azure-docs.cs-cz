@@ -3,7 +3,7 @@ title: Odebrat osobní data – Proxy aplikací služby Azure Active Directory
 description: Odebrat osobní data z konektorů nainstalovaných na zařízeních pro Proxy aplikací služby Azure Active Directory.
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99fb466debd5a2ee4bb659aea3494469a8bbe8e1
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 90913ba8f7fbe8158a5cfea01e49a175180677b6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658413"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258944"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Odebrat osobní data pro Proxy aplikací služby Azure Active Directory
 

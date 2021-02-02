@@ -118,9 +118,8 @@
         - name: Azure AD se službou Batch Management
           href: batch-aad-auth-management.md
         - name: Zabezpečený přístup ke Key Vaultu s využitím služby Batch
+          displayName: 'credential, certificate'
           href: credential-access-key-vault.md
-        - name: Použití certifikátů se službou Batch
-          href: batch-certificates.md
     - name: Kopírování souborů a aplikací do uzlů fondu
       items:
         - name: Kopírování aplikací a dat do uzlů fondu

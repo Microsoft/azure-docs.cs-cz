@@ -1,24 +1,51 @@
 ---
 title: Co je nového v Azure Active Directory Správa aplikací
 description: Nová a aktualizovaná dokumentace pro Azure Active Directory správu aplikací.
-ms.date: 12/15/2020
+ms.date: 02/01/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
 ms.workload: identity
 ms.author: kenwith
 author: kenwith
-manager: CelesteDG
-ms.openlocfilehash: ea2e08db91d23e9523b7bc95e01b7adc9c93b3cc
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+manager: daveba
+ms.openlocfilehash: 53339623ee435362d248b794776681972000173e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054817"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258570"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Správa aplikací: co je nového
 
 Vítá vás novinky v Azure Active Directory dokumentaci správy aplikací. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace. Další informace o tom, co je nového ve službě správy aplikací, najdete v tématu [novinky v Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="january-2021"></a>Leden 2021
+
+### <a name="new-articles"></a>Nové články
+- [Plánování konfigurace Azure Active Directory mých aplikací](my-apps-deployment-plan.md)
+
+### <a name="updated-articles"></a>Aktualizované články
+- [Potíže při instalaci konektoru agenta proxy aplikací](application-proxy-connector-installation-problem.md)
+- [Řešení potíží s jednotným přihlašováním založeným na heslech v Azure AD](troubleshoot-password-based-sso.md)
+- [Osvědčené postupy pro správu aplikací](application-management-fundamentals.md)
+- [Průvodce integrací Azure Active Directory s aplikacemi Začínáme](plan-an-application-integration.md)
+- [Co je správa aplikací?](what-is-application-management.md)
+- [Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)](application-proxy-faq.md)
+- [Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [Práce se stávajícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md)
+- [Vývoj obchodních aplikací pro Azure Active Directory](developer-guidance-for-integrating-applications.md)
+- [Vysvětlení konektorů Azure Proxy aplikací služby AD](application-proxy-connectors.md)
+- [Principy propojených přihlášení](configure-linked-sign-on.md)
+- [Pochopení jednotného přihlašování založeného na heslech](configure-password-single-sign-on-non-gallery-applications.md)
+- [Pochopení jednotného přihlašování založeného na SAML](configure-saml-single-sign-on.md)
+- [Řešení běžných potíží při přidávání nebo odebírání aplikace k Azure Active Directory](troubleshoot-adding-apps.md)
+- [Zobrazení aplikací pomocí tenanta Azure AD pro správu identit](application-types.md)
+- [Pochopení způsobu přiřazování uživatelů k aplikacím v Azure Active Directory](ways-users-get-assigned-to-applications.md)
+- [Rychlý Start: odstranění aplikace z klienta služby Azure Active Directory (Azure AD)](delete-application-portal.md)
+- [Publikování Vzdálené plochy pomocí Proxy aplikací služby Azure AD](application-proxy-integrate-with-remote-desktop-services.md)
+- [Provedení akce na privilegovaných nebo podezřelých aplikacích v Azure Active Directory](manage-application-permissions.md)
+
 
 ## <a name="december-2020"></a>Prosinec 2020
 

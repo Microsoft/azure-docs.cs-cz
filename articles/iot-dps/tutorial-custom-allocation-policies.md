@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 4cab1765a387bbae61c9c242a8e7a1ca881ea1f5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 42098786bb92e98b89b1dbfba01a2e071398f460
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966628"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258537"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>Kurz: použití vlastních zásad přidělování se službou Device Provisioning Service (DPS)
 
@@ -347,7 +347,7 @@ Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesíl
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. Ve `main()` funkci Najděte volání `Prov_Device_Register_Device()` . Těsně před tímto voláním přidejte následující řádky kódu, které slouží [`Prov_Device_Set_Provisioning_Payload()`](/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) k předání vlastní datové části JSON během zřizování. Dá se použít k poskytnutí dalších informací vlastním funkcím přidělení. To se dá také použít k předání typu zařízení místo prověření ID registrace.
+6. Ve `main()` funkci Najděte volání `Prov_Device_Register_Device()` . Těsně před tímto voláním přidejte následující řádky kódu, které slouží [`Prov_Device_Set_Provisioning_Payload()`](/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) k předání vlastní datové části JSON během zřizování. Dá se použít k poskytnutí dalších informací vlastním funkcím přidělení. To se dá také použít k předání typu zařízení místo prověření ID registrace. Další informace o posílání a přijímání vlastních datových částí pomocí DPS najdete v tématu [přenos datových částí mezi zařízeními a DPS](how-to-send-additional-data.md).
 
     ```c
     // An example custom payload
@@ -378,7 +378,7 @@ Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesíl
     prov_dev_set_symmetric_key_info("contoso-toaster-007", "JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=");
     ```
 
-    Uložte soubor.
+    Soubor uložte.
 
 2. V nabídce sady Visual Studio vyberte **ladit**  >  **Spustit bez ladění** a spusťte řešení. V příkazovém řádku pro opětovné sestavení projektu vyberte **Ano** a znovu sestavte projekt před spuštěním.
 
@@ -423,7 +423,7 @@ Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesíl
     prov_dev_set_symmetric_key_info("contoso-heatpump-088", "6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=");
     ```
 
-    Uložte soubor.
+    Soubor uložte.
 
 2. V nabídce sady Visual Studio vyberte **ladit**  >  **Spustit bez ladění** a spusťte řešení. V příkazovém řádku pro opětovné sestavení projektu vyberte **Ano** pro opětovné sestavení projektu před spuštěním.
 

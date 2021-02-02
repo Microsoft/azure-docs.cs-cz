@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 772fc9f21f36a1487e2e3a1acbe644f9fd12e0f4
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 545359cd68c18fea8bf1369a57226d024489f293
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563190"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258910"
 ---
 # <a name="tutorial-migrateupgrade-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Kurz: migrace/upgrade databáze Azure DB pro PostgreSQL – jeden server do Azure DB pro PostgreSQL-Single server online pomocí DMS prostřednictvím Azure Portal
 
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte:
 > [!IMPORTANT]
 > Migrace z Azure Database for PostgreSQL se podporuje pro PostgreSQL verze 10 a novější. Tento kurz můžete také použít k migraci z jedné instance Azure Database for PostgreSQL do jiné instance Azure Database for PostgreSQL nebo instance Citus ().
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -54,7 +54,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 * [Vytvořte server Azure Database for PostgreSQL](../postgresql/quickstart-create-server-database-portal.md) nebo [vytvořte server Azure Database for PostgreSQL Citus](../postgresql/quickstart-create-hyperscale-portal.md) jako cílový databázový server, do kterého chcete migrovat data.
 * Vytvořte Microsoft Azure Virtual Network pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager. Další informace o vytváření virtuálních sítí najdete v [dokumentaci k Virtual Network](../virtual-network/index.yml)a zejména v článcích rychlý Start s podrobnými údaji.
 
-* Zajistěte, aby pravidla skupiny zabezpečení sítě (NSG) pro vaši virtuální síť neblokovala následující příchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](../virtual-network/virtual-network-vnet-plan-design-arm.md).
+* Zajistěte, aby pravidla skupiny zabezpečení sítě (NSG) pro vaši virtuální síť neblokovala následující odchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](../virtual-network/virtual-network-vnet-plan-design-arm.md).
 * Vytvořte [pravidlo brány firewall](../azure-sql/database/firewall-configure.md) na úrovni serveru pro zdroj Azure Database for PostgreSQL, aby Azure Database Migration Service mohl získat přístup ke zdrojovým databázím. Zadejte rozsah podsítě virtuální sítě, která se používá pro Azure Database Migration Service.
 * Vytvořte [pravidlo brány firewall](../azure-sql/database/firewall-configure.md) na úrovni serveru pro Azure Database for PostgreSQL cíl a umožněte Azure Database Migration Service přístup k cílovým databázím. Zadejte rozsah podsítě virtuální sítě, která se používá pro Azure Database Migration Service.
 * [Povolte logickou replikaci](../postgresql/concepts-logical.md) ve zdroji Azure DB pro PostgreSQL. 
@@ -100,7 +100,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
     psql -h hostname -U db_username -d db_name < your_schema.sql
     ```
 
-    Například:
+    Příklad:
 
     ```
     psql -h mypgserver-source.postgres.database.azure.com  -U pguser@mypgserver-source -d dvdrental citus < dvdrentalSchema.sql

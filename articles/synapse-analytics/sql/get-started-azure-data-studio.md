@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: cfd0476d3462fc902acb7238fcc1947c85af041f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f82a1279a69bf91f37400d5614e8f7b121e72f47
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676175"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258893"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio"></a>Připojení k synapse SQL pomocí Azure Data Studio
 
@@ -26,7 +26,7 @@ ms.locfileid: "98676175"
 > * [Sqlcmd](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-[Azure Data Studio)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) můžete použít pro připojení k SQL serveru a dotazování synapse v Azure synapse Analytics. 
+[Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) můžete použít pro připojení k SQL a dotazování synapse v Azure synapse Analytics. 
 
 ## <a name="connect"></a>Připojit
 
