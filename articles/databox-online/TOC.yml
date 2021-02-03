@@ -278,6 +278,8 @@
           items:
             - name: Použití grafů metrik
               href: azure-stack-edge-monitor.md
+            - name: Správa výstrah událostí zařízení
+              href: azure-stack-edge-gpu-manage-device-event-alert-notifications.md
             - name: Použití řídicího panelu Kubernetes
               href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
             - name: Pomocí Azure Monitoru

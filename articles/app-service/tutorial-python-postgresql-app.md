@@ -3,7 +3,7 @@ title: 'Kurz: nasazení aplikace Django v Pythonu pomocí Postgres'
 description: Vytvořte webovou aplikaci v Pythonu s databází PostgreSQL a nasaďte ji do Azure. V tomto kurzu se používá Django Framework a aplikace je hostována na Azure App Service v systému Linux.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 01/04/2021
+ms.date: 02/02/2021
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: ffde74a0567661d6b9f77e45a80bfd585e5c7212
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 05bdbd6c9d5dc3862c3191e4564a79e7a44bc0b8
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898585"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99494052"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Kurz: nasazení webové aplikace v Django s PostgreSQL v Azure App Service
 
@@ -39,7 +39,7 @@ Můžete také použít [Azure Portal verzi tohoto kurzu](/azure/developer/pytho
 
 1. Mít účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 1. Nainstalujte <a href="https://www.python.org/downloads/" target="_blank">Python 3,6 nebo vyšší</a>.
-1. Nainstalujte rozhraní příkazového <a href="/cli/azure/install-azure-cli" target="_blank">řádku Azure CLI</a> 2.0.80 nebo novější, ve kterém spouštíte příkazy v jakémkoli prostředí pro zřizování a konfiguraci prostředků Azure.
+1. Nainstalujte rozhraní příkazového <a href="/cli/azure/install-azure-cli" target="_blank">řádku Azure CLI</a> 2.18.0 nebo novější, ve kterém spouštíte příkazy v jakémkoli prostředí pro zřizování a konfiguraci prostředků Azure.
 
 Otevřete okno terminálu a ověřte, jestli je verze Pythonu 3,6 nebo vyšší:
 
@@ -63,11 +63,13 @@ py -3 --version
 
 ---
 
-Ověřte, jestli je verze Azure CLI 2.0.80á nebo vyšší:
+Ověřte, jestli je verze Azure CLI 2.18.0á nebo vyšší:
 
 ```azurecli
 az --version
 ```
+
+Pokud potřebujete provést upgrade, zkuste `az upgrade` příkaz (vyžaduje verzi 2.11 +) nebo si přečtěte téma <a href="/cli/azure/install-azure-cli" target="_blank">instalace rozhraní příkazového řádku Azure CLI</a>.
 
 Pak se přihlaste k Azure prostřednictvím rozhraní příkazového řádku:
 
@@ -229,7 +231,7 @@ Migrace databáze Django zajišťují, že schéma v PostgreSQL ve službě Azur
 
     Nahraďte `<app-name>` názvem použitým dříve v `az webapp up` příkazu.
 
-    V systému macOS a Linux se můžete pomocí příkazu střídavě připojit k relaci SSH [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) .
+    Pomocí příkazu se můžete střídavě připojit k relaci SSH [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) . V systému Windows tento příkaz vyžaduje rozhraní příkazového řádku Azure CLI 2.18.0 nebo vyšší.
 
     Pokud se nemůžete připojit k relaci SSH, aplikaci se nepovedlo spustit. Podrobnosti [najdete v diagnostických protokolech](#6-stream-diagnostic-logs) . Pokud jste například v předchozí části nevytvořili potřebná nastavení aplikace, budou tyto protokoly označovat `KeyError: 'DBNAME'` .
 
@@ -239,8 +241,11 @@ Migrace databáze Django zajišťují, že schéma v PostgreSQL ve službě Azur
     # Change to the app folder
     cd $APP_PATH
     
-    # Activate the venv (requirements.txt is installed automatically)
+    # Activate the venv
     source /antenv/bin/activate
+
+    # Install requirements
+    pip install -r requirements.txt
 
     # Run database migrations
     python manage.py migrate
@@ -398,6 +403,7 @@ Otevřete znovu relaci SSH v prohlížeči, a to tak, že přejdete na `https://
 ```
 cd $APP_PATH
 source /antenv/bin/activate
+pip instal -r requirements.txt
 python manage.py migrate
 ```
 

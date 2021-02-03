@@ -4,20 +4,20 @@ ms.service: databox
 ms.topic: include
 ms.date: 08/03/2020
 ms.author: alkohli
-ms.openlocfilehash: caa17a02305c9e9fcba30cf8c39c4288d83d3da9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92688051cf591470246094dd0d8ea1d436a8efb1
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89419386"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99499984"
 ---
-Připojte se k virtuálnímu počítači pomocí privátní IP adresy, kterou jste předali během vytváření virtuálního počítače.
+Připojte se k virtuálnímu počítači pomocí privátní IP adresy, kterou jste předali při vytváření virtuálního počítače.
 
 Otevřete relaci SSH pro připojení k IP adrese.
 
 `ssh -l <username> <ip address>`
 
-Po zobrazení výzvy zadejte heslo, které jste použili při vytváření virtuálního počítače.
+Po zobrazení výzvy zadejte heslo, které jste nastavili při vytváření virtuálního počítače.
 
 Pokud potřebujete zadat klíč SSH, použijte tento příkaz.
 
@@ -70,4 +70,4 @@ Pokud jste při vytváření virtuálního počítače použili veřejnou IP adr
 ```powershell
 $publicIp = Get-AzureRmPublicIpAddress -Name <Public IP> -ResourceGroupName <Resource group name>
 ```
-Veřejná IP adresa v tomto případě bude stejná jako soukromá IP adresa, kterou jste předali během vytváření virtuálního síťového rozhraní.
+Veřejná IP adresa v tomto případě bude stejná jako soukromá IP adresa, kterou jste předali během vytváření rozhraní virtuální sítě.

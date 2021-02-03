@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: ceb560a3f0c56a13b9f8da6c867f513b2b08e59b
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 0b04ebd9672990738d77bc5ae09d7f7fae4ffb9d
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962197"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500026"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Instance Metadata Service Azure (IMDS)
 
@@ -78,7 +78,7 @@ Všechny žádosti, které nesplňují **oba** tyto požadavky, budou službou o
 IMDS není **určený k** použití za proxy serverem a není tak podporován. Většina klientů protokolu HTTP nabízí možnost zakázat proxy na vašich žádostech a tato funkce musí být využívána při komunikaci s IMDS. Podrobnosti najdete v dokumentaci ke klientovi.
 
 > [!IMPORTANT]
-> I když ve svém prostředí neznáte žádnou konfiguraci proxy serveru, **musíte přepsat všechna výchozí nastavení proxy serveru klienta**. Konfigurace proxy serveru se dají automaticky zjistit a nedaří se jim jim obejít takové konfigurace, které vám umožní Outrage rizika, by se měla v budoucnu změnit konfigurace počítače.
+> I když ve svém prostředí neznáte žádnou konfiguraci proxy serveru, **musíte přepsat všechna výchozí nastavení proxy serveru klienta**. Konfigurace proxy serveru se můžou automaticky zjistit a nedaří se jim jim obejít takové konfigurace, které vám umožní v budoucnu změnit konfiguraci počítače.
 
 ## <a name="rate-limiting"></a>Omezování rychlosti
 
@@ -88,7 +88,7 @@ Obecně platí, že požadavky na IMDS jsou omezeny na 5 požadavků za sekundu.
 
 V současné době jsou podporovány následující příkazy protokolu HTTP:
 
-| Příkaz | Popis |
+| Příkaz | Description |
 |------|-------------|
 | `GET` | Načíst požadovaný prostředek
 
@@ -106,7 +106,7 @@ http://169.254.169.254/metadata/instance/compute?api-version=2019-06-04&format=j
 
 Určuje parametry:
 
-| Název | Hodnota |
+| Name | Hodnota |
 |------|-------|
 | `api-version` | `2019-06-04`
 | `format` | `json`
@@ -268,7 +268,7 @@ Kořenový koncový bod je `http://169.254.169.254/metadata` .
 
 Rozhraní IMDS API obsahuje několik kategorií koncového bodu, které představují různé zdroje dat, z nichž každý obsahuje jeden nebo více koncových bodů. Podrobnosti najdete v každé kategorii.
 
-| Kořen kategorie | Popis | Představená verze |
+| Kořen kategorie | Description | Představená verze |
 |---------------|-------------|--------------------|
 | `/metadata/attested` | Viz [Attestation data](#attested-data) | 2018-10-01
 | `/metadata/identity` | Viz [spravovaná identita prostřednictvím IMDS](#managed-identity) . | 2018-02-01
@@ -317,7 +317,7 @@ GET /metadata/instance
 
 #### <a name="parameters"></a>Parametry
 
-| Název | Požadováno/volitelné | Popis |
+| Name | Požadováno/volitelné | Popis |
 |------|-------------------|-------------|
 | `api-version` | Povinné | Verze, která se používá k obsluhování žádosti
 | `format` | Volitelné | Formát ( `json` nebo `text` ) odpovědi. * Poznámka: může být vyžadováno při použití parametrů Request
@@ -332,7 +332,7 @@ Rozpis schématu:
 
 **Výpočetní služby**
 
-| Data | Popis | Představená verze |
+| Data | Description | Představená verze |
 |------|-------------|--------------------|
 | `azEnvironment` | Prostředí Azure, ve kterém je spuštěný virtuální počítač | 2018-10-01
 | `customData` | Tato funkce je momentálně zakázaná. Tuto dokumentaci budeme aktualizovat, jakmile bude k dispozici. | 2019-02-01
@@ -373,7 +373,7 @@ Profil úložiště virtuálního počítače je rozdělen do tří kategorií: 
 
 Objekt odkazu na bitovou kopii obsahuje následující informace o imagi operačního systému:
 
-| Data | Popis |
+| Data | Description |
 |------|-------------|
 | `id` | ID prostředku
 | `offer` | Nabídka platformy nebo Image Marketplace
@@ -383,7 +383,7 @@ Objekt odkazu na bitovou kopii obsahuje následující informace o imagi operač
 
 Objekt disku operačního systému obsahuje následující informace o disku s operačním systémem, který používá virtuální počítač:
 
-| Data | Popis |
+| Data | Description |
 |------|-------------|
 | `caching` | Požadavky na ukládání do mezipaměti
 | `createOption` | Informace o tom, jak byl virtuální počítač vytvořen
@@ -398,7 +398,7 @@ Objekt disku operačního systému obsahuje následující informace o disku s o
 
 Pole datových disků obsahuje seznam datových disků připojených k virtuálnímu počítači. Každý objekt datového disku obsahuje následující informace:
 
-Data | Popis |
+Data | Description |
 -----|-------------|
 | `caching` | Požadavky na ukládání do mezipaměti
 | `createOption` | Informace o tom, jak byl virtuální počítač vytvořen
@@ -414,7 +414,7 @@ Data | Popis |
 
 **Síť**
 
-| Data | Popis | Představená verze |
+| Data | Description | Představená verze |
 |------|-------------|--------------------|
 | `ipv4.privateIpAddress` | Místní IPv4 adresa virtuálního počítače | 2017-04-02
 | `ipv4.publicIpAddress` | Veřejná IPv4 adresa virtuálního počítače | 2017-04-02
@@ -721,7 +721,7 @@ GET /metadata/attested/document
 
 #### <a name="parameters"></a>Parametry
 
-| Název | Požadováno/volitelné | Popis |
+| Name | Požadováno/volitelné | Popis |
 |------|-------------------|-------------|
 | `api-version` | Povinné | Verze, která se používá k obsluhování žádosti
 | `nonce` | Volitelné | Desítkový řetězec, který slouží jako kryptografická hodnota nonce. Pokud není zadána žádná hodnota, IMDS použije aktuální časové razítko UTC.
@@ -746,7 +746,7 @@ U virtuálních počítačů vytvořených pomocí modelu nasazení Classic `vmI
 
 Dekódování dokumentu obsahuje následující pole:
 
-| Data | Popis | Představená verze |
+| Data | Description | Představená verze |
 |------|-------------|--------------------|
 | `licenseType` | Typ licence pro [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit). Tato možnost je k dispozici pouze pro virtuální počítače s podporou AHB. | 2020-09-01
 | `nonce` | Řetězec, který může být volitelně poskytnutý požadavkem. Pokud `nonce` nebyla zadána žádná, použije se aktuální koordinovaný světový časový razítko. | 2018-10-01

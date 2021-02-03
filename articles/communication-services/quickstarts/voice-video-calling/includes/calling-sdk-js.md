@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: c51316b445471c58ae88237b370f5a25fdedf373
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 2c894ea4bcb9701b8b65bcb9cd0b4b82c1898448
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98605221"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500505"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -35,7 +35,7 @@ npm install @azure/communication-calling --save
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce komunikačních služeb Azure, které volají klientskou knihovnu:
 
-| Název                             | Popis                                                                                                                                 |
+| Název                             | Description                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
 | CallClient                       | CallClient je hlavní vstupní bod pro volání klientské knihovny.                                                                       |
 | CallAgent                        | CallAgent se používá ke spouštění a správě volání.                                                                                            |
@@ -269,7 +269,7 @@ const source callClient.getDeviceManager().getCameraList()[1];
 localVideoStream.switchSource(source);
 
 ```
-### <a name="faq"></a>Nejčastější dotazy
+### <a name="faq"></a>Časté otázky
  * Pokud dojde ke ztrátě připojení k síti, změní se stav volání na odpojeno?
     * Ano, pokud dojde ke ztrátě síťového připojení po dobu delší než 2 minuty, volání se převede na odpojený stav a volání skončí.
 
@@ -450,7 +450,7 @@ Později můžete režim škálování aktualizovat vyvoláním `updateScalingMo
 ```js
 view.updateScalingMode('Crop')
 ```
-### <a name="faq"></a>Nejčastější dotazy
+### <a name="faq"></a>Časté otázky
 * Když vzdálený účastník ztratí své síťové připojení, změní se jeho stav na odpojeno?
     * Ano, pokud vzdálený účastník ztratí své síťové připojení po dobu delší než 2 minuty, jejich stav se převede na odpojeno a odebere se z tohoto volání.
 ## <a name="device-management"></a>Správa zařízení
@@ -469,7 +469,7 @@ const deviceManager = await callClient.getDeviceManager();
 
 ### <a name="enumerate-local-devices"></a>Zobrazení výčtu místních zařízení
 
-Chcete-li získat přístup k místním zařízením, můžete použít metody výčtu na Device Manager. Výčet je synchronní akce.
+Chcete-li získat přístup k místním zařízením, můžete použít metody výčtu na Správce zařízení. Výčet je synchronní akce.
 
 ```js
 
@@ -510,7 +510,7 @@ await deviceManager.setSpeaker(AudioDeviceInfo);
 `DeviceManager` `Renderer` K zahájení vykreslování datových proudů z místní kamery můžete použít a. Tento datový proud se nebude posílat jiným účastníkům; je to místní kanál verze Preview. Toto je asynchronní akce.
 
 ```js
-const localVideoDevice = deviceManager().getCameraList()[0];
+const localVideoDevice = deviceManager.getCameraList()[0];
 const localCameraStream = new LocalVideoStream(localVideoDevice);
 const renderer = new Renderer(localCameraStream);
 const view = await renderer.createView();

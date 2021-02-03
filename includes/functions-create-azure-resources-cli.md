@@ -4,19 +4,19 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/18/2020
 ms.author: glenga
-ms.openlocfilehash: 29a31948c5bfc9b5fd3a31f39144d186dbfe4885
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 99ae35aca485ac928f7c5ef9f98295eed4bc1245
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96028241"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500408"
 ---
 ## <a name="create-supporting-azure-resources-for-your-function"></a>Vytvoření podpory prostředků Azure pro vaši funkci
 
 Než budete moct nasadit kód funkce do Azure, musíte vytvořit tři prostředky:
 
-- Skupina prostředků, což je logický kontejner pro související prostředky.
-- Účet úložiště, který uchovává stav a další informace o vašich projektech.
+- [Skupina prostředků](../articles/azure-resource-manager/management/overview.md), což je logický kontejner pro související prostředky.
+- [Účet úložiště](../articles/storage/common/storage-account-create.md), který se používá k údržbě stavu a dalších informací o vašich funkcích.
 - Aplikace Function App, která poskytuje prostředí pro spuštění kódu vaší funkce. Aplikace Function App se mapuje na váš místní projekt funkce a umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků.
 
 Tyto položky vytvoříte pomocí následujících příkazů. Podporují se rozhraní příkazového řádku Azure a PowerShellu.

@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 01/15/2021
 ms.author: aahi
-ms.openlocfilehash: 43864d3593fda986031cf9b59251b920672476bb
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: c1ff099dd6dffe06e9707ff23fffd57ae753ab64
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097254"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99500084"
 ---
 Funkce NER pro Analýza textu vrací následující obecné kategorie entit (bez identifikace). například při posílání požadavků do `/entities/recognition/general` koncového bodu.
 
@@ -34,6 +34,7 @@ Funkce NER pro Analýza textu vrací následující obecné kategorie entit (bez
 | [Adresa URL](#category-url) | Adresy URL webů. |
 | [IP adresa](#category-ip) | Síťové IP adresy. |
 | [Datum a čas](#category-datetime) | Data a denní doba. |
+| [Množství](#category-quantity) | Číselná měření a jednotky. |
 
 
 ### <a name="category-person"></a>Kategorie: osoba

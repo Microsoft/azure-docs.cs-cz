@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 512436c9d72e0318ec14bf7551a2fde76c6ef3d8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 520eb25bcb138c96b24166816d3374255fb7c3b2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735902"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493985"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-notion"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s pojmem
 
@@ -40,7 +40,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * Pojem podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování
 * Fiktivní podporuje zřizování uživatelů **jenom v čase**
 > [!NOTE]
-> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže jeden pracovní prostor fiktivní je možné nakonfigurovat v jednom tenantovi.
 
 
 ## <a name="adding-notion-from-the-gallery"></a>Přidání fiktivního z Galerie
@@ -80,14 +80,14 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:  `https://www.notion.so/sso/saml/<CUSTOM_ID>`
+    Do textového pole **Adresa URL odpovědi** zadejte adresu URL následujícího vzoru, který můžete získat z nastavení svého fiktivního prostoru **&** > **zabezpečení & identitou** > **Adresa URL jednotného přihlašování**:  `https://www.notion.so/sso/saml/<CUSTOM_ID>`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://www.notion.so/sso/saml/<CUSTOM_ID>`
+    Do textového pole **přihlašovací adresa URL** zadejte následující adresu URL:  `https://www.notion.so/login`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné adresy URL odpovědi a adresy URL Sign-On. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro klienty](mailto:team@makenotion.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné adresy URL odpovědi a adresy URL Sign-On. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Fiktivní aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
@@ -102,7 +102,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     | lastName | User. příjmení |
 
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na tlačítko Kopírovat, aby se zkopírovala **Adresa URL federačních metadat aplikace**. V části **fiktivní** pracovní prostor **Nastavení &**  >  **zabezpečení & identity** a vložte hodnotu zkopírovanou do pole **Adresa URL metadat IDP** .
 
     ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
 
@@ -132,7 +132,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-notion-sso"></a>Konfigurace fiktivního jednotného přihlašování
 
-Pokud chcete nakonfigurovat jednotné přihlašování na základě **fiktivní** strany, musíte poslat **adresu URL federačních metadat aplikace** pro [fiktivní tým podpory](mailto:team@makenotion.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Přejít do svého **fiktivního** pracovního prostoru **Nastavení &**  >  **zabezpečení & identity** a vložte hodnotu **URL federačních metadat aplikace** , kterou jste zkopírovali do pole **Adresa URL metadat IDP** .
+
+Na stránce stejné nastavení v části **e-mailové domény** klikněte na **kontaktovat podporu** a přidejte e-mailové domény vaší organizace.
+
+Po schválení a přidání e-mailových domén povolte jednotné přihlašování SAML pomocí přepínače **Povolit SAML** .
+
+Po úspěšném testování můžete vynutili jednotné přihlašování SAML pomocí přepínače **SAML pro vykonání** . Upozorňujeme, že váš pracovní prostor administrastrators si ponechá možnost přihlásit se pomocí e-mailu, ale všichni ostatní členové budou muset pro přihlášení k pojmu použít jednotné přihlašování SAML.
 
 ### <a name="create-notion-test-user"></a>Vytvořit fiktivního testovacího uživatele
 
