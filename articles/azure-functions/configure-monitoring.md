@@ -4,12 +4,12 @@ description: Naučte se, jak připojit aplikaci Function App k Application Insig
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e24f2b1a61d77dafd7a23b04d225d0301f82ca59
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 5007009d9aabf9a1c1c6e1d5c2f286c0ba25b340
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070136"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493749"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Postup konfigurace monitorování pro Azure Functions
 
@@ -229,6 +229,8 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 --setting-names SCALE_CONTROLLER_LOGGING_ENABLED
 ```
 
+Když je povolené protokolování řadiče škálování, můžete se teď [dotazovat na protokoly řadiče škálování](analyze-telemetry-data.md#query-scale-controller-logs). 
+
 ## <a name="enable-application-insights-integration"></a>Povolení integrace Application Insights
 
 Aby aplikace Function App odesílala data Application Insights, musí znát klíč instrumentace prostředku Application Insights. Klíč musí být v nastavení aplikace s názvem **APPINSIGHTS_INSTRUMENTATIONKEY**.
@@ -271,30 +273,6 @@ Pokud se prostředek Application Insights pomocí aplikace Function App nevytvo�
 
 > [!NOTE]
 > Dřívější verze funkcí používaly integrované monitorování, které se už nedoporučuje. Když povolíte integraci Application Insights pro takovou aplikaci Function App, musíte taky [zakázat integrované protokolování](#disable-built-in-logging).  
-
-## <a name="query-scale-controller-logs"></a>Protokoly řadiče pro škálování dotazů
-
-Po povolení protokolování škálování kontroléru a Application Insights integrace můžete pomocí hledání protokolu Application Insights vyhledat dotaz na vysílané protokoly řadiče pro škálování. Protokoly řadiče škálování se ukládají do `traces` kolekce pod kategorií **ScaleControllerLogs** .
-
-Následující dotaz se dá použít k vyhledání všech protokolů řadiče škálování pro aktuální aplikaci Function App během zadaného časového období:
-
-```kusto
-traces 
-| extend CustomDimensions = todynamic(tostring(customDimensions))
-| where CustomDimensions.Category == "ScaleControllerLogs"
-```
-
-Následující dotaz rozbalí předchozí dotaz a ukáže, jak získat pouze protokoly indikující změnu ve velikosti:
-
-```kusto
-traces 
-| extend CustomDimensions = todynamic(tostring(customDimensions))
-| where CustomDimensions.Category == "ScaleControllerLogs"
-| where message == "Instance count changed"
-| extend Reason = CustomDimensions.Reason
-| extend PreviousInstanceCount = CustomDimensions.PreviousInstanceCount
-| extend NewInstanceCount = CustomDimensions.CurrentInstanceCount
-```
 
 ## <a name="disable-built-in-logging"></a>Zákaz integrovaného protokolování
 

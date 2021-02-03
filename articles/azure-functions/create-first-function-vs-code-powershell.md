@@ -3,12 +3,12 @@ title: Vytvoření funkce PowerShellu pomocí Visual Studio Code-Azure Functions
 description: Naučte se vytvořit funkci PowerShellu a pak publikovat místní projekt na hostování bez serveru v Azure Functions pomocí rozšíření Azure Functions v Visual Studio Code.
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: ad129d8faec5725a6e76f14577e6a0e9deae8d86
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 9833b154cdba24f8760e7e8d9040bfc72bbcd271
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968003"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493583"
 ---
 # <a name="quickstart-create-a-powershell-function-in-azure-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce PowerShellu v Azure pomocí Visual Studio Code
 
@@ -32,40 +32,40 @@ Než začnete, ujistěte se, že máte zavedené následující požadavky:
 
 + Runtime [.NET core 3,1](https://www.microsoft.com/net/download) a [.NET Core 2,1 runtime](https://dotnet.microsoft.com/download/dotnet-core/2.1)  
 
-+ [Visual Studio Code](https://code.visualstudio.com/) na některé z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms).    
++ [Visual Studio Code](https://code.visualstudio.com/) na jedné z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms)    
 
 + [Rozšíření PowerShellu pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell).  
 
-+ [Azure Functions rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) pro Visual Studio Code. 
++ [Rozšíření Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) pro Visual Studio Code 
 
 ## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>Vytvořit místní projekt
 
 V této části použijete Visual Studio Code k vytvoření místního projektu Azure Functions v prostředí PowerShell. Později v tomto článku publikujete kód funkce do Azure.
 
-1. Zvolte ikonu Azure na řádku aktivity a potom v oblasti **Azure: funkce** vyberte ikonu **vytvořit nový projekt...** .
+1. Zvolte ikonu Azure na panelu Aktivita a pak v oblasti **Azure: Funkce** vyberte ikonu **Vytvořit nový projekt**.
 
-    ![Zvolit vytvořit nový projekt](./media/functions-create-first-function-vs-code/create-new-project.png)
+    ![Volba možnosti Vytvořit nový projekt](./media/functions-create-first-function-vs-code/create-new-project.png)
 
-1. Zvolte umístění adresáře pro váš pracovní prostor projektu a zvolte **možnost vybrat**.
+1. Zvolte umístění adresáře pro váš pracovní prostor projektu a zvolte **Vybrat**.
 
     > [!NOTE]
     > Tyto kroky jsou navržené tak, aby se dokončily mimo pracovní prostor. V tomto případě nevybírejte složku projektu, která je součástí pracovního prostoru.
 
-1. Zadejte následující informace na následujících dotazech:
+1. Podle pokynů na obrazovce zadejte tyto informace:
 
-    + **Vyberte jazyk pro projekt funkce**: zvolte `PowerShell` .
+    + **Vyberte jazyk pro váš projekt funkce:** Zvolte `PowerShell`.
 
-    + **Vyberte šablonu pro funkci prvního projektu**: zvolte `HTTP trigger` .
+    + **Vyberte šablonu pro první funkci projektu:** Zvolte `HTTP trigger`.
 
-    + Zadejte **název funkce**: typ `HttpExample` .
+    + **Zadejte název funkce:** Zadejte příkaz `HttpExample`.
 
     + **Úroveň autorizace**: vyberte `Anonymous` , který umožňuje komukoli zavolat koncový bod funkce. Další informace o úrovni autorizace najdete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
-    + **Vyberte, jak se má projekt otevřít**: zvolte `Add to workspace` .
+    + **Vyberte způsob, jakým chcete projekt otevírat:** Zvolte `Add to workspace`.
 
 1. Pomocí těchto informací Visual Studio Code generuje Azure Functions projekt pomocí triggeru protokolu HTTP. Můžete zobrazit soubory místních projektů v Průzkumníkovi. Další informace o souborech, které jsou vytvořeny, najdete v tématu [vygenerované soubory projektu](functions-develop-vs-code.md#generated-project-files). 
 
-[!INCLUDE [functions-run-function-test-local-vs-code-ps](../../includes/functions-run-function-test-local-vs-code-ps.md)]
+[!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
 
 Po ověření, že se funkce na místním počítači spustí správně, je čas použít Visual Studio Code k publikování projektu přímo do Azure. 
 
@@ -79,7 +79,7 @@ Po ověření, že se funkce na místním počítači spustí správně, je čas
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí Visual Studio Code jste vytvořili aplikaci funkcí s jednoduchou funkcí aktivovanou protokolem HTTP. V dalším článku rozbalíte tuto funkci přidáním výstupní vazby. Tato vazba zapíše řetězec z požadavku HTTP do zprávy ve frontě Azure Queue Storage. 
+Použili jste [Visual Studio Code](functions-develop-vs-code.md?tabs=powershell) k vytvoření aplikace funkcí pomocí jednoduché funkce aktivované protokolem HTTP. V dalším článku tuto funkci rozbalíte tak, že se připojíte k Azure Storage. Další informace o připojení k ostatním službám Azure najdete v tématu [Přidání vazeb do existující funkce v Azure Functions](add-bindings-existing-function.md?tabs=powershell).  
 
 > [!div class="nextstepaction"]
 > [Připojení k frontě Azure Storage](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-powershell)

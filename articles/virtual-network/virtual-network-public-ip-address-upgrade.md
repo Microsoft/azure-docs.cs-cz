@@ -16,19 +16,19 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions
-ms.openlocfilehash: d6e8c4f4b6646254aeea12cf587f47047e661e3f
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 93d5d422709fad3d4f732b3b232f67d60d79b507
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222866"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493715"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Upgrade veřejných IP adres
 
-Veřejné IP adresy Azure se vytvářejí pomocí SKU – Basic nebo Standard – což určuje aspekty jejich funkcí (včetně metody přidělování, využití napříč zónami dostupnosti a k jakým prostředkům, se kterými se dají přidružit). 
+Veřejné IP adresy Azure se vytvářejí pomocí SKU – buď Basic, nebo Standard, což určuje aspekty jejich funkcí (včetně metody přidělování, podpory funkcí a prostředků, ke kterým se dají přidružit). 
 
 V tomto článku jsou revidovány následující scénáře:
-* Postup upgradu veřejné IP adresy základní SKU na veřejnou IP adresu Standard SKU (pomocí portálu, PowerShellu nebo rozhraní příkazového řádku)
+* Postup upgradu veřejné IP adresy základní SKU na veřejnou IP adresu Standard SKU (pomocí PowerShellu nebo rozhraní příkazového řádku)
 * Postup migrace klasického Vyhrazená IP adresa Azure do veřejné IP adresy Azure Resource Manager Basic SKU
 
 ## <a name="upgrade-public-ip-address-from-basic-to-standard-sku"></a>Upgrade veřejné IP adresy z úrovně Basic na standard SKU

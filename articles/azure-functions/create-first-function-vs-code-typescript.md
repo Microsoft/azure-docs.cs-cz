@@ -3,12 +3,12 @@ title: Vytvoření funkce TypeScript pomocí Visual Studio Code-Azure Functions
 description: Naučte se vytvořit funkci TypeScript a pak publikovat místní Node.js projekt na hostování bez serveru v Azure Functions pomocí rozšíření Azure Functions v Visual Studio Code.
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: 48295aab80b8a15a313ce7fa7acf94606357930b
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4470741c8c7f2f6c9832ea73aa9c6207764bc903
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93425057"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493453"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-typescript-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce v Azure pomocí TypeScript pomocí Visual Studio Code
 
@@ -28,34 +28,34 @@ Než začnete, ujistěte se, že máte zavedené následující požadavky:
 
 + [Node.js](https://nodejs.org/), LTS a verze LTS údržby (doporučeno 10.14.1). Pomocí `node --version` příkazu ověřte svou verzi.  
 
-+ [Visual Studio Code](https://code.visualstudio.com/) na některé z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
++ [Visual Studio Code](https://code.visualstudio.com/) na jedné z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms)
 
-+ [Azure Functions rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) pro Visual Studio Code.
++ [Rozšíření Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) pro Visual Studio Code
 
 ## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>Vytvořit místní projekt
 
 V této části použijete Visual Studio Code k vytvoření místního projektu Azure Functions v TypeScript. Později v tomto článku publikujete kód funkce do Azure. 
 
-1. Zvolte ikonu Azure na řádku aktivity a potom v oblasti **Azure: funkce** vyberte ikonu **vytvořit nový projekt...** .
+1. Zvolte ikonu Azure na panelu Aktivita a pak v oblasti **Azure: Funkce** vyberte ikonu **Vytvořit nový projekt**.
 
-    ![Zvolit vytvořit nový projekt](media/functions-create-first-function-vs-code/create-new-project.png)
+    ![Volba možnosti Vytvořit nový projekt](media/functions-create-first-function-vs-code/create-new-project.png)
 
-1. Zvolte umístění adresáře pro váš pracovní prostor projektu a zvolte **možnost vybrat**.
+1. Zvolte umístění adresáře pro váš pracovní prostor projektu a zvolte **Vybrat**.
 
     > [!NOTE]
     > Tyto kroky jsou navržené tak, aby se dokončily mimo pracovní prostor. V tomto případě nevybírejte složku projektu, která je součástí pracovního prostoru.
 
-1. Zadejte následující informace na následujících dotazech:
+1. Podle pokynů na obrazovce zadejte tyto informace:
 
-    + **Vyberte jazyk pro projekt funkce** : zvolte `TypeScript` .
+    + **Vyberte jazyk pro váš projekt funkce:** Zvolte `TypeScript`.
 
-    + **Vyberte šablonu pro funkci prvního projektu** : zvolte `HTTP trigger` .
+    + **Vyberte šablonu pro první funkci projektu:** Zvolte `HTTP trigger`.
 
-    + Zadejte **název funkce** : typ `HttpExample` .
+    + **Zadejte název funkce:** Zadejte příkaz `HttpExample`.
 
-    + **Úroveň autorizace** : vyberte `Anonymous` , který umožňuje komukoli zavolat koncový bod funkce. Další informace o úrovni autorizace najdete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys).
+    + **Úroveň autorizace**: vyberte `Anonymous` , který umožňuje komukoli zavolat koncový bod funkce. Další informace o úrovni autorizace najdete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
-    + **Vyberte, jak se má projekt otevřít** : zvolte `Add to workspace` .
+    + **Vyberte způsob, jakým chcete projekt otevírat:** Zvolte `Add to workspace`.
 
 1. Pomocí těchto informací Visual Studio Code generuje Azure Functions projekt pomocí triggeru protokolu HTTP. Můžete zobrazit soubory místních projektů v Průzkumníkovi. Další informace o souborech, které jsou vytvořeny, najdete v tématu [vygenerované soubory projektu](functions-develop-vs-code.md#generated-project-files). 
 
@@ -74,33 +74,35 @@ V této části vytvoříte aplikaci funkcí a související prostředky v před
 
 1. Zvolte ikonu Azure na řádku aktivity a potom v oblasti **Azure: funkce** zvolte tlačítko **nasadit do aplikace Function App...** .
 
-    ![Publikování projektu do Azure](media/functions-create-first-function-vs-code/function-app-publish-project.png)
+    ![Publikování projektu do Azure](../../includes/media/functions-publish-project-vscode/function-app-publish-project.png)
 
-1. Zadejte následující informace na následujících dotazech:
+1. Podle pokynů na obrazovce zadejte tyto informace:
 
-    + **Vyberte složku** : Zvolte složku z pracovního prostoru nebo přejděte k nějakému, který obsahuje vaši aplikaci Function App. Tato funkce se nezobrazuje, pokud už máte spuštěnou platnou aplikaci Function App.
+    + **Vyberte složku**: Zvolte složku z pracovního prostoru nebo přejděte k nějakému, který obsahuje vaši aplikaci Function App. Tato funkce se nezobrazuje, pokud už máte spuštěnou platnou aplikaci Function App.
 
-    + **Vyberte předplatné** : zvolte předplatné, které chcete použít. Toto se nezobrazí, pokud máte jenom jedno předplatné.
+    + **Vyberte předplatné**: zvolte předplatné, které chcete použít. Toto se nezobrazí, pokud máte jenom jedno předplatné.
 
-    + **Vyberte Function App v Azure** : zvolte `+ Create new Function App` . (Nevybírejte `Advanced` možnost, která není pokrytá v tomto článku.)
+    + **Výběr aplikace funkcí v Azure:** Zvolte `+ Create new Function App`. (Nevybírejte `Advanced` možnost, která není pokrytá v tomto článku.)
 
-    + **Zadejte globálně jedinečný název aplikace Function App** : zadejte název, který je platný v cestě URL. Název, který zadáte, bude ověřený, abyste se ujistili, že je v Azure Functions jedinečný. 
+    + **Zadejte globálně jedinečný název aplikace Function App**: zadejte název, který je platný v cestě URL. Název, který zadáte, bude ověřený, abyste se ujistili, že je v Azure Functions jedinečný. 
 
-    + **Vyberte modul runtime** : zvolte verzi Node.js, na které jste pracovali místně. `node --version`K zkontrolování vaší verze můžete použít příkaz.
+    + **Vyberte modul runtime**: zvolte verzi Node.js, na které jste pracovali místně. `node --version`K zkontrolování vaší verze můžete použít příkaz.
 
-    + **Vyberte umístění pro nové prostředky** : pro lepší výkon zvolte [oblast](https://azure.microsoft.com/regions/) poblíž.
+    + **Vyberte umístění pro nové prostředky**: pro lepší výkon zvolte [oblast](https://azure.microsoft.com/regions/) poblíž.
+
+    Rozšíření zobrazuje stav jednotlivých prostředků, které se vytváří v Azure v oznamovací oblasti.
+
+    :::image type="content" source="../../includes/media/functions-publish-project-vscode/resource-notification.png" alt-text="Oznámení o vytváření prostředků Azure":::
 
 1. Po dokončení se ve vašem předplatném vytvoří následující prostředky Azure s použitím názvů na základě názvu vaší aplikace Function App:
 
-    + Skupina prostředků, což je logický kontejner pro související prostředky.
-    + Účet Standard Azure Storage, který uchovává stav a další informace o vašich projektech.
-    + Plán spotřeby, který definuje základního hostitele pro aplikaci s funkcí bez serveru. 
-    + Aplikace Function App, která poskytuje prostředí pro spuštění kódu vaší funkce. Aplikace Function App umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků v rámci stejného plánu hostování.
-    + Instance Application Insights připojená k aplikaci Function App, která sleduje využití funkce bez serveru.
+    [!INCLUDE [functions-vs-code-created-resources](../../includes/functions-vs-code-created-resources.md)]
 
     Po vytvoření aplikace funkcí a použití balíčku nasazení se zobrazí oznámení. 
 
-1. Pokud chcete zobrazit výsledky vytvoření a nasazení, včetně prostředků Azure, které jste vytvořili, vyberte **Zobrazit výstup** v tomto oznámení. Pokud jste oznámení nezobrazili, vyberte ikonu zvonku v pravém dolním rohu, abyste ji viděli znovu.
+    [!INCLUDE [functions-vs-code-create-tip](../../includes/functions-vs-code-create-tip.md)]
+
+4. Pokud chcete zobrazit výsledky vytvoření a nasazení, včetně prostředků Azure, které jste vytvořili, vyberte **Zobrazit výstup** v tomto oznámení. Pokud jste oznámení nezobrazili, vyberte ikonu zvonku v pravém dolním rohu, abyste ji viděli znovu.
 
     ![Vytvořit kompletní oznámení](./media/functions-create-first-function-vs-code/function-create-notifications.png)
 
@@ -110,7 +112,7 @@ V této části vytvoříte aplikaci funkcí a související prostředky v před
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí Visual Studio Code jste vytvořili aplikaci funkcí s jednoduchou funkcí aktivovanou protokolem HTTP. V dalším článku rozbalíte tuto funkci přidáním výstupní vazby. Tato vazba zapíše řetězec z požadavku HTTP do zprávy ve frontě Azure Queue Storage. 
+Použili jste [Visual Studio Code](functions-develop-vs-code.md?tabs=javascript) k vytvoření aplikace funkcí pomocí jednoduché funkce aktivované protokolem HTTP. V dalším článku tuto funkci rozbalíte tak, že se připojíte k Azure Storage. Další informace o připojení k ostatním službám Azure najdete v tématu [Přidání vazeb do existující funkce v Azure Functions](add-bindings-existing-function.md?tabs=typescript).   
 
 > [!div class="nextstepaction"]
 > [Připojení k frontě Azure Storage](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-typescript)

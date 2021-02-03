@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: d59826ba0e53c4b4146c13b354a85a124ac29b23
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f10319de67a105b4b5e4641c4171ccd0a6e63440
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738097"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99490873"
 ---
 # <a name="whats-new-in-computer-vision"></a>Co je nového v Počítačové zpracování obrazu
 
@@ -30,6 +30,12 @@ Nová verze [kontejneru prostorových analýz](spatial-analysis-container.md) by
 * [Operace prostorových analýz](spatial-analysis-operations.md) se teď dají nakonfigurovat tak, aby se zjistilo, jestli má osoba ochrannou plošku, jako je například maska. 
     * Klasifikátor masky lze povolit pro `personcount` `personcrossingline` `personcrossingpolygon` operace a pomocí konfigurace `ENABLE_FACE_MASK_CLASSIFIER` parametru.
     * Atributy `face_mask` a `face_noMask` budou vráceny jako metadata s hodnocením spolehlivosti pro každou osobu zjištěnou ve streamu videa.
+* Operace *personcrossingpolygon* se rozšířila tak, aby umožňovala výpočet doby bydlení, kterou osoba v zóně stráví. Můžete nastavit `type` parametr v konfiguraci zóny pro operaci na `zonedwelltime` a nová událost typu *personZoneDwellTimeEvent* bude obsahovat `durationMs` pole naplněné počtem milisekund, které osoba strávila v zóně.
+* **Průlomová změna**: událost *personZoneEvent* byla přejmenována na *personZoneEnterExitEvent*. Tato událost je vyvolána operací *personcrossingpolygon* , když uživatel zadá nebo ukončí zónu a poskytne směrové informace s očíslovanou stranou zóny, která byla překročena.
+* Adresa URL videa se dá v všech operacích zadat jako "soukromý parametr/zakódováno". Zmatení je nyní volitelné a bude fungovat pouze v případě `KEY` , že a `IV` jsou zadány jako proměnné prostředí.
+* Ve výchozím nastavení je kalibrace povolena pro všechny operace. Nastavte `do_calibration: false` ho tak, aby se zakázal.
+* Přidala se podpora pro automatickou rekalibraci (ve výchozím nastavení je zakázaná) prostřednictvím parametru. Podrobnosti najdete v `enable_recalibration` tématu věnovaném [operacím prostorové analýzy](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations) .
+* Parametry kalibrace kamery na `DETECTOR_NODE_CONFIG` . Podrobnosti najdete v tématu věnovaném [operacím prostorové analýzy](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations) .
 
 
 ## <a name="october-2020"></a>Říjen 2020

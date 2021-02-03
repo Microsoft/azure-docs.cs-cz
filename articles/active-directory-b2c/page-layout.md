@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4237aba81a01423a3356a30879fbd27450c876bd
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: 491549933817a127a92180b0e4b455e461e4d3a2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976499"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492242"
 ---
 # <a name="page-layout-versions"></a>Verze rozložení stránky
 
@@ -24,7 +24,10 @@ Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly oprav
 
 ## <a name="self-asserted-page-selfasserted"></a>Stránka s vlastním kontrolním výrazem (selfasserted)
 
-**bodů**
+**2.1.2**
+- Opravili jsme problém s kódováním lokalizace pro jazyky, jako je španělština a francouzština.
+
+**2.1.1**
 
 - Přidali jsme UXString, aby `heading` `intro` se zobrazila na stránce jako název. Ve výchozím nastavení je to skryté.
 - Přidání podpory pro ukládání hesel do iCloud řetězce klíčů
@@ -71,7 +74,11 @@ Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly oprav
 
 ## <a name="unified-sign-in-sign-up-page-with-password-reset-link-unifiedssp"></a>Přihlašovací stránka jednotného přihlašování s odkazem na resetování hesla (unifiedssp)
 
-**bodů**
+**2.1.2**
+- Opravili jsme problém s kódováním lokalizace pro jazyky, jako je španělština a francouzština.
+- Povolení odkazu "Zapomenuté heslo", který se použije jako výměna deklarací identity, jako je třeba sociální IDP
+
+**2.1.1**
 - Přidali jsme UXString, aby `heading` `intro` se zobrazila na stránce jako název. Ve výchozím nastavení je to skryté.
 - Přidání podpory pro použití zásad nebo parametru QueryString `pageFlavor` pro výběr rozložení (Classic, oceanBlue nebo slateGray).
 - Přidání podpory pro ukládání hesel do iCloud řetězce klíčů

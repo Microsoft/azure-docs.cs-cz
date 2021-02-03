@@ -3,12 +3,12 @@ title: Nasazení prostředků do skupiny pro správu
 description: V této části najdete popis postupu nasazení prostředků v oboru skupiny pro správu v šabloně Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: d6c6b925ad1533fc1f3bf490a9b996280164bd57
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: a203dd2c52bdc889452a6755fb025c7ed5721a59
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184012"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491627"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>Nasazení skupin pro správu pomocí šablon ARM
 
@@ -112,7 +112,7 @@ Podrobnější informace o příkazech nasazení a možnostech nasazení šablon
 
 Pro nasazení na úrovni skupiny pro správu musíte zadat umístění pro nasazení. Umístění nasazení je oddělené od umístění prostředků, které nasazujete. Umístění nasazení určuje, kam se mají ukládat data nasazení. [Předplatné](deploy-to-subscription.md) a nasazení [klientů](deploy-to-tenant.md) také vyžadují umístění. Pro nasazení [skupin prostředků](deploy-to-resource-group.md) se umístění skupiny prostředků používá k ukládání dat nasazení.
 
-Můžete zadat název nasazení nebo použít výchozí název nasazení. Výchozí název je název souboru šablony. Například nasazení šablony s názvem **azuredeploy.jsv** vytvoří výchozí název nasazení **azuredeploy**.
+Můžete zadat název nasazení nebo použít výchozí název nasazení. Výchozí název je název souboru šablony. Například nasazení šablony s názvem _azuredeploy.jsv_ vytvoří výchozí název nasazení **azuredeploy**.
 
 Pro každý název nasazení je umístění neměnné. Nasazení nelze vytvořit v jednom umístění, pokud existuje existující nasazení se stejným názvem v jiném umístění. Pokud například vytvoříte nasazení skupiny pro správu s názvem **deployment1** v **centralus**, nemůžete později vytvořit další nasazení s názvem **deployment1** , ale umístěním **westus**. Pokud se zobrazí kód chyby `InvalidDeploymentLocation` , použijte jiný název nebo stejné umístění jako předchozí nasazení pro tento název.
 
@@ -164,9 +164,9 @@ Pokud chcete použít nasazení skupiny pro správu pro vytvoření skupiny pros
 
 ### <a name="scope-to-tenant"></a>Rozsah do tenanta
 
-Prostředky můžete vytvořit v tenantovi nastavením nastavení `scope` na `/` . Uživatel, který šablonu nasazuje, musí mít [požadovaný přístup k nasazení v tenantovi](deploy-to-tenant.md#required-access).
+Chcete-li vytvořit prostředky v tenantovi, nastavte `scope` na `/` . Uživatel, který šablonu nasazuje, musí mít [požadovaný přístup k nasazení v tenantovi](deploy-to-tenant.md#required-access).
 
-Můžete použít vnořené nasazení se sadou `scope` a `location` .
+Chcete-li použít vnořené nasazení, nastavte `scope` a `location` .
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-to-tenant.json" highlight="9,10,14":::
 
@@ -222,7 +222,7 @@ Následující příklad vytvoří novou skupinu pro správu ve skupině pro spr
 
 ## <a name="azure-policy"></a>Azure Policy
 
-Vlastní definice zásad, které jsou nasazené ve skupině pro správu, jsou rozšířeními skupiny pro správu. K získání ID vlastní definice zásady použijte funkci [extensionResourceId ()](template-functions-resource.md#extensionresourceid) . Předdefinované definice zásad jsou prostředky na úrovni tenanta. K získání ID předdefinované definice zásady použijte funkci [tenantResourceId](template-functions-resource.md#tenantresourceid) .
+Vlastní definice zásad, které jsou nasazené ve skupině pro správu, jsou rozšířeními skupiny pro správu. K získání ID vlastní definice zásady použijte funkci [extensionResourceId ()](template-functions-resource.md#extensionresourceid) . Předdefinované definice zásad jsou prostředky na úrovni tenanta. K získání ID předdefinované definice zásady použijte funkci [tenantResourceId ()](template-functions-resource.md#tenantresourceid) .
 
 Následující příklad ukazuje, jak [definovat](../../governance/policy/concepts/definition-structure.md) zásadu na úrovni skupiny pro správu a přiřadit ji.
 

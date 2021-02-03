@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 478ae6146caeb8a27cdaf13b7f33e421b8121afc
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fa2d910c017d3cc626f737bdab50315aef8d1e77
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741486"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491381"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>Povolení samoobslužného resetování hesla Azure Active Directory na přihlašovací obrazovce Windows
 
@@ -40,7 +40,7 @@ Následující omezení platí pro použití SSPR z přihlašovací obrazovky Wi
 - Počítače připojené k hybridní službě Azure AD musí mít na řadiči domény linku připojení k síti, aby bylo možné použít nové heslo a aktualizovat přihlašovací údaje uložené v mezipaměti. To znamená, že zařízení musí být buď v interní síti organizace, nebo na síti VPN se síťovým přístupem k místnímu řadiči domény.
 - Pokud použijete image, před provedením kroku CopyProfile zajistěte, aby byla mezipaměť webu pro předdefinovaný správce vymazána. Další informace o tomto kroku najdete v článku o [výkonu nekvalitního výkonu při používání vlastního výchozího uživatelského profilu](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
 - U následujících nastavení je známo, že se bude rušit možnost používat a resetovat hesla na zařízeních s Windows 10:
-    - Pokud zásady ve verzích Windows 10 před v1909 vyžadují CTRL + ALT + DEL, **resetování hesla** nebude fungovat.
+    - Pokud zásady ve Windows 10 vyžadují CTRL + ALT + DEL, **resetování hesla** nebude fungovat.
     - Pokud jsou oznámení na zamykací obrazovce vypnutá, **resetování hesla** nebude fungovat.
     - *HideFastUserSwitching* je nastavené na povoleno nebo 1.
     - *DontDisplayLastUserName* je nastavené na povoleno nebo 1.
@@ -51,6 +51,10 @@ Následující omezení platí pro použití SSPR z přihlašovací obrazovky Wi
     - Interaktivní přihlašování: Nevyžadovat CTRL + ALT + DEL = zakázáno
     - *DisableLockScreenAppNotifications* = 1 nebo povoleno
     - SKU Windows není Home nebo Professional Edition.
+
+> [!NOTE]
+> Tato omezení platí také pro resetování PIN kódu ve Windows Hello pro firmy na zamykací obrazovce zařízení.
+>
 
 ## <a name="windows-10-password-reset"></a>Resetování hesla Windows 10
 

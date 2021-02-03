@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: 6400d3f3c721619551ba3989a2e5799b72ff9f38
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: e485c2f0a7deeffe68c932688658ef099fec510e
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831920"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492751"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Vytvoření a připojení clusteru služby Azure Kubernetes
 
@@ -70,7 +70,9 @@ Azure Machine Learning můžou nasazovat školicí modely strojového učení do
     - [Ruční škálování počtu uzlů v clusteru AKS](../aks/scale-cluster.md)
     - [Nastavení automatického škálování clusteru v AKS](../aks/cluster-autoscaler.md)
 
-## <a name="azure-kubernetes-service-version"></a>Verze služby Azure Kubernetes
+- __Neaktualizujte přímo cluster pomocí konfigurace YAML__. I když služba Azure Kubernetes Services podporuje aktualizace prostřednictvím konfigurace YAML, Azure Machine Learning nasazení přepíše vaše změny. Pouze dvě YAML pole, která nebudou přepsána, jsou __omezení požadavků__ a __CPU a paměť__.
+
+## <a name="azure-kubernetes-service-version"></a>Verze Azure Kubernetes Service
 
 Služba Azure Kubernetes umožňuje vytvářet clustery s využitím nejrůznějších verzí Kubernetes. Další informace o dostupných verzích najdete v tématu [podporované verze Kubernetes ve službě Azure Kubernetes Service](../aks/supported-kubernetes-versions.md).
 
@@ -381,7 +383,6 @@ V Azure Machine Learning Studiu vyberte __výpočetní__ prostředí, __odvozen�
 ---
 
 ## <a name="troubleshooting"></a>Řešení potíží
-
 ### <a name="update-the-cluster"></a>Aktualizace clusteru
 
 Aktualizace komponent Azure Machine Learning nainstalovaných v clusteru služby Azure Kubernetes se musí použít ručně. 

@@ -4,12 +4,12 @@ description: Naučte se zobrazovat a dotazovat se na data telemetrie Azure Funct
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 14b6ed3964900e3395ca335c301dfd0285da46e7
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 2a991157962b0588e3d49510e8a82a9abcfb9aed
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937293"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493766"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Analýza telemetrie Azure Functions v Application Insights 
 
@@ -60,7 +60,7 @@ Informace o tom, jak používat Application Insights, najdete v [dokumentaci k A
 
 Následující oblasti Application Insights mohou být užitečné při vyhodnocování chování, výkonu a chyb ve vašich funkcích:
 
-| Prověřování | Popis |
+| Prověřování | Description |
 | ---- | ----------- |
 | **[Selhání](../azure-monitor/app/asp-net-exceptions.md)** |  Vytvářejte grafy a výstrahy na základě selhání funkcí a výjimek serveru. **Název operace** je název funkce. Pokud neimplementujete vlastní telemetrie pro závislosti, neobjeví se chyby v závislostech. |
 | **[Výkon](../azure-monitor/app/performance-counters.md)** | Analyzujte problémy s výkonem zobrazením využití prostředků a propustnosti na **instance rolí cloudu**. Tato data o výkonu můžou být užitečná pro scénáře ladění, kde funkce bogging své základní prostředky. |
@@ -77,18 +77,18 @@ Vyberte **protokoly** pro prozkoumání protokolovaných událostí nebo dotazov
 
 Tady je příklad dotazu, který zobrazuje distribuci požadavků za pracovní proces za posledních 30 minut.
 
-<pre>
+```kusto
 requests
 | where timestamp > ago(30m) 
 | summarize count() by cloud_RoleInstance, bin(timestamp, 1m)
 | render timechart
-</pre>
+```
 
 Tabulky, které jsou k dispozici, jsou zobrazeny na kartě **schéma** na levé straně. Data generovaná pomocí volání funkcí najdete v následujících tabulkách:
 
 | Tabulka | Popis |
 | ----- | ----------- |
-| **trasování** | Protokoly vytvořené modulem runtime a trasování z kódu funkce. |
+| **trasování** | Protokoly vytvořené modulem runtime, škálováním řadiče a trasováním z kódu funkce. |
 | **požadavky** | Jedna žádost pro každé vyvolání funkce. |
 | **výjimek** | Jakékoli výjimky vyvolané modulem runtime. |
 | **customMetrics** | Počet úspěšných a neúspěšných vyvolání, míra úspěšnosti a trvání. |
@@ -99,12 +99,38 @@ Ostatní tabulky jsou k dispozici pro testy dostupnosti a telemetrie klientů a 
 
 V každé tabulce jsou některá data specifická pro konkrétní funkce v `customDimensions` poli.  Například následující dotaz načte všechna trasování, která mají úroveň protokolu `Error` .
 
-<pre>
+```kusto
 traces 
 | where customDimensions.LogLevel == "Error"
-</pre>
+```
 
 Modul runtime poskytuje `customDimensions.LogLevel` pole a `customDimensions.Category` . V protokolech můžete zadat další pole, která zapíšete do kódu funkce. Příklad v jazyce C# naleznete v tématu [strukturované protokolování](functions-dotnet-class-library.md#structured-logging) v příručce pro vývojáře knihovny tříd .NET.
+
+## <a name="query-scale-controller-logs"></a>Protokoly řadiče pro škálování dotazů
+
+_Tato funkce je ve verzi Preview._
+
+Po povolení [protokolování škálování kontroléru](configure-monitoring.md#configure-scale-controller-logs) a [Application Insights integrace](configure-monitoring.md#enable-application-insights-integration)můžete pomocí hledání protokolu Application Insights vyhledat dotaz na vysílané protokoly řadiče pro škálování. Protokoly řadiče škálování se ukládají do `traces` kolekce pod kategorií **ScaleControllerLogs** .
+
+Následující dotaz se dá použít k vyhledání všech protokolů řadiče škálování pro aktuální aplikaci Function App během zadaného časového období:
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+```
+
+Následující dotaz rozbalí předchozí dotaz a ukáže, jak získat pouze protokoly indikující změnu ve velikosti:
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+| where message == "Instance count changed"
+| extend Reason = CustomDimensions.Reason
+| extend PreviousInstanceCount = CustomDimensions.PreviousInstanceCount
+| extend NewInstanceCount = CustomDimensions.CurrentInstanceCount
+```
 
 ## <a name="consumption-plan-specific-metrics"></a>Metriky specifické pro plán spotřeby
 

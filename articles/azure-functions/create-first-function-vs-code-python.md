@@ -4,12 +4,12 @@ description: Naučte se vytvořit funkci Pythonu a potom publikovat místní pro
 ms.topic: quickstart
 ms.date: 11/04/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 0d7b98c44b85e17d084994bbcaa285c55c7a5e4d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: e022843f95e5d5b52a15eaab2d28b6b9eb923006
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880840"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493562"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-python-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce v Azure pomocí Pythonu pomocí Visual Studio Code
 
@@ -54,7 +54,8 @@ V této části použijete Visual Studio Code k vytvoření místního projektu 
 
     + **Vyberte jazyk pro váš projekt funkce:** Zvolte `Python`.
 
-    + **Vyberte alias Pythonu pro vytvoření virtuálního prostředí**: Zvolte umístění překladače Pythonu. Pokud se umístění nezobrazuje, zadejte úplnou cestu k binárnímu souboru Pythonu.  
+    + **Vyberte alias Pythonu pro vytvoření virtuálního prostředí**: Zvolte umístění překladače Pythonu.  
+    Pokud se umístění nezobrazuje, zadejte úplnou cestu k binárnímu souboru Pythonu.  
 
     + **Vyberte šablonu pro první funkci projektu:** Zvolte `HTTP trigger`.
 
@@ -81,15 +82,18 @@ V této části vytvoříte aplikaci funkcí a související prostředky v před
 
 1. Zvolte ikonu Azure na řádku aktivity a potom v oblasti **Azure: funkce** zvolte tlačítko **nasadit do aplikace Function App...** .
 
-    ![Publikování projektu do Azure](./media/functions-create-first-function-vs-code/function-app-publish-project.png)
+    ![Publikování projektu do Azure](../../includes/media/functions-publish-project-vscode/function-app-publish-project.png)
 
 1. Podle pokynů na obrazovce zadejte tyto informace:
 
-    + **Vyberte složku**: Zvolte složku z pracovního prostoru nebo přejděte k nějakému, který obsahuje vaši aplikaci Function App. Tato funkce se nezobrazuje, pokud už máte spuštěnou platnou aplikaci Function App.
+    + **Vyberte složku**: Zvolte složku z pracovního prostoru nebo přejděte k nějakému, který obsahuje vaši aplikaci Function App.   
+    Tato funkce se nezobrazuje, pokud už máte spuštěnou platnou aplikaci Function App.
 
-    + **Vyberte předplatné**: zvolte předplatné, které chcete použít. Toto se nezobrazí, pokud máte jenom jedno předplatné.
+    + **Vyberte předplatné**: zvolte předplatné, které chcete použít.  
+    Toto se nezobrazí, pokud máte jenom jedno předplatné.
 
-    + **Výběr aplikace funkcí v Azure:** Zvolte `+ Create new Function App`. (Nevybírejte `Advanced` možnost, která není pokrytá v tomto článku.)
+    + **Výběr aplikace funkcí v Azure:** Zvolte `+ Create new Function App`.  
+    (Nevybírejte `Advanced` možnost, která není pokrytá v tomto článku.)
 
     + **Zadejte globálně jedinečný název aplikace Function App**: zadejte název, který je platný v cestě URL. Název, který zadáte, bude ověřený, abyste se ujistili, že je v Azure Functions jedinečný. 
 
@@ -97,17 +101,19 @@ V této části vytvoříte aplikaci funkcí a související prostředky v před
 
     + **Vyberte umístění pro nové prostředky**: pro lepší výkon zvolte [oblast](https://azure.microsoft.com/regions/) poblíž.
 
+    Rozšíření zobrazuje stav jednotlivých prostředků, které se vytváří v Azure v oznamovací oblasti.
+
+    :::image type="content" source="../../includes/media/functions-publish-project-vscode/resource-notification.png" alt-text="Oznámení o vytváření prostředků Azure":::
+
 1. Po dokončení se ve vašem předplatném vytvoří následující prostředky Azure s použitím názvů na základě názvu vaší aplikace Function App:
 
-    + Skupina prostředků, což je logický kontejner pro související prostředky.
-    + Účet Standard Azure Storage, který uchovává stav a další informace o vašich projektech.
-    + Plán spotřeby, který definuje základního hostitele pro aplikaci s funkcí bez serveru. 
-    + Aplikace Function App, která poskytuje prostředí pro spuštění kódu vaší funkce. Aplikace Function App umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků v rámci stejného plánu hostování.
-    + Instance Application Insights připojená k aplikaci Function App, která sleduje využití funkce bez serveru.
+    [!INCLUDE [functions-vs-code-created-resources](../../includes/functions-vs-code-created-resources.md)]
 
     Po vytvoření aplikace funkcí a použití balíčku nasazení se zobrazí oznámení. 
 
-1. Pokud chcete zobrazit výsledky vytvoření a nasazení, včetně prostředků Azure, které jste vytvořili, vyberte **Zobrazit výstup** v tomto oznámení. Pokud jste oznámení nezobrazili, vyberte ikonu zvonku v pravém dolním rohu, abyste ji viděli znovu.
+    [!INCLUDE [functions-vs-code-create-tip](../../includes/functions-vs-code-create-tip.md)]
+
+4. Pokud chcete zobrazit výsledky vytvoření a nasazení, včetně prostředků Azure, které jste vytvořili, vyberte **Zobrazit výstup** v tomto oznámení. Pokud jste oznámení nezobrazili, vyberte ikonu zvonku v pravém dolním rohu, abyste ji viděli znovu.
 
     ![Vytvořit kompletní oznámení](./media/functions-create-first-function-vs-code/function-create-notifications.png)
 
@@ -117,7 +123,7 @@ V této části vytvoříte aplikaci funkcí a související prostředky v před
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí Visual Studio Code jste vytvořili aplikaci funkcí s jednoduchou funkcí aktivovanou protokolem HTTP. V dalším článku rozbalíte tuto funkci přidáním výstupní vazby. Tato vazba zapíše řetězec z požadavku HTTP do zprávy ve frontě Azure Queue Storage. 
+Použili jste [Visual Studio Code](functions-develop-vs-code.md?tabs=python) k vytvoření aplikace funkcí pomocí jednoduché funkce aktivované protokolem HTTP. V dalším článku tuto funkci rozbalíte tak, že se připojíte k Azure Storage. Další informace o připojení k ostatním službám Azure najdete v tématu [Přidání vazeb do existující funkce v Azure Functions](add-bindings-existing-function.md?tabs=python). 
 
 > [!div class="nextstepaction"]
 > [Připojení k frontě Azure Storage](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-python)

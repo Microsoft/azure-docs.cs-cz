@@ -3,12 +3,12 @@ title: Funkce šablon v oboru nasazení
 description: Popisuje způsob řešení funkcí šablon v oboru nasazení. Oborem může být tenant, skupiny pro správu, předplatná a skupiny prostředků.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: cb02a3dc808604a80fd9943138c1cd0d8648904e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f128448380612bc9b8d9114226e8a3036feeead8
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681482"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492089"
 ---
 # <a name="arm-template-functions-in-deployment-scopes"></a>Funkce šablon ARM v oborech nasazení
 
@@ -40,15 +40,15 @@ Při nasazování do různých oborů existují některé důležité předpokla
 * Pro prostředky, které jsou implementovány jako rozšíření skupiny pro správu, použijte funkci [extensionResourceId ()](template-functions-resource.md#extensionresourceid) . Vlastní definice zásad, které jsou nasazené ve skupině pro správu, jsou rozšířeními skupiny pro správu.
 
   Pokud chcete získat ID prostředku pro definici vlastní zásady na úrovni skupiny pro správu, použijte:
-  
+
   ```json
   "policyDefinitionId": "[extensionResourceId(variables('mgScope'), 'Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
   ```
 
-* Pomocí funkce [tenantResourceId](template-functions-resource.md#tenantresourceid) můžete získat ID prostředku nasazeného v tenantovi. Předdefinované definice zásad jsou prostředky na úrovni tenanta. Při přiřazování předdefinované zásady na úrovni skupiny pro správu použijte funkci tenantResourceId.
+* K získání ID prostředku nasazeného v tenantovi použijte funkci [tenantResourceId ()](template-functions-resource.md#tenantresourceid) . Předdefinované definice zásad jsou prostředky na úrovni tenanta. Při přiřazování předdefinované zásady na úrovni skupiny pro správu použijte funkci tenantResourceId.
 
   Pokud chcete získat ID prostředku pro předdefinovanou definici zásady, použijte:
-  
+
   ```json
   "policyDefinitionId": "[tenantResourceId('Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
   ```
@@ -63,7 +63,7 @@ Následující tabulka ukazuje, jestli se funkce překládají na nadřazenou ne
 | ------------- | ----- | ---------- |
 | vnořen        | vnější (výchozí) | Nadřazená skupina prostředků |
 | vnořen        | vnořen | Dílčí skupina prostředků |
-| Spojeného        | Není k dispozici   | Dílčí skupina prostředků |
+| Spojeného        | –   | Dílčí skupina prostředků |
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) ukazuje:
 
@@ -138,6 +138,6 @@ Výstup z předchozího příkladu:
 
 ## <a name="next-steps"></a>Další kroky
 
-* Chcete-li pochopit, jak definovat parametry v šabloně, přečtěte si téma [pochopení struktury a syntaxe šablon Azure Resource Manager](template-syntax.md).
+* Informace o definování parametrů v šabloně najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
 * Tipy k řešení běžných chyb nasazení najdete v tématu [řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager](common-deployment-errors.md).
-* Informace o nasazení šablony, která vyžaduje token SAS, najdete v tématu [nasazení privátní šablony s tokenem SAS](secure-template-with-sas-token.md).
+* Informace o nasazení šablony, která vyžaduje token SAS, najdete v tématu [nasazení privátní šablony ARM pomocí tokenu SAS](secure-template-with-sas-token.md).

@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 131feaf6ff01659b7d126604a5d081275e64508f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 9ef339fb0ccd14314a65d03b59e501069446c870
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029562"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493833"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Zabezpečení Azure Machine Learningho školicího prostředí s využitím virtuálních sítí
 
@@ -62,16 +62,19 @@ Pokud chcete ve virtuální síti použít [spravovaný Azure Machine Learning _
 > * Pokud jsou účty Azure Storage v pracovním prostoru zabezpečeny i ve virtuální síti, musí být ve stejné virtuální síti jako Azure Machine Learning výpočetní instance nebo cluster. 
 > * Aby funkce COMPUTE instance Jupyter fungovala, ujistěte se, že komunikace webového soketu není zakázána. Ujistěte se prosím, že vaše síť povoluje připojení pomocí protokolu WebSocket k *. instances.azureml.net a *. instances.azureml.ms. 
 > * Když je instance služby COMPUTE nasazená v pracovním prostoru privátního propojení, dá se k ní dostat jenom z virtuální sítě. Pokud používáte vlastní soubor DNS nebo hostitele, přidejte položku pro `<instance-name>.<region>.instances.azureml.ms` s privátní IP adresou privátního koncového bodu pracovního prostoru. Další informace najdete v článku o [vlastním serveru DNS](./how-to-custom-dns.md) .
+> * Podsíť, která se používá k nasazení výpočetního clusteru/instance, by neměla být delegovaná na žádnou jinou službu, jako je ACI.
+> * Zásady koncového bodu služby virtuální sítě nefungují pro účty služby Compute Cluster/instance systémového úložiště.
+
     
 > [!TIP]
 > Instance Machine Learning COMPUTE nebo cluster automaticky přiděluje další síťové prostředky __ve skupině prostředků, která obsahuje virtuální síť__. Pro každou výpočetní instanci nebo cluster přiděluje služba následující prostředky:
 > 
 > * Jedna skupina zabezpečení sítě
-> * Jedna veřejná IP adresa
+> * Jedna veřejná IP adresa. Pokud máte zásady Azure, které zakazují vytvoření veřejné IP adresy, nasazení clusteru nebo instancí se nezdaří.
 > * Jeden nástroj pro vyrovnávání zatížení
 > 
 > V případě clusterů těchto prostředků se odstraní (a znovu vytvoří), když se cluster škáluje na 0 uzlů, ale u instance, na kterou se prostředky ukládají, ale do úplného odstranění instance (zastavování neodebere prostředky). 
-> Pro tyto prostředky platí omezení [kvót prostředků](../azure-resource-manager/management/azure-subscription-service-limits.md) předplatného.
+> Pro tyto prostředky platí omezení [kvót prostředků](../azure-resource-manager/management/azure-subscription-service-limits.md) předplatného. Pokud je skupina prostředků virtuální sítě zamčená, odebrání výpočetního clusteru/instance se nezdaří. Nástroj pro vyrovnávání zatížení nejde odstranit, dokud se neodstraní výpočetní cluster nebo instance.
 
 
 ### <a name="required-ports"></a><a id="mlcports"></a> Požadované porty

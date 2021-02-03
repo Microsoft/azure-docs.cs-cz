@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6deb0c005b5ed7daf5b30bea8a65ee70d8b460c5
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 205136437fa1a2a33b3b337f5cc9f2dde283faef
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837460"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491936"
 ---
-# <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace správy relací ověřování pomocí podmíněného přístupu
+# <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace správy relace ověřování pomocí podmíněného přístupu
 
 Ve složitých nasazeních můžou organizace potřebovat omezit relace ověřování. Některé scénáře můžou zahrnovat:
 
@@ -88,7 +88,7 @@ Výchozí nastavení Azure AD pro trvalost relace prohlížeče umožňuje uživ
 Podmíněný přístup je Azure AD Premium schopnost a vyžaduje licenci na prémii. Pokud se chcete dozvědět víc o podmíněném přístupu, přečtěte si téma [co je podmíněný přístup v Azure Active Directory?](overview.md#license-requirements)
 
 > [!WARNING]
-> Pokud používáte funkci [existence konfigurovatelného tokenu](../develop/active-directory-configurable-token-lifetimes.md) , která je aktuálně ve verzi Public Preview, pamatujte, že nepodporujeme vytváření dvou různých zásad pro stejnou kombinaci uživatelů nebo aplikací: jednu s touto funkcí a další s funkcí konfigurovatelný životností tokenu. Microsoft plánuje vyřadit funkci životnosti konfigurovatelného tokenu pro životnost tokenů aktualizace a životnosti tokenů relace 30. ledna 2021 a nahradí ji funkcí správy relace ověřování pomocí podmíněného přístupu.  
+> Pokud používáte funkci [existence konfigurovatelného tokenu](../develop/active-directory-configurable-token-lifetimes.md) , která je aktuálně ve verzi Public Preview, pamatujte, že nepodporujeme vytváření dvou různých zásad pro stejnou kombinaci uživatelů nebo aplikací: jednu s touto funkcí a další s funkcí konfigurovatelný životností tokenu. Společnost Microsoft vyřadí konfigurovatelnou funkci životnosti tokenů pro dobu obnovení a životnosti tokenů relace od 30. ledna 2021 a nahradila ji funkcí správy relace ověřování pomocí podmíněného přístupu.  
 >
 > Než povolíte frekvenci přihlašování, ujistěte se, že je ve vašem tenantovi zakázané jiné nastavení pro opakované ověřování. Pokud je povolená možnost Zapamatovat MFA u důvěryhodných zařízení, nezapomeňte ji před použitím četnosti přihlášení zakázat, protože použití těchto dvou nastavení společně může vést k neočekávanému zobrazení výzvy uživatelů. Další informace o výzvách k opakovanému ověření a době platnosti relace najdete v článku věnovaném [optimalizaci výzev k opakovanému ověření a porozumění životnosti relace pro Azure AD Multi-Factor Authentication](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
 
@@ -100,7 +100,7 @@ Podmíněný přístup je Azure AD Premium schopnost a vyžaduje licenci na pré
    > [!NOTE]
    > Pro klíčové systém Microsoft Office aplikace, jako je Exchange Online a SharePoint Online, se doporučuje nastavit četnost výzvy pro ověření, která se bude používat pro nejlepší uživatelské prostředí.
 
-1. Přejít do **relace řízení přístupu**  >  **Session** a kliknout na **četnost přihlášení**
+1. Přejít do **relace řízení přístupu**  >   a kliknout na **četnost přihlášení**
 1. Zadejte požadovanou hodnotu dnů a hodin do prvního textového pole.
 1. Vyberte v rozevíracím seznamu hodnotu **hodiny** nebo **dny** .
 1. Uložit zásadu
@@ -117,7 +117,7 @@ V zaregistrovaných zařízeních s Windows Azure AD se k zařízení přihlás�
    > [!NOTE]
    > Upozorňujeme, že tento ovládací prvek vyžaduje jako podmínku možnost "všechny cloudové aplikace". Trvalost relace prohlížeče se řídí tokenem relace ověřování. Všechny karty v relaci prohlížeče sdílejí jeden token relace, takže všichni musí sdílet stav trvalosti.
 
-1. Přejděte na **relaci řízení přístupu**  >  **Session** a klikněte na **trvalá relace prohlížeče** .
+1. Přejděte na **relaci řízení přístupu**  >   a klikněte na **trvalá relace prohlížeče** .
 1. Vybrat hodnotu z rozevíracího seznamu
 1. Uložit zásady
 

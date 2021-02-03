@@ -3,12 +3,12 @@ title: Nasazení prostředků do skupin prostředků
 description: Popisuje nasazení prostředků v šabloně Azure Resource Manager. Ukazuje, jak se zaměřit na více než jednu skupinu prostředků.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: 9eb70e5ce69a2c7bc7ac9b8c9a7a558d09ecbef0
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: c3401346f31d34d92da1f52ca79f691e94e7eb78
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186222"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491550"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>Nasazení skupiny prostředků s využitím šablon ARM
 
@@ -128,9 +128,9 @@ Příklad šablony najdete v tématu [Vytvoření skupiny prostředků](#create-
 
 ### <a name="scope-to-tenant"></a>Rozsah do tenanta
 
-Prostředky můžete vytvořit v tenantovi nastavením nastavení `scope` na `/` . Uživatel, který šablonu nasazuje, musí mít [požadovaný přístup k nasazení v tenantovi](deploy-to-tenant.md#required-access).
+Chcete-li vytvořit prostředky v tenantovi, nastavte `scope` na `/` . Uživatel, který šablonu nasazuje, musí mít [požadovaný přístup k nasazení v tenantovi](deploy-to-tenant.md#required-access).
 
-Můžete použít vnořené nasazení se sadou `scope` a `location` .
+Chcete-li použít vnořené nasazení, nastavte `scope` a `location` .
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-to-tenant.json" highlight="9,10,14":::
 
@@ -142,7 +142,7 @@ Další informace najdete v tématu [skupina pro správu](deploy-to-management-g
 
 ## <a name="deploy-to-target-resource-group"></a>Nasadit do cílové skupiny prostředků
 
-K nasazení prostředků v cílové skupině prostředků definujte tyto prostředky v části **Resources (prostředky** ) v šabloně. Následující šablona vytvoří účet úložiště ve skupině prostředků, která je určená v operaci nasazení.
+K nasazení prostředků v cílové skupině prostředků definujte tyto prostředky v `resources` části šablony. Následující šablona vytvoří účet úložiště ve skupině prostředků, která je určená v operaci nasazení.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json":::
 

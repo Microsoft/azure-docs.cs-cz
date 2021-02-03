@@ -2,15 +2,15 @@
 title: Konfigurace aplikací pro Linux Python
 description: Naučte se konfigurovat kontejner Pythonu, ve kterém jsou webové aplikace spuštěné, pomocí Azure Portal a Azure CLI.
 ms.topic: quickstart
-ms.date: 11/16/2020
+ms.date: 02/01/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 7589b5c66bf4fa86db243574f551ec585ccccea1
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 83c49eea8bda10d665c0a08666276e905c60c584
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855052"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493698"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux v Pythonu pro Azure App Service
 
@@ -22,7 +22,7 @@ Tato příručka poskytuje klíčové koncepty a pokyny pro vývojáře v Python
 
 Pro konfiguraci můžete použít buď [Azure Portal](https://portal.azure.com) , nebo rozhraní příkazového řádku Azure:
 
-- **Azure Portal** použijte **Settings**  >  **konfigurační** stránku nastavení aplikace, jak je popsáno v tématu [Konfigurace App Service aplikace v Azure Portal](configure-common.md).
+- **Azure Portal** použijte   >  **konfigurační** stránku nastavení aplikace, jak je popsáno v tématu [Konfigurace App Service aplikace v Azure Portal](configure-common.md).
 
 - **Azure CLI**: máte dvě možnosti.
 
@@ -67,10 +67,13 @@ Nepodporovanou verzi Pythonu můžete spustit místo toho vytvořením vlastní 
 
 App Service systém sestavení s názvem Oryx provede následující kroky při nasazení aplikace pomocí balíčků Git nebo zip:
 
-1. Spusťte vlastní skript před sestavením, pokud je určen `PRE_BUILD_COMMAND` nastavením.
+1. Spusťte vlastní skript před sestavením, pokud je určen `PRE_BUILD_COMMAND` nastavením. (Skript může sám spustit jiné skripty Pythonu a Node.js, příkazy PIP a npm a nástroje založené na uzlech, jako je například příze `yarn install` a `yarn build` .)
+
 1. Spusťte `pip install -r requirements.txt`. Soubor *requirements.txt* musí být přítomen v kořenové složce projektu. V opačném případě sestaví proces sestavení zprávu Chyba: "nepovedlo se najít setup.py nebo requirements.txt; Není spuštěná instalace PIP.
+
 1. Pokud se *Manage.py* najde v kořenovém adresáři úložiště (indikuje Django aplikaci), spusťte *Manage.py collectstatic*. Pokud `DISABLE_COLLECTSTATIC` je ale nastavení `true` , tento krok se přeskočí.
-1. Spusťte vlastní skript po sestavení, pokud je určen `POST_BUILD_COMMAND` nastavením.
+
+1. Spusťte vlastní skript po sestavení, pokud je určen `POST_BUILD_COMMAND` nastavením. (Skript můžete spustit i v jiných skriptech Pythonu a Node.js, příkazech PIP a npm a nástrojích založených na uzlech.)
 
 Ve výchozím nastavení `PRE_BUILD_COMMAND` `POST_BUILD_COMMAND` jsou nastavení, a `DISABLE_COLLECTSTATIC` prázdná. 
 
@@ -128,8 +131,54 @@ Následující tabulka popisuje nastavení produkčního prostředí, která jso
 | --- | --- |
 | `SECRET_KEY` | Uložte hodnotu do nastavení App Service, jak je popsáno v [nastavení přístup aplikace jako proměnné prostředí](#access-app-settings-as-environment-variables). [Hodnotu můžete v Azure Key Vault Alternativně uložit jako "tajný klíč"](../key-vault/secrets/quick-create-python.md). |
 | `DEBUG` | Vytvořte `DEBUG` nastavení pro App Service s hodnotou 0 (NEPRAVDA) a pak hodnotu načtěte jako proměnnou prostředí. Ve vašem vývojovém prostředí vytvořte `DEBUG` proměnnou prostředí s hodnotou 1 (true). |
-| `ALLOWED_HOSTS` | V produkčním prostředí vyžaduje Django, abyste do pole settings.py zahrnuli adresu URL aplikace `ALLOWED_HOSTS` . *settings.py* Tuto adresu URL můžete načíst za běhu s kódem, `os.environ['WEBSITE_HOSTNAME']` . App Service automaticky nastaví `WEBSITE_HOSTNAME` proměnnou prostředí na adresu URL aplikace. |
+| `ALLOWED_HOSTS` | V produkčním prostředí vyžaduje Django, abyste do pole settings.py zahrnuli adresu URL aplikace `ALLOWED_HOSTS` .  Tuto adresu URL můžete načíst za běhu s kódem, `os.environ['WEBSITE_HOSTNAME']` . App Service automaticky nastaví `WEBSITE_HOSTNAME` proměnnou prostředí na adresu URL aplikace. |
 | `DATABASES` | Definujte nastavení v App Service pro připojení k databázi a načtěte je jako proměnné prostředí pro naplnění [`DATABASES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES) slovníku. Hodnoty (zejména uživatelské jméno a heslo) můžete alternativně ukládat jako [Azure Key Vault tajné klíče](../key-vault/secrets/quick-create-python.md). |
+
+## <a name="serve-static-files-for-django-apps"></a>Obsluha statických souborů pro aplikace Django
+
+Pokud vaše webová aplikace Django obsahuje statické front-endové soubory, nejprve postupujte podle pokynů v tématu [Správa statických souborů](https://docs.djangoproject.com/en/3.1/howto/static-files/) v dokumentaci k Django.
+
+V případě App Service proveďte následující úpravy:
+
+1. Zvažte použití proměnných prostředí (pro místní vývoj) a nastavení aplikace (při nasazení do cloudu) k dynamickému nastavení Django `STATIC_URL` a `STATIC_ROOT` proměnných. Příklad:    
+
+    ```python
+    STATIC_URL = os.environ.get("DJANGO_STATIC_URL", "/static/")
+    STATIC_ROOT = os.environ.get("DJANGO_STATIC_ROOT", "./static/")    
+    ```
+
+    `DJANGO_STATIC_URL` a je `DJANGO_STATIC_ROOT` možné ho změnit podle potřeby pro vaše místní a cloudová prostředí. Například pokud proces sestavení pro vaše statické soubory umístí do složky s názvem `django-static` , můžete nastavit, aby `DJANGO_STATIC_URL` `/django-static/` nedošlo k výchozímu používání.
+
+1. Pokud máte skript před sestavením, který generuje statické soubory v jiné složce, zahrňte tuto složku do proměnné Django, `STATICFILES_DIRS` aby `collectstatic` ji proces Django vyhledal. Například pokud spustíte `yarn build` ve front-endové složce a příze vygeneruje `build/static` složku obsahující statické soubory, pak tuto složku zahrňte takto:
+
+    ```python
+    FRONTEND_DIR = "path-to-frontend-folder" 
+    STATICFILES_DIRS = [os.path.join(FRONTEND_DIR, 'build', 'static')]    
+    ```
+
+    Zde `FRONTEND_DIR` můžete vytvořit cestu k umístění, kde je spuštěn nástroj sestavení jako příze. Můžete znovu použít proměnnou prostředí a nastavení aplikace podle potřeby.
+
+1. Přidejte `whitenoise` do souboru *requirements.txt* . [Whitenoise](http://whitenoise.evans.io/en/stable/) (whitenoise.Evans.IO) je balíček Pythonu, který usnadňuje produkčnímu prostředí Django aplikaci vlastní statické soubory. Whitenoise konkrétně obsluhuje soubory, které se nacházejí ve složce určené `STATIC_ROOT` proměnnou Django.
+
+1. Do souboru *Settings.py* přidejte následující řádek pro whitenoise:
+
+    ```python
+    STATICFILES_STORAGE = ('whitenoise.storage.CompressedManifestStaticFilesStorage')
+    ```
+
+1. Také upravte `MIDDLEWARE` seznamy a `INSTALLED_APPS` tak, aby zahrnovaly whitenoise:
+
+    ```python
+    MIDDLEWARE = [
+        "whitenoise.middleware.WhiteNoiseMiddleware",
+        # Other values follow
+    ]
+
+    INSTALLED_APPS = [
+        "whitenoise.runserver_nostatic",
+        # Other values follow
+    ]
+    ```
 
 ## <a name="container-characteristics"></a>Vlastnosti kontejneru
 
@@ -150,6 +199,8 @@ Tento kontejner má následující vlastnosti:
 
 - App Service automaticky definuje proměnnou prostředí s názvem `WEBSITE_HOSTNAME` s adresou URL webové aplikace, jako je například `msdocs-hello-world.azurewebsites.net` . Definuje také `WEBSITE_SITE_NAME` název vaší aplikace, například `msdocs-hello-world` . 
    
+- NPM a Node.js jsou nainstalovány v kontejneru, takže můžete spouštět nástroje sestavení založené na uzlech, jako je například příze.
+
 ## <a name="container-startup-process"></a>Proces spuštění kontejneru
 
 V průběhu spuštění služba App Service v kontejneru Linuxu spustí následující kroky:
@@ -270,7 +321,7 @@ Pokud jste například vytvořili nastavení aplikace s názvem `DATABASE_SERVER
 ```python
 db_server = os.environ['DATABASE_SERVER']
 ```
-    
+
 ## <a name="detect-https-session"></a>Zjistit relaci HTTPS
 
 V App Service dojde k [ukončení protokolu SSL](https://wikipedia.org/wiki/TLS_termination_proxy) (wikipedia.org) v nástrojích pro vyrovnávání zatížení sítě, takže všechny požadavky HTTPS dosáhnou vaší aplikace jako nešifrované požadavky HTTP. Pokud vaše logika aplikace potřebuje, aby zkontrolovala, jestli jsou požadavky uživatele zašifrované, zkontrolujte `X-Forwarded-Proto` záhlaví.
@@ -286,7 +337,7 @@ Oblíbená webová rozhraní umožňují přístup k `X-Forwarded-*` informacím
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-linux-no-h.md)]
 
-Pokud chcete získat přístup k protokolům prostřednictvím **Monitoring** Azure Portal, vyberte  >  v místní nabídce vaší aplikace **Stream protokolu** monitorování.
+Pokud chcete získat přístup k protokolům prostřednictvím Azure Portal, vyberte  >  v místní nabídce vaší aplikace **Stream protokolu** monitorování.
 
 ## <a name="access-deployment-logs"></a>Přístup k protokolům nasazení
 
@@ -294,7 +345,7 @@ Při nasazení kódu App Service provede proces sestavení popsaný výše v odd
 
 K získání přístupu k protokolům nasazení použijte následující postup:
 
-1. V Azure Portal webové aplikace vyberte **Deployment**  >  v nabídce vlevo možnost **centrum nasazení nasazení (Preview)** .
+1. V Azure Portal webové aplikace vyberte   >  v nabídce vlevo možnost **centrum nasazení nasazení (Preview)** .
 1. Na kartě **protokoly** vyberte **ID potvrzení** pro poslední potvrzení.
 1. Na zobrazené stránce s **podrobnostmi protokolu** vyberte odkaz **Zobrazit protokoly...** , který se zobrazí vedle položky "spuštění Oryx buildu...".
 

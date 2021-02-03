@@ -3,12 +3,12 @@ title: Obor u typů prostředků rozšíření
 description: Popisuje, jak použít vlastnost Scope při nasazování typů prostředků rozšíření.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: 75c2c8b8409cc9f8e7a8e71965589ece6660607a
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ce08ca951e24c1c0a5450052cf814a68888837c2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179975"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492157"
 ---
 # <a name="setting-scope-for-extension-resources-in-arm-templates"></a>Nastavení oboru pro prostředky rozšíření v šablonách ARM
 
@@ -85,6 +85,6 @@ Následující příklad vytvoří účet úložiště a použije pro něj roli.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Chcete-li pochopit, jak definovat parametry v šabloně, přečtěte si téma [pochopení struktury a syntaxe šablon Azure Resource Manager](template-syntax.md).
+* Informace o definování parametrů v šabloně najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
 * Tipy k řešení běžných chyb nasazení najdete v tématu [řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager](common-deployment-errors.md).
-* Informace o nasazení šablony, která vyžaduje token SAS, najdete v tématu [nasazení privátní šablony s tokenem SAS](secure-template-with-sas-token.md).
+* Informace o nasazení šablony, která vyžaduje token SAS, najdete v tématu [nasazení privátní šablony ARM pomocí tokenu SAS](secure-template-with-sas-token.md).

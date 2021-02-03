@@ -68,6 +68,8 @@
           href: ./security-controls-policy.md
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
+    - name: Back-endy
+      href: backends.md
     - name: Předplatná
       href: api-management-subscriptions.md
     - name: Verze
@@ -104,10 +106,10 @@
           href: import-function-app-as-api.md
         - name: Import aplikace logiky
           href: import-logic-app-as-api.md
-        - name: Import aplikace Service Fabric
-          href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
         - name: Úprava rozhraní API
           href: edit-api.md
+        - name: Konfigurace Service Fabric back-endu
+          href: how-to-configure-service-fabric-backend.md
     - name: Zřizování a škálování
       items:
         - name: Metrika kapacity

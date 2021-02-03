@@ -2,6 +2,8 @@
   href: index.yml
 - name: Přehled
   href: overview.md
+- name: Co je nového v Azure Sentinel?
+  href: whats-new.md
 - name: Rychlé starty
   expanded: true
   items:

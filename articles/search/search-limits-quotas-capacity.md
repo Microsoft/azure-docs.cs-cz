@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/15/2020
-ms.openlocfilehash: 5d265fe02d801cf0d2d66be37a8dc2a220e19b34
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 02/02/2021
+ms.openlocfilehash: 9e43521e26a6292141e1bbae7b39db3656df962c
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591340"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493037"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Limity služby ve službě Azure Cognitive Search
 
@@ -107,8 +107,8 @@ Indexery mají přístup k dalším prostředkům Azure [prostřednictvím priv�
 
 | Prostředek | Free | Základní | S1 | S2 | S3 | S3 HD | L1 | Paměť
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Podpora indexeru privátního koncového bodu | Ne | Ano | Ano | Ano | Ano | Ne | Ano | Ano |
-| Podpora privátního koncového bodu pro indexery s dovednosti<sup>1</sup> | Ne | Ne | Ne | Ano | Ano | Ne | Ano | Ano |
+| Podpora indexeru privátního koncového bodu | No | Yes | Yes | Yes | Yes | No | Yes | Yes |
+| Podpora privátního koncového bodu pro indexery s dovednosti<sup>1</sup> | No | No | No | Yes | Yes | No | Yes | Yes |
 | Maximální počet privátních koncových bodů | – | 10 nebo 30 | 100 | 400 | 400 | – | 20 | 20 |
 | Maximální počet různých typů prostředků<sup>2</sup> | Není k dispozici | 4 | 7 | 15 | 15 | Není k dispozici | 4 | 4 |
 
@@ -139,7 +139,7 @@ Pro vrstvy optimalizované pro úložiště (L1 a L2) byste měli očekávat ni�
 
 ## <a name="throttling-limits"></a>Omezení omezování
 
-Vyhledávací dotaz a požadavky na indexování jsou omezené, protože systém přistupuje ke špičkové kapacitě. Omezení se u různých rozhraní API chová jinak. Rozhraní API pro dotazy (hledání, návrhy/dokončování) a indexování rozhraní API se dynamicky vycházejí z zatížení služby. Rozhraní API indexu mají omezení statické míry požadavků. 
+Požadavky rozhraní API jsou omezené, protože systém přistupuje ke špičkové kapacitě. Omezení se u různých rozhraní API chová jinak. Rozhraní API pro dotazy (hledání, návrhy/dokončování) a indexování rozhraní API se dynamicky vycházejí z zatížení služby. Rozhraní API indexů a Operational Service API mají omezení statické míry požadavků. 
 
 Omezení požadavků na statickou rychlost pro operace související s indexem:
 
@@ -148,6 +148,10 @@ Omezení požadavků na statickou rychlost pro operace související s indexem:
 + Vytvořit index (POST/Indexes): 12 za minutu na jednotku vyhledávání
 + Vytvořit nebo aktualizovat index (PUT/Indexes/MyIndex): 6 za sekundu na jednotku vyhledávání
 + Odstranit index (odstranit/Indexes/MyIndex): 12 za minutu na jednotku vyhledávání 
+
+Omezení požadavků na statickou rychlost pro operace související se službou:
+
++ Statistika služby (GET/servicestats): 4 za sekundu na jednotku vyhledávání
 
 ## <a name="api-request-limits"></a>Omezení požadavků na rozhraní API
 * Maximálně 16 MB na žádost <sup>1</sup>

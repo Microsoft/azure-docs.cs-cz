@@ -1,6 +1,6 @@
 ---
 title: 'Rychlé zprovoznění – zřizování simulovaného zařízení X. 509 do Azure IoT Hub pomocí jazyka C #'
-description: Rychlý Start – vytvoření a zřízení simulovaného zařízení X. 509 pomocí sady SDK pro zařízení v jazyce C# pro Azure IoT Hub Device Provisioning Service (DPS). V tomto rychlém startu se používají jednotlivé registrace.
+description: Rychlý Start – vytvoření a zřízení zařízení X. 509 pomocí sady SDK pro zařízení v jazyce C# pro Azure IoT Hub Device Provisioning Service (DPS). V tomto rychlém startu se používají jednotlivé registrace.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 02/01/2021
@@ -9,18 +9,18 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: a6e859a39cbcf867e3c0a21bb59c6154cbd47412
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 06f1d34e7d8da9a3ece206fc1ff804accf9454ff
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430577"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493850"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení X. 509 pomocí sady SDK pro zařízení v jazyce C# pro IoT Hub Device Provisioning Service
+# <a name="quickstart-create-and-provision-an-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení zařízení X. 509 pomocí sady SDK pro zařízení v jazyce C# pro IoT Hub Device Provisioning Service
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-Tyto kroky ukazují, jak pomocí [ukázek Azure IoT pro jazyk C#](https://github.com/Azure-Samples/azure-iot-samples-csharp) simulovat zařízení X. 509 na vývojovém počítači s operačním systémem Windows. Ukázka také připojí simulované zařízení k IoT Hub pomocí služby Device Provisioning.
+Tyto kroky ukazují, jak pomocí kódu zařízení ze [vzorků Azure IoT pro jazyk C#](https://github.com/Azure-Samples/azure-iot-samples-csharp) zřídit zařízení X. 509. V tomto článku spustíte ukázkový kód zařízení na vašem vývojovém počítači a připojíte se k IoT Hub pomocí služby Device Provisioning.
 
 Pokud nejste obeznámeni s procesem autozřizování, přečtěte si přehled [zřizování](about-iot-dps.md#provisioning-process) . Než budete pokračovat, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
 
@@ -53,13 +53,13 @@ V tomto článku si předvedeme jednotlivé registrace.
 
 ## <a name="create-a-self-signed-x509-device-certificate"></a>Vytvoření certifikátu zařízení X.509 podepsaného svým držitelem
 
-V této části vytvoříte testovací certifikát X. 509 podepsaný svým držitelem, který se používá `iothubx509device1` jako běžný název subjektu. Je důležité mít na paměti následující:
+V této části vytvoříte testovací certifikát X. 509 podepsaný svým držitelem, který se používá `iothubx509device1` jako běžný název subjektu. Mějte na paměti následující důležité skutečnosti:
 
 * Certifikáty podepsané svým držitelem jsou určené jenom pro testování a neměly by se používat v produkčním prostředí.
 * Výchozí datum vypršení platnosti certifikátu podepsaného svým držitelem je jeden rok.
 * ID zařízení zařízení IoT bude běžný název subjektu v certifikátu. Nezapomeňte použít název subjektu, který splňuje [požadavky na řetězec ID zařízení](../iot-hub/iot-hub-devguide-identity-registry.md#device-identity-properties).
 
-K vytvoření certifikátu, který se má použít s položkou jednotlivé registrace pro simulované zařízení, použijete vzorový kód [Ukázka-X. 509 ověření identity klienta](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/X509Sample) .
+Pomocí ukázkového kódu z [X509Sample](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/X509Sample) vytvoříte certifikát, který se má použít spolu s položkou zápisu na jednotlivé zařízení.
 
 
 1. V příkazovém řádku PowerShellu přejděte do adresáře projektu s ukázkou zřizování zařízení X. 509.
@@ -106,7 +106,7 @@ K vytvoření certifikátu, který se má použít s položkou jednotlivé regis
 3. Na panelu **Přidat registraci** zadejte následující informace:
    - Jako *Mechanismus* ověření identity vyberte **X.509**.
    - V části *soubor. pem nebo. cer primárního certifikátu* zvolte *Vybrat soubor* a vyberte soubor certifikátu **Certificate. cer** vytvořený v předchozích krocích.
-   - **ID zařízení** nechte prázdné. Vaše zařízení se zřídí s ID zařízení nastaveným na běžný název v certifikátu X.509, tedy **iothubx509device1**. Tento název se použije také jako ID registrace pro položku jednotlivé registrace. 
+   - **ID zařízení** nechte prázdné. Vaše zařízení se zřídí s ID zařízení nastaveným na běžný název v certifikátu X.509, tedy **iothubx509device1**. Tento běžný název bude také názvem, který se používá pro ID registrace pro jednotlivou položku registrace. 
    - Volitelně můžete zadat následující informace:
        - Vyberte centrum IoT propojené s vaší zřizovací službou.
        - Aktualizujte **Počáteční stav dvojčete zařízení** s použitím požadované počáteční konfigurace zařízení.
@@ -118,7 +118,7 @@ K vytvoření certifikátu, který se má použít s položkou jednotlivé regis
 
 
 
-## <a name="provision-the-simulated-device"></a>Zřízení simulovaného zařízení
+## <a name="provision-the-device"></a>Zřízení zařízení
 
 1. V okně **Přehled** pro vaši službu zřizování si poznamenejte hodnotu **_Rozsah ID_** .
 
@@ -157,7 +157,7 @@ K vytvoření certifikátu, který se má použít s položkou jednotlivé regis
     Finished.
     ```
 
-4. Ověřte zřízení zařízení. Po úspěšném zřízení simulovaného zařízení pro Centrum IoT propojené se službou zřizování se ID zařízení zobrazí v okně **zařízení IoT** centra. 
+4. Ověřte zřízení zařízení. Po úspěšném zřízení zařízení pro Centrum IoT propojené se službou zřizování se ID zařízení zobrazí v okně **zařízení IoT** centra. 
 
     ![Zařízení je zaregistrované u centra IoT](./media/quick-create-simulated-device-x509-csharp/registration.png) 
 
@@ -175,7 +175,7 @@ Pokud máte v úmyslu pokračovat v práci a prozkoumat si ukázku klienta zař�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste na svém počítači s Windows vytvořili simulované zařízení X. 509 a pomocí Azure IoT Hub Device Provisioning Service na portálu jste ho zřídili ve službě IoT Hub. Informace o tom, jak zaregistrovat zařízení X. 509 prostřednictvím kódu programu, najdete v rychlém startu pro programovou registraci zařízení X. 509. 
+V tomto rychlém startu jste ve službě IoT Hub zřídili zařízení X. 509 s využitím Azure IoT Hub Device Provisioning Service. Informace o tom, jak zaregistrovat zařízení X. 509 prostřednictvím kódu programu, najdete v rychlém startu pro programovou registraci zařízení X. 509. 
 
 > [!div class="nextstepaction"]
 > [Rychlý Start Azure – registrace zařízení X. 509 do Azure IoT Hub Device Provisioning Service](quick-enroll-device-x509-csharp.md)

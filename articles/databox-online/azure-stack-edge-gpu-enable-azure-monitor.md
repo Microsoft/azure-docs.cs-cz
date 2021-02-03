@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 3485c6ca5c2672fa48b6118a78600b9745994ce1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 171b4dbfb2a5852e270c483a28cad31f97dcb42b
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466182"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493908"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>Povolení Azure Monitor na zařízení GPU pro Azure Stack Edge pro
 
@@ -22,7 +22,7 @@ Monitorování kontejnerů na zařízení GPU Azure Stack Edge pro je velmi důl
 Tento článek popisuje kroky potřebné k povolení Azure Monitor na zařízení a shromáždění protokolů kontejneru v pracovním prostoru Log Analytics. Úložiště metrik Azure Monitor se v současnosti nepodporuje u zařízení s grafickým procesorem Azure Stack Edge pro. 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, budete potřebovat:
 
@@ -30,7 +30,7 @@ Než začnete, budete potřebovat:
 - Dokončili jste **konfiguraci výpočetního** kroku podle [kurzu: Konfigurace výpočetních prostředků na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-deploy-configure-compute.md) na vašem zařízení. Vaše zařízení by mělo mít přidružený prostředek IoT Hub, zařízení IoT a IoT Edge zařízení.
 
 
-## <a name="create-log-analytics-workspace"></a>Vytvořte Log Analytics pracovní prostor.
+## <a name="create-log-analytics-workspace"></a>Vytvoření pracovního prostoru služby Log Analytics
 
 Pokud chcete vytvořit pracovní prostor Log Analytics, proveďte následující kroky. Pracovní prostor Log Analytics je logická jednotka úložiště, kde se shromažďují a ukládají data protokolu.
 
@@ -118,8 +118,8 @@ Pokud chcete ve svém pracovním prostoru povolit službu Container Insights, pr
 
 1. Získejte ID a umístění prostředku. Přejděte na `Your Log Analytics workspace > General > Properties`. Zkopírujte následující informace:
 
-    - **ID prostředku** , což je plně kvalifikované ID prostředku Azure pracovního prostoru Azure Log Analytics. 
-    - **umístění** , které je oblastí Azure.
+    - **ID prostředku**, což je plně kvalifikované ID prostředku Azure pracovního prostoru Azure Log Analytics. 
+    - **umístění**, což je oblast Azure.
 
     ![Vlastnosti pracovního prostoru Log Analytics](media/azure-stack-edge-gpu-enable-azure-monitor/log-analytics-workspace-properties-1.png) 
 
@@ -241,3 +241,4 @@ Pokud chcete ve svém pracovním prostoru povolit službu Container Insights, pr
 ## <a name="next-steps"></a>Další kroky
 
 - Naučte se [monitorovat úlohy Kubernetes pomocí řídicího panelu Kubernetes](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md).
+- Naučte se [spravovat oznámení o výstrahách událostí zařízení](azure-stack-edge-gpu-manage-device-event-alert-notifications.md). 

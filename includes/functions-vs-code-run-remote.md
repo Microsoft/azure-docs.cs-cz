@@ -2,27 +2,21 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 10/01/2020
+ms.date: 01/28/2021
 ms.author: glenga
-ms.openlocfilehash: 55a75651b724a4fe975f655958e36fbd40e35db7
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 4b15fec0f22db740bbd7c24fcc0acf2ad1a2d1cd
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96748243"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493450"
 ---
 ## <a name="run-the-function-in-azure"></a>Spuštění funkce v Azure
 
-1. Zpátky v oblasti **Azure: Functions (funkce** ) na bočním panelu rozbalte novou aplikaci Function App v rámci vašeho předplatného. Rozbalte **funkce**, klikněte pravým tlačítkem myši (Windows) nebo <kbd>CTRL-</kbd> Click (MacOS) na **HttpExample** a pak zvolte **Kopírovat adresu URL funkce**.
+1. Zpátky v oblasti **Azure: Functions (funkce** ) na bočním panelu rozbalte **místní**  >  **funkce** projektu. Klikněte pravým tlačítkem myši (Windows) nebo <kbd>stiskněte klávesu CTRL</kbd> (MacOS) `HttpExample` a vyberte možnost **Spustit funkci nyní...**.
 
-    ![Zkopírujte adresu URL funkce pro nový Trigger HTTP.](./media/functions-vs-code-run-remote/function-copy-endpoint-url.png)
+    :::image type="content" source="media/functions-vs-code-run-remote/execute-function-now.png" alt-text="Spustit nyní funkci v Azure z Visual Studio Code":::
 
-1. Vložte tuto adresu URL pro požadavek HTTP do adresního řádku prohlížeče, přidejte `name` řetězec dotazu `?name=Functions` na konec této adresy URL a potom spusťte požadavek. Adresa URL, která volá funkci aktivovanou protokolem HTTP, by měla být v následujícím formátu:
+1. V části **Zadejte text žádosti** se zobrazí hodnota tělo zprávy žádosti `{ "name": "Azure" }` . Stisknutím klávesy ENTER odešlete tuto zprávu požadavku vaší funkci.  
 
-    ```http
-    http://<FUNCTION_APP_NAME>.azurewebsites.net/api/HttpExample?name=Functions
-    ```
-
-    Následující příklad ukazuje odpověď v prohlížeči na požadavek Remote GET vracený funkcí:
-
-    ![Odezva funkce v prohlížeči](./media/functions-vs-code-run-remote/functions-test-remote-browser.png)
+1. Když se funkce spustí v Azure a vrátí odpověď, vygeneruje se oznámení v Visual Studio Code.

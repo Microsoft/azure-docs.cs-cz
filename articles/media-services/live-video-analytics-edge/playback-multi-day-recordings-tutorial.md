@@ -3,12 +3,12 @@ title: Přehrávání nahrávek na více dní – Azure
 description: V tomto kurzu se naučíte používat rozhraní API služby Azure Media Service k přehrání nepřetržitého nahrávání videa.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 1ec9260be7241057478b06446ac2aa53c14bcb47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81a778b40649c1318b3738a289f0db37fd35376a
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803428"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492785"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Kurz: přehrávání vícedenních nahrávek  
 
@@ -57,7 +57,7 @@ V rámci [kurzu CVR](continuous-video-recording-tutorial.md)jste vytvořili úč
 }
 ```
 
-Dále v nástroji Visual Studio Code otevřete src/AMS – Asset-Player. Tato složka obsahuje potřebné soubory pro tento kurz. Otevřete appsettings.jsv souboru a zkopírujte jeho obsah do nového souboru, appsettings.development.jsna. Proveďte následující úpravy pro druhý soubor:
+Dále v nástroji Visual Studio Code otevřete src/AMS – Asset-Player. Tato složka obsahuje potřebné soubory pro tento kurz. Otevřete appsettings.jsv souboru a zkopírujte jeho obsah do nového souboru, appsettings.development.jsna. Proveďte následující úpravy nově vytvořených appsettings.development.jsna:
 
 ```
   "AMS" : {
@@ -78,7 +78,7 @@ Dále v nástroji Visual Studio Code otevřete src/AMS – Asset-Player. Tato sl
 1. Vyhledejte a povolte možnost zobrazit podrobnou zprávu.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Nastavení rozšíření":::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Zobrazit podrobnou zprávu":::
 1. <!--In Visual Studio Code, you can click-->Kliknutím na ikonu spustit na levé straně (nebo CTRL + SHIFT + D) zobrazte dostupné aplikace, které se mají spustit:
 
     ![Snímek obrazovky zobrazuje v Visual Studio Code nabídku s vybranou položkou spustit.](./media/playback-multi-day-recordings-tutorial/run.png)

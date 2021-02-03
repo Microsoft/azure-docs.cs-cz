@@ -4,15 +4,15 @@ description: Popisuje zdroje dat a konektory podporované tabulkami 1200 a vyš�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 02/02/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b778cf55ea485d7b3b4d3730d3659750f27b2697
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6e558962ad8a84b5f44abe21bc7c0ab67a4861ba
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685591"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493816"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Podporované zdroje dat ve službě Azure Analysis Services
 
@@ -24,12 +24,12 @@ Zdroje dat a konektory zobrazené v průvodci získáním dat nebo importu tabul
 |---------|---------|---------|---------|
 |Azure SQL Database      |   Yes      |    Yes      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
 |Azure Synapse Analytics (SQL DW)      |   Yes      |   Yes       |<sup>[odst](#azprovider)</sup>|
-|Azure Blob Storage      |   Yes       |    No      | <sup>[1](#tab1400a)</sup> |
-|Azure Table Storage     |   Yes       |    No      | <sup>[1](#tab1400a)</sup>|
-|Azure Cosmos DB     |  Ano        |  No        |<sup>[1](#tab1400a)</sup> |
-|Azure Data Lake Store Gen1      |   Yes       |    No      |<sup>[1](#tab1400a)</sup> |
+|Azure Blob Storage      |   Yes       |    No      | <sup>[první](#tab1400a)</sup> |
+|Azure Table Storage     |   Yes       |    No      | <sup>[první](#tab1400a)</sup>|
+|Azure Cosmos DB     |  Ano        |  No        |<sup>[první](#tab1400a)</sup> |
+|Azure Data Lake Store Gen1      |   Yes       |    No      |<sup>[první](#tab1400a)</sup> |
 |Azure Data Lake Store Gen2       |   Yes       |    No      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
-|HDFS Azure HDInsight    |     Yes     |   No       |<sup>[1](#tab1400a)</sup> |
+|HDFS Azure HDInsight    |     Yes     |   No       |<sup>[první](#tab1400a)</sup> |
 |Azure HDInsight Spark     |   Ano       |   No       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
 ||||
 
@@ -128,7 +128,9 @@ Provider=MSOLEDBSQL;Data Source=[server];Initial Catalog=[database];Authenticati
 
 ## <a name="oauth-credentials"></a>Přihlašovací údaje OAuth
 
-Pro tabelární modely na úrovni kompatibility 1400 a vyšší s použitím režimu v paměti, Azure SQL Database, Azure synapse, Dynamics 365 a SharePointového seznamu se podporují přihlašovací údaje OAuth. Azure Analysis Services spravuje aktualizace tokenu pro zdroje dat OAuth, aby nedocházelo k vypršení časových limitů pro dlouhotrvající operace aktualizace. Pokud chcete generovat platné tokeny, nastavte přihlašovací údaje pomocí Power Query.
+Pro tabelární modely na úrovni kompatibility 1400 a vyšší s použitím režimu *v paměti* , Azure SQL Database, Azure synapse, Dynamics 365 a sharepointového seznamu se podporují přihlašovací údaje OAuth. Pokud chcete generovat platné tokeny, nastavte přihlašovací údaje pomocí Power Query. Azure Analysis Services spravuje aktualizace tokenu pro zdroje dat OAuth, aby nedocházelo k vypršení časových limitů pro dlouhotrvající operace aktualizace. 
+> [!NOTE]
+> Pro zdroje dat, ke kterým se přistupovalo prostřednictvím brány, se nepodporuje aktualizace spravovaného tokenu. Například jeden nebo více zdrojů dat dotazů hybridní webové aplikace je k dispozici prostřednictvím brány a vlastnost [ASPaaS\AlwaysUseGateway](analysis-services-vnet-gateway.md) je nastavena na **hodnotu true**. 
 
 Režim přímého dotazu není u přihlašovacích údajů OAuth podporován.
 

@@ -3,12 +3,12 @@ title: Vytvoření funkce v cestách nebo Rust pomocí Visual Studio Code-Azure 
 description: Naučte se, jak vytvořit funkci přejít jako vlastní obslužnou rutinu Azure Functions a pak publikovat místní projekt na hostování bez serveru v Azure Functions pomocí rozšíření Azure Functions v Visual Studio Code.
 ms.topic: quickstart
 ms.date: 12/4/2020
-ms.openlocfilehash: 911e2ed263271cff41562f383f231d3ca8181854
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 4f2e0b30c4bf5e6c4629fc63f3125e5ddda70ad2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567566"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493650"
 ---
 # <a name="quickstart-create-a-go-or-rust-function-in-azure-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce přejít nebo Rust v Azure pomocí Visual Studio Code
 
@@ -226,7 +226,7 @@ Tento projekt můžete spustit na místním vývojovém počítači před publik
 
 1. Vrátí se odpověď, která v prohlížeči vypadá jako v následujících případech:
 
-    ![Browser – ukázkový výstup pro localhost](../../includes/media/functions-run-function-test-local-vs-code/functions-test-local-browser.png)
+    ![Browser – ukázkový výstup pro localhost](./media/create-first-function-vs-code-other/functions-test-local-browser.png)
 
 1. Informace o žádosti se zobrazí na panelu **terminálu** .
 
@@ -308,7 +308,7 @@ V této části vytvoříte aplikaci funkcí a související prostředky v před
 
 1. Zvolte ikonu Azure na řádku aktivity a potom v oblasti **Azure: funkce** zvolte tlačítko **nasadit do aplikace Function App...** .
 
-    ![Publikování projektu do Azure](./media/functions-create-first-function-vs-code/function-app-publish-project.png)
+    ![Publikování projektu do Azure](../../includes/media/functions-publish-project-vscode/function-app-publish-project.png)
 
 1. Podle pokynů na obrazovce zadejte tyto informace:
 
@@ -337,19 +337,17 @@ V této části vytvoříte aplikaci funkcí a související prostředky v před
 
     + **Vyberte prostředek Application Insights**: zvolte `+ Create Application Insights resource` . Tento název musí být globálně jedinečný v rámci Azure. Můžete použít název navržený v příkazovém řádku.
 
-    + **Vyberte umístění pro nové prostředky**: pro lepší výkon zvolte [oblast](https://azure.microsoft.com/regions/) poblíž. 
+    + **Vyberte umístění pro nové prostředky**: pro lepší výkon zvolte [oblast](https://azure.microsoft.com/regions/) poblíž. Rozšíření zobrazuje stav jednotlivých prostředků, které se vytváří v Azure v oznamovací oblasti.
 
-1. Po dokončení se ve vašem předplatném vytvoří následující prostředky Azure s použitím názvů na základě názvu vaší aplikace Function App:
+    :::image type="content" source="../../includes/media/functions-publish-project-vscode/resource-notification.png" alt-text="Oznámení o vytváření prostředků Azure":::
 
-    + Skupina prostředků, což je logický kontejner pro související prostředky.
-    + Účet Standard Azure Storage, který uchovává stav a další informace o vašich projektech.
-    + Plán spotřeby, který definuje základního hostitele pro aplikaci s funkcí bez serveru. 
-    + Aplikace Function App, která poskytuje prostředí pro spuštění kódu vaší funkce. Aplikace Function App umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků v rámci stejného plánu hostování.
-    + Instance Application Insights připojená k aplikaci Function App, která sleduje využití funkce bez serveru.
+1. Po dokončení se ve vašem předplatném vytvoří následující prostředky Azure:
+
+    [!INCLUDE [functions-vs-code-created-resources](../../includes/functions-vs-code-created-resources.md)]
 
     Po vytvoření aplikace funkcí a použití balíčku nasazení se zobrazí oznámení. 
 
-1. Pokud chcete zobrazit výsledky vytvoření a nasazení, včetně prostředků Azure, které jste vytvořili, vyberte **Zobrazit výstup** v tomto oznámení. Pokud jste oznámení nezobrazili, vyberte ikonu zvonku v pravém dolním rohu, abyste ji viděli znovu.
+4. Pokud chcete zobrazit výsledky vytvoření a nasazení, včetně prostředků Azure, které jste vytvořili, vyberte **Zobrazit výstup** v tomto oznámení. Pokud jste oznámení nezobrazili, vyberte ikonu zvonku v pravém dolním rohu, abyste ji viděli znovu.
 
     ![Vytvořit kompletní oznámení](./media/functions-create-first-function-vs-code/function-create-notifications.png)
 

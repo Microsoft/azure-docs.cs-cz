@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 2391a36c02e0bdfe0ea98be7f19fc64f1fbb676f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f9791fa8932792398efdea39fe0d39a967420596
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879928"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491719"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Registrace a kontrola Azure SQL Database spravované instance
 
@@ -104,20 +104,6 @@ Je potřeba získat ID aplikace a tajný kód pro instanční objekt:
 1. Vyberte **vytvořit** a dokončete
 1. Pokud váš Trezor klíčů ještě není připojený k dosah, bude potřeba [vytvořit nové připojení trezoru klíčů](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account) .
 1. Nakonec [vytvořte nové přihlašovací údaje](manage-credentials.md#create-a-new-credential) pomocí instančního objektu a nastavte kontrolu.
-
-### <a name="firewall-settings"></a>Nastavení brány firewall
-
-Váš databázový server musí umožňovat povolení připojení Azure. To umožní službě Azure dosah dosáhnout a připojit server. Můžete postupovat podle pokynů pro [připojení v rámci Azure](../azure-sql/database/firewall-configure.md#connections-from-inside-azure).
-
-1. Přejít k vašemu databázovému účtu
-1. Vyberte název serveru na stránce **Přehled** .
-1. Vybrat **zabezpečení > brány firewall a virtuální sítě**
-1. Vyberte **Ano** , pokud **chcete, aby služby a prostředky Azure měly přístup k tomuto serveru** .
-
-    :::image type="content" source="media/register-scan-azure-sql-database/sql-firewall.png" alt-text="Možnosti registrace zdrojů" border="true":::
-    
-> [!Note]
-> V současné době Azure dosah nepodporuje konfiguraci virtuální sítě. Proto nemůžete provést nastavení brány firewall založené na protokolu IP.
 
 ## <a name="register-an-azure-sql-database-managed-instance-data-source"></a>Registrace zdroje dat spravované instance Azure SQL Database
 

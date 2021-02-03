@@ -103,6 +103,8 @@
       href: How-To/change-default-answer.md
     - name: Konfigurace služeb
       href: reference-app-service.md
+    - name: Pokyny k formátu obsahu
+      href: reference-document-format-guidelines.md
     - name: Formáty dat a obsahu
       items:
         - name: Pokyny k formátu obsahu

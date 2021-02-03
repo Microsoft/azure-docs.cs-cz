@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 1/14/2021
-ms.openlocfilehash: e21a5a5be03ffa4ada362247c488ee7d12bd50f7
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 02/02/2021
+ms.openlocfilehash: e8f18f56c746f0d12f43cc2fb6ce9088a9b82b45
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222220"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492378"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Omezení prostředků pro Azure SQL Database a Azure synapse Analytics Server
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -69,7 +69,8 @@ Při zjištění vysokého využití místa mají tyto možnosti omezení:
 
 - Zvýšení maximální velikosti databáze nebo elastického fondu nebo Přidání úložiště. Viz téma [škálování prostředků jedné databáze](single-database-scale.md) a [škálování prostředků elastického fondu](elastic-pool-scale.md).
 - Pokud se databáze nachází v elastickém fondu, pak je možné databázi přesunout mimo fond, aby její prostor úložiště nebyl sdílen s ostatními databázemi.
-- Zmenšete databázi pro uvolnění nevyužitého místa. Další informace najdete v tématu [Správa místa v souboru v Azure SQL Database](file-space-manage.md)
+- Zmenšete databázi pro uvolnění nevyužitého místa. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](file-space-manage.md).
+- Ověřte, jestli je z důvodu špičky ve velikosti trvalého úložiště verzí (PVS) k dispaměti vysoké využití místa. PVS je součástí každé databáze a používá se k implementaci  [urychleného obnovení databáze](../accelerated-database-recovery.md). Pokud chcete zjistit aktuální velikost PVS, přečtěte si téma [řešení potíží s PVS](https://docs.microsoft.com/sql/relational-databases/accelerated-database-recovery-management#troubleshooting). Běžným důvodem pro velkou PVS velikost je transakce, která je otevřená po dlouhou dobu (v hodinách), což brání v PVS čištění starších verzí.
 
 ### <a name="sessions-and-workers-requests"></a>Relace a pracovní procesy (požadavky)
 
@@ -82,7 +83,7 @@ Pokud se setkáte s vysokým využitím relace nebo pracovního procesu, zahrnuj
 - Zmenšení nastavení [MAXDOP](/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (maximální úroveň paralelismu).
 - Optimalizace úlohy dotazů za účelem snížení počtu výskytů a trvání blokování dotazů. Další informace najdete v tématu [pochopení a řešení problémů s blokováním Azure SQL](understand-resolve-blocking.md).
 
-### <a name="memory"></a>Paměť
+### <a name="memory"></a>Memory (Paměť)
 
 Na rozdíl od jiných prostředků (procesor, pracovní procesy, úložiště), které dosáhnou limitu paměti, nemá negativně vliv na výkon dotazů a nezpůsobuje chyby a selhání. Jak je podrobně popsáno v [Průvodci architekturou správy paměti](/sql/relational-databases/memory-management-architecture-guide), SQL Server databázový stroj často používá veškerou dostupnou paměť, podle návrhu. Paměť se primárně používá pro ukládání dat do mezipaměti, aby nedocházelo k dražšímu přístupu k úložišti. Vyšší využití paměti proto obvykle zlepšuje výkon dotazů z důvodu rychlejšího čtení z paměti, nikoli pomalejšího čtení z úložiště.
 
@@ -96,7 +97,7 @@ Při zjištění chyb při nedostatku paměti patří mezi ně i tyto možnosti:
 - Zvýšení úrovně služby nebo výpočetní velikosti databáze nebo elastického fondu. Viz téma [škálování prostředků jedné databáze](single-database-scale.md) a [škálování prostředků elastického fondu](elastic-pool-scale.md).
 - Optimalizace dotazů a konfigurací za účelem snížení využití paměti. Společná řešení jsou popsaná v následující tabulce.
 
-|Řešení|Popis|
+|Řešení|Description|
 | :----- | :----- |
 |Snížení velikosti paměti pro udělení|Další informace o grantech paměti najdete v příspěvku na blogu [principy SQL Server paměti pro přidělení](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595) . Běžným řešením pro zamezení nadměrného množství paměti je udržování [statistik](/sql/relational-databases/statistics/statistics) v aktuálním stavu. Výsledkem je přesnější odhad spotřeby paměti modulem dotazu, což vyloučí nenutně náročné nároky na paměť.</br></br>V databázích využívajících úroveň kompatibility 140 a novější může databázový stroj automaticky upravovat velikost přidělené paměti pomocí [zpětné vazby přidělení paměti v režimu dávky](/sql/relational-databases/performance/intelligent-query-processing#batch-mode-memory-grant-feedback). Databázový stroj v databázích využívajících úroveň kompatibility 150 a novější používá [zpětnou vazbu přidělení paměti v režimu řádků](/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)pro další běžné dotazy v režimu řádků. Tato vestavěná funkce pomáhá předejít chybám způsobeným nedostatkem paměti z důvodu zbytečného udělení vysoké velikosti paměti.|
 |Zmenšení velikosti mezipaměti plánu dotazů|Databázový stroj ukládá do mezipaměti plány dotazů v paměti, aby nedocházelo k kompilování plánu dotazů pro každé spuštění dotazu. Aby nedocházelo k dispozici determinističtější mezipaměti plánů dotazů, které jsou způsobené plány ukládání do mezipaměti, které se používají jenom jednou, povolte konfiguraci OPTIMIZE_FOR_AD_HOC_WORKLOADS v [oboru databáze](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).|

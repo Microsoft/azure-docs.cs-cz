@@ -3,12 +3,12 @@ title: Přehrávání záznamů – Azure
 description: Živé video analýzy můžete použít na IoT Edge pro průběžné nahrávání videa, kde můžete nahrávat video do cloudu po týdny nebo měsíce. Záznam můžete také omezit na klipy, které jsou zajímavé, prostřednictvím záznamu založeného na událostech. Tento článek pojednává o tom, jak se nahrávky mají přehrát.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 6222d2c05b2fe05945d4bcbef6dbb0d64bd4726a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0351f10d9fac3ad7e3b4fdd5fd549eb7c0023694
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84261076"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99490890"
 ---
 # <a name="playback-of-recordings"></a>Přehrávání záznamů 
 
@@ -52,7 +52,7 @@ Kde hodnota přesnosti může být jedna z následujících hodnot: Year, month,
 |---|---|---|---|---|
 |Dotaz|`/availableMedia?precision=year&startTime=2018&endTime=2019`|`/availableMedia?precision=month& startTime=2018-01& endTime=2019-02`|`/availableMedia?precision=day& startTime=2018-01-15& endTime=2019-02-02`|`/availableMedia?precision=full& startTime=2018-01-15T10:08:11.123& endTime=2019-01-015T12:00:01.123`|
 |Odpověď|`{  "timeRanges":[{ "start":"2018", "end":"2019" }]}`|`{  "timeRanges":[{ "start":"2018-03", "end":"2019-01" }]}`|`{  "timeRanges":[    { "start":"2018-03-01", "end":"2018-03-07" },    { "start":"2018-03-09", "end":"2018-03-31" }  ]}`|Úplná odpověď na věrnost. Pokud vůbec žádné mezery neexistují, začátek by byl Čas_spuštění a konec by byl čas_ukončení.|
-|Omezuje|&#x2022;Čas_spuštění <= čas_ukončení<br/>&#x2022;obou by měly být ve formátu YYYY, jinak vrátí chybu.<br/>&#x2022;hodnoty může být libovolný počet roků od sebe.<br/>Hodnoty &#x2022;jsou včetně.|&#x2022;Čas_spuštění <= čas_ukončení<br/>&#x2022;obou by měly být ve formátu YYYY-MM, jinak vrátí chybu.<br/>Hodnoty &#x2022;můžou být navzájem od nanejvýš 12 měsíců.<br/>Hodnoty &#x2022;jsou včetně.|&#x2022;Čas_spuštění <= čas_ukončení<br/>&#x2022;obou by měly být ve formátu RRRR-MM-DD, jinak návratová chyba.<br/>Hodnoty &#x2022;můžou být navzájem až 31 dnů od sebe.<br/>Hodnoty jsou včetně.|&#x2022;Čas_spuštění < čas ukončení<br/>Hodnoty &#x2022;mohou být nanejvýš 25 hodin od.<br/>Hodnoty &#x2022;jsou včetně.|
+|Omezení|&#x2022;Čas_spuštění <= čas_ukončení<br/>&#x2022;obou by měly být ve formátu YYYY, jinak vrátí chybu.<br/>&#x2022;hodnoty může být libovolný počet roků od sebe.<br/>Hodnoty &#x2022;jsou včetně.|&#x2022;Čas_spuštění <= čas_ukončení<br/>&#x2022;obou by měly být ve formátu YYYY-MM, jinak vrátí chybu.<br/>Hodnoty &#x2022;můžou být navzájem od nanejvýš 12 měsíců.<br/>Hodnoty &#x2022;jsou včetně.|&#x2022;Čas_spuštění <= čas_ukončení<br/>&#x2022;obou by měly být ve formátu RRRR-MM-DD, jinak návratová chyba.<br/>Hodnoty &#x2022;můžou být navzájem až 31 dnů od sebe.<br/>Hodnoty jsou včetně.|&#x2022;Čas_spuštění < čas ukončení<br/>Hodnoty &#x2022;mohou být nanejvýš 25 hodin od.<br/>Hodnoty &#x2022;jsou včetně.|
 
 #### <a name="additional-request-format-considerations"></a>Další požadavky formátu požadavků
 

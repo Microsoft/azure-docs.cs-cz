@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: f635a4c4c6e0b1dcb4d4842d3cddb337d2b26407
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 74009c7e7f2ad28655c9c5322a063a17da96e0c5
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735151"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493901"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí řídicího panelu Meraki
 
@@ -103,7 +103,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Upravit podpisový certifikát SAML](common/edit-certificate.png)
 
-1. V části **podpisový certifikát SAML** zkopírujte **hodnotu kryptografického otisku** a uložte ji do svého počítače.
+1. V části **podpisový certifikát SAML** zkopírujte **hodnotu kryptografického otisku** a uložte ji do svého počítače. Tato hodnota musí být převedena tak, aby obsahovala dvojtečky, aby ji mohl řídicí panel Meraki pochopit. Pokud je například kryptografický otisk z Azure, `C2569F50A4AAEDBB8E` bude nutné ho později změnit na `C2:56:9F:50:A4:AA:ED:BB:8E` jeho použití v řídicím panelu Meraki.
 
     ![Kopírovat hodnotu kryptografického otisku](common/copy-thumbprint.png)
 
@@ -165,7 +165,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Řídicí panel Meraki přidat IdP SAML](./media/meraki-dashboard-tutorial/configure-3.png)
 
-1. Vložte hodnotu **kryptografického otisku** , kterou jste zkopírovali z Azure Portal do textového pole **otisku certifikátu SHA1 pro certifikát X. 590** . Potom klikněte na **Uložit**. Po uložení se adresa URL příjemce zobrazí. Zkopírujte hodnotu adresy URL příjemce a vložte ji do textového pole **Adresa URL odpovědi** v **části základní konfigurace SAML** v Azure Portal.
+1. Vložte hodnotu převedeného **kryptografického otisku** , kterou jste zkopírovali z Azure Portal a převedli v zadaném formátu, jak je uvedeno v kroku 9 předchozí části, do textového pole **otisku certifikátu SHA1 ve formátu X. 590** . Potom klikněte na **Uložit**. Po uložení se adresa URL příjemce zobrazí. Zkopírujte hodnotu adresy URL příjemce a vložte ji do textového pole **Adresa URL odpovědi** v **části základní konfigurace SAML** v Azure Portal.
 
     ![Konfigurace řídicího panelu Meraki](./media/meraki-dashboard-tutorial/configure-4.png)
 

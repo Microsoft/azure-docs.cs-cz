@@ -4,12 +4,12 @@ description: Naučte se, jak vytvořit funkci jazyka C# a pak publikovat místn�
 ms.topic: quickstart
 ms.date: 11/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 791416a54fa75091facf1f7bc2aadf6fccf54b05
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 0068a9cbf99117a0a2432a02c9be934eb749f19a
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968615"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493681"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce jazyka C# v Azure pomocí Visual Studio Code
 
@@ -29,38 +29,38 @@ Než začnete, ujistěte se, že máte zavedené následující požadavky:
 
 + [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) verze 3. x.
 
-+ [Visual Studio Code](https://code.visualstudio.com/) na některé z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
++ [Visual Studio Code](https://code.visualstudio.com/) na jedné z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms)
 
-+ [Rozšíření C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) pro Visual Studio Code.  
++ [Rozšíření pro jazyk C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) pro Visual Studio Code  
 
-+ [Azure Functions rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) pro Visual Studio Code.
++ [Rozšíření Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) pro Visual Studio Code
 
 ## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>Vytvořit místní projekt
 
 V této části použijete Visual Studio Code k vytvoření místního projektu Azure Functions v jazyce C#. Později v tomto článku publikujete kód funkce do Azure.
 
-1. Zvolte ikonu Azure na řádku aktivity a potom v oblasti **Azure: funkce** vyberte ikonu **vytvořit nový projekt...** .
+1. Zvolte ikonu Azure na panelu Aktivita a pak v oblasti **Azure: Funkce** vyberte ikonu **Vytvořit nový projekt**.
 
-    ![Zvolit vytvořit nový projekt](./media/functions-create-first-function-vs-code/create-new-project.png)
+    ![Volba možnosti Vytvořit nový projekt](./media/functions-create-first-function-vs-code/create-new-project.png)
 
-1. Zvolte umístění adresáře pro váš pracovní prostor projektu a zvolte **možnost vybrat**.
+1. Zvolte umístění adresáře pro váš pracovní prostor projektu a zvolte **Vybrat**.
 
     > [!NOTE]
     > Tyto kroky jsou navržené tak, aby se dokončily mimo pracovní prostor. V tomto případě nevybírejte složku projektu, která je součástí pracovního prostoru.
 
-1. Zadejte následující informace na následujících dotazech:
+1. Podle pokynů na obrazovce zadejte tyto informace:
 
-    + **Vyberte jazyk pro projekt funkce**: zvolte `C#` .
+    + **Vyberte jazyk pro váš projekt funkce:** Zvolte `C#`.
 
-    + **Vyberte šablonu pro funkci prvního projektu**: zvolte `HTTP trigger` .
+    + **Vyberte šablonu pro první funkci projektu:** Zvolte `HTTP trigger`.
 
-    + Zadejte **název funkce**: typ `HttpExample` .
+    + **Zadejte název funkce:** Zadejte příkaz `HttpExample`.
 
-    + Zadejte **obor názvů**: typ `My.Functions` .
+    + **Zadejte obor názvů:** Zadejte příkaz `My.Functions`.
 
     + **Úroveň autorizace**: vyberte `Anonymous` , který umožňuje komukoli zavolat koncový bod funkce. Další informace o úrovni autorizace najdete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
-    + **Vyberte, jak se má projekt otevřít**: zvolte `Add to workspace` .
+    + **Vyberte způsob, jakým chcete projekt otevírat:** Zvolte `Add to workspace`.
 
 1. Pomocí těchto informací Visual Studio Code generuje Azure Functions projekt pomocí triggeru protokolu HTTP. Můžete zobrazit soubory místních projektů v Průzkumníkovi. Další informace o souborech, které jsou vytvořeny, najdete v tématu [vygenerované soubory projektu](functions-develop-vs-code.md#generated-project-files).
 
@@ -78,7 +78,7 @@ Po ověření, že se funkce na místním počítači spustí správně, je čas
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí Visual Studio Code jste vytvořili aplikaci funkcí s jednoduchou funkcí aktivovanou protokolem HTTP. V dalším článku rozbalíte tuto funkci přidáním výstupní vazby. Tato vazba zapíše řetězec z požadavku HTTP do zprávy ve frontě Azure Queue Storage. 
+Použili jste [Visual Studio Code](functions-develop-vs-code.md?tabs=csharp) k vytvoření aplikace funkcí pomocí jednoduché funkce aktivované protokolem HTTP. V dalším článku tuto funkci rozbalíte tak, že se připojíte k Azure Storage. Další informace o připojení k ostatním službám Azure najdete v tématu [Přidání vazeb do existující funkce v Azure Functions](add-bindings-existing-function.md?tabs=csharp). 
 
 > [!div class="nextstepaction"]
 > [Připojení k frontě Azure Storage](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-csharp)

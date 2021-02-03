@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 79706b66dba46253843b1f53a26481170d6ff723
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 907a78b15cca4718308f79bc6be2e6258bc04d19
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97729626"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492667"
 ---
 # <a name="connect-system-center-service-manager-with-it-service-management-connector"></a>Připojit System Center Service Manager ke konektoru pro správu služeb IT
 
@@ -32,7 +32,7 @@ Ujistěte se, že jsou splněné následující předpoklady:
 
 > [!NOTE]
 > - Konektor ITSM se může připojit pouze ke cloudovým instancím ServiceNow. Místní instance ServiceNow se v tuto chvíli nepodporují.
-> - Aby bylo možné používat vlastní [šablony](./itsmc-definition.md#template-definitions) jako součást akcí, parametr "ProjectionType" v šabloně SCSM by měl být namapován na "IncidentManagement! System. pracovní položka. incident. ProjectionType "
+> - Aby bylo možné používat vlastní [šablony](./itsmc-definition.md#define-a-template) jako součást akcí, parametr "ProjectionType" v šabloně SCSM by měl být namapován na "IncidentManagement! System. pracovní položka. incident. ProjectionType "
 
 ## <a name="connection-procedure"></a>Postup připojení
 
@@ -165,6 +165,6 @@ Následující vzorový obrázek ukazuje podrobné informace o úspěšném při
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přehled konektoru ITSM](itsmc-overview.md)
+* [Přehled ITSM konektoru](itsmc-overview.md)
 * [Vytváření pracovních položek ITSM z výstrah Azure](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)
 * [Řešení potíží v ITSM konektoru](./itsmc-resync-servicenow.md)

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: 74088d749279ab72851e714a50b558dc2adbc0d7
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 3cbcb7eb3695e6f57daef741d4cd4b15577d8f58
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516541"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493268"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>Migrace dat z Cassandra do Azure Cosmos DB rozhraní API Cassandra účtu pomocí Azure Databricks
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -28,7 +28,7 @@ Rozhraní API Cassandra v Azure Cosmos DB se stal skvělou volbou pro podniková
 
 Existují různé způsoby, jak migrovat databázové úlohy z jedné platformy do jiné. [Azure Databricks](https://azure.microsoft.com/services/databricks/) je platforma jako nabídka služeb pro [Apache Spark](https://spark.apache.org/) , která nabízí způsob, jak provádět offline migrace ve velkém měřítku. Tento článek popisuje kroky, které jsou potřebné k migraci dat z nativních Cassandra a tabulek pro Apache, do Azure Cosmos DB rozhraní API Cassandra pomocí Azure Databricks.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Zřídit účet Azure Cosmos DB rozhraní API Cassandra](create-cassandra-dotnet.md#create-a-database-account)
 
@@ -114,7 +114,28 @@ DFfromNativeCassandra
 ```
 
 > [!NOTE]
-> `spark.cassandra.output.concurrent.writes`Konfigurace a `connections_per_executor_max` jsou důležité pro zamezení [Omezení četnosti](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/), která se stane, když požadavky na Cosmos DB překračují zřízenou propustnost ([jednotky žádostí](./request-units.md)). Tato nastavení může být nutné upravit v závislosti na počtu prováděcích modulů v clusteru Spark a potenciálně velikosti (a tedy i nákladů na RU) každého záznamu zapsaného do cílových tabulek.
+> `spark.cassandra.output.batch.size.rows` `spark.cassandra.output.concurrent.writes` `connections_per_executor_max` Konfigurace a jsou důležité, aby nedocházelo k [omezením rychlosti](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/), ke kterým dochází, když požadavky na Azure Cosmos DB překračují zřízenou propustnost/([jednotky žádostí](./request-units.md)). Tato nastavení může být nutné upravit v závislosti na počtu prováděcích modulů v clusteru Spark a potenciálně velikosti (a tedy i nákladů na RU) každého záznamu zapsaného do cílových tabulek.
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+### <a name="rate-limiting-429-error"></a>Omezení rychlosti (Chyba 429)
+Může se zobrazit chybový kód 429 nebo `request rate is large` text chyby, navzdory omezení výše uvedených nastavení na minimální hodnoty. Tady jsou některé z těchto scénářů:
+
+- **Propustnost přidělená tabulce je menší než 6000 [jednotek žádostí](./request-units.md)**. V případě minimálního nastavení bude Spark moci provádět zápisy rychlostí přibližně 6000 jednotek žádostí nebo dalších. Pokud jste zřídili tabulku v prostoru, ve kterém je zajištěna sdílená propustnost, je možné, že v době běhu je k dispozici méně než 6000 ru. Ujistěte se, že tabulka, na kterou migrujete, má k dispozici minimálně 6000 ru při spuštění migrace a v případě potřeby k této tabulce přidělte jednotky vyhrazené žádosti. 
+- **Nadměrné zkosení dat s velkým objemem dat**. Pokud máte velké množství dat (tj. řádky tabulky), které chcete migrovat do dané tabulky, ale mají značnou zešikmení v datech (tj. velký počet záznamů zapsaných pro stejnou hodnotu klíče oddílu), můžete i nadále využívat omezení četnosti i v případě, že máte ve své tabulce zřízen velký objem [jednotek požadavků](./request-units.md) . Důvodem je to, že jednotky žádosti jsou rozdělené rovnoměrně mezi fyzické oddíly a vysoké zešikmení dat může mít za následek kritické body požadavků na jeden oddíl, což způsobuje omezení četnosti. V tomto scénáři se doporučuje snížit nastavení minimální propustnosti v Sparku, aby se předešlo omezení rychlosti a vynutilo, aby migrace běžela pomalu. Tento scénář může být běžnější při migraci referenčních a řídicích tabulek, kde je přístup méně častý, ale jeho zkosení může být vysoké. Pokud se ale v jakémkoli jiném typu tabulky nachází výrazné zkosení, může být vhodné zkontrolovat datový model, aby nedocházelo k problémům se značnými oddíly pro vaše zatížení během operací ustáleného stavu. 
+- **Nelze získat počet pro velkou tabulku**. Spuštění `select count(*) from table` není aktuálně podporováno pro velké tabulky. Můžete získat počet metrik v Azure Portal (viz náš [článek věnované řešení potíží](cassandra-troubleshoot.md)), ale pokud potřebujete určit počet velkých tabulek z kontextu úlohy Sparku, můžete data zkopírovat do dočasné tabulky a pak pomocí Spark SQL získat počet, např. níže (nahraďte `<primary key>` polem z výsledné dočasné tabulky).
+
+  ```scala
+  val ReadFromCosmosCassandra = sqlContext
+    .read
+    .format("org.apache.spark.sql.cassandra")
+    .options(cosmosCassandra)
+    .load
+
+  ReadFromCosmosCassandra.createOrReplaceTempView("CosmosCassandraResult")
+  %sql
+  select count(<primary key>) from CosmosCassandraResult
+  ```
 
 ## <a name="next-steps"></a>Další kroky
 

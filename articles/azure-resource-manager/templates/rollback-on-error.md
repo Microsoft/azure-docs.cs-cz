@@ -2,25 +2,34 @@
 title: Vrátit zpět chybu pro úspěšné nasazení
 description: Určete, že nasazení, které selhalo, by se mělo vrátit zpátky k úspěšnému nasazení.
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: 206c794996f58a4c5b6982c551ae50128ed4f5eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/02/2021
+ms.openlocfilehash: 742a8f16a2dce3204b48085759091540586a4522
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79460139"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492208"
 ---
 # <a name="rollback-on-error-to-successful-deployment"></a>Vrácení chyby zpět při úspěšném nasazení
 
-V případě neúspěchu nasazení můžete z historie nasazení automaticky znovu nasadit předchozí úspěšné nasazení. Tato funkce je užitečná v případě, že máte známý dobrý stav pro nasazení infrastruktury a chcete se vrátit k tomuto stavu. Existuje několik aspektů a omezení:
+V případě neúspěchu nasazení můžete z historie nasazení automaticky znovu nasadit předchozí úspěšné nasazení. Tato funkce je užitečná v případě, že máte známý dobrý stav pro nasazení infrastruktury a chcete se vrátit k tomuto stavu. Můžete zadat buď konkrétní dřívější nasazení, nebo poslední úspěšné nasazení.
 
+> [!IMPORTANT]
+> Tato funkce vrátí nasazení, které selhalo, a znovu nasadí předchozí nasazení. Tento výsledek se může lišit od zrušení neúspěšného nasazení, které byste očekávali. Ujistěte se, že rozumíte tomu, jak se nasazuje předchozí nasazení.
+
+## <a name="considerations-for-redeploying"></a>Pokyny pro opětovné nasazení
+
+Před použitím této funkce zvažte tyto podrobnosti o způsobu, jakým je prováděno opětovné nasazení:
+
+- Předchozí nasazení je spuštěno v [režimu úplné](./deployment-modes.md#complete-mode), i když jste použili [přírůstkový režim](./deployment-modes.md#incremental-mode) během dřívějšího nasazení. Opětovné nasazení v úplném režimu může způsobit neočekávané výsledky, pokud se předchozí použité nasazení přírůstkově použilo. Celý režim znamená, že se odstraní všechny prostředky, které nejsou zahrnuté do předchozího nasazení. Zadejte starší nasazení, které bude představovat všechny prostředky a jejich stavy, které mají být ve skupině prostředků. Další informace najdete v tématu [režimy nasazení](./deployment-modes.md).
 - Opětovné nasazení se spouští přesně tak, jak bylo dříve spuštěno se stejnými parametry. Nemůžete změnit parametry.
-- Předchozí nasazení se spouští v [režimu úplného](./deployment-modes.md#complete-mode)použití. Všechny prostředky, které nejsou součástí předchozího nasazení, se odstraní a všechny konfigurace prostředků se nastavují do jejich předchozího stavu. Ujistěte se, že plně rozumíte [režimům nasazení](./deployment-modes.md).
 - Opětovné nasazení má vliv pouze na prostředky, změny dat nejsou ovlivněny.
-- Tuto funkci můžete použít jenom v nasazeních skupin prostředků, ne na úrovni předplatného nebo skupiny pro správu. Další informace o nasazení na úrovni předplatného najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni předplatného](./deploy-to-subscription.md).
+- Tuto funkci můžete použít jenom s nasazeními skupiny prostředků. Nepodporuje nasazení na úrovni předplatného, skupiny pro správu ani tenanta. Další informace o nasazení na úrovni předplatného najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni předplatného](./deploy-to-subscription.md).
 - Tuto možnost můžete použít jenom u nasazení na kořenové úrovni. Nasazení z vnořené šablony nejsou k dispozici pro opětovné nasazení.
 
-Chcete-li použít tuto možnost, musí mít vaše nasazení jedinečné názvy, aby je bylo možné identifikovat v historii. Pokud nemáte jedinečné názvy, může aktuální nasazení v historii přepsat dříve úspěšné nasazení.
+Chcete-li použít tuto možnost, musí mít vaše nasazení jedinečné názvy v historii nasazení. Je to jenom s jedinečnými názvy, ke kterým se dá identifikovat konkrétní nasazení. Pokud nepoužíváte jedinečné názvy, nasazení, které selhalo, může v historii přepsat úspěšné nasazení.
+
+Pokud zadáte dřívější nasazení, které v historii nasazení neexistuje, vrácení zpět vrátí chybu.
 
 ## <a name="powershell"></a>PowerShell
 
@@ -115,7 +124,5 @@ Zadané nasazení musí být úspěšné.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud chcete službu bezpečně zavést do více než jedné oblasti, přečtěte si [Azure Deployment Manager](deployment-manager-overview.md).
-- Pokud chcete určit, jak se mají zpracovávat prostředky, které existují ve skupině prostředků, ale nejsou definované v šabloně, přečtěte si téma [režimy nasazení Azure Resource Manager](deployment-modes.md).
+- Podrobné informace o kompletních a přírůstkových režimech najdete v tématu [Azure Resource Manager režimy nasazení](deployment-modes.md).
 - Chcete-li pochopit, jak definovat parametry v šabloně, přečtěte si téma [pochopení struktury a syntaxe šablon Azure Resource Manager](template-syntax.md).
-- Informace o nasazení šablony, která vyžaduje token SAS, najdete v tématu [nasazení privátní šablony s tokenem SAS](secure-template-with-sas-token.md).

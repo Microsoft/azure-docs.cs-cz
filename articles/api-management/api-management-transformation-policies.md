@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 212a6b0786b371bfb92f2e193e67d9accd432bf8
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c0c7a6b25c15be2e521e0985c315baf819650aa5
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657239"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491752"
 ---
 # <a name="api-management-transformation-policies"></a>Zásady transformace ve službě API Management
 V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](./api-management-policies.md).
@@ -71,15 +71,15 @@ V tomto tématu najdete referenční informace pro následující zásady API Ma
 
 |Název|Popis|Povinné|
 |----------|-----------------|--------------|
-|JSON-to-XML|Kořenový element.|Ano|
+|JSON-to-XML|Kořenový element.|Yes|
 
 ### <a name="attributes"></a>Atributy
 
 |Název|Popis|Povinné|Výchozí|
 |----------|-----------------|--------------|-------------|
-|apply|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> -Vždycky – vždy použít převod.<br />-Content-Type-JSON-Convert pouze v případě, že hlavička Content-Type odpovědi označuje přítomnost JSON.|Ano|–|
-|vzít v úvahu – potvrdit – záhlaví|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> -true – použije se převod, pokud se v hlavičce žádosti o přijetí vyžaduje XML.<br />-false – vždy použít převod.|Ne|true|
-|Analýza – datum|Když se nastaví `false` hodnoty data, se během transformace jednoduše zkopírují.|Ne|true|
+|apply|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> -Vždycky – vždy použít převod.<br />-Content-Type-JSON-Convert pouze v případě, že hlavička Content-Type odpovědi označuje přítomnost JSON.|Yes|–|
+|vzít v úvahu – potvrdit – záhlaví|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> -true – použije se převod, pokud se v hlavičce žádosti o přijetí vyžaduje XML.<br />-false – vždy použít převod.|No|true|
+|Analýza – datum|Když se nastaví `false` hodnoty data, se během transformace jednoduše zkopírují.|No|true|
 
 ### <a name="usage"></a>Využití
  Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
@@ -115,15 +115,15 @@ V tomto tématu najdete referenční informace pro následující zásady API Ma
 
 |Název|Popis|Povinné|
 |----------|-----------------|--------------|
-|z kódu XML do formátu JSON|Kořenový element.|Ano|
+|z kódu XML do formátu JSON|Kořenový element.|Yes|
 
 ### <a name="attributes"></a>Atributy
 
 |Název|Popis|Povinné|Výchozí|
 |----------|-----------------|--------------|-------------|
-|plnění|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> -JavaScript-přívětivé – převedený JSON má formulář, který je uživatelsky přívětivý pro vývojáře v JavaScriptu.<br />-Direct – převedený kód JSON odráží původní strukturu dokumentu XML.|Ano|–|
-|apply|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> -Always-Convert Always.<br />-Content-Type-XML – převést pouze v případě, že hlavička Content-Type odpovědi označuje přítomnost XML.|Ano|–|
-|vzít v úvahu – potvrdit – záhlaví|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> -true – použít převod, pokud se v hlavičce žádosti o přijetí vyžaduje JSON.<br />-false – vždy použít převod.|Ne|true|
+|plnění|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> -JavaScript-přívětivé – převedený JSON má formulář, který je uživatelsky přívětivý pro vývojáře v JavaScriptu.<br />-Direct – převedený kód JSON odráží původní strukturu dokumentu XML.|Yes|–|
+|apply|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> -Always-Convert Always.<br />-Content-Type-XML – převést pouze v případě, že hlavička Content-Type odpovědi označuje přítomnost XML.|Yes|–|
+|vzít v úvahu – potvrdit – záhlaví|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> -true – použít převod, pokud se v hlavičce žádosti o přijetí vyžaduje JSON.<br />-false – vždy použít převod.|No|true|
 
 ### <a name="usage"></a>Využití
  Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
@@ -151,14 +151,14 @@ V tomto tématu najdete referenční informace pro následující zásady API Ma
 
 |Název|Popis|Povinné|
 |----------|-----------------|--------------|
-|najít a nahradit|Kořenový element.|Ano|
+|najít a nahradit|Kořenový element.|Yes|
 
 ### <a name="attributes"></a>Atributy
 
 |Název|Popis|Povinné|Výchozí|
 |----------|-----------------|--------------|-------------|
-|Výsledkem|Řetězec, který se má vyhledat.|Ano|–|
-|na|Náhradní řetězec Zadejte řetězec pro nahrazení nulové délky pro odebrání hledaného řetězce.|Ano|–|
+|Výsledkem|Řetězec, který se má vyhledat.|Yes|–|
+|na|Náhradní řetězec Zadejte řetězec pro nahrazení nulové délky pro odebrání hledaného řetězce.|Yes|–|
 
 ### <a name="usage"></a>Využití
  Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
@@ -189,7 +189,7 @@ V tomto tématu najdete referenční informace pro následující zásady API Ma
 
 |Název|Popis|Povinné|
 |----------|-----------------|--------------|
-|přesměrování – obsah-adresy URL|Kořenový element.|Ano|
+|přesměrování – obsah-adresy URL|Kořenový element.|Yes|
 
 ### <a name="usage"></a>Využití
  Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
@@ -214,7 +214,7 @@ nebo
 ```
 
 > [!NOTE]
-> Back-endové entity je možné spravovat prostřednictvím [rozhraní API](/rest/api/apimanagement/2019-12-01/backend) pro správu a [PowerShellu](https://www.powershellgallery.com/packages?q=apimanagement).
+> Back-endové entity je možné spravovat prostřednictvím [Azure Portal](how-to-configure-service-fabric-backend.md), [rozhraní API](/rest/api/apimanagement)pro správu a [PowerShellu](https://www.powershellgallery.com/packages?q=apimanagement).
 
 ### <a name="example"></a>Příklad
 
@@ -262,19 +262,19 @@ V tomto příkladu zásady směrují požadavek do back-endu Service Fabric pomo
 
 |Název|Popis|Povinné|
 |----------|-----------------|--------------|
-|nastavení-back-endu – služba|Kořenový element.|Ano|
+|nastavení-back-endu – služba|Kořenový element.|Yes|
 
 ### <a name="attributes"></a>Atributy
 
 |Název|Popis|Povinné|Výchozí|
 |----------|-----------------|--------------|-------------|
 |základní-adresa URL|Nová základní adresa URL služby back-end.|`base-url` `backend-id` Musí být přítomen jeden z nebo.|–|
-|back-end – ID|Identifikátor back-endu, na který se má směrovat (Entity back-endu se spravují přes [rozhraní API](/rest/api/apimanagement/2019-12-01/backend) a [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).)|`base-url` `backend-id` Musí být přítomen jeden z nebo.|–|
-|SF-partition-klíč|Platí pouze v případě, že back-end je služba Service Fabric a je určena pomocí ' back-ID '. Používá se k překladu konkrétního oddílu ze služby překladu názvů.|Ne|–|
-|SF – typ repliky|Platí pouze v případě, že back-end je služba Service Fabric a je určena pomocí ' back-ID '. Určuje, zda má požadavek přejít na primární nebo sekundární repliku oddílu. |Ne|–|
-|SF – vyřešit podmínku|Platí pouze v případě, že back-end je služba Service Fabric. Podmínka, která určuje, jestli se volání Service Fabric back-endu musí opakovat s novým rozlišením.|Ne|–|
-|SF-Service-instance-Name|Platí pouze v případě, že back-end je služba Service Fabric. Umožňuje změnit instance služby za běhu. |Ne|–|
-|SF-naslouchacího procesu – název|Platí pouze v případě, že back-end je služba Service Fabric a je určena pomocí ' back-ID '. Service Fabric Reliable Services umožňuje vytvořit ve službě více posluchačů. Tento atribut se používá pro výběr konkrétního naslouchacího procesu, když má služba Reliable back-end více než jeden naslouchací proces. Pokud tento atribut není zadán, API Management se pokusí použít naslouchací proces bez názvu. Naslouchací proces bez názvu je typický pro Reliable Services, které mají jenom jeden naslouchací proces. |Ne|–|
+|back-end – ID|Identifikátor back-endu, na který se má směrovat (Entity back-endu jsou spravované prostřednictvím [Azure Portal](how-to-configure-service-fabric-backend.md), [rozhraní API](/rest/api/apimanagement)a [PowerShellu](https://www.powershellgallery.com/packages?q=apimanagement).)|`base-url` `backend-id` Musí být přítomen jeden z nebo.|–|
+|SF-partition-klíč|Platí pouze v případě, že back-end je služba Service Fabric a je určena pomocí ' back-ID '. Používá se k překladu konkrétního oddílu ze služby překladu názvů.|No|–|
+|SF – typ repliky|Platí pouze v případě, že back-end je služba Service Fabric a je určena pomocí ' back-ID '. Určuje, zda má požadavek přejít na primární nebo sekundární repliku oddílu. |No|–|
+|SF – vyřešit podmínku|Platí pouze v případě, že back-end je služba Service Fabric. Podmínka, která určuje, jestli se volání Service Fabric back-endu musí opakovat s novým rozlišením.|No|–|
+|SF-Service-instance-Name|Platí pouze v případě, že back-end je služba Service Fabric. Umožňuje změnit instance služby za běhu. |No|–|
+|SF-naslouchacího procesu – název|Platí pouze v případě, že back-end je služba Service Fabric a je určena pomocí ' back-ID '. Service Fabric Reliable Services umožňuje vytvořit ve službě více posluchačů. Tento atribut se používá pro výběr konkrétního naslouchacího procesu, když má služba Reliable back-end více než jeden naslouchací proces. Pokud tento atribut není zadán, API Management se pokusí použít naslouchací proces bez názvu. Naslouchací proces bez názvu je typický pro Reliable Services, které mají jenom jeden naslouchací proces. |No|–|
 
 ### <a name="usage"></a>Využití
  Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
@@ -398,13 +398,13 @@ V tomto příkladu zásady směrují požadavek do back-endu Service Fabric pomo
 
 |Název|Popis|Povinné|
 |----------|-----------------|--------------|
-|Set – tělo|Kořenový element. Obsahuje text těla nebo výrazy, které vrací tělo.|Ano|
+|Set – tělo|Kořenový element. Obsahuje text těla nebo výrazy, které vrací tělo.|Yes|
 
 ### <a name="properties"></a>Vlastnosti
 
 |Název|Popis|Povinné|Výchozí|
 |----------|-----------------|--------------|-------------|
-|šablona|Slouží ke změně režimu šablonování, ve kterém se bude spouštět zásada pro tělo sady. V současné době je jediná podporovaná hodnota:<br /><br />-Liquid – zásada pro tělo sady bude používat šablonování modul Liquid. |Ne||
+|šablona|Slouží ke změně režimu šablonování, ve kterém se bude spouštět zásada pro tělo sady. V současné době je jediná podporovaná hodnota:<br /><br />-Liquid – zásada pro tělo sady bude používat šablonování modul Liquid. |No||
 
 Pro přístup k informacím o žádosti a odpovědi může šablona kapalin vytvořit vazby k objektu kontextu s následujícími vlastnostmi: <br />
 <pre>context.
@@ -512,15 +512,15 @@ OriginalUrl.
 
 |Název|Popis|Povinné|
 |----------|-----------------|--------------|
-|Set – hlavička|Kořenový element.|Ano|
-|hodnota|Určuje hodnotu hlavičky, která se má nastavit. Pro více hlaviček se stejným názvem přidejte další `value` prvky.|Ne|
+|Set – hlavička|Kořenový element.|Yes|
+|hodnota|Určuje hodnotu hlavičky, která se má nastavit. Pro více hlaviček se stejným názvem přidejte další `value` prvky.|No|
 
 ### <a name="properties"></a>Vlastnosti
 
 |Název|Popis|Povinné|Výchozí|
 |----------|-----------------|--------------|-------------|
-|Existuje – akce|Určuje akci, která se má provést, když je hlavička již zadána. Tento atribut musí mít jednu z následujících hodnot.<br /><br /> -override – nahradí hodnotu existujícího záhlaví.<br />-Skip – nenahradí stávající hodnotu záhlaví.<br />-Append – připojí hodnotu k existující hodnotě záhlaví.<br />-Delete – Odebere hlavičku z požadavku.<br /><br /> Pokud je nastavená na `override` zařazení více položek se stejným názvem, v záhlaví se nastaví podle všech záznamů (které se budou zobrazovat víckrát). ve výsledku se nastaví jenom uvedené hodnoty.|Ne|override|
-|name|Určuje název záhlaví, které má být nastaveno.|Ano|–|
+|Existuje – akce|Určuje akci, která se má provést, když je hlavička již zadána. Tento atribut musí mít jednu z následujících hodnot.<br /><br /> -override – nahradí hodnotu existujícího záhlaví.<br />-Skip – nenahradí stávající hodnotu záhlaví.<br />-Append – připojí hodnotu k existující hodnotě záhlaví.<br />-Delete – Odebere hlavičku z požadavku.<br /><br /> Pokud je nastavená na `override` zařazení více položek se stejným názvem, v záhlaví se nastaví podle všech záznamů (které se budou zobrazovat víckrát). ve výsledku se nastaví jenom uvedené hodnoty.|No|override|
+|name|Určuje název záhlaví, které má být nastaveno.|Yes|–|
 
 ### <a name="usage"></a>Využití
  Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
@@ -567,15 +567,15 @@ OriginalUrl.
 
 |Název|Popis|Povinné|
 |----------|-----------------|--------------|
-|Set – dotaz-parametr|Kořenový element.|Ano|
-|hodnota|Určuje hodnotu parametru dotazu, která se má nastavit. Pro více parametrů dotazu se stejným názvem přidejte další `value` prvky.|Ano|
+|Set – dotaz-parametr|Kořenový element.|Yes|
+|hodnota|Určuje hodnotu parametru dotazu, která se má nastavit. Pro více parametrů dotazu se stejným názvem přidejte další `value` prvky.|Yes|
 
 ### <a name="properties"></a>Vlastnosti
 
 |Název|Popis|Povinné|Výchozí|
 |----------|-----------------|--------------|-------------|
-|Existuje – akce|Určuje akci, která se má provést, pokud je parametr dotazu už zadaný. Tento atribut musí mít jednu z následujících hodnot.<br /><br /> -override – nahradí hodnotu existujícího parametru.<br />-Skip – nenahradí existující hodnotu parametru dotazu.<br />-Append – připojí hodnotu k existující hodnotě parametru dotazu.<br />-Delete – Odstraní parametr dotazu z požadavku.<br /><br /> Pokud je nastavené `override` zařazení několika záznamů se stejným názvem, bude parametr dotazu nastaven podle všech záznamů (které budou uvedeny několikrát). ve výsledku budou nastaveny pouze uvedené hodnoty.|Ne|override|
-|name|Určuje název parametru dotazu, který se má nastavit.|Ano|–|
+|Existuje – akce|Určuje akci, která se má provést, pokud je parametr dotazu už zadaný. Tento atribut musí mít jednu z následujících hodnot.<br /><br /> -override – nahradí hodnotu existujícího parametru.<br />-Skip – nenahradí existující hodnotu parametru dotazu.<br />-Append – připojí hodnotu k existující hodnotě parametru dotazu.<br />-Delete – Odstraní parametr dotazu z požadavku.<br /><br /> Pokud je nastavené `override` zařazení několika záznamů se stejným názvem, bude parametr dotazu nastaven podle všech záznamů (které budou uvedeny několikrát). ve výsledku budou nastaveny pouze uvedené hodnoty.|No|override|
+|name|Určuje název parametru dotazu, který se má nastavit.|Yes|–|
 
 ### <a name="usage"></a>Využití
  Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
@@ -646,14 +646,14 @@ OriginalUrl.
 
 |Název|Popis|Povinné|
 |----------|-----------------|--------------|
-|přepsat identifikátor URI|Kořenový element.|Ano|
+|přepsat identifikátor URI|Kořenový element.|Yes|
 
 ### <a name="attributes"></a>Atributy
 
 |Atribut|Popis|Povinné|Výchozí|
 |---------------|-----------------|--------------|-------------|
-|šablona|Skutečná adresa URL webové služby s libovolnými parametry řetězce dotazu. Při použití výrazů musí být celá hodnota výrazem.|Ano|–|
-|Copy – nespárované klíčové slovo|Určuje, jestli se do adresy URL definované šablonou opětovného zápisu přidají parametry dotazu v příchozím požadavku, které nejsou k dispozici v šabloně původní adresy URL.|Ne|true|
+|šablona|Skutečná adresa URL webové služby s libovolnými parametry řetězce dotazu. Při použití výrazů musí být celá hodnota výrazem.|Yes|–|
+|Copy – nespárované klíčové slovo|Určuje, jestli se do adresy URL definované šablonou opětovného zápisu přidají parametry dotazu v příchozím požadavku, které nejsou k dispozici v šabloně původní adresy URL.|No|true|
 
 ### <a name="usage"></a>Využití
  Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
@@ -715,9 +715,9 @@ OriginalUrl.
 
 |Název|Popis|Povinné|
 |----------|-----------------|--------------|
-|transformace XSL|Kořenový element.|Ano|
-|parameter|Slouží k definování proměnných použitých v transformaci.|Ne|
-|XSL: Šablona stylů|Kořenový element šablony stylů Všechny elementy a atributy definované v rámci sledování standardní [specifikace XSLT](https://www.w3.org/TR/xslt)|Ano|
+|transformace XSL|Kořenový element.|Yes|
+|parameter|Slouží k definování proměnných použitých v transformaci.|No|
+|XSL: Šablona stylů|Kořenový element šablony stylů Všechny elementy a atributy definované v rámci sledování standardní [specifikace XSLT](https://www.w3.org/TR/xslt)|Yes|
 
 ### <a name="usage"></a>Využití
  Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.

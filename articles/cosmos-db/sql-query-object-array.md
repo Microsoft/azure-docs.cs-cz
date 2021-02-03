@@ -5,19 +5,43 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 01/07/2021
+ms.date: 02/02/2021
 ms.author: tisande
-ms.openlocfilehash: f959e4e230c1d9f89ad5141713b6a17a8cbb17a2
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 1dccb8e51fbc578f8f218fe1582f95f7bcaf42d7
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018900"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493783"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Práce s poli a objekty v Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Klíčovou funkcí rozhraní API pro Azure Cosmos DB SQL je vytvoření pole a objektu.
+Klíčovou funkcí rozhraní API pro Azure Cosmos DB SQL je vytvoření pole a objektu. Tento dokument používá příklady, které lze znovu vytvořit pomocí [datové sady rodiny](sql-query-getting-started.md#upload-sample-data).
+
+Tady je příklad položky v této datové sadě:
+
+```json
+{
+  "id": "AndersenFamily",
+  "lastName": "Andersen",
+  "parents": [
+     { "firstName": "Thomas" },
+     { "firstName": "Mary Kay"}
+  ],
+  "children": [
+     {
+         "firstName": "Henriette Thaulow",
+         "gender": "female",
+         "grade": 5,
+         "pets": [{ "givenName": "Fluffy" }]
+     }
+  ],
+  "address": { "state": "WA", "county": "King", "city": "Seattle" },
+  "creationDate": 1431620472,
+  "isRegistered": true
+}
+```
 
 ## <a name="arrays"></a>Pole
 
@@ -72,7 +96,7 @@ Výsledky jsou následující:
 ]
 ```
 
-## <a name="iteration"></a><a id="Iteration"></a>Interakc
+## <a name="iteration"></a><a id="Iteration"></a>Iterace
 
 Rozhraní SQL API poskytuje podporu pro iteraci přes pole JSON s [klíčovým slovem in](sql-query-keywords.md#in) ve zdroji from. V následujícím příkladu:
 
@@ -177,6 +201,8 @@ Výsledky jsou následující:
 
 > [!NOTE]
 > Při použití klíčového slova IN pro iteraci nelze filtrovat ani projektovat žádné vlastnosti mimo pole. Místo toho byste měli použít [spojení](sql-query-join.md).
+
+Další příklady najdete v našem [blogovém příspěvku o práci s poli v Azure Cosmos DB](https://devblogs.microsoft.com/cosmosdb/understanding-how-to-query-arrays-in-azure-cosmos-db/).
 
 ## <a name="next-steps"></a>Další kroky
 

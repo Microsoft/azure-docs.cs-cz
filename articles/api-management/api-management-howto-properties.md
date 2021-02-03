@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 12/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 4cde4dadee33ec1c3f91ab4770dbfe697289cef3
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 344500d5635f591b34a45130c7dd6b63659ad84d
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504728"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491004"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Použití pojmenovaných hodnot v zásadách Azure API Management
 
@@ -25,7 +25,7 @@ ms.locfileid: "97504728"
 
 ## <a name="value-types"></a>Typy hodnot
 
-|Typ  |Popis  |
+|Typ  |Description  |
 |---------|---------|
 |Podobě     |  Řetězcový literál nebo výraz zásady     |
 |Tajný kód     |   Řetězcový literál nebo výraz zásad, který je zašifrovaný pomocí API Management      |
@@ -43,7 +43,7 @@ Doporučuje se používat tajné klíče trezoru klíčů, protože pomáhá vyl
 
 * Tajné kódy uložené v trezorech klíčů je možné opakovaně používat napříč službami.
 * Podrobné [zásady přístupu](../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) se dají použít u tajných klíčů.
-* Tajné kódy, které jsou v trezoru klíčů aktualizované, se automaticky otočí v API Management. Po aktualizaci v trezoru klíčů se pojmenovaná hodnota v API Management v rámci 4 hodin aktualizuje. 
+* Tajné kódy, které jsou v trezoru klíčů aktualizované, se automaticky otočí v API Management. Po aktualizaci v trezoru klíčů se pojmenovaná hodnota v API Management v rámci 4 hodin aktualizuje. Tajný kód můžete také aktualizovat ručně pomocí Azure Portal nebo prostřednictvím REST API pro správu.
 
 ### <a name="prerequisites-for-key-vault-integration"></a>Předpoklady pro integraci trezoru klíčů
 
@@ -58,25 +58,16 @@ Doporučuje se používat tajné klíče trezoru klíčů, protože pomáhá vyl
 
 Pokud chcete použít tajný klíč trezoru klíčů, [přidejte nebo upravte pojmenovanou hodnotu](#add-or-edit-a-named-value)a zadejte typ **trezoru klíčů**. Vyberte tajný klíč z trezoru klíčů.
 
-> [!CAUTION]
-> Při použití tajného klíče trezoru klíčů v API Management buďte opatrní, abyste neodstranili tajný klíč, Trezor klíčů ani spravovanou identitu, která se používá pro přístup k trezoru klíčů.
-
-Pokud je v trezoru klíčů zapnutá [Brána firewall Key Vault](../key-vault/general/network-security.md) , jsou zde uvedené další požadavky na používání tajných klíčů trezoru klíčů:
-
-* Pro přístup k trezoru klíčů je nutné použít spravovanou identitu **přiřazenou systémem** API Management instance.
-* V bráně Key Vault firewall povolte možnost **Povolit používání této brány firewall důvěryhodným službám Microsoftu** .
-
-Pokud je instance API Management nasazená ve virtuální síti, nakonfigurujte taky následující nastavení sítě:
-* Povolení [koncového bodu služby](../key-vault/general/overview-vnet-service-endpoints.md) Azure Key Vault v podsíti API Management.
-* Nakonfigurujte pravidlo skupiny zabezpečení sítě (NSG) tak, aby povolovalo odchozí přenosy do [značek služby](../virtual-network/service-tags-overview.md)AzureKeyVault a azureactivedirectory selhala. 
-
-Podrobnosti najdete v tématu podrobnosti o konfiguraci sítě v tématu [připojení k virtuální síti](api-management-using-with-vnet.md#-common-network-configuration-issues).
+[!INCLUDE [api-management-key-vault-network](../../includes/api-management-key-vault-network.md)]
 
 ## <a name="add-or-edit-a-named-value"></a>Přidat nebo upravit pojmenovanou hodnotu
 
 ### <a name="add-a-key-vault-secret"></a>Přidání tajného klíče trezoru klíčů
 
 Viz [předpoklady pro integraci trezoru klíčů](#prerequisites-for-key-vault-integration).
+
+> [!CAUTION]
+> Při použití tajného klíče trezoru klíčů v API Management buďte opatrní, abyste neodstranili tajný klíč, Trezor klíčů ani spravovanou identitu, která se používá pro přístup k trezoru klíčů.
 
 1. V [Azure Portal](https://portal.azure.com)přejděte k instanci API Management.
 1. V části **rozhraní API** vyberte **pojmenované hodnoty**  >  **+ Přidat**.
@@ -109,7 +100,7 @@ Jakmile se pojmenovaná hodnota vytvoří, můžete ji upravit tak, že vyberete
 
 Příklady v této části používají pojmenované hodnoty uvedené v následující tabulce.
 
-| Název               | Hodnota                      | Tajný kód | 
+| Name               | Hodnota                      | Tajný kód | 
 |--------------------|----------------------------|--------|---------|
 | ContosoHeader      | `TrackingId`                 | Ne  | 
 | ContosoHeaderValue | ••••••••••••••••••••••     | Ano   | 

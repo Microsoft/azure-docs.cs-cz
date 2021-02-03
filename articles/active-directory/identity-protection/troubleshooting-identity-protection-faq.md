@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c169847c96d10d1c9fb47b210bc85a15e0690e32
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 6117b1ac78faf84d73f5a78202709aec7a1f84d9
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183111"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492582"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Nejčastější dotazy – ochrana identity v Azure Active Directory
 
@@ -37,7 +37,7 @@ Pokud jste zákazník Azure AD Identity Protection, přejděte do zobrazení [ri
 
 ### <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Proč bylo moje přihlášení blokované, ale ochrana identity negenerovala detekci rizika?
 Přihlášení mohou být blokována z několika důvodů. Je důležité si uvědomit, že ochrana identity generuje jenom detekci rizik, pokud se v žádosti o ověření používají správné přihlašovací údaje. Pokud uživatel používá nesprávné přihlašovací údaje, nebude označen ochranou identity, protože nehrozí riziko ohrožení zabezpečení přihlašovacích údajů, pokud nesprávný objekt actor nepoužívá správné přihlašovací údaje. Některé důvody, proč může být uživatel zablokován z podepisování, které negeneruje detekci Identity Protection, zahrnují:
-* **IP adresa může být zablokovaná** z důvodu škodlivé aktivity z IP adresy. Zpráva blokovaná protokolem IP nerozlišuje, zda byly pověření správné nebo nikoli. Pokud je IP adresa blokovaná a správné přihlašovací údaje se nepoužijí, vygeneruje se detekce Identity Protection.
+* IP adresu je **možné zablokovat** z důvodu škodlivé aktivity z IP adresy. Zpráva blokovaná protokolem IP nerozlišuje, zda byly pověření správné nebo nikoli. Pokud je IP adresa blokovaná a správné přihlašovací údaje se nepoužijí, vygeneruje se detekce Identity Protection.
 * **[Inteligentní uzamčení](../authentication/howto-password-smart-lockout.md)** může účtu zabránit v přihlášení po několika neúspěšných pokusech.
 * Je možné vyhovět **zásadám podmíněného přístupu** , které používají jiné podmínky než úroveň rizika k blokování žádosti o ověření.
 

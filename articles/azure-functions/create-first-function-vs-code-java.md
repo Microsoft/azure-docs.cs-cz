@@ -3,12 +3,12 @@ title: Vytvoření funkce Java pomocí Visual Studio Code-Azure Functions
 description: Naučte se vytvořit funkci Java a pak publikovat místní projekt na hostování bez serveru v Azure Functions pomocí rozšíření Azure Functions v Visual Studio Code.
 ms.topic: quickstart
 ms.date: 11/03/2020
-ms.openlocfilehash: daaa578b2842a6314706b3578f4c9e44d46aa6ce
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 36516abd8b50c0b0b7d72e6bae0b67701509ca65
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93425005"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493630"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce Java v Azure pomocí Visual Studio Code
 
@@ -31,44 +31,44 @@ Než začnete, ujistěte se, že máte zavedené následující požadavky:
 
 + [Apache Maven](https://maven.apache.org)verze 3,0 nebo vyšší.
 
-+ [Visual Studio Code](https://code.visualstudio.com/) na některé z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
++ [Visual Studio Code](https://code.visualstudio.com/) na jedné z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms)
 
 + [Balíček rozšíření Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)  
 
-+ [Azure Functions rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) pro Visual Studio Code. 
++ [Rozšíření Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) pro Visual Studio Code 
 
 ## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>Vytvořit místní projekt
 
 V této části použijete Visual Studio Code k vytvoření místního projektu Azure Functions v jazyce Java. Později v tomto článku publikujete kód funkce do Azure. 
 
-1. Zvolte ikonu Azure na řádku aktivity a potom v oblasti **Azure: funkce** vyberte ikonu **vytvořit nový projekt...** .
+1. Zvolte ikonu Azure na panelu Aktivita a pak v oblasti **Azure: Funkce** vyberte ikonu **Vytvořit nový projekt**.
 
-    ![Zvolit vytvořit nový projekt](./media/functions-create-first-function-vs-code/create-new-project.png)
+    ![Volba možnosti Vytvořit nový projekt](./media/functions-create-first-function-vs-code/create-new-project.png)
 
-1. Zvolte umístění adresáře pro váš pracovní prostor projektu a zvolte **možnost vybrat**.
+1. Zvolte umístění adresáře pro váš pracovní prostor projektu a zvolte **Vybrat**.
 
     > [!NOTE]
     > Tyto kroky jsou navržené tak, aby se dokončily mimo pracovní prostor. V tomto případě nevybírejte složku projektu, která je součástí pracovního prostoru.
 
-1. Zadejte následující informace na následujících dotazech:
+1. Podle pokynů na obrazovce zadejte tyto informace:
 
-    + **Vyberte jazyk pro projekt funkce** : zvolte `Java` .
+    + **Vyberte jazyk pro váš projekt funkce:** Zvolte `Java`.
 
-    + **Vyberte verzi Java** : zvolte `Java 8` nebo `Java 11` , verze jazyka Java, na které budou vaše funkce běžet v Azure. Vyberte verzi jazyka Java, kterou jste ověřili místně.
+    + **Vyberte verzi Java**: zvolte `Java 8` nebo `Java 11` , verze jazyka Java, na které budou vaše funkce běžet v Azure. Vyberte verzi jazyka Java, kterou jste ověřili místně.
 
-    + **Zadejte ID skupiny** : vyberte `com.function` .
+    + **Zadejte ID skupiny**: vyberte `com.function` .
 
-    + **Zadejte ID artefaktu** : vyberte `myFunction` .
+    + **Zadejte ID artefaktu**: vyberte `myFunction` .
 
-    + **Zadejte verzi** : vyberte `1.0-SNAPSHOT` .
+    + **Zadejte verzi**: vyberte `1.0-SNAPSHOT` .
 
-    + **Zadejte název balíčku** : vyberte `com.function` .
+    + **Zadejte název balíčku**: vyberte `com.function` .
 
-    + **Zadejte název aplikace** : vyberte `myFunction-12345` .
+    + **Zadejte název aplikace**: vyberte `myFunction-12345` .
 
-    + **Úroveň autorizace** : vyberte `Anonymous` , který umožňuje komukoli zavolat koncový bod funkce. Další informace o úrovni autorizace najdete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys).
+    + **Úroveň autorizace**: vyberte `Anonymous` , který umožňuje komukoli zavolat koncový bod funkce. Další informace o úrovni autorizace najdete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
-    + **Vyberte, jak se má projekt otevřít** : zvolte `Add to workspace` .
+    + **Vyberte způsob, jakým chcete projekt otevírat:** Zvolte `Add to workspace`.
 
 1. Pomocí těchto informací Visual Studio Code generuje Azure Functions projekt pomocí triggeru protokolu HTTP. Můžete zobrazit soubory místních projektů v Průzkumníkovi. Další informace o souborech, které jsou vytvořeny, najdete v tématu [vygenerované soubory projektu](functions-develop-vs-code.md#generated-project-files). 
 
@@ -86,7 +86,7 @@ Po ověření, že se funkce na místním počítači spustí správně, je čas
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí Visual Studio Code jste vytvořili aplikaci funkcí s jednoduchou funkcí aktivovanou protokolem HTTP. V dalším článku rozbalíte tuto funkci přidáním výstupní vazby. Tato vazba zapíše řetězec z požadavku HTTP do zprávy ve frontě Azure Queue Storage. 
+Použili jste [Visual Studio Code](functions-develop-vs-code.md?tabs=java) k vytvoření aplikace funkcí pomocí jednoduché funkce aktivované protokolem HTTP. V dalším článku tuto funkci rozbalíte tak, že se připojíte k Azure Storage. Další informace o připojení k ostatním službám Azure najdete v tématu [Přidání vazeb do existující funkce v Azure Functions](add-bindings-existing-function.md?tabs=java). 
 
 > [!div class="nextstepaction"]
 > [Připojení k frontě Azure Storage](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-java)

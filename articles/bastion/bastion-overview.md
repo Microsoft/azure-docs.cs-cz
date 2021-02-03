@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: overview
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: f4aa1ef29ffb27efb29d969e48af4cf5288e08ae
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 18672d76c262f8919489ccf132532c117666abe4
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183879"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492174"
 ---
 # <a name="what-is-azure-bastion"></a>Co je Azure Bastion?
 
@@ -30,7 +30,7 @@ RDP a SSH jsou některé ze základních prostředků, pomocí kterých se můž
 
 Na tomto obrázku vidíte architekturu nasazení Azure bastionu. V tomto diagramu:
 
-* Hostitel bastionu je nasazený ve virtuální síti.
+* Hostitel bastionu je nasazený ve virtuální síti, která obsahuje podsíť AzureBastionSubnet s předponou minima/27.
 * Uživatel se připojí k Azure Portal pomocí libovolného prohlížeče HTML5.
 * Uživatel vybere virtuální počítač, ke kterému se má připojit.
 * Jediným kliknutím se v prohlížeči otevře relace RDP/SSH.
