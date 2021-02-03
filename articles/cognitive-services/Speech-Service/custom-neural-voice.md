@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2020
 ms.author: trbye
-ms.openlocfilehash: 9e230ff4e84eba7b61846540fef2915765fa4f77
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: baa48ede04b9de98bd69de69753c97b5fcee7329
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509668"
+ms.locfileid: "99525258"
 ---
 # <a name="what-is-custom-neural-voice"></a>Co je vlastní neuronové hlas?
 
@@ -51,7 +51,7 @@ Díky funkci vlastního hlasu neuronové můžete přizpůsobit modul neuronové
 
 ## <a name="responsible-use-of-ai"></a>Zodpovědné využití AI
 
-Pokud se chcete dozvědět, jak používat vlastní neuronové Voice zodpovědnou, přečtěte [si poznámku o transparentnosti](https://docs.microsoft.com/legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice). Poznámky transparentnosti Microsoftu mají za úkol porozumět tomu, jak naše technologie AI funguje, takže vlastníci systému můžou mít vliv na výkon a chování systému a také na důležité úvahy o celém systému, včetně technologie, lidí a prostředí.
+Pokud se chcete dozvědět, jak používat vlastní neuronové Voice zodpovědnou, přečtěte [si poznámku o transparentnosti](/legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context). Poznámky transparentnosti Microsoftu mají za úkol porozumět tomu, jak naše technologie AI funguje, takže vlastníci systému můžou mít vliv na výkon a chování systému a také na důležité úvahy o celém systému, včetně technologie, lidí a prostředí.
 
 ## <a name="next-steps"></a>Další kroky
 

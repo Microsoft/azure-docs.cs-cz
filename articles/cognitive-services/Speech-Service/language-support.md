@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 83d7263d430ed9dc8f2f61711fc4c1339ba03810
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 118ab33c8d8ce46559957236daa21ba494655e69
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98662926"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526275"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -392,10 +392,30 @@ Více než 75 standardních hlasů je k dispozici ve více než 45 jazycích a n
 
 ### <a name="customization"></a>Přizpůsobení
 
-Vlastní nastavení hlasu je k dispozici pro `de-DE` , `en-GB` , `en-IN` , `en-US` , `es-MX` , `fr-FR` , `it-IT` , `pt-BR` a `zh-CN` . Vyberte správné národní prostředí, které odpovídá školicím datům, které máte k dispozici pro výuku vlastního hlasového modelu. Například pokud jsou data nahrávání mluveného mluveného zvýraznění v angličtině, vyberte `en-GB` .
+Vlastní hlas je k dispozici v úrovni Standard a neuronové. Podporované jazyky jsou pro tyto dvě úrovně odlišné. 
+
+| Jazyk | Národní prostředí | Standard | Neuronové |
+|--|--|--|--|
+| Čínština (Mandarin, zjednodušená) | `zh-CN` | Yes | Yes |
+| Čínština (Mandarin, zjednodušená), anglické dvojjazyčné | `zh-CN` dvojjazyčný | Yes | Yes |
+| Angličtina (Austrálie) | `en-AU` | No | Yes |
+| Angličtina (Indie) | `en-IN` | Yes | Yes |
+| Angličtina (Spojené království) | `en-GB` | Yes | Yes |
+| Angličtina (Spojené státy) | `en-US` | Yes | Yes |
+| Francouzština (Kanada) | `fr-CA` | No | Yes |
+| francouzština (Francie) | `fr-FR` | Yes | Yes |
+| němčina (Německo) | `de-DE` | Yes | Yes |
+| italština (Itálie) | `it-IT` | Yes | Yes |
+| japonština (Japonsko) | `ja-JP` | No | Yes |
+| korejština (Jižní Korea) | `ko-KR` | No | Yes |
+| Portugalština (Brazílie) | `pt-BR` | Yes | Yes |
+| Španělština (Mexiko) | `es-MX` | Yes | Yes |
+| Španělština (Španělsko) | `es-ES` | No | Yes |
+
+Vyberte správné národní prostředí, které odpovídá školicím datům, které máte k dispozici pro výuku vlastního hlasového modelu. Například pokud jsou data nahrávání mluveného mluveného zvýraznění v angličtině, vyberte `en-GB` .
 
 > [!NOTE]
-> V rámci vlastního hlasu nepodporujeme školicí modely pro BI, s výjimkou Chinese-English BI-vícejazyčná. Pokud chcete naučit čínský hlas, který může mluvit i v angličtině, vyberte možnost dvojjazyčně v angličtině. Hlasové školení ve všech národních prostředích začíná sadou dat 2000 + projevy, s výjimkou `en-US` a `zh-CN` kde můžete začít s jakoukoli velikostí školicích dat.
+> V rámci vlastního hlasu nepodporujeme školicí modely pro BI, s výjimkou Chinese-English BI-vícejazyčná. Pokud chcete naučit čínský hlas, který může mluvit i v angličtině, vyberte možnost dvojjazyčně v angličtině. Chinese-English dvojjazyčné školení pomocí metody Standard je k dispozici pouze v Severní Evropa a Střed USA – sever. Vlastní neuronové hlasové školení je k dispozici v Velká Británie – jih a Východní USA.
 
 ## <a name="speech-translation"></a>Překlad řeči
 

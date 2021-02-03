@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2021
+ms.date: 02/03/2021
 ms.author: memildin
-ms.openlocfilehash: e881c61d16cd167ace78abb96dca7e714436cfc0
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: bd64ca877f0bfd81597e091ef8ef000ad1b76992
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752201"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526428"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Skóre zabezpečení ve službě Azure Security Center
 
@@ -244,8 +244,8 @@ I když je výchozí iniciativa zabezpečení Security Center založená na osv�
     <td class="tg-lboi"; width=55%>- Na virtuálních počítačích by měly být povolené Adaptivní řízení aplikací.<br>- Agent monitorování by měl být nainstalovaný na virtuálních počítačích<br>- Agent monitorování by měl být nainstalovaný na vašich počítačích.<br>- Agent Log Analytics musí být nainstalovaný na počítačích se systémem Windows Azure ARC (Preview).<br>- Agent Log Analytics musí být nainstalovaný na počítačích se systémem Linux (Preview).<br>- Problémy se stavem agenta monitorování by se měly vyřešit na vašich počítačích.</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">Použít klasifikaci dat (max. skóre 2)</p></strong>Klasifikace dat vaší organizace podle citlivosti a dopadu na firmu vám umožní určit data a přiřazovat k nim hodnoty a poskytovat strategii a základ pro zásady správného řízení.<br><a href="/azure/information-protection/what-is-information-protection">Azure Information Protection</a> může pomáhat s klasifikací dat. Pomocí zásad šifrování, identity a autorizace chrání data a omezuje přístup k datům. Některé klasifikace, které Microsoft používá, jsou jiné než obchodní, veřejné, obecné, důvěrné a vysoce důvěrné.</td>
-    <td class="tg-lboi"; width=55%>- Citlivá data v databázích SQL by měla být klasifikována (Preview)</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Použít klasifikaci dat (max. skóre 0)</p></strong>Klasifikace dat vaší organizace podle citlivosti a dopadu na firmu vám umožní určit data a přiřazovat k nim hodnoty a poskytovat strategii a základ pro zásady správného řízení.<br><a href="/azure/information-protection/what-is-information-protection">Azure Information Protection</a> může pomáhat s klasifikací dat. Pomocí zásad šifrování, identity a autorizace chrání data a omezuje přístup k datům. Některé klasifikace, které Microsoft používá, jsou jiné než obchodní, veřejné, obecné, důvěrné a vysoce důvěrné.</td>
+    <td class="tg-lboi"; width=55%>- Citlivá data v databázích SQL by měla být klasifikována</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Ochrana aplikací před útoky DDoS (maximální skóre 2)</p></strong>Distribuované útoky s cílem odepření služeb (DDoS) zahltí prostředky a vykreslovat aplikace jsou nepoužitelné. Pomocí <a href="/azure/virtual-network/ddos-protection-overview">Azure DDoS Protection Standard</a> můžete svoji organizaci chránit před třemi hlavními typy útoků DDoS:<br>- <strong>Objemná útoky</strong> zaplaví síť s legitimním provozem. DDoS Protection Standard zmírnit tyto útoky tím, že je automaticky odabsorbují nebo vyčištěním.<br>- <strong>Útoky protokolu</strong> generují cíl nepřístupný, protože využívají slabé stránky v zásobníku protokolu vrstvy 3 a 4. DDoS Protection Standard zmírnit tyto útoky blokováním škodlivého provozu.<br>- <strong>Útoky na vrstvy prostředků (aplikace)</strong> jsou cílové pakety webových aplikací. Chránit před tímto typem pomocí brány firewall webových aplikací a DDoS Protection standardem.</td>
@@ -279,7 +279,7 @@ I když je výchozí iniciativa zabezpečení Security Center založená na osv�
 ## <a name="secure-score-faq"></a>Nejčastější dotazy k zabezpečení skóre
 
 ### <a name="if-i-address-only-three-out-of-four-recommendations-in-a-security-control-will-my-secure-score-change"></a>Pokud v ovládacím prvku zabezpečení řeším jenom tři doporučení ze čtyř, bude se můj bezpečnostní skóre měnit?
-Ne. Nemění se, dokud neopravíte všechna doporučení pro jeden prostředek. Chcete-li získat maximální skóre pro ovládací prvek, je nutné opravit všechna doporučení pro všechny prostředky.
+No. Nemění se, dokud neopravíte všechna doporučení pro jeden prostředek. Chcete-li získat maximální skóre pro ovládací prvek, je nutné opravit všechna doporučení pro všechny prostředky.
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>Pokud doporučení neplatí pro mě a je v zásadách zakázané, bude řízení zabezpečení splněné a mé zabezpečené skóre se aktualizovalo?
 Ano. Doporučujeme zakázat doporučení, pokud jsou ve vašem prostředí nepoužitá. Pokyny, jak zakázat konkrétní doporučení, najdete v tématu [zakázání zásad zabezpečení](./tutorial-security-policy.md#disable-security-policies-and-disable-recommendations).

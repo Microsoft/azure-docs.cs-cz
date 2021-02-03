@@ -101,6 +101,8 @@
               href: container-registry-access-selected-networks.md
             - name: Omezení přístupu s využitím koncového bodu služby (Preview)
               href: container-registry-vnet.md
+            - name: Povolení přístupu pomocí důvěryhodných služeb
+              href: allow-access-trusted-services.md
             - name: Šifrování s využitím klíče spravovaného zákazníkem
               href: container-registry-customer-managed-keys.md
             - name: Přístup za bránou firewall

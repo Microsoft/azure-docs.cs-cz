@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 720a0e25f3486f32ffed897e54033fd4b68dace4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 368ab1bc6a1fc13c3001b437c3c2a8be2bbb9c04
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87848121"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525987"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Jednotné upozorňování & monitorování v Azure Monitor nahrazuje klasické výstrahy & monitorování
 
 Azure Monitor se teď stala sjednocenou úplnou službou pro monitorování zásobníku, která teď v rámci prostředků podporuje jednu metriku a jedno upozornění. Další informace najdete v našem [blogovém příspěvku o novém Azure monitor](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/). Nové platformy pro monitorování a upozorňování Azure jsou sestavené tak, aby byly rychlejší, inteligentnější a rozšiřitelné, a přitom dodržíte rostoucí expansei cloud computingu a online pomocí inteligentního cloudového filozofie Microsoftu.
 
-Díky nové platformě monitorování a upozorňování Azure se vyřadí klasické výstrahy v Azure Monitor, i když jsou stále v omezeném rozsahu použití pro prostředky, které ještě nepodporují nové výstrahy. Datum vyřazení těchto výstrah bylo ještě rozšířeno. Nové datum bude brzy oznámeno pro migraci zbývajících výstrah, [Azure Government Cloud](../../azure-government/documentation-government-welcome.md)a [Azure Čína 21Vianet](https://docs.azure.cn/).
+S novou platformou monitorování a upozorňování Azure se pro uživatele veřejného cloudu vyřadí klasické výstrahy v Azure Monitor, i když jsou i nadále omezené, že se nepodporují pro prostředky, které ještě nepodporují nové výstrahy. Datum vyřazení těchto výstrah bylo ještě rozšířeno. Nové datum bude brzy oznámeno pro migraci zbývajících výstrah, [Azure Government Cloud](../../azure-government/documentation-government-welcome.md)a [Azure Čína 21Vianet](https://docs.azure.cn/).
 
- ![Klasická výstraha v Azure Portal](media/monitoring-classic-retirement/monitor-alert-screen2.png) 
+ ![Klasická výstraha v Azure Portal](media/monitoring-classic-retirement/monitor-alert-screen2.png) 
 
 Doporučujeme začít a znovu vytvořit upozornění v nové platformě.
 
@@ -48,7 +48,7 @@ Novější metriky pro prostředky Azure jsou k dispozici jako:
 
 ## <a name="retirement-of-classic-monitoring-and-alerting-platform"></a>Vyřazení klasického monitorování a platformy pro výstrahy
 
-Jak bylo uvedeno dříve, jsou vyřazení starší klasické monitorování a upozorňování. včetně uzavírání souvisejících rozhraní API, Azure Portal rozhraní a služeb v něm, i když ještě omezené použití pro prostředky, které ještě nepodporují nové výstrahy. Konkrétně tyto funkce budou zastaralé:
+Jak bylo uvedeno dříve, pro uživatele veřejného cloudu jsou vyřazeny starší klasické monitorování a upozorňování. včetně uzavírání souvisejících rozhraní API, Azure Portal rozhraní a služeb v něm, i když ještě omezené použití pro prostředky, které ještě nepodporují nové výstrahy. Konkrétně tyto funkce budou zastaralé:
 
 - Starší (Classic) metriky a výstrahy pro prostředky Azure, které jsou aktuálně dostupné prostřednictvím Azure Portal v [části výstrahy (Classic)](./alerts-classic.overview.md) . dostupné jako prostředek [Microsoft. Insights/alertrules](/rest/api/monitor/alertrules)
 - Starší (Classic) platforma a vlastní metriky pro Application Insights a také výstrahy, jak jsou aktuálně dostupné prostřednictvím [části výstrahy (Classic)](./alerts-classic.overview.md) Azure Portal a přístupné jako prostředek [Microsoft. Insights/alertrules](/rest/api/monitor/alertrules)

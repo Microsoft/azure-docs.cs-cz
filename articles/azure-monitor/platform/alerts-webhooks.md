@@ -6,17 +6,17 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
-ms.openlocfilehash: 47ed723ecfc544673ac8aa6374c27ae5a7cf166b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1519dbe9439f1d56a558082f993b15b4a312ecfa
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852102"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526869"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Volání Webhooku s klasickou výstrahou metriky v Azure Monitor
 
 > [!WARNING]
-> Tento článek popisuje, jak používat starší klasické výstrahy metrik. Azure Monitor teď podporuje [novější výstrahy na metriky téměř v reálném čase a nové prostředí výstrah](./alerts-overview.md). Klasické výstrahy jsou [vyřazeny](./monitoring-classic-retirement.md), i když jsou v omezeném rozsahu používány pro prostředky, které ještě nepodporují nové výstrahy.
+> Tento článek popisuje, jak používat starší klasické výstrahy metrik. Azure Monitor teď podporuje [novější výstrahy na metriky téměř v reálném čase a nové prostředí výstrah](./alerts-overview.md). Klasické výstrahy jsou [vyřazené](./monitoring-classic-retirement.md) pro uživatele veřejného cloudu, ale i v omezeném počtu použití pro prostředky, které ještě nepodporují nové výstrahy.
 >
 
 Webhooky můžete použít ke směrování oznámení o výstrahách Azure do jiných systémů pro následné zpracování nebo vlastní akce. Webhook na výstraze můžete použít ke směrování do služeb, které odesílají zprávy SMS, k protokolování chyb, k oznamování týmu prostřednictvím chatu nebo služby zasílání zpráv nebo pro různé další akce. 
@@ -79,7 +79,7 @@ Operace POST obsahuje následující datovou část a schéma JSON pro všechny 
 | časové razítko |Y | |Čas, kdy byla výstraha aktivována. |
 | id |Y | |Každé pravidlo výstrahy má jedinečné ID. |
 | name |Y | |Název výstrahy |
-| Popis |Y | |Popis výstrahy |
+| description |Y | |Popis výstrahy |
 | conditionType |Y |Metrika, událost |Podporují se dva typy výstrah: metrika a událost. Výstrahy metriky jsou založené na podmínce metriky. Výstrahy událostí jsou založené na události v protokolu aktivit. Tuto hodnotu použijte, chcete-li ověřit, zda je výstraha založena na metrikě nebo události. |
 | pomocné |Y | |Konkrétní pole, která se mají kontrolovat v závislosti na hodnotě **conditionType** |
 | metricName |Pro výstrahy metriky | |Název metriky, která definuje, co pravidlo monitoruje. |
@@ -96,7 +96,7 @@ Operace POST obsahuje následující datovou část a schéma JSON pro všechny 
 | resourceId |Y | |ID prostředku ovlivněného prostředku. |
 | resourceRegion |Y | |Oblast nebo umístění ovlivněného prostředku. |
 | portalLink |Y | |Přímý odkaz na stránku souhrnu prostředků na portálu. |
-| properties |N |Volitelné |Sada párů klíč/hodnota, která obsahuje podrobnosti o události. Například, `Dictionary<String, String>`. Pole vlastností je volitelné. Ve vlastním uživatelském rozhraní nebo pracovním postupu založeném na aplikaci logiky mohou uživatelé zadat páry klíč/hodnota, které lze předat prostřednictvím datové části. Alternativní způsob, jak předat vlastní vlastnosti zpátky Webhooku, je prostřednictvím samotného identifikátoru URI Webhooku (jako parametr dotazů). |
+| properties |N |Volitelné |Sada párů klíč/hodnota, která obsahuje podrobnosti o události. Například `Dictionary<String, String>`. Pole vlastností je volitelné. Ve vlastním uživatelském rozhraní nebo pracovním postupu založeném na aplikaci logiky mohou uživatelé zadat páry klíč/hodnota, které lze předat prostřednictvím datové části. Alternativní způsob, jak předat vlastní vlastnosti zpátky Webhooku, je prostřednictvím samotného identifikátoru URI Webhooku (jako parametr dotazů). |
 
 > [!NOTE]
 > Pole **vlastnosti** můžete nastavit jenom pomocí [Azure monitor rozhraní REST API](/rest/api/monitor/alertrules).

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
-ms.date: 08/12/2020
+ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 9643e62f085888808b95698d068c5e383fb8d539
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 07529b18191c71776a9a36edbfa4cfd8ded5af4f
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337963"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524545"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Použití samoobslužného expedice pro Azure Data Box v Azure Portal
 
@@ -24,12 +24,14 @@ Tento článek popisuje samostatné spravované úkoly, které je možné objedn
 Samostatně spravovaná dodávka je k dispozici jako možnost při [objednání Azure Data box](data-box-deploy-ordered.md). Samostatně spravovaná dodávka je k dispozici pouze v následujících oblastech:
 
 * Vláda USA
+* Spojené království
 * Západní Evropa
 * Japonsko
 * Singapur
 * Jižní Korea
 * Indie
 * Jižní Afrika
+* Austrálie
 
 ## <a name="use-self-managed-shipping"></a>Použití samoobslužné expedice
 
@@ -57,11 +59,11 @@ Když umístíte Data Box pořadí, můžete zvolit možnost dodání samostatn�
 
    ![Pokyny k naplánování vyzvednutí pro Azure](media\data-box-portal-customer-managed-shipping\data-box-portal-schedule-pickup-email-01.png)
 
-6. Po naplánování vyzvednutí zařízení budete moct zobrazit autorizační kód zařízení v podokně **vyzvednutí plánu pro Azure** .
+6. Po naplánování vyzvednutí zařízení můžete zobrazit autorizační kód zařízení v podokně **vyzvednutí plánu pro Azure** .
 
    ![Zobrazení autorizačního kódu zařízení](media\data-box-portal-customer-managed-shipping\data-box-portal-auth-01b.png)
 
-   Poznamenejte si tento **autorizační kód**. Podle požadavků na zabezpečení je při plánování plánování nutné předložit jméno osoby, která by byla přijata k výběru.
+   Poznamenejte si tento **autorizační kód**. V případě požadavků na zabezpečení, v době plánování naplánování, je nutné předložit jméno uživatele, který by se dostal k výběru.
 
    Je také potřeba zadat podrobnosti o tom, kdo bude mít k dispozici datové centrum pro účely vyzvednutí. Vy nebo kontaktní bod musí mít ID fotografie schválené státní správou, která bude ověřena v datacentru.
 
@@ -73,7 +75,7 @@ Když umístíte Data Box pořadí, můžete zvolit možnost dodání samostatn�
 
 8. Až se zařízení vyzvednutí, zkopírujte data do Data Box ve vaší lokalitě. Po dokončení kopírování dat se můžete připravit na dodávání Data Box. Další informace najdete v tématu [Příprava k odeslání](data-box-deploy-picked-up.md#prepare-to-ship).
 
-   **Příprava k odeslání** krok se musí dokončit bez kritických chyb, jinak budete muset tento krok znovu spustit po provedení nezbytných oprav. Po úspěšném dokončení přípravy na odeslání můžete zobrazit autorizační kód pro odložení v místním uživatelském rozhraní zařízení.
+   **Příprava k odeslání** krok je nutné provést bez kritických chyb. V opačném případě bude nutné tento krok znovu spustit po provedení nezbytných oprav. Po úspěšném dokončení kroku **Příprava k odeslání** můžete zobrazit autorizační kód pro vypínání v místním uživatelském rozhraní zařízení.
 
    > [!NOTE]
    > Nesdílejte autorizační kód přes e-mail. To se dá ověřit jenom v datacentru během odkládacího prostředí.

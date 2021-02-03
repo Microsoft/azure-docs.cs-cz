@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd14c7911676768a61d2b2c0e366d2c227455be8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 562c90dcc4f802290b0ed8b4d544fce9d526fa10
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678200"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524664"
 ---
 # <a name="continuous-access-evaluation"></a>Nepřetržité vyhodnocování přístupu
 
@@ -48,7 +48,7 @@ Vyhodnocování průběžného přístupu se implementuje povolením služeb, ja
 - Heslo pro uživatele se změnilo nebo resetuje.
 - Pro uživatele je povoleno Multi-Factor Authentication.
 - Správce explicitně odvolá všechny aktualizační tokeny pro uživatele.
-- Azure AD Identity Protection zjištěno zvýšené riziko uživatele
+- Bylo zjištěno vysoké riziko uživatele Azure AD Identity Protection
 
 Tento proces umožňuje situaci, kdy uživatelé ztratí přístup k souborům SharePointu Online, e-mailu, kalendáři nebo úlohám a týmům z Microsoft 365 klientských aplikací v minutách po jedné z těchto kritických událostí. 
 
@@ -146,7 +146,7 @@ V případě CAE máme přehledy o pojmenovaných umístěních založených na 
 
 ### <a name="ip-address-configuration"></a>Konfiguraci IP adresy
 
-Poskytovatelé identity a poskytovatelé prostředků můžou zobrazovat různé IP adresy. Tato neshoda může nastat kvůli implementaci síťových proxy serverů ve vaší organizaci nebo nesprávných konfiguracích protokolu IPv4/IPv6 mezi poskytovatelem identity a poskytovatelem prostředků. Například:
+Poskytovatelé identity a poskytovatelé prostředků můžou zobrazovat různé IP adresy. Tato neshoda může nastat kvůli implementaci síťových proxy serverů ve vaší organizaci nebo nesprávných konfiguracích protokolu IPv4/IPv6 mezi poskytovatelem identity a poskytovatelem prostředků. Příklad:
 
 - Poskytovatel identity uvidí jednu IP adresu z klienta.
 - Poskytovatel prostředků uvidí od klienta jinou IP adresu po předání prostřednictvím proxy serveru.

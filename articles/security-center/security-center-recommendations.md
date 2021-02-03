@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: dbda0aecdadd81da0f7681a5fc9b140157d5e8f3
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 3b2f111f83dbd731b69671e58d4bf9dc648a596f
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756807"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526490"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Doporučení zabezpečení v Azure Security Center 
 
@@ -39,11 +39,19 @@ Každé doporučení vám poskytne:
 
 ## <a name="how-does-microsoft-decide-what-needs-securing-and-hardening"></a>Jak Microsoft rozhodne, co potřebuje k zabezpečení a posílení zabezpečení?
 
-Doporučení pro Security Center jsou založená na testu zabezpečení Azure. 
+Doporučení pro Security Center jsou založená na testu zabezpečení Azure. Téměř každé doporučení má základní zásadu, která je odvozena z požadavku ve srovnávacím testu.
 
-Srovnávací test zabezpečení Azure je Microsoftem vytvořená sada pokynů pro zabezpečení a osvědčené postupy na základě běžných architektur dodržování předpisů, které jsou specifické pro Azure. Toto široce uznávané sestavování srovnávacích testů v ovládacích prvcích z [centra pro Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) se soustředí na zabezpečení zaměřené na Cloud.
+Srovnávací test zabezpečení Azure je Microsoftem vytvořená sada pokynů pro zabezpečení a osvědčené postupy na základě běžných architektur dodržování předpisů, které jsou specifické pro Azure. Toto široce uznávané sestavování srovnávacích testů v ovládacích prvcích z [centra pro Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) se soustředí na zabezpečení zaměřené na Cloud. Přečtěte si další informace o [srovnávacím testu zabezpečení Azure](../security/benchmarks/introduction.md).
 
-Přečtěte si další informace o [srovnávacím testu zabezpečení Azure](../security/benchmarks/introduction.md).
+Při prohlížení podrobností doporučení je často užitečné, abyste mohli zobrazit základní zásady. Pro každé doporučení podporované zásadou použijte odkaz **Zobrazit definici zásad** ze stránky s podrobnostmi doporučení a přejít přímo na položku Azure Policy pro příslušné zásady:
+
+:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="Odkaz na stránku Azure Policy pro konkrétní zásadu podporující doporučení":::
+
+Pomocí tohoto odkazu můžete zobrazit definici zásady a zkontrolovat logiku hodnocení. 
+
+Pokud si prohlédnete seznam doporučení v našich [doporučeních o zabezpečení](recommendations-reference.md), přečtěte si také odkazy na stránky definice zásad:
+
+:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Přístup na stránku Azure Policy pro konkrétní zásadu přímo z referenční stránky Azure Security Center doporučení":::
 
 ## <a name="monitor-recommendations"></a>Doporučení pro monitorování <a name="monitor-recommendations"></a>
 
@@ -63,9 +71,12 @@ Security Center analyzuje stav zabezpečení vašich prostředků, aby identifik
 
     Stránka obsahuje:
 
-    1. **Vynutilit** a **Odepřít** tlačítka pro podporovaná doporučení (viz [Ochrana před neoprávněnými konfiguracemi s doporučeními pro vymáhání/zamítnutí](prevent-misconfigurations.md)
+    1. Pro podporovaná doporučení na horním panelu nástrojů se zobrazí některá nebo všechna následující tlačítka:
+        - **Vyhovět** a **zamítnout** (viz [Ochrana před neoprávněnými konfiguracemi s doporučeními pro vymáhání/zamítnutí](prevent-misconfigurations.md)
+        - Pokud chcete přejít přímo k položce Azure Policy pro základní zásady, **Zobrazte definici zásad.**
     1. **Indikátor závažnosti**
-    1. **Interval aktuálnosti**  (tam, kde je relevantní) 
+    1. **Interval aktuálnosti** (tam, kde je relevantní)
+    1. **Počet vyloučených prostředků** , pokud pro toto doporučení existují výjimky, zobrazuje se počet vyloučených prostředků.
     1. **Popis** – stručný popis problému
     1. **Postup nápravy** – popis ručních kroků požadovaných k nápravě potíží se zabezpečením u ovlivněných prostředků. Pro doporučení s "rychlou opravou" můžete před použitím navrhované opravy pro vaše prostředky vybrat možnost **Zobrazit logiku oprav** . 
     1. **Ovlivněné prostředky** – vaše prostředky jsou seskupeny do karet:

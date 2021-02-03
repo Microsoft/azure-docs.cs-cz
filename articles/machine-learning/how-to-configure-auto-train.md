@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 6971d67204beb39ff0afa6c68dbecf278d86b299
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 8ac69e6961af4991b250320b7af7cf5a345d3efb
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954711"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526462"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 
@@ -420,7 +420,7 @@ Obecné informace o tom, jak je možné povolit vysvětlení modelu a důležito
   * Chyby atributů: ex. `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
   
   Pokud chcete tento problém obejít, proveďte jeden z následujících dvou kroků v závislosti na `AutoML` verzi školení pro sadu SDK:
-    * Pokud `AutoML` je vaše verze školení SDK větší než 1.13.0, budete potřebovat `pandas == 0.25.1` a `sckit-learn==0.22.1` . Pokud dojde k neshodě verzí, upgradujte scikit-učí nebo PANDAS na správnou verzi, jak je znázorněno níže:
+    * Pokud `AutoML` je vaše verze školení SDK větší než 1.13.0, budete potřebovat `pandas == 0.25.1` a `scikit-learn==0.22.1` . Pokud dojde k neshodě verzí, upgradujte scikit-učí nebo PANDAS na správnou verzi, jak je znázorněno níže:
       
       ```bash
          pip install --upgrade pandas==0.25.1

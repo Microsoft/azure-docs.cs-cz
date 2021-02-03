@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 8154e1adff8d8c2bdfe7fedc9309f95e5c5880bd
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 0eb3b8feda09d931654d1781ea37737d68a1b377
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99500718"
+ms.locfileid: "99526632"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Co je nového v Azure Sentinel
 
@@ -46,7 +46,7 @@ Azure Sentinel teď podporuje nový modul PowerShellu [AZ. SecurityInsights](htt
 
 Modul **AZ. SecurityInsights** podporuje běžné případy použití Sentinel v Azure, jako je například interakce s incidenty ke změně Statues, závažnosti, vlastníka a tak dále, přidávání komentářů a popisků k incidentům a vytváření záložek.
 
-I když pro kanál CI/CD doporučujeme používat šablony [Azure Resource Manager (ARM)](/azure/azure-resource-manager/templates/) , modul **AZ. SecurityInsights** je vhodný pro úlohy po nasazení a konkrétně cílí na SOC Automation.  Například automatizace SOC může zahrnovat kroky ke konfiguraci datových konektorů, vytváření pravidel analýzy nebo přidávání akcí automatizace do pravidel analýz.
+I když pro kanál CI/CD doporučujeme používat šablony [Azure Resource Manager (ARM)](/azure/azure-resource-manager/templates/) , modul **AZ. SecurityInsights** je vhodný pro úlohy po nasazení a je zaměřený na automatizaci SOC.  Například automatizace SOC může zahrnovat kroky ke konfiguraci datových konektorů, vytváření pravidel analýzy nebo přidávání akcí automatizace do pravidel analýz.
 
 Další informace, včetně úplného seznamu a popisu dostupných rutin, popisů parametrů a příkladů, najdete v [dokumentaci AZ. SecurityInsights PowerShellu](/powershell/module/az.securityinsights/).
 
@@ -78,7 +78,7 @@ Další informace najdete v tématu [Azure monitor protokolu vyhrazených cluste
 
 ### <a name="logic-apps-managed-identities"></a>Spravované identity Logic Apps
 
-Funkce Azure Sentinel teď podporuje spravované identity pro konektor Azure Sentinel Logic Apps a umožňuje udělit oprávnění přímo ke konkrétnímu playbooku, aby fungovala v Azure Sentinel, a ne vytvářet další identity.
+Azure Sentinel teď podporuje spravované identity pro konektor Azure Sentinel Logic Apps a umožňuje udělit oprávnění přímo ke konkrétnímu playbooku, aby fungovala na Azure Sentinel místo vytváření dalších identit.
 
 - **Bez spravované identity** konektor Logic Apps vyžaduje samostatnou identitu s rolí RBAC Sentinel Azure, aby bylo možné spustit službu Azure Sentinel. Samostatnou identitou může být uživatel služby Azure AD nebo instanční objekt, jako je například aplikace registrovaná v Azure AD.
 
@@ -123,7 +123,7 @@ Tato aktualizace pro službu Azure Sentinel zahrnuje nové lovecké dotazy, kter
 
 Přidané lovecké dotazy jsou navržené tak, aby vám pomohly najít podezřelou aktivitu ve vašem prostředí. I když můžou vracet legitimní aktivity a potenciálně škodlivou aktivitu, můžou být užitečné při vyplňování vašeho lovu. 
 
-Pokud po spuštění těchto dotazů máte jistotu, že budete mít výsledky, možná je budete chtít převést na analytická pravidla nebo přidat lovecké výsledky existujícím nebo novým incidentům.
+Po spuštění těchto dotazů máte jistotu, že budete chtít výsledky převést na analytická pravidla nebo přidat lovecké výsledky existujícím nebo novým incidentům.
 
 Všechny přidané dotazy jsou k dispozici prostřednictvím stránky pro lov v rámci služby Azure Sentinel. Další informace najdete v tématu věnovaném [Zalovenému pro hrozby pomocí služby Azure Sentinel](hunting.md).
 

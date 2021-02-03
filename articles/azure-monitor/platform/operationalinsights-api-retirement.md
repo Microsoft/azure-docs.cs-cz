@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/29/2020
-ms.openlocfilehash: e2b12d7a2206ab369328563af438c6ef1ea39327
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d094e1760db1ddfcff520b0022a232735d21d355
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184106"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525818"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>Vyřazení verze rozhraní API OperationalInsights
 Microsoft poskytuje oznámení alespoň 12 měsíců před vyřazením rozhraní API z důvodu hladkého přechodu na novější/podporovanou verzi. Vydali jsme novou verzi (2020-08-01) pro rozhraní API poskytovatele prostředků **OperationalInsights** a vyřadíme všechny starší verze API z 29. února 2024.
@@ -66,6 +66,15 @@ V závislosti na metodě konfigurace, kterou používáte, byste měli aktualizo
     }
     ```
 
+
+### <a name="more-information"></a>Další informace
+Pokud máte nějaké otázky, Získejte odpovědi od [expertů pro odborníky na technickou komunitu]( https://techcommunity.microsoft.com/t5/azure-monitor/bd-p/AzureMonitor). Pokud máte plán podpory a potřebujete technickou pomoc, vytvořte [žádost o podporu]( https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest): 
+1.  V části *typ problému* vyberte **technický**. 
+2.  V části *Předplatné* vyberte své předplatné. 
+3.  V části *Služba* vyberte **moje služby** a pak vyberte **Log Analytics**. 
+4.  V části *Souhrn* zadejte popis problému. 
+5.  V části *typ problému* vyberte **Log Analytics Správa pracovního prostoru**.  
+6.  V části *problémový typ* vyberte **šablony ARM, PowerShell a** rozhraní příkazového řádku. 
 
 ## <a name="next-steps"></a>Další kroky
 

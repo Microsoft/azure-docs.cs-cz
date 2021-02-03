@@ -4,16 +4,16 @@ description: Přečtěte si, jak funguje automatický proces migrace.
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.subservice: alerts
-ms.openlocfilehash: 6a2d032c6aa33b72fe422638df45ca48bf8b1036
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ce3550dcef174a4d970917fabfda3c4fd2a8df4
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87847278"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526547"
 ---
 # <a name="understand-the-automatic-migration-process-for-your-classic-alert-rules"></a>Pochopení procesu automatické migrace pro pravidla upozornění na Classic
 
-Jak [už jsme oznámili](monitoring-classic-retirement.md), klasické výstrahy v Azure monitor jsou vyřazené, i když jsou pořád v omezeném rozsahu použití pro prostředky, které ještě nepodporují nové výstrahy. V rámci procesu vyřazení je k dispozici ve Azure Portal [Nástroj pro migraci](alerts-using-migration-tool.md) , který zákazníkům umožňuje aktivovat migraci sami.
+Jak jsme [dřív oznámili](monitoring-classic-retirement.md), klasické výstrahy v Azure monitor jsou vyřazení pro uživatele veřejného cloudu, i když jsou stále v omezeném rozsahu použití pro prostředky, které ještě nepodporují nové výstrahy. V rámci procesu vyřazení je k dispozici ve Azure Portal [Nástroj pro migraci](alerts-using-migration-tool.md) , který zákazníkům umožňuje aktivovat migraci sami.
 Tento článek vás provede procesem automatické migrace a pomůže vám vyřešit všechny problémy, se kterými můžete běžet.
 
   > [!NOTE]
@@ -21,9 +21,9 @@ Tento článek vás provede procesem automatické migrace a pomůže vám vyře�
 
 ## <a name="what-will-happen-during-the-automatic-migration-process"></a>K čemu dojde během procesu automatické migrace?
 
-- Od **1. září 2019**nebudou zákazníci moct vytvářet žádná nová pravidla pro klasické výstrahy s výjimkou [určitých metrik](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts).
+- Od **1. září 2019** nebudou zákazníci moct vytvářet žádná nová pravidla pro klasické výstrahy s výjimkou [určitých metrik](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts).
 - V případě výjimek může zákazník nadále vytvářet nová pravidla pro klasických výstrah a používat jejich klasické výstrahy, dokud nebudete moci pokračovat v oznamování.
-- Od **1. září 2019**se migrace klasických výstrah spustí v dávkách pro všechny zákazníky, kteří mají klasické výstrahy.
+- Od **1. září 2019** se migrace klasických výstrah spustí v dávkách pro všechny zákazníky, kteří mají klasické výstrahy.
 - Stejně jako u dobrovolných migračních nástrojů se některá z klasických pravidel upozornění, která nemigrovat, zůstanou v tom, jak jsou. Tato pravidla s klasickými výstrahami budou nadále podporována až do dalšího oznámení. Všechna neplatná pravidla pro klasických výstrah však budou odstraněna, protože nejsou funkční.
 Všechna klasická pravidla výstrah, která sledují odstraněné cílové prostředky nebo [metriky, které už nejsou podporované,](alerts-understand-migration.md#classic-alert-rules-on-deprecated-metrics) se považují za neplatnou.
 - Po spuštění migrace pro vaše předplatné, pokud nedochází k nějakým problémům, by migrace měla být dokončena během hodiny. Zákazníci můžou sledovat stav migrace [v okně migrace v Azure monitor](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel).
@@ -56,5 +56,5 @@ V [Průvodci odstraňováním potíží](alerts-understand-migration.md#common-p
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Příprava pro migraci](alerts-prepare-migration.md)
+- [Příprava na migraci](alerts-prepare-migration.md)
 - [Princip fungování nástroje pro migraci](alerts-understand-migration.md)

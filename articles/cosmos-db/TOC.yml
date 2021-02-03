@@ -110,8 +110,38 @@
       href: cosmosdb-jupyter-notebooks.md
     - name: Kvóty služeb
       href: concepts-limits.md
-    - name: Připravenost na úrovni podniku – dodržování předpisů
-      href: compliance.md
+    - name: Připravenost pro podnikové zpracování
+      items:
+        - name: Úvod do zálohování a obnovení
+          href: online-backup-and-restore.md
+        - name: Průběžné zálohování
+          items:
+            - name: Průběžné zálohování – Úvod
+              href: continuous-backup-restore-introduction.md
+            - name: Průběžné zálohování – Nejčastější dotazy
+              href: continuous-backup-restore-frequently-asked-questions.md
+            - name: Průběžné zálohování – model prostředků
+              items:
+                - name: Přehled modelu prostředků
+                  href: continuous-backup-restore-resource-model.md
+                - name: Účty obnovitelné – seznam
+                  href: restorable-database-accounts-list.md
+                - name: Účty obnovitelné – seznam podle umístění
+                  href: restorable-database-accounts-list-by-location.md
+                - name: Prostředky SQL obnovitelné – seznam
+                  href: restorable-sql-resources-list.md
+                - name: Databáze SQL obnovitelné – seznam
+                  href: restorable-sql-databases-list.md
+                - name: Obnovitelné kontejnery SQL – seznam
+                  href: restorable-sql-containers-list.md
+                - name: Prostředky obnovitelné MongoDB – seznam
+                  href: restorable-mongodb-resources-list.md
+                - name: Kolekce obnovitelné MongoDB – seznam
+                  href: restorable-mongodb-collections-list.md
+                - name: Databáze obnovitelné MongoDB – seznam
+                  href: restorable-mongodb-databases-list.md
+        - name: Dodržování předpisů
+          href: compliance.md
     - name: Automatická doporučení
       href: automated-recommendations.md
 - name: Rozhraní SQL/Core API
@@ -1365,8 +1395,20 @@
           href: how-to-setup-cmk.md
     - name: Připravenost pro podnikové zpracování
       items:
-        - name: Online zálohování a obnovení na vyžádání
-          href: online-backup-and-restore.md
+        - name: Spravovat průběžné zálohování
+          items:
+            - name: Průběžné zálohování – oprávnění a role
+              href: continuous-backup-restore-permissions.md
+            - name: Průběžné zálohování – portál
+              href: continuous-backup-restore-portal.md
+            - name: Průběžné zálohování – PowerShell
+              href: continuous-backup-restore-powershell.md
+            - name: Průběžné zálohování – příkaz CLI
+              href: continuous-backup-restore-command-line.md
+            - name: Průběžné zálohování – ARM
+              href: continuous-backup-restore-template.md
+        - name: Správa pravidelného zálohování
+          href: configure-periodic-backup-restore.md
         - name: Žádost o navýšení kvóty
           href: create-support-request-quota-increase.md
     - name: Monitorování

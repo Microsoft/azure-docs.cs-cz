@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 12/10/2020
+ms.date: 02/02/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d529c5900d851368d60099091bb5745660036dea
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: 542eed34f2be05cce3829baab2f07a5c58413ba0
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029885"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526292"
 ---
 ::: zone target="docs"
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte, jak:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že jste dokončili [Kurz: Kopírování dat na Azure Data Box Disk a jejich ověření](data-box-disk-deploy-copy-data.md).
+Než začnete, ujistěte se, že jste dokončili [kurz: kopírování dat Azure Data box disk a ověření](data-box-disk-deploy-copy-data.md).
 
 ## <a name="ship-data-box-disk-back"></a>Odeslání Data Box Disku zpátky
 
@@ -63,7 +63,7 @@ Při vrácení zařízení v USA nebo Kanadě proveďte následující kroky.
 
     - Zavolejte do místní pobočky UPS (bezplatné číslo pro příslušnou zemi/oblast).
     - Během volání uveďte sledovací číslo zpětné zásilky, jak je uvedené na vytištěném štítku.
-    - Pokud sledovací číslo neuvedete, bude společnost UPS vyžadovat, abyste při vyzvednutí zaplatili dodatečné poplatky.
+    - Pokud číslo sledování není v uvozovkách, bude zdroj napájení vyžadovat, abyste během vyzvednutí zaplatili dodatečné poplatky.
     - Místo naplánování vyzvednutí můžete také Data Box Disk dovézt na nejbližší sběrné místo.
 
 
@@ -83,7 +83,7 @@ Při vracení zařízení v Evropě nebo ve Velké Británii proveďte následuj
 
 Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny příchozí zásilky musí mít předchozí oznámení. Při vyzvednutí v Austrálii proveďte následující kroky.
 
-1. Použijte poskytnutý zpáteční expediční štítek a ujistěte se, že je na něm uvedený kód TAU (referenční číslo). Pokud zpáteční expediční štítek chybí nebo máte nějaké jiné problémy, pošlete e-mail oddělení [Data Box Asia Operations](mailto:adbo@microsoft.com). Zadejte v hlavičce název objednávky a uveďte podrobnosti o problému, se kterým se potýkáte.
+1. Použijte poskytnutý zpáteční expediční štítek a ujistěte se, že je na něm uvedený kód TAU (referenční číslo). Pokud zpáteční expediční štítek chybí nebo máte nějaké jiné problémy, pošlete e-mail oddělení [Data Box Asia Operations](mailto:adbo@microsoft.com). Zadejte název objednávky v hlavičce předmětu a podrobnosti o problému.
 2. Připevněte štítek na krabici.
 3. Zarezervujte si vyzvednutí online pomocí odkazu https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference.
 
@@ -119,13 +119,13 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
 1. Nezapomeňte zahrnout zpáteční nákladní list.
 2. Pokud je nákladní list k dispozici, vyžádejte si vyzvednutí takto:
     1. Zavolejte na zákaznickou linku společnosti *Quantium Solutions International* na čísle 070-8231-1418 během pracovní doby (od 10:00 do 17:00, od pondělí do pátku). Při žádosti o vyzvednutí uveďte, že se jedná o *vyzvednutí pro Microsoft Azure*, a číslo žádosti o službu.  
-    2. Pokud je linka obsazená, pošlete e-mail na adresu `microsoft@rocketparcel.com` s předmětem *Microsoft Azure Pickup* a s číslem žádosti o službu jako referencí.
-    3. Pokud se kurýr k vyzvednutí nedostaví, zavolejte zákaznickou linku společnosti *Quantium Solutions International* a domluvte se na náhradním řešení.
+    2. Pokud je linka zaneprázdněná, e-mailem se [microsoft@rocketparcel.com](mailto:microsoft@rocketparcel.com) předmětem e-mailu *Microsoft Azure vyzvednutí* a číslem žádosti o službu pro referenci.
+    3. Pokud se Courier nedostane do kolekce, zavolejte na mezinárodní linku *řešení Quantium* pro alternativní opatření.
     4. Obdržíte e-mailové potvrzení naplánovaného vyzvednutí.
-3. Tento krok proveďte pouze v případě, že nákladní list není k dispozici. Vyžádání si vyzvednutí:
-    1. Zavolejte na zákaznickou linku společnosti *Quantium Solutions International* na čísle 070-8231-1418 během pracovní doby (od 10:00 do 17:00, od pondělí do pátku). Při žádosti o vyzvednutí uveďte, že se jedná o *vyzvednutí pro Microsoft Azure*, a číslo žádosti o službu. Uveďte, že k zajištění vyzvednutí potřebujete nový nákladní list. Zadejte odesílatele (zákazník), informace o příjemci (datacentrum Azure) a referenční číslo (číslo žádosti o službu). 
-    2. Pokud je linka obsazená, pošlete e-mail na adresu `microsoft@rocketparcel.com` s předmětem *Microsoft Azure Pickup* a s číslem žádosti o službu jako referencí.
-    3. Pokud se kurýr k vyzvednutí nedostaví, zavolejte zákaznickou linku společnosti *Quantium Solutions International* a domluvte se na náhradním řešení.
+3. Tento krok proveďte pouze v případě, že není k dispozici žádná Poznámka k expedici. Vyžádání si vyzvednutí:
+    1. Zavolejte na zákaznickou linku společnosti *Quantium Solutions International* na čísle 070-8231-1418 během pracovní doby (od 10:00 do 17:00, od pondělí do pátku). Při žádosti o vyzvednutí uveďte, že se jedná o *vyzvednutí pro Microsoft Azure*, a číslo žádosti o službu. Uveďte, že k zajištění vyzvednutí potřebujete nový nákladní list. Zadejte odesílatele (zákazník), informace o příjemci (datacentrum Azure) a referenční číslo (číslo žádosti o službu).
+    2. Pokud je linka zaneprázdněná, pošlete e-mail [microsoft@rocketparcel.com](mailto:microsoft@rocketparcel.com) s předmětem e-mailu *Microsoft Azure vyzvednutí* a číslem žádosti o službu jako reference.
+    3. Pokud se Courier nedostane do kolekce, zavolejte na mezinárodní linku *řešení Quantium* pro alternativní opatření.
     4. V případě, že požadavek provádíte telefonicky, dostane se vám ústního potvrzení.
 
 ### <a name="singapore"></a>[Singapur](#tab/in-singapore)
@@ -152,7 +152,7 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
    > * Před 15. hodinou: Vyzvednutí proběhne následující pracovní den od 9:00 do 13:00.
    > * Po 15. hodině: Vyzvednutí proběhne následující den mezi 14:00 a 18:00.
 
-   V případě jakýchkoli potíží se laskavě obraťte na Data Box Operations Asia na adrese adbo@microsoft.com. V hlavičce uveďte název úlohy a problém, ke kterému došlo.
+   Pokud provedete všechny problémy, kontaktujte Data Box Operations Asie na adrese [adbo@microsoft.com](mailto:adbo@microsoft.com) . V hlavičce uveďte název úlohy a problém, ke kterému došlo.
 
 3. Předejte zásilku kurýrovi.
 
@@ -205,7 +205,7 @@ Při vracení zařízení v Číně proveďte následující kroky.
 
 3. Až se registrace vyzvednutí dokončí, dostanete od FedExu potvrzení e-mailem.  
 
-4. Pokud dojde k nějakým problémům, pošlete prosím e-mail na adresu [DL-DC-SHA@oe.21vianet.com](mailto:DL-DC-SHA@oe.21vianet.com) a uveďte podrobnosti o problému, ke kterému došlo.
+4. Pokud provedete všechny problémy, pošlete e-mail [DL-DC-SHA@oe.21vianet.com](mailto:DL-DC-SHA@oe.21vianet.com) s podrobnostmi o problémech a vložte název Objednávky do předmětu: řádek.
 
 #### <a name="premier-customer-care-contact-information"></a>Kontaktní informace pro Premier Customer Care
 
@@ -229,20 +229,20 @@ Při vracení zařízení v Číně proveďte následující kroky.
 
 ### <a name="self-managed"></a>[V případě svépomoci](#tab/in-selfmanaged)
 
-Pokud používáte Data Box Disk ve státní správě USA, v Japonsku, Singapuru, Koreji, Západní Evropě, Jižní Africe nebo Indii a při vytváření objednávky jste vybrali možnost samoobslužné expedice, postupujte podle těchto pokynů.
+Pokud používáte Data Box Disk v oblasti USA, Japonsko, Singapur, Korea, Spojené království, Západní Evropa, Austrálie, Jižní Afrika nebo Indie a při vytváření objednávky vybrali možnost samostatně spravovaná dodávka, postupujte podle těchto pokynů.
 
 1. Na webu Azure Portal přejděte do okna **Přehled** pro vaši objednávku. Projděte si pokyny zobrazené po výběru **Naplánovat vyzvednutí**. Měl by se zobrazit autorizační kód, který se používá při předávání objednávky.
 
-2. Až budete připraveni vrátit toto zařízení, použijte následující šablonu a odešlete e-mail provoznímu týmu služby Azure Data Box.
+2. Až budete připraveni vrátit zařízení, odešlete e-mailem Azure Data Box provoznímu týmu pomocí následující šablony.
 
     ```
     To: adbops@microsoft.com
     Subject: Request for Azure Data Box Disk drop-off for order: 'orderName'
     Body:
      a. Order name
-     b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
+     b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop-off.
     ```
-3. Provozní tým služby Azure Data Box se s vámi spojí a domluví předání v datacentru Azure.
+3. Azure Data Box provozního týmu vám bude spolupracovat s tím, aby bylo možné toto umístění uspořádat do datacentra Azure.
 
 ---
 
@@ -256,7 +256,7 @@ V tomto kurzu jste se dozvěděli o tématech spojených s Azure Data Box Diskem
 >
 > * Odeslání Data Box Disku do Microsoftu
 
-Přejděte k dalšímu postupu, kde se dozvíte, jak ověřit nahrání dat z Data Box Disku do účtu Azure Storage.
+Přejděte k dalšímu postupu, kde se dozvíte, jak ověřit nahrávání dat z Data Box Disk do účtu služby Azure Storage.
 
 > [!div class="nextstepaction"]
 > [Ověření nahrání dat z Azure Data Box Disku](./data-box-disk-deploy-upload-verify.md)

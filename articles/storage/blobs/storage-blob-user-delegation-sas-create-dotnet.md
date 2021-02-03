@@ -1,27 +1,27 @@
 ---
-title: Vytvoření SAS pro delegování uživatelů pro kontejner nebo objekt BLOB pomocí .NET
+title: Vytvoření SAS delegování uživatele pro kontejner, adresář nebo objekt BLOB pomocí .NET
 titleSuffix: Azure Storage
 description: Naučte se vytvářet delegování uživatelů pomocí Azure Active Directory přihlašovacích údajů pomocí klientské knihovny .NET pro Azure Storage.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 02/03/2021
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 512b949fceda850e968a6f97b3788ae3a602f56d
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 13491735f73cb1696f3c36f3434cc781a1e2b739
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199253"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526801"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>Vytvoření SAS pro delegování uživatelů pro kontejner nebo objekt BLOB pomocí .NET
+# <a name="create-a-user-delegation-sas-for-a-container-directory-or-blob-with-net"></a>Vytvoření SAS delegování uživatele pro kontejner, adresář nebo objekt BLOB s rozhraním .NET
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-V tomto článku se dozvíte, jak používat přihlašovací údaje pro Azure Active Directory (Azure AD) k vytvoření SAS pro delegování uživatelů pro kontejner nebo objekt BLOB pomocí Azure Storage klientské knihovny pro .NET verze 12.
+V tomto článku se dozvíte, jak pomocí pověření Azure Active Directory (Azure AD) vytvořit přidružení zabezpečení delegování uživatelů pro kontejner, adresář nebo objekt BLOB pomocí Azure Storage klientské knihovny pro .NET verze 12.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
@@ -99,7 +99,7 @@ Následující příklad testuje SAS uživatele z simulované klientské aplikac
 
 ## <a name="get-a-user-delegation-sas-for-a-directory"></a>Získání SAS uživatele k delegování pro adresář
 
-Následující příklad kódu ukazuje, jak vygenerovat přidružení zabezpečení delegování uživatelů pro adresář, když je povolen hierarchický obor názvů:
+Následující příklad kódu ukazuje, jak vygenerovat přidružení zabezpečení delegování uživatelů pro adresář, když je pro účet úložiště povolen hierarchický obor názvů:
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetUserDelegationSasDirectory":::
 

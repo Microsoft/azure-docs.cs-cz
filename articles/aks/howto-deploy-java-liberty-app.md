@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 keywords: Java, jakartaee, JavaEE, mikroprofile, Open-svoboda, WebSphere-svoboda, AKS, Kubernetes
-ms.openlocfilehash: 4d6e335cd4b522593091094ac6251acc97873208
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 2e025c706512b6ab3945118da996b11a5a8a9585
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508048"
+ms.locfileid: "99526886"
 ---
 # <a name="deploy-a-java-application-with-open-liberty-or-websphere-liberty-on-an-azure-kubernetes-service-aks-cluster"></a>Nasazení aplikace v jazyce Java s otevřeným nástrojem svobody nebo WebSphere Svoboda v clusteru Azure Kubernetes Service (AKS)
 
@@ -31,7 +31,7 @@ V této příručce se dozvíte, jak spustit aplikaci v jazyce Java, Java EE, [J
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. Pomocí příkazu [AZ Group Create](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_create) v umístění *eastus* vytvořte skupinu prostředků *Java-svoboda-Project* . Bude použit k vytvoření instance Azure Container Registry (ACR) a clusteru AKS později. 
+Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. Pomocí příkazu [AZ Group Create](/cli/azure/group#az_group_create) v umístění *eastus* vytvořte skupinu prostředků *Java-svoboda-Project* . Bude použit k vytvoření instance Azure Container Registry (ACR) a clusteru AKS později. 
 
 ```azurecli-interactive
 az group create --name java-liberty-project --location eastus
@@ -39,7 +39,7 @@ az group create --name java-liberty-project --location eastus
 
 ## <a name="create-an-acr-instance"></a>Vytvoření instance ACR
 
-Instanci ACR vytvoříte pomocí příkazu [AZ ACR Create](/cli/azure/acr?view=azure-cli-latest&preserve-view=true#az_acr_create) . Následující příklad vytvoří instanci ACR s názvem *youruniqueacrname*. Ujistěte se, že *youruniqueacrname* je v rámci Azure jedinečný.
+Instanci ACR vytvoříte pomocí příkazu [AZ ACR Create](/cli/azure/acr#az_acr_create) . Následující příklad vytvoří instanci ACR s názvem *youruniqueacrname*. Ujistěte se, že *youruniqueacrname* je v rámci Azure jedinečný.
 
 ```azurecli-interactive
 az acr create --resource-group java-liberty-project --name youruniqueacrname --sku Basic --admin-enabled
@@ -70,7 +70,7 @@ Pokud jste se `Login Succeeded` úspěšně přihlásili k instanci ACR, měli b
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
-Pomocí příkazu [az aks create](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_create) vytvořte cluster AKS. Následující příklad vytvoří cluster *myAKSCluster* s jedním uzlem. Dokončení této akce bude trvat několik minut.
+Pomocí příkazu [az aks create](/cli/azure/aks#az_aks_create) vytvořte cluster AKS. Následující příklad vytvoří cluster *myAKSCluster* s jedním uzlem. Dokončení této akce bude trvat několik minut.
 
 ```azurecli-interactive
 az aks create --resource-group java-liberty-project --name myAKSCluster --node-count 1 --generate-ssh-keys --enable-managed-identity
@@ -87,13 +87,13 @@ Po několika minutách se příkaz dokončí a vrátí informace o clusteru ve f
 
 ### <a name="connect-to-the-aks-cluster"></a>Připojení ke clusteru AKS
 
-Ke správě clusteru Kubernetes použijete klienta příkazového řádku Kubernetes [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/). Pokud používáte Azure Cloud Shell, `kubectl` je již nainstalováno. Pokud chcete nainstalovat `kubectl` místně, použijte příkaz [AZ AKS Install-CLI](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_install_cli) :
+Ke správě clusteru Kubernetes použijete klienta příkazového řádku Kubernetes [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/). Pokud používáte Azure Cloud Shell, `kubectl` je již nainstalováno. Pokud chcete nainstalovat `kubectl` místně, použijte příkaz [AZ AKS Install-CLI](/cli/azure/aks#az_aks_install_cli) :
 
 ```azurecli-interactive
 az aks install-cli
 ```
 
-Pomocí příkazu [az aks get-credentials](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_credentials) nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Tento příkaz stáhne pověření a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití.
+Pomocí příkazu [az aks get-credentials](/cli/azure/aks#az_aks_get_credentials) nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Tento příkaz stáhne pověření a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group java-liberty-project --name myAKSCluster --overwrite-existing
@@ -220,7 +220,7 @@ Otevřete webový prohlížeč na externí IP adresu a port vaší služby ( `52
 
 ## <a name="clean-up-the-resources"></a>Vyčištění prostředků
 
-Abyste se vyhnuli poplatkům za Azure, měli byste vyčistit nepotřebné prostředky.  Pokud už cluster nepotřebujete, odeberte skupinu prostředků, službu kontejneru, registr kontejnerů a všechny související prostředky pomocí příkazu [AZ Group Delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_delete) .
+Abyste se vyhnuli poplatkům za Azure, měli byste vyčistit nepotřebné prostředky.  Pokud už cluster nepotřebujete, odeberte skupinu prostředků, službu kontejneru, registr kontejnerů a všechny související prostředky pomocí příkazu [AZ Group Delete](/cli/azure/group#az_group_delete) .
 
 ```azurecli-interactive
 az group delete --name java-liberty-project --yes --no-wait

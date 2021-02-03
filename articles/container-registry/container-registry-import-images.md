@@ -2,13 +2,13 @@
 title: Import imagí kontejnerů
 description: Naimportujte image kontejneru do služby Azure Container Registry pomocí rozhraní API Azure, aniž byste museli spouštět příkazy Docker.
 ms.topic: article
-ms.date: 09/18/2020
-ms.openlocfilehash: 3950b9fb24b80db4d9654a615521c0eb82914499
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/15/2021
+ms.openlocfilehash: 364c90b857d0d7d479152e2aa56db4d80041f037
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019969"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524494"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Import imagí kontejneru do registru kontejneru
 
@@ -35,6 +35,11 @@ Aby bylo možné importovat image kontejnerů, Tento článek vyžaduje, abyste 
 > [!NOTE]
 > Pokud potřebujete distribuovat identické image kontejneru napříč několika oblastmi Azure, Azure Container Registry podporuje taky [geografickou replikaci](container-registry-geo-replication.md). Když geograficky replikuje registr (vyžaduje se úroveň Premium Service), můžete zajišťovat více oblastí s identickými názvy obrázků a značek z jednoho registru.
 >
+
+> [!IMPORTANT]
+> Do ledna 2021 byly zavedeny změny importu imagí mezi dvěma Registry kontejnerů Azure:
+> * Import do nebo z registru kontejneru Azure s omezeným přístupem k síti vyžaduje, aby [**přístup důvěryhodných služeb**](allow-access-trusted-services.md) k síti mohl obejít. Ve výchozím nastavení je nastavení povoleno a povoluje import. Pokud není toto nastavení povolené v nově vytvořeném registru s privátním koncovým bodem nebo s pravidly brány firewall registru, import se nezdaří. 
+> * V existujícím omezeném síťovém registru kontejneru Azure, který se používá jako zdroj nebo cíl importu, je povolení této funkce zabezpečení sítě volitelné, ale doporučené.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -92,6 +97,8 @@ Pomocí integrovaných oprávnění Azure Active Directory můžete importovat i
 * Registr se může nacházet ve stejném nebo jiném předplatném Azure ve stejném tenantovi Active Directory.
 
 * [Veřejný přístup](container-registry-access-selected-networks.md#disable-public-network-access) ke zdrojovému registru může být zakázaný. Pokud je veřejný přístup zakázaný, místo názvu přihlašovacího serveru registru zadejte zdrojový registr podle ID prostředku.
+
+* Pokud se používá zdrojový registr nebo cílový registr privátního koncového bodu nebo pravidla brány firewall registru, ujistěte se, že registr s omezeným přístupem [umožňuje důvěryhodným službám](allow-access-trusted-services.md) přístup k síti.
 
 ### <a name="import-from-a-registry-in-the-same-subscription"></a>Import z registru ve stejném předplatném
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/29/2020
+ms.date: 02/01/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0ce9b60ead9aff792bf2e4e98841469d58620ccd
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 1ed0ca069f29413083356a3147d4b97f1b6ed981
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754586"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525191"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-for-user-flows-preview"></a>Nastavení registrace a přihlášení k telefonu pro toky uživatelů (Preview)
 
@@ -39,7 +39,7 @@ Služba Multi-Factor Authentication (MFA) je ve výchozím nastavení zakázána
 
 Registrace e-mailu je ve výchozím nastavení povolená v nastavení zprostředkovatele identity místního účtu. Typy identit, které ve svém tenantovi podporujete, můžete změnit tak, že vyberete nebo zrušíte výběr možnosti přihlášení k e-mailu, uživatelské jméno nebo telefonní číslo.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
 
@@ -63,7 +63,7 @@ Po přidání registrace telefonu jako možnosti identity pro místní účty ho
 
 Tady je příklad, který ukazuje, jak přidat registraci telefonu do nového toku uživatele.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 
     ![B2C, okno klienta, adresáře a předplatného, Azure Portal](./media/phone-authentication-user-flows/directory-subscription-pane.png)
@@ -89,7 +89,7 @@ Tady je příklad, který ukazuje, jak přidat registraci telefonu do nového to
 9. V části **Zprostředkovatelé sociální identity** vyberte všechny ostatní zprostředkovatele identity, které chcete pro tento tok uživatelů použít.
 
    > [!NOTE]
-   > Služba Multi-Factor Authentication (MFA) je ve výchozím nastavení zakázaná. VÍCEFAKTOROVÉ ověřování můžete povolit pro uživatelský tok, který se zaregistruje, ale pokud se jako primární identifikátor používá telefonní číslo, pro druhý faktor ověření je k dispozici jenom možnost e-mailového hesla pro jeden čas.
+   > Služba Multi-Factor Authentication (MFA) je ve výchozím nastavení zakázána pro uživatelské toky registrace. VÍCEFAKTOROVÉ ověřování můžete povolit pro uživatelský tok, který se zaregistruje, ale pokud se jako primární identifikátor používá telefonní číslo, pro druhý faktor ověření je k dispozici jenom možnost e-mailového hesla pro jeden čas.
 
 1. V části **atributy uživatele a deklarace identity tokenů** vyberte deklarace identity a atributy, které chcete shromáždit a odeslat uživateli během registrace. Vyberte například možnost **Zobrazit více** a pak zvolte možnost atributy a deklarace pro **zemi/oblast**, **zobrazované jméno** a **poštovní směrovací číslo**. Vyberte **OK**.
 
@@ -110,7 +110,7 @@ Můžete povolit výzvu k zadání e-mailu pro obnovení ve vlastnostech toku u�
 
 ### <a name="to-enable-the-recovery-email-prompt"></a>Povolení výzvy k zadání e-mailu pro obnovení
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 3. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 4. V Azure AD B2C v části **zásady** vyberte **toky uživatelů**.

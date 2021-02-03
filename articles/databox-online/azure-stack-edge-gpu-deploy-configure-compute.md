@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/05/2021
+ms.date: 01/07/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: c884ad6850b8f94baa7c658d685651c3241be33f
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: eb71db05a61a0e32f3f092f37a4da72bc04e581d
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935642"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525751"
 ---
 # <a name="tutorial-configure-compute-on-azure-stack-edge-pro-gpu-device"></a>Kurz: Konfigurace výpočtů na zařízeních GPU Azure Stack Edge pro
 
@@ -43,40 +43,7 @@ Před nastavením výpočetní role na zařízení Azure Stack Edge pro se ujist
 
 ## <a name="configure-compute"></a>Konfigurace COMPUTE
 
-Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack Edge pro, vytvoříte prostředek IoT Hub prostřednictvím Azure Portal.
-
-1. V Azure Portal prostředku Azure Stack Edge, klikněte na **Přehled** a vyberte **IoT Edge**.
-
-   ![Začínáme se službou COMPUTE](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-1.png)
-
-2. V **IoT Edge povolit službu** vyberte **Přidat**.
-
-   ![Konfigurace COMPUTE](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-2.png)
-
-3. V okně **Konfigurovat hraniční výpočty** zadejte následující informace:
-   
-   |Pole  |Hodnota  |
-   |---------|---------|
-   |IoT Hub     | Vyberte z **nových** nebo **existujících**. <br> Ve výchozím nastavení se k vytváření prostředků IoT používá úroveň Standard (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> V každém případě IoT Hub prostředek používá stejné předplatné a skupinu prostředků, kterou používá prostředek Azure Stack Edge.     |
-   |Název     |Zadejte název prostředku IoT Hub.         |
-
-   ![Začínáme s výpočetním využitím 2](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-3.png)
-
-4. Po dokončení nastavení vyberte **zkontrolovat + vytvořit**. Zkontrolujte nastavení prostředku IoT Hub a vyberte **vytvořit**.
-
-   Vytvoření prostředku pro prostředek IoT Hub trvá několik minut. Po vytvoření prostředku bude **Přehled** označovat, že služba IoT Edge je teď spuštěná.
-
-   ![Začínáme s výpočetním prostředím 3](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-4.png)
-
-5. Pokud chcete potvrdit, že se nakonfigurovali hraniční výpočetní role, vyberte **vlastnosti**.
-
-   ![Začínáme se službou COMPUTE 4](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-5.png)
-
-   Když se na hraničním zařízení nastaví role hraničního zpracování, vytvoří se dvě zařízení: zařízení IoT a zařízení IoT Edge. Obě zařízení je možné zobrazit v prostředku IoT Hub. V tomto zařízení IoT Edge je spuštěn také modul runtime IoT Edge. V tomto okamžiku je k dispozici pouze Platforma Linux pro vaše zařízení IoT Edge.
-
-Konfigurace výpočetních prostředků může trvat 20-30 minut, protože na pozadí se vytvářejí virtuální počítače a cluster Kubernetes.
-
-Po úspěšné konfiguraci COMPUTE v Azure Portal existuje cluster Kubernetes a výchozí uživatel přidružený k oboru názvů IoT (obor názvů System řízený pomocí Azure Stack Edge pro).
+[!INCLUDE [configure-compute](../../includes/azure-stack-edge-gateway-configure-compute.md)]
 
 ## <a name="get-kubernetes-endpoints"></a>Získat koncové body Kubernetes
 

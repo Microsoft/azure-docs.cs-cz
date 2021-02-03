@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/02/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 0ec0f0311f18299fab129a3df10cd980fd123ed4
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 680c423f11abcf48cf01632cd39f9c320e28ef8b
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509658"
+ms.locfileid: "99525157"
 ---
 # <a name="mapping-of-azure-security-benchmark-v2-and-cis-microsoft-azure-foundations-benchmark"></a>Mapování testů výkonnosti Azure Security test v2 a CIS Microsoft Azure Foundation
 
@@ -21,3 +21,5 @@ Srovnávací služba CIS Microsoft Azure Foundation je bezpečnostní příručk
 Poskytujeme mapování mezi [ci Microsoft Azure Foundation v testu výkonnosti nejnovější verze v 1.3.0](https://www.cisecurity.org/benchmark/azure/) a [Azure Security benchmark v2](overview.md). To vám pomůže pochopit, jak se zarovnají doporučení pro srovnávací testy. Kompletní mapování si můžete stáhnout [tady](https://github.com/MicrosoftDocs/SecurityBenchmarks/blob/master/Azure%20Security%20Benchmark/2.0/asb_v2_to_cis_microsoft_azure_foundations_benchmark_v1.3.0.xlsx).
 
 :::image type="content" source="./media/asb-cis-mapping.png" alt-text="Mapování mezi dokumentem SSAE a CI srovnávacím testem":::
+
+Všechny dotazy nebo komentáře k mapování vám pomůžou kontaktovat [odesláním e-mailu](mailto:benchmarkfeedback@microsoft.com?subject=Benchmark%20Feedback).

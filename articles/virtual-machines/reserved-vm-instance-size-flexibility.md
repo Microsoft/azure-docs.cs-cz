@@ -1,25 +1,25 @@
 ---
 title: Flexibilita velikosti virtuálního počítače – Azure Reserved VM Instances
 description: Zjistěte, na jaké velikosti se sleva na rezervaci vztahuje, když jste rezervovali instanci virtuálního počítače.
-author: manish-shukla01
+author: yashesvi
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 08/03/2018
-ms.author: manshuk
-ms.openlocfilehash: 381023a0650b078a74c01ff7b698aebacb256147
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/02/2021
+ms.author: yashesvi
+ms.openlocfilehash: e6e96ff41503751741c8afc2229d66fd596e0806
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855510"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525360"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů
 
 Když si koupíte rezervovanou instanci virtuálního počítače, můžete se rozhodnout optimalizovat pro flexibilitu velikosti instance nebo prioritu kapacity. Další informace o nastavení a změně nastavení optimalizace pro rezervované instance virtuálních počítačů najdete v tématu [Změna nastavení optimalizace pro rezervované instance virtuálních počítačů](../cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
 
-U rezervované instance virtuálního počítače, která je optimalizovaná pro flexibilitu velikosti instance, se rezervace, kterou koupíte, může vztahovat na velikosti virtuálních počítačů ve stejné skupině flexibility velikosti instance. Pokud třeba koupíte rezervaci pro velikost virtuálního počítače, která je uvedená v DSv2 řadě, například Standard_DS5_v2, sleva rezervace se může vztahovat na ostatní čtyři velikosti, které jsou uvedené ve stejné skupině flexibility velikosti instance:
+U rezervované instance virtuálního počítače, která je optimalizovaná pro flexibilitu velikosti instance, se rezervace, kterou koupíte, může vztahovat na velikosti virtuálních počítačů ve stejné skupině flexibility velikosti instance. Pokud třeba koupíte rezervaci pro velikost virtuálního počítače, která je uvedená v DSv2 řadě, například Standard_DS3_v2, sleva rezervace se může vztahovat na jiné velikosti, které jsou uvedené ve stejné skupině flexibility velikosti instance:
 
 - Standard_DS1_v2
 - Standard_DS2_v2

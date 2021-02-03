@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan
 ms.date: 08/27/2019
-ms.openlocfilehash: 92d1ce51306e846e2d842bef33bb9782da14019a
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 1609f188af8ffb58251edc806e19f7820a6b0869
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593990"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525717"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Kurz: Přidání spravované instance SQL do skupiny převzetí služeb při selhání
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Přidejte spravované instance spravované instance Azure SQL do skupiny převze
   > [!NOTE]
   > - Při procházení tohoto kurzu se ujistěte, že konfigurujete prostředky s [požadavky pro nastavení skupin převzetí služeb při selhání pro spravovanou instanci SQL](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets). 
   > - Vytvoření spravované instance může trvat poměrně dlouhou dobu. V důsledku toho může dokončení tohoto kurzu trvat několik hodin. Další informace o časech zřizování najdete v tématu [operace správy spravované instance SQL](sql-managed-instance-paas-overview.md#management-operations). 
-  > - Spravované instance účastnící se skupiny převzetí služeb při selhání vyžadují buď [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) , nebo dvě připojené brány VPN Gateway. Globální VNET Peering se nepodporuje. Tento kurz popisuje kroky pro vytvoření a připojení bran VPN. Tento postup přeskočte, pokud již máte nakonfigurovanou ExpressRoute. 
+  > - Spravované instance účastnící se skupiny převzetí služeb při selhání vyžadují [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md), globální partnerské vztahy virtuálních sítí nebo dvě připojené brány VPN Gateway. Tento kurz popisuje kroky pro vytvoření a připojení bran VPN. Tento postup přeskočte, pokud již máte nakonfigurovanou ExpressRoute. 
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -930,9 +930,9 @@ Připojte dvě brány pomocí Azure Portal.
     1. Vyberte vaše předplatné z rozevíracího seznamu. 
     1. V rozevíracím seznamu vyberte skupinu prostředků pro spravovanou instanci SQL. 
     1. Z rozevíracího seznamu vyberte umístění vaší primární spravované instance. 
-1. Na stránce **Nastavení** vyberte nebo zadejte následující hodnoty a pak vyberte **OK** :
-    1. Vyberte bránu primárního síťového rozhraní pro **první bránu virtuální sítě** , například `primaryGateway` .  
-    1. Vyberte bránu sekundární sítě pro **druhou bránu virtuální sítě** , například `secondaryGateway` . 
+1. Na stránce **Nastavení** vyberte nebo zadejte následující hodnoty a pak vyberte **OK**:
+    1. Vyberte bránu primárního síťového rozhraní pro **první bránu virtuální sítě**, například `primaryGateway` .  
+    1. Vyberte bránu sekundární sítě pro **druhou bránu virtuální sítě**, například `secondaryGateway` . 
     1. Zaškrtněte políčko vedle možnosti **navázat obousměrné připojení**. 
     1. Buď ponechte výchozí název primárního připojení, nebo ho přejmenujte na hodnotu podle vašeho výběru. 
     1. Zadejte **sdílený klíč (PSK)** pro připojení, například `mi1m2psk` . 
@@ -1093,7 +1093,7 @@ Vyčistěte prostředky tak, že nejprve odstraníte spravované instance, potom
 1. Vyberte spravované instance a pak vyberte **Odstranit**. `yes`Do textového pole zadejte a potvrďte, že chcete odstranit prostředek, a pak vyberte **Odstranit**. Dokončení tohoto procesu může nějakou dobu trvat na pozadí a až do dokončení, nebudete moci odstranit *virtuální cluster* ani žádné jiné závislé prostředky. Sledujte odstranění na kartě **aktivita** a potvrďte, že se vaše spravovaná instance odstranila. 
 1. Po odstranění spravované instance odstraňte *virtuální cluster* tak, že ho vyberete ve vaší skupině prostředků, a pak zvolíte **Odstranit**. `yes`Do textového pole zadejte a potvrďte, že chcete odstranit prostředek, a pak vyberte **Odstranit**. 
 1. Odstraňte všechny zbývající prostředky. `yes`Do textového pole zadejte a potvrďte, že chcete odstranit prostředek, a pak vyberte **Odstranit**. 
-1. Odstraňte skupinu prostředků výběrem možnosti **Odstranit skupinu prostředků** , zadáním názvu skupiny prostředků `myResourceGroup` a pak výběrem možnosti **Odstranit**. 
+1. Odstraňte skupinu prostředků výběrem možnosti **Odstranit skupinu prostředků**, zadáním názvu skupiny prostředků `myResourceGroup` a pak výběrem možnosti **Odstranit**. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

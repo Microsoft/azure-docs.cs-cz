@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 00fd00112dad9efc31cea83f69bb458a8e1ca935
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 1444ee3643222ceebc67298bdb580955b1432104
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617370"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526411"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Osvědčené postupy pro službu Azure RBAC
 
@@ -41,6 +41,10 @@ Měli byste mít maximálně 3 vlastníky předplatného, aby bylo možné omezi
 K ochraně privilegovaných účtů před škodlivými internetovými útoky můžete pomocí Azure Active Directory Privileged Identity Management (PIM) snížit dobu expozice oprávnění a zvýšit viditelnost jejich používání prostřednictvím sestav a výstrah. PIM pomáhá chránit privilegované účty tím, že poskytuje privilegovaný přístup za běhu k prostředkům Azure AD a Azure. Přístup může být časově vázaný po tom, co se oprávnění odvolají automaticky. 
 
 Další informace najdete v tématu [co je Azure AD Privileged Identity Management?](../active-directory/privileged-identity-management/pim-configure.md).
+
+## <a name="assign-roles-to-groups-not-users"></a>Přiřazení rolí ke skupinám, ne uživatelům
+
+Aby bylo přiřazení role lépe spravovatelné, nepřiřazujte role přímo uživatelům. Místo toho přiřaďte role ke skupinám. Přiřazování rolí do skupin namísto uživatelů také pomáhá minimalizovat počet přiřazení rolí, což má [omezení 2 000 přiřazení rolí na předplatné](troubleshooting.md#azure-role-assignments-limit). 
 
 ## <a name="next-steps"></a>Další kroky
 

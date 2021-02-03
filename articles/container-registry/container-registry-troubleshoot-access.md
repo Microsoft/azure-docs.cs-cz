@@ -3,12 +3,12 @@ title: Řešení potíží se sítí pomocí registru
 description: Příznaky, příčiny a řešení běžných potíží při přístupu ke službě Azure Container Registry ve virtuální síti nebo za bránou firewall
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 2f15eb8a830ce93ecf942663fc8a44b9df86d6d6
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: cf2f308f782ac7d6011c98afd181b194f2b3e09f
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052157"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525072"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Řešení potíží se sítí pomocí registru
 
@@ -105,20 +105,20 @@ Související odkazy:
 
 ### <a name="configure-service-access"></a>Konfigurace přístupu ke službě
 
-V současné době Azure Security Center nemůžou provádět [kontrolu ohrožení zabezpečení imagí](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) v registru, který omezuje přístup k privátním koncovým bodům, vybraným podsítím nebo IP adresám. Prostředky následujících služeb navíc nemůžou získat přístup k registru kontejneru s omezeními sítě:
+V současné době není přístup k registru kontejnerů s omezeními sítě povolený z několika služeb Azure:
 
-* Azure DevOps Services 
-* Azure Container Instances
-* Úlohy Azure Container Registry
+* Azure Security Center nemůže provádět [kontrolu ohrožení zabezpečení imagí](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) v registru, který omezuje přístup k privátním koncovým bodům, vybraným podsítím nebo IP adresám. 
+* Zdroje určitých služeb Azure nemají přístup k registru kontejneru s omezeními sítě, včetně Azure App Service a Azure Container Instances.
 
 Pokud se vyžaduje přístup nebo integrace těchto služeb Azure s registrem kontejneru, odeberte omezení sítě. Můžete například odebrat soukromé koncové body registru nebo odebrat nebo upravit pravidla pro veřejný přístup registru.
+
+Od ledna 2021 můžete nakonfigurovat registr s omezeným přístupem sítě tak, aby [povoloval přístup](allow-access-trusted-services.md) z vybraných důvěryhodných služeb.
 
 Související odkazy:
 
 * [Azure Container Registry skenování imagí Security Center](../security-center/defender-for-container-registries-introduction.md)
 * Poskytnutí [zpětné vazby](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are)
-* [Konfigurace pravidel sítě veřejných IP adres](container-registry-access-selected-networks.md)
-* [Připojení soukromě ke službě Azure Container Registry pomocí privátního odkazu Azure](container-registry-private-link.md)
+* [Povoluje důvěryhodným službám zabezpečený přístup k registru kontejneru omezeného na síť.](allow-access-trusted-services.md)
 
 
 ## <a name="advanced-troubleshooting"></a>Řešení potíží na pokročilé úrovni
@@ -140,5 +140,5 @@ Pokud se vám problém nevyřeší, přečtěte si následující možnosti.
   * [Řešení potíží s přihlášením k registru](container-registry-troubleshoot-login.md) 
   * [Řešení potíží s výkonem registru](container-registry-troubleshoot-performance.md)
 * Možnosti [podpory komunity](https://azure.microsoft.com/support/community/)
-* [Microsoft – otázky a odpovědi](/answers/products/)
+* [Microsoft – otázky a odpovědi](https://docs.microsoft.com/answers/products/)
 * [Otevření lístku podpory](https://azure.microsoft.com/support/create-ticket/)

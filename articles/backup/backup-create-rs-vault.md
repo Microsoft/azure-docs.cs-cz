@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak vytvořit a nakonfigurovat trezor
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 51d095ab68bc9277cb610bd226039ffbde8d7ddf
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 4022838575ca53608a802a6be95e150778db6ac7
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98915722"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525970"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Vytvoření a konfigurace trezoru Recovery Services
 
@@ -71,6 +71,7 @@ Vzhledem k tomu, že tento proces je na úrovni úložiště, jsou k dispozici [
 >- Po odsouhlasení může trvat až 48 hodin, než se zálohované položky zpřístupní v sekundárních oblastech.
 >- V současné době se CRR pro virtuální počítače Azure podporují jenom pro virtuální počítače Azure Resource Manageru Azure. Klasické virtuální počítače Azure se nepodporují.  Když další typy správy podporují CRR, pak se **automaticky** zaregistrují.
 >- Obnovení mezi oblastmi se v tuto **chvíli nedá vrátit zpátky** na GRS nebo LRS, jakmile se ochrana poprvé iniciuje.
+>- V současné době je bod [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) sekundární oblasti v primární oblasti v rozmezí až 12 hodin, i když replikace [geograficky redundantního úložiště s přístupem pro čtení (RA-GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#redundancy-in-a-secondary-region) je 15 minut.
 
 ### <a name="configure-cross-region-restore"></a>Konfigurace obnovení mezi oblastmi
 
