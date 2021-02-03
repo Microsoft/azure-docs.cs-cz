@@ -432,6 +432,9 @@
     - name: Zabezpečené rozhraní API služby API Management
       href: secure-api-management.md
       displayName: 'apim, api management, migrate, b2clogin.com'
+    - name: Zabezpečení vícefaktorového ověřování pomocí telefonu
+      href: phone-based-mfa.md
+      displayName: 'multi-factor authentication, Azure Monitor, Log Analytics'
     - name: Protokoly a monitorování
       items:
         - name: Protokoly auditu

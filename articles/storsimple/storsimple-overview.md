@@ -12,23 +12,23 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 01/11/2021
+ms.date: 02/02/2021
 ms.author: timlt
-ms.openlocfilehash: 286f00318715764a5943387e6b362b3c8e69a82e
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 93278a2c8e83541f49ca76542de1c352fbc02239
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98808144"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524240"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>Série StorSimple 8000: řešení hybridního cloudového úložiště
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>Přehled
-Vítá vás Microsoft Azure StorSimple integrované řešení úložiště, které spravuje úlohy úložiště mezi místními zařízeními a Microsoft Azure cloudového úložiště. StorSimple je efektivní, cenově výhodné a snadno spravovatelné řešení sítě SAN (Storage Area Network), které eliminuje mnohé problémy a náklady spojené s podnikovým úložištěm a ochranou dat. Využívá vlastní zařízení řady StorSimple 8000, integruje se s cloudovými službami a poskytuje sadu nástrojů pro správu umožňující bezproblémové zobrazení veškerého podnikového úložiště, včetně cloudového úložiště. (Informace o nasazení StorSimple publikované na webu Microsoft Azure se vztahují jenom na zařízení řady StorSimple 8000. Pokud používáte zařízení řady StorSimple 5000/7000, přečtěte si [StorSimple Help](http://onlinehelp.storsimple.com/).)
+Vítá vás Microsoft Azure StorSimple integrované řešení úložiště, které spravuje úlohy úložiště mezi místními zařízeními a Microsoft Azure cloudového úložiště. StorSimple je efektivní, cenově výhodné a snadno spravovatelné řešení sítě SAN (Storage Area Network), které eliminuje mnohé problémy a výdaje spojené s podnikovým úložištěm a ochranou dat. Využívá vlastní zařízení řady StorSimple 8000, integruje se s cloudovými službami a poskytuje sadu nástrojů pro správu umožňující bezproblémové zobrazení veškerého podnikového úložiště, včetně cloudového úložiště. (Informace o nasazení StorSimple publikované na webu Microsoft Azure se vztahují jenom na zařízení řady StorSimple 8000. Pokud používáte zařízení řady StorSimple 5000/7000, přečtěte si [StorSimple Help](http://onlinehelp.storsimple.com/).)
 
-StorSimple využívá [vrstvení úložiště](#automatic-storage-tiering) ke správě uložených dat napříč různými úložnými médii. Aktuální pracovní sada je uložená místně na jednotkách SSD (Solid State Drive), data, která se používají méně často, se ukládají na jednotky pevného disku (HDD) a Archivovaná data se odesílají do cloudu. StorSimple navíc využívá odstranění duplicit a kompresi ke snížení velikosti úložiště, které data spotřebovávají. Další informace najdete na webu [odstraňování duplicit a komprimaci](#deduplication-and-compression). Definice dalších klíčových pojmů a konceptů, které se používají v dokumentaci k StorSimple 8000 Series, najdete v tématu [terminologie StorSimple](#storsimple-terminology) na konci tohoto článku.
+StorSimple využívá [vrstvení úložiště](#automatic-storage-tiering) ke správě uložených dat napříč různými úložnými médii. Aktuální pracovní sada je uložená místně na jednotkách SSD (Solid State Drive) (SSD). Data, která se používají méně často, se ukládají na jednotky pevného disku (HDD) a Archivovaná data se odesílají do cloudu. StorSimple navíc využívá odstranění duplicit a kompresi ke snížení velikosti úložiště, které data spotřebovávají. Další informace najdete na webu [odstraňování duplicit a komprimaci](#deduplication-and-compression). Definice dalších klíčových pojmů a konceptů, které se používají v dokumentaci k řadě StorSimple 8000, najdete na konci tohoto článku v tématu [terminologie StorSimple](#storsimple-terminology) .
 
 Kromě správy úložiště vám funkce ochrany dat StorSimple umožňují vytvářet a naplánovaná zálohování na vyžádání a pak je ukládat místně nebo v cloudu. Zálohy jsou pořízeny ve formě přírůstkových snímků, což znamená, že je můžete rychle vytvořit a obnovit. Cloudové snímky můžou být kriticky důležité ve scénářích zotavení po havárii, protože nahrazují sekundární systémy úložiště (například zálohování na pásku) a umožňují v případě potřeby obnovovat data v datovém centru nebo v alternativních lokalitách.
 
@@ -41,7 +41,7 @@ Následující tabulka popisuje některé klíčové výhody, které Microsoft A
 
 | Funkce | Výhoda |
 | --- | --- |
-| Transparentní integrace |Používá protokol iSCSI k neviditelnému propojení úložných zařízení s daty. Tím se zajistí, že se data uložená v cloudu, v datacentru nebo na vzdálených serverech budou ukládat do jednoho umístění. |
+| Transparentní integrace |Používá protokol iSCSI k neviditelnému propojení úložných zařízení s daty. Data uložená v cloudu, v datacentru nebo na vzdálených serverech se zdají být uložená v jednom umístění. |
 | Snížení nákladů na úložiště |Přiděluje dostatečné místní nebo cloudové úložiště pro splnění aktuálních požadavků a rozšiřuje cloudové úložiště pouze v případě potřeby. Tím se snižuje nároky na úložiště a výdaje tím, že odstraňují redundantní verze stejných dat (odstranění duplicitních dat) a pomocí komprese. |
 | Zjednodušená správa úložiště |Poskytuje nástroje pro správu systému, které slouží ke konfiguraci a správě místně uložených dat, na vzdáleném serveru a v cloudu. Kromě toho můžete spravovat funkce zálohování a obnovení z modulu snap-in konzoly MMC (Microsoft Management Console).|
 | Lepší zotavení po havárii a dodržování předpisů |Nevyžaduje prodloužený čas obnovení. Místo toho obnoví data, jak je potřeba, aby běžné operace mohly pokračovat s minimálním přerušením. Kromě toho můžete nakonfigurovat zásady, které určují plány zálohování a uchovávání dat. |
@@ -49,7 +49,7 @@ Následující tabulka popisuje některé klíčové výhody, které Microsoft A
 | Kontinuita podnikových procesů |Umožňuje uživatelům řady StorSimple 5000-7000 migrovat data do zařízení StorSimple 8000 series. |
 | Dostupnost na portálu Azure Government |StorSimple je k dispozici na portálu Azure Government. Další informace najdete v tématu [nasazení místního zařízení StorSimple na portálu pro státní](storsimple-8000-deployment-walkthrough-gov-u2.md)správu. |
 | Ochrana dat a dostupnost |Řada StorSimple 8000 podporuje úložiště ZRS (Zone redundantní úložiště), kromě místně redundantního úložiště (LRS) a geograficky redundantního úložiště (GRS). Podrobnosti o ZRS najdete [v tomto článku týkajícím se Azure Storage možností redundance](../storage/common/storage-redundancy.md) . |
-| Podpora pro kritické aplikace |StorSimple vám umožňuje identifikovat vhodné svazky jako místně připnuté, což zase zajišťuje, aby data vyžadovaná důležitými aplikacemi nebyla vrstvená na Cloud. Místně připnuté svazky nepodléhají latencím v cloudu ani problémům s připojením. Další informace o místně připojených svazcích najdete v tématu věnovaném [správě svazků pomocí služby StorSimple Správce zařízení](storsimple-8000-manage-volumes-u2.md). |
+| Podpora pro kritické aplikace |StorSimple umožňuje identifikovat vhodné svazky jako místně připnuté, aby se zajistilo, že data, která jsou nutná pro kritické aplikace, nebudou vrstvena do cloudu. Místně připnuté svazky nepodléhají latencím v cloudu ani problémům s připojením. Další informace o místně připojených svazcích najdete v tématu věnovaném [správě svazků pomocí služby StorSimple Správce zařízení](storsimple-8000-manage-volumes-u2.md). |
 | Nízká latence a vysoký výkon |Můžete vytvářet cloudová zařízení, která využívají vysoce výkonné a nízké latence Azure Premium Storage. Další informace o cloudových zařízeních StorSimple Premium najdete v tématu [nasazení a správa StorSimple Cloud Appliance v Azure](storsimple-8000-cloud-appliance-u2.md). |
 
 
@@ -57,7 +57,7 @@ Následující tabulka popisuje některé klíčové výhody, které Microsoft A
 Řešení Microsoft Azure StorSimple zahrnuje následující součásti:
 
 * **Microsoft Azure StorSimple zařízení** – místní pole hybridního úložiště, které obsahuje SSD a HDD, společně s redundantními řadiči a možnostmi automatického převzetí služeb při selhání. Řadiče spravují vrstvení úložiště, umísťují aktuálně používaná (nebo horká) data do místního úložiště (v zařízení nebo na místních serverech) a při přesunu méně často využívaných dat do cloudu.
-* **StorSimple Cloud Appliance** – také označované jako virtuální zařízení StorSimple, jedná se o softwarovou verzi zařízení StorSimple, která replikuje architekturu a většinu funkcí fyzického hybridního úložného zařízení. StorSimple Cloud Appliance běží na jednom uzlu na virtuálním počítači Azure. Virtuální zařízení úrovně Premium, která využívají službu Azure Premium Storage, jsou k dispozici v Update 2 a novějších.
+* **StorSimple Cloud Appliance** – také označované jako virtuální zařízení StorSimple. Softwarová verze zařízení StorSimple, která replikuje architekturu a většinu funkcí fyzického hybridního úložného zařízení. StorSimple Cloud Appliance běží na jednom uzlu na virtuálním počítači Azure. Virtuální zařízení úrovně Premium, která využívají službu Azure Premium Storage, jsou k dispozici v Update 2 a novějších.
 * **Služba StorSimple Správce zařízení** – rozšíření Azure Portal, které umožňuje spravovat zařízení StorSimple nebo StorSimple Cloud Appliance z jednoho webového rozhraní. Pomocí služby StorSimple Správce zařízení můžete vytvářet a spravovat služby, zobrazovat a spravovat zařízení, zobrazovat výstrahy, spravovat svazky a zobrazovat a spravovat zásady zálohování a katalog záloh.
 * **Windows PowerShell pro StorSimple** – rozhraní příkazového řádku, které můžete použít ke správě zařízení StorSimple. Windows PowerShell pro StorSimple mají funkce, které vám umožní zaregistrovat zařízení StorSimple, nakonfigurovat síťové rozhraní na zařízení, nainstalovat určité typy aktualizací, vyřešit potíže s vaším zařízením a získat přístup k relaci podpory a změnit stav zařízení. Přístup k Windows PowerShell pro StorSimple získáte tak, že se připojíte ke konzole sériového prostředí nebo pomocí vzdálené komunikace Windows PowerShellu.
 * **Azure PowerShell rutiny StorSimple** – kolekce rutin prostředí Windows PowerShell, které umožňují automatizovat úlohy na úrovni služby a migrace z příkazového řádku. Další informace o rutinách Azure PowerShell pro StorSimple najdete v části [Reference k rutinám](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0&preserve-view=true#azure).
@@ -68,7 +68,7 @@ Diagram níže poskytuje podrobný pohled na architekturu Microsoft Azure StorSi
 
 ![Architektura StorSimple](./media/storsimple-overview/overview-big-picture.png)
 
-Následující části popisují každou z těchto komponent podrobněji a vysvětlují, jak řešení uspořádává data, přiděluje úložiště a usnadňuje správu úložiště a ochranu dat. Poslední část poskytuje definice pro některé z důležitých podmínek a konceptů souvisejících s StorSimple komponentami a jejich správou.
+Následující části popisují každou z těchto komponent podrobněji a vysvětlují, jak řešení uspořádává data, přiděluje úložiště a usnadňuje správu úložiště a ochranu dat. Poslední část poskytuje definice pro některé z důležitých podmínek a konceptů, které se vztahují k StorSimple komponentám a jejich správě.
 
 ## <a name="storsimple-device"></a>Zařízení StorSimple
 Zařízení Microsoft Azure StorSimple je místní pole hybridního úložiště, které poskytuje primární úložiště a přístup k iSCSI k datům uloženým v něm. Spravuje komunikaci s cloudovým úložištěm a pomáhá zajistit zabezpečení a důvěrnost všech dat uložených v řešení Microsoft Azure StorSimple.
@@ -111,7 +111,7 @@ Microsoft Azure StorSimple poskytuje webové uživatelské rozhraní (Služba St
 * Monitorujte výkon.
 * Zkontrolujte nastavení systému a Identifikujte možné problémy.
 
-Službu StorSimple Správce zařízení můžete použít k provádění všech úloh správy s výjimkou těch, které vyžadují čas v systému, například počáteční nastavení a instalace aktualizací.
+Službu StorSimple Správce zařízení můžete použít k provádění všech úloh správy s výjimkou úloh, které vyžadují čas v systému, například počáteční nastavení a instalace aktualizací.
 
 Další informace najdete v [části používání služby StorSimple Správce zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 
@@ -182,11 +182,14 @@ Proces vrstvení úložiště probíhá takto:
 6. Microsoft Azure vytvoří více replik dat ve svém datovém centru a ve vzdáleném datovém centru, aby bylo zajištěno, že data bude možné obnovit, pokud dojde k havárii.
 7. Když souborový server požaduje data uložená v cloudu, StorSimple ho bezproblémově vrátí a uloží kopii do vrstvy SSD zařízení StorSimple.
 
+> [!IMPORTANT]
+> Pokud používáte StorSimple, neprovádějte převod objektů blob do archivace, i když se vaše zařízení postupně vymění. Pokud chcete načíst data ze zařízení, budete muset znovu vyměnit objekty BLOB z archivace na horkou nebo studenou, což vede k významným nákladům.
+
 #### <a name="how-storsimple-manages-cloud-data"></a>Jak StorSimple spravuje cloudová data
 
 StorSimple provádí odstranění duplicitních dat zákazníků napříč všemi snímky a primárními daty (daty zapsanými hostiteli). I když je odstranění duplicitních dat Skvělé pro efektivitu úložiště, je otázka "Co je v cloudu" složitá. Vrstvená primární data a data snímků se vzájemně překrývají. Jeden blok dat v cloudu se dá použít jako vrstvené primární data a taky se na něj odkazuje několika snímky. Každý snímek v cloudu zajišťuje, aby se kopie všech dat v určitém bodě v čase uzamknul do cloudu, dokud se tento snímek neodstraní.
 
-Data se z cloudu odstraní jenom v případě, že na tato data neexistují žádné odkazy. Pokud například vezmeme snímek ze všech dat, která jsou v zařízení StorSimple, a pak odstraníte některá primární data, uvidíme primární vyřazení _dat_ okamžitě. _Data v cloudu_, která zahrnují vrstvená data a zálohy, zůstanou stejná. Důvodem je to, že se stále odkazuje na data v cloudu. Po odstranění snímku v cloudu (a všech dalších snímků, které odkazovaly na stejná data), dojde k poklesu využití cloudu. Před odebráním cloudových dat zkontrolujeme, že žádné snímky ještě neodkazují na tato data. Tento proces se nazývá _uvolňování paměti_ a na zařízení běží služba na pozadí. Odebrání dat z cloudu není okamžité, protože služba uvolňování paměti kontroluje další odkazy na tato data před odstraněním. Rychlost uvolňování paměti závisí na celkovém počtu snímků a v celkových datech. Data v cloudu se většinou vyčistí za méně než týden.
+Data se z cloudu odstraní jenom v případě, že na tato data neexistují žádné odkazy. Pokud jste například zavedli cloudový snímek všech dat, která se nacházejí v zařízení StorSimple, a pak některá primární data odstranili, uvidíme, že se _primární_ vynechává okamžitě. _Data v cloudu_, která zahrnují vrstvená data a zálohy, zůstávají stejná, protože snímek stále odkazuje na cloudová data. Po odstranění snímku v cloudu (a všech dalších snímků, které odkazovaly na stejná data), dojde k poklesu využití cloudu. Před odebráním cloudových dat zkontrolujeme, že žádné snímky ještě neodkazují na tato data. Tento proces se nazývá _uvolňování paměti_ a na zařízení běží služba na pozadí. Odebrání dat z cloudu není okamžité, protože služba uvolňování paměti kontroluje další odkazy na tato data před odstraněním. Rychlost uvolňování paměti závisí na celkovém počtu snímků a v celkových datech. Data v cloudu se většinou vyčistí za méně než týden.
 
 
 ### <a name="thin-provisioning"></a>Dynamické zajišťování
@@ -258,7 +261,7 @@ Následuje seznam jiného softwaru používaného pro StorSimple k vytváření 
 Před nasazením řešení Microsoft Azure StorSimple doporučujeme projít si následující pojmy a definice.
 
 ### <a name="key-terms-and-definitions"></a>Klíčové pojmy a definice
-| Výraz (akronym nebo zkratka) | Popis |
+| Výraz (akronym nebo zkratka) | Description |
 | --- | --- |
 | záznam řízení přístupu (ACR) |Záznam přidružený ke svazku na vašem zařízení Microsoft Azure StorSimple, který určuje, kteří hostitelé se k němu mohou připojit. Stanovení vychází z kvalifikovaného názvu iSCSI (IQN) hostitelů (obsažených v ACR), které se připojují k vašemu zařízení StorSimple. |
 | AES-256 |Algoritmus 256 standard AES (Advanced Encryption Standard) (AES) pro šifrování dat při jejich přesunu do cloudu a z něj. |
@@ -268,7 +271,7 @@ Před nasazením řešení Microsoft Azure StorSimple doporučujeme projít si n
 | záložní soubor katalogu |Soubor obsahující seznam dostupných snímků aktuálně uložených v záložní databázi StorSimple Snapshot Manager. |
 | zásady zálohování |Výběr svazků, typu zálohování a času, který umožňuje vytvářet zálohy podle předdefinovaného plánu. |
 | binární velké objekty (bloby) |Kolekce binárních dat uložených jako jediná entita v systému správy databáze. Objekty blob jsou obvykle obrázky, zvuk nebo jiné multimediální objekty, i když je binární spustitelný kód uložený jako objekt BLOB. |
-| Protokol CHAP (Challenge Handshake Authentication Protocol) |Protokol, který slouží k ověření partnerského vztahu připojení, na základě partnerského sdílení hesla nebo tajného klíče. Protokol CHAP může být jednosměrný nebo společný. V případě jednosměrného protokolu CHAP cíl ověřuje iniciátor. Vzájemné ověřování protokolem CHAP vyžaduje, aby cíl ověřil iniciátora a aby iniciátor ověřoval cíl. |
+| Protokol CHAP (Challenge Handshake Authentication Protocol) |Protokol, který slouží k ověření partnerského vztahu připojení, na základě partnerského sdílení hesla nebo tajného klíče. Protokol CHAP může být jednosměrný nebo společný. V případě jednosměrného protokolu CHAP cíl ověřuje iniciátor. Vzájemné ověřování protokolem CHAP vyžaduje, aby cíl ověřil iniciátora a aby iniciátor ověřil cíl. |
 | clone |Duplicitní kopie svazku. |
 | Cloud jako úroveň (CaaT) |Cloudové úložiště integrované jako vrstva v rámci architektury úložiště, aby se všechny úložiště zobrazovalo jako součást jedné podnikové sítě úložiště. |
 | poskytovatel cloudových služeb (CSP) |Poskytovatel služeb cloud computingu. |

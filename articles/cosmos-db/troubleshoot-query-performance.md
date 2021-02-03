@@ -8,12 +8,12 @@ ms.date: 02/02/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: d50893fc3bf5d890efbdc1f5b59cf52f35d91a15
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 6875fc53a651b89fcfe88d3217ff86bd21204f6c
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475722"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524283"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Řešení potíží s dotazy při používání služby Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -206,12 +206,15 @@ Většina systémových funkcí používá indexy. Tady je seznam některých b�
 - Left
 - Dílčí řetězec – ale pouze v případě, že první num_expr je 0
 
-Níže jsou uvedeny některé běžné systémové funkce, které nepoužívají index a vyžadují načtení každého dokumentu:
+Níže jsou uvedeny některé běžné systémové funkce, které nepoužívají index a musí při použití v klauzuli načíst každý dokument `WHERE` :
 
 | **Systémová funkce**                     | **Nápady pro optimalizaci**             |
 | --------------------------------------- |------------------------------------------------------------ |
-| HORNÍ/DOLNÍ                             | Namísto použití systémové funkce k normalizování dat pro porovnání, Normalizujte při vložení velká a malá písmena. Dotaz, jako ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` se má ```SELECT * FROM c WHERE c.name = 'BOB'``` . |
+| Horní/dolní                         | Namísto použití systémové funkce k normalizování dat pro porovnání, Normalizujte při vložení velká a malá písmena. Dotaz, jako ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` se má ```SELECT * FROM c WHERE c.name = 'BOB'``` . |
+| GetCurrentDateTime/GetCurrentTimestamp/GetCurrentTicks | Vypočítá aktuální čas před provedením dotazu a použije tuto řetězcovou hodnotu v `WHERE` klauzuli. |
 | Matematické funkce (neagregace) | Pokud v dotazu potřebujete často vypočítat hodnotu, zvažte uložení hodnoty jako vlastnosti v dokumentu JSON. |
+
+Při použití v `SELECT` klauzuli neefektivní systémové funkce nebudou mít vliv na to, jak dotazy mohou používat indexy.
 
 ### <a name="improve-string-system-function-execution"></a>Zlepšení provádění řetězcové funkce systému
 
