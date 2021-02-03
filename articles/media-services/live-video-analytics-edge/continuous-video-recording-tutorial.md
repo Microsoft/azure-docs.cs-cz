@@ -3,12 +3,12 @@ title: Kurz nepřetržitého nahrávání videa do cloudu a přehrávání z clo
 description: V tomto kurzu se naučíte používat Azure Live video Analytics na Azure IoT Edge k nepřetržitému nahrávání videa do cloudu a streamování libovolné části tohoto videa pomocí Azure Media Services.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 2db59b9c2b2893cad9a613257b4b7c1bafe3e333
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 898e7a07007d50d848f78c32b8763bf727e4cdcb
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491601"
+ms.locfileid: "99508282"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Kurz: nepřetržité nahrávání videa do cloudu a přehrávání z cloudu
 
@@ -183,7 +183,7 @@ Při použití nástroje Live video Analytics v modulu IoT Edge k nahrání stre
 1. V systému použijte src/Cloud-to-Device-Console-App/operations.js.
 1. V uzlu **GraphTopologySet** upravte následující položky:
 
-    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/2.0/topology.json" `
 1. V dalším kroku v uzlech **GraphInstanceSet** a **GraphTopologyDelete** zajistěte, aby hodnota vlastnosti **topologického** odpovídala hodnotě vlastnosti **Name** v předchozí topologii grafu:
 
     `"topologyName" : "CVRToAMSAsset"`  

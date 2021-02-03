@@ -14,8 +14,6 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Kvóty a omezení
       href: speech-services-quotas-and-limits.md
-    - name: Novinky v dokumentaci
-      href: whats-new.md
 - name: Převod řeči na text
   items:
     - name: Dokumentace k převodu řeči na text
@@ -113,22 +111,10 @@
           href: long-audio-api.md
     - name: Přizpůsobení
       items:
-        - name: Zodpovědné nasazení
-          items:
-            - name: Omezení přístupu pro Vlastní hlas
-              href: concepts-gating-overview.md
-            - name: Nasazení syntetické technologie
-              href: concepts-guidelines-responsible-deployment-synthetic.md
-            - name: Zveřejnění informací o mluvčím
-              href: /legal/cognitive-services/speech-service/disclosure-voice-talent
-            - name: Zpřístupnění pokynů pro návrh
-              href: concepts-disclosure-guidelines.md
-            - name: Zpřístupnění způsobů návrhu
-              href: concepts-disclosure-patterns.md
-            - name: Pravidla chování
-              href: /legal/cognitive-services/speech-service/tts-code-of-conduct
         - name: Portál služby Vlastní hlas
           items:
+            - name: Co je vlastní neuronové hlas?
+              href: custom-neural-voice.md
             - name: Začínáme se službou Custom Voice
               displayName: 'custom voice, neural voice'
               href: how-to-custom-voice.md
@@ -142,6 +128,32 @@
           items:
             - name: Vytvoření zvukového obsahu
               href: how-to-audio-content-creation.md
+    - name: Zodpovědné využití AI
+      items:
+        - name: Vlastní neuronové hlas
+          items:
+            - name: Transparentní informace
+              items:
+                - name: Případy použití pro vlastní neuronové hlas
+                  href: /legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
+                - name: Charakteristiky a omezení
+                  href: /legal/cognitive-services/speech-service/custom-neural-voice/characteristics-and-limitations-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
+            - name: Integrace a zodpovědné využití
+              items:
+                - name: Omezený přístup
+                  href: /legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
+                - name: Zodpovědné nasazení syntetického hlasu
+                  href: concepts-guidelines-responsible-deployment-synthetic.md
+                - name: Zveřejnění informací o mluvčím
+                  href: /legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context
+                - name: Zpřístupnění pokynů pro návrh
+                  href: concepts-disclosure-guidelines.md
+                - name: Zpřístupnění způsobů návrhu
+                  href: concepts-disclosure-patterns.md
+                - name: Pravidla chování
+                  href: /legal/cognitive-services/speech-service/tts-code-of-conduct?context=/azure/cognitive-services/speech-service/context/context
+            - name: 'Data, ochrana osobních údajů a zabezpečení'
+              href: /legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
     - name: Referenční informace
       items:
         - name: C++
@@ -486,7 +498,7 @@
           href: 'https://speech.microsoft.com'
         - name: Vytvoření aplikace Vlastní příkazy s využitím sady Speech Studio
           href: ./quickstart-custom-commands-application.md
-- name: Nasazení
+- name: Nasadit
   items:
     - name: Povolit protokolování
       href: how-to-use-logging.md
@@ -500,7 +512,7 @@
     - name: Konfigurace RHEL/CentOS 7
       href: how-to-configure-rhel-centos-7.md
       displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
-    - name: Containers
+    - name: Kontejnery
       items:
         - name: Instalace a spuštění kontejnerů služby Speech
           displayName: 'containers,install container,run container'

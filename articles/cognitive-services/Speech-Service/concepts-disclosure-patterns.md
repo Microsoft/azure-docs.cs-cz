@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: 348277d42c543bc45cf98bfeaf7ea8313afe8f6f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5cf933a11956bb8459bf6f5cd1b2b366eb8419d8
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021979"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508638"
 ---
 # <a name="disclosure-design-patterns"></a>Zpřístupnění způsobů návrhu
 Teď, když jste&#39;i zjistili správnou [úroveň zveřejnění](concepts-disclosure-guidelines.md#disclosure-assessment) pro syntetické hlasové prostředí,&#39;s vhodným časem prozkoumat potenciální vzory návrhu.
@@ -239,7 +239,7 @@ Vyzrazení můžete využít jako příležitost k řádnému selhání.
 
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 - [Pokyny pro Microsoft bot](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
 - [Pokyny pro návrh Cortany](/cortana/voice-commands/voicecommand-design-guidelines)
 - [Pokyny pro návrh mluveného slova pro Microsoft Windows UWP](/windows/uwp/design/input/speech-interactions)
@@ -249,7 +249,6 @@ Vyzrazení můžete využít jako příležitost k řádnému selhání.
 
 * [Zveřejnění pro hlasový talentů](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [Pokyny pro zodpovědnost nasazení syntetické hlasové technologie](concepts-guidelines-responsible-deployment-synthetic.md)
-* [Přehled o uzavírání](concepts-gating-overview.md)
 * [Jak zveřejnit](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>Další kroky

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/24/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 8bfbacc77843c7978bcb1d364bd93f5e09381144
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 20b47204ea8f64bc430f436a9bcf1b2311409aa6
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98811633"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509482"
 ---
 # <a name="sensor-trends-and-statistics-reports"></a>Trendy senzorů a statistiky sestav
 
@@ -26,19 +26,29 @@ Můžete vytvořit grafy widgetů a výsečové grafy a získat tak přehled o t
 Řídicí panel obsahuje widgety, které graficky popisují následující typy informací:
 
 - Provoz podle portu
+- Hlavní provoz podle portu
 - Šířka pásma kanálu
 - Celková šířka pásma
 - Aktivní připojení TCP
+- Horní šířka pásma podle sítě VLAN
 - Signalizac
   - Nová zařízení
   - Zaneprázdněná zařízení
   - Zařízení podle dodavatele
   - Zařízení podle operačního systému
+  - Počet zařízení na síť VLAN
   - Odpojená zařízení
-- Přerušení připojení po hodinách
+- Připojení se zamítá po hodinách.
 - Výstrahy pro incidenty podle typu
 - Přístup k databázové tabulce
 - Inoddílování protokolů – widgety
+- DELTAV
+  - Distribuce operací DeltaV Roc
+  - Události DeltaV Roc podle názvu
+  - DeltaV události podle času
+- AMS
+  - Provoz AMS podle portu serveru
+  - Provoz AMS podle příkazu
 - Síť Ethernet a IP adresa:
   - Přenos dat Ethernet a IP adres službou CIP
   - Přenos dat Ethernet a IP adres podle třídy CIP
@@ -49,6 +59,15 @@ Můžete vytvořit grafy widgetů a výsečové grafy a získat tak přehled o t
 - S7 pro Siemens:
   - S7 provoz podle řídicí funkce
   - S7 provoz podle podfunkce
+- REŽIM
+  - Počet zařízení na síť VLAN
+  - Horní šířka pásma podle sítě VLAN
+- 60870-5-104
+  - IEC – 60870 přenosů podle ASDU
+- BACNET
+  - Služby BACnet
+- DNP3
+  - DNP3 provoz podle funkce
 - SRTP:
   - SRTP provoz podle kódu služby
   - SRTP chyby podle dne

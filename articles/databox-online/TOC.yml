@@ -176,6 +176,8 @@
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: Modul GPU přes marketplace
               href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+            - name: Modul přes Azure Portal
+              href: azure-stack-edge-gpu-deploy-compute-module-simple.md
         - name: Nasazení úloh Kubernetes
           items:
             - name: Přes kubectl

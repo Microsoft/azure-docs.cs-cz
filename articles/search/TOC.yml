@@ -302,10 +302,10 @@
               href: knowledge-store-projections-examples.md
     - name: Dotazy
       items:
-        - name: Sestavení a typy dotazů
-          href: search-query-overview.md
         - name: Vytvoření základního dotazu
           href: search-query-create.md
+        - name: Sestavení a typy dotazů
+          href: search-query-overview.md
         - name: Použití jednoduché syntaxe (příklady)
           href: search-query-simple-examples.md
         - name: Použití úplné syntaxe Lucene (příklady)

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření základního dotazu
+title: Vytvoření dotazu
 titleSuffix: Azure Cognitive Search
 description: Naučte se, jak vytvořit žádost o dotaz v Kognitivní hledání, které nástroje a rozhraní API se mají použít pro testování a kódování a jak se dotazování rozhodnutí začíná s návrhem indexu.
 manager: nitinme
@@ -7,74 +7,80 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: 9bee391ddb0fa6c270c6d833fb7e81d5f4880497
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.date: 02/03/2021
+ms.openlocfilehash: 9419e5f419a358be50fbb3b8478d62dfe6e3dff0
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118638"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509346"
 ---
-# <a name="create-a-query-in-azure-cognitive-search"></a>Vytvoření dotazu v Azure Kognitivní hledání
+# <a name="creating-queries-in-azure-cognitive-search"></a>Vytváření dotazů v Azure Kognitivní hledání
 
-Pokud vytváříte dotaz poprvé, Tento článek popisuje nástroje a rozhraní API, které budete potřebovat, které metody slouží k vytvoření dotazu a jak může mít struktura indexu a obsah vliv na výsledky dotazu. Chcete-li se seznámit s tím, co požadavek na dotaz vypadá, začněte s [typy a kompozici dotazů](search-query-overview.md).
+Pokud vytváříte dotaz poprvé, Tento článek popisuje přístupy a metody pro nastavení dotazů. Také zavádí požadavek na dotaz a vysvětluje, jak atributy polí a jazykové analyzátory mohou ovlivnit výsledky dotazů.
 
-## <a name="choose-tools-and-apis"></a>Výběr nástrojů a rozhraní API
+## <a name="whats-a-query-request"></a>Co je požadavek na dotaz?
 
-K vytvoření dotazu budete potřebovat nástroj nebo rozhraní API. Některé z následujících návrhů jsou užitečné při testování a produkčních úlohách.
+Dotaz je požadavek jen pro čtení na kolekci docs v rámci jednoho vyhledávacího indexu. Určuje typ queryType a výraz dotazu, i když je parametr Search. Výraz dotazu může mít hledané výrazy, frázi uzavřenou v uvozovkách a operátory.
 
-| Metodologie | Description |
-|-------------|-------------|
-| Portál| [Průzkumník služby Search (portál)](search-explorer.md) je rozhraní pro dotazy v Azure Portal, které spouští dotazy pro indexy v základní vyhledávací službě. Portál zajišťuje REST API volání na pozadí do operace [hledání dokumentů](/rest/api/searchservice/search-documents) , ale nemůže vyvolat funkci automatického dokončování, návrhů nebo vyhledávání dokumentů.<br/><br/> Můžete vybrat jakýkoli index a REST API verzi, včetně verze Preview. Řetězec dotazu může používat jednoduchou nebo úplnou syntaxi s podporou pro všechny parametry dotazu (Filter, SELECT, searchFields a tak dále). Při otevření indexu můžete na portálu pracovat s Průzkumníkem služby Search společně s definicí JSON indexu na souběžných kartách pro snadný přístup k atributům polí. Zkontroluje, jaká pole jsou při testování dotazů prohledávatelné, seřaditelné, filtrovatelné a plošky. <br/>Doporučuje se pro prvotní šetření, testování a ověřování. [Další informace](search-explorer.md) |
-| Nástroje pro testování webu| [Post](search-get-started-rest.md) nebo [Visual Studio Code](search-get-started-vs-code.md) jsou silné možnosti pro formulování žádosti o [vyhledávání dokumentů](/rest/api/searchservice/search-documents) a jakékoli jiné žádosti v klidovém umístění. Rozhraní REST API podporují všechny možné programové operace v Azure Kognitivní hledání a když použijete nástroj, jako je například post nebo Visual Studio Code, můžete požadavky vydávat interaktivně, abyste porozuměli tomu, jak funkce funguje před investicem do kódu. Nástroj pro testování webu je vhodný, pokud nemáte práva přispěvatele nebo správce v Azure Portal. Pokud máte adresu URL pro vyhledávání a klíč rozhraní API pro dotaz, můžete použít nástroje ke spouštění dotazů pro existující index. |
-| Azure SDK | Až budete připraveni k psaní kódu, můžete použít klientské knihovny Azure.Search.Document v sadách Azure SDK pro .NET, Python, JavaScript nebo Java. Každá sada SDK má vlastní plán vydaných verzí, můžete je ale vytvářet a dotazovat na ně. <br/><br/>[SearchClient (.NET)](/dotnet/api/azure.search.documents.searchclient) se dá použít k dotazování indexu vyhledávání v jazyce C#.  [Další informace](search-howto-dotnet-sdk.md)<br/><br/>[SearchClient (Python)](/dotnet/api/azure.search.documents.searchclient) se dá použít k dotazování indexu vyhledávání v Pythonu. [Další informace](search-get-started-python.md)<br/><br/>[SearchClient (JavaScript)](/dotnet/api/azure.search.documents.searchclient) se dá použít k dotazování indexu vyhledávání v JavaScriptu. [Další informace](search-get-started-javascript.md) |
-
-## <a name="set-up-a-search-client"></a>Nastavení vyhledávacího klienta
-
-Vyhledávací klient se ověřuje pro vyhledávací službu, odesílá požadavky a zpracovává odpovědi. Bez ohledu na to, který nástroj nebo rozhraní API používáte, musí mít klient vyhledávání následující:
-
-| Vlastnosti | Description |
-|------------|-------------|
-| Koncový bod | Vyhledávací služba je adresa URL v tomto formátu: `https://[service-name].search.windows.net` . |
-| Přístupový klíč rozhraní API (správce nebo dotaz) | Ověří požadavek služby Search. |
-| Název indexu | Dotazy jsou vždy směrovány na kolekci dokumentů jednoho indexu. Nemůžete spojit indexy nebo vytvářet vlastní nebo dočasné datové struktury jako cíl dotazu. |
-| Verze rozhraní API | Volání REST explicitně vyžadují `api-version` na žádost. Naproti tomu klientské knihovny v sadě Azure SDK mají verzi na určitou verzi REST API. Pro sady SDK `api-version` je implicitní. |
-
-### <a name="in-the-portal"></a>Na portálu
-
-Průzkumník služby Search a další nástroje portálu mají integrované klientské připojení ke službě s přímým přístupem k indexům a dalším objektům ze stránek portálu. Přístup k nástrojům, průvodcům a objektům vyžaduje členství v roli přispěvatel nebo výše služby. 
-
-### <a name="using-rest"></a>S využitím rozhraní REST
-
-V případě volání REST můžete jako klienta určit požadavek na [hledání dokumentů](/rest/api/searchservice/search-documents) pomocí možností [post nebo podobných nástrojů](search-get-started-rest.md) . Každý požadavek je samostatný, takže musíte zadat koncový bod, název indexu a verzi rozhraní API pro každý požadavek. Další vlastnosti, typ obsahu a klíč rozhraní API se předávají v hlavičce žádosti. 
-
-K dotazování indexu můžete použít POST nebo GET. POST s parametry určenými v textu požadavku je snazší pracovat s. Pokud použijete POST, nezapomeňte zahrnout `docs/search` do adresy URL:
+Dotaz může mít také ' count ', aby vrátil počet shod nalezených v indexu, ' SELECT ' pro výběr, která pole se vrátí ve výsledku hledání a ' OrderBy ' pro řazení výsledků. Následující příklady znázorňují požadavek dotazu s podmnožinou dostupných parametrů. Další informace o složení dotazů naleznete v tématu [typy a kompozice dotazů](search-query-overview.md) a [hledání dokumentů (REST)](/rest/api/searchservice/search-documents).
 
 ```http
-POST https://myservice.search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 {
-    "count": true,
-    "queryType": "simple",
-    "search": "*"
+    "queryType": "simple"
+    "search": "`New York` +restaurant",
+    "select": "HotelId, HotelName, Description, Rating, Address/City, Tags",
+    "count": "true",
+    "orderby": "Rating desc"
 }
 ```
 
-### <a name="using-azure-sdks"></a>Používání sad Azure SDK
+## <a name="choose-a-client"></a>Zvolit klienta
 
-Pokud používáte sadu Azure SDK, vytvoříte klienta v kódu. Všechny sady SDK poskytují klientům hledání, které můžou uchovávat stav, a umožňují opakované použití připojení. Pro operace dotazů vytvoříte instanci **`SearchClient`** a a uvedete hodnoty pro následující vlastnosti: koncový bod, klíč, index. Potom můžete zavolat metodu **`Search method`** pro předání řetězce dotazu. 
+Budete potřebovat nástroj nebo rozhraní API k vytvoření dotazu, jako je například Azure Portal nebo post nebo kód, který vytvoří instanci dotazu klienta. Pro prvotní vývoj a testování testování konceptů doporučujeme Azure Portal nebo rozhraní REST API.
 
-| Jazyk | Klient | Příklad |
-|----------|--------|---------|
-| C# a .NET | [SearchClient](/dotnet/api/azure.search.documents.searchclient) | [Odeslání prvního vyhledávacího dotazu v jazyce C #](/dotnet/api/overview/azure/search.documents-readme#send-your-first-search-query) |
-| Python      | [SearchClient](/python/api/azure-search-documents/azure.search.documents.searchclient) | [Odeslání prvního vyhledávacího dotazu v Pythonu](/python/api/overview/azure/search-documents-readme#send-your-first-search-request) |
-| Java        | [SearchClient](/java/api/com.azure.search.documents.searchclient) | [Odeslání prvního vyhledávacího dotazu v jazyce Java](/java/api/overview/azure/search-documents-readme#send-your-first-search-query)  |
-| JavaScript  | [SearchClient](/javascript/api/@azure/search-documents/searchclient) | [Odeslání prvního vyhledávacího dotazu v JavaScriptu](/javascript/api/overview/azure/search-documents-readme#send-your-first-search-query)  |
+### <a name="permissions"></a>Oprávnění
 
-## <a name="choose-a-parser-simple--full"></a>Zvolit analyzátor: jednoduché | kompletní
+Všechny operace, včetně požadavků na dotazy, budou fungovat v [klíči rozhraní API pro správu](search-security-api-keys.md), ale požadavky na dotazy můžou volitelně používat [klíč rozhraní API pro dotazy](search-security-api-keys.md#create-query-keys). Důrazně se doporučuje používat klíče rozhraní API pro dotazování. Pro každou službu můžete vytvořit až 50 a přiřadit různé klíče různým aplikacím.
 
-Pokud je dotaz fulltextovým vyhledáváním, bude použit analyzátor pro zpracování obsahu vyhledávacího parametru. Azure Kognitivní hledání nabízí dva analyzátory dotazů. Jednoduchý analyzátor rozumí [jednoduché syntaxi dotazů](query-simple-syntax.md). Tento analyzátor byl vybrán jako výchozí pro rychlost a efektivitu v textových dotazech bezplatného formuláře. Syntaxe podporuje běžné operátory hledání (a, ne) pro vyhledávání termínů a frází a hledání předpony ( `*` jako v "moře *" pro Seattle a Seaside). Obecně doporučujeme, abyste nejprve vyzkoušeli jednoduchý analyzátor a pak přesunuli na úplný analyzátor, pokud požadavky aplikace volají na výkonnější dotazy.
+V Azure Portal přístup k nástrojům, průvodcům a objektům vyžaduje členství v roli přispěvatel nebo výše služby. 
 
-[Úplná syntaxe dotazů Lucene](query-Lucene-syntax.md#bkmk_syntax), která je povolená, když přidáváte `queryType=full` žádost, je založená na [analyzátoru Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html).
+### <a name="use-azure-portal-to-query-an-index"></a>Použití Azure Portal k dotazování indexu
+
+[Průzkumník služby Search (portál)](search-explorer.md) je rozhraní pro dotazy v Azure Portal, které spouští dotazy pro indexy v základní vyhledávací službě. Interně portál provádí [hledání požadavků dokumentů](/rest/api/searchservice/search-documents) , ale nemůže vyvolat automatické dokončování, návrhy nebo vyhledávání dokumentů. 
+
+Můžete vybrat jakýkoli index a REST API verzi, včetně verze Preview. Řetězec dotazu může používat jednoduchou nebo úplnou syntaxi s podporou pro všechny parametry dotazu (Filter, SELECT, searchFields a tak dále). Při otevření indexu můžete na portálu pracovat s Průzkumníkem služby Search společně s definicí JSON indexu na souběžných kartách pro snadný přístup k atributům polí. Zkontroluje, jaká pole jsou při testování dotazů prohledávatelné, seřaditelné, filtrovatelné a plošky.
+
+### <a name="use-a-rest-client"></a>Použití klienta REST
+
+Post i Visual Studio Code (s rozšířením pro Azure Kognitivní hledání) můžou fungovat jako klient dotazů. Pomocí kteréhokoli nástroje se můžete připojit k vaší vyhledávací službě a odesílat požadavky na [hledání dokumentů (REST)](/rest/api/searchservice/search-documents) . Řada kurzů a příkladů ukazuje klienty REST pro dotazování na indexování. 
+
+V některém z těchto článků se dozvíte o jednotlivých klientech (zahrnuje i pokyny k dotazům):
+
++ [Vytvoření indexu vyhledávání pomocí REST a předzálohovacího](search-get-started-rest.md)
++ [Začínáme s Visual Studio Code a Azure Kognitivní hledání](search-get-started-vs-code.md)
+
+Každý požadavek je samostatný, takže musíte zadat koncový bod, název indexu a verzi rozhraní API pro každý požadavek. Další vlastnosti, typ obsahu a klíč rozhraní API se předávají v hlavičce žádosti. Další informace najdete v tématu [vyhledávání dokumentů (REST)](/rest/api/searchservice/search-documents) pro nápovědu k formulování požadavků na dotazy.
+
+### <a name="use-an-sdk"></a>Použití sady SDK
+
+Pro Kognitivní hledání sady SDK Azure implementují všeobecně dostupné funkce. V takovém případě můžete k dotazování indexu použít kteroukoli sadu SDK. Všechny z nich poskytují **SearchClient** , který obsahuje metody pro interakci s indexem, od načtení indexu pomocí vyhledávacích dokumentů, aby bylo možné formulovat požadavky na dotazy.
+
+| Azure SDK | Klient | Příklady |
+|-----------|--------|----------|
+| .NET | [SearchClient](/dotnet/api/azure.search.documents.searchclient) | [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) |
+| Java | [SearchClient](/java/api/com.azure.search.documents.searchclient) | [SearchForDynamicDocumentsExample. Java](https://github.com/Azure/azure-sdk-for-java/blob/azure-search-documents_11.1.3/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/SearchForDynamicDocumentsExample.java) |
+| JavaScript | [SearchClient](/javascript/api/@azure/search-documents/searchclient) | [readonlyQuery.js](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/readonlyQuery.js) |
+| Python | [SearchClient](/python/api/azure-search-documents/azure.search.documents.searchclient) | [sample_simple_query. py ](https://github.com/Azure/azure-sdk-for-python/blob/7cd31ac01fed9c790cec71de438af9c45cb45821/sdk/search/azure-search-documents/samples/sample_simple_query.py) |
+
+## <a name="choose-a-query-type-simple--full"></a>Vyberte typ dotazu: jednoduchý | kompletní
+
+Pokud je dotaz fulltextovým vyhledáváním, bude použit analyzátor dotazu ke zpracování veškerého textu, který je předán jako hledané výrazy a fráze. Azure Kognitivní hledání nabízí dva analyzátory dotazů. 
+
++ Jednoduchý analyzátor rozumí [jednoduché syntaxi dotazů](query-simple-syntax.md). Tento analyzátor byl vybrán jako výchozí pro rychlost a efektivitu v textových dotazech bezplatného formuláře. Syntaxe podporuje běžné operátory hledání (a, ne) pro vyhledávání termínů a frází a hledání předpony ( `*` jako v "moře *" pro Seattle a Seaside). Obecně doporučujeme, abyste nejprve vyzkoušeli jednoduchý analyzátor a pak přesunuli na úplný analyzátor, pokud požadavky aplikace volají na výkonnější dotazy.
+
++ [Úplná syntaxe dotazů Lucene](query-Lucene-syntax.md#bkmk_syntax), která je povolená, když přidáváte `queryType=full` žádost, je založená na [analyzátoru Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html).
 
 Úplná syntaxe a jednoduchá syntaxe se překrývají v rozsahu, který podporuje stejnou předponu a logické operace, ale plná syntaxe poskytuje více operátorů. V plném rozsahu existuje více operátorů pro logické výrazy a další operátory pro pokročilé dotazy, jako je hledání přibližných hodnot, hledání pomocí zástupných znaků, hledání blízkosti a regulární výrazy.
 
@@ -92,7 +98,7 @@ Hledání je základem uživatelsky řízeného cvičení, kdy se termíny nebo 
 
 ## <a name="know-your-field-attributes"></a>Znát atributy polí
 
-Pokud jste dříve zkontrolovali [základy požadavku na dotaz](search-query-overview.md), můžete si všimnout, že parametry v žádosti o dotaz závisí na tom, jak jsou pole v indexu. Například pro použití v dotazu, filtru nebo pořadí řazení musí být pole *prohledávatelné*, *filtrovatelné* a *seřaditelné*. Podobně mohou být ve výsledcích zobrazeny pouze pole *, která jsou* označena jako načístelné. Jakmile začnete zadávat `search` parametry, a `filter` `orderby` v žádosti, nezapomeňte zkontrolovat atributy při přechodu, abyste se vyhnuli neočekávaným výsledkům.
+Pokud jste dříve zkontrolovali [typy a kompozici dotazů](search-query-overview.md), můžete si uvědomit, že parametry žádosti o dotaz závisí na tom, jak jsou pole v indexu. Například pro použití v dotazu, filtru nebo pořadí řazení musí být pole *prohledávatelné*, *filtrovatelné* a *seřaditelné*. Podobně mohou být ve výsledcích zobrazeny pouze pole *, která jsou* označena jako načístelné. Jakmile začnete zadávat `search` parametry, a `filter` `orderby` v žádosti, nezapomeňte zkontrolovat atributy při přechodu, abyste se vyhnuli neočekávaným výsledkům.
 
 Na snímku obrazovky pod [ukázkovým indexem hotelů](search-get-started-portal.md)se dá použít jenom poslední dvě pole "části lastrenovationdate" a "hodnocení" v `"$orderby"` klauzuli Only.
 
@@ -102,13 +108,21 @@ Popis atributů pole naleznete v tématu [Create index (REST API)](/rest/api/sea
 
 ## <a name="know-your-tokens"></a>Znát tokeny
 
-Při indexování používá dotazovací modul analyzátor k provádění analýzy textu řetězců a maximalizaci potenciálu pro porovnání v době dotazu. Minimálně řetězce jsou použita, ale můžou také podléhat lemmatizátor nebo předzpracování a zastavovat odstraňování slov. Větší řetězce nebo složená slova jsou obvykle rozdělená prázdnými znaky, pomlčkami nebo pomlčkami a indexované jako samostatné tokeny. 
+Při indexování používá vyhledávací modul analyzátor k analýze textu řetězců a maximalizaci potenciálu pro porovnání v době dotazu. Minimálně řetězce jsou použita, ale můžou také podléhat lemmatizátor nebo předzpracování a zastavovat odstraňování slov. Větší řetězce nebo složená slova jsou obvykle rozdělená prázdnými znaky, pomlčkami nebo pomlčkami a indexované jako samostatné tokeny. 
 
 Tady je bod, který je třeba vzít v úvahu, protože co si myslíte, že váš index obsahuje a co je v něm vlastněné, může být odlišné. Pokud dotazy nevrátí očekávané výsledky, můžete zkontrolovat tokeny vytvořené nástrojem Analyzer prostřednictvím [analyzovat text (REST API)](/rest/api/searchservice/test-analyzer). Další informace o tokenizace a dopadu na dotazy naleznete v části [hledání částečného termínu a vzory se speciálními znaky](search-query-partial-matching.md).
 
+## <a name="about-queries-per-second-qps"></a>O dotazech za sekundu (QPS)
+
+Vzhledem k velkému počtu faktorů, které se blíží k výkonu dotazů, Microsoft nepublikuje očekávaná QPS čísla. Odhady QPS musí být vyvíjeny nezávisle u každého zákazníka, a to pomocí úrovně služeb, konfigurace, indexu a konstrukcí dotazů, které jsou platné pro vaši aplikaci. Velikost indexu a složitost, velikost a složitost dotazů a množství přenosů jsou primárními determinanty QPS. Neexistuje žádný způsob, jak nabízet smysluplné odhady v případě, že tyto faktory nejsou známy.
+
+Odhady jsou předvídatelné při výpočtu na službách, které běží na vyhrazených prostředcích (úrovně Basic a Standard). QPS můžete odhadnout přesněji, protože máte kontrolu nad více parametry. Pokyny pro přístup k odhadu najdete v tématu [výkon a optimalizace pro Azure kognitivní hledání](search-performance-optimization.md).
+
+Pro vrstvy optimalizované pro úložiště (L1 a L2) byste měli očekávat nižší propustnost dotazů a vyšší latenci než na úrovni Standard.
+
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte lepší přehled o tom, jak je žádost o dotaz vytvořená, zkuste pro praktické prostředí využít následující rychlé starty.
+Teď, když máte lepší přehled o tom, jak požadavky na dotazy fungují, zkuste následující rychlé starty pro praktické prostředí.
 
 + [Průzkumník vyhledávání](search-explorer.md)
 + [Dotazování v REST](search-get-started-rest.md)

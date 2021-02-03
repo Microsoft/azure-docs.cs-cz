@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 419e32a127947cde1d3761507f0df7a889528ff2
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: cb984ca1a74d8b3838b857f2f5679264d1445187
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621924"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508604"
 ---
 # <a name="basic-concepts"></a>Základní koncepty 
 
@@ -20,9 +20,9 @@ Tento článek popisuje klíčové výhody Azure Defenderu pro IoT.
 
 ## <a name="rapid-non-invasive-deployment-and-passive-monitoring"></a>Rychlé neinvazivní nasazení a pasivní monitorování
 
-Defender pro senzory IoT se připojí k portu SPAN nebo k síti KLEPNE a okamžitě zahájí shromažďování síťového provozu ICS prostřednictvím pasivního monitorování (bez agentů). Hloubková kontrola paketů (DPI) se používá k Dissect provozu ze sériového a síťového zařízení pro řízení sítě Ethernet. Defender pro IoT má nulový dopad na sítě, protože není umístěný v cestě k datům a aktivně nekontroluje zařízení. 
+Defender pro senzory IoT se připojuje k přepínání portů SPAN (mirror) a klepnutí na síť a okamžitě zahájí shromažďování síťového provozu ICS prostřednictvím pasivního monitorování (bez agentů). Hloubková kontrola paketů (DPI) se používá k Dissect provozu ze sériového a síťového zařízení pro řízení sítě Ethernet. Defender pro IoT má nulový dopad na sítě, protože není umístěný v cestě k datům a aktivně nekontroluje zařízení. 
 
-Aby bylo možné doručovat rychlé snímky podrobných informací o zařízení, Defender pro snímače IoT doplňuje pasivní monitorování s volitelnou aktivní komponentou. Tato součást používá bezpečné příkazy schválené dodavatelem k dotazování na zařízení s Windows i řadičem pro podrobnosti o zařízení, a to často nebo častěji, jak potřebujete.
+Aby bylo možné doručovat rychlé snímky podrobných informací o zařízeních s Windows, je možné, že se Defender for IoT monitoruje s volitelnou aktivní komponentou. Tato součást používá bezpečné příkazy schválené dodavatelem k dotazování zařízení Windows na podrobnosti o zařízení, a to často nebo často, jak potřebujete.
 
 ## <a name="embedded-knowledge-of-ics-protocols-devices-and-applications"></a>Informace o vloženém znalostech protokolů, zařízení a aplikací ICS
 
@@ -73,7 +73,7 @@ Defender pro IoT nabízí ucelený přehled o všech vašich zařízeních. Posk
 
 Defender pro IoT umožňuje efektivní správu více nasazení a komplexní jednotný pohled na síť. Defender pro IoT optimalizuje zpracování výstrah a kontrolu nad zabezpečením provozní sítě.
 
-Místní Konzola pro správu je webová platforma pro správu, která umožňuje monitorovat a řídit aktivity globálních instalací senzorů. Kromě správy dat přijatých od nasazených senzorů místní Konzola pro správu hladce integruje data z nejrůznějších podnikových prostředků: CMDBs, DNS, firewall, webová rozhraní API a další.
+Místní Konzola pro správu je webová platforma pro správu, která umožňuje monitorovat a řídit aktivity globálních instalací senzorů. Kromě správy dat přijatých od nasazených senzorů místní Konzola pro správu hladce integruje data z různých obchodních prostředků: CMDBs, DNS, brány firewall, webová rozhraní API a další.
 
 :::image type="content" source="media/concept-air-gapped-networks/site-management-alert-screen.png" alt-text="Zobrazí se místní Konzola pro správu.":::
 
@@ -83,7 +83,7 @@ Než začnete pracovat s místní konzolou pro správu, doporučujeme vám sezn�
 
 Můžete rozšířit možnosti programu Defender pro IoT sdílením informací o zařízení i výstrahách s partnerskými systémy. Integrace pomůžou podnikům přemostění dřív dodaných řešení zabezpečení a významně tak vylepšit viditelnost zařízení a analýzu hrozeb. Integrace také pomáhají podnikům zrychlit reakce na systém a urychlit rizika. 
 
-Díky integraci do stávajících pracovních postupů SOC a sady zabezpečení se jejich integrace omezují na složitost a eliminují se siloy. Například:
+Díky integraci do stávajících pracovních postupů SOC a sady zabezpečení se jejich integrace omezují na složitost a eliminují se siloy. Příklad:
 
 - Systémů Siem jako IBM QRadar, Splunk, ArcSight, LogRhythm a RSA NetWitness
 
@@ -97,7 +97,7 @@ Díky integraci do stávajících pracovních postupů SOC a sady zabezpečení 
 
 ## <a name="complete-protocol-support"></a>Kompletní podpora protokolů
 
-Kromě podpory vloženého protokolu můžete zabezpečit zařízení IoT a ICS s použitím vlastních a vlastních protokolů nebo protokolů, které se odchylují od jakéhokoli standardu. Pomocí sady SDK pro vývojové prostředí pro vývoj v horizontu můžou vývojáři vytvářet moduly plug-in, které dekódují síťový provoz na základě definovaných protokolů. Služby analyzují provoz tak, aby poskytovaly kompletní monitorování, upozorňování a vytváření sestav. Použít horizont:
+Kromě podpory vloženého protokolu můžete zabezpečit zařízení IoT a ICS s použitím vlastních a vlastních protokolů nebo protokolů, které se odchylují od jakéhokoli standardu. Pomocí sady SDK pro vývojové prostředí pro vývoj v horizontu můžou vývojáři vytvářet moduly plug-in, které dekódují síťový provoz na základě definovaných protokolů. Služba analyzuje provoz tak, aby poskytovala kompletní monitorování, upozorňování a vytváření sestav. Použít horizont:
 
 - Rozbalení viditelnosti a řízení bez nutnosti upgradu na nové verze
 

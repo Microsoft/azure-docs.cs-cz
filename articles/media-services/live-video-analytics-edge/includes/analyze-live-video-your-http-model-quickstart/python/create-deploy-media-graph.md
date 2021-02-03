@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 1b5dd2fb4ef8cb3f6fd169477d9ee82e912c146e
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 7cbb9a09a6f8eae6a9325f060664d50c5725e09f
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956256"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508480"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Kontrola a úprava ukázkových souborů
 
@@ -16,16 +16,13 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
 
 1. Přejít do složky *Src/Cloud-to-Device-Console-App* Tady vidíte *appsettings.jsv* souboru a několik dalších souborů:
 
-    * ***C2D-Console-App. csproj** _ – soubor projektu pro Visual Studio Code.
-    _ ***operations.jsv** _ – seznam operací, které má program spustit.
-    _ ***Program.cs** _ – ukázkový kód programu. Tento kód:
+    * operations.jsna seznam operací, které má program spustit.
+    * main.py – vzorový programový kód. Tento kód:
 
-        _ Načte nastavení aplikace.
-        * Vyvolá přímé metody, které zveřejňuje živá analýza videa v modulu IoT Edge. Pomocí modulu můžete analyzovat živé datové proudy videa vyvoláním jeho [přímých metod](../../../direct-methods.md).
+        * Načte nastavení aplikace.
+        * Vyvolá přímé metody, které zveřejňuje živá analýza videa v modulu IoT Edge. Pomocí modulu můžete analyzovat živé datové proudy videa vyvoláním jeho přímých metod.
         * Pozastaví, aby bylo možné kontrolovat výstup programu v okně **terminálu** a prozkoumávat události vygenerované modulem v okně **výstup** .
-        * Vyvolá přímé metody pro vyčištění prostředků.
-
-
+        * Vyvolá přímé metody pro vyčištění prostředků.  
 1. Upravit *operations.jsv* souboru:
     * Změňte odkaz na topologii grafu:
 

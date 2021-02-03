@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 81ae46a7b6c19557eeadd2d5b28ad2fa46e77115
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 28ec6659430cfdbc81533f05863ccb0ddc560e32
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881363"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508028"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Seznámení se službou Azure Defender pro SQL
 
@@ -72,7 +72,6 @@ Výstrahy obsahují podrobnosti o incidentu, který je aktivoval, a doporučení
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o Azure Defenderu pro SQL.
+V tomto článku jste se dozvěděli o Azure Defenderu pro SQL. Chcete-li použít služby, které byly popsány:
 
-> [!div class="nextstepaction"]
-> [Kontrola ohrožení zabezpečení v SQL serverech pomocí Azure Defenderu](defender-for-sql-usage.md)
+- Použití Azure Defenderu pro servery SQL na počítačích pro [kontrolu ohrožení zabezpečení SQL serveru](defender-for-sql-usage.md)

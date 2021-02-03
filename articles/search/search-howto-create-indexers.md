@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: ade5880a6b06f448df23eb77d81201a521f1d240
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 5fc47599d09e5be60311dbda15868d87de4d91d2
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430041"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509380"
 ---
-# <a name="create-a-search-indexer"></a>Vytvořit indexer vyhledávání
+# <a name="creating-indexers-in-azure-cognitive-search"></a>Vytváření indexerů v Azure Kognitivní hledání
 
 Indexer vyhledávání poskytuje automatizované pracovní postupy pro přenos dokumentů a obsahu z externího zdroje dat do indexu vyhledávání v rámci vyhledávací služby. Jak jsme původně navrhli, extrahuje text a metadata ze zdroje dat Azure, zabalí dokumenty do formátu JSON a předá výsledné dokumenty do vyhledávacího modulu pro indexování. Od tohoto okamžiku se rozšířila podpora [rozšíření AI](cognitive-search-concept-intro.md) pro zpracování hloubkového obsahu. 
 
@@ -99,7 +99,7 @@ Následující snímek obrazovky ukazuje, kde najdete tyto funkce na portálu.
 
 ### <a name="use-a-rest-client"></a>Použití klienta REST
 
-Post i Visual Studio Code (s rozšířením pro Azure Kognitivní hledání) můžou fungovat jako klient indexeru. Pomocí kteréhokoli nástroje se můžete připojit k vaší vyhledávací službě a odesílat požadavky, které vytvářejí indexery a další objekty. K dispozici je řada kurzů a příkladů, které předvádějí klientům REST pro vytváření objektů. 
+Post i Visual Studio Code (s rozšířením pro Azure Kognitivní hledání) můžou fungovat jako klient indexeru. Pomocí kteréhokoli nástroje se můžete připojit k vaší vyhledávací službě a odeslat požadavky na [Vytvoření indexeru (REST)](/rest/api/searchservice/create-indexer) . K dispozici je řada kurzů a příkladů, které předvádějí klientům REST pro vytváření objektů. 
 
 Pokud chcete získat informace o jednotlivých klientech, začněte jedním z těchto článků:
 
@@ -110,7 +110,7 @@ Nápovědu k formulování požadavků indexeru najdete v tématu [operace index
 
 ### <a name="use-an-sdk"></a>Použití sady SDK
 
-Pro Kognitivní hledání sady SDK Azure implementují všeobecně dostupné funkce. V takovém případě můžete použít kteroukoli sadu SDK k vytvoření objektů souvisejících s indexerem. Všechny z nich implementují **SearchIndexerClient** , které poskytují metody pro vytváření indexerů a souvisejících objektů, včetně dovednosti.
+Pro Kognitivní hledání sady SDK Azure implementují všeobecně dostupné funkce. V takovém případě můžete použít kteroukoli sadu SDK k vytvoření objektů souvisejících s indexerem. Všechny z nich poskytují **SearchIndexerClient** , který obsahuje metody pro vytváření indexerů a souvisejících objektů, včetně dovednosti.
 
 | Azure SDK | Klient | Příklady |
 |-----------|--------|----------|

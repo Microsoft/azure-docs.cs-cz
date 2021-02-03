@@ -3,12 +3,12 @@ title: Koncepty – identita a přístup
 description: Seznamte se s principy identit a přístupu k řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: e9c0d62968d94e2b018186f67072b6ae7078db02
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: bd1b4cd918ce977cf57d641908b127f7a2d1b0cc
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536094"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509295"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Koncepty identity řešení Azure VMware
 
@@ -53,7 +53,11 @@ Pro přístup ke Správci NSX-T použijte účet správce. Má úplná oprávně
   
 ## <a name="next-steps"></a>Další kroky
 
-V dalším kroku se dozvíte o [konceptech upgradu privátního cloudu][concepts-upgrades].
+Teď, když jste se seznámili s koncepty přístupu k řešení a identitou Azure VMware, se můžete seznámit s těmito informacemi:
+
+- [Koncepce upgradu privátního cloudu](concepts-upgrades.md).
+- [vSphere řízení přístupu na základě role pro řešení Azure VMware](concepts-role-based-access-control.md).
+- [Jak povolit prostředek řešení Azure VMware](enable-azure-vmware-solution.md).
 
 <!-- LINKS - external -->
 

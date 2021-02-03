@@ -8,14 +8,14 @@ ms.author: delegenz
 ms.devlang: javascript
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 10/26/2020
+ms.date: 02/02/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 69cef4c17fd17219f0221c509775ad3fd6a80a27
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 7d31201f9d1a4519538aba3ac57ddfd340d936d1
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498978"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509397"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-the-javascript-sdk"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání pomocí sady JavaScript SDK
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ Pomocí [JavaScriptu/TYPSCRIPT SDK pro Azure kognitivní hledání](/javascript/
 
 Tento článek ukazuje, jak vytvořit aplikaci krok za krokem. Alternativně můžete [stáhnout zdrojový kód a data](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) a spustit aplikaci z příkazového řádku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, budete mít k dispozici následující nástroje a služby:
 
@@ -169,7 +169,7 @@ V takovém případě jsme připraveni vytvořit index.
 
 ## <a name="1---create-index"></a>1. vytvoření indexu 
 
-Vytvořte soubor **hotels_quickstart_index.jsv**.  Tento soubor definuje, jak Azure Kognitivní hledání pracuje s dokumenty, které budete načítat v dalším kroku. Jednotlivá pole budou identifikována `name` a zadána `type` . Každé pole má také řadu atributů indexu, které určují, zda může Azure Kognitivní hledání Hledat, filtrovat, třídit a omezující vlastnosti na poli. Většina polí je jednoduchý datový typ, ale některé, jako `AddressType` jsou komplexní typy, které umožňují vytvářet struktury s bohatou datovou strukturou v indexu.  Můžete si přečíst další informace o [podporovaných datových typech](/rest/api/searchservice/supported-data-types) a [atributech indexu](./search-what-is-an-index.md#index-attributes). 
+Vytvořte soubor **hotels_quickstart_index.jsv**.  Tento soubor definuje, jak Azure Kognitivní hledání pracuje s dokumenty, které budete načítat v dalším kroku. Jednotlivá pole budou identifikována `name` a zadána `type` . Každé pole má také řadu atributů indexu, které určují, zda může Azure Kognitivní hledání Hledat, filtrovat, třídit a omezující vlastnosti na poli. Většina polí je jednoduchý datový typ, ale některé, jako `AddressType` jsou komplexní typy, které umožňují vytvářet struktury s bohatou datovou strukturou v indexu.  Můžete si přečíst další informace o [podporovaných datových typech](/rest/api/searchservice/supported-data-types) a indexových atributech popsaných v tématu [vytvoření indexu (REST)](/rest/api/searchservice/create-index). 
 
 Přidejte následující **hotels_quickstart_index.js** nebo [Stáhněte soubor](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/v11/hotels_quickstart_index.json). 
 

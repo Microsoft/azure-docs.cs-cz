@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 16031c3d67b075e962c73fbb38ada36c7efeddad
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: b35851bae8db39392d10a302d5f1059ba3ace696
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621210"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508756"
 ---
 # <a name="manage-individual-sensors"></a>Správa individuálních senzorů
 
@@ -367,9 +367,9 @@ Změna názvu:
 
 1. Odstraňte senzor z okna **pro správu senzorů** .
 
-1. Zaregistrujte se s novým názvem.
+1. Znovu se zaregistrujte s novým názvem.
 
-1. Stáhnout a nový soubor aktivace.
+1. Stáhněte si nový aktivační soubor.
 
 1. Přihlaste se ke senzoru a nahrajte nový aktivační soubor.
 

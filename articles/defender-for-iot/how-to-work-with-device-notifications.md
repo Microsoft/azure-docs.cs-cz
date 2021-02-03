@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: d113805322bd45584987460d57ad6bdba241ec10
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: cac8d609272be1d9f34b7e0d6404e0a0ea524df7
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839084"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509027"
 ---
 # <a name="work-with-device-notifications"></a>Práce s oznámeními zařízení
 
@@ -48,7 +48,7 @@ Postup zobrazení oznámení:
 
 Pomocí vyhledávacích filtrů můžete zobrazit oznámení, která vás zajímají.
 
-| Filtrovat podle | Popis |
+| Filtrovat podle | Description |
 |--|--|
 | Filtrovat podle typu | Zobrazit oznámení, která pokrývají určitou oblast zájmu. Můžete například zobrazit pouze oznámení o neaktivních zařízeních. |
 | Filtrovat podle rozsahu kalendářních dat | Zobrazí oznámení, která pokrývají konkrétní časový rozsah. Můžete například zobrazit oznámení odesílaná pouze za poslední týden. |
@@ -58,19 +58,19 @@ Pomocí vyhledávacích filtrů můžete zobrazit oznámení, která vás zajím
 
 Následující tabulka popisuje typy oznámení, které můžete obdržet, spolu s možnostmi jejich zpracování. Informace o zařízení můžete aktualizovat pomocí Doporučené hodnoty nebo oznámení zavřít. Po zavření oznámení se informace o zařízení neaktualizují o Doporučené informace. Pokud se znovu zjistí provoz, oznámení se pošle znovu.
 
-| Typy událostí oznámení | Popis | Odpovědi |
+| Typy událostí oznámení | Description | Odpovědi |
 |--|--|--|
-| Nové IP adresy | K zařízení je přidružená nová IP adresa. Je možné zjistit pět scénářů: <br /><br /> K zařízení se přidružil další IP adresa. Toto zařízení je také přidruženo k existující adrese MAC.<br /><br /> Zjistila se nová IP adresa pro zařízení, které používá existující adresu MAC. V současné době zařízení nekomunikuje pomocí IP adresy.<br /> <br /> Zjistila se nová IP adresa pro zařízení, které používá název pro rozhraní NetBIOS. <br /><br /> Jako rozhraní pro správu zařízení přidruženého k adrese MAC byla zjištěna IP adresa. <br /><br /> Zjistila se nová IP adresa pro zařízení, které používá virtuální IP adresu. | **Nastavení další IP adresy na zařízení** (sloučení zařízení) <br /> <br />**Nahradit existující IP adresu** <br /> <br /> **Zrušit**<br /> Odeberte oznámení. |
+| Zjistila se nová IP adresa. | K zařízení je přidružená nová IP adresa. Je možné zjistit pět scénářů: <br /><br /> K zařízení se přidružil další IP adresa. Toto zařízení je také přidruženo k existující adrese MAC.<br /><br /> Zjistila se nová IP adresa pro zařízení, které používá existující adresu MAC. V současné době zařízení nekomunikuje pomocí IP adresy.<br /> <br /> Zjistila se nová IP adresa pro zařízení, které používá název pro rozhraní NetBIOS. <br /><br /> Jako rozhraní pro správu zařízení přidruženého k adrese MAC byla zjištěna IP adresa. <br /><br /> Zjistila se nová IP adresa pro zařízení, které používá virtuální IP adresu. | **Nastavení další IP adresy na zařízení** (sloučení zařízení) <br /> <br />**Nahradit existující IP adresu** <br /> <br /> **Zrušit**<br /> Odeberte oznámení. |
 | Neaktivní zařízení | V zařízení se nezjistil provoz po dobu delší než 60 dní. | **Odstranit** <br /> Pokud toto zařízení není součástí vaší sítě, odeberte ho. <br /><br />**Zrušit** <br /> Pokud je zařízení součástí vaší sítě, odeberte oznámení. Pokud je zařízení neaktivní (například kvůli omylu odpojenému odpojení od sítě), zavřete oznámení a znovu připojte zařízení. |
-| Nové zařízení | Podsíť zahrnuje zařízení, které není definované v podsíti ICS. <br /><br /> Každá podsíť, která obsahuje alespoň jeden zařízení, může být definovaná jako podsíť ICS. To pomáhá rozlišovat mezi zařízením OT a IT na mapě. | **Nastavit jako podsíť ICS** <br /> <br /> **Zrušit** <br />Odeberte oznámení, pokud zařízení není součástí podsítě. |
+| Nová zařízení | Podsíť zahrnuje zařízení, které není definované v podsíti ICS. <br /><br /> Každá podsíť, která obsahuje alespoň jeden zařízení, může být definovaná jako podsíť ICS. To pomáhá rozlišovat mezi zařízením OT a IT na mapě. | **Nastavit jako podsíť ICS** <br /> <br /> **Zrušit** <br />Odeberte oznámení, pokud zařízení není součástí podsítě. |
 | Nejsou nakonfigurované žádné podsítě. | V síti nejsou aktuálně nakonfigurované žádné podsítě. <br /><br /> Nakonfigurujte podsítě pro lepší reprezentaci v mapě a možnost rozlišit mezi zařízeními a IT. | **Otevřete konfiguraci podsítí** a nakonfigurujte podsítě. <br /><br />**Zrušit** <br /> Odeberte oznámení. |
 | Změny operačního systému | K zařízení byl přidružen jeden nebo více nových operačních systémů. | Vyberte název nového operačního systému, který chcete přidružit k zařízení.<br /><br /> **Zrušit** <br /> Odeberte oznámení. |
-| Podsítě byly zjištěny | Nové podsítě byly zjištěny. | **Learn**<br />Přidejte podsíť automaticky.<br />**Otevřít konfiguraci podsítě**<br />Přidejte všechny informace o chybějící podsíti.<br />**Zrušit**<br />Odeberte oznámení. |
-| Zjistila se změna typu zařízení. | K zařízení byl přidružen nový typ zařízení. | **Nastavit jako {...}**<br />Přidružit nový typ k zařízení<br />**Zrušit**<br />Odeberte oznámení. |
+| Nové podsítě | Nové podsítě byly zjištěny. | **Learn**<br />Přidejte podsíť automaticky.<br />**Otevřít konfiguraci podsítě**<br />Přidejte všechny informace o chybějící podsíti.<br />**Zrušit**<br />Odeberte oznámení. |
+| Změny typu zařízení | K zařízení byl přidružen nový typ zařízení. | **Nastavit jako {...}**<br />Přidružit nový typ k zařízení<br />**Zrušit**<br />Odeberte oznámení. |
 
 ## <a name="respond-to-many-notifications-simultaneously"></a>Reakce na mnoho oznámení současně
 
-Možná budete muset zvládnout několik oznámení současně. Například:
+Možná budete muset zvládnout několik oznámení současně. Příklad:
 
 - Pokud došlo k upgradu operačního systému na velkou sadu síťových serverů, můžete dát senzorovi pokyn, aby se dozvěděl nové verze serveru pro všechny upgradované servery. 
 

@@ -10,24 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: 715c09ef65358b21e78cfde204b4819db0c7875d
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 371ad2220b2b2b1b73e5611c5abef74454a548ad
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428415"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508265"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>Pokyny pro zodpovědnost nasazení syntetické hlasové technologie
 
-## <a name="general-considerations-to-keep-in-mind-when-implementing-ai-systems"></a>Obecné pokyny, které je potřeba vzít v úvahu při implementaci systémů AI 
-
-Tento článek se týká konkrétně syntetického rozpoznávání řeči a vlastního neuronové hlasu a klíčových důležitých informací o používání této technologie zodpovědnou. Obecně platí, že existuje několik věcí, které je třeba pečlivě zvážit při rozhodování o použití a implementaci produktů a funkcí s podporou AI: 
-
-* Bude tento produkt nebo funkce ve svém scénáři dobře fungovat? Před nasazením AI do svého scénáře otestujte, jak se provádí pomocí dat v reálném čase, a ujistěte se, že vám může doručovat přesnost, kterou potřebujete. 
-* Jsou zařízeny k identifikaci a reakci na chyby? Produkty a funkce s podporou AI nebudou vždy 100% přesné, takže zvažte, jak budete identifikovat a reagovat na případné chyby, ke kterým může dojít. 
-
-## <a name="general-guidelines-for-using-synthetic-voice-technology"></a>Obecné pokyny pro používání syntetické hlasové technologie 
-Tady jsou obecné pokyny pro návrh Microsoftu pro používání syntetické hlasové technologie. Tyto aplikace byly vyvinuty v studiích, které společnost Microsoft provedla s talentůmi hlasem, spotřebiteli a také jednotlivcům s poruchami řeči.
+V tomto článku se dozvíte o obecných pokynech pro návrh Microsoftu pro používání syntetické hlasové technologie. Tyto pokyny byly vyvinuty ve studiích, které společnost Microsoft provedla s talentůmi, spotřebiteli a jednotlivci, kteří mají na starosti zodpovědný vývoj syntetických hlasů.
 
 Pro nasazení syntetické technologie řeči se ve většině scénářů platí následující pokyny.
 
@@ -39,10 +31,12 @@ Společnost Microsoft vyžaduje, aby její zákazníci uzavřeli syntetickou pov
 * Zvažte správné zpřístupnění rodičům nebo jiným stranám v případech použití, které jsou určeny pro mladistvé a podřízené položky – Pokud je váš případ použití určený pro mladistvé nebo podřízené objekty, budete muset zajistit, aby rodiče nebo právní strážce dokázali porozumět informacím o používání syntetického média a učinit správné rozhodnutí pro nezletilých nebo podřízených, ať už se jedná o používání prostředí. 
 
 ### <a name="select-appropriate-voice-types-for-your-scenario"></a>Vyberte vhodné typy hlasu pro váš scénář.
-Pečlivě zvažte kontext použití a potenciální poškození související s používáním syntetického hlasu. Například vysoce věrné syntetické hlasy nemusí být vhodné ve vysoce rizikových scénářích, například pro osobní zasílání zpráv, finanční transakce nebo složité situace, které vyžadují lidskou přizpůsobivost nebo soucit. Uživatelé mohou mít také různá očekávání pro typy hlasu. Například při naslouchání citlivých zpráv, které jsou čteny syntetickým hlasem, někteří uživatelé upřednostňují další empatického a podobné čtení zpráv, zatímco ostatní jsou upřednostňovány ještě více monotone, nevyváženého hlasu. Zvažte testování aplikace pro lepší pochopení uživatelských předvoleb.
+Pečlivě zvažte kontext použití a potenciální poškození související s používáním syntetického hlasu. Například vysoce věrné syntetické hlasy nemusí být vhodné ve vysoce rizikových scénářích, například pro osobní zasílání zpráv, finanční transakce nebo složité situace, které vyžadují lidskou přizpůsobivost nebo soucit. 
+
+Uživatelé mohou mít také různá očekávání pro typy hlasu. Například při poslechu citlivých zpráv čtených syntetickým hlasem si někteří uživatelé upřednostňují další empatického a lidský tón, zatímco jiné upřednostňují nevyvážený hlas. Zvažte testování aplikace pro lepší pochopení uživatelských předvoleb.
 
 ### <a name="be-transparent-about-capabilities-and-limitations"></a>Mít transparentní informace o možnostech a omezeních
-Uživatelé mají větší očekávání při komunikaci s vysoce věrnými syntetickými hlasovými agenty. V důsledku toho platí, že pokud systémové možnosti tyto očekávání nesplňují, může to mít za následek nepříjemný nebo dokonce škodlivou činnost.
+Uživatelé mají větší očekávání při komunikaci s vysoce věrnými syntetickými hlasovými agenty. Když systémové možnosti tyto očekávání nesplňují, může to mít za následek nespokojenost nebo dokonce škodlivá prostředí.
 
 ### <a name="provide-optional-human-support"></a>Poskytněte volitelnou podporu pro člověka.
 V nejednoznačných transakčních scénářích (například na portálu pro podporu volání) uživatelé nikdy nedůvěřují agentovi počítače, aby na jejich požadavky správně reagovali. V těchto situacích může být nutná lidská podpora, a to bez ohledu na realistickou kvalitu hlasu nebo schopnosti systému.
@@ -59,7 +53,7 @@ Některé hlasové zkušenostíy nevědí o potenciálních škodlivých použit
 Při práci s jednotlivými uživateli s poruchami řeči, aby mohli vytvářet nebo nasazovat syntetickou hlasovou technologii, platí následující pokyny.
 
 ### <a name="provide-guidelines-to-establish-contracts"></a>Poskytněte pokyny k navázání smluv.
-Poskytněte pokyny pro navázání smluv s jednotlivci, kteří používají syntetické hlasy pro pomoc při mluvení. Kontrakt by měl zvážit určení stran, které vlastní hlas, dobu trvání použití, kritéria přenosu vlastnictví, postupy pro odstranění hlasového písma a zabránění neoprávněnému přístupu. Navíc můžete povolit smluvní přenos vlastnictví hlasového písma po smrti rodinným příslušníkům, pokud tato osoba má udělené oprávnění.
+Poskytněte pokyny pro navázání smluv s jednotlivci, kteří používají syntetické hlasy pro pomoc při mluvení. Kontrakt by měl zvážit určení stran, které vlastní hlas, dobu trvání použití, kritéria přenosu vlastnictví, postupy pro odstranění hlasového písma a zabránění neoprávněnému přístupu. Kromě toho povolte přenos vlastnictví hlasového písma po smrti rodinným příslušníkům, pokud bylo uděleno oprávnění.
 
 ### <a name="account-for-inconsistencies-in-speech-patterns"></a>Účet pro nekonzistence ve vzorcích pro rozpoznávání řeči
 Pro jednotlivce, kteří mají zaznamenaná vlastní hlasová písma, můžou nekonzistence ve vzorku řeči (zpracování nebo neschopnost vyslovit určitá slova) zkomplikovat proces zaznamenávání. V těchto případech by se na ně měli zajišťovat syntetická hlasová technologie a relace záznamu (tj. přerušit a další počet relací záznamu).
@@ -71,7 +65,6 @@ Uživatelé s poruchami v rozpoznávání řeči chtějí dělat aktualizace jej
 ## <a name="reference-docs"></a>Referenční dokumenty
 
 * [Zveřejnění pro hlasový talentů](/legal/cognitive-services/speech-service/disclosure-voice-talent)
-* [Přehled o uzavírání](concepts-gating-overview.md)
 * [Jak zveřejnit](concepts-disclosure-guidelines.md)
 * [Vzory návrhu zpřístupnění](concepts-disclosure-patterns.md)
 

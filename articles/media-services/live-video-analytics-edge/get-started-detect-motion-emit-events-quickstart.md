@@ -3,12 +3,12 @@ title: Začínáme se službou Live video Analytics v IoT Edge – Azure
 description: V tomto rychlém startu se dozvíte, jak začít pracovat se službou Live video Analytics na IoT Edge. Naučte se detekovat pohyb v živém streamu videa.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: fde82dde7df3fa9756c145940178f35ed255ce37
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 93eb2ab4df77afd3c2a55a04db2d39591a46e726
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986543"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507776"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Rychlý Start: Začínáme – Live video Analytics na IoT Edge
 
@@ -48,6 +48,8 @@ Tento kurz vyžaduje následující prostředky Azure:
 Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostředků ve vašem předplatném Azure použili [skript pro nastavení prostředků Live video Analytics](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) . To můžete provést pomocí těchto kroků:
 
 1. Přejít na [Azure Portal](https://portal.azure.com) a vyberte ikonu Cloud Shell.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/quickstarts/cloud-shell.png" alt-text="Cloud Shell":::
 1. Pokud používáte Cloud Shell poprvé, budete vyzváni k výběru předplatného pro vytvoření účtu úložiště a sdílené složky Microsoft Azure souborů. Vyberte **vytvořit úložiště** a vytvořte účet úložiště pro informace o cloud Shell relaci. Tento účet úložiště je oddělený od účtu, který vytvoří skript pro použití s vaším účtem Azure Media Services.
 1. V rozevírací nabídce na levé straně okna Cloud Shell vyberte **bash** jako své prostředí.
 
@@ -76,10 +78,10 @@ Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostř
 Ve výstupu skriptu obsahuje tabulka prostředků název centra IoT. Vyhledejte typ prostředku **`Microsoft.Devices/IotHubs`** a poznamenejte si jeho název. Tento název budete potřebovat v dalším kroku.  
 
 > [!NOTE]
-> Skript také vygeneruje několik konfiguračních souborů v adresáři **_~/clouddrive/lva-Sample/_* _. Tyto soubory budete potřebovat později v rychlém startu.
+> Skript také vygeneruje několik konfiguračních souborů v adresáři ***~/clouddrive/lva-Sample/*** . Tyto soubory budete potřebovat později v rychlém startu.
 
 > [!TIP]
-> Pokud narazíte na problémy s prostředky Azure, které se vytvoří, přečtěte si náš *[Průvodce odstraňováním potíží](troubleshoot-how-to.md#common-error-resolutions)** a vyřešte některé běžně zjištěné problémy.
+> Pokud narazíte na problémy s prostředky Azure, které se vytvoří, přečtěte si náš **[Průvodce odstraňováním potíží](troubleshoot-how-to.md#common-error-resolutions)** a vyřešte některé běžně zjištěné problémy.
 
 ## <a name="deploy-modules-on-your-edge-device"></a>Nasazení modulů na hraničním zařízení
 

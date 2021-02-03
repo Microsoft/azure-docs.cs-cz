@@ -3,12 +3,12 @@ title: Koncepty – aktualizace a upgrady v privátním cloudu
 description: Přečtěte si o klíčových procesech upgradu a funkcích v řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 6fb65a0e192fbf1f054857223b3fdaf58fc6a903
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 8338666d70bd0ca4ea3c6b32bd8f8d205feaf7c0
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809645"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509193"
 ---
 # <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Aktualizace a upgrady privátního cloudu řešení Azure VMware
 
@@ -57,7 +57,10 @@ Další informace o verzích softwaru VMware najdete v [článku koncept privát
 
 ## <a name="next-steps"></a>Další kroky
 
-Dalším krokem je [Vytvoření privátního cloudu](tutorial-create-private-cloud.md).
+Teď, když jste se seznámili s klíčovými procesy upgradu a funkcemi v řešení Azure VMware, budete možná chtít získat informace o:
+
+- [Postup vytvoření privátního cloudu](tutorial-create-private-cloud.md).
+- [Jak povolit prostředek řešení Azure VMware](enable-azure-vmware-solution.md).
 
 <!-- LINKS - external -->
 

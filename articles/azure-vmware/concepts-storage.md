@@ -3,12 +3,12 @@ title: Koncepty – úložiště
 description: Seznamte se s možnostmi úložiště klíčů v privátních cloudech řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 11/03/2020
-ms.openlocfilehash: 8ad1fc3ff2e514330a9ffc680494b5564b1184e4
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: da5117de4b066fd9872558fa6d018ab898a576f4
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062791"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509212"
 ---
 #  <a name="azure-vmware-solution-storage-concepts"></a>Koncepty úložiště řešení Azure VMware
 
@@ -40,7 +40,11 @@ Služby Azure Storage můžete používat na úlohách běžících ve vašem pr
 
 ## <a name="next-steps"></a>Další kroky
 
-V dalším kroku se dozvíte o [konceptech identit privátního cloudu][concepts-identity].
+Teď, když jste se seznámili s koncepty úložiště řešení Azure VMware, si možná budete chtít přečíst:
+
+- [Koncepce identity privátního cloudu](concepts-identity.md).
+- [vSphere řízení přístupu na základě role pro řešení Azure VMware](concepts-role-based-access-control.md).
+- [Jak povolit prostředek řešení Azure VMware](enable-azure-vmware-solution.md).
 
 <!-- LINKS - external-->
 

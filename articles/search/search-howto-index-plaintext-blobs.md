@@ -8,30 +8,30 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
-ms.openlocfilehash: 422346430e32ccb8745d5a5d829c5d61089a99c6
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: b8881d3fa7ade08da103c5af4b828a12e74cc355
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430424"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509448"
 ---
 # <a name="how-to-index-plain-text-blobs-in-azure-cognitive-search"></a>Indexování objektů BLOB ve formátu prostého textu v Azure Kognitivní hledání
 
-Při použití [indexeru objektů BLOB](search-howto-indexing-azure-blob-storage.md) k extrakci prohledávatelných textů pro fulltextové vyhledávání můžete vyvolat různé režimy analýzy, abyste získali lepší indexování výsledků. Ve výchozím nastavení indexer analyzuje obsah objektu BLOB jako jeden blok textu. Pokud ale všechny objekty blob obsahují prostý text ve stejném kódování, můžete významně zvýšit výkon při indexování pomocí `text` režimu analýzy.
+Při použití [indexeru objektů BLOB](search-howto-indexing-azure-blob-storage.md) k extrakci vyhledávaného textu objektu BLOB pro fulltextové vyhledávání můžete přiřadit režim analýzy, abyste získali lepší indexování výsledků. Ve výchozím nastavení indexer analyzuje obsah objektu BLOB jako jeden blok textu. Pokud ale všechny objekty blob obsahují prostý text ve stejném kódování, můžete významně zvýšit výkon při indexování pomocí `text` režimu analýzy.
 
-Režim analýzy byste měli použít, `text` když:
+Mezi doporučení k `text` analýze použití patří:
 
 + Typ souboru je. txt.
 + Soubory jsou libovolného typu, ale samotný obsah je text (například zdrojový kód programu, HTML, XML a tak dále). Pro soubory v jazyce označení se jako statický text použijí všechny znaky syntaxe.
 
-Odvolá indexery, které jsou serializovány do formátu JSON. Obsah celého textového souboru bude indexován v jednom velkém poli jako `"content": "<file-contents>"` . Nové řádky a návratové instrukce se vyjadřují jako `\r\n\` .
+Odvolat všechny indexery, které jsou serializovány do formátu JSON. Ve výchozím nastavení bude obsah celého textového souboru indexován v jednom velkém poli jako `"content": "<file-contents>"` . Jakékoli nové řádky a návratové instrukce jsou vložené do pole obsah a vyjádřené jako `\r\n\` .
 
-Pokud chcete podrobnější výsledek, vezměte v úvahu následující řešení:
+Pokud chcete podrobnější výsledek a pokud je typ souboru kompatibilní, vezměte v úvahu následující řešení:
 
 + [`delimitedText`](search-howto-index-csv-blobs.md) Režim analýzy, pokud je zdrojem CSV
 + [ `jsonArray` nebo `jsonLines` ](search-howto-index-json-blobs.md), pokud je zdrojem JSON
 
-Třetí možnost pro poškození obsahu ve více částech vyžaduje rozšířené funkce ve formě [rozšíření AI](cognitive-search-concept-intro.md). Přidává analýzu, která identifikuje a přiřazuje bloky souboru do různých vyhledávacích polí. Můžete najít úplné nebo částečné řešení prostřednictvím [integrovaných dovedností](cognitive-search-predefined-skills.md), ale pravděpodobnější řešení by znamenalo model učení, který pochopení vašeho obsahu spolupracuje s vaším obsahem, který je ve vlastním výukovém modelu zabalený do [vlastní dovednosti](cognitive-search-custom-skill-interface.md).
+Třetí možnost pro rozdělení obsahu do více částí vyžaduje rozšířené funkce ve formě [rozšíření AI](cognitive-search-concept-intro.md). Přidává analýzu, která identifikuje a přiřazuje bloky souboru do různých vyhledávacích polí. Můžete najít úplné nebo částečné řešení prostřednictvím [integrovaných dovedností](cognitive-search-predefined-skills.md), ale pravděpodobnější řešení by znamenalo model učení, který pochopení vašeho obsahu spolupracuje s vaším obsahem, který je ve vlastním výukovém modelu zabalený do [vlastní dovednosti](cognitive-search-custom-skill-interface.md).
 
 ## <a name="set-up-plain-text-indexing"></a>Nastavení indexu prostého textu
 

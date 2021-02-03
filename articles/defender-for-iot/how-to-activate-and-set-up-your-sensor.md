@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 908460bd0a034e21524b6ea6d3042f362cc810d4
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 7d045ad104f8e2055ae85b74f4aae8f4d3fd61a4
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98623585"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509515"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Aktivace a nastavení senzoru
 
@@ -81,7 +81,7 @@ Přihlášení a aktivace:
 
     :::image type="content" source="media/how-to-activate-and-set-up-your-sensor/azure-defender-for-iot-sensor-log-in-screen.png" alt-text="Azure Defender pro IoT snímač.":::
 
-1. Zadejte přihlašovací údaje definované při instalaci senzoru. Pokud jste si koupili předem nakonfigurovaný senzor od šipky, vygenerujte nejdřív heslo. Další informace o obnovení hesla najdete v tématu [šetření selhání hesla při počátečním přihlášení](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md#investigate-password-failure-at-initial-sign-in).
+1. Zadejte přihlašovací údaje definované během instalace senzoru nebo vyberte možnost **obnovení hesla** . Pokud jste si koupili předem nakonfigurovaný senzor od šipky, vygenerujte nejdřív heslo. Další informace o obnovení hesla najdete v tématu [šetření selhání hesla při počátečním přihlášení](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md#investigate-password-failure-at-initial-sign-in).
 
 1. Po přihlášení se otevře dialogové okno **Aktivace** . Vyberte **nahrát** a přejít na aktivační soubor, který jste stáhli během připojování senzorů.
 
@@ -142,7 +142,7 @@ Zpočátku se tato aktivita provádí v výukovém režimu, který dává vašem
 
 Zkontrolujte nastavení systému senzoru a ujistěte se, že je senzor nakonfigurovaný tak, aby optimálně zjišťoval a upozornil.
 
-Definujte nastavení systému senzoru. Například:
+Definujte nastavení systému senzoru. Příklad:
 
 - Definujte ICS (nebo IoT) a oddělené podsítě.
 
@@ -152,7 +152,7 @@ Definujte nastavení systému senzoru. Například:
 
 - Pokud se používá DHCP, definujte legitimní rozsahy DHCP.
 
-- Definujte integraci s Active Directory a poštovními servery.
+- Podle potřeby definujte integraci se službou Active Directory a poštovním serverem.
 
 ### <a name="disable-learning-mode"></a>Zakázat výukový režim
 
@@ -181,7 +181,7 @@ Přístup k nástrojům konzoly získáte z vedlejší nabídky.
 | -----------|--|--|
 | Řídicí panel | :::image type="icon" source="media/concept-sensor-console-overview/dashboard-icon-azure.png" border="false"::: | Zobrazení intuitivního snímku stavu zabezpečení sítě. |
 | Mapa zařízení | :::image type="icon" source="media/concept-sensor-console-overview/asset-map-icon-azure.png" border="false"::: | Zobrazit síťová zařízení, připojení zařízení a vlastnosti zařízení v mapě. K zobrazení vaší sítě jsou k dispozici různé možnosti přiblížení, zvýraznění a filtrování. |
-| Inventář zařízení | :::image type="icon" source="media/concept-sensor-console-overview/asset-inventory-icon-azure.png" border="false":::  | Inventář zařízení zobrazuje rozsáhlou škálu atributů zařízení, které tento senzor detekuje. Možnosti jsou k dispozici pro: <br /> -Filtrovat informace podle polí tabulky a zobrazit zobrazené filtrované informace. <br /> – Exportujte informace do souboru CSV. <br /> – Importujte podrobnosti registru Windows.|
+| Inventář zařízení | :::image type="icon" source="media/concept-sensor-console-overview/asset-inventory-icon-azure.png" border="false":::  | Inventář zařízení zobrazí seznam atributů zařízení, které tento senzor detekuje. Možnosti jsou k dispozici pro: <br /> – Seřadit nebo filtrovat informace podle polí tabulky a zobrazit zobrazené filtrované informace. <br /> – Exportujte informace do souboru CSV. <br /> – Importujte podrobnosti registru Windows.|
 | Výstrahy | :::image type="icon" source="media/concept-sensor-console-overview/alerts-icon-azure.png" border="false"::: | Zobrazit upozornění, když dojde k porušení zásad, se vyskytnou odchylky od chování standardních hodnot nebo se zjistí jakýkoli typ podezřelé aktivity v síti. |
 | Sestavy | :::image type="icon" source="media/concept-sensor-console-overview/reports-icon-azure.png" border="false"::: | Zobrazení sestav založených na dotazech dolování dat. |
 
@@ -196,7 +196,7 @@ Přístup k nástrojům konzoly získáte z vedlejší nabídky.
 | Okno | Ikona | Description |
 |---|---|---|
 | Dolování dat | :::image type="icon" source="media/concept-sensor-console-overview/data-mining-icon-azure.png" border="false"::: | Generování komplexních a podrobných informací o zařízeních vaší sítě v různých vrstvách. |
-| Trendy a statistiky | :::image type="icon" source="media/concept-sensor-console-overview/trends-and-statistics-icon-azure.jpg" border="false"::: | Zobrazení trendů a statistik v rozsáhlých různých widgetech. |
+| Šetření | :::image type="icon" source="media/concept-sensor-console-overview/trends-and-statistics-icon-azure.jpg" border="false"::: | Zobrazení trendů a statistik v rozsáhlých různých widgetech. |
 | Posouzení rizika | :::image type="icon" source="media/concept-sensor-console-overview/vulnerabilities-icon-azure.png" border="false"::: | Zobrazí okno **chyby zabezpečení** . |
 
 **Správce**
@@ -204,7 +204,7 @@ Přístup k nástrojům konzoly získáte z vedlejší nabídky.
 | Okno | Ikona | Description |
 |---|---|---|
 | Uživatelé | :::image type="icon" source="media/concept-sensor-console-overview/users-icon-azure.png" border="false"::: | Definujte uživatele a role s různými úrovněmi přístupu. |
-| Šíření | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Dodejte informace o výstrahách partnerům, které se integrují s Defenderem pro IoT, na e-mailové adresy, na servery webhooků a další. <br /> Podrobnosti najdete v podrobnostech [o upozorněních před oznámením](how-to-forward-alert-information-to-partners.md) . |
+| Šíření | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Dodejte informace o výstrahách partnerům a interním zdrojům (například Sentinel), které jsou integrovány s Defenderem pro IoT, e-mailové adresy, servery webhooků a další. <br /> Podrobnosti najdete v podrobnostech [o upozorněních před oznámením](how-to-forward-alert-information-to-partners.md) . |
 | Nastavení systému | :::image type="icon" source="media/concept-sensor-console-overview/system-settings-icon-azure.png" border="false"::: | Nakonfigurujte nastavení systému. Například definujte nastavení DHCP, zadejte podrobnosti poštovního serveru nebo vytvořte aliasy portů. |
 | Nastavení importu | :::image type="icon" source="media/concept-sensor-console-overview/import-settings-icon-azure.png" border="false"::: | Zobrazí okno **Nastavení importu** . V informacích o zařízení můžete provádět ruční změny.<br /> Podrobnosti najdete v tématu [Import informací o zařízení](how-to-import-device-information.md) . |
 

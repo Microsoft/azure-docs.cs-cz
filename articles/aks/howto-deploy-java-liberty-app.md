@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 keywords: Java, jakartaee, JavaEE, mikroprofile, Open-svoboda, WebSphere-svoboda, AKS, Kubernetes
-ms.openlocfilehash: 93ffa3ded4d0771438c5d6a2dc23e6e184f04fe2
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 4d6e335cd4b522593091094ac6251acc97873208
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99227601"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508048"
 ---
 # <a name="deploy-a-java-application-with-open-liberty-or-websphere-liberty-on-an-azure-kubernetes-service-aks-cluster"></a>Nasazení aplikace v jazyce Java s otevřeným nástrojem svobody nebo WebSphere Svoboda v clusteru Azure Kubernetes Service (AKS)
 
@@ -213,7 +213,7 @@ Počkejte, než se *IP* adresa změní z *čekající* na skutečnou veřejnou I
 
 Otevřete webový prohlížeč na externí IP adresu a port vaší služby ( `52.152.189.57:9080` pro výše uvedený příklad) a zobrazte tak domovskou stránku aplikace. V levém horním rohu stránky by se měl zobrazit název pod názvem repliky vaší aplikace. Počkejte pár minut a aktualizujte stránku. při vyrovnávání zatížení, které poskytuje cluster AKS, se pravděpodobně zobrazí jiný název pod.
 
-:::image type="content" source="./media/howto-deploy-java-liberty-app/java-liberty-app-aks-deployed-success.png" alt-text="Aplikace Java svobody byla úspěšně nasazena v AKS":::
+:::image type="content" source="./media/howto-deploy-java-liberty-app/deploy-succeeded.png" alt-text="Aplikace Java svobody byla úspěšně nasazena v AKS":::
 
 >[!NOTE]
 > - V současné době aplikace nepoužívá protokol HTTPS. Doporučuje se povolit protokol [TLS s vlastními certifikáty](ingress-own-tls.md).

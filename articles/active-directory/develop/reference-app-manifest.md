@@ -13,12 +13,12 @@ ms.date: 02/02/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: cb7acb2ab74cc3f1304e5278524918865185463f
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: d544d884a82a7532bf343f38049102dfccae342f
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491295"
+ms.locfileid: "99507264"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Manifest aplikace Azure Active Directory
 
@@ -173,7 +173,8 @@ Nakonfiguruje `groups` deklaraci identity vydanou v uživatelském nebo přístu
 - `"None"`
 - `"SecurityGroup"` (pro skupiny zabezpečení a role Azure AD)
 - `"ApplicationGroup"` (Tato možnost zahrnuje jenom skupiny, které jsou přiřazené aplikaci.)
-- `"All"` (zobrazí se všechny skupiny zabezpečení, distribuční skupiny a role adresáře Azure AD, kterých je přihlášený uživatel členem.
+- `"DirectoryRole"` (získá role adresáře Azure AD, kterých je uživatel členem.)
+- `"All"` (zobrazí se všechny skupiny zabezpečení, distribuční skupiny a role adresáře Azure AD, kterých je přihlášený uživatel členem).
 
 Příklad:
 

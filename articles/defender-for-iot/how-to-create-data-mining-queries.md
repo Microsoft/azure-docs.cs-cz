@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/20/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 56751adedfc01b3927acc65f47910c3b1281f09c
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: edeb383317d4bdc0e7beef1f8390ddabd350f002
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98811639"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507566"
 ---
 # <a name="sensor-data-mining-queries"></a>Dotazy dolování dat ze senzorů
 
@@ -55,11 +55,11 @@ Dotazy dolování dat, které vytvoříte, se dynamicky aktualizují pokaždé, 
 
 Dotazy můžete použít ke zpracování rozsáhlých potřeb zabezpečení pro různé týmy zabezpečení:
 
-- **Odpověď na incident SOC**: vygenerujte sestavu v reálném čase, která vám může přispět k okamžité reakci na incidenty. Vygenerujte například sestavu pro seznam zařízení, která mohou vyžadovat opravy.
+- **Odpověď na incident SOC**: vygenerujte sestavu v reálném čase, která vám může přispět k okamžité reakci na incidenty. Dolování dat může například vygenerovat sestavu pro seznam zařízení, která mohou vyžadovat opravy.
 
 - **Forenzní**: vygenerujte sestavu na základě historických dat pro vyšetřovací sestavy.
 
-- **Integrita sítě IT**: vygeneruje zprávu, která pomáhá zlepšit celkové zabezpečení sítě. Vygenerujte například sestavu, která obsahuje zařízení se slabými přihlašovacími údaji pro ověřování.
+- **Integrita sítě IT**: vygeneruje zprávu, která pomáhá zlepšit celkové zabezpečení sítě. Můžete například vygenerovat sestavu, která Vypíše zařízení se slabými přihlašovacími údaji pro ověřování.
 
 - **Visibility**: vygenerujte sestavu, která se vztahuje na všechny položky dotazu pro zobrazení všech parametrů standardních hodnot vaší sítě.
 
@@ -138,7 +138,7 @@ Vytvoření sestavy dolování dat:
 
 Následující tabulka popisuje možnosti správy pro dolování dat:
 
-| Obrázek ikony | Popis |
+| Obrázek ikony | Description |
 |--|--|
 | :::image type="icon" source="media/how-to-generate-reports/edit-a-simulation-icon.png" border="false"::: | Upravte parametry sestavy. |
 | :::image type="icon" source="media/how-to-generate-reports/export-as-pdf-icon.png" border="false"::: | Exportovat jako PDF |

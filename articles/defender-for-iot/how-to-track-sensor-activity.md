@@ -1,5 +1,5 @@
 ---
-title: Sledovat aktivitu snímače
+title: Sledování aktivity senzorů
 description: Časová osa události prezentuje časovou osu aktivity zjištěné v síti, včetně výstrah a akcí správy výstrah, událostí sítě a uživatelských operací, jako je přihlášení uživatele a odstranění uživatele.
 author: shhazam-ms
 manager: rkarlin
@@ -7,18 +7,18 @@ ms.author: shhazam
 ms.date: 12/10/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 3895e01b1fbfcde79ff91bd1eade8d902c33b852
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 6dbe15da85a85303742ef28c7ca609755193f25e
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839165"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509095"
 ---
-# <a name="track-sensor-activity"></a>Sledovat aktivitu snímače
+# <a name="track-sensor-activity"></a>Sledování aktivity senzorů
 
 ## <a name="event-timeline"></a>Časová osa události
 
-Časová osa události prezentuje časovou osu aktivity, kterou senzor rozpoznal. Například:
+Časová osa události prezentuje časovou osu aktivity, kterou senzor rozpoznal. Příklad:
 
   - Akce správy výstrah a výstrah
 
@@ -59,15 +59,15 @@ Postup filtrování časové osy:
 
 2. Nastavte filtry událostí následujícím způsobem:
 
-   - **Zahrnout adresu**: zobrazí konkrétní zařízení událostí.
+   - **Zahrnout adresu**: Zobrazit události pro konkrétní zařízení.
 
-   - **Vyloučit adresu**: skrýt určitá zařízení událostí.
+   - **Vyloučit adresu**: skrýt události pro konkrétní zařízení.
 
    - **Zahrnout typy událostí**: zobrazí konkrétní typy událostí.
 
-   - **Vyloučit typy událostí**: skryjte konkrétní typy událostí.
+   - **Vyloučit typy událostí**: skrýt určité typy událostí.
 
-   - **Skupina zařízení**: vyberte skupinu zařízení, která byla definována v mapě zařízení. Prezentují se jenom události této skupiny.
+   - **Skupina zařízení**: vyberte skupinu zařízení, která byla definována v mapě zařízení. Prezentují se jenom události z této skupiny.
 
 3. Výběrem **Zrušit vše** vymažete všechny vybrané filtry.
 
@@ -87,7 +87,7 @@ Postup filtrování časové osy:
 
     - Vyberte **soubor PCAP** a Stáhněte si soubor PCAP (pokud existuje), který obsahuje zachytávání paketů celé sítě v určitou dobu. 
     
-      Soubor PCAP obsahuje technické informace, které vývojářům umožňují přesně určit, kde se událost jednala a co se děje. Soubor PCAP můžete analyzovat pomocí analyzátoru síťových protokolů, jako je třeba Wireshark, free.
+      Soubor PCAP obsahuje technické informace, které mohou pomoci síťovým inženýrům určit přesné parametry události. Soubor PCAP můžete analyzovat pomocí analyzátoru síťových protokolů, jako je třeba Wireshark, open source aplikace.
 
 ## <a name="see-also"></a>Viz také
 

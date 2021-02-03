@@ -5,16 +5,16 @@ author: normesta
 ms.topic: how-to
 ms.author: normesta
 ms.reviewer: b-pauls
-ms.date: 11/06/2020
+ms.date: 11/17/2020
 ms.service: storage
 ms.custom: references_regions
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: db95f22a17c3776d84f12249693fb23b3d2d94e6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a0d02530ba2b8758b467b77ff639437675e4cc81
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95914435"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508925"
 ---
 # <a name="meet-demanding-migration-requirements-with-wandisco-livedata-platform-for-azure-preview"></a>Splnění požadavků na náročné migrace s platformou WANdisco LiveData pro Azure (Preview)
 
@@ -34,7 +34,9 @@ Na rozdíl od migrace dat do _režimu offline_ [zkopírováním statických info
 
 ## <a name="key-features-of-wandisco-livedata-platform-for-azure"></a>Klíčové funkce platformy WANdisco LiveData pro Azure
 
-[Platforma WANdisco LiveData pro Azure](https://docs.wandisco.com/live-data-platform/docs/landing/) používá jedinečný, široce Škálovatelný modul podporující sítě, který umožňuje dosáhnout konzistence dat a provádění replikace dat ve velkém měřítku, zatímco aplikace můžou dál upravovat data při replikaci.  
+[Platforma WANdisco LiveData pro Azure](https://docs.wandisco.com/live-data-platform/docs/landing/) používá jedinečný, široce Škálovatelný modul podporující sítě, který umožňuje dosáhnout konzistence dat a provádění replikace dat ve velkém měřítku, zatímco aplikace můžou dál upravovat data při replikaci. <br><br>
+
+>[!VIDEO https://www.youtube.com/embed/KRrmcYPxEho] 
 
 Mezi klíčové funkce platformy patří následující:
 
@@ -86,7 +88,9 @@ Rozsáhlé migrace místních datových laků do Azure vyžaduje testování a o
 Po počáteční migraci zachovejte vaše data konzistentní napříč místními clustery Hadoop a Azure Storage s rovinou LiveData pro Azure:
 
 1. Zřídí LiveDataou rovinu pro místní Azure a v Azure počínaje od Azure Portal. Nevyžadují se žádné změny aplikací.
+
 2. Nakonfigurujte pravidla replikace, která se vztahují na umístění dat, která chcete uchovat konzistentně, například: `/user/contoso/sales/region/WA` .
+
 3. Spouštějte aplikace, které přistupují k datům v libovolném umístění a mění je jako systém souborů kompatibilní se systémem Hadoop, jak potřebujete.
 
 LiveData rovina pro Azure udržuje vaše data konzistentní, aniž by musela významně zvýšit nároky na provoz clusteru nebo výkon aplikace. Upravovat nebo ingestovat data v případě, že se všechny změny replikují konzistentně

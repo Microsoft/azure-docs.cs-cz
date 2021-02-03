@@ -3,12 +3,12 @@ title: Koncepty – privátní cloudy a clustery
 description: Seznamte se s klíčovými možnostmi pro datové centra a vSphere clustery definovaná na základě softwaru řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 234e705ad3b39a575c6f8c475bede4b81efa4b96
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 6a2bb0f41bb1809d0f43b08c71766acc914c0689
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99474909"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509261"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Koncepce privátního cloudu a clusteru řešení Azure VMware
 
@@ -66,10 +66,11 @@ Konfigurace privátního cloudu vCenter a NSX-T jsou v plánu hodinového záloh
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste si pokryli tyto koncepty privátního cloudu řešení Azure VMware, se můžete setkat s následujícími postupy: 
+Teď, když jste se seznámili s koncepty privátního cloudu řešení Azure VMware, se můžete seznámit s těmito postupy: 
 
 - [Sítě řešení Azure VMware a koncepty vzájemné propojení](concepts-networking.md)
 - [Koncepty úložiště řešení Azure VMware](concepts-storage.md).
+- [Jak povolit prostředek řešení Azure VMware](enable-azure-vmware-solution.md).
 
 <!-- LINKS - internal -->
 

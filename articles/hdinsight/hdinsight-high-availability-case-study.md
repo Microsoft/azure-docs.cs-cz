@@ -5,12 +5,12 @@ keywords: vysoká dostupnost Hadoop
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 0616694d05e3fc9d2255ad97647ebe3bce545a93
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6b995e2ab5ba663f6e33b009062859eb32928cc1
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945361"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508587"
 ---
 # <a name="azure-hdinsight-highly-available-solution-architecture-case-study"></a>Případová studie architektury řešení Azure HDInsight s vysokou dostupností
 
@@ -71,7 +71,7 @@ Následující obrázek ukazuje architekturu zotavení po havárii s vysokou dos
 
 **Podregistr a Spark** používají v normálním časech [aktivní primární modely replikace na vyžádání](hdinsight-business-continuity-architecture.md#apache-spark) . Proces replikace podregistru se pravidelně spouští a doprovází podregistry Azure SQL metastore a replikace účtu úložiště pro podregistr. Účet úložiště Spark se pravidelně replikuje pomocí DistCP ADF. Přechodný charakter těchto clusterů pomáhá optimalizovat náklady. Replikace se naplánuje každé 4 hodiny, aby se dostaly do bodu obnovení, který je dobře v rámci požadavku o 5 hodin.
 
-Během normálního časového období replikace **HBA** replikaci používá model [následného zpracování](hdinsight-business-continuity-architecture.md#apache-hbase) dat, aby se zajistilo, že data budou vždy obsluhována bez ohledu na oblast a cíl bodu obnovení je nula.
+Během normálního časového období replikace **HBA** používá model [následného zpracování](hdinsight-business-continuity-architecture.md#apache-hbase) dat, aby se zajistilo, že data budou vždy obsluhována bez ohledu na oblast a cíl bodu obnovení je velmi nízký.
 
 Pokud v primární oblasti dojde k místnímu selhání, bude webová stránka a obsah back-endu obsluhovány ze sekundární oblasti po dobu 5 hodin s určitou mírou aktuálnosti. Pokud řídicí panel stavu služby Azure neindikuje, že se pro obnovení v rámci pětiletého okna přidá ETA, maloobchodní prodej vytvoří v sekundární oblasti oddíl a transformaci dat Sparku a pak všechny nadřazené zdroje dat nasměruje do sekundární oblasti. Aby se sekundární oblast mohla zapisovat, by došlo k selhání procesu navrácení služeb po obnovení, který zahrnuje replikaci zpátky na primární.
 

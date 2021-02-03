@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 4803691a82a97cd2be5fa3beafd4419010e7a9c9
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: bce83e11a0d4567d37e78388445c108385ca9a61
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839145"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509062"
 ---
 # <a name="view-alerts"></a>Zobrazení upozornění
 
@@ -32,7 +32,7 @@ Zobrazení výstrah:
 
 Výstrahy můžete zobrazit podle různých kategorií v hlavním zobrazení **výstrahy** . Vyberte výstrahu, chcete-li zkontrolovat podrobnosti a spravovat událost.
 
-| Seřadit podle typu | Popis |
+| Seřadit podle typu | Description |
 |--|--|
 | **Důležité výstrahy** | Výstrahy seřazené podle důležitosti. |
 | **Připnuté výstrahy** | Upozorňuje, že uživatel připnul k dalšímu šetření. Připnuté výstrahy nejsou archivovány a jsou uloženy po dobu 14 dní v připnuté složce. |
@@ -84,7 +84,7 @@ Když není vybraná žádná z možností, zobrazí se všechny výstrahy.
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/alerts-security.png" alt-text="Zabezpečení na obrazovce výstrahy.":::
 
-## <a name="alert-window-options"></a>Možnosti okna výstrahy
+## <a name="alert-page-options"></a>Možnosti stránky výstrahy
 
 Zprávy upozorňující na zprávy obsahují tyto akce:
 
@@ -101,6 +101,8 @@ Zprávy upozorňující na zprávy obsahují tyto akce:
 - Vyberte, :::image type="icon" source="media/how-to-work-with-alerts-sensor/learn-and-acknowledge-all-alerts.png" border="false"::: Chcete-li zjistit a potvrdit všechny výstrahy.
 
 - Tuto možnost vyberte, pokud chcete :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-csv.png" border="false"::: seznam výstrah exportovat do souboru CSV a vybrat možnost exportovat. Pro normální možnost Export do sdíleného svazku clusteru vyberte **exportovat výstrahy** . Pokud chcete přidat samostatné řádky pro další informace o výstraze v souboru. CSV, vyberte možnost **exportovat rozšířené výstrahy** .
+
+## <a name="alert-pop-up-window-options"></a>Možnosti překryvného okna výstrahy
 
 - Vyberte :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-pdf.png" border="false"::: ikonu pro stažení zprávy o výstrahách jako soubor PDF.
 
@@ -120,6 +122,6 @@ Zprávy upozorňující na zprávy obsahují tyto akce:
 
 ## <a name="next-steps"></a>Další kroky
 
-[Spravovat událost výstrahy](how-to-manage-the-alert-event.md)
+[Správa události upozornění](how-to-manage-the-alert-event.md)
 
 [Urychlení pracovních postupů výstrah](how-to-accelerate-alert-incident-response.md)

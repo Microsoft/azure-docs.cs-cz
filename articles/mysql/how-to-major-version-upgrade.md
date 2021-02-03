@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
 ms.date: 1/28/2021
-ms.openlocfilehash: 62faaed3672f721b26587d1bca3ddb0947f733e7
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: ea2dc877c7bc6db387985e7b5cd1153e195ab4f1
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220832"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509566"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server"></a>Upgrade hlavní verze v Azure Database for MySQL jednom serveru
 
@@ -121,15 +121,7 @@ GA této funkce je plánováno před vyřazením MySQL v 5.6. Tato funkce je ale
 
 ### <a name="will-this-cause-downtime-of-the-server-and-if-so-how-long"></a>Způsobí to výpadky serveru a pokud ano, jak dlouho?
 
-Ano, během procesu upgradu nebude server k dispozici, proto doporučujeme tuto operaci provést během plánovaného časového období údržby. Odhadované výpadky závisí na velikosti databáze, zřízené velikosti úložiště (v zřízeném IOPs) a na počtu tabulek v databázi. Doba upgradu je přímo úměrná počtu tabulek na serveru. Očekává se, že upgrady serverů základních SKU budou trvat delší dobu, protože se nachází na standardní platformě úložiště. Pro odhad prostojů pro serverové prostředí doporučujeme nejprve provést upgrade na obnovenou kopii serveru.  
-
-### <a name="it-is-noted-that-it-is-not-supported-on-replica-server-yet-what-does-that-mean-concrete"></a>Znamená to, že na serveru repliky ještě není podporovaný. Co to znamená konkrétní?
-
-V současné době se upgrade hlavní verze nepodporuje u serveru repliky, což znamená, že byste ho neměli spouštět pro servery, které jsou součástí replikace (buď ze zdrojového serveru, nebo ze serveru repliky). Pokud chcete otestovat upgrade serverů zapojených do replikace předtím, než přidáme podporu repliky pro upgrade, doporučujeme, abyste provedli následující kroky:
-
-1. Během plánované údržby [zastavte replikaci a odstraňte server repliky](howto-read-replicas-portal.md) po zachycení jeho názvu a všech informací o konfiguraci (nastavení brány firewall, konfigurace parametrů serveru, pokud se liší od zdrojového serveru).
-2. Proveďte upgrade zdrojového serveru.
-3. Zřídí nový server repliky pro čtení se stejným názvem a nastavením konfigurace zaznamenaným v kroku 1. Nový server repliky bude v verzi v 5.7 automaticky po upgradu zdrojového serveru na verzi v 5.7.
+Ano, během procesu upgradu nebude server k dispozici, proto doporučujeme tuto operaci provést během plánovaného časového období údržby. Odhadované výpadky závisí na velikosti databáze, zřízené velikosti úložiště (v zřízeném IOPs) a na počtu tabulek v databázi. Doba upgradu je přímo úměrná počtu tabulek na serveru. Očekává se, že upgrady serverů základních SKU budou trvat delší dobu, protože se nachází na standardní platformě úložiště. Pro odhad prostojů pro serverové prostředí doporučujeme nejprve provést upgrade na obnovenou kopii serveru. Zvažte možnost provést [minimální výpadky hlavní verze z mysql 5,6 na mysql 5,7 pomocí repliky pro čtení.](#perform-minimal-downtime-major-version-upgrade-from-mysql-56-to-mysql-57-using-read-replicas)
 
 ### <a name="what-will-happen-if-we-do-not-choose-to-upgrade-our-mysql-v56-server-before-february-5-2021"></a>Co se stane, když se nerozhodneme upgradovat server MySQL v 5.6 před 5. února 2021?
 

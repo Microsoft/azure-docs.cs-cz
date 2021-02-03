@@ -63,5 +63,5 @@
       href: 'https://packages.microsoft.com/ubuntu/18.04/prod/pool/main/a/az-dcap-client/'
     - name: Řešení potíží
       href: troubleshoot-guide.md
-    - name: Protokol ověření identity VBS
+    - name: Protokol ověření identity TPM a VBS
       href: virtualization-based-security-protocol.md

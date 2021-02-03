@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 11/03/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 735b1ce4391598d05a1bf0b4486503092f4de37d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: c9afc22cd123a782c9ee0247952c78c72ee916c0
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839120"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509067"
 ---
 # <a name="the-dashboard"></a>Řídicí panel
 
@@ -28,7 +28,7 @@ ms.locfileid: "97839120"
 
 - Upozornění
 
-- Dvě měřidla v středu stránky označují pakety za sekundu (PPS) a nepotvrzené výstrahy (UA). **PPS** je počet paketů potvrzených systémem za sekundu. **UA** je počet výstrah, které ještě nebyly potvrzeny.
+- Dva indikátory uprostřed stránky zobrazují pakety za sekundu (PPS) a nepotvrzené výstrahy (UA). **PPS** je počet paketů potvrzených systémem za sekundu. **UA** je počet výstrah, které ještě nebyly potvrzeny.
 
 - Seznam nepotvrzených výstrah s jejich popisem.
 
@@ -46,7 +46,7 @@ Měřidlo nepotvrzených výstrah (UA) ve středu stránky indikuje počet takov
 
 Každé pole stav je popsané v této části.
 
-| Stavové pole a měřidla | Popis |
+| Stavové pole a měřidla | Description |
 | -------------- | -------------- |
 | :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/critical-alert-status-box-v2.png" alt-text="Kritické výstrahy"::: | **Kritické výstrahy** – pole v horní polovině stránky indikuje počet kritických výstrah. Toto políčko zaškrtněte, pokud chcete zobrazit popisy výstrah na časové ose a v seznamu pod měřidly.                              |
 | :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/major-alert-status-box-v2.png" alt-text="Hlavní upozornění"::: | **Hlavní upozornění** – pole v pravém horním rohu stránky indikuje počet hlavních výstrah. Toto políčko zaškrtněte, pokud chcete zobrazit popisy výstrah na časové ose a v seznamu pod měřidly.                                     |
@@ -78,23 +78,23 @@ Výběrem šipky dolů **v** dolní části okna výstrahy zobrazíte informace 
 
 :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/extended-alert-screen.png" alt-text="Informace o položkách a zařízeních výstrah":::
 
-- Vyberte zařízení nebo **Zobrazte zařízení** , aby se zobrazila mapa fyzického režimu. Zařízení v předmětech jsou zvýrazněna.
+- Vyberte zařízení, na které se má zobrazit mapa fyzického režimu. Zařízení v předmětech jsou zvýrazněna.
+
+- Kliknutím kamkoli do pole výstraha zobrazíte další podrobnosti týkající se výstrahy. Automaticky otevírané okno se zobrazí podobně jako na následujícím obrázku.
 
 - Vyberte :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/excel-icon.png" alt-text="Excel"::: a EXPORTUJTE soubor CSV o výstraze.
 
 - Jenom správci a analytiky zabezpečení – vyberte :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/approve-all-icon.png" alt-text="potvrdit vše"::: a **potvrďte všechny** přidružené výstrahy.
 
-- Vyberte položku výstrahy pro zobrazení typu a popisu výstrahy:
-
 - Vyberte :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/pdf-icon.png" alt-text="PDF":::a stáhněte zprávu o výstraze jako soubor PDF.
 
-- Vyberte :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/pin-icon.png" alt-text="připnout":::, aby se výstraha mohla připnout nebo odepnout.
+- Vyberte :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/pin-icon.png" alt-text="připnout":::, aby se výstraha mohla připnout nebo odepnout. Výběrem možnosti Připnout ho přidáte do okna s **připojenými výstrahami** na obrazovce **výstrahy** .
 
-- Vyberte :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/download-icon.png" alt-text="Stáhnout"::: a prozkoumejte upozornění stažením souboru PCAP, který obsahuje analýzu síťového protokolu.
+- Vyberte :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/download-icon.png" alt-text="Stáhnout"::: a prozkoumejte upozornění stažením souvisejícího souboru PCAP, který obsahuje analýzu síťového protokolu.
 
-- Vyberte :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/cloud-download-icon.png" alt-text="Cloud"::: , chcete-li stáhnout FILTROVANÝ soubor pcap, který obsahuje pouze pakety související s výstrahou, čímž zmenšíte velikost výstupního souboru a umožníte lépe zaměřené analýzy. Můžete ji zobrazit pomocí programu [Wireshark](https://www.wireshark.org/).
+- Vyberte :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/cloud-download-icon.png" alt-text="Cloud"::: pro stažení souvisejícího filtrovaného souboru PCAP, který obsahuje jenom pakety související s výstrahou, a tím zmenšete velikost výstupního souboru a umožníte lépe zaměřené analýzy. Můžete ji zobrazit pomocí programu [Wireshark](https://www.wireshark.org/).
 
-- Vyberte možnost :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/navigate-icon.png" alt-text="Navigace"::: a přejděte k časové ose události v době požadované výstrahy.
+- Vyberte možnost :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/navigate-icon.png" alt-text="Navigace"::: a přejděte k časové ose události v době požadované výstrahy. To vám umožní vyhodnotit další události, ke kterým může dojít kolem konkrétní výstrahy.
 
 - Správci a analytici zabezpečení – mění stav výstrahy z nepotvrzeno na potvrzeno. Vyberte vědět ke schválení zjištěné aktivity.
 

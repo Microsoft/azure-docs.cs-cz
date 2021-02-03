@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/7/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: fd1721060bdc4b18f324a94f7c367bacde6ed4e8
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: edd1438a665e4917d5dd4cdcfba08d9cee01d3bb
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976754"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509044"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>Prozkoumat detekci senzorů v mapě zařízení
 
@@ -36,7 +36,7 @@ Následující nástroje slouží k práci na mapě.
 
 Vaše role uživatele určuje, které nástroje jsou k dispozici v okně Mapa zařízení. Podrobnosti o rolích uživatelů najdete v tématu věnovaném [Vytvoření a správě uživatelů](how-to-create-and-manage-users.md) .
 
-| Symbol | Popis |
+| Symbol | Description |
 |---|---|
 | :::image type="icon" source="media/how-to-work-with-maps/search-bar-icon-v2.png" border="false":::| Hledání podle IP adresy nebo adresy MAC pro konkrétní zařízení. Do textového pole zadejte adresu IP nebo adresu MAC. Mapa zobrazí zařízení, které jste hledali pomocí zařízení, která jsou k němu připojená. |
 | Zvýraznění skupin a filtry <br /> :::image type="content" source="media/how-to-work-with-maps/group-highlight-and-filters-v2.png" alt-text="Snímek obrazovky s zvýrazněním a filtry skupiny"::: | Filtrovat nebo zvýraznit mapu na základě výchozích a vlastních skupin zařízení. |
@@ -63,7 +63,7 @@ Následující obrázek ukazuje sbalenou podsíť IT s 27 prvky IT sítě.
 
 Povolení možnosti sbalení sítí IT:
 
-- V okně nastavení systému se ujistěte, že je povolená možnost sítě IT.
+- V okně **nastavení systému** se ujistěte, že je povolená možnost seskupování sítí IT.
 
 :::image type="content" source="media/how-to-work-with-maps/shrunk-it-subnet-v2.png" alt-text="Okno nastavení systému":::
 
@@ -76,7 +76,7 @@ Rozšíření podsítě IT:
 
    :::image type="content" source="media/how-to-work-with-maps/subnet-list.png" alt-text="Konfigurace podsítí":::
 
-2. V okně Upravit konfiguraci podsítí vymažte podsíť ICS pro každou podsíť, kterou chcete definovat jako podsíť IT. Podsítě IT se v mapě zařízení zobrazí jako sbalená s oznámeními pro zařízení ICS, jako je například kontroler nebo PLC v IT sítích.
+2. V okně **Upravit konfiguraci podsítí** zrušte zaškrtnutí políčka **podsíť ICS** pro každou podsíť, kterou chcete definovat jako podsíť IT. Podsítě IT se v mapě zařízení zobrazí jako sbalená s oznámeními pro zařízení ICS, jako je například kontroler nebo PLC v IT sítích.
 
    :::image type="content" source="media/how-to-work-with-maps/edit-config.png" alt-text="Upravit konfiguraci podsítí":::
 
@@ -106,31 +106,32 @@ Ikona sbalení je aktualizována aktualizovaným počtem rozbalených podsítí 
 
 ## <a name="view-or-highlight-device-groups"></a>Zobrazení nebo zvýraznění skupin zařízení
 
-Zobrazení mapy můžete přizpůsobit na základě skupin zařízení. Například skupiny zařízení přidružené k určité síti VLAN nebo podsíti. K dispozici jsou předdefinované skupiny a je možné vytvořit vlastní skupiny.
+Zobrazení mapy můžete přizpůsobit na základě skupin zařízení. Například skupiny zařízení přidružené k určitému protokolu typu, sítě VLAN nebo podsíti. K dispozici jsou předdefinované skupiny a je možné vytvořit vlastní skupiny.
 
 Zobrazit skupiny podle:
 
   - **Zvýrazňování:** Zvýrazněte zařízení, která patří do určité skupiny modře.
 
-  - **Filtrování:** Pouze zobrazovací zařízení pouze v mapě, která patří do konkrétní skupiny.
+  - **Filtrování:** Zobrazí jenom zařízení, která patří do konkrétní skupiny.
 
 :::image type="content" source="media/how-to-work-with-maps/port-standard.png" alt-text="Standardní zobrazení portu":::
 
 K dispozici jsou následující předdefinované skupiny:
 
-| Název skupiny | Popis |
+| Název skupiny | Description |
 |--|--|
-| **Známé aplikace nebo nestandardní porty (výchozí)** | Zařízení, která používají rezervované porty, jako je například TCP. Zařízení, která používají nestandardní porty nebo porty, kterým nebyl přiřazen alias. |
-| **Protokoly OT (výchozí)** | Zařízení, která zpracovávají provoz z provozu. |
-| **Autorizace (výchozí)** | Zařízení zjištěná v síti během procesu učení nebo byla oficiálně přidána do sítě |
+| **Známé aplikace** | Zařízení, která používají rezervované porty, jako je například TCP.  |
+| **porty, které nejsou standardní (výchozí)** | Zařízení, která používají nestandardní porty nebo porty, kterým nebyl přiřazen alias. |
+| **Protokoly OT (výchozí)** | Zařízení, která zpracovávají známá provozu. |
+| **Autorizace (výchozí)** | Zařízení zjištěná v síti během procesu učení nebo byla oficiálně schválena v síti. |
 | **Filtry inventáře zařízení** | Zařízení seskupená podle filtrů se ukládají do tabulky inventáře zařízení. |
 | **Intervaly dotazování** | Zařízení seskupená podle intervalů cyklického dotazování. Intervaly dotazování se generují automaticky podle cyklických kanálů neboli teček. Například 15,0 sekund, 3,0 sekund, 1,5 sekund nebo libovolný interval. Tyto informace vám pomůžou zjistit, jestli se systémy dotazují příliš rychle nebo pomalu. |
-| **Plánování** | Technické stanice a naprogramované řadiče |
+| **Plánování** | Technické stanice a programovací počítače. |
 | **Podsítě** | Zařízení, která patří do určité podsítě. |
 | **REŽIM** | Zařízení přidružená k určitému ID sítě VLAN |
-| **Připojení mezi podsítěmi** | Zařízení přidružená k připojení mezi podsítěmi |
+| **Připojení mezi podsítěmi** | Zařízení, která komunikují z jedné podsítě do jiné podsítě. |
 | **Připnuté výstrahy** | Zařízení, ke kterým uživatel připnul výstrahu. |
-| **Simulace vektoru útoku** | V sestavách vektoru útoku byly zjištěna zranitelná zařízení. Pokud chcete zobrazit tato zařízení na mapě, při generování vektoru útoku zaškrtněte políčko **Zobrazit v mapě zařízení** . :::image type="content" source="media/how-to-work-with-maps/add-attack-v2.png" alt-text="Přidat simulace vektoru útoku"::: |
+| **Simulace vektoru útoku** | V sestavách vektoru útoku byly zjištěna zranitelná zařízení. Pokud chcete zobrazit tato zařízení na mapě, při generování vektoru útoku zaškrtněte políčko **Zobrazit v mapě zařízení** . :::image type="content" source="media/how-to-work-with-maps/add-attack-v2.png" alt-text="Přidejte simulace vektoru útoku":::. |
 | **Poslední výskyt** | Zařízení seskupená podle časového rámce, které byly naposledy viděli, například: jedna hodina, šest hodin, jeden den, 7 dní. |
 | **Není ve službě Active Directory** | Všechna zařízení, která nejsou sami PLC, která nekomunikují se službou Active Directory. |
 
@@ -142,7 +143,7 @@ Zvýraznění nebo filtrování zařízení:
 
 3. V podokně skupiny vyberte skupinu, do které chcete zvýraznit nebo filtrovat zařízení.
 
-4. Vyberte možnost **Zvýraznit** nebo **filtrovat**.
+4. Vyberte možnost **Zvýraznit** nebo **filtrovat**. Přepněte stejný výběr pro odebrání zvýraznění nebo filtrování.
 
 ## <a name="define-custom-groups"></a>Definovat vlastní skupiny
 
@@ -155,20 +156,20 @@ Vytvoření skupiny:
 
 1. V postranní nabídce vyberte **zařízení** . Zobrazí se mapa zařízení.
 
-2. Vyberte :::image type="content" source="media/how-to-work-with-maps/menu-icon.png" alt-text="Nastavení skupiny"::: , aby se zobrazila nastavení skupin.
+1. Vyberte :::image type="content" source="media/how-to-work-with-maps/menu-icon.png" alt-text="Nastavení skupiny"::: , aby se zobrazila nastavení skupin.
 
-3. Vyberte :::image type="content" source="media/how-to-work-with-maps/create-group-v2.png" alt-text="skupiny"::: , chcete-li vytvořit novou vlastní skupinu.
+1. Vyberte :::image type="content" source="media/how-to-work-with-maps/create-group-v2.png" alt-text="skupiny"::: , chcete-li vytvořit novou vlastní skupinu.
 
 :::image type="content" source="media/how-to-work-with-maps/custom-group-v2.png" alt-text="Vytvoření obrazovky s vlastní skupinou":::
 
-4. Přidejte název skupiny, použijte až 30 znaků.
+1. Přidejte název skupiny, použijte až 30 znaků.
 
-5. Vyberte relevantní zařízení, a to následujícím způsobem:
+1. Vyberte relevantní zařízení, a to následujícím způsobem:
 
    - Přidejte zařízení z této nabídky tak, že je vyberete ze seznamu (vyberte na tlačítko se šipkou).<br /> Nebo: <br /> 
    - Do této nabídky přidejte zařízení tak, že je zkopírujete z vybrané skupiny (vyberte tlačítko se šipkou).
 
-6. Vyberte **Přidat skupinu**.
+1. Vyberte **Přidat skupinu** a přidejte do vlastních skupin existující skupiny.
 
 ### <a name="add-devices-to-a-custom-group"></a>Přidání zařízení do vlastní skupiny
 
@@ -176,13 +177,13 @@ Zařízení můžete přidat do vlastní skupiny nebo vytvořit novou vlastní s
 
 1. Pravým tlačítkem myši klikněte na zařízení na mapě.
 
-2. Vyberte **Přidat do skupiny**.
+1. Vyberte **Přidat do skupiny**.
 
-3. Do pole Skupina zadejte název skupiny a vyberte +. Zobrazí se nová skupina. Pokud již skupina existuje, bude přidána do existující vlastní skupiny.
+1. Do pole Skupina zadejte název skupiny a vyberte +. Zobrazí se nová skupina. Pokud již skupina existuje, bude přidána do existující vlastní skupiny.
 
    :::image type="content" source="media/how-to-work-with-maps/groups-section-v2.png" alt-text="Název skupiny":::
 
-4. Do skupiny přidejte zařízení opakováním kroků 1-3.
+1. Do skupiny přidejte zařízení opakováním kroků 1-3.
 
 ## <a name="map-zoom-views"></a>Zobrazení přiblížení mapy
 
@@ -266,7 +267,7 @@ K dispozici je rozsáhlá škála nástrojů pro další informace o zařízení
 
 Na zařízeních na mapě se můžou zobrazit tyto popisky a indikátory:
 
-| Popisek zařízení | Popis |
+| Popisek zařízení | Description |
 |--|--|
 | :::image type="content" source="media/how-to-work-with-maps/host-v2.png" alt-text="Název hostitele IP"::: | Název hostitele IP adresy a IP adresa nebo adresy podsítí |
 | :::image type="content" source="media/how-to-work-with-maps/amount-alerts-v2.png" alt-text="Počet výstrah"::: | Počet výstrah přidružených k zařízení |
@@ -312,24 +313,24 @@ Následující informace lze aktualizovat ručně. Informace, které jsou zadán
 
   - Purdue vrstva
 
-  - Popis
+  - Description
 
 | Položka | Popis |
 |--|--|
 | Základní informace | Základní informace, které jsou potřeba. |
-| Název | Název zařízení <br /> Ve výchozím nastavení senzor zjistí název zařízení, jak je definován v síti. Například název definovaný na serveru DNS. <br /> Pokud se žádné takové názvy nedefinovaly, zobrazí se v tomto poli IP adresa zařízení. <br /> Název zařízení můžete změnit ručně. Poskytněte svým zařízením smysluplné názvy, které odpovídají jejich funkcím. |
+| Name | Název zařízení <br /> Ve výchozím nastavení senzor zjistí název zařízení, jak je definován v síti. Například název definovaný na serveru DNS. <br /> Pokud se žádné takové názvy nedefinovaly, zobrazí se v tomto poli IP adresa zařízení. <br /> Název zařízení můžete změnit ručně. Poskytněte svým zařízením smysluplné názvy, které odpovídají jejich funkcím. |
 | Typ | Typ zařízení zjištěný senzorem. <br /> Další informace najdete v tématu [zobrazení typů zařízení](#view-device-types). |
-| Dodavatel | Dodavatel zařízení. |
-| Operační systém | Operační systém zařízení. |
+| Dodavatel | Dodavatel zařízení. To je určeno úvodními znaky adresy MAC zařízení. Toto pole je jen ke čtení. |
+| Operační systém | SYSTÉM zařízení zjistil senzor. |
 | Purdue vrstva | Purdue vrstva určená senzorem pro toto zařízení, včetně: <br /> – Automaticky <br /> – Řízení procesů <br /> – Dohlížecí <br /> – Enterprise |
-| Popis | Textové pole zdarma <br /> Přidejte další informace o zařízení. |
+| Description | Textové pole zdarma <br /> Přidejte další informace o zařízení. |
 | Atributy | Jakékoli další informace, které o zařízení byly zjištěny během období učení a nepatří do jiných kategorií, se zobrazí v části atributy. <br /> Informace jsou typu RO. |
-| Nastavení | Můžete ručně změnit nastavení zařízení, aby nedocházelo k falešně pozitivním hodnotám: <br /> - **Autorizované zařízení**: během období učení se všechna zařízení zjištěná v síti identifikují jako Autorizovaná zařízení. Jakmile se zařízení zjistí po období učení, ve výchozím nastavení se zobrazí jako neoprávněné zařízení. Tuto definici můžete změnit ručně. <br /> - **Známé jako skener**: tuto možnost povolte, pokud víte, že se jedná o zařízení se označuje jako skener a že se k němu nemusíte upozorňovat. <br /> - **Programové zařízení**: tuto možnost povolte, pokud víte, že se jedná o zařízení, které se označuje jako programové, a nemusíte na něj upozorňovat. |
+| Nastavení | Můžete ručně změnit nastavení zařízení, aby nedocházelo k falešně pozitivním hodnotám: <br /> - **Autorizované zařízení**: během období učení se všechna zařízení zjištěná v síti identifikují jako Autorizovaná zařízení. Jakmile se zařízení zjistí po období učení, ve výchozím nastavení se zobrazí jako neoprávněné zařízení. Tuto definici můžete změnit ručně. <br /> - **Známé jako skener**: tuto možnost povolte, pokud víte, že se jedná o zařízení se označuje jako skener a že se k němu nemusíte upozorňovat. <br /> - **Programové zařízení**: tuto možnost povolte, pokud víte, že toto zařízení je známé jako programové zařízení a slouží k provádění změn v programování. Rozpoznání jako programovací zařízení zabrání upozorněním na změny programování pocházející z tohoto prostředku. |
 | Vlastní skupiny | Vlastní skupiny v mapě zařízení, ve kterých se toto zařízení účastní |
 | State | Stav zabezpečení a autorizace zařízení: <br /> – Stav není, `Secured` Pokud nejsou k dispozici žádná upozornění. <br /> – Pokud se zobrazí výstrahy týkající se zařízení, zobrazí se počet výstrah. <br /> – Stav `Unauthorized` se zobrazí pro zařízení, která se přidala do sítě po období učení. Zařízení můžete ručně definovat jako `Authorized Device` v nastavení. <br /> – Pro případ, že je adresa tohoto zařízení definovaná jako Dynamická adresa, `DHCP` přidá se do stavu. |
 
 
-| Síť | Popis |
+| Síť | Description |
 |--|--|
 | Rozhraní | Rozhraní zařízení. Pole typu RO. |
 | Protokoly | Protokoly používané zařízením Pole typu RO. |
@@ -337,7 +338,7 @@ Následující informace lze aktualizovat ručně. Informace, které jsou zadán
 | Adresa | IP adresa zařízení. |
 | Sér | Sériové číslo zařízení. |
 | Adresa modulu | Model zařízení a číslo slotu nebo ID. |
-| Model | Číslo modelu zařízení. |
+| Modelování | Číslo modelu zařízení. |
 | Verze firmwaru | Číslo verze firmwaru. |
 
 Postup zobrazení informací o zařízení:
@@ -359,7 +360,7 @@ Následující tabulka uvádí všechny typy v systému:
 | Kategorie | Typ zařízení |
 |--|--|
 | HOSTITELSKÝ | Technická stanice <br /> PLC <br />Historian <br />HMI <br />IED <br />Řadič DCS <br />RTU <br />Systém pro průmyslové balení <br />Průmyslový rozsah <br />Průmyslový robot <br />Slot <br />Měřič <br />Proměnná hustota disku  <br />Kontroler robota <br />Servo jednotka <br />Pneumatické zařízení <br />Marquee |
-| IT | Řadič domény <br />Server DB <br />Pracovní stanice <br />Server <br />Terminálová stanice <br />Úložiště <br />Inteligentní telefon <br />Tablet <br />Záložní server |
+| IT | Řadič domény <br />Server DB <br />Pracovní stanice <br />Server <br />Terminálová stanice <br />Storage <br />Inteligentní telefon <br />Tablet <br />Záložní server |
 | IoT | Kamera IP <br />Tiskárna  <br />Děrovací hodiny <br />ATM <br />Inteligentní TV <br />Herní konzola <br />HRY <br />Ovládací panel dveří <br />VENTIL <br />Termostat <br />Požární alarm <br />Inteligentní světlo <br />Inteligentní přepínač <br />Detektor požáru <br />IP telefon <br />Výstražný systém <br />Alarm Siren <br />Detektor pohybu <br />Hodnocení <br />Senzor vlhkosti <br />Skener čárových kódů <br />Nepřerušitelný zdroj napájení <br />Systém čítače lidí <br />Intercom <br />Turnstile |
 | Síť | Bezdrátový přístupový bod <br />Směrovač <br />Přepínač <br />Brána firewall <br />VPN Gateway <br />Server NTP <br />WiFi – ananas <br />Fyzické umístění <br />Vstupně-výstupní adaptér <br /> Převaděč protokolu |
 
@@ -369,7 +370,7 @@ Postup zobrazení informací o zařízení:
 
 2. Klikněte pravým tlačítkem na zařízení a vyberte **Zobrazit vlastnosti**. Zobrazí se okno Vlastnosti zařízení.
 
-3. V dolní části okna vyberte požadovaná výstraha, kde najdete podrobné informace o výstrahách pro toto zařízení.
+3. Pokud chcete zobrazit podrobné informace o výstrahách pro toto zařízení, vyberte na požadované výstraze.
 
 ### <a name="backplane-properties"></a>Vlastnosti pro replánování
 
@@ -429,7 +430,7 @@ Vylepšete forenzní zobrazením událostí programování prováděných v sí�
 
 Můžete zobrazit programové zařízení a procházejte různými změnami programování, které na něm provedla jiná zařízení.
 
-Zobrazení kódu přidaného, změněného, odebraného nebo nezměněného pomocí programovacího zařízení. Vyhledejte programové změny na základě typů souborů, dat nebo časů zájmu.
+Zobrazení kódu, který byl přidán, změněn, odebrán nebo znovu načten programovacím zařízením. Vyhledejte programové změny na základě typů souborů, dat nebo časů zájmu.
 
 ### <a name="when-to-review-programming-activity"></a>Kdy zkontrolovat aktivitu programování 
 
@@ -476,19 +477,19 @@ Výstrahy se aktivují, když Neautorizovaná programovací zařízení provád�
 :::image type="content" source="media/how-to-work-with-maps/unauthorized.png" alt-text="Neautorizované výstrahy programování":::
 
 > [!NOTE]
-> Můžete si také prohlédnout základní informace o programování v okno Vlastnosti zařízení a inventáři zařízení. Podrobnosti najdete v tématu [informace o programování zařízení: další umístění](#device-programming-information-additional-locations) .
+> Můžete si také prohlédnout základní informace o programování v okno Vlastnosti zařízení a inventáři zařízení.
 
 ### <a name="working-in-the-programming-timeline-window"></a>Práce v okně programovací časová osa
 
 Tato část popisuje, jak zobrazit programové soubory a porovnat verze. Vyhledá konkrétní soubory odeslané do naprogramovaného zařízení. Hledat soubory na základě:
 
-  - Datum
+  - Date (Datum)
 
   - Typ souboru
 
 :::image type="content" source="media/how-to-work-with-maps/timeline-view.png" alt-text="okno programovací časová osa":::
 
-|Typ programovací časové osy | Popis |
+|Typ programovací časové osy | Description |
 |--|--|
 | Naprogramované zařízení | Obsahuje podrobné informace o zařízení, které bylo naprogramováno, včetně názvu hostitele a souboru. |
 | Nedávné události | 50 zobrazí nejnovější události, které senzor zjistil. <br />Pokud chcete událost zvýraznit, najeďte na ni myší a klikněte na starou. :::image type="icon" source="media/how-to-work-with-maps/star.png" border="false"::: <br /> Můžete zobrazit poslední 50 události. |
@@ -539,11 +540,11 @@ Pro porovnání:
 
 5. Soubor vybraný z podokna nedávné události/soubory se vždycky zobrazuje na pravé straně.
 
-### <a name="device-programming-information-additional-locations"></a>Informace o programování zařízení: další místa
+### <a name="device-programming-information-other-locations"></a>Informace o programování zařízení: jiná umístění
 
 Kromě kontroly podrobností na časové ose programování můžete získat přístup k programovým informacím v okno Vlastnosti zařízení a inventáři zařízení.
 
-| Typ zařízení | Popis |
+| Typ zařízení | Description |
 |--|--|
 | Vlastnosti zařízení | Okno vlastností zařízení poskytuje informace o poslední události programování zjištěné na device\.. :::image type="content" source="media/how-to-work-with-maps/information-from-device-v2.png" alt-text="Vlastnosti vašeho zařízení"::: |
 | Inventář zařízení | Inventář zařízení indikuje, jestli je zařízení programový device\.. :::image type="content" source="media/how-to-work-with-maps/inventory-v2.png" alt-text="Inventář zařízení"::: |
@@ -554,9 +555,9 @@ Senzor neaktualizuje nebo neovlivní zařízení přímo v síti. Změny, které
 
 ### <a name="delete-devices"></a>Odstranit zařízení
 
-Pokud se zjištěné informace netýkají, je vhodné zařízení odstranit. Příklad:
+Pokud se zjištěné informace netýkají, je vhodné zařízení odstranit. Třeba
 
-  - Partnerská strana v technické pracovní stanici se připojí k provedení aktualizací konfigurace. Po dokončení úlohy by se už zařízení nemělo monitorovat.
+  - Partnerská strana v technické pracovní stanici se k provedení aktualizací konfigurace dočasná připojuje. Po dokončení úlohy se zařízení odebere.
 
   - V důsledku změn v síti už některá zařízení nejsou připojená.
 
@@ -566,7 +567,7 @@ Může se zobrazit výstraha oznamující, že zařízení nereaguje, pokud se k
 
 Zařízení se odebere z mapy zařízení, inventáře zařízení a sestav dolování dat. Další informace, například: informace uložené v pomůckách budou zachovány.
 
-Zařízení musí být aktivní aspoň po dobu 10 minut, aby ho bylo možné odstranit.
+Aby se zařízení odstranilo aspoň 10 minut, musí být zařízení neaktivní.
 
 Odstranění zařízení z mapy zařízení:
 
@@ -576,15 +577,17 @@ Odstranění zařízení z mapy zařízení:
 
 ### <a name="merge-devices"></a>Sloučit zařízení
 
-Za určitých okolností může být nutné sloučit zařízení. To může být nutné v případě, že senzor zjistil samostatné síťové entity, které jsou jedním jedinečným zařízením. Příklad:
+Za určitých okolností může být nutné sloučit zařízení. To může být nutné v případě, že senzor zjistil samostatné síťové entity, které jsou přidruženy k jednomu jedinečnému zařízení. Třeba
 
-  - PLC se čtyřmi síťovými kartami
+  - PLC se čtyřmi síťovými kartami.
 
-  - Přenosný počítač s Wi-Fi a fyzickou kartou
+  - Přenosný počítač s Wi-Fi a fyzickou kartou.
+  
+  - Pracovní stanice se dvěma nebo více síťovými kartami.
 
 Při slučování dáte pokyn snímači ke kombinování vlastností zařízení dvou zařízení do jednoho. Když to uděláte, budou se sestavy okno Vlastnosti zařízení a snímače aktualizovat o nové podrobnosti vlastnosti zařízení.
 
-Pokud například sloučíte dvě zařízení s IP adresou, budou se obě IP adresy zobrazovat jako samostatná rozhraní okno Vlastnosti zařízení. Je možné sloučit pouze ověřená zařízení.
+Pokud například sloučíte dvě zařízení, každá s IP adresou, budou se obě IP adresy zobrazovat jako samostatná rozhraní okno Vlastnosti zařízení. Je možné sloučit pouze ověřená zařízení.
 
 :::image type="content" source="media/how-to-work-with-maps/device-properties-v2.png" alt-text="okno Vlastnosti zařízení":::
 
@@ -596,7 +599,7 @@ Sloučení zařízení nelze vrátit zpět. Pokud jste omylem sloučili dvě za�
 
 Sloučení zařízení:
 
-1. Vyberte dvě zařízení a klikněte na jednu z nich pravým tlačítkem.
+1. Vyberte dvě zařízení (Shift-Click) a pak na jednu z nich klikněte pravým tlačítkem.
 
 2. Vyberte **Sloučit** , aby se zařízení mohla sloučit. Dokončení sloučení může trvat až 2 minuty.
 
@@ -622,7 +625,7 @@ Pokud zařízení na mapě přesunete nebo ručně změníte vlastnosti zaříze
 
 #### <a name="unauthorized-devices---attack-vectors-and-risk-assessment-reports"></a>Neoprávněná zařízení – vektory útoku a sestavy vyhodnocení rizik
 
-V sestavách hodnocení rizik a vektorů útoků jsou vypočítána neoprávněná zařízení.
+Neoprávněná zařízení jsou součástí sestav hodnocení rizik a vektorů útoků.
 
 - **Sestavy vektorů útoku:** Zařízení označená jako neoprávněná jsou ve vektoru útoku vyřešena jako podezřelá neoprávněná zařízení, která by mohla být hrozbou pro síť.
 

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 9c868685ad943c1ab9ab263a164111e46294c042
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c15dc62cad796f5f74f2316d148e217052dc9678
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625427"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508858"
 ---
 # <a name="investigate-sensor-detections-in-a-device-inventory"></a>Prošetření detekovaných senzorů v inventáři zařízení
 
@@ -32,18 +32,18 @@ V tabulce inventáře zařízení se zobrazí následující atributy.
 
 | Parametr | Popis |
 |--|--|
-| Název | Název zařízení jako senzor, který ho zjistil. |
-| Typ | Typ zařízení. |
+| Název | Název zařízení, jak ho senzor vyzjistil nebo jak zadal uživatel. |
+| Typ | Typ zařízení určený senzorem nebo zadaným uživatelem. |
 | Dodavatel | Název dodavatele zařízení, jak je definován v adrese MAC. |
-| Operační systém | Operační systém zařízení. |
-| Firmware | Firmware zařízení. |
-| IP adresa | IP adresa zařízení. |
+| Operační systém | Operační systém zařízení, pokud se zjistil. |
+| Verze firmwaru | Firmware zařízení, pokud byl zjištěn. |
+| IP adresa | IP adresa zařízení, kde je definováno. |
 | REŽIM | SÍŤ VLAN zařízení. Podrobnosti o tom, jak senzoru zjišťovat sítě VLAN, najdete v tématu [definice názvů sítí VLAN](how-to-manage-the-on-premises-management-console.md#define-vlan-names). (postupy: definování-Management-Console-Network-Settings. MD # define-VLAN-Names). |
 | Adresa MAC | Adresa MAC zařízení. |
 | Protokoly | Protokoly, které zařízení používá. |
 | Nepotvrzené výstrahy | Počet nepotvrzených výstrah přidružených k tomuto zařízení. |
 | Je autorizován | Stav autorizace definovaný uživatelem:<br />- **True**: zařízení je autorizované.<br />- **False**: zařízení není autorizované. |
-| Se označuje jako skener | Definováno jako skenovací zařízení uživatelem. |
+| Se označuje jako skener | Definováno jako zařízení pro kontrolu sítě uživatelem. |
 | Je programovací zařízení | Definováno jako autorizované programovací zařízení uživatelem. <br />- **True**: zařízení provádí programovací činnosti pro PLCs, RTUs a řadiče, které jsou relevantní pro technické stanice. <br />- **False**: zařízení není programovací zařízení. |
 | Skupiny | Skupiny, ve kterých se toto zařízení účastní. |
 | Poslední aktivita | Poslední aktivita, kterou zařízení provedlo. |
@@ -111,7 +111,7 @@ Když přepnete do zobrazení mapy, filtrovaná zařízení se zvýrazní a filt
 
 ## <a name="learn-windows-registry-details"></a>Podrobnosti o registru Windows
 
-Kromě kurzů pro zařízení můžete zjistit zařízení, včetně pracovních stanic a serverů Microsoft Windows. Tato zařízení se také zobrazují v inventáři zařízení. Po zjištění zařízení můžete inventář zařízení rozšířit o podrobné informace o Windows, třeba:
+Kromě kurzů pro zařízení můžete zjišťovat pracovní stanice a servery Microsoft Windows. Tato zařízení se také zobrazují v inventáři zařízení. Po zjištění zařízení můžete inventář zařízení rozšířit o podrobné informace o Windows, třeba:
 
 - Nainstalovaná verze Windows
 
@@ -217,7 +217,7 @@ Import:
 
 ## <a name="export-device-inventory-information"></a>Exportovat informace o inventáři zařízení
 
-Informace o inventáři zařízení můžete exportovat do excelového souboru. Importované informace přepisují aktuální informace.
+Informace o inventáři zařízení můžete exportovat do excelového souboru.
 
 Export souboru CSV:
 
