@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: eff73888a449de20b2b460d519b36c0f03c4ea77
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8bcef40dad9c67e9e2c6d6c4a051045999487027
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88690997"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99531600"
 ---
 Když spustíte graf médií, výsledky z uzlu procesoru snímače pohybu procházejí uzlem IoT Hub jímky do služby IoT Hub. Zprávy, které vidíte v okně **výstup** Visual Studio Code obsahují `body` oddíl a `applicationProperties` oddíl. Další informace najdete v tématu [Vytvoření a čtení zpráv IoT Hub](../../../../../iot-hub/iot-hub-devguide-messages-construct.md).
 
@@ -61,21 +61,12 @@ Tady je příklad této zprávy:
         }  
       }  
     ]  
-  },  
-  "applicationProperties": {  
-    "topic": "/subscriptions/{subscriptionID}/resourceGroups/{name}/providers/microsoft.media/mediaservices/hubname",  
-    "subject": "/graphInstances/GRAPHINSTANCENAME/processors/md",  
-    "eventType": "Microsoft.Media.Graph.Analytics.Inference",  
-    "eventTime": "2020-04-17T20:26:32.7010000Z",
-    "dataVersion": "1.0"  
-  }  
+  } 
 }  
 ```
 
 V tomto příkladu: 
 
-* V `applicationProperties` aplikaci `subject` odkazuje na uzel v grafu médií, ze kterého byla zpráva generována. V tomto případě zpráva pochází z uzlu procesoru detekce pohybu.
-* V `applicationProperties` nástroji `eventType` označuje, že tato událost je analytická událost.
 * `eventTime`Hodnota je čas, kdy došlo k události.
 * `body`Hodnota je data o události analýzy. V tomto případě událost je odvozená událost, takže tělo obsahuje `timestamp` `inferences` data a.
 * `inferences`Data označují, že `type` je `motion` . Obsahuje další data o této `motion` události.

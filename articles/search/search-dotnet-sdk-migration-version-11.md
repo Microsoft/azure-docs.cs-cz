@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5f070f59df69bb186041af450e6ca922469d960
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: df8841cb2dcac6335b09a5e7715f42c508c69e76
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043740"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99536811"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Upgrade na Azure Kognitivní hledání .NET SDK verze 11
 
@@ -168,8 +168,8 @@ Verze 11,1 přidává následující:
 
 Následující funkce verze 10 ještě nejsou k dispozici ve verzi 11. Pokud tyto funkce vyžádáte, při migraci počkejte, dokud se nepodporují.
 
-+ geoprostorové typy
 + [Knowledge Store](knowledge-store-concept-intro.md)
++ Geoprostorové typy – podpora první třídy pro geoprostorové typy stále probíhá. V současnosti se dá balíček [Microsoft. prostor](https://www.nuget.org/packages/Microsoft.Spatial/) použít k podpoře geografických operací. K dispozici jsou příklady [System.Text.Jszapnuto](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md) a [Newtonsoft.Js](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md).
 
 <a name="UpgradeSteps"></a>
 

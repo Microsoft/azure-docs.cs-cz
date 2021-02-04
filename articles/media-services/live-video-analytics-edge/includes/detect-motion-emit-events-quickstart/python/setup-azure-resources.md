@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 744343fe99b276da0264f9a7e40442f754b01169
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 21b84a40621f5a529c09dc0c03e024c4ea6d5c95
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "99213965"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99531197"
 ---
 Tento kurz vyžaduje následující prostředky Azure:
 
@@ -16,6 +16,8 @@ Tento kurz vyžaduje následující prostředky Azure:
 Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostředků ve vašem předplatném Azure použili [skript pro nastavení prostředků Live video Analytics](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) . To můžete provést pomocí těchto kroků:
 
 1. Otevřete [Azure Cloud Shell](https://ms.portal.azure.com/#cloudshell/).
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/quickstarts/cloud-shell.png" alt-text="Cloud Shell":::
 1. Pokud používáte Cloud Shell poprvé, budete vyzváni k výběru předplatného pro vytvoření účtu úložiště a sdílené složky Microsoft Azure souborů. Vyberte **vytvořit úložiště** a vytvořte účet úložiště pro informace o cloud Shell relaci. Tento účet úložiště je oddělený od účtu, který vytvoří skript pro použití s vaším účtem Azure Media Services.
 1. V rozevírací nabídce na levé straně okna Cloud Shell vyberte **bash** jako své prostředí.
 
@@ -41,12 +43,12 @@ Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostř
     1. **Registr kontejnerů** – to pomáhá ukládat a spravovat vaše soukromé image kontejnerů Docker a související artefakty.
 1. Po dokončení skriptu vyberte složené závorky a vystavte strukturu složek. V adresáři *~/clouddrive/lva-Sample* se zobrazí několik souborů. V tomto rychlém startu jsou důležité tyto:
 
-     * ***~/clouddrive/lva-Sample/Edge-Deployment/.env** _ – Tento soubor obsahuje vlastnosti, které Visual Studio Code používá k nasazení modulů do hraničního zařízení.
-     _ ***~/clouddrive/lva-sample/appsetting.jsv** _-Visual Studio Code používá tento soubor ke spuštění ukázkového kódu.
+     * ***~/clouddrive/lva-Sample/Edge-Deployment/.env*** – tento soubor obsahuje vlastnosti, které Visual Studio Code používá k nasazení modulů do hraničního zařízení.
+     * ***~/clouddrive/lva-sample/appsetting.json*** -Visual Studio Code používá tento soubor ke spuštění ukázkového kódu.
      
     Tyto soubory budete potřebovat při nastavení vývojového prostředí v Visual Studio Code v další části. Můžete je teď chtít zkopírovat do místního souboru.
     
     ![Nastavení aplikace](../../../media/quickstarts/clouddrive.png)
 
 > [!TIP]
-> Pokud narazíte na problémy s prostředky Azure, které se vytvoří, přečtěte si náš *[Průvodce odstraňováním potíží](../../../troubleshoot-how-to.md#common-error-resolutions)** a vyřešte některé běžně zjištěné problémy.
+> Pokud narazíte na problémy s prostředky Azure, které se vytvoří, přečtěte si náš **[Průvodce odstraňováním potíží](../../../troubleshoot-how-to.md#common-error-resolutions)** a vyřešte některé běžně zjištěné problémy.

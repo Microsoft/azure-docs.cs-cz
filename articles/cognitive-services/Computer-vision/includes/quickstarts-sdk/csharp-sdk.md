@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 58ad4acaa60abe56849490df39c91949abec2f5d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 8bb0c8e58c7b5eb1a0ba8a8ca4006ef04b2e2423
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948566"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99532134"
 ---
 <a name="HOLTop"></a>
 
@@ -112,7 +112,7 @@ V `Main` metodě aplikace přidejte volání metod používaných v rámci tohot
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce sady Počítačové zpracování obrazu .NET SDK.
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 | [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) | Tato třída je potřebná pro všechny funkce Počítačové zpracování obrazu. Vytvoříte jeho instanci s informacemi o předplatném a použijete ho k provádění většiny operací s imagí.|
 |[ComputerVisionClientExtensions](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions)| Tato třída obsahuje další metody pro **ComputerVisionClient**.|
@@ -255,9 +255,21 @@ Ve třídě **program** uložte odkaz na adresu URL obrázku, ze kterého chcete
 
 ### <a name="call-the-read-api"></a>Volání rozhraní API pro čtení
 
-Přidejte následující metodu, která zavolá metodu **ReadAsync** pro daný obrázek. Tato operace vrátí ID operace a spustí asynchronní proces pro čtení obsahu obrázku. Dále Získejte ID operace vrácené voláním **ReadAsync** a použijte ji k dotazování služby na výsledky operace. Nakonec vytiskněte extrahovaný text do konzoly.
+Definujte novou metodu pro čtení textu. Přidejte následující kód, který volá metodu **ReadAsync** pro daný obrázek. Tato operace vrátí ID operace a spustí asynchronní proces pro čtení obsahu obrázku.
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_read_url)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_readfileurl_1)]
+
+### <a name="get-read-results"></a>Získat výsledky čtení
+
+Potom Získejte ID operace vrácené voláním **ReadAsync** a použijte ji k dotazování služby na výsledky operace. Následující kód zkontroluje operaci, dokud nebudou vráceny výsledky. Pak zobrazí extrahovaná textová data do konzoly.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_readfileurl_2)]
+
+### <a name="display-read-results"></a>Zobrazit výsledky čtení
+
+Přidejte následující kód, který analyzuje a zobrazí získaná textová data, a dokončete definici metody.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_readfileurl_3)]
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: 9419e5f419a358be50fbb3b8478d62dfe6e3dff0
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: b013c66feefade077c85194ba3b1ff04ff4c4aa5
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509346"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99536828"
 ---
 # <a name="creating-queries-in-azure-cognitive-search"></a>Vytváření dotazů v Azure Kognitivní hledání
 
@@ -23,7 +23,7 @@ Pokud vytváříte dotaz poprvé, Tento článek popisuje přístupy a metody pr
 
 Dotaz je požadavek jen pro čtení na kolekci docs v rámci jednoho vyhledávacího indexu. Určuje typ queryType a výraz dotazu, i když je parametr Search. Výraz dotazu může mít hledané výrazy, frázi uzavřenou v uvozovkách a operátory.
 
-Dotaz může mít také ' count ', aby vrátil počet shod nalezených v indexu, ' SELECT ' pro výběr, která pole se vrátí ve výsledku hledání a ' OrderBy ' pro řazení výsledků. Následující příklady znázorňují požadavek dotazu s podmnožinou dostupných parametrů. Další informace o složení dotazů naleznete v tématu [typy a kompozice dotazů](search-query-overview.md) a [hledání dokumentů (REST)](/rest/api/searchservice/search-documents).
+Dotaz může mít také ' count ', aby vrátil počet shod nalezených v indexu, ' SELECT ' pro výběr, která pole se vrátí ve výsledku hledání a ' OrderBy ' pro řazení výsledků. Následující příklad poskytuje obecnou představu o požadavku na dotaz tím, že zobrazuje podmnožinu dostupných parametrů. Další informace o složení dotazů naleznete v tématu [typy a kompozice dotazů](search-query-overview.md) a [hledání dokumentů (REST)](/rest/api/searchservice/search-documents).
 
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -38,7 +38,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ## <a name="choose-a-client"></a>Zvolit klienta
 
-Budete potřebovat nástroj nebo rozhraní API k vytvoření dotazu, jako je například Azure Portal nebo post nebo kód, který vytvoří instanci dotazu klienta. Pro prvotní vývoj a testování testování konceptů doporučujeme Azure Portal nebo rozhraní REST API.
+Budete potřebovat nástroj, jako je Azure Portal nebo post, nebo kód, který vytvoří instanci klienta dotazů pomocí rozhraní API. Pro prvotní vývoj a testování testování konceptů doporučujeme Azure Portal nebo rozhraní REST API.
 
 ### <a name="permissions"></a>Oprávnění
 
@@ -111,14 +111,6 @@ Popis atributů pole naleznete v tématu [Create index (REST API)](/rest/api/sea
 Při indexování používá vyhledávací modul analyzátor k analýze textu řetězců a maximalizaci potenciálu pro porovnání v době dotazu. Minimálně řetězce jsou použita, ale můžou také podléhat lemmatizátor nebo předzpracování a zastavovat odstraňování slov. Větší řetězce nebo složená slova jsou obvykle rozdělená prázdnými znaky, pomlčkami nebo pomlčkami a indexované jako samostatné tokeny. 
 
 Tady je bod, který je třeba vzít v úvahu, protože co si myslíte, že váš index obsahuje a co je v něm vlastněné, může být odlišné. Pokud dotazy nevrátí očekávané výsledky, můžete zkontrolovat tokeny vytvořené nástrojem Analyzer prostřednictvím [analyzovat text (REST API)](/rest/api/searchservice/test-analyzer). Další informace o tokenizace a dopadu na dotazy naleznete v části [hledání částečného termínu a vzory se speciálními znaky](search-query-partial-matching.md).
-
-## <a name="about-queries-per-second-qps"></a>O dotazech za sekundu (QPS)
-
-Vzhledem k velkému počtu faktorů, které se blíží k výkonu dotazů, Microsoft nepublikuje očekávaná QPS čísla. Odhady QPS musí být vyvíjeny nezávisle u každého zákazníka, a to pomocí úrovně služeb, konfigurace, indexu a konstrukcí dotazů, které jsou platné pro vaši aplikaci. Velikost indexu a složitost, velikost a složitost dotazů a množství přenosů jsou primárními determinanty QPS. Neexistuje žádný způsob, jak nabízet smysluplné odhady v případě, že tyto faktory nejsou známy.
-
-Odhady jsou předvídatelné při výpočtu na službách, které běží na vyhrazených prostředcích (úrovně Basic a Standard). QPS můžete odhadnout přesněji, protože máte kontrolu nad více parametry. Pokyny pro přístup k odhadu najdete v tématu [výkon a optimalizace pro Azure kognitivní hledání](search-performance-optimization.md).
-
-Pro vrstvy optimalizované pro úložiště (L1 a L2) byste měli očekávat nižší propustnost dotazů a vyšší latenci než na úrovni Standard.
 
 ## <a name="next-steps"></a>Další kroky
 
