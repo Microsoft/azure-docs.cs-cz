@@ -63,6 +63,8 @@
       items:
         - name: Vytvoření škálovací sady virtuálních počítačů
           href: ./scripts/cli-sample-create-simple-scale-set.md
+        - name: Vytvoření a Správa sady škálování virtuálních počítačů
+          href: ./scripts/cli-sample-manage-scale-set.md
         - name: Vytvoření škálovací sady z vlastní image virtuálního počítače
           href: ./scripts/cli-sample-create-scale-set-from-custom-image.md
         - name: Instalace aplikací do škálovací sady

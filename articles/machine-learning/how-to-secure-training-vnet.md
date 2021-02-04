@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 9ef339fb0ccd14314a65d03b59e501069446c870
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 02045c7ba2373c57213cc7fffb71a5e6bb5979e6
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493833"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537996"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Zabezpečení Azure Machine Learningho školicího prostředí s využitím virtuálních sítí
 
@@ -163,15 +163,22 @@ Můžete to provést dvěma způsoby:
 
 * Použijte [Virtual Network překlad adres (NAT)](../virtual-network/nat-overview.md). Brána NAT poskytuje odchozí připojení k Internetu pro jednu nebo více podsítí ve vaší virtuální síti. Informace najdete v tématu [navrhování virtuálních sítí s využitím prostředků brány NAT](../virtual-network/nat-gateway-resource.md).
 
-* Přidejte [uživatelsky definované trasy (udr)](../virtual-network/virtual-networks-udr-overview.md) do podsítě, která obsahuje výpočetní prostředek. Vytvořte UDR pro každou IP adresu, kterou používá služba Azure Batch, v oblasti, kde existují vaše prostředky. Tyto udr umožňují, aby služba Batch komunikovala s výpočetními uzly pro plánování úloh. Přidejte také IP adresu pro službu Azure Machine Learning, kde existují prostředky, jak je to nutné pro přístup k výpočetním instancím. Chcete-li získat seznam IP adres služby Batch a služby Azure Machine Learning, použijte jednu z následujících metod:
+* Přidejte [uživatelsky definované trasy (udr)](../virtual-network/virtual-networks-udr-overview.md) do podsítě, která obsahuje výpočetní prostředek. Vytvořte UDR pro každou IP adresu, kterou používá služba Azure Batch, v oblasti, kde existují vaše prostředky. Tyto udr umožňují, aby služba Batch komunikovala s výpočetními uzly pro plánování úloh. Přidejte také IP adresu pro službu Azure Machine Learning, protože to je vyžadováno pro přístup k výpočetním instancím. Při přidávání IP adresy pro službu Azure Machine Learning musíte přidat IP adresu pro __primární i sekundární__ oblast Azure. Primární oblast, kde se nachází váš pracovní prostor.
+
+    Pokud chcete najít sekundární oblast, přečtěte si téma [zajištění provozní kontinuity & zotavení po havárii pomocí spárovaných oblastí Azure](../best-practices-availability-paired-regions.md#azure-regional-pairs). Například pokud je vaše služba Azure Machine Learning v Východní USA 2, Sekundární oblast je Střed USA. 
+
+    Chcete-li získat seznam IP adres služby Batch a služby Azure Machine Learning, použijte jednu z následujících metod:
 
     * Stáhněte si [rozsahy IP adres Azure a značky služby](https://www.microsoft.com/download/details.aspx?id=56519) a vyhledejte v něm soubor `BatchNodeManagement.<region>` a `AzureMachineLearning.<region>` , kde `<region>` je vaše oblast Azure.
 
-    * Informace si můžete stáhnout pomocí [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) . Následující příklad stáhne informace o IP adrese a odfiltruje informace o Východní USA 2 oblasti:
+    * Informace si můžete stáhnout pomocí [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) . Následující příklad stáhne informace o IP adrese a odfiltruje informace o Východní USA 2 oblasti (primární) a Střed USA oblasti (sekundární):
 
         ```azurecli-interactive
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
+        # Get primary region IPs
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
+        # Get secondary region IPs
+        az network list-service-tags -l "Central US" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='centralus']"
         ```
 
         > [!TIP]
@@ -190,7 +197,6 @@ Můžete to provést dvěma způsoby:
     Kromě všech udr, které definujete, musí být odchozí provoz do Azure Storage povolen prostřednictvím místního síťového zařízení. Konkrétně adresy URL tohoto provozu jsou v následujících formulářích: `<account>.table.core.windows.net` , `<account>.queue.core.windows.net` a `<account>.blob.core.windows.net` . 
 
     Další informace najdete v tématu [Vytvoření fondu Azure Batch ve virtuální síti](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling).
-
 
 ### <a name="create-a-compute-cluster-in-a-virtual-network"></a>Vytvoření výpočetního clusteru ve virtuální síti
 

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 60bb5ac652a80b5ae52c91f91fa0c80440e9cc82
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 6f63315c3e9b150a54e122d9a1c6948087603d51
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359077"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537403"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>Konfigurace skupiny dostupnosti Always On SQL Server napříč různými oblastmi Azure
 
@@ -86,6 +86,7 @@ Pokud chcete vytvořit repliku ve vzdáleném datovém centru, proveďte násled
    - Použijte test portu TCP specifický pro IP adresu.
    - Musí mít pravidlo vyrovnávání zatížení specifické pro SQL Server ve stejné oblasti.  
    - Pokud virtuální počítače ve fondu back-end nejsou součástí jedné skupiny dostupnosti nebo sady škálování virtuálních počítačů, je Standard Load Balancer. Další informace najdete v článku [přehled Azure Load Balancer úrovně Standard](../../../load-balancer/load-balancer-overview.md).
+   - Být Standard Load Balancer, pokud jsou dvě virtuální sítě ve dvou různých oblastech partnerského vztahu přes globální partnerský vztah VNet. Další informace najdete v části Nejčastější [dotazy k Azure Virtual Network](../../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
 
 1. [Přidejte funkci clusteringu s podporou převzetí služeb při selhání do nového SQL Server](availability-group-manually-configure-prerequisites-tutorial.md#add-failover-clustering-features-to-both-sql-server-vms).
 

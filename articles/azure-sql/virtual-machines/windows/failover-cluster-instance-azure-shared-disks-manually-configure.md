@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 8daec71745c9eff9a7db5bb34cb3596973def4aa
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 70f4ac69721db57aa06c0d8fda12189f43e79686
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736407"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537826"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Vytvoření FCI se sdílenými disky Azure (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -32,7 +32,7 @@ Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních 
 Před dokončením kroků v tomto článku byste už měli mít:
 
 - Předplatné Azure. Začněte [zdarma](https://azure.microsoft.com/free/). 
-- [Dva nebo více virtuálních počítačů se systémem Windows Azure](failover-cluster-instance-prepare-vm.md). [Sady dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md) a [skupiny umístění pro Proximity](../../../virtual-machines/co-location.md#proximity-placement-groups) (PPGs) podporované pro SSD úrovně Premium a [zóny dostupnosti](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) se podporují pro disky Ultra. Pokud použijete PPG, musí všechny uzly existovat ve stejné skupině.
+- [Dva nebo více virtuálních počítačů se systémem Windows Azure](failover-cluster-instance-prepare-vm.md). [Sady dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md) a [skupiny umístění pro Proximity](../../../virtual-machines/co-location.md#proximity-placement-groups) (PPGs) podporované pro SSD úrovně Premium a [zóny dostupnosti](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) se podporují pro disky Ultra. Všechny uzly musí existovat ve stejné [skupině umístění blízkosti](../../../virtual-machines/co-location.md#proximity-placement-groups).
 - Účet, který má oprávnění k vytváření objektů na virtuálních počítačích Azure i ve službě Active Directory.
 - Nejnovější verze [prostředí PowerShell](/powershell/azure/install-az-ps). 
 

@@ -7,17 +7,22 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 6c388a08a589cc89d83b7178e31e3f4497b924bb
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 642c61414d882b9cfe83f585fda8ff5404e8834a
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527393"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538472"
 ---
-# <a name="configure-and-manage-continuous-backup-and-point-in-time-restore---using-azure-resource-manager-templates"></a>Konfigurace a Správa průběžného zálohování a obnovení k určitému bodu v čase – používání šablon Azure Resource Manager
+# <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-resource-manager-templates"></a>Konfigurace a Správa průběžného zálohování a obnovení k určitému bodu v čase (Preview) – používání šablon Azure Resource Manager
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-Funkce obnovení k určitému bodu v čase umožňuje obnovení z náhodné změny v rámci kontejneru, obnovení odstraněného účtu, databáze nebo kontejneru nebo obnovení do libovolné oblasti (kde zálohy existovaly). Azure Cosmos DB Režim průběžné zálohování umožňuje obnovení do libovolného časového okamžiku za posledních 30 dní.
+> [!IMPORTANT]
+> Funkce obnovení bodu v čase (režim průběžného zálohování) pro Azure Cosmos DB je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Funkce obnovení k určitému bodu v čase služby Azure Cosmos DB (Preview) vám pomůže s obnovením z náhodné změny v rámci kontejneru, k obnovení odstraněného účtu, databáze nebo kontejneru nebo k obnovení do libovolné oblasti (kde zálohy existovaly). Režim průběžné zálohování umožňuje obnovení do libovolného časového okamžiku za posledních 30 dní.
 
 Tento článek popisuje, jak zřídit účet s průběžným zálohováním a obnovením dat pomocí šablon Azure Resource Manager.
 

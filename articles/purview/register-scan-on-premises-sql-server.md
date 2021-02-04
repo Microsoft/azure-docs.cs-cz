@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: 0d282ee805ac61ba17ceb3ecc6a3d8179ea7b319
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 26012b23a10f560158e3ba3919e12f5c15759189
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555895"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539311"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>Registrace a kontrola místního SQL serveru
 
@@ -50,21 +50,17 @@ Existuje pouze jeden způsob, jak nastavit ověřování pro místní SQL Server
 
 ### <a name="sql-authentication"></a>Ověřování SQL
 
-Identita SQL musí mít přístup k primární databázi. Místo, kde `sys.databases` je uloženo. Aby `sys.databases` bylo možné najít všechny instance SQL DB na serveru, musí se vypsat dosah skener.
+Účet SQL musí mít přístup k **Hlavní** databázi. Důvodem je to, že `sys.databases` je v hlavní databázi. Aby `sys.databases` bylo možné najít všechny databáze SQL na serveru, musí se vypsat dosah skenerem.
 
 #### <a name="using-an-existing-server-administrator"></a>Použití existujícího správce serveru
 
 Pokud máte v úmyslu použít stávajícího uživatele správce serveru (SA) k prohledávání místního systému SQL Server, zajistěte následující:
 
-1. `sa` není typ ověřování systému Windows.
+1. `sa` není ověřovací účet systému Windows.
 
-2. Uživatel na úrovni serveru, který plánujete použít, musí mít role serveru Public a sysadmin. Můžete to ověřit tak, že přejdete na SQL Server Management Studio (SSMS), připojíte se k serveru, přejdete na zabezpečení a vyberete přihlašovací údaje, které plánujete použít, kliknete pravým tlačítkem na **vlastnosti** a pak vyberete **role serveru**.
+2. Přihlášení na úrovni serveru, které plánujete použít, musí mít role serveru Public a sysadmin. Můžete to ověřit tak, že se připojíte k serveru, přejdete na SQL Server Management Studio (SSMS), přejdete na zabezpečení a vyberete přihlašovací údaje, které plánujete použít, kliknete pravým tlačítkem na **vlastnosti** a pak vyberete **role serveru**.
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/server-level-login.png" alt-text="Přihlášení na úrovni serveru.":::
-
-3. Databáze jsou namapovány na uživatele, který má alespoň přístup na úrovni db_datareader v každé databázi.
-
-   :::image type="content" source="media/register-scan-on-premises-sql-server/user-mapping-sa.png" alt-text="mapování uživatelů pro SA":::
 
 #### <a name="creating-a-new-login-and-user"></a>Vytvoření nového přihlášení a uživatele
 
@@ -74,9 +70,9 @@ Pokud chcete vytvořit nové přihlášení a uživatele, aby mohli kontrolovat 
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/create-new-login-user.png" alt-text="Vytvořte nové přihlášení a uživatele.":::
 
-2. Na levém navigačním panelu vyberte role serveru a vyberte obě veřejné i sysadmin.
+2. Na levém navigačním panelu vyberte role serveru a ujistěte se, že je přiřazená veřejná role.
 
-3. V levém navigačním panelu vyberte mapování uživatelů a vyberte všechny databáze na mapě.
+3. V levém navigačním panelu vyberte mapování uživatelů, vyberte všechny databáze na mapě a vyberte databázovou roli: **db_datareader**.
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/user-mapping.png" alt-text="mapování uživatele.":::
 
@@ -88,8 +84,7 @@ Pokud chcete vytvořit nové přihlášení a uživatele, aby mohli kontrolovat 
 
 #### <a name="storing-your-sql-login-password-in-a-key-vault-and-creating-a-credential-in-purview"></a>Uložení přihlašovacího hesla SQL do trezoru klíčů a vytvoření přihlašovacích údajů v dosah
 
-1. V Azure Portal přejděte do svého trezoru klíčů.
-1. Vyberte **nastavení > tajných** kódů.
+1. Přejděte do svého trezoru klíčů ve službě Azure portal1. Vyberte **nastavení > tajných** kódů.
 1. Vyberte **+ Generovat/importovat** a zadejte **název** a **hodnotu** jako *heslo* z přihlášení k SQL serveru.
 1. Vyberte **vytvořit** a dokončete
 1. Pokud váš Trezor klíčů ještě není připojený k dosah, bude potřeba [vytvořit nové připojení trezoru klíčů](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account) .

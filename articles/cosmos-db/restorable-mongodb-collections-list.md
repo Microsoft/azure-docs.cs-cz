@@ -6,14 +6,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/03/2021
 ms.author: govindk
-ms.openlocfilehash: 83e1c7c27e8c5d179c4ec6aa4ba64b3367294a48
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: c19de134f40c58a687dcf6bac6ac156e46cef7da
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527458"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537539"
 ---
 # <a name="list-restorable-collections-in-azure-cosmos-db-api-for-mongodb-using-rest-api"></a>Výpis kolekcí obnovitelné v rozhraní Azure Cosmos DB API pro MongoDB pomocí REST API
+
+> [!IMPORTANT]
+> Funkce obnovení bodu v čase (režim průběžného zálohování) pro Azure Cosmos DB je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Zobrazit informační kanál událostí všech mutací provedených ve všech Azure Cosmos DB rozhraní API pro kolekce MongoDB v konkrétní databázi. To pomáhá v situaci, kdy byl kontejner omylem odstraněn. Toto rozhraní API vyžaduje `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` oprávnění.
 

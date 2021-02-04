@@ -8,16 +8,16 @@ author: KumudD
 manager: twooley
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: c0d4c72bd60f35088773ec6dc5df80709c5ae98c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86e4bb52f2a97bf36dc4be86289bd513a9f05091
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666819"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538251"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Co je protokol IPv6 pro Azure Virtual Network?
 
@@ -69,7 +69,7 @@ Protokol IPv6 pro virtuální síť Azure zahrnuje tyto funkce:
 - [Partnerský vztah Virtual Network (VNET)](virtual-network-peering-overview.md) – v rámci regionálního i globálního partnerského vztahu – umožňuje bezproblémové připojit duální zásobník virtuální sítě – koncové body IPv4 a IPv6 na virtuálních počítačích v partnerských sítích budou moct vzájemně komunikovat. Můžete dokonce i partnerský duální zásobník s virtuální sítě jenom s protokolem IPv4, protože přecházíte mezi nasazeními do duálního zásobníku. 
 - Řešení potíží a diagnostiky protokolu IPv6 jsou k dispozici s metrikami vyrovnávání zátěže/výstrahami a Network Watcher funkcemi, jako je zachycení paketů, protokoly toků NSG, řešení potíží s připojením a monitorování připojení.   
 
-## <a name="scope"></a>Rozsah
+## <a name="scope"></a>Obor
 Protokol IPv6 pro virtuální síť Azure je základní sada funkcí, která zákazníkům umožňuje hostovat aplikace s duálním zásobníkem (IPv4 + IPv6) v Azure.  Chystáme se přidat podporu protokolu IPv6 do více síťových funkcí Azure v průběhu času a nakonec nabízet duální verze služby Azure PaaS, ale mezitím všechny služby Azure PaaS lze využívat prostřednictvím koncových bodů IPv4 v duálním zásobníku Virtual Machines.   
 
 ## <a name="limitations"></a>Omezení

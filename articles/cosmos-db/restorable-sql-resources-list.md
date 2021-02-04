@@ -6,14 +6,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/03/2021
 ms.author: govindk
-ms.openlocfilehash: dbee87098dcc712669c332deac656cf5656ef4c4
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: e31423ae5afd4955ebe7acf1d456496f15f14a6b
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527363"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537285"
 ---
 # <a name="list-restorable-sql-api-resources-in-azure-cosmos-db-using-rest-api"></a>Vypsat prostředky rozhraní SQL API obnovitelné v Azure Cosmos DB pomocí REST API
+
+> [!IMPORTANT]
+> Funkce obnovení bodu v čase (režim průběžného zálohování) pro Azure Cosmos DB je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Vrátí seznam databází a kontejnerů, které existují na účtu v daném časovém razítku a umístění. To pomáhá ve scénářích ověřit, jaké prostředky existují v daném časovém razítku a umístění. Toto rozhraní API vyžaduje `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` oprávnění.
 

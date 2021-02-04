@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/02/2020
+ms.date: 02/02/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 228f837a8826612bbbadf2ca8c5ef339ab248397
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 267094ea6a7295a65b93fb7700c97e4280da341d
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524988"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539107"
 ---
 ::: zone target="docs"
 
@@ -267,6 +267,35 @@ Po dokončení nahrávání do Azure se data z disků Data Boxu vymažou v soula
     ```
 
 Pokud dojde k nějakým problémům, pošlete oddělení Data Box Operations Asia e-mail [adbo@microsoft.com](mailto:adbo@microsoft.com) a uveďte podrobnosti o problému, ke kterému došlo. Do řádku Předmět: nezapomeňte uvést název úlohy.
+
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>Ověření nahrání dat do Azure
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+## <a name="erasure-of-data-from-data-box"></a>Vymazání dat z Data Boxu
+ 
+
+::: zone-end
+
+## <a name="united-arab-emirates"></a>[Spojené arabské emiráty](#tab/in-uae)
+
+1. Ponechejte si původní obal, ve které jste zařízení obdrželi, pro zpáteční zásilku.
+2. Zajistěte, aby byla kopie dat do zařízení dokončena, a **Příprava k odeslání** krok byl úspěšně dokončen.
+3. Poznamenejte si referenční číslo na stránce **Příprava k odeslání** místního webového uživatelského rozhraní v zařízení.
+4. Vypněte zařízení a odeberte kabely. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
+6. Pro zpáteční zásilku zabalte zařízení do původní krabice.
+7. Pomocí e-mailových [operací Azure Data box](mailto:adbops@microsoft.com) získat ID, které se bude používat k identifikaci balíčku, když se dokončí zpátky v datacentru.
+8. Poznamenejte si toto ID na vytištěném expedičním štítku vedle zpáteční adresy tak, aby bylo jasně viditelné.  
+9. Zarezervujte si vyzvednutí online tak, že na [DHL Express Spojené arabské emiráty](https://mydhl.express.dhl/ae/en/home.html#/schedulePickupTab)  >  **naplánujete vyzvednutí**.
+   - Zadejte referenční číslo ze stránky **Příprava k odeslání** místního webového uživatelského rozhraní v zařízení v poli číslo nákladového pole.
+   - Rezervace jsou přijímány od 9:00 do 2:00 a 6. až do šesti dnů v týdnu (s výjimkou Pá a veřejných svátků).
+   - Žádosti o vyzvednutí by se měly umístit aspoň 90 minut před časem ukončení zákazníka.
+10. Pokud provedete všechny problémy s nástrojem pro rezervaci DHL, můžete kontaktovat DHL pomocí kterékoli z těchto metod:
+    - Zavolejte 04-2924545.
+    - Odešlete e-mail [ecom.ae@dhl.com](mailto:ecom.ae@dhl.com) s podrobnostmi o problémech a vložte číslo nákladového pole do pole Předmět: řádek.
+    - Zavolejte zákaznickou podporu DHL na adrese 600 567567.
 
 ::: zone target="chromeless"
 

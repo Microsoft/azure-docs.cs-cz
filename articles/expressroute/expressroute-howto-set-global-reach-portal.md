@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: duau
-ms.openlocfilehash: 9e943be3544da38788d16e54011e09e1ac3426cc
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 8366978d50875389ce872c2d1402f0defa2a7371
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122069"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539345"
 ---
 # <a name="configure-expressroute-global-reach-using-the-azure-portal"></a>Konfigurace Global Reach ExpressRoute pomocí Azure Portal
 
@@ -68,7 +68,7 @@ Pokud tyto dva okruhy nejsou ve stejném předplatném Azure, budete potřebovat
 
    :::image type="content" source="./media/expressroute-howto-set-global-reach-portal/create-authorization-expressroute-circuit.png" alt-text="Generovat autorizační klíč"::: 
 
-   Poznamenejte si ID privátního partnerského vztahu okruhu 2 a autorizační klíč.
+   Poznamenejte si ID prostředku okruhu okruhu 2 a autorizační klíč.
 
 1. Vyberte konfiguraci **privátního** partnerského vztahu Azure. 
 

@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: d9ca9dd345be7fb8f1a2b613386bdca7bdcd835a
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 253ec23a421415c11e4b47670dca870ebc463256
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070326"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538706"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Kurz: Použití simulovaného zařízení k otestování připojení k IoT Hubu
 
@@ -66,15 +66,15 @@ Před jakoukoli výměnou dat je třeba zařízení u centra ověřit. Ke správ
 
 Přihlaste se na portál a přejděte do svého centra IoT. Pak přejděte k nástroji **Zařízení IoT**:
 
-![Nástroj Zařízení IoT](media/tutorial-connectivity/iot-devices-tool.png)
+:::image type="content" source="media/tutorial-connectivity/iot-devices-tool.png" alt-text="Nástroj Zařízení IoT":::
 
-Nové zařízení zaregistrujete tak, že kliknete na **+ Přidat**, nastavíte **ID zařízení** na **MyTestDevice** a kliknete na **Uložit**:
+Pokud chcete zaregistrovat nové zařízení, klikněte na **+ Nový**, nastavte **ID zařízení** na **MyTestDevice** a klikněte na **Uložit**.
 
-![Přidání nového zařízení](media/tutorial-connectivity/add-device.png)
+:::image type="content" source="media/tutorial-connectivity/add-device.png" alt-text="Přidání nového zařízení":::
 
-Získejte připojovací řetězec zařízení **MyTestDevice** tak, že na něj kliknete v seznamu zařízení a pak zkopírujete hodnotu **Připojovací řetězec – primární klíč**. Připojovací řetězec obsahuje *klíč pro sdílený přístup* k zařízení.
+Pokud chcete načíst připojovací řetězec pro **MyTestDevice**, klikněte na něj v seznamu zařízení a potom zkopírujte hodnotu **primárního připojovacího řetězce** . Připojovací řetězec obsahuje *klíč pro sdílený přístup* k zařízení.
 
-![Načtení připojovacího řetězce zařízení](media/tutorial-connectivity/copy-connection-string.png)
+:::image type="content" source="media/tutorial-connectivity/copy-connection-string.png" alt-text="Načíst připojovací řetězec zařízení}":::
 
 Pokud chcete simulovat, že zařízení **MyTestDevice** odesílá telemetrii do centra IoT, spusťte aplikaci simulovaného zařízení v Node.js, kterou jste si stáhli v předchozí části.
 
@@ -218,7 +218,7 @@ Jakmile simulované zařízení přijme volání přímou metodou, vytiskne zpr�
 
 ![Simulované zařízení přijímá volání přímou metodou](media/tutorial-connectivity/receive-method-call.png)
 
-Když simulované zařízení úspěšně přijme volání přímou metodou, odešle potvrzení zpět do centra:
+Když simulované zařízení úspěšně přijme přímé volání metody, pošle potvrzení zpět do centra:
 
 ![Přijmout potvrzení přímé metody](media/tutorial-connectivity/method-acknowledgement.png)
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/19/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 4e2abda6e0e3ef3d638952c05c31a50d91d24e88
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 9151a84aa03e9b87b02278672622d458fbc5281e
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900847"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538707"
 ---
 Vytvoření IoT Hubu pomocí webu Azure Portal:
 
@@ -35,37 +35,37 @@ Vytvoření IoT Hubu pomocí webu Azure Portal:
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-   ![Vytvoření centra v Azure Portal](media/iot-hub-tutorials-create-free-hub/hub-definition-basics.png)
+   :::image type="content" source="media/iot-hub-tutorials-create-free-hub/hub-definition-basics.png" alt-text="Vytvoření centra v Azure Portal":::
 
 1. Vyberte **Další: sítě** a pokračujte v vytváření vašeho centra.
 
    Vyberte koncové body, které se můžou připojit k vašemu IoT Hub. Můžete vybrat výchozí nastavení **veřejný koncový bod (všechny sítě)** nebo zvolit **veřejný koncový bod (vybrané rozsahy IP adres)** nebo **soukromý koncový bod**. Přijměte výchozí nastavení tohoto kurzu.
 
-   ![Výběr koncových bodů, které se můžou připojit](media/iot-hub-tutorials-create-free-hub/hub-definition-networking.png)
+   :::image type="content" source="media/iot-hub-tutorials-create-free-hub/hub-definition-networking.png" alt-text="Vyberte koncové body, které se mohou připojit.":::
 
 1. Vyberte **Další: Správa** pro pokračování ve vytváření vašeho centra.
 
-    ![Nastavení velikosti a měřítka pro nové centrum pomocí Azure Portal](media/iot-hub-tutorials-create-free-hub/hub-definition-management.png)
+   :::image type="content" source="media/iot-hub-tutorials-create-free-hub/hub-definition-management.png" alt-text="Nastavte velikost a měřítko pro nové centrum pomocí Azure Portal.":::
 
-    Tady můžete přijmout výchozí nastavení. V případě potřeby můžete změnit libovolné z následujících polí:
+   Tady můžete přijmout výchozí nastavení. V případě potřeby můžete změnit libovolné z následujících polí:
 
-    - **Úroveň cen a škálování**: vaše vybraná úroveň. Vyberte úroveň Free. Úroveň Free je určena pro testování a vyhodnocení. Umožňuje připojit zařízení 500 k rozbočovači a až 8 000 zpráv za den. Každé předplatné Azure může vytvořit jednu službu IoT Hub v bezplatné úrovni.
+   - **Úroveň cen a škálování**: vaše vybraná úroveň. Vyberte úroveň Free. Úroveň Free je určena pro testování a vyhodnocení. Umožňuje připojit zařízení 500 k rozbočovači a až 8 000 zpráv za den. Každé předplatné Azure může vytvořit jednu službu IoT Hub v bezplatné úrovni.
 
-    - **IoT Hub jednotky**: počet zpráv povolených na jednotku za den závisí na cenové úrovni vašeho centra. Pokud třeba chcete, aby centrum podporovalo příchozí zprávy 700 000, zvolíte dvě jednotky úrovně S1.
-    Každé předplatné Azure může vytvořit jednu službu IoT Hub v bezplatné úrovni. Podrobnosti o dalších možnostech vrstev najdete v tématu [Volba správné IoT Hub úrovně](../articles/iot-hub/iot-hub-scaling.md).
+   - **IoT Hub jednotky**: počet zpráv povolených na jednotku za den závisí na cenové úrovni vašeho centra. Pokud třeba chcete, aby centrum podporovalo příchozí zprávy 700 000, zvolíte dvě jednotky úrovně S1.
+   Každé předplatné Azure může vytvořit jednu službu IoT Hub v bezplatné úrovni. Podrobnosti o dalších možnostech vrstev najdete v tématu [Volba správné IoT Hub úrovně](../articles/iot-hub/iot-hub-scaling.md).
 
-    - **Defender pro IoT**: tuto funkci zapněte, pokud chcete přidat další vrstvu ochrany před hrozbami do IoT a vašich zařízení. Tato možnost není dostupná pro rozbočovače na úrovni Free. Další informace o této funkci najdete v tématu [Azure Security Center pro IoT](/azure/asc-for-iot/).
+   - **Defender pro IoT**: tuto funkci zapněte, pokud chcete přidat další vrstvu ochrany před hrozbami do IoT a vašich zařízení. Tato možnost není dostupná pro rozbočovače na úrovni Free. Další informace o této funkci najdete v tématu [Azure Security Center pro IoT](/azure/asc-for-iot/).
 
-    - **Rozšířená nastavení**  >  **Oddíly zařízení-Cloud**: Tato vlastnost spojuje zprávy typu zařízení-Cloud s počtem souběžných čtenářů zpráv. Většina Center potřebuje jenom čtyři oddíly. Rozbočovač úrovně Free je omezený na dva oddíly.
+   - **Rozšířená nastavení**  >  **Oddíly zařízení-Cloud**: Tato vlastnost spojuje zprávy typu zařízení-Cloud s počtem souběžných čtenářů zpráv. Většina Center potřebuje jenom čtyři oddíly. Rozbočovač úrovně Free je omezený na dva oddíly.
 
-1.  Vyberte **Další: značky** a pokračujte na další obrazovku.
+1. Vyberte **Další: značky** a pokračujte na další obrazovku.
 
-    Značky jsou páry název-hodnota. Stejnou značku můžete přiřadit více prostředkům a skupinám prostředků pro kategorizaci prostředků a konsolidaci fakturace. Další informace najdete v tématu [použití značek k uspořádání prostředků Azure](../articles/azure-resource-manager/management/tag-resources.md).
+   Značky jsou páry název-hodnota. Stejnou značku můžete přiřadit více prostředkům a skupinám prostředků pro kategorizaci prostředků a konsolidaci fakturace. Další informace najdete v tématu [použití značek k uspořádání prostředků Azure](../articles/azure-resource-manager/management/tag-resources.md).
 
-    ![Přiřaďte značky pro centrum pomocí Azure Portal](media/iot-hub-tutorials-create-free-hub/hub-definition-tags.png)
+   :::image type="content" source="media/iot-hub-tutorials-create-free-hub/hub-definition-tags.png" alt-text="Přiřaďte značky pro centrum pomocí Azure Portal.":::
 
-1.  Vyberte **Další: zkontrolovat + vytvořit** a zkontrolujte své volby. Na této obrazovce vidíte něco podobného, ale s hodnotami, které jste vybrali při vytváření centra.
+1. Vyberte **Další: zkontrolovat + vytvořit** a zkontrolujte své volby. Na této obrazovce vidíte něco podobného, ale s hodnotami, které jste vybrali při vytváření centra.
 
-    ![Přečtěte si informace o vytvoření nového centra.](media/iot-hub-tutorials-create-free-hub/hub-definition-create.png)
+   :::image type="content" source="media/iot-hub-tutorials-create-free-hub/hub-definition-create.png" alt-text="Přečtěte si informace o vytvoření nového centra.":::
 
 1. Poznamenejte si zvolený název centra IoT. Tuto hodnotu budete později v kurzu potřebovat.

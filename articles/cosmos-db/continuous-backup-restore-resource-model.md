@@ -7,17 +7,22 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 64033182356e66d6a69bd47c1780b7081416019e
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 91421b66af441ed2c7e9c8b66c16ee83f489b03e
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527398"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538490"
 ---
-# <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature"></a>Model prostředků pro funkci obnovení Azure Cosmos DBho bodu v čase
+# <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Model prostředků pro funkci obnovení Azure Cosmos DBho bodu v čase (Preview)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-Tento článek popisuje model prostředků pro funkci obnovení Azure Cosmos DBho bodu v čase. Vysvětluje parametry, které podporují průběžné zálohování a prostředky, které je možné obnovit v Azure Cosmos DB rozhraní API pro účty SQL a MongoDB.
+> [!IMPORTANT]
+> Funkce obnovení bodu v čase (režim průběžného zálohování) pro Azure Cosmos DB je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Tento článek popisuje model prostředků pro funkci obnovení Azure Cosmos DBho bodu v čase (Preview). Vysvětluje parametry, které podporují průběžné zálohování a prostředky, které je možné obnovit v Azure Cosmos DB rozhraní API pro účty SQL a MongoDB.
 
 ## <a name="database-accounts-resource-model"></a>Model prostředků databázového účtu
 

@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2019
 ms.author: anupand
-ms.openlocfilehash: f718471c3f79e9a33b0e03b088f8c8d2ae0231d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 555c903dc3375080a8b0d006d2aac7216854c939
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73587508"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539294"
 ---
 # <a name="subnet-extension"></a>Rozšíření podsítě
 Migrace úloh do veřejného cloudu vyžaduje pečlivé plánování a koordinaci. Jedním z klíčových důležitých informací může být schopnost uchovávat vaše IP adresy. To může být důležité hlavně v případě, že vaše aplikace mají závislost IP adres nebo máte požadavky na dodržování předpisů pro použití konkrétních IP adres. Azure Virtual Network tento problém řeší tím, že vám umožní vytvořit virtuální síť a podsítě pomocí rozsahu IP adres podle vašeho výběru.

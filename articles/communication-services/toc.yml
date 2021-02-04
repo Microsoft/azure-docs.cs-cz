@@ -38,6 +38,14 @@
           href: quickstarts/voice-video-calling/calling-client-samples.md
         - name: Připojení volající aplikace ke schůzce v Teams
           href: quickstarts/voice-video-calling/get-started-teams-interop.md
+    - name: Architektura uživatelského rozhraní
+      items:
+        - name: Začínáme se složenými komponentami
+          href: quickstarts/ui-framework/get-started-with-composites.md
+        - name: Začínáme se základními komponentami
+          href: quickstarts/ui-framework/get-started-with-components.md
+        - name: Vytvoření vlastní komponenty architektury uživatelského rozhraní
+          href: quickstarts/ui-framework/create-your-own-components.md
 - name: Kurzy
   expanded: false
   items:
@@ -70,6 +78,12 @@
           href: concepts/voice-video-calling/about-call-types.md
         - name: Interoperabilita Teams
           href: concepts/voice-video-calling/teams-interop.md
+    - name: Architektura uživatelského rozhraní
+      items:
+        - name: Přehled rozhraní .NET Framework
+          href: concepts/ui-framework/ui-sdk-overview.md
+        - name: Možnosti architektury uživatelského rozhraní
+          href: concepts/ui-framework/ui-sdk-features.md
     - name: Klientská a serverová architektura
       href: concepts/client-and-server-architecture.md
     - name: Toky volání

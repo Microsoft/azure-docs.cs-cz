@@ -2,14 +2,14 @@
 title: Azure Service Bus komplexní trasování a diagnostika | Microsoft Docs
 description: Přehled Service Bus diagnostiky klientů a komplexní trasování (klient prostřednictvím všech služeb, které se podílejí na zpracování)
 ms.topic: article
-ms.date: 01/17/2021
+ms.date: 02/03/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: edfd789f8803acf9fc8d76202805dec0187d220e
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 19b284aceb83fbbc2bcf662b2b58941e6a5b36f9
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601259"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539209"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Distribuované trasování a korelace prostřednictvím Service Bus zasílání zpráv
 
@@ -22,7 +22,7 @@ Microsoft Azure Service Bus zasílání zpráv má definované vlastnosti datov�
 Protokol je založený na [protokolu korelace http](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md).
 
 # <a name="azuremessagingservicebus-sdk-latest"></a>[Azure. Messaging. ServiceBus SDK (nejnovější)](#tab/net-standard-sdk-2)
-| Název vlastnosti        | Popis                                                 |
+| Název vlastnosti        | Description                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | Jedinečný identifikátor externího volání od producenta do fronty. Odůvodnění, požadavky a formát najdete [v protokolu HTTP pro žádosti o ID](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) . |
 
@@ -135,12 +135,6 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 V tomto příkladu jsou protokoly naslouchacího procesu trvání, výsledek, jedinečný identifikátor a čas spuštění pro každou operaci Service Bus.
 
 ### <a name="events"></a>Události
-Pro každou operaci jsou odesílány dvě události: ' Start ' a ' stop '. Pravděpodobně jste zajímá jenom události stop. Poskytují výsledek operace a čas spuštění a dobu trvání jako vlastnosti aktivity.
-
-Datová část události poskytuje naslouchací proces s kontextem operace, replikuje příchozí parametry rozhraní API a návratovou hodnotu. Datová část události ' stop ' má všechny vlastnosti datové části ' Start ', takže můžete událost ' spustit ' zcela ignorovat.
-
-Každé události ' stop ' má `Status` vlastnost s `TaskStatus` asynchronní operací byla dokončena s, která je také vynechána v následující tabulce pro zjednodušení.
-
 Všechny události budou mít následující vlastnosti, které jsou v souladu se specifikací Open telemetrie: https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md .
 
 - `message_bus.destination` – fronta/téma/cesta předplatného
@@ -201,7 +195,7 @@ V `DiagnosticSource` případě, že je pro stejný zdroj k dispozici více posl
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
-| Název vlastnosti        | Popis                                                 |
+| Název vlastnosti        | Description                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | Jedinečný identifikátor externího volání od producenta do fronty. Odůvodnění, požadavky a formát najdete [v protokolu HTTP pro žádosti o ID](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) . |
 |  Correlation-Context | Kontext operace, který je šířený napříč všemi službami zapojenými do zpracování operací. Další informace najdete v tématu [korelace – kontext v protokolu HTTP](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) . |

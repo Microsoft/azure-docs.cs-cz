@@ -3,13 +3,13 @@ title: Koncepty – monitorování a oprava privátních cloudů řešení Azure
 description: Přečtěte si, jak řešení Azure VMware monitoruje a opravuje VMware ESXi servery v privátním cloudu řešení Azure VMware.
 ms.topic: conceptual
 ms.custom: contperf-fy21q2
-ms.date: 11/20/2020
-ms.openlocfilehash: 7f367a6ef9b86f235a16a698735cfb58a11f6862
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.date: 02/03/2021
+ms.openlocfilehash: 6174df429fd9b21c7f685c8ba14e6d5c0bba4c83
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033591"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538954"
 ---
 # <a name="monitor-and-repair-azure-vmware-solution-private-clouds"></a>Monitorování a oprava privátních cloudů řešení VMware Azure
 
@@ -43,10 +43,7 @@ Proces nápravy hostitele se spustí přidáním nového uzlu v pořádku v clus
 
 ## <a name="next-steps"></a>Další kroky
 
-Tady jsou některá témata, o kterých můžete získat další informace:
+Teď, když jste se seznámili s tím, jak řešení Azure VMware monitoruje a opravuje privátní cloudy, může být vhodné získat informace o:
 
-- [Upgrade privátního cloudu řešení Azure VMware](concepts-upgrades.md)
-- [Správa životního cyklu virtuálních počítačů řešení Azure VMware](lifecycle-management-of-azure-vmware-solution-vms.md)
-- [Chraňte své virtuální počítače s řešeními VMware Azure pomocí Integrace Azure Security Center](azure-security-integration.md)
-- [Zálohování virtuálních počítačů s řešeními VMware Azure pomocí Azure Backup Server](backup-azure-vmware-solution-virtual-machines.md)
-- [Dokončení zotavení po havárii virtuálních počítačů pomocí řešení Azure VMware](disaster-recovery-for-virtual-machines.md)
+- [Upgrade privátního cloudu řešení Azure VMware](concepts-upgrades.md).
+- [Jak povolit prostředek řešení Azure VMware](enable-azure-vmware-solution.md).

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: b001b109df7c4b52b61f226a164db232b620a2c6
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: f1889d49d1eb4981e59af6248817a6a9b6e2002d
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508536"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537251"
 ---
 # <a name="disclosure-design-guidelines"></a>Zpřístupnění pokynů pro návrh
 Naučte se vytvářet a udržovat vztahy důvěryhodnosti se zákazníky transparentním z hlediska syntetické povahy hlasového prostředí.
@@ -74,11 +74,8 @@ Pomocí následujícího diagramu zjistíte, jestli vaše syntetické hlasové p
 
   ![Diagram vyhodnocení zpřístupnění](media/responsible-ai/disclosure-guidelines/flowchart.png)
 
-## <a name="reference-docs"></a>Referenční dokumenty
-
-* [Zveřejnění pro hlasový talentů](/legal/cognitive-services/speech-service/disclosure-voice-talent)
-* [Pokyny pro zodpovědnost nasazení syntetické hlasové technologie](concepts-guidelines-responsible-deployment-synthetic.md)
-
-## <a name="next-steps"></a>Další kroky
+## <a name="see-also"></a>Viz také
 
 * [Zpřístupnění způsobů návrhu](concepts-disclosure-patterns.md)
+* [Zveřejnění pro hlasový talentů](https://docs.microsoft.com/legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context)
+* [Pokyny pro zodpovědnost nasazení syntetické hlasové technologie](concepts-guidelines-responsible-deployment-synthetic.md)

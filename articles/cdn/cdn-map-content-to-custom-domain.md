@@ -7,15 +7,15 @@ author: asudbring
 manager: KumudD
 ms.service: azure-cdn
 ms.topic: tutorial
-ms.date: 11/06/2020
+ms.date: 02/04/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 03ed47ee97f52aca708118f202fad583753549bf
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: b0e8f2b14d506eb408660b939a7c925a33215cca
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331206"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537742"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-endpoint"></a>Kurz: Přidání vlastní domény do koncového bodu
 
@@ -163,6 +163,10 @@ Vytvoření záznamu CNAME pro vlastní doménu:
 
 Po zaregistrování vlastní domény ji můžete přidat do svého koncového bodu CDN. 
 
+
+---
+# <a name="azure-portal"></a>[**Azure Portal**](#tab/azure-portal)
+
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) a přejděte k profilu CDN obsahujícímu koncový bod, který chcete namapovat na vlastní doménu.
     
 2. Na stránce **Profil CDN** vyberte koncový bod CDN, který chcete přidružit k vlastní doméně.
@@ -180,7 +184,7 @@ Po zaregistrování vlastní domény ji můžete přidat do svého koncového bo
 
     :::image type="content" source="media/cdn-map-content-to-custom-domain/cdn-add-custom-domain.png" alt-text="Přidat vlastní doménu" border="true":::
 
-6. Vyberte **Add** (Přidat).
+6. Vyberte **Přidat**.
 
    Azure ověří, že pro zadaný název vlastní domény existuje záznam CNAME. Pokud je záznam CNAME správný, vaše vlastní doména se ověří. 
 
@@ -189,7 +193,43 @@ Po zaregistrování vlastní domény ji můžete přidat do svého koncového bo
     - V případě profilů **Azure CDN Standard od Akamai** je šíření obvykle hotové během jedné minuty. 
     - V případě profilů **Azure CDN od Verizonu** a **Azure CDN Premium od Verizonu** je šíření obvykle hotové během 10 minut.   
 
+# <a name="powershell"></a>[**PowerShell**](#tab/azure-powershell)
 
+1. Přihlaste se k Azure PowerShell:
+
+```azurepowershell-interactive
+    Connect-AzAccount
+
+```
+2. K namapování vlastní domény na koncový bod CDN použijte [New-AzCdnCustomDomain](/powershell/module/az.cdn/new-azcdncustomdomain) . 
+
+    * Nahraďte **myendpoint8675.azureedge.NET** adresou URL koncového bodu.
+    * Nahraďte **myendpoint8675** názvem koncového bodu CDN.
+    * Nahraďte **www.contoso.com** vlastním názvem domény.
+    * Nahraďte **myCDN** názvem vašeho profilu CDN.
+    * Nahraďte **myResourceGroupCDN** názvem vaší skupiny prostředků.
+
+```azurepowershell-interactive
+    $parameters = @{
+        Hostname = 'myendpoint8675.azureedge.net'
+        EndPointName = 'myendpoint8675'
+        CustomDomainName = 'www.contoso.com'
+        ProfileName = 'myCDN'
+        ResourceGroupName = 'myResourceGroupCDN'
+    }
+    New-AzCdnCustomDomain @parameters
+```
+
+Azure ověří, že pro zadaný název vlastní domény existuje záznam CNAME. Pokud je záznam CNAME správný, vaše vlastní doména se ověří. 
+
+   Rozšíření nastavení nové vlastní domény do všech hraničních uzlů CDN může chvíli trvat: 
+
+- U profilů **Azure CDN Standard od Microsoftu** trvá šíření většinou 10 minut. 
+- V případě profilů **Azure CDN Standard od Akamai** je šíření obvykle hotové během jedné minuty. 
+- V případě profilů **Azure CDN od Verizonu** a **Azure CDN Premium od Verizonu** je šíření obvykle hotové během 10 minut.   
+
+
+---
 ## <a name="verify-the-custom-domain"></a>Ověření vlastní domény
 
 Po dokončení registrace vlastní domény ověřte, že vlastní doména odkazuje na koncový bod CDN.
@@ -200,6 +240,9 @@ Po dokončení registrace vlastní domény ověřte, že vlastní doména odkazu
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
+---
+# <a name="azure-portal"></a>[**Azure Portal**](#tab/azure-portal-cleanup)
+
 Pokud už nechcete přidružit svůj koncový bod k vlastní doméně, odeberte vlastní doménu pomocí následujících kroků:
  
 1. Ve svém profilu CDN vyberte koncový bod s vlastní doménou, kterou chcete odstranit.
@@ -208,6 +251,29 @@ Pokud už nechcete přidružit svůj koncový bod k vlastní doméně, odeberte 
 
    Zruší se přidružení vlastní domény ke koncovému bodu.
 
+# <a name="powershell"></a>[**PowerShell**](#tab/azure-powershell-cleanup)
+
+Pokud už nechcete přidružit svůj koncový bod k vlastní doméně, odeberte vlastní doménu pomocí následujících kroků:
+
+1. K odebrání vlastní domény z koncového bodu použijte [příkaz Remove-AzCdnCustomDomain](/powershell/module/az.cdn/remove-azcdncustomdomain) :
+
+    * Nahraďte **myendpoint8675** názvem koncového bodu CDN.
+    * Nahraďte **www.contoso.com** vlastním názvem domény.
+    * Nahraďte **myCDN** názvem vašeho profilu CDN.
+    * Nahraďte **myResourceGroupCDN** názvem vaší skupiny prostředků.
+
+
+```azurepowershell-interactive
+    $parameters = @{
+        CustomDomainName = 'www.contoso.com'
+        EndPointName = 'myendpoint8675'
+        ProfileName = 'myCDN'
+        ResourceGroupName = 'myResourceGroupCDN'
+    }
+    Remove-AzCdnCustomDomain @parameters
+```
+
+---
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:

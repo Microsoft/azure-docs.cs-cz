@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: d9f4ba48a7dc6cdcf6d60e4e9da5f68fcc6b1f28
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: d0cc7630a3bea67a99c3cb65d2015e934e8ac2da
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509329"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539090"
 ---
 # <a name="creating-search-indexes-in-azure-cognitive-search"></a>Vytváření indexů vyhledávání v Azure Kognitivní hledání
 
-Vyhledávací index ukládá prohledávatelný obsah, který se používá pro fulltextové a filtrované dotazy. Index je definován schématem a uložený do služby, přičemž import dat je uvedený jako druhý krok. 
+Kognitivní hledání ukládá prohledávatelný obsah, který se používá pro fulltextové a filtrované dotazy ve *vyhledávacím indexu*. Index je definován schématem a uložený do služby, přičemž import dat je uvedený jako druhý krok. 
 
-Indexy obsahují *dokumenty*. V koncepčním dokumentu je dokument jediná jednotka prohledávatelných dat v indexu. Prodejce může mít dokument pro každý produkt, organizace zpráv může mít dokument pro každý článek a tak dále. Mapování těchto konceptů na podrobnější ekvivalenty databáze: *Index vyhledávání* se rovná *tabulce* a *dokumenty* zhruba odpovídají *řádkům* v tabulce.
+Indexy obsahují *dokumenty pro hledání*. V koncepčním dokumentu je dokument jediná jednotka prohledávatelných dat v indexu. Prodejce může mít dokument pro každý produkt, organizace zpráv může mít dokument pro každý článek a tak dále. Mapování těchto konceptů na podrobnější ekvivalenty databáze: *Index vyhledávání* se rovná *tabulce* a *dokumenty* zhruba odpovídají *řádkům* v tabulce.
 
 ## <a name="whats-an-index-schema"></a>Co je schéma indexu?
 
@@ -106,7 +106,9 @@ Pro Kognitivní hledání sady SDK Azure implementují všeobecně dostupné fun
 | JavaScript | [SearchIndexClient](/javascript/api/@azure/search-documents/searchindexclient) | [Indexy](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/indexes) |
 | Python | [SearchIndexClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient) | [sample_index_crud_operations. py](https://github.com/Azure/azure-sdk-for-python/blob/7cd31ac01fed9c790cec71de438af9c45cb45821/sdk/search/azure-search-documents/samples/sample_index_crud_operations.py) |
 
-## <a name="defining-fields"></a>Definování polí
+## <a name="define-fields"></a>Definovat pole
+
+Dokument hledání je definován `fields` kolekcí. Budete potřebovat pole pro dotazy a klíče. Možná budete také potřebovat pole pro podporu filtrů, omezujících vlastností a řazení. Můžete také potřebovat pole pro data, která uživatel nikdy nevidí, například možná budete potřebovat pole pro ziskové marže nebo marketingové propagační akce, které můžete použít k úpravě pořadí hledání.
 
 Jedno pole typu EDM. String musí být určeno jako klíč dokumentu. Slouží k jednoznačné identifikaci každého dokumentu hledání. K naplnění stránky podrobností můžete načíst dokument pomocí jeho klíče.  
 
@@ -146,9 +148,11 @@ Následující snímek obrazovky znázorňuje vzory úložiště indexů, které
 
 ![Velikost indexu na základě výběru atributu](./media/search-what-is-an-index/realestate-index-size.png "Velikost indexu na základě výběru atributu")
 
-I když jsou tyto varianty indexu umělé, můžeme na ně odkazovat, aby bylo možné využít široké porovnání atributů úložiště. Nastavím možnost "získatelné" zvýšit velikost indexu? No. Přidávají se pole do **přizpůsobitelné** velikosti indexu? Ano.
+I když jsou tyto varianty indexu umělé, můžeme na ně odkazovat, aby bylo možné využít široké porovnání atributů úložiště. Nastavím možnost "získatelné" zvýšit velikost indexu? No. Přidávají se pole do **přizpůsobitelné** velikosti indexu? Ano. 
 
-Indexy, které podporují filtrování a řazení, jsou proporcionálně větší než indexy podporující pouze fulltextové vyhledávání. Důvodem je to, že operace filtrování a řazení prohledají přesné shody a vyžadují přítomnost doslovnéch textových řetězců. Naopak vyhledávací pole podporující fulltextové dotazy používají obrácené indexy, které jsou vyplněny pomocí tokenů, které spotřebovávají méně místa než celé dokumenty. 
+Vytvoření pole filtrovatelné nebo seřazené taky přidá do spotřeby úložiště, protože filtrovaná a seřazená pole nejsou vyfiltrovaná tak, aby se sekvence znaků shodovaly s nimi.
+
+Nereflektují se také v tabulce výše je dopad [analyzátorů](search-analyzers.md). Pokud používáte edgeNgram provádějících tokenizaci k ukládání doslovnéch sekvencí znaků (a, AB, ABC, abcd), velikost indexu bude větší než při použití standardního analyzátoru.
 
 > [!Note]
 > Architektura úložiště se považuje za podrobné informace o implementaci Azure Kognitivní hledání a může se změnit bez předchozího upozornění. V budoucnu není zaručeno, že aktuální chování bude zachováno.
@@ -169,9 +173,9 @@ Pro CORS se dají nastavit tyto možnosti:
 
 ## <a name="next-steps"></a>Další kroky
 
-Můžete získat praktické zkušenosti s vytvářením indexu pomocí skoro jakékoli ukázky nebo návodu pro Kognitivní hledání. Můžete zvolit libovolné rychlé starty z obsahu, abyste mohli začít.
+Můžete získat praktické zkušenosti s vytvářením indexu pomocí skoro jakékoli ukázky nebo návodu pro Kognitivní hledání. Pro Starter můžete zvolit některý z rychlých startů z obsahu.
 
-Budete také chtít seznámit s metodologiemi pro načítání indexu s daty. Definice indexu a plnění se provádí společně. Následující články poskytují další informace.
+Ale taky budete chtít seznámit s metodologiemi pro načítání indexu s daty. Definice indexu a strategie importu dat jsou definovány společně. Následující články poskytují další informace o načtení indexu.
 
 + [Přehled importu dat](search-what-is-data-import.md)
 

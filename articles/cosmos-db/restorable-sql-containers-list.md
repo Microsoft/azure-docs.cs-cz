@@ -6,14 +6,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/03/2021
 ms.author: govindk
-ms.openlocfilehash: 90018d3e1b793575830ba34756ad685927612006
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: bba00b10d1a24dc29c1e986de1f0144c00350f5d
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527463"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537420"
 ---
 # <a name="list-restorable-sql-api-containers-in-azure-cosmos-db-using-rest-api"></a>Vypsat kontejnery rozhraní API SQL obnovitelné v Azure Cosmos DB pomocí REST API
+
+> [!IMPORTANT]
+> Funkce obnovení bodu v čase (režim průběžného zálohování) pro Azure Cosmos DB je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Zobrazit informační kanál událostí všech mutací provedených na všech Azure Cosmos DB kontejnerech SQL v konkrétní databázi. To pomáhá v situaci, kdy byl kontejner omylem odstraněn. Toto rozhraní API vyžaduje `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` oprávnění.
 

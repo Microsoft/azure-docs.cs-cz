@@ -8,12 +8,12 @@ mms.devlang: na
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: kumud
-ms.openlocfilehash: f6cba0118a98ea50e8020b91b9c2064299ca4ccf
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: a7a21dcaea22ed0d1c077d0c42ddb5b4bd50d24f
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019155"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539328"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Partnerství s Azure DDoS Protection standardem
 Tento článek popisuje možnosti partnerských serverů, které jsou povolené standardem Azure DDoS Protection. Tento článek je navržený tak, aby pomohla manažerům produktu a obchodním vývojářům pochopení investičních cest a poskytoval přehled o propozicích partnerských funkcí.
@@ -80,7 +80,7 @@ Pro partnery, kteří konfigurují integraci s Azure DDoS Protection Standard, j
 - [Reference k rozhraní API Azure DDoS Protection](/rest/api/virtualnetwork/ddosprotectionplans)
 - [Reference k rozhraní API virtuální sítě Azure](/rest/api/virtualnetwork/virtualnetworks)
 
-### <a name="get-help"></a>Podpora
+### <a name="get-help"></a>Získání pomoci
 
 - Pokud máte dotazy týkající se integrace aplikací, služeb nebo produktů s Azure DDoS Protectionm standardem, je třeba se obrátit na [komunitu zabezpečení Azure](https://techcommunity.microsoft.com/t5/security-identity/bd-p/Azure-Security).
 - Sledujte diskuzi o [Stack Overflow](https://stackoverflow.com/tags/azure-ddos/).
@@ -94,3 +94,4 @@ Pro partnery, kteří konfigurují integraci s Azure DDoS Protection Standard, j
 Zobrazit existující integrace partnerů:
 
 - [Barracuda WAF jako služba](https://www.barracuda.com/waf-as-a-service)
+- [Azure Cloud WAF z Radware](https://www.radware.com/resources/microsoft-azure/)

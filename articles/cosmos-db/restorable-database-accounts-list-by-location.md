@@ -6,16 +6,21 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/03/2021
 ms.author: govindk
-ms.openlocfilehash: 2a3fbc1bb00c57c20436c19602c135f1917c6a60
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 26c07ddaf4db71961d4aeff50e482740d969f0ef
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527442"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537674"
 ---
 # <a name="list-restorable-database-accounts-by-location-using-azure-cosmos-db-rest-api"></a>Výpis účtů databáze obnovitelné podle umístění pomocí Azure Cosmos DB REST API
 
-Zobrazí seznam všech účtů databáze obnovitelné Azure Cosmos DB dostupných v rámci předplatného a v oblasti. Toto volání vyžaduje `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` oprávnění.
+> [!IMPORTANT]
+> Funkce obnovení bodu v čase (režim průběžného zálohování) pro Azure Cosmos DB je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Zobrazí seznam všech účtů databáze obnovitelné Azure Cosmos DB obnovitelné, které jsou k dispozici v rámci předplatného a v oblasti. Toto volání vyžaduje `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` oprávnění.
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts?api-version=2020-06-01-preview

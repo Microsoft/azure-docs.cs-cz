@@ -8,17 +8,22 @@ ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: references_regions
-ms.openlocfilehash: f8ba08c6147320160e99e522536f00fc98855eb4
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 036f086c88267f6a20da51746ca875c48a248712
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527426"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538841"
 ---
-# <a name="continuous-backup-with-point-in-time-restore-feature-in-azure-cosmos-db"></a>Průběžné zálohování s funkcí obnovení k bodu v čase v Azure Cosmos DB
+# <a name="continuous-backup-with-point-in-time-restore-preview-feature-in-azure-cosmos-db"></a>Průběžné zálohování s funkcí obnovení k časovému okamžiku (Preview) v Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-Funkce obnovení k bodu v čase Azure Cosmos DB pomáhá v několika scénářích, jako je například:
+> [!IMPORTANT]
+> Funkce obnovení bodu v čase (režim průběžného zálohování) pro Azure Cosmos DB je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Funkce obnovení k bodu v čase aplikace Azure Cosmos DB (Preview) pomáhá v několika scénářích, jako jsou například tyto:
 
 * Obnovení z náhodné operace zápisu nebo odstranění v rámci kontejneru.
 * Obnovení odstraněného účtu, databáze nebo kontejneru.
@@ -58,17 +63,17 @@ Níže jsou uvedeny některé z klíčových scénářů, které jsou řešeny f
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" alt-text="Události životního cyklu s časovými razítky pro účet obnovitelné." lightbox="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" border="false":::
 
-a. **Obnovit odstraněný účet** – všechny odstraněné účty, které můžete obnovit, se zobrazí v podokně **obnovení** . Například pokud se položka "účet A" odstraní v časovém razítku T3. V tomto případě je pro obnovení z [Azure Portal](continuous-backup-restore-portal.md#restore-deleted-account), [PowerShellu](continuous-backup-restore-powershell.md#trigger-restore)nebo rozhraní příkazového [řádku](continuous-backup-restore-command-line.md)dostatečné časové razítko těsně před T3, umístěním, názvem cílového účtu, skupinou prostředků a názvem cílového účtu.  
+a. **Obnovit odstraněný účet** – všechny odstraněné účty, které můžete obnovit, se zobrazí v podokně **obnovení** . Například pokud se položka "účet A" odstraní v časovém razítku T3. V tomto případě je pro obnovení z [Azure Portal](continuous-backup-restore-portal.md#restore-deleted-account), [PowerShellu](continuous-backup-restore-powershell.md#trigger-restore)nebo rozhraní příkazového [řádku](continuous-backup-restore-command-line.md#trigger-restore)dostatečné časové razítko těsně před T3, umístěním, názvem cílového účtu, skupinou prostředků a názvem cílového účtu.  
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" alt-text="Události životního cyklu s časovými razítky pro databázi a kontejner obnovitelné." lightbox="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" border="false":::
 
-b. **Obnovení dat účtu v konkrétní oblasti** – například pokud "Account a" existuje ve dvou oblastech "východní USA" a "západní USA" na časovém razítku T3. Pokud potřebujete kopii účtu A v "Západní USA", můžete provést obnovení k určitému bodu v čase z [Azure Portal](continuous-backup-restore-portal.md), [PowerShellu](continuous-backup-restore-powershell.md)nebo rozhraní příkazového [řádku](continuous-backup-restore-command-line.md) s západní USA jako cílovým umístěním.
+b. **Obnovení dat účtu v konkrétní oblasti** – například pokud "Account a" existuje ve dvou oblastech "východní USA" a "západní USA" na časovém razítku T3. Pokud potřebujete kopii účtu A v "Západní USA", můžete provést obnovení k určitému bodu v čase z [Azure Portal](continuous-backup-restore-portal.md), [PowerShellu](continuous-backup-restore-powershell.md#trigger-restore)nebo rozhraní příkazového [řádku](continuous-backup-restore-command-line.md#trigger-restore) s západní USA jako cílovým umístěním.
 
-c. **Obnovení z náhodné operace zápisu nebo odstranění v rámci kontejneru se známým časovým razítkem pro obnovení** – například pokud **víte** , že obsah kontejneru 1 v rámci databáze 1 byl omylem upraven v časovém razítku T3. Můžete provést obnovení k určitému bodu v čase z [Azure Portal](continuous-backup-restore-portal.md), [PowerShellu](continuous-backup-restore-powershell.md)nebo [CLI](continuous-backup-restore-command-line.md) do jiného účtu v časovém razítku T3 pro obnovení požadovaného stavu kontejneru.
+c. **Obnovení z náhodné operace zápisu nebo odstranění v rámci kontejneru se známým časovým razítkem pro obnovení** – například pokud **víte** , že obsah kontejneru 1 v rámci databáze 1 byl omylem upraven v časovém razítku T3. Můžete provést obnovení k určitému bodu v čase z [Azure Portal](continuous-backup-restore-portal.md#restore-live-account), [PowerShellu](continuous-backup-restore-powershell.md#trigger-restore)nebo [CLI](continuous-backup-restore-command-line.md#trigger-restore) do jiného účtu v časovém razítku T3 pro obnovení požadovaného stavu kontejneru.
 
-d. **Obnovení účtu k předchozímu bodu v čase před náhodným odstraněním databáze** – v [Azure Portal](continuous-backup-restore-portal.md)můžete použít podokno informační kanál událostí k určení, kdy se databáze odstranila, a najít čas obnovení. Podobně pomocí [Azure CLI](continuous-backup-restore-command-line.md) a [PowerShellu](continuous-backup-restore-powershell.md)můžete najít událost odstranění databáze tak, že vytvoříte výčet kanálu událostí databáze a potom aktivujete příkaz Obnovit s požadovanými parametry.
+d. **Obnovení účtu k předchozímu bodu v čase před náhodným odstraněním databáze** – v [Azure Portal](continuous-backup-restore-portal.md#restore-live-account)můžete použít podokno informační kanál událostí k určení, kdy se databáze odstranila, a najít čas obnovení. Podobně pomocí [Azure CLI](continuous-backup-restore-command-line.md#trigger-restore) a [PowerShellu](continuous-backup-restore-powershell.md#trigger-restore)můžete najít událost odstranění databáze tak, že vytvoříte výčet kanálu událostí databáze a potom aktivujete příkaz Obnovit s požadovanými parametry.
 
-e. **Obnovte účet k předchozímu bodu v čase před náhodným odstraněním nebo úpravou vlastností kontejneru.** – V [Azure Portal](continuous-backup-restore-portal.md)můžete pomocí podokna informační kanál událostí určit, kdy se má kontejner vytvořit, upravit nebo odstranit, aby se zjistil čas obnovení. Podobně pomocí [Azure CLI](continuous-backup-restore-command-line.md) a [PowerShellu](continuous-backup-restore-powershell.md)můžete zjistit všechny události kontejneru vynásobením kanálu událostí kontejneru a následným spuštěním příkazu RESTORE s požadovanými parametry.
+e. **Obnovte účet k předchozímu bodu v čase před náhodným odstraněním nebo úpravou vlastností kontejneru.** – V [Azure Portal](continuous-backup-restore-portal.md#restore-live-account)můžete pomocí podokna informační kanál událostí určit, kdy se má kontejner vytvořit, upravit nebo odstranit, aby se zjistil čas obnovení. Podobně pomocí [Azure CLI](continuous-backup-restore-command-line.md#trigger-restore) a [PowerShellu](continuous-backup-restore-powershell.md#trigger-restore)můžete zjistit všechny události kontejneru vynásobením kanálu událostí kontejneru a následným spuštěním příkazu RESTORE s požadovanými parametry.
 
 ## <a name="permissions"></a>Oprávnění
 

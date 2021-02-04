@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 849c159f31a14441ef9c6aa19b8704b286727bd7
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 7c89bfab6c4914cee26726006e6928eeb14c0686
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507177"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538183"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -1046,18 +1046,19 @@ Může spravovat všechny aspekty produktu Exchange.
 | --- | --- |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Directory/Groups/Unified/appRoleAssignments/Update | Aktualizuje vlastnost groups. Unified v Azure Active Directory. |
-| Microsoft. Directory/Groups/Unified/Basic/Update | Aktualizuje základní vlastnosti Microsoft 365 skupin. |
-| Microsoft. Directory/Groups/Unified/Create | Vytvořte Microsoft 365 skupiny. |
-| Microsoft. Directory/Groups/Unified/DELETE | Odstraní Microsoft 365 skupiny. |
-| Microsoft. Directory/Groups/Unified/Members/Update | Aktualizuje členství Microsoft 365ch skupin. |
-| Microsoft. Directory/Groups/Unified/Owners/Update | Aktualizuje vlastnictví skupin Microsoft 365. |
+| Microsoft. Directory/Groups/hiddenMembers/Read | Čtení skrytých členů skupiny |
+| Microsoft. Directory/groups. Unified/Basic/Update | Aktualizuje základní vlastnosti Microsoft 365 skupin. |
+| Microsoft. Directory/groups. Unified/Create | Vytvořte Microsoft 365 skupiny. |
+| Microsoft. Directory/groups. Unified/DELETE | Odstraní Microsoft 365 skupiny. |
+| Microsoft. Directory/groups. Unified/Restore | Obnovit Microsoft 365 skupiny |
+| Microsoft. Directory/groups. Unified/Members/Update | Aktualizuje členství Microsoft 365ch skupin. |
+| Microsoft. Directory/groups. Unified/Owners/Update | Aktualizuje vlastnictví skupin Microsoft 365. |
 | Microsoft. Office 365. Exchange/allEntities/allTasks | Spravujte všechny aspekty Exchange Online. |
 | Microsoft. Office 365. Network/Performance/allProperties/Read | Přečtěte si stránky o výkonu sítě v centru pro správu Microsoft 365. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. usageReports/allEntities/Read | Přečtěte si sestavy o využití Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+| Microsoft. Office 365. usageReports/allEntities/allProperties/Read | Přečtěte si sestavy o využití Office 365. |
+| Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="external-id-user-flow-administrator-permissions"></a>Oprávnění správce toku externích ID uživatele
 
@@ -1295,23 +1296,24 @@ Může spravovat všechny aspekty produktu Intune.
 | Microsoft. Directory/Devices/extensionAttributes/Update | Aktualizujte všechny hodnoty vlastnosti Devices. extensionAttributes v Azure Active Directory. |
 | Microsoft. Directory/Devices/registeredOwners/Update | V Azure Active Directory aktualizovat vlastnost Devices. registeredOwners. |
 | Microsoft. Directory/Devices/registeredUsers/Update | V Azure Active Directory aktualizovat vlastnost Devices. registeredUsers. |
-| Microsoft. Directory/Groups/appRoleAssignments/Update | Aktualizuje vlastnost groups. appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/Groups/Basic/Update | Aktualizuje základní vlastnosti pro skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/Create | Vytvořte skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/createAsOwner | Vytvořte skupiny v Azure Active Directory. Tvůrce se přidá jako první vlastník a vytvořený objekt se počítá s kvótou vytvořenou pro objekty tvůrce 250. |
-| Microsoft. Directory/Groups/DELETE | Odstraní skupiny v Azure Active Directory. |
+| Microsoft. Directory/deviceManagementPolicies/Standard/Read | Číst standardní vlastnosti v zásadách aplikací pro správu zařízení |
+| Microsoft. Directory/deviceRegistrationPolicy/Standard/Read | Číst standardní vlastnosti v zásadách registrace zařízení |
 | Microsoft. Directory/Groups/hiddenMembers/Read | Načte vlastnost groups. hiddenMembers v Azure Active Directory. |
-| Microsoft. Directory/Groups/Members/Update | Aktualizuje vlastnost groups. Members v Azure Active Directory. |
-| Microsoft. Directory/Groups/Owners/Update | Aktualizuje vlastnost groups. Owners v Azure Active Directory. |
-| Microsoft. Directory/skupiny/obnovení | Obnovte skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/Settings/Update | Aktualizuje vlastnost groups. Settings v Azure Active Directory. |
-| Microsoft. Directory/Users/appRoleAssignments/Update | Umožňuje aktualizovat vlastnost Users. appRoleAssignments v Azure Active Directory. |
+| Microsoft. Directory/groups. Security/Basic/Update | Aktualizuje základní vlastnosti pro skupiny v Azure Active Directory. |
+| Microsoft. Directory/groups. Security/Classification/Update | Aktualizovat vlastnost klasifikace skupin zabezpečení s vyloučením skupin s přiřazením rolí |
+| Microsoft. Directory/groups. Security/Create | Vytvořte skupiny v Azure Active Directory. |
+| Microsoft. Directory/groups. Security/DELETE | Odstraní skupiny v Azure Active Directory. |
+| Microsoft. Directory/groups. Security/dynamicMembershipRule/Update | Aktualizuje vlastnost dynamicMembershipRule skupin zabezpečení s vyloučením skupin, které se přiřazují role. |
+| Microsoft. Directory/groups. Security/groupType/Update | Aktualizovat vlastnost typu skupiny skupin zabezpečení s vyloučením skupin s přiřazením rolí |
+| Microsoft. Directory/groups. Security/Members/Update | Aktualizuje vlastnost groups. Members v Azure Active Directory. |
+| Microsoft. Directory/groups. Security/Owners/Update | Aktualizuje vlastnost groups. Owners v Azure Active Directory. |
+| Microsoft. Directory/groups. Security/Visibility/Update | Aktualizovat vlastnost Visibility skupin zabezpečení s vyloučením skupin, které je možné přiřadit k rolím |
 | Microsoft. Directory/uživatelé/Basic/Update | Umožňuje aktualizovat základní vlastnosti pro uživatele v Azure Active Directory. |
 | Microsoft. Directory/uživatelé/správce/aktualizace | Umožňuje aktualizovat vlastnost Users. Manager v Azure Active Directory. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
 | Microsoft. Intune/allEntities/allTasks | Spravujte všechny aspekty Intune. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+| Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="kaizala-administrator-permissions"></a>Oprávnění správce Kaizala
 
@@ -1458,13 +1460,18 @@ Nepoužívejte – Neurčeno pro obecné použití.
 | Microsoft. Directory/Contacts/Create | Vytvoří kontakty v Azure Active Directory. |
 | Microsoft. Directory/Contacts/DELETE | Odstraní kontakty v Azure Active Directory. |
 | Microsoft. Directory/Groups/Create | Vytvořte skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/createAsOwner | Vytvořte skupiny v Azure Active Directory. Tvůrce se přidá jako první vlastník a vytvořený objekt se počítá s kvótou vytvořenou pro objekty tvůrce 250. |
+| Microsoft. Directory/Groups/DELETE | Odstranit skupiny s výjimkou skupiny přiřazení role |
 | Microsoft. Directory/Groups/Members/Update | Aktualizuje vlastnost groups. Members v Azure Active Directory. |
 | Microsoft. Directory/Groups/Owners/Update | Aktualizuje vlastnost groups. Owners v Azure Active Directory. |
-| Microsoft. Directory/Users/appRoleAssignments/Update | Umožňuje aktualizovat vlastnost Users. appRoleAssignments v Azure Active Directory. |
+| Microsoft. Directory/skupiny/obnovení | Obnovení odstraněných skupin |
+| Microsoft. Directory/oAuth2PermissionGrants/allProperties/allTasks | Umožňuje vytvářet a odstraňovat oprávnění OAuth 2,0 a číst a aktualizovat všechny vlastnosti. |
+| Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Update | Aktualizovat přiřazení rolí instančního objektu |
 | Microsoft. Directory/Users/assignLicense | Spravujte licence na uživatele v Azure Active Directory. |
 | Microsoft. Directory/uživatelé/Basic/Update | Umožňuje aktualizovat základní vlastnosti pro uživatele v Azure Active Directory. |
+| Microsoft. Directory/uživatelé/vytvořit | Přidání uživatelů |
 | Microsoft. Directory/Users/DELETE | Umožňuje odstranit uživatele v Azure Active Directory. |
+| Microsoft. Directory/Users/Disable | Zakázat uživatele |
+| Microsoft. Directory/uživatelé/povolit | Povolit uživatele |
 | Microsoft. Directory/Users/invalidateAllRefreshTokens | Zruší platnost všech tokenů aktualizace uživatele v Azure Active Directory. |
 | Microsoft. Directory/uživatelé/správce/aktualizace | Umožňuje aktualizovat vlastnost Users. Manager v Azure Active Directory. |
 | Microsoft. Directory/uživatelé/heslo/aktualizace | Aktualizuje hesla pro všechny uživatele v Azure Active Directory. Další podrobnosti najdete v online dokumentaci. |
@@ -1472,9 +1479,9 @@ Nepoužívejte – Neurčeno pro obecné použití.
 | Microsoft. Directory/uživatelé/userPrincipalName/Update | Umožňuje aktualizovat vlastnost Users. userPrincipalName v Azure Active Directory. |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+| Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="partner-tier2-support-permissions"></a>Oprávnění podpory partnerského 2U
 
@@ -1498,16 +1505,25 @@ Nepoužívejte – Neurčeno pro obecné použití.
 | Microsoft. Directory/Contacts/Basic/Update | Aktualizuje základní vlastnosti kontaktů v Azure Active Directory. |
 | Microsoft. Directory/Contacts/Create | Vytvoří kontakty v Azure Active Directory. |
 | Microsoft. Directory/Contacts/DELETE | Odstraní kontakty v Azure Active Directory. |
-| Microsoft. Directory/domén/allTasks | Vytváření a odstraňování domén a čtení a aktualizace standardních vlastností v Azure Active Directory. |
+| Microsoft. Directory/domény/Basic/allTasks | Vytváření a odstraňování domén a čtení a aktualizace standardních vlastností v Azure Active Directory. |
 | Microsoft. Directory/Groups/Create | Vytvořte skupiny v Azure Active Directory. |
 | Microsoft. Directory/Groups/DELETE | Odstraní skupiny v Azure Active Directory. |
 | Microsoft. Directory/Groups/Members/Update | Aktualizuje vlastnost groups. Members v Azure Active Directory. |
+| Microsoft. Directory/Groups/Owners/Update | Aktualizace vlastníků skupin bez skupin s přiřazením rolí |
 | Microsoft. Directory/skupiny/obnovení | Obnovte skupiny v Azure Active Directory. |
+| Microsoft. Directory/oAuth2PermissionGrants/allProperties/allTasks | Umožňuje vytvářet a odstraňovat oprávnění OAuth 2,0 a číst a aktualizovat všechny vlastnosti. |
 | Microsoft. Directory/Organization/Basic/Update | Aktualizuje základní vlastnosti v organizaci v Azure Active Directory. |
-| Microsoft. Directory/Users/appRoleAssignments/Update | Umožňuje aktualizovat vlastnost Users. appRoleAssignments v Azure Active Directory. |
+| Microsoft. Directory/roleAssignments/allProperties/allTasks | Vytváření a odstraňování přiřazení rolí a čtení a aktualizace vlastností přiřazení rolí |
+| Microsoft. Directory/roleDefinitions/allProperties/allTasks | Vytváření a odstraňování definic rolí a čtení a aktualizace všech vlastností |
+| Microsoft. Directory/scopedRoleMemberships/allProperties/allTasks | Vytváření a odstraňování scopedRoleMemberships a čtení a aktualizace všech vlastností |
+| Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Update | Aktualizovat přiřazení rolí instančního objektu |
+| Microsoft. Directory/subscribedSkus/Standard/Read | Číst základní vlastnosti v předplatných |
 | Microsoft. Directory/Users/assignLicense | Spravujte licence na uživatele v Azure Active Directory. |
 | Microsoft. Directory/uživatelé/Basic/Update | Umožňuje aktualizovat základní vlastnosti pro uživatele v Azure Active Directory. |
+| Microsoft. Directory/uživatelé/vytvořit | Přidání uživatelů |
 | Microsoft. Directory/Users/DELETE | Umožňuje odstranit uživatele v Azure Active Directory. |
+| Microsoft. Directory/Users/Disable | Zakázat uživatele |
+| Microsoft. Directory/uživatelé/povolit | Povolit uživatele |
 | Microsoft. Directory/Users/invalidateAllRefreshTokens | Zruší platnost všech tokenů aktualizace uživatele v Azure Active Directory. |
 | Microsoft. Directory/uživatelé/správce/aktualizace | Umožňuje aktualizovat vlastnost Users. Manager v Azure Active Directory. |
 | Microsoft. Directory/uživatelé/heslo/aktualizace | Aktualizuje hesla pro všechny uživatele v Azure Active Directory. Další podrobnosti najdete v online dokumentaci. |
@@ -1515,9 +1531,9 @@ Nepoužívejte – Neurčeno pro obecné použití.
 | Microsoft. Directory/uživatelé/userPrincipalName/Update | Umožňuje aktualizovat vlastnost Users. userPrincipalName v Azure Active Directory. |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+| Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="password-administrator-permissions"></a>Oprávnění správce hesel
 
@@ -1785,18 +1801,18 @@ Může spravovat všechny aspekty služby SharePoint.
 | --- | --- |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Directory/Groups/Unified/appRoleAssignments/Update | Aktualizuje vlastnost groups. Unified v Azure Active Directory. |
-| Microsoft. Directory/Groups/Unified/Basic/Update | Aktualizuje základní vlastnosti Microsoft 365 skupin. |
-| Microsoft. Directory/Groups/Unified/Create | Vytvořte Microsoft 365 skupiny. |
-| Microsoft. Directory/Groups/Unified/DELETE | Odstraní Microsoft 365 skupiny. |
-| Microsoft. Directory/Groups/Unified/Members/Update | Aktualizuje členství Microsoft 365ch skupin. |
-| Microsoft. Directory/Groups/Unified/Owners/Update | Aktualizuje vlastnictví skupin Microsoft 365. |
+| Microsoft. Directory/groups. Unified/Basic/Update | Aktualizuje základní vlastnosti Microsoft 365 skupin. |
+| Microsoft. Directory/groups. Unified/Create | Vytvořte Microsoft 365 skupiny. |
+| Microsoft. Directory/groups. Unified/DELETE | Odstraní Microsoft 365 skupiny. |
+| Microsoft. Directory/groups. Unified/Members/Update | Aktualizuje členství Microsoft 365ch skupin. |
+| Microsoft. Directory/groups. Unified/Owners/Update | Aktualizuje vlastnictví skupin Microsoft 365. |
+| Microsoft. Directory/groups. Unified/Restore | Obnovit Microsoft 365 skupiny |
 | Microsoft. Office 365. Network/Performance/allProperties/Read | Přečtěte si stránky výkon sítě v centru pro správu M365. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
 | Microsoft. Office 365. SharePoint/allEntities/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat standardní vlastnosti v Microsoft. Office 365. SharePoint. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. usageReports/allEntities/Read    | Přečtěte si sestavy o využití Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+| Microsoft. Office 365. usageReports/allEntities/allProperties/Read | Přečtěte si sestavy o využití Office 365. |
+| Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="teams-communications-administrator-permissions"></a>Teams Communications – oprávnění správce
 
@@ -1880,16 +1896,19 @@ Může spravovat službu Microsoft Teams.
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
 | Microsoft. Directory/Groups/hiddenMembers/Read | Načte vlastnost groups. hiddenMembers v Azure Active Directory. |
 | Microsoft. Directory/Groups/Unified/appRoleAssignments/Update | Aktualizuje vlastnost groups. Unified v Azure Active Directory. |
-| Microsoft. Directory/Groups/Unified/Basic/Update | Aktualizuje základní vlastnosti Microsoft 365 skupin. |
-| Microsoft. Directory/Groups/Unified/Create | Vytvořte Microsoft 365 skupiny. |
-| Microsoft. Directory/Groups/Unified/DELETE | Odstraní Microsoft 365 skupiny. |
-| Microsoft. Directory/Groups/Unified/Members/Update | Aktualizuje členství Microsoft 365ch skupin. |
-| Microsoft. Directory/Groups/Unified/Owners/Update | Aktualizuje vlastnictví skupin Microsoft 365. |
+| Microsoft. Directory/groups. Unified/Basic/Update | Aktualizuje základní vlastnosti Microsoft 365 skupin. |
+| Microsoft. Directory/groups. Unified/Create | Vytvořte Microsoft 365 skupiny. |
+| Microsoft. Directory/groups. Unified/DELETE | Odstraní Microsoft 365 skupiny. |
+| Microsoft. Directory/groups. Unified/Members/Update | Aktualizuje členství Microsoft 365ch skupin. |
+| Microsoft. Directory/groups. Unified/Owners/Update | Aktualizuje vlastnictví skupin Microsoft 365. |
+| Microsoft. Directory/groups. Unified/Restore | Obnovit Microsoft 365 skupiny |
+| Microsoft. Directory/servicePrincipals/managePermissionGrantsForGroup. Microsoft-All-Application-Permissions | Udělení souhlasu pro delegovaná oprávnění jménem skupiny |
 | Microsoft. Office 365. Network/Performance/allProperties/Read | Přečtěte si stránky výkon sítě v centru pro správu M365. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+| Microsoft. Office 365. skypeForBusiness/allEntities/allTasks | Umožňuje spravovat všechny aspekty Online Skypu pro firmy. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. usageReports/allEntities/Read | Přečtěte si sestavy o využití Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+| Microsoft. Office 365. usageReports/allEntities/allProperties/Read | Přečtěte si sestavy o využití Office 365. |
+| Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 | Microsoft. Teams/allEntities/allProperties/allTasks | Spravujte všechny prostředky v týmech. |
 
 ### <a name="usage-summary-reports-reader-permissions"></a>Oprávnění čtenáře sestav souhrnu využití

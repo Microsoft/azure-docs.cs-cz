@@ -7,17 +7,22 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 3614a85a6df2e793a73a2609d6f5762e4dc873fb
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 9d30f5325162b9ea447d54aadc092dbd9aa29132
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527423"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538689"
 ---
 # <a name="manage-permissions-to-restore-an-azure-cosmos-db-account"></a>Správa oprávnění k obnovení účtu Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-Azure Cosmos DB slouží k izolaci a omezení oprávnění obnovit pro účet průběžného zálohování konkrétní role nebo objektu zabezpečení. Vlastník účtu může spustit obnovení a přiřadit roli ostatním objektům zabezpečení k provedení operace obnovení. Tato oprávnění se dají použít v oboru předplatného nebo v oboru zdrojového účtu, jak je znázorněno na následujícím obrázku:
+> [!IMPORTANT]
+> Funkce obnovení bodu v čase (režim průběžného zálohování) pro Azure Cosmos DB je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Azure Cosmos DB umožňuje izolaci a omezení oprávnění obnovit pro účet průběžného zálohování (Preview) ke konkrétní roli nebo objektu zabezpečení. Vlastník účtu může spustit obnovení a přiřadit roli ostatním objektům zabezpečení k provedení operace obnovení. Tato oprávnění se dají použít v oboru předplatného nebo v oboru zdrojového účtu, jak je znázorněno na následujícím obrázku:
 
 :::image type="content" source="./media/continuous-backup-restore-permissions/restore-roles-permissions.png" alt-text="Seznam rolí vyžadovaných k provedení operace obnovení." lightbox="./media/continuous-backup-restore-permissions/restore-roles-permissions.png" border="false":::
 

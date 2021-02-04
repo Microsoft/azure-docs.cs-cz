@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: 371ad2220b2b2b1b73e5611c5abef74454a548ad
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 9a7a8868497433ea0de8f2f8b32f8e8fbaa497eb
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508265"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537180"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>Pokyny pro zodpovědnost nasazení syntetické hlasové technologie
 
@@ -62,14 +62,8 @@ Pro jednotlivce, kteří mají zaznamenaná vlastní hlasová písma, můžou ne
 Uživatelé s poruchami v rozpoznávání řeči chtějí dělat aktualizace jejich syntetického hlasu, aby odrážely jejich splatnost (například dítě dosáhne puberty). Jednotlivci také můžou mít stylistické předvolby, které se v průběhu času mění a můžou chtít udělat změny v rámci sklonu, zvýraznění nebo dalších hlasových charakteristik.
 
 
-## <a name="reference-docs"></a>Referenční dokumenty
+## <a name="see-also"></a>Viz také
 
-* [Zveřejnění pro hlasový talentů](/legal/cognitive-services/speech-service/disclosure-voice-talent)
-* [Jak zveřejnit](concepts-disclosure-guidelines.md)
-* [Vzory návrhu zpřístupnění](concepts-disclosure-patterns.md)
-
-## <a name="next-steps"></a>Další kroky
-
-* [Zveřejnění pro hlasový talentů](/legal/cognitive-services/speech-service/disclosure-voice-talent)
+* [Zveřejnění pro hlasový talentů](https://docs.microsoft.com/legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context)
 * [Jak zveřejnit](concepts-disclosure-guidelines.md)
 * [Vzory návrhu zpřístupnění](concepts-disclosure-patterns.md)

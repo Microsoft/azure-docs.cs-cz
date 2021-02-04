@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 02/03/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: d7f71afd1cf47ab1a94d984090e8fb52ee69c6b4
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f7ba6363ec3a38d37ea3df0f76409289069638e8
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99088934"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537792"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Postupy: použití Analýza textu pro stav (Preview)
 
@@ -113,6 +113,9 @@ Velikost dokumentu musí být v rozmezí 5 120 znaků na dokumentu. Maximální 
 ### <a name="structure-the-api-request-for-the-hosted-asynchronous-web-api"></a>Struktura požadavku rozhraní API pro hostované asynchronní webové rozhraní API
 
 V případě kontejneru i hostovaného webového rozhraní API musíte vytvořit žádost POST. K rychlému vytváření a odesílání požadavků POST do hostovaného webového rozhraní API v požadované oblasti můžete [použít post](text-analytics-how-to-call-api.md), příkaz nebo **konzolu testování api** na webu [Analýza textu for Health hostd](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health) API. 
+
+> [!NOTE]
+> Asynchronní `/analyze` i `/health` koncové body jsou k dispozici pouze v následujících oblastech: Západní USA 2, Východní USA 2, Střed USA, Severní Evropa a západní Evropa.  Chcete-li provést úspěšné požadavky na tyto koncové body, zajistěte, aby byl prostředek vytvořen v jedné z těchto oblastí.
 
 Níže je uveden příklad souboru JSON připojeného k Analýza textu pro tělo žádosti rozhraní API pro stav:
 

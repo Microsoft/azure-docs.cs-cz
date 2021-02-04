@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: 5cf933a11956bb8459bf6f5cd1b2b366eb8419d8
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 425096bf7cb75ae3560c06cbcd32778536dc1952
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508638"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537336"
 ---
 # <a name="disclosure-design-patterns"></a>Zpřístupnění způsobů návrhu
 Teď, když jste&#39;i zjistili správnou [úroveň zveřejnění](concepts-disclosure-guidelines.md#disclosure-assessment) pro syntetické hlasové prostředí,&#39;s vhodným časem prozkoumat potenciální vzory návrhu.
@@ -237,20 +237,14 @@ Vyzrazení můžete využít jako příležitost k řádnému selhání.
 - [Poskytnutí příležitostí k získání dalších informací o tom, jak byl hlas proveden](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
 - [Předání do lidského](#conversational-transparency)
 
-
-
 ## <a name="additional-resources"></a>Další zdroje informací
 - [Pokyny pro Microsoft bot](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
 - [Pokyny pro návrh Cortany](/cortana/voice-commands/voicecommand-design-guidelines)
 - [Pokyny pro návrh mluveného slova pro Microsoft Windows UWP](/windows/uwp/design/input/speech-interactions)
 - [Microsoft Windows Mixed reality – pokyny pro hlasové příkazy](/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
 
-## <a name="reference-docs"></a>Referenční dokumenty
+## <a name="see-also"></a>Viz také
 
-* [Zveřejnění pro hlasový talentů](/legal/cognitive-services/speech-service/disclosure-voice-talent)
+* [Zveřejnění pro hlasový talentů](https://docs.microsoft.com/legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context)
 * [Pokyny pro zodpovědnost nasazení syntetické hlasové technologie](concepts-guidelines-responsible-deployment-synthetic.md)
 * [Jak zveřejnit](concepts-disclosure-guidelines.md)
-
-## <a name="next-steps"></a>Další kroky
-
-* [Zveřejnění pro hlasový talentů](/legal/cognitive-services/speech-service/disclosure-voice-talent)

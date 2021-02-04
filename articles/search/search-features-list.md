@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 286d826f61a6c99396ef04af0a0855567bc4d1e4
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 7615e1dbce040002d9d1a13502637f78100965fb
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951379"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538903"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Funkce Azure Kognitivní hledání
 
@@ -49,7 +49,7 @@ Azure Kognitivní hledání poskytuje fulltextový vyhledávací modul, trvalé 
 
 | Kategorií&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Funkce |
 |-------------------|----------|
-| Šifrování dat | [**Šifrování spravované Microsoftem v klidovém režimu**](search-security-overview.md#encrypted-transmissions-and-storage) je integrované do interní vrstvy úložiště a je neodvolatelné. <br/><br/>[**Šifrovací klíče spravované zákazníkem**](search-security-manage-encryption-keys.md) , které vytvoříte a spravujete v Azure Key Vault lze použít k dodatečnému šifrování indexů a mapování synonym. Pro služby vytvořené po 1 2020. srpna se šifrování CMK rozšíří na data na dočasných discích, aby bylo úplné šifrování indexovaného obsahu velmi dvojité.|
+| Šifrování dat | [**Šifrování spravované Microsoftem v klidovém režimu**](search-security-overview.md#encryption) je integrované do interní vrstvy úložiště a je neodvolatelné. <br/><br/>[**Šifrovací klíče spravované zákazníkem**](search-security-manage-encryption-keys.md) , které vytvoříte a spravujete v Azure Key Vault lze použít k dodatečnému šifrování indexů a mapování synonym. Pro služby vytvořené po 1 2020. srpna se šifrování CMK rozšíří na data na dočasných discích, aby bylo úplné šifrování indexovaného obsahu velmi dvojité.|
 | Ochrana koncového bodu | [**Pravidla protokolu IP pro podporu příchozích bran firewall**](service-configure-firewall.md) umožňují nastavit rozsahy IP adres, přes které bude služba vyhledávání přijímat požadavky.<br/><br/>[**Vytvoření privátního koncového bodu**](service-create-private-endpoint.md) pomocí privátního propojení Azure k vynucení všech požadavků přes virtuální síť. |
 | Odchozí zabezpečení (indexery) | [**Přístup k datům prostřednictvím soukromých koncových bodů**](search-indexer-howto-access-private.md) umožňuje indexeru připojit se k prostředkům Azure chráněným pomocí privátního propojení Azure.<br/><br/>[**Přístup k datům pomocí důvěryhodné identity**](search-howto-managed-identities-data-sources.md) znamená, že připojovací řetězce k externím zdrojům dat můžou vynechat uživatelská jména a hesla. Když indexer připojí ke zdroji dat, prostředek umožňuje připojení, pokud byla vyhledávací služba předtím zaregistrována jako důvěryhodná služba. |
 

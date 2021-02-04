@@ -7,17 +7,22 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 7a41eb8bdd573ac08b0c76eb9a6c2b0724637c39
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: c0af1db12f3ade2945524f48e4539d2d2e9aa6b9
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527467"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539175"
 ---
-# <a name="frequently-asked-questions-on-the-azure-cosmos-db-point-in-time-restore-feature"></a>Nejčastější dotazy k funkci obnovení Azure Cosmos DBho bodu v čase
+# <a name="frequently-asked-questions-on-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Nejčastější dotazy k funkci obnovení Azure Cosmos DBho bodu v čase (Preview)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-V tomto článku jsou uvedené Nejčastější dotazy týkající se funkce obnovení Azure Cosmos DBho bodu v čase, které se dosahují pomocí režimu průběžné zálohování.
+> [!IMPORTANT]
+> Funkce obnovení bodu v čase (režim průběžného zálohování) pro Azure Cosmos DB je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+V tomto článku jsou uvedené Nejčastější dotazy týkající se funkcí obnovení Azure Cosmos DBho bodu v čase (Preview), které se dosahují pomocí režimu průběžné zálohování.
 
 ## <a name="how-much-time-does-it-takes-to-restore"></a>Jak dlouho trvá obnovení?
 Doba obnovení závisí na velikosti vašich dat.

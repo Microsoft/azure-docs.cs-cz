@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/02/2021
+ms.date: 02/03/2021
 ms.author: alkohli
-ms.openlocfilehash: 9ebf95f0a9c5cfc059f38a13ad99a545dd863d21
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 6c2eed9aac614b0765582d5cf373caf50323ef7a
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525027"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537353"
 ---
 # <a name="tutorial-return-azure-data-box"></a>Kurz: návrat Azure Data Box
 
@@ -172,6 +172,24 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
 
 Pokud jste procházeli mezi všemi problémy, pošlete e-mail Data Box Operations Asie, [adbo@microsoft.com](mailto:adbo@microsoft.com) který poskytuje název úlohy v hlavičce předmětu a byl zjištěn problém.
 
+## <a name="united-arab-emirates"></a>[Spojené arabské emiráty](#tab/in-uae)
+
+1. Ponechejte si původní obal, ve které jste zařízení obdrželi, pro zpáteční zásilku.
+2. Zajistěte, aby byla kopie dat do zařízení dokončena, a **Příprava k odeslání** krok byl úspěšně dokončen.
+3. Poznamenejte si referenční číslo na stránce **Příprava k odeslání** místního webového uživatelského rozhraní v zařízení.
+4. Vypněte zařízení a odeberte kabely. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
+6. Pro zpáteční zásilku zabalte zařízení do původní krabice.
+7. Pomocí e-mailových [operací Azure Data box](mailto:adbops@microsoft.com) získat ID, které se bude používat k identifikaci balíčku, když se dokončí zpátky v datacentru.
+8. Poznamenejte si toto ID na vytištěném expedičním štítku vedle zpáteční adresy tak, aby bylo jasně viditelné.  
+9. Zarezervujte si vyzvednutí online tak, že na [DHL Express Spojené arabské emiráty](https://mydhl.express.dhl/ae/en/home.html#/schedulePickupTab)  >  **naplánujete vyzvednutí**.
+   - Zadejte referenční číslo ze stránky **Příprava k odeslání** místního webového uživatelského rozhraní v zařízení v poli číslo nákladového pole.
+   - Rezervace jsou přijímány od 9:00 do 2:00 a 6. až do šesti dnů v týdnu (s výjimkou Pá a veřejných svátků).
+   - Žádosti o vyzvednutí by se měly umístit aspoň 90 minut před časem ukončení zákazníka.
+10. Pokud provedete všechny problémy s nástrojem pro rezervaci DHL, můžete kontaktovat DHL pomocí kterékoli z těchto metod:
+    - Zavolejte 04-2924545.
+    - Odešlete e-mail [ecom.ae@dhl.com](mailto:ecom.ae@dhl.com) s podrobnostmi o problémech a vložte číslo nákladového pole do pole Předmět: řádek.
+    - Zavolejte zákaznickou podporu DHL na adrese 600 567567.
+
 ## <a name="self-managed"></a>[V případě svépomoci](#tab/in-selfmanaged)
 
 Pokud používáte Data Box v Japonsku, Singapuru, Koreji, Indii, Jižní Africe, Spojeném království, Západní Evropa nebo Austrálii a při vytváření objednávky vybrali možnost samostatně spravovaná dodávka, postupujte podle těchto pokynů.
@@ -209,5 +227,3 @@ Přejděte k dalšímu článku, kde se dozvíte, jak spravovat Data Box.
 
 > [!div class="nextstepaction"]
 > [Správa Data Box přes Azure Portal](./data-box-portal-admin.md)
-
-

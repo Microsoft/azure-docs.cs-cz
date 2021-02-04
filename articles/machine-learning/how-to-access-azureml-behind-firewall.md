@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8ffbe5debaa980385a2c6dc0078de5f1cc2e9bde
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 150e1aee38a724a0d52c83219c4d214265be9274
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045508"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538064"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Pro Azure Machine Learning použít pracovní prostor za bránou firewall
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak nakonfigurovat Azure Firewall pro řízení p�
 > [!WARNING]
 > Přístup k úložišti dat za bránou firewall je podporován pouze v prostředí Code First. Použití aplikace [Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md) pro přístup k datům za bránou firewall není podporováno. Pokud chcete s nástrojem Studio pracovat s úložištěm dat v privátní síti, musíte nejdřív [nastavit virtuální síť](../virtual-network/quick-create-portal.md) a [dát studiu přístup k datům uloženým ve virtuální síti](how-to-enable-studio-virtual-network.md).
 
-## <a name="azure-firewall"></a>Brána Azure Firewall
+## <a name="azure-firewall"></a>Azure Firewall
 
 Při použití Azure Firewall použijte __cílovou síťovou adresu (DNAT)__ a vytvořte pravidla překladu adres (NAT) pro příchozí provoz. U odchozích přenosů vytvořte pravidla __sítě__ nebo __aplikace__ . Tyto kolekce pravidel jsou podrobněji popsány v tématu [co je několik Azure firewall konceptů](../firewall/firewall-faq.yml#what-are-some-azure-firewall-concepts).
 
@@ -33,15 +33,22 @@ Při použití Azure Firewall použijte __cílovou síťovou adresu (DNAT)__ a v
 
 Pokud používáte __výpočetní instanci__ nebo __výpočetní cluster__ Azure Machine Learning, přidejte do podsítě [definované uživatelem (udr)](../virtual-network/virtual-networks-udr-overview.md) pro podsíť, která obsahuje prostředky Azure Machine Learning. Tato trasa vynutí provoz __z__ IP adres `BatchNodeManagement` prostředků a, `AzureMachineLearning` do veřejné IP adresy vaší výpočetní instance a z výpočetního clusteru.
 
-Tyto udr umožňují, aby služba Batch komunikovala s výpočetními uzly pro plánování úloh. Přidejte také IP adresu pro službu Azure Machine Learning, kde existují prostředky, jak je to nutné pro přístup k výpočetním instancím. Chcete-li získat seznam IP adres služby Batch a služby Azure Machine Learning, použijte jednu z následujících metod:
+Tyto udr umožňují, aby služba Batch komunikovala s výpočetními uzly pro plánování úloh. Přidejte také IP adresu pro službu Azure Machine Learning, protože to je vyžadováno pro přístup k výpočetním instancím. Při přidávání IP adresy pro službu Azure Machine Learning musíte přidat IP adresu pro __primární i sekundární__ oblast Azure. Primární oblast, kde se nachází váš pracovní prostor.
+
+Pokud chcete najít sekundární oblast, přečtěte si téma [zajištění provozní kontinuity & zotavení po havárii pomocí spárovaných oblastí Azure](../best-practices-availability-paired-regions.md#azure-regional-pairs). Například pokud je vaše služba Azure Machine Learning v Východní USA 2, Sekundární oblast je Střed USA. 
+
+Chcete-li získat seznam IP adres služby Batch a služby Azure Machine Learning, použijte jednu z následujících metod:
 
 * Stáhněte si [rozsahy IP adres Azure a značky služby](https://www.microsoft.com/download/details.aspx?id=56519) a vyhledejte v něm soubor `BatchNodeManagement.<region>` a `AzureMachineLearning.<region>` , kde `<region>` je vaše oblast Azure.
 
-* Informace si můžete stáhnout pomocí [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) . Následující příklad stáhne informace o IP adrese a odfiltruje informace o Východní USA 2 oblasti:
+* Informace si můžete stáhnout pomocí [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) . Následující příklad stáhne informace o IP adrese a odfiltruje informace o Východní USA 2 oblasti (primární) a Střed USA oblasti (sekundární):
 
     ```azurecli-interactive
     az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
+    # Get primary region IPs
     az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
+    # Get secondary region IPs
+    az network list-service-tags -l "Central US" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='centralus']"
     ```
 
     > [!TIP]

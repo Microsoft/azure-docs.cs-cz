@@ -14,12 +14,12 @@ ms.subservice: pim
 ms.date: 09/29/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be48e6e175beae751003895e60322a458cfbc8bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42d38990289169412f06b0c7e4bcbdf67f688da7
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568076"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539005"
 ---
 # <a name="discover-azure-resources-to-manage-in-privileged-identity-management"></a>Zjištění prostředků Azure pro správu v Privileged Identity Management
 
@@ -32,7 +32,7 @@ Když nakonfigurujete Privileged Identity Management pro prostředky Azure, je p
 
 ## <a name="discover-resources"></a>Zjišťování prostředků
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 
@@ -66,7 +66,7 @@ Když nakonfigurujete Privileged Identity Management pro prostředky Azure, je p
 
     ![Podokno zjišťování se zvýrazněným prostředkem a vybranou možností spravovat prostředek](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
-1. Pokud se zobrazí zpráva, abyste potvrdili připojování vybraného prostředku ke správě, vyberte **Ano**.
+1. Pokud se zobrazí zpráva, abyste potvrdili připojování vybraného prostředku ke správě, vyberte **Ano**. PIM se pak nakonfiguruje tak, aby spravoval všechny nové a existující podřízené objekty v rámci prostředků.
 
     ![Zpráva potvrzující, že se má připojit vybrané prostředky pro správu](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
 
