@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Azure Cognitive Services
 description: Seznam Azure Policy integrovaných definic zásad pro Azure Cognitive Services. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 author: nitinme
 ms.author: nitinme
 ms.service: cognitive-services
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: f4e5354f8a4cb113fc5760b4da851d57d60be901
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 2da0b230d5d05e10e3f2e1a44a8b4238f659dbeb
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221342"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555557"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-cognitive-services"></a>Azure Policy předdefinované definice zásad pro Azure Cognitive Services
 

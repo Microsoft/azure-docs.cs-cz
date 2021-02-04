@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 69ac1e82c267dee521143c4ed5f6c2be4d32e2ea
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 477a96f1bf66255b11b2fee36c38e55b18cddb69
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531322"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556129"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa využití a nákladů pro službu Application Insights
 
@@ -186,7 +186,7 @@ Objem dat, která odesíláte, můžete spravovat pomocí následujících techn
 
 * **Vzorkování**: vzorkování můžete použít ke snížení objemu telemetrie, která je odesílána z vašeho serveru a klientských aplikací s minimálním zkreslením metrik. Vzorkování je primární nástroj, který můžete použít k optimalizaci množství dat, která odesíláte. Přečtěte si další informace o [funkcích vzorkování](./sampling.md).
 
-* **Omezení volání AJAX**: můžete [omezit počet volání AJAX, která lze nahlásit](./javascript.md#configuration) v každém zobrazení stránky, nebo vypnout vytváření sestav AJAX.
+* **Omezení volání AJAX**: můžete [omezit počet volání AJAX, která lze nahlásit](./javascript.md#configuration) v každém zobrazení stránky, nebo vypnout vytváření sestav AJAX. Všimněte si, že vypnutí volání AJAX zakáže [korelaci JavaScriptu](./javascript.md#enable-correlation).
 
 * **Zakázat nepotřebné moduly**: [Upravit ApplicationInsights.config](./configuration-with-applicationinsights-config.md) pro vypnutí modulů shromažďování, které nepotřebujete. Můžete se třeba rozhodnout, že čítače výkonu nebo data závislostí jsou nepostradatelná.
 
@@ -320,7 +320,7 @@ Vzhledem k tomu, že tato úroveň platí jenom pro zákazníky s předplatným 
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>Příklady určení počtu jedinečných uzlů
 
-| Scénář                               | Celkový počet denních uzlů |
+| Scenario                               | Celkový počet denních uzlů |
 |:---------------------------------------|:----------------:|
 | 1 aplikace s využitím 3 instancí Azure App Service a 1 virtuálního serveru | 4 |
 | 3 aplikace běžící na 2 virtuálních počítačích; prostředky Application Insights pro tyto aplikace jsou ve stejném předplatném a na úrovni jednotlivých uzlů. | 2 | 

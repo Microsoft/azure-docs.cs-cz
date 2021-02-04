@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2020
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 5b257e45a86a7b22e9064fcfc6092b3c946ae99b
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 13cbc2e9451221fef951eb6fac4c6b2772275122
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757629"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556428"
 ---
 # <a name="organize-management-groups-subscriptions-and-tenant-wide-visibility"></a>Uspořádání skupin pro správu, předplatných a viditelnosti v nejrůznějších klientech
 
@@ -81,12 +81,14 @@ Můžete přidat odběry do skupiny pro správu, kterou jste vytvořili.
 
 ## <a name="grant-tenant-wide-permissions-to-yourself"></a>Udělení oprávnění na úrovni tenanta sobě
 
-Uživatel s rolí Azure Active Directory **globálního správce** může mít odpovědnost v rámci tenanta, ale nemá oprávnění Azure zobrazovat informace o celé organizaci v Azure Security Center. 
+Uživatel s rolí Azure Active Directory (AD) **globálního správce** může mít odpovědnost v rámci tenanta, ale nemá oprávnění Azure zobrazovat informace o celé organizaci v Azure Security Center. Vyžaduje se zvýšení oprávnění, protože přiřazení role Azure AD neuděluje přístup k prostředkům Azure. 
 
 > [!TIP]
-> Pokud vaše organizace spravuje přístup k prostředkům s [Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md)nebo jakýmkoli jiným nástrojem PIM, musí být globální role správce aktivní pro uživatele, který provádí tyto změny.
+> Přečtěte si další informace o zvýšení oprávnění pro roli globálního správce v části [zvýšení přístupu ke správě všech předplatných Azure a skupin pro správu](../role-based-access-control/elevate-access-global-admin.md).
 
 Přiřazení oprávnění na úrovni tenanta:
+
+1. Pokud vaše organizace spravuje přístup k prostředkům s [Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md)nebo jakýmkoli jiným nástrojem PIM, musí být globální role správce pro uživatele aktivní podle níže uvedeného postupu.
 
 1. Jako globální uživatel správce bez přiřazení do kořenové skupiny pro správu tenanta otevřete stránku **přehled** Security Center a v proužku vyberte odkaz **viditelnost v rámci tenanta** . 
 

@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Azure SQL Database
 description: Seznam Azure Policy předdefinované definice zásad pro Azure SQL Database a spravovanou instanci SQL. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.service: sql-database
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 4b74dc7890ced4d6ad37075dadf533c2f407ece7
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 85fe29d4941f438581ea6f1cbb49274ea0096549
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219736"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556849"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-sql-database--sql-managed-instance"></a>Azure Policy předdefinované definice pro Azure SQL Database & spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]

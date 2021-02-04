@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: a6488d2c7611513528ff02d4e620124763912730
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 0d4d32aba34a97c6a060c999694f66d79933d011
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353251"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556050"
 ---
 # <a name="importing-from-data-sources"></a>Import ze zdrojů dat
 
@@ -42,7 +42,7 @@ Můžete vytvořit vícenásobné konverzace ve `.tsv` formátu souboru. Tento f
 > [!div class="mx-imgBorder"]
 > ![Koncepční model 3 úrovní vícefaktorového dotazování](../media/qnamaker-concepts-knowledgebase/nested-multi-turn.png)
 
-Zobrazí se sloupec pro vícenásobný tah `.tsv` , který je specifický pro vícenásobný výběr. **Prompts** Příklad `.tsv` zobrazený v Excelu zobrazuje informace, které se mají zahrnout pro definování vícenásobných podřízených objektů:
+Zobrazí se sloupec pro vícenásobný tah `.tsv` , který je specifický pro vícenásobný výběr.  Příklad `.tsv` zobrazený v Excelu zobrazuje informace, které se mají zahrnout pro definování vícenásobných podřízených objektů:
 
 ```JSON
 [
@@ -100,4 +100,4 @@ Přečtěte si další informace o [pokynech pro formát](../reference-document-
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jaké informace jsou uloženy v [páru otázek a odpovědí (QnA)](question-answer-set.md).
+Naučte se [upravovat QnAs](../how-to/edit-knowledge-base.md).

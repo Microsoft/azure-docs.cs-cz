@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8aa6a2168bff6e90d636770804900fa93f081ced
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 1196982fedc7321805e36cceed27c90e43a6e705
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425787"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99558342"
 ---
 # <a name="set-up-msix-app-attach-preview-using-powershell"></a>Nastavení připojení aplikace MSIX (Preview) pomocí PowerShellu
 
@@ -30,6 +30,7 @@ Tady je postup, co je potřeba ke konfiguraci připojení aplikace MSIX:
 
 - Funkční nasazení virtuálních počítačů s Windows. Informace o tom, jak nasadit virtuální plochu Windows (Classic), najdete v tématu [Vytvoření tenanta ve virtuálním počítači s Windows](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Informace o tom, jak nasadit virtuální plochu Windows s Azure Resource Manager integrací, najdete v tématu [Vytvoření fondu hostitelů pomocí Azure Portal](./create-host-pools-azure-marketplace.md).
 - Fond hostitelů virtuálních počítačů s Windows s aspoň jedním aktivním hostitelem relace.
+- Tento fond hostitelů musí být v prostředí ověřování.
 - Desktopová skupina vzdálených aplikací.
 - Nástroj pro vytváření balíčků MSIX
 - MSIX zabalená aplikace se rozšířila na obrázek MSIX, který se nahraje do sdílené složky.

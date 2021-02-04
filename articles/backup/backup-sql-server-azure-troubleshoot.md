@@ -3,12 +3,12 @@ title: Řešení potíží se zálohováním databáze SQL Server
 description: Informace o řešení potíží při zálohování SQL Server databází běžících na virtuálních počítačích Azure s Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 1e4ee2bdcd0826b655aa71d83674ff1e0c06a8cb
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2cf0ed0200de9b2787f5d9f38bd343f93648bc78
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549894"
+ms.locfileid: "99557741"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup
 
@@ -206,14 +206,14 @@ Operace je zablokovaná, protože trezor dosáhl maximálního limitu pro tyto o
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-Operace rozšíření úlohy AzureBackup se nezdařila. | VIRTUÁLNÍ počítač je vypnutý (nebo) virtuální počítač nemůže kontaktovat službu Azure Backup kvůli problémům s připojením k Internetu.| – Ujistěte se prosím, že je virtuální počítač spuštěný a má připojení k Internetu.<br>- [Znovu zaregistrujte rozšíření na SQL serverm virtuálním počítači](https://docs.microsoft.com/azure/backup/manage-monitor-sql-database-backup#re-register-extension-on-the-sql-server-vm).
+Operace rozšíření úlohy AzureBackup se nezdařila. | Virtuální počítač je vypnutý nebo virtuální počítač nemůže kontaktovat službu Azure Backup kvůli problémům s připojením k Internetu.| <li> Ujistěte se, že je virtuální počítač v provozu a že má připojení k Internetu.<li> [Znovu zaregistrujte rozšíření na SQL serverm virtuálním počítači](manage-monitor-sql-database-backup.md#re-register-extension-on-the-sql-server-vm).
 
 
 ### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-Virtuální počítač nemůže kontaktovat službu Azure Backup kvůli problémům s připojením k Internetu. | Virtuální počítač potřebuje odchozí připojení k Azure Backup službě, Azure Storage nebo službám Azure Active Directory.| – Pokud k omezení připojení používáte NSG, měli byste použít značku služby *AzureBackup* a povolit odchozí přístup k Azure Backup službě a podobně pro služby Azure AD (*azureactivedirectory selhala*) a Azure Storage (*úložiště*). Pomocí těchto [kroků](./backup-sql-server-database-azure-vms.md#nsg-tags) udělíte přístup.<br>– Zajistěte překlad koncových bodů Azure DNS.<br>– Ověřte, jestli je virtuální počítač za nástrojem pro vyrovnávání zatížení blokující přístup k Internetu. Po přiřazení veřejné IP adresy k virtuálním počítačům bude zjišťování fungovat.<br>– Ověřte, že není k dispozici brána firewall/antivirová ochrana nebo proxy servery blokující volání výše uvedených tří cílových služeb.
+Virtuální počítač nemůže kontaktovat službu Azure Backup kvůli problémům s připojením k Internetu. | Virtuální počítač potřebuje odchozí připojení k Azure Backup službě, Azure Storage nebo službám Azure Active Directory.| <li> Pokud k omezení připojení používáte NSG, měli byste použít značku služby *AzureBackup* a povolit odchozí přístup k Azure Backup službě a podobně pro služby Azure AD (*azureactivedirectory selhala*) a Azure Storage (*úložiště*). Pomocí těchto [kroků](./backup-sql-server-database-azure-vms.md#nsg-tags) udělíte přístup. <li> Ujistěte se, že DNS překládá koncové body Azure. <li> Ověřte, jestli je virtuální počítač za nástrojem pro vyrovnávání zatížení blokující přístup k Internetu. Po přiřazení veřejné IP adresy k virtuálním počítačům bude zjišťování fungovat. <li> Ověřte, že není k dispozici brána firewall/antivirová ochrana nebo proxy servery blokující volání výše uvedených tří cílových služeb.
 
 ## <a name="re-registration-failures"></a>Selhání opětovné registrace
 

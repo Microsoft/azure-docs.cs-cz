@@ -1,5 +1,5 @@
 ---
-title: Použití Azure Sentinel watchlists
+title: Používání konsolidovaných seznamů služby Azure Sentinel
 description: Tento článek popisuje, jak pomocí Azure Sentinel watchlists prozkoumat hrozby, importovat obchodní data, vytvořit seznamy povolených dat a rozšířit data událostí.
 services: sentinel
 author: yelevin
@@ -10,14 +10,14 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: e31128687cfcc1f4e32879328ad3227182efb9ce
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 97509b878fb5e0cb28bddc5d1b58c21b32c34675
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797359"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555638"
 ---
-# <a name="use-azure-sentinel-watchlists"></a>Použití Azure Sentinel watchlists
+# <a name="use-azure-sentinel-watchlists"></a>Používání konsolidovaných seznamů služby Azure Sentinel
 
 > [!IMPORTANT]
 > Funkce watchlists je aktuálně ve **verzi Preview**. Další právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti, najdete v tématu dodatečné [podmínky použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview.
@@ -28,7 +28,7 @@ Obvyklé scénáře použití watchlists zahrnují:
 
 - Rychlým importem IP adres, hodnot hash souborů a dalších dat ze souborů CSV můžete rychle **prozkoumat hrozby** a reagovat na incidenty. Po importu můžete páry název-hodnota seznamu ke zhlédnutí použít pro spojení a filtry v pravidlech výstrah, loveckých hrozbách, sešitech, poznámkových blocích a obecných dotazech.
 
-- **Import obchodních dat** jako watchlists Například importujte seznamy uživatelů s privilegovaným přístupem k systému nebo ukončené zaměstnance a potom pomocí seznamu ke zhlédnutí Vytvořte seznamy povolených a zakázaných aplikací, které se používají ke zjištění nebo zabránění uživatelům v přihlášení k síti.
+- **Import obchodních dat** jako seznamu ke zhlédnutí Například importujte seznamy uživatelů s privilegovaným přístupem k systému nebo ukončené zaměstnance a potom pomocí seznamu ke zhlédnutí Vytvořte seznamy povolených a zakázaných aplikací, které se používají ke zjištění nebo zabránění uživatelům v přihlášení k síti.
 
 - **Omezení únavy výstrah**. Vytvořte seznamy povolených pro potlačení výstrah ze skupiny uživatelů, jako jsou uživatelé z autorizovaných IP adres, které provádějí úlohy, které by obvykle aktivovaly výstrahu, a zabraňují nedovoleným událostem v zobrazování výstrah.
 

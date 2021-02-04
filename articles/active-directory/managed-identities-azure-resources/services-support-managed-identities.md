@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 520d572478074a86c9b5cececacd34d7cd41539d
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 31ca126c75d5c2e3fa7fd91f3398202fad418183
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071609"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555606"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity prostředků Azure
 
@@ -307,8 +307,8 @@ Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti A
 
 |Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Preview | ![K dispozici][check] |
-| Přiřazená uživatelem | ![K dispozici][check] | ![K dispozici][check] | Preview | ![K dispozici][check] |
+| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] |
+| Přiřazená uživatelem | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure Virtual Machine Scale Sets (v oblastech, kde je dostupná), podívejte se na následující seznam:
 
@@ -324,8 +324,8 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Virtual Machine Scale
 
 | Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Preview | ![K dispozici][check] |
-| Přiřazená uživatelem | ![K dispozici][check] | ![K dispozici][check] | Preview | ![K dispozici][check] |
+| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] |
+| Přiřazená uživatelem | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] | ![K dispozici][check] |
 
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure Virtual Machines (v oblastech, kde je dostupná), podívejte se na následující seznam:
 

@@ -2,31 +2,21 @@
 title: Převést šablonu portálu na specifikaci šablony
 description: Popisuje, jak převést existující šablonu z Galerie Azure Portal na specifikace šablony.
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 02/04/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 8fe02f55348f2cdcabb43e05bb547819d4b51228
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c59275fca1eb3037b48b7293fc9e507df46b7fcb
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98739092"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555937"
 ---
 # <a name="convert-template-gallery-in-portal-to-template-specs"></a>Převést galerii šablon na portálu na specifikace šablon
 
-Azure Portal poskytuje způsob, jak ve svém účtu ukládat šablony Azure Resource Manager (šablony ARM). **Tato funkce je zastaralá.** Chcete-li pokračovat v používání šablon v této galerii, převeďte je na [specifikace šablon](template-specs.md).
+Azure Portal poskytuje způsob, jak ve svém účtu ukládat šablony Azure Resource Manager (šablony ARM). Nicméně [specifikace šablon](template-specs.md) nabízí snazší způsob, jak sdílet šablony s uživateli ve vaší organizaci, a propojit s ostatními šablonami. Tento článek ukazuje, jak převést existující šablony v galerii šablon na specifikace šablon.
 
-Tento článek ukazuje, jak převést existující šablony v galerii šablon na specifikace šablon.
-
-V portálu se funkce, která je zastaralá, nazývá **Templates (Preview)**. Pokud chcete zjistit, jestli máte nějaké šablony k převedení, zobrazte si [galerii šablon na portálu](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Gallery%2Fmyareas%2Fgalleryitems). Tyto šablony mají typ prostředku `Microsoft.Gallery/myareas/galleryitems` .
-
-## <a name="deprecation-of-portal-feature"></a>Vyřazení funkce portálu jako vyřazení
-
-Galerie šablon na portálu je zastaralá od 21. ledna 2021. Můžete ho i nadále používat až do 21. února. Od 22. února na portálu nemůžete vytvářet nové šablony, ale můžete i nadále zobrazovat a nasazovat existující šablony.
-
-22. června, tato funkce se odebere z portálu a všechny operace rozhraní API se zablokují. Z Galerie nebudete moci zobrazit ani nasadit žádné šablony.
-
-Do 22. června byste měli migrovat všechny šablony, které chcete dál používat. K migraci šablon můžete použít jednu z metod uvedených v tomto článku. Po odebrání této funkce budete muset otevřít případ podpory, abyste získali všechny šablony, které jste nemigrovali.
+Pokud chcete zjistit, jestli máte nějaké šablony k převedení, zobrazte si [galerii šablon na portálu](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Gallery%2Fmyareas%2Fgalleryitems). Tyto šablony mají typ prostředku `Microsoft.Gallery/myareas/galleryitems` .
 
 ## <a name="convert-with-powershell-script"></a>Převod pomocí skriptu PowerShellu
 

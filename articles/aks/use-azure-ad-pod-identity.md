@@ -4,16 +4,19 @@ description: Naučte se, jak používat spravované identity pod AAD pod správo
 services: container-service
 ms.topic: article
 ms.date: 12/01/2020
-ms.openlocfilehash: d992c5c5384c04fe39511481550ab7b0ea47069e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 22b7a03a8598aa6e4b7c392567905d467776360c
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217868"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99557362"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Použití identit spravovaných pod Azure Active Directory ve službě Azure Kubernetes (Preview)
 
 Azure Active Directory identity pod správou používají primitivy Kubernetes k přidružení [spravovaných identit k prostředkům][az-managed-identities] a identitám Azure v Azure Active Directory (AAD) s lusky. Správci vytvářejí identity a vazby jako Kubernetes primitiva, které umožňují luskům přístup k prostředkům Azure, které spoléhají na AAD jako na poskytovatele identity.
+
+> [!NOTE]
+> Pokud máte existující instalaci AADPODIDENTITY, musíte odebrat existující instalaci. Povolení této funkce znamená, že není nutná součást MIC.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
