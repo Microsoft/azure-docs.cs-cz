@@ -1,16 +1,16 @@
 ---
 title: Předdefinované definice zásad pro Azure Logic Apps
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Logic Apps. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: reference
 ms.suite: integration
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 66b734e48f69c3caf3abe88f1cacbe4dad7eadca
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: fe343dff39929aaa616c62d0b2b6d0f331e9ffe2
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093161"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560328"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-logic-apps"></a>Azure Policy předdefinované definice pro Azure Logic Apps
 

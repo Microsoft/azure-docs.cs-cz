@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: eafdebc795d5bede7fa52a3562d33c806035697f
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 85f239afd1b9263440abff1f924c12cdb7eeadaa
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704427"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560279"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Jak vytvořit přepisy s lidským popiskem
 
@@ -166,6 +166,10 @@ Tady je několik příkladů normalizace, které se automaticky provedou na pře
 | Frankfurter Ring | Frankfurter Ring         |
 | ¡Eine Frage!     | eine frage               |
 | wir, haben       | wir haben                |
+
+### <a name="text-normalization-for-japanese"></a>Normalizace textu pro japonštinu
+
+V japonštině (ja-JP) existuje maximální délka 90 znaků pro každou větu. Řádky s delšími větami budou zahozeny. Chcete-li přidat delší text, vložte tečku mezi.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 150e1aee38a724a0d52c83219c4d214265be9274
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: dc8044ee72689634a1d4ce3e0e8b1a499404c5ce
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538064"
+ms.locfileid: "99560300"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Pro Azure Machine Learning použít pracovní prostor za bránou firewall
 
@@ -93,6 +93,7 @@ Další informace najdete v tématu [Vytvoření fondu Azure Batch ve virtuáln�
 
     | **Název hostitele** | **Účel** |
     | ---- | ---- |
+    | **graph.windows.net** | Používá Azure Machine Learning výpočetní instance/cluster. |
     | **anaconda.com**</br>**\*. anaconda.com** | Používá se k instalaci výchozích balíčků. |
     | **\*. anaconda.org** | Slouží k získání dat úložiště. |
     | **pypi.org** | Slouží k vypsání závislostí z výchozího indexu, pokud existují, a index není přepsán uživatelským nastavením. Pokud je index přepsán, je nutné také povolte **\* . pythonhosted.org**. |
@@ -145,6 +146,7 @@ Hostitelé v této části vlastní Microsoft a poskytují služby vyžadované 
 | **Vyžaduje se pro** | **Veřejný Azure** | **Azure Government** | **Azure (Čína) 21Vianet** |
 | ----- | ----- | ----- | ----- |
 | Výpočetní cluster/instance | \*. batchai.core.windows.net | \*. batchai.core.usgovcloudapi.net |\*. batchai.ml.azure.cn |
+| Výpočetní cluster/instance | graph.windows.net |  |  |
 | Instance služby Compute | \*. instances.azureml.net | \*. instances.azureml.us | \*. instances.azureml.cn |
 | Instance služby Compute | \*. instances.azureml.ms |  |  |
 

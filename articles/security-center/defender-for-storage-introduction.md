@@ -3,19 +3,18 @@ title: Azure Defender pro úložiště – výhody a funkce
 description: Seznamte se s výhodami a funkcemi Azure Defenderu pro úložiště.
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 02/04/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 42e8a1f4ff06f6ca6af4afd428008ca174823c5f
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: eb1635cec2b0bcf7f2c13101b2aeab25a869dc66
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916417"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99558567"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Úvod do Azure Defenderu pro úložiště
-
 
 **Azure Defender pro úložiště** je vrstva zabezpečení Azure Native, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům úložiště nebo jejich zneužití. Využívá pokročilé možnosti zabezpečení AI a [Microsoft Threat Intelligence](https://go.microsoft.com/fwlink/?linkid=2128684) k poskytování kontextových výstrah a doporučení zabezpečení.
 
@@ -68,7 +67,40 @@ Pokud je podezření, že se jedná o malware, Security Center zobrazí výstrah
 >
 > Službu **Azure Defender můžete povolit pro úložiště** buď na úrovni předplatného, nebo na úrovni prostředků.
 
+## <a name="trigger-a-test-alert-for-azure-defender-for-storage"></a>Aktivovat upozornění testu pro Azure Defender pro úložiště
 
+Pokud chcete otestovat výstrahy zabezpečení z Azure Defenderu pro úložiště ve vašem prostředí, vygenerujte výstrahu "přístup z uzlu pro opuštění příkazu k účtu úložiště" pomocí následujících kroků:
+
+1. Otevřete účet úložiště s povoleným službou Azure Defender pro úložiště.
+1. Z bočního panelu vyberte kontejnery a otevřete existující kontejner nebo vytvořte nový.
+
+    :::image type="content" source="media/defender-for-storage-introduction/opening-storage-container.png" alt-text="Otevření kontejneru objektů BLOB z Azure Storage účtu" lightbox="media/defender-for-storage-introduction/opening-storage-container.png":::
+
+1. Nahrajte do tohoto kontejneru nějaký soubor.
+
+    > [!CAUTION]
+    > Nenahrávat soubor obsahující citlivá data.
+
+1. Pomocí místní nabídky nahraného souboru vyberte "generovat SAS".
+
+    :::image type="content" source="media/defender-for-storage-introduction/generate-sas.png" alt-text="Možnost generovat SAS pro soubor v kontejneru objektů BLOB":::
+
+1. Ponechte výchozí možnosti a vyberte **Generovat token SAS a adresu URL**.
+
+1. Zkopírujte vygenerovanou adresu URL SAS.
+
+1. V místním počítači otevřete prohlížeč pro mandát.
+
+    > [!TIP]
+    > Můžete si stáhnout ze serveru projektu služby [https://www.torproject.org/download/](https://www.torproject.org/download/) .
+
+1. V prohlížeči mandát přejděte na adresu URL SAS.
+
+1. Stáhněte si soubor, který jste nahráli v kroku 3.
+
+    Během dvou hodin obdržíte následující výstrahu zabezpečení z Security Center:
+
+    :::image type="content" source="media/defender-for-storage-introduction/tor-access-alert-storage.png" alt-text="Výstraha zabezpečení týkající se přístupu z uzlu pro ukončení operace":::
 
 ## <a name="next-steps"></a>Další kroky
 

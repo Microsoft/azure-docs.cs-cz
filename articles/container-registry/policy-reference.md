@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Azure Container Registry
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Container Registry. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: reference
 author: dlepow
 ms.author: danlep
 ms.service: container-registry
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 4e554d26e3b0d9898b3bd78c82efcfd8c60a475a
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 3a37458c3c434dd55ce03c2988f5c4df432ab751
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220917"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99559509"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-container-registry"></a>Azure Policy předdefinované definice pro Azure Container Registry
 

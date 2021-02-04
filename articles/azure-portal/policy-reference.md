@@ -1,15 +1,15 @@
 ---
 title: Předdefinované definice zásad pro Azure Portal
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Portal. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 7b151b5b90589b100cae071d949e2f77aa36b1d7
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 3ba033e9f58d41f5ff690152fa2cddb3c6a7eb9e
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99218719"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99558515"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-portal"></a>Azure Policy předdefinované definice pro Azure Portal
 
@@ -17,7 +17,7 @@ Tato stránka je indexem [Azure Policy](../governance/policy/overview.md) integr
 
 Název každé předdefinované definice zásad odkazuje na definici zásady v Azure Portal. Pomocí odkazu ve sloupci **verze** Zobrazte zdroj v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
 
-## <a name="azure-portal"></a>Portál Azure Portal
+## <a name="azure-portal"></a>portál Azure
 
 [!INCLUDE [azure-policy-reference-rp-portal](../../includes/policy/reference/byrp/microsoft.portal.md)]
 

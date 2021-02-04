@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: b5f7f494c9d0969fbf9431d0b552dafa21a5eace
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 38115f18d9b35545912fad97767f38fd3827d626
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705400"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99559990"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Prostředky Azure pro QnA Maker
 
@@ -65,7 +65,7 @@ V následující tabulce jsou uvedeny některé pokyny vysoké úrovně.
 |                            | Správa QnA Maker | App Service | Azure Cognitive Search | Omezení                      |
 | -------------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
 | **Experimentování**        | SKU zdarma             | Úroveň Free   | Úroveň Free    | Publikovat až 2 aktualizací KB velikost, 50 MB  |
-| **Vývojové a testovací prostředí**   | Standardní SKU         | Shared      | Základní        | Publikování až o 14 aktualizací KB velikosti 2 GB    |
+| **Vývojové a testovací prostředí**   | Standardní SKU         | Shared      | Basic        | Publikování až o 14 aktualizací KB velikosti 2 GB    |
 | **Produkční prostředí** | Standardní SKU         | Basic       | Standard     | Publikování až 49 aktualizací KB, velikost 25 GB |
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
@@ -93,7 +93,7 @@ V následující tabulce jsou uvedeny některé pokyny vysoké úrovně.
 |                            |Azure Cognitive Search | Omezení                      |
 | -------------------------- |------------ | -------------------------------- |
 | **Experimentování**        |Úroveň Free    | Publikovat až 2 aktualizací KB velikost, 50 MB  |
-| **Vývojové a testovací prostředí**   |Základní        | Publikování až o 14 aktualizací KB velikosti 2 GB    |
+| **Vývojové a testovací prostředí**   |Basic        | Publikování až o 14 aktualizací KB velikosti 2 GB    |
 | **Produkční prostředí** |Standard     | Publikování až 49 aktualizací KB, velikost 25 GB |
 
 ---
@@ -212,9 +212,9 @@ QnA Maker vytvoří několik prostředků Azure. Pokud chcete snížit úroveň 
 
 |Služba|Sdílení|Důvod|
 |--|--|--|
-|Cognitive Services|X|Není možné podle návrhu|
+|Cognitive Services|×|Není možné podle návrhu|
 |Plán služby App Service|✔|Pevné místo na disku přidělené pro plán App Service. Pokud jiné aplikace sdílející stejný plán App Service používají významné místo na disku, dojde k problémům s instancí App Service Qnamakerem.|
-|App Service|X|Není možné podle návrhu|
+|App Service|×|Není možné podle návrhu|
 |Application Insights|✔|Může být sdíleno|
 |Služba Search|✔|1. `testkb` je rezervovaný název pro službu qnamakerem; nemůže ji použít jiný.<br>2. `synonym-map` pro službu qnamakerem je vyhrazená mapa synonym podle názvu.<br>3. počet publikovaných znalostní báze je omezený na úrovni služby vyhledávání. Pokud jsou dostupné bezplatné indexy, můžou je používat i jiné služby.|
 
@@ -232,22 +232,14 @@ Služba správy QnA Maker se používá jenom pro QnA Maker portál a pro počá
 
 Vaše služba QnA Maker se zabývá dvěma druhy klíčů: **vytváření klíčů** a **klíčů koncových bodů dotazů** , které se používají s modulem runtime hostovaným ve službě App Service.
 
-Pokud hledáte svůj **klíč předplatného**, [terminologie se změnila](#subscription-keys).
-
 Tyto klíče použijte při provádění požadavků na službu prostřednictvím rozhraní API.
 
 ![Správa klíčů](../media/qnamaker-how-to-key-management/key-management.png)
 
 |Název|Umístění|Účel|
 |--|--|--|
-|Vytváření klíče|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Tyto klíče se používají pro přístup k [rozhraním API služby QnA maker Management](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase). Tato rozhraní API umožňují upravovat otázky a odpovědi ve znalostní bázi a publikovat znalostní bázi. Tyto klíče se vytvoří při vytvoření nové služby QnA Maker.<br><br>Tyto klíče najdete na **Cognitive Services** prostředku na stránce **klíče** .|
+|Vytváření a klíč předplatného|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Tyto klíče se používají pro přístup k [rozhraním API služby QnA maker Management](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase). Tato rozhraní API umožňují upravovat otázky a odpovědi ve znalostní bázi a publikovat znalostní bázi. Tyto klíče se vytvoří při vytvoření nové služby QnA Maker.<br><br>Tyto klíče najdete na **Cognitive Services** prostředku na stránce **klíče** .|
 |Klíč koncového bodu dotazu|[Portál QnA Makeru](https://www.qnamaker.ai)|Tyto klíče se používají k dotazování publikovaného koncového bodu znalostní báze, aby se zobrazila odpověď pro otázku uživatele. Tento koncový bod dotazu obvykle používáte v robotovi chatu nebo v kódu klientské aplikace, který se připojuje ke službě QnA Maker. Tyto klíče se vytvoří při publikování QnA Maker znalostní báze Knowledge Base.<br><br>Tyto klíče najdete na stránce **nastavení služby** . Vyhledá tuto stránku v nabídce uživatele v pravém horním rohu stránky v rozevírací nabídce.|
-
-### <a name="subscription-keys"></a>Klíče předplatného
-
-Klíčovým bodem pro vytváření a dotazování podmínek jsou opravné výrazy. Předchozí termín byl **klíč předplatného**. Pokud se vám v dokumentaci k klíčům předplatného zobrazí další dokumentace, jsou ekvivalentní klíčům koncových bodů pro vytváření a dotazování (používá se v modulu runtime).
-
-Musíte znát, k čemu má klíč přístup, správu znalostní báze nebo dotazování znalostní báze, abyste věděli, který klíč potřebujete najít.
 
 ### <a name="recommended-settings-for-network-isolation"></a>Doporučené nastavení pro izolaci sítě
 
@@ -311,22 +303,14 @@ V QnA Maker spravovaném (ve verzi Preview) je Správa i předpovědi služeb sp
 
 Vaše služba QnA Maker spravovaná (ve verzi Preview) se zabývá dvěma druhy klíčů: **vytváření klíčů** a **klíče Azure kognitivní hledání** používané pro přístup ke službě v rámci předplatného zákazníka.
 
-Pokud hledáte svůj **klíč předplatného**, [terminologie se změnila](#subscription-keys).
-
 Tyto klíče použijte při provádění požadavků na službu prostřednictvím rozhraní API.
 
 ![Správa klíčů – Managed Preview](../media/qnamaker-how-to-key-management/qnamaker-v2-key-management.png)
 
 |Název|Umístění|Účel|
 |--|--|--|
-|Vytváření klíče|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Tyto klíče se používají pro přístup k [rozhraním API služby QnA maker Management](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase). Tato rozhraní API umožňují upravovat otázky a odpovědi ve znalostní bázi a publikovat znalostní bázi. Tyto klíče se vytvoří při vytvoření nové služby QnA Maker.<br><br>Tyto klíče najdete na **Cognitive Services** prostředku na stránce **klíče** .|
+|Vytváření a klíč předplatného|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Tyto klíče se používají pro přístup k [rozhraním API služby QnA maker Management](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase). Tato rozhraní API umožňují upravovat otázky a odpovědi ve znalostní bázi a publikovat znalostní bázi. Tyto klíče se vytvoří při vytvoření nové služby QnA Maker.<br><br>Tyto klíče najdete na **Cognitive Services** prostředku na stránce **klíče** .|
 |Klíč správce Azure Kognitivní hledání|[Azure Portal](../../../search/search-security-api-keys.md)|Tyto klíče se používají ke komunikaci se službou Azure vnímání Search nasazenou v předplatném Azure uživatele. Pokud přidružíte vyhledávání rozpoznávání Azure ke službě QnA Maker Managed (Preview), klíč správce se automaticky předává službě QnA Maker. <br><br>Tyto klíče najdete na prostředku **kognitivní hledání Azure** na stránce **klíče** .|
-
-### <a name="subscription-keys"></a>Klíče předplatného
-
-Klíčovým bodem pro vytváření a dotazování podmínek jsou opravné výrazy. Předchozí termín byl **klíč předplatného**. Pokud se vám v dokumentaci k klíčům předplatného zobrazí další dokumentace, jsou ekvivalentní klíčům koncových bodů pro vytváření a dotazování (používá se v modulu runtime).
-
-Musíte znát, k čemu má klíč přístup, správu znalostní báze nebo dotazování znalostní báze, abyste věděli, který klíč potřebujete najít.
 
 ### <a name="recommended-settings-for-network-isolation"></a>Doporučené nastavení pro izolaci sítě 
 

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: e485c2f0a7deeffe68c932688658ef099fec510e
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 97042479419cbc9d634a06e2dcbcccf9c8fde62b
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492751"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560460"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Vytvoření a připojení clusteru služby Azure Kubernetes
 
@@ -210,7 +210,7 @@ Informace o vytvoření clusteru AKS na portálu najdete v tématu [Vytvoření 
 
 **Časový odhad:** Přibližně 5 minut.
 
-Pokud už máte cluster AKS ve svém předplatném Azure a verze 1,17 nebo nižší, můžete ho použít k nasazení image.
+Pokud už máte ve svém předplatném Azure cluster AKS, můžete ho použít v pracovním prostoru.
 
 > [!TIP]
 > Stávající cluster AKS může být v jiné oblasti Azure, než je váš pracovní prostor Azure Machine Learning.

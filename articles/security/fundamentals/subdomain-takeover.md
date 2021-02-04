@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/29/2020
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 7c09a7f6c6a313852fc6212c6190a584ba5f67bd
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7821d94ed032fd0fc52a756766e6a9af7c82cfde
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409888"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99559239"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Zabránit položkám DNS v dangling a vyhnout se převzetí subdomény
 
 Tento článek popisuje běžnou bezpečnostní hrozbu převzetí subdomény a postup, který je proti němu možné zmírnit.
 
 
-## <a name="what-is-subdomain-takeover"></a>Co je převzetí subdomény?
+## <a name="what-is-a-subdomain-takeover"></a>Co je převzetí subdomény?
 
 Převzetí subdomény představují běžnou, vysoce závažnou hrozbu pro organizace, které pravidelně vytvářejí a odstraňují spoustu prostředků. K převzetí subdomény může dojít, když máte [záznam DNS](../../dns/dns-zones-records.md#dns-records) , který odkazuje na prostředek Azure, který je k dispozici. Tyto záznamy DNS se také označují jako položky DNS dangling. Záznamy CNAME jsou pro tuto hrozbu obzvláště zranitelné. Převzetí subdomény umožňují škodlivým objektům actor přesměrovat provoz určený pro doménu organizace na lokalitu, která provádí škodlivou aktivitu.
 
@@ -100,7 +100,7 @@ Nástroj podporuje prostředky Azure uvedené v následující tabulce. Nástroj
 
 
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Spusťte dotaz jako uživatel, který má:
 
@@ -144,6 +144,15 @@ Ujistěte se, že vaše organizace implementovala procesy, které zabrání polo
 
 Některé služby Azure nabízí funkce, které pomáhají při vytváření preventivních opatření a jsou popsané níže. Jiné metody, jak zabránit tomuto problému, se musí navázat v rámci osvědčených postupů nebo standardních provozních postupů vaší organizace.
 
+### <a name="enable-azure-defender-for-app-service"></a>Povolit Azure Defender pro App Service
+
+CWPP (Integrated Cloud Protection Platform) – Azure Defender nabízí řadu plánů pro ochranu vašich prostředků Azure, hybridního a více cloudů a úloh. Azure Security Center
+
+Plán **Azure Defender pro App Service** zahrnuje DANGLING zjišťování DNS. V případě povolení tohoto plánu obdržíte výstrahy zabezpečení, pokud vyřadíte App Service web, ale neodeberete jeho vlastní doménu z registrátora DNS.
+
+Ochrana DNS dangling v Azure Defenderu je dostupná, ať jsou vaše domény spravované pomocí Azure DNS nebo externího registrátora domény a platí pro App Service v systémech Windows i Linux.
+
+Přečtěte si další informace o této a dalších výhodách tohoto plánu Azure Defenderu v části [Úvod do Azure Defenderu pro App Service](../../security-center/defender-for-app-service-introduction.md).
 
 ### <a name="use-azure-dns-alias-records"></a>Použití záznamů aliasů Azure DNS
 
@@ -201,6 +210,8 @@ Pro vývojáře a provozní týmy je často možné spouštět procesy čištěn
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o souvisejících službách a funkcích Azure, které můžete použít k obraně před převzetím subdomény, najdete na následujících stránkách.
+
+- [Povolit Azure Defender pro App Service](../../security-center/defender-for-app-service-introduction.md) – příjem výstrah při zjištění položek DNS v dangling
 
 - [Prevence dangling záznamů DNS pomocí Azure DNS](../../dns/dns-alias.md#prevent-dangling-dns-records)
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 02/04/2021
 ms.author: alexeyo
-ms.openlocfilehash: 51989a9219cdbfebf833c99849dba67c939cf77a
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c9af0cda14261e8eab7f1ecc05c50a289d7ddfdb
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786838"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99559651"
 ---
 # <a name="use-speech-services-through-a-private-endpoint"></a>Použití služby Speech Services prostřednictvím privátního koncového bodu
 
@@ -268,8 +268,6 @@ Pokud plánujete přístup k prostředku pouze pomocí privátního koncového b
              westeurope.prod.vnet.cog.trafficmanager.net
    ```
 
-3. Potvrďte, že IP adresa odpovídá IP adrese vašeho privátního koncového bodu.
-
 > [!NOTE]
 > Přeložená IP adresa odkazuje na koncový bod proxy virtuální sítě, který odesílá síťový provoz do privátního koncového bodu pro prostředek Cognitive Services. Chování se bude lišit u prostředku s vlastním názvem domény, ale *bez* privátních koncových bodů. Podrobnosti najdete v [této části](#dns-configuration) .
 
@@ -293,8 +291,8 @@ Služba Speech Services obsahuje rozhraní REST API pro [Převod řeči na text]
 Převod řeči na text má dvě rozhraní REST API. Každé rozhraní API slouží jiným účelům, používá jiné koncové body a vyžaduje jiný přístup, když ho používáte ve scénáři s povoleným privátním koncovým bodem.
 
 Rozhraní REST API pro text jsou:
-- [Převod řeči na Text REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30), který se používá ke [dávkovému přepisu](batch-transcription.md) a [Custom Speech](custom-speech-overview.md). v 3.0 je [následníkem v 2.0](./migrate-v2-to-v3.md)
-- [Převod řeči na Text REST API pro krátký zvuk](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio), který se používá pro online přepis 
+- [Převod řeči na text REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30), který se používá ke [dávkovému přepisu](batch-transcription.md) a [Custom Speech](custom-speech-overview.md). v 3.0 je [následníkem v 2.0](./migrate-v2-to-v3.md)
+- [Převod řeči na text REST API pro krátký zvuk](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio), který se používá pro online přepis 
 
 Použití REST API řeči na text pro krátké zvuky a REST API převodu textu na řeč ve scénáři privátního koncového bodu je stejné. Odpovídá [případu sady Speech SDK](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk) popsanému dále v tomto článku. 
 
@@ -311,6 +309,10 @@ Toto je ukázková adresa URL požadavku:
 ```http
 https://westeurope.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions
 ```
+
+> [!NOTE]
+> V [tomto článku](sovereign-clouds.md) najdete Azure Government a koncových bodů Azure Čína.
+
 Po povolení vlastní domény pro prostředek řeči (což je nutné pro privátní koncové body) Tento prostředek bude používat následující vzor názvu DNS pro základní REST API koncový bod: <p/>`{your custom name}.cognitiveservices.azure.com`.
 
 To znamená, že v našem příkladu bude název koncového bodu REST API: <p/>`my-private-link-speech.cognitiveservices.azure.com`.
@@ -334,42 +336,35 @@ Po povolení vlastního názvu domény pro prostředek řeči obvykle vyměníte
 - [Cognitive Services místní koncové body](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) pro komunikaci s Cognitive Services REST API k získání autorizačního tokenu
 - Speciální koncové body pro všechny ostatní operace
 
-Podrobný popis speciálních koncových bodů a způsobu, jakým se má jejich adresa URL transformovat pro prostředek řeči privátního koncového bodu, je k dispozici v [této části](#general-principles) o použití se sadou Speech SDK. Stejný princip, který je popsaný pro sadu SDK, platí pro převod řeči na text REST API v 1.0 a převod textu na řeč REST API.
+> [!NOTE]
+> V [tomto článku](sovereign-clouds.md) najdete Azure Government a koncových bodů Azure Čína.
+
+Podrobný popis speciálních koncových bodů a způsobu, jakým se má jejich adresa URL transformovat pro prostředek řeči privátního koncového bodu, je k dispozici v [této části](#construct-endpoint-url) o použití se sadou Speech SDK. Stejný princip, který je popsaný pro sadu SDK, se vztahuje na REST API pro krátké zvuky a převod textu na řeč REST API.
 
 Seznamte se s materiály v podčásti uvedené v předchozím odstavci a podívejte se na následující příklad. Příklad popisuje REST API převodu textu na řeč. Použití REST API řeči na text pro krátký zvuk je plně ekvivalentní.
 
 > [!NOTE]
-> Pokud pro krátké zvuky ve scénářích privátního koncového bodu používáte REST API převodu řeči na text, použijte autorizační token [předaný](rest-speech-to-text.md#request-headers) `Authorization` [hlavičkou](rest-speech-to-text.md#request-headers). Předání klíče předplatného pro rozpoznávání řeči ke speciálnímu koncovému bodu přes `Ocp-Apim-Subscription-Key` hlavičku *nebude* fungovat a vygeneruje se chyba 401.
+> Pokud používáte REST API řeči pro krátké zvuky a text na řeč REST API ve scénářích privátního koncového bodu, použijte klíč předplatného předaný `Ocp-Apim-Subscription-Key` hlavičkou. (Přečtěte si podrobnosti o převodu [řeči na text REST API pro krátké audio](rest-speech-to-text.md#request-headers) a [Převod textu na řeč REST API](rest-text-to-speech.md#request-headers))
+>
+> Pomocí autorizačního tokenu a jeho předáním do zvláštního koncového bodu přes `Authorization` hlavičku budou fungovat *jenom* v případě, že jste povolili možnost přístup **všech sítí** v části **síť** vašeho prostředku řeči. V ostatních případech se `Forbidden` `BadRequest` při pokusu o získání autorizačního tokenu zobrazí buď nebo.
 
 **Příklad použití převodu textu na řeč REST API**
 
 Jako ukázku `my-private-link-speech.cognitiveservices.azure.com` názvu DNS prostředku (vlastní doména) použijeme západní Evropa jako ukázkovou oblast Azure. Vlastní název domény `my-private-link-speech.cognitiveservices.azure.com` v našem příkladu patří do prostředku řeči vytvořeného v západní Evropa oblasti.
 
-Chcete-li získat seznam hlasů podporovaných v dané oblasti, proveďte následující dvě operace:
+Chcete-li získat seznam hlasů podporovaných v dané oblasti, proveďte následující požadavek:
 
-- Získání autorizačního tokenu:
-  ```http
-  https://westeurope.api.cognitive.microsoft.com/sts/v1.0/issuetoken
-  ```
-- Pomocí tokenu Získejte seznam hlasů:
-  ```http
-  https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list
-  ```
-Přečtěte si další podrobnosti o předchozích krocích v [dokumentaci REST API textu na řeč](rest-text-to-speech.md).
+```http
+https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list
+```
+Další podrobnosti najdete [REST API dokumentaci pro převod textu na řeč](rest-text-to-speech.md).
 
-Pro prostředek řeči s povoleným privátním koncovým bodem je potřeba upravit adresy URL koncového bodu pro stejnou operaci. Stejná sekvence bude vypadat takto:
+Pro prostředek řeči s povoleným privátním koncovým bodem je potřeba upravit adresu URL koncového bodu pro stejnou operaci. Stejný požadavek bude vypadat takto:
 
-- Získání autorizačního tokenu:
-  ```http
-  https://my-private-link-speech.cognitiveservices.azure.com/v1.0/issuetoken
-  ```
-  Přečtěte si podrobné vysvětlení v podčásti předchozí [REST API řeči pro text v 3.0](#speech-to-text-rest-api-v30) .
-
-- Pomocí získaného tokenu Získejte seznam hlasů:
-  ```http
-  https://my-private-link-speech.cognitiveservices.azure.com/tts/cognitiveservices/voices/list
-  ```
-  Podrobné vysvětlení najdete v podčásti [Obecné zásady](#general-principles) pro sadu Speech SDK.
+```http
+https://my-private-link-speech.cognitiveservices.azure.com/tts/cognitiveservices/voices/list
+```
+Přečtěte si podrobné vysvětlení v podčásti [Adresa URL koncového bodu konstrukce](#construct-endpoint-url) pro sadu Speech SDK.
 
 #### <a name="speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk"></a>Prostředek řeči s vlastním názvem domény a privátním koncovým bodem: využití sadou Speech SDK
 
@@ -377,9 +372,9 @@ Použití sady Speech SDK s vlastním názvem domény a zdroji řeči s povolen�
 
 `my-private-link-speech.cognitiveservices.azure.com`Pro tuto část použijeme jako ukázkový název DNS prostředku (vlastní doména) pro řeč.
 
-##### <a name="general-principles"></a>Obecné zásady
+##### <a name="construct-endpoint-url"></a>Vytvořit adresu URL koncového bodu
 
-V rámci scénářů sady SDK (stejně jako při REST API scénářích převodu textu na řeč) využívají zdroje řeči vyhrazené regionální koncové body pro různé nabídky služeb. Formát názvu DNS pro tyto koncové body:
+V rámci scénářů sady SDK (stejně jako v případě krátkých zvuků a REST APIch scénářů psaní textu na text REST API) využívají zdroje řeči vyhrazené regionální koncové body pro různé nabídky služeb. Formát názvu DNS pro tyto koncové body:
 
 `{region}.{speech service offering}.speech.microsoft.com`
 
@@ -387,7 +382,7 @@ Příklad názvu DNS:
 
 `westeurope.stt.speech.microsoft.com`
 
-Všechny možné hodnoty oblasti (první prvek názvu DNS) jsou uvedené v [oblastech podporovaných službou Speech](regions.md). Následující tabulka uvádí možné hodnoty pro nabídku služby pro rozpoznávání řeči (druhý prvek názvu DNS):
+Všechny možné hodnoty oblasti (první prvek názvu DNS) jsou uvedené v [oblastech podporovaných službou Speech](regions.md). (Viz [Tento článek](sovereign-clouds.md) pro Azure Government a koncové body Azure Čína.) Následující tabulka uvádí možné hodnoty pro nabídku služby pro rozpoznávání řeči (druhý prvek názvu DNS):
 
 | Hodnota názvu DNS | Nabídka služby pro rozpoznávání řeči                                    |
 |----------------|-------------------------------------------------------------|
@@ -459,7 +454,7 @@ Chcete-li upravit kód, postupujte podle těchto kroků:
 
 2. Vytvoření `SpeechConfig` instance pomocí úplné adresy URL koncového bodu:
 
-   1. Upravte koncový bod, který jste právě určili, jak je popsáno v předchozí části [Obecné principy](#general-principles) .
+   1. Upravte koncový bod, který jste právě určili, jak je popsáno v oddílu [Adresa URL předchozího koncového bodu konstrukce](#construct-endpoint-url) .
 
    1. Změňte způsob vytvoření instance `SpeechConfig` . Pravděpodobně vaše aplikace používá něco podobného:
       ```csharp
@@ -537,70 +532,28 @@ Použití převodu řeči na text REST API v 3.0 je plně stejné jako u [prost�
 
 ##### <a name="speech-to-text-rest-api-for-short-audio-and-text-to-speech-rest-api"></a>REST API řeči na text pro krátký zvuk a převod textu na řeč REST API
 
-V takovém případě použití REST API řeči na text pro krátký zvuk a použití REST API převodu textu na řeč nemá žádné rozdíly od obecného případu, s jednou výjimkou pro REST API převodu řeči na text pro krátký zvuk. (Podívejte se na následující poznámku.) Obě rozhraní API byste měli použít, jak je popsáno v tématu [Převod řeči na text REST API pro krátké zvuky](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) a REST API v dokumentaci pro [Převod textu na řeč](rest-text-to-speech.md) .
+V takovém případě použití REST API řeči na text pro krátký zvuk a použití REST API převodu textu na řeč nemá žádné rozdíly od obecného případu s jednou výjimkou. (Podívejte se na následující poznámku.) Obě rozhraní API byste měli použít, jak je popsáno v tématu [Převod řeči na text REST API pro krátké zvuky](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) a REST API v dokumentaci pro [Převod textu na řeč](rest-text-to-speech.md) .
 
 > [!NOTE]
-> Pokud pro krátké zvuky ve scénářích vlastních domén používáte REST API řeči a text, použijte autorizační token [předaný prostřednictvím](rest-speech-to-text.md#request-headers) `Authorization` [záhlaví](rest-speech-to-text.md#request-headers). Předání klíče předplatného pro rozpoznávání řeči ke speciálnímu koncovému bodu přes `Ocp-Apim-Subscription-Key` hlavičku *nebude* fungovat a vygeneruje se chyba 401.
+> Pokud pro krátké audio a řeč REST API v vlastních scénářích domény používáte REST API pro převod textu na text, použijte klíč předplatného předaný `Ocp-Apim-Subscription-Key` hlavičkou. (Přečtěte si podrobnosti o převodu [řeči na text REST API pro krátké audio](rest-speech-to-text.md#request-headers) a [Převod textu na řeč REST API](rest-text-to-speech.md#request-headers))
+>
+> Pomocí autorizačního tokenu a jeho předáním do zvláštního koncového bodu přes `Authorization` hlavičku budou fungovat *jenom* v případě, že jste povolili možnost přístup **všech sítí** v části **síť** vašeho prostředku řeči. V ostatních případech se `Forbidden` `BadRequest` při pokusu o získání autorizačního tokenu zobrazí buď nebo.
 
 #### <a name="speech-resource-with-a-custom-domain-name-and-without-private-endpoints-usage-with-the-speech-sdk"></a>Prostředek řeči s vlastním názvem domény a bez privátních koncových bodů: použití se sadou Speech SDK
 
-Použití sady Speech SDK s prostředky řeči s vlastním prostředím *bez* privátních koncových bodů vyžaduje kontrolu a nejspíš změny v kódu aplikace. Všimněte si, že tyto změny se liší od velkých a malých písmen s [povoleným prostředkem řeči](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk). Pracujeme na bezproblémové podpoře privátního koncového bodu a vlastních doménových scénářů.
+Použití sady Speech SDK se zdroji řeči s podporou vlastních domén *bez* privátních koncových bodů je stejné jako u obecného případu, jak je popsáno v [dokumentaci k sadě Speech SDK](speech-sdk.md).
 
-`my-private-link-speech.cognitiveservices.azure.com`Pro tuto část použijeme jako ukázkový název DNS prostředku (vlastní doména) pro řeč.
+V případě, že jste změnili kód pro použití s [prostředkem řeči s povoleným privátním koncovým bodem](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk), vezměte v úvahu následující skutečnosti.
 
 V části o [prostředcích řeči s povoleným soukromým koncovým bodem](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk)jsme zjistili, jak určit adresu URL koncového bodu, upravit ji a zajistit, aby fungovala s inicializací instance třídy z koncového bodu/s koncovým bodem `SpeechConfig` .
 
 Pokud se ale pokusíte spustit stejnou aplikaci po odebrání všech privátních koncových bodů (pro odpovídající opětovné zřízení záznamu DNS nějaký čas), zobrazí se vnitřní chyba služby (404). Důvodem je to, že [záznam DNS](#dns-configuration) teď odkazuje na koncový bod místní Cognitive Services místo na proxy virtuální sítě a tady se nenašly cesty URL `/stt/speech/recognition/conversation/cognitiveservices/v1?language=en-US` .
 
-Pokud vrátíte zpět svou aplikaci do standardního vytváření instancí `SpeechConfig` ve stylu následujícího kódu, bude aplikace ukončena s chybou ověřování (401):
+Je nutné vrátit aplikaci zpět do standardního vytváření instancí `SpeechConfig` ve stylu následujícího kódu:
 
 ```csharp
 var config = SpeechConfig.FromSubscription(subscriptionKey, azureRegion);
 ```
-
-##### <a name="modifying-applications"></a>Úprava aplikací
-
-Pokud chcete, aby vaše aplikace používala prostředek řeči s vlastním názvem domény a bez privátních koncových bodů, postupujte podle následujících kroků:
-
-1. Vyžádejte si autorizační token z REST API Cognitive Services. [Tento článek](../authentication.md#authenticate-with-an-authentication-token) ukazuje, jak získat token.
-
-   V adrese URL koncového bodu použijte vlastní název domény. V našem příkladu je tato adresa URL:
-   ```http
-   https://my-private-link-speech.cognitiveservices.azure.com/sts/v1.0/issueToken
-   ```
-   > [!TIP]
-   > Tuto adresu URL najdete v Azure Portal. Na stránce prostředek pro rozpoznávání řeči v části skupina **pro správu prostředků** vyberte **klíče a koncový bod**.
-
-1. Vytvořte `SpeechConfig` instanci pomocí autorizačního tokenu, který jste získali v předchozí části. Předpokládejme, že jsou definované následující proměnné:
-
-   - `token`: autorizační token získaný v předchozí části
-   - `azureRegion`: název [oblasti](regions.md) prostředku pro rozpoznávání řeči (příklad: `westeurope` )
-   - `outError`: (pouze pro případ [cíle C](/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithauthorizationtokenregionerror) )
-
-   Vytvořte `SpeechConfig` instanci takto:
-
-   ```csharp
-   var config = SpeechConfig.FromAuthorizationToken(token, azureRegion);
-   ```
-   ```cpp
-   auto config = SpeechConfig::FromAuthorizationToken(token, azureRegion);
-   ```
-   ```java
-   SpeechConfig config = SpeechConfig.fromAuthorizationToken(token, azureRegion);
-   ```
-   ```python
-   import azure.cognitiveservices.speech as speechsdk
-   speech_config = speechsdk.SpeechConfig(auth_token=token, region=azureRegion)
-   ```
-   ```objectivec
-   SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithAuthorizationToken:token region:azureRegion error:outError];
-   ```
-> [!NOTE]
-> Volající musí ověřit platnost autorizačního tokenu. Než vyprší platnost autorizačního tokenu, volající ho musí aktualizovat voláním tohoto Setter s novým platným tokenem. Vzhledem k tomu, že se konfigurační hodnoty kopírují při vytváření nového nástroje pro rozpoznávání nebo syntetizátoru, nová hodnota tokenu se nebude vztahovat na rozpoznávání nebo syntetizátory, které už byly vytvořeny.
->
-> Pro tyto účely nastavte token autorizace odpovídajícího nástroje pro rozpoznávání nebo syntetizátoru pro aktualizaci tokenu. Pokud token neaktualizujete, v nástroji pro rozpoznávání nebo v syntetizátoru dojde k chybám při provozu.
-
-Po provedení této změny by vaše aplikace měla fungovat s prostředky pro rozpoznávání řeči, které používají vlastní název domény bez privátních koncových bodů.
 
 ## <a name="pricing"></a>Ceny
 
@@ -610,5 +563,5 @@ Podrobnosti o cenách najdete v tématu [ceny za privátní propojení Azure](ht
 
 * [Azure Private Link](../../private-link/private-link-overview.md)
 * [Speech SDK](speech-sdk.md)
-* [Převod řeči na text REST API](rest-speech-to-text.md)
-* [REST API převodu textu na řeč](rest-text-to-speech.md)
+* [Rozhraní REST API pro převod řeči na text](rest-speech-to-text.md)
+* [Rozhraní REST API pro převod textu na řeč](rest-text-to-speech.md)

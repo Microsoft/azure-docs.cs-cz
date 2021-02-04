@@ -261,7 +261,7 @@
         - name: Začínáme s Průzkumníkem služby Storage
           href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Poznámky k verzi Storage Exploreru
-          href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+          href: 'https://github.com/microsoft/AzureStorageExplorer/releases'
         - name: Řešení potíží se Storage Explorerem
           href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Dostupnost Storage Exploreru
