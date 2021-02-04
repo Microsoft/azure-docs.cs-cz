@@ -6,16 +6,16 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 6509425f11b09a2fa5229f9dd68a508241391925
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: e57b3dd31455db245103469874c517fe54479110
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875916"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526903"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>Vysvětlení možností migrace s novějšími výstrahami
 
-Klasické výstrahy jsou [vyřazeny](./monitoring-classic-retirement.md), i když jsou v omezeném rozsahu používány pro prostředky, které ještě nepodporují nové výstrahy. Nové datum bude brzy oznámeno pro migraci zbývajících výstrah, [Azure Government Cloud](../../azure-government/documentation-government-welcome.md)a [Azure Čína 21Vianet](https://docs.azure.cn/).
+Klasické výstrahy jsou [vyřazené](./monitoring-classic-retirement.md) pro uživatele veřejného cloudu, ale i v omezeném počtu použití pro prostředky, které ještě nepodporují nové výstrahy. Nové datum bude brzy oznámeno pro migraci zbývajících výstrah, [Azure Government Cloud](../../azure-government/documentation-government-welcome.md)a [Azure Čína 21Vianet](https://docs.azure.cn/).
 
 Tento článek vysvětluje, jak funguje ruční migrace a dobrovolný migrační nástroj, který se použije k migraci zbývajících pravidel upozornění. Popisuje také nápravná opatření pro některé běžné problémy.
 
@@ -264,4 +264,4 @@ V rámci migrace se vytvoří nové výstrahy metriky a nové skupiny akcí a pa
 ## <a name="next-steps"></a>Další kroky
 
 - [Způsoby použití nástroje pro migraci](alerts-using-migration-tool.md)
-- [Příprava pro migraci](alerts-prepare-migration.md)
+- [Příprava na migraci](alerts-prepare-migration.md)

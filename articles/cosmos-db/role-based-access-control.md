@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: 2a5ec03bcd7d5002f85d32ed63614d277e95cfa0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: db6721754802a3eeda387339498dadb9d25b3685
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943760"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526937"
 ---
 # <a name="azure-role-based-access-control-in-azure-cosmos-db"></a>Řízení přístupu na základě role v Azure v Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,7 +26,8 @@ Níže jsou uvedené předdefinované role podporované nástrojem Azure Cosmos 
 |---------|---------|
 |[Přispěvatel účtu DocumentDB](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Může spravovat účty Azure Cosmos DB.|
 |[Čtečka účtů Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Může číst data Azure Cosmos DB účtu.|
-|[Cosmos – operátor zálohování](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)|Může odeslat žádost o obnovení pro databázi Azure Cosmos nebo kontejner. Nelze získat přístup k žádným datům ani použít Průzkumník dat.|
+|[Cosmos – operátor zálohování](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)| Může odeslat žádost o obnovení pro Azure Portal pro databázi s povoleným pravidelným zálohováním nebo pro kontejner. Může upravit interval zálohování a uchování na Azure Portal. Nelze získat přístup k žádným datům ani použít Průzkumník dat.  |
+| [CosmosRestoreOperator](../role-based-access-control/built-in-roles.md) | Může provést akci obnovení pro účet Azure Cosmos DB s režimem průběžné zálohování.|
 |[Operátor Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Může zřídit účty, databáze a kontejnery služby Azure Cosmos. Nelze získat přístup k žádným datům ani použít Průzkumník dat.|
 
 > [!IMPORTANT]
@@ -36,7 +37,7 @@ Níže jsou uvedené předdefinované role podporované nástrojem Azure Cosmos 
 
 Podokno **řízení přístupu (IAM)** v Azure Portal slouží ke konfiguraci řízení přístupu na základě role Azure v prostředcích Azure Cosmos. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory. Pro jednotlivce a skupiny můžete použít předdefinované role nebo vlastní role. Následující snímek obrazovky ukazuje integraci služby Active Directory (Azure RBAC) pomocí řízení přístupu (IAM) v Azure Portal:
 
-:::image type="content" source="./media/role-based-access-control/database-security-identity-access-management-rbac.png" alt-text="Řízení přístupu (IAM) ve Azure Portal – demonstrace zabezpečení databáze":::
+:::image type="content" source="./media/role-based-access-control/database-security-identity-access-management-rbac.png" alt-text="Řízení přístupu (IAM) ve Azure Portal – demonstruje se zabezpečení databáze.":::
 
 ## <a name="custom-roles"></a>Vlastní role
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: d39e00a80ab167936a749c73867b4343e6ed9d76
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3260787dec4ae26cd6ef7cc3bd562f39db8e3655
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006434"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526971"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Kurz: Konfigurace zpětného zápisu atributu z Azure AD do SAP SuccessFactors
 Cílem tohoto kurzu je Ukázat kroky pro atributy zpětného zápisu z Azure AD do SAP SuccessFactors Employee Central. 
@@ -241,7 +241,7 @@ Tato část popisuje kroky pro
 
 6. Až se aplikace přidá a zobrazí se obrazovka s podrobnostmi aplikace, vyberte **zřizování** .
 
-7. Změnit režim **zřizování** **Mode** na **automaticky**
+7. Změnit režim **zřizování**  na **automaticky**
 
 8. Dokončete část **přihlašovací údaje správce** následujícím způsobem:
 
@@ -282,7 +282,7 @@ V této části nakonfigurujete, jak budou data uživatelů z SuccessFactors do 
    | 3 | 8448 | emailType | Tato hodnota konstanty je hodnota ID SuccessFactors přidružené k obchodnímu e-mailu. Aktualizujte tuto hodnotu tak, aby odpovídala vašemu SuccessFactors prostředí. Postup pro nastavení této hodnoty naleznete v části [načtení konstantní hodnoty pro emailType](#retrieve-constant-value-for-emailtype) . |
    | 4 | true | emailIsPrimary | Tento atribut slouží k nastavení podnikového e-mailu jako primárního v SuccessFactors. Pokud obchodní e-mail není primární, nastavte tento příznak na false. |
    | 5 | userPrincipalName (Hlavní název uživatele) | [custom01 – custom15] | Pomocí **Přidat nové mapování** můžete volitelně napsat userPrincipalName nebo libovolný atribut Azure AD pro vlastní atribut dostupný v objektu uživatele SuccessFactors.  |
-   | 6 | on-Prem-samAccountName | username | Pomocí **Přidat nové mapování** můžete volitelně mapovat místní atribut sAMAccountName na SuccessFactors atribut UserName. |
+   | 6 | V Prem SamAccountName | username | Pomocí **Přidat nové mapování** můžete volitelně mapovat místní atribut sAMAccountName na SuccessFactors atribut UserName. Použijte [Azure AD Connect Sync: rozšíření adresáře](../hybrid/how-to-connect-sync-feature-directory-extensions.md) pro synchronizaci sAMAccountName do Azure AD. Zobrazí se v rozevíracím seznamu zdroj jako *extension_yourTenantGUID_samAccountName* |
    | 7 | Jednotné přihlašování | loginMethod | Pokud je tenant SuccessFactors nastavený pro [částečné jednotné přihlašování](https://apps.support.sap.com/sap/support/knowledge/en/2320766), pak pomocí příkazu přidat nové mapování můžete volitelně nastavit loginMethod na konstantní hodnotu "SSO" nebo "PWD". |
    | 8 | telephoneNumber | businessPhoneNumber | Toto mapování použijte k Flow *telephoneNumber* z Azure AD až SuccessFactors Business/Work telefonního čísla. |
    | 9 | 10605 | businessPhoneType | Tato hodnota konstanty je hodnota ID SuccessFactors přidružená k firemnímu telefonu. Aktualizujte tuto hodnotu tak, aby odpovídala vašemu SuccessFactors prostředí. Postup pro nastavení této hodnoty naleznete v části [načtení konstantní hodnoty pro phoneType](#retrieve-constant-value-for-phonetype) . |

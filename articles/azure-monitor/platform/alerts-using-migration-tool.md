@@ -6,16 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: d7bcf3e5c0b50d3d6eb8f71dc70f0ff064ff3465
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 4f17afc6fb5001b4bbee16fe84697b58d062b292
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536026"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526920"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Migrace pravidel vašich klasických výstrah pomocí nástroje k dobrovolné migraci
 
-Jak [už jsme oznámili](monitoring-classic-retirement.md), klasické výstrahy v Azure monitor jsou vyřazené, i když jsou pořád v omezeném rozsahu použití pro prostředky, které ještě nepodporují nové výstrahy. Nástroj pro migraci byl v Azure Portal k dispozici pro zákazníky, kteří použili pravidla pro klasických výstrah a chtějí spustit migraci sami. V tomto článku se dozvíte, jak používat nástroj pro migraci, který se taky použije pro zbývající výstrahy, které čekají na další oznámení.
+Jak jsme [dřív oznámili](monitoring-classic-retirement.md), klasické výstrahy v Azure monitor jsou vyřazení pro uživatele veřejného cloudu, i když jsou stále v omezeném rozsahu použití pro prostředky, které ještě nepodporují nové výstrahy. Nástroj pro migraci byl v Azure Portal k dispozici pro zákazníky, kteří použili pravidla pro klasických výstrah a chtějí spustit migraci sami. V tomto článku se dozvíte, jak používat nástroj pro migraci, který se taky použije pro zbývající výstrahy, které čekají na další oznámení.
 
 ## <a name="benefits-of-new-alerts"></a>Výhody nových výstrah
 
