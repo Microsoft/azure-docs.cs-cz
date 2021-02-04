@@ -3,14 +3,14 @@ title: Správa modulů ve službě Azure Automation
 description: Tento článek popisuje, jak pomocí modulů PowerShellu povolit rutiny v sadách Runbook a prostředcích DSC v konfiguracích DSC.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 01/25/2021
+ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: d62ed96f86078839e66a4cf2ce71f304de2abf4d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a784127cfd6019629f1c2714d0f36850406c3b9d
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936630"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548763"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Správa modulů ve službě Azure Automation
 
@@ -40,7 +40,11 @@ Toto jsou známá omezení pro izolovaný prostor (sandbox). Doporučeným řeš
 
 ## <a name="default-modules"></a>Výchozí moduly
 
-V následující tabulce jsou uvedeny moduly, které Azure Automation při vytváření účtu Automation standardně naimportovány. Automatizace může importovat novější verze těchto modulů. Nemůžete ale odebrat původní verzi z účtu Automation, a to ani v případě, že odstraníte novější verzi. Všimněte si, že tyto výchozí moduly obsahují několik AzureRM modulů. 
+V následující tabulce jsou uvedeny moduly, které Azure Automation při vytváření účtu Automation standardně naimportovány. Automatizace může importovat novější verze těchto modulů. Nemůžete ale odebrat původní verzi z účtu Automation, a to ani v případě, že odstraníte novější verzi. Všimněte si, že tyto výchozí moduly obsahují několik AzureRM modulů.
+
+Výchozí moduly se označují také jako globální moduly. V Azure Portal bude vlastnost **globálního modulu** **true** při zobrazení modulu, který byl importován při vytvoření účtu.
+
+![Snímek vlastnosti globálního modulu na webu Azure Portal](../media/modules/automation-global-modules.png)
 
 Automatizace neimportuje kořenový klíč AZ Module automaticky do všech nových nebo existujících účtů Automation. Další informace o práci s těmito moduly najdete v tématu [migrace na az modules](#migrate-to-az-modules).
 
@@ -85,7 +89,7 @@ Azure Automation podporuje interní `Orchestrator.AssetManagement.Cmdlets` modul
 >[!NOTE]
 >Interní rutiny jsou dostupné, jenom když spouštíte Runbooky v prostředí Azure izolovaného prostoru (sandbox) nebo ve Windows Hybrid Runbook Worker. 
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |

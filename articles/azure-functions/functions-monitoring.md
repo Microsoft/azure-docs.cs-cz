@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
-ms.openlocfilehash: 6dc3c582466fe0646b0350213947ff2173368bde
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 637f09c5ee52928631b965dfa6caea9368b44991
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936834"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550755"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -88,6 +88,10 @@ Další informace o zápisu protokolů z vašich funkcí najdete v příručce p
 + [JavaScript](functions-reference-node.md#write-trace-output-to-logs) 
 + [PowerShell](functions-reference-powershell.md#logging)
 + [Python](functions-reference-python.md#logging)
+
+## <a name="analyze-data"></a>Analýza dat
+
+Ve výchozím nastavení se data shromážděná z vaší aplikace Function App ukládají do Application Insights. V [Azure Portal](https://portal.azure.com)Application Insights poskytuje rozsáhlou sadu vizualizací dat telemetrie. Můžete přejít k protokolům chyb a událostem a metrikám dotazů. Další informace, včetně základních příkladů jak zobrazit a dotazovat shromážděná data, najdete v tématu [analýza Azure Functions telemetrie v Application Insights](analyze-telemetry-data.md). 
 
 ## <a name="streaming-logs"></a>Protokoly streamování
 

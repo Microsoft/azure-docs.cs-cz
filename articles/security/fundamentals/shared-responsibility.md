@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/16/2019
+ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: 8f16105d6bda1798828bc423ec8a158d49e0cf2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d9d3878c34bd203b6c14b45e1196245ef8524f6
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72518366"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548945"
 ---
 # <a name="shared-responsibility-in-the-cloud"></a>Sdílená odpovědnost v cloudu
 
@@ -50,4 +50,4 @@ Následující diagram znázorňuje tradiční přístup, ve kterém je nesplně
 V rámci cloudového přístupu můžete také využít cloudové možnosti zabezpečení pro zajištění vyšší efektivity a využít cloudovou analýzu ke zlepšení detekce hrozeb a doby odezvy. Díky posunutí zodpovědností poskytovateli cloudu můžou organizace získat větší pokrytí zabezpečení, které jim umožní znovu přidělit prostředky a rozpočet zabezpečení jiným obchodním prioritám.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o rozdělení zodpovědnosti mezi vámi a společností Microsoft v nasazení SaaS, PaaS a IaaS najdete v tématu [sdílené odpovědnosti pro cloud computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).
+Další informace o rozdělení zodpovědnosti mezi vámi a společností Microsoft v nasazení SaaS, PaaS a IaaS najdete v tématu [sdílené odpovědnosti pro cloud computing](https://azure.microsoft.com/resources/shared-responsibility-for-cloud-computing/).

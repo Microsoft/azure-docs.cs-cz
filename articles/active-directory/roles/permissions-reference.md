@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c89bfab6c4914cee26726006e6928eeb14c0686
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: c1c544bd6d3965bc71df2024e66defbdf9443c8f
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538183"
+ms.locfileid: "99550721"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -501,101 +501,106 @@ Následující tabulky popisují specifická oprávnění v Azure Active Directo
 
 Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikových aplikací.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/Application/appProxyAuthentication/Update | Aktualizujte vlastnosti ověřování proxy aplikací u instančních objektů v Azure Active Directory. |
-| Microsoft. Directory/Application/appProxyUrlSettings/Update | Aktualizuje interní a externí adresy URL proxy aplikace v Azure Active Directory. |
-| Microsoft. Directory/Applications/applicationProxy/Read | Načte všechny vlastnosti proxy aplikací. |
-| Microsoft. Directory/Applications/applicationProxy/Update | Aktualizuje všechny vlastnosti proxy aplikací. |
-| Microsoft. Directory/Applications/publikum/Update | Aktualizuje vlastnost Applications. cílová skupina v Azure Active Directory. |
-| Microsoft. Directory/Applications/Authentication/Update | Aktualizuje vlastnost Applications. Authentication v Azure Active Directory. |
-| Microsoft. Directory/Applications/Basic/Update | Aktualizuje základní vlastnosti pro aplikace v Azure Active Directory. |
-| Microsoft. Directory/aplikace/vytvořit | Vytváření aplikací v Azure Active Directory. |
-| Microsoft. Directory/aplikace/přihlašovací údaje/aktualizace | Aktualizuje vlastnost Applications. credentialss v Azure Active Directory. |
-| Microsoft. Directory/aplikace/odstranit | Odstraní aplikace v Azure Active Directory. |
-| Microsoft. Directory/aplikace/vlastníci/aktualizace | Aktualizuje vlastnost Applications. Owners v Azure Active Directory. |
-| Microsoft. Directory/aplikace/oprávnění/aktualizace | Aktualizuje vlastnost Applications. Permissions v Azure Active Directory. |
-| Microsoft. Directory/aplikace/zásady/aktualizace | Aktualizuje vlastnost Applications. policies v Azure Active Directory. |
-| Microsoft. Directory/appRoleAssignments/Create | Vytvořte appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/appRoleAssignments/Read | Přečtěte si appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/appRoleAssignments/Update | Aktualizujte appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/appRoleAssignments/DELETE | Odstraní appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
-| Microsoft. Directory/connectorGroups/allProperties/Read | Číst vlastnosti skupiny konektoru proxy aplikací v Azure Active Directory. |
-| Microsoft. Directory/connectorGroups/allProperties/Update | Aktualizovat vlastnosti skupiny konektorů proxy aplikací v Azure Active Directory. |
-| Microsoft. Directory/connectorGroups/Create | Vytvořte skupiny konektorů proxy aplikací v Azure Active Directory. |
-| Microsoft. Directory/connectorGroups/DELETE | Odstraní skupiny konektorů proxy aplikací v Azure Active Directory. |
-| Microsoft. Directory/Connectors/allProperties/Read | Přečte všechny vlastnosti konektoru proxy aplikací v Azure Active Directory. |
-| Microsoft. Directory/konektory/vytvořit | Vytvořte konektory proxy aplikací v Azure Active Directory. |
-| Microsoft. Directory/policies/applicationConfiguration/Basic/Read | Číst zásady. applicationConfiguration vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/policies/applicationConfiguration/Basic/Update | Aktualizuje vlastnost policies. applicationConfiguration v Azure Active Directory. |
-| Microsoft. Directory/policies/applicationConfiguration/Create | Vytvořte zásady v Azure Active Directory. |
-| Microsoft. Directory/policies/applicationConfiguration/DELETE | Odstraňte zásady v Azure Active Directory. |
-| Microsoft. Directory/policies/applicationConfiguration/Owners/Read | Číst zásady. applicationConfiguration vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/policies/applicationConfiguration/Owners/Update | Aktualizuje vlastnost policies. applicationConfiguration v Azure Active Directory. |
-| Microsoft. Directory/policies/applicationConfiguration/policyAppliedTo/Read | Číst zásady. applicationConfiguration vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Update | Aktualizuje vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/appRoleAssignments/Update | Aktualizuje vlastnost servicePrincipals. appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/publikum/Update | Aktualizuje vlastnost servicePrincipals. cílová skupina v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Authentication/Update | Aktualizuje vlastnost servicePrincipals. Authentication v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Basic/Update | Aktualizuje základní vlastnosti v servicePrincipals v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Create | Vytvořte servicePrincipals v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/přihlašovací údaje/aktualizace | Aktualizuje vlastnost servicePrincipals. credentialss v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/DELETE | Odstraní servicePrincipals v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Owners/Update | Aktualizuje vlastnost servicePrincipals. Owners v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/oprávnění/aktualizace | Aktualizujte vlastnost servicePrincipals. Permissions v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/policies/Update | Aktualizujte vlastnost servicePrincipals. policies v Azure Active Directory. |
-| Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/Application/appProxyAuthentication/Update | Aktualizujte vlastnosti ověřování proxy aplikací u instančních objektů v Azure Active Directory. |
+> | Microsoft. Directory/Application/appProxyUrlSettings/Update | Aktualizuje interní a externí adresy URL proxy aplikace v Azure Active Directory. |
+> | Microsoft. Directory/Applications/applicationProxy/Read | Načte všechny vlastnosti proxy aplikací. |
+> | Microsoft. Directory/Applications/applicationProxy/Update | Aktualizuje všechny vlastnosti proxy aplikací. |
+> | Microsoft. Directory/Applications/publikum/Update | Aktualizuje vlastnost Applications. cílová skupina v Azure Active Directory. |
+> | Microsoft. Directory/Applications/Authentication/Update | Aktualizuje vlastnost Applications. Authentication v Azure Active Directory. |
+> | Microsoft. Directory/Applications/Basic/Update | Aktualizuje základní vlastnosti pro aplikace v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/vytvořit | Vytváření aplikací v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/přihlašovací údaje/aktualizace | Aktualizuje vlastnost Applications. credentialss v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/odstranit | Odstraní aplikace v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/vlastníci/aktualizace | Aktualizuje vlastnost Applications. Owners v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/oprávnění/aktualizace | Aktualizuje vlastnost Applications. Permissions v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/zásady/aktualizace | Aktualizuje vlastnost Applications. policies v Azure Active Directory. |
+> | Microsoft. Directory/appRoleAssignments/Create | Vytvořte appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/appRoleAssignments/Read | Přečtěte si appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/appRoleAssignments/Update | Aktualizujte appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/appRoleAssignments/DELETE | Odstraní appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
+> | Microsoft. Directory/connectorGroups/allProperties/Read | Číst vlastnosti skupiny konektoru proxy aplikací v Azure Active Directory. |
+> | Microsoft. Directory/connectorGroups/allProperties/Update | Aktualizovat vlastnosti skupiny konektorů proxy aplikací v Azure Active Directory. |
+> | Microsoft. Directory/connectorGroups/Create | Vytvořte skupiny konektorů proxy aplikací v Azure Active Directory. |
+> | Microsoft. Directory/connectorGroups/DELETE | Odstraní skupiny konektorů proxy aplikací v Azure Active Directory. |
+> | Microsoft. Directory/Connectors/allProperties/Read | Přečte všechny vlastnosti konektoru proxy aplikací v Azure Active Directory. |
+> | Microsoft. Directory/konektory/vytvořit | Vytvořte konektory proxy aplikací v Azure Active Directory. |
+> | Microsoft. Directory/policies/applicationConfiguration/Basic/Read | Číst zásady. applicationConfiguration vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/policies/applicationConfiguration/Basic/Update | Aktualizuje vlastnost policies. applicationConfiguration v Azure Active Directory. |
+> | Microsoft. Directory/policies/applicationConfiguration/Create | Vytvořte zásady v Azure Active Directory. |
+> | Microsoft. Directory/policies/applicationConfiguration/DELETE | Odstraňte zásady v Azure Active Directory. |
+> | Microsoft. Directory/policies/applicationConfiguration/Owners/Read | Číst zásady. applicationConfiguration vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/policies/applicationConfiguration/Owners/Update | Aktualizuje vlastnost policies. applicationConfiguration v Azure Active Directory. |
+> | Microsoft. Directory/policies/applicationConfiguration/policyAppliedTo/Read | Číst zásady. applicationConfiguration vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Update | Aktualizuje vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/appRoleAssignments/Update | Aktualizuje vlastnost servicePrincipals. appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/publikum/Update | Aktualizuje vlastnost servicePrincipals. cílová skupina v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Authentication/Update | Aktualizuje vlastnost servicePrincipals. Authentication v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Basic/Update | Aktualizuje základní vlastnosti v servicePrincipals v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Create | Vytvořte servicePrincipals v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/přihlašovací údaje/aktualizace | Aktualizuje vlastnost servicePrincipals. credentialss v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/DELETE | Odstraní servicePrincipals v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Owners/Update | Aktualizuje vlastnost servicePrincipals. Owners v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/oprávnění/aktualizace | Aktualizujte vlastnost servicePrincipals. Permissions v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/policies/Update | Aktualizujte vlastnost servicePrincipals. policies v Azure Active Directory. |
+> | Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="application-developer-permissions"></a>Oprávnění pro vývojáře aplikace
 
 Může vytvořit registrace aplikací nezávisle na nastavení uživatelé můžou registrovat aplikace.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/Applications/createAsOwner | Vytváření aplikací v Azure Active Directory. Tvůrce se přidá jako první vlastník a vytvořený objekt se počítá s kvótou vytvořenou pro objekty tvůrce 250. |
-| Microsoft. Directory/appRoleAssignments/createAsOwner | Vytvořte appRoleAssignments v Azure Active Directory. Tvůrce se přidá jako první vlastník a vytvořený objekt se počítá s kvótou vytvořenou pro objekty tvůrce 250. |
-| Microsoft. Directory/oAuth2PermissionGrants/createAsOwner | Vytvořte oAuth2PermissionGrants v Azure Active Directory. Tvůrce se přidá jako první vlastník a vytvořený objekt se počítá s kvótou vytvořenou pro objekty tvůrce 250. |
-| Microsoft. Directory/servicePrincipals/createAsOwner | Vytvořte servicePrincipals v Azure Active Directory. Tvůrce se přidá jako první vlastník a vytvořený objekt se počítá s kvótou vytvořenou pro objekty tvůrce 250. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/Applications/createAsOwner | Vytváření aplikací v Azure Active Directory. Tvůrce se přidá jako první vlastník a vytvořený objekt se počítá s kvótou vytvořenou pro objekty tvůrce 250. |
+> | Microsoft. Directory/appRoleAssignments/createAsOwner | Vytvořte appRoleAssignments v Azure Active Directory. Tvůrce se přidá jako první vlastník a vytvořený objekt se počítá s kvótou vytvořenou pro objekty tvůrce 250. |
+> | Microsoft. Directory/oAuth2PermissionGrants/createAsOwner | Vytvořte oAuth2PermissionGrants v Azure Active Directory. Tvůrce se přidá jako první vlastník a vytvořený objekt se počítá s kvótou vytvořenou pro objekty tvůrce 250. |
+> | Microsoft. Directory/servicePrincipals/createAsOwner | Vytvořte servicePrincipals v Azure Active Directory. Tvůrce se přidá jako první vlastník a vytvořený objekt se počítá s kvótou vytvořenou pro objekty tvůrce 250. |
 
 ### <a name="authentication-administrator-permissions"></a>Oprávnění správce ověřování
 
 Povoleno zobrazení, nastavení a obnovení informací o metodě ověřování pro libovolného uživatele bez oprávnění správce.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/Users/invalidateAllRefreshTokens | Zruší platnost všech tokenů aktualizace uživatele v Azure Active Directory. |
-| Microsoft. Directory/Users/strongAuthentication/Update | Aktualizujte vlastnosti silného ověřování jako informace o přihlašovacích údajích MFA. |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Directory/uživatelé/heslo/aktualizace | Aktualizuje hesla pro všechny uživatele v organizaci Microsoft 365. Další podrobnosti najdete v online dokumentaci. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/Users/invalidateAllRefreshTokens | Zruší platnost všech tokenů aktualizace uživatele v Azure Active Directory. |
+> | Microsoft. Directory/Users/strongAuthentication/Update | Aktualizujte vlastnosti silného ověřování jako informace o přihlašovacích údajích MFA. |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Directory/uživatelé/heslo/aktualizace | Aktualizuje hesla pro všechny uživatele v organizaci Microsoft 365. Další podrobnosti najdete v online dokumentaci. |
 
 ### <a name="attack-payload-author-permissions"></a>Oprávnění autora datové části útoku
 
 Může vytvořit datovou část útoku, kterou může správce nasadit později.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Office 365. protectionCenter/attackSimulator/datové části/allProperties/allTasks | Vytvářejte a spravujte datovou část útoků v simulátoru útoku. |
-| Microsoft. Office 365. protectionCenter/attackSimulator/Reports/allProperties/Read | Přečtěte si sestavy simulace útoků, odpovědí a přidružených školení. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Office 365. protectionCenter/attackSimulator/datové části/allProperties/allTasks | Vytvářejte a spravujte datovou část útoků v simulátoru útoku. |
+> | Microsoft. Office 365. protectionCenter/attackSimulator/Reports/allProperties/Read | Přečtěte si sestavy simulace útoků, odpovědí a přidružených školení. |
 
 ### <a name="attack-simulation-administrator-permissions"></a>Oprávnění správce simulace útoků
 
 Může vytvářet a spravovat všechny aspekty simulace útoků.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Office 365. protectionCenter/attackSimulator/datové části/allProperties/allTasks | Vytvářejte a spravujte datovou část útoků v simulátoru útoku. |
-| Microsoft. Office 365. protectionCenter/attackSimulator/Reports/allProperties/Read | Přečtěte si sestavy simulace útoků, odpovědí a přidružených školení. |
-| Microsoft. Office 365. protectionCenter/attackSimulator/simulace/allProperties/allTasks | Vytváření a Správa šablon simulace útoků v simulátoru útoků. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Office 365. protectionCenter/attackSimulator/datové části/allProperties/allTasks | Vytvářejte a spravujte datovou část útoků v simulátoru útoku. |
+> | Microsoft. Office 365. protectionCenter/attackSimulator/Reports/allProperties/Read | Přečtěte si sestavy simulace útoků, odpovědí a přidružených školení. |
+> | Microsoft. Office 365. protectionCenter/attackSimulator/simulace/allProperties/allTasks | Vytváření a Správa šablon simulace útoků v simulátoru útoků. |
 
 ### <a name="azure-devops-administrator-permissions"></a>Oprávnění správce Azure DevOps
 
@@ -603,12 +608,12 @@ Může spravovat zásady a nastavení organizace Azure DevOps.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu [Popis role](#azure-devops-administrator) výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. devOps/allEntities/allTasks | Přečtěte si a nakonfigurujte Azure DevOps. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. devOps/allEntities/allTasks | Přečtěte si a nakonfigurujte Azure DevOps. |
 
 ### <a name="azure-information-protection-administrator-permissions"></a>Azure Information Protection oprávnění správce
 
@@ -616,33 +621,35 @@ Může spravovat všechny aspekty služby Azure Information Protection.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu [Popis role](#) výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. informationProtection/allEntities/allTasks | Umožňuje spravovat všechny aspekty Azure Information Protection. |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. informationProtection/allEntities/allTasks | Umožňuje spravovat všechny aspekty Azure Information Protection. |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="b2c-ief-keyset-administrator-permissions"></a>B2C IEF, oprávnění správce sady klíčů
 
 Spravujte tajné klíče pro federaci a šifrování v architektuře prostředí identity.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. aad. B2C/trustFramework/-Sets/allTasks | Přečte a nakonfiguruje sady klíčů v Azure Active Directory B2C. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. aad. B2C/trustFramework/-Sets/allTasks | Přečte a nakonfiguruje sady klíčů v Azure Active Directory B2C. |
 
 ### <a name="b2c-ief-policy-administrator-permissions"></a>Oprávnění správce zásad IEF B2C
 
 Vytváření a Správa zásad pro pravidla důvěryhodnosti v architektuře prostředí identity
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. aad. B2C/trustFramework/policies/allTasks | Čtení a konfigurace vlastních zásad v Azure Active Directory B2C. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. aad. B2C/trustFramework/policies/allTasks | Čtení a konfigurace vlastních zásad v Azure Active Directory B2C. |
 
 ### <a name="billing-administrator-permissions"></a>Oprávnění správce fakturace
 
@@ -650,78 +657,80 @@ Může provádět běžné úkoly související s fakturací, jako je aktualizac
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/Organization/Basic/Update | Aktualizuje základní vlastnosti v organizaci v Azure Active Directory. |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Commerce. fakturace/allEntities/allTasks | Spravujte všechny aspekty fakturace. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/Organization/Basic/Update | Aktualizuje základní vlastnosti v organizaci v Azure Active Directory. |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Commerce. fakturace/allEntities/allTasks | Spravujte všechny aspekty fakturace. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
 
 ### <a name="cloud-application-administrator-permissions"></a>Oprávnění správce cloudové aplikace
 
 Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikových aplikací kromě proxy aplikací.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/Applications/publikum/Update | Aktualizuje vlastnost Applications. cílová skupina v Azure Active Directory. |
-| Microsoft. Directory/Applications/Authentication/Update | Aktualizuje vlastnost Applications. Authentication v Azure Active Directory. |
-| Microsoft. Directory/Applications/Basic/Update | Aktualizuje základní vlastnosti pro aplikace v Azure Active Directory. |
-| Microsoft. Directory/aplikace/vytvořit | Vytváření aplikací v Azure Active Directory. |
-| Microsoft. Directory/aplikace/přihlašovací údaje/aktualizace | Aktualizuje vlastnost Applications. credentialss v Azure Active Directory. |
-| Microsoft. Directory/aplikace/odstranit | Odstraní aplikace v Azure Active Directory. |
-| Microsoft. Directory/aplikace/vlastníci/aktualizace | Aktualizuje vlastnost Applications. Owners v Azure Active Directory. |
-| Microsoft. Directory/aplikace/oprávnění/aktualizace | Aktualizuje vlastnost Applications. Permissions v Azure Active Directory. |
-| Microsoft. Directory/aplikace/zásady/aktualizace | Aktualizuje vlastnost Applications. policies v Azure Active Directory. |
-| Microsoft. Directory/appRoleAssignments/Create | Vytvořte appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/appRoleAssignments/Update | Aktualizujte appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/appRoleAssignments/DELETE | Odstraní appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
-| Microsoft. Directory/policies/applicationConfiguration/Create | Vytvořte zásady v Azure Active Directory. |
-| Microsoft. Directory/policies/applicationConfiguration/Basic/Read | Číst zásady. applicationConfiguration vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/policies/applicationConfiguration/Basic/Update | Aktualizuje vlastnost policies. applicationConfiguration v Azure Active Directory. |
-| Microsoft. Directory/policies/applicationConfiguration/DELETE | Odstraňte zásady v Azure Active Directory. |
-| Microsoft. Directory/policies/applicationConfiguration/Owners/Read | Číst zásady. applicationConfiguration vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/policies/applicationConfiguration/Owners/Update | Aktualizuje vlastnost policies. applicationConfiguration v Azure Active Directory. |
-| Microsoft. Directory/policies/applicationConfiguration/policyAppliedTo/Read | Číst zásady. applicationConfiguration vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Update | Aktualizuje vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/appRoleAssignments/Update | Aktualizuje vlastnost servicePrincipals. appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/publikum/Update | Aktualizuje vlastnost servicePrincipals. cílová skupina v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Authentication/Update | Aktualizuje vlastnost servicePrincipals. Authentication v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Basic/Update | Aktualizuje základní vlastnosti v servicePrincipals v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Create | Vytvořte servicePrincipals v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/přihlašovací údaje/aktualizace | Aktualizuje vlastnost servicePrincipals. credentialss v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/DELETE | Odstraní servicePrincipals v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Owners/Update | Aktualizuje vlastnost servicePrincipals. Owners v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/oprávnění/aktualizace | Aktualizujte vlastnost servicePrincipals. Permissions v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/policies/Update | Aktualizujte vlastnost servicePrincipals. policies v Azure Active Directory. |
-| Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/Applications/publikum/Update | Aktualizuje vlastnost Applications. cílová skupina v Azure Active Directory. |
+> | Microsoft. Directory/Applications/Authentication/Update | Aktualizuje vlastnost Applications. Authentication v Azure Active Directory. |
+> | Microsoft. Directory/Applications/Basic/Update | Aktualizuje základní vlastnosti pro aplikace v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/vytvořit | Vytváření aplikací v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/přihlašovací údaje/aktualizace | Aktualizuje vlastnost Applications. credentialss v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/odstranit | Odstraní aplikace v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/vlastníci/aktualizace | Aktualizuje vlastnost Applications. Owners v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/oprávnění/aktualizace | Aktualizuje vlastnost Applications. Permissions v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/zásady/aktualizace | Aktualizuje vlastnost Applications. policies v Azure Active Directory. |
+> | Microsoft. Directory/appRoleAssignments/Create | Vytvořte appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/appRoleAssignments/Update | Aktualizujte appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/appRoleAssignments/DELETE | Odstraní appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
+> | Microsoft. Directory/policies/applicationConfiguration/Create | Vytvořte zásady v Azure Active Directory. |
+> | Microsoft. Directory/policies/applicationConfiguration/Basic/Read | Číst zásady. applicationConfiguration vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/policies/applicationConfiguration/Basic/Update | Aktualizuje vlastnost policies. applicationConfiguration v Azure Active Directory. |
+> | Microsoft. Directory/policies/applicationConfiguration/DELETE | Odstraňte zásady v Azure Active Directory. |
+> | Microsoft. Directory/policies/applicationConfiguration/Owners/Read | Číst zásady. applicationConfiguration vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/policies/applicationConfiguration/Owners/Update | Aktualizuje vlastnost policies. applicationConfiguration v Azure Active Directory. |
+> | Microsoft. Directory/policies/applicationConfiguration/policyAppliedTo/Read | Číst zásady. applicationConfiguration vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Update | Aktualizuje vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/appRoleAssignments/Update | Aktualizuje vlastnost servicePrincipals. appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/publikum/Update | Aktualizuje vlastnost servicePrincipals. cílová skupina v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Authentication/Update | Aktualizuje vlastnost servicePrincipals. Authentication v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Basic/Update | Aktualizuje základní vlastnosti v servicePrincipals v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Create | Vytvořte servicePrincipals v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/přihlašovací údaje/aktualizace | Aktualizuje vlastnost servicePrincipals. credentialss v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/DELETE | Odstraní servicePrincipals v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Owners/Update | Aktualizuje vlastnost servicePrincipals. Owners v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/oprávnění/aktualizace | Aktualizujte vlastnost servicePrincipals. Permissions v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/policies/Update | Aktualizujte vlastnost servicePrincipals. policies v Azure Active Directory. |
+> | Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="cloud-device-administrator-permissions"></a>Oprávnění správce cloudového zařízení
 
 Úplný přístup ke správě zařízení ve službě Azure AD.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
-| Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
-| Microsoft. Directory/Devices/DELETE | Odstraňte zařízení v Azure Active Directory. |
-| Microsoft. Directory/Devices/Disable | Zakáže zařízení v Azure Active Directory. |
-| Microsoft. Directory/Devices/Enable | Povolte zařízení v Azure Active Directory. |
-| Microsoft. Directory/Devices/extensionAttributes/Update | Aktualizujte všechny hodnoty vlastnosti Devices. extensionAttributes v Azure Active Directory. |
-| Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
+> | Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
+> | Microsoft. Directory/Devices/DELETE | Odstraňte zařízení v Azure Active Directory. |
+> | Microsoft. Directory/Devices/Disable | Zakáže zařízení v Azure Active Directory. |
+> | Microsoft. Directory/Devices/Enable | Povolte zařízení v Azure Active Directory. |
+> | Microsoft. Directory/Devices/extensionAttributes/Update | Aktualizujte všechny hodnoty vlastnosti Devices. extensionAttributes v Azure Active Directory. |
+> | Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
 
 ### <a name="global-administrator-permissions"></a>Oprávnění globálního správce
 
@@ -729,71 +738,71 @@ Může spravovat všechny aspekty Azure AD a služeb Microsoftu, které použív
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. aad. cloudAppSecurity/allEntities/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat standardní vlastnosti v Microsoft. aad. cloudAppSecurity. |
-| Microsoft. Directory/administrativeUnits/allProperties/allTasks | Vytvořit a odstranit administrativeUnits a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/Applications/allProperties/allTasks | Vytvářejte a odstraňujte aplikace a čtěte a aktualizujte všechny vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/appRoleAssignments/allProperties/allTasks | Vytvořit a odstranit appRoleAssignments a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
-| Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
-| Microsoft. Directory/Contacts/allProperties/allTasks | Vytváření a odstraňování kontaktů a čtení a aktualizace všech vlastností v Azure Active Directory. |
-| Microsoft. Directory/Contracts/allProperties/allTasks | Vytváření a odstraňování smluv a čtení a aktualizace všech vlastností v Azure Active Directory. |
-| Microsoft. Directory/Devices/allProperties/allTasks | Vytváření a odstraňování zařízení a čtení a aktualizace všech vlastností v Azure Active Directory. |
-| Microsoft. Directory/directoryRoles/allProperties/allTasks | Vytvořit a odstranit directoryRoles a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/directoryRoleTemplates/allProperties/allTasks | Vytvořit a odstranit directoryRoleTemplates a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/domény/allProperties/allTasks | Vytváření a odstraňování domén a čtení a aktualizace všech vlastností v Azure Active Directory. |
-| Microsoft. Directory/entitlementManagement/allProperties/allTasks | Vytvářejte a odstraňujte prostředky a přečtěte si a aktualizujte všechny vlastnosti ve správě nároků ve službě Azure AD. |
-| Microsoft. Directory/Groups/allProperties/allTasks | Vytváření a odstraňování skupin a čtení a aktualizace všech vlastností v Azure Active Directory. |
-| Microsoft. Directory/groupsAssignableToRoles/allProperties/Update | Aktualizujte skupiny s vlastností isAssignableToRole nastavenou na hodnotu true v Azure Active Directory. |
-| Microsoft. Directory/groupsAssignableToRoles/Create | V Azure Active Directory vytvořit skupiny s vlastností isAssignableToRole nastavenou na hodnotu true. |
-| Microsoft. Directory/groupsAssignableToRoles/DELETE | V Azure Active Directory odstraňte skupiny s vlastností isAssignableToRole nastavenou na hodnotu true. |
-| Microsoft. Directory/groupSettings/allProperties/allTasks | Vytvořit a odstranit groupSettings a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/groupSettingTemplates/allProperties/allTasks | Vytvořit a odstranit groupSettingTemplates a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/loginTenantBranding/allProperties/allTasks | Vytvořit a odstranit loginTenantBranding a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/oAuth2PermissionGrants/allProperties/allTasks | Vytvořit a odstranit oAuth2PermissionGrants a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/Organization/allProperties/allTasks | Vytvářejte a odstraňujte organizaci a čtěte a aktualizujte všechny vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/policies/allProperties/allTasks | Vytváření a odstraňování zásad a čtení a aktualizace všech vlastností v Azure Active Directory. |
-| Microsoft. Directory/roleAssignments/allProperties/allTasks | Vytvořit a odstranit roleAssignments a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/roleDefinitions/allProperties/allTasks | Vytvořit a odstranit roleDefinitions a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/scopedRoleMemberships/allProperties/allTasks | Vytvořit a odstranit scopedRoleMemberships a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/serviceAction/activateService | Může provádět akci služby Activateservice v Azure Active Directory |
-| Microsoft. Directory/serviceAction/disableDirectoryFeature | Může provádět akci služby Disabledirectoryfeature v Azure Active Directory |
-| Microsoft. Directory/serviceAction/enableDirectoryFeature | Může provádět akci služby Enabledirectoryfeature v Azure Active Directory |
-| Microsoft. Directory/serviceAction/getAvailableExtentionProperties | Může provádět akci služby Getavailableextentionproperties v Azure Active Directory |
-| Microsoft. Directory/servicePrincipals/allProperties/allTasks | Vytvořit a odstranit servicePrincipals a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
-| Microsoft. Directory/subscribedSkus/allProperties/allTasks | Vytvořit a odstranit subscribedSkus a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/Users/allProperties/allTasks | Umožňuje vytvářet a odstraňovat uživatele a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
-| Microsoft. directorySync/allEntities/allTasks | Provede všechny akce v Azure AD Connect. |
-| Microsoft. aad. identityProtection/allEntities/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat standardní vlastnosti v Microsoft. aad. identityProtection. |
-| Microsoft. aad. privilegedIdentityManagement/allEntities/Read | Načte všechny prostředky v Microsoft. aad. privilegedIdentityManagement. |
-| Microsoft. Azure. advancedThreatProtection/allEntities/Read | Načte všechny prostředky v Microsoft. Azure. advancedThreatProtection. |
-| Microsoft. Azure. informationProtection/allEntities/allTasks | Umožňuje spravovat všechny aspekty Azure Information Protection. |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Commerce. fakturace/allEntities/allTasks | Spravujte všechny aspekty fakturace. |
-| Microsoft. Intune/allEntities/allTasks | Spravujte všechny aspekty Intune. |
-| Microsoft. Office 365. complianceManager/allEntities/allTasks | Správa všech aspektů správce dodržování předpisů pro Office 365 |
-| Microsoft. Office 365. desktopAnalytics/allEntities/allTasks | Spravujte všechny aspekty Desktop Analytics. |
-| Microsoft. Office 365. Exchange/allEntities/allTasks | Spravujte všechny aspekty Exchange Online. |
-| Microsoft. Office 365. bezpečnostní modul/allEntities/allTasks | Správa všech aspektů Office 365 Customer Lockbox |
-| Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
-| Microsoft. Office 365. messageCenter/securityMessages/Read | Přečtěte si securityMessages v Microsoft. Office 365. messageCenter. |
-| Microsoft. Office 365. protectionCenter/allEntities/allTasks | Spravujte všechny aspekty centra ochrany Office 365. |
-| Microsoft. Office 365. securityComplianceCenter/allEntities/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat standardní vlastnosti v Microsoft. Office 365. securityComplianceCenter. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. SharePoint/allEntities/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat standardní vlastnosti v Microsoft. Office 365. SharePoint. |
-| Microsoft. Office 365. skypeForBusiness/allEntities/allTasks | Umožňuje spravovat všechny aspekty Online Skypu pro firmy. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. usageReports/allEntities/Read | Přečtěte si sestavy o využití Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
-| Microsoft. powerApps. dynamics365/allEntities/allTasks | Umožňuje spravovat všechny aspekty Dynamics 365. |
-| Microsoft. powerApps. powerBI/allEntities/allTasks | Umožňuje spravovat všechny aspekty Power BI. |
-| Microsoft. Windows. defenderAdvancedThreatProtection/allEntities/Read | Čtení všech prostředků v Microsoft. Windows. defenderAdvancedThreatProtection. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. aad. cloudAppSecurity/allEntities/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat standardní vlastnosti v Microsoft. aad. cloudAppSecurity. |
+> | Microsoft. Directory/administrativeUnits/allProperties/allTasks | Vytvořit a odstranit administrativeUnits a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/Applications/allProperties/allTasks | Vytvářejte a odstraňujte aplikace a čtěte a aktualizujte všechny vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/appRoleAssignments/allProperties/allTasks | Vytvořit a odstranit appRoleAssignments a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
+> | Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
+> | Microsoft. Directory/Contacts/allProperties/allTasks | Vytváření a odstraňování kontaktů a čtení a aktualizace všech vlastností v Azure Active Directory. |
+> | Microsoft. Directory/Contracts/allProperties/allTasks | Vytváření a odstraňování smluv a čtení a aktualizace všech vlastností v Azure Active Directory. |
+> | Microsoft. Directory/Devices/allProperties/allTasks | Vytváření a odstraňování zařízení a čtení a aktualizace všech vlastností v Azure Active Directory. |
+> | Microsoft. Directory/directoryRoles/allProperties/allTasks | Vytvořit a odstranit directoryRoles a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/directoryRoleTemplates/allProperties/allTasks | Vytvořit a odstranit directoryRoleTemplates a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/domény/allProperties/allTasks | Vytváření a odstraňování domén a čtení a aktualizace všech vlastností v Azure Active Directory. |
+> | Microsoft. Directory/entitlementManagement/allProperties/allTasks | Vytvářejte a odstraňujte prostředky a přečtěte si a aktualizujte všechny vlastnosti ve správě nároků ve službě Azure AD. |
+> | Microsoft. Directory/Groups/allProperties/allTasks | Vytváření a odstraňování skupin a čtení a aktualizace všech vlastností v Azure Active Directory. |
+> | Microsoft. Directory/groupsAssignableToRoles/allProperties/Update | Aktualizujte skupiny s vlastností isAssignableToRole nastavenou na hodnotu true v Azure Active Directory. |
+> | Microsoft. Directory/groupsAssignableToRoles/Create | V Azure Active Directory vytvořit skupiny s vlastností isAssignableToRole nastavenou na hodnotu true. |
+> | Microsoft. Directory/groupsAssignableToRoles/DELETE | V Azure Active Directory odstraňte skupiny s vlastností isAssignableToRole nastavenou na hodnotu true. |
+> | Microsoft. Directory/groupSettings/allProperties/allTasks | Vytvořit a odstranit groupSettings a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/groupSettingTemplates/allProperties/allTasks | Vytvořit a odstranit groupSettingTemplates a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/loginTenantBranding/allProperties/allTasks | Vytvořit a odstranit loginTenantBranding a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/oAuth2PermissionGrants/allProperties/allTasks | Vytvořit a odstranit oAuth2PermissionGrants a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/Organization/allProperties/allTasks | Vytvářejte a odstraňujte organizaci a čtěte a aktualizujte všechny vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/policies/allProperties/allTasks | Vytváření a odstraňování zásad a čtení a aktualizace všech vlastností v Azure Active Directory. |
+> | Microsoft. Directory/roleAssignments/allProperties/allTasks | Vytvořit a odstranit roleAssignments a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/roleDefinitions/allProperties/allTasks | Vytvořit a odstranit roleDefinitions a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/scopedRoleMemberships/allProperties/allTasks | Vytvořit a odstranit scopedRoleMemberships a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/serviceAction/activateService | Může provádět akci služby Activateservice v Azure Active Directory |
+> | Microsoft. Directory/serviceAction/disableDirectoryFeature | Může provádět akci služby Disabledirectoryfeature v Azure Active Directory |
+> | Microsoft. Directory/serviceAction/enableDirectoryFeature | Může provádět akci služby Enabledirectoryfeature v Azure Active Directory |
+> | Microsoft. Directory/serviceAction/getAvailableExtentionProperties | Může provádět akci služby Getavailableextentionproperties v Azure Active Directory |
+> | Microsoft. Directory/servicePrincipals/allProperties/allTasks | Vytvořit a odstranit servicePrincipals a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
+> | Microsoft. Directory/subscribedSkus/allProperties/allTasks | Vytvořit a odstranit subscribedSkus a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/Users/allProperties/allTasks | Umožňuje vytvářet a odstraňovat uživatele a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
+> | Microsoft. directorySync/allEntities/allTasks | Provede všechny akce v Azure AD Connect. |
+> | Microsoft. aad. identityProtection/allEntities/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat standardní vlastnosti v Microsoft. aad. identityProtection. |
+> | Microsoft. aad. privilegedIdentityManagement/allEntities/Read | Načte všechny prostředky v Microsoft. aad. privilegedIdentityManagement. |
+> | Microsoft. Azure. advancedThreatProtection/allEntities/Read | Načte všechny prostředky v Microsoft. Azure. advancedThreatProtection. |
+> | Microsoft. Azure. informationProtection/allEntities/allTasks | Umožňuje spravovat všechny aspekty Azure Information Protection. |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Commerce. fakturace/allEntities/allTasks | Spravujte všechny aspekty fakturace. |
+> | Microsoft. Intune/allEntities/allTasks | Spravujte všechny aspekty Intune. |
+> | Microsoft. Office 365. complianceManager/allEntities/allTasks | Správa všech aspektů správce dodržování předpisů pro Office 365 |
+> | Microsoft. Office 365. desktopAnalytics/allEntities/allTasks | Spravujte všechny aspekty Desktop Analytics. |
+> | Microsoft. Office 365. Exchange/allEntities/allTasks | Spravujte všechny aspekty Exchange Online. |
+> | Microsoft. Office 365. bezpečnostní modul/allEntities/allTasks | Správa všech aspektů Office 365 Customer Lockbox |
+> | Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
+> | Microsoft. Office 365. messageCenter/securityMessages/Read | Přečtěte si securityMessages v Microsoft. Office 365. messageCenter. |
+> | Microsoft. Office 365. protectionCenter/allEntities/allTasks | Spravujte všechny aspekty centra ochrany Office 365. |
+> | Microsoft. Office 365. securityComplianceCenter/allEntities/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat standardní vlastnosti v Microsoft. Office 365. securityComplianceCenter. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. SharePoint/allEntities/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat standardní vlastnosti v Microsoft. Office 365. SharePoint. |
+> | Microsoft. Office 365. skypeForBusiness/allEntities/allTasks | Umožňuje spravovat všechny aspekty Online Skypu pro firmy. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Office 365. usageReports/allEntities/Read | Přečtěte si sestavy o využití Office 365. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. powerApps. dynamics365/allEntities/allTasks | Umožňuje spravovat všechny aspekty Dynamics 365. |
+> | Microsoft. powerApps. powerBI/allEntities/allTasks | Umožňuje spravovat všechny aspekty Power BI. |
+> | Microsoft. Windows. defenderAdvancedThreatProtection/allEntities/Read | Čtení všech prostředků v Microsoft. Windows. defenderAdvancedThreatProtection. |
 
 ### <a name="compliance-administrator-permissions"></a>Oprávnění správce dodržování předpisů
 
@@ -801,18 +810,18 @@ Může číst a spravovat konfiguraci a sestavy dodržování předpisů v Azure
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Directory/entitlementManagement/allProperties/Read | Načte všechny vlastnosti v Azure AD – Správa nároků. |
-| Microsoft. Office 365. complianceManager/allEntities/allTasks | Správa všech aspektů správce dodržování předpisů pro Office 365 |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Directory/entitlementManagement/allProperties/Read | Načte všechny vlastnosti v Azure AD – Správa nároků. |
+> | Microsoft. Office 365. complianceManager/allEntities/allTasks | Správa všech aspektů správce dodržování předpisů pro Office 365 |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="compliance-data-administrator-permissions"></a>Oprávnění správce dat dodržování předpisů
 
@@ -820,34 +829,35 @@ Vytvoří a spravuje obsah dodržování předpisů.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory. cloudAppSecurity/allEntities/allTasks | Čtení a konfigurace Microsoft Cloud App Security. |
-| Microsoft. Azure. informationProtection/allEntities/allTasks | Umožňuje spravovat všechny aspekty Azure Information Protection. |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Office 365. complianceManager/allEntities/allTasks | Správa všech aspektů správce dodržování předpisů pro Office 365 |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory. cloudAppSecurity/allEntities/allTasks | Čtení a konfigurace Microsoft Cloud App Security. |
+> | Microsoft. Azure. informationProtection/allEntities/allTasks | Umožňuje spravovat všechny aspekty Azure Information Protection. |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Office 365. complianceManager/allEntities/allTasks | Správa všech aspektů správce dodržování předpisů pro Office 365 |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="conditional-access-administrator-permissions"></a>Oprávnění správce podmíněného přístupu
 
 Může spravovat funkce podmíněného přístupu.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/policies/conditionalAccess/Basic/Read | Číst zásady. conditionalAccess vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/policies/conditionalAccess/Basic/Update | Aktualizuje vlastnost policies. conditionalAccess v Azure Active Directory. |
-| Microsoft. Directory/policies/conditionalAccess/Create | Vytvořte zásady v Azure Active Directory. |
-| Microsoft. Directory/policies/conditionalAccess/DELETE | Odstraňte zásady v Azure Active Directory. |
-| Microsoft. Directory/policies/conditionalAccess/Owners/Read | Číst zásady. conditionalAccess vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/policies/conditionalAccess/Owners/Update | Aktualizuje vlastnost policies. conditionalAccess v Azure Active Directory. |
-| Microsoft. Directory/policies/conditionalAccess/policiesAppliedTo/Read | Číst zásady. conditionalAccess vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/policies/conditionalAccess/tenantDefault/Update | Aktualizuje vlastnost policies. conditionalAccess v Azure Active Directory. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/policies/conditionalAccess/Basic/Read | Číst zásady. conditionalAccess vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/policies/conditionalAccess/Basic/Update | Aktualizuje vlastnost policies. conditionalAccess v Azure Active Directory. |
+> | Microsoft. Directory/policies/conditionalAccess/Create | Vytvořte zásady v Azure Active Directory. |
+> | Microsoft. Directory/policies/conditionalAccess/DELETE | Odstraňte zásady v Azure Active Directory. |
+> | Microsoft. Directory/policies/conditionalAccess/Owners/Read | Číst zásady. conditionalAccess vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/policies/conditionalAccess/Owners/Update | Aktualizuje vlastnost policies. conditionalAccess v Azure Active Directory. |
+> | Microsoft. Directory/policies/conditionalAccess/policiesAppliedTo/Read | Číst zásady. conditionalAccess vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/policies/conditionalAccess/tenantDefault/Update | Aktualizuje vlastnost policies. conditionalAccess v Azure Active Directory. |
 
 ### <a name="crm-service-administrator-permissions"></a>Oprávnění správce služby CRM
 
@@ -855,17 +865,17 @@ Může spravovat všechny aspekty produktu Dynamics 365.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. powerApps. dynamics365/allEntities/allTasks | Umožňuje spravovat všechny aspekty Dynamics 365. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. powerApps. dynamics365/allEntities/allTasks | Umožňuje spravovat všechny aspekty Dynamics 365. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
 
 ### <a name="customer-lockbox-access-approver-permissions"></a>Oprávnění schvalovatele pro přístup k bezpečnostnímu modulu zákazníka
 
@@ -873,13 +883,13 @@ Může schvalovat žádosti o podporu Microsoftu pro přístup k datům organiza
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
-| Microsoft. Office 365. bezpečnostní modul/allEntities/allTasks | Správa všech aspektů Office 365 Customer Lockbox |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. Office 365. bezpečnostní modul/allEntities/allTasks | Správa všech aspektů Office 365 Customer Lockbox |
 
 ### <a name="desktop-analytics-administrator-permissions"></a>Oprávnění správce pro Desktop Analytics
 
@@ -887,151 +897,155 @@ Může spravovat služby zásad & Desktop Analytics a Office Customization. Pro 
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
-| Microsoft. Office 365. desktopAnalytics/allEntities/allTasks | Spravujte všechny aspekty Desktop Analytics. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. Office 365. desktopAnalytics/allEntities/allTasks | Spravujte všechny aspekty Desktop Analytics. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
 
 ### <a name="device-administrators-permissions"></a>Oprávnění pro správce zařízení
 
 Uživatelé přiřazení k této roli budou přidáni do místní skupiny Administrators na zařízeních připojených k Azure AD.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/groupSettings/Basic/Read | Přečte základní vlastnosti groupSettings v Azure Active Directory. |
-| Microsoft. Directory/groupSettingTemplates/Basic/Read | Přečte základní vlastnosti groupSettingTemplates v Azure Active Directory. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/groupSettings/Basic/Read | Přečte základní vlastnosti groupSettings v Azure Active Directory. |
+> | Microsoft. Directory/groupSettingTemplates/Basic/Read | Přečte základní vlastnosti groupSettingTemplates v Azure Active Directory. |
 
 ### <a name="directory-readers-permissions"></a>Oprávnění čtenáře adresářů
 Může číst základní informace o adresáři. Pro udělení přístupu k aplikacím, které nejsou určené pro uživatele.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/administrativeUnits/Basic/Read | Přečte základní vlastnosti administrativeUnits v Azure Active Directory. |
-| Microsoft. Directory/administrativeUnits/Members/Read | Načte vlastnost administrativeUnits. Members v Azure Active Directory. |
-| Microsoft. Directory/Applications/Basic/Read | Přečte základní vlastnosti aplikací v Azure Active Directory. |
-| Microsoft. Directory/aplikace/vlastníci/čtení | Číst vlastnost Applications. Owners v Azure Active Directory. |
-| Microsoft. Directory/aplikace/zásady/číst | Přečte vlastnost Applications. policies v Azure Active Directory. |
-| Microsoft. Directory/Contacts/Basic/Read | Přečte základní vlastnosti kontaktů v Azure Active Directory. |
-| Microsoft. Directory/Contacts/memberOf/Read | Číst vlastnost Contacts. memberOf v Azure Active Directory. |
-| Microsoft. Directory/Contracts/Basic/Read | Přečte základní vlastnosti smluv v Azure Active Directory. |
-| Microsoft. Directory/zařízení/Basic/číst | Přečte základní vlastnosti na zařízeních v Azure Active Directory. |
-| Microsoft. Directory/zařízení/memberOf/číst | Číst vlastnost Devices. memberOf v Azure Active Directory. |
-| Microsoft. Directory/Devices/registeredOwners/Read | Číst vlastnost Devices. registeredOwners v Azure Active Directory. |
-| Microsoft. Directory/Devices/registeredUsers/Read | Číst vlastnost Devices. registeredUsers v Azure Active Directory. |
-| Microsoft. Directory/directoryRoles/Basic/Read | Přečte základní vlastnosti directoryRoles v Azure Active Directory. |
-| Microsoft. Directory/directoryRoles/eligibleMembers/Read | Číst vlastnost directoryRoles. eligibleMembers v Azure Active Directory. |
-| Microsoft. Directory/directoryRoles/Members/Read | Načte vlastnost directoryRoles. Members v Azure Active Directory. |
-| Microsoft. Directory/domény/Basic/číst | Přečte základní vlastnosti domén v Azure Active Directory. |
-| Microsoft. Directory/Groups/appRoleAssignments/Read | Načte vlastnost groups. appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/Groups/Basic/Read | Přečte základní vlastnosti pro skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/memberOf/Read | Načte vlastnost groups. memberOf v Azure Active Directory. |
-| Microsoft. Directory/Groups/Members/Read | Přečte vlastnost groups. Members v Azure Active Directory. |
-| Microsoft. Directory/Groups/Owners/Read | Číst vlastnost groups. Owners v Azure Active Directory. |
-| Microsoft. Directory/Groups/Settings/Read | Číst vlastnost groups. Settings v Azure Active Directory. |
-| Microsoft. Directory/groupSettings/Basic/Read | Přečte základní vlastnosti groupSettings v Azure Active Directory. |
-| Microsoft. Directory/groupSettingTemplates/Basic/Read | Přečte základní vlastnosti groupSettingTemplates v Azure Active Directory. |
-| Microsoft. Directory/oAuth2PermissionGrants/Basic/Read | Přečte základní vlastnosti oAuth2PermissionGrants v Azure Active Directory. |
-| Microsoft. Directory/Organization/Basic/Read | Přečte základní vlastnosti v organizaci v Azure Active Directory. |
-| Microsoft. Directory/Organization/trustedCAsForPasswordlessAuth/Read | Číst vlastnost Organization. trustedCAsForPasswordlessAuth v Azure Active Directory. |
-| Microsoft. Directory/roleAssignments/Basic/Read | Přečte základní vlastnosti roleAssignments v Azure Active Directory. |
-| Microsoft. Directory/roleDefinitions/Basic/Read | Přečte základní vlastnosti roleDefinitions v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Read | Číst vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/appRoleAssignments/Read | Číst vlastnost servicePrincipals. appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Basic/Read | Přečte základní vlastnosti servicePrincipals v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/memberOf/Read | Načte vlastnost servicePrincipals. memberOf v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/oAuth2PermissionGrants/Basic/Read | Číst vlastnost servicePrincipals. oAuth2PermissionGrants v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/ownedObjects/Read | Číst vlastnost servicePrincipals. ownedObjects v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Owners/Read | Číst vlastnost servicePrincipals. Owners v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/policies/Read | Číst vlastnost servicePrincipals. policies v Azure Active Directory. |
-| Microsoft. Directory/subscribedSkus/Basic/Read | Přečte základní vlastnosti subscribedSkus v Azure Active Directory. |
-| Microsoft. Directory/Users/appRoleAssignments/Read | Číst vlastnost Users. appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/Basic/číst | Číst základní vlastnosti pro uživatele v Azure Active Directory. |
-| Microsoft. Directory/Users/directReports/Read | Číst vlastnost Users. directReports v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/Správce/číst | Umožňuje číst vlastnost Users. Manager v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/memberOf/číst | Číst vlastnost Users. memberOf v Azure Active Directory. |
-| Microsoft. Directory/Users/oAuth2PermissionGrants/Basic/Read | Číst vlastnost Users. oAuth2PermissionGrants v Azure Active Directory. |
-| Microsoft. Directory/Users/ownedDevices/Read | Číst vlastnost Users. ownedDevices v Azure Active Directory. |
-| Microsoft. Directory/Users/ownedObjects/Read | Číst vlastnost Users. ownedObjects v Azure Active Directory. |
-| Microsoft. Directory/Users/registeredDevices/Read | Číst vlastnost Users. registeredDevices v Azure Active Directory. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/administrativeUnits/Basic/Read | Přečte základní vlastnosti administrativeUnits v Azure Active Directory. |
+> | Microsoft. Directory/administrativeUnits/Members/Read | Načte vlastnost administrativeUnits. Members v Azure Active Directory. |
+> | Microsoft. Directory/Applications/Basic/Read | Přečte základní vlastnosti aplikací v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/vlastníci/čtení | Číst vlastnost Applications. Owners v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/zásady/číst | Přečte vlastnost Applications. policies v Azure Active Directory. |
+> | Microsoft. Directory/Contacts/Basic/Read | Přečte základní vlastnosti kontaktů v Azure Active Directory. |
+> | Microsoft. Directory/Contacts/memberOf/Read | Číst vlastnost Contacts. memberOf v Azure Active Directory. |
+> | Microsoft. Directory/Contracts/Basic/Read | Přečte základní vlastnosti smluv v Azure Active Directory. |
+> | Microsoft. Directory/zařízení/Basic/číst | Přečte základní vlastnosti na zařízeních v Azure Active Directory. |
+> | Microsoft. Directory/zařízení/memberOf/číst | Číst vlastnost Devices. memberOf v Azure Active Directory. |
+> | Microsoft. Directory/Devices/registeredOwners/Read | Číst vlastnost Devices. registeredOwners v Azure Active Directory. |
+> | Microsoft. Directory/Devices/registeredUsers/Read | Číst vlastnost Devices. registeredUsers v Azure Active Directory. |
+> | Microsoft. Directory/directoryRoles/Basic/Read | Přečte základní vlastnosti directoryRoles v Azure Active Directory. |
+> | Microsoft. Directory/directoryRoles/eligibleMembers/Read | Číst vlastnost directoryRoles. eligibleMembers v Azure Active Directory. |
+> | Microsoft. Directory/directoryRoles/Members/Read | Načte vlastnost directoryRoles. Members v Azure Active Directory. |
+> | Microsoft. Directory/domény/Basic/číst | Přečte základní vlastnosti domén v Azure Active Directory. |
+> | Microsoft. Directory/Groups/appRoleAssignments/Read | Načte vlastnost groups. appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Basic/Read | Přečte základní vlastnosti pro skupiny v Azure Active Directory. |
+> | Microsoft. Directory/Groups/memberOf/Read | Načte vlastnost groups. memberOf v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Members/Read | Přečte vlastnost groups. Members v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Owners/Read | Číst vlastnost groups. Owners v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Settings/Read | Číst vlastnost groups. Settings v Azure Active Directory. |
+> | Microsoft. Directory/groupSettings/Basic/Read | Přečte základní vlastnosti groupSettings v Azure Active Directory. |
+> | Microsoft. Directory/groupSettingTemplates/Basic/Read | Přečte základní vlastnosti groupSettingTemplates v Azure Active Directory. |
+> | Microsoft. Directory/oAuth2PermissionGrants/Basic/Read | Přečte základní vlastnosti oAuth2PermissionGrants v Azure Active Directory. |
+> | Microsoft. Directory/Organization/Basic/Read | Přečte základní vlastnosti v organizaci v Azure Active Directory. |
+> | Microsoft. Directory/Organization/trustedCAsForPasswordlessAuth/Read | Číst vlastnost Organization. trustedCAsForPasswordlessAuth v Azure Active Directory. |
+> | Microsoft. Directory/roleAssignments/Basic/Read | Přečte základní vlastnosti roleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/roleDefinitions/Basic/Read | Přečte základní vlastnosti roleDefinitions v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Read | Číst vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/appRoleAssignments/Read | Číst vlastnost servicePrincipals. appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Basic/Read | Přečte základní vlastnosti servicePrincipals v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/memberOf/Read | Načte vlastnost servicePrincipals. memberOf v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/oAuth2PermissionGrants/Basic/Read | Číst vlastnost servicePrincipals. oAuth2PermissionGrants v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/ownedObjects/Read | Číst vlastnost servicePrincipals. ownedObjects v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Owners/Read | Číst vlastnost servicePrincipals. Owners v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/policies/Read | Číst vlastnost servicePrincipals. policies v Azure Active Directory. |
+> | Microsoft. Directory/subscribedSkus/Basic/Read | Přečte základní vlastnosti subscribedSkus v Azure Active Directory. |
+> | Microsoft. Directory/Users/appRoleAssignments/Read | Číst vlastnost Users. appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/Basic/číst | Číst základní vlastnosti pro uživatele v Azure Active Directory. |
+> | Microsoft. Directory/Users/directReports/Read | Číst vlastnost Users. directReports v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/Správce/číst | Umožňuje číst vlastnost Users. Manager v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/memberOf/číst | Číst vlastnost Users. memberOf v Azure Active Directory. |
+> | Microsoft. Directory/Users/oAuth2PermissionGrants/Basic/Read | Číst vlastnost Users. oAuth2PermissionGrants v Azure Active Directory. |
+> | Microsoft. Directory/Users/ownedDevices/Read | Číst vlastnost Users. ownedDevices v Azure Active Directory. |
+> | Microsoft. Directory/Users/ownedObjects/Read | Číst vlastnost Users. ownedObjects v Azure Active Directory. |
+> | Microsoft. Directory/Users/registeredDevices/Read | Číst vlastnost Users. registeredDevices v Azure Active Directory. |
 
 ### <a name="directory-synchronization-accounts-permissions"></a>Oprávnění pro účty synchronizace adresářů
 
 Používáno pouze službou Azure AD Connect.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/Organization/dirSync/Update | Aktualizuje vlastnost Organization. dirSync v Azure Active Directory. |
-| Microsoft. Directory/policies/Create | Vytvořte zásady v Azure Active Directory. |
-| Microsoft. Directory/policies/DELETE | Odstraňte zásady v Azure Active Directory. |
-| Microsoft. Directory/policies/Basic/Read | Přečte základní vlastnosti zásad v Azure Active Directory. |
-| Microsoft. Directory/policies/Basic/Update | Aktualizuje základní vlastnosti zásad v Azure Active Directory. |
-| Microsoft. Directory/policies/Owners/Read | Číst vlastnost policies. Owners v Azure Active Directory. |
-| Microsoft. Directory/policies/Owners/Update | V Azure Active Directory vlastnost Update policies. Owners. |
-| Microsoft. Directory/policies/policiesAppliedTo/Read | Číst zásady. policiesAppliedTo vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/policies/tenantDefault/Update | Aktualizuje vlastnost policies. tenantDefault v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Read | Číst vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Update | Aktualizuje vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/appRoleAssignments/Read | Číst vlastnost servicePrincipals. appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/appRoleAssignments/Update | Aktualizuje vlastnost servicePrincipals. appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/publikum/Update | Aktualizuje vlastnost servicePrincipals. cílová skupina v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Authentication/Update | Aktualizuje vlastnost servicePrincipals. Authentication v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Basic/Read | Přečte základní vlastnosti servicePrincipals v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Basic/Update | Aktualizuje základní vlastnosti v servicePrincipals v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Create | Vytvořte servicePrincipals v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/přihlašovací údaje/aktualizace | Aktualizuje vlastnost servicePrincipals. credentialss v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/memberOf/Read | Načte vlastnost servicePrincipals. memberOf v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/oAuth2PermissionGrants/Basic/Read | Číst vlastnost servicePrincipals. oAuth2PermissionGrants v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Owners/Read | Číst vlastnost servicePrincipals. Owners v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Owners/Update | Aktualizuje vlastnost servicePrincipals. Owners v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/ownedObjects/Read | Číst vlastnost servicePrincipals. ownedObjects v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/oprávnění/aktualizace | Aktualizujte vlastnost servicePrincipals. Permissions v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/policies/Read | Číst vlastnost servicePrincipals. policies v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/policies/Update | Aktualizujte vlastnost servicePrincipals. policies v Azure Active Directory. |
-| Microsoft. directorySync/allEntities/allTasks | Provede všechny akce v Azure AD Connect. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/Organization/dirSync/Update | Aktualizuje vlastnost Organization. dirSync v Azure Active Directory. |
+> | Microsoft. Directory/policies/Create | Vytvořte zásady v Azure Active Directory. |
+> | Microsoft. Directory/policies/DELETE | Odstraňte zásady v Azure Active Directory. |
+> | Microsoft. Directory/policies/Basic/Read | Přečte základní vlastnosti zásad v Azure Active Directory. |
+> | Microsoft. Directory/policies/Basic/Update | Aktualizuje základní vlastnosti zásad v Azure Active Directory. |
+> | Microsoft. Directory/policies/Owners/Read | Číst vlastnost policies. Owners v Azure Active Directory. |
+> | Microsoft. Directory/policies/Owners/Update | V Azure Active Directory vlastnost Update policies. Owners. |
+> | Microsoft. Directory/policies/policiesAppliedTo/Read | Číst zásady. policiesAppliedTo vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/policies/tenantDefault/Update | Aktualizuje vlastnost policies. tenantDefault v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Read | Číst vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Update | Aktualizuje vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/appRoleAssignments/Read | Číst vlastnost servicePrincipals. appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/appRoleAssignments/Update | Aktualizuje vlastnost servicePrincipals. appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/publikum/Update | Aktualizuje vlastnost servicePrincipals. cílová skupina v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Authentication/Update | Aktualizuje vlastnost servicePrincipals. Authentication v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Basic/Read | Přečte základní vlastnosti servicePrincipals v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Basic/Update | Aktualizuje základní vlastnosti v servicePrincipals v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Create | Vytvořte servicePrincipals v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/přihlašovací údaje/aktualizace | Aktualizuje vlastnost servicePrincipals. credentialss v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/memberOf/Read | Načte vlastnost servicePrincipals. memberOf v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/oAuth2PermissionGrants/Basic/Read | Číst vlastnost servicePrincipals. oAuth2PermissionGrants v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Owners/Read | Číst vlastnost servicePrincipals. Owners v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Owners/Update | Aktualizuje vlastnost servicePrincipals. Owners v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/ownedObjects/Read | Číst vlastnost servicePrincipals. ownedObjects v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/oprávnění/aktualizace | Aktualizujte vlastnost servicePrincipals. Permissions v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/policies/Read | Číst vlastnost servicePrincipals. policies v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/policies/Update | Aktualizujte vlastnost servicePrincipals. policies v Azure Active Directory. |
+> | Microsoft. directorySync/allEntities/allTasks | Provede všechny akce v Azure AD Connect. |
 
 ### <a name="directory-writers-permissions"></a>Oprávnění k zapisovači adresářů
 
 Může číst & informace o adresáři Basic Write. Pro udělení přístupu k aplikacím, které nejsou určené pro uživatele.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/Groups/appRoleAssignments/Update | Aktualizuje vlastnost groups. appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/Groups/assignLicense | Spravujte licence na skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/Basic/Update | Aktualizuje základní vlastnosti pro skupiny v Azure Active Directory.  |
-| Microsoft. Directory/Groups/klasifikací/Update | Aktualizuje vlastnost klasifikace skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/Create | Vytvořte skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/groupType/Update | Aktualizuje vlastnost groupType skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/Members/Update | Aktualizuje vlastnost groups. Members v Azure Active Directory. |
-| Microsoft. Directory/Groups/Owners/Update | Aktualizuje vlastnost groups. Owners v Azure Active Directory. |
-| Microsoft. Directory/Groups/reprocessLicenseAssignment | Znovu zpracovat přiřazení licencí pro skupinu v Azure Active Directory. |
-| Microsoft. Directory/Groups/securityEnabled/Update | Aktualizuje vlastnost secutiryEnabled skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/Settings/Update | Aktualizuje vlastnost groups. Settings v Azure Active Directory. |
-| Microsoft. Directory/Groups/Visibility/Update | Aktualizovat vlastnost viditelnosti skupiny |
-| Microsoft. Directory/groupSettings/Basic/Update | Aktualizuje základní vlastnosti v groupSettings v Azure Active Directory. |
-| Microsoft. Directory/groupSettings/Create | Vytvořit groupSettings v Azure Active Directory.. |
-| Microsoft. Directory/groupSettings/DELETE | Odstraní groupSettings v Azure Active Directory. |
-| Microsoft. Directory/oAuth2PermissionGrants/Basic/Update | Aktualizuje základní vlastnosti oAuth2PermissionGrants v Azure Active Directory. |
-| Microsoft. Directory/oAuth2PermissionGrants/Create | Vytvořte oAuth2PermissionGrants v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/synchronizationCredentials/Manage | Správa tajných klíčů a přihlašovacích údajů pro zřizování aplikací |
-| Microsoft. Directory/servicePrincipals/synchronizationJobs/Manage | Spusťte, restartujte a pozastavte úlohy synchronizace zřizování aplikací. |
-| Microsoft. Directory/servicePrincipals/synchronizationSchema/Manage | Vytváření a správa úloh synchronizace zřizování aplikací a schématu. |
-| Microsoft. Directory/Users/appRoleAssignments/Update | Umožňuje aktualizovat vlastnost Users. appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/Users/assignLicense | Spravujte licence na uživatele v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/Basic/Update | Umožňuje aktualizovat základní vlastnosti pro uživatele v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/vytvořit | Vytvářejte uživatele ve službě Azure Active Directory. |
-| Microsoft. Directory/Users/Disable | Zakáže uživatelský účet v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/povolit | Povolení uživatelského účtu v Azure Active Directory |
-| Microsoft. Directory/Users/invalidateAllRefreshTokens | Zrušení platnosti všech tokenů aktualizace uživatele v Azure Active Directory, vyžadování opětovného ověření uživatelů při příštím přihlášení |
-| Microsoft. Directory/uživatelé/správce/aktualizace | Umožňuje aktualizovat vlastnost Users. Manager v Azure Active Directory. |
-| Microsoft. Directory/Users/reprocessLicenseAssignment | Znovu zpracovat přiřazení licencí pro uživatele v Azure Active Directory. |
-| Microsoft. Directory/Users/userPrincipalName/Update | Aktualizujte vlastnost Users. userPrincipalName v Azure Active Directory. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/Groups/appRoleAssignments/Update | Aktualizuje vlastnost groups. appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/Groups/assignLicense | Spravujte licence na skupiny v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Basic/Update | Aktualizuje základní vlastnosti pro skupiny v Azure Active Directory.  |
+> | Microsoft. Directory/Groups/klasifikací/Update | Aktualizuje vlastnost klasifikace skupiny v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Create | Vytvořte skupiny v Azure Active Directory. |
+> | Microsoft. Directory/Groups/groupType/Update | Aktualizuje vlastnost groupType skupiny v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Members/Update | Aktualizuje vlastnost groups. Members v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Owners/Update | Aktualizuje vlastnost groups. Owners v Azure Active Directory. |
+> | Microsoft. Directory/Groups/reprocessLicenseAssignment | Znovu zpracovat přiřazení licencí pro skupinu v Azure Active Directory. |
+> | Microsoft. Directory/Groups/securityEnabled/Update | Aktualizuje vlastnost secutiryEnabled skupiny v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Settings/Update | Aktualizuje vlastnost groups. Settings v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Visibility/Update | Aktualizovat vlastnost viditelnosti skupiny |
+> | Microsoft. Directory/groupSettings/Basic/Update | Aktualizuje základní vlastnosti v groupSettings v Azure Active Directory. |
+> | Microsoft. Directory/groupSettings/Create | Vytvořit groupSettings v Azure Active Directory.. |
+> | Microsoft. Directory/groupSettings/DELETE | Odstraní groupSettings v Azure Active Directory. |
+> | Microsoft. Directory/oAuth2PermissionGrants/Basic/Update | Aktualizuje základní vlastnosti oAuth2PermissionGrants v Azure Active Directory. |
+> | Microsoft. Directory/oAuth2PermissionGrants/Create | Vytvořte oAuth2PermissionGrants v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/synchronizationCredentials/Manage | Správa tajných klíčů a přihlašovacích údajů pro zřizování aplikací |
+> | Microsoft. Directory/servicePrincipals/synchronizationJobs/Manage | Spusťte, restartujte a pozastavte úlohy synchronizace zřizování aplikací. |
+> | Microsoft. Directory/servicePrincipals/synchronizationSchema/Manage | Vytváření a správa úloh synchronizace zřizování aplikací a schématu. |
+> | Microsoft. Directory/Users/appRoleAssignments/Update | Umožňuje aktualizovat vlastnost Users. appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/Users/assignLicense | Spravujte licence na uživatele v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/Basic/Update | Umožňuje aktualizovat základní vlastnosti pro uživatele v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/vytvořit | Vytvářejte uživatele ve službě Azure Active Directory. |
+> | Microsoft. Directory/Users/Disable | Zakáže uživatelský účet v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/povolit | Povolení uživatelského účtu v Azure Active Directory |
+> | Microsoft. Directory/Users/invalidateAllRefreshTokens | Zrušení platnosti všech tokenů aktualizace uživatele v Azure Active Directory, vyžadování opětovného ověření uživatelů při příštím přihlášení |
+> | Microsoft. Directory/uživatelé/správce/aktualizace | Umožňuje aktualizovat vlastnost Users. Manager v Azure Active Directory. |
+> | Microsoft. Directory/Users/reprocessLicenseAssignment | Znovu zpracovat přiřazení licencí pro uživatele v Azure Active Directory. |
+> | Microsoft. Directory/Users/userPrincipalName/Update | Aktualizujte vlastnost Users. userPrincipalName v Azure Active Directory. |
 
 ### <a name="exchange-service-administrator-permissions"></a>Oprávnění správce služby Exchange
 
@@ -1039,239 +1053,248 @@ Může spravovat všechny aspekty produktu Exchange.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Directory/Groups/hiddenMembers/Read | Čtení skrytých členů skupiny |
-| Microsoft. Directory/groups. Unified/Basic/Update | Aktualizuje základní vlastnosti Microsoft 365 skupin. |
-| Microsoft. Directory/groups. Unified/Create | Vytvořte Microsoft 365 skupiny. |
-| Microsoft. Directory/groups. Unified/DELETE | Odstraní Microsoft 365 skupiny. |
-| Microsoft. Directory/groups. Unified/Restore | Obnovit Microsoft 365 skupiny |
-| Microsoft. Directory/groups. Unified/Members/Update | Aktualizuje členství Microsoft 365ch skupin. |
-| Microsoft. Directory/groups. Unified/Owners/Update | Aktualizuje vlastnictví skupin Microsoft 365. |
-| Microsoft. Office 365. Exchange/allEntities/allTasks | Spravujte všechny aspekty Exchange Online. |
-| Microsoft. Office 365. Network/Performance/allProperties/Read | Přečtěte si stránky o výkonu sítě v centru pro správu Microsoft 365. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. usageReports/allEntities/allProperties/Read | Přečtěte si sestavy o využití Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Directory/Groups/hiddenMembers/Read | Čtení skrytých členů skupiny |
+> | Microsoft. Directory/groups. Unified/Basic/Update | Aktualizuje základní vlastnosti Microsoft 365 skupin. |
+> | Microsoft. Directory/groups. Unified/Create | Vytvořte Microsoft 365 skupiny. |
+> | Microsoft. Directory/groups. Unified/DELETE | Odstraní Microsoft 365 skupiny. |
+> | Microsoft. Directory/groups. Unified/Restore | Obnovit Microsoft 365 skupiny |
+> | Microsoft. Directory/groups. Unified/Members/Update | Aktualizuje členství Microsoft 365ch skupin. |
+> | Microsoft. Directory/groups. Unified/Owners/Update | Aktualizuje vlastnictví skupin Microsoft 365. |
+> | Microsoft. Office 365. Exchange/allEntities/allTasks | Spravujte všechny aspekty Exchange Online. |
+> | Microsoft. Office 365. Network/Performance/allProperties/Read | Přečtěte si stránky o výkonu sítě v centru pro správu Microsoft 365. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Office 365. usageReports/allEntities/allProperties/Read | Přečtěte si sestavy o využití Office 365. |
+> | Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="external-id-user-flow-administrator-permissions"></a>Oprávnění správce toku externích ID uživatele
 
 Vytvářejte a spravujte všechny aspekty toků uživatelů.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. aad. B2C/userFlows/allTasks | Čtení a konfigurace toků uživatelů v Azure Active Directory B2C. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. aad. B2C/userFlows/allTasks | Čtení a konfigurace toků uživatelů v Azure Active Directory B2C. |
 
 ### <a name="external-id-user-flow-attribute-administrator-permissions"></a>Oprávnění správce atributu toku uživatele externího ID
 
 Vytvořte a spravujte schéma atributů dostupné pro všechny toky uživatelů.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. aad. B2C/userAttributes/allTasks | Čtení a konfigurace uživatelských atributů v Azure Active Directory B2C. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. aad. B2C/userAttributes/allTasks | Čtení a konfigurace uživatelských atributů v Azure Active Directory B2C. |
 
 ### <a name="external-identity-provider-administrator-permissions"></a>Oprávnění správce externího zprostředkovatele identity
 
 Nakonfigurujte zprostředkovatele identity pro použití v přímé federaci.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. aad. B2C/identityProviders/allTasks | Číst a konfigurovat zprostředkovatele identity v Azure Active Directory B2C. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. aad. B2C/identityProviders/allTasks | Číst a konfigurovat zprostředkovatele identity v Azure Active Directory B2C. |
 
 ### <a name="global-reader-permissions"></a>Oprávnění pro globální čtenáře
 Může číst vše, co globální správce může, ale ne nic upravovat.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu [Popis role](#global-reader) výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Commerce. fakturace/allEntities/čtení    | Přečtěte si všechny aspekty fakturace. |
-| Microsoft. Directory/administrativeUnits/Basic/Read    | Přečte základní vlastnosti administrativeUnits v Azure Active Directory. |
-| Microsoft. Directory/administrativeUnits/Members/Read    | Načte vlastnost administrativeUnits. Members v Azure Active Directory. |
-| Microsoft. Directory/Applications/Basic/Read    | Přečte základní vlastnosti aplikací v Azure Active Directory. |
-| Microsoft. Directory/aplikace/vlastníci/čtení    | Číst vlastnost Applications. Owners v Azure Active Directory. |
-| Microsoft. Directory/aplikace/zásady/číst    | Přečte vlastnost Applications. policies v Azure Active Directory. |
-| Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
-| Microsoft. Directory/Contacts/Basic/Read    | Přečte základní vlastnosti kontaktů v Azure Active Directory. |
-| Microsoft. Directory/Contacts/memberOf/Read    | Číst vlastnost Contacts. memberOf v Azure Active Directory. |
-| Microsoft. Directory/Contracts/Basic/Read    | Přečte základní vlastnosti smluv v Azure Active Directory. |
-| Microsoft. Directory/zařízení/Basic/číst    | Přečte základní vlastnosti na zařízeních v Azure Active Directory. |
-| Microsoft. Directory/zařízení/memberOf/číst    | Číst vlastnost Devices. memberOf v Azure Active Directory. |
-| Microsoft. Directory/Devices/registeredOwners/Read    | Číst vlastnost Devices. registeredOwners v Azure Active Directory. |
-| Microsoft. Directory/Devices/registeredUsers/Read    | Číst vlastnost Devices. registeredUsers v Azure Active Directory. |
-| Microsoft. Directory/directoryRoles/Basic/Read    | Přečte základní vlastnosti directoryRoles v Azure Active Directory. |
-| Microsoft. Directory/directoryRoles/eligibleMembers/Read    | Číst vlastnost directoryRoles. eligibleMembers v Azure Active Directory. |
-| Microsoft. Directory/directoryRoles/Members/Read    | Načte vlastnost directoryRoles. Members v Azure Active Directory. |
-| Microsoft. Directory/domény/Basic/číst    | Přečte základní vlastnosti domén v Azure Active Directory. |
-| Microsoft. Directory/entitlementManagement/allProperties/Read | Načte všechny vlastnosti v Azure AD – Správa nároků. |
-| Microsoft. Directory/Groups/appRoleAssignments/Read    | Načte vlastnost groups. appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/Groups/Basic/Read    | Přečte základní vlastnosti pro skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/hiddenMembers/Read    | Načte vlastnost groups. hiddenMembers v Azure Active Directory. |
-| Microsoft. Directory/Groups/memberOf/Read    | Načte vlastnost groups. memberOf v Azure Active Directory. |
-| Microsoft. Directory/Groups/Members/Read    | Přečte vlastnost groups. Members v Azure Active Directory. |
-| Microsoft. Directory/Groups/Owners/Read    | Číst vlastnost groups. Owners v Azure Active Directory. |
-| Microsoft. Directory/Groups/Settings/Read    | Číst vlastnost groups. Settings v Azure Active Directory. |
-| Microsoft. Directory/groupSettings/Basic/Read    | Přečte základní vlastnosti groupSettings v Azure Active Directory. |
-| Microsoft. Directory/groupSettingTemplates/Basic/Read    | Přečte základní vlastnosti groupSettingTemplates v Azure Active Directory. |
-| Microsoft. Directory/oAuth2PermissionGrants/Basic/Read    | Přečte základní vlastnosti oAuth2PermissionGrants v Azure Active Directory. |
-| Microsoft. Directory/Organization/Basic/Read    | Přečte základní vlastnosti v organizaci v Azure Active Directory. |
-| Microsoft. Directory/Organization/trustedCAsForPasswordlessAuth/Read    | Číst vlastnost Organization. trustedCAsForPasswordlessAuth v Azure Active Directory. |
-| Microsoft. Directory/policies/Standard/Read    | Číst standardní zásady v Azure Active Directory. |
-| Microsoft. Directory/roleAssignments/Basic/Read    | Přečte základní vlastnosti roleAssignments v Azure Active Directory. |
-| Microsoft. Directory/roleDefinitions/Basic/Read    | Přečte základní vlastnosti roleDefinitions v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Read    | Číst vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/appRoleAssignments/Read    | Číst vlastnost servicePrincipals. appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Basic/Read    | Přečte základní vlastnosti servicePrincipals v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/memberOf/Read    | Načte vlastnost servicePrincipals. memberOf v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/oAuth2PermissionGrants/Basic/Read    | Číst vlastnost servicePrincipals. oAuth2PermissionGrants v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/ownedObjects/Read    | Číst vlastnost servicePrincipals. ownedObjects v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Owners/Read    | Číst vlastnost servicePrincipals. Owners v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/policies/Read    | Číst vlastnost servicePrincipals. policies v Azure Active Directory. |
-| Microsoft. Directory/signInReports/allProperties/Read    | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
-| Microsoft. Directory/subscribedSkus/Basic/Read    | Přečte základní vlastnosti subscribedSkus v Azure Active Directory. |
-| Microsoft. Directory/Users/appRoleAssignments/Read    | Číst vlastnost Users. appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/Basic/číst    | Číst základní vlastnosti pro uživatele v Azure Active Directory. |
-| Microsoft. Directory/Users/directReports/Read    | Číst vlastnost Users. directReports v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/Správce/číst    | Umožňuje číst vlastnost Users. Manager v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/memberOf/číst    | Číst vlastnost Users. memberOf v Azure Active Directory. |
-| Microsoft. Directory/Users/oAuth2PermissionGrants/Basic/Read    | Číst vlastnost Users. oAuth2PermissionGrants v Azure Active Directory. |
-| Microsoft. Directory/Users/ownedDevices/Read    | Číst vlastnost Users. ownedDevices v Azure Active Directory. |
-| Microsoft. Directory/Users/ownedObjects/Read    | Číst vlastnost Users. ownedObjects v Azure Active Directory. |
-| Microsoft. Directory/Users/registeredDevices/Read    | Číst vlastnost Users. registeredDevices v Azure Active Directory. |
-| Microsoft. Directory/Users/strongAuthentication/Read    | Přečtěte si vlastnosti silného ověřování, jako jsou přihlašovací údaje MFA. |
-| Microsoft. Office 365. Exchange/allEntities/Read    | Přečtěte si všechny aspekty Exchange Online. |
-| Microsoft. Office 365. messageCenter/Messages/Read    | Přečte zprávy v Microsoft. Office 365. messageCenter. |
-| Microsoft. Office 365. messageCenter/securityMessages/Read    | Přečtěte si securityMessages v Microsoft. Office 365. messageCenter. |
-| Microsoft. Office 365. Network/Performance/allProperties/Read | Přečtěte si stránky o výkonu sítě v centru pro správu Microsoft 365. |
-| Microsoft. Office 365. protectionCenter/allEntities/Read    | Přečtěte si všechny aspekty centra ochrany Office 365. |
-| Microsoft. Office 365. securityComplianceCenter/allEntities/Read    | Načte všechny standardní vlastnosti v Microsoft. Office 365. securityComplianceCenter. |
-| Microsoft. Office 365. usageReports/allEntities/Read    | Přečtěte si sestavy o využití Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Standard/Read    | Načte standardní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Commerce. fakturace/allEntities/čtení    | Přečtěte si všechny aspekty fakturace. |
+> | Microsoft. Directory/administrativeUnits/Basic/Read    | Přečte základní vlastnosti administrativeUnits v Azure Active Directory. |
+> | Microsoft. Directory/administrativeUnits/Members/Read    | Načte vlastnost administrativeUnits. Members v Azure Active Directory. |
+> | Microsoft. Directory/Applications/Basic/Read    | Přečte základní vlastnosti aplikací v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/vlastníci/čtení    | Číst vlastnost Applications. Owners v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/zásady/číst    | Přečte vlastnost Applications. policies v Azure Active Directory. |
+> | Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
+> | Microsoft. Directory/Contacts/Basic/Read    | Přečte základní vlastnosti kontaktů v Azure Active Directory. |
+> | Microsoft. Directory/Contacts/memberOf/Read    | Číst vlastnost Contacts. memberOf v Azure Active Directory. |
+> | Microsoft. Directory/Contracts/Basic/Read    | Přečte základní vlastnosti smluv v Azure Active Directory. |
+> | Microsoft. Directory/zařízení/Basic/číst    | Přečte základní vlastnosti na zařízeních v Azure Active Directory. |
+> | Microsoft. Directory/zařízení/memberOf/číst    | Číst vlastnost Devices. memberOf v Azure Active Directory. |
+> | Microsoft. Directory/Devices/registeredOwners/Read    | Číst vlastnost Devices. registeredOwners v Azure Active Directory. |
+> | Microsoft. Directory/Devices/registeredUsers/Read    | Číst vlastnost Devices. registeredUsers v Azure Active Directory. |
+> | Microsoft. Directory/directoryRoles/Basic/Read    | Přečte základní vlastnosti directoryRoles v Azure Active Directory. |
+> | Microsoft. Directory/directoryRoles/eligibleMembers/Read    | Číst vlastnost directoryRoles. eligibleMembers v Azure Active Directory. |
+> | Microsoft. Directory/directoryRoles/Members/Read    | Načte vlastnost directoryRoles. Members v Azure Active Directory. |
+> | Microsoft. Directory/domény/Basic/číst    | Přečte základní vlastnosti domén v Azure Active Directory. |
+> | Microsoft. Directory/entitlementManagement/allProperties/Read | Načte všechny vlastnosti v Azure AD – Správa nároků. |
+> | Microsoft. Directory/Groups/appRoleAssignments/Read    | Načte vlastnost groups. appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Basic/Read    | Přečte základní vlastnosti pro skupiny v Azure Active Directory. |
+> | Microsoft. Directory/Groups/hiddenMembers/Read    | Načte vlastnost groups. hiddenMembers v Azure Active Directory. |
+> | Microsoft. Directory/Groups/memberOf/Read    | Načte vlastnost groups. memberOf v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Members/Read    | Přečte vlastnost groups. Members v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Owners/Read    | Číst vlastnost groups. Owners v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Settings/Read    | Číst vlastnost groups. Settings v Azure Active Directory. |
+> | Microsoft. Directory/groupSettings/Basic/Read    | Přečte základní vlastnosti groupSettings v Azure Active Directory. |
+> | Microsoft. Directory/groupSettingTemplates/Basic/Read    | Přečte základní vlastnosti groupSettingTemplates v Azure Active Directory. |
+> | Microsoft. Directory/oAuth2PermissionGrants/Basic/Read    | Přečte základní vlastnosti oAuth2PermissionGrants v Azure Active Directory. |
+> | Microsoft. Directory/Organization/Basic/Read    | Přečte základní vlastnosti v organizaci v Azure Active Directory. |
+> | Microsoft. Directory/Organization/trustedCAsForPasswordlessAuth/Read    | Číst vlastnost Organization. trustedCAsForPasswordlessAuth v Azure Active Directory. |
+> | Microsoft. Directory/policies/Standard/Read    | Číst standardní zásady v Azure Active Directory. |
+> | Microsoft. Directory/roleAssignments/Basic/Read    | Přečte základní vlastnosti roleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/roleDefinitions/Basic/Read    | Přečte základní vlastnosti roleDefinitions v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Read    | Číst vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/appRoleAssignments/Read    | Číst vlastnost servicePrincipals. appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Basic/Read    | Přečte základní vlastnosti servicePrincipals v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/memberOf/Read    | Načte vlastnost servicePrincipals. memberOf v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/oAuth2PermissionGrants/Basic/Read    | Číst vlastnost servicePrincipals. oAuth2PermissionGrants v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/ownedObjects/Read    | Číst vlastnost servicePrincipals. ownedObjects v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Owners/Read    | Číst vlastnost servicePrincipals. Owners v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/policies/Read    | Číst vlastnost servicePrincipals. policies v Azure Active Directory. |
+> | Microsoft. Directory/signInReports/allProperties/Read    | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
+> | Microsoft. Directory/subscribedSkus/Basic/Read    | Přečte základní vlastnosti subscribedSkus v Azure Active Directory. |
+> | Microsoft. Directory/Users/appRoleAssignments/Read    | Číst vlastnost Users. appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/Basic/číst    | Číst základní vlastnosti pro uživatele v Azure Active Directory. |
+> | Microsoft. Directory/Users/directReports/Read    | Číst vlastnost Users. directReports v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/Správce/číst    | Umožňuje číst vlastnost Users. Manager v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/memberOf/číst    | Číst vlastnost Users. memberOf v Azure Active Directory. |
+> | Microsoft. Directory/Users/oAuth2PermissionGrants/Basic/Read    | Číst vlastnost Users. oAuth2PermissionGrants v Azure Active Directory. |
+> | Microsoft. Directory/Users/ownedDevices/Read    | Číst vlastnost Users. ownedDevices v Azure Active Directory. |
+> | Microsoft. Directory/Users/ownedObjects/Read    | Číst vlastnost Users. ownedObjects v Azure Active Directory. |
+> | Microsoft. Directory/Users/registeredDevices/Read    | Číst vlastnost Users. registeredDevices v Azure Active Directory. |
+> | Microsoft. Directory/Users/strongAuthentication/Read    | Přečtěte si vlastnosti silného ověřování, jako jsou přihlašovací údaje MFA. |
+> | Microsoft. Office 365. Exchange/allEntities/Read    | Přečtěte si všechny aspekty Exchange Online. |
+> | Microsoft. Office 365. messageCenter/Messages/Read    | Přečte zprávy v Microsoft. Office 365. messageCenter. |
+> | Microsoft. Office 365. messageCenter/securityMessages/Read    | Přečtěte si securityMessages v Microsoft. Office 365. messageCenter. |
+> | Microsoft. Office 365. Network/Performance/allProperties/Read | Přečtěte si stránky o výkonu sítě v centru pro správu Microsoft 365. |
+> | Microsoft. Office 365. protectionCenter/allEntities/Read    | Přečtěte si všechny aspekty centra ochrany Office 365. |
+> | Microsoft. Office 365. securityComplianceCenter/allEntities/Read    | Načte všechny standardní vlastnosti v Microsoft. Office 365. securityComplianceCenter. |
+> | Microsoft. Office 365. usageReports/allEntities/Read    | Přečtěte si sestavy o využití Office 365. |
+> | Microsoft. Office 365. WebPort/allEntities/Standard/Read    | Načte standardní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="groups-administrator-permissions"></a>Oprávnění správce skupin
 Může spravovat všechny aspekty skupin a nastavení skupiny, jako jsou zásady pro pojmenování a vypršení platnosti.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/Groups/Basic/Read | Přečte standardní vlastnosti pro skupiny v Azure Active Directory.  |
-| Microsoft. Directory/Groups/Basic/Update | Aktualizuje základní vlastnosti pro skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/Create | Vytvořte skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/createAsOwner | Vytvořte skupiny v Azure Active Directory. Tvůrce se přidá jako první vlastník a vytvořený objekt se počítá s kvótou vytvořenou pro objekty tvůrce 250. |
-| Microsoft. Directory/Groups/DELETE | Odstraní skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/hiddenMembers/Read | Načte vlastnost groups. hiddenMembers v Azure Active Directory. |
-| Microsoft. Directory/Groups/Members/Update | Aktualizuje vlastnost groups. Members v Azure Active Directory. |
-| Microsoft. Directory/Groups/Owners/Update | Aktualizuje vlastnost groups. Owners v Azure Active Directory. |
-| Microsoft. Directory/skupiny/obnovení | Obnovte skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/Settings/Update | Aktualizuje vlastnost groups. Settings v Azure Active Directory. |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/Groups/Basic/Read | Přečte standardní vlastnosti pro skupiny v Azure Active Directory.  |
+> | Microsoft. Directory/Groups/Basic/Update | Aktualizuje základní vlastnosti pro skupiny v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Create | Vytvořte skupiny v Azure Active Directory. |
+> | Microsoft. Directory/Groups/createAsOwner | Vytvořte skupiny v Azure Active Directory. Tvůrce se přidá jako první vlastník a vytvořený objekt se počítá s kvótou vytvořenou pro objekty tvůrce 250. |
+> | Microsoft. Directory/Groups/DELETE | Odstraní skupiny v Azure Active Directory. |
+> | Microsoft. Directory/Groups/hiddenMembers/Read | Načte vlastnost groups. hiddenMembers v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Members/Update | Aktualizuje vlastnost groups. Members v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Owners/Update | Aktualizuje vlastnost groups. Owners v Azure Active Directory. |
+> | Microsoft. Directory/skupiny/obnovení | Obnovte skupiny v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Settings/Update | Aktualizuje vlastnost groups. Settings v Azure Active Directory. |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
 
 ### <a name="guest-inviter-permissions"></a>Oprávnění pozvat hosta
 Může pozvat uživatele typu Host bez ohledu na nastavení členové můžou pozvat hosty.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/Users/appRoleAssignments/Read | Číst vlastnost Users. appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/Basic/číst | Číst základní vlastnosti pro uživatele v Azure Active Directory. |
-| Microsoft. Directory/Users/directReports/Read | Číst vlastnost Users. directReports v Azure Active Directory. |
-| Microsoft. Directory/Users/inviteGuest | Pozvání uživatelů typu Host v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/Správce/číst | Umožňuje číst vlastnost Users. Manager v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/memberOf/číst | Číst vlastnost Users. memberOf v Azure Active Directory. |
-| Microsoft. Directory/Users/oAuth2PermissionGrants/Basic/Read | Číst vlastnost Users. oAuth2PermissionGrants v Azure Active Directory. |
-| Microsoft. Directory/Users/ownedDevices/Read | Číst vlastnost Users. ownedDevices v Azure Active Directory. |
-| Microsoft. Directory/Users/ownedObjects/Read | Číst vlastnost Users. ownedObjects v Azure Active Directory. |
-| Microsoft. Directory/Users/registeredDevices/Read | Číst vlastnost Users. registeredDevices v Azure Active Directory. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/Users/appRoleAssignments/Read | Číst vlastnost Users. appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/Basic/číst | Číst základní vlastnosti pro uživatele v Azure Active Directory. |
+> | Microsoft. Directory/Users/directReports/Read | Číst vlastnost Users. directReports v Azure Active Directory. |
+> | Microsoft. Directory/Users/inviteGuest | Pozvání uživatelů typu Host v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/Správce/číst | Umožňuje číst vlastnost Users. Manager v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/memberOf/číst | Číst vlastnost Users. memberOf v Azure Active Directory. |
+> | Microsoft. Directory/Users/oAuth2PermissionGrants/Basic/Read | Číst vlastnost Users. oAuth2PermissionGrants v Azure Active Directory. |
+> | Microsoft. Directory/Users/ownedDevices/Read | Číst vlastnost Users. ownedDevices v Azure Active Directory. |
+> | Microsoft. Directory/Users/ownedObjects/Read | Číst vlastnost Users. ownedObjects v Azure Active Directory. |
+> | Microsoft. Directory/Users/registeredDevices/Read | Číst vlastnost Users. registeredDevices v Azure Active Directory. |
 
 ### <a name="helpdesk-administrator-permissions"></a>Oprávnění správce helpdesku
 
 Může resetovat hesla pro správce bez oprávnění správce a helpdesku.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/Devices/bitLockerRecoveryKeys/Read | Číst vlastnost Devices. bitLockerRecoveryKeys v Azure Active Directory. |
-| Microsoft. Directory/Users/invalidateAllRefreshTokens | Zruší platnost všech tokenů aktualizace uživatele v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/heslo/aktualizace | Aktualizuje hesla pro všechny uživatele v Azure Active Directory. Další podrobnosti najdete v online dokumentaci. |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/Devices/bitLockerRecoveryKeys/Read | Číst vlastnost Devices. bitLockerRecoveryKeys v Azure Active Directory. |
+> | Microsoft. Directory/Users/invalidateAllRefreshTokens | Zruší platnost všech tokenů aktualizace uživatele v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/heslo/aktualizace | Aktualizuje hesla pro všechny uživatele v Azure Active Directory. Další podrobnosti najdete v online dokumentaci. |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
 
 ### <a name="hybrid-identity-administrator-permissions"></a>Oprávnění správce hybridní identity
 
 Může spravovat AD do zřizování cloudu Azure AD a nastavení federace. 
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Directory/Applications/publikum/Update  | Aktualizuje vlastnost Applications. cílová skupina v Azure Active Directory. |
-| Microsoft. Directory/Applications/Authentication/Update | Aktualizuje vlastnost Applications. Authentication v Azure Active Directory.  |
-| Microsoft. Directory/Applications/Basic/Update | Aktualizuje základní vlastnosti pro aplikace v Azure Active Directory. |
-| Microsoft. Directory/aplikace/vytvořit | Vytváření aplikací v Azure Active Directory. |
-| Microsoft. Directory/aplikace/přihlašovací údaje/aktualizace | Aktualizuje vlastnost Applications. credentialss v Azure Active Directory. |
-| Microsoft. Directory/aplikace/odstranit | Odstraní aplikace v Azure Active Directory. |
-| Microsoft. Directory/aplikace/vlastníci/aktualizace | Aktualizuje vlastnost Applications. Owners v Azure Active Directory. |
-| Microsoft. Directory/aplikace/oprávnění/aktualizace | Aktualizuje vlastnost Applications. Permissions v Azure Active Directory. |
-| Microsoft. Directory/aplikace/zásady/aktualizace | Aktualizuje vlastnost Applications. policies v Azure Active Directory. |
-| Microsoft. Directory/applicationTemplates/instance | Vytvoří instanci aplikací galerie z šablon aplikací. |
-| Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
-| Microsoft. Directory/cloudProvisioning/allProperties/allTasks | Přečtěte si a nakonfigurujte všechny vlastnosti služby Azure AD Cloud Provisioning. |
-| Microsoft. Directory/domén/allProperties/Read | Načte všechny vlastnosti domén. |
-| Microsoft. Directory/domény/federace/aktualizace | Aktualizuje vlastnost federace domén. |
-| Microsoft. Directory/Organization/dirSync/Update | Aktualizuje vlastnost Organization. dirSync v Azure Active Directory. |
-| Microsoft. Directory/provisioningLogs/allProperties/Read | Načte všechny vlastnosti protokolů zřizování. |
-| Microsoft. Directory/servicePrincipals/publikum/Update | Aktualizuje vlastnost servicePrincipals. cílová skupina v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Authentication/Update | Aktualizuje vlastnost servicePrincipals. Authentication v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Basic/Update | Aktualizuje základní vlastnosti v servicePrincipals v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Create | Vytvořte servicePrincipals v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/přihlašovací údaje/aktualizace | Aktualizuje vlastnost servicePrincipals. credentialss v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/DELETE | Odstraní servicePrincipals v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/Owners/Update | Aktualizuje vlastnost servicePrincipals. Owners v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/oprávnění/aktualizace | Aktualizujte vlastnost servicePrincipals. Permissions v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/policies/Update | Aktualizujte vlastnost servicePrincipals. policies v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/synchronizationJobs/Manage | Spravujte všechny aspekty úloh synchronizace ve službě Azure AD. |
-| Microsoft. Directory/servicePrincipals/synchronizationSchema/Manage | Umožňuje spravovat všechny aspekty schématu synchronizace ve službě Azure AD. |
-| Microsoft. Directory/servicePrincipals/synchronizationCredentials/Manage | Spravujte všechny aspekty synchronizačních přihlašovacích údajů ve službě Azure AD. |
-| Microsoft. Directory/servicePrincipals/tag/Update | Aktualizujte vlastnost servicePrincipals. tag v Azure Active Directory. |
-| Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
-| Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Directory/Applications/publikum/Update  | Aktualizuje vlastnost Applications. cílová skupina v Azure Active Directory. |
+> | Microsoft. Directory/Applications/Authentication/Update | Aktualizuje vlastnost Applications. Authentication v Azure Active Directory.  |
+> | Microsoft. Directory/Applications/Basic/Update | Aktualizuje základní vlastnosti pro aplikace v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/vytvořit | Vytváření aplikací v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/přihlašovací údaje/aktualizace | Aktualizuje vlastnost Applications. credentialss v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/odstranit | Odstraní aplikace v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/vlastníci/aktualizace | Aktualizuje vlastnost Applications. Owners v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/oprávnění/aktualizace | Aktualizuje vlastnost Applications. Permissions v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/zásady/aktualizace | Aktualizuje vlastnost Applications. policies v Azure Active Directory. |
+> | Microsoft. Directory/applicationTemplates/instance | Vytvoří instanci aplikací galerie z šablon aplikací. |
+> | Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
+> | Microsoft. Directory/cloudProvisioning/allProperties/allTasks | Přečtěte si a nakonfigurujte všechny vlastnosti služby Azure AD Cloud Provisioning. |
+> | Microsoft. Directory/domén/allProperties/Read | Načte všechny vlastnosti domén. |
+> | Microsoft. Directory/domény/federace/aktualizace | Aktualizuje vlastnost federace domén. |
+> | Microsoft. Directory/Organization/dirSync/Update | Aktualizuje vlastnost Organization. dirSync v Azure Active Directory. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Načte všechny vlastnosti protokolů zřizování. |
+> | Microsoft. Directory/servicePrincipals/publikum/Update | Aktualizuje vlastnost servicePrincipals. cílová skupina v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Authentication/Update | Aktualizuje vlastnost servicePrincipals. Authentication v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Basic/Update | Aktualizuje základní vlastnosti v servicePrincipals v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Create | Vytvořte servicePrincipals v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/přihlašovací údaje/aktualizace | Aktualizuje vlastnost servicePrincipals. credentialss v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/DELETE | Odstraní servicePrincipals v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Owners/Update | Aktualizuje vlastnost servicePrincipals. Owners v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/oprávnění/aktualizace | Aktualizujte vlastnost servicePrincipals. Permissions v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/policies/Update | Aktualizujte vlastnost servicePrincipals. policies v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/synchronizationJobs/Manage | Spravujte všechny aspekty úloh synchronizace ve službě Azure AD. |
+> | Microsoft. Directory/servicePrincipals/synchronizationSchema/Manage | Umožňuje spravovat všechny aspekty schématu synchronizace ve službě Azure AD. |
+> | Microsoft. Directory/servicePrincipals/synchronizationCredentials/Manage | Spravujte všechny aspekty synchronizačních přihlašovacích údajů ve službě Azure AD. |
+> | Microsoft. Directory/servicePrincipals/tag/Update | Aktualizujte vlastnost servicePrincipals. tag v Azure Active Directory. |
+> | Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
+> | Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
 
 ### <a name="insights-administrator-permissions"></a>Přehledy oprávnění správce
 
 Má v aplikaci Microsoft 365 Insights přístup pro správu. 
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Insights/allEntities/allTasks | Spravujte všechny aspekty přehledů. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Insights/allEntities/allTasks | Spravujte všechny aspekty přehledů. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="insights-business-leader-permissions"></a>Oprávnění pro vedoucí firmy pro Insights
 
 Může zobrazit a sdílet řídicí panely a přehledy prostřednictvím aplikace M365 Insights.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Insights/sestavy/číst | Zobrazte si sestavy a řídicí panel v aplikaci Insights. |
-| Microsoft. Insights/programy/aktualizace | Nasaďte a spravujte programy v aplikaci Insights. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Insights/sestavy/číst | Zobrazte si sestavy a řídicí panel v aplikaci Insights. |
+> | Microsoft. Insights/programy/aktualizace | Nasaďte a spravujte programy v aplikaci Insights. |
 
 ### <a name="intune-service-administrator-permissions"></a>Oprávnění správce služby Intune
 
@@ -1279,41 +1302,41 @@ Může spravovat všechny aspekty produktu Intune.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
-| Microsoft. Directory/Contacts/Basic/Update | Aktualizuje základní vlastnosti kontaktů v Azure Active Directory. |
-| Microsoft. Directory/Contacts/Create | Vytvoří kontakty v Azure Active Directory. |
-| Microsoft. Directory/Contacts/DELETE | Odstraní kontakty v Azure Active Directory. |
-| Microsoft. Directory/Devices/Basic/Update | Aktualizuje základní vlastnosti na zařízeních v Azure Active Directory. |
-| Microsoft. Directory/Devices/Create | Vytvořte zařízení v Azure Active Directory. |
-| Microsoft. Directory/Devices/DELETE | Odstraňte zařízení v Azure Active Directory. |
-| Microsoft. Directory/Devices/Disable | Zakáže zařízení v Azure Active Directory. |
-| Microsoft. Directory/Devices/Enable | Povolte zařízení v Azure Active Directory. |
-| Microsoft. Directory/Devices/extensionAttributes/Update | Aktualizujte všechny hodnoty vlastnosti Devices. extensionAttributes v Azure Active Directory. |
-| Microsoft. Directory/Devices/registeredOwners/Update | V Azure Active Directory aktualizovat vlastnost Devices. registeredOwners. |
-| Microsoft. Directory/Devices/registeredUsers/Update | V Azure Active Directory aktualizovat vlastnost Devices. registeredUsers. |
-| Microsoft. Directory/deviceManagementPolicies/Standard/Read | Číst standardní vlastnosti v zásadách aplikací pro správu zařízení |
-| Microsoft. Directory/deviceRegistrationPolicy/Standard/Read | Číst standardní vlastnosti v zásadách registrace zařízení |
-| Microsoft. Directory/Groups/hiddenMembers/Read | Načte vlastnost groups. hiddenMembers v Azure Active Directory. |
-| Microsoft. Directory/groups. Security/Basic/Update | Aktualizuje základní vlastnosti pro skupiny v Azure Active Directory. |
-| Microsoft. Directory/groups. Security/Classification/Update | Aktualizovat vlastnost klasifikace skupin zabezpečení s vyloučením skupin s přiřazením rolí |
-| Microsoft. Directory/groups. Security/Create | Vytvořte skupiny v Azure Active Directory. |
-| Microsoft. Directory/groups. Security/DELETE | Odstraní skupiny v Azure Active Directory. |
-| Microsoft. Directory/groups. Security/dynamicMembershipRule/Update | Aktualizuje vlastnost dynamicMembershipRule skupin zabezpečení s vyloučením skupin, které se přiřazují role. |
-| Microsoft. Directory/groups. Security/groupType/Update | Aktualizovat vlastnost typu skupiny skupin zabezpečení s vyloučením skupin s přiřazením rolí |
-| Microsoft. Directory/groups. Security/Members/Update | Aktualizuje vlastnost groups. Members v Azure Active Directory. |
-| Microsoft. Directory/groups. Security/Owners/Update | Aktualizuje vlastnost groups. Owners v Azure Active Directory. |
-| Microsoft. Directory/groups. Security/Visibility/Update | Aktualizovat vlastnost Visibility skupin zabezpečení s vyloučením skupin, které je možné přiřadit k rolím |
-| Microsoft. Directory/uživatelé/Basic/Update | Umožňuje aktualizovat základní vlastnosti pro uživatele v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/správce/aktualizace | Umožňuje aktualizovat vlastnost Users. Manager v Azure Active Directory. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Intune/allEntities/allTasks | Spravujte všechny aspekty Intune. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
+> | Microsoft. Directory/Contacts/Basic/Update | Aktualizuje základní vlastnosti kontaktů v Azure Active Directory. |
+> | Microsoft. Directory/Contacts/Create | Vytvoří kontakty v Azure Active Directory. |
+> | Microsoft. Directory/Contacts/DELETE | Odstraní kontakty v Azure Active Directory. |
+> | Microsoft. Directory/Devices/Basic/Update | Aktualizuje základní vlastnosti na zařízeních v Azure Active Directory. |
+> | Microsoft. Directory/Devices/Create | Vytvořte zařízení v Azure Active Directory. |
+> | Microsoft. Directory/Devices/DELETE | Odstraňte zařízení v Azure Active Directory. |
+> | Microsoft. Directory/Devices/Disable | Zakáže zařízení v Azure Active Directory. |
+> | Microsoft. Directory/Devices/Enable | Povolte zařízení v Azure Active Directory. |
+> | Microsoft. Directory/Devices/extensionAttributes/Update | Aktualizujte všechny hodnoty vlastnosti Devices. extensionAttributes v Azure Active Directory. |
+> | Microsoft. Directory/Devices/registeredOwners/Update | V Azure Active Directory aktualizovat vlastnost Devices. registeredOwners. |
+> | Microsoft. Directory/Devices/registeredUsers/Update | V Azure Active Directory aktualizovat vlastnost Devices. registeredUsers. |
+> | Microsoft. Directory/deviceManagementPolicies/Standard/Read | Číst standardní vlastnosti v zásadách aplikací pro správu zařízení |
+> | Microsoft. Directory/deviceRegistrationPolicy/Standard/Read | Číst standardní vlastnosti v zásadách registrace zařízení |
+> | Microsoft. Directory/Groups/hiddenMembers/Read | Načte vlastnost groups. hiddenMembers v Azure Active Directory. |
+> | Microsoft. Directory/groups. Security/Basic/Update | Aktualizuje základní vlastnosti pro skupiny v Azure Active Directory. |
+> | Microsoft. Directory/groups. Security/Classification/Update | Aktualizovat vlastnost klasifikace skupin zabezpečení s vyloučením skupin s přiřazením rolí |
+> | Microsoft. Directory/groups. Security/Create | Vytvořte skupiny v Azure Active Directory. |
+> | Microsoft. Directory/groups. Security/DELETE | Odstraní skupiny v Azure Active Directory. |
+> | Microsoft. Directory/groups. Security/dynamicMembershipRule/Update | Aktualizuje vlastnost dynamicMembershipRule skupin zabezpečení s vyloučením skupin, které se přiřazují role. |
+> | Microsoft. Directory/groups. Security/groupType/Update | Aktualizovat vlastnost typu skupiny skupin zabezpečení s vyloučením skupin s přiřazením rolí |
+> | Microsoft. Directory/groups. Security/Members/Update | Aktualizuje vlastnost groups. Members v Azure Active Directory. |
+> | Microsoft. Directory/groups. Security/Owners/Update | Aktualizuje vlastnost groups. Owners v Azure Active Directory. |
+> | Microsoft. Directory/groups. Security/Visibility/Update | Aktualizovat vlastnost Visibility skupin zabezpečení s vyloučením skupin, které je možné přiřadit k rolím |
+> | Microsoft. Directory/uživatelé/Basic/Update | Umožňuje aktualizovat základní vlastnosti pro uživatele v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/správce/aktualizace | Umožňuje aktualizovat vlastnost Users. Manager v Azure Active Directory. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Intune/allEntities/allTasks | Spravujte všechny aspekty Intune. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="kaizala-administrator-permissions"></a>Oprávnění správce Kaizala
 
@@ -1321,26 +1344,27 @@ Může spravovat nastavení pro Microsoft Kaizala.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Čtení centra pro správu Microsoft 365. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Čtení centra pro správu Microsoft 365. |
 
 ### <a name="license-administrator-permissions"></a>Oprávnění správce licence
 
 Může spravovat licence na produkty pro uživatele a skupiny.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/Users/assignLicense | Spravujte licence na uživatele v Azure Active Directory. |
-| Microsoft. Directory/Users/usageLocation/Update | Umožňuje aktualizovat vlastnost Users. usageLocation v Azure Active Directory. |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/Users/assignLicense | Spravujte licence na uživatele v Azure Active Directory. |
+> | Microsoft. Directory/Users/usageLocation/Update | Umožňuje aktualizovat vlastnost Users. usageLocation v Azure Active Directory. |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
 
 ### <a name="lync-service-administrator-permissions"></a>Oprávnění správce služby Lync
 
@@ -1348,18 +1372,18 @@ Může spravovat všechny aspekty produktu Skype pro firmy.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. skypeForBusiness/allEntities/allTasks | Umožňuje spravovat všechny aspekty Online Skypu pro firmy. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. usageReports/allEntities/Read    | Přečtěte si sestavy o využití Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. skypeForBusiness/allEntities/allTasks | Umožňuje spravovat všechny aspekty Online Skypu pro firmy. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Office 365. usageReports/allEntities/Read    | Přečtěte si sestavy o využití Office 365. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 
 ### <a name="message-center-privacy-reader-permissions"></a>Oprávnění čtenářů ochrany osobních údajů centra zpráv
@@ -1368,42 +1392,42 @@ Může číst příspěvky centra zpráv, zprávy o ochraně dat, skupiny, domé
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
-| Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
-| Microsoft. Office 365. messageCenter/securityMessages/Read | Přečtěte si securityMessages v Microsoft. Office 365. messageCenter. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
+> | Microsoft. Office 365. messageCenter/securityMessages/Read | Přečtěte si securityMessages v Microsoft. Office 365. messageCenter. |
 
 ### <a name="message-center-reader-permissions"></a>Oprávnění čtenáře centra zpráv
 Může číst zprávy a aktualizace jejich organizace pouze v centru zpráv. 
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
-| Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
 
 ### <a name="modern-commerce-user-permissions"></a>Oprávnění pro moderní obchodní uživatele
 Může spravovat komerční nákupy pro firmu, oddělení nebo tým. 
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. obchod. fakturace/partneři/čtení | Přečtěte si vlastnost partner u Microsoft 365 fakturace. |
-| Microsoft. Commerce. volumeLicenseServiceCenter/allEntities/allTasks | Spravujte všechny aspekty služby Volume Licensing Service Center. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a zobrazování lístků podpory pro Office 365 |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. obchod. fakturace/partneři/čtení | Přečtěte si vlastnost partner u Microsoft 365 fakturace. |
+> | Microsoft. Commerce. volumeLicenseServiceCenter/allEntities/allTasks | Spravujte všechny aspekty služby Volume Licensing Service Center. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a zobrazování lístků podpory pro Office 365 |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 
 ### <a name="network-administrator-permissions"></a>Oprávnění správce sítě
@@ -1411,31 +1435,31 @@ Může spravovat síťová umístění a prohlížet informace o návrhu podniko
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Office 365. Network/Performance/allProperties/Read | Přečtěte si stránky výkon sítě v centru pro správu M365.  |
-| Microsoft. Office 365. Network/Locations/allProperties/allTasks | Číst a konfigurovat vlastnosti síťových umístění pro každé umístění. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Office 365. Network/Performance/allProperties/Read | Přečtěte si stránky výkon sítě v centru pro správu M365.  |
+> | Microsoft. Office 365. Network/Locations/allProperties/allTasks | Číst a konfigurovat vlastnosti síťových umístění pro každé umístění. |
 
 ### <a name="office-apps-administrator-permissions"></a>Oprávnění správce aplikací Office
 Může spravovat cloudové služby aplikací Office, včetně správy zásad a nastavení, a spravovat možnost výběru, zrušení výběru a publikování obsahu funkcí co je nového pro zařízení koncových uživatelů.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. userCommunication/allEntities/allTasks | Přečtěte si a aktualizujte viditelnost nových zpráv. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Office 365. userCommunication/allEntities/allTasks | Přečtěte si a aktualizujte viditelnost nových zpráv. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="partner-tier1-support-permissions"></a>Oprávnění podpory partnerského Tier1u
 
@@ -1443,45 +1467,45 @@ Nepoužívejte – Neurčeno pro obecné použití.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/Applications/appRoles/Update | Spravujte aplikační role a požádejte o delegovaná oprávnění pro aplikace. |
-| Microsoft. Directory/Applications/publikum/Update | Aktualizuje cílovou skupinu u všech typů aplikací. |
-| Microsoft. Directory/Applications/Authentication/Update | Aktualizuje ověřování u všech typů aplikací. |
-| Microsoft. Directory/Applications/Basic/Update | Aktualizuje základní vlastnosti všech typů aplikací. |
-| Microsoft. Directory/aplikace/přihlašovací údaje/aktualizace | Aktualizujte přihlašovací údaje u všech typů aplikací. |
-| Microsoft. Directory/aplikace/vlastníci/aktualizace | Aktualizuje vlastníky u všech typů aplikací. |
-| Microsoft. Directory/aplikace/oprávnění/aktualizace | Aktualizujte vystavená oprávnění a požadovaná oprávnění pro všechny typy aplikací. |
-| Microsoft. Directory/aplikace/zásady/aktualizace | Aktualizuje vlastnost Applications. policies v Azure Active Directory. |
-| Microsoft. Directory/Contacts/Basic/Update | Aktualizuje základní vlastnosti kontaktů v Azure Active Directory. |
-| Microsoft. Directory/Contacts/Create | Vytvoří kontakty v Azure Active Directory. |
-| Microsoft. Directory/Contacts/DELETE | Odstraní kontakty v Azure Active Directory. |
-| Microsoft. Directory/Groups/Create | Vytvořte skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/DELETE | Odstranit skupiny s výjimkou skupiny přiřazení role |
-| Microsoft. Directory/Groups/Members/Update | Aktualizuje vlastnost groups. Members v Azure Active Directory. |
-| Microsoft. Directory/Groups/Owners/Update | Aktualizuje vlastnost groups. Owners v Azure Active Directory. |
-| Microsoft. Directory/skupiny/obnovení | Obnovení odstraněných skupin |
-| Microsoft. Directory/oAuth2PermissionGrants/allProperties/allTasks | Umožňuje vytvářet a odstraňovat oprávnění OAuth 2,0 a číst a aktualizovat všechny vlastnosti. |
-| Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Update | Aktualizovat přiřazení rolí instančního objektu |
-| Microsoft. Directory/Users/assignLicense | Spravujte licence na uživatele v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/Basic/Update | Umožňuje aktualizovat základní vlastnosti pro uživatele v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/vytvořit | Přidání uživatelů |
-| Microsoft. Directory/Users/DELETE | Umožňuje odstranit uživatele v Azure Active Directory. |
-| Microsoft. Directory/Users/Disable | Zakázat uživatele |
-| Microsoft. Directory/uživatelé/povolit | Povolit uživatele |
-| Microsoft. Directory/Users/invalidateAllRefreshTokens | Zruší platnost všech tokenů aktualizace uživatele v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/správce/aktualizace | Umožňuje aktualizovat vlastnost Users. Manager v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/heslo/aktualizace | Aktualizuje hesla pro všechny uživatele v Azure Active Directory. Další podrobnosti najdete v online dokumentaci. |
-| Microsoft. Directory/Users/Restore | Obnovení odstraněných uživatelů v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/userPrincipalName/Update | Umožňuje aktualizovat vlastnost Users. userPrincipalName v Azure Active Directory. |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/Applications/appRoles/Update | Spravujte aplikační role a požádejte o delegovaná oprávnění pro aplikace. |
+> | Microsoft. Directory/Applications/publikum/Update | Aktualizuje cílovou skupinu u všech typů aplikací. |
+> | Microsoft. Directory/Applications/Authentication/Update | Aktualizuje ověřování u všech typů aplikací. |
+> | Microsoft. Directory/Applications/Basic/Update | Aktualizuje základní vlastnosti všech typů aplikací. |
+> | Microsoft. Directory/aplikace/přihlašovací údaje/aktualizace | Aktualizujte přihlašovací údaje u všech typů aplikací. |
+> | Microsoft. Directory/aplikace/vlastníci/aktualizace | Aktualizuje vlastníky u všech typů aplikací. |
+> | Microsoft. Directory/aplikace/oprávnění/aktualizace | Aktualizujte vystavená oprávnění a požadovaná oprávnění pro všechny typy aplikací. |
+> | Microsoft. Directory/aplikace/zásady/aktualizace | Aktualizuje vlastnost Applications. policies v Azure Active Directory. |
+> | Microsoft. Directory/Contacts/Basic/Update | Aktualizuje základní vlastnosti kontaktů v Azure Active Directory. |
+> | Microsoft. Directory/Contacts/Create | Vytvoří kontakty v Azure Active Directory. |
+> | Microsoft. Directory/Contacts/DELETE | Odstraní kontakty v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Create | Vytvořte skupiny v Azure Active Directory. |
+> | Microsoft. Directory/Groups/DELETE | Odstranit skupiny s výjimkou skupiny přiřazení role |
+> | Microsoft. Directory/Groups/Members/Update | Aktualizuje vlastnost groups. Members v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Owners/Update | Aktualizuje vlastnost groups. Owners v Azure Active Directory. |
+> | Microsoft. Directory/skupiny/obnovení | Obnovení odstraněných skupin |
+> | Microsoft. Directory/oAuth2PermissionGrants/allProperties/allTasks | Umožňuje vytvářet a odstraňovat oprávnění OAuth 2,0 a číst a aktualizovat všechny vlastnosti. |
+> | Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Update | Aktualizovat přiřazení rolí instančního objektu |
+> | Microsoft. Directory/Users/assignLicense | Spravujte licence na uživatele v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/Basic/Update | Umožňuje aktualizovat základní vlastnosti pro uživatele v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/vytvořit | Přidání uživatelů |
+> | Microsoft. Directory/Users/DELETE | Umožňuje odstranit uživatele v Azure Active Directory. |
+> | Microsoft. Directory/Users/Disable | Zakázat uživatele |
+> | Microsoft. Directory/uživatelé/povolit | Povolit uživatele |
+> | Microsoft. Directory/Users/invalidateAllRefreshTokens | Zruší platnost všech tokenů aktualizace uživatele v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/správce/aktualizace | Umožňuje aktualizovat vlastnost Users. Manager v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/heslo/aktualizace | Aktualizuje hesla pro všechny uživatele v Azure Active Directory. Další podrobnosti najdete v online dokumentaci. |
+> | Microsoft. Directory/Users/Restore | Obnovení odstraněných uživatelů v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/userPrincipalName/Update | Umožňuje aktualizovat vlastnost Users. userPrincipalName v Azure Active Directory. |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="partner-tier2-support-permissions"></a>Oprávnění podpory partnerského 2U
 
@@ -1489,60 +1513,61 @@ Nepoužívejte – Neurčeno pro obecné použití.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/Applications/appRoles/Update | Spravujte aplikační role a požádejte o delegovaná oprávnění pro aplikace. |
-| Microsoft. Directory/Applications/publikum/Update | Aktualizuje cílovou skupinu u všech typů aplikací. |
-| Microsoft. Directory/Applications/Authentication/Update | Aktualizuje ověřování u všech typů aplikací. |
-| Microsoft. Directory/Applications/Basic/Update | Aktualizuje základní vlastnosti všech typů aplikací. |
-| Microsoft. Directory/aplikace/přihlašovací údaje/aktualizace | Aktualizujte přihlašovací údaje u všech typů aplikací. |
-| Microsoft. Directory/aplikace/vlastníci/aktualizace | Aktualizuje vlastníky u všech typů aplikací. |
-| Microsoft. Directory/aplikace/oprávnění/aktualizace | Aktualizujte vystavená oprávnění a požadovaná oprávnění pro všechny typy aplikací. |
-| Microsoft. Directory/aplikace/zásady/aktualizace | Aktualizuje vlastnost Applications. policies v Azure Active Directory. |
-| Microsoft. Directory/Contacts/Basic/Update | Aktualizuje základní vlastnosti kontaktů v Azure Active Directory. |
-| Microsoft. Directory/Contacts/Create | Vytvoří kontakty v Azure Active Directory. |
-| Microsoft. Directory/Contacts/DELETE | Odstraní kontakty v Azure Active Directory. |
-| Microsoft. Directory/domény/Basic/allTasks | Vytváření a odstraňování domén a čtení a aktualizace standardních vlastností v Azure Active Directory. |
-| Microsoft. Directory/Groups/Create | Vytvořte skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/DELETE | Odstraní skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/Members/Update | Aktualizuje vlastnost groups. Members v Azure Active Directory. |
-| Microsoft. Directory/Groups/Owners/Update | Aktualizace vlastníků skupin bez skupin s přiřazením rolí |
-| Microsoft. Directory/skupiny/obnovení | Obnovte skupiny v Azure Active Directory. |
-| Microsoft. Directory/oAuth2PermissionGrants/allProperties/allTasks | Umožňuje vytvářet a odstraňovat oprávnění OAuth 2,0 a číst a aktualizovat všechny vlastnosti. |
-| Microsoft. Directory/Organization/Basic/Update | Aktualizuje základní vlastnosti v organizaci v Azure Active Directory. |
-| Microsoft. Directory/roleAssignments/allProperties/allTasks | Vytváření a odstraňování přiřazení rolí a čtení a aktualizace vlastností přiřazení rolí |
-| Microsoft. Directory/roleDefinitions/allProperties/allTasks | Vytváření a odstraňování definic rolí a čtení a aktualizace všech vlastností |
-| Microsoft. Directory/scopedRoleMemberships/allProperties/allTasks | Vytváření a odstraňování scopedRoleMemberships a čtení a aktualizace všech vlastností |
-| Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Update | Aktualizovat přiřazení rolí instančního objektu |
-| Microsoft. Directory/subscribedSkus/Standard/Read | Číst základní vlastnosti v předplatných |
-| Microsoft. Directory/Users/assignLicense | Spravujte licence na uživatele v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/Basic/Update | Umožňuje aktualizovat základní vlastnosti pro uživatele v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/vytvořit | Přidání uživatelů |
-| Microsoft. Directory/Users/DELETE | Umožňuje odstranit uživatele v Azure Active Directory. |
-| Microsoft. Directory/Users/Disable | Zakázat uživatele |
-| Microsoft. Directory/uživatelé/povolit | Povolit uživatele |
-| Microsoft. Directory/Users/invalidateAllRefreshTokens | Zruší platnost všech tokenů aktualizace uživatele v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/správce/aktualizace | Umožňuje aktualizovat vlastnost Users. Manager v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/heslo/aktualizace | Aktualizuje hesla pro všechny uživatele v Azure Active Directory. Další podrobnosti najdete v online dokumentaci. |
-| Microsoft. Directory/Users/Restore | Obnovení odstraněných uživatelů v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/userPrincipalName/Update | Umožňuje aktualizovat vlastnost Users. userPrincipalName v Azure Active Directory. |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/Applications/appRoles/Update | Spravujte aplikační role a požádejte o delegovaná oprávnění pro aplikace. |
+> | Microsoft. Directory/Applications/publikum/Update | Aktualizuje cílovou skupinu u všech typů aplikací. |
+> | Microsoft. Directory/Applications/Authentication/Update | Aktualizuje ověřování u všech typů aplikací. |
+> | Microsoft. Directory/Applications/Basic/Update | Aktualizuje základní vlastnosti všech typů aplikací. |
+> | Microsoft. Directory/aplikace/přihlašovací údaje/aktualizace | Aktualizujte přihlašovací údaje u všech typů aplikací. |
+> | Microsoft. Directory/aplikace/vlastníci/aktualizace | Aktualizuje vlastníky u všech typů aplikací. |
+> | Microsoft. Directory/aplikace/oprávnění/aktualizace | Aktualizujte vystavená oprávnění a požadovaná oprávnění pro všechny typy aplikací. |
+> | Microsoft. Directory/aplikace/zásady/aktualizace | Aktualizuje vlastnost Applications. policies v Azure Active Directory. |
+> | Microsoft. Directory/Contacts/Basic/Update | Aktualizuje základní vlastnosti kontaktů v Azure Active Directory. |
+> | Microsoft. Directory/Contacts/Create | Vytvoří kontakty v Azure Active Directory. |
+> | Microsoft. Directory/Contacts/DELETE | Odstraní kontakty v Azure Active Directory. |
+> | Microsoft. Directory/domény/Basic/allTasks | Vytváření a odstraňování domén a čtení a aktualizace standardních vlastností v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Create | Vytvořte skupiny v Azure Active Directory. |
+> | Microsoft. Directory/Groups/DELETE | Odstraní skupiny v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Members/Update | Aktualizuje vlastnost groups. Members v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Owners/Update | Aktualizace vlastníků skupin bez skupin s přiřazením rolí |
+> | Microsoft. Directory/skupiny/obnovení | Obnovte skupiny v Azure Active Directory. |
+> | Microsoft. Directory/oAuth2PermissionGrants/allProperties/allTasks | Umožňuje vytvářet a odstraňovat oprávnění OAuth 2,0 a číst a aktualizovat všechny vlastnosti. |
+> | Microsoft. Directory/Organization/Basic/Update | Aktualizuje základní vlastnosti v organizaci v Azure Active Directory. |
+> | Microsoft. Directory/roleAssignments/allProperties/allTasks | Vytváření a odstraňování přiřazení rolí a čtení a aktualizace vlastností přiřazení rolí |
+> | Microsoft. Directory/roleDefinitions/allProperties/allTasks | Vytváření a odstraňování definic rolí a čtení a aktualizace všech vlastností |
+> | Microsoft. Directory/scopedRoleMemberships/allProperties/allTasks | Vytváření a odstraňování scopedRoleMemberships a čtení a aktualizace všech vlastností |
+> | Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Update | Aktualizovat přiřazení rolí instančního objektu |
+> | Microsoft. Directory/subscribedSkus/Standard/Read | Číst základní vlastnosti v předplatných |
+> | Microsoft. Directory/Users/assignLicense | Spravujte licence na uživatele v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/Basic/Update | Umožňuje aktualizovat základní vlastnosti pro uživatele v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/vytvořit | Přidání uživatelů |
+> | Microsoft. Directory/Users/DELETE | Umožňuje odstranit uživatele v Azure Active Directory. |
+> | Microsoft. Directory/Users/Disable | Zakázat uživatele |
+> | Microsoft. Directory/uživatelé/povolit | Povolit uživatele |
+> | Microsoft. Directory/Users/invalidateAllRefreshTokens | Zruší platnost všech tokenů aktualizace uživatele v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/správce/aktualizace | Umožňuje aktualizovat vlastnost Users. Manager v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/heslo/aktualizace | Aktualizuje hesla pro všechny uživatele v Azure Active Directory. Další podrobnosti najdete v online dokumentaci. |
+> | Microsoft. Directory/Users/Restore | Obnovení odstraněných uživatelů v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/userPrincipalName/Update | Umožňuje aktualizovat vlastnost Users. userPrincipalName v Azure Active Directory. |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="password-administrator-permissions"></a>Oprávnění správce hesel
 
 Může resetovat hesla správců, kteří nejsou správci a hesla.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/uživatelé/heslo/aktualizace | Aktualizuje hesla pro všechny uživatele v Azure Active Directory. Další podrobnosti najdete v online dokumentaci. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/uživatelé/heslo/aktualizace | Aktualizuje hesla pro všechny uživatele v Azure Active Directory. Další podrobnosti najdete v online dokumentaci. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="power-bi-service-administrator-permissions"></a>Power BI oprávnění správce služby
 
@@ -1550,16 +1575,16 @@ Může spravovat všechny aspekty Power BI produktu.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. powerApps. powerBI/allEntities/allTasks | Umožňuje spravovat všechny aspekty Power BI. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. powerApps. powerBI/allEntities/allTasks | Umožňuje spravovat všechny aspekty Power BI. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
 
 
 ### <a name="power-platform-administrator-permissions"></a>Oprávnění správce Power Platform
@@ -1568,18 +1593,18 @@ Může vytvářet a spravovat všechny aspekty Microsoft Dynamics 365, PowerApps
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. dynamics365/allEntities/allTasks | Umožňuje spravovat všechny aspekty Dynamics 365. |
-| Microsoft. Flow/allEntities/allTasks | Spravujte všechny aspekty Power automatizuje. |
-| Microsoft. powerApps/allEntities/allTasks | Umožňuje spravovat všechny aspekty PowerApps. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. dynamics365/allEntities/allTasks | Umožňuje spravovat všechny aspekty Dynamics 365. |
+> | Microsoft. Flow/allEntities/allTasks | Spravujte všechny aspekty Power automatizuje. |
+> | Microsoft. powerApps/allEntities/allTasks | Umožňuje spravovat všechny aspekty PowerApps. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
 
 ### <a name="printer-administrator-permissions"></a>Oprávnění správce tiskárny
 
@@ -1587,11 +1612,11 @@ Může spravovat všechny aspekty tiskáren a konektorů tiskáren.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. Print/allEntities/allProperties/allTasks | Vytvářejte a odstraňujte tiskárny a konektory a přečtěte si a aktualizujte všechny vlastnosti v tištěné společnosti Microsoft. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. Print/allEntities/allProperties/allTasks | Vytvářejte a odstraňujte tiskárny a konektory a přečtěte si a aktualizujte všechny vlastnosti v tištěné společnosti Microsoft. |
 
 ### <a name="printer-technician-permissions"></a>Oprávnění technika tiskárny
 
@@ -1599,30 +1624,31 @@ Může registrovat a rušit registraci tiskáren a aktualizovat stav tiskárny.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. Print/Connectors/allProperties/Read | Načte všechny vlastnosti konektorů v Microsoft tisku. |
-| Microsoft. Azure. Printing/Printers/allProperties/Read | Přečtěte si všechny vlastnosti tiskáren v Microsoft Print. |
-| Microsoft. Azure. tisk/tiskárny/Basic/Update | Aktualizuje základní vlastnosti tiskáren v tištěné společnosti Microsoft. |
-| Microsoft. Azure. tisk/tiskárny/registrovat | Zaregistrujte tiskárny v Microsoft tisku. |
-| Microsoft. Azure. tisk/tiskárny/zrušit registraci | Zrušte registraci tiskáren v Microsoft tisku. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. Print/Connectors/allProperties/Read | Načte všechny vlastnosti konektorů v Microsoft tisku. |
+> | Microsoft. Azure. Printing/Printers/allProperties/Read | Přečtěte si všechny vlastnosti tiskáren v Microsoft Print. |
+> | Microsoft. Azure. tisk/tiskárny/Basic/Update | Aktualizuje základní vlastnosti tiskáren v tištěné společnosti Microsoft. |
+> | Microsoft. Azure. tisk/tiskárny/registrovat | Zaregistrujte tiskárny v Microsoft tisku. |
+> | Microsoft. Azure. tisk/tiskárny/zrušit registraci | Zrušte registraci tiskáren v Microsoft tisku. |
 
 ### <a name="privileged-authentication-administrator-permissions"></a>Oprávnění správce privilegovaného ověřování
 
 Povoleno zobrazení, nastavení a resetování informací o metodě ověřování pro libovolného uživatele (správce nebo jiný správce).
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/Users/invalidateAllRefreshTokens | Zruší platnost všech tokenů aktualizace uživatele v Azure Active Directory. |
-| Microsoft. Directory/Users/strongAuthentication/Update | Aktualizujte vlastnosti silného ověřování jako informace o přihlašovacích údajích MFA. |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Directory/uživatelé/heslo/aktualizace | Aktualizuje hesla pro všechny uživatele v organizaci Microsoft 365. Další podrobnosti najdete v online dokumentaci. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/Users/invalidateAllRefreshTokens | Zruší platnost všech tokenů aktualizace uživatele v Azure Active Directory. |
+> | Microsoft. Directory/Users/strongAuthentication/Update | Aktualizujte vlastnosti silného ověřování jako informace o přihlašovacích údajích MFA. |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Directory/uživatelé/heslo/aktualizace | Aktualizuje hesla pro všechny uživatele v organizaci Microsoft 365. Další podrobnosti najdete v online dokumentaci. |
 
 ### <a name="privileged-role-administrator-permissions"></a>Oprávnění správce privilegovaných rolí
 
@@ -1630,20 +1656,20 @@ Může spravovat přiřazení rolí v Azure AD a všechny aspekty Privileged Ide
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/groupsAssignableToRoles/allProperties/Update | Aktualizujte skupiny s vlastností isAssignableToRole nastavenou na hodnotu true v Azure Active Directory. |
-| Microsoft. Directory/groupsAssignableToRoles/Create | V Azure Active Directory vytvořit skupiny s vlastností isAssignableToRole nastavenou na hodnotu true. |
-| Microsoft. Directory/groupsAssignableToRoles/DELETE | V Azure Active Directory odstraňte skupiny s vlastností isAssignableToRole nastavenou na hodnotu true. |
-| Microsoft. Directory/privilegedIdentityManagement/allEntities/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat standardní vlastnosti v Microsoft. aad. privilegedIdentityManagement. |
-| Microsoft. Directory/servicePrincipals/appRoleAssignedTo/allTasks | Přečte a nakonfiguruje vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
-| Microsoft. Directory/servicePrincipals/oAuth2PermissionGrants/allTasks | Přečte a nakonfiguruje vlastnost servicePrincipals. oAuth2PermissionGrants v Azure Active Directory. |
-| Microsoft. Directory/administrativeUnits/allProperties/allTasks | Vytváření a Správa jednotek pro správu (včetně členů) |
-| Microsoft. Directory/roleAssignments/allProperties/allTasks | Vytváření a správa přiřazení rolí. |
-| Microsoft. Directory/roleDefinitions/allProperties/allTasks | Vytvářejte a spravujte definice rolí. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/groupsAssignableToRoles/allProperties/Update | Aktualizujte skupiny s vlastností isAssignableToRole nastavenou na hodnotu true v Azure Active Directory. |
+> | Microsoft. Directory/groupsAssignableToRoles/Create | V Azure Active Directory vytvořit skupiny s vlastností isAssignableToRole nastavenou na hodnotu true. |
+> | Microsoft. Directory/groupsAssignableToRoles/DELETE | V Azure Active Directory odstraňte skupiny s vlastností isAssignableToRole nastavenou na hodnotu true. |
+> | Microsoft. Directory/privilegedIdentityManagement/allEntities/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat standardní vlastnosti v Microsoft. aad. privilegedIdentityManagement. |
+> | Microsoft. Directory/servicePrincipals/appRoleAssignedTo/allTasks | Přečte a nakonfiguruje vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/oAuth2PermissionGrants/allTasks | Přečte a nakonfiguruje vlastnost servicePrincipals. oAuth2PermissionGrants v Azure Active Directory. |
+> | Microsoft. Directory/administrativeUnits/allProperties/allTasks | Vytváření a Správa jednotek pro správu (včetně členů) |
+> | Microsoft. Directory/roleAssignments/allProperties/allTasks | Vytváření a správa přiřazení rolí. |
+> | Microsoft. Directory/roleDefinitions/allProperties/allTasks | Vytvářejte a spravujte definice rolí. |
 
 ### <a name="reports-reader-permissions"></a>Oprávnění čtenáře sestav
 
@@ -1651,15 +1677,15 @@ Může číst sestavy pro přihlášení a audit.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
-| Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Office 365. usageReports/allEntities/Read | Přečtěte si sestavy o využití Office 365. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
+> | Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Office 365. usageReports/allEntities/Read | Přečtěte si sestavy o využití Office 365. |
 
 ### <a name="search-administrator-permissions"></a>Hledat oprávnění správce
 
@@ -1667,16 +1693,16 @@ Může vytvářet a spravovat všechny aspekty nastavení služby Microsoft Sear
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
-| Microsoft. Office 365. Search/allEntities/allProperties/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat všechny vlastnosti v Microsoft. Office 365. Search. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
+> | Microsoft. Office 365. Search/allEntities/allProperties/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat všechny vlastnosti v Microsoft. Office 365. Search. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="search-editor-permissions"></a>Oprávnění editoru hledání
 
@@ -1684,13 +1710,13 @@ Může vytvářet a spravovat redakční obsah, jako jsou záložky, Q a as, Loc
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
-| Microsoft. Office 365. Search/Content/allProperties/allTasks | Vytváření a odstraňování obsahu a čtení a aktualizace všech vlastností v Microsoft. Office 365. Search. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
+> | Microsoft. Office 365. Search/Content/allProperties/allTasks | Vytváření a odstraňování obsahu a čtení a aktualizace všech vlastností v Microsoft. Office 365. Search. |
 
 ### <a name="security-administrator-permissions"></a>Oprávnění správce zabezpečení
 
@@ -1698,32 +1724,32 @@ Může číst informace o zabezpečení a sestavy a spravovat konfiguraci v Azur
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Directory/aplikace/zásady/aktualizace | Aktualizuje vlastnost Applications. policies v Azure Active Directory. |
-| Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
-| Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
-| Microsoft. Directory/entitlementManagement/allProperties/Read | Načte všechny vlastnosti v Azure AD – Správa nároků. |
-| Microsoft. Directory/identityProtection/allProperties/Read | Načte všechny prostředky v Microsoft. aad. identityProtection. |
-| Microsoft. Directory/identityProtection/allProperties/Update | Aktualizuje všechny prostředky v Microsoft. aad. identityProtection. |
-| Microsoft. Directory/policies/Basic/Update | Aktualizuje základní vlastnosti zásad v Azure Active Directory. |
-| Microsoft. Directory/policies/Create | Vytvořte zásady v Azure Active Directory. |
-| Microsoft. Directory/policies/DELETE | Odstraňte zásady v Azure Active Directory. |
-| Microsoft. Directory/policies/Owners/Update | V Azure Active Directory vlastnost Update policies. Owners. |
-| Microsoft. Directory/policies/tenantDefault/Update | Aktualizuje vlastnost policies. tenantDefault v Azure Active Directory. |
-| Microsoft. Directory/privilegedIdentityManagement/allProperties/Read | Načte všechny prostředky v Microsoft. aad. privilegedIdentityManagement. |
-| Microsoft. Directory/servicePrincipals/policies/Update | Aktualizujte vlastnost servicePrincipals. policies v Azure Active Directory. |
-| Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
-| Microsoft. Office 365. protectionCenter/allEntities/Read | Přečtěte si všechny aspekty centra ochrany Office 365. |
-| Microsoft. Office 365. protectionCenter/allEntities/Update | Aktualizuje všechny prostředky v Microsoft. Office 365. protectionCenter. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Directory/aplikace/zásady/aktualizace | Aktualizuje vlastnost Applications. policies v Azure Active Directory. |
+> | Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
+> | Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
+> | Microsoft. Directory/entitlementManagement/allProperties/Read | Načte všechny vlastnosti v Azure AD – Správa nároků. |
+> | Microsoft. Directory/identityProtection/allProperties/Read | Načte všechny prostředky v Microsoft. aad. identityProtection. |
+> | Microsoft. Directory/identityProtection/allProperties/Update | Aktualizuje všechny prostředky v Microsoft. aad. identityProtection. |
+> | Microsoft. Directory/policies/Basic/Update | Aktualizuje základní vlastnosti zásad v Azure Active Directory. |
+> | Microsoft. Directory/policies/Create | Vytvořte zásady v Azure Active Directory. |
+> | Microsoft. Directory/policies/DELETE | Odstraňte zásady v Azure Active Directory. |
+> | Microsoft. Directory/policies/Owners/Update | V Azure Active Directory vlastnost Update policies. Owners. |
+> | Microsoft. Directory/policies/tenantDefault/Update | Aktualizuje vlastnost policies. tenantDefault v Azure Active Directory. |
+> | Microsoft. Directory/privilegedIdentityManagement/allProperties/Read | Načte všechny prostředky v Microsoft. aad. privilegedIdentityManagement. |
+> | Microsoft. Directory/servicePrincipals/policies/Update | Aktualizujte vlastnost servicePrincipals. policies v Azure Active Directory. |
+> | Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
+> | Microsoft. Office 365. protectionCenter/allEntities/Read | Přečtěte si všechny aspekty centra ochrany Office 365. |
+> | Microsoft. Office 365. protectionCenter/allEntities/Update | Aktualizuje všechny prostředky v Microsoft. Office 365. protectionCenter. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="security-operator-permissions"></a>Oprávnění operátora zabezpečení
 
@@ -1731,21 +1757,21 @@ Vytvoří a spravuje události zabezpečení.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. advancedThreatProtection/allEntities/Read | Čtení a konfigurace rozšířené ochrany před internetovými útoky Azure AD |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Directory/cloudAppSecurity/allProperties/allTasks | Čtení a konfigurace Microsoft Cloud App Security. |
-| Microsoft. Directory/identityProtection/allProperties/Read | Načte všechny prostředky v Microsoft. aad. identityProtection. |
-| Microsoft. Directory/privilegedIdentityManagement/allProperties/Read | Načte všechny prostředky v Microsoft. aad. privilegedIdentityManagement. |
-| Microsoft. Directory/provisioningLogs/allProperties/Read | Načte všechny vlastnosti protokolů zřizování. |
-| Microsoft. Intune/allEntities/allTasks | Spravujte všechny aspekty Intune. |
-| Microsoft. Office 365. securityComplianceCenter/allEntities/allTasks | Přečtěte si a nakonfigurujte & Security Center pro dodržování předpisů. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Windows. defenderAdvancedThreatProtection/allEntities/Read | Čtení a konfigurace rozšířené ochrany před internetovými útoky v programu Windows Defender |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. advancedThreatProtection/allEntities/Read | Čtení a konfigurace rozšířené ochrany před internetovými útoky Azure AD |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Directory/cloudAppSecurity/allProperties/allTasks | Čtení a konfigurace Microsoft Cloud App Security. |
+> | Microsoft. Directory/identityProtection/allProperties/Read | Načte všechny prostředky v Microsoft. aad. identityProtection. |
+> | Microsoft. Directory/privilegedIdentityManagement/allProperties/Read | Načte všechny prostředky v Microsoft. aad. privilegedIdentityManagement. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Načte všechny vlastnosti protokolů zřizování. |
+> | Microsoft. Intune/allEntities/allTasks | Spravujte všechny aspekty Intune. |
+> | Microsoft. Office 365. securityComplianceCenter/allEntities/allTasks | Přečtěte si a nakonfigurujte & Security Center pro dodržování předpisů. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Windows. defenderAdvancedThreatProtection/allEntities/Read | Čtení a konfigurace rozšířené ochrany před internetovými útoky v programu Windows Defender |
 
 
 ### <a name="security-reader-permissions"></a>Oprávnění čtenáře zabezpečení
@@ -1754,22 +1780,22 @@ Může číst informace o zabezpečení a sestavy v Azure AD a Microsoft 365.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
-| Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
-| Microsoft. Directory/entitlementManagement/allProperties/Read | Načte všechny vlastnosti v Azure AD – Správa nároků. |
-| Microsoft. Directory/policies/conditionalAccess/Basic/Read | Číst zásady. conditionalAccess vlastnosti v Azure Active Directory. |
-| Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
-| Microsoft. aad. identityProtection/allEntities/Read | Načte všechny prostředky v Microsoft. aad. identityProtection. |
-| Microsoft. aad. privilegedIdentityManagement/allEntities/Read | Načte všechny prostředky v Microsoft. aad. privilegedIdentityManagement. |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
-| Microsoft. Office 365. protectionCenter/allEntities/Read | Přečtěte si všechny aspekty centra ochrany Office 365. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
+> | Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
+> | Microsoft. Directory/entitlementManagement/allProperties/Read | Načte všechny vlastnosti v Azure AD – Správa nároků. |
+> | Microsoft. Directory/policies/conditionalAccess/Basic/Read | Číst zásady. conditionalAccess vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
+> | Microsoft. aad. identityProtection/allEntities/Read | Načte všechny prostředky v Microsoft. aad. identityProtection. |
+> | Microsoft. aad. privilegedIdentityManagement/allEntities/Read | Načte všechny prostředky v Microsoft. aad. privilegedIdentityManagement. |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. Office 365. protectionCenter/allEntities/Read | Přečtěte si všechny aspekty centra ochrany Office 365. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
 
 ### <a name="service-support-administrator-permissions"></a>Služba Service support – oprávnění správce
 
@@ -1777,16 +1803,16 @@ Může číst informace o stavu služby a spravovat lístky podpory.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
 
 ### <a name="sharepoint-service-administrator-permissions"></a>Oprávnění správce služby SharePoint
 
@@ -1794,25 +1820,25 @@ Může spravovat všechny aspekty služby SharePoint.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Directory/groups. Unified/Basic/Update | Aktualizuje základní vlastnosti Microsoft 365 skupin. |
-| Microsoft. Directory/groups. Unified/Create | Vytvořte Microsoft 365 skupiny. |
-| Microsoft. Directory/groups. Unified/DELETE | Odstraní Microsoft 365 skupiny. |
-| Microsoft. Directory/groups. Unified/Members/Update | Aktualizuje členství Microsoft 365ch skupin. |
-| Microsoft. Directory/groups. Unified/Owners/Update | Aktualizuje vlastnictví skupin Microsoft 365. |
-| Microsoft. Directory/groups. Unified/Restore | Obnovit Microsoft 365 skupiny |
-| Microsoft. Office 365. Network/Performance/allProperties/Read | Přečtěte si stránky výkon sítě v centru pro správu M365. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. SharePoint/allEntities/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat standardní vlastnosti v Microsoft. Office 365. SharePoint. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. usageReports/allEntities/allProperties/Read | Přečtěte si sestavy o využití Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Directory/groups. Unified/Basic/Update | Aktualizuje základní vlastnosti Microsoft 365 skupin. |
+> | Microsoft. Directory/groups. Unified/Create | Vytvořte Microsoft 365 skupiny. |
+> | Microsoft. Directory/groups. Unified/DELETE | Odstraní Microsoft 365 skupiny. |
+> | Microsoft. Directory/groups. Unified/Members/Update | Aktualizuje členství Microsoft 365ch skupin. |
+> | Microsoft. Directory/groups. Unified/Owners/Update | Aktualizuje vlastnictví skupin Microsoft 365. |
+> | Microsoft. Directory/groups. Unified/Restore | Obnovit Microsoft 365 skupiny |
+> | Microsoft. Office 365. Network/Performance/allProperties/Read | Přečtěte si stránky výkon sítě v centru pro správu M365. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. SharePoint/allEntities/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat standardní vlastnosti v Microsoft. Office 365. SharePoint. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Office 365. usageReports/allEntities/allProperties/Read | Přečtěte si sestavy o využití Office 365. |
+> | Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="teams-communications-administrator-permissions"></a>Teams Communications – oprávnění správce
 
@@ -1820,20 +1846,20 @@ Může spravovat funkce volání a schůzek ve službě Microsoft Teams.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. usageReports/allEntities/Read | Přečtěte si sestavy o využití Office 365. |
-| Microsoft. Teams/schůze/allProperties/allTasks | Spravujte schůzky, včetně zásad schůzky, konfigurací a konferenčních mostů. |
-| Microsoft. Teams/Voice/allProperties/allTasks | Spravujte hlas, včetně zásad volání a inventáře a přiřazení telefonního čísla. |
-| Microsoft. Teams/callQuality/allProperties/Read | Přečte všechna data na řídicím panelu kvality volání (CQD). |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Office 365. usageReports/allEntities/Read | Přečtěte si sestavy o využití Office 365. |
+> | Microsoft. Teams/schůze/allProperties/allTasks | Spravujte schůzky, včetně zásad schůzky, konfigurací a konferenčních mostů. |
+> | Microsoft. Teams/Voice/allProperties/allTasks | Spravujte hlas, včetně zásad volání a inventáře a přiřazení telefonního čísla. |
+> | Microsoft. Teams/callQuality/allProperties/Read | Přečte všechna data na řídicím panelu kvality volání (CQD). |
 
 ### <a name="teams-communications-support-engineer-permissions"></a>Komunikace týmů podporuje oprávnění inženýra
 
@@ -1841,15 +1867,15 @@ Může řešit problémy s komunikací v rámci týmů pomocí pokročilých ná
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Teams/callQuality/allProperties/Read | Přečte všechna data na řídicím panelu kvality volání (CQD). |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Teams/callQuality/allProperties/Read | Přečte všechna data na řídicím panelu kvality volání (CQD). |
 
 ### <a name="teams-communications-support-specialist-permissions"></a>Komunikace týmů podpora Specialistových oprávnění
 
@@ -1857,15 +1883,15 @@ Může řešit problémy s komunikací v rámci týmů pomocí základních nás
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Teams/callQuality/Basic/Read | Přečte základní data na řídicím panelu kvality volání (CQD). |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Teams/callQuality/Basic/Read | Přečte základní data na řídicím panelu kvality volání (CQD). |
 
 ### <a name="teams-devices-administrator-permissions"></a>Týmy zařízení oprávnění správce
 
@@ -1873,13 +1899,13 @@ Může provádět úlohy související se správou na certifikovaných zařízen
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
-| Microsoft. Teams/Devices/Basic/Read | Spravujte všechny aspekty zařízení, která jsou certifikována pro týmy, včetně zásad konfigurace. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. Teams/Devices/Basic/Read | Spravujte všechny aspekty zařízení, která jsou certifikována pro týmy, včetně zásad konfigurace. |
 
 ### <a name="teams-service-administrator-permissions"></a>Oprávnění správce služby Teams
 
@@ -1887,75 +1913,77 @@ Může spravovat službu Microsoft Teams.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
->
->
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Directory/Groups/hiddenMembers/Read | Načte vlastnost groups. hiddenMembers v Azure Active Directory. |
-| Microsoft. Directory/Groups/Unified/appRoleAssignments/Update | Aktualizuje vlastnost groups. Unified v Azure Active Directory. |
-| Microsoft. Directory/groups. Unified/Basic/Update | Aktualizuje základní vlastnosti Microsoft 365 skupin. |
-| Microsoft. Directory/groups. Unified/Create | Vytvořte Microsoft 365 skupiny. |
-| Microsoft. Directory/groups. Unified/DELETE | Odstraní Microsoft 365 skupiny. |
-| Microsoft. Directory/groups. Unified/Members/Update | Aktualizuje členství Microsoft 365ch skupin. |
-| Microsoft. Directory/groups. Unified/Owners/Update | Aktualizuje vlastnictví skupin Microsoft 365. |
-| Microsoft. Directory/groups. Unified/Restore | Obnovit Microsoft 365 skupiny |
-| Microsoft. Directory/servicePrincipals/managePermissionGrantsForGroup. Microsoft-All-Application-Permissions | Udělení souhlasu pro delegovaná oprávnění jménem skupiny |
-| Microsoft. Office 365. Network/Performance/allProperties/Read | Přečtěte si stránky výkon sítě v centru pro správu M365. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. skypeForBusiness/allEntities/allTasks | Umožňuje spravovat všechny aspekty Online Skypu pro firmy. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-| Microsoft. Office 365. usageReports/allEntities/allProperties/Read | Přečtěte si sestavy o využití Office 365. |
-| Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
-| Microsoft. Teams/allEntities/allProperties/allTasks | Spravujte všechny prostředky v týmech. |
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Directory/Groups/hiddenMembers/Read | Načte vlastnost groups. hiddenMembers v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Unified/appRoleAssignments/Update | Aktualizuje vlastnost groups. Unified v Azure Active Directory. |
+> | Microsoft. Directory/groups. Unified/Basic/Update | Aktualizuje základní vlastnosti Microsoft 365 skupin. |
+> | Microsoft. Directory/groups. Unified/Create | Vytvořte Microsoft 365 skupiny. |
+> | Microsoft. Directory/groups. Unified/DELETE | Odstraní Microsoft 365 skupiny. |
+> | Microsoft. Directory/groups. Unified/Members/Update | Aktualizuje členství Microsoft 365ch skupin. |
+> | Microsoft. Directory/groups. Unified/Owners/Update | Aktualizuje vlastnictví skupin Microsoft 365. |
+> | Microsoft. Directory/groups. Unified/Restore | Obnovit Microsoft 365 skupiny |
+> | Microsoft. Directory/servicePrincipals/managePermissionGrantsForGroup. Microsoft-All-Application-Permissions | Udělení souhlasu pro delegovaná oprávnění jménem skupiny |
+> | Microsoft. Office 365. Network/Performance/allProperties/Read | Přečtěte si stránky výkon sítě v centru pro správu M365. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. skypeForBusiness/allEntities/allTasks | Umožňuje spravovat všechny aspekty Online Skypu pro firmy. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> | Microsoft. Office 365. usageReports/allEntities/allProperties/Read | Přečtěte si sestavy o využití Office 365. |
+> | Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. Teams/allEntities/allProperties/allTasks | Spravujte všechny prostředky v týmech. |
 
 ### <a name="usage-summary-reports-reader-permissions"></a>Oprávnění čtenáře sestav souhrnu využití
 V M365 analýza využití a hodnocení produktivity se můžou zobrazit jenom agregace na úrovni tenanta.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Office 365. usageReports/allEntities/Standard/Read | Přečtěte si agregované sestavy využití Office 365 na úrovni tenanta. |
-| Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort.|
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Office 365. usageReports/allEntities/Standard/Read | Přečtěte si agregované sestavy využití Office 365 na úrovni tenanta. |
+> | Microsoft. Office 365. WebPort/allEntities/Standard/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort.|
 
 ### <a name="user-administrator-permissions"></a>Oprávnění správce uživatele
 Může spravovat všechny aspekty uživatelů a skupin, včetně resetování hesel pro omezené správce.
 
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. Directory/appRoleAssignments/Create | Vytvořte appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/appRoleAssignments/DELETE | Odstraní appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/appRoleAssignments/Update | Aktualizujte appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/Contacts/Basic/Update | Aktualizuje základní vlastnosti kontaktů v Azure Active Directory. |
-| Microsoft. Directory/Contacts/Create | Vytvoří kontakty v Azure Active Directory. |
-| Microsoft. Directory/Contacts/DELETE | Odstraní kontakty v Azure Active Directory. |
-| Microsoft. Directory/entitlementManagement/allProperties/allTasks | Vytvářejte a odstraňujte prostředky a přečtěte si a aktualizujte všechny vlastnosti ve správě nároků ve službě Azure AD. |
-| Microsoft. Directory/Groups/appRoleAssignments/Update | Aktualizuje vlastnost groups. appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/Groups/Basic/Update | Aktualizuje základní vlastnosti pro skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/Create | Vytvořte skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/createAsOwner | Vytvořte skupiny v Azure Active Directory. Tvůrce se přidá jako první vlastník a vytvořený objekt se počítá s kvótou vytvořenou pro objekty tvůrce 250. |
-| Microsoft. Directory/Groups/DELETE | Odstraní skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/hiddenMembers/Read | Načte vlastnost groups. hiddenMembers v Azure Active Directory. |
-| Microsoft. Directory/Groups/Members/Update | Aktualizuje vlastnost groups. Members v Azure Active Directory. |
-| Microsoft. Directory/Groups/Owners/Update | Aktualizuje vlastnost groups. Owners v Azure Active Directory. |
-| Microsoft. Directory/skupiny/obnovení | Obnovte skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/Settings/Update | Aktualizuje vlastnost groups. Settings v Azure Active Directory. |
-| Microsoft. Directory/Users/appRoleAssignments/Update | Umožňuje aktualizovat vlastnost Users. appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/Users/assignLicense | Spravujte licence na uživatele v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/Basic/Update | Umožňuje aktualizovat základní vlastnosti pro uživatele v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/vytvořit | Vytvářejte uživatele ve službě Azure Active Directory. |
-| Microsoft. Directory/Users/DELETE | Umožňuje odstranit uživatele v Azure Active Directory. |
-| Microsoft. Directory/Users/invalidateAllRefreshTokens | Zruší platnost všech tokenů aktualizace uživatele v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/správce/aktualizace | Umožňuje aktualizovat vlastnost Users. Manager v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/heslo/aktualizace | Aktualizuje hesla pro všechny uživatele v Azure Active Directory. Další podrobnosti najdete v online dokumentaci. |
-| Microsoft. Directory/Users/Restore | Obnovení odstraněných uživatelů v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/userPrincipalName/Update | Umožňuje aktualizovat vlastnost Users. userPrincipalName v Azure Active Directory. |
-| Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
-| Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
-| Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Directory/appRoleAssignments/Create | Vytvořte appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/appRoleAssignments/DELETE | Odstraní appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/appRoleAssignments/Update | Aktualizujte appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/Contacts/Basic/Update | Aktualizuje základní vlastnosti kontaktů v Azure Active Directory. |
+> | Microsoft. Directory/Contacts/Create | Vytvoří kontakty v Azure Active Directory. |
+> | Microsoft. Directory/Contacts/DELETE | Odstraní kontakty v Azure Active Directory. |
+> | Microsoft. Directory/entitlementManagement/allProperties/allTasks | Vytvářejte a odstraňujte prostředky a přečtěte si a aktualizujte všechny vlastnosti ve správě nároků ve službě Azure AD. |
+> | Microsoft. Directory/Groups/appRoleAssignments/Update | Aktualizuje vlastnost groups. appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Basic/Update | Aktualizuje základní vlastnosti pro skupiny v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Create | Vytvořte skupiny v Azure Active Directory. |
+> | Microsoft. Directory/Groups/createAsOwner | Vytvořte skupiny v Azure Active Directory. Tvůrce se přidá jako první vlastník a vytvořený objekt se počítá s kvótou vytvořenou pro objekty tvůrce 250. |
+> | Microsoft. Directory/Groups/DELETE | Odstraní skupiny v Azure Active Directory. |
+> | Microsoft. Directory/Groups/hiddenMembers/Read | Načte vlastnost groups. hiddenMembers v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Members/Update | Aktualizuje vlastnost groups. Members v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Owners/Update | Aktualizuje vlastnost groups. Owners v Azure Active Directory. |
+> | Microsoft. Directory/skupiny/obnovení | Obnovte skupiny v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Settings/Update | Aktualizuje vlastnost groups. Settings v Azure Active Directory. |
+> | Microsoft. Directory/Users/appRoleAssignments/Update | Umožňuje aktualizovat vlastnost Users. appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/Users/assignLicense | Spravujte licence na uživatele v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/Basic/Update | Umožňuje aktualizovat základní vlastnosti pro uživatele v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/vytvořit | Vytvářejte uživatele ve službě Azure Active Directory. |
+> | Microsoft. Directory/Users/DELETE | Umožňuje odstranit uživatele v Azure Active Directory. |
+> | Microsoft. Directory/Users/invalidateAllRefreshTokens | Zruší platnost všech tokenů aktualizace uživatele v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/správce/aktualizace | Umožňuje aktualizovat vlastnost Users. Manager v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/heslo/aktualizace | Aktualizuje hesla pro všechny uživatele v Azure Active Directory. Další podrobnosti najdete v online dokumentaci. |
+> | Microsoft. Directory/Users/Restore | Obnovení odstraněných uživatelů v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/userPrincipalName/Update | Umožňuje aktualizovat vlastnost Users. userPrincipalName v Azure Active Directory. |
+> | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+> | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
+> | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
 
 ## <a name="role-template-ids"></a>ID šablon rolí
 

@@ -138,7 +138,7 @@
       href: service-fabric-best-practices.md
 - name: 'Monitorování, auditování a provoz'
   items:
-    - name: Rozšířená ochrana před internetovými útoky
+    - name: Ochrana před hrozbami
       href: threat-detection.md
     - name: Protokolování a auditování Azure
       href: log-audit.md

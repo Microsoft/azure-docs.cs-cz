@@ -3,12 +3,12 @@ title: Nasazení Live video Analytics na Azure Stack Edge
 description: V tomto článku jsou uvedené kroky, které vám pomůžou nasadit živé video analýzy na Azure Stack hraničních zařízeních.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: f33b6fb0f0dc5c5b733a0fcb021e2792ce9c6ec6
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: cc3dcfaa96034e807d3d82e75eedc0f6a82eff08
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019592"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551004"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Nasazení Live video Analytics na Azure Stack Edge
 
@@ -24,7 +24,7 @@ Pro Live video Analytics nasadíme prostřednictvím IoT Hub, ale prostředky Az
 * Předplatné Azure, ke kterému máte [oprávnění vlastníka](../../role-based-access-control/built-in-roles.md#owner).
 * Prostředek [Azure Stack Edge](../../databox-online/azure-stack-edge-gpu-deploy-prep.md)
    
-* [IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
+* [IoT Hubu](../../iot-hub/iot-hub-create-through-portal.md)
 * [Instanční objekt](./create-custom-azure-resource-manager-role-how-to.md#create-service-principal) pro modul Live video Analytics.
 
    Použijte jednu z těchto oblastí, kde je IoT Hub k dispozici: Východní USA 2, Střed USA, Střed USA – sever, Japonsko – východ, Západní USA 2, Středozápadní USA, Kanada – východ, Velká Británie – jih, Francie – střed, Francie – jih, Švýcarsko – sever, Švýcarsko – západ a Japonsko – západ.
@@ -42,38 +42,7 @@ Azure Stack Edge je řešení typu hardware jako služba a hraniční výpočetn
 * [Azure Stack vytváření prostředků Edge/Data Box Gateway](../../databox-online/azure-stack-edge-deploy-prep.md)
 * [Instalace a nastavení](../../databox-online/azure-stack-edge-deploy-install.md)
 * [Připojení a aktivace](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
-
-### <a name="attach-an-iot-hub-to-azure-stack-edge"></a>Připojení IoT Hub k Azure Stack Edge
-
-1. V [Azure Portal](https://ms.portal.azure.com)přejděte na prostředek Azure Stack Edge a klikněte na přehled. V pravém podokně na dlaždici výpočty vyberte Začínáme.
-
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge.png" alt-text="Azure Stack Edge":::
-1. Na dlaždici konfigurace hraničních výpočtů vyberte Konfigurovat výpočetní prostředky.
-1. V okně Konfigurace hraničních výpočtů zadejte následující:
-    
-    | Pole|Hodnota|
-    |---|---|
-    |IoT Hub|Vyberte z nových nebo existujících.<br/>Ve výchozím nastavení se k vytváření prostředků IoT používá úroveň Standard (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek.<br/>V každém případě IoT Hub prostředek používá stejné předplatné a skupinu prostředků, které používají prostředek Azure Stack Edge.|
-    |Name|Zadejte název prostředku IoT Hub.|
-
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-get-started.png" alt-text="Azure Stack Edge":::
-1. Vyberte **Vytvořit**. Vytvoření prostředku IoT Hub trvá několik minut. Po vytvoření prostředku IoT Hub se aktualizuje a zobrazí **se konfigurace výpočtů na dlaždici** . Pokud chcete ověřit, jestli je role hraničního výpočtu nakonfigurovaná, vyberte na dlaždici **Konfigurovat výpočty** možnost **Zobrazit výpočetní** prostředky.
-
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/edge-compute-config.png" alt-text="Azure Stack Edge":::
-
-    > [!NOTE]
-    > Pokud je dialogové okno Konfigurovat výpočetní prostředí uzavřeno, než je IoT Hub přidružen k prostředku Azure Stack Edge, IoT Hub vytvořen, ale není zobrazen v konfiguraci výpočtů. Znovu načtěte stránku po několika minutách a podívejte se, jak se zobrazí.
-    
-    Když se na hraničním zařízení nastaví role hraničního zpracování, vytvoří se dvě zařízení: zařízení IoT a zařízení IoT Edge. Obě zařízení je možné zobrazit v prostředku IoT Hub. V zařízení IoT Edge je spuštěn také modul runtime IoT Edge. V tomto okamžiku je k dispozici pouze Platforma Linux pro vaše zařízení IoT Edge.
-    
-    Jakmile budou všechny informace vyplněny, zobrazí se na kartě Konfigurace hraničních služeb něco podobného:
-    
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/configure-edge-compute.png" alt-text="Azure Stack Edge":::
- 
+* [Připojení IoT Hub k Azure Stack Edge](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-configure-compute#configure-compute)
 ### <a name="enable-compute-prerequisites-on-the-azure-stack-edge-local-ui"></a>Povolení výpočetních požadavků v místním uživatelském rozhraní Azure Stack Edge
 
 Než budete pokračovat, ujistěte se, že:
@@ -89,7 +58,7 @@ Než budete pokračovat, ujistěte se, že:
         * Vybrat použít – tato operace by měla trvat přibližně 2 minuty.
         
         > [!div class="mx-imgBorder"]
-        > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-commercial.png" alt-text="Azure Stack Edge":::
+        > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-commercial.png" alt-text=" Požadavky na výpočetní výkon v místním uživatelském rozhraní Azure Stack Edge":::
 
         * Pokud není DNS nakonfigurovaný pro Kubernetes rozhraní API a Azure Stack hraniční prostředek, můžete aktualizovat soubor hostitele vašeho okna.
         
@@ -146,7 +115,8 @@ V tomto případě provedeme pouze konkrétní kroky od [nasazení živých vide
       ```
 
       > [!NOTE]
-      > Oddíl "vazby" ve formátu JSON má 2 položky. Nebojte se aktualizovat vazby hraničních zařízení, ale ujistěte se, že tyto adresáře existují.
+      > Oddíl "vazby" ve formátu JSON má 2 položky. Adresáře uvedené v části vazba výše se automaticky vytvoří pomocí LVA.  
+        Nebojte se aktualizovat vazby hraničních zařízení, ale pokud to uděláte, ujistěte se, že tyto adresáře existují v zařízení.
     
     * "/var/lib/azuremediaservices:/var/lib/azuremediaservices": používá se k navázání trvalých konfiguračních dat aplikace z kontejneru a jeho uložení na hraničním zařízení.
     * "/var/Media:/var/Media": Tato akce váže mediální složky mezi hraničním zařízením a kontejnerem. Slouží k ukládání nahrávek videa při spuštění topologie mediálního grafu, která podporuje ukládání videoklipů do hraničního zařízení.
@@ -169,13 +139,14 @@ Tento postup popisuje vytvoření uživatele brány a nastavení sdílených slo
 1. Otevřete Azure Portal a přejít na prostředek Azure Stack Edge.
 1. Vytvořte **uživatele brány** , který bude mít přístup ke sdíleným složkám.
     
-    1. V levém navigačním podokně klikněte na **Brána – >uživatelům**.
-    1. Klikněte na **+ Přidat uživatele** do nastavení uživatelské jméno a heslo. (Doporučeno: `lvauser` ).
+    1. V levém navigačním podokně klikněte na **Brána cloudového úložiště**.
+    1. V levém navigačním podokně klikněte na **Uživatelé** .
+    1. Klikněte na možnost Ion **+ Přidat uživatele** k nastavení uživatelské jméno a heslo. (Doporučeno: `lvauser` ).
     1. Klikněte na **Přidat**.
     
 1. Vytvořte **místní sdílenou složku** pro zachování živé analýzy videí.
 
-    1. Klikněte na **Brána – >sdílené složky**.
+    1. Klikněte na **Brána cloudového úložiště – >sdílené složky**.
     1. Klikněte na **+ Přidat sdílené složky**.
     1. Nastavte název sdílené složky. (Doporučeno: `lva` ).
     1. Ponechte typ sdílení jako SMB.
@@ -185,12 +156,15 @@ Tento postup popisuje vytvoření uživatele brány a nastavení sdílených slo
     1. Klikněte na **vytvořit**.
         
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/local-share.png" alt-text="Azure Stack Edge":::
-    
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/local-share.png" alt-text="Místní sdílení":::  
+
+    > [!TIP]
+    > Pomocí klienta Windows připojeného k vašemu Azure Stack Edge se připojte ke sdíleným složkám SMB podle kroků [uvedených v tomto dokumentu](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share).    
+
 1. Vytvořte vzdálenou sdílenou složku pro úložiště synchronizace souborů.
 
-    1. Nejdřív vytvořte účet úložiště objektů BLOB ve stejné oblasti.
-    1. Klikněte na **Brána – >sdílené složky**.
+    1. Nejdřív vytvořte účet Blob Storage ve stejné oblasti kliknutím na **Brána cloudového úložiště Gateway – >účty úložiště**.
+    1. Klikněte na **Brána cloudového úložiště – >sdílené složky**.
     1. Klikněte na **+ Přidat sdílené složky**.
     1. Nastavte název sdílené složky. (Doporučeno: médium).
     1. Ponechte typ sdílení jako SMB.
@@ -203,10 +177,30 @@ Tento postup popisuje vytvoření uživatele brány a nastavení sdílených slo
     1. Klikněte na **vytvořit**.    
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/remote-share.png" alt-text="Azure Stack Edge"
-            }]
-        }
-    }
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/remote-share.png" alt-text="Vzdálená sdílená složka":::
+    
+    
+1. Pokud chcete použít připojení svazků, aktualizujte možnosti vytvoření kontejneru živého okraje video Analytics v modulu vytváření kontejnerů (viz bod 4 v [dokumentu přidat moduly](deploy-iot-edge-device.md#add-modules)).
+
+   ```json
+      "createOptions": 
+         {
+             "HostConfig": 
+             {
+                 "Binds": 
+                 [
+                     "/var/lib/azuremediaservices:/var/lib/azuremediaservices"
+                 ],
+                 "Mounts": 
+                 [
+                     {
+                         "Target": "/var/media",
+                         "Source": "media",
+                         "Type": "volume"
+                     }
+                 ]
+             }
+         }
     ```
 
 ### <a name="verify-that-the-module-is-running"></a>Ověřte, že je modul spuštěný.
@@ -219,7 +213,7 @@ Pokud chcete ověřit, že je modul spuštěný, udělejte toto:
 1. Vyberte dlaždici moduly. Tím přejdete do okna moduly. V seznamu modulů Identifikujte modul, který jste nasadili. Běhový stav modulu, který jste přidali, by měl být spuštěný.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/iot-edge-custom-module.png" alt-text="Azure Stack Edge":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/iot-edge-custom-module.png" alt-text="Vlastní modul":::
 
 ### <a name="configure-the-azure-iot-tools-extension"></a>Konfigurace rozšíření Azure IoT Tools
 

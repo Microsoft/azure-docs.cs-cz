@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: ff9bd328dd98fbd614a3bb63a1edddc2027d97b2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f0bb354bce0c4696f60e2be5c6186760518c7431
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879777"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549182"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Kurz: vytvoření klasifikačního modelu pomocí automatizovaného ML v Azure Machine Learning
 
@@ -94,7 +94,7 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
        
     1. Ověřte, zda je formulář **nastavení a náhled** vyplněný následujícím způsobem, a vyberte možnost **Další**.
         
-        Pole|Popis| Hodnota pro kurz
+        Pole|Description| Hodnota pro kurz
         ---|---|---
         Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělených
         Oddělovač|Jeden nebo více znaků pro určení hranice mezi &nbsp; oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech. |Čárka
@@ -102,8 +102,8 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
         Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).| Všechny soubory mají stejná záhlaví.
         Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádné
 
-    1. Formulář **schématu** umožňuje další konfiguraci dat pro tento experiment. V tomto příkladu neprovedeme žádné výběry. Vyberte **Další**.
-
+    1. Formulář **schématu** umožňuje další konfiguraci dat pro tento experiment. V tomto příkladu vyberte přepínač pro **day_of_week**, tak, aby se nezahrnul. Vyberte **Další**.
+         ![Formulář schématu](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
     1. Na formuláři **potvrdit podrobnosti** ověřte, že se informace shodují s dříve vyplněnými **základními informacemi, úložištěm dat a výběrem souborů** a **nastaveními a náhledem** .
     
     1. Vyberte **vytvořit** a dokončete vytvoření datové sady.
@@ -128,7 +128,7 @@ Po načtení a konfiguraci dat můžete nastavit experiment. Tato instalace zahr
     1. Vyberte **+ vytvořit nový výpočetní** výkon a nakonfigurujte svůj cíl služby Compute. Výpočetní cíl je místní nebo cloudové prostředí, které se používá ke spuštění školicího skriptu nebo hostování nasazení služby. Pro tento experiment používáme cloudový výpočetní výkon. 
         1. Naplňte formulář **virtuálního počítače** a nastavte výpočetní výkon.
 
-            Pole | Popis | Hodnota pro kurz
+            Pole | Description | Hodnota pro kurz
             ----|---|---
             &nbsp;Priorita virtuálního počítače &nbsp; |Vyberte prioritu, kterou by měl váš experiment mít.| Vyhrazená
             &nbsp;Typ virtuálního počítače &nbsp;| Vyberte typ virtuálního počítače pro výpočetní výkon.|PROCESOR (jednotka ústředního zpracování)
@@ -136,7 +136,7 @@ Po načtení a konfiguraci dat můžete nastavit experiment. Tato instalace zahr
         
         1. Výběrem možnosti **Další** naplňte **formulář Konfigurovat nastavení**.
         
-            Pole | Popis | Hodnota pro kurz
+            Pole | Description | Hodnota pro kurz
             ----|---|---
             Název výpočetních prostředků |  Jedinečný název, který identifikuje váš výpočetní kontext. | automl – COMPUTE
             Minimální/maximální počet uzlů| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
@@ -159,7 +159,7 @@ Po načtení a konfiguraci dat můžete nastavit experiment. Tato instalace zahr
 
     1. Vyberte **Zobrazit další nastavení konfigurace** a vyplňte pole následujícím způsobem. Tato nastavení mají lepší kontrolu nad úlohou školení. V opačném případě se výchozí hodnoty aplikují na základě experimentů a výběrů dat.
 
-        Další &nbsp; Konfigurace|Popis|Hodnota &nbsp; pro &nbsp; kurz
+        Další &nbsp; Konfigurace|Description|Hodnota &nbsp; pro &nbsp; kurz
         ------|---------|---
         Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|AUC_weighted
         Vysvětlete nejlepší model| Automaticky zobrazuje vysvětlení nejlepšího modelu vytvořeného pomocí automatizovaného ML.| Povolit
@@ -170,12 +170,6 @@ Po načtení a konfiguraci dat můžete nastavit experiment. Tato instalace zahr
         
         Vyberte **Uložit**.
     
-    1. Vyberte **zobrazení nastavení featurization**. V tomto příkladu vyberte přepínač přepínacího tlačítka pro funkci **day_of_week** , aby se v tomto experimentu nezahrnula do featurization.
-
-        ![Featurization výběr](./media/tutorial-first-experiment-automated-ml/featurization-setting-config.gif)   
- 
-        Vyberte **Uložit**.
-
 1. Vyberte **Dokončit** pro spuštění experimentu. Po zahájení přípravy experimentu se otevře obrazovka s **podrobnostmi o spuštění**  se **stavem spuštění** v horní části. Tento stav se aktualizuje v průběhu experimentu. Oznámení se zobrazí také v pravém horním rohu studia, aby se informovalo o stavu experimentu.
 
 >[!IMPORTANT]

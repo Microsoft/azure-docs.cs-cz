@@ -5,18 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 04/11/2017
+ms.date: 02/03/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7cbcdb4b947e4b45a5473dc0f9f0252b5ad1d5c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8160859bb782ee8ffc4fef5ee03b61b6f54be1bb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442044"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548657"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory rozhraní API pro spolupráci B2B a přizpůsobení
 
@@ -67,6 +66,16 @@ Rozhraní API nabízí následující možnosti:
     "invitedUserType": "Member"
     ```
 
+## <a name="determine-if-a-user-was-already-invited-to-your-directory"></a>Určení, zda byl uživatel již pozván do vašeho adresáře
+
+Rozhraní API pro pozvánky můžete použít k určení, jestli už uživatel ve vašem tenantovi prostředků existuje. To může být užitečné, když vyvíjíte aplikaci, která používá rozhraní API pro pozvání k pozvání uživatele. Pokud uživatel ve vašem adresáři prostředků už existuje, neobdrží pozvánku, takže můžete nejdřív spustit dotaz, abyste zjistili, jestli už e-mail existuje jako hlavní název uživatele (UPN) nebo jiné přihlašovací vlastnost.
+
+1. Ujistěte se, že e-mailová doména uživatele není součástí ověřené domény vašeho tenanta prostředků.
+2. V tenantovi prostředků použijte následující příkaz získat dotaz uživatele, kde {0} je e-mailová adresa, kterou zvete:
+
+   ```
+   “userPrincipalName eq '{0}' or mail eq '{0}' or proxyAddresses/any(x:x eq 'SMTP:{0}') or signInNames/any(x:x eq '{0}') or otherMails/any(x:x eq '{0}')"
+   ```
 
 ## <a name="authorization-model"></a>Autorizační model
 
@@ -105,7 +114,7 @@ Po odeslání pozvánky externímu uživateli můžete pomocí rutiny **Get-Azur
 * **UserState** označuje, zda je pozvánka **PendingAcceptance** nebo **přijata**.
 * **UserStateChangedOn** zobrazuje časové razítko pro poslední změnu vlastnosti **userState** .
 
-K filtrování výsledků podle **userState**můžete použít možnost **Filter** . Následující příklad ukazuje, jak filtrovat výsledky, aby se zobrazily pouze uživatelé, kteří mají nevyřízenou pozvánku. Tento příklad také ukazuje možnost **formátovat seznam** , která umožňuje určit vlastnosti, které se mají zobrazit. 
+K filtrování výsledků podle **userState** můžete použít možnost **Filter** . Následující příklad ukazuje, jak filtrovat výsledky, aby se zobrazily pouze uživatelé, kteří mají nevyřízenou pozvánku. Tento příklad také ukazuje možnost **formátovat seznam** , která umožňuje určit vlastnosti, které se mají zobrazit. 
  
 
 ```powershell

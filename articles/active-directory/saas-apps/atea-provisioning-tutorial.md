@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2021
 ms.author: Zhchia
-ms.openlocfilehash: 51410bd86fa9679aea76f6d5c48f267ddec79026
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 67b114ac355b293db61d00b89816ab73aaa2e5b2
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430692"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550264"
 ---
 # <a name="tutorial-configure-atea-for-automatic-user-provisioning"></a>Kurz: Konfigurace Atea pro Automatické zřizování uživatelů
 
@@ -48,7 +48,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 ## <a name="step-2-configure-atea-to-support-provisioning-with-azure-ad"></a>Krok 2. Konfigurace Atea pro podporu zřizování pomocí Azure AD
 
-Aby bylo možné nakonfigurovat intranet v aplikaci Iris tak, aby podporoval zřizování s Azure AD One, musí získat **adresu URL tenanta** a **tajný token** tím, že vyřadí e-mail [týmu podpory Atea](mailto:servicedesk@atea.dk). Tyto hodnoty se zadají do pole **token tajného klíče** a **adresy URL klienta** na kartě zřizování aplikace Atea v Azure Portal.
+Konfigurace Atea pro podporu zřizování s Azure AD – napište e-mail na Atea tým podpory. <SSO.Support@atea.com>
 
 ## <a name="step-3-add-atea-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání Atea z Galerie aplikací Azure AD
 

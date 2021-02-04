@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2021
 ms.author: Zhchia
-ms.openlocfilehash: 89e64b6e8018fafb22820e8594bc2b3c888bb04a
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 43b783d9462205b01d3ac4de0c5779fdc9864470
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732142"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550423"
 ---
 # <a name="tutorial-configure-fortes-change-cloud-for-automatic-user-provisioning"></a>Kurz: Konfigurace nezměněných cloudů pro Automatické zřizování uživatelů
 
@@ -50,11 +50,11 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 ## <a name="step-2-configure-fortes-change-cloud-to-support-provisioning-with-azure-ad"></a>Krok 2. Konfigurace Fort změn v cloudu pro podporu zřizování s Azure AD
 
-1. Přihlaste se pomocí účtu správce, aby se neforta změna cloudu. Klikněte na **ikonu nastavení** a potom přejděte na **Nastavení SCIM**.
+1. Přihlaste se pomocí účtu správce, aby se neforta změna cloudu. Klikněte na **ikonu nastavení** a potom přejděte k **zřizování uživatelů (SCIM)**.
 
     [![SCIM změny nastavení ](media/fortes-change-cloud-provisioning-tutorial/scim-settings.png) cloudu](media/fortes-change-cloud-provisioning-tutorial/scim-settings.png#lightbox)
 
-2. V novém okně zkopírujte a uložte **primární token**. Tato hodnota se zadá do pole token tajného kódu na kartě zřizování v cloudové aplikaci změny ve Azure Portal.
+2. V novém okně zkopírujte a uložte **adresu URL tenanta** a **primární token**. Adresa URL tenanta se zadá do pole **Adresa URL tenanta** * a primární token se zadá do pole **tajný klíč** * tokenu na kartě zřizování v rámci této Azure Portal.
      
       [![Primární token, který se mění, se změní na Cloud.](media/fortes-change-cloud-provisioning-tutorial/primary-token.png)](media/fortes-change-cloud-provisioning-tutorial/primary-token.png#lightbox)
 

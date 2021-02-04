@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 02/03/2021
 ms.author: alkohli
-ms.openlocfilehash: c23022a1a1ee7796ada32d9111855b9e3bfb7d46
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 6e9e1319b90ab859c63c022e478bc26c4b8aedeb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539617"
+ms.locfileid: "99550214"
 ---
 # <a name="run-existing-iot-edge-modules-from-azure-stack-edge-pro-fpga-devices-on-azure-stack-edge-pro-gpu-device"></a>Spouštět existující IoT Edge moduly ze zařízení Azure Stack Edge pro FPGA na zařízení s grafickým procesorem Azure Stack Edge pro
 
@@ -205,8 +205,7 @@ K nastavení paměti a využití procesoru použijte omezení procesoru pro modu
 ```
 Paměť a specifikace procesoru nejsou nutné, ale obecně dobrým postupem. `requests`Není-li parametr zadán, jsou hodnoty nastavené v omezeních použity jako požadované minimum. 
 
-Použití sdílené paměti pro moduly také vyžaduje jiný způsob. <!-- should we give an example-->
-
+Použití sdílené paměti pro moduly také vyžaduje jiný způsob. Například můžete použít hostitelský režim IPC pro přístup ke sdílené paměti mezi živými a odvozenými řešeními, jak je popsáno v tématu [nasazení živých videí Analytics na Azure Stack Edge](../media-services/live-video-analytics-edge/deploy-azure-stack-edge-how-to.md#deploy-live-video-analytics-edge-module-using-azure-portal).
 
 
 ## <a name="web-proxy"></a>Webový proxy server 

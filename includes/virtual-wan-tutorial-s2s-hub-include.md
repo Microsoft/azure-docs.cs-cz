@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 31cfb321a60e700aecfdc1288ccdd379b89658ba
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 5630eba4f1be9aead6ff1a89bc036bcc548c3646
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99531665"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99541311"
 ---
 1. Vyhledejte virtuální síť WAN, kterou jste vytvořili. Na stránce virtuální síť WAN v části **připojení** vyberte **rozbočovače**.
 2. Na stránce centra vyberte **+ nové centrum** a otevřete stránku **vytvořit virtuální rozbočovač** .
@@ -25,7 +25,7 @@ ms.locfileid: "99531665"
 
    * Oblast (dříve označovaná jako umístění)
    * Name
-   * Privátní adresní prostor centra Minimální adresní prostor je/24 pro vytvoření centra, což znamená, že při vytváření dojde k chybě z rozsahu od/25 do/32. Doporučujeme však přidělit adresní prostor/23 nebo větší, aby bylo zajištěno, že bude k dispozici dostatek IP adres pro podporu budoucích služeb, které lze nasadit ve virtuálním centru. Azure Virtual WAN je spravovaná služba Microsoftu vytvoří ve virtuálním centru příslušné podsítě pro různé brány nebo služby (např. brány VPN, brány ExpressRoute, uživatelské VPN/brány, brány firewall, směrování atd.). Není nutné, aby uživatel explicitně naplánoval adresní prostor podsítě pro služby ve virtuálním rozbočovači, protože společnost Microsoft to dělá jako součást služby.
+   * Privátní adresní prostor centra Minimální adresní prostor je/24 pro vytvoření centra, což znamená, že při vytváření dojde k chybě z rozsahu od/25 do/32. Azure Virtual WAN, což je spravovaná služba Microsoftu, vytvoří ve virtuálním centru příslušné podsítě pro různé brány nebo služby (např. brány VPN, brány ExpressRoute, uživatelské VPN/brány typu Point-to-site, firewall, směrování atd.). Není nutné, aby uživatel explicitně naplánoval adresní prostor podsítě pro služby ve virtuálním rozbočovači, protože společnost Microsoft to dělá jako součást služby.
 4. Vyberte **Další: Site-to-site**.
 
     ![Snímek obrazovky zobrazuje podokno vytvořit virtuální rozbočovač s vybraným webem na webu.](./media/virtual-wan-tutorial-hub-include/site-to-site.png "Site-to-Site")

@@ -478,6 +478,8 @@
       href: hyper-v-vmm-powershell-resource-manager.md
     - name: Přidání runbooků automatizace do plánů obnovení
       href: site-recovery-runbook-automation.md
+    - name: Šablony ARM
+      href: asr-arm-templates.md
 - name: Monitorování
   items:
     - name: Běžné otázky týkající se monitorování

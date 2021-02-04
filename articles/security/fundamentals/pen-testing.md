@@ -4,8 +4,7 @@ description: Tento článek poskytuje přehled procesu testování průniku a o 
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
-editor: TomSh
+manager: rkarlin
 ms.assetid: 695d918c-a9ac-4eba-8692-af4526734ccc
 ms.service: security
 ms.subservice: security-fundamentals
@@ -13,22 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2020
+ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: 84229ce3562f9cdcc4b55704eaa4f3b891a43d75
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 9f65133f622c71189f35a1533e278ca09ab02085
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968938"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550197"
 ---
 # <a name="penetration-testing"></a>Testování průniku
 
 Jednou z výhod používání Azure pro testování a nasazení aplikací je, že můžete rychle vytvořit prostředí vytvořená. Nemusíte se starat o přemístění, získání a "rackování a skládání" vašeho vlastního místního hardwaru.
 
 Rychlé vytváření prostředí je skvělé – ale pořád je potřeba zajistit, abyste měli jistotu, že byste měli provést běžnou opatrnost z bezpečnostních důvodů. Jednou z věcí, které pravděpodobně chcete udělat, je testování aplikací, které nasazujete v Azure.
-
-Možná už víte, že Microsoft provádí [testování průniku našeho prostředí Azure](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e). Toto testování pomáhá zlepšovat Azure.
 
 Neprovádíme testování průniku vaší aplikace za vás, ale chápeme, že chcete a potřebujete provádět testování na vašich vlastních aplikacích. To je dobré, protože když vylepšujete zabezpečení vašich aplikací, pomůžete zajistit vyšší zabezpečení celého ekosystému Azure.
 

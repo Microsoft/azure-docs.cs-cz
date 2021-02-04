@@ -4,12 +4,12 @@ description: Naučte se zobrazovat a dotazovat se na data telemetrie Azure Funct
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 2a991157962b0588e3d49510e8a82a9abcfb9aed
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 9e03a36824853a3e43bbf8628fd12481cfbcaf25
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493766"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549554"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Analýza telemetrie Azure Functions v Application Insights 
 
@@ -139,6 +139,18 @@ Při spuštění v [plánu spotřeby](consumption-plan.md)se *náklady* na spuš
 Následující dotazy telemetrie jsou specifické pro metriky, které mají vliv na náklady na spouštění funkcí v plánu spotřeby.
 
 [!INCLUDE [functions-consumption-metrics-queries](../../includes/functions-consumption-metrics-queries.md)]
+
+## <a name="azure-monitor-metrics"></a>Azure Monitor metriky
+
+Kromě dat telemetrie shromažďovaných v Application Insights můžete také získat data o tom, jak aplikace Function App běží z [Azure monitor metrik](../azure-monitor/platform/data-platform-metrics.md). Spolu s běžnými [metrikami dostupnými pro App Service aplikace jsou k dispozici](../app-service/web-sites-monitor.md#understand-metrics)dvě metriky, které jsou specifické pro funkce, které mají zájem:
+
+| Metric | Popis |
+| ---- | ---- |
+| **FunctionExecutionCount** | Čítač spuštění funkce označuje počet provedení aplikace Function App. To koreluje s počtem pokusů, kolikrát je funkce ve vaší aplikaci spuštěná. Tato metrika se v současné době nepodporuje pro plány Premium a vyhrazené (App Service) spuštěné v systému Linux. |
+| **FunctionExecutionUnits** | Jednotky spuštění funkce jsou kombinací doby provádění a využití paměti.  Data paměti nejsou metrikou, která je aktuálně dostupná prostřednictvím Azure Monitor. Pokud ale chcete optimalizovat využití paměti ve vaší aplikaci, může použít data čítače výkonu shromažďovaná nástrojem Application Insights. Tato metrika se v současné době nepodporuje pro plány Premium a vyhrazené (App Service) spuštěné v systému Linux.|
+
+Další informace o výpočtu nákladů na plán spotřeby pomocí Application Insights dat najdete v tématu [odhad nákladů na plán spotřeby](functions-consumption-costs.md). Další informace o tom, jak zobrazit metriky pomocí Průzkumníka monitorování, najdete v tématu [Začínáme s Azure Průzkumník metrik](../azure-monitor/platform/metrics-getting-started.md).
+
 
 ## <a name="next-steps"></a>Další kroky
 

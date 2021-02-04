@@ -2,13 +2,13 @@
 title: Úspora nákladů pomocí rezervované instance řešení Azure VMware
 description: Naučte se koupit rezervovanou instanci pro řešení Azure VMware.
 ms.topic: how-to
-ms.date: 11/12/2020
-ms.openlocfilehash: 74344889cd107350e5026c4a0369382fb9c7ef51
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.date: 02/03/2021
+ms.openlocfilehash: 227ea9274f70cc58468e7e0b3ddcf8239f5b7f5b
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600868"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550971"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Úspora nákladů pomocí řešení Azure VMware
 
@@ -54,11 +54,11 @@ Tyto požadavky se vztahují k zakoupení rezervované instance vyhrazeného hos
 
    | Pole        |  Popis |
    | ------------ | ------------ |
-   | Předplatné | Předplatné použité pro platbu za rezervaci. Náklady na kapacitu se účtují pomocí způsobu platby zvoleného pro toto předplatné. Typ předplatného musí být smlouva Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P), smlouva o zákaznících Microsoftu nebo individuální předplatné s tarify průběžných plateb (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). Poplatky se odečítají od předplatného Azure (dříve nazývaného peněžní závazek), pokud jsou dostupné, nebo se účtují jako nadlimitní využití. U předplatného s tarify průběžných plateb se poplatky účtují na platební kartu předplatného nebo na platební metodu faktury. |
+   | Předplatné | Předplatné použité pro platbu za rezervaci. Náklady na kapacitu se účtují pomocí způsobu platby zvoleného pro toto předplatné. Typ předplatného musí být smlouva Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P), smlouva o zákaznících Microsoftu nebo individuální předplatné s tarify průběžných plateb (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). Poplatky se strhávají z Azure Prepaymentu (dřív označovaný jako peněžní závazek), pokud je k dispozici, nebo se účtují jako nadlimitní využití. U předplatného s tarify průběžných plateb se poplatky účtují na platební kartu předplatného nebo na platební metodu faktury. |
    | Obor        | Rozsah rezervace může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete:<br><ul><li><b>Rozsah jedné skupiny prostředků</b> – aplikuje slevu na rezervované prostředky jenom na ty, které jsou ve vybrané skupině prostředků.</li><li><b>Rozsah jednoho předplatného</b> – aplikuje slevu na rezervované prostředky ve vybraném předplatném.</li><li><b>Sdílený rozsah</b> – použije slevu rezervace na odpovídající prostředky v oprávněných předplatných, která jsou v účetním kontextu. Pro zákazníky se smlouvou EA je účetním kontextem registrace. U individuálních předplatných se sazbami pro průběžné platby jsou rozsahem fakturace všechna oprávněná předplatná vytvořená správcem účtu.</li></ul>       |
    | Oblast       | Oblast Azure, která je pokrytá rezervací.   |
    | Velikost hostitele    | AV36    |
-   | Pojem         | Jeden rok nebo tři roky.  |
+   | Označení         | Jeden rok nebo tři roky.  |
    | Množství     | Počet instancí, které se mají koupit v rámci rezervace Množství je počet spuštěných hostitelů řešení Azure VMware, které mohou získat fakturační slevu.    |
 
 ### <a name="buy-reserved-instances-for-a-csp-subscription"></a>Nákup rezervovaných instancí pro předplatné CSP
@@ -87,7 +87,7 @@ Poskytovatelé CSP, kteří chtějí koupit rezervované instance pro své záka
    | Obor        | Rozsah rezervace může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete:<br><ul><li><b>Rozsah jedné skupiny prostředků</b> – aplikuje slevu na rezervované prostředky jenom na ty, které jsou ve vybrané skupině prostředků.</li><li><b>Rozsah jednoho předplatného</b> – aplikuje slevu na rezervované prostředky ve vybraném předplatném.</li><li><b>Sdílený rozsah</b> – použije slevu rezervace na odpovídající prostředky v oprávněných předplatných, která jsou v účetním kontextu. Pro zákazníky se smlouvou EA je účetním kontextem registrace. U individuálních předplatných se sazbami pro průběžné platby jsou rozsahem fakturace všechna oprávněná předplatná vytvořená správcem účtu.</li></ul>       |
    | Oblast       | Oblast Azure, která je pokrytá rezervací.   |
    | Velikost hostitele    | AV36    |
-   | Pojem         | Jeden rok nebo tři roky.  |
+   | Označení         | Jeden rok nebo tři roky.  |
    | Množství     | Počet instancí, které se mají koupit v rámci rezervace Množství je počet spuštěných hostitelů řešení Azure VMware, které mohou získat fakturační slevu.     |
 
 Další informace o tom, jak zobrazit zakoupené rezervace pro zákazníka, najdete v článku [zobrazení rezervací Azure jako poskytovatele Cloud Solution Provider (CSP)](../cost-management-billing/reservations/how-to-view-csp-reservations.md) .
@@ -121,7 +121,7 @@ Podrobnosti o rezervacích spravovaných zprostředkovatelem CSP najdete v téma
 >Po zakoupení rezervace nebudete moci provádět tyto typy změn přímo:
 >
 > - Existující oblast rezervace
-> - Skladová položka
+> - SKU
 > - Množství
 > - Doba trvání
 >
@@ -132,3 +132,12 @@ Podrobnosti o rezervacích spravovaných zprostředkovatelem CSP najdete v téma
 Rezervace je možné s určitými omezeními zrušit, vyměnit nebo refundovat. Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 Poskytovatelé CSP můžou zrušit, vyměnit nebo vrátit refundaci s určitými omezeními, která si zakoupili pro zákazníka. Další informace najdete v tématu [Správa, zrušení, výměna nebo refundace Microsoft Azure rezervacích pro zákazníky](/partner-center/azure-reservations-manage).
+
+## <a name="next-steps"></a>Další kroky
+
+Teď, když jste si pokryli, že jste si koupili rezervovanou instanci řešení Azure VMware, možná se budete chtít dozvědět něco:
+
+- [Vytváření posouzení řešení Azure VMware](../migrate/how-to-create-azure-vmware-solution-assessment.md).
+- [Správa DHCP pro řešení Azure VMware](manage-dhcp.md).
+- [Správa životního cyklu virtuálních počítačů řešení Azure VMware](lifecycle-management-of-azure-vmware-solution-vms.md).
+ 

@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 11/20/2020
+ms.date: 2/3/2021
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2330310b0bf4e165af71208477db128650a787cf
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: e058186d8848256bf97d99ee1b8b1ddae7d78383
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95496935"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550619"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Konfigurace prostorových kotev Azure v projektu Unity
 
@@ -27,32 +27,13 @@ Prostorová ukotvení Azure aktuálně podporuje Unity 2019,4 (LTS) s následuj�
 
 ## <a name="configuring-a-project"></a>Konfigurace projektu
 
-### <a name="add-the-unity-package-manager-packages-to-your-project"></a>[Přidejte do projektu balíčky správce balíčků Unity.](#tab/UPMPackage)
+### <a name="download-packages"></a>Stáhnout balíčky
+[!INCLUDE [Download Unity Packages](../../../includes/spatial-anchors-unity-download-packages.md)]
 
-Prostorové kotvy Azure pro Unity jsou aktuálně distribuované pomocí balíčků správce balíčků Unity (UPM). Tyto balíčky najdete v našem [registru npm](https://bintray.com/microsoft/AzureMixedReality-NPM). Další informace o práci s vymezenými Registry balíčků v projektu Unity najdete v [oficiální dokumentaci k](https://docs.unity3d.com/Manual/upm-scoped.html)Unity.
+### <a name="import-packages"></a>Import balíčků
+[!INCLUDE [Import Unity Packages](../../../includes/spatial-anchors-unity-import-packages.md)]
 
-#### <a name="add-the-registry-to-your-unity-project"></a>Přidání registru do projektu Unity
-
-1. V Průzkumníku souborů přejděte do složky vašeho projektu Unity `Packages` . Otevřete soubor manifestu projektu, `manifest.json` v textovém editoru.
-2. V horní části souboru na stejné úrovni jako v `dependencies` části přidejte následující položku pro zahrnutí registru prostorových kotev Azure do vašeho projektu. Tato `scopedRegistries` položka obsahuje informace o Unity, kde hledat balíčky sady SDK prostorových kotev Azure.
-
-    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-19&highlight=2-10)]
-
-#### <a name="add-the-sdk-packages-to-your-unity-project"></a>Přidat balíčky sady SDK do projektu Unity
-
-| Platforma | Název balíčku                                    |
-|----------|-------------------------------------------------|
-| Android  | com. Microsoft. Azure. prostorová ukotvení – sada SDK. Android |
-| iOS      | com. Microsoft. Azure. Spatial-Anchors-SDK. iOS     |
-| HoloLens | com. Microsoft. Azure. prostorová ukotvení – sada SDK. Windows |
-
-1. Pro každou platformu (Android/iOS/HoloLens), kterou chcete v projektu podporovat, přidejte položku s názvem balíčku a verzí balíčku do `dependencies` oddílu v manifestu projektu. Níže najdete příklad.
-
-    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-22&highlight=12-14)]
-
-2. Soubor uložte a zavřete `manifest.json` . Když se vrátíte do Unity, Unity by měl automaticky detekovat změnu manifestu projektu a načíst zadané balíčky. Můžete rozbalit `Packages` složku v zobrazení projektu a ověřit, zda byly naimportovány správné balíčky.
-
-#### <a name="android-only-configure-the-maintemplategradle-file"></a>Jenom Android: konfigurace souboru mainTemplate. Gradle
+### <a name="android-only-configure-the-maintemplategradle-file"></a>Jenom Android: konfigurace souboru mainTemplate. Gradle
 
 1. Přejít na **Upravit**  >  **nastavení projektu**  >  **Player**.
 2. Na **panelu Inspektor** pro **nastavení přehrávače** vyberte ikonu **Androidu** .
@@ -68,16 +49,6 @@ Prostorové kotvy Azure pro Unity jsou aktuálně distribuované pomocí balíč
 Až to bude hotové, vaše `dependencies` část by měla vypadat přibližně takto:
 
 [!code-gradle[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-android-gradle-setup.md?range=9-13&highlight=3-4)]
-
-### <a name="import-the-asset-package"></a>[Import balíčku assetů](#tab/UnityAssetPackage)
-
-> [!WARNING]
-> Distribuce balíčku prostředků Unity pro sadu SDK prostorových kotev Azure je zastaralá ve verzi 2.5.0 a už není k dispozici pro 2.6.0.
-
-1. Stáhněte si `AzureSpatialAnchors.unitypackage` soubor pro verzi, kterou chcete cílit ze [vydání GitHubu](https://github.com/Azure/azure-spatial-anchors-samples/releases).
-2. Postupujte podle pokynů uvedených [tady](https://docs.unity3d.com/Manual/AssetPackagesImport.html) a importujte balíček Asset Unity do svého projektu.
-
----
 
 ## <a name="next-steps"></a>Další kroky
 

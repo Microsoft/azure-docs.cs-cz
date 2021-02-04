@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: 26012b23a10f560158e3ba3919e12f5c15759189
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 86942f509ab067a53c47b5132c451f0585760050
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539311"
+ms.locfileid: "99549639"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>Registrace a kontrola místního SQL serveru
 
@@ -65,6 +65,9 @@ Pokud máte v úmyslu použít stávajícího uživatele správce serveru (SA) k
 #### <a name="creating-a-new-login-and-user"></a>Vytvoření nového přihlášení a uživatele
 
 Pokud chcete vytvořit nové přihlášení a uživatele, aby mohli kontrolovat SQL Server, postupujte podle následujících kroků:
+
+> [!Note]
+    > Všechny kroky níže lze provádět pomocí kódu, který je [zde](https://github.com/Azure/Purview-Samples/blob/master/TSQL-Code-Permissions/grant-access-to-on-prem-sql-databases.sql)k dispozici.
 
 1. Přejděte na SQL Server Management Studio (SSMS), připojte se k serveru, přejděte na zabezpečení, klikněte pravým tlačítkem na přihlásit a vytvořte nové přihlášení. Ujistěte se, že jste vybrali ověřování SQL.
 

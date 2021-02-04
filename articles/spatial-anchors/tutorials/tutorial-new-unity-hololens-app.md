@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 11/20/2020
+ms.date: 2/3/2021
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ee0bf9b4ce009f37dd1931d4ed030defa24e7d38
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 0233e58a404721586af0ae2fbdf78dbab6d424ed
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95996252"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550372"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Kurz: podrobné pokyny k vytvoření nové aplikace Unity pro HoloLens pomocí prostorových kotev Azure
 
@@ -140,36 +140,13 @@ Pomocí smyčky Update () můžeme zjistit, jestli je nějaká akce zařazená d
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>Získat sadu SDK prostorových kotev Azure
 
-## <a name="via-unity-package-manager-upm-package"></a>[Prostřednictvím balíčku UPM (Unity Package Manager)](#tab/UPMPackage)
+### <a name="download-packages"></a>Stáhnout balíčky
+[!INCLUDE [Download Unity Packages](../../../includes/spatial-anchors-unity-download-packages.md)]
 
-Tato metoda je kompatibilní s verzemi Unity 2019.1 +.
+### <a name="import-packages"></a>Import balíčků
+[!INCLUDE [Import Unity Packages](../../../includes/spatial-anchors-unity-import-packages.md)]
 
-### <a name="add-the-registry-to-your-unity-project"></a>Přidání registru do projektu Unity
-
-1. V Průzkumníku souborů přejděte do složky vašeho projektu Unity `Packages` . Otevřete soubor manifestu projektu, `manifest.json` v textovém editoru.
-2. V horní části souboru na stejné úrovni jako v `dependencies` části přidejte následující položku pro zahrnutí registru prostorových kotev Azure do vašeho projektu. Tato `scopedRegistries` položka obsahuje informace o Unity, kde hledat balíčky sady SDK prostorových kotev Azure.
-
-    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-19&highlight=2-10)]
-
-### <a name="add-the-sdk-package-to-your-unity-project"></a>Přidat balíček sady SDK do projektu Unity
-
-1. Přidejte položku s prostorovými kotvami Azure Windows SDK název balíčku ( `com.microsoft.azure.spatial-anchors-sdk.windows` ) a verzi balíčku do `dependencies` oddílu v manifestu projektu. Níže najdete příklad.
-
-    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-20&highlight=12)]
-
-2. Soubor uložte a zavřete `manifest.json` . Když se vrátíte do Unity, Unity by měl automaticky detekovat změnu manifestu projektu a načíst zadané balíčky. Můžete rozbalit `Packages` složku v zobrazení projektu a ověřit, zda byly naimportovány správné balíčky.
-
-## <a name="via-unity-asset-package"></a>[Prostřednictvím balíčku assetů Unity](#tab/UnityAssetPackage)
-
-> [!WARNING]
-> Po instalování sady SDK verze 2.5.0 bude distribuována sada prostředků služby Unity v sadě SDK prostorových kotev Azure.
-
-Pojďme si stáhnout sadu SDK prostorových kotev Azure. Přejít na [stránku vydání GitHubu prostorových kotev Azure](https://github.com/Azure/azure-spatial-anchors-samples/releases). V části **assety (prostředky**) stáhněte **AzureSpatialAnchors. unitypackage**. V Unity, přejít na **prostředky**, vybrat **importovat balíček**  >  **vlastní balíček..**. Přejděte k balíčku a vyberte **otevřít**.
-
-V okně Nový **balíček Unity balíčku** , které se zobrazí, zrušte výběr **modulů plug-in** a v pravém dolním rohu vyberte **importovat** .
-
----
-
+### <a name="prepare-code"></a>Příprava kódu
 Do řešení sady **Visual Studio** přidejte následující import do `<ProjectName>\Assets\Scripts\AzureSpatialAnchorsScript.cs` :
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=18-21&highlight=1)]

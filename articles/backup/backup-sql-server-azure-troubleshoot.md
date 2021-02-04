@@ -3,12 +3,12 @@ title: Řešení potíží se zálohováním databáze SQL Server
 description: Informace o řešení potíží při zálohování SQL Server databází běžících na virtuálních počítačích Azure s Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: d502a4188b4f9f383188804f86abbb9a6d05d146
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 1e4ee2bdcd0826b655aa71d83674ff1e0c06a8cb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429462"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549894"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup
 
@@ -202,6 +202,13 @@ Operace je blokovaná, protože jste dosáhli limitu počtu operací povolených
 |---|---|---|
 Operace je zablokovaná, protože trezor dosáhl maximálního limitu pro tyto operace povolené v rozmezí 24 hodin. | Když jste dosáhli maximálního povoleného limitu operace v rozmezí 24 hodin, zobrazí se tato chyba. Tato chyba se obvykle zobrazuje v případě, že dojde k operacím na škálování, jako je například změna zásad nebo Automatická ochrana. Na rozdíl od v případě CloudDosAbsoluteLimitReached není možné tento stav vyřešit. Služba Azure Backup služby ve skutečnosti zopakuje operace interně pro všechny příslušné položky.<br> Příklad: Pokud máte k zásadám chráněný velký počet zdrojů dat a pokusíte se ji změnit, spustí se pro každou chráněnou položku konfigurace úloh ochrany a někdy se může vysáhnout maximální povolený limit pro tyto operace za den.| Služba Azure Backup bude tuto operaci automaticky opakovat po 24 hodinách.
 
+### <a name="workloadextensionnotreachable"></a>WorkloadExtensionNotReachable
+
+| Chybová zpráva | Možné příčiny | Doporučená akce |
+|---|---|---|
+Operace rozšíření úlohy AzureBackup se nezdařila. | VIRTUÁLNÍ počítač je vypnutý (nebo) virtuální počítač nemůže kontaktovat službu Azure Backup kvůli problémům s připojením k Internetu.| – Ujistěte se prosím, že je virtuální počítač spuštěný a má připojení k Internetu.<br>- [Znovu zaregistrujte rozšíření na SQL serverm virtuálním počítači](https://docs.microsoft.com/azure/backup/manage-monitor-sql-database-backup#re-register-extension-on-the-sql-server-vm).
+
+
 ### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
@@ -212,7 +219,7 @@ Virtuální počítač nemůže kontaktovat službu Azure Backup kvůli problém
 
 Než zahájíte operaci opětovného zápisu, proveďte kontrolu jednoho nebo více následujících příznaků:
 
-- Všechny operace (například zálohování, obnovení a konfigurace zálohování) selžou na virtuálním počítači s jedním z následujících kódů chyb: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**.
+- Všechny operace (například zálohování, obnovení a konfigurace zálohování) selžou na virtuálním počítači s jedním z následujících kódů chyb: **[WorkloadExtensionNotReachable](#workloadextensionnotreachable)**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**.
 - Pokud je v oblasti **stavu zálohování** pro zálohovanou položku **nedostupná**, vyfiltrujte všechny ostatní příčiny, které by mohly mít za následek stejný stav:
 
   - Nemáte oprávnění k provádění operací souvisejících se zálohováním virtuálního počítače.

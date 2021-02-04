@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: 8a722550d12d019e25ff39de27cc0df2c2762a01
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 3735d7b21faf62905ed4c06dbef80c9737e7329e
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942045"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551072"
 ---
-# <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním hostováním Integration runtime
+# <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním prostředím Integration Runtime
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -244,7 +244,7 @@ Nainstalujte ovladače pro zdrojové i cílové úložiště dat do cílového p
  
 Pokud přenos nemůže probíhat přes síť mezi dvěma úložišti dat (například jsou nakonfigurované ve dvou virtuálních sítích), nebudete moct dokončit kopírování v jedné aktivitě, a to i v případě, že je nainstalované INFRAČERVENé prostředí. Pokud nemůžete dokončit kopírování v rámci jedné aktivity, můžete vytvořit dvě aktivity kopírování se dvěma finančními službami, každé na jednom OTVORu: 
 * Kopírování jednoho IR z úložiště dat 1 do Azure Blob Storage
-* Zkopírujte další IR z Azure Blob Storage do ddatastore 2. 
+* Zkopírujte další IR z Azure Blob Storage do úložiště dat 2. 
 
 Toto řešení může simulovat požadavek na použití IR k vytvoření mostu, který spojuje dvě odpojená úložiště dat.
 
@@ -710,7 +710,7 @@ Toto oznámení platí pro následující scénáře:
 
 Jak zjistit, zda jste to ovlivnili:
 
-- Nejste *ovlivněni, pokud* definujete pravidla brány firewall na základě plně kvalifikovaných názvů domén (FQDN), které používají přístup popsaný v tématu [nastavení konfigurace brány firewall a seznamu povolených IP adres](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway).
+- Nejste *ovlivněni, pokud* definujete pravidla brány firewall na základě plně kvalifikovaných názvů domén (FQDN), které používají přístup popsaný v tématu [nastavení konfigurace brány firewall a seznamu povolených IP adres](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-addresses).
 
 - Máte *vliv na to, jestli* explicitně povolíte seznam povolených IP adres pro odchozí IP adresy na podnikové bráně firewall.
 

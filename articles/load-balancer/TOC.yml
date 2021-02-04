@@ -79,6 +79,8 @@
       href: load-balancer-standard-availability-zones.md
     - name: Konfigurace plovoucí IP adresy
       href: load-balancer-floating-ip.md
+    - name: Režimy distribuce
+      href: distribution-mode-concepts.md
     - name: Zabezpečení
       items:
         - name: Standardní hodnoty zabezpečení

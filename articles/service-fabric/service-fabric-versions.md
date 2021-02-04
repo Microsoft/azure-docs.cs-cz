@@ -3,12 +3,12 @@ title: Upgrade verze clusteru Azure Service Fabric
 description: Přečtěte si o verzích clusterů v Azure Service Fabric, včetně odkazu na nejnovější verze z blogu týmu Service Fabric.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: a99b38a33a5bb83345898769b466ce0cab0a4d4d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 5abfe83fcb68fcab7df22f1fd266cc695f2b9c80
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918105"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549064"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>Upgrade verze clusteru Azure Service Fabric
 
@@ -40,7 +40,7 @@ Clustery Azure Service Fabric spuštěné ve verzích od 5,7 do 6.3.63. * nebudo
 Upgrade na podporovanou verzi Service Fabric, aby nedocházelo k výpadkům nebo ztrátě funkčnosti souvisejících s touto změnou. Zajistěte, aby byly v clusterech spuštěné alespoň následující verze, aby nedocházelo k problémům ve vašem prostředí.
 
 > [!Note]
-> Všechny vydané verze 7,2 obsahují nezbytné změny.
+> **Všechny vydané verze 7,2 obsahují nezbytné změny**.
   
   | Operační systém | Aktuální Service Fabric modul runtime v clusteru | Verze CU/patch |
   | --- | --- |--- |
@@ -75,9 +75,15 @@ Aby nedocházelo k výpadkům nebo ztrátě funkčnosti, zajistěte, aby v clust
 Verze Service Fabric v tabulce obsahují nezbytné změny, aby nedošlo ke ztrátě funkčnosti. Ujistěte se, že používáte jednu z těchto verzí.  
 
 > [!Note]
-> Všechny verze 7,2 obsahují nezbytné změny.
+> **Clustery Azure Service Fabric, na kterých běží verze 6,5, musí provést několik upgradů současně předtím, než se infrastucuture změna, aby se zabránilo ztrátě funkčnosti clusteru**. 
+>   -   1. Upgradujte na 7.0.466. **Clustery s operačním systémem Windows, které mají povolenou funkci kontejnery Windows, nemohou být v této mezilehlé verzi. Musí provést další krok (II) níže. tj.  Upgradujte na bezpečnější a kompatibilní verze, aby se předešlo přerušením služeb.**
+>   -   2. Upgradujte na nejnovější verze stížností v 7,0 * Release (7.0.478) nebo na kteroukoli z vyšších verzí uvedených níže.
 
-  | Operační systém | Aktuální Service Fabric modul runtime v clusteru | Verze CU/patch |
+
+> [!Note]
+> **Všechny verze 7,2 obsahují nezbytné změny**.
+
+ | Operační systém | Aktuální Service Fabric modul runtime v clusteru | Verze CU/patch |
   | --- | --- |--- |
   | Windows | 7,0. * | 7.0.478.9590 |
   | Windows | 7,1. * | 7.1.503.9590 |

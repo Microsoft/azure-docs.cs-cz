@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: raynew
-ms.openlocfilehash: bb8cfa3e1aa874f807ce46b254a22f3003c2f600
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: ab4b8f5a691bc8e4091e9f3f01b709391deeddb0
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222811"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550704"
 ---
 # <a name="common-questions"></a>Časté dotazy
 
@@ -49,6 +49,10 @@ Pomocí nástroje Resource Centre můžete aktuálně přesouvat následující 
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>Můžu po přesunu mezi oblastmi přesunout prostředky mezi předplatnými?
 
 Po přesunutí prostředků do cílové oblasti můžete toto předplatné změnit. [Přečtěte si další informace](../azure-resource-manager/management/move-resource-group-and-subscription.md) o přesouvání prostředků do jiného předplatného. 
+
+### <a name="does-azure-resource-move-service-store-customer-data"></a>Přesouvá služba Azure data o zákaznících do služby Azure Resource? 
+No. Služba přesunutí prostředků neukládá zákaznická data, ukládá jenom informace o metadatech, které usnadňují sledování a průběh prostředků vybraných pro přesun zákazníkem.
+
 
 ### <a name="where-is-the-metadata-for-moving-across-regions-stored"></a>Kde se ukládají metadata pro přesun mezi oblastmi, které jsou uložené?
 

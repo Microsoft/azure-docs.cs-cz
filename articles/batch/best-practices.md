@@ -1,14 +1,14 @@
 ---
 title: Osvědčené postupy
 description: Naučte se osvědčené postupy a užitečné tipy pro vývoj Azure Batchch řešení.
-ms.date: 12/18/2020
+ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 95dca907f9380de29bd3c9b0e52b120c9114b5ee
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 278aae410af536a5cc41e55dabf1dd71de04151b
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732407"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550857"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
@@ -169,6 +169,8 @@ Pokud si všimnete problému s chováním uzlu nebo úloh, které jsou spuštěn
 
 Pro účty Batch v režimu předplatného uživatele můžou automatizované upgrady operačního systému přerušit průběh úloh, zejména v případě, že se úlohy dlouho spouští. [Vytváření úloh idempotentní](#build-durable-tasks) může přispět k omezení chyb způsobených těmito přerušeními. Doporučujeme také [naplánovat upgrady bitových kopií operačního systému po dobu, kdy se úlohy neočekávají, aby běžely](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades).
 
+`enableAutomaticUpdates`Ve výchozím nastavení jsou fondy Windows nastavené na `true` . Povoluje se automatické aktualizace, ale tuto hodnotu můžete nastavit na `false` , pokud potřebujete zajistit, aby aktualizace operačního systému nedocházelo k neočekávanému chování.
+
 ## <a name="isolation-security"></a>Zabezpečení izolace
 
 Pro účely izolace, pokud váš scénář vyžaduje izolované úlohy od sebe navzájem, udělejte to tak, že je budete mít v samostatných fondech. Fond je hranice izolace zabezpečení ve službě Batch a ve výchozím nastavení nejsou dva fondy viditelné ani vzájemně vzájemně komunikují. Vyhněte se použití samostatných účtů Batch jako izolačního prostředku.
@@ -189,8 +191,7 @@ Přečtěte si následující pokyny týkající se připojení ve vašich dávk
 
 ### <a name="network-security-groups-nsgs-and-user-defined-routes-udrs"></a>Skupiny zabezpečení sítě (skupin zabezpečení sítě) a uživatelsky definované trasy (udr)
 
-Při zřizování [fondů služby Batch ve virtuální síti](batch-virtual-network.md)se ujistěte, že jste úzce využívali pokyny týkající se použití `BatchNodeManagement` značky služby, portů, protokolů a směru pravidla.
-Místo používání základních IP adres služby Batch se doporučuje použít značku služby. Důvodem je to, že IP adresy se můžou v průběhu času měnit. Přímé použití IP adres služby Batch může způsobit nestabilitu, přerušení nebo výpadky pro fondy služby Batch.
+Při zřizování [fondů služby Batch ve virtuální síti](batch-virtual-network.md)se ujistěte, že jste úzce využívali pokyny týkající se použití `BatchNodeManagement` značky služby, portů, protokolů a směru pravidla. Místo používání základních IP adres služby Batch se doporučuje použít značku služby. Důvodem je to, že IP adresy se můžou v průběhu času měnit. Přímé použití IP adres služby Batch může způsobit nestabilitu, přerušení nebo výpadky pro fondy služby Batch.
 
 Pro trasy definované uživatelem (udr) se ujistěte, že máte zavedený proces, který bude pravidelně aktualizovat IP adresy služby Batch v tabulce směrování, protože se tyto adresy mění v průběhu času. Informace o tom, jak získat seznam IP adres služby Batch, najdete v tématu věnovaném místním [značkám služby](../virtual-network/service-tags-overview.md). IP adresy služby Batch budou přidruženy k `BatchNodeManagement` značce služby (nebo k místní variantě, která odpovídá vaší oblasti účtu Batch).
 

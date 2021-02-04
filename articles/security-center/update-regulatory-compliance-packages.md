@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2021
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 5f70f74accba5df439351547fda7497656e2c06e
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 3fca96c6cf11e0b35cd830fe4c0d8ccac8e66bd2
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986679"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548860"
 ---
-# <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Přizpůsobení sady standardů na řídicím panelu dodržování předpisů
+# <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Přizpůsobení sady standardů na řídicím panelu dodržování předpisů
 
 Azure Security Center průběžně porovnává konfiguraci vašich prostředků s požadavky v oborových normách, nařízeních a srovnávacích testech. **Řídicí panel dodržování předpisů** poskytuje přehledy o stav dodržování předpisů na základě toho, jak splňujete konkrétní požadavky na dodržování předpisů.
 
@@ -123,5 +123,5 @@ V tomto článku jste zjistili, jak **Přidat standardy dodržování předpisů
 Související materiály najdete na následujících stránkách:
 
 - [Srovnávací test zabezpečení Azure](../security/benchmarks/introduction.md)
-- [Řídicí panel dodržování legislativních předpisů služby Security Center](security-center-compliance-dashboard.md)
+- [Řídicí panel dodržování předpisů v Security Center](security-center-compliance-dashboard.md) – Naučte se sledovat a exportovat data dodržování předpisů pomocí Security Center a externích nástrojů.
 - [Práce se zásadami zabezpečení](tutorial-security-policy.md)

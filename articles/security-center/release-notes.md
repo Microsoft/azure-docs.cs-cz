@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2021
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: cdc29f89307a986b2d71604ca495eac45458632b
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: fe031fa6de86b8059ba175fc4e1df6385ca7e796
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526615"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551021"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -37,7 +37,8 @@ Aktualizace v únoru zahrnují:
 
 - [Doporučení pro ochranu úloh Kubernetes vydaná pro obecnou dostupnost (GA)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
 - [Přímá vazba na zásadu ze stránky s podrobnostmi o doporučení](#direct-link-to-policy-from-recommendation-details-page)
-- [Doporučení klasifikace dat SQL už nemá vliv na vaše zabezpečené skóre.](#sql-data-classification-recommendation-no-longer-affect-your-secure-score)
+- [Doporučení klasifikace dat SQL už nemá vliv na vaše zabezpečené skóre.](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
+- [Automatizace pracovního postupu se můžou aktivovat změnami pro vyhodnocení dodržování předpisů v legislativních režimech (Preview).](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
 
 ### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Doporučení pro ochranu úloh Kubernetes vydaná pro obecnou dostupnost (GA)
 
@@ -63,15 +64,21 @@ Při prohlížení podrobností doporučení je často užitečné, abyste mohli
 
 Pomocí tohoto odkazu můžete zobrazit definici zásady a zkontrolovat logiku hodnocení. 
 
-Pokud si prohlédnete seznam doporučení v našich [doporučeních o zabezpečení](recommendations-reference.md), přečtěte si také tyto odkazy na stránky definice zásad:
+Pokud si prohlédnete seznam doporučení v našich [doporučeních o zabezpečení](recommendations-reference.md), přečtěte si také odkazy na stránky definice zásad:
 
-:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Přístup na stránku Azure Policy pro konkrétní zásadu přímo z referenční stránky Azure Security Center doporučení":::
+:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Přístup na stránku Azure Policy pro konkrétní zásadu přímo z referenční stránky Azure Security Center doporučení" lightbox="media/release-notes/view-policy-definition-from-documentation.png":::
 
 
-### <a name="sql-data-classification-recommendation-no-longer-affect-your-secure-score"></a>Doporučení klasifikace dat SQL už nemá vliv na vaše zabezpečené skóre.
+### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>Doporučení klasifikace dat SQL už nemá vliv na vaše zabezpečené skóre.
 
 Doporučení **citlivá data v databázích SQL by měla být klasifikována** už neovlivní vaše zabezpečené skóre. Toto je jediné doporučení v ovládacím prvku zabezpečení **klasifikace dat** , aby měl ovládací prvek nyní hodnotu zabezpečeného skóre 0.
 
+
+### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview"></a>Automatizace pracovního postupu se můžou aktivovat změnami pro vyhodnocení dodržování předpisů v legislativních režimech (Preview).
+
+Do možností triggeru pro vaše automatizované pracovní postupy jsme přidali třetí datový typ: změny v protestech dodržování předpisů v legislativních prostředích.
+
+:::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="Použití změn pro vyhodnocení dodržování předpisů v legislativě pro aktivaci automatizace pracovního postupu" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 
 
 ## <a name="january-2021"></a>Leden 2021
@@ -161,7 +168,7 @@ Převzetí subdomény jsou společnou vysoce závažnou hrozbou pro organizace. 
 
 Převzetí subdomény umožňuje aktérům hrozeb přesměrovat provoz určený pro doménu organizace na lokalitu, která provádí škodlivou aktivitu.
 
-Azure Defender pro App Service nyní detekuje položky DNS dangling při vyřazení webu z provozu App Service. To je okamžik, kdy položka DNS odkazuje na neexistující prostředek a váš web je zranitelný při převzetí subdoménou. Tyto ochrany jsou dostupné bez ohledu na to, jestli jsou vaše domény spravované pomocí Azure DNS nebo externího registrátora domény a platí pro App Service ve Windows i App Service v systému Linux.
+Azure Defender pro App Service nyní detekuje položky DNS dangling při vyřazení webu z provozu App Service. To je okamžik, kdy položka DNS odkazuje na neexistující prostředek, a váš web je zranitelný při převzetí subdoménou. Tyto ochrany jsou dostupné bez ohledu na to, jestli jsou vaše domény spravované pomocí Azure DNS nebo externího registrátora domény a platí pro App Service ve Windows i App Service v systému Linux.
 
 Další informace:
 

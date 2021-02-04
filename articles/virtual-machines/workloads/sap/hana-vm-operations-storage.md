@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/23/2021
+ms.date: 02/03/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01c6a2eb53e82965dd96deaa1a09afb1e70dda24
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 48d1c04e59d316ac19000f5b890c0cb1c96fb213
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746743"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549435"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfigurace úložiště virtuálních počítačů Azure SAP HANA
 
@@ -81,7 +81,13 @@ Při čtení podrobností je zřejmé, že využití této funkce v sadách odst
 
 
 ## <a name="linux-io-scheduler-mode"></a>Režim plánovače I/O systému Linux
-Linux má několik různých režimů plánování vstupu a výstupu. Běžnými doporučeními pro dodavatele a SAP systému Linux je překonfigurování režimu v/v plánovače u diskových svazků z režimu **MQ-konečný** nebo **kyber** do **NoOp** (non-Queue) nebo **none** for (pro více front). Podrobnosti jsou odkazovány v [#1984787 SAP Note](https://launchpad.support.sap.com/#/notes/1984787). 
+Linux má několik různých režimů plánování vstupu a výstupu. Běžným doporučením pro dodavatele a SAP systému Linux je překonfigurování režimu I/O Scheduleru pro svazky na disku z režimu **MQ-konečný** nebo **kyber** do **NoOp** (non-) nebo **none** for (pro více front), pokud to ještě neudělaly profily SLES saptune. Podrobnosti jsou odkazovány v: 
+
+- [Poznámka ke SAP #1984787](https://launchpad.support.sap.com/#/notes/1984787)
+- [Poznámka ke SAP #2578899](https://launchpad.support.sap.com/#/notes/2578899) 
+- [Problém s nastavením NoOp v SLES 12 SP4](https://www.suse.com/support/kb/doc/?id=000019547)
+
+V Red Hat ponechte nastavení stanovená konkrétními profily pro různé aplikace SAP.
 
 
 ## <a name="solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Řešení s využitím služby Premium Storage a Azure Akcelerátor zápisu pro virtuální počítače řady Azure M-Series

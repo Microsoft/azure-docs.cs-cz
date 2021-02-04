@@ -3,28 +3,28 @@ title: Vyhledat chyby fondu a uzlů
 description: Tento článek se zabývá operacemi na pozadí, ke kterým může dojít, a s chybami pro kontrolu a jejich zamezení při vytváření fondů a uzlů.
 author: mscurrell
 ms.author: markscu
-ms.date: 08/23/2019
+ms.date: 02/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 519b357e4e5fde30221f7dc804bb848ecec9704c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8901877ab3055c02dfc8c129fb35864418cd19d8
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85979913"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549131"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Vyhledat chyby fondu a uzlů
 
-Když vytváříte a spravujete fondy Azure Batch, dojde k okamžitému provedení některých operací. Některé operace jsou však asynchronní a spouštěny na pozadí, přičemž dokončení trvá několik minut.
+Když vytváříte a spravujete fondy Azure Batch, dojde k okamžitému provedení některých operací. Detekce selhání pro tyto operace je obvykle jednoduchá, protože jsou vraceny rozhraním API, CLI nebo uživatelského rozhraní. Některé operace jsou však asynchronní a spouštěny na pozadí, přičemž dokončení trvá několik minut.
 
-Zjištění selhání operací, které jsou okamžitě prováděné, je jednoduché, protože jakékoli chyby jsou vráceny hned rozhraním API, CLI nebo UI.
+Ověřte, že jste nastavili aplikace pro implementaci komplexní kontroly chyb, zejména pro asynchronní operace. To vám může pomáhat rychle identifikovat a diagnostikovat problémy.
 
-Tento článek popisuje operace na pozadí, ke kterým může dojít pro fondy a uzly fondu. Určuje, jak můžete detekovat a vyhnout se chybám.
+V tomto článku se dozvíte, jak zjistit a vyhnout se chybám v operacích na pozadí, které se můžou vyskytnout pro fondy a uzly fondu.
 
 ## <a name="pool-errors"></a>Chyby fondu
 
 ### <a name="resize-timeout-or-failure"></a>Změnit časový limit nebo selhání
 
-Při vytváření nového fondu nebo změně velikosti existujícího fondu zadejte cílový počet uzlů.  Operace vytvoření nebo změny velikosti se okamžitě dokončí, ale skutečné přidělení nových uzlů nebo odebrání stávajících uzlů může trvat několik minut.  Časový limit pro změnu velikosti můžete zadat v rozhraní API pro [Vytvoření](/rest/api/batchservice/pool/add) nebo [změnu velikosti](/rest/api/batchservice/pool/resize) . Pokud dávka nemůže získat cílový počet uzlů během časového limitu změny velikosti, fond přejde do stabilního stavu a sestavy změní velikost.
+Při vytváření nového fondu nebo změně velikosti existujícího fondu zadejte cílový počet uzlů. Operace vytvoření nebo změny velikosti se okamžitě dokončí, ale skutečné přidělení nových uzlů nebo odebrání stávajících uzlů může trvat několik minut. V rozhraní API pro [Vytvoření](/rest/api/batchservice/pool/add) nebo [změnu velikosti](/rest/api/batchservice/pool/resize) zadejte vačku časový limit pro změnu velikosti. Pokud dávka nemůže získat cílový počet uzlů během období časového limitu změny velikosti, fond přejde do stabilního stavu a nahlásí chyby změny velikosti.
 
 Vlastnost [ResizeError](/rest/api/batchservice/pool/get#resizeerror) pro nejnovější hodnocení vypíše seznam chyb, ke kterým došlo.
 
@@ -44,23 +44,25 @@ Mezi běžné příčiny chyb změny velikosti patří:
 
 ### <a name="automatic-scaling-failures"></a>Automatické škálování – chyby
 
-Můžete také nastavit Azure Batch pro automatické škálování počtu uzlů ve fondu. Definujete parametry pro [vzorec automatického škálování pro fond](./batch-automatic-scaling.md). Služba Batch používá vzorec k pravidelnému vyhodnocení počtu uzlů ve fondu a k nastavení nového cílového čísla. Může dojít k následujícím typům problémů:
+Můžete nastavit Azure Batch pro automatické škálování počtu uzlů ve fondu. Definujete parametry pro [vzorec automatického škálování pro fond](./batch-automatic-scaling.md). Služba Batch pak použije vzorec k pravidelnému vyhodnocení počtu uzlů ve fondu a k nastavení nového cílového čísla.
+
+Pokud používáte automatické škálování, může dojít k následujícím typům problémů:
 
 - Automatické vyhodnocení měřítka se nezdařilo.
 - Výsledkem operace změny velikosti je chyba a vypršel časový limit.
 - Problém se vzorcem automatického škálování vede k neplatným cílovým hodnotám uzlů. Velikost buď funguje, nebo je mimo časový limit.
 
-Informace o posledním automatickém vyhodnocení měřítka můžete získat pomocí vlastnosti [autoScaleRun](/rest/api/batchservice/pool/get#autoscalerun) . Tato vlastnost oznamuje dobu hodnocení, hodnoty a výsledek a všechny chyby výkonu.
+Chcete-li získat informace o posledním automatickém vyhodnocení měřítka, použijte vlastnost [autoScaleRun](/rest/api/batchservice/pool/get#autoscalerun) . Tato vlastnost oznamuje dobu hodnocení, hodnoty a výsledek a všechny chyby výkonu.
 
 [Událost dokončení změny velikosti fondu](./batch-pool-resize-complete-event.md) zachycuje informace o všech hodnoceních.
 
-### <a name="delete"></a>Odstranit
+### <a name="pool-deletion-failures"></a>Selhání odstranění fondu
 
-Když odstraníte fond, který obsahuje uzly, první Batch tyto uzly odstraní. Pak odstraní samotný objekt fondu. Odstranění uzlů fondu může trvat několik minut.
+Když odstraníte fond, který obsahuje uzly, první Batch tyto uzly odstraní. Provedení může trvat i několik minut. Potom Batch odstraní samotný objekt fondu.
 
 Batch nastaví [stav fondu](/rest/api/batchservice/pool/get#poolstate) na **odstranění** během procesu odstranění. Volající aplikace může zjistit, zda odstranění fondu trvá příliš dlouho pomocí vlastností **State** a **stateTransitionTime** .
 
-## <a name="pool-compute-node-errors"></a>Chyby výpočetního uzlu fondu
+## <a name="node-errors"></a>Chyby uzlu
 
 I když Batch úspěšně přiděluje uzly ve fondu, můžou různé problémy způsobit, že některé uzly nejsou v pořádku a nemůžou spouštět úlohy. Těmto uzlům se pořád účtují poplatky, takže je důležité detekovat problémy, abyste se vyhnuli placení uzlů, které se nedají použít. Kromě běžných chyb uzlů je důležité vědět, že aktuální [stav úlohy](/rest/api/batchservice/job/get#jobstate) je užitečný při řešení potíží.
 
@@ -74,7 +76,7 @@ Chyby spuštění úlohy můžete detekovat pomocí vlastností [Result](/rest/a
 
 Neúspěšná úloha spuštění také způsobí, že služba Batch nastaví [stav](/rest/api/batchservice/computenode/get#computenodestate) uzlu na **starttaskfailed** , pokud byla  **waitForSuccess** nastavena na **hodnotu true**.
 
-Stejně jako u jakékoli úlohy může být mnoho příčin neúspěšného spuštění úlohy.  Pokud chcete řešit potíže, podívejte se na záznam stdout, stderr a všechny další soubory protokolu pro konkrétní úlohy.
+Stejně jako u jakékoli úlohy může být mnoho příčin neúspěšného spuštění úlohy. Pokud chcete řešit potíže, podívejte se na záznam stdout, stderr a všechny další soubory protokolu pro konkrétní úlohy.
 
 Spouštěcí úlohy je nutné znovu vytvořit, protože je možné, že je spouštěcí úkol ve stejném uzlu několikrát spuštěný. spouštěcí úkol se spustí, když se uzel znovu spustí nebo restartuje. Ve výjimečných případech se spustí spouštěcí úkol po události, která způsobila restart uzlu, kdy se jeden z operačních systémů nebo dočasné disky obnovil z image. Vzhledem k tomu, že úlohy spuštění služby Batch (stejně jako všechny úlohy služby Batch) běží z dočasného disku, obvykle to není problém, ale v některých případech, kdy spouštěcí úkol instaluje aplikaci na disk s operačním systémem a udržuje další data na dočasném disku, může to způsobit problémy, protože věci nejsou synchronizované. Pokud používáte oba disky, zabezpečte svou aplikaci odpovídajícím způsobem.
 
@@ -87,6 +89,10 @@ Vlastnost [Errors](/rest/api/batchservice/computenode/get#computenodeerror) uzlu
 ### <a name="container-download-failure"></a>Selhání stahování kontejneru
 
 Můžete zadat jeden nebo více odkazů na kontejner ve fondu. Batch stáhne zadané kontejnery do každého uzlu. Vlastnost [Errors](/rest/api/batchservice/computenode/get#computenodeerror) uzlu hlásí selhání stažení kontejneru a nastaví stav uzlu na **Nepoužito**.
+
+### <a name="node-os-updates"></a>Aktualizace operačního systému Node
+
+`enableAutomaticUpdates`Ve výchozím nastavení jsou fondy Windows nastavené na `true` . Povoluje se automatické aktualizace, ale můžou přerušit průběh úlohy, zejména v případě, že se úlohy dlouho spouští. Tuto hodnotu můžete nastavit na `false` , pokud potřebujete zajistit, aby aktualizace operačního systému nedocházelo k neočekávanému chování.
 
 ### <a name="node-in-unusable-state"></a>Uzel v nepoužitelném stavu
 
@@ -116,7 +122,7 @@ Proces dávkového agenta, který běží na jednotlivých uzlech fondu, může 
 
 ### <a name="node-disk-full"></a>Plný disk uzlu
 
-Dočasná jednotka pro virtuální počítač uzlu fondu je používána dávkou pro soubory úloh, soubory úloh a sdílené soubory.
+Dočasná jednotka pro virtuální počítač uzlu fondu je používána dávkou pro soubory úloh, soubory úloh a sdílené soubory, například následující:
 
 - Soubory balíčků aplikací
 - Soubory prostředků úkolu
@@ -135,23 +141,17 @@ Velikost dočasné jednotky závisí na velikosti virtuálního počítače. Jed
 
 Pro soubory vytvářené jednotlivými úlohami je možné určit dobu uchovávání dat pro každou úlohu, která určuje, jak dlouho jsou soubory úlohy zachované, než se automaticky vyčistí. Dobu uchovávání můžete snížit, abyste snížili požadavky na úložiště.
 
-
 Pokud dojde volné místo na dočasném disku (nebo se velmi blízko z místa), uzel se přesune do [nepoužitelného](/rest/api/batchservice/computenode/get#computenodestate) stavu a bude hlášena chyba uzlu s oznámením, že disk je plný.
 
-### <a name="what-to-do-when-a-disk-is-full"></a>Co dělat, když je disk plný
+Pokud si nejste jistí, co zabírá místo na uzlu, vyzkoušejte vzdálenou komunikaci uzlu a prozkoumání ručně, kde se místo dokončí. Můžete také využít [rozhraní API soubory služby Batch](/rest/api/batchservice/file/listfromcomputenode) k prohlédnutí souborů ve spravovaných složkách služby Batch (například výstupy úloh). Všimněte si, že toto rozhraní API obsahuje jenom soubory ve spravovaných adresářích Batch. Pokud vaše úkoly vytvořily soubory jinde, neuvidíte je.
 
-Určete, proč je disk plný: Pokud si nejste jistí, co zabírá místo v uzlu, doporučujeme vzdálené řízení s uzlem a prozkoumat ručně, kde se místo dokončí. Můžete také využít [rozhraní API soubory služby Batch](/rest/api/batchservice/file/listfromcomputenode) k prohlédnutí souborů ve spravovaných složkách služby Batch (například výstupy úloh). Všimněte si, že toto rozhraní API obsahuje jenom soubory ve spravovaných adresářích Batch, a pokud vaše úkoly vytvořily soubory jinde, neuvidíte je.
+Ujistěte se, že všechna data, která potřebujete, byla načtena z uzlu nebo odeslána do trvalého úložiště, a pak odstraňte data podle potřeby a uvolněte místo.
 
-Ujistěte se, že všechna data, která potřebujete, byla načtena z uzlu nebo odeslána do trvalého úložiště. Veškerá zmírnění problému s plným diskem zahrnuje odstranění dat, aby se uvolnilo místo.
+Můžete odstranit staré dokončené úlohy nebo staré dokončené úlohy, jejichž data úlohy jsou stále na uzlech. Podívejte se na [kolekci RecentTasks](/rest/api/batchservice/computenode/get#taskinformation) na uzlu nebo na [soubory na uzlu](/rest/api/batchservice/file/listfromcomputenode). Odstraněním úlohy dojde k odstranění všech úkolů v úloze. odstraněním úkolů v úloze se aktivují data v adresářích úloh na uzlu, která se mají odstranit, takže se uvolní místo. Až uvolníte dostatek místa, restartujte uzel a měl by přesunout nečinný stav a nečinné znovu.
 
-### <a name="recovering-the-node"></a>Obnovování uzlu
-
-1. Pokud je váš fond fondem [C. loudServiceConfiguration](/rest/api/batchservice/pool/add#cloudserviceconfiguration) , můžete uzel znovu vytvořit pomocí [rozhraní API služby Batch pro opětovné](/rest/api/batchservice/computenode/reimage)vytvoření bitové kopie. Tím se vyčistí celý disk. Pro [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) fondy se v současné době nepodporuje znovu image.
-
-2. Pokud je váš fond [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration), můžete odebrat uzel z fondu pomocí [rozhraní API odebrat uzly](/rest/api/batchservice/pool/removenodes). Pak můžete znovu zvětšit fond a nahradit špatný uzel jeho novou.
-
-3.  Odstraňte staré dokončené úlohy nebo staré dokončené úlohy, jejichž data úkolů jsou stále na uzlech. V případě, že jsou data úloh a úkolů na uzlech, která jsou na uzlech, můžete hledat v [kolekci RecentTasks](/rest/api/batchservice/computenode/get#taskinformation) v uzlu nebo v [souborech na uzlu](/rest/api/batchservice/file/listfromcomputenode). Odstraněním úlohy dojde k odstranění všech úkolů v úloze a odstranění úloh v úloze aktivuje data v adresářích úloh na uzlu, aby se odstranila. tím se uvolní místo. Až uvolníte dostatek místa, restartujte uzel a měl by přesunout nečinný stav a nečinné znovu.
+Pokud chcete obnovit nepoužitelný uzel ve fondech [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) , můžete odebrat uzel z fondu pomocí [rozhraní API odebrat uzly](/rest/api/batchservice/pool/removenodes). Pak můžete znovu zvětšit fond a nahradit špatný uzel jeho novou. U [CloudServiceConfigurationch](/rest/api/batchservice/pool/add#cloudserviceconfiguration) fondů můžete uzel znovu namapovat přes [rozhraní API služby Batch pro opětovné](/rest/api/batchservice/computenode/reimage)navýšení obrazu. Tím se vyčistí celý disk. Pro [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) fondy se v současné době nepodporuje znovu image.
 
 ## <a name="next-steps"></a>Další kroky
 
-Ověřte, že jste nastavili aplikaci pro implementaci komplexní kontroly chyb, zejména pro asynchronní operace. Může být zásadní, aby mohl rychle detekovat a diagnostikovat problémy.
+- Přečtěte si o [kontrole chyb úloh a úkolů](batch-job-task-error-checking.md).
+- Seznamte se s [osvědčenými postupy](best-practices.md) pro práci s Azure Batch.

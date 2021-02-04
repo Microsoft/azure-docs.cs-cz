@@ -4,18 +4,29 @@ description: V tomto článku se seznámíte s možnostmi monitorování a oznam
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 978e98bc623cecd768b1f2dda0a129e0459521da
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 74669a1347fac9f61d028d9cb1f3da174bb71f96
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174015"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550335"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorování úloh Azure Backup
 
 Azure Backup poskytuje několik zálohovacích řešení na základě požadavků na zálohování a topologie infrastruktury (místní vs Azure). Každý uživatel, který má záložní účet nebo správce, by měl vidět, co se ve všech řešeních provede, a očekává se, že bude v důležitých scénářích upozorněn Tento článek podrobně popisuje možnosti monitorování a oznámení poskytované službou Azure Backup Service.
 
 [!INCLUDE [backup-center.md](../../includes/backup-center.md)]
+
+## <a name="backup-items-in-recovery-services-vault"></a>Zálohované položky v trezoru Recovery Services
+
+Všechny zálohované položky můžete monitorovat pomocí Recovery Services trezoru. Když přejdete do části **zálohované položky** v trezoru, otevře se zobrazení, které poskytuje počet zálohovaných položek každého typu úlohy přidružené k trezoru. Kliknutím na libovolný řádek otevřete podrobné zobrazení obsahující všechny zálohované položky daného typu úlohy s informacemi o stavu poslední zálohy pro každou položku, nejnovější dostupný bod obnovení a tak dále.
+
+![Zálohované položky trezoru RS](media/backup-azure-monitoring-laworkspace/backup-items-view.png)
+
+> [!NOTE]
+> Pro položky zálohované do Azure pomocí DPM se v seznamu zobrazí všechny chráněné zdroje dat (na disku i v online režimu) pomocí serveru DPM. Pokud je ochrana pro zdroj dat zastavena se zachovanými zálohovanými daty, bude zdroj dat stále uveden na portálu. Můžete přejít na Podrobnosti zdroje dat a zjistit, jestli se body obnovení nacházejí na disku, online nebo obojím. Zdroje dat, pro které se online ochrana zastaví, ale data se zachovají, fakturace pro body obnovení online pokračuje, dokud se data zcela neodstraní.
+>
+> Aby se zálohované položky zobrazovaly na portálu Recovery Services trezoru aplikace DPM, musí mít verzi DPM 1807 (5.1.378.0) nebo DPM 2019 (verze 10.19.58.0 nebo vyšší).
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>Úlohy zálohování v trezoru Recovery Services
 

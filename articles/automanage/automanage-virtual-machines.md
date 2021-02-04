@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 0d8ce501b951f3543e1baf54c8a52648b13f6e66
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 7772d57937393da1c48fa2658818d8a1a2b28a1f
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695666"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550780"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage pro virtuální počítače
 
@@ -42,7 +42,6 @@ A konečně prostředí je neuvěřitelně jednoduché.
 Před tím, než se pokusíte povolit službu Azure na virtuálních počítačích, je třeba zvážit několik požadavků.
 
 - Jenom virtuální počítače s Windows serverem
-- Musí být spuštěny virtuální počítače.
 - Virtuální počítače musí být v podporované oblasti (viz odstavec níže).
 - Uživatel musí mít správná oprávnění (viz odstavec níže).
 - Automanage v tuto chvíli nepodporuje odběry izolovaného prostoru (sandbox).

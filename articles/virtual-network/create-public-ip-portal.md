@@ -11,22 +11,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 02a6e934b517cdd118b6175d9cfef73bee4c996d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 7d0c83f1ae18d36557a7a5b0222aee2905e05cb7
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223002"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550231"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>Rychlý Start: vytvoření veřejné IP adresy pomocí Azure Portal
 
 V tomto článku se dozvíte, jak vytvořit prostředek veřejné IP adresy pomocí Azure Portal. Další informace o tom, k jakým prostředkům může být přidružen, rozdíl mezi základní a standardní SKU a dalšími souvisejícími informacemi, najdete v tématu [veřejné IP adresy](./public-ip-addresses.md).  V tomto příkladu se zaměříme jenom na adresy IPv4. Další informace o adresách IPv6 najdete v tématu [IPv6 pro virtuální síť Azure](./ipv6-overview.md).
 
-# <a name="standard-sku---using-zones"></a>[**Standardní SKU – používání zón**](#tab/option-create-public-ip-standard-zones)
+# <a name="standard-sku"></a>[**Standardní SKU**](#tab/option-create-public-ip-standard-zones)
 
 Pomocí následujících kroků vytvořte standardní veřejnou IP adresu redundantní v zóně s názvem **myStandardZRPublicIP**.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Vyberte **Vytvořit prostředek**. 
 3. Do vyhledávacího pole zadejte *veřejnou IP adresu*.
 4. Ve výsledcích hledání vyberte **Veřejná IP adresa**. Potom na stránce **Veřejná IP adresa** vyberte **vytvořit**.
@@ -44,9 +44,9 @@ Pomocí následujících kroků vytvořte standardní veřejnou IP adresu redund
     | Předplatné            | Vyberte své předplatné.   |
     | Skupina prostředků          | Vyberte **vytvořit nový** , zadejte myResourceGroup a pak vyberte **OK** . |
     | Umístění                | Vyberte **východní USA 2**      |
-    | Zóna dostupnosti       | Vyberte **zónu – redundantní** nebo vyberte konkrétní zónu (viz poznámka níže). |
+    | Zóna dostupnosti       | Vybrat zónu **– redundantní**, žádná zóna nebo vybrat konkrétní zónu (viz poznámka níže) |
 
-Všimněte si, že se jedná o platné výběry pouze v oblastech s [zóny dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones).  (Můžete také vybrat konkrétní zónu v těchto oblastech, i když nebude odolná vůči selhání oblasti.)
+Všimněte si, že se jedná o platné výběry pouze v oblastech s [zóny dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones).  (Můžete také vybrat konkrétní zónu v těchto oblastech, i když nebude odolná vůči selhání oblasti.)  Další informace o zónách dostupnosti najdete v tématu [Přehled zón dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview).
 
 \* = Úroveň se vztahuje k funkcím [Load Balancer mezi oblastmi](../load-balancer/cross-region-overview.md) , které jsou aktuálně ve verzi Preview.
 
@@ -54,7 +54,7 @@ Všimněte si, že se jedná o platné výběry pouze v oblastech s [zóny dostu
 
 Pomocí následujících kroků vytvořte základní statickou veřejnou IP adresu s názvem **myBasicPublicIP**.  Základní veřejné IP adresy nemají koncept zón dostupnosti.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Vyberte **Vytvořit prostředek**. 
 3. Do vyhledávacího pole zadejte *veřejnou IP adresu*.
 4. Ve výsledcích hledání vyberte **Veřejná IP adresa**. Potom na stránce **Veřejná IP adresa** vyberte **vytvořit**.

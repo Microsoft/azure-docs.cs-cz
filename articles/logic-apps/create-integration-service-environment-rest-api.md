@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/30/2020
-ms.openlocfilehash: ee6c116d02a7be1682d9e8379037ef1b8c92bce8
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.date: 02/03/2021
+ms.openlocfilehash: d4500229800fa5d1743779b29927637777647e47
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967034"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550653"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Vytvoření prostředí integrační služby (ISE) s využitím rozhraní REST API služby Logic Apps
 
@@ -25,7 +25,7 @@ Další informace o dalších způsobech vytvoření ISE najdete v těchto člá
 * [Vytvoření ISE pomocí ukázkové Azure Resource Manager šablony pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)
 * [Vytvoření ISE, který podporuje použití klíčů spravovaných zákazníkem k šifrování neaktivních dat](customer-managed-keys-integration-service-environment.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Stejné [předpoklady](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) a [požadavky na přístup](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) jako při vytváření ISE v Azure Portal
 
@@ -188,17 +188,28 @@ Tento ukázkový text požadavku zobrazuje ukázkové hodnoty:
 
 ## <a name="add-custom-root-certificates"></a>Přidat vlastní kořenové certifikáty
 
-Často používáte ISE k připojení k vlastním službám ve vaší virtuální síti nebo místně. Tyto vlastní služby jsou často chráněny certifikátem vydaným vlastní kořenovou certifikační autoritou, jako je například podniková certifikační autorita nebo certifikát podepsaný svým držitelem. Další informace o použití certifikátů podepsaných svým držitelem najdete v tématech [zabezpečený přístup a přístup k datům pro odchozí hovory na jiné služby a systémy](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests). Aby se vaše ISE úspěšně připojovala k těmto službám prostřednictvím protokolu TLS (Transport Layer Security), potřebuje vaše ISE přístup k těmto kořenovým certifikátům. Pokud chcete aktualizovat ISE pomocí vlastního důvěryhodného kořenového certifikátu, udělejte tuto `PATCH` žádost https:
+Často používáte ISE k připojení k vlastním službám ve vaší virtuální síti nebo místně. Tyto vlastní služby jsou často chráněny certifikátem vydaným vlastní kořenovou certifikační autoritou, jako je například podniková certifikační autorita nebo certifikát podepsaný svým držitelem. Další informace o použití certifikátů podepsaných svým držitelem najdete v tématech [zabezpečený přístup a přístup k datům pro odchozí hovory na jiné služby a systémy](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests). Aby se vaše ISE úspěšně připojovala k těmto službám prostřednictvím protokolu TLS (Transport Layer Security), potřebuje vaše ISE přístup k těmto kořenovým certifikátům.
 
-`PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
+#### <a name="considerations-for-adding-custom-root-certificates"></a>Pokyny pro přidání vlastních kořenových certifikátů
 
-Než tuto operaci provedete, přečtěte si tyto požadavky:
+Před aktualizací ISE pomocí vlastního důvěryhodného kořenového certifikátu si přečtěte tyto požadavky:
 
 * Ujistěte se, že jste nahráli kořenový certifikát *a* všechny zprostředkující certifikáty. Maximální počet certifikátů je 20.
 
 * Odesílání kořenových certifikátů je operace nahrazení, kde nejnovější nahrávání přepíše předchozí nahrávání. Pokud třeba odešlete požadavek, který nahraje jeden certifikát, a pak odešlete další požadavek na nahrání jiného certifikátu, ISE použije jenom druhý certifikát. Pokud potřebujete použít oba certifikáty, přidejte je společně do stejného požadavku.  
 
 * Nahrávání kořenových certifikátů je asynchronní operace, která může nějakou dobu trvat. Chcete-li zjistit stav nebo výsledek, můžete odeslat `GET` žádost pomocí stejného identifikátoru URI. Zpráva s odpovědí obsahuje `provisioningState` pole, které vrací `InProgress` hodnotu, když operace nahrávání stále pracuje. Je `provisioningState` -li hodnota `Succeeded` , operace odeslání je dokončena.
+
+#### <a name="request-syntax"></a>Syntaxe žádosti
+
+Pokud chcete ISE aktualizovat pomocí vlastního důvěryhodného kořenového certifikátu, odešlete následující požadavek na opravu HTTPS na [adresu URL Azure Resource Manager, která se liší v závislosti na vašem prostředí Azure](../azure-resource-manager/management/control-plane-and-data-plane.md#control-plane), například:
+
+| Prostředí | Adresa URL Azure Resource Manager |
+|-------------|----------------------------|
+| Globální Azure (více tenantů) | `PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01` |
+| Azure Government | `PATCH https://management.usgovcloudapi.net/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01` |
+| Microsoft Azure China 21Vianet | `PATCH https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01` |
+|||
 
 #### <a name="request-body-syntax-for-adding-custom-root-certificates"></a>Syntaxe textu žádosti pro přidání vlastních kořenových certifikátů
 

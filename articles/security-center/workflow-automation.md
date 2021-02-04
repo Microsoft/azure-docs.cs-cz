@@ -6,20 +6,20 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 674ba1cf03f48eb1c746b115d981740b5b938aab
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 652986c4850a0b51fc86b84133d7e93813423c9a
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919523"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550315"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>Automatizace odpovědí na triggery Security Center
 
 Každý program zabezpečení zahrnuje několik pracovních postupů pro reakci na incidenty. Tyto procesy mohou zahrnovat oznamování relevantních účastníků, spuštění procesu správy změn a uplatnění specifických kroků k nápravě. Odborníci na zabezpečení doporučují automatizovat tolik kroků těchto postupů, jako je to možné. Automatizace snižuje režijní náklady. Může taky zlepšit zabezpečení tím, že zajistí rychlé, konzistentní a podle vašich předdefinovaných požadavků kroky procesu.
 
-Tento článek popisuje funkci automatizace pracovního postupu Azure Security Center. Tato funkce může aktivovat Logic Apps výstrah zabezpečení a doporučení. Můžete například chtít, aby Security Center při výskytu výstrahy poslat e-mailem konkrétního uživatele. Naučíte se také, jak vytvořit Logic Apps pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md).
+Tento článek popisuje funkci automatizace pracovního postupu Azure Security Center. Tato funkce může aktivovat Logic Apps výstrah zabezpečení, doporučení a změny dodržování předpisů. Můžete například chtít, aby Security Center při výskytu výstrahy poslat e-mailem konkrétního uživatele. Naučíte se také, jak vytvořit Logic Apps pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md).
 
 
 ## <a name="availability"></a>Dostupnost
@@ -70,10 +70,12 @@ Tento článek popisuje funkci automatizace pracovního postupu Azure Security C
 
     Návrhář aplikace logiky podporuje tyto aktivační události Security Center:
 
-    * **Když se vytvoří nebo aktivuje doporučení Azure Security Center** – Pokud aplikace logiky spoléhá na doporučení, které se přestává používat jako zastaralé nebo nahrazené, vaše automatizace přestane fungovat a bude nutné Trigger aktualizovat. Pokud chcete sledovat změny v doporučeních, přečtěte si téma [Azure Security Center poznámky k verzi](release-notes.md).
+    - **Když se vytvoří nebo aktivuje doporučení Azure Security Center** – Pokud aplikace logiky spoléhá na doporučení, které se přestává používat jako zastaralé nebo nahrazené, vaše automatizace přestane fungovat a bude nutné Trigger aktualizovat. Pokud chcete sledovat změny v doporučeních, přečtěte si téma [Azure Security Center poznámky k verzi](release-notes.md).
 
-    * **Když se vytvoří nebo aktivuje výstraha Azure Security Center** – Trigger můžete přizpůsobit tak, aby se v něm zobrazovaly jenom výstrahy se úrovněmi závažnosti, které vás zajímají.
+    - **Když se vytvoří nebo aktivuje výstraha Azure Security Center** – Trigger můžete přizpůsobit tak, aby se v něm zobrazovaly jenom výstrahy se úrovněmi závažnosti, které vás zajímají.
     
+    - **Když se vytvoří nebo aktivuje vyhodnocení dodržování předpisů v Security Center** , na základě aktualizací pro vyhodnocení dodržování předpisů regulativním postupem.
+
     > [!NOTE]
     > Pokud používáte starší verzi triggeru, když se aktivuje odpověď na Azure Security Center výstraha, vaše aplikace logiky se nespustí pomocí funkce automatizace pracovního postupu. Místo toho použijte kteroukoli z výše uvedených triggerů. 
 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 07/15/2018
+ms.date: 02/03/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cc336781e9a55bbcb6c51677b01bfc402126f4a
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: bb5a785cba4a560fc15963363d4e5f6b811af97a
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071896"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548827"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Povolení nebo blokování pozvánek uživatelům B2B z konkrétních organizací
 
@@ -27,7 +27,7 @@ Pomocí seznamu povolených nebo zakázaných seznamů můžete povolit nebo zab
 
 - Můžete vytvořit seznam povolených nebo zakázaných. Nemůžete nastavit oba typy seznamů. Ve výchozím nastavení nejsou žádné domény v seznamu povolených v seznamu povolených aplikací a naopak. 
 - V každé organizaci můžete vytvořit jenom jednu zásadu. Zásady můžete aktualizovat tak, aby zahrnovaly více domén, nebo můžete zásadu odstranit a vytvořit novou. 
-- Počet domén, které můžete přidat do seznamu povolených nebo zakázaných domén, je omezený jenom o velikost zásad. Maximální velikost celé zásady je 25 KB (25 000 znaků), která zahrnuje seznam povolených nebo zakázaných položek a všechny další parametry nakonfigurované pro jiné funkce.
+- Počet domén, které můžete přidat do seznamu povolených nebo zakázaných domén, je omezený jenom o velikost zásad. Toto omezení se vztahuje na počet znaků, takže můžete mít více kratších domén nebo méně delších domén. Maximální velikost celé zásady je 25 KB (25 000 znaků), která zahrnuje seznam povolených nebo zakázaných položek a všechny další parametry nakonfigurované pro jiné funkce.
 - Tento seznam funguje nezávisle na seznamu povolených a blokovaných seznamů OneDrivu pro firmy a SharePointu Online. Pokud chcete omezit individuální sdílení souborů v SharePointu Online, musíte nastavit seznam povolených nebo odepřených aplikací pro OneDrive pro firmy a SharePoint Online. Další informace najdete v tématu [sdílení domén s omezeným přístupem v SharePointu Online a OneDrivu pro firmy](https://support.office.com/article/restricted-domains-sharing-in-sharepoint-online-and-onedrive-for-business-5d7589cd-0997-4a00-a2ba-2320ec49c4e9).
 - Seznam se nevztahuje na externí uživatele, kteří už tuto pozvánku provedli. Seznam se vynutil po nastavení seznamu. Pokud je pozvánka uživatele ve stavu čekání na vyřízení a nastavíte zásady, které blokují svou doménu, pokus uživatele o uplatnění pozvánky se nezdaří.
 
