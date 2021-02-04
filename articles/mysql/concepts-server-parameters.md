@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/26/2021
-ms.openlocfilehash: 9485d346384344bd7c35d0577245419ca1f56574
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 1b0bcf528a16e2f75bf21235980424b5375f8824
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98951306"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539480"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Parametry serveru v Azure Database for MySQL
 
@@ -31,7 +31,7 @@ Další informace o omezeních několika běžně aktualizovaných parametrů se
 
 ### <a name="thread-pools"></a>Fondy vláken
 
-MySQL tradičně přiřadí vlákno pro každé připojení klienta. Jak roste počet souběžných uživatelů, existuje odpovídající odkládací formulář. Mnoho aktivních vláken může ovlivnit výkon významně kvůli zvýšenému přepínání kontextu, kolize vláken a špatnému prostředí mezipamětí procesoru.
+MySQL tradičně přiřadí vlákno pro každé připojení klienta. Jak roste počet souběžných uživatelů, existuje odpovídající pokles výkonu. Mnoho aktivních vláken může ovlivnit výkon významně kvůli zvýšenému přepínání kontextu, kolize vláken a špatnému prostředí mezipamětí procesoru.
 
 Fondy vláken, což je funkce na straně serveru a odlišná od sdružování připojení, maximalizují výkon tím, že zavedou dynamický fond pracovních vláken, který se dá použít k omezení počtu aktivních vláken spuštěných na serveru a minimalizaci změn vláken. To pomáhá zajistit, že shluky připojení nezpůsobí, že dojde k vystavení prostředků nebo selhání serveru s chybou při nedostatku paměti. Fondy vláken jsou nejúčinnější pro krátké dotazy a úlohy náročné na procesor, například OLTP úlohy.
 

@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2ee4e313366bafdd2f6e3bd0e104abd9f11b7776
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 6cefb60d794defcce54766b9c7f71e7fbf40fe5c
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108666"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539429"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Ukládání dat na hraničních zařízeních s využitím služby Azure Blob Storage ve službě IoT Edge
 
@@ -110,7 +110,7 @@ $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
 ```
 
-Například:
+Příklad:
 
 ```powershell
 $creds = Get-Credential
@@ -136,7 +136,7 @@ sudo chown -R 11000:11000 <blob-dir>
 sudo chmod -R 700 <blob-dir>
 ```
 
-Například:
+Příklad:
 
 ```terminal
 sudo chown -R 11000:11000 /srv/containerdata
@@ -184,6 +184,7 @@ Dokumentace k Azure Blob Storage obsahuje ukázkový kód pro rychlý Start v n�
 Následující ukázky pro rychlý Start používají jazyky, které jsou podporované také nástrojem IoT Edge, takže je můžete nasadit jako IoT Edge moduly společně s modulem úložiště objektů BLOB:
 
 * [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
+  * Služba Azure Blob Storage v nástroji IoT Edge v 1.4.0 a starších verzích je kompatibilní s WindowsAzure. úložiště 9.3.3 SDK a v 1.4.1 podporuje taky Azure. Storage. BLOBs 12.8.0 SDK.
 * [Python](../storage/blobs/storage-quickstart-blobs-python.md)
   * Verze před V 2.1 sady Python SDK mají známý problém, kdy modul nevrací čas vytvoření objektu BLOB. Kvůli tomuto problému některé metody, jako jsou objekty blob seznamu, nefungují. Jako alternativní řešení explicitně nastavte verzi rozhraní API u klienta objektů blob na hodnotu 2017-04-17. Případě  `block_blob_service._X_MS_VERSION = '2017-04-17'`
   * [Příklad připojení objektu BLOB](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
@@ -290,9 +291,9 @@ Neplatné
 
 Tento Blob Storage Azure v modulu IoT Edge nyní poskytuje integraci s Event Grid IoT Edge. Podrobné informace o této integraci najdete v [kurzu nasazení modulů, publikování událostí a ověření doručení událostí](../event-grid/edge/react-blob-storage-events-locally.md).
 
-## <a name="release-notes"></a>Poznámky k verzi
+## <a name="release-notes"></a>Zpráva k vydání verze
 
-Tady jsou [poznámky k verzi v Docker Hub](https://hub.docker.com/_/microsoft-azure-blob-storage) pro tento modul.
+Tady jsou [poznámky k verzi v Docker Hub](https://hub.docker.com/_/microsoft-azure-blob-storage) pro tento modul. Může být možné najít další informace týkající se oprav chyb a náprav v poznámkách k verzi konkrétní verze.
 
 ## <a name="suggestions"></a>Návrhy
 
