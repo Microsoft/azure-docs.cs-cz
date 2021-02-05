@@ -1,14 +1,14 @@
 ---
 title: Přehled správy Azure – zásady správného řízení Azure
 description: Přehled oblastí správy pro aplikace a prostředky Azure s odkazy na obsah v nástrojích pro správu Azure.
-ms.date: 09/09/2020
+ms.date: 02/05/2021
 ms.topic: overview
-ms.openlocfilehash: 8ffb37cd1db5740ed022b52cd9687bb3db1632bb
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 754fe496b790a7ee32eb840109a60a04ee66ef97
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949492"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593921"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Co jsou oblasti správy Azure?
 
@@ -26,14 +26,14 @@ Následující diagram ukazuje různé oblasti správy, které jsou nutné k úd
 
 Následující části stručně popisují různé oblasti správy a poskytují odkazy na podrobný obsah věnovaný hlavním službám Azure, které jsou určené k jejich řešení.
 
-## <a name="monitor"></a>Monitorování
+## <a name="monitor"></a>Monitor
 
 Monitorování je proces shromažďování a analýzy dat pro audit výkonu, stavu a dostupnosti vašich prostředků. Efektivní strategie monitorování vám pomůže pochopit fungování komponent a zvýšit dobu provozu pomocí oznámení. Přečtěte si přehled monitorování, které pokrývá různé služby používané při [monitorování aplikací a prostředků Azure](../azure-monitor/overview.md).
 
 ## <a name="configure"></a>Konfigurace
 
 Konfigurace odkazuje na počáteční nasazení a konfiguraci prostředků a průběžnou údržbu.
-Automatizace těchto úloh vám umožní eliminovat redundanci, minimalizovat čas a úsilí a zvýšit přesnost a efektivitu. [Azure Automation](../automation/automation-intro.md) poskytuje převážnou část služeb pro automatizaci úloh konfigurace. Zatímco Runbooky zpracovávají automatizaci procesů, konfiguraci a správu aktualizací pomáhají při správě konfigurace.
+Automatizace těchto úloh vám umožní eliminovat redundanci, minimalizovat čas a úsilí a zvýšit přesnost a efektivitu. [Azure Automation](../automation/automation-intro.md) poskytuje převážnou část služeb pro automatizaci úloh konfigurace. I když Runbooky zpracovávají automatizaci procesů, konfigurace a správa aktualizací vám pomůžou spravovat konfiguraci.
 
 ## <a name="govern"></a>Řízení
 
@@ -50,7 +50,7 @@ Spravujte zabezpečení svých prostředků a dat. Bezpečnostní program zahrnu
 
 Ochrana znamená, že vaše aplikace a data budou k dispozici, a to i s výpadky, které jsou mimo vaši kontrolu. Ochranu v Azure zajišťují dvě služby. [Azure Backup](../backup/backup-overview.md) zajišťuje zálohování a obnovení vašich dat, a to v cloudu i v místním prostředí. [Azure Site Recovery](../site-recovery/site-recovery-overview.md) zajišťuje kontinuitu podnikových aplikací a okamžité obnovení při havárii.
 
-## <a name="migrate"></a>Migrace
+## <a name="migrate"></a>Migrate
 
 Migrace označuje přenos úloh, které jsou aktuálně spuštěné v místním prostředí, do cloudu Azure.
 [Azure Migrate](../migrate/migrate-services-overview.md) je služba, která vám pomůže vyhodnotit vhodnost migrace místních virtuálních počítačů do Azure. Azure Site Recovery migruje virtuální počítače [z místního](../site-recovery/migrate-tutorial-on-premises-azure.md) prostředí nebo [z Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md). [Azure Database Migration](../dms/dms-overview.md) vám pomůže při migraci zdrojů databáze na datové platformy Azure.

@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: sashan
-ms.author: sashan
-ms.reviewer: sstein, sashan
+author: emlisa
+ms.author: emlisa
+ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 15067a046d8adc0ba38101bbe24cdc48cd433d56
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 53b6b4f5d783029cb53de71fe3c47b8cb2d26968
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095436"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593414"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Vysoká dostupnost pro Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,7 +60,7 @@ Redundantní verze architektury vysoké dostupnosti pro úroveň služby pro obe
 ![Redundantní konfigurace zóny pro obecné účely](./media/high-availability-sla/zone-redundant-for-general-purpose.png)
 
 > [!IMPORTANT]
-> Aktuální informace o oblastech, které podporují redundantní databáze zóny, najdete v tématu [Podpora služeb v jednotlivých oblastech](../../availability-zones/az-region.md). Redundantní konfigurace zóny je dostupná jenom v případě, že je vybraný Gen5 výpočetní hardware. Tato funkce není k dispozici ve spravované instanci SQL.
+> Redundantní konfigurace zóny je dostupná jenom v případě, že je vybraný Gen5 výpočetní hardware. Tato funkce není k dispozici ve spravované instanci SQL. Redundantní konfigurace zóny pro účely obecné úrovně je dostupná jenom v těchto oblastech: Východní USA, Východní USA 2, Západní USA 2, Severní Evropa, Západní Evropa, jihovýchodní Asie, Austrálie – východ, Japonsko – východ, Velká Británie – jih a Francie – střed.
 
 > [!NOTE]
 > Pro obecné účely databází s velikostí 80 Vcore může dojít ke snížení výkonu s redundantní konfigurací zóny. Kromě toho můžou mít operace, jako je zálohování, obnovení, kopírování databáze a nastavení vztahů geografického DR, pomalejší výkon pro všechny izolované databáze větší než 1 TB. 

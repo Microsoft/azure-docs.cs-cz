@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b951dab1ad01187c7612fad047bc52eb6aa9700e
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e01ddf0690f11d41021e0a5ae5958c7c80646743
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701870"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594413"
 ---
 # <a name="textures"></a>Textury
 
@@ -35,66 +35,54 @@ Načtení textury se stejným identifikátorem URI dvakrát vrátí stejný obje
 
 Podobně jako při načítání modelů existují dvě varianty prostředku textury ve zdrojovém úložišti objektů BLOB:
 
-* Prostředek textury lze adresovat pomocí identifikátoru URI SAS. Relevantní funkce načítání je `LoadTextureFromSASAsync` s parametrem `LoadTextureFromSASParams` . Tuto variantu použijte také při načítání [vestavěných textur](../overview/features/sky.md#built-in-environment-maps).
-* Texturu je možné adresovat přímo pomocí parametrů služby Blob Storage v případě, že [je úložiště objektů BLOB propojené s účtem](../how-tos/create-an-account.md#link-storage-accounts). Relevantní funkce načítání v tomto případě je `LoadTextureAsync` s parametrem `LoadTextureParams` .
+* Texturu je možné adresovat přímo pomocí parametrů služby Blob Storage v případě, že [je úložiště objektů BLOB propojené s účtem](../how-tos/create-an-account.md#link-storage-accounts). Relevantní funkce načítání v tomto případě je `LoadTextureAsync` s parametrem `LoadTextureOptions` .
+* Prostředek textury lze adresovat pomocí identifikátoru URI SAS. Relevantní funkce načítání je `LoadTextureFromSasAsync` s parametrem `LoadTextureFromSasOptions` . Tuto variantu použijte také při načítání [vestavěných textur](../overview/features/sky.md#built-in-environment-maps).
 
-Následující vzorový kód ukazuje, jak načíst texturu prostřednictvím identifikátoru URI SAS (nebo integrované textury) – Všimněte si, že pro druhý případ se liší pouze funkce načítání nebo parametr:
+Následující vzorový kód ukazuje, jak načíst texturu:
 
 ```cs
-LoadTextureAsync _textureLoad = null;
-void LoadMyTexture(AzureSession session, string textureUri)
+async void LoadMyTexture(RenderingSession session, string storageContainer, string blobName, string assetPath)
 {
-    _textureLoad = session.Actions.LoadTextureFromSASAsync(new LoadTextureFromSASParams(textureUri, TextureType.Texture2D));
-    _textureLoad.Completed +=
-        (LoadTextureAsync res) =>
-        {
-            if (res.IsRanToCompletion)
-            {
-                //use res.Result
-            }
-            else
-            {
-                System.Console.WriteLine("Texture loading failed!");
-            }
-            _textureLoad = null;
-        };
+    try
+    {
+        LoadTextureOptions options = new LoadTextureOptions(storageContainer, blobName, assetPath, TextureType.Texture2D);
+        Texture texture = await session.Connection.LoadTextureAsync(options);
+    
+        // use texture...
+    }
+    catch (RRException ex)
+    {
+    }
 }
 ```
 
 ```cpp
-void LoadMyTexture(ApiHandle<AzureSession> session, std::string textureUri)
+void LoadMyTexture(ApiHandle<RenderingSession> session, std::string storageContainer, std::string blobName, std::string assetPath)
 {
-    LoadTextureFromSASParams params;
+    LoadTextureOptions params;
     params.TextureType = TextureType::Texture2D;
-    params.TextureUrl = std::move(textureUri);
-    ApiHandle<LoadTextureAsync> textureLoad = *session->Actions()->LoadTextureFromSASAsync(params);
-    textureLoad->Completed([](ApiHandle<LoadTextureAsync> res)
+    params.Blob.StorageAccountName = std::move(storageContainer);
+    params.Blob.BlobContainerName = std::move(blobName);
+    params.Blob.AssetPath = std::move(assetPath);
+    session->Connection()->LoadTextureAsync(params, [](Status status, ApiHandle<Texture> texture)
     {
-        if (res->GetIsRanToCompletion())
-        {
-            //use res->Result()
-        }
-        else
-        {
-            printf("Texture loading failed!");
-        }
+        // use texture...
     });
 }
 ```
 
-V závislosti na tom, jaká textura má být použita pro, může dojít k omezením pro typ a obsah textury. Například mapa hrubosti materiálu v rámci [PBR](../overview/features/pbr-materials.md) musí být ve stupních šedi.
+Všimněte si, že pokud použijete variantu SAS, liší se pouze načtená funkce nebo parametr.
 
-> [!CAUTION]
-> Všechny *asynchronní* funkce v ARR vrací objekty asynchronní operace. Odkaz na tyto objekty je nutné uložit, dokud není operace dokončena. V opačném případě může systém uvolňování paměti C# operaci nejdříve odstranit a nemůže být nikdy dokončen. V ukázkovém kódu nad členskou proměnnou ' _textureLoad ' slouží k uložení odkazu, dokud událost dokončení události *dokončeno* nebude.
+V závislosti na tom, jaká textura má být použita pro, může dojít k omezením pro typ a obsah textury. Například mapa hrubosti materiálu v rámci [PBR](../overview/features/pbr-materials.md) musí být ve stupních šedi.
 
 ## <a name="api-documentation"></a>Dokumentace k rozhraní API
 
 * [Třída textury C#](/dotnet/api/microsoft.azure.remoterendering.texture)
-* [C# RemoteManager. LoadTextureAsync ()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtextureasync)
-* [C# RemoteManager. LoadTextureFromSASAsync ()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtexturefromsasasync)
+* [C# RenderingConnection. LoadTextureAsync ()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.loadtextureasync)
+* [C# RenderingConnection. LoadTextureFromSasAsync ()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.loadtexturefromsasasync)
 * [Textura C++ – třída](/cpp/api/remote-rendering/texture)
-* [C++ RemoteManager:: LoadTextureAsync ()](/cpp/api/remote-rendering/remotemanager#loadtextureasync)
-* [C++ RemoteManager:: LoadTextureFromSASAsync ()](/cpp/api/remote-rendering/remotemanager#loadtexturefromsasasync)
+* [C++ RenderingConnection:: LoadTextureAsync ()](/cpp/api/remote-rendering/renderingconnection#loadtextureasync)
+* [C++ RenderingConnection:: LoadTextureFromSasAsync ()](/cpp/api/remote-rendering/renderingconnection#loadtexturefromsasasync)
 
 ## <a name="next-steps"></a>Další kroky
 

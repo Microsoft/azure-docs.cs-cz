@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 6258365ab00ab538f3f3502682078d29a391578c
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 525872ca3ad2558c327b7b856254319d3db2dc7f
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724920"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593989"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Rychlý Start: vykreslení modelu pomocí Unity
 
@@ -74,8 +74,8 @@ Výchozí model, který vykreslíme, je [vestavěný Vzorový model](../samples/
 ![Informace o účtu ARR](./media/arr-sample-account-info.png)
 
 > [!IMPORTANT]
-> Nastavte **AccountDomain** na `<region>.mixedreality.azure.com` , kde `<region>` je [jedna z dostupných oblastí poblíž](../reference/regions.md). \
-> Nastavte **AccountAuthenticationDomain** na [Doména účtu](../how-tos/create-an-account.md#retrieve-the-account-information) , jak se zobrazuje na webu Azure Portal.
+> Nastavte **RemoteRenderingDomain** na `<region>.mixedreality.azure.com` , kde `<region>` je [jedna z dostupných oblastí poblíž](../reference/regions.md). \
+> Nastavte **AccountDomain** na [Doména účtu](../how-tos/create-an-account.md#retrieve-the-account-information) , jak se zobrazuje na webu Azure Portal.
 
 Později chceme nasadit tento projekt na HoloLens a připojit se ke službě vzdáleného vykreslování z tohoto zařízení. Vzhledem k tomu, že jsme nemuseli na zařízení zadat přihlašovací údaje, ukázka pro rychlý Start **uloží přihlašovací údaje v rámci scény Unity**.
 
@@ -88,7 +88,7 @@ Kliknutím na tlačítko **Přehrát** v Unity spustíte relaci. V dolní část
 
 ![Výstup z ukázky](media/arr-sample-output.png)
 
-Blahopřejeme! Nyní prohlížíte vzdáleně vykreslený model.
+Gratulujeme! Nyní prohlížíte vzdáleně vykreslený model.
 
 ## <a name="inspecting-the-scene"></a>Kontrola scény
 

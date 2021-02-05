@@ -9,42 +9,34 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a00f319c55665695879aac3c8ba711ce13fd5d4e
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: fbd5d3c4489d124014e0d956359f64a8ec9c568a
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763052"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592785"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Začínáme s ukázkou webového volání
+
+Ukázka webového volání je webová aplikace, která slouží jako podrobný návod k různým funkcím poskytovaným klientským knihovnou webového volání komunikačních služeb. 
+
+Tato ukázka byla sestavena pro vývojáře a usnadňuje vám práci s komunikačními službami. Jeho uživatelské rozhraní je rozdělené do několika oddílů, z nichž každý obsahuje tlačítko "Zobrazit kód", které umožňuje zkopírovat kód přímo z prohlížeče do vlastní aplikace komunikační služby.
+
+## <a name="get-started-with-the-web-calling-sample"></a>Začínáme s ukázkou webového volání
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 > [!IMPORTANT]
 > [Tato ukázka je k dispozici na GitHubu.](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)..
 
-**Ukázka webového volání** služby Azure Communications ukazuje, jak lze použít komunikační služby volající klientskou knihovnu k sestavení volání pomocí JavaScriptu.
-
-V tomto rychlém startu se dozvíte, jak ukázka funguje před spuštěním ukázky na místním počítači. Pak nasadíme ukázku do Azure s využitím vlastních prostředků služby Azure Communication Services.
-
-## <a name="overview"></a>Přehled
-
-Ukázka webového volání je webová aplikace, která slouží jako podrobný návod k různým funkcím poskytovaným klientským knihovnou webového volání komunikačních služeb. 
-
-Tato ukázka byla sestavena pro vývojáře a usnadňuje vám práci s komunikačními službami. Jeho uživatelské rozhraní je rozdělené do několika oddílů, z nichž každý obsahuje tlačítko "Zobrazit kód", které umožňuje zkopírovat kód přímo z prohlížeče do vlastní aplikace komunikační služby.
-
-Když je na vašem počítači [Ukázková webová volání](https://github.com/Azure-Samples/communication-services-web-calling-tutorial) , zobrazí se následující cílová stránka:
+Postupujte podle/Project/Readme.MD a nastavte projekt a spusťte ho místně na svém počítači.
+Po spuštění [ukázky webové volání](https://github.com/Azure-Samples/communication-services-web-calling-tutorial) na vašem počítači se zobrazí následující cílová stránka:
 
 :::image type="content" source="./media/web-calling-tutorial-page-1.png" alt-text="Kurz pro webové volání 1" lightbox="./media/web-calling-tutorial-page-1.png":::
 
 :::image type="content" source="./media/web-calling-tutorial-page-2.png" alt-text="Kurz pro webové volání 2" lightbox="./media/web-calling-tutorial-page-2.png":::
 
-
 ## <a name="user-provisioning-and-sdk-initialization"></a>Zřizování uživatelů a inicializace sady SDK 
-
-Chcete-li začít používat ukázku, zadejte připojovací řetězec z [prostředku komunikačních služeb](../quickstarts/create-communication-resource.md) do `config.json` . Tato možnost se použije ke zřízení [přístupového tokenu uživatele](../concepts/authentication.md) , aby bylo možné inicializovat volání sady SDK.
-
-Do vstupu identity uživatele zadejte svůj vlastní osobní identifikátor. Pokud zde není nic uvedeno, bude vygenerována náhodná identita uživatele. 
 
 Kliknutím na "zřizování uživatele a inicializaci sady SDK" můžete sadu SDK inicializovat pomocí tokenu zřízeného službou zřizování back-end tokenu. Tato služba back-end je v systému `/project/webpack.config.js` .
 

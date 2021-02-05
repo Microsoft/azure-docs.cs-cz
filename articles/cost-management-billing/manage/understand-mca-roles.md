@@ -5,14 +5,14 @@ author: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 02/05/2021
 ms.author: banders
-ms.openlocfilehash: 511c0ecdef45a882bcc3a427d5ec602b3ebabc66
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
-ms.translationtype: HT
+ms.openlocfilehash: 00ac61567502984759c5db9837060c86aaee378d
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673827"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593582"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Vysvětlení rolí pro správu smluv se zákazníky Microsoftu v Azure
 
@@ -100,6 +100,8 @@ Následující tabulky ukazují, jakou roli potřebujete k různým úkonům v k
 |Aktualizace vlastností fakturačního profilu |✔|✔|✘|✘|✘|✘|✘|
 |Zobrazení zásad použitých ve fakturačním profilu, například povolení nákupů rezervací v Azure, povolení nákupů z Azure Marketplace a další|✔|✔|✔|✔|✔|✔|✔|
 |Uplatňování zásad ve fakturačním profilu |✔|✔|✘|✘|✘|✘|✘|
+|Správa objednávek rezervací |✔|✔|✘|✘|✘|✘|✘|
+|Zobrazit objednávky rezervací |✔|✔|✔|✘|✘|✘|✘|
 
 ### <a name="manage-invoices-for-billing-profile"></a>Správa faktur pro fakturační profil
 

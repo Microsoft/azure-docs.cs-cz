@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 34a947a2a0f6d8c87c0580f273130b671b4f17fc
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 4990f0d0a10709f2c1c5a17806020cd685f999fc
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722228"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593329"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
@@ -191,9 +191,9 @@ Uvnitř balíčku NuGet jazyka C++ je soubor souboru `microsoft.azure.remoterend
 
 V případě, že se vygenerované objekty budou pohybovat spolu s pohyby hlav, může docházet k potížím s fází LSR ( *opožděné reprojekce* ). Pokyny k tomu, jak se tyto situace týkají, najdete v části o [reprojekci v pozdní fázi](../overview/features/late-stage-reprojection.md) .
 
-Dalším důvodem pro nestabilní hologramy (wobbling, reformace, kolísání nebo přechodové hologramy) může být špatné připojení k síti, zejména nedostatečná šířka pásma sítě nebo příliš vysoká latence. Dobrým indikátorem pro kvalitu síťového připojení je hodnota [statistiky výkonu](../overview/features/performance-queries.md) `ARRServiceStats.VideoFramesReused` . Znovu používané snímky označují situace, kdy se na straně klienta má znovu použít starý snímek videa, protože není k dispozici žádný nový snímek videa – například kvůli ztrátě paketů nebo kvůli variacím latence sítě. Pokud `ARRServiceStats.VideoFramesReused` je často větší než nula, znamená to, že dojde k potížím se sítí.
+Dalším důvodem pro nestabilní hologramy (wobbling, reformace, kolísání nebo přechodové hologramy) může být špatné připojení k síti, zejména nedostatečná šířka pásma sítě nebo příliš vysoká latence. Dobrým indikátorem pro kvalitu síťového připojení je hodnota [statistiky výkonu](../overview/features/performance-queries.md) `ServiceStatistics.VideoFramesReused` . Znovu používané snímky označují situace, kdy se na straně klienta má znovu použít starý snímek videa, protože není k dispozici žádný nový snímek videa – například kvůli ztrátě paketů nebo kvůli variacím latence sítě. Pokud `ServiceStatistics.VideoFramesReused` je často větší než nula, znamená to, že dojde k potížím se sítí.
 
-Další hodnota, kterou chcete prohledat `ARRServiceStats.LatencyPoseToReceiveAvg` , je. Mělo by se konzistentně nacházet pod 100 ms. Zobrazení vyšších hodnot může znamenat, že jste připojení k datovému centru, které je příliš daleko.
+Další hodnota, kterou chcete prohledat `ServiceStatistics.LatencyPoseToReceiveAvg` , je. Mělo by se konzistentně nacházet pod 100 ms. Zobrazení vyšších hodnot může znamenat, že jste připojení k datovému centru, které je příliš daleko.
 
 Seznam možných rizik najdete v [pokynech k připojení k síti](../reference/network-requirements.md#guidelines-for-network-connectivity).
 

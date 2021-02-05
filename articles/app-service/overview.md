@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: d59dfe5b0fe3268dcda20fbc83aa31bba8a8713b
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 0bfacc4169de6b30272229283e9aef9a9d69fad5
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936205"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592326"
 ---
 # <a name="app-service-overview"></a>Přehled služby App Service
 
@@ -50,13 +50,13 @@ Zastaralé moduly runtime se pravidelně odstraňují z Web Apps v portálu pro 
 
 Pokud je zastaralý modul runtime na portálu skrytý, všechny existující weby, které tuto verzi používají, budou i nadále běžet. Pokud je modul runtime úplně odebraný z App Serviceé platformy, vlastníkům předplatného Azure se před odebráním pošle e-mailové oznámení.
 
-Pokud potřebujete vytvořit jinou webovou aplikaci se zastaralou verzí modulu runtime, která se už na portálu nezobrazuje, přečtěte si téma Průvodce konfigurací jazyka, kde najdete pokyny, jak získat verzi vašeho webu pro modul runtime. Pomocí rozhraní příkazového řádku Azure můžete vytvořit další lokalitu se stejným modulem runtime. Alternativně můžete pomocí tlačítka **Exportovat šablonu** v okně webové aplikace na portálu Exportovat šablonu ARM webu. Tuto šablonu můžete znovu použít k nasazení nové lokality se stejným modulem runtime a konfigurací.
+Pokud potřebujete vytvořit jinou webovou aplikaci se zastaralou verzí modulu runtime, která se už na portálu nezobrazuje, přečtěte si téma Průvodce konfigurací jazyka, kde najdete pokyny, jak získat verzi vašeho webu pro modul runtime. Pomocí rozhraní příkazového řádku Azure můžete vytvořit další lokalitu se stejným modulem runtime. Alternativně můžete pomocí tlačítka **Exportovat šablonu** v okně webové aplikace na portálu Exportovat šablonu ARM webu. Tuto šablonu můžete použít k nasazení nové lokality se stejným modulem runtime a konfigurací.
 
 ### <a name="limitations"></a>Omezení
 
 - App Service v systému Linux není ve [sdílené](https://azure.microsoft.com/pricing/details/app-service/plans/) cenové úrovni podporováno. 
 - Aplikace pro Windows a Linux nemůžete kombinovat ve stejném plánu App Service.  
-- Ve stejné skupině prostředků nemůžete kombinovat aplikace pro Windows a Linux ve stejné oblasti.
+- V minulosti nemůžete kombinovat aplikace pro Windows a Linux ve stejné skupině prostředků. Všechny skupiny prostředků vytvořené od 21. ledna 2021 ale podporují tento scénář. Pro skupiny prostředků vytvořené před 21. ledna 2021 se možnost Přidat nasazení smíšené platformy nasadí napříč oblastmi Azure (včetně národních cloudových oblastí) brzo.
 - Azure Portal zobrazuje jenom funkce, které aktuálně fungují pro aplikace pro Linux. Když jsou funkce povolené, aktivují se na portálu.
 - Při nasazení do vestavěných imagí se vašemu kódu a obsahu přidělují svazek úložiště pro webový obsah, který je zálohovaný Azure Storage. Latence disku tohoto svazku je vyšší a více proměnných, než je latence systému souborů kontejnerů. Aplikace, které vyžadují velký přístup jen pro čtení k souborům obsahu, mohou využívat možnost vlastní kontejner, která místo na svazku obsahu umístí soubory do systému souborů kontejnerů.
 

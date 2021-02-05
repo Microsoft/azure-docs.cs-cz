@@ -1,15 +1,15 @@
 ---
 title: 'Rychlý Start: vytvoření sdíleného dotazu se šablonami'
 description: V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM) k vytvoření sdíleného dotazu pro diagram prostředků, který počítá virtuální počítače podle operačního systému.
-ms.date: 10/14/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: a629dd5325fc20d6f173d9f4e0524885af8fdf49
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 8d631ffcb14af93f10e578097470efc6156287d5
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057004"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594312"
 ---
 # <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>Rychlý Start: vytvoření sdíleného dotazu pomocí šablony ARM
 
@@ -73,7 +73,7 @@ Chcete-li spustit nový sdílený dotaz, postupujte podle následujících krok�
 
 1. Na panelu hledání na portálu vyhledejte dotazy na **grafy prostředků** a vyberte je.
 
-1. Vyberte sdílený dotaz s názvem **počet virtuálních počítačů podle operačního systému**a pak vyberte kartu **výsledky** na stránce **Přehled** .
+1. Vyberte sdílený dotaz s názvem **počet virtuálních počítačů podle operačního systému** a pak vyberte kartu **výsledky** na stránce **Přehled** .
 
 Sdílený dotaz lze také otevřít z Průzkumníka grafu prostředků:
 

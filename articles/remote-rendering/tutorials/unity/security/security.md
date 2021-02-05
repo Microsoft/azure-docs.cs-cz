@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d8a7bb620b7fcc9c878986d3575e22bb6f0f77bc
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: b1bcba264589d6cbe9b4f671e1e4f2c9b1dbf2c5
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724108"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594244"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Kurz: zabezpečení vzdáleného vykreslování a úložiště modelu Azure
 
@@ -41,16 +41,16 @@ Vzdálené vykreslování Azure může bezpečně přistupovat k obsahu vašeho 
 
 Při použití propojeného úložiště objektů BLOB použijete mírně různé metody načítání modelů:
 
-```csharp
-var loadModelParams = new LoadModelFromSASParams(modelPath, modelEntity);
-var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelFromSASAsync(loadModelParams);
+```cs
+var loadModelParams = new LoadModelFromSasOptions(modelPath, modelEntity);
+var task = ARRSessionService.CurrentActiveSession.Connection.LoadModelFromSasAsync(loadModelParams);
 ```
 
-Výše uvedené řádky používají `FromSAS` verzi parametrů a akci relace. Je nutné je převést na jiné verze než SAS:
+Výše uvedené řádky používají `FromSas` verzi parametrů a akci relace. Je nutné je převést na jiné verze než SAS:
 
-```csharp
-var loadModelParams = new LoadModelParams(storageAccountPath, blobContainerName, modelPath, modelEntity);
-var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsync(loadModelParams);
+```cs
+var loadModelParams = new LoadModelOptions(storageAccountPath, blobContainerName, modelPath, modelEntity);
+var task = ARRSessionService.CurrentActiveSession.Connection.LoadModelAsync(loadModelParams);
 ```
 
 Pojďme upravit **RemoteRenderingCoordinator** , aby se načetl vlastní model z propojeného účtu úložiště BLOB.
@@ -58,7 +58,7 @@ Pojďme upravit **RemoteRenderingCoordinator** , aby se načetl vlastní model z
 1. Pokud jste to ještě neudělali, dokončete [Postup: propojení účtů úložiště](../../../how-tos/create-an-account.md#link-storage-accounts) a udělte vaší instanci ARR oprávnění k přístupu k vaší instanci BLOB Storage.
 1. Přidejte následující upravenou metodu **LoadModel** pro **RemoteRenderingCoordinator** hned pod aktuální metodu **LoadModel** :
 
-    ```csharp
+    ```cs
     /// <summary>
     /// Loads a model from blob storage that has been linked to the ARR instance
     /// </summary>
@@ -68,10 +68,10 @@ Pojďme upravit **RemoteRenderingCoordinator** , aby se načetl vlastní model z
     /// <param name="parent">The parent Transform for this remote entity</param>
     /// <param name="progress">A call back method that accepts a float progress value [0->1]</param>
     /// <returns></returns>
-    public async Task<Entity> LoadModel(string storageAccountName, string blobContainerName, string modelPath, Transform parent = null, ProgressHandler progress = null)
+    public async Task<Entity> LoadModel(string storageAccountName, string blobContainerName, string modelPath, Transform parent = null, Action<float> progress = null)
     {
         //Create a root object to parent a loaded model to
-        var modelEntity = ARRSessionService.CurrentActiveSession.Actions.CreateEntity();
+        var modelEntity = ARRSessionService.CurrentActiveSession.Connection.CreateEntity();
 
         //Get the game object representation of this entity
         var modelGameObject = modelEntity.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
@@ -100,11 +100,9 @@ Pojďme upravit **RemoteRenderingCoordinator** , aby se načetl vlastní model z
     #endif
 
         //Load a model that will be parented to the entity
-        var loadModelParams = new LoadModelParams($"{storageAccountName}.blob.core.windows.net", blobContainerName, modelPath, modelEntity);
-        var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsync(loadModelParams);
-        if (progress != null)
-            loadModelAsync.ProgressUpdated += progress;
-        var result = await loadModelAsync.AsTask();
+        var loadModelParams = new LoadModelOptions($"{storageAccountName}.blob.core.windows.net", blobContainerName, modelPath, modelEntity);
+        var loadModelAsync = ARRSessionService.CurrentActiveSession.Connection.LoadModelAsync(loadModelParams, progress);
+        var result = await loadModelAsync;
         return modelEntity;
     }
     ```
@@ -115,7 +113,7 @@ Pojďme upravit **RemoteRenderingCoordinator** , aby se načetl vlastní model z
 
 1. Přidejte následující metodu, která se **RemoteRenderingCoordinator** hned za **LoadTestModel**
 
-    ```csharp
+    ```cs
     private bool loadingLinkedCustomModel = false;
 
     [SerializeField]
@@ -190,7 +188,7 @@ Pro odebrání z místní aplikace máme ještě jedno "heslo", AccountKey. To s
 
 Ověřování AAD vám umožní lépe řízený způsob, jakým jednotlivci nebo skupiny používají ARR. ŠIPKA na základě této vlastnosti podporovala příjem [přístupových tokenů](../../../../active-directory/develop/access-tokens.md) namísto použití klíče účtu. Přístupové tokeny si můžete představit jako uživatelsky omezený klíč specifický uživatelem, který pouze odemkne určité části konkrétního prostředku, pro který byl vyžádán.
 
-Skript **RemoteRenderingCoordinator** má delegáta s názvem **ARRCredentialGetter**, který obsahuje metodu, která vrací objekt **AzureFrontendAccountInfo** , který se používá ke konfiguraci vzdálené správy relací. K **ARRCredentialGetter** můžeme přiřadit jinou metodu. díky tomu můžeme použít tok přihlášení Azure, který vygeneruje objekt **AzureFrontendAccountInfo** , který obsahuje přístupový token Azure. Tento přístupový token bude specifický pro uživatele, který se přihlašuje.
+Skript **RemoteRenderingCoordinator** má delegáta s názvem **ARRCredentialGetter**, který obsahuje metodu, která vrací objekt **SessionConfiguration** , který se používá ke konfiguraci vzdálené správy relací. K **ARRCredentialGetter** můžeme přiřadit jinou metodu. díky tomu můžeme použít tok přihlášení Azure, který vygeneruje objekt **SessionConfiguration** , který obsahuje přístupový token Azure. Tento přístupový token bude specifický pro uživatele, který se přihlašuje.
 
 1. Postupujte podle pokynů v tématu [Postupy: Konfigurace ověřování pro nasazené aplikace](../../../how-tos/authentication.md#authentication-for-deployed-applications), konkrétně budete postupovat podle pokynů uvedených v dokumentaci k Azure AD anchorch kotev v dokumentaci k [ověřování uživatelů Azure AD](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication). Zahrnuje registraci nové aplikace Azure Active Directory a konfiguraci přístupu k instanci ARR.
 1. Po nakonfigurování nové aplikace AAD ověřte, že vaše aplikace AAD vypadá jako na následujících obrázcích:
@@ -206,11 +204,11 @@ Skript **RemoteRenderingCoordinator** má delegáta s názvem **ARRCredentialGet
     >[!NOTE]
     > Role *vlastníka* není dostatečná ke správě relací prostřednictvím klientské aplikace. Pro každého uživatele, kterému chcete udělit možnost Spravovat relace, musíte poskytnout **klienta vzdáleného vykreslování** role. Pro každého uživatele, který chcete spravovat relace a převod modelů, je nutné zadat **Správce vzdáleného vykreslování** role.
 
-Když je služba Azure na místě, je teď potřeba změnit způsob připojení kódu ke službě AAR. Provedeme to implementací instance **BaseARRAuthentication**, která vrátí nový objekt **AzureFrontendAccountInfo** . V takovém případě se informace o účtu nakonfigurují pomocí přístupového tokenu Azure.
+Když je služba Azure na místě, je teď potřeba změnit způsob připojení kódu ke službě AAR. Provedeme to implementací instance **BaseARRAuthentication**, která vrátí nový objekt **SessionConfiguration** . V takovém případě se informace o účtu nakonfigurují pomocí přístupového tokenu Azure.
 
 1. Vytvořte nový skript s názvem **AADAuthentication** a nahraďte jeho kód následujícím kódem:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -278,7 +276,7 @@ Když je služba Azure na místě, je teď potřeba změnit způsob připojení 
             this.gameObject.AddComponent<ExecuteOnUnityThread>();
         }
 
-        public async override Task<AzureFrontendAccountInfo> GetAARCredentials()
+        public async override Task<SessionConfiguration> GetAARCredentials()
         {
             var result = await TryLogin();
             if (result != null)
@@ -287,7 +285,7 @@ Když je služba Azure na místě, je teď potřeba změnit způsob připojení 
 
                 var AD_Token = result.AccessToken;
 
-                return await Task.FromResult(new AzureFrontendAccountInfo(AzureRemoteRenderingAccountAuthenticationDomain, AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+                return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccountAuthenticationDomain, AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
             }
             else
             {
@@ -373,11 +371,11 @@ Pro tento kód používáme [tok kódu zařízení](../../../../active-directory
 
 Nejdůležitější část této třídy z perspektivy ARR je tento řádek:
 
-```csharp
-return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+```cs
+return await Task.FromResult(new SessionConfiguration(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
 ```
 
-Tady vytvoříte nový objekt **AzureFrontendAccountInfo** pomocí domény účtu, ID účtu, domény ověřování účtu a přístupového tokenu. Tento token je pak používán službou ARR k dotazování, vytvoření a připojení vzdálených relací vykreslování, pokud je uživatel autorizován na základě oprávnění na základě rolí nakonfigurovaných dříve.
+Tady vytvoříte nový objekt **SessionConfiguration** pomocí domény účtu, ID účtu, domény ověřování účtu a přístupového tokenu. Tento token je pak používán službou ARR k dotazování, vytvoření a připojení vzdálených relací vykreslování, pokud je uživatel autorizován na základě oprávnění na základě rolí nakonfigurovaných dříve.
 
 V důsledku této změny bude aktuální stav aplikace a její přístup k prostředkům Azure vypadat takto:
 

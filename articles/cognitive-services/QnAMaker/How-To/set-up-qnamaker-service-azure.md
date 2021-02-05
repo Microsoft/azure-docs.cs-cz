@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 4e09f9b8564c9319e68984df1c0f8db7a496a6d0
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: beb45d0d650b07f6106a3307d2d3a955095ee8b1
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584800"
+ms.locfileid: "99592258"
 ---
 # <a name="manage-qna-maker-resources"></a>Správa prostředků QnA Maker
 
@@ -92,60 +92,10 @@ Tento postup slouží k vytvoření prostředků Azure potřebných ke správě 
     ![Prostředek vytvořil novou službu QnA Maker spravovaná (Preview).](../media/qnamaker-how-to-setup-service/resources-created-v2.png)
 
     Prostředek s typem _Cognitive Services_ má vaše klíče _předplatného_ .
-
+    
 ---
 
-## <a name="find-authoring-keys-in-the-azure-portal"></a>Hledání klíčů pro vytváření Azure Portal
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
-
-Klíče pro vytváření obsahu můžete zobrazit a obnovit z Azure Portal, kde jste vytvořili prostředek QnA Maker. Tyto klíče mohou být označovány jako klíče předplatného.
-
-1. V Azure Portal otevřete prostředek QnA Maker a vyberte prostředek, který má typ _Cognitive Services_ :
-
-    ![Seznam prostředků QnA Maker](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
-
-2. Přejít na **klíče a koncový bod**:
-
-    ![Klíč předplatného QnA Maker Managed (Preview)](../media/qnamaker-how-to-key-management/subscription-key-v2.png)
-
-### <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>Hledání klíčů koncových bodů dotazů na portálu QnA Maker
-
-Koncový bod je ve stejné oblasti jako prostředek, protože klávesy koncových bodů slouží k volání znalostní báze.
-
-Klíče koncového bodu je možné spravovat z [portálu QnA maker](https://qnamaker.ai).
-
-1. Přihlaste se k [portálu QnA maker](https://qnamaker.ai), otevřete svůj profil a vyberte **nastavení služby**:
-
-    ![Klíč koncového bodu](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
-
-2. Zobrazení nebo resetování klíčů:
-
-    > [!div class="mx-imgBorder"]
-    > ![Správce klíčů koncového bodu](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
-
-    >[!NOTE]
-    >Pokud si myslíte, že jsou vaše klíče ohrožené, aktualizujte je. To může vyžadovat odpovídající změny vaší klientské aplikace nebo kódu bot.
-
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
-
-Klíče pro vytváření obsahu můžete zobrazit a obnovit z Azure Portal, kde jste vytvořili prostředek QnA Maker Managed (Preview). Tyto klíče mohou být označovány jako klíče předplatného.
-
-1. V Azure Portal klikněte na prostředek QnA Maker Managed (Preview) a vyberte prostředek, který má typ *Cognitive Services* :
-
-    ![Seznam prostředků spravovaného QnA Maker (Preview)](../media/qnamaker-how-to-key-management/qnamaker-v2-resource-list.png)
-
-2. Přejít na **klíče a koncový bod**:
-
-    ![Klíč předplatného QnA Maker Managed (Preview)](../media/qnamaker-how-to-key-management/subscription-key-v2.png)
-
-### <a name="update-the-resources"></a>Aktualizace prostředků
-
-Přečtěte si, jak upgradovat prostředky používané ve znalostní bázi. QnA Maker Managed (Preview) je ve verzi Preview **zdarma** . 
-
----
-
-### <a name="recommended-settings-for-network-isolation"></a>Doporučené nastavení pro izolaci sítě
+## <a name="recommended-settings-for-network-isolation"></a>Doporučené nastavení pro izolaci sítě
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
 

@@ -3,14 +3,14 @@ title: Template deployment citlivosti
 description: Než nasadíte šablonu Azure Resource Manager, určete, jaké změny se budou probíhat u vašich prostředků.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 02/05/2021
 ms.author: tomfitz
-ms.openlocfilehash: fa70d88b046cf38aa74582066d230c15580465b9
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 8122fa5c00a61017b5f358a112c94a5299539cee
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673966"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591620"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>Operace what-if (citlivostní analýza) při nasazení šablony ARM
 
@@ -18,13 +18,9 @@ Před nasazením šablony Azure Resource Manager (šablona ARM) můžete zobrazi
 
 Můžete použít operaci s citlivostní operací s Azure PowerShell, Azure CLI nebo REST API operacemi. Co když je podporováno pro nasazení skupiny prostředků, předplatného, skupiny pro správu a na úrovni tenanta.
 
-## <a name="install-azure-powershell-module"></a>Instalace modulu Azure PowerShellu
+## <a name="install-azure-powershell-module"></a>Nainstalovat modul Azure PowerShell
 
 Pokud chcete v PowerShellu použít co v prostředí PowerShell, musíte mít verzi **4,2 nebo novější z modulu AZ Module**.
-
-Než ale nainstalujete požadovaný modul, ujistěte se, že máte PowerShell Core (6. x nebo 7. x). Pokud máte PowerShell 5. x nebo starší, [aktualizujte svou verzi PowerShellu](/powershell/scripting/install/installing-powershell). Požadovaný modul nejde nainstalovat do PowerShellu 5. x nebo staršího.
-
-### <a name="install-latest-version"></a>Nainstalovat nejnovější verzi
 
 K instalaci modulu použijte:
 
@@ -326,7 +322,7 @@ results=$(az deployment group what-if --resource-group ExampleGroup --template-u
 
 Operace citlivosti podporuje použití [režimu nasazení](deployment-modes.md). Při nastavení na režim úplné se odstraní prostředky, které nejsou v šabloně. Následující příklad nasadí [šablonu, která nemá definované žádné prostředky](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) v režimu úplného zobrazení.
 
-Pokud chcete zobrazit náhled změn před nasazením šablony, použijte v příkazu pro nasazení parametr confirm switch. Pokud jsou změny podle očekávání, potvrďte, že chcete nasazení dokončit.
+Pokud chcete zobrazit náhled změn před nasazením šablony, použijte v příkazu pro nasazení parametr confirm switch. Pokud jsou změny podle očekávání, odpovězte na to, že chcete nasazení dokončit.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

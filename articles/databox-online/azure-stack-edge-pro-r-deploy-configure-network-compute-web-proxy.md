@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/15/2020
+ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: ad0010a1885c1e9bac8fa2341771cedc12115adc
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 11c1d76b5784587f234455f81595778897569eb1
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468164"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594346"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-r"></a>Kurz: konfigurace sítě pro Azure Stack Edge pro R
 
@@ -26,13 +26,13 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Předpoklady
+> * Požadavky
 > * Konfigurace sítě
 > * Povolit výpočetní síť
 > * Konfigurace webového proxy serveru
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před konfigurací a nastavením Azure Stack hraničního zařízení pro R se ujistěte, že:
 
@@ -72,6 +72,7 @@ Pomocí těchto kroků nakonfigurujete síť pro vaše zařízení.
    * Pokud je ve vašem prostředí povolený protokol DHCP, síťová rozhraní se nakonfigurují automaticky. IP adresa, podsíť, brána a DNS se přiřadí automaticky.
    * Pokud není protokol DHCP povolený, můžete v případě potřeby přiřadit statické IP adresy.
    * Síťové rozhraní můžete nakonfigurovat jako IPv4.
+   * Seskupování síťových adaptérů (NIC) nebo agregace propojení se u Azure Stack Edge nepodporují.
    * Sériové číslo pro libovolný port odpovídá sériovému číslu uzlu.
     <!--* On the 25-Gbps interfaces, you can set the RDMA (Remote Direct Access Memory) mode to iWarp or RoCE (RDMA over Converged Ethernet). Where low latencies are the primary requirement and scalability is not a concern, use RoCE. When latency is a key requirement, but ease-of-use and scalability are also high priorities, iWARP is the best candidate.-->
     Po nakonfigurování sítě zařízení se stránka aktualizuje, jak je uvedeno níže.
@@ -149,7 +150,7 @@ Toto je volitelná konfigurace.
 V tomto kurzu jste se dozvěděli o:
 
 > [!div class="checklist"]
-> * Předpoklady
+> * Požadavky
 > * Konfigurace sítě
 > * Povolit výpočetní síť
 > * Konfigurace webového proxy serveru

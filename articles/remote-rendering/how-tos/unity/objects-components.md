@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/28/2020
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 662c28196b06f5fbe49f69cb7145fdd33805e000
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15822c357db63db81e6c1efda2467279a98d7c34
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019041"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594142"
 ---
 # <a name="interact-with-unity-game-objects-and-components"></a>Interakce s herními objekty a komponentami Unity
 
@@ -25,42 +25,21 @@ V důsledku toho je integrace Unity pro vzdálené vykreslování Azure dodává
 
 Při načítání modelu získáte odkaz na kořenový objekt načteného modelu. Tento odkaz není objektem hry Unity, ale můžete ho převést na jednu pomocí metody rozšíření `Entity.GetOrCreateGameObject()` . Tato funkce očekává argument typu `UnityCreationMode` . Pokud předáte `CreateUnityComponents` , nově vytvořený objekt hry Unity se bude naplnit pomocí součástí proxy pro všechny součásti vzdáleného vykreslování, které existují na hostiteli. Doporučuje se to sice ale preferovat `DoNotCreateUnityComponents` , aby se režie vynechala minimální.
 
-### <a name="load-model-with-task"></a>Načíst model s úkolem
-
-```cs
-LoadModelAsync _pendingLoadTask = null;
-void LoadModelWithTask()
-{
-    _pendingLoadTask = RemoteManagerUnity.CurrentSession.Actions.LoadModelFromSASAsync(new LoadModelFromSASParams("builtin://Engine"));
-
-    _pendingLoadTask.Completed += (LoadModelAsync res) =>
-    {
-        // turn the root object into a Unity game object
-        var gameObject = res.Result.Root?.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
-        _pendingLoadTask = null;
-    };
-
-    // also listen to progress updates:
-    _pendingLoadTask.ProgressUpdated += (float progress) =>
-    {
-        // progress is a fraction in [0..1] range
-        int percentage = (int)(progress * 100.0f);
-        // do something...
-        // Since the updates are triggered by the main thread, we may access unity objects here.
-    };
-}
-```
-
 ### <a name="load-model-with-unity-coroutines"></a>Načíst model s korutinami Unity
 
 ```cs
-IEnumerator LoadModelWithCoroutine()
+IEnumerator LoadModelWithCoroutine(RenderingSession session)
 {
-    LoadModelAsync task = RemoteManagerUnity.CurrentSession.Actions.LoadModelFromSASAsync(new LoadModelFromSASParams("builtin://Engine"));
+    float currentProgress = 0.0f;
+    var task = session.Connection.LoadModelFromSasAsync(new LoadModelFromSasOptions("builtin://Engine"),
+        (float progress) =>
+        {
+            currentProgress = progress;
+        });
 
-    while (!task.IsCompleted)
+    while (!task.IsCompleted && !task.IsFaulted)
     {
-        int percentage = (int)(task.Progress * 100.0f);
+        int percentage = (int)(currentProgress * 100.0f);
         yield return null;
     }
 
@@ -68,22 +47,20 @@ IEnumerator LoadModelWithCoroutine()
     {
         var gameObject = task.Result.Root?.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
     }
-
-    task = null;
 }
 ```
 
 ### <a name="load-model-with-await-pattern"></a>Model zatížení pomocí vzoru await
 
 ```cs
-async void LoadModelWithAwait()
+async void LoadModelWithAwait(RenderingSession session)
 {
-    var result = await RemoteManagerUnity.CurrentSession.Actions.LoadModelFromSASAsync(new LoadModelFromSASParams("builtin://Engine")).AsTask();
+    var result = await session.Connection.LoadModelFromSasAsync(new LoadModelFromSasOptions("builtin://Engine"), null);
     var gameObject = result.Root?.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
 }
 ```
 
-Výše uvedené ukázky kódu používaly cestu načtení modelu prostřednictvím SAS, protože je načtený integrovaný model. Adresování modelu prostřednictvím kontejnerů objektů BLOB (pomocí `LoadModelAsync` a `LoadModelParams` ) funguje zcela obdobně.
+Výše uvedené ukázky kódu používaly cestu načtení modelu prostřednictvím SAS, protože je načtený integrovaný model. Adresování modelu prostřednictvím kontejnerů objektů BLOB (pomocí `LoadModelAsync` a `LoadModelOptions` ) funguje zcela obdobně.
 
 ## <a name="remoteentitysyncobject"></a>RemoteEntitySyncObject
 

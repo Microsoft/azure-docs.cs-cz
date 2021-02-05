@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: Vytvoření skupiny pro správu pomocí REST API'
 description: V tomto rychlém startu použijete REST API k vytvoření skupiny pro správu, která slouží k uspořádání prostředků do hierarchie prostředků.
-ms.date: 08/31/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: b19fddf8215a1b133254c2a31bbea568a315f721
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ff1487bf25945c733402ddb74d1e102bea80b4b1
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89237247"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592496"
 ---
 # <a name="quickstart-create-a-management-group-with-rest-api"></a>Rychlý Start: Vytvoření skupiny pro správu pomocí REST API
 
@@ -16,11 +16,11 @@ Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, 
 
 První skupina pro správu vytvořená v adresáři může trvat až 15 minut, než se dokončí. Při nastavování služby skupiny pro správu v Azure pro váš adresář existují procesy, které se spouštějí poprvé. Po dokončení procesu obdržíte oznámení. Další informace najdete v tématu [počáteční nastavení skupin pro správu](./overview.md#initial-setup-of-management-groups).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-- Pokud jste to ještě neudělali, nainstalujte [ARMClient](https://github.com/projectkudu/ARMClient). Jedná se o nástroj, který odesílá požadavky HTTP na Azure Resource Manager rozhraní REST API. Alternativně můžete použít funkci vyzkoušet v dokumentaci nebo nástrojů, jako je například rutina [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) v PowerShellu nebo [publikování](https://www.postman.com).
+- Pokud jste to ještě neudělali, nainstalujte [ARMClient](https://github.com/projectkudu/ARMClient). Jedná se o nástroj, který odesílá požadavky HTTP na Azure Resource Manager rozhraní REST API. Místo toho můžete použít funkci vyzkoušet v dokumentaci nebo nástrojů, jako je například rutina [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) v PowerShellu nebo [publikování](https://www.postman.com).
 
 - Libovolný uživatel Azure AD v tenantovi může vytvořit skupinu pro správu bez oprávnění k zápisu skupiny pro správu, která jsou přiřazená tomuto uživateli, pokud není povolena [ochrana hierarchie](./how-to/protect-resource-hierarchy.md#setting---require-authorization) . Tato nová skupina pro správu se stal podřízenou skupinou kořenové skupiny pro správu nebo [výchozí skupině pro správu](./how-to/protect-resource-hierarchy.md#setting---default-management-group) a autorovi je přiděleno přiřazení role "vlastník". Služba skupiny pro správu umožňuje tuto možnost, takže přiřazení rolí není nutné na kořenové úrovni. Žádní uživatelé nemají přístup ke kořenové skupině pro správu při jejím vytvoření. Aby nedocházelo k tomu, že by globální Správci služby Azure AD mohli začít používat skupiny pro správu, umožníme vytváření počátečních skupin pro správu na kořenové úrovni.
 

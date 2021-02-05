@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bfcfa4c5ed57489c56ebf845d238198944150a96
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 29952353b8c3452d95bcced163fafa81fe158f64
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202884"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593397"
 ---
 # <a name="entities"></a>Entity
 
@@ -23,7 +23,7 @@ Entity mají transformaci definovanou polohou, otočením a škálováním. Vlas
 
 Nejdůležitější aspekt samotné entity je hierarchie a výsledná hierarchická transformace. Například pokud je více entit propojeno jako podřízené pro sdílenou nadřazenou entitu, všechny tyto entity lze přesunout, otočit a škálovat v úlohách změnou transformace nadřazené entity. `enabled`Stav entity lze také použít k vypnutí viditelnosti a reakcí na přetypování paprsků pro úplný dílčí graf v hierarchii.
 
-Entita je jedinečně vlastněna její nadřazenou položkou, což znamená, že pokud je Nadřazená aktivita zničena s `Entity.Destroy()` , tak jsou její podřízené a všechny připojené [součásti](components.md). Proto je odebrání modelu z scény provedeno voláním `Destroy` na kořenový uzel modelu, vrácený `AzureSession.Actions.LoadModelAsync()` nebo jeho variantou SAS `AzureSession.Actions.LoadModelFromSASAsync()` .
+Entita je jedinečně vlastněna její nadřazenou položkou, což znamená, že pokud je Nadřazená aktivita zničena s `Entity.Destroy()` , tak jsou její podřízené a všechny připojené [součásti](components.md). Proto je odebrání modelu z scény provedeno voláním `Destroy` na kořenový uzel modelu, vrácený `RenderingSession.Connection.LoadModelAsync()` nebo jeho variantou SAS `RenderingSession.Connection.LoadModelFromSasAsync()` .
 
 Entity se vytvoří, když server načte obsah nebo když chce uživatel přidat objekt do scény. Pokud chce například uživatel přidat vyjmutou plochu k vizualizaci vnitřku sítě, může uživatel vytvořit entitu, kde by měla existovat plocha, a pak do ní přidat komponentu vyjmuté plochy.
 
@@ -32,19 +32,19 @@ Entity se vytvoří, když server načte obsah nebo když chce uživatel přidat
 Chcete-li přidat novou entitu do scény, například předat jako kořenový objekt pro načítání modelů nebo připojit k ní komponenty, použijte následující kód:
 
 ```cs
-Entity CreateNewEntity(AzureSession session)
+Entity CreateNewEntity(RenderingSession session)
 {
-    Entity entity = session.Actions.CreateEntity();
+    Entity entity = session.Connection.CreateEntity();
     entity.Position = new LocalPosition(1, 2, 3);
     return entity;
 }
 ```
 
 ```cpp
-ApiHandle<Entity> CreateNewEntity(ApiHandle<AzureSession> session)
+ApiHandle<Entity> CreateNewEntity(ApiHandle<RenderingSession> session)
 {
     ApiHandle<Entity> entity(nullptr);
-    if (auto entityRes = session->Actions()->CreateEntity())
+    if (auto entityRes = session->Connection()->CreateEntity())
     {
         entity = entityRes.value();
         entity->SetPosition(Double3{ 1, 2, 3 });
@@ -106,33 +106,24 @@ Metadata jsou další data uložená v objektech, která server ignorují. Metad
 Dotazy na metadata jsou asynchronní volání konkrétní entity. Dotaz vrátí pouze metadata jedné entity, nikoli sloučené informace dílčího grafu.
 
 ```cs
-MetadataQueryAsync metaDataQuery = entity.QueryMetaDataAsync();
-metaDataQuery.Completed += (MetadataQueryAsync query) =>
-{
-    if (query.IsRanToCompletion)
-    {
-        ObjectMetaData metaData = query.Result;
-        ObjectMetaDataEntry entry = metaData.GetMetadataByName("MyInt64Value");
-        System.Int64 intValue = entry.AsInt64;
-
-        // ...
-    }
-};
+Task<ObjectMetadata> metaDataQuery = entity.QueryMetadataAsync();
+ObjectMetadata metaData = await metaDataQuery;
+ObjectMetadataEntry entry = metaData.GetMetadataByName("MyInt64Value");
+System.Int64 intValue = entry.AsInt64;
+// ...
 ```
 
 ```cpp
-ApiHandle<MetadataQueryAsync> metaDataQuery = *entity->QueryMetaDataAsync();
-metaDataQuery->Completed([](const ApiHandle<MetadataQueryAsync>& query)
+entity->QueryMetadataAsync([](Status status, ApiHandle<ObjectMetadata> metaData) 
+{
+    if (status == Status::OK)
     {
-        if (query->GetIsRanToCompletion())
-        {
-            ApiHandle<ObjectMetaData> metaData = query->GetResult();
-            ApiHandle<ObjectMetaDataEntry> entry = *metaData->GetMetadataByName("MyInt64Value");
-            int64_t intValue = *entry->GetAsInt64();
+        ApiHandle<ObjectMetadataEntry> entry = *metaData->GetMetadataByName("MyInt64Value");
+        int64_t intValue = *entry->GetAsInt64();
 
-            // ...
-        }
-    });
+        // ...
+    }
+});
 ```
 
 Dotaz bude úspěšný i v případě, že objekt neobsahuje žádná metadata.
@@ -140,9 +131,9 @@ Dotaz bude úspěšný i v případě, že objekt neobsahuje žádná metadata.
 ## <a name="api-documentation"></a>Dokumentace k rozhraní API
 
 * [Třída entity C#](/dotnet/api/microsoft.azure.remoterendering.entity)
-* [C# RemoteManager. CreateEntity ()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.createentity)
+* [C# RenderingConnection. CreateEntity ()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.createentity)
 * [Třída entity C++](/cpp/api/remote-rendering/entity)
-* [C++ RemoteManager:: CreateEntity ()](/cpp/api/remote-rendering/remotemanager#createentity)
+* [C++ RenderingConnection:: CreateEntity ()](/cpp/api/remote-rendering/renderingconnection#createentity)
 
 ## <a name="next-steps"></a>Další kroky
 

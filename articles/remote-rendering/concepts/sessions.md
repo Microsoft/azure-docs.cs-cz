@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f2adc846247c4f06c9356f482501fd01c5463bf
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 321d73c78d0192dcb7a303f4aa70a4ff0f18ecea
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202680"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593701"
 ---
 # <a name="remote-rendering-sessions"></a>Relace Remote Renderingu
 
@@ -25,9 +25,9 @@ To znamená, že když používáte vzdálené vykreslování Azure, musí být 
 
 ## <a name="managing-sessions"></a>Správa relací
 
-Existuje několik způsobů, jak spravovat relace a pracovat s nimi. Nezávisle na způsobu vytváření, aktualizace a vypínání relací jsou prostřednictvím [REST API správy relací](../how-tos/session-rest-api.md). V jazyce C# a C++ se tyto operace zveřejňují prostřednictvím tříd `AzureFrontend` a `AzureSession` . Pro aplikace Unity existují další obslužné funkce poskytované `ARRServiceUnity` komponentou.
+Existuje několik způsobů, jak spravovat relace a pracovat s nimi. Nezávisle na způsobu vytváření, aktualizace a vypínání relací jsou prostřednictvím [REST API správy relací](../how-tos/session-rest-api.md). V jazyce C# a C++ se tyto operace zveřejňují prostřednictvím tříd `RemoteRenderingClient` a `RenderingSession` . Pro aplikace Unity existují další obslužné funkce poskytované `ARRServiceUnity` komponentou.
 
-Jakmile budete *připojeni* k aktivní relaci, operace jako [načítání modelů](models.md) a interakce s scénou jsou zpřístupněny prostřednictvím `AzureSession` třídy.
+Jakmile budete *připojeni* k aktivní relaci, operace jako [načítání modelů](models.md) a interakce s scénou jsou zpřístupněny prostřednictvím `RenderingSession` třídy.
 
 ### <a name="managing-multiple-sessions-simultaneously"></a>Správa více relací současně
 
@@ -66,7 +66,7 @@ Když je zařízení připojené k relaci, pokusy jiných zařízení, aby se p�
 
 Když vyžádáte novou relaci, zadáte *maximální dobu zapůjčení*, obvykle v rozsahu 1 až 8 hodin. Toto je doba, po kterou bude hostitel akceptovat vaše zadání.
 
-Relace končí dvěma pravidelnými důvody. Buď ručně vyžádáte relaci, která se má zastavit, nebo vyprší maximální doba zapůjčení. V obou případech se jakékoli aktivní připojení k hostiteli hned ukončí a služba se na tomto serveru vypne. Server se pak vrátí zpátky do fondu Azure a může získat další účely. Zastavení relace nelze vrátit zpět nebo zrušit. Dotazování **stavu relace** na zastavené relaci vrátí hodnotu **Zastaveno** nebo **vypršela jeho platnost**v závislosti na tom, zda byl ručně vypnut nebo protože byla dosažena maximální doba zapůjčení.
+Relace končí dvěma pravidelnými důvody. Buď ručně vyžádáte relaci, která se má zastavit, nebo vyprší maximální doba zapůjčení. V obou případech se jakékoli aktivní připojení k hostiteli hned ukončí a služba se na tomto serveru vypne. Server se pak vrátí zpátky do fondu Azure a může získat další účely. Zastavení relace nelze vrátit zpět nebo zrušit. Dotazování **stavu relace** na zastavené relaci vrátí hodnotu **Zastaveno** nebo **vypršela jeho platnost** v závislosti na tom, zda byl ručně vypnut nebo protože byla dosažena maximální doba zapůjčení.
 
 V důsledku nějaké chyby se může také zastavit relace.
 
@@ -89,20 +89,22 @@ RemoteRenderingInitialization init = new RemoteRenderingInitialization();
 
 RemoteManagerStatic.StartupRemoteRendering(init);
 
-AzureFrontendAccountInfo accountInfo = new AzureFrontendAccountInfo();
-// fill out accountInfo details...
+SessionConfiguration sessionConfig = new SessionConfiguration();
+// fill out sessionConfig details...
 
-AzureFrontend frontend = new AzureFrontend(accountInfo);
+RemoteRenderingClient client = new RemoteRenderingClient(sessionConfig);
 
-RenderingSessionCreationParams sessionCreationParams = new RenderingSessionCreationParams();
-// fill out sessionCreationParams...
+RenderingSessionCreationOptions rendererOptions = new RenderingSessionCreationOptions();
+// fill out rendererOptions...
 
-AzureSession session = await frontend.CreateNewRenderingSessionAsync(sessionCreationParams).AsTask();
+CreateRenderingSessionResult result = await client.CreateNewRenderingSessionAsync(rendererOptions);
 
+RenderingSession session = result.Session;
 RenderingSessionProperties sessionProperties;
 while (true)
 {
-    sessionProperties = await session.GetPropertiesAsync().AsTask();
+    var propertiesResult = await session.GetPropertiesAsync();
+    sessionProperties = propertiesResult.SessionProperties;
     if (sessionProperties.Status != RenderingSessionStatus.Starting &&
         sessionProperties.Status != RenderingSessionStatus.Unknown)
     {
@@ -118,43 +120,43 @@ if (sessionProperties.Status != RenderingSessionStatus.Ready)
 }
 
 // Connect to server
-Result connectResult = await session.ConnectToRuntime(new ConnectToRuntimeParams()).AsTask();
+ConnectionStatus connectStatus = await session.ConnectAsync(new RendererInitOptions());
 
 // Connected!
 
-while(...)
+while (...)
 {
     // per frame update
 
-    session.Actions.Update();
+    session.Connection.Update();
 }
 
 // Disconnect
-session.DisconnectFromRuntime();
+session.Disconnect();
 
 // stop the session
-await session.StopAsync().AsTask();
+await session.StopAsync();
 
 // shut down the remote rendering SDK
 RemoteManagerStatic.ShutdownRemoteRendering();
 ```
 
-Více `AzureFrontend` `AzureSession` instancí a lze spravovat, manipulovat a dotazovat z kódu. V jednom okamžiku se ale může připojit jenom jedno zařízení `AzureSession` .
+Více `RemoteRenderingClient` `RenderingSession` instancí a lze spravovat, manipulovat a dotazovat z kódu. V jednom okamžiku se ale může připojit jenom jedno zařízení `RenderingSession` .
 
-Životnost virtuálního počítače není vázaná na `AzureFrontend` instanci nebo `AzureSession` instanci. `AzureSession.StopAsync` se musí volat, aby se zastavila relace.
+Životnost virtuálního počítače není vázaná na `RemoteRenderingClient` instanci nebo `RenderingSession` instanci. `RenderingSession.StopAsync` se musí volat, aby se zastavila relace.
 
-Na ID trvalé relace se dá dotazovat `AzureSession.SessionUUID()` místně pomocí mezipaměti. S tímto ID může aplikace volat `AzureFrontend.OpenSession` , aby se k této relaci navázala.
+Na ID trvalé relace se dá dotazovat `RenderingSession.SessionUuid()` místně pomocí mezipaměti. S tímto ID může aplikace volat `RemoteRenderingClient.OpenRenderingSessionAsync` , aby se k této relaci navázala.
 
-Pokud `AzureSession.IsConnected` je hodnota true, `AzureSession.Actions` vrátí instanci `RemoteManager` , která obsahuje funkce pro [načtení modelů](models.md), manipulaci s [entitami](entities.md)a dotazy na [informace](../overview/features/spatial-queries.md) o vykreslené scéně.
+Pokud `RenderingSession.IsConnected` je hodnota true, `RenderingSession.Connection` vrátí instanci `RenderingConnection` , která obsahuje funkce pro [načtení modelů](models.md), manipulaci s [entitami](entities.md)a dotazy na [informace](../overview/features/spatial-queries.md) o vykreslené scéně.
 
 ## <a name="api-documentation"></a>Dokumentace k rozhraní API
 
-* [Třída C# AzureSession](/dotnet/api/microsoft.azure.remoterendering.azuresession)
-* [C# AzureFrontend. CreateNewRenderingSessionAsync ()](/dotnet/api/microsoft.azure.remoterendering.azurefrontend.createnewrenderingsessionasync)
-* [C# AzureFrontend. OpenRenderingSession ()](/dotnet/api/microsoft.azure.remoterendering.azurefrontend.openrenderingsession)
-* [Třída C++ AzureSession](/cpp/api/remote-rendering/azuresession)
-* [C++ AzureFrontend:: CreateNewRenderingSessionAsync](/cpp/api/remote-rendering/azurefrontend#createnewrenderingsessionasync)
-* [C++ AzureFrontend:: OpenRenderingSession](/cpp/api/remote-rendering/azurefrontend#openrenderingsession)
+* [Třída C# RenderingSession](/dotnet/api/microsoft.azure.remoterendering.renderingsession)
+* [C# RemoteRenderingClient. CreateNewRenderingSessionAsync ()](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient.createnewrenderingsessionasync)
+* [C# RemoteRenderingClient. OpenRenderingSessionAsync ()](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient.openrenderingsessionasync)
+* [Třída C++ RenderingSession](/cpp/api/remote-rendering/renderingsession)
+* [C++ RemoteRenderingClient:: CreateNewRenderingSessionAsync](/cpp/api/remote-rendering/remoterenderingclient#createnewrenderingsessionasync)
+* [C++ RemoteRenderingClient:: OpenRenderingSession](/cpp/api/remote-rendering/remoterenderingclient#openrenderingsession)
 
 ## <a name="next-steps"></a>Další kroky
 

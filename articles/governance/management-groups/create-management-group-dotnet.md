@@ -1,15 +1,15 @@
 ---
 title: 'Rychlý Start: Vytvoření skupiny pro správu pomocí .NET Core'
 description: V tomto rychlém startu pomocí .NET Core vytvoříte skupinu pro správu, která slouží k uspořádání prostředků do hierarchie prostředků.
-ms.date: 09/30/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 138998fdc23fd8a296ca50093e2952017888041f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a74cea9b142785c093b8ed235fc40049746f11a0
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91604668"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592547"
 ---
 # <a name="quickstart-create-a-management-group-with-net-core"></a>Rychlý Start: Vytvoření skupiny pro správu pomocí .NET Core
 
@@ -17,7 +17,7 @@ Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, 
 
 První skupina pro správu vytvořená v adresáři může trvat až 15 minut, než se dokončí. Při nastavování služby skupiny pro správu v Azure pro váš adresář existují procesy, které se spouštějí poprvé. Po dokončení procesu obdržíte oznámení. Další informace najdete v tématu [počáteční nastavení skupin pro správu](./overview.md#initial-setup-of-management-groups).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

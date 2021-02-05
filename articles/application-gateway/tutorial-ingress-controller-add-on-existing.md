@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 9d1aa54ba1e3f3a589df8f694e340909c4e24ecc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d491b714c7d553fbd89d72315f46e6927d437717
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183681"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593805"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>Kurz: Povolení doplňku Application Gateway příchozího adaptéru pro existující cluster AKS s existujícím Application Gateway prostřednictvím Azure CLI (Preview)
 
@@ -67,7 +67,7 @@ V následujícím příkladu budete nasazovat nový cluster AKS s názvem *myClu
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity 
 ```
 
-Chcete-li nakonfigurovat další parametry pro `az aks create` příkaz, navštivte odkazy [zde](/cli/azure/aks?view=azure-cli-latest#az-aks-create). 
+Chcete-li nakonfigurovat další parametry pro `az aks create` příkaz, navštivte odkazy [zde](/cli/azure/aks#az-aks-create). 
 
 ## <a name="deploy-a-new-application-gateway"></a>Nasadit nový Application Gateway 
 

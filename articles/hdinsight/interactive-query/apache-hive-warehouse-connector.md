@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 39eb007c85d9f0623b4a5611e36d4ed7a75423e0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6611f5ca7ddae243c4bc314be73a9030311cec89
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941175"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594430"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Integrace Apache Spark a Apache Hive pomocí konektoru skladu s podregistru v Azure HDInsight
 
@@ -38,7 +38,11 @@ Mezi operace podporované konektorem skladu podregistru patří:
 ## <a name="hive-warehouse-connector-setup"></a>Nastavení konektoru pro skladiště v podregistru
 
 > [!IMPORTANT]
-> HiveServer2 Interactive instance, která je nainstalovaná na Spark 2,4 Balíček zabezpečení podniku clustery, se nepodporuje pro použití s konektorem skladu pro podregistr. Místo toho musíte nakonfigurovat samostatný HiveServer2 interaktivní cluster pro hostování HiveServer2 interaktivních úloh. Konfigurace konektoru skladu podregistru, která využívá jeden cluster Spark 2,4, není podporována.
+> - HiveServer2 Interactive instance, která je nainstalovaná na Spark 2,4 Balíček zabezpečení podniku clustery, se nepodporuje pro použití s konektorem skladu pro podregistr. Místo toho musíte nakonfigurovat samostatný HiveServer2 interaktivní cluster pro hostování HiveServer2 interaktivních úloh. Konfigurace konektoru skladu podregistru, která využívá jeden cluster Spark 2,4, není podporována.
+> - Knihovna umožní (podregistr Warehouse Connector) není podporována pro použití s clustery interaktivních dotazů, kde je povolena funkce Správa úloh (WLM). <br>
+V případě, že máte jenom úlohy Sparku a chcete použít knihovnu umožní, ujistěte se, že cluster interaktivních dotazů nemá povolenou funkci správy úloh ( `hive.server2.tez.interactive.queue` konfigurace není nastavená v konfiguracích podregistru). <br>
+V případě scénáře, kdy existuje jak úlohy Spark (umožní), tak nativní úlohy LLAP, je třeba vytvořit dva samostatné clustery interaktivních dotazů se sdílenou databází metastore. Jeden cluster pro nativní úlohy LLAP, ve kterých se dá povolit funkce WLM, a další cluster pro umožní úlohy, kde by se neměla konfigurovat funkce WLM.
+Je důležité si uvědomit, že plány prostředků WLM můžete zobrazit z obou clusterů i v případě, že jsou povolené jenom v jednom clusteru. Neprovádějte žádné změny v plánech prostředků v clusteru, kde je funkce WLM zakázaná, protože by mohla ovlivnit funkčnost WLM v jiném clusteru.
 
 Konektor Warehouse pro podregistr potřebuje samostatné clustery pro úlohy Spark a interaktivní dotazy. Pomocí těchto kroků nastavte tyto clustery ve službě Azure HDInsight.
 

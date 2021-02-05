@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 9f69f89f565b2d98e408b06e300ff781c13680ef
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 8be5ac75e2da3eaeae300fd36e152a24c9777e64
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693659"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593735"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Jak nainstalovat Application Gateway AGIC (příchozí adaptér) pomocí nového Application Gateway
 
@@ -30,7 +30,7 @@ Případně můžete Cloud Shell z Azure Portal spustit pomocí následující i
 
 Vaše [Azure Cloud Shell](https://shell.azure.com/) už má všechny potřebné nástroje. Pokud se rozhodnete použít jiné prostředí, zkontrolujte, že jsou nainstalované následující nástroje příkazového řádku:
 
-* `az` – Azure CLI: [pokyny k instalaci](/cli/azure/install-azure-cli?view=azure-cli-latest)
+* `az` – Azure CLI: [pokyny k instalaci](/cli/azure/install-azure-cli)
 * `kubectl` -Kubernetes nástroj příkazového řádku: [pokyny k instalaci](https://kubernetes.io/docs/tasks/tools/install-kubectl)
 * `helm` – Správce balíčků Kubernetes: [pokyny k instalaci](https://github.com/helm/helm/releases/latest)
 * `jq` -příkazový řádek JSON – procesor: [pokyny k instalaci](https://stedolan.github.io/jq/download/)

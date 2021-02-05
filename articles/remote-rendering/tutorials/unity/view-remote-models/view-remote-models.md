@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 834df29597abaaadad98b232ce75b32a6431cfc2
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: bfcd1e600c722cf3a4951da60097c7c373f9b1a6
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574730"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592037"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Kurz: zobrazení vzdáleného vykresleného modelu
 
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 > * Připojení a odpojení od relací
 > * Načtení modelů do relace vykreslování
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro tento kurz potřebujete:
 
@@ -180,7 +180,7 @@ Váš projekt by měl vypadat takto:
 
 1. Otevřete **RemoteRenderingCoordinator** v editoru kódu a nahraďte jeho celý obsah následujícím kódem:
 
-```csharp
+```cs
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -238,6 +238,14 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     }
 
     [SerializeField]
+    private string accountAuthenticationDomain = "<enter your account authentication domain here>";
+    public string AccountAuthenticationDomain
+    {
+        get => accountAuthenticationDomain.Trim();
+        set => accountAuthenticationDomain = value;
+    }   
+
+    [SerializeField]
     private string accountKey = "<enter your account key here>";
     public string AccountKey {
         get => accountKey.Trim();
@@ -284,7 +292,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
         }
     }
 
-    public delegate Task<AzureFrontendAccountInfo> AccountInfoGetter();
+    public delegate Task<SessionConfiguration> AccountInfoGetter();
 
     public static AccountInfoGetter ARRCredentialGetter
     {
@@ -309,7 +317,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
     public static event Action<RemoteRenderingState> CoordinatorStateChange;
 
-    public static AzureSession CurrentSession => instance?.ARRSessionService?.CurrentActiveSession;
+    public static RenderingSession CurrentSession => instance?.ARRSessionService?.CurrentActiveSession;
 
     private ARRServiceUnity arrSessionService;
 
@@ -323,10 +331,10 @@ public class RemoteRenderingCoordinator : MonoBehaviour
         }
     }
 
-    private async Task<AzureFrontendAccountInfo> GetDevelopmentCredentials()
+    private async Task<SessionConfiguration> GetDevelopmentCredentials()
     {
         Debug.LogWarning("Using development credentials! Not recommended for production.");
-        return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AccountId, AccountKey));
+        return await Task.FromResult(new SessionConfiguration(AccountAuthenticationDomain, AccountDomain, AccountId, AccountKey));
     }
 
     /// <summary>
@@ -454,8 +462,8 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
     private async Task<bool> IsSessionAvailable(string sessionID)
     {
-        var allSessions = await ARRSessionService.Frontend.GetCurrentRenderingSessionsAsync().AsTask();
-        return allSessions.Any(x => x.Id == sessionID && (x.Status == RenderingSessionStatus.Ready || x.Status == RenderingSessionStatus.Starting));
+        var allSessions = await ARRSessionService.Client.GetCurrentRenderingSessionsAsync();
+        return allSessions.SessionProperties.Any(x => x.Id == sessionID && (x.Status == RenderingSessionStatus.Ready || x.Status == RenderingSessionStatus.Starting));
     }
 
     /// <summary>
@@ -473,11 +481,11 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
     /// <summary>
     /// The session must have its runtime pump updated.
-    /// The Actions.Update() will push messages to the server, receive messages, and update the frame-buffer with the remotely rendered content.
+    /// The Connection.Update() will push messages to the server, receive messages, and update the frame-buffer with the remotely rendered content.
     /// </summary>
     private void LateUpdate()
     {
-        ARRSessionService?.CurrentActiveSession?.Actions?.Update();
+        ARRSessionService?.CurrentActiveSession?.Connection?.Update();
     }
 
     /// <summary>
@@ -487,17 +495,17 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     /// <param name="progress">A call back method that accepts a float progress value [0->1]</param>
     /// <param name="parent">The parent Transform for this remote entity</param>
     /// <returns>An awaitable Remote Rendering Entity</returns>
-    public async Task<Entity> LoadModel(string modelPath, Transform parent = null, ProgressHandler progress = null)
+    public async Task<Entity> LoadModel(string modelPath, Transform parent = null, Action<float> progress = null)
     {
         //Implement me
         return null;
     }
 
-    private async void OnRemoteSessionStatusChanged(ARRServiceUnity caller, AzureSession session)
+    private async void OnRemoteSessionStatusChanged(ARRServiceUnity caller, RenderingSession session)
     {
-        var properties = await session.GetPropertiesAsync().AsTask();
+        var properties = await session.GetPropertiesAsync();
 
-        switch (properties.Status)
+        switch (properties.SessionProperties.Status)
         {
             case RenderingSessionStatus.Error:
             case RenderingSessionStatus.Expired:
@@ -540,7 +548,7 @@ Koordinátor vzdáleného vykreslování a jeho požadovaný skript (*ARRService
 1. Přidejte skript *RemoteRenderingCoordinator* do **RemoteRenderingCoordinator** GameObject. \
 ![Přidat komponentu RemoteRenderingCoordinator](./media/add-coordinator-script.png)
 1. Potvrďte, že se skript *ARRServiceUnity* , který se zobrazuje jako *Služba* v inspektoru, automaticky přidá do GameObject. V případě, že se zajímáte, je to výsledek, který se nachází `[RequireComponent(typeof(ARRServiceUnity))]` v horní části **RemoteRenderingCoordinator** skriptu.
-1. Do skriptu koordinátora přidejte své přihlašovací údaje pro vzdálené vykreslování Azure a doménu účtu: \
+1. Přidejte přihlašovací údaje pro vzdálené vykreslování Azure, doménu ověřování účtu a doménu účtu do skriptu koordinátora: \
 ![Přidání přihlašovacích údajů](./media/configure-coordinator-script.png)
 
 ## <a name="initialize-azure-remote-rendering"></a>Inicializovat vzdálené vykreslování Azure
@@ -558,7 +566,7 @@ Při zadávání stavu **NotAuthorized** se volá **CheckAuthorization** , kter�
 
 1. Nahraďte obsah hodnot **InitializeARR** a **InitializeSessionService** následujícím kódem:
 
- ```csharp
+ ```cs
 /// <summary>
 /// Initializes ARR, associating the main camera
 /// Note: This must be called on the main Unity thread
@@ -616,7 +624,7 @@ Stavový počítač teď bude postupovat buď **ConnectingToNewRemoteSession** n
 
 1. Chcete-li se připojit k nové relaci, upravte kód tak, aby nahradil metody **JoinRemoteSession ()** a **StopRemoteSession ()** pomocí níže uvedených příkladů:
 
-```csharp
+```cs
 /// <summary>
 /// Attempts to join an existing session or start a new session
 /// </summary>
@@ -632,7 +640,7 @@ public async void JoinRemoteSession()
     else
     {
         CurrentCoordinatorState = RemoteRenderingState.ConnectingToNewRemoteSession;
-        joinResult = await ARRSessionService.StartSession(new RenderingSessionCreationParams(renderingSessionVmSize, maxLeaseHours, maxLeaseMinutes));
+        joinResult = await ARRSessionService.StartSession(new RenderingSessionCreationOptions(renderingSessionVmSize, maxLeaseHours, maxLeaseMinutes));
     }
 
     if (joinResult.Status == RenderingSessionStatus.Ready || joinResult.Status == RenderingSessionStatus.Starting)
@@ -674,7 +682,7 @@ Aplikace také musí naslouchat událostem souvisejícím s připojením mezi mo
  1. Nahraďte metody **ConnectRuntimeToRemoteSession ()** a **DisconnectRuntimeFromRemoteSession ()** s dokončenými verzemi níže.
  1. Je důležité poznamenat **volá** metodu Unity a aktualizovat aktuální aktivní relaci. Tím umožníte, aby aktuální relace odesílala a přijímala zprávy a aktualizovala vyrovnávací paměť snímků pomocí rámců přijatých ze vzdálené relace. Funkčnost pochodu na ni je velmi důležitá.
 
-```csharp
+```cs
 /// <summary>
 /// Connects the local runtime to the current active session, if there's a session available
 /// </summary>
@@ -690,7 +698,7 @@ public void ConnectRuntimeToRemoteSession()
     //This session is set when connecting to a new or existing session
 
     ARRSessionService.CurrentActiveSession.ConnectionStatusChanged += OnLocalRuntimeStatusChanged;
-    ARRSessionService.CurrentActiveSession.ConnectToRuntime(new ConnectToRuntimeParams());
+    ARRSessionService.CurrentActiveSession.ConnectAsync(new RendererInitOptions());
     CurrentCoordinatorState = RemoteRenderingState.ConnectingToRuntime;
 }
 
@@ -702,18 +710,18 @@ public void DisconnectRuntimeFromRemoteSession()
         return;
     }
 
-    ARRSessionService.CurrentActiveSession.DisconnectFromRuntime();
+    ARRSessionService.CurrentActiveSession.Disconnect();
     ARRSessionService.CurrentActiveSession.ConnectionStatusChanged -= OnLocalRuntimeStatusChanged;
     CurrentCoordinatorState = RemoteRenderingState.RemoteSessionReady;
 }
 
 /// <summary>
 /// The session must have its runtime pump updated.
-/// The Actions.Update() will push messages to the server, receive messages, and update the frame-buffer with the remotely rendered content.
+/// The Connection.Update() will push messages to the server, receive messages, and update the frame-buffer with the remotely rendered content.
 /// </summary>
 private void LateUpdate()
 {
-    ARRSessionService?.CurrentActiveSession?.Actions?.Update();
+    ARRSessionService?.CurrentActiveSession?.Connection?.Update();
 }
 ```
 
@@ -730,7 +738,7 @@ Metoda **LoadModel** je navržena tak, aby přijímala cestu modelu, obslužnou 
 
 1. Nahraďte metodu **LoadModel** zcela následujícím kódem:
 
-    ```csharp
+    ```cs
     /// <summary>
     /// Loads a model into the remote session for rendering
     /// </summary>
@@ -738,10 +746,10 @@ Metoda **LoadModel** je navržena tak, aby přijímala cestu modelu, obslužnou 
     /// <param name="parent">The parent Transform for this remote entity</param>
     /// <param name="progress">A call back method that accepts a float progress value [0->1]</param>
     /// <returns>An awaitable Remote Rendering Entity</returns>
-    public async Task<Entity> LoadModel(string modelPath, Transform parent = null, ProgressHandler progress = null)
+    public async Task<Entity> LoadModel(string modelPath, Transform parent = null, Action<float> progress = null)
     {
         //Create a root object to parent a loaded model to
-        var modelEntity = ARRSessionService.CurrentActiveSession.Actions.CreateEntity();
+        var modelEntity = ARRSessionService.CurrentActiveSession.Connection.CreateEntity();
 
         //Get the game object representation of this entity
         var modelGameObject = modelEntity.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
@@ -770,11 +778,9 @@ Metoda **LoadModel** je navržena tak, aby přijímala cestu modelu, obslužnou 
     #endif
 
         //Load a model that will be parented to the entity
-        var loadModelParams = new LoadModelFromSASParams(modelPath, modelEntity);
-        var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelFromSASAsync(loadModelParams);
-        if(progress != null)
-            loadModelAsync.ProgressUpdated += progress;
-        var result = await loadModelAsync.AsTask();
+        var loadModelParams = new LoadModelFromSasParams(modelPath, modelEntity);
+        var loadModelAsync = ARRSessionService.CurrentActiveSession.Connection.LoadModelFromSasAsync(loadModelParams, progress);
+        var result = await loadModelAsync;
         return modelEntity;
     }
     ```
@@ -796,7 +802,7 @@ Teď máme veškerý kód potřebný k zobrazení vzdáleně vykresleného model
 
 1. Přidejte následující kód do třídy **RemoteRenderingCoordinator** , těsně pod metodou **LoadModel** , je to v pořádku:
 
-    ```csharp
+    ```cs
     private bool loadingTestModel = false;
     [ContextMenu("Load Test Model")]
     public async void LoadTestModel()
@@ -843,7 +849,7 @@ Teď máme veškerý kód potřebný k zobrazení vzdáleně vykresleného model
 
 ![Model načten](./media/test-model-rendered.png)
 
-Blahopřejeme! Vytvořili jste základní aplikaci, která umožňuje zobrazit vzdáleně vykreslené modely pomocí vzdáleného vykreslování Azure. V dalším kurzu budeme integrovat MRTK a importovat naše vlastní modely.
+Gratulujeme! Vytvořili jste základní aplikaci, která umožňuje zobrazit vzdáleně vykreslené modely pomocí vzdáleného vykreslování Azure. V dalším kurzu budeme integrovat MRTK a importovat naše vlastní modely.
 
 > [!div class="nextstepaction"]
 > [Další: rozhraní a vlastní modely](../custom-models/custom-models.md)

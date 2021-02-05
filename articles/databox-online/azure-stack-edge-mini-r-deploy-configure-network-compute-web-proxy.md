@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/14/2020
+ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 915aca5f7400496aacb3c3cf248120dff39d747c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1cca747003a127371db7d110500e2b4168f10219
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468237"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594447"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-mini-r"></a>Kurz: konfigurace sítě pro Azure Stack hraniční Mini R
 
@@ -26,13 +26,13 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Předpoklady
+> * Požadavky
 > * Konfigurace sítě
 > * Povolit výpočetní síť
 > * Konfigurace webového proxy serveru
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předtím, než nakonfigurujete a nastavíte Azure Stack hraničních zařízení v jazyce R, ujistěte se, že:
 
@@ -126,6 +126,7 @@ Pomocí těchto kroků nakonfigurujete síť pro vaše zařízení.
    - Pokud je ve vašem prostředí povolený protokol DHCP, síťová rozhraní se nakonfigurují automaticky. IP adresa, podsíť, brána a DNS se přiřadí automaticky.
    - Pokud není protokol DHCP povolený, můžete v případě potřeby přiřadit statické IP adresy.
    - Síťové rozhraní můžete nakonfigurovat jako IPv4.
+   - Seskupování síťových adaptérů (NIC) nebo agregace propojení se u Azure Stack Edge nepodporují.
    - Sériové číslo pro libovolný port odpovídá sériovému číslu uzlu. Pro zařízení řady n-Series se zobrazí pouze jedno sériové číslo.
 
      >[!NOTE] 
@@ -152,7 +153,7 @@ Pomocí těchto kroků povolíte výpočetní prostředky a nakonfigurujete výp
     > Kubernetes na Azure Stack Edge používá podsíť 172.27.0.0/16 pro podsíť pod a 172.28.0.0/16 pro službu. Ujistěte se, že se nepoužívají ve vaší síti. Pokud se tyto podsítě už ve vaší síti používají, můžete tyto podsítě změnit spuštěním `Set-HcsKubeClusterNetworkInfo` rutiny z rozhraní PowerShellu zařízení. Další informace najdete v tématu [Změna Kubernetes pod a podsítí služby](azure-stack-edge-gpu-connect-powershell-interface.md#change-kubernetes-pod-and-service-subnets).
 
 
-1. Přiřaďte **IP adresy externích služeb Kubernetes**. Toto jsou také IP adresy vyrovnávání zatížení. Tyto souvislé IP adresy jsou pro služby, které chcete zveřejnit mimo cluster Kubernetes, a určete rozsah statických IP adres v závislosti na počtu zveřejněných služeb. 
+1. Přiřaďte **IP adresy externích služeb Kubernetes**. Jedná se také o IP adresy vyrovnávání zatížení. Tyto souvislé IP adresy jsou určené pro služby, které chcete zveřejnit mimo cluster Kubernetes, a určete rozsah statických IP adres v závislosti na počtu zveřejněných služeb. 
     
     > [!IMPORTANT]
     > Důrazně doporučujeme zadat minimálně jednu IP adresu pro službu Azure Stack Edge Mini R hub pro přístup k výpočetním modulům. Volitelně můžete zadat další IP adresy pro jiné služby nebo moduly IoT Edge (1 na službu/modul), ke kterým je potřeba mít pøístup z vnějšku clusteru. IP adresy služby se dají aktualizovat později. 
@@ -197,7 +198,7 @@ Toto je volitelná konfigurace.
 V tomto kurzu jste se dozvěděli o:
 
 > [!div class="checklist"]
-> * Předpoklady
+> * Požadavky
 > * Konfigurace sítě
 > * Povolit výpočetní síť
 > * Konfigurace webového proxy serveru

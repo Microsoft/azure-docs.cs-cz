@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 53c0d37d4a25c2f2092a9e52bcae8ea494046bb0
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 730f26039db0f5441563ac7bf5d6b0ab536cbcd2
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210014"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593125"
 ---
 # <a name="app-service-networking-features"></a>Funkce App Service sítě
 
@@ -43,7 +43,7 @@ Kromě popsaných výjimek můžete všechny tyto funkce použít dohromady. Mů
 
 U každého daného případu použití může být několik způsobů, jak problém vyřešit. Výběr nejlepší funkce někdy nabývá mimo případ použití. Následující případy příchozího použití ukazují, jak používat funkce App Service sítě k řešení problémů s řízením provozu, který do vaší aplikace směřuje:
  
-| Případ příchozího použití | Příznak |
+| Případ příchozího použití | Funkce |
 |---------------------|-------------------|
 | Podpora protokolu SSL založeného na protokolu IP pro vaši aplikaci | Adresa přiřazená aplikacím |
 | Podpora nesdílené vyhrazené příchozí adresy pro vaši aplikaci | Adresa přiřazená aplikacím |
@@ -56,7 +56,7 @@ U každého daného případu použití může být několik způsobů, jak prob
 
 Následující případy odchozího použití ukazují, jak používat funkce App Service sítě k řešení požadavků na odchozí přístup k vaší aplikaci:
 
-| Případ odchozího použití | Příznak |
+| Případ odchozího použití | Funkce |
 |---------------------|-------------------|
 | Přístup k prostředkům ve virtuální síti Azure ve stejné oblasti | Integrace virtuální sítě </br> ASE |
 | Přístup k prostředkům ve virtuální síti Azure v jiné oblasti | Brána – požadovaná integrace virtuální sítě </br> Pomocného mechanismu pro vytváření a virtuální sítě |
@@ -113,6 +113,9 @@ Funkce omezení přístupu na základě IP adresy pomáhá při omezení IP adre
 * Omezte přístup k provozu přes externí službu Vyrovnávání zatížení nebo jiná síťová zařízení se známými výstupními IP adresami. 
 
 Informace o tom, jak tuto funkci povolit, najdete v tématu [Konfigurace omezení přístupu][iprestrictions].
+
+> [!NOTE]
+> Pravidla omezení přístupu podle IP adresy zpracovávají rozsahy adres virtuální sítě jenom v případě, že je vaše aplikace v App Service Environment. Pokud je vaše aplikace ve víceklientské službě, je potřeba pomocí [koncových bodů služby](../virtual-network/virtual-network-service-endpoints-overview.md) omezit provoz na výběr podsítí ve vaší virtuální síti.
 
 #### <a name="access-restriction-rules-based-on-service-endpoints"></a>Pravidla omezení přístupu na základě koncových bodů služby 
 

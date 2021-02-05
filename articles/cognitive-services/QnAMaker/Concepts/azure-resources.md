@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 8c740e2868d2cd2033bc896f9b6ca897b38e922f
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 0864db8a653ff1d6f89ed0b1c857e51053ff50ff
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584817"
+ms.locfileid: "99592599"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Prostředky Azure pro QnA Maker
 
@@ -157,9 +157,9 @@ Klíče pro vytváření obsahu můžete zobrazit a obnovit z Azure Portal, kde 
 
     ![Seznam prostředků QnA Maker](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
 
-2. Přejít k **klíčům**:
+2. Přejít na **klíče a koncový bod**:
 
-    ![Klíč předplatného](../media/qnamaker-how-to-key-management/subscription-key.PNG)
+    ![Klíč předplatného QnA Maker Managed (Preview)](../media/qnamaker-how-to-key-management/subscription-key-v2.png)
 
 ### <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>Hledání klíčů koncových bodů dotazů na portálu QnA Maker
 

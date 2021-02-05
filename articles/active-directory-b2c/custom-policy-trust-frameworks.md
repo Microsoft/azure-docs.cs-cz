@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 514ce0a43904048952f38edd6a9d38713f6ef8f3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: cb33e11af26d5f5a2676f5b236ac142179bdb550
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936670"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592836"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Přehled Azure AD B2C vlastní zásady
 
@@ -115,7 +115,7 @@ Každá Startovní sada obsahuje následující soubory:
 Model dědičnosti je následující:
 
 - Podřízená zásada na libovolné úrovni může dědit z nadřazené zásady a rozšiřuje ji přidáním nových elementů.
-- U složitějších scénářů můžete přidat další úrovně dědičnosti (až 5 celkem).
+- U složitějších scénářů můžete přidat další úrovně dědičnosti (celkem až 10).
 - Můžete přidat další zásady předávající strany. Například Odstraňte svůj účet, změňte telefonní číslo, zásadu předávající strany SAML a další.
 
 Následující diagram znázorňuje vztah mezi soubory zásad a aplikacemi předávající strany.

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 5e5be79371b640431603409a34b1a7812ed5c2a3
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 95b74e5fc6c5d2c09ff04b3f14e920ae675ab6e1
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746100"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592751"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Řešení potíží se stavem back-endu ve službě Application Gateway
 ==================================================
@@ -24,7 +24,7 @@ Ve výchozím nastavení služba Azure Application Gateway PROBE back-end server
 
 ### <a name="how-to-check-backend-health"></a>Postup kontroly stavu back-endu
 
-Pokud chcete zjistit stav back-endu, můžete na Azure Portal použít stránku **stavu back-endu** . Nebo můžete použít [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth?view=azps-2.6.0), [CLI](/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-show-backend-health)nebo [REST API](/rest/api/application-gateway/applicationgateways/backendhealth).
+Pokud chcete zjistit stav back-endu, můžete na Azure Portal použít stránku **stavu back-endu** . Nebo můžete použít [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth), [CLI](/cli/azure/network/application-gateway#az-network-application-gateway-show-backend-health)nebo [REST API](/rest/api/application-gateway/applicationgateways/backendhealth).
 
 Stav načtený některou z těchto metod může být kterýkoli z následujících:
 
@@ -119,7 +119,7 @@ K zvýšení hodnoty časového limitu použijte následující postup:
 
 1.  Pokud používáte výchozí DNS Azure, zaregistrujte se od svého registrátora názvu domény, jestli je dokončený záznam nebo mapování záznamů CNAME.
 
-1.  Pokud je doména soukromá nebo interní, zkuste ji vyřešit z virtuálního počítače ve stejné virtuální síti. Pokud je můžete vyřešit, restartujte Application Gateway a znovu se vraťte. Pokud chcete restartovat Application Gateway, musíte [zastavit](/powershell/module/azurerm.network/stop-azurermapplicationgateway?view=azurermps-6.13.0) a [Spustit](/powershell/module/azurerm.network/start-azurermapplicationgateway?view=azurermps-6.13.0) pomocí příkazů PowerShellu popsaných v těchto propojených prostředcích.
+1.  Pokud je doména soukromá nebo interní, zkuste ji vyřešit z virtuálního počítače ve stejné virtuální síti. Pokud je můžete vyřešit, restartujte Application Gateway a znovu se vraťte. Pokud chcete restartovat Application Gateway, musíte [zastavit](/powershell/module/azurerm.network/stop-azurermapplicationgateway) a [Spustit](/powershell/module/azurerm.network/start-azurermapplicationgateway) pomocí příkazů PowerShellu popsaných v těchto propojených prostředcích.
 
 #### <a name="tcp-connect-error"></a>Chyba připojení TCP
 
@@ -157,7 +157,7 @@ Také ověřte, zda jakákoli NSG/UDR/firewall blokuje přístup k IP adrese a p
 
     a.  Otevřete příkazový řádek (Win + R- \> cmd), zadejte `netstat` a vyberte Enter.
 
-    b.  Ověřte, zda server naslouchá na portu, který je nakonfigurován. Například:
+    b.  Ověřte, zda server naslouchá na portu, který je nakonfigurován. Příklad:
     ```
             Proto Local Address Foreign Address State PID
             TCP 0.0.0.0:80 0.0.0.0:0 LISTENING 4
@@ -257,7 +257,7 @@ Další informace o extrakci a nahrání důvěryhodných kořenových certifik�
 > [!NOTE]
 > K této chybě může dojít také v případě, že back-end Server nemění úplný řetěz certifikátu, včetně kořenového > zprostředkujícího (Pokud je k dispozici) > list během metody handshake TLS. K ověření můžete použít příkazy OpenSSL z libovolného klienta a připojit se k back-end serveru pomocí nakonfigurovaných nastavení v Application Gateway PROBE.
 
-Například:
+Příklad:
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```

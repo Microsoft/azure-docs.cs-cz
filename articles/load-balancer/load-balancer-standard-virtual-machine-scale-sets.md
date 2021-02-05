@@ -1,6 +1,6 @@
 ---
-title: Azure Standard Load Balancer a škálovací sady virtuálních počítačů
-titleSuffix: Azure Standard Load Balancer and Virtual Machine Scale Sets
+title: Přidání pravidel pro Azure Standard Load Balancer a Virtual Machine Scale Sets
+titleSuffix: Add rules for Azure Standard Load Balancer and virtual machine scale sets
 description: Pomocí této cesty výukového programu Začínáme s Azure Standard Load Balancer a Virtual Machine Scale Sets.
 services: load-balancer
 documentationcenter: na
@@ -13,36 +13,40 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: irenehua
-ms.openlocfilehash: 7e1df754a4a4ca5878d93d53282fd39191313b54
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 7a2e0531427343a2ec267de54cee05b5eb25889f
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883159"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592275"
 ---
-# <a name="azure-load-balancer-with-azure-virtual-machine-scale-sets"></a>Azure Load Balancer se službou Azure Virtual Machine Scale Sets
+# <a name="add-rules-for-azure-load-balancer-with-virtual-machine-scale-sets"></a>Přidání pravidel pro Azure Load Balancer se službou Virtual Machine Scale Sets
 
-Při práci se službou Virtual Machine Scale Sets a nástrojem pro vyrovnávání zatížení je třeba vzít v úvahu následující pokyny:
+Když pracujete se službou Virtual Machine Scale Sets a Azure Load Balancer, vezměte v úvahu následující pokyny.
 
-## <a name="port-forwarding-and-inbound-nat-rules"></a>Pravidla předávání portů a příchozí NAT:
-  * Po vytvoření sady škálování se port back-endu nedá změnit pro pravidlo vyrovnávání zatížení používané sondou stavu nástroje pro vyrovnávání zatížení. Pokud chcete změnit port, můžete odstranit sondu stavu tak, že aktualizujete sadu škálování virtuálního počítače Azure, aktualizujete port a pak znovu nakonfigurujete test stavu.
-  * Při použití sady škálování virtuálních počítačů ve fondu back-end nástroje pro vyrovnávání zatížení se automaticky vytvoří výchozí pravidla příchozího překladu adres (NAT).
+## <a name="port-forwarding-and-inbound-nat-rules"></a>Pravidla předávání portů a příchozí NAT
+
+Po vytvoření sady škálování se back-end port nedá upravit pro pravidlo vyrovnávání zatížení, které používá sonda stavu nástroje pro vyrovnávání zatížení. Pokud chcete změnit port, odeberte sondu stavu tak, že aktualizujete sadu škálování virtuálního počítače a aktualizujete port. Pak znovu nakonfigurujte test stavu.
+
+Když použijete sadu škálování virtuálního počítače ve fondu back-end nástroje pro vyrovnávání zatížení, automaticky se vytvoří výchozí pravidla příchozího překladu adres (NAT).
   
-## <a name="inbound-nat-pool"></a>Příchozí fond NAT:
-  * Každá sada škálování virtuálního počítače musí mít aspoň jeden příchozí fond NAT. 
-  * Příchozí fond NAT je kolekcí pravidel příchozího překladu adres (NAT). Jeden příchozí fond NAT nepodporuje více sad škálování virtuálních počítačů.
+## <a name="inbound-nat-pool"></a>Příchozí fond NAT
 
-## <a name="load-balancing-rules"></a>Pravidla vyrovnávání zatížení:
-  * Při použití sady škálování virtuálních počítačů ve fondu back-end nástroje pro vyrovnávání zatížení se automaticky vytvoří výchozí pravidlo vyrovnávání zatížení.
+Každá sada škálování virtuálního počítače musí mít aspoň jeden příchozí fond NAT. Příchozí fond NAT je kolekcí pravidel příchozího překladu adres (NAT). Jeden příchozí fond NAT nemůže podporovat víc sad Virtual Machine Scale Sets.
+
+## <a name="load-balancing-rules"></a>Pravidla vyrovnávání zatížení
+
+Když použijete sadu škálování virtuálního počítače ve fondu back-end nástroje pro vyrovnávání zatížení, automaticky se vytvoří výchozí pravidlo vyrovnávání zatížení.
   
-## <a name="outbound-rules"></a>Odchozí pravidla:
-  *  Pokud chcete vytvořit odchozí pravidlo pro back-end fond, na který se už odkazuje pravidlo vyrovnávání zatížení, musíte **nejdřív na portálu** při vytváření pravidla vyrovnávání zatížení označit **možnost vytvořit implicitní odchozí pravidla** .
+## <a name="outbound-rules"></a>Pravidla odchozích přenosů
 
-  :::image type="content" source="./media/vm-scale-sets/load-balancer-and-vm-scale-sets.png" alt-text="Vytvoření pravidla vyrovnávání zatížení" border="true":::
+Chcete-li vytvořit odchozí pravidlo pro fond back-end, na který již odkazuje pravidlo vyrovnávání zatížení, vyberte možnost **ne** v části **vytvořit implicitní odchozí pravidla** v Azure Portal při vytvoření pravidla vyrovnávání zatížení.
 
-K nasazení sady škálování virtuálního počítače s existujícím nástrojem pro vyrovnávání zatížení Azure můžete použít následující metody.
+  :::image type="content" source="./media/vm-scale-sets/load-balancer-and-vm-scale-sets.png" alt-text="Snímek obrazovky zobrazující vytvoření pravidla vyrovnávání zatížení" border="true":::
 
-* [Nakonfigurujte sadu škálování virtuálního počítače s existujícím Azure Load Balancer pomocí Azure Portal](./configure-vm-scale-set-portal.md).
-* [Nakonfigurujte sadu škálování virtuálního počítače s existujícím Azure Load Balancer pomocí Azure PowerShell](./configure-vm-scale-set-powershell.md).
-* [Nakonfigurujte sadu škálování virtuálního počítače s existujícím Azure Load Balancer pomocí Azure CLI](./configure-vm-scale-set-cli.md).
-* [Aktualizovat nebo odstranit existující Azure Load Balancer používané sadou škálování virtuálních počítačů](./update-load-balancer-with-vm-scale-set.md)
+Pomocí následujících metod nasaďte sadu škálování virtuálního počítače s existující instancí Load Balancer:
+
+* [Konfigurace sady škálování virtuálních počítačů pomocí existující instance Azure Load Balancer s využitím Azure Portal](./configure-vm-scale-set-portal.md)
+* [Konfigurace sady škálování virtuálních počítačů pomocí existující instance Azure Load Balancer s využitím Azure PowerShell](./configure-vm-scale-set-powershell.md)
+* [Konfigurace sady škálování virtuálních počítačů s existující instancí Azure Load Balancer pomocí rozhraní příkazového řádku Azure](./configure-vm-scale-set-cli.md)
+* [Aktualizace nebo odstranění existující instance Azure Load Balancer používané sadou škálování virtuálního počítače](./update-load-balancer-with-vm-scale-set.md)

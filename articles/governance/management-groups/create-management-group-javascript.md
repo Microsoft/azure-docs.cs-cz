@@ -1,15 +1,15 @@
 ---
 title: 'Rychlý Start: Vytvoření skupiny pro správu pomocí JavaScriptu'
 description: V tomto rychlém startu pomocí JavaScriptu vytvoříte skupinu pro správu, která slouží k uspořádání prostředků do hierarchie prostředků.
-ms.date: 11/18/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: c1b800f150cebacf8d17785feb1bded5189f1574
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 25fd93e51c1b49519bb315aab28cdfc44a2a0c58
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886596"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593972"
 ---
 # <a name="quickstart-create-a-management-group-with-javascript"></a>Rychlý Start: Vytvoření skupiny pro správu pomocí JavaScriptu
 
@@ -17,7 +17,7 @@ Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, 
 
 První skupina pro správu vytvořená v adresáři může trvat až 15 minut, než se dokončí. Při nastavování služby skupiny pro správu v Azure pro váš adresář existují procesy, které se spouštějí poprvé. Po dokončení procesu obdržíte oznámení. Další informace najdete v tématu [počáteční nastavení skupin pro správu](./overview.md#initial-setup-of-management-groups).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

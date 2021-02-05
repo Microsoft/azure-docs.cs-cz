@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: f2e63903546e173e17f2b457b78eb41bcdf65dbd
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: e9908c106e57801cb1b7def8b3353a983cc97de0
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555562"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591935"
 ---
 # <a name="pbr-materials"></a>Materiály PBR
 
@@ -51,7 +51,7 @@ Tyto vlastnosti jsou společné pro všechny materiály:
 
 ## <a name="pbr-material-properties"></a>Vlastnosti materiálu PBR
 
-Základní nápad, který je fyzicky založený na *vykreslování, je* použití *BaseColor* , vlastností odolnosti a vlastností *hrubosti* k emulaci široké škály reálných materiálů. Podrobný popis PBR překračuje rozsah tohoto článku. Další informace o PBR najdete v tématu [Další zdroje](http://www.pbr-book.org). Následující vlastnosti jsou specifické pro materiály PBR:
+Základní nápad, který je fyzicky založený na *vykreslování, je* použití *BaseColor*, vlastností odolnosti a vlastností *hrubosti* k emulaci široké škály reálných materiálů. Podrobný popis PBR překračuje rozsah tohoto článku. Další informace o PBR najdete v tématu [Další zdroje](http://www.pbr-book.org). Následující vlastnosti jsou specifické pro materiály PBR:
 
 * **baseColor:** V materiálech PBR se *Barva albedo* označuje jako *základní barva*. Ve vzdáleném vykreslování Azure je vlastnost *albedo Color* již přítomna prostřednictvím vlastností společných materiálů, takže neexistuje žádná další základní vlastnost Color.
 
@@ -92,9 +92,9 @@ Není vždy možné převést z *odlesk-Glossiness* na *kov –* protože existu
 ## <a name="api-documentation"></a>Dokumentace k rozhraní API
 
 * [Třída C# PbrMaterial](/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
-* [C# RemoteManager. CreateMaterial ()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C# RenderingConnection. CreateMaterial ()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.creatematerial)
 * [Třída C++ PbrMaterial](/cpp/api/remote-rendering/pbrmaterial)
-* [C++ RemoteManager:: CreateMaterial ()](/cpp/api/remote-rendering/remotemanager#creatematerial)
+* [C++ RenderingConnection:: CreateMaterial ()](/cpp/api/remote-rendering/renderingconnection#creatematerial)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: Vytvoření skupiny pro správu pomocí portálu'
 description: V tomto rychlém startu použijete Azure Portal k vytvoření skupiny pro správu, která slouží k uspořádání prostředků do hierarchie prostředků.
-ms.date: 08/31/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: c8cb7b8bd3ad33d1f315670bfbb1782972e6e97f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5a336fe4caf5d2f825a93b5c7b8f8d05f6255c39
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89661744"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592428"
 ---
 # <a name="quickstart-create-a-management-group"></a>Rychlý Start: Vytvoření skupiny pro správu
 
@@ -16,7 +16,7 @@ Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, 
 
 První skupina pro správu vytvořená v adresáři může trvat až 15 minut, než se dokončí. Při nastavování služby skupiny pro správu v Azure pro váš adresář existují procesy, které se spouštějí poprvé. Po dokončení procesu obdržíte oznámení. Další informace najdete v tématu [počáteční nastavení skupin pro správu](./overview.md#initial-setup-of-management-groups).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -39,7 +39,7 @@ První skupina pro správu vytvořená v adresáři může trvat až 15 minut, n
    - **ID skupiny pro správu** je jedinečný identifikátor adresáře, který se používá k odesílání příkazů v této skupině pro správu. Tento identifikátor není po vytvoření upravitelný, protože se používá v systému Azure k identifikaci této skupiny. [Kořenová skupina pro správu](./overview.md#root-management-group-for-each-directory) se automaticky vytvoří s ID, které je Azure Active Directory ID. U všech ostatních skupin pro správu přiřaďte jedinečné ID.
    - Pole Zobrazovaný název je název, který se zobrazí v Azure Portal. Samostatné zobrazované jméno je volitelné pole při vytváření skupiny pro správu a může být kdykoli změněno.
 
-   :::image type="content" source="./media/create_context_menu.png" alt-text="Snímek obrazovky se stránkou skupiny pro správu, která zobrazuje podřízené skupiny pro správu a odběry.":::
+   :::image type="content" source="./media/create_context_menu.png" alt-text="Snímek obrazovky s možnostmi Přidat skupinu pro správu pro vytvoření nové skupiny pro správu.":::
 
 1. Vyberte **Uložit**.
 

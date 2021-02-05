@@ -1,15 +1,15 @@
 ---
 title: Podporované typy prostředků Azure Resource Manager
 description: Poskytněte seznam Azure Resource Manager typů prostředků, které podporuje Azure Resource Graph, a historii změn.
-ms.date: 01/06/2021
+ms.date: 02/04/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 4198c60bc298eb6a1b9902bb92e3df44648b2c0b
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 865aed468f8a6bcb848b77a82467efc2c531398b
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251773"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594329"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Odkaz na typ tabulky a prostředku Azure Resource graphu
 
@@ -130,6 +130,9 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. azurestack/linkedsubscriptions
 - Microsoft. Azurestack/registrací (centra Azure Stack)
 - Microsoft. AzureStackHCI/clustery (Azure Stack HCI)
+- Microsoft. azurestackhci/galleryimages
+- Microsoft. azurestackhci/networkinterfaces
+- Microsoft. azurestackhci/virtualnetworks
 - Microsoft. baremetal/consoleconnections
 - Microsoft. BareMetal/crayServers (servery Cray)
 - Microsoft. BareMetal/monitoringServers (monitorovací servery)
@@ -331,6 +334,9 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. Insights/workbooktemplates (šablony sešitu Azure)
 - Microsoft. IntelligentITDigitalTwin/digitalTwins (Minervas)
 - Microsoft. intelligentitdigitaltwin/digitaltwins/Assets
+- Microsoft. intelligentitdigitaltwin/digitaltwins/executionplans
+- Microsoft. intelligentitdigitaltwin/digitaltwins/testplans
+- Microsoft. intelligentitdigitaltwin/digitaltwins/Tests
 - Microsoft. IoTCentral/IoTApps (IoT Central aplikace)
 - Microsoft. IoTSpaces/Graph (digitální vlákna (zastaralé))
 - Microsoft. hsmpools – trezor/
@@ -494,6 +500,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. Resources/templateSpecs (specifikace šablon)
 - Microsoft. Resources/templatespecs/verze
 - Microsoft. SaaS/Applications (software jako služba (Classic))
+- Microsoft. SaaS/Resources (CPX – zástupný symbol)
 - Microsoft. Scheduler/jobCollections (kolekce úloh Scheduleru)
 - Microsoft. SCVMM/cloudy
 - Microsoft. SCVMM/virtualMachines (virtuální počítač SCVMM – ARC Azure)
@@ -588,6 +595,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. Web/StaticSites (static Web Apps (Preview))
 - Microsoft. WindowsESU/multipleActivationKeys (aktivační klíče Windows s vícenásobnou aktivací)
 - Microsoft. WindowsIoT/DeviceServices (Windows 10 IoT Core Services)
+- Microsoft. workloadbuilder/migrationagents
 - Microsoft. workloadbuilder/úlohy
 - MyGet. PackageManagement/Services (MyGet – hostované balíčky NuGet, NPM, Bower a VSIX)
 - Paraleap. CloudMonix/Services (CloudMonix)

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9fe5cb13ee352b2c49ab6ae57cabd6116cdfa720
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 410f8ab4de0d93262647cbc07e0792cd39f7a844
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667669"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593633"
 ---
 # <a name="call-flows"></a>Toky volání
 
@@ -26,7 +26,7 @@ Následující část obsahuje přehled toků volání v komunikačních služb�
 
 Když vytvoříte volání skupiny peer-to-peer nebo Group, použijí se za vás dva protokoly na pozadí – HTTP (REST) pro signalizaci a SRTP pro média. 
 
-Signalizace mezi klientskými knihovnami nebo mezi klientskými knihovnami a řadiči pro komunikaci s komunikačními službami se zpracovává pomocí protokolu HTTP REST (TLS). Pro přenos médií v reálném čase (RTP) je upřednostňovaný protokol UDP (User Datagram Protocol). Pokud brána firewall zabrání použití protokolu UDP, knihovna klienta použije protokol TCP (Transmission Control Protocol) pro médium. 
+Signalizace mezi klientskými knihovnami nebo mezi klientskými knihovnami a řadiči pro komunikaci s komunikačními službami se zpracovává pomocí protokolu HTTP REST (TLS). Pro Real-Time přenosů médií (RTP) je upřednostňovaným protokolem UDP (User Datagram Protocol). Pokud brána firewall zabrání použití protokolu UDP, knihovna klienta použije protokol TCP (Transmission Control Protocol) pro médium. 
 
 Pojďme se podívat na signály a protokoly médií v různých scénářích. 
 
@@ -44,13 +44,13 @@ Pokud se v podsítích nacházejí dvě zařízení, která se nemůžou vzájem
 
 V případě Alice se jedná o překlad adres (NAT) pro kavárnu a pro Bob bude to překlad adres (NAT) doma. Zařízení Alice pošle externí adresu svého překladu adres (NAT) a Bob se bude shodovat. Klientské knihovny se učí externí adresy ze služby STUN (Nástroj pro procházení relace pro NAT), které poskytují bezplatné služby Azure Communications. Logika, která zpracovává signalizaci mezi Alicí a Bobem, je vložena do klientských knihoven Azure Communication Services. (Nepotřebujete žádnou další konfiguraci.)
 
-:::image type="content" source="./media/call-flows/about-voice-case-2.png" alt-text="Diagram znázorňující přímé volání VOIP mezi uživateli a komunikačními službami.":::
+:::image type="content" source="./media/call-flows/about-voice-case-2.png" alt-text="Diagram znázorňující volání VOIP, které využívá připojení STUN":::
 
 ### <a name="case-3-voip-where-neither-a-direct-nor-nat-connection-is-possible"></a>Případ 3: VoIP, když není možné přímé připojení k překladu adres ani NAT
 
 Pokud jsou jedno nebo obě klientské zařízení za symetrickým překladem adres (NAT), vyžaduje se samostatná cloudová služba, která bude přenášet médium mezi oběma klientskými knihovnami. Tato služba se nazývá zapínání (přecházení přes překlad adres (NAT)) a poskytuje také komunikační služby. Komunikační služby volající klientské knihovny automaticky využívají funkci zapnout služby na základě zjištěných síťových podmínek. Používání služby společnosti Microsoft pro zapínání se účtuje samostatně.
 
-:::image type="content" source="./media/call-flows/about-voice-case-3.png" alt-text="Diagram znázorňující přímé volání VOIP mezi uživateli a komunikačními službami.":::
+:::image type="content" source="./media/call-flows/about-voice-case-3.png" alt-text="Diagram znázorňující volání VOIP, které využívá připojení k zapnutí":::
  
 ### <a name="case-4-group-calls-with-pstn"></a>Případ 4: volání skupin pomocí veřejné telefonní sítě
 
@@ -58,7 +58,7 @@ Jak signalizace, tak volání na veřejné telefonní subsystém využívají pr
 
 Provoz multimédií v PSTN prostřednictvím komponenty s názvem Media Processor.
 
-:::image type="content" source="./media/call-flows/about-voice-pstn.png" alt-text="Diagram znázorňující přímé volání VOIP mezi uživateli a komunikačními službami.":::
+:::image type="content" source="./media/call-flows/about-voice-pstn.png" alt-text="Diagram znázorňující volání skupiny veřejné telefonní služby se službami Communications.":::
 
 > [!NOTE]
 > Pro uživatele, kteří se seznámili s zpracováním médií, je náš multimediální procesor také zpětným uživatelským agentem, jak je definováno v [dokumentu RFC 3261 SIP: protokol inicializace relace](https://tools.ietf.org/html/rfc3261), což znamená, že dokáže překládat kodeky při zpracování volání mezi sítěmi Microsoftu a dopravce. Kontroler signalizace v rámci služby Azure Communications Services je implementace proxy serveru SIP od Microsoftu na stejný RFC.
@@ -70,11 +70,11 @@ Výchozím protokolem RTP (Real-Time Protocol) pro volání skupin je protokol U
 > [!NOTE]
 > Procesor médií může fungovat jako jednotka řízení systému MultiPoint (MCU) nebo jednotka pro selektivní předávání (SFU).
 
-:::image type="content" source="./media/call-flows/about-voice-group-calls.png" alt-text="Diagram znázorňující přímé volání VOIP mezi uživateli a komunikačními službami.":::
+:::image type="content" source="./media/call-flows/about-voice-group-calls.png" alt-text="Diagram znázorňující tok procesu multimédií UDP v rámci komunikačních služeb":::
 
 Pokud klientská knihovna nemůže použít UDP pro média z důvodu omezení brány firewall, bude proveden pokus o použití protokolu TCP (Transmission Control Protocol). Všimněte si, že komponenta procesoru médií vyžaduje protokol UDP, takže pokud k tomu dojde, služba Communications zapnete službu a přidá se k volání skupiny, aby se přeložilo TCP na UDP. V takovém případě budou v takovém případě zaúčtovány poplatky, pokud nejsou možnosti vypnutí ručně zakázány.
 
-:::image type="content" source="./media/call-flows/about-voice-group-calls-2.png" alt-text="Diagram znázorňující přímé volání VOIP mezi uživateli a komunikačními službami.":::
+:::image type="content" source="./media/call-flows/about-voice-group-calls-2.png" alt-text="Diagram znázorňující tok procesu multimédií TCP v rámci komunikačních služeb.":::
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 3dd46f4033a568a278d7006c0d5aab451496ff47
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 4757a8237aa6226b78e7c1e79ba50710e31d28e3
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397219"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594261"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrace služby Azure Application Gateway a firewall webových aplikací z verze V1 na verzi 2
 
@@ -125,7 +125,7 @@ Spuštění skriptu:
       $trustedCert = New-AzApplicationGatewayTrustedRootCertificate -Name "trustedCert1" -CertificateFile $certFilePath
       ```
 
-      Chcete-li vytvořit seznam objektů PSApplicationGatewayTrustedRootCertificate, přečtěte si téma [New-AzApplicationGatewayTrustedRootCertificate](/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
+      Chcete-li vytvořit seznam objektů PSApplicationGatewayTrustedRootCertificate, přečtěte si téma [New-AzApplicationGatewayTrustedRootCertificate](/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate).
    * **privateIpAddress: [řetězec]: volitelné**. Konkrétní privátní IP adresa, kterou chcete přidružit k nové bráně v2.  Tato hodnota musí být ze stejné virtuální sítě, kterou přidělíte pro novou bránu v2. Pokud tato hodnota není zadaná, skript přidělí privátní IP adresu pro bránu v2.
    * **publicIpResourceId: [řetězec]: volitelné**. ResourceId existující prostředek veřejné IP adresy (Standard SKU) ve vašem předplatném, který chcete přidělit nové bráně v2. Pokud tento parametr nezadáte, skript přidělí novou veřejnou IP adresu ve stejné skupině prostředků. Název je název brány v2 s připojením *-IP* .
    * **validateMigration: [přepínač]: volitelné**. Tento parametr použijte v případě, že chcete, aby skript po vytvoření brány v2 a kopii konfigurace provedl některé základní ověřování v porovnání s konfigurací. Ve výchozím nastavení se neprovádí žádné ověření.
@@ -182,7 +182,7 @@ Ano.
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>Přepíná skript Azure PowerShell také přenos dat z mé brány V1 na nově vytvořenou bránu v2?
 
-Ne. Azure PowerShell skript migruje pouze konfiguraci. Skutečná migrace provozu je vaší zodpovědností a vaším ovládacím prvkem.
+No. Azure PowerShell skript migruje pouze konfiguraci. Skutečná migrace provozu je vaší zodpovědností a vaším ovládacím prvkem.
 
 ### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>Je nová brána v2 vytvořená o správné velikosti skriptu Azure PowerShell pro zpracování všech přenosů, které aktuálně obsluhuje moje brána v1?
 
@@ -190,11 +190,11 @@ Skript Azure PowerShell vytvoří novou bránu v2, která má odpovídající ve
 
 ### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>Nakonfigurovali jsem moji bránu V1, aby odesílala protokoly do služby Azure Storage. Replikuje tento skript tuto konfiguraci pro v2?
 
-Ne. Skript nereplikuje tuto konfiguraci pro v2. Je nutné přidat konfiguraci protokolu odděleně od migrované brány v2.
+No. Skript nereplikuje tuto konfiguraci pro v2. Je nutné přidat konfiguraci protokolu odděleně od migrované brány v2.
 
 ### <a name="does-this-script-support-certificates-uploaded-to-azure-keyvault-"></a>Podporuje tento skript certifikáty nahrané do služby Azure webtrezor?
 
-Ne. V současné době skript nepodporuje certifikáty v trezoru klíčů. To se ale zvažuje i v budoucí verzi.
+No. V současné době skript nepodporuje certifikáty v trezoru klíčů. To se ale zvažuje i v budoucí verzi.
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Narazili jsme na některé problémy s použitím tohoto skriptu. Jak získám pomoc?
   

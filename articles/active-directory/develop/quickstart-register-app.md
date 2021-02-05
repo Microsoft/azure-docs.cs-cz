@@ -12,23 +12,23 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 6052e2243f8b31aa57d4abf27c24a4b045c9eae2
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 430ab980f51ff06ad5e39d6402abf5f649cc6d39
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754627"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593091"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Rychlý Start: registrace aplikace s platformou Microsoft identity
 
 V tomto rychlém startu zaregistrujete aplikaci do Azure Portal, aby platforma Microsoft Identity Service mohla poskytovat služby ověřování a autorizace pro vaši aplikaci a její uživatele.
 
-Každá aplikace, pro kterou má platforma Microsoft Identity provádět správu identit a přístupu (IAM), musí být zaregistrovaná. Bez ohledu na to, jestli se jedná o klientskou aplikaci, jako je webová nebo mobilní aplikace, nebo se jedná o webové rozhraní API, které zálohuje klientskou aplikaci, registrace vytvoří vztah důvěryhodnosti mezi vaší aplikací a poskytovatelem identity a platformou Microsoft identity.
+Microsoft Identity Platform provádí správu identit a přístupu (IAM) pouze u registrovaných aplikací. Bez ohledu na to, jestli se jedná o klientskou aplikaci, jako je webová nebo mobilní aplikace, nebo se jedná o webové rozhraní API, které zálohuje klientskou aplikaci, registrace vytvoří vztah důvěryhodnosti mezi vaší aplikací a poskytovatelem identity a platformou Microsoft identity.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Účet Azure s aktivním předplatným – [vytvořit účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Dokončení [rychlého startu: nastavení tenanta](quickstart-create-new-tenant.md)
+* Účet Azure, který má aktivní předplatné. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Dokončení nastavení rychlého startu [tenanta](quickstart-create-new-tenant.md)
 
 ## <a name="register-an-application"></a>Registrace aplikace
 
@@ -37,33 +37,33 @@ Při registraci aplikace se vytvoří vztah důvěryhodnosti mezi vaší aplikac
 Při vytváření registrace aplikace postupujte podle těchto kroků:
 
 1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
-1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+1. Máte-li přístup k více klientům, použijte v horní nabídce možnost **adresář + filtr předplatného** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
-1. Zadejte **název** vaší aplikace. Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
-1. Určete, kdo může používat aplikaci, někdy označovanou jako *skupina pro přihlašování*.
+1. Zadejte **název** vaší aplikace. Uživatelé vaší aplikace můžou tento název zobrazit. Později ji můžete změnit.
+1. Určete, kdo může používat aplikaci, někdy označovanou jako *přihlášená cílová skupina*.
 
-    | Podporované typy účtu | Popis |
+    | Podporované typy účtu | Description |
     |-------------------------|-------------|
-    | **Účty jen v tomto organizačním adresáři** | Tuto možnost vyberte, pokud vytváříte aplikaci pro použití jenom pro uživatele (nebo hosty) ve *vašem* tenantovi.<br><br>Je často označována jako *obchodní* aplikace (LOB), což je **jediná klientská** aplikace na platformě Microsoft identity. |
-    | **Účty v libovolném organizačním adresáři** | Tuto možnost vyberte, pokud chcete, aby se vaše aplikace mohla používat pro uživatele v *jakémkoli* tenantovi služby Azure AD. Tato možnost je vhodná, pokud například vytváříte aplikaci typu software jako služba (SaaS), kterou máte v úmyslu poskytnout více organizacím.<br><br>Tato aplikace se označuje jako **víceklientská** aplikace na platformě Microsoft identity. |
-    | **Účty v libovolném organizačním adresáři a osobní účty Microsoft** | Tuto možnost vyberte, pokud chcete cílit na co nejširší okruh zákazníků.<br><br>Výběrem této možnosti zaregistrujete **víceklientské** aplikace, která může podporovat i uživatele s osobními **účty Microsoft** (MSA). |
-    | **Osobní účty Microsoft** | Tuto možnost vyberte, pokud vytváříte aplikaci pro použití jenom pro uživatele s osobními účty Microsoft. Osobní účty Microsoft zahrnují účty Skype, Xbox, Live a Hotmail. |
+    | **Účty jen v tomto organizačním adresáři** | Tuto možnost vyberte, pokud vytváříte aplikaci pro použití jenom pro uživatele (nebo hosty) ve *vašem* tenantovi.<br><br>Často se říká *obchodní* aplikace (LOB), tato aplikace je *jediná klientská* aplikace na platformě Microsoft identity. |
+    | **Účty v libovolném organizačním adresáři** | Tuto možnost vyberte, pokud chcete, aby uživatelé v *jakémkoli* Azure Active Directoryovém Tenantovi (Azure AD) mohli aplikaci používat. Tato možnost je vhodná, pokud například vytváříte aplikaci typu software jako služba (SaaS), kterou máte v úmyslu poskytnout více organizacím.<br><br>Tento typ aplikace se označuje jako *víceklientské* aplikace na platformě Microsoft identity. |
+    | **Účty v libovolném organizačním adresáři a osobní účty Microsoft** | Tuto možnost vyberte, pokud chcete cílit na co nejširší okruh zákazníků.<br><br>Výběrem této možnosti zaregistrujete *víceklientské* aplikace, která může podporovat také uživatele, kteří mají osobní *účty Microsoft*. |
+    | **Osobní účty Microsoft** | Tuto možnost vyberte, pokud vytváříte aplikaci jenom pro uživatele, kteří mají osobní účty Microsoft. Osobní účty Microsoft zahrnují účty Skype, Xbox, Live a Hotmail. |
 
-1. Nezadávejte nic pro **identifikátor URI přesměrování (volitelné)**, nakonfigurujete ho v další části.
+1. Nezadávejte nic pro **identifikátor URI přesměrování (volitelné)**. V další části nakonfigurujete identifikátor URI pro přesměrování.
 1. Kliknutím na **Registrovat** dokončíte prvotní registraci aplikace.
 
-    :::image type="content" source="media/quickstart-register-app/portal-02-app-reg-01.png" alt-text="Snímek obrazovky Azure Portal ve webovém prohlížeči, který zobrazuje podokno Registrovat aplikaci":::
+    :::image type="content" source="media/quickstart-register-app/portal-02-app-reg-01.png" alt-text="Snímek obrazovky Azure Portal ve webovém prohlížeči, v němž se zobrazuje podokno Registrovat aplikaci":::
 
-Po dokončení registrace Azure Portal zobrazí podokno **Přehled** registrace aplikace, které zahrnuje **ID aplikace (klienta)**. Tato hodnota je také označována jako *ID klienta*. Tato hodnota jednoznačně identifikuje vaši aplikaci na platformě Microsoft identity.
+Po dokončení registrace se v Azure Portal zobrazí podokno s **přehledem** registrace aplikace. Zobrazí se **ID aplikace (klienta)**. Označuje se taky jako *ID klienta*. Tato hodnota jednoznačně identifikuje vaši aplikaci na platformě Microsoft identity.
 
-Kód vaší aplikace, nebo častěji knihovny ověřování používané v aplikaci, používá také ID klienta jako jeden aspekt při ověřování tokenů zabezpečení, které obdrží od platformy identity.
+Kód vaší aplikace, nebo častěji knihovna ověřování použitá ve vaší aplikaci, používá také ID klienta. ID se používá jako součást ověřování tokenů zabezpečení, které přijímá z platformy identity.
 
 :::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="Snímek obrazovky Azure Portal ve webovém prohlížeči, který zobrazuje podokno s přehledem registrace aplikace.":::
 
 ## <a name="add-a-redirect-uri"></a>Přidat identifikátor URI pro přesměrování
 
-Identifikátor URI přesměrování je umístění, kde rozhraní Microsoft Identity Platform přesměruje klienta uživatele a odesílá tokeny zabezpečení po ověření.
+*Identifikátor URI přesměrování* je umístění, kde rozhraní Microsoft Identity Platform přesměruje klienta uživatele a odesílá tokeny zabezpečení po ověření.
 
 V produkční webové aplikaci je například identifikátor URI přesměrování často veřejným koncovým bodem, ve kterém je vaše aplikace spuštěná, třeba `https://contoso.com/auth-response` . Během vývoje je běžné také přidat koncový bod, ve kterém aplikaci spouštíte místně, například `https://127.0.0.1/auth-response` nebo `http://localhost/auth-response` .
 
@@ -75,20 +75,20 @@ Nastavení pro každý typ aplikace, včetně identifikátorů URI přesměrová
 
 Konfigurace nastavení aplikace na základě platformy nebo zařízení, na které cílíte:
 
-1. V Azure Portal vyberte svou aplikaci v **Registrace aplikací** .
+1. V Azure Portal v části **Registrace aplikací** vyberte svou aplikaci.
 1. V části **Spravovat** vyberte **ověřování**.
 1. V části **konfigurace platformy** vyberte **Přidat platformu**.
 1. V části **Konfigurovat platformy** vyberte dlaždici pro typ aplikace (platforma) a nakonfigurujte její nastavení.
 
-    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Snímek obrazovky s podoknem konfigurace platformy v Azure Portal" border="false":::
+    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Snímek obrazovky s podoknem konfigurace platformy v Azure Portal." border="false":::
 
     | Platforma | Nastavení konfigurace |
     | -------- | ---------------------- |
-    | **Web** | Zadejte **identifikátor URI pro přesměrování** vaší aplikace, umístění, kde Microsoft Identity Platform přesměruje klienta uživatele a pošle tokeny zabezpečení po ověření.<br/><br/>Vyberte tuto platformu pro standardní webové aplikace, které běží na serveru. |
-    | **Jednostránková aplikace** | Zadejte **identifikátor URI pro přesměrování** vaší aplikace, umístění, kde Microsoft Identity Platform přesměruje klienta uživatele a pošle tokeny zabezpečení po ověření.<br/><br/>Tuto platformu vyberte, pokud vytváříte webovou aplikaci na straně klienta v jazyce JavaScript nebo pomocí architektury, jako je například úhlová, Vue.js, React.js nebo Blazor WebAssembly. |
-    | **iOS/macOS** | Zadejte **ID sady prostředků** aplikace, které najdete v Xcode v souboru *info. plist* nebo nastavení sestavení.<br/><br/>Identifikátor URI přesměrování se vygeneruje při zadání ID sady prostředků. |
-    | **Android** | Zadejte **název balíčku** aplikace, který můžete najít v souboru *AndroidManifest.xml* a vygenerujte a zadejte **hodnotu hash podpisu**.<br/><br/>Identifikátor URI přesměrování se vygeneruje při zadání těchto nastavení. |
-    | **Mobilní a desktopové aplikace** | Vyberte jeden z **navrhovaných identifikátorů URI pro přesměrování** nebo zadejte **vlastní identifikátor URI pro přesměrování**.<br/>U desktopových aplikací doporučujeme:<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>Vyberte tuto platformu pro mobilní aplikace, které nepoužívají nejnovější knihovnu Microsoft Authentication Library (MSAL) nebo nepoužívají zprostředkovatele. Vyberte taky tuto platformu pro desktopové aplikace. |
+    | **Web** | Zadejte **identifikátor URI pro přesměrování** vaší aplikace. Tento identifikátor URI je umístění, kde Microsoft Identity Platform přesměruje klienta uživatele a odesílá tokeny zabezpečení po ověření.<br/><br/>Vyberte tuto platformu pro standardní webové aplikace, které běží na serveru. |
+    | **Jednostránková aplikace** | Zadejte **identifikátor URI pro přesměrování** vaší aplikace. Tento identifikátor URI je umístění, kde Microsoft Identity Platform přesměruje klienta uživatele a odesílá tokeny zabezpečení po ověření.<br/><br/>Tuto platformu vyberte, pokud vytváříte webovou aplikaci na straně klienta pomocí JavaScriptu nebo architektury, jako je například úhlová, Vue.js, React.js nebo Blazor WebAssembly. |
+    | **iOS/macOS** | Zadejte **ID sady prostředků** aplikace. Najdete ho v **nastavení sestavení** nebo v Xcode v souboru *info. plist*.<br/><br/>Identifikátor URI přesměrování se vygeneruje při zadání **ID sady prostředků**. |
+    | **Android** | Zadejte **název balíčku** aplikace. Najdete ho v souboru *AndroidManifest.xml* . Také vygenerujte a zadejte **hodnotu hash podpisu**.<br/><br/>Identifikátor URI přesměrování se vygeneruje při zadání těchto nastavení. |
+    | **Mobilní a desktopové aplikace** | Vyberte jeden z **navrhovaných identifikátorů URI pro přesměrování**. Nebo zadejte **vlastní identifikátor URI pro přesměrování**.<br/><br/>U desktopových aplikací doporučujeme<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>Vyberte tuto platformu pro mobilní aplikace, které nepoužívají nejnovější knihovnu Microsoft Authentication Library (MSAL), nebo nepoužívají zprostředkovatele. Vyberte taky tuto platformu pro desktopové aplikace. |
 1. Vyberte **Konfigurovat** a dokončete konfiguraci platformy.
 
 ### <a name="redirect-uri-restrictions"></a>Omezení identifikátoru URI přesměrování
@@ -97,39 +97,40 @@ Existují určitá omezení formátu identifikátorů URI přesměrování přid
 
 ## <a name="add-credentials"></a>Přidat přihlašovací údaje
 
-Přihlašovací údaje jsou používány [důvěrnými klientskými aplikacemi](msal-client-applications.md) , které přistupují k webovému rozhraní API. Příklady důvěrných klientů jsou [webové aplikace](scenario-web-app-call-api-overview.md), jiná [webová rozhraní API](scenario-protected-web-api-overview.md)nebo [aplikace typu démon a Service-Type](scenario-daemon-overview.md). Přihlašovací údaje umožňují, aby se vaše aplikace ověřovala jako samotná a nevyžadovala žádné interakce od uživatele za běhu. 
+Přihlašovací údaje jsou používány [důvěrnými klientskými aplikacemi](msal-client-applications.md) , které přistupují k webovému rozhraní API. Příklady důvěrných klientů jsou [webové aplikace](scenario-web-app-call-api-overview.md), jiná [webová rozhraní API](scenario-protected-web-api-overview.md)nebo [aplikace typu Service-Type a démon](scenario-daemon-overview.md). Přihlašovací údaje umožňují, aby se vaše aplikace ověřovala jako samotná a nevyžadovala žádné interakce od uživatele za běhu. 
 
 K registraci důvěrných klientských aplikací můžete přidat jak certifikáty, tak i klientské tajné klíče (řetězce) jako přihlašovací údaje.
 
-:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Snímek obrazovky Azure Portal, který zobrazuje podokno certifikátů a tajných klíčů v registraci aplikace":::
+:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Snímek obrazovky Azure Portal, který zobrazuje podokno certifikátů a tajných klíčů v registraci aplikace.":::
 
 ### <a name="add-a-certificate"></a>Přidat certifikát
 
-V případě, že se někdy označuje jako *veřejný klíč*, jsou certifikáty doporučeným typem přihlašovacích údajů, protože poskytují vyšší úroveň zabezpečení než tajný klíč klienta. Další informace o tom, jak používat certifikát jako metodu ověřování v aplikaci, najdete v tématu [přihlašovací údaje certifikátu pro ověřování aplikací platformy Microsoft Identity Platform](active-directory-certificate-credentials.md) .
+Někdy se označuje jako *veřejný klíč*, certifikát je doporučeným typem přihlašovacích údajů. Poskytuje větší záruku než tajný klíč klienta. Další informace o použití certifikátu jako metody ověřování v aplikaci najdete v tématu [přihlašovací údaje certifikátu pro ověřování aplikací platformy Microsoft Identity Platform](active-directory-certificate-credentials.md).
 
-1. V Azure Portal vyberte svou aplikaci v **Registrace aplikací** .
+1. V Azure Portal v části **Registrace aplikací** vyberte svou aplikaci.
 1. Vyberte **certifikáty & tajných klíčů**  >  **nahrát certifikát**.
-1. Vyberte soubor, který chcete nahrát. Musí jít o jeden z následujících typů souboru: .cer, .pem nebo .crt.
+1. Vyberte soubor, který chcete odeslat. Musí to být jeden z následujících typů souborů: *. cer*, *. pem*, *. CRT*.
 1. Vyberte **Přidat**.
 
 ### <a name="add-a-client-secret"></a>Přidat tajný klíč klienta
 
-Tajný kód klienta, označovaný také jako *heslo aplikace*, je hodnota řetězce, kterou může aplikace použít místo certifikátu k samotné identitě. To je snazší pro použití těchto dvou typů přihlašovacích údajů, které se často používají během vývoje, ale považuje se za méně bezpečné než certifikát. Ve svých aplikacích běžících v produkčním prostředí byste měli používat certifikáty. Další informace o doporučeních pro zabezpečení aplikací najdete v tématu [osvědčené postupy a doporučení pro Microsoft Identity Platform](identity-platform-integration-checklist.md#security) .
+Tajný kód klienta je také označován jako *heslo aplikace*. Je to hodnota řetězce, kterou může aplikace použít místo certifikátu k samotné identitě. Tajný kód klienta je snazší pro dva typy přihlašovacích údajů, které se mají použít. Často se používá během vývoje, ale je považováno za méně bezpečné než certifikát. Používejte certifikáty ve svých aplikacích, které běží v produkčním prostředí. 
 
-1. V Azure Portal vyberte svou aplikaci v **Registrace aplikací** .
+Další informace o doporučeních pro zabezpečení aplikací najdete v tématu [osvědčené postupy a doporučení pro Microsoft Identity Platform](identity-platform-integration-checklist.md#security).
+
+1. V Azure Portal v části **Registrace aplikací** vyberte svou aplikaci.
 1. Vyberte **certifikáty & tajných klíčů**  >   **nový tajný klíč klienta**.
 1. Přidejte popis tajného klíče klienta.
 1. Vyberte dobu trvání.
 1. Vyberte **Přidat**.
-1. **Poznamenejte si hodnotu tajného klíče** pro použití v kódu klientské aplikace – po opuštění této stránky se už *nezobrazí* .
+1. *Poznamenejte si hodnotu tajného klíče* pro použití v kódu klientské aplikace. Tato hodnota tajného klíče se po opuštění této stránky už *znovu nezobrazí* .
 
-**Poznámka:** ID generované spolu s hodnotou tajného klíče je ID tajného klíče, které se liší od ID aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 
-Klientské aplikace obvykle potřebují přístup k prostředkům ve webovém rozhraní API. Kromě ochrany klientských aplikací s platformou Microsoft Identity můžete použít platformu pro autorizaci v oboru, přístup na základě oprávnění k webovému rozhraní API.
+Klientské aplikace obvykle potřebují přístup k prostředkům ve webovém rozhraní API. Klientské aplikace můžete chránit pomocí platformy Microsoft identity. Můžete také použít platformu pro autorizaci v oboru, přístup na základě oprávnění k webovému rozhraní API.
 
-Přejděte k dalšímu rychlému startu v řadě, abyste vytvořili další registraci aplikace pro vaše webové rozhraní API a vystavili své obory.
+Pokud chcete vytvořit další registraci aplikace pro vaše webové rozhraní API a vystavit jeho obory, přečtěte si další rychlý Start v řadě.
 
 > [!div class="nextstepaction"]
 > [Konfigurace aplikace k vystavení webového rozhraní API](quickstart-configure-app-expose-web-apis.md)

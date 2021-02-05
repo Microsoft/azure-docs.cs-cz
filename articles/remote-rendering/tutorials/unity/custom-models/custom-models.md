@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5793e2958edce0a4c97660a75d0ecefa914c12d2
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 3a278b6e725488d6107e6b0819e002d1dafe4774
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559078"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591659"
 ---
 # <a name="tutorial-interfaces-and-custom-models"></a>Kurz: rozhraní a vlastní modely
 
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte:
 > * Konfigurace služby Azure Blob Storage pro ingestování modelů
 > * Nahrávání a zpracování modelů pro vykreslování
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Tento kurz sestaví [kurz: zobrazení vzdáleně vykresleného modelu](../view-remote-models/view-remote-models.md).
 
@@ -94,7 +94,7 @@ Všimněte si, že skript **RemoteRenderedModel** implementuje **BaseRemoteRende
 
 1. Vytvořte nový skript s názvem **RemoteRenderedModel** ve stejné složce jako **RemoteRenderingCoordinator**. Celý obsah nahraďte následujícím kódem:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 

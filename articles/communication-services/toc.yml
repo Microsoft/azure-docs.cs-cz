@@ -88,6 +88,8 @@
       href: concepts/client-and-server-architecture.md
     - name: Toky volání
       href: concepts/call-flows.md
+    - name: Topologie toků volání
+      href: concepts/detailed-call-flows.md
     - name: Klientské knihovny a rozhraní REST API
       href: concepts/sdk-options.md
     - name: Cenový model

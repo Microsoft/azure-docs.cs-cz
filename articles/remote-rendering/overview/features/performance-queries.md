@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 57a9f6f11283e020efc25f55f1df473a6cb2d321
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 30b8104a9596f0b32f731c507b513b204f5d1acd
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569993"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594091"
 ---
 # <a name="server-side-performance-queries"></a>Dotazy na výkon na straně serveru
 
@@ -39,7 +39,7 @@ Obrázek ukazuje, jak:
 Statistiky snímků poskytují některé informace vysoké úrovně pro poslední rámec, například latenci. Data zadaná ve `FrameStatistics` struktuře se měří na straně klienta, takže rozhraní API je synchronní volání:
 
 ```cs
-void QueryFrameData(AzureSession session)
+void QueryFrameData(RenderingSession session)
 {
     FrameStatistics frameStatistics;
     if (session.GraphicsBinding.GetLastFrameStatistics(out frameStatistics) == Result.Success)
@@ -50,10 +50,10 @@ void QueryFrameData(AzureSession session)
 ```
 
 ```cpp
-void QueryFrameData(ApiHandle<AzureSession> session)
+void QueryFrameData(ApiHandle<RenderingSession> session)
 {
     FrameStatistics frameStatistics;
-    if (*session->GetGraphicsBinding()->GetLastFrameStatistics(&frameStatistics) == Result::Success)
+    if (session->GetGraphicsBinding()->GetLastFrameStatistics(&frameStatistics) == Result::Success)
     {
         // do something with the result
     }
@@ -64,57 +64,51 @@ Načtený `FrameStatistics` objekt obsahuje následující členy:
 
 | Člen | Vysvětlení |
 |:-|:-|
-| latencyPoseToReceive | Latence z fotoaparátu představuje odhad na klientském zařízení, dokud není rámec serveru pro tuto pozici plně dostupný klientské aplikaci. Tato hodnota zahrnuje zpáteční dobu v síti, čas vykreslování serveru, dekódování videa a kompenzaci kolísání. Viz **interval 1 na obrázku výše.**|
-| latencyReceiveToPresent | Latence z dostupnosti přijatého vzdáleného rámce, dokud klientská aplikace nevolá PresentFrame na procesor. Viz **interval 2 na obrázku výše.**|
-| latencyPresentToDisplay  | Latence v zobrazování snímku na CPU, dokud se nezobrazují indikátory Tato hodnota zahrnuje čas GPU klienta, všechny snímky uložené do vyrovnávací paměti prováděné operačním systémem, reprojektování hardwaru a čas vyzkoušení displeje závislého na zařízení. Viz **interval 3 na obrázku výše.**|
-| timeSinceLastPresent | Čas mezi následnými voláními PresentFrame na procesoru. Hodnoty větší než doba trvání displeje (například 16,6 MS na klientském zařízení 60-Hz) označují problémy způsobené klientskou aplikací v čase, kdy nedokončuje zatížení procesoru.|
-| videoFramesReceived | Počet rámců přijatých ze serveru za poslední sekundu. |
-| videoFrameReusedCount | Počet přijatých snímků za poslední sekundu, které byly použity na zařízení více než jednou. Nenulové hodnoty označují, že se snímky musely znovu použít a znovu promítnout z důvodu kolísání sítě nebo nadměrného vykreslování serveru. |
-| videoFramesSkipped | Počet přijatých rámců za poslední sekundu, které byly Dekódovatelné, ale nebyly zobrazeny při zobrazení, protože byl přijat novější rámec. Nenulové hodnoty označují, že kolísání sítě způsobilo zpoždění více rámců a pak dorazí do klientského zařízení dohromady v shluku. |
-| videoFramesDiscarded | Velmi podobné jako **videoFramesSkipped**, ale důvod, který je zahozený, je, že snímek byl v tom pozdě, takže ještě není možné ho ještě vzájemně sladit s případnými nedokončenými pozicemi. Pokud k tomu dojde, dojde k výraznému kolizi sítě.|
-| videoFrameMinDelta | Minimální doba mezi dvěma po sobě jdoucích snímky přicházejících během poslední sekundy. Tento rozsah spolu s videoFrameMaxDelta poskytuje indikaci kolísání způsobený buď kodekem sítě, nebo kodekem videa. |
-| videoFrameMaxDelta | Maximální doba mezi dvěma po sobě jdoucích rámců přicházejících během poslední sekundy. Tento rozsah spolu s videoFrameMinDelta poskytuje indikaci kolísání způsobený buď kodekem sítě, nebo kodekem videa. |
+| LatencyPoseToReceive | Latence z fotoaparátu představuje odhad na klientském zařízení, dokud není rámec serveru pro tuto pozici plně dostupný klientské aplikaci. Tato hodnota zahrnuje zpáteční dobu v síti, čas vykreslování serveru, dekódování videa a kompenzaci kolísání. Viz **interval 1 na obrázku výše.**|
+| LatencyReceiveToPresent | Latence z dostupnosti přijatého vzdáleného rámce, dokud klientská aplikace nevolá PresentFrame na procesor. Viz **interval 2 na obrázku výše.**|
+| LatencyPresentToDisplay  | Latence v zobrazování snímku na CPU, dokud se nezobrazují indikátory Tato hodnota zahrnuje čas GPU klienta, všechny snímky uložené do vyrovnávací paměti prováděné operačním systémem, reprojektování hardwaru a čas vyzkoušení displeje závislého na zařízení. Viz **interval 3 na obrázku výše.**|
+| TimeSinceLastPresent | Čas mezi následnými voláními PresentFrame na procesoru. Hodnoty větší než doba trvání displeje (například 16,6 MS na klientském zařízení 60-Hz) označují problémy způsobené klientskou aplikací v čase, kdy nedokončuje zatížení procesoru.|
+| VideoFramesReceived | Počet rámců přijatých ze serveru za poslední sekundu. |
+| VideoFrameReusedCount | Počet přijatých snímků za poslední sekundu, které byly použity na zařízení více než jednou. Nenulové hodnoty označují, že se snímky musely znovu použít a znovu promítnout z důvodu kolísání sítě nebo nadměrného vykreslování serveru. |
+| VideoFramesSkipped | Počet přijatých rámců za poslední sekundu, které byly Dekódovatelné, ale nebyly zobrazeny při zobrazení, protože byl přijat novější rámec. Nenulové hodnoty označují, že kolísání sítě způsobilo zpoždění více rámců a pak dorazí do klientského zařízení dohromady v shluku. |
+| VideoFramesDiscarded | Velmi podobné jako **VideoFramesSkipped**, ale důvod, který je zahozený, je, že snímek byl v tom pozdě, takže ještě není možné ho ještě vzájemně sladit s případnými nedokončenými pozicemi. Pokud k této zahození dojde, dojde k výraznému kolizi sítě.|
+| VideoFrameMinDelta | Minimální doba mezi dvěma po sobě jdoucích snímky přicházejících během poslední sekundy. Tento rozsah spolu s VideoFrameMaxDelta poskytuje indikaci kolísání způsobený buď kodekem sítě, nebo kodekem videa. |
+| VideoFrameMaxDelta | Maximální doba mezi dvěma po sobě jdoucích rámců přicházejících během poslední sekundy. Tento rozsah spolu s VideoFrameMinDelta poskytuje indikaci kolísání způsobený buď kodekem sítě, nebo kodekem videa. |
 
 Součet všech hodnot latence je obvykle mnohem větší než dostupný čas snímku v 60 Hz. To je v pořádku, protože více snímků je současně souběžně a nové žádosti o snímek jsou v požadované snímkové sazbě aktivní, jak je znázorněno na obrázku. Pokud je latence příliš velká, ovlivňuje kvalitu [reprojekce za fáze v pozdní fázi](../../overview/features/late-stage-reprojection.md)a může ohrozit celkové prostředí.
 
-`videoFramesReceived`, `videoFrameReusedCount` a `videoFramesDiscarded` lze je použít k měření výkonu sítě a serveru. Pokud `videoFramesReceived` je nízká a `videoFrameReusedCount` vysoká, může to znamenat zahlcení sítě nebo nedostatečný výkon serveru. Vysoká `videoFramesDiscarded` hodnota také označuje zahlcení sítě.
+`VideoFramesReceived`, `VideoFrameReusedCount` a `VideoFramesDiscarded` lze je použít k měření výkonu sítě a serveru. Kombinace nízké `VideoFramesReceived` hodnoty a vysoké `VideoFrameReusedCount` hodnoty může označovat zahlcení sítě nebo špatný výkon serveru. Vysoká `VideoFramesDiscarded` hodnota také označuje zahlcení sítě.
 
-Nakonec, `timeSinceLastPresent` `videoFrameMinDelta` a `videoFrameMaxDelta` Podělte se o odchylku příchozích snímků videa a místních současných volání. Vysoká odchylka znamená nestabilní snímkovou sazbu.
+Nakonec, `TimeSinceLastPresent` `VideoFrameMinDelta` a `VideoFrameMaxDelta` Podělte se o odchylku příchozích snímků videa a místních současných volání. Vysoká odchylka znamená nestabilní snímkovou sazbu.
 
-Žádná z výše uvedených hodnot neposkytuje jasné označení čisté latence sítě (červené šipky na obrázku), protože přesný čas, kdy je server zaneprázdněný vykreslováním, je nutné odečíst od hodnoty zpětného převodu `latencyPoseToReceive` . Na straně serveru celkové latence jsou informace, které nejsou pro klienta k dispozici. Další odstavec ale vysvětluje, jak se tato hodnota blíží k dalšímu vstupu ze serveru a je vystavená prostřednictvím `networkLatency` hodnoty.
+Žádná z výše uvedených hodnot neposkytuje jasné označení čisté latence sítě (červené šipky na obrázku), protože přesný čas, kdy je server zaneprázdněný vykreslováním, je nutné odečíst od hodnoty zpětného převodu `LatencyPoseToReceive` . Na straně serveru celkové latence jsou informace, které nejsou pro klienta k dispozici. Další odstavec ale vysvětluje, jak se tato hodnota blíží k dalšímu vstupu ze serveru a je vystavená prostřednictvím `NetworkLatency` hodnoty.
 
 ## <a name="performance-assessment-queries"></a>Dotazy na vyhodnocení výkonu
 
 *Dotazy na vyhodnocení výkonu* poskytují podrobné informace o procesoru a úlohách GPU na serveru. Vzhledem k tomu, že data jsou požadována ze serveru, dotazování snímku výkonu následuje po běžném asynchronním vzoru:
 
 ```cs
-PerformanceAssessmentAsync _assessmentQuery = null;
-
-void QueryPerformanceAssessment(AzureSession session)
+async void QueryPerformanceAssessment(RenderingSession session)
 {
-    _assessmentQuery = session.Actions.QueryServerPerformanceAssessmentAsync();
-    _assessmentQuery.Completed += (PerformanceAssessmentAsync res) =>
+    try
     {
-        // do something with the result:
-        PerformanceAssessment result = res.Result;
-        // ...
-
-        _assessmentQuery = null;
-    };
+        PerformanceAssessment result = await session.Connection.QueryServerPerformanceAssessmentAsync();
+        // do something with result...
+    }
+    catch (RRException ex)
+    {
+    }
 }
 ```
 
 ```cpp
-void QueryPerformanceAssessment(ApiHandle<AzureSession> session)
+void QueryPerformanceAssessment(ApiHandle<RenderingSession> session)
 {
-    ApiHandle<PerformanceAssessmentAsync> assessmentQuery = *session->Actions()->QueryServerPerformanceAssessmentAsync();
-    assessmentQuery->Completed([] (ApiHandle<PerformanceAssessmentAsync> res)
-    {
-        // do something with the result:
-        PerformanceAssessment result = res->GetResult();
-
-        // ...
-
+    session->Connection()->QueryServerPerformanceAssessmentAsync([](Status status, PerformanceAssessment result) {
+        if (status == Status::OK)
+        {
+            // do something with result...
+        }
     });
 }
 ```
@@ -123,28 +117,28 @@ V rozporu s `FrameStatistics` objektem `PerformanceAssessment` obsahuje objekt i
 
 | Člen | Vysvětlení |
 |:-|:-|
-| timeCPU | Průměrná doba procesoru serveru na rámec v milisekundách |
-| timeGPU | Průměrná doba GPU serveru na rámec v milisekundách |
-| utilizationCPU | Celkové využití procesoru serveru v procentech |
-| utilizationGPU | Celkové využití GPU serveru v procentech |
-| memoryCPU | Celkové využití hlavní paměti serveru v procentech |
-| memoryGPU | Celkové využití vyhrazené paměti pro video v procentech GPU serveru |
-| networkLatency | Přibližná Průměrná doba odezvy sítě v milisekundách Na ilustraci výše to odpovídá součtu červené šipky. Hodnota je vypočítána odečtením skutečného času vykreslování serveru od `latencyPoseToReceive` hodnoty `FrameStatistics` . I když tato aproximace není přesná, poskytuje určitou indikaci latence sítě, která je izolovaná od hodnot latence vypočítaných v klientovi. |
-| polygonsRendered | Počet trojúhelníků vykreslených v jednom snímku. Toto číslo zahrnuje také trojúhelníky, které byly po vygenerování později poraženy. To znamená, že toto číslo se neliší v různých polohách kamery, ale výkon se může výrazně lišit v závislosti na sazbě pro odstranení trojúhelníku.|
+| TimeCPU | Průměrná doba procesoru serveru na rámec v milisekundách |
+| TimeGPU | Průměrná doba GPU serveru na rámec v milisekundách |
+| UtilizationCPU | Celkové využití procesoru serveru v procentech |
+| UtilizationGPU | Celkové využití GPU serveru v procentech |
+| MemoryCPU | Celkové využití hlavní paměti serveru v procentech |
+| MemoryGPU | Celkové využití vyhrazené paměti pro video v procentech GPU serveru |
+| Latence sítě | Přibližná Průměrná doba odezvy sítě v milisekundách Na ilustraci výše tato hodnota odpovídá součtu červené šipky. Hodnota je vypočítána odečtením skutečného času vykreslování serveru od `LatencyPoseToReceive` hodnoty `FrameStatistics` . I když tato aproximace není přesná, poskytuje určitou indikaci latence sítě, která je izolovaná od hodnot latence vypočítaných v klientovi. |
+| PolygonsRendered | Počet trojúhelníků vykreslených v jednom snímku. Toto číslo zahrnuje také trojúhelníky, které byly po vygenerování později poraženy. To znamená, že toto číslo se neliší v různých polohách kamery, ale výkon se může výrazně lišit v závislosti na sazbě pro odstranení trojúhelníku.|
 
 Pro lepší vyhodnocení hodnot zahrnuje každá část klasifikaci kvality, jako je **Skvělé**, **dobrá**, **Mediocre** nebo **špatná**.
 Tato metrika posouzení poskytuje přibližnou indikaci stavu serveru, ale neměla by být zobrazena jako absolutní. Předpokládejme například, že se zobrazí skóre Mediocre pro čas GPU. Je považován za Mediocre, protože se blíží limitu pro celkové časové náklady v rámci rámce. V takovém případě může být nicméně dobrá hodnota, protože vykreslujete složitý model.
 
 ## <a name="statistics-debug-output"></a>Statistika ladění výstupu
 
-Třída `ARRServiceStats` je třída jazyka C#, která se zalomí kolem testů rámce a dotazů na vyhodnocení výkonu a poskytuje pohodlný funkce pro vracení statistik jako agregovaných hodnot nebo jako předem sestavený řetězec. Následující kód představuje nejjednodušší způsob, jak zobrazit statistiky na straně serveru v klientské aplikaci.
+Třída `ServiceStatistics` je třída jazyka C#, která se zalomí kolem testů rámce a dotazů na vyhodnocení výkonu a poskytuje pohodlný funkce pro vracení statistik jako agregovaných hodnot nebo jako předem sestavený řetězec. Následující kód představuje nejjednodušší způsob, jak zobrazit statistiky na straně serveru v klientské aplikaci.
 
 ```cs
-ARRServiceStats _stats = null;
+ServiceStatistics _stats = null;
 
 void OnConnect()
 {
-    _stats = new ARRServiceStats();
+    _stats = new ServiceStatistics();
 }
 
 void OnDisconnect()
@@ -169,14 +163,14 @@ Výše uvedený kód naplní textový popisek následujícím textem:
 
 ![Výstup řetězce ArrServiceStats](./media/arr-service-stats.png)
 
-`GetStatsString`Rozhraní API formátuje řetězec všech hodnot, ale každá jediná hodnota může být z instance také dotazována prostřednictvím kódu programu `ARRServiceStats` .
+`GetStatsString`Rozhraní API formátuje řetězec všech hodnot, ale každá jediná hodnota může být z instance také dotazována prostřednictvím kódu programu `ServiceStatistics` .
 
 Existují také varianty členů, které hodnoty agreguje v průběhu času. Viz členy s příponou `*Avg` , `*Max` nebo `*Total` . Člen indikuje, kolik `FramesUsedForAverage` snímků bylo pro tuto agregaci použito.
 
 ## <a name="api-documentation"></a>Dokumentace k rozhraní API
 
-* [C# RemoteManager. QueryServerPerformanceAssessmentAsync ()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.queryserverperformanceassessmentasync)
-* [C++ RemoteManager:: QueryServerPerformanceAssessmentAsync ()](/cpp/api/remote-rendering/remotemanager#queryserverperformanceassessmentasync)
+* [C# RenderingConnection. QueryServerPerformanceAssessmentAsync ()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.queryserverperformanceassessmentasync)
+* [C++ RenderingConnection:: QueryServerPerformanceAssessmentAsync ()](/cpp/api/remote-rendering/renderingconnection#queryserverperformanceassessmentasync)
 
 ## <a name="next-steps"></a>Další kroky
 

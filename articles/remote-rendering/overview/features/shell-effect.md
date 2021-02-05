@@ -6,12 +6,12 @@ ms.author: jumeder
 ms.date: 10/23/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f59c4f8225d31b61df08f30863c8b9300e20e820
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 7af95cba807cea340438a7de30f096758d0369ad
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447619"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594159"
 ---
 # <a name="shell-rendering"></a>Vykreslování prostředí
 
@@ -23,14 +23,14 @@ Můžete nakonfigurovat vzhled objektů vykreslených pomocí prostředí prost�
 
 Třída `ShellRenderingSettings` obsahuje nastavení týkající se vlastností globálního vykreslování prostředí:
 
-| Parametr      | Typ    | Popis                                             |
+| Parametr      | Typ    | Description                                             |
 |----------------|---------|---------------------------------------------------------|
 | `Desaturation` | float   | Velikost desytosti, která se má použít na obvyklou konečnou barvu objektu, v rozsahu 0 (bez sytosti) do 1 (úplné desytost) |
 | `Opacity`      | float   | Neprůhlednost objektů vykreslených prostředím v rozsahu 0 (neviditelné) až 1 (zcela neprůhledné) |
 
 Příklady efektů parametrů při použití na celou scénu najdete v následující tabulce:
 
-|                | 0 | 0,25 | 0,5 | 0,75 | 1,0 | 
+|                | 0 | 0,25 | 0,5 | 0,75 | 1.0 | 
 |----------------|:-:|:----:|:---:|:----:|:---:|
 | **Desytost** | ![Desytost – 0,0](./media/shell-desaturation-00.png) | ![Desytost – 0,25](./media/shell-desaturation-025.png) | ![Desytost – 0,5](./media/shell-desaturation-05.png) | ![Desytost – 0,75](./media/shell-desaturation-075.png) | ![Desytost – 1,0](./media/shell-desaturation-10.png) |
 | **Určující**      | ![Krytí – 0,0](./media/shell-opacity-00.png) | ![Krytí – 0,25](./media/shell-opacity-025.png) | ![Krytí – 0,5](./media/shell-opacity-05.png) | ![Krytí – 0,75](./media/shell-opacity-075.png) | ![Krytí – 1,0](./media/shell-opacity-10.png) |
@@ -42,18 +42,18 @@ Efekt prostředí se aplikuje na konečnou neprůhlednou barvu, na kterou se sc�
 Následující kód ukazuje příklad použití `ShellRenderingSettings` stavu prostřednictvím rozhraní API:
 
 ```cs
-void SetShellSettings(AzureSession session)
+void SetShellSettings(RenderingSession session)
 {
-    ShellRenderingSettings shellRenderingSettings = session.Actions.ShellRenderingSettings;
+    ShellRenderingSettings shellRenderingSettings = session.Connection.ShellRenderingSettings;
     shellRenderingSettings.Desaturation = 0.5f;
     shellRenderingSettings.Opacity = 0.1f;
 }
 ```
 
 ```cpp
-void SetShellSettings(ApiHandle<AzureSession> session)
+void SetShellSettings(ApiHandle<RenderingSession> session)
 {
-    ApiHandle<ShellRenderingSettings> shellRenderingSettings = session->Actions()->GetShellRenderingSettings();
+    ApiHandle<ShellRenderingSettings> shellRenderingSettings = session->Connection()->GetShellRenderingSettings();
     shellRenderingSettings->SetDesaturation(0.5f);
     shellRenderingSettings->SetOpacity(0.1f);
 }

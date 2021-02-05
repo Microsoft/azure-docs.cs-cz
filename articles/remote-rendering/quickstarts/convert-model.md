@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: b2a15bcc9d9dce922470031fd07b66cf9899f0b3
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c9b5d525954e7f0742cd13fe4d64a73df64ea854
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281358"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594463"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>Rychlý start: Převod modelu pro vykreslování
 
@@ -24,7 +24,7 @@ Dozvíte se, jak provést tyto akce:
 > * Nahrání a převod 3D model pro použití s Azure Remote rendering
 > * Zahrnout převedený 3D model v aplikaci pro vykreslování
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Kompletní [rychlé zprovoznění: vykreslení modelu pomocí Unity](render-model.md)
 * Pro převod pomocí skriptu PowerShellu nainstalujte Azure PowerShell [(dokumentace)](/powershell/azure/) .
@@ -70,7 +70,7 @@ Po kliknutí na toto tlačítko se zobrazí následující obrazovka s vlastnost
 Vyplňte formulář následujícím způsobem:
 
 * Na odkaz pod rozevíracím seznamem vytvořte novou skupinu prostředků a pojmenujte ji **ARR_Tutorial**
-* Do pole **název účtu úložiště**zadejte jedinečný název. **Tento název musí být globálně jedinečný**. v opačném případě se zobrazí výzva s dotazem, že název je již obsazen. V rámci tohoto rychlého startu pojmenujte IT **arrtutorialstorage**. V tomto rychlém startu je tedy budete muset nahradit vaším jménem pro všechny výskyty.
+* Do pole **název účtu úložiště** zadejte jedinečný název. **Tento název musí být globálně jedinečný**. v opačném případě se zobrazí výzva s dotazem, že název je již obsazen. V rámci tohoto rychlého startu pojmenujte IT **arrtutorialstorage**. V tomto rychlém startu je tedy budete muset nahradit vaším jménem pro všechny výskyty.
 * Vyberte **umístění** , které je blízko vás. V ideálním případě používejte stejné umístění, které se používá k nastavení vykreslování v druhém rychlém startu.
 * **Výkon** je nastavený na standardní.
 * **Typ účtu** je nastavený na StorageV2 (obecné účely v2).
@@ -155,7 +155,7 @@ Skript načte svou konfiguraci ze souboru *Scripts\arrconfig.jsv*. Otevřete ten
 
 Konfigurace v rámci skupiny **accountSettings** (ID účtu a klíč) by měla být vyplněna analogkou k přihlašovacím údajům v [modelu vykreslit model pomocí služby Unity pro rychlý Start](render-model.md).
 
-Ve skupině **assetConversionSettings** se ujistěte, že měníte skupinu **Resources**, **blobInputContainerName**a **blobOutputContainerName** , jak vidíte výše.
+Ve skupině **assetConversionSettings** se ujistěte, že měníte skupinu **Resources**, **blobInputContainerName** a **blobOutputContainerName** , jak vidíte výše.
 Všimněte si, že hodnota **arrtutorialstorage** musí být nahrazena jedinečným názvem, který jste vybrali během vytváření účtu úložiště.
 
 Změňte **localAssetDirectoryPath** tak, aby odkazoval na adresář na disku, který obsahuje model, který chcete převést. Pozor na správné řídicí lomítka (" \\ ") v cestě pomocí dvojitých zpětných lomítek (" \\ \\ ").
@@ -188,8 +188,8 @@ Mělo by se zobrazit něco podobného: ![Conversion.ps1](./media/successful-conv
 ### <a name="3-conversion-via-api-calls"></a>3. převod prostřednictvím volání rozhraní API
 
 Jazyk C# i rozhraní API pro C++ poskytují vstupní bod pro interakci se službou:
-* [C# AzureFrontend. StartAssetConversionAsync ()](/dotnet/api/microsoft.azure.remoterendering.azurefrontend.startassetconversionasync)
-* [C++ AzureFrontend:: StartAssetConversionAsync ()](/cpp/api/remote-rendering/azurefrontend#startassetconversionasync)
+* [C# RemoteRenderingClient. StartAssetConversionAsync ()](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient.startassetconversionasync)
+* [C++ RemoteRenderingClient:: StartAssetConversionAsync ()](/cpp/api/remote-rendering/remoterenderingclient#startassetconversionasync)
 
 
 ## <a name="insert-new-model-into-quickstart-sample-app"></a>Vložení nového modelu do ukázkové aplikace pro rychlé zprovoznění
@@ -207,7 +207,7 @@ Identifikátor URI SAS vytvořený skriptem pro převod bude platný pouze 24 ho
 1. Přejděte na web [Azure Portal](https://www.portal.azure.com).
 1. Klikněte na prostředek **účtu úložiště** : ![ snímek obrazovky, který zvýrazní vybraný prostředek účtu úložiště.](./media/portal-storage-accounts.png)
 1. Na následující obrazovce klikněte na Průzkumník služby **Storage** na levém panelu a v kontejneru úložiště objektů BLOB *arroutput* Najděte svůj výstupní model (soubor *. arrAsset* ). Klikněte pravým tlačítkem na soubor a v místní nabídce vyberte **získat sdílený přístupový podpis** : ![ přístup k podpisu](./media/portal-storage-explorer.png)
-1. Otevře se nová obrazovka, kde můžete vybrat datum vypršení platnosti. Stiskněte **vytvořit**a zkopírujte identifikátor URI, který je zobrazen v následujícím dialogovém okně. Tento nový identifikátor URI nahrazuje dočasný identifikátor URI, který skript vytvořil.
+1. Otevře se nová obrazovka, kde můžete vybrat datum vypršení platnosti. Stiskněte **vytvořit** a zkopírujte identifikátor URI, který je zobrazen v následujícím dialogovém okně. Tento nový identifikátor URI nahrazuje dočasný identifikátor URI, který skript vytvořil.
 
 ## <a name="next-steps"></a>Další kroky
 

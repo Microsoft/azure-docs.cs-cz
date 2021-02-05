@@ -1,5 +1,5 @@
 ---
-title: Příchozí synchronizace pro cloudovou synchronizaci pomocí MS Graph API
+title: Jak programově nakonfigurovat synchronizaci cloudu pomocí MS Graph API
 description: Toto téma popisuje, jak povolit příchozí synchronizaci jenom pomocí Graph API
 services: active-directory
 author: billmath
@@ -11,14 +11,14 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3796b3d86f647e38cf2ff018e8c0c903d9a64e41
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6c84636ea86b3b640aef365c1c5d8e634b9a1f48
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682034"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593156"
 ---
-# <a name="inbound-synchronization-for-cloud-sync-using-ms-graph-api"></a>Příchozí synchronizace pro cloudovou synchronizaci pomocí MS Graph API
+# <a name="how-to-programmatically-configure-cloud-sync-using-ms-graph-api"></a>Jak programově nakonfigurovat synchronizaci cloudu pomocí MS Graph API
 
 Následující dokument popisuje, jak replikovat synchronizační profil od začátku pomocí pouze rozhraní MSGraph API.  
 Struktura toho, jak se to provede, se skládá z následujících kroků.  Jsou to tyto:
@@ -28,6 +28,7 @@ Struktura toho, jak se to provede, se skládá z následujících kroků.  Jsou 
 - [Vytvořit úlohu synchronizace](#create-sync-job)
 - [Aktualizovat cílovou doménu](#update-targeted-domain)
 - [Povolit synchronizaci hodnot hash hesel](#enable-sync-password-hashes-on-configuration-blade)
+- [Náhodné odstranění](#accidental-deletes)
 - [Spustit úlohu synchronizace](#start-sync-job)
 - [Stav kontroly](#review-status)
 
@@ -210,6 +211,71 @@ Tady je zvýrazněná hodnota "doména" je název místní domény služby Activ
 ```
 
  Přidejte schéma do textu žádosti. 
+
+## <a name="accidental-deletes"></a>Náhodné odstranění
+V této části se dozvíte, jak programově povolit/zakázat a použít [náhodné odstranění](how-to-accidental-deletes.md) prostřednictvím kódu programu.
+
+
+### <a name="enabling-and-setting-the-threshold"></a>Povolení a nastavení prahové hodnoty
+Existují dvě nastavení pro úlohy, která můžete použít:
+
+ - DeleteThresholdEnabled – povolí pro úlohu náhodné odstranění při nastavení na hodnotu true. Ve výchozím nastavení nastavte na hodnotu true.
+ - DeleteThresholdValue – definuje maximální počet odstranění, který bude při každém spuštění úlohy povolený, když je povolená náhodná odstraňování prevence. Hodnota je ve výchozím nastavení nastavená na 500.  Pokud je tedy hodnota nastavena na 500, maximální povolený počet odstranění bude 499 při každém spuštění.
+
+Nastavení prahové hodnoty pro odstranění jsou součástí `SyncNotificationSettings` a lze upravit pomocí grafu. 
+
+Budeme muset aktualizovat SyncNotificationSettings, že je tato konfigurace cílena, aby se aktualizace tajných kódů aktualizovala.
+
+ ```
+ PUT – https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/secrets
+ ```
+
+ Přidejte následující dvojici klíč/hodnota do pole níže v závislosti na tom, co se pokoušíte provést:
+
+```
+ Request body -
+ {
+   "value":[
+             {
+               "key":"SyncNotificationSettings",
+               "value": "{\"Enabled\":true,\"Recipients\":\"foobar@xyz.com\",\"DeleteThresholdEnabled\":true,\"DeleteThresholdValue\":50}"
+              }
+            ]
+  }
+
+
+```
+
+Nastavení povoleno v předchozím příkladu slouží k povolení nebo zakázání e-mailů s oznámením v případě, že je úloha v karanténě.
+
+
+V současné době nepodporujeme žádosti o opravy tajných kódů, takže budete muset přidat všechny hodnoty v těle požadavku PUT (jako v předchozím příkladu), aby se zachovaly další hodnoty.
+
+Existující hodnoty všech tajných kódů lze načíst pomocí 
+
+```
+GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secrets 
+```
+
+### <a name="allowing-deletes"></a>Povolení odstranění
+Pokud chcete, aby se odstranění procházela po přechodu úlohy do karantény, musíte vydat restart, který bude mít jako obor jenom "ForceDeletes". 
+
+```
+Request:
+POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/restart
+```
+
+```
+Request Body:
+{
+  "criteria": {"resetScope": "ForceDeletes"}
+}
+```
+
+
+
+
+
 
 ## <a name="start-sync-job"></a>Spustit úlohu synchronizace
 Úlohu lze znovu načíst pomocí následujícího příkazu:

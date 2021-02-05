@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2021
 ms.author: allensu
-ms.openlocfilehash: 7f2525b89f03e8bc1a2c3166b46c40b4dbb6ff17
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 22d7af4f307a99d2d2e29bc1f494d327394e4f10
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99562007"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594278"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Konfigurace režimu distribuce pro Azure Load Balancer
 
@@ -46,8 +46,8 @@ Konfiguraci režimu distribuce můžete změnit úpravou pravidla vyrovnávání
 Dostupné jsou tyto možnosti: 
 
 * **Žádný (založený na hodnotě hash)** – určuje, že úspěšné požadavky ze stejného klienta můžou být zpracovávány jakýmkoli virtuálním počítačem.
-* **IP adresa klienta (spřažení zdrojové IP adresy 2 – řazená kolekce členů)** – určuje, že úspěšné požadavky ze stejné IP adresy klienta budou zpracovávány stejným virtuálním počítačem.
-* **IP adresa klienta a protokol (přidružení zdrojové IP adresy 3 – řazená kolekce členů)** – určuje, že po jednom virtuálním počítači bude zpracována úspěšná žádost ze stejné kombinace IP adresy klienta a protokolu.
+* **IP adresa klienta (vztah zdrojové IP adresy – kořazená kolekce členů)** – určuje, že úspěšné požadavky ze stejné IP adresy klienta budou zpracovávány stejným virtuálním počítačem.
+* **IP adresa klienta a protokol (přidružení zdrojové IP adresy – tři – řazená kolekce členů)** – určuje, že na stejném virtuálním počítači bude zpracována následná žádost ze stejné kombinace IP adresy klienta a protokolu.
 
 5. Zvolte režim distribuce a potom vyberte **Uložit**.
 
@@ -66,13 +66,36 @@ $lb.LoadBalancingRules[0].LoadDistribution = 'sourceIp'
 Set-AzLoadBalancer -LoadBalancer $lb
 ```
 
-Nastavte hodnotu `LoadDistribution` prvku pro požadovanou velikost vyrovnávání zatížení. 
+Nastavte hodnotu `LoadDistribution` elementu pro typ vyrovnávání zatížení, který je povinný. 
 
-Zadejte **sourceIP** pro vyrovnávání zatížení se dvěma řazenými kolekcemi členů (zdrojová IP adresa a cílová IP adresa). 
+* Zadejte **SourceIP** pro vyrovnávání zatížení se dvěma řazenými kolekcemi členů (zdrojová IP adresa a cílová IP adresa). 
 
-Pro vyrovnávání zatížení zadejte **sourceIPProtocol** pro tři řazené kolekce členů (zdrojová adresa IP, cílová IP adresa a typ protokolu). 
+* Pro vyrovnávání zatížení zadejte **SourceIPProtocol** pro tři řazené kolekce členů (zdrojová adresa IP, cílová IP adresa a typ protokolu). 
 
-Zadejte **výchozí** hodnotu pro výchozí chování pro vyrovnávání zatížení s pěti řazenými kolekcemi členů.
+* Zadejte **výchozí** hodnotu pro výchozí chování pro vyrovnávání zatížení s pěti řazenými kolekcemi členů.
+
+# <a name="cli"></a>[**CLI**](#tab/azure-cli)
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+Pomocí Azure CLI změňte nastavení distribuce nástroje pro vyrovnávání zatížení pro existující pravidlo vyrovnávání zatížení.  Následující příkaz aktualizuje distribuční režim:
+
+```azurecli-interactive
+az network lb rule update \
+    --lb-name myLoadBalancer \
+    --load-distribution SourceIP \
+    --name myHTTPRule \
+    --resource-group myResourceGroupLB 
+```
+Nastavte hodnotu `--load-distribution` pro typ vyrovnávání zatížení, který je povinný.
+
+* Zadejte **SourceIP** pro vyrovnávání zatížení se dvěma řazenými kolekcemi členů (zdrojová IP adresa a cílová IP adresa). 
+
+* Pro vyrovnávání zatížení zadejte **SourceIPProtocol** pro tři řazené kolekce členů (zdrojová adresa IP, cílová IP adresa a typ protokolu). 
+
+* Zadejte **výchozí** hodnotu pro výchozí chování pro vyrovnávání zatížení s pěti řazenými kolekcemi členů.
+
+Další informace o příkazu, který se používá v tomto článku, najdete v tématu [AZ Network Rule Update](/cli/azure/network/lb/rule#az_network_lb_rule_update) .
 
 ---
 

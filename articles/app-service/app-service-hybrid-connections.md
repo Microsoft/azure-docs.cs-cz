@@ -4,15 +4,15 @@ description: Naučte se vytvářet a používat hybridní připojení v Azure Ap
 author: ccompy
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
-ms.date: 02/04/2020
+ms.date: 02/05/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 20bdeef0a45bb02fab8841c0dd8ec7755143c693
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1b3fc4a254c1157f2c2336e6360ba7621f31364d
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575987"
+ms.locfileid: "99594227"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Hybridní připojení Azure App Service
 
@@ -201,13 +201,20 @@ Kdokoli, kdo má `Reader` přístup k Relay, uvidí hybridní  připojení při 
 
 ## <a name="troubleshooting"></a>Řešení potíží ##
 
-Stav "připojeno" znamená, že minimálně jeden HCM je nakonfigurován s tímto hybridním připojením a je schopný získat přístup k Azure. Pokud stav hybridního připojení nefunguje **, vaše** hybridní připojení není nakonfigurované na žádném HCM, které má přístup k Azure.
+Stav "připojeno" znamená, že minimálně jeden HCM je nakonfigurován s tímto hybridním připojením a je schopný získat přístup k Azure. Pokud stav hybridního připojení nefunguje **, vaše** hybridní připojení není nakonfigurované na žádném HCM, které má přístup k Azure. Když se HCM ukáže jako **Nepřipojeno** , je třeba kontrolovat několik věcí:
 
-Primárním důvodem, proč se klienti nemohou připojit ke svému koncovému bodu, je, že koncový bod byl zadán pomocí IP adresy místo názvu DNS. Pokud vaše aplikace nemůže získat přístup k požadovanému koncovému bodu a použili jste IP adresu, přepněte se na použití názvu DNS, který je platný na hostiteli, kde je spuštěný HCM. Také ověřte, že se název DNS správně překládá na hostiteli, kde je spuštěný HCM. Potvrďte, že existuje připojení z hostitele, kde HCM běží na koncovém bodu hybridního připojení.  
+* Má váš hostitel odchozí přístup k Azure na portu 443? Z hostitele HCM můžete testovat pomocí příkazu PowerShellu *test-NetConnection Destination-P* . 
+* Je váš HCM potenciálně ve špatném stavu? Zkuste restartovat místní službu Azure Správce hybridního připojení Service.
+
+Pokud se stav **připojí** , ale vaše aplikace nemůže kontaktovat Váš koncový bod, pak:
+
+* Ujistěte se, že používáte název DNS v hybridním připojení. Pokud použijete IP adresu, nemusí se vyžadovaná služba vyhledávání DNS klienta vyskytnout. Pokud klient běžící ve vaší webové aplikaci neprovede vyhledávání DNS, hybridní připojení nebude fungovat.
+* Ověřte, že se název DNS použitý v hybridním připojení může přeložit z hostitele HCM. Ověřte rozlišení pomocí *příkazu nslookup EndpointDNSname* , kde EndpointDNSname je přesná shoda s tím, co se používá v definici hybridního připojení.
+* Otestujte přístup z hostitele HCM do svého koncového bodu pomocí příkazu PowerShellu *test-NetConnection EndpointDNSname-P*  . Pokud se nemůžete spojit s koncovým bodem z hostitele HCM, zkontrolujte brány firewall mezi dvěma hostiteli, včetně všech bran firewall založených na hostiteli na cílovém hostiteli.
 
 V App Service lze nástroj příkazového řádku **tcpping** vyvolat z konzoly Advanced Tools (Kudu). Tento nástroj vám může sdělit, jestli máte přístup k koncovému bodu TCP, ale nezjistí, jestli máte přístup k koncovému bodu hybridního připojení. Když použijete nástroj v konzole nástroje na koncový bod hybridního připojení, potvrzujete jenom to, že používá kombinaci hostitel: port.  
 
-Pokud pro koncový bod máte klienta příkazového řádku, můžete otestovat připojení z konzoly aplikace. Můžete například testovat přístup k koncovým bodům webového serveru pomocí oblé.
+Pokud máte u svého koncového bodu klienta příkazového řádku, můžete otestovat připojení z konzoly aplikace. Můžete například testovat přístup k koncovým bodům webového serveru pomocí oblé.
 
 
 <!--Image references-->

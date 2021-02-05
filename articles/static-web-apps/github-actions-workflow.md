@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 02/05/2021
 ms.author: cshoe
-ms.openlocfilehash: acdb635dec5abd73341cc1dda4991b58b82a18c0
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 785fd535c46b67cfd631cd18560f396a6901e5c0
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574512"
+ms.locfileid: "99593943"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Pracovní postupy akcí GitHubu pro Azure static Web Apps Preview
 
@@ -197,12 +197,13 @@ jobs:
 
 ## <a name="monorepo-support"></a>Podpora Monorepo
 
-Monorepo je úložiště, které obsahuje kód pro více než jednu aplikaci. Ve výchozím nastavení sleduje statický soubor pracovního postupu Web Apps všechny soubory v úložišti, ale můžete je upravit tak, aby se nacházela na jednu aplikaci. Proto pro monorepos má každá statická lokalita vlastní konfigurační soubor, který se nachází vedle sebe ve složce *. Git* úložiště.
+Monorepo je úložiště, které obsahuje kód pro více než jednu aplikaci. Ve výchozím nastavení sleduje statický soubor pracovního postupu Web Apps všechny soubory v úložišti, ale můžete je upravit tak, aby se nacházela na jednu aplikaci. Proto pro monorepos každá statická aplikace má vlastní konfigurační soubor, který se nachází vedle sebe ve složce *. GitHub/pracovní postupy* úložiště.
 
 ```files
-├── .git
-│   ├── azure-static-web-apps-purple-pond.yml
-│   └── azure-static-web-apps-yellow-shoe.yml
+├── .github
+│   └── workflows
+│       ├── azure-static-web-apps-purple-pond.yml
+│       └── azure-static-web-apps-yellow-shoe.yml
 │
 ├── app1  👉 controlled by: azure-static-web-apps-purple-pond.yml
 ├── app2  👉 controlled by: azure-static-web-apps-yellow-shoe.yml
@@ -210,7 +211,7 @@ Monorepo je úložiště, které obsahuje kód pro více než jednu aplikaci. Ve
 ├── api1  👉 controlled by: azure-static-web-apps-purple-pond.yml
 ├── api2  👉 controlled by: azure-static-web-apps-yellow-shoe.yml
 │
-└── readme.md
+└── README.md
 ```
 
 Chcete-li zacílit soubor pracovního postupu na jednu aplikaci, zadejte cesty `push` v `pull_request` částech a.
@@ -236,7 +237,7 @@ on:
       - .github/workflows/azure-static-web-apps-purple-pond.yml
 ```
 
-V této instanci se pro nové sestavení aktivuje jenom změny souborů, které jsou v souborech následující:
+V této instanci spustí nové sestavení pouze změny provedené v následujících souborech:
 
 - Všechny soubory ve složce *app1*
 - Všechny soubory ve složce *api1*
