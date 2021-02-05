@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 73fbda9a3356e2877617391430a7f2b555b1a0e5
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: ee9f374d110115b224c48853f26037dc461e5fa0
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063480"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583837"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Použití Microsoft Authenticator nebo Portál společnosti Intune v aplikacích Xamarin
 
@@ -91,7 +91,7 @@ Tato metoda je vyvolána při každém spuštění aplikace. Používá se jako 
 
 ### <a name="step-4-set-uiviewcontroller"></a>Krok 4: nastavte UIViewController ()
 
-Stále v souboru *AppDelegate.cs* je nutné nastavit okno objektu. Obvykle není nutné nastavovat okno objektu pro Xamarin iOS, ale k posílání a přijímání odpovědí od zprostředkovatele budete potřebovat okno objektu.
+Stále v souboru *AppDelegate.cs* nastavte okno objektu. Obvykle není nutné nastavovat okno objektu pro Xamarin iOS, ale k posílání a přijímání odpovědí od zprostředkovatele budete potřebovat okno objektu.
 
 Nastavení okna objektu:
 
@@ -237,9 +237,9 @@ result = await app.AcquireTokenInteractive(scopes)
 
 ### <a name="step-4-add-a-redirect-uri-to-your-app-registration"></a>Krok 4: Přidání identifikátoru URI přesměrování k registraci vaší aplikace
 
-MSAL používá adresy URL pro vyvolání zprostředkovatele a pak se vrátí do vaší aplikace. K dokončení této operace odezvy je potřeba pro vaši aplikaci zaregistrovat **identifikátor URI přesměrování** pomocí [Azure Portal](https://portal.azure.com).
+MSAL používá adresy URL pro vyvolání zprostředkovatele a pak se vrátí do vaší aplikace. K dokončení této operace odezvy Zaregistrujte **identifikátor URI pro přesměrování** vaší aplikace pomocí [Azure Portal](https://portal.azure.com).
 
-Formát identifikátoru URI přesměrování vaší aplikace závisí na certifikátu použitém k podepsání APK. Například:
+Formát identifikátoru URI přesměrování vaší aplikace závisí na certifikátu použitém k podepsání APK. Příklad:
 
 ```
 msauth://com.microsoft.xforms.testApp/hgbUYHVBYUTvuvT&Y6tr554365466=

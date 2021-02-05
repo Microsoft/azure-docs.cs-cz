@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a4d29dfb2a57dde2bb21244b2e5335f1a8ea1fcf
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: e5a131753829edddbb4f385766a2d8697ebd0106
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947331"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584598"
 ---
 > [!IMPORTANT]
 > * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Další informace najdete v referenční dokumentaci níže. 
@@ -81,15 +81,15 @@ Pomocí nástroje pro rozpoznávání formulářů můžete vytvořit dva různ�
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
 `FormRecognizerClient` poskytuje operace pro:
 
- * Rozpoznávání polí formuláře a obsahu pomocí vlastních modelů vyškolených pro rozpoznávání vlastních formulářů. Tyto hodnoty jsou vráceny v kolekci `RecognizedForm` objektů.
+ * Rozpoznávání polí formuláře a obsahu pomocí vlastních modelů, které jsou vyškolené k analýze vlastních formulářů. Tyto hodnoty jsou vráceny v kolekci `RecognizedForm` objektů.
  * Rozpoznávání obsahu formuláře, včetně tabulek, řádků a slov, bez nutnosti vyškolit model. Obsah formuláře se vrátí v kolekci `FormPage` objektů.
  * Rozpoznávání společných polí z příjmů pomocí předem připraveného modelu příjmu ve službě rozpoznávání formulářů. Tato pole a meta data jsou vrácena v kolekci `RecognizedReceipt` .
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 `FormTrainingClient` poskytuje operace pro:
 
-* Školením vlastních modelů můžete rozpoznat všechna pole a hodnoty nalezené ve vlastních formulářích. `CustomFormModel`Je vrácena indikace typu formuláře, který model rozpozná, a pole, která se budou extrahovat pro každý typ formuláře. Podrobnější vysvětlení vytváření školicích dat najdete v [dokumentaci ke službě školení k neoznačenému modelu](#train-a-model-without-labels) .
-* Školením vlastních modelů můžete rozpoznat konkrétní pole a hodnoty, které určíte tak, že označíte vlastní formuláře. `CustomFormModel`Vrátí se typ označující pole, která model vyextrahuje, a také odhadovanou přesnost pro každé pole. Podrobnější vysvětlení použití popisků pro školicí sadu dat najdete v [dokumentaci ke službě s popsaným školením modelu](#train-a-model-with-labels) .
+* Školením vlastních modelů můžete analyzovat všechna pole a hodnoty nalezené ve vlastních formulářích. `CustomFormModel`Je vrácena zpráva oznamující typy formulářů, které bude model analyzovat, a pole, která se budou extrahovat pro každý typ formuláře. Podrobnější vysvětlení vytváření školicích dat najdete v [dokumentaci ke službě školení k neoznačenému modelu](#train-a-model-without-labels) .
+* Školením vlastních modelů můžete analyzovat konkrétní pole a hodnoty, které určíte tak, že označíte vlastní formuláře. `CustomFormModel`Vrátí se typ označující pole, která model vyextrahuje, a také odhadovanou přesnost pro každé pole. Podrobnější vysvětlení použití popisků pro školicí sadu dat najdete v [dokumentaci ke službě s popsaným školením modelu](#train-a-model-with-labels) .
 * Správa modelů vytvořených ve vašem účtu.
 * Zkopírování vlastního modelu z jednoho prostředku na rozpoznávání formulářů do jiného.
 
@@ -128,7 +128,7 @@ Také budete muset přidat odkazy na adresy URL pro školení a testování dat.
 
 ## <a name="analyze-layout"></a>Analyzovat rozložení
 
-Nástroj pro rozpoznávání formulářů můžete použít k rozpoznávání tabulek, řádků a slov v dokumentech, aniž byste museli proškolit model. Pro rozpoznání obsahu souboru v daném identifikátoru URI použijte `beginRecognizeContentFromUrl` metodu.
+Nástroj pro rozpoznávání formulářů můžete použít k analýze tabulek, řádků a slov v dokumentech, aniž byste museli proškolit model. Další informace o extrakci rozložení najdete v [koncepční příručce pro rozložení](../../concept-layout.md). Chcete-li analyzovat obsah souboru v daném identifikátoru URI, použijte `beginRecognizeContentFromUrl` metodu.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_getcontent)]
 
@@ -152,31 +152,7 @@ cell [1,3] has text $56,651.49
 cell [1,5] has text PT
 ```
 
-## <a name="analyze-receipts"></a>Analyzovat účtenky
 
-V této části se dozvíte, jak rozpoznat a extrahovat společná pole z příjmů z USA pomocí předem připraveného modelu příjemů.
-
-Chcete-li rozpoznat potvrzení z identifikátoru URI, použijte `beginRecognizeReceiptsFromUrl` metodu. Následující kód zpracuje příjem na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
-
-> [!TIP]
-> Můžete také rozpoznat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) , jako je například **beginRecognizeReceipts**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) , kde najdete scénáře týkající se místních imagí.
-
-### <a name="output"></a>Výstup
-
-```console
-status: notStarted
-status: running
-status: succeeded
-First receipt:
-  Receipt Type: 'Itemized', with confidence of 0.659
-  Merchant Name: 'Contoso Contoso', with confidence of 0.516
-  Transaction Date: 'Sun Jun 09 2019 17:00:00 GMT-0700 (Pacific Daylight Time)', with confidence of 0.985
-    Item Name: '8GB RAM (Black)', with confidence of 0.916
-    Item Name: 'SurfacePen', with confidence of 0.858
-  Total: '1203.39', with confidence of 0.774
-```
 
 ## <a name="train-a-custom-model"></a>Trénování vlastního modelu
 
@@ -187,7 +163,7 @@ Tato část ukazuje, jak vytvořit model s vlastními daty. Vycvičený model m�
 
 ### <a name="train-a-model-without-labels"></a>Výuka modelu bez popisků
 
-Výukové vlastní modely vám umožní rozpoznat všechna pole a hodnoty nalezené ve vlastních formulářích bez ručního označení školicích dokumentů.
+Výukové vlastní modely vám umožní analyzovat všechna pole a hodnoty nalezené ve vlastních formulářích bez ručního označení školicích dokumentů.
 
 Následující funkce naplňuje model v dané sadě dokumentů a vytiskne stav modelu do konzoly. 
 
@@ -320,6 +296,32 @@ Field Signature has value 'undefined' with a confidence score of undefined
 Field Subtotal has value 'undefined' with a confidence score of undefined
 Field Tax has value 'undefined' with a confidence score of undefined
 Field Total has value 'undefined' with a confidence score of undefined
+```
+
+## <a name="analyze-receipts"></a>Analyzovat účtenky
+
+V této části se dozvíte, jak pomocí předem připraveného příjmového modelu analyzovat a extrahovat běžná pole z příjmů spojených s námi. Další informace o analýze příjmů najdete v [koncepční příručce pro příjem](../../concept-receipts.md).
+
+K analýze potvrzení z identifikátoru URI použijte `beginRecognizeReceiptsFromUrl` metodu. Následující kód zpracuje příjem na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
+
+> [!TIP]
+> Můžete také analyzovat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) , jako je například **beginRecognizeReceipts**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) , kde najdete scénáře týkající se místních imagí.
+
+### <a name="output"></a>Výstup
+
+```console
+status: notStarted
+status: running
+status: succeeded
+First receipt:
+  Receipt Type: 'Itemized', with confidence of 0.659
+  Merchant Name: 'Contoso Contoso', with confidence of 0.516
+  Transaction Date: 'Sun Jun 09 2019 17:00:00 GMT-0700 (Pacific Daylight Time)', with confidence of 0.985
+    Item Name: '8GB RAM (Black)', with confidence of 0.916
+    Item Name: 'SurfacePen', with confidence of 0.858
+  Total: '1203.39', with confidence of 0.774
 ```
 
 ## <a name="manage-your-custom-models"></a>Správa vlastních modelů

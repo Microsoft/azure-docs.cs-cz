@@ -5,14 +5,14 @@ author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 02/04/2021
 ms.author: makromer
-ms.openlocfilehash: e3152f1dff4a80ce3ae8bd121215ceb2595b9ee2
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: a08457ba041fa39fda367976498a4a89930c56e3
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854000"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585156"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Formát modelu Common data model v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,7 +35,7 @@ V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem CDM. Tyto
 | Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Formát | Formát musí být `cdm` | ano | `cdm` | formát |
-| Formát metadat | Kde se nachází odkaz na entitu na data. Pokud používáte CDM verze 1,0, vyberte manifest. Pokud používáte verzi CDM před 1,0, vyberte model.jszapnuto. | Ano | `'manifest'` nebo `'model'` | manifestType |
+| Formát metadat | Kde se nachází odkaz na entitu na data. Pokud používáte CDM verze 1,0, vyberte manifest. Pokud používáte verzi CDM před 1,0, vyberte model.jszapnuto. | Yes | `'manifest'` nebo `'model'` | manifestType |
 | Kořen umístění: kontejner | Název kontejneru složky CDM | ano | Řetězec | Systému souborů |
 | Kořenové umístění: cesta ke složce | Umístění kořenové složky složky CDM | ano | Řetězec | folderPath |
 | Soubor manifestu: cesta k entitě | Cesta ke složce entity v kořenové složce | ne | Řetězec | entityPath |
@@ -85,6 +85,7 @@ Při mapování sloupců toku dat na vlastnosti entity v transformaci jímky kli
 2. Najděte oddíly. Location – vlastnost 
 3. Změňte "blob.core.windows.net" na "dfs.core.windows.net"
 4. Opravte jakékoli kódování "% 2F" v adrese URL na "/".
+5. Při použití datových toků ADF je potřeba, aby se speciální znaky v cestě k souboru oddílu nahradily pomocí alfanumerických hodnot nebo přepnuly na toky dat synapse.
 
 ### <a name="cdm-source-data-flow-script-example"></a>Příklad skriptu zdrojového toku dat CDM
 

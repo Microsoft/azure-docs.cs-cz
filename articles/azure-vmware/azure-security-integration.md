@@ -2,13 +2,13 @@
 title: Chraňte své virtuální počítače s řešeními VMware Azure pomocí Integrace Azure Security Center
 description: Seznamte se s postupem ochrany virtuálních počítačů řešení Azure VMware pomocí nativních nástrojů zabezpečení Azure z jednoho řídicího panelu v Azure Security Center.
 ms.topic: how-to
-ms.date: 11/06/2020
-ms.openlocfilehash: 66270c5abef48f9d9f30ed1b262a6b4f2f8144c8
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/04/2021
+ms.openlocfilehash: 58cfa1e8e7faa56675d966f86d3b390e52acec27
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99061460"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584953"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Chraňte své virtuální počítače s řešeními VMware Azure pomocí Integrace Azure Security Center
 
@@ -36,7 +36,12 @@ V pracovním prostoru Log Analytics můžete nakonfigurovat Azure Sentinel pro d
 
 - Nativní služby Azure je možné použít pro zabezpečení hybridního prostředí v Azure, řešení Azure VMware a místních služeb.
 - Pomocí Log Analytics pracovního prostoru můžete shromažďovat data nebo protokoly do jednoho bodu a prezentovat stejná data pro různé nativní služby Azure.
-- Azure Security Center poskytuje funkce zabezpečení, jako je monitorování integrity souborů, detekce útoků bez souborů, vyhodnocení opravy operačního systému, vyhodnocení chyb zabezpečení a hodnocení služby Endpoint Protection.
+- Azure Security Center nabízí řadu funkcí, včetně:
+    - Monitorování integrity souborů
+    - Detekce útoků typu soubor
+    - Posouzení opravy operačního systému 
+    - Vyhodnocení nezabezpečených konfigurací zabezpečení
+    - Posouzení služby Endpoint Protection
 - Sentinel Azure umožňuje:
     - Shromažďovat data v cloudovém měřítku napříč všemi uživateli, zařízeními, aplikacemi a infrastrukturou, a to místně i v několika cloudech.
     - Zjistí dříve nezjištěné hrozby.
@@ -78,7 +83,7 @@ Azure Defender rozšiřuje pokročilou ochranu před internetovými útoky v Azu
 5. Na kartě **Podrobnosti o prostředku** vyplňte následující podrobnosti: 
     - Předplatné
     - Skupina prostředků
-    - Region (Oblast) 
+    - Oblast 
     - Operační systém
     - Podrobnosti proxy serveru
     
@@ -183,7 +188,7 @@ Po připojení zdrojů dat ke službě Azure Sentinel můžete vytvořit pravidl
 
 6. Na kartě **Nastavení incidentu** povolit možnost **vytvořit incidenty z výstrah aktivovaných pomocí tohoto pravidla analýzy** a vybrat **Další: Automatická odpověď >**.
  
-    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="Snímek obrazovky průvodce analytickým pravidlem pro vytvoření nového pravidla ve službě Azure Sentinel ukazující vytvoření incidentů z výstrah aktivovaných pomocí tohoto pravidla analýzy, které je povoleno.":::
+    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="Snímek obrazovky průvodce analytickým pravidlem pro vytvoření nového pravidla v Sentinel Azure Zobrazuje události vytvoření incidentů z výstrah aktivovaných tímto pravidlem, které je povoleno.":::
 
 7. Vyberte **Další: zkontrolujte >**.
 
@@ -235,6 +240,8 @@ Můžete vytvářet dotazy nebo používat dostupný předem definovaný dotaz v
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se používat [řídicí panel Azure Defender](../security-center/azure-defender-dashboard.md).
-- Prozkoumejte celou škálu ochrany, kterou nabízí [Azure Defender](../security-center/azure-defender.md).
-- Seznamte [se s pokročilým zjišťováním útoků s více fázemi v Azure Sentinel](../azure-monitor/learn/quick-create-workspace.md).
+Teď, když jste se seznámili s postupem ochrany vašich virtuálních počítačů s Azure VMware, se můžete seznámit s těmito řešeními:
+
+- Pomocí [řídicího panelu Azure Defenderu](../security-center/azure-defender-dashboard.md).
+- [Pokročilá detekce útoků s více fázemi v Azure Sentinel](../azure-monitor/learn/quick-create-workspace.md).
+- [Správa životního cyklu virtuálních počítačů řešení Azure VMware](lifecycle-management-of-azure-vmware-solution-vms.md).

@@ -12,27 +12,22 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c7abad31c9936729b8d9c19ed2efcb841ac103ca
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: e4a47112d2f66edc8af9b7f100d48bc205f2e85e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756242"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584293"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>Webová aplikace, která přihlašuje uživatele: Přesun do produkčního prostředí
 
-Když teď víte, jak získat token pro volání webových rozhraní API, přečtěte si, jak ho přesunout do produkčního prostředí.
+Teď, když víte, jak získat token pro volání webových rozhraní API, je zde několik věcí, které je potřeba vzít v úvahu při přesunu aplikace do produkčního prostředí.
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="troubleshooting"></a>Odstraňování potíží
-
-> [!NOTE]
-> Když se uživatelé poprvé přihlásí k webové aplikaci, budou muset souhlasit. V některých organizacích se ale uživatelům může zobrazit zpráva podobná následující:
->
-> *AppName potřebuje oprávnění pro přístup k prostředkům ve vaší organizaci, které může udělit jenom správce. Než ho budete moct používat, požádejte správce, aby aplikaci udělil oprávnění.*
->
-> Důvodem je to, že správce klienta **zakázal** možnost souhlasu uživatelů. V takovém případě je potřeba kontaktovat správce klientů, aby učinili souhlas správce pro rozsahy vyžadované aplikací.
+## <a name="troubleshooting"></a>Řešení potíží
+Když se uživatelé poprvé přihlásí k webové aplikaci, budou muset souhlasit. V některých organizacích se ale uživatelům může zobrazit zpráva podobná následující: *AppName potřebuje oprávnění pro přístup k prostředkům ve vaší organizaci, které může udělit jenom správce. Než ho budete moct používat, požádejte správce, aby aplikaci udělil oprávnění.*
+Důvodem je to, že správce klienta **zakázal** možnost souhlasu uživatelů. V takovém případě se obraťte na správce klientů, aby učinil souhlas správce pro rozsahy vyžadované aplikací.
 
 ## <a name="same-site"></a>Stejná lokalita
 

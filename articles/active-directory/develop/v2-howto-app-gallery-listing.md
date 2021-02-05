@@ -12,12 +12,12 @@ ms.date: 12/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 8f5324e967c5a67ee77559087a02c3421611d8f3
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 3ce00c5182246513aaf3178118058826528619d2
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752860"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584260"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Publikování aplikace v galerii aplikací Azure AD
 
@@ -85,7 +85,7 @@ Můžete získat bezplatný zkušební účet se všemi funkcemi služby Azure A
 
 ## <a name="step-1---choose-the-right-single-sign-on-standard-for-your-app"></a>Krok 1 – výběr pravého jednotného přihlašování pro aplikaci
 
-Pokud chcete zobrazit seznam aplikací v galerii aplikací Azure AD, musíte implementovat aspoň jednu z podporovaných možností jednotného přihlašování. Pro pochopení možností jednotného přihlašování a způsobu jejich konfigurace ve službě Azure AD se podívejte na téma [Možnosti jednotného přihlašování](../manage-apps/sso-options.md).
+Pokud chcete zobrazit seznam aplikací v galerii aplikací Azure AD, implementujte aspoň jednu z podporovaných možností jednotného přihlašování. Pro pochopení možností jednotného přihlašování a způsobu jejich konfigurace ve službě Azure AD se podívejte na téma [Možnosti jednotného přihlašování](../manage-apps/sso-options.md).
 
 V následující tabulce jsou porovnávány hlavní standardy: Otevřete ověřování 2,0 (OAuth 2,0) s OpenID Connect (OIDC), Security Assertion Markup Language (SAML) a specifikace Web Services Federation (WS-dodávání).
 
@@ -186,7 +186,7 @@ K otestování vaší aplikace budete potřebovat tenanta Azure AD. Informace o 
 
 Další možností je, že tenant služby Azure AD přináší každé předplatné Microsoft 365. Pokud chcete nastavit bezplatné Microsoft 365 vývojové prostředí, přečtěte si téma [zapojení do programu Microsoft 365 Developer](/office/developer-program/microsoft-365-developer-program).
 
-Jakmile budete mít tenanta, budete muset vyzkoušet jednotné přihlašování a [zřizování](../app-provisioning/use-scim-to-provision-users-and-groups.md#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client). 
+Jakmile budete mít tenanta, otestujte jednotné přihlašování a [zřizování](../app-provisioning/use-scim-to-provision-users-and-groups.md#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client). 
 
 V **případě aplikací OIDC nebo Oath** [Zaregistrujte svoji aplikaci](quickstart-register-app.md) jako víceklientské aplikace. V části Podporované typy účtů vyberte účty v možnosti organizační adresář a osobní účet Microsoft.
 

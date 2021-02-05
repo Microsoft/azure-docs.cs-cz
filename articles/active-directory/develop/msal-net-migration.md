@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: b437efcfa2b0bb2a725929ae0253f48d97d11552
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 2b8577af2c8a6296ae6f4f090e8ff233e51ee6fb
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754810"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583921"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrace aplikací do MSAL.NET
 
@@ -145,7 +145,7 @@ MSAL.NET zpřístupňuje zapečetěnou třídu cache tokenem a odebírá možnos
 
 Pokud v v 1.0 používáte `https://login.microsoftonline.com/common` autoritu, umožníte uživatelům přihlašovat se pomocí libovolného účtu AAD (pro libovolnou organizaci). Viz [ověření autority v ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation)
 
-Pokud použijete `https://login.microsoftonline.com/common` autoritu v 2.0, umožníte uživatelům, aby se přihlásili pomocí libovolné organizace AAD nebo osobního účtu Microsoft (MSA). Pokud v MSAL.NET chcete omezit přihlášení na libovolný účet AAD (stejné chování jako u ADAL.NET), budete muset použít `https://login.microsoftonline.com/organizations` . Podrobnosti najdete v `authority` parametru ve [veřejné klientské aplikaci](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication).
+Pokud použijete `https://login.microsoftonline.com/common` autoritu v 2.0, umožníte uživatelům, aby se přihlásili pomocí libovolné organizace AAD nebo osobního účtu Microsoft (MSA). Pokud v MSAL.NET chcete omezit přihlášení na libovolný účet AAD (stejné chování jako u ADAL.NET), použijte `https://login.microsoftonline.com/organizations` . Podrobnosti najdete v `authority` parametru ve [veřejné klientské aplikaci](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication).
 
 ## <a name="v10-and-v20-tokens"></a>tokeny v 1.0 a v 2.0
 
@@ -182,7 +182,7 @@ string[] scopes = { ResourceId + "Directory.Read", ResourceId + "Directory.Write
 
 #### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>Upozornění: v oboru, který odpovídá webovému rozhraní API v 1.0, by mělo být jedno nebo dvě lomítka
 
-Pokud chcete zapsat obor odpovídající rozhraní Azure Resource Manager API (, musíte požádat o https://management.core.windows.net/) následující obor (Všimněte si dvou lomítek).
+Pokud chcete zapsat obor odpovídající rozhraní Azure Resource Manager API ( https://management.core.windows.net/) , poznamenejte si následující rozsah (Všimněte si dvou lomítek).
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};

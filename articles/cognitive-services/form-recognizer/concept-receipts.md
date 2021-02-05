@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 7173efd3dab0e8d2fd3c948a3a9bac07641e78f3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c1ae52b2b92c5c8d5a1a98632e19d3140672d6ea
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98792078"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585037"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Model předdefinovaného příjmového formuláře pro rozpoznávání formulářů
 
@@ -38,7 +38,7 @@ Předem vytvořená Příjemová služba extrahuje obsah prodejních příjmů &
 
 ### <a name="fields-extracted"></a>Extrahovaná pole
 
-|Název| Typ | Popis | Text | Hodnota (standardní výstup) |
+|Název| Typ | Description | Text | Hodnota (standardní výstup) |
 |:-----|:----|:----|:----| :----|
 | ReceiptType | řetězec | Typ prodejní účtenky | Oddělené |  |
 | Obchodní | řetězec | Název obchodníka, který vystavil příjem | Contoso |  |
@@ -467,7 +467,7 @@ Rozhraní API pro příjemce taky zajišťuje [funkci zpracování příjmu v Tv
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přihlaste se k [rychlému startu pro rozpoznávání formulářů](quickstarts/client-library.md) a začněte psát aplikaci pro zpracování příjmu pomocí nástroje pro rozpoznávání formulářů v jazyce podle vašeho výběru.
+- Přihlaste se k [rychlému startu pro rozpoznávání formulářů](quickstarts/client-library.md) a začněte psát aplikaci pro zpracování příjmu pomocí nástroje pro rozpoznávání formulářů ve vývojovém jazyce podle vašeho výběru.
 
 ## <a name="see-also"></a>Viz také
 

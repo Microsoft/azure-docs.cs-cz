@@ -14,12 +14,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: 8935cb3208aadc2822af1f57067877f9cedcb931
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: e4021f0ca2c1c9ca9434744a4aebb4b7938315f0
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064364"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584226"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Pokyny pro vývojáře pro Azure Active Directory podmíněný přístup
 
@@ -43,7 +43,7 @@ Předpokládá se znalost [jednotlivých](quickstart-register-app.md) a [vícekl
 
 ### <a name="app-types-impacted"></a>Ovlivněné typy aplikací
 
-V nejběžnějších případech podmíněný přístup nemění chování aplikace nebo vyžaduje žádné změny od vývojáře. Pouze v některých případech, pokud aplikace nepřímo nebo tiše žádá o token pro službu, vyžaduje aplikace změny kódu pro zpracování výzev podmíněného přístupu. Může to být jednoduché jako při provádění interaktivního přihlašovacího požadavku.
+V nejběžnějších případech podmíněný přístup nemění chování aplikace nebo vyžaduje žádné změny od vývojáře. Pouze v některých případech, pokud aplikace nepřímo nebo tiše žádá o token pro službu, vyžaduje aplikace změny kódu, které budou zpracovávat výzvy podmíněného přístupu. Může to být jednoduché jako při provádění interaktivního přihlašovacího požadavku.
 
 Konkrétně následující scénáře vyžadují kód pro zpracování výzev podmíněného přístupu:
 
@@ -54,7 +54,7 @@ Konkrétně následující scénáře vyžadují kód pro zpracování výzev po
 
 Zásady podmíněného přístupu se dají použít pro aplikaci, ale dají se použít i pro webové rozhraní API, ke kterému přistupuje aplikace. Další informace o tom, jak nakonfigurovat zásady podmíněného přístupu, najdete v tématu [rychlý Start: vyžádání MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup](../authentication/tutorial-enable-azure-mfa.md).
 
-V závislosti na scénáři může podnikový zákazník kdykoli použít a odebrat zásady podmíněného přístupu. Aby vaše aplikace pokračovala v provozu při použití nové zásady, je nutné implementovat zpracování výzvy. Následující příklady ilustrují zpracování výzvy.
+V závislosti na scénáři může podnikový zákazník kdykoli použít a odebrat zásady podmíněného přístupu. Aby vaše aplikace pokračovala v provozu při použití nové zásady, implementujte zpracování výzvou. Následující příklady ilustrují zpracování výzvy.
 
 ### <a name="conditional-access-examples"></a>Příklady podmíněného přístupu
 

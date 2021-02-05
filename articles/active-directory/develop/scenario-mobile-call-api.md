@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 601eefa7957972daa2d538e6ba0d9b7a5311c79d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 656cb167fb47e44c28922afed75d8c46a460aaf1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756481"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584393"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>Volání webového rozhraní API z mobilní aplikace
 
@@ -117,7 +117,7 @@ task.resume()
 
 ## <a name="make-several-api-requests"></a>Provedení několika požadavků rozhraní API
 
-Pokud potřebujete volat stejné rozhraní API několikrát nebo pokud potřebujete volat více rozhraní API, při sestavování aplikace Vezměte v úvahu následující témata:
+Chcete-li volat stejné rozhraní API několikrát nebo volat více rozhraní API, při sestavování aplikace Vezměte v úvahu následující předměty:
 
 - **Přírůstkový souhlas**: platforma Microsoft Identity Platform umožňuje aplikacím získat souhlas uživatele, když jsou požadovaná oprávnění, a ne vše na začátku. Pokaždé, když je vaše aplikace připravená volat rozhraní API, měla by vyžadovat pouze ty rozsahy, které potřebuje.
 
@@ -125,7 +125,7 @@ Pokud potřebujete volat stejné rozhraní API několikrát nebo pokud potřebuj
 
 ## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>Volání několika rozhraní API pomocí přírůstkového souhlasu a podmíněného přístupu
 
-Pokud pro stejného uživatele potřebujete zavolat několik rozhraní API, můžete po získání tokenu pro uživatele vyhnout se opakovanému vyžádání přihlašovacích údajů uživatelem, a to tak, že se následně zavolají `AcquireTokenSilent` k získání tokenu:
+Chcete-li volat několik rozhraní API pro stejného uživatele, po získání tokenu pro uživatele se můžete vyhnout opakovanému vyžádání přihlašovacích údajů uživatelem, a to tak, že následně zavoláte `AcquireTokenSilent` k získání tokenu:
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")

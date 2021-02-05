@@ -13,12 +13,12 @@ ms.date: 11/23/2019
 ms.author: abpati
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 161bcb2a4276b39765361e97a4516812c26ef580
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: d847e38a6114b0e5f8d56f6e994aa47dfbe929e7
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064466"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583701"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>Podpora Active Directory Federation Services (AD FS) v MSAL pro Python
 
@@ -57,7 +57,7 @@ Když připojíte adresář k AD FS, autorita, kterou budete chtít použít k s
 
 MSAL Python podporuje ADFS 2019.
 
-Nepodporuje přímé připojení ke službě AD FS 2016 nebo ADFS v2. Pokud potřebujete podporu scénářů vyžadujících přímé připojení ke službě ADFS 2016, použijte nejnovější verzi Pythonu pro ADAL. Po upgradu místního systému na ADFS 2019 můžete použít MSAL Python.
+Nepodporuje přímé připojení ke službě AD FS 2016 nebo ADFS v2. K podpoře scénářů vyžadujících přímé připojení ke službě ADFS 2016 použijte nejnovější verzi Pythonu pro ADAL. Po upgradu místního systému na ADFS 2019 můžete použít MSAL Python.
 
 ## <a name="next-steps"></a>Další kroky
 

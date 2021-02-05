@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6b9077fec13dd177ec4e07e7fbd7818ded2fd0a1
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 3f2e8fef35095a007051999d806f2942089ae19a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98164936"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584734"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Přijetí dotazů na aktivní učení ve znalostní bázi Knowledge Base
 
@@ -49,18 +49,39 @@ Chcete-li zobrazit navrhované otázky, je nutné [zapnout službu Active Learni
 
 <a name="#score-proximity-between-knowledge-base-questions"></a>
 
+## <a name="active-learning-suggestions-are-saved-in-the-exported-knowledge-base"></a>Aktivní návrhy kurzů se ukládají do exportované znalostní báze.
+
+Když má vaše aplikace aktivní učení a exportujete aplikaci, `SuggestedQuestions` sloupec v souboru TSV uchová aktivní výuková data.
+
+`SuggestedQuestions`Sloupec je objekt JSON s informacemi o implicitní, `autosuggested` a explicitní `usersuggested` zpětné vazbě. Příkladem tohoto objektu JSON pro jednu otázku odeslanou uživatelem `help` je:
+
+```JSON
+[
+    {
+        "clusterHead": "help",
+        "totalAutoSuggestedCount": 1,
+        "totalUserSuggestedCount": 0,
+        "alternateQuestionList": [
+            {
+                "question": "help",
+                "autoSuggestedCount": 1,
+                "userSuggestedCount": 0
+            }
+        ]
+    }
+]
+```
+
+Když znovu naimportujete tuto aplikaci, aktivní učení nadále shromažďuje informace a doporučuje návrhy vaší znalostní báze.
+
+
 ### <a name="architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot"></a>Postup architektury pro používání rozhraní API pro GenerateAnswer a vlak z robota
 
 Robot nebo jiná klientská aplikace by se měli pomocí tohoto toku architektury použít k používání aktivního učení:
 
 * Robot [získá odpověď ze znalostní báze](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) s rozhraním API GenerateAnswer a pomocí `top` vlastnosti získá několik odpovědí.
-* Robot určí explicitní zpětnou vazbu:
-    * Pomocí vlastní [obchodní logiky](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)vyfiltrujte nízká skóre.
-    * V robotu nebo klientské aplikaci můžete zobrazit seznam možných odpovědí na uživatele a získat zvolenou odpověď uživatele.
-* Robot [pošle vybranou odpověď zpátky do QnA maker](#bot-framework-sample-code) s využitím [rozhraní API pro vlaky](#train-api).
 
-
-### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Použijte vlastnost Top v žádosti GenerateAnswer k získání několika vyhovujících odpovědí.
+#### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Použijte vlastnost Top v žádosti GenerateAnswer k získání několika vyhovujících odpovědí.
 
 Při odesílání otázky QnA Maker pro odpověď `top` nastaví vlastnost těla zprávy JSON počet odpovědí, které se mají vrátit.
 
@@ -71,6 +92,12 @@ Při odesílání otázky QnA Maker pro odpověď `top` nastaví vlastnost těla
     "top": 3
 }
 ```
+
+* Robot určí explicitní zpětnou vazbu:
+    * Pomocí vlastní [obchodní logiky](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)vyfiltrujte nízká skóre.
+    * V robotu nebo klientské aplikaci můžete zobrazit seznam možných odpovědí na uživatele a získat zvolenou odpověď uživatele.
+* Robot [pošle vybranou odpověď zpátky do QnA maker](#bot-framework-sample-code) s využitím [rozhraní API pro vlaky](#train-api).
+
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>K získání seznamu odpovědí pro zobrazení uživatele použijte vlastnost skóre spolu s obchodní logikou.
 
@@ -309,33 +336,6 @@ async callTrain(stepContext){
     return await stepContext.next(stepContext.result);
 }
 ```
-
-## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>Aktivní učení se ukládá do exportované znalostní báze.
-
-Když má vaše aplikace aktivní učení a exportujete aplikaci, `SuggestedQuestions` sloupec v souboru TSV uchová aktivní výuková data.
-
-`SuggestedQuestions`Sloupec je objekt JSON s informacemi o implicitní, `autosuggested` a explicitní `usersuggested` zpětné vazbě. Příkladem tohoto objektu JSON pro jednu otázku odeslanou uživatelem `help` je:
-
-```JSON
-[
-    {
-        "clusterHead": "help",
-        "totalAutoSuggestedCount": 1,
-        "totalUserSuggestedCount": 0,
-        "alternateQuestionList": [
-            {
-                "question": "help",
-                "autoSuggestedCount": 1,
-                "userSuggestedCount": 0
-            }
-        ]
-    }
-]
-```
-
-Když znovu naimportujete tuto aplikaci, aktivní učení nadále shromažďuje informace a doporučuje návrhy vaší znalostní báze.
-
-
 
 ## <a name="best-practices"></a>Osvědčené postupy
 

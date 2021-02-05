@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: a63f910b3a939e33b8c71d8f22d15f6d610a12cc
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: d529e74614a4fd5ee49d7e6161c65f68e8e76fce
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845564"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585054"
 ---
 # <a name="form-recognizer-layout-service"></a>Služba rozložení pro rozpoznávání formulářů
 
@@ -89,7 +89,7 @@ Rozložení také extrahuje značky výběru z dokumentů. Extrahované značky 
 ## <a name="next-steps"></a>Další kroky
 
 - Vyzkoušejte si vlastní extrakci rozložení pomocí [ukázkového uživatelského rozhraní pro rozpoznávání formulářů](https://fott-preview.azurewebsites.net/)
-- Dokončete [rychlé zprovoznění pro rozpoznávání formulářů](quickstarts/client-library.md) , které vám pomohou začít s extrakcí rozložení v jazyce podle vašeho výběru.
+- Dokončete [rychlé zprovoznění pro rozpoznávání formulářů](quickstarts/client-library.md) , které vám pomohou začít s extrakcí rozložení ve vývojovém jazyce podle vašeho výběru.
 
 ## <a name="see-also"></a>Viz také
 

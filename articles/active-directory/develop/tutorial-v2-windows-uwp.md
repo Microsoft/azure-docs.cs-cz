@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: bbcebfd69789eb6ec03e565b347d05533043781c
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 4c4158fe9c976ca214409ef4c0c9833c610ee34c
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232331"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584327"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Kurz: volání rozhraní API Microsoft Graph z aplikace Univerzální platforma Windows (UWP)
 
@@ -34,7 +34,7 @@ V tomto kurzu:
 > * Přidat kód pro volání rozhraní API Microsoft Graph
 > * Otestování aplikace
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) s nainstalovanou úlohou [vývoj Univerzální platforma Windows](/windows/uwp/get-started/get-set-up)
 
@@ -48,7 +48,7 @@ Tato příručka vytvoří ukázkovou aplikaci UWP, která se dotazuje na rozhra
 
 Tato příručka používá následující balíček NuGet:
 
-|Knihovna|Popis|
+|Knihovna|Description|
 |---|---|
 |[Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)| Identity a ověřování Microsoftu|
 |[Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph)|Klientská knihovna Microsoft Graph|
@@ -292,7 +292,7 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
     }
 ```
 
-MSAL.NET používá asynchronní metody k získání tokenů nebo manipulaci s účty. Ve vlákně UI musíte podporovat akce uživatelského rozhraní. To je důvod `Dispatcher.RunAsync` volání a preventivních opatření k volání `ConfigureAwait(false)` .
+MSAL.NET používá asynchronní metody k získání tokenů nebo manipulaci s účty. V takovém případě podporují akce uživatelského rozhraní ve vlákně UI. To je důvod `Dispatcher.RunAsync` volání a preventivních opatření k volání `ConfigureAwait(false)` .
 
 #### <a name="more-information-about-signing-out"></a>Další informace o odhlášení<a name="more-information-on-sign-out"></a>
 
@@ -343,7 +343,7 @@ private async Task DisplayMessageAsync(string message)
 
 ## <a name="register-your-application"></a>Registrace aplikace
 
-Nyní je nutné zaregistrovat aplikaci:
+Nyní Zaregistrujte svou aplikaci:
 
 1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.

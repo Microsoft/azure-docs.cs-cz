@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 673852f8f9aa81c838a7c1db68681bb9ee0b7e0b
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 8c6764ad5b63aa2fde07326ab986404ea4312316
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862014"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585173"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>Kurz: publikování webu Jekyll ve službě Azure static Web Apps Preview
 
@@ -79,8 +79,11 @@ Azure static Web Apps používá GitHub k publikování vašeho webu. Následuj�
 1. Vložení místního úložiště do GitHubu
 
    ```bash
-   git push --set-upstream origin master
+   git push --set-upstream origin main
    ```
+
+   > [!NOTE]
+   > Vaše větev Git může být pojmenována odlišně `main` . Nahraďte `main` tímto příkazem správnou hodnotou.
 
 ## <a name="deploy-your-web-app"></a>Nasazení webové aplikace
 
@@ -116,7 +119,7 @@ Následující kroky ukazují, jak vytvořit novou aplikaci statické lokality a
 
 1. Jako _úložiště_ vyberte **Jekyll-static-App** .
 
-1. Pro _větev_ vyberte **hlavní** uzel.
+1. Pro _větev_ vyberte **Main (hlavní**).
 
     :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Informace o dokončeném GitHubu":::
 
@@ -146,7 +149,7 @@ Dále přidáte nastavení konfigurace, které proces sestavení používá k se
 
 1. Otevřete aplikaci Jekyll v textovém editoru a otevřete soubor _. GitHub/Workflows/Azure-Pages-<WORKFLOW_NAME>. yml_ .
 
-1. Po řádku `- uses: actions/checkout@v2` přidejte následující konfigurační blok.
+1. Před řádek `- name: Build And Deploy` přidejte následující konfigurační blok.
 
     ```yml
     - name: Set up Ruby

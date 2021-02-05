@@ -28,8 +28,6 @@
       href: convert-to-dataset.md
     - name: Převod na hodnoty indikátoru
       href: convert-to-indicator-values.md
-    - name: Vyčištění chybějících dat
-      href: clean-missing-data.md
     - name: Úpravy metadat
       href: edit-metadata.md
     - name: Seskupení dat do přihrádek

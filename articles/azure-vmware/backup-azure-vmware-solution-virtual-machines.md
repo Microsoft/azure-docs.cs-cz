@@ -2,13 +2,13 @@
 title: Zálohování virtuálních počítačů s řešeními VMware Azure pomocí Azure Backup Server
 description: Nakonfigurujte prostředí řešení Azure VMware pro zálohování virtuálních počítačů pomocí Azure Backup Server.
 ms.topic: how-to
-ms.date: 06/09/2020
-ms.openlocfilehash: d4273980a134fbdaabe64215aaf0b66a53253788
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.date: 02/04/2021
+ms.openlocfilehash: ea2164ba19703660e54879c25b975342d824662c
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495691"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585020"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů s řešeními VMware Azure pomocí Azure Backup Server
 
@@ -48,14 +48,14 @@ Ve výchozím nastavení Azure Backup Server komunikuje se servery VMware pomoc�
 
 1. Klikněte pravým tlačítkem na kořenový certifikát a vyberte **nainstalovat certifikát**.
 
-1. V **Průvodci importem certifikátu**vyberte jako cíl pro certifikát **místní počítač** a vyberte **Další**.
+1. V **Průvodci importem certifikátu** vyberte jako cíl pro certifikát **místní počítač** a vyberte **Další**.
 
    ![Úvodní stránka průvodce](../backup/media/backup-azure-backup-server-vmware/certificate-import-wizard1.png)
 
    > [!NOTE] 
    > Pokud se zobrazí výzva, potvrďte, že chcete v počítači změny.
 
-1. Vyberte možnost **umístit všechny certifikáty do následujícího úložiště**a výběrem možnosti **Procházet** vyberte úložiště certifikátů.
+1. Vyberte možnost **umístit všechny certifikáty do následujícího úložiště** a výběrem možnosti **Procházet** vyberte úložiště certifikátů.
 
    ![Úložiště certifikátů](../backup/media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
 
@@ -133,7 +133,7 @@ VMware 6,7 a vyšší má TLS povolený jako komunikační protokol.
 
    ![Průvodce přidáním provozního serveru](../backup/media/backup-azure-backup-server-vmware/add-vcenter-to-mabs.png)
 
-1. Vyberte **servery VMware**a vyberte **Další**.
+1. Vyberte **servery VMware** a vyberte **Další**.
 
    ![Průvodce přidáním provozního serveru](../backup/media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
@@ -180,7 +180,7 @@ Skupiny ochrany shromažďují více virtuálních počítačů a používají s
 
    ![Dialogové okno Průvodce vytvořením nové skupiny ochrany](../backup/media/backup-azure-backup-server-vmware/protection-wizard.png)
 
-1. Na stránce **Vybrat typ skupiny ochrany** vyberte **servery**a pak vyberte **Další**. Zobrazí se stránka **Vybrat členy skupiny** .
+1. Na stránce **Vybrat typ skupiny ochrany** vyberte **servery** a pak vyberte **Další**. Zobrazí se stránka **Vybrat členy skupiny** .
 
 1. Na stránce **Vybrat členy skupiny** vyberte virtuální počítače (nebo složky VM), které chcete zálohovat, a pak vyberte **Další**.
 
@@ -200,7 +200,7 @@ Skupiny ochrany shromažďují více virtuálních počítačů a používají s
    - **Rozsah uchování**: počet dní, po které jsou uchovávány body obnovení disku.
    - **Expresní úplné zálohování**: jak často se odebírají body obnovení disku. Chcete-li změnit časy nebo datum, kdy dojde k krátkodobému zálohování, vyberte možnost **Upravit**.
 
-   :::image type="content" source="media/azure-vmware-solution-backup/new-protection-group-specify-short-term-goals.png" alt-text="Webový klient vSphere":::
+   :::image type="content" source="media/azure-vmware-solution-backup/new-protection-group-specify-short-term-goals.png" alt-text="Určení krátkodobých cílů ochrany na disku":::
 
 1. Na stránce **zkontrolovat disk Storage přidělení** Zkontrolujte místo na disku, které je k dispozici pro zálohování virtuálních počítačů.
 
@@ -209,7 +209,7 @@ Skupiny ochrany shromažďují více virtuálních počítačů a používají s
    - **Místo na disku:** Doporučená velikost místa na disku pro skupinu ochrany. Pokud chcete toto nastavení změnit, vyberte prostor, který je lehce větší než velikost, kterou odhadují jednotlivé zdroje dat.
    - **Podrobnosti fondu úložiště:** Zobrazuje stav fondu úložiště, který obsahuje celkovou a zbývající velikost disku.
 
-   :::image type="content" source="media/azure-vmware-solution-backup/review-disk-allocation.png" alt-text="Webový klient vSphere":::
+   :::image type="content" source="media/azure-vmware-solution-backup/review-disk-allocation.png" alt-text="Zkontrolujte místo na disku uvedené ve fondu úložiště.":::
 
    > [!NOTE]
    > V některých scénářích je nahlášená velikost dat vyšší než skutečná velikost virtuálního počítače. Víme o problému a právě ho zkoumáme.
@@ -221,7 +221,7 @@ Skupiny ochrany shromažďují více virtuálních počítačů a používají s
 
    ![Výběr metody vytvoření repliky](../backup/media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. Pro **Možnosti kontroly konzistence**vyberte, jak a kdy chcete automatizovat kontroly konzistence a vybrat **Další**.
+1. Pro **Možnosti kontroly konzistence** vyberte, jak a kdy chcete automatizovat kontroly konzistence a vybrat **Další**.
 
    - Můžete spouštět kontroly konzistence, když se data repliky neshodují, nebo podle nastaveného plánu.
    - Pokud nechcete konfigurovat automatické kontroly konzistence, můžete spustit ruční kontrolu tak, že pravým tlačítkem myši kliknete na skupinu ochrany **provést kontrolu konzistence**.
@@ -256,12 +256,12 @@ Skupiny ochrany shromažďují více virtuálních počítačů a používají s
 Až nakonfigurujete skupinu ochrany pro zálohování virtuálních počítačů řešení VMware Azure, můžete monitorovat stav úlohy zálohování a výstrahy pomocí konzoly Azure Backup Server. Tady je seznam toho, co můžete monitorovat.
 
 - V oblasti **sledování** úloh:
-   - V části **výstrahy**můžete monitorovat chyby, varování a obecné informace.  Můžete zobrazit aktivní a neaktivní výstrahy a nastavit e-mailová oznámení.
-   - V části **úlohy**můžete zobrazit úlohy spouštěné Azure Backup Server pro určitý chráněný zdroj dat nebo skupinu ochrany. Můžete sledovat průběh úlohy nebo kontrolovat prostředky spotřebované úlohami.
+   - V části **výstrahy** můžete monitorovat chyby, varování a obecné informace.  Můžete zobrazit aktivní a neaktivní výstrahy a nastavit e-mailová oznámení.
+   - V části **úlohy** můžete zobrazit úlohy spouštěné Azure Backup Server pro určitý chráněný zdroj dat nebo skupinu ochrany. Můžete sledovat průběh úlohy nebo kontrolovat prostředky spotřebované úlohami.
 - V oblasti úloh **ochrana** můžete kontrolovat stav svazků a sdílených složek ve skupině ochrany. Můžete také kontrolovat nastavení konfigurace, jako je nastavení obnovení, přidělení disku a plán zálohování.
-- V oblasti úloh **Správa** můžete zobrazit karty **disky, online**a **agenti** a ověřit stav disků ve fondu úložiště, registraci do Azure a nasazený stav agenta DPM.
+- V oblasti úloh **Správa** můžete zobrazit karty **disky, online** a **agenti** a ověřit stav disků ve fondu úložiště, registraci do Azure a nasazený stav agenta DPM.
 
-:::image type="content" source="media/azure-vmware-solution-backup/monitor-backup-jobs.png" alt-text="Webový klient vSphere":::
+:::image type="content" source="media/azure-vmware-solution-backup/monitor-backup-jobs.png" alt-text="Monitorovat stav úloh zálohování v Azure Backup Server":::
 
 ## <a name="restore-vmware-virtual-machines"></a>Obnovení virtuálních počítačů VMware
 
@@ -286,7 +286,7 @@ V konzole pro správu Azure Backup Server existují dva způsoby, jak najít obn
 
 1. Před obnovením z online bodu obnovení ověřte, že pracovní umístění obsahuje dostatek volného místa pro uložení úplné nekomprimované velikosti virtuálního počítače, který chcete obnovit. Pracovní umístění můžete zobrazit nebo změnit spuštěním **Průvodce konfigurací nastavení předplatného**.
 
-   :::image type="content" source="media/azure-vmware-solution-backup/mabs-recovery-folder-settings.png" alt-text="Webový klient vSphere":::
+   :::image type="content" source="media/azure-vmware-solution-backup/mabs-recovery-folder-settings.png" alt-text="Nastavení složky pro obnovení Azure Backup Server":::
 
 1. Kliknutím na tlačítko **obnovit** otevřete **Průvodce obnovením**.
 
@@ -300,7 +300,7 @@ V konzole pro správu Azure Backup Server existují dva způsoby, jak najít obn
 1. Na stránce **Vybrat typ obnovení** buď proveďte obnovení na původní instanci nebo na nové místo.
 
    - Pokud zvolíte **obnovit do původní instance**, nemusíte v průvodci dělat žádné další volby. Použijí se data pro původní instanci.
-   - Pokud zvolíte možnost **Obnovit jako virtuální počítač na jakémkoli hostiteli**, pak na obrazovce **zadat cíl** zadejte informace o **hostiteli ESXi**, **fondu zdrojů**, **složce**a **cestě**.
+   - Pokud zvolíte možnost **Obnovit jako virtuální počítač na jakémkoli hostiteli**, pak na obrazovce **zadat cíl** zadejte informace o **hostiteli ESXi**, **fondu zdrojů**, **složce** a **cestě**.
 
    ![Stránka vybrat typ obnovení](../backup/media/restore-azure-backup-server-vmware/recovery-type.png)
 
@@ -337,7 +337,7 @@ Jednotlivé soubory můžete obnovit z chráněného bodu obnovení virtuálníh
 
    ![Kontrola výběru obnovení](../backup/media/restore-azure-backup-server-vmware/vmware-rp-disk-ilr-2.png)
 
-1. Po výběru položek pro obnovení klikněte na pásu karet nástroje konzoly pro správu na tlačítko **obnovit** a otevřete **Průvodce obnovením**. V **Průvodci obnovením**obrazovka **Kontrola výběru obnovení** zobrazuje vybrané položky, které mají být obnoveny.
+1. Po výběru položek pro obnovení klikněte na pásu karet nástroje konzoly pro správu na tlačítko **obnovit** a otevřete **Průvodce obnovením**. V **Průvodci obnovením** obrazovka **Kontrola výběru obnovení** zobrazuje vybrané položky, které mají být obnoveny.
 
 1. Na obrazovce **zadat možnosti obnovení** proveďte jeden z následujících kroků:
 
@@ -356,7 +356,7 @@ Jednotlivé soubory můžete obnovit z chráněného bodu obnovení virtuálníh
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete řešit problémy při nastavování záloh, přečtěte si příručku pro řešení potíží pro Azure Backup Server.
+Teď, když jste si pokryli zálohování virtuálních počítačů s řešeními Azure VMware pomocí Azure Backup Server, možná se budete chtít dozvědět něco: 
 
-> [!div class="nextstepaction"]
-> [Průvodce odstraňováním potíží pro Azure Backup Server](../backup/backup-azure-mabs-troubleshoot.md)
+- [Řešení potíží při nastavování záloh v Azure Backup Server](../backup/backup-azure-mabs-troubleshoot.md).
+- [Správa životního cyklu virtuálních počítačů řešení Azure VMware](lifecycle-management-of-azure-vmware-solution-vms.md).

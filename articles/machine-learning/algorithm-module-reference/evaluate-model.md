@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 9abf5a17330566aee2414b8499f228d297880cbf
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 39bdf9cb0c97e19a67b23046c6f06b60daa30147
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323786"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584936"
 ---
 # <a name="evaluate-model-module"></a>Vyhodnotit modul modelu
 
@@ -64,7 +64,7 @@ V případě vícenásobné klasifikace můžete najít soubor vykreslení matri
 > [!div class="mx-imgBorder"]
 > ![Náhled nahraného obrázku](media/module/multi-class-confusion-matrix.png)
 
-Pokud připojíte datové sady ke vstupům **modelu vyhodnocení** , budou výsledky obsahovat metriky pro sadu dat nebo oba modely.
+Pokud připojíte datové sady ke vstupům **modelu vyhodnocení**, budou výsledky obsahovat metriky pro sadu dat nebo oba modely.
 Model nebo data připojená k levému portu se zobrazí jako první v sestavě, za kterými následuje metrika pro datovou sadu nebo model připojený ke správnému portu.  
 
 Například následující obrázek představuje porovnání výsledků ze dvou modelů clusteringu, které byly vytvořeny na stejných datech, ale s různými parametry.  
@@ -75,7 +75,7 @@ Vzhledem k tomu, že se jedná o model clusteringu, výsledky hodnocení jsou ji
 
 ## <a name="metrics"></a>Metriky
 
-Tato část popisuje metriky vracené pro konkrétní typy modelů, které jsou podporované pro použití s **vyhodnocením modelu** :
+Tato část popisuje metriky vracené pro konkrétní typy modelů, které jsou podporované pro použití s **vyhodnocením modelu**:
 
 + [modely klasifikace](#metrics-for-classification-models)
 + [Regresní modely](#metrics-for-regression-models)
@@ -94,7 +94,7 @@ Následující metriky jsou hlášeny při vyhodnocování binárních klasifika
   
 -   **Skóre F1** je vypočítáváno jako vážený průměr přesnosti a odvolání v rozmezí 0 až 1, kde ideální hodnota skóre F1 je 1.  
   
--   **AUC** měří oblast pod křivkou vykreslenou se skutečnými klady na ose y a falešně pozitivních hodnot na ose x. Tato metrika je užitečná, protože poskytuje jedno číslo, které umožňuje porovnat modely různých typů.  
+-   **AUC** měří oblast pod křivkou vykreslenou se skutečnými klady na ose y a falešně pozitivních hodnot na ose x. Tato metrika je užitečná, protože poskytuje jedno číslo, které umožňuje porovnat modely různých typů. AUC je klasifikace-prahová hodnota – invariantní. Měří kvalitu předpovědi modelu bez ohledu na to, jaká prahová hodnota klasifikace je vybrána.
 
 
 ### <a name="metrics-for-regression-models"></a>Metriky pro regresní modely
@@ -113,7 +113,7 @@ Metriky vracené pro regresní modely jsou navržené k odhadu množství chyb. 
   
 
   
-- **Koeficient stanovitelnosti** , který se často označuje jako R <sup>2</sup>, představuje prediktivní sílu modelu jako hodnotu mezi 0 a 1. Nula znamená, že je model náhodný (vysvětluje nic); 1 znamená dokonalé přizpůsobení. Nicméně opatrnost by se měla použít při interpretaci hodnot R<sup>2</sup> , protože nízké hodnoty můžou být zcela normální a vysoké hodnoty můžou být podezřelé.
+- **Koeficient stanovitelnosti**, který se často označuje jako R <sup>2</sup>, představuje prediktivní sílu modelu jako hodnotu mezi 0 a 1. Nula znamená, že je model náhodný (vysvětluje nic); 1 znamená dokonalé přizpůsobení. Nicméně opatrnost by se měla použít při interpretaci hodnot R<sup>2</sup> , protože nízké hodnoty můžou být zcela normální a vysoké hodnoty můžou být podezřelé.
 
 ###  <a name="metrics-for-clustering-models"></a>Metriky pro modely clusteringu
 
@@ -127,13 +127,13 @@ Následující metriky jsou hlášeny pro vyhodnocení modelů clusteringu.
     
 -   Skóre ve sloupci, **Průměrná vzdálenost k druhému středu** představuje způsob, jakým se v průměru blíží každý bod v clusteru, do centroids všech ostatních clusterů.   
 
--   Skóre ve sloupci, **Průměrná vzdálenost do centra clusterů** , představuje uzavření všech bodů v clusteru do těžiště tohoto clusteru.  
+-   Skóre ve sloupci, **Průměrná vzdálenost do centra clusterů**, představuje uzavření všech bodů v clusteru do těžiště tohoto clusteru.  
   
 -   Sloupec **počet bodů** ukazuje, kolik datových bodů bylo přiřazeno ke každému clusteru, spolu s celkovým celkovým počtem datových bodů v jakémkoli clusteru.  
   
      Pokud je počet datových bodů přiřazených ke clusterům menší, než je celkový počet dostupných datových bodů, znamená to, že datové body nelze přiřadit ke clusteru.  
   
--   Skóre ve sloupci, **maximální vzdálenost do centra clusterů** , představuje maximální vzdálenost mezi každým bodem a těžištěem clusteru daného bodu.  
+-   Skóre ve sloupci, **maximální vzdálenost do centra clusterů**, představuje maximální vzdálenost mezi každým bodem a těžištěem clusteru daného bodu.  
   
      Pokud je toto číslo vysoké, může to znamenat, že cluster je výrazně rozptýlený. Tuto statistiku byste měli projít společně s **průměrnou vzdáleností do centra clusterů** k určení rozprostření clusteru.   
 

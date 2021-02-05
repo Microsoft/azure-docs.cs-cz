@@ -2,20 +2,21 @@
 title: Technické možnosti zabezpečení v Azure – Microsoft Azure
 description: Seznámení se službami zabezpečení v Azure, které vám pomůžou chránit data, prostředky a aplikace v cloudu.
 services: security
-author: terrylanfear
+author: TerryLanfear
+manager: rkarlin
 ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2020
+ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 353b1708a1c6014f9108ad2be62f22c1e0b0604c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 6e0642a2124d58bb3af483313ac824568b6bbb39
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092764"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585139"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 Tento článek poskytuje Úvod do služby zabezpečení v Azure, které vám pomůžou chránit vaše data, prostředky a aplikace v cloudu a splňovat požadavky na zabezpečení vaší firmy.
@@ -431,20 +432,6 @@ Resource Manager poskytuje několik výhod:
 > [!Note]
 > Resource Manager poskytuje nový způsob nasazení a správy vašich řešení. Pokud jste použili předchozí model nasazení a chcete se dozvědět o změnách, přečtěte si téma [Principy nasazení Správce prostředků a klasického nasazení](../../azure-resource-manager/management/deployment-models.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-step"></a>Další krok
 
-Další informace o zabezpečení najdete v našich podrobných tématech o zabezpečení:
-
-- [Auditování a protokolování](https://www.microsoft.com/en-us/trustcenter/security/auditingandlogging)
-
-- [Kybernetická](https://www.microsoft.com/en-us/trustcenter/security/cybercrime)
-
-- [Návrh a provozní zabezpečení](https://www.microsoft.com/en-us/trustcenter/security/designopsecurity)
-
-- [Šifrování](https://www.microsoft.com/en-us/trustcenter/security/encryption)
-
-- [Správa identit a přístupu](https://www.microsoft.com/en-us/trustcenter/security/identity)
-
-- [Zabezpečení sítě](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
-
-- [Řízení rizik](https://www.microsoft.com/en-us/trustcenter/security/threatmanagement)
+Program [Azure Security test](../benchmarks/introduction.md) zahrnuje shromažďování bezpečnostních doporučení, pomocí kterých můžete zabezpečit služby, které používáte v Azure.

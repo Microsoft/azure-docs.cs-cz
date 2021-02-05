@@ -13,12 +13,12 @@ ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 5bccc39144186b23cc7f9fedf02e5b9d84ea2ee4
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: d477c419bb677a6b8f24a3aae26c403e47cc96cb
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063548"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583938"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>Vytvoření instance aplikace důvěrného klienta s možnostmi konfigurace pomocí MSAL.NET
 
@@ -60,7 +60,7 @@ Konfigurace aplikace ASP.NET Core je popsána v *appsettings.js* souboru:
 
 Od MSAL.NET v3. x můžete svoji důvěrnou klientskou aplikaci nakonfigurovat z konfiguračního souboru.
 
-Ve třídě, kde chcete konfigurovat a vytvářet instance aplikace, je nutné deklarovat `ConfidentialClientApplicationOptions` objekt.  Navažte konfiguraci načtenou ze zdroje (včetně appconfig.jsdo souboru) do instance možností aplikace pomocí `IConfigurationRoot.Bind()` metody z [Microsoft.Extensions.Configuration. Balíček NuGet pro pořadač](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
+Ve třídě, kde chcete nakonfigurovat a vytvořte instanci aplikace, deklarujte `ConfidentialClientApplicationOptions` objekt.  Navažte konfiguraci načtenou ze zdroje (včetně appconfig.jsdo souboru) do instance možností aplikace pomocí `IConfigurationRoot.Bind()` metody z [Microsoft.Extensions.Configuration. Balíček NuGet pro pořadač](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
 
 ```csharp
 using Microsoft.Identity.Client;

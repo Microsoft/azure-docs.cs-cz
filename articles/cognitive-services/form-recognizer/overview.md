@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatizované zpracování dat, zpracování dokumentů, automatizované zadávání dat, zpracování formulářů
-ms.openlocfilehash: e1e5a4abf8eab96af62b160e28f98d95cf527eaf
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 2d3a37165994a8c7ff9d46ac24e63b7f58404ce3
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044760"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584562"
 ---
 # <a name="what-is-form-recognizer"></a>Co je služba Rozpoznávání formulářů?
 
@@ -87,13 +87,13 @@ Nástroj pro rozpoznávání formulářů používá [rozhraní API pro rozlože
 Nástroj pro rozpoznávání formulářů obsahuje také předem připravené modely pro automatizované zpracování dat jedinečných typů formulářů.
 
 ### <a name="prebuilt-invoice-model"></a>Předem sestavený model faktury
-Model předem sestavené faktury extrahuje data z faktur v nejrůznějších formátech a vrátí strukturovaná data. Tento model extrahuje klíčové informace, jako je ID faktury, podrobnosti o zákaznících, podrobnosti o dodavateli, odeslání do, fakturaci, celková hodnota, daň, Mezisoučet a další. Předem sestavený model faktury je navíc vyškolen pro rozpoznání a vrácení veškerého textu a tabulek na faktuře. Další informace najdete v koncepční příručce [faktury](./concept-invoices.md) .
+Model předem sestavené faktury extrahuje data z faktur v nejrůznějších formátech a vrátí strukturovaná data. Tento model extrahuje klíčové informace, jako je ID faktury, podrobnosti o zákaznících, podrobnosti o dodavateli, odeslání do, fakturaci, celková hodnota, daň, Mezisoučet a další. Předem sestavený model faktury je navíc vyškolen k analýze a vrácení veškerého textu a tabulek na faktuře. Další informace najdete v koncepční příručce [faktury](./concept-invoices.md) .
 
 :::image type="content" source="./media/overview-invoices.jpg" alt-text="Ukázková faktura" lightbox="./media/overview-invoices.jpg":::
 
 ### <a name="prebuilt-receipt-model"></a>Předem sestavený model příjmu
 
-Předem sestavený model příjmu se používá pro čtení prodejních příjmů z Austrálie, Kanady, České Británie, Indie a USA &mdash; typu používaného v restauracích, čerpacích stanicích, maloobchodním prodeji a tak dále. Tento model extrahuje klíčové informace, jako je čas a datum transakce, informace o obchodníkech, množství daní, položek na řádku, součty a další. Předem sestavený model příjmu je navíc vyškolen pro rozpoznání a vrácení veškerého textu na účtence. Další informace najdete v koncepční příručce pro [příjem](./concept-receipts.md) .
+Předem sestavený model příjmu se používá pro čtení prodejních příjmů z Austrálie, Kanady, České Británie, Indie a USA &mdash; typu používaného v restauracích, čerpacích stanicích, maloobchodním prodeji a tak dále. Tento model extrahuje klíčové informace, jako je čas a datum transakce, informace o obchodníkech, množství daní, položek na řádku, součty a další. Předem sestavený model příjmu je navíc vyškolen k analýze a vrácení veškerého textu na účtence. Další informace najdete v koncepční příručce pro [příjem](./concept-receipts.md) .
 
 :::image type="content" source="./media/overview-receipt.jpg" alt-text="Ukázka účtenky" lightbox="./media/overview-receipt.jpg":::
 
@@ -128,7 +128,7 @@ Pomocí [Nástroje pro rozpoznávání ukázkového formuláře](https://fott.az
 
 Pomocí následujících rozhraní API můžete vyškolit modely a extrahovat strukturovaná data z formulářů.
 
-|Název |Popis |
+|Název |Description |
 |---|---|
 | **Analyzovat rozložení** | Analyzovat dokument předaný jako datový proud pro extrakci textu, značek výběru, tabulek a struktur z dokumentu |
 | **Vlastní model výuky**| Vytvořte nový model pro analýzu formulářů s použitím pěti forem stejného typu. Nastavte parametr _useLabelFile_ na `true` Výukový program s ručně označenými daty. |
@@ -158,7 +158,7 @@ Další informace najdete v [referenční dokumentaci k REST API](https://westus
 
 ### <a name="is-form-recognizer-service-zone-resilient"></a>Je služba rozpoznávání formulářů odolná proti chybám?
 
-Yes. Služba rozpoznávání formulářů je ve výchozím nastavení odolná proti zónám.
+Ano. Služba rozpoznávání formulářů je ve výchozím nastavení odolná proti zónám.
 
 ### <a name="how-do-i-configure-the-form-recognizer-service-to-be-zone-resilient"></a>Návody nakonfigurovat službu rozpoznávání formulářů jako odolnou proti zóně?
 
@@ -171,4 +171,4 @@ Stejně jako u všech služeb rozpoznávání by měli vývojáři, kteří pou�
 
 ## <a name="next-steps"></a>Další kroky
 
-Dokončete [rychlý Start](quickstarts/client-library.md) a začněte psát aplikaci zpracovávající formuláře pomocí nástroje pro rozpoznávání formulářů v jazyce podle vašeho výběru.
+Dokončete [rychlý Start](quickstarts/client-library.md) , abyste mohli začít psát aplikaci zpracovávající formuláře pomocí nástroje pro rozpoznávání formulářů ve vývojovém jazyce podle vašeho výběru.

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 36724e518f1bae636c2d2602a227b53a11257591
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0832b54e02cabecb0b1f0e7af600b8adc621a8b0
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791050"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584766"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Přidání zabezpečeného zdroje dat SharePointu do znalostní báze
 
@@ -132,8 +132,8 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 Existuje alternativní řešení, které umožňuje přidat nejnovější obsah služby SharePoint přes rozhraní API pomocí služby Azure Blob Storage, a to níže v následujících krocích: 
 1.  Stáhnout soubory SharePoint lokálně. Uživatel, který volá rozhraní API, musí mít přístup k SharePointu. 
-1.  Nahrajte je do Stoarge objektů BLOB v Azure. Tím se vytvoří zabezpečený sdílený přístup [pomocí tokenu SAS.](../../../storage/common/storage-sas-overview.md#how-a-shared-access-signature-works) 
-1. Předejte adresu URL objektu BLOB vygenerovanou tokenem SAS na rozhraní API služby QnA Maker. Chcete-li, aby otázka mohla vyextrahovat z těchto souborů, je nutné přidat typ souboru přípony jako ' &EXT = PDF ' nebo ' &EXT = doc ' na konci adresy URL před předáním do rozhraní API služby QnA Maker>  
+1.  Nahrajte je do úložiště objektů BLOB v Azure. Tím se vytvoří zabezpečený sdílený přístup [pomocí tokenu SAS.](../../../storage/common/storage-sas-overview.md#how-a-shared-access-signature-works) 
+1. Předejte adresu URL objektu BLOB vygenerovanou tokenem SAS na rozhraní API služby QnA Maker. Pokud chcete, aby otázka mohla vyextrahovat z těchto souborů, je nutné přidat typ souboru přípony jako ' &EXT = PDF ' nebo ' &EXT = doc ' na konci adresy URL před předáním do rozhraní API služby QnA Maker.
 
 
 <!--

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 04ce45f428604275696d83938708bcee0c6c023f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b2925a532d722598ccf16c001c9e2591aed1f2b
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536762"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584986"
 ---
 # <a name="apply-math-operation"></a>Použití matematických operací
 
@@ -138,9 +138,9 @@ Vrátí hodnotu e umocněnou na mocninu hodnoty ve vybraném sloupci. Tato funkc
 
 Vrátí exponenciální hodnotu argumentu (Base-2) argumentů a řešení pro y = x * 2<sup>t</sup> , kde t je sloupec hodnot obsahující exponenty.  
 
-V části  **sada sloupců**vyberte sloupec, který obsahuje hodnoty exponentu t.
+V části  **sada sloupců** vyberte sloupec, který obsahuje hodnoty exponentu t.
 
-Pro **exp2 –** můžete zadat druhý argument x, který může být buď konstantou, nebo jiným sloupcem hodnot. V poli **typ druhého argumentu**určete, zda budete zadat násobitel x jako konstantu nebo hodnotu ve sloupci.  
+Pro **exp2 –** můžete zadat druhý argument x, který může být buď konstantou, nebo jiným sloupcem hodnot. V poli **typ druhého argumentu** určete, zda budete zadat násobitel x jako konstantu nebo hodnotu ve sloupci.  
 
 Pokud například vyberete sloupec s hodnotami {0,1,2,3,4,5} pro násobitel i exponent, funkce vrátí hodnotu {0, 2, 8, 24, 64 160).  
 
@@ -181,7 +181,7 @@ Vrátí n-tý kořen hodnoty s použitím n, který zadáte.
 
 Vyberte sloupce, pro které chcete vypočítat kořen, pomocí možnosti **sadou sloupců** .  
 
-V **druhém typu argumentu**vyberte jiný sloupec, který obsahuje kořen, nebo zadejte konstantu, která má být použita jako kořenová.  
+V **druhém typu argumentu** vyberte jiný sloupec, který obsahuje kořen, nebo zadejte konstantu, která má být použita jako kořenová.  
 
 Pokud je druhým argumentem sloupec, všechny hodnoty ve sloupci se použijí jako hodnota n pro odpovídající řádek. Pokud je druhý argument konstanta, zadejte hodnotu pro n do textového pole **druhý argument** .
 ### <a name="pow"></a>Log
@@ -190,7 +190,7 @@ Vypočítá X umocněnou na mocninu Y pro každou hodnotu ve vybraném sloupci.
 
 Nejprve vyberte sloupce, které obsahují **základ**, který by měl být typu float, a to pomocí možnosti **sadou sloupců** .  
 
-V **druhém typu argumentu**vyberte sloupec, který obsahuje exponent, nebo zadejte konstantu, která má být použita jako exponent.  
+V **druhém typu argumentu** vyberte sloupec, který obsahuje exponent, nebo zadejte konstantu, která má být použita jako exponent.  
 
 Pokud je druhým argumentem sloupec, všechny hodnoty ve sloupci se použijí jako exponent pro odpovídající řádek. Je-li druhý argument konstanta, zadejte hodnotu exponent do textového pole **druhý argument** .  
 
@@ -249,22 +249,25 @@ Vrátí hodnotu, která je menší, hodnota v **sadě sloupců** nebo hodnota ve
 
 Zahrnuje základní aritmetické operace: sčítání a odčítání, dělení a násobení.  Vzhledem k tomu, že většina operací je binární, vyžaduje dvě čísla, nejprve zvolíte operaci a pak zvolíte sloupec nebo čísla, které chcete použít v prvním a druhém argumentu.
 
-Pořadí, ve kterém zvolíte sloupce pro dělení a odčítání, se může zdát neintuitivní; aby bylo ale snazší pochopit výsledky, nadpis sloupce poskytuje název operace a pořadí, ve kterém byly sloupce použity.
+Pořadí dělení a odečítání je následující: 
+- Odečíst (Arg1_Arg2) = arg1 – ARG 2
+- Dělení (Arg1_Arg2) = arg1/ARG 2
 
+V následující tabulce jsou uvedeny některé příklady
 Operace|Num1|Num2|Sloupec výsledku|Výsledná hodnota|
 ----|----|----|----|----
-|Sčítání|1|5|Přidat (Num2_Num1)| 4|
+|Sčítání|1|5|Přidat (Num2_Num1)| 6|
 |Násobení|1|5|Vícenásobný (Num2_Num1)|5|
-|Odčítání|1|5|Odečíst (Num2_Num1)|4|
-|Odčítání|0|1|Odečíst (Num2_Num1)|0|
-|Oddělení|1|5|Dělit (Num2_Num1)|5|
-|Oddělení|0|1|Dělit (Num2_Num1)|Nekonečno|
+|Odčítání|5|1|Odečíst (Num2_Num1)|4|
+|Odčítání|0|1|Odečíst (Num2_Num1)|-1|
+|Oddělení|5|1|Dělit (Num2_Num1)|5|
+|Oddělení|1|0|Dělit (Num2_Num1)|Nekonečno|
 
-### <a name="add"></a>Přidat
+### <a name="add"></a>Přidání
 
-Zadejte zdrojové sloupce pomocí **sady sloupců**a potom do těchto hodnot přidejte číslo zadané v **druhém argumentu**.  
+Zadejte zdrojové sloupce pomocí **sady sloupců** a potom do těchto hodnot přidejte číslo zadané v **druhém argumentu**.  
 
-Chcete-li přidat hodnoty ve dvou sloupcích, zvolte sloupec nebo sloupce pomocí **sady sloupců**a pak vyberte druhý sloupec pomocí **druhého argumentu**.  
+Chcete-li přidat hodnoty ve dvou sloupcích, zvolte sloupec nebo sloupce pomocí **sady sloupců** a pak vyberte druhý sloupec pomocí **druhého argumentu**.  
 
 ### <a name="divide"></a>Dělení
 
@@ -284,7 +287,7 @@ Návrhář Azure Machine Learning podporuje nejrůznější operace zaokrouhlen�
 
 - Použijete-li konstantu, nastavte **typ přesnosti** na **konstantní** a pak zadejte počet číslic jako celé číslo v textovém poli **přesnost konstanty** . Pokud zadáte jiné než celé číslo, modul nevyvolává chybu, ale výsledky mohou být neočekávané.  
 
-- Chcete-li pro každý řádek datové sady použít jinou hodnotu přesnosti, nastavte **typ přesnosti** na **sadou sloupců**a pak vyberte sloupec, který obsahuje odpovídající hodnoty přesnosti.  
+- Chcete-li pro každý řádek datové sady použít jinou hodnotu přesnosti, nastavte **typ přesnosti** na **sadou sloupců** a pak vyberte sloupec, který obsahuje odpovídající hodnoty přesnosti.  
 
 ### <a name="ceiling"></a>Ceiling
 
@@ -296,15 +299,15 @@ Vrátí čtvercovou mez pro hodnoty v **sadě sloupců**.
 
 ### <a name="floor"></a>Floor
 
-Vrátí podlahovou hodnotu pro hodnoty ve **sloupci nastavené**na zadanou přesnost.  
+Vrátí podlahovou hodnotu pro hodnoty ve **sloupci nastavené** na zadanou přesnost.  
 
 ### <a name="mod"></a>Mod
 
-Vrátí zlomkovou část hodnot v **sadě sloupců**na zadanou přesnost.  
+Vrátí zlomkovou část hodnot v **sadě sloupců** na zadanou přesnost.  
 
 ### <a name="quotient"></a>Podíl
 
-Vrátí zlomkovou část hodnot v **sadě sloupců**na zadanou přesnost.  
+Vrátí zlomkovou část hodnot v **sadě sloupců** na zadanou přesnost.  
 
 ### <a name="remainder"></a>Zbytek
 
@@ -312,23 +315,23 @@ Vrátí zbytek hodnot v **sadě sloupců**.
 
 ### <a name="rounddigits"></a>RoundDigits
 
-Vrátí hodnoty v **sadě sloupců**zaokrouhlené pravidlem 4/5 na zadaný počet číslic.  
+Vrátí hodnoty v **sadě sloupců** zaokrouhlené pravidlem 4/5 na zadaný počet číslic.  
 
 ### <a name="rounddown"></a>RoundDown
 
-Vrátí hodnoty v **sadě sloupců**zaokrouhlené dolů na zadaný počet číslic.  
+Vrátí hodnoty v **sadě sloupců** zaokrouhlené dolů na zadaný počet číslic.  
 
 ### <a name="roundup"></a>RoundUp
 
-Vrátí hodnoty v **sadě sloupců**zaokrouhlené až na zadaný počet číslic.  
+Vrátí hodnoty v **sadě sloupců** zaokrouhlené až na zadaný počet číslic.  
 
 ### <a name="toeven"></a>ToEven
 
-Vrátí hodnoty v **sadě sloupců**zaokrouhlené na nejbližší celé číslo, sudé číslo.  
+Vrátí hodnoty v **sadě sloupců** zaokrouhlené na nejbližší celé číslo, sudé číslo.  
 
 ### <a name="toodd"></a>ToOdd
 
-Vrátí hodnoty v **sadě sloupců**zaokrouhlené na nejbližší celé, liché číslo.  
+Vrátí hodnoty v **sadě sloupců** zaokrouhlené na nejbližší celé, liché číslo.  
 
 ### <a name="truncate"></a>Truncate
 
@@ -580,7 +583,7 @@ Předpokládejme, že vaše datová sada obsahuje více sloupců, a vy přidáte
 |2|3|-1|4|6|-2|
 |0|1|-1|0|2|-2|
 
-Pokud potřebujete provádět složitější výpočty, můžete zřetězit více instancí **operace použití matematických operací**. Například můžete přidat dva sloupce pomocí jedné instance **použití matematické operace**a potom použít jinou instanci **operace Apply** (použít) k rozdělení součtu konstantou pro získání střední hodnoty.  
+Pokud potřebujete provádět složitější výpočty, můžete zřetězit více instancí **operace použití matematických operací**. Například můžete přidat dva sloupce pomocí jedné instance **použití matematické operace** a potom použít jinou instanci **operace Apply** (použít) k rozdělení součtu konstantou pro získání střední hodnoty.  
   
 Případně můžete použít jeden z následujících modulů k provedení všech výpočtů najednou, pomocí jazyka SQL, R nebo skriptu Python:
  

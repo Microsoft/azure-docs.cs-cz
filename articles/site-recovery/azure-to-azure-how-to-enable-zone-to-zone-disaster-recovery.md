@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 21bdbecdbba31eae112053bf81411781245cc170
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: d207a5629647ef3582f1e0490ef6ccc407f935f7
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97678690"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584834"
 ---
 # <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>Povolení zotavení po havárii virtuálních počítačů Azure mezi zónami dostupnosti
 
@@ -20,7 +20,7 @@ Tento článek popisuje, jak replikovat, převzetí služeb při selhání a nav
 
 >[!NOTE]
 >
->- Podpora zóny až po zotavení po havárii zóny je aktuálně omezená na pět oblastí: jihovýchodní Asie, Velká Británie – jih, Japonsko – východ, Austrálie – východ a Západní Evropa.  
+>- Podpora zóny pro zotavení po havárii zóny je aktuálně omezená na devět oblastí: jihovýchodní Asie, Japonsko – východ, Austrálie – východ, Velká Británie – jih, Západní Evropa, Severní Evropa, Střed USA, Východní USA a Západní USA 2.  
 >- Site Recovery nepřesouvá ani neukládají zákaznická data mimo oblast, ve které je nasazená, když zákazník používá k zotavení po havárii zóny. Zákazníci si můžou vybrat Recovery Services trezor z jiné oblasti, pokud si si je vyberou. Trezor Recovery Services obsahuje metadata, ale žádná skutečná zákaznická data.
 
 Služba Site Recovery přispívá k strategii pro provozní kontinuitu a zotavení po havárii tím, že během plánovaných a neplánovaných výpadků udržuje podnikové aplikace v provozu. Tato možnost zotavení po havárii se doporučuje, aby vaše aplikace zůstaly v provozu a v případě regionálních výpadků.
@@ -67,7 +67,7 @@ Jak je uvedeno výše, zóna pro zotavení po havárii zóny snižuje složitost
 
 Předtím, než nasadíte zónu do zóny zotavení po havárii pro vaše virtuální počítače, je důležité zajistit, aby byly na virtuálním počítači vzájemně ovladatelné další funkce s cílem zotavení po havárii zóny.
 
-|Příznak  | Příkaz support  |
+|Funkce  | Příkaz support  |
 |---------|---------|
 |Klasické virtuální počítače   |     Nepodporováno    |
 |Virtuální počítače ARM    |    Podporováno    |

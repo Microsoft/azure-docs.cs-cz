@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: b2e42dcaeb72a053f20afa47439d1825445b0ad8
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 9e9c4773b8f50d3d7b47f0eb94c039a42bee1d04
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225829"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584444"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Rychlý Start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET Core
 
@@ -62,7 +62,7 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal
-> Vzorový kód tohoto rychlého startu vyžaduje **identifikátor URI přesměrování** `https://localhost:44321/` a `https://localhost:44321/signin-oidc` **adresu URL pro odhlášení front-Channel** `https://localhost:44321/signout-oidc` . Koncový bod autorizace vydá tokeny ID žádosti.
+> Aby ukázka kódu v tomto rychlém startu fungovala, přidejte **identifikátor URI pro přesměrování** `https://localhost:44321/` a `https://localhost:44321/signin-oidc` a a **adresu URL pro odhlášení front-Channel** `https://localhost:44321/signout-oidc` . Koncový bod autorizace vydá tokeny ID žádosti.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Udělat změnu za mě]()
 >
@@ -150,7 +150,7 @@ Middleware *Microsoft. AspNetCore. Authentication* používá `Startup` třídu,
 
 Řádek, který obsahuje `.AddMicrosoftIdentityWebApp` , přidá do vaší aplikace ověřování Microsoft Identity Platform. Pak se nakonfiguruje tak, aby se přihlásila pomocí platformy Microsoft identity na základě informací v `AzureAD` části *appsettings.jsv* konfiguračním souboru:
 
-| *appsettings.jsna* klíč | Popis                                                                                                                                                          |
+| *appsettings.jsna* klíč | Description                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | **ID aplikace (klienta)** aplikace zaregistrované v Azure Portal.                                                                                       |
 | `Instance`             | Koncový bod služby tokenu zabezpečení (STS) pro ověření uživatele. Tato hodnota se obvykle `https://login.microsoftonline.com/` označuje jako veřejný cloud Azure. |

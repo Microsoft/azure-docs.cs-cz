@@ -8,13 +8,14 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
+ms.custom: subject-monitoring
 ms.date: 10/01/2020
-ms.openlocfilehash: 183d8b415ccb35d22dcc23ccf11d0707ad0778dd
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: c9b7230ca734bba1527ec5ecd975e1bae141a9b4
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963651"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584681"
 ---
 # <a name="monitor-azure-machine-learning"></a>Monitorování Azure Machine Learningu
 
@@ -164,7 +165,7 @@ Výstrahy pro Azure Machine Learning můžete zpřístupnit otevřením **výstr
 
 V následující tabulce jsou uvedeny běžné a doporučené pravidla upozorňujících na metriky pro Azure Machine Learning:
 
-| Typ upozornění | Podmínka | Popis |
+| Typ upozornění | Podmínka | Description |
 |:---|:---|:---|
 | Nasazení modelu se nezdařilo | Typ agregace: celkem, operátor: větší než, prahová hodnota: 0 | V případě neúspěchu jednoho nebo více nasazení modelů |
 | Procento využití kvóty | Typ agregace: průměr, operátor: větší než, prahová hodnota: 90| Pokud je procento využití kvóty větší než 90% |

@@ -13,12 +13,12 @@ ms.date: 01/28/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 080d7c29a9e6950117fe475445458a84fb092e94
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 9ae5d2279baab69d762a71b2f6400009747c16fe
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090200"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584209"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Řešení potíží s ověřením vydavatele
 Pokud se vám nedaří dokončit proces nebo došlo k neočekávanému chování při [ověřování vydavatele](publisher-verification-overview.md), měli byste začít následujícím způsobem, pokud obdržíte chyby nebo neočekávané chování: 
@@ -52,8 +52,8 @@ Níže jsou uvedeny některé běžné problémy, ke kterým může dojít běhe
     1. Přejít na svůj [partnerský profil](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) a ověřit, zda: 
         - ID MPN je správné. 
         - Neexistují žádné chyby nebo se zobrazuje zpráva "čeká na vyřízení akce" a stav ověření v souladu s platným obchodním profilem a informacemi o partnerovi znamená "autorizováno" nebo "úspěch".
-    1. Přejdete na [stránku správy tenanta MPN](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement) a ověřte, že je tenant, ve kterém je aplikace registrovaná, a že se k němu přihlašujete pomocí uživatelského účtu, který je na seznamu přidružených tenantů. Pokud potřebujete přidat dalšího tenanta, postupujte podle pokynů uvedených [tady](/partner-center/multi-tenant-account). Uvědomte si prosím, že všem globálním správcům každého tenanta, kterého přidáte, budou udělena globální oprávnění správce na účtu partnerského centra.
-    1. Navštivte [stránku Správa uživatelů MPN](https://partner.microsoft.com/pcv/users) a potvrďte uživatele, ke kterému se přihlašujete, protože je to buď globální správce, správce programu MPN nebo správce účtů. Pokud potřebujete přidat uživatele k roli v partnerském centru, postupujte podle pokynů uvedených [tady](/partner-center/create-user-accounts-and-set-permissions).
+    1. Přejdete na [stránku správy tenanta MPN](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement) a ověřte, že je tenant, ve kterém je aplikace registrovaná, a že se k němu přihlašujete pomocí uživatelského účtu, který je na seznamu přidružených tenantů. Pokud chcete přidat dalšího tenanta, postupujte podle pokynů uvedených [tady](/partner-center/multi-tenant-account). Uvědomte si prosím, že všem globálním správcům každého tenanta, kterého přidáte, budou udělena globální oprávnění správce na účtu partnerského centra.
+    1. Navštivte [stránku Správa uživatelů MPN](https://partner.microsoft.com/pcv/users) a potvrďte uživatele, ke kterému se přihlašujete, protože je to buď globální správce, správce programu MPN nebo správce účtů. Pokud chcete přidat uživatele k roli v partnerském centru, postupujte podle pokynů uvedených [tady](/partner-center/create-user-accounts-and-set-permissions).
 
 - **Když se přihlásím k portálu Azure AD, nevidím žádné registrované aplikace. Proč?** 
     Registrace aplikací mohla být vytvořena pomocí jiného uživatelského účtu v tomto tenantovi, účtu osobní/příjemce nebo v jiném tenantovi. Ujistěte se, že jste přihlášeni pomocí správného účtu v tenantovi, ve kterém byly vytvořeny registrace aplikací.

@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 1d1512447b5d0474f8fabe92dbc7a36259f4618c
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 620f77655f8281919ba0831a7e53af8cd28bc5f2
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754985"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583989"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Příručka k migraci ADAL do MSAL pro Java
 
@@ -80,7 +80,7 @@ MSAL for Java přidá [mezipaměť tokenů](msal-acquire-cache-tokens.md) pro zj
 
 Pokud v v 1.0 používáte `https://login.microsoftonline.com/common` autoritu, můžou se uživatelé přihlašovat pomocí libovolného účtu Azure Active Directory (AAD) (pro libovolnou organizaci).
 
-Pokud použijete `https://login.microsoftonline.com/common` autoritu v 2.0, uživatelé se mohou přihlašovat pomocí libovolné organizace AAD nebo dokonce i osobní účet společnosti Microsoft (MSA). Pokud chcete omezit přihlášení na libovolný účet AAD, v MSAL pro Java musíte použít `https://login.microsoftonline.com/organizations` autoritu (což je stejné chování jako u ADAL4J). Chcete-li zadat autoritu, nastavte `authority` parametr v metodě [PublicClientApplication. Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) při vytváření `PublicClientApplication` třídy.
+Pokud použijete `https://login.microsoftonline.com/common` autoritu v 2.0, uživatelé se mohou přihlašovat pomocí libovolné organizace AAD nebo dokonce i osobní účet společnosti Microsoft (MSA). Pokud chcete omezit přihlášení na libovolný účet AAD, v MSAL pro Java použijte `https://login.microsoftonline.com/organizations` autoritu (což je stejné chování jako u s ADAL4J). Chcete-li zadat autoritu, nastavte `authority` parametr v metodě [PublicClientApplication. Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) při vytváření `PublicClientApplication` třídy.
 
 ## <a name="v10-and-v20-tokens"></a>tokeny v 1.0 a v 2.0
 

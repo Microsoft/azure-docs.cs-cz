@@ -13,12 +13,12 @@ ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 7e80123f21efded92ab6d59d550965ca72427b1c
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 60ce3d32ffa20fc9117890528eac053d1af9fdf2
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064653"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583904"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Serializace mezipaměti tokenů v MSAL.NET
 Po [získání tokenu](msal-acquire-cache-tokens.md)je uložen do mezipaměti v rámci knihovny Microsoft Authentication Library (MSAL).  Kód aplikace by se měl pokusit získat token z mezipaměti před získáním tokenu jinou metodou.  Tento článek popisuje výchozí a vlastní serializaci mezipaměti tokenů v MSAL.NET.
@@ -34,7 +34,7 @@ V MSAL.NET je ve výchozím nastavení poskytována mezipaměť tokenů v pamět
 
 ## <a name="custom-serialization-for-windows-desktop-apps-and-web-appsweb-apis"></a>Vlastní serializace pro desktopové aplikace pro Windows a webové aplikace/webová rozhraní API
 
-Nezapomeňte, že vlastní serializace není k dispozici na mobilních platformách (UWP, Xamarin. iOS a Xamarin. Android). MSAL už pro tyto platformy definuje zabezpečený a výkonné mechanizmus serializace. Aplikace .NET Desktop a .NET Core ale mají proměnlivé architektury a MSAL nemůžou implementovat mechanizmus serializace pro obecné účely. Například weby se můžou rozhodnout ukládat tokeny do mezipaměti Redis nebo desktopové aplikace ukládají tokeny v zašifrovaném souboru. Takže serializace není poskytována předem. Chcete-li mít aplikaci trvalé mezipaměti tokenů v rozhraní .NET Desktop nebo .NET Core, je nutné tuto serializaci přizpůsobit.
+Nezapomeňte, že vlastní serializace není k dispozici na mobilních platformách (UWP, Xamarin. iOS a Xamarin. Android). MSAL už pro tyto platformy definuje zabezpečený a výkonné mechanizmus serializace. Aplikace .NET Desktop a .NET Core ale mají proměnlivé architektury a MSAL nemůžou implementovat mechanizmus serializace pro obecné účely. Například weby se můžou rozhodnout ukládat tokeny do mezipaměti Redis nebo desktopové aplikace ukládají tokeny v zašifrovaném souboru. Takže serializace není poskytována předem. Chcete-li mít aplikaci trvalé mezipaměti tokenů v rozhraní .NET Desktop nebo .NET Core, přizpůsobte serializaci.
 
 V serializaci mezipaměti tokenu se používají následující třídy a rozhraní:
 

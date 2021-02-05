@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 93282e79321f8999ddf8c737ebcb5ea76fbf6e02
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: e85a6ad4619897a6c655874b43e6a6b1a7723d3a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947971"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584597"
 ---
 > [!IMPORTANT]
 > Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti.
@@ -112,7 +112,7 @@ Pomocí nástroje pro rozpoznávání formulářů můžete vytvořit dva různ�
 
 `FormRecognizerClient` poskytuje operace pro:
 
- - Rozpoznávání polí formuláře a obsahu pomocí vlastních modelů, které jsou vyškolené k rozpoznávání vlastních formulářů.  Tyto hodnoty jsou vráceny v kolekci `RecognizedForm` objektů. Viz příklad [analýzy vlastních formulářů](#analyze-forms-with-a-custom-model).
+ - Rozpoznávání polí formuláře a obsahu pomocí vlastních modelů, které jsou vyškolené k analýze vlastních formulářů.  Tyto hodnoty jsou vráceny v kolekci `RecognizedForm` objektů. Viz příklad [analýzy vlastních formulářů](#analyze-forms-with-a-custom-model).
  - Rozpoznávání obsahu formuláře, včetně tabulek, řádků a slov, bez nutnosti vyškolit model.  Obsah formuláře se vrátí v kolekci `FormPage` objektů. Viz příklad [analýzy rozložení](#analyze-layout).
  - Rozpoznávání společných polí z příjmů spojených s námi pomocí předem připraveného modelu příjmu ve službě pro rozpoznávání formulářů. Tato pole a meta data jsou vrácena v kolekci `RecognizedForm` objektů. Viz příklad [Analýza účtenek](#analyze-receipts).
 
@@ -120,8 +120,8 @@ Pomocí nástroje pro rozpoznávání formulářů můžete vytvořit dva různ�
 
 `FormTrainingClient` poskytuje operace pro:
 
-- Školením vlastních modelů můžete rozpoznat všechna pole a hodnoty nalezené ve vlastních formulářích.  `CustomFormModel`Je vrácena indikace typu formuláře, který model rozpozná, a pole, která se budou extrahovat pro každý typ formuláře.
-- Školením vlastních modelů můžete rozpoznat konkrétní pole a hodnoty, které určíte tak, že označíte vlastní formuláře.  `CustomFormModel`Vrátí se typ označující pole, která model vyextrahuje, a také odhadovanou přesnost pro každé pole.
+- Školením vlastních modelů můžete analyzovat všechna pole a hodnoty nalezené ve vlastních formulářích.  `CustomFormModel`Je vrácena zpráva oznamující typy formulářů, které bude model analyzovat, a pole, která se budou extrahovat pro každý typ formuláře.
+- Školením vlastních modelů můžete analyzovat konkrétní pole a hodnoty, které určíte tak, že označíte vlastní formuláře.  `CustomFormModel`Vrátí se typ označující pole, která model vyextrahuje, a také odhadovanou přesnost pro každé pole.
 - Správa modelů vytvořených ve vašem účtu.
 - Zkopírování vlastního modelu z jednoho prostředku na rozpoznávání formulářů do jiného.
 
@@ -191,9 +191,9 @@ Také budete muset přidat odkazy na adresy URL pro školení a testování dat.
 
 ## <a name="analyze-layout"></a>Analyzovat rozložení
 
-Nástroj pro rozpoznávání formulářů můžete použít k rozpoznávání tabulek, řádků a slov v dokumentech, aniž byste museli proškolit model. Vrácená hodnota je kolekce objektů **FormPage** : jedna pro každou stránku v odeslaném dokumentu. 
+Nástroj pro rozpoznávání formulářů můžete použít k analýze tabulek, řádků a slov v dokumentech, aniž byste museli proškolit model. Vrácená hodnota je kolekce objektů **FormPage** : jedna pro každou stránku v odeslaném dokumentu. Další informace o extrakci rozložení najdete v [koncepční příručce pro rozložení](../../concept-layout.md).
 
-Pro rozpoznání obsahu souboru v dané adrese URL použijte `StartRecognizeContentFromUri` metodu.
+Chcete-li analyzovat obsah souboru v dané adrese URL, použijte `StartRecognizeContentFromUri` metodu.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_getcontent_call)]
 
@@ -239,89 +239,6 @@ Table 0 has 2 rows and 6 columns.
     Cell (1, 5) contains text: 'PT'.
 ```
 
-## <a name="analyze-receipts"></a>Analyzovat účtenky
-
-V této části se dozvíte, jak rozpoznat a extrahovat společná pole z příjmů z USA pomocí předem připraveného modelu příjemů.
-
-Chcete-li rozpoznat účtenky z adresy URL, použijte `StartRecognizeReceiptsFromUri` metodu. 
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
-
-> [!TIP]
-> Můžete také rozpoznat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) , jako je například **StartRecognizeReceipts**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
-
-Vrácená hodnota je kolekce `RecognizedReceipt` objektů: jedna pro každou stránku v odeslaném dokumentu. Následující kód zpracuje příjem na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_print)]
-
-### <a name="output"></a>Výstup 
-
-```console
-Form Page 1 has 18 lines.
-    Line 0 has 1 word, and text: 'Contoso'.
-    Line 1 has 1 word, and text: 'Address:'.
-    Line 2 has 3 words, and text: 'Invoice For: Microsoft'.
-    Line 3 has 4 words, and text: '1 Redmond way Suite'.
-    Line 4 has 3 words, and text: '1020 Enterprise Way'.
-    Line 5 has 3 words, and text: '6000 Redmond, WA'.
-    Line 6 has 3 words, and text: 'Sunnayvale, CA 87659'.
-    Line 7 has 1 word, and text: '99243'.
-    Line 8 has 2 words, and text: 'Invoice Number'.
-    Line 9 has 2 words, and text: 'Invoice Date'.
-    Line 10 has 3 words, and text: 'Invoice Due Date'.
-    Line 11 has 1 word, and text: 'Charges'.
-    Line 12 has 2 words, and text: 'VAT ID'.
-    Line 13 has 1 word, and text: '34278587'.
-    Line 14 has 1 word, and text: '6/18/2017'.
-    Line 15 has 1 word, and text: '6/24/2017'.
-    Line 16 has 1 word, and text: '$56,651.49'.
-    Line 17 has 1 word, and text: 'PT'.
-Table 0 has 2 rows and 6 columns.
-    Cell (0, 0) contains text: 'Invoice Number'.
-    Cell (0, 1) contains text: 'Invoice Date'.
-    Cell (0, 2) contains text: 'Invoice Due Date'.
-    Cell (0, 3) contains text: 'Charges'.
-    Cell (0, 5) contains text: 'VAT ID'.
-    Cell (1, 0) contains text: '34278587'.
-    Cell (1, 1) contains text: '6/18/2017'.
-    Cell (1, 2) contains text: '6/24/2017'.
-    Cell (1, 3) contains text: '$56,651.49'.
-    Cell (1, 5) contains text: 'PT'.
-Merchant Name: 'Contoso Contoso', with confidence 0.516
-Transaction Date: '6/10/2019 12:00:00 AM', with confidence 0.985
-Item:
-    Name: '8GB RAM (Black)', with confidence 0.916
-    Total Price: '999', with confidence 0.559
-Item:
-    Name: 'SurfacePen', with confidence 0.858
-    Total Price: '99.99', with confidence 0.386
-Total: '1203.39', with confidence '0.774'
-```
-
-## <a name="analyze-business-cards"></a>Analýza vizitek
-
-#### <a name="version-20"></a>[verze 2,0](#tab/ga)
-
-> [!IMPORTANT]
-> Tato funkce není ve vybrané verzi rozhraní API k dispozici.
-
-#### <a name="version-21-preview"></a>[verze 2,1 Preview](#tab/preview)
-
-
-V této části se dozvíte, jak rozpoznat a extrahovat společná pole z anglických vizitek pomocí předem připraveného modelu.
-
-K rozpoznání vizitek z adresy URL použijte `StartRecognizeBusinessCardsFromUriAsync` metodu. 
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_call)]
-
-> [!TIP]
-> Můžete také rozpoznat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) , jako je například **StartRecognizeBusinessCards**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
-
-Vrácená hodnota je kolekce `RecognizedForm` objektů: jedna pro každou kartu v dokumentu. Následující kód zpracuje vizitku na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
-
----
 
 ## <a name="analyze-invoices"></a>Analyzovat faktury
 
@@ -332,14 +249,14 @@ Vrácená hodnota je kolekce `RecognizedForm` objektů: jedna pro každou kartu 
 
 #### <a name="version-21-preview"></a>[verze 2,1 Preview](#tab/preview)
 
-V této části se dozvíte, jak rozpoznat a extrahovat společná pole z prodejních faktur pomocí předem připraveného modelu.
+V této části se dozvíte, jak pomocí předem připraveného modelu analyzovat a extrahovat běžná pole z prodejních faktur. Další informace o analýze faktur najdete v [koncepční příručce pro fakturaci](../../concept-invoices.md).
 
-Chcete-li rozpoznat faktury z adresy URL, použijte `StartRecognizeInvoicesFromUriAsync` metodu. 
+Chcete-li analyzovat faktury z adresy URL, použijte `StartRecognizeInvoicesFromUriAsync` metodu. 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_call)]
 
 > [!TIP]
-> Můžete také rozpoznat místní obrázky faktury. Podívejte se na metody [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) , jako je například **StartRecognizeInvoices**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
+> Můžete také analyzovat místní obrázky faktury. Podívejte se na metody [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) , jako je například **StartRecognizeInvoices**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
 
 Vrácená hodnota je kolekce `RecognizedForm` objektů: jedna pro každou fakturu v odeslaném dokumentu. Následující kód zpracuje fakturu na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
 
@@ -357,13 +274,13 @@ Tato část ukazuje, jak vytvořit model s vlastními daty. Vycvičený model m�
 
 ### <a name="train-a-model-without-labels"></a>Výuka modelu bez popisků
 
-Výukové vlastní modely vám umožní rozpoznat všechna pole a hodnoty nalezené ve vlastních formulářích bez ručního označení školicích dokumentů. Následující metoda naplňuje model v dané sadě dokumentů a vytiskne stav modelu do konzoly. 
+Výukové vlastní modely vám umožní analyzovat všechna pole a hodnoty nalezené ve vlastních formulářích bez ručního označení školicích dokumentů. Následující metoda naplňuje model v dané sadě dokumentů a vytiskne stav modelu do konzoly. 
 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_train)]
 
 
-Vrácený `CustomFormModel` objekt obsahuje informace o typech formulářů, které může model rozpoznat, a pole, která může extrahovat z každého typu formuláře. Následující blok kódu vytiskne tyto informace do konzoly nástroje.
+Vrácený `CustomFormModel` objekt obsahuje informace o typech formulářů, které může model analyzovat, a pole, která může extrahovat z každého typu formuláře. Následující blok kódu vytiskne tyto informace do konzoly nástroje.
 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_train_response)]
@@ -560,6 +477,90 @@ Field 'Azure.AI.FormRecognizer.Models.FieldValue:
     Confidence: '0.114
    ...
 ```
+
+## <a name="analyze-receipts"></a>Analyzovat účtenky
+
+V této části se dozvíte, jak pomocí předem připraveného příjmového modelu analyzovat a extrahovat běžná pole z příjmů spojených s námi. Další informace o analýze příjmů najdete v [koncepční příručce pro příjem](../../concept-receipts.md).
+
+K analýze potvrzení z adresy URL použijte `StartRecognizeReceiptsFromUri` metodu. 
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
+
+> [!TIP]
+> Můžete také analyzovat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) , jako je například **StartRecognizeReceipts**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
+
+Vrácená hodnota je kolekce `RecognizedReceipt` objektů: jedna pro každou stránku v odeslaném dokumentu. Následující kód zpracuje příjem na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_print)]
+
+### <a name="output"></a>Výstup 
+
+```console
+Form Page 1 has 18 lines.
+    Line 0 has 1 word, and text: 'Contoso'.
+    Line 1 has 1 word, and text: 'Address:'.
+    Line 2 has 3 words, and text: 'Invoice For: Microsoft'.
+    Line 3 has 4 words, and text: '1 Redmond way Suite'.
+    Line 4 has 3 words, and text: '1020 Enterprise Way'.
+    Line 5 has 3 words, and text: '6000 Redmond, WA'.
+    Line 6 has 3 words, and text: 'Sunnayvale, CA 87659'.
+    Line 7 has 1 word, and text: '99243'.
+    Line 8 has 2 words, and text: 'Invoice Number'.
+    Line 9 has 2 words, and text: 'Invoice Date'.
+    Line 10 has 3 words, and text: 'Invoice Due Date'.
+    Line 11 has 1 word, and text: 'Charges'.
+    Line 12 has 2 words, and text: 'VAT ID'.
+    Line 13 has 1 word, and text: '34278587'.
+    Line 14 has 1 word, and text: '6/18/2017'.
+    Line 15 has 1 word, and text: '6/24/2017'.
+    Line 16 has 1 word, and text: '$56,651.49'.
+    Line 17 has 1 word, and text: 'PT'.
+Table 0 has 2 rows and 6 columns.
+    Cell (0, 0) contains text: 'Invoice Number'.
+    Cell (0, 1) contains text: 'Invoice Date'.
+    Cell (0, 2) contains text: 'Invoice Due Date'.
+    Cell (0, 3) contains text: 'Charges'.
+    Cell (0, 5) contains text: 'VAT ID'.
+    Cell (1, 0) contains text: '34278587'.
+    Cell (1, 1) contains text: '6/18/2017'.
+    Cell (1, 2) contains text: '6/24/2017'.
+    Cell (1, 3) contains text: '$56,651.49'.
+    Cell (1, 5) contains text: 'PT'.
+Merchant Name: 'Contoso Contoso', with confidence 0.516
+Transaction Date: '6/10/2019 12:00:00 AM', with confidence 0.985
+Item:
+    Name: '8GB RAM (Black)', with confidence 0.916
+    Total Price: '999', with confidence 0.559
+Item:
+    Name: 'SurfacePen', with confidence 0.858
+    Total Price: '99.99', with confidence 0.386
+Total: '1203.39', with confidence '0.774'
+```
+
+## <a name="analyze-business-cards"></a>Analýza vizitek
+
+#### <a name="version-20"></a>[verze 2,0](#tab/ga)
+
+> [!IMPORTANT]
+> Tato funkce není ve vybrané verzi rozhraní API k dispozici.
+
+#### <a name="version-21-preview"></a>[verze 2,1 Preview](#tab/preview)
+
+
+Tato část ukazuje, jak pomocí předem připraveného modelu analyzovat a extrahovat běžná pole z anglických vizitek. Další informace o analýze vizitky najdete v tématu [koncepční příručka pro obchodní karty](../../concept-business-cards.md).
+
+K analýze obchodních karet z adresy URL použijte `StartRecognizeBusinessCardsFromUriAsync` metodu. 
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_call)]
+
+> [!TIP]
+> Můžete také analyzovat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) , jako je například **StartRecognizeBusinessCards**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
+
+Vrácená hodnota je kolekce `RecognizedForm` objektů: jedna pro každou kartu v dokumentu. Následující kód zpracuje vizitku na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
+
+---
 
 ## <a name="manage-custom-models"></a>Správa vlastních modelů
 

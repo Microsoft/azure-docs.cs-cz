@@ -9,20 +9,20 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 661b0bbf1aa389dc76567d95ad917548255a1b35
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: ee57ccb82e771ee8ab93b09e476a94df32278069
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845587"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585105"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Sestavení sady školicích dat pro vlastní model
 
 Když použijete vlastní model pro rozpoznávání formulářů, poskytnete vlastní školicí data do operace [vlastního modelu vlaku](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) , aby model mohl vytvořit výukové formuláře pro konkrétní odvětví. V této příručce se dozvíte, jak shromažďovat a připravovat data pro efektivní výuku modelu.
 
-Pokud provádíte školení bez ručních popisků, můžete použít 5 vyplněné formuláře nebo prázdnou formu (v názvu souboru musíte uvést slovo "Empty") a dva vyplněné formuláře. I v případě, že máte dost vyplněné formuláře, může přidání prázdného formuláře do sady školicích dat zlepšit přesnost modelu.
+Potřebujete alespoň pět vyplněných tvarů stejného typu.
 
-Pokud chcete použít manuálně popsání školicích dat, musíte začínat aspoň s 5 vyplněnými formuláři stejného typu. Kromě požadované datové sady můžete stále používat neoznačené formuláře a prázdný formulář.
+Pokud chcete použít manuálně popsání školicích dat, musíte začínat aspoň s 5 vyplněnými formuláři stejného typu. Kromě požadované datové sady můžete stále používat neoznačené formuláře.
 
 ## <a name="custom-model-input-requirements"></a>Požadavky na vstup vlastního modelu
 

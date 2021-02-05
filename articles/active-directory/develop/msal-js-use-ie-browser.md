@@ -13,12 +13,12 @@ ms.date: 05/16/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 428405fc200751d2581ad9ca6e8ec97382594c09
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 73dd7877b399d34a009c9fe479550eb1bf6dc0f1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064840"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583972"
 ---
 # <a name="known-issues-on-internet-explorer-browsers-msaljs"></a>Známé problémy s prohlížeči Internet Explorer (MSAL.js)
 
@@ -39,7 +39,7 @@ Je to proto, že Internet Explorer nativně nepodporuje příslibů JavaScriptu.
 Nasazení aplikace do produkčního prostředí (například ve službě Azure Web Apps) normálně funguje bez problémů, pokud koncový uživatel přijal místní nabídky. Otestovali jsme ji pomocí aplikace Internet Explorer 11.
 
 ### <a name="running-locally"></a>Místní spuštění
-Pokud chcete místně spustit a ladit aplikaci spuštěnou v aplikaci Internet Explorer, je třeba mít na paměti následující skutečnosti (Předpokládejme, že chcete aplikaci spustit jako *http://localhost:1234* ):
+Pokud chcete místně spustit a ladit aplikaci spuštěnou v aplikaci Internet Explorer, uvědomte si následující skutečnosti (Předpokládejme, že chcete aplikaci spustit jako *http://localhost:1234* ):
 
 - Internet Explorer má bezpečnostní mechanismus s názvem chráněný režim, který brání správnému fungování MSAL.js. V rámci příznaků se po přihlášení může stránka přesměrovat na http://localhost:1234/null .
 

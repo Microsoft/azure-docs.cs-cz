@@ -8,13 +8,14 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
+ms.custom: subject-monitoring
 ms.date: 10/02/2020
-ms.openlocfilehash: d231de8e262194cd7dda2462a3f54d7d531eb63c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 6da9c6775a6d5c96bc52183fefc3e5330272e9ff
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95542078"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585122"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Referenční informace k datům monitorování Azure Machine Learning
 
@@ -26,7 +27,7 @@ V této části jsou uvedené všechny automaticky shromážděné metriky platf
 
 **Modelování**
 
-| Metric | Jednotka | Popis |
+| Metric | Jednotka | Description |
 | ----- | ----- | ----- |
 | Nasazení modelu selhalo. | Počet | Počet nasazení modelů, které selhaly. |
 | Nasazení modelu začalo | Počet | Počet spuštěných nasazení modelu |
@@ -38,7 +39,7 @@ V této části jsou uvedené všechny automaticky shromážděné metriky platf
 
 Informace o kvótách jsou jenom Azure Machine Learning výpočetní služby.
 
-| Metric | Jednotka | Popis |
+| Metric | Jednotka | Description |
 | ----- | ----- | ----- |
 | Aktivní jádra | Počet | Počet aktivních výpočetních jader. |
 | Aktivní uzly | Počet | Počet aktivních uzlů. |
@@ -56,7 +57,7 @@ Informace o kvótách jsou jenom Azure Machine Learning výpočetní služby.
 
 **Prostředek**
 
-| Metric | Jednotka | Popis |
+| Metric | Jednotka | Description |
 | ----- | ----- | ----- |
 | CpuUtilization | Procento | Kolik procent procesoru bylo využito pro daný uzel během běhu nebo úlohy. Tato metrika je publikována pouze v případě, že úloha běží na uzlu. Jedna úloha může používat jeden nebo více uzlů. Tato metrika je publikována na jeden uzel. |
 | GpuUtilization | Procento | Kolik procent GPU bylo využito pro daný uzel během běhu nebo úlohy. Jeden uzel může mít jeden nebo více GPU. Tato metrika je publikována na základě GPU na jeden uzel. |
@@ -65,7 +66,7 @@ Informace o kvótách jsou jenom Azure Machine Learning výpočetní služby.
 
 Informace o spuštěných školicích kurzech.
 
-| Metric | Jednotka | Popis |
+| Metric | Jednotka | Description |
 | ----- | ----- | ----- |
 | Dokončená spuštění | Počet | Počet dokončených spuštění. |
 | Neúspěšná spuštění | Počet | Počet neúspěšných spuštění. |
@@ -77,7 +78,7 @@ Další informace o tom, jaké dimenze metriky jsou, najdete v tématu multidime
 
 Azure Machine Learning má k jeho metrikám přidružené následující dimenze.
 
-| Dimenze | Popis |
+| Dimenze | Description |
 | ---- | ---- |
 | Název clusteru | Název prostředku Compute Cluster. K dispozici pro všechny metriky kvót. |
 | Název rodiny virtuálních počítačů | Název rodiny virtuálních počítačů, kterou cluster používá. K dispozici pro procento využití kvóty. |
@@ -104,7 +105,7 @@ Platné hodnoty pro dimenzi RunType jsou:
 
 V následující tabulce jsou uvedeny operace týkající se Azure Machine Learning, které mohou být vytvořeny v protokolu aktivit.
 
-| Operace | Popis |
+| Operace | Description |
 |:---|:---|
 | Vytvoří nebo aktualizuje pracovní prostor Machine Learning. | Pracovní prostor se vytvořil nebo aktualizoval. |
 | CheckComputeNameAvailability | Zkontroluje, jestli se tento výpočetní název už používá. |

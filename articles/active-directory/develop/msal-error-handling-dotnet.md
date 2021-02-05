@@ -13,12 +13,12 @@ ms.date: 11/26/2020
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 381416384cacd44bdb1b08801f7b3174c9504d0b
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 565acd745ba5d7fdec71f306d3851e599838f7d9
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761191"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584040"
 ---
 # <a name="handle-errors-and-exceptions-in-msalnet"></a>Zpracování chyb a výjimek v MSAL.NET
 
@@ -38,8 +38,8 @@ Zde jsou uvedeny běžné výjimky, které mohou být vyvolány, a některé mo�
 
 | Výjimka | Kód chyby | Omezení rizik|
 | --- | --- | --- |
-| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception) | AADSTS65001: uživatel nebo správce nesouhlasí s používáním aplikace s ID {appId} s názvem {appName}. Odešlete interaktivní žádost o autorizaci pro tohoto uživatele a prostředek.| Nejdřív musíte získat souhlas s uživatelem. Pokud nepoužíváte .NET Core (který nemá žádné webové uživatelské rozhraní), zavolejte (pouze jednou) `AcquireTokeninteractive` . Pokud používáte .NET Core nebo ho nechcete provést `AcquireTokenInteractive` , uživatel může přejít na adresu URL, aby mohl udělit souhlas: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read` . pro volání `AcquireTokenInteractive` : `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
-| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception) | AADSTS50079: uživatel musí používat službu [Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md).| Nedochází k žádnému zmírnění. Pokud je pro vašeho tenanta nakonfigurované MFA a Azure Active Directory (AAD) se rozhodne ho vyhovět, budete se muset vrátit k interaktivnímu toku, například `AcquireTokenInteractive` nebo `AcquireTokenByDeviceCode` .|
+| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception) | AADSTS65001: uživatel nebo správce nesouhlasí s používáním aplikace s ID {appId} s názvem {appName}. Odešlete interaktivní žádost o autorizaci pro tohoto uživatele a prostředek.| Nejdřív Získejte souhlas s uživatelem. Pokud nepoužíváte .NET Core (který nemá žádné webové uživatelské rozhraní), zavolejte (pouze jednou) `AcquireTokeninteractive` . Pokud používáte .NET Core nebo ho nechcete provést `AcquireTokenInteractive` , uživatel může přejít na adresu URL, aby mohl udělit souhlas: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read` . pro volání `AcquireTokenInteractive` : `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
+| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception) | AADSTS50079: uživatel musí používat službu [Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md).| Nedochází k žádnému zmírnění. Pokud je pro vašeho tenanta nakonfigurované MFA a Azure Active Directory (AAD) se rozhodne ho vyhovět, vraťte se k interaktivnímu toku, například `AcquireTokenInteractive` nebo `AcquireTokenByDeviceCode` .|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception) |AADSTS90010: typ grantu se nepodporuje přes koncové body */běžné* nebo */consumers* . Použijte */Organizations* nebo koncový bod pro konkrétního tenanta. Použili jste */běžné*.| Jak je vysvětleno ve zprávě z Azure AD, autorita musí mít tenanta nebo jinak */Organizations*.|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception) | AADSTS70002: tělo žádosti musí obsahovat následující parametr: `client_secret or client_assertion` .| Tato výjimka může být vyvolána, pokud vaše aplikace nebyla registrována jako veřejná klientská aplikace v Azure AD. V Azure Portal upravte manifest aplikace a nastavte `allowPublicClient` na `true` . |
 | [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception)| `unknown_user Message`: Nepovedlo se identifikovat přihlášeného uživatele.| Knihovna se nemohla dotázat na aktuálně přihlášeného uživatele Windows nebo tento uživatel není připojen ke službě AD nebo Azure AD (nepodporují se žádné připojené uživatele). Zmírnění 1: na UWP ověřte, že má aplikace následující možnosti: podnikové ověřování, privátní sítě (klient a Server), informace o uživatelském účtu. Zmírnění 2: implementace vlastní logiky pro načtení uživatelského jména (například john@contoso.com ) a použití `AcquireTokenByIntegratedWindowsAuth` formuláře, který přebírá uživatelské jméno.|

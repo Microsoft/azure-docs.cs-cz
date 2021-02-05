@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1fd4279cd35e54e2e04f88973c4a825218a75142
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 4cd762d6c264d95ecb1bd0f3f4c3a4d96eb5a57d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131117"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585088"
 ---
 # <a name="form-recognizer-prebuilt-business-cards-model"></a>Model předdefinovaných obchodních karet pro rozpoznávání formulářů 
 
@@ -35,7 +35,7 @@ Předem připravené rozhraní API na vizitce extrahuje klíčová pole z obchod
 |:-----|:----|:----|:----|
 | ContactNames | pole objektů | Název kontaktu extrahovaný z vizitky | [{"FirstName": "Jan"; "LastName": "Chvojková"}] |
 | FirstName | řetězec | První (zadaný) jméno kontaktu | Jan | 
-| LastName | řetězec | Poslední (rodina) jméno kontaktu |   DOE | 
+| LastName | řetězec | Poslední (rodina) jméno kontaktu |     DOE | 
 | CompanyName | pole řetězců | Název společnosti extrahovaný z vizitky | ["Contoso"] | 
 | Oddělení | pole řetězců | Oddělení nebo organizace kontaktu | ["R&D"] | 
 | JobTitles | pole řetězců | Uvedený pracovní titul kontaktu | ["Software inženýr"] | 
@@ -45,7 +45,7 @@ Předem připravené rozhraní API na vizitce extrahuje klíčová pole z obchod
 | MobilePhones | pole telefonních čísel | Číslo mobilního telefonu extrahované z vizitky | ["+ 19876543210"] |
 | Faxy | pole telefonních čísel | Telefonní číslo faxu extrahované z vizitky | ["+ 19876543211"] |
 | WorkPhones | pole telefonních čísel | Firemní telefonní číslo extrahované z vizitky | ["+ 19876543231"] |
-| OtherPhones    | pole telefonních čísel | Jiné telefonní číslo extrahované z vizitky | ["+ 19876543233"] |
+| OtherPhones     | pole telefonních čísel | Jiné telefonní číslo extrahované z vizitky | ["+ 19876543233"] |
 
 
 Rozhraní API pro vizitky může také vracet veškerý rozpoznaný text z vizitky. Tento výstup optického rozpoznávání znaků je zahrnutý v odpovědi JSON.  

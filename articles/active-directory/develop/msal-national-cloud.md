@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 2f9396e20ae0f426dddd57b32297cfe98e135c44
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 01a69dbf9230154b74145f932b678d6bbebbde08
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225812"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583955"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Použití MSAL v národním cloudovém prostředí
 
@@ -40,7 +40,7 @@ Než začnete, ujistěte se, že splňujete tyto požadavky.
 
 ### <a name="choose-the-appropriate-identities"></a>Zvolit odpovídající identity
 
-Aplikace [Azure Government](../../azure-government/index.yml) můžou k ověřování uživatelů používat identity státní správy Azure AD a veřejné identity Azure AD. Vzhledem k tomu, že můžete použít některou z těchto identit, musíte se rozhodnout, jaký koncový bod autority byste měli zvolit pro svůj scénář:
+Aplikace [Azure Government](../../azure-government/index.yml) můžou k ověřování uživatelů používat identity státní správy Azure AD a veřejné identity Azure AD. Vzhledem k tomu, že můžete použít některou z těchto identit, určete koncový bod autority, který byste měli zvolit pro váš scénář:
 
 - Azure AD Public: běžně se používá v případě, že vaše organizace už má veřejného tenanta Azure AD, aby podporoval Microsoft 365 (veřejný nebo RSZ) nebo jinou aplikaci.
 - Azure AD vláda: běžně se používá v případě, že vaše organizace už má tenanta státní správy Azure AD podporovat Office 365 (na úrovni RSZ nebo DoD) nebo vytváří nového tenanta ve službě Azure AD.

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 7acfa9c2ffdd4cdd62e965041cdc42dc44d469c5
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 875fa2ad5a3a18c0e2582425a6528730234ac8ed
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845581"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585071"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Předdefinovaný model faktury pro rozpoznávání formulářů
 
@@ -74,7 +74,7 @@ Výstup JSON má 3 části:
 
 Služba faktura bude extrahovat pole text, tabulky a 26 faktur. Níže jsou uvedená pole extrahovaná z faktury v odpovědi na výstup JSON (výstup níže používá tuto [ukázkovou fakturu](./media/sample-invoice.jpg)).  
 
-|Název| Typ | Popis | Text | Hodnota (standardní výstup) |
+|Název| Typ | Description | Text | Hodnota (standardní výstup) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | řetězec | Fakturovaná zákazník | Společnost Microsoft Corp |  |
 | CustomerId | řetězec | Referenční ID pro zákazníka | CID – 12345 |  |
@@ -91,7 +91,7 @@ Služba faktura bude extrahovat pole text, tabulky a 26 faktur. Níže jsou uved
 | BillingAddressRecipient | řetězec | Název přidružený k BillingAddress | Služby společnosti Microsoft | |
 | ShippingAddress | řetězec | Explicitní dodací adresa pro zákazníka | 123 expedice St, Redmond, WA, 98052 | |
 | ShippingAddressRecipient | řetězec | Název přidružený k ShippingAddress | Doručení Microsoftu | |
-| Jedna | číslo | Pole mezisoučtu identifikované na této faktuře | 100,00 $ | 100 | 
+| Jedna | číslo | Pole mezisoučtu identifikované na této faktuře | $100,00 | 100 | 
 | TotalTax | číslo | Celkové daňové pole uvedené na této faktuře | $10,00 | 10 |
 | InvoiceTotal | číslo | Celkové nové poplatky přidružené k této faktuře | $110,00 | 110 |
 | AmountDue |  číslo | Celková částka z důvodu dodavatele | $610,00 | 610 |
@@ -107,7 +107,7 @@ Služba faktura bude extrahovat pole text, tabulky a 26 faktur. Níže jsou uved
 ## <a name="next-steps"></a>Další kroky
 
 - Vyzkoušejte si vlastní faktury a ukázky v [ukázkovém uživatelském rozhraní pro rozpoznávání formulářů](https://fott-preview.azurewebsites.net/).
-- Přihlaste se k [rychlému startu pro rozpoznávání formulářů](quickstarts/client-library.md) a začněte psát aplikaci pro zpracování faktur pomocí nástroje pro rozpoznávání formulářů v jazyce podle vašeho výběru.
+- Přihlaste se k [rychlému startu pro rozpoznávání formulářů](quickstarts/client-library.md) a začněte psát aplikaci pro zpracování faktur pomocí nástroje pro rozpoznávání formulářů ve vývojovém jazyce podle vašeho výběru.
 
 ## <a name="see-also"></a>Viz také
 

@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 2f9fa6e7ef9a7ee8ea7dd2a09622f26f6fd9739e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 00407b4a55b3c074fa77d4c3664f6e218c23fe21
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223121"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584504"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Monitorování aplikací Apache Spark pomocí nástroje synapse Studio
 
@@ -155,6 +155,26 @@ Otevřete **monitorování** a pak vyberte **Apache Spark aplikace**. Pokud chce
 6. Podívejte se na informace o chybě.
 
    ![informace o neúspěšné úloze](./media/how-to-monitor-spark-applications/failed-job-info.png)
+
+## <a name="compare-apache-spark-applications"></a>Porovnání aplikací Apache Spark
+Klikněte na tlačítko **Porovnat aplikace** a vyberte aplikaci pro porovnání výkonu, uživatelé mohou intuitivní zobrazení rozdílů mezi těmito dvěma aplikacemi.
+
+![porovnat aplikace](./media/how-to-monitor-spark-applications/compare-applications.png)
+
+1. Pomocí myši najeďte na aplikaci a zobrazí se ikona **Porovnat aplikace** .
+
+2. Klikněte na ikonu **Porovnat aplikace** a automaticky se zobrazí stránka porovnat aplikace.
+
+3. Kliknutím na tlačítko **Zvolit aplikaci** otevřete stránku **Zvolit aplikaci porovnání** .
+
+4. Když zvolíte aplikaci porovnání, uživatelé musí buď zadat adresu URL aplikace, nebo zvolit ze seznamu opakování. Pak klikněte na tlačítko **OK** . 
+
+   ![zvolit aplikaci porovnání](./media/how-to-monitor-spark-applications/choose-comparison-application.png)
+
+5. Výsledek porovnání se zobrazí na stránce porovnat aplikace.
+
+   ![výsledek porovnání](./media/how-to-monitor-spark-applications/comparison-result.png)
+
 
 ## <a name="next-steps"></a>Další kroky
 

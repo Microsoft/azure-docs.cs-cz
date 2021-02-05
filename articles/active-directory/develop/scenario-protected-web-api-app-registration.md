@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c3d9cd5e710eb263707e87c4afe0f08809b8d50c
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 5d93df0b6d59e013c22e138942ab4651784421ae
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756467"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584376"
 ---
 # <a name="protected-web-api-app-registration"></a>Chráněné webové rozhraní API: registrace aplikace
 
@@ -58,7 +58,7 @@ Další nastavení specifická pro webová rozhraní API jsou vystavená rozhran
 
 Rozsahy mají obvykle formu `resourceURI/scopeName` . Pro Microsoft Graph mají obory zkratky. Například `User.Read` je zástupce pro `https://graph.microsoft.com/user.read` .
 
-Během registrace aplikace je potřeba definovat tyto parametry:
+Během registrace aplikace definujte tyto parametry:
 
 - Identifikátor URI prostředku
 - Jeden nebo více oborů
@@ -68,7 +68,7 @@ Portál pro registraci aplikací standardně doporučuje použít identifikátor
 
 Pro klientské aplikace se obory zobrazují jako *delegovaná oprávnění* a role aplikace se jako oprávnění aplikace pro vaše webové rozhraní API zobrazují jako *oprávnění aplikace* .
 
-Obory se také zobrazí v okně pro vyjádření souhlasu, které jsou prezentovány uživatelům vaší aplikace. Proto je nutné zadat odpovídající řetězce, které popisují rozsah:
+Obory se také zobrazí v okně pro vyjádření souhlasu, které jsou prezentovány uživatelům vaší aplikace. Proto zadejte odpovídající řetězce, které popisují rozsah:
 
 - Jak je vidět uživatel.
 - Jak je vidět správce klienta, který může udělit souhlas správce.
@@ -99,7 +99,7 @@ V této části se dozvíte, jak zaregistrovat chráněné webové rozhraní API
 
 #### <a name="exposing-application-permissions-app-roles"></a>Vystavení oprávnění aplikace (aplikační role)
 
-Chcete-li zveřejnit oprávnění aplikace, je nutné upravit manifest.
+Chcete-li zveřejnit oprávnění aplikace, upravte manifest.
 
 1. V registraci aplikace pro vaši aplikaci vyberte možnost **manifest**.
 1. Chcete-li upravit manifest, vyhledejte `appRoles` nastavení a přidejte aplikační role. Definice rolí jsou k dispozici v následujícím ukázkovém bloku JSON.

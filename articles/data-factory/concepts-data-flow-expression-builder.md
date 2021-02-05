@@ -6,19 +6,19 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/30/2020
-ms.openlocfilehash: 8257be28344ac7a03738c80a003c1229282ae305
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.date: 02/04/2021
+ms.openlocfilehash: 753f201fbde5d9e7100b6e257f8dc79e4462d7b6
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145700"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584919"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Výrazy sestavení v mapování toku dat
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-V rámci mapování toku dat jsou jako výrazy zadány mnoho vlastností transformace. Tyto výrazy se skládají z hodnot sloupců, parametrů, funkcí, operátorů a literálů, které se vyhodnotí na datový typ Spark v době běhu. Mapování toků dat má vyhrazené prostředí, které vám pomůže při sestavování těchto výrazů s názvem **Tvůrce výrazů** . Pro zvýraznění, kontrolu syntaxe a automatického dokončování se používá dokončování kódu  [IntelliSense](/visualstudio/ide/using-intellisense) , protože Tvůrce výrazů je navržený tak, aby se usnadnily vytváření toků dat. Tento článek vysvětluje, jak pomocí Tvůrce výrazů efektivně sestavovat obchodní logiku.
+V rámci mapování toku dat jsou jako výrazy zadány mnoho vlastností transformace. Tyto výrazy se skládají z hodnot sloupců, parametrů, funkcí, operátorů a literálů, které se vyhodnotí na datový typ Spark v době běhu. Mapování toků dat má vyhrazené prostředí, které vám pomůže při sestavování těchto výrazů s názvem **Tvůrce výrazů**. Pro zvýraznění, kontrolu syntaxe a automatického dokončování se používá dokončování kódu  [IntelliSense](/visualstudio/ide/using-intellisense) , protože Tvůrce výrazů je navržený tak, aby se usnadnily vytváření toků dat. Tento článek vysvětluje, jak pomocí Tvůrce výrazů efektivně sestavovat obchodní logiku.
 
 ![Tvůrce výrazů](media/data-flow/expresion-builder.png "Tvůrce výrazů")
 
@@ -32,7 +32,7 @@ V některých transformacích, jako je [Filtr](data-flow-filter.md), se kliknut�
 
 ![Modré pole výrazu](media/data-flow/expressionbox.png "Modré pole výrazu")
 
-Když odkazujete na sloupce v rámci párové nebo skupinové podmínky, může výraz extrahovat hodnoty ze sloupců. Pokud chcete vytvořit výraz, vyberte **vypočítaný sloupec** .
+Když odkazujete na sloupce v rámci párové nebo skupinové podmínky, může výraz extrahovat hodnoty ze sloupců. Pokud chcete vytvořit výraz, vyberte **vypočítaný sloupec**.
 
 ![Možnost vypočítaného sloupce](media/data-flow/computedcolumn.png "Možnost vypočítaného sloupce")
 
@@ -46,7 +46,7 @@ V části mapování toků dat mohou být výrazy tvořeny hodnotami sloupců, p
 
 ![Elementy výrazu](media/data-flow/expression-elements.png "Elementy výrazu")
 
-### <a name="functions"></a>Funkce
+### <a name="functions"></a>Functions
 
 Mapování datových toků obsahuje integrované funkce a operátory, které lze použít ve výrazech. Seznam dostupných funkcí najdete v [referenčních informacích k mapování jazyka toku dat](data-flow-expression-functions.md).
 
@@ -106,6 +106,9 @@ Některé příklady interpolace řetězců:
 * ```"Total cost with sales tax is {round(totalcost * 1.08,2)}"```
 
 * ```"{:playerName} is a {:playerRating} player"```
+
+> [!NOTE]
+> Při použití syntaxe interpolování řetězce ve zdrojových dotazech SQL musí být řetězec dotazu na jednom řádku bez operátoru/n.
 
 ## <a name="commenting-expressions"></a>Výrazy s komentářem
 

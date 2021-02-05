@@ -8,13 +8,13 @@ ms.topic: reference
 ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
-ms.custom: monitoring
-ms.openlocfilehash: 16ae2f9e74202aff47e58a22dbe21a28d8280a7e
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.custom: subject-monitoring
+ms.openlocfilehash: 6dd53358b67eef481948d3349afc07086ea26fcd
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780718"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584902"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Referenční informace k datům monitorování úložiště objektů BLOB v Azure
 
@@ -38,7 +38,7 @@ Azure Storage poskytuje v Azure Monitor následující metriky kapacity.
 
 Tato tabulka zobrazuje [metriky služby Blob Storage](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices).
 
-| Metrika | Popis |
+| Metric | Popis |
 | ------------------- | ----------------- |
 | BlobCapacity | Celkem úložiště objektů BLOB použité v účtu úložiště. <br/><br/> Jednotka: bajtů <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 <br/> Dimensions: **BlobType** a **BlobTier** ([definice](#metrics-dimensions)) |
 | BlobCount    | Počet objektů BLOB uložených v účtu úložiště. <br/><br/> Jednotka: počet <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 <br/> Dimensions: **BlobType** a **BlobTier** ([definice](#metrics-dimensions)) |
@@ -64,7 +64,7 @@ Azure Storage podporuje pro metriky v Azure Monitor následující dimenze.
 
 ### <a name="dimensions-specific-to-blob-storage"></a>Dimenze specifické pro úložiště objektů BLOB
 
-| Název dimenze | Popis |
+| Název dimenze | Description |
 | ------------------- | ----------------- |
 | **BlobType** | Typ objektu BLOB pouze pro metriky objektů BLOB Podporované hodnoty jsou **BlockBlob**, **PageBlob** a **Azure Data Lake Storage**. Doplňovací objekty blob jsou součástí **BlockBlob**. |
 | **BlobTier** | Služba Azure Storage nabízí různé úrovně přístupu, které umožňují ukládat data objektů BLOB nejefektivnějším způsobem. Další informace najdete v [Azure Storage úrovni objektů BLOB](../blobs/storage-blob-storage-tiers.md). Mezi podporované hodnoty patří: <br/> <li>**Hot**: vrstva Hot</li> <li>**Studená**: studená vrstva</li> <li>**Archivace**: archivní vrstva</li> <li>**Premium**: úroveň Premium pro objekt blob bloku</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: typy vrstev pro objekt blob stránky úrovně Premium</li> <li>**Standard**: typ vrstvy pro objekt blob stránky úrovně Standard</li> <li>**Nevrstvený**: typ vrstvy pro účet úložiště pro obecné účely v1</li> |

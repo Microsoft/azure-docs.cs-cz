@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: Klientská knihovna pro rozpoznávání formulářů pro .NET'
-description: Použijte klientskou knihovnu pro rozpoznávání formulářů pro .NET k vytvoření aplikace pro zpracování formulářů, která extrahuje páry klíč/hodnota a tabulková data z vlastních dokumentů.
+title: 'Rychlý Start: REST API pro rozpoznávání formulářů'
+description: Použijte REST API pro rozpoznávání formulářů k vytvoření aplikace pro zpracování formulářů, která extrahuje páry klíč/hodnota a tabulková data z vlastních dokumentů.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 31e1a0d912c6623f57d4ea256968102604ce42ff
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 5b00388f1a68560582120e92bb6fceb4f1e153d3
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132272"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584596"
 ---
 > [!NOTE]
 > V tomto průvodci se k provádění volání REST API používá oblé. K dispozici je také [ukázkový kód na GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/FormRecognizer/rest) , který ukazuje, jak volat rozhraní REST API pomocí Pythonu.
@@ -34,7 +34,7 @@ ms.locfileid: "98132272"
 
 ## <a name="analyze-layout"></a>Analyzovat rozložení
 
-Nástroj pro rozpoznávání formulářů můžete použít k rozpoznání a extrahování tabulek, řádků a slov v dokumentech, aniž byste museli přeškolit model. Před spuštěním příkazu proveďte tyto změny:
+Nástroj pro rozpoznávání formulářů můžete použít k analýze a extrakci tabulek, výběrových značek, textu a struktury v dokumentech, aniž byste museli vyškolit model. Další informace o extrakci rozložení najdete v [koncepční příručce pro rozložení](../../concept-layout.md). Před spuštěním příkazu proveďte tyto změny:
 
 1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
 1. Nahraďte `{subscription key}` klíčem předplatného, který jste zkopírovali z předchozího kroku.
@@ -91,7 +91,7 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeR
 
 Dostanete `200 (success)` odpověď s obsahem JSON.
 
-Podívejte se na následující obrázek faktury a příslušný výstup JSON. Výstup byl zkrácen pro zjednodušení. `"readResults"`Uzel obsahuje všechny řádky textu s příslušným umístěním ohraničovacího rámečku na stránce. `"selectionMarks"`Uzel (ve verzi 2.1 Preview) zobrazuje každou značku výběru (zaškrtávací políčko, přepínač) a zda má stav "vybráno" nebo "nevybrané". `"pageResults"`Pole zobrazuje všechny části textu v tabulkách, z nichž každá má souřadnici řádku sloupce.
+Podívejte se na následující obrázek faktury a příslušný výstup JSON. Výstup byl zkrácen pro zjednodušení. `"readResults"`Uzel obsahuje všechny řádky textu s příslušným umístěním ohraničovacího rámečku na stránce. `"selectionMarks"`Uzel (ve verzi 2.1 Preview) zobrazuje každou značku výběru (zaškrtávací políčko, přepínač) a zda má stav "vybráno" nebo "nevybrané". `"pageResults"`Oddíl obsahuje extrahované tabulky. Pro každou tabulku jsou extrahovány řádky text, řádek a sloupec, řádková a sloupec, ohraničovací rámeček a další.
 
 :::image type="content" source="../../media/contoso-invoice.png" alt-text="Dokument contoso pro výpis projektu s tabulkou":::
 
@@ -319,9 +319,661 @@ Podívejte se na následující obrázek faktury a příslušný výstup JSON. V
 
 ---
 
+
+
+## <a name="analyze-invoices"></a>Analyzovat faktury
+
+# <a name="version-20"></a>[verze 2,0](#tab/v2-0)
+
+> [!IMPORTANT]
+> Tato funkce není ve vybrané verzi rozhraní API k dispozici.
+
+# <a name="version-21-preview"></a>[verze 2,1 Preview](#tab/v2-1)
+
+Chcete-li zahájit analýzu faktury, použijte následující příkaz: kudrlinkou. Další informace o analýze faktur najdete v [koncepční příručce pro fakturaci](../../concept-invoices.md). Před spuštěním příkazu proveďte tyto změny:
+
+1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
+1. Nahraďte `{your invoice URL}` adresou URL dokumentu faktury.
+1. Místo `{subscription key}` použijte váš klíč předplatného.
+
+```bash
+curl -v -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyze"
+-H "Content-Type: application/json"
+-H "Ocp-Apim-Subscription-Key: {subscription key}"
+--data-ascii "{ \"source\": \"{your invoice URL}\"}"
+```
+
+Dostanete `202 (Success)` odpověď, která zahrnuje hlavičku **Operations – Location Location** . Hodnota této hlavičky obsahuje ID operace, pomocí které můžete zadat dotaz na stav asynchronní operace a získat výsledky.
+
+```console
+https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+```
+
+### <a name="get-invoice-results"></a>Získat výsledky faktury
+
+Poté, co jste volali rozhraní API pro **[analýzu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291)** , zavoláte rozhraní API **[výsledků získat analýzu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9acb78c40a2533aee83)** , které získá stav operace a extrahovaná data. Před spuštěním příkazu proveďte tyto změny:
+
+1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali pomocí klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
+1. Nahraďte `{resultId}` ID operace z předchozího kroku.
+1. Místo `{subscription key}` použijte váš klíč předplatného.
+
+```bash
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyzeResults/{resultId}"
+-H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
+### <a name="examine-the-response"></a>Prozkoumání odpovědi
+
+Dostanete `200 (Success)` odpověď s výstupem JSON. `"readResults"`Pole obsahuje všechny řádky textu, které byly extrahovány z faktury, `"pageResults"` zahrnuje tabulky a výběry, které byly extrahovány z faktury a `"documentResults"` pole obsahuje informace o klíč/hodnotě pro nejrelevantnější části faktury.
+
+Podívejte se na následující dokument faktury a příslušný výstup JSON. Obsah JSON byl zkrácen pro čitelnost.
+
+* [Ukázková faktura](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-invoice.pdf)
+
+```json
+{
+    "status": "succeeded",
+    "createdDateTime": "2020-11-06T23:32:11Z",
+    "lastUpdatedDateTime": "2020-11-06T23:32:20Z",
+    "analyzeResult": {
+        "version": "2.1.0",
+        "readResults": [{
+            "page": 1,
+            "angle": 0,
+            "width": 8.5,
+            "height": 11,
+            "unit": "inch"
+        }],
+        "pageResults": [{
+            "page": 1,
+            "tables": [{
+                "rows": 3,
+                "columns": 4,
+                "cells": [{
+                    "rowIndex": 0,
+                    "columnIndex": 0,
+                    "text": "QUANTITY",
+                    "boundingBox": [0.4953,
+                    5.7306,
+                    1.8097,
+                    5.7306,
+                    1.7942,
+                    6.0122,
+                    0.4953,
+                    6.0122]
+                },
+                {
+                    "rowIndex": 0,
+                    "columnIndex": 1,
+                    "text": "DESCRIPTION",
+                    "boundingBox": [1.8097,
+                    5.7306,
+                    5.7529,
+                    5.7306,
+                    5.7452,
+                    6.0122,
+                    1.7942,
+                    6.0122]
+                },
+                ...
+                ],
+                "boundingBox": [0.4794,
+                5.7132,
+                8.0158,
+                5.714,
+                8.0118,
+                6.5627,
+                0.4757,
+                6.5619]
+            },
+            {
+                "rows": 2,
+                "columns": 6,
+                "cells": [{
+                    "rowIndex": 0,
+                    "columnIndex": 0,
+                    "text": "SALESPERSON",
+                    "boundingBox": [0.4979,
+                    4.963,
+                    1.8051,
+                    4.963,
+                    1.7975,
+                    5.2398,
+                    0.5056,
+                    5.2398]
+                },
+                {
+                    "rowIndex": 0,
+                    "columnIndex": 1,
+                    "text": "P.O. NUMBER",
+                    "boundingBox": [1.8051,
+                    4.963,
+                    3.3047,
+                    4.963,
+                    3.3124,
+                    5.2398,
+                    1.7975,
+                    5.2398]
+                },
+                ...
+                ],
+                "boundingBox": [0.4976,
+                4.961,
+                7.9959,
+                4.9606,
+                7.9959,
+                5.5204,
+                0.4972,
+                5.5209]
+            }]
+        }],
+        "documentResults": [{
+            "docType": "prebuilt:invoice",
+            "pageRange": [1,
+            1],
+            "fields": {
+                "AmountDue": {
+                    "type": "number",
+                    "valueNumber": 610,
+                    "text": "$610.00",
+                    "boundingBox": [7.3809,
+                    7.8153,
+                    7.9167,
+                    7.8153,
+                    7.9167,
+                    7.9591,
+                    7.3809,
+                    7.9591],
+                    "page": 1,
+                    "confidence": 0.875
+                },
+                "BillingAddress": {
+                    "type": "string",
+                    "valueString": "123 Bill St, Redmond WA, 98052",
+                    "text": "123 Bill St, Redmond WA, 98052",
+                    "boundingBox": [0.594,
+                    4.3724,
+                    2.0125,
+                    4.3724,
+                    2.0125,
+                    4.7125,
+                    0.594,
+                    4.7125],
+                    "page": 1,
+                    "confidence": 0.997
+                },
+                "BillingAddressRecipient": {
+                    "type": "string",
+                    "valueString": "Microsoft Finance",
+                    "text": "Microsoft Finance",
+                    "boundingBox": [0.594,
+                    4.1684,
+                    1.7907,
+                    4.1684,
+                    1.7907,
+                    4.2837,
+                    0.594,
+                    4.2837],
+                    "page": 1,
+                    "confidence": 0.998
+                },
+                ...                
+            }
+        }]
+    }
+}
+```
+
+---
+
+## <a name="train-a-custom-model"></a>Trénování vlastního modelu
+
+Abyste mohli vytvořit vlastní model, budete potřebovat sadu školicích dat v objektu blob Azure Storage. Potřebujete minimálně pět vyplněných formulářů (dokumenty PDF a image) stejného typu nebo struktury. Tipy a možnosti pro sestavení vašich školicích dat najdete v tématu [Vytvoření školicích dat sady pro vlastní model](../../build-training-data-set.md) .
+
+> [!NOTE]
+> U modelů s vysokou přesností můžete proškolit pomocí ručně označených dat. Přečtěte si příručku Průvodce Začínáme [s popisky](../../quickstarts/label-tool.md) .
+
+Pokud chcete pomocí dokumentů v kontejneru objektů BLOB v Azure vytvořit model pro rozpoznávání formulářů, zavolejte rozhraní API pro **[vlastní modely](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** , a to spuštěním následujícího příkazu složeného. Před spuštěním příkazu proveďte tyto změny:
+
+1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
+1. Nahraďte `{subscription key}` klíčem předplatného, který jste zkopírovali z předchozího kroku.
+1. Nahraďte `{SAS URL}` adresou URL sdíleného přístupového podpisu (SAS) kontejneru úložiště objektů BLOB v Azure. [!INCLUDE [get SAS URL](../sas-instructions.md)]
+
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="Načítání adresy URL SAS":::
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)    
+```bash
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ \"source\": \""{SAS URL}"\"}"
+```
+# <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)    
+```bash
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ \"source\": \""{SAS URL}"\"}"
+```
+
+---
+
+
+Dostanete `201 (Success)` odpověď s hlavičkou **umístění** . Hodnota tohoto záhlaví je ID nového vyučeného modelu.
+
+### <a name="get-training-results"></a>Získat výsledky školení
+
+Po spuštění operace vlaku použijete novou operaci, **[získáte vlastní model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetCustomModel)** a zkontrolujete stav školení. Předejte ID modelu do tohoto volání rozhraní API, abyste zkontrolovali stav školení:
+
+1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali pomocí klíče předplatného pro rozpoznávání formulářů.
+1. Nahraďte `{subscription key}` klíčem předplatného.
+1. Nahraďte `{model ID}` ID modelu, které jste obdrželi v předchozím kroku.
+
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)    
+```bash
+curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+# <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)    
+```bash
+curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+    
+---
+
+`200 (Success)`V následujícím formátu obdržíte odpověď s textem JSON. Všimněte si `"status"` pole. Tato hodnota bude mít hodnotu `"ready"` po dokončení školení. Pokud model nedokončíte, budete ho muset znovu spustit opětovným spuštěním příkazu. Pro mezi voláními doporučujeme interval o délce jedné sekundy nebo více.
+
+`"modelId"`Pole obsahuje ID modelu, který budete školením. Budete ho potřebovat pro další krok.
+
+```json
+{
+  "modelInfo":{
+    "status":"ready",
+    "createdDateTime":"2019-10-08T10:20:31.957784",
+    "lastUpdatedDateTime":"2019-10-08T14:20:41+00:00",
+    "modelId":"1cfb372bab404ba3aa59481ab2c63da5"
+  },
+  "trainResult":{
+    "trainingDocuments":[
+      {
+        "documentName":"invoices\\Invoice_1.pdf",
+        "pages":1,
+        "errors":[
+
+        ],
+        "status":"succeeded"
+      },
+      {
+        "documentName":"invoices\\Invoice_2.pdf",
+        "pages":1,
+        "errors":[
+
+        ],
+        "status":"succeeded"
+      },
+      {
+        "documentName":"invoices\\Invoice_3.pdf",
+        "pages":1,
+        "errors":[
+
+        ],
+        "status":"succeeded"
+      },
+      {
+        "documentName":"invoices\\Invoice_4.pdf",
+        "pages":1,
+        "errors":[
+
+        ],
+        "status":"succeeded"
+      },
+      {
+        "documentName":"invoices\\Invoice_5.pdf",
+        "pages":1,
+        "errors":[
+
+        ],
+        "status":"succeeded"
+      }
+    ],
+    "errors":[
+
+    ]
+  },
+  "keys":{
+    "0":[
+      "Address:",
+      "Invoice For:",
+      "Microsoft",
+      "Page"
+    ]
+  }
+}
+```
+
+## <a name="analyze-forms-with-a-custom-model"></a>Analýza formulářů pomocí vlastního modelu
+
+V dalším kroku použijete svůj nově vyškolený model k analýze dokumentu a extrakci párů klíč-hodnota a tabulek z něj. Zavolejte rozhraní API pro **[analýzu formuláře](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)** spuštěním následujícího příkazu složeného. Před spuštěním příkazu proveďte tyto změny:
+
+1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali z klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
+1. Nahraďte `{model ID}` ID modelu, které jste obdrželi v předchozí části.
+1. Nahraďte `{SAS URL}` adresou URL SAS k souboru ve službě Azure Storage. Postupujte podle kroků v části školení, ale místo získání adresy URL SAS pro celý kontejner objektů BLOB Získejte jeden pro konkrétní soubor, který chcete analyzovat.
+1. Místo `{subscription key}` použijte váš klíč předplatného.
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)    
+
+```bash
+curl -v "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ \"source\": \""{SAS URL}"\" } "
+```
+
+# <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)    
+```bash
+curl -v "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ \"source\": \""{SAS URL}"\" } "
+```
+    
+---
+
+
+
+Dostanete `202 (Success)` odpověď s hlavičkou **umístění operace** . Hodnota této hlavičky zahrnuje ID výsledků, které používáte ke sledování výsledků operace analyzovat. Uložte toto ID výsledků pro další krok.
+
+### <a name="get-the-analyze-results"></a>Získat výsledky analýzy
+
+Pro dotaz na výsledky operace analyzovat volejte rozhraní API pro výsledek příkazu Get **[analyze Form](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeFormResult)** .
+
+1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali z klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
+1. Nahraďte `{result ID}` ID, které jste obdrželi v předchozí části.
+1. Místo `{subscription key}` použijte váš klíč předplatného.
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)    
+```bash
+curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+# <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)    
+```bash
+curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+---
+
+`200 (Success)`V následujícím formátu obdržíte odpověď s textem JSON. Výstup byl zkrácen pro zjednodušení. Všimněte si `"status"` pole poblíž dolního okraje. Tato hodnota bude mít hodnotu `"succeeded"` po dokončení operace analyzovat. Pokud se operace analýzy nedokončila, budete se muset znovu dotázat na službu opětovným spuštěním příkazu. Pro mezi voláními doporučujeme interval o délce jedné sekundy nebo více.
+
+Ve vlastních modelech vyškolených bez popisků jsou přidružení párů klíč/hodnota a tabulky v `"pageResults"` uzlu výstupu JSON. Ve vlastních modelech vyškolených pomocí popisků jsou přidružení dvojic klíč/hodnota v `"documentResults"` uzlu. Pokud jste zadali také extrakci prostého textu prostřednictvím parametru adresy URL *includeTextDetails* , `"readResults"` uzel zobrazí obsah a pozice veškerého textu v dokumentu.
+
+Tento ukázkový výstup JSON byl zkrácen pro zjednodušení.
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)
+```JSON
+{
+  "status": "succeeded",
+  "createdDateTime": "2020-08-21T00:46:25Z",
+  "lastUpdatedDateTime": "2020-08-21T00:46:32Z",
+  "analyzeResult": {
+    "version": "2.0.0",
+    "readResults": [
+      {
+        "page": 1,
+        "angle": 0,
+        "width": 8.5,
+        "height": 11,
+        "unit": "inch",
+        "lines": [
+          {
+            "text": "Project Statement",
+            "boundingBox": [
+              5.0153,
+              0.275,
+              8.0944,
+              0.275,
+              8.0944,
+              0.7125,
+              5.0153,
+              0.7125
+            ],
+            "words": [
+              {
+                "text": "Project",
+                "boundingBox": [
+                  5.0153,
+                  0.275,
+                  6.2278,
+                  0.275,
+                  6.2278,
+                  0.7125,
+                  5.0153,
+                  0.7125
+                ]
+              },
+              {
+                "text": "Statement",
+                "boundingBox": [
+                  6.3292,
+                  0.275,
+                  8.0944,
+                  0.275,
+                  8.0944,
+                  0.7125,
+                  6.3292,
+                  0.7125
+                ]
+              }
+            ]
+          }, 
+        ...
+        ]
+      }
+    ],
+    "pageResults": [
+      {
+        "page": 1,
+        "keyValuePairs": [
+          {
+            "key": {
+              "text": "Date:",
+              "boundingBox": [
+                6.9722,
+                1.0264,
+                7.3417,
+                1.0264,
+                7.3417,
+                1.1931,
+                6.9722,
+                1.1931
+              ],
+              "elements": [
+                "#/readResults/0/lines/2/words/0"
+              ]
+            },
+            "confidence": 1
+          },
+         ...
+        ],
+        "tables": [
+          {
+            "rows": 4,
+            "columns": 5,
+            "cells": [
+              {
+                "text": "Training Date",
+                "rowIndex": 0,
+                "columnIndex": 0,
+                "boundingBox": [
+                  0.6931,
+                  4.2444,
+                  1.5681,
+                  4.2444,
+                  1.5681,
+                  4.4125,
+                  0.6931,
+                  4.4125
+                ],
+                "confidence": 1,
+                "rowSpan": 1,
+                "columnSpan": 1,
+                "elements": [
+                  "#/readResults/0/lines/15/words/0",
+                  "#/readResults/0/lines/15/words/1"
+                ],
+                "isHeader": true,
+                "isFooter": false
+              },
+              ...
+            ]
+          }
+        ], 
+        "clusterId": 0
+      }
+    ],
+    "documentResults": [],
+    "errors": []
+  }
+}
+```    
+# <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)    
+```JSON
+{
+  "status": "succeeded",
+  "createdDateTime": "2020-08-21T01:13:28Z",
+  "lastUpdatedDateTime": "2020-08-21T01:13:42Z",
+  "analyzeResult": {
+    "version": "2.1.0",
+    "readResults": [
+      {
+        "page": 1,
+        "angle": 0,
+        "width": 8.5,
+        "height": 11,
+        "unit": "inch",
+        "lines": [
+          {
+            "text": "Project Statement",
+            "boundingBox": [
+              5.0444,
+              0.3613,
+              8.0917,
+              0.3613,
+              8.0917,
+              0.6718,
+              5.0444,
+              0.6718
+            ],
+            "words": [
+              {
+                "text": "Project",
+                "boundingBox": [
+                  5.0444,
+                  0.3587,
+                  6.2264,
+                  0.3587,
+                  6.2264,
+                  0.708,
+                  5.0444,
+                  0.708
+                ]
+              },
+              {
+                "text": "Statement",
+                "boundingBox": [
+                  6.3361,
+                  0.3635,
+                  8.0917,
+                  0.3635,
+                  8.0917,
+                  0.6396,
+                  6.3361,
+                  0.6396
+                ]
+              }
+            ]
+          }, 
+          ...
+        ] 
+      }
+    ],
+    "pageResults": [
+      {
+        "page": 1,
+        "keyValuePairs": [
+          {
+            "key": {
+              "text": "Date:",
+              "boundingBox": [
+                6.9833,
+                1.0615,
+                7.3333,
+                1.0615,
+                7.3333,
+                1.1649,
+                6.9833,
+                1.1649
+              ],
+              "elements": [
+                "#/readResults/0/lines/2/words/0"
+              ]
+            },
+            "value": {
+              "text": "9/10/2020",
+              "boundingBox": [
+                7.3833,
+                1.0802,
+                7.925,
+                1.0802,
+                7.925,
+                1.174,
+                7.3833,
+                1.174
+              ],
+              "elements": [
+                "#/readResults/0/lines/3/words/0"
+              ]
+            },
+            "confidence": 1
+          },
+          ...
+        ], 
+        "tables": [
+          {
+            "rows": 5,
+            "columns": 5,
+            "cells": [
+              {
+                "text": "Training Date",
+                "rowIndex": 0,
+                "columnIndex": 0,
+                "boundingBox": [
+                  0.6944,
+                  4.2779,
+                  1.5625,
+                  4.2779,
+                  1.5625,
+                  4.4005,
+                  0.6944,
+                  4.4005
+                ],
+                "confidence": 1,
+                "rowSpan": 1,
+                "columnSpan": 1,
+                "elements": [
+                  "#/readResults/0/lines/15/words/0",
+                  "#/readResults/0/lines/15/words/1"
+                ],
+                "isHeader": true,
+                "isFooter": false
+              },
+              ...
+            ]
+          }
+        ], 
+        "clusterId": 0
+      }
+    ], 
+    "documentResults": [],
+    "errors": []
+  }
+}
+``` 
+---
+
+### <a name="improve-results"></a>Zlepšení výsledků
+
+[!INCLUDE [improve results](../improve-results-unlabeled.md)]
+
 ## <a name="analyze-receipts"></a>Analyzovat účtenky
 
-Chcete-li zahájit analýzu účtenky, zavolejte rozhraní API **[analýzy pro příjem](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync)** pomocí příkazu složeného níže. Před spuštěním příkazu proveďte tyto změny:
+V této části se dozvíte, jak pomocí předem připraveného příjmového modelu analyzovat a extrahovat běžná pole z příjmů spojených s námi. Další informace o analýze příjmů najdete v [koncepční příručce pro příjem](../../concept-receipts.md). Chcete-li zahájit analýzu účtenky, zavolejte rozhraní API **[analýzy pro příjem](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync)** pomocí příkazu složeného níže. Před spuštěním příkazu proveďte tyto změny:
 
 1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
 1. Nahraďte `{your receipt URL}` adresou URL obrázku účtenky.
@@ -708,7 +1360,7 @@ Podívejte se na následující obrázek účtenky a příslušný výstup JSON.
 
 # <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)  
 
-Pokud chcete začít s analýzou vizitky, zavoláte rozhraní API pro **[analýzu vizitky](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)** pomocí příkazu kudrlinkou níže. Před spuštěním příkazu proveďte tyto změny:
+Tato část ukazuje, jak pomocí předem připraveného modelu analyzovat a extrahovat běžná pole z anglických vizitek. Další informace o analýze vizitky najdete v tématu [koncepční příručka pro obchodní karty](../../concept-business-cards.md). Pokud chcete začít s analýzou vizitky, zavoláte rozhraní API pro **[analýzu vizitky](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)** pomocí příkazu kudrlinkou níže. Před spuštěním příkazu proveďte tyto změny:
 
 1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
 1. Nahraďte `{your receipt URL}` adresou URL obrázku účtenky.
@@ -861,661 +1513,11 @@ Skript vytiskne odpovědi na konzolu, dokud se nedokončí operace **analyzovat 
 
 ---
 
-## <a name="analyze-invoices"></a>Analyzovat faktury
-
-# <a name="version-20"></a>[verze 2,0](#tab/v2-0)
-
-> [!IMPORTANT]
-> Tato funkce není ve vybrané verzi rozhraní API k dispozici.
-
-# <a name="version-21-preview"></a>[verze 2,1 Preview](#tab/v2-1)
-
-Chcete-li zahájit analýzu faktury, zavolejte následující příkaz **[analyzovat fakturu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291)** API pomocí příkazu kudrlinkou níže. Před spuštěním příkazu proveďte tyto změny:
-
-1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
-1. Nahraďte `{your invoice URL}` adresou URL dokumentu faktury.
-1. Místo `{subscription key}` použijte váš klíč předplatného.
-
-```bash
-curl -v -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyze"
--H "Content-Type: application/json"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
---data-ascii "{ \"source\": \"{your invoice URL}\"}"
-```
-
-Dostanete `202 (Success)` odpověď, která zahrnuje hlavičku **Operations – Location Location** . Hodnota této hlavičky obsahuje ID operace, pomocí které můžete zadat dotaz na stav asynchronní operace a získat výsledky.
-
-```console
-https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
-```
-
-### <a name="get-invoice-results"></a>Získat výsledky faktury
-
-Poté, co jste volali rozhraní API pro **analýzu** , zavoláte rozhraní API **[výsledků získat analýzu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9acb78c40a2533aee83)** , které získá stav operace a extrahovaná data. Před spuštěním příkazu proveďte tyto změny:
-
-1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali pomocí klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
-1. Nahraďte `{resultId}` ID operace z předchozího kroku.
-1. Místo `{subscription key}` použijte váš klíč předplatného.
-
-```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyzeResults/{resultId}"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-
-### <a name="examine-the-response"></a>Prozkoumání odpovědi
-
-Dostanete `200 (Success)` odpověď s výstupem JSON. `"readResults"`Pole obsahuje všechny řádky textu, které byly extrahovány z faktury, `"pageResults"` zahrnuje tabulky a výběry, které byly extrahovány z faktury a `"documentResults"` pole obsahuje informace o klíč/hodnotě pro nejrelevantnější části faktury.
-
-Podívejte se na následující dokument faktury a příslušný výstup JSON. Obsah JSON byl zkrácen pro čitelnost.
-
-* [Ukázková faktura](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-invoice.pdf)
-
-```json
-{
-    "status": "succeeded",
-    "createdDateTime": "2020-11-06T23:32:11Z",
-    "lastUpdatedDateTime": "2020-11-06T23:32:20Z",
-    "analyzeResult": {
-        "version": "2.1.0",
-        "readResults": [{
-            "page": 1,
-            "angle": 0,
-            "width": 8.5,
-            "height": 11,
-            "unit": "inch"
-        }],
-        "pageResults": [{
-            "page": 1,
-            "tables": [{
-                "rows": 3,
-                "columns": 4,
-                "cells": [{
-                    "rowIndex": 0,
-                    "columnIndex": 0,
-                    "text": "QUANTITY",
-                    "boundingBox": [0.4953,
-                    5.7306,
-                    1.8097,
-                    5.7306,
-                    1.7942,
-                    6.0122,
-                    0.4953,
-                    6.0122]
-                },
-                {
-                    "rowIndex": 0,
-                    "columnIndex": 1,
-                    "text": "DESCRIPTION",
-                    "boundingBox": [1.8097,
-                    5.7306,
-                    5.7529,
-                    5.7306,
-                    5.7452,
-                    6.0122,
-                    1.7942,
-                    6.0122]
-                },
-                ...
-                ],
-                "boundingBox": [0.4794,
-                5.7132,
-                8.0158,
-                5.714,
-                8.0118,
-                6.5627,
-                0.4757,
-                6.5619]
-            },
-            {
-                "rows": 2,
-                "columns": 6,
-                "cells": [{
-                    "rowIndex": 0,
-                    "columnIndex": 0,
-                    "text": "SALESPERSON",
-                    "boundingBox": [0.4979,
-                    4.963,
-                    1.8051,
-                    4.963,
-                    1.7975,
-                    5.2398,
-                    0.5056,
-                    5.2398]
-                },
-                {
-                    "rowIndex": 0,
-                    "columnIndex": 1,
-                    "text": "P.O. NUMBER",
-                    "boundingBox": [1.8051,
-                    4.963,
-                    3.3047,
-                    4.963,
-                    3.3124,
-                    5.2398,
-                    1.7975,
-                    5.2398]
-                },
-                ...
-                ],
-                "boundingBox": [0.4976,
-                4.961,
-                7.9959,
-                4.9606,
-                7.9959,
-                5.5204,
-                0.4972,
-                5.5209]
-            }]
-        }],
-        "documentResults": [{
-            "docType": "prebuilt:invoice",
-            "pageRange": [1,
-            1],
-            "fields": {
-                "AmountDue": {
-                    "type": "number",
-                    "valueNumber": 610,
-                    "text": "$610.00",
-                    "boundingBox": [7.3809,
-                    7.8153,
-                    7.9167,
-                    7.8153,
-                    7.9167,
-                    7.9591,
-                    7.3809,
-                    7.9591],
-                    "page": 1,
-                    "confidence": 0.875
-                },
-                "BillingAddress": {
-                    "type": "string",
-                    "valueString": "123 Bill St, Redmond WA, 98052",
-                    "text": "123 Bill St, Redmond WA, 98052",
-                    "boundingBox": [0.594,
-                    4.3724,
-                    2.0125,
-                    4.3724,
-                    2.0125,
-                    4.7125,
-                    0.594,
-                    4.7125],
-                    "page": 1,
-                    "confidence": 0.997
-                },
-                "BillingAddressRecipient": {
-                    "type": "string",
-                    "valueString": "Microsoft Finance",
-                    "text": "Microsoft Finance",
-                    "boundingBox": [0.594,
-                    4.1684,
-                    1.7907,
-                    4.1684,
-                    1.7907,
-                    4.2837,
-                    0.594,
-                    4.2837],
-                    "page": 1,
-                    "confidence": 0.998
-                },
-                ...                
-            }
-        }]
-    }
-}
-```
-
----
-
-## <a name="train-a-custom-model"></a>Trénování vlastního modelu
-
-Abyste mohli vytvořit vlastní model, budete potřebovat sadu školicích dat v objektu blob Azure Storage. Měli byste mít minimálně pět vyplněných formulářů (dokumenty PDF a image) stejného typu nebo struktury jako vaše hlavní vstupní data. Nebo můžete použít jednu prázdnou formu se dvěma vyplněnými formuláři. Prázdný název souboru formuláře musí obsahovat slovo "prázdné". Tipy a možnosti pro sestavení vašich školicích dat najdete v tématu [Vytvoření školicích dat sady pro vlastní model](../../build-training-data-set.md) .
-
-> [!NOTE]
-> Funkci popisků dat můžete použít k ručnímu označení některých nebo všech vašich školicích dat. Toto je složitější proces, ale výsledkem je lepší poučený model. Další informace o této funkci najdete v části [výuka s visačkami](../../overview.md#train-with-labels) v přehledu.
-
-Pokud chcete pomocí dokumentů v kontejneru objektů BLOB v Azure vytvořit model pro rozpoznávání formulářů, zavolejte rozhraní API pro **[vlastní modely](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** , a to spuštěním následujícího příkazu složeného. Před spuštěním příkazu proveďte tyto změny:
-
-1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
-1. Nahraďte `{subscription key}` klíčem předplatného, který jste zkopírovali z předchozího kroku.
-1. Nahraďte `{SAS URL}` adresou URL sdíleného přístupového podpisu (SAS) kontejneru úložiště objektů BLOB v Azure. [!INCLUDE [get SAS URL](../sas-instructions.md)]
-
-   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="Načítání adresy URL SAS":::
-
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
-```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ \"source\": \""{SAS URL}"\"}"
-```
-# <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)    
-```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ \"source\": \""{SAS URL}"\"}"
-```
-
----
-
-
-Dostanete `201 (Success)` odpověď s hlavičkou **umístění** . Hodnota tohoto záhlaví je ID nového vyučeného modelu.
-
-### <a name="get-training-results"></a>Získat výsledky školení
-
-Po spuštění operace vlaku použijete novou operaci, **[získáte vlastní model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetCustomModel)** a zkontrolujete stav školení. Předejte ID modelu do tohoto volání rozhraní API, abyste zkontrolovali stav školení:
-
-1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali pomocí klíče předplatného pro rozpoznávání formulářů.
-1. Nahraďte `{subscription key}` klíčem předplatného.
-1. Nahraďte `{model ID}` ID modelu, které jste obdrželi v předchozím kroku.
-
-
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-# <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)    
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-    
----
-
-`200 (Success)`V následujícím formátu obdržíte odpověď s textem JSON. Všimněte si `"status"` pole. Tato hodnota bude mít hodnotu `"ready"` po dokončení školení. Pokud model nedokončíte, budete ho muset znovu spustit opětovným spuštěním příkazu. Pro mezi voláními doporučujeme interval o délce jedné sekundy nebo více.
-
-`"modelId"`Pole obsahuje ID modelu, který budete školením. Budete ho potřebovat pro další krok.
-
-```json
-{
-  "modelInfo":{
-    "status":"ready",
-    "createdDateTime":"2019-10-08T10:20:31.957784",
-    "lastUpdatedDateTime":"2019-10-08T14:20:41+00:00",
-    "modelId":"1cfb372bab404ba3aa59481ab2c63da5"
-  },
-  "trainResult":{
-    "trainingDocuments":[
-      {
-        "documentName":"invoices\\Invoice_1.pdf",
-        "pages":1,
-        "errors":[
-
-        ],
-        "status":"succeeded"
-      },
-      {
-        "documentName":"invoices\\Invoice_2.pdf",
-        "pages":1,
-        "errors":[
-
-        ],
-        "status":"succeeded"
-      },
-      {
-        "documentName":"invoices\\Invoice_3.pdf",
-        "pages":1,
-        "errors":[
-
-        ],
-        "status":"succeeded"
-      },
-      {
-        "documentName":"invoices\\Invoice_4.pdf",
-        "pages":1,
-        "errors":[
-
-        ],
-        "status":"succeeded"
-      },
-      {
-        "documentName":"invoices\\Invoice_5.pdf",
-        "pages":1,
-        "errors":[
-
-        ],
-        "status":"succeeded"
-      }
-    ],
-    "errors":[
-
-    ]
-  },
-  "keys":{
-    "0":[
-      "Address:",
-      "Invoice For:",
-      "Microsoft",
-      "Page"
-    ]
-  }
-}
-```
-
-## <a name="analyze-forms-with-a-custom-model"></a>Analýza formulářů pomocí vlastního modelu
-
-V dalším kroku použijete svůj nově vyškolený model k analýze dokumentu a extrakci párů klíč-hodnota a tabulek z něj. Zavolejte rozhraní API pro **[analýzu formuláře](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)** spuštěním následujícího příkazu složeného. Před spuštěním příkazu proveďte tyto změny:
-
-1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali z klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
-1. Nahraďte `{model ID}` ID modelu, které jste obdrželi v předchozí části.
-1. Nahraďte `{SAS URL}` adresou URL SAS k souboru ve službě Azure Storage. Postupujte podle kroků v části školení, ale místo získání adresy URL SAS pro celý kontejner objektů BLOB Získejte jeden pro konkrétní soubor, který chcete analyzovat.
-1. Místo `{subscription key}` použijte váš klíč předplatného.
-
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
-
-```bash
-curl -v "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ \"source\": \""{SAS URL}"\" } "
-```
-
-# <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)    
-```bash
-curl -v "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ \"source\": \""{SAS URL}"\" } "
-```
-    
----
-
-
-
-Dostanete `202 (Success)` odpověď s hlavičkou **umístění operace** . Hodnota této hlavičky zahrnuje ID výsledků, které používáte ke sledování výsledků operace analyzovat. Uložte toto ID výsledků pro další krok.
-
-### <a name="get-the-analyze-results"></a>Získat výsledky analýzy
-
-Pomocí následujícího rozhraní API můžete zadat dotaz na výsledky operace analyzovat.
-
-1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali z klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
-1. Nahraďte `{result ID}` ID, které jste obdrželi v předchozí části.
-1. Místo `{subscription key}` použijte váš klíč předplatného.
-
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-# <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)    
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
----
-
-`200 (Success)`V následujícím formátu obdržíte odpověď s textem JSON. Výstup byl zkrácen pro zjednodušení. Všimněte si `"status"` pole poblíž dolního okraje. Tato hodnota bude mít hodnotu `"succeeded"` po dokončení operace analyzovat. Pokud se operace analýzy nedokončila, budete se muset znovu dotázat na službu opětovným spuštěním příkazu. Pro mezi voláními doporučujeme interval o délce jedné sekundy nebo více.
-
-Hlavní přidružení páru klíč/hodnota a tabulky jsou v `"pageResults"` uzlu. Pokud jste zadali také extrakci prostého textu prostřednictvím parametru adresy URL *includeTextDetails* , `"readResults"` uzel zobrazí obsah a pozice veškerého textu v dokumentu.
-
-Tento ukázkový výstup JSON byl zkrácen pro zjednodušení.
-
-# <a name="v20"></a>[v2.0](#tab/v2-0)
-```JSON
-{
-  "status": "succeeded",
-  "createdDateTime": "2020-08-21T00:46:25Z",
-  "lastUpdatedDateTime": "2020-08-21T00:46:32Z",
-  "analyzeResult": {
-    "version": "2.0.0",
-    "readResults": [
-      {
-        "page": 1,
-        "angle": 0,
-        "width": 8.5,
-        "height": 11,
-        "unit": "inch",
-        "lines": [
-          {
-            "text": "Project Statement",
-            "boundingBox": [
-              5.0153,
-              0.275,
-              8.0944,
-              0.275,
-              8.0944,
-              0.7125,
-              5.0153,
-              0.7125
-            ],
-            "words": [
-              {
-                "text": "Project",
-                "boundingBox": [
-                  5.0153,
-                  0.275,
-                  6.2278,
-                  0.275,
-                  6.2278,
-                  0.7125,
-                  5.0153,
-                  0.7125
-                ]
-              },
-              {
-                "text": "Statement",
-                "boundingBox": [
-                  6.3292,
-                  0.275,
-                  8.0944,
-                  0.275,
-                  8.0944,
-                  0.7125,
-                  6.3292,
-                  0.7125
-                ]
-              }
-            ]
-          }, 
-        ...
-        ]
-      }
-    ],
-    "pageResults": [
-      {
-        "page": 1,
-        "keyValuePairs": [
-          {
-            "key": {
-              "text": "Date:",
-              "boundingBox": [
-                6.9722,
-                1.0264,
-                7.3417,
-                1.0264,
-                7.3417,
-                1.1931,
-                6.9722,
-                1.1931
-              ],
-              "elements": [
-                "#/readResults/0/lines/2/words/0"
-              ]
-            },
-            "confidence": 1
-          },
-         ...
-        ],
-        "tables": [
-          {
-            "rows": 4,
-            "columns": 5,
-            "cells": [
-              {
-                "text": "Training Date",
-                "rowIndex": 0,
-                "columnIndex": 0,
-                "boundingBox": [
-                  0.6931,
-                  4.2444,
-                  1.5681,
-                  4.2444,
-                  1.5681,
-                  4.4125,
-                  0.6931,
-                  4.4125
-                ],
-                "confidence": 1,
-                "rowSpan": 1,
-                "columnSpan": 1,
-                "elements": [
-                  "#/readResults/0/lines/15/words/0",
-                  "#/readResults/0/lines/15/words/1"
-                ],
-                "isHeader": true,
-                "isFooter": false
-              },
-              ...
-            ]
-          }
-        ], 
-        "clusterId": 0
-      }
-    ],
-    "documentResults": [],
-    "errors": []
-  }
-}
-```    
-# <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)    
-```JSON
-{
-  "status": "succeeded",
-  "createdDateTime": "2020-08-21T01:13:28Z",
-  "lastUpdatedDateTime": "2020-08-21T01:13:42Z",
-  "analyzeResult": {
-    "version": "2.1.0",
-    "readResults": [
-      {
-        "page": 1,
-        "angle": 0,
-        "width": 8.5,
-        "height": 11,
-        "unit": "inch",
-        "lines": [
-          {
-            "text": "Project Statement",
-            "boundingBox": [
-              5.0444,
-              0.3613,
-              8.0917,
-              0.3613,
-              8.0917,
-              0.6718,
-              5.0444,
-              0.6718
-            ],
-            "words": [
-              {
-                "text": "Project",
-                "boundingBox": [
-                  5.0444,
-                  0.3587,
-                  6.2264,
-                  0.3587,
-                  6.2264,
-                  0.708,
-                  5.0444,
-                  0.708
-                ]
-              },
-              {
-                "text": "Statement",
-                "boundingBox": [
-                  6.3361,
-                  0.3635,
-                  8.0917,
-                  0.3635,
-                  8.0917,
-                  0.6396,
-                  6.3361,
-                  0.6396
-                ]
-              }
-            ]
-          }, 
-          ...
-        ] 
-      }
-    ],
-    "pageResults": [
-      {
-        "page": 1,
-        "keyValuePairs": [
-          {
-            "key": {
-              "text": "Date:",
-              "boundingBox": [
-                6.9833,
-                1.0615,
-                7.3333,
-                1.0615,
-                7.3333,
-                1.1649,
-                6.9833,
-                1.1649
-              ],
-              "elements": [
-                "#/readResults/0/lines/2/words/0"
-              ]
-            },
-            "value": {
-              "text": "9/10/2020",
-              "boundingBox": [
-                7.3833,
-                1.0802,
-                7.925,
-                1.0802,
-                7.925,
-                1.174,
-                7.3833,
-                1.174
-              ],
-              "elements": [
-                "#/readResults/0/lines/3/words/0"
-              ]
-            },
-            "confidence": 1
-          },
-          ...
-        ], 
-        "tables": [
-          {
-            "rows": 5,
-            "columns": 5,
-            "cells": [
-              {
-                "text": "Training Date",
-                "rowIndex": 0,
-                "columnIndex": 0,
-                "boundingBox": [
-                  0.6944,
-                  4.2779,
-                  1.5625,
-                  4.2779,
-                  1.5625,
-                  4.4005,
-                  0.6944,
-                  4.4005
-                ],
-                "confidence": 1,
-                "rowSpan": 1,
-                "columnSpan": 1,
-                "elements": [
-                  "#/readResults/0/lines/15/words/0",
-                  "#/readResults/0/lines/15/words/1"
-                ],
-                "isHeader": true,
-                "isFooter": false
-              },
-              ...
-            ]
-          }
-        ], 
-        "clusterId": 0
-      }
-    ], 
-    "documentResults": [],
-    "errors": []
-  }
-}
-``` 
----
-
-### <a name="improve-results"></a>Zlepšení výsledků
-
-[!INCLUDE [improve results](../improve-results-unlabeled.md)]
-
 ## <a name="manage-custom-models"></a>Správa vlastních modelů
 
 ### <a name="get-a-list-of-custom-models"></a>Získat seznam vlastních modelů
 
-Pomocí následujícího příkazu vraťte seznam všech vlastních modelů, které patří do vašeho předplatného.
+Pomocí seznamu rozhraní API pro **[vlastní modely](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetCustomModels)** v následujícím příkazu vraťte seznam všech vlastních modelů, které patří do vašeho předplatného.
 
 1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
 1. Nahraďte `{subscription key}` klíčem předplatného, který jste zkopírovali z předchozího kroku.
@@ -1557,7 +1559,7 @@ Dostanete `200` odpověď na úspěch s daty JSON, jako je následující. `"mod
 
 ### <a name="get-a-specific-model"></a>Získat konkrétní model
 
-Chcete-li získat podrobné informace o konkrétním vlastním modelu, použijte následující příkaz.
+Chcete-li získat podrobné informace o konkrétním vlastním modelu, použijte rozhraní API **[získat vlastní model](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetCustomModel)** v následujícím příkazu.
 
 1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
 1. Nahraďte `{subscription key}` klíčem předplatného, který jste zkopírovali z předchozího kroku.
@@ -1568,7 +1570,6 @@ Chcete-li získat podrobné informace o konkrétním vlastním modelu, použijte
 ```bash
 curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}"
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
---data-ascii "{body}" 
 ```
 
 # <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)    
@@ -1576,7 +1577,6 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}"
 ```bash
 curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}"
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
---data-ascii "{body}" 
 ```
 ---
 
@@ -1619,6 +1619,32 @@ Dostanete `200` odpověď na úspěch s daty JSON, jako je následující.
   }
 }
 ```
+
+### <a name="delete-a-model-from-the-resource-account"></a>Odstranění modelu z účtu zdroje
+
+Z vašeho účtu můžete také odstranit model odkazem na jeho ID. Tento příkaz volá rozhraní API pro **[odstranění vlastního modelu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/DeleteCustomModel)** a odstraní model použitý v předchozí části.
+
+1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
+1. Nahraďte `{subscription key}` klíčem předplatného, který jste zkopírovali z předchozího kroku.
+1. Nahraďte `{modelId}` ID vlastního modelu, který chcete vyhledat.
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)    
+
+```bash
+curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}"
+-H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
+# <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)
+
+```bash
+curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}"
+-H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+---
+
+Dostanete `204` odpověď na úspěch, která indikuje, že váš model je označený pro odstranění. Artefakty modelu budou odebrány během 48 hodin.
+
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ebc22e3cf300b664aae5842f7cf924769d4d907e
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 1187c768a54dd04d25b6de0e6785ebb81a7dfc24
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756495"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584427"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Konfigurace mobilní aplikace, která volá webová rozhraní API
 
@@ -27,7 +27,7 @@ Po vytvoření aplikace se dozvíte, jak nakonfigurovat kód pomocí parametrů 
 
 Následující typy Microsoft Authentication Library (MSAL) podporují mobilní aplikace.
 
-MSAL | Popis
+MSAL | Description
 ------------ | ----------
 ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Slouží k vývoji přenosných aplikací. MSAL.NET podporuje následující platformy pro vytváření mobilních aplikací: Univerzální platforma Windows (UWP), Xamarin. iOS a Xamarin. Android.
 ![MSAL. iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL. iOS | Slouží k vývoji nativních aplikací pro iOS pomocí objektivu-C nebo SWIFT.
@@ -82,7 +82,7 @@ Následující části obsahují další informace o vytváření instancí apli
 
 ##### <a name="specify-the-parent-ui-window-or-activity"></a>Zadání nadřazeného uživatelského rozhraní, okna nebo aktivity
 
-V Androidu je nutné před provedením interaktivního ověřování předat nadřazenou aktivitu. Když v systému iOS používáte zprostředkovatele, musíte se předat `ViewController` . Stejně jako u UWP byste mohli chtít předat nadřazenému oknu. Po získání tokenu ho předáte. Ale při vytváření aplikace můžete také určit zpětné volání jako delegát, který vrátí `UIParent` .
+V Androidu před provedením interaktivního ověřování předá nadřazenou aktivitu. V systému iOS při použití zprostředkovatele, předávání `ViewController` . Stejně jako u UWP byste mohli chtít předat nadřazenému oknu. Po získání tokenu ho předáte. Ale při vytváření aplikace můžete také určit zpětné volání jako delegát, který vrátí `UIParent` .
 
 ```csharp
 IPublicClientApplication application = PublicClientApplicationBuilder.Create(clientId)
