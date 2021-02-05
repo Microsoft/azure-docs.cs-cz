@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 4a798443560f62673ef8fcf0bce970a66071d011
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: e1dcd52660ff43a93c6a170912fea5a5847fe9d3
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232382"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575750"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Tokeny přístupu Microsoft Identity Platform
 
@@ -241,7 +241,7 @@ Obchodní logika vaší aplikace bude diktovat tento krok, některé běžné au
 * Ověří stav ověřování volajícího klienta pomocí `appidacr` -by neměl být 0, pokud veřejné klienty nemůžou volat vaše rozhraní API.
 * Zkontrolujte seznam minulých `nonce` deklarací identity, abyste ověřili, že se token nebude znovu přehrávat.
 * Ověřte, že `tid` odpovídá klientovi, který má povolené volání rozhraní API.
-* Pomocí `acr` deklarace identity ověříte, že uživatel provedl MFA. Tato podmínka by se měla vyhovět pomocí [podmíněného přístupu](../conditional-access/overview.md).
+* Pomocí `amr` deklarace identity ověříte, že uživatel provedl MFA. Tato podmínka by se měla vyhovět pomocí [podmíněného přístupu](../conditional-access/overview.md).
 * Pokud jste si vyžádali `roles` `groups` deklarace identity nebo v přístupovém tokenu, ověřte, jestli je uživatel ve skupině, která tuto akci povoluje.
   * Pro tokeny načtené pomocí implicitního toku bude pravděpodobně nutné zadat dotaz na [Microsoft Graph](https://developer.microsoft.com/graph/) pro tato data, protože je často příliš velká, aby se vešla do tokenu.
 

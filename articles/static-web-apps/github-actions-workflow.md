@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 5e6188ca2e8e0972e86bed578144a29a96570876
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: acdb635dec5abd73341cc1dda4991b58b82a18c0
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901194"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99574512"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Pracovní postupy akcí GitHubu pro Azure static Web Apps Preview
 
@@ -38,11 +38,11 @@ name: Azure Static Web Apps CI/CD
 on:
   push:
     branches:
-    - master
+    - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-    - master
+    - main
 
 jobs:
   build_and_deploy_job:
@@ -87,11 +87,11 @@ jobs:
 on:
   push:
     branches:
-    - master
+    - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-    - master
+    - main
 ```
 
 Pomocí nastavení přidružených k této `on` vlastnosti můžete definovat, které větve aktivují úlohu, a nastavit triggery, které se aktivují pro různé stavy žádostí o přijetí změn.
@@ -104,7 +104,7 @@ Každá aktivační událost události vyžaduje obslužnou rutinu události. [�
 
 V souboru pracovního postupu statického Web Apps jsou k dispozici dvě dostupné úlohy.
 
-| Název  | Popis |
+| Název  | Description |
 |---------|---------|
 |`build_and_deploy_job` | Provede se při vložení potvrzení změn nebo otevření žádosti o přijetí změn pro větev uvedenou ve `on` Vlastnosti. |
 |`close_pull_request_job` | Provede se jenom při zavření žádosti o přijetí změn, která odebere pracovní prostředí vytvořené z žádostí o přijetí změn. |
@@ -139,7 +139,7 @@ with:
 | Vlastnost | Popis | Povinné |
 |---|---|---|
 | `app_location` | Umístění kódu aplikace<br><br>Například zadejte, `/` Pokud je zdrojový kód vaší aplikace v kořenu úložiště, nebo `/app` Pokud je kód aplikace v adresáři s názvem `app` . | Yes |
-| `api_location` | Umístění kódu Azure Functions.<br><br>Zadejte například, `/api` Pokud je kód vaší aplikace ve složce s názvem `api` . Pokud ve složce není zjištěna žádná Azure Functions aplikace, sestavení selže, pracovní postup předpokládá, že nechcete rozhraní API. | No |
+| `api_location` | Umístění kódu Azure Functions.<br><br>Zadejte například, `/api` Pokud je kód vaší aplikace ve složce s názvem `api` . Pokud ve složce není zjištěna žádná Azure Functions aplikace, sestavení neselže, pracovní postup předpokládá, že nechcete rozhraní API. | No |
 | `output_location` | Umístění výstupního adresáře sestavení vzhledem k `app_location` .<br><br>Například pokud je zdrojový kód aplikace umístěn na `/app` , a skript sestavení výstupuje soubory do `/app/build` složky a pak nastaví `build` jako `output_location` hodnotu. | No |
 
 `repo_token`Hodnoty, `action` a `azure_static_web_apps_api_token` jsou nastaveny za vás službou Azure static Web Apps by se neměly ručně změnit.
@@ -194,6 +194,53 @@ jobs:
         env: # Add environment variables here
           HUGO_VERSION: 0.58.0
 ```
+
+## <a name="monorepo-support"></a>Podpora Monorepo
+
+Monorepo je úložiště, které obsahuje kód pro více než jednu aplikaci. Ve výchozím nastavení sleduje statický soubor pracovního postupu Web Apps všechny soubory v úložišti, ale můžete je upravit tak, aby se nacházela na jednu aplikaci. Proto pro monorepos má každá statická lokalita vlastní konfigurační soubor, který se nachází vedle sebe ve složce *. Git* úložiště.
+
+```files
+├── .git
+│   ├── azure-static-web-apps-purple-pond.yml
+│   └── azure-static-web-apps-yellow-shoe.yml
+│
+├── app1  👉 controlled by: azure-static-web-apps-purple-pond.yml
+├── app2  👉 controlled by: azure-static-web-apps-yellow-shoe.yml
+│
+├── api1  👉 controlled by: azure-static-web-apps-purple-pond.yml
+├── api2  👉 controlled by: azure-static-web-apps-yellow-shoe.yml
+│
+└── readme.md
+```
+
+Chcete-li zacílit soubor pracovního postupu na jednu aplikaci, zadejte cesty `push` v `pull_request` částech a.
+
+Následující příklad ukazuje, jak přidat `paths` uzel do `push` `pull_request` oddílů a souboru s názvem _Azure-static-Web-Apps-Purple-Pond. yml_.
+
+```yml
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - app1/**
+      - api1/**
+      - .github/workflows/azure-static-web-apps-purple-pond.yml
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+    paths:
+      - app1/**
+      - api1/**
+      - .github/workflows/azure-static-web-apps-purple-pond.yml
+```
+
+V této instanci se pro nové sestavení aktivuje jenom změny souborů, které jsou v souborech následující:
+
+- Všechny soubory ve složce *app1*
+- Všechny soubory ve složce *api1*
+- Změny souboru pracovního postupu *Azure-static-Web-Apps-Purple-Pond. yml* aplikace
 
 ## <a name="next-steps"></a>Další kroky
 

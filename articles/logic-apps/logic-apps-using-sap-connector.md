@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 02/01/2021
 tags: connectors
-ms.openlocfilehash: edf4ce188c9239e697e2148d4fff51966d91f85a
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: cbbc0edf710b8823c1a36daa66bc01d89acf63da
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99252606"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575479"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP z Azure Logic Apps
 
@@ -504,7 +504,7 @@ Pokud nemůžete odesílat IDoc pakety z SAP do triggeru vaší aplikace logiky,
   * Pokud chcete tyto segmenty uvolnit pomocí SAP, obraťte se na pracovníky ABAP pro váš systém SAP.
 ### <a name="asynchronous-request-reply-for-triggers"></a>Asynchronní požadavek-odpověď pro aktivační události
 
-Konektor SAP podporuje pro aktivační události Logic Apps [asynchronní vzor požadavků a odpovědí](/azure/architecture/patterns/async-request-reply.md) pro Azure. Tento model můžete použít k vytvoření úspěšných požadavků, které by jinak selhaly s výchozím vzorem synchronního požadavku-odpovědi. 
+Konektor SAP podporuje pro aktivační události Logic Apps [asynchronní vzor požadavků a odpovědí](/azure/architecture/patterns/async-request-reply) pro Azure. Tento model můžete použít k vytvoření úspěšných požadavků, které by jinak selhaly s výchozím vzorem synchronního požadavku-odpovědi. 
 
 > [!TIP]
 > V Logic Apps s více akcemi odezvy musí všechny akce odpovědi používat stejný vzor požadavku a odpovědi. Například pokud vaše aplikace logiky používá ovládací prvek switch s více možnými akcemi reakce, je nutné nakonfigurovat všechny akce reakce na použití stejného vzoru požadavek-odpověď, buď synchronní, nebo asynchronní. 

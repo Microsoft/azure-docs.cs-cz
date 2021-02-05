@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: místní, Docker, kontejner
-ms.openlocfilehash: 79e53bf39e411569f87a46bfc275c784ce84babc
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 7bebaf7558de8ec5c1fcca3c9a4526330da1d695
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703322"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575784"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Instalace a spuštění kontejnerů Docker pro rozhraní API služby pro rozpoznávání řeči 
 
@@ -41,10 +41,10 @@ Kontejnery služby Speech umožňují zákazníkům vytvořit architekturu aplik
 
 | Kontejner | Funkce | Latest (Nejnovější) |
 |--|--|--|
-| Převod řeči na text | Analyzuje mínění a transcribes nepřetržité zvukové nahrávky v reálném čase s využitím mezilehlého výsledku.  | 2.7.0 |
-| Custom Speech na text | Pomocí vlastního modelu z [Custom Speechového portálu](https://speech.microsoft.com/customspeech)transcribes hlasové nahrávky v reálném čase nebo zvukové nahrávky do textu s mezilehlé výsledky. | 2.7.0 |
-| Převod textu na řeč | Převede text na přirozený zvuk řeči pomocí prostého textu nebo jazyka SSML (Speech syntézy). | 1.9.0 |
-| Vlastní převod textu na řeč | Pomocí vlastního modelu z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)převede převod textu na přirozený zvuk hlasu pomocí formátu prostého textu nebo jazyka SSML (Speech syntézy). | 1.9.0 |
+| Převod řeči na text | Analyzuje mínění a transcribes nepřetržité zvukové nahrávky v reálném čase s využitím mezilehlého výsledku.  | 2.9.0 |
+| Custom Speech na text | Pomocí vlastního modelu z [Custom Speechového portálu](https://speech.microsoft.com/customspeech)transcribes hlasové nahrávky v reálném čase nebo zvukové nahrávky do textu s mezilehlé výsledky. | 2.9.0 |
+| Převod textu na řeč | Převede text na přirozený zvuk řeči pomocí prostého textu nebo jazyka SSML (Speech syntézy). | 1.11.0 |
+| Vlastní převod textu na řeč | Pomocí vlastního modelu z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)převede převod textu na přirozený zvuk hlasu pomocí formátu prostého textu nebo jazyka SSML (Speech syntézy). | 1.11.0 |
 | Rozpoznávání jazyka řeči | Zjišťuje jazyk používaný v zvukových souborech. | 1.0 |
 | Neuronové převodu textu na řeč | Převede text na přirozený zvuk hlasu pomocí vysoce neuronové síťové technologie a umožní vám tak více přirozeného řeči. | 1.3.0 |
 
@@ -317,6 +317,28 @@ Tento příkaz:
 > Kontejnery podporují komprimovaný zvukový vstup do sady Speech SDK pomocí GStreamer.
 > Pokud chcete nainstalovat GStreamer do kontejneru, postupujte podle pokynů pro Linux pro GStreamer v tématu [Použití kodeku komprimovaného zvukového vstupu se sadou Speech SDK](how-to-use-codec-compressed-audio-input-streams.md).
 
+#### <a name="diarization-on-the-speech-to-text-output"></a>Diarization na výstup mluveného slova na text
+Diarization je ve výchozím nastavení povolená. Pokud chcete v odpovědi získat diarization, použijte `diarize_speech_config.set_service_property` .
+
+1. Nastavte formát výstupu fráze na `Detailed` .
+2. Nastavte režim diarization. Podporované režimy jsou `Identity` a `Anonymous` .
+```python
+diarize_speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Format',
+    value='Detailed',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+
+diarize_speech_config.set_service_property(
+    name='speechcontext-phraseDetection.speakerDiarization.mode',
+    value='Identity',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
+> [!NOTE]
+> Režim identity vrací `"SpeakerId": "Customer"` nebo `"SpeakerId": "Agent"` .
+> Režim "anonymní" vrací `"SpeakerId": "Speaker 1"` nebo `"SpeakerId": "Speaker 2"`
+
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>Analýza mínění na výstup řeči na text 
 Počínaje v v 2.6.0 kontejneru převodů textu na text byste měli místo verze Preview použít koncový bod rozhraní TextAnalytics 3,0 API. Například
@@ -326,7 +348,7 @@ Počínaje v v 2.6.0 kontejneru převodů textu na text byste měli místo verze
 > [!NOTE]
 > Rozhraní Analýza textu `v3.0` API není zpětně kompatibilní s analýza textu `v3.0-preview.1` . Pokud chcete získat nejnovější podporu funkcí mínění, použijte `v2.6.0` Image kontejneru převodu řeči na text a analýza textu `v3.0` .
 
-Počínaje v v 2.2.0 kontejneru převodu řeči na text můžete zavolat [rozhraní mínění Analysis V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) na výstup. K volání analýzy mínění budete potřebovat koncový bod prostředku rozhraní API pro analýzu textu. Například: 
+Počínaje v v 2.2.0 kontejneru převodu řeči na text můžete zavolat [rozhraní mínění Analysis V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) na výstup. K volání analýzy mínění budete potřebovat koncový bod prostředku rozhraní API pro analýzu textu. Příklad: 
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
 * `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
 
@@ -355,7 +377,7 @@ Počínaje v v 2.6.0 kontejneru převodu řeči na text můžete získat výstup
 
 * "Toto je věta **, kterou vysoké je, že** je to další věta."
 
-Chcete-li nakonfigurovat seznam frází, je nutné přidat vlastní fráze při volání. Například:
+Chcete-li nakonfigurovat seznam frází, je nutné přidat vlastní fráze při volání. Příklad:
 
 ```python
     phrase="the tall man"
@@ -417,7 +439,7 @@ Tento příkaz:
 
 
 #### <a name="base-model-download-on-the-custom-speech-to-text-container"></a>Stažení základního modelu na vlastní kontejner řeči na text  
-Počínaje v v 2.6.0 vlastního kontejneru řeči a textu můžete získat dostupné informace o základním modelu pomocí možnosti `BaseModelLocale=<locale>` . Tato možnost vám poskytne seznam dostupných základních modelů v tomto národním prostředí v rámci vašeho fakturačního účtu. Například:
+Počínaje v v 2.6.0 vlastního kontejneru řeči a textu můžete získat dostupné informace o základním modelu pomocí možnosti `BaseModelLocale=<locale>` . Tato možnost vám poskytne seznam dostupných základních modelů v tomto národním prostředí v rámci vašeho fakturačního účtu. Příklad:
 
 ```bash
 docker run --rm -it \
@@ -433,7 +455,7 @@ Tento příkaz:
 * Spustí kontejner *Custom Speech-to-text* z image kontejneru.
 * Zkontroluje a vrátí dostupné základní modely cílového národního prostředí.
 
-Výstup poskytuje seznam základních modelů s informacemi o národním prostředí, ID modelu a datum a čas vytvoření. Pomocí ID modelu můžete stáhnout a používat konkrétní základní model, který dáváte přednost. Například:
+Výstup poskytuje seznam základních modelů s informacemi o národním prostředí, ID modelu a datum a čas vytvoření. Pomocí ID modelu můžete stáhnout a používat konkrétní základní model, který dáváte přednost. Příklad:
 ```
 Checking available base model for en-us
 2020/10/30 21:54:20 [Info] Searching available base models for en-us

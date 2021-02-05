@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: cc4f961c399e9ac5e853085106924584eb3935d0
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 222257f5045984a71c2aee9de83b5fa420306728
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223385"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573411"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>Připojení ServiceNow ke konektoru pro správu služeb IT
 
@@ -123,7 +123,7 @@ K vytvoření připojení ServiceNow použijte následující postup.
    | --- | --- |
    | **Název připojení**   | Zadejte název instance ServiceNow, ke které se chcete připojit pomocí ITSMC. Tento název použijete později v Log Analytics při konfiguraci pracovních položek ITSM a zobrazení podrobných analýz. |
    | **Typ partnera**   | Vyberte **ServiceNow**. |
-   | **Adresa URL serveru**   | Zadejte adresu URL instance ServiceNow, ke které se chcete připojit ITSMC. Adresa URL by měla ukazovat na podporovanou verzi SaaS s příponou *. ServiceNow.com* (například https://XXXXX.service-now.com/) .|
+   | **Adresa URL serveru**   | Zadejte adresu URL instance ServiceNow, ke které se chcete připojit ITSMC. Adresa URL by měla ukazovat na podporovanou verzi SaaS s příponou *. ServiceNow.com* (například `https://XXXXX.service-now.com/` ).|
    | **Uživatelské jméno**   | Zadejte uživatelské jméno integrace, které jste vytvořili v aplikaci ServiceNow, aby se podporovalo připojení k ITSMC.|
    | **Heslo**   | Zadejte heslo přidružené k tomuto uživatelskému jménu. **Poznámka**: uživatelské jméno a heslo se používají jenom k vytváření tokenů ověřování. Neukládají se kdekoli v rámci služby ITSMC.  |
    | **ID klienta**   | Zadejte ID klienta, které chcete použít pro OAuth2 ověřování, které jste vygenerovali dříve. Další informace o generování ID klienta a tajného klíče najdete v tématu [Nastavení OAuth](https://old.wiki/index.php/OAuth_Setup). |

@@ -3,12 +3,12 @@ title: Detekce pohybu, nahrávání videa do Azure Media Services
 description: V tomto rychlém startu se dozvíte, jak používat Live video Analytics na IoT Edge k detekci pohybů v živém datovém streamu a k nahrávání videoklipů do Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 15a9def78c7dddda7e63db66d2b21794506f6a92
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 135e68e2630d74dace6c3a6b70bb3666f77aad89
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632720"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575530"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Rychlý Start: zjištění pohybu, nahrání videa do Media Services
 
@@ -540,10 +540,15 @@ Vytvořené médium používá uzel procesoru detekce pohybu k detekci pohybu a 
 
 1. Otevřete podokno Průzkumník v Visual Studio Code a vyhledejte Azure IoT Hub v levém dolním rohu.
 1. Rozbalte uzel zařízení.
-1. Pravým tlačítkem clink na lva-Sample-Device a zvolte možnost spustit sledování integrovaného monitorování událostí.
+1. Klikněte pravým tlačítkem na lva-Sample-Device a zvolte možnost spustit sledování integrovaného monitorování událostí.
 
     ![Spustit monitorování integrovaného monitorování událostí](./media/quickstarts/start-monitoring-iothub-events.png)
     
+    > [!NOTE]
+    > Můžete být vyzváni k zadání předdefinovaných informací koncového bodu pro IoT Hub. Chcete-li získat tyto informace, v Azure Portal přejděte do IoT Hub a vyhledejte v levém navigačním podokně možnost **Předdefinované koncové body** . Klikněte na něj a vyhledejte **koncový bod kompatibilní** s centrem událostí v části **koncový bod kompatibilní** s centrem událostí. Zkopírujte a použijte text v poli. Koncový bod bude vypadat přibližně takto:  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
     Během několika sekund se v okně výstup zobrazí následující zprávy:
 
 ```

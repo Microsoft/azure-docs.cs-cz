@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: f6bd6b13ab4a2e654bdabc86355f2c3388abed31
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 9d09bca246938f972a212f7ee71f03a618e16ac4
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050523"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575672"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Rychlý Start – Prozkoumejte ukázkový scénář digitálních vláken Azure pomocí Průzkumníka aplikace ADT
 
@@ -306,11 +306,15 @@ V tomto rychlém startu jste provedli aktualizaci teploty ručně. Je běžné, 
 
 Pokud chcete zabalit práci pro tento rychlý Start, nejprve ukončete spuštěnou konzolovou aplikaci. Tato akce vypne připojení k aplikaci aplikace ADT Explorer v prohlížeči. V prohlížeči už nebudete moct zobrazovat živá data. Kartu prohlížeče můžete zavřít.
 
-Pokud máte v úmyslu pokračovat na kurzy digitálních vláken Azure, můžete tuto instanci v tomto rychlém startu znovu použít pro tyto články a nemusíte ji odebrat.
+Pak můžete zvolit prostředky, které chcete odebrat, podle toho, co byste chtěli udělat dál.
+
+* **Pokud máte v úmyslu pokračovat na kurzy digitálních vláken Azure**, můžete tuto instanci v tomto rychlém startu znovu použít pro tyto články a nemusíte ji odebrat.
+
+[!INCLUDE [digital-twins-cleanup-clear-instance.md](../../includes/digital-twins-cleanup-clear-instance.md)]
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-Nakonec odstraňte ukázkovou složku projektu **Azure_Digital_Twins__ADT__explorer**, kterou jste stáhli do svého místního počítače. Možná bude nutné odstranit verze zip i unzip.
+Je také možné, že budete chtít odstranit složku projektu z místního počítače.
 
 ## <a name="next-steps"></a>Další kroky
 

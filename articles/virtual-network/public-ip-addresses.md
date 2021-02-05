@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 702ca4f4c3fc92eca70479ba02b1ddc8f6858857
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 9a80242422631995f6d5c24ba2118ee98a9b8d32
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549656"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576172"
 ---
 # <a name="public-ip-addresses"></a>Veřejné IP adresy
 
@@ -62,6 +62,9 @@ Veřejné IP adresy standardní SKU:
 
 > [!NOTE]
 > Při použití [služby metadata instance IMDS](../virtual-machines/windows/instance-metadata-service.md)jsou k dispozici pouze veřejné IP adresy se základní SKU. Standardní SKU se nepodporuje.
+
+> [!NOTE]
+> Nastavení diagnostiky se nezobrazí v okně prostředek při použití veřejné IP adresy standardní SKU. Pokud chcete povolit protokolování na svém prostředku veřejné IP adresy Stanrd, přejděte na nastavení diagnostiky v okně Azure Monitor a vyberte svůj prostředek IP adresy.
 
 ### <a name="basic"></a>Basic
 

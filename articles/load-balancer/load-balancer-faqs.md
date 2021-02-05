@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 38054d983b0a9f01f396b7379fec37de452d03b7
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 3752a36d22f879b95b02bd49436be78212fe56a2
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051868"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576037"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>Load Balancer nejčastějších dotazech
 
@@ -52,9 +52,11 @@ Ne, toto se stát nemůže.
 ## <a name="what-is-the-maximum-data-throughput-that-can-be-achieved-via-an-azure-load-balancer"></a>Jaká je maximální propustnost dat, kterou je možné dosáhnout pomocí Azure Load Balancer?
 Vzhledem k tomu, že Azure diskont je průchozí síťový nástroj pro vyrovnávání zatížení, určují se omezení propustnosti podle typu virtuálního počítače použitého ve fondu back-endu. Další informace o dalších informacích o propustnosti sítě najdete v tématu [propustnost sítě virtuálních počítačů](../virtual-network/virtual-machine-network-throughput.md).
 
-
 ## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>Jak funguje připojení k Azure Storage ve stejné oblasti?
 Pro připojení k úložišti ve stejné oblasti jako virtuální počítač není nutné mít odchozí připojení prostřednictvím výše uvedených scénářů. Pokud to nechcete, použijte skupiny zabezpečení sítě (skupin zabezpečení sítě), jak je vysvětleno výše. Připojení k úložišti v jiných oblastech vyžaduje odchozí připojení. Pamatujte na to, že při připojování k úložišti z virtuálního počítače ve stejné oblasti bude zdrojová IP adresa v diagnostických protokolech úložiště interní adresa poskytovatele, nikoli veřejná IP adresa vašeho virtuálního počítače. Pokud chcete omezit přístup k účtu úložiště na virtuální počítače v jedné nebo více Virtual Networkch podsítích ve stejné oblasti, při konfiguraci brány firewall účtu úložiště použijte [koncové body služby Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md) a nemusíte mít veřejnou IP adresu. Po nakonfigurování koncových bodů služby se v diagnostických protokolech úložiště zobrazí vaše Virtual Network privátní IP adresa, nikoli adresa interního poskytovatele.
+
+## <a name="does-azure-load-balancer-support-tlsssl-termination"></a>Podporuje Azure Load Balancer ukončení protokolu TLS/SSL?
+Ne, Azure Load Balancer v současné době nepodporují ukončení, protože se jedná o průchod prostřednictvím nástroje pro vyrovnávání zatížení sítě. Application Gateway může být možné řešení, pokud to vaše aplikace vyžaduje.
 
 ## <a name="what-are-best-practises-with-respect-to-outbound-connectivity"></a>Jaké jsou nejlepší praxe s ohledem na odchozí připojení?
 Standard Load Balancer a standardní veřejná IP adresa přináší možnosti a různá chování pro odchozí připojení. Nejsou stejné jako základní SKU. Pokud chcete odchozí připojení při práci se standardními SKU, musíte ho explicitně definovat buď se standardními veřejnými IP adresami, nebo se standardními veřejnými Load Balancer. To zahrnuje vytvoření odchozího připojení při použití interního Standard Load Balancer. Doporučujeme vždy používat odchozí pravidla pro standardní veřejné Load Balancer. To znamená, že když se používá interní Standard Load Balancer, musíte provést kroky pro vytvoření odchozího připojení pro virtuální počítače ve fondu back-end, pokud je potřeba odchozí připojení. V kontextu odchozího připojení, jednoho samostatného virtuálního počítače, který je ve skupině dostupnosti, se všechny instance v VMSS chovají jako skupina. To znamená, že pokud je jeden virtuální počítač ve skupině dostupnosti přidružený ke standardní SKU, všechny instance virtuálních počítačů v této skupině dostupnosti se teď budou chovat stejnými pravidly, jako kdyby byly přidružené ke standardní SKU, a to i v případě, že se k ní nepřímo přidružit samostatná instance. V případě samostatného virtuálního počítače s několika síťovými kartami připojenými k nástroji pro vyrovnávání zatížení je toto chování také pozorováno. Pokud se jedna síťová karta přidá jako samostatná, bude to mít stejné chování. Pečlivě si Projděte celý dokument, abyste porozuměli celkovým koncepcím, Projděte si [Standard Load Balancer](./load-balancer-overview.md) rozdíly mezi SKU a zkontrolujte [odchozí pravidla](load-balancer-outbound-connections.md#outboundrules).

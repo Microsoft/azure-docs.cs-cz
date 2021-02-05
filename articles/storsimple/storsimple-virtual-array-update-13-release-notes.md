@@ -6,12 +6,12 @@ author: v-dalc
 ms.topic: article
 ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 02611bdf9689d2f62f661f558fd547ea46bd4d36
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 52b30730ee8ab126521ad0760204ee48ef6a63fe
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744385"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576004"
 ---
 # <a name="storsimple-virtual-array-update-13-release-notes"></a>Zpráva k vydání verze pro StorSimple Virtual Array Update 1,3
 
@@ -28,15 +28,15 @@ Aktualizace 1,3 odpovídá 10.0.10319.0 verze softwaru.
 
 ## <a name="whats-new-in-update-13"></a>Co je nového v aktualizaci 1,3
 
-Tato aktualizace obsahuje následující vylepšení:
+Tato aktualizace obsahuje následující vylepšení: KB4540725
 
 - TLS (Transport Layer Security) 1,2 je povinná aktualizace a je nutné ji nainstalovat. Z této verze dostávají protokol TLS 1,2 standardní protokol pro veškerou komunikaci Azure Portal.
 - Opravy chyb uvolňování paměti zlepšují výkon cyklu uvolňování paměti, když jsou zařízení a účet úložiště ve dvou vzdálených oblastech.
 - Opravte chyby zálohování z důvodu vypršení časových limitů objektu BLOB.
 - Aktualizované opravy zabezpečení operačního systému/. NET Framework:
-  - [KB4540725](\\winsehotfix.segroup.winse.corp.microsoft.com\hotfixes\Windows6.3\RTM\KB4540725\V1.001\free\NEU\X64): březen 2020 cestou nadřazené (aktualizace servisního zásobníku)
-  - [KB4565541](\\winsehotfix.segroup.winse.corp.microsoft.com\hotfixes\Windows6.3\RTM\KB4565541\V1.014\free\NEU\X64): července 2020 – souhrn
-  - [KB4565622](\\winsehotfix.segroup.winse.corp.microsoft.com\hotfixes\Partner\DOTNET47x\KB4565622\V1.000\free\NEU\x64): červenec 2020 .NET Framework aktualizace
+  - [KB4540725](https://support.microsoft.com/topic/servicing-stack-update-for-windows-8-1-rt-8-1-and-server-2012-r2-march-10-2020-cfa082a3-0b58-a8a3-7dc7-ab424de91b86): březen 2020 cestou nadřazené (aktualizace servisního zásobníku)
+  - [KB4565541](https://support.microsoft.com/topic/july-14-2020-kb4565541-monthly-rollup-fed6b2b1-3d23-5981-34df-9215a8d8ce01): července 2020 – souhrn
+  - [KB4565622](https://support.microsoft.com/topic/security-and-quality-rollup-for-net-framework-4-6-4-6-1-4-6-2-4-7-4-7-1-4-7-2-for-windows-8-1-rt-8-1-and-windows-server-2012-r2-kb4565622-b7320848-1889-a624-da01-719f55ee8a00): červenec 2020 .NET Framework aktualizace
 
 ## <a name="download-update-13"></a>Stažení aktualizace 1,3
 

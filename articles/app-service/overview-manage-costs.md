@@ -5,12 +5,12 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: 9d742606435f62d48446bb8ad56ece7a31b76e47
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3df08705859678525526f8fef198826f58249d8b
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736217"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573360"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>Plánování a Správa nákladů na Azure App Service
 
@@ -51,7 +51,7 @@ Další nákladové prostředky pro App Service jsou (podrobnosti najdete v tém
 
 Když odstraníte všechny aplikace v plánu App Service, plán bude dál počítat poplatky na základě nakonfigurované cenové úrovně a počtu instancí. Abyste se vyhnuli nechtěným poplatkům, odstraňte plán nebo ho Škálujte dolů na úroveň **Free** .
 
-Po odstranění prostředků Azure App Service můžou dál existovat prostředky ze souvisejících služeb Azure. Nadále se účtují náklady, dokud je neodstraníte. Například:
+Po odstranění prostředků Azure App Service můžou dál existovat prostředky ze souvisejících služeb Azure. Nadále se účtují náklady, dokud je neodstraníte. Příklad:
 
 - Virtual Network, který jste vytvořili pro plán App Service **izolované** vrstvy
 - Účty úložiště, které jste vytvořili pro ukládání záloh nebo diagnostických protokolů
@@ -125,7 +125,7 @@ Pokud plánujete využívat známý minimální počet výpočetních instancí 
 
 Ceny za rezervované instance platí pro příslušné instance v rámci vašeho předplatného, až do počtu rezervovaných instancí. Rezervované instance jsou fakturační a nejsou vázané na konkrétní výpočetní instance. Pokud spustíte méně instancí, než je v jakémkoli okamžiku rezervovaného období rezervováno, bude se vám stále platit rezervované instance. Pokud spustíte více instancí, než kolik rezervujete v jakémkoli okamžiku během období rezervace, platíte normální náklady na další instance.
 
-**Izolovaná** vrstva (App Service prostředí) také podporuje 1 a 3 roky rezervace za sníženou cenu. Další informace najdete v tématu [jak se pro Azure App Service izolované razítka vztahují slevy na rezervace](../cost-management-billing/reservations/reservation-discount-app-service-isolated-stamp.md).
+**Izolovaná** vrstva (App Service prostředí) také podporuje 1 a 3 roky rezervace za sníženou cenu. Další informace najdete v tématu [jak se vztahují slevy na rezervované Azure App Service](../cost-management-billing/reservations/reservation-discount-app-service.md).
 
 ## <a name="monitor-costs"></a>Sledovat náklady
 

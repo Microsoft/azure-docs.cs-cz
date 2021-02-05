@@ -15,12 +15,12 @@ ms.custom:
 - cog-serv-seo-aug-2020
 - contperf-fy21q2
 keywords: počítačové zpracování obrazu, aplikace počítačové vidění, Služba Computer visioning Service
-ms.openlocfilehash: 62d82388d975f36c422f7eb1e9feff8ce2725d54
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 69edbf558b4bd452c67478bac828bfde26be5a70
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033285"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575936"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
@@ -32,7 +32,7 @@ Můžete vytvořit Počítačové zpracování obrazu aplikace prostřednictvím
 
 ## <a name="optical-character-recognition-ocr"></a>optické rozpoznávání znaků (OCR),
 
-Počítačové zpracování obrazu obsahuje možnosti [optického rozpoznávání znaků (OCR)](concept-recognizing-text.md) . Nové rozhraní API pro čtení můžete použít k extrakci vytištěného a rukopisného textu z obrázků a dokumentů. Používá nejnovější modely a pracuje s textem na různých površích a na pozadí. Patří mezi ně příjmy, plakáty, vizitky, dopisy a tabule. Tato dvě rozhraní API pro optické rozpoznávání znaků podporují extrakci vytištěného textu v [několika jazycích](./language-support.md). Začněte pomocí [rychlého](./quickstarts-sdk/client-library.md) startu.
+Počítačové zpracování obrazu obsahuje možnosti [optického rozpoznávání znaků (OCR)](concept-recognizing-text.md) . Nové rozhraní API pro čtení můžete použít k extrakci vytištěného a rukopisného textu z obrázků a dokumentů. Používá modely založené na hloubkovém učení a pracuje s textem na různých površích a na pozadí. Patří mezi ně obchodní dokumenty, faktury, účtenky, plakáty, vizitky, dopisy a tabule. Rozhraní API pro rozpoznávání OCR podporují extrakci vytištěného textu v [několika jazycích](./language-support.md). Začněte pomocí [rychlého](./quickstarts-sdk/client-library.md) startu.
 
 ## <a name="computer-vision-for-digital-asset-management"></a>Počítačové zpracování obrazu pro správu digitálních prostředků
 

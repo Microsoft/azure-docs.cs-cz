@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: dseven
 ms.author: cavoeg
 author: CaitlinV39
-ms.date: 11/01/2019
-ms.openlocfilehash: 54119585d4f1377b60b85fbad01fe90f097a304f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 02/03/2021
+ms.openlocfilehash: 8dc87ae5b296f322d9d5a4d59c0a8c9b1c50d5da
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95905170"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575431"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Povolení protokolování diagnostiky v Azure API pro FHIR
 
@@ -35,9 +35,9 @@ V tomto článku se dozvíte, jak povolit protokolování diagnostiky v rozhran�
     2. **Streamování do centra událostí** pro ingestování prostřednictvím služby třetí strany nebo vlastního analytického řešení. Než budete moct nakonfigurovat tento krok, budete muset vytvořit obor názvů centra událostí a zásady centra událostí.
     3. **Streamování do** pracovního prostoru Log Analytics v Azure monitor. Než budete moct vybrat tuto možnost, budete muset vytvořit pracovní prostor analýzy protokolů.
 
-6. Vyberte **AuditLogs** a všechny metriky, které chcete zachytit. Pokud používáte Azure IoT Connector pro FHIR, ujistěte se, že jste vybrali **chyby, provoz a latenci** pro metriky. 
+6. Vyberte **AuditLogs** a/nebo **AllMetrics**. Metriky zahrnují název služby, dostupnost, velikost dat, celkovou latenci, celkový počet požadavků, chyby a časové razítko.
 
-   :::image type="content" source="media/iot-metrics-export/diagnostic-setting-add.png" alt-text="IoT Connector2" lightbox="media/iot-metrics-export/diagnostic-setting-add.png":::
+   :::image type="content" source="media/diagnostic-logging/fhir-diagnostic-setting.png" alt-text="Nastavení diagnostiky Azure FHIR. Vyberte AuditLogs a/nebo AllMetrics." lightbox="media/diagnostic-logging/fhir-diagnostic-setting.png":::
 
 7. Vyberte **Uložit**.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 672a3f95efad24c07379fafe8b22088dc731c2df
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 720cd46ac37a82f56aa37c0041ca8d92db177071
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881157"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575767"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Postupy: vyžadování zásad ochrany aplikací a schválené klientské aplikace pro přístup k cloudovým aplikacím pomocí podmíněného přístupu
 
@@ -34,7 +34,7 @@ V podmíněném přístupu jsou tyto klientské aplikace chráněné zásadami o
 > Ne všechny aplikace jsou podporovány jako schválené aplikace nebo podporují zásady ochrany aplikací. Seznam oprávněných klientských aplikací najdete v tématu [požadavky na zásady ochrany aplikací](concept-conditional-access-grant.md#require-app-protection-policy).
 
 > [!NOTE]
-> "Vyžadovat jeden z vybraných ovládacích prvků" v rámci grant Controls je LIKE klauzule OR. Tato možnost se používá v zásadách, aby uživatelé mohli využívat aplikace, které podporují **Zásady ochrany aplikací** , nebo vyžadují udělené ovládací prvky pro udělení **autorizovaných klientských aplikací** . Pokud je aplikace v obou zásadách podporovaná, vynutila se **Zásada ochrany aplikací** . Další informace o tom, které aplikace podporují řízení udělení **zásad ochrany aplikací** , najdete v tématu [požadavky na zásady ochrany aplikací](concept-conditional-access-grant.md#require-app-protection-policy).
+> "Vyžadovat jeden z vybraných ovládacích prvků" v rámci grant Controls je LIKE klauzule OR. Tato možnost se používá v zásadách, aby uživatelé mohli využívat aplikace, které podporují **Zásady ochrany aplikací** , nebo vyžadují udělené ovládací prvky pro udělení **autorizovaných klientských aplikací** . Vyžadovat, aby se **Zásady ochrany aplikací** vynutily, když aplikace podporuje řízení udělení. Další informace o tom, které aplikace podporují řízení udělení **zásad ochrany aplikací** , najdete v tématu [požadavky na zásady ochrany aplikací](concept-conditional-access-grant.md#require-app-protection-policy).
 
 ## <a name="scenario-1-microsoft-365-apps-require-approved-apps-with-app-protection-policies"></a>Scénář 1: Microsoft 365 aplikace vyžadují schválené aplikace se zásadami ochrany aplikací
 

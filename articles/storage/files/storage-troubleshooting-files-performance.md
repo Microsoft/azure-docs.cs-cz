@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 729c3e46cf329c525ce9204b26d4c6aefa04c89d
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: c3dbd76e76ad6e7bed0808278d4516992bc328f0
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632491"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99574427"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Řešení potíží s výkonem Azure File shares
 
@@ -34,14 +34,28 @@ Pokud chcete ověřit, jestli se vaše sdílená složka omezuje, můžete na po
 
 1. Jako metriku vyberte **transakce** .
 
-1. Přidejte filtr pro **typ odpovědi** a potom zkontrolujte, zda nějaké požadavky obsahují některý z následujících kódů odpovědí:
-   * **SuccessWithThrottling**: pro protokol SMB (Server Message Block)
-   * **ClientThrottlingError**: pro REST
+1. Přidejte filtr pro **typ odpovědi** a potom zkontrolujte, zda byly nějaké požadavky omezené. 
 
-   ![Snímek obrazovky s možnostmi metriky pro sdílené složky úrovně Premium, která zobrazuje filtr vlastností "typ odpovědi".](media/storage-troubleshooting-premium-fileshares/metrics.png)
+    U standardních sdílených složek se při omezení požadavku zaprotokolují následující typy odpovědí:
 
-   > [!NOTE]
-   > Chcete-li zobrazit výstrahu, přečtěte si část [jak vytvořit výstrahu v případě omezení sdílené složky](#how-to-create-an-alert-if-a-file-share-is-throttled) dále v tomto článku.
+    - SuccessWithThrottling
+    - ClientThrottlingError
+
+    U sdílených složek úrovně Premium se v případě omezení požadavku zaprotokolují následující typy odpovědí:
+
+    - SuccessWithShareEgressThrottling
+    - SuccessWithShareIngressThrottling
+    - SuccessWithShareIopsThrottling
+    - ClientShareEgressThrottlingError
+    - ClientShareIngressThrottlingError
+    - ClientShareIopsThrottlingError
+
+    Další informace o jednotlivých typech odpovědí najdete v tématu věnovaném [dimenzím metrik](https://docs.microsoft.com/azure/storage/files/storage-files-monitoring-reference#metrics-dimensions).
+
+    ![Snímek obrazovky s možnostmi metriky pro sdílené složky úrovně Premium, která zobrazuje filtr vlastností "typ odpovědi".](media/storage-troubleshooting-premium-fileshares/metrics.png)
+
+    > [!NOTE]
+    > Chcete-li zobrazit výstrahu, přečtěte si část [jak vytvořit výstrahu v případě omezení sdílené složky](#how-to-create-an-alert-if-a-file-share-is-throttled) dále v tomto článku.
 
 ### <a name="solution"></a>Řešení
 
@@ -219,48 +233,63 @@ K potvrzení můžete použít metriky Azure na portálu –
 
 ## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Postup vytvoření výstrahy, pokud je sdílená složka omezená
 
-1. V Azure Portal přejít na účet úložiště.
-1. V části **monitorování** vyberte **výstrahy** a pak vyberte **nové pravidlo výstrahy**.
-1. Vyberte **Upravit prostředek**, vyberte **typ prostředku** pro účet úložiště a potom vyberte **Hotovo**. Pokud je třeba název účtu úložiště *Contoso*, vyberte prostředek contoso/File.
-1. Vyberte **možnost vybrat podmínku** a přidejte podmínku.
-1. V seznamu signálů, které jsou podporované pro účet úložiště, vyberte metriku **transakcí** .
-1. V podokně **Konfigurovat logiku signálu** v rozevíracím seznamu **název dimenze** vyberte **typ odpovědi**.
-1. V rozevíracím seznamu **hodnoty dimenze** vyberte **SUCCESSWITHTHROTTLING** (pro SMB) nebo **ClientThrottlingError** (pro REST).
+1. V **Azure Portal** přejít na svůj **účet úložiště** .
+2. V části **monitorování** klikněte na **výstrahy** a pak klikněte na **+ nové pravidlo výstrahy**.
+3. Klikněte na **Upravit prostředek**, vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo**. Pokud je třeba název účtu úložiště `contoso` , vyberte `contoso/file` prostředek.
+4. Kliknutím na **Přidat podmínku** přidejte podmínku.
+5. Zobrazí se seznam signálů, které jsou pro účet úložiště podporované, vyberte metriku **transakcí** .
+6. V okně **Konfigurovat logiku signálu** klikněte na rozevírací seznam **název dimenze** a vyberte **typ odpovědi**.
+7. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte odpovídající typy odezvy pro sdílenou složku.
+
+    Pro standardní sdílené složky vyberte následující typy odpovědí:
+
+    - SuccessWithThrottling
+    - ClientThrottlingError
+
+    Pro sdílené složky Premium vyberte následující typy odpovědí:
+
+    - SuccessWithShareEgressThrottling
+    - SuccessWithShareIngressThrottling
+    - SuccessWithShareIopsThrottling
+    - ClientShareEgressThrottlingError
+    - ClientShareIngressThrottlingError
+    - ClientShareIopsThrottlingError
 
    > [!NOTE]
-   > Pokud není uvedena hodnota dimenze **SuccessWithThrottling** ani **ClientThrottlingError** , znamená to, že prostředek nebyl omezen. Chcete-li přidat hodnotu dimenze, klikněte vedle rozevíracího seznamu **hodnoty dimenze** na **Přidat vlastní hodnotu**, zadejte **SuccessWithThrottling** nebo **ClientThrottlingError**, vyberte **OK** a pak opakujte krok 7.
+   > Pokud typy odezvy nejsou uvedeny v rozevíracím seznamu **hodnoty dimenze** , znamená to, že prostředek nebyl omezen. Chcete-li přidat hodnoty dimenze, klikněte vedle rozevíracího seznamu **hodnoty dimenze** na možnost **Přidat vlastní hodnotu**, zadejte typ respone (například **SuccessWithThrottling**), vyberte **OK** a pak opakováním těchto kroků přidejte všechny použitelné typy odpovědí pro sdílenou složku.
 
-1. V rozevíracím seznamu **název dimenze** vyberte **sdílení souborů**.
-1. V rozevíracím seznamu **hodnoty dimenze** vyberte sdílenou složku nebo sdílené složky, na kterých chcete upozornit.
+8. Klikněte na rozevírací seznam **název dimenze** a vyberte **sdílení souborů**.
+9. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte sdílené složky, na kterých chcete upozornit.
+
 
    > [!NOTE]
-   > Pokud je sdílená složka standardní sdílená složka, vyberte **všechny aktuální a budoucí hodnoty**. V rozevíracím seznamu hodnoty dimenze není uveden seznam sdílených složek, protože pro standardní sdílené složky nejsou k dispozici metriky vázané na sdílení. Výstrahy omezování pro standardní sdílené složky se aktivují, pokud je omezená jakákoli sdílená složka v rámci účtu úložiště a výstraha neidentifikuje, která sdílená složka byla omezená. Vzhledem k tomu, že pro standardní sdílené složky nejsou dostupné metriky vázané na sdílení, doporučujeme pro každý účet úložiště použít jednu sdílenou složku.
+   > Pokud je sdílená složka standardní sdílená složka, vyberte **všechny aktuální a budoucí hodnoty**. Rozevírací seznam hodnoty dimenze nebude zobrazovat seznam sdílených složek, protože pro standardní sdílené složky nejsou k dispozici metriky pro jednotlivé sdílené složky. Výstrahy omezování pro standardní sdílené složky se aktivují, pokud je omezená jakákoli sdílená složka v rámci účtu úložiště a výstraha neurčí, která sdílená složka byla omezená. Vzhledem k tomu, že pro standardní sdílené složky nejsou k dispozici metriky jednotlivých sdílených složek, doporučuje se mít pro každý účet úložiště jednu sdílenou složku.
 
-1. Parametry výstrahy definujte zadáním **prahové hodnoty**, **operátoru**, **členitosti agregace** a **frekvence vyhodnocení** a potom vyberte **Hotovo**.
+10. Definujte **Parametry výstrahy** (prahová hodnota, operátor, členitost agregace a frekvence vyhodnocení) a klikněte na **Hotovo**.
 
     > [!TIP]
-    > Pokud používáte statickou prahovou hodnotu, graf metriky vám pomůže určit rozumnou prahovou hodnotu, pokud je sdílená složka momentálně omezená. Pokud používáte dynamickou prahovou hodnotu, graf metriky zobrazuje vypočtené prahové hodnoty na základě nejnovějších dat.
+    > Pokud používáte statickou prahovou hodnotu, graf metriky může pomoci určit rozumnou prahovou hodnotu, pokud je sdílená složka momentálně omezená. Pokud používáte dynamickou prahovou hodnotu, v grafu metriky se zobrazí vypočtené prahové hodnoty na základě nedávných dat.
 
-1. Vyberte **možnost vybrat skupinu akcí** a potom do výstrahy přidejte skupinu akcí (například E-mail nebo SMS), a to buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
-1. Zadejte podrobnosti výstrahy, jako je **název pravidla výstrahy**, **Popis** a **závažnost**.
-1. Vyberte **vytvořit pravidlo výstrahy** a vytvořte výstrahu.
+11. Kliknutím na **Přidat skupiny akcí** přidejte **skupinu akcí** (e-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
+12. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, **Popis** a **závažnost**.
+13. Kliknutím na **vytvořit pravidlo výstrahy** vytvořte výstrahu.
 
 Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Přehled výstrah v Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
 
 ## <a name="how-to-create-alerts-if-a-premium-file-share-is-trending-toward-being-throttled"></a>Jak vytvářet výstrahy, pokud se v rámci omezení podílu souborů úrovně Premium blíží omezení
 
 1. V Azure Portal přejít na účet úložiště.
-1. V části **monitorování** vyberte **výstrahy** a pak vyberte **nové pravidlo výstrahy**.
-1. Vyberte **Upravit prostředek**, vyberte **typ prostředku** pro účet úložiště a potom vyberte **Hotovo**. Pokud je třeba název účtu úložiště *Contoso*, vyberte prostředek contoso/File.
-1. Vyberte **možnost vybrat podmínku** a přidejte podmínku.
-1. V seznamu signálů, které jsou podporované pro účet úložiště, vyberte metriku **odchozího** přenosu dat.
+2. V části **monitorování** vyberte **výstrahy** a pak vyberte **nové pravidlo výstrahy**.
+3. Vyberte **Upravit prostředek**, vyberte **typ prostředku** pro účet úložiště a potom vyberte **Hotovo**. Pokud je třeba název účtu úložiště *Contoso*, vyberte prostředek contoso/File.
+4. Vyberte **možnost vybrat podmínku** a přidejte podmínku.
+5. V seznamu signálů, které jsou podporované pro účet úložiště, vyberte metriku **odchozího** přenosu dat.
 
    > [!NOTE]
    > Je nutné vytvořit tři samostatné výstrahy, které budou upozorňovány, pokud hodnoty příchozího, výstupního nebo transakčního překročí prahové hodnoty, které jste nastavili. Důvodem je to, že výstraha se aktivuje jenom v případě, že jsou splněné všechny podmínky. Pokud například umístíte všechny podmínky do jedné výstrahy, budete upozorněni pouze v případě, že příchozí a odchozí přenos dat a transakce překročí jejich prahové hodnoty.
 
-1. Posuňte se dolů. V rozevíracím seznamu **název dimenze** vyberte **sdílení souborů**.
-1. V rozevíracím seznamu **hodnoty dimenze** vyberte sdílenou složku nebo sdílené složky, na kterých chcete upozornit.
-1. Parametry výstrahy definujte tak, že vyberete hodnoty v rozevíracích seznamech **operátor**, **prahová hodnota**, **členitost agregace** a **frekvence vyhodnocování** a pak vyberete **Hotovo**.
+6. Posuňte se dolů. V rozevíracím seznamu **název dimenze** vyberte **sdílení souborů**.
+7. V rozevíracím seznamu **hodnoty dimenze** vyberte sdílenou složku nebo sdílené složky, na kterých chcete upozornit.
+8. Parametry výstrahy definujte tak, že vyberete hodnoty v rozevíracích seznamech **operátor**, **prahová hodnota**, **členitost agregace** a **frekvence vyhodnocování** a pak vyberete **Hotovo**.
 
    Metriky odchozího přenosu dat, příchozího přenosu dat a transakcí se vyjadřují za minutu, i když jste zřídili odchozí, příchozí a vstupně-výstupní operace za sekundu. Pokud máte například zřízený výstup 90 &nbsp; mebibytes za sekundu (MIB/s) a chcete, aby byla prahová hodnota 80 &nbsp; procent zřízeného odchozího přenosu, vyberte následující parametry výstrahy: 
    - Pro **mezní hodnotu**: *75497472* 
@@ -271,9 +300,9 @@ Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Pře
    - Pro **členitost agregace**: *1 hodina*
    - **Frekvence hodnocení**: *1 hodina*
 
-1. Vyberte **Vybrat skupinu akcí** a potom do výstrahy přidejte skupinu akcí (například E-mail nebo SMS), a to tak, že vyberete existující skupinu akcí nebo vytvoříte novou.
-1. Zadejte podrobnosti výstrahy, jako je **název pravidla výstrahy**, **Popis** a **závažnost**.
-1. Vyberte **vytvořit pravidlo výstrahy** a vytvořte výstrahu.
+9. Vyberte **Přidat skupiny akcí** a potom do výstrahy přidejte skupinu akcí (například E-mail nebo SMS), a to buď výběrem existující skupiny akcí, nebo vytvořením nového.
+10. Zadejte podrobnosti výstrahy, jako je **název pravidla výstrahy**, **Popis** a **závažnost**.
+11. Vyberte **vytvořit pravidlo výstrahy** a vytvořte výstrahu.
 
     > [!NOTE]
     > - Abyste byli informováni o tom, že se vaše rezerva vašich souborů na úrovni Premium blíží omezení *z důvodu zřízeného* příchozího přenosu dat, postupujte podle předchozích pokynů, ale s následující změnou:

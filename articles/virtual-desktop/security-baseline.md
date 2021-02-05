@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e987f96402f4c922bdaca8ecf32348bc99c34199
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 01cd79afe3e718a32663544a76a2a43353bc082e
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798395"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575377"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-desktop"></a>Základní hodnoty zabezpečení Azure pro virtuální počítače s Windows
 
@@ -64,7 +64,7 @@ Pomocí partnerského vztahu virtuálních sítí můžete propojit dvě nebo v�
 
 - [Azure VPN – přehled](../vpn-gateway/vpn-gateway-about-vpngateways.md) 
 
-- [Partnerský vztah virtuální sítě](/azure/virtual-network/virtual-network-peering-overvie)
+- [Partnerský vztah virtuální sítě](/azure/virtual-network/virtual-network-peering-overview)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -96,7 +96,7 @@ Pokud máte regulativní nebo jiný požadavek na zjišťování nebo ochranu p�
 
 - [Azure Marketplace zahrnuje možnosti ID třetích stran.](https://azuremarketplace.microsoft.com/marketplace?search=IDS) 
 
-- [EDR schopnost služby Microsoft Defender ATP](/windows/security/threat-protection/microsoft-defender-atp/overviewendpoint-detection-response)
+- [EDR schopnost služby Microsoft Defender ATP](/bs-cyrl-ba/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -310,7 +310,7 @@ Měli byste zajistit, aby přihlašovací údaje (například heslo, certifikát
 
 Pomocí Azure Active Directory (Azure AD), programu Microsoft Defender Advanced Threat Protection (ATP) nebo Microsoft Intune nasaďte zabezpečenou a spravovanou pracovní stanici uživatelů pro úlohy správy. Zabezpečenou pracovní stanici je možné centrálně spravovat tak, aby vynutila zabezpečenou konfiguraci, včetně silného ověřování, standardních hodnot softwaru a hardwaru, omezeného logického a síťového přístupu.
 
-- [Pochopení pracovních stanic s privilegovaným přístupem](/azure/active-directory/devices/concept-azure-managed-workstation) 
+- [Pochopení pracovních stanic s privilegovaným přístupem](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
 - [Nasazení pracovní stanice s privilegovaným přístupem](/azure/active-directory/devices/howto-azure-managed-workstation)
 
@@ -488,7 +488,7 @@ Doporučuje se, aby zákazník vytvořil proces pro zachycení atributů a změn
 
 ## <a name="logging-and-threat-detection"></a>Protokolování a detekce hrozeb
 
-*Další informace najdete v tématu [Azure Security Benchmark: protokolování a detekce hrozeb](/azure/security/benchmarks/security-controls-v2-logging-threat-protection).*
+*Další informace najdete v tématu [Azure Security Benchmark: protokolování a detekce hrozeb](/azure/security/benchmarks/security-controls-v2-logging-threat-detection).*
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: povolení detekce hrozeb pro prostředky Azure
 
@@ -684,7 +684,7 @@ Kromě toho můžete prostředky označit pomocí značek a vytvořit systém vy
 
 ## <a name="posture-and-vulnerability-management"></a>Stav a správa ohrožení zabezpečení
 
-*Další informace najdete v tématu [Azure Security Benchmark: stav a správa ohrožení zabezpečení](/azure/security/benchmarks/security-controls-v2-vulnerability-management).*
+*Další informace najdete v tématu [Azure Security Benchmark: stav a správa ohrožení zabezpečení](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management).*
 
 ### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>Souč_hod-3: Vytvoření zabezpečených konfigurací pro výpočetní prostředky
 
@@ -765,9 +765,9 @@ Pomocí Azure Automation Update Management nebo řešení třetí strany zajist�
 
 Použijte řešení pro správu oprav třetí strany pro software třetích stran nebo System Center Updates Publisher pro Configuration Manager.
 
-- [Jak nakonfigurovat Update Management pro virtuální počítače v Azure](/azure/automation/automation-update-management) 
+- [Jak nakonfigurovat Update Management pro virtuální počítače v Azure](/azure/automation/update-management/overview) 
 
-- [Správa aktualizací a oprav pro virtuální počítače Azure](/azure/automation/automation-tutorial-update-management)
+- [Správa aktualizací a oprav pro virtuální počítače Azure](/azure/automation/update-management/manage-updates-for-vm)
 
 - [Konfigurace služby Microsoft Endpoint Configuration Manager pro virtuální počítače s Windows](configure-automatic-updates.md)
 
@@ -873,7 +873,7 @@ Použijte řízení přístupu na základě role v Azure Backup, Azure Key Vault
 
 Přehled funkcí zabezpečení v Azure Backup/Azure/Backup/Security-Overview 
 
-- [Šifrování zálohovaných dat pomocí klíčů spravovaných zákazníkem](/azure/backup/encryption-at-rest-with-cmk) 
+- [Šifrování zálohovaných dat s využitím klíčů spravovaných zákazníkem](/azure/backup/encryption-at-rest-with-cmk) 
 
 - [Postup zálohování klíčů Key Vault v Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0&amp;preserve-view=true)
 
@@ -928,9 +928,9 @@ Další informace najdete v následujících referenčních materiálech:
 
 - [Cloud Adoption Framework – osvědčené postupy zabezpečení a šifrování dat Azure](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
 
-- [Azure Security Benchmark – správa prostředků](/azure/security/benchmarks/security-benchmark-v2-asset-management)
+- [Azure Security Benchmark – správa prostředků](/azure/security/benchmarks/security-controls-v2-asset-management)
 
-- [Azure Security Benchmark – ochrana dat](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure Security Benchmark – ochrana dat](/azure/security/benchmarks/security-controls-v2-data-protection)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -958,7 +958,7 @@ Zajistěte, aby se strategie segmentace implementovala konzistentně ve všech t
 
 **Pokyny:** Nepřetržitě měřte a zmírňujte rizika pro jednotlivé prostředky a prostředí, ve kterém jsou hostovány. Stanovte prioritu prostředků s vysokou hodnotou a míst nejvíce vystavených útokům, jako jsou publikované aplikace, body sítě pro příchozí a odchozí přenosy dat, koncové body uživatelů a správců atd.
 
-- [Azure Security Benchmark – správa stavu a ohrožení zabezpečení](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure Security Benchmark – správa stavu a ohrožení zabezpečení](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -999,7 +999,7 @@ Tato strategie by měla zahrnovat zdokumentované pokyny, zásady a standardy pr
 Další informace najdete v následujících referenčních materiálech:
 - [Osvědčený postup zabezpečení Azure 11 – Architektura: jednotná strategie zabezpečení](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure Security Benchmark – zabezpečení sítě](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Azure Security Benchmark – zabezpečení sítě](/azure/security/benchmarks/security-controls-v2-network-security)
 
 - [Přehled zabezpečení sítě v Azure](../security/fundamentals/network-overview.md)
 
@@ -1027,9 +1027,9 @@ Tato strategie by měla zahrnovat zdokumentované pokyny, zásady a standardy pr
 
 Další informace najdete v následujících referenčních materiálech:
 
-- [Azure Security Benchmark – správa identit](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure Security Benchmark – správa identit](/azure/automation/update-management/overview)
 
-- [Azure Security Benchmark – privilegovaný přístup](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure Security Benchmark – privilegovaný přístup](/azure/security/benchmarks/security-controls-v2-privileged-access)
 
 - [Osvědčený postup zabezpečení Azure 11 – Architektura: jednotná strategie zabezpečení](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -1061,9 +1061,9 @@ Tato strategie by měla zahrnovat zdokumentované pokyny, zásady a standardy pr
 
 Další informace najdete v následujících referenčních materiálech:
 
-- [Azure Security Benchmark – protokolování a detekce hrozeb](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure Security Benchmark – protokolování a detekce hrozeb](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Azure Security Benchmark – reakce na incidenty](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure Security Benchmark – reakce na incidenty](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Osvědčený postup zabezpečení Azure 4 – Proces: aktualizace procesů reakcí na incidenty pro cloud](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 

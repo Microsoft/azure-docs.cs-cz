@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f94147a09a6d9da75a0d04630822f1e6f738700a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 7e902798284240b55a3b08ea55ab6ee55add2431
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200936"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575834"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>Verze Preview: Vytvoření virtuálního počítače s Windows pomocí Azure image Builder pomocí PowerShellu
 
@@ -231,13 +231,25 @@ $disSharedImg = New-AzImageBuilderDistributorObject @disObjParams
 Vytvoří objekt pro přizpůsobení nástroje Azure image Builder.
 
 ```azurepowershell-interactive
-$ImgCustomParams = @{
+$ImgCustomParams01 = @{
   PowerShellCustomizer = $true
   CustomizerName = 'settingUpMgmtAgtPath'
   RunElevated = $false
-  Inline = @("mkdir c:\\buildActions", "echo Azure-Image-Builder-Was-Here  > c:\\buildActions\\buildActionsOutput.txt")
+  Inline = @("mkdir c:\\buildActions", "mkdir c:\\buildArtifacts", "echo Azure-Image-Builder-Was-Here  > c:\\buildActions\\buildActionsOutput.txt")
 }
-$Customizer = New-AzImageBuilderCustomizerObject @ImgCustomParams
+$Customizer01 = New-AzImageBuilderCustomizerObject @ImgCustomParams01
+```
+
+Vytvořte druhý objekt přizpůsobení pro Azure image Builder.
+
+```azurepowershell-interactive
+$ImgCustomParams02 = @{
+  FileCustomizer = $true
+  CustomizerName = 'downloadBuildArtifacts'
+  Destination = 'c:\\buildArtifacts\\index.html'
+  SourceUri = 'https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html'
+}
+$Customizer02 = New-AzImageBuilderCustomizerObject @ImgCustomParams02
 ```
 
 Vytvoří šablonu Azure image Builder.
@@ -248,7 +260,7 @@ $ImgTemplateParams = @{
   ResourceGroupName = $imageResourceGroup
   Source = $srcPlatform
   Distribute = $disSharedImg
-  Customize = $Customizer
+  Customize = $Customizer01, $Customizer02
   Location = $location
   UserAssignedIdentityId = $identityNameResourceId
 }
@@ -306,7 +318,7 @@ $ArtifactId = (Get-AzImageBuilderRunOutput -ImageTemplateName $imageTemplateName
 New-AzVM -ResourceGroupName $imageResourceGroup -Image $ArtifactId -Name myWinVM01 -Credential $Cred
 ```
 
-## <a name="verify-the-customization"></a>Ověření přizpůsobení
+## <a name="verify-the-customizations"></a>Ověřit vlastní nastavení
 
 Vytvořte připojení ke vzdálené ploše virtuálního počítače pomocí uživatelského jména a hesla, které jste nastavili při vytváření virtuálního počítače. Uvnitř virtuálního počítače otevřete PowerShell a spusťte příkaz `Get-Content` , jak je znázorněno v následujícím příkladu:
 
@@ -319,6 +331,23 @@ Měl by se zobrazit výstup na základě obsahu souboru vytvořeného během pro
 ```Output
 Azure-Image-Builder-Was-Here
 ```
+
+Ze stejné relace PowerShellu ověřte, že se druhé přizpůsobení úspěšně dokončilo, a to tak, že zkontrolujete přítomnost souboru, `c:\buildArtifacts\index.html` jak je znázorněno v následujícím příkladu:
+
+```azurepowershell-interactive
+Get-ChildItem c:\buildArtifacts\
+```
+
+Výsledek by měl být výpis adresáře zobrazující soubor stažený během procesu přizpůsobení bitové kopie.
+
+```Output
+    Directory: C:\buildArtifacts
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          29/01/2021    10:04            276 index.html
+```
+
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

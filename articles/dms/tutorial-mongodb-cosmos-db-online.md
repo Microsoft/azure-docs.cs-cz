@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-nov-2020
 ms.topic: tutorial
-ms.date: 09/25/2019
-ms.openlocfilehash: fed568d67c688a8c2adab979eb68eaf384a72172
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.date: 02/03/2021
+ms.openlocfilehash: 359f268f69918ccfd9fe34a28c3f8d1c79988393
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539276"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575604"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Kurz: migrace MongoDB do rozhraní API služby Azure Cosmos DB pro MongoDB online pomocí DMS
 
@@ -48,7 +48,7 @@ V tomto kurzu migrujete datovou sadu v MongoDB hostovaném na virtuálním poč�
 
 Tento článek popisuje online migraci z MongoDB Azure Cosmos DB a rozhraní API pro MongoDB. Offline migrace najdete v článku [migrace MongoDB do Azure Cosmos DB rozhraní API pro MongoDB v režimu offline pomocí DMS](tutorial-mongodb-cosmos-db.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -68,6 +68,18 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 * Zajistěte, aby pravidla skupiny zabezpečení sítě (NSG) ve virtuální síti neblokovala následující komunikační porty: 53, 443, 445, 9354 a 10000-20000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](../virtual-network/virtual-network-vnet-plan-design-arm.md).
 * Otevřete bránu Windows Firewall, abyste povolili Azure Database Migration Service přístup ke zdrojovému serveru MongoDB, který je ve výchozím nastavení port TCP 27017.
 * Pokud používáte zařízení brány firewall před zdrojovými databázemi, budete možná muset přidat pravidla firewallu, která Azure Database Migration Service umožní přístup ke zdrojovým databázím pro migraci.
+
+## <a name="configure-azure-cosmos-db-server-side-retries-for-efficient-migration"></a>Konfigurace Azure Cosmos DBch opakování na straně serveru pro efektivní migraci
+
+Zákazníci, kteří migrují z Azure Cosmos DB MongoDB, přináší výhody funkcí zásad správného řízení prostředků, což zaručuje schopnost plně využít vaše zřízené zvýšení propustnosti/s. Azure Cosmos DB může v průběhu migrace omezit daný požadavek na službu migrace dat, pokud požadavek překročí zřízené požadavky na kontejner/s. pak se musí tento požadavek opakovat. Služba migrace dat je schopná provádět opakované pokusy, ale čas odezvy v rámci směrování sítě mezi službou migrace dat a Azure Cosmos DB dopad na celkovou dobu odezvy tohoto požadavku. Zvýšení doby odezvy pro omezené požadavky může zkrátit celkovou dobu potřebnou k migraci. Funkce *opakování na straně serveru* Azure Cosmos DB umožňuje službě zachytit kódy chyb omezení a opakovat s mnohem nižší dobou odezvy, což výrazně vylepšuje dobu odezvy na žádosti.
+
+Funkci opakování na straně serveru můžete najít v okně *funkce* portálu Azure Cosmos DB.
+
+![Snímek obrazovky funkce MongoDB Server-Side opakování](media/tutorial-mongodb-to-cosmosdb-online/mongo-server-side-retry-feature.png)
+
+A pokud je *zakázaný*, doporučujeme ho povolit, jak vidíte níže.
+
+![Snímek obrazovky s MongoDB Server-Side zkuste znovu povolit.](media/tutorial-mongodb-to-cosmosdb-online/mongo-server-side-retry-enable.png)
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registrace poskytovatele prostředků Microsoft.DataMigration
 

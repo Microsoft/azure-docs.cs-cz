@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: db85bf19c1b040fea1ed2f5d6dcf904288366c7f
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 5658bfcf0bf877db1dd001c2af58a40f3b027bd9
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050234"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576240"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Kurz: prozkoumání digitálních vláken Azure pomocí ukázkové klientské aplikace
 
@@ -133,7 +133,7 @@ Content-Length: 223
 Content-Type: application/json; charset=utf-8
 ```
 
-### <a name="create-digital-twins"></a>Vytváření digitálních vláken
+### <a name="create-digital-twins"></a>Vytvoření digitálních dvojčat
 
 Teď, když se některé modely nahrály do instance digitálního vlákna v Azure, můžete vytvořit [**digitální vlákna**](concepts-twins-graph.md) na základě definic modelů. Digitální vlákna reprezentují entity v rámci vašeho podnikového prostředí – například senzory ve farmě, místnosti v budově nebo světla v kleci. 
 
@@ -274,12 +274,15 @@ Hlavní funkcí digitálních vláken Azure je schopnost snadno a efektivně [do
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Projekt v tomto kurzu je základem pro další kurz, [*kurz: připojení uceleného řešení*](tutorial-end-to-end.md). Pokud máte v plánu pokračovat k dalšímu kurzu, můžete zde nastavené prostředky zachovat, abyste mohli dál používat tuto instanci digitálních vláken Azure a nakonfigurovanou ukázkovou aplikaci.
-* V takovém případě můžete použít ukázkové aplikace `DeleteAllTwins` a `DeleteAllModels` příkazy k vymazání nevláken a modelů v instanci, v uvedeném pořadí. V dalším kurzu vám poskytneme čistou SLAT.
+Po dokončení tohoto kurzu můžete zvolit prostředky, které chcete odebrat, v závislosti na tom, co byste chtěli udělat dál.
+
+* **Pokud máte v plánu pokračovat k dalšímu kurzu**, můžete zde nastavené prostředky zachovat, abyste mohli dál používat tuto instanci digitálních vláken Azure a nakonfigurovanou ukázkovou aplikaci pro další kurz.
+
+* **Pokud chcete pokračovat v používání instance digitálního vlákna Azure, ale vymažte všechny jeho modely, vlákna a vztahy**, můžete `DeleteAllTwins` `DeleteAllModels` k vymazání nevláken a modelů ve vaší instanci použít příkazy a příkazy ukázkové aplikace. V dalším kurzu vám poskytneme čistou SLAT.
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-Nakonec odstraňte ukázkovou složku projektu, kterou jste stáhli do svého místního počítače.
+Je také možné, že budete chtít odstranit složku projektu z místního počítače.
 
 ## <a name="next-steps"></a>Další kroky 
 

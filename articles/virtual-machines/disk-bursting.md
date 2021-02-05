@@ -8,21 +8,19 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: a8d1a69070628248fb710a614369ff9311252c05
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: dcdbf94e547581cb9ff885ac5896467abdf316ae
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102838"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576189"
 ---
 # <a name="managed-disk-bursting"></a>Shlukování spravovaných disků
 [!INCLUDE [managed-disks-bursting](../../includes/managed-disks-bursting.md)]
 
 ## <a name="virtual-machine-level-bursting"></a>Shlukování na úrovni virtuálních počítačů
-Podpora rozšíření na úrovni virtuálních počítačů je povolená ve všech oblastech ve veřejném cloudu v těchto podporovaných velikostech: 
+Na následujících řadách virtuálních počítačů ve všech oblastech, ve kterých jsou podporované, se povolí rozpínání na úrovni virtuálních počítačů:
 - [Řada Lsv2](lsv2-series.md)
-
-V Středozápadní USA je k dispozici také rozšíření na úrovni virtuálního počítače pro následující podporované velikosti:
 - [Dsv3-series](dv3-dsv3-series.md)
 - [Esv3-Series](ev3-esv3-series.md)
 

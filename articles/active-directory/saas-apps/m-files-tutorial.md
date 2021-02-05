@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 0df9e4722136dafe94d1bfc84a7767e1e0144d69
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 552e5c2411889ee7f07265eb1cc35d98aed4d7c1
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997218"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99574090"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>Kurz: Azure Active Directory integrace s M-Files
 
@@ -129,7 +129,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí souborů
     >[!NOTE]
     >Pokud chcete nakonfigurovat jednotné přihlašování pro desktopovou aplikaci M-File, postupujte podle následujících kroků. Pokud chcete nakonfigurovat jednotné přihlašování jenom pro web M-Files, nejsou potřeba žádné další kroky.  
 
-1. Postupujte podle dalších kroků a nakonfigurujte desktopovou aplikaci M-File pro povolení jednotného přihlašování s Azure AD. Chcete-li stáhnout soubory M-Files, přejít na stránku pro [Stažení souborů m-Files](https://www.m-files.com/en/download-latest-version) .
+1. Postupujte podle dalších kroků a nakonfigurujte desktopovou aplikaci M-File pro povolení jednotného přihlašování s Azure AD. Chcete-li stáhnout soubory M-Files, přejít na stránku pro [Stažení souborů m-Files](https://www.m-files.com/customers/product-downloads/download-update-links/) .
 
 1. Otevřete okno **nastavení počítače M-Files** . Pak klikněte na tlačítko **Přidat**.
    

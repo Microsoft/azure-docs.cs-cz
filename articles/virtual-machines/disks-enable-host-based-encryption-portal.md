@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: fd74872bc1c46f3dddda1b6d15f14f26dc2187cb
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ba7d6d8deb2034f8b2a853cf74635687561c41ea
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499369"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573598"
 ---
 # <a name="use-the-azure-portal-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Použití Azure Portal k povolení kompletního šifrování pomocí šifrování na hostiteli
 
@@ -35,9 +35,9 @@ Pokud povolíte šifrování na hostiteli, data uložená na hostiteli virtuáln
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Aby bylo možné používat šifrování na hostiteli pro vaše virtuální počítače nebo služby Virtual Machine Scale Sets, musíte ve svém předplatném mít povolenou funkci. Odešlete email na adresu encryptionAtHost@microsoft. com s ID předplatného, abyste získali funkci povolenou pro vaše předplatná.
+Aby bylo možné používat šifrování na hostiteli pro vaše virtuální počítače nebo služby Virtual Machine Scale Sets, musíte ve svém předplatném mít povolenou funkci. Odesláním e-mailu encryptionAtHost@microsoft.com s ID předplatného získáte funkci povolenou pro vaše předplatná.
 
 Přihlaste se k Azure Portal pomocí [poskytnutého odkazu](https://aka.ms/diskencryptionupdates).
 

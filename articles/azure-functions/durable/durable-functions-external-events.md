@@ -4,12 +4,12 @@ description: Naučte se zpracovávat externí události v rozšíření Durable 
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 3cd04c93d508bd06c4ddd2e05074084202b9fc60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c08306edcea02a9207ab5a15eb62b7fffc2ecb44
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87014935"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576325"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Zpracování externích událostí v Durable Functions (Azure Functions)
 
@@ -20,7 +20,7 @@ Funkce nástroje Orchestrator mají možnost čekat a naslouchat externím udál
 
 ## <a name="wait-for-events"></a>Počkat na události
 
-Metody [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) (.NET), `waitForExternalEvent` (JavaScript) a `wait_for_external_event` (Python) [vazby triggeru Orchestration](durable-functions-bindings.md#orchestration-trigger) umožňují, aby funkce Orchestrator asynchronně čekala a naslouchala externí události. Naslouchající funkce Orchestrator deklaruje *název* události a *tvar dat* , která očekává k přijetí.
+Metody [WaitForExternalEvent](/dotnet/api/microsoft.azure.webjobs.durableorchestrationcontextbase.waitforexternalevent?view=azure-dotnet-legacy) (.NET), `waitForExternalEvent` (JavaScript) a `wait_for_external_event` (Python) [vazby triggeru Orchestration](durable-functions-bindings.md#orchestration-trigger) umožňují, aby funkce Orchestrator asynchronně čekala a naslouchala externí události. Naslouchající funkce Orchestrator deklaruje *název* události a *tvar dat* , která očekává k přijetí.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -230,9 +230,9 @@ main = df.Orchestrator.create(orchestrator_function)
 
 ## <a name="send-events"></a>Odesílání událostí
 
-Můžete použít metody [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) (.NET) nebo `raiseEventAsync` (JavaScript) k odeslání externí události do orchestrace. Tyto metody jsou zpřístupněny prostřednictvím vazby [klienta Orchestration](durable-functions-bindings.md#orchestration-client) . K odeslání externí události do orchestrace můžete také použít integrované [rozhraní HTTP API události vyvolání](durable-functions-http-api.md#raise-event) .
+Můžete použít metody [RaiseEventAsync](/dotnet/api/microsoft.azure.webjobs.durableorchestrationclientbase.raiseeventasync?view=azure-dotnet-legacy) (.NET) nebo `raiseEventAsync` (JavaScript) k odeslání externí události do orchestrace. Tyto metody jsou zpřístupněny prostřednictvím vazby [klienta Orchestration](durable-functions-bindings.md#orchestration-client) . K odeslání externí události do orchestrace můžete také použít integrované [rozhraní HTTP API události vyvolání](durable-functions-http-api.md#raise-event) .
 
-Vyvolaná událost zahrnuje *ID instance*, *EventName*a *eventData* jako parametry. Funkce Orchestrator zpracovává tyto události pomocí `WaitForExternalEvent` rozhraní API (.NET) nebo `waitForExternalEvent` (JavaScript). Aby bylo možné zpracovat událost, je nutné, aby se *EventName* shodovala na koncích odesílání i přijímání. Data události musí být také JSON-serializovatelný.
+Vyvolaná událost zahrnuje *ID instance*, *EventName* a *eventData* jako parametry. Funkce Orchestrator zpracovává tyto události pomocí `WaitForExternalEvent` rozhraní API (.NET) nebo `waitForExternalEvent` (JavaScript). Aby bylo možné zpracovat událost, je nutné, aby se *EventName* shodovala na koncích odesílání i přijímání. Data události musí být také JSON-serializovatelný.
 
 Interně, mechanismy vyvolání události zařadí do fronty zprávu, která se vybrala čekající funkcí Orchestrator. Pokud instance nečeká na zadaný *název události,* zpráva události se přidá do fronty v paměti. Pokud instance orchestrace později začne naslouchat tomuto *názvu události,* zkontroluje ve frontě zprávy o událostech.
 

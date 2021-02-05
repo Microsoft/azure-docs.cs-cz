@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f13dfa4221f8f09c24cce3a451f3180d15ee3b99
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 0c4ed5dfee80c33009874361ae6b4d23ec00bc26
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435753"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573326"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Postupy: plánování implementace služby Hybrid Azure Active Directory JOIN
 
@@ -82,6 +82,8 @@ Jako první krok plánování byste měli zkontrolovat prostředí a určit, jes
 
 - Operační systém jádra serveru nepodporuje žádný typ registrace zařízení.
 
+- Nástroj pro migraci uživatelských souborů a nastavení (USMT) nefunguje s registrací zařízení.  
+
 ### <a name="os-imaging-considerations"></a>Požadavky na vytváření bitových kopií operačního systému
 - Pokud se spoléháte na nástroj pro přípravu systému (Sysprep) a pokud pro instalaci používáte image **starší než Windows 10 1809** , ujistěte se, že image není ze zařízení, které už je zaregistrované ve službě Azure AD, jako připojení k hybridní službě Azure AD.
 
@@ -140,7 +142,7 @@ Federované prostředí by mělo mít poskytovatele identity, který podporuje n
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **AD FS/Services/Trust/2005/windowstransport** , **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat WS-Trust koncové body Windows, najdete v tématu [zakázání WS-Trust koncových bodů Windows na proxy serveru](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Pomocí konzoly pro správu AD FS v části **Service**  >  **koncové body** služby můžete zjistit, jaké koncové body jsou povolené.
+> **AD FS/Services/Trust/2005/windowstransport** , **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat WS-Trust koncové body Windows, najdete v tématu [zakázání WS-Trust koncových bodů Windows na proxy serveru](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Pomocí konzoly pro správu AD FS v části   >  **koncové body** služby můžete zjistit, jaké koncové body jsou povolené.
 
 > [!NOTE]
 > Azure AD nepodporuje čipové karty ani certifikáty ve spravovaných doménách.
@@ -164,7 +166,7 @@ V některých případech se vaše místní uživatelské názvy UPN můžou li�
 
 V následující tabulce najdete podrobné informace o podpoře místních UPN služby AD ve Windows 10 – připojení k hybridní službě Azure AD.
 
-| Typ místního hlavního názvu uživatele služby AD | Typ domény | Verze Windows 10 | Popis |
+| Typ místního hlavního názvu uživatele služby AD | Typ domény | Verze Windows 10 | Description |
 | ----- | ----- | ----- | ----- |
 | Balíček | Federovaní | Z verze 1703 | Obecná dostupnost |
 | Bez směrování | Federovaní | Z verze 1803 | Obecná dostupnost |

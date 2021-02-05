@@ -8,12 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 3e8a94b6b9b71d2d71b634edd70ea4150652b143
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67fa53e565de70d3da0b90e36a968b68d54d667f
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88932793"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573241"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>Konfigurace brány firewall protokolu IP pro Azure Kognitivní hledání
 
@@ -31,7 +31,7 @@ Pokud chcete nastavit zásadu řízení přístupu k IP adresám v Azure Portal,
 Azure Portal poskytuje možnost zadat IP adresy a rozsahy IP adres ve formátu CIDR. Příkladem zápisu CIDR je 8.8.8.0/24, který představuje IP adresy, které jsou v rozsahu od 8.8.8.0 do 8.8.8.255.
 
 > [!NOTE]
-> Po povolení zásad řízení přístupu IP pro službu Azure Kognitivní hledání se odmítnou všechny požadavky na rovinu dat z počítačů mimo povolený Seznam rozsahů IP adres. Při konfiguraci pravidel protokolu IP jsou některé funkce Azure Portal zakázané. Budete moct zobrazit a spravovat informace o úrovni služby, ale přístup k indexovým datům a různým součástem ve službě, jako je index, indexer a definice dovednosti, je z bezpečnostních důvodů omezený.
+> Po povolení zásad řízení přístupu IP pro službu Azure Kognitivní hledání se odmítnou všechny požadavky na rovinu dat z počítačů mimo povolený Seznam rozsahů IP adres. Při konfiguraci pravidel protokolu IP jsou některé funkce Azure Portal zakázané. Budete moct zobrazit a spravovat informace o úrovni služby, ale přístup k indexovým datům a různým součástem ve službě, jako je index, indexer a definice dovednosti, je z bezpečnostních důvodů omezený. Jako alternativu k portálu můžete použít [rozšíření vs Code](https://aka.ms/vscode-search) k interakci s různými komponentami ve službě.
 
 ### <a name="requests-from-your-current-ip"></a>Požadavky z vaší aktuální IP adresy
 

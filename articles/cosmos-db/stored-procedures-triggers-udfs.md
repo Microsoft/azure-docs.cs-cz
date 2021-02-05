@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 0bd572da9bba9048e2c8b9c4b426056620c4c265
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: ad9e6b99b396465c2cff95bd6ab340ef9d668085
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340698"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575953"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Uložené procedury, triggery a uživatelsky definované funkce
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB poskytuje transakční spouštění JavaScriptu integrované do jazyka. Při použití rozhraní SQL API v Azure Cosmos DB můžete v jazyce JavaScript zapisovat **uložené procedury** , **triggery** a **uživatelsky definované funkce (UDF)** . Vlastní logiku můžete psát v JavaScriptu, který se spouští v databázovém stroji. Můžete vytvářet a spouštět triggery, uložené procedury a UDF pomocí [Azure Portal](https://portal.azure.com/), [integrovaného rozhraní Query API jazyka JavaScript v Azure Cosmos DB](javascript-query-api.md) nebo klientských SADÁCH [SDK Cosmos DB SQL API](how-to-use-stored-procedures-triggers-udfs.md).
+Azure Cosmos DB poskytuje transakční spouštění JavaScriptu integrované do jazyka. Při použití rozhraní SQL API v Azure Cosmos DB můžete v jazyce JavaScript zapisovat **uložené procedury**, **triggery** a **uživatelsky definované funkce (UDF)** . Vlastní logiku můžete psát v JavaScriptu, který se spouští v databázovém stroji. Můžete vytvářet a spouštět triggery, uložené procedury a UDF pomocí [Azure Portal](https://portal.azure.com/), [integrovaného rozhraní Query API jazyka JavaScript v Azure Cosmos DB](javascript-query-api.md) nebo klientských SADÁCH [SDK Cosmos DB SQL API](how-to-use-stored-procedures-triggers-udfs.md).
 
 ## <a name="benefits-of-using-server-side-programming"></a>Výhody používání programování na straně serveru
 
@@ -72,7 +72,7 @@ Uložené procedury a triggery se vždycky spouštějí na primární replice ko
 
 ## <a name="bounded-execution"></a>Omezené spouštění
 
-Všechny operace Azure Cosmos DB musí být dokončeny v rámci zadaného časového limitu. Toto omezení se vztahuje na funkce jazyka JavaScript – uložené procedury, triggery a uživatelsky definované funkce. Pokud se operace v tomto časovém limitu nedokončí, transakce se vrátí zpět.
+Všechny operace Azure Cosmos DB musí být dokončeny v rámci zadaného časového limitu. Uložené procedury mají časový limit 5 sekund. Toto omezení se vztahuje na funkce jazyka JavaScript – uložené procedury, triggery a uživatelsky definované funkce. Pokud se operace v tomto časovém limitu nedokončí, transakce se vrátí zpět.
 
 Můžete buď zajistit, aby se funkce JavaScriptu dokončily v rámci časového limitu, nebo implementovat model založený na pokračování pro dávku nebo pokračování v provádění. Aby bylo možné zjednodušit vývoj uložených procedur a triggerů za účelem zpracování časových omezení, všechny funkce v kontejneru Azure Cosmos (například vytváření, čtení, aktualizace a odstraňování položek) vrací logickou hodnotu, která představuje, zda bude tato operace dokončena. Pokud je tato hodnota false, znamená to, že procedura musí zabalit provádění, protože skript spotřebovává více času nebo zřídil propustnost, než je nakonfigurovaná hodnota. Operace zařazené do fronty před prvním nepřijatnou operací úložiště jsou zaručené k dokončení, pokud se uložená procedura dokončí v čase, a nezařazuje žádné další požadavky. Operace by tedy měly být zařazeny po jednom pomocí konvence zpětného volání JavaScriptu ke správě toku řízení skriptu. Vzhledem k tomu, že se skripty spouštějí v prostředí na straně serveru, jsou výhradně řízeny. Skripty, které opakovaně narušují hranice provádění, mohou být označeny jako neaktivní a nelze je spustit, aby bylo možné akceptovat hranice spouštění.
 

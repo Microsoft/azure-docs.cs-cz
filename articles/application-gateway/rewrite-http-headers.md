@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: absha
-ms.openlocfilehash: 3e8eb79d519e2f7bfbf006b852f0c5294976b727
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 7c5b4f0d5d4b153684683963c56b7506e76d963e
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397145"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575649"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Přepsat hlavičky HTTP pomocí Application Gateway
 
@@ -48,19 +48,19 @@ Podmínku můžete použít k vyhodnocení, zda je zadaná proměnná přítomna
 
 Akce přepisu slouží k zadání hlaviček žádosti a odpovědi, které chcete přepsat, a nové hodnoty hlaviček. Můžete buď vytvořit novou hlavičku, upravit hodnotu existující hlavičky nebo odstranit existující hlavičku. Hodnota nového záhlaví nebo existující záhlaví lze nastavit na tyto typy hodnot:
 
-- Textové.
-- Hlavička žádosti Chcete-li zadat hlavičku požadavku, je nutné použít syntaxi {http_req_ *header* }.
-- Hlavička odpovědi. Chcete-li zadat hlavičku odpovědi, je nutné použít syntaxi {http_resp_ *header* }.
-- Proměnná serveru. Pokud chcete zadat proměnnou serveru, musíte použít syntaxi {var_ *serverVariable* }.
+- Text.
+- Hlavička žádosti Chcete-li zadat hlavičku požadavku, je nutné použít syntaxi {http_req_ *header*}.
+- Hlavička odpovědi. Chcete-li zadat hlavičku odpovědi, je nutné použít syntaxi {http_resp_ *header*}.
+- Proměnná serveru. Pokud chcete zadat proměnnou serveru, musíte použít syntaxi {var_ *serverVariable*}.
 - Kombinace textu, hlavičky požadavku, hlavičky odpovědi a serverové proměnné.
 
 ## <a name="server-variables"></a>Serverové proměnné
 
-Application Gateway používá serverové proměnné k ukládání užitečných informací o serveru, připojení ke klientovi a aktuální žádosti o připojení. Příklady uložených informací zahrnují IP adresu klienta a typ webového prohlížeče. Proměnné serveru se dynamicky mění, například když se načte nová stránka nebo když se publikuje formulář. Tyto proměnné můžete použít k vyhodnocení podmínek přepisu a přepisu hlaviček. Aby bylo možné použít hodnotu proměnných serveru k přepsání hlaviček, bude nutné zadat tyto proměnné v syntaxi {var_ *serverVariable* }.
+Application Gateway používá serverové proměnné k ukládání užitečných informací o serveru, připojení ke klientovi a aktuální žádosti o připojení. Příklady uložených informací zahrnují IP adresu klienta a typ webového prohlížeče. Proměnné serveru se dynamicky mění, například když se načte nová stránka nebo když se publikuje formulář. Tyto proměnné můžete použít k vyhodnocení podmínek přepisu a přepisu hlaviček. Aby bylo možné použít hodnotu proměnných serveru k přepsání hlaviček, bude nutné zadat tyto proměnné v syntaxi {var_ *serverVariable*}.
 
 Application Gateway podporuje tyto proměnné serveru:
 
-| Název proměnné | Popis                                                  |
+| Název proměnné | Description                                                  |
 | -------------------------- | :----------------------------------------------------------- |
 | add_x_forwarded_for_proxy  | Pole hlavičky žádosti klienta s přesměrováním do `client_ip` proměnné (viz vysvětlení později v této tabulce), ke kterému se připojuje ve formátu IP1, IP2, IP3 a tak dále. Pokud pole s přesměrováním X není v hlavičce žádosti klienta, `add_x_forwarded_for_proxy` proměnná je rovna `$client_ip` proměnné. Tato proměnná je užitečná hlavně v případě, že chcete přepsat hlavičku, kterou předáváte X-pro nastavenou Application Gateway tak, aby hlavička obsahovala jenom IP adresu bez informací o portu. |
 | ciphers_supported          | Seznam šifr podporovaných klientem.          |
@@ -69,21 +69,21 @@ Application Gateway podporuje tyto proměnné serveru:
 | client_port                | Port klienta.                                                  |
 | client_tcp_rtt             | Informace o připojení TCP klienta. K dispozici v systémech, které podporují možnost soketu TCP_INFO. |
 | client_user                | Když se použije ověřování protokolem HTTP, uživatelské jméno zadané pro ověřování. |
-| Hostitel                       | V tomto pořadí priorit: název hostitele z řádku žádosti, název hostitele z pole Hlavička požadavku hostitele nebo název serveru, který odpovídá požadavku. Příklad: *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* hodnota host bude v požadavku *contoso.com* |
+| Hostitel                       | V tomto pořadí priorit: název hostitele z řádku žádosti, název hostitele z pole Hlavička požadavku hostitele nebo název serveru, který odpovídá požadavku. Příklad: `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` hodnota host bude v požadavku *contoso.com* |
 | *název* cookie_              | *Název* souboru cookie.                                            |
 | http_method                | Metoda použitá pro vytvoření žádosti adresy URL Například GET nebo POST. |
 | http_status                | Stav relace. Například 200, 400 nebo 403.                       |
 | http_version               | Protokol žádosti. Obvykle HTTP/1.0, HTTP/1.1 nebo HTTP/2.0. |
-| query_string               | Seznam párů proměnných/hodnot, které následují po "?" v požadované adrese URL. Příklad: v požadavku se *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* QUERY_STRING hodnota *ID = 123&title = Fabrikam* |
+| query_string               | Seznam párů proměnných/hodnot, které následují po "?" v požadované adrese URL. Příklad: v požadavku se `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` QUERY_STRING hodnota *ID = 123&title = Fabrikam* |
 | received_bytes             | Délka požadavku (včetně řádku žádosti, hlavičky a textu žádosti) |
 | request_query              | Argumenty na řádku požadavku.                                |
 | request_scheme             | Schéma žádosti: http nebo HTTPS.                            |
-| request_uri                | Úplný identifikátor URI původní žádosti (s argumenty). Příklad: v požadavku se *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* REQUEST_URI hodnota */article.aspx? ID = 123&title = Fabrikam*   |
+| request_uri                | Úplný identifikátor URI původní žádosti (s argumenty). Příklad: v požadavku se `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` REQUEST_URI hodnota */article.aspx? ID = 123&title = Fabrikam*   |
 | sent_bytes                 | Počet bajtů odeslaných klientovi.                             |
 | server_port                | Port serveru, který přijal požadavek.                 |
 | ssl_connection_protocol    | Protokol vytvořeného připojení TLS.        |
 | ssl_enabled                | "On", pokud připojení funguje v režimu TLS. V opačném případě prázdný řetězec. |
-| uri_path                   | Identifikuje konkrétní prostředek v hostiteli, ke kterému chce webový klient získat přístup. Toto je část identifikátoru URI požadavku bez argumentů. Příklad: v požadavku se *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* hodnota uri_path */article.aspx*  |
+| uri_path                   | Identifikuje konkrétní prostředek v hostiteli, ke kterému chce webový klient získat přístup. Toto je část identifikátoru URI požadavku bez argumentů. Příklad: v požadavku se `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` hodnota uri_path */article.aspx*  |
 
 ## <a name="rewrite-configuration"></a>Přepsat konfiguraci
 
@@ -91,19 +91,19 @@ Chcete-li nakonfigurovat přepsání hlaviček protokolu HTTP, je nutné provés
 
 1. Vytvořte objekty, které jsou požadovány pro přepsání hlaviček protokolu HTTP:
 
-   - **Akce přepisu** : slouží k zadání polí hlavičky Request a Request, která chcete přepsat, a nové hodnoty hlaviček. K akci přepsání můžete přidružit jednu nebo více podmínek přepsání.
+   - **Akce přepisu**: slouží k zadání polí hlavičky Request a Request, která chcete přepsat, a nové hodnoty hlaviček. K akci přepsání můžete přidružit jednu nebo více podmínek přepsání.
 
-   - **Podmínka přepisu** : volitelná konfigurace. Podmínky přepisu vyhodnocují obsah požadavků a odpovědí HTTP (S). Akce přepisu nastane, pokud požadavek nebo odpověď HTTP (S) odpovídá podmínce přepsání.
+   - **Podmínka přepisu**: volitelná konfigurace. Podmínky přepisu vyhodnocují obsah požadavků a odpovědí HTTP (S). Akce přepisu nastane, pokud požadavek nebo odpověď HTTP (S) odpovídá podmínce přepsání.
 
      Pokud k akci přiřadíte více než jednu podmínku, bude akce provedena pouze v případě, že jsou splněny všechny podmínky. Jinými slovy, operace je logická a operace.
 
-   - **Pravidlo přepisu** : obsahuje více kombinací podmínka pro akci přepisu nebo přepisu.
+   - **Pravidlo přepisu**: obsahuje více kombinací podmínka pro akci přepisu nebo přepisu.
 
-   - **Pořadí pravidel** : pomáhá určit pořadí, ve kterém se pravidla přepsání spouštějí. Tato konfigurace je užitečná, když máte více pravidel pro přepsání v sadě přepsání. Jako první se spustí pravidlo pro přepsání s nižší hodnotou pořadí pravidel. Pokud přiřadíte stejné pořadí pravidel ke dvěma pravidlům přepisu, pořadí spuštění je nedeterministické.
+   - **Pořadí pravidel**: pomáhá určit pořadí, ve kterém se pravidla přepsání spouštějí. Tato konfigurace je užitečná, když máte více pravidel pro přepsání v sadě přepsání. Jako první se spustí pravidlo pro přepsání s nižší hodnotou pořadí pravidel. Pokud přiřadíte stejné pořadí pravidel ke dvěma pravidlům přepisu, pořadí spuštění je nedeterministické.
 
-   - **Sada přepsání** : obsahuje více pravidel pro přepis, která budou přidružena k pravidlu směrování požadavků.
+   - **Sada přepsání**: obsahuje více pravidel pro přepis, která budou přidružena k pravidlu směrování požadavků.
 
-2. Připojte sadu přepište ( *rewriteRuleSet* ) do pravidla směrování. Konfigurace přepsání je připojena ke zdroji naslouchání prostřednictvím pravidla směrování. Použijete-li pravidlo základního směrování, je konfigurace přepsání hlaviček přidružena ke zdrojovému naslouchacího procesu a je přepsána globální hlavičkou. Když použijete pravidlo směrování na základě cesty, konfigurace opětovného zápisu hlaviček se definuje na mapě cesty URL. V takovém případě platí pouze pro konkrétní oblast cesty lokality.
+2. Připojte sadu přepište (*rewriteRuleSet*) do pravidla směrování. Konfigurace přepsání je připojena ke zdroji naslouchání prostřednictvím pravidla směrování. Použijete-li pravidlo základního směrování, je konfigurace přepsání hlaviček přidružena ke zdrojovému naslouchacího procesu a je přepsána globální hlavičkou. Když použijete pravidlo směrování na základě cesty, konfigurace opětovného zápisu hlaviček se definuje na mapě cesty URL. V takovém případě platí pouze pro konkrétní oblast cesty lokality.
    > [!NOTE]
    > Přepsání adresy URL – změna hlaviček; nemění adresu URL pro cestu.
 

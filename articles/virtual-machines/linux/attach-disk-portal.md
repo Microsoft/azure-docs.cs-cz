@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: ca8584d6cce3f5487d84f6647c42274879d610dd
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 647564a9b9ca909d2f45ae66673d8beac168a4aa
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198063"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575970"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Připojení datového disku k virtuálnímu počítači se systémem Linux pomocí portálu 
 V tomto článku se dozvíte, jak připojit nové i stávající disky k virtuálnímu počítači se systémem Linux prostřednictvím Azure Portal. [Datový disk můžete také připojit k virtuálnímu počítači s Windows v Azure Portal](../windows/attach-managed-disk-portal.md). 
@@ -225,4 +225,7 @@ Existují dva způsoby, jak na svém VIRTUÁLNÍm počítači se systémem Linux
     ```
 
 ## <a name="next-steps"></a>Další kroky
+
+Další informace, které vám pomůžou při řešení problémů s disky, najdete v tématu věnovaném [řešení potíží se změnami názvu zařízení virtuálních počítačů Linux](../troubleshooting/troubleshoot-device-names-problems.md).
+
 [Datový disk](add-disk.md) můžete také připojit pomocí rozhraní příkazového řádku Azure CLI.

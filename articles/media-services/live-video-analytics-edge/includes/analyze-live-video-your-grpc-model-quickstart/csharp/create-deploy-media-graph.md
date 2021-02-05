@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 39c9cbdbe8be5c068f9426b53f312563e01a77bc
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: c99a9086171192e5d954fb5a9bfbe5d2d7ef4ea5
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956254"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99569530"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Kontrola a úprava ukázkových souborů
 
@@ -88,11 +88,11 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
 
     ![Připojovací řetězec IoT Hub](../../../media/quickstarts/iot-hub-connection-string-grpc.png)
 
-> [!NOTE]
-> Můžete být vyzváni k zadání předdefinovaných informací koncového bodu pro IoT Hub. Chcete-li získat tyto informace, v Azure Portal přejděte do IoT Hub a vyhledejte v levém navigačním podokně možnost **Předdefinované koncové body** . Klikněte na něj a vyhledejte **koncový bod kompatibilní** s centrem událostí v části **koncový bod kompatibilní** s centrem událostí. Zkopírujte a použijte text v poli. Koncový bod bude vypadat přibližně takto:  
-    ```
-    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
-    ```
+    > [!NOTE]
+    > Můžete být vyzváni k zadání předdefinovaných informací koncového bodu pro IoT Hub. Chcete-li získat tyto informace, v Azure Portal přejděte do IoT Hub a vyhledejte v levém navigačním podokně možnost **Předdefinované koncové body** . Klikněte na něj a vyhledejte **koncový bod kompatibilní** s centrem událostí v části **koncový bod kompatibilní** s centrem událostí. Zkopírujte a použijte text v poli. Koncový bod bude vypadat přibližně takto:  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
 
 1. Klikněte pravým tlačítkem na *Src/Edge/config/* *deployment.grpcyolov3icpu.amd64.jsna* a vyberte **vytvořit nasazení pro jedno zařízení**.
 
@@ -131,6 +131,11 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
 
    ![Spustit monitorování](../../../media/quickstarts/start-monitoring-built-event-endpoint-grpc.png)
 
+    > [!NOTE]
+    > Můžete být vyzváni k zadání předdefinovaných informací koncového bodu pro IoT Hub. Chcete-li získat tyto informace, v Azure Portal přejděte do IoT Hub a vyhledejte v levém navigačním podokně možnost **Předdefinované koncové body** . Klikněte na něj a vyhledejte **koncový bod kompatibilní** s centrem událostí v části **koncový bod kompatibilní** s centrem událostí. Zkopírujte a použijte text v poli. Koncový bod bude vypadat přibližně takto:  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
 ### <a name="run-the-sample-program"></a>Spuštění ukázkového programu
 
 1. Chcete-li spustit relaci ladění, vyberte klávesu F5. V okně terminálu se zobrazí zprávy tištěné.

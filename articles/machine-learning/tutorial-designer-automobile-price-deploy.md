@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: 6bba5ad17cbb6f1ed72d06b37c6d6af9ebd26495
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: e93f912915303ce903a32ceba4f079593657a4ac
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246464"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576054"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Kurz: nasazení modelu strojového učení pomocí návrháře
 
 
-Můžete nasadit prediktivní model vyvinutý v [rámci jednoho kurzu](tutorial-designer-automobile-price-train-score.md) , který jiným uživatelům umožní tuto možnost použít. V první části jste si vyškole svůj model. Nyní je čas vytvořit nové předpovědi na základě vstupu uživatele. V této části kurzu budete:
+Můžete nasadit prediktivní model vyvinutý v [rámci jednoho kurzu](tutorial-designer-automobile-price-train-score.md) , který jiným uživatelům umožní tuto možnost použít. V první části jste si vyškole svůj model. Nyní je čas vytvořit předpovědi na základě vstupu uživatele. V této části kurzu budete:
 
 > [!div class="checklist"]
 > * Vytvoří kanál pro odvození v reálném čase.
@@ -28,7 +28,7 @@ Můžete nasadit prediktivní model vyvinutý v [rámci jednoho kurzu](tutorial-
 > * Nasaďte koncový bod v reálném čase.
 > * Otestujte koncový bod v reálném čase.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Kompletní [část tohoto kurzu](tutorial-designer-automobile-price-train-score.md) se naučíte, jak v Návrháři naučit a vyhodnocovat model strojového učení.
 
@@ -101,7 +101,7 @@ Až se dokončí zřizování služby AKS, vraťte se do kanálu Inferencing v r
 
     Můžete také změnit **upřesňující** nastavení koncového bodu v reálném čase.
     
-    |Rozšířené nastavení|Popis|
+    |Rozšířené nastavení|Description|
     |---|---|
     |Povolit diagnostiku Application Insights a shromažďování dat| Určuje, jestli se má povolit Azure Application Ingishts shromažďovat data z nasazených koncových bodů. </br> Ve výchozím nastavení: false |
     |Časový limit vyhodnocování| Časový limit (v milisekundách), který se má vymáhat pro volání bodování webové služby.</br>Ve výchozím nastavení: 60000|
@@ -122,17 +122,19 @@ Až se dokončí zřizování služby AKS, vraťte se do kanálu Inferencing v r
 > Pokud v poli nastavení koncového bodu v reálném čase vyberete **Azure Container instance** pro **COMPUTE** , můžete ho nasadit taky na **Azure Container instance** (ACI).
 > Instance kontejneru Azure se používá pro testování nebo vývoj. Použijte ACI pro úlohy s nižší škálou zatížení procesoru, které vyžadují méně než 48 GB paměti RAM.
 
-## <a name="view-the-real-time-endpoint"></a>Zobrazení koncového bodu v reálném čase
+## <a name="test-the-real-time-endpoint"></a>Testování koncového bodu v reálném čase
 
 Po dokončení nasazení můžete zobrazit koncový bod v reálném čase tak, že na stránce **koncové body** kliknete.
 
 1. Na stránce **koncové body** vyberte koncový bod, který jste nasadili.
 
-1. Na kartě **Podrobnosti** můžete zobrazit další informace, jako je například identifikátor URI, stav a značky REST.
+    Na kartě **Podrobnosti** můžete zobrazit další informace, jako je identifikátor URI REST, definice, stav a značky v Swagger.
 
-1. Na kartě **spotřebovávat** můžete najít klíče zabezpečení a nastavit metody ověřování.
+    Na kartě **spotřebovávat** můžete najít ukázkový kód pro spotřebu, klíče zabezpečení a nastavit metody ověřování.
 
-1. Na kartě **protokoly nasazení** můžete najít podrobné protokoly nasazení koncového bodu v reálném čase. 
+    Na kartě **protokoly nasazení** můžete najít podrobné protokoly nasazení koncového bodu v reálném čase.
+
+1. Pokud chcete otestovat koncový bod, klikněte na kartu **test** . Odtud můžete zadat testovací data a vybrat **test** ověřit výstup svého koncového bodu.
 
 Další informace o využívání webové služby najdete v tématu [Spotřeba modelu nasazeného jako WebService](how-to-consume-web-service.md) .
 

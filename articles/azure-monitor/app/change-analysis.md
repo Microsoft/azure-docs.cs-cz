@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 728fd8f4705d24f719b6dd47ba88d89fb399fd5a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 133a7d9b3fa04797648fa253825505d29e37ca98
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195870"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576383"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Použití analýzy změn aplikace (Preview) v Azure Monitor
 
@@ -28,6 +28,17 @@ Změna analýzy detekuje různé typy změn, od vrstvy infrastruktury po nasazen
 Následující diagram znázorňuje architekturu analýzy změn:
 
 ![Diagram architektury, jak analýza změn získává data změny a poskytuje je klientským nástrojům](./media/change-analysis/overview.png)
+
+## <a name="supported-resource-types"></a>Podporované typy prostředků
+
+Služba analýza změn aplikace podporuje změny na úrovni vlastností prostředků ve všech typech prostředků Azure, včetně běžných prostředků, jako jsou:
+- Virtuální počítač
+- Škálovací sada virtuálních počítačů
+- App Service
+- Služba Azure Kubernetes
+- Funkce Azure
+- Síťové prostředky: například skupina zabezpečení sítě, Virtual Network, Application Gateway atd.
+- Datové služby: například Storage, SQL, Redis Cache, Cosmos DB atd.
 
 ## <a name="data-sources"></a>Zdroje dat
 
@@ -49,17 +60,27 @@ Změna analýz zachytí stav nasazení a konfigurace aplikace každé 4 hodiny. 
 
 ### <a name="dependency-changes"></a>Změny závislosti
 
-Změny závislostí prostředků mohou také způsobovat problémy ve webové aplikaci. Například pokud webová aplikace volá do mezipaměti Redis, může být SKU Redis Cache ovlivněn výkon webové aplikace. Pokud chcete zjistit změny v závislostech, změňte analýzu na záznam DNS webové aplikace. Tímto způsobem identifikuje změny ve všech součástech aplikace, které by mohly způsobovat problémy.
-V současné době jsou podporovány následující závislosti:
+Změny závislostí prostředků mohou také způsobovat problémy v prostředku. Například pokud webová aplikace volá do mezipaměti Redis, může být SKU Redis Cache ovlivněn výkon webové aplikace. Dalším příkladem je, že je port 22 uzavřený ve skupině zabezpečení sítě virtuálního počítače, způsobí chyby připojení. 
+
+#### <a name="web-app-diagnose-and-solve-problems-navigator-preview"></a>Diagnostika a řešení problémů v aplikaci Web App (Preview)
+Pokud chcete zjistit změny v závislostech, změňte analýzu na záznam DNS webové aplikace. Tímto způsobem identifikuje změny ve všech součástech aplikace, které by mohly způsobovat problémy.
+V současné době jsou v **diagnostice a řešení problémů v rámci webové aplikace podporovány následující závislosti | Navigátor (Preview)**:
 - Web Apps
 - Azure Storage
 - Azure SQL
 
-## <a name="application-change-analysis-service"></a>Služba Analysis Services pro změny aplikace
+#### <a name="related-resources"></a>Související prostředky
+Analýza změny aplikace detekuje související prostředky. Běžnými příklady jsou skupiny zabezpečení sítě, Virtual Network, Application Gateway a Load Balancer související s virtuálním počítačem. Síťové prostředky se obvykle automaticky zřídí ve stejné skupině prostředků jako prostředky, které ji používají, takže filtrování změn podle skupiny prostředků zobrazí všechny změny pro virtuální počítač a související síťové prostředky.
+
+![Snímek obrazovky se změnami sítě](./media/change-analysis/network-changes.png)
+
+## <a name="application-change-analysis-service-enablement"></a>Povolení služby analýza změn aplikace
 
 Služba Analysis Services pro změny aplikace počítá a agreguje data změny ze zdrojů dat uvedených výše. Poskytuje sadu analýz pro uživatele, kteří můžou snadno procházet všemi změnami prostředků a určit, která změna je relevantní v kontextu řešení potíží nebo monitorování.
-Poskytovatel prostředků "Microsoft. ChangeAnalysis" musí být zaregistrován v rámci předplatného pro Azure Resource Manager sledované vlastnosti a data změny nastavení proxy, aby byla dostupná. Když zadáte nástroj Diagnostika a řešení problémů pro webovou aplikaci nebo spustíte kartu Change Analysis Standalone, tento poskytovatel prostředků se automaticky zaregistruje. Pro vaše předplatné nemá žádné implementace výkonu ani nákladů. Pokud povolíte analýzu změn pro webové aplikace (nebo povolíte nástroj Diagnostika a řešení problémů), bude mít zanedbatelný dopad na výkon webové aplikace a žádné fakturační náklady.
-V případě změn v hostu webové aplikace je potřeba samostatné povolení ke skenování souborů kódu v rámci webové aplikace. Další informace najdete v části o [změně analýzy v nástroji Diagnostika a řešení problémů](#application-change-analysis-in-the-diagnose-and-solve-problems-tool) dále v tomto článku.
+Poskytovatel prostředků "Microsoft. ChangeAnalysis" musí být zaregistrován v rámci předplatného pro Azure Resource Manager sledované vlastnosti a data změny nastavení proxy, aby byla dostupná. Když zadáte nástroj Diagnostika a řešení problémů pro webovou aplikaci nebo spustíte kartu Change Analysis Standalone, tento poskytovatel prostředků se automaticky zaregistruje. V případě změn v hostu webové aplikace je potřeba samostatné povolení ke skenování souborů kódu v rámci webové aplikace. Další informace najdete v části o [změně analýzy v nástroji Diagnostika a řešení problémů](#application-change-analysis-in-the-diagnose-and-solve-problems-tool) dále v tomto článku.
+
+## <a name="cost"></a>Náklady
+Analýza změn aplikací je bezplatná služba – neúčtují se vám žádné fakturační náklady na předplatná, která jsou povolená. Služba také nemá žádný vliv na výkon při kontrole změn vlastností prostředků Azure. Povolíte-li analýzu změn pro webové aplikace změny souborů v hostovi (nebo povolíte nástroj Diagnostika a řešení problémů), bude mít zanedbatelný dopad na výkon webové aplikace a žádné fakturační náklady.
 
 ## <a name="visualizations-for-application-change-analysis"></a>Vizualizace pro analýzu změn aplikace
 
@@ -82,6 +103,11 @@ Kliknutím na prostředek zobrazíte všechny jeho změny. V případě potřeby
 U jakékoli zpětné vazby použijte tlačítko Odeslat názor v okně nebo e-mailu changeanalysisteam@microsoft.com .
 
 ![Snímek obrazovky s tlačítkem zpětné vazby v okně pro změnu analýzy](./media/change-analysis/change-analysis-feedback.png)
+
+#### <a name="multiple-subscription-support"></a>Podpora více předplatných
+Uživatelské rozhraní podporuje výběr více předplatných pro zobrazení změn prostředků. Použijte filtr předplatného:
+
+![Snímek obrazovky s filtrem předplatným, který podporuje výběr více předplatných](./media/change-analysis/multiple-subscriptions-support.png)
 
 ### <a name="web-app-diagnose-and-solve-problems"></a>Diagnostika a řešení problémů webové aplikace
 

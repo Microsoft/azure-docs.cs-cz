@@ -4,21 +4,23 @@ description: Tento článek popisuje, jak spravovat Správce serverů pro Azure 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 2/4/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9fdd6b6a195d0c6d4c4bf0489a037cb138a23a42
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 62acb526a247362b17c4dfd4e26c52760deecd71
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351720"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573479"
 ---
 # <a name="manage-server-administrators"></a>Správa správců serveru
 
 Správci serveru musí být platným uživatelem, instančním objektem nebo skupinou zabezpečení v Azure Active Directory (Azure AD) pro tenanta, ve kterém se server nachází. Správce serverů můžete spravovat pomocí **Analysis Services správci** serveru v Azure Portal, vlastností serveru v SSMS, PowerShellu nebo REST API. 
 
 Při přidávání **skupiny zabezpečení** použijte `obj:groupid@tenantid` . Ve skupinách zabezpečení přidaných do role správce serveru nejsou podporované objekty služby.
+
+Další informace o přidání instančního objektu k roli správce serveru najdete v tématu [Přidání instančního objektu k roli správce serveru](analysis-services-addservprinc-admins.md).
 
 Pokud je povolená brána firewall serveru, musí být v pravidle brány firewall zahrnuté IP adresy klientského počítače správce serveru. Další informace najdete v tématu [Konfigurace brány firewall serveru](analysis-services-qs-firewall.md).
 

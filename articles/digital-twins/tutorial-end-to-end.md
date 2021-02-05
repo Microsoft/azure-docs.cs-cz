@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 8933dd6655223db092597aedf839fd800119864a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 5ef06f2db487a3e6d897e26758da840f37c3ecaf
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684001"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575801"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Kurz: sestavení kompletního řešení
 
@@ -401,18 +401,15 @@ Tady je přehled scénáře, který jste vytvořili v tomto kurzu.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už prostředky vytvořené v tomto kurzu nepotřebujete, odstraňte je pomocí těchto kroků. 
+Po dokončení tohoto kurzu můžete zvolit prostředky, které chcete odebrat, v závislosti na tom, co byste chtěli udělat dál.
 
-Pomocí [Azure Cloud Shell](https://shell.azure.com)můžete odstranit všechny prostředky Azure ve skupině prostředků pomocí příkazu [AZ Group Delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-delete) . Tím odeberete skupinu prostředků. instance digitálního vlákna Azure; Centrum IoT a registrace zařízení v centru téma Event Grid a související odběry; a aplikace Azure Functions, včetně funkcí a přidružených prostředků, jako je Storage.
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-> [!IMPORTANT]
-> Odstranění skupiny prostředků je nevratné. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. 
+* **Pokud chcete dál používat instanci digitálních vláken Azure, kterou jste nastavili v tomto článku, ale vymažete některé nebo všechny jeho modely, vlákna a vztahy**, můžete k odstranění prvků, které chcete odebrat, použít příkazy [AZ dt](/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true) CLI v [Azure Cloud Shell](https://shell.azure.com) okně.
 
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
+    Tato možnost neodebere žádný z dalších prostředků Azure vytvořených v tomto kurzu (IoT Hub, Azure Functions aplikace atd.). Můžete je odstranit jednotlivě pomocí [příkazů DT](/cli/azure/reference-index?view=azure-cli-latest&preserve-view=true) vhodných pro každý typ prostředku.
 
-Nakonec odstraňte ukázkovou složku projektu, kterou jste stáhli do svého místního počítače.
+Je také možné, že budete chtít odstranit složku projektu z místního počítače.
 
 ## <a name="next-steps"></a>Další kroky
 

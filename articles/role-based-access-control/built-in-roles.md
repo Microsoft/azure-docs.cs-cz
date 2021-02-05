@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 01/15/2021
+ms.date: 02/01/2021
 ms.custom: generated
-ms.openlocfilehash: 39385a3ea9dc06875806ac85c06c0df6d5db2698
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3b7b65a558470c4e7f04ed84ea186fc1ea98bc40
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683789"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99557349"
 ---
 # <a name="azure-built-in-roles"></a>Předdefinované role Azure
 
@@ -103,6 +103,7 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [Role čtečky účtu Cosmos DB](#cosmos-db-account-reader-role) | Může číst data Azure Cosmos DB účtu. Správa účtů Azure Cosmos DB najdete v tématu [Přispěvatel účtu DocumentDB](#documentdb-account-contributor) . | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
 > | [Operátor Cosmos DB](#cosmos-db-operator) | Umožňuje správu účtů Azure Cosmos DB, ale ne přístup k datům v nich. Zabraňuje přístup k klíčům účtu a připojovacím řetězcům. | 230815da-be43-4aae-9cb4-875f7bd000aa |
 > | [CosmosBackupOperator](#cosmosbackupoperator) | Může odeslat žádost o obnovení pro Cosmos DB databázi nebo kontejner pro účet. | db7b14f2-5adf-42da-9f96-f2ee17bab5cb |
+> | [CosmosRestoreOperator](#cosmosrestoreoperator) | Může provést akci obnovení pro účet služby Cosmos DB Database s režimem průběžné zálohování. | 5432c526-bc82-444a-b7ba-57c5b0b5b34f |
 > | [Přispěvatel účtu DocumentDB](#documentdb-account-contributor) | Může spravovat účty Azure Cosmos DB. Azure Cosmos DB se dřív jmenovala jako DocumentDB. | 5bd9cd88-fe45-4216-938b-f97437e15450 |
 > | [Přispěvatel Redis Cache](#redis-cache-contributor) | Umožňuje správu mezipamětí Redis, ale ne přístup k nim. | e0f68234-74aa-48ed-b826-c38b57376e17 |
 > | [Přispěvatel databáze SQL](#sql-db-contributor) | Umožňuje spravovat databáze SQL, ale ne přístup k nim. Nemůžete také spravovat zásady související se zabezpečením nebo jejich nadřazené servery SQL. | 9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
@@ -130,7 +131,7 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [Přispěvatel Cognitive Services](#cognitive-services-contributor) | Umožňuje vytvářet, číst, aktualizovat, odstraňovat a spravovat klíče Cognitive Services. | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
 > | [Čtečka dat Cognitive Services (Preview)](#cognitive-services-data-reader-preview) | Umožňuje číst Cognitive Services data. | b59867f0-fa02-499b-be73-45a86b5b3e1c |
 > | [Cognitive Services uživatel](#cognitive-services-user) | Umožňuje číst a zobrazit seznam klíčů Cognitive Services. | a97b65f3-24c7-4388-baec-2e87135dc908 |
-> | **Smíšená realita** |  |  |
+> | **Mixed realita** |  |  |
 > | [Správce vzdáleného vykreslování](#remote-rendering-administrator) | Poskytuje uživatele s možností převodu, správy relace, vykreslování a diagnostiky pro vzdálené vykreslování Azure. | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
 > | [Klient vzdáleného vykreslování](#remote-rendering-client) | Poskytuje uživatele s možností spravovat relaci, vykreslování a diagnostiku pro vzdálené vykreslování Azure. | d39065c4-c120-43c9-ab0a-63eed9795f0a |
 > | [Přispěvatel účtu prostorových kotev](#spatial-anchors-account-contributor) | Umožňuje spravovat prostorové kotvy ve vašem účtu, ale neodstraňovat je. | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
@@ -1453,6 +1454,7 @@ Umožňuje správu zálohovacích služeb s výjimkou odebrání zálohování, 
 > | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/Read | Vrátí stav operace provedené na chráněných položkách. |
 > | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/Read | Vrátí podrobnosti objektu chráněné položky. |
 > | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/Action | Zřídit rychlé obnovení položky pro chráněnou položku |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/accessToken/Action | Získejte AccessToken pro obnovení mezi oblastmi. |
 > | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/Read | Získat body obnovení pro chráněné položky. |
 > | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/Restore/Action | Obnoví body obnovení pro chráněné položky. |
 > | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/Action | Odvolání okamžitého obnovení položky pro chráněnou položku |
@@ -1495,6 +1497,12 @@ Umožňuje správu zálohovacích služeb s výjimkou odebrání zálohování, 
 > | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupStatus/Action | Zkontroluje stav zálohování pro trezory Recovery Services. |
 > | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupPreValidateProtection/Action |  |
 > | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupValidateFeatures/Action | Ověřit funkce |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupAadProperties/Read | Získejte vlastnosti AAD pro ověřování ve třetí oblasti pro obnovení mezi oblastmi. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupCrrJobs/Action | Vypíše úlohy obnovení mezi oblastmi v sekundární oblasti pro Recovery Services trezor. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupCrrJob/Action | Získejte podrobnosti o úloze obnovení mezi oblastmi v sekundární oblasti pro Recovery Services trezor. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupCrossRegionRestore/Action | Aktivovat obnovení mezi oblastmi |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupCrrOperationResults/Read | Vrátí výsledek operace CRR pro trezor Recovery Services. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupCrrOperationsStatus/Read | Vrátí stav operace CRR pro trezor Recovery Services. |
 > | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/Write | Vyřeší upozornění. |
 > | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Operations/Read | Operace vrátí seznam operací pro poskytovatele prostředků. |
 > | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/operationStatus/Read | Získá stav operace pro danou operaci. |
@@ -1527,6 +1535,7 @@ Umožňuje správu zálohovacích služeb s výjimkou odebrání zálohování, 
         "Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read",
         "Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read",
         "Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action",
+        "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/accessToken/action",
         "Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read",
         "Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action",
         "Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action",
@@ -1569,6 +1578,12 @@ Umožňuje správu zálohovacích služeb s výjimkou odebrání zálohování, 
         "Microsoft.RecoveryServices/locations/backupStatus/action",
         "Microsoft.RecoveryServices/locations/backupPreValidateProtection/action",
         "Microsoft.RecoveryServices/locations/backupValidateFeatures/action",
+        "Microsoft.RecoveryServices/locations/backupAadProperties/read",
+        "Microsoft.RecoveryServices/locations/backupCrrJobs/action",
+        "Microsoft.RecoveryServices/locations/backupCrrJob/action",
+        "Microsoft.RecoveryServices/locations/backupCrossRegionRestore/action",
+        "Microsoft.RecoveryServices/locations/backupCrrOperationResults/read",
+        "Microsoft.RecoveryServices/locations/backupCrrOperationsStatus/read",
         "Microsoft.RecoveryServices/Vaults/monitoringAlerts/write",
         "Microsoft.RecoveryServices/operations/read",
         "Microsoft.RecoveryServices/locations/operationStatus/read",
@@ -2438,6 +2453,7 @@ Umožňuje přístup pro čtení souborů nebo adresářů ve sdílených složk
 > | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/Queues/Messages/DELETE | Odstraní jednu nebo více zpráv z fronty. |
 > | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/Queues/Messages/Read | Prohlížet nebo načíst jednu nebo více zpráv z fronty. |
 > | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/Queues/Messages/Write | Přidá zprávu do fronty. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/Queues/Messages/Process/Action | Vrátí výsledek zpracování zprávy. |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -2460,7 +2476,8 @@ Umožňuje přístup pro čtení souborů nebo adresářů ve sdílených složk
       "dataActions": [
         "Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete",
         "Microsoft.Storage/storageAccounts/queueServices/queues/messages/read",
-        "Microsoft.Storage/storageAccounts/queueServices/queues/messages/write"
+        "Microsoft.Storage/storageAccounts/queueServices/queues/messages/write",
+        "Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action"
       ],
       "notDataActions": []
     }
@@ -3932,6 +3949,49 @@ Může odeslat žádost o obnovení pro databázi Cosmos DB nebo kontejner pro �
     }
   ],
   "roleName": "CosmosBackupOperator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="cosmosrestoreoperator"></a>CosmosRestoreOperator
+
+Může provést akci obnovení pro účet služby Cosmos DB Database s režimem průběžné zálohování.
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/Locations/restorableDatabaseAccounts/Restore/Action | Odeslat žádost o obnovení |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/Locations/restorableDatabaseAccounts/*/Read |  |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/Locations/restorableDatabaseAccounts/Read | Přečtěte si účet databáze obnovitelné nebo seznam všech účtů databáze obnovitelné. |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | *žádný* |  |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can perform restore action for Cosmos DB database account with continuous backup mode",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/5432c526-bc82-444a-b7ba-57c5b0b5b34f",
+  "name": "5432c526-bc82-444a-b7ba-57c5b0b5b34f",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action",
+        "Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read",
+        "Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "CosmosRestoreOperator",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -7788,8 +7848,12 @@ Může spravovat součásti Application Insights [Další informace](../azure-mo
 > | --- | --- |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytváření a Správa pravidel pro klasických výstrah |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/generateLiveToken/Read | Tokeny Live metriky Get |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/metricAlerts/* | Vytváření a Správa nových pravidel upozornění |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Components/* | Vytváření a Správa komponent Insights |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/scheduledqueryrules/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Topology/Read | Čtení topologie |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Transactions/Read | Transakce čtení |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/webtests/* | Vytváření a správa webových testů Insights |
 > | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
@@ -7815,8 +7879,12 @@ Může spravovat součásti Application Insights [Další informace](../azure-mo
       "actions": [
         "Microsoft.Authorization/*/read",
         "Microsoft.Insights/alertRules/*",
+        "Microsoft.Insights/generateLiveToken/read",
         "Microsoft.Insights/metricAlerts/*",
         "Microsoft.Insights/components/*",
+        "Microsoft.Insights/scheduledqueryrules/*",
+        "Microsoft.Insights/topology/read",
+        "Microsoft.Insights/transactions/read",
         "Microsoft.Insights/webtests/*",
         "Microsoft.ResourceHealth/availabilityStatuses/read",
         "Microsoft.Resources/deployments/*",

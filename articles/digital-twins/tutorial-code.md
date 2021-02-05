@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 37bd7d91dfe9e4b9e620f89e7504331d8f631a6a
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4851d06ffedaacb441d28cae24d7d32bfe1c611c
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602115"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576257"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Kurz: kódování pomocí rozhraní API digitálních vláken Azure
 
@@ -253,12 +253,16 @@ V tomto okamžiku v tomto kurzu máte úplnou klientskou aplikaci, která umož�
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
- 
-Instance použitá v tomto kurzu se dá znovu použít v dalším kurzu. [*kurz: Prozkoumejte základy pomocí ukázkové klientské aplikace*](tutorial-command-line-app.md). Pokud máte v úmyslu pokračovat k dalšímu kurzu, můžete ponechat instanci digitálních vláken Azure, kterou jste nastavili tady.
+
+Po dokončení tohoto kurzu můžete zvolit prostředky, které chcete odebrat, v závislosti na tom, co byste chtěli udělat dál.
+
+* Pokud se chystáte **pokračovat k dalšímu kurzu**, instance použitá v tomto kurzu se dá znovu použít v následující části. Můžete zachovat prostředky v oblasti digitálních vláken Azure, které tady nastavíte, a přeskočit zbytek této části.
+
+[!INCLUDE [digital-twins-cleanup-clear-instance.md](../../includes/digital-twins-cleanup-clear-instance.md)]
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-Nakonec odstraňte složku projektu, kterou jste vytvořili na místním počítači.
+Je také možné, že budete chtít odstranit složku projektu z místního počítače.
 
 ## <a name="next-steps"></a>Další kroky
 
