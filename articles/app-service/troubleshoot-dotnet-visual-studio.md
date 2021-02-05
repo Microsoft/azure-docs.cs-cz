@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 346b1f83a9c18e35b009e88ae82d6984274fd4e4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a177b22f0f91d82013956bff36eaa57a084c27d1
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147740"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576578"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s aplikací v Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled
@@ -28,7 +28,7 @@ Naučíte se:
 
 Pokud máte Visual Studio Ultimate, můžete použít také [IntelliTrace](/visualstudio/debugger/intellitrace) pro ladění. IntelliTrace se v tomto kurzu nezabývá.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a><a name="prerequisites"></a>Požadovaný
 Tento kurz spolupracuje s vývojovým prostředím, webovým projektem a App Service aplikaci, kterou jste nastavili v části [Vytvoření aplikace v ASP.NET v Azure App Service](quickstart-dotnet-framework.md). V sekcích WebJobs budete potřebovat aplikaci, kterou vytvoříte v části [Začínáme s Azure WEBJOBS SDK][GetStartedWJ].
 
 Ukázky kódu zobrazené v tomto kurzu jsou pro webovou aplikaci v jazyce C# MVC, ale postupy řešení potíží jsou stejné pro aplikace Visual Basic a webových formulářů.
@@ -42,7 +42,7 @@ Sada Visual Studio poskytuje přístup k podmnožině funkcí správy aplikací 
 
 1. Pokud jste se ještě přihlásili k Azure v aplikaci Visual Studio, klikněte pravým tlačítkem na **Azure** a vyberte připojit k **Microsoft Azure předplatnému** v **Průzkumník serveru**.
 
-    Alternativou je instalace certifikátu pro správu, který umožňuje přístup k vašemu účtu. Pokud se rozhodnete nainstalovat certifikát, klikněte pravým tlačítkem myši na uzel **Azure** v **Průzkumník serveru**a potom v místní nabídce vyberte **Spravovat a filtrovat předplatná** . V dialogovém okně **spravovat předplatná Microsoft Azure** klikněte na kartu **certifikáty** a pak klikněte na **importovat**. Podle pokynů stáhněte a pak importujte soubor předplatného (označovaný také jako soubor *. publishsettings* ) pro váš účet Azure.
+    Alternativou je instalace certifikátu pro správu, který umožňuje přístup k vašemu účtu. Pokud se rozhodnete nainstalovat certifikát, klikněte pravým tlačítkem myši na uzel **Azure** v **Průzkumník serveru** a potom v místní nabídce vyberte **Spravovat a filtrovat předplatná** . V dialogovém okně **spravovat předplatná Microsoft Azure** klikněte na kartu **certifikáty** a pak klikněte na **importovat**. Podle pokynů stáhněte a pak importujte soubor předplatného (označovaný také jako soubor *. publishsettings* ) pro váš účet Azure.
 
    > [!NOTE]
    > Pokud stahujete soubor předplatného, uložte ho do složky mimo adresáře zdrojového kódu (například ve složce stažené soubory) a po dokončení importu ho odstraňte. Uživatel se zlými úmysly, který získá přístup k souboru předplatného, může upravit, vytvořit a odstranit vaše služby Azure.
@@ -50,7 +50,7 @@ Sada Visual Studio poskytuje přístup k podmnožině funkcí správy aplikací 
    >
 
     Další informace o připojení k prostředkům Azure ze sady Visual Studio najdete v tématu [Správa účtů, předplatných a rolí pro správu](../role-based-access-control/role-assignments-portal.md).
-2. V **Průzkumník serveru**rozbalte položku **Azure** a rozbalte položku **App Service**.
+2. V **Průzkumník serveru** rozbalte položku **Azure** a rozbalte položku **App Service**.
 3. Rozbalte skupinu prostředků, která obsahuje aplikaci, kterou jste vytvořili v části [vytvoření Azure App Service aplikace v ASP.NET](quickstart-dotnet-framework.md), a pak klikněte pravým tlačítkem myši na uzel aplikace a pak klikněte na **Zobrazit nastavení**.
 
     ![Zobrazit nastavení v Průzkumník serveru](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewsettings.png)
@@ -74,15 +74,15 @@ Obvykle nasadíte webový projekt s `customErrors` příznakem v Web.config soub
 
 **Došlo k chybě:**
 
-:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png" alt-text="Snímek obrazovky s chybou serveru ve webovém prohlížeči – Chyba aplikace":::
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png" alt-text="Snímek obrazovky znázorňující příklad obecné chyby, ke které došlo ve webovém prohlížeči.":::
 
 **Web nemůže zobrazit stránku**
 
-:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png" alt-text="Snímek obrazovky s chybou serveru ve webovém prohlížeči – Chyba aplikace":::
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png" alt-text="Snímek obrazovky s webem nemůže zobrazit chybu stránky ve webovém prohlížeči.":::
 
-Často nejjednodušší způsob, jak najít příčinu chyby, je povolit podrobné chybové zprávy, které popisují první z předchozích snímků obrazovky. To vyžaduje změnu v nasazeném souboru Web.config. Můžete upravit soubor *Web.config* v projektu a znovu nasadit projekt, nebo vytvořit [Web.config transformovat](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) a nasadit sestavení pro ladění, ale existuje rychlejší způsob: v **Průzkumník řešení**můžete přímo zobrazit a upravit soubory ve vzdálené aplikaci pomocí funkce *vzdáleného zobrazení* .
+Často nejjednodušší způsob, jak najít příčinu chyby, je povolit podrobné chybové zprávy, které popisují první z předchozích snímků obrazovky. To vyžaduje změnu v nasazeném souboru Web.config. Můžete upravit soubor *Web.config* v projektu a znovu nasadit projekt, nebo vytvořit [Web.config transformovat](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) a nasadit sestavení pro ladění, ale existuje rychlejší způsob: v **Průzkumník řešení** můžete přímo zobrazit a upravit soubory ve vzdálené aplikaci pomocí funkce *vzdáleného zobrazení* .
 
-1. V **Průzkumník serveru**rozbalte položku **Azure**, rozbalte položku **App Service**, rozbalte skupinu prostředků, ve které je vaše aplikace umístěná, a potom rozbalte uzel pro vaši aplikaci.
+1. V **Průzkumník serveru** rozbalte položku **Azure**, rozbalte položku **App Service**, rozbalte skupinu prostředků, ve které je vaše aplikace umístěná, a potom rozbalte uzel pro vaši aplikaci.
 
     Zobrazí se uzly, které vám umožní přístup k souborům obsahu a souborům protokolu aplikace.
 2. Rozbalte uzel **soubory** a dvakrát klikněte na soubor *Web.config* .
@@ -127,19 +127,19 @@ V této části se dozvíte, jak vzdáleně ladit pomocí projektu, který jste 
 
 1. [Nastavte zarážku](/visualstudio/debugger/) na `ViewBag.Message` řádku.
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a klikněte na **publikovat**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a klikněte na **publikovat**.
 
 1. V rozevíracím seznamu **profil** vyberte stejný profil, který jste použili v části [vytvoření aplikace v ASP.NET v Azure App Service](quickstart-dotnet-framework.md). Pak klikněte na nastavení.
 
-1. V dialogovém okně **publikovat** klikněte na kartu **Nastavení** a pak změňte **konfiguraci** na **ladit**a pak klikněte na **Uložit**.
+1. V dialogovém okně **publikovat** klikněte na kartu **Nastavení** a pak změňte **konfiguraci** na **ladit** a pak klikněte na **Uložit**.
 
     ![Publikovat v režimu ladění](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-publishdebug.png)
 
 1. Klikněte na **Publikovat**. Až se nasazení dokončí a otevře se Váš prohlížeč na adrese URL Azure vaší aplikace, zavřete prohlížeč.
 
-1. V **Průzkumník serveru**klikněte pravým tlačítkem na aplikaci a pak klikněte na **připojit ladicí program**.
+1. V **Průzkumník serveru** klikněte pravým tlačítkem na aplikaci a pak klikněte na **připojit ladicí program**.
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png" alt-text="Snímek obrazovky s chybou serveru ve webovém prohlížeči – Chyba aplikace":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png" alt-text="Snímek obrazovky okna Průzkumník serveru, ve kterém se zobrazuje vybraná aplikace a pak klikněte na tlačítko připojit ladicí program.":::
 
     Prohlížeč se automaticky otevře na domovské stránce běžící v Azure. Možná budete muset počkat 20 sekund, nebo tak, aby Azure nastavil Server pro ladění. Toto zpoždění nastane jenom při prvním spuštění v režimu ladění aplikace v období 48 hodin. Při opětovném spuštění ladění ve stejné době nedochází ke zpoždění.
 
@@ -180,19 +180,19 @@ Vzdálené ladění funguje jenom se souvislými WebJobs. Naplánované a na vy�
 
     ![Nastavit zarážku](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
 
-4. V **Průzkumník řešení**klikněte pravým tlačítkem myši na webový projekt (ne na projekt webové úlohy WebJob) a klikněte na **publikovat**.
+4. V **Průzkumník řešení** klikněte pravým tlačítkem myši na webový projekt (ne na projekt webové úlohy WebJob) a klikněte na **publikovat**.
 
 5. V rozevíracím seznamu **profil** vyberte stejný profil, který jste použili v [části Začínáme s Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
 
-6. Klikněte na kartu **Nastavení** , změňte **konfiguraci** na **ladit**a pak klikněte na **publikovat**.
+6. Klikněte na kartu **Nastavení** , změňte **konfiguraci** na **ladit** a pak klikněte na **publikovat**.
 
     Visual Studio nasadí webové a webové projekty a otevře se Váš prohlížeč na adrese URL Azure vaší aplikace.
 
-7. V **Průzkumník serveru**rozbalte položku **Azure > App Service > skupinu prostředků > vaše aplikace > webové úlohy > průběžně**a klikněte pravým tlačítkem na **ContosoAdsWebJob**.
+7. V **Průzkumník serveru** rozbalte položku **Azure > App Service > skupinu prostředků > vaše aplikace > webové úlohy > průběžně** a klikněte pravým tlačítkem na **ContosoAdsWebJob**.
 
 8. Klikněte na **připojit ladicí program**.
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png" alt-text="Snímek obrazovky s chybou serveru ve webovém prohlížeči – Chyba aplikace":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png" alt-text="Snímek obrazovky Průzkumník serveru s vybraným ContosoAdsWebJob v rozevírací nabídce a připojením vybraného ladicího programu":::
 
     Prohlížeč se automaticky otevře na domovské stránce běžící v Azure. Možná budete muset počkat 20 sekund, nebo tak, aby Azure nastavil Server pro ladění. Toto zpoždění nastane jenom při prvním spuštění v režimu ladění aplikace v období 48 hodin. Při opětovném spuštění ladění ve stejné době nedochází ke zpoždění.
 
@@ -212,7 +212,7 @@ Vzdálené ladění funguje jenom se souvislými WebJobs. Naplánované a na vy�
 
 13. V aplikaci Visual Studio stiskněte SHIFT + F5 a zastavte ladění.
 
-14. V **Průzkumník serveru**klikněte pravým tlačítkem na uzel ContosoAdsWebJob a klikněte na **zobrazit řídicí panel**.
+14. V **Průzkumník serveru** klikněte pravým tlačítkem na uzel ContosoAdsWebJob a klikněte na **zobrazit řídicí panel**.
 
 15. Přihlaste se pomocí přihlašovacích údajů Azure a potom kliknutím na název webové úlohy přejděte na stránku vaší webové úlohy.
 
@@ -220,7 +220,7 @@ Vzdálené ladění funguje jenom se souvislými WebJobs. Naplánované a na vy�
 
      Na řídicím panelu se zobrazí, že se `GenerateThumbnail` funkce spustila v poslední době.
 
-     (Při příštím kliknutí na **zobrazit řídicí panel**se nemusíte přihlašovat a prohlížeč přejde přímo na stránku vaší webové úlohy.)
+     (Při příštím kliknutí na **zobrazit řídicí panel** se nemusíte přihlašovat a prohlížeč přejde přímo na stránku vaší webové úlohy.)
 
 16. Kliknutím na název funkce zobrazíte podrobnosti o spuštění funkce.
 
@@ -271,7 +271,7 @@ V této části provedete následující úlohy:
 Informace o tom, jak vytvořit protokoly aplikací ve službě WebJobs, najdete v tématu [jak pracovat s úložištěm Azure Queue pomocí sady WebJobs SDK – jak zapisovat protokoly](https://github.com/Azure/azure-webjobs-sdk/wiki). Následující pokyny pro zobrazení protokolů a řízení způsobu jejich uložení v Azure platí také pro protokoly aplikací vytvořené pomocí WebJobs.
 
 ### <a name="add-tracing-statements-to-the-application"></a>Přidání příkazů trasování do aplikace
-1. Otevřete *souboru controllers\homecontroller.cs*a nahraďte `Index` metody, a `About` `Contact` s následujícím kódem, aby bylo možné přidat `Trace` příkazy a `using` příkaz pro `System.Diagnostics` :
+1. Otevřete *souboru controllers\homecontroller.cs* a nahraďte `Index` metody, a `About` `Contact` s následujícím kódem, aby bylo možné přidat `Trace` příkazy a `using` příkaz pro `System.Diagnostics` :
 
     ```csharp
     public ActionResult Index()
@@ -340,11 +340,11 @@ Informace o tom, jak vytvořit protokoly aplikací ve službě WebJobs, najdete 
 1. Na panelu Adresa v okně prohlížeče přidejte do adresy URL *Trace. axd* a potom stiskněte klávesu ENTER (adresa URL je podobná `http://localhost:53370/trace.axd` ).
 1. Na stránce **trasování aplikací** klikněte na tlačítko **Zobrazit podrobnosti** na prvním řádku (ne na řádku BrowserLink).
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png" alt-text="Snímek obrazovky s chybou serveru ve webovém prohlížeči – Chyba aplikace":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png" alt-text="Snímek stránky trasování aplikace ve webovém prohlížeči zobrazující podrobnosti o zobrazení vybraných na prvním řádku.":::
 
     Zobrazí se stránka **Podrobnosti žádosti** a v části **trasovací informace** se zobrazí výstup z příkazů trasování, které jste přidali do `Index` metody.
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png" alt-text="Snímek obrazovky s chybou serveru ve webovém prohlížeči – Chyba aplikace":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png" alt-text="Snímek obrazovky stránky s podrobnostmi o žádosti ve webovém prohlížeči, kde se zobrazí zpráva zvýrazněná v části informace o trasování":::
 
     Ve výchozím nastavení `trace.axd` je k dispozici pouze místně. Pokud jste chtěli, aby byl k dispozici ze vzdálené aplikace, mohli byste přidat `localOnly="false"` do `trace` prvku v souboru *Web.config* , jak je znázorněno v následujícím příkladu:
 
@@ -355,22 +355,46 @@ Informace o tom, jak vytvořit protokoly aplikací ve službě WebJobs, najdete 
     Povolení `trace.axd` v produkční aplikaci se ale z bezpečnostních důvodů nedoporučuje. V následujících částech uvidíte snazší způsob, jak číst protokoly trasování v aplikaci App Service.
 
 ### <a name="view-the-tracing-output-in-azure"></a>Zobrazit výstup trasování v Azure
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na webový projekt a klikněte na **publikovat**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na webový projekt a klikněte na **publikovat**.
 2. V dialogovém okně **Publikovat web** klikněte na **publikovat**.
 
     Po publikování aktualizace v aplikaci Visual Studio se otevře okno prohlížeče na domovské stránce (za předpokladu, že se na kartě **připojení** nevymaže **cílová adresa URL** ).
-3. V **Průzkumník serveru**klikněte pravým tlačítkem myši na svou aplikaci a vyberte **Zobrazit protokoly streamování**.
+3. V **Průzkumník serveru** klikněte pravým tlačítkem myši na svou aplikaci a vyberte **Zobrazit protokoly streamování**.
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png" alt-text="Snímek obrazovky s chybou serveru ve webovém prohlížeči – Chyba aplikace":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png" alt-text="Snímek obrazovky Průzkumník serveru po kliknutí pravým tlačítkem myši na aplikaci a zobrazení protokolů streamování, které jsou vybrány v novém okně.":::
 
     V okně **výstup** se zobrazí zpráva, že jste připojeni ke službě streamování protokolů a do každé minuty přidáte řádek oznámení bez protokolu, který se má zobrazit.
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png" alt-text="Snímek obrazovky s chybou serveru ve webovém prohlížeči – Chyba aplikace" a vynutit vám, abyste počkali, až bude znovu provedeno. Povolením diagnostiky v Azure umožníte okamžité zachycení informací o chybách bez recyklace domény aplikace.
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png" alt-text="Snímek obrazovky okna výstup zobrazující příklad připojení ke službě streamování protokolů s řádky oznámení":::
+
+4. V okně prohlížeče, které zobrazuje vaši domovskou stránku aplikace klikněte na tlačítko **kontakt**.
+
+    Během několika sekund se zobrazí výstup trasování na úrovni chyby, které jste přidali do metody, `Contact` v okně **výstup** .
+
+    ![Trasování chyb v okně výstup](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-errortrace.png)
+
+    Visual Studio zobrazuje pouze trasování na úrovni chyb, protože toto je výchozí nastavení, když povolíte službu sledování protokolů. Když vytvoříte novou aplikaci App Service, všechna protokolování budou ve výchozím nastavení zakázaná, protože jste viděli, když jste otevřeli stránku nastavení dříve:
+
+    ![Odhlášení aplikace](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-apploggingoff.png)
+
+    Pokud však vyberete možnost **Zobrazit protokoly streamování**, aplikace Visual Studio automaticky změnila **protokolování aplikace (systém souborů)** na **Chyba**, což znamená, že protokoly na úrovni chyby jsou hlášeny. Aby se zobrazily všechny protokoly trasování, můžete toto nastavení změnit na **verbose**. Když vyberete nižší úroveň závažnosti než chyba, nahlásí se taky všechny protokoly pro vyšší úrovně závažnosti. Takže když vyberete podrobné informace, zobrazí se také protokoly informací, upozornění a chyb.  
+
+5. V **Průzkumník serveru** klikněte pravým tlačítkem myši na aplikaci a potom klikněte na tlačítko **Zobrazit nastavení** jako dříve.
+6. Změňte **protokolování aplikace (systém souborů)** na **podrobné** a pak klikněte na **Uložit**.
+
+    ![Nastavení úrovně trasování na Verbose](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-applogverbose.png)
+7. V okně prohlížeče, ve kterém se teď zobrazuje vaše **kontaktní** stránka, klikněte na **Domů**, klikněte na **o** a pak klikněte na **kontakt**.
+
+    Během několika sekund se v okně **výstup** zobrazí celý výstup trasování.
+
+    ![Podrobný výstup trasování](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-verbosetraces.png)
+
+    V této části jste povolili a zakázali protokolování pomocí nastavení aplikace. Můžete také povolit a zakázat naslouchací procesy trasování úpravou souboru Web.config. Úprava souboru Web.config ale způsobí, že se doména aplikace recykluje, zatímco při povolování protokolování přes konfiguraci aplikace to neudělá. Pokud dojde k opakovanému reprodukování nebo občasnýmu zpracování problému, recyklování domény aplikace může "opravit" a vynutit vám, abyste počkali, až bude znovu provedeno. Povolením diagnostiky v Azure umožníte okamžité zachycení informací o chybách bez recyklace domény aplikace.
 
 ### <a name="output-window-features"></a>Funkce okna výstup
 Karta **protokoly Microsoft Azure** v okně **výstup** obsahuje několik tlačítek a textové pole:
 
-:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png" alt-text="Snímek obrazovky s chybou serveru ve webovém prohlížeči – Chyba aplikace":::
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png" alt-text="Snímek obrazovky se zobrazenými tlačítky a textovým polem karty protokoly Microsoft Azure v okně výstup.":::
 
 Provádí následující funkce:
 
@@ -387,16 +411,16 @@ Pokud zadáte hledaný řetězec nebo regulární výraz, aplikace Visual Studio
 ## <a name="view-web-server-logs"></a><a name="webserverlogs"></a>Zobrazit protokoly webového serveru
 Protokoly webového serveru zaznamenávají všechny aktivity HTTP pro aplikaci. Chcete-li je zobrazit v okně **výstup** , je nutné je povolit pro aplikaci a sdělit aplikaci Visual Studio, kterou chcete monitorovat.
 
-1. Na kartě **Konfigurace webové aplikace Azure** , kterou jste otevřeli z **Průzkumník serveru**, změňte protokolování webového serveru na **zapnuto**a pak klikněte na **Uložit**.
+1. Na kartě **Konfigurace webové aplikace Azure** , kterou jste otevřeli z **Průzkumník serveru**, změňte protokolování webového serveru na **zapnuto** a pak klikněte na **Uložit**.
 
     ![Povolit protokolování webového serveru](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-webserverloggingon.png)
 2. V okně **výstup** klikněte na tlačítko **Určete, které protokoly Microsoft Azure se mají monitorovat** .
 
     ![Zadejte, které protokoly Azure se mají monitorovat.](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-specifylogs.png)
-3. V dialogovém okně **Možnosti protokolování Microsoft Azure** vyberte **protokoly webového serveru**a pak klikněte na **OK**.
+3. V dialogovém okně **Možnosti protokolování Microsoft Azure** vyberte **protokoly webového serveru** a pak klikněte na **OK**.
 
     ![Monitorování protokolů webového serveru](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-monitorwslogson.png)
-4. V okně prohlížeče, ve kterém se aplikace zobrazuje, klikněte na **Domů**, klikněte na **o**a pak klikněte na **kontakt**.
+4. V okně prohlížeče, ve kterém se aplikace zobrazuje, klikněte na **Domů**, klikněte na **o** a pak klikněte na **kontakt**.
 
     Obecně se zobrazí protokoly aplikací, za kterými následuje protokol webového serveru. Je možné, že budete muset chvíli počkat, než se protokoly objeví.
 
@@ -409,13 +433,13 @@ Pokud použijete portál k povolení protokolování webového serveru do účtu
 ## <a name="view-detailed-error-message-logs"></a><a name="detailederrorlogs"></a>Zobrazit podrobné protokoly chybových zpráv
 Podrobné protokoly chyb obsahují další informace o požadavcích HTTP, které mají za následek kódy chybových odpovědí (400 nebo vyšší). Aby je bylo možné zobrazit v okně **výstup** , je nutné je povolit pro aplikaci a sdělit aplikaci Visual Studio, kterou chcete monitorovat.
 
-1. Na kartě **Konfigurace webové aplikace Azure** , kterou jste otevřeli z **Průzkumník serveru**, změňte **podrobné chybové zprávy** na **zapnuto**a pak klikněte na **Uložit**.
+1. Na kartě **Konfigurace webové aplikace Azure** , kterou jste otevřeli z **Průzkumník serveru**, změňte **podrobné chybové zprávy** na **zapnuto** a pak klikněte na **Uložit**.
 
     ![Povolit podrobné chybové zprávy](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-detailedlogson.png)
 
 2. V okně **výstup** klikněte na tlačítko **Určete, které protokoly Microsoft Azure se mají monitorovat** .
 
-3. V dialogovém okně **Možnosti protokolování Microsoft Azure** klikněte na **všechny protokoly**a pak klikněte na **OK**.
+3. V dialogovém okně **Možnosti protokolování Microsoft Azure** klikněte na **všechny protokoly** a pak klikněte na **OK**.
 
     ![Monitorovat všechny protokoly](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-monitorall.png)
 
@@ -434,18 +458,18 @@ Všechny protokoly, které lze monitorovat v okně **výstup** , lze také stáh
 
 1. V okně **výstup** klikněte na **Stáhnout protokoly streamování**.
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png" alt-text="Snímek obrazovky s chybou serveru ve webovém prohlížeči – Chyba aplikace":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png" alt-text="Snímek obrazovky okna výstup zobrazující, že se zvýrazní tlačítko Stáhnout protokoly streamování":::
 
     Průzkumník souborů se otevře ve složce *stažené soubory* se zvoleným staženým souborem.
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png" alt-text="Snímek obrazovky s chybou serveru ve webovém prohlížeči – Chyba aplikace":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png" alt-text="Snímek obrazovky složky Ke_stažení v Průzkumníkovi souborů se zvoleným staženým souborem":::
 
 2. Rozbalte soubor *. zip* a uvidíte následující strukturu složek:
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png" alt-text="Snímek obrazovky s chybou serveru ve webovém prohlížeči – Chyba aplikace":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png" alt-text="Snímek obrazovky struktury složky souboru. zip po extrakci souboru":::
 
    * Protokoly trasování aplikace jsou v souborech *. txt* ve složce *LogFiles\Application* .
-   * Protokoly webového serveru jsou v souborech *. log* ve složce *LogFiles\http\RawLogs* . Pomocí nástroje, jako je [analyzátor protokolů](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) , můžete tyto soubory zobrazit a manipulovat s nimi.
+   * Protokoly webového serveru jsou v souborech *. log* ve složce *LogFiles\http\RawLogs* . Pomocí nástroje, jako je [analyzátor protokolů](https://www.iis.net/downloads/community/2010/04/log-parser-22) , můžete tyto soubory zobrazit a manipulovat s nimi.
    * Podrobné protokoly chybových zpráv jsou v souborech *. html* ve složce *LogFiles\DetailedErrors* .
 
      (Složka *nasazení* je určena pro soubory vytvořené publikováním správy zdrojového kódu. nemá žádnou souvislost s publikováním sady Visual Studio. Složka *Git* je určena pro trasování týkající se publikování správy zdrojového kódu a služby streamování souborů protokolu.)  
@@ -534,11 +558,11 @@ Protokoly pro trasování chybných požadavků jsou užitečné, pokud potřebu
 
 Aplikace App Service používají stejné funkce pro trasování chybných požadavků, které jsou dostupné se službou IIS 7,0 a novější. Nemáte přístup k nastavení služby IIS, která konfigurují, které chyby se ale protokolují. Pokud povolíte trasování chybných požadavků, budou zachyceny všechny chyby.
 
-Trasování chybných požadavků můžete povolit pomocí sady Visual Studio, ale nemůžete je zobrazit v aplikaci Visual Studio. Tyto protokoly jsou soubory XML. Služba protokol streamování monitoruje pouze soubory, které jsou považovány za čitelné v režimu prostého textu:  *. txt*, *. html*a *. log* .
+Trasování chybných požadavků můžete povolit pomocí sady Visual Studio, ale nemůžete je zobrazit v aplikaci Visual Studio. Tyto protokoly jsou soubory XML. Služba protokol streamování monitoruje pouze soubory, které jsou považovány za čitelné v režimu prostého textu:  *. txt*, *. html* a *. log* .
 
 Protokoly pro trasování chybných požadavků můžete zobrazit v prohlížeči přímo prostřednictvím FTP nebo místně po použití nástroje FTP pro jejich stažení do místního počítače. V této části je budete zobrazovat přímo v prohlížeči.
 
-1. Na kartě **Konfigurace** okna **webové aplikace Azure** , které jste otevřeli z **Průzkumník serveru**, změňte **trasování chybných požadavků** na **zapnuto**a pak klikněte na **Uložit**.
+1. Na kartě **Konfigurace** okna **webové aplikace Azure** , které jste otevřeli z **Průzkumník serveru**, změňte **trasování chybných požadavků** na **zapnuto** a pak klikněte na **Uložit**.
 
     ![Povolit trasování neúspěšných žádostí](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-failedrequeston.png)
 2. Do adresního řádku okna prohlížeče, které zobrazuje aplikaci, přidejte do adresy URL znak navíc a kliknutím na tlačítko ENTER způsobíte chybu 404.
@@ -547,7 +571,7 @@ Protokoly pro trasování chybných požadavků můžete zobrazit v prohlížeč
 
 3. V aplikaci Visual Studio klikněte na kartě **Konfigurace** v okně **webové aplikace Azure** na **otevřít v portál pro správu**.
 
-4. Na stránce [Azure portal](https://portal.azure.com) **Nastavení** Azure Portal vaší aplikace klikněte na **přihlašovací údaje pro nasazení**a pak zadejte nové uživatelské jméno a heslo.
+4. Na stránce [](https://portal.azure.com) **Nastavení** Azure Portal vaší aplikace klikněte na **přihlašovací údaje pro nasazení** a pak zadejte nové uživatelské jméno a heslo.
 
     ![Nové uživatelské jméno a heslo pro FTP](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-enterftpcredentials.png)
 
@@ -649,13 +673,13 @@ K dispozici nejsou žádná důkladná a aktuální Úvod k ASP.NET trasování 
 
 Pro protokolování chyb je alternativou k psaní vlastního trasovacího kódu použití Open Source protokolovacího rozhraní, jako je [knihovny elmah](https://nuget.org/packages/elmah/). Další informace najdete v [blogovém příspěvku Scott Hanselman o knihovny elmah](https://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx).
 
-`System.Diagnostics`K získání protokolů streamování z Azure nemusíte také používat ASP.NET ani trasování. Služba protokol streamování aplikací App Service streamuje libovolný soubor *. txt*, *. html*nebo *. log* , který najde ve složce *Logfiles* . Proto byste mohli vytvořit vlastní systém protokolování, který zapisuje do systému souborů aplikace, a váš soubor se automaticky streamuje a stáhne. Vše, co musíte udělat, je napsat kód aplikace, který vytvoří soubory ve složce *d:\home\logfiles* .
+`System.Diagnostics`K získání protokolů streamování z Azure nemusíte také používat ASP.NET ani trasování. Služba protokol streamování aplikací App Service streamuje libovolný soubor *. txt*, *. html* nebo *. log* , který najde ve složce *Logfiles* . Proto byste mohli vytvořit vlastní systém protokolování, který zapisuje do systému souborů aplikace, a váš soubor se automaticky streamuje a stáhne. Vše, co musíte udělat, je napsat kód aplikace, který vytvoří soubory ve složce *d:\home\logfiles* .
 
 ### <a name="analyzing-web-server-logs"></a>Analýza protokolů webového serveru
 Další informace o analýze protokolů webového serveru najdete v následujících zdrojích informací:
 
-* [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
-  Nástroj pro zobrazení dat v protokolech webového serveru (soubory*protokolu* ).
+* [LogParser](https://www.iis.net/downloads/community/2010/04/log-parser-22)<br/>
+  Nástroj pro zobrazení dat v protokolech webového serveru (soubory *protokolu* ).
 * [Řešení potíží s výkonem služby IIS nebo chyb aplikací pomocí LogParser](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Úvod do nástroje analyzátoru protokolů, který můžete použít k analýze protokolů webového serveru.
 * [Blogové příspěvky od Robert blog o použití LogParser](/archive/blogs/robert_mcmurray/using-logparser-with-ftp-7-x-sessions)<br/>

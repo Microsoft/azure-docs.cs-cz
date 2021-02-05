@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak používat Azure AD v rámci Azur
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41eaab7be66d446109e1052948a29ad4723b191c
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 336c0387ac9febcc517c2ce358d0b04c80d10678
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98894656"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576799"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Použití Azure AD k ověření v Azure
 
@@ -50,7 +50,7 @@ Předtím, než na svém počítači nainstalujete moduly Azure AD:
 
 1. Ujistěte se, že je v počítači povolená funkce Microsoft .NET Framework 3.5. x. Je možné, že je v počítači nainstalovaná novější verze, ale zpětná kompatibilita se staršími verzemi .NET Framework může být povolená nebo zakázaná. 
 
-2. Nainstalujte verzi 64 [Pomocníka pro přihlášení ke službám Microsoft Online Services](https://www.microsoft.com/download/details.aspx?id=41950).
+2. Nainstalujte verzi 64 [Pomocníka pro přihlášení ke službám Microsoft Online Services](https://www.microsoft.com/Download/details.aspx?id=28177).
 
 3. Spusťte prostředí Windows PowerShell jako správce a vytvořte příkazový řádek prostředí Windows PowerShell se zvýšenými oprávněními.
 

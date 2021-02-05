@@ -11,20 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 05/29/2020
-ms.custom: sqldbrb=2 
-ms.openlocfilehash: e8b9f12c57b2e4bf943e5fc9a9ebc2bbadef9ee9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: sqldbrb=2
+ms.openlocfilehash: e0ad8e9e71a0ee2c23412d535fe79955edb39ba8
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86504968"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576646"
 ---
 # <a name="quickstart-use-php-to-query-a-database-in-azure-sql-database"></a>Rychlý Start: použití PHP k dotazování databáze v Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Tento článek ukazuje, jak použít [php](https://php.net/manual/en/intro-whatis.php) pro připojení k databázi v Azure SQL Database nebo v Azure SQL Managed instance. Pak můžete použít příkazy T-SQL k dotazování dat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Co budete potřebovat k dokončení tohoto rychlého startu:
 
@@ -54,13 +54,13 @@ Co budete potřebovat k dokončení tohoto rychlého startu:
 
   - **Linux**, nainstalujte php, ovladač ODBC a pak nainstalujte ovladač PHP pro SQL Server. Viz [Krok 1, 2 a 3](/sql/connect/php/installation-tutorial-linux-mac).
 
-  - **Windows**, nainstalujte si PHP pro IIS Express a čokoláda a pak nainstalujte ovladač ODBC a Nástroj Sqlcmd. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/php/windows/).
+  - **Windows**, nainstalujte ovladače PHP a PHP a potom nainstalujte ovladač ODBC a Nástroj Sqlcmd. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/php/windows/).
 
 ## <a name="get-server-connection-information"></a>Získat informace o připojení k serveru
 
 Získejte informace o připojení, které potřebujete pro připojení k databázi v Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte na stránku **databáze SQL**  nebo **spravované instance SQL** .
 

@@ -12,12 +12,12 @@ ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: místní, OCR, Docker, kontejner
-ms.openlocfilehash: a9eae2e547b347c88f8e745742ed34194c37a3b2
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 2298c7b931a5bb51d5067a9f789135ecf86ef3e5
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862482"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576816"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Nainstalovat čtení kontejnerů Docker pro optické rozpoznávání znaků (Preview) 
 
@@ -32,17 +32,17 @@ Kontejner OCR *pro čtení* umožňuje extrahovat vytištěný a rukou psaný te
 > [!NOTE]
 > Kontejner Read 3,0-Preview se už nepoužívá. 
 
-Kontejner Read 3,2-Preview poskytuje:
+Kontejner OCR Read 3,2-Preview poskytuje:
 * Nové modely pro vyšší přesnost.
-* Podpora více jazyků v rámci jednoho dokumentu
-* Podpora: Holandština, angličtina, francouzština, němčina, italština, portugalština a španělština.
+* Podpora více jazyků v rámci jednoho dokumentu.
+* Podpora celkem 73 jazyků. Podívejte se na úplný seznam [jazyků podporovaných rozpoznáváním OCR](./language-support.md#optical-character-recognition-ocr).
 * Jedna operace pro dokumenty a obrázky.
 * Podpora větších dokumentů a obrázků.
-* Výsledky spolehlivosti od 0 do 1.
-* Podpora dokumentů pomocí tiskového i rukopisného textu
-* Podpora pro zjednodušenou čínštinu a japonštinu.
-* hodnocení a popisky spolehlivosti pro vytištěné a ručně psaný text. 
+* Hodnocení spolehlivosti.
+* Podpora dokumentů pomocí tiskového i rukopisného textu.
 * Možnost extrahovat text z vybraných stránek v dokumentu.
+* Volba pořadí výstupu z textového řádku z výchozí hodnoty do přirozeného pořadí čtení.
+* Klasifikace řádku textu jako ručně psaný styl nebo ne pro jazyky Latin.
 
 Pokud dnes používáte kontejnery Read 2,0, přečtěte si informace o změnách v nových verzích v [Průvodci migrací](read-container-migration-guide.md) .
 
@@ -50,7 +50,7 @@ Pokud dnes používáte kontejnery Read 2,0, přečtěte si informace o změnác
 
 Před použitím kontejnerů musíte splnit následující předpoklady:
 
-|Povinné|Účel|
+|Vyžadováno|Účel|
 |--|--|
 |Docker Engine| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows** musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
 |Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů.| 
@@ -207,7 +207,7 @@ Pro rozhraní API kontejneru použijte hostitele `http://localhost:5000`. Cestu 
 Můžete použít `POST /vision/v3.2/read/analyze` `GET /vision/v3.2/read/operations/{operationId}` operace a společně k asynchronnímu čtení obrázku, podobně jako služba počítačové zpracování obrazu používá tyto odpovídající operace REST. Asynchronní metoda POST vrátí `operationId` hodnotu, která se používá jako identifikátorem požadavku HTTP GET.
 
 
-V uživatelském rozhraní Swagger vyberte `asyncBatchAnalyze` a rozbalte ho v prohlížeči. Pak vyberte **vyzkoušet** pro výběr  >  **souboru**. V tomto příkladu použijeme následující obrázek:
+V uživatelském rozhraní Swagger vyberte `Analyze` a rozbalte ho v prohlížeči. Pak vyberte **vyzkoušet** pro výběr  >  **souboru**. V tomto příkladu použijeme následující obrázek:
 
 ![tabulátory vs – mezery](media/tabs-vs-spaces.png)
 
@@ -225,51 +225,99 @@ Po úspěšném spuštění asynchronního příspěvku vrátí stavový kód **
 ```json
 {
   "status": "succeeded",
-  "createdDateTime": "2020-09-02T10:30:14Z",
-  "lastUpdatedDateTime": "2020-09-02T10:30:15Z",
+  "createdDateTime": "2021-02-04T06:32:08.2752706+00:00",
+  "lastUpdatedDateTime": "2021-02-04T06:32:08.7706172+00:00",
   "analyzeResult": {
     "version": "3.2.0",
     "readResults": [
       {
         "page": 1,
-        "angle": 2.12,
+        "angle": 2.1243,
         "width": 502,
         "height": 252,
         "unit": "pixel",
-        "language": "",
         "lines": [
           {
-            "boundingBox": [58, 42, 314, 59, 311, 123, 56, 121],
+            "boundingBox": [
+              58,
+              42,
+              314,
+              59,
+              311,
+              123,
+              56,
+              121
+            ],
             "text": "Tabs vs",
             "appearance": {
-              "style": "handwriting",
-              "styleConfidence": 0.999
+              "style": {
+                "name": "handwriting",
+                "confidence": 0.96
+              }
             },
             "words": [
               {
-                "boundingBox": [85, 45, 242, 62, 241, 122, 83, 123],
+                "boundingBox": [
+                  68,
+                  44,
+                  225,
+                  59,
+                  224,
+                  122,
+                  66,
+                  123
+                ],
                 "text": "Tabs",
-                "confidence": 0.981
+                "confidence": 0.933
               },
               {
-                "boundingBox": [258, 64, 314, 72, 314, 123, 256, 123],
+                "boundingBox": [
+                  241,
+                  61,
+                  314,
+                  72,
+                  314,
+                  123,
+                  239,
+                  122
+                ],
                 "text": "vs",
-                "confidence": 0.958
+                "confidence": 0.977
               }
             ]
           },
           {
-            "boundingBox": [286, 171, 415, 165, 417, 197, 287, 201],
+            "boundingBox": [
+              286,
+              171,
+              415,
+              165,
+              417,
+              197,
+              287,
+              201
+            ],
             "text": "paces",
             "appearance": {
-              "style": "print",
-              "styleConfidence": 0.603
+              "style": {
+                "name": "handwriting",
+                "confidence": 0.746
+              }
             },
             "words": [
               {
-                "boundingBox": [303, 175, 415, 167, 415, 198, 306, 199],
+                "boundingBox": [
+                  286,
+                  179,
+                  404,
+                  166,
+                  405,
+                  198,
+                  290,
+                  201
+                ],
                 "text": "paces",
-                "confidence": 0.918
+                "confidence": 0.938
               }
             ]
           }
@@ -390,7 +438,7 @@ Kontejnery Cognitive Services odesílají informace o fakturaci do Azure pomocí
 
 Další informace o těchto možnostech najdete v tématu [konfigurace kontejnerů](./computer-vision-resource-container-config.md).
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů Počítačové zpracování obrazu. Souhrn:
 

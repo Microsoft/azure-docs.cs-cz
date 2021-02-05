@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0855395a305624bb2df96d183dc2bcac45f8e6b3
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e0088fb129e9c6558de7539ba754a45e067dc3d8
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051460"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576833"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Vytvoření samostatného účtu Azure Automation
 
@@ -105,4 +105,4 @@ Po úspěšném vytvoření účtu Automation se pro vaší potřebu automaticky
 * Informace o tom, jak začít se sadami Runbook PowerShellu, najdete v tématu [kurz: vytvoření Runbooku PowerShellu](learn/automation-tutorial-runbook-textual-powershell.md).
 * Pokud chcete začít s Runbooky pracovních postupů PowerShellu, přečtěte si [kurz: vytvoření Runbooku pracovního postupu PowerShellu](learn/automation-tutorial-runbook-textual.md).
 * Chcete-li začít s Runbooky Python 3, přečtěte si [kurz: vytvoření sady Runbook Python 3](learn/automation-tutorial-runbook-textual-python-3.md).
-* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation&preserve-view=true#automation).
+* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation).

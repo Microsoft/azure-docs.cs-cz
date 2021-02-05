@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 5e97a35a272684a99e1ca21cbec9c8f3edef253c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 8926e99db926fc8182e98509c3deff0ccc3d1612
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097418"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576663"
 ---
 # <a name="virtual-network-service-endpoints"></a>Koncové body služby pro virtuální síť
 
@@ -126,7 +126,7 @@ Koncové body služby je možné konfigurovat na virtuálních sítích nezávis
 
 Další informace o předdefinovaných rolích najdete v tématu [předdefinované role Azure](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Další informace o přiřazení konkrétních oprávnění k vlastním rolím najdete v tématu [vlastní role Azure](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Virtuální sítě a prostředky služeb Azure můžou být ve stejném předplatném nebo v různých předplatných. Pokud jsou virtuální síť a prostředky služeb Azure v různých předplatných, musí být prostředky ve stejném tenantovi Active Directory (AD). 
+Virtuální sítě a prostředky služeb Azure můžou být ve stejném předplatném nebo v různých předplatných. Některé služby Azure (ne všechny), například Azure Storage a Azure Key Vault také podporují koncové body služby v různých klientech služby Active Directory (AD), tj. virtuální síť a prostředek služby Azure mohou být v různých klientech služby Active Directory (AD). Další podrobnosti najdete v dokumentaci k jednotlivým službám.  
 
 ## <a name="pricing-and-limits"></a>Ceny a omezení
 

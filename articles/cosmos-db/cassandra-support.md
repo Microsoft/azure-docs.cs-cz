@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 771cf97a5c938fb987c66555c92c23f42b302a10
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 3b2d1bbe2de0ae72087fdf3debeaf42f8745fed9
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134224"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576477"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Funkce Apache Cassandra, které podporuje rozhraní API Cassandra pro Azure Cosmos DB 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -43,7 +43,7 @@ Rozhraní API Cassandra pro Azure Cosmos DB podporuje tyto verze ovladačů Cass
 
 Rozhraní API Cassandra pro Azure Cosmos DB podporuje následující datové typy CQL:
 
-|Příkaz  |Podporováno |
+|Typ  |Podporováno |
 |---------|---------|
 | ascii  | Yes |
 | bigint  | Yes |
@@ -82,13 +82,14 @@ Rozhraní API Cassandra pro Azure Cosmos DB podporuje tyto funkce CQL:
 |Příkaz  |Podporováno |
 |---------|---------|
 | Klíčové | Yes |
-| TTL | Yes |
-| writetime | Yes |
+| TTL * * * | Yes |
+| writetime *** | Yes |
 | přetypování * * | Yes |
 
 > [!NOTE] 
 > \* Rozhraní API Cassandra podporuje token jako projekci nebo selektor a povoluje token (PK) na levé straně klauzule WHERE. Například `WHERE token(pk) > 1024` je podporován, ale není `WHERE token(pk) > token(100)` podporován.   
-> \*\*`cast()`Funkce nemůže být vnořena v rozhraní API Cassandra. Například `SELECT cast(count as double) FROM myTable` je podporován, ale není `SELECT avg(cast(count as double)) FROM myTable` podporován. 
+> \*\*`cast()`Funkce nemůže být vnořena v rozhraní API Cassandra. Například `SELECT cast(count as double) FROM myTable` je podporován, ale není `SELECT avg(cast(count as double)) FROM myTable` podporován.     
+> \*\*\* Vlastní časová razítka a hodnota TTL zadané s `USING` možností se aplikují na úrovni řádků (a ne na buňku).
 
 
 
@@ -159,7 +160,6 @@ Azure Cosmos DB podporuje u účtů rozhraní API Cassandra následující datab
 | VYTVOŘIT ROLI | No |
 | VYTVOŘIT uživatele (zastaralé v nativní Apache Cassandra) | No |
 | DELETE | Yes |
-| Odstranit (odlehčené transakce s PODMÍNKou IF)| Yes |
 | DISTINCT | No |
 | ZRUŠIT AGREGAČNÍ | No |
 | DROP FUNCTION | No |
@@ -173,17 +173,25 @@ Azure Cosmos DB podporuje u účtů rozhraní API Cassandra následující datab
 | Přetažení uživatele (zastaralé v nativní Apache Cassandra) | No |
 | GRANT | No |
 | INSERT | Yes |
-| Vložit (odlehčené transakce s PODMÍNKou IF)| Yes |
 | OPRÁVNĚNÍ K VYPSÁNÍ | No |
 | SEZNAM ROLÍ | No |
 | SEZNAM uživatelů (zastaralých v nativních Apache Cassandra) | No |
 | REVOKE | No |
 | SELECT | Yes |
-| VYBRAT (odlehčené transakce s PODMÍNKou IF)| No |
 | UPDATE | Yes |
-| AKTUALIZACE (lehké transakce s PODMÍNKou IF)| No |
 | ZKRÁTIT | No |
 | USE | Yes |
+
+## <a name="lightweight-transactions-lwt"></a>Jednoduché transakce (LWT)
+
+| Součást  |Podporováno |
+|---------|---------|
+| ODSTRANIT, POKUD EXISTUJE | Yes |
+| Odstranit podmínky | No |
+| VLOŽIT, POKUD NEEXISTUJE | Yes |
+| AKTUALIZOVAT, POKUD EXISTUJE | Yes |
+| AKTUALIZOVAT, POKUD NEEXISTUJE | Yes |
+| AKTUALIZOVAT podmínky | No |
 
 ## <a name="cql-shell-commands"></a>Příkazy prostředí CQL
 
@@ -193,14 +201,14 @@ Azure Cosmos DB podporuje u účtů rozhraní API Cassandra následující datab
 |---------|---------|
 | SNÍMKY | Yes |
 | JEJICH | Yes |
-| SHODY | Není k dispozici |
+| SHODY | – |
 | KOPIÍ | No |
 | OZNAČOVAT | Yes |
 | cqlshExpand | No |
 | AKCI | Yes |
 | HLAS | Není k dispozici (funkce CQL není `USER` podporována, proto `LOGIN` je redundantní) |
 | PŘENOSU | Yes |
-| SÉRIOVÉ KONZISTENCE * | Není k dispozici |
+| SÉRIOVÉ KONZISTENCE * | – |
 | UVÁDÍ | Yes |
 | ZDROJ | Yes |
 | PROBÍHÁ | Není k dispozici (rozhraní API Cassandra se zálohuje Azure Cosmos DB – použijte [protokolování diagnostiky](cosmosdb-monitor-resource-logs.md) pro řešení potíží). |
@@ -222,7 +230,7 @@ Azure Cosmos DB podporuje u účtů rozhraní API Cassandra následující datab
 
 Rozhraní API Cassandra pro Azure Cosmos DB nemá žádná omezení velikosti dat uložených v tabulce. Když se dodrží limity klíče oddílu, je možné uložit stovky terabajtů nebo petabajtů dat. Podobně všechny ekvivalenty entit nebo řádků nemají omezení počtu sloupců. Celková velikost entity však nesmí překročit 2 MB. Data na klíč oddílu nesmí být větší než 20 GB jako u všech ostatních rozhraní API.
 
-## <a name="tools"></a>nástroje 
+## <a name="tools"></a>Nástroje 
 
 Rozhraní API Cassandra pro Azure Cosmos DB je platforma pro spravované služby. Ke správě clusteru nevyžaduje žádnou režii ani nástroje řízení, jako jsou například systém uvolňování paměti, Java Virtual Machine (JVM) a nodetool. Podporuje nástroje, jako je cqlsh, které využívá kompatibilitu Binary CQLv4. 
 

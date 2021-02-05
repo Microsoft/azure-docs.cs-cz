@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 02/04/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3035e0036e5d35729637e35ad8cb1412a0da959f
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: dac50d8e35080a083e42891732512e012fae8fbd
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091028"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576443"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>Vytvoření nebo odstranění kontejneru v Azure Storage pomocí .NET
 
@@ -38,10 +38,10 @@ Chcete-li vytvořit kontejner, zavolejte jednu z následujících metod:
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
-- [Vytvořit](/dotnet/api/azure.storage.blobs.blobcontainerclient.create)
-- [CreateAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.createasync)
-- [CreateIfNotExists](/dotnet/api/azure.storage.blobs.blobcontainerclient.createifnotexists)
-- [CreateIfNotExistsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.createifnotexistsasync)
+- [CreateBlobContainer](/dotnet/api/azure.storage.blobs.blobserviceclient.createblobcontainer)
+- [CreateBlobContainerAsync](/dotnet/api/azure.storage.blobs.blobserviceclient.createblobcontainerasync)
+
+Tyto metody vyvolávají výjimku, pokud kontejner se stejným názvem již existuje.
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
@@ -49,11 +49,12 @@ Chcete-li vytvořit kontejner, zavolejte jednu z následujících metod:
 - [CreateAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync)
 - [CreateIfNotExists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)
 - [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync)
----
 
 Metody **Create** a **CreateAsync** vyvolávají výjimku, pokud kontejner se stejným názvem již existuje.
 
 Metody **CreateIfNotExists** a **CreateIfNotExistsAsync** vrací logickou hodnotu, která označuje, zda byl kontejner vytvořen. Pokud už kontejner se stejným názvem existuje, vrátí tyto metody **hodnotu false** , aby označoval, že se nový kontejner nevytvořil.
+
+---
 
 Kontejnery se vytvoří hned pod účtem úložiště. Není možné vnořit jeden kontejner pod jiným.
 

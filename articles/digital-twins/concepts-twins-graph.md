@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 105128af60b90324e93bcad1bd9900a55461378f
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 00058f75a2c4378371c427ff9ebabe7e2336b06a
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071711"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576544"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Pochopení digitálních vláken a jejich dvojitých grafů
 
@@ -58,9 +58,9 @@ Můžete také použít pomocnou třídu nazvanou `BasicDigitalTwin` pro uložen
 
 ### <a name="create-relationships"></a>Vytvoření relací
 
-Tady je příklad klientského kódu, který používá [rozhraní API DigitalTwins](/rest/api/digital-twins/dataplane/twins) k vytvoření vztahu mezi digitálním *typem podlahového* typu s názvem *GroundFloor* a digitálním dvojitým názvem typu *místnosti* *Cafe*.
+Tady je příklad klientského kódu, který používá [rozhraní API DigitalTwins](/rest/api/digital-twins/dataplane/twins) k vytvoření vztahu z jednoho digitálního vlákna ("zdroj" vlákna) do jiného digitálního vlákna ("cíl").
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_3":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_short":::
 
 ## <a name="json-representations-of-graph-elements"></a>Reprezentace JSON prvků grafu
 

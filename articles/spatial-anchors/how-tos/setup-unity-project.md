@@ -8,29 +8,29 @@ ms.author: parkerra
 ms.date: 2/3/2021
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e058186d8848256bf97d99ee1b8b1ddae7d78383
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 56532c17c91e6c703a6acd7990bbae47cd248165
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550619"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576561"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Konfigurace prostorových kotev Azure v projektu Unity
 
 V této příručce se dozvíte, jak začít se sadou SDK prostorových kotev Azure v projektu Unity.
 
-## <a name="requirements"></a>Požadavky
+## <a name="project-requirements"></a>Požadavky projektu
 
-Prostorová ukotvení Azure aktuálně podporuje Unity 2019,4 (LTS) s následujícími konfiguracemi.
-
-* V prostorových ukotveních Azure 2.4.0 + je podporovaná Unity 2019,4 s AR Foundation 3,1.
+[!INCLUDE [Unity Project Requirements](../../../includes/spatial-anchors-unity-project-requirements.md)]
 
 ## <a name="configuring-a-project"></a>Konfigurace projektu
 
-### <a name="download-packages"></a>Stáhnout balíčky
+Před zahrnutím sady Azure prostorové kotvy do vašeho projektu Unity nezapomeňte nainstalovat [požadované](#project-requirements) balíčky pomocí Správce balíčků Unity.
+
+### <a name="download-asa-packages"></a>Stáhnout balíčky ASA
 [!INCLUDE [Download Unity Packages](../../../includes/spatial-anchors-unity-download-packages.md)]
 
-### <a name="import-packages"></a>Import balíčků
+### <a name="import-asa-packages"></a>Importovat balíčky ASA
 [!INCLUDE [Import Unity Packages](../../../includes/spatial-anchors-unity-import-packages.md)]
 
 ### <a name="android-only-configure-the-maintemplategradle-file"></a>Jenom Android: konfigurace souboru mainTemplate. Gradle
