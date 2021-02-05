@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 284ab3a2aabb2395636982237159117a10151019
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d20a363a0320ca45f22183e54bcc390d4733c8bc
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014939"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581750"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Postup: Vytvoření aplikace Azure AD a instančního objektu s přístupem k prostředkům pomocí portálu
 
@@ -115,7 +115,7 @@ V další části se dozvíte, jak získat hodnoty, které jsou potřeba při p�
 
 ## <a name="get-tenant-and-app-id-values-for-signing-in"></a>Získání hodnot ID tenanta a aplikace pro přihlášení
 
-Když se programově přihlašujete, musíte předat ID tenanta pomocí žádosti o ověření a ID aplikace.  Budete také potřebovat certifikát nebo ověřovací klíč (popsaný v následující části). K získání těchto hodnot použijte následující postup:
+Když se programově přihlašujete, předejte ID klienta k žádosti o ověření a ID aplikace.  Budete také potřebovat certifikát nebo ověřovací klíč (popsaný v následující části). K získání těchto hodnot použijte následující postup:
 
 1. Vyberte **Azure Active Directory**.
 1. V **Registrace aplikací** ve službě Azure AD vyberte svou aplikaci.
@@ -162,7 +162,7 @@ Postup nahrání certifikátu:
 
 1. Vyberte **Přidat**.
 
-Po registraci certifikátu ve vaší aplikaci na portálu pro registraci aplikací je nutné povolit klientský kód aplikace pro použití certifikátu.
+Po registraci certifikátu s aplikací na portálu pro registraci aplikací povolte, aby kód klientské aplikace používal certifikát.
 
 ### <a name="option-2-create-a-new-application-secret"></a>Možnost 2: vytvoření nového tajného klíče aplikace
 

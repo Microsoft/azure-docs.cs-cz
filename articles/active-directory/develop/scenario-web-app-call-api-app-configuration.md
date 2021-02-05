@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: bcbff131706854c079a5af2f38cad98f97018167
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 2109705116c323fd3632b7230a81ccd9158c1a64
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753321"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582312"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Webová aplikace, která volá webová rozhraní API: Konfigurace kódu
 
@@ -32,7 +32,7 @@ Jak je znázorněno ve [webové aplikaci, která se podepisuje ve scénáři už
 
 Následující knihovny v knihovně Microsoft Authentication Library (MSAL) podporují tok autorizačního kódu pro webové aplikace:
 
-| Knihovna MSAL | Popis |
+| Knihovna MSAL | Description |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Podpora .NET Framework a platforem .NET Core. Nepodporováno jsou Univerzální platforma Windows (UWP), Xamarin. iOS a Xamarin. Android, protože tyto platformy slouží k vytváření veřejných klientských aplikací. <br/><br/>Pro ASP.NET Core Web Apps a webová rozhraní API je MSAL.NET zapouzdřený v knihovně vyšší úrovně s názvem [Microsoft. identity. Web](https://aka.ms/ms-identity-web). |
 | ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL pro Python | Podpora webových aplikací v Pythonu |
@@ -44,7 +44,7 @@ Vyberte kartu pro platformu, které vás zajímá:
 
 ## <a name="client-secrets-or-client-certificates"></a>Klientské tajné klíče nebo klientské certifikáty
 
-Vzhledem k tomu, že vaše webová aplikace nyní volá webové rozhraní API pro příjem dat, je nutné zadat tajný klíč klienta nebo klientský certifikát v *appsettings.js* souboru. Můžete také přidat oddíl, který určuje:
+Vzhledem k tomu, že vaše webová aplikace nyní volá webové rozhraní API pro příjem dat, zadejte tajný klíč klienta nebo klientský certifikát do *appsettings.js* v souboru. Můžete také přidat oddíl, který určuje:
 
 - Adresa URL webového rozhraní API pro příjem dat
 - Rozsahy vyžadované pro volání rozhraní API
@@ -184,7 +184,7 @@ Následující obrázek znázorňuje různé možnosti *Microsoft. identity. Web
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="Blokový diagram znázorňující možnosti konfigurace služby ve spouštěcí tečkě C S pro volání webového rozhraní API a určení implementace mezipaměti tokenů":::
 
 > [!NOTE]
-> Pokud chcete plně pochopit příklady kódu, musíte být obeznámeni s [ASP.NET Core základy](/aspnet/core/fundamentals)a zejména pomocí injektáže a [možností](/aspnet/core/fundamentals/configuration/options) [závislosti](/aspnet/core/fundamentals/dependency-injection) .
+> Chcete-li plně pochopit příklady kódu, Seznamte se s [ASP.NET Core základy](/aspnet/core/fundamentals)a zejména pomocí injektáže a [možností](/aspnet/core/fundamentals/configuration/options) [závislosti](/aspnet/core/fundamentals/dependency-injection) .
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

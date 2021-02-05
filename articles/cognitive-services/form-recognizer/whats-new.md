@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: f6d610db01b465306cdaaafa9b1308dba63ff9ca
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a8eecabe71cb439949f7e0638c7339eb31b08500
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936159"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581257"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Co je nového ve službě Rozpoznávání formulářů?
 
@@ -209,7 +209,7 @@ Odpovědi JSON pro všechna volání rozhraní API mají nové formáty. Někter
 
 ## <a name="next-steps"></a>Další kroky
 
-Dokončete [rychlý Start](quickstarts/client-library.md) a začněte psát aplikaci zpracovávající formuláře pomocí nástroje pro rozpoznávání formulářů v jazyce podle vašeho výběru.
+Dokončete [rychlý Start](quickstarts/client-library.md) , abyste mohli začít psát aplikaci zpracovávající formuláře pomocí nástroje pro rozpoznávání formulářů ve vývojovém jazyce podle vašeho výběru.
 
 ## <a name="see-also"></a>Viz také
 

@@ -2,13 +2,13 @@
 title: Jak používat funkci veřejné IP adresy v řešení Azure VMware
 description: Tento článek vysvětluje, jak používat funkci veřejné IP adresy ve službě Azure Virtual WAN.
 ms.topic: how-to
-ms.date: 10/28/2020
-ms.openlocfilehash: 036ec00077720e9dc3197bf9235bea34b77fb5f4
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.date: 02/04/2021
+ms.openlocfilehash: 640f359ed8934048bffd7f58b36e8a3eef71c2f1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517899"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581376"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>Jak používat funkci veřejné IP adresy v řešení Azure VMware
 
@@ -21,7 +21,7 @@ Veřejný přístup k Internetu povolíte dvěma způsoby.
 
 V rámci nasazení privátního cloudu řešení Azure VMware se po povolení funkce veřejné IP adresy vytvoří a povolí požadované komponenty s automatizací:
 
--  Virtual WAN
+-  Virtuální síť WAN
 
 -  Virtuální centrum sítě WAN s připojením ExpressRoute
 
@@ -120,16 +120,16 @@ Po nasazení všech součástí je můžete zobrazit v přidané skupině prost�
 
 1. Na kartě **DNS** vyberte **Zakázat** a potom vyberte **Další: pravidla**.
 
-1. Vyberte **přidat kolekci pravidel** , zadejte níže podrobnosti a vyberte **Přidat** a potom vyberte **Další: Analýza hrozeb**.
+1. Vyberte **přidat kolekci pravidel**, zadejte níže podrobnosti a vyberte **Přidat** a potom vyberte **Další: Analýza hrozeb**.
 
-   -  Název
+   -  Name
    -  Typ kolekce pravidel – DNAT
    -  Priorita
    -  Akce kolekce pravidel – povolení
    -  Název pravidla
    -  Typ zdroje – **IPaddress**
-   -  Zdroj – * *\** _
-   -  Protokol – _ *TCP**
+   -  Zdrojová **\***
+   -  Protokol – **TCP**
    -  Cílový port – **80**
    -  Cílový typ – **IP adresa**
    -  Cíl – **Veřejná IP adresa**
@@ -144,7 +144,7 @@ Po nasazení všech součástí je můžete zobrazit v přidané skupině prost�
 
    :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="Snímek obrazovky zobrazující vybraná centra, která se budou převádět na zabezpečená virtuální centra" border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
 
-1. Vyberte **Další: Značky**. 
+1. Vyberte **Další: značky**. 
 
 1. Volitelné Vytvořte páry název a hodnota pro kategorizaci prostředků. 
 
@@ -156,5 +156,7 @@ Na SDDCs můžete mít veřejné IP adresy 100.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o používání veřejných IP adres pomocí [Azure Virtual WAN](../virtual-wan/virtual-wan-about.md).
+Teď, když jste se seznámili s používáním funkce veřejné IP adresy v řešení Azure VMware, si můžete být jisti:
 
+- Použití veřejných IP adres s [Azure Virtual WAN](../virtual-wan/virtual-wan-about.md).
+- [Vytvoření tunelového propojení IPSec do řešení Azure VMware](create-ipsec-tunnel.md).

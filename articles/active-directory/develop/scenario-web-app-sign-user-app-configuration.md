@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 45f3a066283a921f60909a4aa3cfdc76f3faad06
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 54caea62feed6ae7c082a979901999a5dcb3bd71
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753277"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582243"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Webová aplikace, která podepisuje uživatele: Konfigurace kódu
 
@@ -28,7 +28,7 @@ Přečtěte si, jak nakonfigurovat kód pro webovou aplikaci, která se přihlá
 <!-- This section can be in an include for web app and web APIs -->
 Knihovny, které slouží k ochraně webové aplikace (a webového rozhraní API):
 
-| Platforma | Knihovna | Popis |
+| Platforma | Knihovna | Description |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_NET.png) | [Rozšíření modelu identity pro .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Rozšíření Microsoft Identity Model pro .NET, které používá přímo ASP.NET a ASP.NET Core, navrhuje sadu knihoven DLL spouštěných v .NET Framework i .NET Core. Z webové aplikace ASP.NET nebo ASP.NET Core můžete ověřování tokenu řídit pomocí třídy **TokenValidationParameters** (konkrétně v některých partnerských scénářích). V praxi je složitá složitost zapouzdřená do knihovny [Microsoft. identity. Web](https://aka.ms/ms-identity-web) . |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL v Javě](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Podpora webových aplikací v jazyce Java |
@@ -64,13 +64,13 @@ Můžete chtít použít tuto ukázku k tomu, abyste si mohli zobrazit úplné p
 
 ## <a name="configuration-files"></a>Konfigurační soubory
 
-Webové aplikace, které přihlásí uživatele pomocí platformy Microsoft identity, jsou konfigurovány prostřednictvím konfiguračních souborů. Nastavení, která je třeba vyplnit, jsou následující:
+Webové aplikace, které přihlásí uživatele pomocí platformy Microsoft identity, jsou konfigurovány prostřednictvím konfiguračních souborů. Jedná se o hodnoty, které je nutné zadat v konfiguraci:
 
 - Instance cloudu ( `Instance` ), pokud chcete, aby aplikace běžela v národních cloudech, například
 - Cílová skupina v ID tenanta ( `TenantId` )
 - ID klienta ( `ClientId` ) pro vaši aplikaci, jak je zkopírované z Azure Portal
 
-V některých případech mohou být aplikace parametry podle `Authority` , což je zřetězení `Instance` a `TenantId` .
+Můžete také zobrazit odkazy na `Authority` . `Authority`Hodnota je zřetězení `Instance` `TenantId` hodnot a.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -133,7 +133,7 @@ V ASP.NET Core obsahuje jiný soubor ([properties\launchSettings.json](https://g
 }
 ```
 
-V Azure Portal musí být identifikátory URI odpovědi, které je třeba registrovat na **ověřovací** stránce vaší aplikace, odpovídat těmto adresám URL. Pro dva předchozí konfigurační soubory by to bylo `https://localhost:44321/signin-oidc` . Důvodem je, že `applicationUrl` je `http://localhost:3110` , ale `sslPort` je zadaný (44321). `CallbackPath` je `/signin-oidc` , jak je definováno v `appsettings.json` .
+V Azure Portal musí identifikátory URI pro přesměrování, které jste zaregistrovali na stránce **ověřování** pro vaši aplikaci, odpovídat těmto adresám URL. Pro dva předchozí konfigurační soubory by to bylo `https://localhost:44321/signin-oidc` . Důvodem je, že `applicationUrl` je `http://localhost:3110` , ale `sslPort` je zadaný (44321). `CallbackPath` je `/signin-oidc` , jak je definováno v `appsettings.json` .
 
 Stejným způsobem by byl identifikátor URI pro odhlášení nastaven na hodnotu `https://localhost:44321/signout-oidc` .
 
@@ -161,7 +161,7 @@ V ASP.NET se aplikace konfiguruje pomocí souboru [Web.config](https://github.co
   </appSettings>
 ```
 
-V Azure Portal musí být identifikátory URI odpovědi, které je třeba registrovat na **ověřovací** stránce vaší aplikace, odpovídat těmto adresám URL. To znamená, že by měly být `https://localhost:44326/` .
+V Azure Portal musí identifikátory URI odpovědi, které zaregistrujete na **ověřovací** stránce vaší aplikace, odpovídat těmto adresám URL. To znamená, že by měly být `https://localhost:44326/` .
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -175,7 +175,7 @@ aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
 aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 ```
 
-V Azure Portal musí být identifikátory URI odpovědi, které je třeba registrovat na **ověřovací** stránce vaší aplikace, odpovídat `redirectUri` instancím, které aplikace definuje. To znamená, že by měly být `http://localhost:8080/msal4jsample/secure/aad` a `http://localhost:8080/msal4jsample/graph/me` .
+V Azure Portal musí identifikátory URI odpovědi, které zaregistrujete na **ověřovací** stránce vaší aplikace, odpovídat `redirectUri` instancím, které aplikace definuje. To znamená, že by měly být `http://localhost:8080/msal4jsample/secure/aad` a `http://localhost:8080/msal4jsample/graph/me` .
 
 # <a name="python"></a>[Python](#tab/python)
 

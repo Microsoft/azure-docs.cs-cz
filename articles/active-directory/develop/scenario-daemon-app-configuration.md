@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c858f48a67cd434a620fb610046833d29b7475f7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 8a01ee4e2b0d4e72c1b17cf56953675e735ead79
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756590"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582886"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Aplikace démona, která volá webovou rozhraní API – konfigurace kódu
 
@@ -26,7 +26,7 @@ Naučte se konfigurovat kód pro aplikaci démona, která volá webová rozhran�
 
 Tyto knihovny Microsoftu podporují aplikace démona:
 
-  Knihovna MSAL | Popis
+  Knihovna MSAL | Description
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Platformy .NET Framework a .NET Core jsou podporovány pro vytváření aplikací démona. (UWP, Xamarin. iOS a Xamarin. Android se nepodporují, protože tyto platformy slouží k sestavování veřejných klientských aplikací.)
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Podpora pro aplikace démona v Pythonu
@@ -111,7 +111,7 @@ Když vytváříte důvěrného klienta s certifikáty, [parameters.js](https://
 
 ### <a name="instantiate-the-msal-application"></a>Vytvoření instance aplikace MSAL
 
-Chcete-li vytvořit instanci aplikace MSAL, je nutné přidat, odkazovat nebo importovat balíček MSAL (v závislosti na jazyku).
+Pro vytvoření instance aplikace MSAL, přidání, odkazování nebo Import balíčku MSAL (v závislosti na jazyku).
 
 Konstrukce se liší v závislosti na tom, zda používáte klientské tajné klíče nebo certifikáty (nebo jako pokročilé scénáře, podepsané kontrolní výrazy).
 
@@ -289,7 +289,7 @@ MSAL.NET má dvě metody pro poskytování podepsaných kontrolních výrazů do
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-Když použijete `WithClientAssertion` , musíte poskytnout podepsaný token JWT. Tento rozšířený scénář je podrobně popsán v [kontrolním výrazu klienta](msal-net-client-assertions.md).
+Když použijete `WithClientAssertion` , poskytněte podepsaný token JWT. Tento rozšířený scénář je podrobně popsán v [kontrolním výrazu klienta](msal-net-client-assertions.md).
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();

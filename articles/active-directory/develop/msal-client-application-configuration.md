@@ -13,12 +13,12 @@ ms.date: 11/20/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 46626c3ebe9d70600be1cc5f73c43677f67bcd09
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 00768f363d08bc476350e57a8eac69eafd9c3589
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761378"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580934"
 ---
 # <a name="application-configuration-options"></a>Možnosti konfigurace aplikace
 
@@ -73,7 +73,7 @@ Pokud instanci neurčíte, vaše aplikace bude cílit na instanci veřejného cl
 
 Cílová skupina pro přihlášení závisí na obchodních potřebách vaší aplikace:
 
-- Pokud pracujete jako obchodní vývojář (LOB), budete pravděpodobně vydávat jedinou aplikaci, která bude použita pouze ve vaší organizaci. V takovém případě je potřeba zadat organizaci buď podle jejího ID tenanta (ID vaší instance služby Azure AD), nebo podle názvu domény přidruženého k instanci Azure AD.
+- Pokud pracujete jako obchodní vývojář (LOB), budete pravděpodobně vydávat jedinou aplikaci, která bude použita pouze ve vaší organizaci. V takovém případě určete organizaci podle jejího ID (ID vaší instance služby Azure AD) nebo podle názvu domény přidruženého k instanci Azure AD.
 - Pokud jste nezávislý výrobce softwaru, možná budete chtít uživatele přihlašovat pomocí pracovních a školních účtů v jakékoli organizaci nebo v některých organizacích (víceklientské aplikace). Můžete ale také chtít, aby se uživatelé přihlásili pomocí osobních účtů Microsoft.
 
 ### <a name="how-to-specify-the-audience-in-your-codeconfiguration"></a>Určení cílové skupiny v kódu/konfiguraci
@@ -122,9 +122,9 @@ Pokud jste vývojář aplikace veřejného klienta, který používá MSAL:
   | UWP | hodnota `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` . To umožňuje jednotné přihlašování s prohlížečem nastavením hodnoty na výsledek WebAuthenticationBroker. GetCurrentApplicationCallbackUri (), který se musí zaregistrovat. |
   | .NET Core | `https://localhost`. Díky tomu může uživatel používat prohlížeč systému pro interaktivní ověřování, protože .NET Core nemá v současnosti uživatelské rozhraní pro vložené webové zobrazení. |
 
-- Pokud vytváříte aplikaci pro Xamarin Android a iOS, která nepodporuje zprostředkovatele (identifikátor URI pro přesměrování je automaticky nastavený na `msal{ClientId}://auth` pro Xamarin Android a iOS), nemusíte přidávat identifikátor URI pro přesměrování.
+- Pokud vytváříte aplikaci pro Xamarin Android a iOS, která nepodporuje identifikátor URI přesměrování zprostředkovatele, nemusíte přidávat identifikátor URI přesměrování. Automaticky se nastaví na `msal{ClientId}://auth` pro Xamarin Android a iOS.
 
-- V [Registrace aplikací](https://aka.ms/appregistrations)musíte nakonfigurovat identifikátor URI přesměrování:
+- Nakonfigurujte identifikátor URI přesměrování v [Registrace aplikací](https://aka.ms/appregistrations):
 
    ![Identifikátor URI přesměrování v Registrace aplikací](media/msal-client-application-configuration/redirect-uri.png)
 

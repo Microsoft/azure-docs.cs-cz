@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c58f4a553073eb3ed062ef9ec2a66c8e4f40e57b
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 4a244c543aa83ae84891e3f942995dc340a7209d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785121"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582651"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: získání tokenu
 
@@ -445,7 +445,7 @@ Další informace o souhlasu najdete v tématu [oprávnění a souhlas platformy
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-V MSAL.NET je nutné použít:
+V MSAL.NET použijte:
 
 ```csharp
 AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
@@ -922,7 +922,7 @@ Tento tok není podporován v MSAL pro macOS.
 
 ### <a name="device-code-flow"></a>Tok kódu zařízení
 
-Pokud píšete nástroj příkazového řádku, který nemá webové ovládací prvky, a nemůžete nebo nechcete používat předchozí toky, je nutné použít tok kódu zařízení.
+Pokud vytváříte nástroj příkazového řádku, který nemá webové ovládací prvky, a nemůžete nebo nechcete používat předchozí toky, použijte tok kódu zařízení.
 
 Interaktivní ověřování pomocí Azure AD vyžaduje webový prohlížeč. Další informace najdete v tématu [použití webových prohlížečů](https://aka.ms/msal-net-uses-web-browser). K ověřování uživatelů v zařízeních nebo operačních systémech, které neposkytují webový prohlížeč, tok kódu zařízení umožňuje uživateli používat k interaktivnímu přihlášení jiné zařízení, jako je například počítač nebo mobilní telefon. Pomocí toku kódu zařízení aplikace získá tokeny prostřednictvím procesu se dvěma kroky, který je navržený pro tato zařízení nebo operační systémy. Příklady takových aplikací jsou aplikace, které běží na iOT nebo nástrojích příkazového řádku (CLI). Nápad je následující:
 

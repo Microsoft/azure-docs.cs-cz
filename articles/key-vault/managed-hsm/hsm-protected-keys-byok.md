@@ -6,14 +6,14 @@ author: amitbapat
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 444f279f8e96486bd6ad61a2ea2640a18b491c9c
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: 1a15ed6b92ade96dd2ed9ef6ffbbe17e2b1452ef
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222230"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581393"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>Import klíčů chráněných HSM do spravovaného HSM (BYOK)
 
@@ -75,11 +75,14 @@ Další informace o možnostech přihlášení prostřednictvím rozhraní pří
 
 ## <a name="supported-key-types"></a>Podporované typy klíčů
 
-|Název klíče|Typ klíče|Velikost klíče|Zdroj|Description|
+|Název klíče|Typ klíče|Velikost nebo křivka klíče|Zdroj|Description|
 |---|---|---|---|---|
 |Klíč pro výměnu klíčů (KEK)|RSA| 2 048 – bit<br />3 072 – bit<br />4 096 – bit|Managed HSM|Pár klíčů RSA zálohovaný modulem HSM generovaný ve spravovaném modulu HSM|
-|Cílový klíč|RSA|2 048 – bit<br />3 072 – bit<br />4 096 – bit|HSM dodavatele|Klíč, který se má přenést do spravovaného modulu HSM|
-
+|Cílový klíč|
+||RSA|2 048 – bit<br />3 072 – bit<br />4 096 – bit|HSM dodavatele|Klíč, který se má přenést do spravovaného modulu HSM|
+||EC|P-256<br />P-384<br />P-521|HSM dodavatele|Klíč, který se má přenést do spravovaného modulu HSM|
+||Symetrický klíč (OCT-HSM)|128 – bit<br />192 – bit<br />256 – bit|HSM dodavatele|Klíč, který se má přenést do spravovaného modulu HSM|
+||||
 ## <a name="generate-and-transfer-your-key-to-the-managed-hsm"></a>Generování a přenos klíče do spravovaného modulu HSM
 
 Postup generování a přenos klíče do spravovaného modulu HSM:

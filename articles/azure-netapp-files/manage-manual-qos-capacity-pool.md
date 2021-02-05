@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 02/04/2021
 ms.author: b-juche
-ms.openlocfilehash: 5e44c2cfc81256a8715c7c625648b6ec25bcd319
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 566cc3b1192d632bbffb8f9ef091f291b4bcc6e6
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929213"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581141"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>Správa fondu ručně zřizovaného kapacity QoS
 
@@ -28,7 +28,7 @@ Tento článek popisuje, jak spravovat fond kapacit, který využívá ruční t
 Informace o typech QoS najdete v tématu [hierarchie úložiště Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md) a [důležitých informací o výkonu pro Azure NetApp Files](azure-netapp-files-performance-considerations.md) .  
 
 ## <a name="register-the-feature"></a>Zaregistrujte funkci.
-Funkce ručního typu QoS je aktuálně ve verzi Preview. Pokud tuto funkci používáte poprvé, budete ji muset nejdřív zaregistrovat.
+Funkce ručního typu QoS je aktuálně ve verzi Preview. Pokud tuto funkci používáte poprvé, musíte ji nejprve zaregistrovat.
   
 1.  Zaregistrujte funkci:
 
@@ -59,7 +59,8 @@ Vytvoření nového fondu kapacity pomocí ručního typu technologie QoS:
 Fond kapacit, který aktuálně používá typ auto QoS, můžete změnit tak, aby používal ruční typ QoS.  
 
 > [!IMPORTANT]
-> Nastavení typu kapacity na ruční QoS je trvalá změna. Ruční nástroj pro kapacitu typu QoS nejde převést na fond kapacity auto QoS. 
+> Nastavení typu kapacity na ruční QoS je trvalá změna. Ruční nástroj pro kapacitu typu QoS nejde převést na fond kapacity auto QoS.  
+> V době převodu můžou být úrovně propustnosti omezené, aby odpovídaly limitům propustnosti pro svazky ručního typu QoS. Azure NetApp Files najdete v části [omezení prostředků](azure-netapp-files-resource-limits.md#resource-limits).
 
 1. V okně pro správu účtu NetApp klikněte na **fondy kapacit** , abyste zobrazili existující fondy kapacity.   
  
@@ -89,7 +90,7 @@ Pokud je svazek obsažený v manuálním fondu kapacity QoS, můžete podle pot�
 * [Nastavení fondu kapacity](azure-netapp-files-set-up-capacity-pool.md)
 * [Metriky pro Azure NetApp Files](azure-netapp-files-metrics.md)
 * [Aspekty výkonu pro Azure NetApp Files](azure-netapp-files-performance-considerations.md)
-* [Řešení potíží s fondem kapacit](troubleshoot-capacity-pools.md)
+* [Řešení potíží s fondy kapacity](troubleshoot-capacity-pools.md)
 * [Hierarchie úložiště služby Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)
 * [Úrovně služeb pro Azure NetApp Files](azure-netapp-files-service-levels.md)
 * [Model nákladů pro Azure NetApp Files](azure-netapp-files-cost-model.md)

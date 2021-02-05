@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: 420415cc3bc2228a104ccf054098543bf04847b0
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 6e8aad3e9dc91b2d9b014c0e3c8602bd0576e82e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225761"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583599"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Rychlý Start: přidání přihlášení k platformě Microsoft Identity Platform do webové aplikace v ASP.NET
 
@@ -59,7 +59,7 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Nakonfigurujte si aplikaci na portálu Azure Portal
-> Vzorový kód tohoto rychlého startu vyžaduje **identifikátor URI přesměrování** `https://localhost:44368/` .
+> Aby ukázka kódu v tomto rychlém startu fungovala, přidejte **identifikátor URI přesměrování** `https://localhost:44368/` .
 
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Udělat změnu za mě]()
@@ -166,7 +166,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Kde  | Popis |
+> |Kde  | Description |
 > |---------|---------|
 > | `ClientId`     | ID aplikace, kterou jste zaregistrovali na portálu Azure Portal |
 > | `Authority`    | Koncový bod služby tokenů zabezpečení pro uživatele k ověření, obvykle `https://login.microsoftonline.com/{tenant}/v2.0` pro veřejný cloud, kde hodnota {tenant} představuje název tenanta, ID tenanta nebo hodnotu *common* odkazující na společný koncový bod (používaný u multitenantních aplikací) |
@@ -179,7 +179,7 @@ public void Configuration(IAppBuilder app)
 
 
 > [!NOTE]
-> Nastavení `ValidateIssuer = false` je zjednodušení pro tento rychlý Start. Ve skutečných aplikacích potřebujete k ověření vystavitele.
+> Nastavení `ValidateIssuer = false` je zjednodušení pro tento rychlý Start. V reálných aplikacích ověřte vystavitele.
 > V ukázkách si můžete uvědomit, jak to udělat.
 
 ### <a name="initiate-an-authentication-challenge"></a>Iniciace výzvy ověřování

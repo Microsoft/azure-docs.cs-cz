@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: b1e8093a1991a97220060c2b6936368f9a4be796
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 765ff76578e48135d2e7d4d9200c1868d2501df4
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052342"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581444"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Možnosti výpočtů a úložiště v Azure Database for MySQL – flexibilní Server (Preview)
 
@@ -102,15 +102,14 @@ Doporučujeme, abyste <!--turn on storage auto-grow or to--> Nastavte výstrahu,
 Automatické zvětšování úložiště ještě není k dispozici pro Azure Database for MySQL flexibilní Server.
 
 ## <a name="iops"></a>IOPS
-Minimální platnost IOPS je 100 napříč všemi výpočetními velikostmi a maximální efektivní IOPS je určeno oběma následujícími atributy: 
-- Compute: maximální efektivní IOPS je možné omezit maximálními dostupnými IOPS vybrané výpočetní velikosti.
-- Storage: ve všech výpočetních úrovních se hodnota IOPS škáluje podle velikosti zřízeného úložiště v poměru 3:1.
 
-Efektivní počet vstupně-výstupních operací můžete škálovat zvýšením zřízeného úložiště nebo přesunutím na větší výpočetní velikost (pokud jsou vaše IOPS omezeny výpočetními prostředky). Ve verzi Preview je maximální podporovaná hodnota IOPS 20 000 vstupně-výstupních operací.
+Azure Database for MySQL – flexibilní Server podporuje zřizování dalších IOPS. Tato funkce vám umožní zřídit další IOPS nad limitem pro zdvořilostní IOPS. Pomocí této funkce můžete kdykoli nebo snížit počet IOPS zřízených podle požadavků na úlohy. 
 
-Pokud chcete získat další informace o maximálním efektivním počtu vstupně-výstupních operací za sekundu, použijte kombinaci výpočtů i úložiště, která je uvedená níže: 
+Minimální hodnota IOPS je 100 napříč všemi výpočetními velikostmi a maximální IOPS je určena zvolenou velikostí výpočtu. Ve verzi Preview je maximální podporovaná hodnota IOPS 20 000 vstupně-výstupních operací.
 
-| Velikost výpočetního prostředí         | Maximální efektivní IOPS  | 
+Další informace o maximálním počtu vstupně-výstupních operací na výpočetní velikosti najdete níže: 
+
+| Velikost výpočetního prostředí         | Maximální IOPS        | 
 |----------------------|---------------------|
 | **S shluky**        |                     |
 | Standard_B1s         | 320                 |
@@ -133,11 +132,14 @@ Pokud chcete získat další informace o maximálním efektivním počtu vstupn�
 | Standard_E48ds_v4    | 20000               | 
 | Standard_E64ds_v4    | 20000               |  
 
-Maximální platnost IOPS je závislá na maximální dostupnosti IOPS za výpočetní velikost. Podívejte se na následující vzorec a vyhledejte sloupec *maximální propustnost disku bez mezipaměti: IOPS/MB/s* v dokumentaci [B-Series](../../virtual-machines/sizes-b-series-burstable.md), [Ddsv4-Series](../../virtual-machines/ddv4-ddsv4-series.md)a [Edsv4-Series](../../virtual-machines/edv4-edsv4-series.md) .
+Maximální IOPS závisí na maximálním počtu dostupných IOPS na výpočetní velikost. Přečtěte si část *maximální propustnost disku bez mezipaměti: IOPS/MB/s* v dokumentaci [B-Series](../../virtual-machines/sizes-b-series-burstable.md), [Ddsv4-Series](../../virtual-machines/ddv4-ddsv4-series.md)a [Edsv4-Series](../../virtual-machines/edv4-edsv4-series.md) .
 
-**Maximální efektivní IOPS** = minimální (*maximální propustnost disku bez mezipaměti: IOPS/MB/s* ) výpočetní velikosti, úložiště zřízené v GIB * 3)
+> [!Important]
+> **Zdvořilostní IOPS** se rovná minimální velikosti (maximální propustnost disku bez mezipaměti: IOPS/MB/s) výpočetní velikosti, úložiště zřízené v GIB * 3).<br>
+> **Minimální IOPS** je 100 napříč všemi výpočetními velikostmi.<br>
+> **Maximální IOPS** je určena zvolenou velikostí výpočtu. Ve verzi Preview je maximální podporovaná hodnota IOPS 20 000 vstupně-výstupních operací.
 
-Spotřebu v/v můžete monitorovat v Azure Portal (s Azure Monitor) pomocí metriky v/v [%](./concepts-monitoring.md) . Pokud budete potřebovat více IOPS, budete muset zjistit, jestli je omezení výpočetní velikosti nebo zřízené úložiště omezené. Škálovat výpočetní nebo úložné úložiště serveru je odpovídajícím způsobem zajištěno.
+Spotřebu v/v můžete monitorovat v Azure Portal (s Azure Monitor) pomocí metriky v/v [%](./concepts-monitoring.md) . Pokud budete potřebovat více IOPS, pak na základě výpočetního počtu IOPS budete potřebovat škálovat výpočetní výkon serveru.
 
 ## <a name="backup"></a>Backup
 

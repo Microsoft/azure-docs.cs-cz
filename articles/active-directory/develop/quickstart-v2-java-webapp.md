@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 91aa6c96c714bff26ea7e0df5b2b6971c68edec0
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 601b725e5f1fe06c12416ad8ab36ac657f0412f2
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178564"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583412"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Rychlý Start: přidání přihlášení do webové aplikace Java pomocí Microsoftu
 
@@ -68,7 +68,7 @@ K provedení této ukázky budete potřebovat:
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal
 >
-> Chcete-li použít ukázku kódu v tomto rychlém startu, je třeba:
+> Chcete-li použít ukázku kódu v tomto rychlém startu:
 >
 > 1. Přidejte adresy URL odpovědi `https://localhost:8443/msal4jsample/secure/aad` a `https://localhost:8443/msal4jsample/graph/me` .
 > 1. Vytvořte tajný klíč klienta.
@@ -161,7 +161,7 @@ Chcete-li spustit webovou aplikaci z rozhraní IDE, vyberte možnost spustit a p
 
 ##### <a name="running-the-project-from-tomcat"></a>Spuštění projektu z Tomcat
 
-Pokud chcete nasadit webovou ukázku na Tomcat, musíte provést několik změn zdrojového kódu.
+Pokud chcete nasadit webovou ukázku do Tomcat, proveďte několik změn zdrojového kódu.
 
 1. Otevřete *MS-identity-Java-WebApp/pom.xml*.
     - Pod položkou `<name>msal-web-sample</name>` přidejte `<packaging>war</packaging>` .

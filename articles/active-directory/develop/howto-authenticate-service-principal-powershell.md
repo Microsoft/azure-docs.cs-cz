@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: 096b8ed60bf9880b6904ab952d4558939ca13574
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: b07679c6dd5e03131fde1439213783893971a088
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652071"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581818"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Postupy: použití Azure PowerShell k vytvoření instančního objektu s certifikátem
 
@@ -72,7 +72,7 @@ Příkladem je režim spánku, který po dobu 20 sekund umožní určitému nov�
 
 Přiřazení role můžete vymezit na konkrétní skupinu prostředků pomocí parametru **ResourceGroupName**. Vymezit konkrétní rozsah můžete také pomocí parametrů **ResourceType** a **ResourceName**. 
 
-Pokud **nemáte Windows 10 nebo Windows Server 2016**, musíte si z webu Microsoft Script Center stáhnout [generátor certifikátů podepsaných svým držitelem](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/). Rozbalte jeho obsah a importujte potřebnou rutinu.
+Pokud nemáte **Windows 10 nebo Windows Server 2016**, Stáhněte si ze služby Microsoft Script Center [generátor certifikátů podepsaný svým držitelem](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) . Rozbalte jeho obsah a importujte potřebnou rutinu.
 
 ```powershell
 # Only run if you could not use New-SelfSignedCertificate
@@ -91,7 +91,7 @@ $cert = Get-ChildItem -path Cert:\CurrentUser\my | where {$PSitem.Subject -eq 'C
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>Poskytnutí certifikátu pomocí automatizovaného skriptu PowerShellu
 
-Vždy, když se přihlásíte jako instanční objekt, musíte pro svoji aplikaci AD zadat ID tenanta adresáře. Tenant je instance služby Azure AD.
+Pokaždé, když se přihlásíte jako instanční objekt, zadejte ID tenanta adresáře vaší aplikace AD. Tenant je instance služby Azure AD.
 
 ```powershell
 $TenantId = (Get-AzSubscription -SubscriptionName "Contoso Default").TenantId
@@ -151,7 +151,7 @@ Param (
 ```
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>Poskytnutí certifikátu pomocí automatizovaného skriptu PowerShellu
-Vždy, když se přihlásíte jako instanční objekt, musíte pro svoji aplikaci AD zadat ID tenanta adresáře. Tenant je instance služby Azure AD.
+Pokaždé, když se přihlásíte jako instanční objekt, zadejte ID tenanta adresáře vaší aplikace AD. Tenant je instance služby Azure AD.
 
 ```powershell
 Param (

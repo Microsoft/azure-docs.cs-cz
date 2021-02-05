@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: c302e10a169a190d11f016620ec048cc58e3ac28
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 4147adb004947c22ec39349f408d794bca160ef5
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220160"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582175"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Toky ověřování a scénáře aplikací
 
@@ -162,7 +162,7 @@ Další informace najdete v tématu [mobilní aplikace, která volá webová roz
 
 Pomocí koncového bodu Microsoft Identity Platform můžete zabezpečit webové služby, jako je webové rozhraní API RESTful vaší aplikace. Chráněné webové rozhraní API se volá prostřednictvím přístupového tokenu. Token pomáhá zabezpečit data rozhraní API a ověřovat příchozí požadavky. Volající webového rozhraní API připojí přístupový token v autorizační hlavičce požadavku HTTP.
 
-Pokud chcete chránit rozhraní API ASP.NET nebo ASP.NET Core webového rozhraní API, musíte ověřit přístupový token. Pro toto ověření použijete middleware ASP.NET JWT. Ověřování provádí [rozšíření IdentityModel pro knihovnu .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) , nikoli MSAL.NET.
+Pokud chcete chránit rozhraní API ASP.NET nebo ASP.NET Core webového rozhraní API, ověřte přístupový token. Pro toto ověření použijete middleware ASP.NET JWT. Ověřování provádí [rozšíření IdentityModel pro knihovnu .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) , nikoli MSAL.NET.
 
 Další informace najdete v tématu [chráněné webové rozhraní API](scenario-protected-web-api-overview.md).
 

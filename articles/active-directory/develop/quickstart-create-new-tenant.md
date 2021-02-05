@@ -13,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 869b37aea823cf91dc59211b23fcaccd7646afb9
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 41d70b20708f0f355fab5b5a06790c1c0c6530c6
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012015"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583548"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Rychlý start: Nastavení tenanta
 
@@ -53,7 +53,7 @@ Tento rychlý start je rozdělený na dva scénáře v závislosti na typu aplik
    * Pokud je k vašemu účtu přidruženo více tenantů, můžete výběrem názvu vašeho účtu otevřít nabídku, ve které můžete mezi jednotlivými tenanty přepínat. Každý tenant má vlastní ID tenanta.
 
 > [!TIP]
-> Pokud potřebujete zjistit ID tenanta, můžete to provést následovně:
+> Pokud chcete zjistit ID tenanta, můžete:
 > * Najeďte myší na název vašeho účtu, aby se zobrazilo ID adresáře nebo tenanta.
 > * Vyhledat a vybrat **Azure Active Directory > vlastnosti > ID tenanta** v Azure Portal
 

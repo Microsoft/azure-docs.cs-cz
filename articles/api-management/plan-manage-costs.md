@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: api-management
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: e171e642440b7c6c99353169e426a722885f1bcf
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1ebb89ae318e57f1d4e0708a08019515ca43158d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725933"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581325"
 ---
 # <a name="plan-and-manage-costs-for-api-management"></a>Plánování a Správa nákladů na API Management
 
@@ -89,10 +89,10 @@ Rozpočty je možné vytvořit s filtry pro konkrétní prostředky nebo služby
 
 ### <a name="choose-tier"></a>Zvolit vrstvu
 
-Přečtěte si [porovnání na základě funkcí na úrovních API Management Azure](api-management-features.md) , které vám pomůžou určit, která úroveň služby může být vhodná pro vaše scénáře. Různé úrovně služeb podporují kombinace funkcí a možností navržených pro různé případy použití s různými náklady. [Upgradujte](upgrade-and-scale.md) na jinou úroveň služby kdykoli.
+Přečtěte si [porovnání na základě funkcí na úrovních API Management Azure](api-management-features.md) , které vám pomůžou určit, která úroveň služby může být vhodná pro vaše scénáře. Různé úrovně služeb podporují kombinace funkcí a možností navržených pro různé případy použití s různými náklady. 
 
 * Úroveň služby **spotřeby** nabízí odlehčenou možnost bez serveru, která nepřináší žádné pevné náklady. Účtují se vám na základě počtu volání rozhraní API ke službě nad určitou prahovou hodnotou. Kapacita se také automaticky škáluje na základě zatížení služby.
-* Další API Management úrovně přináší měsíční náklady a poskytují větší propustnost a bohatší sady funkcí pro vyhodnocení a produkční úlohy.
+* Vrstvy pro **vývojáře**, **Basic**, **Standard** a API Management **Premium** se účtují za měsíční náklady a poskytují větší propustnost a bohatší sady funkcí pro vyhodnocení a produkční úlohy. [Upgradujte](upgrade-and-scale.md) na jinou úroveň služby kdykoli.
 
 ### <a name="scale-using-capacity-units"></a>Škálování pomocí kapacitních jednotek
 

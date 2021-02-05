@@ -13,18 +13,18 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: b81b34010736bce33085cb1ebf0faa3da6a41bd6
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 5244a8e572abb56c00d87d0bdd7e8d1291af9b9e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755397"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581903"
 ---
 # <a name="authentication-vs-authorization"></a>Ověřování vs. autorizace
 
 Tento článek definuje ověřování a autorizaci. Také stručně popisuje, jak můžete pomocí platformy Microsoft Identity ověřovat a autorizovat uživatele ve webových aplikacích, webových rozhraních API nebo aplikacích, které volají chráněná webová rozhraní API. Pokud se vám zobrazí termín, který neznáte, vyzkoušejte si náš [Glosář](developer-glossary.md) nebo naše [videa k platformě Microsoft Identity](identity-videos.md), která se týkají základních konceptů.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 *Ověřování* je proces, který prokáže, že jste sami. Někdy se zkracuje na *Authn*. Platforma Microsoft Identity Platform používá ke zpracování ověřování protokol [OpenID Connect](https://openid.net/connect/) .
 
@@ -34,7 +34,7 @@ Tento článek definuje ověřování a autorizaci. Také stručně popisuje, ja
 
 ## <a name="authentication-and-authorization-using-the-microsoft-identity-platform"></a>Ověřování a autorizace pomocí platformy Microsoft identity
 
-Vytváření aplikací, které mají za starosti vlastní uživatelské jméno a heslo, má za následek vysokou administrativní zátěž, když potřebujete přidat nebo odebrat uživatele napříč více aplikacemi. Místo toho můžou vaše aplikace delegovat tuto odpovědnost na centralizovaného zprostředkovatele identity.
+Vytváření aplikací, které mají při přidávání a odebírání uživatelů napříč více aplikacemi, má za následek vysokou administrativní režii a informace o heslech. Místo toho můžou vaše aplikace delegovat tuto odpovědnost na centralizovaného zprostředkovatele identity.
 
 Azure Active Directory (Azure AD) je centralizovaný poskytovatel identity v cloudu. Delegování ověřování a autorizace do IT umožňuje scénáře, jako například:
 

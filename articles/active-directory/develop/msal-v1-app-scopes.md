@@ -12,12 +12,12 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: b35b39d7072b22d9cc3f7b4f4ef8886431b06f69
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 7e2fcf2dc0dc53038b82bbf182cb12f580d88357
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754656"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583582"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Obory pro tokeny webového rozhraní API přijímající verze 1.0
 
@@ -37,7 +37,7 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 var scopes = [ ResourceId + "/user_impersonation"];
 ```
 
-Pokud chcete číst a zapisovat pomocí MSAL.NET Azure AD pomocí rozhraní API Microsoft Graph (https: \/ /Graph.Microsoft.com/), musíte vytvořit seznam oborů, jak je znázorněno v následujících příkladech:
+Pokud chcete číst a zapisovat pomocí MSAL.NET Azure AD pomocí rozhraní API Microsoft Graph (https: \/ /Graph.Microsoft.com/), vytvořte seznam oborů, jak je znázorněno v následujících příkladech:
 
 ```csharp
 string ResourceId = "https://graph.microsoft.com/";
@@ -49,7 +49,7 @@ var ResourceId = "https://graph.microsoft.com/";
 var scopes = [ ResourceId + "Directory.Read", ResourceID + "Directory.Write"];
 ```
 
-Chcete-li zapsat rozsah odpovídající rozhraní Azure Resource Manager API (https: \/ /Management.Core.Windows.NET/), musíte požádat o následující obor (Všimněte si dvou lomítek):
+Chcete-li zapsat rozsah odpovídající rozhraní Azure Resource Manager API (https: \/ /Management.Core.Windows.NET/), vyžádejte si následující obor (Všimněte si dvou lomítek):
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -59,7 +59,7 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 ```
 
 > [!NOTE]
-> Je potřeba použít dvě lomítka, protože rozhraní Azure Resource Manager API očekává lomítko v deklaraci identity cílové skupiny (AUD) a pak je lomítko oddělit název rozhraní API z oboru.
+> Použijte dvě lomítka, protože rozhraní Azure Resource Manager API očekává lomítko v deklaraci identity cílové skupiny (AUD) a pak je lomítko k oddělení názvu rozhraní API z oboru.
 
 Logika, kterou používá služba Azure AD, je následující:
 

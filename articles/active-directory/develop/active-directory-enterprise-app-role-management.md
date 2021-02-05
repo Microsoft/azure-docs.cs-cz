@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 10b61dd4b6cc3a99b8eecf86cb5ba7e718d64743
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 076054b7240712fec57d0908615ce7abbfb62013
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015109"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582226"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: konfigurace deklarace identity role vydané v tokenu SAML pro podnikové aplikace
 
@@ -30,7 +30,7 @@ Pomocí Azure Active Directory (Azure AD) můžete přizpůsobit typ deklarace i
 
 ## <a name="when-to-use-this-feature"></a>Kdy použít tuto funkci
 
-Pokud vaše aplikace očekává předávat vlastní role v odpovědi SAML, musíte tuto funkci použít. Můžete vytvořit tolik rolí, kolik potřebujete, aby se do vaší aplikace předaly zpátky z Azure AD.
+Tuto funkci použijte, pokud vaše aplikace očekává vlastní role v odpovědi SAML vrácené službou Azure AD. Můžete vytvořit tolik rolí, kolik potřebujete.
 
 ## <a name="create-roles-for-an-application"></a>Vytvoření rolí pro aplikaci
 
@@ -139,7 +139,7 @@ Pokud vaše aplikace očekává předávat vlastní role v odpovědi SAML, musí
     ![Podokno upravit přiřazení a podokno vybrat roli](./media/active-directory-enterprise-app-role-management/graph-explorer-new6.png)
 
     
-    Pokud chcete zobrazit nové role, musíte aktualizovat svou relaci v Azure Portal.
+    Pokud chcete zobrazit nové role, aktualizujte svou relaci v Azure Portal.
 
 1. Aktualizujte tabulku **atributů** a definujte vlastní mapování deklarace identity role.
 

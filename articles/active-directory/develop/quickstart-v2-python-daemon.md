@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 04c3497e41aba301d5cf16cd6cc723409d1f4175
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: b6087140380fab00e2f24ea7f3b94334c4b79a71
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754061"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583158"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Rychlý Start: získání tokenu a volání Microsoft Graph API z konzolové aplikace Pythonu pomocí identity aplikace
 
@@ -68,7 +68,7 @@ K provedení této ukázky budete potřebovat:
 > ### <a name="download-and-configure-your-quickstart-app"></a>Stažení a konfigurace aplikace pro rychlý Start
 >
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Nakonfigurujte si aplikaci na portálu Azure Portal
-> Aby ukázka kódu pro tento rychlý Start fungovala, je nutné vytvořit tajný klíč klienta a přidat **uživatele Graph API. číst. všechna** oprávnění aplikace.
+> Aby ukázka kódu v tomto rychlém startu fungovala, vytvořte tajný klíč klienta a přidejte Graph API **uživatel. číst. všechna** oprávnění aplikace.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Provést tyto změny pro mě]()
 >
@@ -128,7 +128,7 @@ Pokud se pokusíte spustit aplikaci v tomto okamžiku, obdržíte chybu *HTTP 40
 
 ##### <a name="standard-user"></a>Standardní uživatel
 
-Pokud jste standardní uživatel vašeho tenanta, musíte požádat globálního správce o udělení souhlasu správce vaší aplikace. Pokud to chcete provést, poskytněte správci následující adresu URL:
+Pokud jste standardní uživatel vašeho tenanta, požádejte globálního správce, aby pro vaši aplikaci udělil souhlas správce. Pokud to chcete provést, poskytněte správci následující adresu URL:
 
 ```url
 https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_id=Enter_the_Application_Id_Here
@@ -190,7 +190,7 @@ app = msal.ConfidentialClientApplication(
     client_credential=config["secret"])
 ```
 
-> | Kde: |Popis |
+> | Kde: |Description |
 > |---------|---------|
 > | `config["secret"]` | Vytvoří se tajný klíč klienta pro aplikaci na webu Azure Portal. |
 > | `config["client_id"]` | Je **ID aplikace (klienta)**, kterou jste zaregistrovali na webu Azure Portal. Tuto hodnotu najdete na stránce **Přehled** aplikace na webu Azure Portal. |
@@ -211,7 +211,7 @@ if not result:
     result = app.acquire_token_for_client(scopes=config["scope"])
 ```
 
-> |Kde:| Popis |
+> |Kde:| Description |
 > |---------|---------|
 > | `config["scope"]` | Obsahuje požadované obory. U důvěrných klientů by se měla použít formát podobný tomuto jako `{Application ID URI}/.default` k označení toho, že požadované obory jsou staticky definované v sadě objektů aplikace na webu Azure Portal (pro Microsoft Graph, `{Application ID URI}` které odkazují na `https://graph.microsoft.com` ). Pro vlastní webová rozhraní API `{Application ID URI}` se definuje v části **vystavení rozhraní API** v registraci aplikace na webu Azure Portal (Preview). |
 

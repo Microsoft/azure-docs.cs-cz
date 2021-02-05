@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b54438441b0e34cccda7fbec37dc1d1740101e9e
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 70fbaab8a409aaef8b1130abd40930a7aec79541
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753997"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583090"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Rychlý start: Získání tokenu a volání rozhraní API Microsoft Graph z desktopové aplikace Windows
 
@@ -59,7 +59,7 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Nakonfigurujte si aplikaci na portálu Azure Portal
-> Aby ukázka kódu pro tento rychlý Start fungovala, je nutné přidat adresu URL odpovědi jako **https://login.microsoftonline.com/common/oauth2/nativeclient** .
+> Aby ukázka kódu v tomto rychlém startu fungovala, přidejte **identifikátor URI přesměrování** `https://login.microsoftonline.com/common/oauth2/nativeclient` .
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Udělat změnu za mě]()
 >
@@ -135,7 +135,7 @@ PublicClientApplicationBuilder.Create(ClientId)
                 .Build();
 ```
 
-> |Kde: | Popis |
+> |Kde: | Description |
 > |---------|---------|
 > | `ClientId` | Je **ID aplikace (klienta)**, kterou jste zaregistrovali na webu Azure Portal. Tuto hodnotu najdete na stránce **Přehled** aplikace na webu Azure Portal. |
 
@@ -157,7 +157,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |Kde:| Popis |
+> |Kde:| Description |
 > |---------|---------|
 > | `_scopes` | Obsahuje požadované obory, například `{ "user.read" }` pro Microsoft Graph nebo `{ "api://<Application ID>/access_as_user" }` pro vlastní webová rozhraní API. |
 
@@ -172,7 +172,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Kde: | Popis |
+> |Kde: | Description |
 > |---------|---------|
 > | `scopes` | Obsahuje požadované obory, například `{ "user.read" }` pro Microsoft Graph nebo `{ "api://<Application ID>/access_as_user" }` pro vlastní webová rozhraní API. |
 > | `firstAccount` | Určuje prvního uživatele v mezipaměti (MSAL podporuje více uživatelů v jediné aplikaci). |

@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: c3dc2f91fcd09807a7eaaaaa638e78ba3717faec
-ms.sourcegitcommit: 63caac7871df9d999ca5a5f1b8c036ae7014231c
+ms.openlocfilehash: 85a5493e1d1c06a68aa9f4b64cd0f3d55c4f5f63
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98061765"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580883"
 ---
 # <a name="whats-new-in-qna-maker"></a>Co je nového v QnA Maker
 
 Zjistěte, co je nového ve službě. Tyto položky můžou vydávat poznámky, videa, příspěvky na blogu a další typy informací. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
 
-## <a name="release-notes"></a>Zpráva k vydání verze
+## <a name="release-notes"></a>Poznámky k verzi
 
 Přečtěte si, co je nového v QnA Maker.
 
@@ -36,7 +36,7 @@ Přečtěte si, co je nového v QnA Maker.
 ### <a name="july-2020"></a>Červenec 2020
 
 * [Metadata: `OR` logická kombinace více párů metadat](how-to/metadata-generateanswer-usage.md#logical-or-using-strictfilterscompoundoperationtype-property)
-* [Postup](how-to/set-up-qnamaker-service-azure.md#configuring-cognitive-search-as-a-private-endpoint-inside-a-vnet) konfigurace kognitivní hledáních koncových bodů jako soukromých, ale stále přístupná pro QnA maker.
+* [Postup](how-to/set-up-qnamaker-service-azure.md#recommended-settings-for-network-isolation) konfigurace kognitivní hledáních koncových bodů jako soukromých, ale stále přístupná pro QnA maker.
 * Bezplatné Kognitivní hledání prostředky se po [90 dnech nečinnosti](how-to/set-up-qnamaker-service-azure.md#inactivity-policy-for-free-search-resources)odeberou.
 
 ### <a name="june-2020"></a>Červen 2020
@@ -45,7 +45,7 @@ Přečtěte si, co je nového v QnA Maker.
 
 ### <a name="may-2020"></a>Květen 2020
 
-* [Řízení přístupu na základě role v Azure (Azure RBAC)](concepts/role-based-access-control.md)
+* [Řízení přístupu na základě role Azure (Azure RBAC)](concepts/role-based-access-control.md)
 * [Rozšířené úpravy textu](how-to/edit-knowledge-base.md#rich-text-editing-for-answer) pro odpovědi
 
 ### <a name="march-2020"></a>Březen 2020

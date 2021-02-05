@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 3c3eaddf1767a3fa4a2ba73ae7a27f1f7df13990
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 0a99ff32f3f1fbcf4af64188640d2edd7f3f5470
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178194"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583124"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Rychlý Start: Přidání přihlašování do webové aplikace v Pythonu pomocí Microsoftu
 
@@ -65,7 +65,7 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 > 1. Zadejte popis klíče (například pro tajný klíč aplikace), ponechte výchozí hodnotu vypršení platnosti a vyberte **Přidat**.
 > 1. Poznamenejte si **hodnotu** **tajného klíče klienta** pro pozdější použití.
 > 1. V části **Spravovat** vyberte **oprávnění rozhraní API**  >  **Přidat oprávnění**.
->1.  Ujistěte se, že je vybraná karta **rozhraní API Microsoftu** .
+> 1. Ujistěte se, že je vybraná karta **rozhraní API Microsoftu** .
 > 1. V části *běžně používaná rozhraní Microsoft API* vyberte **Microsoft Graph**.
 > 1. V části **delegovaná oprávnění** zkontrolujte, že jsou zaškrtnutá správná oprávnění: **User. ReadBasic. All**. V případě potřeby použijte vyhledávací pole.
 > 1. Klikněte na tlačítko **Přidat oprávnění** .
@@ -74,7 +74,7 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 >
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Nakonfigurujte si aplikaci na portálu Azure Portal
 >
-> Ukázku kódu pro tento rychlý Start, který funguje, je třeba:
+> Ukázka kódu v tomto rychlém startu funguje:
 >
 > 1. Přidejte adresu URL odpovědi jako `http://localhost:5000/getAToken` .
 > 1. Vytvořte tajný klíč klienta.

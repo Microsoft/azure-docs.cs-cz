@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a94cbebffbe2c735515d9758a2353a9857676311
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: bd0d53049c68843a6fd2cb6128c473d7c4f8d639
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756579"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582787"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Aplikace démona, která volá webové rozhraní API – volání webového rozhraní API z aplikace
 
@@ -64,7 +64,7 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ## <a name="calling-several-apis"></a>Volání několika rozhraní API
 
-Pro aplikace démona musí být webová rozhraní API, která zavoláte, předem schválená. Pro aplikace démona není k dispozici žádný přírůstkový souhlas. (Žádná interakce s uživatelem.) Správce tenanta musí pro aplikaci a všechna oprávnění rozhraní API poskytnout předem souhlas. Chcete-li volat několik rozhraní API, je nutné získat token pro každý prostředek při každém volání `AcquireTokenForClient` . MSAL použije mezipaměť tokenu aplikace, aby nedocházelo k zbytečným voláním služby.
+Pro aplikace démona musí být webová rozhraní API, která zavoláte, předem schválená. Pro aplikace démona není k dispozici žádný přírůstkový souhlas. (Žádná interakce s uživatelem.) Správce tenanta musí pro aplikaci a všechna oprávnění rozhraní API poskytnout předem souhlas. Pokud chcete volat několik rozhraní API, Získejte token pro každý prostředek pokaždé, když se zavolá `AcquireTokenForClient` . MSAL použije mezipaměť tokenu aplikace, aby nedocházelo k zbytečným voláním služby.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 3a26157949ff6ef69c9c009dfdd40781b47bc761
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: bdf74a6d8b6798de8aba33baea5afdf987ce1c34
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753572"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582481"
 ---
 # <a name="protected-web-api-code-configuration"></a>Chráněné webové rozhraní API: Konfigurace kódu
 
-Pokud chcete nakonfigurovat kód pro vaše chráněné webové rozhraní API, je potřeba pochopit:
+Pokud chcete nakonfigurovat kód pro vaše chráněné webové rozhraní API, seznámete s těmito principy:
 
 - Co definuje rozhraní API jako chráněná.
 - Jak nakonfigurovat nosný token.
@@ -195,7 +195,7 @@ Kroky ověření jsou zachyceny ve validátorech, které jsou poskytovány pomoc
 
 Tato tabulka popisuje validátory:
 
-| Hodnocení | Popis |
+| Hodnocení | Description |
 |---------|---------|
 | **ValidateAudience** | Ověří, jestli je token pro aplikaci, která token ověřuje za vás. |
 | **ValidateIssuer** | Zajišťuje, že token byl vydán důvěryhodnou službou STS, což znamená, že je od někoho, kterému důvěřujete. |

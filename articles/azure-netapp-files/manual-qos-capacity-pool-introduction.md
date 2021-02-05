@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 02/04/2021
 ms.author: b-juche
-ms.openlocfilehash: 239b985bf45942afbff8ca49d7e15ead24456304
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 13acee8b21adf946192544afcea17b4a8d9b9ec9
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993977"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581121"
 ---
 # <a name="manual-qos-capacity-pool"></a>Fond ručně zřizované kapacity QoS
 
@@ -29,7 +29,7 @@ Tento článek poskytuje Úvod do funkce fondu kapacity technologie QoS (Quality
 
 [Typ QoS](azure-netapp-files-understand-storage-hierarchy.md#qos_types) je atributem fondu kapacit. Azure NetApp Files poskytuje dva typy QoS fondů kapacity – auto (výchozí) a ruční.  
 
-V *manuálním* fondu kapacity QoS můžete přiřadit kapacitu a propustnost pro svazek nezávisle. Celková propustnost všech svazků vytvořených pomocí manuálního fondu kapacity QoS je omezená celkovou propustností fondu. Je určena kombinací velikosti fondu a propustnosti na úrovni služby. 
+V *manuálním* fondu kapacity QoS můžete přiřadit kapacitu a propustnost pro svazek nezávisle. Minimální a maximální úrovně propustnosti najdete v tématu [omezení prostředků pro Azure NetApp Files](azure-netapp-files-resource-limits.md#resource-limits). Celková propustnost všech svazků vytvořených pomocí manuálního fondu kapacity QoS je omezená celkovou propustností fondu. Je určena kombinací velikosti fondu a propustnosti na úrovni služby. 
 
 Ve fondu kapacity *auto* QoS se propustnost automaticky přiřazuje svazkům ve fondu, a to úměrně k kvótě velikosti přiřazené ke svazkům.  
 
@@ -60,4 +60,4 @@ Použití ručního typu QoS vyžaduje, abyste tuto [funkci zaregistrovali](mana
 * [Vytvoření svazku SMB](azure-netapp-files-create-volumes-smb.md)
 * [Vytvoření svazku se dvěma protokoly](create-volumes-dual-protocol.md)
 * [Metriky pro Azure NetApp Files](azure-netapp-files-metrics.md)
-* [Řešení potíží s fondem kapacit](troubleshoot-capacity-pools.md)
+* [Řešení potíží s fondy kapacity](troubleshoot-capacity-pools.md)

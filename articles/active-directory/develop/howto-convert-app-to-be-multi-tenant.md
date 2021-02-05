@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: ryanwi
 ms.reviewer: marsma, jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 4f87c3fd0cfda2db535b2c8f7f7330a273e6b767
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 825a7d8c53552120a861657c7f3df7ae8f488c18
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755339"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581716"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Postup: Přihlášení libovolného uživatele služby Azure Active Directory pomocí vzoru aplikace s více tenanty
 
@@ -125,7 +125,7 @@ Oprávnění pouze pro aplikace vždy vyžadují souhlas správce tenanta. Pokud
 
 Určitá delegovaná oprávnění také vyžadují souhlas správce tenanta. Například možnost vracet se zpátky do služby Azure AD, protože přihlášený uživatel vyžaduje souhlas správce tenanta. Stejně jako oprávnění pouze pro aplikace, pokud se běžný uživatel pokusí přihlásit k aplikaci, která žádá o delegované oprávnění, které vyžaduje souhlas správce, aplikace obdrží chybu. Bez ohledu na to, jestli oprávnění vyžaduje souhlas správce, se určí vývojář, který prostředek publikoval, a najdete ho v dokumentaci k prostředku. Dokumentace k oprávněním pro [rozhraní Microsoft Graph API][MSFT-Graph-permission-scopes] určuje, která oprávnění vyžadují souhlas správce.
 
-Pokud vaše aplikace používá oprávnění, která vyžadují souhlas správce, musíte mít gesto, jako je tlačítko nebo odkaz, kde může správce zahájit akci. Požadavek, který vaše aplikace posílá pro tuto akci, je obvyklým požadavkem na autorizaci OAuth2/OpenID Connect, který také obsahuje `prompt=admin_consent` parametr řetězce dotazu. Jakmile správce souhlasí a objekt služby se vytvoří v tenantovi zákazníka, následné žádosti o přihlášení nepotřebují `prompt=admin_consent` parametr. Vzhledem k tomu, že správce rozhodl, že požadovaná oprávnění jsou přijatelná, žádné další uživatele v tenantovi nebudou vyzváni k jejich souhlasu od tohoto okamžiku.
+Pokud vaše aplikace používá oprávnění, která vyžadují souhlas správce, měli byste gesto, jako je tlačítko nebo odkaz, kde může správce zahájit akci. Požadavek, který vaše aplikace posílá pro tuto akci, je obvyklým požadavkem na autorizaci OAuth2/OpenID Connect, který také obsahuje `prompt=admin_consent` parametr řetězce dotazu. Jakmile správce souhlasí a objekt služby se vytvoří v tenantovi zákazníka, následné žádosti o přihlášení nepotřebují `prompt=admin_consent` parametr. Vzhledem k tomu, že správce rozhodl, že požadovaná oprávnění jsou přijatelná, žádné další uživatele v tenantovi nebudou vyzváni k jejich souhlasu od tohoto okamžiku.
 
 Správce klienta může zakázat možnost pro běžné uživatele, aby jim souhlasili s aplikacemi. Pokud je tato možnost zakázaná, bude pro použití v tenantovi vždycky potřeba souhlas správce. Pokud chcete otestovat aplikaci pomocí souhlasu koncového uživatele, můžete najít přepínač konfigurace v části [Azure Portal][AZURE-portal] v části **[nastavení uživatele](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** v části **podnikové aplikace**.
 
@@ -139,7 +139,7 @@ Vaše aplikace může mít více vrstev, z nichž každý představuje vlastní 
 
 #### <a name="multiple-tiers-in-a-single-tenant"></a>Více vrstev v jednom tenantovi
 
-To může být problém, pokud se vaše logická aplikace skládá ze dvou nebo více registrací aplikace, například samostatného klienta a prostředku. Jak napřed získat prostředek do tenanta zákazníka? Azure AD pokrývá tento případ tím, že umožňuje klientovi a prostředku souhlas v jednom kroku. Uživatel uvidí celkový součet oprávnění vyžádaného klientem i prostředkem na stránce souhlasu. Aby bylo možné toto chování povolit, musí registrace aplikace prostředku zahrnovat ID aplikace klienta jako `knownClientApplications` v [manifestu aplikace][AAD-App-Manifest]. Například:
+To může být problém, pokud se vaše logická aplikace skládá ze dvou nebo více registrací aplikace, například samostatného klienta a prostředku. Jak napřed získat prostředek do tenanta zákazníka? Azure AD pokrývá tento případ tím, že umožňuje klientovi a prostředku souhlas v jednom kroku. Uživatel uvidí celkový součet oprávnění vyžádaného klientem i prostředkem na stránce souhlasu. Aby bylo možné toto chování povolit, musí registrace aplikace prostředku zahrnovat ID aplikace klienta jako `knownClientApplications` v [manifestu aplikace][AAD-App-Manifest]. Příklad:
 
 ```json
 "knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]

@@ -13,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: ef2ab6511d80f7f1f836805055e7cc7f48a488e7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: b43141a3700b9594e2d5fbb875774b7b90e62a0b
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754301"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583446"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Rychlý Start: přihlášení uživatelů a volání rozhraní Microsoft Graph API z aplikace pro iOS nebo macOS
 
@@ -69,7 +69,7 @@ Rychlý Start se týká aplikací pro iOS a macOS. Některé kroky jsou potřeba
 > [!div renderon="portal" class="sxs-lookup"]
 >
 > #### <a name="step-1-configure-your-application"></a>Krok 1: Konfigurace aplikace
-> Aby ukázka kódu pro tento rychlý Start fungovala, je nutné přidat identifikátor URI pro přesměrování, který je kompatibilní s zprostředkovatelem ověřování.
+> Ukázka kódu pro tento rychlý Start funguje tak, že přidá **identifikátor URI pro přesměrování** , který je kompatibilní s zprostředkovatelem ověřování.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Udělat změnu za mě]()
 >
@@ -118,7 +118,7 @@ V okně terminálu přejděte do složky s ukázkou staženého kódu a spusťte
 >     ```
 > 1. Otevřete nastavení projektu. V části **Identita** zadejte **identifikátor sady prostředků** , který jste zadali na portálu.
 > 1. Klikněte pravým tlačítkem na **info. plist** a vyberte **Otevřít jako**  >  **zdrojový kód**.
-> 1. V kořenovém uzlu dict – nahraďte `Enter_the_bundle_Id_Here` **_ID sady_* _, které jste použili na portálu.
+> 1. V kořenovém uzlu dict – nahraďte `Enter_the_bundle_Id_Here` ***ID sady prostředků*** , které jste použili na portálu.
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -178,9 +178,9 @@ let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, r
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
 
-> |Kde: | Popis |
+> |Kde: | Description |
 > |---------|---------|
-> | `clientId` | ID aplikace z aplikace zaregistrované v _portal. Azure. com * |
+> | `clientId` | ID aplikace z aplikace zaregistrované na webu *portal.azure.com* |
 > | `authority` | Platforma Microsoft identity Ve většině případů to bude `https://login.microsoftonline.com/common` |
 > | `redirectUri` | Identifikátor URI přesměrování aplikace Můžete předat hodnotu Nil a použít výchozí hodnotu nebo vlastní identifikátor URI přesměrování. |
 
@@ -214,7 +214,7 @@ Vaše aplikace musí mít také následující v `AppDelegate` . To umožňuje, 
     }
  ```
 
-Nakonec musí mít vaše aplikace `LSApplicationQueriesSchemes` záznam ***info. plist** _ vedle `CFBundleURLTypes` . Tato ukázka je obsažena v tomto příkladu.
+A konečně, vaše aplikace musí mít `LSApplicationQueriesSchemes` položku v souboru ***info. plist*** spolu s `CFBundleURLTypes` . Tato ukázka je obsažena v tomto příkladu.
 
    ```xml
    <key>LSApplicationQueriesSchemes</key>
@@ -232,7 +232,7 @@ Knihovna MSAL používá k získání tokenů dvě metody: `acquireToken` a `acq
 
 Některé situace vyžadují, aby uživatelé mohli pracovat s platformou Microsoft identity. V těchto případech může být koncový uživatel muset vybrat svůj účet, zadat jejich přihlašovací údaje nebo vyjádřit souhlas s oprávněními vaší aplikace. Třeba
 
-_ Když se uživatel poprvé přihlásí k aplikaci
+* Při prvním přihlášení uživatele k aplikaci
 * Pokud uživatel resetuje heslo, bude muset zadat své přihlašovací údaje.
 * Když vaše aplikace požaduje při prvním pokusu o přístup k prostředku
 * Pokud jsou vyžadovány MFA nebo jiné zásady podmíněného přístupu
@@ -242,7 +242,7 @@ let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParamete
 self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
-> |Kde:| Popis |
+> |Kde:| Description |
 > |---------|---------|
 > | `scopes` | Obsahuje požadované obory (tj. `[ "user.read" ]` pro Microsoft Graph nebo `[ "<Application ID URL>/scope" ]` pro vlastní webová rozhraní API ( `api://<Application ID>/access_as_user` ) |
 
@@ -262,7 +262,7 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 }
 ```
 
-> |Kde: | Popis |
+> |Kde: | Description |
 > |---------|---------|
 > | `scopes` | Obsahuje požadované obory (tj. `[ "user.read" ]` pro Microsoft Graph nebo `[ "<Application ID URL>/scope" ]` pro vlastní webová rozhraní API ( `api://<Application ID>/access_as_user` ) |
 > | `account` | Účet, pro který se požaduje token. Tento rychlý Start se týká aplikace s jedním účtem. Pokud chcete vytvořit aplikaci s více účty, budete muset definovat logiku pro identifikaci, který účet se má použít pro žádosti o tokeny pomocí `accountsFromDeviceForParameters:completionBlock:` a předávání správných. `accountIdentifier` |

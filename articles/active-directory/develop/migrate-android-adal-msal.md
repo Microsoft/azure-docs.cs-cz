@@ -14,12 +14,12 @@ ms.date: 10/14/2020
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: bf9b3a154e19fab08c46f9838f555e223f10e8a0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: ba639bc023affc7c2e6b2b675cdedc1229636893
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672283"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581036"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Příručka k migraci ADAL do MSAL pro Android
 
@@ -71,7 +71,7 @@ V registraci vaší aplikace na portálu se zobrazí karta **oprávnění rozhra
 Pomocí ADAL a koncového bodu Azure AD v1 bylo při prvním použití udělené uživatelské vyjádření souhlasu uživatele s prostředky, které vlastní. S MSAL a platformou Microsoft identity se dá souhlas vyžádat přírůstkově. Přírůstkové vyjádření souhlasu je užitečné pro oprávnění, která může uživatel zvážit při vysokém oprávnění, nebo může jinak klást otázky, pokud není k dispozici jasné vysvětlení, proč se oprávnění vyžaduje. V ADAL mohla být tato oprávnění způsobena tím, že uživatel přejímá přihlášení do vaší aplikace.
 
 > [!TIP]
-> Doporučujeme použití přírůstkového souhlasu ve scénářích, kdy potřebujete poskytnout uživateli další kontext o tom, proč vaše aplikace potřebuje oprávnění.
+> Pomocí přírůstkového souhlasu Poskytněte uživatelům další kontext o tom, proč vaše aplikace potřebuje oprávnění.
 
 ### <a name="admin-consent"></a>Souhlas správce
 
@@ -128,7 +128,7 @@ MSAL nemá příznak pro povolení nebo zakázání ověřování autority. Ově
 
 Pokud se pokusíte použít autoritu, která není známá na Microsoftu, a není zahrnutá do vaší konfigurace, zobrazí se `UnknownAuthorityException` .
 
-### <a name="logging"></a>Protokolování
+### <a name="logging"></a>protokolování
 Nyní můžete v rámci konfigurace deklarativně nakonfigurovat protokolování, například takto:
 
 ```json
@@ -237,7 +237,7 @@ public interface SilentAuthenticationCallback {
 V ADAL existuje jeden typ výjimky, `AuthenticationException` která obsahuje metodu pro načtení `ADALError` hodnoty výčtu.
 V MSAL existuje hierarchie výjimek a každá má vlastní sadu souvisejících specifických kódů chyb.
 
-| Výjimka                                        | Popis                                                         |
+| Výjimka                                        | Description                                                         |
 |--------------------------------------------------|---------------------------------------------------------------------|
 | `MsalArgumentException`                          | Vyvoláno, pokud je jeden nebo více argumentů vstupů neplatných.                 |
 | `MsalClientException`                            | Vyvolána, pokud se jedná o chybu na straně klienta.                                 |

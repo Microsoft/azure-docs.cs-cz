@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 3b77cc93385efb0bbb8a9b87d29de9bad5cd4ceb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 938a19276839d5e0d2bd3e0244510fc068cb029c
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995997"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582903"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>Aplikace démona, která volá webová rozhraní API – registrace aplikace
 
@@ -24,7 +24,7 @@ V případě aplikace démona je zde uvedeno, co potřebujete znát při registr
 
 ## <a name="supported-account-types"></a>Podporované typy účtu
 
-Aplikace démona mají smysl jenom v klientech Azure AD. Takže když vytvoříte aplikaci, musíte vybrat jednu z následujících možností:
+Aplikace démona mají smysl jenom v klientech Azure AD. Takže když vytvoříte aplikaci, vyberte jednu z následujících možností:
 
 - **Účty pouze v tomto organizačním adresáři**. Tato volba je nejběžnější, protože aplikace démona jsou obvykle zapisovány obchodními vývojáři (LOB).
 - **Účty v libovolném organizačním adresáři**. Tuto možnost můžete vybrat, pokud jste nezávislý výrobce softwaru, který zákazníkům poskytuje nástroj pro nástroj. Budete potřebovat schválit správce tenanta vašich zákazníků.

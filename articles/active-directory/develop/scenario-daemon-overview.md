@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 45af940382a261f1793583e471871b9cceed0a57
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 00a70b585ddf522a25e81703fe5bdf55efbcb7e1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753826"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582770"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Scénář: aplikace démona, která volá webová rozhraní API
 
@@ -52,7 +52,7 @@ Aplikace, které získají token pro vlastní identity:
 Pro vývojáře mají koncová prostředí pro tento scénář následující aspekty:
 
 - Aplikace démona můžou pracovat jenom v klientech Azure AD. Nesmyslem je vytvořit aplikaci démona, která se pokusí manipulovat s osobními účty Microsoft. Pokud jste vývojář pro obchodní aplikace (LOB), vytvoříte v tenantovi aplikaci démona. Pokud jste nezávislý výrobce softwaru, možná budete chtít vytvořit víceklientské aplikace démona. Každý správce tenanta bude muset poskytnout souhlas.
-- Během [Registrace aplikace](./scenario-daemon-app-registration.md)není nutné identifikátor URI odpovědi. Ke sdílení tajných kódů a certifikátů nebo podepsanou kontrolní výrazy můžete používat Azure AD. Musíte také požádat o oprávnění aplikace a udělit souhlas správce k používání oprávnění aplikace.
+- Během [Registrace aplikace](./scenario-daemon-app-registration.md)není nutné identifikátor URI odpovědi. Sdílejte tajné klíče nebo certifikáty nebo podepsané kontrolní výrazy pomocí Azure AD. Musíte také požádat o oprávnění aplikace a udělit souhlas správce k používání oprávnění aplikace.
 - [Konfigurace aplikace](./scenario-daemon-app-configuration.md) musí při registraci aplikace zadat přihlašovací údaje klienta jako sdílené se službou Azure AD.
 - [Rozsah](scenario-daemon-acquire-token.md#scopes-to-request) použitý k získání tokenu s tokem pověření klienta musí být statickým oborem.
 

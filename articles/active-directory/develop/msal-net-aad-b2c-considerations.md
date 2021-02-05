@@ -13,18 +13,18 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 15f65da83f14f43a7892d52c6a2ed4e08580d367
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: b28454e9b60654541d4f62ec1d8455b30cfc2906
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614910"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580823"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Použití MSAL.NET k přihlašování uživatelů pomocí sociálních identit
 
 Pomocí MSAL.NET [(Azure AD B2C)](../../active-directory-b2c/overview.md)se můžete přihlásit k uživatelům pomocí sociálních Azure Active Directory B2C identit. Azure AD B2C je vybudována kolem pojmu zásad. V MSAL.NET určení zásady se překládá na poskytování autority.
 
-- Při vytváření instance veřejné klientské aplikace je třeba zadat zásadu v rámci autority.
+- Při vytváření instance veřejné klientské aplikace určete zásadu v rámci autority.
 - Pokud chcete použít zásadu, zavolejte přepsání `AcquireTokenInteractive` , které přijímá `authority` parametr.
 
 Tento článek se týká MSAL.NET 3. x. Pro MSAL.NET 2. x si přečtěte část [Azure AD B2C specifické v MSAL 2. x](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-Specifics-MSAL-2.x) na wikiwebu MSAL.NET na GitHubu.
@@ -194,6 +194,6 @@ Další informace o určení, které deklarace identity vrátí vaše uživatels
 
 Další podrobnosti o interaktivním získání tokenů pomocí MSAL.NET pro Azure AD B2C aplikace jsou k dispozici v následující ukázce.
 
-| Ukázka | Platforma | Popis|
+| Ukázka | Platforma | Description|
 |------ | -------- | -----------|
 |[Active-Directory-B2C-Xamarin-Native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | Aplikace Xamarin Forms, která používá MSAL.NET k ověřování uživatelů prostřednictvím Azure AD B2C a přístup k webovému rozhraní API s vrácenými tokeny.|

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 04ee4ccc3b0553d6532869d6403000fdedd93b5f
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 8dc9bff86a07f3d4a0ec6fd224de6d5633165a6d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062707"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582837"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Aplikace démona, která volá webová rozhraní API – přesun do produkčního prostředí
 
@@ -25,7 +25,7 @@ Když teď víte, jak získat a použít token pro volání služby Service-to-S
 
 ## <a name="deployment---multitenant-daemon-apps"></a>Nasazení – víceklientské aplikace démona
 
-Pokud jste nezávislý výrobce softwaru, který vytváří aplikaci démona, která může běžet v několika klientech, musíte se ujistit, že správce klienta:
+Pokud jste nezávislý výrobce softwaru, který vytváří aplikaci démona, která může běžet v několika klientech, ujistěte se, že správce klienta:
 
 - Zřídí instanční objekt pro aplikaci.
 - Udělí souhlas aplikaci.

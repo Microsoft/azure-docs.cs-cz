@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b8360a22c815fa28626bb07a1518bd82ba6e3e46
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: d1ab7da9753642093505fa91ea76b9327612a6ac
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753507"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582362"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Webové rozhraní API, které volá webová rozhraní API: Konfigurace kódu
 
@@ -33,7 +33,7 @@ Microsoft doporučuje při vývoji ASP.NET Coreho rozhraní API s voláním pro 
 
 ## <a name="client-secrets-or-client-certificates"></a>Klientské tajné klíče nebo klientské certifikáty
 
-Vzhledem k tomu, že vaše webové rozhraní API nyní volá webové rozhraní API pro příjem dat, je nutné zadat tajný klíč klienta nebo klientský certifikát v *appsettings.js* souboru. Můžete také přidat oddíl, který určuje:
+Vzhledem k tomu, že vaše webové rozhraní API nyní volá webové rozhraní API pro příjem dat, zadejte tajný klíč klienta nebo klientský certifikát do *appsettings.js* v souboru. Můžete také přidat oddíl, který určuje:
 
 - Adresa URL webového rozhraní API pro příjem dat
 - Rozsahy vyžadované pro volání rozhraní API
@@ -169,7 +169,7 @@ Následující obrázek znázorňuje různé možnosti *Microsoft. identity. Web
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="Blokový diagram znázorňující možnosti konfigurace služby ve spouštěcí tečkě C S pro volání webového rozhraní API a určení implementace mezipaměti tokenů":::
 
 > [!NOTE]
-> Pokud chcete plně pochopit příklady kódu, musíte být obeznámeni s [ASP.NET Core základy](/aspnet/core/fundamentals)a zejména pomocí injektáže a [možností](/aspnet/core/fundamentals/configuration/options) [závislosti](/aspnet/core/fundamentals/dependency-injection) .
+> Chcete-li plně pochopit příklady kódu, Seznamte se s [ASP.NET Core základy](/aspnet/core/fundamentals)a zejména pomocí injektáže a [možností](/aspnet/core/fundamentals/configuration/options) [závislosti](/aspnet/core/fundamentals/dependency-injection) .
 
 # <a name="java"></a>[Java](#tab/java)
 

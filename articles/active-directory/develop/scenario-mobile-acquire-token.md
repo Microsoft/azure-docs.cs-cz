@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: c071cb9a8a27964a93e039e4d1536e078730bfc9
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 6e6eda3d711710ea7450165ab02d7a260067bfcb
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753628"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582549"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Získání tokenu pro mobilní aplikaci, která volá webová rozhraní API
 
@@ -26,7 +26,7 @@ Předtím, než aplikace může volat chráněná webová rozhraní API, potřeb
 
 ## <a name="define-a-scope"></a>Definování oboru
 
-Když vyžádáte token, budete muset definovat obor. Obor určuje, k jakým datům může aplikace přistupovat.
+Když vyžádáte token, definujte obor. Obor určuje, k jakým datům může aplikace přistupovat.
 
 Nejjednodušší způsob, jak definovat rozsah, je zkombinovat požadované webové rozhraní API `App ID URI` s oborem `.default` . Tato definice obsahuje informace o platformě Microsoft identity, kterou vaše aplikace vyžaduje pro všechny obory nastavené na portálu.
 
@@ -236,7 +236,7 @@ Třída definuje následující konstanty:
     Tato možnost může být užitečná v případě, že získání tokenu se nezdařilo a chcete uživateli umožnit, aby se znovu přihlásili. V takovém případě MSAL odesílá `prompt=login` poskytovateli identity. Tuto možnost můžete chtít použít v aplikacích zaměřených na zabezpečení, kde zásady správného řízení organizace vyžadují, aby se uživatel přihlásil pokaždé, když přistupují k určitým částem aplikace.
 - `Never` je určen pouze pro .NET 4,5 a prostředí Windows Runtime (WinRT). Tato konstanta nevyzve uživatele, ale pokusí se použít soubor cookie, který je uložený v skrytém vloženém webovém zobrazení. Další informace najdete v tématu [použití webových prohlížečů s MSAL.NET](./msal-net-web-browsers.md).
 
-    Pokud tato možnost není úspěšná, `AcquireTokenInteractive` vyvolá výjimku, která vás upozorní, že je potřeba interakce uživatelského rozhraní. Pak je nutné použít jiný `Prompt` parametr.
+    Pokud tato možnost není úspěšná, `AcquireTokenInteractive` vyvolá výjimku, která vás upozorní, že je potřeba interakce uživatelského rozhraní. Pak použijte jiný `Prompt` parametr.
 - `NoPrompt` neodešle výzvu poskytovateli identity.
 
     Tato možnost je užitečná jenom pro zásady úprav profilu v Azure Active Directory B2C. Další informace najdete v tématu [B2C – konkrétní](https://aka.ms/msal-net-b2c-specificities).

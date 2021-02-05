@@ -12,12 +12,12 @@ ms.date: 10/23/2020
 ms.author: ryanwi
 ms.custom: aaddev, seoapril2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5dec4958c3a1d955d8f8c1dce90e27696fbebfe5
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: d39f378171443f028ef6b549b120b22f2a3405c4
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063344"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582937"
 ---
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>Jak změnit výchozí hodnoty životnosti tokenů pro aplikaci vytvořenou pro vlastní nastavení
 
@@ -27,7 +27,7 @@ Tento článek popisuje, jak pomocí Azure AD PowerShellu nastavit zásady živo
 > Po 2020 května již klienti nebudou moci konfigurovat dobu platnosti tokenů aktualizace a relace.  Azure Active Directory přestane dodržovat stávající konfiguraci tokenu aktualizace a tokenu relace v zásadách po 30. lednu 2021. Po vyřazení můžete i po vyřazení nakonfigurovat životnosti přístupového tokenu. Další informace najdete v tématu [Konfigurace životností tokenů ve službě Azure AD](./active-directory-configurable-token-lifetimes.md).
 > Implementovali jsme [Možnosti správy relace ověřování](../conditional-access/howto-conditional-access-session-lifetime.md)   v podmíněném přístupu Azure AD. Tuto novou funkci můžete použít ke konfiguraci životností tokenů aktualizace nastavením frekvence přihlášení.  
 
-Pokud chcete nastavit zásady životnosti přístupového tokenu, musíte si stáhnout [modul Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureADPreview).
+Pokud chcete nastavit zásady života přístupového tokenu, Stáhněte si [modul Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureADPreview).
 Spusťte příkaz **Connect-AzureAD-Confirm** .
 
 Tady je příklad zásady, která vyžaduje, aby se uživatelé ve vaší webové aplikaci ověřovali častěji. Tato zásada nastavuje dobu života přístupu k instančnímu objektu vaší webové aplikace. Vytvořte zásadu a přiřaďte ji k instančnímu objektu. Také je nutné získat ObjectId objektu služby.

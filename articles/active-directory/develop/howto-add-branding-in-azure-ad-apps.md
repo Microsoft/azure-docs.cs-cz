@@ -13,12 +13,12 @@ ms.date: 08/31/2020
 ms.author: ryanwi
 ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 3ee59226853f4ea5aabf57a8866ba014aa874774
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 236e82ab97244e1428441f83295f6a5d4ed56350
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706196"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581988"
 ---
 # <a name="branding-guidelines-for-applications"></a>Pokyny pro branding aplikací
 
@@ -27,7 +27,7 @@ Při vývoji aplikací s platformou Microsoft identity je potřeba nasměrovat z
 V tomto článku provedete následující:
 
 - Dozvíte se další informace o těchto dvou typech uživatelských účtů spravovaných Microsoftem a tom, jak odkazovat na účty Azure AD v aplikaci.
-- Zjistěte, co je potřeba udělat, abyste přidali logo Microsoftu pro použití ve vaší aplikaci.
+- Seznamte se s požadavky na používání loga Microsoftu ve vaší aplikaci.
 - Stáhnete si oficiální obrázky **Přihlásit se** nebo **Přihlásit se účtem Microsoft** pro použití ve vaší aplikaci.
 - Seznámíte se s tím, co lze a nelze dělat při brandingu a navigaci.
 
@@ -67,7 +67,7 @@ Jakmile správci souhlasí s vaší aplikací, můžou se rozhodnout přidat je 
 
 ![Tlačítko, které zobrazuje text loga Microsoftu a "Přidat k mojí organizaci"](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-Doporučujeme však nespoléhat na tlačítka a napsat vysvětlující text. Například:
+Doporučujeme však nespoléhat na tlačítka a napsat vysvětlující text. Příklad:
 
 > *Pokud už používáte Microsoft 365 nebo jiné obchodní služby od Microsoftu, můžete <your_app_name udělit> přístup k datům vaší organizace. Uživatelé tak budou mít přístup k <your_app_name> se stávajícími pracovními účty.*
 

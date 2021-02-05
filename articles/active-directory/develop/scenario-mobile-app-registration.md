@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: cdd32185d1ffddb4c6bc3d62b91690f68dec17ca
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 902348063a24b50d1de0a821d9d6e67931cc53cd
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014718"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582532"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Registrovat mobilní aplikace, které volají webová rozhraní API
 
@@ -79,9 +79,9 @@ Pokud upřednostňujete ruční konfiguraci identifikátoru URI přesměrování
 
 ### <a name="username-password-authentication"></a>Uživatelské jméno – ověřování hesla
 
-Pokud vaše aplikace používá pouze ověřování pomocí uživatelského jména a hesla, nemusíte registrovat identifikátor URI přesměrování pro aplikaci. Tento tok provede zpáteční cestu ke koncovému bodu Microsoft Identity Platform verze 2,0. Vaše aplikace se nebude volat zpátky na žádný konkrétní identifikátor URI.
+Pokud vaše aplikace používá pouze ověřování pomocí uživatelského jména a hesla, nemusíte registrovat identifikátor URI přesměrování pro aplikaci. Tento tok provede zpáteční cestu k platformě Microsoft identity. Vaše aplikace se nebude volat zpátky na žádný konkrétní identifikátor URI.
 
-Je však nutné identifikovat aplikaci jako veřejnou klientskou aplikaci. Postupujte následovně:
+Identifikujte však aplikaci jako veřejnou klientskou aplikaci. Postupujte následovně:
 
 1. Pořád v <a href="https://portal.azure.com/" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>vyberte svou aplikaci v **Registrace aplikací** a pak vyberte **ověřování**.
 1. V části **Upřesnit nastavení**  >  **Povolit toky veřejného klienta**  >  **Povolte následující toky mobilních a desktopových toků:** vyberte **Ano**.

@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a1ec8c31681ab6c0ac40ba33e94f33057ee948e7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 1a56685c830fc7aa717add3e826c68c04449e378
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754806"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580842"
 ---
 # <a name="differences-between-msaljs-and-adaljs"></a>Rozdíly mezi MSAL.js a ADAL.js
 
@@ -48,7 +48,7 @@ Je však stále nutné použít ADAL.js, pokud se vaše aplikace musí přihlaš
 
 V 1.0 se pomocí `https://login.microsoftonline.com/common` autority uživatelům umožní přihlásit pomocí účtu Azure AD (pro libovolnou organizaci).
 
-V 2.0 se pomocí `https://login.microsoftonline.com/common` autority umožní uživatelům přihlásit se pomocí účtu organizace Azure AD nebo osobního účtu Microsoft (MSA). Pokud chcete omezit přihlášení jenom na účty Azure AD (stejné chování jako u ADAL.js), musíte použít `https://login.microsoftonline.com/organizations` . Podrobnosti najdete v tématu věnovaném `authority` konfiguraci při [inicializaci pomocí MSAL.js](msal-js-initializing-client-applications.md).
+V 2.0 se pomocí `https://login.microsoftonline.com/common` autority umožní uživatelům přihlásit se pomocí účtu organizace Azure AD nebo osobního účtu Microsoft (MSA). Pokud chcete omezit přihlášení jenom na účty Azure AD (stejné chování jako u ADAL.js), použijte `https://login.microsoftonline.com/organizations` . Podrobnosti najdete v tématu věnovaném `authority` konfiguraci při [inicializaci pomocí MSAL.js](msal-js-initializing-client-applications.md).
 
 ### <a name="scopes-for-acquiring-tokens"></a>Obory pro získání tokenů
 * Rozsah místo parametru prostředku v požadavcích na ověření pro získání tokenů
@@ -73,7 +73,7 @@ V 2.0 se pomocí `https://login.microsoftonline.com/common` autority umožní u�
 
 * Dynamické obory pro přírůstkový souhlas.
 
-    Při sestavování aplikací pomocí verze 1.0 je nutné zaregistrovat úplnou sadu oprávnění (statické obory), které aplikace požaduje, aby uživatel mohl udělit souhlas v době přihlášení. V verze 2.0 můžete použít parametr scope k vyžádání oprávnění v době, kdy chcete. Tyto jsou označovány jako dynamické obory. To umožňuje uživateli poskytnout k oboru přírůstkové vyjádření souhlasu. Takže když na začátku budete chtít, aby se uživatel přihlásil ke svojí aplikaci a nepotřebujete žádný přístup, můžete tak učinit. Pokud budete později potřebovat možnost číst kalendář uživatele, můžete požádat o obor kalendáře v metodách acquireToken a získat souhlas uživatele. Například:
+    Při sestavování aplikací pomocí verze 1.0 je nutné zaregistrovat úplnou sadu oprávnění (statické obory), které aplikace požaduje, aby uživatel mohl udělit souhlas v době přihlášení. V verze 2.0 můžete použít parametr scope k vyžádání oprávnění v době, kdy chcete. Tyto jsou označovány jako dynamické obory. To umožňuje uživateli poskytnout k oboru přírůstkové vyjádření souhlasu. Takže když na začátku budete chtít, aby se uživatel přihlásil ke svojí aplikaci a nepotřebujete žádný přístup, můžete tak učinit. Pokud budete později potřebovat možnost číst kalendář uživatele, můžete požádat o obor kalendáře v metodách acquireToken a získat souhlas uživatele. Příklad:
 
     ```javascript
     var request = {
@@ -85,7 +85,7 @@ V 2.0 se pomocí `https://login.microsoftonline.com/common` autority umožní u�
 
 * Obory pro rozhraní API V 1.0
 
-    Při získávání tokenů pro rozhraní API V 1.0 pomocí MSAL.js můžete požádat o všechny statické obory registrované v rozhraní API připojením `.default` k identifikátoru URI ID aplikace rozhraní API jako oboru. Například:
+    Při získávání tokenů pro rozhraní API V 1.0 pomocí MSAL.js můžete požádat o všechny statické obory registrované v rozhraní API připojením `.default` k identifikátoru URI ID aplikace rozhraní API jako oboru. Příklad:
 
     ```javascript
     var request = {

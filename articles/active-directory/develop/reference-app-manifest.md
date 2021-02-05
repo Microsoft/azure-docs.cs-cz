@@ -13,12 +13,12 @@ ms.date: 02/02/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: d544d884a82a7532bf343f38049102dfccae342f
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 0291d2e6f0cee07bd7164b63dfd4ac8b02c42a01
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507264"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583039"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Manifest aplikace Azure Active Directory
 
@@ -27,7 +27,7 @@ Manifest aplikace obsahuje definici všech atributů objektu aplikace na platfor
 Atributy aplikace můžete nakonfigurovat pomocí Azure Portal nebo programově pomocí [REST API](/graph/api/resources/application) nebo [PowerShellu](/powershell/module/azuread#applications). Existují však situace, kdy budete muset upravit manifest aplikace a nakonfigurovat atribut aplikace. Mezi tyto scénáře patří:
 
 * Pokud jste aplikaci zaregistrovali jako víceklientské a osobní účty Microsoft Azure AD, nemůžete v uživatelském rozhraní měnit podporované účty Microsoft. Místo toho je nutné použít editor manifestu aplikace ke změně podporovaného typu účtu.
-* Pokud potřebujete definovat oprávnění a role, které vaše aplikace podporuje, je nutné změnit manifest aplikace.
+* Chcete-li definovat oprávnění a role, které vaše aplikace podporuje, je nutné upravit manifest aplikace.
 
 ## <a name="configure-the-app-manifest"></a>Konfigurace manifestu aplikace
 

@@ -2,13 +2,13 @@
 title: Nastavení Azure Backup Server pro řešení Azure VMware
 description: Nastavte prostředí pro řešení Azure VMware pro zálohování virtuálních počítačů pomocí Azure Backup Server.
 ms.topic: how-to
-ms.date: 10/23/2020
-ms.openlocfilehash: 7885c0bc73bd5f7cd802e76ed9db470f77eda30d
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.date: 02/04/2021
+ms.openlocfilehash: e9204b9f86c7e9ef67d2e3d6b45ccf4248d00b32
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703398"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581478"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Nastavení Azure Backup Server pro řešení Azure VMware
 
@@ -389,7 +389,7 @@ Azure Backup Server V3 akceptuje pouze svazky úložiště. Když přidáte svaz
 
 ## <a name="next-steps"></a>Další kroky
 
-Přejděte k dalšímu kurzu, kde se dozvíte, jak nakonfigurovat zálohování virtuálních počítačů VMware běžících na řešení VMware Azure pomocí Azure Backup Server.
+Teď, když jste si pokryli, jak nastavit Azure Backup Server pro řešení Azure VMware, budete možná chtít získat další informace:
 
-> [!div class="nextstepaction"]
-> [Konfigurace zálohování virtuálních počítačů řešení VMware Azure](backup-azure-vmware-solution-virtual-machines.md)
+- [Konfigurace záloh pro virtuální počítače řešení Azure VMware](backup-azure-vmware-solution-virtual-machines.md).
+- [Ochrana virtuálních počítačů řešení Azure VMware pomocí Azure Security Center integrace](azure-security-integration.md)

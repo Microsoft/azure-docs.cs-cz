@@ -5,13 +5,14 @@ author: robinsh
 ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
+ms.custom: subject-monitoring
 ms.date: 11/06/2020
-ms.openlocfilehash: 35134f3ee4946d294ba6c6f71bd3953823d6d138
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: db85594ad4fef37ec7411f7d5791fdb5279ec504
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250024"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581648"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Monitorování IoT Hub Azure
 
@@ -119,7 +120,7 @@ Některé operace v IoT Hub protokoly prostředků vrátí `sdkVersion` vlastnos
 
 V následující tabulce je uveden název sady SDK používané pro různé sady SDK Azure IoT:
 
-| Název sady SDK ve vlastnosti sdkVersion | Language (Jazyk) |
+| Název sady SDK ve vlastnosti sdkVersion | Jazyk |
 |----------|----------|
 | .NET | .NET (C#) |
 | Microsoft. Azure. Devices | Sada SDK služby .NET (C#) |
@@ -286,7 +287,7 @@ class Program
 }
 ```
 
-## <a name="alerts"></a>Upozornění
+## <a name="alerts"></a>Výstrahy
 
 Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech monitorování nacházejí důležité podmínky. Umožňují identifikovat a řešit problémy v systému před tím, než si je vaši zákazníci všimnete. Můžete nastavit výstrahy na [metrikách](../azure-monitor/platform/alerts-metric-overview.md), [protokolech](../azure-monitor/platform/alerts-unified-log.md)a [protokolu aktivit](../azure-monitor/platform/activity-log-alerts.md). Různé typy výstrah mají výhody a nevýhody.
 

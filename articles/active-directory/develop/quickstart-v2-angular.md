@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 56359ba07513ac648c682b8114001e251b0ee44c
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 0de3c46eba0b9364e38c4a952a320ac1c3de512f
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225795"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583565"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v úhlové aplikaci s jednou stránkou
 
@@ -53,7 +53,7 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která demonstru
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-the-application-in-the-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal
-> Aby ukázka kódu pro tento rychlý Start fungovala, je nutné přidat identifikátor URI přesměrování jako **http://localhost:4200/** a povolit * * * * implicitní udělení * *.
+> Aby ukázka kódu v tomto rychlém startu fungovala, je nutné přidat identifikátor URI přesměrování jako **http://localhost:4200/** a povolit **implicitní udělení**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Provést tyto změny pro mě]()
 >
@@ -96,7 +96,7 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která demonstru
 >
 > Nahraďte tyto hodnoty:
 >
->|Název hodnoty|Popis|
+>|Název hodnoty|Description|
 >|---------|---------|
 >|Enter_the_Application_Id_Here|Na stránce **Přehled** registrace vaší aplikace se jedná o hodnotu ID vaší **aplikace (klienta)** . |
 >|Enter_the_Cloud_Instance_Id_Here|Toto je instance cloudu Azure. V případě hlavního nebo globálního cloudu Azure zadejte **https://login.microsoftonline.com** . Pro národní cloudy (například Čína) si přečtěte téma [národní cloudy](./authentication-national-cloud.md).|

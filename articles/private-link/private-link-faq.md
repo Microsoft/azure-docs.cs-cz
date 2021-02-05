@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: c074c29b7a37f49d5a4c7a5fab00b9a3e41c6893
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: b56c57a0b803a41c095f6f25f69a18a815d182f1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901534"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582005"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Nejčastější dotazy týkající se privátního propojení Azure
 
-## <a name="private-link"></a>Privátní propojení
+## <a name="private-link"></a>Private Link
 
 ### <a name="what-is-azure-private-endpoint-and-azure-private-link-service"></a>Co je privátní koncový bod Azure a služba privátního propojení Azure?
 
@@ -26,7 +26,7 @@ ms.locfileid: "97901534"
 ### <a name="how-is-traffic-being-sent-when-using-private-link"></a>Jak se posílá provoz při použití privátního propojení?
 Provoz se odesílá soukromě přes páteřní síť Microsoftu. Neprojde internetem. Privátní odkaz na Azure neukládá zákaznická data.
  
-### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>Jaký je rozdíl mezi koncovými body služby a soukromými koncovými body?
+### <a name="what-is-the-difference-between-service-endpoints-and-private-endpoints"></a>Jaký je rozdíl mezi koncovými body služby a soukromými koncovými body?
 - Soukromé koncové body udělují síťovému přístupu specifickým prostředkům za danou službu, která poskytuje podrobné segmentace. Provoz se může spojit s prostředkem služby z místního prostředí bez použití veřejných koncových bodů.
 - Koncový bod služby zůstane veřejně směrovatelné IP adresy.  Soukromý koncový bod je privátní IP adresa v adresním prostoru virtuální sítě, ve které je nakonfigurovaný privátní koncový bod.
 
@@ -35,19 +35,22 @@ Více typů prostředků privátního propojení podporuje přístup prostředni
 
 Služba privátního propojení přijímá připojení z více privátních koncových bodů. Privátní koncový bod se připojí k jedné službě privátního propojení.    
 
+### <a name="do-i-need-to-disable-network-policies-for-private-link"></a>Potřebuji zakázat zásady sítě pro privátní propojení
+Ano. Privátní koncový bod i služba privátního propojení potřebují zakázat zásady sítě, aby fungovaly správně. Mají obě vlastnosti nezávisle na sobě.
+
 ## <a name="private-endpoint"></a>Privátní koncový bod 
  
 ### <a name="can-i-create-multiple-private-endpoints-in-same-vnet-can-they-connect-to-different-services"></a>Můžu ve stejné virtuální síti vytvořit více privátních koncových bodů? Můžou se připojovat k různým službám? 
-Yes. Můžete mít několik privátních koncových bodů ve stejné virtuální síti nebo podsíti. Můžou se připojovat k různým službám.  
+Ano. Můžete mít několik privátních koncových bodů ve stejné virtuální síti nebo podsíti. Můžou se připojovat k různým službám.  
  
 ### <a name="do-i-require-a-dedicated-subnet-for-private-endpoints"></a>Vyžadujem vyhrazenou podsíť pro privátní koncové body? 
 No. U privátních koncových bodů nevyžadujete vyhrazenou podsíť. Můžete vybrat IP adresu privátního koncového bodu z jakékoli podsítě z virtuální sítě, ve které je vaše služba nasazená.  
  
 ### <a name="can-a-private-endpoint-connect-to-private-link-services-across-azure-active-directory-tenants"></a>Může se privátní koncový bod připojit ke službám privátního propojení napříč klienty Azure Active Directory? 
-Yes. Privátní koncové body se můžou připojovat ke službám privátního propojení nebo k Azure PaaS napříč klienty Azure Active Directory. Privátní koncové body, které se připojují přes klienty, vyžadují schválení ruční žádosti. 
+Ano. Privátní koncové body se můžou připojovat ke službám privátního propojení nebo k Azure PaaS napříč klienty Azure Active Directory. Privátní koncové body, které se připojují přes klienty, vyžadují schválení ruční žádosti. 
  
 ### <a name="can-private-endpoint-connect-to-azure-paas-resources-across-azure-regions"></a>Může se privátní koncový bod připojit k prostředkům Azure PaaS napříč oblastmi Azure?
-Yes. Privátní koncové body se můžou připojit k prostředkům Azure PaaS napříč oblastmi Azure.
+Ano. Privátní koncové body se můžou připojit k prostředkům Azure PaaS napříč oblastmi Azure.
 
 ### <a name="can-i-modify-my-private-endpoint-network-interface-nic-"></a>Můžu změnit své privátní síťové rozhraní (NIC)?
 Po vytvoření privátního koncového bodu je přiřazena síťová karta jen pro čtení. Tuto informaci nejde upravit a zůstane pro životní cyklus privátního koncového bodu.
@@ -64,7 +67,7 @@ Službu privátního propojení můžete škálovat několika různými způsoby
 - Přidejte novou službu privátního propojení do Standard Load Balancer. Pro každý nástroj pro vyrovnávání zatížení povolujeme až osm služeb privátních odkazů.   
 
 ### <a name="can-i-connect-my-service-to-multiple-private-endpoints"></a>Můžu připojit službu k více soukromým koncovým bodům?
-Yes. Jedna služba privátního propojení může přijímat připojení z více privátních koncových bodů. Jeden privátní koncový bod se ale může připojit jenom k jedné službě privátního propojení.  
+Ano. Jedna služba privátního propojení může přijímat připojení z více privátních koncových bodů. Jeden privátní koncový bod se ale může připojit jenom k jedné službě privátního propojení.  
  
 ### <a name="how-should-i-control-the-exposure-of-my-private-link-service"></a>Jak mám řídit expozici mé služby privátního propojení?
 Můžete řídit expozici pomocí konfigurace viditelnosti ve službě privátního propojení. Viditelnost podporuje tři nastavení:

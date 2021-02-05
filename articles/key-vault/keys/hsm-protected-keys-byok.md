@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: tutorial
-ms.date: 02/01/2021
+ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 98da8057fb09cf43a59b921694386cbf3fa8ca21
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: 51ba981dcc6f36df3bfaacebb503782faed5c91f
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222213"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581002"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>Import klíčů chráněných HSM do Key Vault (BYOK)
 
@@ -71,10 +71,13 @@ V následující tabulce jsou uvedeny předpoklady pro používání BYOK v Azur
 
 ## <a name="supported-key-types"></a>Podporované typy klíčů
 
-|Název klíče|Typ klíče|Velikost klíče|Zdroj|Description|
+|Název klíče|Typ klíče|Velikost nebo křivka klíče|Zdroj|Description|
 |---|---|---|---|---|
 |Klíč pro výměnu klíčů (KEK)|RSA| 2 048 – bit<br />3 072 – bit<br />4 096 – bit|Modul HSM Azure Key Vault|Pár klíčů RSA zálohovaný modulem HSM vygenerovaný v Azure Key Vault|
-|Cílový klíč|RSA|2 048 – bit<br />3 072 – bit<br />4 096 – bit|HSM dodavatele|Klíč, který se má přenést do modulu HARDWAROVÉho zabezpečení Azure Key Vault|
+|Cílový klíč|
+||RSA|2 048 – bit<br />3 072 – bit<br />4 096 – bit|HSM dodavatele|Klíč, který se má přenést do modulu HARDWAROVÉho zabezpečení Azure Key Vault|
+||EC|P-256<br />P-384<br />P-521|HSM dodavatele|Klíč, který se má přenést do modulu HARDWAROVÉho zabezpečení Azure Key Vault|
+||||
 
 ## <a name="generate-and-transfer-your-key-to-the-key-vault-hsm"></a>Generování a přenos klíče do modulu Key Vault HSM
 
@@ -120,7 +123,7 @@ Pokud si chcete stáhnout a nainstalovat nástroj BYOK, přečtěte si dokumenta
 Přeneste soubor BYOK do připojeného počítače.
 
 > [!NOTE] 
-> Import klíčů RSA 1 024 není podporován. Import klíče eliptické křivky (ES) v současné době není podporován.
+> Import klíčů RSA 1 024 není podporován. Import klíče s eliptickou křivkou s křivkou P-256 není podporován.
 > 
 > **Známý problém**: import CÍLOVÉHO klíče RSA 4k z Luna HSM se podporuje jenom se firmwarem 7.4.0 nebo novějším.
 
@@ -128,8 +131,15 @@ Přeneste soubor BYOK do připojeného počítače.
 
 Pokud chcete dokončit import klíče, přeneste balíček přenosu klíčů (soubor BYOK) z odpojeného počítače na počítač připojený k Internetu. Pomocí příkazu [AZ Key trezor Key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) nahrajte soubor BYOK do modulu HSM Key Vault.
 
+Pokud chcete importovat klíč RSA, použijte následující příkaz. Parametr--KTY je nepovinný a výchozí hodnota je RSA-HSM.
 ```azurecli
 az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file KeyTransferPackage-ContosoFirstHSMkey.byok
+```
+
+Chcete-li importovat klíč EC, je nutné zadat typ klíče a název křivky.
+
+```azurecli
+az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file --kty EC-HSM --curve-name "P-256" KeyTransferPackage-ContosoFirstHSMkey.byok
 ```
 
 Pokud je nahrávání úspěšné, Azure CLI zobrazí vlastnosti importovaného klíče.

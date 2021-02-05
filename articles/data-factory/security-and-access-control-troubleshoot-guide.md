@@ -5,15 +5,15 @@ services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 01/05/2021
+ms.date: 02/04/2021
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: 70e4d0c1a9f26f83924c1343e4e8e51c5595b324
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 37da2869f0cf315ac0a6851c9a77dcee4debf71a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944512"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581682"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Řešení potíží s Azure Data Factory zabezpečení a řízení přístupu
 
@@ -88,9 +88,10 @@ Chcete-li ověřit, zda je Data Factory plně kvalifikovaný název domény (FQD
 #### <a name="resolution"></a>Řešení
 
 Chcete-li tento problém vyřešit, postupujte takto:
-- Informace najdete v tématu věnovaném [privátním odkazům na Azure Azure Data Factory](./data-factory-private-link.md#dns-changes-for-private-endpoints) . Instrukce je určena pro konfiguraci privátní zóny DNS nebo serveru k překladu Data Factory plně kvalifikovaného názvu domény na privátní IP adresu.
 
-- Jako dlouhodobé řešení doporučujeme používat vlastní DNS. Pokud ale nechcete nakonfigurovat privátní zónu nebo server DNS, vyzkoušejte následující dočasné řešení:
+- Jako možnost doporučujeme, abyste v rámci Data Factory "zóny DNS privátního propojení" přidali "Virtual Network odkaz". Podrobnosti najdete v článku věnovaném [privátním odkazům na Azure Azure Data Factory](./data-factory-private-link.md#dns-changes-for-private-endpoints) . Instrukce slouží ke konfiguraci privátní zóny DNS nebo vlastního serveru DNS k překladu Data Factory plně kvalifikovaného názvu domény na privátní IP adresu. 
+
+- Pokud ale nechcete konfigurovat privátní zónu DNS nebo vlastní server DNS, zkuste následující dočasné řešení:
 
   1. Změňte soubor hostitele v systému Windows a namapujte privátní IP adresu (Azure Data Factory privátní koncový bod) na Azure Data Factory plně kvalifikovaný název domény.
   

@@ -8,20 +8,20 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: feef35ef86a933f32949468366fea85eb87d4866
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 141abea0c0946c98b6dfe627f32f01682a18be44
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91315775"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581019"
 ---
 # <a name="bring-your-own-key-specification"></a>Specifikace používání vlastního klíče
 
 Tento dokument popisuje specifikace pro import klíčů chráněných HSM z místních HSM zákazníků do Key Vault.
 
-## <a name="scenario"></a>Scénář
+## <a name="scenario"></a>Scenario
 
 Key Vault zákazník by chtěli bezpečně přenést klíč z místního modulu hardwarového zabezpečení (HSM) mimo Azure do Azure Key Vault HSM. Proces importu klíče vygenerovaného mimo Key Vault se obecně označuje jako Bring Your Own Key (BYOK).
 
@@ -35,7 +35,7 @@ Požadavky jsou následující:
 |---|---|---|---|
 |Klíč pro výměnu klíčů (KEK)|RSA|Modul HSM Azure Key Vault|V Azure Key Vault byl vygenerován pár klíčů RSA zálohovaný modulem HSM.
 Klíč pro zabalení|AES|HSM dodavatele|[Dočasný] klíč AES generovaný modulem HSM v-Prem
-Cílový klíč|RSA, ES, AES|HSM dodavatele|Klíč, který se má přenést do modulu HARDWAROVÉho zabezpečení Azure Key Vault
+Cílový klíč|RSA, ES, AES (jenom spravovaný HSM)|HSM dodavatele|Klíč, který se má přenést do modulu HARDWAROVÉho zabezpečení Azure Key Vault
 
 **Klíč pro výměnu klíčů**: klíč zálohovaný modulem HSM, který zákazník vygeneruje v trezoru klíčů, do kterého se naimportuje BYOK klíč. Tento KEK musí mít následující vlastnosti:
 
@@ -130,9 +130,16 @@ Objekt BLOB JSON je uložený v souboru s příponou. BYOK, aby klienti Azure Po
 
 Zákazník převede objekt BLOB přenosu klíče (soubor. BYOK) do online pracovní stanice a potom spustí příkaz **AZ Key trezor Key import** pro import tohoto objektu BLOB jako nového klíče zálohovaného modulem HSM do Key Vault. 
 
+Pokud chcete importovat klíč RSA, použijte tento příkaz:
 ```azurecli
 az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file KeyTransferPackage-ContosoFirstHSMkey.byok --ops encrypt decrypt
 ```
+Chcete-li importovat klíč EC, je nutné zadat typ klíče a název křivky.
+
+```azurecli
+az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file --kty EC-HSM --curve-name "P-256" KeyTransferPackage-ContosoFirstHSMkey.byok --ops sign verify
+```
+
 
 Při spuštění výše uvedeného příkazu má za následek odeslání REST API žádosti následujícím způsobem:
 
@@ -140,7 +147,7 @@ Při spuštění výše uvedeného příkazu má za následek odeslání REST AP
 PUT https://contosokeyvaulthsm.vault.azure.net/keys/ContosoFirstHSMKey?api-version=7.0
 ```
 
-Text požadavku:
+Text žádosti při importu klíče RSA:
 ```json
 {
   "key": {
@@ -156,6 +163,25 @@ Text požadavku:
   }
 }
 ```
+
+Text žádosti při importu klíče EC:
+```json
+{
+  "key": {
+    "kty": "EC-HSM",
+    "crv": "P-256",
+    "key_ops": [
+      "sign",
+      "verify"
+    ],
+    "key_hsm": "<Base64 encoded BYOK_BLOB>"
+  },
+  "attributes": {
+    "enabled": true
+  }
+}
+```
+
 hodnota "key_hsm" je celý obsah KeyTransferPackage-ContosoFirstHSMkey. BYOK kódovaný ve formátu base64.
 
 ## <a name="references"></a>Reference

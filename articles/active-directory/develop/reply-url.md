@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: 30ea74b249937544a0bf9811cad60f02c1ca45c7
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 91df89a69368056c1967e641562cf8515f44ade0
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95752778"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582804"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Omezení a omezení URI pro přesměrování (adresa URL odpovědi)
 
@@ -32,7 +32,7 @@ Identifikátor URI pro přesměrování nebo adresa URL odpovědi je umístění
 
 Tato tabulka uvádí maximální počet identifikátorů URI přesměrování, které můžete přidat do registrace aplikace na platformě Microsoft identity.
 
-| Přihlášené účty | Maximální počet identifikátorů URI pro přesměrování | Popis |
+| Přihlášené účty | Maximální počet identifikátorů URI pro přesměrování | Description |
 |--------------------------|---------------------------------|-------------|
 | Pracovní nebo školní účty Microsoftu v tenantovi Azure Active Directory v organizaci (Azure AD) | 256 | `signInAudience` pole v manifestu aplikace je nastaveno na hodnotu *AzureADMyOrg* nebo *AzureADMultipleOrgs* |
 | Osobní účty Microsoft a pracovní a školní účty | 100 | `signInAudience` pole v manifestu aplikace je nastaveno na *AzureADandPersonalMicrosoftAccount* |
@@ -45,7 +45,7 @@ Pro každý identifikátor URI přesměrování, který přidáte do registrace 
 
 Aplikační model Azure Active Directory (Azure AD) aktuálně podporuje schémata HTTP i HTTPS pro aplikace, které přihlásily pracovní nebo školní účty v tenantovi Azure AD organizace. Tyto typy účtů jsou určeny `AzureADMyOrg` `AzureADMultipleOrgs` hodnotami a v `signInAudience` poli manifestu aplikace. Pro aplikace, které přihlásily osobní účty Microsoft (MSA) *a* pracovní a školní účty (tj `signInAudience` . je nastavené na `AzureADandPersonalMicrosoftAccount` ), je povolené jenom schéma https.
 
-Pokud chcete přidat identifikátory URI pro přesměrování se schématem HTTP do registrací aplikací, které přihlásily pracovní nebo školní účty, musíte použít editor manifestu aplikace v [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) Azure Portal. Přestože je ale možné nastavit identifikátor URI přesměrování založený na protokolu HTTP pomocí editoru manifestu, *důrazně* doporučujeme, abyste pro identifikátory URI přesměrování používali schéma https.
+Pokud chcete přidat identifikátory URI pro přesměrování se schématem HTTP do registrací aplikací, které přihlásily pracovní nebo školní účty, použijte editor manifestu aplikace v [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) Azure Portal. Přestože je ale možné nastavit identifikátor URI přesměrování založený na protokolu HTTP pomocí editoru manifestu, *důrazně* doporučujeme, abyste pro identifikátory URI přesměrování používali schéma https.
 
 ## <a name="localhost-exceptions"></a>Výjimky localhost
 
@@ -65,12 +65,12 @@ Z pohledu vývoje to znamená několik věcí:
 * Neregistrujte více identifikátorů URI přesměrování, přičemž se liší pouze port. Přihlašovací server vybere jednu z nich a použije chování spojené s tímto identifikátorem URI přesměrování (například bez ohledu na to, zda se jedná o `web` `native` přesměrování typu a, nebo `spa` ).
 
     To je obzvláště důležité, pokud chcete použít různé toky ověřování ve stejné registraci aplikace, například udělení autorizačního kódu i implicitní tok. Aby bylo možné přidružit správné chování odpovědí každému identifikátoru URI přesměrování, musí mít přihlašovací server schopnost rozlišovat identifikátory URI pro přesměrování a nemůže tak učinit, pokud se liší pouze port.
-* Pokud potřebujete zaregistrovat více identifikátorů URI pro přesměrování na localhost pro testování různých toků během vývoje, rozlišit je pomocí komponenty *cesty* identifikátoru URI. Například `http://localhost/MyWebApp` neodpovídá `http://localhost/MyNativeApp` .
+* Chcete-li registrovat více identifikátorů URI pro přesměrování na localhost pro testování různých toků během vývoje, rozlišit je pomocí komponenty *cesty* identifikátoru URI. Například `http://localhost/MyWebApp` neodpovídá `http://localhost/MyNativeApp` .
 * Adresa zpětné smyčky IPv6 ( `[::1]` ) se momentálně nepodporuje.
 
 #### <a name="prefer-127001-over-localhost"></a>Preferovat 127.0.0.1 přes localhost
 
-Pokud chcete zabránit tomu, aby se vaše aplikace přerušila pomocí nesprávně nakonfigurovaných bran firewall nebo přejmenovaných síťových rozhraní, místo použijte adresu zpětné smyčky IP adresy `127.0.0.1` v identifikátoru URI přesměrování `localhost` . Například, `https://127.0.0.1`.
+Pokud chcete zabránit tomu, aby se vaše aplikace přerušila pomocí nesprávně nakonfigurovaných bran firewall nebo přejmenovaných síťových rozhraní, místo použijte adresu zpětné smyčky IP adresy `127.0.0.1` v identifikátoru URI přesměrování `localhost` . Například `https://127.0.0.1`.
 
 Nemůžete však použít textové pole pro **přesměrování identifikátorů URI** v Azure Portal k přidání identifikátoru URI přesměrování založeného na zpětné smyčce, který používá `http` schéma:
 
@@ -84,7 +84,7 @@ Zástupné identifikátory URI `https://*.contoso.com` , jako by se mohly zdát 
 
 Zástupné identifikátory URI se v současné době nepodporují v registracích aplikací nakonfigurovaných pro přihlášení k osobním účtům Microsoft a pracovním nebo školním účtům. Pro aplikace, které jsou nakonfigurované tak, aby se přihlásily pouze pracovní nebo školní účty v tenantovi Azure AD organizace, jsou povolené zástupné identifikátory URI.
 
-Chcete-li přidat identifikátory URI pro přesměrování se zástupnými znaky k registrům aplikací, které přihlásí pracovní nebo školní účty, je nutné použít editor manifestu aplikace v [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) Azure Portal. I když je možné nastavit identifikátor URI pro přesměrování se zástupným znakem pomocí editoru manifestu, *důrazně* doporučujeme, abyste dodržovali [oddíl 3.1.2 RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2) a používali pouze absolutní identifikátory URI.
+Pokud chcete přidat identifikátory URI pro přesměrování se zástupnými znaky k registrům aplikací, které přihlásí pracovní nebo školní účty, použijte editor manifestu aplikace v [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) Azure Portal. I když je možné nastavit identifikátor URI pro přesměrování se zástupným znakem pomocí editoru manifestu, *důrazně* doporučujeme, abyste dodržovali [oddíl 3.1.2 RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2) a používali pouze absolutní identifikátory URI.
 
 Pokud váš scénář vyžaduje víc identifikátorů URI pro přesměrování, než je maximální povolený limit, zvažte následující [přístup k parametrům stavu](#use-a-state-parameter) místo přidávání identifikátoru URI pro přesměrování zástupných znaků.
 
