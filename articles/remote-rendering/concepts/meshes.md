@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 628331677a84f6cf1dd8fa1df1e7f6c1a2fa09e1
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 33894e0d0b6f3ea50ffeac4f0c90c60f28e09f5e
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202799"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594514"
 ---
 # <a name="meshes"></a>Sítě
 
@@ -43,13 +43,13 @@ Sítě jsou neměnný [sdílený prostředek](../concepts/lifetime.md), který l
 `Mesh`Prostředek se dá sdílet mezi několika instancemi součásti sítě. `Mesh`Prostředek, který je přiřazen k součásti sítě, se navíc dá kdykoli změnit programově. Následující kód ukazuje, jak klonovat síť:
 
 ```cs
-Entity CloneEntityWithModel(RemoteManager manager, Entity sourceEntity)
+Entity CloneEntityWithModel(RenderingConnection api, Entity sourceEntity)
 {
     MeshComponent meshComp = sourceEntity.FindComponentOfType<MeshComponent>();
     if (meshComp != null)
     {
-        Entity newEntity = manager.CreateEntity();
-        MeshComponent newMeshComp = manager.CreateComponent(ObjectType.MeshComponent, newEntity) as MeshComponent;
+        Entity newEntity = api.CreateEntity();
+        MeshComponent newMeshComp = api.CreateComponent(ObjectType.MeshComponent, newEntity) as MeshComponent;
         newMeshComp.Mesh = meshComp.Mesh; // share the mesh
         return newEntity;
     }
@@ -58,12 +58,12 @@ Entity CloneEntityWithModel(RemoteManager manager, Entity sourceEntity)
 ```
 
 ```cpp
-ApiHandle<Entity> CloneEntityWithModel(ApiHandle<RemoteManager> manager, ApiHandle<Entity> sourceEntity)
+ApiHandle<Entity> CloneEntityWithModel(ApiHandle<RenderingConnection> api, ApiHandle<Entity> sourceEntity)
 {
     if (ApiHandle<MeshComponent> meshComp = sourceEntity->FindComponentOfType<MeshComponent>())
     {
-        ApiHandle<Entity> newEntity = *manager->CreateEntity();
-        ApiHandle<MeshComponent> newMeshComp = manager->CreateComponent(ObjectType::MeshComponent, newEntity)->as<RemoteRendering::MeshComponent>();
+        ApiHandle<Entity> newEntity = *api->CreateEntity();
+        ApiHandle<MeshComponent> newMeshComp = api->CreateComponent(ObjectType::MeshComponent, newEntity)->as<RemoteRendering::MeshComponent>();
         newMeshComp->SetMesh(meshComp->GetMesh()); // share the mesh
         return newEntity;
     }

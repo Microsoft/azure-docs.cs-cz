@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: ac64233467166ca6567f1601c3b90f80fdba3dcf
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 07a4c06b840d41455beea9be4ed0343b4946ddb3
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954644"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594599"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>Kurz: konfigurace sítě pro Azure Stack Edge pro pomocí GPU
 
@@ -56,8 +56,6 @@ Pomocí těchto kroků nakonfigurujete síť pro vaše zařízení.
     
     ![Stránka místní webové uživatelské rozhraní "nastavení sítě"](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2a.png)
 
-
-   
 3. Chcete-li změnit nastavení sítě, vyberte port a v pravém podokně, které se zobrazí, upravte IP adresu, podsíť, bránu, primární DNS a sekundární DNS. 
 
     - Pokud vyberete port 1, uvidíte, že je předem nakonfigurovaný jako statický. 
@@ -73,7 +71,8 @@ Pomocí těchto kroků nakonfigurujete síť pro vaše zařízení.
    * Pokud je ve vašem prostředí povolený protokol DHCP, síťová rozhraní se nakonfigurují automaticky. IP adresa, podsíť, brána a DNS se přiřadí automaticky.
    * Pokud není protokol DHCP povolený, můžete v případě potřeby přiřadit statické IP adresy.
    * Síťové rozhraní můžete nakonfigurovat jako IPv4.
-   * V rozhraních s 25 GB/s můžete nastavit režim RDMA (Remote Direct Access Memory) na iWarp nebo RoCE (RDMA přes sblíženou síť Ethernet). Pokud jsou nízké latence zásadním požadavkem a škálovatelností není obavou, použijte RoCE. Když je latence klíčovým požadavkem, ale lepším využitím a škálovatelností jsou i vysoké priority, iWARP je nejlepší kandidát.
+   * U rozhraní s 25 GB/s můžete nastavit režim RDMA (Remote Direct Access Memory) na iWarp nebo RoCE (RDMA přes sblíženou síť Ethernet). Pokud jsou nízké latence zásadním požadavkem a škálovatelností není obavou, použijte RoCE. Když je latence klíčovým požadavkem, ale lepším využitím a škálovatelností jsou i vysoké priority, iWARP je nejlepší kandidát.
+   * Seskupování síťových adaptérů (NIC) nebo agregace propojení se u Azure Stack Edge nepodporují. 
    * Sériové číslo pro libovolný port odpovídá sériovému číslu uzlu.
 
     Po nakonfigurování sítě zařízení se stránka aktualizuje, jak je uvedeno níže.
@@ -81,12 +80,11 @@ Pomocí těchto kroků nakonfigurujete síť pro vaše zařízení.
     ![Místní webové uživatelské rozhraní "nastavení sítě" – Stránka 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2.png)
 
 
-     >[!NOTE]
-     >
-     > * Doporučujeme neměnit místní IP adresu síťového rozhraní ze statické adresy na adresu DHCP, pokud nemáte další IP adresu pro připojení k zařízení. Pokud používáte jedno síťové rozhraní a přepnete na adresu DHCP, adresu DHCP nebude možné určit. Pokud chcete přejít na adresu DHCP, počkejte na to, až se zařízení aktivuje se službou, a pak změňte. Potom můžete zobrazit IP adresy všech adaptérů ve **vlastnostech zařízení** v Azure Portal pro vaši službu.
+     > [!NOTE]
+     > Doporučujeme neměnit místní IP adresu síťového rozhraní ze statické adresy na adresu DHCP, pokud nemáte další IP adresu pro připojení k zařízení. Pokud používáte jedno síťové rozhraní a přepnete na adresu DHCP, adresu DHCP nebude možné určit. Pokud chcete přejít na adresu DHCP, počkejte na to, až se zařízení aktivuje se službou, a pak změňte. Potom můžete zobrazit IP adresy všech adaptérů ve **vlastnostech zařízení** v Azure Portal pro vaši službu.
 
 
-    Po nakonfigurování a použití nastavení sítě vyberte Další: COMPUTE a nakonfigurujte výpočetní síť.
+    Po nakonfigurování a použití nastavení sítě vyberte **Další: COMPUTE** a nakonfigurujte výpočetní síť.
 
 ## <a name="enable-compute-network"></a>Povolit výpočetní síť
 

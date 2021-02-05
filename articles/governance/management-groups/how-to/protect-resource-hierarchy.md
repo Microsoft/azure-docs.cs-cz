@@ -1,14 +1,14 @@
 ---
 title: Jak chránit hierarchii prostředků – zásady správného řízení Azure
 description: Naučte se chránit svoji hierarchii prostředků pomocí nastavení hierarchie, která zahrnují nastavení výchozí skupiny pro správu.
-ms.date: 09/02/2020
+ms.date: 02/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: cfaf7a732b3233536006009613cecd5aa1649dee
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 0f0afb5401fc646d26598a211604790af191f156
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951889"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594582"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Jak chránit hierarchii prostředků
 
@@ -23,7 +23,7 @@ Konfigurace nastavení hierarchie vyžaduje následující dvě operace poskytov
 - `Microsoft.Management/managementgroups/settings/write`
 - `Microsoft.Management/managementgroups/settings/read`
 
-Tyto operace umožňují uživateli číst a aktualizovat nastavení hierarchie. Operace neposkytují žádný jiný přístup k hierarchii skupiny pro správu ani k prostředkům v hierarchii. Obě tyto operace jsou k dispozici ve **Správci nastavení hierarchie**integrované role Azure.
+Tyto operace umožňují uživateli číst a aktualizovat nastavení hierarchie. Operace neposkytují žádný jiný přístup k hierarchii skupiny pro správu ani k prostředkům v hierarchii. Obě tyto operace jsou k dispozici ve **Správci nastavení hierarchie** integrované role Azure.
 
 ## <a name="setting---default-management-group"></a>Nastavení – výchozí skupina pro správu
 
@@ -39,7 +39,7 @@ Pokud chcete nakonfigurovat toto nastavení v Azure Portal, postupujte takto:
 
 1. V kořenové skupině pro správu vyberte **Podrobnosti** vedle názvu skupiny pro správu.
 
-1. V části **Nastavení**vyberte **Nastavení hierarchie**.
+1. V části **Nastavení** vyberte **Nastavení hierarchie**.
 
 1. Vyberte tlačítko **změnit výchozí skupinu pro správu** .
 
@@ -82,7 +82,7 @@ Pokud chcete nakonfigurovat toto nastavení v Azure Portal, postupujte takto:
 
 1. V kořenové skupině pro správu vyberte **Podrobnosti** vedle názvu skupiny pro správu.
 
-1. V části **Nastavení**vyberte **Nastavení hierarchie**.
+1. V části **Nastavení** vyberte **Nastavení hierarchie**.
 
 1. Přepněte **oprávnění vyžadovat pro vytváření nových skupin pro správu.** možnost na zapnuto.
 
@@ -91,7 +91,7 @@ Pokud chcete nakonfigurovat toto nastavení v Azure Portal, postupujte takto:
 
 ### <a name="set-require-authorization-with-rest-api"></a>Nastavit vyžadovat autorizaci pomocí REST API
 
-Pro konfiguraci tohoto nastavení pomocí REST API se zavolá koncový bod [Nastavení hierarchie](/rest/api/resources/hierarchysettings) . K tomu použijte následující REST API identifikátor URI a formát textu. Tato hodnota je _logická_hodnota, a proto pro ni zadejte hodnotu **true** nebo **false** . Hodnota **true** povolí tuto metodu ochrany vaší hierarchie skupiny pro správu:
+Pro konfiguraci tohoto nastavení pomocí REST API se zavolá koncový bod [Nastavení hierarchie](/rest/api/resources/hierarchysettings) . K tomu použijte následující REST API identifikátor URI a formát textu. Tato hodnota je _logická_ hodnota, a proto pro ni zadejte hodnotu **true** nebo **false** . Hodnota **true** povolí tuto metodu ochrany vaší hierarchie skupiny pro správu:
 
 - Identifikátor URI v REST API
 

@@ -9,16 +9,16 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: d6cba4bcb76094ed156ef35b1ea76cea7001c372
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: dcdd19faec5e428ac26917178aa8114245c205b3
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95486292"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594565"
 ---
 # <a name="what-is-iot-plug-and-play"></a>Co je IoT Plug and Play?
 
-IoT technologie Plug and Play umožňuje tvůrcům řešení integrovat inteligentní zařízení s jejich řešeními bez jakékoli ruční konfigurace. V jádru IoT technologie Plug and Play je _model_ zařízení, který zařízení používá k inzerování svých schopností k aplikaci s podporou technologie Plug and Play IoT. Tento model je strukturovaný jako sada elementů, které definují:
+IoT Plug and Play umožňuje autorům řešení integrovat chytrá zařízení s jejich řešeními bez jakékoli ruční konfigurace. V jádru IoT technologie Plug and Play je _model_ zařízení, který zařízení používá k inzerování svých schopností k aplikaci s podporou technologie Plug and Play IoT. Tento model je strukturovaný jako sada elementů, které definují:
 
 - _Vlastnosti_ , které reprezentují stav jen pro čtení nebo zapisovatelného stavu zařízení nebo jiné entity. Například sériové číslo zařízení může být vlastnost jen pro čtení a cílová teplota na termostatovi může být vlastnost s možností zápisu.
 - _Telemetrii_ , která je daty vysílaná zařízením, ať už data jsou pravidelným proudem čtení senzorů, příležitostné chyby nebo informační zprávou.
@@ -45,11 +45,13 @@ IoT technologie Plug and Play je užitečné pro dva typy vývojářů:
 
 ## <a name="use-iot-plug-and-play-devices"></a>Použití zařízení IoT technologie Plug and Play
 
-Jako tvůrce řešení můžete vyvíjet řešení IoT hostované v cloudu, které používá zařízení IoT technologie Plug and Play. Použijte [IoT Hub](../iot-hub/about-iot-hub.md) – spravovanou cloudovou službu, která funguje jako centrum zpráv pro bezpečnou obousměrnou komunikaci mezi vaší aplikací IoT a vašimi zařízeními.
+Jako tvůrce řešení můžete pomocí [IoT Central](../iot-central/core/overview-iot-central.md) nebo [IoT Hub](../iot-hub/about-iot-hub.md) vyvíjet řešení IoT hostované v cloudu, které používá zařízení IoT technologie Plug and Play.
 
-Když připojíte zařízení IoT technologie Plug and Play ke službě IoT Hub, můžete použít nástroj [Azure IoT Explorer](./howto-use-iot-explorer.md) k zobrazení telemetrie, vlastností a příkazů definovaných v rozhraních, která model tvoří.
+Webové uživatelské rozhraní v IoT Central umožňuje monitorovat podmínky zařízení, vytvářet pravidla a spravovat miliony zařízení a jejich data v průběhu svého životního cyklu. Zařízení IoT technologie Plug and Play se připojují přímo k aplikaci IoT Central, kde můžete použít přizpůsobitelné řídicí panely k monitorování a řízení vašich zařízení. K vytváření a úpravám DTDL modelů můžete použít také šablony zařízení ve webovém uživatelském rozhraní IoT Central.
 
-Pokud máte k dispozici stávající senzory připojené k bráně Windows nebo Linux, můžete k propojení těchto senzorů použít [iot technologie Plug and Play most](./concepts-iot-pnp-bridge.md)a vytvořit zařízení technologie Plug and Play IoT, aniž byste museli psát software nebo firmware zařízení (pro [podporované protokoly](./concepts-iot-pnp-bridge.md#supported-protocols-and-sensors) ).
+IoT Hub – spravovaná cloudová služba – slouží jako centrum zpráv pro zabezpečenou obousměrnou komunikaci mezi vaší aplikací IoT a vašimi zařízeními. Když připojíte zařízení IoT technologie Plug and Play ke službě IoT Hub, můžete použít nástroj [Azure IoT Explorer](./howto-use-iot-explorer.md) k zobrazení telemetrie, vlastností a příkazů definovaných v modelu DTDL.
+
+Pokud máte k dispozici stávající senzory připojené k bráně Windows nebo Linux, můžete k propojení těchto senzorů použít [iot technologie Plug and Play most](./concepts-iot-pnp-bridge.md)a vytvořit zařízení technologie Plug and Play IoT, aniž byste museli psát software nebo firmware zařízení (pro [podporované protokoly](./concepts-iot-pnp-bridge.md#supported-protocols-and-sensors)).
 
 ## <a name="develop-an-iot-device-application"></a>Vývoj aplikace zařízení IoT
 
