@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: e549a79930cf599b89cd549691e23f3587e8a85c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 4a3f272ab6e4a1788368442d7d060233391442fd
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202704"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627811"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Úvod ke spravovaným diskům Azure
 
@@ -44,6 +44,10 @@ Managed disks podporuje [zóny dostupnosti](../availability-zones/az-overview.md
 ### <a name="azure-backup-support"></a>Podpora Azure Backup
 
 K ochraně před místními haváriemi se [Azure Backup](../backup/backup-overview.md) dá použít k vytvoření úlohy zálohování se zálohováním na základě času a zálohování. To vám umožní provést obnovení virtuálního počítače nebo spravovaného disku. V současné době Azure Backup podporuje velikosti disků až po 32 tebibyte (TiB) disků. [Přečtěte si další informace](../backup/backup-support-matrix-iaas.md) o podpoře zálohování virtuálních počítačů Azure.
+
+#### <a name="azure-disk-backup"></a>Zálohování disků Azure
+
+Azure Backup nabízí Azure disk Backup (Preview) jako nativní cloudové řešení zálohování, které chrání vaše data ve spravovaných discích. Je to jednoduché, bezpečné a nákladově efektivní řešení, které umožňuje nakonfigurovat ochranu pro spravované disky v několika krocích. Azure disk Backup nabízí řešení klíč, které poskytuje správu životního cyklu snímků pro spravované disky tím, že automatizuje pravidelné vytváření snímků a uchovává je po nakonfigurovanou dobu pomocí zásad zálohování. Podrobnosti o službě Azure disk Backup najdete v tématu [Přehled služby Azure disk Backup (ve verzi Preview)](../backup/disk-backup-overview.md).
 
 ### <a name="granular-access-control"></a>Podrobné řízení přístupu
 

@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: 82133f990c1714276aa13ff22c3f19d0993d16df
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cef5f178ea879ba98df90da36ec9c4b639dd100a
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488710"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627767"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Nejčastější dotazy k Azure Synapse Linku pro Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -109,9 +109,9 @@ V současné době Terraform nepodporuje kontejnery analytického úložiště. 
 
 ## <a name="analytical-time-to-live-ttl"></a>Doba analýzy – Live (TTL)
 
-### <a name="is-ttl-for-analytical-data-supported-at-both-container-and-item-level"></a>Je hodnota TTl pro analytická data podporovaná na úrovni kontejneru a položky?
+### <a name="is-ttl-for-analytical-data-supported-at-both-container-and-item-level"></a>Je hodnota TTL pro analytická data podporovaná na úrovni kontejneru a položky?
 
-V tuto chvíli je TTl pro analytická data možné nakonfigurovat pouze na úrovni kontejneru a neexistuje žádná podpora pro nastavení analytického TTL na úrovni položky.
+V současné době je možné nakonfigurovat hodnotu TTL pro analytická data pouze na úrovni kontejneru a nastavení analytické hodnoty TTL na úrovni položky se nepodporuje.
 
 ### <a name="after-setting-the-container-level--analytical-ttl-on-an-azure-cosmos-db-container-can-i-change-to-a-different-value-later"></a>Můžu po nastavení analytické hodnoty TTL na úrovni kontejneru u Azure Cosmos DB kontejneru změnit na jinou hodnotu později?
 
@@ -156,7 +156,7 @@ Tato funkce v současné době není k dispozici.
 
 V současné době je podpora strukturovaného streamování Sparku pro Azure Cosmos DB implementovaná pomocí funkce změny kanálu transakčního úložiště a zatím není podporovaná z analytického úložiště.
 
-## <a name="azure-synapse-studio"></a>Azure synapse Studio
+## <a name="azure-synapse-studio"></a>Azure Synapse Studio
 
 ### <a name="in-the-azure-synapse-studio-how-do-i-recognize-if-im-connected-to-an-azure-cosmos-db-container-with-the-analytics-store-enabled"></a>Jak zjistím, že je v Azure synapse studiu připojená k kontejneru Azure Cosmos DB s povoleným úložištěm analýz?
 

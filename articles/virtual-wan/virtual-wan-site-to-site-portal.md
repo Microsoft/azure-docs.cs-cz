@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/08/2020
+ms.date: 02/04/2021
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 7ba0f1b6f37da923e389964b99a02295dc3d6050
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: f3458c3b12b3151fd20531282f56ed2f1fd29b6b
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359523"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627692"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Kurz: Vytvoření připojení typu site-to-site pomocí služby Azure Virtual WAN
 
@@ -55,7 +55,7 @@ Centrum je virtuální síť, která může obsahovat brány pro funkce typu Sit
 
 ## <a name="create-a-site"></a><a name="site"></a>Vytvoření lokality
 
-Nyní jste připraveni vytvořit lokality odpovídající vašim fyzickým umístěním. Můžete vytvořit libovolný počet lokalit odpovídajících fyzickým umístěním. Pokud máte třeba jednu pobočku v New Yorku, jednu v Londýně a jednu v Los Angeles, vytvoříte tři oddělené lokality. Tyto lokality obsahují koncové body místních zařízení VPN. Můžete vytvořit až 1000 lokalit na jedno virtuální centrum ve virtuální síti WAN. Pokud máte více rozbočovačů, můžete pro každé z těchto Center vytvořit 1000. Pokud máte zařízení Virtual WAN partner (vložit Link) CPE, požádejte ho, aby se dozvěděl o automatizaci do Azure. Obvykle automatizace zahrnuje jednoduché možnosti kliknutí k exportu rozsáhlých informací o větvích do Azure a nastavení připojení ze CPE na Azure Virtual WAN VPN Gateway. Další informace najdete v tématu [pokyny pro automatizaci z Azure až po partnery na CPE](virtual-wan-configure-automation-providers.md).
+V této části vytvoříte web. Lokality odpovídají vašim fyzickým umístěním. Vytvořte tolik webů, kolik potřebujete. Pokud máte třeba jednu pobočku v New Yorku, jednu v Londýně a jednu v Los Angeles, vytvoříte tři oddělené lokality. Tyto lokality obsahují koncové body místních zařízení VPN. Můžete vytvořit až 1000 lokalit na jedno virtuální centrum ve virtuální síti WAN. Pokud máte více rozbočovačů, můžete pro každé z těchto Center vytvořit 1000. Pokud máte zařízení Virtual WAN partner CPE, přečtěte si je, abyste se dozvěděli o jeho automatizaci do Azure. Automatizace obvykle představuje jednoduché možnosti kliknutí k exportu rozsáhlých informací o větvích do Azure a nastavení připojení z CPE na Azure Virtual WAN VPN Gateway. Další informace najdete v tématu [pokyny pro automatizaci z Azure až po partnery na CPE](virtual-wan-configure-automation-providers.md).
 
 [!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 
@@ -78,19 +78,19 @@ Nakonfigurujte místní zařízení VPN pomocí konfigurace zařízení VPN.
 3. Jakmile se dokončí vytváření souboru, můžete ho kliknutím na odkaz stáhnout.
 4. Použijte konfiguraci na vaše místní zařízení VPN.
 
-### <a name="understanding-the-vpn-device-configuration-file"></a>Vysvětlení konfiguračního souboru zařízení VPN
+### <a name="about-the-vpn-device-configuration-file"></a>Konfigurační soubor zařízení VPN
 
 Konfigurační soubor zařízení obsahuje nastavení, které se má použít při konfiguraci místního zařízení VPN. Při prohlížení souboru si všimněte následujících informací:
 
 * **vpnSiteConfiguration** – tato část udává podrobnosti o zařízení nastaveném jako lokalita, která se připojuje k virtuální síti WAN. Obsahuje název a veřejnou IP adresu zařízení pobočky.
 * **vpnSiteConnections –** V této části najdete informace o následujících nastaveních:
 
-    * **Adresní prostor** virtuální sítě virtuálních rozbočovačů<br>Příklad:
+    * **Adresní prostor** virtuální sítě virtuálních rozbočovačů.<br>Příklad:
  
         ```
         "AddressSpace":"10.1.0.0/24"
         ```
-    * **Adresní prostor** virtuálních sítí připojených k rozbočovači<br>Příklad:
+    * **Adresní prostor** virtuální sítě, který je připojený k rozbočovači.<br>Příklad:
 
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.3.0.0/16"]

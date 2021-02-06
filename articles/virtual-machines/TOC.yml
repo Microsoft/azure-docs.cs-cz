@@ -107,26 +107,15 @@
       href: ./workloads/mainframe-rehosting/overview.md
     - name: Databáze
       items:
-        - name: MySQL v SUSE
-          href: ./linux/mysql-on-opensuse.md
         - name: MongoDB
           items:
-            - name: Linux
-              href: ./linux/install-mongodb.md
             - name: Windows
               href: ./windows/install-mongodb.md
-        - name: PostgreSQL
-          href: ./linux/postgresql-install.md
         - name: MS SQL v Linuxu
           href: /sql/linux/sql-server-linux-azure-virtual-machine
     - name: Vysokovýkonné výpočetní prostředí (HPC)
       href: /azure/architecture/topics/high-performance-computing/
     - name: Kontejnery
-      items:
-        - name: Použití Docker Machine
-          href: ./linux/docker-machine.md
-        - name: Použití Docker Compose
-          href: ./linux/docker-compose-quickstart.md
     - name: Visual Studio
       href: ./windows/using-visual-studio-vm.md
 - name: Instance
@@ -979,10 +968,18 @@
       href: disks-scalability-targets.md
     - name: Zálohování a ochrana dat
       items:
-        - name: Zálohování a zotavení po havárii pro disky
-          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: Povolit přírůstkové snímky
           href: disks-incremental-snapshots.md
+        - name: Zálohování disků Azure
+          items:
+            - name: Přehled
+              href: ../backup/disk-backup-overview.md?context=/azure/virtual-machines/context/context
+            - name: Konfigurace zálohování disku Azure
+              href: ../backup/backup-managed-disks.md?context=/azure/virtual-machines/context/context
+            - name: Obnovení disků pomocí zálohování disku Azure
+              href: ../backup/restore-managed-disks.md?context=/azure/virtual-machines/context/context
+        - name: Zálohování a zotavení po havárii pro disky
+          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: Vytvoření snímku disku – CLI
           href: ./linux/snapshot-copy-managed-disk.md
         - name: Vytvoření snímku disku – PowerShell
@@ -1281,8 +1278,6 @@
       href: ../azure-monitor/insights/monitor-vm-azure.md?context=/azure/virtual-machines/context/context
     - name: Monitorování virtuálních počítačů
       items:
-        - name: Linux
-          href: ./linux/tutorial-monitor.md
         - name: Windows
           href: ./windows/tutorial-monitor.md
     - name: Agenti

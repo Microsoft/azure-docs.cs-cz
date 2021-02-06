@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: a70cfc7ab01dabd3d740d878acb453b4d1e76b5f
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: b91c846b5a79125c1cee9c36ce81b5c3d3229ba9
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507414"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627762"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Dělení a horizontální škálování ve službě Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -42,7 +42,7 @@ Počet fyzických oddílů ve vašem kontejneru závisí na následujících:
 * Celkové úložiště dat (každý jednotlivý fyzický oddíl může ukládat až 50 GB data).
 
 > [!NOTE]
-> Fyzické oddíly jsou interní implementace systému a jsou výhradně spravované pomocí Azure Cosmos DB. Při vývoji řešení se nesoustředíte na fyzické oddíly, protože je nemůžete ovládat, místo toho se zaměřte na klíče oddílů. Pokud zvolíte klíč oddílu, který rovnoměrně distribuuje spotřebu propustnosti napříč logickými oddíly, zajistíte rovnováhu propustnosti mezi fyzickými oddíly.
+> Fyzické oddíly jsou interní implementace systému a jsou výhradně spravované pomocí Azure Cosmos DB. Při vývoji řešení se nemusíte soustředit na fyzické oddíly, protože je nemůžete ovládat. Místo toho se zaměřte na klíče oddílů. Pokud zvolíte klíč oddílu, který rovnoměrně distribuuje spotřebu propustnosti napříč logickými oddíly, zajistíte rovnováhu propustnosti mezi fyzickými oddíly.
 
 Celkový počet fyzických oddílů ve vašem kontejneru není nijak omezený. Jak vaše zřízená propustnost nebo velikost dat roste, Azure Cosmos DB automaticky vytvoří nové fyzické oddíly tím, že se rozdělí stávající. Rozdělení fyzického oddílu nemá vliv na dostupnost vaší aplikace. Po rozdělení fyzického oddílu budou všechna data v jednom logickém oddílu stále uložena ve stejném fyzickém oddílu. Rozdělení fyzického oddílu jednoduše vytvoří nové mapování logických oddílů na fyzické oddíly.
 
@@ -70,7 +70,7 @@ Další informace o tom, [jak Azure Cosmos DB spravuje oddíly](partitioning-ove
 
 Každý fyzický oddíl se skládá ze sady replik, které se také označují jako [*sada replik*](global-dist-under-the-hood.md). Každá sada replik je hostitelem instance databázového stroje. Sada replik vytvoří data uložená v rámci fyzického oddílu odolného, vysoce dostupného a konzistentního. Každá replika, která tvoří fyzický oddíl, zdědí kvótu úložiště oddílu. Všechny repliky fyzického oddílu společně podporují propustnost, která je přidělena fyzickému oddílu. Azure Cosmos DB automaticky spravuje sady replik.
 
-Obvykle menší kontejnery vyžadují pouze jeden fyzický oddíl, ale budou mít stále aspoň 4 repliky.
+Menší kontejnery obvykle vyžadují jenom jeden fyzický oddíl, ale budou mít pořád aspoň 4 repliky.
 
 Následující obrázek ukazuje, jak jsou logické oddíly namapovány na fyzické oddíly distribuované globálně:
 

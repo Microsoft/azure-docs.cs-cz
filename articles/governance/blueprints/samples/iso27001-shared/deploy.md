@@ -1,14 +1,14 @@
 ---
 title: Ukázka podrobného plánu nasazení sdílených služeb ISO 27001
 description: Nasaďte kroky pro ukázka podrobného plánu sdílených služeb ISO 27001, včetně podrobností o parametrech artefaktu podrobného plánu.
-ms.date: 11/02/2020
+ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: acce9ecf906430047fa1e687f719fd4e04daf756
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 8b28954b6145a9e6c1827107cf11aa85326dcc1f
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420272"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627795"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Ukázka podrobného plánu pro nasazování sdílených služeb ISO 27001
 
@@ -34,7 +34,7 @@ Nejprve implementujte ukázku podrobného plánu tak, že z ukázky vytvoříte 
 1. Zadejte _základní informace_ o ukázce podrobného plánu:
 
    - **Název** podrobného plánu: zadejte název vaší kopie ukázkového plánu sdílených služeb ISO 27001.
-   - **Umístění definice** : použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
+   - **Umístění definice**: použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
 
 1. Vyberte kartu _Artefakty_ v horní části stránky nebo **Další: Artefakty** dole na stránce.
 
@@ -64,10 +64,10 @@ Po úspěšném **publikování** kopie ukázky podrobného plánu je možné ji
 
    - Základy
 
-     - **Předplatná** : vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každé z nich pomocí zadaných parametrů přiřazení.
-     - **Název přiřazení** : název je předem vyplněný na základě názvu podrobného plánu.
+     - **Předplatná**: vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každé z nich pomocí zadaných parametrů přiřazení.
+     - **Název přiřazení**: název je předem vyplněný na základě názvu podrobného plánu.
        Podle potřeby ho změňte nebo ponechte.
-     - **Umístění** : Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
      - **Verze definice** podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
 
    - Zamknout přiřazení
@@ -82,11 +82,11 @@ Po úspěšném **publikování** kopie ukázky podrobného plánu je možné ji
 
      Parametry definované v tomto oddílu používá mnoho artefaktů v definici podrobného plánu k zajištění konzistence.
 
-     - **Název organizace** : zadejte krátký název vaší organizace. Tato vlastnost se primárně používá pro pojmenování prostředků.
-     - **Předpona adresy podsítě sdílených služeb** : zadejte hodnotu zápisu CIDR pro síťové nasazení nasazených prostředků.
-     - **Umístění sdílených služeb** : Určuje umístění, do kterého byly artefakty nasazeny. Ne všechny služby jsou k dispozici ve všech umístěních. Artefakty, které nasazují takové služby, poskytují možnost parametru pro umístění, do kterého se tento artefakt má nasadit.
-     - **Povolené umístění (Policy: Plánská iniciativa pro ISO 27001)** : hodnota, která označuje povolená umístění pro skupiny prostředků a prostředky.
-     - **Log Analytics pracovní prostor pro agenty virtuálních počítačů (zásady: podrobný plán pro ISO 27001)** : Určuje ID prostředku pracovního prostoru. Tento parametr používá `concat` funkci k vytvoření ID prostředku.
+     - **Název organizace**: zadejte krátký název vaší organizace. Tato vlastnost se primárně používá pro pojmenování prostředků.
+     - **Předpona adresy podsítě sdílených služeb**: zadejte hodnotu zápisu CIDR pro síťové nasazení nasazených prostředků.
+     - **Umístění sdílených služeb**: Určuje umístění, do kterého byly artefakty nasazeny. Ne všechny služby jsou k dispozici ve všech umístěních. Artefakty, které nasazují takové služby, poskytují možnost parametru pro umístění, do kterého se tento artefakt má nasadit.
+     - **Povolené umístění (Policy: Plánská iniciativa pro ISO 27001)**: hodnota, která označuje povolená umístění pro skupiny prostředků a prostředky.
+     - **Log Analytics pracovní prostor pro agenty virtuálních počítačů (zásady: podrobný plán pro ISO 27001)**: Určuje ID prostředku pracovního prostoru. Tento parametr používá `concat` funkci k vytvoření ID prostředku.
 
    - Parametry artefaktů
 
@@ -109,11 +109,11 @@ Následující tabulka uvádí seznam parametrů artefaktů podrobného plánu:
 |\[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače s Windows|Přiřazení zásady|Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Volitelné Výchozí hodnota je _["none"]_.|
 |Povolené typy prostředků|Přiřazení zásady|Povolené typy prostředků|Seznam typů prostředků, které je možné nasadit Tento seznam se skládá ze všech typů prostředků nasazených ve sdílených službách.|
 |Povolené skladové položky účtu úložiště|Přiřazení zásady|Povolené skladové položky úložiště|Seznam povolených SKU účtu úložiště pro diagnostické protokoly. Výchozí hodnota je _["Standard_LRS"]_.|
-|Povolené skladové položky virtuálních počítačů|Přiřazení zásady|Seznam SKU virtuálních počítačů, které je možné nasadit Výchozí hodnota je _["Standard_DS1_v2", "Standard_DS2_v2"]_.|
+|Povolené SKU virtuálních počítačů|Přiřazení zásady|Seznam SKU virtuálních počítačů, které je možné nasadit Výchozí hodnota je _["Standard_DS1_v2", "Standard_DS2_v2"]_.|
 |Plán iniciativy pro ISO 27001|Přiřazení zásady|Typy prostředků pro audit diagnostických protokolů|Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas).|
 |Log Analytics skupina prostředků|Skupina prostředků|Name|**Uzamkl** – zřetězí **název organizace** s `-sharedsvsc-log-rg` cílem vytvořit skupinu prostředků jako jedinečnou.|
 |Log Analytics skupina prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
-|Šablona Log Analytics|Šablona Resource Manageru|Úroveň služeb|Nastaví úroveň pracovního prostoru Log Analytics. Výchozí hodnota je _PerNode_.|
+|Šablona Log Analytics|Šablona Resource Manageru|Úroveň služby|Nastaví úroveň pracovního prostoru Log Analytics. Výchozí hodnota je _PerNode_.|
 |Šablona Log Analytics|Šablona Resource Manageru|Uchovávání protokolů ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
 |Šablona Log Analytics|Šablona Resource Manageru|Umístění|Oblast, která se používá k vytvoření pracovního prostoru Log Analytics. Výchozí hodnota je _západní USA 2_.|
 |Skupina síťových prostředků|Skupina prostředků|Name|**Uzamkl** – zřetězí **název organizace** s `-sharedsvcs-net-rg` cílem vytvořit skupinu prostředků jako jedinečnou.|
