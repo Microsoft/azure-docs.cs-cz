@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 5d81e37ab547d12e33cfacb9725d9bdb22666142
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 26e39b8f0429995bfa336c4971c76f90d903ff55
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97628666"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99628944"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -58,7 +58,7 @@ dependencies {
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce komunikačních služeb Azure, které volají klientskou knihovnu:
 
-| Název                                  | Popis                                                  |
+| Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | CallClient| CallClient je hlavní vstupní bod pro volání klientské knihovny.|
 | CallAgent | CallAgent se používá ke spouštění a správě volání. |
@@ -111,7 +111,9 @@ call oneToOneCall = callAgent.call(appContext, participants, startCallOptions);
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>Nakonání volání 1: n s uživateli a PSTN
 > [!WARNING]
-> V současném volání veřejné telefonní sítě není k dispozici volání 1: n uživateli a číslo veřejné telefonní číslo, které je nutné zadat pro telefonní číslo volaného.
+> Aktuálně volání veřejné telefonní sítě není k dispozici.
+
+Chcete-li umístit volání 1: n uživateli a číslo veřejné telefonní číslo, musíte zadat telefonní číslo volaného.
 Aby bylo možné volat do veřejné telefonní služby, je potřeba nakonfigurovat prostředek komunikačních služeb:
 ```java
 CommunicationUser acsUser1 = new CommunicationUser(<USER_ID>);
@@ -629,7 +631,7 @@ DeviceManager deviceManager = callClient.getDeviceManager().get();
 
 ### <a name="enumerate-local-devices"></a>Zobrazení výčtu místních zařízení
 
-Chcete-li získat přístup k místním zařízením, můžete použít metody výčtu na Device Manager. Výčet je synchronní akce.
+Chcete-li získat přístup k místním zařízením, můžete použít metody výčtu na Správce zařízení. Výčet je synchronní akce.
 
 ```java
 //  Get a list of available video devices for use.

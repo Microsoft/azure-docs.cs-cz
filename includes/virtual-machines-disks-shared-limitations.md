@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/30/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 76e52758bf88dde9cdc68dad974f0b65fd55140f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4a61399bbb75639fdf4f03da7b77f22a2136adbe
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026516"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99628872"
 ---
 Povolení sdílených disků je dostupné jenom pro podmnožinu typů disků. Sdílené disky teď můžou povolit jenom disky Ultra a Premium SSD. U každého spravovaného disku, na kterém jsou povolené sdílené disky, platí následující omezení uspořádaná podle typu disku:
 
@@ -37,7 +37,8 @@ Sdílené disky Ultra jsou k dispozici ve všech oblastech, které ve výchozím
 - Při používání skupin dostupnosti a sady škálování virtuálních počítačů se sdílenými disky Azure není pro sdílený datový disk vynutilo [přidružení domén chyb úložiště](../articles/virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) s doménou selhání virtuálního počítače.
 - Při použití [skupin umístění blízkosti (PPG)](../articles/virtual-machines/windows/proximity-placement-groups.md)musí být všechny virtuální počítače sdílející disk součástí stejného PPG.
 - V některých verzích clusteru s podporou převzetí služeb při selhání Windows serveru se dají použít jenom základní disky. Podrobnosti najdete v tématu [požadavky na hardware clusteringu s podporou převzetí služeb při selhání a možnosti](/windows-server/failover-clustering/clustering-requirements)
-- Podpora Azure Backup a Azure Site Recovery ještě není dostupná.
+- Podpora Azure Site Recovery ještě není k dispozici.
+- Azure Backup je k dispozici prostřednictvím služby [Azure disk Backup (Preview)](../articles/backup/disk-backup-overview.md).
 
 #### <a name="regional-availability"></a>Regionální dostupnost
 
