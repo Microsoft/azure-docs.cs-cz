@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 10/08/2020
+ms.date: 02/04/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2f5f653fdaf9df5d1bb2cf87d06047510ad46d7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 614a13a140453e3c7ed55a7fc0f9173626ad2f2f
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856707"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627689"
 ---
 1. Výběrem **připojit weby sítě VPN** otevřete stránku **připojit weby** .
 
@@ -25,10 +25,10 @@ ms.locfileid: "91856707"
    * Vyberte nastavení protokolu a protokolu IPsec. Další informace najdete v tématu [výchozí/vlastní protokol IPSec](../articles/virtual-wan/virtual-wan-ipsec.md).
    * Vyberte vhodnou možnost pro **rozšířit výchozí trasu**. Možnost **Povolit** umožňuje virtuálnímu rozbočovači rozšířit naučenou výchozí trasu k tomuto připojení. Tento příznak umožňuje rozšíření výchozí trasy na připojení pouze v případě, že je výchozí trasa již vyučena virtuálním centrem sítě WAN v důsledku nasazení brány firewall v centru nebo v případě, že je povoleno vynucené tunelování na jiném připojeném serveru. Výchozí trasa nepochází do virtuálního centra WAN.
 
-2. Vyberte **Připojit**.
-3. Během několika minut se v lokalitě zobrazí stav připojení a připojení.
+2. Vyberte **Connect** (Připojit).
+3. Po několika minutách se v lokalitě zobrazí stav připojení a připojení.
 
-   ![Snímek obrazovky ukazuje připojení lokality V nasazení lokality a stav připojení.](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
+   ![Snímek obrazovky ukazuje připojení typu Site-to-site a stavu připojení.](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
 
    **Stav připojení:** Toto je stav prostředku Azure pro připojení, které spojuje lokalitu VPN s bránou sítě VPN v centru Azure. Po úspěšné operaci této roviny ovládacího prvku budou brány Azure VPN a místní zařízení VPN pokračovat v navázání připojení.
 

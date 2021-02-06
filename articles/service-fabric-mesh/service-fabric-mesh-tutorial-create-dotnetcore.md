@@ -6,14 +6,19 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-csharp
-ms.openlocfilehash: fa15432072f6478100a378fdbdb697556fdf1dc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0bdb3c09aead812e1c16f4d0d17aae58e141809
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842542"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626789"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Kurz: Vytvoření, ladění, nasazení a upgrade aplikace Service Fabric Mesh s více službami
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Tento kurz je první částí série. Dozvíte se, jak pomocí sady Visual Studio vytvořit aplikaci Azure Service Fabric Mesh s webovým front-endem ASP.NET a back-endovou službou s webovým rozhraním API ASP.NET Core. Potom provedete ladění aplikace v místním clusteru pro vývoj. Aplikaci publikujete do Azure, pak provedete změny kódu a konfigurace a aplikaci upgradujete. Nakonec vyčistíte nepoužívané prostředky Azure, aby se vám neúčtovaly poplatky za něco, co nevyužíváte.
 
@@ -268,7 +273,7 @@ Tento kurz nepopisuje implementaci operací přidání, odstranění atd. a sous
 S implementovanou back-endovou službou vytvořte kód webu pro zobrazení položek úkolů, které služba poskytuje. Následující kroky probíhají v rámci projektu **WebFrontEnd**.
 
 Webová stránka, na které se zobrazují položky úkolů, potřebuje přístup ke třídě a seznamu **ToDoItem**.
-V **Průzkumník řešení**přidejte odkaz na projekt modelu tak, že kliknete pravým tlačítkem na položku **webendu** a vyberete **Přidat**  >  **odkaz...** Zobrazí se dialogové okno **Správce odkazů** .
+V **Průzkumník řešení** přidejte odkaz na projekt modelu tak, že kliknete pravým tlačítkem na položku **webendu** a vyberete **Přidat**  >  **odkaz...** Zobrazí se dialogové okno **Správce odkazů** .
 
 V okně **Správce odkazů** zaškrtněte políčko **Model** a klikněte na **OK**.
 

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 78ff0440fa83b6bd002cdf4256dc066342b1b390
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9d4eb90d49e8cc671156833f22a85e7c2b4dd15b
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424767"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626656"
 ---
-# <a name="scenario-route-traffic-through-an-nva"></a>Scénář: směrování provozu přes síťové virtuální zařízení
+# <a name="scenario-route-traffic-through-an-nva"></a>Scénář: Směrování provozu přes síťové virtuální zařízení
 
 Při práci s směrováním virtuálního rozbočovače WAN je k dispozici několik scénářů, které jsou v pořádku. V tomto scénáři síťové virtuální zařízení je cílem směrovat provoz prostřednictvím síťové virtuální zařízení (síťového virtuálního zařízení) pro větev do virtuální sítě a virtuální sítě do větve. Informace o směrování virtuálního rozbočovače najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
 
@@ -30,9 +30,9 @@ Při práci s směrováním virtuálního rozbočovače WAN je k dispozici něko
 
 V tomto scénáři použijeme konvenci pojmenování:
 
-* "Síťové virtuální zařízení virtuální sítě" pro virtuální sítě, ve kterých uživatelé nasadili síťové virtuální zařízení a připojili jiné virtuální sítě jako paprsky (virtuální síť 2 a virtuální síť 4 v **matici připojení**níže).
-* "Síťové virtuální zařízení paprsky" pro virtuální sítě připojené k virtuální síti síťové virtuální zařízení (virtuální síť 5, virtuální síť 6, virtuální síť 7 a virtuální síť 8 v **matici připojení**níže).
-* "Non-síťové virtuální zařízení virtuální sítě" pro virtuální sítě připojené k virtuální síti WAN, které s nimi nemají partnerský vztah síťové virtuální zařízení nebo jiné virtuální sítě (VNet 1 and VNet 3 v matici pro **připojení**níže).
+* "Síťové virtuální zařízení virtuální sítě" pro virtuální sítě, ve kterých uživatelé nasadili síťové virtuální zařízení a připojili jiné virtuální sítě jako paprsky (virtuální síť 2 a virtuální síť 4 v **matici připojení** níže).
+* "Síťové virtuální zařízení paprsky" pro virtuální sítě připojené k virtuální síti síťové virtuální zařízení (virtuální síť 5, virtuální síť 6, virtuální síť 7 a virtuální síť 8 v **matici připojení** níže).
+* "Non-síťové virtuální zařízení virtuální sítě" pro virtuální sítě připojené k virtuální síti WAN, které s nimi nemají partnerský vztah síťové virtuální zařízení nebo jiné virtuální sítě (VNet 1 and VNet 3 v matici pro **připojení** níže).
 * "Centra" pro virtuální sítě WAN spravovaná Microsoftem, ke kterým jsou připojené síťové virtuální zařízení virtuální sítě. SÍŤOVÉ virtuální zařízení paprskové virtuální sítě nemusí být připojené k virtuálním rozbočovačům WAN, jenom pro síťové virtuální zařízení virtuální sítě.
 
 Následující matice připojení shrnuje toky podporované v tomto scénáři:
@@ -69,14 +69,14 @@ V tomto scénáři si ale musíme představit, které statické trasy se mají n
 
 V takovém případě statické trasy, které potřebujeme ve výchozí tabulce k odesílání provozu do síťové virtuální zařízení paprsků za virtuální sítí síťové virtuální zařízení, jsou následující:
 
-| Popis | Tabulka směrování | Statická trasa              |
+| Description | Tabulka směrování | Statická trasa              |
 | ----------- | ----------- | ------------------------- |
 | Virtuální síť 2       | Výchozí     | 10.2.0.0/16 – > eastusconn |
 | Virtuální síť 4       | Výchozí     | 10.4.0.0/16 – > weconn     |
 
 Virtuální síť WAN teď ví, ke kterému připojení se mají odesílat pakety, ale připojení potřebuje vědět, co dělat při přijímání těchto paketů: v tomto umístění se používají tabulky směrování připojení. Tady budeme používat kratší předpony (/24 místo déle než 16), abyste se ujistili, že tyto trasy mají přednost před trasami, které jsou importované z síťové virtuální zařízení virtuální sítě (virtuální síť 2 a virtuální síť 4):
 
-| Popis | Připojení | Statická trasa            |
+| Description | Připojení | Statická trasa            |
 | ----------- | ---------- | ----------------------- |
 | Virtuální síť 5       | eastusconn | 10.2.1.0/24 – > 10.2.0.5 |
 | Virtuální síť 6       | eastusconn | 10.2.2.0/24 – > 10.2.0.5 |
@@ -87,7 +87,7 @@ Nyní síťové virtuální zařízení virtuální sítě, non-síťové virtu�
 
 ## <a name="architecture"></a><a name="architecture"></a>Architektura
 
-Na **obrázku 2**existují dvě centra. **Hub1** a **hub2**.
+Na **obrázku 2** existují dvě centra. **Hub1** a **hub2**.
 
 * **Hub1** a **hub2** jsou přímo připojené k síťové virtuální zařízení virtuální sítě **VNet 2** a **VNet 4**.
 
@@ -99,13 +99,13 @@ Na **obrázku 2**existují dvě centra. **Hub1** a **hub2**.
 
 **Obrázek 2**
 
-:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="Obrázek 1" lightbox="./media/routing-scenarios/nva/nva.png":::
+:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="Obrázek 2" lightbox="./media/routing-scenarios/nva/nva.png":::
 
 ## <a name="scenario-workflow"></a><a name="workflow"></a>Pracovní postup scénáře
 
 Pokud chcete nastavit směrování přes síťové virtuální zařízení, tady je postup, který je potřeba vzít v úvahu:
 
-1. Identifikujte připojení virtuální sítě síťové virtuální zařízení paprsku. Na **obrázku 2**jsou **připojení VNet 2 (Eastusconn)** a připojení k **virtuální síti 4 (weconn)**.
+1. Identifikujte připojení virtuální sítě síťové virtuální zařízení paprsku. Na **obrázku 2** jsou **připojení VNet 2 (Eastusconn)** a připojení k **virtuální síti 4 (weconn)**.
 
    Zajistěte, aby byly nastavené udr:
    * Z virtuální sítě 5 a virtuální sítě 6 k virtuální síti 2 síťové virtuální zařízení IP adresy
@@ -117,7 +117,7 @@ Virtuální síť WAN nepodporuje scénář, ve kterém se virtuální sítě 5,
 
 2. Přidejte agregovanou položku statické trasy pro virtuální sítě 2, 5, 6 do výchozí směrovací tabulky centra 1.
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="Obrázek 1":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="Příklad":::
 
 3. Nakonfigurujte statickou trasu pro virtuální sítě 5, 6 ve virtuální síti síťového připojení 2. Informace o nastavení konfigurace směrování pro připojení k virtuální síti najdete v tématu [Směrování virtuálního rozbočovače](how-to-virtual-hub-routing.md#routing-configuration).
 
@@ -125,11 +125,11 @@ Virtuální síť WAN nepodporuje scénář, ve kterém se virtuální sítě 5,
 
 5. Opakujte kroky 2, 3 a 4 pro výchozí směrovací tabulku centra 2.
 
-Výsledkem bude, že se změní konfigurace směrování, jak je znázorněno na **obrázku 3**níže.
+Výsledkem bude, že se změní konfigurace směrování, jak je znázorněno na **obrázku 3** níže.
 
 **Obrázek 3**
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="Obrázek 1" lightbox="./media/routing-scenarios/nva/nva-result.png":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="Obrázek 3" lightbox="./media/routing-scenarios/nva/nva-result.png":::
 
 ## <a name="next-steps"></a>Další kroky
 

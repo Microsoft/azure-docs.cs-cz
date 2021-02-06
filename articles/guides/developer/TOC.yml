@@ -148,8 +148,6 @@
       items:
         - name: Webové a mobilní aplikace
           href: ../../app-service/troubleshoot-diagnostic-logs.md
-        - name: Virtuální počítači s Linuxem
-          href: ../../virtual-machines/linux/tutorial-monitor.md
         - name: Virtuální počítač s Windows
           href: ../../virtual-machines/windows/tutorial-monitor.md
         - name: Mikroslužby

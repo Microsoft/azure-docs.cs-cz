@@ -7,23 +7,23 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 37f1c9f59b6ffb45e1b874d2a6969bf263d2d5eb
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 4ed881b74f240946d98d9868344c898d3e9a9dad
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341361"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627321"
 ---
 # <a name="azure-cosmos-db-resource-model"></a>Model prostředků Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB je plně spravovaná platforma jako služba (PaaS). Pokud chcete začít používat Azure Cosmos DB, měli byste nejdřív vytvořit účet Azure Cosmos v předplatném Azure a databázích, kontejnerech, položkách pod ní. Tento článek popisuje model prostředků Azure Cosmos DB a různé entity v hierarchii modelu prostředků.
 
-Účet Azure Cosmos je základní jednotkou globální distribuce a vysokou dostupnost. Váš účet Azure Cosmos obsahuje jedinečný název DNS a účet můžete spravovat pomocí Azure Portal, Azure CLI nebo pomocí různých sad SDK pro konkrétní jazyk. Další informace najdete v tématu [Správa účtu Azure Cosmos](how-to-manage-database-account.md). Pro globální distribuci vašich dat a propustnosti napříč několika oblastmi Azure můžete kdykoli přidat a odebrat oblasti Azure na svůj účet. Účet můžete nakonfigurovat tak, aby měl buď jednu oblast, nebo více oblastí pro zápis. Další informace najdete v tématu [jak přidat a odebrat oblasti Azure do svého účtu](how-to-manage-database-account.md). Na účtu můžete nakonfigurovat [výchozí úroveň konzistence](consistency-levels.md) .
+Účet Azure Cosmos je základní jednotkou globální distribuce a vysokou dostupnost. Váš účet Azure Cosmos obsahuje jedinečný název DNS a účet můžete spravovat pomocí Azure Portal nebo rozhraní příkazového řádku Azure CLI nebo pomocí různých sad SDK pro konkrétní jazyk. Další informace najdete v tématu [Správa účtu Azure Cosmos](how-to-manage-database-account.md). Pro globální distribuci vašich dat a propustnosti napříč několika oblastmi Azure můžete kdykoli přidat a odebrat oblasti Azure na svůj účet. Účet můžete nakonfigurovat tak, aby měl buď jednu oblast, nebo více oblastí pro zápis. Další informace najdete v tématu [jak přidat a odebrat oblasti Azure do svého účtu](how-to-manage-database-account.md). Na účtu můžete nakonfigurovat [výchozí úroveň konzistence](consistency-levels.md) .
 
 ## <a name="elements-in-an-azure-cosmos-account"></a>Prvky v účtu Azure Cosmos
 
-Azure Cosmos Container je základní jednotkou škálovatelnosti. V kontejneru můžete mít prakticky neomezenou zřízenou propustnost (RU/s) a úložiště. Azure Cosmos DB transparentně rozdělí váš kontejner pomocí klíče logického oddílu, který zadáte, aby bylo možné elasticky škálovat zřízenou propustnost a úložiště.
+Kontejner Azure Cosmos je základní jednotkou škálovatelnosti. V kontejneru můžete mít prakticky neomezenou zřízenou propustnost (RU/s) a úložiště. Azure Cosmos DB transparentně rozdělí váš kontejner pomocí klíče logického oddílu, který zadáte, aby bylo možné elasticky škálovat zřízenou propustnost a úložiště.
 
 V současné době můžete v rámci předplatného Azure vytvořit maximálně 50 účtů Azure Cosmos (Jedná se o částečný limit, který se dá zvýšit prostřednictvím žádosti o podporu). Jeden účet Azure Cosmos může prakticky spravovat neomezený objem dat a zřízenou propustnost. Pokud chcete spravovat vaše data a zřízenou propustnost, můžete vytvořit jednu nebo více databází Azure Cosmos pod vaším účtem a v rámci této databáze. můžete vytvořit jeden nebo více kontejnerů. Následující obrázek znázorňuje hierarchii prvků v účtu Azure Cosmos:
 
@@ -41,7 +41,7 @@ V rámci svého účtu můžete vytvořit jednu nebo víc databází Azure Cosmo
 
 | Entita Azure Cosmos | SQL API | Rozhraní Cassandra API | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- |
-|Databáze Azure Cosmos | databáze | Prostor klíčů | databáze | databáze | Není k dispozici |
+|Databáze Azure Cosmos | databáze | Prostor klíčů | databáze | databáze | NA |
 
 > [!NOTE]
 > Při vytváření první tabulky pomocí rozhraní API pro tabulky účty se ve vašem účtu Azure Cosmos automaticky vytvoří výchozí databáze.
@@ -63,9 +63,9 @@ Kontejner Azure Cosmos je jednotka škálovatelnosti pro zřízenou propustnost 
 
 Při vytváření kontejneru nakonfigurujete propustnost v jednom z následujících režimů:
 
-* **Režim vyhrazené zajištěné propustnosti** : propustnost zřízená na kontejneru je exkluzivně vyhrazena pro daný kontejner a je zajištěna SLA. Další informace najdete v tématu [jak zřídit propustnost na kontejneru](how-to-provision-container-throughput.md).
+* **Režim vyhrazené zajištěné propustnosti**: propustnost zřízená na kontejneru je exkluzivně vyhrazena pro daný kontejner a je zajištěna SLA. Další informace najdete v tématu [jak zřídit propustnost na kontejneru](how-to-provision-container-throughput.md).
 
-* **Sdílený režim zřízené propustnosti** : tyto kontejnery sdílejí zřízenou propustnost s ostatními kontejnery ve stejné databázi (kromě kontejnerů, které byly nakonfigurovány s vyhrazenou zřízené propustností). Jinými slovy, zřízená propustnost v databázi se sdílí mezi všemi kontejnery "Shared propustnost". Další informace najdete v tématu [jak zřídit propustnost v databázi](how-to-provision-database-throughput.md).
+* **Sdílený režim zřízené propustnosti**: tyto kontejnery sdílejí zřízenou propustnost s ostatními kontejnery ve stejné databázi (kromě kontejnerů, které byly nakonfigurovány s vyhrazenou zřízené propustností). Jinými slovy, zřízená propustnost v databázi se sdílí mezi všemi kontejnery "Shared propustnost". Další informace najdete v tématu [jak zřídit propustnost v databázi](how-to-provision-database-throughput.md).
 
 > [!NOTE]
 > Sdílenou a vyhrazenou propustnost můžete nakonfigurovat pouze při vytváření databáze a kontejneru. Pokud chcete po vytvoření kontejneru přejít z režimu vyhrazené propustnosti na režim sdílené propustnosti (nebo naopak), musíte vytvořit nový kontejner a migrovat data do nového kontejneru. Data můžete migrovat pomocí funkce Azure Cosmos DB změny kanálu.

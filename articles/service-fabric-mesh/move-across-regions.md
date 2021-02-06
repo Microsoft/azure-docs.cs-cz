@@ -6,14 +6,19 @@ ms.author: edoyle
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: c842a065f108a924c6bffd70d6c2edbbd31b6dff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b59d482b8b88e37da2d61636ff3f254a46ba5c2
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260157"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626083"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Přesunutí aplikace Service Fabric sítě do jiné oblasti Azure
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Tento článek popisuje, jak přesunout aplikaci Service Fabric sítě a její prostředky do jiné oblasti Azure. Prostředky můžete přesunout do jiné oblasti z řady důvodů. Například v reakci na výpadky můžete získat funkce nebo služby, které jsou k dispozici pouze v konkrétních oblastech, pro splnění požadavků na požadavky na interní zásady a zásady správného řízení nebo v reakci na požadavky na plánování kapacity.
 
@@ -44,7 +49,7 @@ Tento článek popisuje, jak přesunout aplikaci Service Fabric sítě a její p
 
 1. Po dokončení nasazení otestujte koncové body aplikace a ověřte funkčnost vaší aplikace.
 
-2. Stav aplikace můžete také ověřit tak, že zkontrolujete stav aplikace ([AZ mřížka App show](/cli/azure/ext/mesh/mesh/app?view=azure-cli-latest#ext-mesh-az-mesh-app-show)) a zkontrolujete protokoly aplikací a ([AZ oky Code-Package-log](/cli/azure/ext/mesh/mesh/code-package-log?view=azure-cli-latest)) pomocí rozhraní příkazového [řádku Azure Service Fabric](./service-fabric-mesh-quickstart-deploy-container.md#set-up-service-fabric-mesh-cli).
+2. Stav aplikace můžete také ověřit tak, že zkontrolujete stav aplikace ([AZ mřížka App show](/cli/azure/ext/mesh/mesh/app#ext-mesh-az-mesh-app-show)) a zkontrolujete protokoly aplikací a ([AZ oky Code-Package-log](/cli/azure/ext/mesh/mesh/code-package-log)) pomocí rozhraní příkazového [řádku Azure Service Fabric](./service-fabric-mesh-quickstart-deploy-container.md#set-up-service-fabric-mesh-cli).
 
 ## <a name="commit"></a>Potvrzení
 

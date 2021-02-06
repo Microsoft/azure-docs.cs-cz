@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak Azure Cosmos DB poskytuje vysokou dost
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/18/2021
+ms.date: 02/05/2021
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: d827011c4f831433a7446c90eed0c30c7b1e94d7
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 16d2bf39d61961e2f83910735db1d0ddf1c91849
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600563"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627361"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Jak Azure Cosmos DB poskytovat vysokou dostupnost
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -80,7 +80,7 @@ Ve výjimečných případech regionálního výpadku Azure Cosmos DB zajišťuj
 
 * Při výpadku oblasti čtení budou účty Azure Cosmos s využitím jakékoli úrovně konzistence nebo silné konzistence se třemi nebo více oblastmi pro čtení pořád vysoce dostupné pro čtení a zápisy.
 
-* Účty Azure Cosmos s využitím silné konzistence se dvěma nebo méně oblastmi pro čtení (které zahrnují oblast pro čtení & zápisu) ztratí během výpadku oblasti čtení oprávnění ke čtení zápisu.
+* Účty Azure Cosmos s využitím silné konzistence se třemi nebo méně celkovými oblastmi (jeden zápis, dvě čtení) ztratí dostupnost zápisu během výpadku oblasti čtení. Zákazníci se čtyřmi nebo více celkovými oblastmi se ale můžou přihlásit k používání kvora dynamického čtení odesláním lístku podpory. Účty, které udržují alespoň dvě oblasti čtení v této konfiguraci, budou mít k dispozici oprávnění k zápisu.
 
 * Ovlivněná oblast je automaticky odpojena a bude označena jako offline. Sady [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) přesměrují volání čtení do další dostupné oblasti v seznamu upřednostňovaných oblastí.
 
@@ -112,15 +112,15 @@ Následující tabulka shrnuje schopnost vysoké dostupnosti u různých konfigu
 |Selhání zón – dostupnost | Ztráta dostupnosti | Žádná ztráta dostupnosti | Žádná ztráta dostupnosti | Žádná ztráta dostupnosti |
 |Oblastní výpadek – ztráta dat | Ztráta dat |  Ztráta dat | Závislá na úrovni konzistence. Další informace najdete v tématu [konzistence, dostupnost a kompromisy](consistency-levels-tradeoffs.md) týkající se výkonu. | Závislá na úrovni konzistence. Další informace najdete v tématu [konzistence, dostupnost a kompromisy](consistency-levels-tradeoffs.md) týkající se výkonu.
 |Oblastní výpadek – dostupnost | Ztráta dostupnosti | Ztráta dostupnosti | Neztráta dostupnosti pro neúspěch oblasti čtení, dočasné pro selhání oblasti zápisu | Žádná ztráta dostupnosti |
-|Cena (**_1_* _) | – | Zřízená sazba za RU/s × 1,25 | Zřízená sazba za RU/s × 1,25 (_*_2_*_) | Rychlost zápisu ve více oblastech |
+|Cena (***1** _) | – | Zřízená sazba za RU/s × 1,25 | Zřízená sazba za RU/s x 1,25 (_ *_2_* *) | Rychlost zápisu ve více oblastech |
 
-_*_1_*_ pro jednotky žádosti bez serveru se vynásobí koeficientem 1,25.
+***1*** pro jednotky žádosti bez serveru se vynásobí koeficientem 1,25.
 
-_*_2_*_ 1,25 sazba se aplikuje jenom na ty oblasti, ve kterých je povolen AZ.
+***2*** 1,25 sazba se aplikuje jenom na ty oblasti, ve kterých je povolen AZ.
 
 Zóny dostupnosti lze povolit prostřednictvím:
 
-_ [Azure Portal](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+* [Azure Portal](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 
 * [Azure PowerShell](manage-with-powershell.md#create-account)
 

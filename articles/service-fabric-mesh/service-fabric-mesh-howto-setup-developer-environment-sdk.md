@@ -5,14 +5,19 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 12/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 479e975abd40be80e17fc187f1d13500d11cb983
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc234f6954cf263423cc517bb3dda2ba2efa3358
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842746"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625731"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>Nastavení vývojového prostředí ve Windows pro sestavování aplikací Service Fabric Mesh
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Pokud chcete vytvářet a spouštět aplikace Service Fabric sítě Azure na vývojovém počítači s Windows, budete potřebovat:
 

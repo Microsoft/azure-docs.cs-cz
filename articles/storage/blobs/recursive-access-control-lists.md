@@ -5,22 +5,25 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 02/05/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 626e626cbd8fa86bd0366516cbaf5a54789f3988
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 737608e4f83846187decb92b090f2385a8ff4ac6
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741039"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627336"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Nastavení seznamů řízení přístupu (ACL) pro Azure Data Lake Storage Gen2 rekurzivně
 
 Dědičnost seznamů ACL je již k dispozici pro nové podřízené položky, které jsou vytvořeny v nadřazeném adresáři. Můžete také nyní přidat, aktualizovat a odebrat seznamy ACL pro existující podřízené položky nadřazeného adresáře, aniž by bylo nutné provádět tyto změny jednotlivě pro každou podřízenou položku.
 
 [Knihovny](#libraries)  |  [Ukázky](#code-samples)  |  [Osvědčené postupy](#best-practice-guidelines)
+
+> [!NOTE]
+> Průzkumník služby Azure Storage teď podporuje rekurzivní použití seznamů ACL. Další informace najdete v tématu věnovaném [rekurzivnímu použití seznamů ACL v Průzkumník služby Azure Storage](data-lake-storage-explorer.md#apply-acls-recursively). 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -672,7 +675,7 @@ Příklad, který zpracovává seznam ACL rekurzivně v dávkách zadáním veli
 
 ---
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 
 Tato část obsahuje odkazy na knihovny a ukázky kódu.
 
@@ -717,7 +720,7 @@ Pokud chcete snížit latenci, doporučujeme spustit rekurzivní proces seznamu 
 
 #### <a name="acl-limits"></a>Omezení seznamu ACL
 
-Maximální počet seznamů řízení přístupu, které můžete použít u adresáře nebo souboru, je 32 seznamů ACL a 32 výchozích seznamů ACL. Další informace najdete v tématu [řízení přístupu v Azure Data Lake Storage Gen2](./data-lake-storage-access-control.md).
+Maximální počet seznamů řízení přístupu, které můžete použít u adresáře nebo souboru, je 32 seznamů ACL a 32 výchozích seznamů ACL. Další informace najdete v tématu [Řízení přístupu ve službě Azure Data Lake Storage Gen2](./data-lake-storage-access-control.md).
 
 ## <a name="see-also"></a>Viz také
 

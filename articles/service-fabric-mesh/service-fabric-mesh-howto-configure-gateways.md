@@ -6,14 +6,19 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: aa3ac9d8835cd17387346bb29b3e7c30f286cd1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40bba03c35568c013e383c08f0a13f765c1cc8bd
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839720"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625850"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>Konfigurace prostředku brány na požadavky směrování
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Prostředek brány se používá ke směrování příchozího provozu do sítě, ve které je umístěná vaše aplikace. Nakonfigurujte ji tak, aby určovala pravidla, pomocí kterých se požadavky přesměrují na konkrétní služby nebo koncové body na základě struktury žádosti. Další informace o sítích a branách v síti najdete v tématu [Úvod do sítě v Service Fabric Mesh](service-fabric-mesh-networks-and-gateways.md) . 
 

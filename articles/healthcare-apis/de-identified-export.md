@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 9/28/2020
 ms.author: matjazl
-ms.openlocfilehash: bdbab0e032764d07119402686051d391376cb913
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60a2a41a8005e8bd0fbc313c9a177d54df6dac5e
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843796"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627159"
 ---
 # <a name="exporting-de-identified-data-preview"></a>Export neidentifikovaných dat (Preview)
 
@@ -22,6 +22,9 @@ ms.locfileid: "91843796"
 Příkaz $export lze také použít k exportu neidentifikovaných dat ze serveru FHIR. Používá modul pro vybírání z [FHIR nástrojů pro anonymitu](https://github.com/microsoft/FHIR-Tools-for-Anonymization)a v parametrech dotazů přebírá podrobnosti o konfiguraci anonymity. Můžete vytvořit vlastní konfigurační soubor anonymity nebo použít jako výchozí bod [Ukázkový konfigurační soubor](https://github.com/microsoft/FHIR-Tools-for-Anonymization#sample-configuration-file-for-hipaa-safe-harbor-method) pro metodu HIPAA Safe přístavu. 
 
  `https://<<FHIR service base URL>>/$export?_container=<<container_name>>&_anonymizationConfig=<<config file name>>&_anonymizationConfigEtag=<<ETag on storage>>`
+
+> [!Note] 
+> V současné době rozhraní API Azure pro FHIR podporuje pouze neidentifikovaný export na úrovni systému ($export).
 
 |Parametr dotazu            | Příklad |Volitelnost| Description|
 |---------------------------|---------|-----------|------------|

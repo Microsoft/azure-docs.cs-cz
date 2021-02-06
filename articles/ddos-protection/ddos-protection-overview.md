@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: 114c723b127a17ffdd9c7ed91c6e777838d68e8e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 71eada0dcd7f7684e6c6be935bcb44405eb95322
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223342"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626202"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Přehled služby Azure DDoS Protection úrovně Standard
 
@@ -51,6 +51,10 @@ Plány DDoS Protection mají pevnou měsíční poplatek $2 944 za měsíc, kter
 V rámci tenanta se dá jeden plán DDoS Protection použít pro několik předplatných, takže nemusíte vytvářet více než jeden plán DDoS Protection.
 
 Další informace o cenách Azure DDoS Protection Standard najdete v tématu [Azure DDoS Protection Standard Price](https://azure.microsoft.com/pricing/details/ddos-protection/).
+
+## <a name="reference-architectures"></a>Referenční architektury
+
+DDoS Protection Standard je určený pro [služby, které jsou nasazené ve virtuální síti](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services). Pro ostatní služby platí výchozí služba DDoS Protection Basic. Další informace o podporovaných architekturách najdete v tématu [DDoS Protection referenčních architektur](https://docs.microsoft.com/azure/ddos-protection/ddos-protection-reference-architectures). 
 
 ## <a name="next-steps"></a>Další kroky
 

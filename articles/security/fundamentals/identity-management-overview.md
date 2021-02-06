@@ -4,8 +4,7 @@ description: Přečtěte si o základních funkcích zabezpečení Azure, které
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
-editor: TomSh
+manager: rkarlin
 ms.assetid: 5aa0a7ac-8f18-4ede-92a1-ae0dfe585e28
 ms.service: security
 ms.subservice: security-fundamentals
@@ -13,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2018
+ms.date: 02/05/2021
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 2c7d51da361816841ff556c1da696a48d2ce6a06
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d931d3923ff49dde2bea234278c995e79670429f
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843685"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627629"
 ---
-# <a name="azure-identity-management-security-overview"></a>Přehled zabezpečení služby Azure Identity Management
+# <a name="azure-identity-management-security-overview"></a>Přehled zabezpečení správy identit v Azure
 
  Správa identit je proces ověřování a autorizace [objektů zabezpečení](/windows/security/identity-protection/access-control/security-principals). Zahrnuje také řízení informací o těchto objektech zabezpečení (identity). Objekty zabezpečení (identity) můžou zahrnovat služby, aplikace, uživatele, skupiny atd. Řešení pro správu identit a přístupu od Microsoftu umožňují IT chránit přístup k aplikacím a prostředkům v podnikovém datovém centru a do cloudu. Taková ochrana umožňuje další úrovně ověřování, například Multi-Factor Authentication a zásady podmíněného přístupu. Monitorování podezřelých aktivit prostřednictvím pokročilých sestav zabezpečení, auditování a upozorňování pomáhá zmírnit možné problémy se zabezpečením. [Azure Active Directory Premium](../../active-directory/fundamentals/active-directory-whatis.md) poskytuje jednotné přihlašování (SSO) k tisícům aplikací SaaS (Cloud software as a Service) a přístup k webovým aplikacím, které spouštíte místně.
  
@@ -62,8 +61,8 @@ Nejen uživatelé nepotřebují spravovat více sad uživatelských jmen a hesel
 
 Další informace:
 
-* [Přehled jednotného přihlašování](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../../active-directory/manage-apps/what-is-single-sign-on.md)
+* [Přehled jednotného přihlašování](../../active-directory/manage-apps/what-is-single-sign-on.md)
+* [Video o základech ověřování](https://www.youtube.com/watch?v=fbSVgC8nGz4&feature=emb_title)
 * [Série rychlý Start při správě aplikací](../../active-directory/manage-apps/view-applications-portal.md)
 
 ## <a name="reverse-proxy"></a>Reverzní proxy server
@@ -85,7 +84,7 @@ Další informace:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 * [Co je Azure AD Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md)
-* [Jak funguje Multi-Factor Authentication služby Azure AD](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Jak funguje vícefaktorové ověřování Azure AD](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="azure-rbac"></a>Azure RBAC
 
@@ -99,7 +98,7 @@ Azure RBAC je autorizační systém založený na Azure Resource Manager, který
 Další informace:
 
 * [Co je řízení přístupu na základě role v Azure (Azure RBAC)?](../../role-based-access-control/overview.md)
-* [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md)
+* [Předdefinované role Azure](../../role-based-access-control/built-in-roles.md)
 
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>Monitorování zabezpečení, výstrahy a sestavy založené na strojovém učení
 

@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 2c894ea4bcb9701b8b65bcb9cd0b4b82c1898448
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 7d391998e7f20cff0f77f6aab7938bc375f75c9e
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99500505"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99616338"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -25,10 +25,7 @@ ms.locfileid: "99500505"
 Pomocí `npm install` příkazu můžete nainstalovat volání služby Azure Communication Services a běžné klientské knihovny pro JavaScript.
 
 ```console
-npm install @azure/communication-common --save
-
 npm install @azure/communication-calling --save
-
 ```
 
 ## <a name="object-model"></a>Objektový model
@@ -39,21 +36,22 @@ Následující třídy a rozhraní zpracovávají některé hlavní funkce komun
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
 | CallClient                       | CallClient je hlavní vstupní bod pro volání klientské knihovny.                                                                       |
 | CallAgent                        | CallAgent se používá ke spouštění a správě volání.                                                                                            |
-| AzureCommunicationUserCredential | Třída AzureCommunicationUserCredential implementuje rozhraní CommunicationUserCredential, které se používá k vytvoření instance CallAgent. |
+| DeviceManager                    | DeviceManager se používá ke správě mediálních zařízení.                                                                                           |
+| AzureCommunicationTokenCredential | Třída AzureCommunicationTokenCredential implementuje rozhraní CommunicationTokenCredential, které se používá k vytvoření instance CallAgent. |
 
 
 ## <a name="initialize-the-callclient-create-callagent-and-access-devicemanager"></a>Inicializace CallClient, vytvoření CallAgent a přístup DeviceManager
 
 Vytvoří instanci nové `CallClient` instance. Můžete ji nakonfigurovat s vlastními možnostmi, jako je například instance protokolovacího nástroje.
 Po vytvoření instance `CallClient` je možné vytvořit `CallAgent` instanci voláním `createCallAgent` metody na `CallClient` instanci. Tato funkce asynchronně vrátí `CallAgent` objekt instance.
-`createCallAgent`Metoda přijímá `CommunicationUserCredential` jako argument, který přijímá [token přístupu uživatele](../../access-tokens.md).
+`createCallAgent`Metoda přijímá `CommunicationTokenCredential` jako argument, který přijímá [token přístupu uživatele](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens).
 Aby bylo možné získat přístup k `DeviceManager` instanci callAgent, je třeba nejprve vytvořit. Pak můžete použít `getDeviceManager` metodu na `CallClient` instanci a získat tak DeviceManager.
 
 ```js
 const userToken = '<user token>';
 callClient = new CallClient(options);
-const tokenCredential = new AzureCommunicationUserCredential(userToken);
-const callAgent = await callClient.createCallAgent(tokenCredential, { displayName: 'optional ACS user name' });
+const tokenCredential = new AzureCommunicationTokenCredential(userToken);
+const callAgent = await callClient.createCallAgent(tokenCredential, {displayName: 'optional ACS user name'});
 const deviceManager = await callClient.getDeviceManager()
 ```
 
@@ -63,25 +61,31 @@ Chcete-li vytvořit a spustit volání, potřebujete použít jedno z rozhraní 
 
 Vytvoření a spuštění volání je synchronní. Instance volání umožňuje přihlásit se k odběru událostí volání.
 
-## <a name="place-a-11-call-to-a-user-or-a-1n-call-with-users-and-pstn"></a>Nakoná volání 1:1 uživateli nebo volání 1: n s uživateli a veřejnou telefonní síť.
+## <a name="place-a-call"></a>Umístit volání
 
-Chcete-li zavolat jinému uživateli komunikačních služeb, volejte `call` metodu na `callAgent` a předejte CommunicationUser, kterou jste [vytvořili pomocí knihovny pro správu komunikačních služeb](../../access-tokens.md).
+### <a name="place-a-11-call-to-a-user-or-pstn"></a>Nakonání volání 1:1 uživateli nebo veřejné telefonní síti
+Chcete-li umístit volání jinému uživateli komunikačních služeb, volejte `call` metodu na `callAgent` a předejte CommunicationUserIdentifier volaný:
 
 ```js
-const oneToOneCall = callAgent.call([CommunicationUser]);
+const userCallee = { communicationUserId: '<ACS_USER_ID>' }
+const oneToOneCall = callAgent.call([userCallee]);
+```
+
+Chcete-li umístit volání do veřejné telefonní sítě, zavolejte `call` metodu na `callAgent` a předejte PhoneNumberIdentifier volaný.
+Aby bylo možné volat do veřejné telefonní služby, musí být prostředek komunikačních služeb nakonfigurovaný.
+Při volání čísla veřejné telefonní číslo musíte zadat alternativní ID volajícího.
+```js
+const pstnCalee = { phoneNumber: '<ACS_USER_ID>' }
+const alternateCallerId = {alternateCallerId: '<Alternate caller Id>'};
+const oneToOneCall = callAgent.call([pstnCallee], {alternateCallerId});
 ```
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>Nakonání volání 1: n s uživateli a PSTN
-
-Chcete-li umístit volání 1: n uživateli a číslo veřejné telefonní číslo, musíte zadat CommunicationUser a telefonní číslo pro obě volané.
-
-Aby bylo možné volat do veřejné telefonní služby, musí být prostředek komunikačních služeb nakonfigurovaný.
 ```js
-
-const userCallee = { communicationUserId: <ACS_USER_ID> };
+const userCallee = { communicationUserId: <ACS_USER_ID> }
 const pstnCallee = { phoneNumber: <PHONE_NUMBER>};
-const groupCall = callAgent.call([userCallee, pstnCallee], placeCallOptions);
-
+const alternateCallerId = {alternateCallerId: '<Alternate caller Id>'};
+const groupCall = callAgent.call([userCallee, pstnCallee], {alternateCallerId});
 ```
 
 ### <a name="place-a-11-call-with-video-camera"></a>Vložení volání 1:1 s videokamerou
@@ -89,9 +93,7 @@ const groupCall = callAgent.call([userCallee, pstnCallee], placeCallOptions);
 > V tuto chvíli nemůže být k dispozici více než jeden odchozí datový proud v místním videu.
 Chcete-li umístit audiovizuální volání, je nutné vytvořit výčet místních fotoaparátů pomocí `getCameraList` rozhraní deviceManager API.
 Jakmile vyberete požadovanou kameru, použijte ji k vytvoření `LocalVideoStream` instance a předejte ji do `videoOptions` jako položku v rámci `localVideoStream` pole do `call` metody.
-Jakmile se vaše volání připojí, automaticky začne odesílat Stream videa od vybrané kamery k ostatním účastníkům.
-
-To platí také pro volání možnosti videa. přijmout () a CallAgent. Join ().
+Jakmile se vaše volání připojí, automaticky začne odesílat Stream videa od vybrané kamery k ostatním účastníkům. To platí také pro volání možnosti videa. přijmout () a CallAgent. Join ().
 ```js
 const deviceManager = await callClient.getDeviceManager();
 const videoDeviceInfo = deviceManager.getCameraList()[0];
@@ -101,26 +103,14 @@ const call = callAgent.call(['acsUserId'], placeCallOptions);
 
 ```
 
-### <a name="receiving-an-incoming-call"></a>Přijetí příchozího volání
-```js
-callAgent.on('callsUpdated', e => {
-    e.added.forEach(addedCall => {
-        if(addedCall.isIncoming) {
-        addedCall.accept();
-    }
-    });
-})
-```
-
 ### <a name="join-a-group-call"></a>Připojit se k volání skupiny
 Chcete-li spustit nové volání skupiny nebo se připojit k průběžnému volání skupiny, použijte metodu JOIN a předejte objekt s `groupId` vlastností. Hodnota musí být identifikátor GUID.
 ```js
 
-const locator = { groupId: <GUID>}
-const call = callAgent.join(locator);
+const context = { groupId: <GUID>}
+const call = callAgent.join(context);
 
 ```
-
 ### <a name="join-a-teams-meeting"></a>Připojit se k týmům na schůzce
 Pokud se chcete připojit k týmu, použijte metodu JOIN a předejte odkaz na schůzku nebo souřadnice schůzky.
 ```js
@@ -137,6 +127,24 @@ const locator = {
 }
 const call = callAgent.join(locator);
 ```
+
+## <a name="receiving-an-incoming-call"></a>Přijetí příchozího volání
+
+`CallAgent`Instance generuje `incomingCall` událost, když přihlášená identita přijímá příchozí volání. Chcete-li naslouchat této události, přihlaste se k odběru následujícím způsobem:
+
+```js
+const incomingCallHander = async (args: { incomingCall: IncomingCall }) => {
+    //accept the call
+    var call = await incomingCall.accept();
+
+    //reject the call
+    incomingCall.reject();
+};
+callAgentInstance.on('incomingCall', incomingCallHander);
+```
+
+`incomingCall`Událost bude poskytovat instanci, `IncomingCall` na které můžete volání přijmout nebo odmítnout.
+
 
 ## <a name="call-management"></a>Správa volání
 
@@ -155,10 +163,10 @@ const callId: string = call.id;
 const remoteParticipants = call.remoteParticipants;
 ```
 
-* Identita volajícího, pokud je volání příchozí. Identita je jedním z `Identifier` typů
+* Identita volajícího, pokud je volání příchozí. Identita je jedním z `CommunicationIdentifier` typů
 ```js
 
-const callerIdentity = call.callerIdentity;
+const callerIdentity = call.callerInfo.identity;
 
 ```
 
@@ -177,9 +185,8 @@ Vrátí řetězec představující aktuální stav volání:
 * Připojeno – volání je připojené.
 * Blokováno – volání je blokováno, žádné médium neprobíhá mezi místním koncovým bodem a vzdáleným účastníkem (y).
 * "Odpojení" – přechodový stav před voláním do stavu "Odpojeno"
-* Odpojeno – stav konečného volání.
-   * Pokud dojde ke ztrátě síťového připojení, stav přejde na odpojeno po 2 minutách.
-
+* Odpojeno – stav konečného volání
+  * Pokud dojde ke ztrátě síťového připojení, stav přejde na odpojeno po 2 minutách.
 
 * Chcete-li zjistit, proč dané volání skončilo, zkontrolujte `callEndReason` vlastnost.
 ```js
@@ -189,14 +196,10 @@ const callEndReason = call.callEndReason;
 // callEndReason.subCode (number) subCode associated with the reason
 ```
 
-* Chcete-li zjistit, zda je aktuální volání příchozím voláním, zkontrolujte `isIncoming` vlastnost, kterou vrátí `Boolean` .
+* Chcete-li zjistit, zda je aktuální volání příchozí nebo odchozí volání, zkontrolujte `direction` vlastnost, kterou vrátí `CallDirection` .
 ```js
-const isIncoming = call.isIncoming;
-```
-
-* Chcete-li zkontrolovat, zda je hovor zaznamenáván, zkontrolujte `isRecordingActive` vlastnost, kterou vrátí `Boolean` .
-```js
-const isResordingActive = call.isRecordingActive;
+const isIncoming = call.direction == 'Incoming';
+const isOutgoing = call.direction == 'Outgoing';
 ```
 
 *  Pokud chcete zkontrolovat, jestli je aktuální mikrofon ztlumený, zkontrolujte `muted` vlastnost a vrátí se `Boolean` .
@@ -218,6 +221,18 @@ const isScreenSharingOn = call.isScreenSharingOn;
 
 const localVideoStreams = call.localVideoStreams;
 
+```
+
+### <a name="call-ended-event"></a>Událost ukončení volání
+
+`Call`Instance emituje událost v `callEnded` případě, že volání skončí. Chcete-li naslouchat této události, přihlaste se následujícím způsobem:
+
+```js
+const callEndHander = async (args: { callEndReason: CallEndReason }) => {
+    console.log(args.callEndReason)
+};
+
+call.on('callEnded', callEndHander);
 ```
 
 ### <a name="mute-and-unmute"></a>Ztlumení a ztlumení
@@ -269,9 +284,6 @@ const source callClient.getDeviceManager().getCameraList()[1];
 localVideoStream.switchSource(source);
 
 ```
-### <a name="faq"></a>Časté otázky
- * Pokud dojde ke ztrátě připojení k síti, změní se stav volání na odpojeno?
-    * Ano, pokud dojde ke ztrátě síťového připojení po dobu delší než 2 minuty, volání se převede na odpojený stav a volání skončí.
 
 ## <a name="remote-participants-management"></a>Vzdálená správa účastníků
 
@@ -288,17 +300,18 @@ call.remoteParticipants; // [remoteParticipant, remoteParticipant....]
 
 ### <a name="remote-participant-properties"></a>Vlastnosti vzdáleného účastníka
 Vzdálený účastník má sadu vlastností a kolekcí, které jsou k němu přidružené.
-
-* Získat identifikátor pro tohoto vzdáleného účastníka.
-Identita je jedním z typů identifikátorů:
+#### <a name="communicationidentifier"></a>CommunicationIdentifier
+Získat identifikátor pro tohoto vzdáleného účastníka.
 ```js
 const identifier = remoteParticipant.identifier;
-//It can be one of:
-// { communicationUserId: '<ACS_USER_ID'> } - object representing ACS User
-// { phoneNumber: '<E.164>' } - object representing phone number in E.164 format
 ```
+Může to být jeden z typů ' CommunicationIdentifier ':
+  * {communicationUserId: ' <ACS_USER_ID ' >} – objekt představující uživatele ACS
+  * {phoneNumber: <E. 164>} – objekt představující telefonní číslo ve formátu E. 164
+  * {microsoftTeamsUserId: ' <TEAMS_USER_ID> ', anonymní?: Boolean; Cloud?: "public" | "DoD" | "GCCH"} – objekt, který představuje uživatele týmů
 
-* Získat stav tohoto vzdáleného účastníka.
+#### <a name="state"></a>State
+Získat stav tohoto vzdáleného účastníka.
 ```js
 
 const state = remoteParticipant.state;
@@ -309,30 +322,29 @@ Stav může být jedna z
 * Připojeno – účastník je připojený k volání.
 * ' Hold ' – účastník je blokován
 * ' EarlyMedia ' – před připojením účastníka k volání se přehraje oznámení.
-* ' Odpojeno ' – konečný stav – účastník je odpojen od volání.
-   * Pokud vzdálený účastník ztratí své připojení k síti, pak vzdálený stav účastníka přejde na odpojeno po 2 minutách.
+* ' Odpojeno ' – konečný stav – účastník je odpojen od volání
+  * Pokud vzdálený účastník ztratí své připojení k síti, pak vzdálený stav účastníka přejde na odpojeno po 2 minutách.
 
+#### <a name="call-end-reason"></a>Důvod volání metody end
 Chcete-li zjistit, proč účastník opustil hovor, zkontrolujte `callEndReason` vlastnost:
 ```js
-
 const callEndReason = remoteParticipant.callEndReason;
 // callEndReason.code (number) code associated with the reason
 // callEndReason.subCode (number) subCode associated with the reason
 ```
-
-* Pokud chcete zkontrolovat, jestli je tento vzdálený účastník ztlumený, zkontrolujte `isMuted` vlastnost, která vrátí. `Boolean`
+#### <a name="is-muted"></a>Je ztlumený
+Pokud chcete zkontrolovat, jestli je tento vzdálený účastník ztlumený, zkontrolujte `isMuted` vlastnost, která vrátí. `Boolean`
 ```js
 const isMuted = remoteParticipant.isMuted;
 ```
-
-* Chcete-li zkontrolovat, zda tento vzdálený účastník mluví nebo není, zkontrolujte `isSpeaking` vlastnost, kterou vrátí `Boolean`
+#### <a name="is-speaking"></a>Je speaking
+Chcete-li zkontrolovat, zda tento vzdálený účastník mluví nebo není, zkontrolujte `isSpeaking` vlastnost, kterou vrátí `Boolean`
 ```js
-
 const isSpeaking = remoteParticipant.isSpeaking;
-
 ```
 
-* Pokud chcete zkontrolovat všechny streamy videa, které daný účastník posílá při volání, zkontrolujte `videoStreams` shromažďování, obsahuje `RemoteVideoStream` objekty.
+#### <a name="video-streams"></a>Streamy videa
+Pokud chcete zkontrolovat všechny streamy videa, které daný účastník posílá při volání, zkontrolujte `videoStreams` shromažďování, obsahuje `RemoteVideoStream` objekty.
 ```js
 
 const videoStreams = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
@@ -348,9 +360,9 @@ Tím se synchronně vrátí instance vzdáleného účastníka.
 
 ```js
 const userIdentifier = { communicationUserId: <ACS_USER_ID> };
-const pstnIdentifier = { phoneNumber: <PHONE_NUMBER>};
+const pstnIdentifier = { phoneNumber: <PHONE_NUMBER>}
 const remoteParticipant = call.addParticipant(userIdentifier);
-const remoteParticipant = call.addParticipant(pstnIdentifier);
+const remoteParticipant = call.addParticipant(pstnIdentifier, {alternateCallerId: '<Alternate Caller ID>'});
 ```
 
 ### <a name="remove-participant-from-a-call"></a>Odebrat účastníka volání
@@ -361,7 +373,7 @@ Musíte předat jeden z typů ' identifikátor ', který se vyřeší asynchronn
 
 ```js
 const userIdentifier = { communicationUserId: <ACS_USER_ID> };
-const pstnIdentifier = { phoneNumber: <PHONE_NUMBER>};
+const pstnIdentifier = { phoneNumber: <PHONE_NUMBER>}
 await call.removeParticipant(userIdentifier);
 await call.removeParticipant(pstnIdentifier);
 ```
@@ -381,9 +393,8 @@ Jakmile k tomu dojde, vytvořte novou instanci `Renderer` a pak vytvořte novou 
 Vždy, když se změní dostupnost vzdáleného streamu, můžete zvolit zničení celého zobrazovacího panelu, jeho konkrétního `RendererView` nebo zachování, ale výsledkem bude zobrazení prázdného snímku videa.
 
 ```js
-let renderer: Renderer;
+let renderer: Renderer = new Renderer(remoteParticipantStream);
 const displayVideo = () => {
-    renderer = new Renderer(remoteParticipantStream);
     const view = await renderer.createView();
     htmlElement.appendChild(view.target);
 }
@@ -450,9 +461,7 @@ Později můžete režim škálování aktualizovat vyvoláním `updateScalingMo
 ```js
 view.updateScalingMode('Crop')
 ```
-### <a name="faq"></a>Časté otázky
-* Když vzdálený účastník ztratí své síťové připojení, změní se jeho stav na odpojeno?
-    * Ano, pokud vzdálený účastník ztratí své síťové připojení po dobu delší než 2 minuty, jejich stav se převede na odpojeno a odebere se z tohoto volání.
+
 ## <a name="device-management"></a>Správa zařízení
 
 `DeviceManager` umožňuje vytvořit výčet místních zařízení, která se dají použít při volání přenosů zvukových a video datových proudů. Umožňuje taky požádat uživatele o oprávnění k přístupu ke svému mikrofonu a kameře pomocí rozhraní API nativního prohlížeče.
@@ -495,7 +504,7 @@ Pokud nejsou nastavené výchozí hodnoty klienta, komunikační služby se vrá
 const defaultMicrophone = deviceManager.getMicrophone();
 
 // Set the microphone device to use.
-await deviceMicrophone.setMicrophone(AudioDeviceInfo);
+await deviceManager.setMicrophone(AudioDeviceInfo);
 
 // Get the speaker device that is being used.
 const defaultSpeaker = deviceManager.getSpeaker();
@@ -540,6 +549,92 @@ const result = deviceManager.getPermissionState('Camera'); // for camera permiss
 
 console.log(result); // 'Granted' | 'Denied' | 'Prompt' | 'Unknown';
 
+```
+
+## <a name="call-recording-management"></a>Správa záznamů volání
+
+Záznam volání je rozšířenou funkcí základního `Call` rozhraní API. Nejdřív musíte získat objekt rozhraní API pro nahrávání funkcí:
+
+```js
+const callRecordingApi = call.api(Features.Recording);
+```
+
+Poté, pokud chcete zkontrolovat, zda je hovor zaznamenáván, zkontrolujte `isRecordingActive` vlastnost třídy, kterou `callRecordingApi` vrátí `Boolean` .
+
+```js
+const isResordingActive = callRecordingApi.isRecordingActive;
+```
+
+Můžete se také přihlásit k odběru změn záznamů:
+
+```js
+const isRecordingActiveChangedHandler = () => {
+  console.log(callRecordingApi.isRecordingActive);
+};
+
+callRecordingApi.on('isRecordingActiveChanged', isRecordingActiveChangedHandler);
+               
+```
+
+## <a name="call-transfer-management"></a>Správa přenosu hovorů
+
+Přenos volání je rozšířená funkce základního `Call` rozhraní API. Nejdřív je potřeba získat objekt rozhraní API pro přenos funkcí:
+
+```js
+const callTransferApi = call.api(Features.Transfer);
+```
+
+Přenos volání zahrnuje tři strany *přenosu*, *nabyvatel* a *cíl přenosu*. Tok přenosu pracuje následujícím způsobem:
+
+1. Mezi předanými *přenosy* a *nabyvatelem* již existuje připojené volání.
+2. *přenosové* rozhodnutí se rozhodne přenést hovor (  ->  *cíl převodu* nabyvatele).
+3. rozhraní API pro volání *přenosů* `transfer`
+4. *nabyvatel* se rozhodne, zda `accept` nebo `reject` požadavek přenosu pro *přenos cíle* prostřednictvím `transferRequested` události.
+5. *cíl přenosu* obdrží příchozí volání pouze v případě, že žádost o přenos proběhla v žádosti *nabyvatele* . `accept`
+
+### <a name="transfer-terminology"></a>Terminologie přenosu
+
+- Transferer – ten, který iniciuje žádost o přenos
+- Nabyvatel – ten, který přenáší převodce na cíl přenosu
+- Cíl přenosu – ten, který je cílem přenosu do
+
+Pro přenos aktuálního volání můžete použít `transfer` synchronní rozhraní API. `transfer` vybere volitelnou, `TransferCallOptions` která vám umožní nastavit `disableForwardingAndUnanswered` příznak:
+
+- `disableForwardingAndUnanswered` = false – Pokud *cíl přenosu* neodpoví na volání přenosu, pak se bude řídit přesměrováním *cíle přenosu* a nezodpovězeným nastavením.
+- `disableForwardingAndUnanswered` = true – Pokud *cíl přenosu* neodpoví na volání přenosu, pak pokus o přenos skončí.
+
+```js
+// transfer target can be ACS user
+const id = { communicationUserId: <ACS_USER_ID> };
+```
+
+```js
+// call transfer API
+const transfer = callTransferApi.transfer({targetParticipant: id});
+```
+
+Přenos umožňuje přihlásit se k odběru `transferStateChanged` `transferRequested` událostí a. `transferRequsted` událost přichází z `call` instance, `transferStateChanged` události a přenosu `state` a `error` přichází z `transfer` instance.
+
+```js
+// transfer state
+const transferState = transfer.state; // None | Transferring | Transferred | Failed
+
+// to check the transfer failure reason
+const transferError = transfer.error; // transfer error code that describes the failure if transfer request failed
+```
+
+Nabyvatel může přijmout nebo odmítnout žádost o přenos iniciované přenosem v `transferRequested` události prostřednictvím `accept()` nebo `reject()` `transferRequestedEventArgs` . K informacím můžete získat přístup `targetParticipant` , `accept` `reject` metody v `transferRequestedEventArgs` .
+
+```js
+// Transferee to accept the transfer request
+callTransferApi.on('transferRequested', args => {
+  args.accept();
+});
+
+// Transferee to reject the transfer request
+callTransferApi.on('transferRequested', args => {
+  args.reject();
+});
 ```
 
 ## <a name="eventing-model"></a>Model událostí

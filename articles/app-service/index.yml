@@ -7,12 +7,12 @@ metadata:
   ms.topic: landing-page
   ms.service: app-service
   ms.date: 08/06/2020
-  ms.openlocfilehash: 8ace1c6bb530fcc93d06f48bcef0d1ccfdf82306
-  ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
-  ms.translationtype: HT
+  ms.openlocfilehash: 2344c7a1507feb6ca3938fe0c53cf618b015f0f4
+  ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 12/22/2020
-  ms.locfileid: "97724421"
+  ms.lasthandoff: 02/06/2021
+  ms.locfileid: "99627313"
 landingContent:
 - title: Informace o službě App Service
   linkLists:
@@ -60,46 +60,10 @@ landingContent:
       url: scenario-secure-app-overview.md
   - linkListType: how-to-guide
     links:
-    - text: Povolení diagnostických protokolů
-      url: troubleshoot-diagnostic-logs.md
     - text: Připojení k linuxovému kontejneru přes SSH
       url: configure-linux-open-ssh-session.md
     - text: Migrace aktivní domény do služby App Service
       url: manage-custom-dns-migrate-domain.md
-- title: Aplikace CRUD s databází
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Aplikace v ASP.NET s SQL Database
-      url: app-service-web-tutorial-dotnet-sqldatabase.md
-    - text: Aplikace v ASP.NET Core s SQL Database
-      url: tutorial-dotnetcore-sqldb-app.md
-    - text: Aplikace v PHP (Laravel) s Azure MySQL
-      url: tutorial-php-mysql-app.md
-    - text: Aplikace v Node.js (MEAN.js) s MongoDB
-      url: tutorial-nodejs-mongodb-app.md
-    - text: Aplikace v Javě (Spring Boot) s Cosmos DB
-      url: tutorial-java-spring-cosmosdb.md
-    - text: Aplikace v Pythonu (Django) s PostgreSQL
-      url: tutorial-python-postgresql-app.md
-    - text: Aplikace v Ruby (Rails) s PostgreSQL
-      url: tutorial-ruby-postgres-app.md
-- title: Nahrání kódu nebo obsahu
-  linkLists:
-  - linkListType: deploy
-    links:
-    - text: Nahrání obsahu s využitím FTP
-      url: deploy-ftp.md
-    - text: Nahrání obsahu jako balíčků .zip
-      url: deploy-zip.md
-    - text: Nasdílení změn v Gitu z místního počítače
-      url: deploy-local-git.md
-    - text: Synchronizace obsahu s využitím OneDrivu nebo Dropboxu
-      url: deploy-content-sync.md
-    - text: CI/CD s využitím GitHubu, BitBucketu atd.
-      url: deploy-continuous-deployment.md
-    - text: Spuštění z balíčku
-      url: deploy-run-package.md
 - title: Spouštění vlastních kontejnerů
   linkLists:
   - linkListType: quickstart
@@ -120,6 +84,24 @@ landingContent:
       url: configure-connect-to-azure-storage.md
     - text: Nasazení s využitím GitHub Actions
       url: deploy-container-github-action.md
+- title: Aplikace CRUD s databází
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Aplikace v ASP.NET s SQL Database
+      url: app-service-web-tutorial-dotnet-sqldatabase.md
+    - text: Aplikace v ASP.NET Core s SQL Database
+      url: tutorial-dotnetcore-sqldb-app.md
+    - text: Aplikace v PHP (Laravel) s Azure MySQL
+      url: tutorial-php-mysql-app.md
+    - text: Aplikace v Node.js (MEAN.js) s MongoDB
+      url: tutorial-nodejs-mongodb-app.md
+    - text: Aplikace v Javě (Spring Boot) s Cosmos DB
+      url: tutorial-java-spring-cosmosdb.md
+    - text: Aplikace v Pythonu (Django) s PostgreSQL
+      url: tutorial-python-postgresql-app.md
+    - text: Aplikace v Ruby (Rails) s PostgreSQL
+      url: tutorial-ruby-postgres-app.md
 - title: Správa a integrace
   linkLists:
   - linkListType: concept
@@ -146,6 +128,46 @@ landingContent:
       url: configure-domain-traffic-manager.md
     - text: Zálohování aplikace do objektů blob služby Storage
       url: manage-backup.md
+- title: Nahrání kódu nebo obsahu
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Nahrání obsahu s využitím FTP
+      url: deploy-ftp.md
+    - text: Nahrání obsahu jako balíčků .zip
+      url: deploy-zip.md
+    - text: Nasdílení změn v Gitu z místního počítače
+      url: deploy-local-git.md
+    - text: Synchronizace obsahu s využitím OneDrivu nebo Dropboxu
+      url: deploy-content-sync.md
+    - text: CI/CD s využitím GitHubu, BitBucketu atd.
+      url: deploy-continuous-deployment.md
+    - text: Spuštění z balíčku
+      url: deploy-run-package.md
+- title: Monitorování aplikace
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: App Service integrace s Azure Monitor (Preview)
+      url: https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html
+    - text: Typy protokolů pro integraci s Azure Monitor (Preview)
+      url: https://azure.github.io/AppService/2020/06/25/New-Logs-Available-for-Azure-Monitor-Integration.html
+  - linkListType: tutorial
+    links:
+    - text: Řešení chyb pomocí Azure Monitor (Preview)
+      url: tutorial-troubleshoot-monitor.md
+  - linkListType: how-to-guide
+    links:
+    - text: Povolení diagnostických protokolů
+      url: troubleshoot-diagnostic-logs.md
+    - text: Získání událostí prostředků
+      url: get-resource-events.md
+    - text: Kontrola stavu
+      url: monitor-instances-health-check.md
+  - linkListType: reference
+    links:
+    - text: Kvóty a výstrahy
+      url: web-sites-monitor.md
 - title: Další zdroje informací
   linkLists:
   - linkListType: video

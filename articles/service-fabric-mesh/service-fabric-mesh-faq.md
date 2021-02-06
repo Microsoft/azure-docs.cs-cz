@@ -4,14 +4,19 @@ description: Seznamte se s nejčastějšími dotazy a odpověďmi na Azure Servi
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 64eeb43d743d71d5acd456409445a4fadfe91aeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e53ab0ae4cc463bea8a6a8cb6d339f94fdcac6d
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260111"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626032"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Nejčastější dotazy týkající se Service Fabric sítě
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Azure Service Fabric Mesh je plně spravovaná služba, která vývojářům umožňuje nasazovat aplikace zajišťující mikroslužby, aniž by museli spravovat virtuální počítače, úložiště nebo sítě. Tento článek obsahuje odpovědi na nejčastější dotazy.
 
@@ -44,7 +49,7 @@ V současné době jsme omezili životnost aplikace na dva dny. Je to kvůli max
 
 Pokud se to zobrazí, můžete ověřit, že systém ukončí činnost spuštěním `az mesh app show` příkazu v rozhraní příkazového řádku Azure CLI. Zkontrolujte, jestli se vrátí. `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
-Například: 
+Příklad: 
 
 ```azurecli
 az mesh app show --resource-group myResourceGroup --name helloWorldApp
@@ -107,7 +112,7 @@ Odchozí dotazy DNS z kontejneru do služby Service Fabric DNS za určitých oko
 
 - Použijte Windows Update Creators Update (verze 1709) nebo vyšší jako základní image kontejneru.
 - Pokud název služby samotný nefunguje, zkuste plně kvalifikovaný název: ServiceName. ApplicationName.
-- V souboru Docker pro vaši službu přidejte port, `EXPOSE <port>` na kterém je port, na kterém službu zveřejňujete. Například:
+- V souboru Docker pro vaši službu přidejte port, `EXPOSE <port>` na kterém je port, na kterém službu zveřejňujete. Příklad:
 
 ```Dockerfile
 EXPOSE 80

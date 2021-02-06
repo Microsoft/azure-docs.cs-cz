@@ -1,30 +1,48 @@
 ---
 title: Jak nasadit Windows 10 v Azure s právy pro hostování s více klienty
 description: Přečtěte si, jak maximalizovat výhody Software Assurance v systému Windows, aby se zajistilo poskytování místních licencí do Azure s právy pro hostování s více klienty.
-author: xujing
+author: mimckitt
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 1/24/2018
+ms.date: 2/2/2021
 ms.author: mimckitt
-ms.openlocfilehash: 8268e305946a19f4f74ff790e680d6bd3faa2b29
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.custom: rybaker, chmimckitt
+ms.openlocfilehash: 744f265251e9f58ce91085f0e5dd5d1ad13eec69
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881431"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625107"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Jak nasadit Windows 10 v Azure s právy pro hostování s více klienty 
-Pro zákazníky s Windows 10 Enterprise E3/E5 podle uživatele nebo přístup k virtuálnímu počítači s Windows na úrovni uživatele (licence pro předplatné uživatele nebo licence k předplatnému uživatele) umožňuje víceklientské hostování pro Windows 10 přístup k cloudu a spouštění Windows 10 Virtual Machines v Azure bez placení na jinou licenci. Další informace najdete v tématu hostování s více [klienty pro Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
+Pro zákazníky s Windows 10 Enterprise E3/E5 podle uživatele nebo přístup k virtuálnímu počítači s Windows na úrovni uživatele (licence pro předplatné uživatele nebo licence k předplatnému uživatele) umožňuje víceklientské hostování pro Windows 10 přístup k cloudu a spouštění Windows 10 Virtual Machines v Azure bez placení na jinou licenci. Práva pro hostování více tenantů jsou dostupná jenom pro Windows 10 (verze 1703 nebo novější).
+
+Další informace najdete v tématu [hostování víceklientské architektury pro Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
 
 > [!NOTE]
-> Tento článek vás seznámí s implementací výhod licencování pro desktopové image Windows 10 pro na Azure Marketplace.
-> - V případě [scénářů pro vývoj a testování](client-images.md) pro Windows 7, 8,1, 10 Enterprise (x64) imagí na Azure Marketplace pro Předplatná MSDN se podívejte na klienta Windows v Azure.
+> - Používání imagí Windows 7, 8,1 a 10 pro vývoj nebo testování najdete v tématu [klient Windows v Azure pro scénáře vývoje a testování](client-images.md) .
 > - Výhody licencování Windows serveru najdete v tématu [výhody hybridního použití Azure pro image Windows serveru](hybrid-use-benefit-licensing.md).
->
+
+## <a name="subscription-licenses-that-qualify-for-multitenant-hosting-rights"></a>Licence pro předplatné, které mají nárok na práva hostování s více klienty
+
+Pomocí [centra pro správu Microsoft](https://docs.microsoft.com/microsoft-365/admin/admin-overview/about-the-admin-center?view=o365-worldwide&preserve-view=true)můžete ověřit, jestli se uživateli přiřadila podporovaná licence pro Windows 10.
+
+> [!IMPORTANT]
+> Aby uživatelé mohli používat image Windows 10 v Azure, musí mít jednu z následujících licencí předplatného. Pokud nemáte jednu z těchto licencí předplatného, můžete si ji koupit prostřednictvím svého [partnera cloudových služeb](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/) nebo přímo prostřednictvím [Microsoftu](https://www.microsoft.com/microsoft-365?rtc=1).
+
+**Opravňující licence předplatného:**
+
+-   Microsoft 365 E3/E5 
+-   Microsoft 365 F3 
+-   Microsoft 365 a3/a5 
+-   Windows 10 Enterprise E3/E5
+-   Windows 10 vzdělávání a3/a5 
+-   Windows VDA E3/E5
+
 
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>Nasazení image Windows 10 z Azure Marketplace 
-Pro prostředí PowerShell, rozhraní příkazového řádku a Azure Resource Manager nasazení šablon Windows 10 je možné najít image s Windows 10 pomocí `PublisherName: MicrosoftWindowsDesktop` a `Offer: Windows-10` .
+Pro prostředí PowerShell, rozhraní příkazového řádku a Azure Resource Manager nasazení šablon Windows 10 je možné najít image s Windows 10 pomocí `PublisherName: MicrosoftWindowsDesktop` a `Offer: Windows-10` . Windows 10 Creators Update (1809) nebo novější se podporuje pro práva hostování více tenantů. 
 
 ```powershell
 Get-AzVmImageSku -Location '$location' -PublisherName 'MicrosoftWindowsDesktop' -Offer 'Windows-10'
@@ -40,17 +58,6 @@ rs5-pron                    Windows-10 MicrosoftWindowsDesktop eastus
 ```
 
 Další informace o dostupných imagí najdete v tématu [vyhledání a použití Azure Marketplace imagí virtuálních počítačů s Azure PowerShell](./cli-ps-findimage.md)
-
-## <a name="qualify-for-multi-tenant-hosting-rights"></a>Nárok na práva hostování více tenantů 
-Aby bylo možné získat oprávnění pro hostování více tenantů a spouštět image Windows 10 na uživatelích Azure, musí mít jedno z následujících předplatných: 
-
--   Microsoft 365 E3/E5 
--   Microsoft 365 F3 
--   Microsoft 365 a3/a5 
--   Windows 10 Enterprise E3/E5
--   Windows 10 vzdělávání a3/a5 
--   Windows VDA E3/E5
-
 
 ## <a name="uploading-windows-10-vhd-to-azure"></a>Nahrání virtuálního pevného disku s Windows 10 do Azure
 Pokud nahráváte zobecněný virtuální pevný disk s Windows 10, pamatujte na to, že ve výchozím nastavení není ve Windows 10 povolený vestavěný účet správce. Pokud chcete povolit integrovaný účet správce, zahrňte jako součást rozšíření vlastních skriptů následující příkaz.
@@ -119,10 +126,7 @@ LicenseType              :
 ```
 
 ## <a name="additional-information-about-joining-azure-ad"></a>Další informace o připojení k Azure AD
->[!NOTE]
->Azure zřídí všechny virtuální počítače s Windows s předdefinovaným účtem správce, který se nedá použít k připojení AAD. Například *nastavení > účet > přístup do práce nebo do školy > + připojení* nebude fungovat. Abyste mohli službu Azure AD připojit ručně, musíte vytvořit a přihlásit se jako druhý účet správce. Službu Azure AD můžete nakonfigurovat také pomocí zřizovacího balíčku. Další informace najdete v části *Další kroky* .
->
->
+Azure zřídí všechny virtuální počítače s Windows s předdefinovaným účtem správce, který se nedá použít k připojení AAD. Například *nastavení > účet > přístup do práce nebo do školy > + připojení* nebude fungovat. Abyste mohli službu Azure AD připojit ručně, musíte vytvořit a přihlásit se jako druhý účet správce. Službu Azure AD můžete nakonfigurovat také pomocí zřizovacího balíčku. Další informace najdete v části *Další kroky* .
 
 ## <a name="next-steps"></a>Další kroky
 - Další informace o [konfiguraci VDA pro Windows 10](/windows/deployment/vda-subscription-activation)

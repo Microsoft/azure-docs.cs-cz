@@ -4,12 +4,12 @@ description: Naučte se, jak nasadit službu v mnoha oblastech pomocí Azure Spr
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: baed44e04a0beca02cc959d302a4a29906b4a78e
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 63553b0bbca031faa44e0d88480fcc08950a3e2c
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539514"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627495"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Povolení postupů bezpečného nasazení pomocí Azure Správce nasazení (Public Preview)
 
@@ -22,9 +22,9 @@ Azure Správce nasazení je ve verzi Preview. Pomůžeme nám vylepšit funkci p
 Chcete-li použít Správce nasazení, je nutné vytvořit čtyři soubory:
 
 * Šablona topologie
-* Šablona zavedení
-* Soubor parametrů pro topologii
-* Soubor parametrů pro zavedení
+* Šablona zavedení.
+* Soubor parametrů pro topologii.
+* Soubor parametrů pro zavedení.
 
 Šablonu topologie nasadíte před nasazením šablony zavedení.
 

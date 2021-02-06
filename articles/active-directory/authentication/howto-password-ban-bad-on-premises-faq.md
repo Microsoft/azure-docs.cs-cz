@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d5517afe7407da7428d4a83f3d2de67836280c7
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f80990854fd0c584d8e6582fdf35108e67d9202b
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741894"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625123"
 ---
 # <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>Nejčastější dotazy k ochraně hesel Azure AD
 
@@ -66,7 +66,7 @@ Služba Active Directory podporuje možnost testování hesla, aby bylo možné 
 
 **Otázka: je podporována instalace ochrany heslem služby Azure AD vedle jiných produktů založených na filtrech hesel?**
 
-Yes. Podpora více registrovaných knihoven DLL filtru hesel je základní funkcí Windows, která není specifická pro ochranu heslem Azure AD. Před přijetím hesla musí všechny knihovny DLL registrovaných filtrů hesel souhlasit.
+Ano. Podpora více registrovaných knihoven DLL filtru hesel je základní funkcí Windows, která není specifická pro ochranu heslem Azure AD. Před přijetím hesla musí všechny knihovny DLL registrovaných filtrů hesel souhlasit.
 
 **Otázka: Jak můžu nasadit a nakonfigurovat ochranu hesel Azure AD v prostředí služby Active Directory bez použití Azure?**
 
@@ -107,7 +107,7 @@ No. Vzhledem k tomu, že proxy server je Bezstavová, není důležité použít
 
 **Otázka: je v pořádku nasazovat službu proxy ochrany heslem Azure AD vedle jiných služeb, jako je například Azure AD Connect?**
 
-Yes. Služba proxy ochrany heslem Azure AD a Azure AD Connect by nikdy neměly kolidovat přímo.
+Ano. Služba proxy ochrany heslem Azure AD a Azure AD Connect by nikdy neměly kolidovat přímo.
 
 Nastala nekompatibilita mezi verzí služby Microsoft Azure AD Connect agent, která je nainstalovaná softwarem proxy ochrany heslem Azure AD, a verzí služby, kterou instaluje software [proxy aplikací služby Azure Active Directory](../manage-apps/application-proxy.md) . Výsledkem této nekompatibility může být, že služba aktualizace agenta nemůže kontaktovat Azure kvůli aktualizacím softwaru. Nedoporučujeme instalovat proxy ochranu heslem Azure AD a Proxy aplikací služby Azure Active Directory ve stejném počítači.
 
@@ -150,6 +150,146 @@ Režim auditování se podporuje jenom v prostředí místní služby Active Dir
 **Otázka: uživatelé uvidí tradiční chybovou zprávu Windows, když heslo odmítne ochrana heslem Azure AD. Je možné přizpůsobit tuto chybovou zprávu, aby uživatelé věděli, co se skutečně stalo?**
 
 No. Chybová zpráva zobrazená uživateli, když je heslo odmítnuto řadičem domény, řídí klientským počítačem, nikoli řadičem domény. K tomuto chování dochází, pokud je heslo odmítnuté pomocí výchozích zásad hesel služby Active Directory nebo řešení založeného na filtrech hesel, jako je třeba ochrana heslem Azure AD.
+
+## <a name="password-testing-procedures"></a>Procedury testování hesla
+
+Je možné, že budete chtít provést několik základních testů různých hesel, aby bylo možné ověřit správnou činnost softwaru a lépe porozumět [algoritmům pro vyhodnocování hesla](concept-password-ban-bad.md#how-are-passwords-evaluated). Tato část popisuje metodu pro takové testování, která je navržena pro vytvoření opakujících se výsledků.
+
+Proč je nutné postupovat podle těchto kroků? Je k dispozici několik faktorů, které usnadňují řízení, opakované testování hesel v místním prostředí Active Directory:
+
+* Zásady hesel se konfigurují a ukládají v Azure a kopie zásad jsou pravidelně synchronizované místními agenty řadiče domény pomocí mechanismu cyklického dotazování. Latence spočívající v tomto cyklu cyklického dotazování může způsobit nejasnost. Pokud například nakonfigurujete zásadu v Azure, ale zapomenete ji synchronizovat s agentem řadiče domény, testy nemusí vracet očekávané výsledky. Interval dotazování se aktuálně pevně zakódované na jednu hodinu, ale čekání na jednu hodinu mezi změnami zásad není ideální pro scénář interaktivního testování.
+* Jakmile se nové zásady hesel synchronizují na řadič domény, dojde k větší latenci při replikaci na jiné řadiče domény. Tato zpoždění můžou způsobit neočekávané výsledky, pokud testujete změnu hesla na řadiči domény, který ještě neobdržel nejnovější verzi zásad.
+* Testování změn hesel prostřednictvím uživatelského rozhraní ztěžuje spolehlivost vašich výsledků. Například je snadné zaměnit neplatné heslo do uživatelského rozhraní, zejména vzhledem k tomu, že většina uživatelských rozhraní skrývá uživatelský vstup (například Windows CTRL-ALT-DELETE-> změnit heslo uživatelského rozhraní).
+* Není možné přesně řídit, který řadič domény se používá při testování změn hesel z klientů připojených k doméně. Klientský operační systém Windows vybere řadič domény na základě faktorů, jako je například lokalita a přiřazení podsítě služby Active Directory, konfigurace sítě specifická pro prostředí atd.
+
+Aby se tyto problémy předešly, následující kroky jsou založené na testování resetování hesla z příkazového řádku během přihlášení do řadiče domény.
+
+> [!WARNING]
+> Tyto postupy by se měly používat jenom v testovacím prostředí, protože všechny příchozí změny a resetování hesla se budou přijímat bez ověření, když je služba agenta řadiče domény zastavená, a taky se vyhnout zvýšeným rizikům, která spočívají v přihlašování do řadiče domény.
+
+V následujících krocích se předpokládá, že máte nainstalovaný agent DC aspoň na jednom řadiči domény, nainstalovanou aspoň jeden proxy server a zaregistrovali jste proxy a doménovou strukturu.
+
+1. Přihlaste se k řadiči domény pomocí přihlašovacích údajů správce domény (nebo jiných přihlašovacích údajů, které mají dostatečná oprávnění k vytváření testovacích uživatelských účtů a resetování hesel), které mají nainstalovaný software agenta DC a byl restartován.
+1. Otevřete Prohlížeč událostí a přejděte do [protokolu událostí správce agenta řadiče domény](howto-password-ban-bad-on-premises-monitor.md#dc-agent-admin-event-log).
+1. Otevřete okno příkazového řádku se zvýšenými oprávněními.
+1. Vytvoření testovacího účtu pro testování hesla
+
+   Existuje mnoho způsobů, jak vytvořit uživatelský účet, ale možnost příkazového řádku je k dispozici jako způsob, jak to zjednodušit během opakovaných zkušebních cyklů:
+
+   ```text
+   net.exe user <testuseraccountname> /add <password>
+   ```
+
+   Pro účely diskuze Předpokládejme, že jsme vytvořili testovací účet s názvem "ContosoUser", například:
+
+   ```text
+   net.exe user ContosoUser /add <password>
+   ```
+
+1. Otevřete webový prohlížeč (možná budete muset místo řadiče domény použít samostatné zařízení), přihlaste se k [Azure Portal](https://portal.azure.com)a přejděte do Azure Active Directory > metody ověřování zabezpečení > > ochrana heslem.
+1. Upravte zásady ochrany hesel Azure AD podle potřeby pro testování, které chcete provést.  Můžete se třeba rozhodnout, že budete chtít nakonfigurovat buď režim vynucení nebo auditování, nebo se můžete rozhodnout upravit seznam zakázaných podmínek v seznamu vlastních zakázaných hesel.
+1. Nové zásady synchronizujte zastavením a restartováním služby agenta řadiče domény.
+
+   Tento krok lze provést různými způsoby. Jedním ze způsobů, jak použít konzolu pro správu služby Service Management, je kliknout pravým tlačítkem na službu agenta řadiče domény Azure AD pro ochranu heslem a zvolíte restartovat. Jiný způsob může být proveden z okna příkazového řádku, například takto:
+
+   ```text
+   net stop AzureADPasswordProtectionDCAgent && net start AzureADPasswordProtectionDCAgent
+   ```
+    
+1. Zkontrolujte Prohlížeč událostí a ověřte, že se stáhla nová zásada.
+
+   Pokaždé, když je služba agenta řadiče domény zastavená a spuštěná, měla by se zobrazit 2 30006 událostí vydaných v případě úspěchu ukončení. První událost 30006 bude odpovídat zásadám, které byly uloženy do mezipaměti na disku ve sdílené složce SYSVOL. Druhá událost 30006 (Pokud je k dispozici) by měla mít aktualizované datum zásad tenanta, a pokud ano, bude odrážet zásadu staženou z Azure. Hodnota datum zásady tenanta je aktuálně kódována tak, aby zobrazovala přibližné časové razítko, které bylo staženo z Azure.
+   
+   Pokud se druhá událost 30006 nezobrazí, měli byste problém vyřešit, než budete pokračovat.
+   
+   Události 30006 budou vypadat podobně jako v tomto příkladu:
+ 
+   ```text
+   The service is now enforcing the following Azure password policy.
+
+   Enabled: 1
+   AuditOnly: 0
+   Global policy date: ‎2018‎-‎05‎-‎15T00:00:00.000000000Z
+   Tenant policy date: ‎2018‎-‎06‎-‎10T20:15:24.432457600Z
+   Enforce tenant policy: 1
+   ```
+
+   Například změna mezi vynutilou a režimem auditu bude mít za následek změnu příznaku AuditOnly (výše uvedená zásada s AuditOnly = 0 je v režimu vymáhání); změny v seznamu vlastních zakázaných hesel se přímo neprojeví ve výše uvedené události 30006 (a z bezpečnostních důvodů se neprotokolují nikde jinde). Zásady se úspěšně stáhly z Azure, i když tato změna bude obsahovat také upravený seznam vlastních zakázaných hesel.
+
+1. Spusťte test tak, že se pokusíte resetovat nové heslo na testovacím uživatelském účtu.
+
+   Tento krok lze provést z okna příkazového řádku, například takto:
+
+   ```text
+   net.exe user ContosoUser <password>
+   ```
+
+   Po spuštění příkazu můžete získat další informace o výsledku příkazu tak, že prohlížíte v prohlížeči událostí. Události výsledku ověřování hesla jsou popsány v tématu [protokol událostí správce agenta řadiče domény](howto-password-ban-bad-on-premises-monitor.md#dc-agent-admin-event-log) . Tyto události použijete k ověření výsledku testu kromě interaktivního výstupu z příkazů net.exe.
+
+   Pojďme se pokusit příklad: pokus o nastavení hesla, které je zakázáno globálním seznamem společnosti Microsoft (Všimněte si, že tento seznam není [dokumentován](concept-password-ban-bad.md#global-banned-password-list) , ale můžete ho otestovat na známý zakázaný termín). V tomto příkladu se předpokládá, že jste nakonfigurovali zásady tak, aby byly v režimu vymáhání a aby se do vlastního seznamu zakázaných hesel přidaly nulové výrazy.
+
+   ```text
+   net.exe user ContosoUser PassWord
+   The password does not meet the password policy requirements. Check the minimum password length, password complexity and password history requirements.
+
+   More help is available by typing NET HELPMSG 2245.
+   ```
+
+   Na základě dokumentace, protože náš test byl operace resetování hesla, měla by se zobrazit událost 10017 a 30005 pro uživatele ContosoUser.
+
+   Událost 10017 by měla vypadat jako v tomto příkladu:
+
+   ```text
+   The reset password for the specified user was rejected because it did not comply with the current Azure password policy. Please see the correlated event log message for more details.
+ 
+   UserName: ContosoUser
+   FullName: 
+   ```
+
+   Událost 30005 by měla vypadat jako v tomto příkladu:
+
+   ```text
+   The reset password for the specified user was rejected because it matched at least one of the tokens present in the Microsoft global banned password list of the current Azure password policy.
+ 
+   UserName: ContosoUser
+   FullName: 
+   ```
+
+   To bylo zábavné – Pojďme vyzkoušet jiný příklad! Tentokrát se pokusíte nastavit heslo, které je zakázané vlastním seznamem zakázané, zatímco zásady jsou v režimu auditování. V tomto příkladu se předpokládá, že jste provedli následující kroky: nakonfigurovali jste zásady do režimu auditování, Přidali jste pojem "lachrymose" do vlastního seznamu zakázaných hesel a synchronizovalii výsledné nové zásady k řadiči domény, a to tak, že zadáte službu agenta řadiče domény, jak je popsáno výše.
+
+   OK nastavte variaci zakázaného hesla:
+
+   ```text
+   net.exe user ContosoUser LaChRymoSE!1
+   The command completed successfully.
+   ```
+
+   Zapamatujte si, že je tato operace úspěšná, protože zásada je v režimu auditování. Pro uživatele ContosoUser by se měla zobrazit událost 10025 a 30007.
+
+   Událost 10025 by měla vypadat jako v tomto příkladu:
+   
+   ```text
+   The reset password for the specified user would normally have been rejected because it did not comply with the current Azure password policy. The current Azure password policy is configured for audit-only mode so the password was accepted. Please see the correlated event log message for more details.
+ 
+   UserName: ContosoUser
+   FullName: 
+   ```
+
+   Událost 30007 by měla vypadat jako v tomto příkladu:
+
+   ```text
+   The reset password for the specified user would normally have been rejected because it matches at least one of the tokens present in the per-tenant banned password list of the current Azure password policy. The current Azure password policy is configured for audit-only mode so the password was accepted.
+ 
+   UserName: ContosoUser
+   FullName: 
+   ```
+
+1. Pokračujte v testování různých hesel podle vašeho výběru a kontrolou výsledků v prohlížeči událostí pomocí postupů popsaných v předchozích krocích. Pokud potřebujete změnit zásadu v Azure Portal, nezapomeňte synchronizovat nové zásady s agentem řadiče domény, jak je popsáno výše.
+
+Zavedli jsme postupy, které vám umožní provádět řízené testování chování ověřování hesel v ochraně heslem služby Azure AD. Resetování uživatelských hesel z příkazového řádku přímo na řadiči domény se může zdát, že se jedná o takové testování, ale jak bylo popsáno dříve, je navrženo tak, aby přineslo opakované výsledky. Při testování různých hesel mějte na paměti, že k vyhodnocení výsledků, které jste neočekávali, doporučujeme [algoritmus vyhodnocování hesel](concept-password-ban-bad.md#how-are-passwords-evaluated) .
+
+> [!WARNING]
+> Po dokončení všech testování nezapomeňte odstranit všechny uživatelské účty vytvořené pro účely testování.
 
 ## <a name="additional-content"></a>Další obsah
 

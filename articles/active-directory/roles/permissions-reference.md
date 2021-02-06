@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4982acb54207a9ed08a96414877603a8253c2ade
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 22ac3b9ac5f7a10226e8dc7197fdf60dc0a84e3b
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99557764"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627612"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -535,6 +535,7 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 > | Microsoft. Directory/policies/applicationConfiguration/Owners/Read | Číst zásady. applicationConfiguration vlastnosti v Azure Active Directory. |
 > | Microsoft. Directory/policies/applicationConfiguration/Owners/Update | Aktualizuje vlastnost policies. applicationConfiguration v Azure Active Directory. |
 > | Microsoft. Directory/policies/applicationConfiguration/policyAppliedTo/Read | Číst zásady. applicationConfiguration vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Načte všechny vlastnosti protokolů zřizování. |
 > | Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Update | Aktualizuje vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
 > | Microsoft. Directory/servicePrincipals/appRoleAssignments/Update | Aktualizuje vlastnost servicePrincipals. appRoleAssignments v Azure Active Directory. |
 > | Microsoft. Directory/servicePrincipals/publikum/Update | Aktualizuje vlastnost servicePrincipals. cílová skupina v Azure Active Directory. |
@@ -697,6 +698,7 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 > | Microsoft. Directory/policies/applicationConfiguration/Owners/Read | Číst zásady. applicationConfiguration vlastnosti v Azure Active Directory. |
 > | Microsoft. Directory/policies/applicationConfiguration/Owners/Update | Aktualizuje vlastnost policies. applicationConfiguration v Azure Active Directory. |
 > | Microsoft. Directory/policies/applicationConfiguration/policyAppliedTo/Read | Číst zásady. applicationConfiguration vlastnosti v Azure Active Directory. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Načte všechny vlastnosti protokolů zřizování. |
 > | Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Update | Aktualizuje vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
 > | Microsoft. Directory/servicePrincipals/appRoleAssignments/Update | Aktualizuje vlastnost servicePrincipals. appRoleAssignments v Azure Active Directory. |
 > | Microsoft. Directory/servicePrincipals/publikum/Update | Aktualizuje vlastnost servicePrincipals. cílová skupina v Azure Active Directory. |
@@ -766,6 +768,7 @@ Může spravovat všechny aspekty Azure AD a služeb Microsoftu, které použív
 > | Microsoft. Directory/oAuth2PermissionGrants/allProperties/allTasks | Vytvořit a odstranit oAuth2PermissionGrants a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
 > | Microsoft. Directory/Organization/allProperties/allTasks | Vytvářejte a odstraňujte organizaci a čtěte a aktualizujte všechny vlastnosti v Azure Active Directory. |
 > | Microsoft. Directory/policies/allProperties/allTasks | Vytváření a odstraňování zásad a čtení a aktualizace všech vlastností v Azure Active Directory. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Načte všechny vlastnosti protokolů zřizování. |
 > | Microsoft. Directory/roleAssignments/allProperties/allTasks | Vytvořit a odstranit roleAssignments a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
 > | Microsoft. Directory/roleDefinitions/allProperties/allTasks | Vytvořit a odstranit roleDefinitions a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
 > | Microsoft. Directory/scopedRoleMemberships/allProperties/allTasks | Vytvořit a odstranit scopedRoleMemberships a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
@@ -1143,6 +1146,7 @@ Může číst vše, co globální správce může, ale ne nic upravovat.
 > | Microsoft. Directory/Organization/Basic/Read    | Přečte základní vlastnosti v organizaci v Azure Active Directory. |
 > | Microsoft. Directory/Organization/trustedCAsForPasswordlessAuth/Read    | Číst vlastnost Organization. trustedCAsForPasswordlessAuth v Azure Active Directory. |
 > | Microsoft. Directory/policies/Standard/Read    | Číst standardní zásady v Azure Active Directory. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Načte všechny vlastnosti protokolů zřizování. |
 > | Microsoft. Directory/roleAssignments/Basic/Read    | Přečte základní vlastnosti roleAssignments v Azure Active Directory. |
 > | Microsoft. Directory/roleDefinitions/Basic/Read    | Přečte základní vlastnosti roleDefinitions v Azure Active Directory. |
 > | Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Read    | Číst vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
@@ -1683,6 +1687,7 @@ Může číst sestavy pro přihlášení a audit.
 > | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Načte všechny vlastnosti protokolů zřizování. |
 > | Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
 > | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 > | Microsoft. Office 365. usageReports/allEntities/Read | Přečtěte si sestavy o využití Office 365. |
@@ -1743,6 +1748,7 @@ Může číst informace o zabezpečení a sestavy a spravovat konfiguraci v Azur
 > | Microsoft. Directory/policies/Owners/Update | V Azure Active Directory vlastnost Update policies. Owners. |
 > | Microsoft. Directory/policies/tenantDefault/Update | Aktualizuje vlastnost policies. tenantDefault v Azure Active Directory. |
 > | Microsoft. Directory/privilegedIdentityManagement/allProperties/Read | Načte všechny prostředky v Microsoft. aad. privilegedIdentityManagement. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Načte všechny vlastnosti protokolů zřizování. |
 > | Microsoft. Directory/servicePrincipals/policies/Update | Aktualizujte vlastnost servicePrincipals. policies v Azure Active Directory. |
 > | Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
 > | Microsoft. Office 365. protectionCenter/allEntities/Read | Přečtěte si všechny aspekty centra ochrany Office 365. |
@@ -1792,6 +1798,7 @@ Může číst informace o zabezpečení a sestavy v Azure AD a Microsoft 365.
 > | Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
 > | Microsoft. aad. identityProtection/allEntities/Read | Načte všechny prostředky v Microsoft. aad. identityProtection. |
 > | Microsoft. aad. privilegedIdentityManagement/allEntities/Read | Načte všechny prostředky v Microsoft. aad. privilegedIdentityManagement. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Načte všechny vlastnosti protokolů zřizování. |
 > | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 > | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 > | Microsoft. Office 365. protectionCenter/allEntities/Read | Přečtěte si všechny aspekty centra ochrany Office 365. |

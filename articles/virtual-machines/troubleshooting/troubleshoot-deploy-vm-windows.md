@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 8ed567ee20835cfe076c9b06234f2cba23f3a8bd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 98a16e0a60ddf149e8f0e1a092051f3e98ea8225
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002548"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627058"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Řešení potíží s nasazením virtuálního počítače s Windows v Azure
 
@@ -104,7 +104,7 @@ Dostupnost můžete ověřit z [tabulky dostupné podle oblastí](https://azure.
 
 Pokud máte příslušné předplatné sady Visual Studio (dříve MSDN), můžete použít Windows 7, Windows 8 nebo Windows 10 v Azure pro scénáře vývoje a testování. 
 
-- Image Windows 10 jsou dostupné z Galerie Azure v rámci [způsobilých nabídek pro vývoj a testování](../windows/client-images.md#eligible-offers). 
+- Image Windows 10 jsou dostupné z Galerie Azure v rámci [způsobilých nabídek pro vývoj a testování](../windows/client-images.md). 
 - Předplatitelé sady Visual Studio v jakémkoli typu nabídky můžou také [dostatečně připravit a vytvářet](../windows/prepare-for-upload-vhd-image.md) image s 64 Windows 7, Windows 8 nebo Windows 10 a pak [nahrávat do Azure](../windows/upload-generalized-managed.md). Použití zůstává omezené na vývoj a testování prostřednictvím aktivních předplatitelů sady Visual Studio.
 
 Tento [článek](../windows/client-images.md) popisuje požadavky na způsobilost pro spuštění klienta Windows v Azure a používání imagí z Galerie Azure.

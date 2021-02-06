@@ -3,16 +3,21 @@ title: Příklady typů tříd v Azure Lab Services | Microsoft Docs
 description: Poskytuje některé typy tříd, pro které můžete nastavit Labs pomocí Azure Lab Services.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7ebc89c040be732c230f0c3f54f68fb91466eb68
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 5a90fb128f5954f3eb713714ff22ff40a3beab36
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436398"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627429"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Přehled typů tříd – Azure Lab Services
 
 Azure Lab Services vám umožní rychle nastavit prostředí pro laboratorní prostředí učebny v cloudu. Články v této části poskytují pokyny, jak nastavit několik typů cvičení pomocí Azure Lab Services.
+
+## <a name="arcgis"></a>ArcGIS
+[ArcGIS](https://www.esri.com/en-us/arcgis/products/arcgis-solutions/overview) je typ geografického informačního systému (GIS).  Můžete nastavit testovací prostředí, které využívá různé aplikace ArcGIS desktopu, například [ArcMap](https://desktop.arcgis.com/en/arcmap/latest/map/main/what-is-arcmap-.htm) k vytváření, úpravám a analýze 2D map.
+
+Podrobné informace o tom, jak tento typ testovacího prostředí nastavit, najdete v tématu [Nastavení testovacího prostředí pro ArcMap\ArcGIS Desktop](class-type-arcgis.md).
 
 ## <a name="big-data-analytics"></a>Analýzy velkých objemů dat
 Můžete nastavit testovací prostředí GPU pro výuku třídy analýzy velkých objemů dat. U tohoto typu třídy studenti zjistí, jak zpracovávat velké objemy dat, a použít algoritmy strojového a statistického učení k odvození přehledů dat. Klíčový cíl pro studenty je Naučte se používat nástroje pro analýzu dat, jako je open source softwarový balíček Apache Hadoop, který poskytuje nástroje pro ukládání, správu a zpracování velkých objemů dat. 
@@ -41,6 +46,11 @@ Program [MATLAB](https://www.mathworks.com/products/matlab.html), který předst
 
 Podrobné informace o tom, jak tento typ testovacího prostředí nastavit, najdete v tématu [Nastavení testovacího prostředí pro výuku programu MATLAB](class-type-matlab.md).
 
+## <a name="networking-with-gns3"></a>Síť s GNS3
+Můžete nastavit testovací prostředí pro třídu, která se zaměřuje na to, aby studenti mohli emulovat, konfigurovat, testovat a řešit potíže s virtuálními a skutečnými sítěmi pomocí [GNS3](https://www.gns3.com/) softwaru. 
+
+Podrobné informace o tom, jak tento typ testovacího prostředí nastavit, najdete v tématu [Nastavení testovacího prostředí pro výuku síťové třídy](class-type-networking-gns3.md).
+
 ## <a name="project-lead-the-way-pltw"></a>Způsob vedoucího projektu (PLTW)
 [Vedoucí projektu (PLTW)](https://www.pltw.org/) je nezisková organizace, která poskytuje podrobné přehledy PreK-12 v rámci USA v počítačové vědy, inženýrské a biolékařské vědě.  V každé třídě PLTW studenti využívají různé softwarové aplikace jako součást praktických výukových zkušeností.
 
@@ -61,7 +71,12 @@ Podrobné informace o tom, jak tento typ testovacího prostředí nastavit, najd
 ## <a name="solidworks-computer-aided-design-cad"></a>SolidWorks – návrh s podporou počítačů (CAD)
 Můžete nastavit testovací prostředí GPU, které poskytuje technickým studentům přístup k [SolidWorks](https://www.solidworks.com/).  SolidWorks poskytuje prostředí 3D CAD pro modelování objektů Solid.  Pomocí SolidWorks můžou technici snadno vytvářet, vizualizovat, simulovat a zdokumentovat jejich návrhy.
 
-Podrobné informace o tom, jak tento typ testovacího prostředí nastavit, najdete v tématu [Nastavení testovacího prostředí pro inženýrské třídy pomocí SolidWorks](class-type-solidworks.md) .
+Podrobné informace o tom, jak nastavit tento typ testovacího prostředí, najdete v tématu [Nastavení testovacího prostředí pro inženýrské třídy pomocí SolidWorks](class-type-solidworks.md).
+
+## <a name="sql-database-and-management"></a>SQL Database a Správa
+Jazyk SQL (Structured Query Language) (SQL) je standardní jazyk pro správu relačních databází, včetně přidávání, přístupu a správy obsahu v databázi.  Můžete nastavit testovací prostředí pro učení konceptů databází pomocí databázového serveru [MySQL](https://www.mysql.com/) i serveru [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) .
+
+Podrobné informace o tom, jak tento typ testovacího prostředí nastavit, najdete v tématu [Nastavení testovacího prostředí pro učení správy databází pro relační databáze](class-type-database-management.md).
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:

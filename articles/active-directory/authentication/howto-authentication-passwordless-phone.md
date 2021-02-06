@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35eff46a0470d429c8ec6f364ffa836501c65f47
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 62dea67f139857befc7ca24b8b8a105241b5c949
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743594"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626151"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Povolení přihlášení bez hesla pomocí aplikace Microsoft Authenticator (Preview)
 
@@ -32,7 +32,7 @@ Lidé, kteří povolili telefonické přihlášení z aplikace Microsoft Authent
 2. Zvolte **Schválit**.
 3. Zadejte kód PIN nebo biometrické údaje.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete používat přihlášení bez hesla pro telefonickou práci s aplikací Microsoft Authenticator, musí být splněné následující předpoklady:
 
@@ -57,10 +57,13 @@ Azure AD umožňuje vybrat, které metody ověřování se dají použít během
 Pokud chcete metodu ověřování povolit pro přihlášení telefon bez hesla, proveďte následující kroky:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu *globálního správce* .
-1. Vyhledejte a vyberte *Azure Active Directory* a pak přejděte k zásadě ověřování metody **zabezpečení**  >  **Authentication methods**  >  **(Preview)** .
-1. V části **přihlášení bez hesla pro telefonování** vyberte následující možnosti:
+1. Vyhledejte a vyberte *Azure Active Directory* a pak přejděte do zásad **zabezpečení**  >  **metody ověřování**  >  .
+1. V části **Microsoft Authenticator (Preview)** vyberte následující možnosti:
    1. **Povolit** – Ano nebo ne
    1. **Cíl** – všichni uživatelé nebo vybrat uživatele
+1. Každá přidaná skupina nebo uživatel je ve výchozím nastavení povolená, aby používala Microsoft Authenticator v režimech nabízených oznámení bez hesla i v režimu nabízených oznámení ("libovolný"). To můžete změnit pro každý řádek:
+   1. Přejít na **...**  >  **Nakonfigurujte**.
+   1. **Režim ověřování** – libovolná, bez hesla nebo nabízená oznámení
 1. Chcete-li použít novou zásadu, vyberte možnost **Uložit**.
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator"></a>Registrace a Správa uživatelů Microsoft Authenticator

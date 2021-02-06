@@ -4,12 +4,12 @@ description: Naučte se, jak zpracovávat lidské interakce a časové limity v 
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: cba3cd0fd5d8727c4ffa4d1b42d7cd9250f21032
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: dd7f8416b2f4520ec8e94c8608f753f7412afc4d
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028299"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627368"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Ukázka lidské interakce v Durable Functions-telefon ověřování
 
@@ -37,6 +37,9 @@ Tento článek vás provede následujícími funkcemi v ukázkové aplikaci:
 
 * `E4_SmsPhoneVerification`: [Funkce Orchestrator](durable-functions-bindings.md#orchestration-trigger) , která provádí proces ověření telefonu, včetně správy časových limitů a opakovaných pokusů.
 * `E4_SendSmsChallenge`: [Funkce Activity](durable-functions-bindings.md#activity-trigger) , která odesílá kód prostřednictvím textové zprávy.
+
+> [!NOTE]
+> `HttpStart`Funkce v [ukázkové aplikaci a rychlý Start](#prerequisites) funguje jako [klient orchestrace](durable-functions-bindings.md#orchestration-client) , který aktivuje funkci Orchestrator.
 
 ### <a name="e4_smsphoneverification-orchestrator-function"></a>E4_SmsPhoneVerification funkce Orchestrator
 

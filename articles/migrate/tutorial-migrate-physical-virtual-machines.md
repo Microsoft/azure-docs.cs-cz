@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: 3e098e64eacf8b126d6a6d72b1f242443e88d55c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: aeeb810174ff5c21a81bcec8aa9265ff100edf91
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881091"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626321"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrace počítačů jako fyzických serverů do Azure
 
@@ -30,7 +30,7 @@ Tento kurz je třetí v řadě, který ukazuje, jak vyhodnocovat a migrovat fyzi
 > [!div class="checklist"]
 > * Připravte se na použití Azure s Azure Migrate: Migrace serveru.
 > * Ověřte požadavky na počítače, které chcete migrovat, a připravte počítač pro Azure Migrate replikačního zařízení, které se používá ke zjišťování a migraci počítačů do Azure.
-> * Přidejte Nástroj pro migraci Azure Migrate serveru do centra Azure Migrate.
+> * Přidejte nástroj Azure Migrate: Server pro migraci do centra Azure Migrate.
 > * Nastavte zařízení replikace.
 > * Nainstalujte službu mobility na počítače, které chcete migrovat.
 > * Povolte replikaci.
@@ -51,7 +51,7 @@ Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 
 ## <a name="prepare-azure"></a>Příprava Azure
 
-Připravte Azure na migraci pomocí migrace serveru.
+Připravte Azure na migraci pomocí Azure Migrate: Migrace serveru.
 
 **Úkol** | **Podrobnosti**
 --- | ---
@@ -116,7 +116,7 @@ Připravte se na nasazení zařízení následujícím způsobem:
 
 ## <a name="set-up-the-replication-appliance"></a>Nastavení zařízení replikace
 
-Prvním krokem migrace je nastavení zařízení replikace. Pokud chcete nastavit zařízení pro migraci fyzického serveru, Stáhněte si instalační soubor pro zařízení a pak ho spusťte na [počítači, který jste připravili](#prepare-a-machine-for-the-replication-appliance). Po instalaci zařízení ho zaregistrujete pomocí Azure Migrate migrace serveru.
+Prvním krokem migrace je nastavení zařízení replikace. Pokud chcete nastavit zařízení pro migraci fyzického serveru, Stáhněte si instalační soubor pro zařízení a pak ho spusťte na [počítači, který jste připravili](#prepare-a-machine-for-the-replication-appliance). Po instalaci zařízení ho zaregistrujete s Azure Migrate: Migrace serveru.
 
 
 ### <a name="download-the-replication-appliance-installer"></a>Stažení instalačního programu zařízení replikace
@@ -129,7 +129,7 @@ Prvním krokem migrace je nastavení zařízení replikace. Pokud chcete nastavi
 4. V části **cílová oblast** vyberte oblast Azure, do které chcete migrovat počítače.
 5. Vyberte **potvrdit, že cílová oblast pro migraci je název regionu**.
 6. Klikněte na **vytvořit prostředky**. Tím dojde k vytvoření trezoru Azure Site Recovery na pozadí.
-    - Pokud jste už nastavili migraci pomocí migrace serveru Azure Migrate, možnost Target nejde nakonfigurovat, protože se předtím nastavily prostředky.    
+    - Pokud jste už nastavili migraci pomocí Azure Migrate: Migrace serveru, možnost Target nejde nakonfigurovat, protože se předtím nastavily prostředky.    
     - Po kliknutí na toto tlačítko nemůžete změnit cílovou oblast tohoto projektu.
     - Všechny následné migrace jsou v této oblasti.
 
@@ -145,7 +145,7 @@ Prvním krokem migrace je nastavení zařízení replikace. Pokud chcete nastavi
 
     ![Dokončit registraci](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
 
-Po dokončení registrace může trvat nějakou dobu, než se zjištěné počítače objeví v Azure Migrate migrace serveru. Po zjištění virtuálních počítačů se počet **zjištěných serverů** zvyšuje.
+Po dokončení registrace může trvat nějakou dobu, než se zjištěné počítače objeví v Azure Migrate: Migrace serveru. Po zjištění virtuálních počítačů se počet **zjištěných serverů** zvyšuje.
 
 ![Zjištěné servery](./media/tutorial-migrate-physical-virtual-machines/discovered-servers.png)
 
@@ -342,8 +342,8 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
 ## <a name="post-migration-best-practices"></a>Osvědčené postupy po migraci
 
 - Pro zvýšení odolnosti:
-    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Přečtěte si další informace](../backup/quick-backup-vm-portal.md).
-    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Přečtěte si další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
+    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Další informace](../backup/quick-backup-vm-portal.md).
+    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Pro zvýšení zabezpečení:
     - Odblokujte a omezte přístup k příchozímu provozu pomocí [správy v čase Azure Security Center](../security-center/security-center-just-in-time.md).
     - Omezte síťový provoz na koncové body správy pomocí [skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md).

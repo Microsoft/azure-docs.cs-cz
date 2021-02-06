@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: dc6fdadbdfdbdd1d32f640e356a67841187a83c9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3a7e8c47977f0518a3a3e9f8a6fd2e57454e1c42
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999259"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626100"
 ---
 # <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>Nastavení testovacího prostředí pro inženýrské třídy pomocí SOLIDWORKS
 
@@ -31,7 +31,7 @@ Po nastavení licenčního serveru budete muset vytvořit partnerský vztah k [v
 
 ## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
 
-K nastavení tohoto testovacího prostředí potřebujete předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete. Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v kurzu [jak nastavit účet testovacího prostředí](./tutorial-setup-lab-account.md). Můžete použít i existující účet testovacího prostředí.
+K nastavení tohoto testovacího prostředí potřebujete předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/). Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v kurzu [jak nastavit účet testovacího prostředí](./tutorial-setup-lab-account.md). Můžete použít i existující účet testovacího prostředí.
 
 ### <a name="lab-account-settings"></a>Nastavení účtu testovacího prostředí
 
@@ -57,7 +57,7 @@ Při nastavování testovacího prostředí učebny použijte nastavení v násl
 > Velikost virtuálního počítače **malého GPU (vizualizace)** je nakonfigurovaná tak, aby umožňovala vysoce náročné grafické prostředí.  Další informace o této velikosti virtuálního počítače najdete v článku o [Nastavení testovacího prostředí pomocí GPU](./how-to-setup-lab-gpu.md).
 
 > [!WARNING]
-> **Před** vytvořením testovacího prostředí nezapomeňte [virtuální síť](https://www.mathworks.com/support/requirements/matlab-system-requirements.html) pro účet testovacího prostředí na virtuální síť pro daný licenční server.
+> **Před** vytvořením testovacího prostředí nezapomeňte [virtuální síť](./how-to-connect-peer-virtual-network.md) pro účet testovacího prostředí na virtuální síť pro daný licenční server.
 
 ## <a name="template-virtual-machine-configuration"></a>Konfigurace virtuálního počítače šablony
 
@@ -76,7 +76,7 @@ Kroky v této části ukazují, jak nastavit virtuální počítač šablony sta
     > [!NOTE]
     > V dialogovém okně **Přidat server** se zobrazí výzva k zadání **čísla portu** používaného pro váš licenční server a názvu nebo IP adresy licenčního serveru.
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>Náklady
 
 Pojďme pro tuto třídu pokrýt možné náklady. Tento odhad nezahrnuje náklady na provozování licenčního serveru. Použijeme třídu 25 studentů. Naplánovaný čas třídy je 20 hodin. Každý student navíc získá kvótu 10 hodin pro domácí nebo přiřazení mimo plánovanou dobu třídy. Velikost virtuálního počítače, kterou jsme zvolili, byla **malá GPU (vizualizace)**, což je 160 jednotek testovacího prostředí.
 

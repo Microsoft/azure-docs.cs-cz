@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 8ad5ee78a525b3798bbf613168ff74a9e21fe99b
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 3437c8bcf8ff508149abae2549d7c34521700840
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920253"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627259"
 ---
 # <a name="how-to-export-fhir-data"></a>Jak exportovat FHIR data
 
@@ -30,12 +30,15 @@ Rozhraní Azure API pro FHIR podporuje $export na následujících úrovních:
 * [Pacient](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---all-patients): `GET https://<<FHIR service base URL>>/Patient/$export>>`
 * [Skupina pacientů *](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---group-of-patients) – Azure API pro FHIR exportuje všechny související prostředky, ale neexportují charakteristiky této skupiny: `GET https://<<FHIR service base URL>>/Group/[ID]/$export>>`
 
+Při exportu dat se vytvoří samostatný soubor pro každý typ prostředku. Aby se zajistilo, že exportované soubory nebudou příliš velké, vytvoříme nový soubor, jakmile bude velikost jednoho exportovaného souboru větší než 64 MB. Výsledkem je, že můžete získat více souborů pro každý typ prostředku, který se bude vyčíslit (tj. pacient-1. ndjson, pacient-2. ndjson). 
 
 
 > [!Note] 
 > `Patient/$export` a `Group/[ID]/$export` můžou exportovat duplicitní prostředky, pokud je prostředek v prostoru více než jednoho prostředku nebo je ve více skupinách.
 
 Kromě toho se při zrušení aktuální úlohy exportu kontroluje stav exportu prostřednictvím adresy URL vrácené hlavičkou umístění v rámci služby Řízení front.
+
+
 
 ## <a name="settings-and-parameters"></a>Nastavení a parametry
 
@@ -47,7 +50,7 @@ Existují dva povinné parametry hlaviček, které je třeba nastavit pro $expor
 ### <a name="query-parameters"></a>Parametry dotazů
 Rozhraní Azure API pro FHIR podporuje následující parametry dotazu. Všechny tyto parametry jsou volitelné:
 
-|Parametr dotazu        | Definováno specifikací FHIR?    |  Popis|
+|Parametr dotazu        | Definováno specifikací FHIR?    |  Description|
 |------------------------|---|------------|
 | \_outputFormat | Yes | V současné době podporuje tři hodnoty, které se mají Zarovnat ke specifikaci FHIR: Application/FHIR + ndjson, Application/ndjson nebo pouze ndjson. Všechny úlohy exportu budou vracet `ndjson` a předaná hodnota nemá žádný vliv na chování kódu. |
 | \_doby | Yes | Umožňuje exportovat pouze prostředky, které byly od zadaného času změněny. |

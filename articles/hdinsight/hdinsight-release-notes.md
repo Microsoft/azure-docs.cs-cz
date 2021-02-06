@@ -5,12 +5,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 88e2161cfddf95f7f250b8b76c067d045f1529da
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 6e37501a56bdf247bce2111e8e5a5bf02f37d898
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092230"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626117"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Poznámky k verzi Azure HDInsight
 
@@ -51,7 +51,7 @@ HDInsight přidal skupiny zabezpečení sítě (skupin zabezpečení sítě) a u
 V nadcházejících verzích dojde k následujícím změnám.
 
 ### <a name="breaking-change-for-net-for-apache-spark-100"></a>Průlomová změna pro .NET pro Apache Spark 1.0.0
-HDInsight zavede první hlavní oficiální verzi rozhraní .NET pro Apache Spark v další verzi. Zajišťuje úplnost rozhraní API dataframe pro Spark 2.4. x a Spark 3.0. x spolu s dalšími funkcemi. U této hlavní verze dojde k zásadním změnám. pro pochopení kroků potřebných k aktualizaci kódu a kanálů si přečtěte [Tento identifikátor GUID migrace](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) . Další informace najdete [tady](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight).
+HDInsight zavede první hlavní oficiální verzi rozhraní .NET pro Apache Spark v další verzi. Zajišťuje úplnost rozhraní API dataframe pro Spark 2.4. x a Spark 3.0. x spolu s dalšími funkcemi. U této hlavní verze dojde k zásadním změnám. Další informace najdete v [této příručce k migraci](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) , abyste pochopili kroky potřebné k aktualizaci kódu a kanálů. Další informace najdete [tady](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight).
 
 ### <a name="default-cluster-vm-size-will-be-changed-to-ev3-family"></a>Výchozí velikost virtuálního počítače clusteru se změní na Ev3 rodinu.
 Od další verze (od konce ledna) se výchozí velikosti virtuálních počítačů clusteru změní z řady D na rodinu Ev3. Tato změna se vztahuje na hlavní uzly a pracovní uzly. Chcete-li se této změně vyhnout, zadejte velikosti virtuálních počítačů, které chcete použít v šabloně ARM.

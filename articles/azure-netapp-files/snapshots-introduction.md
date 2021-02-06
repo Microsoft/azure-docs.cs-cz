@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/12/2021
+ms.date: 02/05/2021
 ms.author: b-juche
-ms.openlocfilehash: beadd250ec4472b894f0f474b1057ad44cf474ed
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 526ef0af08833954aef4136716930cec0df40eea
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133510"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625243"
 ---
-# <a name="how-azure-netapp-files-snapshots-work"></a>Jak fungují Azure NetApp Files snímky
+# <a name="how-azure-netapp-files-snapshots-work"></a>Jak fungují snímky Azure NetApp Files
 
 Tento článek vysvětluje, jak Azure NetApp Files snímky fungují. Technologie Azure NetApp Files snímků zajišťuje stabilitu, škálovatelnost a rychlejší obnovu bez dopadu na výkon. Technologie Azure NetApp Files snímků poskytuje základ pro řešení ochrany dat, včetně obnovení jednoho souboru, obnovení a klonování svazků a replikace mezi jednotlivými oblastmi. 
 
@@ -49,26 +49,26 @@ V obou případech jsou bloky dat, na které se odkazuje ze snímku, pořád sta
 
 Vzhledem k tomu, že snímek svazku zaznamenává pouze změny bloku od posledního snímku, poskytuje následující klíčové výhody:
 
-* Snímky jsou ***úložiště efektivní** _.   
-    Snímky spotřebovávají minimální prostor úložiště, protože nekopírují bloky dat celého svazku. Dva snímky provedené v sekvenci se liší pouze bloky přidanými nebo změněnými v časovém intervalu mezi oběma. Tento blok – přírůstkové chování omezuje využití přiřazené kapacity úložiště. Mnoho alternativních implementací snímků spotřebovává úložné svazky, které se rovnají aktivnímu systému souborů, a vyvolává požadavky na kapacitu úložiště. V závislosti na denních tarifech na úrovni aplikace _block-Level * budou Azure NetApp Files snímky spotřebovávat více nebo méně kapacity, ale jenom u změněných dat. Průměrný denní objem spotřeby snímků vychází jenom z 1-5% využité kapacity svazku pro mnoho svazků aplikace nebo až 20-30% pro svazky, jako jsou SAP HANA databázové svazky. Nezapomeňte [monitorovat využití svazku a snímků](azure-netapp-files-metrics.md#volumes) pro spotřebu kapacity snímku vzhledem k počtu vytvořených a udržovaných snímků.   
+* Snímky jsou ***efektivní pro úložiště***.   
+    Snímky spotřebovávají minimální prostor úložiště, protože nekopírují bloky dat celého svazku. Dva snímky provedené v sekvenci se liší pouze bloky přidanými nebo změněnými v časovém intervalu mezi oběma. Tento blok – přírůstkové chování omezuje využití přiřazené kapacity úložiště. Mnoho alternativních implementací snímků spotřebovává úložné svazky, které se rovnají aktivnímu systému souborů, a vyvolává požadavky na kapacitu úložiště. V závislosti na denních sazbách pro změny na *úrovni* aplikace budou Azure NetApp Files snímky spotřebovávat více nebo méně kapacity, ale jenom u změněných dat. Průměrný denní objem spotřeby snímků vychází jenom z 1-5% využité kapacity svazku pro mnoho svazků aplikace nebo až 20-30% pro svazky, jako jsou SAP HANA databázové svazky. Nezapomeňte [monitorovat využití svazku a snímků](azure-netapp-files-metrics.md#volumes) pro spotřebu kapacity snímku vzhledem k počtu vytvořených a udržovaných snímků.   
 
-* Snímky jsou ***rychlé vytvoření, replikace, obnovení nebo klonování** _.   
+* Snímky jsou ***rychlé vytváření, replikace, obnovení nebo klonování***.   
     Vytvoření, replikaci, obnovení nebo klonování snímku trvá během několika sekund, a to bez ohledu na velikost svazku a úroveň aktivit. Snímek svazku můžete vytvořit [na vyžádání](azure-netapp-files-manage-snapshots.md#create-an-on-demand-snapshot-for-a-volume). Pomocí [zásad snímku](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies) můžete také určit, kdy má Azure NetApp Files automaticky vytvořit snímek a kolik snímků má být pro svazek zachováno.  Konzistenci aplikací lze dosáhnout orchestrací snímků pomocí aplikační vrstvy, například pomocí [nástroje AzAcSnap](azacsnap-introduction.md) pro SAP HANA.
 
-Snímky _ nemají žádný vliv na volume ***Performance** _.   
+* Snímky nemají žádný vliv na ***výkon*** svazku.   
     Z důvodu "přesměrování na zápis" na technologii pro nakládání, ukládání nebo uchovávání Azure NetApp Files snímků nemá žádný vliv na výkon, ani u těžké aktivity dat. Odstranění snímku má ve většině případů také malý vliv na výkon. 
 
-_ Snímky poskytují ***škálovatelnost** _, protože je možné je vytvořit často a mnoho je možné zachovat.   
+* Snímky poskytují ***škálovatelnost*** , protože je možné je vytvářet často a mnoho je možné zachovat.   
     Azure NetApp Files svazky podporují až 255 snímků. Schopnost ukládat velký počet nepříznivých, často vytvořených snímků zvyšuje pravděpodobnost, že se požadovaná verze dat může úspěšně obnovit.
 
-_ Snímky poskytují ***viditelnost uživatelů** _ a možnosti _*_obnovování souborů_*_.   
+* Snímky poskytují ***viditelnost uživatelů** _ a _ *_obnovování souborů_* *.   
 Vysoce výkonná, škálovatelnost a stabilita technologie Azure NetApp Filesho snímku znamená, že poskytuje ideální online zálohování pro uživatele řízené obnovením. Pro účely obnovení souborů, adresářů a svazků je možné snímky zpřístupnit uživateli. Další řešení vám umožní zkopírovat zálohy do offline úložiště nebo [replikovat různé oblasti](cross-region-replication-introduction.md) pro účely uchovávání informací nebo zotavení po havárii.
 
 ## <a name="ways-to-create-snapshots"></a>Způsoby vytváření snímků   
 
 K vytváření a údržbě snímků můžete použít několik metod:
 
-_ Ručně (na vyžádání) pomocí:   
+* Ručně (na vyžádání) pomocí:   
     * Nástroje [Azure Portal](azure-netapp-files-manage-snapshots.md#create-an-on-demand-snapshot-for-a-volume), [REST API](/rest/api/netapp/snapshots), [Azure CLI](/cli/azure/netappfiles/snapshot)nebo [PowerShell](/powershell/module/az.netappfiles/new-aznetappfilessnapshot)
     * Skripty (viz [Příklady](azure-netapp-files-solution-architectures.md#sap-tech-community-and-blog-posts))
 
@@ -161,7 +161,7 @@ Informace o tom, jak spravovat odstranění snímků, najdete v tématu [odstran
 * [Řešení potíží se zásadami snímků](troubleshoot-snapshot-policies.md)
 * [Omezení prostředků pro službu Azure NetApp Files](azure-netapp-files-resource-limits.md)
 * [Video o Azure NetApp Files snímků 101](https://www.youtube.com/watch?v=uxbTXhtXCkw)
-* [Knihovna videí NetApp Snapshot-NetApp](https://tv.netapp.com/detail/video/2579133646001/snapshot)
+* [Přehled Azure NetApp Files snímku](https://anfcommunity.com/2021/01/31/azure-netapp-files-snapshot-overview/)
 
 
 

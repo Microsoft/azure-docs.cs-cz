@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b239cf6d253c1c2d2e36d213e92e0b218add3f8c
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: dcd8222b46262f6ec70459ec670789ae4a433c1d
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94885984"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625260"
 ---
 # <a name="chat-client-library-overview"></a>Přehled klientských knihoven pro chat
 
@@ -53,6 +53,17 @@ Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici 
 | Sledování        | Monitorování využití z doručených zpráv                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
 |                    | Monitorování kvality a stavu požadavků rozhraní API provedených vaší aplikací a konfigurace výstrah prostřednictvím portálu                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
 |Další funkce | Pomocí [rozhraní API služeb Cognitive Services](../../../cognitive-services/index.yml) společně s klientskou knihovnou chatu můžete povolit inteligentní funkce *překladu jazyka & mínění analýzy příchozích zpráv v klientovi, konverzi řeči na text a vytvoření zprávy, když člen mluví atd.*                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
+
+## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>Podpora klientské knihovny JavaScript chatu podle operačního systému a prohlížeče
+
+Následující tabulka představuje sadu podporovaných prohlížečů a verzí, které jsou aktuálně k dispozici.
+
+|                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    | operační systém iPad|
+| -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ | -------|
+| **Chat Client Library** | Firefox *, Chrome*, nový okraj | Firefox *, Chrome*, Safari * | Chrome  | Chrome | Chrome | Prohlížeče | Prohlížeče |
+
+
+* Všimněte si, že nejnovější verze je podporovaná Kromě předchozích dvou verzí.<br/>
 
 ## <a name="next-steps"></a>Další kroky
 

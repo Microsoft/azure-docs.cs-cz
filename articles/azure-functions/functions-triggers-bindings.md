@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: aa0d78d52ec13c91b82e6a8d10720269076f59a1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4cafe9af1eb5a765ab86bafb63cc9ab7d0889dc8
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353540"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627595"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Koncepty triggerů a vazeb Azure Functions.
 
@@ -39,16 +39,19 @@ Tyto příklady nejsou určeny k vyčerpávajícímu, ale jsou k dispozici pro i
 
 ###  <a name="trigger-and-binding-definitions"></a>Triggery a definice vazeb
 
-Triggery a vazby jsou definovány odlišně v závislosti na vývoji přístupu.
+Triggery a vazby jsou definovány různě v závislosti na vývojovém jazyce.
 
-| Platforma | Aktivační události a vazby jsou konfigurovány pomocí... |
+| Jazyk | Aktivační události a vazby jsou konfigurovány pomocí... |
 |-------------|--------------------------------------------|
 | Knihovna tříd C# | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;upravení metody a parametry s atributy jazyka C# |
-| Všichni ostatní (včetně Azure Portal) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aktualizace [function.jszapnuta](./functions-reference.md) ([schéma](http://json.schemastore.org/function)) |
+| Java | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;upravení metody a parametry s poznámkami jazyka Java  | 
+| JavaScript/PowerShell/Python/TypeScript | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aktualizace [function.jszapnuta](./functions-reference.md) ([schéma](http://json.schemastore.org/function)) |
 
-Portál poskytuje uživatelské rozhraní pro tuto konfiguraci, ale můžete ho upravovat přímo otevřením **pokročilého editoru** dostupného prostřednictvím karty **integrace** vaší funkce.
+Pro jazyky, které spoléhají na function.jsna portálu, poskytuje portál uživatelské rozhraní pro přidávání vazeb na kartě **integrace** . Soubor můžete také upravit přímo na portálu na kartě **Code + test** funkce. Visual Studio Code umožňuje snadno [Přidat vazbu na function.jssouboru](functions-develop-vs-code.md?tabs=nodejs#add-a-function-to-your-project) pomocí praktické sady výzev. 
 
-V rozhraní .NET typ parametru definuje datový typ pro vstupní data. Například použijte `string` k vytvoření vazby na text triggeru fronty, bajtové pole pro čtení jako binární a vlastní typ pro deserializaci objektu.
+V jazycích .NET a Java typ parametru definuje datový typ pro vstupní data. Například použijte `string` k vytvoření vazby na text triggeru fronty, bajtové pole pro čtení jako binární a vlastní typ pro deserializaci objektu. Vzhledem k tomu, že funkce knihovny tříd .NET functions a funkce jazyka Java nespoléhají na *function.js* pro definice vazeb, nelze je vytvořit a upravit na portálu. Úpravy portálu jazyka c# jsou založeny na skriptu jazyka C#, který místo atributů používá *function.js* .
+
+Další informace o tom, jak přidat vazby k existujícím funkcím, najdete v tématu [připojení funkcí ke službám Azure pomocí vazeb](add-bindings-existing-function.md).
 
 Pro jazyky, které jsou dynamicky typované, jako je například JavaScript, použijte `dataType` vlastnost v souboru *function.js* . Například pro čtení obsahu požadavku HTTP v binárním formátu nastavte `dataType` na `binary` :
 
@@ -93,7 +96,7 @@ Pomocí následující tabulky můžete najít příklady specifických typů va
 
 Můžete vytvořit vlastní vstupní a výstupní vazby. Vazby musí být vytvořeny v rozhraní .NET, ale lze je spotřebovat z libovolného podporovaného jazyka. Další informace o vytváření vlastních vazeb naleznete v tématu [vytváření vlastních vstupních a výstupních vazeb](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings).
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 - [Výrazy a vzory vazby](./functions-bindings-expressions-patterns.md)
 - [Použití návratové hodnoty funkce Azure Functions](./functions-bindings-return-value.md)
 - [Postup registrace výrazu vazby](./functions-bindings-register.md)

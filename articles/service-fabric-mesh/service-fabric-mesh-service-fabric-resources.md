@@ -6,14 +6,19 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a7f25d4156c3d2671e1a15a1253ed7ba22265af0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 650755cf2692b613b2998e8ef7b706e09022b178
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91354866"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626905"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Seznámení s modelem Service Fabric prostředků
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Model prostředků Service Fabric popisuje jednoduchý přístup k definování prostředků, které tvoří Service Fabric mřížkovou aplikaci. Jednotlivé prostředky lze nasadit do libovolného Service Fabricho prostředí.  Model prostředků Service Fabric je také kompatibilní s modelem Azure Resource Manager. V tomto modelu se aktuálně podporují následující typy prostředků:
 

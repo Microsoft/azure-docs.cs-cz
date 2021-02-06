@@ -6,14 +6,20 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 63c79169646f05cddc7c605c764398bdef7492d4
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 02de8ea5dd5c53192d2b8c7beba8bc36143beac6
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682067"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626990"
 ---
 # <a name="monitoring-and-diagnostics"></a>Monitorování a diagnostika
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
+
 Azure Service Fabric Mesh je plně spravovaná služba, která vývojářům umožňuje nasazovat aplikace zajišťující mikroslužby, aniž by museli spravovat virtuální počítače, úložiště nebo sítě. Monitorování a diagnostika Service Fabric sítě jsou rozdělené do tří hlavních typů diagnostických dat:
 
 - Protokoly aplikací – ty se definují jako protokoly z vašich kontejnerových aplikací na základě toho, jak jste aplikaci nastavili (např. protokoly Docker).
@@ -43,7 +49,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 
 Prostředí sítě zpřístupňuje několik metrik, které označují, jak vaše kontejnery provádějí. Pomocí Azure Portal a rozhraní příkazového řádku Azure monitor jsou k dispozici následující metriky:
 
-| Metrika | Popis | Jednotky|
+| Metric | Popis | Jednotky|
 |----|----|----|
 | CpuUtilization | ActualCpu/AllocatedCpu jako procento | % |
 | MemoryUtilization | ActualMem/AllocatedMem jako procento | % |
@@ -58,7 +64,7 @@ Prostředí sítě zpřístupňuje několik metrik, které označují, jak vaše
 | RestartCount | Počet restartování kontejneru | – |
 
 > [!NOTE]
-> Hodnoty ServiceStatus a ServiceReplicaStatus jsou stejné jako hodnota [elementu](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) ve Service Fabric. 
+> Hodnoty ServiceStatus a ServiceReplicaStatus jsou stejné jako hodnota [elementu](/dotnet/api/system.fabric.health.healthstate) ve Service Fabric.
 
 Každá metrika je k dispozici v různých dimenzích, takže můžete vidět agregace na různých úrovních. Aktuální seznam dimenzí je následující:
 

@@ -5,14 +5,19 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: b8440a168d6d268cd27e1208ff54616a3b1e193a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 651329b1b061f2cf5a06dbdc9d60f73cec64e7d3
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843205"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625545"
 ---
 # <a name="state-management-with-service-fabric"></a>Správa stavu pomocí Service Fabric
+
+> [!IMPORTANT]
+> Náhled sítě Azure Service Fabric je vyřazený. Nová nasazení již nebudou povolena prostřednictvím rozhraní API pro Service Fabric sítě. Podpora stávajících nasazení bude pokračovat do 28. dubna 2021.
+> 
+> Podrobnosti najdete v tématu [vyřazení náhledu do sítě Azure Service Fabric](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Service Fabric podporuje mnoho různých možností pro úložiště stavů. Koncepční Přehled vzorů správy stavů a Service Fabric najdete v tématu [Service Fabric koncepty: State](../service-fabric/service-fabric-concepts-state.md). Všechny tyto stejné koncepty platí bez ohledu na to, jestli se vaše služby spouštějí uvnitř nebo vně Service Fabric sítě. 
 

@@ -51,6 +51,8 @@
   items:
     - name: Vytvoření důvěryhodné ověřovací služby s využitím Azure Functions
       href: tutorials/trusted-service-tutorial.md
+    - name: 'Podepsání požadavku HTTP podpisem HMAC pomocí jazyka C #'
+      href: tutorials/hmac-header-tutorial.md
     - name: Příprava webové aplikace pro komunikační služby (Node.js)
       href: tutorials/building-app-start.md
 - name: Koncepty
@@ -110,6 +112,8 @@
       href: concepts/metrics.md
     - name: Řešení potíží
       href: concepts/troubleshooting-info.md
+    - name: Známé problémy
+      href: concepts/known-issues.md
 - name: Ukázky
   items:
     - name: Ukázka pro skupinové hovory
