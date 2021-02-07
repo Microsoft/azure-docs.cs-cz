@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 7944ea48feaca1eb8312e01d876bf9627af429d1
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 458c801e1434832bf65da669ca89cb5c5eebe2e8
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784791"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807559"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Identifikace pokročilých hrozeb pomocí analýzy chování uživatelů a entit (UEBA) v Azure Sentinel
 
 > [!IMPORTANT]
 >
-> - Funkce stránek UEBA a entity jsou teď **obecně dostupné** ve *_všech_* geografických oblastech a oblastech Sentinel Azure.
+> - Funkce stránek UEBA a entity jsou teď **obecně dostupné** ve **_všech_** geografických oblastech a oblastech Sentinel Azure.
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>Co je analýza chování uživatelů a entit (UEBA)?
 
@@ -35,7 +35,7 @@ Identifikace hrozeb v rámci vaší organizace a jejich potenciálního dopadu �
 
 Funkce UEBA v Azure Sentinel eliminuje drudgery z úloh vašich analytiků a nejistotu vyplývající z jejich úsilí a poskytuje vysokou věrnou inteligentní analýzu, aby se mohla soustředit na šetření a nápravu.
 
-Když je Azure Sentinel shromažďuje protokoly a výstrahy ze všech připojených zdrojů dat, analyzuje je a sestavuje profily chování entit vaší organizace (uživatelů, hostitelů, IP adres, aplikací atd.) napříč časem a horizontem partnerské skupiny. Díky nejrůznějším technikám a možnostem strojového učení může Sentinel identifikovat aktivitu neobvyklé a pomůže vám určit, jestli došlo k ohrožení bezpečnosti majetku. Nejen to, ale může také zjistit relativní citlivost konkrétních assetů, identifikovat partnerské skupiny assetů a vyhodnotit potenciální dopad kteréhokoli daného ohroženého prostředku (jeho "" "vysokého" poloměru "). S těmito informacemi můžete efektivně určit prioritu šetření a zpracování incidentů. 
+Když je Azure Sentinel shromažďuje protokoly a výstrahy ze všech připojených zdrojů dat, analyzuje je a sestavuje profily chování entit vaší organizace (jako jsou uživatelé, hostitelé, IP adresy a aplikace) napříč časem a horizontem partnerské skupiny. Díky nejrůznějším technikám a možnostem strojového učení může Azure Sentinel identifikovat aktivitu neobvyklé a pomůže vám určit, jestli došlo k ohrožení bezpečnosti majetku. Nejen to, ale může také zjistit relativní citlivost konkrétních assetů, identifikovat partnerské skupiny assetů a vyhodnotit potenciální dopad kteréhokoli daného ohroženého prostředku (jeho "" "vysokého" poloměru "). S těmito informacemi můžete efektivně určit prioritu šetření a zpracování incidentů. 
 
 ### <a name="architecture-overview"></a>Přehled architektury
 
@@ -45,7 +45,7 @@ Když je Azure Sentinel shromažďuje protokoly a výstrahy ze všech připojen�
 
 Nechte inspirovat podle Gartner 's paradigma pro UEBA řešení poskytuje Azure Sentinel přístup "mimo rámec", který je založený na třech rámcích reference:
 
-- _ *Případy použití:** stanovením priorit pro relevantní vektory útoku a scénáře založené na výzkumu zabezpečení zarovnaném na MITRE ATT&CK Framework of taktiku, techniky a dílčí techniky, které do dezaktivačního řetězu umísťují různé entity jako oběti, pachatele nebo body pivotu; Azure Sentinel se zaměřuje konkrétně na nejcennější protokoly, které může každý zdroj dat poskytnout.
+- **Případy použití:** Díky prioritám relevantních vektorů útoku a scénářů na základě výzkumu zabezpečení zarovnaného na MITRE ATT&CK Framework of taktiku, techniky a dílčí techniky, které do dezaktivačního řetězu umísťují různé entity jako oběti, pachatele nebo body pivotu; Azure Sentinel se zaměřuje konkrétně na nejcennější protokoly, které může každý zdroj dat poskytnout.
 
 - **Zdroje dat:** Při prvním a nejpřednější podpoře zdrojů dat Azure si Azure Sentinel Thoughtfully vybírá zdroje dat třetích stran, které poskytují data odpovídající scénářům hrozeb.
 
@@ -68,7 +68,7 @@ Každá aktivita je hodnocena jako "skóre priority šetření" – což určuje
 
 Příklad toho, jak to funguje, najdete v tématu Jak se používá analýza chování v [Microsoft Cloud App Security](https://techcommunity.microsoft.com/t5/microsoft-security-and/prioritize-user-investigations-in-cloud-app-security/ba-p/700136) .
 
-## <a name="entities-in-azure-sentinel"></a>Entity v Azure Sentinel
+## <a name="entities-in-azure-sentinel"></a>Entity ve službě Azure Sentinel
 
 ### <a name="entity-identifiers"></a>Identifikátory entit
 
@@ -150,7 +150,7 @@ Stránky entit jsou navržené tak, aby byly součástí více scénářů použ
 
 ### <a name="behavior-analytics-table"></a>Tabulka analýzy chování
 
-| Pole                     | Popis                                                         |
+| Pole                     | Description                                                         |
 |---------------------------|---------------------------------------------------------------------|
 | TenantId                  | jedinečné ID pro tenanta                                      |
 | SourceRecordId            | jedinečné číslo ID události EBA                                   |

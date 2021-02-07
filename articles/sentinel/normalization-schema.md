@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: eb1752ea66f2cbebf6a653705b5a760e8e268240
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cd97aef5d8c959aeb2e0314e051790fd0421585
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935207"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806931"
 ---
 # <a name="azure-sentinel-data-normalization-schema-reference"></a>Referenční informace schématu normalizace dat služby Azure Sentinel
 
 ## <a name="terminology"></a>Terminologie
 
-V schématech Sentinel se používá následující terminologie:
+V schématech Sentinel Azure se používá následující terminologie:
 
 | Označení | Definice |
 | ---- | ---------- |
@@ -40,7 +40,7 @@ Hodnoty by měly být normalizovány na základě níže uvedených pokynů. Tot
 
 | Datový typ | Fyzický typ | Formát a hodnota |
 | --------- | ------------- | ---------------- |
-| **Datum/Čas** | V závislosti na použití schopnosti metody ingesta ve vzestupném pořadí:<ul><li>Log Analytics integrováno v typu DateTime</li><li>Celočíselné pole pomocí Log Analytics číselné reprezentace DateTime</li><li>Pole řetězce používající Log Analytics číselné reprezentace data a času</li></ul> | Log Analytics reprezentace data a času. <br></br>Log Analytics datum & čase je podobné jako v podstatě, ale liší se od času reprezentace v systému UNIX. Přečtěte si tyto pokyny k převodu. <br></br>Datum & čas by měl být upravený podle časového pásma. |
+| **Datum a čas** | V závislosti na použití schopnosti metody ingesta ve vzestupném pořadí:<ul><li>Log Analytics integrováno v typu DateTime</li><li>Celočíselné pole pomocí Log Analytics číselné reprezentace DateTime</li><li>Pole řetězce používající Log Analytics číselné reprezentace data a času</li></ul> | Log Analytics reprezentace data a času. <br></br>Log Analytics datum & čase je podobné jako v podstatě, ale liší se od času reprezentace v systému UNIX. Přečtěte si tyto pokyny k převodu. <br></br>Datum & čas by měl být upravený podle časového pásma. |
 | **Adresa MAC** | Řetězec | Colon-Hexadecimal Notation |
 | **IP adresa** | IP adresa | Schéma neobsahuje samostatné adresy IPv4 a IPv6. Každé pole IP adresy může zahrnovat adresu IPv4 nebo IPv6 adresu:<ul><li>IPv4 v desítkovém zápisu s tečkou</li><li>Protokol IPv6 v 8 hextets Notation umožňující krátké popsání zde popsaných krátkých forem.</li></ul> |
 | **Uživatel** | Řetězec | K dispozici jsou následující 3 Uživatelská pole:<ul><li>Uživatelské jméno</li><li>Hlavní název uživatele (UPN)</li><li>Doména uživatele</li></ul> |
@@ -73,16 +73,16 @@ Níže je schéma tabulky síťových relací, 1.0.0 se správou verzí.
 | EventProductVersion | řetězec | 9.0 |  Verze produktu, který událost vygeneroval. | Událost |
 | EventResourceId | ID zařízení (řetězec) | /subscriptions/3c1bb38c-82e3-4f8d-a115-a7110ba70d05 /resourcegroups/contoso77/providers /microsoft.compute/virtualmachines /syslogserver1 | ID prostředku zařízení, které zprávu vygenerovalo. | Událost |
 | EventReportUrl | Řetězec | https://192.168.1.1/repoerts/ae3-56.htm | Odkaz na úplnou sestavu vytvořenou zařízením pro vytváření sestav | Událost |
-| EventVendor | Řetězec | Partnerský vztah Microsoftu | Dodavatel produktu, který událost vygeneroval. | Událost |
+| EventVendor | Řetězec | Microsoft | Dodavatel produktu, který událost vygeneroval. | Událost |
 | EventResult | Více hodnot: úspěch, částečně, chyba, [prázdné] (řetězec) | Success | Výsledek nahlášený pro aktivitu Prázdná hodnota, pokud není k dispozici. | Událost |
 | EventResultDetails | Řetězec | Chybné heslo | Důvod nebo podrobnosti pro výsledek nahlášený v EventResult | Událost |
-| EventSchemaVersion | Skutečné | 0,1 | Verze schématu Sentinel Azure Aktuálně 0,1. | Událost |
+| EventSchemaVersion | Skutečné | 0.1 | Verze schématu Sentinel Azure Aktuálně 0,1. | Událost |
 | EventSeverity | Řetězec | Nízká | Pokud má nahlášená aktivita dopad na zabezpečení, označuje závažnost dopadu. | Událost |
 | EventOriginalUid | Řetězec | af6ae8fe-ff43-4a4c-b537-8635976a2b51 | ID záznamu ze zařízení pro vytváření sestav. | Událost |
 | EventStartTime | Datum/Čas | Viz "datové typy" | Čas, kdy je uvedena událost | Událost |
 | TimeGenerated | Datum/Čas | Viz "datové typy" | Čas, kdy došlo k události, jak je uvedeno ve zdroji generování sestav. | Vlastní pole |
 | EventTimeIngested | Datum/Čas | Viz "datové typy" | Čas, kdy se událost přijala do služby Azure Sentinel. Přidá se pomocí Azure Sentinel. | Událost |
-| EventUid | GUID (řetězec) | 516a64e3-8360-4f1e-a67c-d96b3d52df54 | Jedinečný identifikátor používaný Sentinelem k označení řádku | Událost |
+| EventUid | GUID (řetězec) | 516a64e3-8360-4f1e-a67c-d96b3d52df54 | Jedinečný identifikátor používaný službou Azure Sentinel k označení řádku | Událost |
 | NetworkApplicationProtocol | Řetězec | HTTPS | Protokol aplikační vrstvy používaný připojením nebo relací. | Síť |
 | DstBytes | int | 32455 | Počet bajtů odeslaných z cíle do zdroje pro připojení nebo relaci. | Cíl |
 | SrcBytes | int | 46536 | Počet bajtů odeslaných ze zdroje do cíle pro připojení nebo relaci. | Zdroj |
@@ -106,11 +106,11 @@ Níže je schéma tabulky síťových relací, 1.0.0 se správou verzí.
 | DstResourceId | ID zařízení (řetězec) |  /subscriptions/3c1bb38c-82e3-4f8d-a115-a7110ba70d05 /resourcegroups/contoso77/providers /microsoft.compute/virtualmachines /victim | ID prostředku cílového zařízení. | Cíl |
 | DstNatIpAddr | IP adresa | 2::1 | Pokud je nahlášená zprostředkujícím zařízením NAT, jako je brána firewall, IP adresa používaná zařízením NAT pro komunikaci se zdrojem. | Cílové NAT,<br>IP adresa |
 | DstNatPortNumber | int | 443 | Pokud je nahlášená zprostředkujícím zařízením NAT, jako je brána firewall, port používaný zařízením NAT pro komunikaci se zdrojem. | Cílové NAT,<br>Port |
-| DstUserSid | SID uživatele |  S-12-1445 | ID uživatele identity přidružené k cíli relace. Obvykle se jedná o identitu, která se používá k ověření serveru. Podrobnosti najdete v tématu datové typy. | Tabulka<br>Uživatel |
-| DstUserAadId | Řetězec (GUID) | ae92b0b4-cfba-4b42-85a0-fbd862f4df54 | ID objektu účtu Azure AD uživatele na cílovém konci relace | Tabulka<br>Uživatel |
-| DstUserName | Uživatelské jméno (String) | Jan | Uživatelské jméno identity přidružené k cíli relace.  | Tabulka<br>Uživatel |
-| DstUserUpn | řetězec | johnd@anon.com | Hlavní název uživatele identity přidružené k cíli relace. | Tabulka<br>Uživatel |
-| DstUserDomain | řetězec | SKUPINÌ | Název domény nebo počítače účtu v cíli relace | Tabulka<br>Uživatel |
+| DstUserSid | SID uživatele |  S-12-1445 | ID uživatele identity přidružené k cíli relace. Obvykle se jedná o identitu, která se používá k ověření serveru. Podrobnosti najdete v tématu datové typy. | Tabulka<br>User |
+| DstUserAadId | Řetězec (GUID) | ae92b0b4-cfba-4b42-85a0-fbd862f4df54 | ID objektu účtu Azure AD uživatele na cílovém konci relace | Tabulka<br>User |
+| DstUserName | Uživatelské jméno (String) | Jan | Uživatelské jméno identity přidružené k cíli relace.  | Tabulka<br>User |
+| DstUserUpn | řetězec | johnd@anon.com | Hlavní název uživatele identity přidružené k cíli relace. | Tabulka<br>User |
+| DstUserDomain | řetězec | SKUPINÌ | Název domény nebo počítače účtu v cíli relace | Tabulka<br>User |
 | DstZone | Řetězec | DMZ | Zóna sítě cíle, jak je definována zařízením pro vytváření sestav. | Cíl |
 | DstGeoLongitude | Zeměpisná délka (Double) | -73,211944 | Zeměpisná délka zeměpisné souřadnice přidružené k cílové IP adrese | Tabulka<br>Geografická oblast |
 | DvcAction | Multi-hodnota: Allow, Deny, Drop (String) | Povolit | Pokud je hlášeno zprostředkujícím zařízením, jako je brána firewall, akce provedená zařízením. | Zařízení |
@@ -134,7 +134,7 @@ Níže je schéma tabulky síťových relací, 1.0.0 se správou verzí.
 | SrcDvcDomain | řetězec | EVILORG | Doména zařízení, ze kterého byla zahájena relace | Zdrojová<br>Zařízení |
 | SrcDvcOs | Řetězec | iOS | Operační systém zdrojového zařízení | Zdrojová<br>Zařízení |
 | SrcDvcModelName | Řetězec | Galaxy Samsung – Poznámka | Název modelu zdrojového zařízení | Zdrojová<br>Zařízení |
-| SrcDvcModelNumber | Řetězec | 10,0 | Číslo modelu zdrojového zařízení | Zdrojová<br>Zařízení |
+| SrcDvcModelNumber | Řetězec | 10.0 | Číslo modelu zdrojového zařízení | Zdrojová<br>Zařízení |
 | SrcDvcType | Řetězec | Mobilní | Typ zdrojového zařízení | Zdrojová<br> Zařízení |
 | SrcIntefaceName | Řetězec | eth01 | Síťové rozhraní používané pro připojení nebo relaci ze zdrojového zařízení. | Zdroj |
 | SrcInterfaceGuid | Řetězec | 46ad544b-eaf0-47ef-827c-266030f545a6 | Identifikátor GUID použitého síťového rozhraní | Zdroj |
@@ -149,11 +149,11 @@ Níže je schéma tabulky síťových relací, 1.0.0 se správou verzí.
 | SrcResourceId | Řetězec | /subscriptions/3c1bb38c-82e3-4f8d-a115-a7110ba70d05 /resourcegroups/contoso77/providers /microsoft.compute/virtualmachines /syslogserver1 | ID prostředku zařízení, které zprávu vygenerovalo. | Zdroj |
 | SrcNatIpAddr | IP adresa | 4.3.2.1 | Pokud je hlášená zprostředkujícím zařízením NAT, jako je brána firewall, IP adresa používaná zařízením NAT pro komunikaci s cílem. | Překlad zdrojového překladu dat<br>IP adresa |
 | SrcNatPortNumber | Integer | 345 | Pokud je nahlášená zprostředkujícím zařízením NAT, jako je brána firewall, port používaný zařízením NAT pro komunikaci s cílem. | Překlad zdrojového překladu dat<br>Port |
-| SrcUserSid | ID uživatele (řetězec) | S-15-1445 | ID uživatele identity přidružené ke zdroji relací Obvykle uživatel provádí na klientovi akci. Podrobnosti najdete v tématu datové typy. | Zdrojová<br>Uživatel |
-| SrcUserAadId | Řetězec (GUID) | 16c8752c-7dd2-4cad-9e03-fb5d1cee5477 | ID objektu účtu Azure AD uživatele na konci relace | Zdrojová<br>Uživatel |
-| SrcUserName | Uživatelské jméno (String) | Bobem | Uživatelské jméno identity přidružené ke zdroji relací. Obvykle uživatel provádí na klientovi akci. Podrobnosti najdete v tématu datové typy. | Zdroj<br>Uživatel |
-| SrcUserUpn | řetězec | bob@alice.com | Hlavní název uživatele účtu, který zahajuje relaci | Zdrojová<br>Uživatel |
-| SrcUserDomain | řetězec | DESKTOPU | Doména pro účet, který zahajuje relaci | Zdrojová<br>Uživatel |
+| SrcUserSid | ID uživatele (řetězec) | S-15-1445 | ID uživatele identity přidružené ke zdroji relací Obvykle uživatel provádí na klientovi akci. Podrobnosti najdete v tématu datové typy. | Zdrojová<br>User |
+| SrcUserAadId | Řetězec (GUID) | 16c8752c-7dd2-4cad-9e03-fb5d1cee5477 | ID objektu účtu Azure AD uživatele na konci relace | Zdrojová<br>User |
+| SrcUserName | Uživatelské jméno (String) | Bobem | Uživatelské jméno identity přidružené ke zdroji relací. Obvykle uživatel provádí na klientovi akci. Podrobnosti najdete v tématu datové typy. | Zdroj<br>User |
+| SrcUserUpn | řetězec | bob@alice.com | Hlavní název uživatele účtu, který zahajuje relaci | Zdrojová<br>User |
+| SrcUserDomain | řetězec | DESKTOPU | Doména pro účet, který zahajuje relaci | Zdrojová<br>User |
 | SrcZone | Řetězec | Klepnutí | Síťová zóna zdroje, jak je definována zařízením pro vytváření sestav. | Zdroj |
 | NetworkProtocol | Řetězec | TCP | Protokol IP použitý připojením nebo relací. Typicky, TCP, UDP nebo ICMP | Síť |
 | CloudAppName | Řetězec | Facebook | Název cílové aplikace pro aplikaci HTTP identifikovanou proxy serverem. | Cloud |
@@ -169,7 +169,7 @@ Níže je schéma tabulky síťových relací, 1.0.0 se správou verzí.
 | FileExtension |  Řetězec | programu | Typ souboru přenášeného přes síťová připojení pro protokoly, jako jsou FTP a HTTP. | Soubor
 | MimeType | Řetězec | aplikace/MSWord | Typ MIME souboru přenášeného přes síťová připojení pro protokoly, jako jsou FTP a HTTP | Soubor |
 | Velikost souboru | Integer | 23500 | Velikost souboru (v bajtech) přenášeného přes síťová připojení pro protokoly. | Soubor |
-| HttpVersion | Řetězec | 2,0 | Verze požadavku HTTP pro síťová připojení HTTP/HTTPS. | HTTP |
+| HttpVersion | Řetězec | 2.0 | Verze požadavku HTTP pro síťová připojení HTTP/HTTPS. | HTTP |
 | HttpRequestMethod | Řetězec | GET | Metoda HTTP pro síťové relace HTTP/HTTPS. | HTTP |
 | HttpStatusCode | Řetězec | 404 | Stavový kód protokolu HTTP pro síťové relace HTTP/HTTPS. | HTTP |
 | HttpContentType | Řetězec | multipart/form-data; hranice = něco | Hlavička Content-Type odpovědi HTTP pro síťové relace HTTP/HTTPS. | HTTP |

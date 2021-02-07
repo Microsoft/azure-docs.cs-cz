@@ -1,6 +1,6 @@
 ---
 title: Připojení virtuálních počítačů centra Azure Stack ke službě Azure Sentinel | Microsoft Docs
-description: V tomto článku se dozvíte, jak zřídit rozšíření Azure Monitor, Update a Configuration Management pro správu konfigurace na virtuálních počítačích centra Azure Stack a začít je monitorovat pomocí Sentinel.
+description: V tomto článku se dozvíte, jak zřídit rozšíření Azure Monitor, Update a Configuration Management pro správu konfigurace na virtuálních počítačích centra Azure Stack a začít je monitorovat pomocí funkce Sentinel Azure.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 068296a02af0abd2fb18d284fdaf01b7c1b198fa
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 120f160e3c7bc7a9a0e81586ea4b97ee827dd33e
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631138"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807424"
 ---
 # <a name="connect-azure-stack-hub-virtual-machines-to-azure-sentinel"></a>Připojení virtuálních počítačů služby Azure Stack hub k Azure Sentinel
 

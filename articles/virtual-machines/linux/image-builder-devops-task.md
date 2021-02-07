@@ -7,12 +7,12 @@ ms.date: 01/27/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: df97ecd1668dcc0e21408b7d39b0973e8f0d8fbf
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 56f1e78e0f2bbba15b50664b88bd8808731e6836
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934279"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807610"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Úloha DevOps služby Azure image Builder
 
@@ -156,10 +156,10 @@ Následující příklad vysvětluje, jak to funguje:
 
    Můžete odkazovat na více skriptů nebo přidávat další příkazy, například:
 
-       ```PowerShell
-       & 'c:\buildArtifacts\webapp\webconfig.ps1'
-       & 'c:\buildArtifacts\webapp\installAgent.ps1'
-       ```
+    ```PowerShell
+    & 'c:\buildArtifacts\webapp\webconfig.ps1'
+    & 'c:\buildArtifacts\webapp\installAgent.ps1'
+    ```
 * Linux – v systémech Linux jsou artefakty sestavení vloženy do `/tmp` adresáře. V mnoha systémech Linux OSs se ale při restartování odstraní obsah adresáře adresáře/TMP. Pokud chcete, aby artefakty v imagi existovaly, musíte vytvořit další adresář a zkopírovat je přes.  Příklad:
 
     ```bash
@@ -304,7 +304,7 @@ Publikování/nabídka/SKU/verze zdrojové image Marketplace:
 Identifikátor URI image – ResourceID distribuované Image:
 * $ (imageUri)
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="can-i-use-an-existing-image-template-i-have-already-created-outside-of-devops"></a>Můžu použít existující šablonu obrázku, kterou už jste vytvořili, mimo DevOps?
 
@@ -312,7 +312,7 @@ V současné době není aktuálně k dispozici.
 
 ### <a name="can-i-specify-the-image-template-name"></a>Můžu zadat název šablony obrázku?
 
-Ne. Použije se jedinečný název šablony, který se pak odstraní.
+No. Použije se jedinečný název šablony, který se pak odstraní.
 
 ### <a name="the-image-builder-failed-how-can-i-troubleshoot"></a>Tvůrce imagí se nezdařil. Jak můžu řešit potíže?
 

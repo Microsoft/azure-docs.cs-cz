@@ -63,6 +63,8 @@
       href: azure-netapp-files-faqs.md
     - name: Co je nástroj Azure Application Consistent Snapshot
       href: azacsnap-introduction.md
+    - name: Co se změní na Volume Hard quoty
+      href: volume-hard-quota-guidelines.md
 - name: Návody
   items:
     - name: Registrace pro Azure NetApp Files

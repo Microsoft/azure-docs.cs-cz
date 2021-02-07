@@ -8,12 +8,12 @@ ms.date: 01/19/2021
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 33af92c1987d9cd0c88e689dd7bafccadd60cb06
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: fad065795345314c58e83c8d2614ed01c9e78e49
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98613256"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805525"
 ---
 # <a name="cloud-sync-troubleshooting"></a>Řešení potíží s synchronizací cloudu
 
@@ -164,7 +164,7 @@ Synchronizace cloudu monitoruje stav konfigurace a umisťuje objekty, které nej
 
 Výběrem stavu můžete zobrazit další informace o karanténě. Můžete také získat kód chyby a zprávu.
 
-![Informace o stavu karantény](media/how-to-troubleshoot/quarantine-2.png)
+![Snímek obrazovky, který obsahuje další informace o karanténě.](media/how-to-troubleshoot/quarantine-2.png)
 
 Kliknutím pravým tlačítkem na stav zobrazíte další možnosti:
     
@@ -172,7 +172,7 @@ Kliknutím pravým tlačítkem na stav zobrazíte další možnosti:
    - Zobrazit agenta
    - Vymazat karanténu
 
-![Informace o stavu karantény](media/how-to-troubleshoot/quarantine-4.png)
+![Snímek obrazovky, který zobrazuje možnosti nabídky po kliknutí pravým tlačítkem myši](media/how-to-troubleshoot/quarantine-4.png)
 
 
 ### <a name="resolve-a-quarantine"></a>Řešení karantény
@@ -186,7 +186,7 @@ Pokud chcete vodoznak vymazat a po ověření spustit rozdílovou synchronizaci 
 
 Mělo by se zobrazit upozornění, že se karanténa maže.
 
-![Informace o stavu karantény](media/how-to-troubleshoot/quarantine-5.png)
+![Snímek obrazovky ukazující, že umístění karantény je smazáno.](media/how-to-troubleshoot/quarantine-5.png)
 
 Pak byste měli vidět stav svého agenta jako v pořádku.
 

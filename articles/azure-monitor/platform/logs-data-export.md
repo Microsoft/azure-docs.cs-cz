@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
-ms.date: 10/14/2020
-ms.openlocfilehash: bc369b072f90e675cf882d52b2edae30530f1c18
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.date: 02/07/2021
+ms.openlocfilehash: 03061f71ee0cceaa39c7ab9b258f9d3a0a84f1be
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895964"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807882"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Export dat pracovního prostoru Log Analytics v Azure Monitor (Preview)
 Export dat v pracovním prostoru Log Analytics v Azure Monitor umožňuje průběžně exportovat data z vybraných tabulek v pracovním prostoru Log Analytics do účtu služby Azure Storage nebo Event Hubs Azure jako shromážděná. Tento článek poskytuje podrobné informace o této funkci a postupu konfigurace exportu dat ve vašich pracovních prostorech.
@@ -28,8 +28,7 @@ Všechna data ze zahrnutých tabulek se exportují bez filtru. Když například
 ## <a name="other-export-options"></a>Další možnosti exportu
 Export dat Log Analytics pracovního prostoru průběžně exportuje data z pracovního prostoru Log Analytics. K dalším možnostem exportu dat pro konkrétní scénáře patří následující:
 
-- Plánovaný export z dotazu protokolu pomocí aplikace logiky To se podobá funkci exportu dat, ale umožňuje odeslat filtrovaná nebo agregovaná data do služby Azure Storage. Tato metoda je sice v souladu s [omezeními dotazů protokolu](../service-limits.md#log-analytics-workspaces)  , viz [data archivu z pracovního prostoru Log Analytics do úložiště Azure pomocí aplikace logiky](logs-export-logic-app.md).
-- Jednorázové export pomocí aplikace logiky [Logic Apps a automatické automatizaci najdete v tématu konektory protokolů Azure monitor](logicapp-flow-connector.md).
+- Plánovaný export z dotazu protokolu pomocí aplikace logiky To se podobá funkci exportu dat, ale umožňuje odeslat filtrovaná nebo agregovaná data do služby Azure Storage. Tato metoda i když se vztahuje k [omezením dotazů protokolu](../service-limits.md#log-analytics-workspaces), najdete v tématu [archivace dat z Log Analytics pracovního prostoru do Azure Storage pomocí aplikace logiky](logs-export-logic-app.md).
 - Jednou při exportu do místního počítače pomocí skriptu PowerShellu. Viz [Invoke-AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport).
 
 
@@ -47,16 +46,7 @@ Export dat Log Analytics pracovního prostoru průběžně exportuje data z prac
 - V pracovním prostoru můžete vytvořit dvě pravidla exportu – v může být jedno pravidlo pro centrum událostí a jedno pravidlo k účtu úložiště.
 - Cílový účet úložiště nebo centrum událostí musí být ve stejné oblasti jako pracovní prostor Log Analytics.
 - Názvy tabulek, které mají být exportovány, nemohou být pro účet úložiště delší než 60 znaků a v centru událostí nejsou delší než 47 znaků. Tabulky s delšími názvy nebudou exportovány.
-
-> [!NOTE]
-> Log Analytics export dat zapisuje data jako doplňovací objekt blob, který je aktuálně ve verzi Preview pro Azure Data Lake Storage Gen2. Před konfigurací exportu do tohoto úložiště musíte otevřít žádost o podporu. Pro tento požadavek použijte následující podrobnosti.
-> - Typ problému: Technický
-> - Předplatné:Vaše předplatné
-> - Služba: Data Lake Storage Gen2
-> - Prostředek: název prostředku
-> - Shrnutí: probíhá žádost o registraci předplatného pro příjem dat z Log Analytics exportu dat.
-> - Typ problému: připojení
-> - Podtyp problému: potíže s připojením
+- Podpora připojení objektů BLOB pro Azure Data Lake Storage je teď ve [verzi Public Preview omezená](https://azure.microsoft.com/updates/append-blob-support-for-azure-data-lake-storage-preview/) .
 
 ## <a name="data-completeness"></a>Úplnost dat
 Export dat bude pokračovat v pokusu o odeslání dat po dobu až 30 minut v případě, že cíl není k dispozici. Pokud není po 30 minutách k dispozici, budou data zahozena, dokud nebude cíl k dispozici.
@@ -76,6 +66,9 @@ Formát dat účtu úložiště jsou [řádky JSON](./resource-logs-blob-format.
 [![Ukázková data úložiště](media/logs-data-export/storage-data.png)](media/logs-data-export/storage-data.png#lightbox)
 
 Export dat Log Analytics může zapisovat doplňovací objekty blob do neměnných účtů úložiště, pokud mají povolené zásady uchovávání *informací na základě* času. To umožňuje psát nové bloky do doplňovacího objektu BLOB a přitom zachovat ochranu neměnnosti a dodržování předpisů. Viz [Povolení chráněných objektů BLOB pro zápis](../../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).
+
+> [!NOTE]
+> Podpora připojení objektu BLOB pro úložiště Azure Data Lake je teď dostupná ve verzi Preview ve všech oblastech Azure. Před vytvořením pravidla exportu pro Azure Data Lake úložiště [Zaregistrujte se do omezené verze Public Preview](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4mEEwKhLjlBjU3ziDwLH-pURDk2NjMzUTVEVzU5UU1XUlRXSTlHSlkxQS4u) . Export nebude bez tohoto zápisu fungovat.
 
 ### <a name="event-hub"></a>Centrum událostí
 Data se odesílají do centra událostí téměř v reálném čase, protože dosáhne Azure Monitor. Centrum událostí se vytvoří pro každý datový typ, který exportujete s názvem, *za nímž následuje název tabulky* . Například tabulka *SecurityEvent* se odeslala do centra událostí s názvem *am-SecurityEvent*. Pokud chcete, aby se exportovaná data dostala na konkrétní centrum událostí, nebo pokud máte tabulku s názvem, který překračuje limit počtu znaků 47, můžete zadat vlastní název centra událostí a exportovat do něj všechna data pro definované tabulky.

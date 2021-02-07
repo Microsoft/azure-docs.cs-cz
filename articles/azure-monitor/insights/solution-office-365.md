@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: eb20bf4164cb2153f6786dbec04f79453554fa25
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bde1c503d0aaaff1afcee67a26245d5021c43bb4
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995858"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807746"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -95,8 +95,8 @@ ms.locfileid: "95995858"
 > - [Vyhledá hrozby předem.](../../sentinel/tutorial-detect-threats-built-in.md)
 > - [Vytváření vlastních analytických pravidel pro detekci podezřelých hrozeb](../../sentinel/tutorial-detect-threats-custom.md)
 > - [Monitorování dat](../../sentinel/tutorial-monitor-your-data.md)
-> - [Prozkoumat incidenty pomocí služby Azure Sentinel](../../sentinel/tutorial-investigate-cases.md)
-> - [Nastavení automatických odpovědí na hrozby v Azure Sentinel](../../sentinel/tutorial-respond-threats-playbook.md)
+> - [Vyšetřování incidentů s využitím služby Azure Sentinel](../../sentinel/tutorial-investigate-cases.md)
+> - [Nastavení automatizovaných reakcí na hrozby ve službě Azure Sentinel](../../sentinel/tutorial-respond-threats-playbook.md)
 > - [Komunita GitHubu Azure Sentinel](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)
 > 
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>Otázka: umožňuje službě Azure Sentinel v rámci řešení přidat další konektory?
@@ -109,7 +109,7 @@ ms.locfileid: "95995858"
 > - Pokud vaše řešení neodpojení ručně do 31. října, vaše data se odpojí automaticky a tabulka **OfficeActivity** se odebere. I tak budete moct tabulku obnovit, když povolíte konektor Office 365 ve službě Azure Sentinel, jak je vysvětleno níže.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>Otázka: budou moje data přenesena do nového řešení?
-> Ano. Když odeberete řešení **Office 365** z pracovního prostoru, jeho data budou dočasně nedostupná, protože schéma se odebere. Pokud povolíte nový konektor **sady Office 365** v nástroji Sentinel, obnoví se schéma do pracovního prostoru a veškerá shromážděná data budou k dispozici. 
+> Ano. Když odeberete řešení **Office 365** z pracovního prostoru, jeho data budou dočasně nedostupná, protože schéma se odebere. Když v Azure Sentinel povolíte nový konektor **Office 365** , schéma se obnoví v pracovním prostoru a veškerá shromážděná data budou k dispozici. 
  
 
 Řešení pro správu sady Office 365 umožňuje monitorovat prostředí sady Office 365 v Azure Monitor.
@@ -121,7 +121,7 @@ ms.locfileid: "95995858"
 - Řešení potíží s operačním systémem pomocí [dotazů protokolu](../log-query/log-query-overview.md) na data o aktivitách vaší organizace v Office 365.
 
 
-## <a name="uninstall"></a>Odinstalace
+## <a name="uninstall"></a>Odinstalovat
 
 Řešení pro správu Office 365 můžete odebrat pomocí procesu v části [Odebrání řešení pro správu](solutions.md#remove-a-monitoring-solution). Tím se nezastaví shromažďování dat ze sady Office 365 do Azure Monitor i když. Pomocí níže uvedeného postupu můžete zrušit odběr Office 365 a zastavit shromažďování dat.
 
@@ -272,7 +272,7 @@ Následující vlastnosti jsou společné pro všechny záznamy sady Office 365.
 | ResultStatus | Určuje, jestli byla akce (zadaná ve vlastnosti Operation) úspěšná, nebo ne. Možné hodnoty jsou úspěšné, pravdivé hodnotě stavem nebo selhaly. V případě aktivity správce serveru Exchange je hodnota buď true, nebo false. |
 | UserId | Hlavní název uživatele (UPN) uživatele, který provedl akci, která vedla k zaznamenání záznamu; například my_name@my_domain_name . Všimněte si, že jsou zahrnuté také záznamy aktivity prováděné systémovými účty (například SHAREPOINT\system nebo NTAUTHORITY\SYSTEM.). | 
 | UserKey | Alternativní ID pro uživatele identifikovaného ve vlastnosti UserId.  Tato vlastnost se například naplní jedinečným IDENTIFIKÁTORem (PUID) služby Passport pro události prováděné uživateli na SharePointu, OneDrivu pro firmy a Exchange. Tato vlastnost může taky určovat stejnou hodnotu jako vlastnost UserID pro události, ke kterým dochází v jiných službách a událostech, které provádí systémové účty.|
-| UserType | Typ uživatele, který provedl operaci.<br><br>Správce<br>Aplikace<br>DcAdmin<br>Pravidelný<br>Vyhrazené<br>ServicePrincipal<br>Systém |
+| UserType | Typ uživatele, který provedl operaci.<br><br>správce<br>Aplikace<br>DcAdmin<br>Pravidelný<br>Vyhrazené<br>ServicePrincipal<br>Systém |
 
 
 ### <a name="azure-active-directory-base"></a>Základ Azure Active Directory
@@ -310,7 +310,7 @@ Tyto záznamy se vytvoří, když se změní nebo doplňují objekty Azure Activ
 | OfficeWorkload | Azureactivedirectory selhala |
 | RecordType     | Azureactivedirectory selhala |
 | AADTarget | Uživatel, na kterém se provedla akce (identifikovaná vlastností Operation) |
-| Actor (Herec/herečka) | Uživatel nebo instanční objekt, který tuto akci provedl. |
+| Aktér | Uživatel nebo instanční objekt, který tuto akci provedl. |
 | ActorContextId | Identifikátor GUID organizace, do které patří objekt actor |
 | ActorIpAddress | IP adresa objektu actor ve formátu adresy IPV4 nebo IPV6. |
 | InterSystemsId | Identifikátor GUID, který sleduje akce napříč komponentami v rámci služby Office 365. |

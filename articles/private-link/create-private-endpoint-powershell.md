@@ -7,14 +7,14 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 11/02/2020
 ms.author: allensu
-ms.openlocfilehash: 7add424c23e430a8ca5059d45acd037fff8836ad
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 68a4703cc2dc1b2898057e138fda7de9eff146e7
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368657"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807458"
 ---
-# <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí Azure PowerShell
+# <a name="use-powershell-to-create-a-private-endpoint"></a>Použití PowerShellu k vytvoření privátního koncového bodu
 
 Začínáme s privátním koncovým bodem Azure pomocí privátního koncového bodu pro zabezpečené připojení k webové aplikaci Azure.
 

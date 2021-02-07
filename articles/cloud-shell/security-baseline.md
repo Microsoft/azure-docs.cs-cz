@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 24856e458858ad86d953b50709669823b35794fc
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: fde7c7fa619c6d0a36ef0890f31375ac3933e6ee
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348258"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807661"
 ---
 # <a name="azure-security-baseline-for-cloud-shell"></a>Základní hodnoty zabezpečení Azure pro Cloud Shell
 
-Tato základní hodnota zabezpečení platí pro Cloud Shell pokynů od [zabezpečení Azure Security test 1,0](../security/benchmarks/overview-v1.md) . Srovnávací test zabezpečení Azure nabízí doporučení k zabezpečení cloudových řešení v Azure.
+Tato základní hodnota zabezpečení platí pro Cloud Shell pokynů od [zabezpečení Azure Security test 1,0](../security/benchmarks/overview-v1.md) . Azure Security Benchmark poskytuje doporučení, jak můžete zabezpečit svá cloudová řešení v Azure.
 Obsah je seskupen podle **řízení zabezpečení** definovaného srovnávacím testem zabezpečení Azure a souvisejících pokynů, které se vztahují na Cloud Shell. **Ovládací prvky** , které se nevztahují k Cloud Shell byly vyloučeny.
 
  
@@ -50,7 +50,7 @@ Když nasadíte Azure Cloud Shell do Virtual Network ve vlastnictví zákazníka
 
 **Doprovodné** materiály: Azure Cloud Shell je prostředí příkazového řádku založené na prohlížeči, které používá stejnou autorizaci, která se používá pro přístup k Azure Portal, v tomto případě se v případě jednotného přihlašování k Azure Portal ověříte taky pomocí Cloud Shell. 
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -74,7 +74,7 @@ Azure Cloud Shell umožňuje zákazníkům nainstalovat vlastní nástroje nebo 
 
 Zákazníci zodpovídají za spouštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení na softwaru, který běží v daném prostředí.  
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -86,7 +86,7 @@ Azure Cloud Shell umožňuje zákazníkům nainstalovat vlastní nástroje nebo 
 
 Zákazníci zodpovídají za správu oprav softwaru spuštěnou ve svém prostředí.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -98,7 +98,7 @@ Azure Cloud Shell umožňuje zákazníkům nainstalovat vlastní nástroje nebo 
 
 Zákazníci zodpovídají za napravení ohrožení zabezpečení zjištěného prostřednictvím kontroly ohrožení zabezpečení softwaru. Exportovat výsledky kontroly v konzistentních intervalech a porovnat výsledky s předchozími kontrolami a ověřit tak, že chyby zabezpečení byly opraveny. Pokud používáte doporučení ke správě ohrožení zabezpečení, kterou navrhla Azure Security Center, můžete se na portál vybraného řešení překlopit a zobrazit historická data kontroly.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -112,7 +112,7 @@ Zákazníci zodpovídají za napravení ohrožení zabezpečení zjištěného p
 
 - [Publikování v NIST – běžný systém vyhodnocování ohrožení zabezpečení](https://www.nist.gov/publications/common-vulnerability-scoring-system)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -126,7 +126,7 @@ Zákazníci zodpovídají za napravení ohrožení zabezpečení zjištěného p
 
 Zákazníkům se doporučuje vytvořit inventarizaci schváleného softwaru, který je nainstalovaný prostřednictvím Azure Cloud Shell podle potřeb vaší organizace.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -138,7 +138,7 @@ Azure Cloud Shell umožňuje zákazníkům nainstalovat vlastní nástroje nebo 
 
 Zákazníci zodpovídají za monitorování softwarových aplikací spuštěných v daném prostředí, aby se ujistili, že jsou schválené podle zásad organizace.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -150,7 +150,7 @@ Azure Cloud Shell umožňuje zákazníkům nainstalovat vlastní nástroje nebo 
 
 Zákazníci zodpovídají za monitorování softwarových aplikací spuštěných v daném prostředí, aby se zajistilo, že se neschválený software spravuje na základě zásad organizace.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -162,7 +162,7 @@ Azure Cloud Shell umožňuje zákazníkům nainstalovat vlastní nástroje nebo 
 
 Zákazníci zodpovídají za monitorování aplikací spuštěných v daném prostředí, aby se ujistili, že jsou schválené podle zásad organizace.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -174,7 +174,7 @@ Azure Cloud Shell umožňuje zákazníkům nainstalovat vlastní nástroje nebo 
 
 Zákazníci zodpovídají za udržování inventáře schváleného softwaru spuštěného v prostředí, aby se ujistili, že se jedná o schválený software podle zásad organizace.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -182,7 +182,7 @@ Zákazníci zodpovídají za udržování inventáře schváleného softwaru spu
 
 **Doprovodné** materiály: Azure Cloud Shell je prostředí příkazového řádku založené na prohlížeči, které se používá pro interaktivní správu cloudových prostředků.  Akce, které se provedou v rámci funkce Cloud Shell, jsou stejné jako akce provedené ze stejných nástrojů nebo jazyků spouštěných v místním prostředí.  Akce z jednotlivých nástrojů a jazyků by měly být omezené, zákazníci nemůžou omezit přístup k Cloud Shell nebo omezovat, co je k dispozici pro uživatele.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -192,7 +192,7 @@ Zákazníci zodpovídají za udržování inventáře schváleného softwaru spu
 
 - [Nasazení Cloud Shell do služby Azure Virtual Network](private-vnet.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -204,7 +204,7 @@ Zákazníci zodpovídají za udržování inventáře schváleného softwaru spu
 
 **Pokyny**: Cloud Shell umožňuje, aby se skripty spouštěly v, vytvořily a nahrály do Cloud Shell prostředí.  Přesunutí přihlašovacích údajů do Azure Key Vault je naše doporučení.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -216,7 +216,7 @@ Zákazníci zodpovídají za udržování inventáře schváleného softwaru spu
 
 **Doprovodné** materiály: Azure Cloud Shell je prostředí příkazového řádku založené na prohlížeči, které se používá pro interaktivní správu cloudových prostředků.  Každý kontejner zákazníka je dočasný. pro každou relaci se používá nový kontejner.  Image a nástroje kontejneru jsou monitorované a aktualizované týmem Cloud Shell.  Zákazník může nainstalovat vlastní nástroje ve své vlastní imagi podle potřeb organizace a nástroje `sudo` během instalace nevyžadují oprávnění.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -224,7 +224,7 @@ Zákazníci zodpovídají za udržování inventáře schváleného softwaru spu
 
 **Doprovodné** materiály: Azure Cloud Shell je prostředí příkazového řádku založené na prohlížeči, které se používá pro interaktivní správu cloudových prostředků.  Každý kontejner zákazníka je dočasný. pro každou relaci se používá nový kontejner.  Image a nástroje kontejneru jsou monitorované a aktualizované týmem Cloud Shell.  Zákazník může nainstalovat vlastní nástroje ve své vlastní imagi podle potřeb organizace a nástroje `sudo` během instalace nevyžadují oprávnění.
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -234,13 +234,13 @@ Zákazníci zodpovídají za udržování inventáře schváleného softwaru spu
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
 
-**Pokyny**: Vytvoření Průvodce odpověďmi na incidenty pro vaši organizaci. Zajistěte, aby existovaly písemné plány odpovědí na incidenty, které definují všechny role pracovníků, a také fáze zpracování nebo správy incidentů z detekce až po přezkoumání po jednotlivých událostech.
+**Pokyny:** Sestavte pro vaši organizaci průvodce reakcemi na incidenty. Zajistěte, aby existovaly písemné plány reakcí na incidenty, které definují všechny role pracovníků, a také fáze zpracování nebo správy incidentů od jejich detekce až po přezkoumání po jejich ukončení.
 - [Postup konfigurace automatizace pracovních postupů v rámci služby Azure Security Center](../security-center/security-center-planning-and-operations-guide.md) 
 - [Pokyny k vytvoření vlastního procesu reakce na incidenty zabezpečení](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/) 
 - [Anatomie centra Microsoft Security Response Center](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/) 
 - [Zákazník může také využít příručku pro zpracování incidentů zabezpečení počítače v NIST, aby mohl pomoci při vytváření vlastního plánu reakce na incidenty.](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf) 
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -251,7 +251,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 - [Výstrahy zabezpečení ve službě Azure Security Center](../security-center/security-center-alerts-overview.md) 
 - [Používání značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md) 
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -260,7 +260,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 **Doprovodné** materiály: proveďte cvičení a otestujte možnosti reakce na incidenty v pravidelných tempo. Identifikujte slabá místa a mezery a podle potřeby upravte plán.
 - [Přečtěte si téma publikace NIST: Průvodce testováním, školením a cvičením programů pro plány a možnosti IT](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf) 
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -269,17 +269,17 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 **Doprovodné** materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům zákazníka přistupovala protiprávní nebo neoprávněná strana. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
 - [Jak nastavit kontakt zabezpečení Azure Security Center](../security-center/security-center-provide-security-contact-details.md) 
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: zahrňte výstrahy zabezpečení do systému reakce na incidenty.
 
-**Doprovodné** materiály: vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat ověřovací data výstrah.
+**Doprovodné** materiály: vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat výstrahy do Azure Sentinel.
 - [Postup konfigurace průběžného exportu](../security-center/continuous-export.md) 
 - [Streamování upozornění do služby Azure Sentinel](../sentinel/connect-azure-security-center.md) 
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -288,7 +288,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 **Doprovodné** materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" na výstrahy a doporučení zabezpečení.
 - [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](../security-center/workflow-automation.md)
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
@@ -298,15 +298,15 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech kritických poznatků zabezpečení.
 
-**Doprovodné** materiály: postupujte podle pravidel pro testování průniku Microsoft Cloud, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu. Využijte strategii Microsoftu a provádění etického testování průniku a penetračního testování živých webů proti cloudové infrastruktuře, službám a aplikacím spravovaným Microsoftem.
-- [Pravidla penetračního testování](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
-- [Etické testování průniku do cloudu Microsoftu](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e) 
+**Doprovodné** materiály: postupujte podle pravidel pro testování průniku Microsoft Cloud, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu. Využijte strategii Microsoftu a spuštění červeného týmu a testování průniku na živém webu na cloudové infrastruktuře, službách a aplikacích spravovaný Microsoftem.
+- [Pravidla zapojení testování průniku](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
+- [Červený tým cloudových služeb Microsoftu](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e) 
 
-**Monitorování služby Azure Security Center:** Neuvedeno
+**Monitorování služby Azure Security Center:** Nelze použít
 
 **Odpovědnost:** Zákazník
 
 ## <a name="next-steps"></a>Další kroky
 
 - Zobrazit [Srovnávací test zabezpečení Azure](../security/benchmarks/overview.md)
-- Přečtěte si další informace o [standardních hodnotách zabezpečení Azure](../security/benchmarks/security-baselines-overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

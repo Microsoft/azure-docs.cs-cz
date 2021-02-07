@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4bda3622c1bb1cb66e83b82df0d13cbfee9e20a3
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: b50ab8cae91aab56be287f517fa6e6a0b25db8e1
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878117"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807865"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Základní hodnota zabezpečení Azure pro Firewall webových aplikací Azure
 
@@ -135,7 +135,7 @@ Vyberte Azure PowerShell nebo rozhraní příkazového řádku Azure, abyste moh
 
 **Pokyny**: Konfigurace protokolů brány firewall webových aplikací (WAF) pro Azure, které se mají odeslat do centrálního řešení pro správu protokolu zabezpečení, jako je například Azure Sentinel nebo Siem třetí strany. Tyto protokoly zahrnují protokoly aktivit Azure, diagnostiky a WAF v reálném čase. tyto protokoly se pak dají zobrazit v různých nástrojích, například Azure Monitor, Excelu a Power BI. Protokoly brány firewall webových aplikací Azure poskytují přehled o tom, jaká data Azure WAF vyhodnocuje, odpovídá a blokuje.
 
-Azure Sentinel má integrovaný sešit Azure WAF, který poskytuje přehled událostí zabezpečení na Azure WAF. Tento sešit obsahuje události, odpovídající a blokovaná pravidla a všechno ostatní, co se přihlásilo do protokolů brány firewall. Tato telemetrie se dá využít k tomu, aby se aktivovala automatizace PlayBook, která bude na základě událostí WAF shromažďovaných pomocí Sentinelu oznamovat nebo přijímat nápravné akce.
+Azure Sentinel má integrovaný sešit Azure WAF, který poskytuje přehled událostí zabezpečení na Azure WAF. Tento sešit obsahuje události, odpovídající a blokovaná pravidla a všechno ostatní, co se přihlásilo do protokolů brány firewall. Tato telemetrie se dá využít k tomu, aby se aktivovala automatizace PlayBook, která bude na základě událostí WAF shromažďovaných pomocí Azure Sentinelu oznamovat nebo přijímat nápravné akce.
 
 - [Zobrazení protokolů aktivit](../azure-resource-manager/management/view-activity-logs.md)
 

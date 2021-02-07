@@ -1,6 +1,6 @@
 ---
 title: Připojit AWS CloudTrail ke službě Azure Sentinel | Microsoft Docs
-description: Pomocí konektoru AWS můžete delegovat přístup Azure Sentinel k protokolům prostředků AWS a vytvořit vztah důvěryhodnosti mezi AWS CloudTrail a Sentinel.
+description: Pomocí konektoru AWS můžete delegovat přístup Azure Sentinel k protokolům prostředků AWS a vytvořit vztah důvěryhodnosti mezi AWS CloudTrail a Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: a7405824d2477d2d39c45a56ae545e58a090c321
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 3d24fa1ea046a860feb40d09a6d0a57c79371450
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436602"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807593"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Připojení Azure Sentinel k AWS CloudTrail
 
 Pomocí konektoru AWS můžete streamovat události správy AWS CloudTrail do Azure Sentinel. Tento proces připojení deleguje delegáty přístupu pro Azure Sentinel do protokolů prostředků AWS a vytvoří vztah důvěryhodnosti mezi AWS CloudTrail a Azure Sentinel. To se provádí na AWS vytvořením role, která pro přístup k protokolům AWS uděluje oprávnění službě Azure Sentinel.
 
 > [!NOTE]
-> AWS CloudTrail má ve svém LookupEvents API [vestavěná omezení](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) . Nepovoluje více než dvě transakce za sekundu (TPS) na účet a každý dotaz může vracet maximálně 50 záznamů. V důsledku toho by v případě, že jeden tenant neustále generuje více než 100 záznamů za sekundu v jedné oblasti, bude výsledkem nevyřízené položky a prodlevy při příjmu dat.
+> AWS CloudTrail má ve svém LookupEvents API [vestavěná omezení](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) . Nepovoluje více než dvě transakce za sekundu (TPS) na účet a každý dotaz může vracet maximálně 50 záznamů. Proto pokud jeden tenant v jedné oblasti neustále generuje více než 100 záznamů za sekundu, dojde k vytváření backlogů a ke zpoždění příjmu dat.
 
 ## <a name="prerequisites"></a>Požadavky
 

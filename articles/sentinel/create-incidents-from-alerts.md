@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: fabf847b672f4dbf3e680a21bc7015655c612552
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c7c3d69bb26773171e9e0afc9f79ff25909a12a
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906314"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807288"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Automatické vytváření incidentů z výstrah zabezpečení společnosti Microsoft
 
-Výstrahy aktivované v řešeních zabezpečení Microsoftu, která jsou připojená ke službě Azure Sentinel, jako je například Microsoft Cloud App Security a Microsoft Defender pro identitu (dříve Azure ATP), nevytvářejí v Azure Sentinel automaticky incidenty. Ve výchozím nastavení platí, že když připojíte řešení Microsoftu ke službě Azure Sentinel, všechna upozornění vygenerovaná v této službě se uloží jako nezpracovaná data v Azure Sentinel v tabulce výstrahy zabezpečení v pracovním prostoru Azure Sentinel. Tato data pak můžete použít stejně jako jakákoli jiná nezpracovaná data, ke kterým se připojíte pomocí ověřovacích dat.
+Výstrahy aktivované v řešeních zabezpečení Microsoftu, která jsou připojená ke službě Azure Sentinel, jako je například Microsoft Cloud App Security a Microsoft Defender pro identitu (dříve Azure ATP), nevytvářejí v Azure Sentinel automaticky incidenty. Ve výchozím nastavení platí, že když připojíte řešení Microsoftu ke službě Azure Sentinel, všechna upozornění vygenerovaná v této službě se uloží jako nezpracovaná data v Azure Sentinel v tabulce výstrahy zabezpečení v pracovním prostoru Azure Sentinel. Tato data pak můžete použít stejně jako jakákoli jiná nezpracovaná data, ke kterým se připojíte, do Azure Sentinel.
 
 Pomocí pokynů v tomto článku můžete snadno nakonfigurovat službu Azure Sentinel tak, aby automaticky vytvářela incidenty pokaždé, když se aktivuje výstraha v rámci připojeného řešení zabezpečení Microsoftu.
 

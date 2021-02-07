@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
-ms.openlocfilehash: 6a891a301d5869603a7d90d28bb9063d7d5bdb1d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f8d795dcf64230140e1dd07e3f30ca3aa6825ab4
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660572"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806999"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>Přineste si vlastní Machine Learning (ML) do Azure Sentinel
 
@@ -79,10 +79,10 @@ Pokud už máte datacihly nebo jiné prostředí Sparku a chcete raději použí
 
 Balíček vlastní ML obsahuje osvědčené postupy a výzkum Microsoftu na front-endu ML pro zabezpečení. V tomto balíčku poskytujeme následující seznam nástrojů, notebooků a šablon algoritmů pro problémy se zabezpečením.
 
-| Název souboru | Popis |
+| Název souboru | Description |
 | --------- | ----------- |
 | azure_sentinel_utilities. WHL | Obsahuje nástroje pro čtení objektů BLOB z Azure a zápis do Log Analytics. |
-| AnomalousRASampleData | Poznámkový blok znázorňuje použití modelu přístupu k prostředkům neobvyklé v Sentinel s vygenerovaným školením a testováním ukázkových dat. |
+| AnomalousRASampleData | Poznámkový blok znázorňuje použití modelu přístupu k prostředkům neobvyklé ve službě Azure Sentinel s vygenerovaným školením a testováním ukázkových dat. |
 | AnomalousRATraining. ipynb | Poznámkový blok pro výuku algoritmu, sestavení a uložení modelů. |
 | AnomalousRAScoring. ipynb | Poznámkový blok pro naplánování spuštění modelu, vizualizace výsledku a zápis skóre zpět do Azure Sentinel. |
 |
@@ -99,7 +99,7 @@ Pokud ho ještě nemáte, budete muset nastavit vlastní prostředí datacihly. 
 
 ### <a name="auto-export-instruction"></a>Pokyn k automatickému exportu
 
-Pokud chcete vytvořit vlastní modely ML na základě vašich vlastních dat v Sentinel, budete muset exportovat data z Log Analytics do prostředku úložiště objektů BLOB nebo centra událostí, aby model ML mohl k němu přistupovat z datových cihl. Naučte se ingestovat [data do Azure Sentinel](connect-data-sources.md).
+Pokud chcete vytvářet vlastní modely ML na základě vlastních dat ve službě Azure Sentinel, budete muset exportovat data z Log Analytics do prostředku úložiště objektů BLOB nebo centra událostí, aby model ML mohl k němu přistupovat z datových cihl. Naučte se ingestovat [data do Azure Sentinel](connect-data-sources.md).
 
 V tomto příkladu budete potřebovat data školení pro protokol přístupu ke sdílené složce v úložišti objektů BLOB v Azure. Formát dat je popsán v poznámkovém bloku a v knihovnách.
 
@@ -141,7 +141,7 @@ Pro vlastní data, která nejsou Log Analytics automatického exportu podporovan
 
 ### <a name="correlate-with-data-outside-of-azure-sentinel"></a>Korelace s daty mimo Azure Sentinel
 
-Data mimo Azure Sentinel můžete také přenést do úložiště objektů BLOB nebo do centra událostí a korelovat je s daty Sentinel k sestavování modelů ML. 
+Data mimo Azure Sentinel můžete také přenést do úložiště objektů BLOB nebo do centra událostí a korelovat je s daty Sentinel Azure a vytvořit tak modely ML. 
  
 ### <a name="copy-and-install-the-related-packages"></a>Kopírovat a nainstalovat související balíčky
 

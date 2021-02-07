@@ -1,5 +1,5 @@
 ---
-title: Ukázkové skripty pro službu Azure Disk Encryption
+title: Azure Disk Encryption ukázkové skripty pro virtuální počítače s Windows
 description: Tento článek je dodatek pro Microsoft Azure šifrování disku pro virtuální počítače s Windows.
 author: msmbaldwin
 ms.service: virtual-machines-windows
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 255e284cf8d54a9be59f09f5613cb2728417d234
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: f113a1e559798328a2ef81336e8afff02732bb90
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912034"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804950"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Ukázkové skripty pro službu Azure Disk Encryption 
 
@@ -55,13 +55,13 @@ Následující tabulka ukazuje, které parametry lze použít ve skriptu prostř
 
 |Parametr|Popis|Závaznou?|
 |------|------|------|
-|$resourceGroupName| Název skupiny prostředků, do které patří Trezor klíčů.  Pokud neexistuje, vytvoří se nová skupina prostředků s tímto názvem.| Pravda|
-|$keyVaultName|Název trezoru klíčů, do kterého se mají umístit šifrovací klíče Pokud jeden z nich neexistuje, vytvoří se nový trezor s tímto názvem.| Pravda|
-|$location|Umístění trezoru klíčů. Zajistěte, aby byl Trezor klíčů a virtuální počítače zašifrované ve stejném umístění. Seznam umístění získáte pomocí rutiny `Get-AzLocation`.|Pravda|
-|$subscriptionId|Identifikátor předplatného Azure, který se má použít  Své ID předplatného můžete získat pomocí rutiny `Get-AzSubscription`.|Pravda|
-|$aadAppName|Název aplikace služby Azure AD, která bude použita k zápisu tajných kódů do trezoru klíčů. Pokud aplikace se zadaným názvem neexistuje, vytvoří se nová. Pokud tato aplikace již existuje, předejte do skriptu parametr aadClientSecret.|Nepravda|
-|$aadClientSecret|Tajný kód klienta aplikace Azure AD, který byl vytvořen dříve.|Nepravda|
-|$keyEncryptionKeyName|Název volitelného šifrovacího klíče klíče v trezoru klíčů. Pokud neexistuje, vytvoří se nový klíč s tímto názvem.|Nepravda|
+|$resourceGroupName| Název skupiny prostředků, do které patří Trezor klíčů.  Pokud neexistuje, vytvoří se nová skupina prostředků s tímto názvem.| Ano|
+|$keyVaultName|Název trezoru klíčů, do kterého se mají umístit šifrovací klíče Pokud jeden z nich neexistuje, vytvoří se nový trezor s tímto názvem.| Ano|
+|$location|Umístění trezoru klíčů. Zajistěte, aby byl Trezor klíčů a virtuální počítače zašifrované ve stejném umístění. Seznam umístění získáte pomocí rutiny `Get-AzLocation`.|Ano|
+|$subscriptionId|Identifikátor předplatného Azure, který se má použít  Své ID předplatného můžete získat pomocí rutiny `Get-AzSubscription`.|Ano|
+|$aadAppName|Název aplikace služby Azure AD, která bude použita k zápisu tajných kódů do trezoru klíčů. Pokud aplikace se zadaným názvem neexistuje, vytvoří se nová. Pokud tato aplikace již existuje, předejte do skriptu parametr aadClientSecret.|Ne|
+|$aadClientSecret|Tajný kód klienta aplikace Azure AD, který byl vytvořen dříve.|Ne|
+|$keyEncryptionKeyName|Název volitelného šifrovacího klíče klíče v trezoru klíčů. Pokud neexistuje, vytvoří se nový klíč s tímto názvem.|Ne|
 
 ## <a name="resource-manager-templates"></a>Šablony Resource Manageru
 
@@ -81,7 +81,7 @@ Následující tabulka ukazuje, které parametry lze použít ve skriptu prostř
 Níže uvedené části jsou nezbytné k přípravě předem zašifrovaného virtuálního pevného disku s Windows pro nasazení jako šifrovaného virtuálního pevného disku v Azure IaaS. Tyto informace slouží k přípravě a spuštění nového virtuálního počítače s Windows (VHD) v systému Azure Site Recovery nebo Azure. Další informace o tom, jak připravit a nahrát VHD, najdete v tématu [nahrání zobecněného virtuálního pevného disku a jeho použití k vytvoření nových virtuálních počítačů v Azure](upload-generalized-managed.md).
 
 ### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>Aktualizace zásad skupiny pro povolení ochrany operačního systému bez čipu TPM
-Nakonfigurujte nastavení zásady skupiny BitLockeru **Nástroj BitLocker Drive Encryption** , které najdete v části konfigurace **počítače zásady místního počítače**  >  **Computer Configuration**  >  **šablony pro správu**  >  **součásti systému Windows** . Toto nastavení změňte na **jednotky s operačním systémem**  >  **vyžadovat při spuštění další ověření**  >  , které **umožňuje BitLocker bez kompatibilního čipu TPM** , jak je znázorněno na následujícím obrázku:
+Nakonfigurujte nastavení zásady skupiny BitLockeru **Nástroj BitLocker Drive Encryption**, které najdete v části konfigurace **počítače zásady místního počítače**  >    >  **šablony pro správu**  >  **součásti systému Windows**. Toto nastavení změňte na **jednotky s operačním systémem**  >  **vyžadovat při spuštění další ověření**  >  , které **umožňuje BitLocker bez kompatibilního čipu TPM**, jak je znázorněno na následujícím obrázku:
 
 ![Microsoft Antimalware v Azure](../media/disk-encryption/disk-encryption-fig8.png)
 

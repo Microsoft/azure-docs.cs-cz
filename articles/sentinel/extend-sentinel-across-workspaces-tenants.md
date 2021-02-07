@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 4312a819f8fd41805dca095556efdc6189f23af9
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: dfd8f94dc7ab4e428647b8f44a86a2cd06634e2a
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757115"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807237"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Rozšíření Azure Sentinelu napříč pracovními prostory a tenanty
 
@@ -34,7 +34,7 @@ Všechny výhody Azure Sentinelu můžete plně využít při použití jednoho 
 | Suverenita a dodržování předpisů | Pracovní prostor je vázaný na konkrétní oblast. Pokud se data musí uchovávat v různých [zeměpisných oblastech Azure](https://azure.microsoft.com/global-infrastructure/geographies/) , aby splňovaly zákonné požadavky, musí být rozdělené do samostatných pracovních prostorů. |  |
 | Vlastnictví dat | Hranice vlastnictví dat, například dceřinými společnostmi nebo přidruženými společnostmi, jsou lépe vymezeny pomocí samostatných pracovních prostorů. |  |
 | Několik tenantů Azure | Služba Azure Sentinel podporuje shromažďování dat z prostředků Microsoft a Azure SaaS jenom v rámci své vlastní hranice tenanta Azure Active Directory (Azure AD). Každý tenant služby Azure AD proto vyžaduje samostatný pracovní prostor. |  |
-| Odstupňované řízení přístupu k datům | Organizace může pro přístup k některým datům shromažďovaných službou Azure Sentinel vyžadovat v rámci organizace nebo mimo ni jiné skupiny. Například:<br><ul><li>Vlastníci prostředků mají přístup k datům, která se týkají jejich prostředků.</li><li>Regionální nebo dceřiné Socy – přístup k datům relevantním pro jejich části organizace</li></ul> | Používání [prostředků](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) Azure RBAC nebo [úrovně tabulky Azure RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) |
+| Odstupňované řízení přístupu k datům | Organizace může pro přístup k některým datům shromažďovaných službou Azure Sentinel vyžadovat v rámci organizace nebo mimo ni jiné skupiny. Příklad:<br><ul><li>Vlastníci prostředků mají přístup k datům, která se týkají jejich prostředků.</li><li>Regionální nebo dceřiné Socy – přístup k datům relevantním pro jejich části organizace</li></ul> | Používání [prostředků](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) Azure RBAC nebo [úrovně tabulky Azure RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) |
 | Podrobné nastavení uchovávání informací | Historicky bylo několik pracovních prostorů jediným způsobem, jak nastavit různá období uchovávání pro různé datové typy. Díky zavedení nastavení uchování na úrovni tabulky už to v mnoha případech nepotřebujeme. | Použití [Nastavení uchování na úrovni tabulky](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) nebo automatizace [odstranění dat](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) |
 | Rozdělená fakturace | Když umístíte pracovní prostory do samostatných předplatných, můžou se fakturovat různým stranám. | Použijte vykazování a přeúčtování. |
 | Zastaralá architektura | Použití několika pracovních prostorů může vyrazit z historických návrhů, které vzaly v úvahu omezení nebo osvědčené postupy, které už nedrží hodnotu true. Může se také jednat o volbu návrhu, který lze upravit tak, aby lépe vyhovoval Azure Sentinelu.<br><br>Mezi příklady patří:<br><ul><li>Použití výchozího pracovního prostoru pro každé předplatné při nasazení Azure Security Center</li><li>Nutnost podrobnějšího řízení přístupu nebo nastavení uchovávání, řešení, pro která jsou relativně nová</li></ul> | Změňte architekturu pracovních prostorů. |
@@ -127,7 +127,7 @@ Lovecké možnosti mezi pracovními prostory umožňují, aby se vaše hrozba Hu
 
 Pokud chcete nakonfigurovat a spravovat víc pracovních prostorů služby Azure Sentinel, budete muset automatizovat používání rozhraní API pro správu služby Azure Sentinel. Další informace o tom, jak automatizovat nasazení prostředků Sentinel Azure, včetně pravidel výstrah, loveckých dotazů, sešitů a playbooky, najdete v tématu [rozšíření Azure Sentinel: API, Integration and Management Automation](https://techcommunity.microsoft.com/t5/azure-sentinel/extending-azure-sentinel-apis-integration-and-management/ba-p/1116885).
 
-Viz také [nasazení a Správa služby Azure Sentinel jako kódu](https://techcommunity.microsoft.com/t5/azure-sentinel/deploying-and-managing-azure-sentinel-as-code/ba-p/1131928) a [kombinování Azure Lighthouse s možnostmi DevOps Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/combining-azure-lighthouse-with-sentinel-s-devops-capabilities/ba-p/1210966) pro konsolidovanou metodologii pro správu Azure Sentinel jako kódu a pro nasazení a konfiguraci prostředků z privátního úložiště GitHub. 
+Přečtěte si také téma [nasazení a Správa služby Azure Sentinel jako kódu](https://techcommunity.microsoft.com/t5/azure-sentinel/deploying-and-managing-azure-sentinel-as-code/ba-p/1131928) a [kombinování Azure Lighthouse s možnostmi DevOps Sentinel Azure](https://techcommunity.microsoft.com/t5/azure-sentinel/combining-azure-lighthouse-with-sentinel-s-devops-capabilities/ba-p/1210966) pro konsolidovanou metodologii pro správu Azure Sentinel jako kódu a pro nasazení a konfiguraci prostředků z privátního úložiště GitHubu. 
 
 ## <a name="managing-workspaces-across-tenants-using-azure-lighthouse"></a>Správa pracovních prostorů napříč klienty pomocí Azure Lighthouse
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 89a437504394797b8cbed5325210186248082c33
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5e2f6d8ca1f3911959f396eb1ed77ce8377c0e3c
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218226"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807831"
 ---
 # <a name="azure-security-baseline-for-azure-synapse-analytics"></a>Základní hodnoty zabezpečení Azure pro Azure synapse Analytics
 
@@ -329,7 +329,7 @@ Pro operace správy použijte předdefinované role Azure, které se musí expli
 
 * [Správa stávajících přihlašovacích údajů a účtů správců v Azure SQL](../azure-sql/database/logins-create-manage.md#existing-logins-and-user-accounts-after-creating-a-new-database)
 
-* [Předdefinované role v Azure](../role-based-access-control/built-in-roles.md)
+* [Předdefinované role Azure](../role-based-access-control/built-in-roles.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -1111,7 +1111,7 @@ Ve výchozím nastavení se data v účtu úložiště šifrují pomocí klíč�
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: zahrňte výstrahy zabezpečení do systému reakce na incidenty.
 
-**Doprovodné** materiály: vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat výstrahy na Sentinel.
+**Doprovodné** materiály: vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat výstrahy do Azure Sentinel.
 
 * [Postup konfigurace průběžného exportu](../security-center/continuous-export.md)
 

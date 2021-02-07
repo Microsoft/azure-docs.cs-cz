@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: c468f289c9dbfe949890c5462dd7c9be3e548d5a
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 8347dcd60dcdfbf03f52e25eb24744909c69465a
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938756"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804866"
 ---
 # <a name="virtual-network-tap"></a>Naslouchací zařízení virtuální sítě
 > [!IMPORTANT]
@@ -30,7 +30,7 @@ KLEPNUTÍ na virtuální síť Azure (terminálový přístupový bod) umožňuj
 Následující obrázek ukazuje, jak funguje virtuální síť. Můžete přidat konfiguraci klepnutím na [síťové rozhraní](virtual-network-network-interface.md) , které je připojené k virtuálnímu počítači nasazenému ve vaší virtuální síti. Cíl je IP adresa virtuální sítě ve stejné virtuální síti jako monitorované síťové rozhraní nebo navázání [partnerské virtuální](virtual-network-peering-overview.md) sítě. Řešení kolektoru pro klepnutí na virtuální síť můžete nasadit za využití interního nástroje pro vyrovnávání zatížení Azure pro zajištění vysoké dostupnosti.
 ![Jak funguje na virtuální síti](./media/virtual-network-tap/architecture.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předtím, než vytvoříte virtuální síť, musíte přijmout potvrzovací e-mail, který jste si zaregistrovali ve verzi Preview, a mít jeden nebo víc virtuálních počítačů vytvořených pomocí modelu nasazení [Azure Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a partnerského řešení pro agregaci provozu klepnutí ve stejné oblasti Azure. Pokud ve vaší virtuální síti nemáte Partnerské řešení, přečtěte si článek o [partnerských řešeních](#virtual-network-tap-partner-solutions) k nasazení. K agregaci provozu z více síťových rozhraní ve stejných nebo různých předplatných můžete použít stejnou virtuální síť. klepněte na prostředek. Pokud jsou monitorovaná síťová rozhraní v různých předplatných, musí být odběry přidruženy ke stejnému Azure Active Directory tenantovi. Monitorovaná síťová rozhraní a cílový koncový bod pro agregaci přenosů po klepnutí se navíc můžou nacházet v partnerských virtuálních sítích ve stejné oblasti. Pokud používáte tento model nasazení, zajistěte, aby bylo povoleno vytváření [partnerských vztahů virtuálních sítí](virtual-network-peering-overview.md) před konfigurací klepnutí na virtuální síť.
 
@@ -38,7 +38,7 @@ Předtím, než vytvoříte virtuální síť, musíte přijmout potvrzovací e-
 
 Účty, které použijete k použití konfigurace na síťových rozhraních, musí být přiřazeny roli [přispěvatele sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazená k potřebným akcím z následující tabulky:
 
-| Akce | Name (Název) |
+| Akce | Name |
 |---|---|
 | Microsoft. Network/virtualNetworkTaps/* | Vyžaduje se pro vytvoření, aktualizaci, čtení a odstranění virtuální sítě klepnutím na prostředek. |
 | Microsoft. Network/networkInterfaces/Read | Vyžaduje se ke čtení prostředku síťového rozhraní, na kterém se bude konfigurovat klepnutím. |
@@ -49,7 +49,7 @@ Předtím, než vytvoříte virtuální síť, musíte přijmout potvrzovací e-
 
 ### <a name="network-packet-brokers"></a>Zprostředkovatelé síťových paketů
 
-- [Gigamon GigaSECURE](https://blog.gigamon.com/2018/09/13/why-microsofts-new-vtap-service-works-even-better-with-gigasecure-for-azure)
+- [GigaVUE Cloud Suite pro Azure](https://www.gigamon.com/solutions/cloud/public-cloud/gigavue-cloud-suite-azure.html)
 - [Ixia CloudLens](https://www.ixiacom.com/cloudlens/cloudlens-azure)
 - [Nubeva Prisms](https://www.nubeva.com/azurevtap)
 - [Prostředky infrastruktury pro velké monitorování velkých přepínačů](https://www.bigswitch.com/products/big-monitoring-fabric/public-cloud/microsoft-azure)

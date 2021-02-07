@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: ba37b2280ba4d7138f4ed652b7b330bcaf7b9935
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 3684b5a8069a6b683ae562c527af89814362a7f9
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99566772"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806982"
 ---
 # <a name="connect-your-agari-phishing-defense-and-brand-protection-solutions-to-azure-sentinel"></a>Propojte svá řešení ochrany před podvodnými útoky a ochranou před hrozbami v Azure Sentinel
 
@@ -58,7 +58,7 @@ Pro připojení ochrany před podvodnými útoky a ochranou proti útokům z aga
 
 1. **Volitelné Povolit Graph API zabezpečení:** 
 
-    Agary Function App umožňují sdílet analýzy hrozeb pomocí nástroje Sentinel prostřednictvím Graph API zabezpečení. Chcete-li použít tuto funkci, bude nutné povolit [konektor platformy Sentinel Threat Intelligence](connect-threat-intelligence.md) a také [zaregistrovat aplikaci](/graph/auth-register-app-v2) v Azure Active Directory.
+    Agars Function App umožňuje sdílet analýzy hrozeb pomocí služby Azure Sentinel prostřednictvím Graph API zabezpečení. Chcete-li použít tuto funkci, bude nutné povolit [konektor platformy Sentinel Threat Intelligence](connect-threat-intelligence.md) a také [zaregistrovat aplikaci](/graph/auth-register-app-v2) v Azure Active Directory.
 
     Tento proces vám poskytne tři informace pro použití při nasazování Function App níže: **ID tenanta grafu**, **ID klienta grafu** a **tajný kód klienta grafu**.
 

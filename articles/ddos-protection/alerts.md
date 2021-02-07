@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: d9b77def3ccefe3c866ccef78684d38da0b8a268
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ea62b5df7159440a7538c7db0711b7d8f63ec220
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915143"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806286"
 ---
 # <a name="view-and-configure-ddos-protection-alerts"></a>Zobrazení a konfigurace upozornění ochrany před útoky DDoS
 
@@ -41,13 +41,13 @@ V tomto kurzu se naučíte:
 Pomocí těchto šablon budete moci konfigurovat výstrahy pro všechny veřejné IP adresy, u kterých jste povolili diagnostické protokolování. Proto aby bylo možné používat tyto šablony výstrah, budete nejprve potřebovat Log Analytics pracovní prostor s povoleným diagnostickým nastavením. Viz [zobrazení a konfigurace diagnostického protokolování DDoS](diagnostic-logging.md).
 
 ### <a name="azure-monitor-alert-rule"></a>Azure Monitor pravidlo výstrahy
-Toto [Azure monitor pravidlo výstrahy](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Azure%20Monitor%20Alert%20-%20DDoS%20Mitigation%20Started) spustí jednoduchý dotaz k detekci, kdy dochází ke zmírnění aktivní DDoS. To označuje potenciální útok. Skupiny akcí lze použít k vyvolání akcí v důsledku výstrahy.
+Toto [Azure monitor pravidlo výstrahy](https://aka.ms/ddosmitigationstatus) spustí jednoduchý dotaz k detekci, kdy dochází ke zmírnění aktivní DDoS. To označuje potenciální útok. Skupiny akcí lze použít k vyvolání akcí v důsledku výstrahy.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520Monitor%2520Alert%2520-%2520DDoS%2520Mitigation%2520Started%2FDDoSMitigationStarted.json)
 
 ### <a name="azure-monitor-alert-rule-with-logic-app"></a>Azure Monitor pravidlo výstrahy s aplikací logiky
 
-Tato [Šablona](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/DDoS%20Mitigation%20Alert%20Enrichment) nasadí nezbytné komponenty DDoS výstrahy týkající se zmírnění rizik: Azure monitor pravidlo výstrahy, skupinu akcí a aplikaci logiky. Výsledkem procesu je e-mailová výstraha s podrobnostmi o tom, jaké IP adresy jsou v útoku, včetně informací o prostředku přidruženému k IP adrese. Vlastník prostředku se přidá jako příjemce e-mailu spolu s týmem zabezpečení. Také se provede test dostupnosti základní aplikace a výsledky se zahrnou do e-mailové výstrahy.
+Tato [Šablona](https://aka.ms/ddosalert) nasadí nezbytné komponenty DDoS výstrahy týkající se zmírnění rizik: Azure monitor pravidlo výstrahy, skupinu akcí a aplikaci logiky. Výsledkem procesu je e-mailová výstraha s podrobnostmi o tom, jaké IP adresy jsou v útoku, včetně informací o prostředku přidruženému k IP adrese. Vlastník prostředku se přidá jako příjemce e-mailu spolu s týmem zabezpečení. Také se provede test dostupnosti základní aplikace a výsledky se zahrnou do e-mailové výstrahy.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FDDoS%2520Mitigation%2520Alert%2520Enrichment%2FEnrich-DDoSAlert.json)
 
@@ -64,7 +64,7 @@ Můžete vybrat libovolnou z dostupných metrik ochrany DDoS, abyste byli upozor
     |---------                |---------                                                                                           |
     | Rozsah                   | Vyberte **Vybrat prostředek**. </br> Vyberte **předplatné** , které obsahuje veřejnou IP adresu, kterou chcete protokolovat, vyberte **veřejnou IP adresu** pro **typ prostředku** a pak vyberte konkrétní veřejnou IP adresu, pro kterou chcete protokolovat metriky. </br> Vyberte **Hotovo**. | 
     | Podmínka | Vyberte **možnost vybrat podmínku**. </br> V části Název signálu vyberte **v části útok na DDoS nebo ne**. </br> V části **operátor** vyberte **větší než nebo rovno**. </br> V části **typ agregace** vyberte **Maximum**. </br> V části **prahová hodnota** zadejte *1*. V případě **útoku pod DDoS nebo** nemetriky znamená **0** znamená, že se nebudete útočit, ale **1** znamená, že jste u něj útok. </br> Vyberte **Hotovo**. | 
-    | Actions | Vyberte **Přidat skupiny akcí**. </br> Vyberte **Vytvořit skupinu akcí**. </br> V části **oznámení** vyberte v části **Typ oznámení** možnost **E-mail/zpráva SMS/nabízení/hlas**. </br> Do **pole název** zadejte _MyUnderAttackEmailAlert_. </br> Klikněte na tlačítko Upravit a pak vyberte **e-mail** a tolik z následujících možností, které požadujete, a pak vyberte **OK**. </br> Vyberte **Zkontrolovat a vytvořit**. | 
+    | Akce | Vyberte **Přidat skupiny akcí**. </br> Vyberte **Vytvořit skupinu akcí**. </br> V části **oznámení** vyberte v části **Typ oznámení** možnost **E-mail/zpráva SMS/nabízení/hlas**. </br> Do **pole název** zadejte _MyUnderAttackEmailAlert_. </br> Klikněte na tlačítko Upravit a pak vyberte **e-mail** a tolik z následujících možností, které požadujete, a pak vyberte **OK**. </br> Vyberte **Zkontrolovat a vytvořit**. | 
     | Podrobnosti pravidla výstrahy | V části **název pravidla výstrahy** zadejte _MyDdosAlert_. |
 
 Během několika minut detekce útoku byste měli obdržet e-mail od Azure Monitor metriky, která vypadá podobně jako na následujícím obrázku:

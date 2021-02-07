@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: 0e993cb1e53645f7081a20fc6a2785b8cfef1cce
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 010cfc307d2b2c10c31168fce73673fb1fb611b8
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954174"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807644"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Jak připojit Azure Data Factory a Azure dosah
 
@@ -107,29 +107,29 @@ Integrace mezi Data Factory a dosah podporuje pouze podmnožinu datových systé
 
 ### <a name="data-factory-copy-data-support"></a>Podpora Data Factory Kopírování dat
 
-| Systém úložiště dat | Podporováno jako zdroj | Podporováno jako jímka |
-| ------------------- | ------------------- | ----------------- |
-| ADLS Gen1 | Yes | Ano (pouze bez binární kopie) |
-| ADLS Gen2 | Yes | Yes |
-| Azure Blob | Yes | Yes |
-| Azure Cosmos DB (SQL API) | Yes | Yes |
-| Azure Cosmos DB (rozhraní API Mongo) | Yes | Yes |
-| Azure Cognitive Search | Yes | Yes |
-| Průzkumník dat Azure | Yes | Yes |
-| Databáze Azure Database for Marie DB \* | Yes | Yes |
-| Azure Database for MYSQL \* | Yes | Yes |
-| Azure Database for PostgreSQL \* | Yes | Yes |
-| Azure File Storage | Yes | Ano |
-| Azure Table Storage | Yes | Yes |
-| Azure SQL Database \* | Yes | Yes |
-| Azure SQL MI \* | Yes | Yes |
-| Azure synapse Analytics (dřív SQL DW) \* | Yes | Yes |
-| SQL Server on-Prem (vyžaduje se SHIR) \* | Yes | Yes |
-| Amazon S3 | Yes | Yes |
-| Teradata | Yes | Yes |
-| SAP S4 Hana | Yes | Yes |
-| SAP ECC | Yes | Yes |
-| Hive | Yes | Yes |
+| Systém úložiště dat | Podporováno jako zdroj | 
+| ------------------- | ------------------- | 
+| ADLS Gen1 | Yes | 
+| ADLS Gen2 | Yes | 
+| Azure Blob | Yes |
+| Azure Cosmos DB (SQL API) | Yes | 
+| Azure Cosmos DB (rozhraní API Mongo) | Yes |
+| Azure Cognitive Search | Yes | 
+| Průzkumník dat Azure | Yes | 
+| Databáze Azure Database for Marie DB \* | Yes | 
+| Azure Database for MYSQL \* | Yes | 
+| Azure Database for PostgreSQL \* | Yes |
+| Azure File Storage | Ano | 
+| Azure Table Storage | Yes |
+| Azure SQL Database \* | Yes | 
+| Azure SQL MI \* | Yes | 
+| Azure synapse Analytics (dřív SQL DW) \* | Yes | 
+| SQL Server Prem  \* | Yes | 
+| Amazon S3 | Yes | 
+| Teradata | Yes | 
+| Konektor tabulky SAP | Yes |
+| SAP ECC | Yes | 
+| Hive | Yes | 
 
 > [!Note]
 > Funkce line má určité nároky na výkon v Data Factory aktivity kopírování. Pro ty, kteří nastavili připojení k datové továrně v dosah, se může stát, že některé úlohy kopírování trvá déle. Většinou je dopad na zanedbatelné. Pokud úlohy kopírování trvá déle než obvykle, kontaktujte prosím podporu s časovým porovnáním.
@@ -137,7 +137,7 @@ Integrace mezi Data Factory a dosah podporuje pouze podmnožinu datových systé
 ### <a name="data-factory-data-flow-support"></a>Data Factory podpora toku dat
 
 | Systém úložiště dat | Podporováno |
-| ------------------- | ------------------- | ----------------- |
+| ------------------- | ------------------- | 
 | ADLS Gen1 | Yes |
 | ADLS Gen2 | Yes |
 | Azure Blob | Yes |
@@ -147,7 +147,7 @@ Integrace mezi Data Factory a dosah podporuje pouze podmnožinu datových systé
 ### <a name="data-factory-execute-ssis-package-support"></a>Data Factory provádění podpory balíčků SSIS
 
 | Systém úložiště dat | Podporováno |
-| ------------------- | ------------------- | ----------------- |
+| ------------------- | ------------------- |
 | Azure Blob | Yes |
 | ADLS Gen1 | Yes |
 | ADLS Gen2 | Yes |

@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: c767edca46696bc7d04a1cf101e2bd183f5cf7f9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e00496ad623d534e1fbdcb60f22a1e36f77c4212
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970839"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806168"
 ---
-# <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrace na Premium Storage pomocí Azure Site Recovery
+# <a name="use-site-recovery-to-migrate-to-premium-storage"></a>Migrace na Premium Storage pomocí Site Recovery
 
 [Azure Premium SSD](../disks-types.md) poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače, na kterých běží úlohy náročné na vstupně-výstupní operace. Tato příručka vám pomůže migrovat disky virtuálních počítačů z účtu úložiště úrovně Standard na účet Premium Storage pomocí [Azure Site Recovery](../../site-recovery/site-recovery-overview.md).
 
@@ -62,7 +62,7 @@ Toto jsou požadavky Azure pro tento scénář migrace:
 * Virtuální síť Azure, ke které se virtuální počítače připojí při jejich vytvoření při převzetí služeb při selhání. Virtuální síť Azure musí být ve stejné oblasti jako ta, ve které Site Recovery běží.
 * Účet úložiště Azure standard pro ukládání protokolů replikace. Může to být stejný účet úložiště pro disky virtuálních počítačů, které se migrují.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pochopení relevantních součástí scénáře migrace v předchozí části.
 * Naplánujte prostoje o [převzetí služeb při selhání v Site Recovery](../../site-recovery/site-recovery-failover.md).
@@ -73,18 +73,18 @@ K migraci virtuálních počítačů Azure IaaS mezi oblastmi nebo ve stejné ob
 
 ### <a name="step-1-create-a-recovery-services-vault"></a>Krok 1: vytvoření trezoru Recovery Services
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
-2. Vyberte **vytvořit**  >  **správce**prostředků  >  **zálohování** a **Site Recovery (OMS)**. Případně můžete vybrat **Procházet**  >  **Recovery Services trezor**  >  **Přidat**. 
+1. Otevřete [Azure Portal](https://portal.azure.com).
+2. Vyberte **vytvořit**  >  **správce** prostředků  >  **zálohování** a **Site Recovery (OMS)**. Případně můžete vybrat **Procházet**  >  **Recovery Services trezor**  >  **Přidat**. 
 3. Zadejte oblast, do které se budou virtuální počítače replikovat. Pro účely migrace ve stejné oblasti vyberte oblast, ve které jsou zdrojové virtuální počítače a účty zdrojového úložiště. 
 
 ### <a name="step-2-choose-your-protection-goals"></a>Krok 2: výběr cílů ochrany 
 
 1. Na virtuálním počítači, kam chcete nainstalovat konfigurační server, otevřete [Azure Portal](https://portal.azure.com).
-2. V nastavení **Recovery Services trezory**  >  **Settings**  >  **Site Recovery**  >  **Krok 1: Příprava**na  >  **cíl ochrany**infrastruktury.
+2. V nastavení **Recovery Services trezory**  >    >  **Site Recovery**  >  **Krok 1: Příprava** na  >  **cíl ochrany** infrastruktury.
 
    ![Procházení k podoknu cíle ochrany][2]
 
-3. V části **cíl ochrany**vyberte v prvním rozevíracím seznamu možnost **Azure**. V druhém rozevíracím seznamu vyberte **nevirtualizované/jiné**a pak vyberte **OK**.
+3. V části **cíl ochrany** vyberte v prvním rozevíracím seznamu možnost **Azure**. V druhém rozevíracím seznamu vyberte **nevirtualizované/jiné** a pak vyberte **OK**.
 
    ![Podokno cíle ochrany s poli s výplní][3]
 
@@ -102,11 +102,11 @@ K migraci virtuálních počítačů Azure IaaS mezi oblastmi nebo ve stejné ob
 
 3. Na virtuálním počítači, který používáte jako konfigurační server, spusťte sjednocené nastavení a nainstalujte konfigurační server a procesový Server. K dokončení instalace můžete projít [snímky obrazovky](../../site-recovery/vmware-azure-tutorial.md) . Kroky zadané pro tento scénář migrace můžete vyhledat na následujících snímcích obrazovky.
 
-   1. V části **než začnete**vyberte **nainstalovat konfigurační server a procesový Server**.
+   1. V části **než začnete** vyberte **nainstalovat konfigurační server a procesový Server**.
 
       ![Než začnete stránku][6]
 
-   2. V části **registrace**vyhledejte a vyberte registrační klíč, který jste si stáhli z trezoru.
+   2. V části **registrace** vyhledejte a vyberte registrační klíč, který jste si stáhli z trezoru.
 
       ![Registrační stránka][7]
 
@@ -123,7 +123,7 @@ K migraci virtuálních počítačů Azure IaaS mezi oblastmi nebo ve stejné ob
 
 ### <a name="step-4-set-up-the-target-environment"></a>Krok 4: nastavení cílového prostředí
 
-Vyberte **připravit**  >  **cíl**infrastruktury a zadejte model nasazení, který chcete použít pro virtuální počítače po převzetí služeb při selhání. V závislosti na vašem scénáři můžete zvolit možnost **Classic** nebo **Správce prostředků**.
+Vyberte **připravit**  >  **cíl** infrastruktury a zadejte model nasazení, který chcete použít pro virtuální počítače po převzetí služeb při selhání. V závislosti na vašem scénáři můžete zvolit možnost **Classic** nebo **Správce prostředků**.
 
 ![Cílové podokno][10]
 
@@ -152,7 +152,7 @@ Pokud chcete ověřit, jestli je konfigurační server úspěšně přidružený
    Virtuální počítač s podporou převzetí služeb při selhání bude mít dva dočasné disky: jednu z primárního virtuálního počítače a druhou vytvořenou během zřizování virtuálního počítače v oblasti obnovení. Pokud chcete dočasný disk před replikací vyloučit, nainstalujte před povolením replikace službu mobility. Další informace o tom, jak vyloučit dočasný disk, najdete v tématu [vyloučení disků z replikace](../../site-recovery/vmware-azure-tutorial.md).
 
 2. Replikaci povolte následujícím způsobem:
-   1. Vyberte **replikovat**  >  **zdroj**aplikace. Po prvním povolení replikace výběrem **+ replikovat** v trezoru Povolte replikaci pro další počítače.
+   1. Vyberte **replikovat**  >  **zdroj** aplikace. Po prvním povolení replikace výběrem **+ replikovat** v trezoru Povolte replikaci pro další počítače.
    2. V kroku 1 nastavte **zdroj** jako procesový Server.
    3. V kroku 2 určete model nasazení po převzetí služeb při selhání, účet Premium Storage, který se má migrovat na, standardní účet úložiště pro ukládání protokolů a virtuální síť, která se nezdařila.
    4. V kroku 3 přidejte chráněné virtuální počítače podle IP adresy. (K jejich vyhledání možná budete potřebovat interní IP adresu.)

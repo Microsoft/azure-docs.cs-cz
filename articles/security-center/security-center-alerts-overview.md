@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: c1406e6a1f2f36c5d42544c52ade3f991fe2ba0a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b26d42ca32f0048bb2bedcb5fef337c3ac1d7d65
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433015"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807220"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Výstrahy zabezpečení ve službě Azure Security Center
 
@@ -23,7 +23,7 @@ V Security Center existuje celá řada výstrah pro mnoho různých typů prost�
 
 Výstrahy zabezpečení se spouštějí pomocí pokročilých detekcí a jsou dostupné jenom v Azure Defenderu. K dispozici je bezplatná zkušební verze. Můžete upgradovat ze stránky **Nastavení cenové &** . Přečtěte si další informace o [cenách Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
-## <a name="respond-to-todays-threats"></a>Reakce na dnešní hrozby <a name="respond-threats"> </a>
+## <a name="respond-to-todays-threats"></a>Reakce na dnešní hrozby <a name="respond-threats"></a>
 
 Za posledních 20 let došlo ve světě hrozeb k významným změnám. V minulosti se společnosti obvykle musely zabývat pouze tím, že se týká jenom individuálních útočníků, kteří byli většinou zájem, aby viděli "co můžou dělat". Dnešní útočníci jsou mnohem sofistikovanější a organizované. Často mají konkrétní finanční a strategické cíle. Mají také k dispozici více prostředků, protože mohou být financovány státy nebo organizovanou trestnou činností.
 
@@ -91,7 +91,7 @@ Máte řadu možností, jak zobrazit výstrahy mimo Security Center, včetně t�
 
 - **Stažení sestavy CSV** na řídicím panelu výstrahy poskytuje jednorázový export do sdíleného svazku clusteru.
 - **Průběžný export** z cenové & nastavení umožňuje nakonfigurovat streamy výstrah zabezpečení a doporučení pro Log Analytics pracovních prostorů a Event Hubs. [Další informace o průběžném exportu](continuous-export.md)
-- **Azure Sentinel Connector** streamuje výstrahy zabezpečení z Azure Security Center do Azure Sentinel. [Další informace o připojení Azure Security Center s Sentinel](../sentinel/connect-azure-security-center.md)
+- **Azure Sentinel Connector** streamuje výstrahy zabezpečení z Azure Security Center do Azure Sentinel. [Další informace o připojení Azure Security Center s využitím Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 
 ## <a name="next-steps"></a>Další kroky
