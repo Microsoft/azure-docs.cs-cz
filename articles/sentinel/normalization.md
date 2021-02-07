@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: a9d2cd48e3b686614f7361d2007f6f8183c2361e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 66c315132ef0ef4d320e9edd8e9bcc28b2240924
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657019"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805086"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Normalizace v Azure Sentinel
 
@@ -105,11 +105,11 @@ Při ukládání funkce dotazu může být nutné zavřít Průzkumníka dotazů
 
 #### <a name="using-the-parsers"></a>Použití analyzátorů
 
-Jakmile je povoleno, můžete použít meta-parser k dotazování sjednoceného zobrazení na všechny aktuálně povolené analyzátory. Provedete to tak, že přejdete na stránku protokoly ověřovacích protokolů a zadáte dotaz meta-parser:
+Jakmile je povoleno, můžete použít meta-parser k dotazování sjednoceného zobrazení na všechny aktuálně povolené analyzátory. Provedete to tak, že přejdete na stránku protokoly Sentinel Azure a zadáte dotaz meta-parser:
 
 :::image type="content" source="./media/normalization/query-parser.png" alt-text="Dotazování analyzátoru":::
  
-K meta analyzátoru nebo k jednotlivým analyzátorům můžete přistupovat pomocí Průzkumníku dotazů na stránce protokoly Sentinel kliknutím na Průzkumník dotazů:
+K meta analyzátoru nebo k jednotlivým analyzátorům můžete přistupovat pomocí Průzkumníku dotazů na stránce protokoly kliknutím na Průzkumník dotazů:
 
 :::image type="content" source="./media/normalization/query-explorer.png" alt-text="Průzkumník dotazů":::
 

@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: bff13c24e0b5818b352e76df1d8ecd8251a5f12c
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: f8664886203e32baadda5cdf993fbaf7b2a62ed7
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430222"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805914"
 ---
 # <a name="resource-manager-template-samples-for-data-collection-rules-in-azure-monitor"></a>Ukázky šablon Správce prostředků pro pravidla shromažďování dat v Azure Monitor
 Tento článek obsahuje ukázkové [Azure Resource Manager šablony](../../azure-resource-manager/templates/template-syntax.md) pro nasazení a konfiguraci [agenta Log Analytics](../platform/log-analytics-agent.md) a [rozšíření diagnostiky](../platform/diagnostics-extension-overview.md) pro virtuální počítače v Azure monitor. Každá ukázka obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.
@@ -82,7 +82,7 @@ Následující příklad vytvoří přidružení mezi virtuálním počítačem 
 
 ## <a name="create-association-with-azure-arc"></a>Vytvoření asociace pomocí ARC Azure
 
-Následující ukázka nainstaluje agenta Azure Monitor na virtuální počítač Windows Azure. Vytvoří se přidružení mezi počítačem serveru s podporou ARC Azure a pravidlem shromažďování dat.
+Následující ukázka vytvoří přidružení mezi serverem s podporou ARC Azure a pravidlem shromažďování dat.
 
 ### <a name="template-file"></a>Soubor šablony
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 01/25/2021
-ms.openlocfilehash: 8e5b43383e0b49c0fe6fffdd9ffee6667fb540f8
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.date: 02/05/2021
+ms.openlocfilehash: 6c064acc44e180d3e99bdcf68d2e1e129d52fd5d
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054750"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805930"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informace o omezeních a konfiguraci pro Azure Logic Apps
 
@@ -427,6 +427,12 @@ V této části jsou uvedeny příchozí IP adresy pouze pro službu Azure Logic
 
 > [!TIP]
 > Chcete-li při vytváření pravidel zabezpečení zjednodušit složitost, můžete místo zadání předpony IP adres příchozích Logic Apps pro každou oblast použít [značku služby](../virtual-network/service-tags-overview.md) **LogicAppsManagement**. Volitelně můžete také použít značku služby **AzureConnectors** pro spravované konektory, které provádějí příchozí zpětná volání webhooků do služby Logic Apps, a nemusíte pro každou oblast zadávat předpony IP adres spravovaného konektoru. Tyto značky fungují v oblastech, kde je služba Logic Apps k dispozici.
+>
+> Následující konektory umožňují příchozí zpětná volání Webhooku službě Logic Apps:
+>
+> Adobe Creative Cloud, Adobe Sign, Adobe Signing demo, Adobe Sign Preview, Adobe Signing Stage, Azure Sentinel, Business Central, Calendly, Common Data Service, DocuSign, DocuSign demo, Dynamics 365 for fin & Operations, LiveChat, Office 365 Outlook, Outlook.com, analyzátor, SAP *, SHIFTS for Microsoft teams, projekty pro týmovou práci, Typeform
+>
+> \***SAP**: volající závisí na tom, jestli je prostředí pro nasazení víc tenantů Azure, nebo ISE. V prostředí s více klienty provádí místní brána dat zpětné volání služby Logic Apps. V ISE konektor SAP provede zpětné volání do služby Logic Apps.
 
 <a name="multi-tenant-inbound"></a>
 
@@ -543,7 +549,7 @@ V této části jsou uvedeny odchozí IP adresy pro službu Azure Logic Apps a s
 
 #### <a name="azure-government---outbound-ip-addresses"></a>Azure Government – odchozí IP adresy
 
-| Region (Oblast) | Logic Apps IP | IP adresa spravovaného konektoru |
+| Oblast | Logic Apps IP | IP adresa spravovaného konektoru |
 |--------|---------------|-----------------------|
 | US DoD – střed | 52.182.48.215, 52.182.92.143 | 52.127.58.160 - 52.127.58.175, 52.182.54.8, 52.182.48.136, 52.127.61.192 - 52.127.61.223 |
 | USA (Gov) – Arizona | 52.244.67.143, 52.244.65.66, 52.244.65.190 | 52.127.2.160 - 52.127.2.175, 52.244.69.0, 52.244.64.91, 52.127.5.224 - 52.127.5.255 |

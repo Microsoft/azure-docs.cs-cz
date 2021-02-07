@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 55042c8d1e612598cc5728668c9e87b054fb3afa
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: e95495e48725a68ab1fe3f37d235e5765b2c8015
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98537834"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806235"
 ---
 # <a name="test-through-simulations"></a>Testování prostřednictvím simulací
 
@@ -29,7 +29,7 @@ Spolupracujeme s [cloudem BreakingPoint](https://www.ixiacom.com/products/breaki
 - DDoS dodržování předpisů v dokumentu.
 - Vyškolte své týmy zabezpečení sítě.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Než budete moct dokončit kroky v tomto kurzu, musíte nejdřív vytvořit [Plán Standard Protection pro Azure DDoS](manage-ddos-protection.md) s chráněnými veřejnými IP adresami.
 - Nejprve musíte vytvořit účet s [BreakingPoint cloudem](http://breakingpoint.cloud/). 
@@ -63,7 +63,7 @@ Jakmile je prostředek napadený, měli byste vidět, že se hodnota mění z **
 
 ### <a name="breakingpoint-cloud-api-script"></a>Skript rozhraní API pro BreakingPoint Cloud
 
-Tento [skript rozhraní API](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Breaking%20Point%20SDK) je možné použít k automatizaci testování DDoS spuštěním jednou nebo pomocí cron k plánování pravidelných testů. To je užitečné, pokud chcete ověřit, že je protokolování správně nakonfigurované a že jsou postupy detekce a reakce platné. Skripty vyžadují operační systém Linux (Testováno pomocí Ubuntu 18,04 LTS) a Python 3. Nainstalujte požadavky a klienta API pomocí zahrnutého skriptu nebo pomocí dokumentace na webu [BreakingPoint Cloud](http://breakingpoint.cloud/) .
+Tento [skript rozhraní API](https://aka.ms/ddosbreakingpoint) je možné použít k automatizaci testování DDoS spuštěním jednou nebo pomocí cron k plánování pravidelných testů. To je užitečné, pokud chcete ověřit, že je protokolování správně nakonfigurované a že jsou postupy detekce a reakce platné. Skripty vyžadují operační systém Linux (Testováno pomocí Ubuntu 18,04 LTS) a Python 3. Nainstalujte požadavky a klienta API pomocí zahrnutého skriptu nebo pomocí dokumentace na webu [BreakingPoint Cloud](http://breakingpoint.cloud/) .
 
 ## <a name="next-steps"></a>Další kroky
 

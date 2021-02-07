@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b0d7eeeb840a3efc560c20310b38bee93a038795
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: ecc6580148dfba92077336a26ff9160fbe88eb2c
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055820"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806151"
 ---
 # <a name="import-passwords-into-the-microsoft-authenticator-app"></a>Import hesel do aplikace Microsoft Authenticator
 
@@ -39,21 +39,21 @@ Uživatelé Google Chrome na telefonech s Androidem a Apple můžou svoje hesla 
 
 1. Klepněte na ![ nabídku se třemi tečkami Google ](./media/user-help-authenticator-app-import-passwords/ellipsis-chrome.png) v pravém horním rohu pro telefony s Androidem nebo v pravém dolním rohu pro zařízení s iOS a potom klepněte na **nastavení.**
 
-   &nbsp; | &nbsp;
+   Platforma | Odkaz
    ---------- | --------
    Android | ![Umístění nabídky nastavení Google Chrome](./media/user-help-authenticator-app-import-passwords/android-settings-menu.png)
    iOS | ![Ikona nabídky nastavení Google Chrome](./media/user-help-authenticator-app-import-passwords/apple-settings-menu.png)
 
 1. V **Nastavení** otevřete **hesla**.
 
-   &nbsp; | &nbsp;
+   Platforma | Odkaz
    ---------- | --------
    Android | ![Umístění příkazu pro hesla andoid Chrome](./media/user-help-authenticator-app-import-passwords/android-passwords-location.png)
    iOS | ![Heslo pro Apple Chrome – umístění příkazu](./media/user-help-authenticator-app-import-passwords/apple-passwords-location.png)
 
 1. V zařízeních s Androidem klepněte na ![ nabídku se třemi tečkami Google ](./media/user-help-authenticator-app-import-passwords/ellipsis-chrome.png) v pravém horním rohu pro telefony s Androidem nebo dole vpravo pro zařízení s iOS a potom klepněte na **exportovat hesla**.
 
-   &nbsp; | &nbsp;
+   Platforma | Odkaz
    ---------- | --------
    Android | ![Umístění hesel pro export pro Android Chrome](./media/user-help-authenticator-app-import-passwords/android-export-passwords-location.png)
    iOS | ![Umístění pro export hesel Apple Chrome](./media/user-help-authenticator-app-import-passwords/apple-export-passwords-location.png)
@@ -62,7 +62,7 @@ Uživatelé Google Chrome na telefonech s Androidem a Apple můžou svoje hesla 
 
 1. Po exportu hesel se v Chrome zobrazí výzva k výběru aplikace, do které provádíte import. Pokud chcete začít importovat hesla, vyberte **ověřovací data** . Až to bude hotové, budete informováni o stavu importu.
 
-   &nbsp; | &nbsp;
+   Platforma | Odkaz
    ---------- | --------
    Android | ![Umístění pro import hesel pro Android Chrome](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
    iOS | ![Umístění pro import hesel Apple Chrome](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -105,7 +105,7 @@ Firefox umožňuje exportovat hesla jenom z desktopového prohlížeče, takže 
 
       1. Exportovaný soubor CSV můžete přenést na telefon s Androidem nebo iOS pomocí preferovaného a bezpečného způsobu a pak ho stáhnout. Potom nasdílejte soubor CSV s aplikací Authenticator a spusťte import.
 
-         &nbsp; | &nbsp;
+         Platforma | Odkaz
          ---------- | --------
          Android | ![Umístění pro import hesel pro Android Chrome](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Umístění pro import hesel Apple Chrome](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -134,7 +134,7 @@ LastPass podporuje export hesel jenom z desktopového prohlížeče, takže pře
 
       1. Přeneste exportovaný soubor CSV na telefon Smartphone pomocí preferovaného a bezpečného způsobu a pak ho stáhněte. Pak nasdílejte soubor CSV s ověřovací aplikací a spusťte import.
 
-         &nbsp; | &nbsp;
+         Platforma | Odkaz
          ---------- | --------
          Android | ![Umístění pro import hesel pro Android LastPass](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Umístění pro import hesel Apple LastPass](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -153,7 +153,7 @@ Bitwarden podporuje export hesel jenom z desktopového prohlížeče, takže př
 
       1. Přeneste exportovaný soubor CSV na telefon Smartphone pomocí preferovaného a bezpečného způsobu a pak ho stáhněte. Pak nasdílejte soubor CSV s ověřovací aplikací a spusťte import.
 
-         &nbsp; | &nbsp;
+         Platforma | Odkaz
          ---------- | --------
          Android | ![Umístění pro import hesel pro Android Bitwarden](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Umístění pro import hesel Apple Bitwarden](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -186,7 +186,7 @@ RoboForm umožňuje exportovat hesla jenom z desktopové aplikace, takže před 
 
       1. Přeneste exportovaný soubor CSV na telefon Smartphone pomocí preferovaného a bezpečného způsobu a pak ho stáhněte. Pak nasdílejte soubor CSV s ověřovací aplikací a spusťte import.
 
-         &nbsp; | &nbsp;
+         Platforma | Odkaz
          ---------- | --------
          Android | ![Umístění pro import hesel pro Android RoboForm](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Umístění pro import hesel Apple RoboForm](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -209,7 +209,7 @@ Pokud postup importu hesel ze Správce hesel není uvedený v tomto článku, m�
 
       1. Přeneste exportovaný soubor CSV na telefon Smartphone pomocí preferovaného a bezpečného způsobu a pak ho stáhněte. Pak nasdílejte soubor CSV s ověřovací aplikací a spusťte import.
 
-         &nbsp; | &nbsp;
+         Platforma | Odkaz
          ---------- | --------
          Android | ![Umístění pro import hesel ve formátu CSV pro Android](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Umístění pro import hesel Apple CSV](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)

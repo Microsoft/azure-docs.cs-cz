@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 12c7fd1d8ee36b562cd651f50fd0565825441883
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d2513d822c182d4820728123b187e995da3179fe
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197383"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806202"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>Základní hodnota zabezpečení Azure pro Azure SQL Database & SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -1165,7 +1165,7 @@ https://docs.microsoft.com/azure/security-center/security-center-provide-securit
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: zahrňte výstrahy zabezpečení do systému reakce na incidenty.
 
-**Doprovodné** materiály: vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat výstrahy na Sentinel.
+**Doprovodné** materiály: vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat výstrahy do Azure Sentinel.
 
 Postup konfigurace průběžného exportu:
 

@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
-ms.openlocfilehash: a4890dd93cf77e20aff09ca6fd33ec3434a45a4b
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 8ca4a6e78ab3c6ccf492869bb68c5296ae91de21
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98663042"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806066"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace ASP.NET Core
 
@@ -207,7 +207,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 1. Otevřete *_Layout. cshtml* ve sdíleném adresáři *views* \\  . Vyhledejte `<nav>` Čárový kód v části `<body>`  >  `<header>` . Vložte novou `<feature>` značku mezi položky *Domů* a navigační panel *ochrany osobních údajů* , jak je znázorněno na zvýrazněných řádcích níže.
 
-    :::code language="html" source="../../includes/azure-app-configuration-navbar.md" range="15-38" highlight="13-17":::
+    :::code language="html" source="../../includes/azure-app-configuration-navbar.md" range="15-38" highlight="14-18":::
 
 1. Vytvořte adresář *views/beta* a soubor *index. cshtml* obsahující následující kód:
 

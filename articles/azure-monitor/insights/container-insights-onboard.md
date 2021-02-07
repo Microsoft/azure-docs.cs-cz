@@ -3,12 +3,12 @@ title: Povolit Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje, jak povolit a nakonfigurovat Azure Monitor pro kontejnery, abyste porozuměli tomu, jak váš kontejner vykonává a jaké byly zjištěny problémy související s výkonem.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: f598b42f1a8d9fcb42f09d17e40850cf3a1282be
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 56f60b58cff351aa37e98cdba933c929aaaedab6
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943815"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806000"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Povolit Azure Monitor pro kontejnery
 
@@ -35,6 +35,12 @@ Můžete povolit Azure Monitor pro kontejnery pro nové nasazení nebo pro jedno
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že jste splnili následující požadavky:
+
+> [!IMPORTANT]
+> Log Analytics kontejner pro Linux (REPLICASET pod) zpřístupňuje rozhraní API všem uzlům Windows na zabezpečeném portu Kubelet (10250) v rámci clusteru ke shromáždění metrik souvisejících s výkonem uzlů a kontejnerů. Kubelet zabezpečený port (: 10250) by měl být otevřen v rámci virtuální sítě clusteru pro příchozí i odchozí shromažďování metrik souvisejících s výkonem uzlů Windows a kontejneru.
+>
+> Pokud máte cluster Kubernetes s uzly systému Windows, zkontrolujte a nakonfigurujte skupinu zabezpečení sítě a zásady sítě, abyste se ujistili, že je otevřený port Kubelet (: 10250) pro příchozí i odchozí připojení ve virtuální síti clusteru.
+
 
 - Máte Log Analytics pracovní prostor.
 
@@ -80,7 +86,7 @@ V následující tabulce jsou uvedeny informace o konfiguraci proxy serveru a br
 
 V následující tabulce jsou uvedené informace o konfiguraci proxy serveru a brány firewall pro Azure Čína 21Vianet:
 
-|Prostředek agenta|Port |Popis | 
+|Prostředek agenta|Port |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Přijímání dat |
 | `*.oms.opinsights.azure.cn` | 443 | Připojování OMS |
@@ -88,7 +94,7 @@ V následující tabulce jsou uvedené informace o konfiguraci proxy serveru a b
 
 Následující tabulka uvádí informace o konfiguraci proxy serveru a brány firewall pro vládu Azure USA:
 
-|Prostředek agenta|Port |Popis | 
+|Prostředek agenta|Port |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Přijímání dat |
 | `*.oms.opinsights.azure.us` | 443 | Připojování OMS |

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 7d045ad104f8e2055ae85b74f4aae8f4d3fd61a4
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 5d2d923fc448beeff8fa165226890d88d97d01ad
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509515"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805661"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Aktivace a nastavení senzoru
 
@@ -204,7 +204,7 @@ Přístup k nástrojům konzoly získáte z vedlejší nabídky.
 | Okno | Ikona | Description |
 |---|---|---|
 | Uživatelé | :::image type="icon" source="media/concept-sensor-console-overview/users-icon-azure.png" border="false"::: | Definujte uživatele a role s různými úrovněmi přístupu. |
-| Šíření | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Dodejte informace o výstrahách partnerům a interním zdrojům (například Sentinel), které jsou integrovány s Defenderem pro IoT, e-mailové adresy, servery webhooků a další. <br /> Podrobnosti najdete v podrobnostech [o upozorněních před oznámením](how-to-forward-alert-information-to-partners.md) . |
+| Šíření | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Dodejte informace o výstrahách partnerům a interním zdrojům (například Azure Sentinel), které se integrují s Defenderem pro IoT, e-mailové adresy, servery webhooků a další. <br /> Podrobnosti najdete v podrobnostech [o upozorněních před oznámením](how-to-forward-alert-information-to-partners.md) . |
 | Nastavení systému | :::image type="icon" source="media/concept-sensor-console-overview/system-settings-icon-azure.png" border="false"::: | Nakonfigurujte nastavení systému. Například definujte nastavení DHCP, zadejte podrobnosti poštovního serveru nebo vytvořte aliasy portů. |
 | Nastavení importu | :::image type="icon" source="media/concept-sensor-console-overview/import-settings-icon-azure.png" border="false"::: | Zobrazí okno **Nastavení importu** . V informacích o zařízení můžete provádět ruční změny.<br /> Podrobnosti najdete v tématu [Import informací o zařízení](how-to-import-device-information.md) . |
 

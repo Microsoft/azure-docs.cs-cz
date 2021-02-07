@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý Start: zprovoznění v Azure Sentinel'
-description: V tomto rychlém startu se dozvíte, jak nejdřív povolit Sentinel a pak připojit zdroje dat do zprovoznění Azure Sentinel.
+description: V tomto rychlém startu se dozvíte, jak nejdřív povolit službu Azure Sentinel, a pak se připojit ke zdrojům dat.
 services: sentinel
 author: yelevin
 ms.author: yelevin
@@ -10,14 +10,14 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: 107806b6372360e501fe9cc0a21d25cff5cc35f9
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 7cb8cb4d99ca8a63195eba21d82814fcd7820f5c
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95248641"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807763"
 ---
-# <a name="quickstart-on-board-azure-sentinel"></a>Rychlý start: Zprovoznění služby Azure Sentinel
+# <a name="quickstart-on-board-azure-sentinel"></a>Rychlý Start: zprovoznění služby Azure Sentinel
 
 V tomto rychlém startu se dozvíte, jak připojit k Azure Sentinel. 
 
@@ -41,7 +41,7 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
 
 ### <a name="geographical-availability-and-data-residency"></a>Zeměpisná dostupnost a zasídlí dat
 
-- V pracovních prostorech můžete spustit službu Azure Sentinel ve většině [oblastí GA Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) s výjimkou oblastí Čína a Německo (svrchovan). Může se stát, že nové oblasti Log Analytics můžou nějakou dobu trvat, než se připojí služba Sentinel. 
+- V pracovních prostorech můžete spustit službu Azure Sentinel ve většině [oblastí GA Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) s výjimkou oblastí Čína a Německo (svrchovan). V některých případech může při zabalení služby Sentinel v Azure chvíli trvat nové Log Analytics oblasti. 
 
 - Data generovaná službou Azure Sentinel, jako jsou incidenty, záložky a analytická pravidla, můžou obsahovat určitá zákaznická data, která jsou zdrojem zákaznických pracovních Log Analytics. Tato data generovaná službou Azure Sentinel se ukládají v geograficky uvedeném v následující tabulce, podle geografického umístění, ve kterém se nachází pracovní prostor:
 
@@ -57,7 +57,7 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
 
 ## <a name="enable-azure-sentinel"></a>Povolit službu Azure Sentinel <a name="enable"></a>
 
-1. Přihlaste se k webu Azure Portal. Ujistěte se, že je zaškrtnuté políčko předplatné, ve kterém je Azure Sentinel vytvořeno.
+1. Přihlaste se k portálu Azure. Ujistěte se, že je zaškrtnuté políčko předplatné, ve kterém je Azure Sentinel vytvořeno.
 
 1. Vyhledejte a vyberte **Azure Sentinel**.
 
@@ -67,7 +67,7 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
 
 1. Vyberte pracovní prostor, který chcete použít, nebo vytvořte nový. Službu Azure Sentinel můžete spustit ve více než jednom pracovním prostoru, ale data jsou izolovaná do jednoho pracovního prostoru.
 
-   ![Zvolit pracovní prostor](./media/quickstart-onboard/choose-workspace.png)
+   ![Vyberte pracovní prostor.](./media/quickstart-onboard/choose-workspace.png)
 
    >[!NOTE] 
    > - Výchozí pracovní prostory vytvořené nástrojem Azure Security Center se v seznamu nezobrazí. na ně nemůžete nainstalovat službu Azure Sentinel.

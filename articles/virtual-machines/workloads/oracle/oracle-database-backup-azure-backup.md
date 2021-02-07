@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 3122b1c5d7ac8b9dca0e244a4b7e73a57c4c5fca
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: ac045694e8975509635e03221a8cb9cc84446b55
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072400"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806405"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>Zálohování a obnovení databáze Oracle Database 19c na virtuálním počítači Azure Linux pomocí Azure Backup
 
@@ -697,7 +697,7 @@ Pro obnovení celého virtuálního počítače proveďte tyto kroky:
 
    1. V Azure Portal vyberte **+ vytvořit prostředek** a vyhledejte a vyberte **účet úložiště**.
     
-      ![Přidat stránku účtu úložiště](./media/oracle-backup-recovery/storage-1.png)
+      ![Snímek obrazovky, který ukazuje, kde vytvořit prostředek.](./media/oracle-backup-recovery/storage-1.png)
     
     
    1. Na stránce Vytvořit účet úložiště vyberte existující skupinu prostředků **RG-Oracle**, pojmenujte svůj účet úložiště **Oracrestore** a pro druh účtu vyberte **Storage v2 (GeneralPurpose v2)** . Změňte replikaci na **místně redundantní úložiště (LRS)** a nastavte výkon na **standardní**. Zajistěte, aby se umístění nastavilo na stejnou oblast jako všechny ostatní prostředky ve skupině prostředků. 
@@ -877,7 +877,7 @@ Po obnovení virtuálního počítače byste měli původní IP adresu znovu př
 
 5.  Teď musíte odpojit síťovou kartu, která se vytvořila s operací obnovení virtuálního počítače, protože je nakonfigurovaná jako primární rozhraní. Klikněte na **Odpojit síťové rozhraní** a zvolte novou síťovou kartu, která se podobá **vmoracle19c-nic-xxxxxxxxxxxx**, a pak klikněte na **OK** .
 
-    ![Hodnota IP adresy](./media/oracle-backup-recovery/create-ip-05.png)
+    ![Snímek obrazovky, který ukazuje, kde vybrat odpojit síťové rozhraní](./media/oracle-backup-recovery/create-ip-05.png)
     
     Nově vytvořený virtuální počítač teď bude mít původní síťovou kartu, která je přidružená k původní IP adrese a pravidlům skupiny zabezpečení sítě.
     

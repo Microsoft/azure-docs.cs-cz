@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 041de50fea6152aade706cc938a75bb70619ebf3
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 97bcf0bedb3ed175f8fdb5d4dc361c069ae0327d
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202806"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805205"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Základní hodnoty zabezpečení Azure pro Cognitive Services
 
@@ -398,7 +398,7 @@ Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a ses
 
 **Doprovodné** materiály: jako centrální ověřování a systém autorizací použijte Azure Active Directory (AD). Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data. Azure AD také nasolete, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele. Pokud váš případ použití podporuje ověřování AD, použijte Azure AD k ověřování požadavků na rozhraní Cognitive Services API.
 
-V současné době platí jenom rozhraní API pro počítačové zpracování obrazu, Face API, rozhraní API pro analýzu textu, moderní čtečka, funkce pro rozpoznávání formulářů, detektor anomálií a všechny služby Bingu s výjimkou Vlastní vyhledávání Bingu ověřování pomocí Azure AD.
+V současné době platí jenom rozhraní API pro počítačové zpracování obrazu, rozhraní API pro rozpoznávání tváře, rozhraní API pro analýzu textu, moderní čtečka, funkce pro rozpoznávání formulářů, detektor anomálií a všechny služby Bingu s výjimkou Vlastní vyhledávání Bingu ověřování pomocí Azure AD.
 
 * [Ověření požadavků na Cognitive Services](./authentication.md#authenticate-with-azure-active-directory)
 
@@ -1056,7 +1056,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka a 
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: zahrňte výstrahy zabezpečení do systému reakce na incidenty.
 
-**Doprovodné** materiály: vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat ověřovací data výstrah.
+**Doprovodné** materiály: vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat výstrahy do Azure Sentinel.
 
 * [Postup konfigurace průběžného exportu](../security-center/continuous-export.md)
 

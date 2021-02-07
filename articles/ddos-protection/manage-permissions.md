@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 08ab78171376f702aecb1f49571dda583eae5d82
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: df53062c7c897493a47d88ea2873f9710b9825bf
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813866"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806252"
 ---
 # <a name="manage-ddos-protection-plans-permissions-and-restrictions"></a>Správa plánů DDoS Protection: oprávnění a omezení
 
@@ -30,7 +30,7 @@ Plán DDoS Protection funguje napříč oblastmi a předplatnými. Stejný plán
 
 Aby bylo možné pracovat s plány ochrany DDoS Protection, musí být váš účet přiřazen k roli [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) roli, která je přiřazena k příslušným akcím uvedeným v následující tabulce:
 
-| Akce                                            | Název                                     |
+| Akce                                            | Name                                     |
 | ---------                                         | -------------                            |
 | Microsoft. Network/ddosProtectionPlans/Read        | Přečíst plán DDoS Protection              |
 | Microsoft. Network/ddosProtectionPlans/Write       | Vytvořit nebo aktualizovat plán DDoS Protection  |
@@ -43,7 +43,7 @@ Aby bylo možné povolit DDoS ochranu pro virtuální síť, musí mít váš ú
 
 Pro většinu organizací není nutné vytvářet více než jeden plán. Plán nelze přesunout mezi předplatnými. Pokud chcete změnit předplatné, ve kterém je plán, je nutné odstranit stávající plán a vytvořit nový.
 
-Pro zákazníky, kteří mají různá předplatná, a kteří chtějí zajistit, aby byl v rámci svého tenanta nasazený jeden plán pro řízení nákladů, můžete použít Azure Policy k [omezení vytváření Azure DDoS Protectionch standardních plánů](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Restrict%20creation%20of%20Azure%20DDoS%20Protection%20Standard%20Plans%20with%20Azure%20Policy). Tato zásada zablokuje vytváření jakýchkoli plánů DDoS, pokud předplatné předtím neoznačilo výjimku. V této zásadě se zobrazí také seznam všech předplatných, která mají nasazený plán DDoS, ale neměly by se jim označit jako nedodržující předpisy.
+Pro zákazníky, kteří mají různá předplatná, a kteří chtějí zajistit, aby byl v rámci svého tenanta nasazený jeden plán pro řízení nákladů, můžete použít Azure Policy k [omezení vytváření Azure DDoS Protectionch standardních plánů](https://aka.ms/ddosrestrictplan). Tato zásada zablokuje vytváření jakýchkoli plánů DDoS, pokud předplatné předtím neoznačilo výjimku. V této zásadě se zobrazí také seznam všech předplatných, která mají nasazený plán DDoS, ale neměly by se jim označit jako nedodržující předpisy.
 
 
 ## <a name="next-steps"></a>Další kroky

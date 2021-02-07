@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
-ms.openlocfilehash: bde11c8e06891025be96810acf6d87952a3d8d2f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5bf94d7c5889bb5a743655d65e48f021e91e01b7
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660776"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807135"
 ---
 # <a name="import-threat-intelligence-into-azure-sentinel"></a>Import analýzy hrozeb do Azure Sentinelu
 
@@ -36,7 +36,7 @@ Do služby Azure Sentinel můžete integrovat analýzu hrozeb (ČŘ) prostředni
 - Pomocí integrovaných šablon pravidel **analýzy** můžete vygenerovat výstrahy zabezpečení a incidenty pomocí importované analýzy hrozeb.
 - Pomocí **sešitu analýzy hrozeb** Vizualizujte klíčové informace o vaší analýze hrozeb v Azure Sentinel.
 
-Analýza hrozeb taky poskytuje užitečný kontext v rámci jiných prostředí s Sentinelou v Azure, jako jsou například **lovecké** a **poznámkové bloky**, a i když tento článek není popsaný v tomto článku, tato prostředí se řeší v [tomto skvělém příspěvku na blogu Ian Hellen](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239)v článku Sentinel, který pokrývá použití cti v poznámkových blocích.
+Analýza hrozeb taky nabízí užitečný kontext v rámci jiných prostředí s Sentinelou v Azure, jako jsou například **lovecké** a **poznámkové bloky**, a i když tento článek není popsaný v tomto článku, řeší se tato prostředí v [tomto skvělém příspěvku na blogu Ian Hellen v Jupyterch poznámkových blocích v Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239), který pokrývá použití cti v
 
 ## <a name="azure-sentinel-data-connectors-for-threat-intelligence"></a>Datové konektory Azure Sentinel pro analýzu hrozeb
 
@@ -326,7 +326,7 @@ Pojďme se podívat na dva nejběžnější úkoly a vytvořit nové indikátory
 
 1. Zvolte typ indikátoru a potom vyplňte požadovaná pole označená červenou hvězdičkou (*) na **novém panelu indikátoru** .
 
-1. Vyberte **Apply** (Použít). Indikátor se přidá do mřížky ukazatelů a pošle se taky do tabulky ThreatIntelligenceIndicator v **protokolech**.
+1. Vyberte **Použít**. Indikátor se přidá do mřížky ukazatelů a pošle se taky do tabulky ThreatIntelligenceIndicator v **protokolech**.
 
 Označování indikátorů hrozeb je jednoduchý způsob, jak je seskupit dohromady, aby bylo snazší je najít. Obvykle můžete použít značku na indikátory týkající se konkrétního incidentu nebo indikátory reprezentující hrozby z konkrétního známého objektu actor nebo známé kampaně se známým útokem. Můžete označit indikátory hrozeb jednotlivě nebo indikátory vícenásobného výběru a označit je všechny najednou. Níže je uveden příklad označování více indikátorů s ID incidentu. Vzhledem k tomu, že označení je zdarma, doporučuje se vytvořit standardní konvence pojmenování pro značky indikátoru hrozeb. U každého indikátoru můžete použít více značek.
 

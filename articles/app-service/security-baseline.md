@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 758f7de46c524406f31a40072250eb7d59745d42
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 648e7991784212e4fe781efd5d9f01cb571c5012
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736084"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807848"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>Základní hodnoty zabezpečení Azure pro App Service
 
@@ -1111,7 +1111,7 @@ Navíc můžete jasně označit předplatná (například produkci, neprodukčn�
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: zahrňte výstrahy zabezpečení do systému reakce na incidenty.
 
-**Doprovodné** materiály: vyexportujte výstrahy a doporučení Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Security Center Data můžete streamovat Sentinel pro výstrahy podle obchodních potřeb.
+**Doprovodné** materiály: vyexportujte výstrahy a doporučení Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Security Center Data můžete streamovat výstrahy do Azure Sentinel podle obchodních potřeb.
 
 - [Postup konfigurace průběžného exportu](../security-center/continuous-export.md)
 

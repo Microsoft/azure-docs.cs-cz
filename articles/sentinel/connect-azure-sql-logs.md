@@ -8,20 +8,20 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: yelevin
-ms.openlocfilehash: df132c35ebb04596d91720431f5b08cb88e2abd9
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: a3a09ceffc75e2d396d7bd7aeedd97b7f2b6ec2b
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98104191"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807729"
 ---
 # <a name="connect-azure-sql-database-diagnostics-and-auditing-logs"></a>Připojení protokolů diagnostiky a auditu služby Azure SQL Database
 
 Azure SQL je plně spravovaný databázový stroj PaaS (platforma jako služba), který zpracovává většinu funkcí správy databází, jako je upgrade, opravy, zálohování a monitorování, bez zásahu uživatele. 
 
-Konektor služby Azure SQL Database umožňuje streamovat auditování vašich databází a diagnostické protokoly do ověřování Sentinel, což vám umožní průběžně monitorovat aktivity ve všech vašich instancích.
+Konektor služby Azure SQL Database umožňuje streamovat auditování vašich databází a diagnostické protokoly do Azure Sentinel, což vám umožní průběžně monitorovat aktivity ve všech vašich instancích.
 
-- Připojení diagnostických protokolů umožňuje odeslat protokoly diagnostiky databáze různých datových typů do pracovního prostoru Sentinel.
+- Připojení diagnostických protokolů umožňuje odeslat protokoly diagnostiky databáze různých datových typů do pracovního prostoru Sentinel Azure.
 
 - Připojení protokolů auditování umožňuje streamovat protokoly auditu zabezpečení ze všech databází SQL Azure na úrovni serveru.
 

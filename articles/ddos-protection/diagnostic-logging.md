@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 22c49502883cb444027bd59a24bfb5bb3c32da4c
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 42d4467a6441e517ef3194f701eb47e7e68505b1
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915160"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806303"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>Zobrazení a konfigurace protokolování diagnostiky DDoS
 
@@ -67,7 +67,7 @@ V následující tabulce jsou uvedené názvy a popisy polí:
 
 # <a name="ddosprotectionnotifications"></a>[DDoSProtectionNotifications](#tab/DDoSProtectionNotifications)
 
-| Název pole | Popis |
+| Název pole | Description |
 | --- | --- |
 | **TimeGenerated** | Datum a čas ve standardu UTC, kdy bylo oznámení vytvořeno. |
 | **ResourceId** | ID prostředku vaší veřejné IP adresy. |
@@ -83,7 +83,7 @@ V následující tabulce jsou uvedené názvy a popisy polí:
 
 # <a name="ddosmitigationflowlogs"></a>[DDoSMitigationFlowLogs](#tab/DDoSMitigationFlowLogs)
 
-| Název pole | Popis |
+| Název pole | Description |
 | --- | --- |
 | **TimeGenerated** | Datum a čas ve standardu UTC, kdy se protokol toku vytvořil. |
 | **ResourceId** | ID prostředku vaší veřejné IP adresy. |
@@ -102,7 +102,7 @@ V následující tabulce jsou uvedené názvy a popisy polí:
 
 # <a name="ddosmitigationreports"></a>[DDoSMitigationReports](#tab/DDoSMitigationReports)
 
-| Název pole | Popis |
+| Název pole | Description |
 | --- | --- |
 | **TimeGenerated** | Datum a čas ve standardu UTC, kdy se sestava vytvořila. |
 | **ResourceId** | ID prostředku vaší veřejné IP adresy. |
@@ -128,7 +128,7 @@ V následující tabulce jsou uvedené názvy a popisy polí:
 
 ## <a name="enable-diagnostic-logging-on-all-public-ips"></a>Povolit protokolování diagnostiky u všech veřejných IP adres
 
-Tato [Šablona](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Enable%20Diagnostic%20Logging/Azure%20Policy) vytvoří definici Azure Policy pro automatické povolení protokolování diagnostiky pro všechny protokoly veřejné IP adresy v definovaném oboru.
+Tato [Šablona](https://aka.ms/ddosdiaglogs) vytvoří definici Azure Policy pro automatické povolení protokolování diagnostiky pro všechny protokoly veřejné IP adresy v definovaném oboru.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FEnable%2520Diagnostic%2520Logging%2FAzure%2520Policy%2FDDoSLogs.json)
 
@@ -142,7 +142,7 @@ Protokoly můžete připojit k Azure Sentinel, zobrazit a analyzovat data v seš
 
 ### <a name="azure-ddos-protection-workbook"></a>Sešit Azure DDoS Protection
 
-Tuto šablonu Azure Resource Manager (ARM) můžete použít k nasazení sešitu analýzy útoků. Tento sešit vám umožní vizualizovat data útoku napříč několika panely, které umožňují snadno pochopit, co je k dispozici. 
+[Tuto šablonu Azure Resource Manager (ARM)](https://aka.ms/ddosworkbook) můžete použít k nasazení sešitu analýzy útoků. Tento sešit vám umožní vizualizovat data útoku napříč několika panely, které umožňují snadno pochopit, co je k dispozici. 
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520DDoS%2520Protection%2520Workbook%2FAzureDDoSWorkbook_ARM.json)
 

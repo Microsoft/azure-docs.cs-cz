@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 695f151e6d6cc0a677942f60c751567da0cfca7c
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: fce947c43e8559f4ea2a65645805e987a9015d3f
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063879"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806269"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-storage"></a>Zálohování a obnovení databáze Oracle Database 19c na virtuálním počítači Azure Linux pomocí Azure Storage
 
@@ -31,19 +31,19 @@ Tento článek ukazuje použití Azure Storage jako média k zálohování a obn
    ssh azureuser@<publicIpAddress>
    ```
    
-2. Přepněte na uživatele *_root_* _:
+2. Přepněte na uživatele ***root*** :
  
    ```bash
    sudo su -
    ```
     
-3. Přidejte uživatele Oracle do _*_ souboru/etc/sudoers_ * _:
+3. Přidejte uživatele Oracle do souboru ***/etc/sudoers*** :
 
    ```bash
    echo "oracle   ALL=(ALL)      NOPASSWD: ALL" >> /etc/sudoers
    ```
 
-4. Tento krok předpokládá, že máte instanci Oracle (test), která je spuštěná na virtuálním počítači s názvem _vmoracle19c *.
+4. Tento krok předpokládá, že máte instanci Oracle (test), která je spuštěná na virtuálním počítači s názvem *vmoracle19c*.
 
    Přepněte uživatele na uživatele *Oracle* :
 
@@ -182,31 +182,31 @@ Nejdřív nastavte svůj účet úložiště.
 
 1. Konfigurace File Storage v Azure Portal
 
-    V Azure Portal vyberte ***+ vytvořit prostředek** _ a vyhledejte a vyberte _*_účet úložiště_*_ .
+    V Azure Portal vyberte ***+ vytvořit prostředek** _ a vyhledejte a vyberte _ *_účet úložiště_* .*
     
-    ![Přidat stránku účtu úložiště](./media/oracle-backup-recovery/storage-1.png)
+    ![Snímek obrazovky, který ukazuje, kde vytvořit prostředek a vybrat účet úložiště](./media/oracle-backup-recovery/storage-1.png)
     
-2. Na stránce Vytvořit účet úložiště vyberte existující skupinu prostředků _*_RG-Oracle_*_, pojmenujte svůj účet úložiště _*_Oracbkup1_*_ a pro druh účtu vyberte _*_Storage v2 (GeneralPurpose v2)_*_ . Změňte replikaci na _*_místně redundantní úložiště (LRS)_*_ a nastavte výkon na _*_standardní_*_. Zajistěte, aby se umístění nastavilo na stejnou oblast jako všechny ostatní prostředky ve skupině prostředků. 
+2. Na stránce Vytvořit účet úložiště vyberte existující skupinu prostředků ***RG-Oracle** _, pojmenujte svůj účet úložiště _*_Oracbkup1_*_ a pro druh účtu vyberte _*_Storage v2 (GeneralPurpose v2)_*_ . Změňte replikaci na _*_místně redundantní úložiště (LRS)_*_ a nastavte výkon na _ *_standardní_* *. Zajistěte, aby se umístění nastavilo na stejnou oblast jako všechny ostatní prostředky ve skupině prostředků. 
     
-    ![Přidat stránku účtu úložiště](./media/oracle-backup-recovery/file-storage-1.png)
+    ![Snímek obrazovky, který ukazuje, kde zvolit stávající skupinu prostředků](./media/oracle-backup-recovery/file-storage-1.png)
    
    
-3. Klikněte na kartu _*_Upřesnit_*_ a v části soubory Azure nastavte možnost _*_velké sdílené složky_*_ na _*_povoleno_*_. Klikněte na tlačítko revize + vytvořit a potom klikněte na tlačítko vytvořit.
+3. Klikněte na kartu ***Rozšířené** _ a v části soubory Azure nastavte _*_velké sdílené složky_*_ na _ *_povoleno_* *. Klikněte na tlačítko revize + vytvořit a potom klikněte na tlačítko vytvořit.
     
-    ![Přidat stránku účtu úložiště](./media/oracle-backup-recovery/file-storage-2.png)
-    
-    
-4. Po vytvoření účtu úložiště přejít do prostředku a vybrat _*_sdílené složky_*_
-    
-    ![Přidat stránku účtu úložiště](./media/oracle-backup-recovery/file-storage-3.png)
-    
-5. Klikněte na _*_ + soubor share_ *_ a v okně _*_Nová sdílená složka_ _ *pojmenujte svůj sdílený soubor _*_orabkup1_*_. Nastavte*_kvótu __*na _*_10240_*_ GIB a kontrolu*_transakce_ _ *jako vrstvu. Kvóta odráží horní hranici, na kterou může sdílená složka dosáhnout. Když používáme úložiště úrovně Standard, prostředky se PAYG a nezřídí, takže nastavením na 10 TiB se neúčtují náklady nad rámec toho, co využijete. Pokud vaše strategie zálohování vyžaduje větší úložiště, je nutné nastavit kvótu na odpovídající úroveň pro uchování všech záloh.   Až dokončíte okno Nová sdílená složka, klikněte na _*_vytvořit_* _.
-    
-    ![Přidat stránku účtu úložiště](./media/oracle-backup-recovery/file-storage-4.png)
+    ![Snímek obrazovky s informacemi o tom, kde je možné nastavit velké sdílené složky na povoleno](./media/oracle-backup-recovery/file-storage-2.png)
     
     
-6. Po vytvoření klikněte na _*_orabkup1_*_ na stránce nastavení sdílení souborů. 
-    Kliknutím na kartu _*_připojit_*_ otevřete okno připojit a pak klikněte na kartu _*_Linux_*_ . Zkopírujte zadané příkazy pro připojení sdílené složky pomocí protokolu SMB. 
+4. Po vytvoření účtu úložiště přejít do prostředku a vybrat ***sdílené složky***
+    
+    ![Snímek obrazovky, který ukazuje, kde vybrat sdílené složky](./media/oracle-backup-recovery/file-storage-3.png)
+    
+5. Klikněte na ***+ sdílená složka** _ a v okně _*_Nová sdílená složka_*_ název vaší sdílené složky _*_orabkup1_*_. Nastavte _*_kvótu_*_ na _*_10240_*_ GIB a ověřte _*_transakce optimalizované_*_ jako úroveň. Kvóta odráží horní hranici, na kterou může sdílená složka dosáhnout. Když používáme úložiště úrovně Standard, prostředky se PAYG a nezřídí, takže nastavením na 10 TiB se neúčtují náklady nad rámec toho, co využijete. Pokud vaše strategie zálohování vyžaduje větší úložiště, je nutné nastavit kvótu na odpovídající úroveň pro uchování všech záloh.   Až dokončíte okno Nová sdílená složka, klikněte na _ *_vytvořit_* *.
+    
+    ![Snímek obrazovky s informacemi o tom, kde přidat novou sdílenou složku](./media/oracle-backup-recovery/file-storage-4.png)
+    
+    
+6. Po vytvoření klikněte na ***orabkup1*** na stránce nastavení sdílení souborů. 
+    Kliknutím na kartu ***připojit** _ otevřete okno připojit a pak klikněte na kartu _ *_Linux_**. Zkopírujte zadané příkazy pro připojení sdílené složky pomocí protokolu SMB. 
     
     ![Přidat stránku účtu úložiště](./media/oracle-backup-recovery/file-storage-5.png)
 
@@ -371,7 +371,7 @@ Při použití RMAN a služby Azure File Storage pro zálohování databáze má
 
     ```bash
     cd /u02/oradata/TEST
-    rm -f _.dbf
+    rm -f *.dbf
     ```
 
 3. Následující příkazy používají RMAN k obnovení chybějících souborů datafiles a obnovení databáze:

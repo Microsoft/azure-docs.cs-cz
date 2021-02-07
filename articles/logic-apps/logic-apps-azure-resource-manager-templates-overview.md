@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/06/2020
-ms.openlocfilehash: 4070f373175f3497156ced011a57e2ed7bd6e770
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2e1536d4f2ea7d71691c611e9127109c154f3266
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009768"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807339"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Přehled: Automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager
 
@@ -627,7 +627,7 @@ Když aplikace logiky vytvoří a použije připojení k ostatním službám a s
 }
 ```
 
-Definice prostředků připojení odkazují na parametry nejvyšší úrovně šablony pro jejich hodnoty, což znamená, že tyto hodnoty můžete zadat v nasazení pomocí souboru parametrů. Zajistěte, aby připojení používala stejnou skupinu prostředků Azure a umístění jako vaše aplikace logiky.
+Definice prostředků připojení odkazují na parametry nejvyšší úrovně šablony pro jejich hodnoty, takže tyto hodnoty můžete zadat v nasazení pomocí souboru parametrů. Zajistěte, aby připojení používala stejnou skupinu prostředků Azure a umístění jako vaše aplikace logiky.
 
 Tady je příklad definice prostředků pro připojení Office 365 Outlook a odpovídajících parametrů šablony:
 
@@ -746,12 +746,12 @@ Tento příklad ukazuje interakce mezi definicí prostředků vaší aplikace lo
                      }
                   }
                }
-            },
-            <other-logic-app-resource-information>,
-            "dependsOn": [
-               "[resourceId('Microsoft.Web/connections', parameters('office365_1_Connection_Name'))]"
-            ]
-         }
+            }
+         },
+         <other-logic-app-resource-information>,
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/connections', parameters('office365_1_Connection_Name'))]"
+         ]
          // End logic app resource definition
       },
       // Office 365 Outlook API connection resource definition
@@ -1063,7 +1063,7 @@ Místo toho postupujte podle těchto obecných kroků k deklaraci a odkazování
 
 1. V definici pracovního postupu deklarujte parametry pro hodnoty, které se mají přijmout a použít za běhu. Pak můžete na tyto hodnoty odkazovat v rámci definice pracovního postupu a.
 
-1. V `parameters` objektu, který je *mimo* vaši definici pracovního postupu, *inside* ale ještě v definici prostředků vaší aplikace logiky, nastavte hodnoty pro parametry definice pracovního postupu odkazem na odpovídající parametry šablony. Tímto způsobem můžete hodnoty parametrů šablony předat do parametrů definice pracovního postupu.
+1. V `parameters` objektu, který je *mimo* vaši definici pracovního postupu,  ale ještě v definici prostředků vaší aplikace logiky, nastavte hodnoty pro parametry definice pracovního postupu odkazem na odpovídající parametry šablony. Tímto způsobem můžete hodnoty parametrů šablony předat do parametrů definice pracovního postupu.
 
 1. V souboru parametrů zadejte hodnoty pro šablonu, která se má použít při nasazení.
 

@@ -760,6 +760,10 @@
           href: solution-template-databricks-notebook.md
     - name: Vysvětlení cen
       items:
+        - name: Přehled rezervované kapacity toku dat
+          href: data-flow-reserved-capacity-overview.md
+        - name: Tok dat – vysvětlení poplatků za rezervace
+          href: data-flow-understand-reservation-charges.md
         - name: Plánování a správa nákladů
           href: plan-manage-costs.md
         - name: Příklady cen
