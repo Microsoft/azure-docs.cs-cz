@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 10/06/2020
-ms.openlocfilehash: fbe1e84525eed47127a08abc9fb7ec5d1144d02f
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: a201a0300cb4ae0fba1a41b5f64838c17904fa83
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763603"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832092"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-openvinotrade"></a>Kurz: Vytvoření aplikace pro video Analytics – objekt a detekce pohybu v Azure IoT Central (OpenVINO &trade; )
 
@@ -125,3 +125,25 @@ Na stránce **lva Edge Gateway v2** vyberte **+ nahradit manifest**.
 Přejděte do složky *lva-Configuration* a vyberte *deployment.openvino.amd64.jsv* souboru manifestu, který jste upravovali dříve. Vyberte **Nahrát**. Po dokončení ověření vyberte **nahradit**.
 
 [!INCLUDE [iot-central-video-analytics-part4](../../../includes/iot-central-video-analytics-part4.md)]
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud jste s aplikací hotoví, můžete odebrat všechny prostředky, které jste vytvořili následujícím způsobem:
+
+1. V aplikaci IoT Central přejděte na stránku **aplikace** v části **Správa** . Vyberte **Odstranit**.
+1. V Azure Portal odstraňte skupinu prostředků **lva-RG** .
+1. V místním počítači zastavte kontejner Docker pro **amp Viewer** .
+
+## <a name="next-steps"></a>Další kroky
+
+Nyní jste vytvořili aplikaci IoT Central pomocí šablony aplikace **video Analytics – objekt a detekce pohybu** , vytvořili jste šablonu zařízení pro zařízení brány a do aplikace jste přidali zařízení brány.
+
+Pokud chcete vyzkoušet video Analytics – objekt a detekci pohybu pomocí IoT Edge modulů, na kterých běží cloudový virtuální počítač s simulovanými video streamy:
+
+> [!div class="nextstepaction"]
+> [Vytvoření instance IoT Edge pro video Analytics (virtuální počítač se systémem Linux)](tutorial-video-analytics-iot-edge-vm.md)
+
+Pokud si chcete vyzkoušet video Analytics – objekt a detekci pohybu pomocí IoT Edgech modulů, na kterých běží reálné zařízení s reálným **ONVIF** fotoaparátem:
+
+> [!div class="nextstepaction"]
+> [Vytvoření instance IoT Edge pro video Analytics (Intel NUC)](tutorial-video-analytics-iot-edge-nuc.md)

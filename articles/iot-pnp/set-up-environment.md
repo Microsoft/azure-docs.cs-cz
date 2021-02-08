@@ -7,18 +7,20 @@ ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 10ec761313ce39beb4b24b838d156478704f943e
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: b2b17cffb8abd748315c437f46000995c4cb598a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820026"
+ms.locfileid: "99831888"
 ---
 # <a name="quickstart---set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>Rychlý Start – nastavení prostředí pro IoT technologie Plug and Play rychlé starty a kurzy
 
 Předtím, než budete moci dokončit technologie Plug and Play rychlých startů a kurzů pro IoT, musíte ve svém předplatném Azure nakonfigurovat službu IoT Hub a službu Device Provisioning (DPS). Budete také potřebovat místní kopie souborů modelů používaných ukázkovými aplikacemi a nástrojem Azure IoT Explorer.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+## <a name="prerequisites"></a>Požadavky
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 Abyste se vyhnuli nutnosti nainstalovat rozhraní příkazového řádku Azure CLI místně, můžete k nastavení Cloud Services použít Azure Cloud Shell.
 
@@ -130,7 +132,7 @@ Nakonfigurujte nástroj tak, aby používal soubory modelu, které jste si stáh
 
 Další informace najdete v tématu [instalace a použití Azure IoT Exploreru](howto-use-iot-explorer.md).
 
-## <a name="remove-the-resources"></a>Odebrat prostředky
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 K distechnologie Plug and Play rychlým startům a kurzům pro IoT můžete použít instanci služby IoT Hub a DPS, takže je potřeba provést pouze kroky v tomto článku. Až budete hotovi, můžete je z předplatného odebrat pomocí následujícího příkazu:
 

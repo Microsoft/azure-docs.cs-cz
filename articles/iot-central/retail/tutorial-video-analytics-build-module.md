@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: c2f6f386f4a8ea062980c0efc97d0cfb4f37f4f2
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e5236bb7034ae4d5f86ab2f8f965bdbfbc3d6ccd
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124890"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832041"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>Kurz: úpravy a sestavení modulů pro bránu pro video Analytics v reálném čase
 
@@ -21,7 +21,7 @@ V tomto kurzu se dozvíte, jak upravit kód modulu IoT Edge pro moduly LVA (Live
 
 V předchozích kurzech se používají předem připravené image modulů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto kurzu budete potřebovat:
 
@@ -73,6 +73,13 @@ Otevřete místní složku úložiště *Live-video-Analytics* s vs Code.
 1. Pomocí terminálu VS Code spusťte příkaz pro **opravu verze npm** . Tento skript sestavení nasadí image do vašeho registru kontejneru. Výstup v okně VS Code terminálu ukazuje, jestli je sestavení úspěšné.
 
 1. Verze bitové kopie **LvaEdgeGatewayModule** se zvýší při každém dokončení sestavení. Tuto verzi je nutné použít v souboru manifestu nasazení.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud jste s aplikací hotoví, můžete odebrat všechny prostředky, které jste vytvořili následujícím způsobem:
+
+1. V aplikaci IoT Central přejděte na stránku **aplikace** v části **Správa** . Vyberte **Odstranit**.
+1. V Azure Portal odstraňte skupinu prostředků **lva-RG** .
 
 ## <a name="next-steps"></a>Další kroky
 

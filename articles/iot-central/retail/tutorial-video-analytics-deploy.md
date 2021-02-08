@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: abeae674cef8f13a092b53bde6040ad853bd0cca
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: f7f1952ab8c98553a447c3ed1955fb556ba48124
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820360"
+ms.locfileid: "99831939"
 ---
 # <a name="tutorial-how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Kurz: jak nasadit aplikaci IoT Central pomocí šablony aplikace pro video Analytics – objekt a detekce pohybu
 
@@ -22,6 +22,10 @@ Přehled klíčových komponent aplikace *video Analytics – objekt a pohyb poh
 Následující video poskytuje návod, jak pomocí _šablony aplikace pro detekci video Analytics – objekt a pohyb_ nasadit řešení IoT Central:
 
 > [!VIDEO https://www.youtube.com/embed/Bo3FziU9bSA]
+
+## <a name="prerequisites"></a>Požadavky
+
+Doporučuje se předplatné Azure. Alternativně můžete použít bezplatnou, 7. zkušební verzi. Pokud nemáte předplatné Azure, můžete ho vytvořit na [stránce registrace do Azure](https://aka.ms/createazuresubscription).
 
 ## <a name="deploy-the-application"></a>Nasazení aplikace
 
@@ -42,6 +46,14 @@ Provedením následujících kroků nasadíte IoT Central aplikaci pomocí šabl
     - Pokud chcete zobrazit zaznamenané video v AMS, nainstalujte místní přehrávač médií.
     - Zobrazí zachycené video, které zobrazuje zjištěné objekty.
     - Uklizený nahoru.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Po dokončení práce s aplikací můžete odebrat všechny prostředky, které jste vytvořili následujícím způsobem:
+
+1. V aplikaci IoT Central přejděte na stránku **aplikace** v části **Správa** . Vyberte **Odstranit**.
+1. V Azure Portal odstraňte skupinu prostředků **lva-RG** .
+1. V místním počítači zastavte kontejner Docker pro **amp Viewer** .
 
 ## <a name="next-steps"></a>Další kroky
 
