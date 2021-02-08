@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 02/01/2021
 ms.custom: generated
-ms.openlocfilehash: 768a327421a941a39b6f66be411712a565097f66
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 72a8f2eb93a9c12510b093e29c7b8fc6867cb2eb
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99557320"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809373"
 ---
 # <a name="azure-resource-provider-operations"></a>Operace poskytovatele prostředků Azure
 
@@ -160,7 +160,9 @@ Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v ná
 | [Microsoft.Intune](#microsoftintune) |
 | **Další** |
 | [Microsoft. BingMaps](#microsoftbingmaps) |
+| [Microsoft. DesktopVirtualization](#microsoftdesktopvirtualization) |
 | [Microsoft. DigitalTwins](#microsoftdigitaltwins) |
+| [Microsoft. ServicesHub](#microsoftserviceshub) |
 
 
 ## <a name="general"></a>Obecné
@@ -10268,6 +10270,51 @@ Služba Azure: [mapy Bing](/BingMaps/)
 > | Microsoft. BingMaps/mapApis/listUsageMetrics/Action | Vypíše metriky pro Microsoft. BingMaps/mapApis. |
 > | Microsoft. BingMaps/Operations/Read | Výpis operací pro Microsoft. BingMaps |
 
+### <a name="microsoftdesktopvirtualization"></a>Microsoft. DesktopVirtualization
+
+Služba Azure: [virtuální plocha Windows](../virtual-desktop/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. DesktopVirtualization/Register/Action | Registrovat předplatné |
+> | Microsoft. DesktopVirtualization/applicationgroups/Read | Číst applicationgroups |
+> | Microsoft. DesktopVirtualization/applicationgroups/Write | Zápis applicationgroups |
+> | Microsoft. DesktopVirtualization/applicationgroups/DELETE | Odstranit applicationgroups |
+> | Microsoft. DesktopVirtualization/applicationgroups/aplikace/číst | Číst applicationgroups/aplikace |
+> | Microsoft. DesktopVirtualization/applicationgroups/aplikace/Write | Zápis applicationgroups/aplikací |
+> | Microsoft. DesktopVirtualization/applicationgroups/aplikace/DELETE | Odstranit applicationgroups/aplikace |
+> | Microsoft. DesktopVirtualization/applicationgroups/desktops/Read | Čtení applicationgroups/desktopů |
+> | Microsoft. DesktopVirtualization/applicationgroups/desktops/Write | Zápis applicationgroups/desktopů |
+> | Microsoft. DesktopVirtualization/applicationgroups/desktops/DELETE | Odstranit applicationgroups/desktopy |
+> | Microsoft. DesktopVirtualization/applicationgroups/externaluserassignments/Read |  |
+> | Microsoft. DesktopVirtualization/applicationgroups/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky. |
+> | Microsoft. DesktopVirtualization/applicationgroups/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky. |
+> | Microsoft. DesktopVirtualization/applicationgroups/Providers/Microsoft. Insights/logDefinitions/Read | Získá dostupné protokoly. |
+> | Microsoft. DesktopVirtualization/applicationgroups/startmenuitems/Read | Načíst položky nabídky Start |
+> | Microsoft. DesktopVirtualization/hostpools/Read | Číst hostpools |
+> | Microsoft. DesktopVirtualization/hostpools/Write | Zápis hostpools |
+> | Microsoft. DesktopVirtualization/hostpools/DELETE | Odstranit hostpools |
+> | Microsoft. DesktopVirtualization/hostpools/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky. |
+> | Microsoft. DesktopVirtualization/hostpools/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky. |
+> | Microsoft. DesktopVirtualization/hostpools/Providers/Microsoft. Insights/logDefinitions/Read | Získá dostupné protokoly. |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/Read | Číst hostpools/sessionhosts |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/Write | Zápis hostpools/sessionhosts |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/DELETE | Odstranit hostpools/sessionhosts |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/usersessions/Read | Čtení hostpools/sessionhosts/usersessions |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/usersessions/Write | Zápis hostpools/sessionhosts/usersessions |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/usersessions/DELETE | Odstranit hostpools/sessionhosts/usersessions |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/usersessions/Disconnect/Action | Odpojí hostitele relace uživatelské relace formuláře. |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/usersessions/sendMessage/Action | Odeslat zprávu uživatelské relaci |
+> | Microsoft. DesktopVirtualization/pracovní prostory/číst | Čtení pracovních prostorů |
+> | Microsoft. DesktopVirtualization/pracovní prostory/zápis | Zápis pracovních prostorů |
+> | Microsoft. DesktopVirtualization/pracovní prostory/odstranit | Odstranit pracovní prostory |
+> | Microsoft. DesktopVirtualization/pracovní prostory/poskytovatelé/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky. |
+> | Microsoft. DesktopVirtualization/pracovní prostory/zprostředkovatelé/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky. |
+> | Microsoft. DesktopVirtualization/pracovní prostory/poskytovatelé/Microsoft. Insights/logDefinitions/Read | Získá dostupné protokoly. |
+> | **Akce dataaction** | **Popis** |
+> | Microsoft. DesktopVirtualization/applicationgroups/useapplications/Action | Použití aplikace |
+
 ### <a name="microsoftdigitaltwins"></a>Microsoft. DigitalTwins
 
 Služba Azure: [digitální vlákna Azure](../digital-twins/index.yml)
@@ -10316,6 +10363,20 @@ Služba Azure: [digitální vlákna Azure](../digital-twins/index.yml)
 > | Microsoft. DigitalTwins/modely/číst | Číst libovolný model |
 > | Microsoft. DigitalTwins/modely/Write | Vytvořit nebo aktualizovat libovolný model |
 > | Microsoft. DigitalTwins/modely/DELETE | Odstranit libovolný model |
+
+### <a name="microsoftserviceshub"></a>Microsoft. ServicesHub
+
+Služba Azure: [centrum služeb](/services-hub/)
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. ServicesHub/konektory/Write | Vytvoří nebo aktualizuje konektor centra služeb. |
+> | Microsoft. ServicesHub/konektory/čtení | Zobrazit nebo vypsat konektory centra služeb |
+> | Microsoft. ServicesHub/konektory/DELETE | Odstranit konektory centra služeb |
+> | Microsoft. ServicesHub/konektory/checkAssessmentEntitlement/Action | Zobrazí seznam nároků na posouzení pro daný pracovní prostor centra služeb. |
+> | Microsoft. ServicesHub/supportOfferingEntitlement/Read | Zobrazit oprávnění nabídky podpory pro daný pracovní prostor centra služeb |
+> | Microsoft. ServicesHub/pracovní prostory/číst | Seznam pracovních prostorů centra služeb pro daného uživatele |
 
 ## <a name="next-steps"></a>Další kroky
 

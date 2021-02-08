@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/12/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 086ebf71e2da19a96433f32cfb1bae133e875400
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 3c4ab8362b2a717a348a59c0baf829b61e1a8006
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518048"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99808511"
 ---
 ![Graf znázorňující specifikace D s v 3.](media/vm-disk-performance/dsv3-documentation.jpg)
 
@@ -137,6 +137,7 @@ Máme metriky v Azure, které vám poskytnou přehled o tom, jak vaše virtuáln
 - **Operace zápisu na disk/s**: Počet výstupních operací zapsaných za sekundu ze všech disků připojených k virtuálnímu počítači.
 
 ## <a name="storage-io-utilization-metrics"></a>Metriky využití v/v úložiště
+Následující metriky vám pomůžou diagnostikovat kritická místa v kombinaci virtuálních počítačů a disků. Tyto metriky jsou dostupné jenom při použití virtuálního počítače s povolenou úrovní Premium. Tyto metriky jsou k dispozici pro všechny typy disků s výjimkou Ultra. 
 
 Metriky, které vám pomůžou diagnostikovat disk v/v capping:
 

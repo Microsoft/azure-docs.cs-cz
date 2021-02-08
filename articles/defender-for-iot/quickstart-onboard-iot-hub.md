@@ -1,79 +1,72 @@
 ---
-title: 'Rychlý Start: povolení služby'
+title: Připojování k programu Defender pro řešení založené na agentech IoT
 description: Naučte se integrovat a povolit službu Defender for IoT Security ve vašem Azure IoT Hub.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2020
-ms.author: mlottner
-ms.openlocfilehash: e3768ef233c60f1687bc804778c3dabf32666e1d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.date: 1/20/2021
+ms.author: shhazam
+ms.openlocfilehash: 127e439a7740cb97cbe126071aaaa5245cd85782
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835155"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809121"
 ---
-# <a name="quickstart-onboard-azure-defender-for-iot-service-in-iot-hub"></a>Rychlý Start: zprovoznění Azure Defenderu pro službu IoT v IoT Hub
+# <a name="onboard-to-defender-for-iot-agent-based-solution"></a>Připojování k programu Defender pro řešení založené na agentech IoT
 
-Tento článek popisuje, jak ve stávající IoT Hub povolit službu Defender for IoT. Pokud v tuto chvíli nemáte IoT Hub, přečtěte si téma [vytvoření IoT Hub pomocí Azure Portal](../iot-hub/iot-hub-create-through-portal.md) pro začátek.
+Tento článek vysvětluje, jak ve stávající IoT Hub povolit službu Defender for IoT. Pokud v tuto chvíli nemáte IoT Hub, přečtěte si téma [vytvoření IoT Hub pomocí Azure Portal](../iot-hub/iot-hub-create-through-portal.md) pro začátek.
+
+Zabezpečení IoT můžete spravovat prostřednictvím IoT Hub v programu Defender pro IoT. Portál pro správu umístěný v IoT Hub vám umožní provést následující akce: 
+
+- Spravujte zabezpečení IoT Hub.
+
+- Základní Správa zabezpečení zařízení IoT bez instalace agenta na základě telemetrie IoT Hub. 
+
+- Pokročilá Správa zabezpečení zařízení IoT založeného na mikroagentovi.
 
 > [!NOTE]
 > Defender pro IoT aktuálně podporuje jenom centra IoT úrovně Standard.
 
-## <a name="prerequisites-for-enabling-the-service"></a>Předpoklady pro povolení služby
+## <a name="onboard-to-defender-for-iot-in-iot-hub"></a>Připojení k programu Defender pro IoT v IoT Hub
 
-- Pracovní prostor služby Log Analytics
-  - Ve výchozím nastavení jsou ve vašem Log Analytics pracovním prostoru od programu Defender pro IoT standardně uloženy dva typy informací. **výstrahy** a **doporučení** zabezpečení.
-  - Můžete zvolit, že chcete přidat úložiště pro další typ informací, **nezpracované události**. Pamatujte, že ukládání **nezpracovaných událostí** v Log Analytics přináší další náklady na úložiště.
-- IoT Hub (úroveň Standard)
-- Splnění všech [systémových požadavků](quickstart-system-prerequisites.md).
+Pro všechna nová centra IoT je Defender pro IoT ve výchozím nastavení **zapnutý** . V průběhu procesu vytváření IoT Hub můžete ověřit, že je Defender pro IoT přepnut na **zapnuto** .
 
-## <a name="enable-defender-for-iot-on-your-iot-hub"></a>Povolit Defender pro IoT v IoT Hub
+Chcete-li ověřit, zda je přepínač nastaven na hodnotu **zapnuto**:
 
-Postup při povolení zabezpečení na IoT Hub:
+1. Přejděte na Azure Portal.
 
-1. Otevřete **IoT Hub** v Azure Portal.
-1. V nabídce **zabezpečení** klikněte na **zabezpečení vašeho řešení IoT**.
+1. V seznamu služeb Azure vyberte **IoT Hub** .
 
-Blahopřejeme! Dokončili jste povolování programu Defender pro IoT v IoT Hub.
+1. Vyberte **Vytvořit**.
 
-### <a name="geolocation-and-ip-address-handling"></a>Geografická poloha a zpracování IP adres
+    :::image type="content" source="media/quickstart-onboard-iot-hub/create-iot-hub.png" alt-text="Na horním panelu nástrojů vyberte tlačítko vytvořit." lightbox="media/quickstart-onboard-iot-hub/create-iot-hub-expanded.png":::
 
-V rámci zabezpečení řešení IoT se shromažďují a ukládají IP adresy příchozích a odchozích připojení do a ze zařízení IoT, IoT Edge a IoT Hub, a to ve výchozím nastavení. Tyto informace jsou nezbytné ke zjištění neobvyklého připojení z podezřelých zdrojů IP adres. Například při pokusech o navázání připojení ze zdroje IP adresy známého botnetu nebo ze zdroje IP adresy mimo vaši geografickou polohu. Defender pro službu IoT nabízí flexibilitu, která umožňuje kdykoli povolit a zakázat shromažďování dat IP adres.
+1. Vyberte kartu **Správa** a ověřte, že přepínač **Defender for IoT** je nastaven na **zapnuto**.
 
-Povolení nebo zakázání shromažďování dat IP adres:
+    :::image type="content" source="media/quickstart-onboard-iot-hub/management-tab.png" alt-text="Zajistěte, aby byl přepínač Defender pro IoT nastavený na zapnuto.":::
 
-1. Otevřete IoT Hub a v nabídce **zabezpečení** vyberte **Nastavení** .
-1. Vyberte obrazovku **shromažďování dat** a podle potřeby upravte nastavení geografického umístění nebo manipulace s IP adresami.
+## <a name="onboard-defender-for-iot-to-an-existing-iot-hub"></a>Připojení Defenderu pro IoT k existujícímu IoT Hub
 
-### <a name="log-analytics-creation"></a>Vytváření Log Analytics
+Můžete monitorovat způsoby komunikace zařízení, zařízení do cloudu a cloudu a zařízení a spustit službu: 
 
-Když je program Defender pro IoT zapnutý, vytvoří se výchozí pracovní prostor Azure Log Analytics pro ukládání nezpracovaných událostí zabezpečení, výstrah a doporučení pro vaše zařízení IoT, IoT Edge a IoT Hub. Každý měsíc je prvních pět (5) GB dat přijatých na zákazníky do služby Azure Log Analytics zdarma. Po prvních 31 dnech se všechny GB dat, která se ingestují do vašeho pracovního prostoru Azure Log Analytics, zachová zdarma. Přečtěte si další informace o cenách [Log Analytics](https://azure.microsoft.com/pricing/details/monitor/) .
+1. Přejděte na IoT Hub. 
 
-Změna konfigurace pracovního prostoru Log Analytics:
+1. Vyberte nabídku **Přehled zabezpečení**   . 
 
-1. Otevřete IoT Hub a v nabídce **zabezpečení** vyberte **Nastavení** .
-1. Klikněte na obrazovku **shromažďování dat** a upravte konfiguraci pracovního prostoru Log Analytics nastavení podle vašich přání.
+1. Klikněte na zabezpečení řešení IoT a vyplňte formulář pro registraci. 
 
-### <a name="customize-your-iot-security-solution"></a>Přizpůsobení řešení zabezpečení IoT
-
-Ve výchozím nastavení zapínání řešení Defender for IoT automaticky zabezpečuje všechna centra IoT v rámci vašeho předplatného Azure.
-
-Postup zapnutí a vypnutí služby IoT pro službu IoT v konkrétním IoT Hub:
-
-1. Otevřete IoT Hub a v nabídce **zabezpečení** vyberte **Nastavení** .
-1. Vyberte obrazovku **shromažďování dat** a v rámci vašeho předplatného Azure upravte nastavení zabezpečení libovolného centra IoT.
 
 ## <a name="next-steps"></a>Další kroky
 
 Přejděte k dalšímu článku a nakonfigurujte vaše řešení...
 
 > [!div class="nextstepaction"]
-> [Konfigurace vašeho řešení](quickstart-configure-your-solution.md)
+> [Vytvoření vlákna programu IoT Micro agent v programu Defender (Preview)](quickstart-create-micro-agent-module-twin.md)

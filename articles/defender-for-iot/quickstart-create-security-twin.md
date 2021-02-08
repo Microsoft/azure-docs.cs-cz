@@ -1,26 +1,26 @@
 ---
-title: 'Rychlý Start: vytvoření vlákna modulu zabezpečení'
+title: Vytvoření vlákna modulu zabezpečení
 description: V tomto rychlém startu se dozvíte, jak vytvořit Defender pro modul IoT pro použití s Azure Defenderem pro IoT.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2019
-ms.author: mlottner
-ms.openlocfilehash: 3e48ed870bf405a82441678b5e8c01d199e7ebff
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.date: 1/21/2021
+ms.author: shhazam
+ms.openlocfilehash: 35195ea5d66bcf27764fa889e5f2e8ebb6a2bae1
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835002"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809095"
 ---
-# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Rychlý Start: vytvoření vlákna modulu azureiotsecurity
+# <a name="create-an-azureiotsecurity-module-twin"></a>Vytvoření vlákna modulu azureiotsecurity
 
 V tomto rychlém startu se dozvíte, jak vytvořit jednotlivé _azureiotsecurityy_ modulu pro nová zařízení a vytvořit z něj vlákna pro všechna zařízení v IoT Hub.
 
@@ -37,7 +37,7 @@ Defender pro IoT používá modul s dvojitou zátěží a udržuje v modulu zabe
 
 Modul zabezpečení obsahuje všechny informace týkající se zabezpečení zařízení pro každé vaše zařízení.
 
-Aby bylo možné plně využívat Defender pro funkce IoT, budete muset vytvořit, nakonfigurovat a použít tyto prvky zabezpečení pro každé zařízení ve službě.
+Aby bylo možné plně využívat Defender pro funkce IoT, budete muset vytvořit, nakonfigurovat a použít tento modul zabezpečení pro každé zařízení ve službě.
 
 ## <a name="create-azureiotsecurity-module-twin"></a>Vytvořit dvojitou azureiotsecurity modul
 
@@ -51,23 +51,30 @@ vlákna modulu _azureiotsecurity_ je možné vytvořit dvěma způsoby:
 
 V tématu [Konfigurace agenta](how-to-agent-configuration.md) se dozvíte, jak upravit nebo změnit konfiguraci existujícího modulu s dvojitou platností.
 
-K ručnímu vytvoření nového vlákna modulu _azureiotsecurity_ pro zařízení použijte následující pokyny:
+Ruční vytvoření nového vlákna modulu _azureiotsecurity_ pro zařízení:
 
 1. V IoT Hub vyhledejte a vyberte zařízení, pro které chcete vytvořit modul zabezpečení.
-1. Klikněte na své zařízení a pak na **Přidat identitu modulu**.
+
+1. V zařízení vyberte a pak na **Přidat identitu modulu**.
+
 1. Do pole **název identity modulu** zadejte **azureiotsecurity**.
 
-1. Klikněte na **Uložit**.
+1. Vyberte **Uložit**.
 
 ## <a name="verify-creation-of-a-module-twin"></a>Ověření vytvoření vlákna modulu
 
 Ověření, jestli pro konkrétní zařízení existuje nějaký modul zabezpečení:
 
 1. V IoT Hub Azure vyberte v nabídce **průzkumníky** možnost **zařízení IoT** .
-1. Zadejte ID zařízení nebo vyberte možnost v **poli dotazovací zařízení** a klikněte na **dotazovat zařízení**.
+
+1. Zadejte ID zařízení nebo vyberte možnost v **poli dotazovací zařízení** a vyberte možnost **dotazovat zařízení**.
+
     :::image type="content" source="./media/quickstart/verify-security-module-twin.png" alt-text="Dotazování na zařízení":::
-1. Vyberte zařízení nebo dvakrát klikněte na něj a otevřete stránku s podrobnostmi o zařízení.
+
+1. Vyberte zařízení nebo ho poklikejte a otevřete tak stránku s podrobnostmi o zařízení.
+
 1. Vyberte nabídku **identity modulu** a v seznamu identit modulu přidružených k danému zařízení potvrďte existenci modulu **azureiotsecurity** .
+
     :::image type="content" source="./media/quickstart/verify-security-module-twin-3.png" alt-text="Moduly přidružené k zařízení":::
 
 Další informace o přizpůsobení vlastností programu Defender pro vlákna modulu IoT najdete v tématu [Konfigurace agenta](how-to-agent-configuration.md).

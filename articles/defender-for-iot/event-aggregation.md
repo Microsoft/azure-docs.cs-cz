@@ -1,30 +1,30 @@
 ---
-title: Agregace událostí
+title: Klasická agregace událostí modulu zabezpečení
 description: Přečtěte si o programu Defender pro agregaci událostí IoT.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/03/2020
-ms.author: mlottner
-ms.openlocfilehash: c823f0034db7d5fbe1f6b46f6af74e9fa374a6de
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.date: 1/20/2021
+ms.author: shhazam
+ms.openlocfilehash: 0718c2637658e5519760a68f29c7a816b2aa61a1
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832365"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809214"
 ---
-# <a name="defender-for-iot-event-aggregation"></a>Defender pro agregaci událostí IoT
+# <a name="security-module-classic-event-aggregation"></a>Klasická agregace událostí modulu zabezpečení
 
-Defender pro agenty zabezpečení IoT shromažďují data a systémové události z místního zařízení a odesílají tato data do cloudu Azure pro zpracování a analýzu. Agent zabezpečení shromažďuje mnoho typů událostí zařízení, včetně nového procesu a událostí nového připojení. Události nového procesu a nového připojení se můžou na zařízení v druhé době často vyskytnout a i když jsou důležité pro robustní a komplexní zabezpečení, může se stát, že počet agentů zabezpečení zprávy bude nuceně zasílat nebo překročit vaši kvótu IoT Hub a omezení nákladů. Tyto události však obsahují vysoce cenné informace o zabezpečení, které jsou zásadní pro ochranu zařízení.
+Defender pro agenty zabezpečení IoT shromažďuje data a systémové události z místního zařízení a odesílá tato data do cloudu Azure pro zpracování a analýzu. Agent zabezpečení shromažďuje mnoho typů událostí zařízení, včetně nového procesu a událostí nového připojení. Události nového procesu a nového připojení se můžou na zařízení v druhé době často vyskytnout a i když jsou důležité pro robustní a komplexní zabezpečení, může se stát, že počet agentů zabezpečení zprávy bude nuceně zasílat nebo překročit vaši kvótu IoT Hub a omezení nákladů. Tyto události však obsahují vysoce cenné informace o zabezpečení, které jsou zásadní pro ochranu zařízení.
 
-Chcete-li snížit další kvótu a náklady a zachovat chráněná zařízení, Defender pro agenty IoT agreguje tyto typy událostí.
+Aby se snížila další kvóta a náklady při zachování chráněných zařízení, Defender pro agenty IoT agreguje tyto typy událostí.
 
 Agregace událostí je ve výchozím nastavení **zapnutá** a i když se nedoporučuje, dá se v jakémkoli okamžiku ručně **vypnout** .
 
@@ -45,7 +45,7 @@ Aby se snížilo nároky na paměť agenta, pokaždé, když agent shromáždí 
 Události se považují za identické jenom v případě, že jsou splněné následující podmínky:
 
 * ProcessCreate události – když je **příkazový řádek**, **spustitelný soubor**, **username** a **UserID** , je stejný
-* ConnectionCreate události – když se příkaz **CommandLine**, **userId**, **směr**, **místní adresa**, **Vzdálená adresa**, * * protokol a **cílový port** shodují
+* ConnectionCreate události – když se příkaz **CommandLine**, **userId**, **směr**, **místní adresa**, **Vzdálená adresa**, **protokol** a **cílový port** shodují.
 * ProcessTerminate události – když je stav **spustitelného souboru** a **ukončení** shodný
 
 ### <a name="working-with-aggregated-events"></a>Práce s agregovanými událostmi
@@ -70,11 +70,11 @@ Proveďte změny v konfiguraci programu Defender pro agregaci událostí IoT uvn
 | Název konfigurace | Možné hodnoty | Podrobnosti | Poznámky |
 |:-----------|:---------------|:--------|:--------|
 | aggregationEnabledProcessCreate | boolean | Povolit/zakázat agregaci události pro události vytvoření procesu |
-| aggregationIntervalProcessCreate | Řetězec ISO8601 TimeSpan | Interval agregace pro události vytvoření procesu |
+| aggregationIntervalProcessCreate | Řetězec ISO8601 TimeSpan | Interval agregace pro proces vytváří události |
 | aggregationEnabledConnectionCreate | boolean| Povolit/zakázat agregaci události pro události vytvoření připojení |
-| aggregationIntervalConnectionCreate | Řetězec ISO8601 TimeSpan | Interval agregace pro události vytvoření připojení |
+| aggregationIntervalConnectionCreate | Řetězec ISO8601 TimeSpan | Interval agregace pro připojení vytváří události. |
 | aggregationEnabledProcessTerminate | boolean | Povolit/zakázat agregaci události pro události ukončení procesu | Jen ve Windows|
-| aggregationIntervalProcessTerminate | Řetězec ISO8601 TimeSpan | Interval agregace pro události ukončení procesu | Jen ve Windows|
+| aggregationIntervalProcessTerminate | Řetězec ISO8601 TimeSpan | Interval agregace pro proces ukončení událostí | Jen ve Windows|
 |
 
 ## <a name="default-configurations-settings"></a>Výchozí nastavení konfigurace

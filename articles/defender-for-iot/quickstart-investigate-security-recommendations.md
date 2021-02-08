@@ -1,10 +1,10 @@
 ---
-title: 'Rychlý Start: zkoumání doporučení zabezpečení'
+title: Prozkoumat doporučení zabezpečení
 description: Prozkoumejte bezpečnostní doporučení pomocí služby Defender for IoT Security.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 66b5694823096f0747ea099b631a53198a819816
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.author: shhazam
+ms.openlocfilehash: 0e902db38e4145bf94ab6a235bc1210b520327a1
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835036"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809180"
 ---
 # <a name="quickstart-investigate-security-recommendations"></a>Rychlý Start: zkoumání doporučení zabezpečení
 
@@ -46,22 +46,19 @@ Seznam doporučení IoT Hub obsahuje všechna agregovaná doporučení zabezpeč
 
 Otevřete všechna agregovaná doporučení pro zobrazení podrobného popisu doporučení, nápravných kroků, ID zařízení pro každé zařízení, které vyvolalo doporučení. Zobrazuje také závažnost doporučení a přímý přístup k šetření pomocí Log Analytics.
 
-1.  V seznamu **IoT Hub** \>  \> **doporučení** zabezpečení vyberte a otevřete jakékoli doporučení zabezpečení.
+1.  V seznamu **IoT Hub**  >    >  **doporučení** zabezpečení vyberte a otevřete jakékoli doporučení zabezpečení.
 
 1.  Přečtěte si **Popis** doporučení, **závažnost**, **Podrobnosti o zařízení** všech zařízení, která toto doporučení vystavila v rámci agregovaného období. 
 
 1.  Po kontrole specifických doporučení použijte pokyny k **Ruční nápravě** , které vám pomůžou opravit a vyřešit problém, který toto doporučení způsobil. 
 
-    [ :::image type="content" source="media/quickstart/remediate-security-recommendations-expanded.png#lightbox" alt-text="Náprava doporučení zabezpečení pomocí ASC pro IoT] (Media/rychlý Start/remediate-security-recommendations-inline.png)":::
-
+    :::image type="content" source="media/quickstart/remediate-security-recommendations-inline.png" alt-text="Náprava doporučení zabezpečení pomocí ASC pro IoT" lightbox="media/quickstart/remediate-security-recommendations-expanded.png":::
 
 1.  V podrobnostech o doporučeních pro konkrétní zařízení vyberte požadované zařízení na stránce s podrobnostmi o prozkoumání.
 
-    [ :::image type="content" source="media/quickstart/explore-security-recommendation-detail-expanded.png#lightbox" alt-text="Prozkoumejte konkrétní doporučení zabezpečení pro zařízení s ASC pro IoT] (Media/rychlý Start/explore-security-recommendation-detail-inline.png)":::
-
+    :::image type="content" source="media/quickstart/explore-security-recommendation-detail-inline.png" alt-text="Prozkoumat konkrétní doporučení zabezpečení pro zařízení pomocí ASC pro IoT" lightbox="media/quickstart/explore-security-recommendation-detail-expanded.png":::
 
 1.  Pokud se vyžaduje další šetření, **Prozkoumejte doporučení v Log Analytics** pomocí odkazu. 
-
 
 ## <a name="next-steps"></a>Další kroky
 

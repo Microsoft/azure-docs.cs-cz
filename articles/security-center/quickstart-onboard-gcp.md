@@ -3,16 +3,16 @@ title: Připojte svůj účet GCP k Azure Security Center
 description: Monitorování prostředků GCP z Azure Security Center
 author: memildin
 ms.author: memildin
-ms.date: 01/24/2021
+ms.date: 02/07/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d5f8278765c3f62fded44e4b89fb5fded6137c94
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 8ee7b37861be299dd36a596ae1cd4899b0ebffab
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757606"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809401"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>Připojení účtů GCP k Azure Security Center
 
@@ -20,7 +20,7 @@ Cloudové úlohy běžně pokrývá několik cloudových platforem, ale cloudov�
 
 Azure Security Center chrání úlohy v Azure, Amazon Web Services (AWS) a Google Cloud Platform (GCP).
 
-Při připojování účtu GCP do Security Center se integruje příkaz GCP Security a Azure Security Center. Security Center proto zajišťuje viditelnost a ochranu v obou těchto cloudových prostředích, aby poskytovala tyto informace:
+Integrace účtů GCP do Security Center, integruje příkaz GCP Security a Azure Security Center. Security Center proto zajišťuje viditelnost a ochranu v obou těchto cloudových prostředích, aby poskytovala tyto informace:
 
 - Zjišťování nezabezpečených konfigurací zabezpečení
 - Jediné zobrazení, které zobrazuje doporučení Security Center GCP a Security Center – zjištění centra příkazů
@@ -39,12 +39,15 @@ Na snímku obrazovky níže vidíte projekty GCP zobrazené na řídicím panelu
 |Stav vydaných verzí:|Obecná dostupnost (GA)|
 |Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .|
 |Požadované role a oprávnění:|**Vlastník** nebo **Přispěvatel** v příslušném předplatném Azure|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 ## <a name="connect-your-gcp-account"></a>Připojení účtu GCP
 
-Pomocí následujících kroků vytvořte cloudový konektor GCP. 
+Postupujte podle následujících kroků a vytvořte cloudový konektor GCP pro připojení vašich prostředků Google Cloud na úrovni organizace nebo projektu. 
+
+> [!TIP]
+> Přečtěte si informace o hierarchii prostředků Google Cloud v jejich [online dokumentaci.](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
 
 ### <a name="step-1-set-up-gcp-security-command-center-with-security-health-analytics"></a>Krok 1. Nastavení centra příkazů zabezpečení GCP s analýzou stavu zabezpečení
 
@@ -120,6 +123,15 @@ Pokud chcete zobrazit všechna aktivní doporučení pro vaše prostředky podle
 
 :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="Filtr typu prostředku stránky inventáře prostředků zobrazující možnosti GCP"::: 
 
+
+## <a name="faq-for-connecting-gcp-accounts-to-azure-security-center"></a>Nejčastější dotazy týkající se připojení účtů GCP k Azure Security Center
+
+### <a name="can-i-connect-multiple-gcp-accounts-to-security-center"></a>Můžu k Security Center připojit více účtů GCP?
+Ano. Jak je uvedeno výše, můžete připojit prostředky Google Cloud buď na úrovni organizace, nebo na úrovni projektu. Přečtěte si informace o hierarchii prostředků Google Cloud v jejich [online dokumentaci.](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
+
+
+### <a name="is-there-an-api-for-connecting-my-gcp-resources-to-security-center"></a>Existuje rozhraní API pro připojení prostředků GCP k Security Center?
+Ano. Chcete-li vytvořit, upravit nebo odstranit Security Center konektory cloudu pomocí REST API, přečtěte si podrobnosti o [rozhraní API konektorů](/rest/api/securitycenter/connectors).
 
 ## <a name="next-steps"></a>Další kroky
 

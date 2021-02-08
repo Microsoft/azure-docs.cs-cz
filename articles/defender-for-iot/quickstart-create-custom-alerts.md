@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: vytvoření vlastních výstrah'
-description: Naučte se vytvářet a přiřazovat vlastní výstrahy zařízení pro službu zabezpečení Azure Defender pro IoT.
+title: Vytváření vlastních výstrah
+description: Pochopení, vytváření a přiřazování vlastních výstrah zařízení pro službu zabezpečení Azure Defender for IoT.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 48682e465374c1a0e1fb74fc6627016696ff6d2c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e59bcca9561c33610170f4bc3674eef307cf0de9
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947303"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809032"
 ---
-# <a name="quickstart-create-custom-alerts"></a>Rychlý Start: vytvoření vlastních výstrah
+# <a name="create-custom-alerts"></a>Vytváření vlastních výstrah
 
 Pomocí vlastních skupin zabezpečení a výstrah aplikace plně využívá kompletní informace o zabezpečení a znalosti zařízení kategorií, aby bylo zajištěno lepší zabezpečení v rámci řešení IoT.
 
@@ -65,17 +65,23 @@ Skupiny zabezpečení použijte k seskupení zařízení do logických kategori�
 
 ## <a name="customize-an-alert"></a>Přizpůsobení výstrahy
 
-1. Otevřete IoT Hub a v nabídce **zabezpečení** vyberte **Nastavení** . 
-1. Klikněte na **vlastní výstrahy**.
+1. Otevřete IoT Hub a v nabídce **zabezpečení** vyberte **Nastavení** .
+
+1. Vyberte **vlastní výstrahy**.
+
 1. Vyberte skupinu zabezpečení, pro kterou chcete použít vlastní nastavení.
-1. Klikněte na **Přidat vlastní výstrahu**.
+
+1. Vyberte **Přidat vlastní výstrahu**.
+
 1. V rozevíracím seznamu vyberte vlastní výstrahu.
-1. Upravte požadované vlastnosti a klikněte na tlačítko **OK**.
-1. Nezapomeňte kliknout na **Uložit**. Bez uložení nové výstrahy se upozornění odstraní při příštím zavření IoT Hub.
+
+1. Upravte požadované vlastnosti a vyberte **OK**.
+
+1. Ujistěte se, že jste vybrali **Uložit**. Bez uložení nové výstrahy se upozornění odstraní při příštím zavření IoT Hub.
 
 ## <a name="alerts-available-for-customization"></a>Výstrahy k dispozici pro přizpůsobení
 
-Defender for IoT nabízí velký počet výstrah, které je možné přizpůsobit podle vašich konkrétních potřeb. V [tabulce přizpůsobitelné výstrahy](concept-customizable-security-alerts.md) můžete zobrazit Závažnost výstrahy, zdroj dat, popis a naše doporučené kroky k nápravě, pokud a kdy se jednotlivé výstrahy přijaly.
+Defender for IoT nabízí velký počet výstrah, které je možné přizpůsobit podle konkrétních potřeb. V [tabulce přizpůsobitelné výstrahy](concept-customizable-security-alerts.md) můžete zobrazit Závažnost výstrahy, zdroj dat, popis a naše doporučené kroky k nápravě, pokud a kdy byla přijata jednotlivá výstraha.
 
 ## <a name="next-steps"></a>Další kroky
 

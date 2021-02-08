@@ -4,28 +4,25 @@ description: Naučte se integrovat a povolit modul zabezpečení pro službu Azu
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: rkarlin
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2020
-ms.author: rkarlin
-ms.openlocfilehash: 321c8d2b9e58aba943c5bf19adf54d6359c5be96
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 01/24/2021
+ms.author: shhazam
+ms.openlocfilehash: d7e901e440a6df5ae1d11a150e09a36b565904d9
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351772"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809061"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>Rychlý Start: modul zabezpečení pro Azure RTO (Preview)
 
 Tento článek obsahuje vysvětlení požadavků před začátkem a vysvětluje, jak povolit modul zabezpečení pro službu Azure RTO na IoT Hub. Pokud v tuto chvíli nemáte IoT Hub, přečtěte si téma [vytvoření IoT Hub pomocí Azure Portal](../iot-hub/iot-hub-create-through-portal.md) pro začátek.
-
-> [!NOTE]
-> Modul zabezpečení pro Azure RTO se podporuje jenom na rozbočovačích IoT úrovně Standard.
 
 ## <a name="prerequisites"></a>Požadavky 
 
@@ -46,27 +43,13 @@ Další fází, jak začít, je příprava prostředků Azure. Budete potřebova
 Aby bylo možné začít, je nutné IoT Hub připojení. 
 
 1. Otevřete **IoT Hub** v Azure Portal.
+1. Přejděte na **zařízení IoT**.
+1. Vyberte **Vytvořit**.
 1. Zkopírujte připojovací řetězec IoT do [konfiguračního souboru](how-to-azure-rtos-security-module.md).
-
 
 Přihlašovací údaje připojení jsou pořízeny z konfigurace aplikace uživatele **HOST_NAME**, **DEVICE_ID** a **DEVICE_SYMMETRIC_KEY**.
 
 Modul zabezpečení pro Azure RTO používá připojení middlewaru Azure IoT založené na protokolu **MQTT** .
-
-
-### <a name="log-analytics-workspace"></a>Pracovní prostor služby Log Analytics
-
-Ingestování Log Analytics v IoT Hub je ve výchozím nastavení v programu Defender pro řešení IoT vypnuté. Pokud ho chcete povolit pro práci s modulem zabezpečení pro Azure RTO, udělejte toto: 
-1. V Azure Portal přejdete do IoT Hub.
-1. V nabídce **zabezpečení** vyberte **Nastavení** .
-   :::image type="content" source="media/quickstart/azure-rtos-hub-settings.png" alt-text="Přístup k možnosti shromažďování dat pro Azure RTO"::: 
-1. Vyberte **shromažďování dat**. 
-1. V možnosti **Konfigurace pracovního prostoru** přepněte přepínač na **zapnuto**. 
-1. Vytvořte nový pracovní prostor Log Analytics nebo připojte existující. Ujistěte se, že je vybraná možnost **přístup k nezpracovaným datům zabezpečení** . 
- :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Možnost konfigurace Azure RTO ukazující možnosti shromažďování dat a nezpracovaná nastavení dat zabezpečení jsou vybraná":::
-1. Vyberte **Uložit**.
-1. Vraťte se do seznamu prostředků Azure a potvrďte, že je pro IoT Hub povolený pracovní prostor Log Analytics, který jste vytvořili nebo připojeni.
-    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="Zkontrolujte seznam prostředků Azure a potvrďte přidání správného Log Analytics pracovního prostoru přidaného pro IoT Hub"::: 
 
 ## <a name="next-steps"></a>Další kroky
 

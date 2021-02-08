@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 9106e00fe2146978f97b480e3afd3b7ed58c9130
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb2b7810c0829859f4a104c62b6df2ca0495bac7
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935295"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809197"
 ---
 # <a name="configure-and-customize-security-module-for-azure-rtos-preview"></a>Konfigurace a přizpůsobení modulu zabezpečení pro Azure RTO (Preview)
 
@@ -73,7 +73,7 @@ Modul zabezpečení pro Azure RTO podporuje konkrétní výstrahy a doporučení
 
 ## <a name="log-analytics-optional"></a>Log Analytics (volitelné)
 
-I když volitelné a nevyžadujíelné, povolení a konfigurace Log Analytics může být užitečné, když chcete dál prozkoumat události a aktivity zařízení. Přečtěte si o tom, jak nastavit a použít [Log Analytics s Defenderem pro službu IoT pro](how-to-security-data-access.md#log-analytics) Další informace. 
+I když volitelné a nevyžadujíelné, povolení a konfigurace Log Analytics může být užitečné, když chcete dál prozkoumat události a aktivity zařízení. Přečtěte si o tom, jak nastavit a použít [Log Analytics se službou Defender pro IoT](how-to-security-data-access.md#log-analytics) , abyste se dozvěděli víc. 
 
 ## <a name="next-steps"></a>Další kroky
 

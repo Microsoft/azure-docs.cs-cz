@@ -3,12 +3,12 @@ title: Vytvoření funkce v cestách nebo Rust pomocí Visual Studio Code-Azure 
 description: Naučte se, jak vytvořit funkci přejít jako vlastní obslužnou rutinu Azure Functions a pak publikovat místní projekt na hostování bez serveru v Azure Functions pomocí rozšíření Azure Functions v Visual Studio Code.
 ms.topic: quickstart
 ms.date: 12/4/2020
-ms.openlocfilehash: 4f2e0b30c4bf5e6c4629fc63f3125e5ddda70ad2
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: a3ef7bdd19badf7a7deaa8376440016e39e0d14b
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493650"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809558"
 ---
 # <a name="quickstart-create-a-go-or-rust-function-in-azure-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce přejít nebo Rust v Azure pomocí Visual Studio Code
 
@@ -262,7 +262,7 @@ V této části publikujete projekt do Azure v aplikaci Function App se systéme
     ```cmd
     set GOOS=linux
     set GOARCH=amd64
-    go build hello.go
+    go build handler.go
     ```
 
     Změňte `defaultExecutablePath` v *host.js* v z `handler.exe` na `handler` . Tím se dá aplikaci Function App spustit binární soubor Linux.

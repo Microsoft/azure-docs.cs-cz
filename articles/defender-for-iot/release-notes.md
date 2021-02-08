@@ -11,24 +11,58 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/06/2021
+ms.date: 02/07/2021
 ms.author: shhazam
-ms.openlocfilehash: 72a6e50134647194679055a886b50b01f42e212d
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: a8f4b96b27eb09443c2644fd63a8783faaa610e4
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629975"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809503"
 ---
-# <a name="whats-new"></a>Co je nového?
+# <a name="whats-new-in-azure-defender-for-iot"></a>Co je nového v Azure Defenderu pro IoT?
 
-Defender pro IoT 10,0 poskytuje vylepšení funkcí, která zlepšují zabezpečení, správu a použitelnost.
+Tento článek obsahuje seznam nových funkcí a vylepšení funkcí pro program Defender pro IoT.
 
-## <a name="security"></a>Zabezpečení
+Vyznačené funkce jsou ve verzi PREVIEW. [Doplňkové podmínky Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zahrnují další právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti.
+## <a name="february-2021"></a>Únor 2021
+
+### <a name="enhanced-custom-alert-rules"></a>Rozšířená vlastní pravidla upozornění
+
+Nyní můžete vytvořit vlastní pravidla upozornění na základě dne, skupiny dnů a doby, po kterou byla zjištěna síťová aktivita.  Práce s podmínkami pravidla dne a času je užitečná, například v případech, kdy je Závažnost výstrahy odvozena v době, kdy dojde k události výstrahy. Můžete například vytvořit vlastní pravidlo, které aktivuje výstrahu s vysokou závažností při zjištění síťové aktivity na víkendu nebo večer.
+
+Tato funkce je k dispozici na senzoru s vydáním verze 10,1.
+
+### <a name="export-alerts-from-on-premises-management-console"></a>Exportovat výstrahy z místní konzoly pro správu
+
+Informace o výstrahách se teď dají exportovat do souboru. CSV z místní konzoly pro správu. Můžete exportovat informace o všech zjištěných výstrahách nebo informace o exportu na základě filtrovaného zobrazení.
+
+Tato funkce je k dispozici v místní konzole pro správu s vydáním verze 10,1.
+### <a name="device-builder---new-micro-agent-public-preview"></a>Tvůrce zařízení – nový Micro Agent (Public Preview)
+
+K dispozici je nový modul pro sestavovatele zařízení. Modul, který je označován jako mikroagent, umožňuje:
+
+- **Integrace s azure IoT Hub a Azure Defenderem pro IoT** – Sestavte si silnější řešení Endpoint Security přímo do zařízení IoT tím, že je integrujte s možností monitorování, kterou poskytuje Azure IoT Hub a Azure Defender pro IoT.
+- **Flexibilní možnosti nasazení s podporou pro standardní operační systémy IoT** – je možné je nasadit jako binární balíček nebo jako upravitelný zdrojový kód s podporou standardních operačních systémů IoT, jako je Linux a Azure RTO.
+- **Minimální požadavky na prostředky, které neobsahují závislosti jádra operačního systému** – malé nároky, nízké nároky na procesor a žádné závislosti jádra operačního systému.
+- **Stav Security Management** – proaktivně monitoruje stav zabezpečení vašich zařízení IoT.
+- **Průběžné zjišťování hrozeb IoT/ot v reálném čase – detekce** hrozeb, jako je botnety, pokusy o útok hrubou silou, kryptografická dolování hlásí a podezřelá síťová aktivita
+
+Zastaralá dokumentace k modulu zabezpečení bude přesunuta do klasické složky.
+
+Tato sada funkcí je dostupná ve verzi Public Preview Cloud.
+
+## <a name="january-2021"></a>Leden 2021
+
+- [Zabezpečení](#security)
+- [Onboarding](#onboarding)
+- [Použitelnost](#usability)
+- [Další aktualizace](#other-updates)
+### <a name="security"></a>Zabezpečení
 
 Pro tuto verzi byla provedena vylepšení pro obnovení certifikátu a hesla.
 
-### <a name="certificates"></a>Certifikáty
+#### <a name="certificates"></a>Certifikáty
   
 Tato verze vám umožní:
 
@@ -45,48 +79,48 @@ Pro nové instalace:
 - Při prvním přihlášení se uživatelé musí buď použít certifikát SSL (doporučeno) nebo místně generovaný certifikát podepsaný svým držitelem (nedoporučuje se).
 - Ověřování certifikátu je ve výchozím nastavení zapnuté pro nové instalace.
 
-### <a name="password-recovery"></a>Obnovení hesla
+#### <a name="password-recovery"></a>Obnovení hesla
   
 Správce senzorů a místních konzol pro správu teď může obnovit hesla z Azure Defenderu pro IoT Portal. Předchozí obnovení hesla vyžadovalo zásah týmu podpory.
 
-## <a name="onboarding"></a>Onboarding
+### <a name="onboarding"></a>Onboarding
 
-### <a name="on-premises-management-console---committed-devices"></a>Místní Konzola pro správu – potvrzená zařízení
+#### <a name="on-premises-management-console---committed-devices"></a>Místní Konzola pro správu – potvrzená zařízení
 
 Po počátečním přihlášení k místní konzole pro správu se teď uživatelům vyžaduje, aby nahráli aktivační soubor. Tento soubor obsahuje agregovaný počet zařízení, která se mají monitorovat v síti organizace. Toto číslo se označuje jako počet potvrzených zařízení.
 Potvrzená zařízení se definují během procesu připojování na portálu Azure Defender pro IoT, kde se vygeneruje aktivační soubor.
 Pro nahrání aktivačního souboru se vyžadují první upgrade uživatelů a uživatelů.
 Po počáteční aktivaci může počet zařízení zjištěných v síti překročit počet potvrzených zařízení. K této události může dojít například v případě, že se k konzole pro správu připojíte více senzorů. Pokud dojde k nesouladu mezi počtem zjištěných zařízení a počtem potvrzených zařízení, zobrazí se v konzole pro správu upozornění. Pokud k této události dojde, měli byste nahrát nový soubor aktivace.
 
-### <a name="pricing-page-options"></a>Možnosti stránky s cenami
+#### <a name="pricing-page-options"></a>Možnosti stránky s cenami
 
 Stránka s cenami umožňuje připojit nové odběry do Azure Defenderu pro IoT a definovat potvrzená zařízení ve vaší síti.  
 Stránka s cenami teď také umožňuje spravovat existující předplatná přidružená ke senzoru a aktualizovat závazek zařízení.
 
-### <a name="view-and-manage-onboarded-sensors"></a>Umožňuje zobrazit a spravovat senzory zprovoznění.
+#### <a name="view-and-manage-onboarded-sensors"></a>Umožňuje zobrazit a spravovat senzory zprovoznění.
 
 Stránka s novým portálem web a senzorů vám umožní:
 
 - Přidejte popisné informace o senzoru. Například zóna přidružená ke senzoru nebo k bezplatným textovým značkám.
 - Zobrazení a filtrování informací o senzorech. Můžete například zobrazit podrobnosti o senzorech, které jsou připojené ke cloudu nebo lokálně spravované, nebo zobrazit informace o senzorech v určité zóně.  
 
-## <a name="usability"></a>Použitelnost
+### <a name="usability"></a>Použitelnost
 
-### <a name="azure-sentinel-new-connector-page"></a>Stránka nového konektoru služby Azure Sentinel
+#### <a name="azure-sentinel-new-connector-page"></a>Stránka nového konektoru služby Azure Sentinel
 
 Změnila se stránka konektoru dat Azure Defender pro IoT ve službě Azure Sentinel. Data Connector je teď založený na předplatných, nikoli v centrech IoT. umožnění zákazníkům lépe spravovat připojení konfigurace do Azure Sentinel.
 
-### <a name="azure-portal-permission-updates"></a>Aktualizace oprávnění Azure Portal  
+#### <a name="azure-portal-permission-updates"></a>Aktualizace oprávnění Azure Portal  
 
 Byla přidána podpora čtecího modulu zabezpečení a správce zabezpečení.
 
-## <a name="other-updates"></a>Další aktualizace
+### <a name="other-updates"></a>Další aktualizace
 
-### <a name="access-group---zone-permissions"></a>Přístup k oprávněním pro zónu skupin
+#### <a name="access-group---zone-permissions"></a>Přístup k oprávněním pro zónu skupin
   
 Místní pravidla skupiny přístupu konzoly pro správu nebudou zahrnovat možnost udělit přístup ke konkrétní zóně. Neexistují žádné změny v definování pravidel, která používají lokality, oblasti a obchodní jednotky.   Po upgradu budou přístupové skupiny, které obsahují pravidla umožňující přístup ke konkrétním zónám, upraveny tak, aby povolovaly přístup ke své nadřazené lokalitě, včetně všech svých zón.
 
-### <a name="terminology-changes"></a>Terminologické změny
+#### <a name="terminology-changes"></a>Terminologické změny
 
 Pojem Asset byl přejmenován na zařízení v senzoru a místní konzole pro správu, v sestavách a v dalších rozhraních řešení.
 V okně senzory a místní konzoly pro správu se jako termín Správa této události jmenovaly kroky pro nápravu.

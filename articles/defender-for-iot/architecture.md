@@ -1,6 +1,6 @@
 ---
-title: Azure Defender pro architekturu IoT
-description: Přečtěte si o Azure Defenderu pro architekturu IoT a tok informací.
+title: Architektura řešení bez agentů
+description: Přečtěte si o Azure Defenderu pro architekturu a tok informací bez agentů IoT.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/13/2021
+ms.date: 1/25/2021
 ms.author: shhazam
-ms.openlocfilehash: 66b960bf874cc46985230e488c749663eff0b835
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 1eb939a63edc4abc638dc128af0d9ebbd7241bef
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621093"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809299"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender pro architekturu IoT
 
-Tento článek popisuje funkční systém architektury řešení Defender for IoT. Azure Defender pro IoT nabízí dvě sady možností, které vyhovují potřebám vašeho prostředí, řešení bez agentů pro organizace a řešení založené na agentech pro sestavovatele zařízení.
+Tento článek popisuje funkční systémovou architekturu programu Defender pro řešení bez agentů IoT. Azure Defender pro IoT nabízí dvě sady možností, které vyhovují potřebám vašeho prostředí, řešení bez agentů pro organizace a řešení založené na agentech pro sestavovatele zařízení.
 
 ## <a name="agentless-solution-for-organizations"></a>Řešení bez agentů pro organizace
 ### <a name="defender-for-iot-components"></a>Defender pro součásti IoT
@@ -47,15 +47,15 @@ Azure Defender pro IoT zahrnuje tyto komponenty:
 
 ### <a name="azure-defender-for-iot-sensors"></a>Azure Defender pro IoT snímače
 
-Defender pro IoT senzory zjišťuje a nepřetržitě monitoruje síťová zařízení. Senzory shromažďují síťový provoz ICS pomocí pasivního monitorování (bez agentů) na zařízeních IoT a OT. 
+Defender pro IoT snímače zjistí a nepřetržitě monitoruje síťová zařízení. Senzory shromažďují síťový provoz ICS pomocí pasivního monitorování (bez agentů) na zařízeních IoT a OT. 
  
 Technologie bez agentů, které jsou sestavené pro IoT a síť, přináší v rámci připojení k síti hloubkovou viditelnost v oblasti IoT a nebezpečí. Má žádný vliv na výkon sítě a síťových zařízení z důvodu neinvazivního přístupu k NTA (Network provoz Analysis). 
  
-S využitím patentových analýz chování IoT a s podporou přístupu a hloubkové kontroly paketů (DPI) vrstvy 7 vám umožňuje analyzovat rámec tradičních řešení založených na podpisech a okamžitě zjišťovat Pokročilá IoT a hrozby (například malware bez souborů) na základě neobvyklé nebo neoprávněné aktivity. 
+Použití analytických a vysoce používaných analýz chování a hloubkové kontroly paketů vrstvy 7 na úrovni, která umožňuje provádět analýzu nad rámec tradičních řešení založených na podpisech a okamžitě zjišťovat pokročilé IoT a hrozby (například malware bez souborů) na základě neobvyklé nebo neoprávněné aktivity. 
   
 Defender pro senzory IoT se připojí k portu SPAN nebo k síti KLEPNE a okamžitě zahájí provádění DPI na síťovém provozu IoT a OT. 
  
-Shromažďování dat, zpracování, analýzy a upozorňování probíhá přímo na senzoru. To je ideální pro umístění s nízkou šířkou pásma nebo vysokou latencí, protože do konzoly pro správu se přenesou jenom metadata.
+Shromažďování dat, zpracování, analýzy a upozorňování probíhá přímo na senzoru. Tento proces je ideální pro umístění s nízkou šířkou pásma nebo vysokou latencí, protože do konzoly pro správu se přenáší jenom metadata.
 
 Senzor zahrnuje pět vyhledávačů analýz. Moduly aktivují výstrahy na základě analýzy v reálném čase i v předem zaznamenaném provozu. K dispozici jsou následující stroje: 
 
@@ -90,13 +90,13 @@ Místní Konzola pro správu umožňuje operátorům SOC (Security Operations Ce
 
 Tato architektura poskytuje komplexní jednotný pohled na síť na úrovni SOC, optimalizovaném zpracování výstrah a řízení zabezpečení provozní sítě. tím se zajistí, že řízení rozhodování a řízení rizik zůstane bezchybného.
 
-Kromě víceklientské architektury, monitorování, analýzy dat a centralizovaného dálkových řízení senzorů poskytuje konzola pro správu další nástroje údržby systému (například vyloučení výstrah) a plně přizpůsobené funkce vytváření sestav pro každé vzdálené zařízení. Tato Škálovatelná architektura podporuje místní správu na úrovni webu, úrovni zóny a globální správě v rámci SOC.
+Kromě víceklientské architektury, monitorování, analýzy dat a centralizovaného dálkových řízení senzorů poskytuje konzola pro správu dodatečné nástroje pro údržbu systému (například vyloučení výstrah) a plně přizpůsobené funkce vytváření sestav pro každé vzdálené zařízení. Tato architektura podporuje místní správu na úrovni webu, úrovni zóny a globální správu v rámci SOC.
 
 Konzolu pro správu lze nasadit pro konfiguraci s vysokou dostupností, která zajišťuje konzolu zálohování, která pravidelně přijímá zálohy všech konfiguračních souborů vyžadovaných pro obnovení. Pokud primární konzola selže, zařízení pro správu místní lokality se automaticky převezmou při synchronizaci s konzolou zálohování, aby se zachovala dostupnost bez přerušení.
 
 Integrovaná integrace s pracovními postupy SOC a spouštěním knih umožňuje snadnou prioritu aktivit zmírňování a korelace mezi různými pracovišti hrozeb.
 
-- Holistický – snižte složitost s jednou sjednocenou platformou pro správu zařízení, riziko a správu ohrožení zabezpečení a také monitorování hrozeb pomocí reakce na incidenty.
+- Holistický – zmenšete složitost s jednou sjednocenou platformou pro správu zařízení, rizika a správu ohrožení zabezpečení a s reakcí na incidenty.
 
 - Agregace a korelace – zobrazí, agreguje a analyzuje data a výstrahy shromážděné ze všech lokalit.
 
@@ -111,30 +111,10 @@ Portál Defender pro IoT v Azure vám umožňuje:
 - Koupit zařízení řešení
 
 - Instalace a aktualizace softwaru
+
 - Zprovoznění senzorů do Azure
+
 - Aktualizace balíčků pro analýzu hrozeb
-
-## <a name="agent-based-solution-for-device-builders"></a>Řešení založená na agentech pro tvůrce zařízení
-
-### <a name="embedded-security-agent-built-in-mode"></a>Embedded Security Agent: integrovaný režim
-
-V **integrovaném** režimu je Defender pro IoT povolený, když se rozhodnete zapnout možnost **zabezpečení** ve službě IoT Hub. Nabízí sledování, doporučení a výstrahy v reálném čase, integrovaný režim nabízí viditelnost zařízení s jedním krokem a nespárované zabezpečení. V režimu sestavení není nutné instalovat agenta na žádná zařízení a k analýze a ochraně zařízení polí a centra IoT používá pokročilou analýzu u protokolovaných aktivit.
-
-### <a name="embedded-security-agent-enhanced-mode"></a>Embedded Security Agent: rozšířený režim
-
-V **rozšířeném** režimu po zapnutí možnosti **zabezpečení** ve službě IoT Hub a instalaci programu Defender pro agenty zařízení IoT na vaše zařízení budou agenti shromažďovat, agregovat a analyzovat nezpracované události zabezpečení z vašich zařízení. Nezpracované události zabezpečení můžou zahrnovat připojení IP, vytváření procesů, přihlášení uživatelů a další informace týkající se zabezpečení. Defender pro agenty zařízení IoT také zpracovává agregaci událostí, aby se zabránilo vysoké propustnosti sítě. Agenti jsou vysoce přizpůsobitelní, což umožňuje jejich použití pro konkrétní úkoly, jako je například odesílání pouze důležitých informací na nejrychlejší smlouvu SLA nebo pro agregaci rozsáhlých informací o zabezpečení a kontextu do větších segmentů, což vyloučí vyšší náklady na službu.
-
-Agenti zařízení a další aplikace používají k posílání informací o zabezpečení do služby Azure IoT Hub **sadu SDK pro zprávy zabezpečení Azure** . Služba IoT Hub získá tyto informace a předá ji do programu Defender pro službu IoT.
-
-Po povolení služby Defender pro IoT se kromě předávaných dat taky služba IoT Hub pošle veškerá interní data pro analýzu pomocí programu Defender pro IoT. Mezi tato data patří protokoly operací cloudového zařízení, identity zařízení a konfigurace centra. Všechny tyto informace pomáhají vytvořit kanál Defender for IoT Analytics.
-
-V Defenderu pro kanál IoT Analytics se taky dostanou další datové proudy analýzy hrozeb z různých zdrojů v rámci partnerů Microsoftu a Microsoftu. Defender pro IoT celého analytického kanálu funguje se všemi zákaznickými konfiguracemi provedenými ve službě (například s vlastními výstrahami a s využitím sady SDK pro posílání zpráv zabezpečení).
-
-Pomocí analytického kanálu sloučí Defender pro IoT všechny datové proudy s informacemi, aby vygenerovala doporučení a upozornění pro akce. Kanál obsahuje jak vlastní pravidla vytvořená výzkumnými pracovníky a odborníky z hlediska zabezpečení, tak i modely strojového učení, které hledají odchylky od standardních chování zařízení a analýzy rizik.
-
-Doporučení a upozornění pro IoT (výstup kanálu analýz) se zapisuje do Log Analytics pracovního prostoru každého zákazníka. Včetně nezpracovaných událostí v pracovním prostoru a výstrah a doporučení umožňují důkladná podrobně vyšetřování a dotazy pomocí přesně podrobností o zjištěných podezřelých aktivitách.
-
-:::image type="content" source="media/architecture/micro-agent-architecture.png" alt-text="Architektura mikroagentů.":::
 
 ## <a name="see-also"></a>Viz také
 

@@ -1,5 +1,5 @@
 ---
-title: Přehled agenta zabezpečení
+title: Agenti zabezpečení
 description: Začněte s porozuměním, konfigurací, nasazením a používáním Azure Defenderu pro agenty zabezpečení služby IoT na vašich zařízeních IoT.
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -11,33 +11,36 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/27/2019
+ms.date: 1/24/2021
 ms.author: shhazam
-ms.openlocfilehash: 2b1cd131e578b1d16fabee99b8de536e4a48ece0
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: fcc2c7c3e724fccd005c8b6c8d1b01982f407c65
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247297"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809013"
 ---
-# <a name="get-started-with-azure-defender-for-iot-device-security-agents"></a>Začínáme se službou Azure Defender pro agenty zabezpečení zařízení IoT
+# <a name="get-started-with-azure-defender-for-iot-device-micro-agents"></a>Začínáme s Azure Defenderem pro zařízení IoT Micro agenty
 
-Defender pro agenty zabezpečení IoT nabízí rozšířené možnosti zabezpečení, jako je monitorování vzdálených připojení, aktivních aplikací, přihlašovacích událostí a osvědčených postupů konfigurace operačního systému. Využijte řízení ochrany před hrozbami v oblasti zařízení a zabezpečení stav pomocí jediné služby.
+Defender pro agenty zabezpečení IoT nabízí rozšířené možnosti zabezpečení, jako je monitorování osvědčených postupů konfigurace operačního systému. Využijte řízení ochrany před hrozbami v oblasti zařízení a zabezpečení stav pomocí jediné služby.
 
-K dispozici je referenční architektura pro agenty zabezpečení systému Linux a Windows v jazyce C# i C.
-
-Agenti zabezpečení služby IoT pro IoT zpracovávají nezpracované shromažďování událostí z operačního systému zařízení, agregace událostí pro snížení nákladů a konfiguraci pomocí modulu zařízení s dvojitou funkční konfigurací. Zprávy o zabezpečení se odesílají prostřednictvím IoT Hub do programu Defender pro služby IoT Analytics.
+Obrana pro agenty zabezpečení IoT zpracovávají nezpracované shromažďování událostí z operačního systému zařízení, agregaci událostí za účelem snížení nákladů a konfiguraci pomocí modulu zařízení s dvojitou funkční konfigurací. Zprávy o zabezpečení se odesílají prostřednictvím IoT Hub do programu Defender pro služby IoT Analytics.
 
 K nasazení a otestování programu Defender pro agenty zabezpečení IoT použijte následující pracovní postup:
 
-1. [Povolit Defender pro službu IoT na IoT Hub](quickstart-onboard-iot-hub.md)
+1. [Povolte ve svém IoT Hub Defender pro službu IoT](quickstart-onboard-iot-hub.md).
+
 1. Pokud IoT Hub nemá žádná registrovaná zařízení, [Zaregistrujte nové zařízení](../iot-accelerators/iot-accelerators-device-simulation-overview.md).
-1. [Vytvořte modul zabezpečení azureiotsecurity](quickstart-create-security-twin.md) pro vaše zařízení.
+
+1. Vytvořte pro svá zařízení [dvojitě DefenderIotMicroAgent modul](quickstart-create-micro-agent-module-twin.md) .
+
 1. Pokud chcete nainstalovat agenta na simulovaném zařízení Azure místo instalace na skutečném zařízení, [vystavte si nový virtuální počítač Azure (VM)](../virtual-machines/linux/quick-create-portal.md) v dostupné zóně.
-1. Nasaďte do svého zařízení IoT nebo nového virtuálního počítače [agenta zabezpečení pro IoT for IoT](how-to-deploy-linux-cs.md) .
-1. Postupujte podle pokynů [trigger_events](https://aka.ms/iot-security-github-trigger-events) a spusťte simulaci neškodných útoků.
-1. Ověřte Defender pro výstrahy IoT v reakci na simulovaný útok v předchozím kroku. Po spuštění skriptu spusťte ověření 5 minut.
-1. Prozkoumejte [výstrahy](concept-security-alerts.md), [doporučení](concept-recommendations.md)a [hloubkové podrobně pomocí Log Analytics](how-to-security-data-access.md) s využitím IoT Hub.
+
+1. Nasaďte do zařízení IoT nebo nového virtuálního počítače program [Defender pro IoT Security Agent](how-to-deploy-linux-cs.md) .
+
+1. Podle pokynů [trigger_events](https://aka.ms/iot-security-github-trigger-events) spusťte událost směrného plánu operačního systému.
+
+1. V reakci na neúspěšné kontroly základního plánu operačního systému v předchozím kroku ověřte, jestli jsou doporučení pro IoT v programu Defender. Po spuštění skriptu spusťte ověření 30 minut.
 
 ## <a name="next-steps"></a>Další kroky
 
