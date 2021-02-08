@@ -5,6 +5,7 @@
     - name: Sestavování řešení pro energetiku s využitím služby Azure IoT Central
       href: overview-iot-central-energy.md
 - name: Kurzy
+  expanded: true
   items:
     - name: Vytvoření aplikace pro inteligentní monitorování měřičů
       href: tutorial-smart-meter-app.md

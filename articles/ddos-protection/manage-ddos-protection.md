@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: fd154ec40ed4d1650e44a67fd5d362a2bc0c519d
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: f4ce830c889feaeda05745eeb02b72f55ad9314a
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813934"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99819839"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Rychlý Start: vytvoření a konfigurace Azure DDoS Protection Standard
 
@@ -77,7 +77,7 @@ Virtuální síť nejde přesunout do jiné skupiny prostředků nebo předplatn
 
 ### <a name="enable-ddos-protection-for-all-virtual-networks"></a>Povolit DDoS Protection pro všechny virtuální sítě
 
-Tato [zásada](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Policy%20-%20Virtual%20Networks%20should%20be%20associated%20with%20an%20Azure%20DDoS%20Protection%20Standard%20plan) vyhledá všechny virtuální sítě v definovaném oboru, u kterých není povolená DDoS Protection Standard, a pak volitelně vytvoří úlohu nápravy, která vytvoří přidružení pro ochranu virtuální sítě. Podrobné pokyny, jak nasadit tuto zásadu, najdete v tématu https://aka.ms/ddosvnetpolicy-techcommunity .
+Tato [zásada](https://aka.ms/ddosvnetpolicy) vyhledá všechny virtuální sítě v definovaném oboru, u kterých není povolená DDoS Protection Standard, a pak volitelně vytvoří úlohu nápravy, která vytvoří přidružení pro ochranu virtuální sítě. Podrobné pokyny, jak nasadit tuto zásadu, najdete v tématu https://aka.ms/ddosvnetpolicy-techcommunity .
 
 ## <a name="validate-and-test"></a>Ověřit a otestovat
 

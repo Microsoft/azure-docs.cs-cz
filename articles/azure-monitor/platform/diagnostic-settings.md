@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: c25c53159fd0504956eed2cf7f968c573e9fc289
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a6f8e681f68fb53d7cf88582b4bf4416efc11c86
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927736"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820547"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Vytvoření nastavení diagnostiky pro odesílání metrik a protokolů platformy do různých cílů
 [Protokoly platforem](platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. [Metriky platformy](data-platform-metrics.md) se ve výchozím nastavení shromažďují a obvykle se ukládají do databáze Azure monitor metrik. Tento článek poskytuje podrobné informace o vytváření a konfiguraci nastavení diagnostiky pro odesílání metrik platforem a protokolů platforem do různých umístění.
@@ -43,7 +43,7 @@ Následující video vás provede protokoly platformy směrování s nastavením
 ## <a name="destinations"></a>Cíle
 Protokoly a metriky platformy je možné odeslat do cílových umístění v následující tabulce. 
 
-| Cíl | Popis |
+| Cíl | Description |
 |:---|:---|
 | [Pracovní prostor Log Analytics](design-logs-deployment.md) | Odesílání protokolů a metrik do Log Analyticsového pracovního prostoru vám umožní je analyzovat s dalšími daty monitorování shromážděnými pomocí Azure Monitor pomocí výkonných dotazů protokolu a také využívat jiné Azure Monitor funkce, jako jsou výstrahy a vizualizace. |
 | [Centrum událostí](../../event-hubs/index.yml) | Odesílání protokolů a metrik do Event Hubs umožňuje streamování dat do externích systémů, jako jsou systémů Siem třetích stran a další řešení Log Analytics.  |
@@ -175,6 +175,24 @@ Pokud chcete vytvořit nebo aktualizovat nastavení diagnostiky pomocí [REST AP
 
 ## <a name="create-using-azure-policy"></a>Vytvořit pomocí Azure Policy
 Vzhledem k tomu, že pro každý prostředek Azure je třeba vytvořit diagnostické nastavení, Azure Policy lze použít k automatickému vytvoření nastavení diagnostiky při vytvoření každého prostředku. Podrobnosti najdete v tématu [nasazení Azure monitor ve velkém rozsahu pomocí Azure Policy](../deploy-scale.md) .
+
+## <a name="metric-category-is-not-supported-error"></a>Kategorie metriky není podporována. Chyba
+Při nasazování nastavení diagnostiky se zobrazí následující chybová zpráva:
+
+   Kategorie metriky *xxxx* není podporovaná.
+
+Příklad: 
+
+   Kategorie metriky ActionsFailed není podporovaná.
+
+kam bylo předchozí nasazení úspěšné. 
+
+K tomuto problému dochází při použití šablony Správce prostředků, nastavení diagnostiky REST API, rozhraní příkazového řádku Azure CLI nebo Azure PowerShell. Nastavení diagnostiky vytvořená prostřednictvím Azure Portal nejsou ovlivněna, protože jsou uvedeny pouze podporované názvy kategorií.
+
+Problém je způsoben poslední změnou v základním rozhraní API. Jiné kategorie metrik než ' AllMetrics ' nejsou podporovány a nikdy nebyly s výjimkou scénářů seznamu povolených IP adres. V minulosti byly při nasazení nastavení diagnostiky ignorovány další názvy kategorií. Azure Monitor back-end jednoduše přesměrují tyto kategorie na "AllMetrics".  Od února 2021 byl back-end aktualizován, aby konkrétně ověřil, že poskytnutá kategorie metrik je přesná. Tato změna způsobila selhání některých nasazení.
+
+Pokud se zobrazí tato chyba, aktualizujte nasazení tak, aby nahradila všechny názvy kategorií metriky pomocí ' AllMetrics ', aby se problém vyřešil. Pokud nasazení dříve přidalo více kategorií, měla by být zachována pouze jedna z nich s odkazem ' AllMetrics '. Pokud budete tento problém mít i nadále, kontaktujte prosím podporu Azure prostřednictvím Azure Portal. 
+
 
 
 ## <a name="next-steps"></a>Další kroky

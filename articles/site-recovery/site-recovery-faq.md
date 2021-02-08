@@ -4,12 +4,12 @@ description: Tento článek popisuje oblíbené obecné otázky týkající se A
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: ca30f9ba190dfa3c7e224e47b90be4d3bc5d47ae
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 9db91a15c0ee5c982f73f36a36f12b38b969a125
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746471"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820192"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Obecné dotazy ke službě Azure Site Recovery
 
@@ -39,7 +39,7 @@ Existují různé míry, které Site Recovery, aby se zajistila integrita dat. M
 Ano, Site Recovery podporuje jak vyhrazené, tak sdílené modely infrastruktury.
 
 ### <a name="for-a-service-provider-is-the-identity-of-my-tenant-shared-with-the-site-recovery-service"></a>Pro poskytovatele služeb je identitou mého tenanta sdíleného pomocí služby Site Recovery?
-Ne. Identita tenanta zůstává anonymní. Vaši klienti nepotřebují přístup k portálu Site Recovery. Pouze správce poskytovatele služeb pracuje s portálem.
+No. Identita tenanta zůstává anonymní. Vaši klienti nepotřebují přístup k portálu Site Recovery. Pouze správce poskytovatele služeb pracuje s portálem.
 
 ### <a name="will-tenant-application-data-ever-go-to-azure"></a>Budou data aplikace tenanta někdy přejít do Azure?
 Při replikaci mezi lokalitami ve vlastnictví poskytovatele služeb se data aplikací do Azure nikdy nepřenášejí. Data se šifrují během přenosu a replikují se přímo mezi lokalitami poskytovatele služeb.
@@ -47,7 +47,7 @@ Při replikaci mezi lokalitami ve vlastnictví poskytovatele služeb se data apl
 Pokud replikujete do Azure, data aplikací se posílají do úložiště Azure, ale nikoli do služby Site Recovery. Data se šifrují během přenosu a zůstávají šifrovaná v Azure.
 
 ### <a name="will-my-tenants-receive-a-bill-for-any-azure-services"></a>Obdrží mí klienti fakturu za služby Azure?
-Ne. Azure má fakturační vztah přímo s poskytovatelem služeb. Za generování konkrétních faktur pro své klienty má plnou odpovědnost poskytovatel služeb.
+No. Azure má fakturační vztah přímo s poskytovatelem služeb. Za generování konkrétních faktur pro své klienty má plnou odpovědnost poskytovatel služeb.
 
 ### <a name="if-im-replicating-to-azure-do-we-need-to-run-virtual-machines-in-azure-at-all-times"></a>Pokud replikuji do Azure, potřebujeme mít virtuální počítače v Azure spuštěné nepřetržitě?
 Ne, data se replikují do úložiště Azure v rámci vašeho předplatného. Když provedete testovací převzetí služeb při selhání (rutina pro zotavení po havárii) nebo skutečné převzetí, Site Recovery ve vašem předplatném automaticky vytvoří virtuální počítače.
@@ -188,7 +188,7 @@ Ano, [ExpressRoute se dá použít](concepts-expressroute-with-site-recovery.md)
 
 ### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-or-managed-disk-do-i-need"></a>Pokud repliku do Azure, jaký druh účtu úložiště nebo spravovaný disk potřebuji?
 
-Potřebujete úložiště LRS nebo GRS. Doporučujeme účet úložiště GRS, aby byla zajištěna odolnost dat v případě oblastního výpadku nebo pokud není možné obnovit primární oblast. Účet musí být ve stejné oblasti jako trezor Služeb zotavení. Služba Premium Storage je podporovaná pro virtuální počítač VMware, virtuální počítač Hyper-V a replikaci fyzického serveru při nasazení Site Recovery v Azure Portal. Spravované disky podporují jenom LRS.
+Azure Site Recovery nepodporuje používání účtů úložiště jako cílového úložiště. Doporučuje se místo toho jako cílové úložiště pro vaše počítače používat spravované disky. Spravované disky podporují jenom LRS typ pro odolnost dat.
 
 ### <a name="how-often-can-i-replicate-data"></a>Jak často je možné replikovat data?
 * **Hyper-V:** Virtuální počítače Hyper-V se dají replikovat každých 30 sekund (s výjimkou prémiového úložiště), 5 minut nebo 15 minut.

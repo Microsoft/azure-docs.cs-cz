@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 621c5e7b0061ccd76fd0109552107915b943511f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 06d6352f018238318c3bb4625ae86a2974f14569
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89653580"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820159"
 ---
 # <a name="what-is-azure-resource-mover"></a>Co je to Azure Resource stěhovací?
 
@@ -29,8 +29,6 @@ Prostředky můžete přesunout do různých oblastí Azure:
 - **Reakce na požadavky na nasazení**: přesunout prostředky, které byly nasazeny chybně, nebo je přesunout v reakci na kapacitu kapacity.
 - **Reakce na vyřazení z provozu**: Přesunutí prostředků z důvodu vyřazení oblasti z provozu.
 
-> [!IMPORTANT]
-> Prostředek Azure Resource stěhovací je momentálně ve verzi Public Preview.
 
 ## <a name="why-use-resource-mover"></a>Proč používat Resource stěhovací?
 
@@ -62,6 +60,7 @@ Prostředky můžete přesouvat mezi oblastmi v centru pro dodávání prostřed
 Pomocí nástroje Resource Centre můžete aktuálně přesouvat následující prostředky v různých oblastech:
 
 - Virtuální počítače Azure a přidružené disky
+- Šifrované virtuální počítače Azure a přidružené disky. To zahrnuje virtuální počítače s povolenou službou Azure Disk Encryption a virtuální počítače Azure s použitím výchozího šifrování na straně serveru (s klíči spravovanými platformou a s klíči spravovanými zákazníky).
 - Síťové karty
 - Skupiny dostupnosti 
 - Virtuální sítě Azure 

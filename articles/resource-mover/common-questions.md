@@ -5,25 +5,18 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/04/2021
 ms.author: raynew
-ms.openlocfilehash: ab4b8f5a691bc8e4091e9f3f01b709391deeddb0
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: c586832386f3bf6419d8af94ad23662c6801b1ae
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550704"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820870"
 ---
 # <a name="common-questions"></a>Časté dotazy
 
 Tento článek obsahuje odpovědi na běžné otázky týkající se služby [Azure Resource stěhovací](overview.md).
-
-## <a name="general"></a>Obecné
-
-### <a name="is-resource-mover-generally-available"></a>Je stěhovací společnosti všeobecně dostupná?
-
-Resource stěhovací je momentálně ve verzi Public Preview. Produkční úlohy se podporují.
-
 
 
 ## <a name="moving-across-regions"></a>Přesun mezi oblastmi
@@ -45,6 +38,9 @@ Pomocí nástroje Resource Centre můžete aktuálně přesouvat následující 
 - Interní a veřejné nástroje pro vyrovnávání zatížení 
 - Databáze SQL Azure a elastické fondy
 
+### <a name="can-i-move-disks-across-regions"></a>Můžu přesouvat disky mezi oblastmi?
+
+Nemůžete vybrat disky jako prostředky pro přesun mezi oblastmi. Disky se ale přesunou jako součást přesunutí virtuálního počítače.
 
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>Můžu po přesunu mezi oblastmi přesunout prostředky mezi předplatnými?
 
@@ -97,6 +93,12 @@ Předplatné se přesunulo do jiného tenanta. | Zakažte a pak povolte spravova
 ### <a name="how-can-i-do-multiple-moves-together"></a>Jak můžu provést více přesunů najednou?
 
 Podle potřeby změňte kombinace zdrojů a cílů pomocí možnosti změnit na portálu.
+
+### <a name="what-happens-when-i-remove-a-resource-from-a-list-of-move-resources"></a>Co se stane po odebrání prostředku ze seznamu přesunutí prostředků?
+
+Můžete odebrat prostředky, které jste přidali do seznamu přesunutí. Chování při odebrání prostředku ze seznamu závisí na stavu prostředku. [Přečtěte si další informace](remove-move-resources.md#vm-resource-state-after-removing).
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: a7464216649d6b482893693a1f182af5cf6e77ac
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 7cca9c627255dc0d91beb57380c9724f4b0108fc
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508969"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820451"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití Azure Private Linku k bezpečnému propojení sítí k Azure Monitoru
 
@@ -35,35 +35,41 @@ Azure Monitor obor privátních odkazů (AMPLS) spojuje soukromé koncové body 
 
 ![Diagram základní topologie prostředků](./media/private-link-security/private-link-basic-topology.png)
 
+* Privátní koncový bod ve vaší virtuální síti umožňuje IT přístup k Azure Monitor koncovým bodům prostřednictvím privátních IP adres z fondu vaší sítě namísto použití s veřejnými IP adresami těchto koncových bodů. Díky tomu můžete dál používat prostředky Azure Monitor, aniž byste museli otevřít virtuální síť, aby nevyžadovala odchozí provoz. 
+* Provoz z privátního koncového bodu do vašich prostředků Azure Monitor bude přecházet přes páteřní síť Microsoft Azure a nebude směrován do veřejných sítí. 
+* Můžete nakonfigurovat jednotlivé pracovní prostory nebo komponenty a povolit nebo odepřít příjem a dotazy z veřejných sítí. Poskytuje ochranu na úrovni prostředků, abyste mohli řídit provoz na konkrétní prostředky.
+
 > [!NOTE]
 > Jeden prostředek Azure Monitor může patřit do více AMPLSs, ale nemůžete připojit jednu virtuální síť k více než jednomu AMPLS. 
 
-### <a name="the-issue-of-dns-overrides"></a>Problém přepsání DNS
-Log Analytics a Application Insights použít pro některé ze svých služeb globální koncové body, což znamená, že obsluhuje požadavky zaměřené na libovolný pracovní prostor nebo komponentu. Application Insights například používá globální koncový bod pro ingestování protokolů a oba Application Insights i Log Analytics používají globální koncový bod pro požadavky na dotazy.
-
-Když nastavíte připojení k privátnímu propojení, vaše služba DNS se aktualizuje, aby mapovala Azure Monitor koncové body na privátní IP adresy z rozsahu IP adres vaší virtuální sítě. Tato změna přepíše všechna předchozí mapování těchto koncových bodů, což může mít smysluplné důsledky, které jsou níže uvedené. 
-
-## <a name="planning-based-on-your-network-topology"></a>Plánování na základě topologie vaší sítě
+## <a name="planning-your-private-link-setup"></a>Plánování nastavení privátního propojení
 
 Před nastavením Azure Monitor nastavení privátního propojení zvažte svoji topologii sítě a specifickou topologii směrování DNS. 
 
+### <a name="the-issue-of-dns-overrides"></a>Problém přepsání DNS
+Některé Azure Monitor služby používají globální koncové body, což znamená, že obsluhují požadavky zaměřené na libovolný pracovní prostor nebo komponentu. Několika příklady jsou koncový bod ingestování Application Insights a koncový bod dotazu obou Application Insights a Log Analytics.
+
+Když nastavíte připojení k privátnímu propojení, vaše služba DNS se aktualizuje, aby mapovala Azure Monitor koncové body na privátní IP adresy z rozsahu IP adres vaší virtuální sítě. Tato změna přepíše všechna předchozí mapování těchto koncových bodů, což může mít smysluplné důsledky, které jsou níže uvedené. 
+
 ### <a name="azure-monitor-private-link-applies-to-all-azure-monitor-resources---its-all-or-nothing"></a>Azure Monitor privátní odkaz platí pro všechny prostředky Azure Monitor – to je vše nebo nic
-Vzhledem k tomu, že některé koncové body Azure Monitor jsou globální, není možné vytvořit připojení privátního propojení pro konkrétní součást nebo pracovní prostor. Místo toho se při nastavení privátního odkazu na jednu komponentu Application Insights aktualizace záznamů DNS pro **všechny** Application Insights součásti. Jakýkoli pokus o ingestování nebo dotazování komponenty se pokusí přejít přes privátní odkaz a pravděpodobně selže. Podobně nastavení privátního odkazu na jeden pracovní prostor způsobí, že všechny Log Analytics dotazy procházejí koncovým bodem dotazu privátního propojení (ale ne žádosti ingestování, které mají koncové body specifické pro pracovní prostor).
+Vzhledem k tomu, že některé koncové body Azure Monitor jsou globální, není možné vytvořit připojení privátního propojení pro konkrétní součást nebo pracovní prostor. Místo toho se při nastavení privátního odkazu na jednu komponentu Application Insights aktualizace záznamů DNS pro **všechny** Application Insights součásti. Jakékoli pokusy o ingestování nebo dotazování komponenty procházejí přes privátní odkaz a pravděpodobně selžou. Podobně nastavení privátního odkazu na jeden pracovní prostor způsobí, že všechny Log Analytics dotazy procházejí koncovým bodem dotazu privátního propojení (ale ne žádosti ingestování, které mají koncové body specifické pro pracovní prostor).
 
 ![Diagram přepsání DNS v jedné virtuální síti](./media/private-link-security/dns-overrides-single-vnet.png)
 
 To platí nejen pro konkrétní virtuální síť, ale pro všechny virtuální sítě, které sdílejí stejný server DNS (viz [problém přepsání DNS](#the-issue-of-dns-overrides)). Například požadavek na ingestování protokolů do jakékoli Application Insights komponenty se vždycky pošle prostřednictvím trasy privátního odkazu. Součásti, které nejsou propojené s AMPLS, selžou ověřování privátních odkazů a neprojde se.
 
-**To znamená, že byste měli připojit všechny prostředky Azure Monitor ve vaší síti k privátnímu odkazu (přidat je do AMPLS) nebo žádný z nich.**
+> [!NOTE]
+> K uzavření: Když nastavíte připojení privátního propojení k jednomu prostředku, vztahuje se na všechny prostředky Azure Monitor v síti – to vše nebo nic. To znamená, že byste měli přidat všechny Azure Monitor prostředky do vaší sítě k vašemu AMPLS nebo žádné z nich.
 
 ### <a name="azure-monitor-private-link-applies-to-your-entire-network"></a>Azure Monitor privátní odkaz platí pro celou síť.
-Některé sítě se skládají z několika virtuální sítě. Pokud tato virtuální sítě používají stejný server DNS, přepíše mapování DNS mezi sebou a může také přerušit komunikaci mezi sebou pomocí Azure Monitor (podívejte [se na problémy s přepsáními DNS](#the-issue-of-dns-overrides)). V konečném případě bude moci komunikovat s Azure Monitor pouze poslední síť VNet, protože služba DNS namapuje Azure Monitor koncových bodů na privátní IP adresy z tohoto virtuální sítě rozsahu (které nemusí být dosažitelné z jiných virtuální sítě).
+Některé sítě se skládají z několika virtuální sítě. Pokud virtuální sítě používá stejný server DNS, přepíše mapování DNS mezi sebou a může také přerušit komunikaci mezi sebou pomocí Azure Monitor (podívejte [se na problémy s přepsáními DNS](#the-issue-of-dns-overrides)). V konečném případě bude moci komunikovat s Azure Monitor pouze poslední síť VNet, protože služba DNS namapuje Azure Monitor koncových bodů na privátní IP adresy z tohoto virtuální sítě rozsahu (které nemusí být dosažitelné z jiných virtuální sítě).
 
 ![Diagram přepsání DNS ve více virtuální sítě](./media/private-link-security/dns-overrides-multiple-vnets.png)
 
 Ve výše uvedeném diagramu se virtuální síť 10.0.1. x nejdřív připojí k AMPLS1 a mapuje Azure Monitor globální koncové body na IP adresy z jejího rozsahu. Později se virtuální síť 10.0.2. x připojí k AMPLS2 a přepíše mapování DNS *stejných globálních koncových bodů* s IP adresami z rozsahu. Vzhledem k tomu, že tyto virtuální sítě nejsou partnerského vztahu, první virtuální síť teď nedokáže dosáhnout těchto koncových bodů.
 
-**Virtuální sítě, které používají stejný server DNS, by měly být partnerského vztahu – buď přímo, nebo prostřednictvím virtuální sítě rozbočovače. Virtuální sítě, které nemají partnerský vztah, by měly také používat jiný server DNS, servery DNS pro přeposílání nebo jiné mechanismy, aby se předešlo kolizování DNS.**
+> [!NOTE]
+> Závěr: AMPLS Setup má vliv na všechny sítě sdílející stejné zóny DNS. Aby se předešlo přepisování mapování koncových bodů DNS, je nejlepší nastavit jeden privátní koncový bod v partnerské síti (například virtuální síť rozbočovače) nebo oddělit sítě na úrovni DNS (například Foe pomocí DNS pro přeposílání nebo samostatné servery DNS).
 
 ### <a name="hub-spoke-networks"></a>Sítě s rozbočovačem a paprsky
 Topologie centra s paprsky se můžou vyhnout problémům s přepsáními DNS nastavením privátního odkazu v centrální virtuální síti (hlavní), namísto nastavení privátního propojení pro každou virtuální síť zvlášť. Tato instalace dává smysl zvláště tehdy, když se sdílejí prostředky Azure Monitor používané paprskem virtuální sítě. 
@@ -71,12 +77,12 @@ Topologie centra s paprsky se můžou vyhnout problémům s přepsáními DNS na
 ![Střed a-paprsek – jednoduché – PE](./media/private-link-security/hub-and-spoke-with-single-private-endpoint.png)
 
 > [!NOTE]
-> Můžete záměrně chtít vytvořit samostatné soukromé odkazy pro virtuální sítě paprsků, například umožníte každé virtuální síti přístup k omezené sadě prostředků monitorování. V takových případech můžete pro každou virtuální síť vytvořit vyhrazený soukromý koncový bod a AMPLS, ale musíte taky ověřit, jestli nesdílejí stejný server DNS, aby se předešlo přepsání DNS.
+> Můžete záměrně chtít vytvořit samostatné soukromé odkazy pro virtuální sítě paprsků, například umožníte každé virtuální síti přístup k omezené sadě prostředků monitorování. V takových případech můžete pro každou virtuální síť vytvořit vyhrazený soukromý koncový bod a AMPLS, ale musíte taky ověřit, jestli nesdílejí stejné zóny DNS, aby se předešlo přepsání DNS.
 
 
 ### <a name="consider-limits"></a>Zvážit omezení
 
-Jak je uvedeno v [omezeních a omezeních](#restrictions-and-limitations), objekt AMPLS má několik omezení znázorněných v níže uvedené topologii:
+Jak je uvedeno v [omezeních a omezeních](#restrictions-and-limitations), objekt AMPLS má několik omezení zobrazených v následující topologii:
 * Každá virtuální síť se připojuje pouze k **1** AMPLS objektu.
 * AMPLS B je připojen k soukromým koncovým bodům dvou virtuální sítě (VNet2 a síti vnet3) pomocí 2 z 10 možných připojení privátního koncového bodu.
 * AMPLS se připojí ke dvěma pracovním prostorům a jedné součásti Application Insights pomocí 3 z 50 Azure Monitor dostupných připojení prostředků.
@@ -122,7 +128,7 @@ Teď, když máte prostředky připojené k AMPLS, vytvořte privátní koncový
 
     ![Snímek obrazovky uživatelského rozhraní připojení privátního koncového bodu](./media/private-link-security/ampls-select-private-endpoint-connect-3.png)
 
-2. Vyberte předplatné, skupinu prostředků a název koncového bodu a oblast, ve které by měla být aktivní. Region musí být stejná oblast jako virtuální síť, ke které se připojíte.
+2. Vyberte předplatné, skupinu prostředků a název koncového bodu a oblast, ve které by měla být aktivní. Oblast musí být stejná jako virtuální síť, ke které ji připojujete.
 
 3. Vyberte **Další: prostředek**. 
 
@@ -162,7 +168,7 @@ Přejděte na Azure Portal. V nabídce prostředku Log Analytics pracovního pro
 ![Izolace sítě LA](./media/private-link-security/ampls-log-analytics-lan-network-isolation-6.png)
 
 ### <a name="connected-azure-monitor-private-link-scopes"></a>Připojené Azure Monitor obory privátního propojení
-Na této obrazovce se zobrazí všechny rozsahy připojené k tomuto pracovnímu prostoru. Připojení k oborům (AMPLSs) umožňuje přístup k tomuto pracovnímu prostoru ze sítě z virtuální sítě připojené ke každému AMPLS. Vytvoření připojení prostřednictvím tohoto umístění má stejný účinek jako nastavení v oboru, stejně jako v souvislosti s [připojením Azure Monitorch prostředků](#connect-azure-monitor-resources). Chcete-li přidat nové připojení, vyberte možnost **Přidat** a vyberte Azure monitor obor privátních odkazů. Pokud ho chcete připojit, vyberte **použít** . Všimněte si, že se pracovní prostor může připojit k 5 AMPLS objektům, jak je uvedeno v [omezeních a omezeních](#restrictions-and-limitations). 
+Na této obrazovce se zobrazí všechny rozsahy připojené k pracovnímu prostoru. Připojení k oborům (AMPLSs) umožňuje přístup k tomuto pracovnímu prostoru ze sítě z virtuální sítě připojené ke každému AMPLS. Vytvoření připojení prostřednictvím tohoto umístění má stejný účinek jako nastavení v oboru, stejně jako v souvislosti s [připojením Azure Monitorch prostředků](#connect-azure-monitor-resources). Chcete-li přidat nové připojení, vyberte možnost **Přidat** a vyberte Azure monitor obor privátních odkazů. Pokud ho chcete připojit, vyberte **použít** . Všimněte si, že se pracovní prostor může připojit k 5 AMPLS objektům, jak je uvedeno v [omezeních a omezeních](#restrictions-and-limitations). 
 
 ### <a name="access-from-outside-of-private-links-scopes"></a>Přístup mimo rozsahy privátních odkazů
 Nastavení v dolní části této stránky řídí přístup z veřejných sítí, což znamená sítě nepřipojené přes výše uvedené obory. Nastavení **povoluje přístup k veřejné síti pro** ingestování **bez** blokování přijímání protokolů z počítačů mimo připojené obory. Nastavení **povoluje přístup k veřejné síti pro dotazy** **bez** dotazů na bloky přicházející z počítačů mimo rozsah. Který zahrnuje dotazy spouštěné prostřednictvím sešitů, řídicích panelů, prostředí klienta založeného na rozhraní API, přehledy Azure Portal a dalších možností. Prostředí spuštěné mimo Azure Portal a dotaz Log Analytics data musí být spuštěná také v rámci virtuální sítě s privátním propojením.
@@ -194,18 +200,37 @@ Přejděte na Azure Portal. V prostředku součásti Azure Monitor Application I
 
 Nejdřív můžete připojit tento prostředek Application Insights, abyste Azure Monitor obory privátních odkazů, ke kterým máte přístup. Vyberte **Přidat** a vyberte **Azure monitor obor privátních odkazů**. Pokud ho chcete připojit, vyberte použít. Na této obrazovce se zobrazí všechny připojené obory. Díky tomu může toto připojení umožňovat přístup k této komponentě v síťovém provozu propojených virtuálních sítí a má stejný účinek jako připojení k oboru, protože jsme provedli [připojení Azure Monitorch prostředků](#connect-azure-monitor-resources). 
 
-Za druhé můžete řídit, jak se tento prostředek dá oslovit mimo rozsahy privátních vazeb, které jsou uvedené dřív. Pokud nastavíte možnost **povolí přístup k veřejné síti pro** ingestování na **ne**, počítače nebo sady SDK mimo připojené obory nemůžou do této součásti nahrávat data. Pokud nastavíte možnost **povolí přístup k veřejné síti pro dotazy** na **ne**, počítače mimo rozsah nebudou mít přístup k datům v tomto prostředku Application Insights. Tato data zahrnují přístup k protokolům APM, metrikám a živému streamu metrik a také k prostředí postaveným nahoře, jako jsou sešity, řídicí panely, prostředí klientů založené na rozhraní API, přehledy v Azure Portal a další. 
+Za druhé můžete řídit, jak se tento prostředek dá oslovit mimo obory privátních odkazů (AMPLS) uvedené dříve. Pokud nastavíte možnost **umožní přístup k veřejné síti pro** ingestování na **ne**, počítače nebo sady SDK mimo připojené obory nemůžou do této součásti nahrávat data. Pokud nastavíte možnost **povolí přístup k veřejné síti pro dotazy** na **ne**, počítače mimo rozsah nebudou mít přístup k datům v tomto Application Insights prostředku. Tato data zahrnují přístup k protokolům APM, metrikám a živému streamu metrik a také k prostředí postaveným nahoře, jako jsou sešity, řídicí panely, prostředí klientů založené na rozhraní API, přehledy v Azure Portal a další. 
 
-Všimněte si, že prostředí pro využívání mimo portál musí také běžet v rámci veřejné virtuální sítě, která obsahuje monitorované úlohy. 
+> [!NOTE]
+> V prostředích, které není na portálu, se musí také spouštět na virtuální síti propojené s privátní sítí, která obsahuje monitorovaná zatížení.
 
 K privátnímu odkazu budete muset přidat prostředky hostující monitorovaná zatížení. Zde najdete [dokumentaci](../../app-service/networking/private-endpoint.md) , jak to udělat App Services.
 
-Přístup tímto způsobem se omezuje jenom na data v prostředku Application Insights. Změny konfigurace, včetně zapnutí nebo vypnutí těchto nastavení přístupu, se spravují pomocí Azure Resource Manager. Místo toho omezte přístup k Správce prostředků pomocí příslušných rolí, oprávnění, síťových ovládacích prvků a auditování. Další informace najdete v tématu [Azure monitor role, oprávnění a zabezpečení](roles-permissions-security.md).
+Přístup tímto způsobem se omezuje jenom na data v prostředku Application Insights. Změny konfigurace, včetně zapnutí nebo vypnutí těchto nastavení přístupu, se však spravují pomocí Azure Resource Manager. Proto byste měli omezit přístup k Správce prostředků pomocí příslušných rolí, oprávnění, síťových ovládacích prvků a auditování. Další informace najdete v tématu [Azure monitor role, oprávnění a zabezpečení](roles-permissions-security.md).
 
 > [!NOTE]
 > Aby bylo možné plně zabezpečit Application Insights na základě pracovních prostorů, musíte uzamknout přístup k prostředkům Application Insights a také k příslušnému pracovnímu prostoru Log Analytics.
 >
 > Diagnostika na úrovni kódu (Profiler/ladicí program) vyžaduje poskytnutí vlastního účtu úložiště pro podporu privátního odkazu. Zde najdete [dokumentaci](../app/profiler-bring-your-own-storage.md) , jak to provést.
+
+### <a name="handling-the-all-or-nothing-nature-of-private-links"></a>Zpracování libovolné povahy privátních odkazů
+Jak je vysvětleno v tématu [Plánování nastavení privátního propojení](#planning-your-private-link-setup), nastavení privátního propojení i pro jeden prostředek má vliv na všechny prostředky Azure monitor v těchto sítích a v dalších sítích, které sdílejí stejné DNS. To může mít za náročný proces připojování. Vezměte v úvahu následující možnosti:
+
+* Vše v rámci – nejjednodušší a nejbezpečnější přístup je přidání všech Application Insights komponent do AMPLS. U součástí, ke kterým chcete i nadále přistupovat z jiných sítí, ponechte příznaky "" možnost "nastavit veřejný internetový přístup pro ingestování/dotaz" nastavené na Ano (výchozí).
+* Izolace sítí – Pokud jste (nebo je můžete v souladu s) pomocí paprsku virtuální sítě, postupujte podle pokynů v [síťové topologii centra – paprsky v Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke). Pak nastavte samostatné nastavení privátního propojení v příslušném paprsku virtuální sítě. Nezapomeňte také oddělit zóny DNS, protože sdílení zón DNS s jinými sítěmi paprsků způsobí [přepsání DNS](#the-issue-of-dns-overrides).
+* Použití vlastních zón DNS pro konkrétní aplikace – toto řešení umožňuje přístup k výběru Application Insights komponent prostřednictvím privátního propojení a udržování všech ostatních přenosů přes veřejné trasy.
+    - Nastavte si [vlastní privátní ZÓNU DNS](https://docs.microsoft.com/azure/private-link/private-endpoint-dns)a dejte jí jedinečný název, třeba Internal.monitor.Azure.com.
+    - Vytvořte AMPLS a soukromý koncový bod **a vyberte** neautomatickou integraci s PRIVÁTNÍm DNS.
+    - Přejít na privátní koncový bod – > konfiguraci DNS a zkontrolovat navrhované mapování plně kvalifikovaných názvů domény podobným tomuto: ![ snímek obrazovky navrhované konfigurace zóny DNS](./media/private-link-security/private-endpoint-fqdns.png)
+    - Zvolte Přidání konfigurace a výběr zóny internal.monitor.azure.com, kterou jste právě vytvořili.
+    - Přidat záznamy pro výše ![ nakonfigurované zóny DNS z výše uvedeného snímku obrazovky](./media/private-link-security/private-endpoint-global-dns-zone.png)
+    - Přejít na komponentu Application Insights a zkopírovat její [připojovací řetězec](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string).
+    - Aplikace nebo skripty, které chtějí volat tuto komponentu přes privátní odkaz, by měly používat připojovací řetězec s EndpointSuffix = Internal. monitor. Azure. com.
+* Mapování koncových bodů prostřednictvím souborů hostitelů místo DNS – k přístupu privátního odkazu jenom z konkrétního počítače nebo virtuálního počítače v síti:
+    - Nastavte AMPLS a privátní koncový bod **a vyberte** neautomatickou integraci s PRIVÁTNÍm DNS. 
+    - Konfigurace výše uvedených záznamů v počítači, na kterém je aplikace spuštěná, v souboru Hosts
+
 
 ## <a name="use-apis-and-command-line"></a>Použití rozhraní API a příkazového řádku
 
@@ -231,11 +256,11 @@ Objekt AMPLS má několik omezení, které byste měli vzít v úvahu při plán
 * Objekt AMPLS se může připojit k 50 Azure Monitor prostředkům.
 * Objekt AMPLS se může připojit k 10 soukromým koncovým bodům.
 
-Přečtěte si, jak [zvážit omezení](#consider-limits) pro hlubší přezkoumání těchto limitů a jak naplánovat nastavení privátního propojení odpovídajícím způsobem.
+Podrobnější přezkoumání těchto omezení najdete v tématu [zvážení omezení](#consider-limits) .
 
 ### <a name="agents"></a>Agenti
 
-V privátních sítích se musí používat nejnovější verze agentů Windows a Linux, aby bylo možné zajistit zabezpečenou příjem dat pro Log Analytics pracovních prostorů. Starší verze nemůžou nahrávat data monitorování v privátní síti.
+Nejnovější verze agentů systému Windows a Linux je nutné použít k podpoře zabezpečení příjmu Log Analytics pracovních prostorů. Starší verze nemůžou nahrávat data monitorování přes soukromou síť.
 
 **Agent Log Analytics pro Windows**
 
@@ -254,11 +279,12 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 Chcete-li použít Azure Monitor portálu, jako je Application Insights a Log Analytics, je nutné, aby byla rozšíření Azure Portal a Azure Monitor dostupná v privátních sítích. Do skupiny zabezpečení sítě přidejte [značky služby](../../firewall/service-tags.md) **azureactivedirectory selhala**, **AzureResourceManager**, **AzureFrontDoor. FirstParty** a **AzureFrontDoor. front-endu** .
 
+### <a name="querying-data"></a>Dotazování na data
+[ `externaldata` Operátor](https://docs.microsoft.com/azure/data-explorer/kusto/query/externaldata-operator?pivots=azuremonitor) se nepodporuje prostřednictvím privátního propojení, protože čte data z účtů úložiště, ale nezaručuje, že se úložiště bude získávat soukromě.
+
 ### <a name="programmatic-access"></a>Programový přístup
 
 Pokud chcete použít REST API, [CLI](/cli/azure/monitor) nebo PowerShell s Azure monitor v privátních sítích, přidejte do brány firewall [značky služby](../../virtual-network/service-tags-overview.md)  **azureactivedirectory selhala** a **AzureResourceManager** .
-
-Přidání těchto značek vám umožní provádět akce, jako je například dotazování dat protokolu, vytváření a Správa Log Analyticsch pracovních prostorů a komponent AI.
 
 ### <a name="application-insights-sdk-downloads-from-a-content-delivery-network"></a>Stažení sady SDK Application Insights ze sítě pro doručování obsahu
 

@@ -1,21 +1,21 @@
 ---
-title: Jak nasadit šablonu aplikace Azure IoT Central video Analytics – objekt a pohyb
-description: Tato příručka shrnuje postup nasazení aplikace Azure IoT Central pomocí šablony aplikace pro video Analytics – objekt a detekce pohybu.
+title: 'Kurz: nasazení šablony aplikace video Analytics – objekt a pohyb v Azure IoT Central'
+description: Kurz – Tento průvodce shrnuje postup nasazení aplikace Azure IoT Central pomocí šablony aplikace pro video Analytics – objekt a detekce pohybu.
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: how-to
+ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: decfa7020be7778e8ca64a9fb0cb4aac1657da27
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: abeae674cef8f13a092b53bde6040ad853bd0cca
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873332"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820360"
 ---
-# <a name="how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Postup nasazení IoT Central aplikace pomocí šablony video Analytics – objekt a detekce pohybu
+# <a name="tutorial-how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Kurz: jak nasadit aplikaci IoT Central pomocí šablony aplikace pro video Analytics – objekt a detekce pohybu
 
 Přehled klíčových komponent aplikace *video Analytics – objekt a pohyb pohybu* najdete v tématu [Architektura aplikace analýzy objektů a pohybů](architecture-video-analytics.md).
 
@@ -45,4 +45,10 @@ Provedením následujících kroků nasadíte IoT Central aplikaci pomocí šabl
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď máte přehled o tom, jak nasadit a používat šablonu aplikace video Analytics, přečtěte si téma [Vytvoření aplikace video Analytics v azure IoT Central (Yolo V3)](tutorial-video-analytics-create-app-yolo-v3.md) nebo [vytvoření video analytics v Azure IoT Central (OpenVINO &trade; )](tutorial-video-analytics-create-app-openvino.md) , abyste mohli začít.
+Nyní máte přehled o krocích nasazení a použití šablony aplikace video Analytics, viz
+
+> [!div class="nextstepaction"]
+> [Vytvoření aplikace video Analytics v Azure IoT Central (Yolo V3)](tutorial-video-analytics-create-app-yolo-v3.md) nebo
+
+> [!div class="nextstepaction"]
+> Pokud chcete začít, [Vytvořte video Analytics v Azure IoT Central (OpenVINO &trade; )](tutorial-video-analytics-create-app-openvino.md) .

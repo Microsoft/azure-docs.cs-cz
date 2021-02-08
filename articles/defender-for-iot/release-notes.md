@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/07/2021
+ms.date: 02/08/2021
 ms.author: shhazam
-ms.openlocfilehash: a8f4b96b27eb09443c2644fd63a8783faaa610e4
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: f15c4ed6bb7da5cd33eca96c171bfada68092b35
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809503"
+ms.locfileid: "99820666"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>Co je nového v Azure Defenderu pro IoT?
 
@@ -27,13 +27,13 @@ Tento článek obsahuje seznam nových funkcí a vylepšení funkcí pro program
 Vyznačené funkce jsou ve verzi PREVIEW. [Doplňkové podmínky Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zahrnují další právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti.
 ## <a name="february-2021"></a>Únor 2021
 
-### <a name="enhanced-custom-alert-rules"></a>Rozšířená vlastní pravidla upozornění
+### <a name="sensor---enhanced-custom-alert-rules"></a>Senzorem rozšířená vlastní pravidla výstrah
 
 Nyní můžete vytvořit vlastní pravidla upozornění na základě dne, skupiny dnů a doby, po kterou byla zjištěna síťová aktivita.  Práce s podmínkami pravidla dne a času je užitečná, například v případech, kdy je Závažnost výstrahy odvozena v době, kdy dojde k události výstrahy. Můžete například vytvořit vlastní pravidlo, které aktivuje výstrahu s vysokou závažností při zjištění síťové aktivity na víkendu nebo večer.
 
 Tato funkce je k dispozici na senzoru s vydáním verze 10,1.
 
-### <a name="export-alerts-from-on-premises-management-console"></a>Exportovat výstrahy z místní konzoly pro správu
+### <a name="on-premises-management-console---export-alerts"></a>Místní Konzola pro správu – výstrahy exportu
 
 Informace o výstrahách se teď dají exportovat do souboru. CSV z místní konzoly pro správu. Můžete exportovat informace o všech zjištěných výstrahách nebo informace o exportu na základě filtrovaného zobrazení.
 
@@ -48,7 +48,7 @@ K dispozici je nový modul pro sestavovatele zařízení. Modul, který je ozna�
 - **Stav Security Management** – proaktivně monitoruje stav zabezpečení vašich zařízení IoT.
 - **Průběžné zjišťování hrozeb IoT/ot v reálném čase – detekce** hrozeb, jako je botnety, pokusy o útok hrubou silou, kryptografická dolování hlásí a podezřelá síťová aktivita
 
-Zastaralá dokumentace k modulu zabezpečení bude přesunuta do klasické složky.
+Vystaralá dokumentace k modulu zabezpečení bude přesunuta do *řešení založeného na agentech pro sestavovatele zařízení>klasických* složkách.
 
 Tato sada funkcí je dostupná ve verzi Public Preview Cloud.
 

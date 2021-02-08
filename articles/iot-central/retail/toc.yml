@@ -5,6 +5,7 @@
     - name: Sestavování řešení pro maloobchod s využitím služby Azure IoT Central
       href: overview-iot-central-retail.md
 - name: Kurzy
+  expanded: true
   items:
     - name: Kontrola analýz v obchodech
       items:

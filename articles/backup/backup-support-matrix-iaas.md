@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení při zálohování v
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3d1238bffd785a47b6e0ffab70366a15dfff0ef3
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 1752e6687cd4dda72ee330c489a4642ae32f8219
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99218107"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820768"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 
@@ -81,7 +81,7 @@ Pro zálohování virtuálních počítačů Azure Azure Backup podporuje seznam
 - Azure Backup nepodporuje 32bitové operační systémy.
 - Další vlastní distribuce systému Linux mohou fungovat, pokud je ve virtuálním počítači k dispozici [Agent virtuálního počítače Azure pro Linux](../virtual-machines/extensions/agent-linux.md) , a pokud je podpora jazyka Python podporovaná.
 - Azure Backup nepodporuje virtuální počítač se systémem Linux nakonfigurovaný na proxy serveru, pokud nemá nainstalovanou Python verze 2,7.
-- Azure Backup nepodporuje zálohování souborů NFS, které jsou připojené z úložiště, nebo z jakéhokoli jiného serveru NFS na počítače se systémem Linux nebo Windows. Zálohuje jenom disky, které jsou místně připojené k virtuálnímu počítači.
+- Azure Backup nepodporuje zálohování souborů NFS, které jsou připojené z úložiště, nebo z jakéhokoli jiného serveru NFS na počítače se systémem Linux nebo Windows. Zálohuje jenom disky místně připojené k virtuálnímu počítači.
 
 ## <a name="backup-frequency-and-retention"></a>Četnost a uchovávání záloh
 
@@ -102,7 +102,7 @@ Body obnovení na disku DPM/MABS | 64 pro souborové servery a 448 pro aplikačn
 --- | ---
 **Vytvoření nového virtuálního počítače** | Rychle vytvoří a spustí základní virtuální počítač z bodu obnovení.<br/><br/> Můžete zadat název virtuálního počítače, vybrat skupinu prostředků a virtuální síť (VNet), do které se bude umístit, a zadat účet úložiště pro obnovený virtuální počítač. Nový virtuální počítač se musí vytvořit ve stejné oblasti jako zdrojový virtuální počítač.
 **Obnovení disku** | Obnoví disk virtuálního počítače, který se pak dá použít k vytvoření nového virtuálního počítače.<br/><br/> Azure Backup poskytuje šablonu, která vám pomůže s přizpůsobením a vytvořením virtuálního počítače. <br/><br> Úloha obnovení vygeneruje šablonu, kterou si můžete stáhnout a použít k určení vlastního nastavení virtuálního počítače, a vytvořit virtuální počítač.<br/><br/> Disky se zkopírují do vámi určené skupiny prostředků.<br/><br/> Případně můžete disk připojit k existujícímu virtuálnímu počítači nebo vytvořit nový virtuální počítač pomocí prostředí PowerShell.<br/><br/> Tato možnost je užitečná, pokud chcete přizpůsobit virtuální počítač, přidat nastavení konfigurace, která v době zálohování neexistovala, nebo přidat nastavení, která se musí nakonfigurovat pomocí šablony nebo PowerShellu.
-**Nahrazení existujícího** | Disk můžete obnovit a použít ho k nahrazení disku na stávajícím virtuálním počítači.<br/><br/> Aktuální virtuální počítač musí existovat. Pokud byl odstraněn, nelze tuto možnost použít.<br/><br/> Před nahrazením disku Azure Backup pořizuje stávající virtuální počítač a uloží ho do pracovního umístění, které zadáte. Existující disky připojené k virtuálnímu počítači se nahradí vybranými body obnovení.<br/><br/> Snímek se zkopíruje do trezoru a zachová se podle zásad uchovávání informací. <br/><br/> Po operaci nahradit disk se původní disk zachová ve skupině prostředků. Pokud nepotřebujete, můžete původní disky odstranit ručně. <br/><br/>Nahradit existující se podporuje pro nešifrované spravované virtuální počítače a pro virtuální počítače [vytvořené pomocí vlastních imagí](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/). Pro nespravované disky a [zobecněné virtuální](../virtual-machines/windows/capture-image-resource.md)počítače se nepodporuje.<br/><br/> Pokud má bod obnovení více nebo méně disků než aktuální virtuální počítač, bude počet disků v bodu obnovení odpovídat pouze konfiguraci virtuálního počítače.<br><br> Nahradit stávající se podporuje taky pro virtuální počítače s propojenými prostředky, jako je například spravovaná identita a [Key Vault](../key-vault/general/overview.md) [přiřazená uživatelem](../active-directory/managed-identities-azure-resources/overview.md) .
+**Nahrazení existujícího** | Disk můžete obnovit a použít ho k nahrazení disku na stávajícím virtuálním počítači.<br/><br/> Aktuální virtuální počítač musí existovat. Pokud byl odstraněn, nelze tuto možnost použít.<br/><br/> Před nahrazením disku Azure Backup pořizuje stávající virtuální počítač a uloží ho do pracovního umístění, které zadáte. Existující disky připojené k virtuálnímu počítači se nahradí vybranými body obnovení.<br/><br/> Snímek se zkopíruje do trezoru a zachová se podle zásad uchovávání informací. <br/><br/> Po operaci nahradit disk se původní disk zachová ve skupině prostředků. Pokud nepotřebujete, můžete původní disky odstranit ručně. <br/><br/>Nahradit existující se podporuje pro nešifrované spravované virtuální počítače a pro virtuální počítače [vytvořené pomocí vlastních imagí](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/). Nepodporuje se u nespravovaných disků a virtuálních počítačů, klasických virtuálních počítačů a [zobecněných virtuálních počítačů](../virtual-machines/windows/capture-image-resource.md).<br/><br/> Pokud má bod obnovení více nebo méně disků než aktuální virtuální počítač, bude počet disků v bodu obnovení odpovídat pouze konfiguraci virtuálního počítače.<br><br> Nahradit stávající se podporuje taky pro virtuální počítače s propojenými prostředky, jako je například spravovaná identita a [Key Vault](../key-vault/general/overview.md) [přiřazená uživatelem](../active-directory/managed-identities-azure-resources/overview.md) .
 **Mezi oblastmi (sekundární oblast)** | Obnovení mezi oblastmi se dá použít k obnovení virtuálních počítačů Azure v sekundární oblasti, která je [spárované v oblasti Azure](../best-practices-availability-paired-regions.md#what-are-paired-regions).<br><br> Pokud se zálohování provádí v sekundární oblasti, můžete obnovit všechny virtuální počítače Azure pro vybraný bod obnovení.<br><br> Tato funkce je k dispozici pro následující možnosti:<br> <li> [Vytvořit virtuální počítač](./backup-azure-arm-restore-vms.md#create-a-vm) <br> <li> [Obnovit disky](./backup-azure-arm-restore-vms.md#restore-disks) <br><br> Momentálně nepodporujeme možnost [nahradit existující disky](./backup-azure-arm-restore-vms.md#replace-existing-disks) .<br><br> Oprávnění<br> Operaci obnovení v sekundární oblasti můžou provádět správci zálohování a správci aplikací.
 
 ## <a name="support-for-file-level-restore"></a>Podpora pro obnovení na úrovni souborů
@@ -145,12 +145,12 @@ Zálohování virtuálních počítačů, které se nasazují z vlastní image (
 Zálohování virtuálních počítačů, které se migrují do Azure| Podporuje se.<br/><br/> Pokud chcete zálohovat virtuální počítač, musí být na migrovaném počítači nainstalovaný agent virtuálního počítače.
 Zálohování konzistence s více virtuálními počítači | Azure Backup neposkytuje konzistenci dat a aplikací napříč více virtuálními počítači.
 Zálohování s [nastavením diagnostiky](../azure-monitor/platform/platform-logs-overview.md)  | Neplatné. <br/><br/> Pokud je obnovení virtuálního počítače Azure s diagnostickým nastavením aktivované pomocí možnosti [vytvořit novou](backup-azure-arm-restore-vms.md#create-a-vm) , obnovení se nepovede.
-Obnovení virtuálních počítačů připojených k zóně | Podporováno (pro virtuální počítač, který je zálohovaný po lednu 2019 a kde jsou dostupné [zóny dostupnosti](https://azure.microsoft.com/global-infrastructure/availability-zones/) ).<br/><br/>V současné době podporujeme obnovení do stejné zóny, která je připnuté na virtuální počítače. Pokud ale zóna není k dispozici kvůli výpadku, obnovení se nezdaří.
+Obnovení virtuálních počítačů připojených k zóně | Podporováno (pro virtuální počítač, který je zálohovaný po lednu 2019 a kde jsou dostupné [zóny dostupnosti](https://azure.microsoft.com/global-infrastructure/availability-zones/) ).<br/><br/>V současné době podporujeme obnovení do stejné zóny, která je připnuté na virtuální počítače. Pokud však zóna není k dispozici kvůli výpadku, obnovení se nezdaří.
 Virtuální počítače s Gen2 | Podporováno <br> Azure Backup podporuje zálohování a obnovení [virtuálních počítačů s Gen2](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/). Když se tyto virtuální počítače obnoví z bodu obnovení, obnoví se jako [virtuální počítače Gen2](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/).
 Zálohování virtuálních počítačů Azure s zámky | Nepodporované pro nespravované virtuální počítače. <br><br> Podporováno pro spravované virtuální počítače.
 [Spotové virtuální počítače](../virtual-machines/spot-vms.md) | Neplatné. Azure Backup obnoví virtuální počítače na místě jako běžné virtuální počítače Azure.
 [Vyhrazený hostitel Azure](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts) | Podporováno
-Konfigurace prostorů úložiště Windows na samostatných virtuálních počítačích Azure | Podporováno 
+Konfigurace prostorů úložiště Windows na samostatných virtuálních počítačích Azure | Podporováno
 
 ## <a name="vm-storage-support"></a>Podpora úložiště virtuálních počítačů
 
@@ -167,7 +167,7 @@ Přidat disk k chráněnému virtuálnímu počítači | Podporuje se.
 Změna velikosti disku na chráněném virtuálním počítači | Podporuje se.
 Sdílené úložiště| Zálohování virtuálních počítačů pomocí sdílený svazek clusteru (CSV) nebo souborového serveru Scale-Out se nepodporuje. Při zálohování pravděpodobně dojde k chybě zapisovačů sdílených svazků clusteru. Při obnovení se nemusí nacházet disky obsahující svazky sdíleného svazku clusteru.
 [Sdílené disky](../virtual-machines/disks-shared-enable.md) | Nepodporováno
-SSD úrovně Ultra disky | Nepodporováno Další podrobnosti najdete v těchto [omezeních](selective-disk-backup-restore.md#limitations).
+SSD úrovně Ultra disky | Nepodporováno Další informace najdete v těchto [omezeních](selective-disk-backup-restore.md#limitations).
 [Dočasné disky](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview#temporary-disk) | Dočasné disky nejsou zálohovány Azure Backup.
 
 ## <a name="vm-network-support"></a>Podpora sítě virtuálních počítačů
@@ -210,10 +210,10 @@ Zabezpečení dat:
 
 **Počítač** | **Při přenosu** | **V klidovém umístění**
 --- | --- | ---
-Místní počítače s Windows bez DPM/MABS | ![Yes][green] | ![Yes][green]
-Virtuální počítače Azure | ![Yes][green] | ![Yes][green]
-Místní nebo virtuální počítače Azure s DPM | ![Yes][green] | ![Yes][green]
-Místní nebo virtuální počítače Azure s MABS | ![Yes][green] | ![Yes][green]
+Místní počítače s Windows bez DPM/MABS | ![Ano][green] | ![Ano][green]
+Virtuální počítače Azure | ![Ano][green] | ![Ano][green]
+Místní nebo virtuální počítače Azure s DPM | ![Ano][green] | ![Ano][green]
+Místní nebo virtuální počítače Azure s MABS | ![Ano][green] | ![Ano][green]
 
 ## <a name="vm-compression-support"></a>Podpora komprese virtuálních počítačů
 
@@ -226,8 +226,8 @@ Zálohování podporuje komprimaci provozu zálohování, jak je shrnuto v násl
 --- | --- | ---
 Místní počítače s Windows bez DPM/MABS | Není k dispozici | ![Ano][green]
 Virtuální počítače Azure | Není k dispozici | Není k dispozici
-Místní nebo virtuální počítače Azure s DPM | ![Yes][green] | ![Yes][green]
-Místní nebo virtuální počítače Azure s MABS | ![Yes][green] | ![Ano][green]
+Místní nebo virtuální počítače Azure s DPM | ![Ano][green] | ![Ano][green]
+Místní nebo virtuální počítače Azure s MABS | ![Ano][green] | ![Ano][green]
 
 ## <a name="next-steps"></a>Další kroky
 

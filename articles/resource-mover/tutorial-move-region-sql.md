@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9fe43125c83436f89bf93cbe975317efec2beb46
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 4678a6128be13ac61dc4ac67bbd1a17e99c6d24d
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95542809"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820225"
 ---
 # <a name="tutorial-move-azure-sql-database-resources-to-another-region"></a>Kurz: Přesunutí prostředků Azure SQL Database do jiné oblasti
 
@@ -36,9 +36,9 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Kurzy ukazují nejrychlejší cestu k vyzkoušení scénáře a používají výchozí možnosti. 
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/pricing/free-trial/), ještě než začnete. Pak se přihlaste k [Azure Portal](https://portal.azure.com).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/). Pak se přihlaste k [Azure Portal](https://portal.azure.com).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 -  Ověřte, že máte přístup *vlastníka* k předplatnému obsahujícímu prostředky, které chcete přesunout.
     - Při prvním přidání prostředku pro konkrétní dvojici zdroje a cíle v rámci předplatného Azure vytvoří [Správce prostředků spravovanou identitu přiřazenou systémem](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (dříve známou jako služba zjištění spravované služby (MSI)), která je pro předplatné důvěryhodná.
@@ -272,8 +272,11 @@ Přesun databází a elastických fondů dokončíte takto:
 
 Po přesunutí můžete případně Odstranit prostředky ve zdrojové oblasti. 
 
-1. V **různých oblastech** klikněte na název každého zdrojového prostředku, který chcete odstranit.
-2. Na stránce vlastnosti každého prostředku vyberte možnost **Odstranit**.
+> [!NOTE]
+> SQL Server servery nejde odstranit z portálu a musí se odstranit ze stránky vlastností prostředku.
+
+1. V **různých oblastech** klikněte na název zdrojového prostředku, který chcete odstranit.
+2. Vyberte **Odstranit zdroj**.
 
 ## <a name="next-steps"></a>Další kroky
 

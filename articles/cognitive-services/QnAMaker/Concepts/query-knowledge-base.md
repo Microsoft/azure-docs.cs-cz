@@ -3,12 +3,12 @@ title: Dotaz na znalostní bázi Knowledge Base – QnA Maker
 description: Je nutné publikovat znalostní bázi. Po publikování se znalostní báze dotazuje na koncový bod předpovědi prostředí runtime pomocí rozhraní generateAnswer API.
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: d8f986299edee46bf5cace7a9f4c805c29b3ce0c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: deefc53fdc94851da0e9e255962fbf85692d1393
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346201"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820377"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>Dotazování znalostní báze o odpovědích
 
@@ -31,7 +31,7 @@ Tento proces je vysvětlen v následující tabulce.
 |1|Klientská aplikace pošle dotaz uživatele do [rozhraní GenerateAnswer API](../how-to/metadata-generateanswer-usage.md).|
 |2|QnA Maker předzpracovává dotazy uživatelů pomocí rozpoznávání jazyka, pravopisu a dělení slov.|
 |3|Tento předzpracování se provádí pro změnu dotazu uživatele na nejlepší výsledky hledání.|
-|4|Tento změněný dotaz se odešle do indexu služby Azure Kognitivní hledání, který přijímá `top` počet výsledků. Pokud v těchto výsledcích není správná odpověď, zvyšte hodnotu `top` mírně. Obecně platí, že hodnota 10 pro `top` funguje v 90% dotazů.|
+|4|Tento změněný dotaz se odešle do indexu služby Azure Kognitivní hledání, který přijímá `top` počet výsledků. Pokud v těchto výsledcích není správná odpověď, zvyšte hodnotu `top` mírně. Obecně platí, že hodnota 10 pro `top` funguje v 90% dotazů. Filtry Azure Search [neukončí slova](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/STOPWORDS.md) v tomto kroku.|
 |5|QnA Maker používá syntaktickou a sémanticky založenou featurization k určení podobnosti mezi dotazem uživatele a načtenými QnA výsledky.|
 |6|Model klasifikátoru poučený počítačem používá k určení výsledků spolehlivosti a nového pořadí řazení různé funkce z kroku 5.|
 |7|Nové výsledky se vrátí do klientské aplikace v pořadí podle pořadí.|
@@ -54,7 +54,7 @@ Tento proces je vysvětlen v následující tabulce.
 |1|Klientská aplikace pošle dotaz uživatele do [rozhraní GenerateAnswer API](../how-to/metadata-generateanswer-usage.md).|
 |2|QnA Maker předzpracovává dotazy uživatelů pomocí rozpoznávání jazyka, pravopisu a dělení slov.|
 |3|Tento předzpracování se provádí pro změnu dotazu uživatele na nejlepší výsledky hledání.|
-|4|Tento změněný dotaz se odešle do indexu služby Azure Kognitivní hledání, který přijímá `top` počet výsledků. Pokud v těchto výsledcích není správná odpověď, zvyšte hodnotu `top` mírně. Obecně platí, že hodnota 10 pro `top` funguje v 90% dotazů.|
+|4|Tento změněný dotaz se odešle do indexu služby Azure Kognitivní hledání, který přijímá `top` počet výsledků. Pokud v těchto výsledcích není správná odpověď, zvyšte hodnotu `top` mírně. Obecně platí, že hodnota 10 pro `top` funguje v 90% dotazů. Filtry Azure Search [neukončí slova](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/STOPWORDS.md) v tomto kroku.|
 |5|QnA Maker využívá model založený na špičkovém transformátoru k určení podobnosti mezi dotazem uživatele a výsledky kandidátů QnA získané z Azure Kognitivní hledání. Model založený na transformátoru je obsáhlý model pro vícejazyčnou výuku, který pracuje vodorovně pro všechny jazyky, aby bylo možné určit hodnocení spolehlivosti a nové pořadí řazení.|
 |6|Nové výsledky se vrátí do klientské aplikace v pořadí podle pořadí.|
 |||
@@ -125,4 +125,4 @@ Odpověď HTTP je odpověď získaná ze znalostní báze na základě nejlepš�
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Skóre spolehlivosti](./confidence-score.md)
+> [Hodnocení spolehlivosti](./confidence-score.md)

@@ -7,24 +7,23 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 59b688803260220866fc331506429a5990c8760a
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 2b8ed417de966f8731542e8f5ca12a6a05e2dc8a
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346193"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820275"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Kurz: nasazení a procházení šablonou aplikace digitálního distribučního centra
-
-
 
 V tomto kurzu se dozvíte, jak začít tím, že nasadíte šablonu aplikace IoT Central **digital Distribution Center** . Naučíte se, jak nasadit šablonu, co je součástí okna a co byste chtěli udělat dál.
 
 V tomto kurzu se naučíte, 
-* Vytvořit aplikaci digital Distribution Center 
-* Procházení aplikací 
 
-## <a name="prerequisites"></a>Předpoklady
+> [!div class="checklist"]
+> Vytvořit procházení aplikací pomocí nástroje Digital Distribution Center prostřednictvím aplikace 
+
+## <a name="prerequisites"></a>Požadavky
 * K nasazení této aplikace nejsou nutné žádné konkrétní požadavky.
 * Doporučuje se použít předplatné Azure, ale můžete to zkusit i bez něj.
 

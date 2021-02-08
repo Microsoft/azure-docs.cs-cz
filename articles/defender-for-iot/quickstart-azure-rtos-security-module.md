@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: d7e901e440a6df5ae1d11a150e09a36b565904d9
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 3054981bbbff45666297399033663d1830ad9e4e
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809061"
+ms.locfileid: "99820428"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>Rychlý Start: modul zabezpečení pro Azure RTO (Preview)
 
@@ -43,8 +43,11 @@ Další fází, jak začít, je příprava prostředků Azure. Budete potřebova
 Aby bylo možné začít, je nutné IoT Hub připojení. 
 
 1. Otevřete **IoT Hub** v Azure Portal.
+
 1. Přejděte na **zařízení IoT**.
+
 1. Vyberte **Vytvořit**.
+
 1. Zkopírujte připojovací řetězec IoT do [konfiguračního souboru](how-to-azure-rtos-security-module.md).
 
 Přihlašovací údaje připojení jsou pořízeny z konfigurace aplikace uživatele **HOST_NAME**, **DEVICE_ID** a **DEVICE_SYMMETRIC_KEY**.

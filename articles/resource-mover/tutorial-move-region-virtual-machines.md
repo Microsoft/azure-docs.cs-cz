@@ -5,15 +5,15 @@ manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 6f21db00ecc9ff2668698f53a4d20f5bae525721
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: d208a4a86896c81982aa2b10ca7ce5e7a6773c05
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95520437"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820209"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>Kurz: přesunutí virtuálních počítačů Azure napříč oblastmi
 
@@ -37,9 +37,9 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Kurzy ukazují nejrychlejší cestu k vyzkoušení scénáře a používají výchozí možnosti. 
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/pricing/free-trial/), ještě než začnete. Pak se přihlaste k [Azure Portal](https://portal.azure.com).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/). Pak se přihlaste k [Azure Portal](https://portal.azure.com).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 -  Ověřte, že máte přístup *vlastníka* k předplatnému obsahujícímu prostředky, které chcete přesunout.
     - Při prvním přidání prostředku pro konkrétní dvojici zdroje a cíle v rámci předplatného Azure vytvoří [Správce prostředků spravovanou identitu přiřazenou systémem](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (dříve známou jako služba zjištění spravované služby (MSI)), která je pro předplatné důvěryhodná.
@@ -238,12 +238,16 @@ Pokud chcete dokončit proces přesunutí, potvrďte přesunutí.
 - Služba mobility není automaticky odinstalována z virtuálních počítačů. Odinstalujte ji ručně nebo ji nechte v případě, že plánujete přesunout server znovu.
 - Upravte pravidla řízení přístupu na základě role Azure (Azure RBAC) po přesunutí.
 
+
 ## <a name="delete-source-resources-after-commit"></a>Odstranit zdrojové prostředky po potvrzení změn
 
 Po přesunutí můžete případně Odstranit prostředky ve zdrojové oblasti. 
 
-1. V **různých oblastech** klikněte na název každého zdrojového prostředku, který chcete odstranit.
-2. Na stránce vlastnosti každého prostředku vyberte možnost **Odstranit**.
+> [!NOTE]
+> Několik prostředků, například trezory klíčů a servery SQL Server, nejde odstranit z portálu a musí se odstranit ze stránky vlastností prostředku.
+
+1. V **různých oblastech** klikněte na název zdrojového prostředku, který chcete odstranit.
+2. Vyberte **Odstranit zdroj**.
 
 ## <a name="delete-additional-resources-created-for-move"></a>Odstranění dalších prostředků vytvořených pro přesun
 

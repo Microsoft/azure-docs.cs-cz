@@ -1,20 +1,20 @@
 ---
-title: Použití Azure Time Series Insights k ukládání a analýze telemetrie zařízení technologie Plug and Play Azure IoT
-description: Nastavením Time Series Insights prostředí a připojením centra IoT můžete zobrazit a analyzovat telemetrii ze zařízení technologie Plug and Play IoT.
+title: Kurz – použití Azure Time Series Insights k ukládání a analýze telemetrie vašich zařízení technologie Plug and Play Azure IoT
+description: Kurz – nastavení Time Series Insights prostředí a připojení centra IoT pro zobrazení a analýzu telemetrie ze zařízení technologie Plug and Play IoT.
 author: lyrana
 ms.author: lyhughes
 ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5491df61a1198e8eee4ba4701ccfc56154ec75eb
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 299730bcdab3ae7e558f39cc7f7d5076ffc58ea9
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905077"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820176"
 ---
-# <a name="preview-tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>Kurz verze Preview: vytvoření a konfigurace prostředí Time Series Insights Gen2
+# <a name="tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>Kurz: vytvoření a konfigurace prostředí Time Series Insights Gen2
 
 V tomto kurzu se naučíte, jak vytvořit a nakonfigurovat prostředí [Azure Time Series Insights Gen2](../time-series-insights/overview-what-is-tsi.md) pro integraci s řešením technologie Plug and Play IoT. Pomocí Time Series Insights můžete shromažďovat, zpracovávat, ukládat, dotazovat a vizualizovat data časových řad v rozsahu Internet věcí (IoT).
 
@@ -23,7 +23,7 @@ Nejdřív zřídíte Time Series Insights prostředí a připojíte centrum IoT 
 > [!NOTE]
 > Tato integrace mezi Time Series Insights a IoT technologie Plug and Play je ve verzi Preview. Způsob, jakým se DTDL modely zařízení mapují na model časové řady Time Series Insights se může změnit. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -218,7 +218,7 @@ Zopakováním předchozích kroků přiřaďte značky termostatu správnému ty
 
 ## <a name="view-your-data"></a>Zobrazení dat
 
-Vraťte se do podokna pro vytváření grafů a rozbalte položku **loďstva zařízení** > vaše zařízení. Vyberte **thermostat1**, vyberte proměnnou **teploty** a pak vyberte **Přidat** , aby se hodnota grafu vybrala. Proveďte totéž pro **thermostat2** a hodnotu workingSet **defaultComponent** **workingSet** .
+Vraťte se do podokna pro vytváření grafů a rozbalte položku **loďstva zařízení** > vaše zařízení. Vyberte **thermostat1**, vyberte proměnnou **teploty** a pak vyberte **Přidat** , aby se hodnota grafu vybrala. Proveďte totéž pro **thermostat2** a hodnotu workingSet **defaultComponent**  .
 
 ![Snímek obrazovky znázorňující změnu typu instance pro thermostat2.](./media/tutorial-configure-tsi/charting-values.png)
 

@@ -7,24 +7,23 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: b1b7069cb723bffd758c3603cc957329dd6d2a9b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2b26b4390cb19b832349b49d4e95a5355caed594
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463250"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820292"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Kurz: nasazení a procházení šablonou aplikace pro správu inteligentního inventáře
 
-
-
 V tomto kurzu se dozvíte, jak začít tím, že nasadíte šablonu aplikace IoT Central **správy inteligentního inventáře** . Naučíte se, jak nasadit šablonu, co je součástí okna a co byste chtěli udělat dál.
 
-V tomto kurzu se naučíte, 
-* vytvořit aplikaci pro správu inteligentních zásob 
-* Procházení aplikací 
+V tomto kurzu se naučíte,
 
-## <a name="prerequisites"></a>Předpoklady
+> [!div class="checklist"]
+> Vytvoření procházení aplikace pro správu inteligentních zásob prostřednictvím aplikace 
+
+## <a name="prerequisites"></a>Požadavky
 
 * K nasazení této aplikace nejsou nutné žádné konkrétní požadavky.
 * Doporučuje se použít předplatné Azure, ale můžete to zkusit i bez něj.
@@ -104,7 +103,7 @@ Vyberte kartu úlohy pro zobrazení pěti různých úloh, které existují jako
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikaci nadále používat, odstraňte šablonu aplikace na stránce **Administration**  >  **nastavení aplikace** pro správu a klikněte na **Odstranit**.
+Pokud nebudete tuto aplikaci nadále používat, odstraňte šablonu aplikace na stránce   >  **nastavení aplikace** pro správu a klikněte na **Odstranit**.
 
 > [!div class="mx-imgBorder"]
 > ![Snímek obrazovky ukazující, jak aplikaci odstranit, když s ní jste hotovi](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_cleanup.png)

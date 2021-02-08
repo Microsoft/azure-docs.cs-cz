@@ -10,15 +10,15 @@ ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: a93ac3b5d988be33c0f27726a75b1006f990d1da
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: d861f6bfbe38ad73715ef521a36cc097b8538c9b
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886093"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99819996"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Rychlý Start: vytvoření a Správa prostředků komunikačních služeb
-
+ 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Začněte s komunikačními službami Azure tím, že zřizujete první prostředek komunikační služby. Prostředky komunikačních služeb lze zřídit prostřednictvím Azure Portal nebo pomocí klientské knihovny pro správu .NET. Klientská knihovna pro správu umožňuje vytvářet, konfigurovat, aktualizovat a odstraňovat prostředky a rozhraní pomocí [Azure Resource Manager](../../azure-resource-manager/management/overview.md), služby Azure Deployment and Management Service. Všechny funkce, které jsou k dispozici v klientských knihovnách, jsou k dispozici v Azure Portal. 
@@ -28,6 +28,10 @@ Začněte s komunikačními službami Azure tím, že zřizujete první prostře
 
 ::: zone pivot="platform-azp"
 [!INCLUDE [Azure portal](./includes/create-resource-azp.md)]
+::: zone-end
+
+::: zone pivot="platform-azcli"
+[!INCLUDE [Azure CLI](./includes/create-resource-azcli.md)]
 ::: zone-end
 
 ::: zone pivot="platform-net"
@@ -41,6 +45,14 @@ Připojovací řetězce umožňují klientským knihovnám komunikačních služ
 Po přechodu na prostředek služby Communication Services vyberte z navigační nabídky **klíče** a zkopírujte **připojovací řetězec** nebo hodnoty **koncového bodu** pro použití klientskými knihovnami komunikačních služeb. Všimněte si, že máte přístup k primárním a sekundárním klíčům. To může být užitečné ve scénářích, kdy byste chtěli poskytnout dočasný přístup k prostředkům komunikačních služeb třetí straně nebo přípravnému prostředí.
 
 :::image type="content" source="./media/key.png" alt-text="Snímek stránky s klíčem komunikačních služeb":::
+
+K informacím o klíčích se můžete dostat taky pomocí Azure CLI:
+
+```azurecli
+az communication list --resource-group "<resourceGroup>"    
+
+az communication list-key --name "<communicationName>" --resource-group "<resourceGroup>"
+```
 
 ## <a name="store-your-connection-string"></a>Uložení připojovacího řetězce
 

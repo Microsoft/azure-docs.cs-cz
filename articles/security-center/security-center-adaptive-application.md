@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/06/2020
+ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: 103f2c87cf9d14f81462fed145ff8df3d69bfca0
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: cc35f9ee25511faec5723b49763cbdae8963e88b
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916129"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820751"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Použití adaptivních řízení aplikací k omezení ploch útoků počítačů
 
@@ -44,7 +44,7 @@ Definováním seznamů známých aplikací v bezpečí a generování výstrah v
 - Zabránění konkrétnímu softwaru, který je zakázán vaší organizací
 - Zvýšení zraku aplikací, které přistupují k citlivým datům
 
-
+Nejsou k dispozici žádné možnosti vynucení a žádné nejsou plánovány. Adaptivní řízení aplikací je určeno k poskytování výstrah zabezpečení v případě, že některá aplikace běží jinak než ty, které jste definovali jako bezpečné.
 
 ## <a name="availability"></a>Dostupnost
 
@@ -54,7 +54,7 @@ Definováním seznamů známých aplikací v bezpečí a generování výstrah v
 |Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .|
 |Podporované počítače:|![](./media/icons/yes-icon.png)Počítače Azure a jiné než Azure se systémem Windows a Linux<br>![Počítače s ](./media/icons/yes-icon.png) [obloukem Azure ARC](../azure-arc/index.yml)|
 |Požadované role a oprávnění:|Role **Čtenář zabezpečení** a **Čtenář** můžou zobrazovat skupiny i seznamy známých aplikací, které jsou v bezpečí.<br>Role **Přispěvatel** a **Správce zabezpečení** můžou upravovat skupiny i seznamy známých aplikací, které jsou v bezpečí.|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
@@ -235,7 +235,12 @@ Některé funkce, které jsou dostupné z REST API:
    > Než použijete JSON v žádosti PUT, odeberte následující vlastnosti: recommendationStatus, configurationStatus, problémy, Location a sourceSystem.
 
 
+## <a name="faq---adaptive-application-controls"></a>Nejčastější dotazy – Adaptivní řízení aplikací
 
+### <a name="are-there-any-options-to-enforce-the-application-controls"></a>Existují nějaké možnosti, jak vymáhat ovládací prvky aplikace?
+Nejsou k dispozici žádné možnosti vynucení a žádné nejsou plánovány. Adaptivní řízení aplikací je určeno k poskytování **výstrah zabezpečení** v případě, že některá aplikace běží jinak než ty, které jste definovali jako bezpečné. Mají řadu výhod ([Jaké jsou výhody adaptivních řízení aplikací?](#what-are-the-benefits-of-adaptive-application-controls)) a jsou extrémně přizpůsobitelná, jak je znázorněno na této stránce.
+
+ 
 
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak použít adaptivní řízení aplikací v Azure Security Center k definování seznamů povolených aplikací běžících na počítačích Azure a mimo Azure. Další informace o některých dalších funkcích ochrany úloh v cloudu Security Center najdete v tématech:

@@ -12,26 +12,26 @@ ms.workload: identity
 ms.date: 01/22/2021
 ms.author: nacanuma
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 9c6571793d2317097574d0afdc7137b3a3d5ad6d
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 196b80a704b8a270a4cbb7d3505d5f9be1e23479
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064522"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820312"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-java-console-app-using-apps-identity"></a>Rychlý Start: získání tokenu a volání Microsoft Graph API z konzolové aplikace Java pomocí identity aplikace
 
-V tomto rychlém startu stáhnete a spustíte ukázku kódu, která ukazuje, jak může aplikace Java získat přístupový token pomocí identity aplikace pro volání rozhraní API Microsoft Graph a zobrazení [seznamu uživatelů](/graph/api/user-list) v adresáři. Ukázka kódu ukazuje, jak lze spustit bezobslužnou úlohu nebo službu systému Windows pomocí identity aplikace namísto identity uživatele. 
+V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, jak může aplikace Java získat přístupový token pomocí identity aplikace pro volání rozhraní API Microsoft Graph a zobrazení [seznamu uživatelů](/graph/api/user-list) v adresáři. Ukázka kódu ukazuje, jak lze spustit bezobslužnou úlohu nebo službu systému Windows pomocí identity aplikace namísto identity uživatele. 
 
 > [!div renderon="docs"]
-> ![Ukazuje, jak ukázková aplikace vygenerovaná tímto rychlým startem funguje.](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
+> ![Ukazuje, jak ukázková aplikace vygenerovaná tímto rychlým startem funguje.](media/quickstart-v2-java-daemon/java-console-daemon.svg)
 
 ## <a name="prerequisites"></a>Požadavky
 
 K provedení této ukázky budete potřebovat:
 
 - [Java Development Kit (JDK)](https://openjdk.java.net/) 8 nebo vyšší
-- [Maven](https://maven.apache.org/).
+- [Maven](https://maven.apache.org/)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý start
@@ -42,7 +42,7 @@ K provedení této ukázky budete potřebovat:
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: Registrace a automatická konfigurace aplikace a následné stažení vzorového kódu
 >
-> 1. Přejít na nové podokno [Azure Portal-registrace aplikací](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaDaemonQuickstartPage/sourceType/docs) .
+> 1. Přejít k prostředí rychlý Start pro <a href="https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaDaemonQuickstartPage/sourceType/docs" target="_blank">Azure Portal registrace aplikací</a>
 > 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
 > 1. Postupujte podle pokynů ke stažení a automatické konfiguraci nové aplikace jedním kliknutím.
 >
@@ -52,22 +52,22 @@ K provedení této ukázky budete potřebovat:
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
-> 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
-> 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-> 1. Přejděte na stránku [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) Microsoft Identity Platform for Developers.
-> 1. Vyberte **Nová registrace**.
-> 1. Jakmile se zobrazí stránka **Registrovat aplikaci** , zadejte registrační informace vaší aplikace.
-> 1. V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `Daemon-console` Vyberte možnost **Registrovat** a vytvořte aplikaci.
-> 1. Po registraci vyberte nabídku **certifikáty & tajných klíčů** .
-> 1. V části **tajné klíče klienta** vyberte **+ nový tajný klíč klienta**. Zadejte název a vyberte **Přidat**. Zkopírujte tajný klíč na bezpečném místě. Budete ho potřebovat pro použití ve vašem kódu.
-> 1. Nyní vyberte nabídku **oprávnění rozhraní API** , vyberte **+ Přidat oprávnění** tlačítko a vyberte možnost **Microsoft Graph**.
+> 1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
+> 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
+> 1. Vyhledejte a vyberte **Azure Active Directory**.
+> 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
+> 1. Zadejte **název** vaší aplikace, například `Daemon-console` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
+> 1. Vyberte **Zaregistrovat**.
+> 1. V části **Spravovat** vyberte  **certifikáty & tajných** kódů.
+> 1. V části **tajné klíče klienta** vyberte **nový tajný klíč klienta**, zadejte název a pak vyberte **Přidat**. Poznamenejte si tajnou hodnotu v bezpečném umístění pro použití v pozdějším kroku.
+> 1. V části **Spravovat** vyberte **oprávnění rozhraní API**  >  **Přidat oprávnění**. Vyberte **Microsoft Graph**.
 > 1. Vyberte **oprávnění aplikace**.
-> 1. V části **uživatelský** uzel vyberte **uživatel. číst. vše** a pak vyberte **Přidat oprávnění** .
+> 1. V části **uživatelský** uzel vyberte **uživatel. číst. vše** a pak vyberte **Přidat oprávnění**.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="download-and-configure-your-quickstart-app"></a>Stažení a konfigurace aplikace pro rychlý Start
+> ### <a name="download-and-configure-the-quickstart-app"></a>Stažení a konfigurace aplikace pro rychlý Start
 >
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Nakonfigurujte si aplikaci na portálu Azure Portal
+> #### <a name="step-1-configure-the-application-in-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal
 > Aby ukázka kódu pro tento rychlý Start fungovala, je nutné vytvořit tajný klíč klienta a přidat **uživatele Graph API. číst. všechna** oprávnění aplikace.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Provést tyto změny pro mě]()
@@ -75,7 +75,7 @@ K provedení této ukázky budete potřebovat:
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Už nakonfigurované](media/quickstart-v2-netcore-daemon/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
 
-#### <a name="step-2-download-your-java-project"></a>Krok 2: stažení projektu Java
+#### <a name="step-2-download-the-java-project"></a>Krok 2: stažení projektu Java
 
 > [!div renderon="docs"]
 > [Stáhnout projekt démona Java](https://github.com/Azure-Samples/ms-identity-java-daemon/archive/master.zip)
@@ -89,11 +89,11 @@ K provedení této ukázky budete potřebovat:
 
 
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-your-java-project"></a>Krok 3: konfigurace projektu Java
+> #### <a name="step-3-configure-the-java-project"></a>Krok 3: konfigurace projektu Java
 >
-> 1. Extrahujte soubor zip do místní složky blízko ke kořenovému adresáři disku, například **C:\Azure-Samples**.
+> 1. Extrahujte soubor zip do místní složky blízko ke kořenovému adresáři disku, například *C:\Azure-Samples*.
 > 1. Přejděte do složky sub **msal-Client-Credential-Secret**.
-> 1. Upravte **src\main\resources\application.Properties** a nahraďte hodnoty polí `AUTHORITY` , `CLIENT_ID` a `SECRET` následujícím fragmentem kódu:
+> 1. Upravte *src\main\resources\application.Properties* a nahraďte hodnoty polí `AUTHORITY` , `CLIENT_ID` a `SECRET` následujícím fragmentem kódu:
 >
 >    ```
 >    AUTHORITY=https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/
@@ -119,10 +119,10 @@ Pokud se pokusíte spustit aplikaci v tomto okamžiku, obdržíte chybu *HTTP 40
 ##### <a name="global-tenant-administrator"></a>Globální správce klienta
 
 > [!div renderon="docs"]
-> Pokud jste globální správce klienta, v registraci aplikace na webu Azure Portal klikněte na stránku **oprávnění rozhraní API** (Preview) a vyberte **udělit souhlas správce pro {název tenanta}** (kde {název tenanta} je název vašeho adresáře).
+> Pokud jste globální správce klienta, v Azure Portal klikněte na stránku **oprávnění rozhraní API** v **Registrace aplikací** a vyberte **udělit souhlas správce pro {název tenanta}** (kde {název tenanta} je název vašeho adresáře).
 
 > [!div renderon="portal" class="sxs-lookup"]
-> Pokud jste globální správce, přejít na stránku **oprávnění rozhraní API** , vyberte **udělit souhlas správce pro Enter_the_Tenant_Name_Here**
+> Pokud jste globální správce, klikněte na stránce **oprávnění rozhraní API** a vyberte **udělit souhlas správce pro Enter_the_Tenant_Name_Here**.
 > > [!div id="apipermissionspage"]
 > > [Přejít na stránku oprávnění API]()
 
@@ -163,7 +163,7 @@ Po spuštění aplikace by se měl zobrazit seznam uživatelů v nakonfigurovan�
 
 
 > [!IMPORTANT]
-> Tato aplikace rychlý Start používá k identifikaci jako důvěrného klienta tajný klíč klienta. Vzhledem k tomu, že se tajný klíč klienta přidá do souborů projektu jako prostý text, doporučuje se místo toho použít certifikát namísto tajného klíče klienta před tím, než aplikaci vyberou jako produkční aplikaci. Další informace o tom, jak použít certifikát, najdete v [těchto pokynech](https://github.com/Azure-Samples/ms-identity-java-daemon/tree/master/msal-client-credential-certificate) ve stejném úložišti GitHub pro tuto ukázku, ale ve druhé složce **msal-Client-Credential-Certificate**
+> Tato aplikace rychlý Start používá k identifikaci jako důvěrného klienta tajný klíč klienta. Vzhledem k tomu, že se tajný klíč klienta přidá do souborů projektu jako prostý text, doporučuje se místo toho použít certifikát namísto tajného klíče klienta před tím, než aplikaci vyberou jako produkční aplikaci. Další informace o použití certifikátu najdete v [těchto pokynech](https://github.com/Azure-Samples/ms-identity-java-daemon/tree/master/msal-client-credential-certificate) ve stejném úložišti GitHub pro tuto ukázku, ale ve druhé složce **msal-Client-Credential-Certificate**.
 
 ## <a name="more-information"></a>Další informace
 
@@ -251,13 +251,13 @@ IAuthenticationResult result;
 
 > |Kde:| Description |
 > |---------|---------|
-> | `SCOPE` | Obsahuje požadované obory. U důvěrných klientů by se měla použít formát podobný tomuto jako `{Application ID URI}/.default` k označení toho, že požadované obory jsou staticky definované v sadě objektů aplikace na webu Azure Portal (pro Microsoft Graph, `{Application ID URI}` které odkazují na `https://graph.microsoft.com` ). Pro vlastní webová rozhraní API `{Application ID URI}` se definuje v části **vystavení rozhraní API** v registraci aplikace na webu Azure Portal (Preview). |
+> | `SCOPE` | Obsahuje požadované obory. U důvěrných klientů by se měla použít formát podobný jako `{Application ID URI}/.default` k označení toho, že požadované obory jsou staticky definované v objektu aplikace v Azure Portal (pro Microsoft Graph `{Application ID URI}` odkazuje na `https://graph.microsoft.com` ). Pro vlastní webová rozhraní API `{Application ID URI}` se definuje v části **vystavení rozhraní api** v **Registrace aplikací** na webu Azure Portal.|
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o aplikacích démona najdete na cílové stránce scénáře.
+Další informace o aplikacích démona najdete na cílové stránce scénář.
 
 > [!div class="nextstepaction"]
 > [Aplikace démona, která volá webová rozhraní API](scenario-daemon-overview.md)

@@ -1,24 +1,24 @@
 ---
-title: Nastavení prostředků IoT, které potřebujete pro IoT technologie Plug and Play | Microsoft Docs
-description: Vytvořte IoT Hub a instanci služby Device Provisioning, kterou chcete použít, technologie Plug and Play rychlý Start a kurzy pro IoT.
+title: Rychlý Start – Nastavení prostředků IoT potřebných pro IoT technologie Plug and Play | Microsoft Docs
+description: Rychlý Start – vytvoření IoT Hub a instance služby Device Provisioning pro použití s technologie Plug and Play rychlý Start a kurzy pro IoT.
 author: dominicbetts
 ms.author: dobett
 ms.date: 08/11/2020
-ms.topic: how-to
+ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6e6c090c02798103a30cc68f2ca28e8c4f7f2f17
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 10ec761313ce39beb4b24b838d156478704f943e
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96004258"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820026"
 ---
-# <a name="set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>Nastavení prostředí pro technologie Plug and Play rychlý Start a kurzy pro IoT
+# <a name="quickstart---set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>Rychlý Start – nastavení prostředí pro IoT technologie Plug and Play rychlé starty a kurzy
 
 Předtím, než budete moci dokončit technologie Plug and Play rychlých startů a kurzů pro IoT, musíte ve svém předplatném Azure nakonfigurovat službu IoT Hub a službu Device Provisioning (DPS). Budete také potřebovat místní kopie souborů modelů používaných ukázkovými aplikacemi a nástrojem Azure IoT Explorer.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Abyste se vyhnuli nutnosti nainstalovat rozhraní příkazového řádku Azure CLI místně, můžete k nastavení Cloud Services použít Azure Cloud Shell.
 

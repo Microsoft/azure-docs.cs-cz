@@ -5,6 +5,7 @@
     - name: Sestavování řešení pro státní správu s využitím služby Azure IoT Central
       href: overview-iot-central-government.md
 - name: Kurzy
+  expanded: true
   items:
     - name: Vytvoření aplikace pro propojené nakládání s odpady
       href: tutorial-connected-waste-management.md

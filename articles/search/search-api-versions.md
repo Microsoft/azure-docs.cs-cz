@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: feca2e83646264b28e42125b3fdebf41266c06bd
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 489c6be7bf977d01207fee4d1bd1fda13dc12025
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422718"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820513"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Verze rozhraní API v Azure Kognitivní hledání
 
@@ -87,7 +87,7 @@ Následující tabulka obsahuje odkazy na novější verze sady SDK.
 
 | SDK version (Verze sady SDK) | Status | Popis |
 |-------------|--------|------------------------------|
-| [Azure.Search.Documents 11](/dotnet/api/overview/azure/search.documents-readme) | Stable | Nová knihovna klienta ze sady Azure .NET SDK vydaná v červenci 2020. července. Cílí na hledání REST API-Version = 2020-06-30 REST API, ale zatím nepodporují, geografické filtry. |
+| [Azure.Search.Documents 11](/dotnet/api/overview/azure/search.documents-readme) | Stable | Nová knihovna klienta ze sady Azure .NET SDK vydaná v červenci 2020. července. Cílí na hledání REST API-Version = 2020-06-30 REST API, ale ještě neposkytuje nativní podporu pro geografické filtry. Pro geografické operace doporučujeme balíček [Microsoft. prostor](https://www.nuget.org/packages/Microsoft.Spatial/) . K dispozici jsou příklady [System.Text.Jszapnuto](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md) a [Newtonsoft.Js](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md). |
 | [Microsoft. Azure. Search 10](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Stable | Vydáno 2019. května. Cílí na rozhraní REST API pro hledání verze = 2019-05-06.|
 | [Microsoft. Azure. Management. Search 4.0.0](/dotnet/api/overview/azure/search/management) | Stable | Cílí na rozhraní REST API pro správu verze = 2020-08-01.  |
 | Microsoft. Azure. Management. Search 3.0.0 | Stable | Cílí na rozhraní REST API pro správu verze = 2015 – 08-19.  |
