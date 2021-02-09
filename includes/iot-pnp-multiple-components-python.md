@@ -4,16 +4,23 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 3a7bcbba99595468aa69d852493308a5a77851d8
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 5e0fa474412815a1ce830267ac2f09830a6353d3
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95510507"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834133"
 ---
 V tomto kurzu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plug and Play zařízení pomocí komponent, připojit ji k centru IoT a pomocí nástroje Azure IoT Explorer zobrazit informace, které posílá do centra. Ukázková aplikace je napsaná v Pythonu a je obsažená v sadě SDK pro zařízení Azure IoT pro Python. Tvůrce řešení může pomocí nástroje Azure IoT Explorer pochopit možnosti zařízení technologie Plug and Play IoT, aniž by bylo nutné zobrazovat kód zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+V tomto kurzu jste:
+
+> [!div class="checklist"]
+> * Stáhněte si vzorový kód.
+> * Spusťte ukázkovou aplikaci zařízení a ověřte, že se připojí ke službě IoT Hub.
+> * Zkontrolujte zdrojový kód.
+
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [iot-pnp-prerequisites](iot-pnp-prerequisites.md)]
 

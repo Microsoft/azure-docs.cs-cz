@@ -4,14 +4,14 @@ description: Naučte se vytvářet cluster AKS s důvěrnými uzly a nasazovat a
 author: agowdamsft
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 12/11/2020
+ms.date: 2/5/2020
 ms.author: amgowda
-ms.openlocfilehash: 92b4cd58b496602b479a24bab81a1d9322e732b0
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: b6fe8f4fe34799a71d59b7487d96217b4ac6a429
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760635"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833199"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-dcsv2-using-azure-cli-preview"></a>Rychlý Start: nasazení clusteru služby Azure Kubernetes (AKS) s důvěrnými uzly (DCsv2) pomocí rozhraní příkazového řádku Azure (Preview)
 
@@ -75,7 +75,7 @@ az provider register --namespace Microsoft.ContainerService
 ```
 
 ### <a name="azure-confidential-computing-feature-registration-on-azure-optional-but-recommended"></a>Registrace funkce důvěrného výpočetní služby Azure v Azure (volitelné, ale doporučené)
-Registruje se AKS-ConfidentialComputinAddon v předplatném Azure. Tato funkce přidá dvě daemonsets, jak [je popsáno v podrobnostech](./confidential-nodes-aks-overview.md#aks-provided-daemon-sets-addon):
+Registruje se AKS-ConfidentialComputingAddon v předplatném Azure. Tato funkce přidá dvě daemonsets, jak [je popsáno v podrobnostech](./confidential-nodes-aks-overview.md#aks-provided-daemon-sets-addon):
 1. Modul plug-in ovladače zařízení SGX
 2. Pomocník pro SGX ověření identity
 
@@ -85,7 +85,7 @@ az feature register --name AKS-ConfidentialComputingAddon --namespace Microsoft.
 Může trvat několik minut, než se stav zobrazí jako zaregistrované. Stav registrace můžete zjistit pomocí příkazu AZ Feature list. Tato registrace funkce se provádí jenom jednou pro každé předplatné. Pokud jste to předtím zaregistrovali, můžete předchozí krok přeskočit:
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputinAddon')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputingAddon')].{Name:name,State:properties.state}"
 ```
 Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci poskytovatele prostředků Microsoft. ContainerService pomocí příkazu AZ Provider Register:
 
@@ -143,12 +143,12 @@ V této části se předpokládá, že máte spuštěný cluster AKS, který spl
 Nejprve umožňuje přidat funkci do předplatného Azure.
 
 ```azurecli-interactive
-az feature register --name AKS-ConfidentialComputinAddon --namespace Microsoft.ContainerService
+az feature register --name AKS-ConfidentialComputingAddon --namespace Microsoft.ContainerService
 ```
 Může trvat několik minut, než se stav zobrazí jako zaregistrované. Stav registrace můžete zjistit pomocí příkazu AZ Feature list. Tato registrace funkce se provádí jenom jednou pro každé předplatné. Pokud jste to předtím zaregistrovali, můžete předchozí krok přeskočit:
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputinAddon')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputingAddon')].{Name:name,State:properties.state}"
 ```
 Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci poskytovatele prostředků Microsoft. ContainerService pomocí příkazu AZ Provider Register:
 
