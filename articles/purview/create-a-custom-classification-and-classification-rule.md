@@ -6,13 +6,13 @@ ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/1/2020
-ms.openlocfilehash: 53c71eec4c913c606669b7d36ca9a71ac8f3e2f1
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.date: 2/5/2021
+ms.openlocfilehash: 3cc29e0bd806ab76c4980128df5a89761e465fe7
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693468"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988374"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Vlastní klasifikace v Azure dosah 
 
@@ -39,7 +39,7 @@ Pokud chcete vytvořit vlastní klasifikaci, udělejte toto:
     :::image type="content" source="media/create-a-custom-classification-and-classification-rule/new-classification.png" alt-text="Nová klasifikace" border="true":::
 
 Otevře se podokno **Přidat novou klasifikaci** , kde můžete zadat název a popis své klasifikace. Je vhodné použít konvenci pro odstup názvů, jako je například `your company name.classification name` .
-Klasifikace systému Microsoft jsou seskupené pod rezervovaným `MS.` oborem názvů. Příklad je **MS. Schod. Vylepšení. \_ \_ číslo sociálního pojištění**.
+Klasifikace systému Microsoft jsou seskupené pod rezervovaným `MICROSOFT.` oborem názvů. Příkladem může být **Microsoft. Schod. Vylepšení. \_ \_ číslo sociálního pojištění**.
 
 Název vaší klasifikace musí začínat písmenem, za kterým následuje posloupnost písmen, číslic a tečky (.) nebo podtržítka.
 Nejsou povoleny žádné mezery. Při psaní uživatelského rozhraní se automaticky vygeneruje popisný název. Tento popisný název se uživatelům zobrazí při použití pro Asset v katalogu.
@@ -98,9 +98,9 @@ Vytvoření vlastního pravidla klasifikace:
 |Pole     |Popis  |
 |---------|---------|
 |Název   |    Povinná hodnota. Maximální počet je 100 znaků.    |
-|Popis      |Nepovinný parametr. Maximální počet je 256 znaků.    |
+|Description      |Nepovinný parametr. Maximální počet je 256 znaků.    |
 |Název klasifikace    | Povinná hodnota. V rozevíracím seznamu vyberte název klasifikace a sdělte tak, že se bude používat, pokud se najde shoda.        |
-|Stav   |  Povinná hodnota. Možnosti jsou povoleny nebo zakázány. Výchozí hodnota je Enabled.    |
+|State   |  Povinná hodnota. Možnosti jsou povoleny nebo zakázány. Výchozí hodnota je Enabled.    |
 |Datový vzor    |Nepovinný parametr. Regulární výraz, který představuje data uložená v datovém poli. Limit je velmi velký. V předchozím příkladu vzorce dat testují ID zaměstnance, který je doslova slovem `Employee{GUID}` .  |
 |Vzor sloupce    |Nepovinný parametr. Regulární výraz, který představuje názvy sloupců, které chcete vyhledat. Limit je velmi velký.          |
 

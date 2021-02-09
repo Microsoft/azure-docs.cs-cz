@@ -794,6 +794,8 @@
         - name: Živý stream metriky
           displayname: 'live, quickpulse, quick pulse, live metrics'
           href: app/live-stream.md
+        - name: Sestava SLA
+          href: app/sla-report.md
         - name: Metriky
           items:
             - name: Metriky založené na protokolech a agregované předem
@@ -1022,7 +1024,7 @@
               href: insights/vminsights-health-troubleshoot.md
         - name: Analýza dat s využitím dotazů na protokoly
           href: insights/vminsights-log-search.md
-        - name: Monitorování výkonu
+        - name: Výstrahy
           href: insights/vminsights-alerts.md
         - name: Monitorování změn
           href: insights/vminsights-change-analysis.md

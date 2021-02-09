@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 320f02f6ece106b4d0e14293f95533aa5b4e0743
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: df218c2a4c066343ef571c6f24554ecaa806b639
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693447"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987887"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Výběr cenové úrovně pro Azure Kognitivní hledání
 
@@ -60,7 +60,8 @@ Většina funkcí je dostupná na všech úrovních, včetně úrovně Free. Úr
 | [Spravované nebo důvěryhodné identity pro odchozí (indexer) přístup](search-howto-managed-identities-data-sources.md) | Není k dispozici na úrovni Free.|
 | [Šifrovací klíče spravované zákazníkem](search-security-manage-encryption-keys.md) | Není k dispozici na úrovni Free. |
 | [Přístup k bráně firewall protokolu IP](service-configure-firewall.md) | Není k dispozici na úrovni Free. |
-| [Privátní koncový bod (integrace s privátním odkazem Azure)](service-create-private-endpoint.md) | Pro příchozí připojení k vyhledávací službě není na úrovni Free k dispozici. Pro odchozí připojení prostřednictvím indexerů k jiným prostředkům Azure, které nejsou dostupné na bezplatném nebo S3 HD. Pro indexery, které používají dovednosti, nejsou dostupné na úrovni Free, Basic, S1 nebo S3 HD.|
+| [Privátní koncový bod (integrace s privátním odkazem Azure)](service-create-private-endpoint.md) | Pro příchozí připojení k vyhledávací službě není na úrovni Free k dispozici. Pro odchozí připojení prostřednictvím indexerů k jiným prostředkům Azure, které nejsou dostupné na bezplatném nebo S3 HD. Pro indexery, které používají dovednosti, nejsou dostupné na úrovni Free, Basic, S1 nebo S3 HD.| 
+| [Zóny dostupnosti](search-performance-optimization.md) | Není k dispozici na úrovni Free a na úrovni Basic. |
 
 Funkce náročné na prostředky nemusí fungovat správně, pokud jim neposkytnete dostatečnou kapacitu. Například [rozšíření AI](cognitive-search-concept-intro.md) má dlouhodobě běžící dovednosti, které vyprší časový limit bezplatné služby, pokud není datová sada malá.
 

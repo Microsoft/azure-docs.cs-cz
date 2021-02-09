@@ -3,12 +3,12 @@ title: Import imagí kontejnerů
 description: Naimportujte image kontejneru do služby Azure Container Registry pomocí rozhraní API Azure, aniž byste museli spouštět příkazy Docker.
 ms.topic: article
 ms.date: 01/15/2021
-ms.openlocfilehash: 364c90b857d0d7d479152e2aa56db4d80041f037
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: e6976f854b449f68faedd51878c2f3a7fe75cb0f
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524494"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988237"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Import imagí kontejneru do registru kontejneru
 
@@ -68,13 +68,15 @@ az acr repository show-manifests \
   --repository hello-world
 ```
 
-Následující příklad importuje veřejnou image z `tensorflow` úložiště v Docker Hub:
+Pokud máte [účet Docker Hub](https://www.docker.com/pricing), doporučujeme při importu image z Docker Hub použít přihlašovací údaje. Uživatelské jméno centra Docker a heslo nebo [osobní přístupový token](https://docs.docker.com/docker-hub/access-tokens/) je třeba předat parametrům `az acr import` . Následující příklad importuje veřejnou image z `tensorflow` úložiště v Docker Hub pomocí přihlašovacích údajů Docker Hub:
 
 ```azurecli
 az acr import \
   --name myregistry \
   --source docker.io/tensorflow/tensorflow:latest-gpu \
   --image tensorflow:latest-gpu
+  --username <Docker Hub user name>
+  --password <Docker Hub token>
 ```
 
 ### <a name="import-from-microsoft-container-registry"></a>Importovat z Microsoft Container Registry

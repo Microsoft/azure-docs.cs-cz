@@ -530,6 +530,8 @@
   items:
     - name: Podpora komunity Azure
       href: 'https://azure.microsoft.com/support/community/?product=search'
+    - name: Spotlight pro partnery
+      href: resource-partners-knowledge-mining.md
     - name: Aktualizace Azure
       href: 'https://azure.microsoft.com/updates/?product=search'
     - name: Fórum pro názory (UserVoice)
@@ -554,8 +556,6 @@
           href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
         - name: Kurz pro vývojáře (Pluralsight)
           href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
-    - name: Partnerská řešení
-      href: resource-partners-knowledge-mining.md
     - name: Nejčastější dotazy
       href: search-faq-frequently-asked-questions.md
     - name: Ceny

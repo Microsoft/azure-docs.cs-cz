@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 362d5f2046ff4e9ba52dd2e73433cc39e80f7a50
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 6ca489dc0c5c7ba8ba67f3456d04be953544a8fb
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420593"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987823"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Škálování pro výkon v Azure Kognitivní hledání
 
@@ -86,6 +86,27 @@ Repliky neumožňují nejen snížit latenci dotazů, ale můžou taky umožňov
 Další podrobnosti najdete na webu [Azure Kognitivní hledání smlouva SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 Vzhledem k tomu, že repliky jsou kopiemi vašich dat, může Azure Kognitivní hledání provádět restartování počítače a údržbu proti jedné replice, zatímco provádění dotazů pokračuje na dalších replikách. Naopak pokud ponecháte repliky, budete mít k disgradaci výkonu dotazů. za předpokladu, že tyto repliky byly prostředkem, který se používá.
+
+### <a name="availability-zones"></a>Zóny dostupnosti
+
+[Zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview) rozdělit datová centra oblasti do různých fyzických skupin umístění a zajistit tak vysokou dostupnost v rámci regionu. Vyhledávací služba běží v jedné oblasti. repliky běží v různých zónách.
+
+Zóny dostupnosti se službou Azure Kognitivní hledání můžete využít tak, že do vyhledávací služby přidáte dvě nebo víc replik. Každá replika bude umístěna v jiné zóně dostupnosti v rámci dané oblasti. Pokud máte více replik, než Zóny dostupnosti, repliky budou rozloženy mezi Zóny dostupnosti, jak je to možné.
+
+Azure Kognitivní hledání aktuálně podporuje Zóny dostupnosti pro služby úrovně Standard nebo vyšší, které byly vytvořeny v jedné z následujících oblastí:
++ Austrálie – východ (vytvořeno 30. ledna 2021 nebo novější)
++ Kanada – střed (vytvořeno 30. ledna 2021 nebo novější)
++ Střed USA (vytvořeno 4. prosince 2020 nebo novější)
++ Východní USA 2 (vytvořeno 30. ledna 2021 nebo novější)
++ Francie – střed (vytvořeno 23. října 2020 nebo novější)
++ Japonsko – východ (vytvořeno 30. ledna 2021 nebo novější)
++ Severní Evropa (vytvořeno 28. ledna 2021 nebo novější)
++ Jižní Východní Asie (vytvořeno 31. ledna 2021 nebo novější)
++ Velká Británie – jih (vytvořeno 30. ledna 2021 nebo novější)
++ Západní Evropa (vytvořeno 29. ledna 2021 nebo novější)
++ Západní USA 2 (vytvořeno 30. ledna 2021 nebo novější)
+
+Zóny dostupnosti nemá vliv na [smlouva SLA Azure kognitivní hledání](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 ## <a name="scale-for-geo-distributed-workloads-and-geo-redundancy"></a>Škálování pro geograficky distribuované úlohy a geografickou redundanci
 

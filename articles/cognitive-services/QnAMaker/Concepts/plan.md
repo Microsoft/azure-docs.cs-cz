@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: e523b35afca33213a40060819a1293e94d413b00
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: bf5582016f74e67926c38111a3d8d2f468f3ac79
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222861"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987993"
 ---
 # <a name="plan-your-qna-maker-app"></a>Plánování aplikace QnA Maker
 
@@ -124,17 +124,17 @@ Měli byste navrhnout svůj postup konverzace s použitím smyčky, aby uživate
 
 Spolupracovníci můžou být jiní vývojáři, kteří sdílejí úplný vývojový zásobník aplikace znalostní báze Knowledge Base nebo můžou být omezené jenom na vytváření znalostní báze.
 
-Vytváření znalostí ve znalostní bázi podporuje několik [oprávnění pro přístup na základě rolí](../reference-role-based-access-control.md) , které použijete v Azure Portal k omezení rozsahu schopností spolupracovníka.
+Vytváření znalostí ve znalostní bázi podporuje několik oprávnění pro přístup na základě rolí, které použijete v Azure Portal k omezení rozsahu schopností spolupracovníka.
 
 ## <a name="integration-with-client-applications"></a>Integrace s klientskými aplikacemi
 
-Integrace s [klientskými aplikacemi](../index.yml) je zajištěna odesláním dotazu do koncového bodu modulu runtime předpovědi. Do vašeho koncového bodu webové aplikace QnA Maker se pošle dotaz do konkrétní znalostní báze se žádostí o sadu SDK nebo na základě REST.
+Integrace s klientskými aplikacemi je zajištěna odesláním dotazu do koncového bodu modulu runtime předpovědi. Do vašeho koncového bodu webové aplikace QnA Maker se pošle dotaz do konkrétní znalostní báze se žádostí o sadu SDK nebo na základě REST.
 
 Aby klientská aplikace správně ověřovala požadavky klienta, musí odeslat správné přihlašovací údaje a ID znalostní báze. Pokud používáte Azure Bot Service, nakonfigurujte tato nastavení jako součást konfigurace robota v Azure Portal.
 
 ### <a name="conversation-flow-in-a-client-application"></a>Tok konverzace v klientské aplikaci
 
-Tok konverzací v [klientské aplikaci](../index.yml), jako je třeba robot Azure, může vyžadovat funkčnost před a po interakci se znalostní bázi.
+Tok konverzací v klientské aplikaci, jako je třeba robot Azure, může vyžadovat funkčnost před a po interakci se znalostní bázi.
 
 Podporuje vaše klientská aplikace tok konverzace, a to poskytnutím náhradních prostředků pro zpracování následných výzev nebo zahrnutí funkce CHITEST-CHITEST? V takovém případě si tyto návrhy Navrhněte a ujistěte se, že dotaz klientské aplikace je správně zpracován jinou službou nebo při odeslání do znalostní báze.
 
@@ -148,7 +148,7 @@ V takovém scénáři [sdílené architektury](../choose-natural-language-proces
 
 ### <a name="active-learning-from-a-client-application"></a>Aktivní učení z klientské aplikace
 
-QnA Maker využívá _aktivní učení_ k vylepšení znalostní báze tím, že navrhuje alternativní otázky na odpověď. Klientská aplikace zodpovídá za součást tohoto [aktivního učení](active-learning-suggestions.md). Prostřednictvím výzev pro konverzaci může klientská aplikace zjistit, že znalostní báze vrátil odpověď, která není pro uživatele užitečná, a může určit lepší odpověď. Klientská aplikace musí [tyto informace odeslat zpět do znalostní báze](active-learning-suggestions.md#how-you-give-explicit-feedback-with-the-train-api) , aby se zlepšila kvalita předpovědi.
+QnA Maker využívá _aktivní učení_ k vylepšení znalostní báze tím, že navrhuje alternativní otázky na odpověď. Klientská aplikace zodpovídá za součást tohoto [aktivního učení](../How-To/use-active-learning.md). Prostřednictvím výzev pro konverzaci může klientská aplikace zjistit, že znalostní báze vrátil odpověď, která není pro uživatele užitečná, a může určit lepší odpověď. Klientská aplikace musí tyto informace odeslat zpět do znalostní báze, aby se zlepšila kvalita předpovědi.
 
 ### <a name="providing-a-default-answer"></a>Zadání výchozí odpovědi
 
@@ -208,16 +208,16 @@ Ve spravovaném nasazení se telemetrie nabízí prostřednictvím [služby Azur
 
 ### <a name="knowledge-base-development-of-qna-maker-pairs"></a>Vývoj dvojic QnA Maker ve znalostní bázi Knowledge Base
 
-Vaše [páry QnA](question-answer-set.md) by se měly navrhovat a vyvíjet na základě využití klientských aplikací.
+Vaše páry QnA by se měly navrhovat a vyvíjet na základě využití klientských aplikací.
 
 Každý pár může obsahovat:
 * Metadata jsou při dotazování, která umožňují označit páry QnA dalšími informacemi o zdroji, obsahu, formátu a účelu vašich dat, filtrovat.
 * Následné výzvy – pomáhají určit cestu přes znalostní bázi, aby uživatel dostal správnou odpověď.
-* Alternativní otázky – důležité: Pokud chcete, aby vyhledávání odpovídalo vaší odpovědi z různých forem otázky, je důležité. [Aktivní návrhy výukových kurzů](active-learning-suggestions.md) se zapínají na alternativní otázky.
+* Alternativní otázky – důležité: Pokud chcete, aby vyhledávání odpovídalo vaší odpovědi z různých forem otázky, je důležité. [Aktivní návrhy výukových kurzů](../How-To/use-active-learning.md) se zapínají na alternativní otázky.
 
 ### <a name="devops-development"></a>Vývoj DevOps
 
-Vývoj znalostní báze pro vložení do kanálu DevOps vyžaduje, aby znalostní báze byla během [dávkového testování](../index.yml)izolovaná.
+Vývoj znalostní báze pro vložení do kanálu DevOps vyžaduje, aby znalostní báze byla během dávkového testování izolovaná.
 
 Znalostní báze sdílí index Kognitivní hledání se všemi ostatními základy znalostní báze na prostředku QnA Maker. I když je znalostní báze izolována oddílem, sdílení indexu může v porovnání s publikovanou znalostní báze způsobit rozdíl ve skóre.
 

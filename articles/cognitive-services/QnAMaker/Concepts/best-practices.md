@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: ee8d838ba315c2e261a61699948b71a710341165
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 8a6189a613c9a6768428a13e35e0e009894b8b3f
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346354"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988032"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Osvědčené postupy QnA Maker znalostní bázi Knowledge Base
 
@@ -75,7 +75,7 @@ Doporučujeme, aby následující funkce CHITEST-chat QnAs konkrétnější:
 * Co můžete udělat?
 * Kolik ti je?
 * Kdo vám to vytvořil?
-* Dobrý den
+* Hello (Nazdar)
 
 ### <a name="adding-custom-chit-chat-with-a-metadata-tag"></a>Přidání vlastního funkce CHITEST – chat se značkou metadat
 
@@ -141,7 +141,7 @@ Například můžete mít dvě samostatné QnAs s následujícími otázkami:
 Vzhledem k tomu, že tyto dvě QnAs jsou fráze s velmi podobnými slovy, může tato podobnost způsobit velmi podobné skóre pro mnoho uživatelských dotazů, které jsou fráze, jako  *je například `<x>` umístění*. Místo toho se pokuste jasně odlišit pomocí dotazů, jako  *je "kde je zaparkovaná dávka"* a *"kde je ATM"*, a to tak, že se vyhnete slovám, jako je "umístění", které by mohlo být ve vaší znalostní bázi hodně otázek.
 
 ## <a name="collaborate"></a>Spolupráce
-QnA Maker umožňuje uživatelům [spolupracovat](../index.yml) na znalostní bázi. Uživatelé potřebují přístup ke skupině prostředků Azure QnA Maker, aby mohli získat přístup ke znalostní bázi. Některé organizace můžou chtít využívat úpravy a údržbu znalostní báze a pořád budou moct chránit přístup ke svým prostředkům Azure. Tento model schvalovatele editoru se provádí nastavením dvou stejných [služeb QnA maker](../How-to/set-up-qnamaker-service-azure.md) v různých předplatných a výběrem jednoho pro cyklus úprav a testování. Po dokončení testování se obsah znalostní báze přenese pomocí procesu importu a [exportu](../Tutorials/migrate-knowledge-base.md) do QnA maker služby schvalovatele, která nakonec publikuje znalostní bázi a aktualizuje koncový bod.
+QnA Maker umožňuje uživatelům spolupracovat na znalostní bázi. Uživatelé potřebují přístup ke skupině prostředků Azure QnA Maker, aby mohli získat přístup ke znalostní bázi. Některé organizace můžou chtít využívat úpravy a údržbu znalostní báze a pořád budou moct chránit přístup ke svým prostředkům Azure. Tento model schvalovatele editoru se provádí nastavením dvou stejných [služeb QnA maker](../How-to/set-up-qnamaker-service-azure.md) v různých předplatných a výběrem jednoho pro cyklus úprav a testování. Po dokončení testování se obsah znalostní báze přenese pomocí procesu importu a [exportu](../Tutorials/migrate-knowledge-base.md) do QnA maker služby schvalovatele, která nakonec publikuje znalostní bázi a aktualizuje koncový bod.
 
 
 

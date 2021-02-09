@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: cb6d0ee9c651ca1dcc554f5951a5733727af2d6b
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: f43fa06cf93d383efcb0fe746de28ab143280e50
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954102"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988014"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Spolupráce s ostatními autory a editory
 
@@ -46,7 +46,7 @@ Pokud máte v úmyslu volat [vytváření rozhraní API](../index.yml), přečt�
 
 ## <a name="authenticate-by-qna-maker-portal"></a>Ověřování pomocí portálu QnA Maker
 
-Pokud vytváříte a spolupracujete s portálem QnA Maker, po [Přidání příslušné role k prostředku pro spolupracovníka](../index.yml)QnA maker portál spravuje všechna přístupová oprávnění.
+Pokud vytváříte a spolupracujete s portálem QnA Maker, po přidání příslušné role k prostředku pro spolupracovníka QnA Maker portál spravuje všechna přístupová oprávnění.
 
 ## <a name="authenticate-by-qna-maker-apis-and-sdks"></a>Ověřování pomocí QnA Maker rozhraní API a sad SDK
 
@@ -54,4 +54,4 @@ Pokud vytváříte a spolupracujete s rozhraními API, a to buď prostřednictv�
 
 ## <a name="next-step"></a>Další krok
 
-* Návrh znalostní báze pro [jazyky](../index.yml) a pro [klientské aplikace](../index.yml)
+* Návrh znalostní báze pro jazyky a pro klientské aplikace

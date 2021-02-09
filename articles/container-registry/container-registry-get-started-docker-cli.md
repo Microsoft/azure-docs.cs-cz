@@ -1,21 +1,21 @@
 ---
-title: Obrázek Docker pro vyžádání obsahu & push
-description: Nahrání a stažení imagí Dockeru do soukromého registru kontejnerů v Azure pomocí rozhraní příkazového řádku Dockeru
+title: Obrázek kontejneru pro vyžádání obsahu push &
+description: Vložení imagí Docker do soukromého registru kontejnerů v Azure pomocí Docker CLI
 ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: d04a5fcbc4d6294a216ddfc9a8e6ea1ef98825a3
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 83ef385313b035f5e5d7d993e7948725906c75a7
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071625"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987775"
 ---
-# <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Nahrání první image do soukromého registru kontejnerů Dockeru pomocí rozhraní příkazového řádku Dockeru
+# <a name="push-your-first-image-to-your-azure-container-registry-using-the-docker-cli"></a>Nahrání první image do služby Azure Container Registry pomocí Docker CLI
 
-Registr kontejnerů Azure uchovává a spravuje privátní image kontejnerů [Dockeru](https://hub.docker.com) podobným způsobem, jakým [Docker Hub](https://hub.docker.com/) uchovává veřejné image Dockeru. K [přihlášení](https://docs.docker.com/engine/reference/commandline/login/), [vložení](https://docs.docker.com/engine/reference/commandline/push/), [vyžádání](https://docs.docker.com/engine/reference/commandline/pull/)a dalším operacím v registru kontejneru můžete použít [rozhraní příkazového řádku Docker](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI).
+Registr kontejnerů Azure ukládá a spravuje privátní image kontejnerů a jiné artefakty, podobně jako [Docker Hub](https://hub.docker.com/) ukládá veřejné image kontejneru Docker. Pro operace [přihlášení](https://docs.docker.com/engine/reference/commandline/login/), [vložení](https://docs.docker.com/engine/reference/commandline/push/), [stažení](https://docs.docker.com/engine/reference/commandline/pull/)a dalších imagí kontejneru v registru kontejneru můžete použít [rozhraní příkazového řádku Docker](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI).
 
-V následujících krocích stáhnete oficiální [Image Nginx](https://store.docker.com/images/nginx) z registru veřejného Docker Hub, označíte ji pro privátní službu Azure Container Registry, nahrajte ji do registru a pak ji nahrajte z registru.
+V následujících krocích stáhnete veřejnou [Image Nginx](https://store.docker.com/images/nginx), označíte ji pro privátní službu Azure Container Registry, nahrajte ji do registru a pak ji nahrajte z registru.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -24,9 +24,10 @@ V následujících krocích stáhnete oficiální [Image Nginx](https://store.do
 
 ## <a name="log-in-to-a-registry"></a>Přihlášení k registru
 
-Existuje [několik způsobů](container-registry-authentication.md) , jak ověřit do privátního registru kontejneru. Doporučeným způsobem při práci na příkazovém řádku je příkaz Azure CLI [AZ ACR Login](/cli/azure/acr?view=azure-cli-latest#az-acr-login). Například pro přihlášení k registru s názvem *myregistry*:
+Existuje [několik způsobů](container-registry-authentication.md) , jak ověřit do privátního registru kontejneru. Doporučeným způsobem při práci na příkazovém řádku je příkaz Azure CLI [AZ ACR Login](/cli/azure/acr#az-acr-login). Pokud se například chcete přihlásit k registru s názvem *myregistry*, přihlaste se do Azure CLI a pak proveďte ověření v registru:
 
 ```azurecli
+az login
 az acr login --name myregistry
 ```
 
@@ -43,12 +44,12 @@ Oba příkazy se vrátí `Login Succeeded` po dokončení.
 > [!TIP]
 > Při použití `docker login` a při označování obrázků pro doručování do registru vždy zadejte plně kvalifikovaný název registru (všechna malá písmena). V příkladech v tomto článku je plně kvalifikovaný název *myregistry.azurecr.IO*.
 
-## <a name="pull-the-official-nginx-image"></a>Stažení oficiální image Nginx
+## <a name="pull-a-public-nginx-image"></a>Stažení veřejné image Nginx
 
-Nejdřív Stáhněte image Public Nginx do svého místního počítače.
+Nejdřív si načetli veřejnou image Nginx do svého místního počítače. Tento příklad načte obrázek z Microsoft Container Registry.
 
 ```
-docker pull nginx
+docker pull mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 ```
 
 ## <a name="run-the-container-locally"></a>Místní spuštění kontejneru
@@ -56,7 +57,7 @@ docker pull nginx
 Spusťte následující příkaz [Docker Run](https://docs.docker.com/engine/reference/run/) , který spustí místní instanci Nginx kontejneru interaktivně ( `-it` ) na portu 8080. `--rm`Argument určuje, zda má být kontejner při zastavení odebrán.
 
 ```
-docker run -it --rm -p 8080:80 nginx
+docker run -it --rm -p 8080:80 mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 ```
 
 Přejděte k `http://localhost:8080` zobrazení výchozí webové stránky, kterou obsluhuje Nginx, na běžícím kontejneru. Měla by se zobrazit stránka podobná této:
@@ -72,7 +73,7 @@ Chcete-li zastavit a odebrat kontejner, stiskněte klávesu `Control` + `C` .
 Pomocí [značky Docker](https://docs.docker.com/engine/reference/commandline/tag/) vytvořte alias image s plně kvalifikovanou cestou k vašemu registru. V tomto příkladu se určí obor názvů `samples`, aby se zabránilo nepořádku v kořenovém adresáři registru.
 
 ```
-docker tag nginx myregistry.azurecr.io/samples/nginx
+docker tag mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine myregistry.azurecr.io/samples/nginx
 ```
 
 Další informace o označování pomocí oborů názvů najdete v části [obory názvů úložiště](container-registry-best-practices.md#repository-namespaces) v tématu [osvědčené postupy pro Azure Container Registry](container-registry-best-practices.md).

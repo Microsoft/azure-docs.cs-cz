@@ -3,12 +3,12 @@ title: Kurz – zálohování SAP HANA databází na virtuálních počítačíc
 description: V tomto kurzu se naučíte zálohovat SAP HANA databáze běžící na virtuálním počítači Azure do trezoru služby Azure Backup Recovery Services.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 31a0a773096ec0f69e87bfd4a05f8ba98185e6cf
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: ede8ebab205e814de3988a2b5c432a21f965eb55
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695210"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987788"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Kurz: zálohování SAP HANA databází ve virtuálním počítači Azure
 
@@ -25,7 +25,7 @@ V tomto kurzu se dozvíte, jak zálohovat SAP HANA databáze běžící na virtu
 >[!NOTE]
 >Od 1. srpna 2020 je SAP HANA zálohování pro RHEL (7,4, 7,6, 7,7 & 8,1) všeobecně dostupné.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před konfigurací zálohování se ujistěte, že jste provedli následující kroky:
 
@@ -51,7 +51,7 @@ V následující tabulce jsou uvedeny různé alternativy, které můžete použ
 
 | **Možnost**                        | **Výhody**                                               | **Nevýhody**                                            |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Soukromé koncové body                 | Povolení zálohování přes privátní IP adresy uvnitř virtuální sítě  <br><br>   Podrobné řízení na straně sítě a trezoru | Má za následek standardní [náklady](https://azure.microsoft.com/pricing/details/private-link/) na soukromý koncový bod |
+| Privátní koncové body                 | Povolení zálohování přes privátní IP adresy uvnitř virtuální sítě  <br><br>   Podrobné řízení na straně sítě a trezoru | Má za následek standardní [náklady](https://azure.microsoft.com/pricing/details/private-link/) na soukromý koncový bod |
 | Značky služby NSG                  | Jednodušší Správa jako změny rozsahu se sloučí automaticky.   <br><br>   Žádné další náklady | Dá se použít jenom s skupin zabezpečení sítě  <br><br>    Poskytuje přístup k celé službě. |
 | Azure Firewall značek plně kvalifikovaného názvu domény          | Jednodušší Správa, protože jsou automaticky spravovány požadované plně kvalifikované názvy domén | Dá se použít jenom s Azure Firewall.                         |
 | Povolení přístupu k plně kvalifikovanému názvu domény služby/IP adresám | Žádné další náklady   <br><br>  Funguje se všemi zařízeními a branami zabezpečení sítě. | Pro získání pøístupu k široké škále IP adres nebo plně kvalifikovaných názvů domén může být potřeba.   |
@@ -59,7 +59,7 @@ V následující tabulce jsou uvedeny různé alternativy, které můžete použ
 
 Další podrobnosti o použití těchto možností jsou sdílené níže:
 
-### <a name="private-endpoints"></a>Soukromé koncové body
+### <a name="private-endpoints"></a>Privátní koncové body
 
 Soukromé koncové body umožňují zabezpečené připojení ze serverů ve virtuální síti do trezoru Recovery Services. Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro váš trezor. Síťový provoz mezi prostředky uvnitř virtuální sítě a trezoru se přenáší přes virtuální síť a privátní odkaz na páteřní síť Microsoftu. Tím se eliminuje riziko z veřejného Internetu. [Tady](./private-endpoints.md)si můžete přečíst další informace o privátních koncových bodech pro Azure Backup.
 
@@ -98,6 +98,46 @@ K povolení přístupu k požadovaným službám z vašich serverů můžete pou
 ### <a name="use-an-http-proxy-server-to-route-traffic"></a>Použití proxy server HTTP ke směrování provozu
 
 Při zálohování databáze SAP HANA běžící na virtuálním počítači Azure používá rozšíření zálohování na virtuálním počítači rozhraní API HTTPS k posílání příkazů pro správu do Azure Backup a dat do Azure Storage. Rozšíření zálohování používá pro ověřování taky službu Azure AD. Přesměrujte provoz rozšíření zálohování pro tyto tři služby přes proxy server HTTP. Pro povolení přístupu k požadovaným službám použijte seznam IP adres a plně kvalifikovaných názvů domén uvedených výše. Ověřené proxy servery se nepodporují.
+
+## <a name="understanding-backup-and-restore-throughput-performance"></a>Princip výkonu zálohování a obnovení propustnosti
+
+Zálohy (protokol a non-log) ve SAP HANA virtuálních počítačů Azure poskytovaných prostřednictvím Backint jsou streamování do trezorů služby Azure Recovery Services, takže je důležité pochopit tuto metodologii streamování.
+
+Komponenta Backint systému HANA poskytuje "trubky" (kanál pro čtení z a kanál pro zápis do), připojené k podkladovým diskům, kde jsou umístěny soubory databáze, které jsou následně čteny službou Azure Backup a přepravovány do služby Azure Recovery Services trezor. Služba Azure Backup také provádí kontrolní součet k ověřování datových proudů, kromě kontrol nativního ověření backint. Tato ověření budou mít jistotu, že data obsažená ve službě Azure Recovery Services trezor jsou skutečně spolehlivá a obnovitelná.
+
+Vzhledem k tomu, že se streamy primárně týkají disků, potřebujete pochopit výkon disku a vyhodnocovat tak výkon zálohování a obnovení. V [tomto článku](https://docs.microsoft.com/azure/virtual-machines/disks-performance) najdete podrobné informace o propustnosti a výkonu disku ve virtuálních počítačích Azure. Tyto podmínky se vztahují také na výkon zálohování a obnovení.
+
+**Služba Azure Backup se pokusí dosáhnout až ~ 420 MB/s pro zálohování bez protokolu (například úplné, rozdílové a přírůstkové) a až 100 MB/s pro zálohování protokolů pro Hana**. Jak je uvedeno výše, nejsou zaručeny rychlosti a závisí na následujících faktorech:
+
+* Maximální propustnost disku pro virtuální počítač, který není v mezipaměti
+* Základní typ disku a jeho propustnost
+* Počet procesů, které se pokoušejí číst a zapisovat do stejného disku ve stejnou dobu.
+
+> [!IMPORTANT]
+> U menších virtuálních počítačů, u kterých je propustnost neuloženého disku v mezipaměti velmi blízko až 400 MB/s, může dojít k zaznamenání, že služba zálohování zakládá celý diskový IOPS, což může mít vliv na operace SAP HANA související s čtením a zápisem z disků. V takovém případě můžete v případě, že si přejete omezení nebo omezení spotřeby služby Backup na maximální limit, použít další část.
+
+### <a name="limiting-backup-throughput-performance"></a>Omezení výkonu propustnosti zálohování
+
+Pokud chcete omezit využití vstupně-výstupních operací služby Backup na maximální hodnotu, proveďte následující kroky.
+
+1. Přejít do složky opt/msawb/bin
+2. Vytvořte nový soubor JSON s názvem ExtensionSettingOverrides.JSON.
+3. Do souboru JSON přidejte pár klíč-hodnota následujícím způsobem:
+
+    ```json
+    {
+    "MaxUsableVMThroughputInMBPS": 200
+    }
+    ```
+
+4. Změňte oprávnění a vlastnictví souboru následujícím způsobem:
+    
+    ```bash
+    chmod 750 ExtensionSettingsOverrides.json
+    chown root:msawb ExtensionSettingsOverrides.json
+    ```
+
+5. Není nutné žádné restartování žádné služby. Služba Azure Backup se pokusí omezit výkon propustnosti, jak je uvedeno v tomto souboru.
 
 ## <a name="what-the-pre-registration-script-does"></a>Co skript pro předběžnou registraci dělá
 
@@ -158,7 +198,7 @@ Chcete-li vytvořit trezor Služeb zotavení:
    Pokud chcete zobrazit seznam dostupných skupin prostředků ve vašem předplatném, vyberte **použít existující** a pak v rozevíracím seznamu vyberte prostředek. Pokud chcete vytvořit novou skupinu prostředků, vyberte **Vytvořit novou** a zadejte název. Úplné informace o skupinách prostředků najdete v tématu [přehled Azure Resource Manager](../azure-resource-manager/management/overview.md).
    * **Location** (Umístění): Vyberte zeměpisnou oblast trezoru. Trezor musí být ve stejné oblasti jako virtuální počítač se spuštěným SAP HANA. Použili jsme **východní USA 2**.
 
-5. Vyberte **zkontrolovat + vytvořit**.
+5. Vyberte **Zkontrolovat a vytvořit**.
 
    ![Vyberte zkontrolovat & vytvořit.](./media/tutorial-backup-sap-hana-db/review-create.png)
 

@@ -3,12 +3,12 @@ title: Ověřování pomocí spravované identity
 description: Poskytněte přístup k obrázkům v soukromém registru kontejneru pomocí uživatelsky přiřazené spravované identity Azure, která je přiřazená uživatelem nebo systémem.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 9a144f0e865cfc9bf857752eed65dbe5cda88bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68564cc5743b1deb43bf39f897c239dc683c334c
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253458"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987751"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Použití spravované identity Azure k ověření ve službě Azure Container Registry 
 
@@ -53,7 +53,7 @@ V tomto článku se předpokládá, že máte `aci-helloworld:v1` Image kontejne
 
 ## <a name="create-a-docker-enabled-vm"></a>Vytvoření virtuálního počítače s podporou Docker
 
-Vytvořte virtuální počítač s Ubuntu s podporou Docker. Na virtuálním počítači je také potřeba nainstalovat rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) . Pokud už máte virtuální počítač Azure, přeskočte tento krok a vytvořte virtuální počítač.
+Vytvořte virtuální počítač s Ubuntu s podporou Docker. Na virtuálním počítači je také potřeba nainstalovat rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) . Pokud už máte virtuální počítač Azure, přeskočte tento krok a vytvořte virtuální počítač.
 
 Nasaďte výchozí Ubuntu virtuální počítač Azure pomocí [AZ VM Create][az-vm-create]. Následující příklad vytvoří virtuální počítač s názvem *myDockerVM* v existující skupině prostředků s názvem *myResourceGroup*:
 
@@ -86,7 +86,7 @@ sudo apt install docker.io -y
 Po instalaci spusťte následující příkaz, který ověří, jestli je na virtuálním počítači správně spuštěný Docker:
 
 ```bash
-sudo docker run -it hello-world
+sudo docker run -it mcr.microsoft.com/hello-world
 ```
 
 Výstup:
@@ -99,7 +99,7 @@ This message shows that your installation appears to be working correctly.
 
 ### <a name="install-the-azure-cli"></a>Instalace Azure CLI
 
-Podle postupu v části [instalace Azure CLI pomocí apt](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) nainstalujte rozhraní příkazového řádku Azure do svého virtuálního počítače s Ubuntu. V tomto článku se ujistěte, že instalujete verzi 2.0.55 nebo novější.
+Podle postupu v části [instalace Azure CLI pomocí apt](/cli/azure/install-azure-cli-apt) nainstalujte rozhraní příkazového řádku Azure do svého virtuálního počítače s Ubuntu. V tomto článku se ujistěte, že instalujete verzi 2.0.55 nebo novější.
 
 Ukončete relaci SSH.
 
@@ -107,7 +107,7 @@ Ukončete relaci SSH.
 
 ### <a name="create-an-identity"></a>Vytvoření identity
 
-Pomocí příkazu [AZ identity Create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) vytvořte v předplatném identitu. Stejnou skupinu prostředků, kterou jste použili dříve, můžete použít k vytvoření registru kontejneru nebo virtuálního počítače nebo jiného.
+Pomocí příkazu [AZ identity Create](/cli/azure/identit#az-identity-create) vytvořte v předplatném identitu. Stejnou skupinu prostředků, kterou jste použili dříve, můžete použít k vytvoření registru kontejneru nebo virtuálního počítače nebo jiného.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRId

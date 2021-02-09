@@ -5,21 +5,17 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: e4f0e229488093067b231a5c92334238ca216234
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 652489e8de68d61707fd419843f0dbb2ffd83754
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550551"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987936"
 ---
 # <a name="manage-qna-maker-app"></a>Správa aplikace QnA Maker
 
 QnA Maker umožňuje spolupracovat s různými autory a editory obsahu tím, že nabízí možnost omezit přístup spolupracovníka na základě role spolupracovníka.
 Přečtěte si další informace o [QnA maker konceptech ověřování spolupracovníka](../Concepts/role-based-access-control.md).
-
-Kvalitu znalostní báze můžete také vylepšit tím, že navrhujete alternativní otázky prostřednictvím [aktivního učení](../Concepts/active-learning-suggestions.md). V seznamu alternativních otázek se vezme v úvahu, že se odeberou uživatelé a zobrazují se jako návrhy. Máte flexibilní možnost přidat tyto návrhy jako alternativní otázky nebo je odmítnout.
-
-Vaše znalostní báze se nemění automaticky. Aby se změny projevily, musíte přijmout návrhy. Tyto návrhy přidávají otázky, ale nemění ani neodstraňují stávající otázky.
 
 ## <a name="add-azure-role-based-access-control-azure-rbac"></a>Přidání řízení přístupu na základě role Azure (Azure RBAC)
 

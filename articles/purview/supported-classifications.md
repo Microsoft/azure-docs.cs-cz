@@ -6,17 +6,23 @@ ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: reference
-ms.date: 11/20/2020
-ms.openlocfilehash: 7458b027add8be86d9491c674c2f1a0bc9fbc68c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.date: 2/5/2021
+ms.openlocfilehash: d98f2f80bf22627eb34855234e22e314c241c852
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552828"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988312"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Podporované klasifikace v Azure dosah
 
 Tento článek obsahuje seznam podporovaných a definovaných systémových klasifikací v Azure dosah (Preview).
+
+
+- **Rozdílová prahová hodnota shody**: celkový počet jedinečných datových hodnot, které musí být ve sloupci nalezeny předtím, než skener spustí datový vzor. Naše pravidla klasifikace systému vyžadují, aby v každém sloupci bylo aspoň 8 jedinečných hodnot, aby je bylo možné považovat za klasifikace. Tato hodnota vyžaduje, aby tento sloupec obsahoval dostatek dat, aby ho mohl přesně klasifikovat skener. Například sloupec, který obsahuje více řádků, které obsahují hodnotu 1, nebude klasifikován. Sloupce, které obsahují jeden řádek s hodnotou a zbytek řádků, obsahují hodnoty null ani nebudou klasifikovány. Pokud zadáte více vzorů, bude tato hodnota platit pro každý z nich.
+
+- **Minimální prahová hodnota shody**: Jedná se o minimální procento shody hodnot dat ve sloupci, který musí být nalezen skenerem pro použití klasifikace. Systémová hodnota klasifikace je nastavená na 60%.
+
 
 ## <a name="defined-system-classifications"></a>Definované klasifikace systému
 
@@ -274,7 +280,7 @@ Driver's License#
 Driver's Licenses#
 ```
 
-## <a name="australia-medical-account-number"></a>Číslo zdravotního účtu Austrálie
+## <a name="australian-medicare-number"></a>Číslo australského Medicareu
 
 ### <a name="format"></a>Formát
 
@@ -291,7 +297,7 @@ Driver's Licenses#
 
 ### <a name="keywords"></a>Klíčová slova
 
-#### <a name="keyword_australia_medical_account_number"></a>Keyword_Australia_Medical_Account_Number
+#### <a name="keyword_australia_medicare_number"></a>Keyword_Australia_Medicare_Number
 
 ```
 bank account details
