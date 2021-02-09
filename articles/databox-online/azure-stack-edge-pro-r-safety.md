@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 12/18/2020
+ms.date: 02/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 627196c0a76f1de23f7e5421c47a33356a73967f
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: cc24839396116a5b581758b29b087c237a6f902b
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709431"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981336"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Pokyny pro zabezpečení Azure Stack Edge pro R
 
@@ -27,17 +27,17 @@ Než použijete zařízení Azure Stack Edge pro R, přečtěte si všechny bezp
 
 U příznaků upozorňujících na nebezpečí nebezpečnosti jsou k disdobu následující slova:
 
-| Ikona | Popis |
+| Ikona | Description |
 |:--- |:--- |
 | ![Symbol nebezpečí](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)| **Nebezpečí:** Označuje nebezpečnou situaci, která, pokud se nevyhne, má za následek smrt nebo vážnou škodu. <br> **Upozornění:** Označuje nebezpečnou situaci, že pokud se nevyhnete, může dojít k úmrtí nebo závažné újmě. <br> **Upozornění:** Označuje nebezpečnou situaci, že pokud se nevyhnete, může dojít k menší nebo střední újmě.|
 |
 
 Při nastavování a spouštění Azure Stack hraničního zařízení pro R Edge se budou pozorovat následující ikony nebezpečí:
 
-| Ikona | Popis |
+| Ikona | Description |
 |:--- |:--- |
 | ![Nejprve si přečtěte všechny pokyny.](./media/azure-stack-edge-pro-r-safety/icon-safety-read-all-instructions.png) | Nejprve si přečtěte všechny pokyny. |
-| ![Symbol nebezpečí](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | Symbol nebezpečí |
+| ![Oznámení ikony oznámení ](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **:** | Indikuje informace považované za důležité, ale nesouvisí s rizikem. || ![Symbol nebezpečí](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | Symbol nebezpečí |
 | ![Ikona nebezpečí tipu](./media/azure-stack-edge-pro-r-safety/icon-safety-tip-hazard.png)  | Nebezpečí špičky|
 | ![Ikona velké váhy](./media/azure-stack-edge-pro-r-safety/icon-safety-heavy-weight.png)  | Těžká riziková rizika|
 | ![Ikona elektrického úrazu](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) | Nebezpečí elektrického úrazu |
@@ -88,6 +88,7 @@ Při nastavování a spouštění Azure Stack hraničního zařízení pro R Edg
   * K dispozici je dostatek místa pro přístup ke kabelům napájecího zdroje, protože slouží jako hlavní odpojení napájecího produktu.
 * Pro tento produkt nejsou k dispozici kabely Ethernet. Aby se snížilo elektromagnetické rušení, doporučuje se použít kabelovou kabeláž STP (s ochranou) CAT 6.
 * Nastavení vybavení v pracovní oblasti umožňující dostatečné vzduchové šíření zařízení; Zajistěte, aby se přední a zadní kryty kompletně odebraly, když je zařízení spuštěné.
+* Pro tento produkt nejsou k dispozici kabely Ethernet. Aby se snížilo elektromagnetické rušení, doporučuje se použít kabel CAT 6 stíněný (STP).
 * Nainstalujte zařízení v oblasti řízené teplotou bez vhodných kontaminujících látek a umožněte vhodnému vzduchovým pohybům na zařízení.
 * Udržujte si zařízení pryč ze zdrojů tekutých a nadměrně humidch prostředí.
 * Nepovolujte žádné kapalné ani žádné cizí objekty k zadání systému. Neumísťujte nápoje ani žádné jiné kapalné kontejnery na systém nebo poblíž.
@@ -207,7 +208,7 @@ A device that has a UPS installed is designed to operate in the following enviro
 > Maximum corrosive contaminant levels measured at &lt;/= 50% relative humidity. --> 
 
 
-> ![Upozornění na ikonu ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **:** &nbsp; změny nebo změny zařízení, která nejsou výslovně schválena společností Microsoft, mohou zrušit oprávnění uživatele k provozu tohoto zařízení.
+> ![Ikona oznámení – 2 ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **Upozornění:** &nbsp; změny nebo změny zařízení, které nejsou výslovně schválené společností Microsoft, mohou zrušit oprávnění uživatele k provozu tohoto zařízení.
 
 Kanada a USA:
 

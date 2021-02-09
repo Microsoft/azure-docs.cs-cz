@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: b7eaf374e72997013f09b1c94ce16c67d115a818
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a4f15a1a0911e5a33da8b5f9445709cb42e7e10e
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987367"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981506"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Vytvoření a zkoumání Azure Machine Learning datové sady s popisky
 
@@ -39,6 +39,9 @@ Po dokončení projektu označování dat můžete exportovat data popisku z pro
 ### <a name="coco"></a>Díky Coco 
 
  Soubor díky Coco se vytvoří ve výchozím úložišti objektů BLOB v pracovním prostoru Azure Machine Learning ve složce v rámci *exportu/díky Coco*. 
+ 
+>[!NOTE]
+>V projektech detekce objektů jsou normalizovány hodnoty bbox: [x, y, Width, Height] v souboru díky Coco. Jsou škálované na 1. Příklad: ohraničující rámeček na pozici (10, 10), s délkou 30 pixelů, 60 pixelů v pixelech, bude v obrázku 640 × 480 pixelů označen jako (0,015625. 0,02083, 0,046875, 0,125). Vzhledem k tomu, že coordintes jsou normalizovány, zobrazí se jako šířka "0,0" jako "width" a "Height" pro všechny obrázky. Skutečnou šířku a výšku lze získat pomocí knihovny Python, jako je OpenCV nebo Pillow (PIL).
 
 ### <a name="azure-machine-learning-dataset"></a>Azure Machine Learning datová sada
 

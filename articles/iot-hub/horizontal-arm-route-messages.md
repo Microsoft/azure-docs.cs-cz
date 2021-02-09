@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: robinsh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: 1b9c576ce03d808fe6a4d0cac5196dfcd1b73eab
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: fc8ddba2ec9b7bc9f1c2db8673ab805810afe17e
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545476"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981285"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>Rychlý Start: nasazení IoT Hub Azure a účtu úložiště pomocí šablony ARM
 
@@ -21,11 +21,11 @@ V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
-[![Nasazení do Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-iothub-auto-route-messages%2Fazuredeploy.json)
+[![Nasadit do Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-iothub-auto-route-messages%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -49,7 +49,7 @@ V této části najdete postup nasazení šablony, vytvoření virtuálního za�
     > [!TIP]
     > Kliknutím na tlačítko níže spustíte nasazení šablony. I když je spuštěný, nastavte aplikaci ARM-pro čtení a zápis, která se má spustit.
 
-    [![Nasazení do Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-iothub-auto-route-messages%2Fazuredeploy.json)
+    [![Nasadit do Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-iothub-auto-route-messages%2Fazuredeploy.json)
 
 1. Stažení a extrahování [ukázek pro IoT C#](/samples/azure-samples/azure-iot-samples-csharp/azure-iot-samples-for-csharp-net/)
 
@@ -61,7 +61,7 @@ V této části najdete postup nasazení šablony, vytvoření virtuálního za�
 
    ![Zobrazení prostředků ve skupině prostředků](./media/horizontal-arm-route-messages/02-view-resources-in-group.png)
 
-1. Potřebujete **název centra** . V seznamu prostředků vyberte centrum. Zkopírujte název centra z horní části IoT Hub do schránky systému Windows.
+1. Potřebujete **název centra**. V seznamu prostředků vyberte centrum. Zkopírujte název centra z horní části IoT Hub do schránky systému Windows.
 
    ![Zkopírovat název centra](./media/horizontal-arm-route-messages/03-copy-hub-name.png)
 
@@ -83,15 +83,15 @@ V této části najdete postup nasazení šablony, vytvoření virtuálního za�
 
 1. Na pravé straně obrazovky vyberte **+ Nová** a přidejte tak nové zařízení.
 
-   Zadejte nový název zařízení. V tomto rychlém startu se používá název začínající **contoso-test-Device** . Uložte zařízení a pak znovu otevřete tuto obrazovku, abyste získali klíč zařízení. (Klíč se vygeneruje při zavření podokna.) Vyberte buď primární, nebo sekundární klíč, a zkopírujte ho do schránky Windows. V příkazovém okně nastavte příkaz, který má být spuštěn, a potom stiskněte klávesu **ENTER** . Příkaz by měl vypadat nějak takto, ale s klíčem zařízení vloženým v:
+   Zadejte nový název zařízení. V tomto rychlém startu se používá název začínající **contoso-test-Device**. Uložte zařízení a pak znovu otevřete tuto obrazovku, abyste získali klíč zařízení. (Klíč se vygeneruje při zavření podokna.) Vyberte buď primární, nebo sekundární klíč, a zkopírujte ho do schránky Windows. V příkazovém okně nastavte příkaz, který má být spuštěn, a potom stiskněte klávesu **ENTER**. Příkaz by měl vypadat nějak takto, ale s klíčem zařízení vloženým v:
 
    ```cmd
    SET IOT_DEVICE_KEY=<device-key-goes-here>
    ```
 
-1. Poslední proměnnou prostředí je **ID zařízení** . V příkazovém okně nastavte příkaz a proveďte ho.
+1. Poslední proměnnou prostředí je **ID zařízení**. V příkazovém okně nastavte příkaz a proveďte ho.
 
-   ```cms
+   ```cmd
    SET IOT_DEVICE_ID=<device-id-goes-here>
    ```
 
@@ -101,13 +101,13 @@ V této části najdete postup nasazení šablony, vytvoření virtuálního za�
    SET IOT_DEVICE_ID=Contoso-Test-Device
    ```
 
-1. Chcete-li zobrazit proměnné prostředí, které jste definovali, zadejte do příkazového řádku příkaz SET a stiskněte klávesu **ENTER** a vyhledejte ty, které začínají řetězcem **IoT** .
+1. Chcete-li zobrazit proměnné prostředí, které jste definovali, zadejte do příkazového řádku příkaz SET a stiskněte klávesu **ENTER** a vyhledejte ty, které začínají řetězcem **IoT**.
 
    ![Zobrazit proměnné prostředí](./media/horizontal-arm-route-messages/06-environment-variables.png)
 
     Nyní jsou proměnné prostředí nastaveny, spusťte aplikaci ze stejného příkazového okna. Vzhledem k tomu, že používáte stejné okno, proměnné budou přístupné v paměti při spuštění aplikace.
 
-1. Chcete-li spustit aplikaci, zadejte do příkazového řádku následující příkaz a stiskněte klávesu **ENTER** .
+1. Chcete-li spustit aplikaci, zadejte do příkazového řádku následující příkaz a stiskněte klávesu **ENTER**.
 
     `dotnet run arm-read-write`
 
@@ -134,7 +134,7 @@ Nasadili jste šablonu ARM, která vytvoří IoT Hub a účet úložiště, a sp
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-K odebrání prostředků přidaných během tohoto rychlého startu se přihlaste k [Azure Portal](https://portal.azure.com). Vyberte **skupiny prostředků** a pak vyhledejte skupinu prostředků, kterou jste použili pro tento rychlý Start. Vyberte skupinu prostředků a pak vyberte *Odstranit* . Odstraní všechny prostředky ve skupině.
+K odebrání prostředků přidaných během tohoto rychlého startu se přihlaste k [Azure Portal](https://portal.azure.com). Vyberte **skupiny prostředků** a pak vyhledejte skupinu prostředků, kterou jste použili pro tento rychlý Start. Vyberte skupinu prostředků a pak vyberte *Odstranit*. Odstraní všechny prostředky ve skupině.
 
 ## <a name="next-steps"></a>Další kroky
 

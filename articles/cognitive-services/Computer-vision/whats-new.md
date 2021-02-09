@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: ec340e3371b0fe337354006b1284a21420a11f3a
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1128504ee5f8c086d6a3c30a9fdd021550394f3f
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573632"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981761"
 ---
 # <a name="whats-new-in-computer-vision"></a>Co je nového v Počítačové zpracování obrazu
 
@@ -25,12 +25,12 @@ Zjistěte, co je nového ve službě. Tyto položky můžou být poznámky k ver
 
 ### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>Čtení rozhraní API v 3.2 Public Preview s podporou OCR pro jazyky 73
 Verze Public Preview rozhraní API pro Počítačové zpracování obrazu v 3.2 zahrnuje tyto možnosti:
-* Rozpoznávání OCR pro celkem [73 jazyků](./language-support.md#optical-character-recognition-ocr) včetně zjednodušených a tradičních čínských, japonských, korejských a hlavních latinek
-* Vyberte, zda chcete výstup řádků textu do objednávky vlevo a vpravo nahoře (výchozí) nebo více přirozeného směru čtení.
-* Pro každý výstup na textový řádek uveďte, jestli má styl rukopisu nebo ne, a také hodnocení spolehlivosti (jenom pro jazyky latinky).
+* [Optické rozpoznávání znaků pro jazyky 73](./language-support.md#optical-character-recognition-ocr) , včetně zjednodušených a tradičních jazyků v čínštině, japonštině, korejštině a latince.
+* Výstup řádků textu v přirozeném pořadí čtení.
+* Klasifikuje textové řádky jako styl rukopisu nebo ne společně s skóre spolehlivosti (jenom pro jazyky latinky).
 * Pro vícestránkové dokument extrahuje text pouze pro vybrané stránky nebo rozsah stránek.
 
-Další informace najdete v tématu [Přehled rozhraní API pro čtení](concept-recognizing-text.md) .
+Další informace najdete v tématu [funkce pro čtení verze Preview](concept-recognizing-text.md#natural-reading-order-output) .
 
 > [!div class="nextstepaction"]
 > [Použijte rozhraní Read API v 3.2 Public Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)

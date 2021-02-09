@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 4dfe2130d8274e2b3463c0fb42587b50fef77f18
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 80abe036ef4a08f7ed6f0f19cffc2abde70a6ea9
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953729"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981302"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Zabezpečení prostředí Azure Machine Learning Inferencing s virtuálními sítěmi
 
@@ -257,7 +257,7 @@ Azure Container Instances se dynamicky vytvářejí při nasazování modelu. Po
 > * Ve stejné skupině prostředků jako pracovní prostor Azure Machine Learning.
 > * Pokud má váš pracovní prostor __privátní koncový bod__, virtuální síť používaná pro Azure Container Instances musí být stejná jako ta, kterou používá privátní koncový bod v pracovním prostoru.
 >
-> Při použití Azure Container Instances uvnitř virtuální sítě se Azure Container Registry (ACR) pro váš pracovní prostor nemůže nacházet i ve virtuální síti.
+> Při použití Azure Container Instances uvnitř virtuální sítě se Azure Container Registry (ACR) pro váš pracovní prostor nemůže nacházet ve virtuální síti.
 
 Pokud chcete použít ACI ve virtuální síti k vašemu pracovnímu prostoru, použijte následující postup:
 

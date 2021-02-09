@@ -4,12 +4,12 @@ description: V tomto rychlém startu budete postupovat podle pokynů k vytvořen
 ms.date: 01/11/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d7efc02cad3aaa67c639a319f1a7bb455d6e04b0
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 2b771253b1dea4bd1d2913bf7c48062112019a19
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98128091"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981540"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-powershell"></a>Rychlý Start: vytvoření sdíleného dotazu pro diagram prostředku pomocí Azure PowerShell
 
@@ -36,7 +36,7 @@ Tento článek popisuje, jak můžete vytvořit sdílený dotaz Azure Resource G
 
 ## <a name="create-a-resource-graph-shared-query"></a>Vytvoření sdíleného dotazu pro diagram prostředků
 
-Když je `Az.ResourceGraph` modul prostředí PowerShell přidaný do vašeho prostředí dle vašeho výběru, je čas vytvořit sdílený dotaz pro diagram prostředků. Sdílený dotaz je objekt Azure Resource Manager, kterému můžete udělit oprávnění nebo spustit v Průzkumníku Azure Resource Graph. Dotaz shrnuje počet všech prostředků seskupených podle _umístění_.
+Pomocí modulu PowerShellu **AZ. ResourceGraph** , který jste přidali do vašeho prostředí podle vlastního výběru, je čas vytvořit sdílený dotaz pro diagram prostředků. Sdílený dotaz je objekt Azure Resource Manager, kterému můžete udělit oprávnění nebo spustit v Průzkumníku Azure Resource Graph. Dotaz shrnuje počet všech prostředků seskupených podle _umístění_.
 
 1. Vytvořte skupinu prostředků pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) k uložení sdíleného dotazu Azure Resource Graph. Tato skupina prostředků má název `resource-graph-queries` a umístění je `westus2` .
 
@@ -47,7 +47,7 @@ Když je `Az.ResourceGraph` modul prostředí PowerShell přidaný do vašeho pr
    New-AzResourceGroup -Name resource-graph-queries -Location westus2
    ```
 
-1. Pomocí `Az.ResourceGraph` modulu PowerShellu a rutiny [New-AzResourceGraphQuery](/powershell/module/az.resourcegraph/new-azresourcegraphquery) vytvořte sdílený dotaz Azure Resource Graph:
+1. Pomocí modulu příkaz **AZ. ResourceGraph** PowerShell a rutiny [New-AzResourceGraphQuery](/powershell/module/az.resourcegraph/new-azresourcegraphquery) vytvořte sdílený dotaz Azure Resource Graph:
 
    ```azurepowershell-interactive
    # Create the Azure Resource Graph shared query
@@ -80,7 +80,7 @@ Když je `Az.ResourceGraph` modul prostředí PowerShell přidaný do vašeho pr
 Pokud chcete odebrat sdílený dotaz a skupinu prostředků grafu prostředků z prostředí Azure, můžete to udělat pomocí následujících příkazů:
 
 - [Remove-AzResourceGraphQuery](/powershell/module/az.resourcegraph/remove-azresourcegraphquery)
-- [Remove-AzResourceGroup](/cli/azure/group#az_group_delete)
+- [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)
 
 ```azurepowershell-interactive
 # Delete the Azure Resource Graph shared query

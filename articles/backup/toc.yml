@@ -472,7 +472,7 @@
     - name: Azure PowerShell
       href: /powershell/module/az.recoveryservices
     - name: PowerShell – agent služby Azure Backup
-      href: /powershell/module/msonlinebackup
+      href: /powershell/module/msonlinebackup/msonlinebackup
     - name: REST – zálohování
       href: /rest/api/backup/
     - name: REST – trezor služby Recovery Services

@@ -30,6 +30,8 @@
       href: Concepts/azure-resources.md
     - name: Zdroje dat a obsah
       href: Concepts/data-sources-and-content.md
+    - name: Řízení přístupu na základě role Azure (Azure RBAC)
+      href: Concepts/role-based-access-control.md
     - name: Proces nástroje pro hodnocení
       displayName: 'DefaultAnswer, Default answer'
       href: Concepts/query-knowledge-base.md
@@ -46,7 +48,7 @@
     - name: Správa prostředků Azure
       href: How-To/set-up-qnamaker-service-azure.md
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
-    - name: Správa aplikace QnA Maker
+    - name: Správa přístupu k prostředkům QnA Maker
       href: How-To/manage-qna-maker-app.md
     - name: Aktivace aktivního učení
       href: How-To/use-active-learning.md
@@ -92,8 +94,6 @@
       href: Concepts/confidence-score.md
     - name: Řešení potíží
       href: troubleshooting.md
-    - name: Dvojice otázek a odpovědí
-      href: Concepts/question-answer-set.md
     - name: Přesné zodpovězení dotazů
       href: reference-precise-answering.md
     - name: Přidání zabezpečených sharepointových souborů
@@ -105,14 +105,6 @@
       href: reference-app-service.md
     - name: Pokyny k formátu obsahu
       href: reference-document-format-guidelines.md
-    - name: Formáty dat a obsahu
-      items:
-        - name: Pokyny k formátu obsahu
-          href: reference-document-format-guidelines.md
-        - name: Adresy URL
-          href: reference-document-type-url.md
-        - name: Pokyny pro import a export dat
-          href: reference-data-guidelines.md
     - name: Formát zobrazení
       href: reference-markdown-format.md
     - name: Privátní odkazy

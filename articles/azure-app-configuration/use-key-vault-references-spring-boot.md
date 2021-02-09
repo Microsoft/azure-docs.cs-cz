@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: alkemper
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: ede8203078a3d496975e208622ef61018997cf8d
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 04d9c7a343570349851a206fd69fdda822f790a4
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929207"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981472"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Kurz: použití odkazů Key Vault v aplikaci Java pružiny
 
@@ -40,7 +40,7 @@ V tomto kurzu se naučíte:
 > * Vytvořte konfigurační klíč aplikace, který odkazuje na hodnotu uloženou v Key Vault.
 > * Přístup k hodnotě tohoto klíče z jarní aplikace Java.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Podporovaná [sada Java Development Kit (JDK)](/java/azure/jdk) s verzí 8.
@@ -81,7 +81,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Přidat odkaz Key Vault do konfigurace aplikace
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Průzkumník konfigurace**.
 
@@ -93,7 +93,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
 
 ## <a name="connect-to-key-vault"></a>Připojení k Key Vault
 
-1. V tomto kurzu použijete k ověřování Key Vault instanční objekt. Tento instanční objekt vytvoříte pomocí příkazu Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
+1. V tomto kurzu použijete k ověřování Key Vault instanční objekt. Tento instanční objekt vytvoříte pomocí příkazu Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) :
 
     ```azurecli
     az ad sp create-for-rbac -n "http://mySP" --sdk-auth

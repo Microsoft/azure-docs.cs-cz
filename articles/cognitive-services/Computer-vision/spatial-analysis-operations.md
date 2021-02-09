@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 4e389114dc873d067a32389b288e1bb98d497850
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: af220106c415165a0dbe7cda64a31a6068f53164
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226046"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981778"
 ---
 # <a name="spatial-analysis-operations"></a>Operace prostorových analýz
 
@@ -23,7 +23,7 @@ Prostorová analýza umožňuje analýzu videa streamovaného v reálném čase 
 
 Kontejner prostorových analýz implementuje následující operace:
 
-| Identifikátor operace| Popis|
+| Identifikátor operace| Description|
 |---------|---------|
 | cognitiveservices Account. Vision. spatialanalysis-personcount | Spočítá lidi v určené zóně v poli zobrazení kamery. Aby PersonCount mohl zaznamenat přesný součet, musí být zóna plně pokrytá jednou kamerou. <br> Vygeneruje počáteční událost _personCountEvent_ a pak _personCountEvent_ události při změně počtu.  |
 | cognitiveservices Account. Vision. spatialanalysis-personcrossingline | Sleduje, když osoba v poli zobrazení kamery přeškrtne určený řádek. <br>Vygeneruje událost _personLineEvent_ , když osoba přeškrtne řádek a poskytne směrové informace. 
@@ -32,7 +32,7 @@ Kontejner prostorových analýz implementuje následující operace:
 
 Všechny výše uvedené operace jsou také k dispozici ve `.debug` verzi, které mají schopnost vizualizovat snímky videa při jejich zpracování. Aby `xhost +` bylo možné vizualizaci snímků a událostí videa povolit, bude nutné spustit na hostitelském počítači.
 
-| Identifikátor operace| Popis|
+| Identifikátor operace| Description|
 |---------|---------|
 | cognitiveservices Account. Vision. spatialanalysis-personcount. Debug | Spočítá lidi v určené zóně v poli zobrazení kamery. <br> Vygeneruje počáteční událost _personCountEvent_ a pak _personCountEvent_ události při změně počtu.  |
 | cognitiveservices Account. Vision. spatialanalysis-personcrossingline. Debug | Sleduje, když osoba v poli zobrazení kamery přeškrtne určený řádek. <br>Vygeneruje událost _personLineEvent_ , když osoba přeškrtne řádek a poskytne směrové informace. 
@@ -43,7 +43,7 @@ Prostorová analýza se dá také spustit s [živým video analýzou](../../medi
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
-| Identifikátor operace| Popis|
+| Identifikátor operace| Description|
 |---------|---------|
 | cognitiveservices Account. Vision. spatialanalysis-personcount. livevideoanalytics | Spočítá lidi v určené zóně v poli zobrazení kamery. <br> Vygeneruje počáteční událost _personCountEvent_ a pak _personCountEvent_ události při změně počtu.  |
 | cognitiveservices Account. Vision. spatialanalysis-personcrossingline. livevideoanalytics | Sleduje, když osoba v poli zobrazení kamery přeškrtne určený řádek. <br>Vygeneruje událost _personLineEvent_ , když osoba přeškrtne řádek a poskytne směrové informace. 
@@ -57,7 +57,7 @@ K dispozici jsou také operace živé analýzy videí ve `.debug` verzi (např. 
 
 Jedná se o parametry, které vyžaduje každá z těchto prostorových analytických operací.
 
-| Provozní parametry| Popis|
+| Provozní parametry| Description|
 |---------|---------|
 | ID operace | Identifikátor operace z tabulky výše|
 | enabled | Logická hodnota: true nebo false|
@@ -122,7 +122,7 @@ Toto je příklad parametrů DETECTOR_NODE_CONFIG pro všechny operace prostorov
 }
 ```
 
-| Název | Typ| Popis|
+| Název | Typ| Description|
 |---------|---------|---------|
 | `zones` | list| Seznam zón. |
 | `name` | řetězec| Popisný název této zóny.|
@@ -167,7 +167,7 @@ Toto je příklad vstupu JSON pro parametr SPACEANALYTICS_CONFIG, který konfigu
 }
 ```
 
-| Název | Typ| Popis|
+| Název | Typ| Description|
 |---------|---------|---------|
 | `lines` | list| Seznam řádků|
 | `name` | řetězec| Popisný název tohoto řádku|
@@ -213,7 +213,7 @@ Toto je příklad vstupu JSON pro parametr SPACEANALYTICS_CONFIG, který konfigu
 }
 ```
 
-| Název | Typ| Popis|
+| Název | Typ| Description|
 |---------|---------|---------|
 | `zones` | list| Seznam zón. |
 | `name` | řetězec| Popisný název této zóny.|
@@ -247,7 +247,7 @@ Toto je příklad vstupu JSON pro parametr SPACEANALYTICS_CONFIG, který konfigu
 }
 ```
 
-| Název | Typ| Popis|
+| Název | Typ| Description|
 |---------|---------|---------|
 | `zones` | list| Seznam zón. |
 | `name` | řetězec| Popisný název této zóny.|
@@ -963,9 +963,9 @@ Aby se dosáhlo nejlepšího výkonu a využití GPU, můžete nasadit všechny 
       }
   }
   ```
-| Název | Typ| Popis|
+| Název | Typ| Description|
 |---------|---------|---------|
-| `batch_size` | int | Určuje počet fotoaparátů, které budou použity v operaci. |
+| `batch_size` | int | Pokud mají všechny kamery stejné rozlišení, nastavte `batch_size` počet fotoaparátů, které se v této operaci použijí, jinak nastavte `batch_size` na hodnotu 1 nebo nechte jako výchozí (1), což znamená, že žádná dávka není podporovaná. |
 
 ## <a name="next-steps"></a>Další kroky
 

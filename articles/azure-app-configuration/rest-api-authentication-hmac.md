@@ -6,23 +6,23 @@ ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: f761d86bd7dbe54b687e8db75ecb3df2dbba3384
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 4b5a073459fad734a11d3a75718240d0ebbb486a
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932706"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981387"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>Ověřování HMAC – REST API odkaz
 
 Požadavky HTTP můžete ověřit pomocí schématu ověřování HMAC-SHA256. (HMAC označuje kód pro ověřování zpráv na bázi hash.) Tyto požadavky musí být přenášeny přes protokol TLS.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Pověřovací** - \<Access Key ID\>
 - Hodnota **tajného** klíče přístupového kódu pro kódování Base64. ``base64_decode(<Access Key Value>)``
 
-Hodnoty pro přihlašovací údaje (také nazývané `id` ) a tajný kód (také nazývané `value` ) se musí získat z instance konfigurace aplikace Azure. To můžete provést pomocí [Azure Portal](https://portal.azure.com) nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest).
+Hodnoty pro přihlašovací údaje (také nazývané `id` ) a tajný kód (také nazývané `value` ) se musí získat z instance konfigurace aplikace Azure. To můžete provést pomocí [Azure Portal](https://portal.azure.com) nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/).
 
 Zadejte všechny požadavky na všechny hlavičky HTTP vyžadované pro ověřování. Minimální požadovaná:
 
@@ -45,11 +45,11 @@ Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;ho
 
 ## <a name="authorization-header"></a>Autorizační hlavička
 
-### <a name="syntax"></a>Syntaxe
+### <a name="syntax"></a>Syntax
 
 ``Authorization``: **HMAC-SHA256**```Credential```=\<value\>&```SignedHeaders```=\<value\>&```Signature```=\<value\>
 
-|  Argument | Popis  |
+|  Argument | Description  |
 | ------ | ------ |
 | **HMAC – SHA256** | Autorizační schéma. _požadovanou_ |
 | **Přihlašovací údaj** | ID přístupového klíče, který se používá k výpočtu podpisu. _požadovanou_ |
@@ -87,7 +87,7 @@ _Řetězec na znaménko =_
 
 **HTTP_METHOD** + ' \n ' + **path_and_query** + ' \n ' + **signed_headers_values**
 
-|  Argument | Popis  |
+|  Argument | Description  |
 | ------ | ------ |
 | **HTTP_METHOD** | Název metody pro velká písmena HTTP použitý u žádosti. Další informace najdete v [části 9](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). |
 |**path_and_query** | Zřetězení absolutní cesty k identifikátoru URI požadavku a řetězce dotazu. Další informace najdete v [části 3,3](https://tools.ietf.org/html/rfc3986#section-3.3).
@@ -549,7 +549,7 @@ Invoke-RestMethod -Uri $uri -Method $method -Headers $headers -Body $body
 | ------------ | ------- | --------------- |
 | [Bash](https://www.gnu.org/software/bash/) | bash | 3.5.27, 4.4.23 |
 | [coreutils](https://www.gnu.org/software/coreutils/) | recenzent | 8,28 |
-| [Curl](https://curl.haxx.se/) | curl | 7.55.1, 7.58.0 |
+| [curl](https://curl.haxx.se/) | curl | 7.55.1, 7.58.0 |
 | [OpenSSL](https://www.openssl.org/) | openssl | 1.1.0 g, 1.1.1 a |
 | [util – Linux](https://github.com/karelzak/util-linux/) | hexdump | 2.14.1, 2.31.1 |
 
