@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 30b7f1054f7bfee8dc58638791f0b8a424de92a4
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 7118ff589e580fd3aa1f693e72152f1ad4c18e10
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226418"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979874"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Kurz: přihlášení uživatelů a volání chráněného rozhraní API z aplikace Blazor WebAssembly
 
@@ -102,7 +102,7 @@ Dále do souboru *. csproj* projektu ve skupině **položek** netstandard 2.1 p�
 
 Pak upravte kód tak, jak je uvedeno v následujících několika krocích. Tyto změny budou přidávat [přístupové tokeny](access-tokens.md) do odchozích požadavků odeslaných do rozhraní Microsoft Graph API. Tento model je podrobněji popsán v tématu [ASP.NET Core Blazor a další scénáře zabezpečení pro WebAssembly](/aspnet/core/blazor/security/webassembly/additional-scenarios).
 
-Nejprve vytvořte nový soubor s názvem *GraphAuthorizationMessageHandler.cs* s následujícím kódem. Tato obslužná rutina bude uživateli přidat přístupový token pro `User.Read` `Mail.Read` obory a pro odchozí požadavky na rozhraní Microsoft Graph API.
+Nejprve vytvořte nový soubor s názvem *GraphAPIAuthorizationMessageHandler.cs* s následujícím kódem. Tato obslužná rutina bude uživateli přidat přístupový token pro `User.Read` `Mail.Read` obory a pro odchozí požadavky na rozhraní Microsoft Graph API.
 
 ```csharp
 using Microsoft.AspNetCore.Components;

@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 3bc24e88368af056e4d4506a5cf688e1172d4930
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: e0c0d18dbb3596733d02430554fd40ec16180c64
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051560"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980656"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Vytváření vlastních sad SDK pro digitální vlákna Azure pomocí AutoRest
 
@@ -112,6 +112,9 @@ V případě vzoru stránkování bez dotazu je zde ukázka ukázková metoda, k
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod":::
 
 Druhý vzor se generuje jenom pro rozhraní API dotazů. Používá `continuationToken` explicitně.
+
+>[!TIP]
+> Hlavním důvodem pro získání stránek je výpočet [poplatků za jednotky dotazu](concepts-query-units.md) pro volání rozhraní API dotazů.
 
 Tady je příklad s tímto vzorem:
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/28/2020
+ms.date: 02/01/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 518df665db0ba3770bee757f45d02b6ccd303a00
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 1df2f12d6947734314609dc50787a59a2fa88731
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803863"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980506"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Obnovení bodu v čase pro objekty blob bloku
 
@@ -32,6 +32,10 @@ Pokud chcete povolit obnovení k určitému bodu v čase, vytvořte zásadu spr�
 Chcete-li zahájit obnovení k určitému bodu v čase, zavolejte operaci [obnovit rozsahy objektů BLOB](/rest/api/storagerp/storageaccounts/restoreblobranges) a určete bod obnovení v čase UTC. Můžete zadat lexicographical rozsahy názvů kontejnerů a objektů blob, které se mají obnovit, nebo vynecháte rozsah pro obnovení všech kontejnerů v účtu úložiště. Pro každou operaci obnovení se podporuje až 10 lexicographical rozsahů.
 
 Azure Storage analyzuje všechny změny provedené v zadaných objektech blob mezi požadovaným bodem obnovení, který je zadaný v čase UTC, a v současné době. Operace obnovení je atomická, takže se buď úspěšně dokončí obnovení všech změn, nebo selže. Pokud existují objekty blob, které se nedají obnovit, operace se nezdařila a operace čtení a zápisu do ovlivněných kontejnerů se obnoví.
+
+Následující diagram ukazuje, jak funguje obnovení k bodu v čase. Jeden nebo více kontejnerů nebo rozsahů objektů BLOB se obnoví do stavu před *n* dny, kde *n* je menší nebo rovno době uchování definované pro obnovení k určitému bodu v čase. Výsledkem je vrácení operací zápisu a odstranění, ke kterým došlo během doby uchování.
+
+:::image type="content" source="media/point-in-time-restore-overview/point-in-time-restore-diagram.png" alt-text="Diagram znázorňující, jak probíhá obnovení kontejnerů do předchozího stavu v okamžiku":::
 
 V účtu úložiště se dá spustit jenom jedna operace obnovení. Operaci obnovení nelze zrušit, jakmile probíhá, ale můžete provést druhou operaci obnovení, která vrátí zpět první operaci.
 
@@ -50,7 +54,7 @@ Operace **obnovit rozsahy objektů BLOB** vrátí ID obnovení, které jedinečn
 Obnovení k bodu v čase vyžaduje, aby byly povolené následující funkce Azure Storage, než můžete povolit obnovení k bodu v čase:
 
 - [Obnovitelné odstranění](./soft-delete-blob-overview.md)
-- [Změna kanálu](storage-blob-change-feed.md)
+- [Změnit kanál](storage-blob-change-feed.md)
 - [Správa verzí objektů BLOB](versioning-overview.md)
 
 ### <a name="retention-period-for-point-in-time-restore"></a>Doba uchování pro obnovení k určitému bodu v čase

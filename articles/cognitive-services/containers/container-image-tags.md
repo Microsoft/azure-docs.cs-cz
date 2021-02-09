@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 11/17/2020
 ms.author: aahi
-ms.openlocfilehash: 8abe785cac4f46401b3efeb7868b061d13810b29
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: c3023c32f2a31235f5a733639a548c190197b413
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576223"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981115"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Značky imagí a poznámky k verzi služby Azure Cognitive Services Container
 
@@ -53,14 +53,14 @@ Tato image kontejneru má k dispozici následující značky. Můžete také naj
 # <a name="latest-version"></a>[Nejnovější verze](#tab/current)
 
 Poznámky k verzi pro `3.2-preview.2` :
-
-* Nový kontejner v 3.2
+* Verze Distroless
+* ReadingOrder parametr, který se má zvolit mezi pořadím textu v odpovědi JSON
+* Rozšířené protokolování
+* Opravy hotfix na model CJK
 
 | Značky obrázku                    | Poznámky |
 |-------------------------------|:------|
-| `latest`                      |       |
-| `3.2-preview.2` |  |
-| `3.2-preview.1` |  |
+|3.2.2.014850001-49e0eac6-amd64-Preview                     |       |
 
 # <a name="previous-versions"></a>[Předchozí verze](#tab/previous)
 

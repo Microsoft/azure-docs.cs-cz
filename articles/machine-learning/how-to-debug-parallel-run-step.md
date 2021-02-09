@@ -11,12 +11,12 @@ ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: 6ea796fb2ec038a03595d37d903fe8ee3ce904db
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: a0f813253520d76731a9b49a89b0bcace7c2ef34
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070265"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979160"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>Řešení potíží s třídou ParallelRunStep
 
@@ -171,7 +171,16 @@ Pokud potřebujete úplný přehled o tom, jak každý uzel spustil skript skór
     - Celkový počet položek, počet úspěšně zpracovaných položek a počet neúspěšných položek.
     - Čas spuštění, doba trvání, doba zpracování a metoda spuštění.
 
-Můžete také vyhledat informace o využití prostředků pro jednotlivé pracovní procesy. Tyto informace jsou ve formátu CSV a jsou umístěné na adrese `~/logs/sys/perf/<ip_address>/node_resource_usage.csv` . Informace o každém procesu jsou k dispozici v části `~logs/sys/perf/<ip_address>/processes_resource_usage.csv` .
+Můžete si také prohlédnout výsledky pravidelných kontrol využití prostředků pro každý uzel. Soubory protokolu a instalační soubory jsou v této složce:
+
+- `~/logs/perf`: Nastavte `--resource_monitor_interval` pro změnu intervalu kontroly v sekundách. Výchozí interval je `600` , což je přibližně 10 minut. Chcete-li monitorování zastavit, nastavte hodnotu na `0` . Každá `<ip_address>` Složka obsahuje:
+
+    - `os/`: Informace o všech spuštěných procesech v uzlu. Jedna z kontrol spustí příkaz operačního systému a výsledek uloží do souboru. V systému Linux je příkaz `ps` . Ve Windows použijte `tasklist` .
+        - `%Y%m%d%H`: Název dílčí složky je čas do hodiny.
+            - `processes_%M`: Soubor končí minutou kontrolního času.
+    - `node_disk_usage.csv`: Podrobné použití disku v uzlu.
+    - `node_resource_usage.csv`: Přehled využití prostředků uzlu.
+    - `processes_resource_usage.csv`: Přehled využití prostředků každého procesu.
 
 ### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>Návody se protokolovat z uživatelského skriptu ze vzdáleného kontextu?
 
@@ -233,25 +242,25 @@ Uživatel může předat vstupní datové sady s ověřováním instančního ob
 
 ```python
 service_principal = ServicePrincipalAuthentication(
-    tenant_id="**_",
-    service_principal_id="_*_",
-    service_principal_password="_*_")
+    tenant_id="***",
+    service_principal_id="***",
+    service_principal_password="***")
  
 ws = Workspace(
-    subscription_id="_*_",
-    resource_group="_*_",
-    workspace_name="_*_",
+    subscription_id="***",
+    resource_group="***",
+    workspace_name="***",
     auth=service_principal
     )
  
-default_blob_store = ws.get_default_datastore() # or Datastore(ws, '_*_datastore-name_*_') 
-ds = Dataset.File.from_files(default_blob_store, '_*path**_')
-registered_ds = ds.register(ws, '_*_dataset-name_*_', create_new_version=True)
+default_blob_store = ws.get_default_datastore() # or Datastore(ws, '***datastore-name***') 
+ds = Dataset.File.from_files(default_blob_store, '**path***')
+registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-_ Zobrazit tyto [poznámkové bloky Jupyter, které demonstrují Azure Machine Learning kanálů](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
+* Podívejte se na tyto [poznámkové bloky Jupyter, které demonstrují Azure Machine Learning kanály](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines) .
 
 * Nápovědu k balíčku [AzureML-Pipeline Steps](/python/api/azureml-pipeline-steps/azureml.pipeline.steps?preserve-view=true&view=azure-ml-py) najdete v referenčních informacích k sadě SDK. Zobrazení referenční [dokumentace](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?preserve-view=true&view=azure-ml-py) pro třídu ParallelRunStep.
 

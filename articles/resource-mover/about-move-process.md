@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: overview
-ms.date: 09/09/2020
+ms.date: 02/01/2021
 ms.author: raynew
-ms.openlocfilehash: 5261904dd1ee7f280209015d8f756a055dfab57e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: facbb30201aa6bde2044ca647383cc32ecd9ba26
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522937"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980554"
 ---
 # <a name="about-the-move-process"></a>O procesu přesunutí
 
@@ -46,7 +46,7 @@ Každý prostředek přesunutí prochází souhrnnými kroky.
 **Krok 4: zahájení přesunu** | Zahájí proces přesunutí. Metoda Move závisí na typu prostředku:<br/><br/> - **Bezstavové**: obvykle pro bezstavové prostředky nasadí proces přesunutí importovanou šablonu v cílové oblasti. Šablona je založena na nastavení zdrojového prostředku a všech ručních úpravách, které provedete v cílovém nastavení.<br/><br/> - **Stav**: u stavových prostředků může proces přesunutí zahrnovat vytvoření prostředku nebo povolení kopie v cílové oblasti.<br/><br/>  Pouze pro stavové prostředky může zahájení přesunu způsobit výpadky zdrojových prostředků. Například virtuální počítače a SQL. | Při ukončení přesunu se přesune stav a *spustí se probíhající přesun*.<br/><br/> Úspěšný příkaz zahájit přesun přesune stav prostředku do *probíhajícího přesunu*, bez problémů. <br/><br/> Neúspěšný přesunutý proces přesune stav, aby *se zahájilo přesunutí*.
 **Krok 5 – možnost 1: zahození přesunutí** | Po prvním přesunu se můžete rozhodnout, jestli chcete pokračovat s úplným přesunem. Pokud to neuděláte, můžete přesun zrušit a stěhovací společnosti odstraní prostředky vytvořené v cíli. Proces replikace stavových prostředků pokračuje i po zahození. Tato možnost je užitečná pro testování. | Vypuštění prostředků přesune stav, který *probíhá zahození*.<br/><br/> Úspěšné zrušení přesunutí stavu pro *zahájení probíhajícího přesunu* bez problémů.<br/><br/> Nepovedlo se zrušit stav přesunu *přesunutí na zrušení*. 
 **Krok 5 – možnost 2: potvrzení přesunutí** | Pokud chcete pokračovat s úplným přesunem, můžete po prvním přesunutí ověřit prostředky v cílové oblasti a až budete připraveni, potvrdíte přesunutí.<br/><br/> U stavových prostředků může potvrzení způsobit, že se zdrojové prostředky, jako jsou virtuální počítače nebo SQL, nestane nedostupnými. | Když přesun potvrdíte, stav prostředku se přesune na * probíhající přesun probíhá * *.<br/><br/> Po úspěšném potvrzení se ve stavu prostředku zobrazí *dokončené přesuny*, bez problémů.<br/><br/> Nepovedlo se přesunout stav *přesunutí do potvrzování*.
-**Krok 6: odstranění zdroje** | Po potvrzení přesunu a ověření prostředků v cílové oblasti můžete odstranit zdrojový prostředek. | Po potvrzení přesunutí se stav prostředku přesune na *nedokončené odstranění zdroje*.
+**Krok 6: odstranění zdroje** | Po potvrzení přesunu a ověření prostředků v cílové oblasti můžete odstranit zdrojový prostředek. | Po potvrzení se stav prostředku přesune na čeká se na *odstranění zdroje*. Pak můžete vybrat zdrojový prostředek a odstranit ho.<br/><br/> -Odstranit lze pouze prostředky ve stavu *odstraňování čekají na zdroj* . | Odstranění skupiny prostředků nebo SQL Server na portálu Resource stěhovací není podporované. Tyto prostředky lze odstranit pouze ze stránky vlastností prostředku.
 
 
 ## <a name="move-region-states"></a>Přesunout stavy oblastí

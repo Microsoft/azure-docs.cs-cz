@@ -6,33 +6,39 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/06/2021
+ms.date: 02/08/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 85d880966c4c3864206c7e92256eb8e705812f20
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 0c15be86c282451440f9b81d57f17e835559b5ae
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962172"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979095"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Obnovitelné odstranění pro kontejnery (Preview)
 
-Obnovitelné odstranění pro kontejnery (Preview) chrání vaše data před náhodným nebo omylem úpravou nebo odstraněním. Pokud je pro účet úložiště povolené obnovitelné odstranění kontejneru, všechny odstraněné kontejnery a jejich obsah se uchovávají v Azure Storage po dobu, kterou určíte. Během doby uchování můžete obnovit dříve odstraněné kontejnery a všechny objekty BLOB v nich obsažené.
+Obnovitelné odstranění pro kontejnery (Preview) chrání vaše data proti náhodnému nebo škodlivému odstranění. Pokud je pro účet úložiště povolené obnovitelné odstranění kontejneru, všechny odstraněné kontejnery a jejich obsah se uchovávají v Azure Storage po dobu, kterou určíte. Během doby uchování můžete obnovit dříve odstraněné kontejnery. Obnovení kontejneru obnoví všechny objekty BLOB v tomto kontejneru při jeho odstranění.
 
 V rámci koncové ochrany dat objektů BLOB doporučuje společnost Microsoft povolit následující funkce ochrany dat:
 
-- Dočasná odstranění kontejneru pro ochranu proti náhodnému odstranění nebo přepsání kontejneru. Pokud chcete zjistit, jak povolit obnovitelné odstranění kontejneru, přečtěte si téma [povolení a Správa obnovitelného odstranění kontejnerů](soft-delete-container-enable.md).
-- Pro zajištění ochrany před náhodným odstraněním nebo přepsáním jednotlivého objektu BLOB se jedná o obnovitelné odstranění objektu BLOB. Další informace o tom, jak povolit obnovitelné odstranění objektů blob, najdete v tématu [obnovitelné odstranění pro objekty blob](soft-delete-blob-overview.md).
+- Dočasná odstranění kontejneru pro obnovení kontejneru, který byl odstraněn. Pokud chcete zjistit, jak povolit obnovitelné odstranění kontejneru, přečtěte si téma [povolení a Správa obnovitelného odstranění kontejnerů](soft-delete-container-enable.md).
 - Správa verzí objektů BLOB pro automatické udržování předchozích verzí objektu BLOB. Pokud je povolená Správa verzí objektů blob, můžete obnovit předchozí verzi objektu blob, aby se data obnovila v případě, že se omylem změnila nebo odstranila. Informace o tom, jak povolit správu verzí objektů blob, najdete v tématu [povolení a správa verzí objektů BLOB](versioning-enable.md).
+- Obnovitelné odstranění objektu BLOB pro obnovení objektu BLOB nebo verze, která byla odstraněna. Informace o tom, jak povolit obnovitelné odstranění objektů blob, najdete v tématu [povolení a Správa obnovitelného odstranění pro objekty blob](soft-delete-blob-enable.md).
 
 > [!WARNING]
-> Odstranění účtu úložiště se nedá vrátit zpátky. Obnovitelné odstranění nechrání před odstraněním účtu úložiště. Pokud chcete zabránit nechtěnému odstranění účtu úložiště, nakonfigurujte na prostředku účtu úložiště zámek **CannotDelete** . Další informace o uzamykání prostředků Azure najdete v tématu [uzamčení prostředků, aby se zabránilo neočekávaným změnám](../../azure-resource-manager/management/lock-resources.md).
+> Odstranění účtu úložiště se nedá vrátit zpátky. Obnovitelné odstranění nechrání před odstraněním účtu úložiště, ale pouze proti odstranění datových objektů v daném účtu. Pokud chcete chránit účet úložiště před odstraněním, nakonfigurujte na prostředku účtu úložiště zámek **CannotDelete** . Další informace o uzamykání prostředků Azure Resource Manager najdete v tématu [uzamčení prostředků, aby se zabránilo neočekávaným změnám](../../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="how-container-soft-delete-works"></a>Jak funguje obnovitelné odstranění kontejneru
 
 Pokud povolíte obnovitelné odstranění kontejneru, můžete zadat dobu uchování pro odstraněné kontejnery, které jsou v rozmezí od 1 do 365 dnů. Výchozí doba uchování je 7 dní. Během doby uchování můžete obnovit odstraněný kontejner voláním operace zrušit **odstranění kontejneru** .
+
+Při obnovení kontejneru se obnoví také objekty blob kontejneru a všechny verze objektů BLOB. Pomocí podmíněného odstranění kontejneru ale můžete obnovit objekty blob jenom v případě, že jste kontejner sám odstranili. K obnovení odstraněného objektu BLOB v případě, že se jeho nadřazený kontejner neodstranil, je nutné použít měkké odstranění nebo správu verzí objektů BLOB.
+
+Následující diagram znázorňuje, jak se odstraněný kontejner dá obnovit, když je povolené podmíněné odstranění kontejneru:
+
+:::image type="content" source="media/soft-delete-container-overview/container-soft-delete-diagram.png" alt-text="Diagram znázorňující, jak může být obnovený kontejner pro dočasné odstranění":::
 
 Když obnovíte kontejner, můžete ho obnovit na jeho původní název, pokud se tento název znovu nepoužil. Pokud se použil původní název kontejneru, můžete kontejner obnovit s novým názvem.
 
@@ -42,7 +48,7 @@ Zakázání podmíněného odstranění kontejneru nevede k trvalému odstraněn
 
 ## <a name="about-the-preview"></a>O verzi Preview
 
-Obnovitelné odstranění kontejneru je dostupné ve verzi Preview ve všech veřejných oblastech Azure.
+Obnovitelné odstranění kontejneru je dostupné ve verzi Preview ve všech oblastech Azure.
 
 > [!IMPORTANT]
 > Ukázka podmíněného odstranění kontejneru je určená jenom pro neprodukční použití. Smlouvy o úrovni produkčních služeb (SLA) nejsou aktuálně k dispozici.

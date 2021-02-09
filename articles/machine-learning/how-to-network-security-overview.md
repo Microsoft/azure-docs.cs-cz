@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: 664264f2cd810f232b967f5af78ba3d522f0a41f
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 857fba6dfa6191163c06c423cefb42d57f25dc1d
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060006"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980571"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Přehled izolace a ochrany osobních údajů virtuální sítě
 
@@ -43,7 +43,7 @@ V této části se dozvíte, jak je nastaven společný scénář sítě pro zab
 
 Následující tabulka porovnává, jak služby přistupují k různým částem Azure Machine Learning sítě jak s virtuální sítí, tak bez virtuální sítě.
 
-| Scénář | Pracovní prostor | Přidružené prostředky | Školení výpočetního prostředí | Výpočetní prostředí Inferencing |
+| Scenario | Pracovní prostor | Přidružené prostředky | Školení výpočetního prostředí | Výpočetní prostředí Inferencing |
 |-|-|-|-|-|-|
 |**Žádná virtuální síť**| Veřejná IP adresa | Veřejná IP adresa | Veřejná IP adresa | Veřejná IP adresa |
 |**Zabezpečení prostředků ve virtuální síti**| Privátní IP adresa (soukromý koncový bod) | Veřejná IP adresa (koncový bod služby) <br> **ani** <br> Privátní IP adresa (soukromý koncový bod) | Privátní IP adresa | Privátní IP adresa  | 
@@ -137,6 +137,15 @@ Následující diagram sítě zobrazuje zabezpečený Azure Machine Learning pra
 ### <a name="limitations"></a>Omezení
 - Clustery AKS musí patřit do stejné virtuální sítě jako pracovní prostor a přidružené prostředky. 
 
+## <a name="optional-enable-public-access"></a>Volitelné: Povolit veřejný přístup
+
+Pracovní prostor můžete zabezpečit za virtuální sítí pomocí privátního koncového bodu a zároveň jim zajistit přístup přes veřejný Internet. Počáteční konfigurace je stejná jako při [zabezpečení pracovního prostoru a přidružených prostředků](#secure-the-workspace-and-associated-resources). 
+
+Po zabezpečení pracovního prostoru pomocí privátního odkazu pak [Povolte veřejný přístup](how-to-configure-private-link.md#enable-public-access). Potom budete mít přístup k pracovnímu prostoru z veřejného internetu i virtuální sítě.
+
+### <a name="limitations"></a>Omezení
+
+- Pokud používáte aplikaci Azure Machine Learning Studio prostřednictvím veřejného Internetu, některé funkce, jako je například Návrhář, nemusí mít přístup k vašim datům. K tomuto problému dochází, když jsou data uložená ve službě, která je zabezpečená za virtuální sítí. Například účet Azure Storage.
 ## <a name="optional-enable-studio-functionality"></a>Volitelné: povolit funkce studia
 
 [Zabezpečte pracovní prostor](#secure-the-workspace-and-associated-resources)  >  [Zabezpečení školicího prostředí](#secure-the-training-environment)  >  [Zabezpečení prostředí Inferencing](#secure-the-inferencing-environment)  >  **Povolit funkci studia**  >  [Konfigurace nastavení brány firewall](#configure-firewall-settings)

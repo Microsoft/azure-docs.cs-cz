@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 02/01/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a2c26c3e41f64a1593a2d3386c76427c0b9682e9
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: d380b9d6a20cbe28a8fc4b64179437cd31fd2937
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127477"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979283"
 ---
 # <a name="soft-delete-for-blobs"></a>Obnovitelné odstranění pro objekty blob
 
@@ -27,6 +27,10 @@ Pokud existuje možnost, že by vaše data mohla být omylem upravována nebo od
 ## <a name="about-soft-delete-for-blobs"></a>Obnovitelné odstranění objektů BLOB
 
 Když je v účtu úložiště povolené obnovitelné odstranění objektů blob, můžete objekty po odstranění obnovit do zadané doby uchovávání dat. Tato ochrana se rozšiřuje na všechny objekty BLOB (objekty blob bloku, doplňovací objekty blob nebo objekty blob stránky), které se vymažou jako výsledek přepsání.
+
+Následující diagram znázorňuje, jak se odstraněný objekt BLOB dá obnovit, když je povolené obnovitelné odstranění objektu BLOB:
+
+:::image type="content" source="media/soft-delete-blob-overview/blob-soft-delete-diagram.png" alt-text="Diagram znázorňující, jak se dá obnovit odstraněný objekt BLOB":::
 
 Pokud se při povolení obnovitelného odstranění objektů BLOB odstraní data v existujícím objektu BLOB nebo snímku, ale Správa verzí objektů BLOB není povolená, vygeneruje se pro uložení stavu přepsaných dat měkký odstraněný snímek. Po uplynutí zadané doby uchování dojde k trvalému odstranění objektu.
 

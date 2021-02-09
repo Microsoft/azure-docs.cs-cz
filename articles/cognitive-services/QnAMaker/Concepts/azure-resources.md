@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 0864db8a653ff1d6f89ed0b1c857e51053ff50ff
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: f46a0938ebb8d9fe7e032162120056dca96b9567
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592599"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979758"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Prostředky Azure pro QnA Maker
 
@@ -244,74 +244,6 @@ Po vytvoření prostředků mají stejný název, s výjimkou volitelného prost
 > [!TIP]
 > Pomocí konvence vytváření názvů můžete označovat cenové úrovně v rámci názvu prostředku nebo skupiny prostředků. Když obdržíte chyby při vytváření nové znalostní báze nebo přidávání nových dokumentů, je běžným problémem omezení cenové úrovně Kognitivní hledání.
 
-### <a name="resource-purposes"></a>Účely prostředků
-
-Každý prostředek Azure vytvořený pomocí QnA Maker má určitý účel:
-
-* Prostředek QnA Maker
-* Prostředek Kognitivní hledání
-* App Service
-* Služba plánu aplikací
-* Služba Application Insights
-
-
-### <a name="cognitive-search-resource"></a>Prostředek Kognitivní hledání
-
-Prostředek [kognitivní hledání](../../../search/index.yml) se používá pro:
-
-* Uložit páry QnA
-* Zadejte počáteční hodnocení (#1 hodnocení) párů QnA za běhu.
-
-#### <a name="index-usage"></a>Využití indexu
-
-Prostředek udržuje jeden index, který bude fungovat jako index testu, a zbývající indexy jsou v relaci k jedné publikované znalostní bázi.
-
-Cena za prostředek se zablokuje 15 indexů, bude obsahovat 14 publikovaných znalostní báze a jeden index se používá k testování všech znalostí. Tento index testu je rozdělený ve znalostní bázi, takže dotaz používající interaktivní testovací podokno použije index testu, ale vrátí jenom výsledky z konkrétního oddílu přidruženého ke konkrétní znalostní bázi.
-
-#### <a name="language-usage"></a>Použití jazyka
-
-První znalostní báze vytvořená v prostředku QnA Maker slouží k určení _jedné_ sady jazyků pro prostředek kognitivní hledání a všech jeho indexů. Pro QnA Maker službu můžete mít jenom _jednu sadu jazyků_ .
-
-### <a name="qna-maker-resource"></a>Prostředek QnA Maker
-
-Prostředek QnA Maker poskytuje přístup k rozhraním API pro vytváření a publikování a také ke vrstvě pro zpracování v přirozeném jazyce (NLP) na základě druhé vrstvy hodnocení (přiřazení #2) párů QnA za běhu.
-
-Druhé hodnocení používá inteligentní filtry, které mohou zahrnovat metadata a výzvy pro následné zpracování.
-
-#### <a name="qna-maker-resource-configuration-settings"></a>Nastavení konfigurace prostředků QnA Maker
-
-Když vytvoříte novou znalostní bázi na [portálu QnA maker](https://qnamaker.ai), nastavení **jazyka** bude jediným nastavením, které se použije na úrovni prostředků. Vyberte jazyk, když vytvoříte první znalostní bázi pro daný prostředek.
-
-### <a name="app-service-and-app-service-plan"></a>Služba App Service a plán služby App Service
-
-[Službu App Service](../../../app-service/index.yml) používá klientská aplikace pro přístup k publikovaným znalostní bázi prostřednictvím koncového bodu modulu runtime.
-
-Aby se publikovala publikovaná znalostní báze, všechny publikované znalostní báze používají stejný koncový bod adresy URL, ale v rámci této trasy zadejte **ID znalostní báze** .
-
-`{RuntimeEndpoint}/qnamaker/knowledgebases/{kbId}/generateAnswer`
-
-### <a name="application-insights"></a>Application Insights
-
-[Application Insights](../../../azure-monitor/app/app-insights-overview.md) se používá ke shromažďování protokolů a telemetrie chatu. Projděte si nejčastější [dotazy Kusto](../how-to/get-analytics-knowledge-base.md) , kde najdete informace o vaší službě.
-
-## <a name="share-services-with-qna-maker"></a>Sdílení služeb pomocí QnA Maker
-
-QnA Maker vytvoří několik prostředků Azure. Pokud chcete snížit úroveň správy a výhod sdílení nákladů, použijte následující tabulku, která vám pomůže pochopit, co můžete a nemůžete sdílet:
-
-|Služba|Sdílení|Důvod|
-|--|--|--|
-|Cognitive Services|×|Není možné podle návrhu|
-|Plán služby App Service|✔|Pevné místo na disku přidělené pro plán App Service. Pokud jiné aplikace sdílející stejný plán App Service používají významné místo na disku, dojde k problémům s instancí App Service Qnamakerem.|
-|App Service|×|Není možné podle návrhu|
-|Application Insights|✔|Může být sdíleno|
-|Služba Search|✔|1. `testkb` je rezervovaný název pro službu qnamakerem; nemůže ji použít jiný.<br>2. `synonym-map` pro službu qnamakerem je vyhrazená mapa synonym podle názvu.<br>3. počet publikovaných znalostní báze je omezený na úrovni služby vyhledávání. Pokud jsou dostupné bezplatné indexy, můžou je používat i jiné služby.|
-
-### <a name="using-a-single-cognitive-search-service"></a>Použití jedné Kognitivní hledání služby
-
-Pokud vytvoříte službu QnA a její závislosti (například vyhledávání) prostřednictvím portálu, vytvoří se vyhledávací služba pro vás a bude propojena s QnA Makerovou službou. Po vytvoření těchto prostředků můžete aktualizovat nastavení App Service tak, aby používalo dříve existující vyhledávací službu, a odebrat tu, kterou jste právě vytvořili.
-
-Naučte [se, jak nakonfigurovat](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) QnA maker pro použití jiného prostředku služby rozpoznávání, než který je vytvořený jako součást procesu vytváření prostředků QnA maker.
-
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
 
 Název prostředku pro prostředek QnA Maker Managed (Preview), například `qna-westus-f0-b` , se používá také k pojmenování dalších prostředků.
@@ -330,12 +262,87 @@ Okno Azure Portal vytvořit umožňuje vytvořit prostředek QnA Maker Managed (
 > [!TIP]
 > Pomocí konvence vytváření názvů můžete označovat cenové úrovně v rámci názvu prostředku nebo skupiny prostředků. Když obdržíte chyby při vytváření nové znalostní báze nebo přidávání nových dokumentů, je běžným problémem omezení cenové úrovně Kognitivní hledání.
 
-### <a name="resource-purposes"></a>Účely prostředků
+---
+
+## <a name="resource-purposes"></a>Účely prostředků
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
+
+Každý prostředek Azure vytvořený pomocí QnA Maker má určitý účel:
+
+* Prostředek QnA Maker
+* Prostředek Kognitivní hledání
+* App Service
+* Služba plánu aplikací
+* Služba Application Insights
+
+### <a name="qna-maker-resource"></a>Prostředek QnA Maker
+
+Prostředek QnA Maker poskytuje přístup k rozhraním API pro vytváření a publikování a také ke vrstvě pro zpracování v přirozeném jazyce (NLP) na základě druhé vrstvy hodnocení (přiřazení #2) párů QnA za běhu.
+
+Druhé hodnocení používá inteligentní filtry, které mohou zahrnovat metadata a výzvy pro následné zpracování.
+
+#### <a name="qna-maker-resource-configuration-settings"></a>Nastavení konfigurace prostředků QnA Maker
+
+Když vytvoříte novou znalostní bázi na [portálu QnA maker](https://qnamaker.ai), nastavení **jazyka** bude jediným nastavením, které se použije na úrovni prostředků. Vyberte jazyk, když vytvoříte první znalostní bázi pro daný prostředek.
+
+### <a name="cognitive-search-resource"></a>Prostředek Kognitivní hledání
+
+Prostředek [kognitivní hledání](../../../search/index.yml) se používá pro:
+
+* Uložit páry QnA
+* Zadejte počáteční hodnocení (#1 hodnocení) párů QnA za běhu.
+
+#### <a name="index-usage"></a>Využití indexu
+
+Prostředek udržuje jeden index, který bude fungovat jako index testu, a zbývající indexy jsou v relaci k jedné publikované znalostní bázi.
+
+Cena za prostředek se zablokuje 15 indexů, bude obsahovat 14 publikovaných znalostní báze a jeden index se používá k testování všech znalostí. Tento index testu je rozdělený ve znalostní bázi, takže dotaz používající interaktivní testovací podokno použije index testu, ale vrátí jenom výsledky z konkrétního oddílu přidruženého ke konkrétní znalostní bázi.
+
+#### <a name="language-usage"></a>Použití jazyka
+
+První znalostní báze vytvořená v prostředku QnA Maker slouží k určení _jedné_ sady jazyků pro prostředek kognitivní hledání a všech jeho indexů. Pro QnA Maker službu můžete mít jenom _jednu sadu jazyků_ .
+
+#### <a name="using-a-single-cognitive-search-service"></a>Použití jedné Kognitivní hledání služby
+
+Pokud vytvoříte službu QnA a její závislosti (například vyhledávání) prostřednictvím portálu, vytvoří se vyhledávací služba pro vás a bude propojena s QnA Makerovou službou. Po vytvoření těchto prostředků můžete aktualizovat nastavení App Service tak, aby používalo dříve existující vyhledávací službu, a odebrat tu, kterou jste právě vytvořili.
+
+Naučte [se, jak nakonfigurovat](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) QnA maker pro použití jiného prostředku služby rozpoznávání, než který je vytvořený jako součást procesu vytváření prostředků QnA maker.
+
+### <a name="app-service-and-app-service-plan"></a>Služba App Service a plán služby App Service
+
+[Službu App Service](../../../app-service/index.yml) používá klientská aplikace pro přístup k publikovaným znalostní bázi prostřednictvím koncového bodu modulu runtime.
+
+Aby se publikovala publikovaná znalostní báze, všechny publikované znalostní báze používají stejný koncový bod adresy URL, ale v rámci této trasy zadejte **ID znalostní báze** .
+
+`{RuntimeEndpoint}/qnamaker/knowledgebases/{kbId}/generateAnswer`
+
+### <a name="application-insights"></a>Application Insights
+
+[Application Insights](../../../azure-monitor/app/app-insights-overview.md) se používá ke shromažďování protokolů a telemetrie chatu. Projděte si nejčastější [dotazy Kusto](../how-to/get-analytics-knowledge-base.md) , kde najdete informace o vaší službě.
+
+### <a name="share-services-with-qna-maker"></a>Sdílení služeb pomocí QnA Maker
+
+QnA Maker vytvoří několik prostředků Azure. Pokud chcete snížit úroveň správy a výhod sdílení nákladů, použijte následující tabulku, která vám pomůže pochopit, co můžete a nemůžete sdílet:
+
+|Služba|Sdílení|Důvod|
+|--|--|--|
+|Cognitive Services|×|Není možné podle návrhu|
+|Plán služby App Service|✔|Pevné místo na disku přidělené pro plán App Service. Pokud jiné aplikace sdílející stejný plán App Service používají významné místo na disku, dojde k problémům s instancí App Service Qnamakerem.|
+|App Service|×|Není možné podle návrhu|
+|Application Insights|✔|Může být sdíleno|
+|Služba Search|✔|1. `testkb` je rezervovaný název pro službu qnamakerem; nemůže ji použít jiný.<br>2. `synonym-map` pro službu qnamakerem je vyhrazená mapa synonym podle názvu.<br>3. počet publikovaných znalostní báze je omezený na úrovni služby vyhledávání. Pokud jsou dostupné bezplatné indexy, můžou je používat i jiné služby.|
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
 
 Každý prostředek Azure vytvořený pomocí spravovaného QnA Maker (Preview) má určitý účel:
 
 * Prostředek QnA Maker
 * Prostředek Kognitivní hledání
+
+### <a name="qna-maker-resource"></a>Prostředek QnA Maker
+
+Prostředek QnA Maker Managed (Preview) poskytuje přístup k rozhraním API pro vytváření a publikování, hostuje modul runtime hodnocení a poskytuje telemetrii.
 
 ### <a name="azure-cognitive-search-resource"></a>Prostředek Azure Kognitivní hledání
 
@@ -353,10 +360,6 @@ Pokud má vaše úroveň například 15 povolených indexů, můžete publikovat
 #### <a name="language-usage"></a>Použití jazyka
 
 S QnA Maker spravované (Preview) máte možnost nastavit službu QnA Maker pro znalostní báze v jednom nebo několika jazycích. Tuto volbu uděláte při vytváření prvního znalostní báze ve službě QnA Maker. V [této](#pricing-tier-considerations) části najdete postup povolení nastavení jazyka pro jednotlivé znalostní báze.
-
-### <a name="qna-maker-resource"></a>Prostředek QnA Maker
-
-Prostředek QnA Maker Managed (Preview) poskytuje přístup k rozhraním API pro vytváření a publikování, hostuje modul runtime hodnocení a poskytuje telemetrii.
 
 ---
 

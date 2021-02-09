@@ -8,19 +8,17 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d208a4a86896c81982aa2b10ca7ce5e7a6773c05
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: d1ac17c93bdf95e36f68af678d2ee38b896ef1e7
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820209"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979738"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>Kurz: přesunutí virtuálních počítačů Azure napříč oblastmi
 
 V tomto článku se dozvíte, jak přesunout virtuální počítače Azure a související prostředky sítě a úložiště do jiné oblasti Azure pomocí nástroje [Azure Resource stěhovací](overview.md).
-
-> [!NOTE]
-> Prostředek Azure Resource stěhovací je momentálně ve verzi Public Preview.
+.
 
 
 V tomto kurzu se naučíte:
@@ -40,26 +38,21 @@ V tomto kurzu se naučíte:
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/). Pak se přihlaste k [Azure Portal](https://portal.azure.com).
 
 ## <a name="prerequisites"></a>Požadavky
-
--  Ověřte, že máte přístup *vlastníka* k předplatnému obsahujícímu prostředky, které chcete přesunout.
-    - Při prvním přidání prostředku pro konkrétní dvojici zdroje a cíle v rámci předplatného Azure vytvoří [Správce prostředků spravovanou identitu přiřazenou systémem](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (dříve známou jako služba zjištění spravované služby (MSI)), která je pro předplatné důvěryhodná.
-    - Pokud chcete vytvořit identitu a přiřadit jí požadovanou roli (přispěvatel nebo správce přístupu uživatele ve zdrojovém předplatném), účet, který použijete k přidání prostředků, potřebuje oprávnění *vlastníka* k tomuto předplatnému. [Přečtěte si další informace](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) o rolích Azure.
-- Předplatné potřebuje dostatek kvót k vytvoření prostředků, které přesouváte v cílové oblasti. Pokud nemá kvótu, [požádejte o další omezení](../azure-resource-manager/management/azure-subscription-service-limits.md).
-- Ověřte ceny a poplatky spojené s cílovou oblastí, do které přesouváte virtuální počítače. Pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) vám pomůžeme.
+**Požadavek** | **Popis**
+--- | ---
+**Oprávnění předplatného** | Ověřte, že máte přístup *vlastníka* k předplatnému obsahující prostředky, které chcete přesunout.<br/><br/> **Proč potřebuji přístup k vlastníkovi?** Při prvním přidání prostředku pro konkrétní dvojici zdroje a cíle v rámci předplatného Azure vytvoří [Správce prostředků spravovanou identitu přiřazenou systémem](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (dříve známou jako služba zjištění spravované služby (MSI)), která je pro předplatné důvěryhodná. Pokud chcete vytvořit identitu a přiřadit jí požadovanou roli (přispěvatel nebo správce přístupu uživatele ve zdrojovém předplatném), účet, který použijete k přidání prostředků, potřebuje oprávnění *vlastníka* k tomuto předplatnému. [Přečtěte si další informace](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) o rolích Azure.
+**Podpora virtuálních počítačů** |  Ověřte, že virtuální počítače, které chcete přesunout, jsou podporované.<br/><br/> - [Ověřte](support-matrix-move-region-azure-vm.md#windows-vm-support) podporované virtuální počítače s Windows.<br/><br/> - [Ověřte](support-matrix-move-region-azure-vm.md#linux-vm-support) podporované virtuální počítače se systémem Linux a verze jádra.<br/><br/> – Ověřte podporovaná nastavení [COMPUTE](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings), [úložiště](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings)a [sítě](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings) .
+**Cílové předplatné** | Aby bylo možné vytvořit prostředky, které přesouváte v cílové oblasti, musí předplatné v cílové oblasti mít dostatečnou kvótu. Pokud nemá kvótu, [požádejte o další omezení](../azure-resource-manager/management/azure-subscription-service-limits.md).
+**Poplatky za cílovou oblast** | Ověřte ceny a poplatky spojené s cílovou oblastí, do které přesouváte virtuální počítače. Pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) vám pomůžeme.
     
 
-## <a name="check-vm-requirements"></a>Ověřit požadavky virtuálního počítače
+## <a name="prepare-vms"></a>Příprava virtuálních počítačů
 
-1. Ověřte, že virtuální počítače, které chcete přesunout, jsou podporované.
-
-    - [Ověřte](support-matrix-move-region-azure-vm.md#windows-vm-support) podporované virtuální počítače s Windows.
-    - [Ověřte](support-matrix-move-region-azure-vm.md#linux-vm-support) podporované virtuální počítače se systémem Linux a verze jádra.
-    - Ověřte podporovaná nastavení [COMPUTE](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings), [úložiště](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings)a [sítě](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings) .
-2. Ověřte, že jsou virtuální počítače, které chcete přesunout, zapnuté.
-3. Ujistěte se, že virtuální počítače mají nejnovější důvěryhodné kořenové certifikáty a aktualizovaný seznam odvolaných certifikátů (CRL). Použijte následující postup:
+1. Po kontrole, že virtuální počítače splňují požadavky, se ujistěte, že jsou zapnuté virtuální počítače, které chcete přesunout. Všechny disky virtuálních počítačů, které mají být k dispozici v cílové oblasti, musí být připojeny a inicializovány ve virtuálním počítači.
+1. Ujistěte se, že virtuální počítače mají nejnovější důvěryhodné kořenové certifikáty a aktualizovaný seznam odvolaných certifikátů (CRL). Použijte následující postup:
     - Na virtuálních počítačích s Windows nainstalujte nejnovější aktualizace Windows.
     - V případě virtuálních počítačů se systémem Linux postupujte podle pokynů k distributorům, aby počítače měly nejnovější certifikáty a seznam CRL. 
-4. Povolení odchozího připojení z virtuálních počítačů:
+1. Povolení odchozího připojení z virtuálních počítačů:
     - Pokud k řízení odchozího připojení používáte proxy server brány firewall založený na adrese URL, povolte přístup k těmto [adresám URL](support-matrix-move-region-azure-vm.md#url-access) .
     - Pokud k řízení odchozího připojení používáte pravidla skupiny zabezpečení sítě (NSG), vytvořte tato [pravidla značek služeb](support-matrix-move-region-azure-vm.md#nsg-rules).
 
@@ -85,12 +78,12 @@ Vyberte prostředky, které chcete přesunout.
     ![Stránka pro výběr zdrojové a cílové oblasti](./media/tutorial-move-region-virtual-machines/source-target.png)
 
 6. V nabídce **prostředky k přesunutí** klikněte na **vybrat prostředky**.
-7. V části **vybrat prostředky** vyberte virtuální počítač. Je možné přidat pouze [prostředky podporované pro Move](#check-vm-requirements). Pak klikněte na **Hotovo**.
+7. V části **vybrat prostředky** vyberte virtuální počítač. Je možné přidat pouze [prostředky podporované pro Move](#prepare-vms). Pak klikněte na **Hotovo**.
 
     ![Na stránce vyberte virtuální počítače, které se mají přesunout.](./media/tutorial-move-region-virtual-machines/select-vm.png)
 
 8.  V nabídce **prostředky k přesunutí** klikněte na **Další**.
-9. V části **Revize a přidat** zkontrolujte nastavení zdroje a cíle. 
+9. V části **Kontrola** zkontrolujte nastavení zdroje a cíle. 
 
     ![Stránku ke kontrole nastavení a pokračování v přesunutí](./media/tutorial-move-region-virtual-machines/review.png)
 10. Klikněte na **pokračovat** a začněte přidávat prostředky.
@@ -99,25 +92,27 @@ Vyberte prostředky, které chcete přesunout.
 
 > [!NOTE]
 > - Přidané prostředky jsou ve stavu *Příprava čeká na vyřízení* .
+> - Skupina prostředků pro virtuální počítače se přidá automaticky.
 > - Pokud chcete odebrat prostředek z kolekce přesunutí, metoda pro to závisí na tom, kde se nacházíte v procesu přesunutí. [Přečtěte si další informace](remove-move-resources.md).
 
 ## <a name="resolve-dependencies"></a>Vyřešit závislosti
 
 1. Pokud zdroje zobrazují zprávu *ověřit závislosti* ve sloupci **problémy** , klikněte na tlačítko **ověřit závislosti** . Spustí se proces ověřování.
 2. Pokud se najde závislosti, klikněte na **přidat závislosti**. 
-3. V části **přidat závislosti** vyberte závislé prostředky > **přidat závislosti**. Sledujte průběh oznámení.
+3. V části **přidat závislosti** ponechte výchozí možnost **Zobrazit všechny závislosti** .
+
+    - Zobrazit všechny závislosti prochází všemi přímými a nepřímými závislostmi prostředku. Například pro virtuální počítač se zobrazí síťové rozhraní, virtuální síť, skupiny zabezpečení sítě (skupin zabezpečení sítě) atd.
+    - Zobrazit závislosti na první úrovni zobrazuje pouze přímé závislosti. Například pro virtuální počítač zobrazuje síťovou kartu, ale ne virtuální síť.
+
+
+4. Vyberte závislé prostředky, které chcete přidat > **přidat závislosti**. Sledujte průběh oznámení.
 
     ![Přidat závislosti](./media/tutorial-move-region-virtual-machines/add-dependencies.png)
 
-4. V případě potřeby přidejte další závislosti a znovu ověřte závislosti. 
+4. Znovu ověřte závislosti. 
     ![Stránka pro přidání dalších závislostí](./media/tutorial-move-region-virtual-machines/add-additional-dependencies.png)
 
-4. Na stránce **napříč oblastmi** ověřte, že prostředky jsou nyní ve stavu *Příprava čeká* bez problémů.
 
-    ![Stránka znázorňující prostředky v připraveném stavu Příprava](./media/tutorial-move-region-virtual-machines/prepare-pending.png)
-
-> [!NOTE]
-> Pokud chcete před zahájením přesunu upravit nastavení cíle, vyberte odkaz ve sloupci **Konfigurace cíle** pro daný prostředek a upravte nastavení. Pokud upravíte nastavení cílového virtuálního počítače, velikost cílového virtuálního počítače by neměla být menší než velikost zdrojového virtuálního počítače.  
 
 ## <a name="move-the-source-resource-group"></a>Přesunout zdrojovou skupinu prostředků 
 
@@ -158,9 +153,17 @@ Potvrzení a dokončení procesu přesunutí:
 
 ## <a name="prepare-resources-to-move"></a>Příprava prostředků k přesunu
 
+Teď, když je zdrojová skupina prostředků přesunutá, můžete připravit na přesun dalších prostředků, které jsou ve stavu *Příprava čeká na vyřízení* .
+
+1. V **různých oblastech** ověřte, že prostředky jsou nyní ve stavu *Příprava čeká na vyřízení* bez problémů. Pokud ne, ověřte je znovu a vyřešte případné nedokončené problémy.
+
+    ![Stránka znázorňující prostředky v připraveném stavu Příprava](./media/tutorial-move-region-virtual-machines/prepare-pending.png)
+
+2. Pokud chcete před zahájením přesunu upravit nastavení cíle, vyberte odkaz ve sloupci **Konfigurace cíle** pro daný prostředek a upravte nastavení. Pokud upravíte nastavení cílového virtuálního počítače, velikost cílového virtuálního počítače by neměla být menší než velikost zdrojového virtuálního počítače.  
+
 Teď, když je zdrojová skupina prostředků přesunutá, můžete připravit na přesun dalších prostředků.
 
-1. V **různých oblastech** vyberte prostředky, které chcete připravit. 
+3. Vyberte prostředky, které chcete připravit. 
 
     ![Stránka pro výběr přípravy na další prostředky](./media/tutorial-move-region-virtual-machines/prepare-other.png)
 

@@ -12,6 +12,8 @@
   items:
     - name: Přesun virtuálních počítačů Azure do jiné oblasti
       href: tutorial-move-region-virtual-machines.md
+    - name: Přesunutí šifrovaných virtuálních počítačů Azure do jiné oblasti
+      href: tutorial-move-region-encrypted-virtual-machines.md
     - name: Přesun prostředků SQL do jiné oblasti
       href: tutorial-move-region-sql.md
 - name: Koncepty

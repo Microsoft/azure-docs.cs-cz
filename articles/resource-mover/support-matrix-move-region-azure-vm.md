@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: how-to
-ms.date: 10/11/2020
+ms.date: 02/08/2021
 ms.author: raynew
-ms.openlocfilehash: fa0017b0633d856906609818dd56b5971b1879a7
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 3022b2d4954ffaef71e17ed28dd9b6f141d4da70
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222794"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980486"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Podpora pro přesun virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -116,7 +116,7 @@ Rozšíření | Nepodporováno | Rozšíření se nekopírují do virtuálního 
 Tato tabulka shrnuje podporu pro disk s operačním systémem Azure VM, datový disk a dočasný disk. Abyste se vyhnuli problémům s výkonem, je důležité sledovat omezení počtu disků virtuálních počítačů a cíle pro službu [Managed disks](../virtual-machines/disks-scalability-targets.md) .
 
 > [!NOTE]
-> Velikost cílového virtuálního počítače by měla být větší nebo rovna zdrojovému virtuálnímu počítači. K ověřování se používají tyto parametry: počet datových disků, počet síťových adaptérů, dostupné procesory a paměť v GB. Pokud se nejedná o chybu, je vydána.
+> Velikost cílového virtuálního počítače by měla být větší nebo rovna zdrojovému virtuálnímu počítači. K ověřování se používají tyto parametry: počet datových disků, počet síťových adaptérů, dostupné procesory a paměť v GB. Pokud se sn't, vydá se chyba.
 
 
 **Komponenta** | **Podpora** | **Podrobnosti**
@@ -134,6 +134,8 @@ Spravovaný disk (Premium) | Podporováno |
 SSD úrovně Standard | Podporováno |
 Generace 2 (spuštění UEFI) | Podporováno
 Účet úložiště diagnostiky spouštění | Nepodporováno | Po přesunutí virtuálního počítače do cílové oblasti ho znovu povolte.
+Virtuální počítače s povolenou službou Azure Disk Encryption | Podporováno | [Další informace](tutorial-move-region-encrypted-virtual-machines.md)
+Virtuální počítače používající šifrování na straně serveru s klíčem spravovaným zákazníkem | Podporováno | [Další informace](tutorial-move-region-encrypted-virtual-machines.md)
 
 ### <a name="limits-and-data-change-rates"></a>Limity a míry změny dat
 

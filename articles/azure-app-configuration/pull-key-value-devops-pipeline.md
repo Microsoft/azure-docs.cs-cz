@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 4d80c034ab03fed6b9ae2ed0c4c0420afe6f7e32
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 7bd163781203a277f4c9d6866a156c11e4d5d520
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728087"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979568"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Nastavení vyžádání do konfigurace aplikace pomocí Azure Pipelines
 
@@ -60,7 +60,7 @@ Přiřaďte správnou roli konfigurace aplikace k připojení služby, které se
 
 V této části se dozvíte, jak používat úlohu konfigurace aplikace Azure v kanálu sestavení Azure DevOps.
 
-1. Přejděte na stránku kanálu **sestavení kliknutím na kanály kanály**  >  . Dokumentaci k kanálu sestavení najdete v tématu  [Vytvoření prvního kanálu](/azure/devops/pipelines/create-first-pipeline?view=azure-devops&tabs=net%2Ctfs-2018-2%2Cbrowser).
+1. Přejděte na stránku kanálu **sestavení kliknutím na kanály kanály**  >  . Dokumentaci k kanálu sestavení najdete v tématu  [Vytvoření prvního kanálu](/azure/devops/pipelines/create-first-pipeline?tabs=net%2Ctfs-2018-2%2Cbrowser).
       - Pokud vytváříte nový kanál sestavení, klikněte na **Nový kanál** a vyberte úložiště pro svůj kanál. Vyberte **Zobrazit pomocníka** na pravé straně kanálu a vyhledejte úlohu **Konfigurace aplikace Azure** .
       - Pokud používáte existující kanál sestavení, vyberte **Upravit** pro úpravu kanálu. Na kartě **úlohy** vyhledejte úlohu **Konfigurace aplikace Azure** .
 1. Nakonfigurujte potřebné parametry pro úlohu, aby vyčetly klíčové hodnoty z úložiště konfigurace aplikace. Popisy parametrů jsou k dispozici v části **parametry** níže a v popiscích tlačítek vedle jednotlivých parametrů.
@@ -73,10 +73,10 @@ V této části se dozvíte, jak používat úlohu konfigurace aplikace Azure v 
 
 V této části se dozvíte, jak používat úlohu konfigurace aplikace Azure v kanálu vydaných verzí Azure DevOps.
 
-1. Vyberte vydaná vydání **kanálů** a přejděte na stránku kanály vydání  >  . Dokumentaci k vydaným kanálům vydaných verzí najdete v tématu [kanály verzí](/azure/devops/pipelines/release?view=azure-devops).
+1. Vyberte vydaná vydání **kanálů** a přejděte na stránku kanály vydání  >  . Dokumentaci k vydaným kanálům vydaných verzí najdete v tématu [kanály verzí](/azure/devops/pipelines/release).
 1. Vyberte existující kanál verze. Pokud ho nemáte, klikněte na **Nový kanál** a vytvořte nový.
 1. Kliknutím na tlačítko **Upravit** v pravém horním rohu upravte kanál verze.
-1. Vyberte **fázi** pro přidání úlohy. Další informace o fázích najdete v tématu [Přidání fází, závislostí & podmínek](/azure/devops/pipelines/release/environments?view=azure-devops).
+1. Vyberte **fázi** pro přidání úlohy. Další informace o fázích najdete v tématu [Přidání fází, závislostí & podmínek](/azure/devops/pipelines/release/environments).
 1. Klikněte na možnost **+** Spustit na agentovi a pak na kartu **Přidat úlohy** přidejte úlohu **Konfigurace aplikace Azure** .
 1. Nakonfigurujte potřebné parametry v rámci úlohy, aby vyčetly klíčové hodnoty z úložiště konfigurace aplikace. Popisy parametrů jsou k dispozici v části **parametry** níže a v popiscích tlačítek vedle jednotlivých parametrů.
       - Nastavte parametr **předplatné Azure** na název připojení služby, které jste vytvořili v předchozím kroku.
@@ -111,7 +111,7 @@ A hodnota bude vytištěna do konzoly.
 
 Pokud dojde k neočekávané chybě, můžete povolit protokoly ladění nastavením proměnné kanálu `system.debug` na `true` .
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Návody vytvořit konfiguraci z více klíčů a popisků?**
 

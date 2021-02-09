@@ -1,6 +1,6 @@
 ---
 title: Automatické škálování cloudové služby (klasické) na portálu | Microsoft Docs
-description: Naučte se používat portál ke konfiguraci pravidel automatického škálování webové role nebo role pracovního procesu cloudové služby v Azure.
+description: Naučte se používat portál ke konfiguraci pravidel automatického škálování pro role cloudové služby (Classic) v Azure.
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: a3e7f72dbe16c51280b922da2b5fc6550dee1d34
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: ba7b2279969acab93ac96c42e0033e76e9d0542d
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98743351"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980826"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-classic-in-the-portal"></a>Jak nakonfigurovat automatické škálování pro cloudovou službu (Classic) na portálu
 
@@ -23,7 +23,7 @@ ms.locfileid: "98743351"
 Můžete nastavit podmínky pro roli pracovního procesu cloudové služby, která spouští operaci horizontálního nebo vyvýšení kapacity. Podmínky role můžou být založené na procesoru, disku nebo síťové zátěži role. Můžete také nastavit podmínku na základě fronty zpráv nebo metriky nějakého jiného prostředku Azure přidruženého k vašemu předplatnému.
 
 > [!NOTE]
-> Tento článek se zaměřuje na webové role a role pracovních procesů cloudové služby. Když vytváříte virtuální počítač (Classic) přímo, je hostovaný v cloudové službě. Standardní virtuální počítač můžete škálovat tak, že ho přidružíte ke [skupině dostupnosti](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic) , a ručně je zapnout nebo vypnout.
+> Tento článek se zaměřuje na cloudovou službu (Classic). Když vytváříte virtuální počítač (Classic) přímo, je hostovaný v cloudové službě. Standardní virtuální počítač můžete škálovat tak, že ho přidružíte ke [skupině dostupnosti](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic) , a ručně je zapnout nebo vypnout.
 
 ## <a name="considerations"></a>Požadavky
 Před konfigurací škálování pro aplikaci byste měli zvážit následující informace:

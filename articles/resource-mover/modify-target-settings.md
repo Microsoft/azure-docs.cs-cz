@@ -5,14 +5,14 @@ manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 02/08/2021
 ms.author: raynew
-ms.openlocfilehash: 27e7c899f0d22789c10541fc98a0d2c63a7843ec
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: eb28e4c8f6b465e2a9b38cc4571bc4a00baf4ef7
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95533051"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979619"
 ---
 # <a name="modify-target-settings"></a>Úprava nastavení cíle
 
@@ -36,16 +36,16 @@ Nastavení konfigurace, která lze upravit, jsou shrnuta v tabulce.
 
 **Prostředek** | **Možnosti** 
 --- | --- | --- 
-**Název virtuálního počítače** | Možnosti:<br/><br/> – Vytvoří nový virtuální počítač se stejným názvem v cílové oblasti.<br/><br/> – Vytvoří nový virtuální počítač s jiným názvem v cílové oblasti.<br/><br/> – Použijte existující virtuální počítač v cílové oblasti.<br/><br/> Pokud vytvoříte nový virtuální počítač s výjimkou nastavení, které upravíte, bude novému cílovému virtuálnímu počítači přiřazeno stejné nastavení jako zdroj.
-**Zóna dostupnosti virtuálního počítače** | Zóna dostupnosti, do které bude cílový virtuální počítač umístěn. Tato možnost může být označena **na** , pokud nechcete změnit nastavení zdroje, nebo pokud nechcete virtuální počítač umístit do zóny dostupnosti.
+**název virtuálního počítače** | Možnosti:<br/><br/> – Vytvoří nový virtuální počítač se stejným názvem v cílové oblasti.<br/><br/> – Vytvoří nový virtuální počítač s jiným názvem v cílové oblasti.<br/><br/> – Použijte existující virtuální počítač v cílové oblasti.<br/><br/> Pokud vytvoříte nový virtuální počítač s výjimkou nastavení, které upravíte, bude novému cílovému virtuálnímu počítači přiřazeno stejné nastavení jako zdroj.
+**Zóna dostupnosti virtuálního počítače** | Zóna dostupnosti, do které bude cílový virtuální počítač umístěn. Pokud nechcete změnit nastavení zdroje, nebo pokud nechcete virtuální počítač umístit do zóny dostupnosti, vyberte možnost **Nepoužito** .
 **Skladová položka virtuálního počítače** | [Typ virtuálního počítače](https://azure.microsoft.com/pricing/details/virtual-machines/series/) (dostupný v cílové oblasti), který se použije pro cílový virtuální počítač.<br/><br/> Vybraný cílový virtuální počítač by neměl být menší než zdrojový virtuální počítač.
-**Síťové prostředky** | Možnosti pro virtuální sítě (virtuální sítě)/Network skupiny zabezpečení/síťová rozhraní:<br/><br/> – Vytvoří nový prostředek se stejným názvem v cílové oblasti.<br/><br/> – Vytvoří nový prostředek s jiným názvem v cílové oblasti.<br/><br/> – Použijte existující síťový prostředek v cílové oblasti.<br/><br/> Pokud vytvoříte nový cílový prostředek, s výjimkou nastavení, které upravíte, je mu přiřazeno stejné nastavení jako zdrojový prostředek.
-**Název veřejné IP adresy** | Zadejte název.
-**SKU veřejné IP adresy** | Zadejte [SKU](../virtual-network/public-ip-addresses.md#sku).
-**Zóna veřejné IP adresy** | Zadejte [zónu](../virtual-network/public-ip-addresses.md#standard) pro standardní veřejné IP adresy.<br/><br/> Pokud chcete, aby byla zóna redundantní, zadejte jako **zónu redundantní**.
-**Název nástroje pro vyrovnávání zatížení** | Zadejte název.
-**SKU nástroje pro vyrovnávání zatížení** | Basic nebo Standard. Doporučujeme používat standard.
-**Zóna nástroje pro vyrovnávání zatížení** | Zadejte zónu pro nástroj pro vyrovnávání zatížení. <br/><br/> Pokud chcete, aby byla zóna redundantní, zadejte jako **zónu redundantní**.
+* * Skupina dostupnosti virtuálních počítačů | Skupina dostupnosti, do které bude cílový virtuální počítač umístěn. Vyberte **nepoužitelné**  , nechcete změnit nastavení zdroje, nebo pokud virtuální počítač nechcete umístit do skupiny dostupnosti.
+**Trezor klíčů virtuálních počítačů** | Přidružený Trezor klíčů, když povolíte Azure Disk Encryption na virtuálním počítači.
+**Sada šifrování disku** | Přidružená šifra disku nastavená, pokud virtuální počítač používá klíč spravovaný zákazníkem pro šifrování na straně serveru.
+**Skupina prostředků** | Skupina prostředků, do které bude cílový virtuální počítač umístěn.
+**Síťové prostředky** | Možnosti pro síťová rozhraní, virtuální sítě (virtuální sítě/) a skupiny zabezpečení sítě/síťová rozhraní:<br/><br/> – Vytvoří nový prostředek se stejným názvem v cílové oblasti.<br/><br/> – Vytvoří nový prostředek s jiným názvem v cílové oblasti.<br/><br/> – Použijte existující síťový prostředek v cílové oblasti.<br/><br/> Pokud vytvoříte nový cílový prostředek, s výjimkou nastavení, které upravíte, je mu přiřazeno stejné nastavení jako zdrojový prostředek.
+**Název veřejné IP adresy, SKU a zóna** | Určuje název, [skladovou](../virtual-network/public-ip-addresses.md#sku)položku a [zónu](../virtual-network/public-ip-addresses.md#standard) pro standardní veřejné IP adresy.<br/><br/> Pokud chcete, aby byla zóna redundantní, zadejte jako **zónu redundantní**.
+* * Název nástroje pro vyrovnávání zatížení, SKU a zóna * * | Určuje název, SKLADOVOU položku (Basic nebo Standard) a zónu pro nástroj pro vyrovnávání zatížení.<br/><br/> Doporučujeme použít standardní sKU.<br/><br/> Pokud chcete, aby byla zóna redundantní, zadejte jako **zónu redundantní**.
 **Závislosti prostředků** | Možnosti pro každou závislost:<br/><br/>– Prostředek používá zdrojové závislé prostředky, které se přesunou do cílové oblasti.<br/><br/> – Prostředek používá jiné závislé prostředky, které se nacházejí v cílové oblasti. V takovém případě si můžete vybrat z libovolných podobných prostředků v cílové oblasti.
 
 ### <a name="edit-vm-target-settings"></a>Upravit nastavení cíle virtuálního počítače

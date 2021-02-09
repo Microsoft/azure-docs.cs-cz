@@ -8,12 +8,16 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 06b03ac1cfe37307a5839be0d5ca3b1003db35af
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+adobe-target: true
+adobe-target-activity: DocsExp-A/B-384740-MongoDB-2.8.2021
+adobe-target-experience: Experience B
+adobe-target-content: connect-mongodb-account-experimental.md
+ms.openlocfilehash: d3e619559f1fb2500904aa7349aa131fd9b5fc00
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93072403"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980775"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Připojení aplikace MongoDB ke službě Azure Cosmos DB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -25,7 +29,7 @@ Tento kurz nabízí dva způsoby, jak načíst informace o připojovacím řetě
 - [Metoda rychlý Start](#get-the-mongodb-connection-string-by-using-the-quick-start)pro použití s ovladači .net, Node.js, MongoDB Shell, Java a Python
 - [Metoda vlastního připojovacího řetězce](#get-the-mongodb-connection-string-to-customize)pro použití s jinými ovladači
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure: Pokud nemáte účet Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) hned teď.
 - Účet Cosmos. Pokyny najdete v tématu [Vytvoření webové aplikace pomocí rozhraní API Azure Cosmos DB pro MongoDB a .NET SDK](create-mongodb-dotnet.md).
@@ -34,8 +38,8 @@ Tento kurz nabízí dva způsoby, jak načíst informace o připojovacím řetě
 
 1. V internetovém prohlížeči se přihlaste k [Azure Portal](https://portal.azure.com).
 2. V okně **Azure Cosmos DB** vyberte rozhraní API.
-3. V levém podokně okna účtu klikněte na **rychlý Start** .
-4. Vyberte platformu ( **.NET** , **Node.js** , **MongoDB Shell** , **Java** , **Python** ). Pokud nevidíte váš ovladač nebo nástroj, nedělejte si starosti – budeme průběžně dokumentovat více fragmentů kódu pro připojení. Níže prosím zadejte komentář na to, co byste chtěli vidět. Pokud se chcete dozvědět, jak vytvořit vlastní připojení, přečtěte si téma [získání informací o připojovacím řetězci účtu](#get-the-mongodb-connection-string-to-customize).
+3. V levém podokně okna účtu klikněte na **rychlý Start**.
+4. Vyberte platformu (**.NET**, **Node.js**, **MongoDB Shell**, **Java**, **Python**). Pokud nevidíte váš ovladač nebo nástroj, nedělejte si starosti – budeme průběžně dokumentovat více fragmentů kódu pro připojení. Níže prosím zadejte komentář na to, co byste chtěli vidět. Pokud se chcete dozvědět, jak vytvořit vlastní připojení, přečtěte si téma [získání informací o připojovacím řetězci účtu](#get-the-mongodb-connection-string-to-customize).
 5. Zkopírujte a vložte fragment kódu do aplikace MongoDB.
 
     :::image type="content" source="./media/connect-mongodb-account/QuickStartBlade.png" alt-text="Okno rychlý Start":::
@@ -44,15 +48,15 @@ Tento kurz nabízí dva způsoby, jak načíst informace o připojovacím řetě
 
 1. V internetovém prohlížeči se přihlaste k [Azure Portal](https://portal.azure.com).
 2. V okně **Azure Cosmos DB** vyberte rozhraní API.
-3. V levém podokně okna účtu klikněte na **připojovací řetězec** .
+3. V levém podokně okna účtu klikněte na **připojovací řetězec**.
 4. Otevře se okno **připojovací řetězec** . Obsahuje všechny informace potřebné pro připojení k účtu pomocí ovladače pro MongoDB, včetně předkonstruovaného připojovacího řetězce.
 
-   :::image type="content" source="./media/connect-mongodb-account/ConnectionStringBlade.png" alt-text="Okno rychlý Start" lightbox= "./media/connect-mongodb-account/ConnectionStringBlade.png" :::
+   :::image type="content" source="./media/connect-mongodb-account/ConnectionStringBlade.png" alt-text="Okno Připojovací řetězec" lightbox= "./media/connect-mongodb-account/ConnectionStringBlade.png" :::
 
 ## <a name="connection-string-requirements"></a>Požadavky na připojovací řetězec
 
 > [!Important]
-> Azure Cosmos DB má přísné požadavky na zabezpečení a standardy. Účty Azure Cosmos DB vyžadují ověřování a zabezpečenou komunikaci pomocí protokolu *TLS* .
+> Azure Cosmos DB má přísné požadavky na zabezpečení a standardy. Účty Azure Cosmos DB vyžadují ověřování a zabezpečenou komunikaci pomocí protokolu *TLS*.
 
 Azure Cosmos DB podporuje standardní formát identifikátoru URI připojovacího řetězce MongoDB s několika konkrétními požadavky: účty Azure Cosmos DB vyžadují ověřování a zabezpečenou komunikaci pomocí protokolu TLS. Formát připojovacího řetězce je tedy následující:
 

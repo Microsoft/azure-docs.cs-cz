@@ -12,14 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: a6ba9c02b384c1b30977d962659983d600c7b2ac
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bd13712d137ec5a1fdfa6dec8e6f6d1e0a7432cb
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95545716"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833163"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Vytvoření monitorování v monitorování připojení pomocí Azure Portal
+
+> [!IMPORTANT]
+> Od 1. července 2021 nebudete moci přidat nové testy do existujícího pracovního prostoru nebo povolit nový pracovní prostor v Network Performance Monitor. V monitorování připojení (Classic) taky nebude možné přidat nová monitorování připojení. Můžete nadále používat testy a monitory připojení vytvořené před 1. července 2021. Pokud chcete minimalizovat přerušení služby na vaše aktuální úlohy, [migrujte testy z Network Performance Monitor ](migrate-to-connection-monitor-from-network-performance-monitor.md) nebo  [migrujte z monitoru připojení (Classic)](migrate-to-connection-monitor-from-connection-monitor-classic.md) na nové monitorování připojení v Azure Network Watcher před 29. února 2024.
 
 Naučte se používat monitorování připojení k monitorování komunikace mezi prostředky. Tento článek popisuje, jak vytvořit monitorování pomocí Azure Portal. Monitorování připojení podporuje hybridní a cloudová nasazení Azure.
 
@@ -110,7 +113,7 @@ V Azure Portal pro vytvoření testovací skupiny v monitorování připojení z
 
       **Předplatné**  >  **Skupina prostředků**  >  **Virtuální síť**  >  **Podsíť**  >  **Virtuální počítače s agenty**
 
-      Můžete také změnit selektor **Group by** , aby se strom spouštěl z jiné úrovně. Pokud například vytvoříte seskupení podle virtuální sítě, zobrazí se virtuální počítače, které mají agenty v hierarchii **VNET**  >  virtuálních počítačů **podsítě** virtuální sítě  >  **s agenty**.
+      Můžete také změnit selektor **Group by** , aby se strom spouštěl z jiné úrovně. Pokud například vytvoříte seskupení podle virtuální sítě, zobrazí se virtuální počítače, které mají agenty v hierarchii   >  virtuálních počítačů **podsítě** virtuální sítě  >  **s agenty**.
 
        Když vyberete virtuální síť, podsíť nebo jeden virtuální počítač, odpovídající ID prostředku se nastaví jako koncový bod. Ve výchozím nastavení se v monitorování účastní všechny virtuální počítače ve vybrané virtuální síti nebo podsíti, které mají rozšíření Azure Network Watcher. Chcete-li omezit rozsah, buď vyberte konkrétní podsítě nebo agenty, nebo změňte hodnotu vlastnosti Scope. 
 

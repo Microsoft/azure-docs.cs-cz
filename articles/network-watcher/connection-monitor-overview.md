@@ -15,14 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 57228c6b7da04b139c7075c83e313b207907e214
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 0fa5e09dbe7c0a8cd45557d535353ea4a0a00b16
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898007"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833095"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Monitorování připojení k síti pomocí monitorování připojení
+
+> [!IMPORTANT]
+> Od 1. července 2021 nebudete moci přidat nové testy do existujícího pracovního prostoru nebo povolit nový pracovní prostor v Network Performance Monitor. V monitorování připojení (Classic) taky nebude možné přidat nová monitorování připojení. Můžete nadále používat testy a monitory připojení vytvořené před 1. července 2021. Pokud chcete minimalizovat přerušení služby na vaše aktuální úlohy, [migrujte testy z Network Performance Monitor ](migrate-to-connection-monitor-from-network-performance-monitor.md) nebo  [migrujte z monitoru připojení (Classic)](migrate-to-connection-monitor-from-connection-monitor-classic.md) na nové monitorování připojení v Azure Network Watcher před 29. února 2024.
 
 Monitorování připojení nabízí sjednocené monitorování připojení v Azure Network Watcher. Funkce monitorování připojení podporuje hybridní a cloudová nasazení Azure. Network Watcher poskytuje nástroje pro monitorování, diagnostiku a zobrazení metrik souvisejících s připojením pro vaše nasazení Azure.
 
@@ -111,7 +114,7 @@ Monitorování připojení zahrnuje následující entity:
 
  ![Diagram znázorňující monitorování připojení, definování vztahu mezi testovacími skupinami a testy](./media/connection-monitor-2-preview/cm-tg-2.png)
 
-Monitorování připojení můžete vytvořit pomocí [Azure Portal](./connection-monitor-create-using-portal.md) nebo [ARMClient](./connection-monitor-create-using-template.md)
+Monitorování připojení můžete vytvořit pomocí [Azure Portal](./connection-monitor-create-using-portal.md), [ARMClient](./connection-monitor-create-using-template.md) nebo [PowerShellu](connection-monitor-create-using-powershell.md) .
 
 Všechny zdroje, cíle a konfigurace testu, které přidáte do testovací skupiny, se rozdělují na jednotlivé testy. Tady je příklad rozdělení zdrojů a cílů:
 
@@ -271,12 +274,13 @@ V monitorováních připojení vytvořených před prostředím monitorování p
 
 Když použijete metriky, nastavte typ prostředku jako Microsoft. Network/networkWatchers/connectionMonitors.
 
-| Metrika | Zobrazované jméno | Jednotka | Typ agregace | Description | Dimenze |
+| Metric | Zobrazované jméno | Jednotka | Typ agregace | Description | Dimenze |
 | --- | --- | --- | --- | --- | --- |
-| ProbesFailedPercent | % PROBE selhalo | Procento | Průměr | Procento sond monitorování připojení selhalo. | Žádné dimenze |
-| AverageRoundtripMs | Průměrná doba odezvy (MS) | Milisekund | Průměr | Průměrná doba odezvy sítě pro testy monitorování připojení odesílané mezi zdrojem a cílem |             Žádné dimenze |
-| ChecksFailedPercent (Preview) | % Kontroly selhaly (Preview) | Procento | Průměr | Procento neúspěšných kontrol testu | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Parametr sourceresourceid <br>SourceType <br>Protokol <br>DestinationAddress <br>Cílový. <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
-| RoundTripTimeMs (Preview) | Doba odezvy (MS) (Preview) | Milisekund | Průměr | Čas RTT pro kontroly odeslané mezi zdrojem a cílem. Tato hodnota není průměrná. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Parametr sourceresourceid <br>SourceType <br>Protokol <br>DestinationAddress <br>Cílový. <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
+| ProbesFailedPercent (klasický) | % PROBE selhalo (klasické) | Procento | Průměr | Procento sond monitorování připojení selhalo. | Žádné dimenze |
+| AverageRoundtripMs (klasický) | Průměrná doba odezvy (MS) (klasická) | Milisekund | Průměr | Průměrná doba odezvy sítě pro testy monitorování připojení odesílané mezi zdrojem a cílem |             Žádné dimenze |
+| ChecksFailedPercent | % Kontroly selhaly. | Procento | Průměr | Procento neúspěšných kontrol testu | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Parametr sourceresourceid <br>SourceType <br>Protokol <br>DestinationAddress <br>Cílový. <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Oblast |
+| RoundTripTimeMs | Doba odezvy (MS) | Milisekund | Průměr | Čas RTT pro kontroly odeslané mezi zdrojem a cílem. Tato hodnota není průměrná. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Parametr sourceresourceid <br>SourceType <br>Protokol <br>DestinationAddress <br>Cílový. <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Oblast |
+| TestResult | Výsledek testu | Počet | Průměr | Výsledek testu monitorování připojení | SourceAddress <br>SourceName <br>Parametr sourceresourceid <br>SourceType <br>Protokol <br>DestinationAddress <br>Cílový. <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>SourceIP <br>DestinationIP <br>SourceSubnet <br>DestinationSubnet |
 
 #### <a name="metric-based-alerts-for-connection-monitor"></a>Výstrahy založené na metrikách pro monitorování připojení
 

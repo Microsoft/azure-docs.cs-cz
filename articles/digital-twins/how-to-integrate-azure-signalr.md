@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 71e74789654d2df91d9a087eaaf8d8f2a2664f7b
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 86d0c75d8b4c7c331e3e7ad90271e3fb42ff1964
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664108"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980724"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Integrace digitálních vláken Azure s využitím služby Azure Signal
 
@@ -69,7 +69,7 @@ Nejprve přejdete do prohlížeče, kde je Azure Portal otevřeno, a provedením
 
 Dále spusťte sadu Visual Studio (nebo jiný Editor kódu dle vašeho výběru) a otevřete řešení Code v *ADTSampleApp složce Digital-zdvojené-Samples-Samples-> Master* . Potom postupujte podle následujících kroků a vytvořte funkce:
 
-1. Vytvořte novou ostrost C# třídy s názvem **SignalRFunctions.cs** v projektu *SampleFunctionsApp* .
+1. V projektu *SampleFunctionsApp* vytvořte novou třídu jazyka C# s názvem **SignalRFunctions.cs**.
 
 1. Obsah souboru třídy nahraďte následujícím kódem:
     
@@ -82,7 +82,9 @@ Dále spusťte sadu Visual Studio (nebo jiný Editor kódu dle vašeho výběru)
 
     To by mělo vyřešit všechny problémy závislosti ve třídě.
 
-V dalším kroku publikujte funkci do Azure pomocí postupu popsaného v části [ *publikování aplikace* v tématu](tutorial-end-to-end.md#publish-the-app) *připojení k řešení* v rámci začátku. Můžete ji publikovat do stejné aplikace App Service/Function App, kterou jste použili v rámci kompletního kurzu požadavků ohlásila, nebo vytvořit novou. můžete ji ale použít k minimalizaci duplicity. Také dokončete publikování aplikace pomocí následujících kroků:
+V dalším kroku publikujte funkci do Azure pomocí postupu popsaného v části [ *publikování aplikace* v tématu](tutorial-end-to-end.md#publish-the-app) *připojení k řešení* v rámci začátku. Můžete ji publikovat do stejné aplikace App Service/Function [App, kterou](#prerequisites)jste použili v rámci kompletního kurzu, nebo vytvořit novou. můžete ji ale použít k minimalizaci duplicity. 
+
+Potom dokončete publikování aplikace pomocí následujících kroků:
 1. Shromážděte **adresu URL koncového bodu http** funkce *Negotiate* . Provedete to tak, že přejdete na stránku [funkcí aplikace](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) Azure Portal a ze seznamu vyberete svoji aplikaci Function App. V nabídce aplikace vyberte *funkce* a zvolte funkci *Negotiate* .
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="Azure Portal zobrazení aplikace Function App se zvýrazněnou funkcí v nabídce. Seznam funkcí se zobrazí na stránce a zvýrazní se i funkce Negotiate.":::
@@ -124,23 +126,11 @@ Zpátky na stránce *vytvořit odběr události* klikněte na **vytvořit**.
 
 ## <a name="configure-and-run-the-web-app"></a>Konfigurace a spuštění webové aplikace
 
-V této části se zobrazí výsledek akce. Nejprve spustíte **ukázkovou aplikaci simulovaného zařízení** , která odesílá data telemetrie prostřednictvím instance digitálního vlákna Azure. Potom nakonfigurujete **ukázkovou klientskou webovou aplikaci** tak, aby se připojila ke službě Azure Signal flow, kterou jste nastavili. Potom byste měli být schopni zobrazit data, která v reálném čase aktualizují ukázkovou webovou aplikaci.
-
-### <a name="run-the-device-simulator"></a>Spuštění simulátoru zařízení
-
-V rámci kompletního předplatného kurzu jste [nakonfigurovali simulátor zařízení](tutorial-end-to-end.md#configure-and-run-the-simulation) , aby odesílal data prostřednictvím IoT Hub a instance digitálních vláken Azure.
-
-Nyní stačí spustit projekt simulátoru, který je umístěn v rámci *digitálního vlákna-Samples-Samples-master > DeviceSimulator > DeviceSimulator. sln*. Pokud používáte Visual Studio, můžete projekt otevřít a pak ho spustit pomocí tohoto tlačítka na panelu nástrojů:
-
-:::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Tlačítko Start pro Visual Studio (projekt DeviceSimulator)":::
-
-Otevře se okno konzoly, ve kterém se zobrazí simulované zprávy telemetrie o teplotě. Odesílají se z instance digitálního vlákna Azure, kde je pak vybrala služba Azure functions a Signal.
-
-V této konzole nemusíte nic dalšího dělat, ale při provádění dalších kroků ho nechte spuštěný.
+V této části se zobrazí výsledek akce. Nejdřív nakonfigurujte **ukázkovou klientskou webovou aplikaci** tak, aby se připojila ke službě Azure Signal flow, kterou jste nastavili. V dalším kroku spustíte **ukázkovou aplikaci simulovaného zařízení** , která odesílá data telemetrie prostřednictvím instance digitálního vlákna Azure. Potom si zobrazíte ukázkovou webovou aplikaci, abyste viděli, jak se data simulovaného zařízení aktualizují Ukázková webová aplikace v reálném čase.
 
 ### <a name="configure-the-sample-client-web-app"></a>Konfigurace ukázkové klientské webové aplikace
 
-V dalším kroku nastavte **ukázku webové aplikace pro integraci signálu** pomocí těchto kroků:
+Pomocí těchto kroků nastavte **ukázku webové aplikace pro integraci signálů** :
 1. Pomocí sady Visual Studio nebo jakéhokoli editoru kódu, který jste si vybrali, otevřete složku pro _**odAzure_Digital_Twins_SignalR_integration_web_app_sample**_ , kterou jste si stáhli v části [*stažení ukázkových aplikací*](#download-the-sample-applications) .
 
 1. Otevřete soubor *Src/App.js* a nahraďte adresu URL v `HubConnectionBuilder` adrese URL koncového bodu http funkce **Negotiate** , kterou jste předtím uložili:
@@ -161,6 +151,18 @@ V dalším kroku nastavte oprávnění ve vaší aplikaci Function App na Azure 
 1. V nabídce instance se posuňte dolů a vyberte *CORS*. Na stránce CORS přidejte `http://localhost:3000` jako povolený počátek zadáním do prázdného pole. Zaškrtněte políčko *Povolit přístup-řízení – povolit-přihlašovací údaje* a klikněte na *Uložit*.
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/cors-setting-azure-function.png" alt-text="Nastavení CORS ve službě Azure Functions":::
+
+### <a name="run-the-device-simulator"></a>Spuštění simulátoru zařízení
+
+V rámci kompletního předplatného kurzu jste [nakonfigurovali simulátor zařízení](tutorial-end-to-end.md#configure-and-run-the-simulation) , aby odesílal data prostřednictvím IoT Hub a instance digitálních vláken Azure.
+
+Nyní stačí spustit projekt simulátoru, který je umístěn v rámci *digitálního vlákna-Samples-Samples-master > DeviceSimulator > DeviceSimulator. sln*. Pokud používáte Visual Studio, můžete projekt otevřít a pak ho spustit pomocí tohoto tlačítka na panelu nástrojů:
+
+:::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Tlačítko Start pro Visual Studio (projekt DeviceSimulator)":::
+
+Otevře se okno konzoly, ve kterém se zobrazí simulované zprávy telemetrie o teplotě. Odesílají se z instance digitálního vlákna Azure, kde je pak vybrala služba Azure functions a Signal.
+
+V této konzole nemusíte nic dalšího dělat, ale ponechte je spuštěná, zatímco jste dokončili další krok.
 
 ### <a name="see-the-results"></a>Zobrazení výsledků
 

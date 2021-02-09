@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/06/2021
+ms.date: 02/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: ae588708a41c1259628b726a3a471034dba7d131
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 87f29395e716ad3f06a99d6243b080acf86e4310
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601547"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979421"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Převod vlastnictví fakturace předplatného Azure na jiný účet
 
@@ -80,7 +80,7 @@ V každém okamžiku je aktivní vždycky jenom jedna žádost o převod. Platno
 Zrušení žádosti o převod:
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
-1. Přejděte na **Předplatná**  > vyberte předplatné, po které jste odeslali žádost o převod > vyberte **Převést vlastnictví fakturace**.
+1. Přejděte na **předplatná** > vyberte předplatné, pro které jste odeslali žádost o přenos, a pak vyberte **přenést vlastnictví fakturace**.
 1. V dolní části stránky vyberte **Zrušit žádost o převod**.
 
 :::image type="content" source="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" alt-text="Příklad ukazující okno Převést vlastnictví fakturace s možností Zrušit žádost o převod" lightbox="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" :::
@@ -88,6 +88,20 @@ Zrušení žádosti o převod:
 ## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud máte potíže s převodem předplatných, využijte následující informace o řešení potíží.
+
+### <a name="original-azure-subscription-billing-owner-leaves-your-organization"></a>Vlastník fakturace původního předplatného Azure opouští vaši organizaci.
+
+Je možné, že původní vlastník fakturace, který vytvořil účet Azure a předplatné Azure, opouští vaši organizaci. Pokud k této situaci dojde, jejich identita uživatele už není v Azure Active Directory organizace. Předplatné Azure pak nemá vlastníka fakturace. Tato situace brání komukoli v provádění fakturačních operací s účtem, včetně zobrazení a platby za účty. Předplatné může přejít k dřívějšímu stavu. Předplatné by nakonec mohlo být zakázané kvůli neplatbě. Předplatné by nakonec mohlo být odstraněno a mělo by to mít vliv na všechny služby spuštěné v rámci předplatného.
+
+Pokud předplatné už nemá platného platebního vlastníka, Azure pošle e-mail ostatním vlastníkům fakturace, správcům služeb, spolusprávcům a vlastníkům předplatného, které o situaci pomohou, a poskytne jim odkaz na přijetí vlastnictví fakturace předplatného. Kterýkoli z uživatelů může vybrat odkaz pro příjem vlastnictví fakturace. Další informace o fakturačních rolích najdete v tématu [role fakturace](understand-mca-roles.md) a [klasické role a role Azure RBAC](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+
+Tady je příklad toho, jak e-mail vypadá.
+
+:::image type="content" source="./media/billing-subscription-transfer/orphaned-subscription-email.png" alt-text="Snímek obrazovky s ukázkovým e-mailem, který přijme vlastnictví fakturace" lightbox="./media/billing-subscription-transfer/orphaned-subscription-email.png" :::
+
+Kromě toho Azure v Azure Portal okně podrobností předplatného zobrazuje hlavičku pro fakturaci, správce služeb, spolusprávce a vlastníky předplatného. Vyberte odkaz na informačním panelu pro příjem vlastnictví fakturace.
+
+:::image type="content" source="./media/billing-subscription-transfer/orphaned-subscription-example.png" alt-text="Snímek obrazovky, který ukazuje příklad předplatného bez platného vlastníka fakturace" lightbox="./media/billing-subscription-transfer/orphaned-subscription-example.png" :::
 
 ### <a name="the-transfer-subscription-option-is-unavailable"></a>Možnost Převést předplatné není dostupná
 

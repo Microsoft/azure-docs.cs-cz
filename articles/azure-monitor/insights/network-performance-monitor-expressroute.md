@@ -6,14 +6,17 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: a9f268e5080a5c04c5cdb4767f2db5fd2d77cd3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91bb303fca4517f84ad8b430f26543e9f116fddc
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326150"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833078"
 ---
 # <a name="expressroute-monitor"></a>Monitorování ExpressRoute
+
+> [!IMPORTANT]
+> Od 1. července 2021 nebudete moci přidat nové testy do existujícího pracovního prostoru nebo povolit nový pracovní prostor v Network Performance Monitor. Můžete pokračovat v používání testů vytvořených před 1. července 2021. Pokud chcete minimalizovat přerušení služby na vaše aktuální úlohy, [migrujte testy z Network Performance Monitor na nové monitorování připojení](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) v Azure Network Watcher před 29. února 2024.
 
 Funkce Azure ExpressRoute monitor [Network Performance Monitor](network-performance-monitor.md) v nástroji můžete použít k monitorování komplexního připojení a výkonu mezi firemními pobočkami a Azure, a to prostřednictvím Azure ExpressRoute. Klíčové výhody: 
 
@@ -81,7 +84,7 @@ Pokud chcete zobrazit seznam všech sledovaných okruhů ExpressRoute, vyberte d
 
 ### <a name="trends-of-loss-latency-and-throughput"></a>Trendy ztráty, latence a propustnosti 
 
-Grafy využití šířky pásma, latence a ztrát jsou interaktivní. Pomocí ovládacích prvků myši můžete přiblížit libovolný oddíl těchto grafů. Také se můžete podívat na data o šířce pásma, latenci a ztrátě pro jiné intervaly. V levém horním rohu pod tlačítkem **Akce** vyberte **Datum a čas**. 
+Grafy využití šířky pásma, latence a ztrát jsou interaktivní. Pomocí ovládacích prvků myši můžete přiblížit libovolný oddíl těchto grafů. Také se můžete podívat na data o šířce pásma, latenci a ztrátě pro jiné intervaly. V levém horním rohu pod tlačítkem **Akce** vyberte  **Datum a čas**. 
 
 ![Latence ExpressRoute](media/network-performance-monitor-expressroute/expressroute-latency.png) 
 
@@ -141,4 +144,3 @@ Můžete zobrazit kódy oznámení a nastavit výstrahy na nich prostřednictví
 
 ## <a name="next-steps"></a>Další kroky
 V [protokolech hledání](../log-query/log-query-overview.md) zobrazíte podrobné záznamy dat o výkonu sítě.
-

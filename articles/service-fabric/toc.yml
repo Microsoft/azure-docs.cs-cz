@@ -713,8 +713,6 @@
                   href: service-fabric-cluster-security-update-certs-azure.md
                 - name: Vzdálené připojení k virtuálnímu počítači uzlu clusteru
                   href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
-                - name: Upgrade uzlů clusteru na používání spravovaných disků
-                  href: upgrade-managed-disks.md
         - name: Samostatné clustery
           items:
             - name: Vytvořit

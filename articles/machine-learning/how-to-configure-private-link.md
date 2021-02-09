@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/30/2020
-ms.openlocfilehash: 2953f85a5c21cdd670d6e133d09ffacf06f178ef
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5ba1b9d53255406a73b1b74dbc59fe39e3f9a0d7
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842698"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979177"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurace privátního odkazu Azure pro pracovní prostor Azure Machine Learning
 
@@ -29,13 +29,14 @@ Privátní odkaz Azure umožňuje připojit se k pracovnímu prostoru pomocí pr
 >
 > Pokud používáte Mozilla Firefox, může dojít k potížím při pokusu o přístup k privátnímu koncovému bodu pro váš pracovní prostor. Tento problém může souviset s DNS přes HTTPS v Mozilla. Jako alternativní řešení doporučujeme používat Microsoft Edge Google Chrome.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud plánujete použít pracovní prostor s povoleným privátním propojením s klíčem spravovaným zákazníkem, musíte požádat o tuto funkci pomocí lístku podpory. Další informace najdete v tématu [Správa a zvýšení kvót](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
 ## <a name="limitations"></a>Omezení
 
-Použití Azure Machine Learningho pracovního prostoru s privátním odkazem není k dispozici ve Azure Government oblastech nebo v oblastech Azure Čína 21Vianet.
+* Použití Azure Machine Learningho pracovního prostoru s privátním odkazem není k dispozici ve Azure Government oblastech nebo v oblastech Azure Čína 21Vianet.
+* Pokud povolíte veřejný přístup k pracovnímu prostoru zabezpečenému pomocí privátního propojení a použijete Azure Machine Learning studia přes veřejný Internet, některé funkce, jako je například Návrhář, nemusí mít přístup k vašim datům. K tomuto problému dochází, když jsou data uložená ve službě, která je zabezpečená za virtuální sítí. Například účet Azure Storage.
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Vytvoření pracovního prostoru, který používá privátní koncový bod
 
@@ -158,6 +159,31 @@ Vzhledem k tomu, že komunikace s pracovním prostorem je povolená jenom z virt
 > Aby nedošlo k dočasnému přerušení připojení, společnost Microsoft doporučuje po povolení privátního odkazu vyprázdnit mezipaměť DNS na počítačích, které se připojují k pracovnímu prostoru. 
 
 Informace o službě Azure Virtual Machines najdete v [dokumentaci k Virtual Machines](../virtual-machines/index.yml).
+
+## <a name="enable-public-access"></a>Povolit veřejný přístup
+
+Po nakonfigurování pracovního prostoru s privátním koncovým bodem můžete volitelně povolit veřejný přístup k pracovnímu prostoru. Tím nedojde k odebrání privátního koncového bodu. Kromě privátního přístupu umožňuje také veřejný přístup. Chcete-li povolit veřejný přístup k pracovnímu prostoru podporujícímu soukromým linkám, postupujte následovně:
+
+# <a name="python"></a>[Python](#tab/python)
+
+Pro odebrání privátního koncového bodu použijte [Workspace.delete_private_endpoint_connection](/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#delete-private-endpoint-connection-private-endpoint-connection-name-) .
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+ws.update(allow_public_access_when_behind_vnet=True)
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[Rozšíření Azure CLI pro Machine Learning](reference-azure-machine-learning-cli.md) poskytuje příkaz [AZ ml Workspace Update](/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_update) . Chcete-li povolit veřejný přístup k pracovnímu prostoru, přidejte parametr `--allow-public-access true` .
+
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+V současné době neexistuje způsob, jak tuto funkci povolit pomocí portálu.
+
+---
 
 
 ## <a name="next-steps"></a>Další kroky

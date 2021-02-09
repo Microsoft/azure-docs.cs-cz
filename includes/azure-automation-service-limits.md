@@ -5,15 +5,15 @@ services: automation
 author: mgoedtel
 ms.service: automation
 ms.topic: include
-ms.date: 10/21/2020
+ms.date: 02/08/2021
 ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: 4a6b21d3782931e3bee4a13ff95e7f313dcc1af2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 3ee44509997a16fc7f06fd5a24e473d7011bde40
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379806"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99974530"
 ---
 #### <a name="process-automation"></a>Automatizace procesů
 
@@ -22,9 +22,10 @@ ms.locfileid: "92379806"
 | Maximální počet nových úloh, které se dají odesílat každých 30 sekund na účet Azure Automation (neplánované úlohy) |100 |Po dosažení tohoto limitu selžou následné požadavky na vytvoření úlohy. Klient obdrží chybovou odpověď.|
 | Maximální počet souběžně spuštěných úloh na stejné instanci času na účet služby Automation (neplánované úlohy) |200 |Po dosažení tohoto limitu selžou následné požadavky na vytvoření úlohy. Klient obdrží chybovou odpověď.|
 | Maximální velikost úložiště metadat úlohy pro dobu provozu za 30 dní | 10 GB (přibližně 4 000 000 úloh)|Po dosažení tohoto limitu selžou následné požadavky na vytvoření úlohy. |
-| Maximální limit počtu datových proudů úloh|1 MiB|Jeden datový proud nemůže být větší než 1 MB.|
+| Maximální limit počtu datových proudů úloh|1 MiB|Jeden datový proud nemůže být větší než 1 MiB.|
 | Maximální počet modulů, které se dají importovat každých 30 sekund na účet Automation |5 ||
 | Maximální velikost modulu |100 MB ||
+| Maximální velikost konfiguračního souboru uzlu | 1 MB | Platí pro konfiguraci stavu |
 | Doba běhu úlohy, úroveň Free |500 minut na předplatné za kalendářní měsíc ||
 | Maximální povolené množství místa na disku na izolovaný prostor<sup>1</sup> |1 GB |Platí jenom pro sandboxy Azure.|
 | Maximální velikost paměti přidělené izolovanému prostoru<sup>1</sup> |400 MB |Platí jenom pro sandboxy Azure.|
@@ -48,7 +49,7 @@ V následující tabulce jsou uvedené limity sledovaných položek na počíta�
 | **Prostředek** | **Počtu**| **Poznámky** |
 |---|---|---|
 |Soubor|500||
-|Registry|250||
+|Registr|250||
 |Software systému Windows|250|Neobsahuje aktualizace softwaru.|
 |Balíčky Linux|1 250||
 |Služby|250||

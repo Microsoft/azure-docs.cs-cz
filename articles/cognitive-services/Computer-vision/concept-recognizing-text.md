@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 17a7ad29596c5ab5ed65868fde0e814bc83e8c37
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1d633b1a9f5fee0a5cceb48f2b37aaec2092069f
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576726"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979523"
 ---
 # <a name="optical-character-recognition-ocr"></a>optické rozpoznávání znaků (OCR),
 
@@ -132,20 +132,20 @@ Podívejte se na následující příklad úspěšné odpovědi JSON:
 }
 ```
 
-## <a name="select-pages-or-page-ranges-for-text-extraction"></a>Vybrat stránky nebo rozsahy stránek pro extrakci textu
-S [rozhraním API pro čtení 3,2 Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)pro velké vícestránkové dokumenty použijte `pages` parametr dotazu, který určuje čísla stránek nebo rozsahy stránek k extrakci textu pouze z těchto stránek. Například následující příklad ukazuje dokument s 10 stránkami pro oba případy – všechny stránky (1-10) a vybrané stránky (3-6).
+## <a name="natural-reading-order-output"></a>Přirozený výstup pořadí čtení
+Pomocí [rozhraní API pro čtení 3,2 Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)určete pořadí, ve kterém jsou textové řádky ve výstupu s `readingOrder` parametrem dotazu. Použijte `natural` pro více uživatelsky přívětivého výstupu pořadí čtení, jak je znázorněno v následujícím příkladu.
 
-:::image border type="content" source="./Images/ocr-select-pages.png" alt-text="Výstup vybraných stránek":::
-
-## <a name="specify-text-line-order-in-the-output"></a>Zadat pořadí textových řádků ve výstupu
-Pomocí [rozhraní API pro čtení 3,2 Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)určete pořadí, ve kterém jsou textové řádky ve výstupu s `read order` parametrem dotazu. Vyberte si `basic` pro výchozí pořadí řádků v levém a pravém rohu nebo `natural` pro další lidské čtení – popisné pořadí. Následující příklad ukazuje obě sady čísel pořadí řádků pro stejný dokument se dvěma sloupci. Všimněte si, že obrázek na pravé straně zobrazuje pořadové číslo řádků v jednotlivých sloupcích, které představuje pořadí čtení.
-
-:::image border type="content" source="./Images/ocr-read-order.png" alt-text="Příklad pořadí čtení v OCR":::
+:::image border type="content" source="./Images/ocr-reading-order-example.png" alt-text="Příklad pořadí čtení v OCR":::
 
 ## <a name="handwritten-classification-for-text-lines-latin-only"></a>Ručně psaná klasifikace pro textové řádky (jenom latinku)
 Odpověď [rozhraní API pro čtení 3,2 Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005) zahrnuje klasifikaci, jestli každý textový řádek má styl rukopisu, nebo ne, spolu s hodnocením spolehlivosti. Tato funkce je podporovaná jenom pro jazyky v latince. Následující příklad ukazuje ručně vytvořenou klasifikaci textu v obrázku.
 
-:::image border type="content" source="./Images/handwritten-text-line.png" alt-text="Příklad klasifikace rukopisu OCR":::
+:::image border type="content" source="./Images/ocr-handwriting-classification.png" alt-text="Příklad klasifikace rukopisu OCR":::
+
+## <a name="select-pages-or-page-ranges-for-text-extraction"></a>Vybrat stránky nebo rozsahy stránek pro extrakci textu
+S [rozhraním API pro čtení 3,2 Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)pro velké vícestránkové dokumenty použijte `pages` parametr dotazu, který určuje čísla stránek nebo rozsahy stránek k extrakci textu pouze z těchto stránek. Následující příklad ukazuje dokument s 10 stránkami a text extrahovaný pro oba případy – všechny stránky (1-10) a vybrané stránky (3-6).
+
+:::image border type="content" source="./Images/ocr-select-pages.png" alt-text="Výstup vybraných stránek":::
 
 ## <a name="supported-languages"></a>Podporované jazyky
 Rozhraní API pro čtení podporují pro text stylu tisku celkem 73 jazyků. Podívejte se na úplný seznam [jazyků podporovaných rozpoznáváním OCR](./language-support.md#optical-character-recognition-ocr). Rukopisné optické rozpoznávání znaků je podporováno výhradně pro angličtinu.

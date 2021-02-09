@@ -12,14 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 99bcef2ba702235279c1327a2a5e51a8c6ab806d
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7f175d82b650871437a506ea4513f0ae28360f68
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018475"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833027"
 ---
 # <a name="create-a-connection-monitor-by-using-powershell"></a>Vytvoření monitorování připojení pomocí PowerShellu
+
+> [!IMPORTANT]
+> Od 1. července 2021 nebudete moci přidat nové testy do existujícího pracovního prostoru nebo povolit nový pracovní prostor v Network Performance Monitor. V monitorování připojení (Classic) taky nebude možné přidat nová monitorování připojení. Můžete nadále používat testy a monitory připojení vytvořené před 1. července 2021. Pokud chcete minimalizovat přerušení služby na vaše aktuální úlohy, [migrujte testy z Network Performance Monitor ](migrate-to-connection-monitor-from-network-performance-monitor.md) nebo  [migrujte z monitoru připojení (Classic)](migrate-to-connection-monitor-from-connection-monitor-classic.md) na nové monitorování připojení v Azure Network Watcher před 29. února 2024.
+
 
 Naučte se používat funkci monitorování připojení služby Azure Network Watcher k monitorování komunikace mezi prostředky.
 

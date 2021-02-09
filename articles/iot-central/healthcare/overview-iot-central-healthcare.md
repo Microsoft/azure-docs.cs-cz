@@ -1,5 +1,5 @@
 ---
-title: Sestavování řešení zdravotnictví pomocí Azure IoT Central | Microsoft Docs
+title: Co jsou řešení Azure IoT Central zdravotnictví | Microsoft Docs
 description: Naučte se sestavovat řešení zdravotnictví pomocí šablon aplikací Azure IoT Central.
 author: philmea
 ms.author: philmea
@@ -8,14 +8,14 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: c46ce28801c74d0dcc37d23f9d384a69f022ecc4
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: e8a72195f0fcacce2c994e8770157b05b65d70ee
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820343"
+ms.locfileid: "99833146"
 ---
-# <a name="building-healthcare-solutions-with-azure-iot-central"></a>Sestavování řešení pro zdravotnictví s využitím služby Azure IoT Central
+# <a name="what-are-the-iot-central-healthcare-solutions"></a>Jaká jsou řešení pro zdravotní péči IoT Central?
 
 Naučte se sestavovat řešení zdravotní péče pomocí šablon aplikací pomocí Azure IoT Central.
 

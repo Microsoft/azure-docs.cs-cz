@@ -7,18 +7,18 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkemper
-ms.openlocfilehash: fd3f7dbfd824360dcba9f8a166c579e3b55527ba
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: c5e0cc3eb29fb612460b16d8de9dee62949b5bd2
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932111"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979602"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Nastavení nabízených oznámení do konfigurace aplikace pomocí Azure Pipelines
 
 [Nabízená úloha konfigurace aplikace Azure](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push) přenáší hodnoty klíč-hodnota z konfiguračního souboru do úložiště konfigurace aplikace. Tato úloha v rámci kanálu umožňuje úplné funkce kruhů, protože teď můžete získat nastavení z úložiště konfigurace aplikace a nabízet nastavení do úložiště konfigurace aplikace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - Prostředek konfigurace aplikace – vytvořte si ho zdarma ve [Azure Portal](https://portal.azure.com).
@@ -56,7 +56,7 @@ Přiřaďte správné přiřazení role konfigurace aplikace k přihlašovacím 
 
 V této části se dozvíte, jak používat úlohu Azure App Configuration Push v kanálu sestavení Azure DevOps.
 
-1. Přejděte na stránku kanálu **sestavení kliknutím na kanály kanály**  >  . Dokumentaci k kanálům sestavení najdete [tady](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2&view=azure-devops).
+1. Přejděte na stránku kanálu **sestavení kliknutím na kanály kanály**  >  . Dokumentaci k kanálům sestavení najdete [tady](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2).
       - Pokud vytváříte nový kanál sestavení, vyberte **Zobrazit pomocníka** na pravé straně kanálu a vyhledejte úlohu **nabízených oznámení konfigurace Azure App** .
       - Pokud používáte existující kanál sestavení, přejděte na kartu **úlohy** při úpravách kanálu a vyhledejte úlohu **nabízených oznámení konfigurace Azure App** .
 2. Proveďte konfiguraci nezbytných parametrů pro úlohu, aby se navložily hodnoty klíče z konfiguračního souboru do úložiště konfigurace aplikace. Parametr **cesty ke konfiguračnímu souboru** začíná v kořenovém adresáři úložiště souborů.
@@ -66,10 +66,10 @@ V této části se dozvíte, jak používat úlohu Azure App Configuration Push 
 
 V této části se dozvíte, jak používat úlohu Azure App Configuration Push v kanálech pro vydávání verzí Azure DevOps.
 
-1. Vyberte vydaná vydání **kanálů** a přejděte na stránku kanály vydání  >  . Dokumentaci k kanálům pro vydávání verzí najdete [tady](/azure/devops/pipelines/release?view=azure-devops).
+1. Vyberte vydaná vydání **kanálů** a přejděte na stránku kanály vydání  >  . Dokumentaci k kanálům pro vydávání verzí najdete [tady](/azure/devops/pipelines/release).
 1. Vyberte existující kanál verze. Pokud ji nemáte, vyberte **+ Nová** a vytvořte novou.
 1. Kliknutím na tlačítko **Upravit** v pravém horním rohu upravte kanál verze.
-1. Vyberte **fázi** pro přidání úlohy. Další informace o fázích najdete [tady](/azure/devops/pipelines/release/environments?view=azure-devops).
+1. Vyberte **fázi** pro přidání úlohy. Další informace o fázích najdete [tady](/azure/devops/pipelines/release/environments).
 1. **+** Pro tuto úlohu vyberte a pak na kartě **nasazení** přidejte úlohu **push pro konfiguraci aplikace Azure** .
 1. Nakonfigurujte potřebné parametry v rámci úlohy, aby se do úložiště konfigurace aplikace navložily hodnoty klíče z konfiguračního souboru. Vysvětlení parametrů jsou k dispozici v níže uvedené části **parametry** a v popisech tlačítek vedle jednotlivých parametrů.
 1. Uložte a zařadíte do fronty verzi. V protokolu vydaných verzí se zobrazí všechny chyby zjištěné při spuštění úlohy.
@@ -97,7 +97,7 @@ Po vyplnění požadovaných parametrů spusťte kanál. Všechny klíčové hod
 
 Pokud dojde k neočekávané chybě, můžete povolit protokoly ladění nastavením proměnné kanálu `system.debug` na `true` .
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Jak můžu nahrát víc konfiguračních souborů?**
 

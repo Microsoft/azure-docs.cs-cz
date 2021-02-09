@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.date: 04/19/2020
 ms.author: alkemper
-ms.openlocfilehash: d076bdf09626ec9ed08fcf43b95fc63d2f4a7dd7
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 3a4d171f0e3225db195c5c2b71ca99a3386e3a36
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928445"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979840"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integrace s kanálem CI/CD
 
@@ -33,11 +33,11 @@ Následující příklad ukazuje, jak zahrnout konfigurační data aplikace jako
 
 K provedení kroků v tomto kurzu můžete použít libovolný editor kódu. [Visual Studio Code](https://code.visualstudio.com/) je vynikající možnost dostupná na platformách Windows, MacOS a Linux.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
-Pokud jste místně sestavili, Stáhněte a nainstalujte [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) , pokud jste to ještě neudělali.
+Pokud jste místně sestavili, Stáhněte a nainstalujte [Azure CLI](/cli/azure/install-azure-cli) , pokud jste to ještě neudělali.
 
-Aby bylo možné vytvořit cloudové sestavení pomocí Azure DevOps, ujistěte se, že rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) je nainstalováno v systému sestavení.
+Aby bylo možné vytvořit cloudové sestavení pomocí Azure DevOps, ujistěte se, že rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) je nainstalováno v systému sestavení.
 
 ### <a name="export-an-app-configuration-store"></a>Exportovat úložiště konfigurace aplikace
 
@@ -107,4 +107,4 @@ Aby bylo možné vytvořit cloudové sestavení pomocí Azure DevOps, ujistěte 
 V tomto kurzu jste exportovali data konfigurace aplikace Azure, která se mají použít v kanálu nasazení. Další informace o tom, jak používat konfiguraci aplikací, najdete v ukázkách Azure CLI.
 
 > [!div class="nextstepaction"]
-> [Azure CLI](/cli/azure/appconfig?view=azure-cli-latest)
+> [Azure CLI](/cli/azure/appconfig)
