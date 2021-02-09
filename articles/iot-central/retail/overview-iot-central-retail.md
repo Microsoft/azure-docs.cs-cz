@@ -1,5 +1,5 @@
 ---
-title: Vytváření maloobchodních řešení s využitím Azure IoT Central | Microsoft Docs
+title: Co jsou maloobchodní řešení Azure IoT Central | Microsoft Docs
 description: Přečtěte si o používání šablon aplikací pro Azure IoT Central k vytvoření připojené logistiky, digitálního distribučního centra, analýz v obchodě, monitorování podmínek, rezervací, správy inteligentních inventářů a maloobchodních řešení.
 author: avneet723
 ms.author: avneets
@@ -8,14 +8,14 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 43bf91c83f66b05c448e52286b34c51a9fd30a2b
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 56198cf661001bcfcec45d483d0f691234851894
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124958"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832279"
 ---
-# <a name="building-retail-solutions-with-azure-iot-central"></a>Sestavování řešení pro maloobchod s využitím služby Azure IoT Central
+# <a name="what-are-the-iot-central-retail-solutions"></a>Co jsou maloobchodní řešení IoT Central?
 
 Azure IoT Central je aplikační platforma IoT, která snižuje zatížení a náklady spojené s vývojem, správou a údržbou řešení IoT na podnikové úrovni. Když zvolíte sestavení pomocí Azure IoT Central, získáte možnost zaměřit se na vaše podnikání, peníze a energii při transformaci vaší firmy na data IoT, a ne jenom zachovat a aktualizovat složitou a nepřetržitou vývojovou infrastrukturu IoT.
 
@@ -41,9 +41,9 @@ Mezi výhody připojeného logistického řešení patří:
 
 Následující snímky obrazovky zobrazují předem připravený řídicí panel v šabloně aplikace. Řídicí panel je plně přizpůsobitelný tak, aby splňoval konkrétní požadavky řešení:
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="Maloobchodní přehled Azure IoT":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="Snímek obrazovky, který zobrazuje horní polovinu řídicího panelu připojené logistické operace.":::
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="Maloobchodní přehled Azure IoT":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="Snímek obrazovky zobrazující spodní polovinu řídicího panelu připojené logistické operace.":::
 
 Další informace najdete v kurzu [nasazení a Projděte si článek s připojenou logistickou aplikací](./tutorial-iot-central-connected-logistics.md) .
 
@@ -64,7 +64,7 @@ K výhodám digitálního distribučního centra patří:
 
 Následující snímek obrazovky ukazuje předem připravený řídicí panel v šabloně aplikace. Řídicí panel je plně přizpůsobitelný tak, aby splňoval konkrétní požadavky řešení: 
 
-:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="Maloobchodní přehled Azure IoT":::
+:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="Řídicí panel Digital Distribution Center":::
 
 Další informace najdete v kurzu [nasazení a procházení prostřednictvím šablony aplikace digitálního distribučního centra](./tutorial-iot-central-digital-distribution-center.md) .
 
@@ -86,7 +86,7 @@ Použijte šablonu aplikace k těmto akcím:
 
 Následující snímek obrazovky ukazuje předem připravený řídicí panel v šabloně aplikace. Řídicí panel je plně přizpůsobitelný tak, aby splňoval konkrétní požadavky řešení: 
 
-:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="Maloobchodní přehled Azure IoT":::
+:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="Monitorování podmínek analýzy v úložišti":::
 
 Další informace najdete v kurzu [Vytvoření analytické aplikace v rámci úložiště v Azure IoT Central](./tutorial-in-store-analytics-create-app.md) .
 
@@ -108,7 +108,7 @@ Použijte šablonu aplikace k těmto akcím:
 
 Následující snímek obrazovky ukazuje předem připravený řídicí panel v šabloně aplikace. Řídicí panel je plně přizpůsobitelný tak, aby splňoval konkrétní požadavky řešení: 
 
-:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="Maloobchodní přehled Azure IoT":::
+:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="Rezervace analýz v úložišti":::
 
 Další informace najdete v kurzu [Vytvoření analytické aplikace v rámci úložiště v Azure IoT Central](./tutorial-in-store-analytics-create-app.md) .
 
@@ -128,7 +128,7 @@ Tato šablona aplikace se zaměřuje na připojení zařízení a konfiguraci a 
 
 Následující snímek obrazovky ukazuje předem připravený řídicí panel v šabloně aplikace. Řídicí panel je plně přizpůsobitelný tak, aby splňoval konkrétní požadavky řešení:
 
-:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="Maloobchodní přehled Azure IoT":::
+:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="Řídicí panel pro správu inteligentního inventáře":::
 
 Další informace najdete v kurzu [nasazení a procházení pomocí šablony aplikace pro správu inteligentního inventáře](./tutorial-iot-central-smart-inventory-management.md) .
 
@@ -148,7 +148,7 @@ Ve stále rostoucí maloobchodní konkurenci mají maloobchodníci nepřetržit�
 
 Následující snímek obrazovky ukazuje předem připravený řídicí panel v šabloně aplikace. Řídicí panel je plně přizpůsobitelný tak, aby splňoval konkrétní požadavky řešení:
 
-:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="Maloobchodní přehled Azure IoT":::
+:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="Centrum Micro-vyplňování":::
 
 Další informace najdete v kurzu [nasazení a procházení pomocí šablony aplikace centra vyplňování](./tutorial-micro-fulfillment-center.md) .
 
@@ -165,7 +165,7 @@ Aplikace video Analytics používá modul [lva (Live video Analytics)](#live-vid
 * **(Ukázka) Správa reálné kamery** používá simulované kamery k zobrazení, jak můžete spravovat kamery z aplikace.
 * **(Ukázka) monitor reálné kamery** používá simulované kamery k zobrazení, jak můžete monitorovat kamery z aplikace.
 
-:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Maloobchodní přehled Azure IoT":::
+:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Analýza videa – detekce objektů a pohybu":::
 
 Další informace o architektuře řešení najdete v tématu [Architektura aplikace pro video Analytics](architecture-video-analytics.md).
 
@@ -180,9 +180,5 @@ Informace o tom, jak nasadit řešení, najdete v kurzu [Vytvoření aplikace vi
 Začněte vytvářet maloobchodní řešení:
 
 * Začněte s [vytvořením analytické aplikace v Azure IoT Central](./tutorial-in-store-analytics-create-app.md) kurzu, která vás provede postupem sestavení řešení pomocí jedné z šablon aplikací pro analýzu v rámci služby Store.
-* [Nasaďte a Projděte si připojenou šablonu logistické aplikace](./tutorial-iot-central-connected-logistics.md).
-* [Nasaďte a Projděte si šablonu aplikace digitálního distribučního centra](./tutorial-iot-central-digital-distribution-center.md).
-* [Nasazení a procházení šablonou aplikace pro správu inteligentního inventáře](./tutorial-iot-central-smart-inventory-management.md).
-* [Nasaďte a Projděte si šablonu aplikace centra pro mikroplnění](./tutorial-micro-fulfillment-center.md).
 * [Nasaďte a Projděte si šablonu aplikace video Analytics](./tutorial-video-analytics-deploy.md).
-* Další informace o IoT Central najdete v [přehledu IoT Central](../core/overview-iot-central.md).
+* [Nasaďte a Projděte si připojenou šablonu logistické aplikace](./tutorial-iot-central-connected-logistics.md).

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: f95df6fb74071dc16814f11fb48521f984c89778
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e42e1791693342592e391a14422b1441c9cbbd31
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995518"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832381"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Kurz – definování nového typu zařízení brány IoT v aplikaci Azure IoT Central
 
@@ -51,11 +51,11 @@ Vytvoření šablony zařízení pro zařízení se **senzorem S1** :
 
 1. Na stránce **Kontrola** vyberte **vytvořit** a přidejte do své aplikace šablonu zařízení. 
 
-Vytvoření šablony zařízení pro zařízení *_RS40 pro senzory_* :
+Vytvoření šablony zařízení pro zařízení **RS40 pro senzory** :
 
 1. V levém podokně vyberte **šablony zařízení**. Pak vyberte **+** , pokud chcete začít přidávat šablonu.
 
-1. Posuňte se dolů, dokud se nezobrazí dlaždice zařízení **_RS40 pro snímače obsazení_* . Vyberte dlaždici a potom vyberte **Další: přizpůsobit**.
+1. Posuňte se dolů, dokud se nezobrazí dlaždice zařízení ***RS40 pro snímače obsazení** . Vyberte dlaždici a potom vyberte **Další: přizpůsobit**.
 
 1. Na stránce **Kontrola** vyberte **vytvořit** a přidejte do své aplikace šablonu zařízení. 
 
@@ -110,7 +110,7 @@ Chcete-li přidat vlastnosti cloudu do šablony **zařízení služby inteligent
 
     | Zobrazované jméno      | Sémantický typ | Schéma |
     | ----------------- | ------------- | ------ |
-    | Last Service Date (Datum poslední údržby) | Žádné          | Datum   |
+    | Last Service Date (Datum poslední údržby) | Žádné          | Date (Datum)   |
     | Název zákazníka     | Žádné          | Řetězec |
 
 2. Vyberte **Uložit**.
@@ -198,6 +198,10 @@ Simulovaná zařízení pro příjem dat jsou teď připojená k vašemu simulov
 
 Vyberte šablonu zařízení brány a instanci zařízení brány a pak vyberte **připojit**.
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
+
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
@@ -208,9 +212,6 @@ V tomto kurzu jste se naučili:
 * Definujte vizualizaci pro telemetrii zařízení.
 * Přidejte relace.
 * Publikujte šablonu zařízení.
-
-> [!NOTE]
-> Generování kódu založeného na VS Code se v současnosti nepodporuje u zařízení brány, která jsou modelovaná v IoT Central.
 
 Jako vývojář zařízení se můžete seznámit s postupem:
 

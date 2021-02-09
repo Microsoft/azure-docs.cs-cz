@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 02/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 4deeec1b6c9db80c15b001efb7b40bdb4bb9d515
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c87c8cfd40903f6296f0a36f5c83c0b5c5cb7818
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452650"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831569"
 ---
 # <a name="azure-stack-edge-pro-system-requirements"></a>Požadavky na systém Azure Stack Edge pro
 
 Tento článek popisuje důležité systémové požadavky pro vaše řešení Microsoft Azure Stack Edge pro a klienty, kteří se připojují k Azure Stack Edge pro. Doporučujeme pečlivě zkontrolovat informace před nasazením Azure Stack Edge pro. V případě potřeby můžete v průběhu nasazení a následné operace přejít zpět na tyto informace.
 
-Mezi požadavky na systém Azure Stack Edge pro:
+Mezi požadavky na systém Azure Stack Edge pro: 
 
 - **Požadavky na software pro hostitele** – popisuje podporované platformy, prohlížeče pro místní uživatelské rozhraní konfigurace, klienty SMB a všechny další požadavky na klienty, kteří přistupují k zařízení.
 - **Požadavky na síť pro zařízení** – poskytuje informace o požadavcích na síť pro provoz fyzického zařízení.
@@ -60,7 +60,7 @@ Použijte následující tabulku pro konfiguraci portů pro servery hostující 
 
 | Číslo portu | V nebo ven | Rozsah portů | Vyžadováno | Pokyny |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Out       | Síť WAN        | Yes      | Odchozí otevření pro IoT Edge zřizování. Tato konfigurace se vyžaduje při použití ručních skriptů nebo služby Azure IoT Device Provisioning (DPS).|
+| TCP 443 (HTTPS)| Out       | Síť WAN        | Ano      | Odchozí otevření pro IoT Edge zřizování. Tato konfigurace se vyžaduje při použití ručních skriptů nebo služby Azure IoT Device Provisioning (DPS).|
 
 Pokud chcete získat úplné informace, přečtěte si [pravidla brány firewall a konfigurace portů pro nasazení IoT Edge](../iot-edge/troubleshoot.md).
 

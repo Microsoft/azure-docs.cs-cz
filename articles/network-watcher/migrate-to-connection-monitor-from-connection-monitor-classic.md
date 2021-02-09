@@ -12,14 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 3c094bf5397d15e24c3b1a58369a74438c99017e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: ff4882f2146a8b978047df2fcf6c52734534979f
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018407"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833979"
 ---
 # <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>Migrace na monitorování připojení z monitoru připojení (klasický)
+
+> [!IMPORTANT]
+> Od 1. července 2021 nebudete moct přidat nové monitorování připojení v monitorování připojení (klasické), ale můžete dál používat existující monitory připojení vytvořené před 1. července 2021. Pokud chcete minimalizovat přerušení služby na vaše aktuální úlohy, [migrujte z monitoru připojení (Classic) na nové monitorování připojení](migrate-to-connection-monitor-from-connection-monitor-classic.md)  v Azure Network Watcher před 29. února 2024.
 
 Stávající monitorování připojení můžete migrovat na nové, vylepšené monitorování připojení jenom několika kliknutími a s nulovými výpadky. Další informace o výhodách najdete v tématu [monitorování připojení](./connection-monitor-overview.md).
 

@@ -11,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: fca9a72fa237a11a02b6d4fbe30ebba5857384cf
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 2695b34745ff02d55f18cebbe87a468f807ca77a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346363"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831684"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Kurz: Export dat z Azure IoT Central a vizualizace Insights v Power BI
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte, jak:
 > * Pomocí Logic Apps můžete odesílat data z centra událostí do datové sady streamování Power BI.
 > * Vytvořte řídicí panel Power BI pro vizualizaci dat v datové sadě streamování.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -46,7 +46,7 @@ Před vytvořením centra událostí a aplikace logiky je potřeba vytvořit sku
 1. V poli **předplatné** vyberte název předplatného Azure, které jste použili k vytvoření aplikace IoT Central.
 1. Jako název **skupiny prostředků** zadejte _Retail-Store-Analysis_*.
 1. V poli **oblast** vyberte stejnou oblast, kterou jste zvolili pro IoT Central aplikaci.
-1. Vyberte **zkontrolovat + vytvořit**.
+1. Vyberte **Zkontrolovat a vytvořit**.
 1. Na stránce **Revize + vytvořit** vyberte **vytvořit**.
 
 Teď máte v předplatném skupinu prostředků s názvem **Retail-Store-Analysis** .
@@ -504,6 +504,4 @@ Datové sady a řídicí panely Power BI můžete odstranit tak, že odstraníte
 Tyto tři kurzy vám ukázaly ucelené řešení, které používá šablonu aplikace v rámci služby **Store analytics** IoT Central. Připojili jste zařízení k aplikaci, použili IoT Central k monitorování zařízení a použili Power BI k vytvoření řídicího panelu pro zobrazení přehledů z telemetrie zařízení. Doporučený další krok je prozkoumat jednu z dalších šablon aplikací IoT Central:
 
 > [!div class="nextstepaction"]
-> * [Sestavování řešení pro energetiku s využitím služby IoT Central](../energy/overview-iot-central-energy.md)
-> * [Vytváření řešení pro státní správu s využitím služby IoT Central](../government/overview-iot-central-government.md)
-> * [Sestavování řešení pro zdravotnictví s využitím služby IoT Central](../healthcare/overview-iot-central-healthcare.md)
+> [Sestavování řešení pro energetiku s využitím služby IoT Central](../energy/overview-iot-central-energy.md)

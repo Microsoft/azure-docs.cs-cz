@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 5165f7d6e16e0d136dbf8d4507090c78372185cb
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 74ce36652b1a00ac6813c62a17d44e2a5486645f
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97348046"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831705"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Kurz: přizpůsobení řídicího panelu operátora a Správa zařízení v Azure IoT Central
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Přidat dlaždice vlastností pro zobrazení podrobností o zařízení
 > * Přidání dlaždic příkazů ke spuštění příkazů
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tvůrce by měl dokončit kurz pro vytvoření aplikace Azure IoT Central in-Store Analytics a přidat zařízení:
 
@@ -127,7 +127,7 @@ Po odebrání nepoužívaných dlaždic znovu uspořádejte zbývající dlaždi
 
 Změna uspořádání zbývajících dlaždic:
 
-1. Vyberte **Edit** (Upravit).
+1. Vyberte **Upravit**.
 
 1. Vyberte dlaždici s **firmwarem obsazení** a přetáhněte ji napravo od dlaždice **obsazení** baterie.
 
@@ -146,7 +146,7 @@ V této části přidáte dvě další dlaždice telemetrie pro zobrazení telem
 
 Přidání dlaždic pro zobrazení dat o životním prostředí ze senzorů RuuviTag:
 
-1. Vyberte **Edit** (Upravit).
+1. Vyberte **Upravit**.
 
 1. `RuuviTag`V seznamu **Šablona zařízení** vyberte. 
 
@@ -178,7 +178,7 @@ Přidání dlaždic pro zobrazení dat o životním prostředí ze senzorů Ruuv
 
 Postup úpravy dlaždice **provoz osob** pro zobrazení telemetrie jenom pro dvě zóny rezervace:
 
-1. Vyberte **Edit** (Upravit). 
+1. Vyberte **Upravit**. 
 
 1. Na dlaždici **provoz osob** vyberte **Konfigurovat** .
 
@@ -201,7 +201,7 @@ Operátoři aplikace používají řídicí panel ke správě zařízení a stav
 
 Chcete-li přidat dlaždici vlastností pro jednotlivé RuuviTag:
 
-1. Vyberte **Edit** (Upravit).
+1. Vyberte **Upravit**.
 
 1. `RuuviTag`V seznamu **Šablona zařízení** vyberte. 
 
@@ -230,7 +230,7 @@ Operátoři aplikace také používají řídicí panel ke správě zařízení 
 
 Chcete-li přidat dlaždici příkazu pro restartování brány:
 
-1. Vyberte **Edit** (Upravit). 
+1. Vyberte **Upravit**. 
 
 1. `C500`V seznamu **Šablona zařízení** vyberte. Jedná se o šablonu pro bránu Rigado C500. 
 
@@ -246,7 +246,12 @@ Chcete-li přidat dlaždici příkazu pro restartování brány:
 
 1. Volitelně můžete vybrat dlaždici pro **restartování** a spustit příkaz k restartování v bráně.
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
+
 ## <a name="next-steps"></a>Další kroky
+
 V tomto kurzu jste se naučili:
 
 * Změnit název řídicího panelu

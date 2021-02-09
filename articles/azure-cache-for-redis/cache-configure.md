@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 2ff97dd30d9b993385f52ea531653a89197f8756
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: c13821544ff9725a387534370fc716c70072bb85
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734619"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831769"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak nakonfigurovat Azure cache pro Redis
 Toto téma popisuje konfigurace dostupné pro instance Redis v mezipaměti Azure. Toto téma také popisuje výchozí konfiguraci serveru Redis pro Azure cache pro instance Redis.
@@ -37,7 +37,7 @@ Pomocí **nabídky prostředků** můžete zobrazit a nakonfigurovat následují
 * [Diagnóza a řešení problémů](#diagnose-and-solve-problems)
 * [Nastavení](#settings)
     * [Přístupové klíče](#access-keys)
-    * [Pokročilá nastavení](#advanced-settings)
+    * [Rozšířená nastavení](#advanced-settings)
     * [Mezipaměť Azure pro poradce Redis](#azure-cache-for-redis-advisor)
     * [Škálování](#scale)
     * [Velikost clusteru](#cluster-size)
@@ -89,7 +89,7 @@ Klikněte na **Diagnostika a řešení problémů** , které se budou poskytovat
 Část **Nastavení** vám umožní získat přístup k následujícím nastavením pro mezipaměť a nakonfigurovat je.
 
 * [Přístupové klíče](#access-keys)
-* [Pokročilá nastavení](#advanced-settings)
+* [Rozšířená nastavení](#advanced-settings)
 * [Mezipaměť Azure pro poradce Redis](#azure-cache-for-redis-advisor)
 * [Škálování](#scale)
 * [Velikost clusteru](#cluster-size)
@@ -109,7 +109,7 @@ Kliknutím na **přístupové klíče** zobrazíte nebo znovu vygenerujete pří
 
 ![Mezipaměť Azure pro přístupové klíče Redis](./media/cache-configure/redis-cache-manage-keys.png)
 
-### <a name="advanced-settings"></a>Pokročilá nastavení
+### <a name="advanced-settings"></a>Rozšířená nastavení
 V okně **Upřesnit nastavení** jsou nakonfigurovaná následující nastavení.
 
 * [Přístupové porty](#access-ports)
@@ -236,10 +236,7 @@ V okně **naplánovat aktualizace** můžete určit časové období údržby pr
 
 Chcete-li určit časový interval pro správu a údržbu, zaškrtněte požadované dny a zadejte časový interval pro správu a údržbu pro každý den a klikněte na tlačítko **OK**. Čas časového období údržby je UTC.
 
-> [!IMPORTANT]
-> Funkce **Plán aktualizací** je dostupná jenom pro mezipaměti úrovně Premium. Další informace a pokyny najdete v tématu [Správa Azure cache pro Redis – plánování aktualizací](cache-administration.md#schedule-updates).
->
->
+Další informace a pokyny najdete v tématu [Správa Azure cache pro Redis – plánování aktualizací](cache-administration.md#schedule-updates)
 
 ### <a name="geo-replication"></a>Geografická replikace
 
@@ -386,7 +383,7 @@ Nová mezipaměť Azure pro instance Redis je nakonfigurovaná s následujícím
 >
 >
 
-| Nastavení | Výchozí hodnota | Popis |
+| Nastavení | Výchozí hodnota | Description |
 | --- | --- | --- |
 | `databases` |16 |Výchozí počet databází je 16, ale můžete na základě cenové úrovně nakonfigurovat jiné číslo. <sup>1</sup> výchozí databáze je DB 0. pro jednotlivá připojení můžete vybrat jiný, `connection.GetDatabase(dbid)` a to pomocí, kde `dbid` je číslo mezi `0` a `databases - 1` . |
 | `maxclients` |Závisí na cenové úrovni<sup>2</sup> . |Tato hodnota je maximální povolený počet připojených klientů ve stejnou dobu. Po dosažení limitu Redis ukončí všechna nová připojení a vrátí chybu maximální počet klientů, které se dosáhly. |

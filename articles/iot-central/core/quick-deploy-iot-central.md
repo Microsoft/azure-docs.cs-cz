@@ -3,21 +3,24 @@ title: Rychlý Start – vytvoření aplikace IoT Central v Azure | Microsoft Do
 description: Rychlý Start – vytvoření nové aplikace Azure IoT Central. Vytvořte aplikaci pomocí cenového plánu zdarma nebo některého ze standardních cenových plánů.
 author: viv-liu
 ms.author: viviali
-ms.date: 11/23/2020
+ms.date: 12/28/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: c5847f686e0712370a1de898eca5735608671e9a
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: c5e357824652077acab299e0e27678f528f23b9a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97670889"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833894"
 ---
 # <a name="quickstart---create-an-azure-iot-central-application"></a>Rychlý Start – vytvoření aplikace IoT Central v Azure
 
 V tomto rychlém startu se dozvíte, jak vytvořit aplikaci Azure IoT Central.
+
+
+[!INCLUDE [Warning About Access Required](../../../includes/iot-central-warning-contribitorrequireaccess.md)]
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 
@@ -57,6 +60,10 @@ Vytvoření nové aplikace Azure IoT Central z **vlastní šablony aplikace** :
 1. Přečtěte si podmínky a ujednání a v dolní části stránky vyberte **vytvořit** . Po několika minutách IoT Central aplikace je připravená k použití:
 
     :::image type="content" source="media/quick-deploy-iot-central/iotcentral-application.png" alt-text="Aplikace Azure IoT Central":::
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

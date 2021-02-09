@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 2b8ed417de966f8731542e8f5ca12a6a05e2dc8a
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 9d7c4d2afa8eaf197ec05bcb0aed654153fb8f0d
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820275"
+ms.locfileid: "99831293"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Kurz: nasazení a procházení šablonou aplikace digitálního distribučního centra
 
@@ -109,8 +109,8 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte šablonu aplikace na
 > ![Snímek obrazovky ukazující, jak aplikaci odstranit, když s ní jste hotovi](./media/tutorial-iot-central-ddc/ddc-cleanup.png)
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o architektuře řešení Digital Distribution Center 
+
+Další informace o architektuře řešení Digital Distribution Center:
+
 > [!div class="nextstepaction"]
 > [koncept centra digitálního distribuce](./architecture-digital-distribution-center.md)
-* Další informace o jiných [šablonách IoT Central maloobchodních prodejů](./overview-iot-central-retail.md)
-* Další informace o IoT Central najdete v tématu [IoT Central Overview](../core/overview-iot-central.md) .

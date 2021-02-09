@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 0eb3b8feda09d931654d1781ea37737d68a1b377
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.date: 02/04/2021
+ms.openlocfilehash: 37a9294b156bd41b72e777696f10a1c4ac2bb354
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526632"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832755"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Co je nového v Azure Sentinel
 
@@ -32,6 +32,7 @@ Vyznačené funkce jsou aktuálně ve verzi PREVIEW. [Doplňkové podmínky Azur
 
 ## <a name="january-2021"></a>Leden 2021
 
+- [Průvodce analytickým pravidlem: vylepšené možnosti úprav dotazů (verze Public Preview)](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
 - [AZ. SecurityInsights PowerShell Module (Public Preview)](#azsecurityinsights-powershell-module-public-preview)
 - [Konektor SQL Database](#sql-database-connector)
 - [Vylepšené komentáře k incidentům](#improved-incident-comments)
@@ -40,6 +41,16 @@ Vyznačené funkce jsou aktuálně ve verzi PREVIEW. [Doplňkové podmínky Azur
 - [Vylepšené ladění pravidel pomocí grafů s náhledem analytického pravidla](#improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview)
 
 
+## <a name="analytics-rule-wizard-improved-query-editing-experience-public-preview"></a>Průvodce analytickým pravidlem: vylepšené možnosti úprav dotazů (verze Public Preview)
+
+Průvodce pravidlo naplánované analýzy Azure Sentinel teď poskytuje následující vylepšení pro psaní a úpravy dotazů:
+
+-   Rozšiřitelné okno pro úpravy, které poskytuje více místa na obrazovce pro zobrazení dotazu.
+-   Klíčové slovo zvýraznění v kódu dotazu.
+-   Rozšířená podpora automatického dokončování
+-   Ověřování dotazů v reálném čase. Chyby v dotazu se teď v posuvníku zobrazují jako červený blok a jako červená tečka v názvu karty **logika pravidla nastavení** . Kromě toho nelze uložit dotaz s chybami.
+
+Další informace najdete v tématu [kurz: detekce hrozeb](tutorial-detect-threats-built-in.md)předem.
 ### <a name="azsecurityinsights-powershell-module-public-preview"></a>AZ. SecurityInsights PowerShell Module (Public Preview)
 
 Azure Sentinel teď podporuje nový modul PowerShellu [AZ. SecurityInsights](https://www.powershellgallery.com/packages/Az.SecurityInsights/) .
@@ -113,7 +124,7 @@ Tato aktualizace pro službu Azure Sentinel zahrnuje nové lovecké dotazy, kter
 - **Kolekce**
 - **Příkaz a ovládací prvek**
 - **Přístup k přihlašovacím údajům**
-- **Rozpoznávání**
+- **Zjišťování**
 - **Realizaci**
 - **Exfiltrace**
 - **Dopad**

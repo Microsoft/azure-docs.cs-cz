@@ -7,12 +7,12 @@ ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6852b0532b23e46c7b986926b21cd0b7e9f9736d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 429400bb6cb41ede89597dc739a612d1bf9893f2
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421375"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831259"
 ---
 # <a name="tutorial---use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>Kurz – použití MQTT ke zřízení klienta zařízení IoT technologie Plug and Play
 
@@ -20,7 +20,7 @@ Pokud je to možné, měli byste použít jednu ze sad SDK pro zařízení Azure
 
 Ukázka v tomto kurzu používá [Mosquitto](http://mosquitto.org/) Library MQTT a Visual Studio. Kroky v tomto kurzu předpokládají, že používáte Windows na vašem vývojovém počítači.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -37,8 +37,8 @@ Pomocí nástroje *Azure IoT Explorer* přidejte do svého IoT Hub nové zaříz
 1. Na stránce **zařízení** vyberte **+ Nový**.
 1. Vytvořte zařízení s názvem *My-MQTT-Device* , které používá automaticky generovaný symetrický klíč.
 1. Na stránce **Identita zařízení** rozbalte **připojovací řetězec s tokenem SAS**.
-1. Zvolte **primární klíč** , který chcete použít jako **symetrický klíč** , nastavte čas vypršení platnosti na 60 minut a vyberte **Generovat**.
-1. Zkopírujte vygenerovaný **připojovací řetězec tokenu SAS** , použijte tuto hodnotu později v tomto kurzu.
+1. Zvolte **primární klíč** , který chcete použít jako **symetrický klíč**, nastavte čas vypršení platnosti na 60 minut a vyberte **Generovat**.
+1. Zkopírujte vygenerovaný **připojovací řetězec tokenu SAS**, použijte tuto hodnotu později v tomto kurzu.
 
 ## <a name="clone-sample-repo"></a>Klonovat ukázkové úložiště
 
@@ -137,15 +137,14 @@ Následující definice jsou pro témata MQTT, která zařízení používá k o
 * `DEVICE_TELEMETRY_MESSAGE`Definuje téma, které zařízení používá k posílání telemetrie do služby IoT Hub.
 
 Další informace o MQTT najdete v části [ukázky MQTT pro úložiště GitHub Azure IoT](https://github.com/Azure-Samples/IoTMQTTSample/) .
-  
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+[!INCLUDE [iot-pnp-clean-resources](../../includes/iot-pnp-clean-resources.md)]
+
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak upravit klienta zařízení MQTT a postupovat podle konvencí technologie Plug and Play IoT. Další informace o službě IoT technologie Plug and Play najdete v těchto tématech:
-
-> [!div class="nextstepaction"]
-> [Architektura](concepts-architecture.md)
-
-Další informace o podpoře IoT Hub pro protokol MQTT najdete v tématech:
+V tomto kurzu jste zjistili, jak upravit klienta zařízení MQTT a postupovat podle konvencí technologie Plug and Play IoT. Další informace o podpoře IoT Hub pro protokol MQTT najdete v tématech:
 
 > [!div class="nextstepaction"]
 > [Komunikace se službou IoT Hub pomocí protokolu MQTT](../iot-hub/iot-hub-mqtt-support.md)

@@ -3,18 +3,18 @@ title: Diagnostika a řešení potíží při používání sady .NET SDK služb
 description: K identifikaci, diagnostice a řešení potíží s Azure Cosmos DB při použití sady .NET SDK použijte funkce, jako je protokolování na straně klienta a další nástroje třetích stran.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 09/12/2020
+ms.date: 02/05/2021
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 6a78b38bd71a2822d94e58834ab17824c9ef6ec6
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 04813b9d70557314e619fded5294644f5f6fadf5
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683100"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831242"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostika a řešení potíží při používání sady .NET SDK služby Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -55,7 +55,7 @@ Podívejte se na [část problémy GitHubu](https://github.com/Azure/azure-cosmo
 Kontrola [metrik portálu](./monitor-cosmos-db.md) vám pomůže určit, jestli se jedná o problém na straně klienta, nebo jestli došlo k potížím se službou. Pokud například metriky obsahují vysokou míru omezeného počtu požadavků (kód stavu HTTP 429), což znamená, že požadavek je omezený, zkontrolujte, že je [Počet požadavků příliš velký](troubleshoot-request-rate-too-large.md) . 
 
 ## <a name="retry-logic"></a>Logika opakování <a id="retry-logics"></a>
-Cosmos DB SDK při selhání v/v dojde k pokusu o opakování neúspěšné operace, pokud je to možné znovu v sadě SDK. Pokus o jakékoli selhání je dobrým zvykem, ale konkrétně při zpracování nebo opakování selhání zápisu je potřeba. Doporučuje se použít nejnovější sadu SDK, protože se nepřetržitě vylepšuje logika opakování.
+Pokud sada SDK služby Cosmos DB umožňuje opakování, při každém selhání vstupně-výstupních operací se sada SDK pokusí neúspěšnou operaci zopakovat Pokus o jakékoli selhání je dobrým zvykem, ale konkrétně při zpracování nebo opakování selhání zápisu je potřeba. Doporučuje se použít nejnovější sadu SDK, protože se nepřetržitě vylepšuje logika opakování.
 
 1. Čtení a vstupně-výstupní chyby se budou opakovat sadou SDK, aniž by je zpřístupnění koncovým uživatelům.
 2. Zápisy (Create, Upsert, Replace, DELETE) jsou "NOT" idempotentní a proto sada SDK nemůže vždy bez chybně opakovat operace zápisu. Je nutné, aby logika aplikace uživatele mohla zpracovat selhání a opakovat akci.
@@ -63,10 +63,11 @@ Cosmos DB SDK při selhání v/v dojde k pokusu o opakování neúspěšné oper
 
 ## <a name="common-error-status-codes"></a>Běžné chybové kódy stavu <a id="error-codes"></a>
 
-| Stavový kód | Popis | 
+| Stavový kód | Description | 
 |----------|-------------|
 | 400 | Chybný požadavek (závisí na chybové zprávě)| 
 | 401 | [Neautorizováno](troubleshoot-unauthorized.md) | 
+| 403 | [Zakázáno](troubleshoot-forbidden.md) |
 | 404 | [Prostředek se nenašel.](troubleshoot-not-found.md) |
 | 408 | [Vypršel časový limit žádosti.](troubleshoot-dot-net-sdk-request-timeout.md) |
 | 409 | Selhání konfliktu nastane, pokud je ID poskytnuté pro prostředek operace zápisu pořízeno existujícím prostředkem. K vyřešení tohoto problému použijte jiné ID prostředku, protože ID musí být jedinečné ve všech dokumentech se stejnou hodnotou klíče oddílu. |

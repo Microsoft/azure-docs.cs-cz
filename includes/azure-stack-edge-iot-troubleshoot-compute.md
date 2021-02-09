@@ -3,13 +3,13 @@ author: v-dalc
 ms.service: databox
 ms.author: alkohli
 ms.topic: include
-ms.date: 01/21/2021
-ms.openlocfilehash: 3defa62c55bb5ab042ade816f611ea45b39a0117
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.date: 02/05/2021
+ms.openlocfilehash: b06b91e972fd07543cf02105360cb0400ef6b0f1
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761560"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831535"
 ---
 K řešení chyb souvisejících s výpočty použijte IoT Edge odezvy agenta modulu runtime. Tady je seznam možných odpovědí:
 
@@ -21,3 +21,15 @@ K řešení chyb souvisejících s výpočty použijte IoT Edge odezvy agenta mo
 * 500 – při IoT Edge modulu runtime došlo k chybě.
 
 Další informace najdete v tématu [Agent IoT Edge](/azure/iot-edge/iot-edge-runtime?view=iotedge-2018-06&preserve-view=true#iot-edge-agent).
+
+Následující chyba se týká služby IoT Edge v Azure Stack Edge pro<!--/ Data Box Gateway--> device.
+
+### <a name="compute-modules-have-unknown-status-and-cant-be-used"></a>Výpočetní moduly mají neznámý stav a nejde je použít.
+
+#### <a name="error-description"></a>Popis chyby
+
+Všechny moduly v zařízení zobrazují neznámý stav a nelze je použít. Neznámý stav přetrvává při restartování.<!--Original Support ticket relates to trying to deploy a container app on a Hub. Based on the work item, I assume the error description should not be that specific, and that the error applies to Azure Stack Edge Devices, which is the focus of this troubleshooting.-->
+
+#### <a name="suggested-solution"></a>Navrhované řešení
+
+Odstraňte službu IoT Edge a znovu nasaďte moduly (y). Další informace najdete v tématu [Odebrání služby IoT Edge](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#remove-iot-edge-service).

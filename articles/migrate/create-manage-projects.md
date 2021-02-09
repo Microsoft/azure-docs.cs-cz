@@ -6,16 +6,18 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 750cf0a938fffd4e5bfe25811bb276f7cb1b5583
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 0d4ccc1a60f9ac3c2183023d3d3772da6a1e307b
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757555"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99830749"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Vytváření a správa projektů Azure Migrate
 
-Tento článek popisuje, jak vytvářet, spravovat a odstraňovat [Azure Migrate](migrate-services-overview.md) projekty. Pokud používáte klasické Azure Migrate projekty, odstraňte je prosím a postupujte podle pokynů pro vytvoření nového projektu Azure Migrate. Nemůžete upgradovat klasické Azure Migrate projekty ani komponenty na Azure Migrate. Před zahájením procesu vytváření se můžete podívat na [Nejčastější dotazy](https://docs.microsoft.com/azure/migrate/resources-faq#i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version) .
+Tento článek popisuje, jak vytvářet, spravovat a odstraňovat [Azure Migrate](migrate-services-overview.md) projekty. 
+
+Vyřazení z klasického Azure Migrate do února 2024. Po 2024. února již nebude klasická verze Azure Migrate podporována a metadata inventáře v klasickém projektu budou odstraněna. Pokud používáte klasické Azure Migrate projekty, odstraňte tyto projekty a postupujte podle pokynů pro vytvoření nového projektu Azure Migrate. Nemůžete upgradovat klasické Azure Migrate projekty ani komponenty na Azure Migrate. Před zahájením procesu vytváření se můžete podívat na [Nejčastější dotazy](https://docs.microsoft.com/azure/migrate/resources-faq#i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version) .
 
 Azure Migrate projekt se používá k ukládání metadat zjišťování, hodnocení a migrace shromážděných z prostředí, které vyhodnotili nebo migrujete. V projektu můžete sledovat zjištěné prostředky, vytvářet posouzení a orchestrovat migrace do Azure.  
 

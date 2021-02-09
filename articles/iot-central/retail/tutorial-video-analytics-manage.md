@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 1c1ddeb8cafd8aa7584da48a715139c5d12eeb10
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: fbfef094cd062e437f2a28369162de96631ef41b
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874794"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832602"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>Kurz: monitorování a Správa aplikace video Analytics – objekt a detekce pohybu
 
@@ -55,13 +55,13 @@ Vyberte **Spustit** pro přidání zařízení fotoaparátu:
 
 ## <a name="add-a-motion-detection-camera-optional"></a>Přidat kameru detekce pohybu (volitelné)
 
-Pokud máte k zařízení IoT Edge brány připojené dva fotoaparáty, opakujte předchozí kroky a přidejte do aplikace kameru detekce pohybu. Použijte jiné hodnoty pro **ID kamery**, **Název kamery**a parametry **adresy URL pro RTSP** .
+Pokud máte k zařízení IoT Edge brány připojené dva fotoaparáty, opakujte předchozí kroky a přidejte do aplikace kameru detekce pohybu. Použijte jiné hodnoty pro **ID kamery**, **Název kamery** a parametry **adresy URL pro RTSP** .
 
 ## <a name="view-the-downstream-devices"></a>Zobrazit zařízení pro příjem dat
 
 Vyberte kartu **zařízení pro příjem dat** pro zařízení s **bránou lva 001** , aby se zobrazila zařízení kamera, která jste právě přidali:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="Přidat kameru":::
+:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="Prohlížen":::
 
 Zařízení fotoaparátu se zobrazí také v seznamu na stránce **zařízení** v aplikaci.
 
@@ -98,7 +98,7 @@ Vyberte **Uložit**.
 
 Po několika sekundách se zobrazí **přijatá** potvrzovací zpráva pro každé nastavení:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="Přidat kameru":::
+:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="Zjištění objektu":::
 
 ## <a name="start-lva-processing"></a>Spustit zpracování LVA
 
@@ -108,13 +108,13 @@ Spusťte příkaz **Start lva Processing** .
 
 Po dokončení příkazu si prohlédněte historii příkazů, abyste se ujistili, že nejsou k dispozici žádné chyby:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="Přidat kameru":::
+:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="Spustit příkaz pro zpracování LVA":::
 
 ## <a name="monitor-the-cameras"></a>Monitorování fotoaparátů
 
 Přejděte na zařízení **kamera-003** a vyberte kartu **řídicí panel** :
 
-:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="Přidat kameru":::
+:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="Řídicí panel kamery":::
 
 Na dlaždici **počet detekcí** se zobrazuje průměrný počet zjištění pro všechny vybrané objekty třídy detekce během intervalu detekce s jednou sekundou.
 
@@ -157,7 +157,7 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 
 Přejděte na zařízení **kamera-003** a vyberte kartu **řídicí panel** . Pak klikněte na jeden z hypertextových odkazů detekce zachyceného objektu na dlaždici **video pro odvození události** . Video se zobrazí na stránce zobrazené v místním přehrávači videa:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Přidat kameru":::
+:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Fragment videa":::
 
 ## <a name="change-the-simulated-devices-in-application-dashboards"></a>Změna simulovaných zařízení v řídicích panelech aplikací
 
@@ -182,7 +182,7 @@ Přejděte na zařízení **kamera-003** a vyberte kartu **řídicí panel** . P
 
 Řídicí panel **Real Camera Monitor** nyní zobrazuje hodnoty ze zařízení reálné kamery:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="Přidat kameru":::
+:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="Řídicí panel aplikací Real kamery":::
 
 ## <a name="pause-processing"></a>Pozastavit zpracování
 
@@ -195,7 +195,7 @@ Můžete pozastavit živé zpracování analýzy videí v aplikaci:
     * Klikněte na prostředek **koncového bodu streamování** .
     * Na stránce **Podrobnosti koncového bodu streamování** vyberte **zastavit**.
 
-## <a name="tidy-up"></a>Uklizený nahoru
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud jste s aplikací hotoví, můžete odebrat všechny prostředky, které jste vytvořili následujícím způsobem:
 

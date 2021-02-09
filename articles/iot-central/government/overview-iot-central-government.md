@@ -1,5 +1,5 @@
 ---
-title: Sestavování řešení pro státní správu s využitím služby Azure IoT Central
+title: Co jsou řešení pro státní správu Azure IoT Central
 description: Naučte se vytvářet řešení inteligentních měst pomocí šablon aplikací pro Azure IoT Central.
 author: miriambrus
 ms.author: miriamb
@@ -7,14 +7,14 @@ ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 72b0e3c3cee0ed9131fe6ee1f50cee10ec03a7b7
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a903622f698107f7f1a593946f083fca1573d53e
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590813"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834336"
 ---
-# <a name="building-government-solutions-with-azure-iot-central"></a>Sestavování řešení pro státní správu s využitím služby Azure IoT Central
+# <a name="what-are-the-iot-central-government-solutions"></a>Co jsou řešení pro státní správu IoT Central?
 
 Začněte s vytvářením řešení inteligentních měst pomocí šablon aplikací Azure IoT Central. Začněte teď s **monitorováním kvality vody**, **monitorováním spotřeby vody** a **správou propojených odpadů**.
 
@@ -71,8 +71,6 @@ Začněte s [kurzem pro aplikace pro správu propojených odpadů](./tutorial-co
 
 ## <a name="next-steps"></a>Další kroky
 
-* Vyzkoušejte si některou z šablon aplikací pro státní správu v IoT Central pro bezplatnou [aplikaci Create](https://apps.azureiotcentral.com/build/government)
 * Další informace o [konceptech monitorování kvality vody](./concepts-waterqualitymonitoring-architecture.md)
 * Další informace o [konceptech monitorování spotřeby vody](./concepts-waterconsumptionmonitoring-architecture.md)
 * Další informace o [konceptech správy propojených odpadů](./concepts-connectedwastemanagement-architecture.md)  
-* Informace o IoT Central najdete v tématu [IoT Central Overview](../core/overview-iot-central.md) .

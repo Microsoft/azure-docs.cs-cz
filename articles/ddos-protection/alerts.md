@@ -3,7 +3,7 @@ title: Zobrazení a konfigurace výstrah DDoS Protection pro Azure DDoS Protecti
 description: Naučte se zobrazovat a konfigurovat výstrahy DDoS Protection pro Azure DDoS Protection Standard.
 services: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: ea62b5df7159440a7538c7db0711b7d8f63ec220
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 2d72027082ed2b57b28a15a736c35801ba88188c
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806286"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832517"
 ---
 # <a name="view-and-configure-ddos-protection-alerts"></a>Zobrazení a konfigurace upozornění ochrany před útoky DDoS
 
@@ -41,7 +41,8 @@ V tomto kurzu se naučíte:
 Pomocí těchto šablon budete moci konfigurovat výstrahy pro všechny veřejné IP adresy, u kterých jste povolili diagnostické protokolování. Proto aby bylo možné používat tyto šablony výstrah, budete nejprve potřebovat Log Analytics pracovní prostor s povoleným diagnostickým nastavením. Viz [zobrazení a konfigurace diagnostického protokolování DDoS](diagnostic-logging.md).
 
 ### <a name="azure-monitor-alert-rule"></a>Azure Monitor pravidlo výstrahy
-Toto [Azure monitor pravidlo výstrahy](https://aka.ms/ddosmitigationstatus) spustí jednoduchý dotaz k detekci, kdy dochází ke zmírnění aktivní DDoS. To označuje potenciální útok. Skupiny akcí lze použít k vyvolání akcí v důsledku výstrahy.
+
+Toto [Azure monitor pravidlo výstrahy](https://aka.ms/DDOSmitigationstatus) spustí jednoduchý dotaz k detekci, kdy dochází ke zmírnění aktivní DDoS. To označuje potenciální útok. Skupiny akcí lze použít k vyvolání akcí v důsledku výstrahy.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520Monitor%2520Alert%2520-%2520DDoS%2520Mitigation%2520Started%2FDDoSMitigationStarted.json)
 

@@ -7,12 +7,12 @@ ms.date: 12/11/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: bf730dbc28d15c3d036e9ebeedbe035db087c5d8
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 9bcf256b6144702254bbff4a57e5ff402abaa962
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673018"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834098"
 ---
 # <a name="how-to-connect-an--iot-plug-and-play-bridge-sample-running-on-linux-or-windows-to-iot-hub"></a>Jak připojit ukázku služby IoT technologie Plug and Play Bridge běžící v systému Linux nebo Windows do IoT Hub
 
@@ -44,7 +44,7 @@ az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --
 
 ## <a name="download-and-run-the-bridge"></a>Stažení a spuštění mostu
 
-V tomto článku máte dvě možnosti, jak spustit most. Máte následující možnosti:
+V tomto článku máte dvě možnosti, jak spustit most. Další možnosti:
 
 - Stáhněte si předem sestavený spustitelný soubor a spusťte ho, jak je popsáno v této části.
 - Stáhněte zdrojový kód a potom [Sestavte a spusťte most](#build-and-run-the-bridge) , jak je popsáno v následující části.
@@ -279,6 +279,8 @@ Pokud si chcete stáhnout modely pro Azure IoT Explorer:
 Po spuštění mostu použijte nástroj Azure IoT Explorer a ověřte, jestli funguje. Můžete zobrazit telemetrii, vlastnosti a příkazy definované v `dtmi:com:example:PnpBridgeEnvironmentalSensor;1` modelu.
 
 [!INCLUDE [iot-pnp-iot-explorer.md](../../includes/iot-pnp-iot-explorer.md)]
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 

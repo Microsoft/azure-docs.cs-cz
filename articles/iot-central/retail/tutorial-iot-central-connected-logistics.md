@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 398441123d5ad309d9c2d506a75b80b58a6d56d0
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 7c6c50b6fd8200726aa11f120d9748cc1b40aa22
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346210"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831616"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Kurz: nasazení a procházení prostřednictvím připojené šablony logistické aplikace
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Sledovat pravidla
 > * Použití úloh
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * K nasazení této aplikace nejsou nutné žádné konkrétní požadavky.
 * Můžete použít bezplatný cenový plán nebo použít předplatné Azure.
@@ -130,8 +130,8 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte šablonu aplikace na
 :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png" alt-text="Vyčištění šablony":::
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace: 
+
+Další informace o:
+
 > [!div class="nextstepaction"]
-> [Koncept Spojeného logistiky](./architecture-connected-logistics.md)
-* Další informace o jiných [šablonách IoT Central maloobchodních prodejů](./overview-iot-central-retail.md)
-* Další informace o [IoT Central přehledu](../core/overview-iot-central.md)
+> [Koncepty spojené logistiky](./architecture-connected-logistics.md)

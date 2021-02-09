@@ -6,14 +6,17 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 18c07266cec68aaf6e95fe4085b9d21244fecff4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d7c7068c4a8669cdff782267030d38ac0f73584
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761035"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832925"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorování připojení služby
+
+> [!IMPORTANT]
+> Od 1. července 2021 nebudete moci přidat nové testy do existujícího pracovního prostoru nebo povolit nový pracovní prostor v Network Performance Monitor. Můžete pokračovat v používání testů vytvořených před 1. července 2021. Pokud chcete minimalizovat přerušení služby na vaše aktuální úlohy, [migrujte testy z Network Performance Monitor na nové monitorování připojení](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) v Azure Network Watcher před 29. února 2024.
 
 Pomocí možnosti monitorování připojení služby v nástroji [Network Performance Monitor](network-performance-monitor.md) můžete monitorovat síťové připojení ke koncovému bodu, který má otevřený port TCP. K takovým koncovým bodům patří weby, aplikace SaaS, PaaS aplikace a databáze SQL. 
 
@@ -52,16 +55,16 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 Začněte vytvářet testy pro monitorování síťového připojení k koncovým bodům služby.
 
 1. Vyberte kartu **monitorování připojení služby** .
-2. Vyberte **Přidat test**a zadejte název a popis testu. Můžete vytvořit maximálně 450 testů na jeden pracovní prostor. 
+2. Vyberte **Přidat test** a zadejte název a popis testu. Můžete vytvořit maximálně 450 testů na jeden pracovní prostor. 
 3. Vyberte typ testu:<br>
 
     * Vyberte **Web** a sledujte připojení ke službě, která reaguje na požadavky HTTP/S, jako je například outlook.office365.com nebo Bing.com.<br>
     * Vyberte **síť** pro monitorování připojení ke službě, která reaguje na požadavky TCP, ale nereaguje na požadavky HTTP/S, jako je třeba SQL Server, server FTP nebo port SSH. 
     * Příklad: Chcete-li vytvořit webový test na účet úložiště objektů blob, vyberte možnost **Web** a zadejte cíl jako *yourstorageaccount*. blob.Core.Windows.NET. Podobně můžete pomocí [tohoto odkazu](../../storage/common/storage-account-overview.md#storage-account-endpoints) vytvořit testy pro jiné úložiště tabulek, úložiště front a soubory Azure.
 4. Pokud nechcete provádět měření sítě, například latence sítě, ztráty paketů a zjišťování topologie, zrušte zaškrtnutí políčka **provádět měření sítě** . Nechte si ho nechat vybraný, aby bylo možné získat maximální výhodu z této schopnosti. 
-5. V části **cíl**zadejte adresu URL/plně kvalifikovaný název domény nebo IP adresu, na které chcete monitorovat síťové připojení.
-6. Do pole **číslo portu**zadejte číslo portu cílové služby. 
-7. V části **frekvence testování**zadejte hodnotu, jak často chcete spustit test. 
+5. V části **cíl** zadejte adresu URL/plně kvalifikovaný název domény nebo IP adresu, na které chcete monitorovat síťové připojení.
+6. Do pole **číslo portu** zadejte číslo portu cílové služby. 
+7. V části **frekvence testování** zadejte hodnotu, jak často chcete spustit test. 
 8. Vyberte uzly, ze kterých chcete monitorovat síťové připojení ke službě. Zajistěte, aby byl počet přidaných agentů na test menší než 150. Každý agent může testovat maximálně 150 koncových bodů a agentů.
 
     >[!NOTE]
@@ -117,7 +120,7 @@ Pokud obdržíte nezvyklosti, postupujte podle následujících kroků:
     - Pokud uzel použitý k ověření síťového připojení ke službě je klientský počítač Windows, znamená to, že cílová služba blokuje žádosti ICMP, nebo síťová brána firewall blokuje žádosti ICMP, které pocházejí z uzlu.
     - Zaškrtávací políčko **provádět měření sítě** je v konfiguraci testu prázdné. 
 
-* Pokud je doba odezvy služby NA, ale ztráta sítě a latence je platná, cílová služba nemusí být webová aplikace. Upravte konfiguraci testu a jako místo **webu**vyberte typ testu **síť** . 
+* Pokud je doba odezvy služby NA, ale ztráta sítě a latence je platná, cílová služba nemusí být webová aplikace. Upravte konfiguraci testu a jako místo **webu** vyberte typ testu **síť** . 
 
 * Pokud je aplikace spuštěná pomalu, zjistěte, jestli je slabý výkon aplikace v důsledku sítě nebo problému na konci poskytovatele aplikace.
 
@@ -134,4 +137,3 @@ Pro oblast) – Virginia pro státní správu USA jsou integrované NPMy jenom a
 
 ## <a name="next-steps"></a>Další kroky
 V [protokolech hledání](../log-query/log-query-overview.md) zobrazíte podrobné záznamy dat o výkonu sítě.
-

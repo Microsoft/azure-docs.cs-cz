@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9ac616ddf1c3475f2ca3b3e8097bb74da72faa77
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 33eaa1ea928cc0650c91948c70d46daf499f3b4b
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95500267"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831196"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Kurz: připojení modulu IoT technologie Plug and Play (C#)
 
@@ -20,9 +20,14 @@ V tomto kurzu se dozvíte, jak propojit obecný [modul](../iot-hub/iot-hub-devgu
 
 Zařízení je technologie Plug and Play IoT, pokud při připojení ke službě IoT Hub zveřejňuje své ID modelu a implementuje vlastnosti a metody popsané v modelu DTDL (Digital Data Definition Language), který identifikuje ID modelu. Další informace o tom, jak zařízení používají DTDL a ID modelu, najdete v tématu [Příručka pro vývojáře IoT technologie Plug and Play](./concepts-developer-guide-device.md). Moduly používají identifikátory modelu a modely DTDL stejným způsobem.
 
-V tomto kurzu se dozvíte, jak implementovat modul IoT technologie Plug and Play, v tomto kurzu se dozvíte, jak převést vzorek termostatu pro zařízení C# na obecný modul.
+V tomto kurzu se dozvíte, jak implementovat modul IoT technologie Plug and Play. v tomto kurzu se dozvíte, jak:
 
-## <a name="prerequisites"></a>Předpoklady
+> [!div class="checklist"]
+> * Přidejte zařízení s modulem do služby IoT Hub.
+> * Převeďte vzorek termostatu pro zařízení C# na obecný modul.
+> * Pomocí sady SDK služby můžete pracovat s modulem.
+
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -98,7 +103,7 @@ Otevření a příprava ukázkového projektu:
 
 1. V aplikaci Visual Studio přejděte na **Vlastnosti projektu > termostatu > ladit**. Pak do projektu přidejte následující proměnné prostředí:
 
-    | Name | Hodnota |
+    | Název | Hodnota |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | připojovací řetězec |
     | IOTHUB_MODULE_CONNECTION_STRING | Připojovací řetězec modulu, na který jste si poznamenali předchozí poznámku |
@@ -173,7 +178,7 @@ Sady SDK služby umožňují načíst ID modelu propojených technologie Plug an
 
 1. V aplikaci Visual Studio přejděte na **Vlastnosti projektu > termostatu > ladit**. Pak do projektu přidejte následující proměnné prostředí:
 
-    | Name | Hodnota |
+    | Název | Hodnota |
     | ---- | ----- |
     | IOTHUB_DEVICE_ID | můj modul – zařízení |
     | IOTHUB_CONNECTION_STRING | Hodnota, na kterou jste si poznamenali, když jste [nastavili prostředí](set-up-environment.md) |
@@ -232,6 +237,10 @@ Pomocí nástroje Azure IoT Explorer můžete zobrazit:
 * Telemetrie ze zařízení IoT Edge.
 * Aktualizace vlastností IoT Edge v modulu, které spouštějí oznámení technologie Plug and Play IoT
 * IoT Edge modul reaguje na příkazy technologie Plug and Play IoT.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+[!INCLUDE [iot-pnp-clean-resources](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

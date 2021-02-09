@@ -15,17 +15,20 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 24b1549b2e460bc0e72fb76f5437b15838604949
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: a4f3e0bbd282fb1253e206e71c2eb1667773248e
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97896358"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834081"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Kurz: Monitorování síťové komunikace mezi dvěma virtuálními počítači na webu Azure Portal
 
 > [!NOTE]
 > Tento kurz se zabývá monitorováním připojení (Classic). Vyzkoušejte si nové a vylepšené monitorování [připojení](connection-monitor-overview.md) , aby se vylepšilo monitorování připojení.
+
+> [!IMPORTANT]
+> Od 1. července 2021 nebudete moct přidat nové monitorování připojení v monitorování připojení (klasické), ale můžete dál používat existující monitory připojení vytvořené před 1. července 2021. Pokud chcete minimalizovat přerušení služby na vaše aktuální úlohy, [migrujte z monitoru připojení (Classic) na nové monitorování připojení](migrate-to-connection-monitor-from-connection-monitor-classic.md) v Azure Network Watcher před 29. února 2024.
 
 Úspěšná komunikace mezi virtuálním počítačem a koncovým bodem, jako je například jiný virtuální počítač, může být pro organizaci velmi důležitá. Někdy se zavádějí změny konfigurace, po kterých může dojít k narušení komunikace. V tomto kurzu se naučíte:
 
@@ -41,7 +44,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-vms"></a>Vytvoření virtuálních počítačů
 
@@ -78,7 +81,7 @@ Proveďte znovu kroky uvedené v části [Vytvoření prvního virtuálního po�
 |Krok|Nastavení|Hodnota|
 |---|---|---|
 | 1 | Vybrat verzi **serveru Ubuntu** |                                                                         |
-| 3 | Name                                  | myVm2                                                                   |
+| 3 | Název                                  | myVm2                                                                   |
 | 3 | Typ ověřování                   | Vložte váš veřejný klíč SSH nebo vyberte **Heslo** a zadejte heslo. |
 | 3 | Skupina prostředků                        | Vyberte **Použít existující** a pak vyberte **myResourceGroup**.                 |
 | 6 | Rozšíření                            | **Agent Network Watcher pro Linux**                                             |

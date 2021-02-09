@@ -1,4 +1,4 @@
-- name: Dokumentace k řešení Azure IoT Central pro zdravotnictví
+- name: Dokumentace k Azure IoT Central pro zdravotnictví
   href: index.yml
 - name: Přehled
   items:
@@ -9,6 +9,8 @@
   items:
     - name: Vytvoření aplikace pro průběžné monitorování pacientů
       href: tutorial-continuous-patient-monitoring.md
+    - name: Vytvoření řídicího panelu pro posouzení informací o zdravotním stavu
+      href: howto-health-data-triage.md
 - name: Koncepty
   items:
     - name: Architektura průběžného monitorování pacientů
@@ -19,8 +21,6 @@
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
 - name: Návody
   items:
-    - name: Vytvoření řídicího panelu pro posouzení informací o zdravotním stavu
-      href: howto-health-data-triage.md
     - name: Připojení a vývoj zařízení
       items:
         - name: Příprava a připojení Rigado Cascade 500

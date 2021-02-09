@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 01/21/2021
+ms.date: 02/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 0976dd9f3c4d0228ec0f170a755ec13800da435b
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: c56fcecbd850dd0add26e5d50093eea595e3d825
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761566"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833418"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Řešení potíží na zařízení GPU Azure Stack Edge pro 
 
@@ -167,7 +167,7 @@ Tady jsou chyby, které se můžou zobrazit během konfigurace Azure Resource Ma
 
 2. Ověřte, že jsou nainstalované správné moduly PowerShellu, jak je uvedeno [tady](azure-stack-edge-j-series-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client).
 
-3. Ověřte, že jsou dostupné koncové body Azure Resource Manager a přihlášení. Můžete zkusit testovat koncové body. Například:
+3. Ověřte, že jsou dostupné koncové body Azure Resource Manager a přihlášení. Můžete zkusit testovat koncové body. Příklad:
 
    `ping management.28bmdw2-bb9.microsoftdatabox.com`
    `ping login.28bmdw2-bb9.microsoftdatabox.com`
@@ -196,7 +196,7 @@ Tady jsou chyby související s úložištěm objektů BLOB v Azure Stack hrani�
 |Příkaz AzCopy se zdá, že před zobrazením této chyby přestane reagovat na 20 minut:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`|Ověřte, že se název koncového bodu `<accountname>.blob.<serialnumber>.microsoftdatabox.com` přidal do souboru hostitelů v umístění: `/etc/hosts` .|
 |Příkaz AzCopy se zdá, že před zobrazením této chyby přestane reagovat na 20 minut: `Error parsing source location… The SSL connection could not be established` .|Importujte certifikát SSL pro vaše zařízení do úložiště certifikátů systému. Další informace najdete v tématu [stažení certifikátu](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate).|
 |Hodnota pro jednu z hlaviček protokolu HTTP není ve správném formátu.|Data Box není podporována nainstalovaná verze knihovny Microsoft Azure Storage pro Python. Podporované verze najdete v tématu Azure Data Box požadavky na úložiště objektů BLOB.|
-|… [SSL: CERTIFICATE_VERIFY_FAILED]...| Před spuštěním Pythonu nastavte proměnnou prostředí REQUESTS_CA_BUNDLE na cestu k souboru certifikátu SSL s kódováním Base64 (viz jak [Stáhnout certifikát](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate). Například:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Alternativně přidejte certifikát do úložiště certifikátů systému a pak nastavte tuto proměnnou prostředí na cestu k danému úložišti. Například na Ubuntu:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
+|… [SSL: CERTIFICATE_VERIFY_FAILED]...| Před spuštěním Pythonu nastavte proměnnou prostředí REQUESTS_CA_BUNDLE na cestu k souboru certifikátu SSL s kódováním Base64 (viz jak [Stáhnout certifikát](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate). Příklad:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Alternativně přidejte certifikát do úložiště certifikátů systému a pak nastavte tuto proměnnou prostředí na cestu k danému úložišti. Například na Ubuntu:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
 |Vypršel časový limit připojení.|Přihlaste se k Azure Stack Edge pro a potom zkontrolujte, že je odemčený. Kdykoli se zařízení restartuje, zůstane uzamčeno, dokud se někdo přihlásí.|
 
 ## <a name="troubleshoot-iot-edge-errors"></a>Řešení chyb IoT Edge

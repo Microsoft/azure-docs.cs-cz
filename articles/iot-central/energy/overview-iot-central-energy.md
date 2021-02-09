@@ -1,5 +1,5 @@
 ---
-title: Sestavujte energetická řešení pomocí IoT Central | Microsoft Docs
+title: Co jsou energetická řešení Azure IoT Centrale | Microsoft Docs
 description: Naučte se sestavovat řešení energií pomocí šablon aplikací Azure IoT Central.
 author: op-ravi
 ms.author: omravi
@@ -8,14 +8,14 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 25b15a30ed6d537a8c9ac7a0306dbd46484233ec
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 9adf9822bb63be6372de140c775370010614b6e4
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820734"
+ms.locfileid: "99832466"
 ---
-# <a name="build-energy-solutions-with-iot-central"></a>Sestavování řešení pro energetiku s využitím služby IoT Central
+# <a name="what-are-the-iot-central-energy-solutions"></a>Co jsou energetická řešení IoT Central?
 
 Inteligentní měřiče a sluneční panely hrají důležitou roli v transformaci z energetického odvětví. Inteligentní měřiče poskytují více ovládacích prvků a přehledy o spotřebě energie a růstu slunečních panelů, což roste při obnovitelné výrobě energie. Aplikace pro monitorování inteligentního měření a slunečního panelu jsou ukázkové šablony, které znázorňují různé možnosti. Partneři můžou tyto šablony využít k sestavování energetických řešení pomocí IoT Central pro jejich konkrétní potřeby. Pro nasazení a používání těchto aplikací nejsou potřeba žádné nové kódování a žádné další náklady. Přečtěte si další informace o šablonách energetické aplikace a jejich schopnostech.
 
@@ -61,8 +61,9 @@ Po nasazení aplikace se v 1-2 minutách zobrazí Simulovaná data v panelu slun
 > ![Řídicí panel aplikace pro sluneční panel](media/overview-iot-central-energy/solar-panel-app-dashboard.png)
 
 ## <a name="next-steps"></a>Další kroky
+
 Začínáme s vytvářením řešení pro energii:
+
 * Vytváření šablon aplikací zdarma: [aplikace s inteligentním měřením](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring), [aplikace slunečního panelu](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
 * Další informace o [konceptech aplikací monitorování inteligentního měření](./concept-iot-central-smart-meter-app.md)
 * Další informace o [konceptech monitorovacích panelů pro aplikace](./concept-iot-central-solar-panel-app.md)
-* Další informace o [IoT Central platformě](../index.yml)

@@ -7,18 +7,23 @@ ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 299730bcdab3ae7e558f39cc7f7d5076ffc58ea9
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 08ae21c2cd0859b7c361756a4f0380d3ab322a28
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820176"
+ms.locfileid: "99834353"
 ---
 # <a name="tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>Kurz: vytvoření a konfigurace prostředí Time Series Insights Gen2
 
 V tomto kurzu se naučíte, jak vytvořit a nakonfigurovat prostředí [Azure Time Series Insights Gen2](../time-series-insights/overview-what-is-tsi.md) pro integraci s řešením technologie Plug and Play IoT. Pomocí Time Series Insights můžete shromažďovat, zpracovávat, ukládat, dotazovat a vizualizovat data časových řad v rozsahu Internet věcí (IoT).
 
-Nejdřív zřídíte Time Series Insights prostředí a připojíte centrum IoT jako zdroj událostí streamování. Pak budete pracovat prostřednictvím synchronizace modelů a vytvářet [model časových řad](../time-series-insights/concepts-model-overview.md). Použijete ukázkové soubory modelu [DTDL (Digital Neal Definition Language)](https://github.com/Azure/opendigitaltwins-dtdl) , které jste použili pro kontrolku teploty a termostatem zařízení.
+V tomto kurzu jste:
+
+> [!div class="checklist"]
+> * Zřízení Time Series Insights prostředí a připojení služby IoT Hub jako zdroje událostí streamování.
+> * Pracujte pomocí synchronizace modelů a vytvořte [model časových řad](../time-series-insights/concepts-model-overview.md).
+> * Použijte ukázkové soubory modelu [DTDL (Digital Neal Definition Language)](https://github.com/Azure/opendigitaltwins-dtdl) , které jste použili pro kontrolku teploty a termostatem zařízení.
 
 > [!NOTE]
 > Tato integrace mezi Time Series Insights a IoT technologie Plug and Play je ve verzi Preview. Způsob, jakým se DTDL modely zařízení mapují na model časové řady Time Series Insights se může změnit. 
@@ -222,10 +227,11 @@ Vraťte se do podokna pro vytváření grafů a rozbalte položku **loďstva za�
 
 ![Snímek obrazovky znázorňující změnu typu instance pro thermostat2.](./media/tutorial-configure-tsi/charting-values.png)
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+[!INCLUDE [iot-pnp-clean-resources](../../includes/iot-pnp-clean-resources.md)]
+
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o různých možnostech grafů, včetně velikosti intervalu a ovládacích prvků osy y, najdete v tématu [Azure Time Series Insights Explorer](../time-series-insights/concepts-ux-panels.md).
-
-* Podrobný přehled modelu časových řad vašeho prostředí najdete v tématu [model časové řady v Azure Time Series Insights Gen2](../time-series-insights/concepts-model-overview.md).
-
-* Pokud se chcete podrobně do rozhraní API pro dotazy a syntaxí výrazu časové řady, přečtěte si téma [rozhraní API pro dotazy na Azure Time Series Insights Gen2](/rest/api/time-series-insights/reference-query-apis).
+> [!div class="nextstepaction"]
+> Další informace o různých možnostech grafů, včetně velikosti intervalu a ovládacích prvků osy y, najdete v tématu [Azure Time Series Insights Explorer](../time-series-insights/concepts-ux-panels.md).

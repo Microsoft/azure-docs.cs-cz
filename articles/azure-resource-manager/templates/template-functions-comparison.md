@@ -3,12 +3,12 @@ title: Funkce šablon – porovnání
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager (šablona ARM) k porovnání hodnot.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 1b7192db361f510e0246a737de47930534a1cb9d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 95655a4c92a1de9bb7a7faebcdaa83fb0fa75696
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920532"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833996"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>Funkce porovnání pro šablony ARM
 
@@ -31,7 +31,7 @@ Vrátí první hodnotu, která není null, z parametrů. Prázdné řetězce, pr
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ano |int, String, Array nebo Object |První hodnota, která má být testována na hodnotu null. |
 | Další argumenty |Ne |int, String, Array nebo Object |Další hodnoty, které mají být testovány na hodnotu null. |
@@ -106,11 +106,11 @@ param objectToTest object = {
   ]
 }
 
-output stringOutput string = coalesce(objectToTest.null1, objectToTest.null2, objectToTest.string)
-output intOutput int = coalesce(objectToTest.null1, objectToTest.null2, objectToTest.int)
-output objectOutput object = coalesce(objectToTest.null1, objectToTest.null2, objectToTest.object)
-output arrayOutput array = coalesce(objectToTest.null1, objectToTest.null2, objectToTest.array)
-output emptyOutput bool =empty(coalesce(objectToTest.null1, objectToTest.null2))
+output stringOutput string = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.string
+output intOutput int = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.int
+output objectOutput object = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.object
+output arrayOutput array = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.array
+output emptyOutput bool =empty(objectToTest.null1 ?? objectToTest.null2)
 ```
 
 ---
@@ -133,7 +133,7 @@ Kontroluje, zda jsou dvě hodnoty vzájemně stejné. `equals`Funkce není v bic
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ano |int, String, Array nebo Object |První hodnota pro kontrolu rovnosti. |
 | arg2 |Ano |int, String, Array nebo Object |Druhá hodnota pro kontrolu rovnosti. |
@@ -317,7 +317,7 @@ Kontroluje, zda je první hodnota větší než druhá hodnota. `greater`Funkce 
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ano |int nebo String |První hodnota pro lepší porovnání. |
 | arg2 |Ano |int nebo String |Druhá hodnota pro lepší porovnání. |
@@ -398,7 +398,7 @@ Kontroluje, zda je první hodnota větší než nebo rovna druhé hodnotě. `gre
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ano |int nebo String |První hodnota pro porovnání větší nebo rovno. |
 | arg2 |Ano |int nebo String |Druhá hodnota pro vyšší nebo stejné porovnání. |
@@ -479,7 +479,7 @@ Kontroluje, zda je první hodnota menší než druhá hodnota. `less`Funkce nen�
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ano |int nebo String |První hodnota pro méně porovnání. |
 | arg2 |Ano |int nebo String |Druhá hodnota pro méně porovnání. |
@@ -560,7 +560,7 @@ Kontroluje, zda je první hodnota menší nebo rovna druhé hodnotě. `lessOrEqu
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ano |int nebo String |První hodnota pro porovnání menší nebo rovno. |
 | arg2 |Ano |int nebo String |Druhá hodnota pro porovnání menší nebo rovno. |

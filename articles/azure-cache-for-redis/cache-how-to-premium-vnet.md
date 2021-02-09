@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: 9343bc424a0a38da173a56701528c4fd7549aabd
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 908254fec0d9e92b0e30c2e4968c3c505bbbdbf8
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734653"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833826"
 ---
 # <a name="configure-virtual-network-support-for-a-premium-tier-azure-cache-for-redis-instance"></a>Konfigurace podpory virtuální sítě pro instanci Redis Azure cache na úrovni Premium
 
@@ -178,7 +178,7 @@ Pro službu Azure cache pro Redis existují požadavky na připojení k síti, k
 * Odchozí připojení k síti Azure Storage koncovým bodům po celém světě. Zahrnuty jsou koncové body umístěné ve stejné oblasti jako Azure cache pro instance Redis a koncové body úložiště umístěné v *jiných* oblastech Azure. Azure Storage koncových bodů se vyhodnotí v následujících doménách DNS: *Table.Core.Windows.NET*, *BLOB.Core.Windows.NET*, *Queue.Core.Windows.NET* a *File.Core.Windows.NET*.
 * Odchozí připojení k síti pro *OCSP.DigiCert.com*, *crl4.DigiCert.com*, *OCSP.msocsp.com*, *mscrl.Microsoft.com*, *crl3.DigiCert.com*, *cacerts.DigiCert.com*, *oneocsp.Microsoft.com* a *CRL.Microsoft.com*. Toto připojení je potřeba k podpoře funkcí TLS/SSL.
 * Konfigurace DNS pro virtuální síť musí umožňovat překlad všech koncových bodů a domén uvedených v předchozích bodech. Tyto požadavky DNS můžou být splněné tím, že zajistí konfiguraci a údržbu platné infrastruktury DNS pro virtuální síť.
-* Odchozí síťové připojení k následujícím koncovým bodům Azure Monitor, které se řeší v následujících doménách DNS: *shoebox2-Black.shoebox2.Metrics.nsatc.NET*, *North-prod2.prod2.Metrics.nsatc.NET*, *azglobal-Black.azglobal.Metrics.nsatc.NET*, *shoebox2-Red.shoebox2.Metrics.nsatc.NET*, *East-prod2.prod2.Metrics.nsatc.NET* a *azglobal-Red.azglobal.Metrics.nsatc.NET*.
+* Odchozí síťové připojení k následujícím koncovým bodům Azure Monitor, které se řeší v následujících doménách DNS: *shoebox2-Black.shoebox2.Metrics.nsatc.NET*, *North-prod2.prod2.Metrics.nsatc.NET*, *azglobal-Black.azglobal.Metrics.nsatc.NET*, *shoebox2-Red.shoebox2.Metrics.nsatc.NET*, *East-prod2.prod2.Metrics.nsatc.NET*, *azglobal-Red.azglobal.Metrics.nsatc.NET*, *shoebox3.prod.microsoftmetrics.com*, *shoebox3-Red.prod.microsoftmetrics.com* a *shoebox3-Black.prod.microsoftmetrics.com*.
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-virtual-network"></a>Jak ověřit, že mezipaměť funguje ve virtuální síti?
 
@@ -190,7 +190,7 @@ Po nakonfigurování požadavků na porty, jak je popsáno v předchozí části
 
 - [Restartujte](cache-administration.md#reboot) všechny uzly mezipaměti. Pokud není dostupný žádný z požadovaných závislostí mezipaměti, jak je popsáno v části [požadavky na příchozí porty](cache-how-to-premium-vnet.md#inbound-port-requirements) a [požadavky na Odchozí porty](cache-how-to-premium-vnet.md#outbound-port-requirements), mezipaměť nebude možné úspěšně restartovat.
 - Po restartování uzlů mezipaměti, jak je uvedeno v Azure Portal stav mezipaměti, můžete provést následující testy:
-  - Otestujte koncový bod mezipaměti pomocí portu 6380 z počítače, který je ve stejné virtuální síti jako mezipaměť, pomocí [tcping](https://www.elifulkerson.com/projects/tcping.php). Například:
+  - Otestujte koncový bod mezipaměti pomocí portu 6380 z počítače, který je ve stejné virtuální síti jako mezipaměť, pomocí [tcping](https://www.elifulkerson.com/projects/tcping.php). Příklad:
     
     `tcping.exe contosocache.redis.cache.windows.net 6380`
     
@@ -213,7 +213,7 @@ Vyhněte se použití IP adresy, která je podobná následujícímu připojovac
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-Pokud nemůžete přeložit název DNS, některé klientské knihovny obsahují možnosti konfigurace `sslHost` , například, které poskytuje klient stackexchange. Redis. Tato možnost umožňuje přepsat název hostitele, který se používá k ověření certifikátu. Například:
+Pokud nemůžete přeložit název DNS, některé klientské knihovny obsahují možnosti konfigurace `sslHost` , například, které poskytuje klient stackexchange. Redis. Tato možnost umožňuje přepsat název hostitele, který se používá k ověření certifikátu. Příklad:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
 

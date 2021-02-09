@@ -4,12 +4,12 @@ description: Dostupnost výpočetních a paměťových prostředků pro službu 
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 63ec7c9027f957714108263dcbb4300a3cc68388
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: a415a739cd9c1e2ca39ebeaef1d8903ab72cf0c4
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661370"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831276"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Dostupnost prostředků pro Azure Container Instances v oblastech Azure
 
@@ -32,16 +32,16 @@ Následující oblasti a maximální prostředky jsou k dispozici pro skupiny ko
 | Oblast | Max CPU (maximální využití procesoru) | Maximální velikost paměti (GB) | Maximální využití virtuální sítě | Maximální velikost paměti virtuální sítě (GB) | Úložiště (GB) | SKU GPU (Preview) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: | :----: |
 | Austrálie – východ | 4 | 16 | 4 | 16 | 50 | – |
-| Brazil South | 4 | 16 | 2 | 8 | 50 | – |
+| Brazílie – jih | 4 | 16 | 2 | 8 | 50 | – |
 | Střední Kanada | 4 | 16 | 4 | 16 | 50 | – |
-| Indie – střed | 4 | 16 | N/A | N/A | 50 | V100 |
+| Indie – střed | 4 | 16 | 4 | 4 | 50 | V100 |
 | USA – střed | 4 | 16 | 4 | 16 | 50 | – |
 | Východní Asie | 4 | 16 | 4 | 16 | 50 | – |
 | East US | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
 | USA – východ 2 | 4 | 16 | 4 | 16 | 50 | – |
 | Francie – střed | 4 | 16 | 4 | 16 | 50 | – |
 | Německo – středozápad | 3 | 16 | N/A | N/A | 50 | – |
-| Japan East | 2 | 8 | 4 | 16 | 50 | – |
+| Japonsko – východ | 2 | 8 | 4 | 16 | 50 | – |
 | Jižní Korea – střed | 4 | 16 | N/A | N/A | 50 | – |
 | USA – středosever | 2 | 3,5 | 4 | 16 | 50 | K80, P100, V100 |
 | Severní Evropa | 4 | 16 | 4 | 16 | 50 | K80 |
@@ -84,14 +84,14 @@ Následující oblasti a maximální prostředky jsou k dispozici pro skupiny ko
 | Oblast | Maximální využití procesoru 1B/2B | Maximální velikost paměti 1B/2B (GB) |Maximální využití procesoru 3B | Maximální velikost paměti 3B (v GB) | Úložiště (GB) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: |
 | Austrálie – východ | 2 | 8 | 2 | 8 | 20 |
-| Brazil South | 4 | 16 | 4 | 16 | 20 |
+| Brazílie – jih | 4 | 16 | 4 | 16 | 20 |
 | Střední Kanada | 2 | 8 | 2 | 3,5 | 20 |
 | Indie – střed | 2 | 3,5 | 2 | 3,5 | 20 |
 | USA – střed | 2 | 3,5 | 2 | 3,5 | 20 |
 | Východní Asie | 2 | 3,5 | 2 | 3,5 | 20 |
 | East US | 4 | 16 | 2 | 8 | 20 |
 | USA – východ 2 | 2 | 3,5 | 4 | 16 | 20 |
-| Japan East | 4 | 16 | 4 | 16 | 20 |
+| Japonsko – východ | 4 | 16 | 4 | 16 | 20 |
 | Jižní Korea – střed | 4 | 16 | 4 | 16 | 20 |
 | USA – středosever | 4 | 16 | 4 | 16 | 20 |
 | Severní Evropa | 2 | 8 | 2 | 8 | 20 |
@@ -113,7 +113,7 @@ Následující oblasti a maximální prostředky jsou k dispozici pro skupiny ko
 | Oblast | Maximální využití procesoru 1B/2B | Maximální velikost paměti 1B/2B (GB) |Maximální využití procesoru 3B | Maximální velikost paměti 3B (v GB) | Úložiště (GB) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: |
 | Austrálie – východ | 4 | 16 | 4 | 16 | 20 |
-| Brazil South | 4 | 16 | 4 | 16 | 20 |
+| Brazílie – jih | 4 | 16 | 4 | 16 | 20 |
 | Střední Kanada | 4 | 16 | 4 | 16 | 20 |
 | Indie – střed | 4 | 16 | 4 | 16 | 20 |
 | USA – střed | 4 | 16 | 4 | 16 | 20 |
@@ -121,7 +121,7 @@ Následující oblasti a maximální prostředky jsou k dispozici pro skupiny ko
 | East US | 4 | 16 | 4 | 16 | 20 |
 | USA – východ 2 | 2 | 3,5 | 2 | 3,5 | 20 |
 | Francie – střed | 4 | 16 | 4 | 16 | 20 |
-| Japan East | N/A | N/A | 4 | 16 | 20 |
+| Japonsko – východ | N/A | N/A | 4 | 16 | 20 |
 | Jižní Korea – střed | 4 | 16 | 4 | 16 | 20 |
 | USA – středosever | 4 | 16 | 4 | 16 | 20 |
 | Severní Evropa | 4 | 16 | 4 | 16 | 20 |

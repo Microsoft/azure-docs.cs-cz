@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: f798e65b1517430bc67af793ebb517c586d5d58f
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 10ddbf3dde62380eb79af685ad41b22e4552cea1
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763872"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832619"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Kurz: vytvoření instance IoT Edge pro video Analytics (virtuální počítač se systémem Linux)
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření virtuálního počítače Azure s nainstalovaným modulem runtime Azure IoT Edge
 > * Připraví IoT Edge instalaci, aby hostoval modul Live video Analytics a připojil se k IoT Central
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, měli byste dokončit předchozí [Vytvoření aplikace video Analytics v azure IoT Central](./tutorial-video-analytics-create-app-yolo-v3.md) nebo [Vytvoření analýzy videí v Azure IoT Central (OpenVINO &trade; )](tutorial-video-analytics-create-app-openvino.md) .
 
@@ -118,6 +118,14 @@ sudo docker ps
 ```
 
 Seznam obsahuje kontejner nazvaný **LIVE555**.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud jste s aplikací hotoví, můžete odebrat všechny prostředky, které jste vytvořili následujícím způsobem:
+
+1. V aplikaci IoT Central přejděte na stránku **aplikace** v části **Správa** . Vyberte **Odstranit**.
+1. V Azure Portal odstraňte skupinu prostředků **lva-RG** .
+1. V místním počítači zastavte kontejner Docker pro **amp Viewer** .
 
 ## <a name="next-steps"></a>Další kroky
 

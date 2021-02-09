@@ -6,14 +6,17 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 2c20f668c57e8c2e74c320ca535aea18e633daf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6502d4259aa383c1466967d01282cecfbb8d1ded
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326116"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832959"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Řešení Network Performance Monitor: sledování výkonu
+
+> [!IMPORTANT]
+> Od 1. července 2021 nebudete moci přidat nové testy do existujícího pracovního prostoru nebo povolit nový pracovní prostor v Network Performance Monitor. Můžete pokračovat v používání testů vytvořených před 1. července 2021. Pokud chcete minimalizovat přerušení služby na vaše aktuální úlohy, [migrujte testy z Network Performance Monitor na nové monitorování připojení](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) v Azure Network Watcher před 29. února 2024.
 
 Funkce sledování výkonu v [Network Performance Monitor](network-performance-monitor.md) pomáhá monitorovat síťové připojení mezi různými místy ve vaší síti. Můžete monitorovat cloudová nasazení a místní umístění, několik datových center a poboček a klíčové aplikace nebo mikroslužby s více vrstvami. Pomocí nástroje sledování výkonu můžete detekovat problémy se sítí ještě předtím, než uživatelé podali stížnost. Mezi klíčové výhody patří: 
 
@@ -41,7 +44,7 @@ Vytvoření nové sítě:
 
 
 1. Vyberte kartu **sítě** .
-1. Vyberte **Přidat síť**a pak zadejte název a popis sítě. 
+1. Vyberte **Přidat síť** a pak zadejte název a popis sítě. 
 2. Vyberte jednu nebo více podsítí a pak vyberte **Přidat**. 
 3. Kliknutím na **Uložit** uložte konfiguraci. 
 
@@ -94,7 +97,7 @@ Před zvolením protokolu zvažte následující informace:
 
 Pokud se rozhodnete používat protokol ICMP během nasazení, můžete kdykoli přejít na protokol TCP úpravou výchozího pravidla monitorování.
 
-1. Přejít na **sledování výkonu sítě**   >  **Monitor**   >  **Konfigurace**   >  **monitorování**. Pak vyberte **výchozí pravidlo**. 
+1. Přejít na **sledování výkonu sítě**   >  ****   >  **Konfigurace**   >  **monitorování**. Pak vyberte **výchozí pravidlo**. 
 2. Přejděte do části **protokol** a vyberte protokol, který chcete použít. 
 3. Vyberte **Uložit** a použijte nastavení. 
 
@@ -129,4 +132,3 @@ Na následujícím obrázku se v červené cestě a segmentech směrování zobr
 
 ## <a name="next-steps"></a>Další kroky
 V [protokolech hledání](../log-query/log-query-overview.md) zobrazíte podrobné záznamy dat o výkonu sítě.
-

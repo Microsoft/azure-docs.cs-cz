@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: cc35f9ee25511faec5723b49763cbdae8963e88b
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: a7ad5f661d4eca07deb0942c7684b89ac59931a2
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820751"
+ms.locfileid: "99834387"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Použití adaptivních řízení aplikací k omezení ploch útoků počítačů
 
@@ -44,7 +44,7 @@ Definováním seznamů známých aplikací v bezpečí a generování výstrah v
 - Zabránění konkrétnímu softwaru, který je zakázán vaší organizací
 - Zvýšení zraku aplikací, které přistupují k citlivým datům
 
-Nejsou k dispozici žádné možnosti vynucení a žádné nejsou plánovány. Adaptivní řízení aplikací je určeno k poskytování výstrah zabezpečení v případě, že některá aplikace běží jinak než ty, které jste definovali jako bezpečné.
+V tuto chvíli nejsou k dispozici žádné možnosti vynucování. Adaptivní řízení aplikací je určeno k poskytování výstrah zabezpečení v případě, že některá aplikace běží jinak než ty, které jste definovali jako bezpečné.
 
 ## <a name="availability"></a>Dostupnost
 
@@ -238,7 +238,7 @@ Některé funkce, které jsou dostupné z REST API:
 ## <a name="faq---adaptive-application-controls"></a>Nejčastější dotazy – Adaptivní řízení aplikací
 
 ### <a name="are-there-any-options-to-enforce-the-application-controls"></a>Existují nějaké možnosti, jak vymáhat ovládací prvky aplikace?
-Nejsou k dispozici žádné možnosti vynucení a žádné nejsou plánovány. Adaptivní řízení aplikací je určeno k poskytování **výstrah zabezpečení** v případě, že některá aplikace běží jinak než ty, které jste definovali jako bezpečné. Mají řadu výhod ([Jaké jsou výhody adaptivních řízení aplikací?](#what-are-the-benefits-of-adaptive-application-controls)) a jsou extrémně přizpůsobitelná, jak je znázorněno na této stránce.
+V tuto chvíli nejsou k dispozici žádné možnosti vynucování. Adaptivní řízení aplikací je určeno k poskytování **výstrah zabezpečení** v případě, že některá aplikace běží jinak než ty, které jste definovali jako bezpečné. Mají řadu výhod ([Jaké jsou výhody adaptivních řízení aplikací?](#what-are-the-benefits-of-adaptive-application-controls)) a jsou extrémně přizpůsobitelná, jak je znázorněno na této stránce.
 
  
 
