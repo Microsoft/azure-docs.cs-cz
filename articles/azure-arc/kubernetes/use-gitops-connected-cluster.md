@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Použití GitOps ke konfiguraci clusteru Kubernetes s povoleným ARC Azure (Preview)
 keywords: GitOps, Kubernetes, K8s, Azure, ARC, Azure Kubernetes Service, AKS, Containers
-ms.openlocfilehash: a068ed90ea53b3b25a1f41cebd9a5b8e607afa54
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 72dc42fffb3653de81477fa504c11b9b0328d2eb
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737180"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988704"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Nasazení konfigurací pomocí GitOps v clusteru Kubernetes s podporou Azure Arc (Preview)
 
@@ -148,17 +148,17 @@ Pokud chcete konfiguraci přizpůsobit, můžete použít více parametrů:
 
 `--helm-operator-params` : *Volitelné* hodnoty grafu pro operátor Helm (Pokud je povoleno).  Například: "--set Helm. verze = V3".
 
-`--helm-operator-chart-version` : *Volitelná* verze grafu pro operátor Helm (Pokud je povolená). Výchozí: ' 1.2.0 '.
+`--helm-operator-version` : *Volitelná* verze grafu pro operátor Helm (Pokud je povolená). Použijte ' 1.2.0 ' nebo větší. Výchozí: ' 1.2.0 '.
 
 `--operator-namespace` : *Volitelný* název oboru názvů operátoru. Výchozí: výchozí. Maximální počet 23 znaků.
 
-`--operator-params` : *Volitelné* parametry pro operátor. Musí být zadány v jednoduchých uvozovkách. Například ```--operator-params='--git-readonly --git-path=releases --sync-garbage-collection' ```.
+`--operator-params` : *Volitelné* parametry pro operátor. Musí být zadány v jednoduchých uvozovkách. Například ```--operator-params='--git-readonly --sync-garbage-collection --git-branch=main' ```.
 
 Možnosti podporované v--operator-params
 
 | Možnost | Popis |
 | ------------- | ------------- |
-| --Git-větev  | Větev úložiště Git, která se má použít pro Kubernetes manifesty Výchozí hodnota je "Master". |
+| --Git-větev  | Větev úložiště Git, která se má použít pro Kubernetes manifesty Výchozí hodnota je "Master". Novější úložiště mají kořenovou větev s názvem Main. v takovém případě musíte nastavit--Git-větvi = Main. |
 | --Git-Path  | Relativní cesta v úložišti Git pro tok, ve kterém se mají vyhledat manifesty Kubernetes. |
 | --Git-ReadOnly | Úložiště Git se bude považovat za jen pro čtení; Tok se do něj nepokouší zapisovat. |
 | --Manifest-Generation  | Pokud je tato možnost povolená, bude tok Hledat. toků. yaml a spouštět Kustomize nebo jiné generátory manifestů. |
@@ -226,16 +226,13 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 }
 ```
 
-Při `sourceControlConfiguration` vytvoření se v digestoři stane několik věcí:
+Při `sourceControlConfiguration` Vytvoření nebo aktualizaci se v digestoři stane několik věcí:
 
-1. Azure ARC `config-agent` monitoruje Azure Resource Manager pro nové nebo aktualizované konfigurace ( `Microsoft.KubernetesConfiguration/sourceControlConfigurations` ).
-1. `config-agent` oznámení o nové `Pending` konfiguraci
-1. `config-agent` přečte vlastnosti konfigurace a připraví nasazení spravované instance. `flux`
-    * `config-agent` vytvoří cílový obor názvů.
-    * `config-agent` připraví účet služby Kubernetes s příslušným oprávněním ( `cluster` nebo `namespace` oborem).
-    * `config-agent` nasadí instanci `flux`
-    * `flux` vygeneruje klíč SSH a zaprotokoluje veřejný klíč (Pokud použijete možnost SSH s klíči generovanými tokem).
-1. `config-agent` hlásí stav zpět do `sourceControlConfiguration` prostředku v Azure.
+1. Azure ARC `config-agent` monitoruje Azure Resource Manager pro nové nebo aktualizované konfigurace ( `Microsoft.KubernetesConfiguration/sourceControlConfigurations` ) a zjišťuje novou `Pending` konfiguraci.
+1. `config-agent`Přečte vlastnosti konfigurace a vytvoří cílový obor názvů.
+1. Azure ARC `controller-manager` připraví účet služby Kubernetes s příslušným oprávněním ( `cluster` nebo `namespace` oborem) a pak nasadí instanci `flux` .
+1. Pokud používáte možnost SSH s klíči generovanými tokem, `flux` vygeneruje klíč SSH a zaprotokoluje veřejný klíč.
+1. `config-agent`Stav hlásí zpět do `sourceControlConfiguration` prostředku v Azure.
 
 Během procesu zřizování se `sourceControlConfiguration` přesunou mezi několika změnami stavu. Sledujte průběh pomocí `az k8sconfiguration show ...` příkazu výše:
 

@@ -2,13 +2,13 @@
 title: Správa životního cyklu virtuálních počítačů řešení Azure VMware
 description: Naučte se spravovat všechny aspekty životního cyklu virtuálních počítačů řešení Azure VMware pomocí Microsoft Azurech nativních nástrojů.
 ms.topic: conceptual
-ms.date: 09/11/2020
-ms.openlocfilehash: 5bba9cbbc8783cc285ff09f790ee1b35b20ba358
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/08/2021
+ms.openlocfilehash: d8224a37e46b336ebf889fe1c075930f34f10ca4
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062892"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988538"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Správa životního cyklu virtuálních počítačů řešení Azure VMware
 
@@ -110,3 +110,11 @@ Azure Monitor je komplexní řešení pro shromažďování, analýzu a provoz t
     - [Umožňuje vytvářet, zobrazovat a spravovat výstrahy protokolu pomocí Azure monitor](../azure-monitor/platform/alerts-log.md).
     - [Pravidla akcí](../azure-monitor/platform/alerts-action-rules.md) pro nastavení automatizovaných akcí a oznámení.
     - [Připojte Azure k nástrojům pro ITSM pomocí IT Service Management Connectoru](../azure-monitor/platform/itsmc-overview.md).
+    
+ ## <a name="next-steps"></a>Další kroky
+
+Teď, když jste se seznámili s používáním nativních nástrojů Azure pro správu virtuálních počítačů Azure VMware v průběhu svého životního cyklu, se můžete seznámit s těmito řešeními:
+
+- [Ochrana virtuálních počítačů řešení Azure VMware pomocí Azure Security Center](azure-security-integration.md).
+- [Nastavování Azure Backup Server pro řešení Azure VMware](set-up-backup-server-for-azure-vmware-solution.md).
+- [Integrace řešení Azure VMware do architektury hub a paprsků](concepts-hub-and-spoke.md).

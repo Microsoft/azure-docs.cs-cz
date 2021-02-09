@@ -2,13 +2,13 @@
 title: Azure NetApp Files s využitím řešení Azure VMware
 description: Pomocí Azure NetApp Files s virtuálními počítači řešení VMware Azure můžete migrovat a synchronizovat data na místních serverech, virtuálních počítačích řešení Azure VMware a cloudových infrastrukturách.
 ms.topic: how-to
-ms.date: 02/01/2021
-ms.openlocfilehash: 8c101b652ffcefe05e9b6c11f166c1da3df2ede1
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.date: 02/08/2021
+ms.openlocfilehash: 69d4e3a99de28d55b2fd95b1fc05c04c2ae0a37b
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539362"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988646"
 ---
 # <a name="azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp Files s využitím řešení Azure VMware
 
@@ -16,7 +16,7 @@ V tomto článku Vás provedeme kroky integrace Azure NetApp Files s využitím 
 
 ## <a name="azure-netapp-files-overview"></a>Přehled Azure NetApp Files
 
-[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md) je služba Azure First stran pro migraci a spouštění nejnáročnějších podnikových souborových úloh v cloudu, včetně databází, SAP a vysoce výkonných výpočetních aplikací bez jakýchkoli změn kódu.
+[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md) je služba Azure pro migraci a spouštění nejnáročnějších podnikových souborových úloh v cloudu. To zahrnuje databáze, SAP a vysoce výkonné výpočetní aplikace bez jakýchkoli změn kódu.
 
 ### <a name="features"></a>Funkce
 (Služby, kde se používají Azure NetApp Files.)
@@ -31,7 +31,7 @@ Azure NetApp Files je k dispozici v mnoha oblastech Azure a podporuje replikaci 
 
 ## <a name="reference-architecture"></a>Referenční architektura
 
-Následující diagram znázorňuje připojení prostřednictvím Azure ExpressRoute k privátnímu cloudu řešení Azure VMware. Zobrazuje využití Azure NetApp Files sdílené složky připojená k virtuálním počítačům řešení VMware Azure, ke kterým se přistupovalo v prostředí řešení Azure VMware.
+Následující diagram znázorňuje připojení prostřednictvím Azure ExpressRoute k privátnímu cloudu řešení Azure VMware. Prostředí řešení Azure VMware přistupuje ke sdílené složce Azure NetApp Files, která je připojená k virtuálním počítačům řešení Azure VMware.
 
 ![Diagram znázorňující NetApp soubory pro architekturu řešení Azure VMware.](media/net-app-files/net-app-files-topology.png)
 
@@ -83,11 +83,11 @@ Následující kroky zahrnují ověření předem nakonfigurovaných Azure NetAp
 
     :::image type="content" source="media/net-app-files/configuration-of-volume.png" alt-text="Snímek obrazovky zobrazující podrobnosti o konfiguraci svazku.":::
 
-    Můžete vidět, že svazek anfvolume s velikostí 200 GiB byl vytvořen ve fondu kapacity anfpool1 a exportován jako sdílená složka systému souborů NFS prostřednictvím 10.22.3.4:/ANFVOLUME. Pro Azure NetApp Files se vytvořila jedna privátní IP adresa z Azure Virtual Network (VNet) a cesta k systému souborů NFS, která se má na virtuálním počítači připojit. Informace o Azure NetApp Files výkon svazku vzhledem k velikosti ("kvóta") najdete v tématu věnovaném [důležitým informacím o výkonu pro Azure NetApp Files](../azure-netapp-files/azure-netapp-files-performance-considerations.md). 
+    Můžete vidět, že svazek anfvolume má velikost 200 GiB a je ve fondu kapacity anfpool1.  Je exportovaný jako sdílená složka NFS prostřednictvím 10.22.3.4:/ANFVOLUME. Pro Azure NetApp Files se vytvořila jedna privátní IP adresa z Azure Virtual Network (VNet) a cesta k systému souborů NFS, která se má na virtuálním počítači připojit. Další informace o Azure NetApp Files výkonu multilicence podle velikosti nebo "kvóty" najdete v tématu věnovaném [důležitým informacím o výkonu pro Azure NetApp Files](../azure-netapp-files/azure-netapp-files-performance-considerations.md). 
 
 ## <a name="verify-pre-configured-azure-vmware-solution-vm-share-mapping"></a>Ověřit předkonfigurované mapování sdílené složky virtuálních počítačů řešení Azure VMware
 
-Než předvádí přístupnost Azure NetApp Files sdílet s virtuálním počítačem řešení Azure VMware, je důležité pochopit mapování sdílených složek SMB a NFS. Až budete moct nakonfigurovat svazky SMB nebo NFS, je možné je připojit, jak je popsáno zde.
+Aby bylo sdílení Azure NetApp Files dostupné pro virtuální počítač řešení Azure VMware, je důležité pochopit mapování sdílených složek SMB a NFS. Až budete moct nakonfigurovat svazky SMB nebo NFS, je možné je připojit, jak je popsáno zde.
 
 - Sdílená složka SMB: před nasazením svazku SMB vytvořte připojení ke službě Active Directory. Zadané řadiče domény musí být přístupné delegované podsíti Azure NetApp Files pro úspěšné připojení. Po nakonfigurování služby Active Directory v rámci Azure NetApp Files účtu se při vytváření svazků SMB zobrazí jako vybranější položka.
 
@@ -103,7 +103,7 @@ Následuje jenom několik přesvědčivých Azure NetApp Files případů použi
 
 ## <a name="next-steps"></a>Další kroky
 
-Po integraci Azure NetApp Files s využitím úloh řešení Azure VMware můžete chtít získat další informace v těchto případech:
+Teď, když jste se seznámili s integrací Azure NetApp Files s vašimi úlohami řešení Azure VMware, budete možná chtít získat informace o:
 
 - [Omezení prostředků pro Azure NetApp Files](../azure-netapp-files/azure-netapp-files-resource-limits.md#resource-limits).
 - [Pokyny pro Azure NetApp Files plánování sítě](../azure-netapp-files/azure-netapp-files-network-topologies.md).

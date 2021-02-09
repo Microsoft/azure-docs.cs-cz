@@ -4,19 +4,47 @@ description: Archivovaná zpráva k vydání verze pro Azure HDInsight Získejte
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 10/07/2020
-ms.openlocfilehash: 8e6f27c378a6cea8fffbdcda58c4fc3bb865e51e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/08/2021
+ms.openlocfilehash: 902b13c947cb005189e23dee943867100809564e
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932165"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988542"
 ---
 # <a name="archived-release-notes"></a>Archivované poznámky k verzi
 
 ## <a name="summary"></a>Souhrn
 
 Azure HDInsight je jednou z nejoblíbenějších služeb pro podnikové zákazníky pro Open Source Apache Hadoop a Apache Spark analýzy v Azure.
+
+## <a name="release-date-11182020"></a>Datum vydání: 11/18/2020
+
+Tato verze se týká HDInsight 3,6 i HDInsight 4,0. Vydání HDInsight je zpřístupněno pro všechny oblasti více než několik dní. Datum vydání znamená datum vydání první oblasti. Pokud nevidíte níže uvedené změny, počkejte, až bude verze ve vaší oblasti v průběhu několika dnů živá.
+
+### <a name="new-features"></a>Nové funkce
+#### <a name="auto-key-rotation-for-customer-managed-key-encryption-at-rest"></a>Automatické střídání klíčů pro šifrování spravovaného klíče zákazníka v klidovém umístění
+Od této verze můžou zákazníci používat adresy URL šifrovacího klíče bez verze Azure KeyValut pro šifrování spravovaného klíče zákazníka v klidovém provozu. HDInsight tyto klíče automaticky otočí, jakmile vyprší platnost, nebo je nahradí novými verzemi. Další podrobnosti najdete [tady](./disk-encryption.md).
+
+#### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>Možnost výběru různých velikostí virtuálních počítačů s Zookeeper pro služby Spark, Hadoop a ML
+Služba HDInsight dřív nepodporovala přizpůsobení velikosti uzlu Zookeeper pro typy clusterů Spark, Hadoop a ML. Ve výchozím nastavení se A2_v2/a2 velikosti virtuálních počítačů, které jsou poskytovány zdarma. Z této verze můžete vybrat velikost virtuálního počítače Zookeeper, která je pro váš scénář nejvhodnější. Budou se účtovat uzly Zookeeper s velikostí virtuálního počítače jinou než A2_v2/a2. Virtuální počítače A2_v2 a a2 jsou stále poskytovány zdarma.
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Přechod na Azure Virtual Machine Scale Sets
+HDInsight teď pomocí virtuálních počítačů Azure zřídí cluster. Od této verze se služba postupně migruje na [Azure Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md). Celý proces může trvat měsíce. Po migraci vašich oblastí a předplatných se nově vytvořené clustery HDInsight spustí ve službě Virtual Machine Scale Sets bez akcí zákazníků. Neočekává se žádná neprůlomová změna.
+
+### <a name="deprecation"></a>Vyřazení
+#### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>Vyřazení clusteru HDInsight 3,6 ML Services
+Typ clusteru HDInsight 3,6 ML Services bude na konci podpory od prosince 31 2020. Zákazníci nebudou moct vytvořit nové clustery 3,6 ML Services po prosinci 31 2020. Existující clustery se spustí, a to bez podpory Microsoftu. [Tady](./hdinsight-component-versioning.md#available-versions)se podívejte na vypršení platnosti podpory pro verze a typy clusterů HDInsight.
+
+#### <a name="disabled-vm-sizes"></a>Zakázané velikosti virtuálních počítačů
+Od listopadu 16 2020 bude HDInsight zablokuje novým zákazníkům vytváření clusterů pomocí standand_A8, standand_A9, standand_A10 a standand_A11 velikostí virtuálních počítačů. Stávající zákazníci, kteří použili tyto velikosti virtuálních počítačů v posledních třech měsících, to neovlivní. Počínaje formulářem leden 9 2021 bude HDInsight blokovat všem zákazníkům vytváření clusterů pomocí standand_A8, standand_A9, standand_A10 a standand_A11 velikostí virtuálních počítačů. Existující clustery se spustí, jak je. Zvažte přechod na HDInsight 4,0, aby se předešlo potenciálnímu přerušení systému/podpory.
+
+### <a name="behavior-changes"></a>Změny chování
+#### <a name="add-nsg-rule-checking-before-scaling-operation"></a>Přidat kontrolu pravidel NSG před operací škálování
+HDInsight přidal skupiny zabezpečení sítě (skupin zabezpečení sítě) a uživatelsky definované trasy (udr), která má kontrolu nad operací škálování. Stejné ověřování se provádí pro škálování clusteru Kromě vytváření clusteru. Toto ověření pomáhá zabránit nepředvídatelným chybám. Pokud ověření neprojde, škálování se nezdařilo. Další informace o tom, jak správně nakonfigurovat skupin zabezpečení sítě a udr, najdete v tématu věnovaném [IP adresám správy HDInsight](./hdinsight-management-ip-addresses.md).
+
+### <a name="component-version-change"></a>Změna verze součásti
+Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](./hdinsight-component-versioning.md)najdete aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6.
 
 ## <a name="release-date-11092020"></a>Datum vydání: 11/09/2020
 
@@ -595,11 +623,11 @@ Nové aktualizace a možnosti spadají do následujících kategorií:
 
     b.  [**Nové funkce v Apache Kafka 1,0**](https://kafka.apache.org/downloads#1.0.0)
 
-*  ***Aktualizujte R Server 9,1 na Machine Learning Services 9,3** _ – v této verzi poskytujeme specialisty na data a inženýry s využitím nejlepšího open source, který je vylepšený pomocí algoritmů a možností jejich zprovoznění, a to všechno, co je k dispozici v upřednostňovaném jazyce, s rychlostí Apache Spark. Tato verze se rozbalí na možnosti, které nabízí R Server s přidanou podporou pro Python, což vede k změně názvu clusteru z R Server na služby ML. 
+*  ***Aktualizace R Server 9,1 na Machine Learning Services 9,3*** – v této verzi poskytujeme specialisty na data a inženýry s využitím nejlepšího open source, který je vylepšený pomocí algoritmů a možností jejich zprovoznění, a to vše, co je k dispozici v upřednostňovaném jazyce, s rychlostí Apache Spark. Tato verze se rozbalí na možnosti, které nabízí R Server s přidanou podporou pro Python, což vede k změně názvu clusteru z R Server na služby ML. 
 
-_ ***Podpora pro Azure Data Lake Storage Gen2** _ – HDInsight bude podporovat verzi Preview služby Azure Data Lake Storage Gen2. V dostupných oblastech budou zákazníci moci zvolit účet ADLS Gen2 jako primární nebo sekundární úložiště pro své clustery HDInsight.
+*  ***Podpora Azure Data Lake Storage Gen2*** – HDInsight bude podporovat verzi Preview služby Azure Data Lake Storage Gen2. V dostupných oblastech budou zákazníci moci zvolit účet ADLS Gen2 jako primární nebo sekundární úložiště pro své clustery HDInsight.
 
-_ * Služba **HDInsight balíček zabezpečení podniku Updates (Preview)** _ – (preview) [Virtual Network podporu koncových bodů služby](../virtual-network/virtual-network-service-endpoints-overview.md) pro Azure Blob Storage, adls Gen1, Cosmos DB a Azure DB.
+*  Služba ***HDInsight balíček zabezpečení podniku Updates (Preview)*** – (preview) [Virtual Network koncových bodů služby](../virtual-network/virtual-network-service-endpoints-overview.md) pro Azure Blob Storage, adls Gen1, Cosmos DB a Azure DB.
 
 ### <a name="component-versions"></a>Verze komponent
 
@@ -797,7 +825,7 @@ Tato verze poskytuje HBA a následující opravy Apache.
 
 Tato verze poskytuje kromě následujících oprav také podregistr 1.2.1 a 2.1.0.
 
-_ *Opravy pro podregistr 1.2.1 pro Apache:**
+**Opravy pro podregistr 1.2.1 Apache:**
 
 -   [*Podregistr-10697*](https://issues.apache.org/jira/browse/HIVE-10697): ObjectInspectorConvertors \# UnionConvertor provádí chybný převod.
 

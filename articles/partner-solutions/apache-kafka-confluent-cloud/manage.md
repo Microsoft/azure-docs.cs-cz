@@ -3,15 +3,15 @@ title: Správa partnerských řešení cloudu Azure
 description: Tento článek popisuje správu cloudu s neplynulou správou v Azure Portal. Jak nastavit jednotné přihlašování, odstranit organizaci v influent a získat podporu.
 ms.service: partner-services
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 02/08/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: 2d13c183f0b3891fa92b5e2a6534acbf8102e032
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: f8a54096ecda4729f7070120a02be3055f933cea
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253394"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989128"
 ---
 # <a name="manage-the-confluent-cloud-resource"></a>Správa cloudového prostředku s možností influent
 
@@ -59,12 +59,22 @@ Cluster a všechna data v clusteru se trvale odstraní. Pokud vaše smlouva obsa
 
 Účtuje se vám průběžné využití v době odstranění clusteru. Až se váš cluster trvale odstraní, influent vám pošle e-mailové potvrzení.
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
 Pokud chcete odeslat žádost o podporu, obraťte se na [podporu](https://support.confluent.io) , nebo odešlete žádost prostřednictvím portálu, jak je znázorněno níže.
 
 > [!NOTE]
 > Před přihlášením k portálu podpory pro influent uživatele resetujte heslo poprvé. Pokud nemáte účet se službou influent Cloud, pošlete e-mail na `cloud-support@confluent.io` Další pomoc.
+
+Na portálu můžete buď Odeslat žádost prostřednictvím služby Azure Help and Support, nebo přímo z vaší instance Apache Kafka pro cloudovou ochranu v Azure.
+
+Odeslání žádosti prostřednictvím služby Azure Help and Support:
+
+1. Vyberte **Nápověda a podpora**.
+1. Vyberte **vytvořit žádost o podporu**.
+1. Ve formuláři vyberte pro **typ problému** možnost **Technical** . Vyberte své předplatné. V seznamu služeb vyberte v Azure možnost **influent**.
+
+    :::image type="content" source="media/support-request-help.png" alt-text="Vytvořte žádost o podporu z pomoci.":::
 
 Pokud chcete odeslat žádost z prostředku, postupujte podle těchto kroků:
 
@@ -72,7 +82,7 @@ Pokud chcete odeslat žádost z prostředku, postupujte podle těchto kroků:
 1. V nabídce na levé straně obrazovky vyberte **Nová žádost o podporu**.
 1. Pokud chcete vytvořit žádost o podporu, vyberte odkaz na **portál influent**.
 
-    :::image type="content" source="media/support-request.png" alt-text="Vytvořte žádost o podporu.":::
+    :::image type="content" source="media/support-request.png" alt-text="Vytvořte žádost o podporu z instance.":::
 
 ## <a name="next-steps"></a>Další kroky
 

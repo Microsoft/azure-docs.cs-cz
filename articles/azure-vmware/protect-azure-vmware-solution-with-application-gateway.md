@@ -2,13 +2,13 @@
 title: Použití Azure Application Gateway k ochraně webových aplikací v řešení VMware Azure
 description: Nakonfigurujte Azure Application Gateway, aby bezpečně vystavil vaše webové aplikace běžící na řešení Azure VMware.
 ms.topic: how-to
-ms.date: 11/13/2020
-ms.openlocfilehash: 02e439989c985354dbe06fa3e231d5daf7099d70
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 02/08/2021
+ms.openlocfilehash: fdef37bd76b08a8778db8401a1e8a0406c2ed652
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628960"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988637"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Použití Azure Application Gateway k ochraně webových aplikací v řešení VMware Azure
 
@@ -37,7 +37,7 @@ Diagram znázorňuje scénář testování, který slouží k ověření Applica
 
 Instance Application Gateway je nasazena v centru ve vyhrazené podsíti. Má veřejnou IP adresu Azure. Doporučuje se aktivovat Standard DDoS Protection pro virtuální síť. Webový server je hostovaný v rámci privátního cloudu řešení Azure VMware za NSX T0 a T1. Řešení Azure VMware používá [Global REACH ExpressRoute](../expressroute/expressroute-global-reach.md) k umožnění komunikace s rozbočovačem a místními systémy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným.
 - Je nasazený a spuštěný privátní cloud řešení Azure VMware.
@@ -158,7 +158,7 @@ Tento postup vám ukáže, jak definovat fondy adres back-endu pomocí virtuáln
    1. Vyberte **Přidat** a zadejte podrobnosti o prvním fondu, **Contoso-web**. 
    1. Přidejte jako cíl jeden virtuální počítač. 
    1. Vyberte **Přidat**. 
-   1. Tento postup opakujte pro **společnosti Contoso-image** a **Contoso-video** , přičemž jako cíl přidejte jeden jedinečný virtuální počítač. 
+   1. Tento postup opakujte pro **společnosti Contoso-image** a **Contoso-video**, přičemž jako cíl přidejte jeden jedinečný virtuální počítač. 
 
     :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-02.png" alt-text="Snímek obrazovky se stránkou back-end fondů ukazující přidání tří nových back-end fondů." lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-02.png":::
 
@@ -188,4 +188,8 @@ Tento postup vám ukáže, jak definovat fondy adres back-endu pomocí virtuáln
 
 ## <a name="next-steps"></a>Další kroky
 
-Další příklady konfigurace najdete v [dokumentaci k Azure Application Gateway](../application-gateway/index.yml) .
+Teď, když jste se seznámili s používáním Application Gateway k ochraně webové aplikace běžící na řešení VMware Azure, může být vhodné získat informace o:
+
+- [Konfigurace Azure Application Gateway pro různé scénáře](../application-gateway/configuration-overview.md).
+- [Nasazuje se Traffic Manager pro vyrovnávání zatížení řešení Azure VMware](deploy-traffic-manager-balance-workloads.md).
+- [Integrace Azure NetApp Files s využitím úloh Azure VMware pro řešení](netapp-files-with-azure-vmware-solution.md).

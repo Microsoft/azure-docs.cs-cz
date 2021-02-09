@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1f4466dea35fe3d52f86386f0bf0cc0c3b6a658f
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 048adee21d5c2e49ef02f518002a1dc6025c1ecd
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256335"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988970"
 ---
 # <a name="how-provisioning-works"></a>Jak funguje zřizování
 
@@ -43,7 +43,7 @@ Pokud chcete požádat o automatický konektor zřizování Azure AD pro aplikac
 
 ## <a name="authorization"></a>Autorizace
 
-Aby se služba Azure AD mohla připojit k rozhraní API pro správu uživatelů aplikace, vyžadují přihlašovací údaje. Při konfiguraci automatického zřizování uživatelů pro aplikaci musíte zadat platné přihlašovací údaje. Pro aplikace Galerie můžete najít typy a požadavky na přihlašovací údaje pro aplikaci odkazem na kurz aplikace. Pro jiné aplikace než galerie můžete v dokumentaci k [SCIM](./use-scim-to-provision-users-and-groups.md#authorization-for-provisioning-connectors-in-the-application-gallery) pochopit typy a požadavky přihlašovacích údajů. V Azure Portal budete moct otestovat přihlašovací údaje tím, že se Azure AD pokusí připojit k aplikaci zřizování aplikace pomocí zadaných přihlašovacích údajů.
+Aby se služba Azure AD mohla připojit k rozhraní API pro správu uživatelů aplikace, vyžadují přihlašovací údaje. Při konfiguraci automatického zřizování uživatelů pro aplikaci musíte zadat platné přihlašovací údaje. Pro aplikace Galerie můžete najít typy a požadavky na přihlašovací údaje pro aplikaci odkazem na kurz aplikace. Pro jiné aplikace než galerie můžete v dokumentaci k [SCIM](./use-scim-to-provision-users-and-groups.md#authorization-to-provisioning-connectors-in-the-application-gallery) pochopit typy a požadavky přihlašovacích údajů. V Azure Portal budete moct otestovat přihlašovací údaje tím, že se Azure AD pokusí připojit k aplikaci zřizování aplikace pomocí zadaných přihlašovacích údajů.
 
 ## <a name="mapping-attributes"></a>Mapování atributů
 

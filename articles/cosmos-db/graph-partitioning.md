@@ -8,19 +8,19 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 91516c9815cfd71ffb59c399ea6580c6e28d8fce
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 4d76bdcb385ed2fe4b8a697f24187b8e3d5addbc
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576460"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988746"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Použití děleného grafu ve službě Azure Cosmos DB
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Jednou z klíčových funkcí rozhraní Gremlin API v Azure Cosmos DB je schopnost zpracovávat rozsáhlá měřítka prostřednictvím horizontálního škálování. Kontejnery se můžou nezávisle škálovat z hlediska úložiště a propustnosti. V Azure Cosmos DB můžete vytvořit kontejnery, které se dají automaticky škálovat, aby se ukládaly data grafu. Data se automaticky vyrovnávají podle zadaného **klíče oddílu**.
 
-Dělení se provádí interně v případě, že se očekává, že velikost kontejneru ukládá více než 20 GB nebo pokud chcete přidělit více než 10 000 jednotek žádostí za sekundu (ru). Data se automaticky dělí na oddíly na základě klíče oddílu, který zadáte. Klíč oddílu je vyžadován při vytváření kontejnerů grafu z Azure Portal nebo ze 3. x nebo vyšších verzí ovladačů Gremlin. Klíč oddílu není povinný, pokud používáte 2. x nebo nižší verze ovladačů Gremlin. 
+Dělení se provádí interně v případě, že se očekává, že velikost kontejneru ukládá více než 20 GB nebo pokud chcete přidělit více než 10 000 jednotek žádostí za sekundu (ru). Data se automaticky dělí na oddíly na základě klíče oddílu, který zadáte. Klíč oddílu je vyžadován při vytváření kontejnerů grafu z Azure Portal nebo ze 3. x nebo vyšších verzí ovladačů Gremlin. Klíč oddílu není povinný, pokud používáte 2. x nebo nižší verze ovladačů Gremlin.
 
 Stejné obecné principy [mechanismu dělení Azure Cosmos DB](partitioning-overview.md) platí pro několik optimalizací specifických pro graf, které jsou popsané níže.
 

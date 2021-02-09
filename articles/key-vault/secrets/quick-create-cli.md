@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: c2c6d106a198445fdbd08fbaeb7d03472b688b62
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: e84a9fe15f648311c22fb0f7e8f8374454f5668a
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071371"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989157"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí Azure CLI
 
@@ -50,7 +50,7 @@ Nyní na toto heslo, které jste přidali do služby Azure Key Vault, můžete o
 Pokud chcete zobrazit hodnotu v tajném kódu jako prostý text:
 
 ```azurecli
-az keyvault secret show --name "ExamplePassword" --vault-name "<your-unique-keyvault-name>"
+az keyvault secret show --name "ExamplePassword" --vault-name "<your-unique-keyvault-name>" --query "value"
 ```
 
 Právě jste vytvořili službu Key Vault, uložili jste tajný klíč a načetli jste ho.

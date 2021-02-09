@@ -8,14 +8,14 @@ manager: gwallace
 editor: ''
 ms.service: api-management
 ms.topic: article
-ms.date: 04/26/2020
+ms.date: 01/25/2021
 ms.author: apimpm
-ms.openlocfilehash: b560b02544eeb96167e68ed305d4d9942d2b1e0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48abce693ca22163c0a1742ba71faf36fc6156a1
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82232968"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989088"
 ---
 # <a name="self-hosted-gateway-overview"></a>Přehled brány v místním prostředí
 
@@ -43,13 +43,13 @@ Nasazení bran v místním prostředí do stejných prostředí, kde jsou hostov
 
 ## <a name="packaging-and-features"></a>Balení a funkce
 
-Brána v místním prostředí je v rámci každé služby API Management v rámci každé služby nainstalovaná do Azure v podobě kontejnerem funkčně ekvivalentní verze spravované brány. Samoobslužná brána je k dispozici jako [kontejner](https://aka.ms/apim/sputnik/dhub) Docker založený na systému Linux z Microsoft Container Registry. Dá se nasadit do Docker, Kubernetes nebo jakékoli jiné řešení orchestrace kontejnerů, které běží na serverovém clusteru místně, v cloudové infrastruktuře nebo pro účely vyhodnocení a vývoje na osobním počítači.
+Samoobslužná brána je v rámci každé API Management služby ve formě kontejnerové a funkčně ekvivalentní verze spravované brány nasazené do Azure. Samoobslužná brána je k dispozici jako [kontejner](https://aka.ms/apim/sputnik/dhub) Docker založený na systému Linux z Microsoft Container Registry. Dá se nasadit do Docker, Kubernetes nebo jakékoli jiné řešení orchestrace kontejnerů, které běží na serverovém clusteru místně, v cloudové infrastruktuře nebo pro účely vyhodnocení a vývoje na osobním počítači.
 
 Ve spravovaných branách **nejsou k dispozici** následující funkce bran pro místní hostování:
 
 - Protokoly služby Azure Monitor
 - Nadřazený (back-end) TLS verze a Správa šifr
-- Ověření certifikátů serveru a klienta pomocí [kořenových certifikátů certifikační autority](api-management-howto-ca-certificates.md) odeslaných do služby API Management Pokud chcete přidat podporu pro vlastní certifikační autoritu, přidejte vrstvu do image kontejneru samoobslužná brána, která nainstaluje kořenový certifikát certifikační autority.
+- Ověření certifikátů serveru a klienta pomocí [kořenových certifikátů certifikační autority](api-management-howto-ca-certificates.md) odeslaných do služby API Management Další informace najdete v tématu [ověřování certifikátů v samoobslužné bráně](api-management-howto-mutual-certificates-for-clients.md#certificate-validation-in-self-hosted-gateway).
 - Integrace s [Service Fabric](../service-fabric/service-fabric-api-management-overview.md)
 - Obnovení relace TLS
 - Opětovné vyjednávání klientského certifikátu. To znamená, že pro klienty rozhraní API pro [ověřování klienta](api-management-howto-mutual-certificates-for-clients.md) musí být certifikáty přítomné jako součást počáteční metody handshake protokolu TLS. Pokud chcete zajistit, aby se při konfiguraci vlastního názvu hostitele pro samoobslužnou bránu povolilo nastavení certifikátu klienta vyjednat.

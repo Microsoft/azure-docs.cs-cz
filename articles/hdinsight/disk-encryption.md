@@ -5,12 +5,12 @@ description: Tento článek popisuje dvě vrstvy šifrování, které jsou k dis
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: c9e50885a7283d3f7fcd231bf222415389212a93
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 58b3d892ea24430a9d951a5a0230282f6c4fd584
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927331"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988615"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Dvojité šifrování Azure HDInsight pro neaktivní neaktivní data
 
@@ -116,7 +116,7 @@ HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů,
 
 Nyní jste připraveni vytvořit nový cluster HDInsight. Klíče spravované zákazníkem se dají použít jenom pro nové clustery během vytváření clusteru. Šifrování nejde odebrat z klíčových clusterů spravovaných zákazníkem a klíče spravované zákazníkem se nedají přidat do existujících clusterů.
 
-Od verze z [listopadu 2020](hdinsight-release-notes.md#release-date-11182020)podporuje HDInsight vytváření clusterů pomocí identifikátorů URI klíčů bez verzí. Pokud vytvoříte cluster s identifikátorem URI klíče bez verze, pokusí se cluster HDInsight při aktualizaci klíče v Azure Key Vault provést automatické střídání klíče. Pokud vytvoříte cluster s identifikátorem URI klíče se správou verzí, budete muset provést ruční střídání klíče, jak je popsáno v tématu [otočení šifrovacího klíče](#rotating-the-encryption-key).
+Od verze z listopadu 2020 podporuje HDInsight vytváření clusterů pomocí identifikátorů URI klíčů bez verzí. Pokud vytvoříte cluster s identifikátorem URI klíče bez verze, pokusí se cluster HDInsight při aktualizaci klíče v Azure Key Vault provést automatické střídání klíče. Pokud vytvoříte cluster s identifikátorem URI klíče se správou verzí, budete muset provést ruční střídání klíče, jak je popsáno v tématu [otočení šifrovacího klíče](#rotating-the-encryption-key).
 
 V případě clusterů vytvořených před vydáním verze z listopadu 2020 bude nutné ručně provést střídání klíčů pomocí identifikátoru URI klíče s verzí.
 
@@ -124,8 +124,8 @@ V případě clusterů vytvořených před vydáním verze z listopadu 2020 bude
 
 Během vytváření clusteru můžete buď použít klíč s verzí, nebo klíč bez verze následujícím způsobem:
 
-- **Verze** – při vytváření clusteru zadejte úplný **identifikátor klíče**, včetně verze klíče. Například `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`.
-- Bez **verzí** – při vytváření clusteru zadejte jenom **identifikátor klíče**. Například `https://contoso-kv.vault.azure.net/keys/myClusterKey`.
+- **Verze** – při vytváření clusteru zadejte úplný **identifikátor klíče**, včetně verze klíče. Například, `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`.
+- Bez **verzí** – při vytváření clusteru zadejte jenom **identifikátor klíče**. Například, `https://contoso-kv.vault.azure.net/keys/myClusterKey`.
 
 Musíte také přiřadit spravovanou identitu ke clusteru.
 

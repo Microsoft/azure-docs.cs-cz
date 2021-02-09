@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2020
+ms.date: 02/09/2021
 ms.author: memildin
-ms.openlocfilehash: 72ded01b141aafb7fd3e4d761882a10eaf0c4b33
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 4dc9855afe7ed53db120f4dbc6c09ac4db0f58d9
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920405"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988563"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>Konfigurace e-mailových oznámení pro výstrahy zabezpečení 
 
@@ -26,8 +26,8 @@ Výstrahy zabezpečení musí mít přístup ke správným lidem ve vaší organ
 
 Pokud chcete definovat vlastní předvolby pro e-maily oznámení, stránka nastavení **e-mailových oznámení** Azure Security Center vám umožní vybrat tyto možnosti:
 
-- **_kdo_ má dostávat oznámení** – e-maily je možné odeslat pro výběr jednotlivců nebo pro kohokoli s určitou rolí Azure pro předplatné. 
-- k **_čemu_ by se měly informovat** – upravte úrovně závažnosti, pro které by Security Center měla odesílat oznámení.
+- ***kdo* má dostávat oznámení** – e-maily je možné odeslat pro výběr jednotlivců nebo pro kohokoli s určitou rolí Azure pro předplatné. 
+- k ***čemu* by se měly informovat** – upravte úrovně závažnosti, pro které by Security Center měla odesílat oznámení.
 
 Aby nedošlo k únavě výstrah, Security Center omezí objem odchozích e-mailů. U každého předplatného Security Center odesílá:
 
@@ -44,12 +44,11 @@ Aby nedošlo k únavě výstrah, Security Center omezí objem odchozích e-mail�
 |Stav vydaných verzí:|Obecná dostupnost (GA)|
 |Stanov|Free|
 |Požadované role a oprávnění:|**Správce zabezpečení**<br>**Vlastník předplatného** |
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
-## <a name="customize-the-security-alerts-email-notifications"></a>Přizpůsobení e-mailových oznámení výstrah zabezpečení<a name="email"></a>
-
+## <a name="customize-the-security-alerts-email-notifications-via-the-portal"></a>Přizpůsobení e-mailových oznámení výstrah zabezpečení prostřednictvím portálu<a name="email"></a>
 Můžete posílat e-mailová oznámení jednotlivcům nebo všem uživatelům s konkrétními rolemi Azure.
 
 1. V oblasti **nastavení & ceny** Security Center vyberte příslušné předplatné a zvolte **e-mailová oznámení**.
@@ -60,6 +59,28 @@ Můžete posílat e-mailová oznámení jednotlivcům nebo všem uživatelům s 
     - Zadejte konkrétní e-mailové adresy oddělené čárkami. Počet e-mailových adres, které můžete zadat, není nijak omezený.
 
 1. Pokud chcete u svého předplatného použít kontaktní informace zabezpečení, vyberte **Uložit**.
+
+## <a name="customize-the-alerts-email-notifications-through-the-api"></a>Přizpůsobení e-mailových oznámení výstrah prostřednictvím rozhraní API
+E-mailová oznámení můžete spravovat také pomocí zadaných REST API. Úplné podrobnosti najdete v [dokumentaci k rozhraní SecurityContacts API](https://docs.microsoft.com/rest/api/securitycenter/securitycontacts).
+
+Toto je příklad těla žádosti o požadavek PUT při vytváření konfigurace kontaktu zabezpečení:
+
+```json
+{
+    "properties": {
+        "emails": admin@contoso.com;admin2@contoso.com,
+        "notificationsByRole": {
+            "state": "On",
+            "roles": ["AccountAdmin", "Owner"]
+        },
+        "alertNotifications": {
+            "state": "On",
+            "minimalSeverity": "High"
+        },
+        "phone": ""
+    }
+}
+```
 
 
 ## <a name="see-also"></a>Viz také

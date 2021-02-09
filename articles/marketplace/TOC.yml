@@ -299,6 +299,8 @@
       href: partner-center-portal/downloads-dashboard.md
     - name: Řídicí panel hodnocení a recenzí
       href: partner-center-portal/ratings-reviews.md
+    - name: Detekce anomálií pro účtované měřené platby
+      href: anomaly-detection.md
     - name: Časté dotazy k analýzám
       href: analytics-faq.md
 - name: Zásady a podmínky

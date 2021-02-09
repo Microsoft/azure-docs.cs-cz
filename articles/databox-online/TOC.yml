@@ -206,6 +206,8 @@
                   href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
                 - name: Nasazení bezstavové aplikace přes GitOps
                   href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
+                - name: Nasadit řadič dat ARC Azure
+                  href: azure-stack-edge-gpu-deploy-arc-data-controller.md
         - name: Konfigurace Azure Resource Manageru (Preview)
           items:
             - name: Připojení přes Azure PowerShell

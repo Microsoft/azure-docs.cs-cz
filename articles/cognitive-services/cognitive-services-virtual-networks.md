@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: 8fa10164ae2d697f68156777f224b92f0562475f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: eaffa535b51b786a53f1e6cc35233c55dd837233
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940042"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989078"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurace virtuálních sítí služeb Azure Cognitive Services
 
@@ -59,7 +59,7 @@ Virtuální sítě (virtuální sítě) jsou podporované v [oblastech, kde jsou
 
 
 > [!NOTE]
-> Pokud používáte LUIS, značka **CognitiveServicesManagement** vám umožňuje používat jenom tuto službu pomocí sady SDK nebo REST API. Pokud chcete získat přístup k portálu LUIS z virtuální sítě a používat ho, budete muset použít následující značky:  
+> Pokud používáte LUIS nebo Speech Services, značka **CognitiveServicesManagement** vám umožňuje používat jenom tuto službu pomocí sady SDK nebo REST API. Pokud chcete získat přístup k portálu LUIS nebo pomocí nástroje Speech Studio z virtuální sítě, budete muset použít následující značky:  
 > * **Azureactivedirectory selhala**
 > * **AzureFrontDoor. front-end**
 > * **AzureResourceManager** 
@@ -157,7 +157,7 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
         --default-action Allow
     ```
 
-**_
+***
 
 ## <a name="grant-access-from-a-virtual-network"></a>Udělení přístupu z virtuální sítě
 
@@ -169,7 +169,7 @@ Každý prostředek Cognitive Services podporuje až 100 pravidel virtuální s�
 
 ### <a name="required-permissions"></a>Požadovaná oprávnění
 
-Chcete-li použít pravidlo virtuální sítě na prostředek Cognitive Services, musí mít uživatel příslušná oprávnění pro přidávané podsítě. Požadovaná oprávnění je výchozí role _Contributor * nebo role *přispěvatele Cognitive Services* . Pro vlastní definice rolí je možné přidat také požadovaná oprávnění.
+Chcete-li použít pravidlo virtuální sítě na prostředek Cognitive Services, musí mít uživatel příslušná oprávnění pro přidávané podsítě. Požadovaná oprávnění je výchozí role *přispěvatele* nebo role *Přispěvatel Cognitive Services* . Pro vlastní definice rolí je možné přidat také požadovaná oprávnění.
 
 Cognitive Services prostředku a povolený přístup k virtuálním sítím může být v různých předplatných, včetně předplatných, která jsou součástí jiného tenanta Azure AD.
 
@@ -325,10 +325,10 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
         --subnet $subnetid
     ```
 
-**_
+***
 
 > [!IMPORTANT]
-> Ujistěte se, že jste [výchozí pravidlo nastavili](#change-the-default-network-access-rule) na _ * odepřít * * nebo že Síťová pravidla nemají žádný vliv.
+> Ujistěte se, že jste [výchozí pravidlo nastavili](#change-the-default-network-access-rule) na **Odepřít**, nebo že Síťová pravidla nemají žádný vliv.
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>Udělení přístupu z rozsahu internetových IP adres
 
@@ -472,10 +472,10 @@ Pravidla sítě IP pro Cognitive Services prostředky můžete spravovat pomocí
         --ip-address "16.17.18.0/24"
     ```
 
-**_
+***
 
 > [!IMPORTANT]
-> Ujistěte se, že jste [výchozí pravidlo nastavili](#change-the-default-network-access-rule) na _ * odepřít * * nebo že Síťová pravidla nemají žádný vliv.
+> Ujistěte se, že jste [výchozí pravidlo nastavili](#change-the-default-network-access-rule) na **Odepřít**, nebo že Síťová pravidla nemají žádný vliv.
 
 ## <a name="use-private-endpoints"></a>Použití privátních koncových bodů
 
