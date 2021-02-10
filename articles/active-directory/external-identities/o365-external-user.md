@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 02/04/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35ffae55e749c7493b9cd8af13dfd5216abf5822
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: d003008ea5b0d2591574f6f488b0145ee6f08a5e
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515502"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008124"
 ---
 # <a name="microsoft-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Spolupráce s Microsoft 365 externích sdílení a Azure Active Directory (Azure AD) B2B
 
@@ -32,8 +32,7 @@ OneDrive nebo SharePoint Online má samostatného správce pozvánk. Podpora pro
 
 - Spolupráce Azure AD B2B pozvaní uživatelů může být převzata z dialogových oken OneDrive nebo SharePoint Online pro sdílení. Pozvaní uživatelé OneDrivu nebo SharePointu Online se také zobrazí ve službě Azure AD po uplatnění svých pozvání.
 
-- Licenční požadavky se liší. Další informace o licencování najdete v tématu věnovaném [licencování Azure AD B2B](./external-identities-pricing.md) a ["Co je externí uživatel?" v tématu Přehled externího sdílení SharePointu Online](/sharepoint/external-sharing-overview#what-happens-when-users-share).
-
+- Licenční požadavky se liší. Další informace o licencování najdete v tématu věnovaném [licencování externích identit Azure AD](./external-identities-pricing.md) a [k externímu sdílení SharePointu Online](/sharepoint/external-sharing-overview).
 Pokud chcete spravovat externí sdílení ve OneDrivu nebo SharePointu Online pomocí spolupráce B2B Azure AD, nastavte nastavení externího sdílení OneDrive/SharePoint Online tak, aby **bylo možné sdílet jenom s externími uživateli, kteří už existují v adresáři vaší organizace**. Uživatelé můžou přejít na externě sdílené weby a vybrat externí spolupracovníky, které správce přidal. Správce může přidat externí spolupracovníky prostřednictvím rozhraní API pozvánky pro spolupráci B2B.
 
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 12/07/2020
+ms.date: 02/08/2021
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6491de18e65c5071ac0972e7ff49d1253cbd402
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 4f1abbabb9197011b826e58d518ddff4364edab7
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779534"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008193"
 ---
 # <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Dokončení kontroly přístupu skupin a aplikací v prohlídekch Azure AD Access
 
@@ -29,7 +29,7 @@ Jako správce [vytvoříte kontrolu přístupu pro skupiny nebo aplikace](create
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Azure AD Premium P2
 - Globální správce, Správce uživatelů, správce zabezpečení nebo čtecí modul zabezpečení
@@ -48,35 +48,47 @@ Můžete sledovat průběh, když kontroloři dokončí revize.
 
     Pokud chcete zobrazit budoucí instance kontrol přístupu, přejděte na kontrolu přístupu a vyberte naplánované recenze.
 
-    Na stránce **Přehled** můžete zobrazit průběh. V adresáři se nezměnila žádná přístupová práva, dokud se kontrola nedokončí.
+    Na stránce **Přehled** můžete zobrazit průběh aktuální instance. V adresáři se nezměnila žádná přístupová práva, dokud se kontrola nedokončí.
 
-    ![Průběh kontrol přístupu](./media/complete-access-review/overview-progress.png)
-    
-    Pokud prohlížíte kontrolu přístupu, která kontroluje přístup hostů v rámci skupin Microsoft 365 (Preview), zobrazí se v okně Přehled každou skupinu v revizi.  
+     ![Kontrola všech skupin společnosti](./media/complete-access-review/all-company-group.png)
 
-   ![Kontrola přístupu hostů mezi skupinami Microsoft 365](./media/complete-access-review/review-guest-access-across-365-groups.png)
+    Všechna okna v části aktuální jsou zobrazitelná pouze během doby trvání každé revize instance. 
 
-    Kliknutím na skupinu zobrazíte průběh kontroly v této skupině.
+    Na stránce výsledky najdete další informace o všech uživatelích v části revize v instanci, včetně možnosti zastavit, obnovit a stáhnout výsledky.
+
+    ![Kontrola přístupu hostů mezi skupinami Microsoft 365](./media/complete-access-review/all-company-group-results.png)
+
+
+    Pokud prohlížíte kontrolu přístupu, která kontroluje přístup hostů v rámci skupin Microsoft 365 (Preview), zobrazí se v okně Přehled každou skupinu v revizi. 
+   
+    ![Kontrola přístupu hostů mezi skupinami Microsoft 365](./media/complete-access-review/review-guest-access-across-365-groups.png)
+
+    Kliknutím na skupinu zobrazíte průběh kontroly v této skupině a také zastavíte, resetujete, použijete a odstraníte.
 
    ![Podrobnosti o přístupu hostů mezi Microsoft 365mi skupinami](./media/complete-access-review/progress-group-review.png)
 
 1. Chcete-li před dosažením naplánovaného koncového data zastavit kontrolu přístupu, klikněte na tlačítko **zastavit** .
 
-    Po zastavení recenze již recenzenti nebude moci poskytnout odpovědi. Po zastavení nemůžete kontrolu znovu spustit.
+    Po zastavení kontroly již recenzenti nebude moci poskytnout odpovědi. Po zastavení nemůžete kontrolu znovu spustit.
 
 1. Pokud již nejste zajímat kontrolu přístupu, můžete ji odstranit kliknutím na tlačítko **Odstranit** .
 
 ## <a name="apply-the-changes"></a>Použít změny
 
-Pokud je možnost **automaticky použít výsledky do prostředku** zapnutá a na základě vašich výběrů v **nastavení po dokončení**, provede se automatické použití po datu ukončení revize nebo při ručním zastavení kontroly.
+Pokud je možnost **automaticky použít výsledky do prostředku** povolena na základě vašich výběrů v **nastavení po dokončení**, provede se automatické použití po datu ukončení revize nebo při ručním zastavení kontroly.
 
-Pokud se u prostředku pro kontrolu nepovolilo **automatické použití výsledků** , klikněte na **použít** , aby se změny projevily ručně. Pokud se k přístupu uživatele v recenzi odepře přístup, po kliknutí na **použít** Azure AD odebere přiřazení členství nebo aplikací.
+Pokud se u prostředku pro kontrolu nepovolila **možnost automaticky použít výsledky** , přejděte v části **řady** po uplynutí doby kontroly na konec **nebo se kontrola** zastavila a klikněte na instanci recenze, kterou chcete použít.
 
 ![Použití změn kontroly přístupu](./media/complete-access-review/apply-changes.png)
 
+Kliknutím na **Apply (použít** ) změny aplikujte ručně. Pokud se k přístupu uživatele v recenzi odepře přístup, po kliknutí na **použít** Azure AD odebere přiřazení členství nebo aplikací.
+
+![Tlačítko pro použití změn kontroly přístupu](./media/complete-access-review/apply-changes-button.png)
+
+
 Stav revize se změní ze **dokončených** do mezistavů, jako je **použití** a nakonec na **výsledek použití**. Měli byste očekávat, že v několika minutách se v případě potřeby odeberou Zakázaní uživatelé z členství ve skupině nebo přiřazení aplikace.
 
-Nakonfigurované automatické použití revize nebo volba **použít** nemá vliv na skupinu, která pochází z místního adresáře nebo dynamické skupiny. Pokud chcete změnit skupinu, která pochází z místního prostředí, Stáhněte výsledky a použijte tyto změny v zastoupení skupiny v tomto adresáři.
+Ruční nebo automatické použití výsledků nemá vliv na skupinu, která pochází z místního adresáře nebo dynamické skupiny. Pokud chcete změnit skupinu, která pochází z místního prostředí, Stáhněte výsledky a použijte tyto změny v zastoupení skupiny v tomto adresáři.
 
 ## <a name="retrieve-the-results"></a>Načtení výsledků
 

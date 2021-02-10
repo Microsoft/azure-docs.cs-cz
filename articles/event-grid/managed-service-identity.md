@@ -3,12 +3,12 @@ title: Doručení události, identita spravované služby a privátní odkaz
 description: Tento článek popisuje, jak povolit identitu spravované služby pro téma Azure Event Grid. Použijte ji k přeposílání událostí do podporovaných cílů.
 ms.topic: how-to
 ms.date: 01/28/2021
-ms.openlocfilehash: ca154c252976911627184a63386cba1544ed21e0
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 3e643465db7cc918499ca962c4697cb61cb4b594
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054413"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007767"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Doručování událostí se spravovanou identitou
 Tento článek popisuje, jak povolit [identitu spravované služby](../active-directory/managed-identities-azure-resources/overview.md) pro vlastní témata nebo domény služby Azure Event Grid. Slouží k přeposílání událostí do podporovaných cílů, jako jsou Service Bus fronty a témata, centra událostí a účty úložiště.
@@ -237,7 +237,7 @@ az eventgrid event-subscription create
 ```
 
 ### <a name="use-the-azure-cli---azure-storage-queue"></a>Použití fronty Azure CLI-Azure Storage 
-V této části se dozvíte, jak pomocí Azure CLI povolit používání identity přiřazené systémem k doručování událostí do fronty Azure Storage. Identita musí být členem role **Přispěvatel dat objektů BLOB úložiště** v účtu úložiště.
+V této části se dozvíte, jak pomocí Azure CLI povolit používání identity přiřazené systémem k doručování událostí do fronty Azure Storage. Identita musí být členem role **odesílatele zprávy dat fronty úložiště** v účtu úložiště. Musí být také členem role **Přispěvatel dat objektů BLOB úložiště** v účtu úložiště, který se používá pro nedoručené odkládání.
 
 #### <a name="define-variables"></a>Definování proměnných  
 

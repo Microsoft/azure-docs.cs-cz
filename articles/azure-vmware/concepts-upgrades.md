@@ -3,12 +3,12 @@ title: Koncepty – aktualizace a upgrady v privátním cloudu
 description: Přečtěte si o klíčových procesech upgradu a funkcích v řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 2d5f789304cc264f07aad1865b0bcb2ed4182d4b
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 78d4b566aa9156cdddfdcd69b50ebfd1d10aa784
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99536980"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006697"
 ---
 # <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Aktualizace a upgrady privátního cloudu řešení Azure VMware
 
@@ -53,7 +53,7 @@ Kromě toho, že řešení Azure VMware má k disloze tyto komponenty VMware, p�
 
 V případě selhání může řešení Azure VMware je obnovit ze zálohy konfigurace. 
 
-Další informace o verzích softwaru VMware najdete v [článku koncept privátních cloudů a clusterů](concepts-private-clouds-clusters.md) a v [nejčastějších dotazech](faq.md).
+Další informace o verzích softwaru VMware najdete v [článku koncept privátních cloudů a clusterů](concepts-private-clouds-clusters.md) a v [nejčastějších dotazech](faq.yml).
 
 ## <a name="next-steps"></a>Další kroky
 

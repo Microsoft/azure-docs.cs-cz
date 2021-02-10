@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: bcba2b48fdecda311ce349f90ba43023b906bd44
-  ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-  ms.translationtype: HT
+  ms.openlocfilehash: 29f3b0bf0a00c9e4e238e8bb514f80e7451d30a6
+  ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 11/26/2020
-  ms.locfileid: "96186401"
+  ms.lasthandoff: 02/09/2021
+  ms.locfileid: "100007750"
 landingContent:
 - title: Informace o službě Azure Digital Twins
   linkLists:
@@ -23,6 +23,14 @@ landingContent:
     links:
     - text: Co je služba Azure Digital Twins?
       url: overview.md
+  - linkListType: concept
+    links:
+    - text: Vlastní modely
+      url: concepts-models.md
+    - text: Digitální dvojčata a graf dvojčat
+      url: concepts-twins-graph.md
+    - text: Dotazovací jazyk
+      url: concepts-query-language.md
 - title: Začínáme s rychlým zprovozněním
   linkLists:
   - linkListType: quickstart
@@ -43,20 +51,6 @@ landingContent:
     links:
     - text: Připojení kompletního řešení
       url: tutorial-end-to-end.md
-- title: Informace
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Vlastní modely
-      url: concepts-models.md
-  - linkListType: concept
-    links:
-    - text: Digitální dvojčata a graf dvojčat
-      url: concepts-twins-graph.md
-  - linkListType: concept
-    links:
-    - text: Dotazovací jazyk
-      url: concepts-query-language.md
 - title: Vývoj
   linkLists:
   - linkListType: how-to-guide
@@ -115,3 +109,19 @@ landingContent:
     links:
     - text: Vlastní swaggery pro konektor Logic Apps
       url: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
+- title: Učení na základě scénářů s Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 'Výuková cesta: vývoj s využitím digitálních vláken Azure'
+      url: /learn/paths/develop-azure-digital-twins/
+  - linkListType: learn
+    links:
+    - text: 'Seznámení s modulem: Úvod do digitálních vláken Azure'
+      url: /learn/modules/develop-with-azure-digital-twins/introduction-to-azure-digital-twins/
+    - text: 'Seznámení s modulem: sestavení grafu digitálních vláken Azure pro výrobní linku v Čokoládé výrobě'
+      url: /learn/modules/develop-with-azure-digital-twins/build-azure-digital-twins-graph-for-chocolate-factory/
+    - text: 'Seznámení s modulem: ingestování dat do digitálních vláken Azure'
+      url: /learn/modules/develop-with-azure-digital-twins/ingest-data-into-azure-digital-twins/
+    - text: 'Seznámení s modulem: výstup z digitálních vláken Azure na navazující služby'
+      url: /learn/modules/develop-with-azure-digital-twins/route-output-from-azure-digital-twins-to-downstream-services/

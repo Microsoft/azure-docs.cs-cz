@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/24/2020
+ms.date: 01/31/2021
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 0fb4cce8eca2516957c394635e3dab2dbf282385
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: f0508f903cf2daa4c387ff51ecba2f5af7d99694
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584477"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007929"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitoru    
 
@@ -40,7 +40,7 @@ Výchozí ceny pro Log Analytics jsou Model průběžných **plateb** na základ
   
 Kromě modelu průběžných plateb Log Analytics má vrstvy **rezervace kapacity** , které vám umožní ve srovnání s průběžnými platbami ušetřit až 25%. Cena za rezervaci kapacity vám umožní koupit rezervaci od 100 GB za den. Veškeré využití nad úrovní rezervace se bude účtovat podle tarifu průběžných plateb. Úrovně rezervace kapacity mají 31 dnů v období závazku. Během období závazku můžete přejít na úroveň rezervace kapacity vyšší úrovně (která bude restartovala 31. období závazku), ale nemůžete přejít zpět na průběžné platby nebo na nižší úroveň rezervace kapacity až po dokončení období závazku. Faktura za úrovně rezervace kapacity se provádí každý den. [Přečtěte si další informace](https://azure.microsoft.com/pricing/details/monitor/) o cenách Log Analytics s průběžnými platbami a rezervací kapacity. 
 
-U všech cenových úrovní je velikost dat události počítána z řetězcové reprezentace vlastností, které jsou uloženy v Log Analytics pro tuto událost, bez ohledu na to, zda jsou data odesílána z agenta nebo přidána během procesu příjmu. To zahrnuje všechna [vlastní pole](custom-fields.md) , která jsou přidána, když jsou shromažďována data a uložena v Log Analytics. Při výpočtu velikosti události jsou vyloučeny některé vlastnosti společné pro všechny typy dat, včetně některých [log Analyticsch standardních vlastností](./log-standard-columns.md). To zahrnuje `_ResourceId` , `_ItemId` , `_IsBillable` `_BilledSize` a `Type` . Všechny ostatní vlastnosti uložené v Log Analytics jsou zahrnuté do výpočtu velikosti události. Některé datové typy jsou zcela bezplatné poplatky za příjem dat, například AzureActivity, prezenční signál a typy využití. Chcete-li zjistit, zda byla událost vyloučena z fakturace pro příjem dat, můžete použít `_IsBillable` vlastnost, jak je uvedeno [níže](#data-volume-for-specific-events). Použití je hlášeno v GB (1,0 E9 bajtů). 
+U všech cenových úrovní je velikost dat události počítána z řetězcové reprezentace vlastností, které jsou uloženy v Log Analytics pro tuto událost, bez ohledu na to, zda jsou data odesílána z agenta nebo přidána během procesu příjmu. To zahrnuje všechna [vlastní pole](custom-fields.md) , která jsou přidána, když jsou shromažďována data a uložena v Log Analytics. Při výpočtu velikosti události jsou vyloučeny některé vlastnosti společné pro všechny typy dat, včetně některých [log Analyticsch standardních vlastností](./log-standard-columns.md). To zahrnuje `_ResourceId` , `_SubscriptionId` , `_ItemId` , `_IsBillable` `_BilledSize` a `Type` . Všechny ostatní vlastnosti uložené v Log Analytics jsou zahrnuté do výpočtu velikosti události. Některé datové typy jsou zcela bezplatné poplatky za příjem dat, například AzureActivity, prezenční signál a typy využití. Chcete-li zjistit, zda byla událost vyloučena z fakturace pro příjem dat, můžete použít `_IsBillable` vlastnost, jak je uvedeno [níže](#data-volume-for-specific-events). Použití je hlášeno v GB (1,0 E9 bajtů). 
 
 Všimněte si také, že některá řešení, jako je [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/), [Správa konfigurace a konfigurace](https://azure.microsoft.com/pricing/details/automation/) [Azure](https://azure.microsoft.com/pricing/details/azure-sentinel/) , mají své vlastní cenové modely. 
 
@@ -66,11 +66,11 @@ Pokud protokoly Azure Monitor ještě nepoužíváte, můžete pomocí [cenové 
 
 Pokud nyní používáte protokoly Azure Monitor, je snadné pochopit, jaké náklady jsou pravděpodobně založené na nedávných vzorech použití. K tomu použijte  **Log Analytics využití a odhadované náklady** na kontrolu a analýzu využití dat. Ukazuje, kolik dat je každé řešení shromažďováno, kolik dat se zachovává, a odhad nákladů na základě množství přijatých dat a dalšího uchovávání nad rámec zahrnutého množství.
 
-![Využití a odhadované náklady](media/manage-cost-storage/usage-estimated-cost-dashboard-01.png)
+:::image type="content" source="media/manage-cost-storage/usage-estimated-cost-dashboard-01.png" alt-text="Využití a odhadované náklady":::
 
 Pokud chcete svá data prozkoumat podrobněji, klikněte na ikonu v pravém horním rohu obou grafů na stránce **využití a odhadované náklady** . Nyní můžete s tímto dotazem pracovat a prozkoumat podrobnější informace o jeho využití.  
 
-![Zobrazení protokolů](media/manage-cost-storage/logs.png)
+:::image type="content" source="media/manage-cost-storage/logs.png" alt-text="Zobrazení protokolů":::
 
 Na stránce **využití a odhadované náklady** si můžete prohlédnout svůj objem dat za měsíc. Zahrnuje to všechna fakturovatelná a uchovávaná data v pracovním prostoru Log Analytics.  
  
@@ -90,8 +90,8 @@ Pokud chcete změnit Log Analytics cenové úrovně vašeho pracovního prostoru
 
 2. Přečtěte si odhadované náklady na jednotlivé cenové úrovně. Tento odhad vychází z posledních 31 dnů od použití, takže tento odhad nákladů se spoléhá na posledních 31 dní, které jsou součástí typického využití. V následujícím příkladu vidíte, jak na základě vzorů dat během posledních 31 dnů bude tento pracovní prostor méně levnější v rámci vrstvy s průběžnými platbami (#1) v porovnání s úrovní rezervace kapacity 100 GB/den (#2).  
 
-    ![Cenové úrovně](media/manage-cost-storage/pricing-tier-estimated-costs.png)
-
+:::image type="content" source="media/manage-cost-storage/pricing-tier-estimated-costs.png" alt-text="Cenové úrovně":::
+    
 3. Po kontrole odhadovaných nákladů na základě posledních 31 dnů využití se rozhodnete změnit cenovou úroveň kliknutím na **Vybrat**.  
 
 [Cenovou úroveň můžete také nastavit prostřednictvím Azure Resource Manager](../samples/resource-manager-workspace.md) pomocí `sku` parametru ( `pricingTier` v Azure Resource Manager šabloně). 
@@ -132,7 +132,7 @@ Další podrobnosti o omezeních cenové úrovně jsou k dispozici v [limitech, 
 
 ## <a name="change-the-data-retention-period"></a>Změna doby uchovávání dat
 
-Následující postup popisuje, jak nakonfigurovat, jak dlouho budou data protokolu uchovávána ve vašem pracovním prostoru. Uchovávání dat na úrovni pracovního prostoru můžete nakonfigurovat z 30 na 730 dní (2 roky) pro všechny pracovní prostory, pokud nepoužíváte starší verzi bezplatné cenové úrovně. [Přečtěte si další informace](https://azure.microsoft.com/pricing/details/monitor/) o cenách pro delší dobu uchovávání dat. Uchovávání pro jednotlivé datové typy lze nastavit na hodnotu nižší než 4 dny. 
+Následující postup popisuje, jak nakonfigurovat, jak dlouho budou data protokolu uchovávána ve vašem pracovním prostoru. Uchovávání dat na úrovni pracovního prostoru můžete nakonfigurovat z 30 na 730 dní (2 roky) pro všechny pracovní prostory, pokud nepoužíváte starší verzi bezplatné cenové úrovně. Uchovávání pro jednotlivé datové typy lze nastavit na hodnotu nižší než 4 dny. [Přečtěte si další informace](https://azure.microsoft.com/pricing/details/monitor/) o cenách pro delší dobu uchovávání dat.  Pokud chcete uchovávat data déle než 730 dní, zvažte použití [exportu dat Log Analytics pracovního prostoru](logs-data-export.md).
 
 ### <a name="workspace-level-default-retention"></a>Výchozí uchování na úrovni pracovního prostoru
 
@@ -142,11 +142,11 @@ Pokud chcete nastavit výchozí dobu uchovávání pro váš pracovní prostor,
 2. V horní části stránky **Využití a odhadované náklady** klikněte na **Uchovávání dat**.
 3. Pomocí posuvníku v podokně zvyšte nebo snižte počet dnů a pak klikněte na **OK**.  Pokud jste na *bezplatné* úrovni, nebudete moct upravit dobu uchovávání dat a abyste mohli řídit toto nastavení, musíte upgradovat na placenou úroveň.
 
-    ![Změnit nastavení uchovávání dat pracovního prostoru](media/manage-cost-storage/manage-cost-change-retention-01.png)
+:::image type="content" source="media/manage-cost-storage/manage-cost-change-retention-01.png" alt-text="Změnit nastavení uchovávání dat pracovního prostoru":::
 
 Když je doba uchování nižší, před odebráním dat starším než je nové nastavení uchování se odklade několik dní. 
 
-Uchovávání lze také [nastavit prostřednictvím Azure Resource Manager](../samples/resource-manager-workspace.md) pomocí `retentionInDays` parametru. Když nastavíte uchovávání dat na 30 dní, můžete spustit okamžitou mazání starších dat pomocí `immediatePurgeDataOn30Days` parametru (neodstraníme dobu odkladu na několik dní). To může být užitečné pro scénáře související s dodržováním předpisů, které jsou nezbytné k okamžitému odstranění dat. Tato funkce okamžitého vyprázdnění se zveřejňuje jenom přes Azure Resource Manager. 
+Stránka pro **uchovávání dat** umožňuje nastavení uchovávání dat: 30, 31, 60, 90, 120, 180, 270, 365, 550 a 730 dnů. Pokud je vyžadováno jiné nastavení, které lze nakonfigurovat pomocí [Azure Resource Manager](../samples/resource-manager-workspace.md) pomocí `retentionInDays` parametru. Když nastavíte uchovávání dat na 30 dní, můžete spustit okamžitou mazání starších dat pomocí `immediatePurgeDataOn30Days` parametru (neodstraníme dobu odkladu na několik dní). To může být užitečné pro scénáře související s dodržováním předpisů, které jsou nezbytné k okamžitému odstranění dat. Tato funkce okamžitého vyprázdnění se zveřejňuje jenom přes Azure Resource Manager. 
 
 Pracovní prostory s dobou uchování 30 dnů můžou uchovávat data po dobu 31 dnů. Pokud je nutné, aby data byla uchovávána pouze po dobu 30 dnů, použijte Azure Resource Manager k nastavení uchování na 30 dní a s `immediatePurgeDataOn30Days` parametrem.  
 
@@ -230,7 +230,7 @@ Následující postup popisuje, jak nakonfigurovat limit pro správu objemu dat,
 2. Na stránce **využití a odhadované náklady** pro vybraný pracovní prostor klikněte v horní části stránky na možnost **datový limit** . 
 3. Denní limit je ve výchozím nastavení **vypnutý** ? klikněte na **zapnout** a pak nastavte limit počtu dat v GB za den.
 
-    ![Log Analytics konfiguraci omezení dat](media/manage-cost-storage/set-daily-volume-cap-01.png)
+:::image type="content" source="media/manage-cost-storage/set-daily-volume-cap-01.png" alt-text="Log Analytics konfiguraci omezení dat":::
     
 Denní limit se dá nakonfigurovat přes ARM nastavením `dailyQuotaGb` parametru v části podle `WorkspaceCapping` popsaných v [pracovních prostorech – vytvořit nebo aktualizovat](/rest/api/loganalytics/workspaces/createorupdate#workspacecapping). 
 
@@ -245,8 +245,10 @@ Usage
 | extend TimeGenerated=datetime_add("hour",-1*DailyCapResetHour,TimeGenerated)
 | where TimeGenerated > startofday(ago(31d))
 | where IsBillable
-| summarize IngestedGbBetweenDailyCapResets=sum(_BilledSize)/1000. by day=bin(TimeGenerated, 1d) | render areachart  
+| summarize IngestedGbBetweenDailyCapResets=sum(Quantity)/1000. by day=bin(TimeGenerated, 1d) | render areachart  
 ```
+
+(V datových typech použití `Quantity` jsou jednotky v MB.)
 
 ### <a name="alert-when-daily-cap-reached"></a>Výstraha při denním limitu
 
@@ -420,9 +422,10 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 Pro data z uzlů hostovaných v Azure můžete získat **Velikost** zpracovaných dat __na předplatné Azure__, získat tuto `_SubscriptionId` vlastnost jako:
 
 ```kusto
-find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable, _SubscriptionId
+find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
 | where _IsBillable == true 
-| summarize BillableDataBytes = sum(_BilledSize) by _SubscriptionId | sort by BillableDataBytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId
+| summarize BillableDataBytes = sum(BillableDataBytes) by _SubscriptionId | sort by BillableDataBytes nulls last
 ```
 
 Pokud chcete získat objem dat podle skupiny prostředků, můžete analyzovat `_ResourceId` :
@@ -484,6 +487,9 @@ Mezi návrhy na snížení objemu shromažďovaných protokolů patří:
 | Syslog                     | Změňte [konfiguraci syslogu](data-sources-syslog.md) tak, aby se: <br> – Snížil počet zařízení, ze kterých se shromažďují data <br> – Shromažďovaly pouze požadované úrovně událostí Například zrušte shromažďování událostí úrovně *Informace* a *Ladění*. |
 | AzureDiagnostics           | Změnit [kolekci protokolů prostředků](./diagnostic-settings.md#create-in-azure-portal) na: <br> – Snížil počet prostředků, které odesílají protokoly do Log Analytics <br> – Shromažďovaly pouze požadované protokoly |
 | Data řešení z počítačů, které řešení nepotřebují | K shromažďování dat z požadovaných skupin počítačů použijte [cílení na řešení](../insights/solution-targeting.md) . |
+| Application Insights | Zkontrolovat možnosti pro [https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume](managing Application Insights data volume) |
+| [Analýza SQL](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | K ladění nastavení auditování použijte [set-AzSqlServerAudit](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit) . |
+| Azure Sentinel | Zkontrolujte všechny [zdroje dat Sentinel](https://docs.microsoft.com/azure/sentinel/connect-data-sources) , které jste nedávno povolili jako zdroje dalšího objemu dat. |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>Získávání uzlů, které se účtují v cenové úrovni podle počtu uzlů
 

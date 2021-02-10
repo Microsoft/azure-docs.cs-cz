@@ -6,19 +6,20 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 19d2ef1d4d711738d60938aac502dfd490e021a1
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 0cdbcf0a895a2fc9b81df464f364e04aa79abf99
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97729630"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006764"
 ---
 # <a name="connect-provance-with-it-service-management-connector"></a>Připojit prokázání pomocí konektoru pro správu služeb IT
 
 Tento článek poskytuje informace o tom, jak nakonfigurovat připojení mezi vaší instancí nastavování a konektorem IT Service Management Connector (ITSMC) v Log Analytics centrálně spravovat pracovní položky.
 
 > [!NOTE]
-> Naši zákazníci Cherwell a prov navrhují, aby používali [akci Webhooku](./action-groups.md#webhook) pro koncový bod Cherwell a prov jako jiné řešení pro integraci.
+> Od 1. října-2020 inITSMování pro instalování s upozorněním na Azure už nebude pro nové zákazníky povolené. Nová připojení ITSM se nepodporují.
+> Existující připojení ITSM budou podporována.
 
 Následující části obsahují podrobné informace o tom, jak připojit produkt pro prokázání do ITSMC v Azure.
 
@@ -69,6 +70,6 @@ Pomocí následujícího postupu vytvořte připojení k prokázání:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přehled konektoru ITSM](itsmc-overview.md)
+* [Přehled ITSM konektoru](itsmc-overview.md)
 * [Vytváření pracovních položek ITSM z výstrah Azure](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)
 * [Řešení potíží v ITSM konektoru](./itsmc-resync-servicenow.md)

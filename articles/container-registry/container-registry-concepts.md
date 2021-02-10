@@ -3,12 +3,12 @@ title: O úložištích & imagí
 description: Seznámení se základními koncepty Azure Container Registry, úložišť a imagí kontejnerů.
 ms.topic: article
 ms.date: 06/16/2020
-ms.openlocfilehash: cd2f93c119817c722401f7290064894f3d39dac9
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 0cc7df22236c60bd473385d92c8db563be68f688
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335890"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008515"
 ---
 # <a name="about-registries-repositories-and-images"></a>O registrech, úložištích a obrázcích
 
@@ -73,7 +73,7 @@ Pravidla pro pojmenovávání značek najdete v [dokumentaci k Docker](https://d
 
 ### <a name="layer"></a>Vrstva
 
-Image kontejneru se skládají z jedné nebo více *vrstev* , z nichž každá odpovídá čáře v souboru Dockerfile, která definuje obrázek. Image v registru sdílejí společné vrstvy a zvyšují efektivitu úložiště. Například několik imagí v různých úložištích může sdílet stejnou základní vrstvu systému Alpine Linux, ale v registru je uložena pouze jedna kopie této vrstvy.
+Image kontejneru se skládají z jedné nebo více *vrstev*, z nichž každá odpovídá čáře v souboru Dockerfile, která definuje obrázek. Image v registru sdílejí společné vrstvy a zvyšují efektivitu úložiště. Například několik imagí v různých úložištích může sdílet stejnou základní vrstvu systému Alpine Linux, ale v registru je uložena pouze jedna kopie této vrstvy.
 
 Sdílení vrstev také optimalizuje distribuci vrstev na uzly s více obrázky, které sdílejí společné vrstvy. Například pokud obrázek již na uzlu obsahuje jako základ vrstvu Alpine Linux, následné načtení jiného obrázku odkazujícího na stejnou vrstvu nepřenáší vrstvu do uzlu. Místo toho odkazuje na již existující vrstvu na uzlu.
 
@@ -81,7 +81,30 @@ Pro zajištění bezpečné izolace a ochrany před potenciálním manipulací v
 
 ### <a name="manifest"></a>Manifest
 
-Každá image kontejneru nebo artefakt nabízený do registru kontejneru je přidružena k *manifestu*. Manifest generovaný registrem při posunutí obrázku, jedinečně identifikuje obrázek a určuje jeho vrstvy. Můžete vytvořit seznam manifestů pro úložiště pomocí příkazu Azure CLI [AZ ACR úložiště show-Manifests][az-acr-repository-show-manifests]:
+Každá image kontejneru nebo artefakt nabízený do registru kontejneru je přidružena k *manifestu*. Manifest generovaný registrem při posunutí obrázku, jedinečně identifikuje obrázek a určuje jeho vrstvy. 
+
+Základní manifest pro `hello-world` bitovou kopii systému Linux vypadá podobně jako v následujícím příkladu:
+
+  ```json
+  {
+    "schemaVersion": 2,
+    "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+    "config": {
+        "mediaType": "application/vnd.docker.container.image.v1+json",
+        "size": 1510,
+        "digest": "sha256:fbf289e99eb9bca977dae136fbe2a82b6b7d4c372474c9235adc1741675f587e"
+      },
+    "layers": [
+        {
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+          "size": 977,
+          "digest": "sha256:2c930d010525941c1d56ec53b97bd057a67ae1865eebf042686d2a2d18271ced"
+        }
+      ]
+  }
+  ```
+
+Můžete vytvořit seznam manifestů pro úložiště pomocí příkazu Azure CLI [AZ ACR úložiště show-Manifests][az-acr-repository-show-manifests]:
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName>

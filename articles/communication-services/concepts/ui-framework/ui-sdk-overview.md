@@ -7,12 +7,12 @@ ms.author: dademath
 ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: ecef7e13c107a07b6dac52a467315d2a5f1f9090
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: b6f9987c21ecdcf0e1b5358486312dceb26c8b82
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539821"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008549"
 ---
 # <a name="azure-communication-services-ui-framework"></a>Architektura uživatelského rozhraní služby Azure Communication Services
 
@@ -47,7 +47,7 @@ Porozumění těmto požadavkům vám pomůže vybrat správnou klientskou kniho
 
 Podrobnosti o dostupnosti funkcí v různých sadách [SDK uživatelského rozhraní jsou k dispozici zde](ui-sdk-features.md), ale klíčové obchody jsou shrnuty níže.
 
-|Klientská knihovna/sada SDK|Složitost implementace|    Možnost přizpůsobení|  Videohovory| Chat| [Týmy Interop](./../voice-video-calling/teams-interop.md)
+|Klientská knihovna/sada SDK|Složitost implementace|    Možnost přizpůsobení|  Videohovory| Chat| [Týmy Interop](./../teams-interop.md)
 |---|---|---|---|---|---|---|
 |Složené součásti|Nízká|Nízká|✔|✔|✕
 |Základní komponenty|Střední|Střední|✔|✔|✕

@@ -107,7 +107,7 @@
         - name: Otevření žádosti o podporu pro selhání nasazení
           href: fix-deployment-provisioning-failures.md
     - name: Nejčastější dotazy
-      href: faq.md
+      href: faq.yml
 - name: Referenční informace
   items:
     - name: Azure CLI

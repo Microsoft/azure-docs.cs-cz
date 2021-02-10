@@ -2,25 +2,25 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 01-26-2021
+ms.date: 02/09/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 7487262faa8af74af26ac2123686a8e202254e76
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: e1d2039ba3a667e40740acd7781090c9c0cf5281
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797185"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007593"
 ---
 V této kategorii je **21** doporučení.
 
-|Doporučení |Popis |Závažnost |
+|Doporučení |Description |Závažnost |
 |---|---|---|
 |Pro vaše předplatné by se mělo určit maximálně 3 vlastníci. |Aby se snížila pravděpodobnost porušení narušením účtů vlastníka, doporučujeme omezit počet účtů vlastníka na maximálně 3.<br />(Související zásady: [pro vaše předplatné by se měly určit maximálně 3 vlastníci](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4f11b553-d42e-4e3a-89be-32ca364cad4c)) |Vysoká |
 |Je potřeba povolit Azure Defender pro Key Vault. |Azure Security Center zahrnuje Azure Defender pro Key Vault a poskytuje další vrstvu funkcí Security Intelligence.<br>Azure Defender pro Key Vault detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům Key Vault nebo jejich zneužití.<br><br>Důležité: Oprava toto doporučení bude mít za následek poplatky za ochranu vašich trezorů klíčů. Pokud v tomto předplatném nemáte žádné trezory klíčů, nebudou vám účtovány žádné poplatky.<br>Pokud v budoucnu vytvoříte v tomto předplatném nějaké trezory klíčů, budou automaticky chráněny a v této době začnou platit poplatky.<br> <a href='https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault'>Přečtěte si další informace o Azure Defenderu pro Key Vault.</a><br />(Související zásady: [mělo by se povolit Azure Defender pro Key Vault](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)) |Vysoká |
 |Zastaralé účty by se měly odebírat z předplatného. |Uživatelské účty, které se zablokovaly přihlášení, by se měly odebrat z vašich předplatných.<br>Tyto účty můžou být cílem pro útočníky, kteří hledají způsob, jak získat přístup k datům, aniž byste si je všimli.<br />(Související zásady: [zastaralé účty by měly být odebrány z vašeho předplatného](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6b1cbf55-e8b6-442f-ba4c-7246b6381474).) |Vysoká |
 |Zastaralé účty s oprávněním vlastníka by se měly odebrat z vašeho předplatného. |Uživatelské účty, které se zablokovaly přihlášení, by se měly odebrat z vašich předplatných.<br>Tyto účty můžou být cílem pro útočníky, kteří hledají způsob, jak získat přístup k datům, aniž byste si je všimli.<br />(Související zásady: [zastaralé účty s oprávněním vlastníka by se měly odebrat z vašeho předplatného](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2febb62a0c-3560-49e1-89ed-27e074e9f8ad).) |Vysoká |
-|Měly by být povolené diagnostické protokoly v Key Vault. |Povolte protokoly a zachovejte je po celý rok. To umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě.<br />(Související zásady: [protokoly diagnostiky v Key Vault by měly být povolené](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcf820ca0-f99e-4f3e-84fb-66e913812d21)) |Nízká |
+|Měly by být povolené diagnostické protokoly v Key Vault. |Povolte protokoly a zachovejte je po celý rok. To umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě.<br />(Související zásady: [protokoly prostředků v Key Vault by měly být povolené](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcf820ca0-f99e-4f3e-84fb-66e913812d21)) |Nízká |
 |Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka. |Účty s oprávněními vlastníka, které mají různé názvy domén (externí účty), by měly být z vašeho předplatného odebrány. Tím zabráníte nemonitorovanému přístupu. Tyto účty můžou být cílem pro útočníky, kteří hledají způsob, jak získat přístup k datům, aniž byste si je všimli.<br />(Související zásady: [externí účty s oprávněním vlastníka by se měly odebrat z předplatného](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff8456c1c-aa66-4dfb-861a-25d127b775c9).) |Vysoká |
 |Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení. |Účty s oprávněními ke čtení, které mají různé názvy domén (externí účty), by se měly z vašeho předplatného odebrat. Tím zabráníte nemonitorovanému přístupu. Tyto účty můžou být cílem pro útočníky, kteří hledají způsob, jak získat přístup k datům, aniž byste si je všimli.<br />(Související zásady: [externí účty s oprávněním ke čtení by se měly z předplatného odebrat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5f76cf89-fbf2-47fd-a3f4-b891fa780b60).) |Vysoká |
 |Z vašeho předplatného byste měli odebrat externí účty s oprávněním k zápisu. |Účty s oprávněními k zápisu, které mají různé názvy domén (externí účty), by se měly odebrat z vašeho předplatného. Tím zabráníte nemonitorovanému přístupu. Tyto účty můžou být cílem pro útočníky, kteří hledají způsob, jak získat přístup k datům, aniž byste si je všimli.<br />(Související zásady: [externí účty s oprávněním k zápisu by se měly z vašeho předplatného odebrat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5c607a2e-c700-4744-8254-d77e7c9eb5e4).) |Vysoká |

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: ea66bb5bcdd6132809804632919a120f5c93353f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: eb70a31d0fa5f231bd0db8ca27517ce43fe1db28
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132712"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007805"
 ---
 # <a name="container-security-in-security-center"></a>Zabezpečení kontejnerů ve službě Security Center
 
@@ -70,11 +70,25 @@ Pro monitorování nespravovaných kontejnerů hostovaných na virtuálních po�
 ### <a name="continuous-monitoring-of-your-kubernetes-clusters"></a>Nepřetržité monitorování clusterů Kubernetes
 Security Center spolupracuje s Azure Kubernetes Service (AKS), což je spravovaná služba orchestrace kontejnerů Microsoftu pro vývoj, nasazování a správu kontejnerových aplikací.
 
-AKS poskytuje bezpečnostní mechanismy a přehled o stavech zabezpečení vašich clusterů. Security Center tyto funkce využívají k těmto akcím:
-* Nepřetržité monitorování konfigurace clusterů AKS
-* Generování doporučení zabezpečení zarovnaného k oborovým standardům
+AKS poskytuje bezpečnostní mechanismy a přehled o stavech zabezpečení vašich clusterů. Security Center tyto funkce používá k nepřetržitému monitorování konfigurace clusterů AKS a generování doporučení zabezpečení, která jsou v souladu s oborem standardů.
+
+Toto je diagram vysoké úrovně interakce mezi Azure Security Center, službou Azure Kubernetes a Azure Policy:
+
+:::image type="content" source="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png" alt-text="Architektura interakce mezi Azure Security Center, službou Azure Kubernetes a Azure Policy" lightbox="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png":::
+
+Můžete vidět, že položky přijaté a analyzované pomocí Security Center zahrnují:
+
+- protokoly auditu ze serveru rozhraní API
+- nezpracované události zabezpečení od agenta Log Analytics
+
+    > [!NOTE]
+    > V tuto chvíli nepodporujeme instalaci agenta Log Analytics v clusterech Azure Kubernetes, které běží na virtuálních počítačích služby Virtual Machine Scale Sets.
+
+- informace o konfiguraci clusteru z clusteru AKS
+- Konfigurace úlohy z Azure Policy (pomocí **Azure Policy doplňku pro Kubernetes**)
 
 Podrobnosti o relevantních doporučeních Security Center, která se můžou zobrazit pro tuto funkci, najdete v [části COMPUTE](recommendations-reference.md#recs-compute) referenční tabulky doporučení.
+
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>Osvědčené postupy ochrany úloh pomocí řízení přístupu Kubernetes
 

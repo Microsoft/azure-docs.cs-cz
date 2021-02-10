@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/01/2020
+ms.date: 02/04/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2be66904898ecdf2006952f5e80c17dc78b81c06
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 3f1be2e64435cb0bcdb369a398a9a65fc3714fb2
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825812"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008532"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Nejčastější dotazy a známé problémy se spravovanými identitami pro prostředky Azure
 
@@ -48,6 +48,10 @@ No. Spravované identity a registrace Aplikace Azure AD nejsou v adresáři stej
 Registrace aplikací mít dvě komponenty: objekt aplikace + objekt instančního objektu. Spravované identity pro prostředky Azure mají jenom jednu z těchto součástí: instanční objekt služby. 
 
 Spravované identity nemají v adresáři objekt aplikace, což je to, co se běžně používá k udělení oprávnění aplikace pro MS Graph. Místo toho je třeba oprávnění MS Graph pro spravované identity udělit přímo k instančnímu objektu.  
+
+### <a name="can-the-same-managed-identity-be-used-across-multiple-regions"></a>Může se stejná spravovaná identita používat napříč několika oblastmi?
+
+V krátkém případě ano, můžete použít spravované identity přiřazené uživatelem ve více než jedné oblasti Azure. Delší odpověď je, že při vytváření spravovaných identit přiřazených uživateli jako regionálních prostředků je přidružený [objekt služby](../develop/app-objects-and-service-principals.md#service-principal-object) (SPN) vytvořený ve službě Azure AD k dispozici globálně. Instanční objekt se dá použít v jakékoli oblasti Azure a jeho dostupnost závisí na dostupnosti služby Azure AD. Například pokud jste vytvořili spravovanou identitu přiřazenou uživatelem v South-Central oblasti a tato oblast nebude k dispozici, bude tento problém mít vliv jenom na aktivity [roviny řízení](../../azure-resource-manager/management/control-plane-and-data-plane.md) na samotné spravované identitě.  Nebudou ovlivněny aktivity prováděné všemi prostředky, které již byly nakonfigurovány pro použití spravovaných identit.
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Pracují spravované identity prostředků Azure se službou Azure Cloud Services?
 

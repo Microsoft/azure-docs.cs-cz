@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: raynew
-ms.openlocfilehash: c586832386f3bf6419d8af94ad23662c6801b1ae
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: a75cd3c5dbf205f49aa606bfe96623a61bce39db
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820870"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007052"
 ---
 # <a name="common-questions"></a>Časté dotazy
 
@@ -42,6 +42,10 @@ Pomocí nástroje Resource Centre můžete aktuálně přesouvat následující 
 
 Nemůžete vybrat disky jako prostředky pro přesun mezi oblastmi. Disky se ale přesunou jako součást přesunutí virtuálního počítače.
 
+### <a name="what-does-it-mean-to-move-a-resource-group"></a>Co znamená přesunout skupinu prostředků?
+
+Když je vybraný prostředek pro přesun, automaticky se přidá odpovídající skupina prostředků pro přesun. To je potřeba, protože cílový prostředek bude potřeba umístit do skupiny prostředků, jako by byl v cíli. Po přidání pro přesunutí si můžete vybrat, že se má přizpůsobit a zadat existujícího skupinu prostředků. Všimněte si, že **přesunutí skupiny prostředků neznamená,** že se přesunou všechny prostředky ve zdrojové skupině prostředků.
+
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>Můžu po přesunu mezi oblastmi přesunout prostředky mezi předplatnými?
 
 Po přesunutí prostředků do cílové oblasti můžete toto předplatné změnit. [Přečtěte si další informace](../azure-resource-manager/management/move-resource-group-and-subscription.md) o přesouvání prostředků do jiného předplatného. 
@@ -69,7 +73,7 @@ Ano, jak při přenosu, tak i v klidovém režimu.
 - Pokud přesouváte prostředky do různých oblastí portálu, k tomuto procesu dochází automaticky.
 - Pokud přesouváte prostředky pomocí prostředí PowerShell, spustíte rutiny k přiřazení identity přiřazené systému do kolekce a potom přiřadíte roli se správnými oprávněními k předplatnému objektu zabezpečení identity. 
 
-### <a name="what-managed-identity-permissions-does-resource-mover-need"></a>Jaká oprávnění spravovaná identita potřebuje dopravení prostředků?
+### <a name="what-managed-identity-permissions-does-resource-mover-need"></a>Jaká oprávnění spravovaná identita potřebuje dopravení prostředků? 
 
 Spravovaná identita služby Azure Resource Mover musí mít alespoň tato oprávnění: 
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: 056eba8694d1727350809121f763181e3cdbdc64
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8192d7104daf1474a2123331183edf05e6fa1ada
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968600"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007410"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>Azure monitor pro poskytovatele řešení SAP (Preview)
 
@@ -41,7 +41,7 @@ Pokud zákazníci nekonfigurují žádné zprostředkovatele v době nasazení p
 
 Zákazníci mohou nakonfigurovat jednoho nebo více poskytovatelů typu zprostředkovatele *SAP HANA* pro povolení shromažďování dat z databáze SAP HANA. Poskytovatel SAP HANA se připojuje k databázi SAP HANA přes port SQL, získává data telemetrie z databáze a přenáší je do pracovního prostoru Log Analytics v rámci předplatného zákazníka. Poskytovatel SAP HANA shromažďuje data každé 1 minuty z databáze SAP HANA.  
 
-Ve verzi Public Preview můžou zákazníci zobrazit následující data s poskytovatelem SAP HANA: základní využití infrastruktury, SAP HANA stav hostitele, SAP HANA replikace systému a SAP HANA data telemetrie zálohování. Chcete-li nakonfigurovat poskytovatele SAP HANA, je třeba zadat IP adresu hostitele, číslo portu HANA SQL a uživatelské jméno a heslo SYSTEMDB. Zákazníkům se doporučuje nakonfigurovat SAP HANA poskytovatele na SYSTEMDB, ale další poskytovatele můžou být nakonfigurovaní proti jiným databázovým tenantům.
+Ve verzi Public Preview můžou zákazníci zobrazit následující data s poskytovatelem SAP HANA: základní využití infrastruktury, SAP HANA stav hostitele, SAP HANA replikace systému a SAP HANA data telemetrie zálohování. Chcete-li nakonfigurovat poskytovatele SAP HANA, je třeba zadat IP adresu hostitele, číslo portu HANA SQL a uživatelské jméno a heslo SYSTEMDB. Zákazníkům se doporučuje nakonfigurovat SAP HANA poskytovatele na SYSTEMDB, ale více poskytovatelů můžete nakonfigurovat i pro ostatní klienty databáze.
 
 ![Azure Monitor pro poskytovatele řešení SAP – SAP HANA](./media/azure-monitor-sap/azure-monitor-providers-hana.png)
 
@@ -68,10 +68,38 @@ Ke konfiguraci poskytovatele clusteru s vysokou dostupností jsou zapojené dva 
    Pokud chcete nakonfigurovat poskytovatele clusteru s vysokou dostupností, vyžadují se tyto informace:
    
    - **Název:** Název tohoto poskytovatele. Měl by být jedinečný pro tento Azure Monitor instance řešení SAP.
-   - **Koncový bod Prometheus** Obvykle http \: // \<servername or ip address\> : 9664/metriky.
+   - **Koncový bod Prometheus** http \: // \<servername or ip address\> : 9664/metriky.
    - **Identifikátor SID**. Pro systémy SAP použijte protokol SAP SID. Pro jiné systémy (například clustery NFS) použijte pro cluster název se třemi znaky. Identifikátor SID musí být odlišný od jiných monitorovaných clusterů.   
    - **Název clusteru** Název clusteru, který se používá při vytváření clusteru. Název clusteru najdete ve vlastnosti clusteru `cluster-name` .
    - **Název hostitele**. Název hostitele Linux virtuálního počítače.  
+
+
+## <a name="provider-type-os-linux"></a>Typ poskytovatele OS (Linux)
+Zákazníci můžou nakonfigurovat jednoho nebo více poskytovatelů typu operačního systému (Linux), aby povolili shromažďování dat z BareMetal nebo uzlu virtuálního počítače. Poskytovatel operačního systému (Linux) se připojuje k BareMetal nebo uzlům virtuálních počítačů pomocí [Node_Exporterho](https://github.com/prometheus/node_exporter)   koncového bodu, získává data telemetrie z uzlů a přenáší je do pracovního prostoru Log Analytics v rámci zákaznického předplatného. Poskytovatel operačního systému (Linux) shromažďuje data každých 60 sekund pro většinu metrik z uzlů. 
+
+Ve verzi Public Preview můžou zákazníci očekávat, že se s poskytovatelem operačního systému (Linux) zobrazí následující data: 
+   - Využití CPU, využití procesoru procesem 
+   - Využití disku, vstupně-výstupní operace čtení & zápisu 
+   - Distribuce paměti, využití paměti, prohození využití paměti 
+   - Využití sítě, podrobnosti odchozího provozu síťového příchozího &. 
+
+Ke konfiguraci poskytovatele operačního systému (Linux) jsou zapojené dva primární kroky:
+1. Nainstalujte [Node_Exporter](https://github.com/prometheus/node_exporter)   na každý uzel BareMetal nebo VM.
+   Pro instalaci [Node_exporter](https://github.com/prometheus/node_exporter)máte dvě možnosti: 
+      - Pro automatizaci instalace pomocí Ansible použijte [Node_Exporter](https://github.com/prometheus/node_exporter) na jednotlivých uzlech BAREMETAL nebo VM k instalaci poskytovatele operačního systému (Linux).  
+      - Proveďte [ruční instalaci](https://prometheus.io/docs/guides/node-exporter/).
+
+2. Nakonfigurujte poskytovatele operačního systému (Linux) pro každou instanci uzlu BareMetal nebo virtuálního počítače ve vašem prostředí. 
+   Pokud chcete nakonfigurovat poskytovatele operačního systému (Linux), vyžadují se tyto informace: 
+      - Název. Název tohoto poskytovatele. Měl by být jedinečný pro tento Azure Monitor instance řešení SAP. 
+      - Koncový bod exportéra uzlu Obvykle http:// <servername or ip address> : 9100/metriky 
+
+> [!NOTE]
+> 9100 je port vystavený pro Node_Exporter koncový bod.
+
+> [!Warning]
+> Zajistěte, aby export uzlů běžel po restartování uzlu. 
+
 
 ## <a name="provider-type-microsoft-sql-server"></a>Typ poskytovatele Microsoft SQL Server
 
@@ -79,7 +107,7 @@ Zákazníci mohou nakonfigurovat jednoho nebo více poskytovatelů typu zprostř
 
 Ve verzi Public Preview můžou zákazníci zobrazit následující data s poskytovatelem SQL Server: základní využití infrastruktury, hlavní příkazy SQL, nejvyšší největší tabulka, problémy zaznamenané v protokolech chyb SQL Server, blokující procesy a další.  
 
-Chcete-li nakonfigurovat poskytovatele Microsoft SQL Server, je nutné zadat ID systému SAP, IP adresu hostitele, SQL Server číslo portu a také SQL Server přihlašovací jméno a heslo.
+Chcete-li nakonfigurovat poskytovatele Microsoft SQL Server, jsou požadovány identifikátory systému SAP, IP adresa hostitele, SQL Server číslo portu a SQL Server přihlašovací jméno a heslo.
 
 ![Azure Monitor pro poskytovatele řešení SAP – SQL](./media/azure-monitor-sap/azure-monitor-providers-sql.png)
 

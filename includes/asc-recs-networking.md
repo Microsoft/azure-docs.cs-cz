@@ -2,19 +2,19 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 01-26-2021
+ms.date: 02/09/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: dc70457cbe507ccf1727ea8736e7235edfdb76ca
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 4a303e5af2ce05102de6889d0bc5fce8af232a32
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797226"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007592"
 ---
 Tato kategorie obsahuje **15** doporučení.
 
-|Doporučení |Popis |Závažnost |
+|Doporučení |Description |Závažnost |
 |---|---|---|
 |Přístup k účtům úložiště pomocí brány firewall a konfigurací virtuální sítě by měl být omezený. |Zkontrolujte nastavení přístupu k síti v nastavení brány firewall účtu úložiště. Doporučuje se nakonfigurovat Síťová pravidla, aby bylo možné získat přístup k účtu úložiště jenom aplikacím ze povolených sítí. Aby bylo možné v připojeních z konkrétních internetových nebo místních klientů přistupovat k provozu z konkrétních virtuálních sítí Azure nebo do rozsahů veřejných IP adres sítě.<br />(Související zásady: [účty úložiště by měly omezovat přístup k síti](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f34c877ad-507e-4c82-993e-3452a6e0ad3c).) |Nízká |
 |Doporučení adaptivního posílení zabezpečení sítě by se měla použít na interních virtuálních počítačích. |Azure Security Center analyzovaly způsoby komunikace internetového provozu u virtuálních počítačů, které jsou uvedené níže, a zjistili jsme, že stávající pravidla v skupin zabezpečení sítě, která jsou k nim přidružená, jsou přesná, což vede k většímu potenciálnímu prostoru pro útok. To může být způsobeno tím, že se v řazených kolekcích členů portů nebo v protokolu neobjevila žádná data, která byla označena jako škodlivá pro zdroje informací o hrozbách Security Center.<br />(Žádné související zásady) |Střední |

@@ -58,6 +58,8 @@
 - name: Koncepty
   expanded: false
   items:
+    - name: Interoperabilita Teams
+      href: concepts/teams-interop.md
     - name: Chat
       items:
         - name: Přehled klientských knihoven pro chat
@@ -78,8 +80,6 @@
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: Koncepce hlasových hovorů a videohovorů
           href: concepts/voice-video-calling/about-call-types.md
-        - name: Interoperabilita Teams
-          href: concepts/voice-video-calling/teams-interop.md
     - name: Architektura uživatelského rozhraní
       items:
         - name: Přehled rozhraní .NET Framework

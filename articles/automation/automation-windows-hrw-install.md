@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: e77a90617d79dab8c71cdf0c7a6a4fb21e052fbd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 09c86e23379cf9ccecf77d88a99ad6b3a7019a87
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182780"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006985"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker Windows
 
@@ -20,7 +20,7 @@ Azure Automation ukládá a spravuje Runbooky a pak je doručí do jednoho nebo 
 
 Po úspěšném nasazení služby Runbook Worker si přečtěte téma [spuštění runbooků na Hybrid Runbook Worker](automation-hrw-run-runbooks.md) , kde se dozvíte, jak konfigurovat Runbooky pro automatizaci procesů v místním datovém centru nebo v jiném cloudovém prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující.
 
@@ -38,8 +38,8 @@ Role Hybrid Runbook Worker vyžaduje, aby byl [Agent pro Log Analytics](../azure
 
 Funkce Hybrid Runbook Worker podporuje následující operační systémy:
 
-* Windows Server 2019
-* Windows Server 2016, verze 1709 a 1803
+* Windows Server 2019 (včetně jádra serveru)
+* Windows Server 2016, verze 1709 a 1803 (kromě jádra serveru)
 * Windows Server 2012, 2012 R2
 * Windows Server 2008 SP2 (x64), 2008 R2
 * Windows 10 Enterprise (včetně více relací) a pro

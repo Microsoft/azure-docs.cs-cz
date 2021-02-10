@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: ff7de678e40a02b364451e7c88d661d2e38ed9d4
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 50ab66a1f98d06d79a46d61f683d56822b619721
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918919"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007036"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Nasazení clusteru Azure Service Fabric napříč Zóny dostupnosti
 Zóny dostupnosti v Azure je nabídka s vysokou dostupností, která chrání vaše aplikace a data při selhání datacentra. Zóna dostupnosti je jedinečné fyzické umístění vybavené nezávislým napájením, chlazením a sítí v oblasti Azure.
@@ -374,8 +374,8 @@ Pro podporu více zón dostupnosti musí být povolený Service Fabric nodeType.
 * První hodnota je **multipleAvailabilityZones** , která by měla být pro NodeType nastavena na hodnotu true.
 * Druhá hodnota je **sfZonalUpgradeMode** a je volitelná. Tuto vlastnost nelze upravit, pokud je v clusteru již přítomen typ NodeType s více AZ 's.
       Vlastnost řídí logické seskupení virtuálních počítačů v upgradovacích doménách.
-          Pokud je hodnota nastavená na false (plochý režim): virtuální počítače v rámci typu uzlu se budou seskupovat v UD, budou se ignorovat informace o zóně v 5 UDs.
-          Pokud je hodnota vynechána nebo je nastavena na hodnotu true (hierarchický režim): virtuální počítače budou seskupeny tak, aby odrážely rozmístění v rámci až 15 UDs. Každá ze 3 zón bude mít 5 UDs.
+          Pokud je hodnota nastavena na Parallel (paralelní): virtuální počítače pod uzlem NodeType budou seskupeny na UDs, ignorují informace o zóně v 5 UDs.
+          Pokud je hodnota vynechána nebo nastavena na "hierarchické": virtuální počítače budou seskupeny tak, aby odrážely rozdělení v rámci až 15 UDs. Každá ze 3 zón bude mít 5 UDs.
           Tato vlastnost definuje pouze chování upgradu pro ServiceFabric aplikace a upgrady kódu. Základní upgrady sady škálování virtuálního počítače budou pořád paralelně ve všech AZ 's.
       Tato vlastnost nebude mít žádný vliv na distribuci UD pro typy uzlů, u kterých není povoleno více zón.
 * Třetí hodnota je **vmssZonalUpgradeMode = Parallel**. Jedná se o *povinnou* vlastnost, která se má nakonfigurovat v clusteru, pokud je přidaný typ NodeType s více AZs. Tato vlastnost definuje režim upgradu pro aktualizace sady škálování virtuálních počítačů, ke kterým dojde paralelně ve všech AZ 's in.

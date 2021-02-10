@@ -62,6 +62,9 @@
           href: zone-redundancy.md
         - name: Osvědčené postupy registru
           href: container-registry-best-practices.md
+        - name: Obrázky s více archy
+          href: push-multi-architecture-images.md
+          displayName: multi-architecture
         - name: Správa veřejných imagí
           href: buffer-gate-public-content.md
     - name: Návody

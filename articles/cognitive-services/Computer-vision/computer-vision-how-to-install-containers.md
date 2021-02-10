@@ -12,12 +12,12 @@ ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: místní, OCR, Docker, kontejner
-ms.openlocfilehash: 2298c7b931a5bb51d5067a9f789135ecf86ef3e5
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: fc5d281a6c0c9dd9620109de9d8deea27462ad0e
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576816"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008583"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Nainstalovat čtení kontejnerů Docker pro optické rozpoznávání znaků (Preview) 
 
@@ -92,7 +92,7 @@ K dispozici jsou image kontejneru pro čtení.
 | Kontejner | Název Container Registry/úložiště/image |
 |-----------|------------|
 | Přečíst 2,0 – Preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| Přečíst 3,2 – Preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1` |
+| Přečíst 3,2 – Preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2` |
 
 Pomocí [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) příkazu Stáhněte image kontejneru.
 
@@ -101,7 +101,7 @@ Pomocí [`docker pull`](https://docs.docker.com/engine/reference/commandline/pul
 # <a name="version-32-preview"></a>[Verze 3,2-Preview](#tab/version-3-2)
 
 ```bash
-docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2
 ```
 
 # <a name="version-20-preview"></a>[Verze 2,0-Preview](#tab/version-2)
@@ -131,7 +131,7 @@ Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.co
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

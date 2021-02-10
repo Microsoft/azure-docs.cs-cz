@@ -6,19 +6,20 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 73fc13cf2a49d7cacd7540d06c6d0afd9cea68e5
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: a24ece3c0b75d0d0d22e13c6e5367c27fbaeab66
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97729637"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006781"
 ---
 # <a name="connect-cherwell-with-it-service-management-connector"></a>Připojení Cherwell ke konektoru pro správu služeb IT
 
 Tento článek poskytuje informace o tom, jak nakonfigurovat připojení mezi instancí Cherwell a konektorem Service Management Connector (ITSMC) v Log Analytics pro centrální správu vašich pracovních položek.
 
 > [!NOTE]
-> Naši zákazníci Cherwell a prov navrhují, aby používali [akci Webhooku](./action-groups.md#webhook) pro koncový bod Cherwell a prov jako jiné řešení pro integraci.
+> Od 1. října 2020 Cherwell ITSM Integration s Azure Alert už nebude pro nové zákazníky povolený. Nová připojení ITSM se nepodporují.
+> Existující připojení ITSM budou podporována.
 
 Následující části obsahují podrobné informace o tom, jak připojit produkt Cherwell k ITSMC v Azure.
 
@@ -80,6 +81,6 @@ K vygenerování ID klienta/klíče pro Cherwell použijte následující postup
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přehled konektoru ITSM](itsmc-overview.md)
+* [Přehled ITSM konektoru](itsmc-overview.md)
 * [Vytváření pracovních položek ITSM z výstrah Azure](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)
 * [Řešení potíží v ITSM konektoru](./itsmc-resync-servicenow.md)

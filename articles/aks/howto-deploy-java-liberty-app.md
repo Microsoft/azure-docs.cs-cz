@@ -7,16 +7,23 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 keywords: Java, jakartaee, JavaEE, mikroprofile, Open-svoboda, WebSphere-svoboda, AKS, Kubernetes
-ms.openlocfilehash: 2e025c706512b6ab3945118da996b11a5a8a9585
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: d0e6f2fea6894378da736ba83a90ee28402ec7f9
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526886"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007124"
 ---
 # <a name="deploy-a-java-application-with-open-liberty-or-websphere-liberty-on-an-azure-kubernetes-service-aks-cluster"></a>Nasazení aplikace v jazyce Java s otevřeným nástrojem svobody nebo WebSphere Svoboda v clusteru Azure Kubernetes Service (AKS)
 
-V této příručce se dozvíte, jak spustit aplikaci v jazyce Java, Java EE, [Jakarta EE](https://jakarta.ee/)nebo [mikroprofile](https://microprofile.io/) na otevřeném prostředí pro práci s alternativou nebo WebSphere svobody a pak nasaďte kontejnerové aplikace do clusteru AKS pomocí otevřeného operátoru svoboda. Otevřený operátor svoboda zjednodušuje nasazení a správu aplikací spuštěných v otevřených Kubernetes clusterech. Pomocí operátoru můžete také provádět pokročilejší operace, jako je například shromažďování trasování a výpisů paměti. Tento článek vás provede přípravou aplikace, sestavením image Docker aplikace a spuštěním kontejnerové aplikace v clusteru AKS.  Další informace o otevřeném počítači můžete zobrazit [na stránce otevřít a projekt](https://openliberty.io/). Další podrobnosti o IBM WebSphere svobody najdete [na stránce produktu WebSphere svobody](https://www.ibm.com/cloud/websphere-liberty).
+Tento článek ukazuje, jak:  
+* Spusťte aplikaci v jazyce Java, Java EE, Jakarta EE nebo mikroprofile na otevřeném prostředí pro práci s WebSphere nebo svobody.
+* Sestavte image Docker aplikace pomocí otevřených imagí kontejnerů.
+* Nasaďte kontejnerové aplikace do clusteru AKS pomocí otevřeného operátoru svoboda.   
+
+Otevřený operátor svoboda zjednodušuje nasazení a správu aplikací spuštěných v clusterech Kubernetes. V případě otevřeného operátoru svoboda můžete také provádět pokročilejší operace, například shromažďování trasování a výpisů paměti. 
+
+Další informace o otevřeném počítači můžete zobrazit [na stránce otevřít a projekt](https://openliberty.io/). Další podrobnosti o IBM WebSphere svobody najdete [na stránce produktu WebSphere svobody](https://www.ibm.com/cloud/websphere-liberty).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -24,17 +31,20 @@ V této příručce se dozvíte, jak spustit aplikaci v jazyce Java, Java EE, [J
 
 * Tento článek vyžaduje nejnovější verzi rozhraní příkazového řádku Azure CLI. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 * Pokud se v této příručce spouští příkazy místně (místo Azure Cloud Shell):
-  * Připravte místní počítač s nainstalovaným operačním systémem, který má systém UNIX (například Ubuntu, macOS).
+  * Připravte místní počítač s nainstalovaným operačním systémem, který má systém UNIX (například Ubuntu, macOS, podsystém Windows pro Linux).
   * Nainstalujte implementaci Java SE systémem (například [AdoptOpenJDK OpenJDK 8 LTS/OpenJ9](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)).
   * Nainstalujte [Maven](https://maven.apache.org/download.cgi) 3.5.0 nebo vyšší.
   * Nainstalujte [Docker](https://docs.docker.com/get-docker/) pro váš operační systém.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. Pomocí příkazu [AZ Group Create](/cli/azure/group#az_group_create) v umístění *eastus* vytvořte skupinu prostředků *Java-svoboda-Project* . Bude použit k vytvoření instance Azure Container Registry (ACR) a clusteru AKS později. 
+Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure.  
+
+Vytvořte skupinu prostředků s názvem *Java-svoboda-Project* pomocí příkazu [AZ Group Create](/cli/azure/group#az_group_create) v umístění *eastus* . Tato skupina prostředků se použije později pro vytvoření instance Azure Container Registry (ACR) a clusteru AKS. 
 
 ```azurecli-interactive
-az group create --name java-liberty-project --location eastus
+RESOURCE_GROUP_NAME=java-liberty-project
+az group create --name $RESOURCE_GROUP_NAME --location eastus
 ```
 
 ## <a name="create-an-acr-instance"></a>Vytvoření instance ACR
@@ -42,7 +52,8 @@ az group create --name java-liberty-project --location eastus
 Instanci ACR vytvoříte pomocí příkazu [AZ ACR Create](/cli/azure/acr#az_acr_create) . Následující příklad vytvoří instanci ACR s názvem *youruniqueacrname*. Ujistěte se, že *youruniqueacrname* je v rámci Azure jedinečný.
 
 ```azurecli-interactive
-az acr create --resource-group java-liberty-project --name youruniqueacrname --sku Basic --admin-enabled
+REGISTRY_NAME=youruniqueacrname
+az acr create --resource-group $RESOURCE_GROUP_NAME --name $REGISTRY_NAME --sku Basic --admin-enabled
 ```
 
 Po krátké době by se měl zobrazit výstup JSON obsahující:
@@ -55,10 +66,9 @@ Po krátké době by se měl zobrazit výstup JSON obsahující:
 
 ### <a name="connect-to-the-acr-instance"></a>Připojení k instanci ACR
 
-Pokud chcete vložit obrázek do instance ACR, musíte se k němu nejdřív přihlásit. Spusťte následující příkazy a ověřte připojení:
+Před nahráním image do této instance se budete muset přihlásit k instanci ACR. Spusťte následující příkazy a ověřte připojení:
 
 ```azurecli-interactive
-REGISTRY_NAME=youruniqueacrname
 LOGIN_SERVER=$(az acr show -n $REGISTRY_NAME --query 'loginServer' -o tsv)
 USER_NAME=$(az acr credential show -n $REGISTRY_NAME --query 'username' -o tsv)
 PASSWORD=$(az acr credential show -n $REGISTRY_NAME --query 'passwords[0].value' -o tsv)
@@ -73,7 +83,8 @@ Pokud jste se `Login Succeeded` úspěšně přihlásili k instanci ACR, měli b
 Pomocí příkazu [az aks create](/cli/azure/aks#az_aks_create) vytvořte cluster AKS. Následující příklad vytvoří cluster *myAKSCluster* s jedním uzlem. Dokončení této akce bude trvat několik minut.
 
 ```azurecli-interactive
-az aks create --resource-group java-liberty-project --name myAKSCluster --node-count 1 --generate-ssh-keys --enable-managed-identity
+CLUSTER_NAME=myAKSCluster
+az aks create --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME --node-count 1 --generate-ssh-keys --enable-managed-identity
 ```
 
 Po několika minutách se příkaz dokončí a vrátí informace o clusteru ve formátu JSON, včetně následujících:
@@ -96,7 +107,7 @@ az aks install-cli
 Pomocí příkazu [az aks get-credentials](/cli/azure/aks#az_aks_get_credentials) nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Tento příkaz stáhne pověření a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití.
 
 ```azurecli-interactive
-az aks get-credentials --resource-group java-liberty-project --name myAKSCluster --overwrite-existing
+az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME --overwrite-existing
 ```
 
 > [!NOTE]
@@ -144,6 +155,7 @@ Pokud chcete nasadit a spustit vaši aplikaci svobody v clusteru AKS, kontejneri
 1. Naklonujte vzorový kód pro tento průvodce. Ukázka je na [GitHubu](https://github.com/Azure-Samples/open-liberty-on-aks).
 1. Změňte adresář na `javaee-app-simple-cluster` svůj místní klon.
 1. Spusťte příkaz `mvn clean package` pro zabalení aplikace.
+1. Spusťte `mvn liberty:dev` pro otestování aplikace. V případě úspěchu by se měla zobrazit `The defaultServer server is ready to run a smarter planet.` ve výstupu příkazu. Použijte `CTRL-C` k zastavení aplikace.
 1. Spusťte jeden z následujících příkazů a sestavte image aplikace a nahrajte ji do instance ACR.
    * Sestavte se s otevřenými základními obrázky s odlehčeným použitím Open Source Java™ Runtime:
 
@@ -206,12 +218,12 @@ Pomocí příkazu [kubectl get service](https://kubernetes.io/docs/reference/gen
 kubectl get service javaee-app-simple-cluster --watch
 
 NAME                        TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)          AGE
-javaee-app-simple-cluster   LoadBalancer   10.0.251.169   52.152.189.57   9080:31732/TCP   68s
+javaee-app-simple-cluster   LoadBalancer   10.0.251.169   52.152.189.57   80:31732/TCP     68s
 ```
 
-Počkejte, než se *IP* adresa změní z *čekající* na skutečnou veřejnou IP adresu, a pomocí nástroje `CTRL-C` zastavte `kubectl` proces sledování.
+Jakmile se adresa *External-IP* změní ze *stavu čeká* na skutečnou veřejnou IP adresu, použijte `CTRL-C` k zastavení `kubectl` procesu sledování.
 
-Otevřete webový prohlížeč na externí IP adresu a port vaší služby ( `52.152.189.57:9080` pro výše uvedený příklad) a zobrazte tak domovskou stránku aplikace. V levém horním rohu stránky by se měl zobrazit název pod názvem repliky vaší aplikace. Počkejte pár minut a aktualizujte stránku. při vyrovnávání zatížení, které poskytuje cluster AKS, se pravděpodobně zobrazí jiný název pod.
+Otevřete webový prohlížeč na externí IP adresu vaší služby ( `52.152.189.57` pro výše uvedený příklad) a zobrazte tak domovskou stránku aplikace. V levém horním rohu stránky by se měl zobrazit název pod názvem repliky vaší aplikace. Počkejte několik minut a aktualizujte stránku, aby se zobrazil jiný název pod, který je zobrazený kvůli vyrovnávání zatížení, které poskytuje cluster AKS.
 
 :::image type="content" source="./media/howto-deploy-java-liberty-app/deploy-succeeded.png" alt-text="Aplikace Java svobody byla úspěšně nasazena v AKS":::
 
@@ -223,7 +235,7 @@ Otevřete webový prohlížeč na externí IP adresu a port vaší služby ( `52
 Abyste se vyhnuli poplatkům za Azure, měli byste vyčistit nepotřebné prostředky.  Pokud už cluster nepotřebujete, odeberte skupinu prostředků, službu kontejneru, registr kontejnerů a všechny související prostředky pomocí příkazu [AZ Group Delete](/cli/azure/group#az_group_delete) .
 
 ```azurecli-interactive
-az group delete --name java-liberty-project --yes --no-wait
+az group delete --name $RESOURCE_GROUP_NAME --yes --no-wait
 ```
 
 ## <a name="next-steps"></a>Další kroky

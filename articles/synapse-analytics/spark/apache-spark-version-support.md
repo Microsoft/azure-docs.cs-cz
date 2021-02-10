@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 5bedb7da2f088c065d95d60effeda1e4db15d44a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64955cdc1e4eb0088b53ad73d9c464c9533aa0fa
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589482"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007716"
 ---
 # <a name="supported-language-and-runtime-versions-for-apache-spark-and-dependent-components"></a>Podporované jazyky a verze modulu runtime pro Apache Spark a závislé součásti  
 
@@ -30,7 +30,7 @@ Apache Spark ve službě Azure synapse běží na Ubuntu verze 16,04.
 
 ## <a name="java-version"></a>Verze Java
 
-Apache Spark v Azure synapse obsahuje Java verze 1.8.0 _222
+Apache Spark v Azure synapse obsahuje Java verze 1.8.0 _272
 
 ## <a name="scala-version"></a>Verze Scala
 
@@ -38,17 +38,17 @@ Apache Spark v Azure synapse zahrnují Scala 2.11.12
 
 ## <a name="net-core-version"></a>Verze .NET Core
 
-Apache Spark v Azure synapse zahrnují .NET Core 3,0
+Apache Spark v Azure synapse zahrnují .NET Core 3,1
 
 ## <a name="net-support-for-apache-spark"></a>Podpora rozhraní .NET pro Apache Spark
 
-Azure synapse zahrnuje podporu rozhraní .NET pro Apache Spark 0.11.0
+Azure synapse zahrnuje podporu rozhraní .NET pro Apache Spark 1.0.0
 
 ## <a name="delta-lake"></a>Delta Lake
 
-Synapse Analytics zahrnuje podporu rozdílových Lake 0.6.0
+Synapse Analytics zahrnuje podporu rozdílových Lake 0.6.1
 
-## <a name="python-version"></a>Verze Pythonu
+## <a name="python-version"></a>Python version (Verze Pythonu)
 
 Apache Spark v Azure synapse obsahuje instalaci Pythonu verze 3.6.1.
 

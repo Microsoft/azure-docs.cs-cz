@@ -3,16 +3,16 @@ title: Připojte svůj účet GCP k Azure Security Center
 description: Monitorování prostředků GCP z Azure Security Center
 author: memildin
 ms.author: memildin
-ms.date: 02/07/2021
+ms.date: 02/08/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8ee7b37861be299dd36a596ae1cd4899b0ebffab
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 94c7a800fc551faf6650b8e30fe7c2188f7d2dbb
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809401"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008379"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>Připojení účtů GCP k Azure Security Center
 
@@ -39,15 +39,21 @@ Na snímku obrazovky níže vidíte projekty GCP zobrazené na řídicím panelu
 |Stav vydaných verzí:|Obecná dostupnost (GA)|
 |Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .|
 |Požadované role a oprávnění:|**Vlastník** nebo **Přispěvatel** v příslušném předplatném Azure|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 ## <a name="connect-your-gcp-account"></a>Připojení účtu GCP
 
-Postupujte podle následujících kroků a vytvořte cloudový konektor GCP pro připojení vašich prostředků Google Cloud na úrovni organizace nebo projektu. 
+Vytvořte konektor pro každou organizaci, kterou chcete monitorovat z Security Center.
 
-> [!TIP]
-> Přečtěte si informace o hierarchii prostředků Google Cloud v jejich [online dokumentaci.](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
+Při připojování účtů GCP ke konkrétním předplatným Azure Vezměte v úvahu [hierarchii prostředků Google Cloud](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#resource-hierarchy-detail) a tyto pokyny:
+
+- Účty GCP můžete připojit k ASC na úrovni *organizace* .
+- K jednomu předplatnému Azure můžete připojit několik organizací.
+- Několik organizací můžete propojit s několika předplatnými Azure.
+- Když připojíte organizaci, přidají se všechny *projekty* v této organizaci do Security Center
+
+Pomocí následujících kroků vytvořte cloudový konektor GCP. 
 
 ### <a name="step-1-set-up-gcp-security-command-center-with-security-health-analytics"></a>Krok 1. Nastavení centra příkazů zabezpečení GCP s analýzou stavu zabezpečení
 
@@ -64,7 +70,7 @@ Když poprvé povolíte analýzu stavu zabezpečení, může trvat několik hodi
 
 ### <a name="step-2-enable-gcp-security-command-center-api"></a>Krok 2. Povolit rozhraní příkazového centra pro GCP zabezpečení
 
-1. V **knihovně rozhraní API pro cloudovou konzolu** Google vyberte projekt, ke kterému se chcete připojit Azure Security Center.
+1. V **knihovně rozhraní API pro cloudovou konzolu** Google vyberte každý projekt v organizaci, ke které se chcete připojit Azure Security Center.
 1. V knihovně rozhraní API vyhledejte a vyberte **zabezpečení Security Center API**.
 1. Na stránce rozhraní API vyberte **Povolit**.
 
@@ -73,7 +79,11 @@ Přečtěte si další informace o [rozhraní příkazového centra pro zabezpe�
 
 ### <a name="step-3-create-a-dedicated-service-account-for-the-security-configuration-integration"></a>Krok 3. Vytvoření vyhrazeného účtu služby pro integraci konfigurace zabezpečení
 
-1. V **konzole GCP** vyberte projekt, ke kterému se chcete připojit Security Center.
+1. V **konzole GCP** vyberte projekt z organizace, ve které vytváříte požadovaný účet služby. 
+
+    > [!NOTE]
+    > Když se tento účet služby přidá na úrovni organizace, bude se používat pro přístup k datům shromážděným z příkazového centra Security Center ze všech ostatních povolených projektů v organizaci. 
+
 1. V **navigační nabídce** v části **IAM & možnosti správy** vyberte **účty služeb**.
 1. Vyberte **vytvořit účet služby**.
 1. Zadejte název účtu a vyberte **vytvořit**.
@@ -84,7 +94,7 @@ Přečtěte si další informace o [rozhraní příkazového centra pro zabezpe�
     1. Přepněte na úroveň organizace.
     1. Vyberte **Přidat**.
     1. Do pole **noví členové** vložte **hodnotu e-mailu** , kterou jste zkopírovali dříve.
-    1. Zadejte roli jako **Security Center admin Viewer** a pak vyberte Uložit.
+    1. Zadejte roli jako **Security Center admin Viewer** a pak vyberte **Uložit**.
         :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="Nastavení relevantních oprávnění GCP":::
 
 
@@ -97,7 +107,7 @@ Přečtěte si další informace o [rozhraní příkazového centra pro zabezpe�
 1. Uložte tento soubor JSON pro pozdější použití.
 
 
-### <a name="step-5-connect-gcp-to-security-center"></a>Krok 5. Připojení GCP k Security Center 
+### <a name="step-5-connect-gcp-to-security-center"></a>Krok 5. Připojení GCP k Security Center
 1. V nabídce Security Center vyberte **cloudové konektory**.
 1. Vyberte Přidat účet GCP.
 1. Na stránce zprovoznění proveďte následující a potom vyberte **Další**.
@@ -126,8 +136,12 @@ Pokud chcete zobrazit všechna aktivní doporučení pro vaše prostředky podle
 
 ## <a name="faq-for-connecting-gcp-accounts-to-azure-security-center"></a>Nejčastější dotazy týkající se připojení účtů GCP k Azure Security Center
 
-### <a name="can-i-connect-multiple-gcp-accounts-to-security-center"></a>Můžu k Security Center připojit více účtů GCP?
-Ano. Jak je uvedeno výše, můžete připojit prostředky Google Cloud buď na úrovni organizace, nebo na úrovni projektu. Přečtěte si informace o hierarchii prostředků Google Cloud v jejich [online dokumentaci.](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
+### <a name="can-i-connect-multiple-gcp-organizations-to-security-center"></a>Můžu k Security Center připojit více organizací pro GCP?
+Ano. Konektor GCP Security Center propojuje vaše prostředky Google Cloud na úrovni *organizace* . 
+
+Vytvořte konektor pro každou GCP organizaci, kterou chcete monitorovat z Security Center. Když připojíte organizaci, přidají se do Security Center všechny projekty v této organizaci.
+
+Přečtěte si o hierarchii prostředků Google Cloud v [online dokumentech Google](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy).
 
 
 ### <a name="is-there-an-api-for-connecting-my-gcp-resources-to-security-center"></a>Existuje rozhraní API pro připojení prostředků GCP k Security Center?
@@ -138,3 +152,4 @@ Ano. Chcete-li vytvořit, upravit nebo odstranit Security Center konektory cloud
 Připojení účtu GCP je součástí prostředí s více cloudy, které je dostupné v Azure Security Center. Související informace najdete na následující stránce:
 
 - [Připojení účtů AWS k Azure Security Center](quickstart-onboard-aws.md)
+- [Cloudová hierarchie Google](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)– Přečtěte si informace o hierarchii prostředků cloudu Google v online dokumentaci Google.

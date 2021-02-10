@@ -338,7 +338,7 @@
         - name: Sestavování aplikací s využitím MySQL
           href: ../mysql/flexible-server/tutorial-deploy-wordpress-on-aks.md
           maintainContext: true
-        - name: Nasazení otevřené aplikace svobody nebo WebSphere svobody
+        - name: Sestavení aplikace s využitím Open svobody nebo WebSphere svoboda
           href: howto-deploy-java-liberty-app.md
         - name: Použití Azure API Managementu
           href: ../api-management/api-management-kubernetes.md

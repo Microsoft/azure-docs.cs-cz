@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: a618a5d94513f7d648d118ae3bebdb34e4f5b1c4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b1e0dbd23fa14c1bd79275d3f9ff6a164293ac19
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728855"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007342"
 ---
 # <a name="log-analytics-data-security"></a>Zabezpečení dat Log Analytics
 Účelem tohoto dokumentu je poskytnout informace, které jsou specifické pro Log Analytics, což je funkce Azure Monitor, která doplní informace na [Centrum zabezpečení Azure](https://www.microsoft.com/en-us/trust-center?rtc=1).  
@@ -173,6 +173,8 @@ Jak je popsáno výše, data z management server nebo přímo propojených agent
 Služba Log Analytics zajišťuje, že příchozí data pochází z důvěryhodného zdroje tím, že ověřuje certifikáty a integritu dat pomocí ověřování Azure. Nezpracovaná nezpracovaná data se pak uloží do centra událostí Azure v oblasti, kde budou data nakonec uložená v klidovém formátu. Typ uložených dat závisí na typech řešení, které byly naimportovány a použity ke shromažďování dat. Potom služba Log Analytics zpracuje nezpracovaná data a ingestuje je do databáze.
 
 Doba uchování shromážděných dat uložených v databázi závisí na zvoleném cenovém plánu. Pro úroveň *Free* je shromážděná data dostupná po dobu sedmi dnů. Pro *placenou* úroveň jsou shromážděná data dostupná po dobu 31 dnů ve výchozím nastavení, ale dají se prodloužit na 730 dní. Data jsou uložená v klidovém úložišti Azure Storage, aby se zajistila důvěrnost dat a data se replikují v rámci místní oblasti pomocí místně redundantního úložiště (LRS). Poslední dva týdny dat jsou také uloženy v mezipaměti založené na SSD a Tato mezipaměť je zašifrovaná.
+
+Data v úložišti databáze nelze po ingestování měnit, ale je možné je odstranit pomocí [cesty rozhraní API pro *vyprázdnění*](personal-data-mgmt.md#delete). I když data nejde změnit, některé certifikace vyžadují, aby byla data zachovaná neměnná a v úložišti se nedají změnit ani odstranit. Data neměnnosti je možné dosáhnout pomocí [exportu dat](logs-data-export.md) do účtu úložiště, který je nakonfigurovaný jako [neproměnlivé úložiště](../../storage/blobs/storage-blob-immutability-policies-manage.md).
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. pro přístup k datům použijte Log Analytics
 Pokud chcete získat přístup k pracovnímu prostoru Log Analytics, přihlaste se k Azure Portal pomocí účtu organizace nebo účet Microsoft, které jste dříve nastavili. Veškerý provoz mezi portálem a službou Log Analytics se odesílá přes zabezpečený kanál HTTPS. Při používání portálu se v klientském počítači (webovém prohlížeči) generuje ID relace a data se ukládají do místní mezipaměti, dokud se relace neukončí. Po ukončení se mezipaměť odstraní. Soubory cookie na straně klienta, které neobsahují identifikovatelné osobní údaje, se automaticky neodeberou. Soubory cookie relací jsou označeny jako HTTPOnly a jsou zabezpečené. Po předem určené době nečinnosti se Azure Portal relace ukončí.

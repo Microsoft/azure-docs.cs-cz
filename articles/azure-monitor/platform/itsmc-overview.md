@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 12/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: ed13837eabadc38cee50efac3b9340c973c8ea70
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: d22bb05ad6db3630e9b0242e098fd81f65e34b05
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492429"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007308"
 ---
 # <a name="it-service-management-connector-overview"></a>Přehled IT Service Management Connectoru
 
@@ -32,7 +32,8 @@ ITSMC podporuje připojení s následujícími ITSM nástroji:
 -   Cherwell
 
    >[!NOTE]
-> Naši zákazníci Cherwell a prov navrhují, aby používali [akci Webhooku](./action-groups.md#webhook) pro koncový bod Cherwell a prov jako jiné řešení pro integraci.
+> Od 1. října 2020 Cherwell a ITSM integrace s s výstrahou Azure už nebudou pro nové zákazníky povolené. Nová připojení ITSM se nepodporují.
+> Existující připojení ITSM budou podporována.
 
 Pomocí ITSMC můžete:
 

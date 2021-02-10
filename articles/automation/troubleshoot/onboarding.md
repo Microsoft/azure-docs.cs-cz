@@ -5,12 +5,12 @@ services: automation
 ms.subservice: ''
 ms.date: 06/30/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 6668fe3c30bd5187016ac2e0c766e7e78d5b3e8c
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 41388e46f5204acaa53f376bc05cebf975361dad
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896507"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008158"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>Řešení problémů s nasazením funkcí
 
@@ -148,7 +148,7 @@ Odeberte prostředky z následujících funkcí z pracovního prostoru, pokud je
 Po odebrání prostředků funkce můžete zrušit propojení pracovního prostoru. Je důležité vyčistit všechny existující artefakty z těchto funkcí z vašeho pracovního prostoru a účtu Automation:
 
 * V případě Update Management z účtu Automation odeberte **nasazení aktualizací (plány)** .
-* V případě Start/Stop VMS during off-hours odeberte všechny zámky na součástech funkcí v účtu Automation v části **Nastavení**  >  **zámků**. Další informace najdete v tématu [odebrání funkce](../automation-solution-vm-management.md#remove-the-feature).
+* V případě Start/Stop VMS during off-hours odeberte všechny zámky na součástech funkcí v účtu Automation v části **Nastavení**  >  **zámků**. Další informace najdete v tématu [odebrání funkce](../automation-solution-vm-management-remove.md).
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>Log Analytics pro chyby rozšíření Windows
 

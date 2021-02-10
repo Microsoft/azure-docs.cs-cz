@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: be807c7654123962f93820d9a3d54f3c7c070d97
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 049c24beb6bb1573458779bf0796357fa634898f
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526954"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008566"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Instalace a zřízení Azure IoT Edge pro Linux na zařízení s Windows (Preview)
 
@@ -27,6 +27,8 @@ V tomto článku jsou uvedené kroky pro nastavení IoT Edge na zařízení s Wi
 
 >[!NOTE]
 >IoT Edge pro Linux ve Windows je ve [verzi Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>
+>I když IoT Edge pro Linux ve Windows je Doporučené prostředí pro použití Azure IoT Edge v prostředí Windows, kontejnery Windows jsou stále k dispozici. Pokud dáváte přednost použití kontejnerů Windows, přečtěte si návod k [instalaci a správě Azure IoT Edge pro Windows](how-to-install-iot-edge-windows-on-windows.md).
 
 ## <a name="prerequisites"></a>Požadavky
 

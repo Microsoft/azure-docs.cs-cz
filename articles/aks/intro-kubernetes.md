@@ -3,34 +3,40 @@ title: Úvod do služby Azure Kubernetes Service
 description: Poznejte funkce a výhody služby Azure Kubernetes Service, při nasazování a správě aplikací založených na kontejnerech v Azure.
 services: container-service
 ms.topic: overview
-ms.date: 05/06/2019
+ms.date: 02/09/2021
 ms.custom: mvc
-ms.openlocfilehash: 4115ab2140cd3bf67135e494e16fb8121c040ff6
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 128195a32542923fba7b3f12c970c4cd941834b2
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246192"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006968"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
-Azure Kubernetes Service (AKS) usnadňuje nasazení spravovaného clusteru Kubernetes v Azure. AKS zjednodušuje správu Kubernetes a snižuje provozní režii s tím spojenou díky přenášení většiny zodpovědnosti na Azure. Jako hostovaná služba Kubernetes se za vás Azure stará o důležité úlohy, jako je monitorování stavu a údržba. Hlavní servery Kubernetes spravuje Azure. Pouze spravujete a udržujete uzly agentů. Jako spravované prostředí Kubernetes je AKS navíc zdarmaa platíte pouze za uzly agentů v rámci vašich clusterů, a ne za hlavní uzly.
+Služba Azure Kubernetes Service (AKS) zjednodušuje nasazení spravovaného clusteru Kubernetes v Azure tím, že převede do Azure přesměrování na velkou složitost a provozní režii. Jako hostovaná služba Kubernetes zpracovává Azure kritické úkoly, jako je monitorování stavu a údržba.  
 
-Cluster AKS na portálu Azure můžete vytvořit pomocí Azure CLI nebo šablony řízené možnostmi nasazení, jako jsou šablony Resource Manager a Terraform. Při nasazování clusteru AKS se hlavní uzel Kubernetes i všechny ostatní uzly nasadí a nakonfigurují za vás. Během procesu nasazení je možné nakonfigurovat také další funkce, jako jsou pokročilé síťové funkce, integrace s Azure Active Directory a monitorování. Kontejnery Windows serveru jsou podporované v AKS.
+Vzhledem k tomu, že hlavní servery Kubernetes spravuje Azure, spravujete a spravujete jenom uzly agentů. Proto je jako spravovaná služba Kubernetes AKS volná; platíte jenom za uzly agenta v rámci svých clusterů, a ne pro hlavní servery.  
+
+Cluster AKS můžete vytvořit pomocí Azure Portal, rozhraní příkazového řádku Azure, Azure PowerShell nebo pomocí možností nasazení na základě šablon, jako jsou například šablony Správce prostředků a Terraformu. Při nasazování clusteru AKS se hlavní uzel Kubernetes i všechny ostatní uzly nasadí a nakonfigurují za vás. Během procesu nasazení je možné nakonfigurovat také další funkce, jako jsou pokročilé síťové funkce, integrace s Azure Active Directory a monitorování. Kontejnery Windows serveru jsou podporované v AKS.
 
 Další informace o základech Kubernetes najdete v tématu [Kubernetes Core koncepty pro AKS][concepts-clusters-workloads].
 
-Abyste mohli začít, projděte si rychlé spuštění AKS [na portálu Azure][aks-portal] nebo [pomocí Azure CLI][aks-cli].
+Začněte tím, že [v Azure Portal][aks-portal] nebo [pomocí Azure CLI][aks-cli]dokončíte rychlý Start AKS.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="access-security-and-monitoring"></a>Přístup, zabezpečení a sledování
 
-Pro zlepšení zabezpečení a správy vám AKS umožňuje integrovat s Azure Active Directory a používat Kubernetes řízení přístupu na základě role (Kubernetes RBAC). Můžete také monitorovat stav vašeho clusteru a prostředků.
+Pro lepší zabezpečení a správu umožňuje AKS integraci s Azure Active Directory (Azure AD) a:
+* Použijte řízení přístupu na základě role (Kubernetes RBAC) Kubernetes. 
+* Monitorujte stav svého clusteru a prostředků.
 
 ### <a name="identity-and-security-management"></a>Správa identit a zabezpečení
 
-Aby AKS omezil přístup k prostředkům clusteru, podporuje [řízení přístupu na základě role (KUBERNETES RBAC) Kubernetes][kubernetes-rbac]. Kubernetes RBAC vám umožňuje řídit přístup k prostředkům a oborům názvů Kubernetes a oprávnění k těmto prostředkům. Cluster AKS můžete také nakonfigurovat tak, aby se integroval s Azure Active Directory (AD). S integrací Azure AD je možné nakonfigurovat přístup ke Kubernetes na základě členství ve skupinách a identit. Vašim stávajícím uživatelům Azure AD a skupinám lze poskytnout přístup k prostředkům AKS a s integrovanou možností přihlašování.
+Aby AKS omezil přístup k prostředkům clusteru, podporuje [KUBERNETES RBAC][kubernetes-rbac]. Kubernetes RBAC umožňuje řídit přístup a oprávnění k Kubernetes prostředkům a oborům názvů.  
+
+Můžete také nakonfigurovat cluster AKS pro integraci se službou Azure AD. S integrací služby Azure AD můžete nakonfigurovat přístup Kubernetes na základě stávající identity a členství ve skupinách. Stávající uživatele a skupiny Azure AD je možné poskytnout s integrovaným přihlašováním a přístupem k prostředkům AKS.  
 
 Další informace o identitě najdete v tématu [Možnosti přístupu a identit pro AKS][concepts-identity].
 
@@ -38,13 +44,15 @@ Informace, jak zabezpečit váš cluster AKS, najdete v tématu [Integrace Azure
 
 ### <a name="integrated-logging-and-monitoring"></a>Integrované protokolování a monitorování
 
-Abyste pochopili, jak pracuje váš cluster AKS a nasazené aplikace, Azure Monitor bude sledovat stav kontejneru a shromažďovat metriky paměti a procesoru z kontejnerů, uzlů a kontrolerů. Protokoly kontejneru jsou k dispozici a můžete také [zkontrolovat hlavní protokoly Kubernetes][aks-master-logs]. Tato data ze sledování se ukládají do pracovního prostoru služby Azure Log Analytics a jsou dostupná prostřednictvím webu Azure Portal, Azure CLI nebo koncového bodu REST.
+Azure Monitor pro stav kontejnerů shromažďuje metriky výkonu paměti a procesoru z kontejnerů, uzlů a řadičů v rámci clusteru AKS a nasazených aplikací. Můžete zkontrolovat protokoly kontejneru i [hlavní protokoly Kubernetes][aks-master-logs]. Tato data monitorování se ukládají v pracovním prostoru Azure Log Analytics a jsou dostupná prostřednictvím Azure Portal, Azure CLI nebo koncového bodu REST.
 
 Další informace najdete v tématu [Monitorování stavu kontejneru služby Azure Kubernetes Service][container-health].
 
 ## <a name="clusters-and-nodes"></a>Clustery a uzly
 
-Uzly AKS jsou spuštěny na virtuálních počítačích Azure. Můžete úložiště připojit k uzlům a podům, upgradovat komponenty clusteru a použít GPU. AKS podporuje clustery Kubernetes, které spouštějí více fondů uzlů pro podporu smíšených operačních systémů a kontejnerů Windows serveru. Uzly Linux spouštějí přizpůsobenou image operačního systému Ubuntu a uzly Windows serveru spouštějí přizpůsobenou bitovou kopii operačního systému Windows Server 2019.
+Uzly AKS běží na virtuálních počítačích Azure (VM). Pomocí uzlů AKS můžete připojit úložiště k uzlům a luskům, upgradovat součásti clusteru a používat GPU. AKS podporuje clustery Kubernetes, které spouštějí více fondů uzlů pro podporu smíšených operačních systémů a kontejnerů Windows serveru.  
+
+Další informace týkající se možností clusteru Kubernetes, uzlu a fondu uzlů najdete v tématu [Kubernetes Core koncepty pro AKS][concepts-clusters-workloads].
 
 ### <a name="cluster-node-and-pod-scaling"></a>Uzel clusteru a škálování podů
 
@@ -54,7 +62,7 @@ Další informace najdete v tématu [Škálování clusteru Azure Kubernetes Ser
 
 ### <a name="cluster-node-upgrades"></a>Upgrady uzlů clusteru
 
-Azure Kubernetes Service nabízí několik verzí Kubernetes. Jakmile budou v AKS k dispozici nové verze, můžete cluster upgradovat pomocí webu Azure Portal nebo Azure CLI. Během procesu upgradu jsou uzly pečlivě uzavřené a vyprázdněné, aby se minimalizovalo přerušení spuštěných aplikací.
+AKS nabízí několik verzí Kubernetes. Jakmile budou v AKS k dispozici nové verze, můžete cluster upgradovat pomocí webu Azure Portal nebo Azure CLI. Během procesu upgradu jsou uzly pečlivě uzavřené a vyprázdněné, aby se minimalizovalo přerušení spuštěných aplikací.  
 
 Další informace o verzích životního cyklu, naleznete v tématu [Podporované verze Kubernetes v AKS][aks-supported versions]. Další postup, jak upgradovat, najdete v tématu [Upgrade clusteru Azure Kubernetes Service (AKS)][aks-upgrade].
 
@@ -66,13 +74,13 @@ Další informace najdete v tématu [Použití grafických procesorů v AKS][aks
 
 ### <a name="confidential-computing-nodes-public-preview"></a>Důvěrné výpočetní uzly (Public Preview)
 
-AKS podporuje vytváření fondů pro důvěrné výpočetní prostředí založené na Intel SGX (virtuální počítače DCSv2). V případě důvěrných výpočetních uzlů je možné kontejnery spouštět v prostředí pro důvěryhodné spuštění založené na hardwaru (enclaves). Izolace mezi kontejnery v kombinaci s integritou kódu prostřednictvím ověření identity vám může pomáhat s vaší ochrannou strategií zabezpečení kontejneru v rámci důkladné ochrany. Uzly důvěrného zpracování podporují důvěrné kontejnery (existující aplikace Docker) i kontejnery s podporou enklávy.
+AKS podporuje vytváření fondů pro důvěrné výpočetní uzly založené na Intel SGX (virtuální počítače DCSv2). V případě důvěrných výpočetních uzlů je možné kontejnery spouštět v prostředí enclaves (Trusted Execution Environment). Izolace mezi kontejnery v kombinaci s integritou kódu prostřednictvím ověření identity vám může pomáhat s vaší ochrannou strategií zabezpečení kontejneru v rámci důkladné ochrany. Důvěrné výpočetní uzly podporují důvěrné kontejnery (existující aplikace Docker) i kontejnery s podporou enklávy.
 
 Další informace najdete v tématu [důvěrné výpočetní uzly v AKS][conf-com-node].
 
 ### <a name="storage-volume-support"></a>Podpora svazků úložiště
 
-Můžete připojit svazky úložiště pro trvalý přístup dat, abyste podpořili úlohy aplikací. Je možné použít jak statické, tak dynamické svazky. V závislosti na tom, kolik připojených podů sdílí úložiště, můžete použít úložiště s podporu disků Azure pro přístup jednoho podu nebo soubory Azure pro přístup více souběžných podů.
+Můžete připojit svazky úložiště pro trvalý přístup dat, abyste podpořili úlohy aplikací. Můžete použít statické i dynamické svazky. V závislosti na počtu připojení, které očekáváte ke sdílení svazků úložiště, můžete využít úložiště zajištěné buď disky Azure pro přístup k jednomu z nich, nebo soubory Azure pro více souběžných přístupů.
 
 Další informace najdete v tématu [Možnosti úložiště pro aplikace v AKS][concepts-storage].
 
@@ -80,25 +88,31 @@ Začněte s dynamickými trvalými svazky na [discích Azure][azure-disk] nebo v
 
 ## <a name="virtual-networks-and-ingress"></a>Virtuální sítě a příchozí přenos dat
 
-Cluster AKS je možné nasadit do stávající virtuální sítě. V této konfiguraci se ke každému podu v clusteru přiřadí IP adresa ve virtuální síti a pody tak můžou komunikovat přímo s ostatními pody v clusteru a dalšími uzly ve virtuální síti. Lusky se taky můžou připojit k ostatním službám v partnerské virtuální síti a k místním sítím přes ExpressRoute nebo připojení VPN typu Site-to-Site (S2S).
+Cluster AKS je možné nasadit do stávající virtuální sítě. V této konfiguraci je každé z nich v clusteru přiřazená IP adresa ve virtuální síti a může přímo komunikovat s dalšími lusky v clusteru a dalšími uzly ve virtuální síti. Lusky se taky můžou připojit k ostatním službám v partnerské virtuální síti a k místním sítím přes ExpressRoute nebo připojení VPN typu Site-to-Site (S2S).  
 
 Další informace najdete v tématu [Koncepty sítě pro aplikace v AKS][aks-networking].
 
-Jak začít s přenosem příchozích dat, najdete v článku [Směrování aplikace HTTP][aks-http-routing].
-
 ### <a name="ingress-with-http-application-routing"></a>Příchozí přenos dat se směrováním aplikace HTTP
 
-Doplněk směrování aplikace HTTP usnadňuje přístup aplikace nasazené na clusteru AKS. Když je povolené, řešení směrování aplikace HTTP nakonfiguruje v clusteru AKS kontroler příchozího přenosu dat. Při nasazování aplikací se automaticky konfigurují veřejně přístupné názvy DNS. Směrování aplikace HTTP nakonfiguruje zónu DNS a integruje ji do clusteru AKS. Pak můžete nasadit prostředky příchozího přenosu dat Kubernetes jako za běžných okolností.
+Doplněk směrování aplikace HTTP usnadňuje přístup aplikace nasazené na clusteru AKS. Když je povolené, řešení směrování aplikace HTTP nakonfiguruje v clusteru AKS kontroler příchozího přenosu dat.  
+
+Při nasazení aplikací jsou všechny veřejně dostupné názvy DNS nakonfigurované. Směrování aplikace HTTP nastaví zónu DNS a integruje ji do clusteru AKS. Pak můžete nasadit prostředky příchozího přenosu dat Kubernetes jako za běžných okolností.  
 
 Jak začít s přenosem příchozích dat, najdete v článku [Směrování aplikace HTTP][aks-http-routing].
 
 ## <a name="development-tooling-integration"></a>Integrace nástrojů pro vývoj
 
-Kubernetes má bohatou ekosystém nástrojů pro vývoj a správu, jako je Helm a rozšíření Kubernetes pro Visual Studio Code. Tyto nástroje bez problémů fungují s AKS.
+Kubernetes má bohatou ekosystém nástrojů pro vývoj a správu, které bez problémů fungují s AKS. Mezi tyto nástroje patří Helm a rozšíření Kubernetes pro Visual Studio Code. Tyto nástroje bez problémů fungují s AKS.  
 
-Služba Azure Dev Spaces navíc poskytuje rychlé a iterativní vývojové prostředí Kubernetes pro týmy. S minimální konfigurací můžete spouštět a ladit kontejnery přímo v AKS. Jak začít, najdete v článku [Azure Dev Spaces][azure-dev-spaces].
+Azure navíc poskytuje několik nástrojů, které zjednodušují Kubernetes, jako je například Azure Dev Spaces a DevOps Starter.  
 
-DevOps Starter poskytuje jednoduché řešení pro vložení stávajícího kódu a úložišť Git do Azure. DevOps Starter automaticky vytvoří prostředky Azure, jako je AKS, kanál vydání v Azure DevOps Services, který obsahuje kanál sestavení pro CI, nastaví pro CD kanál pro vydávání verzí a pak vytvoří prostředek Azure Application Insights pro monitorování.
+Služba Azure Dev Spaces poskytuje rychlé a iterativní vývojové prostředí Kubernetes pro týmy. S minimální konfigurací můžete spouštět a ladit kontejnery přímo v AKS. Jak začít, najdete v článku [Azure Dev Spaces][azure-dev-spaces].
+
+DevOps Starter poskytuje jednoduché řešení pro vložení stávajícího kódu a úložišť Git do Azure. DevOps Starter automaticky:
+* Vytvoří prostředky Azure (například AKS); 
+* Nakonfiguruje kanál vydání v Azure DevOps Services, který obsahuje kanál sestavení pro CI; 
+* Nastaví pro CD kanál verze; ani 
+* Vygeneruje prostředek Azure Application Insights pro monitorování. 
 
 Další informace najdete v tématu [DevOps Starter][azure-devops].
 
@@ -110,15 +124,15 @@ Pokud chcete vytvořit úložiště privátních imagí, přečtěte si téma [A
 
 ## <a name="kubernetes-certification"></a>Certifikace Kubernetes
 
-Azure Kubernetes Service (AKS) má certifikaci CNFC a je tedy v souladu s Kubernetes.
+AKS je CNCF – certifikováno jako Kubernetesické podmínky.
 
 ## <a name="regulatory-compliance"></a>Dodržování legislativní předpisů
 
-Azure Kubernetes Service (AKS) je kompatibilní s normami SOC, ISO, PCI DSS a HIPAA. Další informace najdete v tématu [Přehled dodržování předpisů Microsoft Azure][compliance-doc].
+AKS je kompatibilní s SOC, ISO, PCI DSS a HIPAA. Další informace najdete v tématu [Přehled dodržování předpisů Microsoft Azure][compliance-doc].
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o nasazení a správě AKS najdete v rychlých startech pro Azure CLI.
+Další informace o nasazení a správě AKS najdete v rychlém startu Azure CLI.
 
 > [!div class="nextstepaction"]
 > [Rychlý start pro AKS][aks-cli]

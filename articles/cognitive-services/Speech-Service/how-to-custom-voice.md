@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 4e487a3eab70e7d561468a8fac2103e177d2abc5
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: eff51c8568ce82c9d8d21bff7a2ba079c291679c
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524971"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007291"
 ---
 # <a name="get-started-with-custom-voice"></a>Začínáme se službou Custom Voice
 
@@ -66,6 +66,18 @@ Pokud chcete vytvořit svůj první projekt, vyberte kartu **Převod textu na ř
 
 > [!IMPORTANT]
 > [Vlastní hlasový portál](https://aka.ms/custom-voice) se nedávno aktualizoval. Pokud jste vytvořili předchozí data, modely, testy a publikované koncové body na portálu CRIS.ai nebo pomocí rozhraní API, je potřeba vytvořit nový projekt na novém portálu pro připojení k těmto starým entitám.
+
+## <a name="how-to-migrate-to-custom-neural-voice"></a>Postup migrace na vlastní neuronové hlas
+
+Pokud používáte vlastní hlas bez neuronové (nebo standardního), zvažte, jestli chcete migrovat na vlastní neuronové hlas hned podle následujících kroků. Přechod na vlastní neuronové hlas vám pomůže vyvíjet realističtější hlasy ještě více přirozených konverzací a umožnit zákazníkům a koncovým uživatelům těžit z nejnovější technologie pro převod textu na řeč, a to podle zodpovědného způsobu. 
+
+1. Přečtěte si další informace o našich [zásadách pro omezení přístupu](https://aka.ms/gating-overview) a [použijte je tady](https://aka.ms/customneural). Všimněte si, že přístup k vlastní hlasové službě neuronové se může vztahovat jenom na naše kritérium týkající se nároků Microsoftu. Zákazníci mohou získat přístup k technologii až po kontrole jejich aplikace a potvrdili, že ji budou používat v souladu se svými [odpovědnými principy AI](https://microsoft.com/ai/responsible-ai) a [kodexem chování](https://aka.ms/custom-neural-code-of-conduct). 
+2. Jakmile je vaše aplikace schválená, budete mít přístup k funkci školení "neuronové". Ujistěte se, že se přihlašujete k [vlastnímu hlasovému portálu](https://speech.microsoft.com/customvoice) pomocí stejného předplatného Azure, které zadáte ve své aplikaci. 
+    > [!IMPORTANT]
+    > Abychom chránili hlasové talentůy a zabránili školením v hlasových modelech s neoprávněným záznamem nebo bez potvrzení ze služby Voice talentů, potřebujeme, aby zákazník nahrál zaznamenané prohlášení o hlasovém talentůu, které poskytuje svůj souhlas. Při přípravě skriptu nahrávání nezapomeňte zahrnout tuto větu. "I [stav vašeho jména a příjmení] si uvědomte, že nahrávky mého hlasu budou použity uživatelem [State název společnosti] k vytvoření a použití syntetické verze mého hlasu."
+    > Tato věta se musí nahrát na kartu **Voice talentů** jako soubor ústního souhlasu. Použije se k ověření, jestli nahrávky v datových sadách pro školení provádí stejná osoba, která tento souhlas provádí.
+3. Po vytvoření vlastního neuronové hlasového modelu nasaďte hlasový model do nového koncového bodu. Pokud chcete vytvořit nový vlastní hlasový koncový bod pomocí neuronové hlasového modelu, přečtěte si **text na řeč > vlastního nasazení hlasových >**. Vyberte **nasadit model** a zadejte **název** a **Popis** vlastního koncového bodu. Pak vyberte vlastní hlasový model neuronové, který chcete přidružit k tomuto koncovému bodu, a potvrďte nasazení.  
+4. Pokud jste vytvořili nový koncový bod s novým modelem, aktualizujte si kód v aplikacích. 
 
 ## <a name="next-steps"></a>Další kroky
 
