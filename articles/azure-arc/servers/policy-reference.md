@@ -1,15 +1,15 @@
 ---
 title: Předdefinované definice zásad pro servery s podporou ARC Azure
 description: Uvádí Azure Policy předdefinované definice zásad pro servery s podporou ARC Azure (Preview). Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 23aebddae59219eec6b95c55b51f59c8137a9c84
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 120916f6007e0c62db7a81b58c598709db791ae5
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99561073"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091005"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-servers"></a>Azure Policy předdefinované definice pro servery s podporou ARC Azure
 

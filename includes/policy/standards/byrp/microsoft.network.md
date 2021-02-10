@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 192a57dbca523125ea5c13c7f9c41efd7fe99baa
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: a4f16067fa8837fa0f1062ba4cc8c2c1daf5d22b
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558167"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091278"
 ---
 ## <a name="azure-security-benchmark"></a>Srovnávací test zabezpečení Azure
 
@@ -147,6 +147,20 @@ Další informace o tomto standardu dodržování předpisů najdete v tématu [
 |Zabezpečení Network Services |0837.09. n2Organizational. 2 – 09. n |Formální smlouvy s externími poskytovateli informačních systémů zahrnují zvláštní povinnosti pro zabezpečení a ochranu osobních údajů. |[Network Watcher by měl být povolený.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
 |Zabezpečení Network Services |0886.09 n2Organizational. 4 – 09. n |Organizace zaměstnává a dokumentuje v rámci formální smlouvy nebo jiného dokumentu, a to i) Allow-all, Deny-by-Exception nebo II) Deny-All, Permit-by-Exception (upřednostňovaná), zásady, které umožní konkrétním informačním systémům připojit se k externím informačním systémům. |[Network Watcher by měl být povolený.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
 |Zabezpečení Network Services |0888.09 n2Organizational. 6 – 09. n |Smlouva s externím/nezdrojovým poskytovatelem služeb zahrnuje specifikaci, kterou poskytovatel služeb zodpovídá za ochranu zahrnutých informací, které jsou sdílené. |[Network Watcher by měl být povolený.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
+
+## <a name="new-zealand-ism"></a>Nový Zéland ISM
+
+Pokud chcete zjistit, jak jsou dostupné Azure Policy vestavěné pro všechny služby Azure namapovány na tento standard dodržování předpisů, přečtěte si téma [Azure Policy legislativní dodržování předpisů – Nový Zéland informace Security Security Manual](../../../../articles/governance/policy/samples/new-zealand-ism.md).
+Další informace o tomto standardu dodržování předpisů najdete v tématu [Příručka k informacím o Novém Zélandu pro zabezpečení](https://www.nzism.gcsb.govt.nz/).
+
+|Doména |ID ovládacího prvku |Název ovládacího prvku |Zásady<br /><sub>(Azure Portal)</sub> |Verze zásady<br /><sub>GitHubu</sub>  |
+|---|---|---|---|---|
+|Zabezpečení sítě |NS-5 |18.3.19 obsah plánu odpovědí na DOS (Denial of Service) |[Měla by být povolená Azure DDoS Protection Standard.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa7aca53f-2ed4-4466-a25e-0b45ade68efd) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableDDoSProtection_Audit.json) |
+|Zabezpečení sítě |NS – 7 |18.4.10 škodlivého kódu – míry |[Veškerý internetový provoz by měl být směrován prostřednictvím nasazené Azure Firewall](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc5e4038-4584-4632-8c85-c0448d374b2c) |[3.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/ASC_All_Internet_traffic_should_be_routed_via_Azure_Firewall.json) |
+|Zabezpečení sítě |NS – 7 |18.4.10 škodlivého kódu – míry |[Firewall webových aplikací (WAF) by měla být povolená pro Application Gateway](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F564feb30-bf6a-4854-b4bb-0d2d2d1e6c66) |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AppGatewayEnabled_Audit.json) |
+|Zabezpečení sítě |NS – 7 |18.4.10 škodlivého kódu – míry |[Služba WAF (firewall webových aplikací) by měla být povolená pro službu Azure front-dveří](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F055aa869-bc98-4af8-bafc-23f1ab6ffe2c) |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AFD_Enabled_Audit.json) |
+|Zabezpečení sítě |NS – 7 |18.4.10 škodlivého kódu – míry |[Firewall webových aplikací (WAF) by měl používat zadaný režim pro Application Gateway](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12430be1-6cc8-4527-a9a8-e3d38f250096) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AppGatewayMode_Audit.json) |
+|Zabezpečení sítě |NS – 7 |18.4.10 škodlivého kódu – míry |[Firewall webových aplikací (WAF) by měl používat zadaný režim pro službu Azure front-dveří](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F425bea59-a659-4cbb-8d31-34499bd030b8) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AFD_Mode_Audit.json) |
 
 ## <a name="nist-sp-800-171-r2"></a>NIST SP 800-171 R2
 

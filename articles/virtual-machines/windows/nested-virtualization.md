@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 03df7db13ebd3ebec407bb046cc735c835e01068
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e85ac58c80e1fd695938bf09b6435dba1f4ee083
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87074254"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091342"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Jak povolit vnořenou virtualizaci na virtuálním počítači Azure
 
@@ -24,7 +24,7 @@ Tento článek vás provede povolením technologie Hyper-V na VIRTUÁLNÍm poč�
 
 Vytvořte nový virtuální počítač Azure s Windows serverem 2016. Úplný seznam velikostí virtuálních počítačů, které podporují vnořování, najdete v [článku výpočetní jednotky Azure](../acu.md).
 
-Nezapomeňte si vybrat velikost virtuálního počítače dostatečně velkou, aby se podporovaly požadavky hostovaného virtuálního počítače. V tomto příkladu používáme D3_v3 velikosti virtuálního počítače Azure. 
+Nezapomeňte si vybrat velikost virtuálního počítače dostatečně velkou, aby se podporovaly požadavky hostovaného virtuálního počítače. V tomto příkladu používáme D4_v3 velikosti virtuálního počítače Azure. 
 
 Místní dostupnost virtuálních počítačů s Dv3 nebo Ev3 Series můžete zobrazit [zde](https://azure.microsoft.com/regions/services/).
 
@@ -143,7 +143,7 @@ Pomocí následujících kroků nakonfigurujte DHCP na virtuálním počítači 
   
 2. V průvodci klikněte na **Další** , dokud nepřejdete na stránku role serveru.
   
-3. Zaškrtněte políčko **Server DHCP** , klikněte na **Přidat funkce**a potom klikněte na **Další** , dokud Průvodce nedokončíte.
+3. Zaškrtněte políčko **Server DHCP** , klikněte na **Přidat funkce** a potom klikněte na **Další** , dokud Průvodce nedokončíte.
   
 4. Klikněte na **Install** (Nainstalovat).
 
@@ -151,7 +151,7 @@ Pomocí následujících kroků nakonfigurujte DHCP na virtuálním počítači 
 
 1. Otevřete Správce DHCP.
   
-2. V navigačním podokně rozbalte název serveru, klikněte pravým tlačítkem na **IPv4**a pak klikněte na **Nový obor**. Zobrazí se Průvodce vytvořením oboru, klikněte na tlačítko **Další**.
+2. V navigačním podokně rozbalte název serveru, klikněte pravým tlačítkem na **IPv4** a pak klikněte na **Nový obor**. Zobrazí se Průvodce vytvořením oboru, klikněte na tlačítko **Další**.
   
 3. Zadejte název a popis oboru a klikněte na **Další**.
   

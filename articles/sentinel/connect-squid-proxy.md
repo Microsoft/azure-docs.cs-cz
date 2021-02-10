@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: b183abf8d42e6f4b1c43db2d87b2650721e0c2a9
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: eec88bf85f1b7a2ec8db2bf23c43629d84cc5106
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567899"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100090441"
 ---
 # <a name="connect-your-squid-proxy-to-azure-sentinel"></a>Připojení proxy serveru Squid ke službě Azure Sentinel
 
 > [!IMPORTANT]
 > Konektor proxy serveru Squid je aktuálně ve **verzi Preview**. Další právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti, najdete v tématu dodatečné [podmínky použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview.
 
-Tento článek vysvětluje, jak připojit zařízení proxy Squid ke službě Azure Sentinel. Konektor pro data proxy serveru Squid vám umožňuje snadno připojit protokoly Squid ke službě Azure Sentinel, abyste mohli zobrazit data v sešitech, používat je k vytváření vlastních výstrah a začlenit je k vylepšení šetření. Integrace mezi proxy Squid a službou Azure Sentinel využívá protokol syslog.
+Tento článek vysvětluje, jak připojit zařízení proxy Squid ke službě Azure Sentinel. Konektor pro data proxy serveru Squid vám umožňuje snadno připojit protokoly Squid ke službě Azure Sentinel, abyste mohli zobrazit data v sešitech, používat je k vytváření vlastních výstrah a začlenit je k vylepšení šetření. Integrace mezi proxy Squid a službou Azure Sentinel využívá při zpracování místních souborů Log Analytics agenta.
 
 > [!NOTE]
 > Data budou uložená v geografickém umístění pracovního prostoru, na kterém běží Azure Sentinel.
@@ -35,9 +35,9 @@ Tento článek vysvětluje, jak připojit zařízení proxy Squid ke službě Az
 
 - V pracovním prostoru Azure Sentinel musíte mít oprávnění ke čtení a zápisu.
 
-## <a name="forward-squid-proxy-logs-to-the-syslog-agent"></a>Přeposílání protokolů proxy serveru do agenta syslog Squid  
+## <a name="forward-squid-proxy-logs-to-the-log-analytics-agent"></a>Dopředné protokoly proxy serveru Squid k agentovi Log Analytics  
 
-Nakonfigurujte proxy server Squid pro přeposílání zpráv syslog do pracovního prostoru Azure prostřednictvím agenta syslog.
+Nakonfigurujte proxy server Squid pro posílání souborů protokolu do pracovního prostoru Azure prostřednictvím agenta Log Analytics.
 
 1. V nabídce navigace v Azure Sentinel vyberte **datové konektory**.
 

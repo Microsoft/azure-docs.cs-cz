@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0a082149d85736000b5bb6a91e2fc7132205a88
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 6f17f6eb913d1ea54e8db6acd369d165553e16ec
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220282"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091036"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Plánování a nasazení místní Azure Active Directory ochrany heslem
 
@@ -85,7 +85,8 @@ Platí následující základní požadavky:
 * Všechny počítače, včetně řadičů domény, které mají nainstalované komponenty ochrany hesel služby Azure AD, musí mít nainstalovaný modul Universal C Runtime.
     * Modul runtime můžete získat tak, že zajistíte, že máte všechny aktualizace z web Windows Update. Nebo ho můžete získat v balíčku aktualizací specifických pro konkrétní operační systém. Další informace najdete v tématu [aktualizace pro Universal C Runtime v systému Windows](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).
 * Potřebujete účet, který má oprávnění správce domény služby Active Directory v kořenové doméně doménové struktury k registraci doménové struktury služby Active Directory Windows serveru v Azure AD.
-* Služba distribuce klíčů musí být povolená na všech řadičích domény v doméně, která běží na Windows Serveru 2012. Ve výchozím nastavení je tato služba povolená přes ruční spuštění aktivační události.
+* Služba distribuce klíčů musí být povolená na všech řadičích domény v doméně, která běží na Windows Serveru 2012 a novějších verzích. Ve výchozím nastavení je tato služba povolená přes ruční spuštění aktivační události.
+
 * Mezi aspoň jedním řadičem domény v každé doméně a aspoň jedním serverem, který hostuje proxy službu pro ochranu hesel Azure AD, musí existovat síťové připojení. Toto připojení musí řadiči domény dovolit přístup k portu mapovače koncových bodů RPC 135 a portu serveru RPC na proxy službě.
     * Ve výchozím nastavení je port serveru RPC dynamickým portem RPC, ale je možné ho nakonfigurovat tak, aby [používal statický port](#static).
 * Všechny počítače, ve kterých bude nainstalovaná služba proxy ochrany heslem Azure AD, musí mít síťový přístup k následujícím koncovým bodům:

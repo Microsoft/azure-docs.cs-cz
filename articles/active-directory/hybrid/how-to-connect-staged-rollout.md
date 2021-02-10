@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10fe3b895ea5084247822f1c35275e68d80b73fa
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: c9e0a645bc580ab3a0794ca6ded1e60159df7d92
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762983"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100090594"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrace na cloudové ověřování pomocí připraveného zavedení (Preview)
 
@@ -83,10 +83,6 @@ Následující scénáře nejsou podporovány pro fáze zavedení:
     - Pro fáze zavedení se *nepodporují* dynamické skupiny.
     - Objekty kontaktu uvnitř skupiny zablokují přidávání skupiny.
 
-- Ke konečnému přímou migraci je potřeba z federovaných na cloudové ověřování vytvořit pomocí Azure AD Connect nebo PowerShellu. Při přípravě na přípravu se nemění doména ze federované na spravovanou.  Další informace o přímou migraci domény najdete v článku [migrace z federace na synchronizaci hodnoty hash hesla](plan-migrate-adfs-password-hash-sync.md) a [migrace z federace na předávací ověřování](plan-migrate-adfs-pass-through-authentication.md) .
-
-
-
 - Když poprvé přidáte skupinu zabezpečení pro dvoufázové zavedení, budete omezeni na 200 uživatelů, aby nedocházelo k vypršení časového limitu uživatelského prostředí. Po přidání skupiny můžete podle potřeby přidat do ní další uživatele přímo.
 
 - I když jsou uživatelé v dvoufázové zavedení, pokud je povolená možnost EnforceCloudPasswordPolicyForPasswordSyncedUsers, zásada vypršení platnosti hesla je nastavená na 90 dní bez možnosti vlastního nastavení. 
@@ -95,7 +91,9 @@ Následující scénáře nejsou podporovány pro fáze zavedení:
 
 - Hybridní připojení Windows 10 nebo získání primárního obnovovacího tokenu služby Azure AD JOIN pro všechny verze, když místní hlavní název uživatele (UPN) není směrovatelný. Tento scénář se vrátí do koncového bodu WS-Trust v režimu připraveného zavedení, ale přestane fungovat, když je dokončená migrace připravené a přihlášení uživatele se už nespoléhá na federační server.
 
-
+  >[!NOTE]
+  >Ke konečnému přímou migraci je potřeba z federovaných na cloudové ověřování vytvořit pomocí Azure AD Connect nebo PowerShellu. Při přípravě na přípravu se nemění doména ze federované na spravovanou.  Další informace o přímou migraci domény najdete v článku [migrace z federace na synchronizaci hodnoty hash hesla](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso) a [migrace z federace na předávací ověřování](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso) .
+  
 ## <a name="get-started-with-staged-rollout"></a>Začínáme s fází uvedení do provozu
 
 Pokud chcete otestovat přihlášení k *synchronizaci hodnot hash hesel* pomocí připraveného zavedení, postupujte podle pokynů v následující části.
@@ -257,3 +255,5 @@ Odpověď: Ano. Další informace o tom, jak používat PowerShell k prováděn�
 
 ## <a name="next-steps"></a>Další kroky
 - [Azure AD 2,0 Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
+- [Změna metody přihlášení na synchronizaci hodnot hash hesel](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
+- [Změna metody přihlášení na předávací ověřování](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)

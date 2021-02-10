@@ -143,6 +143,8 @@
                   href: resilience-client-app.md
                 - name: Aplikace démona
                   href: resilience-daemon-app.md
+            - name: Monitorovat stav aplikace pro odolnost
+              href: monitor-sign-in-health-for-resilience.md
         - name: Certifikační autority použité v Azure
           href: certificate-authorities.md
     - name: Průvodce nasazením
