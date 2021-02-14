@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 30852b6b3f9a4b490c4b58fe07f34ee49c60fa9f
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 250c1ef837793c2149ff653f395f40272cf43335
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955242"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384941"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>Vytvoření PostgreSQL skupiny serverů s škálovatelným škálováním pomocí nástrojů Kubernetes
 
@@ -44,14 +44,14 @@ data:
   password: <your base64 encoded password>
 kind: Secret
 metadata:
-  name: example-login-secret
+  name: pg1-login-secret
 type: Opaque
 ---
 apiVersion: arcdata.microsoft.com/v1alpha1
 kind: postgresql-12
 metadata:
   generation: 1
-  name: example
+  name: pg1
 spec:
   engine:
     extensions:
@@ -107,7 +107,7 @@ echo '<your string to encode here>' | base64
 
 ### <a name="customizing-the-name"></a>Přizpůsobení názvu
 
-Šablona má pro atribut Name hodnotu example.  Můžete to změnit, ale musí to být znaky, které následují jako standard názvů DNS.  Je také nutné změnit název tajného kódu tak, aby odpovídal.  Pokud například změníte název skupiny serverů PostgreSQL s podporou škálování na postgres1, musíte změnit název tajného kódu z ' priklad-Login-Secret ' na ' postgres1-Login-Secret '
+Šablona má pro atribut Name hodnotu ' SO1 '.  Můžete to změnit, ale musí to být znaky, které následují jako standard názvů DNS.  Je také nutné změnit název tajného kódu tak, aby odpovídal.  Pokud například změníte název skupiny serverů PostgreSQL s podporou škálování na SO2, musíte změnit název tajného kódu z ' SO1-Login-Secret ' na ' SO2-Login-tajná '
 
 ### <a name="customizing-the-engine-version"></a>Přizpůsobení verze modulu
 
@@ -152,10 +152,10 @@ kubectl create -n <your target namespace> -f <path to your yaml file>
 Vytvoření skupiny serverů PostgreSQL se škálováním na více systémů bude trvat několik minut. Průběh můžete sledovat v jiném okně terminálu pomocí následujících příkazů:
 
 > [!NOTE]
->  V ukázkových příkazech se předpokládá, že jste vytvořili PostgreSQL skupinu serverů s názvem postgres1 a obor názvů Kubernetes s názvem ARC.  Pokud jste použili jiný název skupiny serverů PostgreSQL s vlastním rozsahem, můžete "ARC" a "postgres1" nahradit názvy.
+>  V ukázkových příkazech se předpokládá, že jste vytvořili PostgreSQL skupinu serverů s názvem SO1 a obor názvů Kubernetes s názvem ARC.  Pokud jste použili jiný název skupiny serverů PostgreSQL s vlastním rozsahem, můžete "ARC" a "SO1" nahradit názvy.
 
 ```console
-kubectl get postgresql-12/postgres1 --namespace arc
+kubectl get postgresql-12/pg1 --namespace arc
 ```
 
 ```console
@@ -168,7 +168,7 @@ Stav vytvoření kteréhokoli z nich můžete také ověřit spuštěním přík
 kubectl describe po/<pod name> --namespace arc
 
 #Example:
-#kubectl describe po/postgres1-0 --namespace arc
+#kubectl describe po/pg1-0 --namespace arc
 ```
 
 ## <a name="troubleshooting-creation-problems"></a>Řešení potíží s vytvářením

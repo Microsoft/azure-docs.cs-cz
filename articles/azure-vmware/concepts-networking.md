@@ -3,12 +3,12 @@ title: Koncepty – Network vzájemné propojení
 description: Přečtěte si o klíčových aspektech a případech použití sítě a vzájemné propojení v řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: bc8a2f8c07a2a4fe37c4899dc33d5173a99dc423
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: ddf8f5b6aa06154a6edde7b4a78902d8f13eab78
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538971"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364898"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Sítě řešení Azure VMware a koncepty vzájemné propojení
 
@@ -69,4 +69,5 @@ Teď, když jste se seznámili s koncepty sítě řešení Azure VMware a vzáje
 [enable Global Reach]: ../expressroute/expressroute-howto-set-global-reach.md
 
 <!-- LINKS - internal -->
-
+[concepts-upgrades]: ./concepts-upgrades.md
+[concepts-storage]: ./concepts-storage.md

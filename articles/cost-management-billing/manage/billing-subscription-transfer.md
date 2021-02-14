@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 87f29395e716ad3f06a99d6243b080acf86e4310
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 2fb1a8c3e583a4bdc88f2b61844e9bcb16dc7cdf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979421"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367193"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Převod vlastnictví fakturace předplatného Azure na jiný účet
 
@@ -91,9 +91,12 @@ Pokud máte potíže s převodem předplatných, využijte následující inform
 
 ### <a name="original-azure-subscription-billing-owner-leaves-your-organization"></a>Vlastník fakturace původního předplatného Azure opouští vaši organizaci.
 
-Je možné, že původní vlastník fakturace, který vytvořil účet Azure a předplatné Azure, opouští vaši organizaci. Pokud k této situaci dojde, jejich identita uživatele už není v Azure Active Directory organizace. Předplatné Azure pak nemá vlastníka fakturace. Tato situace brání komukoli v provádění fakturačních operací s účtem, včetně zobrazení a platby za účty. Předplatné může přejít k dřívějšímu stavu. Předplatné by nakonec mohlo být zakázané kvůli neplatbě. Předplatné by nakonec mohlo být odstraněno a mělo by to mít vliv na všechny služby spuštěné v rámci předplatného.
+> [!Note]
+> Tato část se týká konkrétně fakturačního účtu smlouvy o zákaznících Microsoftu. Ověřte, jestli máte přístup k [smlouvě o zákaznících Microsoftu](mca-request-billing-ownership.md#check-for-access).
 
-Pokud předplatné už nemá platného platebního vlastníka, Azure pošle e-mail ostatním vlastníkům fakturace, správcům služeb, spolusprávcům a vlastníkům předplatného, které o situaci pomohou, a poskytne jim odkaz na přijetí vlastnictví fakturace předplatného. Kterýkoli z uživatelů může vybrat odkaz pro příjem vlastnictví fakturace. Další informace o fakturačních rolích najdete v tématu [role fakturace](understand-mca-roles.md) a [klasické role a role Azure RBAC](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+Je možné, že původní vlastník fakturačního účtu, který vytvořil účet Azure a předplatné Azure, odejde z vaší organizace. Pokud k této situaci dojde, jejich identita uživatele už není v Azure Active Directory organizace. Předplatné Azure pak nemá vlastníka fakturace. Tato situace brání komukoli v provádění fakturačních operací s účtem, včetně zobrazení a platby za účty. Předplatné může přejít k dřívějšímu stavu. Předplatné by nakonec mohlo být zakázané kvůli neplatbě. Předplatné by nakonec mohlo být odstraněno a mělo by to mít vliv na všechny služby spuštěné v rámci předplatného.
+
+Pokud předplatné už nemá platného účet fakturačního účtu, Azure pošle e-mail jiným vlastníkům fakturačního účtu, správcům služeb (pokud existuje), Co-Administrators (pokud existuje) a vlastníkům předplatného, kteří si tyto situace budou informovat, a poskytne jim odkaz na přijetí vlastnictví fakturace předplatného. Kterýkoli z uživatelů může vybrat odkaz pro příjem vlastnictví fakturace. Další informace o fakturačních rolích najdete v tématu [role fakturace](understand-mca-roles.md) a [klasické role a role Azure RBAC](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 Tady je příklad toho, jak e-mail vypadá.
 

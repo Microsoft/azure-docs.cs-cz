@@ -1,22 +1,18 @@
 ---
 title: Kopírování dat do a z Azure Databricks rozdílových Lake
 description: Naučte se, jak kopírovat data do a z Azure Databricks rozdílových Lake pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/24/2020
-ms.openlocfilehash: e32b93c669bffd382b1eb648111f9b8931b07eac
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: bdf71276d59dec9a19e29ae7f49cb92a0512c05a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221138"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364235"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Kopírování dat z Azure Databricks rozdílových Lake pomocí Azure Data Factory
 
@@ -151,8 +147,8 @@ Pokud chcete kopírovat data z Azure Databricks rozdílových Lake, v části **
 | typ                         | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **AzureDatabricksDeltaLakeSource**. | Yes      |
 | query          | Zadejte dotaz SQL pro čtení dat. Pro řízení času služební cesty použijte následující vzor:<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | No       |
 | exportSettings | Rozšířená nastavení používaná k načtení dat z rozdílové tabulky. | No       |
-| ***Pod `exportSettings` :** _ |  |  |
-| typ | Typ příkazu pro export nastavený na _ * AzureDatabricksDeltaLakeExportCommand * *. | Yes |
+| ***V části `exportSettings` :*** |  |  |
+| typ | Typ příkazu pro export nastavený na **AzureDatabricksDeltaLakeExportCommand**. | Yes |
 | Parametr DateFormat | Umožňuje formátovat typ data String pomocí formátu data. Vlastní formáty data se řídí formáty ve [vzoru data a času](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Pokud není zadaný, použije se výchozí hodnota `yyyy-MM-dd` . | No |
 | timestampFormat | Formátujte typ časového razítka na řetězec ve formátu timestamp. Vlastní formáty data se řídí formáty ve [vzoru data a času](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Pokud není zadaný, použije se výchozí hodnota `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | No |
 
@@ -265,8 +261,8 @@ Chcete-li kopírovat data do Azure Databricks rozdílových dat, jsou v části 
 | typ          | Vlastnost Type jímky aktivity kopírování nastavená na **AzureDatabricksDeltaLakeSink**. | Yes      |
 | preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování, která se má spustit před zápisem dat do tabulky Delta datacihly v každém spuštění. Tuto vlastnost můžete použít k vyčištění předem načtených dat nebo k přidání zkrácené tabulky nebo výpisu vaku. | No       |
 | importSettings | Rozšířená nastavení použitá pro zápis dat do rozdílové tabulky | No |
-| **_Pod `importSettings` :_* _ |                                                              |  |
-| typ | Typ příkazu pro import, nastavený na _ * AzureDatabricksDeltaLakeImportCommand * *. | Yes |
+| ***V části `importSettings` :*** |                                                              |  |
+| typ | Typ příkazu pro import, který je nastavený na **AzureDatabricksDeltaLakeImportCommand**. | Yes |
 | Parametr DateFormat | Řetězec formátu pro typ data s formátem data Vlastní formáty data se řídí formáty ve [vzoru data a času](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Pokud není zadaný, použije se výchozí hodnota `yyyy-MM-dd` . | No |
 | timestampFormat | Řetězec formátu pro typ časového razítka ve formátu časového razítka. Vlastní formáty data se řídí formáty ve [vzoru data a času](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Pokud není zadaný, použije se výchozí hodnota `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | No |
 
@@ -372,7 +368,7 @@ Pokud chcete tuto funkci použít, vytvořte [propojenou službu Azure Blob Stor
 ]
 ```
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 Azure Data Factory poskytuje stejné [možnosti monitorování aktivity kopírování](copy-activity-monitoring.md) jako jiné konektory. Vzhledem k tomu, že je v clusteru Azure Databricks spuštěno načítání dat z/do rozdílového Lake, můžete dále [Zobrazit podrobné protokoly clusteru](/azure/databricks/clusters/clusters-manage#--view-cluster-logs) a [monitorovat výkon](/azure/databricks/clusters/clusters-manage#--monitor-performance).
 

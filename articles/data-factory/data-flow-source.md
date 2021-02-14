@@ -3,17 +3,16 @@ title: Transformace zdroje v toku dat mapování
 description: Přečtěte si, jak nastavit transformaci zdroje v toku dat mapování.
 author: kromerm
 ms.author: makromer
-manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/08/2020
-ms.openlocfilehash: d375632ad02f9ec7cacf1708ac81c4f257916609
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 72c36a60227c1f8598909c4e1888084c02b90c7b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929238"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368026"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Transformace zdroje v toku dat mapování
 

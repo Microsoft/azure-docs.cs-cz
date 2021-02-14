@@ -6,15 +6,15 @@ author: likebupt
 ms.author: keli19
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 3afcf87c360651ac314450910fbf5ab72afd289a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 68a5f6773543b922d024336556e4de24dd96fd33
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503909"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517378"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Kurz 3: nasazení modelu úvěrového rizika – Azure Machine Learning Studio (Classic)
 
@@ -41,19 +41,19 @@ V této části kurzu:
 > * Správa webové služby
 > * Nastavení přístupu k webové službě
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Vyplňte [druhou část kurzu](tutorial-part2-credit-risk-train.md).
 
 ## <a name="prepare-for-deployment"></a>Příprava nasazení
 Pokud chcete ostatním umožnit používání prediktivního modelu, který jste vytvořili v tomto kurzu, můžete ho nasadit jako webovou službu v Azure.
 
-Až do tohoto okamžiku jste se seznámili s školením našeho modelu. Nicméně nasazená služba již neprovádí školení – vygeneruje nové předpovědi vyhodnocením vstupu uživatele na základě našeho modelu. Provedeme si ale nějaké přípravy na převod tohoto experimentu z experimentu ***školení** _ na _*_prediktivní_*_ experiment. 
+Až do tohoto okamžiku jste se seznámili s školením našeho modelu. Nicméně nasazená služba již neprovádí školení – vygeneruje nové předpovědi vyhodnocením vstupu uživatele na základě našeho modelu. Provedeme si ale nějaké přípravy na převod tohoto experimentu z experimentu ***školení** _ na *_předvídatelný_** experiment. 
 
 Příprava na nasazení je proces tří kroků:  
 
 1. Odebrat jeden z modelů
-1. Převedení _training experimentu *, který jste vytvořili, do *prediktivního experimentu*
+1. Převod *experimentu školení* , který jste vytvořili, do *prediktivního experimentu*
 1. Nasazení prediktivního experimentu jako webové služby
 
 ### <a name="remove-one-of-the-models"></a>Odebrat jeden z modelů

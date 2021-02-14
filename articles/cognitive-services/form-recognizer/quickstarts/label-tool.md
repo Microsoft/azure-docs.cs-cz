@@ -11,12 +11,12 @@ ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: zpracování dokumentů
-ms.openlocfilehash: 0405ea116a1867ec75beff21637f18fb37565627
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 9642f9ce51cd3eb90344f96bc099da7adea93022
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584715"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364783"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků
 
@@ -228,7 +228,7 @@ Postupujte podle výše uvedených kroků a označte alespoň pět vašich forem
 Volitelně můžete pro každou značku nastavit očekávaný datový typ. Otevřete kontextovou nabídku napravo od značky a vyberte typ z nabídky. Tato funkce umožňuje, aby algoritmus detekce vytvářely určité předpoklady, které budou zlepšit přesnost detekce textu. Také zajišťuje, že zjištěné hodnoty budou vráceny ve standardizovaném formátu v konečném výstupu JSON. Informace o typu hodnoty jsou uloženy v *fields.js* souboru ve stejné cestě jako soubory popisků.
 
 > [!div class="mx-imgBorder"]
-> ![Výběr typu hodnoty pomocí nástroje pro vzorkování popisků](../media/whats-new/formre-value-type.png)
+> ![Výběr typu hodnoty pomocí nástroje pro vzorkování popisků](../media/whats-new/value-type.png)
 
 V současné době jsou podporovány následující typy hodnot a variace:
 * `string`

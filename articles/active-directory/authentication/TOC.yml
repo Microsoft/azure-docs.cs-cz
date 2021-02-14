@@ -154,6 +154,8 @@
           href: howto-password-ban-bad-on-premises-faq.md
         - name: Historie verzí agenta
           href: howto-password-ban-bad-on-premises-agent-versions.md
+    - name: Použít dočasný předávací přístup (Preview)
+      href: howto-authentication-temporary-access-pass.md
     - name: Použít ověřování pomocí serveru SMS
       href: howto-authentication-sms-signin.md
     - name: Použít přihlášení k e-mailovým adresám

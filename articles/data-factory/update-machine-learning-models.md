@@ -1,22 +1,18 @@
 ---
 title: Aktualizace modelů Azure Machine Learning Studio (Classic) pomocí Azure Data Factory
 description: Popisuje postup vytvoření prediktivních kanálů pomocí Azure Data Factory a Azure Machine Learning Studio (Classic).
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: bec300414483181617a7aa009157a4c4a332c745
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ef89ecef34a7c5afb94547181f449b0fc393e67c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496734"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377563"
 ---
 # <a name="update-azure-machine-learning-studio-classic-models-by-using-update-resource-activity"></a>Aktualizace modelů Azure Machine Learning Studio (Classic) pomocí aktivity aktualizovat prostředek
 
@@ -59,7 +55,7 @@ Následující fragment kódu JSON definuje aktivitu spuštění dávky Azure Ma
 }
 ```
 
-| Vlastnost                      | Popis                              | Povinné |
+| Vlastnost                      | Popis                              | Vyžadováno |
 | :---------------------------- | :--------------------------------------- | :------- |
 | name                          | Název aktivity v kanálu     | Yes      |
 | description                   | Text popisující, co aktivita dělá.  | No       |

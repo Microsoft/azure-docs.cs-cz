@@ -1,23 +1,18 @@
 ---
 title: Přesun dat z DB2 pomocí Azure Data Factory
 description: Přečtěte si, jak přesunout data z místní databáze DB2 pomocí aktivity kopírování Azure Data Factory
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: c1644e17-4560-46bb-bf3c-b923126671f1
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bcd1e6f9f9be1765e76399707ae36776a9f1987d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001061"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387355"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Přesunutí dat z DB2 pomocí aktivity kopírování Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -310,13 +305,13 @@ Následující mapování se používají, když aktivita kopírování převede
 | SmallInt |Int16 |
 | Integer |Int32 |
 | BigInt |Int64 |
-| Skutečné |Jeden |
+| Skutečné |Jednoduché |
 | dvojité |dvojité |
 | Float |dvojité |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
-| Numeric |Decimal |
-| Datum |Datum a čas |
+| Číselný |Decimal |
+| Date (Datum) |Datum a čas |
 | Čas |TimeSpan |
 | Timestamp |DateTime |
 | XML |Byte [] |
@@ -336,13 +331,13 @@ Následující mapování se používají, když aktivita kopírování převede
 | SmallInt |Int16 |
 | Integer |Int32 |
 | BigInt |Int64 |
-| Skutečné |Jeden |
+| Skutečné |Jednoduché |
 | dvojité |dvojité |
 | Float |dvojité |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
-| Numeric |Decimal |
-| Datum |Datum a čas |
+| Číselný |Decimal |
+| Date (Datum) |Datum a čas |
 | Čas |TimeSpan |
 | Timestamp |DateTime |
 | XML |Byte [] |

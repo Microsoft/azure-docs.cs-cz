@@ -3,27 +3,27 @@ title: 'ML Studio (Classic): revýuka klasické webové služby – Azure'
 description: Naučte se, jak přeškolit model a aktualizovat klasickou webovou službu tak, aby používala nově vyškolený model v Azure Machine Learning Studio (Classic).
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: 158541d34568b7ea02ea82dbfe90f5801824716f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 90c968ee953e80238775639964cb09a25741b33d
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325786"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517565"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Přeučení a nasazení webové služby klasického studia (Classic)
 
-**platí pro:** ![ Zelená značka zaškrtnutí. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasický) ![ X značí ne. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**platí pro:** ![ Zelená značka zaškrtnutí. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasický) ![ X značí ne.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Přeškolení modelů strojového učení je jedním ze způsobů, jak zajistit, aby byly přesné a na základě nejdůležitějších dostupných dat. V tomto článku se dozvíte, jak přeškolit webovou službu klasického studia (Classic). Návod, jak přeškolit novou webovou službu studia (Classic), najdete v [tomto článku s postupem.](retrain-machine-learning-model.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že už máte experiment s přeškolením i prediktivní experiment. Tyto kroky jsou vysvětleny v tématu [přeučení a nasazení modelu strojového učení.](./retrain-machine-learning-model.md) Místo toho, abyste model strojového učení nasadili jako novou webovou službu, můžete prediktivní experiment nasadit jako klasickou webovou službu.
      
@@ -76,7 +76,7 @@ Stránka s informacemi o opravě obsahuje adresu URL opravy, kterou je nutné po
 
 Nyní můžete použít trained model pro aktualizaci koncového bodu, který jste vytvořili dříve.
 
-Následující vzorový kód ukazuje, jak pomocí adresy URL *BaseLocation* , *RelativeLocation* , *SasBlobToken* a patch aktualizovat koncový bod.
+Následující vzorový kód ukazuje, jak pomocí adresy URL *BaseLocation*, *RelativeLocation*, *SasBlobToken* a patch aktualizovat koncový bod.
 
 ```csharp
 private async Task OverwriteModel()
@@ -122,7 +122,7 @@ private async Task OverwriteModel()
 
 Hodnota parametru *Name* v *prostředcích* by měla odpovídat názvu prostředku uloženého výukového modelu v prediktivním experimentu. Získání názvu prostředku:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo klikněte na **Machine Learning**.
 1. V části název klikněte na pracovní prostor a pak klikněte na **webové služby**.
 1. Pod položkou Název klikněte na položku **model sčítání [prediktivní EXP.]**.

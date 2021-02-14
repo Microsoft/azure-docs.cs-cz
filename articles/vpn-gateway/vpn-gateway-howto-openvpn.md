@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/05/2021
 ms.author: cherylmc
-ms.openlocfilehash: 34f24b8fbdb28e1b1f73e9db428c510d3f4661ce
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 4b48e98ab35b620030b15165d4c9341c0f11b440
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804835"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393271"
 ---
 # <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>Konfigurace OpenVPN pro Azure Point-to-Site VPN Gateway
 
@@ -31,12 +31,12 @@ Tento článek vám pomůže nastavit **Protokol OpenVPN®** v Azure VPN Gateway
 ## <a name="portal"></a>Portál
 
 1. Na portálu přejděte na **bránu virtuální sítě – > konfiguraci Point-to-site**.
-1. V poli **Typ tunelového propojení** vyberte v rozevíracím seznamu možnost **OpenVPN (SSL)** nebo **IKEv2 a OpenVPN (SSL)** .
+1. V poli **Typ tunelu** vyberte **OpenVPN (SSL)** z rozevíracího seznamu.
 
    :::image type="content" source="./media/vpn-gateway-howto-openvpn/portal.png" alt-text="Z rozevíracího seznamu vyberte OpenVPN SSL.":::
 1. Uložte změny a pokračujte dalšími **kroky**.
 
-Povolte v bráně OpenVPN.
+## <a name="enable-openvpn-on-your-gateway-using-powershell"></a>Povolte v bráně OpenVPN pomocí PowerShellu.
 
 1. V bráně povolte OpenVPN pomocí následujícího příkladu:
 

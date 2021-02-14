@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: allensu
-ms.openlocfilehash: e90086be18e344e3061b9e683780f4427b3c15a1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4fe4b99f9635ff254f1a75e03f13d7e6ffcb3c49
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018626"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366513"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Vyprázdnit Azure CDN koncový bod
 ## <a name="overview"></a>Přehled
@@ -75,5 +75,5 @@ Tento kurz vás provede vymazáním assetů ze všech hraničních uzlů koncov�
 
 ## <a name="see-also"></a>Viz také
 * [Předběžné načtení prostředků v koncovém bodu Azure CDN](cdn-preload-endpoint.md)
-* [Odkaz na Azure CDN REST API – vymazání nebo přednačtení koncového bodu](/rest/api/cdn/endpoints)
+* [Odkaz na Azure CDN REST API – vymazání nebo přednačtení koncového bodu](/rest/api/cdn/cdn/endpoints)
 

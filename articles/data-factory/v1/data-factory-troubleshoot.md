@@ -1,24 +1,19 @@
 ---
 title: Řešení potíží s Azure Data Factory
 description: Naučte se řešit potíže s používáním Azure Data Factory.
-services: data-factory
-documentationcenter: ''
-ms.assetid: 38fd14c1-5bb7-4eef-a9f5-b289ff9a6942
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: bd18a26a1c199e1ecc32cfc371d2931b1dee0c3f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ed831e5f07eb29110b858dfb16b73f276926424f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494966"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388239"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Poradce při potížích se službou Data Factory
 > [!NOTE]
@@ -35,14 +30,15 @@ Pokud se zobrazí tato chyba, poskytovatel prostředků Azure Data Factory není
 1. Spusťte Azure PowerShell.
 2. Přihlaste se k účtu Azure pomocí následujícího příkazu.
 
-    ```powershell
-    Connect-AzAccount
-    ```
+   ```powershell
+   Connect-AzAccount
+   ```
+
 3. Spuštěním následujícího příkazu zaregistrujte poskytovatele Azure Data Factory.
 
-    ```powershell        
-    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
-    ```
+   ```powershell
+   Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
+   ```
 
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Problém: neoprávněná Chyba při spuštění rutiny Data Factory
 Pravděpodobně pro Azure PowerShell nepoužíváte správné předplatné nebo účet Azure. Pomocí následujících rutin vyberte správné předplatné a účet Azure pro použití s Azure PowerShellem.
@@ -67,7 +63,7 @@ Na počítači brány spusťte **Správa dat Configuration Manager brány** a po
 ### <a name="problem-input-slices-are-in-waiting-state-forever"></a>Problém: vstupní řezy jsou ve stavu čekání navždy.
 Řezy mohou být ve stavu **čekání** z různých důvodů. Jedním z běžných důvodů je, že vlastnost **External** není nastavená na **hodnotu true**. Jakákoli datová sada vytvořená mimo rozsah Azure Data Factory by měla být označená **externí** vlastností. Tato vlastnost označuje, že data jsou externá a nezálohovaná žádnými kanály v rámci datové továrny. Jakmile jsou data v příslušných úložištích dostupná, datové řezy se označí jako **připravené**.
 
-Použití vlastnosti **external** si můžete prohlédnout v následujícím příkladu. Volitelně můžete zadat **externalData** _, pokud nastavíte možnost externí na hodnotu true.
+Použití vlastnosti **external** si můžete prohlédnout v následujícím příkladu. Volitelně můžete zadat **externalData***, pokud nastavíte možnost externí na hodnotu true.
 
 Další podrobnosti o této vlastnosti najdete v článku [Datové sady](data-factory-create-datasets.md).
 
@@ -97,7 +93,7 @@ Další podrobnosti o této vlastnosti najdete v článku [Datové sady](data-fa
 }
 ```
 
-Chcete-li chybu vyřešit, přidejte do definice JSON vstupní tabulky (_ *External**) a volitelného oddílu **externalData** a tabulku vytvořte znovu.
+Pokud chcete tuto chybu vyřešit, přidejte vlastnost **external** a volitelný oddíl **externalData** do definice JSON vstupní tabulky a potom tuto tabulku vytvořte znovu.
 
 ### <a name="problem-hybrid-copy-operation-fails"></a>Problém: operace hybridního kopírování se nezdařila
 Postup řešení potíží s kopírováním do nebo z místního úložiště dat pomocí Správa dat brány najdete v tématu řešení potíží s [bránou](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .

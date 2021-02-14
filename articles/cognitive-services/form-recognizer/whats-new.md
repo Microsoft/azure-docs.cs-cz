@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: a8eecabe71cb439949f7e0638c7339eb31b08500
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: c7b6586f02d14d4e49ce9a5024b19ea15c8d2267
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581257"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364680"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Co je nového ve službě Rozpoznávání formulářů?
 
@@ -148,7 +148,7 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
   Následující obrázek je příkladem způsobu, jakým jsou tabulky rozpoznány a extrahovány:
 
   > [!div class="mx-imgBorder"]
-  > ![Vizualizace tabulky pomocí nástroje Sample labeling](./media/whats-new/formre-table-viz.png)
+  > ![Vizualizace tabulky pomocí nástroje Sample labeling](./media/whats-new/table-viz.png)
 
     Extrahované tabulky jsou k dispozici ve výstupu JSON pod `"pageResults"` .
 

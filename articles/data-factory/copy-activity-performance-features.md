@@ -1,23 +1,18 @@
 ---
 title: Funkce optimalizace výkonu aktivity kopírování
 description: Seznamte se s klíčovými funkcemi, které vám pomůžou optimalizovat výkon aktivity kopírování v Azure Data Factory Marketplace.
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/24/2020
-ms.openlocfilehash: 8e46e9b323657b747fd73bad3b25ed66390f3aa9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ecb4550b218b069273cba2e3d70a9510c1cc74ca
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324327"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387797"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Funkce optimalizace výkonu aktivity kopírování
 
@@ -126,10 +121,10 @@ Když zadáte hodnotu `parallelCopies` vlastnosti, požádejte o navýšení zat
 
 Když kopírujete data ze zdrojového úložiště dat do úložiště dat jímky, můžete použít službu Azure Blob Storage nebo Azure Data Lake Storage Gen2 jako dočasné pracovní úložiště. Příprava je užitečná hlavně v následujících případech:
 
-- **Chcete ingestovat data z různých úložišť dat do služby Azure synapse Analytics (dříve SQL Data Warehouse) prostřednictvím základny, kopírovat data z/do Snowflake nebo ingestovat data z Amazon RedShift/HDFS performantly.** Další podrobnosti najdete tady:
+- **Chcete ingestovat data z různých úložišť dat do služby Azure synapse Analytics prostřednictvím základů, kopírovat data z/do Snowflake nebo ingestovat data z Amazon RedShift/HDFS performantly.** Další podrobnosti najdete tady:
   - [K načtení dat do služby Azure synapse Analytics použijte základnu](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics).
   - [Konektor Snowflake](connector-snowflake.md)
-  - [Konektor Amazon RedShift](connector-amazon-redshift.md)
+  - [Konektor Amazon Redshift](connector-amazon-redshift.md)
   - [Konektor HDFS](connector-hdfs.md)
 - **Nechcete v bráně firewall otevírat jiné porty než port 80 a port 443 kvůli podnikovým zásadám IT.** Když například kopírujete data z místního úložiště dat do Azure SQL Database nebo analýzy Azure synapse, musíte aktivovat odchozí komunikaci TCP na portu 1433 pro bránu Windows Firewall i firemní bránu firewall. V tomto scénáři může připravené kopírování využít výhod místního prostředí Integration runtime k prvnímu kopírování dat do pracovního úložiště přes HTTP nebo HTTPS na portu 443 a pak načíst data z přípravy do SQL Database nebo Azure synapse Analytics. V tomto toku nemusíte povolit port 1433.
 - **V některých případech trvá i v průběhu provádění hybridního přesunu dat (tedy kopírování z místního úložiště dat do cloudového úložiště dat) prostřednictvím pomalého síťového připojení.** Za účelem zvýšení výkonu můžete pomocí připravené kopie komprimovat data v místním prostředí, aby při přesunu dat do pracovního úložiště dat v cloudu trvalo méně času. Pak můžete data v pracovním úložišti dekomprimovat ještě předtím, než se načtou do cílového úložiště dat.
@@ -150,10 +145,10 @@ Nakonfigurujte nastavení **enableStaging** v aktivitě kopírování, abyste ur
 
 | Vlastnost | Popis | Výchozí hodnota | Vyžadováno |
 | --- | --- | --- | --- |
-| enableStaging |Určete, zda chcete kopírovat data prostřednictvím dočasného přípravného úložiště. |Nepravda |No |
-| linkedServiceName |Zadejte název [úložiště objektů BLOB v Azure](connector-azure-blob-storage.md#linked-service-properties) nebo propojené služby [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) , který odkazuje na instanci úložiště, kterou používáte jako dočasné pracovní úložiště. |Není k dispozici |Ano, pokud je **enableStaging** nastavené na true |
-| program |Zadejte cestu, kterou chcete, aby obsahovala zpracovaná data. Pokud cestu nezadáte, služba vytvoří kontejner, do kterého budou ukládat dočasná data. |Není k dispozici |No |
-| Hodnotou EnableCompression |Určuje, zda mají být data před kopírováním do cíle komprimována. Toto nastavení snižuje objem přenášených dat. |Nepravda |No |
+| enableStaging |Určete, zda chcete kopírovat data prostřednictvím dočasného přípravného úložiště. |Ne |No |
+| linkedServiceName |Zadejte název [úložiště objektů BLOB v Azure](connector-azure-blob-storage.md#linked-service-properties) nebo propojené služby [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) , který odkazuje na instanci úložiště, kterou používáte jako dočasné pracovní úložiště. |– |Ano, pokud je **enableStaging** nastavené na true |
+| program |Zadejte cestu, kterou chcete, aby obsahovala zpracovaná data. Pokud cestu nezadáte, služba vytvoří kontejner, do kterého budou ukládat dočasná data. |– |No |
+| Hodnotou EnableCompression |Určuje, zda mají být data před kopírováním do cíle komprimována. Toto nastavení snižuje objem přenášených dat. |Ne |No |
 
 >[!NOTE]
 > Pokud použijete připravené kopírování s povolenou kompresí, instanční objekt nebo ověřování MSI pro propojenou službu pracovního objektu BLOB se nepodporuje.
@@ -198,7 +193,7 @@ Tady je ukázková definice aktivity kopírování s vlastnostmi popsanými v p�
 Další články o aktivitě kopírování najdete v článcích:
 
 - [Přehled aktivit kopírování](copy-activity-overview.md)
-- [Průvodce škálovatelností a výkonem aktivity kopírování](copy-activity-performance.md)
+- [Průvodce výkonem a škálovatelností aktivity kopírování](copy-activity-performance.md)
 - [Řešení potíží s výkonem aktivity kopírování](copy-activity-performance-troubleshooting.md)
 - [Použití Azure Data Factory k migraci dat ze služby Data Lake nebo datového skladu do Azure](data-migration-guidance-overview.md)
 - [Migrace dat z Amazonu S3 do Azure Storage](data-migration-guidance-s3-azure-storage.md)

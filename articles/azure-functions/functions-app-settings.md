@@ -3,12 +3,12 @@ title: Referenční materiály k nastavení aplikací pro Azure Functions
 description: Referenční dokumentace k nastavení aplikace Azure Functions nebo k proměnným prostředí.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: a28530fd4e4731065c4ddcc2f39e9a4660529921
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 8cb3e12c48adf1273c58f4914e34590e21b9d3cc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881919"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378294"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenční materiály k nastavení aplikací pro Azure Functions
 
@@ -19,7 +19,7 @@ Nastavení aplikace ve Function App obsahují globální možnosti konfigurace, 
 Existují další možnosti globální konfigurace v [host.js](functions-host-json.md) souboru a [local.settings.js](functions-run-local.md#local-settings-file) v souboru.
 
 > [!NOTE]  
-> Nastavení aplikace můžete použít k přepsání host.jsnastavením hodnot bez nutnosti měnit host.jsv samotném souboru. To je užitečné ve scénářích, kdy potřebujete nakonfigurovat nebo upravit konkrétní host.jsv nastavení pro konkrétní prostředí. To vám také umožní změnit host.jsnastavení bez nutnosti opětovného publikování projektu. Další informace najdete v části [host.jsv článku referenční článek](functions-host-json.md#override-hostjson-values).  
+> Nastavení aplikace můžete použít k přepsání host.jsnastavením hodnot bez nutnosti měnit host.jsv samotném souboru. To je užitečné ve scénářích, kdy potřebujete nakonfigurovat nebo upravit konkrétní host.jsv nastavení pro konkrétní prostředí. To vám také umožní změnit host.jsnastavení bez nutnosti opětovného publikování projektu. Další informace najdete v části [host.jsv článku referenční článek](functions-host-json.md#override-hostjson-values). Změny nastavení aplikace Function App vyžadují restart aplikace Function App.
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
@@ -213,7 +213,7 @@ Hodnota tohoto nastavení označuje adresu URL vlastního indexu balíčku pro a
 
 Další informace najdete v tématu [vlastní závislosti](functions-reference-python.md#remote-build-with-extra-index-url) v referenční příručce pro vývojáře v Pythonu.
 
-## <a name="scale_controller_logging_enable"></a>\_ \_ Povolení protokolování škálování \_ řadiče
+## <a name="scale_controller_logging_enabled"></a>\_ \_ zapnuté protokolování řadiče škálování \_
 
 _Toto nastavení je aktuálně ve verzi Preview._  
 
@@ -221,7 +221,7 @@ Toto nastavení řídí protokolování z Azure Functionsho řadiče škálován
 
 |Klíč|Ukázková hodnota|
 |-|-|
-|SCALE_CONTROLLER_LOGGING_ENABLE|AppInsights: verbose|
+|SCALE_CONTROLLER_LOGGING_ENABLED|AppInsights: verbose|
 
 Hodnota pro tento klíč je zadána ve formátu `<DESTINATION>:<VERBOSITY>` , který je definován následujícím způsobem:
 
@@ -235,7 +235,7 @@ Připojovací řetězec pro účet úložiště, ve kterém je kód a konfigurac
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; Název účtu = [název]; AccountKey = [klíč]|
 
-Používá se jenom při nasazení na plány spotřeby nebo Premium, které běží na Windows. Nepodporováno pro Linux. Změna nebo odebrání tohoto nastavení může způsobit, že se vaše aplikace Function App nespustí. Další informace najdete v [tomto článku o řešení potíží](functions-recover-storage-account.md#storage-account-application-settings-were-deleted). 
+Používá se jenom při nasazování do plánu Premium nebo na plán spotřeby, který běží na Windows. Nepodporuje se pro plány spotřebování, na kterých běží Linux. Změna nebo odebrání tohoto nastavení může způsobit, že se vaše aplikace Function App nespustí. Další informace najdete v [tomto článku o řešení potíží](functions-recover-storage-account.md#storage-account-application-settings-were-deleted). 
 
 ## <a name="website_contentovervnet"></a>\_CONTENTOVERVNET webu
 
@@ -253,7 +253,7 @@ Cesta k souboru s kódem a konfigurací aplikace funkcí v plánu škálování 
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
 
-Používá se jenom aplikace Function App na plánech spotřeby nebo Premium, které běží na Windows. Nepodporováno pro Linux. Změna nebo odebrání tohoto nastavení může způsobit, že se vaše aplikace Function App nespustí. Další informace najdete v [tomto článku o řešení potíží](functions-recover-storage-account.md#storage-account-application-settings-were-deleted).
+Používá se jenom při nasazování do plánu Premium nebo na plán spotřeby, který běží na Windows. Nepodporuje se pro plány spotřebování, na kterých běží Linux. Změna nebo odebrání tohoto nastavení může způsobit, že se vaše aplikace Function App nespustí. Další informace najdete v [tomto článku o řešení potíží](functions-recover-storage-account.md#storage-account-application-settings-were-deleted).
 
 Při použití Azure Resource Manager k vytvoření aplikace Function App během nasazení nezahrnujte do šablony WEBSITE_CONTENTSHARE. Toto nastavení aplikace se generuje během nasazování. Další informace najdete v tématu [Automatizace nasazení prostředků pro aplikaci Function App](functions-infrastructure-as-code.md#windows).   
 

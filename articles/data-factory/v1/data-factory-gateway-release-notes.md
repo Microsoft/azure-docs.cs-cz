@@ -1,22 +1,18 @@
 ---
 title: Poznámky k verzi pro Bránu pro správu dat
 description: Zpráva k vydání verze služby Správa dat Gateway tory
-services: data-factory
 author: nabhishek
-manager: anandsub
-ms.assetid: 14762e82-76d9-41c4-ba9f-14a54da29c36
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0538777cadf7935a6684932a17fadc10849518d8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b5bf0c6d6996a67e8b0fec3ec51e31fef8eedf26
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001622"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363912"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Poznámky k verzi pro Bránu pro správu dat
 > [!NOTE]
@@ -46,12 +42,12 @@ Poznámky k verzi tady neuchováváme. [Sem](https://go.microsoft.com/fwlink/?li
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>Prvky
--   Můžete přidat položky DNS, které povolí Service Bus místo povolení všech IP adres Azure z brány firewall (Pokud je potřeba). Další podrobnosti najdete tady.
--   Nyní můžete kopírovat data do nebo z jednoho objektu blob bloku až do 4,75 TB, což je maximální podporovaná velikost objektu blob bloku. (předchozí omezení bylo 195 GB).
--   Opraveno: nedostatek paměti při rozzipováváí několika malých souborů během aktivity kopírování.
--   Opraveno: index je mimo rozsah problému při kopírování z databáze dokumentů do SQL Server s funkcí idempotence.
--   Opraveno: skript SQL Cleanup nefunguje s SQL Server z Průvodce kopírováním.
--   Opraveno: název sloupce s mezerou na konci nefunguje v aktivitě kopírování.
+-    Můžete přidat položky DNS, které povolí Service Bus místo povolení všech IP adres Azure z brány firewall (Pokud je potřeba). Další podrobnosti najdete tady.
+-    Nyní můžete kopírovat data do nebo z jednoho objektu blob bloku až do 4,75 TB, což je maximální podporovaná velikost objektu blob bloku. (předchozí omezení bylo 195 GB).
+-    Opraveno: nedostatek paměti při rozzipováváí několika malých souborů během aktivity kopírování.
+-    Opraveno: index je mimo rozsah problému při kopírování z databáze dokumentů do SQL Server s funkcí idempotence.
+-    Opraveno: skript SQL Cleanup nefunguje s SQL Server z Průvodce kopírováním.
+-    Opraveno: název sloupce s mezerou na konci nefunguje v aktivitě kopírování.
 
 ## <a name="28662833"></a>2.8.66283.3
 ### <a name="enhancements-"></a>Prvky
@@ -64,7 +60,7 @@ Poznámky k verzi tady neuchováváme. [Sem](https://go.microsoft.com/fwlink/?li
 - Opraveno: nesprávný čtení desítkové hodnoty null od Oracle jako zdroje.
 
 ## <a name="2661922"></a>2.6.6192.2
-### <a name="whats-new"></a>Co je nového
+### <a name="whats-new"></a>Novinky
 - Zákazníci můžou poskytnout zpětnou vazbu na možnosti registrace brány.
 - Podpora nového formátu komprese: ZIP (uprostřed)
 
@@ -81,7 +77,7 @@ Poznámky k verzi tady neuchováváme. [Sem](https://go.microsoft.com/fwlink/?li
 
 ## <a name="2461511"></a>2.4.6151.1
 
-### <a name="whats-new"></a>Co je nového
+### <a name="whats-new"></a>Novinky
 
 - Přihlašovací údaje zdroje dat teď můžete ukládat lokálně. Přihlašovací údaje jsou šifrované. Přihlašovací údaje ke zdroji dat se dají obnovit a obnovit pomocí záložního souboru, který se dá exportovat ze stávající brány, a to všechno místně.
 

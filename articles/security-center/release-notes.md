@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/04/2021
+ms.date: 02/10/2021
 ms.author: memildin
-ms.openlocfilehash: fe031fa6de86b8059ba175fc4e1df6385ca7e796
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: d40d6107d3eee4b45f2184a61b1cdfc99559e9c7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551021"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379002"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -39,6 +39,7 @@ Aktualizace v únoru zahrnují:
 - [Přímá vazba na zásadu ze stránky s podrobnostmi o doporučení](#direct-link-to-policy-from-recommendation-details-page)
 - [Doporučení klasifikace dat SQL už nemá vliv na vaše zabezpečené skóre.](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
 - [Automatizace pracovního postupu se můžou aktivovat změnami pro vyhodnocení dodržování předpisů v legislativních režimech (Preview).](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
+- [Vylepšení stránky inventáře prostředků](#asset-inventory-page-enhancements)
 
 ### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Doporučení pro ochranu úloh Kubernetes vydaná pro obecnou dostupnost (GA)
 
@@ -70,16 +71,32 @@ Pokud si prohlédnete seznam doporučení v našich [doporučeních o zabezpeče
 
 
 ### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>Doporučení klasifikace dat SQL už nemá vliv na vaše zabezpečené skóre.
-
 Doporučení **citlivá data v databázích SQL by měla být klasifikována** už neovlivní vaše zabezpečené skóre. Toto je jediné doporučení v ovládacím prvku zabezpečení **klasifikace dat** , aby měl ovládací prvek nyní hodnotu zabezpečeného skóre 0.
 
 
 ### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview"></a>Automatizace pracovního postupu se můžou aktivovat změnami pro vyhodnocení dodržování předpisů v legislativních režimech (Preview).
-
 Do možností triggeru pro vaše automatizované pracovní postupy jsme přidali třetí datový typ: změny v protestech dodržování předpisů v legislativních prostředích.
 
 :::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="Použití změn pro vyhodnocení dodržování předpisů v legislativě pro aktivaci automatizace pracovního postupu" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 
+
+### <a name="asset-inventory-page-enhancements"></a>Vylepšení stránky inventáře prostředků
+Security Center stránku inventáře assetů se vylepšili následujícími způsoby:
+
+- Souhrny v horní části stránky teď zahrnují **neregistrované odběry**, které zobrazují počet předplatných bez povoleného Security Center.
+
+    :::image type="content" source="media/release-notes/unregistered-subscriptions.png" alt-text="Počet neregistrovaných předplatných v souhrnech v horní části stránky inventáře prostředků":::
+
+- Filtry se rozšířily a vylepšily, aby zahrnovaly:
+    - **Počty** – každý filtr prezentuje počet prostředků, které splňují kritéria každé kategorie.
+
+        :::image type="content" source="media/release-notes/counts-in-inventory-filters.png" alt-text="Počty ve filtrech na stránce inventáře assetů Azure Security Center":::
+
+    - **Obsahuje filtr výjimek** (volitelné) – zúžení výsledků na prostředky s neobdrženými výjimkami. Tento filtr se ve výchozím nastavení nezobrazuje, ale je přístupný z tlačítka **Přidat filtr** .
+
+        :::image type="content" source="media/release-notes/adding-contains-exemption-filter.gif" alt-text="Přidání filtru &quot;obsahuje výjimku&quot; na stránce Azure Security Center inventáře prostředků prostředků":::
+
+Přečtěte si další informace o tom [, jak prozkoumat a spravovat prostředky pomocí inventáře prostředků](asset-inventory.md).
 
 ## <a name="january-2021"></a>Leden 2021
 
@@ -630,7 +647,7 @@ Další informace o tomto doporučení a všech dalších Security Center doporu
 
 Řídicí panel obsahuje výchozí sadu regulativních standardů. Pokud některé z uvedených standardů nejsou pro vaši organizaci důležité, je teď jednoduchý proces, který je odebere z uživatelského rozhraní pro předplatné. Standardy je možné odebrat jenom na úrovni *předplatného* . Nejedná se o obor skupiny pro správu.
 
-Další informace najdete v [Odebrání standardu z řídicího panelu](update-regulatory-compliance-packages.md#removing-a-standard-from-your-dashboard).
+Další informace najdete v [Odebrání standardu z řídicího panelu](update-regulatory-compliance-packages.md#remove-a-standard-from-your-dashboard).
 
 
 ### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>Tabulka Microsoft. Security/securityStatuses se odebrala z Azure Resource graphu (ARG).

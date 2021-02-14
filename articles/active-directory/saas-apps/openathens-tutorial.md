@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 02/03/2021
 ms.author: jeedes
-ms.openlocfilehash: fc2d1c5dca4265bc0f0c26dd0a6c62a7e1698a38
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: de54e179c6972ca1f79dbcd6e210ff64ee3480bb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621463"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378836"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s OpenAthens
 
@@ -26,9 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat OpenAthens s Azure Active Directory (A
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k OpenAthens svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -42,22 +40,22 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * OpenAthens podporuje jednotné přihlašování **IDP** .
 * OpenAthens podporuje zřizování uživatelů **jenom v čase** .
 
-## <a name="adding-openathens-from-the-gallery"></a>Přidání OpenAthens z Galerie
+## <a name="add-openathens-from-the-gallery"></a>Přidání OpenAthens z Galerie
 
 Pokud chcete nakonfigurovat integraci OpenAthens do služby Azure AD, musíte přidat OpenAthens z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **OpenAthens** .
 1. Na panelu výsledků vyberte **OpenAthens** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-openathens"></a>Konfigurace a testování jednotného přihlašování Azure AD pro OpenAthens
+## <a name="configure-and-test-azure-ad-sso-for-openathens"></a>Konfigurace a testování jednotného přihlašování Azure AD pro OpenAthens
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí OpenAthens pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v OpenAthens.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí OpenAthens, dokončete následující stavební bloky:
+K nakonfigurování a testování jednotného přihlašování Azure AD pomocí OpenAthens postupujte takto:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
@@ -70,9 +68,9 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **OpenAthens** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce integrace aplikací **OpenAthens** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -117,15 +115,9 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **OpenAthens**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
 1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
-
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ## <a name="configure-openathens-sso"></a>Konfigurace jednotného přihlašování OpenAthens
@@ -134,19 +126,19 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V seznamu vyberte **připojení** na kartě **Správa** .
 
-    ![Snímek obrazovky zobrazující stránku webu společnosti "OpenAthens" se zvolenými možnostmi "připojení" na kartě Správa.](./media/openathens-tutorial/tutorial_openathens_application1.png)
+    ![Snímek obrazovky zobrazující stránku webu společnosti "OpenAthens" se zvolenými možnostmi "připojení" na kartě Správa.](./media/openathens-tutorial/connections.png)
 
 1. Vyberte **SAML 1.1/2.0** a pak klikněte na tlačítko **Konfigurovat** .
 
-    ![Snímek obrazovky zobrazující typ místního ověřování systému dialog s "S A M L 1.1/2.0" a vybraným tlačítkem "konfigurovat".](./media/openathens-tutorial/tutorial_openathens_application2.png)
+    ![Snímek obrazovky zobrazující typ místního ověřování systému dialog s "S A M L 1.1/2.0" a vybraným tlačítkem "konfigurovat".](./media/openathens-tutorial/saml.png)
 
 1. Chcete-li přidat konfiguraci, vyberte tlačítko **Procházet** a odešlete soubor metadata. XML, který jste stáhli z Azure Portal, a pak vyberte **Přidat**.
 
-    ![Snímek obrazovky zobrazující "Přidání S A M L Authentication System" Dialogové okno s vybranou akcí Procházet a tlačítkem Přidat.](./media/openathens-tutorial/tutorial_openathens_application3.png)
+    ![Snímek obrazovky zobrazující "Přidání S A M L Authentication System" Dialogové okno s vybranou akcí Procházet a tlačítkem Přidat.](./media/openathens-tutorial/configure.png)
 
 1. Na kartě **Podrobnosti** proveďte následující kroky.
 
-    ![Konfigurace jednotného přihlašování](./media/openathens-tutorial/tutorial_openathens_application4.png)
+    ![Konfigurace jednotného přihlašování](./media/openathens-tutorial/add.png)
 
     a. V **mapování zobrazovaný název** vyberte **použít atribut**.
 
@@ -164,7 +156,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     h. Na kartě **</> předávající strana** zkopírujte **adresu URL metadat** a otevřete ji v prohlížeči a Stáhněte si soubor **XML s metadaty SP** . Nahrajte tento soubor metadat SP v části **základní konfigurační oddíl SAML** ve službě Azure AD.
 
-    ![Snímek obrazovky, který zobrazuje vybranou kartu předávající strana a zvýrazní se metadata U R L.](./media/openathens-tutorial/tutorial_openathens_application5.png)
+    ![Snímek obrazovky, který zobrazuje vybranou kartu předávající strana a zvýrazní se metadata U R L.](./media/openathens-tutorial/metadata.png)
 
 ### <a name="create-openathens-test-user"></a>Vytvořit testovacího uživatele OpenAthens
 
@@ -172,16 +164,12 @@ V této části se v OpenAthens vytvoří uživatel s názvem Britta Simon. Open
 
 ## <a name="test-sso"></a>Test SSO
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností.
 
-Když na přístupovém panelu kliknete na dlaždici OpenAthens, měli byste se automaticky přihlásit k OpenAthens, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+* Klikněte na testovat tuto aplikaci v Azure Portal a měli byste se automaticky přihlášeni k OpenAthens, pro které jste nastavili jednotné přihlašování.
 
-## <a name="additional-resources"></a>Další zdroje informací
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici OpenAthens v okně moje aplikace, měli byste se automaticky přihlásit k OpenAthens, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
+## <a name="next-steps"></a>Další kroky
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
-
-- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
-
-- [Vyzkoušejte si OpenAthens s Azure AD](https://aad.portal.azure.com/)
+Po nakonfigurování OpenAthens můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

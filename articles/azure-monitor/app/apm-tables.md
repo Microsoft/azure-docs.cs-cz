@@ -3,14 +3,14 @@ title: Schéma prostředků založené na pracovním prostoru Azure Monitor Appl
 description: Přečtěte si o nové struktuře a schématu tabulek pro Azure Monitor Application Insights prostředky založené na pracovním prostoru.
 ms.topic: conceptual
 ms.date: 05/09/2020
-ms.openlocfilehash: 8f0bee64d74cfd5b6abef5c918c023974fda3fcf
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e63d4a680ad76ccd6895aed53f3276a5775b1226
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931049"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385961"
 ---
-# <a name="workspace-based-resource-changes-preview"></a>Změny prostředků na základě pracovního prostoru (Preview)
+# <a name="workspace-based-resource-changes"></a>Změny prostředků na základě pracovního prostoru
 
 Před představením [Application Insights prostředků na základě pracovního prostoru](create-workspace-resource.md)se Application Insights data v Azure monitor uložila odděleně od jiných dat protokolů. Obě jsou založené na Azure Průzkumník dat a používají stejný dotazovací jazyk KQL (Kusto Query Language). Tento postup je popsaný v tématu [protokoly v Azure monitor](../platform/data-platform-logs.md).
 
@@ -18,7 +18,7 @@ Data prostředků Application Insights na základě pracovního prostoru se ukl�
 
 ## <a name="table-structure"></a>Struktura tabulky
 
-| Starší verze názvu tabulky | Název nové tabulky | Description |
+| Starší verze názvu tabulky | Nový název tabulky | Description |
 |:---|:---|:---|
 | availabilityResults | AppAvailabilityResults |  Souhrnná data z testů dostupnosti.|
 | browserTimings | AppBrowserTimings | Data o výkonu klienta, například čas potřebný ke zpracování příchozích dat.|
@@ -241,7 +241,7 @@ Starší tabulka: customMetrics
 |user_AccountId|řetězec|UserAccountId|řetězec|
 |user_AuthenticatedId|řetězec|UserAuthenticatedId|řetězec|
 |user_Id|řetězec|UserId|řetězec|
-|value|real|odstraněn||
+|hodnota|real|odstraněn||
 |valueCount|int|ValueCount|int|
 |valueMax|real|ValueMax|real|
 |valueMin|real|ValueMin|real|
@@ -326,7 +326,7 @@ Starší tabulka: čítače výkonu
 |user_AccountId|řetězec|UserAccountId|řetězec|
 |user_AuthenticatedId|řetězec|UserAuthenticatedId|řetězec|
 |user_Id|řetězec|UserId|řetězec|
-|value|real|Hodnota|real|
+|hodnota|real|Hodnota|real|
 
 ### <a name="apprequests"></a>AppRequests
 

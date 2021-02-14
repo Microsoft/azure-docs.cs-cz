@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: cf3c07f32f15ff176974219bd8143a1ea315c945
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: f8d8547c2d4900e6258f7360c50d8dfc17157832
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423041"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517240"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Přehled provozní kontinuity pomocí Azure Database for PostgreSQL-Single server
 
@@ -21,7 +21,7 @@ Tento přehled popisuje možnosti, které Azure Database for PostgreSQL poskytuj
 
 Při vývoji plánu provozní kontinuity je potřeba pochopit maximální přijatelnou dobu, než aplikace plně obnoví po přerušení události – to je vaše plánovaná doba obnovení (RTO). Také je potřeba pochopit maximální množství nedávných aktualizací dat (časový interval), které může aplikace tolerovat při obnovování po přerušení události – to je váš cíl bodu obnovení (RPO).
 
-Azure Database for PostgreSQL poskytuje funkce pro provozní kontinuitu, které zahrnují geograficky redundantní zálohy s možností iniciovat geografické obnovení a nasazovat repliky pro čtení v jiné oblasti. Každý má různé charakteristiky pro čas obnovení a možnou ztrátu dat. Díky funkci [geografického obnovení](concepts-backup.md) se vytvoří nový server pomocí zálohovaných dat, která se replikují z jiné oblasti. Celková doba potřebná k obnovení a obnovení závisí na velikosti databáze a množství protokolů, které se mají obnovit. Celková doba vytvoření serveru se liší od několika minut až po několik hodin. V případě [replik čtení](concepts-read-replicas.md)jsou protokoly transakcí z primární služby asynchronně přenášeny do repliky. V případě výpadku primární databáze z důvodu chyby na úrovni zóny nebo na úrovni oblasti, převzetí služeb při selhání do repliky poskytuje kratší RTO a omezenou ztrátu dat.
+Azure Database for PostgreSQL poskytuje funkce pro kontinuitu podnikových procesů, které zahrnují geograficky redundantní zálohy s možností iniciovat geografické obnovení a nasazení replik pro čtení v jiné oblasti. Každý má různé charakteristiky pro čas obnovení a možnou ztrátu dat. Díky funkci [geografického obnovení](concepts-backup.md) se vytvoří nový server pomocí zálohovaných dat, která se replikují z jiné oblasti. Celková doba potřebná k obnovení a obnovení závisí na velikosti databáze a množství protokolů, které se mají obnovit. Celková doba vytvoření serveru se liší od několika minut až po několik hodin. V případě [replik čtení](concepts-read-replicas.md)jsou protokoly transakcí z primární služby asynchronně přenášeny do repliky. V případě výpadku primární databáze z důvodu chyby na úrovni zóny nebo na úrovni oblasti, převzetí služeb při selhání do repliky poskytuje kratší RTO a omezenou ztrátu dat.
 
 > [!NOTE]
 > Prodleva mezi primárním serverem a replikou závisí na latenci mezi lokalitami, na množství dat, která se mají přenést, a nejdůležitějším způsobem na úlohy zápisu primárního serveru. Úlohy s velkým objemem zápisu můžou způsobit významné prodlevy. 
@@ -32,7 +32,7 @@ Následující tabulka porovnává RTO a RPO v **typickém scénáři úlohy** :
 
 | **Funkce** | **Basic** | **Obecné použití** | **Optimalizované pro paměť** |
 | :------------: | :-------: | :-----------------: | :------------------: |
-| Obnovení k určitému bodu v čase ze zálohy | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování |
+| Obnovení k určitému bodu v čase ze zálohy | Libovolný bod obnovení v rámci doby uchování <br/> RTO – různé <br/>RPO < 15 min| Libovolný bod obnovení v rámci doby uchování <br/> RTO – různé <br/>RPO < 15 min | Libovolný bod obnovení v rámci doby uchování <br/> RTO – různé <br/>RPO < 15 min |
 | Geografické obnovení ze geograficky replikovaných záloh | Nepodporováno | RTO – různé <br/>RPO < 1 h | RTO – různé <br/>RPO < 1 h |
 | Čtení replik | RTO – minuty * <br/>RPO < 5 min * | RTO – minuty * <br/>RPO < 5 min *| RTO – minuty * <br/>RPO < 5 min *|
 

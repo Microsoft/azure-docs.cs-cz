@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z webové tabulky pomocí Azure Data Factory
 description: Přečtěte si o konektoru webových tabulek Azure Data Factory, který umožňuje kopírovat data z webové tabulky do úložišť dat podporovaných Data Factory jako jímky.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 0eb4d37342685c13027a69bb6cb85f618fa63f20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ab45868afd8d1b7ba1f61f5eaacca283817e6d6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81410220"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367006"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Kopírování dat z webové tabulky pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -59,10 +54,10 @@ Pro propojenou službu webové tabulky jsou podporovány následující vlastnos
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **Web** . |Ano |
-| url | Adresa URL webového zdroje |Ano |
-| authenticationType | Povolená hodnota je: **anonymní**. |Ano |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Ano |
+| typ | Vlastnost Type musí být nastavená na: **Web** . |Yes |
+| url | Adresa URL webového zdroje |Yes |
+| authenticationType | Povolená hodnota je: **anonymní**. |Yes |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Yes |
 
 **Příklad:**
 
@@ -91,9 +86,9 @@ Chcete-li kopírovat data z webové tabulky, nastavte vlastnost typ datové sady
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **webtable** . | Ano |
-| program |Relativní adresa URL k prostředku, který obsahuje tabulku. |Ne. Pokud cesta není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. |
-| index |Index tabulky v prostředku Postup pro získání indexu tabulky na stránce HTML najdete v části [získání indexu tabulky v oddílu stránky HTML](#get-index-of-a-table-in-an-html-page) . |Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **webtable** . | Yes |
+| program |Relativní adresa URL k prostředku, který obsahuje tabulku. |No. Pokud cesta není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. |
+| index |Index tabulky v prostředku Postup pro získání indexu tabulky na stránce HTML najdete v části [získání indexu tabulky v oddílu stránky HTML](#get-index-of-a-table-in-an-html-page) . |Yes |
 
 **Příklad:**
 
@@ -167,7 +162,7 @@ Chcete-li získat index tabulky, kterou potřebujete nakonfigurovat ve [vlastnos
     ![Z dialogového okna Web](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 
     Adresa URL použitá v tomto příkladu: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
-4. Pokud se zobrazí dialogové okno **přístup k webovému obsahu** , vyberte správnou **adresu URL**, **ověřování**a klikněte na **připojit**.
+4. Pokud se zobrazí dialogové okno **přístup k webovému obsahu** , vyberte správnou **adresu URL**, **ověřování** a klikněte na **připojit**.
 
    ![Přístup k webovému obsahu – dialogové okno](./media/copy-data-from-web-table/AccessWebContentDialog.png)
 5. Kliknutím na položku **tabulky** ve stromovém zobrazení zobrazíte obsah z tabulky a potom v dolní části kliknete na tlačítko **Upravit** .  

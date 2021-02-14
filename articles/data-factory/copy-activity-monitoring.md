@@ -1,22 +1,17 @@
 ---
 title: Monitorování aktivity kopírování
 description: Přečtěte si, jak monitorovat provádění aktivit kopírování v Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 92119709aa260f3180c503a77064f6e80dece6e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58860e404dff3030e51ff2977eaee081a15247f7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440605"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388290"
 ---
 # <a name="monitor-copy-activity"></a>Monitorování aktivity kopírování
 
@@ -48,7 +43,7 @@ Dolní **Podrobnosti a trvání spuštění** popisují klíčové kroky, který
 
 ## <a name="monitor-programmatically"></a>Monitorování prostřednictvím kódu programu
 
-V části výstup **výsledků spuštění aktivity kopírování**  >  **Output** , která se používá k vykreslování zobrazení monitorování uživatelského rozhraní, se také vrátí podrobnosti o spuštění aktivity kopírování a výkonnostní charakteristiky. Následuje úplný seznam vlastností, které mohou být vráceny. Uvidíte jenom vlastnosti, které se vztahují k vašemu scénáři kopírování. Informace o tom, jak programově monitorovat spuštění aktivit prostřednictvím kódu programu, najdete v tématu [programové sledování služby Azure Data Factory](monitor-programmatically.md).
+V části výstup **výsledků spuštění aktivity kopírování**  >   , která se používá k vykreslování zobrazení monitorování uživatelského rozhraní, se také vrátí podrobnosti o spuštění aktivity kopírování a výkonnostní charakteristiky. Následuje úplný seznam vlastností, které mohou být vráceny. Uvidíte jenom vlastnosti, které se vztahují k vašemu scénáři kopírování. Informace o tom, jak programově monitorovat spuštění aktivit prostřednictvím kódu programu, najdete v tématu [programové sledování služby Azure Data Factory](monitor-programmatically.md).
 
 | Název vlastnosti  | Description | Jednotka ve výstupu |
 |:--- |:--- |:--- |
@@ -67,7 +62,7 @@ V části výstup **výsledků spuštění aktivity kopírování**  >  **Output
 | throughput | Rychlost přenosu dat | Číslo s plovoucí desetinnou čárkou, v KB/s |
 | sourcePeakConnections | Nejvyšší počet souběžných připojení navázaných ke zdrojovému úložišti dat během spuštění aktivity kopírování. | Hodnota Int32 (žádná jednotka) |
 | sinkPeakConnections| Nejvyšší počet souběžných připojení navázaných na úložiště dat jímky během spuštění aktivity kopírování.| Hodnota Int32 (žádná jednotka) |
-| sqlDwPolyBase | Určuje, jestli se používá základ, když se data zkopírují do služby Azure synapse Analytics (dřív SQL Data Warehouse). | Logická hodnota |
+| sqlDwPolyBase | Určuje, zda se používá základna při kopírování dat do služby Azure synapse Analytics. | Logická hodnota |
 | redshiftUnload | Určuje, zda je při kopírování dat z RedShift použito uvolnění. | Logická hodnota |
 | hdfsDistcp | Určuje, zda se při kopírování dat ze HDFS používá DistCp. | Logická hodnota |
 | effectiveIntegrationRuntime | Prostředí Integration runtime (IR) nebo modulu runtime, které slouží k napájení spuštění aktivity, ve formátu `<IR name> (<region if it's Azure IR>)` . | Text (String) |
@@ -163,6 +158,6 @@ V části výstup **výsledků spuštění aktivity kopírování**  >  **Output
 ## <a name="next-steps"></a>Další kroky
 Další články o aktivitě kopírování najdete v článcích:
 
-\- [Přehled aktivit kopírování](copy-activity-overview.md)
+\-[Přehled aktivit kopírování](copy-activity-overview.md)
 
 \- [Výkon aktivity kopírování](copy-activity-performance.md)

@@ -1,22 +1,18 @@
 ---
 title: Kopírovat data z ServiceNow
 description: Naučte se, jak kopírovat data z ServiceNow do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: bc48f651a1adb099017e8f47d9fa6bcfa8078fa1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e7ebc422a9fd8503c5a3b004e1d06cb5ebfb987
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81415338"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378447"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Kopírování dat z ServiceNow pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -46,11 +42,11 @@ Pro propojenou službu ServiceNow jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **ServiceNow** . | Ano |
-| endpoint | Koncový bod serveru ServiceNow ( `http://<instance>.service-now.com` ).  | Ano |
-| authenticationType | Typ ověřování, který se má použít. <br/>Povolené hodnoty jsou: **Basic**, **OAuth2** | Ano |
-| username | Uživatelské jméno použité pro připojení k serveru ServiceNow pro ověřování Basic a OAuth2.  | Ano |
-| heslo | Heslo odpovídající uživatelskému jménu pro základní a OAuth2 ověřování. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| typ | Vlastnost Type musí být nastavená na: **ServiceNow** . | Yes |
+| endpoint | Koncový bod serveru ServiceNow ( `http://<instance>.service-now.com` ).  | Yes |
+| authenticationType | Typ ověřování, který se má použít. <br/>Povolené hodnoty jsou: **Basic**, **OAuth2** | Yes |
+| username | Uživatelské jméno použité pro připojení k serveru ServiceNow pro ověřování Basic a OAuth2.  | Yes |
+| heslo | Heslo odpovídající uživatelskému jménu pro základní a OAuth2 ověřování. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | clientId | ID klienta pro ověřování OAuth2  | No |
 | clientSecret | Tajný klíč klienta pro ověřování OAuth2 Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | No |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | No |
@@ -85,7 +81,7 @@ Chcete-li kopírovat data z ServiceNow, nastavte vlastnost Type datové sady na 
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **ServiceNowObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **ServiceNowObject** . | Yes |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad**
@@ -115,17 +111,16 @@ Chcete-li kopírovat data z ServiceNow, nastavte typ zdroje v aktivitě kopírov
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **ServiceNowSource** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Actual.alm_asset"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **ServiceNowSource** . | Yes |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM Actual.alm_asset"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 Při zadávání schématu a sloupce pro ServiceNow v dotazu Pamatujte na následující **informace a podívejte se na [tipy k výkonu](#performance-tips) při kopírování výkonu**.
 
-- **Schéma:** zadejte schéma jako `Actual` nebo `Display` v dotazu ServiceNow, který můžete `sysparm_display_value` při volání [rozhraní API RESTful ServiceNow](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET)použít jako parametr jako true nebo false. 
+- **Schéma:** zadejte schéma jako `Actual` nebo `Display` v dotazu ServiceNow, který můžete `sysparm_display_value` při volání [rozhraní API RESTful ServiceNow](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET)použít jako parametr jako true nebo false. 
 - **Column (sloupec):** název sloupce pro skutečnou hodnotu ve `Actual` schématu je `[column name]_value` , zatímco pro zobrazovanou hodnotu v části `Display` schéma je `[column name]_display_value` . Všimněte si, že název sloupce musí být namapován na schéma používané v dotazu.
 
 **Vzorový dotaz:** 
- `SELECT col_value FROM Actual.alm_asset` ANI 
-`SELECT col_display_value FROM Display.alm_asset`
+ `SELECT col_value FROM Actual.alm_asset` ANI`SELECT col_display_value FROM Display.alm_asset`
 
 **Příklad:**
 

@@ -1,19 +1,17 @@
 ---
 title: Migrace Azure SQL Database tabulek do Azure CosmosDB s využitím Azure Data Factory
 description: Vezměte existující normalizované schéma databáze z Azure SQL Database a migrujte do denormalizovaného kontejneru Azure CosmosDB pomocí Azure Data Factory.
-services: data-factory
 author: kromerm
+ms.author: makromer
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.author: makromer
-ms.openlocfilehash: 5d93cb49c77a4c8164a8b4e9bca349a805f39678
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 3d67ac9474704fac39dbe7eb91aead5c4babc4ce
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041634"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383938"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>Migrace normalizovaného schématu databáze z Azure SQL Database do denormalizovaného kontejneru Azure CosmosDB
 
@@ -50,7 +48,7 @@ Výsledný kontejner CosmosDB vloží vnitřní dotaz do jediného dokumentu a b
 
 2. Přidání aktivity toku dat
 
-3. V aktivitě toku dat vyberte **Nový tok dat mapování** .
+3. V aktivitě toku dat vyberte **Nový tok dat mapování**.
 
 4. Tento graf toku dat budeme sestavovat níže.
 

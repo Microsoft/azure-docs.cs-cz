@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 91cf6729911cdb674c5451f172e76a2e9d5943e4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1818dc558ba45e318b71e1443556cc48feaede8b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466786"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367669"
 ---
 # <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>Řešení potíží s Azure Monitor pro virtuální počítače s Windows (Preview)
 
@@ -20,9 +20,9 @@ ms.locfileid: "96466786"
 
 Tento článek obsahuje známé problémy a řešení pro běžné problémy v Azure Monitor pro virtuální počítače s Windows (Preview).
 
-## <a name="the-configuration-workbook-isnt-working-properly"></a>Sešit konfigurace nefunguje správně.
+## <a name="issues-with-configuration-and-setup"></a>Problémy s konfigurací a nastavením
 
-Pokud sešit konfigurace Azure Monitor nefunguje, můžete tyto prostředky použít k ručnímu nastavení jednotlivých částí:
+Pokud sešit konfigurace nepracuje správně a automatizuje instalaci, můžete tyto prostředky použít k ručnímu nastavení prostředí:
 
 - Pokud chcete ručně povolit diagnostiku nebo získat přístup k pracovnímu prostoru Log Analytics, přečtěte si téma [odeslání diagnostiky virtuálních počítačů Windows do Log Analytics](diagnostics-log-analytics.md).
 - Ruční instalace rozšíření Log Analytics na hostitele najdete v tématu [Log Analytics rozšíření virtuálních počítačů pro Windows](../virtual-machines/extensions/oms-windows.md).
@@ -30,27 +30,29 @@ Pokud sešit konfigurace Azure Monitor nefunguje, můžete tyto prostředky pou�
 - Chcete-li přidat nebo odebrat čítače výkonu, přečtěte si téma [Konfigurace čítačů výkonu](../azure-monitor/platform/data-sources-performance-counters.md).
 - Chcete-li konfigurovat události pro pracovní prostor Log Analytics, přečtěte si téma [shromáždění zdrojů dat protokolu událostí systému Windows pomocí agenta Log Analytics](../azure-monitor/platform/data-sources-windows-events.md).
 
-Případně může problém způsobovat buď nedostatek prostředků, nebo nemá požadovaná oprávnění.
-
-Pokud předplatné nemá žádné prostředky virtuálního stolního počítače s Windows, nezobrazí se v parametru *předplatného* .
-
-Pokud nemáte přístup pro čtení ke správným předplatným, nezobrazí se v parametru *předplatného* a jejich data se na řídicím panelu nezobrazí. Pokud chcete tento problém vyřešit, obraťte se na vlastníka předplatného a požádejte ho o přístup pro čtení.
-
 ## <a name="my-data-isnt-displaying-properly"></a>Moje data se nezobrazují správně
 
-Pokud se vaše data nezobrazují správně, může během procesu konfigurace Azure Monitor dojít k nějakému problému. Nejdřív se ujistěte, že jste vyplnili všechna pole v konfiguračním sešitě, jak je popsáno v tématu [použití Azure monitor pro virtuální plochu Windows k monitorování vašeho nasazení](azure-monitor.md). Nastavení pro nová i existující prostředí můžete kdykoli změnit. Pokud nějaké čítače nebo události chybí, nezobrazí se v Azure Portal žádná data, která jsou k nim přidružená.
+Pokud se vaše data nezobrazují správně, ověřte svou konfiguraci, oprávnění a ověřte, že jsou odblokovány požadované IP adresy. 
 
-Pokud nechybí žádné informace, ale vaše data stále nejsou správně zobrazená, může se jednat o problém v dotazu nebo zdroji dat. 
+- Nejdřív se ujistěte, že jste vyplnili všechna pole v konfiguračním sešitě, jak je popsáno v tématu [použití Azure monitor pro virtuální plochu Windows k monitorování vašeho nasazení](azure-monitor.md). Pokud nějaké čítače nebo události chybí, nezobrazí se v Azure Portal žádná data, která jsou k nim přidružená.
 
-Pokud se nezobrazí žádné chyby instalačního programu a stále nevidíte očekávaná data, můžete chtít počkat 15 minut a aktualizovat informační kanál. Azure Monitor pro naplnění dat protokolu vyvolala období latence 15 minut. Další informace najdete v tématu [čas příjmu dat protokolu v Azure monitor](../azure-monitor/platform/data-ingestion-time.md).
+- Ověřte přístupová oprávnění & obraťte se na majitele prostředků, aby požádala o chybějící oprávnění; Virtuální plocha pro monitorování všech uživatelů systému Windows vyžaduje následující oprávnění:
 
-Nakonec, pokud nechybí žádné informace, ale vaše data stále nejsou zobrazená, může se jednat o problém v dotazu nebo zdroji dat. Pokud je to tento případ, možná budete muset kontaktovat podporu a vyřešit problém.
+    - Přístup pro čtení předplatných Azure, která uchovávají vaše prostředky virtuálních klientů Windows
+    - Přístup pro čtení do skupin prostředků předplatného, které obsahují hostitele relace virtuálních klientů Windows 
+    - Přístup pro čtení k pracovnímu prostoru Log Analytics
+
+- Je možné, že budete muset v bráně firewall serveru otevřít odchozí porty, aby bylo možné Azure Monitor odesílat data na portál, viz téma [Odchozí porty](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses). 
+
+- Nezobrazuje se data z nedávné aktivity? Možná budete chtít počkat na 15 minut a aktualizovat informační kanál. Azure Monitor je doba latence 15 minut pro naplnění dat protokolu. Další informace najdete v tématu [čas příjmu dat protokolu v Azure monitor](../azure-monitor/platform/data-ingestion-time.md).
+
+Pokud nechybí žádné informace, ale vaše data stále nejsou správně zobrazená, může se jednat o problém v dotazu nebo zdroji dat. Projděte si naše známé problémy a omezení. 
 
 ## <a name="i-want-to-customize-azure-monitor-for-windows-virtual-desktop"></a>Chci přizpůsobit Azure Monitor pro virtuální počítače s Windows
 
 Azure Monitor pro virtuální počítače s Windows používá Azure Monitor sešity. Sešity vám umožní uložit kopii šablony sešitu virtuálních počítačů s Windows a vytvořit vlastní vlastní nastavení.
 
-Přizpůsobené šablony se neaktualizují, pokud skupina produktů aktualizuje původní šablonu. Toto je návrh v nástroji sešity, takže budete muset uložit kopii aktualizované šablony a znovu sestavit vlastní nastavení, abyste mohli přijímat aktualizace. Další informace najdete v tématu [řešení potíží s přehledem na základě sešitu](../azure-monitor/insights/troubleshoot-workbooks.md) a v části [sešity](../azure-monitor/platform/workbooks-overview.md).
+Podle návrhu nebudou vlastní šablony sešitu automaticky přijímat aktualizace ze skupiny Products. Další informace najdete v tématu [řešení potíží s přehledem na základě sešitu](../azure-monitor/insights/troubleshoot-workbooks.md) a v části [sešity](../azure-monitor/platform/workbooks-overview.md).
 
 ## <a name="i-cant-interpret-the-data"></a>Nejde interpretovat data
 
@@ -58,24 +60,36 @@ Přečtěte si další informace o datových termínech v [glosáři Azure monit
 
 ## <a name="the-data-i-need-isnt-available"></a>Potřebná data nejsou k dispozici.
 
+Pokud chcete monitorovat další čítače výkonu nebo události, můžete jim povolit, aby se odesílaly do vašeho pracovního prostoru Log Analytics a mohli je monitorovat v diagnostice hostitele: prohlížeč hostitele. 
+
+- Postup přidání čítačů výkonu najdete v tématu [Konfigurace čítačů výkonu](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#configuring-performance-counters) .
+- Chcete-li přidat události systému Windows, přečtěte si téma [Konfigurace protokolů událostí systému Windows](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-windows-events#configuring-windows-event-logs)
+
 Nemůžete najít datový bod, který by mohl pomáhat diagnostikovat problém? Pošlete nám svůj názor!
 
 - Informace o tom, jak ponechávat zpětnou vazbu, najdete v tématech [Přehled řešení potíží, zpětná vazba a podpora pro virtuální počítače s Windows](troubleshoot-set-up-overview.md).
 - Zpětnou vazbu k virtuálnímu počítači s Windows můžete také odeslat na webu [Centrum zpětné vazby na virtuálním počítači s Windows](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) nebo na [našem fóru UserVoice](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
 
-## <a name="known-issues"></a>Známé problémy
+## <a name="known-issues-and-limitations"></a>Známé problémy a omezení
 
-Jedná se o problémy, které v současné době znáte a pracujeme na opravě:
+Jedná se o problémy a omezení, které v současnosti víme a pracujeme na opravě:
 
-- V současné době můžete pro monitorování vybrat jenom jedno předplatné, skupinu prostředků a fond hostitelů. Z tohoto důvodu můžete při použití stránky sestavy uživatelů pochopit uživatelské prostředí, abyste ověřili, že máte správný fond hostitelů, který uživatel používal, nebo že jeho data nebudou naplňovat vizuály.
+- Současně můžete monitorovat pouze jeden fond hostitelů. 
 
-- V současné době není možné uložit oblíbená nastavení do Azure Monitor, pokud neuložíte vlastní šablonu sešitu. To znamená, že správci IT budou muset zadat svůj název předplatného, názvy skupin prostředků a předvolby fondu hostitelů při každém otevření Azure Monitor pro virtuální počítač s Windows.
-
-- V tuto chvíli není možné exportovat data z Azure Monitor pro virtuální plochu Windows do Excelu.
-
-- Všechna závažnost 1 Azure Monitor výstrahy pro všechny produkty v rámci vybraného předplatného se zobrazí na stránce Přehled. To je záměrné, protože výstrahy z jiných produktů v rámci předplatného můžou mít vliv na virtuální plochu Windows. V současné době je dotaz omezen na výstrahy o závažnosti 1 s výjimkou závažných upozornění s vysokou prioritou 0 na stránce Přehled.
+- Chcete-li uložit oblíbená nastavení, je nutné uložit vlastní šablonu sešitu. Vlastní šablony automaticky nepřijmou aktualizace z produktové skupiny.
 
 - Některé chybové zprávy nejsou fráze uživatelsky přívětivé, a ne všechny chybové zprávy jsou popsány v dokumentaci.
+
+- Čítač výkonu celkový počet relací může v průběhu několika relací na malém čísle a celkový počet relací, které se mohou vyskytnout, jít nad rámec maximálního počtu relací.
+
+- Počet dostupných relací neodráží zásady škálování ve fondu hostitelů. 
+    
+- V některých případech může událost dokončení připojení chybět a může to mít vliv na některé vizuály, jako je připojení v průběhu času, a na stav připojení uživatele.  
+    
+- Sešit konfigurace podporuje pouze konfiguraci hostitelů ve stejné oblasti, jako je jejich skupina prostředků. 
+
+- Čas potřebný k připojení zahrnuje dobu, kterou uživatel potřebuje k zadání přihlašovacích údajů. To je sladěné se zkušenostmi, ale v některých případech může zobrazit nepravdivé špičky. 
+    
 
 ## <a name="next-steps"></a>Další kroky
 

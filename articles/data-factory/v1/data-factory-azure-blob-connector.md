@@ -1,23 +1,18 @@
 ---
 title: Kopírování dat do/z Azure Blob Storage
 description: 'Přečtěte si, jak kopírovat data objektů BLOB v Azure Data Factory. Využijte naši ukázku: Jak kopírovat data z a do Azure Blob Storage a Azure SQL Database.'
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: bec8160f-5e07-47e4-8ee1-ebb14cfb805d
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fa6e19fd9759d6e489d0945b5521a2e0ae3881e0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f1343f900e12bff09c0436ca52d8b091fe48a181
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462636"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393543"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Blob Storage pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -173,7 +168,7 @@ Tato část popisuje výsledné chování operace kopírování pro různé komb
 ## <a name="walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage"></a>Návod: použití Průvodce kopírováním ke zkopírování dat do/z Blob Storage
 Pojďme se podívat, jak rychle kopírovat data do nebo z úložiště objektů BLOB v Azure. V tomto návodu jsou zdrojová i cílová úložiště dat typu: Azure Blob Storage. Kanál v tomto návodu kopíruje data ze složky do jiné složky ve stejném kontejneru objektů BLOB. Tento názorný postup je záměrně jednoduchý k zobrazení nastavení nebo vlastností při použití Blob Storage jako zdroje nebo jímky.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 1. Pokud ho ještě nemáte, vytvořte účet pro obecné účely **Azure Storage** . V tomto návodu použijete úložiště objektů BLOB jako **zdrojové** i **cílové** úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md), kde najdete kroky pro jeho vytvoření.
 2. V účtu úložiště vytvořte kontejner objektů BLOB s názvem **adfblobconnector** .
 4. V kontejneru **adfblobconnector** vytvořte složku s názvem **input** .
@@ -184,10 +179,10 @@ Pojďme se podívat, jak rychle kopírovat data do nebo z úložiště objektů 
     ```
 
 ### <a name="create-the-data-factory"></a>Vytvoření datové továrny
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. V levém horním rohu klikněte na **vytvořit prostředek** , klikněte na **Intelligence + Analytics** a pak klikněte na **Data Factory**.
 3. V podokně **Nová datová továrna** :  
-    1. Jako **název** zadejte **ADFBlobConnectorDF** . Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chyba: `*Data factory name “ADFBlobConnectorDF” is not available` , změňte název datové továrny (například na yournameADFBlobConnectorDF) a zkuste to znovu. V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.
+    1. Jako **název** zadejte **ADFBlobConnectorDF** . Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chyba: `*Data factory name "ADFBlobConnectorDF" is not available` , změňte název datové továrny (například na yournameADFBlobConnectorDF) a zkuste to znovu. V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.
     2. Vyberte své **předplatné** Azure.
     3. V případě skupiny prostředků vyberte **použít existující** a vyberte existující skupinu prostředků (nebo) vyberte **vytvořit novou** a zadejte název skupiny prostředků.
     4. Vyberte **umístění** pro příslušný objekt pro vytváření dat.

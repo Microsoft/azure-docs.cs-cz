@@ -8,18 +8,25 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: bffff099e8df2b944cbef50a074ef625267ed238
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: cf0db71600c9350b4d70e6375f509a6e88709f70
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944628"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378328"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>Postup připojení zařízení pomocí certifikátů X. 509 pomocí sady SDK pro Node.js zařízení pro IoT Central aplikace
 
 IoT Central podporuje certifikáty sdíleného přístupu (SAS) i X. 509 k zabezpečení komunikace mezi zařízením a vaší aplikací. V kurzu [Vytvoření a připojení klientské aplikace do Azure IoT Central aplikace se](./tutorial-connect-device.md) používá SAS. V tomto článku se naučíte, jak upravit ukázku kódu pro použití X. 509.  V produkčním prostředí se doporučují certifikáty X. 509. Další informace najdete v tématu věnovaném [připojení k Azure IoT Central](./concepts-get-connected.md).
 
 Tento článek ukazuje dva způsoby použití registrů X. 509- [Group](how-to-connect-devices-x509.md#use-a-group-enrollment) , které se obvykle používají v produkčním prostředí, a [jednotlivé registrace](how-to-connect-devices-x509.md#use-an-individual-enrollment) užitečné pro testování.
+
+Fragmenty kódu v tomto článku používají JavaScript. Ukázky kódu v jiných jazycích najdete v těchto tématech:
+
+- [R](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_ll_client_x509_sample)
+- [C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/device/X509DeviceCertWithChainSample)
+- [Java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
+- [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples)
 
 ## <a name="prerequisites"></a>Požadavky
 

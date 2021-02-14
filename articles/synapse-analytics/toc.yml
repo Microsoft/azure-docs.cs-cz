@@ -113,6 +113,8 @@
                   href: ./security/workspace-data-exfiltration-protection.md
                 - name: Pracovní prostor Synapse s centry služby Private Link
                   href: ./security/synapse-private-link-hubs.md
+                - name: Připojení k zabezpečenému účtu úložiště
+                  href: ./security/connect-to-a-secure-storage-account.md
             - name: Ověřování a předávací ověřování
               items:
                 - name: Azure Active Directory
@@ -571,7 +573,11 @@
         - name: Práce se službou Delta Lake
           href: ./spark/apache-spark-delta-lake-overview.md
         - name: Správa knihoven
-          href: ./spark/apache-spark-azure-portal-add-libraries.md
+          items:
+            - name: Přidání a správa knihoven
+              href: ./spark/apache-spark-azure-portal-add-libraries.md
+            - name: Řešení chyb při instalaci knihovny
+              href: ./spark/apache-spark-troubleshoot-library-errors.md
         - name: Použití poznámkových bloků a nástrojů IDE
           items:
             - name: Správa poznámkových bloků

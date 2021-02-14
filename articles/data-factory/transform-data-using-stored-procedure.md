@@ -1,22 +1,18 @@
 ---
 title: Transformace dat pomocí aktivity uložené procedury
 description: Vysvětluje, jak pomocí aktivity SQL Server uložených procedur vyvolat uloženou proceduru v Azure SQL Database/datovém skladu z kanálu Data Factory.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
-ms.openlocfilehash: f20af5ea9628dd6c8aa732ac1d09625156eed0c4
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: b9ba2f9de82522d4348fa341ad0b41d43c3eebcc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387537"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375642"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Transformuje data pomocí aktivity SQL Server uložených procedur v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -68,14 +64,14 @@ Tady je formát JSON pro definování aktivity uložené procedury:
 
 Tyto vlastnosti JSON jsou popsány v následující tabulce:
 
-| Vlastnost                  | Popis                              | Povinné |
+| Vlastnost                  | Popis                              | Vyžadováno |
 | ------------------------- | ---------------------------------------- | -------- |
-| name                      | Název aktivity                     | Ano      |
-| Popis               | Text popisující, k čemu se aktivita používá | Ne       |
-| typ                      | Pro aktivitu uložená procedura je typ aktivity **SqlServerStoredProcedure** | Ano      |
-| linkedServiceName         | Odkaz na **Azure SQL Database** nebo **analýzy Azure synapse** nebo **SQL Server** v Data Factory zaregistrován jako propojená služba. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Ano      |
-| storedProcedureName       | Zadejte název uložené procedury, která se má vyvolat. | Ano      |
-| storedProcedureParameters | Zadejte hodnoty parametrů uložených procedur. Slouží `"param1": { "value": "param1Value","type":"param1Type" }` k předání hodnot parametrů a jejich typu, které jsou podporovány zdrojem dat. Pokud pro parametr potřebujete předat hodnotu null, použijte `"param1": { "value": null }` (všechna malá písmena). | Ne       |
+| name                      | Název aktivity                     | Yes      |
+| description               | Text popisující, k čemu se aktivita používá | No       |
+| typ                      | Pro aktivitu uložená procedura je typ aktivity **SqlServerStoredProcedure** | Yes      |
+| linkedServiceName         | Odkaz na **Azure SQL Database** nebo **analýzy Azure synapse** nebo **SQL Server** v Data Factory zaregistrován jako propojená služba. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Yes      |
+| storedProcedureName       | Zadejte název uložené procedury, která se má vyvolat. | Yes      |
+| storedProcedureParameters | Zadejte hodnoty parametrů uložených procedur. Slouží `"param1": { "value": "param1Value","type":"param1Type" }` k předání hodnot parametrů a jejich typu, které jsou podporovány zdrojem dat. Pokud pro parametr potřebujete předat hodnotu null, použijte `"param1": { "value": null }` (všechna malá písmena). | No       |
 
 ## <a name="parameter-data-type-mapping"></a>Mapování datových typů parametrů
 Datový typ, který zadáte pro parametr, je typ Azure Data Factory, který se mapuje na datový typ ve zdroji dat, který používáte. Mapování datových typů pro zdroj dat můžete najít v oblasti konektory. Některé příklady jsou

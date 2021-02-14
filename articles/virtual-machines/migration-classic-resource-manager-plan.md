@@ -1,22 +1,22 @@
 ---
 title: Plánování migrace z modelu Classic na Azure Resource Manager
-description: V tomto článku se dozvíte, jak naplánovat migraci prostředků IaaS z modelu Classic na Azure Resource Manager v systému Linux.
-services: virtual-machines-linux
+description: V tomto článku se dozvíte, jak naplánovat migraci prostředků IaaS z modelu Classic na Azure Resource Manager.
+services: virtual-machines
 author: tanmaygore
 manager: vashan
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 271a20c5c9b6e157343246afb79f40894fe8a097
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: c29ca5f51e59775479fa5e97e88b28dba110d866
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94904699"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366071"
 ---
-# <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Plánování migrace prostředků IaaS z modelu Classic na Azure Resource Manager v systému Linux
+# <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plánování migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru
 
 > [!IMPORTANT]
 > V dnešní době se o 90% virtuálních počítačů IaaS používají [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). Od 28. února 2020 se klasické virtuální počítače zastaraly a budou plně vyřazeny od 1. března 2023. [Přečtěte si další informace]( https://aka.ms/classicvmretirement) o této zastaralosti a [o tom, jak vás to ovlivní](classic-vm-deprecation.md#how-does-this-affect-me).

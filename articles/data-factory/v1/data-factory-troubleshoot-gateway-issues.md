@@ -1,22 +1,18 @@
 ---
 title: Řešení potíží s Správa dat bránou
 description: Poskytuje tipy pro řešení potíží souvisejících s Správa dat bránou.
-services: data-factory
 author: nabhishek
-manager: anandsub
-ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 7b12ff431b2d164baf4f70fa5341f538b16bca51
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 284486c5db248ced8ada6e7194c7bc5a9be5689f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896561"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388341"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Řešení potíží při použití Brány pro správu dat
 Tento článek poskytuje informace o řešení potíží s používáním Správa dat brány.
@@ -99,7 +95,7 @@ Pokud je instalační program aktuální nebo nejnovější a na portálu stále
 ### <a name="6-problem"></a>6. problém
 Při registraci brány se může zobrazit následující chybová zpráva.
 
-`Error: Gateway has been online for a while, then shows “Gateway is not registered” with the status “Gateway key is invalid”`
+`Error: Gateway has been online for a while, then shows "Gateway is not registered" with the status "Gateway key is invalid"`
 
 ![Klíč brány je neplatný nebo prázdný.](media/data-factory-troubleshoot-gateway-issues/gateway-not-registered-key-invalid.png)
 
@@ -107,7 +103,7 @@ Při registraci brány se může zobrazit následující chybová zpráva.
 K této chybě může dojít, protože brána byla odstraněna nebo byl znovu vygenerován příslušný klíč brány.
 
 #### <a name="resolution"></a>Řešení
-Pokud byla brána odstraněna, znovu ji vytvořte z portálu, klikněte na **zaregistrovat** , zkopírujte klíč z portálu, vložte ho a zkuste zaregistrovat bránu.
+Pokud byla brána odstraněna, znovu ji vytvořte z portálu, klikněte na **zaregistrovat**, zkopírujte klíč z portálu, vložte ho a zkuste zaregistrovat bránu.
 
 Pokud brána stále existuje, ale její klíč se znovu vygeneroval, zaregistrujte bránu pomocí nového klíče. Pokud klíč nemáte, znovu vygenerujte klíč z portálu.
 
@@ -167,7 +163,7 @@ Brána se nemůže ke cloudové službě připojit prostřednictvím Service Bus
 #### <a name="resolution"></a>Řešení
 Použijte následující postup, chcete-li bránu opět přejít do režimu online:
 
-1. Povolí odchozí pravidla IP adres na počítači brány a v podnikové bráně firewall. IP adresy můžete najít z protokolu událostí systému Windows (ID = = 401): byl proveden pokus o přístup k soketu způsobem zakázanému jeho přístupovými oprávněními XX. CZK. CZK. XX: 9350.
+1. Povolí odchozí pravidla IP adres na počítači brány a v podnikové bráně firewall. IP adresy můžete najít z protokolu událostí systému Windows (ID = = 401): došlo k pokusu o přístup k soketu způsobem zakázanému jeho přístupovými oprávněními XX. XX. XX. XX: 9350.
 1. Nakonfigurujte nastavení proxy serveru v bráně. Podrobnosti najdete v části věnované hledisku proxy serveru.
 1. Povolte Odchozí porty 5671 a 9350-9354 na bráně Windows Firewall na počítači brány a v podnikové bráně firewall. Podrobnosti najdete v části porty a brána firewall. Tento krok je nepovinný, ale doporučujeme zvážit jeho výkon.
 
@@ -204,7 +200,7 @@ Může dojít ke ztrátě certifikátu TLS/SSL na počítači brány. Počítač
 Problém můžete vyřešit pomocí těchto kroků:
 
 1. Spusťte Správa dat Configuration Manager brány.
-2. Přepněte na kartu **Nastavení** .  
+2. Přepněte na kartu **Nastavení**.  
 3. Chcete-li změnit certifikát TLS/SSL, klikněte na tlačítko **změnit** .
 
    ![Tlačítko změnit certifikát](media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png)
@@ -278,7 +274,7 @@ Kliknutím na odkaz **Archivovat protokoly brány** můžete archivovat a uklád
 ### <a name="locate-gateway-logs"></a>Vyhledání protokolů brány
 Podrobné informace protokolu brány najdete v protokolech událostí systému Windows.
 
-1. Spusťte Windows **Prohlížeč událostí** .
+1. Spusťte Windows **Prohlížeč událostí**.
 2. Vyhledejte protokoly ve složce **Application and Services log**  >  **Správa dat Gateway** .
 
    Když řešíte problémy související s bránou, hledejte události na úrovni chyb v prohlížeči událostí.

@@ -1,21 +1,17 @@
 ---
 title: Kopírování dat z Amazon RedShift
 description: Přečtěte si, jak kopírovat data z Amazon RedShift na podporovaná úložiště dat jímky pomocí Azure Data Factory.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/09/2020
-ms.openlocfilehash: b17c567b2e83bef3c37c8f1272091021a1943b15
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 9441885766dad97dfc237ab81a59710245bf13ce
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008315"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364252"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Kopírování dat z Amazon RedShift pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -57,13 +53,13 @@ Pro propojenou službu Amazon RedShift jsou podporovány následující vlastnos
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **AmazonRedshift** . | Ano |
-| server |IP adresa nebo název hostitele serveru Amazon RedShift Server. |Ano |
+| typ | Vlastnost Type musí být nastavená na: **AmazonRedshift** . | Yes |
+| server |IP adresa nebo název hostitele serveru Amazon RedShift Server. |Yes |
 | port |Číslo portu TCP, který server Amazon RedShift používá k naslouchání klientským připojením. |Ne, výchozí hodnota je 5439 |
-| database |Název databáze Amazon RedShift. |Ano |
-| username |Jméno uživatele, který má přístup k databázi. |Ano |
-| heslo |Heslo pro uživatelský účet. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud je úložiště dat umístěné v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
+| database |Název databáze Amazon RedShift. |Yes |
+| username |Jméno uživatele, který má přístup k databázi. |Yes |
+| heslo |Heslo pro uživatelský účet. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud je úložiště dat umístěné v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
 **Příklad:**
 
@@ -99,9 +95,9 @@ Chcete-li kopírovat data z Amazon RedShift, jsou podporovány následující vl
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **AmazonRedshiftTable** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **AmazonRedshiftTable** . | Yes |
 | schema | Název schématu. |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
-| stolu | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
+| tabulka | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
 | tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. `schema` `table` Pro nové zatížení použijte a. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad**
@@ -134,9 +130,9 @@ Pokud chcete kopírovat data z Amazon RedShift, nastavte typ zdroje v aktivitě 
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **AmazonRedshiftSource** . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **AmazonRedshiftSource** . | Yes |
 | query |Pomocí vlastního dotazu můžete číst data. Příklad: SELECT * FROM MyTable. |Ne (Pokud je zadáno "tableName" v datové sadě |
-| redshiftUnloadSettings | Skupina vlastností při použití aplikace Amazon RedShift Unload. | Ne |
+| redshiftUnloadSettings | Skupina vlastností při použití aplikace Amazon RedShift Unload. | No |
 | s3LinkedServiceName | Odkazuje na službu Amazon S3, která se používá jako dočasné úložiště, a to zadáním názvu propojené služby typu "AmazonS3". | Ano, pokud se používá uvolnění |
 | interval intervalu | Označuje, že se má v poli S3 ukládat dočasná data. Pokud není zadaný, Služba Data Factory ji automaticky vygeneruje.  | Ano, pokud se používá uvolnění |
 
@@ -225,10 +221,10 @@ Při kopírování dat z Amazon RedShift se z datových typů Amazon RedShift po
 | NOTACI |Decimal |
 | DVOJITÁ PŘESNOST |dvojité |
 | CELÉ ČÍSLO |Int32 |
-| REÁLNÉ |Jeden |
+| REÁLNÉ |Jednoduché |
 | SMALLINT |Int16 |
 | TEXT |Řetězec |
-| ČASOVÉ razítko |DateTime |
+| ČASOVÉ RAZÍTKO |DateTime |
 | VARCHAR |Řetězec |
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: reyandap
 ms.custom: references_pricing
-ms.openlocfilehash: 8ced9bb33be341d35904967092414676a6ffe3ac
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 13451291544f704000ab61d41ed5014fa69298e4
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905532"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517684"
 ---
 # <a name="about-virtual-wan-pricing"></a>Informace o cenách virtuální sítě WAN
 
@@ -23,14 +23,13 @@ Služba Azure Virtual WAN přináší do sjednoceného rozhraní několik síťo
 Ceny každé služby ve virtuální síti WAN se účtují. Proto se pro virtuální síť WAN nedá navrhnout jedna cena. [Cenová Kalkulačka Azure](https://azure.microsoft.com/pricing/calculator/) poskytuje mechanismus pro odvození nákladů, který je založen na službách zřízených ve virtuální síti WAN. Tento článek popisuje Nejčastější dotazy týkající se cen virtuální sítě WAN.
 
 >[!NOTE]
->Aktuální informace o cenách najdete v tématu [ceny služby Virtual WAN](https://azure.microsoft.com/pricing/details/virtual-wan/).
->
+>Aktuální informace o cenách najdete v tématu [ceny služby Virtual WAN](https://azure.microsoft.com/pricing/details/virtual-wan/). Poplatky mezi centrálním centrem (centrem a centrem) se nezobrazují na stránce s cenami virtuální sítě WAN, protože se na ni vztahují poplatky za Inter-Region (v rámci/mezi kontinentální) poplatky za [přenos dat Azure](https://azure.microsoft.com/pricing/details/bandwidth/).
 
 ## <a name="common-pricing-questions"></a><a name="questions"></a>Běžné otázky týkající se cen
 
 ### <a name="what-is-a-scale-unit"></a><a name="scale-unit"></a>Co je jednotka škálování?
 
-**Jednotka škálování** poskytuje jednotku pro agregovanou kapacitu typu Site-to-Site (S2S), Point-to-Site (P2S) a EXPRESSROUTE (ER) ve virtuálním rozbočovači. Například:
+**Jednotka škálování** poskytuje jednotku pro agregovanou kapacitu typu Site-to-Site (S2S), Point-to-Site (P2S) a EXPRESSROUTE (ER) ve virtuálním rozbočovači. Příklad:
 
 * **1 jednotka ŠKÁLOVÁNÍ S2S VPN** označuje celkovou kapacitu 500 MB/s VPN Gateway (duální instance se nasazují pro odolnost proti chybám) ve virtuálních rozbočovačích za cenu $0.361/hod.
 * **1 jednotka pro ŠKÁLOVÁNÍ ER** implikuje celkem 2 GB/s.
@@ -38,7 +37,7 @@ Ceny každé služby ve virtuální síti WAN se účtují. Proto se pro virtuá
 
 ### <a name="what-is-a-connection-unit"></a><a name="connection-unit"></a>Co je jednotka připojení?
 
-**Jednotka připojení** se vztahuje na všechny místní nebo jiné koncové body, které se připojují k bránám Azure. Pro síť VPN typu Site-to-site implikuje tato hodnota větve. Pro uživatele VPN (Point-to-site) Tato hodnota implikuje vzdálené uživatele. Pro ExpressRoute tato hodnota implikuje připojení okruhu ExpressRoute.<br>Například:
+**Jednotka připojení** se vztahuje na všechny místní nebo jiné koncové body, které se připojují k bránám Azure. Pro síť VPN typu Site-to-site implikuje tato hodnota větve. Pro uživatele VPN (Point-to-site) Tato hodnota implikuje vzdálené uživatele. Pro ExpressRoute tato hodnota implikuje připojení okruhu ExpressRoute.<br>Příklad:
 
 * Jedno připojení k síti VPN se připojuje k Azure VPN v nákladech virtuálního rozbočovače. $0,05/hod. Proto připojení větví 100, která se připojují k virtuálnímu rozbočovači Azure, by znamenala náklady na $0,05 * 100/hod.
 
