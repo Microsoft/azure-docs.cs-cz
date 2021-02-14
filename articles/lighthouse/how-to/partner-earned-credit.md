@@ -1,32 +1,30 @@
 ---
 title: Propojte své ID partnera a sledujte svůj dopad na delegovaných prostředcích.
 description: Přečtěte si, jak přidružit ID partnera pro příjem kreditu (PEC) pro zákaznické prostředky, které spravujete prostřednictvím Azure Lighthouse.
-ms.date: 01/28/2021
+ms.date: 02/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 46338b925b1ad44019c9cc95e4b7f8c0963c07c4
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 4c18aae38570ab3fd84df7d45fb18e35404158be
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98985967"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372089"
 ---
 # <a name="link-your-partner-id-to-track-your-impact-on-delegated-resources"></a>Propojte své ID partnera a sledujte svůj dopad na delegovaných prostředcích. 
 
 Pokud jste členem [Microsoft Partner Network](https://partner.microsoft.com/), můžete propojit ID partnera s přihlašovacími údaji, které jste použili ke správě delegovaných prostředků zákazníků, a umožnit tak Microsoftu identifikovat a rozpoznávat partnery, kteří chtějí zákazníky v Azure řídit. Tento odkaz taky umožňuje partnerům [CSP (Cloud Solution Provider)](/partner-center/csp-overview) přijímat [kredity s získanými partnery pro spravované služby (PEC)](/partner-center/partner-earned-credit) pro zákazníky, kteří [podepsali smlouvu o zákaznících Microsoftu (MCA)](/partner-center/confirm-customer-agreement) a jsou [v rámci plánu Azure](/partner-center/azure-plan-get-started).
 
-Pokud připojíte [zákazníky k nabídkám spravovaných služeb v Azure Marketplace](publish-managed-services-offers.md), propojí se automaticky pomocí ID MPN přidruženého k účtu partnerského centra používaného k publikování nabídek. Žádná další akce není nutná k tomu, aby bylo možné sledovat váš dopad na tyto zákazníky.
-
-Pokud připojíte [zákazníky pomocí šablon správy prostředků Azure](onboard-customer.md), budete muset provést akci, abyste tento odkaz vytvořili. Provedete to tak, že [propojíte ID MPN](../../cost-management-billing/manage/link-partner-id.md) s alespoň jedním uživatelským účtem ve vašem tenantovi pro správu, který má přístup ke každému z vašich poregistračních předplatných.
+Pokud chcete získat rozpoznávání pro aktivity Azure Lighthouse, musíte [propojit ID MPN](../../cost-management-billing/manage/link-partner-id.md) s alespoň jedním uživatelským účtem ve vašem tenantovi a zajistit, aby měl propojený účet přístup ke každému z vašich poregistračních předplatných.
 
 ## <a name="associate-your-partner-id-when-you-onboard-new-customers"></a>Přidružte své ID partnera při připojování nových zákazníků.
 
-Při připojování zákazníků prostřednictvím šablon Azure Resource Manager (šablony ARM) použijte následující postup, který propojí ID partnera (a pokud je k dispozici možnost Povolit získaný partnerský kredit). K provedení těchto kroků budete muset znát [ID partnera MPN](/partner-center/partner-center-account-setup#locate-your-mpn-id) . Nezapomeňte použít **přidružené ID MPN**, které je uvedené ve vašem partnerském profilu.
+Pomocí následujícího postupu můžete propojit ID partnera (Pokud je to možné), a povolit získaný kredit partnerských procesů. K provedení těchto kroků budete muset znát [ID partnera MPN](/partner-center/partner-center-account-setup#locate-your-mpn-id) . Nezapomeňte použít **přidružené ID MPN**, které je uvedené ve vašem partnerském profilu.
 
 Pro zjednodušení doporučujeme vytvořit v tenantovi účet instančního objektu, propojit ho s **přidruženým ID MPN** a pak mu udělit přístup ke každému zákazníkovi, který zařadíte pomocí [předdefinované role Azure, která má nárok na pec](/partner-center/azure-roles-perms-pec).
 
-1. Ve vašem tenantovi pro správu [Vytvořte hlavní účet služby](../../active-directory/develop/howto-authenticate-service-principal-powershell.md) . V tomto příkladu použijeme *účet automatizace poskytovatele* názvu pro tento instanční objekt.
+1. [Vytvořte uživatelský účet instančního objektu](../../active-directory/develop/howto-authenticate-service-principal-powershell.md) ve vašem tenantovi pro správu. V tomto příkladu použijeme pro tento hlavní účet služby *účet automatizace poskytovatele* názvů.
 1. Pomocí tohoto účtu instančního objektu se v tenantovi [pro správu připojte k přidruženému ID MPN](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id) . Stačí to udělat jenom jednou.
-1. Při [připojování zákazníka pomocí šablon ARM](onboard-customer.md)nezapomeňte zahrnout autorizaci, která zahrnuje účet Automation zprostředkovatele jako uživatel s [integrovanou rolí Azure, která má nárok na řadič PEC](/partner-center/azure-roles-perms-pec).
+1. Když připojíte zákazníka [pomocí šablon ARM](onboard-customer.md) nebo [nabídek spravovaných služeb](publish-managed-services-offers.md), nezapomeňte zahrnout autorizaci, která zahrnuje účet služby Automation Provider jako uživatel s [integrovanou rolí Azure, která má nárok na řadič pro](/partner-center/azure-roles-perms-pec)správu základní desky.
 
 Pomocí těchto kroků se každý tenant zákazníka, který spravujete, přidruží k vašemu ID partnera. Účet Automation zprostředkovatele nemusí v tenantovi zákazníka ověřovat ani provádět žádné akce.
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 01/07/2021
-ms.openlocfilehash: c2b89450c0e474f5030f8812e888890f1fedde7e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.date: 02/12/2021
+ms.openlocfilehash: 4b431220dbab49b74f38a8f37be8aac1a0c5c460
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019631"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382884"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Konektory pro Azure Logic Apps
 
@@ -66,7 +66,7 @@ Pro Logic Apps, které potřebují přímý přístup k prostředkům ve služb�
 > [!NOTE]
 > Logic Apps, které běží na ISE a jejich konektory, bez ohledu na to, kde se tyto konektory spouštějí, sledují pevný Cenový tarif oproti cenovému plánu založenému na spotřebě. Další informace najdete v tématu [Logic Apps cenového modelu](../logic-apps/logic-apps-pricing.md) a [podrobnosti o cenách Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-| Popisek | Příklad | Popis |
+| Popisek | Příklad | Description |
 |-------|---------|-------------|
 | **CORE** | ![Příklad základního konektoru](./media/apis-list/example-core-connector.png) | Vestavěné triggery a akce s tímto popiskem se spouštějí ve stejném ISE jako vaše aplikace logiky. |
 | **ISE** | ![Příklad konektoru ISE](./media/apis-list/example-ise-connector.png) | Spravované konektory s tímto popiskem běží ve stejném ISE jako vaše aplikace logiky. Pokud máte místní systém, který je připojený ke službě Azure Virtual Network, ISE umožňuje aplikacím logiky přímý přístup k tomuto systému bez [místní brány dat](../logic-apps/logic-apps-gateway-connection.md). Místo toho můžete použít konektor **ISE** tohoto systému, pokud je k dispozici, akci HTTP nebo [vlastní konektor](#custom). Pro místní systémy, které nemají konektory **ISE** , použijte místní bránu dat. Pokud chcete zkontrolovat dostupné konektory ISE, přečtěte si téma [konektory ISE](#ise-connectors). |
@@ -79,7 +79,7 @@ Pro Logic Apps, které potřebují přímý přístup k prostředkům ve služb�
 
 Logic Apps poskytuje integrované triggery a akce, takže můžete vytvářet pracovní postupy založené na plánech, pomáhat aplikacím logiky komunikovat s dalšími aplikacemi a službami, řídit pracovní postup prostřednictvím aplikací logiky a spravovat nebo manipulovat s daty.
 
-| Název | Popis |
+| Název | Description |
 |------|-------------|
 | [![Plán předdefinovaného ][schedule-icon]<br> **plánu** konektoru][schedule-doc] | -Spustit aplikaci logiky v zadaném opakování, od základů po pokročilé plány s [triggerem **opakování**][schedule-recurrence-doc]. <br>– Spusťte aplikaci logiky, která potřebuje zpracovávat data v souvislých blocích pomocí [ **posuvné** aktivační události okna][schedule-sliding-window-doc]. <br>– Pozastaví vaši aplikaci logiky o zadanou dobu s [akcí **zpoždění**][schedule-delay-doc]. <br>– Pozastavit aplikaci logiky do zadaného data a času s [ **prodlevou, dokud**][schedule-delay-until-doc]neproběhne akce. |
 | [![Batch integrovaná konektorová ][batch-icon]<br> **dávka**][batch-doc] | – Zpracování zpráv v dávkách pomocí triggeru **zprávy Batch** . <br>– Volejte aplikace logiky, které mají existující triggery Batch, pomocí akce **Odeslat zprávy do dávky** . |
@@ -94,7 +94,7 @@ Logic Apps poskytuje integrované triggery a akce, takže můžete vytvářet pr
 
 Logic Apps poskytuje integrované akce pro spuštění vlastního kódu v pracovním postupu vaší aplikace logiky:
 
-| Název | Popis |
+| Název | Description |
 |------|-------------|
 | [![Azure Functions integrovaný konektor ][azure-functions-icon]<br> **Azure Functions**][azure-functions-doc] | Volejte Azure Functions, které spouštějí vlastní fragmenty kódu (C# nebo Node.js) z vašich aplikací logiky. |
 | [![Vložený ][inline-code-icon]<br>  kód integrovaného konektoru pro vložení kódu][inline-code-doc] | Přidejte a spusťte fragmenty kódu JavaScriptu z vašich aplikací logiky. |
@@ -104,7 +104,7 @@ Logic Apps poskytuje integrované akce pro spuštění vlastního kódu v pracov
 
 Logic Apps poskytuje předdefinované akce pro strukturování a řízení akcí v pracovním postupu vaší aplikace logiky:
 
-| Název | Popis |
+| Název | Description |
 |------|-------------|
 | [![Podmínka předdefinované podmínky akce ][condition-icon]<br> ][condition-doc] | Vyhodnoťte podmínku a spusťte různé akce na základě toho, zda je podmínka pravdivá, nebo false. |
 | [![Pro každou vestavěnou akci ][for-each-icon]<br> **pro každý**][for-each-doc] | Proveďte stejné akce u každé položky v poli. |
@@ -118,7 +118,7 @@ Logic Apps poskytuje předdefinované akce pro strukturování a řízení akcí
 
 Logic Apps poskytuje předdefinované akce pro práci s datovými výstupy a jejich formáty:
 
-| Název | Popis |
+| Název | Description |
 |------|-------------|
 | [![Datové operace integrovaných operací s ][data-operations-icon]<br> **daty** akcí][data-operations-doc] | Provádět operace s daty: <p>- **Sestavit**: vytvořte jeden výstup z více vstupů s různými typy. <br>- **Vytvoření tabulky CSV**: z pole s objekty JSON vytvořte tabulku s hodnotami oddělenými čárkou (CSV). <br>- **Vytvořit tabulku HTML**: vytvoří tabulku HTML z pole s objekty JSON. <br>- **Filter Array**: vytvořte pole z položek v jiném poli, které splňuje vaše kritéria. <br>- **Join**: vytvoří řetězec ze všech položek v poli a oddělí tyto položky se zadaným oddělovačem. <br>- **Analyzovat JSON**: umožňuje vytvořit uživatelsky přívětivé tokeny z vlastností a jejich hodnot v obsahu JSON, abyste je mohli ve svém pracovním postupu použít. <br>- **Vyberte**: vytvořte pole s objekty JSON transformující položky nebo hodnoty v jiném poli a namapováním těchto položek na zadané vlastnosti. |
 | ![Předdefinovaná akce data a času][date-time-icon]<br>**Datum a čas** | Provádět operace s časovými razítky: <p>- **Přidat do času**: do časového razítka přidejte zadaný počet jednotek. <br>- **Převést časové pásmo**: převede časové razítko ze zdrojového časového pásma na cílové časové pásmo. <br>- **Aktuální čas**: vrátí aktuální časové razítko jako řetězec. <br>- **Získat budoucí čas**: vrátí aktuální časové razítko plus zadané časové jednotky. <br>- **Získat čas v minulosti**: vrátí aktuální časové razítko minus zadané časové jednotky. <br>- **Odečíst od času**: odečte počet časových jednotek od časového razítka. |
@@ -131,7 +131,7 @@ Logic Apps poskytuje předdefinované akce pro práci s datovými výstupy a jej
 
 Logic Apps poskytuje tyto oblíbené standardní konektory pro automatizaci úloh, procesů a pracovních postupů s těmito službami nebo systémy:
 
-| Název | Popis |
+| Název | Description |
 |------|-------------|
 | [![Azure Service Bus Azure Service Bus spravovaného konektoru ][azure-service-bus-icon]<br> ][azure-service-bus-doc] | Spravujte asynchronní zprávy, relace a odběry témat pomocí nejčastěji používaného konektoru v Logic Apps. |
 | [![SQL Server SQL Server spravovaného konektoru ][sql-server-icon]<br> ][sql-server-doc] | Připojte se k vašemu SQL Server místně nebo Azure SQL Database v cloudu, abyste mohli spravovat záznamy, spouštět uložené procedury nebo provádět dotazy. |
@@ -452,15 +452,21 @@ Chcete-li volat rozhraní API, která spouští vlastní kód nebo nejsou k disp
 >
 > Další informace o vytváření ISEs najdete v tématu [připojení k virtuálním sítím Azure z Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
 
+## <a name="get-ready-for-deployment"></a>Příprava na nasazení
+
+I když vytvoříte připojení z aplikace logiky, připojení jsou samostatné prostředky Azure s vlastními definicemi prostředků. Pokud si chcete prohlédnout tyto definice prostředků připojení, [Stáhněte si aplikaci logiky z Azure do sady Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md), což je nejjednodušší způsob, jak vytvořit platnou šablonu parametrizované aplikace logiky, která je většinou připravená pro nasazení.
+
 <a name="block-connections"></a>
 
 ## <a name="block-creating-connections"></a>Blokovat vytváření připojení
 
 Pokud vaše organizace neumožňuje připojení ke konkrétním prostředkům pomocí jejich konektorů v Azure Logic Apps, můžete [zablokovat možnost vytvářet tato připojení](../logic-apps/block-connections-connectors.md) pro konkrétní konektory v pracovních postupech aplikace logiky pomocí [Azure Policy](../governance/policy/overview.md). Další informace najdete v tématu [bloková připojení vytvořená konkrétními konektory v Azure Logic Apps](../logic-apps/block-connections-connectors.md).
 
-## <a name="get-ready-for-deployment"></a>Příprava na nasazení
+## <a name="known-issues"></a>Známé problémy
 
-I když vytvoříte připojení z aplikace logiky, připojení jsou samostatné prostředky Azure s vlastními definicemi prostředků. Pokud si chcete prohlédnout tyto definice prostředků připojení, [Stáhněte si aplikaci logiky z Azure do sady Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md), což je nejjednodušší způsob, jak vytvořit platnou šablonu parametrizované aplikace logiky, která je většinou připravená pro nasazení.
+#### <a name="error-badgateway-client-request-id-guid"></a>Chyba: BadGateway. ID žádosti klienta: {GUID}
+
+Tato chyba je výsledkem aktualizace značek aplikace logiky, kde jedno nebo více připojení nepodporují ověřování OAuth služby Azure Active Directory (Azure AD), jako je například SFTP AD SQL, přerušují tato připojení. Aby se zabránilo tomuto chování, neaktualizujte tyto značky.
 
 ## <a name="next-steps"></a>Další kroky
 

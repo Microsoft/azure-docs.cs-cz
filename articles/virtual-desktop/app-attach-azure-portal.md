@@ -3,15 +3,15 @@ title: MSIX připojení portálu pro aplikace virtuálních počítačů s Windo
 description: Postup nastavení připojení aplikace MSIX k virtuálnímu počítači s Windows pomocí Azure Portal.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 02/11/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 34bcef24d5e7fbda53984f14a2307859c9210262
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 19ce054ce29b744f900676ecf4e55af3487d9891
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185950"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373466"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Nastavení připojení aplikace MSIX s využitím webu Azure Portal
 
@@ -65,7 +65,7 @@ V dalším kroku budete muset stáhnout a nakonfigurovat rozhraní pro správu p
 
 Nastavení rozhraní pro správu:
 
-1. [Otevřete portál Preview](https://preview.portal.azure.com/?feature.msixapplications=true#home).
+1. [Otevřete Azure Portal](https://portal.azure.com).
 2. Pokud se zobrazí výzva s dotazem, jestli považujete důvěryhodné rozšíření za důvěryhodné, vyberte možnost **udělit**.
 
       > [!div class="mx-imgBorder"]
@@ -171,6 +171,9 @@ Publikování aplikací:
 ## <a name="assign-a-user-to-an-app-group"></a>Přiřazení uživatele ke skupině aplikací
 
 Po přiřazení aplikací MSIX ke skupině aplikací budete muset uživatelům udělit přístup k nim. Přístup můžete přiřadit přidáním uživatelů nebo skupin uživatelů do skupiny aplikací s publikovanými MSIX aplikacemi. Podle pokynů v tématu [Správa skupin aplikací pomocí Azure Portal](manage-app-groups.md) přiřaďte uživatele do skupiny aplikací.
+
+>[!NOTE]
+>Aplikace MSIX připojit vzdálené aplikace může z informačního kanálu zmizí při testování vzdálených aplikací během veřejné verze Preview. Aplikace se nezobrazí, protože fond hostitelů, který používáte ve zkušebním prostředí, je obsluhován zprostředkovatelem VP v produkčním prostředí. Vzhledem k tomu, že zprostředkovatel VP v provozním prostředí neregistruje přítomnost aplikace MSIX připojit vzdálené aplikace, aplikace se v informačním kanálu nezobrazí.
 
 ## <a name="change-msix-package-state"></a>Změnit stav balíčku MSIX
 

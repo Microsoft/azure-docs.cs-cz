@@ -1,23 +1,19 @@
 ---
 title: Datové sady
 description: Seznamte se s datovými sadami v Data Factory. Datové sady reprezentují vstupní a výstupní data.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/24/2020
-ms.openlocfilehash: 6a9de6ff174adc5f6be9647560ad4e26367cb4ed
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4dafb738fd7d44893705994baa962831c101804b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500117"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390024"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datové sady v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -67,7 +63,7 @@ Datová sada v Data Factory je definována v následujícím formátu JSON:
 ```
 Následující tabulka obsahuje popis vlastností ve výše uvedeném formátu JSON:
 
-Vlastnost | Popis | Povinné |
+Vlastnost | Popis | Vyžadováno |
 -------- | ----------- | -------- |
 name | Název datové sady Viz [pravidla pro Pojmenovávání Azure Data Factory](naming-rules.md). |  Yes |
 typ | Typ datové sady Zadejte jeden z typů, které podporuje Data Factory (například: DelimitedText, AzureSqlTable). <br/><br/>Podrobnosti najdete v tématu [typy datových sad](#dataset-type). | Yes |

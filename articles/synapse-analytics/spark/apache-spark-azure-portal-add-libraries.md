@@ -2,43 +2,45 @@
 title: Spravovat knihovny pro Apache Spark
 description: Naučte se přidávat a spravovat knihovny používané Apache Spark ve službě Azure synapse Analytics.
 services: synapse-analytics
-author: euangMS
+author: midesa
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 62610e1b86671021e66891ae232bacbd4b3e40ed
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0458fb8b140166b7bdf0fc0df41dbb207fdce3c9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458814"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518517"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Správa knihoven pro Apache Spark ve službě Azure synapse Analytics
 
-Knihovny poskytují opakovaně použitelný kód, který můžete chtít zahrnout do svých programů nebo projektů. Pokud chcete vašim aplikacím zpřístupnit třetí stranu nebo místně sestavený kód, můžete knihovnu nainstalovat na jeden z vašich Apache Spark fondů bez serveru. Jakmile je knihovna nainstalována pro fond Spark, je k dispozici pro všechny relace používající stejný fond. 
+Knihovny poskytují opakovaně použitelný kód, který můžete chtít zahrnout do svých programů nebo projektů. Chcete-li zpřístupnit aplikaci třetí straně nebo místně sestavený kód, můžete nainstalovat knihovnu na jeden z Apache Spark fondů bez serveru. Jakmile je knihovna nainstalována pro fond Spark, je k dispozici pro všechny relace používající stejný fond. 
 
 ## <a name="before-you-begin"></a>Než začnete
 - Pokud chcete nainstalovat a aktualizovat knihovny, musíte mít oprávnění správce **dat objektu BLOB úložiště** nebo **vlastníka dat objektů BLOB úložiště** v primárním účtu úložiště Gen2, který je propojený s pracovním prostorem Azure synapse Analytics.
   
 ## <a name="default-installation"></a>Výchozí instalace
-Apache Spark ve službě Azure synapse Analytics má úplnou instalaci Anacondas a další knihovny. Seznam úplných knihoven najdete na stránce [podpora Apache Spark verzí](apache-spark-version-support.md). 
+Apache Spark ve službě Azure synapse Analytics má úplnou Anacondas instalaci a další knihovny. Seznam úplných knihoven najdete na stránce [podpora Apache Spark verzí](apache-spark-version-support.md). 
 
-Po spuštění instance Spark budou automaticky zahrnuty tyto knihovny. Další Python a vlastní sestavené balíčky je možné přidat na úrovni fondu Spark.
+Po spuštění instance Spark budou automaticky zahrnuty tyto knihovny. Další Python a vlastní balíčky lze přidat na úrovni fondu Spark.
 
 
 ## <a name="manage-python-packages"></a>Spravovat balíčky Pythonu
 Jakmile identifikujete knihovny, které chcete použít pro aplikaci Spark, můžete je nainstalovat do fondu Spark. 
 
- K upgradu virtuálního prostředí se dá použít soubor *requirements.txt* (výstup z `pip freeze` příkazu). Balíčky uvedené v tomto souboru pro instalaci nebo upgrade se stáhnou z PyPi v době spuštění fondu. Tento soubor požadavků se používá při každém vytvoření instance Spark z tohoto fondu Spark.
+ K upgradu virtuálního prostředí se dá použít soubor *requirements.txt* (výstup z `pip freeze` příkazu). Balíčky uvedené v tomto souboru pro instalaci nebo upgrade se stáhnou z PyPI v době spuštění fondu. Tento soubor požadavků se používá při každém vytvoření instance Spark z tohoto fondu Spark.
 
 > [!IMPORTANT]
 > - Pokud je balíček, který instalujete, velký nebo trvá jeho instalaci dlouhou dobu, bude to mít vliv na počáteční čas instance Spark.
 > - Balíčky, které při instalaci vyžadují podporu kompilátoru, jako je GCC, se nepodporují.
 > - Balíčky nemůžou být downgradované, jenom přidané nebo upgradované.
-> - Pokud chcete nainstalovat knihovny, musíte mít oprávnění správce dat objektu BLOB úložiště nebo vlastníka dat objektů BLOB úložiště na primárním účtu úložiště Gen2 propojeném s pracovním prostorem synapse.
+> - Změna verze PySpark, Python, Scala/Java, .NET nebo Spark se nepodporuje.
+> - Instalace balíčků z PyPI není v pracovních prostorech povolených pro DEP podporována.
+
 
 ### <a name="requirements-format"></a>Formát požadavků
 
@@ -52,6 +54,9 @@ alabaster==0.7.10
 
 ### <a name="install-python-packages"></a>Instalovat balíčky Pythonu
 Při vývoji aplikace Spark můžete zjistit, že je potřeba aktualizovat existující nebo nainstalovat nové knihovny. Knihovny lze aktualizovat během nebo po vytvoření fondu.
+
+> [!IMPORTANT]
+> Pokud chcete nainstalovat knihovny, musíte mít oprávnění správce dat objektu BLOB úložiště nebo vlastníka dat objektů BLOB úložiště na primárním účtu úložiště Gen2 propojeném s pracovním prostorem synapse.
 
 #### <a name="install-packages-during-pool-creation"></a>Instalovat balíčky během vytváření fondu
 Instalace knihoven do fondu Spark během vytváření fondu:
@@ -101,7 +106,7 @@ for d in pkg_resources.working_set:
      print(d)
 ```
 ### <a name="update-python-packages"></a>Aktualizovat balíčky Pythonu
-Balíčky je možné přidávat nebo upravovat kdykoli mezi relacemi. Když se nahraje nový konfigurační soubor balíčku, přepíše se stávající balíčky a verze.  
+Balíčky je možné přidávat nebo upravovat kdykoli mezi relacemi. Nový konfigurační soubor balíčku přepíše existující balíčky a verze.  
 
 Aktualizace nebo odinstalace knihovny:
 1. Přejděte do pracovního prostoru Azure synapse Analytics. 
@@ -124,7 +129,7 @@ Aktualizace nebo odinstalace knihovny:
 ## <a name="manage-a-python-wheel"></a>Správa kolečka v Pythonu
 
 ### <a name="install-a-custom-wheel-file"></a>Nainstalovat vlastní soubor kolečka
-Vlastní balíčky kol lze nainstalovat do fondu Apache Spark tím, že nahrajete všechny soubory kol do účtu Azure Data Lake Storage (Gen2), který je propojený s pracovním prostorem synapse. 
+Vlastní balíčky kol lze nainstalovat do fondu Apache Spark tím, že všechny soubory kol nahrajete do účtu Azure Data Lake Storage (Gen2), který je propojený s pracovním prostorem synapse. 
 
 Soubory by měly být nahrány do následující cesty ve výchozím kontejneru účtu úložiště: 
 
@@ -132,8 +137,10 @@ Soubory by měly být nahrány do následující cesty ve výchozím kontejneru 
 abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<workspace_name>/sparkpools/<pool_name>/libraries/python/
 ```
 
+Je možné, že budete muset přidat ```python``` složku do ```libraries``` složky, pokud ještě neexistuje.
+
 >[!IMPORTANT]
->Mezi relacemi lze přidat nebo upravit vlastní balíčky. Budete ale muset počkat na restartování fondu a relace, aby se zobrazil aktualizovaný balíček.
+>Vlastní balíčky je možné přidat nebo změnit mezi relacemi. Budete ale muset počkat na restartování fondu a relace, aby se zobrazil aktualizovaný balíček.
 
 ## <a name="next-steps"></a>Další kroky
 - Zobrazení výchozích knihoven: [podpora Apache Spark verzí](apache-spark-version-support.md)

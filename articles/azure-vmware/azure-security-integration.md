@@ -1,26 +1,26 @@
 ---
 title: Chraňte své virtuální počítače s řešeními VMware Azure pomocí Integrace Azure Security Center
-description: Seznamte se s postupem ochrany virtuálních počítačů řešení Azure VMware pomocí nativních nástrojů zabezpečení Azure z jednoho řídicího panelu v Azure Security Center.
+description: Chraňte své virtuální počítače řešení Azure VMware pomocí nástrojů pro nativní zabezpečení Azure na řídicím panelu Azure Security Center.
 ms.topic: how-to
-ms.date: 02/04/2021
-ms.openlocfilehash: 58cfa1e8e7faa56675d966f86d3b390e52acec27
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.date: 02/12/2021
+ms.openlocfilehash: b37d09d6e8f239586a18c0fa3b1dcd7bfee98102
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584953"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516358"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Chraňte své virtuální počítače s řešeními VMware Azure pomocí Integrace Azure Security Center
 
-Nástroje Azure Native Security poskytují zabezpečenou infrastrukturu pro hybridní prostředí Azure, řešení Azure VMware a místní virtuální počítače (VM). V tomto článku se dozvíte, jak nastavit nástroje Azure pro zabezpečení hybridního prostředí. Budete používat různé nástroje k identifikaci a řešení různých typů hrozeb.
+Nástroje Azure Native Security poskytují ochranu pro hybridní prostředí Azure, řešení Azure VMware a místní virtuální počítače (VM). V tomto článku se dozvíte, jak nastavit nástroje Azure pro zabezpečení hybridního prostředí. Pomocí těchto nástrojů můžete identifikovat a řešit různé hrozby.
 
 ## <a name="azure-native-services"></a>Nativní služby Azure
 
-Tady je stručný přehled každé nativní služby Azure:
+Tady je stručný přehled nativních služeb Azure:
 
 - **Log Analytics pracovní prostor:** Log Analytics pracovní prostor je jedinečné prostředí pro ukládání dat protokolu. Každé pracovní prostředí má vlastní úložiště dat a konfiguraci. Zdroje dat a řešení jsou nakonfigurovány tak, aby ukládaly data do konkrétního pracovního prostoru.
-- **Azure Security Center:** Azure Security Center je jednotný systém pro správu zabezpečení infrastruktury. Posílí stav zabezpečení datových center a poskytuje rozšířenou ochranu před hrozbami napříč hybridními úlohami v cloudu nebo místně.
-- **Sentinel Azure:** Azure Sentinel je cloudová řešení pro správu událostí zabezpečení (SIEM) a automatizované reakce na orchestraci zabezpečení (společnosti). Poskytuje inteligentní analýzu zabezpečení a analýzu hrozeb v rámci prostředí. Je to jediné řešení pro detekci výstrah, viditelnost hrozeb, proaktivní lov a reakci na hrozby.
+- **Azure Security Center:** Azure Security Center je jednotný systém pro správu zabezpečení infrastruktury. Posílí zabezpečení datových center a poskytuje rozšířenou ochranu před hrozbami napříč hybridními úlohami v cloudu nebo místně.
+- **Sentinel Azure:** Azure Sentinel je cloudové řešení pro správu událostí (SIEM), které je nativní. Poskytuje analýzu zabezpečení, detekci výstrah a automatizovanou reakci na hrozbu v rámci prostředí.
 
 ## <a name="topology"></a>Topologie
 
@@ -30,13 +30,13 @@ Agent Log Analytics umožňuje shromažďování dat protokolu z Azure, řešen�
 
 Po shromáždění protokolů v pracovním prostoru Log Analytics můžete nakonfigurovat pracovní prostor Log Analytics pomocí Azure Security Center. Azure Security Center vyhodnotí stav ohrožení zabezpečení virtuálních počítačů řešení Azure VMware a vyvolá upozornění na případné kritické ohrožení zabezpečení. Například vyhodnocuje chybějící opravy operačního systému, chybnou konfiguraci zabezpečení a službu [Endpoint Protection](../security-center/security-center-services.md).
 
-V pracovním prostoru Log Analytics můžete nakonfigurovat Azure Sentinel pro detekci výstrah, viditelnost hrozeb, proaktivní lov a reakci na hrozby. V předchozím diagramu je Azure Security Center ke službě Azure Sentinel připojen pomocí konektoru Azure Security Center. Azure Security Center přepošle ohrožení zabezpečení prostředí do Azure Sentinel a vytvoří incident a namapuje se na další hrozby. Můžete také vytvořit dotaz na plánovaná pravidla, který zjistí nežádoucí aktivitu a převede ji na incidenty.
+V pracovním prostoru Log Analytics můžete nakonfigurovat Azure Sentinel pro detekci výstrah, viditelnost hrozeb, lov a reakci na hrozby. V předchozím diagramu je Azure Security Center ke službě Azure Sentinel připojen pomocí konektoru Azure Security Center. Azure Security Center přepošle ohrožení zabezpečení prostředí do Azure Sentinel a vytvoří incident a namapuje se na další hrozby. Můžete také vytvořit dotaz na plánovaná pravidla, který zjistí nežádoucí aktivitu a převede ji na incidenty.
 
 ## <a name="benefits"></a>Výhody
 
 - Nativní služby Azure je možné použít pro zabezpečení hybridního prostředí v Azure, řešení Azure VMware a místních služeb.
 - Pomocí Log Analytics pracovního prostoru můžete shromažďovat data nebo protokoly do jednoho bodu a prezentovat stejná data pro různé nativní služby Azure.
-- Azure Security Center nabízí řadu funkcí, včetně:
+- Azure Security Center nabízí mnoho funkcí, včetně:
     - Monitorování integrity souborů
     - Detekce útoků typu soubor
     - Posouzení opravy operačního systému 
@@ -54,11 +54,11 @@ Abyste mohli shromažďovat data z různých zdrojů, budete potřebovat Log Ana
 
 ## <a name="deploy-security-center-and-configure-azure-vmware-solution-vms"></a>Nasazení Security Center a konfigurace virtuálních počítačů s řešeními Azure VMware
 
-Azure Security Center je předem nakonfigurovaný nástroj a nevyžaduje nasazení. V Azure Portal vyhledejte **Security Center** a vyberte ho.
+Azure Security Center je předem nakonfigurovaný nástroj, který nevyžaduje nasazení. V Azure Portal vyhledejte **Security Center** a vyberte ho.
 
 ### <a name="enable-azure-defender"></a>Povolení Azure Defenderu
 
-Azure Defender rozšiřuje pokročilou ochranu před internetovými útoky v Azure Security Center napříč vašimi hybridními úlohami v místním prostředí i v cloudu. Proto je nutné povolit Azure Defender a chránit tak virtuální počítače s řešením Azure VMware. 
+Azure Defender rozšiřuje pokročilou ochranu před internetovými útoky v Azure Security Center napříč vašimi hybridními úlohami, a to jak místně, tak i v cloudu. Proto je nutné povolit Azure Defender a chránit tak virtuální počítače s řešením Azure VMware. 
 
 1. V Security Center vyberte **Začínáme**.
 
@@ -149,7 +149,7 @@ Nyní jste připraveni připojit Azure Sentinel k vašim zdrojům dat, v tomto p
 
 ## <a name="create-rules-to-identify-security-threats"></a>Vytvoření pravidel pro identifikaci bezpečnostních hrozeb
 
-Po připojení zdrojů dat ke službě Azure Sentinel můžete vytvořit pravidla, která generují výstrahy na základě zjištěných hrozeb. V následujícím příkladu vytvoříme pravidlo pro identifikaci pokusů o přihlášení k Windows serveru s nesprávným heslem.
+Po připojení zdrojů dat ke službě Azure Sentinel můžete vytvořit pravidla, která generují výstrahy pro zjištěné hrozby. V následujícím příkladu vytvoříme pravidlo pro pokusy o přihlášení k Windows serveru s nesprávným heslem.
 
 1. Na stránce Přehled služby Azure Sentinel v části konfigurace vyberte **Analytics**.
 
@@ -196,7 +196,7 @@ Po připojení zdrojů dat ke službě Azure Sentinel můžete vytvořit pravidl
 
 Po třetím neúspěšném pokusu o přihlášení k Windows serveru aktivuje vytvořené pravidlo incident pro všechny neúspěšné pokusy.
 
-## <a name="view-generated-alerts"></a>Zobrazit vygenerované výstrahy
+## <a name="view-alerts"></a>Zobrazení upozornění
 
 Vygenerované incidenty můžete zobrazit pomocí služby Azure Sentinel. Můžete také přiřadit incidenty a po jejich vyřešení je zavřít, a to vše z v rámci služby Azure Sentinel.
 

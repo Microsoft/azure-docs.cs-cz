@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/31/2020
-ms.openlocfilehash: 7801145ba1bcaa2ffd543becfe190f05d232e8c8
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 8ca77c1fa1232f7aed88b0d6942d8a0085caf0d5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104956"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380215"
 ---
 # <a name="connect-servicenow-to-azure-monitor"></a>Připojení ServiceNow k Azure Monitor
 
@@ -23,6 +23,7 @@ Ujistěte se, že jste splnili následující požadavky:
 
 * Služba Azure AD je zaregistrovaná.
 * Máte podporovanou verzi správy událostí ServiceNow-ITOM (verze New York nebo novější).
+* [Aplikace](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ac4c9c57dbb1d090561b186c1396191a/1.2.0?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%26q%3Devent%2520management%2520connectors&sl=sh) je nainstalovaná v instanci ServiceNow.
 
 ## <a name="configure-the-servicenow-connection"></a>Konfigurace připojení ServiceNow
 

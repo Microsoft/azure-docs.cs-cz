@@ -3,12 +3,12 @@ title: Nasazení prostředků pomocí Azure CLI a šablony
 description: K nasazení prostředků do Azure použijte Azure Resource Manager a Azure CLI. Prostředky jsou definovány v šabloně Resource Manageru.
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: f01409db36ca29deb2f6938ce3118cdcb20cd1a1
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 6a8efcebcd6ae18eaf91c6ec1e7df184db8c244c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881295"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378668"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon ARM a Azure CLI
 
@@ -106,7 +106,7 @@ Předchozí příklad vyžaduje pro šablonu veřejně přístupný identifikát
 
 Pokud chcete nasadit vzdálené propojené šablony s relativní cestou uloženou v účtu úložiště, použijte `query-string` k zadání tokenu SAS:
 
-```azurepowershell
+```azurecli-interactive
 az deployment group create \
   --name linkedTemplateWithRelativePath \
   --resource-group myResourceGroup \

@@ -1,21 +1,17 @@
 ---
 title: 'Transformace dat pomocí Sparku v Azure Data Factory '
 description: Tento kurz obsahuje podrobné pokyny pro transformaci dat pomocí aktivity Sparku ve službě Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.openlocfilehash: bef80cdeab32d14aeaae350adda869a8ea7b05c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf425ecb1a8aebf594828bfba50e9aba8ca9dd7e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81409088"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377614"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Transformace dat v cloudu pomocí aktivity Sparku ve službě Azure Data Factory
 
@@ -66,7 +62,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     if __name__ == "__main__":
         main()
     ```
-2. Nahraďte ** &lt; storageAccountName &gt; ** názvem vašeho účtu Azure Storage. Pak soubor uložte. 
+2. Nahraďte **&lt; storageAccountName &gt;** názvem vašeho účtu Azure Storage. Pak soubor uložte. 
 3. Ve službě Azure Blob Storage, vytvořte kontejner nazvaný **adftutorial**, pokud ještě neexistuje. 
 4. Vytvořte složku **spark**.
 5. Ve složce **spark** vytvořte podsložku **script**. 
@@ -182,7 +178,7 @@ Je třeba počítat s následujícím:
 
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny 
-Vytvořili jste definice propojené služby a kanálu v souborech JSON. Teď vytvoříme datovou továrnu a pomocí rutin PowerShellu nasadíme soubory JSON propojené služby a kanálu. Postupně spusťte následující příkazy PowerShellu: 
+Vytvořili jste definice propojené služby a kanálu v souborech JSON. Teď vytvoříme datovou továrnu a nasadíme soubory JSON propojené služby a kanálu pomocí rutin PowerShellu. Postupně spusťte následující příkazy PowerShellu: 
 
 1. Nastavte proměnné jednu po druhé.
 

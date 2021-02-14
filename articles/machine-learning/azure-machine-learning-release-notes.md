@@ -9,16 +9,46 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: b814c12a0d57230a81a68f6030a26ded93bd0399
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c54034ef927bb49a955ef6121f5a8d56b57f0bd3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100097071"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375557"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
 V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) .
+
+
+## <a name="2021-02-09"></a>2021-02-09
+
+### <a name="azure-machine-learning-sdk-for-python-v1220"></a>Sada SDK Azure Machine Learning pro Python v 1.22.0
++ **Opravy chyb a vylepšení**
+  + **azureml-automl-core**
+    + Oprava chyby, kdy se do souboru conda YML pro modely Vision přidala další závislost PIP
+  + **azureml-automl-runtime**
+    + Opravili jsme chybu, kdy by modely klasických předpovědí (např. AutoArima) mohly obdržet školicí data. řádky s imputovanémi cílovými hodnotami nebyly k dispozici. Tím došlo k porušení kontraktu dat těchto modelů. * Opravili jsme různé chyby s chováním prodlevy v časové řadě. Operace prodlevy po výskytu dříve neoznačily všechny imputované řádky správně, takže nikdy negeneruje správné hodnoty prodlevy výskytů. Opravili jsme také některé problémy s kompatibilitou mezi operátorem Lag a operátorem postupného okna s chováním pro prodlevu s opakováním. Dříve to vedlo k tomu, že operátor posuvných oken vyřazuje některé řádky ze školicích dat, které by jinak používaly.
+  + **azureml-core**
+    + Přidání podpory pro ověřování tokenů cílovou skupinou.
+    + Přidejte `process_count` do [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) pro podporu více procesů úloh PyTorch s více uzly.
+  + **azureml-pipeline-steps**
+    + [CommandStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.commandstep?preserve-view=true&view=azure-ml-py) nyní GA a již není experimentální.
+    + [ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?preserve-view=true&view=azure-ml-py): přidejte allowed_failed_count argumentů a allowed_failed_percent pro kontrolu prahové hodnoty chyby na Mini úrovni dávky. Prahová hodnota chyby má nyní 3 charaktery:
+       + error_threshold – počet povolených neúspěšných Mini položek dávky; 
+       + allowed_failed_count – počet povolených neúspěšných Mini dávek; 
+       + allowed_failed_percent – procento povolených neúspěšných Mini dávek. 
+       
+       Úloha se zastaví, pokud je překročí. error_threshold se vyžaduje, aby se zajistila zpětná kompatibilita. Nastavením hodnoty na hodnotu-1 ji ignorujte.
+    + Pevné zpracování prázdných znaků v názvu AutoMLStep
+    + ScriptRunConfig je teď podporován HyperDriveStep
+  + **azureml-train-core**
+    + HyperDrive běhy vyvolané z ScriptRun se teď považují za podřízený běh.
+    + Přidejte `process_count` do [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) pro podporu více procesů úloh PyTorch s více uzly.
+  + **azureml-widgets**
+    + Přidejte ParallelRunStepDetails widgetu a vizualizujte stav ParallelRunStep.
+    + Umožňuje uživatelům Hyperdrive zobrazit další osu v grafu paralelních souřadnic, která ukazuje hodnotu metriky odpovídající každé sadě parametrů pro každé podřízené spuštění.
+
 
  ## <a name="2021-01-31"></a>2021-01-31
 ### <a name="azure-machine-learning-studio-notebooks-experience-january-update"></a>Prostředí poznámkových bloků Azure Machine Learning Studio (aktualizace od ledna)
@@ -35,6 +65,7 @@ V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referen
   + Vyšší výkon 
   + Vylepšená rychlost a spolehlivost jádra
   
+
  ## <a name="2021-01-25"></a>2021-01-25
 
 ### <a name="azure-machine-learning-sdk-for-python-v1210"></a>Sada SDK Azure Machine Learning pro Python v 1.21.0
@@ -145,7 +176,7 @@ V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referen
     + HyperDriveRun.get_children_sorted_by_primary_metric () by se teď měly dokončit rychleji.
     + Vylepšené zpracování chyb v sadě HyperDrive SDK.
     +  Zastaraly se všechny třídy Estimator a využívají ScriptRunConfig ke konfiguraci spuštění experimentů. Zastaralé třídy zahrnují:
-        + MMLBaseEstimator
+        + MMLBase
         + Estimator
         + PyTorch 
         + TensorFlow 

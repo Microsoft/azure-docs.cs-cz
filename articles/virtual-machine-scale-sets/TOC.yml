@@ -329,9 +329,10 @@
           href: virtual-machine-scale-sets-placement-groups.md
         - name: Převod šablony škálovací sady pro použití spravovaného disku
           href: virtual-machine-scale-sets-convert-template-to-md.md
-        - name: Použití vyhrazených hostitelů (Preview)
-          href: ../virtual-machines/dedicated-hosts.md
+        - name: Využití vyhrazených hostitelů
           items:
+            - name: Přehled
+              href: ../virtual-machines/dedicated-hosts.md
             - name: Rozhraní příkazového řádku
               href: ../virtual-machines/linux/dedicated-hosts-cli.md
             - name: PowerShell

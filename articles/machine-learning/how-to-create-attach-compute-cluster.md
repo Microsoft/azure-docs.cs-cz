@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 0d1cbb8efe0882f48a345d44a650eb711a44d570
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: f9b970f498db7530b35c57a75edeae55dec3f22d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739181"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100098839"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Vytvoření clusteru Azure Machine Learning COMPUTE
 
@@ -100,7 +100,7 @@ Informace o vytvoření výpočetního clusteru v nástroji Studio najdete v té
 
  ## <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a> Snižte náklady na výpočetní cluster.
 
-Můžete se také rozhodnout použít pro spuštění některých nebo všech úloh [virtuální počítače s nízkou prioritou](concept-plan-manage-cost.md#low-pri-vm) . Tyto virtuální počítače nemají zaručenou dostupnost a můžou být při použití přerušeny. Přerušená úloha se restartuje, není obnovená. 
+Můžete se také rozhodnout použít pro spuštění některých nebo všech úloh [virtuální počítače s nízkou prioritou](concept-plan-manage-cost.md#low-pri-vm) . Tyto virtuální počítače nemají zaručenou dostupnost a můžou být při použití přerušeny. Bude nutné restartovat úlohu s přerušením. 
 
 K určení virtuálního počítače s nízkou prioritou použijte libovolný z těchto způsobů:
     

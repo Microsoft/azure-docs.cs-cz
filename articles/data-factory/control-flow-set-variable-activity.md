@@ -1,22 +1,18 @@
 ---
 title: Nastavit aktivitu proměnné v Azure Data Factory
 description: Naučte se používat aktivitu nastavit proměnnou k nastavení hodnoty existující proměnné definované v kanálu Data Factory.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/07/2020
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: f3c1fae2cbf2a1ba8b71dcbc8f6639bda4765f5c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 122a0a01c420d5efa12fa267a0d3605fc7a25960
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498383"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385332"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Nastavit aktivitu proměnné v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -25,12 +21,12 @@ Aktivitu nastavit proměnnou použijte k nastavení hodnoty existující proměn
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povinné
+Vlastnost | Popis | Vyžadováno
 -------- | ----------- | --------
 name | Název aktivity v kanálu | ano
 description | Text popisující, co aktivita dělá | ne
 typ | Musí být nastavené na **SetVariable** | ano
-value | Hodnota řetězcového literálu nebo objektu výrazu, ke kterému je přiřazena proměnná | ano
+hodnota | Hodnota řetězcového literálu nebo objektu výrazu, ke kterému je přiřazena proměnná | ano
 variableName | Název proměnné, která je nastavená touto aktivitou | ano
 
 ## <a name="incrementing-a-variable"></a>Zvýšení proměnné

@@ -1,24 +1,18 @@
 ---
 title: Přírůstkové kopírování nových souborů na základě času názvu souboru rozděleného na oddíly
 description: Vytvořte datovou továrnu Azure a pak použijte nástroj Kopírování dat pro přírůstkové načtení nových souborů jenom na základě názvu souboru s oddíly.
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: ae66bb025f2a49a79120fe86e0de7c4a3ccf26ca
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 8e68852434a4a8bea43b575523a60c9346b2a569
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555358"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384771"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Přírůstkové kopírování nových souborů na základě času názvu souboru rozděleného do oddílů pomocí nástroje Kopírování dat
 
@@ -39,7 +33,7 @@ V tomto kurzu budete provádět následující kroky:
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* **Účet úložiště Azure** : jako _zdroj_  dat a úložiště dat _jímky_ použijte úložiště objektů BLOB. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
+* **Účet úložiště Azure**: jako _zdroj_  dat a úložiště dat _jímky_ použijte úložiště objektů BLOB. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
 
 ### <a name="create-two-containers-in-blob-storage"></a>Vytvoření dvou kontejnerů v úložišti objektů BLOB
 
@@ -56,7 +50,7 @@ Provedením těchto kroků Připravte úložiště objektů BLOB pro tento kurz.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  **Data Factory** :
+1. V nabídce vlevo vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  :
 
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -130,7 +124,7 @@ Provedením těchto kroků Připravte úložiště objektů BLOB pro tento kurz.
 
     ![Snímek obrazovky se zobrazí dialogové okno zvolit vstupní soubor nebo složku s vybraným adresářem.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/check-binary-copy.png)     
 
-5. Na stránce **cílové úložiště dat** vyberte **AzureBlobStorage** , což je stejný účet úložiště jako úložiště zdroje dat, a potom klikněte na **Další**.
+5. Na stránce **cílové úložiště dat** vyberte **AzureBlobStorage**, což je stejný účet úložiště jako úložiště zdroje dat, a potom klikněte na **Další**.
 
     ![Stránka Cílové úložiště dat](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/destination-data-store-page-select-linkedservice.png)
 6. Na stránce **zvolit výstupní soubor nebo složku** proveďte následující kroky:

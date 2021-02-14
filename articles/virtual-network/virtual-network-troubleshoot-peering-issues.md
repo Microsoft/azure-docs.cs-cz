@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: cb5ce421b6a38edcb8d92866f749a544eff927d6
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f3e1ea8861646490875667f6238b3f8813bd6c4b
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096385"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518160"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Řešení potíží s partnerskými vztahy virtuálních sítí
 
@@ -233,7 +233,7 @@ Pokud chcete tento problém vyřešit, odstraňte partnerský vztah z obou virtu
 
 ### <a name="failed-to-peer-a-databricks-virtual-network"></a>Nepodařilo se vytvořit partnerský vztah k virtuální síti datacihly.
 
-Chcete-li tento problém vyřešit, nakonfigurujte partnerský vztah virtuální sítě v rámci **Azure Databricks** a pak zadejte cílovou virtuální síť pomocí **ID prostředku**. Další informace najdete v tématu [virtuální síť partnera a datacihly do vzdálené virtuální sítě](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2).
+Chcete-li tento problém vyřešit, nakonfigurujte partnerský vztah virtuální sítě v rámci **Azure Databricks** a pak zadejte cílovou virtuální síť pomocí **ID prostředku**. Další informace najdete v tématu [virtuální síť partnera a datacihly do vzdálené virtuální sítě](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering#id2).
 
 ### <a name="the-remote-virtual-network-lacks-a-gateway"></a>Ve vzdálené virtuální síti chybí brána.
 

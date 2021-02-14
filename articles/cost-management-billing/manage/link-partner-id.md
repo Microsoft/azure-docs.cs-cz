@@ -8,12 +8,12 @@ ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 96b6467d0d529f5839c33182057f3aa3c39cb6e7
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: a214e91307308e191ce92b6461c1454d2cc7dd2b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132546"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370474"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Propojení ID partnera s účty Azure
 
@@ -162,9 +162,7 @@ Ano, ID partnera je možné propojit pro Azure Stack.
 
 **Jak můžu propojit ID partnera, pokud v naší společnosti pro přístup k prostředkům zákazníků využíváme [Azure Lighthouse](../../lighthouse/overview.md)?**
 
-Při onboardingu zákazníků do správy delegovaných prostředků Azure [publikováním nabídky spravovaných služeb na Azure Marketplace](../../lighthouse/how-to/publish-managed-services-offers.md) se automaticky přidruží vaše MPN ID.
-
-Pokud k [onboardingu zákazníků využíváte nasazení šablon Azure Resource Manageru](../../lighthouse/how-to/onboard-customer.md), musíte přidružit vaše MPN ID nejméně k jednomu uživatelskému účtu, který má přístup ke všem vašim onboardovaným předplatným. Upozorňujeme, že tuto akci musíte provést v tenantovi poskytovatele služeb, nikoli v tenantech jednotlivých zákazníků. Pro zjednodušení doporučujeme vytvořit v tenantovi účet instančního objektu, přidružit ho k vašemu MPN ID a udělit mu přístup ke každému onboardovanému zákazníkovi s [předdefinovanou rolí Azure, u které jde uplatit kredit získaný partnerem](/partner-center/azure-roles-perms-pec). Další informace najdete v tématu o [připojení vašeho ID partnera za účelem sledování vašeho dopadu na delegované prostředky](../../lighthouse/how-to/partner-earned-credit.md).
+Aby bylo možné rozpoznat aktivity Azure Lighthouse, musíte přidružit své ID MPN k alespoň jednomu uživatelskému účtu, který má přístup ke každému z vašich poznámkových předplatných. Upozorňujeme, že tuto akci musíte provést v tenantovi poskytovatele služeb, nikoli v tenantech jednotlivých zákazníků. Pro zjednodušení doporučujeme vytvořit v tenantovi účet instančního objektu, přidružit ho k vašemu MPN ID a udělit mu přístup ke každému onboardovanému zákazníkovi s [předdefinovanou rolí Azure, u které jde uplatit kredit získaný partnerem](/partner-center/azure-roles-perms-pec). Další informace najdete v tématu o [připojení vašeho ID partnera za účelem sledování vašeho dopadu na delegované prostředky](../../lighthouse/how-to/partner-earned-credit.md).
 
 **Jak mám zákazníkům vysvětlit PAL (Partner Admin Link)?**
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 209125a5cc8d86c1af07966d52681aa91ea7dc19
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 584266a8f6aa82d8a47b5e3faff044acf0ef298c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97026995"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361617"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Konfigurace nastavení Multi-Factor Authentication služby Azure AD
 
@@ -65,9 +65,7 @@ Pokud chcete uživatele zablokovat, proveďte následující kroky:
 
 1. Přejděte na **Azure Active Directory**  >  **zabezpečení**  >  **MFA**  >  **blokovat/odblokovat uživatele**.
 1. Vyberte možnost **Přidat** a zablokovat uživatele.
-1. Vyberte **replikační skupinu** a pak zvolte *Azure default*.
-
-    Zadejte uživatelské jméno blokovaného uživatele jako `username\@domain.com` a pak zadejte komentář do pole *důvod* .
+1. Zadejte uživatelské jméno blokovaného uživatele jako `username@domain.com` a pak zadejte komentář do pole *důvod* .
 1. Až budete připraveni, vyberte **OK** a zablokujte uživatele.
 
 ### <a name="unblock-a-user"></a>Odblokování uživatele

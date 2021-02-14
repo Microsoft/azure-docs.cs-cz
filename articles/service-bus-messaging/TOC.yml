@@ -144,6 +144,10 @@
           href: ./security-controls-policy.md
         - name: Zabezpečení sítě
           href: network-security.md
+    - name: Integrace s dalšími službami
+      items:
+        - name: Integrace Azure Service Bus a Azure Event Grid
+          href: service-bus-to-event-grid-integration-concept.md
 - name: Návody
   items:
     - name: Přesun mezi oblastmi
@@ -168,8 +172,6 @@
               href: message-sequencing.md
             - name: Vypršení platnosti zpráv (hodnota TTL)
               href: message-expiration.md
-            - name: Zpracování zpráv pomocí Azure Event Gridu
-              href: service-bus-to-event-grid-integration-concept.md
         - name: Akce a filtry témat
           href: topic-filters.md
         - name: Migrace z oborů názvů Standard na obory názvů Premium

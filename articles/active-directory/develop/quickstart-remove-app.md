@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 8953f9ca174414c55e6e06774167d3951d0bbd41
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4afffb558b9cbf53a762b1b2bb1ce544e554feaf
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090234"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103885"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Jak odebrat aplikaci registrovanou na platformě Microsoft identity
 
@@ -39,9 +39,10 @@ Aplikace, které jste zaregistrovali vy nebo vaše organizace, jsou reprezentova
 
 Chcete-li odstranit aplikaci, je uvedena jako vlastník aplikace nebo má oprávnění správce.
 
-1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a> pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
-1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací**. Vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat. Jakmile vyberete aplikaci, zobrazí se stránka **Přehled** dané aplikace.
+1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
+1. Máte-li přístup k více klientům, vyberte v horní nabídce možnost **adresář a filtr předplatného** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: a vyberte klienta, ve kterém je aplikace zaregistrovaná.
+1. Vyhledejte a vyberte **Azure Active Directory**. 
+1. V části **Spravovat** vyberte **Registrace aplikací**  a vyberte aplikaci, kterou chcete nakonfigurovat. Jakmile vyberete aplikaci, zobrazí se stránka **Přehled** dané aplikace.
 1. Na stránce **Přehled** vyberte **Odstranit**.
 1. Vybráním **Ano** potvrďte, že chcete aplikaci odstranit.
 

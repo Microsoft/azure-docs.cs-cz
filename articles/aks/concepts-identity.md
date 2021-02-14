@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 3c291d9a9d48b6f75148b673848b8451521bab91
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8d69033dedc3a45263b087c9b9ee5b156af460be
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97615797"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361056"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Možnosti identit a přístupu pro Azure Kubernetes Service (AKS)
 
@@ -166,7 +166,7 @@ Díky integraci Azure RBAC AKS použije server Webhooku Kubernetes pro autorizac
 
 ![Azure RBAC pro Kubernetes autorizační tok](media/concepts-identity/azure-rbac-k8s-authz-flow.png)
 
-Jak je vidět na výše uvedeném diagramu, při použití Integrace Azure RBAC všechny požadavky na rozhraní Kubernetes API se budou řídit stejným tokem ověřování, jak je vysvětleno v [části Azure Active Integration](#azure-active-directory-integration). 
+Jak je vidět na výše uvedeném diagramu, při použití Integrace Azure RBAC všechny požadavky na rozhraní Kubernetes API se budou řídit stejným tokem ověřování, jak je vysvětleno v [části věnované integraci Azure Active Directory](#azure-active-directory-integration). 
 
 Ale i po tom, místo výhradně se spoléháte na Kubernetes RBAC o autorizaci, je požadavek ve skutečnosti ověřený v Azure, pokud identita, která požadavek vytvořila, existuje v AAD. Pokud identita v AAD neexistuje, třeba účet služby Kubernetes, služba Azure RBAC se nepřipojí a bude to normální Kubernetes RBAC.
 
@@ -174,6 +174,8 @@ V tomto scénáři můžete uživatelům udělit jednu ze čtyř integrovaných 
 
 Tato funkce vám umožní například nejen udělit uživatelům oprávnění k prostředku AKS napříč předplatnými, ale nastavit a udělit jim role a oprávnění, která budou mít v každém z těchto clusterů, které řídí přístup k rozhraní Kubernetes API. Můžete například udělit `Azure Kubernetes Service RBAC Viewer` roli v oboru předplatného a její příjemce bude moci vypsat a načíst všechny Kubernetes objekty ze všech clusterů, ale nebude je upravovat.
 
+> [!IMPORTANT]
+> Před použitím této funkce je potřeba povolit Azure RBAC pro autorizaci Kubernetes. Další podrobnosti a podrobné pokyny [najdete tady](manage-azure-rbac.md).
 
 #### <a name="built-in-roles"></a>Vestavěné role
 
@@ -186,9 +188,8 @@ AKS poskytuje následující čtyři předdefinované role. Jsou podobné [integ
 | Správce RBAC služby Azure Kubernetes  | Povoluje přístup správce, který má být udělen v rámci oboru názvů. Umožňuje přístup pro čtení a zápis většiny prostředků v oboru názvů (nebo oboru clusteru), včetně možnosti vytvářet role a vazby rolí v rámci oboru názvů. Tato role nepovoluje přístup pro zápis k kvótě prostředků nebo samotnému oboru názvů. |
 | Správce clusteru RBAC služby Azure Kubernetes  | Umožňuje přístupu super uživatele k provedení jakékoli akce u libovolného prostředku. Poskytuje plnou kontrolu nad všemi prostředky v clusteru a ve všech oborech názvů. |
 
-**Pokud chcete zjistit, jak povolit Azure RBAC pro autorizaci Kubernetes, [Přečtěte si sem](manage-azure-rbac.md).**
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Tato tabulka shrnuje způsoby, kterými se uživatelé můžou Kubernetes ověřit, když je povolená integrace služby Azure AD.  Ve všech případech je sekvence příkazů uživatele následující:
 1. Spusťte `az login` ověřování v Azure.
@@ -197,9 +198,9 @@ Tato tabulka shrnuje způsoby, kterými se uživatelé můžou Kubernetes ověř
 
 Udělená role, na kterou odkazuje druhý sloupec, je udělení role Azure RBAC zobrazené na kartě **Access Control** v Azure Portal. Skupina Azure AD pro správu clusteru se zobrazuje na kartě **Konfigurace** na portálu (nebo s názvem parametru `--aad-admin-group-object-ids` v Azure CLI).
 
-| Popis        | Požadováno udělení role| Skupiny Azure AD pro správu clusteru | Kdy je použít |
+| Description        | Požadováno udělení role| Skupiny Azure AD pro správu clusteru | Kdy je použít |
 | -------------------|------------|----------------------------|-------------|
-| Starší přihlašovací údaje správce pomocí klientského certifikátu| **Role správce Azure Kubernetes**. Tato role umožňuje `az aks get-credentials` použití s `--admin` příznakem, který do uživatele stáhne [starší certifikát Správce clusteru (mimo Azure AD)](control-kubeconfig-access.md) `.kube/config` . Toto je jediný účel role správce Azure Kubernetes.|neuvedeno|Pokud jste trvale zablokovali přístup k platné skupině Azure AD s přístupem k vašemu clusteru.| 
+| Starší přihlašovací údaje správce pomocí klientského certifikátu| **Role správce Azure Kubernetes**. Tato role umožňuje `az aks get-credentials` použití s `--admin` příznakem, který do uživatele stáhne [starší certifikát Správce clusteru (mimo Azure AD)](control-kubeconfig-access.md) `.kube/config` . Toto je jediný účel role správce Azure Kubernetes.|Není k dispozici|Pokud jste trvale zablokovali přístup k platné skupině Azure AD s přístupem k vašemu clusteru.| 
 | Azure AD s ručním (cluster) RoleBindings| **Role uživatele Azure Kubernetes**. Roli "uživatel" lze `az aks get-credentials` použít bez `--admin` příznaku. (Toto je jediný účel "role uživatele Azure Kubernetes".) Výsledkem je, že na clusteru s podporou Azure AD je stažení [prázdné položky](control-kubeconfig-access.md) do `.kube/config` , která aktivuje ověřování založené na prohlížeči při prvním použití nástrojem `kubectl` .| Uživatel není v žádné z těchto skupin. Vzhledem k tomu, že uživatel není ve všech skupinách správců clusteru, budou jeho práva řízena výhradně všemi RoleBindings nebo ClusterRoleBindings, které byly nastaveny pomocí Správce clusterů. (Cluster) RoleBindings je [navržený jako uživatelé Azure AD nebo skupiny Azure AD](azure-ad-rbac.md) `subjects` . Pokud žádné takové vazby nejsou nastavené, uživatel nebude moct excute žádné `kubectl` příkazy.|Pokud chcete jemně odstupňované řízení přístupu a nepoužíváte Azure RBAC pro autorizaci Kubernetes. Všimněte si, že uživatel, který nastavuje vazby, se musí přihlásit jednou z dalších metod uvedených v této tabulce.|
 | Azure AD podle člena skupiny správců| Stejný jako výše uvedený|Uživatel je členem jedné ze skupin, které jsou zde uvedeny. AKS automaticky generuje ClusterRoleBinding, který váže všechny uvedené skupiny k `cluster-admin` roli Kubernetes. Takže uživatelé v těchto skupinách můžou spouštět všechny `kubectl` příkazy jako `cluster-admin` .|Pokud chcete uživatelům pohodlně udělit úplná práva správce a _nepoužíváte_ pro autorizaci KUBERNETES Azure RBAC.|
 | Azure AD s Azure RBAC pro autorizaci Kubernetes|Dvě role: první, **role uživatele Azure Kubernetes** (jak je uvedeno výše). Druhý, jedna z "Azure Kubernetes Service **RBAC**..." výše uvedené role nebo vlastní alternativy.|Pole role správce na kartě konfigurace není důležité, pokud je povolená možnost Azure RBAC pro Kubernetes autorizaci.|Pro autorizaci Kubernetes používáte Azure RBAC. Tento přístup poskytuje jemně odstupňovaný ovládací prvek bez nutnosti nastavovat RoleBindings nebo ClusterRoleBindings.|

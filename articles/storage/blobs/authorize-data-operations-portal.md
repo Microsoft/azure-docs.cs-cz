@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 8c963f11a34217253f02cb5d116d66cdbf8bcc19
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 319bbdd7809e224ca608fdac06d4b304c2052e86
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033953"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391537"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>Vyberte, jak autorizovat přístup k datům objektu BLOB v Azure Portal
 
@@ -37,6 +37,9 @@ Pro přístup k datům objektů BLOB pomocí přístupového klíče účtu mus�
 - Role [Přispěvatel účtu úložiště](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
 Když se pokusíte o přístup k datům objektu BLOB v Azure Portal, portál nejprve zkontroluje, jestli vám byla přiřazena role s **Microsoft. Storage/storageAccounts/klíče listkey/Action**. Pokud jste k této akci přiřadili roli, portál použije klíč účtu pro přístup k datům objektu BLOB. Pokud jste k této akci nepřiřadili roli, pokusí se portál získat přístup k datům pomocí účtu Azure AD.
+
+> [!IMPORTANT]
+> Když je účet úložiště zamčený s Azure Resource Manager zámek **jen pro čtení** , není pro tento účet úložiště povolená operace se [seznamem klíčů](/rest/api/storagerp/storageaccounts/listkeys) . **Seznam klíčů** je operace post a všechny operace post jsou znemožněny, když je pro tento účet nakonfigurován zámek **ReadOnly** . Z tohoto důvodu, když je účet uzamčený pomocí zámku **jen pro čtení** , musí uživatelé použít přihlašovací údaje Azure AD pro přístup k datům objektu BLOB na portálu. Informace o přístupu k datům objektů blob na portálu pomocí Azure AD najdete v tématu [použití účtu Azure AD](#use-your-azure-ad-account).
 
 > [!NOTE]
 > Správci služby pro klasický odběr role správce a Co-Administrator zahrnují ekvivalent role Azure Resource Manager [vlastníka](../../role-based-access-control/built-in-roles.md#owner) . Role **vlastníka** zahrnuje všechny akce, včetně **Microsoft. Storage/storageAccounts/klíče listkey/Action**, takže uživatel s jednou z těchto rolí pro správu může k datům objektů BLOB přistupovat také pomocí klíče účtu. Další informace najdete v tématech [role správců klasického předplatného, role Azure a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
@@ -111,6 +114,6 @@ Chcete-li určit, jak autorizovat operaci nahrání objektu blob, postupujte pod
 ## <a name="next-steps"></a>Další kroky
 
 - [Ověřování přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](../common/storage-auth-aad.md)
-- [Přiřazení role Azure pro přístup k datům BLOB a Queue pomocí Azure Portal](../common/storage-auth-aad-rbac-portal.md)
+- [Přiřazení role Azure pro přístup k datům objektů blob a front pomocí webu Azure Portal](../common/storage-auth-aad-rbac-portal.md)
 - [Přiřazení role Azure pro přístup k datům objektů BLOB a front pomocí Azure CLI](../common/storage-auth-aad-rbac-cli.md)
 - [Použití modulu Azure PowerShell k přiřazení role Azure pro přístup k datům objektů BLOB a front](../common/storage-auth-aad-rbac-powershell.md)

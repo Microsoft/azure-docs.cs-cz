@@ -4,19 +4,18 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Podporované jazyky programu a související nástroje, které jsou předem nainstalované v Data Science Virtual Machine.
 keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 ms.custom: devx-track-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 8a73336ba0a324c65ee0de764d81a8e69ab6079c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42110eb896a751080044247932770f37617174c9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87843262"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516426"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Jazyky podporované v Data Science Virtual Machine 
 
@@ -111,7 +110,7 @@ Data Science Virtual Machine (DSVM) obsahuje několik předem připravených jaz
 | ------------- | ------------- |
 | Podporované jazykové verze | Microsoft R Open 3. x (100% kompatibilní s CRAN-R)<br /> Microsoft R Server 9. x Developer Edition (škálovatelná platforma R připravená pro podniky)|
 | Podporované edice DSVM      | Linux, Windows     |
-| Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | Systému `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux `/usr/lib64/microsoft-r/3.3/lib64/R`    |
+| Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: `/usr/lib64/microsoft-r/3.3/lib64/R`    |
 | Odkazy na ukázky      | Zahrnuje ukázky Jupyter poznámkových bloků pro R.     |
 | Související nástroje na DSVM      | Spark, Python, Helena      |
 

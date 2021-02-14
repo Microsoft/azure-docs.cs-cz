@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: e6bbebafab45080a2076f33d66dd96296a761e4f
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: fc5d9cbd02490748c17a9f40a1440c5ad0c46278
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754949"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104106"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>Migrace jednostránkové aplikace v JavaScriptu z implicitního udělení na tok kódu ověřování
 
@@ -41,7 +41,7 @@ Pokud chcete pro své aplikace nadále používat stávající registraci aplika
 
 Pro registrace aplikací, které jsou aktuálně nakonfigurované pomocí identifikátorů URI přesměrování **webové** platformy, použijte následující postup:
 
-1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a> a vyberte svého tenanta **Azure Active Directory** .
+1. Přihlaste se k <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> a vyberte svého tenanta **Azure Active Directory** .
 1. V **Registrace aplikací** vyberte svou aplikaci a pak **ověřování**.
 1. Na dlaždici **Webová** platforma v části **identifikátory URI pro přesměrování** vyberte informační zpráva s oznámením, že byste měli migrovat identifikátory URI.
 

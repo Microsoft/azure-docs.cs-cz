@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z DB2 pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z DB2 do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: jingwang
-ms.openlocfilehash: f890e4c47a427b6ca8c07463d6795f0813ef5bbd
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 642f12386a7695e026eb0c30016acf6f53fc9e95
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638189"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381116"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Kopírování dat z DB2 pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -51,7 +46,7 @@ Konkrétně tento konektor DB2 podporuje následující platformy a verze IBM DB
 >[!TIP]
 >Konektor DB2 je postaven nad Zprostředkovatel Microsoft OLE DB pro DB2. Pokud chcete řešit chyby konektoru DB2, přečtěte si [Zprostředkovatel dat kódy chyb](/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -69,21 +64,21 @@ Pro propojenou službu DB2 jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **Db2** . | Ano |
-| připojovací řetězec | Zadejte informace potřebné pro připojení k instanci DB2.<br/> Můžete také do Azure Key Vault umístit heslo a načíst konfiguraci z `password` připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
+| typ | Vlastnost Type musí být nastavená na: **Db2** . | Yes |
+| připojovací řetězec | Zadejte informace potřebné pro připojení k instanci DB2.<br/> Můžete také do Azure Key Vault umístit heslo a načíst konfiguraci z `password` připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Yes |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
 Typické vlastnosti v připojovacím řetězci:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| server |Název serveru DB2. Můžete zadat číslo portu za názvem serveru oddělené dvojtečkou, např. `server:port` .<br>Konektor DB2 využívá protokol DDM/DRDA a ve výchozím nastavení používá port 50000, pokud není zadaný. Port, který vaše konkrétní databáze DB2 používá, se může lišit v závislosti na verzi a nastavení, např. pro DB2 LUW výchozí port je 50000, pro AS400 výchozí port je 446 nebo 448, pokud je povolený protokol TLS. V následujících dokumentech DB2 najdete informace o tom, jak je port nakonfigurovaný obvykle: [DB2 z/OS](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.qb.dbconn.doc/doc/t0008229.html), [DB2 ISERIES](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/ddp/rbal1ports.htm)a [DB2 LUW](https://www.ibm.com/support/knowledgecenter/en/SSEKCU_1.1.3.0/com.ibm.psc.doc/install/psc_t_install_typical_db2_port.html). |Ano |
-| database |Název databáze DB2 |Ano |
-| authenticationType |Typ ověřování, který se používá pro připojení k databázi DB2.<br/>Povolená hodnota je: **Basic** . |Ano |
-| username |Zadejte uživatelské jméno pro připojení k databázi DB2. |Ano |
-| heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
-| balíček balíčkucollection | Určete, kde jsou potřebné balíčky automaticky vytvořeny pomocí ADF při dotazování databáze. Pokud tato hodnota není nastavená, používá Data Factory jako výchozí hodnotu {username}. | Ne |
-| certificateCommonName | Pokud používáte šifrování SSL (Secure Sockets Layer) (SSL) nebo TLS (Transport Layer Security), musíte zadat hodnotu pro běžný název certifikátu. | Ne |
+| server |Název serveru DB2. Můžete zadat číslo portu za názvem serveru oddělené dvojtečkou, např. `server:port` .<br>Konektor DB2 využívá protokol DDM/DRDA a ve výchozím nastavení používá port 50000, pokud není zadaný. Port, který vaše konkrétní databáze DB2 používá, se může lišit v závislosti na verzi a nastavení, např. pro DB2 LUW výchozí port je 50000, pro AS400 výchozí port je 446 nebo 448, pokud je povolený protokol TLS. V následujících dokumentech DB2 najdete informace o tom, jak je port nakonfigurovaný obvykle: [DB2 z/OS](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.qb.dbconn.doc/doc/t0008229.html), [DB2 ISERIES](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/ddp/rbal1ports.htm)a [DB2 LUW](https://www.ibm.com/support/knowledgecenter/en/SSEKCU_1.1.3.0/com.ibm.psc.doc/install/psc_t_install_typical_db2_port.html). |Yes |
+| database |Název databáze DB2 |Yes |
+| authenticationType |Typ ověřování, který se používá pro připojení k databázi DB2.<br/>Povolená hodnota je: **Basic**. |Yes |
+| username |Zadejte uživatelské jméno pro připojení k databázi DB2. |Yes |
+| heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
+| balíček balíčkucollection    | Určete, kde jsou potřebné balíčky automaticky vytvořeny pomocí ADF při dotazování databáze. Pokud tato hodnota není nastavená, používá Data Factory jako výchozí hodnotu {username}. | No |
+| certificateCommonName | Pokud používáte šifrování SSL (Secure Sockets Layer) (SSL) nebo TLS (Transport Layer Security), musíte zadat hodnotu pro běžný název certifikátu. | No |
 
 > [!TIP]
 > Pokud se zobrazí chybová zpráva oznamující, že je `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805` důvod potřebný balíček pro uživatele nevytvoří. Ve výchozím nastavení se ADF pokusí vytvořit balíček v kolekci s názvem jako uživatel, kterého jste použili pro připojení k DB2. Určete vlastnost kolekce balíčku, která bude označovat, kde má ADF při dotazování na databázi vytvořit potřebné balíčky.
@@ -166,9 +161,9 @@ Chcete-li kopírovat data z DB2, jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **Db2Table** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **Db2Table** . | Yes |
 | schema | Název schématu. |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
-| stolu | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
+| tabulka | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
 | tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. `schema` `table` Pro nové zatížení použijte a. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad**
@@ -201,7 +196,7 @@ Chcete-li kopírovat data z DB2, v části **zdroj** aktivity kopírování jsou
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **Db2Source** . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **Db2Source** . | Yes |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
@@ -246,10 +241,10 @@ Při kopírování dat z DB2 se z datových typů DB2 používají následujíc�
 |:--- |:--- |
 | BigInt |Int64 |
 | Binární |Byte [] |
-| Blob |Byte [] |
+| Objekt blob |Byte [] |
 | Char |Řetězec |
 | Datový typ CLOB |Řetězec |
-| Datum |Datum a čas |
+| Date (Datum) |Datum a čas |
 | DB2DynArray |Řetězec |
 | DbClob |Řetězec |
 | Decimal |Decimal |
@@ -261,7 +256,7 @@ Při kopírování dat z DB2 se z datových typů DB2 používají následujíc�
 | LongVarBinary |Byte [] |
 | LongVarChar |Řetězec |
 | LongVarGraphic |Řetězec |
-| Numeric |Decimal |
+| Číselný |Decimal |
 | Skutečné |Jednoduché |
 | SmallInt |Int16 |
 | Čas |TimeSpan |

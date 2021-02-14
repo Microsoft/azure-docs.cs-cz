@@ -3,8 +3,7 @@ title: Rozšíření Azure DSC pro Linux
 description: Nainstaluje OMI a balíčky DSC, které umožní nakonfigurovat virtuální počítač Azure Linux pomocí konfigurace požadovaného stavu.
 services: virtual-machines-linux
 documentationcenter: ''
-author: bobbytreed
-manager: carmonm
+author: mgoedtel
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -13,20 +12,20 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
-ms.author: robreed
-ms.openlocfilehash: 1d1a5cf67a10a83a227f240fc31d25abfe9c7dd0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.author: magoedte
+ms.openlocfilehash: bfd5da519116eff66aede607f4cab7c207b30ee6
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955935"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093705"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Rozšíření DSC pro Linux (Microsoft. OSTCExtensions. DSCForLinux)
 
 Požadovaná konfigurace stavu (DSC) je platforma pro správu, kterou můžete použít ke správě infrastruktury IT a vývoje s konfigurací jako kód.
 
 > [!NOTE]
-> Rozšíření DSC pro Linux a [rozšíření virtuálního počítače Azure monitor pro Linux](./oms-linux.md) aktuálně prezentují konflikt a nepodporuje se v souběžné konfiguraci. Nepoužívejte tato dvě řešení společně na stejném virtuálním počítači.
+> Rozšíření DSC pro Linux a [rozšíření virtuálního počítače Log Analytics pro Linux](./oms-linux.md) aktuálně prezentují konflikt a nepodporuje se v souběžné konfiguraci. Nepoužívejte tato dvě řešení společně na stejném virtuálním počítači.
 
 Rozšíření DSCForLinux je publikované a podporované Microsoftem. Rozšíření nainstaluje agenta OMI a DSC na virtuální počítače Azure. Rozšíření DSC může také provádět tyto akce:
 
@@ -75,10 +74,10 @@ Tady jsou všechny podporované parametry chráněné konfigurace:
 * `RegistrationUrl`: (volitelné, String) adresa URL účtu Azure Automation
 * `RegistrationKey`: (volitelné, String) přístupový klíč účtu Azure Automation
 
-
 ## <a name="scenarios"></a>Scénáře
 
 ### <a name="register-an-azure-automation-account"></a>Registrace účtu Azure Automation
+
 protected.jsna
 ```json
 {
@@ -144,7 +143,6 @@ $publicConfig = '{
 }'
 ```
 
-
 ### <a name="apply-an-mof-configuration-file-in-public-storage-to-the-vm"></a>Použití konfiguračního souboru MOF (ve veřejném úložišti) na virtuální počítač
 
 public.jsna
@@ -193,14 +191,18 @@ $publicConfig = '{
 ```
 
 ### <a name="apply-a-meta-mof-configuration-file-in-public-storage-to-the-vm"></a>Použití konfiguračního souboru meta MOF (ve veřejném úložišti) na virtuální počítač
+
 public.jsna
+
 ```json
 {
   "FileUri": "<meta-mof-file-uri>",
   "ExtensionAction": "Pull"
 }
 ```
+
 Formát PowerShellu
+
 ```powershell
 $publicConfig = '{
   "FileUri": "<meta-mof-file-uri>",
@@ -209,14 +211,18 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-a-zip-file-in-an-azure-storage-account-to-the-vm"></a>Instalace vlastního modulu prostředků (soubor zip v účtu Azure Storage) do virtuálního počítače
+
 protected.jsna
+
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
   "StorageAccountKey": "<storage-account-key>"
 }
 ```
+
 public.jsna
+
 ```json
 {
   "ExtensionAction": "Install",
@@ -238,14 +244,19 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-a-zip-file-in-public-storage-to-the-vm"></a>Instalace vlastního modulu prostředků (soubor zip ve veřejném úložišti) do virtuálního počítače
+
 public.jsna
+
 ```json
 {
   "ExtensionAction": "Install",
   "FileUri": "<resource-zip-file-uri>"
 }
+
 ```
+
 Formát PowerShellu
+
 ```powershell
 $publicConfig = '{
   "ExtensionAction": "Install",
@@ -254,14 +265,18 @@ $publicConfig = '{
 ```
 
 ### <a name="remove-a-custom-resource-module-from-the-vm"></a>Odebrání vlastního modulu prostředků z virtuálního počítače
+
 public.jsna
+
 ```json
 {
   "ResourceName": "<resource-name>",
   "ExtensionAction": "Remove"
 }
 ```
+
 Formát PowerShellu
+
 ```powershell
 $publicConfig = '{
   "ResourceName": "<resource-name>",
@@ -277,10 +292,10 @@ Vzorová Správce prostředků šablona je [201-DSC-Linux-Azure-Storage-on-Ubunt
 
 Další informace o šabloně Azure Resource Manager naleznete v tématu [authoring Azure Resource Manager Templates](../../azure-resource-manager/templates/template-syntax.md).
 
-
 ## <a name="azure-cli-deployment"></a>Nasazení Azure CLI
 
 ### <a name="use-azure-cliazure-cli"></a>Použití [Azure CLI] [Azure-CLI]
+
 Před nasazením rozšíření DSCForLinux nakonfigurujte `public.json` a `protected.json` podle různých scénářů v oddílu 3.
 
 #### <a name="classic"></a>Klasický
@@ -288,33 +303,40 @@ Před nasazením rozšíření DSCForLinux nakonfigurujte `public.json` a `prote
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 Klasický režim nasazení se taky označuje jako režim správy služeb Azure. Můžete na něj přejít spuštěním:
+
 ```
 $ azure config mode asm
 ```
 
 Rozšíření DSCForLinux můžete nasadit spuštěním:
+
 ```
 $ azure vm extension set <vm-name> DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
 
 Pokud se chcete dozvědět, jak nejnovější dostupná verze rozšíření, spusťte příkaz:
+
 ```
 $ azure vm extension list
 ```
 
 #### <a name="resource-manager"></a>Resource Manager
+
 Můžete přepnout na režim Azure Resource Manager spuštěním:
+
 ```
 $ azure config mode arm
 ```
 
 Rozšíření DSCForLinux můžete nasadit spuštěním:
+
 ```
 $ azure vm extension set <resource-group> <vm-name> \
 DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
+
 > [!NOTE]
 > V režimu Azure Resource Manager `azure vm extension list` není nyní k dispozici.
 >
@@ -340,6 +362,7 @@ $version = '< version>'
 ```
 
 Změňte obsah $privateConfig a $publicConfig podle různých scénářů v předchozí části.
+
 ```
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -354,7 +377,7 @@ $publicConfig = '{
 }'
 ```
 
-```
+```powershell
 Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher `
   -Version $version -PrivateConfiguration $privateConfig `
   -PublicConfiguration $publicConfig | Update-AzureVM
@@ -382,6 +405,7 @@ $version = '< version>'
 ```
 
 Změňte obsah $privateConfig a $publicConfig podle různých scénářů v předchozí části.
+
 ```
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -396,7 +420,7 @@ $publicConfig = '{
 }'
 ```
 
-```
+```powershell
 Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location `
   -Name $extensionName -Publisher $publisher -ExtensionType $extensionName `
   -TypeHandlerVersion $version -SettingString $publicConfig -ProtectedSettingString $privateConfig
@@ -421,11 +445,10 @@ Výstup spuštění rozšíření se zaznamená do následujícího souboru:
 Kód chyby: 51 představuje nepodporovanou distribuci nebo nepodporovanou akci rozšíření.
 V některých případech se rozšíření DSC v systému Linux nedokáže nainstalovat OMI, pokud v počítači už existuje novější verze OMI. [chybová odpověď: (000003) downgrade není povolená.]
 
-
-
 ### <a name="support"></a>Podpora
 
 Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, obraťte se na odborníky na Azure na [webu MSDN Azure a Stack Overflow fórech](https://azure.microsoft.com/support/community/). Případně můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/)a vyberte **získat podporu**. Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Další kroky
+
 Další informace o rozšířeních najdete v tématu [rozšíření virtuálních počítačů a funkce pro Linux](features-linux.md).

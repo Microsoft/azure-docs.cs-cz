@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 11/20/2020
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 7b97edcac8bed23e03569d733746b547f5440cee
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 843f957ef8871f6372c1b08a5534f6e90098cc85
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97609577"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095116"
 ---
 # <a name="user-collections-preview-in-my-apps"></a>Kolekce uživatelů (Preview) ve složkách moje aplikace
 
@@ -33,6 +33,12 @@ V tomto článku se dozvíte, jak:
 - Skrýt kolekce
 - Zobrazit skryté kolekce
 - Odstranit kolekce
+
+>[!Note]
+>Pokud se vám při přihlašování pomocí osobního účet Microsoft zobrazí chyba, můžete se přihlásit pomocí názvu domény vaší organizace (například contoso.com) nebo **ID tenanta** vaší organizace od správce v jedné z následujících adres URL:
+>
+>   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+>   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
 
 ## <a name="create-a-collection"></a>Vytvoření kolekce
 
@@ -103,6 +109,7 @@ Postup skrytí kolekce:
 Chcete-li zobrazit skrytou kolekci:
 
 1. Přejít do [kolekce moje aplikace](https://myapplications.microsoft.com/?endUserCollections) a přihlaste se pomocí svého pracovního nebo školního účtu.
+
 1. Otevřete nabídku stránka, :::image type="content" source="media/my-apps-portal-user-collections/17-ellipsis-icon.png" alt-text="Vyberte ikonu tří teček pro nabídku na úrovni stránky":::a pak vyberte **Spravovat**.
 
     :::image type="content" source="media/my-apps-portal-user-collections/13-manage-apps-again.png" alt-text="Nabídka stránka obsahuje příkaz Spravovat pro správu aplikací.":::

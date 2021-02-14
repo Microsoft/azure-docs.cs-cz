@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/15/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 8dbf3b5de4b908eb831158b73b2b17472bc4895e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3a794d8915c820abecd530911f05ac649e5e538c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020959"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379909"
 ---
 # <a name="what-are-the-comparisons-between-azure-cdn-product-features"></a>Jaké jsou srovnání mezi Azure CDNmi funkcemi produktu?
 
@@ -54,15 +54,15 @@ Následující tabulka obsahuje porovnání funkcí, které jsou dostupné v jed
 | [HTTPS pro vlastní doménu](cdn-custom-ssl.md)  | **&#x2713;** | **&#x2713;** vyžaduje přímý záznam CNAME, aby bylo možné povolit |**&#x2713;** |**&#x2713;** |
 | [Podpora vlastních názvů domén](cdn-map-content-to-custom-domain.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Geografické filtrování](cdn-restrict-access-by-country.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Ověřování tokenu](cdn-token-auth.md)  |  |  |  |**&#x2713;**| 
+| [Ověření tokenu](cdn-token-auth.md)  |  |  |  |**&#x2713;**| 
 | [Ochrana DDOS](https://www.us-cert.gov/ncas/tips/ST04-015)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Používání vlastního certifikátu](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#tlsssl-certificates) |**&#x2713;** |  | **&#x2713;** | **&#x2713;** |
-| Podporované verze TLS | TLS 1,2, TLS 1.0/1.1 – [konfigurovatelný](/rest/api/cdn/customdomains/enablecustomhttps#usermanagedhttpsparameters) | TLS 1.2 | TLS 1.2 | TLS 1.2 |
+| Podporované verze TLS | TLS 1,2, TLS 1.0/1.1 – [konfigurovatelný](/rest/api/cdn/cdn/customdomains/enablecustomhttps#usermanagedhttpsparameters) | TLS 1.2 | TLS 1.2 | TLS 1.2 |
 ||||
 | **Analýzy a generování sestav** | **Microsoft – standardní** | **Akamai úrovně Standard** | **Verizon úrovně Standard** | **Verizon úrovně Premium** | 
 | [Diagnostické protokoly Azure](cdn-azure-diagnostic-logs.md)  | **&#x2713;** | **&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Základní sestavy z Verizon](cdn-analyze-usage-patterns.md)  |  | |**&#x2713;** |**&#x2713;** |
-| [Vlastní sestavy z Verizon](cdn-verizon-custom-reports.md)  |  | |**&#x2713;** |**&#x2713;** |
+| [Základní sestavy od Verizonu](cdn-analyze-usage-patterns.md)  |  | |**&#x2713;** |**&#x2713;** |
+| [Vlastní sestavy od Verizonu](cdn-verizon-custom-reports.md)  |  | |**&#x2713;** |**&#x2713;** |
 | [Rozšířené sestavy HTTP](cdn-advanced-http-reports.md)  |  | | |**&#x2713;** |
 | [Statistiky v reálném čase](cdn-real-time-stats.md)  |  | | |**&#x2713;** |
 | [Výkon hraničních uzlů](cdn-edge-performance.md)  |  | | |**&#x2713;** |
