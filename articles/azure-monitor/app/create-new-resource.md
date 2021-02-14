@@ -2,17 +2,20 @@
 title: Vytvořit nový prostředek služby Azure Application Insights | Microsoft Docs
 description: Ručně nastavte Application Insights monitorování pro novou živou aplikaci.
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: e69611d650f61630c8b36f7387b79cffbb61f227
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/10/2021
+ms.openlocfilehash: 3233aed895eac269bd34a961728b3302581ff360
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062909"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104582"
 ---
 # <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 
 Azure Application Insights zobrazuje data o vaší aplikaci v *prostředku* Microsoft Azure. Vytvoření nového prostředku je proto součástí [nastavení Application Insights k monitorování nové aplikace][start]. Po vytvoření nového prostředku můžete získat jeho klíč instrumentace a použít ho ke konfiguraci sady Application Insights SDK. Klíč instrumentace propojuje vaši telemetrii s prostředkem.
+
+> [!IMPORTANT]
+> Klasický Application Insights se už nepoužívá. Postupujte prosím podle těchto [pokynů, jak upgradovat na Application Insights na základě pracovního prostoru](convert-classic-resource.md).
 
 ## <a name="sign-in-to-microsoft-azure"></a>Přihlášení k Microsoft Azure
 

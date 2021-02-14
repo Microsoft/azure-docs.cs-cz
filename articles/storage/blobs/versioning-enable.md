@@ -6,20 +6,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5802070bf9b495c0e866d160d6661349369a444e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5b6bd16eacf4b1bbb7b93f5500813e7fa9dc7eef
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993736"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095833"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>Povolení a správa verzí objektů BLOB
 
-Chcete-li automaticky zachovat předchozí verze objektu, můžete povolit správu verzí služby Blob Storage.  Pokud je povolená Správa verzí objektů blob, můžete obnovit předchozí verzi objektu blob, aby se data obnovila v případě, že se omylem změnila nebo odstranila.
+Můžete povolit správu verzí služby Blob Storage a automaticky tak zachovat předchozí verze objektů BLOB při jejich úpravě nebo odstranění. Pokud je povolená Správa verzí objektů blob, můžete obnovit předchozí verzi objektu blob, aby se data obnovila v případě, že se omylem změnila nebo odstranila.
 
 Tento článek popisuje, jak povolit nebo zakázat správu verzí objektů BLOB pro účet úložiště pomocí šablony Azure Portal nebo Azure Resource Manager. Další informace o tom, jak se správou verzí objektů blob, najdete v tématu [Správa verzí objektů BLOB](versioning-overview.md).
 
@@ -29,13 +29,39 @@ Tento článek popisuje, jak povolit nebo zakázat správu verzí objektů BLOB 
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-Povolení správy verzí objektů BLOB v Azure Portal:
+Povolení správy verzí objektů BLOB pro účet úložiště v Azure Portal:
 
 1. Na portálu přejděte na svůj účet úložiště.
 1. V části **BLOB Service** vyberte **Ochrana dat**.
 1. V části **Správa verzí** vyberte **povoleno**.
 
 :::image type="content" source="media/versioning-enable/portal-enable-versioning.png" alt-text="Snímek obrazovky ukazující, jak povolit správu verzí objektů BLOB v Azure Portal":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Pokud chcete povolit správu verzí objektů BLOB pro účet úložiště pomocí PowerShellu, nejdřív nainstalujte modul [AZ. Storage](https://www.powershellgallery.com/packages/Az.Storage) verze 2.3.0 nebo novější. Pak zavolejte příkaz [Update-AzStorageBlobServiceProperty](/powershell/module/az.storage/update-azstorageblobserviceproperty) pro povolení správy verzí, jak je znázorněno v následujícím příkladu. Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
+
+```powershell
+# Set resource group and account variables.
+$rgName = "<resource-group>"
+$accountName = "<storage-account>"
+
+# Enable versioning.
+Update-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
+    -StorageAccountName $accountName `
+    -IsVersioningEnabled $true
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pokud chcete povolit správu verzí objektů BLOB pro účet úložiště pomocí Azure CLI, nejdřív nainstalujte Azure CLI verze 2.2.0 nebo novější. Potom zavolejte příkaz [AZ Storage Account BLOB-Service-Properties Update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) , aby bylo možné povolit správu verzí, jak je znázorněno v následujícím příkladu. Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
+
+```azurecli
+az storage account blob-service-properties update \
+    --resource-group <resource_group> \
+    --account-name <storage-account> \
+    --enable-versioning true
+```
 
 # <a name="template"></a>[Šablona](#tab/template)
 

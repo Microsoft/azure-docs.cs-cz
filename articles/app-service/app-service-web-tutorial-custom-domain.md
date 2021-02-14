@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: b45e1fbaf912cc045ba51a79db434baecbabdf43
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: eea42ab17311b85bdce429e22e8d0ed694e2f0ec
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608244"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096340"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Kurz: mapování stávajícího vlastního názvu DNS na Azure App Service
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Přesměrujte výchozí adresu URL na vlastní adresář.
 > * Automatizace mapování domén pomocí skriptů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -309,17 +309,20 @@ Pokud se zobrazí chyba HTTP 404 (Nenalezeno), když přejdete na adresu URL vla
 - V konfiguraci vlastní domény chybí záznam A nebo záznam CNAME.
 - Prohlížeč uložil do mezipaměti starou IP adresu vaší domény. Vymažte mezipaměť a znovu otestujte překlad DNS. Na počítači s Windows můžete mezipaměť vymazat příkazem `ipconfig /flushdns`.
 
-<a name="virtualdir" aria-hidden="true"></a>
-
 ## <a name="migrate-an-active-domain"></a>Migrace aktivní domény
 
 Pokud chcete do služby App Service migrovat živý web a jeho název domény DNS bez výpadku, přečtěte si článek o [migraci aktivního názvu DNS do služby Azure App Service](manage-custom-dns-migrate-domain.md).
+
+<a name="virtualdir" aria-hidden="true"></a>
 
 ## <a name="redirect-to-a-custom-directory"></a>Přesměrování do vlastního adresáře
 
 Ve výchozím nastavení služba App Service směruje webové požadavky do kořenového adresáře kódu vaší aplikace. Některé webové architektury se ale nespouštějí v kořenovém adresáři. Například [Laravel](https://laravel.com/) začíná v podadresáři `public`. Pokud chcete v `contoso.com` příkladu DNS pokračovat, taková aplikace je přístupná v `http://contoso.com/public` , ale `http://contoso.com` místo toho chcete směrovat do `public` adresáře. Tento krok nezahrnuje rozlišení DNS, ale je o přizpůsobení virtuálního adresáře.
 
-Pokud chcete přizpůsobit virtuální adresář, vyberte v levém podokně stránky webové aplikace možnost **nastavení aplikace** .
+Pokud chcete přizpůsobit virtuální adresář pro aplikace pro Windows, v levém podokně stránky vaší webové aplikace vyberte **nastavení aplikace** . 
+
+> [!NOTE]
+> Aplikace pro Linux nemají tuto stránku. Pokud chcete změnit kořenový adresář pro aplikace pro Linux, přečtěte si téma konfigurační příručky pro konkrétní jazyk (například[php](configure-language-php.md?pivots=platform-linux#change-site-root)).
 
 V dolní části stránky kořenový virtuální adresář `/` odkazuje ve výchozím nastavení na adresář `site\wwwroot`, což je kořenový adresář kódu vaší aplikace. Změňte ho tak, aby místo toho odkazoval například na adresář `site\wwwroot\public`, a uložte provedené změny.
 

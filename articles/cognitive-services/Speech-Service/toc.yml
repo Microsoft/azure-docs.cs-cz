@@ -529,8 +529,6 @@
           displayName: 'ACI,azure container instances,container instances,containers'
           maintainContext: true
           href: ../containers/azure-container-instance-recipe.md
-        - name: Nejčastější dotazy ke kontejnerům
-          href: speech-container-faq.md
         - name: Dokumentace ke kontejnerům Cognitive Services
           href: ../containers/index.yml
 - name: Zařízení

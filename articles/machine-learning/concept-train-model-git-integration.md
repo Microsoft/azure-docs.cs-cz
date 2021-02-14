@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 11/16/2020
-ms.openlocfilehash: 989fc7cb66cf5381d174a3aad12f84f5b055aab8
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 7c10d3066dc7b9ee0994de8c327b286bf8c917e7
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701632"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099468"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Integrace Gitu pro Azure Machine Learning
 
@@ -28,7 +28,7 @@ Vzhledem k tomu, že Azure Machine Learning sleduje informace z místního úlo�
 
 ## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Klonování úložišť Git do systému souborů vlastního pracovního prostoru
 Azure Machine Learning poskytuje sdílený systém souborů pro všechny uživatele v pracovním prostoru.
-K naklonování úložiště Git do této sdílené složky doporučujeme vytvořit výpočetní instanci & otevřete terminál.
+K naklonování úložiště Git do této sdílené složky doporučujeme vytvořit výpočetní instanci & [Otevřete terminál](how-to-access-terminal.md).
 Po otevření terminálu máte přístup k plnému klientovi Git a budete moct pomocí prostředí Git CLI klonovat a pracovat s ním.
 
 Doporučujeme, abyste naklonoval úložiště do adresáře uživatelů, aby ostatní nedošlo k kolizím přímo ve vaší pracovní větvi.
@@ -39,7 +39,7 @@ Další informace o klonování najdete v příručce k použití rozhraní př�
 
 ## <a name="authenticate-your-git-account-with-ssh"></a>Ověření účtu Git pomocí SSH
 ### <a name="generate-a-new-ssh-key"></a>Vygenerovat nový klíč SSH
-1) [Otevřete okno terminálu](./how-to-run-jupyter-notebooks.md#terminal) na kartě Poznámkový blok Azure Machine Learning.
+1) [Otevřete okno terminálu](./how-to-access-terminal.md) na kartě Poznámkový blok Azure Machine Learning.
 
 2) Níže vložte text a nahraďte svou e-mailovou adresu.
 
@@ -89,7 +89,7 @@ cat ~/.ssh/id_rsa.pub
 
 + [GitLab](https://docs.gitlab.com/ee/ssh/#adding-an-ssh-key-to-your-gitlab-account)
 
-+ [DevOps Azure](/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs)  Začněte v **kroku 2**.
++ [DevOps Azure](/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs&preserve-view=true)  Začněte v **kroku 2**.
 
 + [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2). Začněte v **kroku 4**.
 
@@ -123,7 +123,7 @@ SSH zobrazí tento otisk prstu, když se připojí k neznámému hostiteli, aby 
 
 Když odešlete školicí běh ze sady Python SDK nebo Machine Learning CLI, soubory potřebné pro výuku modelu se nahrají do vašeho pracovního prostoru. Pokud `git` je příkaz k dispozici ve vašem vývojovém prostředí, proces nahrávání je používá ke kontrole, zda jsou soubory uloženy v úložišti Git. V takovém případě jsou informace z úložiště Git také nahrány v rámci školicího běhu. Tyto informace jsou uloženy v následujících vlastnostech pro školicí běh:
 
-| Vlastnost | Příkaz git použitý k získání hodnoty | Popis |
+| Vlastnost | Příkaz git použitý k získání hodnoty | Description |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | Identifikátor URI, ze kterého bylo úložiště naklonováno. |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Identifikátor URI, ze kterého bylo úložiště naklonováno. |

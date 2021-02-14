@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 46919a97364aeff29e2b458c619315571dba7710
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 311dfd976610c392909a0ec3d91fecaa4d733539
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013664"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104191"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Postupy: Konfigurace podmínek služby a prohlášení o zásadách ochrany osobních údajů pro aplikaci
 
@@ -39,7 +39,7 @@ Následující příklady znázorňují uživatelské prostředí pro vyjádřen
 
 Předtím, než přidáte odkazy na dokumenty k podmínkám služby a prohlášení o zásadách ochrany osobních údajů vaší aplikace, ujistěte se, že adresy URL následují po těchto pokynech.
 
-| Pokyn     | Popis                           |
+| Pokyn     | Description                           |
 |---------------|---------------------------------------|
 | Formát        | Platná adresa URL                             |
 | Platná schémata | Protokoly HTTP a HTTPS<br/>Doporučujeme protokol HTTPS |
@@ -58,11 +58,11 @@ Po přípravě podmínek služby a prohlášení o zásadách ochrany osobních 
 ### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Použití webu Azure Portal
 Postupujte podle následujících kroků v Azure Portal.
 
-1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>vyberte správného tenanta AZUREAD (ne B2C).
+1. Přihlaste se k <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> a vyberte správného TENANTA Azure AD (ne B2C).
 2. Přejděte do části **Registrace aplikací** a vyberte svou aplikaci.
-3. Otevřete podokno **branding** .
+3. V části **Spravovat** vyberte **branding**.
 4. Vyplňte pole **Adresa URL podmínek služby** a **Adresa URL prohlášení o zásadách ochrany osobních údajů** .
-5. Uložte provedené změny.
+5. Vyberte **Uložit**.
 
     ![Vlastnosti aplikace obsahují adresy URL podmínek služby a prohlášení o zásadách ochrany osobních údajů.](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 

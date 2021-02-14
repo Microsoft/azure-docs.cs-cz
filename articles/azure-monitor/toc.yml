@@ -781,6 +781,8 @@
             - name: Upozornění na dostupnost
               displayname: 'alerts, global, alerting'
               href: app/availability-alerts.md
+            - name: Sestava SLA
+              href: app/sla-report.md
             - name: Řešení potíží
               displayname: 'availability, troubleshoot, troubleshoot availability'
               href: app/troubleshoot-availability.md
@@ -794,8 +796,8 @@
         - name: Živý stream metriky
           displayname: 'live, quickpulse, quick pulse, live metrics'
           href: app/live-stream.md
-        - name: Sestava SLA
-          href: app/sla-report.md
+        - name: Integrace pracovních položek
+          href: app/work-item-integration.md
         - name: Metriky
           items:
             - name: Metriky založené na protokolech a agregované předem

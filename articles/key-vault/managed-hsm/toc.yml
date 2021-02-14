@@ -39,8 +39,6 @@
       href: access-control.md
     - name: Místní předdefinované role řízení přístupu na základě role
       href: built-in-roles.md
-- name: Návody
-  items: null
 - name: Referenční informace
   items:
     - name: Azure PowerShell

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 6ca489dc0c5c7ba8ba67f3456d04be953544a8fb
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: b7c71524dc40f7eabd5ff86ee21c8197acfae1a3
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987823"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102287"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Škálování pro výkon v Azure Kognitivní hledání
 
@@ -87,13 +87,16 @@ Další podrobnosti najdete na webu [Azure Kognitivní hledání smlouva SLA](ht
 
 Vzhledem k tomu, že repliky jsou kopiemi vašich dat, může Azure Kognitivní hledání provádět restartování počítače a údržbu proti jedné replice, zatímco provádění dotazů pokračuje na dalších replikách. Naopak pokud ponecháte repliky, budete mít k disgradaci výkonu dotazů. za předpokladu, že tyto repliky byly prostředkem, který se používá.
 
+<a name="availability-zones"></a>
+
 ### <a name="availability-zones"></a>Zóny dostupnosti
 
-[Zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview) rozdělit datová centra oblasti do různých fyzických skupin umístění a zajistit tak vysokou dostupnost v rámci regionu. Vyhledávací služba běží v jedné oblasti. repliky běží v různých zónách.
+[Zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview) rozdělit datová centra oblasti do samostatných skupin fyzického umístění tak, aby poskytovala vysokou dostupnost v rámci stejné oblasti. U Kognitivní hledání jednotlivé repliky představují jednotky pro přiřazení zóny. Vyhledávací služba běží v jedné oblasti. jeho repliky běží v různých zónách.
 
 Zóny dostupnosti se službou Azure Kognitivní hledání můžete využít tak, že do vyhledávací služby přidáte dvě nebo víc replik. Každá replika bude umístěna v jiné zóně dostupnosti v rámci dané oblasti. Pokud máte více replik, než Zóny dostupnosti, repliky budou rozloženy mezi Zóny dostupnosti, jak je to možné.
 
 Azure Kognitivní hledání aktuálně podporuje Zóny dostupnosti pro služby úrovně Standard nebo vyšší, které byly vytvořeny v jedné z následujících oblastí:
+
 + Austrálie – východ (vytvořeno 30. ledna 2021 nebo novější)
 + Kanada – střed (vytvořeno 30. ledna 2021 nebo novější)
 + Střed USA (vytvořeno 4. prosince 2020 nebo novější)
@@ -106,7 +109,7 @@ Azure Kognitivní hledání aktuálně podporuje Zóny dostupnosti pro služby �
 + Západní Evropa (vytvořeno 29. ledna 2021 nebo novější)
 + Západní USA 2 (vytvořeno 30. ledna 2021 nebo novější)
 
-Zóny dostupnosti nemá vliv na [smlouva SLA Azure kognitivní hledání](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+Zóny dostupnosti nemá vliv na [smlouva SLA Azure kognitivní hledání](https://azure.microsoft.com/support/legal/sla/search/v1_0/). Pro dotaz na vysokou dostupnost stále potřebujete 3 nebo více replik.
 
 ## <a name="scale-for-geo-distributed-workloads-and-geo-redundancy"></a>Škálování pro geograficky distribuované úlohy a geografickou redundanci
 

@@ -3,12 +3,12 @@ title: Zálohování a obnovení virtuálních počítačů Azure pomocí PowerS
 description: Popisuje postup zálohování a obnovení virtuálních počítačů Azure pomocí Azure Backup pomocí prostředí PowerShell.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 90bb6f60712fc59aec05ff2e85364fccf00ff1df
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 66b8fe0109a4dd2e054106b67f893def2ee596b0
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804796"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095080"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu
 
@@ -526,6 +526,53 @@ Uživatel může selektivně obnovit málo disků místo celé zazálohované sa
 > Jeden z nich musí selektivně zálohovat disky pro selektivní obnovení disků. Další podrobnosti najdete [tady](selective-disk-backup-restore.md#selective-disk-restore).
 
 Po obnovení disků použijte k vytvoření virtuálního počítače v další části.
+
+#### <a name="restore-disks-to-a-secondary-region"></a>Obnovení disků do sekundární oblasti
+
+Pokud je v trezoru zapnuté obnovení mezi oblastmi, se kterými jste virtuální počítače chráněni, replikují se zálohovaná data do sekundární oblasti. K provedení obnovení můžete použít zálohovaná data. Provedením následujících kroků spusťte obnovení v sekundární oblasti:
+
+1. [NAČTE ID trezoru](#fetch-the-vault-id) , se kterým jsou virtuální počítače chráněné.
+1. Vyberte [správnou zálohovanou položku, kterou chcete obnovit](#select-the-vm-when-restoring-files).
+1. Vyberte příslušný bod obnovení v sekundární oblasti, kterou chcete použít k provedení obnovení.
+
+    Chcete-li dokončit tento krok, spusťte tento příkaz:
+
+    ```powershell
+    $rp=Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion -Item $backupitem -VaultId $targetVault.ID
+    $rp=$rp[0]
+    ```
+
+1. Spuštěním rutiny [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) s `-RestoreToSecondaryRegion` parametrem aktivujte obnovení v sekundární oblasti.
+
+    Chcete-li dokončit tento krok, spusťte tento příkaz:
+
+    ```powershell
+    $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID -VaultLocation $targetVault.Location -RestoreToSecondaryRegion -RestoreOnlyOSDisk
+    ```
+
+    Výstup se bude podobat tomuto příkladu:
+
+    ```output
+    WorkloadName     Operation             Status              StartTime                 EndTime          JobID
+    ------------     ---------             ------              ---------                 -------          ----------
+    V2VM             CrossRegionRestore   InProgress           4/23/2016 5:00:30 PM                       cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
+    ```
+
+1. Spuštěním rutiny [Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) s `-UseSecondaryRegion` parametrem monitorujte úlohu obnovení.
+
+    Chcete-li dokončit tento krok, spusťte tento příkaz:
+
+    ```powershell
+    Get-AzRecoveryServicesBackupJob -From (Get-Date).AddDays(-7).ToUniversalTime() -To (Get-Date).ToUniversalTime() -UseSecondaryRegion -VaultId $targetVault.ID
+    ```
+
+    Výstup se bude podobat tomuto příkladu:
+
+    ```output
+    WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+    ------------     ---------            ------               ---------                 -------                   -----
+    V2VM             CrossRegionRestore   InProgress           2/8/2021 4:24:57 PM                                 2d071b07-8f7c-4368-bc39-98c7fb2983f7
+    ```
 
 ## <a name="replace-disks-in-azure-vm"></a>Výměna disků ve virtuálním počítači Azure
 

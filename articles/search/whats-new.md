@@ -6,18 +6,25 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 02/08/2021
+ms.date: 02/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7e3f6eeab13a29eddd671411f46ac2220c10f68f
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 08491dcaf66789f13aa9f2e058303a28e7ab8388
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820853"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099519"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
 Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu. Podívejte se na [seznam funkcí ve verzi Preview](search-api-preview.md) a podívejte se na funkce ve verzi Public Preview.
+
+## <a name="february-2021"></a>Únor 2021
+
+|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Dostupnost  |
+|------------------------------|---------------|---------------|
+| [Resetovat dokumenty (Preview)](search-howto-run-reset-indexers.md) |  Znovu zpracuje jednotlivě vybrané dokumenty hledání v úlohách indexeru. | [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/index-preview) |
+| Podpora zón dostupnosti | Vyhledávací služby se dvěma nebo více replikami v určitých oblastech, jak je uvedeno v [rozsahu pro výkon](search-performance-optimization.md), získáte odolnost při používání replik ve dvou nebo více různých fyzických umístěních.  | Oblast a datum vytvoření služby vyhledávání, která určuje dostupnost. Podrobnosti najdete v dokumentu ladění výkonu. |
 
 ## <a name="january-2021"></a>Leden 2021
 

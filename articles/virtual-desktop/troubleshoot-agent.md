@@ -6,19 +6,19 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 8e3c372cb186d3043e89b0b084a86b7be128146d
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 1500a635d5177ed8899cdc3f1364e57a8525892c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475248"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099944"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Řešení běžných problémů s agentem virtuálních počítačů s Windows
 
 Agent virtuálních počítačů s Windows může způsobovat problémy s připojením kvůli několika faktorům:
    - Ve zprostředkovateli došlo k chybě, která způsobuje, že agent zastaví službu.
    - Problémy s aktualizacemi.
-   - Problémy při instalaci nástroje během instalace agenta, která narušuje připojení k hostiteli relace.
+   - Problémy s instalací během instalace agenta, které narušují připojení k hostiteli relace.
 
 Tento článek vás provede řešeními těchto běžných scénářů a postupem, jak řešit problémy s připojením.
 
@@ -184,7 +184,7 @@ Chcete-li tento problém vyřešit, změňte prahovou hodnotu prezenčního sign
 1. Otevřete příkazový řádek jako správce.
 2. Zadejte příkaz **qwinsta** a spusťte ho.
 3. Měly by se zobrazit dvě komponenty zásobníku: **RDP-TCP** a **RDP-SxS**. 
-   - V závislosti na verzi operačního systému, který používáte, může být **RDP-SxS** následováno číslem sestavení, jak je znázorněno na následujícím snímku obrazovky. Pokud je, nezapomeňte toto číslo napsat pro pozdější verzi.
+   - V závislosti na verzi operačního systému, který používáte, může být **RDP-SxS** následováno číslem sestavení. Pokud je, nezapomeňte toto číslo napsat pro pozdější verzi.
 4. Otevřete Editor registru.
 5. Přejděte na **HKEY_LOCAL_MACHINE**  >  **System**  >  **CurrentControlSet**  >  **Control**  >  **Terminal Server**  >  **WinStations**.
 6. V části **WinStations** se může zobrazit několik složek pro různé verze zásobníku. Vyberte složku, která odpovídá číslu verze z kroku 3.
@@ -207,7 +207,7 @@ Pokud chcete tento problém vyřešit, udělejte místo na disku:
 Otevřete okno PowerShellu jako správce a spusťte následující rutinu:
 
 ```powershell
-Get-AzWvdSessionHost -TenantName <tenantname> -HostPoolName <hostpoolname>|Select-Object *
+Get-AzWvdSessionHost -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> | Select-Object *
 ```
 
 Pokud stav uvedený pro hostitele relace nebo hostitelé ve fondu hostitelů vždy oznámí, že **není k dispozici** nebo je **upgrade**, instalace agenta nebo zásobníku se pravděpodobně nezdařila.

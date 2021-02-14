@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 10/19/2020
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 61dd185d00cef2382763e7435c081e1d412cdb92
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 6dd9d65ee56bcbf8ca1da72f7d99d4545c5d7fbb
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127872"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094997"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Přihlášení a spouštění aplikací z portálu moje aplikace
 
@@ -31,6 +31,11 @@ Pokud nemáte přístup k portálu **Moje aplikace** , požádejte o oprávněn�
 
 > [!IMPORTANT]
 > Tento obsah je určený pro uživatele **mých aplikací** . Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](../manage-apps/index.yml).
+>
+> Pokud se vám při přihlašování pomocí osobního účet Microsoft zobrazí chyba, můžete se přihlásit pomocí názvu domény vaší organizace (například contoso.com) nebo **ID tenanta** vaší organizace od správce v jedné z následujících adres URL:
+>
+>   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+>   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
 
 ## <a name="supported-browsers"></a>Podporované prohlížeče
 
@@ -60,7 +65,7 @@ Pokud máte oprávnění pro přístup k cloudovým aplikacím vaší organizace
 
 ### <a name="download-and-install-the-my-apps-secure-sign-in-extension"></a>Stažení a instalace zabezpečeného přihlašovacího rozhraní moje aplikace
 
-Pokud se zobrazí výzva, Stáhněte a nainstalujte si **rozšíření pro zabezpečené přihlašování k aplikacím** . Toto rozšíření vám pomůže používat k používání jednotného přihlašování v cloudových aplikacích vaší organizace jednotné přihlašování. V portálu **Moje aplikace** najeďte myší na aplikaci, vyberte **...** a pak vyberte **spravovat vaši aplikaci** .
+Pokud se zobrazí výzva, Stáhněte a nainstalujte si **rozšíření pro zabezpečené přihlašování k aplikacím**. Toto rozšíření vám pomůže používat k používání jednotného přihlašování v cloudových aplikacích vaší organizace jednotné přihlašování. V portálu **Moje aplikace** najeďte myší na aplikaci, vyberte **...** a pak vyberte **spravovat vaši aplikaci**.
 
 Pokud vaše organizace už nastavila jednotné přihlašování, rozšíření se nainstaluje automaticky a tuto část můžete přeskočit.
 
@@ -77,9 +82,9 @@ Stáhněte a nainstalujte rozšíření na základě prohlížeče, který použ
 
 - **Microsoft Edge** – z Microsoft Store přejít na funkci rozšíření pro [zabezpečené přihlašování k aplikacím](https://microsoftedge.microsoft.com/addons/detail/my-apps-secure-signin-ex/gaaceiggkkiffbfdpmfapegoiohkiipl) a pak vyberte **získat** a získejte rozšíření pro Microsoft Edge starší verze prohlížeče.
 
-- **Google Chrome** – z webu Chrome web Store, přejít na funkci [rozšíření pro zabezpečené přihlašování k aplikacím](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) a pak vyberte **Přidat do Chrome** .
+- **Google Chrome** – z webu Chrome web Store, přejít na funkci [rozšíření pro zabezpečené přihlašování k aplikacím](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) a pak vyberte **Přidat do Chrome**.
 
-- **Mozilla Firefox** – na stránce **Doplňky pro Firefox** přejít na funkci [rozšíření pro zabezpečené přihlašování k aplikacím](https://addons.mozilla.org/firefox/addon/access-panel-extension/) a pak vyberte **Přidat do Firefox** .
+- **Mozilla Firefox** – na stránce **Doplňky pro Firefox** přejít na funkci [rozšíření pro zabezpečené přihlašování k aplikacím](https://addons.mozilla.org/firefox/addon/access-panel-extension/) a pak vyberte **Přidat do Firefox**.
 
 Do pravé části **adresního** řádku se přidá ikona, která vám umožní přihlášení a přizpůsobení rozšíření.
 
@@ -89,7 +94,7 @@ V části **naposledy použité** můžete zvolit, kolik aplikací se má zobraz
 
 1. Vyberte ikonu rozšíření přípona nové **přihlašovacího přihlašování k aplikacím** ![ ](media/my-apps-portal/my-apps-portal-extension-icon.png) napravo od panelu **adresa** a potom vyberte **Přihlásit se a** začněte.
 
-1. Klikněte pravým tlačítkem **na ikonu nastavení ikona nastavení** ![ ](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) a pak vyberte **Nastavení** .
+1. Klikněte pravým tlačítkem **na ikonu nastavení ikona nastavení** ![ ](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) a pak vyberte **Nastavení**.
 
 1. V poli **Nastavení** vyberte počet nedávných aplikací, které chcete zobrazit na portálu, a určete, jestli se mají u interních adres URL vaší organizace umožnit přesměrování, abyste je mohli používat vzdáleně.
 
@@ -113,11 +118,11 @@ Umožňuje zobrazit a používat aplikace vaší organizace z mobilní verze pro
 
 Pokud vám správce udělil oprávnění, můžete na stránku **aplikace** přidat novou aplikaci.
 
-1. Na stránce **aplikace** vyberte **Přidat samoobslužné aplikace** .
+1. Na stránce **aplikace** vyberte **Přidat samoobslužné aplikace**.
 
    ![Stránka Přidat aplikace na portálu moje aplikace na adrese myapplications.microsoft.com](media/my-apps-portal/my-apps-portal-add-app-link.png)
 
-1. Z poskytnutého seznamu vyberte aplikaci, kterou chcete přidat, a pak vyberte **Přidat** .
+1. Z poskytnutého seznamu vyberte aplikaci, kterou chcete přidat, a pak vyberte **Přidat**.
 
 1. Aplikace se přidá do seznamu na stránce **aplikace** .
 

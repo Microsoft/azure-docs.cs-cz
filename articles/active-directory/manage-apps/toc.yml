@@ -158,6 +158,8 @@
           href: migration-resources.md
         - name: Migrace aplikace AD FS do Azure
           href: migrate-adfs-apps-to-azure.md
+        - name: Migrace ověřování aplikace na Azure Active Directory
+          href: migrate-application-authentication-to-azure-active-directory.md
         - name: Použití sestavy aktivity aplikací AD FS (Preview)
           href: migrate-adfs-application-activity.md
     - name: Konfigurace místních konektorů

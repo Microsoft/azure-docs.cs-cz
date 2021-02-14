@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 2da90a2c8950d85d8db2a414bbe63dfc7b94cf01
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4388c1a43cf958133356ed9d1ac80aec3ba0ce16
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601318"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093637"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Vytvoření & použití softwarových prostředí v Azure Machine Learning
 
@@ -398,7 +398,7 @@ service = Model.deploy(
 
 ## <a name="notebooks"></a>Notebooks
 
-Tento [článek](./how-to-run-jupyter-notebooks.md#add-new-kernels) poskytuje informace o tom, jak nainstalovat prostředí conda jako jádro v poznámkovém bloku.
+Tento [článek](./how-to-access-terminal.md#add-new-kernels) poskytuje informace o tom, jak nainstalovat prostředí conda jako jádro v poznámkovém bloku.
 
 [Nasazení modelu pomocí vlastního základního obrázku Docker](how-to-deploy-custom-docker-image.md) ukazuje, jak nasadit model pomocí vlastní základní image Docker.
 
