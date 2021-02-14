@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: procha
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f207509baba2499adf5d5d00df0ccd0503a25491
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 918dd929244c7177790a77bfff32589847073c70
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98665187"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104773"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Partneři Azure synapse Analytics pro integraci dat
 
@@ -52,7 +52,8 @@ Pokud chcete vytvořit řešení datového skladu pomocí vyhrazeného fondu SQL
 | ![TimeXtender](./media/sql-data-warehouse-partner-data-integration/timextender-logo.png) |**TimeXtender**<br>Centrum zjišťování TimeXtender pomáhá firmám vytvářet moderní datové podstaty tím, že poskytuje integrovanou platformu pro správu dat, která zrychluje dobu analýzy dat až na 10 časů. Nad rámec každodenní ETL a ELT poskytuje funkce pro přístup k datům, modelování dat a dodržování předpisů v jedné platformě. Centrum zjišťování poskytuje soudržné datové prostředky pro analýzu na úrovni cloudu. Umožňuje připojit a integrovat různá data sila, katalog, model, přesunutí a dokumentovat data pro analýzy a AI. | [Stránka produktu](https://www.timextender.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=timextender&page=1) |
 | ![Trifacta](./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png) |**Trifacta Wrangler**<br> Trifacta pomáhá jednotlivcům a organizacím prozkoumat a spojit dohromady nejrůznější data pro účely analýzy. Trifacta Wrangler je navržená tak, aby zpracovávala úlohy tahání dat, které potřebují podporovat škálovaná data a velký počet koncových uživatelů.|[Stránka produktu](https://www.trifacta.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/trifactainc1587522950142.trifactaazure?tab=Overview) |
 | ![WhereScape](./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png) |**Wherescape červená**<br> WhereScape RED je integrované vývojové prostředí (IDE), které poskytuje týmům nástroje pro automatizaci a zjednodušit tak pracovní postupy ETL. Integrované vývojové prostředí (IDE) poskytuje osvědčené postupy optimalizované nativní kód pro oblíbené datové cíle. WhereScape RED použijte k vyjmutí času pro vývoj, nasazení a provoz infrastruktury dat.|[Stránka produktu](https://www.wherescape.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/wherescapesoftware.wherescape-red?source=datamarket&tab=Overview) |
-| ![Xplenty](./media/sql-data-warehouse-partner-data-integration/xplenty-logo.png) |**Xplenty**<br> Xplenty ELT Platform vám umožňuje rychle a snadno připravit data pro analytické a produkční případy použití pomocí jednoduché cloudové služby. Xplenty Point & kliknutí a přetažením rozhraní & drop umožňuje integraci dat, zpracování a přípravu bez instalace, nasazení nebo udržování jakéhokoli softwaru. Připojte se k rozsáhlé sadě datových úložišť a SaaS aplikací, jako je Azure synapse, Azure Blob Storage a SQL Server. Xplenty také podporuje všechny webové služby, které jsou přístupné přes rozhraní REST API.|[Stránka produktu](https://www.xplenty.com/integrations/azure-synapse-analytics/ )<br> |
+| ![Xpert BI](./media/sql-data-warehouse-partner-data-integration/xpertbi-logo.png) |**Xpert BI**<br> Xpert BI pomáhá organizacím vytvářet a udržovat robustní a škálovatelnou datovou platformu v Azure rychleji prostřednictvím automatizace založené na metadatech. Rozšiřuje Azure synapse o osvědčené postupy a DataOps pro agilní vývoj dat pomocí integrovaných funkcí zásad správného řízení dat. Xpert BI vám umožní rychle testovat a přepínat mezi různými řešeními Azure, jako je Azure synapse, Azure Data Lake Storage a Azure SQL Database, protože se vaše firemní a analytické potřeby mění a roste.|[Stránka produktu](https://www.bi-builders.com/adding-automation-and-governance-to-azure-analytics/)<br> |
+| ![Xplenty](./media/sql-data-warehouse-partner-data-integration/xplenty-logo.png) |**Xplenty**<br> Xplenty ELT Platform vám umožňuje rychle a snadno připravit data pro analytické a produkční případy použití pomocí jednoduché cloudové služby. & Point Xplenty Select a přetáhněte Interface & drop umožňuje integraci dat, zpracování a přípravu bez instalace, nasazení nebo udržování jakéhokoli softwaru. Připojte se k rozsáhlé sadě datových úložišť a SaaS aplikací, jako je Azure synapse, Azure Blob Storage a SQL Server. Xplenty také podporuje všechny webové služby, které jsou přístupné přes rozhraní REST API.|[Stránka produktu](https://www.xplenty.com/integrations/azure-synapse-analytics/ )<br> |
 
 
 ## <a name="next-steps"></a>Další kroky

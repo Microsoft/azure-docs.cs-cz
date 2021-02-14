@@ -6,12 +6,12 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 3144633f76d1c4738f2323f1e047d6f32329909f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: df1f58418452ecafacddd013ab815ebca5cb8a35
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133238"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097547"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Řešení potíží a otázky a odpovědi pro Application Insights pro Java SDK
 
@@ -170,7 +170,7 @@ Za předpokladu, že jste [aplikaci nastavili pro Application Insights][java], k
 
 Ano, pokud váš server může prostřednictvím veřejného Internetu odesílat telemetrii na portál Application Insights.
 
-V bráně firewall možná budete muset otevřít porty TCP 80 a 443 pro odchozí provoz do dc.services.visualstudio.com a f5.services.visualstudio.com.
+Možná budete muset [v bráně firewall serveru otevřít některé Odchozí porty](./ip-addresses.md#outgoing-ports) , aby sada SDK mohla odesílat data na portál.
 
 ## <a name="data-retention"></a>Uchovávání dat
 **Jak dlouho se data na portálu uchovávají? Je zabezpečení?**

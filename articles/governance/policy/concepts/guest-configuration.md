@@ -3,12 +3,12 @@ title: Informace o tom, jak auditovat obsah virtuálních počítačů
 description: Přečtěte si, jak Azure Policy používá klienta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
 ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: c141169545379f1ac0dd18a97e85652f97b90e6f
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 5d1503680ea2ca7d0ff7c8adae19c05abfe441c0
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210116"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104803"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta ve službě Azure Policy
 
@@ -60,7 +60,7 @@ Klient konfigurace hosta kontroluje nový obsah každých 5 minut. Po přijetí 
 
 Definice zásad konfigurace hostů jsou zahrnuté do nových verzí. Starší verze operačních systémů, které jsou k dispozici v Azure Marketplace, jsou vyloučené, pokud není klient konfigurace hosta kompatibilní. Následující tabulka obsahuje seznam podporovaných operačních systémů pro Image Azure:
 
-|Publisher|Name|Verze|
+|Publisher|Název|Verze|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 – 18,04|
 |Credativ|Debian|8 a novější|
@@ -142,11 +142,15 @@ Při přiřazování definic, které začínají na _Konfigurovat_, musíte tak�
 
 Definice zásad auditu, které jsou k dispozici pro konfiguraci hosta, zahrnují typ prostředku **Microsoft. HybridCompute/počítače** . Všechny počítače připojené ke [službě Azure ARC pro servery](../../../azure-arc/servers/overview.md) , které jsou v oboru přiřazení zásad, jsou automaticky zahrnuté.
 
+## <a name="troubleshooting-guest-configuration"></a>Řešení potíží s konfigurací hosta
+
+Další informace o řešení potíží s konfigurací hostů najdete v tématu [řešení potíží s Azure Policy](../troubleshoot/general.md).
+
 ### <a name="multiple-assignments"></a>Více přiřazení
 
 Definice zásad konfigurace hostů momentálně podporují přiřazování stejného přiřazení hostů jenom jednou pro každý počítač, a to i v případě, že přiřazení zásady používá jiné parametry.
 
-## <a name="client-log-files"></a>Soubory protokolů klienta
+### <a name="client-log-files"></a>Soubory protokolů klienta
 
 Rozšíření konfigurace hosta zapisuje soubory protokolu do následujících umístění:
 
@@ -180,6 +184,15 @@ linesToIncludeAfterMatch=10
 logPath=/var/lib/GuestConfig/gc_agent_logs/gc_agent.log
 egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' $logPath | tail
 ```
+
+### <a name="client-files"></a>Soubory klienta
+
+Klient konfigurace hosta stáhne balíčky obsahu do počítače a extrahuje obsah.
+Chcete-li ověřit, jaký obsah byl stažen a uložen, zobrazte níže uvedená umístění složek.
+
+Windows: `c:\programdata\guestconfig\configurations`
+
+Linux: `/var/lib/guestconfig/configurations`
 
 ## <a name="guest-configuration-samples"></a>Ukázky konfigurace hosta
 

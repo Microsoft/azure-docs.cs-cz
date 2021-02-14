@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dfd0156907f18dcb7f38246993ddc4abcd508631
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 25d9d53b9bc597b5eb51586c594dd631609f476e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549384"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362144"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -84,6 +84,7 @@ V této části najdete dokumenty ke službě Microsoft Power BI Integration do 
 
 ## <a name="change-log"></a>Protokol změn
 
+- 02/11/2021: změny [vysoké dostupnosti IBM DB2 LUW na virtuálních počítačích Azure na serveru Red Hat Enterprise Linux](./high-availability-guide-rhel-ibm-db2-luw.md) pro změnu příkazů clusteru Pacemaker pro RHEL 8. x
 - 02/03/2021: Změna [Nastavení Pacemaker v RHEL v Azure](./high-availability-guide-rhel-pacemaker.md) na aktualizaci pcmk_host_map v příkazu stonith Create
 - 02/03/2021: Změna [Nastavení Pacemaker v SLES v Azure](./high-availability-guide-suse-pacemaker.md) pro přidání pcmk_host_map do příkazu stonith Create 
 - 02/03/2021: Další podrobnosti o nastaveních v/v Scheduleru pro SUSE v článku [SAP HANA konfigurace úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md)

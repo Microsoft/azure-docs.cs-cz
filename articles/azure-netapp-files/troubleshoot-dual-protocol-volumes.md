@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží se svazky s duálním protokolem pro Azure NetApp Files | Microsoft Docs
-description: Popisuje chybové zprávy a řešení, které vám můžou pomoct při řešení problémů s duálním protokolem pro Azure NetApp Files.
+title: Řešení potíží se svazky SMB nebo duálního protokolu pro Azure NetApp Files | Microsoft Docs
+description: Popisuje chybové zprávy a řešení, které vám můžou pomoct při řešení problémů s protokolem SMB nebo s duálním protokolem pro Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,30 +12,40 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 01/22/2021
+ms.date: 02/02/2021
 ms.author: b-juche
-ms.openlocfilehash: fb4233a87231dddb1e3cb2777ac2ef53a61f833e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 237fb514229f370fcba79133232e80a6a655048f
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98726611"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104412"
 ---
-# <a name="troubleshoot-dual-protocol-volumes"></a>Řešení potíží se svazky se dvěma protokoly
+# <a name="troubleshoot-smb-or-dual-protocol-volumes"></a>Řešení potíží se svazky SMB nebo Dual-Protocol
 
 Tento článek popisuje řešení chybových stavů, které můžete mít při vytváření nebo správě svazků s duálním protokolem.
 
-## <a name="error-conditions-and-resolutions"></a>Chybové stavy a řešení
+## <a name="errors-for-dual-protocol-volumes"></a>Chyby pro svazky s duálním protokolem
 
 |     Chybové stavy    |     Řešení    |
 |-|-|
 | Protokol LDAP over TLS je povolený a vytvoření svazku se dvěma protokoly se v případě chyby nepovede `This Active Directory has no Server root CA Certificate` .    |     Pokud k této chybě dojde při vytváření svazku se dvěma protokoly, ujistěte se, že se certifikát kořenové certifikační autority nahrál v účtu NetApp.    |
-| Vytvoření svazku s duálním protokolem se nezdařilo s chybou `Failed to validate LDAP configuration, try again after correcting LDAP configuration` .    |  Na serveru DNS může chybět záznam ukazatele (PTR) hostitelského počítače služby AD. Musíte vytvořit zónu zpětného vyhledávání na serveru DNS a pak přidat záznam PTR hostitelského počítače služby AD v této zóně zpětného vyhledávání. <br> Předpokládejme například, že IP adresa počítače AD je `1.1.1.1` , název hostitele počítače služby Active Directory (jak je nalezen pomocí `hostname` příkazu) `AD1` a název domény `contoso.com` .  Záznam PTR přidaný do zóny zpětného vyhledávání by měl být `1.1.1.1`  ->  `contoso.com` .   |
-| Vytvoření svazku s duálním protokolem se nezdařilo s chybou `Failed to create the Active Directory machine account \\\"TESTAD-C8DD\\\". Reason: Kerberos Error: Pre-authentication information was invalid Details: Error: Machine account creation procedure failed\\n [ 434] Loaded the preliminary configuration.\\n [ 537] Successfully connected to ip 1.1.1.1, port 88 using TCP\\n**[ 950] FAILURE` . |  Tato chyba označuje, že heslo služby AD není správné, pokud je služba Active Directory připojena k účtu NetApp. Aktualizujte připojení AD se správným heslem a zkuste to znovu. |
+| Vytvoření svazku s duálním protokolem se nezdařilo s chybou `Failed to validate LDAP configuration, try again after correcting LDAP configuration` .    |  Na serveru DNS může chybět záznam ukazatele (PTR) hostitelského počítače služby AD. Musíte vytvořit zónu zpětného vyhledávání na serveru DNS a pak přidat záznam PTR hostitelského počítače služby AD v této zóně zpětného vyhledávání. <br> Předpokládejme například, že IP adresa počítače AD je `10.X.X.X` , název hostitele počítače služby Active Directory (jak je nalezen pomocí `hostname` příkazu) `AD1` a název domény `contoso.com` .  Záznam PTR přidaný do zóny zpětného vyhledávání by měl být `10.X.X.X`  ->  `contoso.com` .   |
+| Vytvoření svazku s duálním protokolem se nezdařilo s chybou `Failed to create the Active Directory machine account \\\"TESTAD-C8DD\\\". Reason: Kerberos Error: Pre-authentication information was invalid Details: Error: Machine account creation procedure failed\\n [ 434] Loaded the preliminary configuration.\\n [ 537] Successfully connected to ip 10.X.X.X, port 88 using TCP\\n**[ 950] FAILURE` . |     Tato chyba označuje, že heslo služby AD není správné, pokud je služba Active Directory připojena k účtu NetApp. Aktualizujte připojení AD se správným heslem a zkuste to znovu. |
 | Vytvoření svazku s duálním protokolem se nezdařilo s chybou `Could not query DNS server. Verify that the network configuration is correct and that DNS servers are available` . |   Tato chyba označuje, že služba DNS není dostupná. Důvodem může být to, že IP adresa DNS je nesprávná nebo dojde k potížím se sítí. Zkontrolujte IP adresu DNS zadanou v připojení AD a ujistěte se, že je IP adresa správná. <br> Také se ujistěte, že je služba AD a svazek ve stejné oblasti a ve stejné virtuální síti. Pokud jsou v různých virtuální sítě, ujistěte se, že je mezi těmito dvěma virtuální sítěy navázán partnerský vztah virtuálních sítí.|
 | Při připojování svazku se dvěma protokoly došlo k chybě odepření oprávnění. | Svazek s duálním protokolem podporuje protokoly NFS i SMB.  Když se pokusíte o přístup k připojenému svazku v systému UNIX, systém se pokusí mapovat uživatele systému UNIX, který použijete pro uživatele systému Windows. Pokud není nalezeno žádné mapování, dojde k chybě "oprávnění zamítnuto". <br> Tato situace platí také při použití kořenového uživatele pro přístup. <br> Abyste se vyhnuli problému "oprávnění zamítnuto", ujistěte se, že systém Windows Active Directory zahrnuje `pcuser` před přístupem k přípojnému bodu. Pokud přidáte `pcuser` po zjištění problému "oprávnění zamítnuto", počkejte 24 hodin, než se položka mezipaměti před dalším pokusem o přístup vymaže. |
 
+## <a name="common-errors-for-smb-and-dual-protocol-volumes"></a>Běžné chyby pro svazky SMB a Dual-Protocol
+
+|     Chybové stavy    |     Řešení    |
+|-|-|
+| Vytvoření svazku SMB nebo Dual-Protocol se nepovede a dojde k následující chybě: <br> `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/DeployOperations for usage details.","details":[{"code":"InternalServerError", "message":"Error when creating - Could not query DNS server. Verify that the network configuration is correct and that DNS servers are available."}]}` | Tato chyba označuje, že služba DNS není dostupná. <br> Vezměte v úvahu následující řešení: <ul><li>Ověřte, jestli se přidává a že se svazek nasazuje ve stejné oblasti.</li> <li>Ověřte, jestli se přidá a jestli svazek používá stejnou virtuální síť. Pokud používají různé virtuální sítě, ujistěte se, že je virtuální sítě navzájem partnerských vztahů. Přečtěte si [pokyny pro Azure NetApp Files plánování sítě](azure-netapp-files-network-topologies.md). </li> <li>Server DNS může mít použité skupiny zabezpečení sítě (skupin zabezpečení sítě).  V takovém případě nepovoluje tok dat. V takovém případě otevřete skupin zabezpečení sítě pro DNS nebo AD a připojte se k různým portům. Požadavky na porty najdete v tématu [požadavky na připojení služby Active Directory](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections). </li></ul> <br>Pro Azure se dají použít stejná řešení. Azure přidat by se mělo nasadit ve stejné oblasti. Virtuální síť by měla být ve stejné oblasti nebo v partnerském vztahu s virtuální sítí použitou svazkem. | 
+| Vytvoření svazku SMB nebo Dual-Protocol se nepovede a dojde k následující chybě: <br> `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/DeployOperations for usage details.","details":[{"code":"InternalServerError", "message":"Error when creating - Failed to create the Active Directory machine account \"SMBTESTAD-C1C8\". Reason: Kerberos Error: Invalid credentials were given Details: Error: Machine account creation procedure failed\n [ 563] Loaded the preliminary configuration.\n**[ 670] FAILURE: Could not authenticate as 'test@contoso.com':\n** Unknown user (KRB5KDC_ERR_C_PRINCIPAL_UNKNOWN)\n. "}]}`  |  <ul><li>Ujistěte se, že zadané uživatelské jméno je správné. </li> <li>Ujistěte se, že je uživatel členem skupiny správců, která má oprávnění k vytváření účtů počítačů. </li> <li> Pokud používáte Azure, ujistěte se, že je uživatel součástí skupiny Azure AD `Azure AD DC Administrators` . </li></ul> | 
+| Vytvoření svazku SMB nebo Dual-Protocol se nepovede a dojde k následující chybě: <br> `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/DeployOperations for usage details.","details":[{"code":"InternalServerError", "message":"Error when creating - Failed to create the Active Directory machine account \"SMBTESTAD-A452\". Reason: Kerberos Error: Pre-authentication information was invalid Details: Error: Machine account creation procedure failed\n [ 567] Loaded the preliminary configuration.\n [ 671] Successfully connected to ip 10.X.X.X, port 88 using TCP\n**[ 1099] FAILURE: Could not authenticate as\n** 'user@contoso.com': CIFS server account password does\n** not match password stored in Active Directory\n** (KRB5KDC_ERR_PREAUTH_FAILED)\n. "}]}` | Ujistěte se, že heslo zadané pro připojení ke službě AD je správné. |
+| Vytvoření svazku SMB nebo Dual-Protocol se nepovede a dojde k následující chybě: `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/DeployOperations for usage details.","details":[{"code":"InternalServerError","message":"Error when creating - Failed to create the Active Directory machine account \"SMBTESTAD-D9A2\". Reason: SecD Error: ou not found Details: Error: Machine account creation procedure failed\n [ 561] Loaded the preliminary configuration.\n [ 665] Successfully connected to ip 10.X.X.X, port 88 using TCP\n [ 1039] Successfully connected to ip 10.x.x.x, port 389 using TCP\n**[ 1147] FAILURE: Specifed OU 'OU=AADDC Com' does not exist in\n** contoso.com\n. "}]}` | Ujistěte se, že je cesta k organizační jednotce určená pro připojení k připojení AD správná. Pokud používáte Azure, ujistěte se, že cesta k organizační jednotce je `OU=AADDC Computers` . |
+
 ## <a name="next-steps"></a>Další kroky  
 
+* [Vytvoření svazku SMB](azure-netapp-files-create-volumes-smb.md)
 * [Vytvoření svazku se dvěma protokoly](create-volumes-dual-protocol.md)
 * [Konfigurace klienta NFS pro Azure NetApp Files](configure-nfs-clients.md)

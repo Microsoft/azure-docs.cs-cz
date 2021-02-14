@@ -1,14 +1,14 @@
 ---
 title: Vykreslování aplikací
 description: Je možné použít jakékoli aplikace pro vykreslování Azure Batch. Azure Marketplace imagí virtuálních počítačů ale jsou k dispozici společně s předinstalovanými běžnými aplikacemi.
-ms.date: 02/01/2021
+ms.date: 02/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 4eeb87c866858f2f1733b81e3e2154f4521e94bc
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: e296ab09498b6bb7ee21e3d88c9c416c66368d69
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430024"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362229"
 ---
 # <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>Předinstalované aplikace na imagí virtuálních počítačů dávkového vykreslování
 
@@ -18,20 +18,15 @@ V případě potřeby jsou pro předinstalované aplikace pro vykreslování k d
 
 Některé aplikace podporují jenom Windows, ale většina je podporovaná v systémech Windows i Linux.
 
-## <a name="applications-on-centos-7-rendering-image"></a>Obrázek vykreslování aplikací v CentOS 7
+## <a name="applications-on-latest-centos-7-rendering-image"></a>Aplikace na nejnovější obrázek vykreslování CentOS 7
 
-Následující seznam se vztahuje na CentOS 7,6, verze vykreslování imagí 1.1.6.
+Následující seznam se vztahuje na obrázek vykreslování CentOS verze 1.1.7.
 
-* Autodesk Maya I/O 2017 Update 5 (verze 201708032230)
-* I/O Autodesk Maya 2018 Update 2 (vyjmout 201711281015)
-* Autodesk Maya I/O 2019 aktualizace 1
-* Autodesk Arnold pro Maya 2017 (Arnold Version 5.3.1.1) MtoA-3.2.1.1-2017
-* Autodesk Arnold pro Maya 2018 (Arnold Version 5.3.1.1) MtoA-3.2.1.1-2018
-* Autodesk Arnold pro Maya 2019 (Arnold Version 5.3.1.1) MtoA-3.2.1.1-2019
-* Chaos Group V-Ray pro Maya 2017 (verze 3.60.04)
-* Chaos Group V-Ray pro Maya 2018 (verze 3.60.04)
-* Blender (2.68)
-* Blend (2,8)
+* Autodesk Maya I/O 2020 aktualizace 4,6
+* Autodesk Arnold pro Maya 2020 (Arnold verze 6.2.0.0) MtoA-4.2.0-2020
+* Chaos Group V-Ray pro Maya 2020 (verze 5.00.21)
+* Blend (2,80)
+* AZ 10
 
 ## <a name="applications-on-latest-windows-server-rendering-image"></a>Aplikace na nejnovější imagi vykreslování Windows serveru
 
@@ -96,6 +91,21 @@ Následující seznam platí pro Windows Server 2016, verze vykreslování imag�
 
 > [!NOTE]
 > Chaos Group V-Ray pro 3ds Max 2019 (verze 4.10.01) přináší zásadní změny V-Ray. K použití předchozí verze (verze 3.60.02) použijte Windows Server 2016, uzly vykreslování verze 1.3.2.
+
+## <a name="applications-on-previous-centos-rendering-images"></a>Aplikace na předchozích CentOS vykreslování imagí
+
+Následující seznam se vztahuje na CentOS 7,6, verze vykreslování imagí 1.1.6.
+
+* Autodesk Maya I/O 2017 Update 5 (verze 201708032230)
+* I/O Autodesk Maya 2018 Update 2 (vyjmout 201711281015)
+* Autodesk Maya I/O 2019 aktualizace 1
+* Autodesk Arnold pro Maya 2017 (Arnold Version 5.3.1.1) MtoA-3.2.1.1-2017
+* Autodesk Arnold pro Maya 2018 (Arnold Version 5.3.1.1) MtoA-3.2.1.1-2018
+* Autodesk Arnold pro Maya 2019 (Arnold Version 5.3.1.1) MtoA-3.2.1.1-2019
+* Chaos Group V-Ray pro Maya 2017 (verze 3.60.04)
+* Chaos Group V-Ray pro Maya 2018 (verze 3.60.04)
+* Blender (2.68)
+* Blend (2,8)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: decf289614179718d5c3424f6d4482a5ce2c43e1
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 6241f6156b01c3c90f00578ae5416e4e77270930
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680719"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386794"
 ---
 # <a name="tutorial-migrate-from-google-maps-to-azure-maps"></a>Kurz: migrace z Google Maps na Azure Maps
 
@@ -28,7 +28,7 @@ Tento článek poskytuje přehledy o tom, jak migrovat webové a mobilní aplika
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
@@ -48,7 +48,7 @@ Tabulka poskytuje seznam Azure Mapsch funkcí, které odpovídají funkcím slu�
 | Rozhraní API služby REST           | ✓                                      |
 | Směry (směrování)        | ✓                                      |
 | Matice vzdáleností             | ✓                                      |
-| Zvýšení oprávnění                   | Plánováno                                |
+| Zvýšení oprávnění                   | ✓ (Preview)                            |
 | Geografické kódování (přesměrné/obrácené) | ✓                                      |
 | Geografická poloha                 | –                                    |
 | Nejbližší silnice               | ✓                                      |
@@ -97,7 +97,7 @@ Následuje plán migrace na vysoké úrovni.
 Pokud chcete vytvořit účet Azure Maps a získat přístup k platformě Azure Maps, postupujte podle těchto kroků:
 
 1. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
-2. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+2. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 3. Vytvořte [účet Azure Maps](./how-to-manage-account-keys.md). 
 4. [Získejte Azure Maps klíč předplatného](./how-to-manage-authentication.md#view-authentication-details) nebo nastavte Azure Active Directory ověřování pro rozšířené zabezpečení.
 

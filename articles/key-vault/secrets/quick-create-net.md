@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cf34512c6825c2c6ee6aea631c3361f159392f62
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: d6f1746eee101a1dcf030e980c8a6469147a0166
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97933638"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362195"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-net-sdk-v4"></a>Rychlý Start: Klientská knihovna Azure Key Vault tajných klíčů pro .NET (SDK v4)
 
@@ -206,7 +206,7 @@ Upravte konzolovou aplikaci .NET Core tak, aby spolupracovala s Key Vault, a to 
     
                 Console.WriteLine($"Retrieving your secret from {keyVaultName}.");
                 var secret = await client.GetSecretAsync(secretName);
-                Console.WriteLine($"Your secret is '{secret.Value}'.");
+                Console.WriteLine($"Your secret is '{secret.Value.Value}'.");
     
                 Console.Write($"Deleting your secret from {keyVaultName} ...");
                 DeleteSecretOperation operation = await client.StartDeleteSecretAsync(secretName);

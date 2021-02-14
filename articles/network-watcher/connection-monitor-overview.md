@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 0fa5e09dbe7c0a8cd45557d535353ea4a0a00b16
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: ccc2b6baba0e97320a5352013dbecfc121188457
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833095"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361022"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Monitorování připojení k síti pomocí monitorování připojení
 
@@ -74,11 +74,24 @@ Pravidla pro skupinu zabezpečení sítě (NSG) nebo bránu firewall můžou blo
 
 ### <a name="agents-for-on-premises-machines"></a>Agenti pro místní počítače
 
-Pokud chcete, aby monitorování připojení rozpoznalo vaše místní počítače jako zdroje pro monitorování, nainstalujte na počítače agenta Log Analytics. Pak povolte řešení Network Performance Monitor. Tito agenti jsou propojeni s Log Analytics pracovními prostory, takže musíte nastavit ID a primární klíč pracovního prostoru, aby mohli agenti spustit monitorování.
+Pokud chcete, aby monitorování připojení rozpoznalo vaše místní počítače jako zdroje pro monitorování, nainstalujte na počítače agenta Log Analytics.  Pak povolte řešení Network Performance Monitor. Tito agenti jsou propojeni s Log Analytics pracovními prostory, takže musíte nastavit ID a primární klíč pracovního prostoru, aby mohli agenti spustit monitorování.
 
 Chcete-li nainstalovat agenta Log Analytics pro počítače se systémem Windows, přečtěte si téma [Azure monitor rozšíření virtuálních počítačů pro systém Windows](../virtual-machines/extensions/oms-windows.md).
 
 Pokud cesta obsahuje brány firewall nebo síťová virtuální zařízení (síťová virtuální zařízení), ujistěte se, že cíl je dosažitelný.
+
+V případě počítačů s Windows otevřete tento port spuštěním skriptu [EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell bez parametrů v okně PowerShellu s oprávněními správce.
+
+U počítačů se systémem Linux je nutné změnit použití číslo_portu ručně. 
+* Přejděte na cestu:/var/opt/Microsoft/omsagent/npm_state. 
+* Otevřít soubor: npmdregistry
+* Změna hodnoty pro číslo portu ```“PortNumber:<port of your choice>”```
+
+ Upozorňujeme, že použitá čísla portů by se měla shodovat se všemi agenty používanými v pracovním prostoru. 
+
+Skript vytvoří klíče registru vyžadované řešením. Vytvoří také pravidla brány Windows Firewall, která agentům umožní vytvářet připojení TCP mezi sebou. Klíče registru vytvořené skriptem určují, jestli se mají protokolovat protokoly ladění a cesta k souboru protokolů. Skript také definuje port TCP agenta, který se používá pro komunikaci. Hodnoty těchto klíčů jsou automaticky nastaveny pomocí skriptu. Tyto klíče neměňte ručně. Ve výchozím nastavení je port otevřený 8084. Vlastní port můžete použít zadáním parametru číslo_portu ke skriptu. Použijte stejný port na všech počítačích, na kterých se skript spouští. [Přečtěte si další](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#network-requirements) informace o požadavcích na síť pro agenty Log Analytics.
+
+Skript nakonfiguruje pouze místní bránu firewall systému Windows. Pokud máte bránu firewall sítě, ujistěte se, že umožňuje provoz určený pro port TCP používaný Network Performance Monitor.
 
 ## <a name="enable-network-watcher-on-your-subscription"></a>Povolit Network Watcher v předplatném
 

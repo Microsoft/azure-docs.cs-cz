@@ -1,23 +1,18 @@
 ---
 title: Nástroj data pro přírůstkové kopírování nových a aktualizovaných souborů
 description: Vytvořte datovou továrnu Azure a pak pomocí nástroje Kopírování dat postupně načtěte nové soubory založené na LastModifiedDate.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: f94975b91a332e480a1b570c29f02040a1047f75
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f2f0b3e452b39cb81f435dbee4a3b0f524b0213d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555409"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361141"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Přírůstkové kopírování nových a změněných souborů na základě LastModifiedDate pomocí nástroje Kopírování dat
 
@@ -40,7 +35,7 @@ V tomto kurzu dokončíte tyto úlohy:
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* **Azure Storage účet** : použijte úložiště objektů BLOB pro zdrojová úložiště a úložiště dat jímky. Pokud účet Azure Storage nemáte, postupujte podle pokynů v části [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
+* **Azure Storage účet**: použijte úložiště objektů BLOB pro zdrojová úložiště a úložiště dat jímky. Pokud účet Azure Storage nemáte, postupujte podle pokynů v části [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
 
 ## <a name="create-two-containers-in-blob-storage"></a>Vytvoření dvou kontejnerů v úložišti objektů BLOB
 
@@ -52,7 +47,7 @@ Připravte úložiště objektů BLOB pro kurz provedením těchto kroků:
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V levém podokně vyberte **Vytvořit prostředek**. Vyberte **integrační**  >  **Data Factory** :
+1. V levém podokně vyberte **Vytvořit prostředek**. Vyberte **integrační**  >  **Data Factory**:
 
    ![Vyberte Data Factory](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -106,13 +101,13 @@ Připravte úložiště objektů BLOB pro kurz provedením těchto kroků:
 
     a. Vyberte  **vytvořit nové připojení** a přidejte připojení.
 
-    b. Z Galerie vyberte **Azure Blob Storage** a pak vyberte **pokračovat** :
+    b. Z Galerie vyberte **Azure Blob Storage** a pak vyberte **pokračovat**:
 
     ![Výběr služby Azure blog Storage](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-blob.png)
 
     c. Na stránce **Nová propojená služba (Azure Blob Storage)** vyberte svůj účet úložiště ze seznamu **název účtu úložiště** . Otestujte připojení a pak vyberte **vytvořit**.
 
-    d. Vyberte novou propojenou službu a potom vyberte **Další** :
+    d. Vyberte novou propojenou službu a potom vyberte **Další**:
 
    ![Výběr nové propojené služby](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-linkedservice.png)
 
@@ -124,7 +119,7 @@ Připravte úložiště objektů BLOB pro kurz provedením těchto kroků:
 
     b. V části **chování načítání souborů** vyberte **přírůstkové načtení: LastModifiedDate**.
 
-    c. Vyberte **binární kopii** a potom vyberte **Další** :
+    c. Vyberte **binární kopii** a potom vyberte **Další**:
 
      ![Výběr stránky vstupního souboru nebo složky](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/check-binary-copy.png)
 
@@ -132,7 +127,7 @@ Připravte úložiště objektů BLOB pro kurz provedením těchto kroků:
 
 6. Na stránce **Choose the output file or folder** (Zvolit výstupní soubor nebo složku) proveďte následující kroky:
 
-    a. Vyhledejte a vyberte **cílovou** složku a pak vyberte **zvolit** :
+    a. Vyhledejte a vyberte **cílovou** složku a pak vyberte **zvolit**:
 
     ![Vybrat stránku výstupního souboru nebo složky](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-output-file-folder.png)
 

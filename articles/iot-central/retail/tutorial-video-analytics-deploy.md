@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: f7f1952ab8c98553a447c3ed1955fb556ba48124
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: e524905aaeed54de6501eb6f024bf28dbab9c594
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831939"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362161"
 ---
 # <a name="tutorial-how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Kurz: jak nasadit aplikaci IoT Central pomocí šablony aplikace pro video Analytics – objekt a detekce pohybu
 
@@ -22,6 +22,13 @@ Přehled klíčových komponent aplikace *video Analytics – objekt a pohyb poh
 Následující video poskytuje návod, jak pomocí _šablony aplikace pro detekci video Analytics – objekt a pohyb_ nasadit řešení IoT Central:
 
 > [!VIDEO https://www.youtube.com/embed/Bo3FziU9bSA]
+
+V této sadě kurzů se dozvíte, jak:
+
+> [!div class="checklist"]
+> * Nasazení aplikace
+> * Nasazení instance IoT Edge, která se připojuje k aplikaci
+> * Monitorování a Správa aplikace
 
 ## <a name="prerequisites"></a>Požadavky
 

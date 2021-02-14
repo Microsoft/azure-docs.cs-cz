@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/19/2020
-ms.openlocfilehash: 0e7fcf51d9c663ca4a289f54972f00ef037cb323
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3da3b1694a16507203d7f1f1f6cb5df58dd54423
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542265"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366173"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Rychlý Start: použití šablony ARM k vytvoření serveru Azure Database for MySQL
 
@@ -70,30 +70,30 @@ Vyberte následující odkaz pro nasazení šablony Azure Database for MySQL ser
 
 Na stránce **nasadit Azure Database for MySQL se sítí VNET** :
 
-1. V poli **Skupina prostředků** vyberte **vytvořit novou** , zadejte název nové skupiny prostředků a vyberte **OK**.
+1. V poli **Skupina prostředků** vyberte **vytvořit novou**, zadejte název nové skupiny prostředků a vyberte **OK**.
 
 2. Pokud jste vytvořili novou skupinu prostředků, vyberte **umístění** pro skupinu prostředků a nový server.
 
-3. Zadejte **název serveru** , **přihlašovací jméno správce** a **přihlašovací heslo správce**.
+3. Zadejte **název serveru**, **přihlašovací jméno správce** a **přihlašovací heslo správce**.
 
     :::image type="content" source="./media/quickstart-create-mysql-server-database-using-arm-template/deploy-azure-database-for-mysql-with-vnet.png" alt-text="Nasazení Azure Database for MySQL s oknem VNet, šablonou Azure pro rychlý Start, Azure Portal":::
 
 4. Pokud chcete, změňte další výchozí nastavení:
 
-    * **Předplatné** : předplatné Azure, které chcete použít pro server.
-    * **Kapacita SKU** : kapacita Vcore, která může být *2* (výchozí), *4* , *8* , *16* , *32* nebo *64*.
-    * **Název SKU** : Předpona úrovně SKU, rodina SKU a kapacita skladové položky, které jsou spojeny podtržítky, například *B_Gen5_1* , *GP_Gen5_2* (výchozí) nebo *MO_Gen5_32*.
-    * **Velikost SKU MB** : velikost úložiště pro Azure Database for MySQL server (standardně *5120* ) v megabajtech.
-    * **Úroveň SKU** : vrstva nasazení, jako je například *Basic* , *GeneralPurpose* (výchozí), nebo *MemoryOptimized*.
-    * **Rodina SKU** : *COMPUTE GEN4 –* nebo *Gen5* (výchozí), která indikuje generování hardwaru pro nasazení serveru.
-    * **MySQL verze** : verze serveru MySQL, která se má nasadit, například *5,6* nebo *5,7* (výchozí nastavení).
-    * **Dny uchovávání záloh** : požadované období pro uchování geograficky redundantního zálohování ve dnech (výchozí *7* ).
-    * **Geograficky redundantní zálohování** : *povoleno* nebo *zakázáno* (výchozí nastavení), v závislosti na geograficky se zotavení po havárii (GEO-Dr).
-    * **Virtual Network název** : název virtuální sítě (výchozí *azure_mysql_vnet* ).
-    * **Název podsítě** : název podsítě (výchozí *azure_mysql_subnet* ).
-    * **Virtual Network název pravidla** : název pravidla virtuální sítě, které povoluje podsíť (výchozí *AllowSubnet* ).
-    * **Předpona adresy virtuální** sítě: Předpona adresy virtuální sítě (výchozí *10.0.0.0/16* ).
-    * **Předpona podsítě** : Předpona adresy pro podsíť (výchozí *10.0.0.0/16* ).
+    * **Předplatné**: předplatné Azure, které chcete použít pro server.
+    * **Kapacita SKU**: kapacita Vcore, která může být *2* (výchozí), *4*, *8*, *16*, *32* nebo *64*.
+    * **Název SKU**: Předpona úrovně SKU, rodina SKU a kapacita skladové položky, které jsou spojeny podtržítky, například *B_Gen5_1*, *GP_Gen5_2* (výchozí) nebo *MO_Gen5_32*.
+    * **Velikost SKU MB**: velikost úložiště pro Azure Database for MySQL server (standardně *5120*) v megabajtech.
+    * **Úroveň SKU**: vrstva nasazení, jako je například *Basic*, *GeneralPurpose* (výchozí), nebo *MemoryOptimized*.
+    * **Rodina SKU**: *COMPUTE GEN4 –* nebo *Gen5* (výchozí), která indikuje generování hardwaru pro nasazení serveru.
+    * **MySQL verze**: verze serveru MySQL, která se má nasadit, například *5,6* nebo *5,7* (výchozí nastavení).
+    * **Dny uchovávání záloh**: požadované období pro uchování geograficky redundantního zálohování ve dnech (výchozí *7*).
+    * **Geograficky redundantní zálohování**: *povoleno* nebo *zakázáno* (výchozí nastavení), v závislosti na geograficky se zotavení po havárii (GEO-Dr).
+    * **Virtual Network název**: název virtuální sítě (výchozí *azure_mysql_vnet*).
+    * **Název podsítě**: název podsítě (výchozí *azure_mysql_subnet*).
+    * **Virtual Network název pravidla**: název pravidla virtuální sítě, které povoluje podsíť (výchozí *AllowSubnet*).
+    * **Předpona adresy virtuální** sítě: Předpona adresy virtuální sítě (výchozí *10.0.0.0/16*).
+    * **Předpona podsítě**: Předpona adresy pro podsíť (výchozí *10.0.0.0/16*).
 
 5. Přečtěte si podmínky a ujednání a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními**.
 
@@ -180,6 +180,32 @@ az resource show --resource-group $resourcegroupName --name $serverName --resour
 ```
 
 ---
+
+## <a name="exporting-arm-template-from-the-portal"></a>Export šablony ARM z portálu
+[Šablonu ARM můžete exportovat](../azure-resource-manager/templates/export-template-portal.md) z Azure Portal. Existují dva způsoby, jak exportovat šablonu:
+
+- [Exportujte ze skupiny prostředků nebo prostředku](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource). Tato možnost vygeneruje novou šablonu z existujících prostředků. Vyexportovaná šablona je "snímek" aktuálního stavu skupiny prostředků. V rámci této skupiny prostředků můžete exportovat celou skupinu prostředků nebo konkrétní prostředky.
+- [Exportujte před nasazením nebo z historie](../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment). Tato možnost načte přesnou kopii šablony, která se používá k nasazení.
+
+Při exportování šablony ```"properties":{ }``` si všimněte, že v části prostředku serveru MySQL si všimnete, že ```administratorLogin``` a ```administratorLoginPassword``` z bezpečnostních důvodů nebudou zahrnuty. Tyto parametry **musíte** před nasazením šablony přidat do šablony, jinak se šablona nezdařila.
+
+```
+"resources": [
+    {
+      "type": "Microsoft.DBforMySQL/servers",
+      "apiVersion": "2017-12-01",
+      "name": "[parameters('servers_name')]",
+      "location": "southcentralus",
+      "sku": {
+                "name": "B_Gen5_1",
+                "tier": "Basic",
+                "family": "Gen5",
+                "capacity": 1
+            },
+      "properties": {
+        "administratorLogin": "[parameters('administratorLogin')]",
+        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

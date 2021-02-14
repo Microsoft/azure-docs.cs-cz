@@ -1,22 +1,18 @@
 ---
 title: Vytvoření datových sad v Azure Data Factory
 description: Naučte se, jak vytvořit datové sady v Azure Data Factory, s příklady, které používají vlastnosti, jako je posun a anchorDateTime.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9bf6ff2971de57338dc299d48e24f6ffebd4b6b5
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4b222b387dad1c078cfe2a063ed310ef463b192e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495935"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376832"
 ---
 # <a name="datasets-in-azure-data-factory-version-1"></a>Datové sady v Azure Data Factory (verze 1)
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -79,13 +75,13 @@ Následující tabulka obsahuje popis vlastností ve výše uvedeném formátu J
 
 | Vlastnost | Popis | Povinné | Výchozí |
 | --- | --- | --- | --- |
-| name |Název datové sady Pravidla pro pojmenování najdete v tématu [pravidla pro Pojmenovávání Azure Data Factory](data-factory-naming-rules.md) . |Yes |Není k dispozici |
-| typ |Typ datové sady Zadejte jeden z typů, které podporuje Data Factory (například: Azureblobu, AzureSqlTable). <br/><br/>Podrobnosti najdete v tématu [Typ datové sady](#Type). |Yes |Není k dispozici |
-| – struktura |Schéma datové sady<br/><br/>Podrobnosti najdete v tématu [Struktura datové sady](#Structure). |No |Není k dispozici |
-| typeProperties | Vlastnosti typu se u každého typu liší (například: Azure Blob, tabulka SQL Azure). Podrobnosti o podporovaných typech a jejich vlastnostech naleznete v tématu [Typ datové sady](#Type). |Yes |Není k dispozici |
+| name |Název datové sady Pravidla pro pojmenování najdete v tématu [pravidla pro Pojmenovávání Azure Data Factory](data-factory-naming-rules.md) . |Yes |NA |
+| typ |Typ datové sady Zadejte jeden z typů, které podporuje Data Factory (například: Azureblobu, AzureSqlTable). <br/><br/>Podrobnosti najdete v tématu [Typ datové sady](#Type). |Yes |NA |
+| – struktura |Schéma datové sady<br/><br/>Podrobnosti najdete v tématu [Struktura datové sady](#Structure). |No |NA |
+| typeProperties | Vlastnosti typu se u každého typu liší (například: Azure Blob, tabulka SQL Azure). Podrobnosti o podporovaných typech a jejich vlastnostech naleznete v tématu [Typ datové sady](#Type). |Yes |NA |
 | external | Příznak Boolean pro určení, zda je datová sada explicitně vytvořena kanálem datové továrny. Pokud vstupní datová sada pro aktivitu není vytvořena aktuálním kanálem, nastavte tento příznak na hodnotu true. Nastavte tento příznak na hodnotu true pro vstupní datovou sadu první aktivity v kanálu.  |No |false (nepravda) |
-| dostupnosti | Definuje okno zpracování (například každou hodinu nebo každý den) nebo model průřezu pro produkční datovou sadu. Každá jednotka dat spotřebované a vyráběná spuštěním aktivity se nazývá datový řez. Pokud je dostupnost výstupní datové sady nastavená na hodnotu denně (frekvence-den, interval-1), řez se vytvoří každý den. <br/><br/>Podrobnosti najdete v tématu Dostupnost datové sady. <br/><br/>Podrobnosti o modelu dělení datových sad naleznete v článku [plánování a provádění](data-factory-scheduling-and-execution.md) . |Yes |Není k dispozici |
-| policy |Definuje kritéria nebo podmínku, které musí řezy datové sady splňovat. <br/><br/>Podrobnosti najdete v části [zásady datové sady](#Policy) . |No |Není k dispozici |
+| dostupnosti | Definuje okno zpracování (například každou hodinu nebo každý den) nebo model průřezu pro produkční datovou sadu. Každá jednotka dat spotřebované a vyráběná spuštěním aktivity se nazývá datový řez. Pokud je dostupnost výstupní datové sady nastavená na hodnotu denně (frekvence-den, interval-1), řez se vytvoří každý den. <br/><br/>Podrobnosti najdete v tématu Dostupnost datové sady. <br/><br/>Podrobnosti o modelu dělení datových sad naleznete v článku [plánování a provádění](data-factory-scheduling-and-execution.md) . |Yes |NA |
+| policy |Definuje kritéria nebo podmínku, které musí řezy datové sady splňovat. <br/><br/>Podrobnosti najdete v části [zásady datové sady](#Policy) . |No |NA |
 
 ## <a name="dataset-example"></a>Příklad datové sady
 V následujícím příkladu datová sada představuje tabulku s názvem **myTable** v databázi SQL.
@@ -189,11 +185,11 @@ structure:
 
 Každý sloupec ve struktuře obsahuje následující vlastnosti:
 
-| Vlastnost | Popis | Povinné |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
 | name |Název sloupce |Yes |
 | typ |Datový typ sloupce  |No |
-| jazyková verze |Jazyková verze založená na technologii .NET, která se má použít, pokud je typ typu .NET: `Datetime` nebo `Datetimeoffset` . Výchozí formát je `en-us`. |No |
+| jazyková verze |. Jazyková verze založená na síti, která se má použít, pokud je typem typ .NET: `Datetime` nebo `Datetimeoffset` . Výchozí formát je `en-us`. |No |
 | formát |Řetězec formátu, který se má použít, pokud je typem typ .NET: `Datetime` nebo `Datetimeoffset` . |No |
 
 Následující pokyny vám pomohou určit, kdy zahrnout informace o struktuře a co zahrnout do části **Struktura** .
@@ -233,11 +229,11 @@ Následující tabulka obsahuje popis vlastností, které můžete použít v č
 
 | Vlastnost | Popis | Povinné | Výchozí |
 | --- | --- | --- | --- |
-| frequency |Určuje časovou jednotku pro produkci řezu datové sady.<br/><br/><b>Podporovaná frekvence</b>: minuta, hodina, den, týden, měsíc |Yes |Není k dispozici |
-| interval |Určuje násobitel pro frekvenci.<br/><br/>Frekvence x interval určuje, jak často se řez vytvoří. Například pokud potřebujete datovou sadu rozdělit každou hodinu, nastavte <b>četnost</b> na <b>hodinu</b>a <b>interval</b> na <b>1</b>.<br/><br/>Všimněte si, že pokud zadáte **frekvenci** jako **minutu**, měli byste nastavit interval na ne méně než 15. |Yes |Není k dispozici |
+| frequency |Určuje časovou jednotku pro produkci řezu datové sady.<br/><br/><b>Podporovaná frekvence</b>: minuta, hodina, den, týden, měsíc |Yes |NA |
+| interval |Určuje násobitel pro frekvenci.<br/><br/>Frekvence x interval určuje, jak často se řez vytvoří. Například pokud potřebujete datovou sadu rozdělit každou hodinu, nastavte <b>četnost</b> na <b>hodinu</b>a <b>interval</b> na <b>1</b>.<br/><br/>Všimněte si, že pokud zadáte **frekvenci** jako **minutu**, měli byste nastavit interval na ne méně než 15. |Yes |NA |
 | style |Určuje, zda má být řez vytvořen na začátku nebo konci intervalu.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Pokud je **frekvence** nastavená na hodnotu **month (měsíc**) a **styl** je nastaven na **EndOfInterval**, řez se vytvoří za poslední den v měsíci. Pokud je **styl** nastaven na **StartOfInterval**, řez se vytvoří první den v měsíci.<br/><br/>Pokud je **frekvence** nastavená na **Day** a **style** je nastavená na **EndOfInterval**, řez se vytvoří za poslední hodinu dne.<br/><br/>Pokud je **frekvence** nastavená na **Hour** a **style** je nastavená na **EndOfInterval**, řez se vytvoří na konci hodiny. Například pro řez v období 1 – 2 PM se řez vytvoří 2. |No |EndOfInterval |
 | anchorDateTime |Definuje absolutní pozici v čase, kterou Plánovač používá k výpočtu hranic řezu datové sady. <br/><br/>Všimněte si, že pokud tato vlastnost obsahuje části s daty, které jsou lépe podrobnější než zadaná frekvence, budou podrobnější části ignorovány. Například pokud je **interval** **každou hodinu** (frekvence: hodina a interval: 1) a **anchorDateTime** obsahuje **minuty a sekundy**, budou části minut a sekund **anchorDateTime** ignorovány. |No |01/01/0001 |
-| posun |Časový interval, podle kterého se posune začátek a konec všech řezů datové sady <br/><br/>Všimněte si, že pokud jsou zadány současně **anchorDateTime** i **offset** , je výsledkem kombinovaný posun. |No |Není k dispozici |
+| posun |Časový interval, podle kterého se posune začátek a konec všech řezů datové sady <br/><br/>Všimněte si, že pokud jsou zadány současně **anchorDateTime** i **offset** , je výsledkem kombinovaný posun. |No |NA |
 
 ### <a name="offset-example"></a>Příklad posunutí
 Ve výchozím nastavení se každý den ( `"frequency": "Day", "interval": 1` ) řezů začíná v rozmezí od 12:00 (půlnoc) koordinovaný světový čas (UTC). Pokud chcete, aby byl čas zahájení nastavený na hodnotu 6 času UTC, nastavte posun, jak je znázorněno v následujícím fragmentu kódu:
@@ -278,10 +274,10 @@ Následující datová sada je měsíčně a je vytvořena na 3. v každém měs
 Oddíl **Policy** v definici datové sady definuje kritéria nebo podmínku, kterou musí řezy datové sady splňovat.
 
 ### <a name="validation-policies"></a>Zásady ověřování
-| Název zásad | Popis | Použito pro | Vyžadováno | Výchozí |
+| Název zásad | Description | Použito pro | Vyžadováno | Výchozí |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB |Ověří, jestli data v **úložišti objektů BLOB v Azure** splňují požadavky na minimální velikost (v megabajtech). |Azure Blob Storage |No |Není k dispozici |
-| minimumRows |Ověří, jestli data v **databázi SQL Azure** nebo **tabulce Azure** obsahují minimální počet řádků. |<ul><li>Azure SQL Database</li><li>Tabulka Azure</li></ul> |No |Není k dispozici |
+| minimumSizeMB |Ověří, jestli data v **úložišti objektů BLOB v Azure** splňují požadavky na minimální velikost (v megabajtech). |Azure Blob Storage |No |NA |
+| minimumRows |Ověří, jestli data v **databázi SQL Azure** nebo **tabulce Azure** obsahují minimální počet řádků. |<ul><li>Azure SQL Database</li><li>Tabulka Azure</li></ul> |No |NA |
 
 #### <a name="examples"></a>Příklady
 **minimumSizeMB:**

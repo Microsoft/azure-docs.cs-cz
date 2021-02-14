@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 59ef34f9d6d42277d8e83bf4e0ebb8ee29096f52
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 6a1a2a2a7dac961e49e6ced38803649ebf5ad523
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99566766"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096850"
 ---
 # <a name="connect-your-apache-http-server-to-azure-sentinel"></a>Připojení serveru Apache HTTP k Azure Sentinel
 
@@ -37,7 +37,7 @@ Tento článek vysvětluje, jak připojit server Apache HTTP k Azure Sentinel. K
 
 ## <a name="configure-and-integrate-apache-http-server-logs-via-log-analytics-agent"></a>Konfigurace a integrace protokolů serveru Apache HTTP prostřednictvím agenta Log Analytics
 
-Nakonfigurujte umístění souborů protokolu serveru Apache HTTP pro přeposílání dat do pracovního prostoru Azure prostřednictvím agenta Log Analytics.
+Nakonfigurujte server Apache HTTP tak, aby odesílal soubory protokolu do pracovního prostoru Azure prostřednictvím agenta Log Analytics.
 Nakonfigurujte agenta Log Analytics pro čtení souborů protokolu serveru Apache HTTP.
 
 1. Postupujte podle pokynů v tématu https://httpd.apache.org/docs/2.4/logs.html Nastavení umístění souborů protokolu na serveru Apache HTTP.

@@ -54,8 +54,12 @@
       href: ensure-tags-exists-on-new-virtual-machines.md
     - name: E-mail při odpojení zařízení IoT Hub
       href: publish-iot-hub-events-to-logic-apps.md
-    - name: Reakce na události služby Service Bus
-      href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Zpracování událostí služby Service Bus přes Event Grid
+      items:
+        - name: Azure Logic Apps
+          href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+        - name: Azure Functions
+          href: ../service-bus-messaging/service-bus-to-event-grid-integration-function.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - name: Streamování dat z Event Hubs
       href: event-grid-event-hubs-integration.md
     - name: Směrování událostí Media Services
@@ -262,14 +266,18 @@
       items:
         - name: Zabezpečené publikování událostí prostřednictvím privátního propojení
           href: configure-private-endpoints.md
+        - name: Doručení událostí pomocí spravované identity
+          href: managed-service-identity.md
+        - name: Zabezpečené doručování událostí prostřednictvím privátního odkazu
+          href: consume-private-endpoints.md
         - name: Konfigurace brány firewall protokolu P
           href: configure-firewall.md
         - name: Zabezpečený webhook s využitím Azure Active Directory
           href: secure-webhook-delivery.md
-        - name: 'Doručování událostí, spravovaná identita a privátní propojení'
-          href: managed-service-identity.md
     - name: Řešení potíží
       items:
+        - name: Řešení potíží s Event Grid
+          href: troubleshoot-issues.md
         - name: Povolení diagnostických protokolů
           href: enable-diagnostic-logs-topic.md
         - name: Řešení chyb

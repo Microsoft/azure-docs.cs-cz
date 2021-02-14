@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 01/18/2021
+ms.date: 02/09/2021
 ms.author: chmutali
-ms.openlocfilehash: f260bca196839a091ae7d12be6d5f85912bf92db
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2b1a43ee6b13d32c0eaed92538cf9c25405e061b
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255980"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104327"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>Jak se Azure Active Directory zřizování integruje s Workday
 
@@ -448,6 +448,21 @@ Výše uvedené datové sady nejsou ve výchozím nastavení zahrnuty. Načtení
 Řekněme, že chcete načíst *zřizovací skupiny* přiřazené pracovnímu procesu. Tyto informace jsou k dispozici jako součást sady *dat zřizování účtu* . Pokud chcete tuto datovou sadu získat jako součást odpovědi *Get_Workers* , použijte následující cestu XPath: 
 
 `wd:Worker/wd:Worker_Data/wd:Account_Provisioning_Data/wd:Provisioning_Group_Assignment_Data[wd:Status='Assigned']/wd:Provisioning_Group/text()`
+
+## <a name="handling-different-hr-scenarios"></a>Zpracování různých scénářů pro personální oddělení
+
+### <a name="retrieving-international-job-assignments-and-secondary-job-details"></a>Načítání přiřazení mezinárodní úlohy a podrobností sekundární úlohy
+
+Ve výchozím nastavení konektor Workday načte atributy přidružené k primární úloze pracovního procesu. Konektor také podporuje načítání *dalších dat úlohy* přidružených k mezinárodním přiřazením úloh nebo k sekundárním úlohám. 
+
+Pomocí následujících kroků načtěte atributy přidružené k mezinárodním přiřazením úloh: 
+
+1. Nastavení adresy URL pro připojení k pracovní den používá rozhraní API webové služby Workday verze 30,0 nebo vyšší. Proto nastavte [správné hodnoty XPath](workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30) v aplikaci pro zřizování Workday. 
+1. Použijte selektor `@wd:Primary_Job=0` na `Worker_Job_Data` uzlu pro načtení správného atributu. 
+   * **Příklad 1:** Získání `SecondaryBusinessTitle` Použití XPath `wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Worker_Job_Data[@wd:Primary_Job=0]/wd:Position_Data/wd:Business_Title/text()`
+   * **Příklad 2:** Získání `SecondaryBusinessLocation` Použití XPath `wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Worker_Job_Data[@wd:Primary_Job=0]/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Location_Reference/@wd:Descriptor`
+
+ 
 
 ## <a name="next-steps"></a>Další kroky
 

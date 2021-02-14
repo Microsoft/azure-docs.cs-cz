@@ -1,18 +1,17 @@
 ---
 title: Řešení potíží s místním prostředím Integration runtime v Azure Data Factory
 description: Přečtěte si, jak řešit problémy s místním hostováním prostředí Integration runtime v Azure Data Factory.
-services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: 3735d7b21faf62905ed4c06dbef80c9737e7329e
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2cb0e0870b32270340e37d54dc54a43b22ee014a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551072"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376458"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním prostředím Integration Runtime
 
@@ -83,8 +82,8 @@ Příklad scénáře: hodnota maximální počet souběžných úloh je aktuáln
 Limit počtu souběžných úloh závisí na logickém jádru a paměti počítače. Zkuste hodnotu upravit směrem dolů k hodnotě, například 24, a pak výsledek zobrazení výsledku.
 
 > [!TIP] 
-> - Pokud se chcete dozvědět víc o počtu logických jader a určit počet logických hodnot v počítači, podívejte se na [čtyři způsoby, jak najít počet jader v procesoru ve Windows 10](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/).
-> - Pokud se chcete dozvědět, jak vypočítat matematický protokol, Projděte si [kalkulačku logaritmus](https://www.rapidtables.com/calc/math/Log_Calculator.html).
+> -    Pokud se chcete dozvědět víc o počtu logických jader a určit počet logických hodnot v počítači, podívejte se na [čtyři způsoby, jak najít počet jader v procesoru ve Windows 10](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/).
+> -    Pokud se chcete dozvědět, jak vypočítat matematický protokol, Projděte si [kalkulačku logaritmus](https://www.rapidtables.com/calc/math/Log_Calculator.html).
 
 
 ### <a name="self-hosted-ir-high-availability-ha-ssl-certificate-issue"></a>Problém certifikátu SSL pro místní hostování s vysokou dostupností (HA)

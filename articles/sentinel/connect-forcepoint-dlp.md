@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
-ms.openlocfilehash: 3bdb9d2b23ce05929ba5612e0c6a03fe1aab05de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62ed3915dcaf596d144a2f59817626cdf8ec47e5
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77588242"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092770"
 ---
 # <a name="connect-your-forcepoint-dlp-to-azure-sentinel"></a>Připojení ochrany před únikem informací z Forcepoint k Azure Sentinel
 
@@ -38,7 +38,7 @@ Nakonfigurujte ochranu před únikem informací Forcepoint pro přeposílání d
 
 ## <a name="find-your-data"></a>Hledání dat
 
-Po nastavení konektoru Forcepoint pro ochranu před únikem informací se data zobrazí v Log Analytics **ForcepointDLPEvents_CL**CustomLogs.
+Po nastavení konektoru Forcepoint pro ochranu před únikem informací se data zobrazí v Log Analytics **ForcepointDLPEvents_CL** CustomLogs.
 
 
 Pokud chcete použít příslušné schéma v Log Analytics pro Forcepoint DLP, vyhledejte **ForcepointDLPEvents_CL**.

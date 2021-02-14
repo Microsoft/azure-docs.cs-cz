@@ -5,20 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/16/2020
+ms.date: 02/10/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b8a61586acd888301350277d924f3d4fe176b4c8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 91dc6ba0bcd455aefe9de2efdff2feb20938152d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148210"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376377"
 ---
 ### <a name="step-1-navigate-to-the-virtual-network-gateway"></a>Krok 1: přechod na bránu virtuální sítě
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na **všechny prostředky**. 
-2. Chcete-li otevřít stránku brány virtuální sítě, přejděte k bráně virtuální sítě, kterou chcete odstranit, a klikněte na ni.
+2. Pokud chcete otevřít stránku brány virtuální sítě, přejděte k bráně virtuální sítě a kliknutím ji vyberte. 
 
 ### <a name="step-2-delete-connections"></a>Krok 2: odstranění připojení
 
