@@ -1,23 +1,19 @@
 ---
 title: Vytvoření prostředí Azure Integration runtime v Azure Data Factory
 description: Naučte se vytvářet prostředí Azure Integration runtime v Azure Data Factory, které se používá ke kopírování dat a odesílání transformačních aktivit.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/09/2020
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.openlocfilehash: 97f3a8f79e503b8870baf67ee982b0091d926b1e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ecf2a74a16234084fbac4d1c26157d1703b56a13
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895320"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373058"
 ---
-# <a name="how-to-create-and-configure-azure-integration-runtime"></a>Jak vytvořit a nakonfigurovat Azure Integration Runtime
+# <a name="how-to-create-and-configure-azure-integration-runtime"></a>Vytvoření a konfigurace prostředí Azure Integration Runtime
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Integration Runtime (IR) je výpočetní infrastruktura, kterou používá Azure Data Factory k tomu, aby poskytovala možnosti integrace dat napříč různými síťovými prostředími. Další informace o technologii IR naleznete v tématu [Integration runtime](concepts-integration-runtime.md).
@@ -41,7 +37,7 @@ Integration Runtime lze vytvořit pomocí rutiny prostředí PowerShell **set-Az
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -Name "MySampleAzureIR" -ResourceGroupName "ADFV2SampleRG" -Type Managed -Location "West Europe"
 ```  
-Pro Azure IR musí být typ nastavený na **spravované** . Nemusíte zadávat podrobné informace o výpočetním prostředí, protože je plně spravovaná elastická v cloudu. Určete výpočetní údaje, jako je velikost uzlu a počet uzlů, když chcete vytvořit Azure-SSIS IR. Další informace najdete v tématu [Vytvoření a konfigurace Azure-SSIS IR](create-azure-ssis-integration-runtime.md).
+Pro Azure IR musí být typ nastavený na **spravované**. Nemusíte zadávat podrobné informace o výpočetním prostředí, protože je plně spravovaná elastická v cloudu. Určete výpočetní údaje, jako je velikost uzlu a počet uzlů, když chcete vytvořit Azure-SSIS IR. Další informace najdete v tématu [Vytvoření a konfigurace Azure-SSIS IR](create-azure-ssis-integration-runtime.md).
 
 Existující Azure IR můžete nakonfigurovat tak, aby změnila umístění pomocí rutiny Set-AzDataFactoryV2IntegrationRuntime PowerShellu. Další informace o umístění Azure IR najdete v tématu [Úvod do prostředí Integration runtime](concepts-integration-runtime.md).
 
@@ -52,16 +48,16 @@ Pomocí následujících kroků můžete vytvořit Azure IR pomocí uživatelsk�
 
    ![Tlačítko Správa domovské stránky](media/doc-common-process/get-started-page-manage-button.png)
 
-1. V levém podokně vyberte **modul runtime integrace** a pak vyberte **+ Nový** .
+1. V levém podokně vyberte **modul runtime integrace** a pak vyberte **+ Nový**.
 
    ![Snímek obrazovky, který zvýrazní prostředí Integration runtime v levém podokně a tlačítko + Nový.](media/doc-common-process/manage-new-integration-runtime.png)
 
-1. Na stránce **instalace prostředí Integration runtime** vyberte **Azure,** v místním prostředí a pak vyberte **pokračovat** . 
+1. Na stránce **instalace prostředí Integration runtime** vyberte **Azure,** v místním prostředí a pak vyberte **pokračovat**. 
 
-1. Na následující stránce vyberte **Azure** a vytvořte Azure IR a pak vyberte **pokračovat** .
+1. Na následující stránce vyberte **Azure** a vytvořte Azure IR a pak vyberte **pokračovat**.
    ![Vytvoření prostředí Integration Runtime](media/create-azure-integration-runtime/new-azure-integration-runtime.png)
 
-1. Zadejte název pro Azure IR a vyberte **vytvořit** .
+1. Zadejte název pro Azure IR a vyberte **vytvořit**.
    ![Vytvoření Azure IR](media/create-azure-integration-runtime/create-azure-integration-runtime.png)
 
 1. Po dokončení vytváření se zobrazí místní oznámení. Na stránce **Integration runtime** se ujistěte, že se v seznamu zobrazuje nově vytvořený IR.

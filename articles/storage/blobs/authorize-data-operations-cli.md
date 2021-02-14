@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/13/2020
+ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 060bfb6c88bbed8ba12c5b5ebfd2e9617f5abfb2
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 06b37e8b25d932115384124a45156c801fb9708f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637374"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361668"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-with-azure-cli"></a>Volba způsobu autorizace přístupu k datům objektů BLOB pomocí Azure CLI
 
@@ -33,6 +33,9 @@ Příkazy rozhraní příkazového řádku Azure pro čtení a zápis dat objekt
 - Nastavte `--auth-mode` parametr na starší `key` hodnotu pro pokus o načtení přístupového klíče účtu, který se má použít pro autorizaci. Pokud parametr vynecháte `--auth-mode` , Azure CLI se taky pokusí načíst přístupový klíč.
 
 Pokud chcete použít `--auth-mode` parametr, ujistěte se, že máte nainstalovanou verzi Azure CLI 2.0.46 nebo novější. Spusťte `az --version` a ověřte nainstalovanou verzi.
+
+> [!NOTE]
+> Když je účet úložiště zamčený s Azure Resource Manager zámek **jen pro čtení** , není pro tento účet úložiště povolená operace se [seznamem klíčů](/rest/api/storagerp/storageaccounts/listkeys) . **Seznam klíčů** je operace post a všechny operace post jsou znemožněny, když je pro tento účet nakonfigurován zámek **ReadOnly** . Z tohoto důvodu platí, že pokud je účet uzamčený pomocí zámku **jen pro čtení** , uživatelé, kteří ještě nemají klíče účtu, musí použít přihlašovací údaje Azure AD pro přístup k datům objektu BLOB.
 
 > [!IMPORTANT]
 > Pokud parametr vynecháte `--auth-mode` nebo ho nastavíte na `key` , pokusí se Azure CLI použít přístupový klíč k účtu pro autorizaci. V takovém případě společnost Microsoft doporučuje zadat přístupový klíč buď v příkazu, nebo v proměnné prostředí **AZURE_STORAGE_KEY** . Další informace o proměnných prostředí naleznete v části s názvem [nastavení proměnných prostředí pro parametry autorizace](#set-environment-variables-for-authorization-parameters).
@@ -83,6 +86,9 @@ az storage container create \
     --auth-mode key
 ```
 
+> [!IMPORTANT]
+> Když je účet úložiště zamčený s Azure Resource Manager zámek **jen pro čtení** , není pro tento účet úložiště povolená operace se [seznamem klíčů](/rest/api/storagerp/storageaccounts/listkeys) . **Seznam klíčů** je operace post a všechny operace post jsou znemožněny, když je pro tento účet nakonfigurován zámek **ReadOnly** . Z tohoto důvodu, když je účet uzamčený pomocí zámku **jen pro čtení** , musí uživatelé přistupovat k datům pomocí přihlašovacích údajů Azure AD.
+
 ## <a name="authorize-with-a-sas-token"></a>Autorizovat pomocí tokenu SAS
 
 Máte-li token SAS, můžete volat operace s daty, které jsou povoleny pomocí SAS. Následující příklad ukazuje, jak vytvořit kontejner pomocí tokenu SAS:
@@ -98,7 +104,7 @@ az storage container create \
 
 Můžete zadat parametry autorizace v proměnných prostředí, aby se zabránilo jejich zahrnutí při každém volání operace Azure Storage data. Následující tabulka popisuje dostupné proměnné prostředí.
 
-| Proměnná prostředí                  | Popis                                                                                                                                                                                                                                                                                                                                                                     |
+| Proměnná prostředí                  | Description                                                                                                                                                                                                                                                                                                                                                                     |
 |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    AZURE_STORAGE_ACCOUNT              |    Název účtu úložiště. Tato proměnná by se měla používat ve spojení s klíčem účtu úložiště nebo tokenem SAS. Pokud žádná není, Azure CLI se pokusí získat přístupový klíč účtu úložiště pomocí ověřeného účtu Azure AD. Pokud se spustí velký počet příkazů najednou, může být dosaženo limitu omezování Azure Storage poskytovatele prostředků. Další informace o omezeních poskytovatele prostředků najdete v tématu [škálovatelnost a výkonnostní cíle pro poskytovatele prostředků Azure Storage](../common/scalability-targets-resource-provider.md).             |
 |    AZURE_STORAGE_KEY                  |    Klíč účtu úložiště. Tato proměnná se musí používat ve spojení s názvem účtu úložiště.                                                                                                                                                                                                                                                                          |

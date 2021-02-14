@@ -9,12 +9,12 @@ metadata:
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: 10c606ab86a577f22167197138e56a14d176b88a
-  ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
-  ms.translationtype: HT
+  ms.openlocfilehash: 65b2c25bde616f8a2bbc9abf6439871d288306b9
+  ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 01/19/2021
-  ms.locfileid: "98570129"
+  ms.lasthandoff: 02/14/2021
+  ms.locfileid: "100363028"
 landingContent:
 - title: Informace o službě Azure Functions
   linkLists:
@@ -128,14 +128,22 @@ landingContent:
       url: functions-how-to-azure-devops.md
     - text: Nasazení s využitím modulu plug-in Jenkinse
       url: /azure/developer/jenkins/deploy-to-azure-functions
-- title: Výkon a sledování
+- title: Osvědčené postupy pro výkon a sledování
   linkLists:
   - linkListType: concept
     links:
+    - text: Výkon a spolehlivost
+      url: functions-best-practices.md
+    - text: Správa připojení
+      url: manage-connections.md
+    - text: Aspekty úložišť
+      url: storage-considerations.md
+    - text: Zpracování chyb a opakované pokusy funkcí
+      url: functions-bindings-error-pages.md
+    - text: Zabezpečení
+      url: security-concepts.md
     - text: Monitorování funkcí
       url: functions-monitoring.md
-    - text: Optimalizace výkonu
-      url: functions-best-practices.md
     - text: Aspekty sítí
       url: functions-networking-options.md
   - linkListType: how-to-guide

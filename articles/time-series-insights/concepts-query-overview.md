@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: bf743bf1997a339664a6da2e5c02f1bcc1deea26
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b1b055fa7f083bd8bccda16498e2894d5d67eace
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736747"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374129"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Dotazy na data z Azure Time Series Insights Gen2
 
@@ -54,13 +54,12 @@ Většina těchto rozhraní API podporuje operaci dávkového spouštění, aby 
 
 ## <a name="time-series-query-tsq-apis"></a>Rozhraní API pro Time Series Query (TSQ)
 
-Tato rozhraní API jsou v našem řešení úložiště s více vrstvami k dispozici v obou úložištích (teplé i studené). Parametry adresy URL dotazu slouží k určení [typu úložiště](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters) , na kterém by se měl dotaz spouštět:
+Tato rozhraní API jsou v našem řešení úložiště s více vrstvami k dispozici v obou úložištích (teplé i studené). 
 
 * [Získat API pro události](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents): umožňuje dotazování a načítání nezpracovaných událostí a přidružených časových razítek událostí, protože se zaznamenávají do Azure Time Series Insights Gen2 od poskytovatele zdroje. Toto rozhraní API umožňuje načtení nezpracovaných událostí pro dané ID časové řady a rozsah hledání. Toto rozhraní API podporuje stránkování, které načte datovou sadu kompletních odpovědí pro vybraný vstup.
 
   > [!IMPORTANT]
-
-  > * Jako součást [nadcházejících změn pro pravidla sloučení a uvozovací znaky JSON](./ingestion-rules-update.md)budou pole uložená jako **dynamický** typ. Vlastnosti datové části uložené jako tento typ jsou **přístupné jenom prostřednictvím rozhraní API pro získání událostí**.
+  > Jako součást [nadcházejících změn pro pravidla sloučení a uvozovací znaky JSON](./ingestion-rules-update.md)budou pole uložená jako **dynamický** typ. Vlastnosti datové části uložené jako tento typ jsou **přístupné jenom prostřednictvím rozhraní API pro získání událostí**.
 
 * [Získat rozhraní API pro řady](/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries): umožňuje dotazování a načítání vypočítaných hodnot a přidružených časových razítek událostí pomocí výpočtů definovaných proměnnými u nezpracovaných událostí. Tyto proměnné lze definovat buď v modelu časové řady, nebo v zadaném vloženém dotazu. Toto rozhraní API podporuje stránkování, které načte datovou sadu kompletních odpovědí pro vybraný vstup.
 
@@ -69,6 +68,16 @@ Tato rozhraní API jsou v našem řešení úložiště s více vrstvami k dispo
   V případě zadaného rozsahu hledání a intervalu vrátí toto rozhraní API agregovanou odezvu na jeden interval na proměnnou pro ID časové řady. Počet intervalů v datové sadě odpovědí se počítá vynásobením epocha (počet milisekund, které uplynuly od operačního systému UNIX epocha-LED 1. ledna 1970), a rozdělením značek podle velikosti rozsahu intervalu určeného v dotazu.
 
   Časová razítka vrácená v sadě odpovědí jsou levé hranice intervalu, nikoli vzorky událostí z intervalu.
+
+
+### <a name="selecting-store-type"></a>Výběr typu úložiště
+
+Výše uvedená rozhraní API lze spustit pouze proti jednomu z těchto dvou typů úložiště (studená nebo teplá) v rámci jednoho volání. Parametry adresy URL dotazu se používají k určení [typu úložiště](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters) , ve kterém se má dotaz spustit. 
+
+Pokud není zadán žádný parametr, dotaz bude ve výchozím nastavení spuštěn v chladírenském skladu. Pokud dotaz pokrývá časový rozsah, který se překrývá s studeným i teplým obchodem, doporučuje se směrovat dotaz do studeného úložiště pro dosažení optimálního prostředí, protože úložiště tepla bude obsahovat pouze částečná data. 
+
+[Azure Time Series Insights Explorer](./concepts-ux-panels.md) a [konektor Power BI](./how-to-connect-power-bi.md) volají volání výše uvedených rozhraní API a automaticky vybere správný parametr storeType, kde je to relevantní. 
+
 
 ## <a name="next-steps"></a>Další kroky
 

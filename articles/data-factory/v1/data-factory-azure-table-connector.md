@@ -1,23 +1,18 @@
 ---
 title: Přesun dat do a z tabulky Azure
 description: Přečtěte si, jak přesunout data do a z Azure Table Storage pomocí Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 07b046b1-7884-4e57-a613-337292416319
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1d7802a3fe4fb904aad7fd9257edbf8b10efe127
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: cc8e0272dc690ed541883ae943c118cbbe2f1854
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637424"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392115"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Přesun dat do a z tabulky Azure pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -36,9 +31,9 @@ Data z libovolného podporovaného zdrojového úložiště dat můžete zkopír
 ## <a name="getting-started"></a>Začínáme
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data do nebo z Azure Table Storage pomocí různých nástrojů/rozhraní API.
 
-Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním** . Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
+Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 
-K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager template** , **.NET API** a **REST API** . Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky: 
 
@@ -79,10 +74,10 @@ Vlastnosti, které jsou k dispozici v části typeProperties aktivity, se liší
 
 **AzureTableSource** podporuje následující vlastnosti v části typeProperties:
 
-| Vlastnost | Popis | Povolené hodnoty | Povinné |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| azureTableSourceQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu tabulky Azure Podívejte se na příklady v následující části. |Ne. Když je zadán tableName bez azureTableSourceQuery, zkopírují se všechny záznamy z tabulky do cílového umístění. Pokud je zadána také azureTableSourceQuery, záznamy z tabulky, které splňují dotaz, se zkopírují do cíle. |
-| azureTableSourceIgnoreTableNotFound |Určuje, zda požití neexistuje výjimka tabulky. |TRUE<br/>FALSE |Ne |
+| azureTableSourceQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu tabulky Azure Podívejte se na příklady v následující části. |No. Když je zadán tableName bez azureTableSourceQuery, zkopírují se všechny záznamy z tabulky do cílového umístění. Pokud je zadána také azureTableSourceQuery, záznamy z tabulky, které splňují dotaz, se zkopírují do cíle. |
+| azureTableSourceIgnoreTableNotFound |Určuje, zda požití neexistuje výjimka tabulky. |TRUE<br/>FALSE |No |
 
 ### <a name="azuretablesourcequery-examples"></a>Příklady azureTableSourceQuery
 Pokud je sloupec tabulky Azure typu řetězec:
@@ -99,12 +94,12 @@ Pokud je sloupec tabulky Azure typu DateTime:
 
 **AzureTableSink** podporuje následující vlastnosti v části typeProperties:
 
-| Vlastnost | Popis | Povolené hodnoty | Povinné |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| azureTableDefaultPartitionKeyValue |Výchozí hodnota klíče oddílu, kterou může jímka použít. |Řetězcová hodnota. |Ne |
-| azureTablePartitionKeyName |Zadejte název sloupce, jehož hodnoty se používají jako klíče oddílů. Pokud není zadaný, použije se jako klíč oddílu AzureTableDefaultPartitionKeyValue. |Název sloupce |Ne |
-| azureTableRowKeyName |Zadejte název sloupce, jehož hodnoty sloupce jsou používány jako klíč řádku. Není-li tento parametr zadán, použijte pro každý řádek identifikátor GUID. |Název sloupce |Ne |
-| azureTableInsertType |Režim pro vložení dat do tabulky Azure.<br/><br/>Tato vlastnost určuje, zda mají být existující řádky ve výstupní tabulce se shodnými klíči oddílů a řádky nahrazeny nebo sloučeny. <br/><br/>Další informace o tom, jak tato nastavení (sloučit a nahradit) fungují, najdete v tématech [vložení nebo sloučení entit](/rest/api/storageservices/Insert-Or-Merge-Entity) a [vložení nebo nahrazení entit](/rest/api/storageservices/Insert-Or-Replace-Entity) . <br/><br> Toto nastavení se vztahuje na úrovni řádků, nikoli na úrovni tabulky a ani možnost neodstraní řádky ve výstupní tabulce, které ve vstupu neexistují. |sloučení (výchozí)<br/>náhrady |Ne |
+| azureTableDefaultPartitionKeyValue |Výchozí hodnota klíče oddílu, kterou může jímka použít. |Řetězcová hodnota. |No |
+| azureTablePartitionKeyName |Zadejte název sloupce, jehož hodnoty se používají jako klíče oddílů. Pokud není zadaný, použije se jako klíč oddílu AzureTableDefaultPartitionKeyValue. |Název sloupce |No |
+| azureTableRowKeyName |Zadejte název sloupce, jehož hodnoty sloupce jsou používány jako klíč řádku. Není-li tento parametr zadán, použijte pro každý řádek identifikátor GUID. |Název sloupce |No |
+| azureTableInsertType |Režim pro vložení dat do tabulky Azure.<br/><br/>Tato vlastnost určuje, zda mají být existující řádky ve výstupní tabulce se shodnými klíči oddílů a řádky nahrazeny nebo sloučeny. <br/><br/>Další informace o tom, jak tato nastavení (sloučit a nahradit) fungují, najdete v tématech [vložení nebo sloučení entit](/rest/api/storageservices/Insert-Or-Merge-Entity) a [vložení nebo nahrazení entit](/rest/api/storageservices/Insert-Or-Replace-Entity) . <br/><br> Toto nastavení se vztahuje na úrovni řádků, nikoli na úrovni tabulky a ani možnost neodstraní řádky ve výstupní tabulce, které ve vstupu neexistují. |sloučení (výchozí)<br/>náhrady |No |
 | writeBatchSize |Vloží data do tabulky Azure, když je dosaženo writeBatchSize nebo writeBatchTimeout. |Integer (počet řádků) |Ne (výchozí: 10000) |
 | writeBatchTimeout |Vloží data do tabulky Azure, když je dosaženo writeBatchSize nebo writeBatchTimeout. |timespan<br/><br/>Příklad: "00:20:00" (20 minut) |Ne (výchozí hodnota pro výchozí nastavení klienta úložiště hodnota časového limitu 90 s) |
 
@@ -155,7 +150,7 @@ Ukázka kopíruje data, která patří do výchozího oddílu v tabulce Azure, d
   }
 }
 ```
-Azure Data Factory podporuje dva typy propojených služeb Azure Storage: **AzureStorage** a **AzureStorageSas** . Jako první zadejte připojovací řetězec, který obsahuje klíč účtu a za pozdější dobu, a zadejte identifikátor URI sdíleného přístupového podpisu (SAS). Podrobnosti najdete v části [propojené služby](#linked-service-properties) .  
+Azure Data Factory podporuje dva typy propojených služeb Azure Storage: **AzureStorage** a **AzureStorageSas**. Jako první zadejte připojovací řetězec, který obsahuje klíč účtu a za pozdější dobu, a zadejte identifikátor URI sdíleného přístupového podpisu (SAS). Podrobnosti najdete v části [propojené služby](#linked-service-properties) .  
 
 **Vstupní datová sada tabulky Azure:**
 
@@ -250,7 +245,7 @@ Data se zapisují do nového objektu BLOB každou hodinu (frekvence: hodina, int
 
 **Aktivita kopírování v kanálu s AzureTableSource a BlobSink:**
 
-Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a má naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **AzureTableSource** a typ **jímky** je nastavený na **BlobSink** . Dotaz SQL zadaný pomocí vlastnosti **AzureTableSourceQuery** vybere data z výchozího oddílu každou hodinu ke zkopírování.
+Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a má naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **AzureTableSource** a typ **jímky** je nastavený na **BlobSink**. Dotaz SQL zadaný pomocí vlastnosti **AzureTableSourceQuery** vybere data z výchozího oddílu každou hodinu ke zkopírování.
 
 ```JSON
 {
@@ -323,7 +318,7 @@ Ukázka kopíruje data časových řad z objektu blob Azure do tabulky Azure ka�
 }
 ```
 
-Azure Data Factory podporuje dva typy propojených služeb Azure Storage: **AzureStorage** a **AzureStorageSas** . Jako první zadejte připojovací řetězec, který obsahuje klíč účtu a za pozdější dobu, a zadejte identifikátor URI sdíleného přístupového podpisu (SAS). Podrobnosti najdete v části [propojené služby](#linked-service-properties) .
+Azure Data Factory podporuje dva typy propojených služeb Azure Storage: **AzureStorage** a **AzureStorageSas**. Jako první zadejte připojovací řetězec, který obsahuje klíč účtu a za pozdější dobu, a zadejte identifikátor URI sdíleného přístupového podpisu (SAS). Podrobnosti najdete v části [propojené služby](#linked-service-properties) .
 
 **Vstupní datová sada Azure Blob:**
 
@@ -417,7 +412,7 @@ Ukázka zkopíruje data do tabulky s názvem "MyTable" v tabulce Azure. Vytvořt
 
 **Aktivita kopírování v kanálu s BlobSource a AzureTableSink:**
 
-Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a má naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **BlobSource** a typ **jímky** je nastavený na **AzureTableSink** .
+Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a má naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **BlobSource** a typ **jímky** je nastavený na **AzureTableSink**.
 
 ```JSON
 {

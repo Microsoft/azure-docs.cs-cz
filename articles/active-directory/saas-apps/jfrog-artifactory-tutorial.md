@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: bec931309cbd6bc8bfa96ba3e054d06336c031e1
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f0fafa5c0cc2e0b1bf0f4e11db3265824feb5296
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459533"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374693"
 ---
 # <a name="tutorial-integrate-jfrog-artifactory-with-azure-active-directory"></a>Kurz: integrace JFrog Artifactory s Azure Active Directory
 
@@ -81,20 +81,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `<servername>.jfrog.io`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
+    
+    - Pro Artifactory 6. x: `https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse`
+    - Pro Artifactory 7. x: `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<servername>.jfrog.io/<servername>/webapp/`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
+    - Pro Artifactory 6. x: `https://<servername>.jfrog.io/<servername>/webapp/`
+    - Pro Artifactory 7. x: `https://<servername>.jfrog.io/ui/login`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta podpory JFrog Artifactory](https://support.jfrog.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Aplikace JFrog Artifactory očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
+1. Aplikace JFrog Artifactory očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na ikonu **Upravit** otevřete dialogové okno atributy uživatele.
 
     ![Snímek obrazovky ukazuje atributy uživatele s ovládacím prvkem pro úpravy, který se vyvolal.](common/edit-attribute.png)
 
-1. Kromě toho aplikace JFrog Artifactory očekává, že se v odpovědi SAML zpátky vrátí několik atributů. V dialogovém okně deklarace identity v části **atributy uživatele & deklarace** v dialogu **deklarace skupiny (Preview)** proveďte následující kroky:
+1. Kromě výše uvedeného JFrog Artifactory očekává, že se v odpovědi SAML vrátí několik dalších atributů. V dialogovém okně deklarace identity v části **atributy uživatele & deklarace** v dialogu **deklarace skupiny (Preview)** proveďte následující kroky:
 
     a. Klikněte na **pero** vedle **skupin vrácených v deklaraci identity**.
 
@@ -106,23 +111,26 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     c. Klikněte na **Uložit**.
 
-4. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **certifikát (RAW)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
+4. Na stránce **nastavit jeden Sign-On se** stránkou SAML vyhledejte v části **podpisový certifikát SAML** **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
-    ![Odkaz na stažení certifikátu](common/certificateraw.png)
+    ![Odkaz na stažení certifikátu](./media/jfrog-artifactory-tutorial/certificate-base.png)
 
-6. V části **Nastavení Artifactory JFrog** zkopírujte příslušné adresy URL na základě vašeho požadavku.
+6. Nakonfigurujte Artifactory (název poskytovatele služeb SAML) pomocí pole identifikátor (viz krok 4). V části **Nastavení Artifactory JFrog** zkopírujte příslušné adresy URL na základě vašeho požadavku.
+
+   - Pro Artifactory 6. x: `https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse` 
+   - Pro Artifactory 7. x: `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
 ### <a name="configure-jfrog-artifactory-sso"></a>Konfigurace jednotného přihlašování JFrog Artifactory
 
-Ke konfiguraci jednotného přihlašování na straně **JFrog Artifactory** je potřeba odeslat stažený **certifikát (RAW)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory JFrog Artifactory](https://support.jfrog.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Vše, co potřebujete ke konfiguraci jednotného přihlašování na straně **JFrog Artifactory** , je konfigurovatelné správcem Artifactory na obrazovce configugration SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -134,13 +142,13 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k JFrog Artifactory.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte možnost **JFrog Artifactory**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -158,7 +166,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici JFrog Artifactory, měli byste být automaticky přihlášeni k JFrog Artifactory, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

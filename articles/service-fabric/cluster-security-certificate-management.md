@@ -4,12 +4,12 @@ description: Přečtěte si o správě certifikátů v clusteru Service Fabric z
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: 722c84c25cb5188e45dd96363bab9af6ff93f6dc
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: a8a7e8954f3c9d5b54c2e1ed9caa330ef92d4512
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901262"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099502"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Správa certifikátů v Service Fabric clusterech
 
@@ -427,6 +427,7 @@ Rozšíření KVVM jako agent zřizování běží nepřetržitě na předem ur�
 Možná jste si všimli příznaku linkOnRenewal rozšíření KVVM a fakt, že je nastavený na false. Tady řešíme chování řízené tímto příznakem a jeho dopad na fungování clusteru. Všimněte si, že toto chování je specifické pro systém Windows.
 
 Podle [definice](../virtual-machines/extensions/key-vault-windows.md#extension-schema):
+
 ```json
 "linkOnRenewal": <Only Windows. This feature enables auto-rotation of SSL certificates, without necessitating a re-deployment or binding.  e.g.: false>,
 ```
@@ -456,7 +457,7 @@ Jak je uvedeno výše v fragmentech kódu JSON, je nutné určit sekvencování 
 
 Aby bylo možné vytvořit spravovanou identitu nebo ji přiřadit jinému prostředku, musí mít operátor nasazení požadovanou roli (ManagedIdentityOperator) v předplatném nebo skupině prostředků, kromě rolí potřebných ke správě dalších prostředků, na které se odkazuje v šabloně. 
 
-Z hlediska zabezpečení si vyvoláte, že virtuální počítač (sada škálování) se považuje za hranice zabezpečení s ohledem na jeho identitu Azure. To znamená, že jakákoliv aplikace hostovaná na virtuálním počítači může v zásadě získat přístupový token představující tokeny přístupu spravované virtuálním počítačem z neověřeného koncového bodu IMDS. Pokud považujete virtuální počítač za sdílené nebo víceklientské prostředí, možná se tato metoda načítání certifikátů clusteru neuvádí. Jediným mechanismem zřizování vhodným pro autovýměnu certifikátu je však.
+Z hlediska zabezpečení si vyvoláte, že virtuální počítač (sada škálování) se považuje za bezpečnostní hranici v souvislosti s identitou Azure. To znamená, že jakákoliv aplikace hostovaná na virtuálním počítači může v zásadě získat přístupový token představující tokeny přístupu spravované virtuálním počítačem z neověřeného koncového bodu IMDS. Pokud považujete virtuální počítač za sdílené nebo víceklientské prostředí, možná se tato metoda načítání certifikátů clusteru neuvádí. Jediným mechanismem zřizování vhodným pro autovýměnu certifikátu je však.
 
 ## <a name="troubleshooting-and-frequently-asked-questions"></a>Řešení problémů a nejčastější dotazy
 

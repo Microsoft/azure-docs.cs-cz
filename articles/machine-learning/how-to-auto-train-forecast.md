@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 2b24b6480e4331f3a9470dcbb49e7ad221809187
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 6e686c7b22eb834a096cdd7a67beb6d8d291ef20
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132078"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392319"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatické učení modelu prognózy časových řad
 
@@ -194,6 +194,14 @@ automl_config = AutoMLConfig(task='forecasting',
                              **forecasting_parameters)
 ```
 
+Množství dat, které je potřeba k úspěšnému vytvoření výuky modelu prognózy s automatizovanou ML, je ovlivněno `forecast_horizon` hodnotami, a, které jsou `n_cross_validations` `target_lags` `target_rolling_window_size` zadané při konfiguraci `AutoMLConfig` . 
+
+Následující vzorec vypočítá množství historických dat, které je potřeba k vytvoření funkcí časové řady.
+
+Minimální požadované historické údaje: (2x `forecast_horizon` ) + # `n_cross_validations` + Max (max ( `target_lags` ), `target_rolling_window_size` )
+
+Pro všechny řady v datové sadě, která nesplňuje požadované množství historických dat pro příslušná nastavení, bude vyvolána výjimka chyby. 
+
 ### <a name="featurization-steps"></a>Featurization kroky
 
 V každém automatizovaném experimentu machine learningu se pro vaše data ve výchozím nastavení aplikují automatické škálování a normalizační techniky. Tyto techniky jsou typy **featurization** , které usnadňují *určité* algoritmy, které jsou citlivé na funkce v různých měřítkech. Další informace o výchozích krocích featurization v [featurization v AutoML](how-to-configure-auto-features.md#automatic-featurization)
@@ -368,7 +376,7 @@ day_datetime,store,week_of_year
 Zopakováním potřebných kroků načtěte tato budoucí data do datového rámce a potom spusťte příkaz `best_run.predict(test_data)` pro předpověď budoucích hodnot.
 
 > [!NOTE]
-> Hodnoty nelze předpovědět pro počet období, který je větší než `forecast_horizon` . Model musí být znovu vyškolen s větším horizontem, aby bylo možné předpovědět budoucí hodnoty nad rámec aktuálního horizontu.
+> In-Sample předpovědi se nepodporují pro prognózování s automatizovanými ML při `target_lags` povolení a/nebo `target_rolling_window_size` .
 
 
 ## <a name="example-notebooks"></a>Příklady poznámkových bloků

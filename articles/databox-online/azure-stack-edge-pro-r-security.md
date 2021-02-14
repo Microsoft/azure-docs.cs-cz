@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: f7d81d14ca561e6d4d897994088b2fc01b2c7701
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 891885dce52ee57fa163bb71b427591156091651
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466851"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362845"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Zabezpečení a ochrana dat pro Azure Stack Edge pro R a Azure Stack Edge Mini R
 
-[!INCLUDE [applies-to-r-skus](../../includes/azure-stack-edge-applies-to-r-sku.md)]
+[!INCLUDE [applies-to-pro-r-and-mini-r--skus](../../includes/azure-stack-edge-applies-to-pro-r-mini-r-sku.md)]
 
 Zabezpečení je zásadním problémem při přijímání nové technologie, zejména v případě, že se technologie používá s důvěrnými nebo proprietárními daty. Azure Stack Edge pro R a Azure Stack Edge Mini R vám pomůžou zajistit, aby data mohla zobrazovat, upravovat nebo odstraňovat jenom autorizované entity.
 
@@ -66,7 +66,7 @@ Další informace najdete v tématu [získání aktivačního klíče](azure-sta
 
 Hesla zajišťují, že k datům budou mít přístup jenom autorizovaní uživatelé. Azure Stack hraničních zařízení pro R se spouští v uzamčeném stavu.
 
-Máte následující možnosti:
+Další možnosti:
 
 - Připojte se k místnímu webovému uživatelskému rozhraní zařízení přes prohlížeč a pak zadejte heslo pro přihlášení k zařízení.
 - Vzdáleně se připojte k rozhraní PowerShellu zařízení přes HTTP. Vzdálená správa je ve výchozím nastavení zapnutá. Vzdálená správa je taky nakonfigurovaná tak, aby používala dostatečně správu (JEA) k omezení toho, co můžou uživatelé dělat. Pak můžete zadat heslo zařízení pro přihlášení k zařízení. Další informace najdete v tématu [vzdálené připojení k vašemu zařízení](azure-stack-edge-gpu-connect-powershell-interface.md).

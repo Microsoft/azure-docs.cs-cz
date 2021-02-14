@@ -2,21 +2,21 @@
 title: Nastavení serveru GitHub Enterprise v privátním cloudu řešení Azure VMware
 description: Přečtěte si, jak nastavit server GitHub Enterprise v privátním cloudu řešení Azure VMware.
 ms.topic: how-to
-ms.date: 02/03/2021
-ms.openlocfilehash: 2b05e352fd8a81d6d180d4c60e67ab48465b284f
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.date: 02/11/2021
+ms.openlocfilehash: 59a76c3976f6fcda88423b7b78344f2abed1ea84
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549098"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382017"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>Nastavení serveru GitHub Enterprise v privátním cloudu řešení Azure VMware
 
-V tomto článku Vás provedeme kroky pro nastavení serveru GitHub Enterprise Server, "místní" verze [GitHub.com](https://github.com/)v privátním cloudu řešení Azure VMware. Scénář popsaný v tomto příkladu je určen pro instanci serveru GitHub Enterprise, která podporuje až 3 000 vývojářů na akcích GitHubu s podporou až 25 úloh za minutu. Zahrnuje nastavení (v době psaní) funkcí ve *verzi Preview* , například akce GitHubu. Pokud chcete nastavení přizpůsobit konkrétním potřebám, Projděte si požadavky uvedené v části [instalace serveru GitHub Enterprise Server na VMware](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations).
+V tomto článku Vás provedeme kroky pro nastavení serveru GitHub Enterprise Server, "místní" verze [GitHub.com](https://github.com/)v privátním cloudu řešení Azure VMware. V takovém případě se podíváme na instanci serveru GitHub Enterprise, která 3 000 umožňuje vývojářům na akcích GitHubu pracovat až s 25 úlohami za minutu. Zahrnuje nastavení (v době psaní) funkcí ve *verzi Preview* , například akce GitHubu. Pokud chcete nastavení přizpůsobit konkrétním potřebám, Projděte si požadavky uvedené v části [instalace serveru GitHub Enterprise Server na VMware](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Server GitHub Enterprise vyžaduje platný licenční klíč. Můžete si zaregistrovat [zkušební licenci](https://enterprise.github.com/trial). Pokud chcete, aby se funkce GitHub Enterprise Server rozšířily prostřednictvím integrace, můžete získat nárok na bezplatnou bezplatnou licenci pro vývojáře. Požádat o tuto licenci prostřednictvím [partnerského programu GitHubu](https://partner.github.com/).
+Server GitHub Enterprise vyžaduje platný licenční klíč. Můžete si zaregistrovat [zkušební licenci](https://enterprise.github.com/trial). Pokud chcete širší možnosti serveru GitHub Enterprise Server rozmístit prostřednictvím integrace, můžete mít nárok na bezplatnou bezplatnou vývojářskou licenci. Požádat o tuto licenci prostřednictvím [partnerského programu GitHubu](https://partner.github.com/).
 
 ## <a name="installing-github-enterprise-server-on-vmware"></a>Instalace GitHub Enterprise serveru na VMware
 
@@ -51,7 +51,7 @@ Doporučujeme, abyste aspoň tyto kroky provedli:
 
 1. Nahrajte veřejný klíč SSH do konzoly pro správu, abyste měli [k prostředí pro správu přístup přes SSH](https://docs.github.com/en/enterprise/admin/configuration/accessing-the-administrative-shell-ssh). 
 
-2. [Nakonfigurujte u své instance TLS](https://docs.github.com/en/enterprise/admin/configuration/configuring-tls) , abyste mohli používat certifikát, který je podepsaný důvěryhodnou certifikační autoritou.
+2. [Nakonfigurujte u své instance TLS](https://docs.github.com/en/enterprise/admin/configuration/configuring-tls) , abyste mohli použít certifikát podepsaný důvěryhodnou certifikační autoritou.
 
 :::image type="content" source="media/github-enterprise-server/configuring-your-instance.png" alt-text="Konfigurace instance.":::
 
@@ -59,7 +59,7 @@ Použijte nastavení.  Během restartování instance můžete pokračovat v dal
 
 :::image type="content" source="media/github-enterprise-server/create-admin-account.png" alt-text="Vytvořte účet správce.":::
 
-Po restartování instance vytvořte v instanci nový účet správce. Nezapomeňte si poznamenat také heslo tohoto uživatele.
+Po restartování instance můžete v instanci vytvořit nový účet správce. Nezapomeňte si poznamenat také heslo tohoto uživatele.
 
 ### <a name="other-configuration-steps"></a>Další kroky konfigurace
 
@@ -178,7 +178,7 @@ Pokud chcete, aby byl tento spouštěč dostupný pro organizace v podniku, upra
 
 :::image type="content" source="media/github-enterprise-server/edit-runner-access.png" alt-text="Upravte přístup k runneru.":::
 
-V tomto případě je zpřístupníme pro všechny organizace, ale můžete také omezit přístup k podmnožině organizací a dokonce i k určitým úložištím.
+V tomto případě zpřístupníme všem organizacím, ale můžete omezit přístup k podmnožině organizací a dokonce i k určitým úložištím.
 
 ## <a name="optional-configuring-github-connect"></a>Volitelné Konfiguruje se připojení GitHubu.
 
@@ -223,11 +223,11 @@ Pokud vše úspěšně proběhlo, měli byste v úložišti zobrazit nový probl
 
 Gratulujeme! Právě jste dokončili pracovní postup prvního pracovního postupu na serveru GitHub Enterprise, který běží na vašem privátním cloudu řešení Azure VMware.
 
-V tomto článku jsme na svém privátním cloudu vašeho řešení Azure VMware nastavili novou instanci serveru GitHub Enterprise, která je v místním prostředí rovnocenná GitHub.com. Tato instance zahrnuje podporu pro akce GitHubu a používá službu Azure Blob Storage k zajištění Persistence protokolů a artefaktů. Ale nejsme jenom úplně na tom, co všechno můžete dělat s akcemi na GitHubu. Podívejte se na seznam akcí na [webu GitHub](https://github.com/marketplace)nebo [si vytvořte svoje vlastní](https://docs.github.com/en/actions/creating-actions).
+V tomto článku jsme na svém privátním cloudu vašeho řešení Azure VMware nastavili novou instanci serveru GitHub Enterprise, která je v místním prostředí rovnocenná GitHub.com. Tato instance zahrnuje podporu pro akce GitHubu a používá službu Azure Blob Storage k zajištění Persistence protokolů a artefaktů. Ale nemusíme mít na výběr, co všechno můžete dělat s akcemi na GitHubu. Podívejte se na seznam akcí na [webu GitHub](https://github.com/marketplace)nebo [si vytvořte svoje vlastní](https://docs.github.com/en/actions/creating-actions).
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se seznámili s nastavením serveru GitHub Enterprise v privátním cloudu vašeho řešení VMware Azure, se můžete seznámit s těmito tématy: 
+Teď, když jste si pokryli nastavení serveru GitHub Enterprise v privátním cloudu vašeho řešení VMware Azure, můžete chtít získat informace o: 
 
 - [Začínáme s akcemi GitHubu](https://docs.github.com/en/actions).
 - [Připojení k programu beta verze](https://resources.github.com/beta-signup/).

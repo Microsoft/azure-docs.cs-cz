@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: b4ed5a419df97f98b883a07825184122945e092e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 38403eed56dc718afdfce13375dd2662beb13eb6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879557"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374163"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Vizualizace dat z Azure Time Series Insights v Power BI
 
@@ -37,9 +37,7 @@ Zkontrolujte prosím [zásady přístupu k prostředí](./concepts-access-polici
 > [!IMPORTANT]
 > * Stáhněte a nainstalujte nejnovější verzi [Power BI Desktop](https://powerbi.microsoft.com/downloads/). Pokud chcete postupovat podle kroků v tomto článku, ujistěte se, že máte nainstalovanou minimálně 2020 Power BI Desktop verzi z prosince. 
 
-## <a name="connect-data-from-azure-time-series-insights-to-power-bi"></a>Připojení dat z Azure Time Series Insights k Power BI
-
-### <a name="1-export-data-into-power-bi-desktop"></a>1. Export dat do Power BI plochy
+## <a name="export-data-from-azure-time-series-insights-into-power-bi-desktop"></a>Export dat z Azure Time Series Insights do aplikace Power BI Desktop
 
 Jak začít:
 
@@ -53,37 +51,36 @@ Jak začít:
    * **Formát dat**: Určete, zda chcete exportovat **agregovaná data** nebo **nezpracované události** do Power BI. 
 
        > [!NOTE]
-       > * Pokud exportujete nezpracované události, můžete tato data později v Power BI agregovat. Pokud ale exportujete agregovaná data, nebudete se moct vrátit na nezpracovaná data v Power BI. 
-       > * Pro data na úrovni nezpracované události je povolený limit počtu událostí 250 000.
+       > Pokud exportujete nezpracované události, můžete tato data později v Power BI agregovat. Pokud ale exportujete agregovaná data, nebudete se moct vrátit na nezpracovaná data v Power BI. Pro data na úrovni nezpracované události je povolený limit počtu událostí 250 000.
 
    * **Časový rozsah**: vyberte, jestli se chcete podívat na **pevný** časový rozsah nebo **nejnovější** data v Power BI. Volba pevného časového rozsahu znamená, že se data v rozsahu hledání, která jste nastavili v grafu, exportují do Power BI. Když zvolíte poslední časový rozsah, znamená to, že Power BI načte nejnovější data pro rozsah hledání, který jste si zvolili (například Pokud seřadíte 1 hodinu dat a vyberete nastavení "poslední", Power BI konektor vždycky provede dotazy na nejnovější 1 hodinu dat.)
   
-   * **Typ úložiště**: vyberte, jestli byste chtěli spustit vybraný dotaz pro úložiště s **teplem** nebo z **chladírenského** skladu. 
+   * **Typ úložiště**: vyberte, jestli byste chtěli spustit vybraný dotaz pro úložiště s **teplem** nebo z **chladírenského** skladu. Pokud jste vybrali rozsah, který zahrnuje studené i teplé obchody, váš dotaz bude ve výchozím nastavení směrován do studeného úložiště, protože služba teplého úložiště bude obsahovat pouze nejnovější data. Ruční změna parametru storeType je povolená, ale nedoporučuje se pro optimální prostředí. 
 
-    > [!TIP]
-    > * Azure Time Series Insights Explorer automaticky vybere Doporučené parametry v závislosti na datech, která jste se rozhodli exportovat. 
+    > [!TIP] 
+    > Azure Time Series Insights Explorer automaticky vybere Doporučené parametry v závislosti na rozsahu hledání a zobrazení dat, která jste se rozhodli exportovat. 
 
 1. Po nakonfigurování nastavení vyberte **Kopírovat dotaz do schránky**.
 
     [![Exportovat modální okno Průzkumníka Azure Time Series Insights](media/how-to-connect-power-bi/choose-explorer-parameters.jpg)](media/how-to-connect-power-bi/choose-explorer-parameters.jpg#lightbox)
 
-2. Spusťte Power BI Desktop.
+1. Spusťte Power BI Desktop.
    
-3. V Power BI Desktop na kartě **Domů** vyberte v levém horním rohu **získat data** a pak **Další**.
+1. V Power BI Desktop na kartě **Domů** vyberte v levém horním rohu **získat data** a pak **Další**.
 
     [![Získání dat v Power BI](media/how-to-connect-power-bi/get-data-power-bi.jpg)](media/how-to-connect-power-bi/get-data-power-bi.jpg#lightbox)
 
-4. Vyhledejte **Azure Time Series Insights**, vyberte **Azure Time Series Insights (beta)** a pak se **Připojte**.
+1. Vyhledejte **Azure Time Series Insights**, vyberte **Azure Time Series Insights (beta)** a pak se **Připojte**.
 
     [![Připojit Power BI k Azure Time Series Insights](media/how-to-connect-power-bi/select-tsi-connector.jpg)](media/how-to-connect-power-bi/select-tsi-connector.jpg#lightbox)
 
     Případně přejděte na kartu **Azure** , vyberte **Azure Time Series Insights (beta)** a pak se **Připojte**.
 
-5. Vložte dotaz, který jste zkopírovali z aplikace Azure Time Series Insights Explorer do pole **vlastní dotaz** , a pak stiskněte tlačítko **OK**.
+1. Vložte dotaz, který jste zkopírovali z aplikace Azure Time Series Insights Explorer do pole **vlastní dotaz** , a pak stiskněte tlačítko **OK**.
 
     [![Vložte vlastní dotaz a vyberte OK.](media/how-to-connect-power-bi/custom-query-load.png)](media/how-to-connect-power-bi/custom-query-load.png#lightbox)  
 
-6.  Tabulka dat se teď načte. Stisknutím klávesy **Load** se načtěte do Power BI. Pokud chcete data převést na data, můžete to udělat nyní kliknutím na **transformovat data**. Data můžete po načtení také transformovat.
+1.  Tabulka dat se teď načte. Stisknutím klávesy **Load** se načtěte do Power BI. Pokud chcete data převést na data, můžete to udělat nyní kliknutím na **transformovat data**. Data můžete po načtení také transformovat.
 
     [![Zkontrolujte data v tabulce a vyberte načíst.](media/how-to-connect-power-bi/review-the-loaded-data-table.png)](media/how-to-connect-power-bi/review-the-loaded-data-table.png#lightbox)  
 

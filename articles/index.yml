@@ -13,12 +13,12 @@ metadata:
   ms.date: 01/29/2021
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 2f792ffb95323444d8666c4c676025995f5db438
-  ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+  ms.openlocfilehash: 58b5b8917aeeefb918914a598655da962019de34
+  ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 02/09/2021
-  ms.locfileid: "99979466"
+  ms.lasthandoff: 02/10/2021
+  ms.locfileid: "100102967"
 highlightedContent:
   items:
   - title: Úvodní příručka pro vývojáře v Azure
@@ -793,7 +793,7 @@ productDirectory:
     azureCategories:
     - hybrid
     url: /azure-stack/
-  - title: Azure Stack HCI (Preview)
+  - title: Azure Stack HCI
     summary: Integrace hyperkonvergované infrastruktury s Azure a hybridními službami pro spouštění virtuálních úloh v místním prostředí
     imageSrc: https://static.docs.com/ui/media/product/azure/stack-hci.svg
     azureCategories:

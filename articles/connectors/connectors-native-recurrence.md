@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: 9565ad1efc5ae3dc03b94c78ce8ce52e8dd48c65
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 3749a7080bf17c020b48ae3ebc3cff3aa998eeef
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019189"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382289"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Vytváření, plánování a spouštění opakujících se úloh a pracovních postupů s triggerem opakování v Azure Logic Apps
 
@@ -52,19 +52,19 @@ Rozdíly mezi touto triggerem a aktivační událostí posuvných oken nebo dal�
 
    ![Nastavení intervalu a frekvence](./media/connectors-native-recurrence/recurrence-trigger-details.png)
 
-   | Vlastnost | Název JSON | Požaduje se | Typ | Popis |
+   | Vlastnost | Název JSON | Požaduje se | Typ | Description |
    |----------|-----------|----------|------|-------------|
-   | **Interval** | `interval` | Ano | Integer | Kladné celé číslo, které popisuje, jak často se pracovní postup spouští na základě frekvence. Tady jsou minimální a maximální intervaly: <p>-Month: 1-16 měsíců <br>-Week: 1-71 týdnů <br>Denní: 1-500 dní <br>-Hodina: 1 – 12000 hodin <br>-Minute: 1 – 72000 minut <br>-Sekunda: 1 – 9999999 sekund<p>Pokud má například interval hodnotu 6 a frekvence je "Month" (měsíc), opakování je každých 6 měsíců. |
+   | **Interval** | `interval` | Yes | Integer | Kladné celé číslo, které popisuje, jak často se pracovní postup spouští na základě frekvence. Tady jsou minimální a maximální intervaly: <p>-Month: 1-16 měsíců <br>-Week: 1-71 týdnů <br>Denní: 1-500 dní <br>-Hodina: 1 – 12000 hodin <br>-Minute: 1 – 72000 minut <br>-Sekunda: 1 – 9999999 sekund<p>Pokud má například interval hodnotu 6 a frekvence je "Month" (měsíc), opakování je každých 6 měsíců. |
    | **Frekvence** | `frequency` | Ano | Řetězec | Jednotka času pro opakování: **sekunda**, **minuta**, **hodina**, **den**, **týden** nebo **měsíc** |
    ||||||
 
    > [!IMPORTANT]
-   > Pokud opakování nespecifikují pokročilé možnosti plánování, budoucí opakování vycházejí z času posledního spuštění.
-   > Časy zahájení těchto opakování se můžou zpomalit kvůli faktorům, jako je latence během volání úložiště. Abyste se ujistili, že vaše aplikace logiky nezpůsobí opakování, zejména pokud je frekvence ve dnech nebo delší, použijte jednu z těchto možností:
+   > Pokud opakování neurčí určité [počáteční datum a čas](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time), první opakování se spustí okamžitě při uložení nebo nasazení aplikace logiky, a to i přes nastavení opakování triggeru. Chcete-li se tomuto chování vyhnout, zadejte počáteční datum a čas, kdy chcete spustit první opakování.
+   >
+   > Pokud opakování neurčí žádné další pokročilé možnosti plánování, například konkrétní časy spuštění budoucích opakování, budou tyto opakování založeny na čase posledního spuštění. V důsledku toho by časy zahájení těchto opakování mohly vzniknout kvůli faktorům, jako je latence během volání úložiště. 
+   > Chcete-li zajistit, aby vaše aplikace logiky neztratila opakování, zejména pokud je frekvence ve dnech nebo déle, zkuste tyto možnosti:
    > 
-   > * Zadejte čas zahájení opakování.
-   > 
-   > * Zadejte hodiny a minuty pro spuštění opakování pomocí vlastností s názvem **v těchto hodinách** a **v těchto minutách**.
+   > * Zadejte počáteční datum a čas pro opakování plus konkrétní časy, kdy se mají spouštět následující opakování, a to pomocí vlastností s názvem **v těchto hodinách** a **v těchto minutách**, které jsou k dispozici pouze pro frekvence **dne** a **týdne** .
    > 
    > * Použijte [aktivační událost posuvných oken](../connectors/connectors-native-sliding-window.md)místo triggeru opakování.
 
@@ -72,7 +72,7 @@ Rozdíly mezi touto triggerem a aktivační událostí posuvných oken nebo dal�
 
    ![Pokročilé možnosti plánování](./media/connectors-native-recurrence/recurrence-trigger-more-options-details.png)
 
-   | Vlastnost | Název JSON | Požaduje se | Typ | Popis |
+   | Vlastnost | Název JSON | Požaduje se | Typ | Description |
    |----------|-----------|----------|------|-------------|
    | **Časové pásmo** | `timeZone` | No | Řetězec | Platí pouze v případě, že zadáte čas spuštění, protože tato aktivační událost nepřijímá [posun UTC](https://en.wikipedia.org/wiki/UTC_offset). Vyberte časové pásmo, které chcete použít. |
    | **Čas spuštění** | `startTime` | No | Řetězec | Zadejte počáteční datum a čas, který má maximálně 49 let v budoucnosti a musí následovat za [specifikací data a času ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ve [formátu data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)a času UTC, ale bez [posunu UTC](https://en.wikipedia.org/wiki/UTC_offset): <p><p>RRRR-MM-DDThh: mm: SS Pokud vyberete časové pásmo <p>-nebo- <p>RRRR-MM-DDThh: mm: ssZ, pokud nevyberete časové pásmo <p>Pokud například požadujete 18. září 2020 na 2:00 odp., zadejte "2020-09-18T14:00:00" a vyberte časové pásmo, například Tichomoří (běžný čas). Případně zadejte "2020-09-18T14:00:00Z" bez časového pásma. <p><p>**Důležité informace:** Pokud nevyberete časové pásmo, je nutné na konci přidat písmeno "Z" bez mezer. Tento "Z" odkazuje na ekvivalentní [námořní čas](https://en.wikipedia.org/wiki/Nautical_time). Pokud vyberete hodnotu časového pásma, nemusíte na konec hodnoty **času zahájení** přidat "Z". V takovém případě Logic Apps ignoruje hodnotu časového pásma, protože "Z" označuje formát času UTC. <p><p>V případě jednoduchých plánů je počáteční čas prvním výskytem, ale u složitých plánů se Trigger neaktivuje dříve, než je čas spuštění. [*Jaké jsou způsoby, jak můžu použít počáteční datum a čas?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
