@@ -9,33 +9,29 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/14/2019
+ms.date: 02/05/2021
 ms.author: jeedes
-ms.openlocfilehash: f992bc6d1ff2062e9159fefcaee8ffa293c98930
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: ef2c14e2cfc65a354818290af797bd0506a60fc9
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460253"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095031"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-cloudsuite"></a>Kurz: Azure Active Directory integrací s informacemi CloudSuite
 
-V tomto kurzu se dozvíte, jak integrovat CloudSuite s informacemi o Azure Active Directory (Azure AD).
-Integrace informačního CloudSuiteu se službou Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat CloudSuite s informacemi o Azure Active Directory (Azure AD). Když integrujete službu CloudSuite (info) s Azure AD, můžete:
 
-* Můžete řídit v Azure AD, kteří mají přístup k CloudSuite.
-* Uživatelům můžete povolit, aby se automaticky přihlásili k poskytovateli CloudSuite (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
-
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
+* Řízení ve službě Azure AD, která má přístup k informacím CloudSuite
+* Umožněte uživatelům, aby se automaticky přihlásili k poskytovateli CloudSuite se svými účty Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s CloudSuite informací potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/) .
-* CloudSuite odběr s povoleným jednotným přihlašováním k informacím
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* CloudSuite předplatné s povoleným jednotným přihlašováním.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -44,65 +40,43 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * Informační CloudSuite podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
 * Informační CloudSuite podporuje zřizování uživatelů **jenom v čase** .
 
-## <a name="adding-infor-cloudsuite-from-the-gallery"></a>Přidání informačního CloudSuiteu z Galerie
+## <a name="add-infor-cloudsuite-from-the-gallery"></a>Přidání informačního CloudSuiteu z Galerie
 
 Pokud chcete nakonfigurovat integraci informačního CloudSuiteu do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat informační CloudSuite z galerie.
 
-**K přidání informací CloudSuite z Galerie proveďte následující kroky:**
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole text **info CloudSuite** .
+1. Z panelu výsledků vyberte **informační CloudSuite** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+## <a name="configure-and-test-azure-ad-sso-for-infor-cloudsuite"></a>Konfigurace a testování jednotného přihlašování služby Azure AD pro informační CloudSuite
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD s informacemi CloudSuite pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v info CloudSuite.
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí nástroje CloudSuite, proveďte následující kroky:
 
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte informace CLOUDSUITE SSO](#configure-infor-cloudsuite-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte CloudSuite Test User](#create-infor-cloudsuite-test-user)** -to, abyste měli protějšek B. Simon v informačním CloudSuiteu, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-4. Do vyhledávacího pole zadejte text **info CloudSuite**, vyberte **informační CloudSuite** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+1. V Azure Portal na stránce informace o integraci aplikace **CloudSuite** vyhledejte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
-    ![Informace CloudSuite v seznamu výsledků](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
-
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí služby CloudSuite na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v informačním CloudSuiteu.
-
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí služby info CloudSuite, musíte dokončit tyto stavební bloky:
-
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte CloudSuite jednotné přihlašování](#configure-infor-cloudsuite-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvořte si informačního uživatele CloudSuite](#create-infor-cloudsuite-test-user)** , abyste měli protějšek Britta Simon v informačním CloudSuite, který je propojený s reprezentací uživatele v Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
-
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
-
-Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD CloudSuite, proveďte následující kroky:
-
-1. V [Azure Portal](https://portal.azure.com/)na stránce **informace** o integraci aplikace CloudSuite vyberte **jednotné přihlašování**.
-
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
-
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
-
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
-
-3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
-
-    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat identifikátor, odpovědět U R L a vybrat Uložit.](common/idp-intiated.png)
-
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí jednoho z následujících vzorů:
 
     ```http
     http://mingle-sso.inforcloudsuite.com
@@ -111,7 +85,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD 
     http://mingle-sso.se2.inforcloudsuite.com
     ```
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí jednoho z následujících vzorů:
 
     ```http
     https://mingle-sso.inforcloudsuite.com:443/sp/ACS.saml2
@@ -122,9 +96,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD 
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/metadata-upload-additional-signon.png)
-
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí jednoho z následujících vzorů:
 
     ```http
     https://mingle-portal.inforcloudsuite.com/Tenant-Name/
@@ -144,80 +116,54 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD 
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
-
-    b. Identifikátor Azure AD
-
-    c. Odhlašovací adresa URL
-
-### <a name="configure-infor-cloudsuite-single-sign-on"></a>Konfigurace CloudSuite jednoho Sign-On
-
-Pokud chcete nakonfigurovat jednotné přihlašování na straně **informačního CloudSuiteu** , je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [CloudSuite týmu podpory](mailto:support@infor.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
-
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
-
-2. V horní části obrazovky vyberte **Nový uživatel** .
-
-    ![Tlačítko pro nového uživatele](common/new-user.png)
-
-3. Ve vlastnostech uživatele proveďte následující kroky.
-
-    ![Uživatelský dialog](common/user-properties.png)
-
-    a. Do pole **název** zadejte **BrittaSimon**.
-  
-    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension` . Například BrittaSimon@contoso.com.
-
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na **Vytvořit**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k informačnímu CloudSuite.
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k informačnímu CloudSuite.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **informace CloudSuite**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **informace CloudSuite**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-    ![Okno Podnikové aplikace](common/enterprise-applications.png)
+## <a name="configure-infor-cloudsuite-sso"></a>Konfigurace informačního jednotného přihlašování CloudSuite
 
-2. V seznamu aplikace vyberte **informace CloudSuite**.
-
-    ![Odkaz na informační CloudSuite v seznamu aplikací](common/all-applications.png)
-
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
-
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Podokno přidat přiřazení](common/add-assign-user.png)
-
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+Pokud chcete nakonfigurovat jednotné přihlašování na straně **informačního CloudSuiteu** , je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [CloudSuite týmu podpory](mailto:support@infor.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-infor-cloudsuite-test-user"></a>Vytvořit CloudSuite testovacího uživatele
 
 V této části se uživatel s názvem Britta Simon vytvoří v části info CloudSuite. Správce informací CloudSuite podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v informačním CloudSuite neexistuje, vytvoří se po ověření nový. Pokud potřebujete ručně vytvořit uživatele, kontaktujte [tým podpory CloudSuite](mailto:support@infor.com).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-Když kliknete na dlaždici CloudSuite na přístupovém panelu, měli byste se automaticky přihlásili k informačnímu CloudSuite, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>Zahájena SP:
 
-## <a name="additional-resources"></a>Další zdroje
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na informace na adresu URL pro přihlášení k CloudSuite, kde můžete spustit tok přihlášení.  
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
+* Přejít na adresu URL pro přihlašování k informacím CloudSuite přímo a zahájit tok přihlášení.
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>Iniciované IDP:
 
-- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
+* Klikněte na **otestovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k informačnímu CloudSuiteu, pro které jste nastavili jednotné přihlašování. 
+
+K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici CloudSuite informace v části Moje aplikace, pokud je nakonfigurovaná v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro zahájení toku přihlášení a v případě, že se nakonfiguruje v režimu IDP, měli byste se automaticky přihlásit k informačnímu CloudSuite, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="next-steps"></a>Další kroky
+
+Po nakonfigurování informačního CloudSuite můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

@@ -4,12 +4,12 @@ description: Naučte se, jak pomocí automatického škálování clusteru autom
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 5f0754638be1aa29672b6a59218a6c9d695261a5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: c0564dc3b394b4a65e70a487b6f6989cb306bdda
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223138"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373245"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatické škálování clusteru pro splnění požadavků aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -273,6 +273,9 @@ az aks nodepool update \
 ```
 
 Pokud chcete znovu povolit automatické škálování clusteru v existujícím clusteru, můžete ho znovu povolit pomocí příkazu [AZ AKS nodepool Update][az-aks-nodepool-update] , a to zadáním `--enable-cluster-autoscaler` `--min-count` parametrů, a `--max-count` .
+
+> [!NOTE]
+> Pokud plánujete používat nástroj pro automatické škálování clusteru s nodepools, který je rozložen na více zón, a využíváte funkce plánování týkající se zón, jako je například naplánování škálovatelného plánu, doporučujeme, abyste měli jednu nodepool na zónu a povolili `--balance-similar-node-groups` profil prostřednictvím profilu automatického škálování. Tím zajistíte, že se automatické škálování dokončí úspěšně, a zkusíte a zachováte velikosti nodepools rovnováhy.
 
 ## <a name="next-steps"></a>Další kroky
 

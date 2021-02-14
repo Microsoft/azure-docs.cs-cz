@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 0de0c5d53bd3195a24f75f4a2e65c19602e2a2b3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 103855748c4b5d998dfc81eeb4044f5f53dae9e5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99088917"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372004"
 ---
 # <a name="pricing-and-billing-models-for-azure-logic-apps"></a>Cenové a fakturační modely pro Azure Logic Apps
 
@@ -72,8 +72,8 @@ Pevný cenový model se vztahuje na aplikace logiky, které běží v [ *prostř
 
 | SKU ISE | Description |
 |---------|-------------|
-| **Premium** | Základní jednotka má pevnou kapacitu a účtuje se [za hodinovou sazbu za SKU úrovně Premium](https://azure.microsoft.com/pricing/details/logic-apps). Pokud potřebujete větší propustnost, můžete [Přidat další jednotky škálování](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) při vytváření ISE nebo později. Každá jednotka škálování se účtuje [hodinovou sazbou, která je přibližně polovinu základní jednotkové sazby](https://azure.microsoft.com/pricing/details/logic-apps). <p><p>Omezení informací najdete v tématu [omezení ISE v Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
-| **Vývojář** | Základní jednotka má pevnou kapacitu a účtuje se [za hodinovou sazbu za SKU pro vývojáře](https://azure.microsoft.com/pricing/details/logic-apps). Tato SKU nemá schopnost horizontálního navýšení kapacity, smlouvy o úrovni služeb (SLA) nebo zveřejněné limity. Tuto SKU použijte pouze pro zkoumání, experimenty, vývoj a testování, nikoli pro produkční nebo výkonnostní testování. |
+| **Premium** | Základní jednotka má [pevnou kapacitu](logic-apps-limits-and-config.md#integration-service-environment-ise) a účtuje se [za hodinovou SAZBu za SKU úrovně Premium](https://azure.microsoft.com/pricing/details/logic-apps). Pokud potřebujete větší propustnost, můžete [Přidat další jednotky škálování](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) při vytváření ISE nebo později. Každá jednotka škálování se účtuje [hodinovou sazbou, která je přibližně polovinu základní jednotkové sazby](https://azure.microsoft.com/pricing/details/logic-apps). <p><p>Informace o kapacitě a omezeních najdete [v tématu omezení ISE v Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
+| **Vývojář** | Základní jednotka má [pevnou kapacitu](logic-apps-limits-and-config.md#integration-service-environment-ise) a účtuje se [za hodinovou sazbu za SKU pro vývojáře](https://azure.microsoft.com/pricing/details/logic-apps). Tato SKU ale nemá žádnou smlouvu o úrovni služeb (SLA), schopnost horizontálního navýšení kapacity ani redundanci během recyklace, což znamená, že se můžete setkat s prodlevami nebo výpadky. Aktualizace back-endu můžou službu obcházet bez výpadků. <p><p>**Důležité**: Ujistěte se, že jste tuto skladovou položku používali jenom pro zkoumání, experimenty, vývoj a testování – ne pro produkční nebo výkonnostní testování. <p><p>Informace o kapacitě a omezeních najdete [v tématu omezení ISE v Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
 |||
 
 ### <a name="included-at-no-extra-cost"></a>Zahrnuto bez dalších poplatků

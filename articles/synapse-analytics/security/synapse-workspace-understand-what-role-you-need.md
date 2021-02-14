@@ -1,19 +1,19 @@
 ---
 title: Pochopení rolí vyžadovaných k provádění běžných úloh v synapse
 description: Tento článek popisuje, které předdefinované role RBAC synapse je potřeba k tomu, aby se prováděly konkrétní úlohy.
-author: billgib
+author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 12/1/2020
-ms.author: billgib
+ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9735293c182e7fe67a498529425459c13a199101
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: ba00e6f4fe97b0614483fd04ddee9fc768558db5
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109789"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102100"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>Pochopení rolí vyžadovaných k provádění běžných úloh v synapse
 
@@ -65,11 +65,11 @@ V následující tabulce jsou uvedeny běžné úkoly a pro každý úkol, synap
 
 Úkol (chci...) |Role (potřebuji...)|Oprávnění/akce synapse RBAC
 --|--|--
-|Otevření synapse studia v pracovním prostoru|Synapse uživatel nebo|read
+|Otevření synapse studia v pracovním prostoru|Synapse uživatel nebo|čtení
 | |Vlastník, přispěvatel nebo čtenář Azure v pracovním prostoru|žádné
-|Výpis fondů SQL, fondů Apache Spark, prostředí Integration runtime a přístup ke svým podrobnostem konfigurace|Synapse uživatel nebo|read|
+|Výpis fondů SQL, fondů Apache Spark, prostředí Integration runtime a přístup ke svým podrobnostem konfigurace|Synapse uživatel nebo|čtení|
 ||Vlastník, přispěvatel nebo čtenář Azure v pracovním prostoru|žádné
-|Seznam propojených služeb, přihlašovacích údajů, spravovaných privátních koncových bodů|Uživatel synapse|read
+|Seznam propojených služeb, přihlašovacích údajů, spravovaných privátních koncových bodů|Uživatel synapse|čtení
 FONDY SQL|
 Vytvoření vyhrazeného fondu SQL nebo fondu SQL bez serveru|Vlastník nebo přispěvatel Azure v pracovním prostoru|žádné
 Správa (pozastavení, škálování nebo odstranění) vyhrazeného fondu SQL|Vlastník nebo přispěvatel Azure ve fondu nebo pracovním prostoru SQL|žádné
@@ -82,10 +82,10 @@ Potvrďte změny ve skriptu SQL do úložiště Git.|Vyžaduje oprávnění Git 
 Přiřazení Správce služby Active Directory v pracovním prostoru (prostřednictvím vlastností pracovního prostoru na webu Azure Portal)|Vlastník nebo přispěvatel Azure v pracovním prostoru |
 FONDY APACHE SPARK|
 Vytvoření fondu Apache Spark|Vlastník nebo přispěvatel Azure v pracovním prostoru|
-Monitorování Apache Sparkch aplikací| Uživatel synapse|read
+Monitorování Apache Sparkch aplikací| Uživatel synapse|čtení
 Zobrazení protokolů pro Poznámkový blok a provádění úloh |Operátor COMPUTE synapse|
 Zrušení všech poznámkových bloků nebo úloh Sparku spuštěných ve fondu Apache Spark|Synapse výpočetní operátor na fondu Apache Spark.|bigDataPools/useCompute
-Vytvoření definice poznámkového bloku nebo úlohy|Synapse uživatel nebo </br>Vlastník, přispěvatel nebo čtenář Azure v pracovním prostoru</br> *Aby bylo možné spustit, publikovat nebo potvrdit změny, jsou vyžadovány další oprávnění.*|read</br></br></br></br></br> 
+Vytvoření definice poznámkového bloku nebo úlohy|Synapse uživatel nebo </br>Vlastník, přispěvatel nebo čtenář Azure v pracovním prostoru</br> *Aby bylo možné spustit, publikovat nebo potvrdit změny, jsou vyžadovány další oprávnění.*|čtení</br></br></br></br></br> 
 Seznam a otevření publikovaného poznámkového bloku nebo definice úlohy včetně kontroly uložených výstupů|Uživatel artefaktu synapse, vydavatel artefaktu synapse, přispěvatel synapse v pracovním prostoru|artefakty/čtení
 Spustit Poznámkový blok a zkontrolovat jeho výstup|Synapse Apache Spark Administrator, operátor synapse COMPUTE na vybraném fondu Apache Spark|bigDataPools/useCompute 
 Publikování nebo odstranění definice poznámkového bloku nebo úlohy (včetně výstupu) do služby|Vydavatel artefaktů v pracovním prostoru, synapse Apache Spark správce|poznámkové bloky/zápis, odstranění
@@ -94,8 +94,8 @@ KANÁLY, MODULY RUNTIME INTEGRACE, TOKY DAT, DATOVÉ SADY & TRIGGERY|
 Vytvoření, aktualizace nebo odstranění prostředí Integration runtime|Vlastník nebo přispěvatel Azure v pracovním prostoru|
 Monitorování stavu modulu runtime integrace|Uživatel synapse|čtení, kanály/viewOutputs
 Kontrola spuštění kanálu|Přispěvatel/synapse artefaktu synapse|čtení, kanály/viewOutputs 
-Vytvoření kanálu |Uživatel synapse</br>*Pro ladění, přidávání triggerů, publikování nebo potvrzení změn se vyžadují další oprávnění synapse.*|read
-Vytvoření datového toku nebo datové sady |Uživatel synapse</br>*K publikování nebo potvrzení změn se vyžadují další oprávnění synapse.*|read
+Vytvoření kanálu |Uživatel synapse</br>*Pro ladění, přidávání triggerů, publikování nebo potvrzení změn se vyžadují další oprávnění synapse.*|čtení
+Vytvoření datového toku nebo datové sady |Uživatel synapse</br>*K publikování nebo potvrzení změn se vyžadují další oprávnění synapse.*|čtení
 Vypsání a otevření publikovaného kanálu |Uživatel artefaktu synapse | artefakty/čtení
 Náhled dat datové sady|Uživatel s přihlašovacími údaji uživatele synapse + synapse na WorkspaceSystemIdentity| 
 Ladění kanálu pomocí výchozího prostředí Integration runtime|Synapse uživatele a synapse přihlašovací údaje uživatele k přihlašovacím údajům WorkspaceSystemIdentity|oprávnění </br>pověření/useSecret
@@ -106,13 +106,13 @@ Ingestování dat (pomocí plánu)|Synapse Author + synapse – uživatel pově�
 Publikování nového, aktualizovaného nebo odstraněného kanálu, toku dat nebo triggeru do služby|Vydavatel artefaktu synapse v pracovním prostoru|kanály/zapisovat, odstraňovat</br>tok dat/zápis, odstranění</br>triggery/zápis, odstranění
 Potvrzení změn u kanálů, datových toků, datových sad nebo triggerů do úložiště Git |Oprávnění Gitu|žádné 
 PROPOJENÉ SLUŽBY|
-Vytvoření propojené služby (včetně přiřazování přihlašovacích údajů)|Uživatel synapse</br>*K použití propojené služby s přihlašovacími údaji nebo k publikování nebo potvrzení změn se vyžaduje další oprávnění.*|read
+Vytvoření propojené služby (včetně přiřazování přihlašovacích údajů)|Uživatel synapse</br>*K použití propojené služby s přihlašovacími údaji nebo k publikování nebo potvrzení změn se vyžaduje další oprávnění.*|čtení
 Seznam a otevření publikované propojené služby|Uživatel artefaktu synapse|linkedServices/zapisovat, odstranit  
 Testování připojení u propojené služby zabezpečené pomocí pověření|Uživatel s přihlašovacími údaji uživatele synapse + synapse|pověření/useSecret/akce|
 Publikování propojené služby|Vydavatel artefaktu synapse, propojený Data Manager synapse|linkedServices/zapisovat, odstranit
 Potvrzení definic propojených služeb do úložiště Git|Oprávnění Gitu|žádné
 SPRÁVA PŘÍSTUPU|
-Kontrola přiřazení rolí RBAC synapse v jakémkoli oboru|Uživatel synapse|read
+Kontrola přiřazení rolí RBAC synapse v jakémkoli oboru|Uživatel synapse|čtení
 Přiřazení a odebrání přiřazení rolí synapse RBAC pro uživatele, skupiny a instanční objekty| Správce synapse v pracovním prostoru nebo v určitém oboru položky pracovního prostoru|roleAssignments/zapisovat, odstranit 
 
 >[!Note]

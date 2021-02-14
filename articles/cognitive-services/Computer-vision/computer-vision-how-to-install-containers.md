@@ -12,12 +12,12 @@ ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: místní, OCR, Docker, kontejner
-ms.openlocfilehash: fc5d281a6c0c9dd9620109de9d8deea27462ad0e
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 843000963bc05cab5415c9bb1db32b3272c8dc9f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008583"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391762"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Nainstalovat čtení kontejnerů Docker pro optické rozpoznávání znaků (Preview) 
 
@@ -41,7 +41,7 @@ Kontejner OCR Read 3,2-Preview poskytuje:
 * Hodnocení spolehlivosti.
 * Podpora dokumentů pomocí tiskového i rukopisného textu.
 * Možnost extrahovat text z vybraných stránek v dokumentu.
-* Volba pořadí výstupu z textového řádku z výchozí hodnoty do přirozeného pořadí čtení.
+* Vyberte možnost pořadí výstupu z textového řádku z výchozí hodnoty do přirozeného pořadí čtení jenom pro jazyky latinky.
 * Klasifikace řádku textu jako ručně psaný styl nebo ne pro jazyky Latin.
 
 Pokud dnes používáte kontejnery Read 2,0, přečtěte si informace o změnách v nových verzích v [Průvodci migrací](read-container-migration-guide.md) .

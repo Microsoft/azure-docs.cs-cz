@@ -1,23 +1,18 @@
 ---
 title: Kopírování dat do/z Azure synapse Analytics
 description: Přečtěte si, jak kopírovat data do a z Azure synapse Analytics pomocí Azure Data Factory
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: d90fa9bd-4b79-458a-8d40-e896835cfd4a
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0d071599b72f6a71bdff815f514311fb87f53d5b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: aa364ec434db980bf226008537ca928628fcac1b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452362"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392081"
 ---
 # <a name="copy-data-to-and-from-azure-synapse-analytics-using-azure-data-factory"></a>Kopírování dat do a z Azure synapse Analytics pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -145,7 +140,7 @@ GO
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |Zadejte dotaz pro aktivitu kopírování, která se má provést, aby se vyčistila data konkrétního řezu. Podrobnosti najdete v části s možností [opakování](#repeatability-during-copy). |Příkaz dotazu. |No |
-| allowPolyBase |Označuje, zda použít základ (je-li k dispozici) místo mechanismu BULKINSERT. <br/><br/> **Použití základny je doporučeným způsobem, jak načíst data do služby Azure synapse Analytics.** Omezení a podrobnosti najdete v části [použití základu k načtení dat do služby Azure synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) . |Pravda <br/>False (výchozí) |No |
+| allowPolyBase |Označuje, zda použít základ (je-li k dispozici) místo mechanismu BULKINSERT. <br/><br/> **Použití základny je doporučeným způsobem, jak načíst data do služby Azure synapse Analytics.** Omezení a podrobnosti najdete v části [použití základu k načtení dat do služby Azure synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) . |Ano <br/>False (výchozí) |No |
 | polyBaseSettings |Skupina vlastností, které lze zadat, je-li vlastnost **allowPolybase** nastavena na **hodnotu true**. |&nbsp; |No |
 | rejectValue |Určuje počet nebo procento řádků, které lze odmítnout před tím, než se dotaz nezdařil. <br/><br/>Další informace o možnostech odmítnutí základní třídy najdete v části **argumenty** v tématu [vytvoření externí tabulky (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql) . |0 (výchozí), 1, 2,... |No |
 | rejectType |Určuje, zda je možnost rejectValue zadána jako hodnota literálu nebo jako procento. |Hodnota (výchozí), procenta |No |
@@ -307,7 +302,7 @@ Data Factory vytvoří tabulku v cílovém úložišti se stejným názvem tabul
 | TinyInt | TinyInt |
 | 40bitového | 40bitového |
 | Decimal | Decimal |
-| Numeric | Decimal |
+| Číselný | Decimal |
 | Float | Float |
 | Peněžní částka | Peněžní částka |
 | Skutečné | Skutečné |

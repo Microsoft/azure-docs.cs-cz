@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 57362aa84886d7b7d764617ce5a43ca2393bed52
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0e644b7937f6ccb23b4833405b8f4ed3119879a5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018237"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362280"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Instalace agenta Azure AD Connect Health
 
@@ -34,7 +34,7 @@ V následující tabulce jsou uvedeny požadavky na použití Azure AD Connect H
 
 | Požadavek | Popis |
 | --- | --- |
-| Azure AD Premium je nainstalována. |Azure AD Connect Health je funkce Azure AD Premium. Další informace najdete v tématu [Registrace k Azure AD Premium](../fundamentals/active-directory-get-started-premium.md). <br /><br />Pokud chcete začít bezplatnou 30denní zkušební verzi, přečtěte si téma [spuštění zkušební verze](https://azure.microsoft.com/trial/get-started-active-directory/). |
+| K dispozici je Azure AD Premium (P1 nebo P2) předplatném.  |Azure AD Connect Health je funkce Azure AD Premium (P1 nebo P2). Další informace najdete v tématu [Registrace k Azure AD Premium](../fundamentals/active-directory-get-started-premium.md). <br /><br />Pokud chcete začít bezplatnou 30denní zkušební verzi, přečtěte si téma [spuštění zkušební verze](https://azure.microsoft.com/trial/get-started-active-directory/). |
 | Jste globální správce ve službě Azure AD. |Ve výchozím nastavení můžou agenty stavu instalovat a konfigurovat jenom globální správci, přistupovat k portálu a provádět všechny operace v rámci Azure AD Connect Health. Další informace najdete v článku o [správě adresáře Azure AD](../fundamentals/active-directory-whatis.md). <br /><br /> Pomocí řízení přístupu na základě role v Azure (Azure RBAC) můžete ostatním uživatelům ve vaší organizaci dovolit přístup k Azure AD Connect Health. Další informace najdete v tématu [Azure RBAC pro Azure AD Connect Health](how-to-connect-health-operations.md#manage-access-with-azure-rbac). <br /><br />**Důležité**: k instalaci agentů použijte pracovní nebo školní účet. Nemůžete použít účet Microsoft. Další informace najdete v tématu [Registrace do Azure jako organizace](../fundamentals/sign-up-organization.md). |
 | Agent Azure AD Connect Health se instaluje na každý cílový server. | Agenti stavu musí být nainstalováni a nakonfigurováni na cílových serverech, aby mohli přijímat data a poskytovat možnosti monitorování a analýzy. <br /><br />Pokud například chcete získat data z infrastruktury Active Directory Federation Services (AD FS) (AD FS), musíte agenta nainstalovat na server AD FS a na server služby Proxy webových aplikací. Podobně pokud chcete získat data z místní infrastruktury Azure AD Domain Services (Azure služba AD DS), musíte agenta nainstalovat na řadiče domény.  |
 | Koncové body služby Azure mají odchozí připojení. | Agent během instalace a za běhu vyžaduje připojení ke koncovým bodům služby Azure AD Connect Health. Pokud brány firewall blokují odchozí připojení, přidejte [koncové body odchozího připojení](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) do seznamu povolených. |
@@ -64,7 +64,7 @@ Tyto adresy URL umožňují komunikaci s Azure AD Connect Healthmi koncovými bo
 | Prostředí domény | Požadované koncové body služby Azure |
 | --- | --- |
 | Obecné veřejné | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;. servicebus.windows.net-port: 5671 (tento koncový bod není v nejnovější verzi agenta vyžadován.)</li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https: \/ /www.Office.com (tento koncový bod se používá jenom pro účely zjišťování během registrace).</li> <li>https://aadcdn.msftauth.net</li><li>https://aadcdn.msauth.net</li> |
-| Azure Germany | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https: \/ /www.Office.de (tento koncový bod se používá jenom pro účely zjišťování během registrace).</li> <li>https://aadcdn.msftauth.net</li><li>https://aadcdn.msauth.net</li> |
+| Azure (Německo) | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https: \/ /www.Office.de (tento koncový bod se používá jenom pro účely zjišťování během registrace).</li> <li>https://aadcdn.msftauth.net</li><li>https://aadcdn.msauth.net</li> |
 | Azure Government | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https: \/ /www.Office.com (tento koncový bod se používá jenom pro účely zjišťování během registrace).</li> <li>https://aadcdn.msftauth.net</li><li>https://aadcdn.msauth.net</li> |
 
 
@@ -195,7 +195,7 @@ Pokud chcete ověřit úspěšnou instalaci agenta, vyhledejte na serveru násle
 ![Snímek obrazovky zobrazující běžící Azure AD Connect Health pro synchronizační služby na serveru.](./media/how-to-connect-health-agent-install/services.png)
 
 > [!NOTE]
-> Nezapomeňte, že abyste mohli Azure AD Connect Health používat, musíte mít Azure AD Premium. Pokud nemáte Azure AD Premium, nemůžete dokončit konfiguraci v Azure Portal. Další informace najdete v tématu [požadavky](how-to-connect-health-agent-install.md#requirements).
+> Nezapomeňte, že pro použití Azure AD Connect Health musíte mít Azure AD Premium (P1 nebo P2). Pokud nemáte Azure AD Premium, nemůžete dokončit konfiguraci v Azure Portal. Další informace najdete v tématu [požadavky](how-to-connect-health-agent-install.md#requirements).
 >
 >
 

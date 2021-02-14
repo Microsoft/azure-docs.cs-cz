@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 01a69dbf9230154b74145f932b678d6bbebbde08
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 09c4dadd7a6560bd5163d623dd8a7f247b57860e
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583955"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102491"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Použití MSAL v národním cloudovém prostředí
 
@@ -70,7 +70,7 @@ Povolení aplikace MSAL.js pro cloudy svrchovaného prostředí:
 
 ### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 
-1. Přihlaste se <a href="https://portal.azure.us/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
+1. Přihlaste se na <a href="https://portal.azure.us/" target="_blank">Azure Portal</a>.
 
    Pokud chcete najít Azure Portal koncových bodů pro jiné národní cloudy, přečtěte si téma [koncové body registrace aplikace](authentication-national-cloud.md#app-registration-endpoints).
 

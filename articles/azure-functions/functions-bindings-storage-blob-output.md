@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 953a958d2a21dd9ffda07b208916a5ee01aa505f
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: eaa8a4c600864f636d49813d415621d46130fff7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881051"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381647"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>Výstupní vazba Azure Blob Storage pro Azure Functions
 
@@ -394,14 +394,14 @@ Atribut můžete použít `StorageAccount` k určení účtu úložiště na úr
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `Blob` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový** | neuvedeno | Musí být nastaven na hodnotu `blob` . |
-|**směr** | neuvedeno | Musí být nastaven na hodnotu `out` pro výstupní vazbu. Výjimky jsou uvedeny v části [použití](#usage) . |
-|**Jméno** | neuvedeno | Název proměnné, která představuje objekt BLOB v kódu funkce.  Nastavte na `$return` odkaz na návratovou hodnotu funkce.|
+|**textový** | Není k dispozici | Musí být nastaven na hodnotu `blob` . |
+|**směr** | Není k dispozici | Musí být nastaven na hodnotu `out` pro výstupní vazbu. Výjimky jsou uvedeny v části [použití](#usage) . |
+|**Jméno** | Není k dispozici | Název proměnné, která představuje objekt BLOB v kódu funkce.  Nastavte na `$return` odkaz na návratovou hodnotu funkce.|
 |**dílčí** |**Blobpath cestou** | Cesta k kontejneru objektů BLOB. |
-|**vázán** |**Připojení**| Název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zde zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyStorage", modul runtime Functions vyhledá nastavení aplikace s názvem "AzureWebJobsMyStorage". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec úložiště v nastavení aplikace s názvem `AzureWebJobsStorage` .<br><br>Připojovací řetězec musí být pro účet úložiště pro obecné účely, nikoli [účet úložiště jen pro objekty blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
-|neuvedeno | **Přístup** | Určuje, zda budete číst nebo zapisovat. |
+|**vázán** |**Připojení**| Název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zde zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyStorage", modul runtime Functions vyhledá nastavení aplikace s názvem "AzureWebJobsMyStorage". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec úložiště v nastavení aplikace s názvem `AzureWebJobsStorage` .<br><br>Připojovací řetězec musí být pro účet úložiště pro obecné účely, nikoli [účet úložiště jen pro objekty blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).<br><br>Pokud používáte [verzi 5. x nebo vyšší z rozšíření](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)místo připojovacího řetězce, můžete zadat odkaz na oddíl konfigurace, který definuje připojení. Viz [připojení](./functions-reference.md#connections).|
+|Není k dispozici | **Přístup** | Určuje, zda budete číst nebo zapisovat. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -440,7 +440,7 @@ Podrobnosti najdete v [příkladu výstupu](#example) .
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 
-| Vazba |  Referenční informace |
+| Vazba |  Reference |
 |---|---|
 | Objekt blob | [Kódy chyb objektů BLOB](/rest/api/storageservices/fileservices/blob-service-error-codes) |
 | Objekt blob, tabulka, fronta |  [Kódy chyb úložiště](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |

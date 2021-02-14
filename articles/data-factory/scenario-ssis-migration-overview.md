@@ -1,22 +1,17 @@
 ---
 title: Migrace místních služba SSIS (SQL Server Integration Services) úloh (SSIS) na SSIS v Azure Data Factory (ADF)
 description: Migrujte místní SSIS úlohy do SSIS v ADF.
-services: data-factory
-documentationcenter: ''
 author: chugugrace
 ms.author: chugu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: ef4b01e38a60d6770ba476988fab934ada0bc631
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 78c488302a874319f79a143e4657d161fe849855
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635690"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373602"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>Migrace místních SSIS úloh do SSIS v ADF
 
@@ -28,7 +23,7 @@ Když migrujete databázové úlohy z SQL Server místně do služby Azure Datab
 
 Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF) podporuje spouštění balíčků SSIS. Po zřízení Azure-SSIS IR můžete pro nasazení a spouštění balíčků v Azure použít známé nástroje SQL Server, jako je například/SQL (SSDT) serveru Management Studio (SSMS) a nástroje příkazového řádku, jako je například dtinstall/dtutil/DTExec. Další informace najdete v tématu [Přehled služby Azure SSIS Rewind a Shift](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
 
-Tento článek popisuje proces migrace úloh ETL z místního SSIS na SSIS v ADF. Proces migrace se skládá ze dvou fází: **posouzení** a **migrace** .
+Tento článek popisuje proces migrace úloh ETL z místního SSIS na SSIS v ADF. Proces migrace se skládá ze dvou fází: **posouzení** a **migrace**.
 
 ## <a name="assessment"></a>Posouzení
 
@@ -49,7 +44,7 @@ Data Migration Assistant (DMA) je pro tento účel volně zaváděný nástroj, 
   - MSDB, což je systémová databáze v SQL Server používaná k ukládání balíčků SSIS.
   - Spravovaný systém souborů, což je specifická složka v SQL Server cesta instalace používaná k ukládání balíčků SSIS.
 
-DMA aktuálně podporuje dávkové vyhodnocení balíčků uložených v **systému souborů** , v obchodě s **balíčky** a v **katalogu SSIS** od **verze DMA verze 5.0** .
+DMA aktuálně podporuje dávkové vyhodnocení balíčků uložených v **systému souborů**, v obchodě s **balíčky** a v **katalogu SSIS** od **verze DMA verze 5.0**.
 
 Získejte [přímý přístup do paměti](/sql/dma/dma-overview)a [proveďte posouzení balíčku](/sql/dma/dma-assess-ssis).
 

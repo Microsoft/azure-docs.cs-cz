@@ -1,22 +1,18 @@
 ---
 title: Sestavení prvního objektu pro vytváření dat (šablona Správce prostředků)
 description: V tomto kurzu vytvoříte ukázkový kanál služby Azure Data Factory pomocí šablony Azure Resource Manageru.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: e65039d39bea4063f717709f97b090e465c5e3c4
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: deeed3890094961b0934a6e093b9f5025990d1a3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508505"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392098"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Kurz: Sestavení prvního objektu pro vytváření dat Azure pomocí šablony Azure Resource Manageru
 > [!div class="op_single_selector"]
@@ -49,7 +45,7 @@ Kanál v tomto kurzu má jednu aktivitu: **aktivitu HDInsight Hive**. Tato aktiv
 
 ## <a name="in-this-tutorial"></a>V tomto kurzu
 
-| Entita | Popis |
+| Entita | Description |
 | --- | --- |
 | Propojená služba Azure Storage |Propojí účet služby Azure Storage s datovou továrnou. Účet služby Azure Storage v této ukázce obsahuje vstupní a výstupní data pro kanál. |
 | Propojená služba HDInsightu na vyžádání |Propojí cluster HDInsight na vyžádání k datové továrně. Cluster se automaticky vytvoří, abyste mohli zpracovat data, a po dokončení zpracování se odstraní. |
@@ -620,7 +616,7 @@ Tato šablona vytvoří objekt pro vytváření dat s názvem GatewayUsingArmDF,
 
 ## <a name="see-also"></a>Viz také
 
-| Téma | Popis |
+| Téma | Description |
 |:--- |:--- |
 | [Pipelines](data-factory-create-pipelines.md) |Tento článek vám pomůže pochopit kanály a aktivity ve službě Azure Data Factory a porozumět tomu, jak se dají ve vaší situaci nebo firmě použít k sestavení kompletních pracovních postupů založených na datech. |
 | [Datové sady](data-factory-create-datasets.md) |Tento článek vám pomůže pochopit datové sady ve službě Azure Data Factory. |

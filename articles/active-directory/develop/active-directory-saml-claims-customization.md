@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 0ded249a55e5a59bdcad7407694cbd5ed4cf2352
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 05447f41ca891adfe14533a74dfedf153e3c5773
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756074"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102695"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -54,7 +54,7 @@ Pokud požadavek SAML neobsahuje element pro NameIDPolicy, bude platforma identi
 
 V rozevíracím seznamu **zvolit formát identifikátoru názvu** můžete vybrat jednu z následujících možností.
 
-| Formát NameID | Popis |
+| Formát NameID | Description |
 |---------------|-------------|
 | **Výchozí** | Platforma Microsoft Identity Platform bude používat výchozí formát zdroje. |
 | **Trvalý** | Platforma Microsoft Identity Platform bude používat jako formát NameID jako trvalá. |
@@ -67,7 +67,7 @@ Dočasná NameID je také podporována, ale v rozevíracím seznamu není k disp
 
 Vyberte požadovaný zdroj pro `NameIdentifier` deklaraci (nebo NameId). Můžete vybrat z následujících možností.
 
-| Název | Popis |
+| Název | Description |
 |------|-------------|
 | E-mail | E-mailová adresa uživatele |
 | Třídy | Hlavní název uživatele (UPN) uživatele |
@@ -81,10 +81,8 @@ Další informace naleznete v [tabulce 3: platné hodnoty ID na zdroj](active-di
 
 Všem deklaracím, které definujete v Azure AD, můžete také přiřadit jakoukoli konstantní (statickou) hodnotu. Použijte následující postup k přiřazení konstantní hodnoty:
 
-1. V <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a>v části **atributy uživatele & deklaracemi** klikněte na ikonu **Upravit** a upravte deklarace.
-
+1. V <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>v části **atributy uživatele & deklaracemi** klikněte na ikonu **Upravit** a upravte deklarace.
 1. Klikněte na požadovanou deklaraci identity, kterou chcete upravit.
-
 1. Zadejte konstantní hodnotu bez uvozovek ve **zdrojovém atributu** dle vaší organizace a klikněte na **Uložit**.
 
     ![Atributy org & deklarace identity v Azure Portal](./media/active-directory-saml-claims-customization/organization-attribute.png)
@@ -97,7 +95,7 @@ Všem deklaracím, které definujete v Azure AD, můžete také přiřadit jakou
 
 Můžete také použít funkce transformace deklarací identity.
 
-| Funkce | Popis |
+| Funkce | Description |
 |----------|-------------|
 | **ExtractMailPrefix()** | Odebere příponu domény z e-mailové adresy nebo hlavního názvu uživatele. Tím se extrahuje jenom první část uživatelského jména, který se předává (například "joe_smith" místo joe_smith@contoso.com ). |
 | **Join ()** | Připojí k atributu ověřenou doménu. Pokud má vybraná hodnota identifikátoru uživatele doména, extrahuje uživatelské jméno, aby se připojila vybraná ověřená doména. Pokud například joe_smith@contoso.com jako hodnotu identifikátoru uživatele vyberete e-mail () a jako ověřenou doménu vyberete contoso.onmicrosoft.com, bude to mít za následek joe_smith@contoso.onmicrosoft.com . |
@@ -124,7 +122,7 @@ Chcete-li použít transformaci na atribut uživatele:
 
 K transformaci deklarací lze použít následující funkce.
 
-| Funkce | Popis |
+| Funkce | Description |
 |----------|-------------|
 | **ExtractMailPrefix()** | Odebere příponu domény z e-mailové adresy nebo hlavního názvu uživatele. Tím se extrahuje jenom první část uživatelského jména, který se předává (například "joe_smith" místo joe_smith@contoso.com ). |
 | **Join ()** | Vytvoří novou hodnotu spojením dvou atributů. Volitelně můžete použít oddělovač mezi dvěma atributy. Pro transformaci deklarace NameID je spojení omezené na ověřenou doménu. Pokud má vybraná hodnota identifikátoru uživatele doména, extrahuje uživatelské jméno, aby se připojila vybraná ověřená doména. Pokud například joe_smith@contoso.com jako hodnotu identifikátoru uživatele vyberete e-mail () a jako ověřenou doménu vyberete contoso.onmicrosoft.com, bude to mít za následek joe_smith@contoso.onmicrosoft.com . |

@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: c8d52609043f173e896668eadeb8c59493739859
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c58b267874f013a4660428e23abd41810a0fbf34
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95521134"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093161"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Zásady podpory Azure Red Hat OpenShift
 
@@ -26,6 +26,7 @@ Některé konfigurace pro clustery Azure Red Hat OpenShift 4 můžou ovlivnit mo
 * Cluster musí mít minimálně dva pracovní uzly. Neměňte škálu pracovních procesů clusteru na nulu nebo se pokuste o bezproblémové vypnutí clusteru.
 * Neodstraňujte ani neměňte cluster Prometheus a služby Alertmanager.
 * Neodstraňujte pravidla Alertmanager služby.
+* Neodstraňujte ani neměňte skupiny zabezpečení sítě.
 * Neodstraňujte ani neměňte protokolování služby Azure Red Hat OpenShift (MDSD lusky).
 * Neodstraňujte ani neupravujte tajný klíč pro vyžádání obsahu clusteru arosvc.azurecr.io.
 * Všechny virtuální počítače s clustery musí mít přímý odchozí přístup k Internetu, přinejmenším k koncovým bodům Azure Resource Manager (ARM) a Service Logging (Ženeva).  Není podporována žádná forma proxy serveru HTTPS.
@@ -52,7 +53,7 @@ Azure Red Hat OpenShift 4 podporuje instance pracovních uzlů na následující
 |Dsv3|Standard_D16s_v3|16|64|
 |Dsv3|Standard_D32s_v3|32|128|
 
-### <a name="memory-optimized"></a>Optimalizované z hlediska paměti
+### <a name="memory-optimized"></a>Optimalizované pro paměť.
 
 |Řada|Velikost|Virtuální procesory|Paměť: GiB|
 |-|-|-|-|
@@ -61,7 +62,7 @@ Azure Red Hat OpenShift 4 podporuje instance pracovních uzlů na následující
 |Esv3|Standard_E16s_v3|16|128|
 |Esv3|Standard_E32s_v3|32|256|
 
-### <a name="compute-optimized"></a>Optimalizované z hlediska výpočetních služeb
+### <a name="compute-optimized"></a>Optimalizované pro výpočty.
 
 |Řada|Velikost|Virtuální procesory|Paměť: GiB|
 |-|-|-|-|

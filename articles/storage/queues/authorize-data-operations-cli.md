@@ -6,17 +6,17 @@ author: tamram
 services: storage
 ms.author: tamram
 ms.reviewer: ozgun
-ms.date: 11/13/2020
+ms.date: 02/10/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 01b78fa3250f371cfc4d713668531664ef8c139e
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 2f7092d8ce184d7021774814e96935e46d1ffb56
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587600"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363164"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>Volba způsobu autorizace přístupu k Queue data pomocí Azure CLI
 
@@ -34,6 +34,9 @@ Příkazy rozhraní příkazového řádku Azure pro čtení a zápis dat ve fro
 
 Pokud chcete použít `--auth-mode` parametr, ujistěte se, že máte nainstalované rozhraní příkazového řádku Azure CLI v 2.0.46 nebo novějším. Spusťte `az --version` a ověřte nainstalovanou verzi.
 
+> [!NOTE]
+> Když je účet úložiště zamčený s Azure Resource Manager zámek **jen pro čtení** , není pro tento účet úložiště povolená operace se [seznamem klíčů](/rest/api/storagerp/storageaccounts/listkeys) . **Seznam klíčů** je operace post a všechny operace post jsou znemožněny, když je pro tento účet nakonfigurován zámek **ReadOnly** . Z tohoto důvodu platí, že pokud je účet uzamčený pomocí zámku **jen pro čtení** , uživatelé, kteří ještě nemají klíče účtu, musí použít přihlašovací údaje Azure AD pro přístup k datům ve frontě.
+
 > [!IMPORTANT]
 > Pokud parametr vynecháte `--auth-mode` nebo ho nastavíte na `key` , pokusí se Azure CLI použít přístupový klíč k účtu pro autorizaci. V takovém případě společnost Microsoft doporučuje zadat přístupový klíč buď v příkazu, nebo v `AZURE_STORAGE_KEY` proměnné prostředí. Další informace o proměnných prostředí naleznete v části s názvem [nastavení proměnných prostředí pro parametry autorizace](#set-environment-variables-for-authorization-parameters).
 >
@@ -41,7 +44,7 @@ Pokud chcete použít `--auth-mode` parametr, ujistěte se, že máte nainstalov
 
 ## <a name="authorize-with-azure-ad-credentials"></a>Autorizovat pomocí přihlašovacích údajů Azure AD
 
-Když se přihlásíte k rozhraní příkazového řádku Azure CLI pomocí přihlašovacích údajů Azure AD, vrátí se přístupový token OAuth 2,0. Tento token je automaticky využíván rozhraním Azure CLI k autorizaci následných operací s daty proti Blob Storage nebo Queue Storage. U podporovaných operací už nemusíte předávat klíč účtu nebo token SAS pomocí příkazu.
+Když se přihlásíte k rozhraní příkazového řádku Azure CLI pomocí přihlašovacích údajů Azure AD, vrátí se přístupový token OAuth 2,0. Tento token je automaticky využíván rozhraním Azure CLI k autorizaci následných operací s daty proti Queue Storage. U podporovaných operací už nemusíte předávat klíč účtu nebo token SAS pomocí příkazu.
 
 Pomocí řízení přístupu na základě role Azure (Azure RBAC) můžete přiřadit data do fronty k objektu zabezpečení služby Azure AD. Další informace o rolích Azure v Azure Storage najdete v tématu [Správa přístupových práv k datům Azure Storage pomocí Azure RBAC](../common/storage-auth-aad-rbac-portal.md).
 
@@ -55,7 +58,7 @@ Podrobnosti o oprávněních potřebných pro jednotlivé operace Azure Storage 
 
 Následující příklad ukazuje, jak vytvořit frontu z Azure CLI pomocí vašich přihlašovacích údajů Azure AD. Pokud chcete vytvořit frontu, budete se muset přihlásit do Azure CLI a budete potřebovat skupinu prostředků a účet úložiště.
 
-1. Než vytvoříte frontu, přiřaďte roli [Přispěvatel dat objektů BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) sami sobě. I když jste vlastníkem účtu, potřebujete explicitní oprávnění k provádění operací s daty v účtu úložiště. Další informace o přiřazování rolí Azure najdete v tématu [použití Azure Portal k přiřazení role Azure pro přístup k datům BLOB a front](../common/storage-auth-aad-rbac-portal.md).
+1. Než vytvoříte frontu, přiřaďte roli [Přispěvatel dat fronty úložiště](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) sami sobě. I když jste vlastníkem účtu, potřebujete explicitní oprávnění k provádění operací s daty v účtu úložiště. Další informace o přiřazování rolí Azure najdete v tématu [použití Azure Portal k přiřazení role Azure pro přístup k datům BLOB a front](../common/storage-auth-aad-rbac-portal.md).
 
     > [!IMPORTANT]
     > Rozšiřování přiřazení rolí Azure může trvat několik minut.
@@ -98,7 +101,7 @@ az storage queue create \
 
 Můžete zadat parametry autorizace v proměnných prostředí, aby se zabránilo jejich zahrnutí při každém volání operace Azure Storage data. Následující tabulka popisuje dostupné proměnné prostředí.
 
-| Proměnná prostředí | Popis |
+| Proměnná prostředí | Description |
 |--|--|
 | **AZURE_STORAGE_ACCOUNT** | Název účtu úložiště. Tato proměnná by se měla používat ve spojení s klíčem účtu úložiště nebo tokenem SAS. Pokud žádná není, Azure CLI se pokusí získat přístupový klíč účtu úložiště pomocí ověřeného účtu Azure AD. Pokud je spuštěný velký počet příkazů najednou, může být dosaženo limitu omezování Azure Storage poskytovatele prostředků. Další informace o omezeních poskytovatele prostředků najdete v tématu [škálovatelnost a výkonnostní cíle pro poskytovatele prostředků Azure Storage](../common/scalability-targets-resource-provider.md). |
 | **AZURE_STORAGE_KEY** | Klíč účtu úložiště. Tato proměnná se musí používat ve spojení s názvem účtu úložiště. |

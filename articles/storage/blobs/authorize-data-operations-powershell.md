@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: de42854f512a69b7b70a15a10fe8499ca1d0bf8b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 45fa5cf4c76577cb5e8ba9bf482f4aab7301e3c6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017725"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391486"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-data"></a>Spuštění příkazů PowerShellu s přihlašovacími údaji Azure AD pro přístup k datům objektu BLOB
 
@@ -28,6 +28,9 @@ Pomocí řízení přístupu založeného na rolích Azure (Azure RBAC) můžete
 Rozšíření Azure Storage jsou podporovaná pro operace s daty objektů BLOB. Operace, které můžete volat, závisí na oprávněních udělených objektu zabezpečení služby Azure AD, se kterým se přihlašujete k PowerShellu. Oprávnění pro Azure Storage kontejnery jsou přiřazena prostřednictvím Azure RBAC. Pokud jste například přiřadili roli **čtečky dat objektů BLOB** , můžete spustit skriptovací příkazy, které čtou data z kontejneru. Pokud jste přiřadili roli **Přispěvatel dat objektu BLOB** , můžete spustit skriptovací příkazy, které čtou, zapisují nebo odstraňují kontejner nebo data, která obsahují.
 
 Podrobnosti o oprávněních potřebných pro jednotlivé operace Azure Storage v kontejneru najdete v tématu [volání operací úložiště s tokeny OAuth](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).  
+
+> [!IMPORTANT]
+> Když je účet úložiště zamčený s Azure Resource Manager zámek **jen pro čtení** , není pro tento účet úložiště povolená operace se [seznamem klíčů](/rest/api/storagerp/storageaccounts/listkeys) . **Seznam klíčů** je operace post a všechny operace post jsou znemožněny, když je pro tento účet nakonfigurován zámek **ReadOnly** . Z tohoto důvodu platí, že pokud je účet uzamčený pomocí zámku **jen pro čtení** , uživatelé, kteří ještě nemají klíče účtu, musí použít přihlašovací údaje Azure AD pro přístup k datům objektu BLOB. V prostředí PowerShell zahrňte `-UseConnectedAccount` parametr pro vytvoření objektu **AzureStorageContext** s přihlašovacími údaji služby Azure AD.
 
 ## <a name="call-powershell-commands-using-azure-ad-credentials"></a>Volání příkazů PowerShellu pomocí přihlašovacích údajů Azure AD
 

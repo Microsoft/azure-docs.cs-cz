@@ -13,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 815947b7c1774fb58ca4e3d20a4d1d2b43099cd2
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 83cf8840ffb9d123efa88d4acc304c8af4db5bf8
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593074"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102457"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Rychlý start: Nastavení tenanta
 
@@ -50,7 +50,7 @@ Spousta vývojářů už má klienty prostřednictvím služeb nebo předplatný
 
 Chcete-li zjistit tenanta:
 
-1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>. Použijte účet, který budete používat ke správě aplikace.
+1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>. Použijte účet, který budete používat ke správě aplikace.
 1. Podívejte se do pravého horního rohu. Pokud máte tenanta, budete automaticky přihlášeni. Název tenanta se zobrazí přímo pod názvem vašeho účtu.
    * Když najedete myší na název účtu, zobrazí se vaše jméno, e-mailová adresa, adresář nebo ID tenanta (GUID) a doména.
    * Pokud je k vašemu účtu přidruženo více tenantů, můžete výběrem názvu vašeho účtu otevřít nabídku, ve které můžete mezi jednotlivými tenanty přepínat. Každý tenant má vlastní ID tenanta.

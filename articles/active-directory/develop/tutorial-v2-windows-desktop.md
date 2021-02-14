@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5bfdf90ddbd500fd9d1c504bd37ed4ac35d8bf70
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: d9db845bfa4a7c0c117220b8932b370eb230f6dc
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752763"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102984"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Kurz: volání rozhraní Microsoft Graph API z desktopové aplikace pro Windows
 
@@ -57,7 +57,7 @@ MSAL spravuje ukládání do mezipaměti a aktualizace přístupových tokenů z
 
 Tato příručka používá následující balíčky NuGet:
 
-|Knihovna|Popis|
+|Knihovna|Description|
 |---|---|
 |[Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Knihovna Microsoft Authentication Library (MSAL.NET)|
 
@@ -97,14 +97,14 @@ Aplikaci můžete zaregistrovat oběma způsoby.
 ### <a name="option-1-express-mode"></a>Možnost 1: Expresní režim
 
 Aplikaci můžete rychle zaregistrovat pomocí následujícího postupu:
-1. Přejít k prostředí rychlý Start pro <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs" target="_blank">Azure Portal registrace aplikací <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
+1. Přejít k prostředí rychlý Start pro <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs" target="_blank">Azure Portal registrace aplikací</a>
 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
 1. Postupujte podle pokynů ke stažení a automatické konfiguraci nové aplikace jedním kliknutím.
 
 ### <a name="option-2-advanced-mode"></a>Možnost 2: rozšířený režim
 
 Postup při registraci aplikace a přidání informací o registraci aplikace k řešení:
-1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
+1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.

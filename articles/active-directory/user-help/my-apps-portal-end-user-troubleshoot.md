@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 03/21/2019
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 5ae946f82590f2270719570e4b589d49542ffec8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4377ed76de971f78336ea9024b59dafc5d513487
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833975"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094963"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>Řešení problémů s portálem moje aplikace
 
@@ -31,9 +31,9 @@ Pokud máte problémy s instalací zabezpečeného přihlašovacího rozhraní p
 
     - **Microsoft Edge.** Běží v systému Windows 10 a novějších verzích.
 
-    - **Google Chrome.** Běží v systému Windows 7 nebo novějším a v Mac OS X nebo novějším.
+    - **Google Chrome.** Běží v systému Windows 7 nebo novějším a na macOS X nebo novějším.
 
-    - **Mozilla Firefox 26,0 nebo novější.** Běží v systému Windows XP SP2 nebo novějším a v Mac OS X 10,6 nebo novějším.
+    - **Mozilla Firefox 26,0 nebo novější.** Běží v systému Windows XP SP2 nebo novějším a v macOS X 10,6 nebo novějším.
 
     - **Internet Explorer 11.** Běží v systému Windows 7 nebo novějším (omezená podpora).
 
@@ -46,6 +46,11 @@ Pokud máte problémy s instalací zabezpečeného přihlašovacího rozhraní p
 ## <a name="i-cant-sign-in-to-the-my-apps-portal"></a>Nemůžu se přihlásit k portálu **Moje aplikace**
 
 Pokud máte potíže s přihlášením k portálu **Moje aplikace** , můžete vyzkoušet následující:
+
+- Pokud se vám při přihlašování pomocí osobního účet Microsoft zobrazí chyba, můžete se přihlásit pomocí názvu domény vaší organizace (například contoso.com) nebo **ID tenanta** vaší organizace od správce v jedné z následujících adres URL:
+
+   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
 
 - Ujistěte se, že používáte správnou adresu URL. Měla by to být https://myapps.microsoft.com nebo přizpůsobená stránka pro vaši organizaci, například https://myapps.microsoft.com/contoso.com .
 

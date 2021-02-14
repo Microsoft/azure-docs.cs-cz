@@ -1,24 +1,18 @@
 ---
 title: Vytvoření Azure Data Factory pomocí sady .NET SDK
 description: Vytvoření Azure Data Factory a kanálu pomocí sady .NET SDK ke kopírování dat z jednoho umístění v úložišti objektů BLOB v Azure do jiného umístění.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 12/18/2020
 ms.author: jingwang
-ms.openlocfilehash: c5e35fb8ab6a782ec79f10b1099f6781062c1d7c
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 821f64c46e0ae813e7dcd437bb0d4af848647185
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97678871"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372684"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Rychlé zprovoznění: Vytvoření datové továrny a kanálu pomocí sady .NET SDK
 
@@ -63,7 +57,7 @@ Dále vytvořte konzolovou aplikaci C# .NET v aplikaci Visual Studio:
 
 ## <a name="install-nuget-packages"></a>Instalace balíčků NuGet
 
-1. Vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**.
+1. Vyberte **Nástroje** > **Správce balíčků NuGet** > **Konzola správce balíčků**.
 2. V podokně **konzoly Správce balíčků** spusťte následující příkazy pro instalaci balíčků. Další informace najdete v [balíčku NuGet pro Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
 
     ```powershell

@@ -1,21 +1,18 @@
 ---
 title: Transformace dat pomocí aktivity Sparku
 description: Naučte se, jak transformovat data spuštěním programů Spark z Azure Data Factory kanálu pomocí aktivity Sparku.
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
-ms.openlocfilehash: cac64b17e7aad9aa2bf88386f21d5f82b3013fa3
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e5c50d2cbd16ad2808dab485ad2b2870d6f3d350
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566771"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392353"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Transformuje data pomocí aktivity Sparku v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -59,27 +56,27 @@ Tady je ukázka definice JSON aktivity Spark:
 
 Následující tabulka obsahuje popis vlastností JSON použitých v definici JSON:
 
-| Vlastnost              | Popis                              | Povinné |
+| Vlastnost              | Popis                              | Vyžadováno |
 | --------------------- | ---------------------------------------- | -------- |
 | name                  | Název aktivity v kanálu.    | Yes      |
-| description           | Text popisující, co aktivita dělá.  | Ne       |
+| description           | Text popisující, co aktivita dělá.  | No       |
 | typ                  | Pro aktivitu Spark je typ aktivity HDInsightSpark. | Yes      |
 | linkedServiceName     | Název propojené služby HDInsight Spark, na které běží program Spark Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Yes      |
-| SparkJobLinkedService | Propojená služba Azure Storage, která obsahuje soubor úlohy Spark, závislosti a protokoly. Tady se podporují jenom propojené služby **[Azure Blob Storage](./connector-azure-blob-storage.md)** a **[adls Gen2](./connector-azure-data-lake-storage.md)** . Pokud pro tuto vlastnost nezadáte hodnotu, použije se úložiště přidružené ke clusteru HDInsight. Hodnota této vlastnosti může být pouze propojená služba Azure Storage. | Ne       |
+| SparkJobLinkedService | Propojená služba Azure Storage, která obsahuje soubor úlohy Spark, závislosti a protokoly. Tady se podporují jenom propojené služby **[Azure Blob Storage](./connector-azure-blob-storage.md)** a **[adls Gen2](./connector-azure-data-lake-storage.md)** . Pokud pro tuto vlastnost nezadáte hodnotu, použije se úložiště přidružené ke clusteru HDInsight. Hodnota této vlastnosti může být pouze propojená služba Azure Storage. | No       |
 | rootPath              | Kontejner a složka Azure Blob, které obsahují soubor Spark. V názvu souboru se rozlišují malá a velká písmena. Podrobnosti o struktuře této složky najdete v části struktura složky (další oddíl). | Yes      |
 | entryFilePath         | Relativní cesta ke kořenové složce kódu nebo balíčku Spark Vstupní soubor musí být buď soubor Pythonu, nebo soubor. jar. | Yes      |
-| NázevTřídy             | Hlavní třída Java/Spark aplikace      | Ne       |
-| náhodné             | Seznam argumentů příkazového řádku pro program Spark. | Ne       |
-| proxyUser             | Uživatelský účet, který se má zosobnit pro spuštění programu Spark | Ne       |
-| sparkConfig           | Zadejte hodnoty pro vlastnosti konfigurace Sparku uvedené v tématu: [Konfigurace Spark – vlastnosti aplikace](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Ne       |
-| GetDebugInfo –          | Určuje, kdy se soubory protokolu Spark zkopírují do úložiště Azure používaného clusterem HDInsight (nebo), který určuje sparkJobLinkedService. Povolené hodnoty: žádné, vždy nebo chyba. Výchozí hodnota: Žádný. | Ne       |
+| NázevTřídy             | Hlavní třída Java/Spark aplikace      | No       |
+| náhodné             | Seznam argumentů příkazového řádku pro program Spark. | No       |
+| proxyUser             | Uživatelský účet, který se má zosobnit pro spuštění programu Spark | No       |
+| sparkConfig           | Zadejte hodnoty pro vlastnosti konfigurace Sparku uvedené v tématu: [Konfigurace Spark – vlastnosti aplikace](https://spark.apache.org/docs/latest/configuration.html#available-properties). | No       |
+| GetDebugInfo –          | Určuje, kdy se soubory protokolu Spark zkopírují do úložiště Azure používaného clusterem HDInsight (nebo), který určuje sparkJobLinkedService. Povolené hodnoty: žádné, vždy nebo chyba. Výchozí hodnota: Žádný. | No       |
 
 ## <a name="folder-structure"></a>Struktura složek
 Úlohy Spark jsou více rozšiřitelnější než při úlohách vepřového a podregistru. Pro úlohy Spark můžete zadat několik závislostí, jako jsou například balíčky jar (umístěné v cestě třídy Java), soubory Pythonu (umístěné na PYTHONPATH) a všechny další soubory.
 
 Vytvořte ve službě Azure Blob Storage, na kterou odkazuje propojená služba HDInsight, následující strukturu složek. Pak nahrajte závislé soubory do příslušných podadresářů v kořenové složce reprezentované **entryFilePath**. Například nahrajte soubory Pythonu do podsložky pyFiles a soubory jar do podsložky jar kořenové složky. V době běhu Služba Data Factory očekává v úložišti objektů BLOB v Azure následující strukturu složek:     
 
-| Cesta                  | Popis                              | Požaduje se | Typ   |
+| Cesta                  | Popis                              | Povinné | Typ   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.` zobrazuje            | Kořenová cesta úlohy Spark v propojené službě úložiště | Ano      | Složka |
 | &lt;definováno uživatelem &gt; | Cesta ukazující na vstupní soubor úlohy Spark | Yes      | Soubor   |

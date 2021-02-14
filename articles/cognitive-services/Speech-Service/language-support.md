@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 118ab33c8d8ce46559957236daa21ba494655e69
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 9dfd950303d1cb838d44ae672fed33dd4cd7b5ec
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526275"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381898"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -26,7 +26,7 @@ Jazyková podpora se liší podle funkcí služby Speech. Následující tabulka
 
 Sada Microsoft Speech SDK i REST API podporují následující jazyky (národní prostředí). 
 
-Pro zvýšení přesnosti se přizpůsobení nabídne pro podmnožinu jazyků prostřednictvím nahrávání **zvuku a přepisu s popiskem** nebo **souvisejícího textu: věty**. Další informace o přizpůsobení najdete v tématu [Začínáme s Custom Speech](./custom-speech-overview.md).
+Pro zvýšení přesnosti se přizpůsobení nabídne pro podmnožinu jazyků prostřednictvím nahrávání **zvuku a přepisu s popiskem** nebo **souvisejícího textu: věty**. Podpora pro přizpůsobení akustického modelu s **přepisy zvuku a s popiskem** na základě lidského textu je omezená na konkrétní základní modely uvedené níže. Další základní modely a jazyky budou používat jenom text přepisů, aby se vlastní modely využívaly stejně jako v **souvisejícím textu: věty**. Další informace o přizpůsobení najdete v tématu [Začínáme s Custom Speech](./custom-speech-overview.md).
 
 <!--
 To get the AM and ML bits:
@@ -53,48 +53,48 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Arabština (Spojené arabské emiráty)      | `ar-AE` | Jazykový model                                   |                           |
 | Bulharština (Bulharsko)               | `bg-BG` | Jazykový model                                   |                           |
 | katalánština (Španělsko)                    | `ca-ES` | Jazykový model                                   | Yes                          |
-| Čínština (kantonština, tradiční)   | `zh-HK` | Akustický model<br>Jazykový model                 |        Yes                   |
-| Čínština (Mandarin, zjednodušená)     | `zh-CN` | Akustický model<br>Jazykový model                 |     Yes                      |
-| Čínština (tchajwanský mandarinka)       | `zh-TW` | Akustický model<br>Jazykový model                 |           Yes                |
+| Čínština (kantonština, tradiční)   | `zh-HK` | Akustický model (20201015)<br>Jazykový model                 |        Yes                   |
+| Čínština (Mandarin, zjednodušená)     | `zh-CN` | Akustický model (20200910)<br>Jazykový model                 |     Yes                      |
+| Čínština (tchajwanský mandarinka)       | `zh-TW` | Akustický model (20190701, 20201015)<br>Jazykový model                 |           Yes                |
 | chorvatština (Chorvatsko)                 | `hr-HR` | Jazykový model                                   |                           |
 | čeština (Česká republika)             | `cs-CZ` | Jazykový model                                   |                           |
 | dánština (Dánsko)                   | `da-DK` | Jazykový model                                   | Yes                          |
-| nizozemština (Nizozemsko)                | `nl-NL` | Jazykový model                                   |    Yes                       |
-| Angličtina (Austrálie)                | `en-AU` | Akustický model<br>Jazykový model                 | Yes                          |
-| Angličtina (Kanada)                   | `en-CA` | Akustický model<br>Jazykový model                 | Yes                          |
+| nizozemština (Nizozemsko)                | `nl-NL` | Akustický model (20201015)<br>Jazykový model                                   |    Yes                       |
+| Angličtina (Austrálie)                | `en-AU` | Akustický model (20201019)<br>Jazykový model                 | Yes                          |
+| Angličtina (Kanada)                   | `en-CA` | Akustický model (20201019)<br>Jazykový model                 | Yes                          |
 | Angličtina (Hongkong)                | `en-HK` | Jazykový model                                   |                           |
-| Angličtina (Indie)                    | `en-IN` | Akustický model<br>Jazykový model                 | Yes                          |
+| Angličtina (Indie)                    | `en-IN` | Akustický model (20200923)<br>Jazykový model                 | Yes                          |
 | Angličtina (Irsko)                  | `en-IE` | Jazykový model                                   |                           |
-| Angličtina (Nový Zéland)              | `en-NZ` | Akustický model<br>Jazykový model                 |  Yes                         |
+| Angličtina (Nový Zéland)              | `en-NZ` | Akustický model (20201019)<br>Jazykový model                 |  Yes                         |
 | Angličtina (Nigérie)                  | `en-NG` | Jazykový model                                   |                           |
 | Angličtina (Filipíny)              | `en-PH` | Jazykový model                                   |                           |
 | Angličtina (Singapur)                | `en-SG` | Jazykový model                                   |                           |
 | Angličtina (Jihoafrická republika)             | `en-ZA` | Jazykový model                                   |                           |
-| Angličtina (Spojené království)           | `en-GB` | Akustický model<br>Jazykový model<br>Výslovnost| Yes                          |
-| Angličtina (Spojené státy)            | `en-US` | Akustický model<br>Jazykový model<br>Výslovnost| Yes                          |
+| Angličtina (Spojené království)           | `en-GB` | Akustický model (20201019)<br>Jazykový model<br>Výslovnost| Yes                          |
+| Angličtina (Spojené státy)            | `en-US` | Akustický model (20201019)<br>Jazykový model<br>Výslovnost| Yes                          |
 | Estonština (Estonsko)                  | `et-EE` | Jazykový model                                   |                           |
 | finština (Finsko)                  | `fi-FI` | Jazykový model                                   |     Yes                      |
-| Francouzština (Kanada)                    | `fr-CA` | Akustický model<br>Jazykový model                 |     Yes                      |
-| francouzština (Francie)                    | `fr-FR` | Akustický model<br>Jazykový model<br>Výslovnost|      Yes                     |
-| němčina (Německo)                   | `de-DE` | Akustický model<br>Jazykový model<br>Výslovnost|  Yes                         |
+| Francouzština (Kanada)                    | `fr-CA` | Akustický model (20201015)<br>Jazykový model                 |     Yes                      |
+| francouzština (Francie)                    | `fr-FR` | Akustický model (20201015)<br>Jazykový model<br>Výslovnost|      Yes                     |
+| němčina (Německo)                   | `de-DE` | Akustický model (20190701, 20200619, 20201127)<br>Jazykový model<br>Výslovnost|  Yes                         |
 | Řečtina (Řecko)                     | `el-GR` | Jazykový model                                   |                           |
 | Gudžarátština (Indie)                  | `gu-IN` | Jazykový model                                   |                           |
-| hindština (Indie)                      | `hi-IN` | Akustický model<br>Jazykový model                 |     Yes                      |
+| hindština (Indie)                      | `hi-IN` | Akustický model (20200701)<br>Jazykový model                 |     Yes                      |
 | Maďarština (Maďarsko)                | `hu-HU` | Jazykový model                                   |                           |
 | Irština (Irsko)                     | `ga-IE` | Jazykový model                                   |                           |
-| italština (Itálie)                    | `it-IT` | Akustický model<br>Jazykový model<br>Výslovnost|      Yes                     |
-| japonština (Japonsko)                   | `ja-JP` | Akustický model<br>Jazykový model                 |      Yes                     |
-| korejština (Jižní Korea)                     | `ko-KR` | Akustický model<br>Jazykový model                 |      Yes                     |
+| italština (Itálie)                    | `it-IT` | Akustický model (20201016)<br>Jazykový model<br>Výslovnost|      Yes                     |
+| japonština (Japonsko)                   | `ja-JP` | Jazykový model                                   |      Yes                     |
+| korejština (Jižní Korea)                     | `ko-KR` | Akustický model (20201015)<br>Jazykový model                 |      Yes                     |
 | lotyština (Lotyšsko)                   | `lv-LV` | Jazykový model                                   |                           |
 | litevština (Litva)             | `lt-LT` | Jazykový model                                   |                           |
 | Maltština (Malta)                     | `mt-MT` | Jazykový model                                   |                           |
 | Maráthština (Indie)                    | `mr-IN` | Jazykový model                                   |                           |
 | Norština, Bokmål (Norsko)         | `nb-NO` | Jazykový model                                   |     Yes                      |
 | polština (Polsko)                    | `pl-PL` | Jazykový model                                   |       Yes                    |
-| Portugalština (Brazílie)                | `pt-BR` | Akustický model<br>Jazykový model<br>Výslovnost|          Yes                 |
+| Portugalština (Brazílie)                | `pt-BR` | Akustický model (20190620, 20201015)<br>Jazykový model<br>Výslovnost|          Yes                 |
 | portugalština (Portugalsko)              | `pt-PT` | Jazykový model                                   |             Yes              |
 | rumunština (Rumunsko)                 | `ro-RO` | Jazykový model                                   |                           |
-| ruština (Rusko)                   | `ru-RU` | Akustický model<br>Jazykový model                 |                Yes           |
+| ruština (Rusko)                   | `ru-RU` | Akustický model (20200907)<br>Jazykový model                 |                Yes           |
 | slovenština (Slovensko)                  | `sk-SK` | Jazykový model                                   |                           |
 | slovinština (Slovinsko)               | `sl-SI` | Jazykový model                                   |                           |
 | Španělština (Argentina)                | `es-AR` | Jazykový model                                   |                           |
@@ -109,13 +109,13 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Španělština (Rovníková Guinea)        | `es-GQ` | Jazykový model                                   |                           |
 | Španělština (Guatemala)                | `es-GT` | Jazykový model                                   |                           |
 | Španělština (Honduras)                 | `es-HN` | Jazykový model                                   |                           |
-| Španělština (Mexiko)                   | `es-MX` | Akustický model<br>Jazykový model                 |    Yes                       |
+| Španělština (Mexiko)                   | `es-MX` | Akustický model (20200907)<br>Jazykový model                 |    Yes                       |
 | Španělština (Nikaragua)                | `es-NI` | Jazykový model                                   |                           |
 | Španělština (Panama)                   | `es-PA` | Jazykový model                                   |                           |
 | Španělština (Paraguay)                 | `es-PY` | Jazykový model                                   |                           |
 | Španělština (Peru)                     | `es-PE` | Jazykový model                                   |                           |
 | Španělština (Portoriko)              | `es-PR` | Jazykový model                                   |                           |
-| Španělština (Španělsko)                    | `es-ES` | Akustický model<br>Jazykový model                 |  Yes                         |
+| Španělština (Španělsko)                    | `es-ES` | Akustický model (20201015)<br>Jazykový model                 |  Yes                         |
 | Španělština (Uruguay)                  | `es-UY` | Jazykový model                                   |                           |
 | Španělština (USA)                      | `es-US` | Jazykový model                                   |                           |
 | Španělština (Venezuela)                | `es-VE` | Jazykový model                                   |                           |

@@ -1,21 +1,18 @@
 ---
 title: Ukázky Azure PowerShell pro Azure Data Factory
 description: Ukázky Azure PowerShell – skripty, které vám pomůžou vytvářet a spravovat datové továrny.
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 031c897c17a086e0ebb3b2708cfe942a1ef3208e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 69d29fca13f24bfccd585de3ad83bdc13ec48a37
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497261"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373636"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>Ukázky Azure PowerShell pro Azure Data Factory
 
@@ -23,7 +20,7 @@ ms.locfileid: "96497261"
 
 Následující tabulka obsahuje odkazy na ukázkové Azure PowerShell skripty pro Azure Data Factory.
 
-| Skript | Popis  |
+| Skript | Description  |
 |---|---|
 |**Kopírování dat**||
 |[Kopírování objektů BLOB ze složky do jiné složky v Azure Blob Storage](scripts/copy-azure-blob-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu kopíruje objekty blob ze složky v Azure Blob Storage do jiné složky ve stejném Blob Storage. |

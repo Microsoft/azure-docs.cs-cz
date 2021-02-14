@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e47dad8498c48a5da5307517efe493fa5c1aa590
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: e180ecbf5c68dbd9c179244083a641ac6ed42de0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94748059"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371953"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Provádění úloh pro datové vědy: průzkum, modelování a nasazení
 
@@ -42,7 +42,7 @@ K dispozici je řada nástrojů a balíčků pro školicí modely v různých ja
 Po vytvoření více modelů je obvykle potřeba mít systém pro registraci a správu modelů. Obvykle potřebujete kombinaci skriptů nebo rozhraní API a back-end databáze nebo systému správy verzí. Pro tyto úlohy správy můžete zvážit několik možností:
 
 1. [Azure Machine Learning – služba správy modelů](../index.yml)
-2. [ModelDB od MIT](http://modeldb.csail.mit.edu:3000/projects) 
+2. [ModelDB od MIT](https://people.csail.mit.edu/mvartak/papers/modeldb-hilda.pdf) 
 3. [SQL Server jako systém správy modelů](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](/sql/advanced-analytics/r/r-server-standalone)
 

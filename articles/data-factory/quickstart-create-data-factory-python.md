@@ -1,24 +1,20 @@
 ---
 title: 'Rychlý Start: vytvoření Azure Data Factory pomocí Pythonu'
 description: Pomocí datové továrny zkopírujte data z jednoho umístění v úložišti objektů BLOB v Azure do jiného umístění.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/15/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 883b7df1d4dfd1b405f2952aa675db5948ab3ca3
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: f92a09e78d65f3723b9dfa83574f603dc113ebeb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234286"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372361"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rychlé zprovoznění: Vytvoření datové továrny a kanálu pomocí Pythonu
 
@@ -34,7 +30,7 @@ Azure Data Factory je cloudová služba pro integraci dat, která umožňuje vyt
 
 Kanály mohou ingestovat data z různorodých úložišť dat. Kanály zpracovávají nebo transformují data pomocí výpočetních služeb, jako jsou Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics a Azure Machine Learning. Kanály publikují výstupní data do úložišť dat, jako jsou Azure synapse Analytics pro aplikace business intelligence (BI).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 

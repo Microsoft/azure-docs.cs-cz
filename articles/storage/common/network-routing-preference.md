@@ -11,18 +11,21 @@ ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
 ms.custom: references_regions
-ms.openlocfilehash: 9afe58434d60280f635deab75b763077bc76b93c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 601c8dfb4b4e2f16da5c560f67e2d251a5d3072a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797641"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362739"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Konfigurace předvolby směrování sítě pro Azure Storage (Preview)
 
 Můžete nakonfigurovat [Předvolby směrování](../../virtual-network/routing-preference-overview.md) sítě (Preview) pro účet služby Azure Storage, abyste určili, jak bude síťový provoz směrován do svého účtu z klientů přes Internet. Ve výchozím nastavení je provoz z Internetu směrován do veřejného koncového bodu účtu úložiště přes [globální síť Microsoft](../../networking/microsoft-global-network.md). Azure Storage poskytuje další možnosti pro konfiguraci způsobu směrování provozu do svého účtu úložiště.
 
 Při konfiguraci předvolby směrování získáte flexibilitu při optimalizaci provozu buď pro zvýšení výkonu sítě úrovně Premium, nebo pro náklady. Když nakonfigurujete předvolbu směrování, určíte, jak bude ve výchozím nastavení směrován z provozu na veřejný koncový bod vašeho účtu úložiště. Pro svůj účet úložiště můžete také publikovat koncové body specifické pro trasu.
+
+> [!NOTE]
+> Tato funkce není podporovaná v účtech úložiště, které jsou nakonfigurované tak, aby používaly úroveň výkonu Premium nebo úložiště redundantní v zóně (ZRS).
 
 ## <a name="microsoft-global-network-versus-internet-routing"></a>Směrování mezi globální sítí a internetem od Microsoftu
 

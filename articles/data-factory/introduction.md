@@ -1,20 +1,17 @@
 ---
 title: Úvod do služby Azure Data Factory
 description: Seznamte se se službou Azure Data Factory, cloudovou službou pro integraci dat, která orchestruje a automatizuje přesouvání a transformaci dat.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 00ae812536e73f432b9bddb93fc1b4a958b379f5
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 8fef4bbc0c0e77c1e152b8c2c44254e091b0e5a3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97812864"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392540"
 ---
 # <a name="what-is-azure-data-factory"></a>Co je Azure Data Factory?
 
@@ -57,12 +54,12 @@ Pokud dáváte přednost transformaci kódu rukou, služba ADF podporuje extern�
 
 ### <a name="cicd-and-publish"></a>CI/CD a publikování
 [Data Factory nabízí plnou podporu pro CI/CD](continuous-integration-deployment.md) vašich datových kanálů pomocí Azure DevOps a GitHubu. To vám umožní přírůstkově vyvíjet a doručovat procesy ETL před publikováním dokončeného produktu. Po převodu nezpracovaných dat do podoby, která umožňuje využití v rámci podniku, můžete tato data nahrát do služby Azure Data Warehouse, Azure SQL Database, Azure CosmosDB nebo jakéhokoli jiného analytického nástroje, na který se můžou vaši obchodní uživatelé nasměrovat ze svých nástrojů business intelligence.
-### <a name="monitor"></a>Monitorování
+### <a name="monitor"></a>Monitor
 Jakmile úspěšně sestavíte a nasadíte kanál integrace dat, který ze zpracovaných dat získává obchodní hodnotu, můžete monitorovat naplánované aktivity a kanály a jejich míru úspěšnosti a chyb. Azure Data Factory obsahuje integrovanou podporu monitorování kanálů prostřednictvím Azure Monitor, rozhraní API, PowerShellu, protokolů Azure Monitor a panelů stavu na Azure Portal.
 
 ## <a name="top-level-concepts"></a>Koncepty nejvyšší úrovně
 Předplatné Azure může obsahovat jednu nebo více instancí služby Azure Data Factory (neboli datových továren). Azure Data Factory se skládá z níže uvedených klíčových komponent.
-- Kanály
+- Pipelines
 - Aktivity
 - Datové sady
 - Propojené služby
@@ -126,5 +123,5 @@ Tady jsou důležité dokumenty dalších kroků k prozkoumání:
 - [.NET](quickstart-create-data-factory-dot-net.md)
 - [Python](quickstart-create-data-factory-python.md)
 - [REST](quickstart-create-data-factory-rest-api.md)
-- [Šablona Azure Resource Manager](quickstart-create-data-factory-resource-manager-template.md)
+- [Šablona Azure Resource Manageru](quickstart-create-data-factory-resource-manager-template.md)
  
