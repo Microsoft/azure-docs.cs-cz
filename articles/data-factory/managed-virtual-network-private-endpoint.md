@@ -1,24 +1,20 @@
 ---
 title: Spravovaná virtuální síť & spravované privátní koncové body
 description: Přečtěte si o spravovaných virtuálních sítích a spravovaných privátních koncových bodech v Azure Data Factory.
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 81d82bccd6b6bd97b84df5269dd59ffac4903370
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: d950b05dd34788c2c5ef0b34b8ec8ac0b20ad4b6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980353"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379569"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory spravované Virtual Network (Preview)
 
@@ -51,7 +47,7 @@ Spravované privátní koncové body jsou privátní koncové body vytvořené v
 
 ![Nový spravovaný privátní koncový bod](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
-Azure Data Factory podporuje privátní odkazy. Privátní odkaz vám umožní přístup ke službám Azure (PaaS) (například Azure Storage, Azure Cosmos DB, Azure synapse Analytics (dříve SQL Data Warehouse)).
+Azure Data Factory podporuje privátní odkazy. Privátní odkaz vám umožní přístup ke službám Azure (PaaS) (například Azure Storage, Azure Cosmos DB a Azure synapse Analytics).
 
 Když použijete privátní propojení, přenosy mezi úložišti dat a spravovaným Virtual Network procházejí výhradně přes páteřní síť Microsoftu. Soukromé propojení chrání před riziky exfiltrace dat. Vytvořením privátního koncového bodu vytvoříte privátní odkaz na prostředek.
 
@@ -83,10 +79,10 @@ Funkce interaktivního vytváření se používají pro funkce, jako je test Con
 Níže jsou podporovány zdroje dat pro připojení prostřednictvím privátního odkazu ze Virtual Network spravovaných pomocí ADF.
 - Azure Blob Storage
 - Azure Table Storage
-- Soubory Azure
+- Azure Files
 - Azure Data Lake Gen2
 - Azure SQL Database (nezahrnuje spravovanou instanci SQL Azure)
-- Azure Synapse Analytics (dříve SQL Data Warehouse)
+- Azure Synapse Analytics
 - Azure CosmosDB SQL
 - Azure Key Vault
 - Služba privátního propojení Azure
@@ -115,7 +111,7 @@ Níže jsou podporovány zdroje dat pro připojení prostřednictvím privátní
 - Azure Storage a Azure Data Lake Gen2 se nepodporují připojení prostřednictvím veřejného koncového bodu ze spravovaného Virtual Network ADF.
 
 ### <a name="linked-service-creation-of-azure-key-vault"></a>Vytvoření propojené služby Azure Key Vault 
-- Když vytvoříte propojenou službu pro Azure Key Vault, neexistuje žádný odkaz na Azure Integration Runtime. Proto nemůžete vytvořit privátní koncový bod během vytváření propojené služby Azure Key Vault. Když ale vytvoříte propojenou službu pro úložiště dat, která odkazují na Azure Key Vault propojená služba a odkazy na propojenou službu Azure Integration Runtime se spravovaným Virtual Network povoleno, budete moct vytvořit privátní koncový bod pro Azure Key Vault propojenou službu během vytváření. 
+- Pokud vytváříte propojenou službu Azure Key Vault, v prostředí Azure Integration Runtime na ni není žádný odkaz. Proto nemůžete vytvořit privátní koncový bod během vytváření propojené služby Azure Key Vault. Když ale vytvoříte propojenou službu pro úložiště dat, která odkazují na Azure Key Vault propojená služba a odkazy na propojenou službu Azure Integration Runtime se spravovaným Virtual Network povoleno, budete moct vytvořit privátní koncový bod pro Azure Key Vault propojenou službu během vytváření. 
 - Operace **Testování připojení** pro propojenou službu Azure Key Vault ověří jenom formát adresy URL, ale neprovede žádnou síťovou operaci.
 
 ## <a name="next-steps"></a>Další kroky

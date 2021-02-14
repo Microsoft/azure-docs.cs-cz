@@ -55,10 +55,8 @@
       href: disaster-recovery.md
 - name: Referenční informace
   items:
-    - name: Rozhraní API služby Rozpoznávání formulářů v2.1 Preview
-      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync'
-    - name: Rozhraní API služby Rozpoznávání formulářů v2.0
-      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/formrecognizer/'
     - name: Sady SDK
       items:
         - name: .NET

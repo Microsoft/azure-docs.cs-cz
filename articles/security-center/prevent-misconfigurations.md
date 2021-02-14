@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: a3da9cdea543894aa7aec66112e28658beac84b5
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 2607ff3a6c4bb7bf301818925990521572777ab9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558183"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379181"
 ---
 # <a name="prevent-misconfigurations-with-enforcedeny-recommendations"></a>Jak zabránit chybným konfiguracím s využitím doporučení k vynucení nebo zamítnutí
 
-Nezabezpečené konfigurace zabezpečení představují hlavní příčinu incidentů zabezpečení. Security Center nyní mají schopnost *zabránit* v neúspěšně konfiguracích nových prostředků s ohledem na konkrétní doporučení. 
+Nezabezpečené konfigurace zabezpečení představují hlavní příčinu incidentů zabezpečení. Security Center má teď možnost pomáhat *zabránit* neúspěšně se konfigurací nových prostředků s ohledem na konkrétní doporučení. 
 
 Tato funkce vám může přispět k zabezpečení vašich úloh a ke stabilizaci zabezpečeného skóre.
 
@@ -62,40 +62,7 @@ To najdete v horní části stránky s podrobnostmi o prostředcích pro vybran�
 
 Tato doporučení se dají použít s možností **Zakázat** :
 
-- Přístup k účtům úložiště pomocí brány firewall a konfigurací virtuální sítě by měl být omezený.
-- Mezipaměť Azure pro Redis by se měla nacházet v rámci virtuální sítě.
-- Azure Cosmos DB účty by měly používat klíče spravované zákazníkem k šifrování neaktivních dat
-- Azure Machine Learning pracovní prostory by měly být zašifrované pomocí klíče spravovaného zákazníkem (CMK)
-- Ve jarním cloudu Azure by se mělo používat vkládání ze sítě
-- Cognitive Services účty by měly povolit šifrování dat pomocí klíče spravovaného zákazníkem (CMK).
-- Měla by se vyhovět omezení procesoru a paměti kontejneru.
-- Image kontejneru by se měly nasadit jenom z důvěryhodných registrů.
-- Registry kontejneru by měly být zašifrované pomocí klíče spravovaného zákazníkem (CMK)
-- Je třeba zabránit kontejneru s eskalací oprávnění.
-- Kontejnery sdílející závislé obory názvů hostitele by se měly vyhnout
-- Kontejnery by měly naslouchat jenom povoleným portům.
-- Neměnné (jen pro čtení) kořenový systém souborů by měl být vynutil pro kontejnery.
-- Key Vault klíče by měly mít datum vypršení platnosti.
-- Key Vault tajných kódů by mělo mít datum vypršení platnosti.
-- Trezory klíčů by měly mít povolenou ochranu vyprázdnění
-- Trezory klíčů by měly mít povolené obnovitelné odstranění.
-- Pro kontejnery by se měly vyhovět aspoň privilegované možnosti pro Linux.
-- Měla by být povolená jenom zabezpečená připojení k vašemu Redis Cache.
-- Přepsání nebo zakázání profilu kontejnerů AppArmor by mělo být omezené.
-- Měly by se vyhnout privilegovanému kontejneru
-- Spuštění kontejnerů jako kořenový uživatel by se mělo vyhnout.
-- Měl by se povolit zabezpečený přenos do účtů úložiště
-- Clustery Service Fabric musí mít vlastnost ClusterProtectionLevel nastavenou na EncryptAndSign.
-- Clustery Service Fabric by se měly používat jenom Azure Active Directory pro ověřování klientů.
-- Služby by měly naslouchat jenom povoleným portům.
-- Účty úložiště by se měly migrovat na nové prostředky Azure Resource Manager.
-- Účty úložiště by měly omezovat přístup k síti pomocí pravidel virtuální sítě.
-- Používání hostitelských sítí a portů by se mělo omezit.
-- Použití HostPath svazků připojení by se mělo omezit na známý seznam, aby se omezil přístup k uzlu z ohrožených kontejnerů.
-- Doba platnosti certifikátů uložených v Azure Key Vault nesmí překročit 12 měsíců.
-- Virtuální počítače by se měly migrovat na nové prostředky Azure Resource Manager.
-- Firewall webových aplikací (WAF) by měla být povolená pro Application Gateway
-- Služba WAF (firewall webových aplikací) by měla být povolená pro službu Azure front-dveří
+[!INCLUDE [azure-security-center-recommendations-deny](../../includes/asc/recommendations-with-deny.md)]
 
 Tato doporučení se dají použít s možností **vykonat** :
 

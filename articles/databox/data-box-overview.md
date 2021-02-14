@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: dd71b03f55cc1522727f6c496c1bdbe0f42cb828
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 13c07da7393c70bb1fc61930dd1179994c68ed75
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97678619"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389803"
 ---
 # <a name="what-is-azure-data-box"></a>Co je Azure Data Box?
 
@@ -66,7 +66,7 @@ Data Box slouží k přesunu velkých objemů dat do Azure bez výraznějšího 
 
 Zařízení Data Box má v této verzi následující funkce.
 
-| Specifikace                                          | Popis              |
+| Specifikace                                          | Description              |
 |---------------------------------------------------------|--------------------------|
 | Hmotnost                                                  | < 23 kg                |
 | Dimenze                                              | Zařízení – šířka: 309,0 mm, výška: 430,4 mm, hloubka: 502.0 mm |            

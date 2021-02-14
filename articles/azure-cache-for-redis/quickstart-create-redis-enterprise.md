@@ -1,20 +1,20 @@
 ---
-title: 'Rychlý Start: vytvoření mezipaměti podnikové úrovně'
-description: V tomto rychlém startu se dozvíte, jak vytvořit instanci Azure cache pro úroveň Redis Enterprise.
+title: 'Rychlý Start: vytvoření mezipaměti Redis Enterprise'
+description: V tomto rychlém startu se dozvíte, jak vytvořit instanci Azure cache pro Redis v podnikových vrstvách.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 10/28/2020
-ms.openlocfilehash: 95f6e2cf7803ff0b152f33c08f170725b5a0e94e
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 02/08/2021
+ms.openlocfilehash: 50535ab9ac2a3541ade7b9abd8f355bbeaf6d4b3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95795675"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365000"
 ---
-# <a name="quickstart-create-an-enterprise-tier-cache-preview"></a>Rychlý Start: vytvoření mezipaměti podnikové vrstvy (Preview)
+# <a name="quickstart-create-a-redis-enterprise-cache-preview"></a>Rychlý Start: vytvoření mezipaměti Redis Enterprise (Preview)
 
 Azure cache pro podnikové úrovně Redis poskytuje plně integrovaný a spravovaný [Redis podnik](https://redislabs.com/redis-enterprise/) v Azure. Jsou aktuálně k dispozici ve verzi Preview. V této verzi Preview jsou dvě nové úrovně:
 * Enterprise, který používá pro ukládání dat nestálou paměť (DRAM) na virtuálním počítači
@@ -22,7 +22,7 @@ Azure cache pro podnikové úrovně Redis poskytuje plně integrovaný a spravov
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, budete potřebovat předplatné Azure. Pokud ho ještě nemáte, vytvořte [účet](https://azure.microsoft.com/). Další informace najdete v tématu [požadavky na podnikovou vrstvu](cache-overview.md#enterprise-tier-requirements).
+Než začnete, budete potřebovat předplatné Azure. Pokud ho ještě nemáte, vytvořte [účet](https://azure.microsoft.com/). Další informace najdete v tématu [požadavky na podnikovou vrstvu](cache-overview.md#enterprise-and-enterprise-flash-tier-requirements).
 
 ## <a name="create-a-cache"></a>Vytvoření mezipaměti
 1. Pokud chcete vytvořit mezipaměť, přihlaste se k Azure Portal pomocí odkazu v rámci pozvánky ve verzi Preview a vyberte **vytvořit prostředek**.

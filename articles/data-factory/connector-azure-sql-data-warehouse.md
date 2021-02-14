@@ -1,22 +1,17 @@
 ---
 title: Kopírování a transformace dat v Azure synapse Analytics
 description: Naučte se kopírovat data do a z Azure synapse Analytics a transformovat data v Azure synapse Analytics pomocí Data Factory.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 01/29/2021
-ms.openlocfilehash: 386547aa6e815ad6ba7d860c513a3e24c4040cca
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.date: 02/10/2021
+ms.openlocfilehash: 38306b2fb3c0a51aeedbf1ebd9079dd787783093
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223221"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364286"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Kopírování a transformace dat ve službě Azure synapse Analytics pomocí Azure Data Factory
 
@@ -68,7 +63,7 @@ Pro propojenou službu Azure synapse Analytics jsou podporovány následující 
 | servicePrincipalId  | Zadejte ID klienta aplikace.                         | Ano, pokud použijete ověřování Azure AD s instančním objektem. |
 | servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano, pokud použijete ověřování Azure AD s instančním objektem. |
 | tenant              | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. | Ano, pokud použijete ověřování Azure AD s instančním objektem. |
-| azureCloudType | Pro ověřování instančního objektu zadejte typ cloudového prostředí Azure, ve kterém je vaše aplikace Azure AD zaregistrovaná. <br/> Povolené hodnoty jsou **AzurePublic**, **AzureChina**, **AzureUsGovernment** a **AzureGermany**. Ve výchozím nastavení se používá cloudové prostředí pro datovou továrnu. | No |
+| azureCloudType | Pro ověřování instančního objektu zadejte typ cloudového prostředí Azure, ve kterém je vaše aplikace Azure AD zaregistrovaná. <br/> Povolené hodnoty jsou `AzurePublic` , `AzureChina` , `AzureUsGovernment` a `AzureGermany` . Ve výchozím nastavení se používá cloudové prostředí pro datovou továrnu. | No |
 | connectVia          | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Můžete použít Azure Integration Runtime nebo místní prostředí Integration runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. | No                                                           |
 
 Pro různé typy ověřování se podívejte na následující oddíly týkající se požadavků a ukázek JSON, v uvedeném pořadí:
@@ -270,11 +265,11 @@ Pokud chcete kopírovat data z Azure synapse Analytics, nastavte vlastnost **typ
 | sqlReaderQuery               | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `select * from MyTable`. | No       |
 | sqlReaderStoredProcedureName | Název uložené procedury, která čte data ze zdrojové tabulky. Poslední příkaz SQL musí být příkaz SELECT v uložené proceduře. | No       |
 | storedProcedureParameters    | Parametry pro uloženou proceduru.<br/>Povolené hodnoty jsou páry název-hodnota. Názvy a malá písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. | No       |
-| isolationLevel | Určuje chování při zamykání transakcí pro zdroj SQL. Povolené hodnoty jsou: **ReadCommitted**, **READUNCOMMITTED**, **RepeatableRead**, **serializovatelný**, **Snapshot**. Pokud není zadaný, použije se výchozí úroveň izolace databáze. Další podrobnosti najdete v [tomto dokumentu](/dotnet/api/system.data.isolationlevel) . | No |
+| isolationLevel | Určuje chování při zamykání transakcí pro zdroj SQL. Povolené hodnoty jsou: **ReadCommitted**, **READUNCOMMITTED**, **RepeatableRead**, **serializovatelný**, **Snapshot**. Pokud není zadaný, použije se výchozí úroveň izolace databáze. Další informace naleznete v tématu [System. data. IsolationLevel](/dotnet/api/system.data.isolationlevel). | No |
 | partitionOptions | Určuje možnosti dělení dat používané při načítání dat ze služby Azure synapse Analytics. <br>Povolené hodnoty jsou: **none** (default), **PhysicalPartitionsOfTable** a **DynamicRange**.<br>Když je povolená možnost oddílu (to znamená, že ne `None` ), stupeň paralelismu na souběžně načtená data z Azure synapse Analytics se řídí [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) nastavením aktivity kopírování. | No |
 | partitionSettings | Určete skupinu nastavení pro dělení dat. <br>Použijte, pokud možnost partition není `None` . | No |
-| **_Pod `partitionSettings` :_* _ | | |
-| partitionColumnName | Zadejte název zdrojového sloupce _ *v typu Integer nebo Date/DateTime** ( `int` , `smallint` , `bigint` , `date` , `smalldatetime` , `datetime` , `datetime2` nebo `datetimeoffset` ), který bude použit pro dělení rozsahu pro paralelní kopírování. Pokud není zadaný, index nebo primární klíč tabulky se automaticky zjistí a použije se jako sloupec partition.<br>Použijte, pokud je parametr partition `DynamicRange` . Použijete-li dotaz k načtení zdrojových dat, zapojte  `?AdfDynamicRangePartitionCondition ` v klauzuli WHERE. Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-azure-synapse-analytics) . | No |
+| ***V části `partitionSettings` :*** | | |
+| partitionColumnName | Zadejte název zdrojového sloupce **v typu Integer nebo Date/DateTime** ( `int` , `smallint` , `bigint` , `date` , `smalldatetime` , `datetime` , `datetime2` nebo `datetimeoffset` ), který bude použit pro vytváření oddílů rozsahu pro paralelní kopírování. Pokud není zadán, index nebo primární klíč tabulky se zjistí automaticky a použije se jako sloupec partition.<br>Použijte, pokud je parametr partition `DynamicRange` . Použijete-li dotaz k načtení zdrojových dat, zapojte  `?AdfDynamicRangePartitionCondition ` v klauzuli WHERE. Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-azure-synapse-analytics) . | No |
 | partitionUpperBound | Maximální hodnota sloupce oddílu pro rozdělení rozsahu oddílu Tato hodnota se používá k určení rozteči oddílu, nikoli pro filtrování řádků v tabulce. Všechny řádky v tabulce nebo výsledku dotazu budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnotu.  <br>Použijte, pokud je parametr partition `DynamicRange` . Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-azure-synapse-analytics) . | No |
 | partitionLowerBound | Minimální hodnota sloupce oddílu pro rozdělení rozsahu oddílů. Tato hodnota se používá k určení rozteči oddílu, nikoli pro filtrování řádků v tabulce. Všechny řádky v tabulce nebo výsledku dotazu budou rozděleny na oddíly a zkopírovány. Pokud není zadaný, aktivita kopírování automaticky detekuje hodnotu.<br>Použijte, pokud je parametr partition `DynamicRange` . Příklad naleznete v části [paralelní kopírování z databáze SQL](#parallel-copy-from-azure-synapse-analytics) . | No |
 
@@ -282,7 +277,7 @@ Pokud chcete kopírovat data z Azure synapse Analytics, nastavte vlastnost **typ
 
 - Pokud k načtení dat používáte uloženou proceduru ve zdroji, Všimněte si, že pokud je uložená procedura navržena tak, aby vrátila jiné schéma, pokud je předána jiná hodnota parametru, může dojít k chybě nebo se při importu schématu z uživatelského rozhraní nebo při kopírování dat do SQL Database s automatickým vytvořením tabulky zobrazí neočekávaný výsledek.
 
-**Příklad: použití dotazu SQL**
+#### <a name="example-using-sql-query"></a>Příklad: použití dotazu SQL
 
 ```json
 "activities":[
@@ -314,7 +309,7 @@ Pokud chcete kopírovat data z Azure synapse Analytics, nastavte vlastnost **typ
 ]
 ```
 
-**Příklad: použití uložené procedury**
+#### <a name="example-using-stored-procedure"></a>Příklad: použití uložené procedury
 
 ```json
 "activities":[
@@ -350,7 +345,7 @@ Pokud chcete kopírovat data z Azure synapse Analytics, nastavte vlastnost **typ
 ]
 ```
 
-**Ukázková uložená procedura:**
+#### <a name="sample-stored-procedure"></a>Ukázková uložená procedura:
 
 ```sql
 CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
@@ -529,7 +524,7 @@ Pokud požadavky nejsou splněné, Azure Data Factory zkontroluje nastavení a a
 
 3. Pokud je zdrojem složka, `recursive` musí být v aktivitě kopírování nastavena hodnota true (pravda).
 
-4. `wildcardFolderPath` nejsou `wildcardFilename` zadány,,, `modifiedDateTimeStart` `modifiedDateTimeEnd` , `prefix` `enablePartitionDiscovery` a `additionalColumns` .
+4. `wildcardFolderPath` nejsou `wildcardFilename` zadány,,, `modifiedDateTimeStart` `modifiedDateTimeEnd` , `prefix` , `enablePartitionDiscovery` a `additionalColumns` .
 
 >[!NOTE]
 >Pokud je zdrojem složka, Poznámka základem načte soubory ze složky a všech jejích podsložek a nenačte data ze souborů, pro které název souboru začíná podtržítkem (_) nebo tečkou (.), jak je uvedeno [tady: argument Location](/sql/t-sql/statements/create-external-table-transact-sql#arguments-2).
@@ -578,6 +573,9 @@ Pokud chcete tuto funkci použít, vytvořte [propojenou službu Azure Blob Stor
 >- Pokud pro pracovní propojenou službu používáte spravované ověřování identity, Seznamte se s potřebnými konfiguracemi pro [Azure Blob](connector-azure-blob-storage.md#managed-identity) a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) v uvedeném pořadí.
 >- Pokud je vaše pracovní Azure Storage nakonfigurovaná pomocí koncového bodu služby virtuální sítě, musíte použít spravované ověřování identity s povoleným účtem úložiště povolit důvěryhodnou službu Microsoftu. Podívejte se na [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage). 
 
+>[!IMPORTANT]
+>Pokud je vaše pracovní Azure Storage nakonfigurovaná pomocí spravovaného privátního koncového bodu a má povolenou bránu firewall úložiště, musíte použít spravované ověřování identity a udělit oprávnění ke čtečce dat objektů BLOB úložiště pro synapse SQL Server, aby se zajistilo, že bude mít přístup k připraveným souborům během základního zatížení.
+
 ```json
 "activities":[
     {
@@ -617,7 +615,7 @@ Pokud chcete tuto funkci použít, vytvořte [propojenou službu Azure Blob Stor
 
 ### <a name="best-practices-for-using-polybase"></a>Osvědčené postupy pro použití základu
 
-Následující části obsahují osvědčené postupy kromě těch, které jsou uvedené v článku [osvědčené postupy pro Azure synapse Analytics](../synapse-analytics/sql/best-practices-sql-pool.md).
+Následující části obsahují osvědčené postupy Kromě těchto postupů uvedených v článku [osvědčené postupy pro Azure synapse Analytics](../synapse-analytics/sql/best-practices-sql-pool.md).
 
 #### <a name="required-database-permission"></a>Požadovaná oprávnění databáze
 
@@ -637,17 +635,17 @@ Abyste dosáhli nejlepší možné propustnosti, přiřaďte uživateli větší
 
 #### <a name="polybase-troubleshooting"></a>Řešení potíží se základem
 
-**Načítání do desetinného sloupce**
+#### <a name="loading-to-decimal-column"></a>Načítání do desetinného sloupce
 
-Pokud jsou vaše zdrojová data v textovém formátu nebo v jiných nekompatibilních úložištích, která nejsou kompatibilní s primárním úložištěm (pomocí připraveného kopírování a základu), a obsahuje prázdnou hodnotu, která se načte do sloupce Decimal synapse Analytics pro Azure, může dojít k následující chybě:
+Pokud jsou vaše zdrojová data v textovém formátu nebo v jiných nekompatibilních úložištích, která nepodporují standardně (pomocí připravené kopie a základu), a obsahuje prázdnou hodnotu, která se načte do sloupce Decimal synapse Analytics pro Azure, může se zobrazit následující chyba:
 
-```
+```output
 ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data type VARCHAR to DECIMAL.....Detailed Message=Empty string can't be converted to DECIMAL.....
 ```
 
 Řešením je zrušit výběr možnosti **použít výchozí typ**(jako false) ve jímky aktivity kopírování – > základní nastavení. "[USE_TYPE_DEFAULT](/sql/t-sql/statements/create-external-file-format-transact-sql#arguments)" je základní nativní konfigurace, která určuje, jak se mají zpracovat chybějící hodnoty v textových souborech s oddělovači, když základ dat načte data z textového souboru.
 
-**`tableName` ve službě Azure synapse Analytics**
+#### <a name="check-the-tablename-property-in-azure-synapse-analytics"></a>Ověřte vlastnost tableName v Azure synapse Analytics.
 
 V následující tabulce jsou uvedeny příklady, jak zadat vlastnost **TableName** v datové sadě JSON. Zobrazuje několik kombinací názvů schémat a tabulek.
 
@@ -660,19 +658,29 @@ V následující tabulce jsou uvedeny příklady, jak zadat vlastnost **TableNam
 
 Pokud se zobrazí následující chyba, může být problémem hodnota, kterou jste zadali pro vlastnost **TableName** . Správný způsob, jak zadat hodnoty pro vlastnost **TableName** JSON, najdete v předchozí tabulce.
 
-```
+```output
 Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account_test'.,Source=.Net SqlClient Data Provider
 ```
 
-**Sloupce s výchozími hodnotami**
+#### <a name="columns-with-default-values"></a>Sloupce s výchozími hodnotami
 
 V současné době funkce Base v Data Factory přijímá pouze stejný počet sloupců jako v cílové tabulce. Příkladem je tabulka se čtyřmi sloupci, kde jedna z nich je definována s výchozí hodnotou. Vstupní data stále musí mít čtyři sloupce. Vstupní datová sada se třemi sloupci poskytuje chybu podobnou této zprávě:
 
-```
+```output
 All columns of the table must be specified in the INSERT BULK statement.
 ```
 
 Hodnota NULL je speciální forma výchozí hodnoty. Pokud sloupec může mít hodnotu null, vstupní data v objektu BLOB pro tento sloupec můžou být prázdná. Ve vstupní datové sadě ale nemůže chybět. Základní znak pro chybějící hodnoty ve službě Azure synapse Analytics vloží hodnotu NULL.
+
+#### <a name="external-file-access-failed"></a>Přístup k externímu souboru se nezdařil.
+
+Pokud se zobrazí následující chyba, ujistěte se, že používáte spravované ověřování identity a máte udělená oprávnění ke čtení dat objektů BLOB úložiště pro spravovanou identitu v pracovním prostoru Azure synapse.
+
+```output
+Job failed due to reason: at Sink '[SinkName]': shaded.msdataflow.com.microsoft.sqlserver.jdbc.SQLServerException: External file access failed due to internal error: 'Error occurred while accessing HDFS: Java exception raised on call to HdfsBridge_IsDirExist. Java exception message:\r\nHdfsBridge::isDirExist 
+```
+
+Další informace najdete v tématu [udělení oprávnění spravované identitě po vytvoření pracovního prostoru](../synapse-analytics/security/how-to-grant-workspace-managed-identity-permissions.md#grant-permissions-to-managed-identity-after-workspace-creation).
 
 ## <a name="use-copy-statement-to-load-data-into-azure-synapse-analytics"></a><a name="use-copy-statement"></a> Použití příkazu COPY k načtení dat do služby Azure synapse Analytics
 

@@ -3,14 +3,14 @@ title: Použití Azure Service Bus front s Java (Azure-Messaging-ServiceBus)
 description: V tomto kurzu se naučíte používat Java k posílání a přijímání zpráv z fronty Azure Service Bus. Použijete nový balíček Azure-Messaging-ServiceBus.
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 11/09/2020
+ms.date: 02/13/2021
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: a910f61389183b77af1f73f8d3553f6c5bbc8452
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: bfe7835bea4415085279fb77eb85d67ed3f5f0f3
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881580"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518602"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-java"></a>Posílání zpráv a příjem zpráv z front Azure Service Bus (Java)
 V tomto rychlém startu vytvoříte aplikaci Java, která bude odesílat zprávy do a přijímat zprávy z fronty Azure Service Bus. 
@@ -32,14 +32,41 @@ V této části vytvoříte projekt konzoly Java a přidáte kód pro odesílán
 Vytvořte projekt Java pomocí zatmění nebo nástroje podle vašeho výběru. 
 
 ### <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití Service Bus
-Přidejte odkaz na knihovnu Azure Service Bus. Klientská knihovna Java pro Service Bus je k dispozici v [centrálním úložišti Maven](https://search.maven.org/search?q=a:azure-messaging-servicebus). Na tuto knihovnu můžete odkazovat pomocí následující deklarace závislosti v rámci souboru projektu Maven:
+Přidejte odkazy na knihovny Azure Core a Azure Service Bus. 
+
+Pokud používáte zatmění a vytvoříte konzolovou aplikaci Java, převeďte projekt Java na Maven: klikněte pravým tlačítkem myši na projekt v okně **Průzkumníka balíčku** , vyberte **Konfigurovat**  ->  **převod na Maven projekt**. Pak přidejte závislosti do těchto dvou knihoven, jak je znázorněno v následujícím příkladu.
 
 ```xml
-<dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-messaging-servicebus</artifactId>
-    <version>7.0.0</version>
-</dependency>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.myorg.sbusquickstarts</groupId>
+    <artifactId>sbustopicqs</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <build>
+        <sourceDirectory>src</sourceDirectory>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <release>15</release>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-core</artifactId>
+            <version>1.13.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-messaging-servicebus</artifactId>
+            <version>7.0.2</version>
+        </dependency>
+    </dependencies>
+</project>
 ```
 
 ### <a name="add-code-to-send-messages-to-the-queue"></a>Přidat kód pro posílání zpráv do fronty
@@ -47,9 +74,9 @@ Přidejte odkaz na knihovnu Azure Service Bus. Klientská knihovna Java pro Serv
 
     ```java
     import com.azure.messaging.servicebus.*;
-    import com.azure.messaging.servicebus.models.*;
+    
+    import java.util.concurrent.CountDownLatch;
     import java.util.concurrent.TimeUnit;
-    import java.util.function.Consumer;
     import java.util.Arrays;
     import java.util.List;
     ```    
@@ -94,7 +121,7 @@ Přidejte odkaz na knihovnu Azure Service Bus. Klientská knihovna Java pro Serv
     ```
 1. Přidejte metodu s názvem metoda `sendMessageBatch` pro odeslání zpráv do fronty, kterou jste vytvořili. Tato metoda vytvoří `ServiceBusSenderClient` pro frontu, vyvolá `createMessages` metodu pro získání seznamu zpráv, připraví jednu nebo více dávek a odešle dávky do fronty. 
 
-```java
+    ```java
     static void sendMessageBatch()
     {
         // create a Service Bus Sender client for the queue 
@@ -139,39 +166,29 @@ Přidejte odkaz na knihovnu Azure Service Bus. Klientská knihovna Java pro Serv
         //close the client
         senderClient.close();
     }
-```
+    ```
 
 ## <a name="receive-messages-from-a-queue"></a>Přijímání zpráv z fronty
 V této části přidáte kód pro načtení zpráv z fronty. 
 
 1. Přidejte metodu pojmenovanou `receiveMessages` pro příjem zpráv z fronty. Tato metoda vytvoří `ServiceBusProcessorClient` pro frontu zadáním obslužné rutiny pro zpracování zpráv a další pro zpracování chyb. Potom spustí procesor, počká pár sekund, vytiskne přijaté zprávy a pak procesor zastaví a ukončí.
 
+    > [!IMPORTANT]
+    > `QueueTest`V kódu nahraďte `QueueTest::processMessage` názvem vaší třídy. 
+
     ```java
     // handles received messages
     static void receiveMessages() throws InterruptedException
     {
-        // consumer that processes a single message received from Service Bus
-        Consumer<ServiceBusReceivedMessageContext> messageProcessor = context -> {
-            ServiceBusReceivedMessage message = context.getMessage();
-            System.out.println("Received message: " + message.getBody().toString());
-        };
+        CountDownLatch countdownLatch = new CountDownLatch(1);
 
-        // handles any errors that occur when receiving messages
-        Consumer<Throwable> errorHandler = throwable -> {
-            System.out.println("Error when receiving messages: " + throwable.getMessage());
-            if (throwable instanceof ServiceBusReceiverException) {
-                ServiceBusReceiverException serviceBusReceiverException = (ServiceBusReceiverException) throwable;
-                System.out.println("Error source: " + serviceBusReceiverException.getErrorSource());
-            }
-        };
-
-        // create an instance of the processor through the ServiceBusClientBuilder
+        // Create an instance of the processor through the ServiceBusClientBuilder
         ServiceBusProcessorClient processorClient = new ServiceBusClientBuilder()
             .connectionString(connectionString)
             .processor()
             .queueName(queueName)
-            .processMessage(messageProcessor)
-            .processError(errorHandler)
+            .processMessage(QueueTest::processMessage)
+            .processError(context -> processError(context, countdownLatch))
             .buildProcessorClient();
 
         System.out.println("Starting the processor");
@@ -180,7 +197,53 @@ V této části přidáte kód pro načtení zpráv z fronty.
         TimeUnit.SECONDS.sleep(10);
         System.out.println("Stopping and closing the processor");
         processorClient.close();        
+    }   
+    ```
+2. Přidejte `processMessage` metodu pro zpracování zprávy přijaté z předplatného Service Bus. 
+
+    ```java
+    private static void processMessage(ServiceBusReceivedMessageContext context) {
+        ServiceBusReceivedMessage message = context.getMessage();
+        System.out.printf("Processing message. Session: %s, Sequence #: %s. Contents: %s%n", message.getMessageId(),
+            message.getSequenceNumber(), message.getBody());
     }    
+    ```
+3. Přidejte `processError` metodu pro zpracování chybových zpráv.
+
+    ```java
+    private static void processError(ServiceBusErrorContext context, CountDownLatch countdownLatch) {
+        System.out.printf("Error when receiving messages from namespace: '%s'. Entity: '%s'%n",
+            context.getFullyQualifiedNamespace(), context.getEntityPath());
+
+        if (!(context.getException() instanceof ServiceBusException)) {
+            System.out.printf("Non-ServiceBusException occurred: %s%n", context.getException());
+            return;
+        }
+
+        ServiceBusException exception = (ServiceBusException) context.getException();
+        ServiceBusFailureReason reason = exception.getReason();
+
+        if (reason == ServiceBusFailureReason.MESSAGING_ENTITY_DISABLED
+            || reason == ServiceBusFailureReason.MESSAGING_ENTITY_NOT_FOUND
+            || reason == ServiceBusFailureReason.UNAUTHORIZED) {
+            System.out.printf("An unrecoverable error occurred. Stopping processing with reason %s: %s%n",
+                reason, exception.getMessage());
+
+            countdownLatch.countDown();
+        } else if (reason == ServiceBusFailureReason.MESSAGE_LOCK_LOST) {
+            System.out.printf("Message lock lost for message: %s%n", context.getException());
+        } else if (reason == ServiceBusFailureReason.SERVICE_BUSY) {
+            try {
+                // Choosing an arbitrary amount of time to wait until trying again.
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                System.err.println("Unable to sleep for period of time");
+            }
+        } else {
+            System.out.printf("Error source %s, reason %s, message: %s%n", context.getErrorSource(),
+                reason, context.getException());
+        }
+    }  
     ```
 2. Aktualizujte `main` metodu na vyvolání `sendMessage` , `sendMessageBatch` metody a `receiveMessages` k vyvolání `InterruptedException` .     
 
@@ -199,10 +262,10 @@ Při spuštění aplikace se v okně konzoly zobrazí následující zprávy.
 Sent a single message to the queue: myqueue
 Sent a batch of messages to the queue: myqueue
 Starting the processor
-Received message: Hello, World!
-Received message: First message in the batch
-Received message: Second message in the batch
-Received message: Three message in the batch
+Processing message. Session: 88d961dd801f449e9c3e0f8a5393a527, Sequence #: 1. Contents: Hello, World!
+Processing message. Session: e90c8d9039ce403bbe1d0ec7038033a0, Sequence #: 2. Contents: First message
+Processing message. Session: 311a216a560c47d184f9831984e6ac1d, Sequence #: 3. Contents: Second message
+Processing message. Session: f9a871be07414baf9505f2c3d466c4ab, Sequence #: 4. Contents: Third message
 Stopping and closing the processor
 ```
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: 61768991fc4e72b44568bd92278427e6af398d52
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 21924ad5da8833ca5cf8373270ed1bfd3facfdc9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226552"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388613"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Časté otázky týkající se řeči na text
 
@@ -140,7 +140,7 @@ Odpověď **: školení** modelu se zvukovými daty může být zdlouhavý proce
 
 Pro dosažení rychlejších výsledků použijte jednu z [oblastí](custom-speech-overview.md#set-up-your-azure-account) , kde je k dispozici vyhrazený hardware pro školení. Obecně platí, že služba zpracovává přibližně 10 hodin zvukových dat za den v oblastech s takovým hardwarem. Může zpracovat pouze 1 hodinu zvukových dat za den v jiných oblastech. Plně vyškolený model můžete zkopírovat do jiné oblasti pomocí [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription). Školení s pouhým textem je mnohem rychlejší a obvykle se dokončí během několika minut.
 
-Některé základní modely nejde přizpůsobit pomocí zvukových dat. V případě, že služba bude pouze používat text přepisu pro účely školení a ignorování zvukových dat. Školení se pak dokončí mnohem rychleji a výsledky budou stejné jako školení jenom s textem.
+Některé základní modely nejde přizpůsobit pomocí zvukových dat. V případě, že služba bude pouze používat text přepisu pro účely školení a ignorování zvukových dat. Školení se pak dokončí mnohem rychleji a výsledky budou stejné jako školení jenom s textem. Seznam základních modelů, které podporují školení se zvukovými daty, najdete v tématu [jazyková podpora](language-support.md#speech-to-text) .
 
 ## <a name="accuracy-testing"></a>Testování přesnosti
 

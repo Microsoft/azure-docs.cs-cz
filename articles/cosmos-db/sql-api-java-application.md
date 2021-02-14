@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
-ms.date: 05/12/2020
+ms.date: 02/10/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: b3cb6bf56820da84d17f0b981f461a545bbe5ab6
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: d39c1d8c3ac60dda62556b1a8da0dfe29e3c1ee3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549255"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383615"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Kurz: Vytvoření webové aplikace v jazyce Java pomocí Azure Cosmos DB a rozhraní SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -37,14 +37,14 @@ Tento kurz o aplikaci Java vám ukáže, jak vytvořit webovou aplikaci pro spr�
 :::image type="content" source="./media/sql-api-java-application/image1.png" alt-text="Aplikace pro seznam úkolů v jazyce Java":::
 
 > [!TIP]
-> V tomto kurzu vývoje aplikace se předpokládá, že již máte zkušenosti s jazykem Java. Pokud je pro vás Java nebo některý z [požadovaných nástrojů](#Prerequisites) nový, doporučujeme stáhnout úplný ukázkový projekt [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) z GitHubu a postupovat podle [pokynů na konci tohoto článku](#GetProject). Až jej budete mít sestavený, můžete se k tomuto článku vrátit, abyste kódu lépe porozuměli v kontextu projektu.  
+> V tomto kurzu vývoje aplikace se předpokládá, že již máte zkušenosti s jazykem Java. Pokud jste s nástrojem Java nebo požadovanými [nástroji](#Prerequisites)ještě nepoužívali, doporučujeme si z webu GitHub stáhnout celý projekt [TODO] https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app) a sestavit ho podle [pokynů na konci tohoto článku](#GetProject). Až jej budete mít sestavený, můžete se k tomuto článku vrátit, abyste kódu lépe porozuměli v kontextu projektu.  
 >
 
 ## <a name="prerequisites-for-this-java-web-application-tutorial"></a><a id="Prerequisites"></a>Předpoklady pro tento kurz webové aplikace Java
 
 Než zahájíte tento kurz vývoje aplikace, musíte mít následující:
 
-* Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+* Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -110,15 +110,15 @@ Nejjednodušším způsobem, jak stáhnout sadu SQL Java SDK a její závislosti
    
    * Do pole **ID skupiny** zadejte `com.azure` .
    * Do pole **ID artefaktu** zadejte `azure-cosmos` .
-   * Do pole **verze** zadejte `4.0.1-beta.1` .
+   * Do pole **verze** zadejte `4.11.0` .
   
    Nebo můžete přidat XML závislosti pro ID skupiny a ID artefaktu přímo do souboru *pom.xml* :
 
    ```xml
    <dependency>
-      <groupId>com.azure</groupId>
-      <artifactId>azure-cosmos</artifactId>
-      <version>4.0.1-beta.1</version>
+     <groupId>com.azure</groupId>
+     <artifactId>azure-cosmos</artifactId>
+     <version>4.11.0</version>
    </dependency>
    ```
 
@@ -132,7 +132,7 @@ Nyní přidáme do vaší webové aplikace modely, zobrazení a řadiče.
 
 Nejdřív nadefinujte model v rámci nového souboru *TodoItem. Java*. `TodoItem`Třída definuje schéma položky spolu s metodami getter a setter:
 
-:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/model/TodoItem.java":::
+:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/model/TodoItem.java":::
 
 ### <a name="add-the-data-access-objectdao-classes"></a>Přidání tříd objektů pro přístup k datům (DAO)
 
@@ -140,37 +140,37 @@ Vytvořte objekt pro přístup k datům (DAO), který bude zachovávat položky 
 
 1. Chcete-li vyvolat službu Azure Cosmos DB, je nutné vytvořit instanci nového `cosmosClient` objektu. Obecně je vhodné znovu použít `cosmosClient` objekt spíše než vytvořit nového klienta pro každou následnou žádost. Klienta můžete znovu použít tak, že ho definujete v rámci `cosmosClientFactory` třídy. Aktualizujte hodnoty HOST a MASTER_KEY, které jste uložili v [kroku 1](#CreateDB). Nahraďte proměnnou hostitele pomocí identifikátoru URI a nahraďte MASTER_KEY PRIMÁRNÍm klíčem. Použijte následující kód k vytvoření `CosmosClientFactory` třídy v souboru *CosmosClientFactory. Java* :
 
-   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/CosmosClientFactory.java":::
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/dao/CosmosClientFactory.java":::
 
 1. Vytvořte nový soubor *TodoDao. Java* a přidejte `TodoDao` třídu pro vytváření, aktualizaci, čtení a odstranění položek TODO:
 
-   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/TodoDao.java":::
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/dao/TodoDao.java":::
 
 1. Vytvořte nový soubor *MockDao. Java* a přidejte `MockDao` třídu, tato třída implementuje `TodoDao` třídu pro provádění operací CRUD pro položky:
 
-   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/MockDao.java":::
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/dao/MockDao.java":::
 
 1. Vytvořte nový soubor *DocDbDao. Java* a přidejte `DocDbDao` třídu. Tato třída definuje kód pro uchování TodoItems do kontejneru, načte databázi a kolekci, pokud existuje, nebo vytvořte novou, pokud neexistuje. V tomto příkladu se používá [gson](https://code.google.com/p/google-gson/) k serializaci a deserializaci TodoItemch starších objektů Java (POJO) do dokumentů JSON. Abychom mohli položky ToDo ukládat do kolekce, klient musí vědět, která databáze nebo kolekce se má k uchovávání použít (podle odkazů na sebe sama). Tato třída také definuje pomocnou funkci pro načtení dokumentů jiným atributem (např. "ID") místo odkazu na sebe. Pomocnou metodu můžete použít k načtení dokumentu JSON TodoItem podle ID a jeho deserializaci na POJO.
 
    Objekt klienta můžete také použít `cosmosClient` k získání kolekce nebo seznamu TodoItems pomocí dotazu SQL. Nakonec definujete metodu DELETE pro odstranění TodoItem ze seznamu. Následující kód ukazuje obsah `DocDbDao` třídy:
 
-   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/DocDbDao.java":::
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/dao/DocDbDao.java":::
 
 1. Dále vytvořte nový soubor *TodoDaoFactory. Java* a přidejte `TodoDaoFactory` třídu, která vytvoří nový objekt DocDbDao:
 
-   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/TodoDaoFactory.java":::
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/dao/TodoDaoFactory.java":::
 
 ### <a name="add-a-controller"></a>Přidání kontroleru
 
 Přidejte do své aplikace kontroler *TodoItemController* . V tomto projektu používáte [Project Lombok](https://projectlombok.org/), pomocí kterého generujeme konstruktor, metody getter a setter a tvůrce (builder). Alternativně můžete tento kód napsat ručně nebo ho rozhraní IDE vygenerovat.:
 
-:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/controller/TodoItemController.java":::
+:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/controller/TodoItemController.java":::
 
 ### <a name="create-a-servlet"></a>Vytvoření servlet
 
 Dále vytvořte servlet pro směrování požadavků HTTP do kontroleru. Vytvořte soubor *ApiServlet. Java* a definujte pod ním následující kód:
 
-:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/ApiServlet.java":::
+:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/ApiServlet.java":::
 
 ## <a name="wire-the-rest-of-the-of-java-app-together"></a><a id="Wire"></a>Propojení zbytku aplikace Java
 
@@ -194,17 +194,17 @@ Díky Azure Websites je nasazování aplikací Java stejně snadné jako export 
 
 1. V okně **WAR Export** udělejte následující:
    
-   * Do pole Web project (Webový projekt) zadejte azure-documentdb-java-sample.
+   * V poli webový projekt zadejte Azure-Cosmos-Java-Sample.
    * V poli Destination (Cíl) vyberte cíl, do kterého se uloží soubor WAR.
    * Klikněte na **Finish** (Dokončit).
 
 1. Nyní když máte k dispozici soubor WAR, můžete tento soubor jednoduše nahrát do adresáře **webapps** Azure Websites. Pokyny, jak soubor nahrát, najdete v tématu o [přidání aplikace Java do Azure App Service Web Apps](../app-service/quickstart-java.md). Po nahrání souboru WAR do adresáře webapps zjistí běhové prostředí, že jste ho přidali, a automaticky ho načte.
 
-1. Chcete-li zobrazit hotový produkt, přejděte na `http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/` a začněte přidávat úkoly.
+1. Chcete-li zobrazit hotový produkt, přejděte na `http://YOUR\_SITE\_NAME.azurewebsites.net/azure-cosmos-java-sample/` a začněte přidávat úkoly.
 
 ## <a name="get-the-project-from-github"></a><a id="GetProject"></a>Získání projektu z Githubu
 
-Všechny ukázky v tomto kurzu jsou součástí projektu [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) na GitHubu. Pokud chcete importovat projekt todo do prostředí Eclipse, ujistěte se, že máte software a prostředky uvedené v části [Předpoklady](#Prerequisites), a udělejte následující:
+Všechny ukázky v tomto kurzu jsou součástí projektu [todo](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app) na GitHubu. Pokud chcete importovat projekt todo do prostředí Eclipse, ujistěte se, že máte software a prostředky uvedené v části [Předpoklady](#Prerequisites), a udělejte následující:
 
 1. Nainstalujte [Project Lombok](https://projectlombok.org/). Lombok slouží ke generování konstruktorů a metod getter a setter v projektu. Jakmile budete mít stažen soubor lombok.jar, dvakrát na něj klikněte, aby se nainstaloval, nebo jej nainstalujte z příkazového řádku.
 
@@ -216,7 +216,7 @@ Všechny ukázky v tomto kurzu jsou součástí projektu [todo](https://github.c
 
 1. Na obrazovce **Select Repository Source** (Výběr zdroje úložiště) klikněte na **Clone URI** (Klonovat URI).
 
-1. Na obrazovce **Source Git Repository** (Zdrojové úložiště Git) v poli **URI** zadejte https://github.com/Azure-Samples/documentdb-java-todo-app.git a potom klikněte na **Next** (Další).
+1. Na obrazovce **Source Git Repository** (Zdrojové úložiště Git) v poli **URI** zadejte https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app a potom klikněte na **Next** (Další).
 
 1. Na obrazovce **Výběr větve** zaškrtněte políčko **hlavní** a potom klikněte na **Další**.
 
@@ -226,9 +226,9 @@ Všechny ukázky v tomto kurzu jsou součástí projektu [todo](https://github.c
 
 1. Na obrazovce **Import Projects** (Import projektů) zrušte výběr projektu **DocumentDB** a klikněte na **Finish** (Dokončit). Projekt Azure Cosmos DB obsahuje sadu Azure Cosmos DB Java SDK, kterou přidáme jako závislost.
 
-1. V **Project Exploreru** přejděte na azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java a nahraďte hodnoty HOST a MASTER_KEY hodnotami URI a PRIMARY KEY pro účet Azure Cosmos DB. Pak soubor uložte. Další informace najdete v části [Krok 1. Vytvořte účet databáze Azure Cosmos](#CreateDB).
+1. V **Průzkumníku projektu** přejděte na Azure-Cosmos-Java-sample\src\com.Microsoft.Azure.Cosmos.Sample.dao\DocumentClientFactory.Java a nahraďte hostitele a MASTER_KEY hodnoty identifikátorem URI a primárním klíčem pro účet Azure Cosmos DB a pak soubor uložte. Další informace najdete v části [Krok 1. Vytvořte účet databáze Azure Cosmos](#CreateDB).
 
-1. V **Project Exploreru** klikněte pravým tlačítkem na **azure-documentdb-java-sample**, pak levým na **Build Path** (Cesta sestavení) a nakonec na **Configure Build Path** (Konfigurovat cestu sestavení).
+1. V **Project Exploreru** klikněte pravým tlačítkem myši na **Azure-Cosmos-Java-Sample**, klikněte na **cesta sestavení** a pak klikněte na **Konfigurovat cestu sestavení**.
 
 1. Na obrazovce **Java Build Path** (Cesta sestavení Java) v pravém podokně vyberte kartu **Libraries** (Knihovny) a klikněte na **Add External JARs** (Přidat externí balíčky JAR). Přejděte na umístění souboru lombok.jar, klikněte na **Open** (Otevřít) a pak na **OK**.
 
@@ -242,11 +242,11 @@ Všechny ukázky v tomto kurzu jsou součástí projektu [todo](https://github.c
 
 1. Na kartě **Servers** (Servery) v dolní části obrazovky klikněte pravým tlačítkem na **Tomcat v7.0 Server at localhost** a pak levým na **Add and Remove** (Přidat a odstranit).
 
-1. V okně **Add and Remove** přesuňte **azure-documentdb-java-sample** do pole **Configured** (Nakonfigurováno) a klikněte na **Finish** (Dokončit).
+1. V okně **Přidat a odebrat** přesuňte položku **Azure-Cosmos-Java-Sample** do **konfigurovaného** pole a pak klikněte na **Dokončit**.
 
 1. Na kartě **Servers** (Servery) klikněte pravým tlačítkem na **Tomcat v7.0 Server at localhost** a klikněte na **Restart** (Restartovat).
 
-1. V prohlížeči přejděte na adresu `http://localhost:8080/azure-documentdb-java-sample/` a začněte přidávat položky do seznamu úkolů. Poznámka: Pokud jste změnili výchozí hodnoty portů, změňte 8080 na hodnotu, kterou jste si vybrali.
+1. V prohlížeči přejděte na adresu `http://localhost:8080/azure-cosmos-java-sample/` a začněte přidávat položky do seznamu úkolů. Poznámka: Pokud jste změnili výchozí hodnoty portů, změňte 8080 na hodnotu, kterou jste si vybrali.
 
 1. Postup nasazení projektu na web Azure najdete v [kroku 6. Nasaďte aplikaci na weby Azure](#Deploy).
 

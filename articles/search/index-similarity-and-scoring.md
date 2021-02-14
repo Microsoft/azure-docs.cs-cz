@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 5bd1a9111528146224561995feaecf54612a1c78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d16eefc8dd3f693e108e457782dc9d076180ba8e
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535657"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520591"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Podobnost a bodování v Azure Kognitivní hledání
 
@@ -21,7 +21,7 @@ Bodování označuje výpočet skóre vyhledávání pro každou položku vráce
 
 Ve výchozím nastavení se v odpovědi vrátí Top 50, ale můžete použít parametr **$Top** k vrácení menšího nebo většího počtu položek (až 1000 v jedné odpovědi) a **$Skip** k získání další sady výsledků.
 
-Skóre hledání je vypočítáno na základě statistických vlastností dat a dotazu. Azure Kognitivní hledání vyhledá dokumenty, které se shodují na hledaných termínech (v závislosti na [searchMode](/rest/api/searchservice/search-documents#searchmodeany--all-optional)), a upřednostňuje dokumenty, které obsahují mnoho instancí hledaného termínu. Skóre hledání bude ještě vyšší, pokud je v indexu dat zřídka, ale v dokumentu běžné. Základem pro tento přístup k výpočetním významům je známý jako *TF-IDF nebo* četnost termínů – inverzní frekvence dokumentů.
+Skóre hledání je vypočítáno na základě statistických vlastností dat a dotazu. Azure Kognitivní hledání vyhledá dokumenty, které se shodují na hledaných termínech (v závislosti na [searchMode](/rest/api/searchservice/search-documents#query-parameters)), a upřednostňuje dokumenty, které obsahují mnoho instancí hledaného termínu. Skóre hledání bude ještě vyšší, pokud je v indexu dat zřídka, ale v dokumentu běžné. Základem pro tento přístup k výpočetním významům je známý jako *TF-IDF nebo* četnost termínů – inverzní frekvence dokumentů.
 
 Hodnoty skóre hledání je možné opakovat v rámci sady výsledků dotazu. Pokud má více přístupů stejné skóre hledání, řazení stejných položek skóre není definováno a není stabilní. Spusťte dotaz znovu a můžete se podívat na pozici posunu položek, zejména pokud používáte bezplatnou službu nebo fakturovatelnou službu s více replikami. Vzhledem k tomu, že se dvě položky shodují se stejným skóre, neexistuje žádná záruka, která se zobrazí jako první.
 

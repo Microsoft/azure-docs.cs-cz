@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z Concur pomocí Azure Data Factory (Preview)
 description: Naučte se, jak kopírovat data z Concur do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: jingwang
-ms.openlocfilehash: f6d6c830eec8e711e700733a90611c353b68439d
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 974682aa9e9bebd6e2d17237decd8389174ff28d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030794"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383666"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Kopírování dat z Concur pomocí Azure Data Factory (Preview)
 
@@ -53,7 +48,7 @@ Pro propojenou službu Concur jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na: **Concur** . | Yes |
 | connectionProperties | Skupina vlastností, která definuje, jak se připojit k Concur. | Yes |
-| **_Pod `connectionProperties` :_* _ | | |
+| ***V části `connectionProperties` :*** | | |
 | authenticationType | Povolené hodnoty jsou `OAuth_2.0_Bearer` a `OAuth_2.0` (starší). Možnost ověřování OAuth 2,0 funguje se starým rozhraním API Concur, které bylo Zastaralé od února 2017. | Yes |
 | Hostitel | Koncový bod serveru Concur, `implementation.concursolutions.com` např.  | Yes |
 | baseUrl | Základní adresa URL autorizace vaší Concur | Ano pro `OAuth_2.0_Bearer` ověřování |
@@ -65,7 +60,7 @@ Pro propojenou službu Concur jsou podporovány následující vlastnosti:
 | useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | No |
 | usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | No |
 
-_ *Příklad:**
+**Příklad:**
 
 ```json
 { 

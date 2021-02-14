@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: fe5feed4bb6f9b84a3f161692310922f7a6d2f00
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 49929cfe0abc634dc4b704aba1c7b11a5d7dd777
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424795"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383581"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Replikace virtuálních počítačů Azure do jiné oblasti Azure
 
@@ -41,7 +41,7 @@ Povolte replikaci. Tento postup předpokládá, že primární oblast Azure je V
 3. V **Virtual Machines > vyberte virtuální počítače**, klikněte na a vyberte všechny virtuální počítače, které chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Pak klikněte na **OK**.
     ![Snímek obrazovky, který zvýrazní, kde vybíráte virtuální počítače.](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
 
-4. V **Nastavení**můžete volitelně nakonfigurovat nastavení cílového webu:
+4. V **Nastavení** můžete volitelně nakonfigurovat nastavení cílového webu:
 
    - **Cílové umístění**: umístění, kam se budou replikovat vaše zdrojová data virtuálního počítače. V závislosti na umístění vybraných počítačů vám Site Recovery poskytne seznam vhodných cílových oblastí. Doporučujeme ponechat cílové umístění stejné jako umístění trezoru Recovery Services.
    - **Cílové předplatné:** Cílové předplatné, které se použije pro zotavení po havárii. Ve výchozím nastavení bude cílové předplatné stejné jako zdrojové předplatné.
@@ -53,8 +53,11 @@ Povolte replikaci. Tento postup předpokládá, že primární oblast Azure je V
    - **Cílová virtuální síť**: ve výchozím nastavení Site Recovery vytvoří novou virtuální síť v cílové oblasti s příponou ASR v názvu. To je namapováno na vaši zdrojovou síť a používá se pro jakoukoliv budoucí ochranu. [Přečtěte si další informace](./azure-to-azure-network-mapping.md) o mapování sítě.
    - **Cílové účty úložiště (zdrojový virtuální počítač nepoužívá spravované disky)**: ve výchozím nastavení Site Recovery vytvoří nový cílový účet úložiště mimicking konfiguraci úložiště zdrojového virtuálního počítače. V případě, že účet úložiště již existuje, bude znovu použit.
    - **Disky spravované replikou (zdrojový virtuální počítač používá spravované disky)**: Site Recovery vytvoří nové disky spravované replikou v cílové oblasti pro zrcadlení spravovaných disků zdrojového virtuálního počítače se stejným typem úložiště (Standard nebo Premium) jako spravovaný disk zdrojového virtuálního počítače.
-   - **Účty úložiště mezipaměti**: Site Recovery potřebuje další účet úložiště, který se označuje jako úložiště mezipaměti ve zdrojové oblasti. Všechny změny, které probíhají ve zdrojových virtuálních počítačích, se sledují a odesílají do účtu úložiště mezipaměti, než se replikují do cílového umístění. Tento účet úložiště by měl být standardní.
-   - **Cílové skupiny dostupnosti**: ve výchozím nastavení Site Recovery vytvoří novou skupinu dostupnosti v cílové oblasti s příponou ASR v názvu pro virtuální počítače, které jsou součástí skupiny dostupnosti ve zdrojové oblasti. Pokud skupina dostupnosti, kterou vytvořil Site Recovery, už existuje, použije se znovu.
+   - **Účty úložiště mezipaměti**: Site Recovery potřebuje další účet úložiště, který se označuje jako úložiště mezipaměti ve zdrojové oblasti. Všechny změny, které probíhají ve zdrojových virtuálních počítačích, se sledují a odesílají do účtu úložiště mezipaměti před jejich replikací do cílového umístění. Tento účet úložiště by měl být standardní.
+   - **Cílové skupiny dostupnosti**: ve výchozím nastavení Site Recovery vytvoří novou skupinu dostupnosti v cílové oblasti s příponou "Azure Site Recovery" v názvu pro virtuální počítače, které jsou součástí skupiny dostupnosti ve zdrojové oblasti. Pokud skupina dostupnosti, kterou vytvořil Site Recovery, už existuje, použije se znovu.
+     >[!NOTE]
+     >Při konfiguraci cílových skupin dostupnosti nakonfigurujte prosím pro virtuální počítače s různou velikostí jiné skupiny dostupnosti. 
+     >
    - **Cílové zóny dostupnosti**: ve výchozím nastavení Site Recovery přiřadí stejné číslo zóny jako zdrojová oblast v cílové oblasti, pokud cílová oblast podporuje zóny dostupnosti.
 
      Pokud cílová oblast nepodporuje zóny dostupnosti, cílové virtuální počítače se ve výchozím nastavení nakonfigurují jako samostatné instance. V případě potřeby můžete tyto virtuální počítače nakonfigurovat tak, aby byly součástí skupin dostupnosti v cílové oblasti, kliknutím na přizpůsobit.
@@ -79,9 +82,9 @@ Pokud přidáváte disky do virtuálního počítače Azure, pro který je povol
 
 Pokud chcete povolit replikaci pro přidaný disk, udělejte toto:
 
-1.  V trezoru > **replikované položky**klikněte na virtuální počítač, ke kterému jste přidali disk.
-2.  Klikněte na **disky**a potom vyberte datový disk, pro který chcete povolit replikaci (tyto disky mají stav **Nechráněno** ).
-3.  V **podrobnostech o disku**klikněte na **Povolit replikaci**.
+1.  V trezoru > **replikované položky** klikněte na virtuální počítač, ke kterému jste přidali disk.
+2.  Klikněte na **disky** a potom vyberte datový disk, pro který chcete povolit replikaci (tyto disky mají stav **Nechráněno** ).
+3.  V **podrobnostech o disku** klikněte na **Povolit replikaci**.
 
     ![Povolit replikaci pro přidaný disk](./media/azure-to-azure-how-to-enable-replication/enabled-added.png)
 
@@ -96,14 +99,14 @@ Můžete upravit výchozí nastavení cíle, které používá Site Recovery.
 1. Pokud chcete změnit výchozí cílové předplatné, klikněte na **přizpůsobit:** vedle na cílové předplatné. Vyberte předplatné ze seznamu všech předplatných dostupných ve stejném klientovi Azure Active Directory (AAD).
 
 2. Pokud chcete upravit výchozí nastavení, klikněte na **přizpůsobit:**
-    - V části **cílová skupina prostředků**vyberte skupinu prostředků ze seznamu všech skupin prostředků v cílovém umístění předplatného.
-    - V části **cílová virtuální síť**vyberte síť ze seznamu všech virtuálních sítí v cílovém umístění.
-    - V části skupina **dostupnosti**můžete do virtuálního počítače přidat nastavení skupiny dostupnosti, pokud jsou součástí skupiny dostupnosti ve zdrojové oblasti.
-    - V části **cílové účty úložiště**vyberte účet, který chcete použít.
+    - V části **cílová skupina prostředků** vyberte skupinu prostředků ze seznamu všech skupin prostředků v cílovém umístění předplatného.
+    - V části **cílová virtuální síť** vyberte síť ze seznamu všech virtuálních sítí v cílovém umístění.
+    - V části skupina **dostupnosti** můžete do virtuálního počítače přidat nastavení skupiny dostupnosti, pokud jsou součástí skupiny dostupnosti ve zdrojové oblasti.
+    - V části **cílové účty úložiště** vyberte účet, který chcete použít.
 
         ![Snímek obrazovky, který ukazuje, jak přizpůsobit nastavení cílového předplatného.](./media/site-recovery-replicate-azure-to-azure/customize.PNG)
 3. Klikněte na **přizpůsobit:** a upravte nastavení replikace.
-4. V části **konzistence více virtuálních počítačů**vyberte virtuální počítače, které chcete replikovat společně.
+4. V části **konzistence více virtuálních počítačů** vyberte virtuální počítače, které chcete replikovat společně.
     - Všechny počítače v replikační skupině budou mít v případě převzetí služeb při selhání sdílené body obnovení konzistentní pro případ chyby a konzistentní vzhledem k aplikacím.
     - Povolení konzistence s více virtuálními počítači může mít vliv na výkon úloh (v důsledku náročnosti na procesor). Měla by být povolená jenom v případě, že počítače používají stejnou úlohu a potřebujete konzistenci napříč několika počítači.
     - Pokud má aplikace například 2 SQL Server virtuální počítače a dva webové servery, měli byste do replikační skupiny přidat jenom SQL Server virtuálních počítačů.

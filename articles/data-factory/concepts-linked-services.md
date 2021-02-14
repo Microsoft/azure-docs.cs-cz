@@ -1,22 +1,18 @@
 ---
 title: Propojené služby v Azure Data Factory
 description: Přečtěte si o propojených službách v Data Factory. Propojené služby propojí výpočetní a datové úložiště s datovou továrnou.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 172694363b482edf6d463aa74b85e81c91fa6a9c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 768af9e8568a3842b642a3ebd447d9df8064e840
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500100"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389922"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Propojené služby v Azure Data Factory
 
@@ -66,7 +62,7 @@ Propojená služba v Data Factory je definována ve formátu JSON následující
 
 Následující tabulka obsahuje popis vlastností ve výše uvedeném formátu JSON:
 
-Vlastnost | Popis | Povinné |
+Vlastnost | Popis | Vyžadováno |
 -------- | ----------- | -------- |
 name | Název propojené služby. Viz [pravidla pro Pojmenovávání Azure Data Factory](naming-rules.md). |  Yes |
 typ | Typ propojené služby. Například: AzureBlobStorage (úložiště dat) nebo AzureBatch (COMPUTE). Podívejte se na popis pro typeProperties. | Yes |

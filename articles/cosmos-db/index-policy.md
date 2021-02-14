@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/10/2021
 ms.author: tisande
-ms.openlocfilehash: 58ee3bcd0ba14359ea9adaa131b8280b81008b57
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 26465eb9826c60daad7b44e1c2fe6ae3c19b1ed0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526751"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378804"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zásady indexování ve službě Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -290,7 +290,7 @@ WHERE c.firstName = "John" AND Contains(c.lastName, "Smith", true)
 ORDER BY c.firstName, c.lastName
 ```
 
-Při vytváření složených indexů k optimalizaci dotazu pomocí filtru a klauzule se používají následující požadavky `ORDER BY` :
+Při vytváření složených indexů pro optimalizaci dotazu s klauzulí Filter a použijte následující předpoklady `ORDER BY` :
 
 * Pokud nedefinujete složený index pro dotaz s filtrem na jednu vlastnost a samostatnou `ORDER BY` klauzulí s použitím jiné vlastnosti, dotaz bude stále úspěšný. Náklady na dotaz na dotaz se ale dají snížit pomocí složeného indexu, zejména pokud vlastnost v `ORDER BY` klauzuli má vysokou mohutnost.
 * Pokud dotaz filtruje vlastnosti, měly by být zahrnuty do `ORDER BY` klauzule First.
@@ -308,6 +308,26 @@ Při vytváření složených indexů k optimalizaci dotazu pomocí filtru a kla
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC``` | ```No```   |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.age ASC, c.name ASC,c.timestamp ASC``` | `Yes` |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.timestamp ASC``` | `No` |
+
+### <a name="queries-with-a-filter-and-an-aggregate"></a>Dotazy s filtrem a agregací 
+
+Pokud dotaz filtruje jednu nebo více vlastností a má agregovanou systémovou funkci, může být užitečné vytvořit složený index pro vlastnosti v systémové funkci Filter a Aggregate. Tato optimalizace platí pro funkce [Sum](sql-query-aggregate-sum.md) a [AVG](sql-query-aggregate-avg.md) System.
+
+Při vytváření složených indexů pro optimalizaci dotazu pomocí filtru a agregační systémové funkce platí následující požadavky.
+
+* Složené indexy jsou při spouštění dotazů s agregacemi volitelné. Náklady na dotaz na RU se ale můžou často významně snížit pomocí složeného indexu.
+* Pokud dotaz filtruje více vlastností, musí být filtry rovnosti prvními vlastnostmi ve složeném indexu.
+* Můžete mít maximálně jeden filtr rozsahu na každý složený index a musí být ve vlastnosti agregační systémové funkce.
+* Vlastnost ve agregované systémové funkci by měla být definována jako poslední ve složeném indexu.
+* `order`( `ASC` Nebo `DESC` ) nezáleží na tom.
+
+| **Složený index**                      | **Vzorový dotaz**                                  | **Podpora složeného indexu** |
+| ---------------------------------------- | ------------------------------------------------------------ | --------------------------------- |
+| ```(name ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John"``` | `Yes` |
+| ```(timestamp ASC, name ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John"``` | `No` |
+| ```(name ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name > "John"``` | `No` |
+| ```(name ASC, age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age = 25``` | `Yes` |
+| ```(age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age > 25``` | `No` |
 
 ## <a name="index-transformationmodifying-the-indexing-policy"></a><transformace indexu>úpravou zásad indexování
 

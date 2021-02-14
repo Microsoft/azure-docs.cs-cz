@@ -3,16 +3,16 @@ title: Zprávy Exchange s Azure Service Bus
 description: Vytváření automatizovaných úloh a pracovních postupů, které odesílají a přijímají zprávy pomocí Azure Service Bus v Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
+ms.reviewer: logicappspm, azla
 ms.topic: conceptual
-ms.date: 10/22/2020
+ms.date: 02/10/2021
 tags: connectors
-ms.openlocfilehash: b6276ff940d8b156a671cb5386ce53ede30dd879
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 98d2ee8a85d25065c0021841a9b99a6d616a35d8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019701"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367414"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Výměna zpráv v cloudu pomocí Azure Logic Apps a Azure Service Bus
 
@@ -169,7 +169,7 @@ Když vytvoříte aplikaci logiky, můžete vybrat **korelujované doručení v 
 
 ## <a name="delays-in-updates-to-your-logic-app-taking-effect"></a>Prodlevy v aktualizacích, které se projeví v aplikaci logiky
 
-Pokud je interval dotazování triggeru Service Bus malý, například 10 sekund, aktualizace vaší aplikace logiky se nemusí projevit až po dobu 10 minut. Pokud chcete tento problém obejít, můžete před aktualizací aplikace logiky dočasně zvýšit interval dotazování na větší hodnotu, jako je například 30 sekund nebo 1 minuta. Po provedení aktualizace můžete interval dotazování obnovit na původní hodnotu. 
+Pokud je interval dotazování triggeru Service Bus malý, například 10 sekund, aktualizace vaší aplikace logiky se nemusí projevit až po dobu 10 minut. Pokud chcete tento problém obejít, můžete aplikaci logiky zakázat, provést změny a pak znovu povolit aplikaci logiky.
 
 <a name="connector-reference"></a>
 

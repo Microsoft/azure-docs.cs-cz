@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/19/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c97958add682a4c49d7832843c0b95ffd2663bf
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 0e9189b6608b74be6a72dbdfe66276c5050f042f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859627"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365459"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Vlastnosti Azure Active Directoryho uživatele spolupráce B2B
 
@@ -28,7 +28,7 @@ V závislosti na potřebách zvát organizace může být uživatel spolupráce 
 - Stav 1: domů v externí instanci Azure AD a reprezentovaný jako uživatel typu Host v hostitelské organizaci. V tomto případě se uživatel B2B přihlásí pomocí účtu Azure AD, který patří k pozvanému tenantovi. Pokud partnerská organizace nepoužívá službu Azure AD, je uživatel typu Host ve službě Azure AD stále vytvořen. Požadavky jsou v tom, že uplatní svou pozvánku a Azure AD ověří svou e-mailovou adresu. Toto uspořádání se také nazývá nájem JIT (just-in-time) nebo "virová".
 
    > [!IMPORTANT]
-   > **Od 31. března 2021** přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
+   > **Od října 2021** přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
 
 - Stav 2: domů v Microsoft nebo jiném účtu, který je reprezentován jako uživatel typu Host v organizaci hostitele. V takovém případě se uživatel typu Host přihlásí pomocí účet Microsoft nebo účtu v sociální síti (google.com nebo podobný). Identita pozvaného uživatele je vytvořena jako účet Microsoft v adresáři rezvaníing vaší organizace během uplatnění nabídky.
 

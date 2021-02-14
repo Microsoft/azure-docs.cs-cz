@@ -3,25 +3,25 @@ title: Monitorování stavu aplikace IoT Central v Azure | Microsoft Docs
 description: Jako operátor nebo správce monitorujte celkový stav zařízení připojených k vaší IoT Central aplikaci.
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/14/2020
+ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 12485e07bc3cad9d420141ecc6ee66763ac010b7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 1c16da10a8a7853b1392383855aba0ff24424f33
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760767"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515865"
 ---
-# <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>Monitorování celkového stavu zařízení připojených k aplikaci IoT Central
+# <a name="monitor-the-overall-health-of-an-iot-central-application"></a>Monitorování celkového stavu aplikace IoT Central
 
 > [!NOTE]
 > Metriky jsou k dispozici pouze pro aplikace IoT Central verze 3. Informace o tom, jak zjistit verzi vaší aplikace, najdete v tématu [o vaší aplikaci](./howto-get-app-info.md).
 
 *Tento článek se týká operátorů a správců.*
 
-V tomto článku se naučíte, jak pomocí sady metrik poskytovaných pomocí IoT Central posoudit celkový stav zařízení připojených k vaší IoT Central aplikaci.
+V tomto článku se naučíte, jak pomocí sady metrik poskytovaných pomocí IoT Central vyhodnotit stav zařízení, která jsou připojená k vaší IoT Central aplikaci, a stav vašich spuštěných exportů dat.
 
 Metriky jsou ve výchozím nastavení povolené pro vaši aplikaci IoT Central a vy k nim přistupujete z [Azure Portal](https://portal.azure.com/). [Azure monitor datovou platformu zpřístupňuje tyto metriky](../../azure-monitor/platform/data-platform-metrics.md) a nabízí několik způsobů, jak s nimi pracovat. Například můžete použít grafy v Azure Portal, REST API nebo dotazech v prostředí PowerShell nebo v rozhraní příkazového řádku Azure CLI.
 
@@ -31,7 +31,7 @@ Aplikace, které používají bezplatný zkušební plán, nemají přidružené
 
 ## <a name="view-metrics-in-the-azure-portal"></a>Zobrazit metriky v Azure Portal
 
-V následujících krocích se předpokládá, že máte [aplikaci IoT Central](./quick-deploy-iot-central.md) s některými [připojenými zařízeními](./tutorial-connect-device.md).
+V následujících krocích se předpokládá, že máte [aplikaci IoT Central](./quick-deploy-iot-central.md) s některými [připojenými zařízeními](./tutorial-connect-device.md) nebo s [exportem](howto-export-data.md)běžících dat.
 
 Postup zobrazení IoT Centralch metrik na portálu:
 

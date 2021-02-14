@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.openlocfilehash: 651e0635f0b556cd47adfccdbac59ef587570128
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2caa09d41abb1842100ed8259e82ec411390ccb
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535725"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520625"
 ---
 # <a name="ranking-algorithm-in-azure-cognitive-search"></a>Algoritmus hodnocení v Azure Kognitivní hledání
 
@@ -32,7 +32,7 @@ V koncepční podobě se starším algoritmem podobnosti BM25 převezme svůj ko
 
 Při vytváření nového indexu můžete nastavit vlastnost **podobnosti** a zadat algoritmus. Můžete použít `api-version=2019-05-06-Preview` , jak je znázorněno níže, nebo `api-version=2020-06-30` .
 
-```
+```http
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2019-05-06-Preview
 ```
 
@@ -105,7 +105,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 ## <a name="see-also"></a>Viz také  
 
-+ [Reference k rozhraní REST API](/rest/api/searchservice/)
++ [Odkaz na REST API](/rest/api/searchservice/)
 + [Přidání profilů vyhodnocování do indexu](index-add-scoring-profiles.md)
 + [Vytvoření rozhraní API pro index](/rest/api/searchservice/create-index)
 + [Sada Azure Kognitivní hledání .NET SDK](/dotnet/api/overview/azure/search)

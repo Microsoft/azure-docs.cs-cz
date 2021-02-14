@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: ca60c44d1e167367e2c138af1e7bfd4ba1a69417
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3c8c8b2316a206ba837c0b32fd699dc0ed1eeea
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710069"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519384"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>Možnosti výpočtů a úložiště v Azure Database for PostgreSQL – flexibilní Server
 
@@ -151,7 +151,10 @@ Pokud \* je tato možnost označená jako, je vstupně-výstupní šířka pásm
 
 Při dosažení limitu úložiště začne server vracet chyby a zabrání v dalších úpravách. To může také způsobit problémy s jinými provozními aktivitami, jako jsou zálohování a archivace WAL.
 
+Aby k této situaci nedocházelo, když využití úložiště dosáhne 95% nebo pokud je dostupná kapacita menší než 5 GiB, server se automaticky přepne do **režimu jen pro čtení**.
+
 Doporučujeme aktivně monitorovat místo na disku, které se používá, a zvětšit velikost disku před jakoukoli situací, kdy se úložiště nachází. Můžete nastavit výstrahu, která vás upozorní, když se úložiště serveru přiblíží k vycházejícímu z disku, abyste se vyhnuli jakýmkoli problémům s vychodem z provozu. Další informace najdete v dokumentaci k [Nastavení výstrahy](howto-alert-on-metrics.md).
+
 
 ### <a name="storage-auto-grow"></a>Automatické zvětšování úložiště
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/04/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a1fb1c1be8a0203d9f36712fda8e30f0f9354091
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 8fc3ad3e1597d9b38bd095875c8a6f11260e8711
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576099"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515006"
 ---
 Profily pro klienty Azure VPN (Windows 10) můžete nasadit pomocí Microsoft Intune. Tento článek vám pomůže vytvořit profil Intune s využitím vlastních nastavení.
 
@@ -46,21 +46,14 @@ Další podporované možnosti najdete v článku [CSP pro podpora vpnv2](https:
       <PluginProfile>
         <ServerUrlList>azuregateway-7cee0077-d553-4323-87df-069c331f58cb-053dd0f6af02.vpn.azure.com</ServerUrlList> 
         <CustomConfiguration>
+
         </CustomConfiguration>
         <PluginPackageFamilyName>Microsoft.AzureVpn_8wekyb3d8bbwe</PluginPackageFamilyName>
       </PluginProfile>
     </VPNProfile>
    ```
 1. Upravte záznam mezi a položkou ```<ServerUrlList>``` ```</ServerUrlList>``` ze staženého profilu (azurevpnconfig.xml). Změňte plně kvalifikovaný název domény "TrustedNetworkDetection" tak, aby odpovídal vašemu prostředí.
-1. Otevřete stažený profil Azure (azurevpnconfig.xml) a zkopírujte obsah do schránky tak, že zvýrazníte text a stisknete <ctrl> + C. Zkopírujte vše mezi následující AzVpnProfile řádky, ale nekopírujte samotné AzVpnProfile řádky:
-
-   ```
-   <AzVpnProfile xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/">
-     <any xmlns:d2p1="http://schemas.datacontract.org/2004/07/System.Xml"
-       i:nil="true" />
-   For example - copy the text in your xml that is located here.
-   </AzVpnProfile>
-   ```
+1. Otevřete stažený profil Azure (azurevpnconfig.xml) a zkopírujte celý obsah do schránky zvýrazněním textu a stisknutím klávesy (CTRL) + C. 
 1. Vložte zkopírovaný text z předchozího kroku do souboru, který jste vytvořili v kroku 2 mezi ```<CustomConfiguration>  </CustomConfiguration>``` značkami. Uložte soubor s příponou XML.
 1. Zapište hodnotu do ```<name>  </name>``` značek. Toto je název profilu. Tento název budete potřebovat při vytváření profilu v Intune. Zavřete soubor a zapamatujte si umístění, kam se uložilo.
 

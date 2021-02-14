@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: 489c6be7bf977d01207fee4d1bd1fda13dc12025
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: d2308d065755df834a224ef3b1df202d7b7dc5ae
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820513"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518942"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Verze rozhraní API v Azure Kognitivní hledání
 
@@ -96,19 +96,19 @@ Následující tabulka obsahuje odkazy na novější verze sady SDK.
 
 | SDK version (Verze sady SDK) | Status | Popis  |
 |-------------|--------|------------------------------|
-| [Java Azure – hledání dokumentů 11](https://newreleases.io/project/github/Azure/azure-sdk-for-java/release/azure-search-documents_11.1.0) | Stable | Nová knihovna klienta ze sady Azure .NET SDK vydaná v červenci 2020. července. Cílí na rozhraní REST API pro hledání verze = 2019-05-06. |
+| [Java Azure – hledání dokumentů 11](https://newreleases.io/project/github/Azure/azure-sdk-for-java/release/azure-search-documents_11.1.0) | Stable | Nová knihovna klienta z Azure Java SDK vydaná z července 2020. Cílí na rozhraní REST API pro hledání verze = 2019-05-06. |
 | [1.35.0 klienta pro správu Java](/java/api/overview/azure/search/management) | Stable | Cílí na rozhraní REST API pro správu verze = 2015 – 08-19. |
 
 ## <a name="azure-sdk-for-javascript"></a>Azure SDK for JavaScript
 
 | SDK version (Verze sady SDK) | Status | Popis  |
 |-------------|--------|------------------------------|
-| [JavaScript Azure – hledání 11,0](https://azure.github.io/azure-sdk-for-node/azure-search/latest/) | Stable | Nová knihovna klienta ze sady Azure .NET SDK vydaná v červenci 2020. července. Cílí na rozhraní REST API pro hledání verze = 2016-09-01. |
-| [JavaScript – Azure – ARM – hledání](https://azure.github.io/azure-sdk-for-node/azure-arm-search/latest/) | Stable | Cílí na rozhraní REST API pro správu verze = 2015 – 08-19. |
+| [JavaScript @azure/search-documents 11,0](https://www.npmjs.com/package/@azure/search-documents) | Stable | Nová knihovna klienta z Azure JavaScript & TypesScript SDK vydaná z července 2020. Cílí na rozhraní REST API pro hledání verze = 2016-09-01. |
+| [JavaScriptu @azure/arm-search](https://www.npmjs.com/package/@azure/arm-search) | Stable | Cílí na rozhraní REST API pro správu verze = 2015 – 08-19. |
 
 ## <a name="azure-sdk-for-python"></a>Azure SDK pro Python
 
 | SDK version (Verze sady SDK) | Status | Popis  |
 |-------------|--------|------------------------------|
-| [Python Azure – Search-Documents 11,0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents/11.0.0/index.html) | Stable | Nová knihovna klienta ze sady Azure .NET SDK vydaná v červenci 2020. července. Cílí na rozhraní REST API pro hledání verze = 2019-05-06. |
-| [Python Azure – Správa – hledání 1,0](/python/api/overview/azure/search) | Stable | Cílí na rozhraní REST API pro správu verze = 2015 – 08-19. |
+| [Python Azure – Search-Documents 11,0](https://pypi.org/project/azure-search-documents/) | Stable | Nová knihovna klienta ze sady Azure Python SDK vydaná v červenci 2020. Cílí na rozhraní REST API pro hledání verze = 2019-05-06. |
+| [Python Azure – Správa – hledání 8,0](https://pypi.org/project/azure-mgmt-search/) | Stable | Cílí na rozhraní REST API pro správu verze = 2015 – 08-19. |

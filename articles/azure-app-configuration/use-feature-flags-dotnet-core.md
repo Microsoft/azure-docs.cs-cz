@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: bf0df4cc6e686b553baf8c2439c807d2f07ef440
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 701fe4ffc6147086dde740bfdb2dc7db92508e28
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807475"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380232"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Kurz: používání příznaků funkcí v aplikaci ASP.NET Core
 
@@ -218,7 +218,7 @@ Podle konvence se `FeatureManagement` oddíl tohoto dokumentu JSON používá pr
 
 ## <a name="use-dependency-injection-to-access-ifeaturemanager"></a>Použití injektáže závislosti pro přístup k IFeatureManager 
 
-U některých operací, jako je například ruční kontrola hodnot příznaku funkce, je třeba získat instanci [IFeatureManager](/dotnet/api/microsoft.featuremanagement.ifeaturemanage). Ve službě ASP.NET Core MVC můžete ke Správci funkcí přistupovat `IFeatureManager` pomocí injektáže závislosti. V následujícím příkladu `IFeatureManager` je do podpisu konstruktoru pro řadič přidán argument typu. Modul runtime automaticky vyřeší odkaz a poskytuje rozhraní při volání konstruktoru. Pokud používáte šablonu aplikace, ve které kontroler již obsahuje jeden nebo více argumentů vkládání závislostí v konstruktoru, například `ILogger` , můžete přidat `IFeatureManager` jako další argument:
+U některých operací, jako je například ruční kontrola hodnot příznaku funkce, je třeba získat instanci [IFeatureManager](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview). Ve službě ASP.NET Core MVC můžete ke Správci funkcí přistupovat `IFeatureManager` pomocí injektáže závislosti. V následujícím příkladu `IFeatureManager` je do podpisu konstruktoru pro řadič přidán argument typu. Modul runtime automaticky vyřeší odkaz a poskytuje rozhraní při volání konstruktoru. Pokud používáte šablonu aplikace, ve které kontroler již obsahuje jeden nebo více argumentů vkládání závislostí v konstruktoru, například `ILogger` , můžete přidat `IFeatureManager` jako další argument:
 
 ### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
     

@@ -1,23 +1,18 @@
 ---
 title: Pravidla pro pojmenování Azure Data Factory entit – verze 1
 description: Popisuje pravidla pojmenování pro Entity Data Factory v1.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
-ms.assetid: bc5e801d-0b3b-48ec-9501-bb4146ea17f1
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 0ef997f54deafc56f1b3af603071c0e650be40d4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 83621a7ceeae32ea4b55e3f22fff61d50e8cdb60
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495391"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380164"
 ---
 # <a name="rules-for-naming-azure-data-factory-entities"></a>Pravidla pro pojmenování Azure Data Factory entit
 > [!NOTE]

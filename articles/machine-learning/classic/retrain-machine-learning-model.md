@@ -3,22 +3,22 @@ title: 'ML Studio (Classic): přeučení webové služby – Azure'
 description: Naučte se aktualizovat webovou službu tak, aby používala nově vyškolený model strojového učení v Azure Machine Learning Studio (Classic).
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: ff0378871139a038f096a44b9ee0c6af2cb67d73
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a4fe9e54e5e03a8dbf2a727b22f784c36d6c65f9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325826"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517582"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Přeučení a nasazení modelu strojového učení
 
-**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Rekurze je jedním ze způsobů, jak zajistit, aby modely strojového učení byly přesné a založené na nejdůležitějších dostupných datech. Tento článek ukazuje, jak převádět a nasazovat model strojového učení jako novou webovou službu v nástroji Studio (Classic). Pokud chcete přeškolit klasickou webovou službu, Projděte si [článek s postupem.](retrain-classic-web-service.md)
@@ -35,7 +35,7 @@ Pomocí těchto kroků můžete znovu naučit a nasazovat novou webovou službu 
 
 ## <a name="deploy-the-retraining-web-service"></a>Nasazení webové služby retraining
 
-Webová služba retraining umožňuje přeškolovat model s novou sadou parametrů, jako jsou nová data, a uložit ho pro pozdější účely. Když připojíte **výstup webové služby**  k **modelu vlaků** , zkušební experiment vyprodukuje nový model, který můžete použít.
+Webová služba retraining umožňuje přeškolovat model s novou sadou parametrů, jako jsou nová data, a uložit ho pro pozdější účely. Když připojíte **výstup webové služby**  k **modelu vlaků**, zkušební experiment vyprodukuje nový model, který můžete použít.
 
 K nasazení webové služby retraining použijte následující postup:
 
@@ -89,14 +89,14 @@ V části **informace o základní spotřebě** **stránky využívání** Najd�
 Vzorový kód BES nahraje soubor z místního disku (například "C:\temp\CensusInput.csv") pro Azure Storage, zpracuje ho a zapíše výsledky zpět do Azure Storage.
 
 1. Přihlášení k webu Azure Portal
-1. V levém navigačním sloupci klikněte na **Další služby** , vyhledejte **účty úložiště** a vyberte je.
+1. V levém navigačním sloupci klikněte na **Další služby**, vyhledejte **účty úložiště** a vyberte je.
 1. V seznamu účtů úložiště vyberte jednu pro uložení převýukového modelu.
 1. V levém navigačním sloupci klikněte na **přístupové klíče**.
 1. Zkopírujte a uložte **Primární přístupový klíč**.
 1. V levém navigačním sloupci klikněte na **objekty blob**.
 1. Vyberte existující kontejner, nebo vytvořte nový a uložte název.
 
-Vyhledejte deklarace *StorageAccountName* , *StorageAccountKey* a *StorageContainerName* a aktualizujte hodnoty, které jste uložili na portálu.
+Vyhledejte deklarace *StorageAccountName*, *StorageAccountKey* a *StorageContainerName* a aktualizujte hodnoty, které jste uložili na portálu.
 
 ```csharp
 const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
@@ -130,11 +130,11 @@ Tady je příklad přeškolení pro výstup:
 
 Při spuštění aplikace obsahuje výstup token adresy URL a sdíleného přístupového podpisu, který je nezbytný pro přístup k výsledkům vyhodnocení.
 
-Výsledky předaného modelu můžete zobrazit kombinací *BaseLocation* , *RelativeLocation* a *SasBlobToken* z výstupních výsledků pro *output2* a vložením celé adresy URL do adresního řádku prohlížeče.
+Výsledky předaného modelu můžete zobrazit kombinací *BaseLocation*, *RelativeLocation* a *SasBlobToken* z výstupních výsledků pro *output2* a vložením celé adresy URL do adresního řádku prohlížeče.
 
 Zkontrolujte výsledky a zjistěte, jestli je nově vyškolený model vyšší než stávající.
 
-Z výstupních výsledků uložte *BaseLocation* , *RelativeLocation* a *SasBlobToken* .
+Z výstupních výsledků uložte *BaseLocation*, *RelativeLocation* a *SasBlobToken* .
 
 ## <a name="update-the-predictive-experiment"></a>Aktualizace prediktivního experimentu
 

@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperf-fy21q1
-ms.openlocfilehash: fb7cb0638ca86ea736749e6fb35e2295128162aa
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7fc57b46055281c64b39767047f6b7cb5b748ad2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032979"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373823"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurace zařízení IoT Edge tak, aby komunikovalo přes proxy server
 
@@ -85,7 +85,7 @@ Následující kroky ukazují příklad instalace Windows pomocí `-proxy` argum
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge
    ```
 
-Máte-li složitá pověření pro proxy server, která nelze zahrnout do adresy URL, použijte `-ProxyCredential` parametr v rámci `-InvokeWebRequestParameters` . Příklad:
+Máte-li složitá pověření pro proxy server, která nelze zahrnout do adresy URL, použijte `-ProxyCredential` parametr v rámci `-InvokeWebRequestParameters` . Třeba
 
 ```powershell
 $proxyCredential = (Get-Credential).GetNetworkCredential()
@@ -245,7 +245,7 @@ V případě obsažených proměnných prostředí by definice modulu měla vypa
 "edgeHub": {
     "type": "docker",
     "settings": {
-        "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+        "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
         "createOptions": ""
     },
     "env": {
@@ -275,7 +275,7 @@ Pokud jste zahrnuli proměnnou prostředí **UpstreamProtocol** do souboru confi
 
 Pokud má proxy server, který se pokoušíte použít, provádět kontrolu provozu na připojeních zabezpečených protokolem TLS, je důležité si uvědomit, že ověřování pomocí X. 509 certifikáty nefunguje. IoT Edge vytvoří kanál TLS zašifrovaný na konci se zadaným certifikátem a klíčem. Pokud je tento kanál pro kontrolu provozu porušený, proxy server nemůže kanál znovu vytvořit se správnými přihlašovacími údaji a IoT Hub a služba IoT Hub Device Provisioning vrátí `Unauthorized` chybu.
 
-Pokud chcete použít proxy server, který provádí kontrolu provozu, musíte použít buď ověřování sdíleného přístupového podpisu, nebo IoT Hub a službu IoT Hub Device Provisioning, kterou jste přidali do povolených, aby se předešlo kontrole.
+Pokud chcete použít proxy server, který provádí kontrolu provozu, musíte použít buď ověřování sdíleného přístupového podpisu, nebo mít IoT Hub a služba IoT Hub Device Provisioning, kterou jste přidali do seznamu povolených aplikací, abyste se vyhnuli kontrole.
 
 ## <a name="next-steps"></a>Další kroky
 

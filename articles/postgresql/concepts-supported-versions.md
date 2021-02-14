@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f0c9a01e43f12e8fbe597c85c22b79c0994305e3
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 41662c5e4cc0ed9458f8b1b1279e2753daed789f
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938864"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518449"
 ---
 # <a name="supported-postgresql-major-versions"></a>Podporované hlavní verze PostgreSQL
 
@@ -29,11 +29,8 @@ Aktuální dílčí verze je 10,11. Další informace o vylepšeních a opravác
 ## <a name="postgresql-version-96"></a>PostgreSQL verze 9,6
 Aktuální dílčí verze je 9.6.16. Další informace o vylepšeních a opravách v této dílčí verzi najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/9.6/static/release-9-6-16.html) .
 
-## <a name="postgresql-version-95"></a>PostgreSQL verze 9,5
-Aktuální dílčí verze je 9.5.20. Informace o vylepšeních a opravách v této dílčí verzi najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/9.5/static/release-9-5-20.html) .
-
-> [!NOTE]
-> V souladu se [zásadami správy verzí](https://www.postgresql.org/support/versioning/)komunity Postgres se Azure Database for PostgreSQL vyřazení Postgres verze 9,5 dne 11. února 2021. Další podrobnosti a omezení najdete v tématu [zásady správy verzí Azure Database for PostgreSQL](concepts-version-policy.md) .
+## <a name="postgresql-version-95-retired"></a>PostgreSQL verze 9,5 (vyřazeno)
+V souladu se [zásadami správy verzí](https://www.postgresql.org/support/versioning/)v komunitě Postgres Azure Database for PostgreSQL vyřazení Postgres verze 9,5 od 11. února 2021. Další podrobnosti a omezení najdete v tématu [zásady správy verzí Azure Database for PostgreSQL](concepts-version-policy.md) . Pokud používáte tuto hlavní verzi, upgradujte prosím na novější verzi, nejlépe do PostgreSQL 11.
 
 ## <a name="managing-upgrades"></a>Správa upgradů
 Projekt PostgreSQL pravidelně řeší nahlášené chyby v menších verzích. Azure Database for PostgreSQL automaticky opravuje podverze na serverech v rámci měsíčních nasazení služby. 

@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/28/2017
+ms.date: 02/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 6dcaa83980210a1f5449e8a2e0982cb8e39ff03d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: fa7616a740e8246fa08e950494428095f41ee404
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966186"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382850"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 series software, vysoká dostupnost a síťové požadavky
 
@@ -41,7 +41,7 @@ Následující požadavky na software jsou pro klienty úložiště, kteří př
 
 | Podporované operační systémy | Vyžaduje se verze | Další požadavky/poznámky |
 | --- | --- | --- |
-| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |StorSimple svazky iSCSI se podporují jenom na následujících typech disků Windows:<ul><li>Jednoduchý svazek na základním disku</li><li>Jednoduchý a zrcadlený svazek na dynamickém disku</li></ul>Podporují se jenom ty iniciátory iSCSI softwaru, které jsou v operačním systému nativně přítomné. Nejsou podporovány hardwarové iniciátory iSCSI.<br></br>Pokud používáte svazek iSCSI StorSimple, podporují se dynamické zřizování a funkce ODX pro Windows Server 2012 a 2016.<br><br>StorSimple může vytvářet dynamicky zřízené a plně zřízené svazky. Nemůže vytvořit částečně zřízené svazky.<br><br>Přeformátování dynamicky zřízeného svazku může trvat dlouhou dobu. Místo přeformátování proto doporučujeme odstranit tento svazek a potom vytvořit nový. Pokud ale přesto chcete svazek přeformátovat:<ul><li>Před vlastním přeformátováním spusťte následující příkaz, abyste se vyhnuli prodlevám souvisejícím s recyklací místa: . <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>Jakmile formátování skončí, použijte následující příkaz, který recyklaci místa znovu povolí: .<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Použijte Windows Server 2012 hotfix, jak je popsáno v [článku KB 2878635](https://support.microsoft.com/kb/2870270) pro počítač se systémem Windows Server.</li></ul></li></ul></ul> Pokud konfigurujete StorSimple Snapshot Manager nebo adaptér StorSimple pro službu SharePoint, pokračujte na [požadavky na software u volitelných součástí](#software-requirements-for-optional-components). |
+| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |StorSimple svazky iSCSI se podporují jenom na následujících typech disků Windows:<ul><li>Jednoduchý svazek na základním disku</li><li>Jednoduchý a zrcadlený svazek na dynamickém disku</li></ul>Podporují se jenom ty iniciátory iSCSI softwaru, které jsou v operačním systému nativně přítomné. Nejsou podporovány hardwarové iniciátory iSCSI.<br></br>Pokud používáte svazek iSCSI StorSimple, podporují se dynamické zřizování a funkce ODX pro Windows Server 2012 a 2016.<br><br>StorSimple může vytvářet dynamicky zřízené a plně zřízené svazky. Nemůže vytvořit částečně zřízené svazky.<br><br>Přeformátování dynamicky zřízeného svazku může trvat dlouhou dobu. Místo přeformátování proto doporučujeme odstranit tento svazek a potom vytvořit nový. Pokud ale přesto chcete svazek přeformátovat:<ul><li>Před vlastním přeformátováním spusťte následující příkaz, abyste se vyhnuli prodlevám souvisejícím s recyklací místa: . <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>Jakmile formátování skončí, použijte následující příkaz, který recyklaci místa znovu povolí: .<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Použijte Windows Server 2012 hotfix, jak je popsáno v [článku KB 2878635](https://support.microsoft.com/kb/2870270) pro počítač se systémem Windows Server.</li></ul></li></ul></ul> Pokud konfigurujete StorSimple Snapshot Manager nebo adaptér StorSimple pro službu SharePoint, pokračujte na [požadavky na software u volitelných součástí](#software-requirements-for-optional-components). <br> Pokud klient Windows serveru používá protokol SMB pro přístup k zařízení StorSimple, přejděte k části [ladění výkonu pro souborové servery SMB](/windows-server/administration/performance-tuning/role/file-server/smb-file-server) , kde najdete pokyny ke zvýšení paralelního zpracování.|
 | VMware ESX |5,5 a 6,0 |Podporováno u VMware vSphere jako klienta iSCSI. Funkce VAAI-Block je podporovaná u VMware vSphere na zařízeních StorSimple. |
 | Linux RHEL/CentOS |5, 6 a 7 |Podpora klientů iSCSI pro Linux s verzemi verze 5, 6 a 7 pro Linux. |
 | Linux |SUSE Linux 11 | |
@@ -65,14 +65,14 @@ Zařízení StorSimple je uzamčené. Porty ale musí být v bráně firewall ot
 
 | Číslo portu.<sup>1, 2</sup> | V nebo ven | Rozsah portů | Vyžadováno | Poznámky |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP)<sup>3</sup> |Out |Síť WAN |Ne |<ul><li>Odchozí port se používá pro přístup k Internetu k načtení aktualizací.</li><li>Odchozí webový proxy server je uživatelsky konfigurovatelné.</li><li>Aby se mohly aktualizovat systémové aktualizace, musí být tento port taky otevřený pro pevné IP adresy řadiče.</li></ul> |
+| TCP 80 (HTTP)<sup>3</sup> |Out |Síť WAN |No |<ul><li>Odchozí port se používá pro přístup k Internetu k načtení aktualizací.</li><li>Odchozí webový proxy server je uživatelsky konfigurovatelné.</li><li>Aby se mohly aktualizovat systémové aktualizace, musí být tento port taky otevřený pro pevné IP adresy řadiče.</li></ul> |
 | TCP 443 (HTTPS)<sup>3</sup> |Out |Síť WAN |Yes |<ul><li>Odchozí port se používá pro přístup k datům v cloudu.</li><li>Odchozí webový proxy server je uživatelsky konfigurovatelné.</li><li>Aby se mohly aktualizovat systémové aktualizace, musí být tento port taky otevřený pro pevné IP adresy řadiče.</li><li>Tento port se používá také na obou řadičích pro uvolňování paměti.</li></ul> |
 | UDP 53 (DNS) |Out |Síť WAN |V některých případech; viz poznámky. |Tento port je vyžadován pouze v případě, že používáte internetový server DNS. |
 | UDP 123 (NTP) |Out |Síť WAN |V některých případech; viz poznámky. |Tento port je vyžadován pouze v případě, že používáte internetový server NTP. |
-| TCP 9354 |Out |Síť WAN |Yes |Odchozí port používá zařízení StorSimple ke komunikaci se službou StorSimple Device Manager. |
-| 3260 (iSCSI) |V |Síť LAN |Ne |Tento port se používá pro přístup k datům přes iSCSI. |
-| 5985 |V |Síť LAN |Ne |Port pro příchozí spojení StorSimple Snapshot Manager slouží ke komunikaci se zařízením StorSimple.<br>Tento port se používá také při vzdáleném připojení k Windows PowerShell pro StorSimple přes protokol HTTP. |
-| 5986 |V |Síť LAN |Ne |Tento port se používá, když se vzdáleně připojujete k Windows PowerShell pro StorSimple přes protokol HTTPS. |
+| TCP 9354 |Out |Síť WAN |Yes |Odchozí port používá zařízení StorSimple ke komunikaci se službou StorSimple Správce zařízení. |
+| 3260 (iSCSI) |V |Síť LAN |No |Tento port se používá pro přístup k datům přes iSCSI. |
+| 5985 |V |Síť LAN |No |Port pro příchozí spojení StorSimple Snapshot Manager slouží ke komunikaci se zařízením StorSimple.<br>Tento port se používá také při vzdáleném připojení k Windows PowerShell pro StorSimple přes protokol HTTP. |
+| 5986 |V |Síť LAN |No |Tento port se používá, když se vzdáleně připojujete k Windows PowerShell pro StorSimple přes protokol HTTPS. |
 
 <sup>1</sup> na veřejném Internetu není třeba otevřít žádné příchozí porty.
 
@@ -86,7 +86,7 @@ Zařízení StorSimple je uzamčené. Porty ale musí být v bráně firewall ot
 
 ### <a name="url-patterns-for-firewall-rules"></a>Vzory adres URL pro pravidla brány firewall
 
-Správci sítě mohou často konfigurovat Rozšířená pravidla brány firewall na základě vzorů adres URL pro filtrování příchozího a odchozího provozu. Vaše zařízení StorSimple a Služba StorSimple Device Manager jsou závislé na dalších aplikacích Microsoftu, jako jsou Azure Service Bus, Azure Active Directory Access Control, účty úložiště a Microsoft Update servery. Ke konfiguraci pravidel brány firewall lze použít vzory adres URL přidružené k těmto aplikacím. Je důležité pochopit, že se vzory adres URL přidružené k těmto aplikacím můžou změnit. To zase vyžaduje, aby správce sítě sledoval a aktualizoval pravidla brány firewall pro StorSimple jako a v případě potřeby.
+Správci sítě mohou často konfigurovat Rozšířená pravidla brány firewall na základě vzorů adres URL pro filtrování příchozího a odchozího provozu. Vaše zařízení StorSimple a Služba StorSimple Správce zařízení jsou závislé na dalších aplikacích Microsoftu, jako jsou Azure Service Bus, Azure Active Directory Access Control, účty úložiště a Microsoft Update servery. Ke konfiguraci pravidel brány firewall lze použít vzory adres URL přidružené k těmto aplikacím. Je důležité pochopit, že se vzory adres URL přidružené k těmto aplikacím můžou změnit. To zase vyžaduje, aby správce sítě sledoval a aktualizoval pravidla brány firewall pro StorSimple jako a v případě potřeby.
 
 Doporučujeme, abyste nastavili pravidla brány firewall pro odchozí přenosy na základě pevných IP adres StorSimple, a to ve většině případů. Pomocí níže uvedených informací ale můžete nastavit Rozšířená pravidla brány firewall, která jsou potřeba k vytváření zabezpečených prostředí.
 
@@ -174,7 +174,7 @@ Kromě výše uvedených požadavků na síť pro optimální výkon řešení S
 
 Hardwarová platforma, která je součástí řešení StorSimple, má funkce dostupnosti a spolehlivosti, které poskytují základ pro vysoce dostupnou a odolnou infrastrukturu úložiště ve vašem datovém centru. Existují však požadavky a osvědčené postupy, které byste měli dodržovat, abyste zajistili dostupnost vašeho řešení StorSimple. Před nasazením StorSimple pečlivě zkontrolujte následující požadavky a osvědčené postupy pro zařízení StorSimple a připojené hostitelské počítače.
 
-Další informace o monitorování a údržbě hardwarových komponent zařízení StorSimple najdete [v části použití služby StorSimple Device Manager k monitorování hardwarových komponent a stavu](storsimple-8000-monitor-hardware-status.md) [StorSimple hardwarové](storsimple-8000-hardware-component-replacement.md)součásti.
+Další informace o monitorování a údržbě hardwarových komponent zařízení StorSimple najdete [v části použití služby StorSimple Správce zařízení k monitorování hardwarových komponent a stavu](storsimple-8000-monitor-hardware-status.md) [StorSimple hardwarové](storsimple-8000-hardware-component-replacement.md)součásti.
 
 ### <a name="high-availability-requirements-and-procedures-for-your-storsimple-device"></a>Požadavky a postupy vysoké dostupnosti pro zařízení StorSimple
 
@@ -233,7 +233,7 @@ StorSimple Device model 8600 obsahuje kromě primárního skříňku i skříň 
 * Zajistěte, aby byly současně nainstalovány oba moduly EBOD skříně, jak kabely SAS, tak i všechny jednotky pevného disku.
 * Pokud dojde k chybě modulu EBOD skříni, vyžádejte ihned náhradu.
 * Pokud dojde k selhání modulu EBOD skříni, ujistěte se, že je modul druhého kontroleru aktivní, než nahradíte neúspěšný modul. Pokud chcete ověřit, jestli je kontroler aktivní, použijte k [identifikaci aktivního řadiče na zařízení](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device).
-* Při nahrazení modulu eBOD Controller nepřetržitě Sledujte stav součásti ve službě StorSimple Device Manager, a to tak, že se přihlásíte ke **sledování**  >  **stavu hardwaru**.
+* Při nahrazení modulu eBOD Controller nepřetržitě Sledujte stav součásti ve službě StorSimple Správce zařízení, a to tak, že se přihlásíte ke **sledování**  >  **stavu hardwaru**.
 * Pokud kabel SAS dojde k chybě nebo pokud vyžaduje nahrazení (podpora Microsoftu by se mělo zapojit do takového rozhodnutí), nezapomeňte odebrat jenom kabel SAS, který vyžaduje nahrazení.
 * Neprovádějte souběžné odebrání obou kabelů SAS ze systému v libovolném časovém okamžiku.
 
