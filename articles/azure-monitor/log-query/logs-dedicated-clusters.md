@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 1222108694ff7274e5d8fd063635b70a76ffc59c
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: bcd89274b1f2ba7b31a10a481e3d73901eac2c60
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954745"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375183"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor protokolovat vyhrazené clustery
 
@@ -84,7 +84,7 @@ Po vytvoření prostředku *clusteru* můžete upravit další vlastnosti, jako 
 Můžete mít až 2 aktivní clustery na jedno předplatné a oblast. Pokud se cluster odstraní, je stále rezervovaný po dobu 14 dnů. Můžete mít až 4 rezervované clustery na předplatné na oblast (aktivní nebo nedávno odstraněné).
 
 > [!WARNING]
-> Vytvoření clusteru aktivuje přidělení a zřizování prostředků. Dokončení této operace může trvat až hodinu. Doporučuje se spouštět asynchronně.
+> Vytvoření clusteru aktivuje přidělení a zřizování prostředků. Dokončení této operace může trvat několik hodin. Doporučuje se spouštět asynchronně.
 
 Uživatelský účet, který vytváří clustery, musí mít standardní oprávnění pro vytváření prostředků Azure: `Microsoft.Resources/deployments/*` a oprávnění k zápisu `Microsoft.OperationalInsights/clusters/write` do clusteru s tím, že má jejich role přiřazení této konkrétní akce, nebo `Microsoft.OperationalInsights/*` `*/write` .
 

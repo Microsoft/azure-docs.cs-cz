@@ -4,110 +4,164 @@ description: Naučte se, jak vytvořit sdílenou složku Azure, kterou je možn�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2020
+ms.date: 01/22/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 323eed77d6f7a6ccfcdd0a7c7aecff3a125300dc
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: dc23dec8a8d59a7762e93cdfaa2a39d824506e7b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602669"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382119"
 ---
 # <a name="how-to-create-an-nfs-share"></a>Postup vytvoření sdílené složky systému souborů NFS
-
-Sdílené složky Azure jsou plně spravované sdílené složky, které jsou v cloudu živé. K nim lze přistupovat buď pomocí protokolu protokolu serveru Message Block, nebo protokolu NFS (Network File System). Tento článek popisuje vytvoření sdílené složky, která používá protokol NFS. Další informace o obou protokolech najdete v tématu [protokoly sdílení souborů Azure](storage-files-compare-protocols.md).
+Sdílené složky Azure jsou plně spravované sdílené složky, které jsou v cloudu živé. Tento článek popisuje vytvoření sdílené složky, která používá protokol NFS. Další informace o obou protokolech najdete v tématu [protokoly sdílení souborů Azure](storage-files-compare-protocols.md).
 
 ## <a name="limitations"></a>Omezení
-
 [!INCLUDE [files-nfs-limitations](../../../includes/files-nfs-limitations.md)]
 
 ### <a name="regional-availability"></a>Regionální dostupnost
-
 [!INCLUDE [files-nfs-regional-availability](../../../includes/files-nfs-regional-availability.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-
-- Vytvořte [účet úložiště](storage-how-to-create-premium-fileshare.md).
-
-    > [!IMPORTANT]
-    > Ke sdíleným složkám NFS se dá dostat jenom z důvěryhodných sítí. Připojení ke sdílené složce systému souborů NFS musí pocházet z jednoho z následujících zdrojů:
-
+- Ke sdíleným složkám NFS se dá dostat jenom z důvěryhodných sítí. Připojení ke sdílené složce systému souborů NFS musí pocházet z jednoho z následujících zdrojů:
     - Buď [vytvořte privátní koncový bod](storage-files-networking-endpoints.md#create-a-private-endpoint) (doporučeno), nebo [omezte přístup ke svému veřejnému koncovému bodu](storage-files-networking-endpoints.md#restrict-public-endpoint-access).
     - [Nakonfigurujte síť VPN typu Point-to-Site (P2S) na platformě Linux pro použití se soubory Azure](storage-files-configure-p2s-vpn-linux.md).
     - [Nakonfigurujte síť VPN typu Site-to-site pro použití se soubory Azure](storage-files-configure-s2s-vpn.md).
     - Nakonfigurujte [ExpressRoute](../../expressroute/expressroute-introduction.md).
-- Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](/cli/azure/install-azure-cli?view=azure-cli-latest).
+
+- Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
 ## <a name="register-the-nfs-41-protocol"></a>Registrace protokolu NFS 4,1
-
 Pokud používáte modul Azure PowerShell nebo rozhraní příkazového řádku Azure CLI, zaregistrujte svou funkci pomocí následujících příkazů:
 
-### <a name="powershell"></a>PowerShell
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+K registraci funkce NFS 4,1 pro soubory Azure použijte buď Azure PowerShell, nebo Azure CLI.
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```azurepowershell
+# Connect your PowerShell session to your Azure account, if you have not already done so.
 Connect-AzAccount
-$context = Get-AzSubscription -SubscriptionId <yourSubscriptionIDHere>
+
+# Set the actively selected subscription, if you have not already done so.
+$subscriptionId = "<yourSubscriptionIDHere>"
+$context = Get-AzSubscription -SubscriptionId $subscriptionId
 Set-AzContext $context
-Register-AzProviderFeature -FeatureName AllowNfsFileShares -ProviderNamespace Microsoft.Storage
+
+# Register the NFS 4.1 feature with Azure Files to enable the preview.
+Register-AzProviderFeature `
+    -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowNfsFileShares 
+    
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
 
-### <a name="azure-cli"></a>Azure CLI
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
+# Connect your Azure CLI to your Azure account, if you have not already done so.
 az login
-az feature register --name AllowNfsFileShares \
-                    --namespace Microsoft.Storage \
-                    --subscription <yourSubscriptionIDHere>
-az provider register --namespace Microsoft.Storage
+
+# Provide the subscription ID for the subscription where you would like to 
+# register the feature
+subscriptionId="<yourSubscriptionIDHere>"
+
+az feature register \
+    --name AllowNfsFileShares \
+    --namespace Microsoft.Storage \
+    --subscription $subscriptionId
+
+az provider register \
+    --namespace Microsoft.Storage
 ```
 
-## <a name="verify-feature-registration"></a>Ověřit registraci funkce
+---
 
 Schválení registrace může trvat až hodinu. Chcete-li ověřit, zda byla registrace dokončena, použijte následující příkazy:
 
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNfsFileShares
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-```azurecli
-az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscription <yourSubscriptionIDHere>
-```
-
-## <a name="verify-storage-account-kind"></a>Ověřit druh účtu úložiště
-
-V současné době můžou sdílené složky systému souborů NFS vytvářet jenom účty úložiště. 
-
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-
-Pokud chcete ověřit, jaký druh účtu úložiště máte, přejděte k němu v Azure Portal. Pak z účtu úložiště vyberte **vlastnosti**. V okně Vlastnosti zkontrolujte hodnotu v části **druh účtu**. Tato hodnota by měla být **Storage**.
+Pomocí Azure PowerShell nebo Azure CLI ověřte registraci funkce NFS 4,1 pro soubory Azure. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Pokud chcete ověřit, že máte účet úložiště, můžete použít následující příkaz:
-
 ```azurepowershell
-$accountKind=Get-AzStorageAccount -ResourceGroupName "yourResourceGroup" -Name "yourStorageAccountName"
-$accountKind.Kind
+Get-AzProviderFeature `
+    -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowNfsFileShares
 ```
-
-Výstup by měl být **úložiště**, pokud není, váš účet úložiště je nesprávného typu. Pokud chcete vytvořit účet **úložiště** souborů, přečtěte si téma [jak vytvořit sdílenou složku Azure Premium](storage-how-to-create-premium-fileshare.md).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Pokud chcete ověřit, že máte účet úložiště, můžete použít následující příkaz:
-
 ```azurecli
-az storage account show -g yourResourceGroup -n yourStorageAccountName
+az feature show \
+    --name AllowNfsFileShares \
+    --namespace Microsoft.Storage \
+    --subscription $subscriptionId
 ```
 
-Výstup by měl obsahovat **"druh": "Storage**", pokud ne, váš účet úložiště je nesprávného typu. Pokud chcete vytvořit účet **úložiště** souborů, přečtěte si téma [jak vytvořit sdílenou složku Azure Premium](storage-how-to-create-premium-fileshare.md).
-
 ---
+
+## <a name="create-a-filestorage-storage-account"></a>Vytvoření účtu úložiště úložiště
+Sdílené složky NFS 4,1 jsou v současné době k dispozici pouze jako sdílené složky prémiových souborů. Pokud chcete nasadit prémiovou sdílenou složku s podporou protokolu NFS 4,1, musíte nejdřív vytvořit účet úložiště úložiště. Účet úložiště je objekt nejvyšší úrovně v Azure, který představuje sdílený fond úložiště, který se dá použít k nasazení několika sdílených složek Azure.
+
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+Pokud chcete vytvořit účet úložiště úložiště, přejděte na Azure Portal.
+
+1. V Azure Portal v nabídce vlevo vyberte **účty úložiště** .
+
+    ![Azure Portal hlavní stránka – Výběr účtu úložiště](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
+
+2. V okně **Účty úložiště**, které se zobrazí, zvolte **Přidat**.
+3. Vyberte předplatné, ve kterém chcete vytvořit účet úložiště.
+4. Vyberte skupinu prostředků, ve které se má účet úložiště vytvořit.
+
+5. Dále zadejte název účtu úložiště. Zvolený název musí být jedinečný v rámci Azure. Název také musí mít délku 3 až 24 znaků a může obsahovat jenom číslice a malá písmena.
+6. Vyberte pro svůj účet úložiště nějaké umístění nebo použijte výchozí umístění.
+7. Pro **výkon** vyberte **Premium**.
+
+    V rozevíracím seznamu **druh účtu** musíte vybrat možnost **Premium** for **Storage** jako dostupnou.
+
+8. Vyberte **druh účtu** a zvolte **úložiště**.
+9. Ponechte **replikační** sadu nastavenou na výchozí hodnotu **místně redundantního úložiště (LRS)**.
+
+    ![Jak vytvořit účet úložiště pro sdílenou složku Premium](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
+
+10. Vyberte **Zkontrolovat a vytvořit**, zkontrolujte nastavení účtu úložiště a vytvořte účet.
+11. Vyberte **Vytvořit**.
+
+Po vytvoření prostředku účtu úložiště přejděte na něj.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Pokud chcete vytvořit účet úložiště úložiště, otevřete příkazový řádek PowerShellu a proveďte následující příkazy, které zapamatujete a nahraďte `<resource-group>` `<storage-account>` odpovídajícími hodnotami pro vaše prostředí.
+
+```powershell
+$resourceGroupName = "<resource-group>"
+$storageAccountName = "<storage-account>"
+$location = "westus2"
+
+$storageAccount = New-AzStorageAccount `
+    -ResourceGroupName $resourceGroupName `
+    -Name $storageAccountName `
+    -SkuName Premium_LRS `
+    -Location $location `
+    -Kind FileStorage
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+Pokud chcete vytvořit účet úložiště úložiště, otevřete terminál a spusťte následující příkazy, které zapamatujete a nahraďte `<resource-group>` `<storage-account>` odpovídajícími hodnotami pro vaše prostředí.
+
+```azurecli-interactive
+resourceGroup="<resource-group>"
+storageAccount="<storage-account>"
+location="westus2"
+
+az storage account create \
+    --resource-group $resourceGroup \
+    --name $storageAccount \
+    --location $location \
+    --sku Premium_LRS \
+    --kind FileStorage
+```
+---
+
 ## <a name="create-an-nfs-share"></a>Vytvoření sdílené složky NFS
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
@@ -138,7 +192,7 @@ Teď, když jste vytvořili účet úložiště souborů a nakonfigurovali síť
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   Pokud chcete upgradovat verzi PowerShellu, přečtěte si téma [upgrade existujícího prostředí Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell) .
+   Pokud chcete upgradovat verzi PowerShellu, přečtěte si téma [upgrade existujícího prostředí Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true#upgrading-existing-windows-powershell) .
     
 1. Nainstalujte nejnovější verzi modulu PowershellGet.
 
@@ -154,41 +208,40 @@ Teď, když jste vytvořili účet úložiště souborů a nakonfigurovali síť
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
    ```
 
-   Další informace o tom, jak nainstalovat moduly PowerShellu, najdete v tématu [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps?view=azps-3.0.0) .
+   Další informace o tom, jak nainstalovat moduly PowerShellu, najdete v tématu [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps?view=azps-3.0.0&preserve-view=true) .
    
 1. K vytvoření sdílené složky Premium pomocí modulu Azure PowerShell použijte rutinu [New-AzRmStorageShare](/powershell/module/az.storage/new-azrmstorageshare) .
 
-> [!NOTE]
-> Velikost zřízených sdílených složek je určena kvótou sdílené složky. sdílené složky se účtují podle zřízené velikosti. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/storage/files/).
+    > [!NOTE]
+    > Soubory úrovně Premium se účtují pomocí zřízeného modelu. Zřízená velikost sdílené složky je určená `QuotaGiB` níže. Další informace najdete v tématu [Princip zřizovacího modelu](understanding-billing.md#provisioned-model) a stránky s [cenami za soubory Azure](https://azure.microsoft.com/pricing/details/storage/files/).
 
-  ```powershell
-  New-AzRmStorageShare `
-   -ResourceGroupName $resourceGroupName `
-   -StorageAccountName $storageAccountName `
-   -Name myshare `
-   -EnabledProtocol NFS `
-   -RootSquash RootSquash `
-   -Context $storageAcct.Context
-  ```
+    ```powershell
+    New-AzRmStorageShare `
+        -StorageAccount $storageAccount `
+        -Name myshare `
+        -EnabledProtocol NFS `
+        -RootSquash RootSquash `
+        -QuotaGiB 1024
+    ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
 Pokud chcete vytvořit sdílenou složku Premium pomocí Azure CLI, použijte příkaz [AZ Storage Share Create](/cli/azure/storage/share-rm) .
 
 > [!NOTE]
-> Velikost zřízených sdílených složek je určena kvótou sdílené složky. sdílené složky se účtují podle zřízené velikosti. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/storage/files/).
+> Soubory úrovně Premium se účtují pomocí zřízeného modelu. Zřízená velikost sdílené složky je určená `quota` níže. Další informace najdete v tématu [Princip zřizovacího modelu](understanding-billing.md#provisioned-model) a stránky s [cenami za soubory Azure](https://azure.microsoft.com/pricing/details/storage/files/).
 
 ```azurecli-interactive
 az storage share-rm create \
-    --storage-account $STORAGEACCT \
+    --resource-group $resourceGroup \
+    --storage-account $storageAccount \
+    --name "myshare" \
     --enabled-protocol NFS \
     --root-squash RootSquash \
-    --name "myshare" 
+    --quota 1024
 ```
 ---
 
 ## <a name="next-steps"></a>Další kroky
-
 Teď, když jste vytvořili sdílenou složku NFS, budete ji muset připojit na svém klientském počítači se systémem Linux. Podrobnosti najdete v tématu [Postup připojení sdílené složky systému souborů NFS](storage-files-how-to-mount-nfs-shares.md).
 
 Pokud se setkáte s problémy, přečtěte si téma [řešení potíží s sdílenými složkami souborů Azure NFS](storage-troubleshooting-files-nfs.md)

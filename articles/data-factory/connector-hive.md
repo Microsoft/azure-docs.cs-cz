@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z podregistru pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z podregistru do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: jingwang
-ms.openlocfilehash: 4207c4ddfcbab325b1ae119dcd200af30fc59f58
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8f6e85d82c01663e404f7046f84706feb209ba5a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844931"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367023"
 ---
 # <a name="copy-and-transform-data-from-hive-using-azure-data-factory"></a>Kopírování a transformace dat z podregistru pomocí Azure Data Factory 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -34,7 +29,7 @@ Data z podregistru můžete kopírovat do libovolného podporovaného úložišt
 
 Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, takže nemusíte ručně instalovat žádné ovladače pomocí tohoto konektoru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -53,22 +48,22 @@ Pro propojenou službu podregistru jsou podporovány následující vlastnosti:
 | typ | Vlastnost Type musí být nastavená na: **podregistr** . | Yes |
 | Hostitel | IP adresa nebo název hostitele serveru pro podregistr, oddělený znakem '; ' pro více hostitelů (pouze v případě, že je povoleno serviceDiscoveryMode).  | Yes |
 | port | Port TCP, který server podregistru používá k naslouchání klientským připojením. Pokud se připojíte k Azure HDInsights, zadejte port jako 443. | Yes |
-| serverType | Typ serveru podregistru <br/>Povolené hodnoty jsou: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Ne |
-| thriftTransportProtocol | Transportní protokol, který se má použít ve vrstvě Thrift. <br/>Povolené hodnoty jsou: **Binary**, **SASL**, **http** . | Ne |
+| serverType | Typ serveru podregistru <br/>Povolené hodnoty jsou: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | No |
+| thriftTransportProtocol | Transportní protokol, který se má použít ve vrstvě Thrift. <br/>Povolené hodnoty jsou: **Binary**, **SASL**, **http** . | No |
 | authenticationType | Metoda ověřování pro přístup k serveru podregistru <br/>Povolené hodnoty jsou: **anonymní**, **username**, **UsernameAndPassword**, **WindowsAzureHDInsightService**. Ověřování protokolem Kerberos se teď nepodporuje. | Yes |
-| serviceDiscoveryMode | true pro indikaci použití služby ZooKeeper, NEPRAVDA.  | Ne |
-| zooKeeperNameSpace | Obor názvů na ZooKeeper, do kterého se přidají uzly pro podregistr Server 2  | Ne |
-| useNativeQuery | Určuje, zda ovladač používá nativní dotazy HiveQL, nebo je převede do ekvivalentního formátu v HiveQL.  | Ne |
-| username | Uživatelské jméno, které používáte pro přístup k serveru podregistru.  | Ne |
-| heslo | Heslo odpovídající uživateli Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
-| httpPath | Částečná adresa URL odpovídající serveru podregistru.  | Ne |
-| enableSsl | Určuje, jestli se připojení k serveru šifrují pomocí protokolu TLS. Výchozí hodnota je False.  | Ne |
-| trustedCertPath | Úplná cesta k souboru. pem, který obsahuje certifikáty důvěryhodné certifikační autority pro ověření serveru při připojení přes protokol TLS. Tuto vlastnost lze nastavit pouze při použití protokolu TLS v místním prostředí IR. Výchozí hodnota je soubor cacerts. pem nainstalovaný s IR.  | Ne |
-| useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Výchozí hodnota je False.  | Ne |
-| allowHostNameCNMismatch | Určuje, jestli se má při připojování přes protokol TLS vyžadovat, aby název certifikátu TLS/SSL vydaný certifikační autoritou odpovídal názvu hostitele serveru. Výchozí hodnota je False.  | Ne |
-| allowSelfSignedServerCert | Určuje, jestli se mají na serveru udělit certifikáty podepsané svým držitelem. Výchozí hodnota je False.  | Ne |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
-| storageReference | Odkaz na propojenou službu účtu úložiště, který se používá pro pracovní data v toku mapování dat. To se vyžaduje jenom v případě, že se při mapování toku dat používá propojená služba podregistr. | Ne |
+| serviceDiscoveryMode | true pro indikaci použití služby ZooKeeper, NEPRAVDA.  | No |
+| zooKeeperNameSpace | Obor názvů na ZooKeeper, do kterého se přidají uzly pro podregistr Server 2  | No |
+| useNativeQuery | Určuje, zda ovladač používá nativní dotazy HiveQL, nebo je převede do ekvivalentního formátu v HiveQL.  | No |
+| username | Uživatelské jméno, které používáte pro přístup k serveru podregistru.  | No |
+| heslo | Heslo odpovídající uživateli Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | No |
+| httpPath | Částečná adresa URL odpovídající serveru podregistru.  | No |
+| enableSsl | Určuje, jestli se připojení k serveru šifrují pomocí protokolu TLS. Výchozí hodnota je False.  | No |
+| trustedCertPath | Úplná cesta k souboru. pem, který obsahuje certifikáty důvěryhodné certifikační autority pro ověření serveru při připojení přes protokol TLS. Tuto vlastnost lze nastavit pouze při použití protokolu TLS v místním prostředí IR. Výchozí hodnota je soubor cacerts. pem nainstalovaný s IR.  | No |
+| useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Výchozí hodnota je False.  | No |
+| allowHostNameCNMismatch | Určuje, jestli se má při připojování přes protokol TLS vyžadovat, aby název certifikátu TLS/SSL vydaný certifikační autoritou odpovídal názvu hostitele serveru. Výchozí hodnota je False.  | No |
+| allowSelfSignedServerCert | Určuje, jestli se mají na serveru udělit certifikáty podepsané svým držitelem. Výchozí hodnota je False.  | No |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
+| storageReference | Odkaz na propojenou službu účtu úložiště, který se používá pro pracovní data v toku mapování dat. To se vyžaduje jenom v případě, že se při mapování toku dat používá propojená služba podregistr. | No |
 
 **Příklad:**
 
@@ -101,7 +96,7 @@ Chcete-li kopírovat data z podregistru, nastavte vlastnost Type datové sady na
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavená na: **HiveObject** . | Yes |
 | schema | Název schématu. |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
-| stolu | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
+| tabulka | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
 | tableName | Název tabulky včetně části schématu Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a `table` . | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad**
@@ -180,7 +175,7 @@ V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem podregist
 | Formát | Bez ohledu na to, zda čtete z tabulky nebo dotazu | ano | `table` nebo `query` | formát |
 | Název schématu | Při čtení z tabulky se jedná o schéma zdrojové tabulky. |  Ano, pokud je formát `table` | Řetězec | schemaName |
 | Název tabulky | Pokud je čtena z tabulky, název tabulky |   Ano, pokud je formát `table` | Řetězec | tableName |
-| Dotazy | Pokud je formát `query` , zdrojový dotaz na propojené službě podregistru | Ano, pokud je formát `query` | Řetězec | query |
+| Dotaz | Pokud je formát `query` , zdrojový dotaz na propojené službě podregistru | Ano, pokud je formát `query` | Řetězec | query |
 | Připravené | Tabulka podregistru bude vždycky připravená. | ano | `true` | připravené |
 | Kontejner úložiště | Kontejner úložiště, který se používá k přípravě dat před čtením z podregistru nebo zápisu do podregistru. Cluster podregistru musí mít přístup k tomuto kontejneru. | ano | Řetězec | storageContainer |
 | Pracovní databáze | Schéma nebo databáze, ke kterým má uživatelský účet zadaný v propojené službě přístup Slouží k vytvoření externích tabulek během přípravy a v následně vyřazení | ne | `true` nebo `false` | stagingDatabaseName |

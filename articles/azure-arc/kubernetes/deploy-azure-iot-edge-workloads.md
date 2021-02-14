@@ -2,46 +2,52 @@
 title: Nasazení Azure IoT Edgech úloh (Preview)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 02/10/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Nasazení Azure IoT Edgech úloh
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
-ms.openlocfilehash: 88c480f93bfe28a424441a1c5857c623efb4e1d3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f228b79f14ab24281415cd4bd5964fc86a095d3c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091643"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390432"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>Nasazení Azure IoT Edgech úloh (Preview)
 
 ## <a name="overview"></a>Přehled
 
-Azure ARC a Azure IoT Edge společně doplňují možnosti. Azure ARC poskytuje mechanizmy pro operátory clusterů ke konfiguraci základních komponent clusteru a také k použití a prosazování zásad clusteru. A IoT Edge umožňuje operátorům aplikace vzdáleně nasazovat a spravovat zatížení ve velkém měřítku s praktickým ingestování v cloudu a obousměrnými komunikačními primitivy. Následující diagram znázorňuje toto:
+Azure ARC a Azure IoT Edge snadno doplňují možnosti ostatních. 
+
+Azure ARC poskytuje mechanizmy pro obsluhy clusterů ke konfiguraci základních komponent clusteru a použití a prosazování zásad clusteru. 
+
+Azure IoT Edge umožňuje operátorům aplikace vzdáleně nasazovat a spravovat zatížení ve velkém měřítku s praktickým ingestování v cloudu a obousměrnými komunikačními primitivy. 
+
+Následující diagram znázorňuje vztah Azure ARC a Azure IoT Edge:
 
 ![Konfigurace pro IoT ARC](./media/edge-arc.png)
 
 ## <a name="pre-requisites"></a>Požadavky
 
-* [Zaregistrujte IoT Edge zařízení](../../iot-edge/quickstart-linux.md#register-an-iot-edge-device) a [Nasaďte modul simulovaného senzoru teploty](../../iot-edge/quickstart-linux.md#deploy-a-module). Nezapomeňte si poznamenat připojovací řetězec zařízení.
+* [Zaregistrujte IoT Edge zařízení](../../iot-edge/quickstart-linux.md#register-an-iot-edge-device) a [Nasaďte modul simulovaného senzoru teploty](../../iot-edge/quickstart-linux.md#deploy-a-module). Poznamenejte si připojovací řetězec zařízení pro *hodnoty. yaml* uvedené níže.
 
 * Použijte [podporu IoT Edge pro Kubernetes](https://aka.ms/edgek8sdoc) k jejímu nasazení prostřednictvím operátoru toku služby Azure ARC.
 
-* Stáhněte si soubor [**Values. yaml**](https://github.com/Azure/iotedge/blob/preview/iiot/kubernetes/charts/edge-kubernetes/values.yaml) pro IoT Edge graf Helm a nahraďte zástupný text **deviceConnectionString** na konci souboru, který jste si poznamenali v kroku 1. V případě potřeby můžete nastavit jiné podporované možnosti instalace grafu. Vytvořte obor názvů pro úlohu IoT Edge a vytvořte v něm tajný klíč:
+* Stáhněte si soubor [*Values. yaml*](https://github.com/Azure/iotedge/blob/preview/iiot/kubernetes/charts/edge-kubernetes/values.yaml) pro IoT Edge graf Helm a nahraďte `deviceConnectionString` zástupný text na konci souboru připojovacím řetězcem, který jste si poznamenali dříve. Podle potřeby nastavte všechny podporované možnosti instalace grafu. Vytvořte obor názvů pro úlohu IoT Edge a vygenerujte v něm tajný klíč:
 
-    ```
-    $ kubectl create ns iotedge
+  ```
+  $ kubectl create ns iotedge
 
-    $ kubectl create secret generic dcs --from-file=fully-qualified-path-to-values.yaml --namespace iotedge
-    ```
+  $ kubectl create secret generic dcs --from-file=fully-qualified-path-to-values.yaml --namespace iotedge
+  ```
 
-    Tuto možnost můžete také nastavit vzdáleně pomocí [konfiguračního příkladu clusteru](./use-gitops-connected-cluster.md).
+  Můžete ji také nastavit vzdáleně pomocí [příkladu konfigurace clusteru](./use-gitops-connected-cluster.md).
 
 ## <a name="connect-a-cluster"></a>Připojení clusteru
 
-K `az` `connectedk8s` připojení clusteru Kubernetes ke službě Azure ARC použijte rozšíření CLI:
+`az` `connectedk8s` Připojení clusteru Kubernetes ke službě Azure ARC pomocí rozšíření Azure CLI:
 
   ```
   az connectedk8s connect --name AzureArcIotEdge --resource-group AzureArcTest
@@ -49,21 +55,21 @@ K `az` `connectedk8s` připojení clusteru Kubernetes ke službě Azure ARC pou�
 
 ## <a name="create-a-configuration-for-iot-edge"></a>Vytvořit konfiguraci pro IoT Edge
 
-Příklad úložiště: https://github.com/veyalla/edgearc
+[Ukázkové úložiště Git](https://github.com/veyalla/edgearc) odkazuje na graf IoT Edge Helm a odkazuje na tajný kód vytvořený v části požadavky.
 
-Toto úložiště ukazuje na graf IoT Edge Helm a odkazuje na tajný kód vytvořený v části požadavky.
+Pomocí `az` rozšíření Azure CLI `k8sconfiguration` vytvořte konfiguraci, která propojuje připojený cluster s úložištěm git:
 
-1. Pomocí `az` rozšíření CLI `k8sconfiguration` vytvořte konfiguraci pro propojení připojeného clusteru s úložištěm git:
+  ```
+  az k8sconfiguration create --name iotedge --cluster-name AzureArcIotEdge --resource-group AzureArcTest --operator-instance-name iotedge --operator-namespace azure-arc-iot-edge --enable-helm-operator --helm-operator-chart-version 0.6.0 --helm-operator-chart-values "--set helm.versions=v3" --repository-url "git://github.com/veyalla/edgearc.git" --cluster-scoped
+  ```
 
-    ```
-    az k8sconfiguration create --name iotedge --cluster-name AzureArcIotEdge --resource-group AzureArcTest --operator-instance-name iotedge --operator-namespace azure-arc-iot-edge --enable-helm-operator --helm-operator-chart-version 0.6.0 --helm-operator-chart-values "--set helm.versions=v3" --repository-url "git://github.com/veyalla/edgearc.git" --cluster-scoped
-    ```
+Během několika minut byste měli vidět moduly IoT Edge úloh nasazené do `iotedge` oboru názvů vašeho clusteru. 
 
-    Za minutu nebo dva by se měly zobrazit moduly IoT Edge úloh nasazené do `iotedge` oboru názvů v clusteru. Můžete zobrazit protokoly `SimulatedTemperatureSensor` pod v tomto oboru názvů a zobrazit tak vygenerované ukázkové hodnoty. Zprávy doručené do služby IoT Hub můžete také sledovat pomocí [rozšíření Azure IoT Hub Toolkit pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+Podívejte se na `SimulatedTemperatureSensor` protokoly pod v tomto oboru názvů, abyste viděli vygenerované ukázkové hodnoty. Zprávy doručené do služby IoT Hub můžete také sledovat pomocí [rozšíření Azure IoT Hub Toolkit pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
 
 ## <a name="cleanup"></a>Vyčištění
 
-Konfiguraci můžete odebrat pomocí:
+Odeberte konfiguraci pomocí:
 
 ```
 az k8sconfiguration delete -g AzureArcTest --cluster-name AzureArcIotEdge --name iotedge

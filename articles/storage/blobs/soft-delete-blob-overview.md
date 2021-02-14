@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d380b9d6a20cbe28a8fc4b64179437cd31fd2937
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: a370a7f04e0e43b96e4a574313c4f24c4990ab6f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979283"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390352"
 ---
 # <a name="soft-delete-for-blobs"></a>Obnovitelné odstranění pro objekty blob
 
@@ -83,7 +83,7 @@ Když se **objekt BLOB pro odstranění** volá u základního objektu BLOB (jak
 > [!NOTE]  
 > Po přepsání nepodmíněného odstraněného objektu BLOB se automaticky vygeneruje měkký odstraněný snímek stavu objektu BLOB před operací zápisu. Nový objekt BLOB zdědí úroveň přepsaného objektu BLOB.
 
-Obnovitelné odstranění neukládá vaše data v případě odstranění kontejneru nebo účtu, ani když se nepřepisují metadata objektů BLOB a vlastnosti objektů BLOB. K ochraně účtu úložiště před odstraněním můžete nakonfigurovat zámek pomocí Azure Resource Manager. Další informace najdete v článku o Azure Resource Manager [uzamčení prostředků, aby se zabránilo neočekávaným změnám](../../azure-resource-manager/management/lock-resources.md).
+Obnovitelné odstranění neukládá vaše data v případě odstranění kontejneru nebo účtu, ani když se nepřepisují metadata objektů BLOB a vlastnosti objektů BLOB. K ochraně účtu úložiště před odstraněním můžete nakonfigurovat zámek pomocí Azure Resource Manager. Další informace najdete v článku o Azure Resource Manager [uzamčení prostředků, aby se zabránilo neočekávaným změnám](../../azure-resource-manager/management/lock-resources.md).  Pokud chcete chránit kontejnery před náhodným odstraněním, nakonfigurujte pro účet úložiště obnovitelné odstranění kontejneru. Další informace najdete v tématu [obnovitelné odstranění pro kontejnery (Preview)](soft-delete-container-overview.md).
 
 Následující tabulka podrobně popisuje očekávané chování při zapnutí obnovitelného odstranění:
 

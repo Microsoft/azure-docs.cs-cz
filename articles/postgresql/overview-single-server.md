@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 098d6e3712a928392547fcd2cba68b68dcca5ef3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 18d944cd2b3bfde1a0ee5fc53e83e4016b11b01f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476140"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379212"
 ---
 # <a name="azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL jeden server
 
@@ -69,7 +69,7 @@ Kromě nativního ověřování podporuje jediná serverová služba Azure Activ
 
 [Protokolování auditu]() (ve verzi Preview) je k dispozici ke sledování všech aktivit na úrovni databáze.
 
-Jediná serverová služba je stížnost se všemi špičkovými certifikacemi, jako je FedRAMP, HIPAA a PCI DSS. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure]().
+Jedna serverová služba je kompatibilní se všemi špičkovými certifikacemi, jako je FedRAMP, HIPAA a PCI DSS. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure]().
 
 Další informace o funkcích zabezpečení Azure Database for PostgreSQL najdete v [přehledu zabezpečení]().
 

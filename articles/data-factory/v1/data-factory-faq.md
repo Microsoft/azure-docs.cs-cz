@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory – často kladené otázky
 description: Nejčastější dotazy týkající se Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 57f2beef3dc14a47480950bf9e3bdf35a1fd6ce8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4ddadec327f1a4f6aa22d51ac073b9aebb0dee82
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495816"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383190"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory – často kladené otázky
 > [!NOTE]
@@ -25,7 +21,7 @@ ms.locfileid: "96495816"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="general-questions"></a>Obecné otázky
-### <a name="what-is-azure-data-factory"></a>Co je služba Azure Data Factory?
+### <a name="what-is-azure-data-factory"></a>Co je Azure Data Factory?
 Data Factory je cloudová služba pro integraci dat, která **automatizuje přesun a transformaci dat**. Stejně jako továrna, která používá zařízení k převzetí surovin a jejich transformaci na dokončené produkty, Data Factory orchestruje existující služby, které shromažďují nezpracovaná data a transformují je na informace připravené k použití.
 
 Data Factory umožňuje vytvářet pracovní postupy řízené daty k přesouvání dat mezi místními i cloudovým úložištěm dat a také zpracovávat a transformovat data pomocí výpočetních služeb, jako je Azure HDInsight a Azure Data Lake Analytics. Po vytvoření kanálu, který provede akci, kterou potřebujete, můžete naplánovat jeho pravidelné spuštění (každou hodinu, každý den, každý týden atd.).   
@@ -56,7 +52,7 @@ Pomocí jednoho z následujících nástrojů nebo sad SDK můžete vytvářet a
 * **Šablona Azure Resource Manager** Viz [kurz: sestavení prvního objektu pro vytváření dat Azure pomocí Azure Resource Manager](data-factory-build-your-first-pipeline-using-arm.md) detailů šablony FO.
 
 ### <a name="can-i-rename-a-data-factory"></a>Můžu přejmenovat datovou továrnu?
-Ne. Podobně jako u jiných prostředků Azure nejde změnit název objektu pro vytváření dat Azure.
+No. Podobně jako u jiných prostředků Azure nejde změnit název objektu pro vytváření dat Azure.
 
 ### <a name="can-i-move-a-data-factory-from-one-azure-subscription-to-another"></a>Můžu datovou továrnu přesunout z jednoho předplatného Azure do jiného?
 Ano. V okně Data Factory použijte tlačítko **přesunout** , jak je znázorněno na následujícím diagramu:

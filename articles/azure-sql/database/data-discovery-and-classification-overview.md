@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 12/01/2020
+ms.date: 02/11/2021
 tags: azure-synapse
-ms.openlocfilehash: 41ad711de81f075727e4c177c318054677cb0ece
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 254d69c723a97d9007a1f6c0f0eb7b34bcfe3c4e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185349"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392761"
 ---
 # <a name="data-discovery--classification"></a>Zjišťování a klasifikace dat
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -75,7 +75,7 @@ Po definování zásad v rámci organizace můžete dál klasifikovat jednotliv�
 > [!NOTE]
 > Následující příklad používá Azure SQL Database, ale měli byste vybrat příslušný produkt, pro který chcete nakonfigurovat klasifikaci & zjišťování dat.
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 
 1. V podokně Azure SQL Database klikněte na položku **zjišťování dat & klasifikace** pod záhlavím **zabezpečení** . Karta Přehled obsahuje souhrn aktuálního stavu klasifikace databáze. Souhrn obsahuje podrobný seznam všech klasifikovaných sloupců, které můžete také filtrovat a zobrazovat pouze konkrétní části schématu, typy informací a popisky. Pokud jste zatím neklasifikované žádné sloupce, [přejděte ke kroku 4](#step-4).
 
@@ -183,6 +183,13 @@ Pomocí REST API můžete programově spravovat klasifikace a doporučení. Publ
 - [Get](/rest/api/sql/sensitivitylabels/get): Získá popisek citlivosti určeného sloupce.
 - [Vypsat aktuální podle databáze](/rest/api/sql/sensitivitylabels/listcurrentbydatabase): Získá aktuální popisky citlivosti zadané databáze.
 - [Seznam doporučený databází](/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): Získá doporučené citlivosti citlivosti zadané databáze.
+
+
+## <a name="faq---advanced-classification-capabilities"></a>Nejčastější dotazy – pokročilé možnosti klasifikace
+
+**Otázka**: bude [Azure dosah](https://docs.microsoft.com/azure/purview/overview) nahrazovat klasifikaci & Discovery data ve službě SQL nebo bude brzy vytříděna klasifikace dat SQL pro zjišťování &?
+**Odpověď**: dál podporujeme klasifikaci & Discovery data SQL a pomůžeme vám zajistit, abyste přijali [Azure dosah](https://docs.microsoft.com/azure/purview/overview) , která nabízí bohatší možnosti pro zajištění pokročilých možností klasifikace a zásad správného řízení dat. Pokud se rozhodnete vyřadit jakékoli služby, funkce, rozhraní API nebo SKU, obdržíte oznámení s předstihem, včetně cesty migrace nebo přechodu. Další informace o zásadách životního cyklu Microsoftu najdete tady.
+
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Další kroky
 

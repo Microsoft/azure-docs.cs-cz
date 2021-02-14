@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 54da62ce961156b64c917b448557c17e7516e222
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: ef753043218f259c69082dbb8682517be79cf95c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862130"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099791"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co je výpočetní instance služby Azure Machine Learning?
 
@@ -32,7 +32,7 @@ Aby funkce COMPUTE instance Jupyter fungovala, ujistěte se, že komunikace webo
 
 Výpočetní instance je plně spravovaná cloudová pracovní stanice optimalizovaná pro vývojové prostředí ve službě Machine Learning. Přináší následující výhody:
 
-|Klíčové výhody|Popis|
+|Klíčové výhody|Description|
 |----|----|
 |Produktivita|Modely můžete vytvářet a nasazovat pomocí integrovaných poznámkových bloků a následujících nástrojů v Azure Machine Learning Studiu:<br/>– Jupyter<br/>- JupyterLab<br/>-RStudio (Preview)<br/>Instance COMPUTE je plně integrovaná do Azure Machine Learningho pracovního prostoru a studia. Poznámkové bloky a data můžete sdílet s dalšími odborníky na data v pracovním prostoru.<br/> Můžete také použít [vs Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) s výpočetními instancemi.
 |Spravované & zabezpečené|Snižte nároky na zabezpečení a přidejte dodržování požadavků podnikového zabezpečení. Výpočetní instance poskytují robustní zásady správy a zabezpečené síťové konfigurace, jako jsou:<br/><br/>– Autozřizování z Správce prostředků šablon nebo Azure Machine Learning SDK<br/>- [Řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/overview.md)<br/>- [Podpora virtuální sítě](./how-to-secure-training-vnet.md#compute-instance)<br/>-Zásada SSH pro povolení nebo zakázání přístupu SSH<br/>Protokol TLS 1,2 povolen |
@@ -51,7 +51,7 @@ Instance Azure Machine Learning COMPUTE vám umožní vytvářet, vyškolovat a 
 
 Můžete spustit poznámkové bloky Jupyter v [vs Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) použití výpočetní instance jako vzdáleného serveru bez potřeby SSH. Můžete taky povolit VS Code integraci prostřednictvím [vzdáleného rozšíření SSH](https://devblogs.microsoft.com/python/enhance-your-azure-machine-learning-experience-with-the-vs-code-extension/).
 
-Do své výpočetní instance můžete [nainstalovat balíčky](how-to-create-manage-compute-instance.md#install-packages) a [Přidat jádra](how-to-create-manage-compute-instance.md#add-new-kernels) .  
+Do své výpočetní instance můžete [nainstalovat balíčky](how-to-access-terminal.md#install-packages) a [Přidat jádra](how-to-access-terminal.md#add-new-kernels) .  
 
 Následující nástroje a prostředí jsou již na výpočetní instanci nainstalovány: 
 
@@ -77,7 +77,7 @@ Následující nástroje a prostředí jsou již na výpočetní instanci nainst
 |Anaconda Python||
 |Jupyter a rozšíření||
 |Jupyterlab a rozšíření||
-[Sada Azure Machine Learning SDK pro Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)</br>z PyPI|Zahrnuje většinu dalších balíčků AzureML.  Pokud chcete zobrazit úplný seznam, [otevřete okno terminálu na instanci služby COMPUTE](how-to-run-jupyter-notebooks.md#terminal) a spusťte příkaz. <br/> `conda list -n azureml_py36 azureml*` |
+[Sada Azure Machine Learning SDK pro Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)</br>z PyPI|Zahrnuje většinu dalších balíčků AzureML.  Pokud chcete zobrazit úplný seznam, [otevřete okno terminálu na instanci služby COMPUTE](how-to-access-terminal.md) a spusťte příkaz. <br/> `conda list -n azureml_py36 azureml*` |
 |Další balíčky PyPI|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Balíčky conda|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Balíčky pro hloubkové učení|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
@@ -124,15 +124,15 @@ Pro každou instanci služby COMPUTE v pracovním prostoru, kterou můžete pou�
 
 Tyto akce lze řídit pomocí Azure RBAC:
 * *Microsoft. MachineLearningServices/pracovní prostory/výpočetní výkon/čtení*
-* *Microsoft. MachineLearningServices/pracovní prostory/výpočty/zapisovat*
+* *Microsoft.MachineLearningServices/workspaces/computes/write*
 * *Microsoft. MachineLearningServices/pracovní prostory/výpočty/odstranit*
 * *Microsoft. MachineLearningServices/pracovní prostory/výpočty/spustit/akce*
 * *Microsoft. MachineLearningServices/pracovní prostory/výpočty/zastavit/akce*
 * *Microsoft. MachineLearningServices/pracovní prostory/výpočty/restartovat/akce*
 
 Chcete-li vytvořit výpočetní instanci, musíte mít oprávnění pro následující akce:
-* *Microsoft. MachineLearningServices/pracovní prostory/výpočty/zapisovat*
-* *Microsoft. MachineLearningServices/pracovní prostory/checkComputeNameAvailability/Action*
+* *Microsoft.MachineLearningServices/workspaces/computes/write*
+* *Microsoft.MachineLearningServices/workspaces/checkComputeNameAvailability/action*
 
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>Vytvoření výpočetní instance

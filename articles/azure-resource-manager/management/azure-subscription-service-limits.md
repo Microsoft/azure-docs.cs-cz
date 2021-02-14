@@ -3,12 +3,12 @@ title: Omezení a kvóty předplatného Azure
 description: Poskytuje seznam běžných limitů, kvót a omezení předplatného a služeb Azure. Tento článek obsahuje informace o tom, jak zvýšit limity spolu s maximálními hodnotami.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 0a20d38d0f8d5be4a19dcdb8b6b846699bac6cc1
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: ac35f09e1a7274019a8ca504fc697ca81de000f7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920459"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370091"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 
@@ -364,6 +364,9 @@ Omezení SQL Database najdete v tématu omezení [prostředků SQL Database pro 
 
 Omezení Azure synapse Analytics najdete v tématu [omezení prostředků Azure synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
+## <a name="azure-files-and-azure-file-sync"></a>Soubory a Synchronizace souborů Azure Azure
+Další informace o omezeních pro soubory a Synchronizace souborů Azure najdete v tématu [škálovatelnost a cíle výkonnosti souborů Azure](../../storage/files/storage-files-scale-targets.md).
+
 ## <a name="storage-limits"></a>Omezení úložiště
 
 <!--like # storage accts -->
@@ -378,16 +381,6 @@ Další informace o omezeních pro účty úložiště úrovně Standard najdete
 ### <a name="azure-blob-storage-limits"></a>Omezení úložiště objektů BLOB v Azure
 
 [!INCLUDE [storage-blob-scale-targets](../../../includes/storage-blob-scale-targets.md)]
-
-### <a name="azure-files-limits"></a>Omezení souborů Azure
-
-Další informace o omezeních souborů Azure najdete v tématu [škálovatelnost a cíle výkonnosti souborů Azure](../../storage/files/storage-files-scale-targets.md).
-
-[!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
-
-### <a name="azure-file-sync-limits"></a>Omezení Synchronizace souborů Azure
-
-[!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
 ### <a name="azure-queue-storage-limits"></a>Omezení Azure Queue Storage
 

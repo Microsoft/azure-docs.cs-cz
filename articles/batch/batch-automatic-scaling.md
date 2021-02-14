@@ -4,12 +4,12 @@ description: Povolte automatické škálování v cloudovém fondu, abyste mohli
 ms.topic: how-to
 ms.date: 11/23/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 033272f22b98b27c67e9a551bce952368d35a043
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 06f717e7c3ab8285b494f89c39838af6b0d96c8f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95737288"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381422"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Vytvoření automatického vzorce pro škálování výpočetních uzlů ve fondu služby Batch
 
@@ -128,6 +128,7 @@ Hodnotu těchto proměnných definovaných službou můžete získat tak, aby by
 | $PendingTasks |Součet $ActiveTasks a $RunningTasks. |
 | $SucceededTasks |Počet úloh, které byly úspěšně dokončeny. |
 | $FailedTasks |Počet úkolů, které selhaly. |
+| $TaskSlotsPerNode |Počet slotů úloh, které lze použít ke spuštění souběžných úloh na jednom výpočetním uzlu ve fondu. |
 | $CurrentDedicatedNodes |Aktuální počet vyhrazených výpočetních uzlů. |
 | $CurrentLowPriorityNodes |Aktuální počet výpočetních uzlů s nízkou prioritou, včetně všech zrušených uzlů. |
 | $PreemptedNodeCount | Počet uzlů ve fondu, které jsou v zastaveném stavu. |
@@ -191,11 +192,11 @@ Tyto operace jsou povoleny u typů, které jsou uvedeny v předchozí části.
 
 Při testování typu Double pomocí ternárního operátoru ( `double ? statement1 : statement2` ), nenulová hodnota je **true** a nula je **false**.
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 
 Při definování vzorce automatického škálování můžete použít tyto předdefinované **funkce** .
 
-| Funkce | Návratový typ | Popis |
+| Funkce | Návratový typ | Description |
 | --- | --- | --- |
 | průměr (doubleVecList) |double |Vrátí průměrnou hodnotu pro všechny hodnoty v doubleVecList. |
 | len (doubleVecList) |double |Vrátí délku vektoru, který je vytvořen z doubleVecList. |
@@ -217,7 +218,7 @@ Při definování vzorce automatického škálování můžete použít tyto př
 | čas (String dateTime = "") |časové razítko |Vrátí časové razítko aktuálního času, pokud nejsou předány žádné parametry, nebo časové razítko řetězce dateTime, pokud je předáno. Podporované formáty data a času jsou W3C-DTF a RFC 1123. |
 | Val (doubleVec v, Double i) |double |Vrátí hodnotu elementu, který je v umístění i ve vektoru v, s počátečním indexem nula. |
 
-Některé z funkcí, které jsou popsány v předchozí tabulce, mohou seznam přijmout jako argument. Seznam oddělený čárkami je libovolná kombinace typu *Double* a *doubleVec*. Například:
+Některé z funkcí, které jsou popsány v předchozí tabulce, mohou seznam přijmout jako argument. Seznam oddělený čárkami je libovolná kombinace typu *Double* a *doubleVec*. Příklad:
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
@@ -312,7 +313,7 @@ K tomu použijte `GetSample(interval look-back start, interval look-back end)` k
 $runningTasksSample = $RunningTasks.GetSample(1 * TimeInterval_Minute, 6 * TimeInterval_Minute);
 ```
 
-Když je výše uvedený řádek vyhodnocován pomocí Batch, vrátí rozsah ukázek jako vektor hodnot. Například:
+Když je výše uvedený řádek vyhodnocován pomocí Batch, vrátí rozsah ukázek jako vektor hodnot. Příklad:
 
 ```
 $runningTasksSample=[1,1,1,1,1,1,1,1,1,1];
@@ -476,7 +477,7 @@ response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formu
 
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>Povolit automatické škálování u existujícího fondu
 
-Každá sada Batch SDK nabízí způsob, jak povolit automatické škálování. Například:
+Každá sada Batch SDK nabízí způsob, jak povolit automatické škálování. Příklad:
 
 - [BatchClient. PoolOperations. EnableAutoScaleAsync](/dotnet/api/microsoft.azure.batch.pooloperations.enableautoscaleasync) (Batch .NET)
 - [Povolit automatické škálování ve fondu](/rest/api/batchservice/enable-automatic-scaling-on-a-pool) (REST API)

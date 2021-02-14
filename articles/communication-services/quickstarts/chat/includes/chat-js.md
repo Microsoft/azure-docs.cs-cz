@@ -10,20 +10,20 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: d0754ea2d7e8f8f59ec475be8e27fcffd058c11f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4f50bce86b43c83401ac41c59dbd4e5e952d15d1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376754"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379647"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než začnete, nezapomeňte:
 
 - Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Nainstalovat [Node.js](https://nodejs.org/en/download/) aktivní LTS a verze LTS údržby (doporučeno 8.11.1 a 10.14.1).
-- Vytvořte prostředek služby Azure Communication Services. Podrobnosti najdete v tématu [vytvoření prostředku komunikace Azure](../../create-communication-resource.md). Pro tento rychlý Start budete muset zaznamenat **koncový bod** prostředku.
-- [Přístupový token uživatele](../../access-tokens.md). Ujistěte se, že jste nastavili obor na "chat" a poznamenali jste řetězec tokenu a také řetězec userId.
+- Vytvořte prostředek služby Azure Communication Services. Podrobnosti najdete v tématu [vytvoření prostředku komunikace Azure](../../create-communication-resource.md). Pro tento rychlý Start budete muset **zaznamenat koncový bod prostředku** .
+- Vytvořte *tři* uživatele služby ACS a vydejte jim [token přístupu uživatele](../../access-tokens.md)k přístupovému tokenu. Nezapomeňte nastavit rozsah pro **chat** a **Poznamenejte si řetězec tokenu a také řetězec userId**. Úplná ukázka vytvoří vlákno se dvěma počátečními účastníky a pak přidá třetího účastníka do vlákna.
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -40,8 +40,6 @@ Spusťte `npm init -y` , chcete-li vytvořit **package.js** pro soubor s výchoz
 ```console
 npm init -y
 ```
-
-Pomocí textového editoru vytvořte soubor s názvem **start-chat.js** v kořenovém adresáři projektu. Do tohoto souboru přidáte veškerý zdrojový kód pro tento rychlý Start v následujících oddílech.
 
 ### <a name="install-the-packages"></a>Nainstalovat balíčky
 
@@ -70,8 +68,6 @@ npm install webpack webpack-cli webpack-dev-server --save-dev
 
 Vytvořte soubor **index.html** v kořenovém adresáři projektu. Tento soubor použijeme jako šablonu k přidání možnosti chatu pomocí klientské knihovny služby Azure Communications chat pro JavaScript.
 
-Zde je kód:
-
 ```html
 <!DOCTYPE html>
 <html>
@@ -85,13 +81,33 @@ Zde je kód:
   </body>
 </html>
 ```
-Vytvořte soubor v kořenovém adresáři vašeho projektu s názvem **client.js** , který bude obsahovat aplikační logiku pro tento rychlý Start. 
+
+Vytvořte soubor v kořenovém adresáři vašeho projektu s názvem **client.js** , který bude obsahovat aplikační logiku pro tento rychlý Start.
 
 ### <a name="create-a-chat-client"></a>Vytvoření chatového klienta
 
-Pokud chcete ve webové aplikaci vytvořit chatovacího klienta, použijte koncový bod komunikační služby a přístupový token, který byl vygenerován jako součást požadavků. Tokeny přístupu uživatele umožňují vytvářet klientské aplikace, které se přímo ověřují na komunikačních službách Azure. Po vygenerování těchto tokenů na serveru je předejte zpátky do klientského zařízení. Je nutné použít `AzureCommunicationUserCredential` třídu z rozhraní `Common client library` k předání tokenu klientovi chatu.
+Pokud chcete ve webové aplikaci vytvořit chatovacího klienta, použijte **koncový bod** komunikační služby a **přístupový token** , který byl vygenerován jako součást požadavků. 
 
-Vytvořte soubor **client.js** v kořenovém adresáři projektu. Tento soubor použijeme k přidání možnosti chatu pomocí klientské knihovny Azure Communications chat pro JavaScript.
+Tokeny přístupu uživatele umožňují vytvářet klientské aplikace, které se přímo ověřují na komunikačních službách Azure.
+
+##### <a name="server-vs-client-side"></a>Server vs. strana klienta
+
+K vygenerování přístupových tokenů doporučujeme použít komponentu na straně serveru, která je předává klientské aplikaci. V tomto scénáři by strana na straně serveru byla zodpovědná za vytváření a správu uživatelů a vydávání tokenů. Na straně klienta potom může získat přístupové tokeny ze služby a použít je k ověření klientských knihoven služby Azure Communication Services.
+
+Tokeny je také možné vystavit na straně klienta pomocí knihovny pro správu komunikace Azure pro JavaScript. V tomto scénáři by strana klienta musela znát uživatele, aby vydávala své tokeny.
+
+Další informace o [architektuře klientů a serverů](../../../concepts/client-and-server-architecture.md) najdete v následující dokumentaci.
+
+V diagramu pod aplikací na straně klienta obdrží přístupový token z úrovně důvěryhodné služby. Aplikace pak pomocí tokenu ověří knihovny komunikačních služeb. Po ověření může aplikace nyní použít klientské knihovny služby Communications Services k provádění operací, jako je například konverzace s ostatními uživateli.
+
+:::image type="content" source="../../../media/scenarios/archdiagram-access.png" alt-text="Diagram znázorňující architekturu tokenu uživatelského přístupu":::
+
+##### <a name="instructions"></a>Pokyny
+Tato ukázka nepokrývá vytvoření vrstvy služby pro vaši aplikaci chatu. 
+
+Pokud jste vygenerovali uživatele a jejich tokeny, postupujte podle těchto pokynů: [token přístupu uživatele](../../access-tokens.md). Nezapomeňte nastavit rozsah na "chat", nikoli "VoIP".
+
+V následujícím kódu **client.js** pomocí koncového bodu a přístupového tokenu přidat funkci chatu pomocí klientské knihovny služby Azure Communications chat pro JavaScript.
 
 ```JavaScript
 
@@ -100,17 +116,18 @@ import { AzureCommunicationUserCredential } from '@azure/communication-common';
 
 // Your unique Azure Communication service endpoint
 let endpointUrl = 'https://<RESOURCE_NAME>.communication.azure.com';
+// The user access token generated as part of the pre-requisites
 let userAccessToken = '<USER_ACCESS_TOKEN>';
 
 let chatClient = new ChatClient(endpointUrl, new AzureCommunicationUserCredential(userAccessToken));
 console.log('Azure Communication Chat client created!');
 ```
-Nahraďte **koncový bod** objektem, který jste vytvořili dříve, na základě dokumentace k [Vytvoření zdroje komunikace Azure](../../create-communication-resource.md) .
-Nahraďte **USER_ACCESS_TOKEN** tokenem vydaným na základě dokumentace [přístupového tokenu uživatele](../../access-tokens.md) .
-Přidat tento kód do souboru **client.js**
+- Nahraďte **endpointUrl** koncovým bodem prostředku služby Communications Services. Další informace najdete v tématu [vytvoření prostředku komunikace Azure](../../create-communication-resource.md) (Pokud jste to ještě neudělali).
+- Nahraďte **userAccessToken** tokenem, který jste vystavili.
 
 
 ### <a name="run-the-code"></a>Spuštění kódu
+
 Použijte `webpack-dev-server` k sestavení a spuštění vaší aplikace. Spusťte následující příkaz pro vytvoření balíčku aplikace Host na místním serveru:
 ```console
 npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map
@@ -125,7 +142,7 @@ Azure Communication Chat client created!
 ## <a name="object-model"></a>Objektový model 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce služby Azure Communications Library chat pro JavaScript.
 
-| Název                                   | Popis                                                                                                                                                                           |
+| Název                                   | Description                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ChatClient | Tato třída je potřebná pro funkci chatu. Vytvoří se jeho instance s informacemi o předplatném a použije se k vytváření, získávání a odstraňování vláken. |
 | ChatThreadClient | Tato třída je potřebná pro funkci konverzačního vlákna. Získáte instanci prostřednictvím ChatClient a použijete ji k posílání, přijímání, aktualizaci a odstraňování zpráv, přidávání, odebírání a získávání uživatelů, odesílání oznámení o přečtení a čtení a čtení a k odběru událostí chatu. |
@@ -138,55 +155,54 @@ Použijte `createThread` metodu k vytvoření vlákna chatu.
 `createThreadRequest` slouží k popisu požadavku vlákna:
 
 - Použijte `topic` k poskytnutí tématu tomuto chatu; Téma lze aktualizovat poté, co je vlákno konverzace vytvořeno pomocí `UpdateThread` funkce. 
-- Slouží `members` k vypsání členů, kteří mají být přidáni do konverzačního vlákna;
+- Slouží `participants` k vypsání účastníků, kteří mají být přidáni do konverzačního vlákna.
 
-Po vyřešení se `createChatThread` Metoda vrátí, `threadId` která se používá k provádění operací v nově vytvořeném konverzačním vlákně, jako je přidání členů do konverzačního vlákna, odesílání zpráv, odstraňování zpráv atd.
+Po vyřešení `createChatThread` Metoda vrátí hodnotu `CreateChatThreadResponse` . Tento model obsahuje `chatThread` vlastnost, kde můžete získat přístup k `id` nově vytvořenému vláknu. Pak můžete použít `id` k získání instance `ChatThreadClient` . `ChatThreadClient`Pak lze použít k provedení operace v rámci vlákna, jako je například odesílání zpráv nebo výpis účastníků.
 
-```Javascript
+```JavaScript
 async function createChatThread() {
-   let createThreadRequest = {
-       topic: 'Preparation for London conference',
-       members: [{
-                   user: { communicationUserId: '<USER_ID_FOR_JACK>' },
-                   displayName: 'Jack'
-               }, {
-                   user: { communicationUserId: '<USER_ID_FOR_GEETA>' },
-                   displayName: 'Geeta'
-               }]
-   };
-   let chatThreadClient= await chatClient.createChatThread(createThreadRequest);
-   let threadId = chatThreadClient.threadId;
-   return threadId;
-}
+    let createThreadRequest = {
+        topic: 'Preparation for London conference',
+        participants: [{
+                    user: { communicationUserId: '<USER_ID_FOR_JACK>' },
+                    displayName: 'Jack'
+                }, {
+                    user: { communicationUserId: '<USER_ID_FOR_GEETA>' },
+                    displayName: 'Geeta'
+                }]
+    };
+    let createThreadResponse = await chatClient.createChatThread(createThreadRequest);
+    let threadId = createThreadResponse.chatThread.id;
+    return threadId;
+    }
 
 createChatThread().then(async threadId => {
-   console.log(`Thread created:${threadId}`);
-   // PLACEHOLDERS
-   // <CREATE CHAT THREAD CLIENT>
-   // <RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>
-   // <SEND MESSAGE TO A CHAT THREAD>
-   // <LIST MESSAGES IN A CHAT THREAD>
-   // <ADD NEW MEMBER TO THREAD>
-   // <LIST MEMBERS IN A THREAD>
-   // <REMOVE MEMBER FROM THREAD>
-});
+    console.log(`Thread created:${threadId}`);
+    // PLACEHOLDERS
+    // <CREATE CHAT THREAD CLIENT>
+    // <RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>
+    // <SEND MESSAGE TO A CHAT THREAD>
+    // <LIST MESSAGES IN A CHAT THREAD>
+    // <ADD NEW PARTICIPANT TO THREAD>
+    // <LIST PARTICIPANTS IN A THREAD>
+    // <REMOVE PARTICIPANT FROM THREAD>
+    });
 ```
 
-Nahradit **USER_ID_FOR_JACK** a **USER_ID_FOR_GEETA** identifikátory uživatelů získaných z předchozího kroku (vytvořit uživatele a vystavit [tokeny přístupu uživatele](../../access-tokens.md))
+Nahraďte **USER_ID_FOR_JACK** a **USER_ID_FOR_GEETA** identifikátory uživatelů získaných při vytváření uživatelů a tokenů ([tokeny přístupu uživatele](../../access-tokens.md)).
 
-Když aktualizujete kartu prohlížeče, měli byste vidět následující v konzole nástroje.
+Po aktualizaci karty prohlížeče by se v konzole měla zobrazit následující:
 ```console
-Thread created: <threadId>
+Thread created: <thread_id>
 ```
 
 ## <a name="get-a-chat-thread-client"></a>Získat klienta vlákna chatu
 
-`getChatThreadClient`Metoda vrátí `chatThreadClient` pro vlákno, které již existuje. Dá se použít k provádění operací na vytvořeném vlákně: přidat členy, poslat zprávu atd. IDvlákna je jedinečné ID existujícího konverzačního vlákna.
+`getChatThreadClient`Metoda vrátí `chatThreadClient` pro vlákno, které již existuje. Dá se použít k provádění operací na vytvořeném vlákně: Přidat účastníky, poslat zprávu atd. IDvlákna je jedinečné ID existujícího konverzačního vlákna.
 
 ```JavaScript
-
 let chatThreadClient = await chatClient.getChatThreadClient(threadId);
-console.log(`Chat Thread client for threadId:${chatThreadClient.threadId}`);
+console.log(`Chat Thread client for threadId:${threadId}`);
 
 ```
 Přidejte tento kód místo `<CREATE CHAT THREAD CLIENT>` komentáře v **client.js**, aktualizujte kartu prohlížeče a zkontrolujte konzolu, měli byste vidět:
@@ -207,7 +223,7 @@ Použijte `sendMessage` metodu k odeslání zprávy chatu k vláknu, které jste
 - Slouží `priority` k zadání úrovně priority zprávy chatu, jako je například Normal nebo high; tuto vlastnost lze použít k tomu, aby uživatel příjemce ve vaší aplikaci upozornil na zprávu nebo spustil vlastní obchodní logiku.   
 - Slouží `senderDisplayName` k zadání zobrazovaného jména odesílatele.
 
-Odpověď `sendChatMessageResult` obsahuje "ID", což je jedinečné ID této zprávy.
+Odpověď `sendChatMessageResult` obsahuje ID, které je jedinečným identifikátorem této zprávy.
 
 ```JavaScript
 
@@ -253,12 +269,12 @@ Alternativně můžete načíst zprávy konverzace pomocí cyklického dotazová
 
 let pagedAsyncIterableIterator = await chatThreadClient.listMessages();
 let nextMessage = await pagedAsyncIterableIterator.next();
- while (!nextMessage.done) {
-     let chatMessage = nextMessage.value;
-     console.log(`Message :${chatMessage.content}`);
-     // your code here
-     nextMessage = await pagedAsyncIterableIterator.next();
- }
+    while (!nextMessage.done) {
+        let chatMessage = nextMessage.value;
+        console.log(`Message :${chatMessage.content}`);
+        // your code here
+        nextMessage = await pagedAsyncIterableIterator.next();
+    }
 
 ```
 Přidejte tento kód místo `<LIST MESSAGES IN A CHAT THREAD>` komentáře v **client.js**.
@@ -270,46 +286,48 @@ Pro odstraněné zprávy `chatMessage.deletedOn` vrátí hodnotu DateTime, kter�
 
 `listMessages` vrátí různé typy zpráv, které mohou být identifikovány pomocí `chatMessage.type` . Tyto typy:
 
-- `Text`: Běžná zpráva chatu odeslaná členem vlákna.
+- `Text`: Běžná zpráva chatu odeslaná účastníkem vlákna.
 
 - `ThreadActivity/TopicUpdate`: Systémová zpráva, která indikuje, že téma bylo aktualizováno.
 
-- `ThreadActivity/AddMember`: Systémová zpráva, která indikuje, že jeden nebo více členů bylo přidáno do konverzačního vlákna.
+- `ThreadActivity/AddParticipant`: Systémová zpráva, která indikuje, že jeden nebo více účastníků bylo přidáno do konverzačního vlákna.
 
-- `ThreadActivity/RemoveMember`: Systémová zpráva, která indikuje, že člen byl odebrán z konverzačního vlákna.
+- `ThreadActivity/RemoveParticipant`: Systémová zpráva, která indikuje, že účastník byl odebrán z konverzačního vlákna.
 
 Další podrobnosti najdete v tématu [typy zpráv](../../../concepts/chat/concepts.md#message-types).
 
-## <a name="add-a-user-as-member-to-the-chat-thread"></a>Přidat uživatele jako člena do vlákna chatu
+## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Přidat uživatele jako účastníka do konverzačního vlákna
 
-Po vytvoření vlákna chatu můžete z něj přidat uživatele nebo je z něj odebrat. Přidáním uživatelů udělíte jim přístup k posílání zpráv do konverzačního vlákna a k přidání nebo odebrání jiných členů. Před voláním `addMembers` metody se ujistěte, že jste pro tohoto uživatele získali nový přístupový token a identitu. Uživatel bude potřebovat přístupový token, aby mohl inicializovat svého chatového klienta.
+Po vytvoření vlákna chatu můžete z něj přidat uživatele nebo je z něj odebrat. Přidáním uživatelů udělíte jim přístup k posílání zpráv do konverzačního vlákna a k přidání nebo odebrání dalších účastníků.
 
-`addMembersRequest` popisuje objekt Request, který `members` obsahuje seznam členů, které mají být přidány do konverzačního vlákna;
+Před voláním `addParticipants` metody se ujistěte, že jste pro tohoto uživatele získali nový přístupový token a identitu. Uživatel bude potřebovat přístupový token, aby mohl inicializovat svého chatového klienta.
+
+`addParticipantsRequest` popisuje objekt Request, který `participants` uvádí seznam účastníků, kteří mají být přidáni do vlákna chatu.
 - `user`, požadováno, je uživatel komunikace, který má být přidán do vlákna chatu.
-- `displayName`volitelné, je zobrazované jméno člena vlákna.
-- `shareHistoryTime`volitelné, je čas, od kterého je historie chatu sdílena s členem. Chcete-li sdílet historii od vytvoření vlákna chatu, nastavte tuto vlastnost na jakékoli datum, které je rovno nebo menší než čas vytvoření vlákna. Chcete-li sdílet žádnou historii předchozí po přidání člena, nastavte jej na aktuální datum. Chcete-li sdílet částečnou historii, nastavte ji na datum podle svého výběru.
+- `displayName`volitelné, je zobrazované jméno účastníka vlákna.
+- `shareHistoryTime`volitelné, je čas, od kterého je historie chatu sdílena s účastníkem. Chcete-li sdílet historii od vytvoření vlákna chatu, nastavte tuto vlastnost na jakékoli datum, které je rovno nebo menší než čas vytvoření vlákna. Pokud chcete sdílet žádnou historii předchozí až po přidání účastníka, nastavte ho na aktuální datum. Chcete-li sdílet částečnou historii, nastavte ji na datum podle svého výběru.
 
 ```JavaScript
 
-let addMembersRequest =
+let addParticipantsRequest =
 {
-    members: [
+    participants: [
         {
-            user: { communicationUserId: '<NEW_MEMBER_USER_ID>' },
+            user: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
             displayName: 'Jane'
         }
     ]
 };
 
-await chatThreadClient.addMembers(addMembersRequest);
+await chatThreadClient.addParticipants(addParticipantsRequest);
 
 ```
-Nahradit **NEW_MEMBER_USER_ID** [novým ID uživatele](../../access-tokens.md) přidejte tento kód místo `<ADD NEW MEMBER TO THREAD>` komentáře do **client.js**
+Nahradit **NEW_PARTICIPANT_USER_ID** [novým ID uživatele](../../access-tokens.md) přidejte tento kód místo `<ADD NEW PARTICIPANT TO THREAD>` komentáře do **client.js**
 
 ## <a name="list-users-in-a-chat-thread"></a>Vypsat uživatele ve vlákně chatu
 ```JavaScript
-async function listThreadMembers() {
-   let pagedAsyncIterableIterator = await chatThreadClient.listMembers();
+async function listParticipants() {
+   let pagedAsyncIterableIterator = await chatThreadClient.listParticipants();
    let next = await pagedAsyncIterableIterator.next();
    while (!next.done) {
       let user = next.value;
@@ -317,20 +335,20 @@ async function listThreadMembers() {
       next = await pagedAsyncIterableIterator.next();
    }
 }
-await listThreadMembers();
+await listParticipants();
 ```
-Přidejte tento kód místo `<LIST MEMBERS IN A THREAD>` komentáře v **client.js**, aktualizujte kartu prohlížeče a zkontrolujte konzolu, měli byste vidět informace o uživatelích ve vlákně.
+Přidejte tento kód místo `<LIST PARTICIPANTS IN A THREAD>` komentáře v **client.js**, aktualizujte kartu prohlížeče a zkontrolujte konzolu, měli byste vidět informace o uživatelích ve vlákně.
 
 ## <a name="remove-user-from-a-chat-thread"></a>Odebrání uživatele z konverzačního vlákna
 
-Podobně jako při přidávání člena můžete odebrat členy z konverzačního vlákna. Aby bylo možné odebrat, budete muset sledovat ID členů, které jste přidali.
+Podobně jako při přidávání účastníka můžete odebrat účastníky z konverzačního vlákna. Aby bylo možné odebrat, budete muset sledovat ID přidaných účastníků.
 
-Použijte `removeMember` metodu, kde `member` je uživatel komunikace, který má být odebrán z vlákna.
+Použijte `removeParticipant` metodu, kde `participant` je uživatel komunikace, který má být odebrán z vlákna.
 
 ```JavaScript
 
-await chatThreadClient.removeMember({ communicationUserId: <MEMBER_ID> });
-await listThreadMembers();
+await chatThreadClient.removeParticipant({ communicationUserId: <PARTICIPANT_ID> });
+await listParticipants();
 ```
-Nahraďte **MEMBER_ID** číslem ID uživatele použitým v předchozím kroku (<NEW_MEMBER_USER_ID>).
-Přidejte tento kód místo `<REMOVE MEMBER FROM THREAD>` komentáře v **client.js**,
+Nahraďte **PARTICIPANT_ID** číslem ID uživatele použitým v předchozím kroku (<NEW_PARTICIPANT_USER_ID>).
+Přidejte tento kód místo `<REMOVE PARTICIPANT FROM THREAD>` komentáře v **client.js**,

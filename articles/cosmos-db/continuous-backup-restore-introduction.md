@@ -8,12 +8,12 @@ ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: references_regions
-ms.openlocfilehash: 036f086c88267f6a20da51746ca875c48a248712
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: d1dc108ecec93dddeb768eb61af425ba67f23002
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538841"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393135"
 ---
 # <a name="continuous-backup-with-point-in-time-restore-preview-feature-in-azure-cosmos-db"></a>Průběžné zálohování s funkcí obnovení k časovému okamžiku (Preview) v Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -33,7 +33,7 @@ Azure Cosmos DB provádí zálohování dat na pozadí, aniž by byla využíval
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/continuous-backup-restore-blob-storage.png" alt-text="Azure Cosmos DB zálohování dat do Azure Blob Storage." lightbox="./media/continuous-backup-restore-introduction/continuous-backup-restore-blob-storage.png" border="false":::
 
-Dostupný časový interval pro obnovení (označuje se také jako doba uchovávání) je nižší než následující dvě: "30 dní zpět v minulosti" nebo "až do času vytvoření prostředku". Časovým bodem pro obnovení může být jakékoli časové razítko v rámci doby uchovávání.
+Dostupný časový interval pro obnovení (označuje se také jako doba uchování) je nižší než následující dvě: *30 dní zpět v minulosti* nebo *až do doby vytvoření prostředku*. Časovým bodem pro obnovení může být jakékoli časové razítko v rámci doby uchovávání.
 
 Ve verzi Public Preview můžete účet Azure Cosmos DB pro rozhraní SQL API nebo obsah bodu MongoDB v čase obnovit do jiného účtu pomocí [Azure Portal](continuous-backup-restore-portal.md), [rozhraní příkazového řádku Azure](continuous-backup-restore-command-line.md) (az CLI), [Azure PowerShell](continuous-backup-restore-powershell.md)nebo [Azure Resource Manager](continuous-backup-restore-template.md).
 
@@ -59,17 +59,18 @@ Tyto konfigurace můžete přidat do obnoveného účtu po dokončení obnovení
 
 ## <a name="restore-scenarios"></a>Scénáře obnovení
 
-Níže jsou uvedeny některé z klíčových scénářů, které jsou řešeny funkcí obnovení k určitému bodu v čase. Scénáře [a] až [c] ukazují, jak spustit obnovení, pokud je časové razítko obnovení předem známé. Existují však situace, kdy neznáte přesný čas náhodného odstranění nebo poškození. Scénáře [d] a [e] ukazují, jak _zjistit_ časové razítko obnovení pomocí nových rozhraní API pro informační kanál událostí v databázi nebo kontejnerech obnovitelné.
+Níže jsou uvedeny některé z klíčových scénářů, které jsou řešeny funkcí obnovení k určitému bodu v čase. Scénáře [a] až [c] ukazují, jak spustit obnovení, pokud je časové razítko obnovení předem známé.
+Existují však situace, kdy neznáte přesný čas náhodného odstranění nebo poškození. Scénáře [d] a [e] ukazují, jak _zjistit_ časové razítko obnovení pomocí nových rozhraní API pro informační kanál událostí v databázi nebo kontejnerech obnovitelné.
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" alt-text="Události životního cyklu s časovými razítky pro účet obnovitelné." lightbox="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" border="false":::
 
-a. **Obnovit odstraněný účet** – všechny odstraněné účty, které můžete obnovit, se zobrazí v podokně **obnovení** . Například pokud se položka "účet A" odstraní v časovém razítku T3. V tomto případě je pro obnovení z [Azure Portal](continuous-backup-restore-portal.md#restore-deleted-account), [PowerShellu](continuous-backup-restore-powershell.md#trigger-restore)nebo rozhraní příkazového [řádku](continuous-backup-restore-command-line.md#trigger-restore)dostatečné časové razítko těsně před T3, umístěním, názvem cílového účtu, skupinou prostředků a názvem cílového účtu.  
+a. **Obnovit odstraněný účet** – všechny odstraněné účty, které můžete obnovit, se zobrazí v podokně **obnovení** . Například pokud se *účet A* odstraní v časovém razítku T3. V tomto případě je pro obnovení z [Azure Portal](continuous-backup-restore-portal.md#restore-deleted-account), [PowerShellu](continuous-backup-restore-powershell.md#trigger-restore)nebo rozhraní příkazového [řádku](continuous-backup-restore-command-line.md#trigger-restore)dostatečné časové razítko těsně před T3, umístěním, názvem cílového účtu, skupinou prostředků a názvem cílového účtu.  
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" alt-text="Události životního cyklu s časovými razítky pro databázi a kontejner obnovitelné." lightbox="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" border="false":::
 
-b. **Obnovení dat účtu v konkrétní oblasti** – například pokud "Account a" existuje ve dvou oblastech "východní USA" a "západní USA" na časovém razítku T3. Pokud potřebujete kopii účtu A v "Západní USA", můžete provést obnovení k určitému bodu v čase z [Azure Portal](continuous-backup-restore-portal.md), [PowerShellu](continuous-backup-restore-powershell.md#trigger-restore)nebo rozhraní příkazového [řádku](continuous-backup-restore-command-line.md#trigger-restore) s západní USA jako cílovým umístěním.
+b. **Obnovení dat účtu v konkrétní oblasti** – například pokud *účet a* existuje ve dvou oblastech *východní USA* a *západní USA* v časovém razítku T3. Pokud potřebujete kopii účtu A v *západní USA*, můžete provést obnovení k určitému bodu v čase z [Azure Portal](continuous-backup-restore-portal.md), [PowerShellu](continuous-backup-restore-powershell.md#trigger-restore)nebo rozhraní příkazového [řádku](continuous-backup-restore-command-line.md#trigger-restore) s západní USA jako cílovým umístěním.
 
-c. **Obnovení z náhodné operace zápisu nebo odstranění v rámci kontejneru se známým časovým razítkem pro obnovení** – například pokud **víte** , že obsah kontejneru 1 v rámci databáze 1 byl omylem upraven v časovém razítku T3. Můžete provést obnovení k určitému bodu v čase z [Azure Portal](continuous-backup-restore-portal.md#restore-live-account), [PowerShellu](continuous-backup-restore-powershell.md#trigger-restore)nebo [CLI](continuous-backup-restore-command-line.md#trigger-restore) do jiného účtu v časovém razítku T3 pro obnovení požadovaného stavu kontejneru.
+c. **Obnovení z náhodné operace zápisu nebo odstranění v rámci kontejneru se známým časovým razítkem obnovení** – například pokud **víte** , že obsah *kontejneru 1* v *databázi 1* byl omylem upraven v časovém razítku T3. Můžete provést obnovení k určitému bodu v čase z [Azure Portal](continuous-backup-restore-portal.md#restore-live-account), [PowerShellu](continuous-backup-restore-powershell.md#trigger-restore)nebo [CLI](continuous-backup-restore-command-line.md#trigger-restore) do jiného účtu v časovém razítku T3 pro obnovení požadovaného stavu kontejneru.
 
 d. **Obnovení účtu k předchozímu bodu v čase před náhodným odstraněním databáze** – v [Azure Portal](continuous-backup-restore-portal.md#restore-live-account)můžete použít podokno informační kanál událostí k určení, kdy se databáze odstranila, a najít čas obnovení. Podobně pomocí [Azure CLI](continuous-backup-restore-command-line.md#trigger-restore) a [PowerShellu](continuous-backup-restore-powershell.md#trigger-restore)můžete najít událost odstranění databáze tak, že vytvoříte výčet kanálu událostí databáze a potom aktivujete příkaz Obnovit s požadovanými parametry.
 
@@ -81,7 +82,7 @@ Azure Cosmos DB slouží k izolaci a omezení oprávnění obnovit pro účet pr
 
 ## <a name="pricing"></a><a id="continuous-backup-pricing"></a>Ceny
 
-Účty Azure Cosmos DB s povoleným průběžným zálohováním budou mít za následek další měsíční poplatky za "uložení zálohy" a "obnovení dat". Náklady na obnovení se přidají při každém zahájení operace obnovení. Pokud nakonfigurujete účet s průběžným zálohováním, ale neobnovíte data, ve vyúčtování se budou zahrnovat jenom náklady na úložiště zálohování.
+Účty Azure Cosmos DB s povoleným průběžným zálohováním budou mít za následek další měsíční poplatky za *uložení zálohy* a *obnovení dat*. Náklady na obnovení se přidají při každém zahájení operace obnovení. Pokud nakonfigurujete účet s průběžným zálohováním, ale neobnovíte data, ve vyúčtování se budou zahrnovat jenom náklady na úložiště zálohování.
 
 Následující příklad vychází z ceny za účet Azure Cosmos nasazený v oblasti mimo státní správu v USA. Ceny a výpočty se můžou lišit v závislosti na oblasti, kterou používáte, na stránce s [cenami Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) najdete nejnovější informace o cenách.
 

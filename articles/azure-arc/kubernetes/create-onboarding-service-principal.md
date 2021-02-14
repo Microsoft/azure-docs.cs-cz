@@ -1,31 +1,31 @@
 ---
-title: Vytvoření instančního objektu s povolenou službou Azure ARC (verze Preview)
+title: Vytvoření instančního objektu s povolenou službou Azure ARC (Preview)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 02/09/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
-description: 'Vytvoření instančního objektu s povolenou službou Azure ARC '
+description: 'Vytvoření instančního objektu s povoleným připojením ARC Azure '
 keywords: Kubernetes, oblouk, Azure, kontejnery
-ms.openlocfilehash: 8eb38dbc04d964c0ab4869e801099ee9420d6ac2
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8772cf7634d9a833af120784e3e7868b41d202c4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184692"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390483"
 ---
-# <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Vytvoření instančního objektu s povolenou službou Azure ARC (verze Preview)
+# <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Vytvoření instančního objektu s povolenou službou Azure ARC (Preview)
 
 ## <a name="overview"></a>Přehled
 
-Je možné používat instanční objekty s přiřazením rolí s omezenými oprávněními pro připojování clusterů Kubernetes do Azure ARC. To je užitečné v kanálech průběžné integrace a průběžného nasazování (CI/CD), jako jsou Azure Pipelines a akce GitHubu.
+Clustery Kubernetes můžete připojit ke službě Azure ARC pomocí instančních objektů s přiřazením rolí s omezenými oprávněními. Tato funkce je užitečná v kanálech průběžné integrace a průběžného nasazování (CI/CD), jako jsou Azure Pipelines a akce GitHubu.
 
-Následující kroky poskytují návod k používání instančních objektů pro připojování clusterů Kubernetes do Azure ARC.
+Projděte si následující postup, ve kterém se dozvíte, jak používat instanční objekty pro připojování clusterů Kubernetes do Azure ARC.
 
 ## <a name="create-a-new-service-principal"></a>Vytvořit nový instanční objekt
 
-Vytvořte nový instanční objekt s informativním názvem. Všimněte si, že tento název musí být pro vašeho tenanta Azure Active Directory jedinečný:
+Vytvořte nový instanční objekt s informativním názvem, který je pro vašeho tenanta Azure Active Directory jedinečný.
 
 ```console
 az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onboarding"
@@ -45,16 +45,16 @@ az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onb
 
 ## <a name="assign-permissions"></a>Přiřazení oprávnění
 
-Po vytvoření nového instančního objektu přiřaďte roli "cluster Kubernetes-Azure ARC" do nově vytvořeného objektu zabezpečení. Toto je integrovaná role Azure s omezenými oprávněními, která umožňuje, aby objekt zabezpečení registroval jenom clustery do Azure. Objekt zabezpečení nemůže v rámci předplatného aktualizovat, odstranit ani upravovat žádné jiné clustery ani prostředky.
+Přiřaďte roli "cluster Kubernetes-Azure ARC" do nově vytvořeného instančního objektu. Tato integrovaná role Azure s omezenými oprávněními povoluje pouze hlavnímu objektu registrovat clustery do Azure. Objekt zabezpečení s touto přiřazenou rolí nemůže v rámci předplatného aktualizovat, odstranit ani upravovat žádné další clustery ani prostředky.
 
 S ohledem na omezené možnosti můžou zákazníci snadno použít tento objekt zabezpečení k připojování více clusterů.
 
-Oprávnění se můžou dál omezovat předáním příslušného `--scope` argumentu při přiřazení role. To zákazníkům umožňuje omezit registraci clusteru. V různých parametrech jsou podporovány následující scénáře `--scope` :
+Můžete omezit oprávnění a při přiřazení role předat příslušnému `--scope` argumentu. To zákazníkům umožňuje omezit registraci clusteru. V různých parametrech jsou podporovány následující scénáře `--scope` :
 
 | Prostředek  | Argument `scope`| Účinek |
 | ------------- | ------------- | ------------- |
 | Předplatné | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Instanční objekt může zaregistrovat libovolný cluster v existující skupině prostředků v daném předplatném. |
-| Skupina prostředků | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Instanční objekt může registrovat __jenom__ clustery ve skupině prostředků. `myGroup` |
+| Skupina prostředků | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Instanční objekt může registrovat __jenom__ clustery ve skupině prostředků `myGroup` . |
 
 ```console
 az role assignment create \
@@ -80,7 +80,7 @@ az role assignment create \
 
 ## <a name="use-service-principal-with-the-azure-cli"></a>Použití instančního objektu s rozhraním příkazového řádku Azure
 
-Odkaz na nově vytvořený instanční objekt:
+Odkazujte na nově vytvořený instanční objekt pomocí následujících příkazů:
 
 ```azurecli
 az login --service-principal -u mySpnClientId -p mySpnClientSecret --tenant myTenantID

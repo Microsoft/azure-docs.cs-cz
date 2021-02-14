@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 7821d94ed032fd0fc52a756766e6a9af7c82cfde
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: c3a821156074727d02ab36cf88f3e998756b8cc4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99559239"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389446"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Zabránit položkám DNS v dangling a vyhnout se převzetí subdomény
 
@@ -119,7 +119,7 @@ Pokud jste globálním správcem tenanta vaší organizace, zvyšte svůj účet
 
 ### <a name="run-the-script"></a>Spuštění skriptu
 
-Přečtěte si další informace o skriptu PowerShellu, **Get-DanglingDnsRecords.ps1** a Stáhněte si ho z GitHubu: https://aka.ms/DanglingDNSDomains .
+Přečtěte si další informace o skriptu PowerShellu, **Get-DanglingDnsRecords.ps1** a Stáhněte si ho z GitHubu: https://aka.ms/Get-DanglingDnsRecords .
 
 ## <a name="remediate-dangling-dns-entries"></a>Napravit dangling položky DNS 
 

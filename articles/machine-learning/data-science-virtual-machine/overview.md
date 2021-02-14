@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Přehled Azure Data Science Virtual Machine – snadné použití virtuálního počítače na cloudové platformě Azure s předinstalovanými a nakonfigurovanými nástroji a knihovnami pro účely datové vědy.
 keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 04/02/2020
-ms.openlocfilehash: 7bcee0f571fe42e4c00499f188e35d0e0ff2ebe7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bd2333d89e4d1789b3464606b49f624609ef67d5
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322493"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518755"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Co je Azure Data Science Virtual Machine pro Linux a Windows?
 
@@ -24,7 +23,7 @@ Data Science Virtual Machine (DSVM) je přizpůsobená image virtuálního poč�
 DSVM je k dispozici na:
 
 + Windows Server 2019
-+ Ubuntu 18,04 LTS
++ Ubuntu 18.04 LTS
 
 ## <a name="comparison-with-azure-machine-learning"></a>Porovnání s Azure Machine Learning
 
@@ -49,18 +48,18 @@ DSVM je přizpůsobená image virtuálního počítače pro datové vědy, ale [
 Klíčové rozdíly mezi těmito dvěma nabídkami produktů jsou popsané níže:
 
 
-|Příznak |Datové vědy<br>Virtuální počítač |AzureML<br>Výpočetní instance  | 
+|Funkce |Datové vědy<br>Virtuální počítač |AzureML<br>Výpočetní instance  | 
 |---------|---------|---------|
-| Plně spravovaná | Ne        | Ano        |
+| Plně spravovaná | No        | Yes        |
 |Podpora jazyků     |  Python, R, Helena, SQL, C#,<br> Java, Node.js, F #       | Python a R        |
 |Operační systém     | Ubuntu<br>Windows         |    Ubuntu     |
-|Možnost předem nakonfigurovaného GPU     |  Ano       |    Ano     |
-|Možnost horizontálního navýšení kapacity | Ano | Ano |
-|Přístup přes SSH    | Ano        |    Ano     |
-|Přístup přes protokol RDP    | Ano        |     Ne    |
-|Integrované<br>Hostované poznámkové bloky     |   Ne<br>(vyžaduje další konfiguraci.)      |      Ano   |
-|Integrované jednotné přihlašování     | Ne <br>(vyžaduje další konfiguraci.)         |    Ano     |
-|Integrovaná spolupráce     | Ne         | Ano        |
+|Možnost předem nakonfigurovaného GPU     |  Yes       |    Yes     |
+|Možnost horizontálního navýšení kapacity | Yes | Yes |
+|Přístup přes SSH    | Yes        |    Yes     |
+|Přístup přes protokol RDP    | Yes        |     No    |
+|Integrované<br>Hostované poznámkové bloky     |   No<br>(vyžaduje další konfiguraci.)      |      Yes   |
+|Integrované jednotné přihlašování     | No <br>(vyžaduje další konfiguraci.)         |    Yes     |
+|Integrovaná spolupráce     | No         | Yes        |
 |Předem nainstalované nástroje     |  Jupyter (Lab), RStudio Server, VSCode,<br> Visual Studio, PyCharm, Juno,<br>Power BI Desktop, SSMS, <br>Systém Microsoft Office 365, přechod na Apache       |     Jupyter (testovací prostředí)<br> RStudio Server   |
 
 ## <a name="sample-use-cases"></a>Ukázkové případy použití

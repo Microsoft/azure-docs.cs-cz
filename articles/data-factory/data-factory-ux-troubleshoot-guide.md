@@ -1,19 +1,18 @@
 ---
 title: Řešení potíží s Azure Data Factory UX
 description: Naučte se řešit potíže s Azure Data Factorym UX.
-services: data-factory
 author: ceespino
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: ceespino
 ms.reviewer: daperlov
-ms.openlocfilehash: 8bb4ff3198764a35bebc124ee1ce99a93428693d
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: b423b008453ca5f1b76e5c277f5a434dbf14cdb1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095951"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382833"
 ---
 # <a name="troubleshoot-azure-data-factory-ux-issues"></a>Řešení potíží s Azure Data Factorym UX
 

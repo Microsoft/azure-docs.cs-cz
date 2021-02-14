@@ -45,8 +45,12 @@
       href: spring-cloud-concept-metrics.md
     - name: Ovladač Azure Spring Boot
       href: spring-cloud-concept-manage-monitor-app-spring-boot-actuator.md
-    - name: Ovládací prvky zabezpečení
-      href: spring-cloud-concept-security-controls.md
+    - name: Zabezpečení
+      items:
+        - name: Ovládací prvky zabezpečení
+          href: spring-cloud-concept-security-controls.md
+        - name: Mechanismy zabezpečení služby Azure Policy
+          href: ./security-controls-policy.md
     - name: Principy stavu aplikací
       href: spring-cloud-concept-app-status.md
     - name: Plán pro zotavení po havárii
@@ -59,7 +63,7 @@
           href: spring-cloud-tutorial-prepare-app-deployment.md
         - name: Nastavení konfiguračního serveru
           href: spring-cloud-tutorial-config-server.md
-        - name: Povolení registrace služeb
+        - name: Povolit registraci služby
           href: spring-cloud-service-registration.md
     - name: Nasadit
       items:
@@ -153,6 +157,10 @@
           href: /azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud
         - name: Tomcat
           href: /azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud
+- name: Architektura
+  items:
+    - name: Referenční architektura
+      href: spring-cloud-reference-architecture.md
 - name: Nasazení DevOps
   items:
     - name: CI/CD s využitím Azure DevOps

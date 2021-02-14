@@ -8,14 +8,14 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: b23dabb4388331de9e37ee9db1d4b9d727ccde68
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 79d5583f8c9e562a0d21a91c210aa6259472661d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430556"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383530"
 ---
-# <a name="how-to-set-up-change-and-deletion-detection-for-blobs-in-azure-cognitive-search-indexing"></a>Jak nastavit detekci změn a odstraňování objektů BLOB v Azure Kognitivní hledání indexování
+# <a name="change-and-deletion-detection-in-blob-indexing-azure-cognitive-search"></a>Detekce změn a odstranění v indexování objektů BLOB (Azure Kognitivní hledání)
 
 Po vytvoření indexu počátečního vyhledávání můžete chtít, aby další úlohy indexeru vybraly jenom nové a změněné dokumenty. Pro hledání obsahu, který pochází ze služby Azure Blob Storage, se detekce změny provede automaticky při použití plánu k aktivaci indexování. Ve výchozím nastavení služba přeindexuje jenom změněné objekty blob, jak Určuje `LastModified` časové razítko objektu BLOB. Na rozdíl od jiných zdrojů dat podporovaných indexery vyhledávání mají objekty blob vždycky časové razítko, což eliminuje nutnost ručního nastavení zásad zjišťování změn.
 

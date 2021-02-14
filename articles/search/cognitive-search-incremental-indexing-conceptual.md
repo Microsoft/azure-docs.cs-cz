@@ -7,13 +7,13 @@ author: Vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/18/2020
-ms.openlocfilehash: 9fb76c5c96795b8092c86e22acbab4ea5963b42e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/09/2021
+ms.openlocfilehash: 2448609b1184c8e91947bffbd13cfea8e3fe5d52
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90971639"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390857"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Přírůstkové obohacení a ukládání do mezipaměti v Azure Kognitivní hledání
 
@@ -23,7 +23,7 @@ ms.locfileid: "90971639"
 
 *Přírůstkové obohacení* je funkce, která cílí na [dovednosti](cognitive-search-working-with-skillsets.md). Využívá Azure Storage k uložení výstupu zpracování vygenerovaného kanálem rozšíření pro opakované použití v budoucích spuštění indexeru. Kdykoli je to možné, indexer znovu použije jakýkoli výstup uložený v mezipaměti, který je stále platný. 
 
-Pouze přírůstkové obohacení zajišťuje, aby vaše peněžní investice byly zpracovávány (zejména optické rozpoznávání znaků a zpracování obrázků), ale také kvůli efektivnějšímu systému. Když jsou struktury a obsah uložené v mezipaměti, může indexer určit, které dovednosti se změnily a spustí jenom ty, které se změnily, a také všechny závislé dovednosti. 
+Pouze přírůstkové obohacení zajišťuje, aby vaše peněžní investice byly zpracovávány (zejména optické rozpoznávání znaků a zpracování obrázků), ale také kvůli efektivnějšímu systému. 
 
 Pracovní postup, který používá přírůstkové ukládání do mezipaměti, zahrnuje následující kroky:
 
@@ -95,7 +95,7 @@ Nastavením tohoto parametru zajistíte, že se potvrdí jenom aktualizace defin
 Následující příklad ukazuje požadavek Update dovednosti s parametrem:
 
 ```http
-PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?api-version=2020-06-30-Preview&disableCacheReprocessingChangeDetection=true
+PUT https://[search service].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30-Preview&disableCacheReprocessingChangeDetection=true
 ```
 
 ### <a name="bypass-data-source-validation-checks"></a>Obejít kontrolu ověřování zdroje dat
@@ -103,7 +103,7 @@ PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?
 Většina změn definice zdroje dat zruší platnost mezipaměti. Nicméně u scénářů, kde víte, že změna by neměla mít za následek zrušení platnosti mezipaměti – například změna připojovacího řetězce nebo otočení klíče v účtu úložiště – připojí `ignoreResetRequirement` parametr na aktualizaci zdroje dat. Nastavením tohoto parametru `true` umožníte, aby potvrzení procházelo, aniž by se aktivovala podmínka resetování, která by způsobila, že se všechny objekty znovu sestaví a vyplní od začátku.
 
 ```http
-PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-version=2020-06-30-Preview&ignoreResetRequirement=true
+PUT https://[search service].search.windows.net/datasources/[data source name]?api-version=2020-06-30-Preview&ignoreResetRequirement=true
 ```
 
 ### <a name="force-skillset-evaluation"></a>Vynutit vyhodnocování dovednosti
@@ -111,6 +111,10 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 Účelem mezipaměti je vyhnout se zbytečnému zpracování, ale Předpokládejme, že provedete změnu dovednosti, kterou indexer nedetekuje (například změna nějakého externího kódu, jako je třeba vlastní dovednost).
 
 V takovém případě můžete použít [dovednost obnovení](/rest/api/searchservice/preview-api/reset-skills) k vynucení přepracování konkrétní dovednosti, včetně všech dovedností, které jsou závislé na výstupu této dovednosti. Toto rozhraní API přijme požadavek POST se seznamem dovedností, které by měly být neověřené a označené k novému zpracování. Po resetování dovedností spusťte indexer k vyvolání kanálu.
+
+### <a name="reset-documents"></a>Resetovat dokumenty
+
+[Resetování indexeru](/rest/api/searchservice/reset-indexer) způsobí, že se znovu zpracovávají všechny dokumenty ve corpus hledání. V případech, kdy je třeba znovu zpracovat pouze několik dokumentů a zdroj dat nelze aktualizovat, použijte příkaz [resetovat dokumenty (Preview)](/rest/api/searchservice/preview-api/reset-documents) k vynucení přepracování konkrétních dokumentů. Při resetování dokumentu indexer zruší platnost mezipaměti pro daný dokument a dokument se znovu zpracuje tím, že ho přečte ze zdroje dat. Další informace najdete v tématu [spuštění nebo resetování indexerů, dovedností a dokumentů](search-howto-run-reset-indexers.md).
 
 ## <a name="change-detection"></a>Detekce změn
 
@@ -149,7 +153,7 @@ Přírůstkové zpracování vyhodnocuje vaši definici dovednosti a určuje, kt
 * Změny v projekcích ve znalostní bázi Store mají za následek reprojekci dokumentů.
 * Mapování polí výstupu změněné u indexeru má za následek reprodukci dokumentů do indexu.
 
-## <a name="api-reference"></a>referenční dokumentace k rozhraní API
+## <a name="api-reference"></a>API – referenční informace
 
 REST API verze `2020-06-30-Preview` poskytuje přírůstkové rozšíření prostřednictvím dalších vlastností indexerů. Dovednosti a zdroje dat můžou používat všeobecně dostupnou verzi. Kromě referenční dokumentace najdete další informace o volání rozhraní API v tématu  [Konfigurace ukládání do mezipaměti pro přírůstkové obohacení](search-howto-incremental-index.md) .
 
@@ -161,7 +165,7 @@ REST API verze `2020-06-30-Preview` poskytuje přírůstkové rozšíření pros
 
 + [Resetování dovedností (API-Version = 2020-06-30)](/rest/api/searchservice/preview-api/reset-skills)
 
-+ Indexery databází (Azure SQL, Cosmos DB). Některé indexery načítají data prostřednictvím dotazů. U dotazů, které načítají data, [aktualizuje zdroj dat](/rest/api/searchservice/update-data-source) v žádosti **ignoreResetRequirement**nový parametr, který by měl být nastaven na hodnotu, `true` Pokud by vaše akce aktualizace neměla mít za následek zrušení platnosti mezipaměti. 
++ Indexery databází (Azure SQL, Cosmos DB). Některé indexery načítají data prostřednictvím dotazů. U dotazů, které načítají data, [aktualizuje zdroj dat](/rest/api/searchservice/update-data-source) v žádosti **ignoreResetRequirement** nový parametr, který by měl být nastaven na hodnotu, `true` Pokud by vaše akce aktualizace neměla mít za následek zrušení platnosti mezipaměti. 
 
   **IgnoreResetRequirement** můžete použít zřídka, protože by mohlo vést k nezamýšlené nekonzistenci vašich dat, která se nezjistí snadno.
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 954d08fa163b481393df28ae22016859badea694
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 46f2035e5f8409cd38faeb9c327b88b06fc7d7a0
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537302"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097632"
 ---
 # <a name="security-overview-for-azure-cognitive-search"></a>Přehled zabezpečení pro Azure Kognitivní hledání
 
@@ -113,12 +113,6 @@ Pro správu služby Search jsou definovány [tři základní role](search-securi
 
 > [!Note]
 > Pomocí mechanismů pro práci v rámci Azure můžete uzamknout předplatné nebo prostředek, abyste zabránili nechtěnému nebo neautorizovanému odstranění služby vyhledávání uživatelů s právy správce. Další informace najdete v tématu [uzamčení prostředků, aby se zabránilo neočekávanému odstranění](../azure-resource-manager/management/lock-resources.md).
-
-## <a name="threat-protection"></a>Ochrana před hrozbami
-
-Přístup k obsahu ve vyhledávací službě je výhradně prostřednictvím dotazů. Pokud je vaše vyhledávací služba cílem útoku na dotazy, systém vynechá dotazy jako kapacitu služby System přístupy do špičky. 
-
-Omezení se u různých rozhraní API chová jinak. Rozhraní API pro dotazy (hledání, návrhy/dokončování) a indexování rozhraní API se dynamicky vycházejí z zatížení služby. Rozhraní API indexů a Operational Service API mají omezení statické míry požadavků. Limity požadavků na statickou rychlost můžete zkontrolovat v části omezení [omezování](search-limits-quotas-capacity.md#throttling-limits). Další informace o chování omezování najdete v tématu [monitorování požadavků na dotazy](search-monitor-queries.md).
 
 <a name="encryption"></a>
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 78187b2cbb6603a0ae0df55465b9a5ce5e7dca7f
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: a4883bfce2469af0ee8bcc34933f94b0b5329959
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807542"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518075"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrace a kontrola klienta Power BIu (Preview)
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak pomocí portálu Azure dosah zaregistrovat a kontro
 
 ## <a name="create-a-security-group-for-permissions"></a>Vytvoření skupiny zabezpečení pro oprávnění
 
-Pokud chcete nastavit ověřování, vytvořte skupinu zabezpečení a přidejte do ní spravovanou identitu katalogu.
+Pokud chcete nastavit ověřování, vytvořte skupinu zabezpečení a přidejte do ní spravovanou identitu dosah.
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte **Azure Active Directory**.
 1. Vytvořte ve svém Azure Active Directory novou skupinu zabezpečení, a to tak, že [vytvoříte základní skupinu a přidáte členy pomocí Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
@@ -35,11 +35,11 @@ Pokud chcete nastavit ověřování, vytvořte skupinu zabezpečení a přidejte
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/security-group.png" alt-text="Typ skupiny zabezpečení":::
 
-1. Do této skupiny zabezpečení přidejte spravovanou identitu vašeho katalogu. Vyberte **členy** a pak vybrat **+ přidat členy**.
+1. Přidejte spravovanou identitu dosah do této skupiny zabezpečení. Vyberte **členy** a pak vybrat **+ přidat členy**.
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/add-group-member.png" alt-text="Přidejte spravovanou instanci katalogu do skupiny.":::
 
-1. Vyhledejte svůj katalog a vyberte ho.
+1. Vyhledejte spravovanou identitu dosah a vyberte ji.
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/add-catalog-to-group-by-search.png" alt-text="Přidání katalogu hledáním":::
 
@@ -61,14 +61,14 @@ Pokud chcete nastavit ověřování, vytvořte skupinu zabezpečení a přidejte
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="Obrázek ukazující, jak povolíte instančním objektům oprávnění k přístupu Power BI oprávnění API pro správu":::
 
     > [!Caution]
-    > Když povolíte skupinu zabezpečení, kterou jste vytvořili (která má vaši identitu spravovanou v katalogu Data Catalog), aby používala rozhraní API Správce Power BI jen pro čtení, umožníte jí také přístup k metadatům (např. řídicím panelem a názvům sestav, vlastníkům, popisům atd.) pro všechny vaše Power BI artefakty v tomto tenantovi. Po navýšení metadat do oprávnění Azure dosah, dosah, ne Power BI oprávnění Zjistěte, kdo uvidí tato metadata.
+    > Pokud povolíte vytvořenou skupinu zabezpečení (která má vaši spravovanou identitu dosah jako člen), abyste mohli používat rozhraní API Správce Power BI jen pro čtení, umožníte mu také přístup k metadatům (např. řídicím panelem a názvům sestav, vlastníkům, popisům atd.) pro všechny vaše Power BI artefaktů v tomto tenantovi. Po navýšení metadat do oprávnění Azure dosah, dosah, ne Power BI oprávnění Zjistěte, kdo uvidí tato metadata.
 
     > [!Note]
     > Skupinu zabezpečení můžete odebrat z nastavení pro vývojáře, ale metadata, která byla dříve extrahována, nebudou odebrána z účtu dosah. Pokud chcete, můžete ho odstranit samostatně.
 
 ## <a name="register-your-power-bi-and-set-up-a-scan"></a>Zaregistrujte Power BI a nastavte kontrolu.
 
-Teď, když jste udělili oprávnění ke katalogu pro připojení k rozhraní API pro správu vašeho tenanta Power BI, můžete nastavit kontrolu z portálu katalogu.
+Teď, když jste udělili oprávnění ke spravovaným identitám dosah pro připojení k rozhraní API pro správu vašeho tenanta Power BI, můžete si nastavit kontrolu z Azure dosah studia.
 
 Nejdřív přidejte příznak speciální funkce na adresu URL dosah. 
 

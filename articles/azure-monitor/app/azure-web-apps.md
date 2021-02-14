@@ -4,19 +4,19 @@ description: Sledování výkonu aplikací pro Azure App Services. Zatížení g
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: c0ee68659f4729ed8f63b9ea990343adf51513bd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cd203c64695a9a61a93409a96f6a92b9acf9fe70
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186367"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365221"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu služby Azure App Service
 
 Povolení monitorování webových aplikací založených na ASP.NET a ASP.NET Core běžících na [Azure App Services](../../app-service/index.yml) je teď jednodušší než kdy dřív. Vzhledem k tomu, že jste předtím museli ručně nainstalovat rozšíření lokality, je ve výchozím nastavení do image služby App Service standardně integrováno nejnovější rozšíření nebo agent. Tento článek vás provede povolením Application Insights monitorování a poskytuje předběžné pokyny pro automatizaci procesu pro rozsáhlá nasazení.
 
 > [!NOTE]
-> Ruční přidání rozšíření Application Insights webu prostřednictvím rozšíření **nástrojů pro vývoj**  >  **Extensions** je zastaralé. Tato metoda instalace rozšíření byla závislá na ruční aktualizaci pro každou novou verzi. Nejnovější stabilní verze rozšíření je teď  [předinstalována](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) jako součást image App Service. Soubory jsou umístěny v `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` a jsou automaticky aktualizovány s každou stabilní verzí. Pokud budete postupovat podle pokynů na základě agentů a zapnout monitorování níže, automaticky se odebere zastaralé rozšíření za vás.
+> Ruční přidání rozšíření Application Insights webu prostřednictvím rozšíření **nástrojů pro vývoj**  >   je zastaralé. Tato metoda instalace rozšíření byla závislá na ruční aktualizaci pro každou novou verzi. Nejnovější stabilní verze rozšíření je teď  [předinstalována](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) jako součást image App Service. Soubory jsou umístěny v `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` a jsou automaticky aktualizovány s každou stabilní verzí. Pokud budete postupovat podle pokynů na základě agentů a zapnout monitorování níže, automaticky se odebere zastaralé rozšíření za vás.
 
 ## <a name="enable-application-insights"></a>Povolení Application Insights
 
@@ -61,11 +61,11 @@ Existují dva způsoby, jak povolit monitorování aplikací pro hostované apli
         
 | Data | Kolekce ASP.NET úrovně Basic | ASP.NET Doporučené shromažďování |
 | --- | --- | --- |
-| Přidání trendů využití procesoru, paměti a vstupně-výstupních operací |Ano |Ano |
-| Shromažďování trendů využití a povolení korelace mezi výsledky dostupnosti a transakcemi | Ano |Ano |
-| Shromažďování výjimek nezpracovaných hostitelským procesem | Ano |Ano |
-| Zlepšení přesnosti metrik APM v případě zatížení při použití vzorkování | Ano |Ano |
-| Korelace mikroslužeb napříč požadavky a závislostmi | Ne (jenom možnosti APM s jednou instancí) |Ano |
+| Přidání trendů využití procesoru, paměti a vstupně-výstupních operací |Yes |Yes |
+| Shromažďování trendů využití a povolení korelace mezi výsledky dostupnosti a transakcemi | Yes |Yes |
+| Shromažďování výjimek nezpracovaných hostitelským procesem | Yes |Yes |
+| Zlepšení přesnosti metrik APM v případě zatížení při použití vzorkování | Yes |Yes |
+| Korelace mikroslužeb napříč požadavky a závislostmi | Ne (jenom možnosti APM s jednou instancí) |Yes |
 
 3. Pokud chcete nakonfigurovat nastavení, jako je vzorkování, které byste mohli dříve řídit prostřednictvím souboru applicationinsights.config, můžete teď s těmito nastaveními pracovat pomocí nastavení aplikace s odpovídající předponou. 
 
@@ -75,7 +75,8 @@ Existují dva způsoby, jak povolit monitorování aplikací pro hostované apli
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
-Podporovány jsou následující verze ASP.NET Core: ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0, ASP.NET Core 3,1
+> [!IMPORTANT]
+> Podporovány jsou následující verze ASP.NET Core: ASP.NET Core 2,1, 3,1 a 5,0. Verze 2,0, 2,2 a 3,0 byly vyřazeny a již nejsou podporovány. Pokud chcete, aby byla Automatická instrumentace fungovat, upgradujte prosím na [podporovanou verzi](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) .NET Core.
 
 Cílení na úplné rozhraní z ASP.NET Core, samostatného nasazení a aplikací založených na systému Linux se v současnosti **nepodporují** pomocí monitorování založeného na agentech nebo rozšíření. ([Ruční instrumentace](./asp-net-core.md) přes kód bude fungovat ve všech předchozích scénářích.)
 
@@ -90,7 +91,7 @@ Cílení na úplné rozhraní z ASP.NET Core, samostatného nasazení a aplikac�
 
      ![Používejte webovou aplikaci.](./media/azure-web-apps/create-resource-01.png)
 
-2. Jakmile určíte, který prostředek se má použít, můžete zvolit způsob, jakým má Application Insights shromažďovat data na platformu pro vaši aplikaci. ASP.NET Core nabízí **doporučenou kolekci** nebo **zakázanou** pro ASP.NET Core 2,1, 2,2, 3,0 a 3,1.
+2. Jakmile určíte, který prostředek se má použít, můžete zvolit způsob, jakým má Application Insights shromažďovat data na platformu pro vaši aplikaci. ASP.NET Core nabízí **doporučenou kolekci** nebo **zakázanou** pro ASP.NET Core 2,1 a 3,1.
 
     ![Zvolit možnosti na platformu](./media/azure-web-apps/choose-options-new-net-core.png)
 
@@ -346,7 +347,7 @@ Počínaje verzí 2.8.9 se používá předem nainstalovaná rozšíření webu.
 
 Pokud je upgrade proveden z verze před aplikací 2.5.1, zkontrolujte, zda jsou knihovny DLL ApplicationInsigths odebrány ze složky bin aplikace, [v tématu Postup řešení potíží](#troubleshooting).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorování rozšíření/na základě agentů pro aplikace založené na ASP.NET a ASP.NET Core, které běží na Azure App Services.
 
@@ -419,6 +420,12 @@ Pokud chcete testovat server bez kódu a monitorování na straně klienta pro A
 ### <a name="connection-string-and-instrumentation-key"></a>Připojovací řetězec a klíč instrumentace
 
 Pokud je používáno monitorování bez kódu, je vyžadován pouze připojovací řetězec. Přesto však doporučujeme nastavit klíč instrumentace, aby se zajistila zpětná kompatibilita se staršími verzemi sady SDK, když se provádí ruční instrumentace.
+
+### <a name="difference-between-standard-metrics-from-application-insights-vs-azure-app-service-metrics"></a>Rozdíl mezi standardními metrikami z Application Insights vs Azure App Service metriky?
+
+Application Insights shromažďuje telemetrii pro ty žádosti, které ji udělaly v aplikaci. Pokud k selhání došlo v WebApps/IIS a požadavek nedorazil na uživatelskou aplikaci, nebude mít Application Insights žádné telemetrie.
+
+Doba trvání `serverresponsetime` vypočítaná pomocí Application Insights není nutně shodná s dobou odezvy serveru zjištěným Web Apps. Důvodem je to, že Application Insights počítá jenom dobu trvání, kdy požadavek skutečně dosáhne uživatelské aplikace. Pokud je požadavek zablokovaný nebo zařazený do fronty ve službě IIS, bude tato čekací doba obsažená v metrikách webové aplikace, ale ne v Application Insightsch metrikách.
 
 ## <a name="release-notes"></a>Poznámky k verzi
 

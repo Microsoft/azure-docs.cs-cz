@@ -13,20 +13,30 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/18/2019
+ms.date: 02/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 870caffe2bd286c2eec3390915bc5e64e0103a07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac83e5a9366a12c5adce0e08f04f2bb28a7d788d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483461"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374877"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Řešení potíží s chybami poskytovatele prostředků Azure NetApp Files 
 
 Tento článek popisuje běžné Azure NetApp Files chyby poskytovatele prostředků, jejich příčiny, řešení a alternativní řešení (pokud jsou k dispozici).
 
 ## <a name="common-azure-netapp-files-resource-provider-errors"></a>Běžné chyby poskytovatele prostředků Azure NetApp Files
+
+***Vytvoření `netAppAccounts` bylo v této oblasti omezeno.***
+
+K této situaci dochází, když je předplatné waitlisted pro Azure NetApp Files a uživatel se pokusí vytvořit účet NetApp.
+
+* Příčina:   
+Poskytovatel prostředků Azure pro Azure NetApp Files není úspěšně zaregistrovaný. 
+ 
+* Řešení:   
+Po waitlisted předplatného dokončete všechny kroky popsané v tématu [registrace poskytovatele prostředků Azure NetApp](azure-netapp-files-register.md#resource-provider) .
 
 ***BareMetalTenantId nelze změnit.***  
 

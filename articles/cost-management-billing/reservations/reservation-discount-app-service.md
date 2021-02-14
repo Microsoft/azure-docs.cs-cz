@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/12/2021
 ms.author: banders
-ms.openlocfilehash: debe02a89e10712ad8a0b8d61b0fdc3f8a4bd7b2
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: c599c64ce4b22bbf7bece77602b22fef6629d07c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99577781"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369726"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-app-service-premium-v3-instances-and-isolated-stamps"></a>Jak se použijí slevy za rezervace na instance Azure App Service Premium v3 a izolovaná razítka
 
@@ -40,10 +40,6 @@ Sleva za rezervované instance Azure se používá na každou hodinu na běhu in
 4.  Za 4. hodinu běží instance 1 po dobu 0,5 hodiny a instance 2 po dobu 1 hodiny. Instanci 1 plně pokryje rezervace a 0,5 hodiny chodu instance 2 také. Za 0,5 hodiny nad limit se vám naúčtuje běžná sazba pro průběžné platby.
 
 Vysvětlení a znázornění uplatňování rezervací Azure v sestavách fakturace využití najdete v tématu [Vysvětlení využití rezervací](understand-reserved-instance-usage-ea.md).
-
-### <a name="discount-can-apply-to-different-sizes"></a>Sleva se může vztahovat na různé velikosti
-
-Když si koupíte rezervovanou instanci Premium v3 a vyberete **optimalizovanou pro flexibilitu velikosti instance**, bude se pokrytí slevy vztahovat na velikost instance Premium v3, kterou vyberete. Může se taky vztahovat na jiné velikosti instancí, které jsou ve skupině flexibility velikosti instance řady.
 
 ## <a name="how-reservation-discounts-apply-to-isolated-stamps"></a>Jak se použijí slevy rezervace na izolovaná razítka
 

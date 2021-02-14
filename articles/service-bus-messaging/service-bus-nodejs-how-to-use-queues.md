@@ -1,18 +1,18 @@
 ---
 title: Jak používat fronty Azure/Service-Bus v JavaScriptu
-description: Naučte se psát program JavaScriptu, který používá nejnovější verzi Preview @azure/service-bus balíčku k odesílání zpráv do a příjem zpráv z fronty Service Bus.
+description: Naučte se psát program JavaScriptu, který používá nejnovější verzi @azure/service-bus balíčku k odesílání zpráv do a příjem zpráv z fronty Service Bus.
 author: spelluru
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: ac24d84176f27170648545bc8044c5dcbc77781a
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 27ffbafb92dd3269e38092b64e2b74f17ff9f09f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180009"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373075"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-javascript"></a>Odesílání zpráv do a příjem zpráv z Azure Service Busch front (JavaScript)
 V tomto kurzu se naučíte používat [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) balíček v programu JavaScriptu k posílání a přijímání zpráv z fronty Service Bus.
@@ -118,7 +118,7 @@ Následující vzorový kód ukazuje, jak odeslat zprávu do fronty.
     ```console
     node send.js 
     ```
-1. Měl by se zobrazit následující výstup.
+1. Měli byste vidět následující výstup.
 
     ```console
     Sent a batch of messages to the queue: myqueue
@@ -180,7 +180,7 @@ Následující vzorový kód ukazuje, jak odeslat zprávu do fronty.
     ```console
     node receive.js
     ```
-1. Měl by se zobrazit následující výstup.
+1. Měli byste vidět následující výstup.
 
     ```console
     Received message: Albert Einstein
@@ -205,6 +205,7 @@ Na stránce s **přehledem** Vyberte frontu a přejděte na stránku **Service B
 ## <a name="next-steps"></a>Další kroky
 Podívejte se na následující dokumentaci a ukázky: 
 
-- [Klientská knihovna Azure Service Bus pro JS](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
-- [Ukázky](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples). Složka **JavaScriptu** obsahuje ukázky JavaScriptu a v **TypeScript** jsou ukázky TypeScriptu. 
-- [Referenční dokumentace k Azure-ServiceBus](/javascript/api/overview/azure/service-bus)
+- [Klientská knihovna Azure Service Bus pro JavaScript](https://www.npmjs.com/package/@azure/service-bus)
+- [Ukázky JavaScriptu](https://docs.microsoft.com/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [Ukázky TypeScriptu](https://docs.microsoft.com/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+- [Referenční dokumentace k rozhraní API](/javascript/api/overview/azure/service-bus)

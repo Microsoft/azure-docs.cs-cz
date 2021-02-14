@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat ze seznamu SharePointu Online pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data ze seznamu SharePointu Online do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 440dd561beddc9696ec703142fe82655b69fbb48
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 3f05c90ba3c7e6b47009cbb597c56dac8a01427a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99474943"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393424"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Kopírování dat ze seznamu SharePointu Online pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -196,7 +191,7 @@ Při kopírování dat ze seznamu SharePointu Online se používají následují
 | Více řádků textu                          | Edm.String                                           | Řetězec                                   |
 | Volba (nabídka pro výběr)                    | Edm.String                                           | Řetězec                                   |
 | Číslo (1, 1,0, 100)                            | Edm.Double                                           | dvojité                                   |
-| Měna ($, y, €)                              | Edm.Double                                           | dvojité                                   |
+| Měna ($, y, &euro; )                              | Edm.Double                                           | dvojité                                   |
 | Datum a čas                                   | EDM. DateTime                                         | DateTime                                 |
 | Vyhledávání (informace již na tomto webu)       | Edm.Int32                                            | Int32                                    |
 | Ano/ne (zaškrtávací políčko)                              | Edm.Boolean                                          | Logická hodnota                                  |
