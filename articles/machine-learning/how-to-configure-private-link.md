@@ -10,13 +10,13 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 09/30/2020
-ms.openlocfilehash: 5ba1b9d53255406a73b1b74dbc59fe39e3f9a0d7
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.date: 02/09/2021
+ms.openlocfilehash: 75ea473c8669e9d50d2e9971a20a5fc1c3070779
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979177"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368009"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurace privátního odkazu Azure pro pracovní prostor Azure Machine Learning
 
@@ -31,8 +31,9 @@ Privátní odkaz Azure umožňuje připojit se k pracovnímu prostoru pomocí pr
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud plánujete použít pracovní prostor s povoleným privátním propojením s klíčem spravovaným zákazníkem, musíte požádat o tuto funkci pomocí lístku podpory. Další informace najdete v tématu [Správa a zvýšení kvót](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
+* Pokud plánujete použít pracovní prostor s povoleným privátním propojením s klíčem spravovaným zákazníkem, musíte požádat o tuto funkci pomocí lístku podpory. Další informace najdete v tématu [Správa a zvýšení kvót](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
+* Pro vytvoření privátního koncového bodu v nástroji musíte mít existující virtuální síť. Před přidáním privátního koncového bodu musíte taky [zakázat zásady sítě pro privátní koncové body](../private-link/disable-private-endpoint-network-policy.md) .
 ## <a name="limitations"></a>Omezení
 
 * Použití Azure Machine Learningho pracovního prostoru s privátním odkazem není k dispozici ve Azure Government oblastech nebo v oblastech Azure Čína 21Vianet.
@@ -73,6 +74,19 @@ ws = Workspace.create(name='myworkspace',
 * `--pe-vnet-name`: Existující virtuální síť pro vytvoření privátního koncového bodu v nástroji.
 * `--pe-subnet-name`: Název podsítě, v níž se má vytvořit privátní koncový bod. Výchozí hodnota je `default`.
 
+Tyto parametry jsou kromě dalších požadovaných parametrů pro příkaz Create. Například následující příkaz vytvoří nový pracovní prostor v oblasti Západní USA s použitím existující skupiny prostředků a virtuální sítě:
+
+```azurecli
+az ml workspace create -r myresourcegroup \
+    -l westus \
+    -n myworkspace \
+    --pe-name myprivateendpoint \
+    --pe-auto-approval \
+    --pe-resource-group myresourcegroup \
+    --pe-vnet-name myvnet \
+    --pe-subnet-name mysubnet
+```
+
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Karta __sítě__ v nástroji Azure Machine Learning Studio umožňuje konfigurovat soukromý koncový bod. Vyžaduje ale existující virtuální síť. Další informace najdete v tématu [vytvoření pracovních prostorů na portálu](how-to-manage-workspace.md).
@@ -82,10 +96,6 @@ Karta __sítě__ v nástroji Azure Machine Learning Studio umožňuje konfigurov
 ## <a name="add-a-private-endpoint-to-a-workspace"></a>Přidání privátního koncového bodu do pracovního prostoru
 
 K přidání privátního koncového bodu do existujícího pracovního prostoru použijte jednu z následujících metod:
-
-> [!IMPORTANT]
->
-> Pro vytvoření privátního koncového bodu v nástroji musíte mít existující virtuální síť. Před přidáním privátního koncového bodu musíte taky [zakázat zásady sítě pro privátní koncové body](../private-link/disable-private-endpoint-network-policy.md) .
 
 > [!WARNING]
 >

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/30/2020
 ms.author: cfowler
 ms.custom: include file
-ms.openlocfilehash: c6352ee9d29e4e45aa4be449046a0715fee06047
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 9a003b5c42a6ef4c699a3768d15ae08f86d56e52
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165905"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367282"
 ---
 ## <a name="create-a-new-cdn-profile"></a>Vytvoření nového profilu CDN
 
@@ -31,7 +31,7 @@ Profil CDN představuje kontejner pro koncové body CDN a určuje cenovou úrove
    
     | Nastavení  | Hodnota |
     | -------- | ----- |
-    | **Název** | Jako název profilu zadejte *CDN-Profile-123* . Tento název musí být globálně jedinečný; Pokud se už používá, zadejte jiný název. |
+    | **Název** | Jako název profilu zadejte *CDN-Profile-123* . |
     | **Předplatné** | V rozevíracím seznamu vyberte předplatné Azure. |
     | **Skupina prostředků** | Vyberte **vytvořit novou** a jako název skupiny prostředků zadejte *CDNQuickstart-RG* , nebo vyberte **použít existující** a zvolte *CDNQuickstart-RG* , pokud už tuto skupinu máte. | 
     | **Umístění skupiny prostředků** | V rozevíracím seznamu vyberte umístění v blízkosti. |

@@ -2,13 +2,13 @@
 title: Použití Azure Application Gateway k ochraně webových aplikací v řešení VMware Azure
 description: Nakonfigurujte Azure Application Gateway, aby bezpečně vystavil vaše webové aplikace běžící na řešení Azure VMware.
 ms.topic: how-to
-ms.date: 02/08/2021
-ms.openlocfilehash: fdef37bd76b08a8778db8401a1e8a0406c2ed652
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.date: 02/10/2021
+ms.openlocfilehash: 9b10c206114ca922cc11bd8cb0321941b8ba672c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988637"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384193"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Použití Azure Application Gateway k ochraně webových aplikací v řešení VMware Azure
 
@@ -35,7 +35,7 @@ Diagram znázorňuje scénář testování, který slouží k ověření Applica
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Diagram znázorňující scénář testování, který slouží k ověření Application Gateway pomocí webových aplikací řešení Azure VMware." border="false":::
 
-Instance Application Gateway je nasazena v centru ve vyhrazené podsíti. Má veřejnou IP adresu Azure. Doporučuje se aktivovat Standard DDoS Protection pro virtuální síť. Webový server je hostovaný v rámci privátního cloudu řešení Azure VMware za NSX T0 a T1. Řešení Azure VMware používá [Global REACH ExpressRoute](../expressroute/expressroute-global-reach.md) k umožnění komunikace s rozbočovačem a místními systémy.
+Instance Application Gateway je nasazena v centru ve vyhrazené podsíti. Má veřejnou IP adresu Azure. Doporučuje se aktivovat Standard DDoS Protection pro virtuální síť. Webový server je hostovaný na privátním cloudu řešení Azure VMware za NSX T0 a T1 Gateway. Řešení Azure VMware používá [Global REACH ExpressRoute](../expressroute/expressroute-global-reach.md) k umožnění komunikace s rozbočovačem a místními systémy.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -57,7 +57,7 @@ Instance Application Gateway je nasazena v centru ve vyhrazené podsíti. Má ve
 
 4. Přidejte back-end fond virtuálních počítačů, které běží na infrastruktuře řešení Azure VMware. Zadejte podrobnosti o webových serverech, které běží na privátním cloudu řešení Azure VMware, a vyberte **Přidat**.  Pak vyberte **Další:>konfigurace**.
 
-1. Na kartě **Konfigurace** vyberte **Přidat pravidlo směrování**.
+5. Na kartě **Konfigurace** vyberte **Přidat pravidlo směrování**.
 
 6. Na kartě **naslouchací proces** zadejte podrobnosti pro naslouchací proces. Pokud je vybrána možnost HTTPS, je nutné zadat certifikát ze souboru PFX nebo existujícího certifikátu Azure Key Vault. 
 
@@ -77,7 +77,7 @@ Instance Application Gateway je nasazena v centru ve vyhrazené podsíti. Má ve
 
 ## <a name="configuration-examples"></a>Příklady konfigurace
 
-V této části se dozvíte, jak nakonfigurovat Application Gateway s virtuálními počítači řešení VMware Azure jako back-endové fondy pro tyto případy použití: 
+Teď nakonfigurujeme Application Gateway s virtuálními počítači řešení VMware Azure jako back-endové fondy pro tyto případy použití: 
 
 - [Hostování více webů](#hosting-multiple-sites)
 - [Směrování podle adresy URL](#routing-by-url)
@@ -94,7 +94,7 @@ Tento postup vám ukáže, jak definovat fondy adres back-endu pomocí virtuáln
 
     :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool.png" alt-text="Snímek obrazovky zobrazující souhrn podrobností webového serveru v klientovi VSphere":::
 
-    K ilustraci tohoto kurzu jsme použili Windows Server 2016 s nainstalovanou rolí služby Internetová informační služba (IIS). Po instalaci virtuálních počítačů spusťte následující příkazy PowerShellu ke konfiguraci služby IIS na každém virtuálním počítači. 
+    Používali jsme Windows Server 2016 s nainstalovanou rolí Internetová informační služba (IIS). Po instalaci virtuálních počítačů spusťte následující příkazy PowerShellu ke konfiguraci služby IIS na každém virtuálním počítači. 
 
     ```powershell
     Install-WindowsFeature -Name Web-Server
@@ -121,7 +121,7 @@ Tento postup vám ukáže, jak definovat fondy adres back-endu pomocí virtuáln
 
 ### <a name="routing-by-url"></a>Směrování podle adresy URL
 
-Tento postup vám ukáže, jak definovat fondy adres back-endu pomocí virtuálních počítačů spuštěných v privátním cloudu řešení Azure VMware v existující aplikační bráně. Pak vytvoříte pravidla směrování, která zajistí, že webový provoz dorazí na příslušné servery ve fondech.
+Následující kroky definují back-endové fondy adres pomocí virtuálních počítačů spuštěných v privátním cloudu řešení Azure VMware. Privátní cloud je v existující aplikační bráně. Pak vytvoříte pravidla směrování, která zajistí, že webový provoz dorazí na příslušné servery ve fondech.
 
 1. V privátním cloudu vytvořte fond virtuálních počítačů, který bude představovat webovou farmu. 
 

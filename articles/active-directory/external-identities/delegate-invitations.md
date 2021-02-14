@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a249102de6a5bff7354e339e604b7d2efebd4fb
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 68ed67afc949b3a67936f20a098bca8b6906a598
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546162"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365544"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Povolení externí spolupráce B2B a správa toho, kdo může zvát hosty
 
@@ -45,8 +45,6 @@ Ve výchozím nastavení mohou všichni uživatelé, včetně hostů, pozvat už
 
 4. V části **omezení přístupu uživatele typu Host (Preview)** vyberte úroveň přístupu, kterou mají mít uživatelé typu Host:
   
-    ![Nastavení omezení přístupu uživatele typu Host](./media/delegate-invitations/guest-user-access.png)
-
    - **Uživatelé typu Host mají stejný přístup jako členové (nejvíc včetně)**: Tato možnost dává hostům stejný přístup k prostředkům a datům Azure AD jako členské uživatele.
 
    - **Uživatelé typu Host mají omezený přístup k vlastnostem a členstvím objektů adresáře**: (výchozí) Toto nastavení blokuje hosty z určitých úloh adresáře, jako je vytváření výčtu uživatelů, skupin nebo jiných prostředků adresáře. Hosté můžou zobrazit členství všech neskrytých skupin.
@@ -69,13 +67,11 @@ Ve výchozím nastavení mohou všichni uživatelé, včetně hostů, pozvat už
 
 6. V části **e-mail jednorázového hesla pro hosty** vyberte příslušné nastavení (Další informace najdete v tématu [ověřování e-mailu s jednorázovým heslem](one-time-passcode.md)):
 
-   ![Nastavení jednorázového hesla pro e-mail](./media/delegate-invitations/email-otp-settings.png)
-
-   - **Automaticky povolit jednorázové e-mailové heslo pro hosty v březnu 2021**. Výchozí Pokud funkce jednorázového hesla pro e-mail ještě není pro vašeho tenanta povolená, bude automaticky zapnutá v březnu 2021. Pokud chcete povolit funkci v daném čase, není nutná žádná další akce. Pokud jste tuto funkci již povolili nebo zakázali, tato možnost nebude k dispozici.
+   - **Automaticky povolit jednorázové e-mailové heslo pro hosty v říjnu 2021**. Výchozí Pokud pro vašeho tenanta ještě není povolená funkce pro jednorázové e-mailové heslo, bude automaticky zapnutá v říjnu 2021. Pokud chcete povolit funkci v daném čase, není nutná žádná další akce. Pokud jste tuto funkci již povolili nebo zakázali, tato možnost nebude k dispozici.
 
    - **Povolte jednorázové e-mailové heslo pro hosty**, které jsou teď platné. Zapne pro vašeho tenanta funkci jednorázového hesla pro e-mail.
 
-   - **Zakažte jednorázové e-mailové heslo pro hosty**. Vypne funkci jednorázového hesla e-mailu pro vašeho tenanta a zabrání funkci v zapnutí v březnu 2021.
+   - **Zakažte jednorázové e-mailové heslo pro hosty**. Vypne funkci jednorázového hesla e-mailu pro vašeho tenanta a zabrání funkci v zapnutí v říjnu 2021.
 
    > [!NOTE]
    > Místo výše uvedených možností se zobrazí následující přepínač, pokud jste tuto funkci povolili nebo zakázali, nebo pokud jste se dříve přihlásili k verzi Preview:

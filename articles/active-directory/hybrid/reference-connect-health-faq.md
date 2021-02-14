@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6140f5fd431a0b089b45892130e075bde02a2eb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6185c5408f74b914ce5ad47634999786ba1d7ab6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299761"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367992"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health nejčastějších dotazech
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se služby Azure Active Directory (Azure AD) Connect Health. Tyto nejčastější dotazy obsahují otázky týkající se používání služby, včetně modelu fakturace, možností, omezení a podpory.
@@ -29,7 +29,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se služ
 ## <a name="general-questions"></a>Obecné otázky
 **Otázka: můžu spravovat více adresářů služby Azure AD. Návody přepnout na tu, která má Azure Active Directory Premium?**
 
-Pokud chcete přepínat mezi různými klienty Azure AD, vyberte aktuálně přihlášené **uživatelské jméno** v pravém horním rohu a pak zvolte příslušný účet. Pokud zde uvedený účet není, vyberte **Odhlásit**se a pak použijte přihlašovací údaje globálního správce adresáře, který má Azure Active Directory Premium povoleno přihlásit se.
+Pokud chcete přepínat mezi různými klienty Azure AD, vyberte aktuálně přihlášené **uživatelské jméno** v pravém horním rohu a pak zvolte příslušný účet. Pokud zde účet není uveden, vyberte možnost **Odhlásit** se a pak použijte pověření globálního správce adresáře, ve kterém se používá Azure Active Directory Premium (P1 nebo P2), se má povolit přihlášení.
 
 **Otázka: jakou verzi rolí identity podporuje Azure AD Connect Health?**
 
@@ -47,8 +47,8 @@ Všimněte si, že funkce poskytované službou se můžou lišit v závislosti 
 
 **Otázka: kolik licencí potřebuji k monitorování své infrastruktury?**
 
-* První Agent pro stav připojení vyžaduje alespoň jednu licenci Azure AD Premium.
-* Každý další registrovaný agent vyžaduje 25 dalších licencí Azure AD Premium.
+* První Agent pro stav připojení vyžaduje alespoň jednu licenci Azure AD Premium (P1 nebo P2).
+* Každý další registrovaný agent vyžaduje 25 dalších licencí na Azure AD Premium (P1 nebo P2).
 * Počet agentů je stejný jako celkový počet agentů, kteří jsou zaregistrovaní ve všech monitorovaných rolích (AD FS, Azure AD Connect nebo služba AD DS).
 * Licencování AAD Connect Health nevyžaduje, abyste přiřadili licenci konkrétním uživatelům. Stačí, abyste měli požadovaný počet platných licencí.
 
@@ -98,7 +98,7 @@ Následující čísla představují aproximaci:
 
 **Otázka: bude nutné restartovat servery během instalace agentů Azure AD Connect Health?**
 
-Ne. Instalace agentů nebude vyžadovat restartování serveru. Instalace některých nezbytných kroků ale může vyžadovat restartování serveru.
+No. Instalace agentů nebude vyžadovat restartování serveru. Instalace některých nezbytných kroků ale může vyžadovat restartování serveru.
 
 Například v systému Windows Server 2008 R2 vyžaduje instalace rozhraní .NET 4,5 restartování serveru.
 
@@ -115,7 +115,7 @@ Pokud během registrace agenta potřebujete nakonfigurovat proxy server, může 
 
 **Otázka: podporuje Azure AD Connect Health základní ověřování při připojování k proxy HTTP?**
 
-Ne. Mechanismus pro zadání libovolného uživatelského jména a hesla pro základní ověřování není v současné době podporován.
+No. Mechanismus pro zadání libovolného uživatelského jména a hesla pro základní ověřování není v současné době podporován.
 
 **Otázka: jaké porty brány firewall potřebuji k tomu, aby mohl agent Azure AD Connect Health fungovat?**
 
@@ -131,7 +131,7 @@ V takovém případě ručně odstraňte položku, která patří do staršího 
 
 **Otázka: mohu nainstalovat agenta Azure AD Connect Health v systému Windows Server Core?**
 
-Ne.  Instalace na jádro serveru není podporovaná.
+No.  Instalace na jádro serveru není podporovaná.
 
 ## <a name="health-agent-registration-and-data-freshness"></a>Registrace a aktuálnost dat agenta stavu
 

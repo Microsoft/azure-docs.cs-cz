@@ -13,18 +13,19 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: duau
 ms.reviewer: tyao
-ms.openlocfilehash: 42697a57d39f4a34eee4866b67e2cde947db1ff5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cd3d4837c39fdeb0e7addced10ab2e7fd330b9a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449263"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369420"
 ---
 # <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Geografické filtrování v doméně pro přední dveře Azure
 
 Ve výchozím nastavení budou přední dveře Azure reagovat na všechny požadavky uživatelů bez ohledu na umístění, ze kterého pochází požadavek. V některých scénářích můžete chtít omezit přístup k webové aplikaci podle zemí nebo oblastí. Služba brány firewall webových aplikací (WAF) v frontách pro webové aplikace umožňuje definovat zásadu pomocí vlastního pravidla přístupu pro konkrétní cestu na koncovém bodu, aby buď povolila nebo zablokovala přístup ze zadaných zemí nebo oblastí. 
 
-Zásady WAF obsahují sadu vlastních pravidel. Pravidlo se skládá z podmínek shody, akce a priority. V podmínce shody definujete shodnou proměnnou, operátor a hodnotu shody. Pro pravidlo geografického filtrování je REMOTE_ADDR, že je proměnná shodná, je operátor geograficky shodný a hodnota je dvě číslice, o kterou má daný kód země/oblasti zájem. Pokud chcete vytvořit pravidlo geografického filtrování založené na cestě, můžete zkombinovat podmínku zjištění shody a REQUEST_URI podmínku shody řetězců.
+Zásady WAF obsahují sadu vlastních pravidel. Pravidlo se skládá z podmínek shody, akce a priority. V podmínce shody definujete shodnou proměnnou, operátor a hodnotu shody. Pro pravidlo geografického filtrování je REMOTE_ADDR, že je proměnná shodná, je operátor geograficky shodný a hodnota je dvě číslice, o kterou má daný kód země/oblasti zájem. Kód země "ZZ" nebo "neznámá" země zachycuje IP adresy, které ještě nejsou namapované na zemi v naší datové sadě. Do podmínky shody můžete přidat ZZ, abyste se vyhnuli falešně pozitivním hodnotám. Pokud chcete vytvořit pravidlo geografického filtrování založené na cestě, můžete zkombinovat podmínku zjištění shody a REQUEST_URI podmínku shody řetězců. 
+
 
 Zásady geografického filtrování pro vaše přední dveře můžete nakonfigurovat pomocí [Azure PowerShell](front-door-tutorial-geo-filtering.md) nebo pomocí [šablony pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
 
@@ -150,7 +151,7 @@ Zásady geografického filtrování pro vaše přední dveře můžete nakonfigu
 | MX | Mexiko|
 | MY | Malajsie|
 | MZ | Mosambik|
-| Není k dispozici | Namibie|
+| NA | Namibie|
 | NE | Niger|
 | NG | Nigérie|
 | NI | Nikaragua|

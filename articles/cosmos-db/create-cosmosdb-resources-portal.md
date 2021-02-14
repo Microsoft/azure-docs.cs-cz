@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/10/2020
-ms.openlocfilehash: 731a1fdf9520efc43c954cba79602ed84f983b3d
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 041b930a0c2fa82727216b4ca0c8367387d0d801
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247246"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367247"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Rychlý Start: vytvoření účtu, databáze, kontejneru a položek Azure Cosmos z Azure Portal
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,7 +31,7 @@ Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro
 
 V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit Azure Cosmos DB účet [rozhraní SQL API](./introduction.md) , vytvořit databázi dokumentů a kontejner a přidat data do kontejneru. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předplatné Azure nebo bezplatný zkušební účet služby Azure Cosmos DB
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
@@ -71,7 +71,7 @@ Azure Cosmos DB účet vytvoříte tak, že přejdete na [Azure Portal](https://
 > - Geografická redundance
 > - Zápisy do více oblastí
    
-   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png" alt-text="Stránka nového účtu pro službu Azure Cosmos DB":::
+   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail-2.png" alt-text="Stránka nového účtu pro službu Azure Cosmos DB":::
 
 1. Vyberte **Zkontrolovat a vytvořit**. Můžete přeskočit oddíly **síť** a **značky** .
 

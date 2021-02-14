@@ -4,24 +4,24 @@ description: Azure IoT Central je aplikační platforma IoT, která zjednodušuj
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/05/2020
-ms.topic: overview
+ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: e33f48c9496ffa3cca9d8b1aa71d524be9a311bb
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 326fed659be43be3115cae1d7c2b14d0708f4a96
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122260"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377801"
 ---
-# <a name="iot-central-device-development-overview"></a>Přehled vývoje zařízení pro IoT Central
+# <a name="iot-central-device-development-guide"></a>Průvodce vývojem zařízení IoT Central
 
 *Tento článek se týká vývojářů zařízení.*
 
-IoT Central aplikace umožňuje monitorovat a spravovat miliony zařízení během jejich životního cyklu. Tento přehled je určený pro vývojáře zařízení, kteří implementují kód pro spouštění na zařízeních, která se připojují k IoT Central.
+IoT Central aplikace umožňuje monitorovat a spravovat miliony zařízení během jejich životního cyklu. Tato příručka je určená pro vývojáře zařízení, kteří implementují kód pro spouštění na zařízeních, která se připojují k IoT Central.
 
 Zařízení komunikují s aplikací IoT Central pomocí následujících primitivních elementů:
 

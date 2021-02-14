@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: banders
 ms.custom: references_regions
-ms.openlocfilehash: 89e0c62b580c0c354fc7277e61b452005a86e3d9
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 92a315121ad8ae6fadcadbf6d531eb3e99ae69a9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99577785"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374537"
 ---
 # <a name="save-costs-with-azure-app-service-reserved-instances"></a>Úspora nákladů pomocí Azure App Service rezervovaných instancí
 
@@ -37,24 +37,12 @@ K určení rezervací, které byste měli koupit, můžete použít doporučení
 - Rozhraní API můžete použít k získání doporučení pro nákup jak pro sdílený obor, tak pro obor jednoho předplatného. Další informace najdete v tématu [rozhraní API pro doporučení pro nákup rezervovaných instancí pro podnikové zákazníky](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
 - Pro zákazníky smlouva Enterprise (EA) a Microsoft Customer Agreement (MCA) jsou k dispozici doporučení pro sdílení a jednotné rozsahy, které jsou k dispozici v [balíčku obsahu Azure Consumption Insights Power BI](/power-bi/service-connect-to-azure-consumption-insights).
 
-#### <a name="instance-size-flexibility-setting"></a>Nastavení flexibility velikosti instance
-
-Nastavení flexibility velikosti instance určuje, které služby mají získat slevy za rezervované instance.
-
-Bez ohledu na to, jestli je nastavení zapnuté nebo vypnuté, se slevy na rezervované instance automaticky vztahují na všechny vyhovující použití rezervované instance Premium v3.
-
 ### <a name="analyze-your-usage-information"></a>Analýza informací o použití
 
 Analýza informací o použití vám pomůže určit, které rezervace byste měli koupit. Data o využití jsou k dispozici v souboru využití a v rozhraních API. Použijte je společně k určení rezervace k nákupu. Pro určení množství rezervací, které mají být zakoupeny, zkontrolujte, zda jsou pro instance Premium v3 s vysokým využitím každodenní.
 
 Váš soubor využití zobrazuje vaše poplatky podle fakturačního období a denního využití. Informace o stažení souboru využití najdete v tématu [zobrazení a stažení využití Azure a poplatků](../understand/download-azure-daily-usage.md). Pak můžete pomocí informací o souboru využití [určit, jakou rezervaci chcete koupit](determine-reservation-purchase.md).
 
-### <a name="purchase-restriction-considerations"></a>Požadavky na omezení nákupu
-
-Slevy za rezervované instance se nevztahují na následující instance Premium V3:
-
-- **Náhled nebo propagační instance** – jakákoli rezervovaná instance řady Premium V3 nebo velikost, která je ve verzi Preview, nebo používá propagační měření.
-- **Cloudy** – rezervace nejsou k dispozici pro nákup v oblastech Německo a Čína.
 
 ## <a name="buy-a-premium-v3-reserved-instance"></a>Koupit rezervovanou instanci Premium V3
 
@@ -79,7 +67,6 @@ Pokud máte smlouvu EA, můžete k rychlému přidání dalších instancí pou�
 | Obor | Rozsah rezervace může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete: <ul><li>Rozsah **Jedna skupina prostředků** – sleva za rezervaci se uplatní jenom u odpovídajících prostředků ve vybrané skupině prostředků. </li><li>Rozsah **Jedno předplatné** – sleva za rezervaci se uplatní u odpovídajících prostředků ve vybraném předplatném.</li><li>Rozsah **Sdílený** – sleva za rezervaci se uplatní u odpovídajících prostředků v oprávněných předplatných v kontextu fakturace. Pro zákazníky se smlouvou EA je účetním kontextem registrace. U individuálních předplatných se sazbami pro průběžné platby jsou rozsahem fakturace všechna oprávněná předplatná vytvořená správcem účtu.</li></ul> |
 | Oblast | Oblast Azure, která je pokrytá rezervací. |
 | Velikost rezervované instance úrovně Premium V3 | Velikost rezervovaných instancí Premium v3. |
-| Optimalizovat pro | Ve výchozím nastavení je vybraná flexibilita velikosti vyhrazené instance Premium v3. Klikněte na **Upřesnit nastavení** a změňte hodnotu flexibilita velikosti instance tak, aby se tato sleva mohla použít u ostatních rezervovaných instancí Premium V3 ve stejné [skupině velikostí rezervované instance Premium V3](../../virtual-machines/reserved-vm-instance-size-flexibility.md). Při použití priority kapacity se pro vaše nasazení upřednostňuje kapacita datového centra. Nabízí další důvěru ve vaší schopnosti spouštět rezervované instance Premium v3, když je potřebujete. Priorita kapacity je dostupná jenom v případě, že obor rezervací je jedno předplatné. |
 | Označení | Jeden rok nebo tři roky. K dispozici je také 5 let termínu pro rezervované instance HBv2 Premium v3. |
 | Množství | Počet instancí zakoupených v rámci rezervace. Množství je počet spuštěných rezervovaných instancí Premium v3, které mohou získat fakturační slevu. Pokud například v Východní USA spustíte 10 standardních \_ instancí D2 Premium v3, pak zadáte množství 10. tím se maximalizuje výhod všech spuštěných rezervovaných instancí Premium v3. |
 

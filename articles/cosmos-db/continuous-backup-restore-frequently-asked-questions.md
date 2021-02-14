@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: c0af1db12f3ade2945524f48e4539d2d2e9aa6b9
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 1cf94964f420f7a7d4fc0f6ba0b77813b3e75787
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539175"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393220"
 ---
 # <a name="frequently-asked-questions-on-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Nejčastější dotazy k funkci obnovení Azure Cosmos DBho bodu v čase (Preview)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -31,7 +31,7 @@ Doba obnovení závisí na velikosti vašich dat.
 K obnovení nemusí dojít v závislosti na tom, jestli v daném čase existovaly klíčové prostředky, jako jsou databáze nebo kontejnery. Můžete ověřit zadáním času a prohlížením vybrané databáze nebo kontejneru pro daný čas. Pokud se nezobrazí žádné prostředky k obnovení, proces obnovení nefunguje.
 
 ### <a name="how-can-i-track-if-an-account-is-being-restored"></a>Jak se dá sledovat, jestli se účet obnovuje?
-Po odeslání příkazu pro obnovení a po dokončení operace počkat na stejnou stránku se v stavovém řádku zobrazí úspěšně obnovená zpráva účtu. Můžete také vyhledat obnovený účet a [sledovat stav obnovy účtu](continuous-backup-restore-portal.md#track-restore-status). I když probíhá obnovení, stav účtu se vytvoří po dokončení operace obnovení, stav účtu se změní na online.
+Po odeslání příkazu pro obnovení a po dokončení operace počkat na stejnou stránku se v stavovém řádku zobrazí úspěšně obnovená zpráva účtu. Můžete také vyhledat obnovený účet a [sledovat stav obnovy účtu](continuous-backup-restore-portal.md#track-restore-status). Během obnovování se stav *účtu vytvoří po* dokončení operace obnovení, stav účtu se změní na *online*.
 
 Podobně jako PowerShell a rozhraní příkazového řádku můžete sledovat průběh operace obnovení spuštěním příkazu následujícím `az cosmosdb show` způsobem:
 
@@ -39,7 +39,7 @@ Podobně jako PowerShell a rozhraní příkazového řádku můžete sledovat pr
 az cosmosdb show --name "accountName" --resource-group "resourceGroup"
 ```
 
-ProvisioningState zobrazí "úspěšné", když je účet online.
+ProvisioningState *se zobrazí v případě, že je* účet online.
 
 ```json
 {
@@ -60,7 +60,7 @@ ProvisioningState zobrazí "úspěšné", když je účet online.
 ### <a name="how-can-i-find-out-whether-an-account-was-restored-from-another-account"></a>Jak zjistím, jestli se účet obnovil z jiného účtu?
 Spusťte `az cosmosdb show` příkaz ve výstupu, uvidíte, že hodnota `createMode` Vlastnosti. Pokud je hodnota nastavená na **Restore (obnovit**). indikuje, že se účet obnovil z jiného účtu. `restoreParameters`Vlastnost obsahuje další podrobnosti, jako například `restoreSource` , který má ID zdrojového účtu. Poslední identifikátor GUID v `restoreSource` parametru je InstanceId zdrojového účtu.
 
-Například v následujícím výstupu je ID instance zdrojového účtu "7b4bb-f6a0-430e-ade1-638d781830cc"
+Například v následujícím výstupu je ID instance zdrojového účtu *7b4bb-f6a0-430e-ade1-638d781830cc*
 
 ```json
 "restoreParameters": {
@@ -75,9 +75,9 @@ Například v následujícím výstupu je ID instance zdrojového účtu "7b4bb-
 Celá sdílená databáze propustnosti se obnoví. Pro obnovení nelze vybrat podmnožinu kontejnerů ve sdílené databázi propustnosti.
 
 ### <a name="what-is-the-use-of-instanceid-in-the-account-definition"></a>Jaké je použití InstanceID v definici účtu?
-V jakémkoli daném časovém okamžiku je vlastnost "účet" účtu Azure Cosmos DB účtu globálně jedinečná, zatímco je aktivní. Po odstranění účtu je však možné vytvořit jiný účet se stejným názvem, a proto "Account" již není dostačující k identifikaci instance účtu. 
+V jakémkoli daném časovém okamžiku je vlastnost účtu Azure Cosmos DB `accountName` globálně jedinečná, zatímco je aktivní. Po odstranění účtu je však možné vytvořit jiný účet se stejným názvem, a proto "Account" již není dostačující k identifikaci instance účtu. 
 
-ID nebo instanceId je vlastnost instance účtu, která se používá k jednoznačnému rozlišení napříč několika účty (živé a odstraněné), pokud mají stejný název pro obnovení. ID instance můžete získat spuštěním `Get-AzCosmosDBRestorableDatabaseAccount`  `az cosmosdb restorable-database-account` příkazů nebo. Hodnota atributu Name označuje "InstanceID".
+ID nebo `instanceId` je vlastnost instance účtu, která se používá k jednoznačnému rozlišení mezi několika účty (živé a odstraněné), pokud mají stejný název pro obnovení. ID instance můžete získat spuštěním `Get-AzCosmosDBRestorableDatabaseAccount`  `az cosmosdb restorable-database-account` příkazů nebo. Hodnota atributu Name označuje "InstanceID".
 
 ## <a name="next-steps"></a>Další kroky
 

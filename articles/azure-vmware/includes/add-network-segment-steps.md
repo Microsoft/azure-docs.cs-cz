@@ -3,22 +3,22 @@ title: Přidat segment sítě NSX-T
 description: Postup přidání síťového segmentu NSX-T pro řešení Azure VMware.
 ms.topic: include
 ms.date: 11/09/2020
-ms.openlocfilehash: 5b97f0b280fa12eff39c9601bb73e439dba8e9fd
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 7db45650588d37c39e7d156fa189b3ff7da2239f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335043"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515014"
 ---
 <!-- Used in manage-dhcp.md and tutorial-nsx-t-network-segment.md -->
 
-1. Ve Správci NSX-T vyberte **Networking**  >  **segmenty** sítě a pak vyberte **Přidat segment**. 
+1. Ve Správci NSX-T vyberte   >  **segmenty** sítě a pak vyberte **Přidat segment**. 
 
    :::image type="content" source="../media/nsxt/nsxt-segments-overview.png" alt-text="Snímek obrazovky ukazující, jak přidat nový segment":::
 
 1. Vyberte **Přidat segment** a zadejte název segmentu.
 
-1. Vyberte bránu Tier1 (TNTxx-T1) jako **připojenou bránu** a ponechte **typ** jako flexibilní.
+1. Vyberte bránu 1 (TNTxx-T1) jako **připojenou bránu** a ponechte **typ** jako flexibilní.
 
 1. Vyberte předem nakonfigurovanou zónu překrývající **přenos** (TNTXX-PŘEKRYVNÉ – TZ) a pak vyberte **nastavit podsítě**. 
 
@@ -39,7 +39,7 @@ ms.locfileid: "94335043"
 
 1. Potvrďte přítomnost nového segmentu sítě. V tomto příkladu je **LS01** nový segment sítě.
 
-   1. Ve Správci NSX-T vyberte **Networking**  >  **segmenty** sítě. 
+   1. Ve Správci NSX-T vyberte   >  **segmenty** sítě. 
 
       :::image type="content" source="../media/nsxt/nsxt-new-segment-overview-2.png" alt-text="Ověřte, že se nový segment sítě nachází v NSX-T.":::
 

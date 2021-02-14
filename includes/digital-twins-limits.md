@@ -5,16 +5,19 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 08ae189253c6141a6b84035b71016ff5099ec162
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 4a69b2ff15fc4857e9fb292d2f753aa68ed875d4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689958"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370089"
 ---
 ### <a name="functional-limits"></a>Funkční omezení
 
-Následující tabulka uvádí funkční omezení digitálních vláken Azure.
+Následující tabulka uvádí funkční omezení digitálních vláken Azure. 
+
+> [!TIP]
+> Doporučení modelování pro provoz v těchto funkčních omezeních najdete v tématu [osvědčené postupy pro navrhování modelů](../articles/digital-twins/concepts-models.md#best-practices-for-designing-models).
 
 | Plošný | Schopnost | Výchozí omezení | Měnitelný? |
 | --- | --- | --- | --- |
@@ -28,6 +31,7 @@ Následující tabulka uvádí funkční omezení digitálních vláken Azure.
 | Směrování | Počet tras pro jednu instanci digitálních vláken Azure | 6 | Yes |
 | Modely | Počet modelů v rámci jedné instance digitálního vlákna Azure | 10 000 | Yes |
 | Modely | Počet modelů, které se dají nahrát v jednom volání rozhraní API | 250 | No |
+| Modely | Maximální velikost (tělo JSON v žádosti PUT nebo PATCH) jednoho modelu | 1 MB | No |
 | Modely | Počet položek vrácených na jednu stránku | 100 | No |
 | Dotaz | Počet položek vrácených na jednu stránku | 100 | Ano |
 | Dotaz | Počet `AND`  /  `OR` výrazů v dotazu | 50 | Ano |

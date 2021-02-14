@@ -3,12 +3,12 @@ title: Poznámky k verzi pro Application Insights | Microsoft Docs
 description: Přidejte značky nasazení nebo sestavení do grafů Průzkumníka metrik v Application Insights.
 ms.topic: conceptual
 ms.date: 08/14/2020
-ms.openlocfilehash: 58f6603687838713fafbf4cd5cc3f100e22b7401
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c23c973bc02482e7000cfd1d066a322fff93542a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993716"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386029"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Poznámky na grafech metrik v Application Insights
 
@@ -81,7 +81,7 @@ Vytvořte samostatný klíč rozhraní API pro každou ze šablon verze Azure Pi
 
 Když teď k nasazení nové verze použijete šablonu verze, pošle se Application Insights Poznámka. Poznámky lze zobrazit v následujících umístěních:
 
-Podokno použití, kde máte také možnost ručně vytvořit poznámky k verzi:
+Podokno **použití** , kde máte také možnost ručně vytvořit poznámky k verzi:
 
 ![Snímek obrazovky pruhového grafu s počtem návštěv uživatele zobrazených v průběhu několika hodin Poznámky k verzi se zobrazí jako zelené zaškrtnutí nad grafem, který indikuje moment v čase, kdy k vydání došlo.](./media/annotations/usage-pane.png)
 

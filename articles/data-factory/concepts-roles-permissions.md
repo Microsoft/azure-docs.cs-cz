@@ -4,18 +4,14 @@ description: Popisuje role a oprávnění potřebná k vytváření datových to
 ms.date: 11/5/2018
 ms.topic: conceptual
 ms.service: data-factory
-services: data-factory
-documentationcenter: ''
-ms.workload: data-services
 author: dcstwh
 ms.author: weetok
-manager: anandsub
-ms.openlocfilehash: 30e07b645701cf560534b152ae42559213daf838
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: cec5df9a5046e912ab8542c91bde4344affa0925
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053767"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364473"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Role a oprávnění pro službu Azure Data Factory
 
@@ -54,14 +50,13 @@ Role **přispěvatel Data Factory** na úrovni skupiny prostředků nebo výše 
 
 Oprávnění pro Azure Repos a GitHub jsou nezávislá na oprávněních Data Factory. V důsledku toho uživatel s oprávněními úložiště, který je členem role čtenář, může upravovat Data Factory podřízených prostředků a potvrdit změny v úložišti, ale nemůže tyto změny publikovat.
 
+
 > [!IMPORTANT]
 > Nasazení šablon Správce prostředků s rolí **přispěvatele Data Factory** nezvyšuje vaše oprávnění. Pokud například nasadíte šablonu, která vytvoří virtuální počítač Azure, a nemáte oprávnění k vytváření virtuálních počítačů, nasazení se nepovede a dojde k chybě autorizace.
 
-> [!IMPORTANT]
-> Oprávnění **Microsoft. DataFactory/Factory/Write** se vyžaduje v obou režimech v rámci kontextu publikování.
-
-- Toto oprávnění je vyžadováno v živém režimu pouze v případě, že zákazník mění globální parametry.
-- Toto oprávnění je vždy vyžadováno v režimu Git, protože pokaždé, když se zákazník publikuje, se aktualizuje objekt factory s posledním ID potvrzení.
+   V kontextu publikování se vztahují oprávnění **Microsoft. DataFactory/Factory/Write** na následující režimy.
+- Toto oprávnění je vyžadováno v živém režimu pouze v případě, že zákazník změní globální parametry.
+- Toto oprávnění je vždy vyžadováno v režimu Git, protože pokaždé, když se zákazník publikuje, je potřeba aktualizovat objekt factory s posledním ID potvrzení.
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Vlastní scénáře a vlastní role
 
@@ -95,6 +90,7 @@ Tady je několik příkladů, které ukazují, co můžete dosáhnout s vlastní
 - Umožněte uživateli aktualizovat datovou továrnu z PowerShellu nebo sady SDK, ale ne v Azure Portal.
 
   Přiřaďte k prostředku datové továrny integrovanou roli **přispěvatele** pro uživatele. Tato role uživateli umožňuje zobrazit prostředky v Azure Portal, ale uživatel nemá přístup k tlačítkům  **publikovat** a **Publikovat všechna** .
+
 
 ## <a name="next-steps"></a>Další kroky
 

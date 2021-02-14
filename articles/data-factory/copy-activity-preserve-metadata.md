@@ -1,22 +1,17 @@
 ---
 title: Zachování metadat a seznamů ACL pomocí aktivity kopírování v Azure Data Factory
 description: Přečtěte si, jak zachovat metadata a seznamy ACL během kopírování pomocí aktivity kopírování v Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: a96b04df56dc7d5ea26463073d673275b8a4a8c4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 396a598d143e85687f9dfbf765b3c18736627e41
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015073"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387712"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Zachování metadat a seznamů ACL pomocí aktivity kopírování v Azure Data Factory
 
@@ -35,7 +30,7 @@ Aktivita kopírování podporuje zachování následujících atributů během k
 
 **Zpracování rozdílů v metadatech:** Amazon S3 a Azure Storage v klíčích metadat určených zákazníky povoluje různé sady znaků. Pokud se rozhodnete zachovat metadata pomocí aktivity kopírování, ADF automaticky nahradí neplatné znaky podtržítkem (_).
 
-Když kopírujete soubory tak, jak jsou z webu Amazon S3/Azure Data Lake Storage Gen2/Azure blob/Azure File Storage do Azure Data Lake Storage Gen2/Azure Blob nebo Azure File Storage s binárním formátem, najdete možnost **zachovat** na kartě nastavení **aktivity kopírování**  >  **Settings** pro vytváření aktivit nebo na stránce **Nastavení** v nástroji kopírování dat.
+Když kopírujete soubory tak, jak jsou z webu Amazon S3/Azure Data Lake Storage Gen2/Azure blob/Azure File Storage do Azure Data Lake Storage Gen2/Azure Blob nebo Azure File Storage s binárním formátem, najdete možnost **zachovat** na kartě nastavení **aktivity kopírování**  >   pro vytváření aktivit nebo na stránce **Nastavení** v nástroji kopírování dat.
 
 ![Aktivita kopírování – zachovat metadata](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
 
@@ -98,7 +93,7 @@ Pokud určíte, že se má kopírovat ze složky, Data Factory replikuje seznamy
 >[!IMPORTANT]
 >Pokud se rozhodnete zachovat seznamy řízení přístupu (ACL), ujistěte se, že udělíte dostatečná oprávnění, aby Data Factory fungovala s Data Lake Storage Gen2m účtem jímky. Použijte například ověřování pomocí klíče účtu nebo přiřaďte roli vlastníka dat objektu BLOB úložiště k instančnímu objektu nebo spravované identitě.
 
-Když nakonfigurujete zdroj jako Data Lake Storage Gen1/Gen2 s binárním formátem nebo možností binárního kopírování a jímku jako Data Lake Storage Gen2 s binárním formátem nebo možností binárního kopírování, můžete najít možnost **zachovat** na stránce **Nastavení** v nástroji kopírování dat nebo na kartě nastavení **aktivity kopírování**  >  **Settings** pro vytváření aktivit.
+Když nakonfigurujete zdroj jako Data Lake Storage Gen1/Gen2 s binárním formátem nebo možností binárního kopírování a jímku jako Data Lake Storage Gen2 s binárním formátem nebo možností binárního kopírování, můžete najít možnost **zachovat** na stránce **Nastavení** v nástroji kopírování dat nebo na kartě nastavení **aktivity kopírování**  >   pro vytváření aktivit.
 
 ![Seznam ACL pro zachování Data Lake Storage Gen1/Gen2 Gen2](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
 

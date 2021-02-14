@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 09/15/2020
+ms.date: 02/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: b1fa4d3e6c017232922e500352558e34726b90cc
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 65c609343aece4e23917ede79dfb3c4723ffb70c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183077"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369049"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Kurz: výuka prvního modelu strojového učení (část 3 ze 4)
 
@@ -59,18 +59,8 @@ Vytvořte `train.py` skript v `src` podadresáři:
 
 Nyní máte následující adresářovou strukturu:
 
-```txt
-tutorial
-└──.azureml
-|  └──config.json
-└──src
-|  └──hello.py
-|  └──model.py
-|  └──train.py
-└──01-create-workspace.py
-└──02-create-compute.py
-└──03-run-hello.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-train/directory-structure.png" alt-text="Struktura adresáře zobrazuje train.py v podadresáři src":::
+
 
 > [!div class="nextstepaction"]
 > [Vytvořili jste školicí skripty,](?success=create-scripts#environment) u kterých došlo [k problému](https://www.research.net/r/7CTJQQN?issue=create-scripts)

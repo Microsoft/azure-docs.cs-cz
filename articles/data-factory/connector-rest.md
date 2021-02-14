@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z a do koncového bodu REST pomocí Azure Data Factory
 description: Naučte se kopírovat data z cloudu nebo místního zdroje REST do podporovaných úložišť dat jímky nebo z podporovaného zdrojového úložiště dat do jímky REST pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 3fc567b7d4b2efab03e5d93adda62839d47f7522
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 972a7b32e6308c3aa8a3b42705038838dae9b2be
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223086"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369879"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Kopírování dat z a do koncového bodu REST pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -385,7 +380,7 @@ Tento obecný konektor REST podporuje následující vzory stránkování:
 
 **Příklad:**
 
-Facebook Graph API vrátí odpověď v následující struktuře, kde adresa URL nové stránky je reprezentovaná v **_stránkování. Next_* _:
+Facebook Graph API vrátí odpověď v následující struktuře, kde adresa URL další stránky je reprezentovaná na ***stránkování. další***:
 
 ```json
 {
@@ -440,7 +435,7 @@ Tato část popisuje, jak použít šablonu řešení ke kopírování dat z kon
 ### <a name="about-the-solution-template"></a>O šabloně řešení
 
 Šablona obsahuje dvě aktivity:
-- _ *Web** aktivita načte nosný token a pak ho předá do následné aktivity kopírování jako autorizaci.
+- Aktivita **webu** načte nosný token a pak ho předá do následné aktivity kopírování jako autorizaci.
 - Aktivita **kopírování** kopíruje data z REST do Azure Data Lake Storage.
 
 Šablona definuje dva parametry:

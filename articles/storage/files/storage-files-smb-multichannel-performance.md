@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: cbded0a9c905bb488e1bae0f92d777e2e7ed7441
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: a9edd93aa265622732be4a7582cce9900959bf6d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630849"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374979"
 ---
 # <a name="smb-multichannel-performance"></a>Výkon funkce SMB Multichannel
 
@@ -110,7 +110,7 @@ Zatížení bylo vygenerováno pro jeden GiB soubor s 128. V případě, že je 
 
 - V jednom síťovém adaptéru s větším průměrem vstupně-výstupních operací (> ~ 16 KB) byly významné vylepšení čtení i zápisu.
 - U menších velikostí v/v byl při povolení funkce SMB vícekanálový malý vliv na 10% na výkon. To může být zmírnit rozšiřováním zatížení více souborů nebo zakázáním této funkce.
-- Výkon se pořád váže  [omezeními na jeden soubor](storage-files-scale-targets.md#file-level-limits).
+- Výkon se pořád váže [omezeními na jeden soubor](storage-files-scale-targets.md#file-scale-targets).
 
 ## <a name="optimizing-performance"></a>Optimalizace výkonu
 

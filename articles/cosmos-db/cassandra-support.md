@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 3b2d1bbe2de0ae72087fdf3debeaf42f8745fed9
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: f48935edd5746b0f3f3440e249024cbe2901317b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576477"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374367"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Funkce Apache Cassandra, které podporuje rozhraní API Cassandra pro Azure Cosmos DB 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -230,7 +230,7 @@ Azure Cosmos DB podporuje u účtů rozhraní API Cassandra následující datab
 
 Rozhraní API Cassandra pro Azure Cosmos DB nemá žádná omezení velikosti dat uložených v tabulce. Když se dodrží limity klíče oddílu, je možné uložit stovky terabajtů nebo petabajtů dat. Podobně všechny ekvivalenty entit nebo řádků nemají omezení počtu sloupců. Celková velikost entity však nesmí překročit 2 MB. Data na klíč oddílu nesmí být větší než 20 GB jako u všech ostatních rozhraní API.
 
-## <a name="tools"></a>Nástroje 
+## <a name="tools"></a>nástroje 
 
 Rozhraní API Cassandra pro Azure Cosmos DB je platforma pro spravované služby. Ke správě clusteru nevyžaduje žádnou režii ani nástroje řízení, jako jsou například systém uvolňování paměti, Java Virtual Machine (JVM) a nodetool. Podporuje nástroje, jako je cqlsh, které využívá kompatibilitu Binary CQLv4. 
 
@@ -238,7 +238,7 @@ Rozhraní API Cassandra pro Azure Cosmos DB je platforma pro spravované služby
 
 ## <a name="hosted-cql-shell-preview"></a>Hostované prostředí CQL (Preview)
 
-Hosted Native Cassandra Shell (CQLSH v 5.0.1) můžete otevřít přímo z Průzkumník dat v [Azure Portal](data-explorer.md) nebo v [Průzkumníkovi Azure Cosmos DB](https://cosmos.azure.com/). Než povolíte prostředí CQL, musíte ve svém účtu [Povolit funkci poznámkových blocích](enable-notebooks.md) (Pokud ještě není povolená, zobrazí se vám výzva při kliknutí `Open Cassandra Shell` ). Podívejte se na zvýrazněnou poznámku v části [Povolení poznámkových bloků pro účty Azure Cosmos DB](enable-notebooks.md) pro podporované oblasti Azure.
+Hosted Native Cassandra Shell (CQLSH v 5.0.1) můžete otevřít přímo z Průzkumník dat v [Azure Portal](data-explorer.md) nebo v [Průzkumníkovi Azure Cosmos DB](https://cosmos.azure.com/). Než povolíte prostředí CQL, musíte ve svém účtu [Povolit funkci poznámkových blocích](enable-notebooks.md) (Pokud ještě není povolená, zobrazí se vám výzva při kliknutí `Open Cassandra Shell` ). Přečtěte si článek [Povolení poznámkových bloků pro účty Azure Cosmos DB](enable-notebooks.md#supported-regions) pro podporované oblasti Azure.
 
 :::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="Otevřít CQLSH":::
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: f8e4925f721b307abd85a8b881caff3e5fc04fde
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 4ecb1c3dc0e72523b19e3183e17306774b3ce164
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685658"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370372"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Nasazení a sledování IoT Edgech modulů ve velkém měřítku pomocí rozhraní příkazového řádku Azure
 
@@ -65,7 +65,7 @@ Tady je základní manifest nasazení s jedním modulem jako příklad:
             "edgeAgent": {
               "type": "docker",
               "settings": {
-                "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+                "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
                 "createOptions": "{}"
               }
             },
@@ -74,7 +74,7 @@ Tady je základní manifest nasazení s jedním modulem jako příklad:
               "status": "running",
               "restartPolicy": "always",
               "settings": {
-                "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+                "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
                 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
               }
             }
@@ -155,7 +155,7 @@ Tady je základní navrstvený manifest nasazení s jedním modulem jako příkl
 }
 ```
 
-Předchozí příklad ukázal nastavení vrstveného nasazení `properties.desired` pro modul. Pokud toto navrstvené nasazení cílí na zařízení, kde už byl stejný modul použit, přepíše všechny existující požadované vlastnosti. Chcete-li aktualizovat místo přepsání, požadované vlastnosti, můžete definovat nový pododdíl. Například:
+Předchozí příklad ukázal nastavení vrstveného nasazení `properties.desired` pro modul. Pokud toto navrstvené nasazení cílí na zařízení, kde už byl stejný modul použit, přepíše všechny existující požadované vlastnosti. Chcete-li aktualizovat místo přepsání, požadované vlastnosti, můžete definovat nový pododdíl. Příklad:
 
 ```json
 "SimulatedTEmperatureSensor": {
@@ -204,9 +204,9 @@ Příkaz pro vytvoření nasazení má následující parametry:
 * **--Content** -FilePath pro manifest nasazení JSON. Jedná se o požadovaný parametr.
 * **--hub-název** – název centra IoT, ve kterém se nasazení vytvoří. Centrum musí být v aktuálním předplatném. Pomocí příkazu změňte aktuální předplatné `az account set -s [subscription name]` .
 * **--Labels** – přidejte popisky, které vám pomůžou sledovat vaše nasazení. Popisky jsou názvy, páry hodnot, které popisují vaše nasazení. Pro názvy a hodnoty mají popisky formát JSON. Například `{"HostPlatform":"Linux", "Version:"3.0.1"}`.
-* **--target-Condition** -zadejte cílovou podmínku, abyste zjistili, která zařízení budou cílem tohoto nasazení. Podmínka je založena na nevyhovujících značkách zařízení nebo na dohlášených vlastnostech zařízení, které se musí shodovat s formátem výrazu. Například `tags.environment='test' and properties.reported.devicemodel='4000x'`.
+* **--target-Condition** -zadejte cílovou podmínku, abyste zjistili, která zařízení budou cílem tohoto nasazení. Podmínka je založena na nevyhovujících značkách zařízení nebo na dohlášených vlastnostech zařízení, které se musí shodovat s formátem výrazu. Například, `tags.environment='test' and properties.reported.devicemodel='4000x'`.
 * **--priority** – kladné celé číslo. V případě, že dva nebo více nasazení cílí na stejné zařízení, bude použito nasazení s nejvyšší číselnou hodnotou priority.
-* **--metriky** – vytvoří metriky, které dotazují vlastnosti edgeHub hlášené na sledování stavu nasazení. Metriky přebírají vstup JSON nebo FilePath. Například `'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'`.
+* **--metriky** – vytvoří metriky, které dotazují vlastnosti edgeHub hlášené na sledování stavu nasazení. Metriky přebírají vstup JSON nebo FilePath. Například, `'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'`.
 
 Informace o monitorování nasazení pomocí rozhraní příkazového řádku Azure najdete v tématu [monitorování nasazení IoT Edge](how-to-monitor-iot-edge-deployments.md#monitor-a-deployment-with-azure-cli).
 

@@ -1,22 +1,18 @@
 ---
 title: Kopírování souborů z několika kontejnerů
 description: Naučte se používat šablonu řešení ke kopírování souborů z více kontejnerů pomocí Azure Data Factory.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: douglasl
-manager: anandsub
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: f78d0b02c9790234a63ef64200dcab72bc64c033
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: ec7af1e81e0b295491420597636c8443f4d36512
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629421"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376084"
 ---
 # <a name="copy-multiple-folders-with-azure-data-factory"></a>Kopírování více složek pomocí Azure Data Factory
 
@@ -37,8 +33,8 @@ Tato šablona vypíše složky z dané nadřazené složky ve zdrojovém úloži
 - **Kopírovat** zkopíruje všechny složky ze zdrojového úložiště úložiště do cílového úložiště.
 
 Šablona definuje následující parametry:
-- *SourceFileFolder* je součástí cesty k nadřazené složce vašeho úložiště zdrojů dat: *SourceFileFolder/SourceFileDirectory* , kde můžete získat seznam podsložek. 
-- *SourceFileDirectory* je součástí cesty k nadřazené složce vašeho úložiště zdrojů dat: *SourceFileFolder/SourceFileDirectory* , kde můžete získat seznam podsložek. 
+- *SourceFileFolder* je součástí cesty k nadřazené složce vašeho úložiště zdrojů dat: *SourceFileFolder/SourceFileDirectory*, kde můžete získat seznam podsložek. 
+- *SourceFileDirectory* je součástí cesty k nadřazené složce vašeho úložiště zdrojů dat: *SourceFileFolder/SourceFileDirectory*, kde můžete získat seznam podsložek. 
 - *DestinationFileFolder* je součástí cesty k nadřazené složce: *DestinationFileFolder/DestinationFileDirectory* , kde budou soubory zkopírovány do cílového úložiště. 
 - *DestinationFileDirectory* je součástí cesty k nadřazené složce: *DestinationFileFolder/DestinationFileDirectory* , kde budou soubory zkopírovány do cílového úložiště. 
 
@@ -54,7 +50,7 @@ Pokud chcete kopírovat více kontejnerů v rámci kořenových složek mezi úl
 
     ![Vytvoří nové připojení k cíli.](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
 
-3. Vyberte **Použít tuto šablonu** .
+3. Vyberte **Použít tuto šablonu**.
 
     ![Použít tuto šablonu](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
     
@@ -62,7 +58,7 @@ Pokud chcete kopírovat více kontejnerů v rámci kořenových složek mezi úl
 
     ![Zobrazení kanálu](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image4.png)
 
-5. Vyberte **ladit** , zadejte **parametry** a pak vyberte **Dokončit** .
+5. Vyberte **ladit**, zadejte **parametry** a pak vyberte **Dokončit**.
 
     ![Spuštění kanálu](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image5.png)
 

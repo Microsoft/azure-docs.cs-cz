@@ -11,18 +11,18 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9f81d059c1a71bf6349d0ef9b4aae8f7a47c161f
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9ecb1c50fe99cc93417a37e892049e03585945a5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938779"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370423"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurace zařízení IoT Edge tak, aby fungovalo jako transparentní brána
 
 Tento článek poskytuje podrobné pokyny ke konfiguraci IoT Edge zařízení pro fungování jako transparentní brány pro jiná zařízení, která budou komunikovat s IoT Hub. V tomto článku se používá pojem *IoT Edge brána* , která odkazuje na IoT Edge zařízení nakonfigurované jako transparentní bránu. Další informace najdete v tématu [jak se dá zařízení IoT Edge použít jako brána](./iot-edge-as-gateway.md).
 
-<!-- 1.0.10 -->
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
 >[!NOTE]
@@ -60,7 +60,7 @@ Můžete vytvořit jakoukoli infrastrukturu certifikátů, která umožňuje dů
 
 Následující kroky vás provedou procesem vytvoření certifikátů a jejich instalací do správných míst v bráně. K vygenerování certifikátů můžete použít libovolný počítač a pak je zkopírovat do zařízení IoT Edge.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Zařízení se systémem Linux nebo Windows s nainstalovaným IoT Edge.
 
@@ -97,8 +97,8 @@ V produkčních scénářích byste tyto soubory měli vytvořit s vlastní cert
 2. Pokud jste certifikáty vytvořili na jiném počítači, zkopírujte je do zařízení IoT Edge.
 
 3. Na zařízení IoT Edge otevřete konfigurační soubor démona zabezpečení.
-   * Systému `C:\ProgramData\iotedge\config.yaml`
-   * Linux `/etc/iotedge/config.yaml`
+   * Windows: `C:\ProgramData\iotedge\config.yaml`
+   * Linux: `/etc/iotedge/config.yaml`
 
 4. V souboru vyhledejte část **nastavení certifikátu** . Odkomentujte čtyři řádky začínající **certifikáty:** a zadejte identifikátory URI souborů pro tyto tři soubory jako hodnoty pro následující vlastnosti:
    * **device_ca_cert**: certifikát certifikační autority zařízení
@@ -110,8 +110,8 @@ V produkčních scénářích byste tyto soubory měli vytvořit s vlastní cert
 5. Uložte soubor a zavřete ho.
 
 6. Restartujte IoT Edge.
-   * Systému `Restart-Service iotedge`
-   * Linux `sudo systemctl restart iotedge`
+   * Windows: `Restart-Service iotedge`
+   * Linux: `sudo systemctl restart iotedge`
 
 ## <a name="deploy-edgehub-and-route-messages"></a>Nasazení edgeHub a směrování zpráv
 

@@ -5,17 +5,61 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 01/11/2021
-ms.openlocfilehash: 6347bd3710a4727b9d3f820072ffff21cb57752d
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.date: 02/10/2021
+ms.openlocfilehash: 35bfc9c752243a69912b0732c4105712fa4a6086
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071863"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377665"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Co je nového v dokumentaci k Azure Monitor?
 
 Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové, nebo byly významně aktualizované. Bude aktualizován první týden v měsíci, aby zahrnoval aktualizace článků z předchozího měsíce.
+
+## <a name="january-2021"></a>Leden 2021 
+
+### <a name="general"></a>Obecné 
+- [Azure monitor časté otázky](faq.md) – přidalo se zadání informací o zařízení pro Application Insights.
+### <a name="agents"></a>Agenti  
+- [Shromažďování událostí trasování událostí pro Windows (ETW) pro analýzu Azure monitor protokoly](platform/data-sources-event-tracing-windows.md) – nový článek.
+- [Pravidla shromažďování dat ve Azure monitor (Preview)](platform/data-collection-rule-overview.md) – přidalo se odkazy na ukázky PowerShellu a rozhraní příkazového řádku.
+
+### <a name="alerts"></a>Výstrahy  
+- [Nakonfigurujte Azure pro připojení nástrojů ITSM pomocí zabezpečeného exportu](platform/itsm-connector-secure-webhook-connections-azure-configuration.md) a nového článku.
+- [Chyby stavu konektoru na řídicím panelu ITSMC](platform/itsmc-dashboard-errors.md) – nový článek
+- [Prozkoumejte chyby pomocí řídicího panelu ITSMC](platform/itsmc-dashboard.md) – nový článek.
+- [Řešení potíží s upozorněními na metriky Azure](platform/alerts-troubleshoot-metric.md) – přidané oddíly pro dynamické prahové hodnoty.
+- [Řešení problémů v oddělení IT Service Management Connector](platform/itsmc-troubleshoot-overview.md) – nový článek
+
+### <a name="application-insights"></a>Application Insights
+- [Korelace telemetrie Azure Application Insights](app/correlation.md) – přidala se korelace trasování, když jeden modul volá OpenCensus Python jinou.
+- [Application Insights pro webové stránky](app/javascript.md) – nový článek.
+- [Klikněte na analýza Automatická kolekce modul plug-in pro Application Insights JavaScript SDK](app/javascript-click-analytics-plugin.md) – nový článek.
+- [Monitorujte své aplikace bez změny kódu – automatické instrumentace pro Azure monitor](app/codeless-overview.md) sloupce pythonu Application Insights přidáno.
+- [Reakce modulu plug-in pro Application Insights JavaScript SDK](app/javascript-react-plugin.md) – nový článek
+- [Procesory telemetrie (Preview) – Azure Monitor Application Insights pro přepis Java](app/java-standalone-telemetry-processors.md) .
+- [Analýza využití pomocí Azure Application Insights](app/usage-overview.md) – nový článek.
+- [Použití analýzy změn aplikace v Azure monitor k nalezení problémů s webovou aplikací](app/change-analysis.md) – přidání chyby messges
+
+
+### <a name="insights"></a>Insights    
+- [Azure monitor pro Azure Průzkumník dat (Preview)](insights/data-explorer.md) – nový článek
+
+### <a name="logs"></a>Protokoly    
+- [Azure monitor klíč spravovaný zákazníkem](platform/customer-managed-keys.md) – zavádí spravovanou identitu přiřazenou uživatelem.
+- [Azure monitor protokoluje vyhrazené clustery](log-query/logs-dedicated-clusters.md) – kód aktualizované odezvy.
+- [Dotaz na různé služby – Azure monitor a Azure Průzkumník dat (Preview)](platform/azure-monitor-troubleshooting-logs.md) – nový článek
+
+### <a name="metrics"></a>Metriky
+- Metrika metrik Azure Monitor metriky [a zobrazení je vysvětleno](platform/metrics-aggregation-explained.md) – nový článek.
+
+### <a name="platform-logs"></a>Protokoly platformy
+- [Protokoly prostředků Azure monitor podporují služby a kategorie](platform/resource-logs-categories.md) – nový článek.
+
+### <a name="visualizations"></a>Vizualizace
+- [Zdroje dat Azure monitor sešity](platform/workbooks-data-sources.md) – Přidali jsme sloučení a analýzu změn.
+
 
 ## <a name="december-2020"></a>Prosinec 2020
 
@@ -66,7 +110,7 @@ Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové
 ### <a name="networks"></a>Sítě
 - [Řešení Azure Networking Analytics v Azure monitor](insights/azure-networking-analytics.md) přibyly informace o sešitu Network Insights.
 
-### <a name="virtual-machines"></a>Virtuální počítače
+### <a name="virtual-machines"></a>Virtual Machines
 - [Povolí Azure monitor pro hybridní prostředí](insights/vminsights-enable-hybrid.md) – novou verzi agenta závislostí.
 
 
@@ -598,7 +642,7 @@ Nové a aktualizované články z restrukturování a konsolidace obsahu protoko
 
 - [Pokročilé funkce](platform/metrics-charts.md) oddílu agregace služby Azure Průzkumník metrik – přidáno
 
-### <a name="workbooks"></a>Sešity
+### <a name="workbooks"></a>Workbooks
 
 - [Azure monitor sešitů a šablon Azure Resource Manager](platform/workbooks-automate.md) přidány šablony Správce prostředků pro nasazení šablony sešitu.
 

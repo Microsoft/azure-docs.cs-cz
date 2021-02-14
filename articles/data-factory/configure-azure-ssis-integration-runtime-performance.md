@@ -1,21 +1,17 @@
 ---
 title: Konfigurace výkonu pro Azure-SSIS Integration Runtime
 description: Naučte se konfigurovat vlastnosti Azure-SSIS Integration Runtime pro vysoký výkon.
-services: data-factory
 ms.date: 01/10/2018
 ms.topic: conceptual
 ms.service: data-factory
-ms.workload: data-services
 author: swinarko
 ms.author: sawinark
-ms.reviewer: ''
-manager: anandsub
-ms.openlocfilehash: f0fcd61230d68d7b26017237e2b7e0465fcb1f07
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 5d275100124660b901504b7e7f71cf93518fd077
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635316"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364388"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurace Azure-SSIS Integration Runtime pro vysoký výkon
 
@@ -118,11 +114,11 @@ Osa y je počet balíčků, které dokončily provádění během jedné hodiny.
 
 ## <a name="azuressisnodenumber"></a>AzureSSISNodeNumber
 
-**AzureSSISNodeNumber** upravuje škálovatelnost prostředí Integration runtime. Propustnost prostředí Integration runtime je úměrná **AzureSSISNodeNumber** . Nastavte nejprve **AzureSSISNodeNumber** na malou hodnotu, Sledujte propustnost prostředí Integration runtime a pak upravte hodnotu pro váš scénář. Informace o překonfigurování počtu pracovních uzlů najdete v tématu [Správa prostředí Azure-SSIS Integration runtime](manage-azure-ssis-integration-runtime.md).
+**AzureSSISNodeNumber** upravuje škálovatelnost prostředí Integration runtime. Propustnost prostředí Integration runtime je úměrná **AzureSSISNodeNumber**. Nastavte nejprve **AzureSSISNodeNumber** na malou hodnotu, Sledujte propustnost prostředí Integration runtime a pak upravte hodnotu pro váš scénář. Informace o překonfigurování počtu pracovních uzlů najdete v tématu [Správa prostředí Azure-SSIS Integration runtime](manage-azure-ssis-integration-runtime.md).
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Když už používáte výkonný pracovní uzel ke spouštění balíčků, zvýšení **AzureSSISMaxParallelExecutionsPerNode** může zvýšit celkovou propustnost prostředí Integration runtime. Pokud chcete zvýšit maximální hodnotu, je potřeba použít Azure PowerShell k aktualizaci **AzureSSISMaxParallelExecutionsPerNode** . Odpovídající hodnotu můžete odhadnout na základě nákladů na váš balíček a následujících konfigurací pro pracovní uzly. Další informace najdete v tématu [velikosti virtuálních počítačů pro obecné účely](../virtual-machines/sizes-general.md).
+Když už používáte výkonný pracovní uzel ke spouštění balíčků, zvýšení **AzureSSISMaxParallelExecutionsPerNode** může zvýšit celkovou propustnost prostředí Integration runtime. Pokud chcete zvýšit maximální hodnotu, je potřeba použít Azure PowerShell k aktualizaci **AzureSSISMaxParallelExecutionsPerNode**. Odpovídající hodnotu můžete odhadnout na základě nákladů na váš balíček a následujících konfigurací pro pracovní uzly. Další informace najdete v tématu [velikosti virtuálních počítačů pro obecné účely](../virtual-machines/sizes-general.md).
 
 | Velikost             | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Max. počet síťových karet / Očekávaný výkon sítě (Mb/s) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|

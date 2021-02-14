@@ -3,12 +3,12 @@ title: Zabezpečení Azure Functions
 description: Přečtěte si, jak zajistit, aby byl kód vaší funkce běžící v Azure lépe zabezpečený před běžnými útoky.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: ee54ff8c1efaee00999888891e6de255060aa416
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 351bdca7ff94b6c058b5ab62fd9c16d707e7dc78
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491320"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368485"
 ---
 # <a name="securing-azure-functions"></a>Zabezpečení Azure Functions
 
@@ -58,9 +58,9 @@ Rozsah systémových klíčů závisí na rozšíření, ale obecně platí pro 
 
 Následující tabulka porovnává použití různých druhů přístupových klíčů:
 
-| Akce                                        | Rozsah                    | Platné klíče         |
+| Akce                                        | Obor                    | Platné klíče         |
 |-----------------------------------------------|--------------------------|--------------------|
-| Spustit funkci                            | Konkrétní funkce        | Function           |
+| Spustit funkci                            | Konkrétní funkce        | Funkce           |
 | Spustit funkci                            | Libovolná funkce             | Funkce nebo hostitel   |
 | Volání koncového bodu správce                        | Aplikace funkcí             | Hostitel (jenom Master) |
 | Volání rozhraní API pro rozšíření trvalých úloh              | Aplikace Function App<sup>1</sup> | Systém<sup>2</sup> |
@@ -107,6 +107,8 @@ Připojovací řetězce a další přihlašovací údaje uložené v nastavení 
 
 [!INCLUDE [app-service-managed-identities](../../includes/app-service-managed-identities.md)]
 
+Spravované identity lze použít místo tajných kódů pro připojení z některých triggerů a vazeb. Viz [připojení založená na identitách](#identity-based-connections).
+
 Další informace najdete v tématu [Jak používat spravované identity pro App Service a Azure Functions](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json).
 
 #### <a name="restrict-cors-access"></a>Omezení přístupu CORS
@@ -136,6 +138,14 @@ Při vývoji funkcí v místním počítači můžete také ve výchozím nastav
 I když jsou nastavení aplikace dostačující pro většinu funkcí, možná budete chtít sdílet stejné tajné kódy napříč více službami. V tomto případě redundantní úložiště tajných klíčů vede k více potenciálním ohrožením zabezpečení. Bezpečnější je přístup ke službě centrálního tajného úložiště a místo samotných tajných klíčů používat odkazy na tuto službu.      
 
 [Azure Key Vault](../key-vault/general/overview.md) je služba, která poskytuje centralizovanou správu tajných kódů s úplnou kontrolou zásad přístupu a historie auditu. Odkaz na Key Vault můžete použít místo připojovacího řetězce nebo klíče v nastavení aplikace. Další informace najdete v tématu [použití Key Vault odkazů pro App Service a Azure Functions](../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json).
+
+### <a name="identity-based-connections"></a>Připojení založená na identitách
+
+Místo tajných kódů, které se připojují k některým prostředkům, se dají použít identity. To má výhodu, že není potřeba spravovat tajný kód a poskytuje přesnější řízení přístupu a auditování. 
+
+Při psaní kódu, který vytváří připojení ke [službám Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), se můžete rozhodnout použít identitu místo tajného nebo připojovacího řetězce. Podrobnosti o obou metodách připojení jsou pokryté v dokumentaci pro každou službu.
+
+Některá Azure Functions Trigger a rozšíření vazby můžou být nakonfigurované pomocí připojení založeného na identitě. V současné době zahrnuje rozšíření [Azure Blob](./functions-bindings-storage-blob.md) a [Azure Queue](./functions-bindings-storage-queue.md) Extensions. Informace o tom, jak nakonfigurovat tato rozšíření pro použití identity, najdete [v tématu použití připojení na základě identity v Azure Functions](./functions-reference.md#configure-an-identity-based-connection).
 
 ### <a name="set-usage-quotas"></a>Nastavení kvót využití
 

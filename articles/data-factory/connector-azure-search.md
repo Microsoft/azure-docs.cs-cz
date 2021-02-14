@@ -1,22 +1,18 @@
 ---
 title: Kopírovat data do indexu vyhledávání
 description: Přečtěte si, jak vložit nebo zkopírovat data do indexu Azure Search pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/13/2019
-ms.openlocfilehash: 0484d846501ef20e5d474668c45324452d0c8fc8
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8c0fe30961e8ca0f31374bfdb5c5f17d58cb7673
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638223"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385791"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Kopírování dat do indexu služby Azure Kognitivní hledání pomocí Azure Data Factory
 
@@ -44,10 +40,10 @@ Pro propojenou službu Azure Kognitivní hledání se podporují tyto vlastnosti
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **AzureSearch** . | Ano |
-| url | Adresa URL služby vyhledávání | Ano |
-| key | Klíč správce pro vyhledávací službu. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud je úložiště dat umístěné v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
+| typ | Vlastnost Type musí být nastavená na: **AzureSearch** . | Yes |
+| url | Adresa URL služby vyhledávání | Yes |
+| key | Klíč správce pro vyhledávací službu. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud je úložiště dat umístěné v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
 > [!IMPORTANT]
 > Když kopírujete data z cloudového úložiště dat do indexu vyhledávání, v propojené službě Azure Kognitivní hledání musíte odkazovat Azure Integration Runtime s explicitní oblastí v connactVia. Nastavte oblast jako tu, kde se nachází vaše vyhledávací služba. Další informace o [Azure Integration runtime](concepts-integration-runtime.md#azure-integration-runtime).
@@ -82,8 +78,8 @@ Pokud chcete kopírovat data do Azure Kognitivní hledání, podporují se tyto 
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **AzureSearchIndex** . | Ano |
-| indexName | Název indexu hledání Data Factory nevytváří index. Index musí existovat v Azure Kognitivní hledání. | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **AzureSearchIndex** . | Yes |
+| indexName | Název indexu hledání Data Factory nevytváří index. Index musí existovat v Azure Kognitivní hledání. | Yes |
 
 **Příklad:**
 
@@ -110,13 +106,13 @@ Pokud chcete kopírovat data do Azure Kognitivní hledání, podporují se tyto 
 
 ### <a name="azure-cognitive-search-as-sink"></a>Azure Kognitivní hledání jako jímka
 
-Pokud chcete kopírovat data do Azure Kognitivní hledání, nastavte typ zdroje v aktivitě kopírování na **AzureSearchIndexSink** . V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti:
+Pokud chcete kopírovat data do Azure Kognitivní hledání, nastavte typ zdroje v aktivitě kopírování na **AzureSearchIndexSink**. V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **AzureSearchIndexSink** . | Ano |
-| writeBehavior | Určuje, zda se má sloučit nebo nahradit, když dokument v indexu již existuje. Podívejte se na [vlastnost WriteBehavior](#writebehavior-property).<br/><br/>Povolené hodnoty jsou: **Merge** (výchozí) a **nahrání** . | Ne |
-| writeBatchSize | Když velikost vyrovnávací paměti dosáhne writeBatchSize, nahraje data do indexu vyhledávání. Podrobnosti najdete ve [vlastnosti WriteBatchSize](#writebatchsize-property) .<br/><br/>Povolené hodnoty jsou: celé číslo 1 až 1 000; Výchozí hodnota je 1000. | Ne |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **AzureSearchIndexSink** . | Yes |
+| writeBehavior | Určuje, zda se má sloučit nebo nahradit, když dokument v indexu již existuje. Podívejte se na [vlastnost WriteBehavior](#writebehavior-property).<br/><br/>Povolené hodnoty jsou: **Merge** (výchozí) a **nahrání**. | No |
+| writeBatchSize | Když velikost vyrovnávací paměti dosáhne writeBatchSize, nahraje data do indexu vyhledávání. Podrobnosti najdete ve [vlastnosti WriteBatchSize](#writebatchsize-property) .<br/><br/>Povolené hodnoty jsou: celé číslo 1 až 1 000; Výchozí hodnota je 1000. | No |
 
 ### <a name="writebehavior-property"></a>Vlastnost WriteBehavior
 
@@ -124,10 +120,10 @@ AzureSearchSink upsertuje při zápisu dat. Jinými slovy, když při psaní dok
 
 AzureSearchSink poskytuje následující dvě chování Upsert (pomocí sady AzureSearch SDK):
 
-- **Merge** : kombinovat všechny sloupce v novém dokumentu s existujícím. U sloupců s hodnotou null v novém dokumentu je zachována hodnota existující.
-- **Nahrání** : nový dokument nahradí stávající. Pro sloupce, které nejsou zadány v novém dokumentu, je hodnota nastavena na hodnotu null, zda je v existujícím dokumentu hodnota jiná než null, nebo ne.
+- **Merge**: kombinovat všechny sloupce v novém dokumentu s existujícím. U sloupců s hodnotou null v novém dokumentu je zachována hodnota existující.
+- **Nahrání**: nový dokument nahradí stávající. Pro sloupce, které nejsou zadány v novém dokumentu, je hodnota nastavena na hodnotu null, zda je v existujícím dokumentu hodnota jiná než null, nebo ne.
 
-Výchozí chování je **sloučeno** .
+Výchozí chování je **sloučeno**.
 
 ### <a name="writebatchsize-property"></a>Vlastnost WriteBatchSize
 

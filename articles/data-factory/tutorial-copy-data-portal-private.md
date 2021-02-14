@@ -1,23 +1,18 @@
 ---
 title: Vytvoření kanálu Azure Data Factory pomocí privátních koncových bodů
 description: Tento kurz obsahuje podrobné pokyny k vytvoření datové továrny s kanálem pomocí portálu Azure Portal. Kanál používá aktivitu kopírování ke kopírování dat z úložiště objektů BLOB v Azure do databáze SQL Azure.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/15/2021
 ms.author: jingwang
-ms.openlocfilehash: dfd2ed47c3fd963d7e119d235719771b25bdaf34
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 002ceba60853908e381f084e95ec1ee58e8580cb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249496"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375812"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>Bezpečné kopírování dat z úložiště objektů BLOB v Azure do databáze SQL pomocí privátních koncových bodů
 
@@ -34,7 +29,7 @@ V tomto kurzu provedete následující kroky:
 * Vytvoření kanálu s aktivitou kopírování
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet služby Azure Storage**. Blob Storage použijete jako *zdrojové* úložiště dat. Pokud účet úložiště nemáte, přečtěte si téma [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal), kde najdete postup jeho vytvoření. *Ujistěte se, že účet úložiště povoluje přístup jenom z vybraných sítí.* 
 * **Azure SQL Database**. Tuto databázi použijete jako úložiště dat *jímky*. Pokud službu Azure SQL Database nemáte, přečtěte si téma [Vytvoření databáze SQL](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření. *Ujistěte se, že účet SQL Database povoluje přístup pouze z vybraných sítí.* 

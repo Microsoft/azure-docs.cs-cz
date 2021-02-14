@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 86cccbc9a72459ad038defca32e232381368ef45
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6e4782ad25886c4121742634e9e73f62ff4f0a2c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046685"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370236"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Nasazení modulů Azure IoT Edge pomocí Azure CLI
 
@@ -24,7 +24,7 @@ Jakmile vytvoříte IoT Edge moduly s obchodní logikou, chcete je nasadit do sv
 
 Tento článek ukazuje, jak vytvořit manifest nasazení JSON a pak ho použít k nahrání nasazení do zařízení IoT Edge. Informace o vytvoření nasazení, které cílí na více zařízení na základě jejich sdílených značek, najdete v tématu [nasazení a sledování IoT Edgech modulů ve velkém měřítku](how-to-deploy-cli-at-scale.md) .
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * [IoT Hub](../iot-hub/iot-hub-create-using-cli.md) ve vašem předplatném Azure.
 * Zařízení IoT Edge
@@ -64,7 +64,7 @@ Tady je základní manifest nasazení s jedním modulem jako příklad:
             "edgeAgent": {
               "type": "docker",
               "settings": {
-                "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+                "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
                 "createOptions": "{}"
               }
             },
@@ -73,7 +73,7 @@ Tady je základní manifest nasazení s jedním modulem jako příklad:
               "status": "running",
               "restartPolicy": "always",
               "settings": {
-                "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+                "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
                 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
               }
             }

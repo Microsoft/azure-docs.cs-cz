@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 02/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 08491dcaf66789f13aa9f2e058303a28e7ab8388
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 13cb22c178be29af71b57d0f50fdbd0e95718069
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099519"
+ms.locfileid: "100104599"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -24,7 +24,7 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 |Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Dostupnost  |
 |------------------------------|---------------|---------------|
 | [Resetovat dokumenty (Preview)](search-howto-run-reset-indexers.md) |  Znovu zpracuje jednotlivě vybrané dokumenty hledání v úlohách indexeru. | [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/index-preview) |
-| Podpora zón dostupnosti | Vyhledávací služby se dvěma nebo více replikami v určitých oblastech, jak je uvedeno v [rozsahu pro výkon](search-performance-optimization.md), získáte odolnost při používání replik ve dvou nebo více různých fyzických umístěních.  | Oblast a datum vytvoření služby vyhledávání, která určuje dostupnost. Podrobnosti najdete v dokumentu ladění výkonu. |
+| [Zóny dostupnosti](search-performance-optimization.md#availability-zones)| Vyhledávací služby se dvěma nebo více replikami v určitých oblastech, jak je uvedeno v [tomto článku](search-performance-optimization.md#availability-zones), získají odolnost proti chybám ve dvou nebo více různých fyzických umístěních.  | Oblast a datum vytvoření služby vyhledávání, která určuje dostupnost. Podrobnosti najdete v dokumentu ladění výkonu. |
 
 ## <a name="january-2021"></a>Leden 2021
 
@@ -36,7 +36,8 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 
 | Month (Měsíc) | Funkce | Popis |
 |-------|---------|-------------|
-| Listopad | [Šifrování klíče spravovaného zákazníkem (rozšířené)](search-security-manage-encryption-keys.md) | rozšiřuje šifrování spravované zákazníkem v celém rozsahu prostředků vytvořených a spravovaných vyhledávací službou. Všeobecně k dispozici.|
+| Listopad | [Šifrování klíče spravovaného zákazníkem (rozšířené)](search-security-manage-encryption-keys.md) | Rozšiřuje šifrování spravované zákazníkem v celém rozsahu prostředků vytvořených a spravovaných vyhledávací službou. Všeobecně k dispozici.|
+| Září | [Rozšíření Visual Studio Code pro Azure Kognitivní hledání](search-get-started-vs-code.md) | Přidá pracovní prostor, navigaci, IntelliSense a šablony pro vytváření indexů, indexerů, zdrojů dat a dovednosti. | Verze Public Preview |
 | Září | [Identita spravované služby (indexery)](search-howto-managed-identities-data-sources.md) | Všeobecně k dispozici.  |
 | Září | [Odchozí požadavky pomocí privátního odkazu](search-indexer-howto-access-private.md) | Všeobecně k dispozici.  |
 | Září | [REST API správy (2020-08-01)](/rest/api/searchmanagement/management-api-versions) | Všeobecně k dispozici. |

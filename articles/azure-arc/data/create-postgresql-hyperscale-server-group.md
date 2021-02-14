@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 45bb045e7bad2d5f8a56b71787b3abb5921cb7d5
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 4ff45eea8e07a282d8529c745344c11706bc27bb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98985882"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387984"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Vytvoření skupiny serverů PostgreSQL Hyperscale s podporou služby Azure Arc
 
@@ -81,13 +81,13 @@ azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2>
 > [!IMPORTANT]
 > - Třída úložiště používaná pro zálohy (_--Storage-Class-Backup-SCB_) je ve výchozím nastavení pro třídu úložiště dat řadiče dat, pokud není k dispozici.
 > - Pokud chcete obnovit skupinu serverů do samostatné skupiny serverů (například obnovení bodu v čase), musíte nakonfigurovat skupinu serverů tak, aby používala virtuální okruhy s režimem přístupu ReadWriteMany. To je potřeba udělat při vytváření skupiny serverů. Po jeho vytvoření ho nelze změnit. Další podrobnosti najdete v tématu:
->    - [Tato část o zálohování a obnovení](https://docs.microsoft.com/azure/azure-arc/data/backup-restore-postgresql-hyperscale#create-a-server-group-that-is-ready-for-backups-and-restores)
->    - [Tato část o omezeních s povoleným PostgreSQLm škálováním pro Azure ARC](https://docs.microsoft.com/azure/azure-arc/data/limitations-postgresql-hyperscale)
+>    - [Vytvořit skupinu serverů, která je připravená na zálohování a obnovení](backup-restore-postgresql-hyperscale.md#create-a-server-group-that-is-ready-for-backups-and-restores)
+>    - [Omezení PostgreSQL škálování s povoleným rozšířením Azure ARC](limitations-postgresql-hyperscale.md)
 
 
 > [!NOTE]
 > - **K dispozici jsou další parametry příkazového řádku.  Úplný seznam možností zobrazíte spuštěním `azdata arc postgres server create --help` .**
-
+>
 > - Jednotka přijatá parametrem--Volume-Size-* je množství prostředků Kubernetes (celé číslo následované jedním z těchto pokusů (T, G, M, K, m) nebo jejich mocniny dvou ekvivalentů (ti, GI, mi, Ki)).
 > - Názvy musí být delší než 12 znaků a musí odpovídat konvencím názvů DNS.
 > - Zobrazí se výzva k zadání hesla pro standardního administrativního uživatele _Postgres_ .  Interaktivní výzvu můžete přeskočit nastavením `AZDATA_PASSWORD` proměnné prostředí relace před spuštěním příkazu CREATE.

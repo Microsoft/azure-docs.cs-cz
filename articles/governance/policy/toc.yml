@@ -323,8 +323,6 @@
       items:
         - name: Kanál YouTube pro zásady správného řízení
           href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
-        - name: Video – Ignite 2019
-          href: 'https://myignite.techcommunity.microsoft.com/sessions/81584?source=sessions'
         - name: Videa konfigurace hosta
           items:
             - name: začínáme

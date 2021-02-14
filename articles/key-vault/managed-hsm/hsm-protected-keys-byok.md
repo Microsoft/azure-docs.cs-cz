@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 1a15ed6b92ade96dd2ed9ef6ffbbe17e2b1452ef
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 71cc36541b8809d93c84225edf771400d2878b4f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581393"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376050"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>Import klíčů chráněných HSM do spravovaného HSM (BYOK)
 
@@ -70,6 +70,7 @@ Další informace o možnostech přihlášení prostřednictvím rozhraní pří
 |Securosys SA|Výrobce, HSM jako služba|Primus, rodina HSM, Securosys cloudy HSM|[Nástroj a dokumentace pro Primus BYOK](https://www.securosys.com/primus-azure-byok)|
 |StorMagic|ISV (Enterprise Key Management System)|Několik značek HSM a modelů, včetně<ul><li>Utimaco</li><li>Thales</li><li>Podpůrný software nCipher</li></ul>Podrobnosti najdete v tématu [StorMagic web](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm) .|[SvKMS a Azure Key Vault BYOK](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|
 |IBM|Manufacturer|IBM 476x, CryptoExpress|[Společnost IBM Enterprise Key Management Foundation](https://www.ibm.com/security/key-management/ekmf-bring-your-own-key-azure)|
+|Utimaco|Výrobců<br/>HSM jako služba|Kotva u. Trust, CryptoServer|[Utimaco BYOK Tool a Průvodce integrací](https://support.hsm.utimaco.com/support/downloads/byok)|
 ||||
 
 

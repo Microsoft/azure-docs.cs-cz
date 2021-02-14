@@ -7,12 +7,13 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 6432cc9affd34c0fa9b832aea91932a2b9e7540f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.custom: references_regions
+ms.openlocfilehash: 9a73f9b734d5404d07e05dd37d5ad8571c1aab2e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576668"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383887"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Podporované zdroje dat a typy souborů v Azure dosah
 
@@ -71,7 +72,29 @@ Vzorkování souborů pro sady prostředků podle typů souborů:
 - **Objekty SQL a CosmosDB entity** – jednotlivé soubory jsou zkontrolovány na L3.
 - **Typy souborů dokumentů** – jednotlivé soubory jsou zkontrolovány na L3. Pro tyto typy souborů se vzory sady prostředků nevztahují.
 
-## <a name="classification"></a>Classification
+## <a name="scan-regions"></a>Hledat oblasti
+Následuje seznam všech oblastí služby Azure Data Source (Datacenter), ve kterých je spuštěný skener dosah. Pokud je váš zdroj dat Azure v oblasti mimo tento seznam, spustí se skener v oblasti vaší instance dosah.
+ 
+### <a name="purview-scanner-regions"></a>Dosah oblasti skeneru
+
+- EastUs
+- EastUs2 
+- SouthCentralUS
+- WestUs
+- WestUs2
+- SoutheastAsia
+- WestEurope
+- NorthEurope
+- UkSouth
+- AustraliaEast
+- CanadaCentral
+- BrazilSouth
+- CentralIndia
+- JapanEast
+- SouthAfricaNorth
+- FranceCentral
+
+## <a name="classification"></a>Klasifikace
 
 Všechna pravidla klasifikace systému 105 se vztahují na formáty strukturovaných souborů. Pouze pravidla klasifikace aplikace MCE se vztahují na typy souborů dokumentů (ne na nativní vzory regulárního výrazu pro kontrolu dat, rozpoznávání založené na filtrech Bloom). Další informace o podporovaných klasifikacích najdete v tématu [podporované klasifikace v Azure dosah](supported-classifications.md).
 

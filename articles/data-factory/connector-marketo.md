@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z Marketo pomocí Azure Data Factory (Preview)
 description: Přečtěte si, jak kopírovat data z Marketa do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: 08f117e2fc4939eee1458c0807cac5a292785608
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aae25536f0ac1d5d3b43b5173d3e5789cd66a774
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84669864"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385638"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Kopírování dat z Marketo pomocí Azure Data Factory (Preview)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -118,7 +113,7 @@ Pokud chcete kopírovat data ze služby Marketo, nastavte typ zdroje v aktivitě
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MarketoSource** . | Yes |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Activitiy_Types"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM Activitiy_Types"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
 

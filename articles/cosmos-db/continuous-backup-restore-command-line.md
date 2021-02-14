@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 2e09542cbe56df7c8d6984a98fe77142f543ec03
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 9ea71dae746ac423e7b17b6235b4d5cd3e143cd7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539185"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377325"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-cli"></a>Konfigurace a Správa průběžného zálohování a obnovení k určitému bodu v čase (Preview) – použití rozhraní příkazového řádku Azure
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -46,7 +46,7 @@ Tento článek popisuje, jak zřídit účet s průběžným zálohováním a ob
 
 ## <a name="provision-a-sql-api-account-with-continuous-backup"></a><a id="provision-sql-api"></a>Zřízení účtu rozhraní SQL API pomocí průběžného zálohování
 
-Pokud chcete zřídit účet rozhraní SQL API se průběžným zálohováním, je `--backup-policy-type Continuous` potřeba předat další argument spolu s běžným příkazem zřizování. Následující příkaz je příkladem jedné oblasti účet pro zápis s názvem `pitracct2` se zásadami průběžné zálohování vytvořenými v oblasti "západní USA" v části "myrg" skupiny prostředků:
+Pokud chcete zřídit účet rozhraní SQL API se průběžným zálohováním, je `--backup-policy-type Continuous` potřeba předat další argument spolu s běžným příkazem zřizování. Následující příkaz je příkladem jedné oblasti účet pro zápis s názvem `pitracct2` se zásadami průběžné zálohování vytvořenými v oblasti *západní USA* v části Skupina prostředků *myrg* :
 
 ```azurecli-interactive
 
@@ -61,7 +61,7 @@ az cosmosdb create \
 
 ## <a name="provision-an-azure-cosmos-db-api-for-mongodb-account-with-continuous-backup"></a><a id="provision-mongo-api"></a>Zřízení Azure Cosmos DB API pro účet MongoDB s průběžným zálohováním
 
-Následující příkaz ukazuje příklad účtu pro zápis s jednou oblastí s názvem `pitracct3` with Continuous Backup, který vytvořil region "západní USA" v rámci skupiny prostředků "myrg":
+Následující příkaz ukazuje příklad účtu pro zápis s jednou oblastí s názvem `pitracct3` se zásadami průběžného zálohování, který vytvořil oblast *západní USA* v části Skupina prostředků *myrg* :
 
 ```azurecli-interactive
 
@@ -145,13 +145,13 @@ Odpověď zahrnuje všechny účty databáze (živé i odstraněné), které je 
   }
 ```
 
-Stejně jako "CreationTime" nebo "DeletionTime" pro tento účet je také pro tuto oblast k dispozici "CreationTime" nebo "DeletionTime". Tyto časy umožňují zvolit správnou oblast a platný časový rozsah pro obnovení do této oblasti.
+Stejně jako u `CreationTime` `DeletionTime` účtu nebo pro účet je také k dispozici `CreationTime` nebo `DeletionTime` pro tuto oblast. Tyto časy umožňují zvolit správnou oblast a platný časový rozsah pro obnovení do této oblasti.
 
 **Vypíše všechny verze databází v živém databázovém účtu.**
 
 Seznam všech verzí databází vám umožní zvolit správnou databázi ve scénáři, kdy je neznámou skutečnou dobu existence databáze.
 
-Spuštěním následujícího příkazu rozhraní příkazového řádku zobrazíte seznam všech verzí databází. Tento příkaz funguje jenom s živými účty. Parametry instanceId a Location jsou získány z vlastností "Name" a "Location" v odpovědi `az cosmosdb restorable-database-account list` příkazu. Atribut instanceId je zároveň vlastností obnoveného účtu zdrojové databáze:
+Spuštěním následujícího příkazu rozhraní příkazového řádku zobrazíte seznam všech verzí databází. Tento příkaz funguje jenom s živými účty. `instanceId` `location` Parametry a jsou získány z `name` `location` vlastností a v odpovědi `az cosmosdb restorable-database-account list` příkazu. Atribut instanceId je zároveň vlastností obnoveného účtu zdrojové databáze:
 
 ```azurecli-interactive
 az cosmosdb sql restorable-database list \
@@ -198,7 +198,7 @@ Tento výstup příkazu se teď zobrazuje, když se databáze vytvořila a odstr
 
 **Vypíše všechny verze kontejnerů SQL databáze v živém databázovém účtu.**
 
-K vypsání všech verzí kontejnerů SQL použijte následující příkaz. Tento příkaz funguje jenom s živými účty. Parametr "databaseRid" je "ResourceId" databáze, kterou chcete obnovit. Jedná se o hodnotu atributu "ownerResourceid" nalezenou v odpovědi `az cosmosdb sql restorable-database list` příkazu.
+K vypsání všech verzí kontejnerů SQL použijte následující příkaz. Tento příkaz funguje jenom s živými účty. `databaseRid`Parametr je `ResourceId` databáze, kterou chcete obnovit. Jedná se o hodnotu `ownerResourceid` atributu nalezenou v odpovědi `az cosmosdb sql restorable-database list` příkazu.
 
 ```azurecli-interactive
 az cosmosdb sql restorable-container list \
@@ -265,7 +265,7 @@ az cosmosdb sql restorable-resource list \
 
 ## <a name="enumerate-restorable-resources-for-mongodb-api-account"></a><a id="enumerate-mongodb-api"></a>Zobrazení výčtu prostředků obnovitelné pro účet rozhraní MongoDB API
 
-Příkazy výčtu popsané níže vám pomohou zjistit prostředky, které jsou k dispozici pro obnovení v různých časových razítkech. Kromě toho poskytují také informační kanály pro prostředky účtu obnovitelné, databáze a kontejnerů. Podobně jako u SQL API můžete použít příkaz, `az cosmosdb` ale s parametrem "MongoDB" namísto "SQL". Tyto příkazy fungují pouze pro živé účty.
+Příkazy výčtu popsané níže vám pomohou zjistit prostředky, které jsou k dispozici pro obnovení v různých časových razítkech. Kromě toho poskytují také informační kanály pro prostředky účtu obnovitelné, databáze a kontejnerů. Podobně jako u SQL API můžete použít příkaz, `az cosmosdb` ale `mongodb` jako parametr, nikoli `sql` . Tyto příkazy fungují pouze pro živé účty.
 
 **Vypíše všechny verze MongoDB databází v živém databázovém účtu.**
 

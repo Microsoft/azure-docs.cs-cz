@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 0de3c46eba0b9364e38c4a952a320ac1c3de512f
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 95747bb68a904212e7e075fc29b2497932d66e5f
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583565"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103851"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v úhlové aplikaci s jednou stránkou
 
@@ -35,9 +35,7 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která demonstru
 >
 > ### <a name="option-1-express-register-and-automatically-configure-the-app-and-then-download-the-code-sample"></a>Možnost 1 (Express): registrace a Automatická konfigurace aplikace a stažení ukázky kódu
 >
-> 1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
-> 1. Pokud má váš účet přístup k více než jednomu klientovi, vyberte účet v pravém horním rohu a pak nastavte relaci portálu na tenanta Azure Active Directory (Azure AD), který chcete použít.
-> 1. Otevřete nové podokno [Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) v Azure Portal.
+> 1. Přejít k prostředí rychlý Start pro <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure Portal registrace aplikací</a>
 > 1. Zadejte název aplikace a pak vyberte **Registrovat**.
 > 1. Přejít do podokna pro rychlý Start a zobrazit úhlový rychlý Start. Podle pokynů stáhněte a automaticky nakonfigurujte novou aplikaci.
 >
@@ -45,8 +43,8 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která demonstru
 >
 > #### <a name="step-1-register-the-application"></a>Krok 1: registrace aplikace
 >
-> 1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
-> 1. Pokud má váš účet přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na klienta služby Azure AD, kterého chcete použít.
+> 1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
+> 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 > 1. Postupujte podle pokynů k [registraci jednostránkové aplikace](./scenario-spa-app-registration.md) v Azure Portal.
 > 1. Přidejte novou platformu do podokna **ověřování** registrace vaší aplikace a zaregistrujte identifikátor URI přesměrování: `http://localhost:4200/` .
 > 1. V tomto rychlém startu se používá [implicitní tok udělení](v2-oauth2-implicit-grant-flow.md). V části **implicitní udělení a hybridní toky** vyberte **tokeny ID** a **přístupové tokeny**. Tokeny ID a přístupové tokeny jsou povinné, protože se tato aplikace přihlásí uživatelům a volá rozhraní API.

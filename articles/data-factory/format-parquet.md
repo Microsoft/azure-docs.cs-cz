@@ -2,19 +2,16 @@
 title: Formát Parquet v Azure Data Factory
 description: Toto téma popisuje, jak v Azure Data Factory pracovat s formátem Parquet.
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/27/2020
 ms.author: jingwang
-ms.openlocfilehash: c99225b53266fc74ea357151de824cd8d8ed2088
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a10403b5f26b551458a9e20330bc817512f707de
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011604"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386387"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Formát Parquet v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -66,7 +63,7 @@ Níže je příklad datové sady Parquet v Azure Blob Storage:
 
 ### <a name="parquet-as-source"></a>Parquet as source
 
-V oddílu aktivita kopírování **_ \_ zdroj \**** jsou podporovány následující vlastnosti.
+V části ***\* zdroj \**** aktivity kopírování jsou podporovány následující vlastnosti.
 
 | Vlastnost      | Popis                                                  | Povinné |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -75,7 +72,7 @@ V oddílu aktivita kopírování **_ \_ zdroj \**** jsou podporovány následuj�
 
 ### <a name="parquet-as-sink"></a>Parquet jako jímka
 
-V části **\_ jímka \*** aktivity kopírování _ * jsou podporovány následující vlastnosti.
+V části ***\* jímka \**** aktivity kopírování jsou podporovány následující vlastnosti.
 
 | Vlastnost      | Popis                                                  | Povinné |
 | ------------- | ------------------------------------------------------------ | -------- |

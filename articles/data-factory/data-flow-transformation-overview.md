@@ -3,16 +3,15 @@ title: Přehled transformace toku dat
 description: Přehled různých transformací dostupných v toku mapování dat
 author: dcstwh
 ms.author: weetok
-manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 9d44890e84e97a413543a4291d1331fee0f04841
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ba2ff2b5f108d7910958b374cc4b602a84a3f53d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490869"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367907"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>Přehled transformace toku dat
 
@@ -39,6 +38,6 @@ Níže je uveden seznam transformací aktuálně podporovaných v mapování tok
 | [Seřadit](data-flow-sort.md) | Modifikátor řádku | Seřadit příchozí řádky v aktuálním datovém proudu |
 | [Zdroj](data-flow-source.md) | - | Zdroj dat pro tok dat |
 | [Náhradní klíč](data-flow-surrogate-key.md) | Modifikátor schématu | Přidání přírůstku hodnoty libovolného klíče, který nepatří do zaměstnání |
-| [Sjednocovací](data-flow-union.md) | Několik vstupů/výstupů | Kombinování více datových proudů svisle |
+| [Sjednocení](data-flow-union.md) | Několik vstupů/výstupů | Kombinování více datových proudů svisle |
 | [Převést na řádky](data-flow-unpivot.md) | Modifikátor schématu | Kontingenční sloupce do hodnot řádků |
 | [Okno](data-flow-window.md) | Modifikátor schématu |  Definujte agregace sloupců na základě okna v datových proudech. |

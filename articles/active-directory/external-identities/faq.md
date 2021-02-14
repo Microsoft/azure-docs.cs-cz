@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 09/23/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90cc15dc3944efd82d025df1bb5072c57346055e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 7879b233bf94442de2cad83de8adfe54b6b81e0e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355626"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365510"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Nejčastější dotazy k Azure Active Directory spolupráci B2B
 
@@ -25,7 +25,7 @@ Tyto nejčastější dotazy týkající se spolupráce B2B (Business-to-Business
 
 > [!IMPORTANT]
 > - **Od 4. ledna 2021** je Google [zastaralá podpora přihlašování v nástroji WebView](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Pokud používáte Google Federation nebo samoobslužnou registraci pomocí služby Gmail, měli byste [testovat kompatibilitu vašich obchodních nativních aplikací](google-federation.md#deprecation-of-webview-sign-in-support).
-> - **Od 31. března 2021** přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
+> - **Od října 2021** přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
 
 ### <a name="can-we-customize-our-sign-in-page-so-its-more-intuitive-for-our-b2b-collaboration-guest-users"></a>Můžeme přizpůsobit naši přihlašovací stránku, aby byla intuitivnější pro naše uživatele typu Host pro spolupráci B2B?
 Samozřejmě. Další informace najdete v našem [blogovém příspěvku o této funkci](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). Další informace o tom, jak přizpůsobit přihlašovací stránku vaší organizace, najdete v tématu [Přidání firemního brandingu pro přihlášení a přístup ke stránkám na panelu](../fundamentals/customize-branding.md).
@@ -119,7 +119,7 @@ Pokud má partner tenanta Azure AD federovaného do místní ověřovací infras
 Odstraňujeme rozdíly mezi spoluprací B2B a B2C (Business-to-Consumer), z nichž jsou identity podporované. Použitá identita není dobrým důvodem pro výběr mezi použitím B2B nebo pomocí B2C. Informace o volbě možnosti spolupráce najdete v tématu [porovnání spolupráce B2B a B2C v Azure Active Directory](compare-with-b2c.md).
 
 ### <a name="can-an-azure-ad-b2c-local-account-be-invited-to-an-azure-ad-tenant-for-b2b-collaboration"></a>Může se místní účet Azure AD B2C pozvat do tenanta Azure AD pro spolupráci B2B?
-Ne. Místní účet Azure AD B2C lze použít pouze pro přihlášení k tenantovi Azure AD B2C. Účet se nedá použít k přihlášení do tenanta Azure AD. Pozvání Azure AD B2C místního účtu do tenanta Azure AD pro spolupráci B2B není podporované.
+No. Místní účet Azure AD B2C lze použít pouze pro přihlášení k tenantovi Azure AD B2C. Účet se nedá použít k přihlášení do tenanta Azure AD. Pozvání Azure AD B2C místního účtu do tenanta Azure AD pro spolupráci B2B není podporované.
 
 ### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Jaké aplikace a služby podporují uživatele typu Host Azure B2B?
 Všechny aplikace integrované s Azure AD můžou podporovat uživatele typu Host Azure B2B, ale musí používat koncový bod nastavený jako tenant k ověřování uživatelů typu Host. Je také možné, že budete muset [přizpůsobit deklarace identity](claims-mapping.md) v tokenu SAML, který je vydaný, když se uživatel typu Host ověří do aplikace. 

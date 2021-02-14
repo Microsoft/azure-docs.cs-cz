@@ -7,27 +7,27 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 02/08/2021
 ms.author: raynew
-ms.openlocfilehash: eb28e4c8f6b465e2a9b38cc4571bc4a00baf4ef7
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 936a667948c888f3ca7c53eaa5be9cc97facf5f7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979619"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375353"
 ---
-# <a name="modify-target-settings"></a>Úprava nastavení cíle
+# <a name="modify-destination-settings"></a>Úprava nastavení cíle
 
 Tento článek popisuje, jak upravit nastavení cíle při přesouvání prostředků mezi oblastmi Azure pomocí nástroje [Azure Resource stěhovací](overview.md).
 
 
 ## <a name="modify-vm-settings"></a>Úprava nastavení virtuálního počítače
 
-Při přesunu virtuálních počítačů Azure a přidružených prostředků můžete upravit nastavení cíle. 
+Při přesunu virtuálních počítačů Azure a přidružených prostředků můžete změnit nastavení cíle. 
 
-- Doporučujeme změnit pouze nastavení cíle po ověření kolekce Move.
+- Doporučujeme, abyste po ověření kolekce přesunutí změnili jenom nastavení cíle.
 - Doporučujeme, abyste před přípravou prostředků změnili nastavení, protože některé vlastnosti cíle můžou být po dokončení přípravy nedostupné pro úpravy.
 
 Naopak
-- Pokud přesouváte zdrojový prostředek, můžete obvykle změnit cílové nastavení, dokud nespustíte proces zahájení přesunutí.
+- Pokud přesouváte zdrojový prostředek, můžete obvykle změnit nastavení cíle, dokud nespustíte proces zahájení procesu zahájení přesunutí.
 - Pokud přiřadíte existující prostředek ve zdrojové oblasti, můžete změnit nastavení cíle, dokud se potvrzení přesunu nedokončí.
 
 ### <a name="settings-you-can-modify"></a>Nastavení, která lze upravit
@@ -42,22 +42,22 @@ Nastavení konfigurace, která lze upravit, jsou shrnuta v tabulce.
 * * Skupina dostupnosti virtuálních počítačů | Skupina dostupnosti, do které bude cílový virtuální počítač umístěn. Vyberte **nepoužitelné**  , nechcete změnit nastavení zdroje, nebo pokud virtuální počítač nechcete umístit do skupiny dostupnosti.
 **Trezor klíčů virtuálních počítačů** | Přidružený Trezor klíčů, když povolíte Azure Disk Encryption na virtuálním počítači.
 **Sada šifrování disku** | Přidružená šifra disku nastavená, pokud virtuální počítač používá klíč spravovaný zákazníkem pro šifrování na straně serveru.
-**Skupina prostředků** | Skupina prostředků, do které bude cílový virtuální počítač umístěn.
-**Síťové prostředky** | Možnosti pro síťová rozhraní, virtuální sítě (virtuální sítě/) a skupiny zabezpečení sítě/síťová rozhraní:<br/><br/> – Vytvoří nový prostředek se stejným názvem v cílové oblasti.<br/><br/> – Vytvoří nový prostředek s jiným názvem v cílové oblasti.<br/><br/> – Použijte existující síťový prostředek v cílové oblasti.<br/><br/> Pokud vytvoříte nový cílový prostředek, s výjimkou nastavení, které upravíte, je mu přiřazeno stejné nastavení jako zdrojový prostředek.
+**Skupina prostředků** | Skupina prostředků, do které se umístí cílový virtuální počítač.
+**Síťové prostředky** | Možnosti pro síťová rozhraní, virtuální sítě (virtuální sítě/) a skupiny zabezpečení sítě/síťová rozhraní:<br/><br/> – Vytvoří nový prostředek se stejným názvem v cílové oblasti.<br/><br/> – Vytvořte nový prostředek s jiným názvem v cílové oblasti.<br/><br/> – Použijte existující síťový prostředek v cílové oblasti.<br/><br/> Pokud vytvoříte nový cílový prostředek s výjimkou nastavení, které upravíte, bude mu přiřazeno stejné nastavení jako zdrojový prostředek.
 **Název veřejné IP adresy, SKU a zóna** | Určuje název, [skladovou](../virtual-network/public-ip-addresses.md#sku)položku a [zónu](../virtual-network/public-ip-addresses.md#standard) pro standardní veřejné IP adresy.<br/><br/> Pokud chcete, aby byla zóna redundantní, zadejte jako **zónu redundantní**.
 * * Název nástroje pro vyrovnávání zatížení, SKU a zóna * * | Určuje název, SKLADOVOU položku (Basic nebo Standard) a zónu pro nástroj pro vyrovnávání zatížení.<br/><br/> Doporučujeme použít standardní sKU.<br/><br/> Pokud chcete, aby byla zóna redundantní, zadejte jako **zónu redundantní**.
 **Závislosti prostředků** | Možnosti pro každou závislost:<br/><br/>– Prostředek používá zdrojové závislé prostředky, které se přesunou do cílové oblasti.<br/><br/> – Prostředek používá jiné závislé prostředky, které se nacházejí v cílové oblasti. V takovém případě si můžete vybrat z libovolných podobných prostředků v cílové oblasti.
 
-### <a name="edit-vm-target-settings"></a>Upravit nastavení cíle virtuálního počítače
+### <a name="edit-vm-destination-settings"></a>Upravit nastavení cílového virtuálního počítače
 
-Pokud nechcete, aby byly závislé prostředky ze zdrojové oblasti k cíli, máte několik dalších možností:
+Pokud nechcete, aby byly závislé prostředky ze zdrojové oblasti do cíle, máte několik dalších možností:
 
 - Vytvořte nový prostředek v cílové oblasti. Pokud nezadáte jiná nastavení, bude mít nový prostředek stejné nastavení jako zdrojový prostředek.
 - Použijte existující prostředek v cílové oblasti.
 
 Přesné chování závisí na typu prostředku. [Přečtěte si další informace](modify-target-settings.md) o změnách nastavení cíle.
 
-Nastavení cíle pro prostředek upravíte pomocí položky **cílová konfigurace** v kolekci přesunutí prostředků. 
+Nastavení cíle pro prostředek upravíte pomocí položky **Konfigurace cíle** v kolekci přesunutí prostředků. 
 
 Postup úpravy nastavení: 
 
@@ -74,9 +74,9 @@ Při přesunu Azure SQL Database prostředků můžete změnit nastavení cíle 
 
 - Pro SQL Database:
     - Doporučujeme, abyste před přípravou pro přesunutí změnili nastavení konfigurace cíle.
-    - Můžete upravit nastavení pro cílovou databázi a redundanci zóny pro databázi.
+    - Můžete upravit nastavení cílové databáze a redundance zóny pro databázi.
 - Pro elastické fondy:
-    -  Cílovou konfiguraci můžete změnit kdykoli před zahájením přesunutí.
+    -  Konfiguraci cíle můžete změnit kdykoli před zahájením přesunutí.
     - Můžete upravit cílový elastický fond a redundanci zóny pro fond. 
 
 ### <a name="sql-settings-you-can-modify"></a>Nastavení SQL, která můžete upravit
@@ -86,12 +86,12 @@ Při přesunu Azure SQL Database prostředků můžete změnit nastavení cíle 
 **Název** | Vytvoří novou databázi se stejným názvem v cílové oblasti.<br/><br/> Vytvořte novou databázi s jiným názvem v cílové oblasti.<br/><br/> Použijte existující databázi v cílové oblasti. | Vytvoří nový elastický fond se stejným názvem v cílové oblasti.<br/><br/> Vytvořte nový elastický fond s jiným názvem v cílové oblasti.<br/><br/> Použijte existující elastický fond v cílové oblasti.
 **Zónová redundance** | Pokud chcete přejít z oblasti, která podporuje redundanci zóny, do oblasti, která není, zadejte do nastavení zóny možnost **Zakázat** .<br/><br/> Pokud chcete přejít z oblasti, která nepodporuje redundanci zóny, do konkrétní oblasti, zadejte do nastavení zóny **možnost Povolit** . | Pokud chcete přejít z oblasti, která podporuje redundanci zóny, do oblasti, která není, zadejte do nastavení zóny možnost **Zakázat** .<br/><br/> Pokud chcete přejít z oblasti, která nepodporuje redundanci zóny, do konkrétní oblasti, zadejte do nastavení zóny **možnost Povolit** .
 
-### <a name="edit-sql-target-settings"></a>Upravit nastavení cíle SQL
+### <a name="edit-sql-destination-settings"></a>Upravit nastavení cíle SQL
 
 Nastavení cíle Azure SQL Database prostředku upravíte následujícím způsobem: 
 
-1. V **různých oblastech** u prostředku, který chcete upravit, klikněte na položku **cílová konfigurace** .
-2. V **nastavení konfigurace** zadejte cílové nastavení shrnuté v tabulce výše.
+1. V **různých oblastech** u prostředku, který chcete upravit, klikněte na položku **Konfigurace cíle** .
+2. V části **nastavení konfigurace** zadejte nastavení cíle shrnuté v tabulce výše.
 
 ## <a name="next-steps"></a>Další kroky
 

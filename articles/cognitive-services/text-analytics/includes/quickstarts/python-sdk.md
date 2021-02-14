@@ -5,12 +5,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 01/20/2021
 ms.author: aahi
-ms.openlocfilehash: 715b0d16e33412003820044ffa99fee9e2431a7b
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: fc66cf75101d38ed1deac3b5368ee823dfdab821
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090704"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100514950"
 ---
 <a name="HOLTop"></a>
 
@@ -998,7 +998,7 @@ Entity: Paul Allen
 ------------------------------------------
 ```
 
-Můžete také použít operaci analyzovat ke zjištění kódu PII a extrakce klíčových frází. Podívejte se na téma [Analýza ukázky](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/textanalytics/azure-ai-textanalytics/samples/async_samples/sample_analyze_async.py) na GitHubu.
+Můžete také použít operaci analyzovat ke zjištění kódu PII a extrakce klíčových frází. Podívejte se na téma [Analýza ukázky](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples/async_samples) na GitHubu.
 
 # <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 

@@ -4,12 +4,12 @@ description: Naučte se vytvořit účet Azure Batch na portálu Azure, abyste m
 ms.topic: how-to
 ms.date: 01/26/2021
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 943fd145dbd4964e0d43d91f726ea5a79fda59de
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: bd9dd9b6d6d3a8d6938427b83528746ae5d09318
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895988"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368502"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Vytvoření účtu Batch pomocí webu Azure Portal
 
@@ -67,6 +67,9 @@ Pokud chcete zobrazit [kvóty prostředků](batch-quota-limit.md) , které se vz
 ## <a name="additional-configuration-for-user-subscription-mode"></a>Další konfigurace pro režim předplatného uživatele
 
 Pokud zvolíte možnost vytvořit účet Batch v režimu předplatného uživatele, proveďte před vytvořením tohoto účtu následující kroky.
+
+> [!IMPORTANT]
+> Uživatel, který vytváří účet Batch v režimu předplatného uživatele, musí mít přiřazenou roli přispěvatel nebo vlastník pro předplatné, ve kterém se účet Batch vytvoří.
 
 ### <a name="allow-azure-batch-to-access-the-subscription-one-time-operation"></a>Povolení přístupu k předplatnému pro Azure Batch (jednorázová operace)
 

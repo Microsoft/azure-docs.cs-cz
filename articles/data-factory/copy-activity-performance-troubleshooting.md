@@ -1,23 +1,18 @@
 ---
 title: Řešení potíží s výkonem aktivity kopírování
 description: Přečtěte si, jak řešit potíže s výkonem aktivity kopírování v Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/07/2021
-ms.openlocfilehash: 203782ef2d95cd2b47082f630fa12531a110d49e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 07be5d29ccb55fe97f38123ff4a850d28cd39ead
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933917"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387678"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Řešení potíží s výkonem aktivity kopírování
 
@@ -53,7 +48,7 @@ V současnosti obsahují tipy pro ladění výkonu návrhy pro následující p�
 
 Podrobnosti o spuštění a doby trvání v dolní části zobrazení monitorování aktivity kopírování popisují hlavní fáze, přes které aktivita kopírování prochází (viz příklad na začátku tohoto článku), což je zvláště užitečné pro řešení potíží s výkonem kopírování. Kritické místo pro váš běh kopírování je ten, který má nejdelší dobu trvání. Podívejte se na následující tabulku v definici každé fáze a Naučte se [řešit problémy s kopírováním na Azure IR](#troubleshoot-copy-activity-on-azure-ir) a [řešit potíže s aktivitami kopírování v místním prostředí IR](#troubleshoot-copy-activity-on-self-hosted-ir) s těmito informacemi.
 
-| Fáze           | Popis                                                  |
+| Fáze           | Description                                                  |
 | --------------- | ------------------------------------------------------------ |
 | Fronta           | Uplynulý čas do chvíle, kdy se aktivita kopírování ve skutečnosti spustí v prostředí Integration runtime. |
 | Skript před kopírováním | Uplynulý čas mezi aktivitou kopírování začínající v rámci aktivity IR a kopírování dokončuje provádění skriptu před kopírováním v úložišti dat jímky. Použijte, když nakonfigurujete skript před kopírováním pro jímky databáze, například při zápisu dat do Azure SQL Database proveďte vyčištění před kopírováním nových dat. |

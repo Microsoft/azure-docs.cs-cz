@@ -1,7 +1,7 @@
 ---
 title: Seznámení s nástroji Microsoft Spark
 description: 'Kurz: MSSparkutils v poznámkových blocích Azure synapse Analytics'
-author: ruxu
+author: ruixinxu
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: reference
@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: d36086052f4e5719fd17989e3326a4b5728ee3ca
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 58672bd68d9a2ea85f58b3761f3b89098b9f5afc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954289"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368655"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Seznámení s nástroji Microsoft Spark
 
@@ -25,9 +25,9 @@ Sady nástrojů Microsoft Spark (MSSparkUtils) jsou předplatným balíčkem, kt
 
 ### <a name="configure-access-to-azure-data-lake-storage-gen2"></a>Konfigurace přístupu k Azure Data Lake Storage Gen2 
 
-Synapse poznámkové bloky používají předávací službu Azure Active Directory (Azure AD) pro přístup k účtům ADLS Gen2. Pro přístup k účtu ADLS Gen2 (nebo složce) musíte být **přispěvatelem BLOB Storage** . 
+Synapse poznámkové bloky používají předávací službu Azure Active Directory (Azure AD) pro přístup k účtům ADLS Gen2. Pro přístup k účtu ADLS Gen2 (nebo složce) musíte být **přispěvatelem dat BLOB Storage** . 
 
-Kanály synapse používají k přístupu k účtům úložiště identitu pracovního prostoru (MSI). Pokud chcete ve svých aktivitách kanálu používat MSSparkUtils, musí být identita pracovního prostoru **BLOB Storage Přispěvatel** pro přístup k účtu adls Gen2 (nebo složce).
+Kanály synapse používají k přístupu k účtům úložiště identitu pracovního prostoru (MSI). Pokud chcete ve svých aktivitách kanálu používat MSSparkUtils, musí být identita pracovního prostoru **BLOB Storage Přispěvatel dat** pro přístup k účtu adls Gen2 (nebo složce).
 
 Pomocí těchto kroků se ujistěte, že váš soubor MSI služby Azure AD a pracovní prostor má přístup k účtu ADLS Gen2:
 1. Otevřete [Azure Portal](https://portal.azure.com/) a účet úložiště, ke kterému chcete získat přístup. Můžete přejít ke konkrétnímu kontejneru, ke kterému chcete získat přístup.

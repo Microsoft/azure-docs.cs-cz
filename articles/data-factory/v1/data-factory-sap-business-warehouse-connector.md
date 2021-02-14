@@ -1,23 +1,18 @@
 ---
 title: Přesun dat ze SAP Business Warehouse pomocí Azure Data Factory
 description: Přečtěte si, jak přesunout data ze SAP Business Warehouse pomocí Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-editor: ''
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fb91a09ed31658c2d547a7b46cf2f986bfbd0e50
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 513d6b28908b99594eaa525e86690fa75bffb103
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508284"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386964"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Přesun dat ze SAP Business Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -63,12 +58,12 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 
 Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-server | Název serveru, na kterém se nachází instance SAP BW. | řetězec | Ano
-systemNumber | Číslo systému SAP BW systému | Desítkové číslo se dvěma číslicemi reprezentované jako řetězec. | Ano
-clientId | ID klienta klienta v systému SAP W. | Desítkové číslo se třemi číslicemi reprezentované jako řetězec. | Ano
-username | Jméno uživatele, který má přístup k serveru SAP | řetězec | Ano
-heslo | Heslo pro tohoto uživatele. | řetězec | Ano
-gatewayName | Název brány, kterou by služba Data Factory měla použít pro připojení k místní instanci SAP BW | řetězec | Ano
+server | Název serveru, na kterém se nachází instance SAP BW. | řetězec | Yes
+systemNumber | Číslo systému SAP BW systému | Desítkové číslo se dvěma číslicemi reprezentované jako řetězec. | Yes
+clientId | ID klienta klienta v systému SAP W. | Desítkové číslo se třemi číslicemi reprezentované jako řetězec. | Yes
+username | Jméno uživatele, který má přístup k serveru SAP | řetězec | Yes
+heslo | Heslo pro tohoto uživatele. | řetězec | Yes
+gatewayName | Název brány, kterou by služba Data Factory měla použít pro připojení k místní instanci SAP BW | řetězec | Yes
 encryptedCredential | Šifrovaný řetězec přihlašovacích údajů. | řetězec | No
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
@@ -86,7 +81,7 @@ Pokud je zdroj v aktivitě kopírování typu **RelationalSource** (který zahrn
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| query | Určuje dotaz MDX pro čtení dat z instance SAP BW. | Dotaz MDX. | Ano |
+| query | Určuje dotaz MDX pro čtení dat z instance SAP BW. | Dotaz MDX. | Yes |
 
 
 ## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>Příklad JSON: kopírování dat ze SAP Business Warehouse do Azure Blob
@@ -288,7 +283,7 @@ Při přesunu dat z SAP BW se z SAP BW typů do typů .NET používají následu
 
 Datový typ ve slovníku ABAP | .NET – datový typ
 -------------------------------- | --------------
-ACCP |  Int
+ACCP |    Int
 CHAR | Řetězec
 CLNT | Řetězec
 CURR | Decimal

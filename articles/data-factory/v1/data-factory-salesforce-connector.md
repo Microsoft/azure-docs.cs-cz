@@ -1,23 +1,18 @@
 ---
 title: Přesun dat ze služby Salesforce pomocí Data Factory
 description: Přečtěte si informace o tom, jak přesouvat data z Salesforce pomocí Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: dbe3bfd6-fa6a-491a-9638-3a9a10d396d1
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ba95ba57bb57b1b2e9ecde3ad27f6bb5fbca66cb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ccc20f415d13356de755af5d1d3afc5b29de72f2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124879"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387049"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Přesun dat ze služby Salesforce pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -34,7 +29,7 @@ Azure Data Factory aktuálně podporuje pouze přesun dat z Salesforce na [podpo
 ## <a name="supported-versions"></a>Podporované verze
 Tento konektor podporuje následující edice Salesforce: Developer Edition, Professional Edition, Enterprise Edition nebo Unlimited Edition. A podporuje kopírování z výroby, izolovaného prostoru a vlastní domény Salesforce.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Musí být povolené oprávnění API. Viz [návody povolení přístupu k rozhraní API v Salesforce pomocí sady oprávnění?](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)
 * Pokud chcete kopírovat data z Salesforce do místních úložišť dat, musíte mít ve svém místním prostředí nainstalovanou aspoň Správa dat bránu 2,0.
 
@@ -49,9 +44,9 @@ V obou scénářích se může zobrazit také chyba "REQUEST_LIMIT_EXCEEDED". Po
 ## <a name="getting-started"></a>Začínáme
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z Salesforce pomocí různých nástrojů nebo rozhraní API.
 
-Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním** . Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
+Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 
-K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager template** , **.NET API** a **REST API** . Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -68,7 +63,7 @@ Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pr
 
 | Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| typ |Vlastnost Type musí být nastavená na: **Salesforce** . |Yes |
+| typ |Vlastnost Type musí být nastavená na: **Salesforce**. |Yes |
 | environmentUrl | Zadejte adresu URL instance Salesforce. <br><br> -Výchozí hodnota je https: \/ /Login.Salesforce.com. <br> – Chcete-li kopírovat data z izolovaného prostoru, zadejte " https://test.salesforce.com ". <br> – Chcete-li kopírovat data z vlastní domény, zadejte například "https://[doména]. my. Salesforce. com". |No |
 | username |Zadejte uživatelské jméno pro uživatelský účet. |Yes |
 | heslo |Zadejte heslo pro uživatelský účet. |Yes |
@@ -106,10 +101,10 @@ Pokud je zdroj v aktivitě kopírování typu **RelationalSource** (který zahrn
 
 ## <a name="query-tips"></a>Tipy pro dotazy
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>Načítání dat pomocí klauzule WHERE ve sloupci DateTime
-Když zadáte SOQL nebo SQL dotaz, věnujte pozornost rozdílům ve formátu data a času. Například:
+Když zadáte SOQL nebo SQL dotaz, věnujte pozornost rozdílům ve formátu data a času. Příklad:
 
-* **Ukázka SOQL** : `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
-* **Ukázka SQL** :
+* **Ukázka SOQL**: `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
+* **Ukázka SQL**:
     * **Zadání dotazu pomocí Průvodce kopírováním:**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
     * **Použití úprav JSON k zadání dotazu (řídicí znak je řádně):**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
 
@@ -117,10 +112,10 @@ Když zadáte SOQL nebo SQL dotaz, věnujte pozornost rozdílům ve formátu dat
 Data ze sestav Salesforce můžete načíst zadáním dotazu jako například `{call "<report name>"}` . `"query": "{call \"TestReport\"}"`.
 
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>Načítání odstraněných záznamů ze odpadkového koše Salesforce
-Chcete-li zadat dotaz na nepodmíněné odstraněné záznamy ze složky Koš služby Salesforce, můžete v dotazu zadat **"IsDeleted" = 1** . Příklad:
+Chcete-li zadat dotaz na nepodmíněné odstraněné záznamy ze složky Koš služby Salesforce, můžete v dotazu zadat **"IsDeleted" = 1** . Třeba
 
-* Pokud chcete zadat dotaz jenom na odstraněné záznamy, zadejte SELECT * FROM MyTable__c, **kde IsDeleted = 1** .
-* Chcete-li zadat dotaz na všechny záznamy včetně existujících a odstraněných, zadejte "SELECT * FROM MyTable__c, **kde IsDeleted = 0 nebo IsDeleted = 1** "
+* Pokud chcete zadat dotaz jenom na odstraněné záznamy, zadejte SELECT * FROM MyTable__c, **kde IsDeleted = 1**.
+* Chcete-li zadat dotaz na všechny záznamy včetně existujících a odstraněných, zadejte "SELECT * FROM MyTable__c, **kde IsDeleted = 0 nebo IsDeleted = 1**"
 
 ## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>Příklad JSON: kopírování dat ze Salesforce do Azure Blob
 Následující příklad poskytuje ukázkové definice JSON, které lze použít k vytvoření kanálu pomocí sady [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazují, jak kopírovat data z Salesforce do Azure Blob Storage. Data však lze zkopírovat do kterékoli z těchto umyvadel, které jsou [zde](data-factory-data-movement-activities.md#supported-data-stores-and-formats) uvedeny, pomocí aktivity kopírování v Azure Data Factory.
@@ -225,7 +220,7 @@ Data se zapisují do nového objektu BLOB každou hodinu (frekvence: hodina, int
 
 **Kanál s aktivitou kopírování**
 
-Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a je naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **RelationalSource** a typ **jímky** je nastavený na **BlobSink** .
+Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a je naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **RelationalSource** a typ **jímky** je nastavený na **BlobSink**.
 
 Seznam vlastností, které jsou podporovány rozhraním RelationalSource, naleznete v tématu [vlastnosti typu RelationalSource](#copy-activity-properties) .
 
@@ -288,7 +283,7 @@ Seznam vlastností, které jsou podporovány rozhraním RelationalSource, nalezn
 | Automatické číslo |Řetězec |
 | Zaškrtávací políčko |Logická hodnota |
 | Měna |Decimal |
-| Datum |DateTime |
+| Date (Datum) |DateTime |
 | Datum/Čas |DateTime |
 | E-mail |Řetězec |
 | Id |Řetězec |

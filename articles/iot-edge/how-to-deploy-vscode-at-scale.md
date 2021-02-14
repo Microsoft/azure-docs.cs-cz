@@ -9,12 +9,12 @@ ms.date: 1/8/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7f6e90edc0503326dc9dbb06abfcf59fa2d51e1e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 9ae7009468b548cb9386fd405abfbe110d62f9a3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043812"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377512"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>Nasazení IoT Edgech modulů ve velkém měřítku pomocí Visual Studio Code
 
@@ -24,7 +24,7 @@ Další informace najdete v tématu [vysvětlení IoT Edge automatického nasaze
 
 V tomto článku jste nastavili Visual Studio Code a rozšíření IoT. Pak se dozvíte, jak nasadit moduly do sady IoT Edgech zařízení.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) ve vašem předplatném Azure.
 * Nejméně jedno IoT Edge zařízení.
@@ -82,7 +82,7 @@ Tady je základní manifest nasazení s jedním modulem jako příklad:
             "edgeAgent": {
               "type": "docker",
               "settings": {
-                "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+                "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
                 "createOptions": "{}"
               }
             },
@@ -91,7 +91,7 @@ Tady je základní manifest nasazení s jedním modulem jako příklad:
               "status": "running",
               "restartPolicy": "always",
               "settings": {
-                "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+                "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
                 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
               }
             }
@@ -229,7 +229,7 @@ Po dokončení konfigurace manifestu nasazení a nakonfigurované značky v zař
   | Parametr | Popis |
   | --- | --- |
   | ID nasazení | Název nasazení, které se vytvoří ve službě IoT Hub. Dejte vašemu nasazení jedinečný název, který bude obsahovat až 128 malých písmen. Vyhněte se mezerám a následujícími neplatnými znaky: `& ^ [ ] { } \ | " < > /` . |
-  | Cílová podmínka | Zadejte cílovou podmínku pro určení, která zařízení budou cílem tohoto nasazení.Podmínka je založena na nevyhovujících značkách zařízení nebo na dohlášených vlastnostech zařízení, které se musí shodovat s formátem výrazu.Například `tags.environment='test' and properties.reported.devicemodel='4000x'` . |
+  | Cílová podmínka | Zadejte cílovou podmínku pro určení, která zařízení budou cílem tohoto nasazení. Podmínka je založena na nevyhovujících značkách zařízení nebo na dohlášených vlastnostech zařízení, které se musí shodovat s formátem výrazu. Například, `tags.environment='test' and properties.reported.devicemodel='4000x'`. |
   | Priorita |  Kladné celé číslo. Pokud jsou na jednom zařízení cílené dva nebo více nasazení, uplatní se nasazení s nejvyšší číselnou hodnotou priority. |
 
   Po zadání priority by měl terminál zobrazit výstup podobný následujícímu znázornění:

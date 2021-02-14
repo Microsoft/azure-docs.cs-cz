@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
-ms.date: 5/7/2020
+ms.date: 2/7/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 477a96f1bf66255b11b2fee36c38e55b18cddb69
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 3ae3224ae17d0dee2ed1080669c6057ca62959d9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556129"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384499"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa využití a nákladů pro službu Application Insights
 
@@ -286,15 +286,18 @@ Pokud chcete zakázat e-maily denního limitu objemu, v části **Konfigurace** 
 
 Pro včasnou přihlášené služby Azure Application Insights stále existují dvě možné cenové úrovně: Basic a Enterprise. Cenová úroveň Basic je stejná, jak je popsáno výše, a je výchozí úroveň. Zahrnuje všechny funkce podnikové vrstvy bez dalších poplatků. Úroveň Basic se účtuje primárně na množství dat, která se ingestují.
 
-> [!NOTE]
-> Tyto starší cenové úrovně se přejmenovaly. Cenová úroveň Enterprise je nyní volána **na uzel** a cenová úroveň Basic je nyní volána **za GB**. Tyto nové názvy se používají níže a v Azure Portal.  
+Tyto starší cenové úrovně se přejmenovaly. Cenová úroveň Enterprise je nyní volána **na uzel** a cenová úroveň Basic je nyní volána **za GB**. Tyto nové názvy se používají níže a v Azure Portal.  
 
-Úroveň na uzel (dříve Enterprise) má poplatek za uzel a každý uzel obdrží denní povolený objem dat. V cenové úrovni jednotlivých uzlů se vám budou účtovat data ingestovaná nad rámec zahrnutého příspěvku. Pokud používáte Operations Management Suite, měli byste zvolit vrstvu na jednu uzel.
+Úroveň na uzel (dříve Enterprise) má poplatek za uzel a každý uzel obdrží denní povolený objem dat. V cenové úrovni jednotlivých uzlů se vám budou účtovat data ingestovaná nad rámec zahrnutého příspěvku. Pokud používáte Operations Management Suite, měli byste zvolit vrstvu na jednu uzel. V dubnu 2018 jsme [zavedli](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) nový cenový model pro monitorování Azure. Tento model přijímá jednoduchý model průběžných plateb v rámci kompletního portfolia monitorovacích služeb. Přečtěte si další informace o [novém cenovém modelu](../platform/usage-estimated-costs.md).
 
 Aktuální ceny v měně a oblasti najdete v tématu [Application Insights ceny](https://azure.microsoft.com/pricing/details/application-insights/).
 
-> [!NOTE]
-> V dubnu 2018 jsme [zavedli](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) nový cenový model pro monitorování Azure. Tento model přijímá jednoduchý model průběžných plateb v rámci kompletního portfolia monitorovacích služeb. Přečtěte si další informace o [novém cenovém modelu](../platform/usage-estimated-costs.md), jak [posoudit dopad přechodu na tento model](../platform/usage-estimated-costs.md#understanding-your-azure-monitor-costs) na základě vašich způsobů používání a [jak se vyjádřit k novému modelu](../platform/usage-estimated-costs.md#azure-monitor-pricing-model) .
+### <a name="understanding-billed-usage-on-the-legacy-enterprise-per-node-tier"></a>Porozumění fakturovanému využití na úrovni starší verze Enterprise (na uzel) 
+
+Jak je popsáno níže podrobněji, vrstva starší verze Enterprise (na uzlech) kombinuje využití napříč všemi Application Insightsmi prostředky v rámci předplatného pro výpočet počtu uzlů a překročení dat. Z důvodu tohoto kombinovaného procesu **se využití všech Application Insights prostředků v rámci předplatného hlásí pouze v jednom z prostředků**.  Díky tomu bude vaše [Fakturované využití](https://docs.microsoft.com/azure/azure-monitor/app/pricing#viewing-application-insights-usage-on-your-azure-bill) sladěné s využitím, které sledujete u každého Application Insightsch prostředků velmi komplikované. 
+
+> [!WARNING]
+> Z důvodu složitosti sledování a porozumění využití Application Insightsch prostředků ve starší úrovni podniku (na úrovni uzlu) důrazně doporučujeme použít aktuální cenovou úroveň s průběžnými platbami. 
 
 ### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>Nároky na úroveň a předplatné Operations Management Suite
 
@@ -347,4 +350,3 @@ Pomocí správy prostředků Azure můžete napsat skript pro nastavení cenové
 [start]: ./app-insights-overview.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
-
