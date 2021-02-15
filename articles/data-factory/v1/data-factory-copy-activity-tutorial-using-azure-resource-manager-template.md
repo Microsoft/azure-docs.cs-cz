@@ -1,24 +1,18 @@
 ---
 title: 'Kurz: vytvoření kanálu pomocí šablony Správce prostředků '
 description: V tomto kurzu vytvoříte kanál služby Azure Data Factory pomocí šablony Azure Resource Manageru. Tento kanál kopíruje data z úložiště objektů BLOB v Azure do Azure SQL Database.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: ''
-editor: ''
-ms.assetid: 1274e11a-e004-4df5-af07-850b2de7c15e
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a007e64a7bd034397c2030c435a5ad349bd4acc7
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 18e8965a152deb6393d7e3b63ea22994484e100c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608744"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377240"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Kurz: Použití šablony Azure Resource Manageru k vytvoření kanálu Data Factory pro kopírování dat 
 > [!div class="op_single_selector"]
@@ -43,7 +37,7 @@ Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zře
 > [!NOTE] 
 > Datový kanál v tomto kurzu kopíruje data ze zdrojového úložiště dat do cílového úložiště dat. Kurz předvádějící způsoby transformace dat pomocí Azure Data Factory najdete v tématu popisujícím [kurz vytvoření kanálu, který umožňuje transformovat data pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -54,7 +48,7 @@ Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zře
 ## <a name="in-this-tutorial"></a>V tomto kurzu
 V tomto kurzu vytvoříte datovou továrnu s následujícími entitami služby Data Factory:
 
-| Entita | Popis |
+| Entita | Description |
 | --- | --- |
 | Propojená služba Azure Storage |Propojí účet služby Azure Storage s datovou továrnou. Azure Storage je zdrojové úložiště dat a Azure SQL Database je úložiště dat jímky pro aktivitu kopírování v tomto kurzu. Určuje účet úložiště, který obsahuje vstupní data pro aktivitu kopírování. |
 | Propojená služba Azure SQL Database |Propojí naši databázi v Azure SQL Database s datovou továrnou. Určuje databázi, která obsahuje výstupní data pro aktivitu kopírování. |

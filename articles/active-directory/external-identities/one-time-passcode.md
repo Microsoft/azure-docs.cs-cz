@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 12/18/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9a0668b3ea651d129dc076e5f2247e38f5ab7d0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f37c7e2f21c76fcc902b0922399081b9be949e99
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725491"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365527"
 ---
 # <a name="email-one-time-passcode-authentication"></a>E-mailové ověřování heslem jednorázového hesla
 
@@ -26,7 +26,7 @@ Tento článek popisuje, jak povolit jednorázové ověřování e-mailových he
 ![Diagram přehledu hesla na jednom čase v e-mailu](media/one-time-passcode/email-otp.png)
 
 > [!IMPORTANT]
-> **Od 1. března 2021** bude funkce jednorázového hesla pro e-mail zapnutá pro všechny existující klienty a ve výchozím nastavení povolená pro nové klienty. Pokud nechcete povolit automatické zapnutí této funkce, můžete ji zakázat. Viz téma [deaktivace e-mailového hesla One-Time](#disable-email-one-time-passcode) .
+> **Od října 2021** se funkce jednorázového hesla pro e-mail zapne pro všechny existující klienty a ve výchozím nastavení povolená pro nové klienty. Pokud nechcete povolit automatické zapnutí této funkce, můžete ji zakázat. Viz téma [deaktivace e-mailového hesla One-Time](#disable-email-one-time-passcode) .
 
 > [!NOTE]
 > Jednorázovým uživatelům se musí přihlásit pomocí odkazu, který obsahuje kontext tenanta (například `https://myapps.microsoft.com/?tenantid=<tenant id>` nebo nebo `https://portal.azure.com/<tenant id>` v případě ověřené domény `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com` ). Přímé odkazy na aplikace a prostředky fungují i tak dlouho, dokud budou zahrnovat kontext tenanta. Uživatelé typu Host se aktuálně nemohou přihlašovat pomocí koncových bodů, které nemají kontext tenanta. Například použití `https://myapps.microsoft.com` , `https://portal.azure.com` způsobí chybu.
@@ -71,7 +71,7 @@ Uživatel typu host teri@gmail.com je pozván společnosti Fabrikam, která nem�
 
 ## <a name="disable-email-one-time-passcode"></a>Zakázat jednorázové heslo pro odesílání e-mailů
 
-Od 1. března 2021 bude funkce jednorázového hesla pro e-mail zapnutá pro všechny existující klienty a ve výchozím nastavení povolená pro nové klienty. V tuto chvíli už společnost Microsoft nebude podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované ("virové" nebo "just-in-time") účty Azure AD a klienty. Povolujeme funkci jednorázového hesla e-mailu, protože pro uživatele typu Host nabízí bezproblémové záložní metody ověřování. Nicméně máte možnost tuto funkci zakázat, pokud se rozhodnete ji nepoužívat.
+Od října 2021 se funkce jednorázového hesla pro e-mail zapne pro všechny existující klienty a ve výchozím nastavení povolená pro nové klienty. V tuto chvíli už společnost Microsoft nebude podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované ("virové" nebo "just-in-time") účty Azure AD a klienty. Povolujeme funkci jednorázového hesla e-mailu, protože pro uživatele typu Host nabízí bezproblémové záložní metody ověřování. Nicméně máte možnost tuto funkci zakázat, pokud se rozhodnete ji nepoužívat.
 
 > [!NOTE]
 >
@@ -87,10 +87,8 @@ Od 1. března 2021 bude funkce jednorázového hesla pro e-mail zapnutá pro vš
 
 4. V části **e-mail jednorázového hesla pro hosty** vyberte možnost **Zakázat e-mailová hesla pro hosty v jednom** čase.
 
-    ![Nastavení jednorázového hesla pro e-mail](media/one-time-passcode/otp-admin-settings.png)
-
    > [!NOTE]
-   > Pokud se zobrazí následující přepínač místo výše uvedených možností, znamená to, že jste dříve povolili, zakázali nebo přihlásili do verze Preview této funkce. Chcete-li funkci zakázat, vyberte možnost **ne** .
+   > Pokud se zobrazí následující přepínač namísto e-mailových možností jednorázového hesla, znamená to, že jste dříve povolili, zakázali nebo přihlásili do verze Preview této funkce. Chcete-li funkci zakázat, vyberte možnost **ne** .
    >
    >![Povolit přístup k jednorázovému heslu pro odesílání e-mailů](media/delegate-invitations/enable-email-otp-opted-in.png)
 
@@ -98,14 +96,14 @@ Od 1. března 2021 bude funkce jednorázového hesla pro e-mail zapnutá pro vš
 
 ## <a name="note-for-public-preview-customers"></a>Poznámka pro zákazníky ve veřejné verzi Preview
 
-Pokud jste se dříve přihlásili k e-mailu ve verzi Public Preview na e-mail, nebudete se na vás vztahovat datum března 2021 pro automatické povolení funkcí, takže vaše související obchodní procesy nebudou ovlivněny. Kromě toho se v Azure Portal v části **e-mail jednorázového hesla pro hosty** nezobrazí možnost **automaticky povolit jednorázové e-mailové heslo pro hosty v březnu 2021**. Místo toho se zobrazí následující přepínač **Ano** nebo **ne** :
+Pokud jste se dříve přihlásili k e-mailu ve verzi Public Preview na e-mail, datum v říjnu 2021 pro automatické povolování funkcí se na vás netýká, takže vaše související obchodní procesy nebudou ovlivněny. Kromě toho se v Azure Portal v části **e-mail jednorázového hesla pro hosty** nezobrazí možnost **automaticky povolit jednorázové e-mailové heslo pro hosty v říjnu 2021**. Místo toho se zobrazí následující přepínač **Ano** nebo **ne** :
 
 ![Povolit přístup k jednorázovému heslu pro odesílání e-mailů](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-Pokud byste ale chtěli tuto funkci odhlásit a povolit její automatické povolení v březnu 2021, můžete se vrátit k výchozímu nastavení pomocí [typu prostředku konfigurace metody ověřování e-mailu](/graph/api/resources/emailauthenticationmethodconfiguration)Microsoft Graph rozhraní API. Až se vrátíte k výchozímu nastavení, v části **e-mail jednorázového hesla pro hosty** budou k dispozici následující možnosti:
+Pokud byste ale chtěli tuto funkci odhlásit a povolit její automatické povolení v říjnu 2021, můžete se vrátit k výchozímu nastavení pomocí [typu prostředku konfigurace metody ověřování e-mailu](/graph/api/resources/emailauthenticationmethodconfiguration)Microsoft Graph rozhraní API. Až se vrátíte k výchozímu nastavení, v části **e-mail jednorázového hesla pro hosty** budou k dispozici následující možnosti:
 
-- **Automaticky povolit jednorázové e-mailové heslo pro hosty v březnu 2021**. Výchozí Pokud funkce jednorázového hesla pro e-mail ještě není pro vašeho tenanta povolená, bude automaticky zapnutá v březnu 2021. Pokud chcete povolit funkci v daném čase, není nutná žádná další akce. Pokud jste tuto funkci již povolili nebo zakázali, tato možnost nebude k dispozici.
+- **Automaticky povolit jednorázové e-mailové heslo pro hosty v říjnu 2021**. Výchozí Pokud pro vašeho tenanta ještě není povolená funkce pro jednorázové e-mailové heslo, bude automaticky zapnutá v říjnu 2021. Pokud chcete povolit funkci v daném čase, není nutná žádná další akce. Pokud jste tuto funkci již povolili nebo zakázali, tato možnost nebude k dispozici.
 
 - **Povolte jednorázové e-mailové heslo pro hosty**, které jsou teď platné. Zapne pro vašeho tenanta funkci jednorázového hesla pro e-mail.
 
-- **Zakažte jednorázové e-mailové heslo pro hosty**. Vypne funkci jednorázového hesla e-mailu pro vašeho tenanta a zabrání funkci v zapnutí v březnu 2021.
+- **Zakažte jednorázové e-mailové heslo pro hosty**. Vypne funkci jednorázového hesla e-mailu pro vašeho tenanta a zabrání funkci v zapnutí v říjnu 2021.

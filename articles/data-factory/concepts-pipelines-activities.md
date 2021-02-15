@@ -1,20 +1,17 @@
 ---
 title: Kanály a aktivity v Azure Data Factory
 description: Seznamte se s kanály a aktivitami v Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: ceaced5860976b0fa9f84903804700f778ed9550
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 870c812a68f765f987cfd3d1b953e0afeb3e9055
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500070"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364503"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity v Azure Data Factory
 
@@ -69,7 +66,7 @@ Další informace najdete v článku [Aktivity transformace dat](transform-data.
 ## <a name="control-flow-activities"></a>Aktivity toku řízení
 Podporují se následující aktivity toku řízení:
 
-Aktivita řízení | Popis
+Aktivita řízení | Description
 ---------------- | -----------
 [Připojit proměnnou](control-flow-append-variable-activity.md) | Přidejte hodnotu do existující proměnné pole.
 [Spustit kanál](control-flow-execute-pipeline-activity.md) | Aktivita spuštění kanálu umožňuje kanálu služby Data Factory volat jiný kanál.
@@ -141,7 +138,7 @@ Aktivity spuštění zahrnují aktivity [přesunu dat](#data-movement-activities
 
 Následující tabulka obsahuje popis vlastností v definici aktivity ve formátu JSON:
 
-Značka | Popis | Povinné
+Značka | Popis | Vyžadováno
 --- | ----------- | ---------
 name | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou. <br/><ul><li>Maximální počet znaků: 55.</li><li>Musí začínat písmenem nebo podtržítkem ( \_ ).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \" | Yes</li></ul>
 description | Text popisující, k čemu aktivita slouží. | Yes
@@ -182,12 +179,12 @@ Zásady ovlivňují chování aktivity za běhu a nabízejí možnosti konfigura
 }
 ```
 
-Název JSON | Popis | Povolené hodnoty | Vyžadováno
+Název JSON | Description | Povolené hodnoty | Vyžadováno
 --------- | ----------- | -------------- | --------
-timeout | Určuje časový limit pro spuštění aktivity. | Časový interval | Ne. Výchozí hodnota časového limitu je 7 dní.
-retry | Maximální počet opakovaných pokusů. | Integer | Ne. Výchozí hodnota je 0.
-retryIntervalInSeconds | Prodleva mezi pokusy o opakování v sekundách. | Integer | Ne. Výchozí hodnota je 30 sekund.
-secureOutput | Při nastavení na hodnotu true se výstup z aktivity považuje za zabezpečený a neprotokoluje se k monitorování. | Logická hodnota | Ne. Výchozí hodnota je false.
+timeout | Určuje časový limit pro spuštění aktivity. | Časový interval | No. Výchozí hodnota časového limitu je 7 dní.
+retry | Maximální počet opakovaných pokusů. | Integer | No. Výchozí hodnota je 0.
+retryIntervalInSeconds | Prodleva mezi pokusy o opakování v sekundách. | Integer | No. Výchozí hodnota je 30 sekund.
+secureOutput | Při nastavení na hodnotu true se výstup z aktivity považuje za zabezpečený a neprotokoluje se k monitorování. | Logická hodnota | No. Výchozí hodnota je false.
 
 ### <a name="control-activity"></a>Aktivita řízení
 Aktivity řízení mají následující strukturu nejvyšší úrovně:
@@ -206,7 +203,7 @@ Aktivity řízení mají následující strukturu nejvyšší úrovně:
 }
 ```
 
-Značka | Popis | Povinné
+Značka | Popis | Vyžadováno
 --- | ----------- | --------
 name | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou.<br/><ul><li>Maximální počet znaků: 55.</li><li>Musí začínat číslem písmenem nebo podtržítkem ( \_ ).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \" | Yes</li><ul>
 description | Text popisující, k čemu aktivita slouží. | Yes

@@ -3,18 +3,18 @@ title: 'ML Studio (Classic): NET # Custom neuronové Networks – Azure'
 description: 'Průvodce syntaxí pro jazyk specifikace NET # neuronové Networks Naučte se vytvářet vlastní neuronové síťové modely v Azure Machine Learning Studio (Classic).'
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: a36eb21f681aec1cfc52a000b60bdbc30cab0633
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 5137b633f66088efbee41b96ba715eb3b18961dc
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302790"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519248"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>Příručka k jazyku .NET # neuronové Network Specification pro Machine Learning Studio (Classic)
 
@@ -57,7 +57,7 @@ NET # navíc podporuje následující čtyři druhy pokročilých sad připojen�
 
 ## <a name="supported-customizations"></a>Podporované kustomizace
 
-Architektura neuronovéch síťových modelů, které vytvoříte v Azure Machine Learning Studio (Classic), se dá výrazně přizpůsobit pomocí příkazu NET #. Máte následující možnosti:
+Architektura neuronovéch síťových modelů, které vytvoříte v Azure Machine Learning Studio (Classic), se dá výrazně přizpůsobit pomocí příkazu NET #. Další možnosti:
 
 + Vytváření skrytých vrstev a řízení počtu uzlů v jednotlivých vrstvách.
 + Určete, jak mají být vrstvy vzájemně propojeny.
@@ -176,7 +176,7 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 
 Volitelně můžete zadat sadu vah pro filtrovanou sadu. Hodnota atributu **váhy** musí být řazené kolekce členů hodnot s plovoucí desetinnou čárkou s délkou, která odpovídá počtu připojení definovaných v rámci sady. Ve výchozím nastavení se závaží náhodně generují.
 
-Hodnoty váhy jsou seskupené podle indexu cílového uzlu. To znamená, že pokud je první cílový uzel připojen k zdrojovým uzlům, první `K` prvky n- **Weights** tice jsou váhy pro první cílový uzel v pořadí zdrojového indexu. Totéž platí pro zbývající cílové uzly.
+Hodnoty váhy jsou seskupené podle indexu cílového uzlu. To znamená, že pokud je první cílový uzel připojen k zdrojovým uzlům, první `K` prvky n-  tice jsou váhy pro první cílový uzel v pořadí zdrojového indexu. Totéž platí pro zbývající cílové uzly.
 
 Je možné zadat váhy přímo jako konstantní hodnoty. Pokud jste například dříve naučili váhy, můžete je zadat jako konstanty pomocí této syntaxe:
 
@@ -214,7 +214,7 @@ Existují dvě sady vlastností, které řídí odsazení, vlastnosti, které se
 
     Je-li hodnota pro dimenzi false, jsou definovány jádro, aby počet uzlů na každé straně, které jsou vycházející z něj, byl stejný (až do rozdílu 1). Výchozí hodnota tohoto atributu je řazená kolekce členů se všemi komponentami, které se rovnají hodnotě false.
 
-+ **UpperPad** a **LowerPad**: (volitelné) poskytují větší kontrolu nad množstvím odsazení, které se má použít. **Důležité informace:** Tyto atributy lze definovat, pokud a pouze v případě, že není definována vlastnost **odsazení** výše **_not_*. Hodnoty by měly být celočíselné řazené kolekce členů s délkami, které jsou aritou sady. Při zadání těchto atributů jsou "fiktivní" uzly přidány do dolního a horního konce každé dimenze vstupní vrstvy. Počet uzlů přidaných do dolních a horních konců v každém rozměru je určen pomocí _* LowerPad**[i] a **UpperPad**[i] v uvedeném pořadí.
++ **UpperPad** a **LowerPad**: (volitelné) poskytují větší kontrolu nad množstvím odsazení, které se má použít. **Důležité informace:** Tyto atributy lze definovat, pokud a pouze v případě, že není definována vlastnost **odsazení** výše ***. Hodnoty by měly být celočíselné řazené kolekce členů s délkami, které jsou aritou sady. Při zadání těchto atributů jsou "fiktivní" uzly přidány do dolního a horního konce každé dimenze vstupní vrstvy. Počet uzlů přidaných do dolních a horních konců v každém rozměru je určen pomocí _* LowerPad**[i] a **UpperPad**[i] v uvedeném pořadí.
 
     Chcete-li zajistit, že jádra odpovídají pouze skutečným uzlům a nikoli k uzlům "fiktivních", musí být splněny následující podmínky:
   - Každá součást **LowerPad** musí být výhradně menší než `KernelShape[d]/2` .
@@ -266,9 +266,9 @@ Normalizace odezvy se používá k podpoře generalizace v neuronové sítích. 
 
 Normalizované balíčky odezvy podporují všechny atributy konvoluční s výjimkou **sdílení**, **MapCount** a **vah**.
 
-+ Pokud jádro obsahuje neurons ve stejné mapě jako **_x_*_, schéma normalizace se označuje jako* normalizované normalizace mapování**. Pro definování stejné normalizace mapování musí mít první souřadnice v **InputShape** hodnotu 1.
++ Pokud jádro obsahuje neurons ve stejné mapě jako ***x** _, schéma normalizace se označuje jako _ * stejná normalizace mapování * *. Pro definování stejné normalizace mapování musí mít první souřadnice v **InputShape** hodnotu 1.
 
-+ Pokud jádro obsahuje neurons ve stejné prostorové pozici jako **_x_*_, ale neurons jsou v jiných mapách, schéma normalizace se zavolá v případě* normalizace map**. Tento typ normalizace odezvy implementuje formu nechte inspirovatho inhibice podle typu nalezeného v reálných neuronsch, což vytváří konkurenci pro úrovně velkých aktivací mezi neuron výstupy vypočítanými v různých mapách. Chcete-li definovat napříč normalizačními mapami, první souřadnice musí být celé číslo větší než jedna a nesmí být větší než počet map a zbytek souřadnic musí mít hodnotu 1.
++ Pokud jádro obsahuje neurons ve stejné prostorové pozici jako ***x** _, ale neurons jsou v jiných mapách, schéma normalizace se nazývá _ * napříč normalizací map * *. Tento typ normalizace odezvy implementuje formu nechte inspirovatho inhibice podle typu nalezeného v reálných neuronsch, což vytváří konkurenci pro úrovně velkých aktivací mezi neuron výstupy vypočítanými v různých mapách. Chcete-li definovat napříč normalizačními mapami, první souřadnice musí být celé číslo větší než jedna a nesmí být větší než počet map a zbytek souřadnic musí mít hodnotu 1.
 
 Vzhledem k tomu, že sady pro normalizaci odpovědí používají předdefinované funkce na hodnoty zdrojového uzlu k určení hodnoty cílového uzlu, nemají žádný stav vlaku (váhy nebo posuny).
 

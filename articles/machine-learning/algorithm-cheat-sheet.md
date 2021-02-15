@@ -9,18 +9,19 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: b824604ce9d0171b5612ab559eace4b35fd01eb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+adobe-target: true
+ms.openlocfilehash: 730fcf3fb552b92a02b255ad654f64d5ff7a92fa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82890978"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367052"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Tahákový list algoritmu Machine Learning pro návrháře Azure Machine Learning
 
 **Tahákový list s algoritmem Azure Machine Learning** vám pomůže vybrat správný algoritmus z návrháře pro model prediktivní analýzy.
 
-Azure Machine Learning má rozsáhlou knihovnu algoritmů od ***klasifikace***, ***doporučí systémy***, ***clusteringu***, ***detekce anomálií***, ***regrese***a řady ***Text Analytics*** . Každá z nich je navržena tak, aby se vyřešil jiný typ problému strojového učení.
+Azure Machine Learning má rozsáhlou knihovnu algoritmů z třídy ***klasifikace** _, _*_doporučované systémy_*_, _*_clustering_*_, _*_detekce anomálií_*_, _*_regrese_*_ a _ *_Text Analytics_** rodiny. Každá z nich je navržena tak, aby se vyřešil jiný typ problému strojového učení.
 
 Další pokyny najdete v tématu [postup výběru algoritmů](how-to-select-algorithms.md) .
 
@@ -42,7 +43,7 @@ Pokud chcete získat další informace o algoritmech v Návrháři Azure Machine
 
 ## <a name="kinds-of-machine-learning"></a>Druhy strojového učení
 
-Existují tři hlavní kategorie strojového učení: *dohled nad dohledem*, *vzdělávání bez dohledu*a *posílení učení*.
+Existují tři hlavní kategorie strojového učení: *dohled nad dohledem*, *vzdělávání bez dohledu* a *posílení učení*.
 
 ### <a name="supervised-learning"></a>Vzdělávání pod dohledem
 

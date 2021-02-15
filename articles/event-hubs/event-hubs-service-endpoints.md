@@ -2,13 +2,13 @@
 title: Koncové body služby Virtual Network – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o tom, jak přidat koncový bod služby Microsoft. EventHub do virtuální sítě.
 ms.topic: article
-ms.date: 07/29/2020
-ms.openlocfilehash: 029338e3835d03b1a66ff6629e872c84113b0ff2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 02/12/2021
+ms.openlocfilehash: f725c4f4d94cbf7d0463ce49c1d2809444ef6f7a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015570"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516678"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>Povolení přístupu k oborům názvů Azure Event Hubs z konkrétních virtuálních sítí 
 
@@ -46,8 +46,8 @@ V této části se dozvíte, jak pomocí Azure Portal přidat koncový bod služ
 1. V [Azure Portal](https://portal.azure.com)přejděte do **oboru názvů Event Hubs** .
 4. V části **Nastavení** v nabídce vlevo vyberte **sítě** . Karta **síť** se zobrazí jenom pro **standardní** nebo **vyhrazené** obory názvů. 
 
-    > [!NOTE]
-    > Ve výchozím nastavení je vybraná možnost **vybrané sítě** , jak je znázorněno na následujícím obrázku. Pokud nezadáte pravidlo brány firewall protokolu IP nebo přidáte virtuální síť na této stránce, přístup k oboru názvů se dá získat prostřednictvím **veřejného Internetu** (pomocí přístupového klíče). 
+    > [!WARNING]
+    > Pokud vyberete možnost **vybrané sítě** a na tuto stránku nepřidáte aspoň jedno pravidlo FIREWALLU protokolu IP nebo virtuální síť, přístup k oboru názvů se dá získat prostřednictvím **veřejného Internetu** (pomocí přístupové klávesy). 
 
     :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="Karta sítě – volba vybraných sítí" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
 
@@ -79,28 +79,12 @@ V této části se dozvíte, jak pomocí Azure Portal přidat koncový bod služ
 [!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Použití šablony Resource Manageru
+Následující vzorová Správce prostředků šablona přidá pravidlo virtuální sítě do existujícího oboru názvů Event Hubs. Pro síťové pravidlo určuje ID podsítě ve virtuální síti. 
 
-Následující šablona Správce prostředků umožňuje přidání pravidla virtuální sítě do existujícího oboru názvů Event Hubs.
+ID je plně kvalifikovaná cesta Správce prostředků pro podsíť virtuální sítě. Například `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` pro výchozí podsíť virtuální sítě.
 
-Parametry šablony:
+Při přidávání pravidel virtuální sítě nebo bran firewall nastavte hodnotu `defaultAction` na `Deny` .
 
-* `namespaceName`: Event Hubs obor názvů.
-* `vnetRuleName`: Název pro pravidlo Virtual Network, které se má vytvořit.
-* `virtualNetworkingSubnetId`: Plně kvalifikovaná cesta Správce prostředků pro podsíť virtuální sítě; například `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` pro výchozí podsíť virtuální sítě.
-
-> [!NOTE]
-> I když nejsou možná žádná pravidla odepření, má šablona Azure Resource Manager výchozí akci nastavenou na **Povolit** , což neomezuje připojení.
-> Při vytváření pravidel pro Virtual Network nebo brány firewall je nutné změnit **_"defaultAction"_ .**
-> 
-> Výsledkem
-> ```json
-> "defaultAction": "Allow"
-> ```
-> na
-> ```json
-> "defaultAction": "Deny"
-> ```
->
 
 ```json
 {
@@ -202,6 +186,9 @@ Parametry šablony:
 ```
 
 Pokud chcete nasadit šablonu, postupujte podle pokynů [Azure Resource Manager][lnk-deploy].
+
+> [!IMPORTANT]
+> Pokud neexistují žádná pravidla pro IP a virtuální sítě, veškerý provoz se předává do oboru názvů, a to i v případě, že nastavíte `defaultAction` na `deny` .  K oboru názvů se dá získat přístup prostřednictvím veřejného Internetu (pomocí přístupového klíče). Zadejte alespoň jedno pravidlo IP nebo pravidlo virtuální sítě pro obor názvů, aby bylo možné provozovat pouze ze zadaných IP adres nebo podsítě virtuální sítě.  
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: kgremban
-ms.openlocfilehash: ab783d6cb20f1c2fe31e8556dc57999df20d5637
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: efbae71162bdd0c126287191f7ad35cf903db138
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629806"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378073"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>Instalace nebo odinstalace Azure IoT Edge pro Linux
 
@@ -32,7 +32,7 @@ V tomto článku jsou uvedené kroky pro instalaci modulu runtime Azure IoT Edge
 
 * Zařízení se systémem Linux
 
-  Mít zařízení s platformou x64, ARM32 nebo ARM64 Linux. Microsoft poskytuje instalační balíčky pro Ubuntu Server 16,04, Ubuntu Server 18,04 a maliny PI pro roztažené operační systémy.
+  Mít zařízení s platformou x64, ARM32 nebo ARM64 Linux. Microsoft poskytuje instalační balíčky pro Ubuntu Server 18,04 a malinu PI pro roztažené operační systémy.
 
   Nejnovější informace o tom, které operační systémy se v produkčních scénářích aktuálně podporují, najdete v článku [Azure IoT Edge podporované systémy](support.md#operating-systems) .
 
@@ -42,12 +42,6 @@ V tomto článku jsou uvedené kroky pro instalaci modulu runtime Azure IoT Edge
 * Připravte zařízení pro přístup k instalačním balíčkům společnosti Microsoft.
 
   Nainstalujte konfiguraci úložiště, která odpovídá operačnímu systému vašeho zařízení.
-
-  * **Ubuntu Server 16,04**:
-
-    ```bash
-    curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
-    ```
 
   * **Ubuntu Server 18,04**:
 
@@ -208,10 +202,10 @@ V souboru vyhledejte část konfigurace zřizování a odkomentujte **ruční ko
 
 Aktualizujte následující pole:
 
-* **iothub_hostname**: název hostitele IoT Hub, ke kterému se bude zařízení připojovat. Například `{IoT hub name}.azure-devices.net`.
+* **iothub_hostname**: název hostitele IoT Hub, ke kterému se bude zařízení připojovat. Například, `{IoT hub name}.azure-devices.net`.
 * **device_ID**: ID, které jste zadali při registraci zařízení.
-* **identity_cert**: identifikátor URI certifikátu identity na zařízení. Například `file:///path/identity_certificate.pem`.
-* **identity_pk**: identifikátor URI pro soubor privátního klíče pro poskytnutý certifikát identity. Například `file:///path/identity_key.pem`.
+* **identity_cert**: identifikátor URI certifikátu identity na zařízení. Například, `file:///path/identity_certificate.pem`.
+* **identity_pk**: identifikátor URI pro soubor privátního klíče pro poskytnutý certifikát identity. Například, `file:///path/identity_key.pem`.
 
 Uložte soubor a zavřete ho.
 

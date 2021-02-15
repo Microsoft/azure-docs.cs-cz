@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73376994e01ed89891726a8f6e1b727f89dab2fb
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 1957adc0effd5b37d7aff3f813267da6ca065e0a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201718"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368961"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Tento článek popisuje požadavky a požadavky na hardware pro službu Azure Active Directory (Azure AD) Connect.
@@ -73,6 +73,7 @@ Další informace o zabezpečení prostředí Active Directory najdete v tématu
     - Je nutné nakonfigurovat certifikáty TLS/SSL. Další informace najdete v tématu [Správa protokolů SSL/TLS a šifrovacích sad pro AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) a [správu certifikátů SSL v AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap).
     - Je nutné nakonfigurovat překlad adres IP. 
 - Pokud mají globální správci povolené MFA, https://secure.aadcdn.microsoftonline-p.com *musí* být adresa URL v seznamu důvěryhodných serverů. Po zobrazení výzvy k zadání dotazu MFA se zobrazí výzva k přidání tohoto webu do seznamu důvěryhodných webů. Aplikaci Internet Explorer můžete použít k jejímu přidání do důvěryhodných webů.
+- Pokud plánujete použít Azure AD Connect Health pro synchronizaci, zajistěte, aby byly splněny také předpoklady pro Azure AD Connect Health. Další informace najdete v tématu [instalace agenta Azure AD Connect Health](how-to-connect-health-agent-install.md).
 
 #### <a name="harden-your-azure-ad-connect-server"></a>Posílení zabezpečení Azure AD Connect serveru 
 Doporučujeme, abyste Server Azure AD Connect, abyste snížili plochu pro útok na zabezpečení pro tuto kritickou součást vašeho IT prostředí. Následující doporučení vám pomůžou zmírnit rizika zabezpečení vaší organizace.

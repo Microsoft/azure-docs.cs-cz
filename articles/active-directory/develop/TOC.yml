@@ -475,6 +475,10 @@
           href: reference-third-party-cookies-spas.md
         - name: Zpracování změn souborů cookie SameSite v Chromu
           href: howto-handle-samesite-cookie-changes-chrome-browser.md
+    - name: Podpora ověřování neheslem
+      items:
+        - name: Podpora ověřování FIDO2
+          href: support-fido2-authentication.md
     - name: Ověřování aplikací a služeb
       items:
         - name: Vytvoření instančního objektu s využitím Azure PowerShellu

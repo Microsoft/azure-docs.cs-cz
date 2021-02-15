@@ -1,14 +1,14 @@
 ---
 title: Nabídky spravovaných služeb na Azure Marketplace
 description: Nabídky spravované služby umožňují zákazníkům v Azure Marketplace prodávat nabídky správy prostředků.
-ms.date: 07/28/2020
+ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6c3047cd95128f689e75d9c1f5fba5a39f86291c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f3a12f34b4cedcb12ad2786fcb687044c30c211
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88163318"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375540"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Nabídky spravovaných služeb na Azure Marketplace
 
@@ -18,7 +18,7 @@ Tento článek popisuje typ nabídky **spravované služby** v [Azure Marketplac
 
 Spravovaná služba nabízí zjednodušení procesu připojování zákazníků do Azure Lighthouse. Když zákazník koupí nabídku v Azure Marketplace, bude moct určit, které předplatné nebo skupiny prostředků by se měly připojit.
 
-Potom budou uživatelé ve vaší organizaci moci pracovat na těchto prostředcích v rámci vašeho spravovaného klienta prostřednictvím [delegované správy prostředků Azure](azure-delegated-resource-management.md)podle přístupu, který jste definovali při vytváření nabídky. To se provádí pomocí manifestu, který určuje Azure Active Directory (Azure AD) uživatelů, skupin a instančních objektů, které budou mít přístup k zákaznickým prostředkům, spolu s rolemi, které definují jejich úroveň přístupu. Když pro skupinu Azure AD přiřadíte oprávnění místo řady individuálních účtů uživatelů nebo aplikací, můžete přidat nebo odebrat jednotlivé uživatele, když se vaše požadavky na přístup změní.
+Potom budou uživatelé ve vaší organizaci moci pracovat na těchto prostředcích v rámci vašeho spravovaného klienta prostřednictvím [delegované správy prostředků Azure](azure-delegated-resource-management.md)podle přístupu, který jste definovali při vytváření nabídky. To se provádí pomocí manifestu, který určuje Azure Active Directory (Azure AD) uživatelů, skupin a instančních objektů, které budou mít přístup k zákaznickým prostředkům, spolu s [rolemi](tenants-users-roles.md) , které definují jejich úroveň přístupu.
 
 ## <a name="public-and-private-offers"></a>Veřejné a soukromé nabídky
 

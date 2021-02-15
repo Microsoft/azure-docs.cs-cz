@@ -1,24 +1,18 @@
 ---
 title: Průvodce kopírováním Data Factory Azure
 description: Přečtěte si, jak pomocí Průvodce kopírováním Azure Data Factory zkopírovat data z podporovaných zdrojů dat do jímky.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: ''
-editor: ''
-ms.assetid: 0974eb40-db98-4149-a50d-48db46817076
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 99c7490c4bf842da119a3a0abd4623c64d720ac8
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0f95b0d62bc81a8dddc72239491a05ca78945490
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462212"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393373"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Průvodce kopírováním Azure Data Factory
 
@@ -114,8 +108,8 @@ V této části se prozkoumá běžné metody řešení potíží pro Průvodce 
             - login.windows.net
         8.  Zavřete prohlížeč a znovu ho spusťte.
     - Pokud používáte prohlížeč Firefox, přidejte výjimku soubory cookie podle pokynů níže.
-        1. V nabídce Firefox přejděte na **Tools**  >  **Možnosti** nástroje.
-        2. V části Historie **ochrany osobních údajů** se  >  **History** může zobrazit, že aktuální nastavení **používá pro historii vlastní nastavení**.
+        1. V nabídce Firefox přejděte na   >  **Možnosti** nástroje.
+        2. V části Historie **ochrany osobních údajů** se  >  může zobrazit, že aktuální nastavení **používá pro historii vlastní nastavení**.
         3. V části **přijmout soubory cookie třetích stran** nemusí být vaše aktuální nastavení **nikdy**, potom klikněte na **výjimky** na pravé straně pro přidání následujících webů.
             - https://login.microsoftonline.com
             - https://login.windows.net

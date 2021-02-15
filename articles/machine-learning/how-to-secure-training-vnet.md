@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 02045c7ba2373c57213cc7fffb71a5e6bb5979e6
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 9a937336e1628add54ab5f52cdd6ef475d463f7d
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537996"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515984"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Zabezpečení Azure Machine Learningho školicího prostředí s využitím virtuálních sítí
 
@@ -26,7 +26,7 @@ Tento článek je třetí částí série s pěti částmi, která vás provede 
 
 Podívejte se na další články v této sérii:
 
-[1. virtuální síť – přehled](how-to-network-security-overview.md)  >  [Zabezpečte pracovní prostor](how-to-secure-workspace-vnet.md)  >  **3. Zabezpečte školicí prostředí**  >  [4. Zabezpečte prostředí Inferencing](how-to-secure-inferencing-vnet.md)   >  [5. Povolit funkci studia](how-to-enable-studio-virtual-network.md)
+[1. virtuální síť – přehled](how-to-network-security-overview.md)  >  [2 Zabezpečte pracovní prostor](how-to-secure-workspace-vnet.md)  >  **3. Zabezpečte školicí prostředí**  >  [4. Zabezpečte prostředí Inferencing](how-to-secure-inferencing-vnet.md)   >  [5. Povolit funkci studia](how-to-enable-studio-virtual-network.md)
 
 V tomto článku se dozvíte, jak zabezpečit následující výpočetní prostředky ve virtuální síti:
 > [!div class="checklist"]
@@ -273,7 +273,7 @@ Pokud chcete použít Azure Databricks ve virtuální síti s vaším pracovním
 > * Pokud jsou účty Azure Storage v pracovním prostoru zabezpečeny i ve virtuální síti, musí být ve stejné virtuální síti jako cluster Azure Databricks.
 > * Kromě __datacihly –__ veřejné podsítě a __datacihly__ , které používají Azure Databricks, je také nutná __výchozí__ podsíť vytvořená pro virtuální síť.
 
-Konkrétní informace o použití Azure Databricks s virtuální sítí najdete v tématu [nasazení Azure Databricks ve službě Azure Virtual Network](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html).
+Konkrétní informace o použití Azure Databricks s virtuální sítí najdete v tématu [nasazení Azure Databricks ve službě Azure Virtual Network](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject).
 
 <a id="vmorhdi"></a>
 

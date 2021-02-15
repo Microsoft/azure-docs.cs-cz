@@ -7,18 +7,45 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 12/09/2020
+ms.date: 02/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2c9b239269aa00255aa08d6c233cd7978b253d94
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: f303ddb4d32da4c4cb6609f3ceec34e5c83529a8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653567"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391452"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Poznámky k verzi – datové služby s podporou ARC Azure (Preview)
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+## <a name="january-2021"></a>Leden 2021
+
+### <a name="new-capabilities-and-features"></a>Nové funkce a funkce
+
+Azure Data CLI ( `azdata` ) číslo verze: 20.3.0. Stáhnout v [https://aka.ms/azdata](https://aka.ms/azdata) . Můžete nainstalovat `azdata` z [instalačního rozhraní Azure Data CLI ( `azdata` )](/sql/azdata/install/deploy-install-azdata).
+
+
+Mezi další aktualizace patří:
+- Lokalizovaný portál dostupný pro 17 nových jazyků
+- Menší změny v Kube – nativní soubory. yaml
+- Nové verze Grafana a Kibana
+- Problémy s prostředími Python při použití azdata v poznámkových blocích ve Azure Data Studio vyřešené
+- Rozšíření pg_audit je teď k dispozici pro PostgreSQL škálování
+- Při úplném obnovení databáze PostgreSQL s škálovatelným škálováním se už nevyžadují ID zálohy.
+- Stav (stav) se oznamuje pro každou instanci PostgreSQL, která představuje skupinu severů.
+
+   V dřívějších verzích byl stav agregovaný na úrovni skupiny serverů a neseskupoval na úrovni uzlu PostgreSQL.
+
+- PostgreSQL nasazení nyní respektují parametry velikosti svazku uvedené v příkazech Create
+- Při úpravách skupiny serverů se teď uplatní parametry verze modulu.
+- Zásady vytváření názvů lusků pro PostgreSQL s povoleným rozšířením Azure Arc se změnilo.
+
+    Teď je ve formátu: `ServergroupName{c, w}-n` . Například skupina serverů se třemi uzly, jeden uzel koordinátora a dva pracovní uzly jsou reprezentovány jako:
+   - `Postgres01c-0` (uzel koordinátora)
+   - `Postgres01w-0` (pracovní uzel)
+   - `Postgres01w-1` (pracovní uzel)
 
 ## <a name="december-2020"></a>Prosinec 2020
 

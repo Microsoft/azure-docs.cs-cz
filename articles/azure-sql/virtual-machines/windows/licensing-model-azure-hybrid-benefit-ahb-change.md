@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ea274914ac70540d5763884bbd01e41e349a530d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5813331d5eafd953d776dd19d9cc885ff71b8be0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879826"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361549"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Změna licenčního modelu virtuálního počítače SQL v Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -119,7 +119,6 @@ Změna licenčního modelu je:
    - Podporuje se jenom pro edice Standard a Enterprise systému SQL Server. Změny licencí pro Express, web a vývojáře se nepodporují. 
    - Podporováno pouze pro virtuální počítače nasazené pomocí modelu Azure Resource Manager. Virtuální počítače nasazené prostřednictvím klasického modelu se nepodporují. 
    - K dispozici pouze pro veřejné nebo Azure Government cloudy. 
-   - Podporuje se jenom na virtuálních počítačích, které mají jedno síťové rozhraní (NIC). 
 
 > [!Note]
 > Zvýhodněné hybridní využití Azure můžou mít jenom SQL Server licencování s licencemi na Software Assurance nebo předplatnými. Pokud používáte licencování serveru a licencí CAL pro SQL Server a máte program Software Assurance, můžete použít vlastní licenci na image virtuálního počítače Azure SQL Server a využít tak mobilitu licencí pro tyto servery, ale nemůžete využít jiné funkce Zvýhodněné hybridní využití Azure. 
@@ -136,10 +135,6 @@ K této chybě dochází, když se pokusíte změnit model licence na virtuáln�
 
 Budete muset zaregistrovat předplatné u poskytovatele prostředků a pak [zaregistrovat svůj SQL Server virtuální počítač s rozšířením agenta SQL IaaS](sql-agent-extension-manually-register-single-vm.md). 
 
-
-**Virtuální počítač \<vmname\> má víc než jednu přidruženou síťovou kartu.**
-
-K této chybě dochází na virtuálních počítačích, které mají více než jednu síťovou kartu. Před změnou modelu licencování odeberte jednu ze síťových adaptérů. I když po změně modelu licencí můžete síťové rozhraní přidat zpátky do virtuálního počítače, operace v Azure Portal, například automatické zálohování a opravy, se už nebudou podporovat. 
 
 
 ## <a name="next-steps"></a>Další kroky

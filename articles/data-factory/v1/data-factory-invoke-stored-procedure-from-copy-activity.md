@@ -1,23 +1,18 @@
 ---
 title: Vyvolat uloženou proceduru z aktivity kopírování Azure Data Factory
 description: Naučte se vyvolat uloženou proceduru v Azure SQL Database nebo SQL Server z aktivity Azure Data Factory kopírování.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d2b10744222da8e5d85b19e1ded5aa24cf9c9706
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6f06b84ac0807a37c7adc603a557894be85a4cea
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637849"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374962"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Vyvolat uloženou proceduru z aktivity kopírování v Azure Data Factory
 > [!NOTE]
@@ -29,7 +24,7 @@ Při kopírování dat do [SQL Server](data-factory-sqlserver-connector.md) nebo
 Následující příklad ukazuje, jak vyvolat uloženou proceduru v databázi SQL Server z kanálu Data Factory (aktivita kopírování):  
 
 ## <a name="output-dataset-json"></a>Formát JSON výstupní datové sady
-V souboru JSON výstupní datové sady nastavte **typ** na: **SQLServer** . Nastavte ji na **AzureSqlTable** pro použití s Azure SQL Database. Hodnota vlastnosti **TableName** musí odpovídat názvu prvního parametru uložené procedury.  
+V souboru JSON výstupní datové sady nastavte **typ** na: **SQLServer**. Nastavte ji na **AzureSqlTable** pro použití s Azure SQL Database. Hodnota vlastnosti **TableName** musí odpovídat názvu prvního parametru uložené procedury.  
 
 ```json
 {
@@ -68,7 +63,7 @@ V poli JSON aktivity kopírování definujte oddíl **SqlSink** následujícím 
 ```
 
 ## <a name="stored-procedure-definition"></a>Definice uložené procedury 
-V databázi definujte uloženou proceduru se stejným názvem jako **SqlWriterStoredProcedureName** . Uložená procedura zpracovává vstupní data ze zdrojového úložiště dat a vkládá data do tabulky v cílové databázi. Název prvního parametru uložené procedury musí odpovídat hodnotě tableName definované v datové sadě JSON (marketing).
+V databázi definujte uloženou proceduru se stejným názvem jako **SqlWriterStoredProcedureName**. Uložená procedura zpracovává vstupní data ze zdrojového úložiště dat a vkládá data do tabulky v cílové databázi. Název prvního parametru uložené procedury musí odpovídat hodnotě tableName definované v datové sadě JSON (marketing).
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @stringData varchar(256)
@@ -81,7 +76,7 @@ END
 ```
 
 ## <a name="table-type-definition"></a>Definice typu tabulky
-V databázi Definujte typ tabulky se stejným názvem jako **SqlWriterTableType** . Schéma typu tabulky musí odpovídat schématu vstupní datové sady.
+V databázi Definujte typ tabulky se stejným názvem jako **SqlWriterTableType**. Schéma typu tabulky musí odpovídat schématu vstupní datové sady.
 
 ```sql
 CREATE TYPE [dbo].[MarketingType] AS TABLE(

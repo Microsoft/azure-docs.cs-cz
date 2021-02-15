@@ -8,22 +8,26 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: f18126448f5a6dca29e798ad80cb53a8760689d8
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.custom: contperf-fy21q3-portal
+ms.openlocfilehash: 6bd44ea0217f11a156598a1a6f3703e528dd82d4
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576511"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095167"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory
 
-Azure Active Directory (Azure AD) obsahuje službu proxy aplikací, která uživatelům umožňuje přístup k místním aplikacím přihlášením pomocí svého účtu Azure AD. Tento kurz připraví vaše prostředí pro použití s proxy aplikací. Až bude vaše prostředí připravené, pomocí Azure Portal přidejte místní aplikaci do svého tenanta Azure AD. Pokud chcete **Zobrazit aplikace a rychle začít** používat správu aplikací v Azure, Projděte si [řadu rychlých startů](view-applications-portal.md).
+Azure Active Directory (Azure AD) obsahuje službu proxy aplikací, která uživatelům umožňuje přístup k místním aplikacím přihlášením pomocí svého účtu Azure AD. Další informace o proxy aplikací najdete v tématu [co je App proxy?](what-is-application-proxy.md). Tento kurz připraví vaše prostředí pro použití s proxy aplikací. Až bude vaše prostředí připravené, pomocí Azure Portal přidejte místní aplikaci do svého tenanta Azure AD. 
 
 :::image type="content" source="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png" alt-text="Diagram s přehledem proxy aplikací" lightbox="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png":::
+
+Než začnete, ujistěte se, že jste obeznámeni se správou aplikací a **jedním Sign-On (SSO)** – koncepty. Podívejte se na tyto odkazy:
+- [Série rychlý Start při správě aplikací ve službě Azure AD](view-applications-portal.md)
+- [Co je jednotné Sign-On (SSO)?](what-is-single-sign-on.md)
 
 Konektory jsou klíčovou součástí proxy aplikace. Další informace o konektorech najdete v tématu [vysvětlení konektorů Azure proxy aplikací služby AD](application-proxy-connectors.md).
 

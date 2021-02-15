@@ -8,12 +8,12 @@ author: trkeya
 ms.author: trkeya
 ms.date: 10/27/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 26ceee828bae7ea3fe2d78ec1393f308556b8401
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c28ab557f6aac94fa9acde78c7433b850ecba0be
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033353"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097245"
 ---
 # <a name="update-existing-offers-in-the-commercial-marketplace"></a>Aktualizace stávajících nabídek na komerčním webu Marketplace
 
@@ -31,6 +31,10 @@ Pomocí těchto kroků můžete aktualizovat nabídku, která byla úspěšně p
     - **Nepublikované změny**: oddíl se aktualizoval a je dokončený. Byla poskytnuta všechna požadovaná data a v aktualizacích nebyly zavedeny žádné chyby.
     - **Nedokončeno**: aktualizace provedené v oddílu zavedly chyby, které je třeba opravit, nebo vyžadují, aby byly k dispozici další informace.
 2. Vyberte **publikovat** a odešlete aktualizovanou nabídku pro publikování. Vaše nabídka pak projde standardním [postupem ověřování a publikování](../review-publish-offer.md#validation-and-publishing-steps).
+
+## <a name="changing-offer-type"></a>Změna typu nabídky
+
+[!INCLUDE [change-offer-type](../includes/change-offer-type.md)]
 
 > [!IMPORTANT]
 > Abyste mohli publikovat aktualizovanou nabídku vaší zamýšlené cílové skupině (veřejné nebo soukromé), musíte si prohlédnout svou nabídku Preview a vybrat **Přejít do živého** .

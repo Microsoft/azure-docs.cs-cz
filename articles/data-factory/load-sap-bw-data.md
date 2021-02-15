@@ -1,22 +1,18 @@
 ---
 title: Načtení dat z SAP Business Warehouse
 description: Použití Azure Data Factory ke kopírování dat z SAP Business Warehouse (ČERNOBÍLý)
-services: data-factory
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: bad9a706c5289966334af26eacbfa41c418b7ab5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dabb6d5df0a74cc7ae2fb8b381ad9e0dfe04e63
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360799"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370695"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Kopírování dat z SAP Business Warehouse pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -51,7 +47,7 @@ Na webu Azure Portal přejděte k vaší datové továrně. Vyberte **vytvořit 
 
 1. Na stránce **Začínáme** vyberte **kopírování dat** pro otevření nástroje kopírování dat.
 
-2. Na stránce **vlastnosti** zadejte **název úlohy**a pak vyberte **Další**.
+2. Na stránce **vlastnosti** zadejte **název úlohy** a pak vyberte **Další**.
 
 3. Na stránce **zdrojové úložiště dat** vyberte **+ vytvořit nové připojení**. Vyberte **SAP BW otevřít rozbočovač** z Galerie konektorů a pak vyberte **pokračovat**. Chcete-li filtrovat konektory, můžete do vyhledávacího pole zadat **SAP** .
 
@@ -61,11 +57,11 @@ Na webu Azure Portal přejděte k vaší datové továrně. Vyberte **vytvořit 
 
    1. V seznamu **připojit prostřednictvím prostředí Integration runtime** vyberte existující prostředí IR v místním prostředí. Nebo ho můžete vytvořit, pokud ho ještě nemáte.
 
-      Pokud chcete vytvořit nový prostředí IR v místním prostředí, vyberte **+ Nový**a pak vyberte v místním **prostředí.** Zadejte **název**a potom vyberte **Další**. Vyberte **expresní instalaci** , kterou chcete nainstalovat na aktuální počítač, nebo postupujte podle uvedených kroků **Ruční instalace** .
+      Pokud chcete vytvořit nový prostředí IR v místním prostředí, vyberte **+ Nový** a pak vyberte v místním **prostředí.** Zadejte **název** a potom vyberte **Další**. Vyberte **expresní instalaci** , kterou chcete nainstalovat na aktuální počítač, nebo postupujte podle uvedených kroků **Ruční instalace** .
 
       Jak je uvedeno v části [požadavky](#prerequisites), ujistěte se, že máte konektor SAP pro Microsoft .NET 3,0 nainstalovaný na stejném počítači, na kterém běží prostředí IR pro místní hostování.
 
-   2. Zadejte **název SAP BW serveru**, **číslo systému**, **ID klienta,** **jazyk** (Pokud je jiný než **EN**), **uživatelské jméno**a **heslo**.
+   2. Zadejte **název SAP BW serveru**, **číslo systému**, **ID klienta,** **jazyk** (Pokud je jiný než **EN**), **uživatelské jméno** a **heslo**.
 
    3. Vyberte **Test připojení** , aby se ověřilo nastavení, a pak vyberte **Dokončit**.
 
@@ -149,7 +145,7 @@ Na stránce **Začínáme** pro datovou továrnu vyberte **vytvořit kanál ze �
 
    ![Přírůstková kopírování ze šablony SAP BW](media/load-sap-bw-data/incremental-copy-from-sap-bw-template.png)
 
-3. Tato šablona vygeneruje kanál s následujícími třemi aktivitami a provede jejich zřetězení při úspěchu: *vyhledávání*, *kopírování dat*a *webu*.
+3. Tato šablona vygeneruje kanál s následujícími třemi aktivitami a provede jejich zřetězení při úspěchu: *vyhledávání*, *kopírování dat* a *webu*.
 
    Přejít na kartu **parametry** kanálu. Zobrazí se všechny konfigurace, které je třeba zadat.
 
@@ -190,7 +186,7 @@ Na stránce **Začínáme** pro datovou továrnu vyberte **vytvořit kanál ze �
          }
          ```
 
-      3. Přidejte akci **vytvořit objekt BLOB** . Pro **cestu ke složce** a **název objektu BLOB**použijte stejné hodnoty, které jste nakonfigurovali dříve v *HighWatermarkBlobContainer + HighWatermarkBlobDirectory* a *HighWatermarkBlobName*.
+      3. Přidejte akci **vytvořit objekt BLOB** . Pro **cestu ke složce** a **název objektu BLOB** použijte stejné hodnoty, které jste nakonfigurovali dříve v *HighWatermarkBlobContainer + HighWatermarkBlobDirectory* a *HighWatermarkBlobName*.
 
       4. Vyberte **Uložit**. Pak zkopírujte hodnotu **http post URL** , která se použije v kanálu Data Factory.
 
@@ -267,7 +263,7 @@ Cílové umístění centra pro SAP není cílem dat řízených datovými trži
 
 Po tomto případě budou všechna další rozdílová DTPs a Data Factory rozdílové extrakce fungovat podle očekávání.
 
-Chcete-li nastavit stav rozdílového **DTP, můžete**použít následující možnost k ručnímu spuštění rozdílového DTP:
+Chcete-li nastavit stav rozdílového **DTP, můžete** použít následující možnost k ručnímu spuštění rozdílového DTP:
 
 *Žádné Přenos dat; Stav rozdílu ve zdroji: načteno*
 

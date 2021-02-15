@@ -3,18 +3,18 @@ title: Kopírování datových vědy – příklady – ML Studio (Classic) – 
 description: 'Obchodní tajemství pro datové vědy: Získejte ostatním uživatelům práci za vás. Získejte příklady strojového učení z Azure AI Gallery.'
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 84caf1ea684e46eec00f8479bd0e7c4123e731b1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2410e5fed48b7ab206360debc3bbeb174b3943cb
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322800"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517055"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Kopírování práce jiných lidí pro vědecké zkoumání dat
 ## <a name="video-5-data-science-for-beginners-series"></a>Video 5: řada pro datové vědy pro začátečníky

@@ -212,6 +212,8 @@
       items:
         - name: Vytvoření indexeru
           href: search-howto-create-indexers.md
+        - name: Spustit nebo resetovat indexery
+          href: search-howto-run-reset-indexers.md
         - name: Naplánování indexeru
           href: search-howto-schedule-indexers.md
         - name: Definování mapování polí

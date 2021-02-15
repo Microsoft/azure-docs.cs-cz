@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 5fc47599d09e5be60311dbda15868d87de4d91d2
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 5381c12253f3f301099d469639cc75e390ebceff
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509380"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100360954"
 ---
 # <a name="creating-indexers-in-azure-cognitive-search"></a>Vytváření indexerů v Azure Kognitivní hledání
 
@@ -142,6 +142,20 @@ Naplánované zpracování se obvykle shoduje s potřebou přírůstkového inde
 + [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md)
 + [Table Storage Azure](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
+
+## <a name="change-detection-and-indexer-state"></a>Zjišťování změn a stav indexeru
+
+Indexery mohou detekovat změny v podkladových datech a zpracovávat pouze nové nebo aktualizované dokumenty u každého spuštění indexeru. Pokud například stav indexeru říká, že spuštění proběhlo úspěšně s `0/0` zpracovanými dokumenty, znamená to, že indexer nenašel žádné nové nebo změněné řádky nebo objekty BLOB v podkladovém zdroji dat.
+
+Způsob, jakým indexer podporuje detekci změn, se liší podle zdroje dat:
+
++ Azure Blob Storage, Azure Table Storage a Azure Data Lake Storage Gen2 každou aktualizaci objektu BLOB nebo řádku s datem a časem zarazítkem. Různé indexery využívají tyto informace k určení dokumentů, které se mají aktualizovat v indexu. Vestavěná detekce změn znamená, že indexer dokáže rozpoznávat nové a aktualizované dokumenty, a to bez další konfigurace, která je potřeba na vaší straně.
+
++ SQL Azure a Cosmos DB ve svých platformách poskytovat funkce pro detekci změn. V definici zdroje dat můžete zadat zásady detekce změn.
+
+U rozsáhlých zátěží indexování také indexovací člen sleduje poslední dokument, který zpracoval, prostřednictvím interní "horní značky". Značka se nikdy nezveřejňuje v rozhraní API, ale interně indexer udržuje přehled o tom, kde se zastavil. Když indexování pokračuje, ať už prostřednictvím naplánovaného spuštění nebo volání na vyžádání, indexer odkazuje na horní značku, aby mohl pokračovat tam, kde skončil.
+
+Pokud potřebujete vymazat horní značku a znovu indexovat, můžete použít možnost [resetovat indexer](https://docs.microsoft.com/rest/api/searchservice/reset-indexer). Pro další selektivní opakované indexování použijte [resetování dovedností](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) nebo [resetování dokumentů](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-documents). Prostřednictvím rozhraní API pro resetování můžete vymazat vnitřní stav a také mezipaměť vyprázdnit, pokud jste povolili [přírůstkové obohacení](search-howto-incremental-index.md). Další informace a porovnání jednotlivých možností obnovení najdete v tématu [spuštění nebo resetování indexerů, dovedností a dokumentů](search-howto-run-reset-indexers.md).
 
 ## <a name="know-your-data"></a>Znát data
 

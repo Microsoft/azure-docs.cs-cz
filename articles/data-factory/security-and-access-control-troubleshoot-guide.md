@@ -1,19 +1,17 @@
 ---
 title: Řešení potíží se zabezpečením a řízením přístupu
 description: Naučte se řešit problémy zabezpečení a řízení přístupu v Azure Data Factory.
-services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 02/04/2021
 ms.author: lle
-ms.reviewer: craigg
-ms.openlocfilehash: 37da2869f0cf315ac0a6851c9a77dcee4debf71a
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 0dac0dcb272b602be8b921bce0ffc68c05cb9cbd
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581682"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375166"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Řešení potíží s Azure Data Factory zabezpečení a řízení přístupu
 
