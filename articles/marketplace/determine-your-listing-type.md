@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 01/14/2021
-ms.openlocfilehash: 89cd9f46474e8e311f003f317b90bdb21eae55fe
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 2433e62fd1dbf35748483b40958fc3367532102a
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247539"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099230"
 ---
 # <a name="introduction-to-listing-options"></a>Úvod k možnostem výpisu
 
@@ -38,7 +38,11 @@ Tato tabulka obsahuje seznam dostupných možností pro každý typ nabídky.
 
 &#42; možnosti získat nyní se zobrazí jako možnost získat nyní (zdarma), využít vlastní licenci (BYOL), předplatné a ceny na základě využití. Podrobnosti najdete v tématu o [tom, jak ho získat hned](#get-it-now).
 
-### <a name="free-trial"></a>Bezplatná zkušební verze
+## <a name="changing-offer-type"></a>Změna typu nabídky
+
+[!INCLUDE [change-offer-type](./includes/change-offer-type.md)]
+
+## <a name="free-trial"></a>Bezplatná zkušební verze
 
 Pomocí komerčního tržiště Vylepšete možnosti zjistitelnosti a automatizujte zřizování zkušební verze vašeho řešení. To umožňuje potenciálním zákazníkům používat váš software jako službu (SaaS), IaaS nebo prostředí Microsoft v aplikacích bez nákladů od 30 dnů do šesti měsíců v závislosti na typu nabídky.
 
@@ -46,18 +50,18 @@ Zákazníci používají tlačítko _bezplatné zkušební verze_ na stránce se
 
 U nabídek virtuálních počítačů se zákazníkům účtují náklady na infrastrukturu Azure za použití nabídky během zkušebního období. Po vypršení zkušebního období se zákazníkům automaticky účtují poplatky za poslední plán, který vyzkoušel na základě standardních sazeb, pokud se zruší před koncem zkušebního období.
 
-### <a name="test-drive"></a>Testovací verze
+## <a name="test-drive"></a>Testovací verze
 
 Zákazníci na stránce se seznamem vaší nabídky použijí tlačítko _testovací jednotka_ a získat tak pro určitý počet hodin přístup k předkonfigurovanému prostředí. Další informace o testovacích jednotkách najdete v tématu [co je testovací jednotka?](what-is-test-drive.md) .
 
 > [!TIP]
 > Testovací jednotka se liší od bezplatné zkušební verze. Můžete nabízet testovací, bezplatnou zkušební verzi nebo obojí. Poskytují zákazníkům vaše řešení po dobu určitou dobu. Testovací jednotka ale taky obsahuje praktickou a samoobslužnou prohlídku klíčových funkcí vašeho produktu a výhod, které se provedou ve scénáři implementace reálného světa.
 
-### <a name="contact-me"></a>Kontaktujte mě
+## <a name="contact-me"></a>Kontaktujte mě
 
 Jednoduchý seznam vaší aplikace nebo služby. Zákazníci na stránce se seznamem vaší nabídky použijí tlačítko _kontaktovat mi_ a požádat ho, aby se k vaší nabídce připojil.
 
-### <a name="get-it-now"></a>Získat hned
+## <a name="get-it-now"></a>Získat hned
 
 Tato možnost výpisu zahrnuje příkazy, které je možné aktualizovat (předplatná a ceny založené na uživateli), přineste si vlastní licence a získáte je hned (zdarma). Nabídky s podporou transakcí se prodávají prostřednictvím komerčního tržiště. Společnost Microsoft zodpovídá za fakturaci a kolekce. Zákazníci si tuto nabídku získali pomocí _tlačítka získat IT_ .
 
@@ -92,28 +96,28 @@ Tato tabulka uvádí, které typy nabídek podporují další cenové možnosti,
 
 <sup>2</sup> cena za hodinu a fakturovaná měsíčně.
 
-#### <a name="get-it-now-free"></a>Získat hned (zdarma)
+### <a name="get-it-now-free"></a>Získat hned (zdarma)
 
 Pomocí této možnosti výpisu můžete aplikaci zdarma nabídnout. Zákazníci získají bezplatnou nabídku pomocí tlačítka _získat nyní_ .
 
 > [!NOTE]
 > Získat hned (zdarma) nabídky nejsou způsobilé pro výhody na webu Marketplace pro transakční nabídky. Vzhledem k tomu, že prezentace žádné transakce, jsou tyto kategorie zařazeny do kategorií "zkušební verze". Podívejte se na následující [ceny na webu Marketplace](#marketplace-rewards) .
 
-#### <a name="bring-your-own-license-byol"></a>Používání vlastní licence (BYOL)
+### <a name="bring-your-own-license-byol"></a>Používání vlastní licence (BYOL)
 
 Pomocí této možnosti výpisu umožníte zákazníkům nasadit vaši nabídku pomocí licence zakoupené mimo komerční web Marketplace. Tato možnost je ideální pro migrace z místního prostředí do cloudu. Zákazníci použijí tlačítko _získat IT_ k nákupu nabídky pomocí licence, kterou si předem koupili.
 
 > [!NOTE]
 > Nabídky BYOL nejsou způsobilé pro výhody na webu Marketplace pro transakce, které lze v nabídce provádět. Vzhledem k tomu, že tyto požadavky vyžadují, aby zákazník získal licenci od partnera a nedošlo k žádné transakci prostřednictvím komerčního prezentaceu na webu Marketplace, patří do kategorií "list". Podívejte se na následující [ceny na webu Marketplace](#marketplace-rewards) .
 
-#### <a name="subscription"></a>Předplatné
+### <a name="subscription"></a>Předplatné
 
 Paušální poplatek můžete účtovat pro tyto typy nabídek:
 
 - Aplikace Azure (spravovaná aplikace) nabízí podporu měsíčních předplatných.
 - SaaS nabízí podporu měsíčních i ročních předplatných.
 
-#### <a name="usage-based-pricing"></a>Ceny na základě využití
+### <a name="usage-based-pricing"></a>Ceny na základě využití
 
 Ceny na základě využití podporují následující typy nabídek:
 

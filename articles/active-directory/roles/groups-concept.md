@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4a35bafd2c5dc78f0d9d1debbf21babb6279545
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: a204db8453ec8126e1aa9033e10f739a6f8a0d43
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740087"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095133"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Použití skupin cloudů ke správě přiřazení rolí v Azure Active Directory (Preview)
 
@@ -28,7 +28,7 @@ Vezměte v úvahu tento příklad: contoso přijal lidem v geografických oblast
 
 ## <a name="how-this-feature-works"></a>Jak tato funkce funguje
 
-Vytvořte novou Microsoft 365 nebo skupinu zabezpečení s vlastností ' isAssignableToRole ' nastavenou na hodnotu ' true '. Tuto vlastnost můžete také povolit při vytváření skupiny v Azure Portal zapnutím **rolí Azure AD je můžete přiřadit ke skupině**. V obou případech můžete skupinu přiřadit k jedné nebo více rolím Azure AD stejným způsobem, jako přiřadíte role uživatelům. V jedné organizaci Azure AD (tenant) se dá vytvořit maximálně 200 skupin s přiřazením role.
+Vytvořte novou Microsoft 365 nebo skupinu zabezpečení s vlastností ' isAssignableToRole ' nastavenou na hodnotu ' true '. Tuto vlastnost můžete také povolit při vytváření skupiny v Azure Portal zapnutím **rolí Azure AD je můžete přiřadit ke skupině**. V obou případech můžete skupinu přiřadit k jedné nebo více rolím Azure AD stejným způsobem, jako přiřadíte role uživatelům. V jedné organizaci Azure AD (tenant) se dá vytvořit maximálně 250 skupin s přiřazením role.
 
 Pokud nechcete, aby členové skupiny měli stálý přístup k této roli, můžete použít Azure AD Privileged Identity Management. Přiřaďte skupinu jako oprávněného člena role Azure AD. Každý člen skupiny pak má nárok na aktivaci jejich přiřazení pro roli, ke které je skupina přiřazená. Pak můžou aktivovat přiřazení rolí po dobu trvání pevného času.
 

@@ -2,21 +2,21 @@
 title: Rozšíření vlastních skriptů Azure pro Windows
 description: Automatizace úloh konfigurace virtuálních počítačů s Windows pomocí rozšíření vlastních skriptů
 services: virtual-machines-windows
-manager: carmonm
-author: bobbytreed
+manager: gwallace
+author: amjads1
 ms.service: virtual-machines-windows
 ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
-ms.author: robreed
-ms.openlocfilehash: d4cfb8d6a48ac41b4deb8913d4277f07cbb43208
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.author: amjads
+ms.openlocfilehash: d06be4efae895cfe6903be4451f892660ce689f3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258700"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390126"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozšíření vlastních skriptů pro virtuální počítače
 
@@ -32,6 +32,7 @@ Tento dokument popisuje, jak používat rozšíření vlastních skriptů pomoc�
 ### <a name="operating-system"></a>Operační systém
 
 Rozšíření vlastních skriptů pro Windows se spustí v podporovaném rozšíření OSs s rozšířením.
+
 ### <a name="windows"></a>Windows
 
 * Windows Server 2008 R2
@@ -67,7 +68,7 @@ Pokud je váš skript na místním serveru, budete možná potřebovat otevřít
 * Rozšíření spustí skript pouze jednou. Pokud chcete spustit skript při každém spuštění, musíte pomocí rozšíření vytvořit naplánovanou úlohu Windows.
 * Pokud chcete naplánovat, kdy se skript spustí, měli byste pomocí rozšíření vytvořit naplánovanou úlohu Windows.
 * Když je skript spuštěný, na webu Azure Portal nebo v rozhraní příkazového řádku se rozšíření zobrazí pouze v přechodném stavu. Pokud chcete častější aktualizace stavu spuštěného skriptu, budete si muset vytvořit vlastní řešení.
-* Rozšíření vlastních skriptů nepodporují nativně proxy servery, ale můžete použít nástroj pro přenos souborů, který podporuje proxy servery ve vašem skriptu, jako je například *kudrlinkou* .
+* Rozšíření vlastních skriptů nepodporují nativně proxy servery, ale můžete použít nástroj pro přenos souborů, který podporuje proxy servery ve vašem skriptu, jako je například *Invoke-WebRequest* .
 * Udržujte si přehled o jiných než výchozích umístěních adresářů, na kterých můžou vaše skripty nebo příkazy záviset, a zajistěte si logiku pro řešení takové situace.
 * Rozšíření vlastních skriptů se spustí pod účtem LocalSystem.
 * Pokud plánujete použít vlastnosti *storageAccountName* a *storageAccountKey* , musí být tyto vlastnosti společně umístěného v *protectedSettings*.

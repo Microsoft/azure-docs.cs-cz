@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 460c96ddb06318cacd4e436190f459e4c060536e
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: bd6acc5d3b7cd6e88b56e4a922e777adca031538
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583684"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102559"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Rychlý Start: Konfigurace klientské aplikace pro přístup k webovému rozhraní API
 
@@ -42,7 +42,7 @@ Tento diagram znázorňuje, jak se obě registrace dvou aplikací vztahují k so
 
 Po registraci klientské aplikace i webového rozhraní API a zpřístupnění rozhraní API vytvořením oborů můžete nakonfigurovat oprávnění klienta k rozhraní API pomocí následujících kroků:
 
-1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
+1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
 1. Pokud máte přístup k více klientům, vyberte v horní nabídce možnost **adresář a filtr předplatného** :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: a vyberte klienta, který obsahuje registraci klientské aplikace.
 1. Vyberte **Azure Active Directory**  >  **Registrace aplikací** a pak vyberte klientskou aplikaci (*nikoli* vaše webové rozhraní API).
 1. Vyberte **oprávnění API**  >  **Přidat oprávnění**  >  **Moje rozhraní API**.
@@ -71,7 +71,7 @@ Kromě přístupu k vlastnímu webovému rozhraní API jménem přihlášeného 
 
 Nakonfigurujte delegované oprávnění na Microsoft Graph, aby klientská aplikace mohla provádět operace jménem přihlášeného uživatele, například číst e-maily nebo upravovat svůj profil. Ve výchozím nastavení se uživatelům klientské aplikace zobrazí dotaz, že se přihlásí k souhlasu delegovaných oprávnění, která jste pro něj nakonfigurovali.
 
-1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
+1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
 1. Pokud máte přístup k více klientům, vyberte v horní nabídce možnost **adresář a filtr předplatného** :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: a vyberte klienta, který obsahuje registraci klientské aplikace.
 1. Vyberte možnost **Azure Active Directory**  >  **Registrace aplikací** a pak vyberte klientskou aplikaci.
 1. Vyberte **oprávnění API**  >  **Přidat**  >  **Microsoft Graph** oprávnění.
@@ -96,7 +96,7 @@ Nakonfigurujte oprávnění aplikace pro aplikaci, která musí být ověřován
 
 V následujících krocích udělíte oprávnění k *souborům Microsoft Graph. číst. všechna* oprávnění jako příklad.
 
-1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
+1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
 1. Pokud máte přístup k více klientům, vyberte v horní nabídce možnost **adresář a filtr předplatného** :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: a vyberte klienta, který obsahuje registraci klientské aplikace.
 1. Vyberte možnost **Azure Active Directory**  >  **Registrace aplikací** a pak vyberte klientskou aplikaci.
 1. Vyberte **oprávnění API**  >  **Přidat** oprávnění  >  **Microsoft Graph**  >  **oprávnění aplikace**.

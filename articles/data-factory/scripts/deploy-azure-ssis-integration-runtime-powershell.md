@@ -1,21 +1,18 @@
 ---
 title: Nasazení prostředí Azure SSIS Integration runtime pomocí PowerShellu
 description: Tento skript PowerShellu vytvoří prostředí Azure-SSIS Integration runtime, které může spouštět balíčky SSIS v cloudu.
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: article
 ms.author: sawinark
 author: swinarko
-manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 09/12/2017
-ms.openlocfilehash: f753de618751300cd8d10ae009a354d9892729c1
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 158e2db5261ce35713e1564cd24f0dd1d563ab78
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637968"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370202"
 ---
 # <a name="powershell-script---deploy-azure-ssis-integration-runtime"></a>PowerShellový skript – nasazení prostředí Azure-SSIS Integration runtime
 

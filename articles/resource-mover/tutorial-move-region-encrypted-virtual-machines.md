@@ -5,15 +5,15 @@ manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 02/10/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0bc70e14e341d9681c75933455eae6b0278724ca
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 014b4d09a991ae4d0bb31ec0b9adee0c9e3b3553
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99982171"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361005"
 ---
 # <a name="tutorial-move-encrypted-azure-vms-across-regions"></a>Kurz: přesouvání šifrovaných virtuálních počítačů Azure napříč oblastmi
 
@@ -54,26 +54,49 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 **Poplatky za cílovou oblast** | Ověřte ceny a poplatky spojené s cílovou oblastí, do které přesouváte virtuální počítače. Pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) vám pomůžeme.
 
 
-## <a name="verify-key-vault-permissions-azure-disk-encryption"></a>Ověřit oprávnění trezoru klíčů (Azure Disk Encryption)
+## <a name="verify-user-permissions-on-key-vault-for-vms-using-azure-disk-encryption-ade"></a>Ověření uživatelských oprávnění k trezoru klíčů pro virtuální počítače používající Azure Disk Encryption (ADE)
 
-Pokud přesouváte virtuální počítače s povolenou službou Azure Disk Encryption, ověřte nebo nastavte oprávnění v trezorech klíčů ve zdrojové a cílové oblasti, abyste zajistili, že přesun šifrovaných virtuálních počítačů bude fungovat podle očekávání. 
+Pokud přesouváte virtuální počítače, které mají povolenou službu Azure Disk Encryption, je nutné spustit skript, jak je uvedeno [níže](#copy-the-keys-to-the-destination-key-vault) , pro který uživatel spouštějící skript musí mít příslušná oprávnění. Informace o potřebných oprávněních najdete v níže uvedené tabulce. Možnosti změny oprávnění najdete v části Trezor klíčů v Azure Portal v části **Nastavení** vyberte **zásady přístupu**.
 
-1. V Azure Portal otevřete Trezor klíčů ve zdrojové oblasti.
-2. V části **Nastavení** vyberte **zásady přístupu**.
+:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png" alt-text="Tlačítko pro otevření zásad přístupu trezoru klíčů" lightbox="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png":::
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png" alt-text="Tlačítko pro otevření zásad přístupu trezoru klíčů" lightbox="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png":::
+Pokud nejsou k dispozici žádná uživatelská oprávnění, vyberte **Přidat zásadu přístupu** a zadejte oprávnění. Pokud uživatelský účet už má zásadu, nastavte v části **uživatel** oprávnění podle následující tabulky.
 
-3. Pokud nejsou k dispozici žádná uživatelská oprávnění, vyberte **Přidat zásadu přístupu** a zadejte oprávnění. Pokud uživatelský účet již zásadu obsahuje, nastavte oprávnění v části **uživatel**.
+Virtuální počítače Azure, které používají ADE, můžou mít následující variace a pro příslušné komponenty je potřeba nastavit příslušná oprávnění.
+- Výchozí možnost, kde je disk zašifrovaný jenom pomocí tajných klíčů
+- Přidání zabezpečení pomocí klíčového [šifrovacího klíče](../virtual-machines/windows/disk-encryption-key-vault.md#set-up-a-key-encryption-key-kek)
 
-    - Pokud jsou virtuální počítače, které chcete přesunout, povolené pomocí služby Azure Disk Encryption (ADE), vyberte v   >  **operacích správy klíčů** oprávnění ke klíčům **načíst** a **seznam** , pokud nejsou vybrané.
-    - Pokud k šifrování šifrovacích klíčů disků používaných při šifrování na straně serveru používáte klíče spravované zákazníkem (CMKs), vyberte v části **klíčová**  >  **operace správy klíčů** možnost **získat** a **seznam**. V případě **kryptografických operací** navíc vyberte **možnost dešifrovat a** **Šifrovat** .
- 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/set-vault-permissions.png" alt-text="Rozevírací seznam pro výběr oprávnění trezoru klíčů." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/set-vault-permissions.png":::
+### <a name="source-region-keyvault"></a>Trezor klíčů zdrojové oblasti
 
-4. V **tajných oprávněních** a  **operacích správy tajných** kódů vyberte **získat**, **vypsat** a **nastavit**. 
-5. Pokud přiřazujete oprávnění k novému uživatelskému účtu, vyberte v části **Vybrat objekt zabezpečení** uživatele, kterému přiřazujete oprávnění.
-6. Ujistěte se, že je v **zásadách přístupu** zapnutá možnost **Azure Disk Encryption pro šifrování svazku** .
-7. Opakujte postup pro Trezor klíčů v cílové oblasti.
+Níže uvedená oprávnění musí být nastavena pro uživatele spouštějící skript. 
+
+**Komponenta** | **Požadováno oprávnění**
+--- | ---
+Tajné kódy|  Získat oprávnění <br> </br> V tajných tajných **oprávněních** >   **operace správy** vyberte **získat** . 
+Klíče <br> </br> Pokud používáte klíč šifrovacího klíče (KEK), budete kromě tajných kódů potřebovat toto oprávnění.| Oprávnění získat a dešifrovat <br> </br> V nástroji **klíč oprávnění**  >  **operace správy klíčů** vyberte **získat**. V případě **kryptografických operací** vyberte možnost **dešifrovat**.
+
+### <a name="destination-region-keyvault"></a>Trezor klíčů cílové oblasti
+
+Ujistěte se, že je v **zásadách přístupu** zapnutá možnost **Azure Disk Encryption pro šifrování svazku** . 
+
+Níže uvedená oprávnění musí být nastavena pro uživatele spouštějící skript. 
+
+**Komponenta** | **Požadováno oprávnění**
+--- | ---
+Tajné kódy|  Nastavit oprávnění <br> </br> V tajných >   **operacích tajné oprávnění operace správy** vyberte **nastavit** . 
+Klíče <br> </br> Pokud používáte klíč šifrovacího klíče (KEK), budete kromě tajných kódů potřebovat toto oprávnění.| Oprávnění získat, vytvořit a šifrovat <br> </br> V nástroji **klíč oprávnění**  >  **operace správy klíčů** vyberte **získat** a **vytvořit** . V případě **kryptografických operací** vyberte možnost **Šifrovat**.
+
+Kromě výše uvedených oprávnění je třeba v cílovém trezoru klíčů přidat oprávnění pro [identitu spravovaného systému](./common-questions.md#how-is-managed-identity-used-in-resource-mover) , kterou pracovní postup prostředků používá pro přístup k prostředkům Azure vaším jménem. 
+
+1. V části **Nastavení** vyberte **Přidat zásady přístupu**. 
+2. V části **Vybrat objekt zabezpečení** vyhledejte soubor MSI. Název MSI je ```movecollection-<sourceregion>-<target-region>-<metadata-region>``` . 
+3. Přidat níže uvedená oprávnění pro MSI
+
+**Komponenta** | **Požadováno oprávnění**
+--- | ---
+Tajné kódy|  Oprávnění získat a zobrazit seznam <br> </br> V případě tajných tajných **oprávnění** >   **operace správy** vyberte **získat** a **seznam** . 
+Klíče <br> </br> Pokud používáte klíč šifrovacího klíče (KEK), budete kromě tajných kódů potřebovat toto oprávnění.| Oprávnění získat, zobrazit seznam <br> </br> V modulu **klíčová oprávnění**  >  **operace správy klíčů** vyberte **získat** a **seznam** .
+
 
 
 ### <a name="copy-the-keys-to-the-destination-key-vault"></a>Zkopírujte klíče do cílového trezoru klíčů.

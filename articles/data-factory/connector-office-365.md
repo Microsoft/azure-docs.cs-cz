@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z Office 365 pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z Office 365 na podporovaná úložiště dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 365896fec555340c3932192aa82086d140d4db0c
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: a7df69e7c5701074b40d6fa8340d8a0e247f00de
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632987"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392999"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Kopírování dat z Office 365 do Azure pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,7 +30,7 @@ V rámci jedné aktivity kopírování teď můžete **Kopírovat data z Office 
 >- Ujistěte se, že oblast Azure Integration Runtime použitá pro aktivitu kopírování a cíl je ve stejné oblasti, ve které se nachází poštovní schránka uživatelů klienta Office 365. Informace o tom, jak se určuje Azure IR umístění, najdete [tady](concepts-integration-runtime.md#integration-runtime-location) . Seznam podporovaných oblastí Office a odpovídajících oblastí Azure najdete v [tabulce](/graph/data-connect-datasets#regions) .
 >- Ověřování instančního objektu je jediným ověřovacím mechanismem podporovaným pro Azure Blob Storage, Azure Data Lake Storage Gen1 a Azure Data Lake Storage Gen2 jako s cílovými úložišti.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete kopírovat data z Office 365 do Azure, musíte provést následující požadované kroky:
 
@@ -79,12 +74,12 @@ Pro propojenou službu Office 365 jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **Office 365** . | Ano |
-| office365TenantId | ID tenanta Azure, ke kterému patří účet Office 365. | Ano |
-| servicePrincipalTenantId | Zadejte informace o tenantovi, pod kterým se nachází webová aplikace Azure AD. | Ano |
-| servicePrincipalId | Zadejte ID klienta aplikace. | Ano |
-| servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. | Ano |
-| connectVia | Integration Runtime, která se má použít pro připojení k úložišti dat  Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne |
+| typ | Vlastnost Type musí být nastavená na: **Office 365** . | Yes |
+| office365TenantId | ID tenanta Azure, ke kterému patří účet Office 365. | Yes |
+| servicePrincipalTenantId | Zadejte informace o tenantovi, pod kterým se nachází webová aplikace Azure AD. | Yes |
+| servicePrincipalId | Zadejte ID klienta aplikace. | Yes |
+| servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. | Yes |
+| connectVia | Integration Runtime, která se má použít pro připojení k úložišti dat  Pokud není zadaný, použije se výchozí Azure Integration Runtime. | No |
 
 >[!NOTE]
 > Rozdíl mezi **office365TenantId** a **servicePrincipalTenantId** a odpovídající hodnotou, kterou chcete poskytnout:
@@ -119,8 +114,8 @@ Chcete-li kopírovat data z Office 365, jsou podporovány následující vlastno
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **Office365Table** . | Ano |
-| tableName | Název datové sady, která se má extrahovat z Office 365. Seznam datových sad Office 365, které jsou k dispozici pro extrakci, najdete [tady](/graph/data-connect-datasets#datasets) . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **Office365Table** . | Yes |
+| tableName | Název datové sady, která se má extrahovat z Office 365. Seznam datových sad Office 365, které jsou k dispozici pro extrakci, najdete [tady](/graph/data-connect-datasets#datasets) . | Yes |
 
 Pokud jste nacházeli `dateFilterColumn` , `startTime` , `endTime` , a `userScopeFilterUri` v datové sadě, je stále podporováno tak, jak jsou, a Vy jste navrženi použití nového modelu ve zdroji aktivity.
 
@@ -153,13 +148,13 @@ Pokud chcete kopírovat data ze sady Office 365, v části **zdroje** aktivity k
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **Office365Source** . | Ano |
-| allowedGroups | Predikát výběru skupiny  Tato vlastnost slouží k výběru až 10 skupin uživatelů, pro které budou data načtena.  Pokud nejsou zadané žádné skupiny, vrátí se data pro celou organizaci. | Ne |
-| userScopeFilterUri | Pokud `allowedGroups` vlastnost není zadána, můžete použít výraz predikátu, který je použit v celém tenantovi k filtrování konkrétních řádků pro extrakci z Office 365. Formát predikátu by měl odpovídat formátu dotazu Microsoft Graph rozhraní API, např. `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'` . | Ne |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **Office365Source** . | Yes |
+| allowedGroups | Predikát výběru skupiny  Tato vlastnost slouží k výběru až 10 skupin uživatelů, pro které budou data načtena.  Pokud nejsou zadané žádné skupiny, vrátí se data pro celou organizaci. | No |
+| userScopeFilterUri | Pokud `allowedGroups` vlastnost není zadána, můžete použít výraz predikátu, který je použit v celém tenantovi k filtrování konkrétních řádků pro extrakci z Office 365. Formát predikátu by měl odpovídat formátu dotazu Microsoft Graph rozhraní API, např. `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'` . | No |
 | dateFilterColumn | Název sloupce filtru DateTime Pomocí této vlastnosti můžete omezit časový rozsah, pro který se mají extrahovat data sady Office 365. | Ano, pokud má datová sada jeden nebo více sloupců typu DateTime. Seznam datových sad, které vyžadují tento filtr DateTime, najdete [tady](/graph/data-connect-filtering#filtering) . |
 | startTime | Počáteční hodnota DateTime, která se má filtrovat | Ano, pokud `dateFilterColumn` je zadána |
 | endTime | Koncová hodnota DateTime, která se má filtrovat | Ano, pokud `dateFilterColumn` je zadána |
-| outputColumns | Pole sloupců, které mají být zkopírovány do jímky. | Ne |
+| outputColumns | Pole sloupců, které mají být zkopírovány do jímky. | No |
 
 **Příklad:**
 

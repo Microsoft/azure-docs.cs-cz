@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 3cf911e670be5f85b749b366ef79d1d102c4c129
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 4206f4f1fbca61719b627af919d6676c06a7c37e
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99561618"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100100121"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[V clusterech by měl být nainstalovaný a povolený doplněk Azure Policy pro službu Kubernetes (AKS).](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |Azure Policy doplněk pro službu Kubernetes (AKS) rozšiřuje Server Gatekeeper v3, Webhook kontroleru pro přístup pro Open Policy Agent (NEPRŮ), který se použije při vynuceném škálování a ochraně vašich clusterů v centralizovaném, konzistentním způsobem. |Audit, zakázáno |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
 |[Oba operační systémy i datové disky v clusterech služby Azure Kubernetes by měly být zašifrované pomocí klíčů spravovaných zákazníkem.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7d7be79c-23ba-4033-84dd-45e2a5ccdd67) |Šifrování OS a datových disků pomocí klíčů spravovaných zákazníkem poskytuje větší kontrolu a větší flexibilitu při správě klíčů. To je běžný požadavek v mnoha zákonných a oborových normách dodržování předpisů. |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_CMK_Deny.json) |

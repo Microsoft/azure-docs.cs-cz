@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 49929cfe0abc634dc4b704aba1c7b11a5d7dd777
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 427b471158e89b2b3ae4ea6477133f1e69247078
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383581"
+ms.locfileid: "100518840"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Replikace virtuálních počítačů Azure do jiné oblasti Azure
 
@@ -54,7 +54,7 @@ Povolte replikaci. Tento postup předpokládá, že primární oblast Azure je V
    - **Cílové účty úložiště (zdrojový virtuální počítač nepoužívá spravované disky)**: ve výchozím nastavení Site Recovery vytvoří nový cílový účet úložiště mimicking konfiguraci úložiště zdrojového virtuálního počítače. V případě, že účet úložiště již existuje, bude znovu použit.
    - **Disky spravované replikou (zdrojový virtuální počítač používá spravované disky)**: Site Recovery vytvoří nové disky spravované replikou v cílové oblasti pro zrcadlení spravovaných disků zdrojového virtuálního počítače se stejným typem úložiště (Standard nebo Premium) jako spravovaný disk zdrojového virtuálního počítače.
    - **Účty úložiště mezipaměti**: Site Recovery potřebuje další účet úložiště, který se označuje jako úložiště mezipaměti ve zdrojové oblasti. Všechny změny, které probíhají ve zdrojových virtuálních počítačích, se sledují a odesílají do účtu úložiště mezipaměti před jejich replikací do cílového umístění. Tento účet úložiště by měl být standardní.
-   - **Cílové skupiny dostupnosti**: ve výchozím nastavení Site Recovery vytvoří novou skupinu dostupnosti v cílové oblasti s příponou "Azure Site Recovery" v názvu pro virtuální počítače, které jsou součástí skupiny dostupnosti ve zdrojové oblasti. Pokud skupina dostupnosti, kterou vytvořil Site Recovery, už existuje, použije se znovu.
+   - **Cílové skupiny dostupnosti**: ve výchozím nastavení Site Recovery vytvoří novou skupinu dostupnosti v cílové oblasti s příponou ASR v názvu pro virtuální počítače, které jsou součástí skupiny dostupnosti ve zdrojové oblasti. Pokud skupina dostupnosti, kterou vytvořil Site Recovery, už existuje, použije se znovu.
      >[!NOTE]
      >Při konfiguraci cílových skupin dostupnosti nakonfigurujte prosím pro virtuální počítače s různou velikostí jiné skupiny dostupnosti. 
      >

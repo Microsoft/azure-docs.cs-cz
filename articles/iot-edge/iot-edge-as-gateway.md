@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 83e8089073f7e7e7634ddf00f7276e12aaf645b0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f95068b66fdd7907bf06086f855473b156738847
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536434"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371090"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Jak se dá zařízení IoT Edge využít jako brána
 
@@ -37,7 +37,7 @@ Všechny vzory bran poskytují následující výhody:
 
 * **Analýzy na hraničních** zařízeních – používají se místně služby AI ke zpracování dat přicházejících ze zařízení, která se neodesílají do cloudu, bez odesílání telemetrie s plnou věrností. Najděte a reagují na přehledy místně a odešlete jenom podmnožinu dat, která IoT Hub.
 * **Izolace zařízení** po jednotlivých zařízeních – zařízení brány může chránit všechna zařízení pro příjem dat před expozicí Internetu. Může se navázat mezi sítí provozní technologie (OT), která nemá připojení, a sítí informačních technologií (IT), která poskytuje přístup k webu. Podobně se zařízení, která nemají možnost se připojit k IoT Hub sám o sobě, můžou místo toho připojit k zařízení brány.
-* **Multiplexing připojení** – všechna zařízení, která se připojují k IoT Hub přes IoT Edge bránu, používají stejné základní připojení.
+* **Multiplexing připojení** – všechna zařízení připojující se k IoT Hub prostřednictvím IoT Edge brány můžou používat stejné základní připojení. Tato schopnost multiplexování vyžaduje, aby brána IoT Edge jako svůj nadřazený protokol používala AMQP.
 * **Vyhlazení provozu** – IoT Edge zařízení automaticky implementuje exponenciální omezení rychlosti, pokud IoT Hub omezuje provoz, zatímco se zprávy ukládají místně. Díky této výhodě je vaše řešení odolné vůči špičkám v provozu.
 * **Podpora offline** – zařízení brány ukládá zprávy a zdvojené aktualizace, které nelze doručit IoT Hub.
 
@@ -45,7 +45,9 @@ Všechny vzory bran poskytují následující výhody:
 
 V modelu transparentní brány se zařízení, která se teoreticky můžou připojit k IoT Hub se můžou místo toho připojit k zařízení brány. Zařízení pro příjem dat mají vlastní IoT Hub identity a připojují se pomocí protokolů MQTT nebo AMQP. Brána jednoduše předává komunikaci mezi zařízeními a IoT Hubem. Zařízení i uživatelé, kteří s nimi pracují prostřednictvím IoT Hub, nevědí, že brána Mediating jejich komunikaci. Nedostatečné povědomí znamená, že brána je považována za *transparentní*.
 
-<!-- 1.0.10 -->
+Další informace o tom, jak centrum IoT Edge spravuje komunikaci mezi navazujícími zařízeními a cloudem, najdete v tématu [pochopení Azure IoT Edge modulu runtime a jeho architektury](iot-edge-runtime.md).
+
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
 IoT Edge zařízení nemohou být podřízená bráně IoT Edge.
@@ -73,6 +75,11 @@ Vztah nadřazenosti/podřízenosti je v konfiguraci brány v třech bodech:
 
 Všechna zařízení ve scénáři transparentní brány potřebují cloudové identity, aby se mohly ověřit IoT Hub. Když vytváříte nebo aktualizujete identitu zařízení, můžete nastavit nadřazená nebo podřízená zařízení zařízení. Tato konfigurace autorizuje nadřazené zařízení brány, aby zpracovával ověřování pro svá podřízená zařízení.
 
+>[!NOTE]
+>Nastavení nadřazeného zařízení v IoT Hub použito jako volitelný krok pro zařízení, která používají ověřování pomocí symetrického klíče. Počínaje verzí 1.1.0 ale musí být každé podřízené zařízení přiřazené k nadřazenému zařízení.
+>
+>Můžete nakonfigurovat centrum IoT Edge pro návrat k předchozímu chování nastavením proměnné prostředí **authenticationMode** na hodnotu **CloudAndScope**.
+
 Podřízená zařízení můžou mít jenom jednu nadřazenou položku. Každý nadřazený objekt může mít až 100 podřízených položek.
 
 <!-- 1.2.0 -->
@@ -82,7 +89,7 @@ Zařízení IoT Edge můžou být rodiče i podřízené položky v transparentn
 
 #### <a name="gateway-discovery"></a>Zjišťování brány
 
-Podřízené zařízení musí být schopné najít své nadřazené zařízení v místní síti. Nakonfigurujte zařízení brány pomocí názvu **hostitele** , buď plně kvalifikovaného názvu domény (FQDN) nebo IP adresy, kterou budou používat podřízená zařízení k jejímu vyhledání.
+Podřízené zařízení musí být schopné najít své nadřazené zařízení v místní síti. Nakonfigurujte zařízení brány pomocí názvu **hostitele**, buď plně kvalifikovaného názvu domény (FQDN) nebo IP adresy, kterou budou používat podřízená zařízení k jejímu vyhledání.
 
 V zařízeních IoT pro příjem dat pomocí parametru **gatewayHostname** v připojovacím řetězci nasměrujte na nadřazené zařízení.
 
@@ -106,7 +113,7 @@ Všechny primitivní IoT Hub, které pracují s kanálem zasílání zpráv IoT 
 
 V následující tabulce najdete informace o tom, jak se pro zařízení v porovnání se zařízeními za bránami podporují různé možnosti IoT Hub.
 
-<!-- 1.0.10 -->
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
 | Schopnost | Zařízení IoT | IoT za bránou |
@@ -134,7 +141,7 @@ V následující tabulce najdete informace o tom, jak se pro zařízení v porov
 
 **Image kontejnerů** se dají stahovat, ukládat a doručovat z nadřízených zařízení na podřízená zařízení.
 
-**Objekty blob** , včetně sad a protokolů podpory, je možné nahrávat z podřízených zařízení do nadřazených zařízení.
+**Objekty blob**, včetně sad a protokolů podpory, je možné nahrávat z podřízených zařízení do nadřazených zařízení.
 
 ::: moniker-end
 

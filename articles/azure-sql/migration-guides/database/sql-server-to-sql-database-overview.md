@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2d668775e8d11faa0b2913cebc41e5217b49c278
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 2d97d02aec84fec92e29e971cd5c667c847b2541
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357312"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368043"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>Přehled migrace: SQL Server pro SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -166,7 +166,7 @@ Ruční nastavení SQL Server funkcí vysoké dostupnosti, jako je vždycky v in
 Mimo architekturu s vysokou dostupností, která je součástí SQL Database, se nachází také funkce [skupiny automatického převzetí služeb při selhání](../../database/auto-failover-group-overview.md) , která umožňuje spravovat replikaci a převzetí služeb při selhání databáze ve spravované instanci do jiné oblasti. 
 
 #### <a name="sql-agent-jobs"></a>Úlohy agenta SQL
-Úlohy agenta SQL nejsou přímo podporovány v Azure SQL Database a bude nutné je nasadit do [úloh elastic Database (Preview)](../../database/job-automation-overview.md#elastic-database-jobs-preview).
+Úlohy agenta SQL nejsou přímo podporovány v Azure SQL Database a bude nutné je nasadit do [úloh elastic Database (Preview)](../../database/job-automation-overview.md).
 
 #### <a name="logins-and-groups"></a>Přihlášení a skupiny
 Přesune přihlášení SQL ze zdrojového SQL Server a Azure SQL Database pomocí Database Migration Service (DMS) v offline režimu.  V **Průvodci migrací** použijte okno **Vybraná přihlášení** a migrujte přihlášení do cílového SQL Database. 
@@ -194,7 +194,7 @@ Kromě pokročilých funkcí správy a zabezpečení SQL Database poskytuje sadu
 
 Další pomoc najdete v následujících materiálech, které byly vyvinuty pro projekty z reálného světa migrace.
 
-|Prostředek  |Popis  |
+|Prostředek  |Description  |
 |---------|---------|
 |[Model a nástroj pro vyhodnocení datových úloh](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Tento nástroj poskytuje navrženou cílovou platformu "nejlépe vyhovující", připravenost na Cloud a úroveň nápravy aplikace nebo databáze pro danou úlohu. Nabízí jednoduché výpočetní operace s jedním kliknutím a generování sestav, které pomáhají zrychlit vyhodnocení velkých majetku poskytnutím automatizovaného a sjednoceného rozhodovacího procesu platformy.|
 |[Nástroj DBLoader](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|DBLoader lze použít k načtení dat z textových souborů s oddělovači do SQL Server. Tento nástroj konzoly Windows používá rozhraní SQL Server nativního BulkLoad klienta, které funguje na všech verzích SQL Server, včetně Azure SQL Database.|

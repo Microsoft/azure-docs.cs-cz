@@ -5,16 +5,16 @@ author: MSEvanhi
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: evanhi
-ms.openlocfilehash: f839eb04e0c036b5059e35fac16d9c702646cbd7
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b7c067ca82ea7fbe7eb9c0f3d50b7fe75dfb47df
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435684"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377359"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Povolení a vyžádat přístup za běhu pro Azure Managed Applications
 
-Příjemci spravované aplikace můžou být zdráhají, aby vám udělily trvalý přístup ke spravované skupině prostředků. Jako vydavatel aplikace manažera můžete chtít, aby spotřebitelé přesně znali, když potřebujete přístup ke spravovaným prostředkům. Aby měli spotřebitelé větší kontrolu nad udělením přístupu ke spravovaným prostředkům, Azure Managed Applications poskytuje funkci s názvem přístup JIT (just-in-time). Tato funkce je aktuálně ve verzi Preview.
+Příjemci spravované aplikace můžou být zdráhají, aby vám udělily trvalý přístup ke spravované skupině prostředků. Jako vydavatel spravované aplikace můžete chtít, aby spotřebitelé přesně znali, když potřebujete přístup ke spravovaným prostředkům. Aby měli spotřebitelé větší kontrolu nad udělením přístupu ke spravovaným prostředkům, Azure Managed Applications poskytuje funkci s názvem přístup JIT (just-in-time). Tato funkce je aktuálně ve verzi Preview.
 
 Přístup JIT vám umožní požádat o zvýšený přístup k prostředkům spravované aplikace pro účely řešení potíží nebo údržby. Vždy máte přístup k prostředkům jen pro čtení, ale v určitém časovém období můžete mít větší přístup.
 

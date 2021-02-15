@@ -9,12 +9,12 @@ ms.date: 01/20/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9a739736182713b35c3a5e9e25742aa39c5d1122
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 0adcbf49ff2128fdbe623121838058c5ed89dce2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633133"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378022"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizace modulu runtime a procesu démon zabezpečení IoT Edge
 
@@ -35,12 +35,6 @@ Pomocí příkazu ověřte verzi démona zabezpečení spuštěnou na vašem za�
 Na zařízeních se systémem Linux x64 pomocí apt-get nebo odpovídajícího správce balíčků aktualizujte démona zabezpečení na nejnovější verzi.
 
 Získat nejnovější konfiguraci úložiště od Microsoftu:
-
-* **Ubuntu Server 16,04**:
-
-   ```bash
-   curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
-   ```
 
 * **Ubuntu Server 18,04**:
 
@@ -100,7 +94,7 @@ curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-<!-- 1.0.10 -->
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
 Při IoT Edge pro Linux ve Windows se IoT Edge spouští na virtuálním počítači Linux hostovaném na zařízení s Windows. Tento virtuální počítač je předinstalovaný pomocí IoT Edge a je spravovaný pomocí Microsoft Update a udržuje komponenty v aktuálním stavu. V současné době nejsou k dispozici žádné aktualizace.

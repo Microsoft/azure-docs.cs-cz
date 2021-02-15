@@ -1,23 +1,18 @@
 ---
 title: Kopírování dat do a ze systému souborů pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data do a z místního systému souborů pomocí Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: ce19f1ae-358e-4ffc-8a80-d802505c9c84
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d298c83c0c1a0f33f28644e2e467ad5035300221
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9acd2adb68347978bb123d2239eedbb3e5595bc3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847603"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387389"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Kopírování dat do a z místního systému souborů pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -45,7 +40,7 @@ Data z následujících úložišť dat můžete kopírovat **do místního syst
 > Aktivita kopírování neodstraní zdrojový soubor po úspěšném zkopírování do cíle. Pokud potřebujete zdrojový soubor po úspěšné kopii odstranit, vytvořte vlastní aktivitu k odstranění tohoto souboru a použijte aktivitu v kanálu.
 
 ## <a name="enabling-connectivity"></a>Povolení připojení
-Data Factory podporuje připojení k místnímu systému souborů přes **bránu Správa dat**a z něj. Bránu Správa dat musíte nainstalovat do místního prostředí, aby se služba Data Factory připojovala k jakémukoli podporovanému místnímu úložišti dat, včetně systému souborů. Další informace o službě Správa dat Gateway a podrobné pokyny k nastavení brány najdete v tématu [přesun dat mezi místními zdroji a cloudem pomocí Správa dat brány](data-factory-move-data-between-onprem-and-cloud.md). Kromě Správa dat brány není nutné instalovat žádné další binární soubory pro komunikaci s místním systémem souborů a z něj. Bránu Správa dat musíte nainstalovat a používat i v případě, že je systém souborů na virtuálním počítači Azure s IaaS. Podrobné informace o bráně najdete v tématu [Správa dat Gateway](data-factory-data-management-gateway.md).
+Data Factory podporuje připojení k místnímu systému souborů přes **bránu Správa dat** a z něj. Bránu Správa dat musíte nainstalovat do místního prostředí, aby se služba Data Factory připojovala k jakémukoli podporovanému místnímu úložišti dat, včetně systému souborů. Další informace o službě Správa dat Gateway a podrobné pokyny k nastavení brány najdete v tématu [přesun dat mezi místními zdroji a cloudem pomocí Správa dat brány](data-factory-move-data-between-onprem-and-cloud.md). Kromě Správa dat brány není nutné instalovat žádné další binární soubory pro komunikaci s místním systémem souborů a z něj. Bránu Správa dat musíte nainstalovat a používat i v případě, že je systém souborů na virtuálním počítači Azure s IaaS. Podrobné informace o bráně najdete v tématu [Správa dat Gateway](data-factory-data-management-gateway.md).
 
 Pokud chcete použít sdílenou složku se systémem Linux, nainstalujte na server Linux Server [Samba](https://www.samba.org/) a nainstalujte Správa dat bránu na Windows Server. Instalace brány Správa dat na serveru Linux není podporována.
 
@@ -54,7 +49,7 @@ Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data do n
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 
-K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -81,7 +76,7 @@ Místní systém souborů můžete propojit s objektem pro vytváření dat Azur
 
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>Ukázka propojené služby a definic datových sad
-| Scénář | Hostitel v definici propojené služby | folderPath v definici datové sady |
+| Scenario | Hostitel v definici propojené služby | folderPath v definici datové sady |
 | --- | --- | --- |
 | Místní složka na počítači Správa dat brány: <br/><br/>Příklady: D: \\ \* nebo D:\folder\subfolder\\\* |D: \\ \\ (pro Správa dat Gateway 2,0 a novější verze) <br/><br/> localhost (pro starší verze než Správa dat brána 2,0) |.\\\\ nebo \\ \\ podsložek složky (pro Správa dat bránu 2,0 a novější verze) <br/><br/>D: \\ \\ nebo d: \\ \\ \\ \\ podsložka složky (pro verzi brány nižší než 2,0) |
 | Vzdálená sdílená složka: <br/><br/>Příklady: \\ \\ MyServer \\ share nebo sdílená \\ \* \\ \\ \\ Složka MyServer sdílené \\ složky \\\\\* |\\\\\\\\MyServer \\ \\ sdílená složka |.\\\\ nebo \\ \\ podsložek složky |
@@ -134,7 +129,7 @@ Oddíl typeProperties se liší pro každý typ datové sady. Poskytuje informac
 | fileFilter |Určete filtr, který se použije k výběru podmnožiny souborů v folderPath, nikoli všech souborů. <br/><br/>Povolené hodnoty jsou: `*` (více znaků) a `?` (jeden znak).<br/><br/>Příklad 1: "FileFilter": "*. log"<br/>Příklad 2: "FileFilter": 2014-1-?. txt<br/><br/>Všimněte si, že tento filtr souborů je použitelný pro sadu vstupních souborů Shared. |No |
 | partitionedBy |Pomocí partitionedBy můžete zadat dynamický folderPath/fileName pro data časových řad. Příkladem je folderPath parametrizované pro každou hodinu dat. |No |
 | formát | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. V části formát nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v částech [Formát textu](data-factory-supported-file-and-compression-formats.md#text-format), [formát JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Formát ORC](data-factory-supported-file-and-compression-formats.md#orc-format)a formátování [Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Pokud chcete **Kopírovat soubory** mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát v definicích vstupní i výstupní datové sady. |No |
-| komprese | Zadejte typ a úroveň komprese dat. Podporované typy jsou: **gzip**, **Deflate**, **bzip2**a **ZipDeflate**. Podporované úrovně: **optimální** a **nejrychlejší**. zobrazení [souborů a kompresních formátů v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
+| komprese | Zadejte typ a úroveň komprese dat. Podporované typy jsou: **gzip**, **Deflate**, **bzip2** a **ZipDeflate**. Podporované úrovně: **optimální** a **nejrychlejší**. zobrazení [souborů a kompresních formátů v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
 
 > [!NOTE]
 > Nemůžete současně použít fileName a FileFilter.
@@ -381,7 +376,7 @@ Data se zapisují do nového objektu BLOB každou hodinu (frekvence: hodina, int
 
 **Aktivita kopírování v kanálu se zdrojem systému souborů a jímkou objektů BLOB:**
 
-Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady, a je naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **FileSystemSource**a typ **jímky** je nastavený na **BlobSink**.
+Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady, a je naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **FileSystemSource** a typ **jímky** je nastavený na **BlobSink**.
 
 ```JSON
 {
@@ -477,7 +472,7 @@ Namísto použití vlastností **UserID** a **Password** doporučujeme použít 
 
 Ukázka předpokládá, že jste v Azure SQL vytvořili tabulku "MyTable" a obsahuje sloupec s názvem "timestampcolumn" pro data časových řad.
 
-Nastavení ``“external”: ”true”`` informs Data Factory, že datová sada je externí pro objekt pro vytváření dat a není vytvořená aktivitou v datové továrně.
+Nastavení ``"external": "true"`` informs Data Factory, že datová sada je externí pro objekt pro vytváření dat a není vytvořená aktivitou v datové továrně.
 
 ```JSON
 {
@@ -570,7 +565,7 @@ Data se zkopírují do nového souboru každou hodinu. FolderPath a fileName pro
 
 **Aktivita kopírování v kanálu se zdrojovým objektem SQL a jímkuí systému souborů:**
 
-Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady, a je naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **SqlSource**a typ **jímky** je nastavený na **FileSystemSink**. Dotaz SQL, který je zadán pro vlastnost **SqlReaderQuery** , vybere data za uplynulou hodinu ke zkopírování.
+Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady, a je naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **SqlSource** a typ **jímky** je nastavený na **FileSystemSink**. Dotaz SQL, který je zadán pro vlastnost **SqlReaderQuery** , vybere data za uplynulou hodinu ke zkopírování.
 
 ```JSON
 {

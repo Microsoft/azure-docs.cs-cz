@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e2ab39f090124aaf590798795f446bda5b0fe48a
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 6faec27bf368b3eb45e05a91307df6027bda93b1
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008550"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093994"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Nejčastější dotazy k Azure App Service v Linuxu
 
@@ -110,7 +110,7 @@ Ano, Kudu by během nasazování Gitu měli zjistit, že nasazujete aplikaci PHP
 
 **Používám vlastní kontejner. Chci, aby platforma připojovat sdílenou složku SMB k `/home/` adresáři.**
 
-Pokud `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení není **zadáno** nebo je nastaveno na *hodnotu true*, bude `/home/` adresář **sdílen** napříč instancemi škálování a zapsané soubory **budou uchovány** v rámci restartování. Při explicitním nastavení `WEBSITES_ENABLE_APP_SERVICE_STORAGE` na *false* se připojení zakáže.
+Pokud `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení **neurčíte** nebo nastavíte na *false*, nebude se `/home/` adresář **sdílet** mezi instancemi škálování a zapsané soubory **se nebudou uchovávat** v restartování. Při explicitním nastavení `WEBSITES_ENABLE_APP_SERVICE_STORAGE` na *hodnotu true* se připojení povolí.
 
 **Spuštění vlastního kontejneru trvá dlouhou dobu a platforma restartuje kontejner před tím, než se začne dokončí.**
 

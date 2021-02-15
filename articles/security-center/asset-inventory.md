@@ -5,15 +5,15 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 12/22/2020
+ms.date: 02/10/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 5b8d167992e57cd0fae35c57212ea700cd677afa
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 873fdba1d24db55b3269cc2c13f0140da4a9b4e3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920422"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393343"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory"></a>Prozkoumejte a spravujte svoje prostředky pomocí inventáře prostředků
 
@@ -37,7 +37,6 @@ Možnosti správy prostředků pro tento nástroj jsou zásadní a stále se roz
 
 
 ## <a name="availability"></a>Dostupnost
-
 |Aspekt|Podrobnosti|
 |----|:----|
 |Stav vydaných verzí:|Obecná dostupnost (GA)|
@@ -48,33 +47,36 @@ Možnosti správy prostředků pro tento nástroj jsou zásadní a stále se roz
 
 
 ## <a name="what-are-the-key-features-of-asset-inventory"></a>Jaké jsou klíčové funkce inventáře prostředků?
-
 Na stránce inventarizace najdete následující nástroje:
 
-- **Souhrny** – před definováním filtrů se v horní části zobrazení inventáře zobrazí výrazný pruh hodnot:
+:::image type="content" source="media/asset-inventory/highlights-of-inventory.png" alt-text="Hlavní funkce stránky inventáře prostředků v Azure Security Center" lightbox="media/asset-inventory/highlights-of-inventory.png":::
 
-    - **Celkem prostředků**: celkový počet prostředků, které jsou připojené k Security Center.
-    - **Chybné prostředky**: prostředky s aktivními bezpečnostními doporučeními. [Přečtěte si další informace o doporučeních zabezpečení](security-center-recommendations.md).
-    - **Nemonitorované prostředky**: prostředky s problémy monitorování agenta – mají nasazeného agenta Log Analytics, ale agent neodesílá data nebo má jiné problémy se stavem.
 
-- **Filtry** – více filtrů v horní části stránky nabízí způsob, jak rychle Upřesnit seznam prostředků podle otázky, na kterou se snažíte odpovědět. Pokud byste například chtěli odpovědět na dotaz, který má ve *svém počítači označení "produkční", chybí agent Log Analytics?* můžete zkombinovat filtr **monitorování agenta** s filtrem **značek** , jak je znázorněno v následujícím klipu:
+### <a name="1---summaries"></a>1 – souhrny
+Předtím, než budete definovat filtry, se v horní části zobrazení inventáře zobrazí výrazný pruh hodnot:
 
-    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="Filtrování do produkčních prostředků, které nejsou monitorovány":::
+- **Celkem prostředků**: celkový počet prostředků, které jsou připojené k Security Center.
+- **Chybné prostředky**: prostředky s aktivními bezpečnostními doporučeními. [Přečtěte si další informace o doporučeních zabezpečení](security-center-recommendations.md).
+- **Nemonitorované prostředky**: prostředky s problémy monitorování agenta – mají nasazeného agenta Log Analytics, ale agent neodesílá data nebo má jiné problémy se stavem.
+- **Odregistrované odběry**: jakékoli předplatné ve vybraném oboru, které ještě není připojené k Azure Security Center.
 
-    Jakmile použijete filtry, souhrnné hodnoty se aktualizují tak, aby se vztahovaly k výsledkům dotazu. 
+### <a name="2---filters"></a>2 – filtry
+Více filtrů v horní části stránky nabízí způsob, jak rychle Upřesnit seznam prostředků podle otázky, na kterou se snažíte odpovědět. Pokud jste například chtěli odpovědět na dotaz, který má ve *svém počítači označení "produkční", chybí agent Log Analytics?* můžete zkombinovat filtr **monitorování agenta** s filtrem **značek** .
 
-- **Možnosti exportu** – inventarizace nabízí možnost Exportovat výsledky vybraných možností filtrování do souboru CSV. Kromě toho můžete exportovat samotný dotaz do Průzkumníka Azure Resource Graph a dále upřesnit, Uložit nebo upravit dotaz Kusto Query Language (KQL).
+Jakmile použijete filtry, souhrnné hodnoty se aktualizují tak, aby se vztahovaly k výsledkům dotazu. 
 
-    :::image type="content" source="./media/asset-inventory/inventory-export-options.png" alt-text="Možnosti exportu inventáře":::
+### <a name="3---export-and-asset-management-tools"></a>3. nástroje pro správu exportu a prostředků
 
-    > [!TIP]
-    > Dokumentace ke službě KQL poskytuje databázi s ukázkovými daty společně s některými jednoduchými dotazy, aby se pro daný jazyk nezískal "pocit". [Další informace najdete v tomto kurzu pro KQL](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
+**Možnosti exportu** – inventarizace zahrnuje možnost exportu výsledků vybraných možností filtrování do souboru CSV. Dotaz můžete také exportovat do Průzkumníka Azure Resource Graph, abyste mohli dále upřesnit, Uložit nebo upravit dotaz Kusto Query Language (KQL).
 
-- **Možnosti správy prostředků** – inventarizace umožňuje provádět složité dotazy zjišťování. Po nalezení prostředků odpovídajících vašim dotazům poskytuje inventář klávesové zkratky pro operace, jako například:
+> [!TIP]
+> Dokumentace ke službě KQL poskytuje databázi s ukázkovými daty společně s některými jednoduchými dotazy, aby se pro daný jazyk nezískal "pocit". [Další informace najdete v tomto kurzu pro KQL](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
 
-    - Přiřadit značky k filtrovaným prostředkům – zaškrtněte políčka vedle prostředků, které chcete označit.
-    - Připojte nové servery k Security Center – použijte tlačítko **Přidat jiné servery než Azure** na panelu nástrojů.
-    - Automatizace úloh pomocí Azure Logic Apps – pomocí tlačítka Spustit **aplikaci logiky** spusťte aplikaci logiky na jednom nebo několika prostředcích. Vaše aplikace logiky musí být připravené předem a musí přijmout příslušný typ triggeru (požadavek HTTP). [Přečtěte si další informace o Logic Apps](../logic-apps/logic-apps-overview.md).
+**Možnosti správy prostředků** – inventarizace umožňuje provádět složité dotazy zjišťování. Po nalezení prostředků odpovídajících vašim dotazům poskytuje inventář klávesové zkratky pro operace, jako například:
+
+- Přiřadit značky k filtrovaným prostředkům – zaškrtněte políčka vedle prostředků, které chcete označit.
+- Připojte nové servery k Security Center – použijte tlačítko **Přidat jiné servery než Azure** na panelu nástrojů.
+- Automatizace úloh pomocí Azure Logic Apps – pomocí tlačítka Spustit **aplikaci logiky** spusťte aplikaci logiky na jednom nebo několika prostředcích. Vaše aplikace logiky musí být připravené předem a musí přijmout příslušný typ triggeru (požadavek HTTP). [Přečtěte si další informace o Logic Apps](../logic-apps/logic-apps-overview.md).
 
 
 ## <a name="how-does-asset-inventory-work"></a>Jak funguje soupis prostředků?
@@ -94,14 +96,14 @@ Při použití [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/)m�
 
 1. Ve filtrech vyberte příslušné možnosti pro vytvoření konkrétního dotazu, který chcete provést.
 
-    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="Možnosti filtrování inventáře" lightbox="./media/asset-inventory/inventory-filters.png":::
-
     Ve výchozím nastavení se prostředky seřadí podle počtu aktivních doporučení zabezpečení.
 
     > [!IMPORTANT]
     > Možnosti v jednotlivých filtrech jsou specifické pro prostředky v aktuálně vybraných předplatných **a** vaše výběry v ostatních filtrech.
     >
     > Pokud jste například vybrali jenom jedno předplatné a předplatné nemá žádné prostředky s nevyřízenými bezpečnostními doporučeními, které by bylo možné opravit (0 špatných prostředků), filtr **doporučení** nebude mít žádné možnosti. 
+
+    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="Použití možností filtru v inventáři prostředků Azure Security Center k filtrování prostředků do produkčních prostředků, které nejsou monitorovány":::
 
 1. Chcete-li použít **výsledky zabezpečení obsahující** filtr, zadejte bezplatný text z ID, kontrolu zabezpečení nebo CVE jméno hledání ohrožení zabezpečení, které chcete filtrovat na ovlivněné prostředky:
 

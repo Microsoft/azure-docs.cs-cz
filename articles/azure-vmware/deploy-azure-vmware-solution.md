@@ -3,12 +3,12 @@ title: Nasazení a konfigurace řešení Azure VMware
 description: Naučte se používat informace shromážděné ve fázi plánování k nasazení privátního cloudu řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 12/24/2020
-ms.openlocfilehash: f2b6f3c4ad82117fee96e0c2e5973a7011384d48
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 4c6929ca59bae022642082e8382203a10bd41309
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760878"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382051"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Nasazení a konfigurace řešení Azure VMware
 
@@ -68,13 +68,13 @@ V tomto příkladu byla během nasazení v síti 10.74.72.0/22 zadaná síť, kt
 
 ## <a name="connect-and-sign-in-to-vcenter-and-nsx-t"></a>Připojení a přihlášení k vCenter a NSX-T
 
-Přihlaste se k poli odkazů, které jste vytvořili v předchozím kroku. Po přihlášení otevřete webový prohlížeč a přejděte do konzoly pro správu vCenter a NSX-T a přihlaste se k ní.  
+Přihlaste se k poli odkazů, které jste vytvořili v předchozím kroku. Po přihlášení otevřete webový prohlížeč a přejděte do něj a přihlaste se do správce vCenter a NSX-T.  
 
-IP adresy a přihlašovací údaje konzoly pro správu NSX-T můžete identifikovat v Azure Portal.  Vyberte privátní cloud a potom v zobrazení **Přehled** vyberte **Identita > výchozí**. 
+IP adresy a přihlašovací údaje konzoly správce NSX-T můžete identifikovat v Azure Portal.  Vyberte privátní cloud a potom v zobrazení **Přehled** vyberte **Identita > výchozí**. 
 
 ## <a name="create-a-network-segment-on-azure-vmware-solution"></a>Vytvoření segmentu sítě v řešení VMware Azure
 
-Pomocí NSX-T můžete vytvořit nové segmenty sítě ve vašem prostředí řešení Azure VMware.  V [části plánování](production-ready-deployment-steps.md)jste definovali sítě, které chcete vytvořit.  Pokud jste je nedefinovali, vraťte se zpět do [části plánování](production-ready-deployment-steps.md) , než budete pokračovat.
+Správce NSX-T můžete použít k vytvoření nových segmentů sítě ve vašem prostředí řešení Azure VMware.  V [části plánování](production-ready-deployment-steps.md)jste definovali sítě, které chcete vytvořit.  Pokud jste je nedefinovali, vraťte se zpět do [části plánování](production-ready-deployment-steps.md) , než budete pokračovat.
 
 >[!IMPORTANT]
 >Ujistěte se, že blok síťových adres CIDR, který jste definovali, se nepřekrývá s cokoli v Azure nebo v místním prostředí.  

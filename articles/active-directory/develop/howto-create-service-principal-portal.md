@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: d20a363a0320ca45f22183e54bcc390d4733c8bc
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 8a4a4153261b93b3b17641e8561962c274570bd0
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581750"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104208"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Postup: Vytvoření aplikace Azure AD a instančního objektu s přístupem k prostředkům pomocí portálu
 
@@ -75,7 +75,7 @@ Ověření oprávnění k předplatnému:
 
 Pojďme přejít přímo na vytvoření identity. Pokud narazíte na problém, zkontrolujte [požadovaná oprávnění](#permissions-required-for-registering-an-app) a ujistěte se, že váš účet může vytvořit identitu.
 
-1. Přihlaste se ke svému účtu Azure <a href="https://portal.azure.com/" target="_blank">prostřednictvím <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
+1. Přihlaste se ke svému účtu Azure prostřednictvím <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
 1. Vyberte **Azure Active Directory**.
 1. Vyberte **Registrace aplikací**.
 1. Vyberte **Nová registrace**.
@@ -181,7 +181,7 @@ Pokud se rozhodnete nepoužívat certifikát, můžete vytvořit nový tajný kl
 ## <a name="configure-access-policies-on-resources"></a>Konfigurace zásad přístupu pro prostředky
 Mějte na paměti, že možná budete muset nakonfigurovat další oprávnění k prostředkům, které vaše aplikace potřebuje k přístupu. Například je třeba [aktualizovat zásady přístupu trezoru klíčů](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) , aby vaše aplikace měla přístup k klíčům, tajným klíčům nebo certifikátům.
 
-1. V <a href="https://portal.azure.com/" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>přejděte do svého trezoru klíčů a vyberte **zásady přístupu**.
+1. V <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>přejděte do svého trezoru klíčů a vyberte **zásady přístupu**.
 1. Vyberte **Přidat zásady přístupu** a pak vyberte klíčová, tajná a oprávnění certifikátů, která chcete aplikaci udělit.  Vyberte objekt služby, který jste předtím vytvořili.
 1. Vyberte **Přidat** a přidejte zásadu přístupu a potom **uložte** změny, které chcete potvrdit.
     ![Přidat zásady přístupu](./media/howto-create-service-principal-portal/add-access-policy.png)

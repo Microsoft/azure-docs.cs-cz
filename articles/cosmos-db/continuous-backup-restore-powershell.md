@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 73652f821abfa4a092e4a61ffe2be9e7262a2f10
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 5261075a82eaefd91cbedd2dd2fe08cb1e0a20b4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538540"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381830"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-powershell"></a>Konfigurace a Správa průběžného zálohování a obnovení k určitému bodu v čase (Preview) – použití Azure PowerShell
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -50,7 +50,7 @@ Tento článek popisuje, jak zřídit účet s průběžným zálohováním a ob
 
 Pokud chcete zřídit účet s průběžným zálohováním, přidejte do `-BackupPolicyType Continuous` něj argument spolu s běžným příkazem zřizování.
 
-Následující rutina představuje příklad účtu pro zápis do jedné oblasti `pitracct2` se zásadami průběžné zálohování vytvořenými v oblasti "západní USA" v části Skupina prostředků "myrg":
+Následující rutina představuje příklad účtu pro zápis do jedné oblasti `pitracct2` se zásadami průběžné zálohování vytvořenými v *západní USA* oblasti v části Skupina prostředků *myrg* :
 
 ```azurepowershell
 
@@ -65,7 +65,7 @@ New-AzCosmosDBAccount `
 
 ## <a name="provision-a-mongodb-api-account-with-continuous-backup"></a><a id="provision-mongodb-api"></a>Zřízení účtu MongoDB API pomocí průběžného zálohování
 
-Následující rutina je příkladem účtu průběžné zálohy "pitracct2" vytvořeného v oblasti "Západní USA" v části "myrg" skupiny prostředků:
+Následující rutina je příkladem účtu průběžného zálohování  vytvořeného v *západní USA* oblasti v části Skupina prostředků *myrg* :
 
 ```azurepowershell
 
@@ -162,13 +162,13 @@ Odpověď zahrnuje všechny účty databáze (živé i odstraněné), které je 
   },
 ```
 
-Stejně jako "CreationTime" nebo "DeletionTime" pro tento účet je také pro tuto oblast k dispozici "CreationTime" nebo "DeletionTime". Tyto časy umožňují zvolit správnou oblast a platný časový rozsah pro obnovení do této oblasti.
+Stejně jako u `CreationTime` `DeletionTime` účtu nebo pro účet je také k dispozici `CreationTime` nebo `DeletionTime` pro tuto oblast. Tyto časy umožňují zvolit správnou oblast a platný časový rozsah pro obnovení do této oblasti.
 
 **Vypíše všechny verze databází SQL v živém databázovém účtu.**
 
 Seznam všech verzí databází vám umožní zvolit správnou databázi ve scénáři, kdy je neznámou skutečnou dobu existence databáze.
 
-Chcete-li zobrazit seznam všech verzí databází, spusťte následující příkaz prostředí PowerShell. Tento příkaz funguje jenom s živými účty. Parametry "DatabaseAccountInstanceId" a "Location" jsou získány z vlastností "název" a "umístění" v odpovědi `Get-AzCosmosDBRestorableDatabaseAccount` rutiny. Atribut "DatabaseAccountInstanceId" odkazuje na vlastnost instanceId obnoveného účtu zdrojové databáze:
+Chcete-li zobrazit seznam všech verzí databází, spusťte následující příkaz prostředí PowerShell. Tento příkaz funguje jenom s živými účty. `DatabaseAccountInstanceId` `LocationName` Parametry a jsou získány z `name` `location` vlastností a v odpovědi `Get-AzCosmosDBRestorableDatabaseAccount` rutiny. `DatabaseAccountInstanceId`Atribut odkazuje na `instanceId` vlastnost obnoveného účtu zdrojové databáze:
 
 
 ```azurepowershell
@@ -181,7 +181,7 @@ Get-AzCosmosdbSqlRestorableDatabase `
 
 **Vypíše všechny verze kontejnerů SQL pro databázi v živém databázovém účtu.**
 
-K vypsání všech verzí kontejnerů SQL použijte následující příkaz. Tento příkaz funguje jenom s živými účty. Parametr "DatabaseRid" je "ResourceId" databáze, kterou chcete obnovit. Jedná se o hodnotu atributu "ownerResourceid" nalezenou v odpovědi `Get-AzCosmosdbSqlRestorableDatabase` rutiny. Odpověď obsahuje taky seznam operací provedených na všech kontejnerech uvnitř této databáze.
+K vypsání všech verzí kontejnerů SQL použijte následující příkaz. Tento příkaz funguje jenom s živými účty. `DatabaseRid`Parametr je `ResourceId` databáze, kterou chcete obnovit. Jedná se o hodnotu `ownerResourceid` atributu nalezenou v odpovědi `Get-AzCosmosdbSqlRestorableDatabase` rutiny. Odpověď obsahuje taky seznam operací provedených na všech kontejnerech uvnitř této databáze.
 
 ```azurepowershell
 
@@ -208,7 +208,7 @@ Get-AzCosmosdbSqlRestorableResource `
 
 ## <a name="enumerate-restorable-resources-for-mongodb"></a><a id="enumerate-mongodb-api"></a>Zobrazení výčtu prostředků obnovitelné pro MongoDB
 
-Příkazy výčtu popsané níže vám pomohou zjistit prostředky, které jsou k dispozici pro obnovení v různých časových razítkech. Kromě toho poskytují také informační kanály pro prostředky účtu obnovitelné, databáze a kontejnerů. Tyto příkazy fungují pouze u živých účtů a jsou podobné příkazům rozhraní SQL API, ale v názvu příkazu "MongoDB" místo "SQL".
+Příkazy výčtu popsané níže vám pomohou zjistit prostředky, které jsou k dispozici pro obnovení v různých časových razítkech. Kromě toho poskytují také informační kanály pro prostředky účtu obnovitelné, databáze a kontejnerů. Tyto příkazy fungují pouze u živých účtů a jsou podobné příkazům rozhraní SQL API, ale `MongoDB` v názvu příkazu namísto `sql` .
 
 **Vypíše všechny verze MongoDB databází v živém databázovém účtu.**
 

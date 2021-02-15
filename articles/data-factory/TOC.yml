@@ -736,6 +736,8 @@
               href: how-to-sqldb-to-cosmosdb.md
             - name: Odstranění duplicit a kontrola hodnot null s využitím fragmentů kódu
               href: how-to-data-flow-dedupe-nulls-snippets.md
+            - name: Zpracování dat z modelů AML pomocí toku dat
+              href: scenario-dataflow-process-data-aml-models.md
         - name: Migrace SSIS z místního prostředí
           items:
             - name: Přehled migrace SSIS

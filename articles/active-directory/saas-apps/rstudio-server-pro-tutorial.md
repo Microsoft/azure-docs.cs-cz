@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s ověřováním RStudio Server pro SAML | Microsoft Docs'
-description: Naučte se konfigurovat jednotné přihlašování mezi Azure Active Directory a ověřováním SAML serveru pro RStudio.
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s RStudio serverem pro | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a RStudio serverem pro.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,37 +11,37 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ecefc7c585f2f556e76efe6a3a272e38de98e297
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 490ecb201b91cdbdcdddceecdd2d145d2f9bb815
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181556"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390041"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rstudio-server-pro-saml-authentication"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s ověřováním SAML pro RStudio Server pro
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rstudio-server-pro"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s RStudio serverem pro
 
-V tomto kurzu se dozvíte, jak integrovat ověřování RStudio serveru pro SAML pomocí Azure Active Directory (Azure AD). Když integrujete ověřování RStudio serveru pro SAML s Azure AD, můžete:
+V tomto kurzu se dozvíte, jak integrovat RStudio Server pro (RSP) s Azure Active Directory (Azure AD). Když integrujete RSP s Azure AD, můžete:
 
-* Řízení ve službě Azure AD, která má přístup k ověřování SAML RStudio serveru pro.
-* Umožněte, aby se vaši uživatelé automaticky přihlásili k ověřování SAML RStudio serveru pro pomocí svých účtů Azure AD.
+* Řízení ve službě Azure AD, která má přístup k RSP.
+* Umožněte uživatelům, aby se automaticky přihlásili k RSP pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* RStudio Server pro ověřování SAML jednotné přihlašování (SSO) s povoleným jednotným přihlašováním.
+* Instalace RSP (verze >= 1,4).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Ověřování RStudio serveru pro SAML podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
+* RSP podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování
 
-## <a name="adding-rstudio-server-pro-saml-authentication-from-the-gallery"></a>Přidání ověřování RStudio serveru pro SAML z Galerie
+## <a name="adding-rstudio-server-pro-from-the-gallery"></a>Přidání serveru RStudio pro z Galerie
 
-Pokud chcete nakonfigurovat integraci ověřování RStudio serveru pro SAML do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat ověřování pomocí služby RStudio Server pro SAML z galerie.
+Chcete-li nakonfigurovat integraci RSP do služby Azure AD, je nutné přidat ověřování RStudio serveru pro SAML z Galerie do seznamu spravovaných aplikací SaaS.
 
 1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
@@ -51,17 +51,17 @@ Pokud chcete nakonfigurovat integraci ověřování RStudio serveru pro SAML do 
 1. Na panelu výsledků vyberte **ověřování RStudio serveru pro SAML** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
-## <a name="configure-and-test-azure-ad-sso-for-rstudio-server-pro-saml-authentication"></a>Konfigurace a testování jednotného přihlašování služby Azure AD pro ověřování SAML serveru RStudio Server pro
+## <a name="configure-and-test-azure-ad-sso-for-rstudio-server-pro"></a>Konfigurace a testování jednotného přihlašování služby Azure AD pro RStudio Server pro
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí ověřování RStudio serveru pro SAML pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v ověřování SAML RStudio Server pro.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí RSP pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v RSP.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí ověřování RStudio serveru pro SAML, proveďte následující kroky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
     1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-1. **[Konfigurace jednotného přihlašování ověřování RStudio serveru pro SAML](#configure-rstudio-server-pro-saml-authentication-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
-    1. **[Vytvořit testovacího uživatele pro ověřování SAML pro RStudio Server pro](#create-rstudio-server-pro-saml-authentication-test-user)** , který má protějšek B. Simon v ověřování SAML serveru pro RStudio, který se odkazuje na reprezentaci uživatele v Azure AD.
+1. **[Nakonfigurujte RStudio Server pro SSO](#configure-rstudio-server-pro-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte testovacího uživatele serveru RStudio Server pro](#create-rstudio-server-pro-test-user)** , abyste měli protějšek B. Simon v RStudio serveru pro, který je propojený s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
@@ -76,16 +76,16 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.rstudioservices.com/<PATH>/saml/metadata`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<RSP-SERVER>/<PATH>/saml/metadata`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.rstudioservices.com/<PATH>/saml/acs`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<RSP-SERVER>/<PATH>/saml/acs`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<SUBDOMAIN>.rstudioservices.com`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<RSP-SERVER>/<PATH>/`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pro získání těchto hodnot se obraťte na [tým podpory RStudio serveru pro ověřování SAML](mailto:support@rstudio.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem URI instalace RSP. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
@@ -115,13 +115,27 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-rstudio-server-pro-saml-authentication-sso"></a>Konfigurace jednotného přihlašování pro ověřování SAML serveru RStudio
+## <a name="configure-rstudio-server-pro-sso"></a>Konfigurace jednotného přihlašování RStudio serveru pro
 
-Pokud chcete nakonfigurovat jednotné přihlašování na straně **ověřování SAML pro RStudio Server pro** , musíte odeslat **adresu URL federačních metadat aplikace** [týmu podpory pro ověřování SAML serveru RStudio](mailto:support@rstudio.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+1. Aktualizujte konfigurační soubor RSP `/etc/rstudio/rserver.conf` následujícím způsobem:
 
-### <a name="create-rstudio-server-pro-saml-authentication-test-user"></a>Vytvořit testovacího uživatele pro ověřování SAML serveru RStudio
+    ```
+    auth-saml=1
+    auth-saml-metadata-url=<federation-metadata-URI>
+    auth-saml-sp-name-id-format=emailaddress
+    auth-saml-sp-attribute-username=NameID
+    auth-saml-sp-base-uri=<RSP-Server-URI>
+    ```
 
-V této části vytvoříte uživatele s názvem B. Simon v ověřování SAML serveru RStudio Server pro. Pokud chcete přidat uživatele do platformy pro ověřování SAML v RStudio serveru pro, pracujte s [týmem podpory ověřování SAML s RStudio serverem](mailto:support@rstudio.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+2. Restartujte RSP spuštěním následujícího:
+
+    ```
+    sudo rstudio-server restart
+    ```
+
+### <a name="create-rstudio-server-pro-test-user"></a>Vytvořit testovacího uživatele serveru RStudio Server pro
+
+Všichni uživatelé, kteří mají použít RSP, musí být zřízeni na serveru. Uživatele můžete vytvořit pomocí `useradd` `adduser` příkazu nebo.
 
 ## <a name="test-sso"></a>Test SSO 
 

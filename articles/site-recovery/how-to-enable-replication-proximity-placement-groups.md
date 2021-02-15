@@ -4,13 +4,13 @@ description: Přečtěte si, jak replikovat virtuální počítače Azure se sys
 author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
-ms.date: 05/25/2020
-ms.openlocfilehash: 7ac836992db33c6212fd009b914b30b7221249d8
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.date: 02/11/2021
+ms.openlocfilehash: 681b635099d450f061e0bcdb5b2c5d60d56c20a3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745579"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380720"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Replikace virtuálních počítačů Azure spuštěných ve skupinách umístění bezkontaktní komunikace do jiné oblasti
 
@@ -25,21 +25,72 @@ V typickém scénáři můžete mít virtuální počítače běžící ve skupi
 ## <a name="considerations"></a>Požadavky
 
 - Nejlepším úsilím pro převzetí služeb při selhání a navrácení služeb po obnovení z provozu do skupiny umístění s blízkými akcemi. Pokud se ale virtuální počítač nemůže během převzetí služeb při selhání nebo navrácení služeb po obnovení přenést do umístění blízkosti, pak se virtuální počítače vytvoří mimo skupinu umístění blízkosti.
--  Pokud je skupina dostupnosti připnuté do skupiny umístění blízkosti a během virtuálních počítačů s podporou převzetí služeb při selhání/navrácení služeb po obnovení mají v sadě dostupnosti omezení přidělení, vytvoří se virtuální počítače mimo skupinu dostupnosti a umístění blízkosti.
--  U nespravovaných disků není podporováno Site Recovery pro skupiny umístění blízkosti.
+- Pokud je skupina dostupnosti připnuté do skupiny umístění blízkosti a během virtuálních počítačů s podporou převzetí služeb při selhání/navrácení služeb po obnovení mají v sadě dostupnosti omezení přidělení, vytvoří se virtuální počítače mimo skupinu dostupnosti a umístění blízkosti.
+- U nespravovaných disků není podporováno Site Recovery pro skupiny umístění blízkosti.
 
 > [!NOTE]
 > Azure Site Recovery nepodporuje navrácení služeb po obnovení ze spravovaných disků pro scénáře Hyper-V do Azure. Z tohoto důvodu není podporováno navrácení služeb po obnovení ze skupiny umístění v Azure do technologie Hyper-V.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="set-up-disaster-recovery-for-vms-in-proximity-placement-groups-via-portal"></a>Nastavení zotavení po havárii pro virtuální počítače ve skupinách umístění pro Proximity prostřednictvím portálu
+
+### <a name="azure-to-azure-via-portal"></a>Z Azure do Azure prostřednictvím portálu
+
+Můžete povolit replikaci pro virtuální počítač prostřednictvím stránky pro zotavení po havárii virtuálního počítače nebo tak, že přejdete do předem vytvořeného trezoru a přejdete do části Site Recovery a pak povolíte replikaci. Podívejme se, jak můžete nastavit Site Recovery pro virtuální počítače uvnitř PPG prostřednictvím obou přístupů:
+
+- Jak vybrat PPG v oblasti DR při povolování replikace přes okno IaaS virtuálního počítače DR:
+  1. Přejít na virtuální počítač. V okně na levé straně v části operace vyberte možnost zotavení po havárii.
+  2. Na kartě základy vyberte oblast zotavení po havárii, do které chcete virtuální počítač replikovat. Přejít na Upřesnit nastavení
+  3. Tady vidíte skupinu umístění blízkosti svého virtuálního počítače a možnost vybrat PPG v oblasti zotavení po havárii. Site Recovery taky nabízí možnost použití nové skupiny umístění pro Proximity, kterou pro vás vytvoří, pokud se rozhodnete použít tuto výchozí možnost. Můžete vybrat skupinu umístění pro blízkosti, kterou chcete, a pak přejít na revize a spustit replikaci a nakonec povolit replikaci.
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-group-a2a-1.png" alt-text="Povolte replikaci.":::
+
+- Jak vybrat PPG v oblasti DR při povolování replikace přes okno trezoru:
+  1. Přejít do svého trezoru Recovery Services a přejít na kartu Site Recovery
+  2. Klikněte na + Povolit Site Recovery a pak vyberte 1: Povolit replikaci v části virtuální počítače Azure (stejně jako při replikaci virtuálního počítače Azure).
+  3. Vyplňte požadovaná pole na kartě zdroj a klikněte na tlačítko Další.
+  4. Na kartě virtuální počítače vyberte seznam virtuálních počítačů, pro které chcete povolit replikaci, a klikněte na další.
+  5. Tady vidíte možnost vybrat PPG v oblasti zotavení po havárii. Site Recovery také nabízí možnost použití nového PPG, který pro vás vytvoří, pokud se rozhodnete použít tuto výchozí možnost. Můžete zvolit PPG, který chcete, a potom pokračovat v povolení replikace.
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-group-a2a-2.png" alt-text="Povolte replikaci přes trezor.":::
+
+Všimněte si, že po povolení replikace pro virtuální počítač můžete snadno aktualizovat výběr PPG v oblasti DR.
+
+1. Přejít na virtuální počítač a v okně na levé straně v části operace vyberte možnost zotavení po havárii.
+2. Přejděte do okna výpočty a síť a v horní části stránky klikněte na Upravit.
+3. Můžete si prohlédnout možnosti úprav více cílových nastavení, včetně cílového PPG. Vyberte PPG, do kterého chcete virtuální počítač převzetí služeb při selhání, a klikněte na Uložit.
+
+### <a name="vmware-to-azure-via-portal"></a>Z VMware do Azure prostřednictvím portálu
+
+Po povolení replikace pro virtuální počítač se dá nastavit skupina umístění blízkosti pro cílový virtuální počítač. Ujistěte se prosím, že jste samostatně vytvořili PPG v cílové oblasti podle vašeho požadavku. Následně můžete snadno aktualizovat výběr PPG v oblasti DR po povolení replikace virtuálního počítače.
+
+1. Vyberte virtuální počítač z trezoru a v okně na levé straně v části operace vyberte možnost zotavení po havárii.
+2. Přejděte do okna výpočty a síť a v horní části stránky klikněte na Upravit.
+3. Můžete si prohlédnout možnosti úprav více cílových nastavení, včetně cílového PPG. Vyberte PPG, do kterého chcete virtuální počítač převzetí služeb při selhání, a klikněte na Uložit.
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-groups-update-v2a.png" alt-text="Aktualizovat V2A PPG":::
+
+### <a name="hyper-v-to-azure-via-portal"></a>Hyper-V do Azure přes portál
+
+Po povolení replikace pro virtuální počítač se dá nastavit skupina umístění blízkosti pro cílový virtuální počítač. Ujistěte se prosím, že jste samostatně vytvořili PPG v cílové oblasti podle vašeho požadavku. Následně můžete snadno aktualizovat výběr PPG v oblasti DR po povolení replikace virtuálního počítače.
+
+1. Vyberte virtuální počítač z trezoru a v okně na levé straně v části operace vyberte možnost zotavení po havárii.
+2. Přejděte do okna výpočty a síť a v horní části stránky klikněte na Upravit.
+3. Můžete si prohlédnout možnosti úprav více cílových nastavení, včetně cílového PPG. Vyberte PPG, do kterého chcete virtuální počítač převzetí služeb při selhání, a klikněte na Uložit.
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-groups-update-h2a.png" alt-text="Aktualizovat H2A PPG":::
+
+## <a name="set-up-disaster-recovery-for-vms-in-proximity-placement-groups-via-powershell"></a>Nastavení zotavení po havárii pro virtuální počítače ve skupinách umístění pro Proximity přes PowerShell
+
+### <a name="prerequisites"></a>Požadavky 
 
 1. Ujistěte se, že máte Azure PowerShell AZ Module. Pokud potřebujete nainstalovat nebo upgradovat Azure PowerShell, postupujte podle pokynů v tomto [Průvodci a nainstalujte a nakonfigurujte Azure PowerShell](/powershell/azure/install-az-ps).
 2. Minimální Azure PowerShell AZ verze by měl být 4.1.0. Chcete-li zjistit aktuální verzi, použijte následující příkaz –
+
     ```
     Get-InstalledModule -Name Az
     ```
 
-## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Nastavit Site Recovery pro Virtual Machines ve skupině umístění blízkosti
+### <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Nastavit Site Recovery pro Virtual Machines ve skupině umístění blízkosti
 
 > [!NOTE]
 > Ujistěte se, že máte jedinečné ID cílové skupiny umístění blízkosti. Pokud vytváříte novou skupinu umístění pro Proximity, zkontrolujte [následující](../virtual-machines/windows/proximity-placement-groups.md#create-a-proximity-placement-group) příkaz a pokud používáte existující skupinu umístění do blízkosti, použijte tento [příkaz.](../virtual-machines/windows/proximity-placement-groups.md#list-proximity-placement-groups)
@@ -165,7 +216,7 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 
 14. Pokud chcete zakázat replikaci [, postupujte podle těchto kroků.](./azure-to-azure-powershell.md#disable-replication)
 
-### <a name="vmware-to-azure"></a>Z VMware do Azure
+### <a name="vmware-to-azure-via-powershell"></a>Z VMware do Azure přes PowerShell
 
 1. Ujistěte se, že jste [připravili místní servery VMware](./vmware-azure-tutorial-prepare-on-premises.md) na zotavení po havárii do Azure.
 2. Přihlaste se ke svému účtu a nastavte své předplatné tak, jak je uvedeno [tady](./vmware-azure-disaster-recovery-powershell.md#log-into-azure).
@@ -203,7 +254,7 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
 10. [Spusťte](./vmware-azure-disaster-recovery-powershell.md#run-a-test-failover) testovací převzetí služeb při selhání.
 11. Převzetí služeb při selhání do Azure pomocí [těchto](./vmware-azure-disaster-recovery-powershell.md#fail-over-to-azure) kroků.
 
-### <a name="hyper-v-to-azure"></a>Z Hyper-V do Azure
+### <a name="hyper-v-to-azure-via-powershell"></a>Hyper-V do Azure přes PowerShell
 
 1. Ujistěte se, že jste [připravili místní servery Hyper-V](./hyper-v-prepare-on-premises-tutorial.md) pro zotavení po havárii do Azure.
 2. [Přihlaste](./hyper-v-azure-powershell-resource-manager.md#step-1-sign-in-to-your-azure-account) se k Azure.

@@ -1,14 +1,14 @@
 ---
 title: Monitorování delegovaných prostředků ve velkém měřítku
 description: Naučte se efektivně používat Azure Monitor protokoly škálovatelným způsobem napříč klienty zákazníka, které spravujete.
-ms.date: 02/02/2021
+ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 8847c2e5ee4986d35ad676440720b150794003e8
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: f3a789c855f7b05d24cdacd0fb31ee7d6d3e188b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575902"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379229"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Monitorování delegovaných prostředků ve velkém měřítku
 
@@ -65,7 +65,6 @@ alertsmanagementresources
 
 ## <a name="next-steps"></a>Další kroky
 
+- Vyzkoušejte [protokoly aktivit podle sešitu domény](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) na GitHubu.
 - Prozkoumejte tento [ukázkový sešit MVP (MVP](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks)), který sleduje generování sestav dodržování předpisů pomocí [dotazování Update Management protokolů](../../automation/update-management/query-logs.md) napříč více Log Analytics pracovních prostorů. 
-- Přečtěte si o [Azure monitor](../../azure-monitor/index.yml).
-- Přečtěte si o [Azure Monitorch protokolech](../../azure-monitor/platform/data-platform-logs.md).
-- Přečtěte si o [prostředích pro správu mezi klienty](../concepts/cross-tenant-management-experience.md).
+- Přečtěte si o dalších [prostředích pro správu mezi klienty](../concepts/cross-tenant-management-experience.md).

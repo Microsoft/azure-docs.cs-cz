@@ -138,6 +138,23 @@
               href: ./scripts/functions-cli-create-function-app-vsts-continuous.md
 - name: Koncepty
   items:
+    - name: Osvědčené postupy
+      items:
+        - name: Výkon a spolehlivost
+          href: functions-best-practices.md
+          displayName: best practices
+        - name: Správa připojení
+          href: manage-connections.md
+          displayName: best practices
+        - name: Aspekty úložišť
+          href: storage-considerations.md
+          displayName: 'encryption, keys, mount, files'
+        - name: Zpracování chyb a opakované pokusy funkcí
+          href: functions-bindings-error-pages.md
+          displayName: best practices
+        - name: Zabezpečení
+          href: security-concepts.md
+          displayName: best practices
     - name: Porovnání modulů runtime
       href: functions-versions.md
       displayName: 'migrate, migration, v3'
@@ -212,12 +229,7 @@
       href: functions-diagnostics.md
     - name: Náklady plánu Consumption
       href: functions-consumption-costs.md
-    - name: Otázky výkonu
-      href: functions-best-practices.md
       displayName: best practice
-    - name: Aspekty úložišť
-      href: storage-considerations.md
-      displayName: 'encryption, keys, mount, files'
     - name: Proxy servery služby Functions
       href: functions-proxies.md
     - name: Možnosti sítí

@@ -1,22 +1,18 @@
 ---
 title: Prostředí Integration Runtime
 description: Seznamte se s prostředím Integration Runtime v Azure Data Factory.
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: d5e20b1fc0ce32eae8dc2888fdda982f0de95d90
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 911674a80b531a50cfb429c5dc0ff41f1aaceb08
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636642"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389939"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Prostředí Integration Runtime v Azure Data Factory 
 
@@ -24,10 +20,10 @@ ms.locfileid: "92636642"
 
 Prostředí Integration Runtime (IR) je výpočetní infrastruktura, kterou Azure Data Factory používá k poskytování následujících funkcí integrace dat v různých síťových prostředích:
 
-- **Tok dat** : spuštění [toku dat](concepts-data-flow-overview.md) ve spravovaném prostředí Azure Compute.  
-- **Přesun dat** : kopírování dat napříč úložišti dat ve veřejné síti a úložištích dat v privátní síti (místní nebo virtuální privátní síť). Poskytuje podporu vestavěných konektorů, převodu formátu, mapování sloupců a výkonného a škálovatelného přenosu dat.
-- **Odesílání aktivit** : odesílání a sledování transformačních aktivit běžících na různých výpočetních službách, jako je Azure Databricks, Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server a další.
-- **Spouštění balíčků služby SSIS** : nativní spouštění balíčků služby SQL Server Integration Services (SSIS) ve spravovaném výpočetním prostředí Azure.
+- **Tok dat**: spuštění [toku dat](concepts-data-flow-overview.md) ve spravovaném prostředí Azure Compute.  
+- **Přesun dat**: kopírování dat napříč úložišti dat ve veřejné síti a úložištích dat v privátní síti (místní nebo virtuální privátní síť). Poskytuje podporu vestavěných konektorů, převodu formátu, mapování sloupců a výkonného a škálovatelného přenosu dat.
+- **Odesílání aktivit**: odesílání a sledování transformačních aktivit běžících na různých výpočetních službách, jako je Azure Databricks, Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server a další.
+- **Spouštění balíčků služby SSIS**: nativní spouštění balíčků služby SQL Server Integration Services (SSIS) ve spravovaném výpočetním prostředí Azure.
 
 Aktivita ve službě Data Factory určuje akci, která se má provést. Propojená služba určuje cílové úložiště dat nebo výpočetní službu. Prostředí Integration Runtime představuje spojení mezi aktivitou a propojenými službami.  Na ni odkazuje propojená služba nebo aktivita a poskytuje výpočetní prostředí, ve kterém se aktivita buď spustí, nebo se z něj odešle. Tímto způsobem se dá aktivita co nejefektivněji provést v oblasti, která je nejblíž cílovému úložišti dat nebo výpočetní službě, a zároveň vyhovět potřebám zabezpečení a dodržování předpisů.
 
@@ -180,9 +176,9 @@ Následující diagram znázorňuje nastavení umístění služby Data Factory 
 
 V případě aktivity kopírování jsou zapotřebí služby propojené se zdrojem a jímkou, které určují směr toku dat. Pomocí následující logiky se dá určit, která instance prostředí Integration Runtime se ke kopírování používá: 
 
-- **Kopírování mezi dvěma datovými zdroji cloudu** : Pokud se používá zdrojová i Odkazovaná služba Azure IR, ADF používá místní Azure IR, pokud jste určili, nebo automatické určení umístění Azure IR, pokud zvolíte možnost automaticky vyřešit IR (výchozí), jak je popsáno v části [umístění prostředí Integration runtime](#integration-runtime-location) .
-- **Kopírování mezi cloudovým zdrojem dat a zdrojem dat v privátní síti** : Pokud služba propojená se zdrojem nebo jímkou odkazuje na prostředí IR v místním prostředí, aktivita kopírování se provádí v prostředí Integration Runtime v místním prostředí.
-- **Kopírování mezi dvěma zdroji dat v privátní síti** : zdrojová i propojená služba musí odkazovat na stejnou instanci prostředí Integration runtime a k provedení aktivity kopírování se používá modul runtime integrace.
+- **Kopírování mezi dvěma datovými zdroji cloudu**: Pokud se používá zdrojová i Odkazovaná služba Azure IR, ADF používá místní Azure IR, pokud jste určili, nebo automatické určení umístění Azure IR, pokud zvolíte možnost automaticky vyřešit IR (výchozí), jak je popsáno v části [umístění prostředí Integration runtime](#integration-runtime-location) .
+- **Kopírování mezi cloudovým zdrojem dat a zdrojem dat v privátní síti**: Pokud služba propojená se zdrojem nebo jímkou odkazuje na prostředí IR v místním prostředí, aktivita kopírování se provádí v prostředí Integration Runtime v místním prostředí.
+- **Kopírování mezi dvěma zdroji dat v privátní síti**: zdrojová i propojená služba musí odkazovat na stejnou instanci prostředí Integration runtime a k provedení aktivity kopírování se používá modul runtime integrace.
 
 ### <a name="lookup-and-getmetadata-activity"></a>Aktivity Lookup a GetMetadata
 

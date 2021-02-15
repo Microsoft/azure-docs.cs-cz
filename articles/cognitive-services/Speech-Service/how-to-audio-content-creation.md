@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: 7d4d1acac591bfe6ce40efcf6166357d43718363
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: eb8d2d956eac23c02201f7fd855dcae71e960e8d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024955"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388579"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Vylepšení syntézy pomocí nástroje pro tvorbu zvukového obsahu
 
@@ -114,7 +114,7 @@ Po kontrole zvukového výstupu a splnění jeho optimalizace a úprav můžete 
 2. Vyberte formát výstupu pro vyladěný zvuk. Seznam podporovaných formátů a vzorkovacích sazeb je k dispozici níže.
 3. Stav úlohy můžete zobrazit na kartě **úloha exportu** . Pokud se úloha nezdařila, přejděte na stránku podrobné informace pro celou sestavu.
 4. Po dokončení úlohy je váš zvuk k dispozici ke stažení na kartě **Knihovna zvukového** prostředí.
-5. Klikněte na tlačítko **Stáhnout**. Teď jste připraveni používat vlastní laděný zvuk ve vašich aplikacích nebo produktech.
+5. Klikněte na **Stáhnout**. Teď jste připraveni používat vlastní laděný zvuk ve vašich aplikacích nebo produktech.
 
 **Podporované formáty zvuku**
 
@@ -125,7 +125,7 @@ Po kontrole zvukového výstupu a splnění jeho optimalizace a úprav můžete 
 
 ## <a name="how-to-addremove-audio-content-creation-users"></a>Jak přidat nebo odebrat uživatele vytváření obsahu zvukového obsahu?
 
-Pokud chce vytvoření zvukového obsahu použít více než jeden uživatel, můžete buď sdílet svůj účet Azure a heslo s uživatelem, nebo udělit uživateli přístup k předplatnému Azure a prostředku řeči. Pokud přidáte uživatele do předplatného Azure, uživatel bude mít přístup ke všem prostředkům v rámci předplatného Azure. Pokud však do prostředku řeči přidáte pouze uživatele, bude mít uživatel přístup pouze k prostředku rozpoznávání řeči a nebude mít přístup k dalším prostředkům v rámci tohoto předplatného Azure. Uživatel s přístupem k prostředku řeči může použít vytvoření zvukového obsahu.
+Pokud chce vytvoření zvukového obsahu použít více než jeden uživatel, můžete uživateli udělit přístup k předplatnému Azure a prostředku pro rozpoznávání řeči. Pokud přidáte uživatele do předplatného Azure, uživatel bude mít přístup ke všem prostředkům v rámci předplatného Azure. Pokud však do prostředku řeči přidáte pouze uživatele, bude mít uživatel přístup pouze k prostředku rozpoznávání řeči a nebude mít přístup k dalším prostředkům v rámci tohoto předplatného Azure. Uživatel s přístupem k prostředku řeči může použít vytvoření zvukového obsahu.
 
 ### <a name="add-users-to-a-speech-resource"></a>Přidání uživatelů do prostředku řeči
 
@@ -146,7 +146,7 @@ Uživatelé, kteří se nacházejí ve stejném prostředku řeči, uvidí prác
 
 ### <a name="remove-users-from-a-speech-resource"></a>Odebrání uživatelů z prostředku řeči
 1. V Azure Portal vyhledejte vyhledané **služby** , vyberte prostředek pro rozpoznávání řeči, ze kterého chcete odebrat uživatele.
-2. Klikněte na **Řízení přístupu (IAM)** . Kliknutím na kartu **přiřazení rolí** zobrazíte všechna přiřazení rolí tohoto prostředku řeči.
+2. Klikněte na **Řízení přístupu (IAM)**. Kliknutím na kartu **přiřazení rolí** zobrazíte všechna přiřazení rolí tohoto prostředku řeči.
 3. Vyberte uživatele, které chcete odebrat, a klikněte na tlačítko **Odebrat**  >  **OK**.
     :::image source="media/audio-content-creation/remove-user.png" alt-text="Tlačítko odebrat":::
 

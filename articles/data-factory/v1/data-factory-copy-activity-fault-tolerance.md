@@ -1,22 +1,18 @@
 ---
 title: Přidání odolnosti proti chybám v Azure Data Factory aktivity kopírování přeskočením nekompatibilních řádků
 description: Naučte se, jak přidat odolnost proti chybám v Azure Data Factory aktivity kopírování vynecháním nekompatibilních řádků během kopírování.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 65584b2a6a3bdfbb863c26dac688b20279c4b54d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 10e4bedae5b7c429152a3503fff2cb2769d66eb5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452282"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377172"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Přidání odolnosti proti chybám v aktivitě kopírování přeskočením nekompatibilních řádků
 
@@ -71,12 +67,12 @@ Následující příklad poskytuje definici JSON pro konfiguraci přeskočení n
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| **enableSkipIncompatibleRow** | Povolit přeskočení nekompatibilních řádků během kopírování nebo ne. | Pravda<br/>False (výchozí) | No |
+| **enableSkipIncompatibleRow** | Povolit přeskočení nekompatibilních řádků během kopírování nebo ne. | Ano<br/>False (výchozí) | No |
 | **redirectIncompatibleRowSettings** | Skupina vlastností, které lze zadat, pokud chcete protokolovat nekompatibilní řádky. | &nbsp; | No |
 | **linkedServiceName** | Propojená služba Azure Storage k uložení protokolu, který obsahuje vynechané řádky. | Název propojené služby [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) nebo [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) , která odkazuje na instanci úložiště, kterou chcete použít k uložení souboru protokolu. | No |
 | **dílčí** | Cesta k souboru protokolu, který obsahuje vynechané řádky. | Zadejte cestu k úložišti objektů blob, kterou chcete použít k protokolování nekompatibilních dat. Pokud cestu nezadáte, služba vytvoří kontejner. | No |
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 Po dokončení aktivity kopírování můžete v části monitorování zobrazit počet vynechaných řádků:
 
 ![Monitorování přeskočilo nekompatibilní řádky.](./media/data-factory-copy-activity-fault-tolerance/skip-incompatible-rows-monitoring.png)

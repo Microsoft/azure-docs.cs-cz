@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z MariaDB pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z MariaDB do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: c2c036cc8538fbceb21da7c5166df52b3a04e12e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f515738ad2af6b7779495b55226c10fef9272b13
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81414985"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385672"
 ---
 # <a name="copy-data-from-mariadb-using-azure-data-factory"></a>Kopírování dat z MariaDB pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -52,8 +47,8 @@ Pro propojenou službu MariaDB jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **MariaDB** . | Ano |
-| připojovací řetězec | Připojovací řetězec ODBC, který se má připojit k MariaDB. <br/>Můžete také do Azure Key Vault umístit heslo a načíst konfiguraci z `pwd` připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
+| typ | Vlastnost Type musí být nastavená na: **MariaDB** . | Yes |
+| připojovací řetězec | Připojovací řetězec ODBC, který se má připojit k MariaDB. <br/>Můžete také do Azure Key Vault umístit heslo a načíst konfiguraci z `pwd` připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Yes |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
 **Příklad:**
@@ -83,13 +78,13 @@ Pro propojenou službu MariaDB jsou podporovány následující vlastnosti:
         "type": "MariaDB",
         "typeProperties": {
             "connectionString": "Server=<host>;Port=<port>;Database=<database>;UID=<user name>;",
-            "pwd": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "pwd": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -133,8 +128,8 @@ Chcete-li kopírovat data z MariaDB, nastavte typ zdroje v aktivitě kopírován
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MariaDBSource** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MariaDBSource** . | Yes |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
 

@@ -3,18 +3,18 @@ title: 'ML Studio (Classic): Azure AI Gallery – Azure'
 description: Sdílení a zjišťování prostředků analýzy a další informace v Azure AI Gallery. Přečtěte si od ostatních a udělejte své vlastní příspěvky komunitě.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: eacc7adae16785049022cd05f04904d97b0b3a6d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 935d0149a4a6b33c5272e57aab5f1cc9c3bb2924
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95486122"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519843"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Sdílení a zjišťování prostředků v Azure AI Gallery
 
@@ -28,7 +28,7 @@ Galerie má řadu prostředků, které můžete použít k vývoji vlastních an
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Co můžu najít v galerii?
 
-Azure AI Gallery obsahuje řadu různých prostředků, které přispěla společnost Microsoft a členové komunity pro vědu v oblasti dat. Mezi ně patří:
+Azure AI Gallery obsahuje řadu různých prostředků, které přispěla společnost Microsoft a členové komunity pro vědu v oblasti dat. Tady jsou některé z nich:
 
 * **Experimenty** – galerie obsahuje širokou škálu experimentů, které byly vyvinuty v Azure Machine Learning Studio (Classic). Tyto experimenty jsou z rychlých experimentů v rámci konceptu, které ukazují konkrétní technika strojového učení, k plně vyvinutým řešením pro složité problémy strojového učení.
 * **Kurzy** – k dispozici je řada kurzů, které vás provedou pomocí technologií a konceptů strojového učení, případně popisují pokročilé metody řešení různých problémů strojového učení.
@@ -131,7 +131,7 @@ Můžete také odstranit experiment z galerie.
 
 Tyto změny můžete provést nebo odstranit experiment, na stránce s podrobnostmi experimentu nebo na stránce vašeho profilu v galerii.
 
-* Na stránce s podrobnostmi experimentu můžete změnit podrobnosti o experimentu a vybrat možnost **Upravit**. Stránka podrobností vstupuje do režimu úprav. Chcete-li provést změny, vyberte možnost **Upravit** vedle názvu experimentu, souhrnu nebo značek. Až skončíte s změnami, vyberte **Hotovo**. Chcete-li změnit nastavení viditelnosti experimentu **Public** (veřejné **nebo** neuvedené), nebo chcete-li experiment odstranit z Galerie, vyberte ikonu **Nastavení** .
+* Na stránce s podrobnostmi experimentu můžete změnit podrobnosti o experimentu a vybrat možnost **Upravit**. Stránka podrobností vstupuje do režimu úprav. Chcete-li provést změny, vyberte možnost **Upravit** vedle názvu experimentu, souhrnu nebo značek. Až skončíte s změnami, vyberte **Hotovo**. Chcete-li změnit nastavení viditelnosti experimentu (veřejné **nebo** neuvedené), nebo chcete-li experiment odstranit z Galerie, vyberte ikonu **Nastavení** .
 
 * Na stránce profil vyberte šipku dolů pro experiment a pak vyberte **Upravit**. Tím přejdete na stránku podrobností pro váš experiment v režimu úprav. Až změny dokončíte, vyberte **Hotovo**. Chcete-li experiment odstranit z Galerie, vyberte možnost **Odstranit**.
 

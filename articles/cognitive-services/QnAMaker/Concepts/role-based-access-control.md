@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: f43fa06cf93d383efcb0fe746de28ab143280e50
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1d434697802596a0200dc0cb5f1afe5bc67afef5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988014"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379705"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Spolupráce s ostatními autory a editory
 
@@ -23,6 +23,9 @@ Všechna oprávnění jsou řízená oprávněními, která jsou umístěna v pr
 Tato funkce Azure RBAC zahrnuje:
 * Azure Active Directory (AAD) je 100% zpětně kompatibilní s ověřováním pomocí klíčů pro vlastníky a přispěvatele. Zákazníci můžou ve svých žádostech použít ověřování založené na klíčích nebo ověřování na základě služby Azure RBAC.
 * Rychle přidejte autory a editory do všech databází znalostí v prostředku, protože je řízení na úrovni prostředků, nikoli na úrovni znalostní báze.
+
+> [!NOTE]
+> Při vytváření ar nezapomeňte přidat vlastní subdoménu pro daný prostředek. [Vlastní subdoména](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains) by měla být ve výchozím nastavení přítomná, ale pokud ne, přidejte ji prosím.
 
 ## <a name="access-is-provided-by-a-defined-role"></a>Přístup poskytuje definovaná role.
 

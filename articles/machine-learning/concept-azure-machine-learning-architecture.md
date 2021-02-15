@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: a36481b2496060cb12bd755f56680915ec1074bb
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 987b56eb1b258e1c5f2fd7d5bcfdd0e95f6c0730
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540173"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091665"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak Azure Machine Learning funguje: architektura a koncepty
 
@@ -33,7 +33,7 @@ Pracovní prostor je centralizované místo pro:
 * Prostředky, které vytvoříte, můžete ukládat při použití Azure Machine Learning, včetně:
   * [Prostředí](#environments)
   * [Experimenty](#experiments)
-  * [Kanály](#ml-pipelines)
+  * [Pipelines](#ml-pipelines)
   * [Datové sady](#datasets-and-datastores)
   * [Modely](#models)
   * [Koncové body](#endpoints)
@@ -47,28 +47,15 @@ Pracovní prostor obsahuje další prostředky Azure, které používá pracovn�
 
 Pracovní prostor můžete sdílet s ostatními.
 
-### <a name="create-workspace"></a>Vytvoření pracovního prostoru
-
-Následující diagram znázorňuje pracovní postup vytvoření pracovního prostoru.
-
-* Přihlašujete se ke službě Azure AD z některého z podporovaných klientů Azure Machine Learning (Azure CLI, Python SDK, Azure Portal) a vyžádejte si příslušný Azure Resource Manager token.
-* Zavoláte Azure Resource Manager k vytvoření pracovního prostoru. 
-* Azure Resource Manager kontaktuje poskytovatele prostředků Azure Machine Learning a zřídí pracovní prostor.
-* Pokud nezadáte stávající prostředky, ve vašem předplatném se vytvoří další požadované prostředky.
-
-Podle potřeby můžete také zřídit jiné výpočetní cíle, které jsou připojeny k pracovnímu prostoru (například službě Azure Kubernetes nebo virtuálním počítačům).
-
-[![Vytvořit pracovní postup pracovního postupu](media/concept-azure-machine-learning-architecture/create-workspace.png)](media/concept-azure-machine-learning-architecture/create-workspace.png#lightbox)
-
 ## <a name="computes"></a>Vypočítá
 
 <a name="compute-targets"></a>[Výpočetní cíl](concept-compute-target.md) je libovolný počítač nebo sada počítačů, které používáte ke spuštění školicího skriptu nebo hostování nasazení služby. Jako cíl výpočetní služby můžete použít místní počítač nebo vzdálený výpočetní prostředek.  Díky výpočetním cílům můžete začít školení na místním počítači a pak škálovat do cloudu beze změny školicího skriptu.
 
 Azure Machine Learning zavádí dva plně spravované cloudové virtuální počítače, které jsou nakonfigurované pro úlohy strojového učení:
 
-* <a name="compute-instance"></a>**Instance COMPUTE** : výpočetní instance je virtuální počítač, který obsahuje několik nástrojů a prostředí nainstalovaných pro strojové učení. Primární použití výpočetní instance je pro vaši vývojovou pracovní stanici.  Můžete začít používat ukázkové poznámkové bloky bez nutnosti instalace. Výpočetní instanci lze také použít jako cíl výpočtů pro školení a Inferencing úlohy.
+* <a name="compute-instance"></a>**Instance COMPUTE**: výpočetní instance je virtuální počítač, který obsahuje několik nástrojů a prostředí nainstalovaných pro strojové učení. Primární použití výpočetní instance je pro vaši vývojovou pracovní stanici.  Můžete začít používat ukázkové poznámkové bloky bez nutnosti instalace. Výpočetní instanci lze také použít jako cíl výpočtů pro školení a Inferencing úlohy.
 
-* **Výpočetní clustery** : výpočetní clustery jsou cluster virtuálních počítačů s možnostmi škálování na více uzlů. Výpočetní clustery jsou lépe vhodné pro výpočetní cíle pro velké úlohy a produkci.  Při odeslání úlohy se cluster automaticky škáluje.  Použijte jako školicí cíl výpočetní služby nebo pro nasazení pro vývoj a testování.
+* **Výpočetní clustery**: výpočetní clustery jsou cluster virtuálních počítačů s možnostmi škálování na více uzlů. Výpočetní clustery jsou lépe vhodné pro výpočetní cíle pro velké úlohy a produkci.  Při odeslání úlohy se cluster automaticky škáluje.  Použijte jako školicí cíl výpočetní služby nebo pro nasazení pro vývoj a testování.
 
 Další informace o školicích cílech výpočtů najdete v tématu [školení výpočetních cílů](concept-compute-target.md#train).  Další informace o výpočetních cílech nasazení najdete v tématu [cíle nasazení](concept-compute-target.md#deploy).
 
@@ -126,10 +113,6 @@ Například konfigurace spuštění najdete v tématu [Konfigurace školicího b
 [Pracovní prostor](#workspace)  >  [Experimenty](#experiments)  >  [Spustit příkaz](#runs)  >  **Snímek**
 
 Když odešlete běh, Azure Machine Learning zkomprimuje adresář, který obsahuje skript jako soubor zip, a odešle ho do cíle služby Compute. Pak se soubor zip extrahuje a v něm se spustí skript. Azure Machine Learning také ukládá soubor ZIP jako snímek jako součást záznamu spuštění. Kdokoli s přístupem k pracovnímu prostoru může procházet záznam spuštění a stáhnout snímek.
-
-Následující diagram znázorňuje pracovní postup snímku kódu.
-
-[![Pracovní postup snímku kódu](media/concept-azure-machine-learning-architecture/code-snapshot.png)](media/concept-azure-machine-learning-architecture/code-snapshot.png#lightbox)
 
 ### <a name="logging"></a>protokolování
 
