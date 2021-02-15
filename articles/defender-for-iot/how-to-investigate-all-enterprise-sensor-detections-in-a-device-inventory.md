@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 9da5c8c89ee124e527584164b21b096ac815e5ca
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: b4d824386a7c14165697f4b93f2e93cf0182a855
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625460"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100524021"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>Prozkoumat všechna zjišťování podnikového senzoru v inventáři zařízení
 
@@ -51,7 +51,7 @@ Následující tabulka popisuje sloupce tabulky v inventáři zařízení.
 
 Funkce integrace dat umožňují vylepšit data v inventáři zařízení s informacemi z dalších podnikových prostředků. Mezi tyto zdroje patří CMDBs, DNS, brány firewall a webová rozhraní API.
 
-Tyto informace můžete použít k tomu, abyste se dozvěděli. Například:
+Tyto informace můžete použít k tomu, abyste se dozvěděli. Příklad:
 
 - Data o nákupu zařízení a data ukončení záruky
 
@@ -225,6 +225,6 @@ K dispozici jsou tyto další informace o zóně:
 
 - **Průběh aktualizace**: Pokud se upgraduje připojený senzor, zobrazí se stav upgradu. Během upgradu neobdrží místní Konzola pro správu informace o zařízení ze senzoru.
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
 [Prošetření detekovaných senzorů v inventáři zařízení](how-to-investigate-sensor-detections-in-a-device-inventory.md)

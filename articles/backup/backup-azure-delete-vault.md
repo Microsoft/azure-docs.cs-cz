@@ -3,12 +3,12 @@ title: Odstranění trezoru Microsoft Azure Recovery Services
 description: V tomto článku se dozvíte, jak odebrat závislosti a jak odstranit Azure Backup trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: fd941db933d243b83c1c19c7ae0fdfc2d7869b8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28a0c4d5f643b980d93df2592da38f5da12dd01a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293063"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520455"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Odstranění trezoru Azure Backup Recovery Services
 
@@ -38,16 +38,16 @@ Chcete-li odstranit trezor správně, je nutné postupovat podle kroků v tomto 
 
 - **Krok 1**: zakažte funkci obnovitelného odstranění. Postup zakázání obnovitelného odstranění [najdete tady](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) .
 
-- **Krok 2**: po zakázání obnovitelného odstranění ověřte, jestli ve stavu tichého odstranění nejsou žádné položky, které by dřív zbyly. Pokud jsou položky v tichém odstraněném stavu, je nutné je *undelete* znovu odstranit a *Odstranit* . [Pomocí těchto kroků](./backup-azure-security-feature-cloud.md#permanently-deleting-soft-deleted-backup-items) můžete najít obnovitelné položky odstranění a trvale je odstranit.
+- **Krok 2**: po zakázání obnovitelného odstranění ověřte, jestli ve stavu tichého odstranění nejsou žádné položky, které by dřív zbyly. Pokud jsou položky v tichém odstraněném stavu, je nutné je  znovu odstranit a *Odstranit* . [Pomocí těchto kroků](./backup-azure-security-feature-cloud.md#permanently-deleting-soft-deleted-backup-items) můžete najít obnovitelné položky odstranění a trvale je odstranit.
 
 - **Krok 3**: Chcete-li ověřit, zda jsou k dispozici chráněné položky, je nutné zkontrolovat na následujících třech místech:
 
   - **Položky chráněné cloudem**: přejděte do nabídky řídicího panelu trezoru > **zálohované položky**. Všechny položky, které jsou zde uvedeny, je nutné odebrat pomocí nástroje **Zastavit zálohování** nebo **Odstranit zálohovaná data** společně s jejich zálohovanými daty.  [Pomocí těchto kroků tyto](#delete-protected-items-in-the-cloud) položky odeberte.
-  - **SQL Server instance**: přejděte do nabídky řídicího panelu trezoru > **Backup Infrastructure**  >  **servery chráněné**infrastruktury zálohování. V části chráněné servery vyberte server, jehož registraci chcete zrušit. Pokud chcete trezor odstranit, musíte zrušit registraci všech serverů. Klikněte pravým tlačítkem na chráněný Server a vyberte zrušit **registraci**.
-  - **Servery chráněné Mars**: přejděte do nabídky řídicího panelu trezoru > **Backup Infrastructure**  >  **servery chráněné**infrastruktury zálohování. Pokud máte chráněné servery MARS, musí se všechny uvedené položky odstranit spolu s jejich zálohovanými daty. [Pomocí těchto kroků](#delete-protected-items-on-premises) odstraňte servery chráněné serverem Mars.
-  - **MABS nebo servery pro správu DPM**: přejděte do nabídky řídicího panelu trezoru > **Backup Infrastructure**  >  **servery pro správu zálohování**infrastruktury zálohování. Pokud máte aplikaci DPM nebo Azure Backup Server (MABS), musí se všechny uvedené položky odstranit nebo zrušit jejich registraci spolu s jejich zálohovanými daty. [Pomocí těchto kroků](#delete-protected-items-on-premises) odstraníte servery pro správu.
+  - **SQL Server instance**: přejděte do nabídky řídicího panelu trezoru >   >  **servery chráněné** infrastruktury zálohování. V části chráněné servery vyberte server, jehož registraci chcete zrušit. Pokud chcete trezor odstranit, musíte zrušit registraci všech serverů. Klikněte pravým tlačítkem na chráněný Server a vyberte zrušit **registraci**.
+  - **Servery chráněné Mars**: přejděte do nabídky řídicího panelu trezoru >   >  **servery chráněné** infrastruktury zálohování. Pokud máte chráněné servery MARS, musí se všechny uvedené položky odstranit spolu s jejich zálohovanými daty. [Pomocí těchto kroků](#delete-protected-items-on-premises) odstraňte servery chráněné serverem Mars.
+  - **MABS nebo servery pro správu DPM**: přejděte do nabídky řídicího panelu trezoru >   >  **servery pro správu zálohování** infrastruktury zálohování. Pokud máte aplikaci DPM nebo Azure Backup Server (MABS), musí se všechny uvedené položky odstranit nebo zrušit jejich registraci spolu s jejich zálohovanými daty. [Pomocí těchto kroků](#delete-protected-items-on-premises) odstraníte servery pro správu.
 
-- **Krok 4**: je potřeba zajistit, aby byly odstraněny všechny registrované účty úložiště. Přejděte do nabídky řídicího panelu trezoru > **Backup Infrastructure**  >  **účty úložiště**infrastruktury zálohování. Pokud zde jsou uvedené účty úložiště, musíte je zrušit. Informace o zrušení registrace účtu najdete v tématu zrušení [Registrace účtu úložiště](manage-afs-backup.md#unregister-a-storage-account).
+- **Krok 4**: je potřeba zajistit, aby byly odstraněny všechny registrované účty úložiště. Přejděte do nabídky řídicího panelu trezoru >   >  **účty úložiště** infrastruktury zálohování. Pokud zde jsou uvedené účty úložiště, musíte je zrušit. Informace o zrušení registrace účtu najdete v tématu zrušení [Registrace účtu úložiště](manage-afs-backup.md#unregister-a-storage-account).
 
 Po dokončení těchto kroků můžete trezor i nadále [Odstranit](#delete-the-recovery-services-vault).
 
@@ -59,11 +59,11 @@ Nejprve si přečtěte část **[než začnete](#before-you-start)** , abyste po
 
 Chcete-li zastavit ochranu a odstranit data zálohy, proveďte následující kroky:
 
-1. Na portálu přejdete do **Recovery Services trezoru**a pak přejdete na **zálohované položky**. Pak zvolte chráněné položky v cloudu (například Azure Virtual Machines, Azure Storage [služba soubory Azure] nebo SQL Server na Virtual Machines Azure).
+1. Na portálu přejdete do **Recovery Services trezoru** a pak přejdete na **zálohované položky**. Pak v seznamu **typ správy zálohování** vyberte chráněné položky v cloudu (například Azure Virtual Machines, Azure Storage [služba soubory Azure] nebo SQL Server na Virtual Machines Azure).
 
     ![Vyberte typ zálohování.](./media/backup-azure-delete-vault/azure-storage-selected.png)
 
-2. Kliknutím pravým tlačítkem vyberte zálohovanou položku. V závislosti na tom, jestli je zálohovaná položka chráněná, nebo ne, se v nabídce zobrazí buď podokno **Zastavit zálohování** , nebo **Odstranit data zálohy** .
+2. Zobrazí se seznam všech položek pro kategorii. Kliknutím pravým tlačítkem vyberte zálohovanou položku. V závislosti na tom, jestli je zálohovaná položka chráněná, nebo ne, se v nabídce zobrazí buď podokno **Zastavit zálohování** , nebo **Odstranit data zálohy** .
 
     - Pokud se zobrazí podokno **Zastavit zálohování** , v rozevírací nabídce vyberte **Odstranit zálohovaná data** . Zadejte název zálohované položky (Toto pole rozlišuje velká a malá písmena) a pak z rozevírací nabídky vyberte důvod. Pokud nějaké máte, zadejte svoje komentáře. Pak vyberte **Zastavit zálohování**.
 
@@ -131,8 +131,8 @@ Po dokončení tohoto procesu můžete odstranit zálohované položky z konzoly
 
     ![Zastavte naplánované zálohování.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. Zobrazí se výzva k zadání bezpečnostního kódu PIN (osobní identifikační číslo), které musíte vygenerovat ručně. Abyste to mohli udělat, nejdřív se přihlaste k Azure Portal.
-5. Přejít na vlastnosti nastavení **trezoru Recovery Services**  >  **Settings**  >  **Properties**.
-6. V části **bezpečnostní kód PIN**vyberte **Generovat**. Zkopírujte tento kód PIN. PIN kód je platný jenom po dobu pěti minut.
+5. Přejít na vlastnosti nastavení **trezoru Recovery Services**  >    >  .
+6. V části **bezpečnostní kód PIN** vyberte **Generovat**. Zkopírujte tento kód PIN. PIN kód je platný jenom po dobu pěti minut.
 7. V konzole pro správu vložte kód PIN a pak vyberte **OK**.
 
     ![Vygenerujte bezpečnostní kód PIN.](./media/backup-azure-delete-vault/security-pin.png)
@@ -156,7 +156,7 @@ Chcete-li zastavit ochranu a odstranit data zálohy, proveďte následující kr
 
 1. Otevřete Konzola správce aplikace DPM a pak na navigačním panelu vyberte **ochrana** .
 2. V podokně zobrazení vyberte člena skupiny ochrany, kterého chcete odebrat. Kliknutím pravým tlačítkem vyberte možnost **Zastavit ochranu členů skupiny** .
-3. V dialogovém okně **Zastavit ochranu** vyberte možnost **Odstranit chráněná data**a potom zaškrtněte políčko **Odstranit úložiště online** . Pak vyberte **Zastavit ochranu**.
+3. V dialogovém okně **Zastavit ochranu** vyberte možnost **Odstranit chráněná data** a potom zaškrtněte políčko **Odstranit úložiště online** . Pak vyberte **Zastavit ochranu**.
 
     ![V podokně zastavit ochranu vyberte Odstranit chráněná data.](./media/backup-azure-delete-vault/delete-storage-online.png)
 
@@ -172,7 +172,7 @@ Chcete-li zastavit ochranu a odstranit data zálohy, proveďte následující kr
 
 #### <a name="method-2"></a>Metoda 2
 
-Otevřete konzolu pro správu **MABS** nebo **DPM** . V části **Vybrat způsob ochrany dat**zrušte zaškrtnutí políčka  **Chci online ochranu** .
+Otevřete konzolu pro správu **MABS** nebo **DPM** . V části **Vybrat způsob ochrany dat** zrušte zaškrtnutí políčka  **Chci online ochranu** .
 
   ![Vyberte metodu ochrany dat.](./media/backup-azure-delete-vault/data-protection-method.png)
 

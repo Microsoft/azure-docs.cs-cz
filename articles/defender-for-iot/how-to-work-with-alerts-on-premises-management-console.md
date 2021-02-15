@@ -1,5 +1,5 @@
 ---
-title: Práce s výstrahami v místní konzole pro správu
+title: Práce s upozorněními na místní konzole pro správu
 description: Místní Konzola pro správu vám umožní získat přehled o nedávných hrozbách v síti a lépe pochopit, jak je uživatelé ze senzorů zpracovávají.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: f52e308199ddb8bc21809009ad71918d077ac5b2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: ebd5a0c14b6f9e3a57e3a7df888b5f9d24f9a2df
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839093"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523613"
 ---
-# <a name="work-with-alerts-on-the-on-premises-management-console"></a>Práce s výstrahami v místní konzole pro správu 
+# <a name="work-with-alerts-on-the-on-premises-management-console"></a>Práce s upozorněními na místní konzole pro správu 
 
 Z okna **výstrahy** v konzole pro správu můžete provést následující akce:
 
@@ -119,13 +119,34 @@ Zobrazení zařízení v mapě zóny:
 
 ## <a name="manage-alert-events"></a>Správa událostí výstrah
 
-Události výstrahy zjištěné organizačními senzory můžete spravovat následujícím způsobem:
+K dispozici je několik možností pro správu událostí výstrah z místní konzoly pro správu.
 
 - Zjistěte nebo potvrďte události výstrah. Chcete-li zjistit všechny události výstrah, které mohou být autorizovány, a potvrdit všechny události výstrah, které aktuálně nejsou potvrzeny, vyberte možnost **zjistit & potvrzení** .
 
   :::image type="content" source="media/how-to-work-with-alerts-on-premises-management-console/learn-and-acknowledge.png" alt-text="Vyberte Další informace & potvrzení, abyste se seznámili.":::
 
 - Ztlumení a ztlumení událostí výstrah.
+
+Další informace o studiu, potvrzování a ztlumení událostí výstrah najdete v článku o [správě událostí](how-to-manage-the-alert-event.md) pro senzory.
+
+## <a name="export-alert-information"></a>Exportovat informace o výstrahách
+
+Exportujte informace o výstraze do souboru. csv. Můžete exportovat informace o všech zjištěných výstrahách nebo informace o exportu na základě filtrovaného zobrazení. Exportují se následující informace:
+
+- Zdrojová adresa
+- Cílová adresa
+- Název výstrahy
+- Závažnost výstrahy
+- Zpráva výstrahy
+- Další informace
+- Potvrzený stav
+- Dostupnost PCAP
+
+Export:
+
+1. V postranní nabídce vyberte výstrahy.
+1. Vyberte Exportovat.
+1. Vyberte Exportovat rozšířené výstrahy a exportujte informace o výstrahách v samostatných řádcích pro každou výstrahu, která pokrývá více zařízení. Když je vybraná možnost exportovat rozšířené výstrahy, vytvoří soubor. csv duplicitní řádek výstrahy s jedinečnými položkami v každém řádku. Použití této možnosti usnadňuje zkoumání exportovaných událostí výstrah.  
 
 ## <a name="create-alert-exclusion-rules"></a>Vytvořit pravidla vyloučení výstrah
 
@@ -225,6 +246,6 @@ Pravidla, která vytvoříte pomocí rozhraní API, se zobrazí v okně **pravid
 
 :::image type="content" source="media/how-to-work-with-alerts-on-premises-management-console/edit-exclusion-rule-screen.png" alt-text="Snímek obrazovky s zobrazením pro úpravy pravidla vyloučení":::
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
 [Práce s výstrahami na senzoru](how-to-work-with-alerts-on-your-sensor.md)

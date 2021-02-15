@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: a71ea75eb603b141c4b28cff5f2b4aa957583bcd
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 3d5a29ed26d58f0cbaa57768d4b8ad236283deb9
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621308"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523851"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>O programu Azure Defender pro síť IoT
 
@@ -106,7 +106,7 @@ Ověřte, že vaše zásada zabezpečení vaší organizace umožňuje přístup
 | DNS |  | VSTUPNĚ-VÝSTUPNÍ | 53 | DNS | Port serveru DNS | Místní Konzola pro správu a senzor | Server DNS |
 | LDAP | TCP | VSTUPNĚ-VÝSTUPNÍ | 389 | Active Directory | Připojení mezi platformou CyberX a platformou správy ke službě Active Directory | Místní Konzola pro správu a senzor | Server LDAP |
 | LDAPS | TCP | VSTUPNĚ-VÝSTUPNÍ | 636 | Active Directory | Připojení mezi platformou CyberX a platformou správy ke službě Active Directory | Místní Konzola pro správu a senzor | Server LDAPs |
-| SNMP | UDP | MIMO | 161 | Monitorování | Vzdálené sběrače SNMP. | Místní Konzola pro správu a senzor | Server SNMP |
+| SNMP | UDP | MIMO | 161 | Sledování | Vzdálené sběrače SNMP. | Místní Konzola pro správu a senzor | Server SNMP |
 | Rozhraní WMI | UDP | MIMO | 135 | Monitorování | Monitorování koncového bodu systému Windows | Elektrické | Příslušný prvek sítě |
 | Tunelové propojení | TCP | IN | 9000 <br /><br />– nad portem 443 <br /><br />Od koncového uživatele k místní konzole pro správu. <br /><br />– Port 22 od senzoru k místní konzole pro správu  | Monitorování | Tunelové propojení | Elektrické | Místní Konzola pro správu |
 
@@ -534,24 +534,23 @@ Zkontrolujte tento seznam před nasazením lokality:
 
 | **#** | **Úkol nebo aktivita** | **Stav** | **Komentáře** |
 |--|--|--|--|
-| 1 | Zadejte globální. | ☐ |  |
-| 3 | Objednat zařízení. | ☐ |  |
-| 4 | Připravte seznam podsítí v síti. | ☐ |  |
-| 5 | Zadejte seznam sítí VLAN pro produkční sítě. | ☐ |  |
-| 6 | Zadejte seznam modelů přepínače v síti. | ☐ |  |
-| 7 | Poskytněte seznam dodavatelů a protokolů průmyslového vybavení. | ☐ |  |
-| 8 | Zadejte podrobnosti sítě pro senzory (IP adresa, podsíť, D-GS, DNS). | ☐ |  |
-| 9 | Vytvořte nezbytná pravidla brány firewall a seznam přístupu. | ☐ |  |
-| 10 | Vytvořte pokrývání portů na přepínačích pro monitorování portů nebo nakonfigurujte síťové vypínání podle potřeby. | ☐ |  |
-| 11 | Příprava prostoru stojanu pro zařízení senzorů. | ☐ |  |
-| 12 | Připravte pracovní stanici pro pracovníky. | ☐ |  |
-| 13 | Poskytněte klávesnici, monitor a myš pro program Defender pro zařízení se systémem IoT rack. | ☐ |  |
-| 14 | Stojan a kabely zařízení. | ☐ |  |
-| 15 | Přidělte prostředky lokality pro podporu nasazení. | ☐ |  |
-| 16 | Vytvořte skupiny služby Active Directory nebo místní uživatele. | ☐ |  |
-| 17 | Nastavení školení (samoobslužné vzdělávání). | ☐ |  |
-| 18 | Přejít nebo No – přejít. | ☐ |  |
-| 19 | Naplánování data nasazení. | ☐ |  |
+| 1 | Objednat zařízení. | ☐ |  |
+| 2 | Připravte seznam podsítí v síti. | ☐ |  |
+| 3 | Zadejte seznam sítí VLAN pro produkční sítě. | ☐ |  |
+| 4 | Zadejte seznam modelů přepínače v síti. | ☐ |  |
+| 5 | Poskytněte seznam dodavatelů a protokolů průmyslového vybavení. | ☐ |  |
+| 6 | Zadejte podrobnosti sítě pro senzory (IP adresa, podsíť, D-GS, DNS). | ☐ |  |
+| 7 | Vytvořte nezbytná pravidla brány firewall a seznam přístupu. | ☐ |  |
+| 8 | Vytvořte pokrývání portů na přepínačích pro monitorování portů nebo nakonfigurujte síťové vypínání podle potřeby. | ☐ |  |
+| 9 | Příprava prostoru stojanu pro zařízení senzorů. | ☐ |  |
+| 10 | Připravte pracovní stanici pro pracovníky. | ☐ |  |
+| 11 | Poskytněte klávesnici, monitor a myš pro program Defender pro zařízení se systémem IoT rack. | ☐ |  |
+| 12 | Stojan a kabely zařízení. | ☐ |  |
+| 13 | Přidělte prostředky lokality pro podporu nasazení. | ☐ |  |
+| 14 | Vytvořte skupiny služby Active Directory nebo místní uživatele. | ☐ |  |
+| 15 | Nastavení školení (samoobslužné vzdělávání). | ☐ |  |
+| 16 | Přejít nebo No – přejít. | ☐ |  |
+| 17 | Naplánování data nasazení. | ☐ |  |
 
 
 | **Date** (Datum) | **Poznámka** | **Datum nasazení** | **Poznámka** |
@@ -564,7 +563,7 @@ Zkontrolujte tento seznam před nasazením lokality:
 
 Přehled diagramu průmyslové sítě vám umožní definovat vhodné umístění pro program Defender pro zařízení IoT.
 
-1.  Zobrazení globálního diagramu sítě prostředí v průmyslu Například:
+1.  Zobrazení globálního diagramu sítě prostředí v průmyslu Příklad:
 
     :::image type="content" source="media/how-to-set-up-your-network/ot-global-network-diagram.png" alt-text="Diagram prostředí průmyslových prostředí pro globální síť":::
 
@@ -606,7 +605,7 @@ Přehled diagramu průmyslové sítě vám umožní definovat vhodné umístěn�
 
     Co je jejich zásada? __________________________________ 
 
-    Například:
+    Příklad:
 
     - Siemens
 
@@ -696,6 +695,6 @@ Obraťte se na správce služby Active Directory a vytvořte skupinu uživatelů
 | Camera | |
 | Rentgenový počítač | |
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
 [O instalaci Defenderu pro IoT](how-to-install-software.md)
