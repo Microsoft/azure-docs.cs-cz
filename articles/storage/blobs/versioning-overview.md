@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 267fd57b2fd359a73d5c1e01568aba14594e9290
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 692a820bea69071485a973a988ae91bd70b74f35
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980203"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380810"
 ---
 # <a name="blob-versioning"></a>Správa verzí objektů BLOB
 
@@ -28,7 +28,7 @@ Microsoft doporučuje používat správu verzí objektů BLOB k údržbě předc
 Informace o tom, jak povolit správu verzí objektů blob, najdete v tématu [povolení a správa verzí objektů BLOB](versioning-enable.md).
 
 > [!IMPORTANT]
-> Správa verzí objektů BLOB vám neumožňuje obnovit z náhodného odstranění účtu úložiště nebo kontejneru. Pokud chcete zabránit nechtěnému odstranění účtu úložiště, nakonfigurujte na prostředku účtu úložiště zámek **CannotDelete** . Další informace o uzamykání prostředků Azure najdete v tématu [uzamčení prostředků, aby se zabránilo neočekávaným změnám](../../azure-resource-manager/management/lock-resources.md).
+> Správa verzí objektů BLOB vám neumožňuje obnovit z náhodného odstranění účtu úložiště nebo kontejneru. Pokud chcete zabránit nechtěnému odstranění účtu úložiště, nakonfigurujte zámek u prostředku účtu úložiště. Další informace o uzamykání prostředků Azure najdete v tématu [uzamčení prostředků, aby se zabránilo neočekávaným změnám](../../azure-resource-manager/management/lock-resources.md). Pokud chcete chránit kontejnery před náhodným odstraněním, nakonfigurujte pro účet úložiště obnovitelné odstranění kontejneru. Další informace najdete v tématu [obnovitelné odstranění pro kontejnery (Preview)](soft-delete-container-overview.md).
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 

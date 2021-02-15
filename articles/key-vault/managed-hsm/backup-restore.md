@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: daf7a9fe3291850bea8c78680bcf375931383020
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: e926dcd4b05d137c7927bdfe5221923d25d4670c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805593"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093484"
 ---
 # <a name="full-backup-and-restore"></a>Úplné zálohování a obnovení
 
@@ -44,9 +44,9 @@ Zálohování je dlouhodobá operace, ale okamžitě vrátí ID úlohy. Můžete
 I když probíhá zálohování, nemusí modul HARDWAROVÉho zabezpečení fungovat při plné propustnosti, protože některé oddíly HSM budou zaneprázdněny prováděním operace zálohování.
 
 ```azurecli-interactive
-# time for 30 minutes later for SAS token expiry
+# time for 500 minutes later for SAS token expiry
 
-end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')
+end=$(date -u -d "500 minutes" '+%Y-%m-%dT%H:%MZ')
 
 # Get storage account key
 
@@ -84,9 +84,9 @@ K provedení úplného obnovení musíte zadat následující informace:
 Obnovení je dlouhodobá operace, ale okamžitě vrátí ID úlohy. Stav procesu obnovení můžete zjistit pomocí ID této úlohy. Když proces obnovení probíhá, modul HARDWAROVÉho zabezpečení vstoupí do režimu obnovení a všechny příkazy roviny dat (kromě příkazu check Restore status) jsou zakázané.
 
 ```azurecli-interactive
-#### time for 30 minutes later for SAS token expiry
+#### time for 500 minutes later for SAS token expiry
 
-end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')
+end=$(date -u -d "500 minutes" '+%Y-%m-%dT%H:%MZ')
 
 # Get storage account key
 

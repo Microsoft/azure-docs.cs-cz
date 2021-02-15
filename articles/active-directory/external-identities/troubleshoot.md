@@ -5,7 +5,7 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: troubleshooting
-ms.date: 12/11/2020
+ms.date: 02/12/2021
 tags: active-directory
 ms.author: mimart
 author: msmimart
@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa0d0d032c2ab6ae1d6c5e6b1c8b1793a6b3bd7c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 60cd944ecb144a30e872259f6e959a11c3ea6319
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090633"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365425"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Řešení potíží s Azure Active Directory spolupráce B2B
 
@@ -27,7 +27,7 @@ Tady je několik oprav pro běžné problémy s spoluprací B2B Azure Active Dir
 
    > [!IMPORTANT]
    > - **Od 4. ledna 2021** je Google [zastaralá podpora přihlašování v nástroji WebView](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Pokud používáte Google Federation nebo samoobslužnou registraci pomocí služby Gmail, měli byste [testovat kompatibilitu vašich obchodních nativních aplikací](google-federation.md#deprecation-of-webview-sign-in-support).
-   > - **Od 31. března 2021** přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
+   > - **Od října 2021** přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
 
 ## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>Přidal (a) jsem externího uživatele, ale nevidí ho v globálním adresáři nebo v rámci výběru osob.
 
@@ -112,7 +112,7 @@ V cloudu pro státní správu Azure USA je spolupráce B2B v současnosti podpor
 
 Při používání samoobslužných funkcí pro registraci, jako jsou vlastní uživatelské atributy nebo uživatelské toky, `aad-extensions-app. Do not modify. Used by AAD for storing user data.` je automaticky vytvořena aplikace s názvem. Používá je externí identity Azure AD k ukládání informací o uživatelích, kteří si zaregistrují a vlastní atributy shromažďují.
 
-Pokud jste to omylem odstranili `aad-extensions-app` , budete mít 30 dní na jeho obnovení. Aplikaci můžete obnovit pomocí modulu Azure AD PowerShell.
+Pokud aplikaci `aad-extensions-app` omylem odstraníte, máte 30 dnů na její obnovení. Aplikaci můžete obnovit pomocí modulu Azure AD PowerShell.
 
 1. Spusťte modul Azure AD PowerShell a spusťte ho `Connect-AzureAD` .
 1. Přihlaste se jako globální správce pro tenanta Azure AD, pro který chcete obnovit odstraněnou aplikaci.

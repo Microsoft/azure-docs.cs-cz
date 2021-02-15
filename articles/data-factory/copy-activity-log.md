@@ -1,22 +1,17 @@
 ---
 title: Protokol relace v aktivitě kopírování
 description: Přečtěte si, jak povolit protokol relace v aktivitě kopírování v Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
-manager: ''
-ms.reviewer: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: yexu
-ms.openlocfilehash: e56a840da07a2f6e966867699506f0122a0e7956
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 7cb00d62556babbd8e43e2fac2faa815a63943ed
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593636"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385264"
 ---
 #  <a name="session-log-in-copy-activity"></a>Protokol relace v aktivitě kopírování
 
@@ -102,6 +97,9 @@ Po úplném spuštění aktivity kopírování uvidíte cestu souborů protokolu
 
 ```
 
+> [!NOTE]
+> Pokud `enableCopyActivityLog` je vlastnost nastavena na hodnotu `Enabled` , názvy souborů protokolu jsou vygenerovány systémem.
+
 ### <a name="the-schema-of-the-log-file"></a>Schéma souboru protokolu
 
 Následuje schéma souboru protokolu.
@@ -109,7 +107,7 @@ Následuje schéma souboru protokolu.
 Sloupec | Popis 
 -------- | -----------  
 Timestamp | Časové razítko při čtení, zápisu nebo přeskočení objektu ADF.
-Úroveň | Úroveň protokolu této položky. Může to být upozornění nebo informace.
+Level | Úroveň protokolu této položky. Může to být upozornění nebo informace.
 OperationName | Provozní chování aktivity kopírování ADF u každého objektu. Může to být Reada, Write, Skip nebo TabularRowSkip (jen pro čtení).
 OperationItem | Názvy souborů nebo vynechané řádky.
 Zpráva | Další informace, které ukazují, zda byl soubor načten ze zdrojového úložiště nebo zapsán do cílového úložiště. Může to také být důvod, proč se soubor nebo řádky přeskočí.

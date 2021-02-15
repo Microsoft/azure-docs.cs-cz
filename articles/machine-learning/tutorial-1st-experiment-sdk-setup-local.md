@@ -9,14 +9,15 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 09/15/2020
+ms.date: 02/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 0d099d31db3619e14da4fe66e26b25a0e36ee39c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+adobe-target: true
+ms.openlocfilehash: 5d61f330c823aff755a25e637bb58c132aa58100
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250685"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369109"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Kurz: Začínáme s Azure Machine Learning ve vývojovém prostředí (část 1 ze 4)
 
@@ -34,7 +35,7 @@ V části 1 této série kurzů budete:
 > [!NOTE]
 > Tento kurz se zaměřuje na Azure Machine Learning koncepty vyžadované k odeslání **dávkových úloh** – jedná se o případ, kdy se kód odešle do cloudu, aby běžel na pozadí bez zásahu uživatele. To je užitečné pro hotové skripty nebo kód, který chcete spustit opakovaně, nebo pro úlohy strojového učení náročné na výpočetní výkon. Pokud máte více zajímat se o průzkumné pracovní postup, můžete místo toho použít [Jupyter nebo RStudio na instanci služby compute Azure Machine Learning](tutorial-1st-experiment-sdk-setup.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Zkuste [Azure Machine Learning](https://aka.ms/AMLFree).
 - [Anaconda](https://www.anaconda.com/download/) nebo [Miniconda](https://www.anaconda.com/download/) ke správě virtuálních prostředí Python a instalaci balíčků.  
@@ -68,7 +69,7 @@ pip install azureml-core
 > [!NOTE]
 > Dokončení instalace sady Azure Machine Learning SDK trvá přibližně 2 minuty.
 >
-> Pokud se zobrazí chyba časového limitu, vyzkoušejte `pip install --default-timeout=100 azureml-core` intstead.
+> Pokud se zobrazí chyba časového limitu, zkuste `pip install --default-timeout=100 azureml-core` místo toho.
 
 
 > [!div class="nextstepaction"]
@@ -78,20 +79,29 @@ pip install azureml-core
 
 Pro tento kurz doporučujeme nastavit následující jednoduchou strukturu adresářů:
 
-```markdown
-tutorial
-└──.azureml
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/directory-structure-1.png" alt-text="Adresářová struktura: nejvyšší úroveň kurzu s podadresářem. AzureML":::
+
 
 - `tutorial`: Adresář nejvyšší úrovně projektu.
 - `.azureml`: Skrytý podadresář pro ukládání Azure Machine Learning konfiguračních souborů.
 
+Například pro vytvoření v okně bash:
+
+```bash
+mkdir tutorial
+cd tutorial
+mkdir .azureml
+```
+
 > [!TIP]
-> Skrytý podadresář. AzureML můžete vytvořit v okně terminálu.  Nebo použijte následující:
+> Chcete-li vytvořit nebo zobrazit strukturu v grafickém okně, nejprve povolte možnost zobrazit a vytvořit skryté soubory a složky:
 >
-> * V okně hledání adres Mac použijte **příkaz + Shift +.** Chcete-li přepnout možnost zobrazit a vytvořit adresáře začínající tečkou.  
+> * V okně hledání adres Mac použijte **příkaz + Shift +.** přepínání zobrazení skrytých souborů nebo složek.  
 > * V Průzkumníkovi souborů Windows 10 si přečtěte téma [jak zobrazit skryté soubory a složky](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5). 
 > * V grafickém rozhraní systému Linux použijte **kombinaci kláves CTRL + h** nebo **zobrazení** a zaškrtněte políčko pro **zobrazení skrytých souborů**.
+
+
+
 
 > [!div class="nextstepaction"]
 > [Vytvořili jsem adresář,](?success=create-dir#workspace) [na který jsem narazil](https://www.research.net/r/7C8Z3DN?issue=create-dir)
@@ -138,12 +148,7 @@ python ./01-create-workspace.py
 
 Po úspěšném spuštění *01-Create-Workspace.py* bude struktura vaší složky vypadat takto:
 
-```markdown
-tutorial
-└──.azureml
-|  └──config.json
-└──01-create-workspace.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/directory-structure-2.png" alt-text="Soubor config.json se zobrazí v podadresáři. AzureML po spuštění 01-create-workspace.py":::
 
 Soubor `.azureml/config.json` obsahuje metadata nutná pro připojení k pracovnímu prostoru Azure Machine Learning. Konkrétně obsahuje ID vašeho předplatného, skupinu prostředků a název pracovního prostoru. 
 
@@ -196,13 +201,7 @@ python ./02-create-compute.py
 
 Vaše struktura složek teď bude vypadat takto:
 
-```bash
-tutorial
-└──.azureml
-|  └──config.json
-└──01-create-workspace.py
-└──02-create-compute.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/directory-structure-3.png" alt-text="Přidání 02-create-compute.py do adresáře tutorial":::
 
 > [!div class="nextstepaction"]
 > [Vytvářený výpočetní cluster](?success=create-compute-cluster#next-steps) [jsem narazil na problém](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster)

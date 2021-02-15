@@ -5,30 +5,31 @@ author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 09/22/2019
+ms.date: 02/09/2021
 ms.author: dech
-ms.openlocfilehash: 7b52a066f80b686a0e424d8f63d520d46691a72a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.custom: references_regions
+ms.openlocfilehash: b8ce745a0a0db96e7f6b9e3a0140d46364246e4a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187812"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379603"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Povolit poznámkové bloky pro účty Azure Cosmos DB (Preview)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!IMPORTANT]
-> Integrované poznámkové bloky pro Azure Cosmos DB jsou momentálně dostupné v následujících oblastech Azure: Austrálie – východ, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Západní Evropa a Západní USA 2. Pokud chcete používat poznámkové bloky, [vytvořte nový účet s poznámkovým blokem](#enable-notebooks-in-a-new-cosmos-account) nebo [Povolte poznámkové bloky v existujícím účtu](#enable-notebooks-in-an-existing-cosmos-account) v některé z těchto oblastí.
+> Integrované poznámkové bloky pro Azure Cosmos DB jsou teď dostupné ve [29 oblastech](#supported-regions). Pokud chcete používat poznámkové bloky, [vytvořte nový účet Cosmos](#create-a-new-cosmos-account) nebo [Povolte poznámkové bloky v existujícím účtu](#enable-notebooks-in-an-existing-cosmos-account) v některé z těchto oblastí. 
 
 Integrované poznámkové bloky Jupyter v Azure Cosmos DB umožňují analyzovat a vizualizovat data z Azure Portal. Tento článek popisuje, jak tuto funkci povolit pro váš účet služby Azure Cosmos DB.
 
-## <a name="enable-notebooks-in-a-new-cosmos-account"></a>Povolit poznámkové bloky v novém účtu Cosmos
-
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+## <a name="create-a-new-cosmos-account"></a>Vytvoření nového účtu Cosmos
+Od 10. února 2021 budou mít nové účty Azure Cosmos vytvořené v jedné z [podporovaných oblastí](#supported-regions) automaticky povolené poznámkové bloky. Pro povolení poznámkových bloků není nutná žádná další konfigurace. Pomocí následujících pokynů vytvořte nový účet:
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Vyberte **vytvořit**  >  **databáze** prostředků  >  **Azure Cosmos DB**.
-1. Na stránce **vytvořit Azure Cosmos DB účet** vyberte **poznámkové bloky**. 
+1. Zadejte základní nastavení pro účet. 
  
-    :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks.png" alt-text="Možnost výběru poznámkových bloků v Azure Cosmos DB vytvořit okno":::
+   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail-2.png" alt-text="Stránka nového účtu pro službu Azure Cosmos DB":::
 
 1. Vyberte **Zkontrolovat a vytvořit**. Můžete přeskočit možnost **síť** a **značky** . 
 1. Zkontrolujte nastavení účtu a pak vyberte **vytvořit**. Vytvoření účtu trvá několik minut. Počkejte, než se na stránce portálu zobrazí **dokončené vaše nasazení**. 
@@ -74,6 +75,45 @@ Můžete také vybrat **Nový Poznámkový blok** pro vytvoření nového pozná
 
 :::image type="content" source="media/enable-notebooks/create-or-upload-new-notebook.png" alt-text="Vytvoření nebo nahrání nového poznámkového bloku":::
 
+## <a name="supported-regions"></a>Podporované oblasti
+Integrované poznámkové bloky pro Azure Cosmos DB jsou teď dostupné ve 29 oblastech Azure. U nových účtů Azure Cosmos vytvořených v těchto oblastech budou poznámkové bloky automaticky povolené. Poznámkové bloky jsou s vaším účtem bezplatné. 
+
+- Austrálie – střed
+- Austrálie – střed 2
+- Austrálie – východ
+- Austrálie – jihovýchod
+- Brazílie – jih
+- Střední Kanada
+- Kanada – východ
+- Indie – střed
+- Střední USA
+- East US
+- USA – východ 2
+- Francie – střed
+- Francie – jih
+- Německo – sever
+- Německo – středozápad
+- Japonsko – západ
+- Jižní Korea – jih
+- Střed USA – sever
+- Severní Evropa
+- Střed USA – jih
+- Southeast Asia
+- Švýcarsko – sever
+- Spojené arabské emiráty – střed
+- Spojené království – jih
+- Spojené království – západ
+- Střed USA – západ
+- West Europe
+- Západní Indie
+- Západní USA 2
+
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o výhodách [Azure Cosmos DB poznámkových blocích Jupyter](cosmosdb-jupyter-notebooks.md)
+* Přečtěte si o výhodách [Azure Cosmos DB poznámkových blocích Jupyter](cosmosdb-jupyter-notebooks.md)
+* [Prozkoumat galerii ukázek poznámkových bloků](https://cosmos.azure.com/gallery.html)
+* [Použití funkcí a příkazů poznámkového bloku Pythonu](use-python-notebook-features-and-commands.md)
+* [Použití funkcí a příkazů pro Poznámkový blok jazyka C#](use-csharp-notebook-features-and-commands.md)
+* [Import poznámkových bloků z úložiště GitHub](import-github-notebooks.md)
+
+

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 506e568f44d8dd5354ed7bd3ec20d0c71d484b85
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 41db671e4ab76dc56dc2c01f4852640acfe3fd83
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475180"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389735"
 ---
 # <a name="virtual-network-service-tags"></a>Značky služby virtuální sítě
 <a name="network-service-tags"></a>
@@ -153,6 +153,7 @@ Rozsahy IP adres v těchto souborech jsou v zápisu CIDR.
 ### <a name="tips"></a>Tipy 
 - Můžete zjišťovat aktualizace z jedné publikace na další tím, že zaznamenáte zvýšené hodnoty *changeNumber* v souboru JSON. Každý pododdíl (například **Storage. WestUS**) má svůj vlastní *changeNumber* , který se zvýší, protože dojde ke změnám. Nejvyšší úroveň *changeNumber* souboru se zvýší, když se změní některá z dílčích sekcí.
 - Příklady, jak analyzovat informace o značce služby (například získat všechny rozsahy adres pro úložiště v WestUS), najdete v dokumentaci k [rozhraní API zjišťování značek služby](/powershell/module/az.network/Get-AzNetworkServiceTag?viewFallbackFrom=azps-2.3.2) .
+- Když se do značek služeb přidají nové IP adresy, nepoužijí se v Azure aspoň jeden týden. Získáte tak čas aktualizovat všechny systémy, které by mohly potřebovat sledovat IP adresy přidružené k značkám služby.
 
 ## <a name="next-steps"></a>Další kroky
 - Naučte se [vytvořit skupinu zabezpečení sítě](tutorial-filter-network-traffic.md).

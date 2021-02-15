@@ -1,22 +1,18 @@
 ---
 title: Migrace dat z místního clusteru Hadoop do Azure Storage
 description: Naučte se používat Azure Data Factory k migraci dat z místního clusteru Hadoop do Azure Storage.
-services: data-factory
 ms.author: yexu
 author: dearandyxu
-ms.reviewer: ''
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/30/2019
-ms.openlocfilehash: 3e691244c4c03635eb87a7905eff6756da5c04f9
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9959a37d9b68d756437a3b4f0d75a2d63385758e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638121"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367788"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>K migraci dat z místního clusteru Hadoop do Azure Storage použijte Azure Data Factory 
 
@@ -27,7 +23,7 @@ Azure Data Factory poskytuje výkonný, robustní a nákladově efektivní mecha
 Data Factory nabízí dva základní přístupy k migraci dat z místního HDFS do Azure. Můžete vybrat přístup v závislosti na vašem scénáři. 
 
 - **Data Factory režim DistCp** (doporučeno): v Data Factory můžete k kopírování souborů do Azure Blob Storage (včetně [dvoufázové kopie](./copy-activity-performance.md#staged-copy)) nebo Azure Data Lake Store Gen2 použít [DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) (distribuované kopírování). Pomocí Data Factory integrovaných s DistCp můžete využít stávající výkonný cluster, abyste dosáhli nejlepší propustnosti kopírování. Získáte také výhodu flexibilního plánování a sjednocení monitorovacího prostředí od Data Factory. V závislosti na konfiguraci Data Factory se aktivita kopírování automaticky vytvoří příkaz DistCp, odešle data do vašeho clusteru Hadoop a pak monitoruje stav kopírování. Pro migraci dat z místního clusteru Hadoop do Azure doporučujeme Data Factory režim DistCp.
-- **Data Factory režim nativního prostředí Integration runtime** : DistCp není možnost ve všech scénářích. Například v prostředí Azure Virtual Networks nástroj DistCp nepodporuje privátní partnerské vztahy Azure ExpressRoute s koncovým bodem Azure Storage virtuální sítě. V některých případech navíc nebudete chtít použít stávající cluster Hadoop jako modul pro migraci dat, takže nebudete mít v clusteru velké zatížení, což může mít vliv na výkon stávajících úloh ETL. Místo toho můžete použít nativní schopnost prostředí Data Factory Integration runtime jako modul, který kopíruje data z místního HDFS do Azure.
+- **Data Factory režim nativního prostředí Integration runtime**: DistCp není možnost ve všech scénářích. Například v prostředí Azure Virtual Networks nástroj DistCp nepodporuje privátní partnerské vztahy Azure ExpressRoute s koncovým bodem Azure Storage virtuální sítě. V některých případech navíc nebudete chtít použít stávající cluster Hadoop jako modul pro migraci dat, takže nebudete mít v clusteru velké zatížení, což může mít vliv na výkon stávajících úloh ETL. Místo toho můžete použít nativní schopnost prostředí Data Factory Integration runtime jako modul, který kopíruje data z místního HDFS do Azure.
 
 Tento článek poskytuje následující informace o obou metodách:
 > [!div class="checklist"]
@@ -110,7 +106,7 @@ Pokud některá z úloh kopírování selže kvůli přechodným problémům se 
 
 V režimu Data Factory DistCp můžete použít parametr příkazového řádku DistCp `-update` , zapsat data, když se zdrojový soubor a cílový soubor liší velikost, pro migraci rozdílových dat.
 
-V režimu Data Factory Native Integration je nejvhodnější způsob, jak identifikovat nové nebo změněné soubory ze HDFS, použít konvenci pojmenování podle časových oddílů. Když jsou data v HDFS v čase rozdělená na oddíly s informacemi o časovém intervalu v názvu souboru nebo složky (například */yyyy/mm/dd/file.csv* ), váš kanál může snadno určit, které soubory a složky se mají kopírovat přírůstkově.
+V režimu Data Factory Native Integration je nejvhodnější způsob, jak identifikovat nové nebo změněné soubory ze HDFS, použít konvenci pojmenování podle časových oddílů. Když jsou data v HDFS v čase rozdělená na oddíly s informacemi o časovém intervalu v názvu souboru nebo složky (například */yyyy/mm/dd/file.csv*), váš kanál může snadno určit, které soubory a složky se mají kopírovat přírůstkově.
 
 Případně, pokud vaše data v HDFS nebudou rozdělená na oddíly, Data Factory můžou identifikovat nové nebo změněné soubory pomocí jejich hodnoty **LastModifiedDate** . Data Factory kontroluje všechny soubory z HDFS a kopíruje jenom nové a aktualizované soubory, které mají poslední upravená časová razítka, která je větší než nastavená hodnota. 
 

@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z Teradata Vantage pomocí Azure Data Factory
 description: Konektor Teradata služby Data Factory umožňuje kopírovat data z Teradata Vantage do úložišť dat, která aplikace Data Factory podporuje jako jímky.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: jingwang
-ms.openlocfilehash: 430b9a1e567d9a79093f50ae388b4b69119c057d
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: c65b295dca16a3453b2ee5472b9a3ee5e8d62df7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695869"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381762"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Kopírování dat z Teradata Vantage pomocí Azure Data Factory
 
@@ -62,8 +57,8 @@ Propojená služba Teradata podporuje následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavena na **Teradata**. | Ano |
-| připojovací řetězec | Určuje informace potřebné pro připojení k instanci Teradata. Přečtěte si následující ukázky.<br/>Můžete také vložit heslo do Azure Key Vault a z `password` připojovacího řetězce si vyžádat konfiguraci. Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) . | Ano |
+| typ | Vlastnost Type musí být nastavena na **Teradata**. | Yes |
+| připojovací řetězec | Určuje informace potřebné pro připojení k instanci Teradata. Přečtěte si následující ukázky.<br/>Můžete také vložit heslo do Azure Key Vault a z `password` připojovacího řetězce si vyžádat konfiguraci. Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) . | Yes |
 | username | Zadejte uživatelské jméno pro připojení ke službě Teradata. Platí při použití ověřování systému Windows. | No |
 | heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Můžete také zvolit odkaz na [tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). <br>Platí při použití ověřování systému Windows nebo odkazování na heslo v Key Vault pro základní ověřování. | No |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
@@ -170,7 +165,7 @@ Chcete-li kopírovat data z Teradata, jsou podporovány následující vlastnost
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavena na hodnotu `TeradataTable` . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavena na hodnotu `TeradataTable` . | Yes |
 | database | Název instance Teradata. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 | tabulka | Název tabulky v instanci Teradata. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
@@ -224,7 +219,7 @@ Chcete-li kopírovat data z Teradata, v části **zdroj** aktivity kopírování
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavena na hodnotu `TeradataSource` . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavena na hodnotu `TeradataSource` . | Yes |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"`.<br>Pokud povolíte rozdělené zatížení, musíte v dotazu připojit všechny odpovídající předdefinované parametry oddílu. Příklady najdete v části [paralelní kopírování z Teradata](#parallel-copy-from-teradata) . | Ne (Pokud je zadaná tabulka v datové sadě) |
 | partitionOptions | Určuje možnosti dělení dat používané při načítání dat z Teradata. <br>Povolené hodnoty jsou: **none** (default), **hash** a **DynamicRange**.<br>Pokud je povolená možnost oddílu (tj. ne `None` ), stupeň paralelismu na souběžně načtená data z Teradata se řídí [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) nastavením aktivity kopírování. | No |
 | partitionSettings | Určete skupinu nastavení pro dělení dat. <br>Použijte, pokud není možnost oddílu `None` . | No |

@@ -1,22 +1,18 @@
 ---
 title: Monitorování a Správa kanálů pomocí Azure Portal a PowerShellu
 description: Naučte se, jak pomocí Azure Portal a Azure PowerShell monitorovat a spravovat datové továrny Azure a kanály, které jste vytvořili.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 2a30c755bc19849ad3a821cbbc75b787a3b0bb98
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 486f12c29c473d46e3aff73abe747f8aa5a2ef8d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495833"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380402"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorování a Správa kanálů Azure Data Factory pomocí Azure Portal a PowerShellu
 > [!div class="op_single_selector"]
@@ -46,7 +42,7 @@ Pomocí Azure Portal můžete:
 Tato část také popisuje, jak se řez datové sady přechází z jednoho stavu do jiného.   
 
 ### <a name="navigate-to-your-data-factory"></a>Přejděte do objektu pro vytváření dat.
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. V nabídce na levé straně klikněte na **Datové továrny** . Pokud ho nevidíte, klikněte na **Další služby >** a potom klikněte na **Datové továrny** v kategorii **Intelligence + Analytics** .
 
    ![Procházet všechny > datové továrny](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
@@ -87,7 +83,7 @@ Dvojitým kliknutím na **OutputBlobTable** v **diagramu** můžete zobrazit vš
 
 <table>
 <tr>
-    <th align="left">State</th><th align="left">Podstav</th><th align="left">Popis</th>
+    <th align="left">State</th><th align="left">Podstav</th><th align="left">Description</th>
 </tr>
 <tr>
     <td rowspan="8">Čekající</td><td>ScheduleTime</td><td>Čas nepřijde, aby se řez spouštěl.</td>
@@ -287,7 +283,7 @@ V případě neúspěšného ověření řezu v důsledku selhání zásady (nap
 
 ![Opravte chyby a ověřte](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
-### <a name="use-azure-powershell"></a>Použití Azure PowerShellu
+### <a name="use-azure-powershell"></a>Použití Azure Powershell
 Selhání můžete znovu spustit pomocí rutiny **set-AzDataFactorySliceStatus** . Syntaxe a další podrobnosti o rutině najdete v tématu [set-AzDataFactorySliceStatus](/powershell/module/az.datafactory/set-azdatafactoryslicestatus) .
 
 **Příklad:**

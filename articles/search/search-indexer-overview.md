@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: df393f54e7dfa83c8fc0feab3dbf42a156b296b7
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: a274e96defa8b6b74c046923d87f198029399dd4
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430458"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100098091"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexery ve službě Azure Cognitive Search
 
@@ -118,6 +118,7 @@ Stav indexeru můžete monitorovat na portálu nebo prostřednictvím [rozhraní
 Teď, když jste zavedli, je dalším krokem Kontrola vlastností a parametrů indexeru, plánování a monitorování indexerů. Případně se můžete vrátit do seznamu [podporovaných zdrojů dat](#supported-data-sources) , kde najdete další informace o konkrétním zdroji.
 
 + [Vytváření indexerů](search-howto-create-indexers.md)
++ [Resetování a spuštění indexerů](search-howto-run-reset-indexers.md)
 + [Plánování indexerů](search-howto-schedule-indexers.md)
 + [Definování mapování polí](search-indexer-field-mappings.md)
 + [Monitorovat stav indexeru](search-howto-monitor-indexers.md)

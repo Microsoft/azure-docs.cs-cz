@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/27/2021
 ms.author: yelevin
-ms.openlocfilehash: 11c5c77623fcc693210d5a42bf94c968e884fec3
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2a6e31115fb2548f8248f741213970605f230036
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920016"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390721"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Užitečné prostředky pro práci s Sentinel Azure
 
@@ -75,15 +75,6 @@ Tato data můžete zobrazit jejich streamování z protokolu aktivit Azure do sl
     ```
 
 
-
-## <a name="vendor-documentation"></a>Dokumentace dodavatele
-
-| **Dodavatel**  | **Použít incident v Azure Sentinel** | **Odkaz**|
-|----|----|----|
-| GitHub| Používá se pro přístup ke stránce komunity.| <https://github.com/Azure/Azure-Sentinel> |
-| PaloAlto| Konfigurace CEF| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
-| PluralSight | Kurz dotazovacího jazyka Kusto| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
-
 ## <a name="blogs-and-forums"></a>Blogy a fóra
 
 Rádi uslyšíme vaše uživatele!
@@ -96,8 +87,6 @@ Rádi uslyšíme vaše uživatele!
 
     - [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) 
     - [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)
-
-Další informace o zabezpečení a dodržování předpisů v Azure najdete v [blogu Microsoft Azure zabezpečení a dodržování předpisů](https://techcommunity.microsoft.com/t5/microsoft-security-and/bg-p/MicrosoftSecurityandCompliance).
 
 
 ## <a name="next-steps"></a>Další kroky

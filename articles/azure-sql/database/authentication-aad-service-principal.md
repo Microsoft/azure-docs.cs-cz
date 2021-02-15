@@ -8,19 +8,19 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/21/2020
-ms.openlocfilehash: 6e397242bd699adcba4737014ebbce72aadc8ec2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 02/11/2021
+ms.openlocfilehash: 4012cd83cf2e6fe438792a503731729b57a1425c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669811"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380589"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure Active Directory instančního objektu se službou Azure SQL
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Podpora pro vytváření uživatelů Azure Active Directory (Azure AD) v Azure SQL Database (SQL DB) a [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) jménem aplikací Azure AD (instanční objekty) jsou momentálně ve **verzi Public Preview** .
+Podpora pro vytváření uživatelů Azure Active Directory (Azure AD) v Azure SQL Database (SQL DB) a [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) jménem aplikací Azure AD (instanční objekty) jsou momentálně ve **verzi Public Preview**.
 
 > [!NOTE]
 > Tato funkce je už pro spravovanou instanci SQL podporovaná.
@@ -52,7 +52,7 @@ Podpora této funkce je užitečná v procesech automatizace aplikací Azure AD,
 
 Pokud chcete povolit vytvoření objektu Azure AD v SQL Database a Azure synapse jménem aplikace služby Azure AD, vyžadují se následující nastavení:
 
-1. Přiřazení identity serveru
+1. Přiřaďte identitu serveru. Přiřazená identita serveru představuje identitu spravovaného systému (MSI). Identita serveru pro Azure SQL v současné době nepodporuje identitu spravované uživatelem (UMI).
     - Pro nový logický Server Azure SQL spusťte následující příkaz PowerShellu:
     
     ```powershell

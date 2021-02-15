@@ -11,17 +11,17 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 10/21/2020
-ms.openlocfilehash: 1fc5653f08f8fc7916257dfdba570f451c0afa75
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 95e9ef340328bb4c1835e966cc9c3019bca88c09
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131929"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368825"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>Vytvoření agenta elastické úlohy pomocí prostředí PowerShell (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[Elastické úlohy (Preview)](job-automation-overview.md#elastic-database-jobs-preview) umožňují paralelní spuštění jednoho nebo více skriptů jazyka Transact-SQL (T-SQL) paralelně napříč mnoha databázemi.
+[Elastické úlohy (Preview)](job-automation-overview.md) umožňují paralelní spuštění jednoho nebo více skriptů jazyka Transact-SQL (T-SQL) paralelně napříč mnoha databázemi.
 
 V tomto kurzu se seznámíte s kroky potřebnými ke spuštění dotazu napříč více databázemi:
 
@@ -63,7 +63,7 @@ Kromě modulu **AZ. SQL** vyžaduje tento kurz také modul *SQL SQLServer* . Pod
 
 ## <a name="create-required-resources"></a>Vytvoření požadovaných prostředků
 
-K vytvoření agenta elastických úloh se vyžaduje databáze (S0 nebo vyšší), která se použije jako [databáze úloh](job-automation-overview.md#job-database).
+K vytvoření agenta elastických úloh se vyžaduje databáze (S0 nebo vyšší), která se použije jako [databáze úloh](job-automation-overview.md#elastic-job-database).
 
 Následující skript vytvoří novou skupinu prostředků, server a databázi, která se použije jako databáze úloh. Druhý skript vytvoří druhý server se dvěma prázdnými databázemi pro provádění úloh s.
 

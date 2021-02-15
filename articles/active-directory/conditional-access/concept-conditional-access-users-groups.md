@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d14c9330977296630ee58bc2b508f4304472044c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c4c654f70af2188264465d97abded9cae95e9275
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366356"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364575"
 ---
 # <a name="conditional-access-users-and-groups"></a>Podmíněný přístup: uživatelé a skupiny
 
@@ -42,6 +42,9 @@ Při vytváření zásad podmíněného přístupu jsou k dispozici následujíc
    - Uživatelé a skupiny
       - Umožňuje zaměřit se na konkrétní skupiny uživatelů. Organizace můžou například vybrat skupinu, která obsahuje všechny členy oddělení lidských zdrojů, když je jako cloudová aplikace vybraná aplikace pro HR. Skupina může být libovolný typ skupiny v Azure AD, včetně dynamických nebo přiřazených skupin zabezpečení a distribuce. Zásady se použijí pro vnořené uživatele a skupiny.
 
+> [!IMPORTANT]
+> Když vybíráte, kteří uživatelé a skupiny jsou součástí zásad podmíněného přístupu, je limit počtu jednotlivých uživatelů, kteří se dají přidat přímo do zásad podmíněného přístupu. Pokud je potřeba přidat velké množství individuálních uživatelů, kteří jsou přidaní přímo do zásad podmíněného přístupu, doporučujeme umístit uživatele do skupiny a místo toho přiřadit skupinu k zásadám podmíněného přístupu.
+
 > [!WARNING]
 > Pokud jsou uživatelé nebo skupiny členy více než 2048 skupin, jejich přístup může být blokovaný. Toto omezení platí pro přímé i vnořené členství ve skupinách.
 
@@ -66,7 +69,7 @@ Při vytváření zásad podmíněného přístupu je k dispozici možnost vylou
 
 ### <a name="preventing-administrator-lockout"></a>Prevence uzamčení správce
 
-Pokud chcete zabránit tomu, aby správce při vytváření zásad použitých pro **všechny uživatele** a **všechny aplikace**uzamknul svůj adresář, zobrazí se následující upozornění.
+Pokud chcete zabránit tomu, aby správce při vytváření zásad použitých pro **všechny uživatele** a **všechny aplikace** uzamknul svůj adresář, zobrazí se následující upozornění.
 
 > Nezamykat! Doporučujeme, abyste nejdřív použili zásadu pro malou skupinu uživatelů, abyste ověřili, že se chová podle očekávání. Doporučujeme také, abyste z těchto zásad vyloučili alespoň jednoho správce. Tím zajistíte, že budete mít stále přístup a budete moct aktualizovat zásady, pokud je potřeba změnit. Přečtěte si prosím ovlivněné uživatele a aplikace.
 

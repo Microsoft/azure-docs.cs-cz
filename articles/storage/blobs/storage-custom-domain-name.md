@@ -5,22 +5,20 @@ description: Namapujte vlastní doménu na Blob Storage nebo webový koncový bo
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/23/2020
+ms.date: 02/12/2021
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: dcc6f3bca80cb5860679327226d3e034c3e9b14a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 52fc7b9c1229421fd46b8110857a0a7a8a4f916a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95996861"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520421"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Mapování vlastní domény na koncový bod Azure Blob Storage
 
 Můžete namapovat vlastní doménu na koncový bod služby BLOB Service nebo na koncový bod [statického webu](storage-blob-static-website.md) . 
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
 > Toto mapování funguje pouze pro subdomény (například: `www.contoso.com` ). Pokud chcete, aby byl váš webový koncový bod dostupný v kořenové doméně (například: `contoso.com` ), budete muset použít Azure CDN. Pokyny najdete v části [Mapování vlastní domény s povoleným protokolem HTTPS](#enable-https) v tomto článku. Vzhledem k tomu, že v této části tohoto článku budete moci povolit kořenovou doménu vlastní domény, je krok v této části pro povolení protokolu HTTPS volitelný. 
@@ -61,8 +59,11 @@ Název hostitele je adresa URL koncového bodu úložiště bez identifikátoru 
 2. V podokně nabídky v části **Nastavení** vyberte **vlastnosti**.  
 
 3. Zkopírujte hodnotu **primárního koncového bodu služby BLOB Service** nebo **primárního koncového bodu statického webu** do textového souboru. 
+  
+   > [!NOTE]
+   > Koncový bod služby Data Lake Storage není podporován (například: `https://mystorageaccount.dfs.core.windows.net/` ).
 
-4. Odeberte identifikátor *protokolu (například* https) a koncové lomítko z tohoto řetězce. Následující tabulka obsahuje příklady.
+4. Odeberte identifikátor protokolu (například: `HTTPS` ) a koncové lomítko z daného řetězce. Následující tabulka obsahuje příklady.
 
    | Typ koncového bodu |  endpoint | název hostitele |
    |------------|-----------------|-------------------|
@@ -75,7 +76,7 @@ Název hostitele je adresa URL koncového bodu úložiště bez identifikátoru 
 
 #### <a name="step-2-create-a-canonical-name-cname-record-with-your-domain-provider"></a>Krok 2: vytvoření záznamu kanonického názvu (CNAME) u vašeho poskytovatele domény
 
-Vytvořte záznam CNAME, který bude odkazovat na název hostitele. Záznam CNAME je typem záznamu DNS, který mapuje zdrojový název domény na cílový název domény.
+Vytvořte záznam CNAME, který bude odkazovat na název hostitele. Záznam CNAME je typ záznamu DNS (Domain Name System), který mapuje název zdrojové domény na název cílové domény.
 
 1. Přihlaste se k webu vašeho doménového registrátora a pak na stránce pro správu nastavení DNS.
 
@@ -95,9 +96,14 @@ Vytvořte záznam CNAME, který bude odkazovat na název hostitele. Záznam CNAM
 
 #### <a name="step-3-register-your-custom-domain-with-azure"></a>Krok 3: Registrace vlastní domény pomocí Azure
 
+##### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
 1. V [Azure Portal](https://portal.azure.com)přejít na účet úložiště.
 
-2. V podokně nabídek v části **BLOB Service** vyberte **vlastní doména**.  
+2. V podokně nabídek v části **BLOB Service** vyberte **vlastní doména**.
+
+   > [!NOTE]
+   > Tato možnost se nezobrazí v účtech, které mají povolenou funkci hierarchického oboru názvů. Pro tyto účty použijte PowerShell nebo rozhraní příkazového řádku Azure CLI k dokončení tohoto kroku.
 
    ![možnost vlastní domény](./media/storage-custom-domain-name/custom-domain-button.png "vlastní doména")
 
@@ -111,18 +117,60 @@ Vytvořte záznam CNAME, který bude odkazovat na název hostitele. Záznam CNAM
 
    Po šíření záznamu CNAME prostřednictvím služby DNS (Domain Name Server) a pokud mají vaši uživatelé příslušná oprávnění, mohou zobrazit data objektů BLOB pomocí vlastní domény.
 
+##### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Spusťte následující příkaz PowerShellu
+
+```powershell
+Set-AzStorageAccount -ResourceGroupName <resource-group-name> -Name <storage-account-name> -CustomDomainName <custom-domain-name> -UseSubDomain $false
+```
+
+- `<resource-group-name>`Zástupný symbol nahraďte názvem skupiny prostředků.
+
+- `<storage-account-name>`Zástupný symbol nahraďte názvem účtu úložiště.
+
+- `<custom-domain-name>`Zástupný text nahraďte názvem vlastní domény, včetně subdomény.
+
+  Pokud je vaše doména například *contoso.com* a alias subdomény je *www*, zadejte `www.contoso.com` . Pokud je vaše subdoména *fotografie*, zadejte `photos.contoso.com` .
+
+Po šíření záznamu CNAME prostřednictvím služby DNS (Domain Name Server) a pokud mají vaši uživatelé příslušná oprávnění, mohou zobrazit data objektů BLOB pomocí vlastní domény.
+
+##### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Spusťte následující příkaz PowerShellu
+
+```azurecli
+az storage account update \
+   --resource-group <resource-group-name> \ 
+   --name <storage-account-name> \
+   --custom-domain <custom-domain-name> \
+   --use-subdomain false
+  ```
+
+- `<resource-group-name>`Zástupný symbol nahraďte názvem skupiny prostředků.
+
+- `<storage-account-name>`Zástupný symbol nahraďte názvem účtu úložiště.
+
+- `<custom-domain-name>`Zástupný text nahraďte názvem vlastní domény, včetně subdomény.
+
+  Pokud je vaše doména například *contoso.com* a alias subdomény je *www*, zadejte `www.contoso.com` . Pokud je vaše subdoména *fotografie*, zadejte `photos.contoso.com` .
+
+Po šíření záznamu CNAME prostřednictvím služby DNS (Domain Name Server) a pokud mají vaši uživatelé příslušná oprávnění, mohou zobrazit data objektů BLOB pomocí vlastní domény.
+
+---
+
 #### <a name="step-4-test-your-custom-domain"></a>Krok 4: Testování vlastní domény
 
 Pokud chcete potvrdit, že je vaše vlastní doména namapovaná na koncový bod služby BLOB Service, vytvořte v rámci svého účtu úložiště objekt BLOB ve veřejném kontejneru. Pak ve webovém prohlížeči přejděte k objektu BLOB pomocí identifikátoru URI v následujícím formátu: `http://<subdomain.customdomain>/<mycontainer>/<myblob>`
 
-Pokud například chcete získat přístup k webovému formuláři v kontejneru *myforms* ve vlastní subdoméně *photos.contoso.com* , můžete použít následující identifikátor URI: `http://photos.contoso.com/myforms/applicationform.htm`
+Například pro přístup k webovému formuláři v `myforms` kontejneru ve vlastní subdoméně *photos.contoso.com* můžete použít následující identifikátor URI: `http://photos.contoso.com/myforms/applicationform.htm`
 
 <a id="zero-down-time"></a>
 
 ### <a name="map-a-custom-domain-with-zero-downtime"></a>Mapování vlastní domény s nulovými výpadky
 
 > [!NOTE]
-> Pokud se nerozhodnete, že je doména krátce nedostupná pro vaše uživatele, zvažte postup podle kroků uvedených v části [Mapování vlastní domény](#map-a-domain) tohoto článku. Jednodušším řešením je méně kroků.  
+> Pokud se nerozhodnete, že je doména krátce nedostupná pro vaše uživatele, zvažte použití kroků v části [Mapování vlastní domény](#map-a-domain) v tomto článku. Jednodušším řešením je méně kroků.  
 
 Pokud vaše doména aktuálně podporuje aplikaci se smlouvou o úrovni služeb (SLA), která vyžaduje žádné výpadky, postupujte podle těchto kroků, abyste zajistili, že uživatelé budou mít přístup k vaší doméně, zatímco probíhá mapování DNS. 
 
@@ -148,7 +196,10 @@ Název hostitele je adresa URL koncového bodu úložiště bez identifikátoru 
 
 3. Zkopírujte hodnotu **primárního koncového bodu služby BLOB Service** nebo **primárního koncového bodu statického webu** do textového souboru. 
 
-4. Odeberte identifikátor *protokolu (například* https) a koncové lomítko z tohoto řetězce. Následující tabulka obsahuje příklady.
+   > [!NOTE]
+   > Koncový bod služby Data Lake Storage není podporován (například: `https://mystorageaccount.dfs.core.windows.net/` ).
+
+4. Odeberte identifikátor protokolu (například: `HTTPS` ) a koncové lomítko z daného řetězce. Následující tabulka obsahuje příklady.
 
    | Typ koncového bodu |  endpoint | název hostitele |
    |------------|-----------------|-------------------|
@@ -157,7 +208,7 @@ Název hostitele je adresa URL koncového bodu úložiště bez identifikátoru 
   
    Tuto hodnotu nastavte pro pozdější verzi.
 
-#### <a name="step-2-create-a-intermediary-canonical-name-cname-record-with-your-domain-provider"></a>Krok 2: vytvoření záznamu zprostředkujícího názvu (CNAME) s vaším poskytovatelem domény
+#### <a name="step-2-create-an-intermediary-canonical-name-cname-record-with-your-domain-provider"></a>Krok 2: vytvoření záznamu zprostředkujícího názvu (CNAME) s vaším poskytovatelem domény
 
 Vytvořte dočasný záznam CNAME, který bude odkazovat na název hostitele. Záznam CNAME je typem záznamu DNS, který mapuje zdrojový název domény na cílový název domény.
 
@@ -179,17 +230,18 @@ Vytvořte dočasný záznam CNAME, který bude odkazovat na název hostitele. Z�
 
      Přidejte subdoménu `asverify` do názvu hostitele. Příklad: `asverify.mystorageaccount.blob.core.windows.net`.
 
-4. Pokud chcete zaregistrovat vlastní doménu, klikněte na tlačítko **Uložit** .
-
-   Pokud je registrace úspěšná, portál vás upozorní, že váš účet úložiště se úspěšně aktualizoval. Vaše vlastní doména byla ověřena v Azure, ale provoz do vaší domény ještě není směrován do svého účtu úložiště.
-
 #### <a name="step-3-pre-register-your-custom-domain-with-azure"></a>Krok 3: Předregistrace vlastní domény pomocí Azure
 
 Když předem zaregistrujete vlastní doménu pomocí Azure, umožníte Azure rozpoznávat vlastní doménu, aniž byste museli upravovat záznam DNS pro doménu. Tímto způsobem se při úpravě záznamu DNS pro doménu namapuje na koncový bod objektu BLOB bez výpadků.
 
+##### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
 1. V [Azure Portal](https://portal.azure.com)přejít na účet úložiště.
 
-2. V podokně nabídek v části **BLOB Service** vyberte **vlastní doména**.  
+2. V podokně nabídek v části **BLOB Service** vyberte **vlastní doména**.
+
+   > [!NOTE]
+   > Tato možnost se nezobrazí v účtech, které mají povolenou funkci hierarchického oboru názvů. Pro tyto účty použijte PowerShell nebo rozhraní příkazového řádku Azure CLI k dokončení tohoto kroku.
 
    ![možnost vlastní domény](./media/storage-custom-domain-name/custom-domain-button.png "vlastní doména")
 
@@ -203,7 +255,49 @@ Když předem zaregistrujete vlastní doménu pomocí Azure, umožníte Azure ro
 
 5. Pokud chcete zaregistrovat vlastní doménu, klikněte na tlačítko **Uložit** .
   
-   Po šíření záznamu CNAME prostřednictvím služby DNS (Domain Name Server) a pokud mají vaši uživatelé příslušná oprávnění, mohou zobrazit data objektů BLOB pomocí vlastní domény.
+   Pokud je registrace úspěšná, portál vás upozorní, že váš účet úložiště se úspěšně aktualizoval. Vaše vlastní doména byla ověřena v Azure, ale provoz do vaší domény ještě není směrován do svého účtu úložiště, dokud nevytvoříte záznam CNAME s vaším poskytovatelem domény. Provedete to v další části.
+
+##### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Spusťte následující příkaz PowerShellu
+
+```powershell
+Set-AzStorageAccount -ResourceGroupName <resource-group-name> -Name <storage-account-name> -CustomDomainName <custom-domain-name> -UseSubDomain $true
+```
+
+- `<resource-group-name>`Zástupný symbol nahraďte názvem skupiny prostředků.
+
+- `<storage-account-name>`Zástupný symbol nahraďte názvem účtu úložiště.
+
+- `<custom-domain-name>`Zástupný text nahraďte názvem vlastní domény, včetně subdomény.
+
+  Pokud je vaše doména například *contoso.com* a alias subdomény je *www*, zadejte `www.contoso.com` . Pokud je vaše subdoména *fotografie*, zadejte `photos.contoso.com` .
+
+Provoz do vaší domény ještě není směrován do vašeho účtu úložiště, dokud nevytvoříte záznam CNAME s vaším poskytovatelem domény. Provedete to v další části.
+
+##### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Spusťte následující příkaz PowerShellu
+
+```azurecli
+az storage account update \
+   --resource-group <resource-group-name> \ 
+   --name <storage-account-name> \
+   --custom-domain <custom-domain-name> \
+   --use-subdomain true
+  ```
+
+- `<resource-group-name>`Zástupný symbol nahraďte názvem skupiny prostředků.
+
+- `<storage-account-name>`Zástupný symbol nahraďte názvem účtu úložiště.
+
+- `<custom-domain-name>`Zástupný text nahraďte názvem vlastní domény, včetně subdomény.
+
+  Pokud je vaše doména například *contoso.com* a alias subdomény je *www*, zadejte `www.contoso.com` . Pokud je vaše subdoména *fotografie*, zadejte `photos.contoso.com` .
+
+Provoz do vaší domény ještě není směrován do vašeho účtu úložiště, dokud nevytvoříte záznam CNAME s vaším poskytovatelem domény. Provedete to v další části.
+
+---
 
 #### <a name="step-4-create-a-cname-record-with-your-domain-provider"></a>Krok 4: vytvoření záznamu CNAME s vaším poskytovatelem domény
 
@@ -227,15 +321,13 @@ Vytvořte dočasný záznam CNAME, který bude odkazovat na název hostitele.
 
 Pokud chcete potvrdit, že je vaše vlastní doména namapovaná na koncový bod služby BLOB Service, vytvořte v rámci svého účtu úložiště objekt BLOB ve veřejném kontejneru. Pak ve webovém prohlížeči přejděte k objektu BLOB pomocí identifikátoru URI v následujícím formátu: `http://<subdomain.customdomain>/<mycontainer>/<myblob>`
 
-Pokud například chcete získat přístup k webovému formuláři v kontejneru *myforms* ve vlastní subdoméně *photos.contoso.com* , můžete použít následující identifikátor URI: `http://photos.contoso.com/myforms/applicationform.htm`
+Například pro přístup k webovému formuláři v `myforms` kontejneru ve vlastní subdoméně *photos.contoso.com* můžete použít následující identifikátor URI: `http://photos.contoso.com/myforms/applicationform.htm`
 
 ### <a name="remove-a-custom-domain-mapping"></a>Odebrání vlastního mapování domény
 
 Chcete-li odebrat vlastní mapování domény, zrušte registraci vlastní domény. Použijte jeden z následujících postupů.
 
 #### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-
-Pokud chcete odebrat vlastní nastavení domény, udělejte toto:
 
 1. V [Azure Portal](https://portal.azure.com)přejít na účet úložiště.
 
@@ -247,28 +339,6 @@ Pokud chcete odebrat vlastní nastavení domény, udělejte toto:
 4. Vyberte tlačítko **Uložit**.
 
 Po úspěšném odebrání vlastní domény se zobrazí oznámení na portálu, že váš účet úložiště se úspěšně aktualizoval.
-
-#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Pokud chcete odebrat vlastní registraci domény, použijte příkaz [AZ Storage Account Update](/cli/azure/storage/account) CLI a pak zadejte prázdný řetězec ( `""` ) pro `--custom-domain` hodnotu argumentu.
-
-* Formát příkazu:
-
-  ```azurecli
-  az storage account update \
-      --name <storage-account-name> \
-      --resource-group <resource-group-name> \
-      --custom-domain ""
-  ```
-
-* Příklad příkazu:
-
-  ```azurecli
-  az storage account update \
-      --name mystorageaccount \
-      --resource-group myresourcegroup \
-      --custom-domain ""
-  ```
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -293,6 +363,28 @@ Pokud chcete odebrat vlastní registraci domény, použijte rutinu [set-AzStorag
       -AccountName "mystorageaccount" `
       -CustomDomainName ""
   ```
+
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pokud chcete odebrat vlastní registraci domény, použijte příkaz [AZ Storage Account Update](/cli/azure/storage/account) CLI a pak zadejte prázdný řetězec ( `""` ) pro `--custom-domain` hodnotu argumentu.
+
+* Formát příkazu:
+
+  ```azurecli
+  az storage account update \
+      --name <storage-account-name> \
+      --resource-group <resource-group-name> \
+      --custom-domain ""
+  ```
+
+* Příklad příkazu:
+
+  ```azurecli
+  az storage account update \
+      --name mystorageaccount \
+      --resource-group myresourcegroup \
+      --custom-domain ""
+  ```
 ---
 
 <a id="enable-https"></a>
@@ -302,8 +394,6 @@ Pokud chcete odebrat vlastní registraci domény, použijte rutinu [set-AzStorag
 Tento přístup zahrnuje více kroků, ale umožňuje přístup pomocí protokolu HTTPS. 
 
 Pokud nepotřebujete, aby uživatelé měli přístup k objektu BLOB nebo webovému obsahu pomocí protokolu HTTPS, přečtěte si část [Mapování vlastní domény s povoleným pouze protokolem HTTP](#enable-http) tohoto článku. 
-
-Chcete-li namapovat vlastní doménu a povolit přístup pomocí protokolu HTTPS, postupujte následovně:
 
 1. Povolte [Azure CDN](../../cdn/cdn-overview.md) v objektu BLOB nebo na koncovém bodu webu. 
 

@@ -1,22 +1,18 @@
 ---
 title: Sestavení prvního objektu pro vytváření dat (Azure Portal)
 description: V tomto kurzu vytvoříte pomocí editoru služby Data Factory na webu Azure Portal ukázkový kanál služby Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 4e19991de20b130b878a230313d87ca09d31a84e
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 449c8ec976a71d68e3ddddfea839ef06094c2176
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556439"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392217"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Kurz: Vytvoření první datové továrny pomocí webu Azure Portal
 > [!div class="op_single_selector"]
@@ -208,7 +204,7 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
     ```
     Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu kódu JSON.
 
-   | Vlastnost | Vnořeno pod | Popis |
+   | Vlastnost | Vnořeno pod | Description |
    |:--- |:--- |:--- |
    | typ | properties |Vlastnost type je nastavená na hodnotu **AzureBlob**, protože se data nacházejí v úložišti objektů blob. |
    | linkedServiceName | formát |Odkazuje na službu AzureStorageLinkedService, kterou jste vytvořili dříve. |
@@ -435,7 +431,7 @@ V tomto kurzu jste vytvořili datovou továrnu, která zpracovává data pomocí
 V tomto článku jste vytvořili kanál s aktivitou transformace (aktivita HDInsight), která v clusteru HDInsight na vyžádání spouští skript Hive. Pokud chcete zjistit, jak pomocí aktivity kopírování zkopírovat data z úložiště objektů blob do Azure SQL Database, přečtěte si téma [kurz: kopírování dat z úložiště objektů blob do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="see-also"></a>Viz také
-| Téma | Popis |
+| Téma | Description |
 |:--- |:--- |
 | [Pipelines](data-factory-create-pipelines.md) |Tento článek vám pomůže pochopit kanály a aktivity ve službě Data Factory a porozumět tomu, jak se dají ve vaší situaci nebo firmě použít k sestavení kompletních pracovních postupů založených na datech. |
 | [Datové sady](data-factory-create-datasets.md) |Tento článek vám pomůže pochopit datové sady ve službě Data Factory. |

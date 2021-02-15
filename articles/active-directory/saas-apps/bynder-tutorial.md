@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/07/2020
+ms.date: 02/03/2021
 ms.author: jeedes
-ms.openlocfilehash: d9e348d456d517cd20e899648b9e92b3cd802ffb
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: dd4114f417fa266d8d638e28167d513fdf01aa97
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806310"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380840"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>Kurz: integrace Bynder s Azure Active Directory
 
@@ -30,7 +30,7 @@ V tomto kurzu se dozvíte, jak integrovat Bynder s Azure Active Directory (Azure
 
 Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat zdarma [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 * Bynder odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
@@ -40,7 +40,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * Bynder podporuje jednotné přihlašování (SSO) **a IDP** .
 * Bynder podporuje zřizování uživatelů **jenom v čase** .
 
-## <a name="adding-bynder-from-the-gallery"></a>Přidání Bynder z Galerie
+## <a name="add-bynder-from-the-gallery"></a>Přidání Bynder z Galerie
 
 Pokud chcete nakonfigurovat integraci Bynder do služby Azure AD, musíte přidat Bynder z Galerie do svého seznamu spravovaných aplikací SaaS.
 
@@ -56,7 +56,7 @@ Pokud chcete nakonfigurovat integraci Bynder do služby Azure AD, musíte přida
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Bynder pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Bynder.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Bynder, dokončete následující stavební bloky:
+K nakonfigurování a testování jednotného přihlašování Azure AD pomocí Bynder postupujte takto:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
@@ -65,13 +65,13 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
    1. **[Vytvoření Bynder Test User](#create-bynder-test-user)** – pro Britta Simon v Bynder, který je propojený s reprezentací uživatele Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
 1. V Azure Portal na stránce integrace aplikací **Bynder** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -116,7 +116,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -163,4 +163,4 @@ K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Mi
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování Bynder můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Po nakonfigurování Bynder můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

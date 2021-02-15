@@ -1,22 +1,19 @@
 ---
 title: Přírůstkové kopírování více tabulek pomocí PowerShellu
 description: V tomto kurzu vytvoříte Azure Data Factory s kanálem, který načte rozdílová data z několika tabulek v databázi databáze SQL Server do Azure SQL Database.
-services: data-factory
 ms.author: yexu
 author: dearandyxu
-manager: anandsub
 ms.reviewer: douglasl, maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 61a4119947b1412d3e874458e06748fd40a381b4
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: bf6d4642b672f2b2d76d567b793349bc40f8550b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510256"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384839"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>Přírůstkové načtení dat z více tabulek v SQL Server do Azure SQL Database pomocí prostředí PowerShell
 
@@ -834,7 +831,7 @@ Tento kanál dostává jako parametr seznam tabulek. **Aktivita foreach** proch�
 
 V SQL Server Management Studiu spusťte následující dotazy na cílovou databázi SQL a ověřte, že data byla ze zdrojových tabulek zkopírována do cílových tabulek: 
 
-*Query (Dotaz) 
+**Dotaz** 
 ```sql
 select * from customer_table
 ```
@@ -851,7 +848,7 @@ PersonID    Name    LastModifytime
 5           Anny    2017-09-05 08:06:00.000
 ```
 
-*Query (Dotaz)
+**Dotaz**
 
 ```sql
 select * from project_table
@@ -868,7 +865,7 @@ project2    2016-02-02 01:23:00.000
 project3    2017-03-04 05:16:00.000
 ```
 
-*Query (Dotaz)
+**Dotaz**
 
 ```sql
 select * from watermarktable
@@ -917,7 +914,7 @@ VALUES
 
 V SQL Server Management Studiu spusťte následující dotazy na cílovou databázi a ověřte, že aktualizovaná/nová data byla ze zdrojových tabulek zkopírována do cílových tabulek. 
 
-*Query (Dotaz) 
+**Dotaz** 
 ```sql
 select * from customer_table
 ```
@@ -936,7 +933,7 @@ PersonID    Name    LastModifytime
 
 Všimněte si nových hodnot položek **Name** a **LastModifytime** pro **PersonID** pro číslo 3. 
 
-*Query (Dotaz)
+**Dotaz**
 
 ```sql
 select * from project_table
@@ -956,7 +953,7 @@ NewProject  2017-10-01 00:00:00.000
 
 Všimněte si, že do tabulky project_table byla přidána položka **NewProject**. 
 
-*Query (Dotaz)
+**Dotaz**
 
 ```sql
 select * from watermarktable

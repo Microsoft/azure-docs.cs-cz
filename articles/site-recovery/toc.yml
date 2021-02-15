@@ -216,7 +216,7 @@
               href: azure-to-azure-how-to-reprotect.md
             - name: Nastavení zotavení po havárii virtuálních počítačů Azure po migraci do Azure
               href: azure-to-azure-replicate-after-migration.md
-            - name: Povolení zotavení po havárii mezi zónami
+            - name: Zotavení po havárii zóny do zóny
               href: azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md
         - name: Spravovat
           items:

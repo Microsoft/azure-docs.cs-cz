@@ -1,22 +1,17 @@
 ---
 title: Vytvoření prostředí Azure-SSIS Integration runtime v Azure Data Factory
 description: Naučte se vytvořit prostředí Azure-SSIS Integration runtime v Azure Data Factory, abyste mohli nasadit a spustit balíčky SSIS v Azure.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/13/2020
 author: swinarko
 ms.author: sawinark
-ms.reviewer: douglasl
-manager: mflasko
-ms.openlocfilehash: 62b1575e2ab379e6b4e61926e00dfad85ffeb6c0
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 4e3137b08c558c8e9dfadda07f0b8bb66433ee83
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556354"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389412"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Vytvoření prostředí Azure-SSIS Integration runtime v Azure Data Factory
 
@@ -79,7 +74,7 @@ Seznam oblastí Azure, ve kterých jsou k dispozici Data Factory a Azure-SSIS IR
 
 Následující tabulka porovnává některé funkce serveru Azure SQL Database a SQL Managed instance, protože se vztahují k Azure-SSIR IR:
 
-| Příznak | Databáze SQL| Spravovaná instance SQL |
+| Funkce | SQL Database| Spravovaná instance SQL |
 |---------|--------------|------------------|
 | **Plánování** | Agent SQL Server není k dispozici.<br/><br/>Viz [Naplánování spuštění balíčku ve data Factoryovém kanálu](/sql/integration-services/lift-shift/ssis-azure-schedule-packages#activity).| Agent spravované instance je k dispozici. |
 | **Authentication** | Můžete vytvořit instanci SSISDB s uživatelem databáze s omezením, který představuje libovolnou skupinu Azure AD se spravovanou identitou vaší datové továrny jako členem v roli **db_owner** .<br/><br/>Další informace najdete [v tématu Povolení ověřování Azure AD při vytváření SSISDB na serveru Azure SQL Database](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Můžete vytvořit instanci SSISDB s databází s omezením uživatele, která představuje spravovanou identitu vaší datové továrny. <br/><br/>Viz [Povolení ověřování Azure AD k vytvoření SSISDB ve spravované instanci Azure SQL](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-sql-managed-instance). |

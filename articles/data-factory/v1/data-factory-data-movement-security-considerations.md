@@ -1,22 +1,18 @@
 ---
 title: Otázky zabezpečení při přesunu dat v Azure Data Factory
 description: Přečtěte si informace o zabezpečení přesunu dat v Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c694cf58f4c6b613cbc183753785a34bc15063bd
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 33b1ad381b3f7865768f9e39295a2985f8aa5234
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093600"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375098"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – požadavky na zabezpečení při přesunu dat
 
@@ -33,10 +29,10 @@ I když je Data Factory k dispozici pouze v oblastech **západní USA**, **vých
 Azure Data Factory sám o sobě neukládá žádná data s výjimkou přihlašovacích údajů propojených služeb pro cloudová úložiště dat, která jsou zašifrovaná pomocí certifikátů. Umožňuje vytvářet pracovní postupy řízené daty k orchestraci přesouvání dat mezi [podporovanými úložišti dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a zpracování dat pomocí [výpočetních služeb](data-factory-compute-linked-services.md) v jiných oblastech nebo v místním prostředí. Také vám umožňuje [monitorovat a spravovat pracovní postupy](data-factory-monitor-manage-pipelines.md) pomocí mechanismů programování a uživatelského rozhraní.
 
 Pro přesun dat pomocí Azure Data Factory bylo **Certifikováno** pro:
--   [HIPAA/HITECH](/compliance/regulatory/offering-hipaa-hitech)  
--   [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
--   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
--   [CSA STAR](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
+-    [HIPAA/HITECH](/compliance/regulatory/offering-hipaa-hitech)  
+-    [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
+-    [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
+-    [CSA STAR](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
      
 Pokud vás zajímá dodržování předpisů Azure a způsob, jakým Azure zabezpečuje svou vlastní infrastrukturu, přejděte na web [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx). 
 
@@ -122,7 +118,7 @@ Všechny přenosy dat jsou prostřednictvím zabezpečeného kanálu **https** a
  
 K dalšímu zabezpečení komunikačního kanálu mezi vaší místní sítí a Azure můžete použít taky službu [IPSec VPN](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) nebo [Express Route](../../expressroute/expressroute-introduction.md) .
 
-Virtuální síť je logická reprezentace vaší sítě v cloudu. Můžete připojit místní síť ke službě Azure Virtual Network (VNet) nastavením IPSec VPN (site-to-site) nebo Express Route (privátní partnerské vztahy).     
+Virtuální síť je logická reprezentace vaší sítě v cloudu. Můžete připojit místní síť ke službě Azure Virtual Network (VNet) nastavením IPSec VPN (site-to-site) nebo Express Route (privátní partnerské vztahy).        
 
 Následující tabulka shrnuje doporučení konfigurace sítě a brány na základě různých kombinací zdrojového a cílového umístění pro pohyb hybridních dat.
 
@@ -144,17 +140,17 @@ Následující obrázky ukazují použití Správa dat brány pro přesun dat me
 
 ### <a name="firewall-configurations-and-filtering-ip-address-of-gateway"></a>Konfigurace brány firewall a filtrování IP adresy brány
 
-#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Požadavky na bránu firewall pro místní nebo privátní síť  
+#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Požadavky na bránu firewall pro místní nebo privátní síť    
 V podniku je **podniková brána firewall** provozována v centrálním směrovači organizace. A **Brána Windows Firewall** běží jako démon na místním počítači, na kterém je brána nainstalovaná. 
 
 Následující tabulka obsahuje požadavky na **Odchozí porty** a domény pro **podnikovou bránu firewall**.
 
-| Názvy domén | Odchozí porty | Popis |
+| Názvy domén | Odchozí porty | Description |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443, 80 | Vyžadovaná bránou pro připojení k pohybovým službám dat v Data Factory |
 | `*.core.windows.net` | 443 | Používá se bránou k připojení k Azure Storage účtu při použití funkce [dvoufázové kopírování](data-factory-copy-activity-performance.md#staged-copy) . | 
 | `*.frontend.clouddatahub.net` | 443 | Požadovaná bránou pro připojení ke službě Azure Data Factory. | 
-| `*.database.windows.net` | 1433   | (Volitelné) nutné, když je vaším cílem Azure SQL Database nebo Azure synapse Analytics. Pomocí funkce dvoufázové kopírování můžete kopírovat data do Azure SQL Database nebo Azure synapse Analytics bez otevření portu 1433. | 
+| `*.database.windows.net` | 1433    | (Volitelné) nutné, když je vaším cílem Azure SQL Database nebo Azure synapse Analytics. Pomocí funkce dvoufázové kopírování můžete kopírovat data do Azure SQL Database nebo Azure synapse Analytics bez otevření portu 1433. | 
 | `*.azuredatalakestore.net` | 443 | (Volitelné) nutné, když je cíl Azure Data Lake Store | 
 
 > [!NOTE] 
@@ -162,7 +158,7 @@ Následující tabulka obsahuje požadavky na **Odchozí porty** a domény pro *
 
 Následující tabulka uvádí požadavky na **porty** pro **bránu Windows Firewall**.
 
-| Příchozí porty | Popis | 
+| Příchozí porty | Description | 
 | ------------- | ----------- | 
 | 8050 (TCP) | Vyžaduje aplikaci Správce přihlašovacích údajů k bezpečnému nastavení přihlašovacích údajů pro místní úložiště dat v bráně. | 
 

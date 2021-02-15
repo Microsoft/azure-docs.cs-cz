@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc2f7d3ce5f8329038fea4ecbb5242015fb3fd0d
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 636f209eeb74ada1b4c7c4232b6aba8738eee10a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860129"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365850"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Kurz: Konfigurace hybridního připojení k Azure Active Directory pro federované domény
 
@@ -40,7 +40,7 @@ Federované prostředí by mělo mít poskytovatele identity, který podporuje n
    `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **AD FS/Services/Trust/2005/windowstransport** a **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat WS-Trust koncové body Windows, najdete v tématu [zakázání WS-Trust koncových bodů Windows na proxy serveru](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Pomocí konzoly pro správu AD FS v části **Service**  >  **koncové body** služby můžete zjistit, jaké koncové body jsou povolené.
+> **AD FS/Services/Trust/2005/windowstransport** a **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat WS-Trust koncové body Windows, najdete v tématu [zakázání WS-Trust koncových bodů Windows na proxy serveru](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Pomocí konzoly pro správu AD FS v části   >  **koncové body** služby můžete zjistit, jaké koncové body jsou povolené.
 
 V tomto kurzu se naučíte konfigurovat hybridní připojení služby Azure AD pro počítače připojené k doméně služby Active Directory ve federovaném prostředí pomocí AD FS.
 
@@ -50,9 +50,9 @@ Získáte informace o těchto tématech:
 > * Konfigurace hybridního připojení k Azure AD
 > * Povolit zařízení se starší verzí Windows
 > * Ověření registrace
-> * Odstranit potíže
+> * Řešení potíží
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že máte zkušenosti s těmito články:
 
@@ -95,7 +95,7 @@ Pokud nepoužíváte WPAD a chcete v počítači nakonfigurovat nastavení proxy
 
 Pokud vaše organizace vyžaduje přístup k Internetu prostřednictvím ověřeného odchozího proxy serveru, musíte se ujistit, že počítače s Windows 10 se můžou úspěšně ověřit u odchozího proxy serveru. Vzhledem k tomu, že počítače s Windows 10 spouští registraci zařízení pomocí kontextu počítače, musíte nakonfigurovat ověřování odchozího proxy serveru pomocí kontextu počítače. Požadavky na konfiguraci vám sdělí váš poskytovatel odchozího proxy serveru.
 
-Pokud chcete ověřit, jestli má zařízení přístup k výše uvedeným prostředkům Microsoftu pod účtem System, můžete použít skript pro [připojení k registraci testovacího zařízení](https://gallery.technet.microsoft.com/Test-Device-Registration-3dc944c0) .
+Pokud chcete ověřit, jestli má zařízení přístup k výše uvedeným prostředkům Microsoftu pod účtem System, můžete použít skript pro [připojení k registraci testovacího zařízení](https://docs.microsoft.com/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/) .
 
 ## <a name="configure-hybrid-azure-ad-join"></a>Konfigurace hybridního připojení k Azure AD
 

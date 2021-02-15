@@ -1,23 +1,18 @@
 ---
 title: Přesunout data – Správa dat bránu
 description: Nastavte bránu dat pro přesun dat mezi místním prostředím a cloudem. K přesunu dat použijte Správa dat bránu v Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
-ms.assetid: 7bf6d8fd-04b5-499d-bd19-eff217aa4a9c
+ms.author: abnarain
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 53fce1744ccbf4289b2415e926e084c90d708a13
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019680"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380283"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Přesun dat mezi místními zdroji a cloudem pomocí Správa dat brány
 > [!NOTE]
@@ -236,7 +231,7 @@ V tomto kroku vytvoříte vstupní a výstupní datové sady, které představuj
             }
         }
     }     
-    ```     
+    ```       
    Je třeba počítat s následujícím:
 
    * **typ** je nastaven na **SQLServer**.
@@ -384,7 +379,7 @@ V tomto kroku vytvoříte **kanál** s jednou **aktivitou kopírování** , kter
     Můžete přiblížit, oddálit, přiblížit 100%, přiblížit, automaticky umístit kanály a datové sady a zobrazit informace o počtu řádků (zvýrazní nadřazené a podřízené položky vybraných položek).  Poklikáním na objekt (vstupní/výstupní datová sada nebo kanál) můžete zobrazit vlastnosti.
 
 ## <a name="monitor-pipeline"></a>Monitorování kanálu
-V tomto kroku budete pomocí webu Azure Portal monitorovat, co se děje v objektu pro vytváření dat Azure. K monitorování datových sad a kanálů můžete také použít rutiny PowerShellu. Podrobnosti o monitorování najdete v tématu [monitorování a Správa kanálů](data-factory-monitor-manage-pipelines.md).
+V tomto kroku použijete Azure Portal ke sledování toho, co se chystá v objektu pro vytváření dat Azure. K monitorování datových sad a kanálů můžete také použít rutiny PowerShellu. Podrobnosti o monitorování najdete v tématu [monitorování a Správa kanálů](data-factory-monitor-manage-pipelines.md).
 
 1. V diagramu poklikejte na **EmpOnPremSQLTable**.  
 
@@ -408,7 +403,7 @@ V tomto kroku budete pomocí webu Azure Portal monitorovat, co se děje v objekt
 8. volitelné Klikněte na **kanály**, klikněte na **ADFTutorialOnPremDF** a Projděte si vstupní tabulky (**spotřebované**) nebo výstupní datové sady (**produkované**).
 9. Pomocí nástrojů, jako je [Microsoft Průzkumník služby Storage](https://storageexplorer.com/) , ověřte, jestli je pro každou hodinu vytvořený objekt BLOB nebo soubor.
 
-   ![Azure Storage Explorer](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
+   ![Průzkumník služby Azure Storage](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 
 ## <a name="next-steps"></a>Další kroky
 * Všechny podrobnosti o Správa dat bráně najdete v článku o [Správa dat brány](data-factory-data-management-gateway.md) .

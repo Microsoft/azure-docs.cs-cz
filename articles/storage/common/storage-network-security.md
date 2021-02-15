@@ -9,12 +9,12 @@ ms.date: 01/27/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 8172abb5e220f28061c7826af24a5d9a2043f4ad
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 5e08af509487188245b0fad9ba2d0f490944868f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219904"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371783"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace bran firewall Azure Storage a virtuálních sítí
 
@@ -371,10 +371,12 @@ V některých případech může být aplikace závislá na prostředcích Azure
 
 Typy operací, které může instance prostředků provádět u dat účtu úložiště, se určují pomocí [přiřazení rolí Azure](storage-auth-aad.md#assign-azure-roles-for-access-rights) instance prostředku. Instance prostředků musí být ze stejného tenanta jako váš účet úložiště, ale můžou patřit do libovolného předplatného v tenantovi.
 
-Seznam podporovaných služeb Azure se zobrazí v části [důvěryhodný přístup na základě spravované identity přiřazené systémem](#trusted-access-system-assigned-managed-identity) v tomto článku.
+> [!NOTE]
+> Tato funkce je ve verzi Public Preview a je dostupná ve všech oblastech veřejného cloudu.
 
 > [!NOTE]
-> Tato funkce je ve verzi Public Preview a je dostupná ve všech oblastech veřejného cloudu. 
+> Pravidla instancí prostředků se aktuálně podporují jenom pro Azure synapse. Podpora dalších služeb Azure uvedených v části [důvěryhodný přístup na základě spravované identity přiřazené systémem](#trusted-access-system-assigned-managed-identity) v tomto článku bude k dispozici v nadcházejících týdnech.
+
 
 ### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
