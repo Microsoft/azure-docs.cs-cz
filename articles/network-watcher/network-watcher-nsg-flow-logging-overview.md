@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 4deda838d229081ccd23c123f75d0c0ada2383bb
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 2222c6b020f712282a78ac5f82a87015d4cd86a5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878659"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368196"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod do protokolování toků pro skupiny zabezpečení sítě
 
@@ -358,7 +358,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Náklady na protokolování toků**: protokolování toku NSG se účtuje podle objemu vyprodukovaných protokolů. Velký objem přenosů může mít za následek objem protokolu velkého toku a související náklady. Ceny protokolu NSG Flow nezahrnují základní náklady na úložiště. Použití funkce zásady uchovávání informací s protokolováním toku NSG znamená, že se za delší dobu účtují samostatné náklady na úložiště. Pokud nepotřebujete funkci zásad uchovávání informací, doporučujeme nastavit tuto hodnotu na 0. Další informace najdete v tématu [Network Watcher ceny](https://azure.microsoft.com/pricing/details/network-watcher/) a [Azure Storage ceny](https://azure.microsoft.com/pricing/details/storage/) pro další podrobnosti.
 
-**Problémy s uživatelem definovanými příchozími pravidly TCP**: [skupiny zabezpečení sítě (skupin zabezpečení sítě)](../virtual-network/network-security-groups-overview.md) jsou implementované jako [stavová brána firewall](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true). Vzhledem k aktuálním omezením platforem však uživatelsky definovaná pravidla, která mají vliv na příchozí toky TCP, jsou implementována bezstavovým způsobem. Z tohoto důvodu toky ovlivněné uživatelem definovanými vstupními pravidly se stanou neukončujícími. Pro tyto toky se navíc nezaznamenávají počty bajtů a paketů. V důsledku toho by se počet bajtů a paketů hlášených v protokolech toku NSG (a Analýza provozu) lišil od skutečných čísel. Příznak výslovného souhlasu, který tyto problémy řeší, je naplánován k dispozici do prosince 2020 nejnovějšího. V předběžně se zákazníci, kteří čelí vážným problémům z důvodu tohoto chování, můžou požádat o zaznamenání prostřednictvím podpory, vyvolejte prosím žádost o podporu v části Network Watcher > protokoly toku NSG.  
+**Problémy s uživatelem definovanými příchozími pravidly TCP**: [skupiny zabezpečení sítě (skupin zabezpečení sítě)](../virtual-network/network-security-groups-overview.md) jsou implementované jako [stavová brána firewall](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true). Vzhledem k aktuálním omezením platforem však uživatelsky definovaná pravidla, která mají vliv na příchozí toky TCP, jsou implementována bezstavovým způsobem. Z tohoto důvodu toky ovlivněné uživatelem definovanými vstupními pravidly se stanou neukončujícími. Pro tyto toky se navíc nezaznamenávají počty bajtů a paketů. V důsledku toho by se počet bajtů a paketů hlášených v protokolech toku NSG (a Analýza provozu) lišil od skutečných čísel. Příznak výslovného souhlasu, který tyto problémy řeší, je naplánován k dispozici v březnu 2021 nejnovější verzi. V předběžně se zákazníci, kteří čelí vážným problémům z důvodu tohoto chování, můžou požádat o zaznamenání prostřednictvím podpory, vyvolejte prosím žádost o podporu v části Network Watcher > protokoly toku NSG.  
 
 **Příchozí toky zaznamenané z internetových IP adres do virtuálních počítačů bez veřejných** IP adres: virtuální počítače, které nemají veřejnou IP adresu přiřazenou přes veřejnou IP adresu přidruženou k síťovému rozhraní jako veřejná IP adresa na úrovni instance nebo které jsou součástí základního fondu back-end služby Vyrovnávání zatížení, používají [výchozí SNAT](../load-balancer/load-balancer-outbound-connections.md) a mají IP adresu přiřazenou Azure pro usnadnění odchozího připojení. V důsledku toho může dojít k zobrazení záznamů protokolu toku pro toky z internetových IP adres, pokud je tok určen pro port v rozsahu portů přiřazených pro SNAT. I když Azure nedovolí těmto tokům VIRTUÁLNÍm počítačům, bude se zaprotokolovat a bude se zobrazovat Network Watcher v protokolu NSG toku, který navrhuje. Doporučujeme, aby nevyžádaný příchozí internetový provoz byl explicitně zablokován pomocí NSG.
 
@@ -404,7 +404,7 @@ Protokoly se někdy nezobrazí, protože vaše virtuální počítače nejsou ak
 
 Protokoly toku NSG v současné době nepodporují automatizaci prostřednictvím šablon ARM. Další informace najdete v [oznámení o funkci](https://azure.microsoft.com/updates/arm-template-support-for-nsg-flow-logs/) .
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Co dělají protokoly toku NSG?**
 

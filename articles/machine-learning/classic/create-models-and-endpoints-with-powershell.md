@@ -3,22 +3,22 @@ title: 'ML Studio (Classic): vytvoření více &ch koncových bodů modelu – A
 description: Pomocí PowerShellu můžete vytvořit několik modelů Machine Learning a koncových bodů webové služby se stejným algoritmem, ale s různými školicími datovými sadami.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: ef9ea055f437b53313dc9ee11b0b91f095664f5e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 35b5fe4556f1d557d3fc0420e9069f2fb510eec4
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322848"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520506"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>Vytvoření více koncových bodů webové služby z jednoho experimentu pomocí ML Studio (Classic) a PowerShellu
 
-**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 Tady je běžný problém strojového učení: chcete vytvořit mnoho modelů, které mají stejný pracovní postup školení a používat stejný algoritmus. Ale chcete, aby jako vstup měly jiné školicí datové sady. V tomto článku se dozvíte, jak to udělat ve velkém měřítku Azure Machine Learning Studio (Classic), a to pouze pomocí jednoho experimentu.
 
@@ -55,7 +55,7 @@ Existují i jiné způsoby, jak to provést. K získání dat z databáze v Azur
 
 ![Školený výstup modulu modelu do výstupního modulu webové služby](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 
-Nyní spusťte tento experiment školení s použitím výchozí hodnoty *rental001.csv* jako školicí datovou sadu. Pokud zobrazíte výstup modulu **vyhodnocení** (klikněte na výstup a vyberte **vizualizovat** ), uvidíte, že získáte dát výkon *AUC* = 0,91. V tuto chvíli jste připraveni nasadit webovou službu z tohoto zkušebního experimentu.
+Nyní spusťte tento experiment školení s použitím výchozí hodnoty *rental001.csv* jako školicí datovou sadu. Pokud zobrazíte výstup modulu **vyhodnocení** (klikněte na výstup a vyberte **vizualizovat**), uvidíte, že získáte dát výkon *AUC* = 0,91. V tuto chvíli jste připraveni nasadit webovou službu z tohoto zkušebního experimentu.
 
 ## <a name="deploy-the-training-and-scoring-web-services"></a>Nasazení webových služeb školení a bodování
 Chcete-li nasadit webovou službu školení, klikněte na tlačítko **nastavit webovou službu** pod plátnem experimentu a vyberte **nasadit webovou službu**. Zavolejte tuto webovou službu školení pro nájem kol.

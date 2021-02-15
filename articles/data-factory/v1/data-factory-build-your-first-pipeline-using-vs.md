@@ -1,23 +1,19 @@
 ---
 title: Sestavení prvního objektu pro vytváření dat (Visual Studio)
 description: V tomto kurzu vytvoříte pomocí sady Visual Studio ukázkový kanál služby Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: b0532e75ac581bad3b5dd8669a591186dc320a86
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2ae8e24b10a6661f5a18f3d04e243232436b2911
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496564"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377444"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Kurz: Vytvoření datové továrny pomocí sady Visual Studio
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -56,7 +52,7 @@ V rámci tohoto názorného postupu provedete tyto kroky:
 4. Vytvořte datovou továrnu s názvem **DataFactoryUsingVS**. Nasaďte objekt pro vytváření dat a všechny entity služby Data Factory (propojené služby, tabulky a kanál).
 5. Po publikování použijte okna na webu Azure Portal a aplikaci Monitorování a správa k monitorování kanálu. 
   
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -545,7 +541,7 @@ Při nasazení se hodnoty z konfiguračního souboru použijí k nastavení hodn
 ## <a name="use-azure-key-vault"></a>Použití Azure Key Vault
 Není vhodné a často je to proti zásadám zabezpečení ukládat citlivá data, jako jsou například připojovací řetězce, do úložišti kódu. V ukázce [zabezpečeného publikování ADF](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFSecurePublish) na Githubu získáte další informace o ukládání citlivých informací v Azure Key Vault a jejich používání při publikování entit služby Data Factory. Rozšíření zabezpečeného publikování pro Visual Studio umožňuje ukládat tajné klíče v Key Vault a v konfiguracích propojených služeb a nasazení uvádět pouze odkazy. Tyto odkazy se při publikování entit služby Data Factory do Azure vyhodnotí. Tyto soubory pak lze uložit do úložiště zdrojového kódu bez vystavení jakýchkoli tajných kódů.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 V tomto kurzu jste vytvořili Azure Data Factory pro zpracování dat spuštěním skriptu registru v clusteru HDInsight Hadoop. Pomocí editoru služby Data Factory na webu Azure Portal jste provedli tyto kroky:  
 
 1. Vytvořili jste **objekt pro vytváření dat** Azure.
@@ -563,7 +559,7 @@ Dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením
 
 ## <a name="see-also"></a>Viz také
 
-| Téma | Popis |
+| Téma | Description |
 |:--- |:--- |
 | [Pipelines](data-factory-create-pipelines.md) |Tento článek vám pomůže pochopit kanály a aktivity ve službě Azure Data Factory a porozumět tomu, jak se dají ve vaší situaci nebo firmě použít k sestavení pracovních postupů založených na datech. |
 | [Datové sady](data-factory-create-datasets.md) |Tento článek vám pomůže pochopit datové sady ve službě Azure Data Factory. |

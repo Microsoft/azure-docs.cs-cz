@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 0a99ff32f3f1fbcf4af64188640d2edd7f3f5470
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: fb38140f09fc7c1eb2c40fc02e8c113cbc6f94a0
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583124"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103511"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Rychlý Start: Přidání přihlašování do webové aplikace v Pythonu pomocí Microsoftu
 
@@ -40,7 +40,7 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: Registrace a automatická konfigurace aplikace a následné stažení vzorového kódu
 >
-> 1. Přejít k prostředí rychlý Start pro <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonQuickstartPage/sourceType/docs" target="_blank">Azure Portal registrace aplikací <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
+> 1. Přejít k prostředí rychlý Start pro <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonQuickstartPage/sourceType/docs" target="_blank">Azure Portal registrace aplikací</a>
 > 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
 > 1. Podle pokynů stáhněte a automaticky nakonfigurujte novou aplikaci.
 >
@@ -50,7 +50,7 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 >
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
-> 1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
+> 1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
 > 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 > 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
 > 1. Zadejte **název** vaší aplikace, například `python-webapp` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.

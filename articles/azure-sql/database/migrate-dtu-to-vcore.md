@@ -9,13 +9,13 @@ ms.custom: sqldbrb=1
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
-ms.date: 05/28/2020
-ms.openlocfilehash: aa236ecaaa9c38c68e66d1813280cd98b85b9463
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 02/09/2021
+ms.openlocfilehash: 332a2273a377268a425619a0cdaa5f4780b46e73
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790385"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361651"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migrace Azure SQL Database z modelu založeného na DTU do modelu založeného na vCore
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -52,24 +52,33 @@ Tento dotaz spusťte v kontextu databáze, kterou chcete migrovat, a ne v `maste
 ```SQL
 WITH dtu_vcore_map AS
 (
-SELECT TOP (1) rg.slo_name,
-               CASE WHEN rg.slo_name LIKE '%SQLG4%' THEN 'Gen4'
-                    WHEN rg.slo_name LIKE '%SQLGZ%' THEN 'Gen4'
-                    WHEN rg.slo_name LIKE '%SQLG5%' THEN 'Gen5'
-                    WHEN rg.slo_name LIKE '%SQLG6%' THEN 'Gen5'
-               END AS dtu_hardware_gen,
-               s.scheduler_count * CAST(rg.instance_cap_cpu/100. AS decimal(3,2)) AS dtu_logical_cpus,
-               CAST((jo.process_memory_limit_mb / s.scheduler_count) / 1024. AS decimal(4,2)) AS dtu_memory_per_core_gb
+SELECT rg.slo_name,
+       DATABASEPROPERTYEX(DB_NAME(), 'Edition') AS dtu_service_tier,
+       CASE WHEN rg.slo_name LIKE '%SQLG4%' THEN 'Gen4'
+            WHEN rg.slo_name LIKE '%SQLGZ%' THEN 'Gen4'
+            WHEN rg.slo_name LIKE '%SQLG5%' THEN 'Gen5'
+            WHEN rg.slo_name LIKE '%SQLG6%' THEN 'Gen5'
+            WHEN rg.slo_name LIKE '%SQLG7%' THEN 'Gen5'
+       END AS dtu_hardware_gen,
+       s.scheduler_count * CAST(rg.instance_cap_cpu/100. AS decimal(3,2)) AS dtu_logical_cpus,
+       CAST((jo.process_memory_limit_mb / s.scheduler_count) / 1024. AS decimal(4,2)) AS dtu_memory_per_core_gb
 FROM sys.dm_user_db_resource_governance AS rg
 CROSS JOIN (SELECT COUNT(1) AS scheduler_count FROM sys.dm_os_schedulers WHERE status = 'VISIBLE ONLINE') AS s
 CROSS JOIN sys.dm_os_job_object AS jo
 WHERE dtu_limit > 0
       AND
       DB_NAME() <> 'master'
+      AND
+      rg.database_id = DB_ID()
 )
 SELECT dtu_logical_cpus,
        dtu_hardware_gen,
        dtu_memory_per_core_gb,
+       dtu_service_tier,
+       CASE WHEN dtu_service_tier = 'Basic' THEN 'General Purpose'
+            WHEN dtu_service_tier = 'Standard' THEN 'General Purpose or Hyperscale'
+            WHEN dtu_service_tier = 'Premium' THEN 'Business Critical or Hyperscale'
+       END AS vcore_service_tier,
        CASE WHEN dtu_hardware_gen = 'Gen4' THEN dtu_logical_cpus
             WHEN dtu_hardware_gen = 'Gen5' THEN dtu_logical_cpus * 0.7
        END AS Gen4_vcores,
@@ -97,7 +106,7 @@ Kromě počtu virtuální jádra (logických procesorů) a generace hardwaru moh
 - Pro stejnou generaci hardwaru a stejný počet omezení prostředků propustnosti virtuální jádra, IOPS a transakčního protokolu pro databáze vCore jsou často vyšší než pro databáze DTU. U úloh vázaných na vstupně-výstupní operace může být možné snížit počet virtuální jádra v modelu vCore, aby se dosáhlo stejné úrovně výkonu. Limity zdrojů pro DTU a databáze vCore v absolutních hodnotách jsou zpřístupněny v zobrazení [Sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) . Porovnání těchto hodnot mezi databází DTU, která se má migrovat, a databází vCore s využitím přibližně odpovídajícího cíle služby vám pomůže vybrat cíl služby vCore přesněji.
 - Dotaz mapování také vrátí množství paměti na jádro pro migraci databáze DTU nebo elastického fondu a pro každou generaci hardwaru v modelu vCore. Zajištění podobné nebo vyšší celkové paměti po migraci na vCore je důležité pro úlohy, které vyžadují dostatečnou mezipaměť dat velké paměti, aby dosáhly dostatečného výkonu, nebo úlohy, které vyžadují velké množství paměti pro zpracování dotazů. Pro takové úlohy, v závislosti na skutečném výkonu, může být potřeba zvýšit počet virtuální jádra, aby se dosáhlo dostatečně celkového množství paměti.
 - Při volbě cíle služby vCore by se mělo vzít v úvahu [historické využití prostředků](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) databáze DTU. Databáze DTU s konzistentním využitím prostředků procesoru můžou potřebovat méně virtuální jádra než počet vrácený dotazem mapování. Databáze DTU, kde konzistentně vysoké využití procesoru způsobuje nedostatečný výkon úlohy, mohou vyžadovat více virtuální jádra, než je dotaz vrácen.
-- Pokud migrujete databáze s přerušovaným nebo nepředvídatelným vzorcem použití, zvažte použití výpočetní vrstvy bez [serveru](serverless-tier-overview.md) .  Počítejte s tím, že maximální počet souběžných pracovních procesů (požadavků) v bez serveru je 75% limitu zajištěných pro stejný počet virtuální jádra nakonfigurovaných na stejný počet.  Maximální dostupná velikost paměti v neserveru je navíc 3 GB, což je maximální počet nakonfigurovaných virtuální jádra. například maximální velikost paměti je 120 GB, pokud jsou nakonfigurovány virtuální jádra max. 40.   
+- Pokud migrujete databáze s přerušovaným nebo nepředvídatelným vzorcem použití, zvažte použití výpočetní vrstvy bez [serveru](serverless-tier-overview.md) . Počítejte s tím, že maximální počet souběžných pracovních procesů (požadavků) v bez serveru je 75% limitu zajištěných pro stejný počet virtuální jádra nakonfigurovaných na stejný počet. Maximální dostupná velikost paměti v neserveru je navíc 3 GB, což je maximální počet nakonfigurovaných virtuální jádra. například maximální velikost paměti je 120 GB, pokud jsou nakonfigurovány virtuální jádra max. 40.   
 - V modelu vCore se podporovaná maximální velikost databáze může lišit v závislosti na generaci hardwaru. U rozsáhlých databází ověřte Podporované maximální velikosti v modelu vCore pro izolované [databáze](resource-limits-vcore-single-databases.md) a [elastické fondy](resource-limits-vcore-elastic-pools.md).
 - U elastických fondů mají modely [DTU](resource-limits-dtu-elastic-pools.md) a [Vcore](resource-limits-vcore-elastic-pools.md) rozdíly v maximálním podporovaném počtu databází na jeden fond. To je vhodné vzít v úvahu při migraci elastických fondů s mnoha databázemi.
 - Některé generace hardwaru nemusí být k dispozici v každé oblasti. Ověřte dostupnost v části [generování hardwaru](service-tiers-vcore.md#hardware-generations).
@@ -132,7 +141,7 @@ Dotaz mapování vrátí následující výsledek (některé sloupce nejsou zobr
 |----------------|----------------|----------------------|-----------|-----------------------|-----------|-----------------------|
 |0,25|COMPUTE GEN4 –|0,42|0,250|7|0,425|5,05|
 
-Zjistili jsme, že databáze DTU má ekvivalent 0,25 logických procesorů (virtuální jádra), 0,42 GB paměti na vCore a používá COMPUTE GEN4 – hardware. Nejmenší vCore služby v COMPUTE GEN4 – a Gen5 hardwarových generacích, **GP_Gen4_1** a **GP_Gen5_2** , poskytují více výpočetních prostředků než standardní databáze S0, takže přímá shoda není možná. Vzhledem k tomu, že se COMPUTE GEN4 – hardware [vyřadí](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/), je preferovaná možnost **GP_Gen5_2** . Kromě toho platí, že pokud je úloha vhodná pro výpočetní vrstvu bez [serveru](serverless-tier-overview.md) , **GP_S_Gen5_1** by byla blíže shodná.
+Zjistili jsme, že databáze DTU má ekvivalent 0,25 logických procesorů (virtuální jádra), 0,42 GB paměti na vCore a používá COMPUTE GEN4 – hardware. Nejmenší vCore služby v COMPUTE GEN4 – a Gen5 hardwarových generacích, **GP_Gen4_1** a **GP_Gen5_2**, poskytují více výpočetních prostředků než standardní databáze S0, takže přímá shoda není možná. Vzhledem k tomu, že se COMPUTE GEN4 – hardware [vyřadí](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/), je preferovaná možnost **GP_Gen5_2** . Kromě toho platí, že pokud je úloha vhodná pro výpočetní vrstvu bez [serveru](serverless-tier-overview.md) , **GP_S_Gen5_1** by byla blíže shodná.
 
 **Migrace databáze Premium P15**
 
@@ -167,10 +176,10 @@ Následující tabulka poskytuje pokyny pro konkrétní scénáře migrace:
 
 |Aktuální úroveň služby|Cílová úroveň služby|Typ migrace|Akce uživatele|
 |---|---|---|---|
-|Standardní|Obecné účely|Boku|Může migrovat v libovolném pořadí, ale musí zajistit odpovídající velikost vCore, jak je popsáno výše.|
+|Standard|Obecné účely|Boku|Může migrovat v libovolném pořadí, ale musí zajistit odpovídající velikost vCore, jak je popsáno výše.|
 |Premium|Pro důležité obchodní informace|Boku|Může migrovat v libovolném pořadí, ale musí zajistit odpovídající velikost vCore, jak je popsáno výše.|
-|Standardní|Pro důležité obchodní informace|Upgrade|Nejprve je třeba migrovat sekundární|
-|Pro důležité obchodní informace|Standardní|Downgrade|Nejprve je třeba migrovat primární|
+|Standard|Pro důležité obchodní informace|Upgrade|Nejprve je třeba migrovat sekundární|
+|Pro důležité obchodní informace|Standard|Downgrade|Nejprve je třeba migrovat primární|
 |Premium|Obecné účely|Downgrade|Nejprve je třeba migrovat primární|
 |Obecné účely|Premium|Upgrade|Nejprve je třeba migrovat sekundární|
 |Pro důležité obchodní informace|Obecné účely|Downgrade|Nejprve je třeba migrovat primární|

@@ -1,24 +1,19 @@
 ---
 title: Transformace dat pomocí skriptu U-SQL – Azure
 description: Naučte se zpracovávat nebo transformovat data spuštěním skriptů U-SQL ve službě Azure Data Lake Analytics COMPUTE Service – verze 1.
-services: data-factory
-documentationcenter: ''
-ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/01/2017
 author: nabhishek
 ms.author: abnarain
 ms.custom: devx-track-csharp
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: a5e53cab30f1adca05652a3b3b7541e12ebebbdb
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 5931cb28721e8658a771ceea1cd94624a0c09f7c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631457"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392914"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformace dat spuštěním skriptů U-SQL v Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -48,9 +43,9 @@ Následující tabulka uvádí popisy obecných vlastností použitých v defini
 
 | Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| **textový** |Vlastnost Type by měla být nastavená na: **AzureDataLakeAnalytics** . |Ano |
-| **accountName** |Azure Data Lake Analytics název účtu. |Ano |
-| **dataLakeAnalyticsUri** |Azure Data Lake Analytics identifikátor URI. |Ne |
+| **textový** |Vlastnost Type by měla být nastavená na: **AzureDataLakeAnalytics**. |Yes |
+| **accountName** |Azure Data Lake Analytics název účtu. |Yes |
+| **dataLakeAnalyticsUri** |Azure Data Lake Analytics identifikátor URI. |No |
 | **subscriptionId** |ID předplatného Azure |Ne (Pokud není zadaný, použije se předplatné datové továrny). |
 | **resourceGroupName** |Název skupiny prostředků Azure |Ne (Pokud není zadaný, použije se skupina prostředků objektu pro vytváření dat). |
 
@@ -64,9 +59,9 @@ Použijte ověřování instančního objektu zadáním následujících vlastno
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Zadejte ID klienta aplikace. | Ano |
-| **servicePrincipalKey** | Zadejte klíč aplikace. | Ano |
-| **tenant** | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. | Ano |
+| **servicePrincipalId** | Zadejte ID klienta aplikace. | Yes |
+| **servicePrincipalKey** | Zadejte klíč aplikace. | Yes |
+| **tenant** | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. | Yes |
 
 **Příklad: ověřování instančního objektu**
 ```json
@@ -92,8 +87,8 @@ Alternativně můžete použít ověření přihlašovacích údajů uživatele 
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| **udělován** | V editoru Data Factory klikněte na tlačítko **autorizovat** a zadejte přihlašovací údaje, které přiřadí automaticky vygenerované autorizační URL k této vlastnosti. | Ano |
-| **sessionId** | ID relace OAuth z autorizační relace OAuth. Každé ID relace je jedinečné a dá se použít jenom jednou. Toto nastavení se generuje automaticky, když použijete Editor Data Factory. | Ano |
+| **udělován** | V editoru Data Factory klikněte na tlačítko **autorizovat** a zadejte přihlašovací údaje, které přiřadí automaticky vygenerované autorizační URL k této vlastnosti. | Yes |
+| **sessionId** | ID relace OAuth z autorizační relace OAuth. Každé ID relace je jedinečné a dá se použít jenom jednou. Toto nastavení se generuje automaticky, když použijete Editor Data Factory. | Yes |
 
 **Příklad: ověření přihlašovacích údajů uživatele**
 ```json
@@ -208,16 +203,16 @@ V následující tabulce jsou popsány názvy a popisy vlastností, které jsou 
 
 | Vlastnost            | Popis                              | Povinné                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| typ                | Vlastnost Type musí být nastavená na **DataLakeAnalyticsU-SQL** . | Ano                                      |
-| linkedServiceName   | Odkaz na Azure Data Lake Analytics zaregistrovaný jako propojená služba v Data Factory | Ano                                      |
+| typ                | Vlastnost Type musí být nastavená na **DataLakeAnalyticsU-SQL**. | Yes                                      |
+| linkedServiceName   | Odkaz na Azure Data Lake Analytics zaregistrovaný jako propojená služba v Data Factory | Yes                                      |
 | scriptPath          | Cesta ke složce, která obsahuje skript U-SQL. Název souboru rozlišuje velká a malá písmena. | Ne (Pokud používáte skript)                   |
 | scriptLinkedService | Propojená služba, která propojuje úložiště obsahující skript s datovou továrnou | Ne (Pokud používáte skript)                   |
 | script              | Místo zadání scriptPath a scriptLinkedService zadejte vložený skript. Příklad: `"script": "CREATE DATABASE test"`. | Ne (Pokud používáte scriptPath a scriptLinkedService) |
-| degreeOfParallelism | Maximální počet uzlů současně použitých ke spuštění úlohy. | Ne                                       |
-| upřednostněn            | Určuje, které úlohy ze všech, které jsou zařazené do fronty, by měly být vybrány pro první spuštění. Čím nižší číslo, tím vyšší Priorita. | Ne                                       |
-| parameters          | Parametry pro skript U-SQL          | Ne                                       |
-| runtimeVersion      | Verze modulu runtime pro modul U-SQL, který se má použít | Ne                                       |
-| CompilationMode nastavena     | <p>Režim kompilace U-SQL Musí se jednat o jednu z těchto hodnot:</p> <ul><li>**Sémantika:** Provádět pouze sémantické kontroly a nezbytné správnosti kontroly.</li><li>**Úplné:** Proveďte úplnou kompilaci, včetně kontroly syntaxe, optimalizace, generování kódu atd.</li><li>**SingleBox:** Proveďte úplnou kompilaci s nastavením TargetType na SingleBox.</li></ul><p>Pokud nezadáte hodnotu pro tuto vlastnost, server určí optimální režim kompilace. </p> | Ne                                       |
+| degreeOfParallelism | Maximální počet uzlů současně použitých ke spuštění úlohy. | No                                       |
+| upřednostněn            | Určuje, které úlohy ze všech, které jsou zařazené do fronty, by měly být vybrány pro první spuštění. Čím nižší číslo, tím vyšší Priorita. | No                                       |
+| parameters          | Parametry pro skript U-SQL          | No                                       |
+| runtimeVersion      | Verze modulu runtime pro modul U-SQL, který se má použít | No                                       |
+| CompilationMode nastavena     | <p>Režim kompilace U-SQL Musí se jednat o jednu z těchto hodnot:</p> <ul><li>**Sémantika:** Provádět pouze sémantické kontroly a nezbytné správnosti kontroly.</li><li>**Úplné:** Proveďte úplnou kompilaci, včetně kontroly syntaxe, optimalizace, generování kódu atd.</li><li>**SingleBox:** Proveďte úplnou kompilaci s nastavením TargetType na SingleBox.</li></ul><p>Pokud nezadáte hodnotu pro tuto vlastnost, server určí optimální režim kompilace. </p> | No                                       |
 
 Definice skriptu najdete v tématu [SearchLogProcessing.txt definice skriptu](#sample-u-sql-script) . 
 

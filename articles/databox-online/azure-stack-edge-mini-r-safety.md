@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/08/2021
+ms.date: 02/12/2021
 ms.author: alkohli
-ms.openlocfilehash: aa363b1eeddff6c3b10d8e36371becb8b690697c
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: eb42a9a77927d8577dfec3c9167294eb8f809fec
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981006"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382616"
 ---
 # <a name="azure-stack-edge-mini-r-safety-instructions"></a>Pokyny pro bezpečnost Azure Stackho okraje – Mini R
 
@@ -161,7 +161,6 @@ Operace v pásmu 5150 – 5250 MHz je určena jenom pro použití v interiéru k
 
 ![Upozornění na regulativní informace – použití v interiéru](./media/azure-stack-edge-mini-r-safety/regulatory-information-indoor-use-only.png)
 
-
 Uživatelům se doporučuje, aby se vysoce výkonné paprsky přiřazují jako primární uživatelé (prioritní uživatelé) pásem 5250 – 5350 MHz a 5650 – 5850 MHz. Tyto paprsky můžou způsobit rušení nebo poškození zařízení LE-LAN.
 
 Toto vybavení generuje, používá a může vycházet z frekvence rádiového kmitočtu a pokud není nainstalováno a používáno v souladu s pokyny, může způsobit škodlivé rušení rádiových komunikací. Neexistuje však záruka, že k rušení nedojde v konkrétní instalaci.
@@ -205,11 +204,13 @@ Tabulka s konkrétní mírou absorpce (správní oblast), která je průměrně 
 
 #### <a name="european-union"></a>EVROPSKÁ UNIE:
 
-Požádat o kopii prohlášení o shodě EU pro toto zařízení.
+Požádat o kopii prohlášení o shodě EU pro toto zařízení. Odešlete e-mail na adresu [CSI_Compliance@microsoft.com](mailto:CSI_Compliance@microsoft.com).
 
 Adaptér A6150 Wi-Fi USB, který je součástí tohoto zařízení, je v souladu se směrnicí 2014/53/EU a dá se taky zadat na vyžádání.
 
-> ![Ikona upozornění 13 ](./media/azure-stack-edge-mini-r-safety/icon-safety-warning.png) Toto je produkt třídy. V domácím prostředí může tento produkt v takovém případě způsobit rušivé porušování. uživatel může být nutný k tomu, aby přijal vhodná opatření.
+![Ikona upozornění 13 ](./media/azure-stack-edge-mini-r-safety/icon-safety-warning.png) **Upozornění:**  
+
+Toto je produkt třídy A. V domácím prostředí může tento produkt v takovém případě způsobit rušivé porušování. uživatel může být nutný k tomu, aby přijal vhodná opatření.
 
 Odstraňování odpadních baterií a elektrických a elektronických zařízení:
 

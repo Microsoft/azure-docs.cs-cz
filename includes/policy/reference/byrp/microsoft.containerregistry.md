@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 6c6229ad5e6c8d672ec6450ea37988fd2f05317d
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: ac60760261e36373f617e90524e2df4d237b6d41
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99559479"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092994"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
-|[Registry kontejneru by měly být zašifrované pomocí klíče spravovaného zákazníkem (CMK)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5b9159ae-1701-4a6f-9a7a-aa9c8ddd0580) |Pomocí klíčů spravovaných zákazníkem můžete spravovat šifrování v klidovém obsahu registrů. Ve výchozím nastavení jsou data v klidovém stavu zašifrovaná pomocí klíčů spravovaných službou, ale klíče spravované zákazníkem (CMK) se běžně vyžadují ke splnění standardů dodržování legislativních předpisů. CMKs povolí šifrování dat pomocí Azure Key Vaultho klíče vytvořeného a vlastněného vámi. Máte plnou kontrolu a zodpovědnost za životní cyklus klíčů, včetně rotace a správy. Další informace o šifrování CMK najdete na adrese [https://aka.ms/acr/CMK](https://aka.ms/acr/CMK) . |Audit, zamítnutí, zakázáno |[1.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_CMKEncryptionEnabled_Audit.json) |
+|[Registry kontejneru by měly být zašifrované pomocí klíče spravovaného zákazníkem](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5b9159ae-1701-4a6f-9a7a-aa9c8ddd0580) |Pomocí klíčů spravovaných zákazníkem můžete spravovat šifrování v klidovém obsahu registrů. Ve výchozím nastavení jsou data v klidovém stavu zašifrovaná pomocí klíčů spravovaných službou, ale klíče spravované zákazníkem se obvykle vyžadují ke splnění standardů dodržování předpisů regulativními předpisy. Klíče spravované zákazníkem umožňují, aby byla data zašifrovaná pomocí Azure Key Vaultho klíče vytvořeného a vlastněného vámi. Máte plnou kontrolu a zodpovědnost za životní cyklus klíčů, včetně rotace a správy. Další informace najdete na adrese [https://aka.ms/acr/CMK](https://aka.ms/acr/CMK) . |Audit, zamítnutí, zakázáno |[bodu](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_CMKEncryptionEnabled_Audit.json) |
 |[Registry kontejneru by neměly umožňovat neomezený přístup k síti.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd0793b48-0edc-4296-a390-4c75d1bdfd71) |Služba Azure Container Registry ve výchozím nastavení přijímá připojení přes Internet z hostitelů v jakékoli síti. Chcete-li chránit své Registry před potenciálními hrozbami, povolte přístup pouze z určitých veřejných IP adres nebo rozsahů adres. Pokud váš registr nemá pravidlo IP/firewall nebo nakonfigurovanou virtuální síť, zobrazí se ve špatných prostředcích. Další informace o Container Registry síťových pravidel najdete tady: [https://aka.ms/acr/portal/public-network](https://aka.ms/acr/portal/public-network) a tady [https://aka.ms/acr/vnet](https://aka.ms/acr/vnet) . |Audit, zakázáno |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_NetworkRulesExist_Audit.json) |
 |[Registry kontejneru by měly používat privátní odkaz](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe8eef0a8-67cf-4eb4-9386-14b0e78733d4) |Privátní odkaz Azure umožňuje připojit virtuální síť ke službám Azure bez veřejné IP adresy ve zdroji nebo cíli. Platforma privátních odkazů zpracovává připojení mezi klientem a službami přes páteřní síť Azure. Mapováním privátních koncových bodů na Registry kontejnerů místo celé služby budete chráněni také před riziky úniku dat. Další informace najdete tady: [https://aka.ms/acr/private-link](https://aka.ms/acr/private-link) . |Audit, zakázáno |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_PrivateEndpointEnabled_Audit.json) |
 |[Container Registry by měl používat koncový bod služby virtuální sítě](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78) |Tato zásada Audituje jakékoli Container Registry, které nejsou nakonfigurované pro použití koncového bodu služby virtuální sítě. |Audit, zakázáno |[1.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_ContainerRegistry_Audit.json) |

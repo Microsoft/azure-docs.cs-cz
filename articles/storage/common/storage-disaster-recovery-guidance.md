@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f7d7bff1bc85e0dec78a69422d126b86f61b7704
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9a4453c29c52f8821643e93584666c3a6a8e6b4c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783976"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379824"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Zotavení po havárii a převzetí služeb při selhání účtu úložiště
 
@@ -23,7 +23,7 @@ Microsoft usiluje o to, aby byly služby Azure vždycky dostupné. Může ale do
 
 Azure Storage podporuje převzetí služeb při selhání účtu v geograficky redundantních účtech úložiště. S převzetím služeb při selhání můžete zahájit proces převzetí služeb při selhání pro váš účet úložiště, pokud primární koncový bod nebude k dispozici. Převzetí služeb při selhání aktualizuje sekundární koncový bod tak, aby se stal primárním koncovým bodem pro váš účet úložiště. Až se převzetí služeb při selhání dokončí, můžou klienti začít zapisovat do nového primárního koncového bodu.
 
-Převzetí služeb při selhání účtu je k dispozici pro obecné účely V1, Obecné-účel v2 a účty BLOB Storage s nasazeními Azure Resource Manager. Převzetí služeb při selhání účtu je podporované pro všechny veřejné oblasti, ale v současnosti není dostupné v svrchovaných nebo národních cloudech.
+Převzetí služeb při selhání účtu je k dispozici pro účty úložiště pro obecné účely verze 1, účty úložiště pro obecné účely verze 2 a účty úložiště objektů blob v nasazeních Azure Resource Manageru. Převzetí služeb při selhání účtu je podporované pro všechny veřejné oblasti, ale v současnosti není dostupné v svrchovaných nebo národních cloudech.
 
 Tento článek popisuje koncepty a procesy spojené s převzetím služeb při selhání a popisuje, jak připravit účet úložiště k obnovení s minimálním dopadem na zákazníky. Informace o tom, jak iniciovat převzetí služeb při selhání účtu v Azure Portal nebo PowerShellu, najdete v tématu [spuštění převzetí služeb při selhání](storage-initiate-account-failover.md).
 
@@ -55,7 +55,7 @@ Kromě toho mějte na paměti tyto osvědčené postupy pro udržení vysoké do
 
 - **Disky:** Použijte [Azure Backup](https://azure.microsoft.com/services/backup/) k zálohování disků virtuálních počítačů využívaných virtuálními počítači Azure. Zvažte také použití [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) k ochraně vašich virtuálních počítačů v případě regionálních havárií.
 - **Objekty blob bloku:** Zapněte [obnovitelné odstranění](../blobs/soft-delete-blob-overview.md) pro ochranu proti odstranění na úrovni objektu a přepsání nebo zkopírujte objekty blob bloku do jiného účtu úložiště v jiné oblasti pomocí [AzCopy](./storage-use-azcopy-v10.md), [Azure PowerShell](/powershell/module/az.storage/)nebo [knihovny pro přesun dat Azure](storage-use-data-movement-library.md).
-- **Soubory:** Pomocí [AzCopy](./storage-use-azcopy-v10.md) nebo [Azure PowerShell](/powershell/module/az.storage/) zkopírujte soubory do jiného účtu úložiště v jiné oblasti.
+- **Soubory:** Použijte [Azure Backup](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview) k zálohování sdílených složek souborů. Povolit i [obnovitelné odstranění](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion) , aby se chránily proti náhodným odstranění sdílení souborů. Pro geografickou redundanci, pokud není k dispozici GRS, zkopírujte soubory do jiného účtu úložiště v jiné oblasti pomocí [AzCopy](./storage-use-azcopy-v10.md) nebo [Azure PowerShell](/powershell/module/az.storage/) .
 - **Tabulky:** pomocí [AzCopy](./storage-use-azcopy-v10.md) můžete exportovat data tabulky do jiného účtu úložiště v jiné oblasti.
 
 ## <a name="track-outages"></a>Sledovat výpadky
@@ -155,7 +155,7 @@ Mějte na paměti, že při vypnutí virtuálního počítače dojde ke ztrátě
 
 Pro převzetí služeb při selhání účtu se nepodporují následující funkce a služby:
 
-- Azure File Sync nepodporuje převzetí služeb při selhání účtu úložiště. U účtů úložiště obsahujících sdílené složky Azure, které se v Synchronizaci souborů Azure používají jako koncové body cloudu, by se nemělo provádět převzetí služeb při selhání. Pokud to uděláte, synchronizace přestane fungovat a v případě nově vrstvených souborů může dojít i k neočekávané ztrátě dat.
+- Synchronizace souborů Azure nepodporuje převzetí služeb při selhání účtu úložiště. U účtů úložiště obsahujících sdílené složky Azure, které se v Synchronizaci souborů Azure používají jako koncové body cloudu, by se nemělo provádět převzetí služeb při selhání. Pokud to uděláte, synchronizace přestane fungovat a v případě nově vrstvených souborů může dojít i k neočekávané ztrátě dat.
 - Účty úložiště ADLS Gen2 (účty s povoleným hierarchickým oborem názvů) se v tuto chvíli nepodporují.
 - Nepovedlo se převzít služby účtů úložiště obsahující objekty blob bloku Premium. Účty úložiště, které podporují objekty blob bloku Premium, v současné době nepodporují geografickou redundanci.
 - Nepovedlo se převzít služby účtů úložiště obsahující jakékoli povolené kontejnery [zásad neměnnosti worm](../blobs/storage-blob-immutable-storage.md) . Odemčené nebo uzamčené časové uchovávání na základě času nebo zásady právního blokování brání převzetí služeb při selhání, aby se zachovalo dodržování předpisů

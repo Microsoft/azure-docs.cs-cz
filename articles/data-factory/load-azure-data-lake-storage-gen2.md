@@ -1,23 +1,18 @@
 ---
 title: Načtení dat do Azure Data Lake Storage Gen2
 description: Použití Azure Data Factory ke kopírování dat do Azure Data Lake Storage Gen2
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: ca9ca495f2b3449b5aeb933bbd8d312fc9341fd9
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 61e34d41d9f7a60b6ad74e12331864e6ba08e4f5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554113"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370797"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Načtení dat do Azure Data Lake Storage Gen2 s využitím Azure Data Factory
 
@@ -42,17 +37,17 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  **Data Factory** :
+1. V nabídce vlevo vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  :
    
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 2. Na stránce **Nová datová továrna** zadejte hodnoty pro následující pole:
  
-    * **Název** : zadejte globálně jedinečný název pro objekt pro vytváření dat Azure. Pokud se zobrazí chyba "název objektu pro vytváření dat *YourDataFactoryName* není k dispozici", zadejte jiný název pro datovou továrnu. Můžete například použít název _**Your**_**ADFTutorialDataFactory**. Zkuste vytvořit datovou továrnu znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
-    * **Předplatné** : vyberte předplatné Azure, ve kterém chcete vytvořit datovou továrnu. 
-    * **Skupina prostředků** : v rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte možnost **vytvořit novou** a zadejte název skupiny prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
-    * **Verze** : Vyberte **V2**.
-    * **Umístění** : vyberte umístění pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat, která služba Data Factory používá, můžou být v jiných umístěních a oblastech. 
+    * **Název**: zadejte globálně jedinečný název pro objekt pro vytváření dat Azure. Pokud se zobrazí chyba "název objektu pro vytváření dat *YourDataFactoryName* není k dispozici", zadejte jiný název pro datovou továrnu. Můžete například použít název _**Your**_**ADFTutorialDataFactory**. Zkuste vytvořit datovou továrnu znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
+    * **Předplatné**: vyberte předplatné Azure, ve kterém chcete vytvořit datovou továrnu. 
+    * **Skupina prostředků**: v rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte možnost **vytvořit novou** a zadejte název skupiny prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
+    * **Verze**: Vyberte **V2**.
+    * **Umístění**: vyberte umístění pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat, která služba Data Factory používá, můžou být v jiných umístěních a oblastech. 
 
 3. Vyberte **Vytvořit**.
 
@@ -105,7 +100,7 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 
     ![Snímek obrazovky zobrazující cestu ke složce, kterou zadáte.](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
 
-10. Na stránce **Nastavení** vyberte **Další** , aby se použilo výchozí nastavení.
+10. Na stránce **Nastavení** vyberte **Další**, aby se použilo výchozí nastavení.
 
     ![Stránka Nastavení](./media/load-azure-data-lake-storage-gen2/copy-settings.png)
 

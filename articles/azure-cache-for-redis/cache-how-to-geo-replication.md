@@ -1,24 +1,28 @@
 ---
-title: Jak nastavit geografickou replikaci pro Azure cache pro Redis | Microsoft Docs
-description: Naučte se replikovat mezipaměť Azure pro instance Redis napříč geografickými oblastmi.
+title: Konfigurace geografické replikace pro Redis instance Premium Azure cache
+description: Naučte se replikovat mezipaměť Azure pro instance Redis Premium napříč oblastmi Azure.
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 33d5ec89ef7563df16e0fe9b447eca88b1dba7fe
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 27ccc81ddf0a771de9fb15f60820dfd3efa6146e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536874"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386868"
 ---
-# <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Jak nastavit geografickou replikaci pro Azure cache pro Redis
+# <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>Konfigurace geografické replikace pro Redis instance Premium Azure cache
 
-Geografická replikace poskytuje mechanismus pro propojení dvě mezipaměti Azure úrovně Premium pro instance Redis. Jedna mezipaměť je zvolena jako primární propojená mezipaměť a druhá jako sekundární propojená mezipaměť. Sekundární propojená mezipaměť se bude jen pro čtení a data zapsaná do primární mezipaměti se replikují do sekundární propojené mezipaměti. Přenos dat mezi primárními a sekundárními instancemi mezipaměti je zabezpečený pomocí protokolu TLS. Geografickou replikaci lze použít k nastavení mezipaměti, která zahrnuje dvě oblasti Azure. Tento článek poskytuje návod ke konfiguraci geografické replikace pro Azure cache úrovně Premium pro instance Redis.
+V tomto článku se dozvíte, jak nakonfigurovat geograficky replikovanou mezipaměť Azure pomocí Azure Portal.
+
+Odkazy na geografickou replikaci tvoří dvě mezipaměti Azure Premium pro instance Redis a vytváří vztah replikace dat. Tyto instance mezipaměti se většinou nacházejí v různých oblastech Azure, i když nejsou nutné. Jedna instance funguje jako primární a druhá jako sekundární. Primární zpracovává požadavky na čtení a zápis a šíří změny do sekundárního. Tento proces pokračuje, dokud nedojde k odebrání propojení mezi těmito dvěma instancemi.
 
 > [!NOTE]
-> Geografická replikace je navržená jako řešení zotavení po havárii. Ve výchozím nastavení bude vaše aplikace zapisovat do primární oblasti a číst z ní. Volitelně je možné ji nakonfigurovat pro čtení ze sekundární oblasti. Geografická replikace neposkytuje automatické převzetí služeb při selhání kvůli problémům s přidáním latence sítě mezi oblastmi, pokud zbývající část aplikace zůstane v primární oblasti. Převzetí služeb při selhání budete muset spravovat a iniciovat tak, že odpojíte sekundární mezipaměť. Tím se zvýší úroveň této nové primární instance.
+> Geografická replikace je navržená jako řešení zotavení po havárii.
+>
+>
 
 ## <a name="geo-replication-prerequisites"></a>Předpoklady geografické replikace
 
@@ -75,7 +79,7 @@ Po nakonfigurování geografické replikace platí následující omezení pro v
 
     ![Snímek obrazovky, který ukazuje, jak zobrazit stav propojení primárních a sekundárních mezipamětí.](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
-    Po dokončení procesu replikace se **stav odkazu** změní na **úspěch** .
+    Po dokončení procesu replikace se **stav odkazu** změní na **úspěch**.
 
     ![Stav mezipaměti](./media/cache-how-to-geo-replication/cache-geo-location-link-successful.png)
 

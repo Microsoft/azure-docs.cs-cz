@@ -1,22 +1,17 @@
 ---
 title: Načtení dat ze sady Office 365 pomocí Azure Data Factory
 description: Použití Azure Data Factory ke kopírování dat z Office 365
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 05f336af62bc0869249d5b32700ea3515ac5994f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8b98344dcb2321d5d91c9974dc833a735164d428
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459705"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370652"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Načtení dat ze sady Office 365 pomocí Azure Data Factory
 
@@ -26,7 +21,7 @@ V tomto článku se dozvíte, jak pomocí Data Factory _načíst data z Office 3
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte **vytvořit**  >  **Analytics**  >  **Data Factory** analýzy prostředků: 
+1. V nabídce vlevo vyberte **vytvořit**  >    >  **Data Factory** analýzy prostředků: 
    
    ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -79,7 +74,7 @@ V tomto článku se dozvíte, jak pomocí Data Factory _načíst data z Office 3
 
     ![Konfigurační tabulka sady Office 365](./media/load-office-365-data/edit-dataset.png)
 
-8. Teď se vraťte na **pipeline**  >  **kartu zdroj** kanálu a pokračujte v konfiguraci dalších vlastností pro extrakci dat Office 365.  Uživatelský rozsah a filtr oboru uživatele jsou volitelné predikáty, které můžete definovat k omezení dat, která chcete vyjmout z Office 365. Postup při konfiguraci těchto nastavení najdete v části [Vlastnosti datové sady Office 365](./connector-office-365.md#dataset-properties) .
+8. Teď se vraťte na   >  **kartu zdroj** kanálu a pokračujte v konfiguraci dalších vlastností pro extrakci dat Office 365.  Uživatelský rozsah a filtr oboru uživatele jsou volitelné predikáty, které můžete definovat k omezení dat, která chcete vyjmout z Office 365. Postup při konfiguraci těchto nastavení najdete v části [Vlastnosti datové sady Office 365](./connector-office-365.md#dataset-properties) .
 
 9. Je nutné zvolit jeden z filtrů data a zadat počáteční a koncové hodnoty času.
 

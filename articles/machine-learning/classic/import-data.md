@@ -3,18 +3,18 @@ title: 'ML Studio (Classic): import školicích dat – Azure'
 description: Jak importovat data do Azure Machine Learning Studio (Classic) z různých zdrojů dat. Zjistěte, jaké datové typy a datové formáty jsou podporovány.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: c69ed7b9e2aaa7113637868e1c1329ed2962b931
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: db5f3cc4b9530c4aeac40786756b36cc0ac98728
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302769"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520370"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Import školicích dat do Azure Machine Learning Studio (Classic) z různých zdrojů dat
 
@@ -73,12 +73,12 @@ Studio (Classic) rozpozná následující typy dat:
 * Datum a čas
 * TimeSpan
 
-Studio používá k předávání dat mezi moduly interní datový typ s názvem ***Tabulka dat**. Data můžete explicitně převést do formátu tabulky dat pomocí modulu [převést na datovou sadu][convert-to-dataset] .
+Studio používá k předávání dat mezi moduly interní datový typ nazvaný ***Tabulka dat*** . Data můžete explicitně převést do formátu tabulky dat pomocí modulu [převést na datovou sadu][convert-to-dataset] .
 
 Libovolný modul, který přijímá jiné formáty než tabulka dat, převede data do tabulky dat před jejich předáním dalšímu modulu.
 
 V případě potřeby můžete formát tabulky dat převést zpátky do formátu CSV, TSV, ARFF nebo SVMLight pomocí jiných modulů převodu.
-Vyhledejte moduly, které provádějí tyto funkce, v části paleta *Data Format* Conversions * v paletě modulu.
+Podívejte se na část s **převody formátů dat** v paletě modulu pro moduly, které tyto funkce provádějí.
 
 ## <a name="data-capacities"></a>Datové kapacity
 

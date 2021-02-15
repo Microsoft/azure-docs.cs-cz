@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z PayPal pomocí Azure Data Factory (Preview)
 description: Naučte se, jak kopírovat data z PayPal na podporovaná úložiště dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: c93425fe2e5210a3a8cc577b6e74e281c88121c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6753159acbc4a2da20695d61c6e7c31f4ac0a7c3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81416792"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381286"
 ---
 # <a name="copy-data-from-paypal-using-azure-data-factory-preview"></a>Kopírování dat z PayPal pomocí Azure Data Factory (Preview)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -49,10 +44,10 @@ Pro propojenou službu PayPal jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **PayPal** . | Ano |
-| Hostitel | Adresa URL instance PayPal (tj. api.sandbox.paypal.com)  | Ano |
-| clientId | ID klienta přidružené k vaší aplikaci PayPal  | Ano |
-| clientSecret | Tajný kód klienta přidružený k vaší aplikaci PayPal. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| typ | Vlastnost Type musí být nastavená na: **PayPal** . | Yes |
+| Hostitel | Adresa URL instance PayPal (tj. api.sandbox.paypal.com)  | Yes |
+| clientId | ID klienta přidružené k vaší aplikaci PayPal  | Yes |
+| clientSecret | Tajný kód klienta přidružený k vaší aplikaci PayPal. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | No |
 | useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | No |
 | usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | No |
@@ -84,7 +79,7 @@ Chcete-li kopírovat data z PayPal, nastavte vlastnost Type datové sady na **Pa
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **PayPalObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **PayPalObject** . | Yes |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad**
@@ -114,8 +109,8 @@ Pokud chcete kopírovat data z PayPal, nastavte typ zdroje v aktivitě kopírov�
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **PayPalSource** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Payment_Experience"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **PayPalSource** . | Yes |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM Payment_Experience"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
 

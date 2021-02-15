@@ -3,22 +3,22 @@ title: 'ML Studio (Classic): optimalizace algoritmů – Azure'
 description: Vysvětluje, jak zvolit optimální sadu parametrů pro algoritmus v Azure Machine Learning Studio (Classic).
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: b08318d4c12fd2e6ea8055771ca6792b0fb280dd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a216dc7cb17b9e35e412c6bebe34c0cccfb732e4
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307854"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519299"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-machine-learning-studio-classic"></a>Výběr parametrů pro optimalizaci algoritmů v Machine Learning Studio (Classic)
 
-**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 Toto téma popisuje, jak zvolit správnou sadu parametrů pro algoritmus v Azure Machine Learning Studio (Classic). Většina algoritmů strojového učení má nastavené parametry. Při výukovém modelu je nutné zadat hodnoty pro tyto parametry. Účinnost proučeného modelu závisí na zvolených parametrech modelu. Proces nalezení optimální sady parametrů je známý jako *Výběr modelu*.
 
@@ -28,10 +28,10 @@ Existují různé způsoby, jak vybrat model. V strojovém učení je křížov�
 
 Při hledání nejlepší sady parametrů je potřeba postupovat podle čtyř kroků:
 
-1. **Definujte prostor parametru** : pro algoritmus nejdřív určete přesné hodnoty parametrů, které chcete zvážit.
-2. **Definice nastavení křížového ověření** : Rozhodněte, jak zvolit skládání křížového ověřování pro datovou sadu.
-3. **Definování metriky** : Rozhodněte, jaká metrika se má použít k určení nejlepší sady parametrů, jako je přesnost, hlavní střední hodnota chyby, přesnost, odvolání nebo f-skóre.
-4. **Výukové, vyhodnocování a porovnávání** : pro každou jedinečnou kombinaci hodnot parametrů se křížové ověření provádí pomocí a na základě metriky chyby, kterou definujete. Po vyhodnocení a porovnání můžete vybrat nejlepší model.
+1. **Definujte prostor parametru**: pro algoritmus nejdřív určete přesné hodnoty parametrů, které chcete zvážit.
+2. **Definice nastavení křížového ověření**: Rozhodněte, jak zvolit skládání křížového ověřování pro datovou sadu.
+3. **Definování metriky**: Rozhodněte, jaká metrika se má použít k určení nejlepší sady parametrů, jako je přesnost, hlavní střední hodnota chyby, přesnost, odvolání nebo f-skóre.
+4. **Výukové, vyhodnocování a porovnávání**: pro každou jedinečnou kombinaci hodnot parametrů se křížové ověření provádí pomocí a na základě metriky chyby, kterou definujete. Po vyhodnocení a porovnání můžete vybrat nejlepší model.
 
 Následující obrázek ukazuje, jak to lze dosáhnout v Azure Machine Learning Studio (Classic).
 
@@ -66,7 +66,7 @@ Modul má také volitelnou vstupní datovou sadu. Připojte datovou sadu s infor
 
 ![Rozdaný klasifikátor rozhodovacího stromu](./media/algorithm-parameters-optimize/fig6a.png)
 
-Model se pak vyhodnotí na datové sadě ověřování. Levý výstupní port modulu zobrazuje různé metriky jako funkce hodnot parametrů. Pravý výstupní port poskytuje vyškolený model, který odpovídá nejlepšímu modelu podle zvolené metriky ( **přesnost** v tomto případě).  
+Model se pak vyhodnotí na datové sadě ověřování. Levý výstupní port modulu zobrazuje různé metriky jako funkce hodnot parametrů. Pravý výstupní port poskytuje vyškolený model, který odpovídá nejlepšímu modelu podle zvolené metriky (**přesnost** v tomto případě).  
 
 ![Ověřovací datová sada](./media/algorithm-parameters-optimize/fig6b.png)
 

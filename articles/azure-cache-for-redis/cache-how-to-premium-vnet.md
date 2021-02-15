@@ -1,32 +1,27 @@
 ---
 title: Konfigurace virtuální sítě Azure cache na úrovni Premium pro instanci Redis
-description: Naučte se vytvářet a spravovat podporu virtuálních sítí pro Azure cache na úrovni Premium pro instance Redis.
+description: Naučte se vytvářet a spravovat podporu virtuálních sítí pro Redis instanci Azure na úrovni Premium.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
-ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.date: 10/09/2020
-ms.openlocfilehash: 908254fec0d9e92b0e30c2e4968c3c505bbbdbf8
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.date: 02/08/2021
+ms.openlocfilehash: 94bbb9bb683f40d44d6649802b66bda6feeee218
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833826"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375268"
 ---
-# <a name="configure-virtual-network-support-for-a-premium-tier-azure-cache-for-redis-instance"></a>Konfigurace podpory virtuální sítě pro instanci Redis Azure cache na úrovni Premium
+# <a name="configure-virtual-network-support-for-a-premium-azure-cache-for-redis-instance"></a>Konfigurace podpory virtuální sítě pro instanci Azure cache Premium pro Redis
 
-Mezipaměť Azure pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti. K funkcím úrovně Premium patří podpora clusteringu, trvalosti a virtuální sítě. Virtuální síť je privátní síť v cloudu. Když je u instance Azure cache for Redis nakonfigurovaná virtuální síť, není veřejně adresovatelná a je dostupná jenom z virtuálních počítačů a aplikací v rámci virtuální sítě. Tento článek popisuje, jak nakonfigurovat podporu virtuální sítě pro instanci Redis Azure cache úrovně Premium.
+Nasazení [Azure Virtual Network](https://azure.microsoft.com/services/virtual-network/) poskytuje lepší zabezpečení a izolaci spolu s podsítěmi, zásadami řízení přístupu a dalšími funkcemi pro další omezení přístupu. Když je u instance Azure cache for Redis nakonfigurovaná virtuální síť, není veřejně adresovatelná a je dostupná jenom z virtuálních počítačů a aplikací v rámci virtuální sítě. Tento článek popisuje, jak nakonfigurovat podporu virtuální sítě pro instanci Redis Azure cache úrovně Premium.
 
 > [!NOTE]
 > Azure cache pro Redis podporuje model nasazení Classic i Azure Resource Manager virtuální sítě.
 > 
 
-## <a name="why-virtual-network"></a>Proč Virtual Network?
-
-Nasazení [azure Virtual Network](https://azure.microsoft.com/services/virtual-network/) poskytuje lepší zabezpečení a izolaci mezipaměti Azure pro instanci Redis spolu s podsítěmi, zásadami řízení přístupu a dalšími funkcemi pro další omezení přístupu.
-
-## <a name="virtual-network-support"></a>Podpora virtuální sítě
+## <a name="set-up-virtual-network-support"></a>Nastavení podpory virtuální sítě
 
 Podpora virtuální sítě je nakonfigurovaná v **novém podokně mezipaměti Azure pro Redis** během vytváření mezipaměti.
 

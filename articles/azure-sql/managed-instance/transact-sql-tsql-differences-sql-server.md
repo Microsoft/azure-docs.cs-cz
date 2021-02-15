@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 11/10/2020
+ms.date: 1/12/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: cc31ad851441c980365841b1131405339a1092fa
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: d43f794d6d73e26d791c5a11961470d2131b8951
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626270"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378617"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Rozdíly v jazyce T-SQL mezi SQL Server & spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -284,6 +284,7 @@ Další informace najdete v tématu [ALTER DATABASE](/sql/t-sql/statements/alter
 ### <a name="sql-server-agent"></a>Agent SQL Server
 
 - Povolení a zakázání agenta SQL Server v současnosti není ve spravované instanci SQL podporováno. Agent SQL je vždy spuštěný.
+- Aktivační událost plánovače úloh založená na nečinném procesoru není podporována.
 - Nastavení agenta SQL Server jsou jen pro čtení. Procedura `sp_set_agent_properties` není podporována ve spravované instanci SQL. 
 - Úlohy
   - Kroky úlohy T-SQL jsou podporovány.
@@ -306,13 +307,7 @@ Další informace najdete v tématu [ALTER DATABASE](/sql/t-sql/statements/alter
   - Proxy servery nejsou podporovány.
 - Protokol událostí se nepodporuje.
 - Aby bylo možné vytvořit, upravit nebo spustit úlohy agenta SQL, musí být uživatel přímo namapován na objekt zabezpečení serveru Azure AD (přihlášení). Uživatelé, kteří nejsou přímo namapováni, například uživatelé patřící do skupiny Azure AD s právy k vytváření, úpravám nebo provádění úloh agenta SQL, nebudou moci tyto akce provádět efektivně. Důvodem je zosobnění spravované instance a [spuštění jako omezení](#logins-and-users).
-
-Následující funkce agenta SQL momentálně nejsou podporované:
-
-- Proxy
-- Plánování úloh na nečinném procesoru
-- Povolení nebo zakázání agenta
-- Výstrahy
+- Funkce pro správu více serverů pro úlohy Master/Target (hlavní/TSX) se nepodporuje.
 
 Informace o agentovi SQL Server najdete v tématu [agent SQL Server](/sql/ssms/agent/sql-server-agent).
 

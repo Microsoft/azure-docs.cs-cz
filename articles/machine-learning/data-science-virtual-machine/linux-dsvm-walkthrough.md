@@ -3,18 +3,17 @@ title: Prozkoumat Linux
 titleSuffix: Azure Data Science Virtual Machine
 description: Naučte se, jak dokončit několik běžných úloh pro datové vědy pomocí Data Science Virtual Machine pro Linux.
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 09/17/2020
-ms.openlocfilehash: b0ee83cdf3ea710974ce6985db3fc8ce8782351c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 42136d0d58dbc318aab0e111fcef46f80751ca88
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315804"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517667"
 ---
 # <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Datové vědy s Ubuntu Data Science Virtual Machine v Azure
 
@@ -22,7 +21,7 @@ V tomto návodu se dozvíte, jak dokončit několik běžných úloh pro datové
 
 V tomto návodu analyzujeme datovou sadu [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) . Spambase je sada e-mailů, které jsou označené buď spam, nebo HAM (nikoli spam). Spambase také obsahuje statistiku o obsahu e-mailů. V tomto návodu budeme mluvit o statistice později.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct použít DSVM pro Linux, musíte mít následující požadavky:
 
@@ -62,8 +61,8 @@ mv headers spambaseHeaders.data
 
 Datová sada obsahuje několik typů statistik pro každý e-mail:
 
-* Sloupce jako **wordové \_ frekvence \_ _WORD_** označují procento slov v e-mailu, které odpovídají *Wordu*. Pokud je například **slovo \_ frekvence \_** nastavené na **1** , pak se v e-mailu *provedlo* 1% všech slov.
-* Sloupce jako **char \_ frekvence \_ _CHAR_** znaků označují procento všech znaků v e-mailu, které jsou typu *char*.
+* Sloupce jako **wordové \_ frekvence \_** označují procento slov v e-mailu, které odpovídají *Wordu*. Pokud je například **slovo \_ frekvence \_** nastavené na **1**, pak se v e-mailu *provedlo* 1% všech slov.
+* Sloupce jako **char \_ frekvence \_** znaků označují procento všech znaků v e-mailu, které jsou typu *char*.
 * **\_ \_ \_ nejdelší délka běhu** v rámci kapitálu je nejdelší délka posloupnosti velkých písmen.
 * **\_ \_ \_ Průměrná délka běhu pro velká** písmena je průměrná délka všech velkých písmen.
 * **hodnota \_ \_ délka běhu \_** na základě velkých písmen je celková délka všech sekvencí velkých písmen.
@@ -315,7 +314,7 @@ V DSVM je již nainstalováno několik ukázkových poznámkových bloků:
 
 ### <a name="rattle"></a>Rattle
 
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) ( *R* *A* nalytická *T* OOL *t* o *L* získat *E* asily) je grafický nástroj R pro dolování dat. Rattle má intuitivní rozhraní, které usnadňuje načítání, prozkoumávání a transformaci dat a vytváření a vyhodnocování modelů. [Rattle: grafické rozhraní dolování dat pro R](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) poskytuje návod, který ukazuje funkce Rattle.
+[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (*R* *A* nalytická *T* OOL *t* o *L* získat *E* asily) je grafický nástroj R pro dolování dat. Rattle má intuitivní rozhraní, které usnadňuje načítání, prozkoumávání a transformaci dat a vytváření a vyhodnocování modelů. [Rattle: grafické rozhraní dolování dat pro R](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) poskytuje návod, který ukazuje funkce Rattle.
 
 Nainstalujte a spusťte Rattle spuštěním těchto příkazů:
 
@@ -355,7 +354,7 @@ Tato **korelace** je také zajímavá. Vytvoření grafu:
 1. Vyberte **Execute** (Provést).
 1. Rattle vás upozorní, že doporučuje maximálně 40 proměnných. Vyberte **Ano** pro zobrazení grafu.
 
-Existují některé zajímavé korelace, které se přidávají: _technologie_ se silně korelují se _HP_ a _Labs_ , například. Také se silně koreluje s _650_ , protože kód oblasti dárce datové sady je 650.
+Existují některé zajímavé korelace, které se přidávají: _technologie_ se silně korelují se _HP_ a _Labs_, například. Také se silně koreluje s _650_ , protože kód oblasti dárce datové sady je 650.
 
 Číselné hodnoty pro korelace mezi slovy jsou k dispozici v okně **prozkoumat** . Je zajímavá Poznámka, například tato _technologie_ se negativně koreluje s _vašimi_ _peníze_ a.
 
@@ -387,7 +386,7 @@ Užitečnou funkcí Rattle je schopnost spustit několik metod strojového učen
 
 1. Jako **typ** vyberte **vše**.
 1. Vyberte **Execute** (Provést).
-1. Po dokončení běhu Rattle můžete vybrat libovolnou hodnotu **typu** , jako je **SVM** , a zobrazit výsledky.
+1. Po dokončení běhu Rattle můžete vybrat libovolnou hodnotu **typu** , jako je **SVM**, a zobrazit výsledky.
 1. Můžete také porovnat výkon modelů v sadě ověřování pomocí karty **vyhodnocení** . Například výběr **matice chyb** ukazuje záměnu, celkovou chybu a průměrnou chybu třídy pro každý model v sadě ověřování. Můžete také kreslit křivky ROC, spustit analýzu citlivosti a provádět další typy vyhodnocení modelu.
 
 Po dokončení vytváření modelů vyberte kartu **protokol** . zobrazí se kód R, který byl spuštěn Rattle během vaší relace. Můžete vybrat tlačítko **exportovat** a uložit ho.
@@ -416,7 +415,7 @@ host    all             all             127.0.0.1/32            ident
 host    all             all             ::1/128                 ident
 ```
 
-Změňte řádek **místních připojení IPv4** tak, aby používal **MD5** místo **Ident** , abyste se mohli přihlásit pomocí uživatelského jména a hesla:
+Změňte řádek **místních připojení IPv4** tak, aby používal **MD5** místo **Ident**, abyste se mohli přihlásit pomocí uživatelského jména a hesla:
 
 ```
 # IPv4 local connections:
@@ -494,7 +493,7 @@ Existuje mnoho dalších dotazů, které můžete použít k prozkoumání těch
 SELECT avg(word_freq_make), spam from data group by spam;
 ```
 
-Nebo, jaké jsou charakteristiky e-mailu, které často obsahují *3D* ?
+Nebo, jaké jsou charakteristiky e-mailu, které často obsahují *3D*?
 
 ```SQL
 SELECT * from data order by word_freq_3d desc;

@@ -1,22 +1,18 @@
 ---
 title: Vytváření, plánování kanálů a řetězení aktivit v Data Factory
 description: Naučte se vytvářet datový kanál v Azure Data Factory pro přesun a transformaci dat. Vytvořte pracovní postup založený na datech, který vytvoří připravené k použití informací.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 83b4d14d46677c731b7fb9faae2217492368d4b2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9cc81a8e157c244828a15ac82913ce9a88c3d34f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496054"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376866"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -92,7 +88,7 @@ Teď se blíže podíváme na to, jak se kanál definuje ve formátu JSON. Obecn
 }
 ```
 
-| Značka | Popis | Povinné |
+| Značka | Popis | Vyžadováno |
 | --- | --- | --- |
 | name |Název kanálu. Určuje název, který představuje akci prováděnou kanálem. <br/><ul><li>Maximální počet znaků: 260.</li><li>Musí začínat číslem písmenem nebo podtržítkem ( \_ ).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", " \* ", "%", "&", ":", "" \\</li></ul> |Yes |
 | description | Určuje text popisující, k čemu se kanál používá. |Yes |
@@ -130,7 +126,7 @@ Teď se blíže podíváme na to, jak se kanál definuje ve formátu JSON. Obecn
 
 Následující tabulka obsahuje popis vlastností v definici aktivity ve formátu JSON:
 
-| Značka | Popis | Povinné |
+| Značka | Popis | Vyžadováno |
 | --- | --- | --- |
 | name | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou. <br/><ul><li>Maximální počet znaků: 260.</li><li>Musí začínat číslem písmenem nebo podtržítkem ( \_ ).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "*", "%", "&" \\ , ":", ""</li></ul> |Yes |
 | description | Text popisující, k čemu aktivita slouží. |Yes |
@@ -145,7 +141,7 @@ Následující tabulka obsahuje popis vlastností v definici aktivity ve formát
 ### <a name="policies"></a>Zásady
 Zásady ovlivňují chování aktivity za běhu, konkrétně při zpracování řezu tabulky. Podrobnosti jsou uvedeny v následující tabulce.
 
-| Vlastnost | Povolené hodnoty | Výchozí hodnota | Popis |
+| Vlastnost | Povolené hodnoty | Výchozí hodnota | Description |
 | --- | --- | --- | --- |
 | souběžnost |Integer <br/><br/>Maximální hodnota: 10 |1 |Počet souběžných spuštění aktivity.<br/><br/>Určuje počet paralelních spuštění aktivit, ke kterým může dojít v různých řezech. Například pokud aktivita potřebuje projít velkou sadou dostupných dat, větší hodnota souběžnosti zrychluje zpracování dat. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Určuje pořadí datových řezů, které jsou zpracovávány.<br/><br/>Například pokud máte 2 řezy (jedna se děje na 16:00 a druhý na 17:00), a obě jsou vyřízeny. Pokud nastavíte executionPriorityOrder na NewestFirst, řez se nejprve zpracuje v 5 odp. Podobně pokud nastavíte executionPriorityORder na OldestFIrst, bude zpracován řez ve 4 PM. |

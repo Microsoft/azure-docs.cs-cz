@@ -23,7 +23,7 @@
       href: storage-sync-files-extend-servers.md
 - name: Koncepty
   items:
-    - name: Soubory Azure
+    - name: Azure Files
       items:
         - name: Plánování nasazení služby Soubory Azure
           href: storage-files-planning.md
@@ -93,8 +93,6 @@
           href: storage-how-to-create-file-share.md
         - name: Nasazení Synchronizace souborů Azure
           href: storage-sync-files-deployment-guide.md
-        - name: Vytvoření sdílené složky úrovně Premium
-          href: storage-how-to-create-premium-fileshare.md
         - name: Vytvoření sdílené složky NFS
           href: storage-files-how-to-create-nfs-shares.md
         - name: FCI SQL Serveru se sdílenými složkami úrovně Premium

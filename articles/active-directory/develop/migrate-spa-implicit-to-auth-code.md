@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: fc5d9cbd02490748c17a9f40a1440c5ad0c46278
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 3c11334fe1b4d77be6e64febfc1d3de6efa302c3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104106"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365936"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>Migrace jednostránkové aplikace v JavaScriptu z implicitního udělení na tok kódu ověřování
 
@@ -95,5 +95,5 @@ Pokud se chcete dozvědět víc o toku autorizačního kódu, včetně rozdílů
 Pokud byste chtěli podrobně hlubší vývoj aplikací v JavaScriptu na platformě Microsoft Identity Platform, scénář s více částmi: řada článků s [jednou stránkou](scenario-spa-overview.md) vám může pomáhat začít.
 
 <!-- LINKS - external -->
-[msal-js-useragentapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/modules/_useragentapplication_.html
-[msal-js-publicclientapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-browser/classes/_src_app_publicclientapplication_.publicclientapplication.html
+[msal-js-useragentapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal.useragentapplication.html
+[msal-js-publicclientapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal_browser.publicclientapplication.html

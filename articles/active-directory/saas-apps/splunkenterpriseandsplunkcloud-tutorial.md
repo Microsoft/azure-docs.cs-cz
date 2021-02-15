@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/13/2021
+ms.date: 02/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 18d64e2b2ac359a9036ebd548ef886cb0efd3405
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 3d99ed71e284ae2e986a93591a61c3c9011857eb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622193"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371289"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>Kurz: Azure Active Directory integrací s cloudem pro Splunk Enterprise a Splunk
 
@@ -28,10 +28,10 @@ V tomto kurzu se dozvíte, jak integrovat Splunk Enterprise a Splunk Cloud s Azu
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s cloudem Splunk Enterprise a Splunk potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
-* Předplatné Splunk Enterprise a Splunk pro jednotné přihlašování s povoleným cloudem
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné Splunk Enterprise a Splunk Cloud s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -63,7 +63,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
     1. **[Vytvořte si uživatele cloudového testu Splunk Enterprise a Splunk](#create-splunk-enterprise-and-splunk-cloud-test-user)** , abyste měli protějšky B. Simon v Splunk Enterprise a Splunk cloudu, která je propojená s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -95,7 +95,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -111,16 +111,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="configure-splunk-enterprise-and-splunk-cloud-sso"></a>Konfigurace jednotného přihlašování Splunk Enterprise a Splunk pro Cloud
+## <a name="configure-splunk-enterprise-and-splunk-cloud-sso"></a>Konfigurace jednotného přihlašování Splunk Enterprise a Splunk pro Cloud
 
   Ke konfiguraci jednotného přihlašování na straně **cloudu Splunk Enterprise a Splunk** je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory Splunk Enterprise a Splunk](https://www.splunk.com/en_us/about-splunk/contact-us.html). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
-
 
 ### <a name="create-splunk-enterprise-and-splunk-cloud-test-user"></a>Vytvoření uživatele Cloud test Splunk Enterprise a Splunk
 
 V této části vytvoříte uživatele s názvem Britta Simon v cloudu Splunk Enterprise a Splunk. Pokud chcete přidat uživatele na cloudovou platformu Splunk Enterprise a Splunk, pracujte s [týmem Splunk Enterprise a Splunk Cloud Support](https://www.splunk.com/en_us/about-splunk/contact-us.html) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
-### <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>Test SSO
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 

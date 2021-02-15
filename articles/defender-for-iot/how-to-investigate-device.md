@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: a7b51138abe6d8e97f55ceae11d4cf13b9ebc136
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 096549c37c9f1feb04cd9214e1835956dae53735
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820598"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516834"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Prozkoumat podezřelé zařízení IoT
 
-Služba Defender pro výstrahy služby IoT poskytuje jasné údaje o tom, že zařízení IoT jsou podezřelá z účasti na podezřelých aktivitách nebo když existují náznaky ohrožení zařízení.
+Výstrahy služby Defender pro IoT poskytují jasné údaje o tom, že zařízení IoT jsou podezřelá z účasti na podezřelých aktivitách nebo když existují náznaky ohrožení zařízení.
 
 V tomto průvodci můžete použít návrhy šetření, které vám pomůžou určit potenciální rizika pro vaši organizaci, rozhodnout se, jak je opravit, a zjistit nejlepší způsoby, jak v budoucnu zabránit podobným útokům.
 
@@ -39,12 +39,12 @@ Vyhledání pracovního prostoru Log Analytics pro úložiště dat:
 1. Otevřete Centrum IoT,
 1. V části **zabezpečení** vyberte **Nastavení** a potom vyberte **shromažďování dat**.
 1. Změňte podrobnosti konfigurace Log Analytics pracovního prostoru.
-1. Klikněte na **Uložit**.
+1. Vyberte **Uložit**.
 
 Pro přístup k datům uloženým v pracovním prostoru Log Analytics proveďte následující konfiguraci:
 
-1. V IoT Hub vyberte a klikněte na výstrahu Defender pro IoT.
-1. Klikněte na **Další šetření**.
+1. Ve svém IoT Hub vyberte a vyberte v programu Defender pro upozornění IoT.
+1. Vyberte **Další šetření**.
 1. Vyberte **, pokud chcete zobrazit, která zařízení mají toto upozornění, klikněte sem a zobrazte sloupec DeviceID**.
 
 ## <a name="investigation-steps-for-suspicious-iot-devices"></a>Postup šetření pro podezřelá zařízení IoT
@@ -55,7 +55,7 @@ V ukázkových dotazech k KQL můžete začít s vyšetřováním výstrah a akt
 
 ### <a name="related-alerts"></a>Související výstrahy
 
-Pokud chcete zjistit, jestli se po stejnou dobu spouštěly další výstrahy, použijte následující dotaz KQL:
+Můžete zjistit, jestli se po stejnou dobu spouštěly další výstrahy prostřednictvím následujícího dotazu KQL:
 
   ```
   let device = "YOUR_DEVICE_ID";
@@ -144,7 +144,7 @@ Pokud chcete najít uživatele, kteří se k zařízení přihlásili, použijte
 Pomocí výsledků dotazu můžete zjistit:
 
 - Kteří uživatelé se k zařízení přihlásili?
-- Má uživatel přihlášený, měl by se přihlásit?
+- Mají se uživatelé přihlášeni, měli by se přihlásit?
 - Pracovali uživatelé, kteří se přihlásili z očekávaných nebo neočekávaných IP adres?
 
 ### <a name="process-list"></a>Seznam procesů

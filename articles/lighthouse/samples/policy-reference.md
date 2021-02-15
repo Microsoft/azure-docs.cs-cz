@@ -1,15 +1,15 @@
 ---
 title: Předdefinované definice zásad pro Azure Lighthouse
 description: Seznam Azure Policy integrovaných definic zásad pro Azure Lighthouse. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: a1f233f6f8baa5aa11224e38bb6710eebdd05981
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: d7f4fd18f572a69781a6e4e40320960195a646a5
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558040"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096718"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-lighthouse"></a>Azure Policy předdefinované definice pro Azure Lighthouse
 

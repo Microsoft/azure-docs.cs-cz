@@ -11,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: mbullwin
-ms.openlocfilehash: 0982f89d59f2ef9a282a46a93b98801b9df00a40
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: f42d294dec4dd2c92fe08498a7bce3c1eabae4b3
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368708"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519129"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Kurz: detekce anomálií pro streamovaná data pomocí Azure Databricks
 
@@ -61,7 +61,7 @@ Informace o vytvoření oboru názvů a centra událostí najdete v tématu [ryc
 
 V této části vytvoříte Azure Databricks pracovní prostor pomocí [Azure Portal](https://portal.azure.com/).
 
-1. V Azure Portal vyberte vytvořit Azure Databricks **prostředků**  >  **Analytics**  >  **Azure Databricks**.
+1. V Azure Portal vyberte vytvořit Azure Databricks **prostředků**  >  **Analytics**  >  .
 
     ![Azure Databricks na portálu](../media/tutorials/azure-databricks-on-portal.png "Datacihly na Azure Portal")
 
@@ -151,7 +151,7 @@ Na stránce Knihovna vyberte cluster, ve kterém chcete použít knihovnu, a pak
 
 V tomto kurzu použijete rozhraní API pro detekci [anomálií v Azure Cognitive Services](../overview.md) ke spouštění detekce anomálií na streamu tweety téměř v reálném čase. Než použijete rozhraní API, musíte v Azure vytvořit prostředek detektoru anomálií a načíst přístupový klíč pro použití rozhraní API detektoru anomálií.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte **+ Vytvořit prostředek**.
 
@@ -586,7 +586,7 @@ groupTime                       average
 
 Pak získá agregovaný výsledek výstupu do rozdílu. Vzhledem k tomu, že detekce anomálií vyžaduje okno s delší historií, používáme k uchování dat historie bodu, který chcete zjistit, rozdílová data.
 Nahraďte "[zástupný symbol: název tabulky]" kvalifikovaným názvem tabulky rozdílů, který má být vytvořen (například "tweety"). Nahraďte "[zástupný symbol: název složky pro kontrolní body]" hodnotou řetězce, která je jedinečná při každém spuštění tohoto kódu (například "ETL-from-eventhub-20190605").
-Další informace o rozdílových Lake na Azure Databricks najdete v tématu [Průvodce rozdílovým Lake Guide](https://docs.azuredatabricks.net/delta/index.html) .
+Další informace o rozdílových Lake na Azure Databricks najdete v tématu [Průvodce rozdílovým Lake Guide](/databricks/delta/) .
 
 
 ```scala

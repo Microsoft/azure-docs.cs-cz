@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3876b44bc6bb1ddbc5398126421fb9651003838f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 13ac18abd0a557d02435c3805e1ab86bcbf1ff84
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678819"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391979"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Ověření podřízeného zařízení pro Azure IoT Hub
 
@@ -68,6 +68,11 @@ Když vytváříte novou identitu zařízení, zadejte následující informace:
 * Vyberte **nastavit nadřazené zařízení** a vyberte zařízení IoT Edge brány, ke kterému se toto zařízení bude připojovat. Nadřazený prvek můžete kdykoli později změnit.
 
    ![Vytvoření ID zařízení s symetrickým ověřováním pomocí klíče na portálu](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
+
+   >[!NOTE]
+   >Nastavení nadřazeného zařízení, které se použije jako volitelný krok pro zařízení s ověřováním pomocí symetrického klíče. Počínaje verzí IoT Edge 1.1.0 ale musí být každé podřízené zařízení přiřazené k nadřazenému zařízení.
+   >
+   >Můžete nakonfigurovat centrum IoT Edge pro návrat k předchozímu chování nastavením proměnné prostředí **authenticationMode** na hodnotu **CloudAndScope**.
 
 K provedení stejné operace taky můžete použít [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) . V následujícím příkladu se pomocí příkazu [AZ IoT Hub Device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) vytvoří nové zařízení IoT s ověřováním pomocí symetrického klíče a přiřadí se nadřazené zařízení:
 
@@ -201,7 +206,7 @@ Ani
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
-Díky relaci nadřazený-podřízený můžete připojovací řetězec zjednodušit voláním brány přímo jako hostitele připojení. Například:
+Díky relaci nadřazený-podřízený můžete připojovací řetězec zjednodušit voláním brány přímo jako hostitele připojení. Příklad:
 
 ```console
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz

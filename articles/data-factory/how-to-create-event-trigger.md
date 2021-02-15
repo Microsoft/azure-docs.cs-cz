@@ -1,22 +1,18 @@
 ---
 title: Vytváření aktivačních událostí založených na událostech v Azure Data Factory
 description: Naučte se, jak vytvořit Trigger v Azure Data Factory, který v reakci na událost spouští kanál.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 author: chez-charlie
 ms.author: chez
-manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: 495dda603a8ab8ce2983e010ea23856df5a094ef
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 0364bc46059593a51c3e5cd756bd7be032e69028
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897118"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393730"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Vytvoření triggeru, který spustí kanál v reakci na událost
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -98,7 +94,7 @@ V této části najdete příklady nastavení triggeru založeného na událoste
 > [!IMPORTANT]
 > Je nutné zahrnout `/blobs/` segment cesty, jak je znázorněno v následujících příkladech, kdykoli zadáte kontejner a složku, kontejner a soubor, nebo kontejner, složku a soubor. V případě **blobPathBeginsWith** bude uživatelské rozhraní Data Factory automaticky přidávat `/blobs/` mezi složku a název kontejneru ve formátu JSON triggeru.
 
-| Vlastnost | Příklad | Popis |
+| Vlastnost | Příklad | Description |
 |---|---|---|
 | **Cesta objektu BLOB začíná na** | `/containername/` | Přijímá události pro libovolný objekt BLOB v kontejneru. |
 | **Cesta objektu BLOB začíná na** | `/containername/blobs/foldername/` | Přijímá události pro všechny objekty BLOB v `containername` kontejneru a `foldername` složce. |

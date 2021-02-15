@@ -1,22 +1,17 @@
 ---
 title: Mapování schématu a datového typu v aktivitě kopírování
 description: Přečtěte si, jak aktivita kopírování v Azure Data Factory mapuje schémata a datové typy ze zdrojových dat na data jímky.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: afcc7ad34807b74fa0b1ddaaa29223d8a6e25584
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0aee6030e5608b5413864d6a32dc8442dd346f42
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702215"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392778"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Mapování schématu a datového typu v aktivitě kopírování
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -49,7 +44,7 @@ Můžete nakonfigurovat mapování Data Factory vytváření uživatelského roz
 
 | Vlastnost | Popis                                                  | Vyžadováno |
 | -------- | ------------------------------------------------------------ | -------- |
-| name     | Název sloupce/pole zdroje nebo jímky. Platí pro tabelární zdroj a jímku. | Ano      |
+| name     | Název sloupce/pole zdroje nebo jímky. Platí pro tabelární zdroj a jímku. | Yes      |
 | řadový  | Index sloupce. Začněte od 1. <br>Použít a vyžádat při použití oddělovače textu bez řádku záhlaví. | No       |
 | program     | Výraz cesty JSON pro každé pole k extrakci nebo mapování Platí pro hierarchické zdroje a jímky, například Cosmos DB, MongoDB nebo konektory REST.<br>Pro pole v rámci kořenového objektu začíná cesta JSON kořenem `$` ; pro pole v poli, které je zvoleno `collectionReference` vlastností, cesta JSON začíná z prvku pole bez `$` . | No       |
 | typ     | Data Factory pomocný datový typ sloupce zdroj nebo jímka. Obecně platí, že tuto vlastnost nemusíte zadávat ani měnit. Přečtěte si další informace o [mapování datových typů](#data-type-mapping). | No       |
@@ -457,8 +452,8 @@ Můžete určit aktivitu kopírování – > `translator`  ->  `schemaMapping` k
 
 | Vlastnost            | Popis                                                  | Povinné |
 | :------------------ | :----------------------------------------------------------- | :------- |
-| typ                | Vlastnost Type pro překladatele aktivity kopírování musí být nastavená na: **TabularTranslator** . | Ano      |
-| schemaMapping       | Kolekce párů klíč-hodnota, která představuje vztah mapování **ze strany zdroje na stranu jímky**.<br/>- **Key:** představuje zdroj. V poli **tabelární zdroj** zadejte název sloupce definovaný ve struktuře datové sady. u **hierarchického zdroje** zadejte výraz cesty JSON pro každé pole, které se má extrahovat a mapovat.<br>- **Hodnota:** reprezentuje jímku. Pro **tabulkovou jímku** zadejte název sloupce definovaný ve struktuře datové sady. u **hierarchické jímky** zadejte výraz cesty JSON pro každé pole, které chcete extrahovat a mapovat. <br>V případě hierarchických dat pro pole v části kořenový objekt začíná cesta JSON kořenem $;. pro pole uvnitř pole, které je zvoleno `collectionReference` vlastností, začíná cesta JSON od elementu pole. | Ano      |
+| typ                | Vlastnost Type pro překladatele aktivity kopírování musí být nastavená na: **TabularTranslator** . | Yes      |
+| schemaMapping       | Kolekce párů klíč-hodnota, která představuje vztah mapování **ze strany zdroje na stranu jímky**.<br/>- **Key:** představuje zdroj. V poli **tabelární zdroj** zadejte název sloupce definovaný ve struktuře datové sady. u **hierarchického zdroje** zadejte výraz cesty JSON pro každé pole, které se má extrahovat a mapovat.<br>- **Hodnota:** reprezentuje jímku. Pro **tabulkovou jímku** zadejte název sloupce definovaný ve struktuře datové sady. u **hierarchické jímky** zadejte výraz cesty JSON pro každé pole, které chcete extrahovat a mapovat. <br>V případě hierarchických dat pro pole v části kořenový objekt začíná cesta JSON kořenem $;. pro pole uvnitř pole, které je zvoleno `collectionReference` vlastností, začíná cesta JSON od elementu pole. | Yes      |
 | collectionReference | Pokud chcete iterovat a extrahovat data z objektů **uvnitř pole** pole se stejným vzorem a převést je na každý řádek na objekt, zadejte cestu JSON tohoto pole, aby se provedlo křížové použití. Tato vlastnost je podporována pouze v případě, že jsou hierarchická data zdrojem. | No       |
 
 **Příklad: kopírování z MongoDB do Oracle:**

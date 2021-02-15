@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: reference
 ms.custom: ''
 ms.date: 01/14/2021
-ms.openlocfilehash: 32ec711309190d4bb7c6c98a05b6a75cf88a8f5c
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b5d53ec6c6a8002c72a53d6928d56e55d520ef38
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920501"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390823"
 ---
 # <a name="data-source-schema-reference"></a>Referenční dokumentace schématu zdroje dat
 
@@ -37,11 +37,14 @@ Tento článek obsahuje seznam podporovaných schémat zdrojů dat Azure a třet
 | **Síť**                          | Protokoly toku NSG          | AzureNetworkAnalytics  | [Agregace schématu a dat v Analýza provozu](/azure/network-watcher/traffic-analytics-schema) |
 | | | | |
 
+> [!NOTE]
+> Další informace najdete v tématu celý [Azure monitor odkaz na data](/azure/azure-monitor/reference/).
+>
 ## <a name="3rd-party-vendor-data-sources"></a>zdroje dat dodavatelů třetích stran
 
 Následující tabulka uvádí podporované dodavatele třetích stran a jejich protokol syslog nebo Common Event Format (CEF) – dokumentace k mapování pro různé podporované typy protokolů, které obsahují mapování polí CEF a ukázkové protokoly pro každý typ kategorie.
 
-| Typ |    Dodavatel |    Product | Log Analytics TableName | Odkaz na pole CEF – mapování  |
+| Typ |    Dodavatel |    Produkt | Log Analytics TableName | Odkaz na pole CEF – mapování  |
 | ----- | ----- | ----- | ----- |----- |
 | **Síť** | Palo Alto   | OPERAČNÍ SYSTÉM PAN    | CommonSecurityLog |   [Průvodce integrací běžné události s operačním systémem 9,0](https://docs.paloaltonetworks.com/content/dam/techdocs/en_US/pdf/cef/pan-os-90-cef-configuration-guide.pdf) (hledání *formátů protokolu ve stylu CEF*) |
 | **Síť** | Check Point  |ALL   | CommonSecurityLog | [Popis polí protokolu](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk109795)       |

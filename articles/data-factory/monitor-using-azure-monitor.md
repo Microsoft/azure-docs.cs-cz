@@ -1,22 +1,18 @@
 ---
 title: Monitorování datových továren pomocí Azure Monitor
 description: Naučte se používat Azure Monitor k monitorování kanálů Data Factory/Azure povolením diagnostických protokolů s informacemi z Data Factory.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: d1325ac1afbca8b30cc640f1f22cb598506a5c91
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 389c0b1fd5a2fde33c2bf19ac2807cca45691523
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555708"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373143"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Monitorování a Data Factory výstrah pomocí Azure Monitor
 
@@ -269,7 +265,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | --- | --- | --- |
 | **storageAccountId** |Řetězec | ID prostředku účtu úložiště, do kterého chcete odeslat diagnostické protokoly. |
 | **serviceBusRuleId** |Řetězec | ID pravidla sběrnice (Service-Bus) pro obor názvů sběrnice, ve kterém chcete mít Event Hubs vytvořené pro diagnostické protokoly pro streamování. ID pravidla má formát `{service bus resource ID}/authorizationrules/{key name}` .|

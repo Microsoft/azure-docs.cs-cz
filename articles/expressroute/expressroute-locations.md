@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 01/22/2021
+ms.date: 02/10/2021
 ms.author: duau
-ms.openlocfilehash: ea3a36fdc9ff9458677f43ef43bd7f45ea4652bd
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: c686902ed23e0f1a94bc9548d0a876ecbbce8f31
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576629"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377869"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>Partneři připojení ExpressRoute a umístění peeringu
 
@@ -122,13 +122,14 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Internet Solutions – Cloud Connect](https://www.is.co.za/solution/cloud-connect/)** |Podporováno |Podporováno |Kapské město, Johannesburg, Londýn |
 | **[Interxion](https://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |Podporováno |Podporováno |Amsterdam, Amsterdam2, Kodaň, Dublin, Frankfurt, Londýn, Marseille, Paříž, Curych |
 | **[IRIDEOS](https://irideos.it/)** |Podporováno |Podporováno |Milán |
+| **Horská oblast železa** | Podporováno |Podporováno |Washington DC |
 | **[IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)**|Podporováno |Podporováno | Amsterdam, London2, Silicon sedl, Toronto, Washington DC |
 | **Jaguar síť** |Podporováno |Podporováno |Marseille, Paříž |
 | **[JISC](https://www.jisc.ac.uk/microsoft-azure-expressroute)** |Podporováno |Podporováno |Londýn, Newport (Wales) |
 | **[KINX](https://www.kinx.net/service/network/cloudhub/ms-expressroute/?lang=en)** |Podporováno |Podporováno |Soul |
 | **[Kordia](https://www.kordia.co.nz/cloudconnect)** | Podporováno |Podporováno |Auckland, Sydney |
 | **[KPN](https://www.kpn.com/zakelijk/cloud/connect.htm)** | Podporováno | Podporováno | Amsterdam |
-| **[KT](https://cloud.kt.com/portal/ktcloudportal.epc.productintro.partnershipcloud_ConnectHub.html)** | Podporováno | Podporováno | Soul |
+| **[KT](https://cloud.kt.com/)** | Podporováno | Podporováno | Soul |
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Podporováno |Podporováno |Amsterdam, Chicago, Praha, Londýn, Newport (Wales), Svatý Paulo, Seattle, Silicon sedl, Singapur, Washington DC |
 | **LG CNS** |Podporováno |Podporováno |Busan, Soul |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |Podporováno |Podporováno |Kapské město, Johannesburg |
@@ -157,7 +158,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Sohonet](https://www.sohonet.com/fastlane/)** |Podporováno |Podporováno |London2 |
 | **[Spark NZ](https://www.sparkdigital.co.nz/solutions/connectivity/cloud-connect/)** |Podporováno |Podporováno |Auckland, Sydney |
 | **[Sprint](https://business.sprint.com/solutions/cloud-networking/)** |Podporováno |Podporováno |Chicago, Silicon Valley, Washington DC |
-| **[Swisscom](https://www.swisscom.ch/en/business/enterprise/offer/cloud-data-center/microsoft-cloud-services/microsoft-azure-von-swisscom.html)** | Podporováno | Podporováno | Curych |
+| **[Swisscom](https://www.swisscom.ch/en/business/enterprise/offer/cloud-data-center/microsoft-cloud-services/microsoft-azure-von-swisscom.html)** | Podporováno | Podporováno | Ženeva, Curych |
 | **[Tata Communications](https://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |Podporováno |Podporováno |Amsterdam, Čennaj, Hongkong – zvláštní správní oblast, Londýn, Bombaj, Svatý Paulo, Silicon sedl, Singapur, Washington DC |
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |Podporováno |Podporováno |Amsterdam, Sao Paulo |
 | **[Telehouse – KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |Podporováno |Podporováno |Londýn, London2, Singapur2 |
@@ -166,7 +167,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Telin](https://www.telin.net/)** | Podporováno | Podporováno |Jakarta |
 | **Telmex Uninet**| Podporováno | Podporováno | Dallas |
 | **[Telstra Corporation](https://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |Podporováno |Podporováno |Melbourne, Singapur, Sydney |
-| **[Telus](https://www.telus.com)** |Podporováno |Podporováno |Montreal, Seattle, Toronto, Vancouver |
+| **[Telus](https://www.telus.com)** |Podporováno |Podporováno |Montreal, Seattle, Quebec City, Toronto, Vancouver |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |Podporováno |Podporováno |Kapské město, Johannesburg |
 | **[ČASOVÉ dotCom](https://www.time.com.my/enterprise/connectivity/direct-cloud)** | Podporováno | Podporováno | Kuala Lumpur |
 | **[Komunikace Tokai](https://www.tokai-com.co.jp/en/)** | Podporováno | Podporováno | Ósaka, Tokyo2 |

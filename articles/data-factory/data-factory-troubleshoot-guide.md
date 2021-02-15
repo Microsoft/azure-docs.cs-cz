@@ -1,19 +1,17 @@
 ---
 title: Řešení potíží s Azure Data Factory | Microsoft Docs
 description: Přečtěte si, jak řešit potíže s externími ovládacími prvky v Azure Data Factory.
-services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 12/30/2020
 ms.author: abnarain
-ms.reviewer: craigg
-ms.openlocfilehash: 922ec6c4b579a657e7ee5e872148f8126ce175e2
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 101e55188b8021040e2fd6bd573c1c6330241e72
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822280"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382799"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Řešení potíží se službou Azure Data Factory
 
@@ -21,7 +19,7 @@ ms.locfileid: "97822280"
 
 Tento článek popisuje běžné metody řešení potíží pro aktivity externích řízení v Azure Data Factory.
 
-## <a name="connector-and-copy-activity"></a>Aktivita konektoru a kopírování
+## <a name="connector-and-copy-activity"></a>Konektor a aktivita kopírování
 
 Problémy s konektorem, jako je chyba při použití aktivity kopírování, najdete v tématu [řešení potíží s Azure Data Factory konektory](connector-troubleshoot-guide.md).
 
@@ -586,7 +584,7 @@ Následující tabulka se vztahuje na Azure Batch.
     1. Připojte se k aktivnímu hlavnímu uzlu jako server Ambari umístěný na aktivním hlavním uzlu pomocí SSH. 
     1. Restartujte aktivní hlavní uzel.
 
-       Další informace najdete v dokumentaci k řešení problémů Azure HDInsight. Například:
+       Další informace najdete v dokumentaci k řešení problémů Azure HDInsight. Příklad:
 
        * [Chyba 502 uživatelského rozhraní Ambari](https://hdinsight.github.io/ambari/ambari-ui-502-error.html)
        * [RpcTimeoutException pro server služby Apache Spark Thrift](../hdinsight/spark/apache-spark-troubleshoot-rpctimeoutexception.md)

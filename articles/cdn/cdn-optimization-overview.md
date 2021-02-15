@@ -4,22 +4,16 @@ description: Přečtěte si, jak může Azure Content Delivery Network optimaliz
 services: cdn
 documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: ''
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: 7c7e4ff05307452da67c37b23bf492db8855e2ef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3d207ee09a76509a65a2645515b182f8d92753b0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004496"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387916"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Optimalizuje Azure CDN pro typ doručování obsahu.
 
@@ -64,7 +58,11 @@ Microsoft doporučuje otestovat variace výkonu mezi různými poskytovateli a v
 
 ## <a name="select-and-configure-optimization-types"></a>Výběr a konfigurace typů optimalizace
 
-Při vytváření koncového bodu CDN vyberte typ optimalizace, který nejlépe odpovídá scénáři a typ obsahu, který má koncový bod doručovat. Výchozím výběrem je **Obecné poskytování webu** . U stávajících **Azure CDN Standard od** koncových bodů Akamai můžete možnost optimalizace kdykoli aktualizovat. Tato změna nepřerušila doručování z Azure CDN. 
+Při vytváření koncového bodu CDN vyberte typ optimalizace, který nejlépe odpovídá scénáři a typ obsahu, který má koncový bod doručovat. 
+
+Výchozím výběrem je **Obecné poskytování webu** . **Azure CDN Standard** můžete kdykoli aktualizovat jenom z optimalizace koncových bodů Akamai. 
+
+Pro **Azure CDN Standard od microsoftu** **Azure CDN Standard od Verizon** a **Azure CDN Premium od Verizon** to nemůžete.
 
 1. V **Azure CDNovém standardu z profilu Akamai** vyberte koncový bod.
 

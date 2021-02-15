@@ -42,6 +42,14 @@
     - name: Srovnávací test zabezpečení Azure
       displayName: 'standards, azure, benchmark'
       href: ./samples/azure-security-benchmark.md
+    - name: Azure Security benchmark Foundation
+      items:
+        - name: Přehled
+          displayName: 'standards, azure, benchmark, foundation'
+          href: ./samples/azure-security-benchmark-foundation/index.md
+        - name: Kroky pro nasazení
+          displayName: 'standards, azure, benchmark, foundation, deploy'
+          href: ./samples/azure-security-benchmark-foundation/deploy.md
     - name: Australian Government ISM PROTECTED
       items:
         - name: Přehled

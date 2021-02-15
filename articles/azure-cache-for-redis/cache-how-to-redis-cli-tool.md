@@ -1,19 +1,19 @@
 ---
-title: Jak používat Redis-CLI s Azure cache pro Redis
+title: Použití Redis-CLI s Azure cache pro Redis
 description: Naučte se používat *redis-cli.exe* jako nástroj příkazového řádku pro interakci s mezipamětí Azure pro Redis jako klient.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 03/22/2018
-ms.openlocfilehash: 4ca8980123240a90f73a4866c37a79800ce403d1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 02/08/2021
+ms.openlocfilehash: 3a1e1cdb7706cb284da57e10e35afe3420deaf75
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538013"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375302"
 ---
-# <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Jak používat nástroj příkazového řádku Redis s mezipamětí Azure pro Redis
+# <a name="use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Použití nástroje příkazového řádku Redis s mezipamětí Azure pro Redis
 
 *redis-cli.exe* je oblíbený nástroj příkazového řádku pro interakci s mezipamětí Azure pro Redis jako klient. Tento nástroj je také k dispozici pro použití s mezipamětí Azure pro Redis.
 
@@ -46,7 +46,7 @@ V případě služby Azure cache pro Redis je ve výchozím nastavení povolen p
 
     Spuštění serveru spustíte spuštěním **STUNNELU GUI** .
 
-    Klikněte pravým tlačítkem na ikonu hlavního panelu serveru stunnelu a pak klikněte na **Zobrazit okno protokolu** .
+    Klikněte pravým tlačítkem na ikonu hlavního panelu serveru stunnelu a pak klikněte na **Zobrazit okno protokolu**.
 
     V nabídce okna protokolu stunnelu klikněte na **Konfigurace**  >  **Upravit konfiguraci** a otevřete aktuální konfigurační soubor.
 
@@ -61,7 +61,7 @@ V případě služby Azure cache pro Redis je ve výchozím nastavení povolen p
 
     Uložte a zavřete konfigurační soubor. 
   
-    V nabídce okna protokolu stunnelu klikněte na **Konfigurace**  >  **znovu načíst konfiguraci** .
+    V nabídce okna protokolu stunnelu klikněte na **Konfigurace**  >  **znovu načíst konfiguraci**.
 
 
 ## <a name="connect-using-the-redis-command-line-tool"></a>Připojte se pomocí nástroje příkazového řádku Redis.
@@ -74,7 +74,7 @@ redis-cli.exe -p 6380 -a YourAccessKey
 
 ![Snímek obrazovky, který ukazuje, že připojení k mezipaměti je úspěšné.](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
 
-Pokud používáte testovací mezipaměť s **nezabezpečeným** portem bez TLS, spusťte `redis-cli.exe` a předejte vašemu *názvu hostitele* , *portu* a *přístupovému klíči* (primárnímu nebo sekundárnímu), aby se připojil k testovací mezipaměti.
+Pokud používáte testovací mezipaměť s **nezabezpečeným** portem bez TLS, spusťte `redis-cli.exe` a předejte vašemu *názvu hostitele*, *portu* a *přístupovému klíči* (primárnímu nebo sekundárnímu), aby se připojil k testovací mezipaměti.
 
 ```
 redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey

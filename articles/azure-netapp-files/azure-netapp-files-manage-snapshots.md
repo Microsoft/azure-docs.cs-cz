@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/18/2020
+ms.date: 02/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 35fce3723e92a3a7c68aaa62b28b756432182a8c
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 4d992bcc202dc8bdacdda6426371df1adb1ec3e6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629659"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379110"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Správa snímků s využitím služby Azure NetApp Files
 
@@ -187,13 +187,15 @@ Pokud nechcete [obnovit celý snímek na svazek](#restore-a-snapshot-to-a-new-vo
 
 Připojený svazek obsahuje adresář snímků s názvem  `.snapshot` (v klientech NFS) nebo `~snapshot` (v klientech SMB), který je pro klienta přístupný. Adresář snímků obsahuje podadresáře odpovídající snímkům svazku. Každý podadresář obsahuje soubory snímku. Pokud omylem odstraníte nebo přepíšete soubor, můžete ho obnovit do nadřazeného adresáře pro čtení i zápis zkopírováním souboru z podadresáře Snapshot do adresáře pro čtení i zápis. 
 
-Pokud se adresář snímků nezobrazuje, může být skrytý, protože je aktuálně povolená možnost skrýt cestu k snímku. Můžete [upravit možnost skrýt cestu snímku](#edit-the-hide-snapshot-path-option) a zakázat ji.  
+Přístup k adresářům snímků můžete řídit pomocí [Možnosti skrýt cestu snímku](#edit-the-hide-snapshot-path-option). Tato možnost určuje, zda má být adresář od klientů skrytý. Proto také řídí přístup k souborům a složkám ve snímcích.  
+
+NFSv 4.1 nezobrazuje `.snapshot` adresář ( `ls -la` ). Pokud se ale možnost skrýt cestu k snímku nenastaví, můžete k `.snapshot` adresáři přistupovat přes nfsv 4.1 pomocí `cd <snapshot-path>` příkazu z příkazového řádku klienta. 
 
 ### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>Obnovení souboru pomocí klienta systému Linux NFS 
 
 1. `ls`K vypsání souboru, který chcete obnovit z adresáře, použijte příkaz Linux `.snapshot` . 
 
-    Například:
+    Příklad:
 
     `$ ls my.txt`   
     `ls: my.txt: No such file or directory`   
@@ -208,7 +210,7 @@ Pokud se adresář snímků nezobrazuje, může být skrytý, protože je aktuá
 
 2. Pomocí `cp` příkazu zkopírujte soubor do nadřazeného adresáře.  
 
-    Například: 
+    Příklad: 
 
     `$ cp .snapshot/hourly.2020-05-15_1306/my.txt .`   
 
@@ -269,4 +271,4 @@ Snímky, které už nepotřebujete zachovat, můžete odstranit.
 * [Řešení potíží se zásadami snímků](troubleshoot-snapshot-policies.md)
 * [Omezení prostředků pro službu Azure NetApp Files](azure-netapp-files-resource-limits.md)
 * [Video o Azure NetApp Files snímků 101](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)
-* [Co je nástroj pro snímky konzistentní vzhledem k aplikacím Azure](azacsnap-introduction.md)
+* [Co je nástroj Azure Application Consistent Snapshot](azacsnap-introduction.md)

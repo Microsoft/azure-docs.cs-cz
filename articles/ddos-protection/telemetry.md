@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: a3f6c14b7ed2686a262f28510efb37068cfb9cb3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b34fcd66f0b64e2522da69bcfc7d119628b9d9d9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787294"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516698"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>Zobrazení a konfigurace telemetrie ochrany před útoky DDoS
 
@@ -37,9 +37,8 @@ V tomto kurzu se naučíte:
 Pro Azure DDoS Protection Standard jsou k dispozici následující [metriky](../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses) . Tyto metriky je také možné exportovat prostřednictvím nastavení diagnostiky (viz [zobrazení a konfigurace diagnostického protokolování DDoS](diagnostic-logging.md)).
 
 
-| Metric | Zobrazovaný název metriky | Jednotka | Typ agregace | Popis |
+| Metric | Zobrazovaný název metriky | Jednotka | Typ agregace | Description |
 | --- | --- | --- | --- | --- |
-| ByteCount | Počet bajtů | Počet | Celkem | Celkový počet odeslaných bajtů v časovém období |
 | BytesDroppedDDoS | Příchozí bajty vynechané DDoS | BytesPerSecond | Maximum | Příchozí bajty vynechané DDoS| 
 | BytesForwardedDDoS | Příchozí bajty předané DDoS | BytesPerSecond | Maximum | Příchozí bajty předané DDoS |
 | BytesInDDoS | Příchozí bajty DDoS | BytesPerSecond | Maximum | Příchozí bajty DDoS |
@@ -47,11 +46,9 @@ Pro Azure DDoS Protection Standard jsou k dispozici následující [metriky](../
 | DDoSTriggerTCPPackets | Příchozí pakety TCP pro aktivaci zmírnění DDoS | CountPerSecond | Maximum | Příchozí pakety TCP pro aktivaci zmírnění DDoS |
 | DDoSTriggerUDPPackets | Příchozí pakety UDP pro aktivaci zmírnění DDoS | CountPerSecond | Maximum | Příchozí pakety UDP pro aktivaci zmírnění DDoS |
 | IfUnderDDoSAttack | V části útok DDoS nebo ne | Počet | Maximum | V části útok DDoS nebo ne |
-| PacketCount | Počet paketů | Počet | Celkem | Celkový počet odeslaných paketů v časovém období |
 | PacketsDroppedDDoS | Vynechané příchozí pakety DDoS | CountPerSecond | Maximum | Vynechané příchozí pakety DDoS |
 | PacketsForwardedDDoS | DDoS předaných příchozích paketů | CountPerSecond | Maximum | DDoS předaných příchozích paketů |
 | PacketsInDDoS | DDoS příchozích paketů | CountPerSecond | Maximum | DDoS příchozích paketů |
-| SynCount | Počet SYN | Počet | Celkem | Celkový počet odeslaných paketů SYN v časovém období |
 | TCPBytesDroppedDDoS | Příchozí bajty protokolu TCP vyhozené DDoS | BytesPerSecond | Maximum | Příchozí bajty protokolu TCP vyhozené DDoS |
 | TCPBytesForwardedDDoS | Příchozí DDoS předaných bajtů protokolu TCP | BytesPerSecond | Maximum | Příchozí DDoS předaných bajtů protokolu TCP |
 | TCPBytesInDDoS | Příchozí bajty DDoS TCP | BytesPerSecond | Maximum | Příchozí bajty DDoS TCP |
@@ -64,7 +61,6 @@ Pro Azure DDoS Protection Standard jsou k dispozici následující [metriky](../
 | UDPPacketsDroppedDDoS | Zrušené příchozí pakety UDP DDoS | CountPerSecond | Maximum | Zrušené příchozí pakety UDP DDoS |
 | UDPPacketsForwardedDDoS | Příchozí pakety UDP předané DDoS | CountPerSecond | Maximum | Příchozí pakety UDP předané DDoS |
 | UDPPacketsInDDoS | Příchozí pakety UDP DDoS | CountPerSecond | Maximum | Příchozí pakety UDP DDoS |
-| VipAvailability | Dostupnost cesty k datům | Počet | Průměr | Průměrná dostupnost IP adresy za dobu trvání |
 
 ## <a name="prerequisites"></a>Požadavky
 

@@ -3,18 +3,18 @@ title: 'ML Studio (Classic): datové vědy pro začátečníky – Azure'
 description: Data vědy pro začátečníky nabízí základní koncepty v pěti krátkých videích, od 5 otázek pro datové vědy. Z Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: ae4eca82df498f1aa8f9ef84691cecdf719d0d76
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e9bbadc95be3479da82d91e9a4a4f712fbc32c57
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307486"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520387"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Vědecké zkoumání dat pro začátečníky – Video 1: 5 otázek, na které odpovídá vědecké zkoumání dat
 
@@ -45,7 +45,7 @@ V tomto prvním videu budeme mluvit o "5 otázek pro datové vědy".
 
 Pro účely předpovědi odpovědí na otázky používá datová věda čísla a názvy (označují se také jako kategorie nebo popisky).
 
-Může se stát, že vám to neklade, ale *jenom pět otázek, na které data vědy odpovídá* :
+Může se stát, že vám to neklade, ale *jenom pět otázek, na které data vědy odpovídá*:
 
 * Je to A nebo B?
 * Je tento divné?
@@ -66,7 +66,7 @@ Tato rodina algoritmů se nazývá klasifikace se dvěma třídami.
 
 Je vhodný pro všechny otázky, které mají jenom dvě možné odpovědi.
 
-Například:
+Příklad:
 
 * Netire se toto selhání za dalších 1 000 mil: Ano nebo ne?
 * Který přináší větší zákazníky: $5 kupón nebo 25% sleva?

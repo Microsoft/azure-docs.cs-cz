@@ -13,12 +13,12 @@ ms.date: 10/09/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: b82e300128a41f8315132e1ff93af33c853edb15
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8bc9773fa7e1b3db2e249e803f4d2a3cf39edb48
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173511"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102542"
 ---
 # <a name="microsoft-identity-web-authentication-library"></a>Microsoft Identity web Authentication Library
 
@@ -68,9 +68,9 @@ Tento ukázkový příkaz rozhraní .NET CLI, který je pořízený z našeho [k
 dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id "00000000-0000-0000-0000-000000000000" --tenant-id "11111111-1111-1111-1111-111111111111" --output my-blazor-app
 ```
 
-#### <a name="github"></a>GitHub
+#### <a name="github"></a>GitHubu
 
-Microsoft Identity web je open source projekt hostovaný na GitHubu: <a href="https://github.com/AzureAD/microsoft-identity-web" target="_blank">AzureAD/Microsoft-Identity-web <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
+Microsoft Identity web je open source projekt hostovaný na GitHubu: <a href="https://github.com/AzureAD/microsoft-identity-web" target="_blank">AzureAD/Microsoft-Identity-web</a>
 
 [Wikiweb úložiště](https://github.com/AzureAD/microsoft-identity-web/wiki) obsahuje další dokumentaci a pokud potřebujete pomáhat nebo objevovat chybu, můžete založit [problém](https://github.com/AzureAD/microsoft-identity-web/issues).
 
@@ -82,14 +82,14 @@ Microsoft Identity web obsahuje několik funkcí, které nejsou k dispozici, pok
 |------------------------------------------------------------------------------------------|----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | [Přihlášení uživatelů](scenario-web-app-sign-user-app-configuration.md) ve službě Web Apps             | <li>Pracovní nebo školní účty<li>Sociální identity (s Azure AD B2C) | <li>Pracovní nebo školní účty<li>Osobní účty Microsoft<li>Sociální identity (s Azure AD B2C)     |
 | [Ochrana webových rozhraní API](scenario-protected-web-api-app-configuration.md#microsoftidentityweb) | <li>Pracovní nebo školní účty<li>Sociální identity (s Azure AD B2C) | <li>Pracovní nebo školní účty<li>Osobní účty Microsoft<li>Sociální identity (s Azure AD B2C)     |
-| Ověření vystavitele ve více tenantů aplikacích                                                   | No                                                                   | Ano, pro [všechny cloudy](authentication-national-cloud.md) a [Azure AD B2C](../../active-directory-b2c/index.yml) |
-| Webová aplikace/rozhraní API [volání Microsoft Graph] [scénář-API-Call-Graph]                             | No                                                                   | Ano                                                                                                     |
-| Webová aplikace/rozhraní API [volání webového rozhraní API] [scénář-API-Call-API]                                       | No                                                                   | Ano                                                                                                     |
-| Podporuje přihlašovací údaje certifikátu                                                         | No                                                                   | Ano, včetně Azure Key Vault                                                                          |
-| Přírůstkové vyjádření souhlasu a podpora podmíněného přístupu ve webových aplikacích                           | No                                                                   | Ano, na stránkách MVC, Razor a Blazor                                                                    |
-| Certifikáty pro šifrování tokenů ve webových rozhraních API                                                | No                                                                   | Ano                                                                                                     |
-| [Obory/ověřování role aplikace] [scénář – ověřování rozhraní API] ve webových rozhraních API                        | No                                                                   | Ano                                                                                                     |
-| `WWW-Authenticate` generování hlaviček ve webových rozhraních API                                         | No                                                                   | Ano                                                                                                     |
+| Ověření vystavitele ve více tenantů aplikacích                                                   | Ne                                                                   | Ano, pro [všechny cloudy](authentication-national-cloud.md) a [Azure AD B2C](../../active-directory-b2c/index.yml) |
+| Webová aplikace/rozhraní API [volání Microsoft Graph] [scénář-API-Call-Graph]                             | Ne                                                                   | Ano                                                                                                     |
+| Webová aplikace/rozhraní API [volání webového rozhraní API] [scénář-API-Call-API]                                       | Ne                                                                   | Ano                                                                                                     |
+| Podporuje přihlašovací údaje certifikátu                                                         | Ne                                                                   | Ano, včetně Azure Key Vault                                                                          |
+| Přírůstkové vyjádření souhlasu a podpora podmíněného přístupu ve webových aplikacích                           | Ne                                                                   | Ano, na stránkách MVC, Razor a Blazor                                                                    |
+| Certifikáty pro šifrování tokenů ve webových rozhraních API                                                | Ne                                                                   | Ano                                                                                                     |
+| [Obory/ověřování role aplikace] [scénář – ověřování rozhraní API] ve webových rozhraních API                        | Ne                                                                   | Ano                                                                                                     |
+| `WWW-Authenticate` generování hlaviček ve webových rozhraních API                                         | Ne                                                                   | Ano                                                                                                     |
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -99,12 +99,14 @@ Pokud se chcete podívat na web Microsoft identity v akci, vyzkoušejte náš ku
 
 Web wiki webu Microsoft identity na GitHubu obsahuje rozsáhlou referenční dokumentaci pro různé aspekty knihovny. Například použití certifikátu, přírůstkový souhlas a odkaz na podmíněný přístup najdete tady:
 
-- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates" target="_blank">Používání certifikátů s Microsoft. identity. Web <span class="docon docon-navigate-external x-hidden-focus"></span> </a> GitHubu
-- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access" target="_blank">Přírůstkový souhlas a podmíněný <span class="docon docon-navigate-external x-hidden-focus"></span> přístup</a> GitHubu
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates" target="_blank">Používání certifikátů s Microsoft. identity. Web</a> (GitHub)
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access" target="_blank">Přírůstkový souhlas a podmíněný přístup</a> (GitHub)
 
 <!-- LINKS -->
 <!--  [miw-certs]: microsoft-identity-web-certificates.md  -->
 <!--  [miw-certs-decrypt]: microsoft-identity-web-certificates.md#decryption-certificates  -->
 <!--  [miw-inc-consent-ca-header]: microsoft-identity-web-consent-conditional-access.md#handling-incremental-consent-or-conditional-access-in-web-apis  -->
 <!--  [miw-inc-consent-ca]: microsoft-identity-web-consent-conditional-access.md  -->
-[scénář-API-Call-API]: scénář-Web-API-Call-API-Call-API. MD # možnost-1 – volání – Microsoft-Graph-with-the-SDK [scénář-API-Call-Graph]: scénář-Web-API-Call-API-Call-API. MD # Option-1-Call-Microsoft-Graph-with-the-SDK [scénář-API-Validation]: scenario-protected-web-api-verification-scope-app-roles.md
+[scénář-API-Call-API]: scénář-Web-API-Call-API-Call-API. MD # Option-1-Call-Microsoft-Graph-with-the-SDK  
+[scénář-API-Call-Graph]: scénář-Web-API-Call-API-Call-API. MD # Option-1-Call-Microsoft-Graph-with-the-SDK  
+[scénář – ověřování rozhraní API]: scenario-protected-web-api-verification-scope-app-roles.md  

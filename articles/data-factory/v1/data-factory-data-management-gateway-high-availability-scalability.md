@@ -1,23 +1,18 @@
 ---
 title: Vysoká dostupnost s bránou pro správu dat v Azure Data Factory
 description: V tomto článku se dozvíte, jak můžete škálovat bránu pro správu dat tak, že přidáte další uzly a narostete jejich kapacitu zvýšením počtu souběžných úloh, které se můžou spouštět na uzlu.
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b8d05293359cff16bb6d8c9a629a1fbf68104365
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ad34ed14682d729157f45e67eb3e0d3bb3eb39b7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003612"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391724"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Brána Správa dat – vysoká dostupnost a škálovatelnost (Preview)
 > [!NOTE]
@@ -98,7 +93,7 @@ V této části se předpokládá, že jste prošli následujícími dvěma čl�
         > Seznam požadavků na použití certifikátu TLS/SSL najdete v části [požadavky na certifikát TLS/SSL](#tlsssl-certificate-requirements) . 
     5. Po úspěšné instalaci brány klikněte na spustit Configuration Manager:
     
-        ![Ruční instalace – spuštění nástroje Configuration Manager](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)   
+        ![Ruční instalace – spuštění nástroje Configuration Manager](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)     
     6. na uzlu (místní počítač s Windows) se zobrazí Správa dat Configuration Manager brány, která zobrazuje stav připojení, **název brány** a **název uzlu**.  
 
         ![Brána Správa dat – instalace byla úspěšná.](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
@@ -200,11 +195,11 @@ Role | Existují dva typy rolí – dispečer a pracovní proces. Všechny uzly 
 
 Následující tabulka uvádí možné stavy **uzlu brány**: 
 
-Status  | Komentáře a scénáře
+Status    | Komentáře a scénáře
 :------- | :------------------
 Online | Uzel je připojený ke službě Data Factory.
 Offline | Uzel je offline.
-Inovován | Uzel se automaticky aktualizuje.
+Upgrade | Uzel se automaticky aktualizuje.
 Omezeně | Kvůli problému s připojením. Důvodem může být problém s portem HTTP 8050, potížím s připojením k Service Bus nebo problémy s synchronizací přihlašovacích údajů. 
 Inactive | Uzel je v konfiguraci odlišnou od konfigurace jiných majoritní uzlů.<br/><br/> Uzel může být neaktivní, pokud se nemůže připojit k jiným uzlům. 
 

@@ -2,13 +2,13 @@
 title: Azure Event Grid zabezpečení a ověřování
 description: Popisuje Azure Event Grid a jeho koncepty.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 24954ce0a0dc54a04720c0d0b495d14e950a2f71
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.date: 02/12/2021
+ms.openlocfilehash: 326fa00645302eb4b9c9bc59f17c1ca153bdb0b7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109585"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371716"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Autorizace přístupu k prostředkům Event Grid
 Azure Event Grid umožňuje řídit úroveň přístupu daným různým uživatelům a provádět různé **operace správy** , jako jsou odběry událostí seznamu, vytváření nových a generování klíčů. Event Grid používá řízení přístupu na základě role v Azure (Azure RBAC).
@@ -51,6 +51,8 @@ Event Grid poskytuje dvě předdefinované role pro správu odběrů událostí.
         "Actions": [
           "Microsoft.Authorization/*/read",
           "Microsoft.EventGrid/eventSubscriptions/*",
+          "Microsoft.EventGrid/systemtopics/eventsubscriptions/*",
+          "Microsoft.EventGrid/partnertopics/eventsubscriptions/*",
           "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
           "Microsoft.EventGrid/locations/eventSubscriptions/read",
           "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
@@ -188,7 +190,7 @@ Pokud používáte obslužnou rutinu události, která není webhookem (napřík
 Musíte mít oprávnění **Microsoft. EventGrid/EventSubscriptions/Write** pro prostředek, který je zdrojem událostí. Toto oprávnění budete potřebovat, protože píšete nové předplatné v oboru prostředku. Požadovaný prostředek se liší v závislosti na tom, jestli jste se přihlásili k odběru systémového tématu nebo vlastního tématu. Oba typy jsou popsány v této části.
 
 ### <a name="system-topics-azure-service-publishers"></a>Systémová témata (vydavatelé služeb Azure)
-Pro systémová témata potřebujete oprávnění k zápisu nového odběru události v oboru prostředku, který publikuje událost. Formát prostředku je: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
+Pro systémová témata, pokud nejste vlastníkem nebo přispěvatelem zdrojového prostředku, potřebujete oprávnění zapsat nové předplatné události v oboru prostředku, který publikuje událost. Formát prostředku je: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
 
 Například pro přihlášení k odběru události v účtu úložiště s názvem **ucet** budete potřebovat oprávnění Microsoft. EventGrid/EventSubscriptions/Write pro: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
 

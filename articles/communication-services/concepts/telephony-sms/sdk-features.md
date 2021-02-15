@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6f0b5325ff95d2c2f34572239967151986621bcb
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 2448840fcbbea686972f8f948d428bda7b3c2bf2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937181"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391741"
 ---
 # <a name="sms-client-library-overview"></a>Přehled klientských knihoven pro SMS
 
@@ -49,4 +49,4 @@ Následující dokumenty můžou být zajímavé:
 
 - Seznamte se s obecnými [Koncepty SMS](../telephony-sms/concepts.md)
 - Získání [telefonního čísla](../../quickstarts/telephony-sms/get-phone-number.md) s možností SMS
-- [Plánování řešení SMS](../telephony-sms/plan-solution.md)
+- [Typy telefonních čísel v komunikačních službách Azure](../telephony-sms/plan-solution.md)

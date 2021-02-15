@@ -1,23 +1,18 @@
 ---
 title: Kopírovat data z MongoDB
 description: Naučte se, jak kopírovat data z Mongo DB do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/08/2021
-ms.openlocfilehash: 71096334f46531bba26f0ead66169340107627cf
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: eae2d2adfe2cfdd7e47f2ace9ede9253003aa5bf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028688"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368774"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopírování dat z MongoDB pomocí Azure Data Factory
 
@@ -54,10 +49,10 @@ Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ |Vlastnost Type musí být nastavená na: **MongoDbV2** . |Ano |
-| připojovací řetězec |Zadejte připojovací řetězec MongoDB, např. `mongodb://[username:password@]host[:port][/[database][?options]]` . Další podrobnosti najdete [v MongoDB manuálně na připojovacím řetězci](https://docs.mongodb.com/manual/reference/connection-string/) . <br/><br /> Připojovací řetězec můžete také vložit do Azure Key Vault. Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) . |Ano |
-| database | Název databáze, ke které chcete získat přístup. | Ano |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
+| typ |Vlastnost Type musí být nastavená na: **MongoDbV2** . |Yes |
+| připojovací řetězec |Zadejte připojovací řetězec MongoDB, např. `mongodb://[username:password@]host[:port][/[database][?options]]` . Další podrobnosti najdete [v MongoDB manuálně na připojovacím řetězci](https://docs.mongodb.com/manual/reference/connection-string/) . <br/><br /> Připojovací řetězec můžete také vložit do Azure Key Vault. Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) . |Yes |
+| database | Název databáze, ke které chcete získat přístup. | Yes |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
 **Příklad:**
 
@@ -84,8 +79,8 @@ Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **MongoDbV2Collection** . | Ano |
-| collectionName |Název kolekce v databázi MongoDB |Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **MongoDbV2Collection** . | Yes |
+| collectionName |Název kolekce v databázi MongoDB |Yes |
 
 **Příklad:**
 
@@ -117,13 +112,13 @@ V části **zdroj** aktivity kopírování jsou podporovány následující vlas
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MongoDbV2Source** . | Ano |
-| filter | Určuje filtr výběru pomocí operátorů dotazu. Chcete-li vrátit všechny dokumenty v kolekci, vynechejte tento parametr nebo předejte prázdný dokument ( {} ). | Ne |
-| cursorMethods. Project | Určuje pole, která se mají vrátit v dokumentech pro projekci. Chcete-li vrátit všechna pole v porovnání dokumentů, vynechejte tento parametr. | Ne |
-| cursorMethods. Sort | Určuje pořadí, ve kterém dotaz vrátí vyhovující dokumenty. Podívejte se na [kurzor. Sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Ne |
-| cursorMethods. limit | Určuje maximální počet dokumentů vrácených serverem. Viz [Cursor. limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Ne |
-| cursorMethods. Skip | Určuje počet dokumentů, které se mají přeskočit a kde MongoDB začne vracet výsledky. Podívejte se na [kurzor. Skip ()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Ne |
-| batchSize | Určuje počet dokumentů, které se mají vrátit v každé dávce odpovědi z instance MongoDB. Ve většině případů Změna velikosti dávky nebude mít vliv na uživatele nebo aplikaci. Cosmos DB omezuje každou dávku velikost, která nesmí být větší než 40 MB, což je součet velikosti batchSize počtu dokumentů, takže tuto hodnotu sníží, pokud je velikost dokumentu velká. | Ne<br/>(výchozí hodnota je **100**) |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MongoDbV2Source** . | Yes |
+| filter | Určuje filtr výběru pomocí operátorů dotazu. Chcete-li vrátit všechny dokumenty v kolekci, vynechejte tento parametr nebo předejte prázdný dokument ( {} ). | No |
+| cursorMethods. Project | Určuje pole, která se mají vrátit v dokumentech pro projekci. Chcete-li vrátit všechna pole v porovnání dokumentů, vynechejte tento parametr. | No |
+| cursorMethods. Sort | Určuje pořadí, ve kterém dotaz vrátí vyhovující dokumenty. Podívejte se na [kurzor. Sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | No |
+| cursorMethods. limit | Určuje maximální počet dokumentů vrácených serverem. Viz [Cursor. limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | No |
+| cursorMethods. Skip | Určuje počet dokumentů, které se mají přeskočit a kde MongoDB začne vracet výsledky. Podívejte se na [kurzor. Skip ()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | No |
+| batchSize | Určuje počet dokumentů, které se mají vrátit v každé dávce odpovědi z instance MongoDB. Ve většině případů Změna velikosti dávky nebude mít vliv na uživatele nebo aplikaci. Cosmos DB omezuje každou dávku velikost, která nesmí být větší než 40 MB, což je součet velikosti batchSize počtu dokumentů, takže tuto hodnotu sníží, pokud je velikost dokumentu velká. | No<br/>(výchozí hodnota je **100**) |
 
 >[!TIP]
 >Podpora ADF spotřebovává BSON dokument ve **striktním režimu**. Zajistěte, aby byl dotaz filtru v režimu Strict, nikoli v režimu Shell. Další popis najdete na adrese [MongoDB ručně](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).

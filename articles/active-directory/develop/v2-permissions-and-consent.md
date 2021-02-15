@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 570314bcaedb86cc593846ffc1d6846d1d2fe335
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 2658c088304eba457b25bb3dc421b356ba70b57f
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090183"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102474"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Oprávnění a souhlas na platformě Microsoft identity
 
@@ -181,7 +181,7 @@ Obecně platí, že oprávnění by měla být staticky definována pro danou ap
 
 Konfigurace seznamu staticky vyžádaného oprávnění pro aplikaci:
 
-1. V prostředí rychlý Start pro <a href="https://go.microsoft.com/fwlink/?linkid=2083908" target="_blank">Azure Portal registrace aplikací <span class="docon docon-navigate-external x-hidden-focus"></span> </a> můžete přejít do své aplikace.
+1. V prostředí rychlý Start pro <a href="https://go.microsoft.com/fwlink/?linkid=2083908" target="_blank">Azure Portal registrace aplikací</a> můžete přejít do své aplikace.
 1. Vyberte aplikaci, nebo pokud jste to ještě neudělali, [vytvořte aplikaci](quickstart-register-app.md) .
 1. Na stránce **Přehled** aplikace v části **Spravovat** vyberte **oprávnění rozhraní API**  >  **Přidat oprávnění**.
 1. V seznamu dostupných rozhraní API vyberte **Microsoft Graph** . Pak přidejte oprávnění, která vaše aplikace vyžaduje.

@@ -105,6 +105,8 @@
       items:
         - name: Transformace dat s využitím toků dat mapování
           items:
+            - name: Transformace dat v Lake pomocí rozdílových Lake
+              href: tutorial-data-flow-delta-lake.md
             - name: Transformace dat s využitím toků dat mapování
               href: tutorial-data-flow.md
             - name: Videokurzy mapování toku dat
@@ -556,6 +558,8 @@
           href: data-flow-lookup.md
         - name: Nová větev
           href: data-flow-new-branch.md
+        - name: Analyzovat
+          href: data-flow-parse.md
         - name: Převést na sloupce
           href: data-flow-pivot.md
         - name: Rank
@@ -806,6 +810,8 @@
       href: /azure/templates/microsoft.datafactory/allversions
     - name: Python
       href: /python/api/overview/azure/datafactory
+    - name: Integrované služby Azure Policy
+      href: policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Dokumenty white paper

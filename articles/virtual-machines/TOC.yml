@@ -990,7 +990,7 @@
       href: ephemeral-os-disks.md
     - name: Migrace a převod
       items:
-        - name: Převod disku mezi úrovněmi Standard a Premium
+        - name: Převést disk na jiný typ disku
           items:
             - name: Rozhraní příkazového řádku
               href: ./linux/convert-disk-storage.md
