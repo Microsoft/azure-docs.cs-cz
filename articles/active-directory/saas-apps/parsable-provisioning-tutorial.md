@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
-ms.openlocfilehash: 902bd46fcf6efc20c81992e29fd463781fecc15e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 817b6b373f521543234cf02818cde8c4b4ba40c1
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731392"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526421"
 ---
 # <a name="tutorial-configure-parsable-for-automatic-user-provisioning"></a>Kurz: Konfigurace analyzovatelné pro Automatické zřizování uživatelů
 
@@ -32,6 +32,7 @@ Tento kurz popisuje kroky, které je třeba provést v analyzovatelné i Azure A
 > * Vytváření uživatelů v analyzovatelné
 > * Odebrat uživatele v analyzovatelné, pokud už nevyžadují přístup
 > * Udržování uživatelských atributů synchronizovaných mezi službou Azure AD a analyzovatelné
+> * Zřizování skupin a členství ve skupinách v analyzovatelné
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -107,17 +108,25 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
    |userName|Řetězec|&check;|
    |displayName|Řetězec|
 
-10. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny a analyzovatelné**.
 
-11. Pokud chcete povolit službu Azure AD Provisioning pro analyzovatelné, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+11. Zkontrolujte atributy skupiny synchronizované z Azure AD a analyzovatelné v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v analyzovatelné pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+
+      |Atribut|Typ|Podporováno pro filtrování|
+      |---|---|---|
+      |displayName|Řetězec|&check;|
+      |členy|Referenční informace|
+12. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+
+13. Pokud chcete povolit službu Azure AD Provisioning pro analyzovatelné, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
     ![Zapnutý přepínač Stav zřizování](common/provisioning-toggle-on.png)
 
-12. Definujte uživatele nebo skupiny, které chcete analyzovat, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
+14. Definujte uživatele nebo skupiny, které chcete analyzovat, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
 
     ![Rozsah zřizování](common/provisioning-scope.png)
 
-13. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
+15. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
 
     ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
@@ -129,6 +138,10 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 1. S využitím [protokolů zřizování](../reports-monitoring/concept-provisioning-logs.md) můžete zjistit, kteří uživatelé se zřídili úspěšně a kteří neúspěšně.
 2. Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md).
 3. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](../app-provisioning/application-provisioning-quarantine-status.md).  
+
+## <a name="change-log"></a>Protokol změn
+
+* 02/15/2021 – zřizování skupiny je povolené.
 
 ## <a name="additional-resources"></a>Další zdroje informací
 

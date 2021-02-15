@@ -96,10 +96,12 @@
               href: assign-access-policy-powershell.md
             - name: Portál
               href: assign-access-policy-portal.md
-        - name: 'Použití Azure RBAC pro správu přístupu ke klíčům, tajným kódům a certifikátům (Preview)'
-          href: rbac-guide.md
-        - name: Průvodce migrací zásad přístupu k trezoru na Azure RBAC
-          href: rbac-migration.md
+        - name: Model oprávnění Azure RBAC
+          items:
+            - name: 'Použití služby Azure RBAC ke správě přístupu ke klíčům, tajným klíčům a certifikátům'
+              href: rbac-guide.md
+            - name: Průvodce migrací zásad přístupu k trezoru na Azure RBAC
+              href: rbac-migration.md
         - name: Řešení potíží s přístupem
           href: troubleshooting-access-issues.md
     - name: Vývoj

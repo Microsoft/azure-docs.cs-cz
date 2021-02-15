@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bc548d4cc728611387b36451d563be6ca0e21530
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e5009e59477e6862c4441090a6480075c9e22385
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388188"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526779"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Správa grafu digitálních vláken pomocí vztahů
 
@@ -53,7 +53,7 @@ Následující ukázka kódu ukazuje, jak vytvořit relaci v instanci digitáln�
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="CreateRelationshipMethod":::
 
-V metodě Main teď můžete zavolat `CreateRelationship()` funkci a vytvořit tak relaci, jako je  tato: 
+V rámci vaší hlavní metody teď můžete zavolat vlastní funkci a _vytvořit relaci, jako je tato_ : 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseCreateRelationship":::
 
@@ -86,7 +86,7 @@ Tady je příklad, který načte seznam vztahů:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod":::
 
-Nyní můžete zavolat tuto metodu pro zobrazení odchozích vztahů vláken, jako jsou:
+Nyní můžete zavolat tuto vlastní metodu pro zobrazení odchozích vztahů vláken, jako jsou tyto:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFindOutgoingRelationships":::
 
@@ -102,17 +102,17 @@ Všimněte si, že `IncomingRelationship` volání nevrátí úplný text vztahu
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindIncomingRelationshipsMethod":::
 
-Nyní můžete zavolat tuto metodu, chcete-li zobrazit příchozí vztahy vláken, jako jsou tyto:
+Nyní můžete zavolat tuto vlastní metodu, abyste viděli příchozí vztahy vláken, jako jsou tyto:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFindIncomingRelationships":::
 
 ### <a name="list-all-twin-properties-and-relationships"></a>Vypsat všechny zdvojené vlastnosti a vztahy
 
-Pomocí výše uvedených metod můžete pro výpis odchozích a příchozích vztahů na vlákna vytvořit metodu, která vytiskne úplné informace, včetně vlastností vlákna a obou typů jejich vztahů. Tady je ukázková metoda, `FetchAndPrintTwinAsync()` která ukazuje, jak to udělat.
+Pomocí výše uvedených metod můžete pro výpis odchozích a příchozích vztahů na vlákna vytvořit metodu, která vytiskne úplné informace, včetně vlastností vlákna a obou typů jejich vztahů. Tady je příklad vlastní metody, která ukazuje, jak to provést.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FetchAndPrintMethod":::
 
-Tuto funkci teď můžete zavolat v metodě Main takto: 
+Tuto vlastní funkci teď můžete zavolat v metodě Main takto: 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFetchAndPrint":::
 
@@ -127,7 +127,7 @@ Požadované parametry pro klientské volání jsou ID vlákna zdroje (vlákna, 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UpdateRelationshipMethod":::
 
-Zde je příklad volání této metody, předání dokumentu opravy JSON s informacemi o aktualizaci vlastnosti.
+Tady je příklad volání této vlastní metody, předání dokumentu opravy JSON s informacemi o aktualizaci vlastnosti.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseUpdateRelationship":::
 
@@ -137,7 +137,7 @@ První parametr určuje zdrojovou nevlákennou (zdvojené místo, kde relace vzn
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="DeleteRelationshipMethod":::
 
-Nyní můžete zavolat tuto metodu a odstranit tak relaci, například:
+Nyní můžete zavolat tuto vlastní metodu a odstranit tak relaci, například:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseDeleteRelationship":::
 

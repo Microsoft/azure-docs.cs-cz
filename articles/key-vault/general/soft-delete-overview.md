@@ -7,17 +7,20 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 12/15/2020
-ms.openlocfilehash: 68c690b9cbd2028f73492550adbe86111f9ec3a7
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: e06a388f2391f4ed94370dd072a66a162ba5240f
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257942"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526659"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Přehled obnovitelného odstranění ve službě Azure Key Vault
 
 > [!IMPORTANT]
 > V trezorech klíčů musíte okamžitě povolit obnovitelné odstranění. Možnost Odhlásit se z slabého odstranění bude brzy zastaralá. Zobrazit [Úplné podrobnosti](soft-delete-change.md)
+
+> [!IMPORTANT]
+> Obnovitelné odstraněné úložiště aktivuje odstranění nastavení pro integraci s Key Vault službami, tj. přiřazení rolí Azure RBAC, Event Grid předplatných, Azure Monitor nastavení diagnostiky. Po obnovení odstraněných Key Vault nastavení pro integrované služby bude nutné ručně znovu vytvořit. 
 
 Funkce obnovitelného odstranění Key Vault umožňuje obnovení odstraněných trezorů a odstraněných objektů trezoru klíčů (například klíče, tajné klíče a certifikáty), označované jako obnovitelné odstranění. Konkrétně řešíme následující scénáře: Tato ochrana nabízí následující ochrany:
 
@@ -27,7 +30,7 @@ Funkce obnovitelného odstranění Key Vault umožňuje obnovení odstraněných
 
 ## <a name="supporting-interfaces"></a>Podpůrná rozhraní
 
-Funkce obnovitelného odstranění je k dispozici prostřednictvím [REST API](/rest/api/keyvault/), rozhraní [Azure CLI](./key-vault-recovery.md), [Azure PowerShell](./key-vault-recovery.md)a [.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) a také [šablony ARM](/azure/templates/microsoft.keyvault/2019-09-01/vaults).
+Funkce obnovitelného odstranění je k dispozici prostřednictvím [REST API](/rest/api/keyvault/), rozhraní [Azure CLI](./key-vault-recovery.md), [Azure PowerShell](./key-vault-recovery.md)a [.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet&preserve-view=true) a také [šablony ARM](/azure/templates/microsoft.keyvault/2019-09-01/vaults).
 
 ## <a name="scenarios"></a>Scénáře
 

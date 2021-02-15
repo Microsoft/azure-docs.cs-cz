@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2020
+ms.date: 02/15/2021
 ms.author: memildin
-ms.openlocfilehash: 519285f2bad352aa16bdc8d9a1db7a63c2eb04e5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5a0fefd91e0aa60f6a3813513aa82a75b3557c7c
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876389"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526965"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Ochrana koncových bodů pomocí integrovaného řešení EDR Security Center: Microsoft Defender pro koncové body
 
@@ -43,12 +43,11 @@ Microsoft Defender pro koncové body je holistický, cloudové řešení zabezpe
 | Stav vydaných verzí:                  | Všeobecně dostupná (GA)                                                                                                                                                                                                                                                                                      |
 | Stanov                        | Vyžaduje [Azure Defender pro servery](security-center-pricing.md) .                                                                                                                                                                                                                                             |
 | Podporované platformy:            | Počítače Azure s Windows<br>Počítače ARC Azure s Windows|
-| Podporované verze systému Windows:  |  • Security Center podporuje detekci v systému Windows Server 2016, 2012 R2 a 2008 R2 SP1<br> • Server pro zákazníky s Office 365 RSZ zakázal monitorování koncového bodu serveru pomocí této integrace.|
-| Nepodporované operační systémy:  |  • Windows Server 2019<br> • Windows 10<br> • Linux|
+| Podporované verze systému Windows:  |  • Security Center podporuje detekci na Windows serveru 2019, 2016, 2012 R2 a 2008 R2 SP1.<br> • Server pro zákazníky s Office 365 RSZ zakázal monitorování koncového bodu serveru pomocí této integrace.<br> • [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (dřív Enterprise pro virtuální plochy) (evd)<br> •  [Virtuální plocha Windows (WVD)](../virtual-desktop/overview.md)|
+| Nepodporované operační systémy:  |  • Windows 10 (jiné než EVD nebo WVD)<br> • Linux|
 | Požadované role a oprávnění: | Povolení nebo zakázání integrace: **Správce zabezpečení** nebo **vlastník**<br>Zobrazení upozornění MDATP v Security Center: **čtecí modul zabezpečení**, **Čtenář**, **Přispěvatel skupiny prostředků**, **vlastník skupiny prostředků**, **Správce zabezpečení**, **vlastník předplatného** nebo **přispěvatele předplatného**|
-| Cloud                         | ![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov<br>![No](./media/icons/no-icon.png) Zákazníci v RSZ, kteří spouštějí úlohy v globálním cloudech Azure                                                        |
+| Cloud                         | ![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov<br>![Ne](./media/icons/no-icon.png) Zákazníci v RSZ, kteří spouštějí úlohy v globálním cloudech Azure                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
-
 
 ## <a name="microsoft-defender-for-endpoint-features-in-security-center"></a>Microsoft Defender pro funkce koncového bodu v Security Center
 
@@ -62,7 +61,7 @@ Microsoft Defender pro koncové body poskytuje:
 
 Integrací programu Defender pro koncový bod s Security Center se vám bude vytěžit z následujících dalších možností:
 
-- **Automatizované připojování**. Security Center automaticky povolí Microsoft Defender pro koncové body pro všechny servery Windows monitorované pomocí Security Center. S výjimkou těch, na kterých je spuštěný systém Windows Server 2019, který musí být připojen prostřednictvím místního skriptu, Zásady skupiny objektů (GPO) nebo [Microsoft Endpoint Configuration Manager](/mem/configmgr/) (dříve SCCM).
+- **Automatizované připojování**. Security Center automaticky povolí Microsoft Defender pro koncové body pro všechny servery Windows monitorované pomocí Security Center.
 
 - **Jedno podokno skla** Konzola Security Center zobrazí výstrahu programu Microsoft Defender pro koncové body. Pro další zkoumání použijte Microsoft Defender pro vlastní stránky portálu, kde se zobrazí další informace, jako je strom procesu výstrahy a graf incidentu. Můžete se také podívat na podrobnou časovou osu počítače, která zobrazuje každé chování po dobu až šesti měsíců.
 

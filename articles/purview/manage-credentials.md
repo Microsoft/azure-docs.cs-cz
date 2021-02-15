@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 091f4d7a4acdcc5d1a2b89a5121ee0cff3ee1f55
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9ffc450294f186b77cc7a6c44c10eecf266161d3
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381184"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526683"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Přihlašovací údaje pro ověřování zdroje v Azure dosah
 
@@ -67,7 +67,7 @@ Než budete moct vytvořit přihlašovací údaje, nejdřív přidružte jednu n
 
 4. V rozevíracím seznamu **oprávnění tajných klíčů** vyberte **získat** a **vypsat** oprávnění.
 
-5. V části **Vybrat objekt zabezpečení** zvolte spravovanou identitu dosah.
+5. V části **Vybrat objekt zabezpečení** zvolte spravovanou identitu dosah. Dosah MSI můžete vyhledat buď pomocí názvu instance dosah, **nebo** pomocí ID aplikace spravované identity. V současné době nepodporujeme složené identity (název spravované identity + ID aplikace).
 
    :::image type="content" source="media/manage-credentials/add-access-policy.png" alt-text="Přidat zásady přístupu":::
 

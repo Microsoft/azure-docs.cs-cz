@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 6a1a4d13ee9f9032c739773b678600d52dec82b8
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 866ff4cad74b7092dda11a20f8f7bcadf91233ae
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523919"
+ms.locfileid: "100526897"
 ---
 # <a name="manage-alert-events"></a>Správa událostí výstrah
 
@@ -126,6 +126,6 @@ Export:
 1. Vyberte Exportovat.
 1. Vyberte Exportovat rozšířené výstrahy a exportujte informace o výstrahách v samostatných řádcích pro každou výstrahu, která pokrývá více zařízení. Když je vybraná možnost exportovat rozšířené výstrahy, vytvoří soubor. CSV v každém řádku duplicitní řádek události výstrahy s jedinečnými položkami. Použití této možnosti usnadňuje zkoumání exportovaných událostí výstrah.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="see-also"></a>Viz také
 
 [Určení, který provoz se monitoruje](how-to-control-what-traffic-is-monitored.md)

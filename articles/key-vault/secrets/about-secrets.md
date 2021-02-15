@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 78e9c50cb0601f6be69ae61f3a8e02621c7dd808
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 55814dff5cba572e2e22b5a0f9971bc920e32372
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786035"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526628"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Informace o Azure Key Vault tajných klíčích
 
@@ -74,7 +74,7 @@ Návody k řízení přístupu v Key Vault:
 - [Přiřazení zásad přístupu Key Vault pomocí rozhraní příkazového řádku](../general/assign-access-policy-cli.md)
 - [Přiřazení zásad přístupu Key Vault pomocí PowerShellu](../general/assign-access-policy-powershell.md)
 - [Přiřazení zásady přístupu Key Vault pomocí Azure Portal](../general/assign-access-policy-portal.md)
-- [Poskytnutí přístupu k klíčům Key Vault, certifikátům a tajným klíčům pomocí řízení přístupu na základě role Azure (Preview)](../general/rbac-guide.md)
+- [Poskytnutí přístupu k klíčům Key Vault, certifikátům a tajným klíčům pomocí řízení přístupu na základě role Azure](../general/rbac-guide.md)
 
 ## <a name="secret-tags"></a>Tajné značky  
 Můžete zadat další metadata specifická pro aplikaci ve formě značek. Key Vault podporuje až 15 značek, z nichž každá může mít 256 název znaku a 256 znaková hodnota.  
@@ -124,7 +124,7 @@ Návody k řízení přístupu v Key Vault:
 - [Přiřazení zásad přístupu Key Vault pomocí rozhraní příkazového řádku](../general/assign-access-policy-cli.md)
 - [Přiřazení zásad přístupu Key Vault pomocí PowerShellu](../general/assign-access-policy-powershell.md)
 - [Přiřazení zásady přístupu Key Vault pomocí Azure Portal](../general/assign-access-policy-portal.md)
-- [Poskytnutí přístupu k klíčům Key Vault, certifikátům a tajným klíčům pomocí řízení přístupu na základě role Azure (Preview)](../general/rbac-guide.md)
+- [Poskytnutí přístupu k klíčům Key Vault, certifikátům a tajným klíčům pomocí řízení přístupu na základě role Azure](../general/rbac-guide.md)
 
 
 ## <a name="next-steps"></a>Další kroky

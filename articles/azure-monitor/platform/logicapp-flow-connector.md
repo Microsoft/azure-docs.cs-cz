@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: d06501abe69ce9b06656cfa8949c42bb53a03983
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fdd3886dda794ff9a91e2c2be6a3d810086d0ed2
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019034"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526982"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Konektor protokolů Azure Monitor pro Logic Apps a automatizace
 [Azure Logic Apps](../../logic-apps/index.yml) a [Power](https://flow.microsoft.com) Automata umožňují vytvářet automatizované pracovní postupy s využitím stovek akcí pro nejrůznější služby. Konektor protokolů Azure Monitor umožňuje vytvářet pracovní postupy, které načítají data z pracovního prostoru Log Analytics nebo Application Insights aplikace v Azure Monitor. Tento článek popisuje akce, které konektor obsahuje, a poskytuje návod k sestavení pracovního postupu pomocí těchto dat.
@@ -25,6 +25,7 @@ Konektor Azure Monitorch protokolů má tato omezení:
 * Maximální velikost odpovědi na dotaz 100 MB
 * Maximální počet záznamů: 500 000
 * Maximální časový limit dotazu 110 sekunda.
+* Vizualizace grafů mohou být k dispozici na stránce protokoly a v konektoru chybí, protože konektor a stránka protokolů nepoužívají stejné knihovny grafů v současnosti.
 
 V závislosti na velikosti dat a použitém dotazu může konektor dosáhnout svého limitu a selhání. Tyto případy můžete obejít při úpravách opakování triggeru, aby se spouštěly častěji a aby se dotazoval méně dat. Dotazy, které agreguje vaše data, můžete použít k vrácení méně záznamů a sloupců.
 

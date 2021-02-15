@@ -4,12 +4,12 @@ description: Přečtěte si o šifrování v klidovém prostředí služby Azure
 ms.topic: article
 ms.date: 12/03/2020
 ms.custom: ''
-ms.openlocfilehash: fb30610457e539250c33d7d9726fe10f9c0f8c5a
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: bc692dc8df133aa5fae352a7667062f81ceed350
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062724"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526438"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Šifrování registru pomocí klíče spravovaného zákazníkem
 
@@ -127,11 +127,11 @@ az keyvault set-policy \
   --key-permissions get unwrapKey wrapKey
 ```
 
-Případně můžete použít [Azure RBAC pro Key Vault](../key-vault/general/rbac-guide.md) (Preview) k přiřazení oprávnění identitě pro přístup k trezoru klíčů. Například přiřazení role šifrování Key Vault šifrovací služby k identitě přiřaďte pomocí příkazu [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create) :
+Případně můžete použít [Azure RBAC pro Key Vault](../key-vault/general/rbac-guide.md) k přiřazení oprávnění identitě pro přístup k trezoru klíčů. Například přiřazení role šifrování Key Vault šifrovací služby k identitě přiřaďte pomocí příkazu [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create) :
 
 ```azurecli 
 az role assignment create --assignee $identityPrincipalID \
-  --role "Key Vault Crypto Service Encryption (preview)" \
+  --role "Key Vault Crypto Service Encryption User" \
   --scope $keyvaultID
 ```
 
@@ -267,12 +267,12 @@ Nakonfigurujte zásady pro Trezor klíčů, aby k němu měl přístup identita.
 
 :::image type="content" source="media/container-registry-customer-managed-keys/add-key-vault-access-policy.png" alt-text="Vytvoření zásad přístupu trezoru klíčů":::
 
-Případně můžete použít [Azure RBAC pro Key Vault](../key-vault/general/rbac-guide.md) (Preview) k přiřazení oprávnění identitě pro přístup k trezoru klíčů. Přiřaďte k identitě například roli šifrování šifrovací služby Key Vault.
+Případně můžete použít [Azure RBAC pro Key Vault](../key-vault/general/rbac-guide.md) k přiřazení oprávnění identitě pro přístup k trezoru klíčů. Přiřaďte k identitě například roli šifrování šifrovací služby Key Vault.
 
 1. Přejděte do svého trezoru klíčů.
 1. Vyberte **řízení přístupu (IAM)**  >  **+ Přidat**  >  **přiřazení role přidat**.
 1. V okně **Přidat přiřazení role** :
-    1. Vyberte roli **Key Vault šifrování šifrovací služby (Preview)** . 
+    1. Vyberte **Key Vault role uživatele šifrování šifrovací služby** . 
     1. Přiřaďte přístup k **spravované identitě přiřazené uživateli**.
     1. Vyberte název prostředku vaší spravované identity přiřazené uživatelem a vyberte **Uložit**.
 

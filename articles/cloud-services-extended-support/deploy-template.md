@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: f86b2a50040704aac2827c463a362a04f78ba34f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5c7ecfeace88f613d6f15606382bdbb3117a0cce
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881818"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526629"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Nasazení cloudové služby (rozšířené podpory) pomocí šablon ARM
 
@@ -441,14 +441,15 @@ V tomto kurzu se dozvíte, jak vytvořit nasazení cloudové služby (rozšíře
             ]
           }
         }
-      }
+       }
+      ]
     }
     ```
  
-8. Nasaďte šablonu a vytvořte nasazení cloudové služby (rozšířené podpory). 
+8. Nasaďte šablonu a soubor parametrů (definováním parametrů v souboru šablony) a vytvořte tak nasazení cloudové služby (rozšířené podpory). Podle potřeby prosím použijte tyto [vzorové šablony](https://github.com/Azure-Samples/cloud-services-extended-support) .
 
     ```powershell
-    New-AzResourceGroupDeployment -ResourceGroupName “ContosOrg -TemplateFile "file path to your template file”  
+    New-AzResourceGroupDeployment -ResourceGroupName “ContosOrg"  -TemplateFile "file path to your template file” -TemplateParameterFile "file path to your parameter file"
     ```
  
 ## <a name="next-steps"></a>Další kroky 

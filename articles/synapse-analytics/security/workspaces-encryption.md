@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 11/19/2020
 ms.author: nanditav
 ms.reviewer: jrasnick
-ms.openlocfilehash: d9a9d3c303739e68b5b8ef28053d6cf0b071f955
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d4bc59a9bd5299698bff9949aaaa881fbdf385ee
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501052"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526268"
 ---
-# <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Šifrování pracovních prostorů služby Azure synapse Analytics
+# <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Šifrování pracovních prostorů Azure Synapse Analytics
 
 Tento článek popisuje:
 * Šifrování neaktivních dat v pracovních prostorech synapse Analytics.
@@ -39,7 +39,7 @@ Data v následujících součástech synapse se šifrují pomocí klíče spravo
 * Fondy SQL
  * Vyhrazené fondy SQL
  * Fondy SQL bez serveru
-* Fondy Apache Spark
+* Fondy Apache Sparku
 * Azure Data Factory modulu runtime integrace, kanálů, datových sad.
 
 ## <a name="workspace-encryption-configuration"></a>Konfigurace šifrování pracovního prostoru
@@ -53,7 +53,7 @@ Pracovní prostory je možné nakonfigurovat tak, aby v době vytváření praco
 
 ### <a name="key-access-and-workspace-activation"></a>Přístup k klíči a aktivace pracovního prostoru
 
-Model šifrování Azure synapse pomocí klíčů spravovaných zákazníkem vyžaduje, aby se v pracovním prostoru při přístupu k klíčům v Azure Key Vault zašifroval a dešifroval podle potřeby. Klíče jsou k pracovnímu prostoru přístupné buď prostřednictvím zásad přístupu, nebo Azure Key Vault přístupu RBAC ([Preview](../../key-vault/general/rbac-guide.md)). Při udělování oprávnění prostřednictvím zásad přístupu Azure Key Vault zvolte možnost [pouze aplikace](../../key-vault/general/secure-your-key-vault.md#key-vault-authentication-options) při vytváření zásad (vyberte spravovanou identitu pracovního prostoru a nepřidejte ji jako autorizovanou aplikaci).
+Model šifrování Azure synapse pomocí klíčů spravovaných zákazníkem vyžaduje, aby se v pracovním prostoru při přístupu k klíčům v Azure Key Vault zašifroval a dešifroval podle potřeby. Klíče jsou k dispozici v pracovním prostoru buď prostřednictvím zásad přístupu, nebo pomocí [přístupu Azure Key Vault RBAC](../../key-vault/general/rbac-guide.md). Při udělování oprávnění prostřednictvím zásad přístupu Azure Key Vault zvolte možnost [pouze aplikace](../../key-vault/general/secure-your-key-vault.md#key-vault-authentication-options) při vytváření zásad (vyberte spravovanou identitu pracovního prostoru a nepřidejte ji jako autorizovanou aplikaci).
 
  Aby bylo možné pracovní prostor aktivovat, musí být v trezoru klíčů udělena oprávnění, která potřebuje. Tato fáze přístupu k aktivaci pracovního prostoru zajišťuje, aby data v pracovním prostoru byla zašifrovaná pomocí klíče spravovaného zákazníkem. Upozorňujeme, že šifrování může být pro vyhrazené fondy SQL povolené nebo zakázané – ve výchozím nastavení není každý fond povolený šifrování.
 

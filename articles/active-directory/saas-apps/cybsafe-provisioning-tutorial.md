@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2020
 ms.author: Zhchia
-ms.openlocfilehash: 932a94c348c38902c68a6cf8108d8246cdc434ac
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: b79a63d16229c761b29776667c771e940d8f69d7
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673372"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100527118"
 ---
 # <a name="tutorial-configure-cybsafe-for-automatic-user-provisioning"></a>Kurz: Konfigurace CybSafe pro Automatické zřizování uživatelů
 
@@ -121,6 +121,10 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
    |locale|Řetězec|
    |timezone|Řetězec|
    |userType|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: divize|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Organization|Řetězec|
+   
 
 10. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do CybSafe**.
 
@@ -153,6 +157,10 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 1. S využitím [protokolů zřizování](../reports-monitoring/concept-provisioning-logs.md) můžete zjistit, kteří uživatelé se zřídili úspěšně a kteří neúspěšně.
 2. Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md).
 3. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](../app-provisioning/application-provisioning-quarantine-status.md).  
+
+## <a name="change-log"></a>Protokol změn
+
+* 02/15/2021 – přidalo se **oddělení** uživatelského rozšíření Enterprise, **divize** a **organizace** .
 
 ## <a name="additional-resources"></a>Další zdroje informací
 

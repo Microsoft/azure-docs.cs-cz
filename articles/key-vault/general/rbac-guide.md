@@ -9,14 +9,14 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f7a0190d664e3330d2a6205014c00c61c1183dd3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 886b87adeabdc0aadde04c189b78739435aabede
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936239"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100527017"
 ---
-# <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Poskytnutí přístupu k klíčům Key Vault, certifikátům a tajným klíčům pomocí řízení přístupu na základě role Azure (Preview)
+# <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control"></a>Poskytnutí přístupu k klíčům Key Vault, certifikátům a tajným klíčům pomocí řízení přístupu na základě role Azure
 
 > [!NOTE]
 > Poskytovatel prostředků Key Vault podporuje dva typy prostředků: **trezory** a **spravované HSM**. Řízení přístupu popsané v tomto článku platí jenom pro **trezory**. Další informace o řízení přístupu pro spravovaný modul HSM najdete v tématu [spravované řízení přístupu HSM](../managed-hsm/access-control.md).
@@ -44,20 +44,20 @@ Další informace o pokynech pro správu Azure Key Vault najdete v tématech:
 - [Přehled zabezpečení Azure Key Vault](security-overview.md)
 - [Omezení služby Azure Key Vault](service-limits.md)
 
-## <a name="azure-built-in-roles-for-key-vault-data-plane-operations-preview"></a>Předdefinované role Azure pro operace Key Vault roviny dat (Preview)
+## <a name="azure-built-in-roles-for-key-vault-data-plane-operations"></a>Předdefinované role Azure pro operace Key Vault roviny dat
 > [!NOTE]
 > `Key Vault Contributor` role je určena pro operace roviny správy ke správě trezorů klíčů. Neumožňuje přístup k klíčům, tajným klíčům a certifikátům.
 
 | Předdefinovaná role | Popis | ID |
 | --- | --- | --- |
-| Správce Key Vault (Preview) | Proveďte všechny operace roviny dat u trezoru klíčů a všech objektů, včetně certifikátů, klíčů a tajných klíčů. Nejde spravovat prostředky trezoru klíčů ani spravovat přiřazení rolí. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
-| Key Vault úřední certifikát (Preview) | S výjimkou oprávnění spravovat je možné provést jakoukoli akci s certifikáty trezoru klíčů. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | a4417e6f-fecd-4de8-b567-7b0420556985 |
-| Key Vault kryptografický pracovník (Preview)| Proveďte jakoukoli akci s klíči trezoru klíčů s výjimkou oprávnění ke správě. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
-| Key Vault šifrování šifrovací služby (Preview) | Čtení metadat klíčů a provádění operací zalamování nebo rozbalení. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
-| Key Vault kryptografický uživatel (Preview) | Provádějte kryptografické operace pomocí klíčů. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 12338af0-0e69-4776-bea7-57ae8d297424 |
-| Key Vault Reader (Preview)| Číst metadata trezorů klíčů a jeho certifikátů, klíčů a tajných klíčů. Nelze číst citlivé hodnoty, jako je například obsah tajného klíče nebo klíčové materiály. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 21090545-7ca7-4776-b22c-e363652d74d2 |
-| Úředník Key Vault tajných klíčů (Preview)| Vykoná jakoukoli akci s tajnými kódy trezoru klíčů s výjimkou oprávnění ke správě. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
-| Uživatel Key Vault tajných kódů (Preview)| Číst tajný obsah. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 4633458b-17de-408a-b874-0445c86b69e6 |
+| Správce Key Vault| Proveďte všechny operace roviny dat u trezoru klíčů a všech objektů, včetně certifikátů, klíčů a tajných klíčů. Nejde spravovat prostředky trezoru klíčů ani spravovat přiřazení rolí. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
+| Key Vault úřední certifikát | S výjimkou oprávnění spravovat je možné provést jakoukoli akci s certifikáty trezoru klíčů. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | a4417e6f-fecd-4de8-b567-7b0420556985 |
+| Key Vault kryptografický pracovník | Proveďte jakoukoli akci s klíči trezoru klíčů s výjimkou oprávnění ke správě. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
+| Uživatel šifrování Key Vault šifrovací služby | Čtení metadat klíčů a provádění operací zalamování nebo rozbalení. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
+| Key Vault kryptografický uživatel  | Provádějte kryptografické operace pomocí klíčů. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 12338af0-0e69-4776-bea7-57ae8d297424 |
+| Čtecí modul Key Vault | Číst metadata trezorů klíčů a jeho certifikátů, klíčů a tajných klíčů. Nelze číst citlivé hodnoty, jako je například obsah tajného klíče nebo klíčové materiály. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 21090545-7ca7-4776-b22c-e363652d74d2 |
+| Úředník Key Vault tajných klíčů| Vykoná jakoukoli akci s tajnými kódy trezoru klíčů s výjimkou oprávnění ke správě. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
+| Uživatel Key Vault tajných klíčů | Číst tajný obsah. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 4633458b-17de-408a-b874-0445c86b69e6 |
 
 Další informace o definicích integrovaných rolí Azure najdete v tématu [předdefinované role Azure](../../role-based-access-control/built-in-roles.md).
 
@@ -74,8 +74,8 @@ Chcete-li přidat přiřazení rolí, je nutné mít následující:
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Povolit oprávnění Azure RBAC na Key Vault
 
-> [!IMPORTANT]
-> Nastavení modelu oprávnění Azure RBAC neověřuje všechna oprávnění zásad přístupu. Může to způsobit výpadky, když nejsou přiřazené ekvivalentní role Azure.
+> [!NOTE]
+> Změna modelu oprávnění vyžaduje oprávnění "Microsoft. Authorization/roleAssignments/Write", která je součástí rolí [vlastník](../../role-based-access-control/built-in-roles.md#owner) a [Správce přístupu uživatele](../../role-based-access-control/built-in-roles.md#user-access-administrator) . Role správce pro klasický odběr, jako je správce služeb a spolusprávce, se nepodporují.
 
 1.  Povolit oprávnění Azure RBAC pro nový trezor klíčů:
 
@@ -85,10 +85,13 @@ Chcete-li přidat přiřazení rolí, je nutné mít následující:
 
     ![Povolit oprávnění Azure RBAC – existující trezor](../media/rbac/image-2.png)
 
+> [!IMPORTANT]
+> Nastavení modelu oprávnění Azure RBAC neověřuje všechna oprávnění zásad přístupu. Může to způsobit výpadky, když nejsou přiřazené ekvivalentní role Azure.
+
 ### <a name="assign-role"></a>Přiřazení role
 
 > [!Note]
-> Místo názvu role ve skriptech doporučujeme použít jedinečné ID role. Proto pokud je role přejmenována, budou vaše skripty nadále fungovat. Během období Preview má každá role příponu "(Preview)", která by se odebrala později. Tento název role dokumentu se používá jenom pro čitelnost.
+> Místo názvu role ve skriptech doporučujeme použít jedinečné ID role. Proto pokud je role přejmenována, budou vaše skripty nadále fungovat. Tento název role dokumentu se používá jenom pro čitelnost.
 
 Příkaz Azure CLI pro vytvoření přiřazení role:
 
@@ -107,13 +110,13 @@ V Azure Portal je obrazovka přiřazení rolí Azure dostupná pro všechny pros
 
 2.  Klikněte na řízení přístupu (IAM) přidat \> přiřazení role \> Přidat.
 
-3.  Vytvořit roli čtecího zařízení Key Vault "Key Vault Reader (Preview)" pro aktuálního uživatele
+3.  Vytvořit roli čtecího zařízení Key Vault "Key Vault Reader" pro aktuálního uživatele
 
     ![Přidat roli – skupina prostředků](../media/rbac/image-5.png)
 
 Rozhraní příkazového řádku Azure:
 ```azurecli
-az role assignment create --role "Key Vault Reader (preview)" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}
+az role assignment create --role "Key Vault Reader" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}
 ```
 
 Výše uvedené přiřazení role poskytuje možnost vypsat objekty trezoru klíčů v trezoru klíčů.
@@ -124,14 +127,14 @@ Výše uvedené přiřazení role poskytuje možnost vypsat objekty trezoru klí
 
 2. Klikněte na přidat přiřazení role \> Přidat.
 
-3. Vytvořit roli důstojníka klíče tajných klíčů "Key Vault tajných klíčů (Preview)" pro aktuálního uživatele.
+3. Vytvořit roli důstojníka klíčová tajná zpráva "Key Vault tajných klíčů" pro aktuálního uživatele.
 
     ![Přiřazení role – Trezor klíčů](../media/rbac/image-6.png)
 
  Rozhraní příkazového řádku Azure:
 
 ```azurecli
-az role assignment create --role "Key Vault Secrets Officer (preview)" --assignee {i.e jalichwa@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
+az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e jalichwa@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
 ```
 
 Po vytvoření výše uvedeného přiřazení role můžete vytvářet, aktualizovat a odstraňovat tajné klíče.
@@ -142,18 +145,18 @@ Po vytvoření výše uvedeného přiřazení role můžete vytvářet, aktualiz
 
 ### <a name="secret-scope-role-assignment"></a>Přiřazení role oboru tajného klíče
 
-1. Otevřete jedno z dříve vytvořených tajných klíčů, přehled upozornění a řízení přístupu (IAM) (Preview).
+1. Otevřete jedno z dříve vytvořených tajných klíčů, přehled a řízení přístupu (IAM). 
 
-2. Kliknout na kartu řízení přístupu (IAM) (Preview)
+2. Kliknout na kartu řízení přístupu (IAM)
 
     ![Přiřazení role – tajný kód](../media/rbac/image-8.png)
 
-3. Vytvořit roli důstojníka Key tajných klíčů "Key Vault tajných klíčů (Preview)" pro aktuálního uživatele, stejně jako u Key Vault.
+3. Vytvořit roli důstojníka klíče tajných klíčů "Key Vault tajných klíčů" pro aktuálního uživatele, stejně jako u Key Vault.
 
 Rozhraní příkazového řádku Azure:
 
 ```azurecli
-az role assignment create --role "Key Vault Secrets Officer (preview)" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}/secrets/RBACSecret
+az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}/secrets/RBACSecret
 ```
 
 ### <a name="test-and-verify"></a>Testování a ověření
@@ -164,7 +167,7 @@ az role assignment create --role "Key Vault Secrets Officer (preview)" --assigne
 
 1. Ověří přidání nového tajného klíče bez role Key Vault tajných klíčů na úrovni trezoru klíčů.
 
-Přejděte na kartu IAM (Správa přístupu k trezoru klíčů) a odeberte přiřazení role Key Vault tajných klíčů (Preview) pro tento prostředek.
+Přejděte na kartu IAM (Správa přístupu k trezoru klíčů) a odeberte přiřazení role Key Vault tajných klíčů důstojníka pro tento prostředek.
 
 ![Odebrat přiřazení – Trezor klíčů](../media/rbac/image-9.png)
 
@@ -178,7 +181,7 @@ Vytvořit nový tajný klíč (tajné klíče \> + Generovat/importovat) by se m
 
 2.  Ověří úpravy tajného klíče bez role "Key Vault tajná osoba" na úrovni tajného klíče.
 
--   Přejít na kartu dříve vytvořená tajná Access Control (IAM) (Preview) a odebrat přiřazení role Key Vault tajných klíčů (Preview) pro tento prostředek.
+-   Přejít na dříve vytvořenou kartu IAM (Secret Access Control) a odebrat přiřazení role "Key Vault tajného klíče" pro tento prostředek.
 
 -   Přejděte k dříve vytvořenému tajnému kódu. Můžete zobrazit vlastnosti tajného klíče.
 
@@ -186,7 +189,7 @@ Vytvořit nový tajný klíč (tajné klíče \> + Generovat/importovat) by se m
 
 3. Ověření tajných kódů bez role čtenář na úrovni trezoru klíčů
 
--   Přejděte na kartu IAM (Správa přístupu ke skupině prostředků trezoru klíčů) a odeberte přiřazení role Key Vault Reader (Preview).
+-   Přejděte na kartu IAM (Správa přístupu ke skupině prostředků trezoru klíčů) a odeberte přiřazení role Key Vault Reader.
 
 -   Navigace na kartě tajné klíče trezoru klíčů by se měla zobrazit pod chybou:
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 8be5def6d4780fd8b2ab65c5c9e1104a869f6d5a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: db3954b0368392d63680a8d92f13d6a0423e8ef5
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391588"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526855"
 ---
 # <a name="troubleshoot-your-connections-in-azure-purview"></a>Řešení potíží s připojením ve službě Azure dosah
 
@@ -53,7 +53,10 @@ Ověřte, jestli jsou nakonfigurovaná správná oprávnění pro spravovanou do
 Pokud to chcete ověřit, proveďte následující kroky:
 
 1. Přejděte do trezoru klíčů a do části **zásady přístupu** .
-1. Ověřte, že se v části *aktuální zásady přístupu* zobrazuje spravovaná identita dosah s oprávněními **získat** a **Zobrazit** v tajných klíčích aspoň
+
+1. Ověřte, že se vaše dosah spravovaná identita zobrazuje v části *aktuální zásady přístupu* s minimálními oprávněními **získat** a **Zobrazit** v tajných klíčích.
+
+   :::image type="content" source="./media/troubleshoot-connections/verify-minimum-permissions.png" alt-text="Obrázek znázorňující rozevírací výběr obou možností oprávnění Get a list":::
 
 Pokud se vaše dosah spravovaná identita nezobrazuje, postupujte podle kroků v tématu [Vytvoření a Správa přihlašovacích údajů pro kontroly](manage-credentials.md) a přidejte je. 
 

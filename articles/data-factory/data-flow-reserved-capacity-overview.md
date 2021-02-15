@@ -6,14 +6,16 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.date: 02/05/2021
-ms.openlocfilehash: 86ebbb46e8f3b5bb34dfe5789a17a2d63526f65c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d41646ef1ef964db38245009717554eaeb783824
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808198"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526302"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-data-factory-data-flows"></a>Úspora nákladů na prostředky s využitím rezervovaných Azure Data Factorych toků dat
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 V porovnání s cenami za průběžné platby můžete ušetřit peníze pomocí Azure Data Factory nákladů toku dat. Díky rezervované kapacitě provedete závazek za využití toku dat ADF po dobu jednoho nebo tří let, abyste získali značnou slevu za výpočetní náklady. Pokud si chcete koupit rezervovanou kapacitu, musíte zadat oblast Azure, typ výpočtu, počet jader a termín.
 
