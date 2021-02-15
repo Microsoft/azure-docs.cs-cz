@@ -1,7 +1,7 @@
 ---
-title: Plánování služby Azure Communication Services pro telefon a řešení SMS
+title: Typy telefonních čísel v komunikačních službách Azure
 titleSuffix: An Azure Communication Services concept document
-description: Zjistěte, jak efektivně naplánovat používání telefonních čísel a telefonního subsystému.
+description: Naučte se efektivně používat různé typy telefonních čísel pro SMS a telefonní číslo.
 author: prakulka
 manager: nmurav
 services: azure-communication-services
@@ -10,26 +10,21 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 271d7ce38d50fd21975327eb1f21528aeacc485e
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 97ac8a63740bb3a0df74a2a698cacecf842760e9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937232"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366462"
 ---
-# <a name="plan-your-telephony-and-sms-solution"></a>Plánování telefonie a řešení pro SMS
+# <a name="phone-number-types-in-azure-communication-services"></a>Typy telefonních čísel v komunikačních službách Azure
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Komunikační služby Azure umožňují používat telefonní čísla k provádění hlasových hovorů a posílání zpráv SMS pomocí veřejné telefonní sítě (PSTN). V tomto dokumentu si probereme typ telefonního čísla, možnosti konfigurace a dostupnost oblasti pro plánování telefonního subsystému a řešení SMS pomocí komunikačních služeb.
 
-
-
-
-
-## <a name="phone-number-types-in-azure-communication-services"></a>Typy telefonních čísel v komunikačních službách Azure
- 
+## <a name="number-types-and-features"></a>Typy a funkce čísel
 Komunikační služby nabízí dva typy telefonních čísel: **místní** a **bez poplatků**. 
 
 ### <a name="local-numbers"></a>Místní čísla
@@ -52,7 +47,7 @@ Následující tabulka shrnuje tyto typy telefonních čísel:
 | Toll-Free         | + 1 ( *kód* oblasti bez poplatků) XXX xx xx | USA                      | Volání (odchozí), SMS (příchozí/odchozí)| Přiřazení telefonních čísel k systémům IRV (Interactive Voice Response)/roboty, aplikacím SMS                                        |
 
 
-## <a name="phone-number-features-in-azure-communication-services"></a>Funkce telefonního čísla v komunikačních službách Azure 
+### <a name="phone-number-features-in-azure-communication-services"></a>Funkce telefonního čísla v komunikačních službách Azure 
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
@@ -92,5 +87,6 @@ V současné době je dostupnost telefonního čísla omezená na předplatná A
 ### <a name="conceptual-documentation"></a>Koncepční dokumentace
 
 - [Koncepce hlasových hovorů a videohovorů](../voice-video-calling/about-call-types.md)
+- [Koncepce telefonního subsystému](./telephony-concept.md)
 - [Toky volání](../call-flows.md)
 - [Ceny](../pricing.md)

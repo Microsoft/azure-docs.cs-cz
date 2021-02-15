@@ -1,14 +1,14 @@
 ---
 title: Index ukázek podrobných plánů
 description: Index ukázek dodržování předpisů a standardních ukázek pro nasazování prostředí, zásad a základů architektury přechodu na cloud s využitím Azure Blueprints
-ms.date: 02/01/2021
+ms.date: 02/08/2020
 ms.topic: sample
-ms.openlocfilehash: 17bacecf8fcf7c0f1969a489561a3a3ac976872e
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: c64bc02c1dea4e2c53d4ff195add2ac7fa57874f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225137"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370950"
 ---
 # <a name="azure-blueprints-samples"></a>Ukázky Azure Blueprints
 
@@ -18,9 +18,10 @@ Následující tabulka obsahuje odkazy na ukázky pro Azure Blueprints. Všechny
 
 | Ukázka | Popis |
 |---------|---------|
-| [Australian Government ISM PROTECTED](./ism-protected/index.md) | Poskytuje guardrails pro dodržování předpisů pro australský státní správu ISM. |
-| [Srovnávací test zabezpečení Azure v1](./azure-security-benchmark.md) | Poskytuje guardrails pro dodržování předpisů [Azure Security test benchmark v1](../../../security/benchmarks/overview.md). |
-| [Canada Federal PBMM](./canada-federal-pbmm/index.md) | Poskytuje guardrails pro dodržování předpisů pomocí nástroje Kanada Federal Protected B, střední integrity a střední dostupnosti (PBMM). |
+| [Australian Government ISM PROTECTED](./ism-protected/index.md) | Poskytuje ochranné mantinely pro dodržování předpisů Australian Government ISM PROTECTED. |
+| [Srovnávací test zabezpečení Azure](./azure-security-benchmark.md) | Poskytuje ochranné mantinely pro dodržování předpisů [Azure Security Benchmarku](../../../security/benchmarks/overview.md). |
+| [Azure Security benchmark Foundation](./azure-security-benchmark-foundation/index.md) | Nasadí a nakonfiguruje Azure Security benchmark Foundation. |
+| [Canada Federal PBMM](./canada-federal-pbmm/index.md) | Poskytuje ochranné mantinely pro dodržování předpisů Canada Federal Protected B, Medium Integrity, Medium Availability (PBMM). |
 | [Srovnávací test CIS Microsoft Azure Foundations](./cis-azure-1-1-0.md)| Poskytuje sadu zásad, které pomáhají dodržovat doporučení srovnávacího testu CIS Microsoft Azure Foundations. |
 | [DoD Impact Level 4](./dod-impact-level-4/index.md) | Poskytuje sadu zásad, které pomáhají dodržovat standard DoD Impact Level 4. |
 | [DoD Impact Level 5](./dod-impact-level-5/index.md) | Poskytuje sadu zásad, které pomáhají dodržovat standard DoD Impact Level 5. |

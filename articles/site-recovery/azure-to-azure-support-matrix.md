@@ -4,12 +4,12 @@ description: Shrnuje podporu zotavení po havárii virtuálních počítačů Az
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: 856d8961cbdf77fc848df41502678cb438773dbe
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 78c27292a92152946ba33258d27940e3c1aea47d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550113"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391571"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -35,6 +35,7 @@ Tento článek shrnuje podporu a předpoklady pro zotavení po havárii virtuál
 **Replikace virtuálních počítačů Azure z jednoho předplatného do jiného pro zotavení po havárii** | Podporováno v rámci stejného Azure Active Directory tenanta.
 **Migrace virtuálních počítačů napříč oblastmi v rámci podporovaných geografických clusterů (v rámci a napříč předplatnými)** | Podporováno v rámci stejného Azure Active Directory tenanta.
 **Migrace virtuálních počítačů v rámci stejné oblasti** | Nepodporováno
+**Vyhrazení hostitelé Azure** | Nepodporováno
 
 ## <a name="region-support"></a>Podpora oblastí
 
@@ -75,7 +76,7 @@ Azure Storage brány firewall pro virtuální sítě  | Podporováno | Pokud pou
 
 ## <a name="replicated-machine-operating-systems"></a>Operační systémy replikovaných počítačů
 
-Site Recovery podporuje replikaci virtuálních počítačů Azure s operačními systémy uvedenými v této části. Počítejte s tím, že pokud už je počítač, na který se replikuje, následně upgradován (nebo downgradně) na jiné hlavní jádro, budete muset po upgradu zakázat replikaci a znovu povolit replikaci.
+Site Recovery podporuje replikaci virtuálních počítačů Azure s operačními systémy uvedenými v této části. Všimněte si, že pokud už je počítač, který se replikuje, na jiný hlavní jádro upgradovaný (nebo se downgradem), musíte po upgradu zakázat replikaci a znovu povolit replikaci.
 
 ### <a name="windows"></a>Windows
 
@@ -205,7 +206,7 @@ Virtuální počítače migrované pomocí Site Recovery | Podporováno | Pokud 
 Zásady Azure RBAC | Nepodporováno | Zásady řízení přístupu na základě role Azure na virtuálních počítačích se nereplikují do virtuálního počítače s podporou převzetí služeb při selhání v cílové oblasti.
 Rozšíření | Nepodporováno | Rozšíření se nereplikují do virtuálního počítače s podporou převzetí služeb při selhání v cílové oblasti. Po převzetí služeb při selhání je potřeba ji nainstalovat ručně.
 Skupiny umístění blízkosti | Podporováno | Virtuální počítače umístěné ve skupině umístění blízkosti se dají chránit pomocí Site Recovery.
-Značky  | Podporováno | Uživatelem vygenerované značky použité na zdrojových virtuálních počítačích se přenesou do cílového virtuálního počítače po testovací převzetí služeb při selhání nebo převzetí služeb při selhání.
+Značky  | Podporováno | Uživatelem vygenerované značky použité na zdrojových virtuálních počítačích se přenesou do cílového virtuálního počítače po testovací převzetí služeb při selhání nebo převzetí služeb při selhání. Značky virtuálních počítačů se replikují jednou za 24 hodin, pokud jsou virtuální počítače v cílové oblasti přítomné.
 
 
 ## <a name="replicated-machines---disk-actions"></a>Replikované počítače – diskové akce
@@ -227,7 +228,7 @@ Tato tabulka shrnuje podporu pro disk s operačním systémem Azure VM, datový 
 **Komponenta** | **Podpora** | **Podrobnosti**
 --- | --- | ---
 Maximální velikost disku s operačním systémem | 2048 GB | [Přečtěte si další informace](../virtual-machines/managed-disks-overview.md) o discích virtuálních počítačů.
-Dočasný disk | Nepodporováno | Dočasný disk je vždy vyloučen z replikace.<br/><br/> Na dočasném disku neukládejte žádná trvalá data. [Další informace](../virtual-machines/managed-disks-overview.md).
+Dočasný disk | Nepodporováno | Dočasný disk je vždy vyloučen z replikace.<br/><br/> Na dočasném disku neukládejte žádná trvalá data. [Přečtěte si další informace](../virtual-machines/managed-disks-overview.md).
 Maximální velikost datového disku | 32 TB pro Managed disks<br></br>4 TB pro nespravované disky|
 Minimální velikost datového disku | Neexistují žádná omezení pro nespravované disky. 2 GB pro spravované disky |
 Maximální počet datových disků | Až 64, v souladu s podporou konkrétní velikosti virtuálního počítače Azure | [Přečtěte si další informace](../virtual-machines/sizes.md) o velikostech virtuálních počítačů.
@@ -265,7 +266,7 @@ NVMe disky | Nepodporováno
 Sdílené disky Azure | Nepodporováno
 Možnost zabezpečeného přenosu | Podporováno
 Disky s povoleným akcelerátorem zápisu | Nepodporováno
-Značky  | Uživatelem vygenerované značky se replikují každých 24 hodin.
+Značky  | Podporováno | Uživatelem vygenerované značky se replikují každých 24 hodin.
 
 >[!IMPORTANT]
 > Abyste se vyhnuli problémům s výkonem, ujistěte se, že je pro službu [Managed disks](../virtual-machines/disks-scalability-targets.md)vhodná škálovatelnost a cíle výkonu virtuálního počítače. Pokud použijete výchozí nastavení, Site Recovery v závislosti na konfiguraci zdroje vytvoří požadované disky a účty úložiště. Pokud přizpůsobíte a vyberete vlastní nastavení, postupujte podle škálovatelnosti disku a cílů výkonu pro vaše zdrojové virtuální počítače.
@@ -308,7 +309,7 @@ Ověřený proxy server | Nepodporováno | Pokud virtuální počítač použív
 Připojení VPN typu Site-to-site k místnímu prostředí<br/><br/>(s ExpressRoute nebo bez něj)| Podporováno | Ujistěte se, že jsou udr a skupin zabezpečení sítě nakonfigurované tak, aby se provoz Site Recovery nesměroval do místního prostředí. [Další informace](./azure-to-azure-about-networking.md)
 Připojení virtuální sítě k virtuální síti    | Podporováno | [Další informace](./azure-to-azure-about-networking.md)
 Koncové body služby pro virtuální síť | Podporováno | Pokud omezíte přístup k virtuální síti k účtům úložiště, ujistěte se, že důvěryhodné služby Microsoftu mají povolený přístup k účtu úložiště.
-Urychlení sítě | Podporováno | Na zdrojovém virtuálním počítači musí být povolené urychlené síťové služby. [Další informace](azure-vm-disaster-recovery-with-accelerated-networking.md).
+Urychlení sítě | Podporováno | Na zdrojovém virtuálním počítači musí být povolené urychlené síťové služby. [Přečtěte si další informace](azure-vm-disaster-recovery-with-accelerated-networking.md).
 Síťové zařízení Palo Alto | Nepodporováno | U zařízení třetích stran se v rámci virtuálního počítače často ukládají omezení poskytovatele. Azure Site Recovery potřebuje k dispozici agenta, rozšíření a odchozí připojení. Zařízení ale neumožňuje konfigurovat žádné odchozí aktivity uvnitř virtuálního počítače.
 IPv6  | Nepodporováno | Současně se nepodporují i smíšené konfigurace, které zahrnují IPv4 i IPv6. Před jakoukoli operací Site Recovery Prosím uvolněte podsíť rozsahu IPv6.
 Přístup k Site Recovery službě přes soukromé odkazy | Podporováno | [Další informace](azure-to-azure-how-to-enable-replication-private-endpoints.md)

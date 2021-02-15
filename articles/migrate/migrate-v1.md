@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 4fda6c51121838bfa1f3624759b1230d8554d573
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 719fcca74d2cd048bf170940eff7da6a25425469
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753939"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373279"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Práce s předchozí verzí Azure Migrate
 
@@ -22,7 +22,7 @@ Tento článek poskytuje informace o práci s předchozí verzí Azure Migrate.
 Existují dvě verze služby Azure Migrate:
 
 - **Aktuální verze**: Tato verze slouží k vytváření Azure Migrate projektů, zjišťování místních počítačů a orchestraci posouzení a migrace. [Přečtěte si další](whats-new.md) informace o novinkách v této verzi.
-- **Předchozí verze**: Pokud používáte předchozí verzi Azure Migrate (podporuje se jenom posouzení místních virtuálních počítačů VMware), měli byste teď použít aktuální verzi. V tomto článku se v projektech předchozí verze označují jako klasické projekty. Pokud stále potřebujete použít Azure Migrate projekty vytvořené v předchozí verzi, můžete to dělat a nemůžete udělat:
+- **Předchozí verze**: Pokud používáte předchozí verzi Azure Migrate (podporuje se jenom posouzení místních virtuálních počítačů VMware), měli byste teď použít aktuální verzi. V tomto článku se v projektech předchozí verze označují jako klasické projekty. Vyřazení z klasického Azure Migrate do února 2024. Po 2024. února již nebude klasická verze Azure Migrate podporována a metadata inventáře v klasických projektech budou odstraněna. Pokud stále potřebujete používat klasické Azure Migrate projekty, můžete to dělat a nemůžete udělat:
     - Už nemůžete vytvářet projekty migrace.
     - Doporučujeme, abyste neprováděli nové zjišťování.
     - Ke stávajícím projektům můžete pořád přistupovat.
@@ -85,7 +85,7 @@ Počítač se přesune pouze do pozdější fáze, pokud předá předchozí. Na
 
 Zobrazení Připravenost pro Azure v posouzení zobrazuje stav připravenosti jednotlivých virtuálních počítačů.
 
-**Připravenosti** | **Státech** | **Podrobnosti**
+**Připravenosti** | **State** | **Podrobnosti**
 --- | --- | ---
 Připraveno pro Azure | Žádné problémy s kompatibilitou Počítač se dá migrovat tak, jak je, do Azure, a spustí se v Azure s plnou podporou Azure. | U virtuálních počítačů, které jsou pro migraci vhodné, doporučí Azure Migrate velikost virtuálního počítače v Azure.
 Připraveno pro Azure s podmínkou | Počítač se může spustit v Azure, ale nemusí mít plnou podporu Azure. Například počítač se starší verzí Windows serveru, který se v Azure nepodporuje. | Azure Migrate vysvětluje problémy s připraveností a poskytuje kroky k nápravě.

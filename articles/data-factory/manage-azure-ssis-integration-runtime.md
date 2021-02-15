@@ -1,22 +1,17 @@
 ---
 title: Změna konfigurace modulu Azure-SSIS Integration Runtime
 description: Naučte se, jak znovu nakonfigurovat prostředí Azure-SSIS Integration runtime v Azure Data Factory poté, co jste ho již zřídili.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/03/2020
 author: swinarko
 ms.author: sawinark
-ms.reviewer: douglasl
-manager: anandsub
-ms.openlocfilehash: 7545f593aea2aca8c0aa240d44bcef3b7a1ca7c6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 724411dc12654aec1614230c943923062b334cd2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636268"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370678"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>Změna konfigurace modulu Azure-SSIS Integration Runtime
 
@@ -28,10 +23,10 @@ Tento článek popisuje, jak znovu nakonfigurovat existující prostředí Azure
 K zastavení, úpravám a překonfigurování nebo odstranění Azure-SSIS IR můžete použít Data Factory uživatelské rozhraní. 
 
 1. Otevřete Data Factory uživatelské rozhraní tak, že na domovské stránce objektu pro vytváření dat vyberete dlaždici pro **monitorování autora &** .
-2. Kliknutím na **Manage** centra pro správu **Domů** , **Upravit** a **monitorovat** zobrazíte podokno **připojení** .
+2. Kliknutím na  centra pro správu **Domů**, **Upravit** a **monitorovat** zobrazíte podokno **připojení** .
 
 ### <a name="to-reconfigure-an-azure-ssis-ir"></a>Postup překonfigurování Azure-SSIS IR
-V podokně **připojení** v části **Spravovat** centrum přepněte na stránku **prostředí Integration runtime** a vyberte **aktualizovat** . 
+V podokně **připojení** v části **Spravovat** centrum přepněte na stránku **prostředí Integration runtime** a vyberte **aktualizovat**. 
 
    ![Podokno připojení](./media/tutorial-create-azure-ssis-runtime-portal/connections-pane.png)
 

@@ -172,6 +172,11 @@
         - name: Vytvoření fondu bez veřejných IP adres
           displayName: private
           href: batch-pool-no-public-ip-address.md
+        - name: Použití rozšíření u fondů
+          href: create-pool-extensions.md
+        - name: Konfigurace spravovaných identit
+          displayName: user-assigned
+          href: managed-identity-pools.md
         - name: Připojení virtuálního systému souborů
           href: virtual-file-mount.md
         - name: Připojení sdílené složky Azure

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: f8ebbdf70836f3f2613183268f03dc43da1f0671
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 12d858488c4530e4b0d949cd36ed9ad2f7df4c59
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590556"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384482"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>Vytvoření pracovního prostoru s povolenou službou data exfiltrace Protection
 Tento článek popisuje, jak vytvořit pracovní prostor s povolenou službou data exfiltrace Protection a jak spravovat schválené klienty Azure AD pro tento pracovní prostor.
@@ -21,7 +21,7 @@ Tento článek popisuje, jak vytvořit pracovní prostor s povolenou službou da
 >[!Note]
 >Po vytvoření pracovního prostoru nemůžete změnit konfiguraci pracovního prostoru pro spravovanou virtuální síť a ochranu dat exfiltrace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - Oprávnění k vytvoření prostředku pracovního prostoru v Azure.
 - Synapse v pracovním prostoru oprávnění k vytváření spravovaných privátních koncových bodů.
 - Odběry jsou zaregistrované pro poskytovatele síťových prostředků. [Další informace](../../azure-resource-manager/management/resource-providers-and-types.md)
@@ -49,6 +49,9 @@ Můžete vytvořit spravované privátní koncové body pro připojení k prost�
 >[!IMPORTANT]
 >Prostředky v klientech jiných než tenant pracovního prostoru musí blokovat pravidla brány firewall, aby se k nim fondy SQL připojovaly. Prostředky v rámci spravované virtuální sítě pracovního prostoru, jako jsou například Clustery Spark, se mohou připojit prostřednictvím spravovaných privátních odkazů na prostředky chráněné bránou firewall.
 
+## <a name="known-limitations"></a>Známá omezení
+Uživatelé můžou poskytnout konfigurační soubor prostředí pro instalaci balíčků Pythonu z veřejných úložišť, jako je PyPI. V pracovních prostorech chráněných daty exfiltrace jsou připojení k odchozím úložištím blokovaná. V důsledku toho není podporována knihovna Pythonu, která je nainstalována z veřejných úložišť, jako je PyPI. 
+  
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o [ochraně dat exfiltrace v pracovních prostorech synapse](./workspace-data-exfiltration-protection.md)

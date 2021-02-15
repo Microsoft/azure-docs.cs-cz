@@ -3,18 +3,18 @@ title: Použití pod zásadami zabezpečení ve službě Azure Kubernetes Servic
 description: Naučte se řídit přístup pomocí PodSecurityPolicy ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 07/21/2020
-ms.openlocfilehash: 77c618429503caf9aa7bb6abda109504bbf68d71
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 02/12/2021
+ms.openlocfilehash: 23c436cb3ddf970939ab9d7b936a4e03e1fbb7ff
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695992"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371222"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Preview – Zabezpečte svůj cluster pomocí zásad zabezpečení v Azure Kubernetes Service (AKS).
 
 > [!WARNING]
-> **Funkce popsaná v tomto dokumentu, pod zásadou zabezpečení (Preview), je nastavena pro vyřazení a nebude již k dispozici po 31, 2021** ve prospěch [Azure Policy pro AKS](use-pod-security-on-azure-policy.md). Datum vyřazení bylo prodlouženo od předchozího dne 15. října 2020.
+> **Funkce popsaná v tomto dokumentu, pod zásadou zabezpečení (Preview), je nastavena pro vyřazení a nebude již k dispozici po 30. června, 2021** ve prospěch [Azure Policy pro AKS](use-pod-security-on-azure-policy.md). Datum vyřazení bylo prodlouženo od předchozího dne 15. října 2020.
 >
 > Po použití zásady zabezpečení (Preview) je zastaralá. tuto funkci je třeba zakázat na všech stávajících clusterech pomocí zastaralé funkce, aby se prováděly budoucí upgrady clusteru a zůstaly v rámci podpory Azure.
 >

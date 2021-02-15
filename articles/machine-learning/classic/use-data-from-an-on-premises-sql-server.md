@@ -3,22 +3,22 @@ title: 'ML Studio (Classic): místní SQL Server – Azure'
 description: Použijte data z databáze SQL Server k provádění pokročilých analýz s využitím Azure Machine Learning Studio (Classic).
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 279c07ff892cb261c8bda1937c6e9f8f1b6c6793
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8cdf1029371e0e11c38616e7800652ca9debbba7
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325705"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517395"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>Analýza pomocí SQL Server databáze pomocí Azure Machine Learning Studio (Classic)
 
-**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Často by podniky, které pracují s místními daty, mohly využít výhod škály a flexibility cloudu pro úlohy strojového učení. Ale nechtějí přerušit své současné obchodní procesy a pracovní postupy přesunutím místních dat do cloudu. Azure Machine Learning Studio (Classic) nyní podporuje čtení dat z databáze SQL Server a následné školení a vyhodnocování modelu s těmito daty. Už nemusíte ručně kopírovat a synchronizovat data mezi cloudem a místním serverem. Místo toho se teď může modul **importu dat** v Azure Machine Learning Studio (Classic) přečíst přímo z databáze SQL Server pro vaše školicí a vyhodnocovací úlohy.
@@ -91,7 +91,7 @@ Prvním krokem je vytvoření a nastavení brány pro přístup k databázi SQL.
     ![Stažení a registrace brány dat](./media/use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
 6. <span id="note-1" class="anchor"></span>Pokud jste ještě nestáhli a nainstalovali bránu Microsoft Správa dat Gateway, klikněte na **Stáhnout bránu pro správu dat**. Tím přejdete na Microsoft Download Center, kde můžete vybrat požadovanou verzi brány, stáhnout ji a nainstalovat ji. Podrobné informace o požadavcích na instalaci, krocích instalace a tipů pro řešení potíží najdete v části úvodní části článku [přesun dat mezi místními zdroji a cloudem pomocí služby Správa dat Gateway](../../data-factory/tutorial-hybrid-copy-portal.md).
 7. Po instalaci brány se otevře Configuration Manager brány Správa dat a zobrazí se dialogové okno **zaregistrovat bránu** . Vložte **registrační klíč brány** , který jste zkopírovali do schránky, a klikněte na **zaregistrovat**.
-8. Pokud už máte bránu nainstalovanou, spusťte Configuration Manager Správa dat brány. Klikněte na **změnit klíč** , vložte **registrační klíč brány** , který jste zkopírovali do schránky v předchozím kroku, a klikněte na **OK**.
+8. Pokud už máte bránu nainstalovanou, spusťte Configuration Manager Správa dat brány. Klikněte na **změnit klíč**, vložte **registrační klíč brány** , který jste zkopírovali do schránky v předchozím kroku, a klikněte na **OK**.
 9. Po dokončení instalace se zobrazí dialogové okno **zaregistrovat bránu** pro bránu Microsoft Správa dat gateway Configuration Manager. Vložte registrační klíč brány, který jste zkopírovali do schránky v předchozím kroku, a klikněte na **zaregistrovat**.
 
     ![Registrace brány](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-register-gateway.png)

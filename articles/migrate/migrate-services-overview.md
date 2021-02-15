@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: b42aa3bfaeaa454b5d870dbae3bce539b682028f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: a5fa6b1c75bee562394af42fcea9ebfabeb732f0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754075"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389531"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -83,7 +83,7 @@ Posouzení serveru používá odlehčené [Azure Migrate zařízení](migrate-ap
 
 Azure Migrate: Nástroj pro migraci serveru vám pomůže migrovat do Azure:
 
-**Migrace** | **Podrobnosti**
+**Migrate** | **Podrobnosti**
 --- | ---
 Místní virtuální počítače VMware | Migrujte virtuální počítače do Azure pomocí agenta bez agentů nebo migrace založené na agentech.<br/><br/> U migrace bez agentů používá migrace serveru stejné Azure Migrate zařízení, které je možné použít také při posuzování serveru pro zjišťování a hodnocení virtuálních počítačů VMware.<br/><br/> Pro migraci na základě agenta používá migrace serveru replikační zařízení.
 Místní virtuální počítače Hyper-V | Migrujte virtuální počítače do Azure.<br/><br/> Migrace serveru používá pro migraci agenty poskytovatele nainstalované na hostiteli Hyper-V.
@@ -121,7 +121,7 @@ Pokud hledáte odbornou pomoc, jak začít, společnost Microsoft má odborné [
 Existují dvě verze služby Azure Migrate.
 
 - **Aktuální verze**: Tato verze slouží k vytváření Azure Migrate projektů, zjišťování místních počítačů a orchestraci posouzení a migrace. [Přečtěte si další](whats-new.md) informace o novinkách v této verzi.
-- **Předchozí verze**: předchozí verze Azure Migrate podporuje jenom posouzení místních virtuálních počítačů VMware. Pokud jste použili předchozí verzi, měli byste teď použít aktuální verzi. Pomocí předchozí verze už nemůžete vytvářet Azure Migrate projekty. A doporučujeme, abyste s ním nepřišli o nové zjišťování.
+- **Předchozí verze**: předchozí verze Azure Migrate známá taky jako klasická Azure Migrate podporuje jenom posouzení místních virtuálních počítačů VMware. Vyřazení z klasického Azure Migrate do února 2024. Po 2024. února již nebude klasická verze Azure Migrate podporována a metadata inventáře v klasických projektech budou odstraněna. Nemůžete upgradovat projekty nebo součásti v předchozí verzi na novou verzi. Musíte [vytvořit nový Azure Migrate projekt](create-manage-projects.md)a přidat do něj [Nástroje pro posouzení a migraci](./create-manage-projects.md) . Pomocí kurzů můžete pochopit, jak jsou dostupné nástroje pro posouzení a migraci. Pokud byl pracovní prostor Log Analytics připojený k klasickému projektu, můžete ho po odstranění klasického projektu připojit k projektu aktuální verze.
 
     Chcete-li získat přístup k existujícím projektům v Azure Portal, vyhledejte a vyberte možnost **Azure Migrate**. Řídicí panel **Azure Migrate** obsahuje oznámení a odkaz pro přístup k původním Azure Migratem projektům.
 

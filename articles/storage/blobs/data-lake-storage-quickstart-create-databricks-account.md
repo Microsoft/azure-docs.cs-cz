@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.reviewer: jeking
-ms.openlocfilehash: e289bea6b1a23f1622ced62656164d9865303298
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0d712dc0ebe91ea8815adf235e02b8945e0dea84
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912820"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518857"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>Rychlý Start: Analýza dat pomocí datacihlů
 
@@ -34,7 +34,7 @@ V tomto rychlém startu spustíte úlohu Apache Spark pomocí Azure Databricks k
 
 V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azure Databricks.
 
-1. V Azure Portal vyberte vytvořit Azure Databricks **prostředků**  >  **Analytics**  >  **Azure Databricks**.
+1. V Azure Portal vyberte vytvořit Azure Databricks **prostředků**  >  **Analytics**  >  .
 
     ![Datacihly na Azure Portal](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Datacihly na Azure Portal")
 
@@ -76,7 +76,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 4. Vyberte **vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
 
-Další informace o vytváření clusterů najdete v tématu [Vytvoření clusteru Spark v Azure Databricks](https://docs.azuredatabricks.net/user-guide/clusters/create.html).
+Další informace o vytváření clusterů najdete v tématu [Vytvoření clusteru Spark v Azure Databricks](/azure/databricks/clusters/create).
 
 ## <a name="create-notebook"></a>Vytvořit Poznámkový blok
 
@@ -149,7 +149,7 @@ Ke spuštění úlohy Spark SQL na datech použijte následující postup.
 
     Po úspěšném dokončení příkazu získáte všechna data ze souboru JSON ve formátu tabulky v clusteru Databricks.
 
-    Magický příkaz jazyka `%sql` umožňuje spustit z poznámkového bloku kód SQL, i když je poznámkový blok jiného typu. Další informace najdete v článku [Kombinování jazyků v poznámkovém bloku](https://docs.azuredatabricks.net/user-guide/notebooks/index.html#mixing-languages-in-a-notebook).
+    Magický příkaz jazyka `%sql` umožňuje spustit z poznámkového bloku kód SQL, i když je poznámkový blok jiného typu. Další informace najdete v článku [Kombinování jazyků v poznámkovém bloku](/azure/databricks/notebooks/notebooks-use#mix-languages).
 
 2. Podívejme se na snímek ukázkových dat JSON, abyste lépe pochopili dotaz, který spouštíte. Vložte do buňky kódu následující fragment kódu a stiskněte klávesy **SHIFT + ENTER**.
 
@@ -200,6 +200,6 @@ V dalším článku se dozvíte, jak pomocí Azure Databricks provést operaci E
 > [!div class="nextstepaction"]
 >[Extrakce, transformace a načtení dat pomocí Azure Databricks](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse).
 
-- Informace o tom, jak importovat data z jiných zdrojů dat do Azure Databricks, najdete v tématu [zdroje dat Spark](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html).
+- Informace o tom, jak importovat data z jiných zdrojů dat do Azure Databricks, najdete v tématu [zdroje dat Spark](/azure/databricks/data/data-sources/).
 
-- Další informace o dalších způsobech přístupu k Azure Data Lake Storage Gen2 z pracovního prostoru Azure Databricks najdete v tématu [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html).
+- Další informace o dalších způsobech přístupu k Azure Data Lake Storage Gen2 z pracovního prostoru Azure Databricks najdete v tématu [Azure Data Lake Storage Gen2](/azure/databricks/data/data-sources/azure/azure-datalake-gen2).

@@ -12,12 +12,12 @@ ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 6855e8f550c14574795ec00f4fed36762944dca1
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 7c0394e765923c027cc15a6278ee451fb13ed1b2
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756034"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104276"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Postupy: poskytnutí volitelných deklarací identity vaší aplikaci
 
@@ -49,7 +49,7 @@ Sada volitelných deklarací, které jsou ve výchozím nastavení k dispozici p
 
 **Tabulka 2: volitelná sada deklarací identity v 1.0 a v 2.0**
 
-| Název                       |  Popis   | Typ tokenu | Typ uživatele | Poznámky  |
+| Název                       |  Description   | Typ tokenu | Typ uživatele | Poznámky  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Čas posledního ověření uživatele Viz specifikace OpenID Connect.| JWT        |           |  |
 | `tenant_region_scope`      | Oblast tenanta prostředků | JWT        |           | |
@@ -76,7 +76,7 @@ Tyto deklarace jsou vždycky zahrnuté v tokenech Azure AD v 1.0, ale nejsou zah
 
 **Tabulka 3: v 2.0 – jenom volitelné deklarace identity**
 
-| Deklarace JWT     | Název                            | Popis                                | Poznámky |
+| Deklarace JWT     | Název                            | Description                                | Poznámky |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP adresa                      | IP adresa, ze které se klient přihlásil.   |       |
 | `onprem_sid`  | Místní identifikátor zabezpečení |                                             |       |
@@ -94,7 +94,7 @@ Některá vylepšení formátu tokenu v2 jsou dostupná pro aplikace, které pou
 **Tabulka 4: v 1.0 – nepovinné deklarace identity**
 
 
-| Deklarace JWT     | Název                            | Popis | Poznámky |
+| Deklarace JWT     | Název                            | Description | Poznámky |
 |---------------|---------------------------------|-------------|-------|
 |`aud`          | Cílová skupina | Vždy přítomná v JWTs, ale v přístupových tokenech v1 je možné ji vysílat různými způsoby – libovolný identifikátor URI appID, s koncovým lomítkem nebo bez něj ID klienta. Tato Náhodnost může při ověřování tokenu těžko kódovat kód.  Použijte [Další vlastnosti této deklarace identity](#additional-properties-of-optional-claims) , abyste zajistili, že se vždycky nastaví na ID klienta prostředku v přístupových tokenech v1. | pouze přístupové tokeny v1 JWT|
 |`preferred_username` | Preferované uživatelské jméno        | Poskytuje upřednostňovanou deklaraci uživatelského jména v tokenech v1. To usnadňuje aplikacím zadání pomocných parametrů uživatelského jména a zobrazení zobrazovaných názvů pro lidské čtení bez ohledu na jejich typ tokenu.  Doporučuje se použít místo použití této volitelné deklarace identity, např. `upn` nebo `unique_name` . | tokeny v1 ID a přístupové tokeny |
@@ -105,7 +105,7 @@ Některé volitelné deklarace identity je možné nakonfigurovat tak, aby se zm
 
 **Tabulka 4: hodnoty pro konfiguraci volitelných deklarací identity**
 
-| Název vlastnosti  | Název další vlastnosti | Popis |
+| Název vlastnosti  | Název další vlastnosti | Description |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Lze použít pro odpovědi SAML i JWT i pro tokeny v 1.0 a v 2.0. |
 |                | `include_externally_authenticated_upn`  | Zahrnuje hlavní název uživatele (UPN), který je uložený v tenantovi prostředků. Například `foo_hometenant.com#EXT#@resourcetenant.com`. |
@@ -138,7 +138,7 @@ Tento objekt OptionalClaims způsobí, že token ID se vrátil klientovi, aby za
 
 Volitelné deklarace identity pro aplikaci můžete nakonfigurovat prostřednictvím uživatelského rozhraní nebo manifestu aplikace.
 
-1. Přejít na <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. 
+1. Přejděte na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>. 
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**.
 1. V seznamu vyberte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity.
@@ -201,7 +201,7 @@ Deklaruje volitelné deklarace požadované aplikací. Aplikace může nakonfigu
 
 **Tabulka 5: vlastnosti OptionalClaims typu**
 
-| Název          | Typ                       | Popis                                           |
+| Název          | Typ                       | Description                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Kolekce (OptionalClaim) | Volitelné deklarace identity vrácené v tokenu JWT ID.     |
 | `accessToken` | Kolekce (OptionalClaim) | Volitelné deklarace identity vrácené v přístupovém tokenu JWT. |
@@ -214,7 +214,7 @@ Pokud je tato možnost podporovaná konkrétní deklarací identity, můžete ta
 
 **Tabulka 6: vlastnosti OptionalClaim typu**
 
-| Název                   | Typ                    | Popis                                                                                                                                                                                                                                                                                                   |
+| Název                   | Typ                    | Description                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | Název volitelné deklarace identity.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | Zdroj (objekt adresáře) deklarace identity. Z vlastností rozšíření jsou předdefinované deklarace identity a uživatelsky definované deklarace identity. Pokud má zdrojová hodnota hodnotu null, deklarace identity je předdefinovaná volitelná deklarace identity. Pokud je zdrojovou hodnotou uživatel, hodnota ve vlastnosti název je vlastnost rozšíření z objektu User. |
@@ -246,7 +246,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
 
 **Konfigurace volitelných deklarací skupin prostřednictvím uživatelského rozhraní:**
 
-1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
+1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**.
@@ -259,7 +259,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
 
 **Konfigurace volitelných deklarací skupin pomocí manifestu aplikace:**
 
-1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
+1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V seznamu vyberte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity.
@@ -273,7 +273,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
    - "DirectoryRole"
    - "Skupina aplikací" (Tato možnost zahrnuje jenom skupiny, které jsou přiřazené aplikaci)
 
-   Například:
+   Příklad:
 
     ```json
     "groupMembershipClaims": "SecurityGroup"
@@ -388,7 +388,7 @@ V následujícím příkladu použijete uživatelské rozhraní **Konfigurace to
 
 **Konfigurace uživatelského rozhraní:**
 
-1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
+1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 
 1. Vyhledejte a vyberte **Azure Active Directory**.
@@ -411,7 +411,7 @@ V následujícím příkladu použijete uživatelské rozhraní **Konfigurace to
 
 **Konfigurace manifestu:**
 
-1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
+1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V seznamu Najděte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity, a vyberte ji.

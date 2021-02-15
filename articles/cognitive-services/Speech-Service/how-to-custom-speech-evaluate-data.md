@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 54a54dccd82e4f6cfd72a1cc8a71b51f9fd4ed95
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 078118ec793530720a49a19046854e5ea4b7f5c4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857354"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388936"
 ---
 # <a name="evaluate-and-improve-custom-speech-accuracy"></a>Vyhodnocení a vylepšení přesnosti služby Custom Speech
 
@@ -70,7 +70,7 @@ Po dokončení testu, který je označen změnou stavu na *úspěch*, najdete č
 
 Scénáře rozpoznávání řeči se liší podle kvality zvuku a jazyka (slovníku slovního a mluveného stylu). Následující tabulka prověřuje čtyři běžné scénáře:
 
-| Scénář | Kvalita zvuku | Slovník | Styl speaking |
+| Scenario | Kvalita zvuku | Slovník | Styl speaking |
 |----------|---------------|------------|----------------|
 | Call center | Nízká, 8 kHz, možná 2 lidi na 1 zvukovém kanálu, mohli byste je zkomprimovat | Zúžené a jedinečné pro doménu a produkty | Konverzace, volně strukturovaná |
 | Hlasový asistent (například Cortana nebo okno jednotky) | Vysoká, 16 kHz | Silná entita (názvy skladeb, produkty, umístění) | Jasně uvedená slova a fráze |
@@ -79,7 +79,7 @@ Scénáře rozpoznávání řeči se liší podle kvality zvuku a jazyka (slovn�
 
 Různé scénáře vedou k různým výsledkům kvality. V následující tabulce najdete informace o tom, jak obsah z těchto čtyř scénářů se [podílí na chybovosti slov (WER)](how-to-custom-speech-evaluate-data.md). Tabulka uvádí, které typy chyb jsou v každém scénáři nejběžnější.
 
-| Scénář | Kvalita rozpoznávání řeči | Chyby vkládání | Chyby při odstraňování | Chyby nahrazení |
+| Scenario | Kvalita rozpoznávání řeči | Chyby vkládání | Chyby při odstraňování | Chyby nahrazení |
 |----------|----------------------------|------------------|-----------------|---------------------|
 | Call center | Střední (< 30% WER) | Nízká, s výjimkou případů, kdy ostatní lidé mluví na pozadí | Může být vysoké. Centra volání můžou mít vysokou úroveň šumu a překrývající se reproduktory můžou model Zaměňujte. | Střední. Tyto chyby můžou způsobovat i názvy produktů a lidí. |
 | Hlasový asistent | Vysoká (může být < 10% WER) | Nízká | Nízká | Střední z důvodu názvů písní, názvů produktů nebo míst |
@@ -118,7 +118,12 @@ Vezměte v úvahu tyto podrobnosti:
 * Dokončení školicí operace může trvat několik dní. Pro zlepšení rychlosti školení nezapomeňte vytvořit předplatné služby Speech Service v [oblasti s vyhrazeným hardwarem](custom-speech-overview.md#set-up-your-azure-account) pro školení.
 
 > [!NOTE]
-> Ne všechny základní modely podporují školení se zvukem. Pokud základní model ho nepodporuje, služba řeči bude používat jenom text z přepisů a zvuk bude ignorovat.
+> Ne všechny základní modely podporují školení se zvukem. Pokud základní model ho nepodporuje, služba řeči bude používat jenom text z přepisů a zvuk bude ignorovat. Seznam základních modelů, které podporují školení se zvukovými daty, najdete v tématu [jazyková podpora](language-support.md#speech-to-text) .
+
+> [!NOTE]
+> V případech, kdy změníte základní model používaný pro školení a máte zvuk v datové sadě školení, *vždy* ověřte, zda nový vybraný základní model [podporuje školení se zvukovými daty](language-support.md#speech-to-text). Pokud dřív použitý základní model nepodporoval školení se zvukovými daty a datová sada pro školení obsahuje zvuk, může se výrazně zvýšit doba školení s novým základním modelem a může se stát, **že budete moct** snadno přejít z několika hodin na několik dní. To platí hlavně v **případě, že** vaše předplatné služby Speech není v [oblasti s vyhrazeným hardwarem](custom-speech-overview.md#set-up-your-azure-account) pro školení.
+>
+> Pokud se setkáte s problémem popsaným v předchozím odstavci, můžete rychle zkrátit dobu školení tím, že snížíte velikost zvuku v datové sadě nebo zcela odeberete a necháte jenom text. Tato možnost se důrazně doporučuje, pokud vaše předplatné služby Speech **není v** [oblasti s vyhrazeným hardwarem](custom-speech-overview.md#set-up-your-azure-account) pro školení.
 
 ### <a name="add-new-words-with-pronunciation"></a>Přidat nová slova s výslovností
 
@@ -131,7 +136,7 @@ Slova, která jsou tvořená nebo vysoce specializovaná, mohou mít jedinečné
 
 Následující tabulka uvádí scénáře rozpoznávání hlasu a uvádí zdrojové materiály, které je potřeba zvážit v třech kategoriích výukového obsahu uvedených výše.
 
-| Scénář | Související textové věty | Audio + přepisy s popiskem | Nová slova s výslovností |
+| Scenario | Související textové věty | Audio + přepisy s popiskem | Nová slova s výslovností |
 |----------|------------------------|------------------------------|------------------------------|
 | Call center             | marketingové dokumenty, weby, recenze produktů související s aktivitou centra volání | volání Center volá přepisu podle člověka | výrazy s nejednoznačnými výslovnostmi (viz Xbox výše) |
 | Hlasový asistent         | Vypsat věty pomocí všech kombinací příkazů a entit | zaznamenávat hlasy, které mluví do zařízení, a přepisovat je do textu | názvy (filmy, skladby, produkty), které mají jedinečnou výslovnost |
@@ -142,7 +147,7 @@ Následující tabulka uvádí scénáře rozpoznávání hlasu a uvádí zdrojo
 
 * [Trénování a nasazení modelu](how-to-custom-speech-train-model.md)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Příprava a testování dat](./how-to-custom-speech-test-and-train.md)
 * [Kontrola dat](how-to-custom-speech-inspect-data.md)

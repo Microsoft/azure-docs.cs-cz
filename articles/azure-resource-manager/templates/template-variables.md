@@ -1,28 +1,82 @@
 ---
 title: Proměnné v šablonách
-description: Popisuje definování proměnných v šabloně Azure Resource Manager (šablona ARM).
+description: Popisuje definování proměnných v šabloně Azure Resource Manager (šablona ARM) a souboru bicep.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: feecc4b5df77e6a3bf51294cb12aabf44899dde5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 02/12/2021
+ms.openlocfilehash: cafd42112e5d296cb73f88e292a66ca2203f3810
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874430"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364456"
 ---
-# <a name="variables-in-arm-template"></a>Proměnné v šabloně ARM
+# <a name="variables-in-arm-templates"></a>Proměnné v šablonách ARM
 
-Tento článek popisuje, jak definovat a používat proměnné v šabloně Azure Resource Manager (šablona ARM). K zjednodušení šablony můžete použít proměnné. Místo opakujících se složitých výrazů v rámci šablony definujete proměnnou, která obsahuje složitý výraz. Pak na tuto proměnnou odkazujete podle potřeby v rámci šablony.
+Tento článek popisuje, jak definovat a používat proměnné v šabloně Azure Resource Manager (šablona ARM) nebo souboru bicep. K zjednodušení šablony můžete použít proměnné. Místo opakujících se složitých výrazů v rámci šablony definujete proměnnou, která obsahuje složitý výraz. Pak použijete tuto proměnnou podle potřeby v rámci šablony.
 
 Správce prostředků vyřeší proměnné před spuštěním operací nasazení. Všude, kde je proměnná v šabloně použitá, ji Resource Manager nahradí vyřešenou hodnotou.
 
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
+
 ## <a name="define-variable"></a>Definovat proměnnou
 
-Při definování proměnné zadejte hodnotu nebo výraz šablony, který se přeloží na [datový typ](template-syntax.md#data-types). Při vytváření proměnné můžete použít hodnotu z parametru nebo jiné proměnné.
+Při definování proměnné nezadáte [datový typ](template-syntax.md#data-types) pro proměnnou. Místo toho zadejte hodnotu nebo výraz šablony. Typ proměnné je odvozen z přeložené hodnoty. Následující příklad nastaví proměnnou na řetězec.
 
-Můžete použít [funkce šablon](template-functions.md) v deklaraci proměnné, ale nemůžete použít [odkazovou](template-functions-resource.md#reference) funkci ani žádnou z funkcí [seznamu](template-functions-resource.md#list) . Tyto funkce získávají běhový stav prostředku a nelze jej provést před nasazením, když jsou proměnné vyřešeny.
+# <a name="json"></a>[JSON](#tab/json)
 
-Následující příklad ukazuje definici proměnné. Vytvoří hodnotu řetězce pro název účtu úložiště. Používá několik funkcí šablon k získání hodnoty parametru a zřetězuje je do jedinečného řetězce.
+```json
+"variables": {
+  "stringVar": "example value"
+},
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var stringVar = 'example value'
+```
+
+---
+
+Při vytváření proměnné můžete použít hodnotu z parametru nebo jiné proměnné.
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+"parameters": {
+  "inputValue": {
+    "defaultValue": "deployment parameter",
+    "type": "string"
+  }
+},
+"variables": {
+  "stringVar": "myVariable",
+  "concatToVar": "[concat(variables('stringVar'), '-addtovar') ]",
+  "concatToParam": "[concat(parameters('inputValue'), '-addtoparam')]"
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param inputValue string = 'deployment parameter'
+
+var stringVar = 'myVariable'
+var concatToVar =  '${stringVar}-addtovar'
+var concatToParam = '${inputValue}-addtoparam'
+```
+
+---
+
+K vytvoření hodnoty proměnné lze použít [funkce šablon](template-functions.md) .
+
+V šablonách JSON nelze použít [referenční](template-functions-resource.md#reference) funkci ani žádnou z funkcí [seznamu](template-functions-resource.md#list) v deklaraci proměnné. Tyto funkce získávají běhový stav prostředku a nelze jej provést před nasazením, když jsou proměnné vyřešeny.
+
+Funkce reference a list jsou platné při deklaraci proměnné v souboru bicep.
+
+Následující příklad vytvoří hodnotu řetězce pro název účtu úložiště. Používá několik funkcí šablon k získání hodnoty parametru a zřetězuje je do jedinečného řetězce.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "variables": {
@@ -30,9 +84,21 @@ Následující příklad ukazuje definici proměnné. Vytvoří hodnotu řetězc
 },
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().id)}'
+```
+
+---
+
 ## <a name="use-variable"></a>Použít proměnnou
 
-V šabloně odkazujete na hodnotu parametru pomocí funkce [Variables](template-functions-deployment.md#variables) . Následující příklad ukazuje, jak použít proměnnou pro vlastnost prostředku.
+Následující příklad ukazuje, jak použít proměnnou pro vlastnost prostředku.
+
+# <a name="json"></a>[JSON](#tab/json)
+
+V šabloně JSON odkazujete na hodnotu proměnné pomocí funkce [Variables](template-functions-deployment.md#variables) .
 
 ```json
 "resources": [
@@ -44,17 +110,46 @@ V šabloně odkazujete na hodnotu parametru pomocí funkce [Variables](template-
 ]
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+V souboru bicep odkazujete na hodnotu proměnné, a to zadáním názvu proměnné.
+
+```bicep
+resource demoAccount 'Microsoft.Storage/storageAccounts@2019-06-01' = {
+  name: storageName
+```
+
+---
+
 ## <a name="example-template"></a>Příklad šablony
 
-Následující šablona neimplementuje žádné prostředky. Pouze ukazuje několik způsobů, jak deklarovat proměnné.
+Následující šablona neimplementuje žádné prostředky. Ukazuje několik způsobů, jak deklarovat proměnné různých typů.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variables.json":::
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+Bicep v současné době nepodporuje smyčky.
+
+:::code language="bicep" source="~/resourcemanager-templates/azure-resource-manager/variables.bicep":::
+
+---
+
 ## <a name="configuration-variables"></a>Konfigurační proměnné
 
-Můžete definovat proměnné, které uchovávají související hodnoty pro konfiguraci prostředí. Proměnnou definujete jako objekt s hodnotami. Následující příklad ukazuje objekt, který obsahuje hodnoty pro dvě prostředí – **test** a **prod**. Během nasazování předáte jednu z těchto hodnot.
+Můžete definovat proměnné, které uchovávají související hodnoty pro konfiguraci prostředí. Proměnnou definujete jako objekt s hodnotami. Následující příklad ukazuje objekt, který obsahuje hodnoty pro dvě prostředí – **test** a **prod**. Před nasazením předejte jednu z těchto hodnot.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variablesconfigurations.json":::
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variablesconfigurations.bicep":::
+
+---
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z Xero pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z Xero do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/26/2021
 ms.author: jingwang
-ms.openlocfilehash: 3f8c74f36c1c441e00b808954ce7f7710d3fbd52
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d795f8355943032751b911423b8aaa93b2df3206
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879961"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366904"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Kopírování dat z Xero pomocí Azure Data Factory
 
@@ -52,10 +47,10 @@ Pro propojenou službu Xero jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na: **Xero** . | Yes |
 | connectionProperties | Skupina vlastností, která definuje, jak se připojit k Xero. | Yes |
-| **_Pod `connectionProperties` :_* _ | | |
+| ***V části `connectionProperties` :*** | | |
 | Hostitel | Koncový bod serveru Xero ( `api.xero.com` ).  | Yes |
 | authenticationType | Povolené hodnoty jsou `OAuth_2.0` a `OAuth_1.0` . | Yes |
-| consumerKey | Pro OAuth 2,0 zadejte *ID klienta* _ * pro vaši aplikaci Xero.<br>V případě OAuth 1,0 zadejte uživatelský klíč přidružený k aplikaci Xero.<br>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| consumerKey | Pro OAuth 2,0 zadejte **ID klienta** pro vaši aplikaci Xero.<br>V případě OAuth 1,0 zadejte uživatelský klíč přidružený k aplikaci Xero.<br>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | privateKey | Pro OAuth 2,0 zadejte **tajný klíč klienta** pro vaši aplikaci Xero.<br>V případě OAuth 1,0 zadejte privátní klíč ze souboru. pem, který jste vygenerovali pro privátní aplikaci Xero, v tématu [Vytvoření páru veřejného a privátního klíče](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). Poznámka: pro **vygenerování PrivateKey. pem s numbits 1024 512** se nepodporuje `openssl genrsa -out privatekey.pem 512` . Zahrňte veškerý text ze souboru. pem, včetně konců řádků systému UNIX (\n), viz ukázka níže.<br/><br>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | tenantId | ID tenanta přidružené k vaší aplikaci Xero Platí pro ověřování OAuth 2,0.<br>Zjistěte, jak získat ID tenanta z [tématu zjištění klientů, kterým máte oprávnění k přístupu](https://developer.xero.com/documentation/oauth2/auth-flow). | Ano pro ověřování OAuth 2,0 |
 | Refreshtoken kontextového tokenu | Platí pro ověřování OAuth 2,0.<br/>Obnovovací token OAuth 2,0 je přidružen k aplikaci Xero a používá se k aktualizaci přístupového tokenu. platnost přístupového tokenu vyprší po 30 minutách. Přečtěte si, jak funguje autorizační tok Xero a jak získat obnovovací token z [tohoto článku](https://developer.xero.com/documentation/oauth2/auth-flow). Pokud chcete získat obnovovací token, musíte požádat o [obor offline_access](https://developer.xero.com/documentation/oauth2/scopes). <br/>Zjištění **omezení**: Poznámka Xero obnoví obnovovací token po jeho použití pro aktualizaci přístupového tokenu. Pro provozní úlohy před spuštěním každé aktivity kopírování musíte nastavit platný obnovovací token pro použití ADF.<br/>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano pro ověřování OAuth 2,0 |

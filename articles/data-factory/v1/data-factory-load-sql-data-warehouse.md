@@ -1,23 +1,18 @@
 ---
 title: Načtení terabajtů dat do služby Azure synapse Analytics
 description: Ukazuje, jak se 1 TB dat dá načíst do Azure synapse Analytics za 15 minut a Azure Data Factory
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: a6c133c0-ced2-463c-86f0-a07b00c9e37f
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 68c9e594201f0d0689a289e13f2c4ebf909c2f87
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5acae7c90efbf178fad199177fa6e0886e497fdf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457094"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371205"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>Načtení 1 TB do Azure synapse Analytics za 15 minut s Data Factory
 > [!NOTE]
@@ -44,7 +39,7 @@ Tento článek poskytuje podrobné pokyny pro přesouvání dat do služby Azure
 >
 >
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Azure Blob Storage: Tento experiment používá Azure Blob Storage (GRS) pro ukládání testovací datové sady TPC-H.  Pokud nemáte účet úložiště Azure, přečtěte si, [jak vytvořit účet úložiště](../../storage/common/storage-account-create.md).
 * [TPC-h](http://www.tpc.org/tpch/) data: používáme TPC-H jako testovací datovou sadu.  K tomu je nutné použít `dbgen` z TPC-H Toolkit, který vám pomůže vygenerovat datovou sadu.  Můžete si buď stáhnout zdrojový kód `dbgen` z [nástrojů TPC](http://www.tpc.org/tpc_documents_current_versions/current_specifications5.asp) a zkompilovat ho sami, nebo stáhnout zkompilovaný binární soubor z [GitHubu](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools).  Spusťte dbgen.exe s následujícími příkazy pro vygenerování plochého souboru 1 TB pro `lineitem` rozložení tabulky mezi 10 soubory:
 

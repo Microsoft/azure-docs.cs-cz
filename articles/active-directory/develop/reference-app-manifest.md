@@ -13,12 +13,12 @@ ms.date: 02/02/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 0291d2e6f0cee07bd7164b63dfd4ac8b02c42a01
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 47215070893c6fefd42554fdf4514e4aa8b45047
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583039"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103341"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Manifest aplikace Azure Active Directory
 
@@ -33,7 +33,7 @@ Atributy aplikace můžete nakonfigurovat pomocí Azure Portal nebo programově 
 
 Konfigurace manifestu aplikace:
 
-1. Přejít na <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Vyhledejte a vyberte službu **Azure Active Directory** .
+1. Přejděte na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>. Vyhledejte a vyberte službu **Azure Active Directory** .
 1. Vyberte **Registrace aplikací**.
 1. Vyberte aplikaci, kterou chcete nakonfigurovat.
 1. Na stránce **Přehled** aplikace vyberte část **Manifest**. Otevře se webový editor manifestu, který umožňuje upravovat manifest v rámci portálu. Volitelně můžete vybrat **Stáhnout** a upravit manifest místně a potom použít **nahrávání** pro jeho opakované použití do aplikace.

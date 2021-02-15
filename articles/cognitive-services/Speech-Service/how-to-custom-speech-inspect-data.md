@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 02/12/2021
 ms.author: erhopf
-ms.openlocfilehash: 87bc411903604a7068f346604853a2a61c9a6f1c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9ce0d3a06846cbc3aa37ab836564150e6f2c34ee
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499182"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362807"
 ---
 # <a name="inspect-custom-speech-data"></a>Kontrola dat služby Custom Speech
 
 > [!NOTE]
 > Tato stránka předpokládá, že jste si přečetli [data pro přípravu testu pro Custom Speech](./how-to-custom-speech-test-and-train.md) a nahráli jste datovou sadu pro kontrolu.
 
-Custom Speech poskytuje nástroje, které vám umožní vizuálně zkontrolovat kvalitu rozpoznávání modelu tím, že porovná zvuková data s odpovídajícím výsledkem rozpoznávání. Z [portálu Custom Speech](https://speech.microsoft.com/customspeech)můžete přehrát nahraný zvuk a zjistit, jestli je zadaný výsledek rozpoznávání správný. Tento nástroj vám pomůže zkontrolovat kvalitu základního rozpoznávání řeči a textu od Microsoftu, prozkoumat vyškolený vlastní model nebo porovnat přepis dvou modelů.
+Custom Speech poskytuje nástroje, které vám umožní vizuálně zkontrolovat kvalitu rozpoznávání modelu tím, že porovná zvuková data s odpovídajícím výsledkem rozpoznávání. Z nástroje [Speech Studio](https://speech.microsoft.com/customspeech)můžete nahrávat nahraný zvuk a zjistit, jestli je zadaný výsledek rozpoznávání správný. Tento nástroj vám pomůže zkontrolovat kvalitu základního rozpoznávání řeči a textu od Microsoftu, prozkoumat vyškolený vlastní model nebo porovnat přepis dvou modelů.
 
 V tomto dokumentu se dozvíte, jak vizuálně kontrolovat kvalitu základního rozpoznávání řeči a textu od Microsoftu a vlastních modelů, které jste si naučili. Naučíte se také, jak pomocí editoru online přepisu vytvořit a zpřesnit zvukové datové sady s popisky.
 
@@ -30,7 +30,7 @@ V tomto dokumentu se dozvíte, jak vizuálně kontrolovat kvalitu základního r
 
 Při vytváření testu postupujte podle těchto pokynů:
 
-1. Přihlaste se k [portálu Custom Speech](https://speech.microsoft.com/customspeech).
+1. Přihlaste se ke službě [Speech Studio](https://speech.microsoft.com/customspeech).
 2. Přejít na **text > řeči Custom Speech > [název projektu] > testování**.
 3. Klikněte na **Přidat test**.
 4. Vyberte možnost **kontrolovat kvalitu (jenom zvuková data)**. Dejte testu název, popis a vyberte vaši zvukovou datovou sadu.

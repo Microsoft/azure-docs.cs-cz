@@ -8,22 +8,22 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.date: 12/23/2020
-ms.openlocfilehash: 57a6883a2c4fff14507df27b55ac0f6621306bf5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f096e53f8054039f361bde1c5f2adffac615c53d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879271"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371936"
 ---
 # <a name="how-to-plan-a-managed-service-offer-for-the-microsoft-commercial-marketplace"></a>Postup plánování nabídky spravované služby pro komerční tržiště Microsoftu
 
 V tomto článku se seznámíte s požadavky pro publikování nabídky spravované služby na komerční tržišti společnosti Microsoft prostřednictvím partnerského centra.
 
-Spravované služby jsou Azure Marketplace nabídky, které umožňují správu více tenantů a víceklientské architektury s Azure Lighthouse. Další informace najdete v tématu [co je Azure Lighthouse?](../lighthouse/overview.md) Když zákazník koupí nabídku spravované služby, může delegovat jeden nebo víc předplatných nebo skupin prostředků.
+Spravované služby jsou Azure Marketplace nabídky, které umožňují správu více tenantů a víceklientské architektury s Azure Lighthouse. Další informace najdete v tématu [co je Azure Lighthouse?](../lighthouse/overview.md) Když zákazník koupí nabídku spravované služby, může delegovat jedno nebo víc předplatných nebo skupin prostředků. Pak můžete na těchto prostředcích pracovat pomocí možností [správy delegovaných prostředků Azure](../lighthouse/concepts/azure-delegated-resource-management.md) v Azure Lighthouse.
 
 ## <a name="eligibility-requirements"></a>Požadavky na nárok
 
-Pokud chcete publikovat spravovanou službu, musíte mít na cloudové platformě vytvořenou zlatou nebo stříbrné kompetence Microsoftu. Tato kompetence znázorňuje vaše znalosti pro zákazníky. Další informace najdete v tématu [Microsoft Partner Network kompetence](https://partner.microsoft.com/membership/competencies).
+Pokud chcete publikovat nabídku spravované služby, musíte mít na cloudové platformě vytvořenou zlatou nebo stříbrné kompetence Microsoftu. Tato kompetence znázorňuje vaše znalosti pro zákazníky. Další informace najdete v tématu [Microsoft Partner Network kompetence](https://partner.microsoft.com/membership/competencies).
 
 Nabídky musí splňovat všechny použitelné [zásady certifikace komerčního tržiště](/legal/marketplace/certification-policies) , které se mají publikovat na Azure Marketplace.
 
@@ -50,7 +50,7 @@ Když vytvoříte nabídku spravované služby v partnerském centru, zadáte te
 1. Krátký popis
 1. Kategorie
 1. Právní smlouvy a zásady ochrany osobních údajů
-1. Popis
+1. Description
 1. Snímky obrazovky a videa
 1. Užitečné odkazy
 
@@ -61,7 +61,7 @@ Tady je příklad, jak se seznam nabídek zobrazuje v Azure Portal:
 **Popisy volání**
 
 1. Název
-2. Popis
+2. Description
 3. Užitečné odkazy
 4. Snímky obrazovky a videa
 
