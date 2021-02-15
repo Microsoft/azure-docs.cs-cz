@@ -1,23 +1,18 @@
 ---
 title: Kopírování dat z Google BigQuery pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z Google BigQuery do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu služby Data Factory.
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.openlocfilehash: 6751f64706444176f0df8f8fc0c6132e76b39b2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3fcaa6c1542578d983461623da743724a3114d9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417323"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389684"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Kopírování dat z Google BigQuery pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -50,15 +45,15 @@ Pro propojenou službu Google BigQuery jsou podporovány následující vlastnos
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na **GoogleBigQuery**. | Ano |
-| projekt | ID projektu výchozího projektu BigQuery, proti kterému se má dotazovat  | Ano |
+| typ | Vlastnost Type musí být nastavená na **GoogleBigQuery**. | Yes |
+| projekt | ID projektu výchozího projektu BigQuery, proti kterému se má dotazovat  | Yes |
 | additionalProjects | Čárkami oddělený seznam ID projektů veřejných projektů BigQuery pro přístup.  | No |
 | requestGoogleDriveScope | Bez ohledu na to, jestli se má vyžádat přístup k disku Google Povolení přístupu k disku Google umožňuje podporu pro federované tabulky, které kombinují BigQuery data s daty z disku Google. Výchozí hodnota je **false** (nepravda).  | No |
-| authenticationType | Ověřovací mechanismus OAuth 2,0, který se používá k ověřování. ServiceAuthentication se dá použít jenom pro Integration Runtime v místním prostředí. <br/>Povolené hodnoty jsou **UserAuthentication** a **ServiceAuthentication**. Další vlastnosti a ukázky JSON pro tyto typy ověřování najdete v částech níže v této tabulce. | Ano |
+| authenticationType | Ověřovací mechanismus OAuth 2,0, který se používá k ověřování. ServiceAuthentication se dá použít jenom pro Integration Runtime v místním prostředí. <br/>Povolené hodnoty jsou **UserAuthentication** a **ServiceAuthentication**. Další vlastnosti a ukázky JSON pro tyto typy ověřování najdete v částech níže v této tabulce. | Yes |
 
 ### <a name="using-user-authentication"></a>Použití ověřování uživatelů
 
-Nastavte vlastnost "authenticationType" na **UserAuthentication**a zadejte následující vlastnosti spolu s obecnými vlastnostmi popsanými v předchozí části:
+Nastavte vlastnost "authenticationType" na **UserAuthentication** a zadejte následující vlastnosti spolu s obecnými vlastnostmi popsanými v předchozí části:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
@@ -94,7 +89,7 @@ Nastavte vlastnost "authenticationType" na **UserAuthentication**a zadejte násl
 
 ### <a name="using-service-authentication"></a>Ověřování pomocí služby
 
-Nastavte vlastnost "authenticationType" na **ServiceAuthentication**a zadejte následující vlastnosti spolu s obecnými vlastnostmi popsanými v předchozí části. Tento typ ověřování se dá použít jenom pro Integration Runtime v místním prostředí.
+Nastavte vlastnost "authenticationType" na **ServiceAuthentication** a zadejte následující vlastnosti spolu s obecnými vlastnostmi popsanými v předchozí části. Tento typ ověřování se dá použít jenom pro Integration Runtime v místním prostředí.
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
@@ -133,9 +128,9 @@ Pokud chcete kopírovat data z Google BigQuery, nastavte vlastnost Type datové 
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **GoogleBigQueryObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **GoogleBigQueryObject** . | Yes |
 | integrován | Název datové sady Google BigQuery |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
-| stolu | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
+| tabulka | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
 | tableName | Název tabulky Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `dataset` a `table` . | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad**
@@ -165,7 +160,7 @@ Pokud chcete kopírovat data z Google BigQuery, nastavte typ zdroje v aktivitě 
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **GoogleBigQuerySource**. | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **GoogleBigQuerySource**. | Yes |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**

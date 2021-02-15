@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aef4ff77eb02723bcd95dcc99a55094bd10acd4c
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 08f560f076caf90c9c930cedfd6a7ba9c6c8b37d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355473"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365442"
 ---
-# <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory uplatnění pozvánky B2B pro spolupráci
+# <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Uplatnění pozvánky ke spolupráci B2B v Azure Active Directory
 
 Tento článek popisuje způsoby, kterými můžou uživatelé typu Host získat přístup k vašim prostředkům a k procesu souhlasu, ke kterým dojde. Pokud odešlete e-mailovou pozvánku na hosta, pozvánka zahrnuje odkaz, který může host uplatnit, aby získal přístup k vaší aplikaci nebo portálu. E-mail pozvánky je jedním z způsobů, jak hosté můžou získat přístup k vašim prostředkům. Jako alternativu můžete do svého adresáře přidat hosty a dát jim přímý odkaz na portál nebo aplikaci, kterou chcete sdílet. Bez ohledu na to, jakou metodu používají, se hostů prostřednictvím procesu souhlasu při prvním použití. Tento proces zajistí, že se vaši hosté dohodli na podmínky ochrany osobních údajů a přijmou [podmínky použití](../conditional-access/terms-of-use.md) , které jste si nastavili.
 
@@ -26,7 +26,7 @@ Když do svého adresáře přidáte uživatele typu Host, má uživatelský ú�
 
    > [!IMPORTANT]
    > - **Od 4. ledna 2021** je Google [zastaralá podpora přihlašování v nástroji WebView](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Pokud používáte Google Federation nebo samoobslužnou registraci pomocí služby Gmail, měli byste [testovat kompatibilitu vašich obchodních nativních aplikací](google-federation.md#deprecation-of-webview-sign-in-support).
-   > - **Od 31. března 2021** přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
+   > - **Od října 2021** přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
 
 ## <a name="redemption-through-the-invitation-email"></a>Vyplacení prostřednictvím e-mailu s pozvánkou
 

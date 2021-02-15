@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z HBA pomocí Azure Data Factory
 description: Přečtěte si, jak kopírovat data z adaptérů HBA do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: f2d10a6150a6e6957b303ca391c97e166342111c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02f4b88b1dab99b3b052f59f91f7869d8aedc77f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417255"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388358"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Kopírování dat z HBA pomocí Azure Data Factory 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -50,11 +45,11 @@ Pro propojenou službu HBA jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **HBA** . | Ano |
-| Hostitel | IP adresa nebo název hostitele serveru HBA. t.  `[clustername].azurehdinsight.net`, `192.168.222.160` )  | Ano |
+| typ | Vlastnost Type musí být nastavená na: **HBA** . | Yes |
+| Hostitel | IP adresa nebo název hostitele serveru HBA. t.  `[clustername].azurehdinsight.net`, `192.168.222.160` )  | Yes |
 | port | Port TCP, který instance HBA používá k naslouchání klientským připojením. Výchozí hodnota je 9090. Pokud se připojíte k Azure HDInsights, zadejte port jako 443. | No |
 | httpPath | Částečná adresa URL odpovídající serveru HBA, např. `/hbaserest0` při použití clusteru HDInsights. | No |
-| authenticationType | Mechanismus ověřování, který se má použít pro připojení k serveru HBA. <br/>Povolené hodnoty jsou: **anonymní**, **základní** | Ano |
+| authenticationType | Mechanismus ověřování, který se má použít pro připojení k serveru HBA. <br/>Povolené hodnoty jsou: **anonymní**, **základní** | Yes |
 | username | Uživatelské jméno použité pro připojení k instanci HBA.  | No |
 | heslo | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | No |
 | enableSsl | Určuje, jestli se připojení k serveru šifrují pomocí protokolu TLS. Výchozí hodnota je False.  | No |
@@ -131,7 +126,7 @@ Chcete-li kopírovat data z adaptérů HBA, nastavte vlastnost Type datové sady
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **HBaseObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **HBaseObject** . | Yes |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad**
@@ -161,8 +156,8 @@ Chcete-li kopírovat data z adaptérů HBA, nastavte typ zdroje v aktivitě kop�
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **HBaseSource** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **HBaseSource** . | Yes |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
 

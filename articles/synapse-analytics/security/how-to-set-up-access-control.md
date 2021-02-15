@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: c6ec84d41d113a38e78ab13404ef19faf625530b
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 513d23de3d7f823ec934af32e5f3776e876f02d8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102168"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368995"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Jak nastavit řízení přístupu pro pracovní prostor synapse 
 
@@ -132,7 +132,7 @@ Aby uživatelé mohli vytvářet fondy SQL, Apache Spark fondy a prostředí Int
 
 ## <a name="step-6-assign-sql-active-directory-admin-role"></a>Krok 6: přiřazení role správce služby SQL Active Directory
 
-Tvůrce pracovní stanice je automaticky nastavený jako správce služby SQL Active Directory pro daný pracovní prostor.  Tuto roli lze udělit pouze jednomu uživateli nebo skupině. V tomto kroku přiřadíte ke skupině zabezpečení Správce služby SQL Active Directory v pracovním prostoru `workspace1_SQLAdmins` .  Přiřazení této role poskytuje této skupině vysoce privilegovaný přístup správce ke všem fondům a databázím SQL v pracovním prostoru.   
+Tvůrce pracovního prostoru je automaticky nastavený jako správce služby SQL Active Directory pro pracovní prostor.  Tuto roli lze udělit pouze jednomu uživateli nebo skupině. V tomto kroku přiřadíte ke skupině zabezpečení Správce služby SQL Active Directory v pracovním prostoru `workspace1_SQLAdmins` .  Přiřazení této role poskytuje této skupině vysoce privilegovaný přístup správce ke všem fondům a databázím SQL v pracovním prostoru.   
 
 - Otevřete Azure Portal.
 - Přejděte na adresu `workspace1`.

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7214a1eb41e4434818123ee26765ceb10ad551a5
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 598673bca5b893236cfd38a7fa220ff25ee9dd7e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094905"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388511"
 ---
 # <a name="azure-storage-redundancy"></a>Redundance Azure Storage
 
@@ -185,6 +185,14 @@ Následující tabulka uvádí, zda jsou vaše data v daném scénáři odolná 
 | Přístup pro čtení do sekundární oblasti je k dispozici, pokud primární oblast nebude k dispozici. | No | No | Ano (s RA-GRS) | Ano (s RA-GZRS) |
 
 <sup>1</sup> převzetí služeb při selhání účtu se vyžaduje k obnovení dostupnosti pro zápis, pokud primární oblast nebude k dispozici. Další informace najdete v tématu [převzetí služeb při selhání při zotavení po havárii a účtu úložiště](storage-disaster-recovery-guidance.md).
+
+### <a name="supported-azure-storage-services"></a>Podporované služby Azure Storage Services
+
+Následující tabulka uvádí, které možnosti redundance jsou podporovány každou službou Azure Storage.
+
+| LRS | ZRS | GRS/RA – GRS | GZRS/RA – GZRS |
+|:-|:-|:-|:-|
+| Blob Storage<br />Queue Storage<br />Table Storage<br />Azure Files<br />Azure Managed disks | Blob Storage<br />Queue Storage<br />Table Storage<br />Azure Files | Blob Storage<br />Queue Storage<br />Table Storage<br />Azure Files<br /> | Blob Storage<br />Queue Storage<br />Table Storage<br />Azure Files<br /> |
 
 ### <a name="supported-storage-account-types"></a>Podporované typy účtů úložiště
 

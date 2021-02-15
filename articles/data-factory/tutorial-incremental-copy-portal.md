@@ -1,22 +1,18 @@
 ---
 title: Přírůstkové kopírování tabulky pomocí Azure Portal
 description: V tomto kurzu vytvoříte Azure Data Factory s kanálem, který načte rozdílová data z tabulky v Azure SQL Database do úložiště objektů BLOB v Azure.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: d1a7f47b1cdccb02952bd7d9d333855f5eec27d5
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 1f88571b407c138516568a7f74476ca35425da75
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508522"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384686"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Přírůstkové načtení dat z Azure SQL Database do úložiště objektů BLOB v Azure pomocí Azure Portal
 
@@ -275,7 +271,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
 
         | Název | Typ | Hodnota |
         | ---- | ---- | ----- |
-        | LastModifiedtime | Datum a čas | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
+        | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Řetězec | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
         ![Aktivita Uložená procedura – nastavení uložené procedury](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)

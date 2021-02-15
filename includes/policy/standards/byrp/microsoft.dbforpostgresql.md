@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cf2513c440fce180bff413aec68352cf5fd84af3
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 5e488bc0863dc831ee3c2895c2a8377d5483370f
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558671"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099658"
 ---
 ## <a name="azure-security-benchmark"></a>Srovnávací test zabezpečení Azure
 
@@ -24,7 +24,7 @@ Pokud chcete zjistit, jak jsou dostupné Azure Policy vestavěné pro všechny s
 |Zabezpečení sítě |NS – 2 |Vzájemné propojení privátních sítí |[Privátní koncový bod by měl být povolený pro PostgreSQL servery.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0564d078-92f5-4f97-8398-b9f58a51f70b) |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnablePrivateEndPoint_Audit.json) |
 |Zabezpečení sítě |NS – 3 |Vytvoření přístupu k privátní síti ke službám Azure |[Privátní koncový bod by měl být povolený pro PostgreSQL servery.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0564d078-92f5-4f97-8398-b9f58a51f70b) |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnablePrivateEndPoint_Audit.json) |
 |Ochrana dat |DP-4 |Šifrovat citlivé informace při přenosu |[Pro databázové servery PostgreSQL by mělo být povoleno připojení SSL vynutilo.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd158790f-bfb0-486c-8631-2dc6b4e8e6af) |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnableSSL_Audit.json) |
-|Ochrana dat |DP-5 |Šifrovat citlivá data v klidovém umístění |[Zajistěte, aby byla pro servery PostgreSQL povolená vlastní ochrana dat klíčů.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F18adea5e-f416-4d0f-8aa8-d24321e3e274) |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnableByok_Audit.json) |
+|Ochrana dat |DP-5 |Šifrovat citlivá data v klidovém umístění |[Zajistěte, aby byla pro servery PostgreSQL povolená vlastní ochrana dat klíčů.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F18adea5e-f416-4d0f-8aa8-d24321e3e274) |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnableByok_Audit.json) |
 |Zálohování a obnovy |BR-1 |Zajištění pravidelného automatizovaného zálohování |[Pro Azure Database for PostgreSQL by měla být povolená geograficky redundantní záloha.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F48af4db5-9b8b-401c-8e74-076be876a430) |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/GeoRedundant_DBForPostgreSQL_Audit.json) |
 |Zálohování a obnovy |BR – 2 |Šifrování zálohovaných dat |[Pro Azure Database for PostgreSQL by měla být povolená geograficky redundantní záloha.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F48af4db5-9b8b-401c-8e74-076be876a430) |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/GeoRedundant_DBForPostgreSQL_Audit.json) |
 

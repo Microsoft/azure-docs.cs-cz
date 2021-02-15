@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/05/2021
-ms.openlocfilehash: 6c064acc44e180d3e99bdcf68d2e1e129d52fd5d
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 19c7d37d62ec54e57127f5993e8bae4d4e9a2908
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805930"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388528"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informace o omezeních a konfiguraci pro Azure Logic Apps
 
@@ -193,19 +193,20 @@ Další informace o definici prostředků aplikace logiky najdete v tématu [Př
 
 ### <a name="integration-service-environment-ise"></a>Prostředí služby Integration Service (ISE)
 
-Tady jsou limity propustnosti pro [SKU ISE úrovně Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level):
+* [ISE SKU pro vývojáře](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level): poskytuje až 500 spuštění za minutu, ale pamatujte na tyto požadavky:
 
-| Name | Omezení | Poznámky |
-|------|-------|-------|
-| Omezení spuštění základní jednotky | Omezené na systém, když kapacita infrastruktury dosáhne 80% | Poskytuje operace ~ 4 000 Actions za minutu, což je ~ 160 000 000 provádění akcí za měsíc. | |
-| Limit spouštění jednotek škálování | Omezené na systém, když kapacita infrastruktury dosáhne 80% | Každá jednotka škálování může poskytnout ~ 2 000 další provádění akcí za minutu, což znamená ~ 80 000 000 další provádění akcí za měsíc. | |
-| Maximální počet jednotek škálování, které můžete přidat | 10 | |
-||||
+  * Ujistěte se, že jste tuto SKLADOVOU položku používali jenom pro zkoumání, experimenty, vývoj nebo testování – ne pro produkční nebo výkonnostní testování. Tato SKU nemá žádnou smlouvu o úrovni služeb (SLA), schopnost horizontálního navýšení kapacity ani redundanci při recyklaci, což znamená, že se může vyskytnout zpoždění nebo výpadek.
 
-Chcete-li přejít nad tato omezení v normálním zpracování nebo spustit testování zatížení, které by mohlo jít nad tato omezení, [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) , kde vám pomohou vaše požadavky.
+  * Aktualizace back-endu můžou službu obcházet bez výpadků.
 
-> [!NOTE]
-> [ISEá položka pro vývojáře](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) nemá žádná publikovaná omezení, žádné možnosti pro vertikální navýšení kapacity ani smlouvy SLA. Tuto SKU použijte pouze pro experimentování, vývoj a testování, nikoli pro produkční nebo výkonnostní testování.
+* [ISE SKU úrovně Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level): Následující tabulka popisuje omezení propustnosti SKU, ale pokud chcete tyto limity překročit v normálním zpracování, nebo spustit testování zatížení, které by mohlo jít nad tato omezení, [požádejte tým Logic Apps](mailto://logicappsemail@microsoft.com) , aby vám pomohli s vašimi požadavky.
+
+  | Name | Omezení | Poznámky |
+  |------|-------|-------|
+  | Omezení spuštění základní jednotky | Omezené na systém, když kapacita infrastruktury dosáhne 80% | Poskytuje operace ~ 4 000 Actions za minutu, což je ~ 160 000 000 provádění akcí za měsíc. | |
+  | Limit spouštění jednotek škálování | Omezené na systém, když kapacita infrastruktury dosáhne 80% | Každá jednotka škálování může poskytnout ~ 2 000 další provádění akcí za minutu, což znamená ~ 80 000 000 další provádění akcí za měsíc. | |
+  | Maximální počet jednotek škálování, které můžete přidat | 10 | |
+  ||||
 
 <a name="gateway-limits"></a>
 

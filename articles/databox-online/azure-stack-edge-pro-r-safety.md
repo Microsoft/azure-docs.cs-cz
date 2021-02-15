@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 02/12/2021
 ms.author: alkohli
-ms.openlocfilehash: cc24839396116a5b581758b29b087c237a6f902b
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: dacc9ecc28ffa482b60d1e48735fe3620b5b7558
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981336"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363062"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Pokyny pro zabezpečení Azure Stack Edge pro R
 
@@ -134,6 +134,7 @@ Při nastavování a spouštění Azure Stack hraničního zařízení pro R Edg
 
 * U systémů bez nepřerušovaného napájení (UPS) odpojte všechny šňůry STŘÍDAVých napájecích kabelů, aby se z něj zcela odstranila energie z ELEKTRICKÉho zařízení.
 * U systémů se zdrojem UPS odpojte všechny šňůry napájení střídavého napětí a pomocí vypínače napájení UPS oživit systém. UPS obsahuje nebezpečné napětí na AC a DC.
+* V případě, že systém obsahuje zdroj UPS, byla zdrojem napájení zajištěn kabel s stíněným vstupem. Je nutné použít kabel stíněného vstupu, Nenahrazovat ani měnit kabel.
 
 ![Ikona upozornění ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
  ![ : varování ikony elektrického úrazu ](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) **:**
@@ -210,21 +211,22 @@ A device that has a UPS installed is designed to operate in the following enviro
 
 > ![Ikona oznámení – 2 ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **Upozornění:** &nbsp; změny nebo změny zařízení, které nejsou výslovně schválené společností Microsoft, mohou zrušit oprávnění uživatele k provozu tohoto zařízení.
 
-Kanada a USA:
+#### <a name="canada-and-usa"></a>Kanada a USA:
 
-Upozornění: Toto vybavení bylo testováno a bylo zjištěno, že vyhovuje omezením pro třídu A digitálním zařízením, a to v souladu s částí 15 pravidel FCC. Tato omezení jsou navržená tak, aby poskytovala rozumnou ochranu proti škodlivému rušení, když je zařízení provozováno v komerčním prostředí. Toto vybavení vygeneruje, používá a může vycházet z frekvence rádiového kmitočtu a pokud není nainstalované a používané v souladu s ruční příručkou, může způsobit škodlivou interferenci s rádiovou komunikací. Provoz tohoto vybavení v domácí oblasti pravděpodobně způsobí škodlivou interferenci v takovém případě bude uživatel muset opravit rušivý vliv na své náklady.
+> ![Ikona oznámení-2 ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **Upozornění:** &nbsp; Toto zařízení bylo testováno a bylo zjištěno, že vyhovuje omezením pro třídu a digitálním zařízením, a to v souladu s částí 15 pravidel FCC. Tato omezení jsou navržená tak, aby poskytovala rozumnou ochranu proti škodlivému rušení, když je zařízení provozováno v komerčním prostředí. Toto vybavení vygeneruje, používá a může vycházet z frekvence rádiového kmitočtu a pokud není nainstalované a používané v souladu s ruční příručkou, může způsobit škodlivou interferenci s rádiovou komunikací. Provoz tohoto vybavení v domácí oblasti pravděpodobně způsobí škodlivou interferenci v takovém případě bude uživatel muset opravit rušivý vliv na své náklady.
 
 Toto zařízení je v souladu s částí 15 pravidel FCC a s výjimkou standardu RSS pro odvětví Kanady. Operace podléhá následujícím dvěma podmínkám: (1) Toto zařízení nemusí způsobovat škodlivou interferenci a (2) Toto zařízení musí přijmout jakékoli rušivé rušení, včetně rušení, které by mohlo způsobit nepožadovanou činnost zařízení.
 
 ![Regulativní informace – upozornění 1](./media/azure-stack-edge-mini-r-safety/regulatory-information-1.png)
 
 
-MŮŽE být ICES-3 (A)/NMB-3 (A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
-USA: (800) 426-9400 Kanada: (800) 933-4750
+MŮŽE ICES-3 (A)/NMB-3 (A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA USA: (800) 426-9400 Kanada: (800) 933-4750
 
-Evropská unie: Vyžádejte si kopii deklarace shody EU. 
+#### <a name="european-union"></a>EVROPSKÁ UNIE:
 
-![Ikona upozornění](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
+Vyžádá kopii deklarace shody EU. Odešlete e-mail na adresu [CSI_Compliance@microsoft.com](mailto:CSI_Compliance@microsoft.com).
+
+![Upozornění na ikonu upozornění ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) **!**
 
 Toto je produkt třídy A. V domácím prostředí může tento produkt v takovém případě způsobit rušivé porušování. uživatel může být nutný k tomu, aby přijal vhodná opatření.
 
@@ -237,7 +239,6 @@ Tento symbol v produktu nebo jeho bateriích nebo jeho obalech znamená, že ten
 Tento produkt obsahuje buněčnou baterii buněk (y).
 
 Microsoft Ireland Sandyford – Est Est D18 KX32 IRL telefonní číslo: + 353 1 295 3826 fax číslo: + 353 1 706 4110
-
 
 
 ## <a name="next-steps"></a>Další kroky

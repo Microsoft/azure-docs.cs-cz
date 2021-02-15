@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 01/03/2012
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 60b5a2bf5c0aed3d1a4621e179429a157c2a0962
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: db59a9e7693190582736b9460658f629f4f1e555
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99421469"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369624"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Kurz: Příprava webové aplikace pro komunikační služby Azure (Node.js)
 
@@ -106,11 +106,25 @@ Použijte stejný postup pro rozšíření [Azure Functions](https://marketplace
 
 ## <a name="set-up-a-local-webserver"></a>Nastavení místního serveru
 
+### <a name="create-a-new-npm-package"></a>Vytvoření nového balíčku npm
+
+Do terminálu zadejte v cestě ke složce pracovního prostoru:
+
+``` console
+npm init -y
+```
+
+Tento příkaz inicializuje nový balíček npm a přidá `package.json` do kořenové složky vašeho projektu.
+
+:::image type="content" source="./media/step-one-pic-eight.png" alt-text="JSON balíčku":::
+
+Další dokumentaci k příkazu npm init najdete [tady](https://docs.npmjs.com/cli/v6/commands/npm-init) .
+
 ### <a name="install-webpack"></a>Nainstalovat balíček Webpack
 
 [Webpack](https://webpack.js.org/) umožňuje seskupit kód do statických souborů, které můžete nasadit do Azure. Má také vývojový server, který nakonfigurujeme pro použití s ukázkou volání.
 
-Do svého otevřeného terminálu pro instalaci webpacku zadejte následující:
+Do terminálu zadejte následující pro instalaci sady Webpack:
 
 ``` Console
 npm install webpack@4.42.0 webpack-cli@3.3.11 webpack-dev-server@3.10.3 --save-dev
@@ -175,7 +189,7 @@ Vývojový režim instruuje, že sada Webpack neminimalizuje soubory a nevytvá�
 
 :::image type="content" source="./media/step-one-pic-11.png" alt-text="Konfigurace sady Webpack":::
 
-Pokud chcete spustit vývojový server, v `package.json.js` části skripty klikněte na a přidejte následující kód:
+Pokud chcete spustit vývojový server, v `package.json` části skripty klikněte na a přidejte následující kód:
 
 ```JavaScript
     "build:dev": "webpack-dev-server --config webpack.dev.js"
@@ -206,7 +220,7 @@ Váš soubor by teď měl vypadat takto:
 
 Přidali jste příkaz, který lze použít z npm. 
 
-:::image type="content" source="./media/step-one-pic-12.png" alt-text="Úprava package-json.js":::
+:::image type="content" source="./media/step-one-pic-12.png" alt-text="Probíhá úprava package.js":::
 
 ### <a name="testing-the-development-server"></a>Testování vývojového serveru
 
@@ -261,7 +275,7 @@ K otestování konfigurace vývoje použijte následující příkaz terminálu:
 npm run build:dev
 ```
 
-Konzola vám ukáže, kde je server spuštěný. Ve výchozím nastavení je to `http://localhost:8080` . Příkaz Build: dev je příkaz, který jsme přidali do našeho `package-json.js` dřívějšího.
+Konzola vám ukáže, kde je server spuštěný. Ve výchozím nastavení je to `http://localhost:8080` . Příkaz Build: dev je příkaz, který jsme přidali do našeho `package.json` dřívějšího.
 
  :::image type="content" source="./media/step-one-pic-16.png" alt-text="Spuštění vývojového serveru":::
  
@@ -289,26 +303,11 @@ Tato akce přidá běžné a volání balíčků služby Azure Communications ja
 
 :::image type="content" source="./media/step-one-pic-nine.png" alt-text="Instalace balíčků služby Azure Communication Services":::
 
-Tyto balíčky poskytuje tým komunikačních služeb Azure a zahrnují knihovny pro ověřování a volání. Příkaz "--Save" signalizuje, že naše aplikace závisí na těchto balíčcích pro produkční použití, a bude obsažena v `dependencies` `package-json.js` souboru. Když sestavíme aplikaci pro produkční prostředí, balíčky se zahrnou do našeho produkčního kódu.
+Tyto balíčky poskytuje tým komunikačních služeb Azure a zahrnují knihovny pro ověřování a volání. Příkaz "--Save" signalizuje, že naše aplikace závisí na těchto balíčcích pro produkční použití, a bude obsažena v `dependencies` `package.json` souboru. Když sestavíme aplikaci pro produkční prostředí, balíčky se zahrnou do našeho produkčního kódu.
 
 
 ## <a name="publish-your-website-to-azure-static-websites"></a>Publikování webu na statické weby Azure
 
-### <a name="create-a-new-npm-package"></a>Vytvoření nového balíčku npm
-
-Do terminálu zadejte v cestě ke složce pracovního prostoru:
-
-``` console
-npm init -y
-```
-
-Tento příkaz inicializuje nový balíček npm a přidá `package.json` do kořenové složky vašeho projektu.
-
-:::image type="content" source="./media/step-one-pic-eight.png" alt-text="JSON balíčku":::
-
-Další dokumentaci k příkazu npm init najdete [tady](https://docs.npmjs.com/cli/v6/commands/npm-init) .
-
- 
 ### <a name="create-a-configuration-for-production-deployment"></a>Vytvořit konfiguraci pro produkční nasazení
 
 Přidejte následující kód do `webpack.prod.js` :

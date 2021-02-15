@@ -3,12 +3,12 @@ title: Omezení a kvóty předplatného Azure
 description: Poskytuje seznam běžných limitů, kvót a omezení předplatného a služeb Azure. Tento článek obsahuje informace o tom, jak zvýšit limity spolu s maximálními hodnotami.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: ac35f09e1a7274019a8ca504fc697ca81de000f7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5d003392eeeca56bbfb0033db22e6bde4ae5e136
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370091"
+ms.locfileid: "100520680"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 
@@ -170,7 +170,7 @@ Nejnovější hodnoty pro Azure Machine Learning výpočetních kvót najdete na
 
 ### <a name="application-insights"></a>Application Insights
 
-[!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-app-insights.md)]
+[!INCLUDE [monitoring-limits](../../../includes/application-insights-limits.md)]
 
 ## <a name="azure-policy-limits"></a>Omezení Azure Policy
 

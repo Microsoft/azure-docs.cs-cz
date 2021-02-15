@@ -8,12 +8,12 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3f6c12b892e01aafd5beecdff14751481cf7fc96
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 406420fcd517ceda8ea6eedfc955f54b15541f74
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963393"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366598"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Nasazování modulů a vytváření tras ve službě IoT Edge
 
@@ -126,7 +126,7 @@ Seznam požadované vlastnosti agenta IoT Edge je tam, kde definujete, které mo
 
 Úplný seznam požadovaných vlastností, které mohou nebo musí být zahrnuty, najdete v tématu [vlastnosti IoT Edgeho agenta a centra IoT Edge](module-edgeagent-edgehub.md).
 
-Například:
+Příklad:
 
 ```json
 {
@@ -162,7 +162,7 @@ Například:
 }
 ```
 
-Každý modul má vlastnost **Nastavení** , která obsahuje **Image**modulu, adresu pro Image kontejneru v registru kontejnerů a všechny **createOptions** pro konfiguraci image při spuštění. Další informace najdete v tématu [jak nakonfigurovat možnosti vytváření kontejnerů pro IoT Edge moduly](how-to-use-create-options.md).
+Každý modul má vlastnost **Nastavení** , která obsahuje **Image** modulu, adresu pro Image kontejneru v registru kontejnerů a všechny **createOptions** pro konfiguraci image při spuštění. Další informace najdete v tématu [jak nakonfigurovat možnosti vytváření kontejnerů pro IoT Edge moduly](how-to-use-create-options.md).
 
 Modul edgeHub a vlastní moduly mají také tři vlastnosti, které sděluje agentovi IoT Edge, jak je spravovat:
 
@@ -230,11 +230,11 @@ Zdrojovou vlastností může být libovolná z následujících hodnot:
 | `/messages/modules/<moduleId>/outputs/*` | Jakákoli zpráva typu zařízení-Cloud odeslaná konkrétním modulem prostřednictvím nějakého výstupu |
 | `/messages/modules/<moduleId>/outputs/<output>` | Jakákoli zpráva typu zařízení-Cloud odeslaná konkrétním modulem prostřednictvím konkrétního výstupu |
 
-### <a name="condition"></a>Stav
+### <a name="condition"></a>Podmínka
 
 Podmínka je v deklaraci trasy volitelná. Pokud chcete předat všechny zprávy ze zdroje do jímky, stačí opustit klauzuli **WHERE** úplně. Nebo můžete použít [jazyk dotazů IoT Hub](../iot-hub/iot-hub-devguide-routing-query-syntax.md) k filtrování určitých zpráv nebo typů zpráv, které podmínku splní. Trasy IoT Edge nepodporují filtrování zpráv na základě dvojitých značek nebo vlastností.
 
-Zprávy, které jsou předávány mezi moduly v IoT Edge jsou formátovány stejně jako zprávy, které jsou předávány mezi vašimi zařízeními a službou Azure IoT Hub. Všechny zprávy jsou formátovány jako JSON a mají parametry **systemProperties**, **appProperties**a **text** .
+Zprávy, které jsou předávány mezi moduly v IoT Edge jsou formátovány stejně jako zprávy, které jsou předávány mezi vašimi zařízeními a službou Azure IoT Hub. Všechny zprávy jsou formátovány jako JSON a mají parametry **systemProperties**, **appProperties** a **text** .
 
 Dotazy můžete vytvářet kolem libovolného ze tří parametrů s následující syntaxí:
 
@@ -256,7 +256,7 @@ Jímka definuje, kam se zprávy odesílají. Zprávy mohou přijímat pouze modu
 
 Vlastnost jímky může být libovolná z následujících hodnot:
 
-| Jímka | Popis |
+| Jímka | Description |
 | ---- | ----------- |
 | `$upstream` | Odeslat zprávu do IoT Hub |
 | `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | Odeslání zprávy do konkrétního vstupu konkrétního modulu |
@@ -327,7 +327,7 @@ Následující příklad ukazuje, jak může vypadat platný dokument manifestu 
           "edgeAgent": {
             "type": "docker",
             "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+              "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
               "createOptions": ""
             }
           },
@@ -337,7 +337,7 @@ Následující příklad ukazuje, jak může vypadat platný dokument manifestu 
             "restartPolicy": "always",
             "startupOrder": 0,
             "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+              "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
             }
           }

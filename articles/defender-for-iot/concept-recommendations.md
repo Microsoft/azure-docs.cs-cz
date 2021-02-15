@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: shhazam
-ms.openlocfilehash: d11154e26e2ffe97a1ea102a11dddb746db9433a
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 10246277715d23f42eb0bd17d19794b8d4503f3f
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809265"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521862"
 ---
 # <a name="security-recommendations"></a>Doporučení zabezpečení
 
@@ -31,7 +31,7 @@ V tomto článku najdete seznam doporučení, která se můžou aktivovat na za�
 
 Doporučení k zařízením poskytují přehledy a návrhy na vylepšení stav zabezpečení zařízení.
 
-| Závažnost | Name | Zdroj dat | Description |
+| Závažnost | Název | Zdroj dat | Popis |
 |--|--|--|--|
 | Střední | Otevřít porty na zařízení | Klasický modul zabezpečení | V zařízení byl nalezen koncový bod naslouchání. |
 | Střední | Opravňující zásady brány firewall nalezené v jednom z řetězů. | Klasický modul zabezpečení | Byly nalezeny povolené zásady brány firewall (vstup/výstup). Zásada brány firewall by měla ve výchozím nastavení odepřít veškerý provoz a definovat pravidla, která budou umožňovat potřebnou komunikaci do a ze zařízení. |
@@ -43,7 +43,7 @@ Doporučení k zařízením poskytují přehledy a návrhy na vylepšení stav z
 
 Provozní doporučení poskytují přehledy a návrhy na vylepšení konfigurace agenta zabezpečení.
 
-| Závažnost | Name | Zdroj dat | Description |
+| Závažnost | Název | Zdroj dat | Popis |
 |--|--|--|--|
 | Nízká | Agent odesílá nevyužité zprávy. | Klasický modul zabezpečení | 10% nebo více zpráv zabezpečení bylo méně než 4 KB za posledních 24 hodin. |
 | Nízká | Konfigurace se zdvojeným zabezpečením není optimální | Klasický modul zabezpečení | Konfigurace s dvojitou bezpečností není optimální. |
@@ -54,13 +54,12 @@ Provozní doporučení poskytují přehledy a návrhy na vylepšení konfigurace
 
 Výstrahy doporučení poskytují přehled a návrhy akcí pro zlepšení stav zabezpečení vašeho prostředí.
 
-| Závažnost | Name | Zdroj dat | Description |
+| Závažnost | Název | Zdroj dat | Popis |
 |--|--|--|--|
 | Vysoká | Totožná pověření ověřování používaná více zařízeními | IoT Hub | IoT Hub přihlašovací údaje pro ověřování používají více zařízení. Tento proces může znamenat, že zařízení illegitimate zosobňuje legitimní zařízení. Duplicitní použití přihlašovacích údajů zvyšuje riziko zosobnění zařízení škodlivým objektem actor. |
 | Střední | Výchozí zásady filtru IP adres by se měly odepřít. | IoT Hub | Konfigurace filtru IP adres by měla mít pravidla definovaná pro povolený provoz a měla by ve výchozím nastavení Odepřít všechny ostatní přenosy. |
 | Střední | Pravidlo filtru IP obsahuje velký rozsah IP adres. | IoT Hub | Rozsah IP adres zdroje povoleného pravidla filtru IP je příliš velký. Přesná povolující pravidla můžou vaše centrum IoT vystavovat škodlivým aktérům. |
 | Nízká | Povolit diagnostické protokoly v IoT Hub | IoT Hub | Povolte protokoly a zachovejte je po dobu až do roku. Uchovávání protokolů umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení vaší sítě. |
-
 
 ## <a name="next-steps"></a>Další kroky
 

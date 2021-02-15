@@ -1,22 +1,18 @@
 ---
 title: Kopírování dat z SQL Server do úložiště objektů BLOB pomocí Azure Portal
 description: Zjistěte, jak kopírovat data z místního úložiště dat do cloudu s využitím místního prostředí Integration Runtime ve službě Azure Data Factory.
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: 172ebb5f5b7896b6b642c1fe6c5d01afb1dbf479
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: c44d00a5b23bff5e00864b44a396bcedfe5ea668
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553603"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391197"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Kopírování dat z databáze SQL Server do úložiště objektů BLOB v Azure
 
@@ -110,7 +106,7 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní služby Data Factory, ve kterém v této datové továrně vytvoříte kanál.
 
 1. Otevřete webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. V nabídce vlevo vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  **Data Factory** :
+1. V nabídce vlevo vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  :
 
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: sumuth
 ms.date: 10/23/2020
-ms.openlocfilehash: 5be0bf21514dd92c2f980081bb57d873895bbb91
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: def9e4f1b3f1c4e8f88f77dfe6906a8c96a94744
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099927"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389463"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql---flexible-server-preview"></a>Rychlý Start: použití šablony ARM k vytvoření Azure Database for MySQL-flexibilního serveru (Preview)
 
@@ -204,22 +204,6 @@ read serverName &&
 echo "Enter the resource group where the Azure Database for MySQL server exists:" &&
 read resourcegroupName &&
 az resource show --resource-group $resourcegroupName --name $serverName --resource-type "Microsoft.DbForMySQL/flexibleServers"
-```
-## <a name="exporting-arm-template-from-the-portal"></a>Export šablony ARM z portálu
-[Šablonu ARM můžete exportovat](../../azure-resource-manager/templates/export-template-portal.md) z Azure Portal. Existují dva způsoby, jak exportovat šablonu:
-
-- [Exportujte ze skupiny prostředků nebo prostředku](../../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource). Tato možnost vygeneruje novou šablonu z existujících prostředků. Vyexportovaná šablona je "snímek" aktuálního stavu skupiny prostředků. V rámci této skupiny prostředků můžete exportovat celou skupinu prostředků nebo konkrétní prostředky.
-- [Exportujte před nasazením nebo z historie](../../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment). Tato možnost načte přesnou kopii šablony, která se používá k nasazení.
-
-Při exportu šablony v ```"parameters":{ }``` části šablony si všimněte, že ```administratorLogin``` a nebudou ```administratorLoginPassword``` zahrnuty z bezpečnostních důvodů. Tyto parametry **musíte** před nasazením šablony přidat do šablony, jinak se šablona nezdařila.
-
-```
-"administratorLogin": {
-      "type": "String"
-    },
-"administratorLoginPassword": {
-      "type": "SecureString"
-    },
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

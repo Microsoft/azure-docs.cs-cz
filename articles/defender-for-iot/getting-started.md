@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/26/2020
 ms.author: shhazam
-ms.openlocfilehash: 82fcf7f129d5caba471d6d72da83a317b26c638c
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 06cf8b5f35bdebed0ebaa9e6949261d7c0d516f2
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98807886"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522559"
 ---
 # <a name="get-started-with-defender-for-iot"></a>Začínáme s Defenderem pro IoT
 
@@ -126,9 +126,8 @@ Další informace najdete v tématu [propojení senzorů s místní konzolou pro
 ## <a name="7-populate-azure-sentinel-with-alert-information-optional"></a>7. Naplňte do Azure Sentinel informace o výstrahách (volitelné).
 
 Pomocí konfigurace Azure Sentinelu odešlete informace o výstrahách do Azure Sentinel. Podívejte [se na téma připojení dat z Defenderu pro IoT do Azure Sentinel](how-to-configure-with-sentinel.md).
+## <a name="next-steps"></a>Další kroky
 
-## <a name="see-also"></a>Viz také
+[Vítá vás Azure Defender pro IoT](overview.md)
 
-- [Vítá vás Azure Defender pro IoT](overview.md)
-
-- [Azure Defender pro architekturu IoT](architecture.md)
+[Azure Defender pro architekturu IoT](architecture.md)

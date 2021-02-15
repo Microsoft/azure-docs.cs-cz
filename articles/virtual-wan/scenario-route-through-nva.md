@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9d4eb90d49e8cc671156833f22a85e7c2b4dd15b
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 24671a34214864e253d96c356dc8b2853bf6d560
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626656"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519792"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Scénář: Směrování provozu přes síťové virtuální zařízení
 
@@ -30,9 +30,9 @@ Při práci s směrováním virtuálního rozbočovače WAN je k dispozici něko
 
 V tomto scénáři použijeme konvenci pojmenování:
 
-* "Síťové virtuální zařízení virtuální sítě" pro virtuální sítě, ve kterých uživatelé nasadili síťové virtuální zařízení a připojili jiné virtuální sítě jako paprsky (virtuální síť 2 a virtuální síť 4 v **matici připojení** níže).
-* "Síťové virtuální zařízení paprsky" pro virtuální sítě připojené k virtuální síti síťové virtuální zařízení (virtuální síť 5, virtuální síť 6, virtuální síť 7 a virtuální síť 8 v **matici připojení** níže).
-* "Non-síťové virtuální zařízení virtuální sítě" pro virtuální sítě připojené k virtuální síti WAN, které s nimi nemají partnerský vztah síťové virtuální zařízení nebo jiné virtuální sítě (VNet 1 and VNet 3 v matici pro **připojení** níže).
+* "Síťové virtuální zařízení virtuální sítě" pro virtuální sítě, ve kterých uživatelé nasadili síťové virtuální zařízení a připojili jiné virtuální sítě jako paprsky (virtuální síť 2 a virtuální síť 4 na **obrázku 2** dále v tomto článku).
+* "Síťové virtuální zařízení paprsky" pro virtuální sítě připojené k virtuální síti síťové virtuální zařízení (virtuální síť 5, virtuální síť 6, virtuální síť 7 a virtuální síť 8 na **obrázku 2** v tomto článku).
+* "Non-síťové virtuální zařízení virtuální sítě" pro virtuální sítě připojené k virtuální síti WAN, které nemají partnerský vztah síťové virtuální zařízení nebo jiné virtuální sítěy s nimi (virtuální síť 1 a virtuální síť 3 na **obrázku 2** dále v tomto článku).
 * "Centra" pro virtuální sítě WAN spravovaná Microsoftem, ke kterým jsou připojené síťové virtuální zařízení virtuální sítě. SÍŤOVÉ virtuální zařízení paprskové virtuální sítě nemusí být připojené k virtuálním rozbočovačům WAN, jenom pro síťové virtuální zařízení virtuální sítě.
 
 Následující matice připojení shrnuje toky podporované v tomto scénáři:
@@ -49,7 +49,7 @@ Následující matice připojení shrnuje toky podporované v tomto scénáři:
 Každá z buněk v matici připojení popisuje, jak virtuální síť nebo větev ("od" na straně toku, záhlaví řádků v tabulce) komunikuje s cílovou virtuální sítí nebo větví (strana "do" toku, záhlaví sloupců jsou kurzívou v tabulce). "Direct" znamená, že připojení je nativně zajištěno pomocí virtuální sítě WAN, "partnerského vztahu" znamená, že připojení je zajištěno User-Defined cestou ve virtuální síti, "přes virtuální síť služby síťové virtuální zařízení" znamená, že připojení projde síťové virtuální zařízení nasazenou ve virtuální síti síťové virtuální zařízení. Zvažte použití těchto zdrojů:
 
 * SÍŤOVÉ virtuální zařízení paprsky nespravuje virtuální síť WAN. V důsledku toho bude uživatel spravovat mechanismy, se kterými budou komunikovat s ostatními virtuální sítě nebo větvemi. Připojení k virtuální síti síťové virtuální zařízení je zajišťováno partnerským vztahem virtuální sítě a výchozí trasa s hodnotou 0.0.0.0/0 ukazující na síťové virtuální zařízení jako další směrování by se měla týkat připojení k Internetu, k ostatním paprskům a k větvím.
-* SÍŤOVÉ virtuální zařízení virtuální sítě ví o svých vlastních paprskech síťové virtuální zařízení, ale ne o síťové virtuální zařízení paprsky, které jsou připojené k ostatním síťové virtuální zařízení virtuální sítě. Například v tabulce 1 virtuální síť 2 zná informace o virtuální síti 5 a virtuální síti 6, ale ne o ostatních paprskech, jako jsou virtuální sítě 7 a virtuální síť 8. Pro vložení předpon ostatních paprsků do síťové virtuální zařízení virtuální sítě se vyžaduje statická trasa.
+* SÍŤOVÉ virtuální zařízení virtuální sítě ví o svých vlastních paprskech síťové virtuální zařízení, ale ne o síťové virtuální zařízení paprsky, které jsou připojené k ostatním síťové virtuální zařízení virtuální sítě. Například na obrázku 2 dále v tomto článku ví virtuální síť 2 o virtuální síti 5 a virtuální síti 6, ale ne o ostatních paprskech, jako jsou virtuální sítě 7 a virtuální síť 8. Pro vložení předpon ostatních paprsků do síťové virtuální zařízení virtuální sítě se vyžaduje statická trasa.
 * Podobně větve a jiné než síťové virtuální zařízení virtuální sítě nebudou znát síťové virtuální zařízení paprsky, protože síťové virtuální zařízení paprsky nejsou připojené k virtuálním rozbočovačům sítě WAN. V důsledku toho budou potřeba statické trasy i tady.
 
 S ohledem na to, že síťové virtuální zařízení paprsky nespravuje Virtual WAN, všechny ostatní řádky zobrazí stejný vzor připojení. V důsledku toho bude jedna směrovací tabulka (výchozí) provádět tyto akce:

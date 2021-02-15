@@ -125,7 +125,7 @@
           href: troubleshoot-capacity-pools.md
         - name: Řešení potíží s replikací mezi oblastmi
           href: troubleshoot-cross-region-replication.md
-        - name: Řešení potíží se svazky se dvěma protokoly
+        - name: Řešení potíží se svazky SMB nebo Dual-Protocol
           href: troubleshoot-dual-protocol-volumes.md
         - name: Řešení potíží se svazky NFSv4.1 s protokolem Kerberos
           href: troubleshoot-nfsv41-kerberos-volumes.md

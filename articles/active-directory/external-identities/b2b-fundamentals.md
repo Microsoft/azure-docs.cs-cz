@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f9ea8b1c1346deee9fed591493607270f18ad5b
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 94fd488ceb7ddb3724dd576c97c9070481e95147
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547759"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365629"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Doporučené postupy Azure Active Directory B2B
 Tento článek obsahuje doporučení a osvědčené postupy pro spolupráci B2B (Business-to-Business) v Azure Active Directory (Azure AD).
 
    > [!IMPORTANT]
-   > **Od března 2021** přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované ("virové" nebo "just-in-time") účty a klienty Azure AD. V tuto chvíli bude funkce jednorázového e-mailového hesla zapnutá pro všechny existující klienty a ve výchozím nastavení povolená pro nové klienty. Povolujeme funkci jednorázového hesla e-mailu, protože pro uživatele typu Host nabízí bezproblémové záložní metody ověřování. Nicméně máte možnost tuto funkci zakázat, pokud se rozhodnete ji nepoužívat. Podrobnosti najdete v tématu [ověřování hesla jednorázovým e-mailem](one-time-passcode.md)
+   > **Od října 2021** přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravovaný ("virové" nebo "just-in-time") účty a klienty Azure AD. V tuto chvíli bude funkce jednorázového e-mailového hesla zapnutá pro všechny existující klienty a ve výchozím nastavení povolená pro nové klienty. Povolujeme funkci jednorázového hesla e-mailu, protože pro uživatele typu Host nabízí bezproblémové záložní metody ověřování. Nicméně máte možnost tuto funkci zakázat, pokud se rozhodnete ji nepoužívat. Podrobnosti najdete v tématu [ověřování hesla jednorázovým e-mailem](one-time-passcode.md)
 
 
 ## <a name="b2b-recommendations"></a>Doporučení B2B

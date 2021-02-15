@@ -1,24 +1,18 @@
 ---
 title: Kopírování dat v Blob Storage pomocí Azure Data Factory
 description: Vytvořte Azure Data Factory pomocí prostředí PowerShell ke kopírování dat z jednoho umístění v úložišti objektů BLOB v Azure do jiného umístění.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: a7fcb4be47e0e1e62c190a9b089243a178df8e7a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9f419d89a9757a11055781335cbf98e9eb651548
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013345"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372718"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Rychlý Start: vytvoření Azure Data Factory pomocí prostředí PowerShell
 
@@ -40,6 +34,9 @@ V tomto rychlém startu se dozvíte, jak pomocí PowerShellu vytvořit Azure Dat
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Nainstalujte nejnovější Azure PowerShell moduly podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps).
+
+>[!WARNING]
+>Pokud nepoužíváte nejnovější verze PowerShellu a Data Factory modulu, můžete při spouštění příkazů použít k chybám deserializaci. 
 
 #### <a name="log-in-to-powershell"></a>Přihlášení do PowerShellu
 
@@ -341,12 +338,12 @@ $RunId = Invoke-AzDataFactoryV2Pipeline `
             -PipelineRunId $RunId
 
         if ($Run) {
-            if ($run.Status -ne 'InProgress') {
+            if ( ($Run.Status -ne "InProgress") -and ($Run.Status -ne "Queued") ) {
                 Write-Output ("Pipeline run finished. The status is: " +  $Run.Status)
                 $Run
                 break
             }
-            Write-Output "Pipeline is running...status: InProgress"
+            Write-Output ("Pipeline is running...status: " + $Run.Status)
         }
 
         Start-Sleep -Seconds 10

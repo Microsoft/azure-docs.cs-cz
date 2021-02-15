@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: efb91c7b26c67a3672abb3f9cc8992fd45971a25
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 3ddd84f2f73546b42a3925802b3357df16485488
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932451"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521437"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -39,9 +39,9 @@ Existují tři verze Azure Functions Core Tools. Použitá verze závisí na va�
 
 V daném počítači můžete nainstalovat jenom jednu verzi základních nástrojů. Pokud není uvedeno jinak, příklady v tomto článku jsou pro verzi 3. x.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Azure Functions Core Tools v současné době závisí na Azure CLI pro ověřování pomocí účtu Azure. To znamená, že musíte [Azure CLI nainstalovat místně](/cli/azure/install-azure-cli) , aby bylo možné [publikovat do Azure](#publish) z Azure Functions Core Tools. 
+Azure Functions Core Tools v současné době závisí na rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) nebo [Azure PowerShell](/powershell/azure/install-az-ps) k ověřování pomocí účtu Azure. To znamená, že musíte nainstalovat jeden z těchto nástrojů, abyste mohli [publikovat do Azure](#publish) z Azure Functions Core Tools. 
 
 ## <a name="install-the-azure-functions-core-tools"></a>Instalace nástrojů Azure Functions Core
 
@@ -275,7 +275,7 @@ I při použití Emulátor úložiště Microsoft Azure pro vývoj budete možn�
 
 ## <a name="create-a-function"></a><a name="create-func"></a>Vytvoření funkce
 
-Chcete-li vytvořit funkci, spusťte následující příkaz:
+Pokud chcete vytvořit funkci, spusťte následující příkaz:
 
 ```
 func new
@@ -505,7 +505,7 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 Azure Functions Core Tools podporuje dva typy nasazení: nasazení souborů projektu funkce přímo do aplikace Function App prostřednictvím nástroje [zip Deploy](functions-deployment-technologies.md#zip-deploy) a [nasazení vlastního kontejneru Docker](functions-deployment-technologies.md#docker-container). Musíte mít už [vytvořenou aplikaci Function App v předplatném Azure](functions-cli-samples.md#create), do které budete kód nasazovat. Projekty, které vyžadují kompilaci, by měly být sestaveny tak, aby mohly být nasazeny binární soubory.
 
 >[!IMPORTANT]
->Aby bylo možné publikovat do Azure ze základních nástrojů, je nutné mít místně nainstalované rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) .  
+>Aby bylo možné publikovat do Azure ze základních nástrojů, musíte mít místně nainstalované rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nebo [Azure PowerShell](/powershell/azure/install-az-ps) .  
 
 Složka projektu může obsahovat soubory a adresáře specifické pro konkrétní jazyk, které by neměly být publikovány. Vyloučené položky jsou uvedeny v souboru. funcignore v kořenové složce projektu.     
 
@@ -520,7 +520,7 @@ func azure functionapp publish <FunctionAppName>
 >[!IMPORTANT]
 > Java používá Maven k publikování místního projektu do Azure. K publikování do Azure použijte následující příkaz: `mvn azure-functions:deploy` . Prostředky Azure se vytvářejí při počátečním nasazení.
 
-Tento příkaz se publikuje do existující aplikace Function App v Azure. Pokud se pokusíte publikovat do `<FunctionAppName>` , který ve vašem předplatném neexistuje, zobrazí se chyba. Informace o tom, jak vytvořit aplikaci funkcí z příkazového řádku nebo okna terminálu pomocí Azure CLI, najdete v tématu [vytvoření Function App pro provádění bez serveru](./scripts/functions-cli-create-serverless.md). Ve výchozím nastavení tento příkaz používá [vzdálené sestavení](functions-deployment-technologies.md#remote-build) a nasadí vaši aplikaci, aby [běžela z balíčku pro nasazení](run-functions-from-deployment-package.md). Pokud chcete tento doporučený režim nasazení zakázat, použijte `--nozip` možnost.
+Tento příkaz se publikuje do existující aplikace Function App v Azure. Pokud se pokusíte publikovat do `<FunctionAppName>` , který ve vašem předplatném neexistuje, zobrazí se chyba. Informace o tom, jak vytvořit aplikaci funkcí z příkazového řádku nebo okna terminálu pomocí Azure CLI nebo Azure PowerShell, najdete v tématu [vytvoření Function App pro provádění bez serveru](./scripts/functions-cli-create-serverless.md). Ve výchozím nastavení tento příkaz používá [vzdálené sestavení](functions-deployment-technologies.md#remote-build) a nasadí vaši aplikaci, aby [běžela z balíčku pro nasazení](run-functions-from-deployment-package.md). Pokud chcete tento doporučený režim nasazení zakázat, použijte `--nozip` možnost.
 
 >[!IMPORTANT]
 > Když vytvoříte aplikaci funkcí v Azure Portal, používá ve výchozím nastavení verzi 3. x modulu runtime funkce. Pokud chcete, aby aplikace Function App používala verzi 1. x modulu runtime, postupujte podle pokynů v části [Spustit ve verzi 1. x](functions-versions.md#creating-1x-apps).

@@ -4,38 +4,38 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: df6f7311613057c445ae714b8b11240d0d5be14b
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 6b16dea3c4f9241133b91b092c90c9056da57de0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99569425"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515003"
 ---
 ### <a name="standard-and-neural-voices"></a>Hlasy Standard a neuronové
 
 Pomocí této tabulky můžete určit dostupnost standardních a neuronové hlasů podle oblasti/koncového bodu:
 
-| Oblast | Koncový bod | Standardní hlasy | Hlasy neuronové |
+| Oblast | Koncový bod | Hlasy neuronové | Standardní hlasy |
 |--------|----------|-----------------|---------------|
 | Austrálie – východ | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | Yes |
-| Brazílie – jih | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | No |
+| Brazílie – jih | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/v1` | No | Yes |
 | Střední Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | Yes |
-| USA – střed | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | No |
-| Východní Asie | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | No |
+| USA – střed | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | No | Yes |
+| Východní Asie | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1` | No | Yes |
 | East US | `https://eastus.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | Yes |
-| USA – východ 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | No |
-| Francie – střed | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | No |
+| USA – východ 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1` | No | Yes |
+| Francie – střed | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1` | No | Yes |
 | Indie – střed | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | Yes |
-| Japonsko – východ | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | No |
-| Japonsko – západ | `https://japanwest.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | No |
-| Jižní Korea – střed | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | No |
-| USA – středosever | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | No |
-| Severní Evropa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | No |
+| Japonsko – východ | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1` | No | Yes |
+| Japonsko – západ | `https://japanwest.tts.speech.microsoft.com/cognitiveservices/v1` | No | Yes |
+| Jižní Korea – střed | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1` | No | Yes |
+| USA – středosever | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | No | Yes |
+| Severní Evropa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1` | No | Yes |
 | Středojižní USA | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | Yes |
 | Southeast Asia | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | Yes |
 | Spojené království – jih | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | Yes |
 | West Europe | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | Yes |
-| USA – západ | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | No |
+| USA – západ | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` | No | Yes |
 | Západní USA 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` | Yes | Yes |
 
 > [!TIP]
@@ -78,3 +78,15 @@ Následující tabulka obsahuje podrobnosti o regionální podpoře pro vlastní
 | Znaky v reálném čase | Východní USA, Západní USA 2, Střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Západní Evropa, Austrálie – východ |
 | Dlouhé zvukové znaky | Východní USA, Západní Evropa, Velká Británie – jih, jihovýchodní Asie, Indie – střed |
 | Vlastní školení neuronové | Východní USA Velká Británie – jih |
+
+### <a name="long-audio-api"></a>Rozhraní API pro dlouhé zvukové zařízení
+
+Rozhraní API pro dlouhé zvukové rozhraní je k dispozici ve více oblastech s jedinečnými koncovými body.
+
+| Oblast | Koncový bod |
+|--------|----------|
+| East US | `https://eastus.customvoice.api.speech.microsoft.com` |
+| Indie – střed | `https://centralindia.customvoice.api.speech.microsoft.com` |
+| Southeast Asia | `https://southeastasia.customvoice.api.speech.microsoft.com` |
+| Spojené království – jih | `https://uksouth.customvoice.api.speech.microsoft.com` |
+| West Europe | `https://westeurope.customvoice.api.speech.microsoft.com` |

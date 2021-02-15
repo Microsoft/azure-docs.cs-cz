@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat z HubSpot pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z HubSpot do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: jingwang
-ms.openlocfilehash: 151f156439a40b2e5515886849635f00b2fcc1e7
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 7f2ab069be7985376c44f2cd2ae3ccdd728d4e2a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680904"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385655"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory"></a>Kopírování dat z HubSpot pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -47,14 +42,14 @@ Pro propojenou službu HubSpot jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **HubSpot** . | Ano |
-| clientId | ID klienta přidružené k vaší aplikaci HubSpot Naučte se vytvářet aplikace v HubSpot [odsud.](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot) | Ano |
-| clientSecret | Tajný kód klienta přidružený k vaší aplikaci HubSpot Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| accessToken | Přístupový token získaný při počátečním ověřování integrace OAuth. Přečtěte si, jak získat přístupový token pomocí ID klienta a tajného kódu z [tohoto místa](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens). Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| Refreshtoken kontextového tokenu | Obnovovací token získaný při počátečním ověřování integrace OAuth. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
-| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | Ne |
-| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | Ne |
+| typ | Vlastnost Type musí být nastavená na: **HubSpot** . | Yes |
+| clientId | ID klienta přidružené k vaší aplikaci HubSpot Naučte se vytvářet aplikace v HubSpot [odsud.](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot) | Yes |
+| clientSecret | Tajný kód klienta přidružený k vaší aplikaci HubSpot Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| accessToken | Přístupový token získaný při počátečním ověřování integrace OAuth. Přečtěte si, jak získat přístupový token pomocí ID klienta a tajného kódu z [tohoto místa](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens). Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| Refreshtoken kontextového tokenu | Obnovovací token získaný při počátečním ověřování integrace OAuth. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | No |
+| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | No |
+| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | No |
 
 **Příklad:**
 
@@ -90,7 +85,7 @@ Chcete-li kopírovat data z HubSpot, nastavte vlastnost Type datové sady na **H
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **HubspotObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **HubspotObject** . | Yes |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad**
@@ -120,8 +115,8 @@ Chcete-li kopírovat data z HubSpot, nastavte typ zdroje v aktivitě kopírován
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **HubspotSource** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Companies where Company_Id = xxx"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **HubspotSource** . | Yes |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM Companies where Company_Id = xxx"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
 

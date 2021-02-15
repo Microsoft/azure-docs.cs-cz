@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: e74c96e0c03d75f34a16d95d0bed642c1900f558
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: db3b62e7ce07c1e10bc5030c37cb8957d281ea05
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219719"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517293"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Zálohování a obnovení v Azure Database for PostgreSQL – jeden server
 
@@ -66,7 +66,7 @@ K dispozici jsou dva typy obnovení:
 - Obnovení k určitému **bodu v čase** je dostupné s možností redundance zálohy a vytvoří nový server ve stejné oblasti jako původní server.
 - **Geografické obnovení** je k dispozici pouze v případě, že jste server nakonfigurovali pro geograficky redundantní úložiště a máte možnost obnovit server do jiné oblasti.
 
-Odhadovaná doba obnovení závisí na několika faktorech, včetně velikostí databází, velikosti transakčního protokolu, šířky pásma sítě a celkového počtu databází obnovování ve stejné oblasti ve stejnou dobu. Doba obnovení je obvykle méně než 12 hodin.
+Odhadovaná doba obnovení závisí na několika faktorech, včetně velikostí databází, velikosti transakčního protokolu, šířky pásma sítě a celkového počtu databází obnovování ve stejné oblasti ve stejnou dobu. Doba obnovení se liší v závislosti na posledním zálohování dat a množství obnovení je nutné provést. Obvykle je méně než 12 hodin.
 
 > [!NOTE] 
 > Pokud je váš zdrojový server PostgreSQL zašifrovaný pomocí klíčů spravovaných zákazníkem, přečtěte si prosím [dokumentaci](concepts-data-encryption-postgresql.md) , kde najdete další informace. 

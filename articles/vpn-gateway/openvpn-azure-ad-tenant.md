@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3055c9dd1294af81c6c52603dd60bb5aa6075abd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: bff1eec0152ab0f57edd212adf6b14f7b588fb51
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92777856"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390160"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Vytvoření tenanta Azure Active Directory pro připojení typu point-to-site přes protokol OpenVPN
 
@@ -36,13 +36,13 @@ Váš tenant Azure AD potřebuje tyto účty: účet globálního správce a hla
 Použijte postup v části [Přidání nebo odstranění uživatelů – Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md) k vytvoření alespoň dvou uživatelů pro vašeho TENANTA Azure AD. Nezapomeňte změnit **roli adresáře** , aby se vytvořily typy účtů:
 
 * Globální správce
-* Uživatel
+* User
 
 ## <a name="3-enable-azure-ad-authentication-on-the-vpn-gateway"></a><a name="enable-authentication"></a>3. povolení ověřování Azure AD na bráně VPN
 
 1. Vyhledejte ID adresáře adresáře, který chcete použít pro ověřování. Je uvedený v části Properties (vlastnosti) stránky Active Directory.
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/directory-id.png" alt-text="Nový tenant Azure AD" lightbox="./media/openvpn-create-azure-ad-tenant/directory-id.png":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/directory-id.png" alt-text="Snímek obrazovky, který zobrazuje vlastnosti adresáře" lightbox="./media/openvpn-create-azure-ad-tenant/directory-id.png":::
 
 1. Zkopírujte ID adresáře.
 
@@ -80,13 +80,13 @@ Použijte postup v části [Přidání nebo odstranění uživatelů – Azure A
 
 1. Pokud se zobrazí výzva, vyberte **globální účet správce** .
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/pick.png" alt-text="Nový tenant Azure AD" border="false":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/pick.png" alt-text="Výběr účtu" border="false":::
 1. Po zobrazení výzvy vyberte **přijmout** .
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/accept.jpg" alt-text="Nový tenant Azure AD" border="false":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/accept.jpg" alt-text="Snímek obrazovky se zobrazenými oprávněními pro zprávy, která požádala o přijetí ve vaší organizaci s podrobnostmi a možnost přijmout." border="false":::
 1. V rámci Azure AD se v **podnikových aplikacích** zobrazí uvedená služba **Azure VPN** .
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/azurevpn.png" alt-text="Nový tenant Azure AD" lightbox="./media/openvpn-create-azure-ad-tenant/azurevpn.png" :::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/azurevpn.png" alt-text="Snímek obrazovky zobrazující stránku všechny aplikace" lightbox="./media/openvpn-create-azure-ad-tenant/azurevpn.png" :::
 1. Pokud ještě nemáte funkční prostředí Point-to-site, postupujte podle pokynů a vytvořte si ho. Pokud chcete vytvořit a nakonfigurovat bránu VPN typu Point-to-site, přečtěte si téma [vytvoření sítě VPN typu Point-to-site](vpn-gateway-howto-point-to-site-resource-manager-portal.md) .
 
     > [!IMPORTANT]
@@ -98,10 +98,10 @@ Použijte postup v části [Přidání nebo odstranění uživatelů – Azure A
 
    * **Cílová skupina:** ApplicationID pro Azure AD podnikovou aplikaci Azure VPN ```{AppID of the "Azure VPN" AD Enterprise app}```
 
-   * **Vystavitel** : adresa URL služby tokenu zabezpečení ```https://sts.windows.net/{AzureAD TenantID}/```
+   * **Vystavitel**: adresa URL služby tokenu zabezpečení ```https://sts.windows.net/{AzureAD TenantID}/```
 
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/azure-ad-auth-portal.png" alt-text="Nový tenant Azure AD" border="false":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/azure-ad-auth-portal.png" alt-text="SAzure VPN" border="false":::
 
    > [!NOTE]
    > Nezapomeňte na konec hodnoty zahrnout koncové lomítko `AadIssuerUri` . V opačném případě se může stát, že připojení selže.
@@ -117,4 +117,4 @@ Použijte postup v části [Přidání nebo odstranění uživatelů – Azure A
 
 ## <a name="next-steps"></a>Další kroky
 
-K virtuální síti musíte vytvořit a nakonfigurovat profil klienta VPN. Viz téma [Konfigurace klienta VPN pro připojení P2S VPN](openvpn-azure-ad-client.md).
+Vytvořte a nakonfigurujte profil klienta VPN. Viz téma [Konfigurace klienta VPN pro připojení P2S VPN](openvpn-azure-ad-client.md).

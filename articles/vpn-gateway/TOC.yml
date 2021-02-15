@@ -14,7 +14,21 @@
 - name: ukázky
   items:
     - name: Azure PowerShell
-      href: powershell-samples.md
+      items:
+        - name: Ukázkové skripty
+          href: powershell-samples.md
+        - name: Vytvoření brány VPN
+          href: scripts/vpn-gateway-sample-create-vpn-gateway-powershell.md
+        - name: VPN Gateway + P2S RADIUS
+          href: scripts/vpn-gateway-sample-point-to-site-radius-authentication-powershell.md
+        - name: Ověřování certifikátů brány VPN Gateway + P2S
+          href: scripts/vpn-gateway-sample-point-to-site-certificate-authentication-powershell.md
+        - name: VPN Gateway + site-to-site
+          href: scripts/vpn-gateway-sample-site-to-site-powershell.md
+        - name: VNet-to-VNet
+          href: scripts/vpn-gateway-sample-vnet-vnet-powershell.md
+        - name: Stažení šablony zařízení VPN
+          href: scripts/vpn-gateway-sample-site-to-site-download-devicescript-powershell.md
 - name: Koncepty
   items:
     - name: Práce na dálku
@@ -101,8 +115,6 @@
           href: ../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
         - name: Síť VPN přes privátní partnerské vztahy
           href: site-to-site-vpn-private-peering.md
-    - name: Připojení site-to-site mezi Azure a AWS
-      href: create-vpn-azure-aws-managed-solutions.md
     - name: Připojení typu VNet-to-VNet
       items:
         - name: Konfigurace připojení typu VNet-to-VNet

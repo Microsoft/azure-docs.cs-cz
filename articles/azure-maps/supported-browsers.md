@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: f51b46efcaf9be4f51e96b038b93562d0e3eae0b
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6321b96cb3db570102f138dcfd949d9c32daedbc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601160"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384465"
 ---
 # <a name="web-sdk-supported-browsers"></a>Podporované prohlížeče pro sadu Web SDK
 
@@ -72,6 +72,8 @@ Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure M
 </iframe>
 
 Další ukázky kódu používající Azure Maps v letáku najdete [tady](https://azuremapscodesamples.azurewebsites.net/?search=leaflet).
+
+[Zde](open-source-projects.md#third-part-map-control-plugins) je několik oblíbených open source mapových ovládacích prvků, které Azure Maps tým vytvořil modul plug-in pro.
 
 ## <a name="next-steps"></a>Další kroky
 
