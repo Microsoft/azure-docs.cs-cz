@@ -1,21 +1,20 @@
 ---
-title: Jak škálovat Azure cache pro Redis
+title: Škálování mezipaměti Azure pro instanci Redis
 description: Naučte se škálovat mezipaměť Azure pro instance Redis pomocí Azure Portal a nástrojů jako Azure PowerShell a Azure CLI.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.custom: devx-track-csharp
-ms.date: 04/11/2017
-ms.openlocfilehash: 332233873bfbcb2ae77f5a70b4aaa5a6102cecec
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 02/08/2021
+ms.openlocfilehash: 2913869067ff138922ebb7ea1483a1132e360d29
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537843"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382391"
 ---
-# <a name="how-to-scale-azure-cache-for-redis"></a>Jak škálovat Azure cache pro Redis
-Mezipaměť Azure pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti. Po vytvoření mezipaměti můžete velikost a cenovou úroveň mezipaměti škálovat, pokud se změní požadavky vaší aplikace. V tomto článku se dozvíte, jak škálovat mezipaměť pomocí Azure Portal a nástrojů jako Azure PowerShell a Azure CLI.
+# <a name="scale-an-azure-cache-for-redis-instance"></a>Škálování mezipaměti Azure pro instanci Redis
+Mezipaměť Azure pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti. V případě mezipaměti Basic, Standard nebo Premium můžete změnit její velikost a úroveň, aby se zajistilo, že budou splňovat požadavky vaší aplikace. V tomto článku se dozvíte, jak škálovat mezipaměť pomocí Azure Portal a nástrojů jako Azure PowerShell a Azure CLI.
 
 ## <a name="when-to-scale"></a>Kdy škálovat
 Funkce [monitorování](cache-how-to-monitor.md) mezipaměti Azure cache pro Redis můžete použít k monitorování stavu a výkonu mezipaměti a k určení, kdy se má mezipaměť škálovat. 
@@ -34,7 +33,7 @@ Pokud chcete škálovat mezipaměť, [přejděte do mezipaměti](cache-configure
 
 ![Měřítko](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
-V okně **vyberte cenovou úroveň** vyberte požadovanou cenovou úroveň a klikněte na **Vybrat** .
+V okně **vyberte cenovou úroveň** vyberte požadovanou cenovou úroveň a klikněte na **Vybrat**.
 
 ![Cenová úroveň][redis-cache-pricing-tier-blade]
 
@@ -52,7 +51,7 @@ I když je mezipaměť škálovatelná na novou cenovou úroveň, v okně **Azur
 
 ![Škálování][redis-cache-scaling]
 
-Po dokončení škálování se stav změní z **škálování** na **spuštěno** .
+Po dokončení škálování se stav změní z **škálování** na **spuštěno**.
 
 ## <a name="how-to-automate-a-scaling-operation"></a>Automatizace operace škálování
 Kromě škálování instancí mezipaměti v Azure Portal můžete škálovat pomocí rutin PowerShellu, rozhraní příkazového řádku Azure a pomocí knihoven pro správu Microsoft Azure (MAML). 
@@ -174,7 +173,7 @@ Pokud operace škálování selže, služba se pokusí operaci vrátit zpět a m
 Doba škálování závisí na tom, kolik dat je v mezipaměti, přičemž dokončení větších objemů dat trvá delší dobu. Škálování trvá přibližně 20 minut. U clusterovaných mezipamětí zabere škálování přibližně 20 minut na horizontálních oddílů.
 
 ### <a name="how-can-i-tell-when-scaling-is-complete"></a>Jak poznám, kdy je možné škálování dokončit?
-V Azure Portal vidíte, že probíhá operace škálování. Po dokončení škálování se stav mezipaměti změní na **spuštěno** .
+V Azure Portal vidíte, že probíhá operace škálování. Po dokončení škálování se stav mezipaměti změní na **spuštěno**.
 
 <!-- IMAGES -->
 

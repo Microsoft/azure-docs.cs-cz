@@ -52,7 +52,11 @@
             - name: Skriptovaná verze
               href: how-to-set-up-instance-scripted.md
         - name: Povolení privátního přístupu pomocí Private Linku
-          href: how-to-enable-private-link.md
+          items:
+            - name: Portálová verze
+              href: how-to-enable-private-link-portal.md
+            - name: Verze rozhraní příkazového řádku
+              href: how-to-enable-private-link-cli.md
         - name: Zápis ověřovacího kódu aplikace
           href: how-to-authenticate-client.md
         - name: Vytvoření registrace aplikace
@@ -103,12 +107,16 @@
       items:
         - name: Správa koncových bodů a tras
           items:
-            - name: Verze CLI a rozhraní API
-              href: how-to-manage-routes-apis-cli.md
             - name: Portálová verze
               href: how-to-manage-routes-portal.md
+            - name: Verze CLI a rozhraní API
+              href: how-to-manage-routes-apis-cli.md
         - name: Povolení spravované identity pro události směrování
-          href: how-to-enable-managed-identities.md
+          items:
+            - name: Portálová verze
+              href: how-to-enable-managed-identities-portal.md
+            - name: Verze rozhraní příkazového řádku
+              href: how-to-enable-managed-identities-cli.md
         - name: Integrace s Azure Maps
           href: how-to-integrate-maps.md
         - name: Integrace se službou Azure Time Series Insights

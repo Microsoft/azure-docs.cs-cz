@@ -6,17 +6,17 @@ author: tamram
 services: storage
 ms.author: tamram
 ms.reviewer: ozguns
-ms.date: 09/08/2020
+ms.date: 02/10/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 504d2eb939758e6045a2af095c66093c8754cb94
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: fbb96fc1d2cb12e1aede07295357abfaa6d6b67f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590745"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385009"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>Vyberte, jak autorizovat přístup k datům ve frontě v Azure Portal
 
@@ -28,16 +28,19 @@ V závislosti na tom, jak chcete autorizovat přístup k datům ve frontě v Azu
 
 ### <a name="use-the-account-access-key"></a>Použití přístupového klíče účtu
 
-Pokud chcete získat přístup k datům front pomocí přístupového klíče účtu, musíte mít přiřazenou roli Azure, která zahrnuje akci Azure RBAC `Microsoft.Storage/storageAccounts/listkeys/action` . Tato role Azure může být integrovaná nebo vlastní role. Mezi předdefinované role, které podporují `Microsoft.Storage/storageAccounts/listkeys/action` :
+Pokud chcete získat přístup k datům front pomocí přístupového klíče účtu, musíte mít přiřazenou roli Azure, která zahrnuje akci Azure RBAC **Microsoft. Storage/storageAccounts/klíče listkey/Action**. Tato role Azure může být integrovaná nebo vlastní role. Předdefinované role, které podporují **Microsoft. Storage/storageAccounts/klíče listkey/Action** , zahrnují:
 
 - [Role vlastníka](../../role-based-access-control/built-in-roles.md#owner) Azure Resource Manager
 - [Role přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) Azure Resource Manager
 - [Role Přispěvatel účtu úložiště](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Když se pokusíte o přístup k datům ve frontě v Azure Portal, portál nejprve zkontroluje, jestli vám byla přiřazena role `Microsoft.Storage/storageAccounts/listkeys/action` . Pokud jste k této akci přiřadili roli, portál použije klíč účtu pro přístup k datům ve frontě. Pokud jste k této akci nepřiřadili roli, pokusí se portál získat přístup k datům pomocí účtu Azure AD.
+Když se pokusíte o přístup k datům ve frontě v Azure Portal, portál nejprve zkontroluje, jestli vám byla přiřazena role s **Microsoft. Storage/storageAccounts/klíče listkey/Action**. Pokud jste k této akci přiřadili roli, portál použije klíč účtu pro přístup k datům ve frontě. Pokud jste k této akci nepřiřadili roli, pokusí se portál získat přístup k datům pomocí účtu Azure AD.
+
+> [!IMPORTANT]
+> Když je účet úložiště zamčený s Azure Resource Manager zámek **jen pro čtení** , není pro tento účet úložiště povolená operace se [seznamem klíčů](/rest/api/storagerp/storageaccounts/listkeys) . **Seznam klíčů** je operace post a všechny operace post jsou znemožněny, když je pro tento účet nakonfigurován zámek **ReadOnly** . Z tohoto důvodu, když je účet uzamčený pomocí zámku **jen pro čtení** , musí uživatelé použít přihlašovací údaje Azure AD pro přístup k datům ve frontě na portálu. Informace o přístupu k datům ve frontě na portálu pomocí Azure AD najdete v tématu [použití účtu Azure AD](#use-your-azure-ad-account).
 
 > [!NOTE]
-> **Správci služby** pro klasický odběr role správce a **spolusprávce** zahrnují ekvivalent [`Owner`](../../role-based-access-control/built-in-roles.md#owner) role Azure Resource Manager. Role **vlastníka** zahrnuje všechny akce, včetně `Microsoft.Storage/storageAccounts/listkeys/action` , takže uživatel s jednou z těchto rolí pro správu může k datům fronty přistupovat také pomocí klíče účtu. Další informace najdete v tématech [role správců klasického předplatného, role Azure a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
+> **Správci služby** pro klasický odběr role správce a **spolusprávce** zahrnují ekvivalent [`Owner`](../../role-based-access-control/built-in-roles.md#owner) role Azure Resource Manager. Role **vlastníka** zahrnuje všechny akce, včetně **Microsoft. Storage/storageAccounts/klíče listkey/Action**, takže uživatel s jednou z těchto rolí pro správu může také přistupovat k datům z fronty pomocí klíče účtu. Další informace najdete v tématech [role správců klasického předplatného, role Azure a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 ### <a name="use-your-azure-ad-account"></a>Použití účtu Azure AD
 
@@ -58,7 +61,7 @@ Vlastní role mohou podporovat různé kombinace stejných oprávnění poskytov
 Výpis front s rolí správce předplatného s klasickou sadou není podporován. K vypsání front se musí uživatel přiřadit k rolím **čtenář** Azure Resource Manager, roli **čtečky dat fronty úložiště** nebo k roli **Přispěvatel dat fronty úložiště** .
 
 > [!IMPORTANT]
-> Verze Preview Průzkumník služby Storage v Azure Portal nepodporuje použití přihlašovacích údajů Azure AD k zobrazení a úpravě dat fronty. Průzkumník služby Storage v Azure Portal vždy používá klíče účtu pro přístup k datům. Pokud chcete použít Průzkumník služby Storage v Azure Portal, musíte mít přiřazenou roli, která zahrnuje `Microsoft.Storage/storageAccounts/listkeys/action` .
+> Verze Preview Průzkumník služby Storage v Azure Portal nepodporuje použití přihlašovacích údajů Azure AD k zobrazení a úpravě dat fronty. Průzkumník služby Storage v Azure Portal vždy používá klíče účtu pro přístup k datům. Pokud chcete použít Průzkumník služby Storage v Azure Portal, musíte mít přiřazenou roli, která zahrnuje **Microsoft. Storage/storageAccounts/klíče listkey/Action**.
 
 ## <a name="navigate-to-queues-in-the-azure-portal"></a>Přejděte do fronty v Azure Portal
 
@@ -95,6 +98,6 @@ Pokud nemáte přístup k klíčům účtu, nejsou fronty na portálu uvedené. 
 ## <a name="next-steps"></a>Další kroky
 
 - [Ověřování přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](../common/storage-auth-aad.md)
-- [Přiřazení role Azure pro přístup k datům BLOB a Queue pomocí Azure Portal](../common/storage-auth-aad-rbac-portal.md)
+- [Přiřazení role Azure pro přístup k datům objektů blob a front pomocí webu Azure Portal](../common/storage-auth-aad-rbac-portal.md)
 - [Přiřazení role Azure pro přístup k datům objektů BLOB a front pomocí Azure CLI](../common/storage-auth-aad-rbac-cli.md)
 - [Použití modulu Azure PowerShell k přiřazení role Azure pro přístup k datům objektů BLOB a front](../common/storage-auth-aad-rbac-powershell.md)

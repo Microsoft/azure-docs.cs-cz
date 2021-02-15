@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 31ca65099d645b7fdfee70275515f0a864cd905f
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: dbe0b5ac207b361a9584603bbe2d59abd5e5ca4e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007393"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390398"
 ---
 # <a name="whats-new-in-computer-vision"></a>Co je nového v Počítačové zpracování obrazu
 
@@ -26,7 +26,7 @@ Zjistěte, co je nového ve službě. Tyto položky můžou být poznámky k ver
 ### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>Čtení rozhraní API v 3.2 Public Preview s podporou OCR pro jazyky 73
 Počítačové zpracování obrazu Read API verze 3.2 Public Preview, který je k dispozici jako cloudová služba a kontejner Docker, zahrnuje tyto aktualizace:
 * [Optické rozpoznávání znaků pro jazyky 73](./language-support.md#optical-character-recognition-ocr) , včetně zjednodušených a tradičních jazyků v čínštině, japonštině, korejštině a latince.
-* Přirozené pořadí čtení pro výstup textového řádku.
+* Přirozené pořadí čtení pro výstup textového řádku (pouze jazyky latinky)
 * Klasifikace stylu rukopisu pro textové řádky spolu se stupněm spolehlivosti (jenom pro jazyky latinky)
 * Extrahuje text pouze pro vybrané stránky pro vícestránkové dokument.
 * K dispozici jako [Distroless kontejner](./computer-vision-how-to-install-containers.md?tabs=version-3-2) pro místní nasazení.

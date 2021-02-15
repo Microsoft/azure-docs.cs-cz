@@ -1,21 +1,17 @@
 ---
 title: Monitorování prostředí Integration runtime v Azure Data Factory
 description: Naučte se monitorovat různé typy prostředí Integration runtime v Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/11/2020
 author: dcstwh
 ms.author: weetok
-manager: anandsub
-ms.openlocfilehash: fa71dc1e6b3a09827f2ad3d9f714622da5a36222
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: a52fad39e19bdf2edf110990c8f0e392ec5803ce
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862441"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377495"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorování prostředí Integration Runtime ve službě Azure Data Factory
 
@@ -48,11 +44,11 @@ Následující tabulka uvádí popis vlastností vrácených rutinou pro prostř
 | Vlastnost | Popis |
 -------- | ------------- | 
 | Název | Název prostředí Azure Integration runtime. |  
-| Stav | Stav prostředí Azure Integration runtime. | 
+| State | Stav prostředí Azure Integration runtime. | 
 | Umístění | Umístění prostředí Azure Integration runtime. Podrobnosti o umístění prostředí Azure Integration runtime najdete v tématu [Úvod do prostředí Integration runtime](concepts-integration-runtime.md). |
 | DataFactoryName | Název objektu pro vytváření dat, ke kterému patří Azure Integration runtime | 
 | ResourceGroupName | Název skupiny prostředků, do které patří objekt pro vytváření dat.  |
-| Popis | Popis prostředí Integration runtime.  |
+| Description | Popis prostředí Integration runtime.  |
 
 ### <a name="status"></a>Status
 
@@ -103,7 +99,7 @@ Následující tabulka uvádí možné stavy uzlu Integration runtime v místní
 | ------ | ------------------ | 
 | Online | Uzel je připojen ke službě Data Factory. |
 | Offline | Uzel je offline. |
-| Inovován | Uzel se automaticky aktualizuje. |
+| Upgrade | Uzel se automaticky aktualizuje. |
 | Omezeně | Kvůli problému s připojením. Může to být kvůli problému s portem HTTP 8060, potížím s připojením k Service Bus nebo problémům s synchronizací přihlašovacích údajů. |
 | Inactive | Uzel je v konfiguraci odlišnou od konfigurace jiných majoritní uzlů. |
 
@@ -175,13 +171,13 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 
 Následující tabulka uvádí popisy vlastností vrácených výše uvedenou rutinou pro Azure-SSIS IR.
 
-| Vlastnost/stav              | Popis                  |
+| Vlastnost/stav              | Description                  |
 | ---------------------------- | ---------------------------- |
 | CreateTime                   | Čas UTC, kdy byl vytvořen Azure-SSIS IR. |
 | Uzly                        | Přidělené nebo dostupné uzly vašeho Azure-SSIS IR se stavem specifickým pro uzel (spuštění/k dispozici/recyklace/nedostupné) a chybami, které lze provést. |
 | OtherErrors                  | Chyby, které nejsou specifické pro uzel v Azure-SSIS IR. |
 | LastOperation                | Výsledek poslední operace spuštění/zastavení ve vašem Azure-SSIS IR s chybami, pokud se nezdařila. |
-| Stav                        | Celkový stav vašeho Azure-SSIS IR (počáteční/počáteční/spuštěný/zastavný/zastavený/zastavený). |
+| State                        | Celkový stav vašeho Azure-SSIS IR (počáteční/počáteční/spuštěný/zastavný/zastavený/zastavený). |
 | Umístění                     | Umístění vašeho Azure-SSIS IR. |
 | NodeSize                     | Velikost každého uzlu v Azure-SSIS IR. |
 | NodeCount                    | Počet uzlů v Azure-SSIS IR. |
@@ -196,14 +192,14 @@ Následující tabulka uvádí popisy vlastností vrácených výše uvedenou ru
 | Typ                         | Typ IR (spravovaný nebo v místním prostředí) vašeho Azure-SSIS IR. |
 | ResourceGroupName            | Název skupiny prostředků Azure, ve které byly vytvořeny ADF a Azure-SSIS IR. |
 | DataFactoryName              | Název vašeho ADF. |
-| Název                         | Název vašeho Azure-SSIS IR. |
-| Popis                  | Popis Azure-SSIS IR. |
+| Name                         | Název vašeho Azure-SSIS IR. |
+| Description                  | Popis Azure-SSIS IR. |
   
 #### <a name="status-per-azure-ssis-ir-node"></a>Stav (na uzel Azure-SSIS IR)
 
 Následující tabulka uvádí možné stavy Azure-SSIS IR uzlu:
 
-| Stav specifický pro uzel | Popis |
+| Stav specifický pro uzel | Description |
 | -------------------- | ----------- | 
 | Spouštění             | Připravuje se tento uzel. |
 | K dispozici            | Tento uzel je připravený na nasazení/spouštění balíčků SSIS. |
@@ -214,7 +210,7 @@ Následující tabulka uvádí možné stavy Azure-SSIS IR uzlu:
 
 Následující tabulka uvádí možné celkové stavy Azure-SSIS IR. Celkový stav naopak závisí na kombinovaných stavech všech uzlů, které patří do Azure-SSIS IR. 
 
-| Celkový stav | Popis | 
+| Celkový stav | Description | 
 | -------------- | ----------- | 
 | Počáteční        | Uzly vaší Azure-SSIS IR nebyly přiděleny nebo připraveny. | 
 | Spouštění       | Uzly vaší Azure-SSIS IR jsou přiděleny/připraveny a bylo zahájeno fakturaci. |

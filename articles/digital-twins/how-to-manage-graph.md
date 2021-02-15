@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 037e7fd13f55a0f5de939197f71324221392bd55
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: bc548d4cc728611387b36451d563be6ca0e21530
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601073"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388188"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Správa grafu digitálních vláken pomocí vztahů
 
@@ -115,6 +115,21 @@ Pomocí výše uvedených metod můžete pro výpis odchozích a příchozích v
 Tuto funkci teď můžete zavolat v metodě Main takto: 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFetchAndPrint":::
+
+## <a name="update-relationships"></a>Aktualizace relací
+
+Relace se aktualizují pomocí `UpdateRelationship` metody. 
+
+>[!NOTE]
+>Tato metoda je určena pro aktualizaci **vlastností** relace. Pokud potřebujete změnit zdrojovou a cílovou dvojitou závislost vztahu, budete muset [relaci odstranit](#delete-relationships) a [znovu ji vytvořit](#create-relationships) pomocí nových vláken.
+
+Požadované parametry pro klientské volání jsou ID vlákna zdroje (vlákna, kde relace vznikla), ID relace, která se má aktualizovat, a dokument s [opravou JSON](http://jsonpatch.com/) obsahující vlastnosti a nové hodnoty, které chcete aktualizovat.
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UpdateRelationshipMethod":::
+
+Zde je příklad volání této metody, předání dokumentu opravy JSON s informacemi o aktualizaci vlastnosti.
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseUpdateRelationship":::
 
 ## <a name="delete-relationships"></a>Odstranit relace
 

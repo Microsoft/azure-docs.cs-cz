@@ -1,19 +1,19 @@
 ---
-title: Monitorování Azure Cache for Redis
+title: Monitorování mezipaměti Azure pro Redis
 description: Naučte se monitorovat stav a výkon pro instance Redis v mezipaměti Azure.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 07/13/2017
-ms.openlocfilehash: 3d19d8f1b6a44f32e92f82e861471ca9b5c8fa41
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.date: 02/08/2021
+ms.openlocfilehash: ea99c34f03cd74185840767605c17ee6c65eb701
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327334"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389701"
 ---
-# <a name="how-to-monitor-azure-cache-for-redis"></a>Monitorování Azure Cache for Redis
+# <a name="monitor-azure-cache-for-redis"></a>Monitorování mezipaměti Azure pro Redis
 
 Azure cache pro Redis používá [Azure monitor](../azure-monitor/index.yml) k poskytnutí několika možností monitorování instancí mezipaměti. Můžete zobrazit metriky, připnout grafy metriky na úvodní panel, přizpůsobit datum a časový rozsah grafů monitorování, přidat a odebrat metriky z grafů a nastavit upozornění, když budou splněny určité podmínky. Tyto nástroje vám umožní monitorovat stav mezipaměti Azure pro instance Redis a pomáhat při správě aplikací pro ukládání do mezipaměti.
 
@@ -109,7 +109,7 @@ Každá metrika obsahuje dvě verze. Jedna metrika měří výkon celé mezipam�
 | Příkazy Get |Počet operací GET z mezipaměti během zadaného intervalu generování sestav. Tato hodnota je součtem následujících hodnot z příkazu Redis info All: `cmdstat_get` , `cmdstat_hget` , `cmdstat_hgetall` , `cmdstat_hmget` , `cmdstat_mget` , `cmdstat_getbit` , a a `cmdstat_getrange` je ekvivalentní součtu přístupů do mezipaměti a přístupů během intervalu generování sestav. |
 | Operace za sekundu | Celkový počet příkazů zpracovávaných serverem mezipaměti během zadaného intervalu vytváření sestav za sekundu.  Tato hodnota se mapuje na "instantaneous_ops_per_sec" z příkazu Redis INFO. |
 | Zatížení serveru Redis |Procentuální podíl cyklů, ve kterých je server Redis zaneprázdněný zpracováním, a nečeká na nečinnost u zpráv. Pokud tento čítač dosáhne 100, znamená to, že server Redis dosáhl mezní hodnoty výkonu a procesor nemůže rychleji zpracovat práci. Pokud vidíte vysoké zatížení serveru Redis, zobrazí se v klientovi výjimky časového limitu. V takovém případě byste měli zvážit horizontální navýšení nebo rozdělení dat do více mezipamětí. |
-| Příkazy Set |Počet operací nastavení do mezipaměti během zadaného intervalu generování sestav. Tato hodnota je součtem následujících hodnot z příkazu Redis info All: `cmdstat_set` , `cmdstat_hset` , `cmdstat_hmset` , `cmdstat_hsetnx` , `cmdstat_lset` , `cmdstat_mset` , `cmdstat_msetnx` , `cmdstat_setbit` , `cmdstat_setex` , a `cmdstat_setrange` `cmdstat_setnx` . |
+| Sady |Počet operací nastavení do mezipaměti během zadaného intervalu generování sestav. Tato hodnota je součtem následujících hodnot z příkazu Redis info All: `cmdstat_set` , `cmdstat_hset` , `cmdstat_hmset` , `cmdstat_hsetnx` , `cmdstat_lset` , `cmdstat_mset` , `cmdstat_msetnx` , `cmdstat_setbit` , `cmdstat_setex` , a `cmdstat_setrange` `cmdstat_setnx` . |
 | Celkem klíčů  | Maximální počet klíčů v mezipaměti během uplynulých časových období generování sestav. Tento počet se mapuje `keyspace` z příkazu REDIS info. Z důvodu omezení základního systému metrik pro ukládání do mezipaměti s povoleným clusteringem vrátí funkce Total Keys maximální počet klíčů horizontálních oddílů, který měl maximální počet klíčů během intervalu generování sestav.  |
 | Celkový počet operací |Celkový počet příkazů zpracovaných serverem mezipaměti během zadaného intervalu generování sestav. Tato hodnota se mapuje `total_commands_processed` z příkazu REDIS info. Pokud je mezipaměť Azure pro Redis používána čistě pro Pub/sub, nepoužijí se žádné metriky pro `Cache Hits` , `Cache Misses` , `Gets` nebo `Sets` , ale budou se `Total Operations` zobrazovat metriky, které odrážejí využití mezipaměti pro operace publikování a dílčích operací. |
 | Využitá paměť |Velikost paměti mezipaměti použitá pro páry klíč-hodnota v mezipaměti v MB během zadaného intervalu generování sestav. Tato hodnota se mapuje `used_memory` z příkazu REDIS info. Tato hodnota neobsahuje metadata ani fragmentaci. |

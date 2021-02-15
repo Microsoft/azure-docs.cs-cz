@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, responsible-ml
-ms.openlocfilehash: ee589aed2b8f3c53d21c1f762a5d2027f3762649
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 322b036fee840db58ed610795155af6c9e1320cc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222764"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366947"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Použití Azure Machine Learning s open source balíčkem Fairlearn k vyhodnocení spravedlivosti modelů ML (Preview)
 
@@ -214,10 +214,15 @@ Následující příklad ukazuje, jak použít balíček s příspravedlivosti. 
     1. V levém podokně vyberte **experimenty** a zobrazí se seznam experimentů, které jste spustili v Azure Machine Learning.
     1. Vyberte konkrétní experiment pro zobrazení všech běhů v tomto experimentu.
     1. Vyberte běh a pak kartu **spravedlivé** na řídicí panel vizualizace vysvětlení.
+    1. Po vykládku na kartě **spravedlivosti** klikněte v nabídce na pravé straně na **ID spravedlivého** .
+    1. Řídicí panel si můžete nakonfigurovat tak, že vyberete svůj citlivý atribut, metriku výkonu a spravedlivou metriku, která je zajímavá na stránce pro posouzení spravedlivého využití.
+    1. Přepněte typ grafu z jednoho na druhý, aby se mohla sledovat poškození **přidělení** i poškození **kvality služby** .
 
 
-    [![Řídicí panel spravedlivého](./media/how-to-machine-learning-fairness-aml/dashboard.png)](./media/how-to-machine-learning-fairness-aml/dashboard.png#lightbox)
+
+    [![Přidělení řídicího panelu spravedlivého](./media/how-to-machine-learning-fairness-aml/dashboard-1.png)](./media/how-to-machine-learning-fairness-aml/dashboard-1.png#lightbox)
     
+    [![Kvalita služby na řídicím panelu pro spravedlivé](./media/how-to-machine-learning-fairness-aml/dashboard-2.png)](./media/how-to-machine-learning-fairness-aml/dashboard-2.png#lightbox)
     * **Podokno modely**
     1. Pokud jste svůj původní model zaregistrovali pomocí předchozích kroků, můžete v levém podokně vybrat **modely** a zobrazit je.
     1. Vyberte model a pak kartu **spravedlivé** pro zobrazení řídicího panelu vizualizace vysvětlení.

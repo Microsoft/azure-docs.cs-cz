@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: e4b48729f13ec0234a7a711032a2db34e55a8bd1
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 39a1400bfe642672ba276686851d4f0edebbeb00
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539463"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387848"
 ---
 # <a name="understanding-resource-sets"></a>Principy sad prostředků
 
@@ -86,19 +86,19 @@ Když Azure dosah odpovídá skupině prostředků v sadě prostředků, pokusí
 
 ### <a name="example-1"></a>Příklad 1
 
-Kvalifikovaný název: https://myblob.blob.core.windows.net/sample-data/name-of-spark-output/{SparkPartitions}
+Kvalifikovaný název: `https://myblob.blob.core.windows.net/sample-data/name-of-spark-output/{SparkPartitions}`
 
 Zobrazovaný název: "název výstupu Spark"
 
 ### <a name="example-2"></a>Příklad 2
 
-Kvalifikovaný název: https://myblob.blob.core.windows.net/my-partitioned-data/{Year}-{Month}-{Day}/{N}-{N}-{N}-{N}/{GUID}
+Kvalifikovaný název: `https://myblob.blob.core.windows.net/my-partitioned-data/{Year}-{Month}-{Day}/{N}-{N}-{N}-{N}/{GUID}`
 
 Zobrazovaný název: "moje dělená data"
 
 ### <a name="example-3"></a>Příklad 3
 
-Kvalifikovaný název: https://myblob.blob.core.windows.net/sample-data/data{N}.csv
+Kvalifikovaný název: `https://myblob.blob.core.windows.net/sample-data/data{N}.csv`
 
 Zobrazovaný název: "data"
 

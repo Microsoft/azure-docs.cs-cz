@@ -4,12 +4,12 @@ description: V tomto rychlém startu pomocí JavaScriptu vytvoříte skupinu pro
 ms.date: 02/05/2021
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 25fd93e51c1b49519bb315aab28cdfc44a2a0c58
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 99a2ed406d4837f6fc346e68b3b400003feed38c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593972"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099145"
 ---
 # <a name="quickstart-create-a-management-group-with-javascript"></a>Rychlý Start: Vytvoření skupiny pro správu pomocí JavaScriptu
 
@@ -29,7 +29,7 @@ První skupina pro správu vytvořená v adresáři může trvat až 15 minut, n
 
 ## <a name="application-setup"></a>Nastavení aplikace
 
-Aby bylo možné povolit jazyk JavaScript dotazování na Azure Resource Graph, musí být prostředí nastavené. Tato instalace funguje bez ohledu na to, kde je možné použít JavaScript, včetně [bash ve Windows 10](/windows/wsl/install-win10).
+Aby bylo možné povolit jazyk JavaScript pro správu skupin pro správu, musí být prostředí nastavené. Tato instalace funguje bez ohledu na to, kde je možné použít JavaScript, včetně [bash ve Windows 10](/windows/wsl/install-win10).
 
 1. Vytvořte nový Node.js projekt spuštěním následujícího příkazu.
 

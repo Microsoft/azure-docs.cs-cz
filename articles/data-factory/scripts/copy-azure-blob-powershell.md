@@ -1,21 +1,18 @@
 ---
 title: Kopírování dat v cloudu pomocí PowerShellu
 description: Tento skript PowerShellu kopíruje data z jednoho umístění v Azure Blob Storage do jiného umístění ve stejné Blob Storage.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 9550556aa022a9211072fd4c5fb18acb4ee7882e
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 169420aee32a49549a71746708bd8377a4c63b5d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637985"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370287"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-in-the-cloud"></a>Použití PowerShellu k vytvoření kanálu Data Factory pro kopírování dat v cloudu
 
@@ -25,8 +22,8 @@ Tento ukázkový skript PowerShellu vytvoří v Azure Data Factory kanál, kter�
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
-* **Účet Azure Storage** . Úložiště objektů blob použijete jako úložiště dat pro **zdroj** i **jímku** . Pokud nemáte účet úložiště Azure, přečtěte si téma [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md) při jeho vytváření. 
+## <a name="prerequisites"></a>Požadavky
+* **Účet Azure Storage**. Úložiště objektů blob použijete jako úložiště dat pro **zdroj** i **jímku**. Pokud nemáte účet úložiště Azure, přečtěte si téma [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md) při jeho vytváření. 
 * Vytvořte **kontejner objektů blob** ve službě Blob Storage, v tomto kontejneru vytvořte vstupní **složku** a uložte do ní nějaké soubory. Pomocí nástrojů, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) , se můžete připojit k úložišti objektů BLOB v Azure, vytvořit kontejner objektů blob, nahrát vstupní soubor a ověřit výstupní soubor.
 
 ## <a name="sample-script"></a>Ukázkový skript

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 01/11/2021
-ms.openlocfilehash: 7bb9c8552f673587891fde12e25d4fb899726c22
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 4d83609eea57c2350881360ef757b1a291627c23
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108564"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374724"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Přístup k prostředkům Azure Virtual Network z Azure Logic Apps pomocí prostředí integračních služeb (ISEs)
 
@@ -93,20 +93,22 @@ Chcete-li získat přístup k místním systémům a zdrojům dat, které nemaj�
 
 ## <a name="ise-skus"></a>ISE SKU
 
-Při vytváření ISE můžete vybrat SKU pro vývojáře nebo SKU úrovně Premium. Zde jsou rozdíly mezi těmito SKU:
+Při vytváření ISE můžete vybrat SKU pro vývojáře nebo SKU úrovně Premium. Tato možnost SKU je k dispozici pouze při vytváření ISE a nedá se změnit později. Zde jsou rozdíly mezi těmito SKU:
 
 * **Vývojář**
 
-  Poskytuje ISE s nižšími náklady, které můžete použít pro experimentování, vývoj a testování, ale ne pro produkční nebo výkonnostní testování. SKU pro vývojáře obsahuje integrované triggery a akce, standardní konektory, podnikové konektory a jeden účet pro integraci [bezplatné úrovně](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) za pevnou měsíční cenu. Tato SKU ale nezahrnuje žádnou smlouvu o úrovni služeb (SLA), možnosti pro škálování kapacity nebo redundanci při recyklaci, což znamená, že se můžete setkat s prodlevami nebo výpadky.
+  Poskytuje ISE s nižšími náklady, které můžete použít pro zkoumání, experimenty, vývoj a testování, ale ne pro produkční nebo výkonnostní testování. SKU pro vývojáře obsahuje integrované triggery a akce, standardní konektory, podnikové konektory a jeden účet pro integraci [bezplatné úrovně](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) za [pevnou měsíční cenu](https://azure.microsoft.com/pricing/details/logic-apps). 
+
+  > [!IMPORTANT]
+  > Tato SKU nemá žádnou smlouvu o úrovni služeb (SLA), schopnost horizontálního navýšení kapacity ani redundanci při recyklaci, což znamená, že se může vyskytnout zpoždění nebo výpadek. Aktualizace back-endu můžou službu obcházet bez výpadků.
+
+  Informace o kapacitě a omezeních najdete [v tématu omezení ISE v Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). Informace o tom, jak účtování funguje pro ISEs, najdete v článku o [cenovém modelu Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing).
 
 * **Premium**
 
-  Poskytuje ISE, který můžete použít pro produkční prostředí, včetně podpory SLA, integrovaných triggerů a akcí, standardních konektorů, podnikových konektorů, jednoho účtu pro integraci na [standardní úrovni](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) , možností škálování kapacity a redundance během recyklace za pevnou měsíční cenu.
+  Poskytuje ISE, který můžete použít k testování produkčního prostředí a výkonu. SKU Premium zahrnuje podporu smlouvy SLA, integrovaných triggerů a akcí, standardních konektorů, podnikových konektorů, jediného účtu pro integraci na úrovni [Standard](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) , možností horizontálního navýšení kapacity a redundance během recyklace za [pevnou měsíční cenu](https://azure.microsoft.com/pricing/details/logic-apps).
 
-> [!IMPORTANT]
-> Možnost SKU je k dispozici pouze při vytváření ISE a nedá se změnit později.
-
-Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps/). Informace o cenách a fakturační práci pro ISEs najdete v článku o [cenovém modelu Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing).
+  Informace o kapacitě a omezeních najdete [v tématu omezení ISE v Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). Informace o tom, jak účtování funguje pro ISEs, najdete v článku o [cenovém modelu Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing).
 
 <a name="endpoint-access"></a>
 

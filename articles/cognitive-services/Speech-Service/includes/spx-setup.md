@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: d94b83dd658193069f24202b978d32389eb82ac1
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1eae40437e06bfb150e202db1f3bb4125baeaa97
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580231"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515118"
 ---
 ## <a name="download-and-install"></a>Stažení a instalace
 
@@ -39,6 +39,16 @@ Pokud výstup do souboru, textový editor, jako je například Poznámkový blok
 
 #### <a name="linux-install"></a>[Instalace pro Linux](#tab/linuxinstall)
 
+Pro architektury x64 se pomocí funkce CLI rozpoznávání řeči podporují tyto distribuce Linux:
+
+* CentOS 7/8
+* Debian 9/10 
+* Red Hat Enterprise Linux (RHEL) 7/8
+* Ubuntu 16.04/18.04/20.04
+
+> [!NOTE]
+> Sada Speech SDK podporuje další architektury (ne rozhraní příkazového řádku pro rozpoznávání řeči). Další informace najdete v tématu [o sadě Speech SDK](../speech-sdk.md).
+
 Pomocí těchto kroků nainstalujete rozhraní příkazového řádku pro rozpoznávání řeči v systému Linux na procesor x64:
 
 1. Nainstalujte [.NET Core 3,1](/dotnet/core/install/linux).
@@ -49,7 +59,7 @@ Pomocí těchto kroků nainstalujete rozhraní příkazového řádku pro rozpoz
 Zadáním `spx` zobrazíte nápovědu k rozhraní příkazového řádku pro rozpoznávání řeči.
 
 > [!NOTE]
-> Jako alternativu k NuGet si můžete stáhnout binární soubory v [archivu zip](https://aka.ms/speech/spx-zips.zip), extrahovat `spx-netcore-30-linux-x64` do nového `~/spx` adresáře, zadat `sudo chmod +r+x spx` binární soubor a přidat `~/spx` cestu k systémové proměnné cesty.
+> Jako alternativu k NuGet si můžete stáhnout binární soubory v [archivu zip](https://aka.ms/speech/spx-zips.zip), extrahovat `spx-netcore-30-linux-x64.zip` do nového `~/spx` adresáře, zadat `sudo chmod +r+x spx` binární soubor a přidat `~/spx` cestu k systémové proměnné cesty.
 
 
 #### <a name="docker-install-windows-linux-macos"></a>[Instalace Docker (Windows, Linux, macOS)](#tab/dockerinstall)
@@ -107,7 +117,7 @@ Chcete-li použít `spx` příkaz nainstalovaný v kontejneru, vždy zadejte úp
 Například v systému Windows tento příkaz nastaví klíč:
 
 ```console
-docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
+docker run -it -v c:\spx-data:/data --rm msftspeech/spx config --set @key SUBSCRIPTION-KEY
 ```
 
 Chcete-li rozšířit interakci s nástrojem příkazového řádku, můžete spustit kontejner s interaktivním prostředím bash přidáním parametru EntryPoint.
@@ -160,8 +170,8 @@ Pokud chcete začít používat rozhraní příkazového řádku, musíte zadat 
 Jakmile budete mít svůj klíč předplatného a identifikátor oblasti (např. `eastus`, `westus` ) spusťte následující příkazy.
 
 ```console
-spx config @key --set SUBSCRIPTION-KEY
-spx config @region --set REGION
+spx config --set @key SUBSCRIPTION-KEY
+spx config --set @region REGION
 ```
 
 Ověřování předplatného je nyní uloženo pro budoucí požadavky SPX. Pokud potřebujete některou z těchto uložených hodnot odebrat, spusťte `spx config @region --clear` nebo `spx config @key --clear` .

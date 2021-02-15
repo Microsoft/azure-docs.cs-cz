@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73946eea846b06b28d0a0f017ea1317c8cc7326d
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 550481b9153d8fe8745d2a745fe6b6f00d09cdb1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165140"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365816"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Nejčastější dotazy ke správě zařízení Azure Active Directory
 
@@ -299,6 +299,11 @@ Změny UPN se podporují s aktualizací Windows 10 2004 Update. Uživatelé na z
 - U registrovaných zařízení s Windows 10 Azure AD přejděte na **Nastavení**  >  **účty**  >  **přístup do práce nebo do školy**. Vyberte svůj účet a vyberte **Odpojit**. Registrace zařízení je vázaná na uživatelský profil ve Windows 10.
 - V případě iOS a Androidu můžete použít Microsoft Authenticator nastavení aplikace   >  **registrace zařízení** a vybrat zrušit **registraci zařízení**.
 - V případě macOS můžete pomocí aplikace Portál společnosti Microsoft Intune zrušit registraci zařízení ze správy a odebrat jakoukoli registraci. 
+
+U zařízení s Windows 10 se tento proces dá automatizovat pomocí [Nástroje pro odebrání Workplace Join (WPJ)](https://download.microsoft.com/download/8/e/f/8ef13ae0-6aa8-48a2-8697-5b1711134730/WPJCleanUp.zip) .
+
+> [!NOTE]
+> Tento nástroj odebere na zařízení všechny účty jednotného přihlašování. Po této operaci ztratí všechny aplikace stav jednotného přihlašování a zařízení se zruší z nástrojů pro správu (MDM) a odregistruje se z cloudu. Při dalším pokusu aplikace o přihlášení se uživatelům zobrazí výzva k přidání tohoto účtu.
 
 ---
 ### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>Otázka: Jak můžu zablokovat uživatelům přidávání dalších pracovních účtů (registrovaných v Azure AD) na zařízeních s Windows 10?

@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb8533f4ca714402482c666c520c1d0bd745e8cf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 509eae7acf0dd9f6b8ae80befb7423422f778710
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/14/2021
-ms.locfileid: "100363266"
+ms.locfileid: "100518823"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -83,11 +83,11 @@ Role [správce privilegovaného ověřování](#privileged-authentication-admini
 
 Role [správce zásad ověřování](#authentication-policy-administrator) má oprávnění k nastavení zásad ověřování klienta, které určuje, které metody může každý uživatel registrovat a používat.
 
-| Role | Umožňuje spravovat metody ověřování uživatele. | Správa MFA pro jednotlivé uživatele | Správa nastavení vícefaktorového ověřování | Správa zásad metod ověřování | Spravovat zásady ochrany heslem |  
+| Role | Umožňuje spravovat metody ověřování uživatele. | Správa MFA pro jednotlivé uživatele | Správa nastavení vícefaktorového ověřování | Správa zásad metod ověřování | Spravovat zásady ochrany heslem |
 | ---- | ---- | ---- | ---- | ---- | ---- | 
 | Správce ověřování | Ano pro některé uživatele (viz výše) | Ano pro některé uživatele (viz výše) | No | No | No | 
-| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele  |No | No  |No | 
-| Správce zásad ověřování | No  |No | Yes | Yes | Yes | 
+| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele | No | No | No | 
+| Správce zásad ověřování | No |No | Yes | Yes | Yes | 
 
 > [!IMPORTANT]
 > Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
@@ -107,11 +107,11 @@ Uživatelé s touto rolí můžou konfigurovat zásady metod ověřování, nast
 
 Role správce [ověřování](#authentication-administrator) a [správce privilegovaného ověřování](#privileged-authentication-administrator) mají oprávnění ke správě registrovaných metod ověřování pro uživatele a můžou vynutit opakovanou registraci a službu Multi-Factor Authentication pro všechny uživatele. 
 
-| Role | Umožňuje spravovat metody ověřování uživatele. | Správa MFA pro jednotlivé uživatele | Správa nastavení vícefaktorového ověřování | Správa zásad metod ověřování | Spravovat zásady ochrany heslem |  
+| Role | Umožňuje spravovat metody ověřování uživatele. | Správa MFA pro jednotlivé uživatele | Správa nastavení vícefaktorového ověřování | Správa zásad metod ověřování | Spravovat zásady ochrany heslem |
 | ---- | ---- | ---- | ---- | ---- | ---- | 
 | Správce ověřování | Ano pro některé uživatele (viz výše) | Ano pro některé uživatele (viz výše) | No | No | No | 
-| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele  |No | No  |No | 
-| Správce zásad ověřování | No  |No | Yes | Yes | Yes | 
+| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele | No | No | No | 
+| Správce zásad ověřování | No | No | Yes | Yes | Yes | 
 
 > [!IMPORTANT]
 > Tato role v tuto chvíli není schopná spravovat nastavení vícefaktorového ověřování na portálu pro správu starších verzí.
@@ -293,7 +293,7 @@ Tato role se dřív nazývala "správce hesel" ve [Azure Portal](https://portal.
 
 ### <a name="hybrid-identity-administrator"></a>[Správce hybridní identity](#hybrid-identity-administrator-permissions)
 
-Uživatelé v této roli můžou vytvářet, spravovat a nasazovat nastavení konfigurace zřizování z AD do Azure AD pomocí zřizování cloudu a také spravovat nastavení federace. Uživatelé mohou také řešit a monitorovat protokoly pomocí této role.  
+Uživatelé v této roli můžou vytvářet, spravovat a nasazovat nastavení konfigurace zřizování z AD do Azure AD pomocí zřizování cloudu a také spravovat nastavení federace. Uživatelé mohou také řešit a monitorovat protokoly pomocí této role.
 
 ### <a name="insights-administrator"></a>[Správce Insights](#insights-administrator-permissions)
 Uživatelé v této roli mají přístup k plné sadě možností správy v [aplikaci M365 Insights](https://go.microsoft.com/fwlink/?linkid=2129521). Tato role má možnost číst informace o adresáři, monitorovat stav služby, lístky podpory souborů a přistupovat k aspektům nastavení pro správu Insights.
@@ -336,10 +336,10 @@ Uživatelé s uživatelskou rolí moderního obchodování mají obvykle oprávn
 
 **Kdy je role uživatele moderního obchodování přiřazená?**
 
-* **Nákup samoobslužných služeb v centru pro správu Microsoft 365** – nákup samoobslužných služeb dává uživatelům možnost vyzkoušet si nové produkty, a to tak, že si je zakoupí nebo zaregistrují sami. Tyto produkty se spravují v centru pro správu. Uživatelům, kteří si zakoupí samoobslužné služby, se přiřadí role v systému pro obchodování a moderní obchodní role, aby mohli spravovat své nákupy v centru pro správu. Správci můžou blokovat nákupy samoobslužných služeb (pro Power BI, Power Apps, Power Automate) prostřednictvím [PowerShellu](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell). Další informace najdete v [nejčastějších dotazech k samoobslužnému nákupu](/microsoft-365/commerce/subscriptions/self-service-purchase-faq).  
-* **Nákupy od komerčního tržiště Microsoftu**  – podobně jako při nákupu samoobslužných služeb, když uživatel koupí produkt nebo službu z Microsoft AppSource nebo Azure Marketplace, přiřadí se moderní obchodní role uživatele, pokud nemají roli globálního správce nebo správce fakturace. V některých případech je možné, že uživatelé můžou tyto nákupy zablokovat. Další informace najdete v tématu [komerční tržiště Microsoftu](../../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase).
-* **Návrhy od Microsoftu**  – návrh je formální nabídka Microsoftu, která vaší organizaci koupí produkty a služby Microsoftu. Když osoba, která přijímá návrh, nemá roli globálního správce nebo správce fakturace ve službě Azure AD, přiřadí se mu role specifická pro obchod pro dokončení návrhu a role uživatele moderního obchodování pro přístup k centru pro správu. Když přistupují k centru pro správu, můžou používat jenom funkce, které jsou autorizované v rámci své obchodní role.
-* **Role specifické pro obchod** – někteří uživatelé mají přiřazeny role specifické pro obchod. Pokud uživatel není globálním správcem nebo správcem fakturace, získá uživatel moderní obchodní role, aby mohl získat přístup k centru pro správu.  
+* **Nákup samoobslužných služeb v centru pro správu Microsoft 365** – nákup samoobslužných služeb dává uživatelům možnost vyzkoušet si nové produkty, a to tak, že si je zakoupí nebo zaregistrují sami. Tyto produkty se spravují v centru pro správu. Uživatelům, kteří si zakoupí samoobslužné služby, se přiřadí role v systému pro obchodování a moderní obchodní role, aby mohli spravovat své nákupy v centru pro správu. Správci můžou blokovat nákupy samoobslužných služeb (pro Power BI, Power Apps, Power Automate) prostřednictvím [PowerShellu](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell). Další informace najdete v [nejčastějších dotazech k samoobslužnému nákupu](/microsoft-365/commerce/subscriptions/self-service-purchase-faq).
+* **Nákupy od komerčního tržiště Microsoftu** – podobně jako při nákupu samoobslužných služeb, když uživatel koupí produkt nebo službu z Microsoft AppSource nebo Azure Marketplace, přiřadí se moderní obchodní role uživatele, pokud nemají roli globálního správce nebo správce fakturace. V některých případech je možné, že uživatelé můžou tyto nákupy zablokovat. Další informace najdete v tématu [komerční tržiště Microsoftu](../../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase).
+* **Návrhy od Microsoftu** – návrh je formální nabídka Microsoftu, která vaší organizaci koupí produkty a služby Microsoftu. Když osoba, která přijímá návrh, nemá roli globálního správce nebo správce fakturace ve službě Azure AD, přiřadí se mu role specifická pro obchod pro dokončení návrhu a role uživatele moderního obchodování pro přístup k centru pro správu. Když přistupují k centru pro správu, můžou používat jenom funkce, které jsou autorizované v rámci své obchodní role.
+* **Role specifické pro obchod** – někteří uživatelé mají přiřazeny role specifické pro obchod. Pokud uživatel není globálním správcem nebo správcem fakturace, získá uživatel moderní obchodní role, aby mohl získat přístup k centru pro správu.
 
 Pokud je role uživatele moderního obchodování Nepřiřazená uživateli, ztratí přístup k centru pro správu Microsoft 365. Pokud by nějaké produkty spravovaly buď pro sebe, nebo pro vaši organizaci, nebudou je moct spravovat. To může zahrnovat přiřazení licencí, změnu způsobů platby, placení účtů nebo jiné úlohy pro správu předplatných.
 
@@ -389,11 +389,11 @@ Role [Správce ověřování](#authentication-administrator) má oprávnění k 
 
 Role [správce zásad ověřování](#authentication-policy-administrator) má oprávnění k nastavení zásad ověřování klienta, které určuje, které metody může každý uživatel registrovat a používat.
 
-| Role | Umožňuje spravovat metody ověřování uživatele. | Správa MFA pro jednotlivé uživatele | Správa nastavení vícefaktorového ověřování | Správa zásad metod ověřování | Spravovat zásady ochrany heslem |  
+| Role | Umožňuje spravovat metody ověřování uživatele. | Správa MFA pro jednotlivé uživatele | Správa nastavení vícefaktorového ověřování | Správa zásad metod ověřování | Spravovat zásady ochrany heslem |
 | ---- | ---- | ---- | ---- | ---- | ---- | 
 | Správce ověřování | Ano pro některé uživatele (viz výše) | Ano pro některé uživatele (viz výše) | No | No | No | 
-| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele  |No | No  |No | 
-| Správce zásad ověřování | No  |No | Yes | Yes | Yes | 
+| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele | No | No | No | 
+| Správce zásad ověřování | No | No | Yes | Yes | Yes | 
 
 > [!IMPORTANT]
 > Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
@@ -992,7 +992,7 @@ Může číst & informace o adresáři Basic Write. Pro udělení přístupu k a
 > | --- | --- |
 > | Microsoft. Directory/Groups/appRoleAssignments/Update | Aktualizuje vlastnost groups. appRoleAssignments v Azure Active Directory. |
 > | Microsoft. Directory/Groups/assignLicense | Spravujte licence na skupiny v Azure Active Directory. |
-> | Microsoft. Directory/Groups/Basic/Update | Aktualizuje základní vlastnosti pro skupiny v Azure Active Directory.  |
+> | Microsoft. Directory/Groups/Basic/Update | Aktualizuje základní vlastnosti pro skupiny v Azure Active Directory. |
 > | Microsoft. Directory/Groups/klasifikací/Update | Aktualizuje vlastnost klasifikace skupiny v Azure Active Directory. |
 > | Microsoft. Directory/Groups/Create | Vytvořte skupiny v Azure Active Directory. |
 > | Microsoft. Directory/Groups/groupType/Update | Aktualizuje vlastnost groupType skupiny v Azure Active Directory. |
@@ -1183,69 +1183,69 @@ Může číst vše, co globální správce může, ale ne nic upravovat.
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
 > | --- | --- |
-> | Microsoft. Commerce. fakturace/allEntities/čtení    | Přečtěte si všechny aspekty fakturace. |
-> | Microsoft. Directory/administrativeUnits/Basic/Read    | Přečte základní vlastnosti administrativeUnits v Azure Active Directory. |
-> | Microsoft. Directory/administrativeUnits/Members/Read    | Načte vlastnost administrativeUnits. Members v Azure Active Directory. |
-> | Microsoft. Directory/Applications/Basic/Read    | Přečte základní vlastnosti aplikací v Azure Active Directory. |
-> | Microsoft. Directory/aplikace/vlastníci/čtení    | Číst vlastnost Applications. Owners v Azure Active Directory. |
-> | Microsoft. Directory/aplikace/zásady/číst    | Přečte vlastnost Applications. policies v Azure Active Directory. |
+> | Microsoft. Commerce. fakturace/allEntities/čtení | Přečtěte si všechny aspekty fakturace. |
+> | Microsoft. Directory/administrativeUnits/Basic/Read | Přečte základní vlastnosti administrativeUnits v Azure Active Directory. |
+> | Microsoft. Directory/administrativeUnits/Members/Read | Načte vlastnost administrativeUnits. Members v Azure Active Directory. |
+> | Microsoft. Directory/Applications/Basic/Read | Přečte základní vlastnosti aplikací v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/vlastníci/čtení | Číst vlastnost Applications. Owners v Azure Active Directory. |
+> | Microsoft. Directory/aplikace/zásady/číst | Přečte vlastnost Applications. policies v Azure Active Directory. |
 > | Microsoft. Directory/bitlockerKeys/Key/Read | Čtení objektů a vlastností klíče nástroje BitLocker (včetně obnovovacího klíče) v Azure Active Directory. |
-> | Microsoft. Directory/Contacts/Basic/Read    | Přečte základní vlastnosti kontaktů v Azure Active Directory. |
-> | Microsoft. Directory/Contacts/memberOf/Read    | Číst vlastnost Contacts. memberOf v Azure Active Directory. |
-> | Microsoft. Directory/Contracts/Basic/Read    | Přečte základní vlastnosti smluv v Azure Active Directory. |
-> | Microsoft. Directory/zařízení/Basic/číst    | Přečte základní vlastnosti na zařízeních v Azure Active Directory. |
-> | Microsoft. Directory/zařízení/memberOf/číst    | Číst vlastnost Devices. memberOf v Azure Active Directory. |
-> | Microsoft. Directory/Devices/registeredOwners/Read    | Číst vlastnost Devices. registeredOwners v Azure Active Directory. |
-> | Microsoft. Directory/Devices/registeredUsers/Read    | Číst vlastnost Devices. registeredUsers v Azure Active Directory. |
-> | Microsoft. Directory/directoryRoles/Basic/Read    | Přečte základní vlastnosti directoryRoles v Azure Active Directory. |
-> | Microsoft. Directory/directoryRoles/eligibleMembers/Read    | Číst vlastnost directoryRoles. eligibleMembers v Azure Active Directory. |
-> | Microsoft. Directory/directoryRoles/Members/Read    | Načte vlastnost directoryRoles. Members v Azure Active Directory. |
-> | Microsoft. Directory/domény/Basic/číst    | Přečte základní vlastnosti domén v Azure Active Directory. |
+> | Microsoft. Directory/Contacts/Basic/Read | Přečte základní vlastnosti kontaktů v Azure Active Directory. |
+> | Microsoft. Directory/Contacts/memberOf/Read | Číst vlastnost Contacts. memberOf v Azure Active Directory. |
+> | Microsoft. Directory/Contracts/Basic/Read | Přečte základní vlastnosti smluv v Azure Active Directory. |
+> | Microsoft. Directory/zařízení/Basic/číst | Přečte základní vlastnosti na zařízeních v Azure Active Directory. |
+> | Microsoft. Directory/zařízení/memberOf/číst | Číst vlastnost Devices. memberOf v Azure Active Directory. |
+> | Microsoft. Directory/Devices/registeredOwners/Read | Číst vlastnost Devices. registeredOwners v Azure Active Directory. |
+> | Microsoft. Directory/Devices/registeredUsers/Read | Číst vlastnost Devices. registeredUsers v Azure Active Directory. |
+> | Microsoft. Directory/directoryRoles/Basic/Read | Přečte základní vlastnosti directoryRoles v Azure Active Directory. |
+> | Microsoft. Directory/directoryRoles/eligibleMembers/Read | Číst vlastnost directoryRoles. eligibleMembers v Azure Active Directory. |
+> | Microsoft. Directory/directoryRoles/Members/Read | Načte vlastnost directoryRoles. Members v Azure Active Directory. |
+> | Microsoft. Directory/domény/Basic/číst | Přečte základní vlastnosti domén v Azure Active Directory. |
 > | Microsoft. Directory/entitlementManagement/allProperties/Read | Načte všechny vlastnosti v Azure AD – Správa nároků. |
-> | Microsoft. Directory/Groups/appRoleAssignments/Read    | Načte vlastnost groups. appRoleAssignments v Azure Active Directory. |
-> | Microsoft. Directory/Groups/Basic/Read    | Přečte základní vlastnosti pro skupiny v Azure Active Directory. |
-> | Microsoft. Directory/Groups/hiddenMembers/Read    | Načte vlastnost groups. hiddenMembers v Azure Active Directory. |
-> | Microsoft. Directory/Groups/memberOf/Read    | Načte vlastnost groups. memberOf v Azure Active Directory. |
-> | Microsoft. Directory/Groups/Members/Read    | Přečte vlastnost groups. Members v Azure Active Directory. |
-> | Microsoft. Directory/Groups/Owners/Read    | Číst vlastnost groups. Owners v Azure Active Directory. |
-> | Microsoft. Directory/Groups/Settings/Read    | Číst vlastnost groups. Settings v Azure Active Directory. |
-> | Microsoft. Directory/groupSettings/Basic/Read    | Přečte základní vlastnosti groupSettings v Azure Active Directory. |
-> | Microsoft. Directory/groupSettingTemplates/Basic/Read    | Přečte základní vlastnosti groupSettingTemplates v Azure Active Directory. |
-> | Microsoft. Directory/oAuth2PermissionGrants/Basic/Read    | Přečte základní vlastnosti oAuth2PermissionGrants v Azure Active Directory. |
-> | Microsoft. Directory/Organization/Basic/Read    | Přečte základní vlastnosti v organizaci v Azure Active Directory. |
-> | Microsoft. Directory/Organization/trustedCAsForPasswordlessAuth/Read    | Číst vlastnost Organization. trustedCAsForPasswordlessAuth v Azure Active Directory. |
-> | Microsoft. Directory/policies/Standard/Read    | Číst standardní zásady v Azure Active Directory. |
+> | Microsoft. Directory/Groups/appRoleAssignments/Read | Načte vlastnost groups. appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Basic/Read | Přečte základní vlastnosti pro skupiny v Azure Active Directory. |
+> | Microsoft. Directory/Groups/hiddenMembers/Read | Načte vlastnost groups. hiddenMembers v Azure Active Directory. |
+> | Microsoft. Directory/Groups/memberOf/Read | Načte vlastnost groups. memberOf v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Members/Read | Přečte vlastnost groups. Members v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Owners/Read | Číst vlastnost groups. Owners v Azure Active Directory. |
+> | Microsoft. Directory/Groups/Settings/Read | Číst vlastnost groups. Settings v Azure Active Directory. |
+> | Microsoft. Directory/groupSettings/Basic/Read | Přečte základní vlastnosti groupSettings v Azure Active Directory. |
+> | Microsoft. Directory/groupSettingTemplates/Basic/Read | Přečte základní vlastnosti groupSettingTemplates v Azure Active Directory. |
+> | Microsoft. Directory/oAuth2PermissionGrants/Basic/Read | Přečte základní vlastnosti oAuth2PermissionGrants v Azure Active Directory. |
+> | Microsoft. Directory/Organization/Basic/Read | Přečte základní vlastnosti v organizaci v Azure Active Directory. |
+> | Microsoft. Directory/Organization/trustedCAsForPasswordlessAuth/Read | Číst vlastnost Organization. trustedCAsForPasswordlessAuth v Azure Active Directory. |
+> | Microsoft. Directory/policies/Standard/Read | Číst standardní zásady v Azure Active Directory. |
 > | Microsoft. Directory/provisioningLogs/allProperties/Read | Načte všechny vlastnosti protokolů zřizování. |
-> | Microsoft. Directory/roleAssignments/Basic/Read    | Přečte základní vlastnosti roleAssignments v Azure Active Directory. |
-> | Microsoft. Directory/roleDefinitions/Basic/Read    | Přečte základní vlastnosti roleDefinitions v Azure Active Directory. |
-> | Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Read    | Číst vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
-> | Microsoft. Directory/servicePrincipals/appRoleAssignments/Read    | Číst vlastnost servicePrincipals. appRoleAssignments v Azure Active Directory. |
-> | Microsoft. Directory/servicePrincipals/Basic/Read    | Přečte základní vlastnosti servicePrincipals v Azure Active Directory. |
-> | Microsoft. Directory/servicePrincipals/memberOf/Read    | Načte vlastnost servicePrincipals. memberOf v Azure Active Directory. |
-> | Microsoft. Directory/servicePrincipals/oAuth2PermissionGrants/Basic/Read    | Číst vlastnost servicePrincipals. oAuth2PermissionGrants v Azure Active Directory. |
-> | Microsoft. Directory/servicePrincipals/ownedObjects/Read    | Číst vlastnost servicePrincipals. ownedObjects v Azure Active Directory. |
-> | Microsoft. Directory/servicePrincipals/Owners/Read    | Číst vlastnost servicePrincipals. Owners v Azure Active Directory. |
-> | Microsoft. Directory/servicePrincipals/policies/Read    | Číst vlastnost servicePrincipals. policies v Azure Active Directory. |
-> | Microsoft. Directory/signInReports/allProperties/Read    | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
-> | Microsoft. Directory/subscribedSkus/Basic/Read    | Přečte základní vlastnosti subscribedSkus v Azure Active Directory. |
-> | Microsoft. Directory/Users/appRoleAssignments/Read    | Číst vlastnost Users. appRoleAssignments v Azure Active Directory. |
-> | Microsoft. Directory/uživatelé/Basic/číst    | Číst základní vlastnosti pro uživatele v Azure Active Directory. |
-> | Microsoft. Directory/Users/directReports/Read    | Číst vlastnost Users. directReports v Azure Active Directory. |
-> | Microsoft. Directory/uživatelé/Správce/číst    | Umožňuje číst vlastnost Users. Manager v Azure Active Directory. |
-> | Microsoft. Directory/uživatelé/memberOf/číst    | Číst vlastnost Users. memberOf v Azure Active Directory. |
-> | Microsoft. Directory/Users/oAuth2PermissionGrants/Basic/Read    | Číst vlastnost Users. oAuth2PermissionGrants v Azure Active Directory. |
-> | Microsoft. Directory/Users/ownedDevices/Read    | Číst vlastnost Users. ownedDevices v Azure Active Directory. |
-> | Microsoft. Directory/Users/ownedObjects/Read    | Číst vlastnost Users. ownedObjects v Azure Active Directory. |
-> | Microsoft. Directory/Users/registeredDevices/Read    | Číst vlastnost Users. registeredDevices v Azure Active Directory. |
-> | Microsoft. Directory/Users/strongAuthentication/Read    | Přečtěte si vlastnosti silného ověřování, jako jsou přihlašovací údaje MFA. |
-> | Microsoft. Office 365. Exchange/allEntities/Read    | Přečtěte si všechny aspekty Exchange Online. |
-> | Microsoft. Office 365. messageCenter/Messages/Read    | Přečte zprávy v Microsoft. Office 365. messageCenter. |
-> | Microsoft. Office 365. messageCenter/securityMessages/Read    | Přečtěte si securityMessages v Microsoft. Office 365. messageCenter. |
+> | Microsoft. Directory/roleAssignments/Basic/Read | Přečte základní vlastnosti roleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/roleDefinitions/Basic/Read | Přečte základní vlastnosti roleDefinitions v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Read | Číst vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/appRoleAssignments/Read | Číst vlastnost servicePrincipals. appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Basic/Read | Přečte základní vlastnosti servicePrincipals v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/memberOf/Read | Načte vlastnost servicePrincipals. memberOf v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/oAuth2PermissionGrants/Basic/Read | Číst vlastnost servicePrincipals. oAuth2PermissionGrants v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/ownedObjects/Read | Číst vlastnost servicePrincipals. ownedObjects v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/Owners/Read | Číst vlastnost servicePrincipals. Owners v Azure Active Directory. |
+> | Microsoft. Directory/servicePrincipals/policies/Read | Číst vlastnost servicePrincipals. policies v Azure Active Directory. |
+> | Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
+> | Microsoft. Directory/subscribedSkus/Basic/Read | Přečte základní vlastnosti subscribedSkus v Azure Active Directory. |
+> | Microsoft. Directory/Users/appRoleAssignments/Read | Číst vlastnost Users. appRoleAssignments v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/Basic/číst | Číst základní vlastnosti pro uživatele v Azure Active Directory. |
+> | Microsoft. Directory/Users/directReports/Read | Číst vlastnost Users. directReports v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/Správce/číst | Umožňuje číst vlastnost Users. Manager v Azure Active Directory. |
+> | Microsoft. Directory/uživatelé/memberOf/číst | Číst vlastnost Users. memberOf v Azure Active Directory. |
+> | Microsoft. Directory/Users/oAuth2PermissionGrants/Basic/Read | Číst vlastnost Users. oAuth2PermissionGrants v Azure Active Directory. |
+> | Microsoft. Directory/Users/ownedDevices/Read | Číst vlastnost Users. ownedDevices v Azure Active Directory. |
+> | Microsoft. Directory/Users/ownedObjects/Read | Číst vlastnost Users. ownedObjects v Azure Active Directory. |
+> | Microsoft. Directory/Users/registeredDevices/Read | Číst vlastnost Users. registeredDevices v Azure Active Directory. |
+> | Microsoft. Directory/Users/strongAuthentication/Read | Přečtěte si vlastnosti silného ověřování, jako jsou přihlašovací údaje MFA. |
+> | Microsoft. Office 365. Exchange/allEntities/Read | Přečtěte si všechny aspekty Exchange Online. |
+> | Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
+> | Microsoft. Office 365. messageCenter/securityMessages/Read | Přečtěte si securityMessages v Microsoft. Office 365. messageCenter. |
 > | Microsoft. Office 365. Network/Performance/allProperties/Read | Přečtěte si stránky o výkonu sítě v centru pro správu Microsoft 365. |
-> | Microsoft. Office 365. protectionCenter/allEntities/Read    | Přečtěte si všechny aspekty centra ochrany Office 365. |
-> | Microsoft. Office 365. securityComplianceCenter/allEntities/Read    | Načte všechny standardní vlastnosti v Microsoft. Office 365. securityComplianceCenter. |
-> | Microsoft. Office 365. usageReports/allEntities/Read    | Přečtěte si sestavy o využití Office 365. |
-> | Microsoft. Office 365. WebPort/allEntities/Standard/Read    | Načte standardní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+> | Microsoft. Office 365. protectionCenter/allEntities/Read | Přečtěte si všechny aspekty centra ochrany Office 365. |
+> | Microsoft. Office 365. securityComplianceCenter/allEntities/Read | Načte všechny standardní vlastnosti v Microsoft. Office 365. securityComplianceCenter. |
+> | Microsoft. Office 365. usageReports/allEntities/Read | Přečtěte si sestavy o využití Office 365. |
+> | Microsoft. Office 365. WebPort/allEntities/Standard/Read | Načte standardní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="groups-administrator-permissions"></a>Oprávnění správce skupin
 
@@ -1313,8 +1313,8 @@ Může spravovat AD do zřizování cloudu Azure AD a nastavení federace.
 > | --- | --- |
 > | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 > | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure pro služby na úrovni adresáře. |
-> | Microsoft. Directory/Applications/publikum/Update  | Aktualizuje vlastnost Applications. cílová skupina v Azure Active Directory. |
-> | Microsoft. Directory/Applications/Authentication/Update | Aktualizuje vlastnost Applications. Authentication v Azure Active Directory.  |
+> | Microsoft. Directory/Applications/publikum/Update | Aktualizuje vlastnost Applications. cílová skupina v Azure Active Directory. |
+> | Microsoft. Directory/Applications/Authentication/Update | Aktualizuje vlastnost Applications. Authentication v Azure Active Directory. |
 > | Microsoft. Directory/Applications/Basic/Update | Aktualizuje základní vlastnosti pro aplikace v Azure Active Directory. |
 > | Microsoft. Directory/aplikace/vytvořit | Vytváření aplikací v Azure Active Directory. |
 > | Microsoft. Directory/aplikace/přihlašovací údaje/aktualizace | Aktualizuje vlastnost Applications. credentialss v Azure Active Directory. |
@@ -1491,7 +1491,7 @@ Může spravovat síťová umístění a prohlížet informace o návrhu podniko
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
 > | --- | --- |
-> | Microsoft. Office 365. Network/Performance/allProperties/Read | Přečtěte si stránky výkon sítě v centru pro správu M365.  |
+> | Microsoft. Office 365. Network/Performance/allProperties/Read | Přečtěte si stránky výkon sítě v centru pro správu M365. |
 > | Microsoft. Office 365. Network/Locations/allProperties/allTasks | Číst a konfigurovat vlastnosti síťových umístění pro každé umístění. |
 
 ### <a name="office-apps-administrator-permissions"></a>Oprávnění správce aplikací Office
@@ -1896,7 +1896,7 @@ Může spravovat všechny aspekty produktu Skype pro firmy.
 > | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečte a nakonfiguruje Microsoft 365 Service Health. |
 > | Microsoft. Office 365. skypeForBusiness/allEntities/allTasks | Umožňuje spravovat všechny aspekty Online Skypu pro firmy. |
 > | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-> | Microsoft. Office 365. usageReports/allEntities/Read    | Přečtěte si sestavy o využití Office 365. |
+> | Microsoft. Office 365. usageReports/allEntities/Read | Přečtěte si sestavy o využití Office 365. |
 > | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="teams-administrator-permissions"></a>Správci týmů oprávnění
@@ -2144,7 +2144,7 @@ Připojení zařízení | Zastaralé | [Dokumentace k zastaralým rolím](permis
 Správci zařízení | Zastaralé | [Dokumentace k zastaralým rolím](permissions-reference.md#deprecated-roles)
 Uživatelé zařízení | Zastaralé | [Dokumentace k zastaralým rolím](permissions-reference.md#deprecated-roles)
 Účty synchronizace adresářů | Nezobrazeno, protože by neměl být použit | [Dokumentace k účtům synchronizace adresářů](permissions-reference.md#directory-synchronization-accounts)
-Uživatel typu host | Nezobrazeno, protože nemůže být použit  | NA
+Uživatel typu host | Nezobrazeno, protože nemůže být použit | NA
 Podpora partnerské vrstvy 1 | Nezobrazeno, protože by neměl být použit | [Dokumentace k podpoře partnerů Tier1](permissions-reference.md#partner-tier1-support)
 Podpora partnerské úrovně 2 | Nezobrazeno, protože by neměl být použit | [Dokumentace k podpoře partnerů 2](permissions-reference.md#partner-tier2-support)
 Omezený uživatel typu Host | Nezobrazeno, protože nemůže být použit | NA

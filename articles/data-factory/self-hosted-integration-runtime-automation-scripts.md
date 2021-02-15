@@ -1,29 +1,25 @@
 ---
 title: Automatizace instalace místního prostředí Integration runtime pomocí místních skriptů PowerShellu
 description: K automatizaci instalace Integration Runtime v místním počítači do místního počítače.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 05/09/2020
-ms.openlocfilehash: 36414c975e97dbaa7d8747da98c31eeb12fbc206
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8cbe54a23cb1c8b55afd86a18b51c0e392c3f78a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636965"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376203"
 ---
 # <a name="automating-self-hosted-integration-runtime-installation-using-local-powershell-scripts"></a>Automatizace instalace místního prostředí Integration runtime pomocí místních skriptů PowerShellu
 Pokud chcete automatizovat instalaci Integration Runtime v místním prostředí na místních počítačích (kromě virtuálních počítačů Azure, kde můžeme místo toho použít šablonu Správce prostředků), můžete použít místní skripty PowerShellu. Tento článek obsahuje dva skripty, které můžete použít.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Na místním počítači spusťte PowerShell. Chcete-li spustit skripty, je třeba zvolit možnost **Spustit jako správce** .
+* Na místním počítači spusťte PowerShell. Chcete-li spustit skripty, je třeba zvolit možnost **Spustit jako správce**.
 * [Stáhněte si](https://www.microsoft.com/download/details.aspx?id=39717) místně hostovaný software Integration runtime. Zkopírujte cestu k umístění staženého souboru. 
 * K registraci modulu runtime integrace v místním prostředí potřebujete také **ověřovací klíč** .
 * Pro automatizaci ručních aktualizací musíte mít předem konfigurovaný modul runtime integrace v místním prostředí.
@@ -38,13 +34,13 @@ Pokud chcete automatizovat instalaci Integration Runtime v místním prostředí
 
 * Pro automatizaci ručních aktualizací: aktualizujte uzel IR v místním prostředí pomocí konkrétní verze nebo na nejnovější verzi **[script-update-gateway.ps1](https://github.com/nabhishek/SelfHosted-IntegrationRuntime_AutomationScripts/blob/master/script-update-gateway.ps1)** – to se podporuje i v případě, že jste automatické aktualizace vypnuli nebo chcete mít větší kontrolu nad aktualizacemi. Skript lze použít k aktualizaci uzlu místního prostředí Integration runtime na nejnovější verzi nebo na určenou vyšší verzi (downgrade nefunguje). Přijímá argument pro zadání čísla verze (příklad:-Version 3.13.6942.1). Pokud není zadána žádná verze, vždy aktualizuje modul IR v místním prostředí na nejnovější verzi, která se nachází ve [stahování](https://www.microsoft.com/download/details.aspx?id=39717).
     > [!NOTE]
-    > Zadat lze pouze poslední 3 verze. V ideálním případě se používá k aktualizaci existujícího uzlu na nejnovější verzi. **předpokládá se, že máte registrovanou technologii IR hostovaná na sebe** . 
+    > Zadat lze pouze poslední 3 verze. V ideálním případě se používá k aktualizaci existujícího uzlu na nejnovější verzi. **předpokládá se, že máte registrovanou technologii IR hostovaná na sebe**. 
 
 ## <a name="usage-examples"></a>Příklady použití
 
 ### <a name="for-automating-setup"></a>Pro automatizaci instalace
 1. Stáhněte si místně hostovaný IR z [tohoto místa](https://www.microsoft.com/download/details.aspx?id=39717). 
-1. Zadejte cestu, ve které výše stažený SHIR MSI (instalační soubor). Pokud je například cesta *C:\Users\username\Downloads\IntegrationRuntime_4.7.7368.1.msi* , můžete pro tuto úlohu použít níže uvedený příklad příkazového řádku PowerShellu:
+1. Zadejte cestu, ve které výše stažený SHIR MSI (instalační soubor). Pokud je například cesta *C:\Users\username\Downloads\IntegrationRuntime_4.7.7368.1.msi*, můžete pro tuto úlohu použít níže uvedený příklad příkazového řádku PowerShellu:
 
    ```powershell
    PS C:\windows\system32> C:\Users\username\Desktop\InstallGatewayOnLocalMachine.ps1 -path "C:\Users\username\Downloads\IntegrationRuntime_4.7.7368.1.msi" -authKey "[key]"

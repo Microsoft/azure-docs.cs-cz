@@ -3,14 +3,16 @@ title: Řešení potíží s Azure Automation Hybrid Runbook Worker
 description: V tomto článku se dozvíte, jak řešit problémy, které vznikají Azure Automation procesy Hybrid Runbook Worker.
 services: automation
 ms.subservice: ''
-ms.date: 11/25/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 7f034f5043c3cb88ec705b42b06887c5ba56bd6d
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: af432d9c6323bd2328eb8dd84d8572a8a5ae05a7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055327"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388001"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Řešení problémů s funkcí Hybrid Runbook Worker
 
@@ -26,9 +28,7 @@ Hybrid Runbook Worker závisí na agentovi ke komunikaci s účtem Azure Automat
 
 Spuštění sady Runbook se nezdařilo a zobrazí se následující chybová zpráva:
 
-```error
-"The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times."
-```
+`The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times.`
 
 Vaše sada Runbook je pozastavena krátce poté, co se pokusí provést tři časy. Existují podmínky, které mohou přerušit dokončení sady Runbook. Související chybová zpráva nemusí obsahovat žádné další informace.
 
@@ -56,13 +56,12 @@ V protokolu událostí **Microsoft-SMA** vyhledejte odpovídající událost s p
 
 Hybrid Runbook Worker přijímá událost 15011, která značí, že výsledek dotazu není platný. Následující chyba se zobrazí, když se pracovní proces pokusí otevřít připojení k [serveru signalizace](/aspnet/core/signalr/introduction).
 
-```error
-[AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
+`[AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
 [Uri=https://cc-jobruntimedata-prod-su1.azure-automation.net/notifications/hub][Exception=System.TimeoutException: Transport timed out trying to connect
    at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
    at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
    at JobRuntimeData.NotificationsClient.JobRuntimeDataServiceSignalRClient.<Start>d__45.MoveNext()
-```
+`
 
 #### <a name="cause"></a>Příčina
 
@@ -96,14 +95,13 @@ Spusťte pracovní počítač a rereregister ho pomocí Azure Automation. Pokyny
 
 Sada Runbook spuštěná na Hybrid Runbook Worker se nezdařila s následující chybovou zprávou:
 
-```error
-Connect-AzAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
-At line:3 char:1
-+ Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Connect-AzAccount], ArgumentException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzAccountCommand
-```
+`Connect-AzAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000`  
+`At line:3 char:1`  
+`+ Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...`  
+`+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`  
+`    + CategoryInfo          : CloseError: (:) [Connect-AzAccount],ArgumentException`  
+`    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzAccountCommand`
+
 #### <a name="cause"></a>Příčina
 
 K této chybě dochází, pokud se pokusíte použít [účet Spustit jako](../automation-security-overview.md#run-as-accounts) v sadě Runbook, která běží na Hybrid Runbook Worker, kde certifikát účtu Spustit jako není k dispozici. Procesy Hybrid Runbook Worker nemají ve výchozím nastavení prostředek certifikátu. Účet Spustit jako vyžaduje, aby tento Asset správně fungoval.
@@ -118,9 +116,7 @@ Pokud je vaše Hybrid Runbook Worker VIRTUÁLNÍm počítačem Azure, můžete m
 
 Fáze prvotní registrace pracovního procesu se nezdařila a zobrazí se následující chyba (403):
 
-```error
-"Forbidden: You don't have permission to access / on this server."
-```
+`Forbidden: You don't have permission to access / on this server.`
 
 #### <a name="cause"></a>Příčina
 
@@ -139,6 +135,37 @@ Pokud chcete ověřit, jestli se ID pracovního prostoru nebo klíč pracovního
 Váš pracovní prostor Log Analytics a účet Automation musí být v propojené oblasti. Seznam podporovaných oblastí naleznete v tématu [Azure Automation a Log Analytics mapování pracovních prostorů](../how-to/region-mappings.md).
 
 Může být také nutné aktualizovat datum nebo časové pásmo počítače. Pokud vyberete vlastní časový rozsah, ujistěte se, že je rozsah v UTC, což se může lišit od místního časového pásma.
+
+### <a name="scenario-set-azstorageblobcontent-fails-on-a-hybrid-runbook-worker"></a><a name="set-azstorageblobcontent-execution-fails"></a>Scénář: Set-AzStorageBlobContent se nezdařila Hybrid Runbook Worker 
+
+#### <a name="issue"></a>Problém
+
+Při pokusu o spuštění sady Runbook dojde k `Set-AzStorageBlobContent` chybě a zobrazí se následující chybová zpráva:
+
+`Set-AzStorageBlobContent : Failed to open file xxxxxxxxxxxxxxxx: Illegal characters in path`
+
+#### <a name="cause"></a>Příčina
+
+ Tato chyba je způsobená chováním dlouhého názvu souboru volání, `[System.IO.Path]::GetFullPath()` která přidávají cesty UNC.
+
+#### <a name="resolution"></a>Řešení
+
+Jako alternativní řešení můžete vytvořit konfigurační soubor `OrchestratorSandbox.exe.config` s názvem s následujícím obsahem:
+
+```azurecli
+<configuration>
+  <runtime>
+    <AppContextSwitchOverrides value="Switch.System.IO.UseLegacyPathHandling=false" />
+  </runtime>
+</configuration>
+```
+
+Uložte tento soubor do stejné složky, ve které je spustitelný soubor `OrchestratorSandbox.exe` . Třeba
+
+`%ProgramFiles%\Microsoft Monitoring Agent\Agent\AzureAutomation\7.3.702.0\HybridAgent`
+
+>[!Note]
+> Pokud upgradujete agenta, tento konfigurační soubor se odstraní a bude nutné ho znovu vytvořit.
 
 ## <a name="linux"></a>Linux
 
@@ -192,7 +219,7 @@ Pokud agent neběží, spusťte následující příkaz, který službu spustí:
 
 Pokud se v/var/opt/Microsoft/omsconfig/omsconfig.log zobrazí chybová `The specified class does not exist..` zpráva , je nutné aktualizovat agenta Log Analytics pro Linux. Spusťte následující příkaz pro přeinstalaci agenta.
 
-```bash
+```Bash
 wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
 ```
 
@@ -267,8 +294,7 @@ Počítač s Hybrid Runbook Worker je spuštěný, ale nevidíte data prezenčn�
 
 Následující příklad dotazu zobrazuje počítače v pracovním prostoru a jejich poslední prezenční signál:
 
-```loganalytics
-// Last heartbeat of each computer
+```kusto
 Heartbeat
 | summarize arg_max(TimeGenerated, *) by Computer
 ```
@@ -295,9 +321,7 @@ Start-Service -Name HealthService
 
 Při pokusu o přidání Hybrid Runbook Worker pomocí rutiny se zobrazí následující zpráva `Add-HybridRunbookWorker` :
 
-```error
-Machine is already registered
-```
+`Machine is already registered`
 
 #### <a name="cause"></a>Příčina
 
@@ -315,15 +339,11 @@ Pokud chcete tento problém vyřešit, odeberte následující klíč registru, 
 
 Při pokusu o přidání Hybrid Runbook Worker pomocí skriptu Pythonu se zobrazí následující zpráva `sudo python /opt/microsoft/omsconfig/.../onboarding.py --register` :
 
-```error
-Unable to register, an existing worker was found. Please deregister any existing worker and try again.
-```
+`Unable to register, an existing worker was found. Please deregister any existing worker and try again.`
 
 Kromě toho se při pokusu o zrušení registrace Hybrid Runbook Worker pomocí `sudo python /opt/microsoft/omsconfig/.../onboarding.py --deregister` skriptu Pythonu:
 
-```error
-Failed to deregister worker. [response_status=404]
-```
+`Failed to deregister worker. [response_status=404]`
 
 #### <a name="cause"></a>Příčina
 

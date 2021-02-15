@@ -1,22 +1,18 @@
 ---
 title: Kopírování dat z Oracle Eloqua (Preview)
 description: Naučte se, jak kopírovat data z Oracle Eloqua do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: 3ea9d7baf427e70df349c926a0b6b8b72ba82293
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4bb392b05fb54f22720202b83f1af707e381251
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81416853"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372225"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Kopírování dat z Oracle Eloqua pomocí Azure Data Factory (Preview)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -49,10 +45,10 @@ Pro propojenou službu Oracle Eloqua jsou podporovány následující vlastnosti
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **Eloqua** . | Ano |
-| endpoint | Koncový bod serveru Eloqua Eloqua podporuje více datových center, k určení koncového bodu, přihlášení k https://login.eloqua.com přihlašovacím údajům a následnému zkopírování **základní adresy URL** z přesměrované adresy URL se vzorem `xxx.xxx.eloqua.com` . | Ano |
-| username | Název a uživatelské jméno účtu Eloqua ve formě: `SiteName\Username` například `Eloqua\Alice` .  | Ano |
-| heslo | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| typ | Vlastnost Type musí být nastavená na: **Eloqua** . | Yes |
+| endpoint | Koncový bod serveru Eloqua Eloqua podporuje více datových center, k určení koncového bodu, přihlášení k https://login.eloqua.com přihlašovacím údajům a následnému zkopírování **základní adresy URL** z přesměrované adresy URL se vzorem `xxx.xxx.eloqua.com` . | Yes |
+| username | Název a uživatelské jméno účtu Eloqua ve formě: `SiteName\Username` například `Eloqua\Alice` .  | Yes |
+| heslo | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | No |
 | useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | No |
 | usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | No |
@@ -84,7 +80,7 @@ Chcete-li kopírovat data z Oracle Eloqua, nastavte vlastnost Type datové sady 
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **EloquaObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **EloquaObject** . | Yes |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad**
@@ -114,8 +110,8 @@ Pokud chcete kopírovat data z Oracle Eloqua, nastavte typ zdroje v aktivitě ko
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **EloquaSource** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Accounts"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **EloquaSource** . | Yes |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM Accounts"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
 

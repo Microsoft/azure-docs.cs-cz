@@ -1,19 +1,19 @@
 ---
 title: Azure Policy kontroly dodržování předpisů pro Azure image Builder
 description: Seznam Azure Policy kontrolních mechanismů dodržování předpisů, které jsou dostupné pro Azure image Builder. Tyto integrované definice zásad poskytují běžné přístupy ke správě dodržování předpisů vašich prostředků Azure.
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.topic: sample
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 2a43353c78d94b5a196fb357765394d68fbea77a
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: bc918e6a63ebfdc2ce271c62a6641735e0fffd00
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99557779"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100098907"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-image-builder"></a>Azure Policy kontroly dodržování předpisů pro Azure image Builder
 

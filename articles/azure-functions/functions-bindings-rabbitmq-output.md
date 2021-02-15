@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: d9e575d68fe4fef607bdf443ece1ddd04f085533
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 1664656f82492e664b7574339893cd688f0a061d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746452"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097309"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>RabbitMQ výstupní vazba pro Azure Functions přehled
 
@@ -207,7 +207,7 @@ def main(req: func.HttpRequest, outputMessage: func.Out[str]) -> func.HttpRespon
 
 # <a name="java"></a>[Java](#tab/java)
 
-Následující příklad ukazuje funkci jazyka Java, která pošle zprávu do fronty RabbitMQ při aktivaci TimerTrigger každých 5 minut.
+Následující funkce jazyka Java používá `@RabbitMQOutput` anotaci z [typů Java RabbitMQ](https://mvnrepository.com/artifact/com.microsoft.azure.functions/azure-functions-java-library-rabbitmq) k popisu konfigurace výstupní vazby fronty RabbitMQ. Funkce pošle zprávu do fronty RabbitMQ při spuštění TimerTrigger každých 5 minut.
 
 ```java
 @FunctionName("RabbitMQOutputExample")
@@ -266,11 +266,11 @@ Další podrobnosti najdete v [příkladu](#example) výstupní vazby.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `RabbitMQ` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový** | neuvedeno | Musí být nastavené na "RabbitMQ".|
-|**směr** | neuvedeno | Musí být nastavené na "out". |
-|**Jméno** | neuvedeno | Název proměnné, která představuje frontu v kódu funkce. |
+|**textový** | Není k dispozici | Musí být nastavené na "RabbitMQ".|
+|**směr** | Není k dispozici | Musí být nastavené na "out". |
+|**Jméno** | Není k dispozici | Název proměnné, která představuje frontu v kódu funkce. |
 |**Proměnné QueueName**|**Proměnné QueueName**| Název fronty, do které se budou posílat zprávy |
 |**Název hostitele**|**Název hostitele**|(ignoruje se, pokud používáte ConnectStringSetting) <br>Název hostitele fronty (např.: 10.26.45.210)|
 |**Jmen**|**Jmen**|(ignoruje se, pokud používáte ConnectionStringSetting) <br>Název nastavení aplikace, které obsahuje uživatelské jméno pro přístup do fronty. Například UserNameSetting: "< UserNameFromSettings >"|
