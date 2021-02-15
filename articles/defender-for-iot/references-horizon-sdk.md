@@ -8,12 +8,12 @@ ms.author: shhazam
 ms.date: 1/13/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 53aafc4146680c89dd01174ec5fde765f1cc0c01
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 06663e12bbcaee2243be75d6aa9ea9cf4fd125bf
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746015"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523358"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Nesektorový speciální protokol pro Horizont
 
@@ -320,7 +320,7 @@ Tato část popisuje základní parametry.
 | **sanity_failure_codes** | Jedná se o kódy vrácené z analyzátoru v případě, že dojde ke konfliktu správnosti týkající se identity kódu. Viz ověření Magic Number v sekci C++. | Řetězec |
 | **malformed_codes** | Jedná se o správně identifikované kódy, ale zjištěna chyba. Například pokud je délka pole příliš krátká nebo dlouhá, nebo je hodnota neplatná. | Řetězec |
 | **dissect_as** | Pole definující, kam by měl dorazit určitý provoz protokolu | TCP/UDP, port atd. |
-| **fields** | Deklarace, která pole se extrahují z provozu. Každé pole má své vlastní ID (název) a typ (číslo, řetězec, RAW, pole, komplexní). Například [funkce](https://docs.google.com/document/d/14nm8cyoGiaE0ODOYQd_xjULxVz9U_bjfPKkcDhOFr5Q/edit#bookmark=id.6s1zcxa9184k) pole, která je extrahována v souboru analyzátoru implementace. Pole napsaná v konfiguračním souboru jsou pouze ty, které lze přidat do vrstvy. |  |
+| **pole** | Deklarace, která pole se extrahují z provozu. Každé pole má své vlastní ID (název) a typ (číslo, řetězec, RAW, pole, komplexní). Například [funkce](https://docs.google.com/document/d/14nm8cyoGiaE0ODOYQd_xjULxVz9U_bjfPKkcDhOFr5Q/edit#bookmark=id.6s1zcxa9184k) pole, která je extrahována v souboru analyzátoru implementace. Pole napsaná v konfiguračním souboru jsou pouze ty, které lze přidat do vrstvy. |  |
 
 ### <a name="other-advanced-fields"></a>Další rozšířená pole 
 
@@ -396,7 +396,7 @@ Tím se ověří, že přenášený paket odpovídá parametrům ověření prot
 
 Například použijte prvních 8 bajtů jako *Magic Number*. Pokud správnosti selže, vrátí se odpověď na chybu správnosti.
 
-Například:
+Příklad:
 
 ```C++
   horizon::protocol::ParserResult 
@@ -1640,6 +1640,6 @@ Monitorování:
 
 Vyberte tlačítko monitor pro modul plug-in z přehledu.
 
-Další kroky
+## <a name="next-steps"></a>Další kroky
 
 Nastavení [rozhraní API pro horizont](references-horizon-api.md)

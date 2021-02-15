@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: e8d21e57f9a844b3cc0538f4805780829a1350f4
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 96031642efb1248fb3b1acabeb9d7381177a2c70
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428584"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100098074"
 ---
 # <a name="trusted-storage-for-media-services"></a>Důvěryhodné úložiště pro Media Services
 
@@ -22,7 +22,11 @@ Když vytváříte účet Media Services, musíte ho přidružit k účtu úlož
 
 ## <a name="trusted-storage-with-a-firewall"></a>Důvěryhodné úložiště pomocí brány firewall
 
-Pokud ale chcete použít bránu firewall k zabezpečení účtu úložiště a Povolit důvěryhodné úložiště, je upřednostňovanou možností ověřování [spravovaných identit](concept-managed-identities.md) . Umožňuje Media Services získat přístup k účtu úložiště, který byl nakonfigurován s bránou firewall nebo omezením virtuální sítě prostřednictvím důvěryhodného přístupu k úložišti. Umožňuje Media Services získat přístup k účtu úložiště, který byl nakonfigurován s bránou firewall nebo omezením virtuální sítě prostřednictvím důvěryhodného přístupu k úložišti.
+Pokud ale chcete použít bránu firewall k zabezpečení účtu úložiště a Povolit důvěryhodné úložiště, je upřednostňovanou možností ověřování [spravovaných identit](concept-managed-identities.md) . Umožňuje Media Services získat přístup k účtu úložiště, který byl nakonfigurován s bránou firewall nebo omezením virtuální sítě prostřednictvím důvěryhodného přístupu k úložišti.
+
+## <a name="tutorial"></a>Kurz
+
+Další informace o povolení důvěryhodného úložiště najdete v kurzu [Media Services důvěryhodné úložiště](tutorial-trusted-storage-rest.md) .
 
 > [!NOTE]
 > Aby Media Services mohl číst a zapisovat do účtu úložiště, je třeba udělit přístup přispěvatele dat objektu BLOB úložiště spravované identity v AMS.  Udělení obecné role přispěvatele nebude fungovat, protože nepovoluje správná oprávnění k rovině dat.

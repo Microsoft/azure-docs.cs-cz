@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 5d2d923fc448beeff8fa165226890d88d97d01ad
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 56f6c9d3ff3093c3acd28b670e37f823ad5e9f9a
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805661"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522508"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Aktivace a nastavení senzoru
 
@@ -44,7 +44,7 @@ Předtím, než se přihlásíte ke konzole senzorů, by měli mít uživatelé 
 
 Váš senzor byl připojen k Azure Defenderu pro IoT v určitém režimu správy:
 
-| Typ režimu | Description |
+| Typ režimu | Popis |
 |--|--|
 | **Režim připojení ke cloudu** | Informace, které senzor detekuje, se zobrazí v konzole senzorů. Informace o výstrahách se také doručují prostřednictvím služby IoT Hub a dají se sdílet s ostatními službami Azure, jako je Azure Sentinel. |
 | **Místně připojený režim** | Informace, které senzor detekuje, se zobrazí v konzole senzorů. Informace o detekci se také sdílí s místní konzolou pro správu, pokud je senzor připojený k němu. |
@@ -177,7 +177,7 @@ Přístup k nástrojům konzoly získáte z vedlejší nabídky.
 
 **Navigace** 
 
-| Okno | Ikona | Description |
+| Okno | Ikona | Popis |
 | -----------|--|--|
 | Řídicí panel | :::image type="icon" source="media/concept-sensor-console-overview/dashboard-icon-azure.png" border="false"::: | Zobrazení intuitivního snímku stavu zabezpečení sítě. |
 | Mapa zařízení | :::image type="icon" source="media/concept-sensor-console-overview/asset-map-icon-azure.png" border="false"::: | Zobrazit síťová zařízení, připojení zařízení a vlastnosti zařízení v mapě. K zobrazení vaší sítě jsou k dispozici různé možnosti přiblížení, zvýraznění a filtrování. |
@@ -187,13 +187,13 @@ Přístup k nástrojům konzoly získáte z vedlejší nabídky.
 
 **Výsledcích**
 
-| Okno| Ikona | Description |
+| Okno| Ikona | Popis |
 |---|---|---|
 | Časová osa události | :::image type="icon" source="media/concept-sensor-console-overview/event-timeline-icon-azure.png" border="false"::: | Zobrazit časovou osu pomocí informací o výstrahách, událostech sítě (informativní) a uživatelských operacích, jako jsou přihlášení uživatelů a odstranění uživatelů.|
 
 **Navigace**
 
-| Okno | Ikona | Description |
+| Okno | Ikona | Popis |
 |---|---|---|
 | Dolování dat | :::image type="icon" source="media/concept-sensor-console-overview/data-mining-icon-azure.png" border="false"::: | Generování komplexních a podrobných informací o zařízeních vaší sítě v různých vrstvách. |
 | Šetření | :::image type="icon" source="media/concept-sensor-console-overview/trends-and-statistics-icon-azure.jpg" border="false"::: | Zobrazení trendů a statistik v rozsáhlých různých widgetech. |
@@ -201,7 +201,7 @@ Přístup k nástrojům konzoly získáte z vedlejší nabídky.
 
 **Správce**
 
-| Okno | Ikona | Description |
+| Okno | Ikona | Popis |
 |---|---|---|
 | Uživatelé | :::image type="icon" source="media/concept-sensor-console-overview/users-icon-azure.png" border="false"::: | Definujte uživatele a role s různými úrovněmi přístupu. |
 | Šíření | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Dodejte informace o výstrahách partnerům a interním zdrojům (například Azure Sentinel), které se integrují s Defenderem pro IoT, e-mailové adresy, servery webhooků a další. <br /> Podrobnosti najdete v podrobnostech [o upozorněních před oznámením](how-to-forward-alert-information-to-partners.md) . |
@@ -210,11 +210,11 @@ Přístup k nástrojům konzoly získáte z vedlejší nabídky.
 
 **Podpora**
 
-| Okno| Ikona | Description |
+| Okno| Ikona | Popis |
 |----|---|---|
 | Podpora | :::image type="icon" source="media/concept-sensor-console-overview/support-icon-azure.png" border="false"::: | Požádejte o nápovědu [Podpora Microsoftu](https://support.microsoft.com/) . |
 
-### <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
 [Připojení snímače](getting-started.md#4-onboard-a-sensor)
 

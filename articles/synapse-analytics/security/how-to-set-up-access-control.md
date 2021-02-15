@@ -2,19 +2,19 @@
 title: Jak nastavit řízení přístupu pro pracovní prostor synapse
 description: Tento článek vás seznámí s tím, jak řídit přístup k pracovnímu prostoru synapse pomocí rolí Azure, rolí synapse, oprávnění SQL a oprávnění Gitu.
 services: synapse-analytics
-author: billgib
+author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 12/03/2020
-ms.author: billgib
+ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7dbbe3afb2a5eb19b5c4893bd73eddbf11e788d4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: c6ec84d41d113a38e78ab13404ef19faf625530b
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218072"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102168"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Jak nastavit řízení přístupu pro pracovní prostor synapse 
 
@@ -43,7 +43,7 @@ Pokud chcete zabezpečit pracovní prostor synapse, postupujte podle vzoru pro k
 
 Tento dokument používá ke zjednodušení pokynů standardní názvy. Nahraďte je názvy dle vašeho výběru.
 
-|Nastavení | Standardní název | Popis |
+|Nastavení | Standardní název | Description |
 | :------ | :-------------- | :---------- |
 | **Pracovní prostor synapse** | `workspace1` |  Název, který bude mít pracovní prostor synapse. |
 | **Účet ADLSGEN2** | `storage1` | Účet ADLS, který se má používat s vaším pracovním prostorem. |
@@ -272,7 +272,7 @@ Chcete-li spravovat přístup, můžete přidat nebo odebrat uživatele do skupi
 Jako poslední krok zabezpečení pracovního prostoru byste měli zabezpečit přístup k síti pomocí:
 - [Firewall pracovního prostoru](./synapse-workspace-ip-firewall.md)
 - [Spravovaná virtuální síť](./synapse-workspace-managed-vnet.md) 
-- [Privátní koncové body](./synapse-workspace-managed-private-endpoints.md)
+- [Soukromé koncové body](./synapse-workspace-managed-private-endpoints.md)
 - [Privátní propojení](../../azure-sql/database/private-endpoint-overview.md)
 
 ## <a name="step-10-completion"></a>Krok 10: dokončení

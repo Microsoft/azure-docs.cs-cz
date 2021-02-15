@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions
-ms.openlocfilehash: 93d5d422709fad3d4f732b3b232f67d60d79b507
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 33c767d847d9e70e95b3ee1648be7852aa5cec98
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493715"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522882"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Upgrade veřejných IP adres
 
@@ -36,7 +36,7 @@ V tomto článku jsou revidovány následující scénáře:
 Aby bylo možné upgradovat veřejnou IP adresu, nesmí být přidružená k žádnému prostředku (Další informace o zrušení přidružení veřejných IP adres) najdete na [této stránce](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address) .
 
 >[!IMPORTANT]
->Veřejné IP adresy upgradované z úrovně Basic na standard SKU nadále nemají žádné [zóny dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones).  To znamená, že není možné je přidružit k prostředku Azure, který je buď redundantní v zóně, nebo vázaný na předem stanovenou zónu v oblastech, kde je tato možnost nabízena.
+>Veřejné IP adresy upgradované z úrovně Basic na standard SKU budou mít i nadále žádné garantované [zóny dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones).  Ujistěte se prosím, že při výběru prostředků, ke kterým se má přidružit IP adresa, je potřeba mít na paměti.
 
 ---
 # <a name="basic-to-standard---powershell"></a>[**Základní až standard – PowerShell**](#tab/option-upgrade-powershell)

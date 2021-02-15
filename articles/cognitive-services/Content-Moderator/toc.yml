@@ -131,4 +131,4 @@
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Šifrování
-      href: content-moderator-encryption-of-data-at-rest.md
+      href: encrypt-data-at-rest.md

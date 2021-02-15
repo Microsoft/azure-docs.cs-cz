@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2021
 ms.author: Zhchia
-ms.openlocfilehash: f8018200e64646ec7894ac76999e2cb766ef380c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: eb3df574029a7c13488830e01354e738930fcd7f
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417353"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523426"
 ---
 # <a name="tutorial-configure-hoxhunt-for-automatic-user-provisioning"></a>Kurz: Konfigurace Hoxhunt pro Automatické zřizování uživatelů
 
@@ -41,18 +41,17 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 * [Tenant Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Uživatelský účet ve službě Azure AD s [oprávněním](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce). 
 * Tenant Hoxhunt
-* Uživatelský účet v Hoxhunt s oprávněními správce.
-
+* SCIM klíč rozhraní API a adresa URL koncového bodu SCIM pro vaši organizaci (nakonfigurovaná podporou Hoxhunt).
+?
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Plánování nasazení zřizování
 1. Seznamte se s [fungováním služby zřizování](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 2. Zjistěte, kdo bude v [rozsahu zřizování](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
 3. Určete, jaká data se mají [mapovat mezi Azure AD a Hoxhunt](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
 ## <a name="step-2-configure-hoxhunt-to-support-provisioning-with-azure-ad"></a>Krok 2. Konfigurace Hoxhunt pro podporu zřizování pomocí Azure AD
-
-Pokud chcete nakonfigurovat Hoxhunt pro podporu zřizování s Azure AD, napište prosím e-mail na Hoxhunt Support ( support@hoxhunt.com ).
-Budou poskytovat **ověřovací token** a **adresu URL koncového bodu SCIM**.
-
+?
+Kontaktujte [podporu Hoxhunt](mailto:support@hoxhunt.com) a přijímají klíč rozhraní SCIM API a adresu URL koncového bodu SCIM pro konfiguraci Hoxhunt pro podporu zřizování s Azure AD.
+?
 ## <a name="step-3-add-hoxhunt-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání Hoxhunt z Galerie aplikací Azure AD
 
 Přidejte Hoxhunt z Galerie aplikací Azure AD a začněte spravovat zřizování pro Hoxhunt. Pokud jste dříve nastavili Hoxhunt pro jednotné přihlašování, můžete použít stejnou aplikaci. Pro účely počátečního testování integrace však doporučujeme vytvořit samostatnou aplikaci. Další informace o přidání aplikace z galerie najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 

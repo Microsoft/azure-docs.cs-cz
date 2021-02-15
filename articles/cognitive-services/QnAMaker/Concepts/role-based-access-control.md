@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: 1d434697802596a0200dc0cb5f1afe5bc67afef5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c411250f7d850e56c9c54c27e888cba8f3acfece
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379705"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522202"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Spolupráce s ostatními autory a editory
 
@@ -25,7 +25,7 @@ Tato funkce Azure RBAC zahrnuje:
 * Rychle přidejte autory a editory do všech databází znalostí v prostředku, protože je řízení na úrovni prostředků, nikoli na úrovni znalostní báze.
 
 > [!NOTE]
-> Při vytváření ar nezapomeňte přidat vlastní subdoménu pro daný prostředek. [Vlastní subdoména](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains) by měla být ve výchozím nastavení přítomná, ale pokud ne, přidejte ji prosím.
+> Nezapomeňte do prostředku přidat vlastní subdoménu. [Vlastní subdoména](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains) by měla být ve výchozím nastavení přítomná, ale pokud ne, přidejte ji prosím.
 
 ## <a name="access-is-provided-by-a-defined-role"></a>Přístup poskytuje definovaná role.
 
@@ -38,7 +38,7 @@ Následující diagram znázorňuje tok z pohledu autora pro přihlášení k po
 > [!div class="mx-imgBorder"]
 > ![Následující diagram znázorňuje tok z pohledu autora pro přihlášení k portálu QnA Maker a použití rozhraní API pro vytváření obsahu.](../media/qnamaker-how-to-collaborate-knowledge-base/rbac-flow-from-portal-to-service.png)
 
-|Postup|Description|
+|Postup|Popis|
 |--|--|
 |1|Portál získá token pro QnA Maker prostředek.|
 |2|Portál volá příslušné rozhraní API pro vytváření QnA Maker (APIM), které předá token místo klíčů.|

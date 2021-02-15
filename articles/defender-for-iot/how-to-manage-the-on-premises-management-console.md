@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 80dbad919e9446100bdeebb7cde71c147abfc8bc
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: d76db6830839902a46aaf6515f816fdcc36d0df5
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539345"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523936"
 ---
 # <a name="manage-the-on-premises-management-console"></a>Správa místní konzoly pro správu
 
@@ -415,7 +415,7 @@ Následující postup popisuje, jak aktualizovat místní verzi softwaru konzoly
 
 1. Vyberte soubor, který jste stáhli ze stránky **aktualizace** Defender pro IoT.
 
-## <a name="see-also"></a>Viz také:
+## <a name="next-steps"></a>Další kroky
 
 [Správa senzorů z konzoly pro správu](how-to-manage-sensors-from-the-on-premises-management-console.md)
 

@@ -1,30 +1,30 @@
 ---
 title: Zobrazení upozornění
-description: Podívejte se na výstrahy podle různých kategorií a pomocí funkcí pro vyhledávání pomůžete najít výstrahy, které vás zajímají.
+description: Zobrazit výstrahy podle různých kategorií a pomocí funkcí pro vyhledávání pomůžou najít výstrahy, které vás zajímají.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: bce83e11a0d4567d37e78388445c108385ca9a61
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 6dc2a9683a48f20816adc8ce0ee0c1e8dc57b287
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509062"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523664"
 ---
 # <a name="view-alerts"></a>Zobrazení upozornění
 
 Tento článek popisuje, jak zobrazit výstrahy aktivované senzorem a jak je spravovat pomocí nástrojů výstrah.
 
-Výstrahy můžete zobrazit na základě různých kategorií, jako jsou například výstrahy, které byly archivovány nebo připnuté. Nebo můžete vyhledat výstrahy týkající se zájmu, například výstrahy na základě IP adresy nebo adresy MAC.  
+Výstrahy můžete zobrazit na základě různých kategorií, jako jsou například výstrahy, které byly archivovány nebo připnuté. Můžete také vyhledat výstrahy týkající se zájmu, například výstrahy na základě IP adresy nebo adresy MAC.  
 
 Výstrahy můžete také zobrazit na řídicím panelu senzoru.
 
 Zobrazení výstrah:
 
-- V postranní nabídce vyberte **výstrahy** . V okně **výstrahy** se zobrazují výstrahy, které senzor rozpoznal.
+- V postranní nabídce vyberte **výstrahy** . V okně výstrahy se zobrazují výstrahy, které senzor rozpoznal.
 
   :::image type="content" source="media/how-to-work-with-alerts-sensor/alerts-screen.png" alt-text="Zobrazení obrazovky s výstrahami":::
 
@@ -32,7 +32,7 @@ Zobrazení výstrah:
 
 Výstrahy můžete zobrazit podle různých kategorií v hlavním zobrazení **výstrahy** . Vyberte výstrahu, chcete-li zkontrolovat podrobnosti a spravovat událost.
 
-| Seřadit podle typu | Description |
+| Seřadit podle typu | Popis |
 |--|--|
 | **Důležité výstrahy** | Výstrahy seřazené podle důležitosti. |
 | **Připnuté výstrahy** | Upozorňuje, že uživatel připnul k dalšímu šetření. Připnuté výstrahy nejsou archivovány a jsou uloženy po dobu 14 dní v připnuté složce. |
@@ -42,21 +42,21 @@ Výstrahy můžete zobrazit podle různých kategorií v hlavním zobrazení **v
 
 ## <a name="search-for-alerts-of-interest"></a>Vyhledat výstrahy týkající se zájmu
 
-Hlavní zobrazení **výstrahy** nabízí různé funkce hledání, které vám pomůžou najít výstrahy, které vás zajímají.
+Hlavní zobrazení výstrahy nabízí různé funkce hledání, které vám pomůžou najít výstrahy, které vás zajímají.
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/main-alerts-view.png" alt-text="Snímek obrazovky s výukou výstrah":::
 
-### <a name="text-search"></a>Hledání textu 
+### <a name="text-search"></a>Hledání textu
 
-Pomocí možnosti **bezplatné hledání** můžete vyhledat výstrahy podle textu, číslic nebo znaků.
+Pomocí možnosti bezplatné hledání můžete vyhledat výstrahy podle textu, číslic nebo znaků.
 
 Pro vyhledávání:
 
-- Do pole **bezplatné hledání** zadejte požadovaný text a stiskněte klávesu ENTER na své klávesnici.
+- Do pole bezplatné hledání zadejte požadovaný text a stiskněte klávesu ENTER na své klávesnici.
 
 Vymazání hledání:
 
-- Odstraňte text v poli **bezplatné hledání** a stiskněte klávesu ENTER na své klávesnici.
+- Odstraňte text v poli bezplatné hledání a stiskněte klávesu ENTER na své klávesnici.
 
 ### <a name="device-group-or-device-ip-address-search"></a>Hledání podle skupin zařízení nebo IP adres zařízení
 
@@ -100,7 +100,7 @@ Zprávy upozorňující na zprávy obsahují tyto akce:
 
 - Vyberte, :::image type="icon" source="media/how-to-work-with-alerts-sensor/learn-and-acknowledge-all-alerts.png" border="false"::: Chcete-li zjistit a potvrdit všechny výstrahy.
 
-- Tuto možnost vyberte, pokud chcete :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-csv.png" border="false"::: seznam výstrah exportovat do souboru CSV a vybrat možnost exportovat. Pro normální možnost Export do sdíleného svazku clusteru vyberte **exportovat výstrahy** . Pokud chcete přidat samostatné řádky pro další informace o výstraze v souboru. CSV, vyberte možnost **exportovat rozšířené výstrahy** .
+- Tuto možnost vyberte, pokud chcete :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-csv.png" border="false"::: exportovat informace o výstraze do souboru. csv. Pomocí možnosti **exportovat rozšířené výstrahy** můžete exportovat informace o výstrahách v samostatných řádcích pro každou výstrahu, která pokrývá více zařízení.
 
 ## <a name="alert-pop-up-window-options"></a>Možnosti překryvného okna výstrahy
 

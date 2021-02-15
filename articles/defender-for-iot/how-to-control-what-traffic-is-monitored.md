@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: bfe3e00c4930ba57c930eb1bc2f2dd4ed11886e0
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: a7af817074400bedd8f07adaefc35309566dc931
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624680"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522389"
 ---
 # <a name="control-what-traffic-is-monitored"></a>Určení, který provoz se monitoruje
 
@@ -157,7 +157,7 @@ Změny mohou nastat například tehdy, když server DHCP přiřadí IP adresy.
 
 Definování dynamických IP adres u každého snímače umožňuje komplexní a transparentní podporu v instancích změny IP adresy. Tím zajistíte komplexní vytváření sestav pro každé jedinečné zařízení.
 
-Konzola senzoru prezentuje nejaktuálnější IP adresu přidruženou k zařízení a označuje, která zařízení jsou dynamická. Například:
+Konzola senzoru prezentuje nejaktuálnější IP adresu přidruženou k zařízení a označuje, která zařízení jsou dynamická. Příklad:
 
 - Sestava dolování dat a inventář zařízení konsoliduje veškerou aktivitu získanou ze zařízení jako jednu entitu, a to bez ohledu na změny IP adresy. Tyto sestavy označují, které adresy byly definovány jako adresy DHCP.
 
@@ -295,7 +295,7 @@ Zobrazení výsledků kontroly:
 
 1. Po dokončení kontroly vyberte v podokně **Akce** možnost **Zobrazit výsledky kontroly**. Soubor CSV s výsledky kontroly se stáhne do vašeho počítače.
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
 [Prozkoumat detekci senzorů v inventáři zařízení](how-to-investigate-sensor-detections-in-a-device-inventory.md) 
  [Prozkoumat detekci senzorů v mapě zařízení](how-to-work-with-the-sensor-device-map.md)

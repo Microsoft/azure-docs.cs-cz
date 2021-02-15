@@ -1,5 +1,5 @@
 ---
-title: Informace o přeposílání výstrah
+title: Předávání informací o upozornění
 description: Pomocí pravidel předávání můžete odesílat informace o výstrahách do partnerských systémů.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 0b71f7ca3f812de1514612f8b0dd5915f3f81bc4
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 528ea5a6b05dea59cb397bf32297f05b6cdc9be2
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839377"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522729"
 ---
-# <a name="forward-alert-information"></a>Informace o přeposílání výstrah
+# <a name="forward-alert-information"></a>Předávání informací o upozornění
 
 Můžete odesílat informace o výstrahách partnerům, kteří se integrují do Azure Defenderu pro IoT, na servery syslog, e-mailových adres a dalších. Práce s pravidly předávání umožňuje rychle doručovat informace o výstrahách zúčastněným stranám zabezpečení.  
 
@@ -26,7 +26,7 @@ Defender pro správce IoT má oprávnění používat pravidla pro předávání
 
 ## <a name="about-forwarded-alert-information"></a>Informace o předaných výstrahách
 
-Výstrahy obsahují informace o rozsáhlém rozsahu zabezpečení a provozních událostí. Například:
+Výstrahy obsahují informace o rozsáhlém rozsahu zabezpečení a provozních událostí. Příklad:
 
   - Datum a čas výstrahy
 
@@ -203,6 +203,6 @@ Je možné, že Správce definoval pravidla vyloučení výstrah. Tato pravidla 
 
 To znamená, že pravidla pro předávání, která definujete, se můžou ignorovat na základě pravidel vyloučení, která vytvořil správce. Pravidla vyloučení jsou definována v místní konzole pro správu.
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
 [Urychlení pracovních postupů výstrah](how-to-accelerate-alert-incident-response.md)

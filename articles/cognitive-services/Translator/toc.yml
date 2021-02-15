@@ -4,7 +4,7 @@
   items:
     - name: Co je Translator?
       href: translator-info-overview.md
-    - name: Rychlý start
+    - name: Rychlé zprovoznění
       href: quickstart-translator.md
     - name: Podpora jazyků
       href: language-support.md
@@ -149,4 +149,4 @@
         - name: Dodržování předpisů
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: Šifrování
-          href: translator-encryption-of-data-at-rest.md
+          href: encrypt-data-at-rest.md

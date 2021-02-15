@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: c0670f37da0cead5e3bd05a1d69e17191e8c0ccf
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 6a1a4d13ee9f9032c739773b678600d52dec82b8
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508739"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523919"
 ---
 # <a name="manage-alert-events"></a>Správa událostí výstrah
 
@@ -23,7 +23,8 @@ Pro správu událostí výstrah jsou k dispozici následující možnosti:
  | **Learn** | Autorizovat zjištěnou událost. Další informace najdete v tématu [o událostech učení a neučení](#about-learning-and-unlearning-events). |
  | **Potvrdit** | Skrýt výstrahu jednou pro zjištěnou událost. Po opětovném zjištění události bude výstraha znovu aktivována. Další informace najdete v tématu [o potvrzování a nepotvrzujících událostech](#about-acknowledging-and-unacknowledging-events). |
  | **Vypnutí** | Nepřetržitě ignorujte aktivitu se stejnými zařízeními a srovnatelnými přenosy. Další informace najdete v tématu [popisujícím ztlumení a odztlumení událostí](#about-muting-and-unmuting-events). |
-
+ 
+Můžete také exportovat informace o výstrahách.
 ## <a name="about-learning-and-unlearning-events"></a>Události učení a neučení
 
 Události indikující odchylky zjištěné sítě mohou odrážet platné změny sítě. Příklady mohou zahrnovat nová oprávněná zařízení, která se připojila k síti nebo k autorizované aktualizaci firmwaru.
@@ -68,7 +69,7 @@ V těchto situacích není učení k dispozici. Když se naučíte postupovat a 
 > [!NOTE] 
 > Nemůžete ztlumit události, ve kterých je internetové zařízení definované jako zdroj nebo cíl.
 
-### <a name="what-traffic-is-muted"></a>Jaký provoz je ztlumený?
+### <a name="what-alert-activity-is-muted"></a>Jaká aktivita výstrah je ztlumená?
 
 Neztlumený scénář zahrnuje síťová zařízení a provoz zjištěný pro událost. Název výstrahy popisuje neztlumený provoz.
 
@@ -88,7 +89,7 @@ Pokud je událost ztlumená, ignoruje se vždy, když zdroj pošle hlavičku HTT
 
 **Po ztlumení události:**
 
-- Tato výstraha bude přístupná v zobrazení **potvrzené** výstrahy, dokud nebude nevyztlumená.
+- Výstraha bude k dispozici v zobrazení **potvrzené** výstrahy, dokud nebude ztlumeně.
 
 - Akce ztlumení se zobrazí v **časové ose události**.
 
@@ -106,6 +107,25 @@ Pokud je událost ztlumená, ignoruje se vždy, když zdroj pošle hlavičku HTT
 
 2. Pokud chcete zjistit, jestli je ztlumený, najeďte myší na výstrahu.  
 
-## <a name="see-also"></a>Viz také
+## <a name="export-alert-information"></a>Exportovat informace o výstrahách
+
+Exportujte informace o výstraze do souboru. csv. Můžete exportovat informace o všech zjištěných výstrahách nebo informace o exportu na základě filtrovaného zobrazení. Exportují se následující informace:
+
+- Zdrojová adresa
+- Cílová adresa
+- Název výstrahy
+- Závažnost výstrahy
+- Zpráva výstrahy
+- Další informace
+- Potvrzený stav
+- Dostupnost PCAP
+
+Export:
+
+1. V postranní nabídce vyberte výstrahy.
+1. Vyberte Exportovat.
+1. Vyberte Exportovat rozšířené výstrahy a exportujte informace o výstrahách v samostatných řádcích pro každou výstrahu, která pokrývá více zařízení. Když je vybraná možnost exportovat rozšířené výstrahy, vytvoří soubor. CSV v každém řádku duplicitní řádek události výstrahy s jedinečnými položkami. Použití této možnosti usnadňuje zkoumání exportovaných událostí výstrah.
+
+## <a name="next-steps"></a>Další kroky
 
 [Určení, který provoz se monitoruje](how-to-control-what-traffic-is-monitored.md)

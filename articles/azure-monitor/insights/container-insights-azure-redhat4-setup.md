@@ -3,12 +3,12 @@ title: Konfigurace Azure Red Hat OpenShift v4. x s Azure Monitor for Containers 
 description: Tento článek popisuje, jak nakonfigurovat monitorování pro cluster Kubernetes s Azure Monitor hostovaným v Azure Red Hat OpenShift verze 4 nebo novější.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 8cd551a028f2fc67c26f8e32d59c0e0650aa1e54
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: e6668ac22c6c0f53c7511cfb76bf50c5474f3a76
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944523"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521624"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>Konfigurace Azure Red Hat OpenShift v4. x s Azure Monitor for Containers
 
@@ -121,7 +121,7 @@ Pokud nemáte pracovní prostor, který byste mohli zadat, můžete přeskočit 
     export kubeContext="<kubeContext name of your ARO v4 cluster>"  
     ```
 
-    Příklad:
+    Tady je příkaz, který musíte spustit, když jste naplnili 3 proměnné pomocí příkazů exportu:
 
     `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext --workspace-id $logAnalyticsWorkspaceResourceId`
 

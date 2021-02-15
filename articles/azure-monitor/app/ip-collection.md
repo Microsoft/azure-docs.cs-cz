@@ -4,12 +4,12 @@ description: Porozumění způsobu, jakým jsou zpracovávány IP adresy a geogr
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6131105ef78a8559b0fb95043a87e562e887ebfd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a8969d5d0df2fdacf78815c6f47c7c6bfa73a37
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333303"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521913"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Geografická poloha a zpracování IP adres
 
@@ -77,9 +77,9 @@ Pokud potřebujete pouze změnit chování pro jeden prostředek Application Ins
     ![Snímek obrazovky přidá čárku za "IbizaAIExtension" a přidá nový řádek pod "DisableIpMasking": true](media/ip-collection/save.png)
 
     > [!WARNING]
-    > Pokud dojde k chybě, která říká: ** _Skupina prostředků je v umístění, které není podporováno jedním nebo více prostředky v šabloně. Zvolte prosím jinou skupinu prostředků._** Dočasně vyberte jinou skupinu prostředků z rozevíracího seznamu a pak znovu vyberte původní skupinu prostředků, abyste mohli chybu vyřešit.
+    > Pokud dojde k chybě, která říká: **_Skupina prostředků je v umístění, které není podporováno jedním nebo více prostředky v šabloně. Zvolte prosím jinou skupinu prostředků._** Dočasně vyberte jinou skupinu prostředků z rozevíracího seznamu a pak znovu vyberte původní skupinu prostředků, abyste mohli chybu vyřešit.
 
-5. Vyberte **Souhlasím**s  >  **nákupem**. 
+5. Vyberte **Souhlasím** s  >  **nákupem**. 
 
     ![Zaškrtnuté políčko s slovy Souhlasím s uvedenými podmínkami a ujednáními, které jsou uvedené výše, zvýrazněné červeně nad tlačítkem "koupit", zvýrazněné červeně.](media/ip-collection/purchase.png)
 
@@ -99,7 +99,7 @@ Pokud potřebujete pouze změnit chování pro jeden prostředek Application Ins
     
     V důsledku toho se vrátí seznam vlastností. Jedna z vlastností by měla být přečtena `DisableIpMasking: true` . Pokud spustíte PowerShell před nasazením nové vlastnosti pomocí Azure Resource Manager, vlastnost neexistuje.
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 
 Datová část [rozhraní REST API](/rest/api/azure/) pro provádění stejných úprav je následující:
 
@@ -241,7 +241,7 @@ requests
 
 Nově shromážděné IP adresy se zobrazí ve `customDimensions_client-ip` sloupci. Výchozí `client-ip` sloupec bude mít stále všechny čtyři oktety, které jsou buď vypočítány. 
 
-Při testování z místního hostitele a hodnoty pro `customDimensions_client-ip` je `::1` očekávané chování této hodnoty. `::1` představuje adresu zpětné smyčky v protokolu IPv6. Je ekvivalentní s `127.0.01` protokolem IPv4.
+Při testování z místního hostitele a hodnoty pro `customDimensions_client-ip` je `::1` očekávané chování této hodnoty. `::1` představuje adresu zpětné smyčky v protokolu IPv6. Je ekvivalentní s `127.0.0.1` protokolem IPv4.
 
 ## <a name="next-steps"></a>Další kroky
 

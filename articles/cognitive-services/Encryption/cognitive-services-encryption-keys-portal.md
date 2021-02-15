@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 1d161c82c087fd86a3774f0d121330260b1574e4
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: fca3fc80411432f2e82a68faa3b6f297b8ca5f9c
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366090"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521998"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-for-cognitive-services"></a>Konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault pro Cognitive Services
 
@@ -21,20 +21,20 @@ Proces povolení Customer-Managed klíčů s Azure Key Vault pro Cognitive Servi
 
 ## <a name="vision"></a>Obraz
 
-* [Custom Vision šifrování dat v klidovém umístění](../Custom-Vision-Service/custom-vision-encryption-of-data-at-rest.md)
-* [Šifrování neaktivních dat ve službě faceation Services](../Face/face-encryption-of-data-at-rest.md)
-* [Rozpoznávání vydaných dat v klidovém formátu](../form-recognizer/form-recognizer-encryption-of-data-at-rest.md)
+* [Custom Vision šifrování dat v klidovém umístění](../Custom-Vision-Service/encrypt-data-at-rest.md)
+* [Šifrování neaktivních dat ve službě faceation Services](../Face/encrypt-data-at-rest.md)
+* [Rozpoznávání vydaných dat v klidovém formátu](../form-recognizer/encrypt-data-at-rest.md)
 
 ## <a name="language"></a>Jazyk
 
-* [Šifrování neaktivních dat Language Understanding služby](../LUIS/luis-encryption-of-data-at-rest.md)
-* [QnA Maker šifrování dat v klidovém umístění](../QnAMaker/qna-maker-encryption-of-data-at-rest.md)
-* [Šifrování dat v klidovém umístění](../translator/translator-encryption-of-data-at-rest.md)
+* [Šifrování neaktivních dat Language Understanding služby](../LUIS/encrypt-data-at-rest.md)
+* [QnA Maker šifrování dat v klidovém umístění](../QnAMaker/encrypt-data-at-rest.md)
+* [Šifrování dat v klidovém umístění](../translator/encrypt-data-at-rest.md)
 
 ## <a name="decision"></a>Rozhodnutí
 
-* [Content Moderator šifrování dat v klidovém umístění](../Content-Moderator/content-moderator-encryption-of-data-at-rest.md)
-* [Individuální Šifrování neaktivních dat](../personalizer/personalizer-encryption-of-data-at-rest.md)
+* [Content Moderator šifrování dat v klidovém umístění](../Content-Moderator/encrypt-data-at-rest.md)
+* [Individuální Šifrování neaktivních dat](../personalizer/encrypt-data-at-rest.md)
 
 ## <a name="next-steps"></a>Další kroky
 

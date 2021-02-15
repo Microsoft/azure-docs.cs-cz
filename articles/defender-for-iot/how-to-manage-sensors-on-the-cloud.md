@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/27/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 427ea3884a3db6ba33405014435cf1f962670064
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 459bac2ef01e69b9316af7e8374e7416ab51d915
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562705"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523902"
 ---
 # <a name="onboard-and-manage-sensors-in-the-defender-for-iot-portal"></a>Zprovoznění a správa senzorů v programu Defender pro IoT Portal
 
@@ -52,12 +52,10 @@ Stažení aktivačního souboru:
 
 ## <a name="view-onboarded-sensors"></a>Zobrazení integrovaných senzorů
 
-Na [portálu Defender pro IoT](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)můžete zobrazit základní informace o integrovaných senzorech. 
+Na [portálu Defender pro IoT](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)můžete zobrazit základní informace o integrovaných senzorech.
 
 1. Vyberte **weby a senzory**.
-1. Na stránce **lokality a senzory** použijte nástroje pro filtrování a vyhledávání k nalezení informací o senzorech, které potřebujete.
-
-Dostupné informace zahrnují:
+1. Pomocí nástrojů pro filtrování a vyhledávání Najděte informace o senzorech a analýzách hrozeb, které potřebujete.
 
 - Kolik senzorů se připojilo
 - Počet senzorů, které jsou připojené ke cloudu a jsou místně spravované
@@ -68,32 +66,40 @@ Dostupné informace zahrnují:
 
 Pro úlohy správy související se senzory se používá [Defender pro IoT Portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) .
 
-### <a name="export"></a>Export
+Integrované senzory je možné zobrazit na stránce **weby a senzory** . Z této stránky můžete také upravovat informace o senzoru.
+
+### <a name="export-sensor-details"></a>Podrobnosti o exportním senzoru
 
 Pokud chcete exportovat informace o senzoru, vyberte v horní části stránky **a senzorů** ikonu **exportovat** .
 
-### <a name="edit"></a>Upravit
+### <a name="edit-sensor-zone-details"></a>Upravit podrobnosti zóny senzorů
 
-Pomocí nástrojů pro úpravy **webů a senzorů** přidejte a upravte název, zónu a značky lokality.
+Pomocí možností úprav **webů a senzorů** upravte název a zónu senzorů.
 
-### <a name="delete"></a>Odstranit
+Postup úpravy:
+
+1. Klikněte pravým tlačítkem myši na tři tečky (**...**) pro senzor, který chcete upravit.
+1. Vyberte Upravit.
+1. Aktualizujte zónu senzorů nebo vytvořte novou zónu.
+
+### <a name="delete-a-sensor"></a>Odstranění snímače
 
 Pokud odstraníte senzor připojený ke cloudu, informace se nebudou odesílat do centra IoT. Odstraňte místně připojené senzory, když už s nimi nepracujete.
 
 Odstranění snímače:
 
-1. Vyberte tři tečky (**...**) pro senzor, který chcete odstranit. 
+1. Vyberte tři tečky (**...**) pro senzor, který chcete odstranit.
 1. Potvrďte odstranění.
 
-### <a name="reactivate"></a>Znovu aktivovat
+### <a name="reactivate-a-sensor"></a>Opětovná aktivace snímače 
 
-Můžete chtít aktualizovat režim, ve kterém je senzor spravovaný. Například:
+Možná budete muset senzor znovu aktivovat, protože chcete:
 
-- **Pracovat v režimu připojeném ke cloudu místo v místním spravovaném režimu**: Pokud to chcete udělat, aktualizujte aktivační soubor pro místně připojený senzor s aktivačním souborem pro senzor připojený ke cloudu. Po opětovné aktivaci se Detekce senzorů zobrazí jak na senzoru, tak i v [programu Defender pro IoT Portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started). Po úspěšném odeslání souboru opětovné aktivace se do Azure pošle nově zjištěné informace o výstrahách.
+- **Práce v režimu připojeném ke cloudu namísto místně spravovaného režimu**: po opětovné aktivaci se senzory zobrazí ve snímači a nově zjištěné informace o výstrahách se doručí prostřednictvím centra IoT. Tyto informace se dají sdílet s ostatními službami Azure, jako je třeba Sentinel Azure.
 
-- **Pracovat v místně připojeném režimu místo v režimu připojeném k cloudu**: provedete to tak, že aktualizujete aktivační soubor pro senzor připojený k cloudu s aktivačním souborem pro místně spravovaný senzor. Po opětovné aktivaci se informace o detekci senzorů zobrazí jenom ve snímači.
+- **Funguje v lokálně spravovaném režimu místo v režimu připojeném do cloudu**: po opětovné aktivaci se informace o detekci senzorů zobrazí jenom ve snímači.
 
-- **Přidružte senzor k nové službě IoT Hub**: Pokud to chcete provést, znovu zaregistrujte senzor a nahrajte nový aktivační soubor.
+- **Přidružte senzor k nové službě IoT Hub**: Pokud to chcete udělat, zaregistrujte senzor znovu pomocí nového centra a pak stáhněte nový aktivační soubor.
 
 Postup opětovné aktivace snímače:
 
@@ -103,20 +109,20 @@ Postup opětovné aktivace snímače:
 
 3. Odstraňte senzor.
 
-4. Znovu zaveďte senzor ze stránky **připojování** v novém nebo novém centru IoT.
+4. Zaregistrujte senzor znovu v novém režimu nebo pomocí nového centra IoT, a to výběrem možnosti připojit **senzor** ze stránky Začínáme.
 
-5. Stáhněte si aktivační soubor ze stránky **soubor pro aktivaci stahování** .
+5. Stáhněte si aktivační soubor.
 
-6. Přihlaste se ke konzole služby Defender pro IoT snímač.
+1. Přihlaste se ke konzole služby Defender pro IoT snímač.
 
 7. V konzole senzorů vyberte **nastavení systému** a pak vyberte **Opětovná aktivace**.
 
    :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/reactivate.png" alt-text="Nahrajte aktivační soubor a znovu aktivujte senzor.":::
 
-8. Vyberte **nahrát** a vyberte soubor, který jste uložili.
+8. Vyberte **nahrát** a vyberte soubor, který jste uložili na stránce snímače desky.
 
-9. Vyberte **aktivovat**. 
+9. Vyberte **aktivovat**.
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
 [Aktivace a nastavení senzoru](how-to-activate-and-set-up-your-sensor.md)

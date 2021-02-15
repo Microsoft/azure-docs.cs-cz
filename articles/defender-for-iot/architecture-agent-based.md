@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/25/2021
 ms.author: shhazam
-ms.openlocfilehash: 1729a20825eb554a4fd2ee60141994e57e62f030
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 3a7dabfed86dab463b38ae45278ead7f5acb5ef9
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809802"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521947"
 ---
 # <a name="agent-based-solution-for-device-builders"></a>Řešení založená na agentech pro tvůrce zařízení
 
@@ -44,7 +44,7 @@ Doporučení a upozornění pro IoT (výstup kanálu analýz) se zapisuje do Log
 
 :::image type="content" source="media/architecture/micro-agent-architecture.png" alt-text="Architektura mikroagentů.":::
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
 [Defender pro IoT – Nejčastější dotazy](resources-frequently-asked-questions.md)
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/09/2020
-ms.openlocfilehash: 5b4ab207462955be3876dc1a25fae491e48a9cd2
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: de8638cbb4e39ccf6013e5a8d596417401700c8d
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621706"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521590"
 ---
 # <a name="welcome-to-azure-defender-for-iot"></a>Vítá vás Azure Defender pro IoT
 
@@ -81,6 +81,6 @@ Detekuje hrozby jako botnety, pokusy o útok hrubou silou, kryptografické dolov
 
 Agent Azure Defender pro IoT Micro obsahuje zdrojový kód, takže agenta můžete začlenit do firmwaru nebo ho přizpůsobit tak, aby zahrnoval jenom to, co potřebujete. Je také k dispozici jako binární balíček nebo přímo integrována do jiných řešení Azure IoT. 
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
 [Azure Defender pro architekturu IoT](architecture.md)

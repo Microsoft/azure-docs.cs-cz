@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: e9904e9157a560e2a4853a1a9cd37977defe73ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9367cf4324d577e4dd44cb9294a8b82b1bceaf74
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935099"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522949"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>Průvodce odstraňováním potíží s agenty zabezpečení (Linux)
 
@@ -108,10 +108,4 @@ Defender for IoT agent encountered an error! Error in: {Error Code}, reason: {Er
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si téma [Přehled](overview.md) služby Defender for IoT.
-- Další informace o programu Defender pro [architekturu](architecture.md) IoT
-- Povolení služby Defender pro IoT [Service](quickstart-onboard-iot-hub.md)
-- Přečtěte si [Nejčastější dotazy](resources-frequently-asked-questions.md) ke službě Defender for IoT
-- Přečtěte si, jak získat přístup k [nezpracovaným datům zabezpečení](how-to-security-data-access.md)
-- Vysvětlení [doporučení](concept-recommendations.md)
-- Vysvětlení [výstrah](concept-security-alerts.md) zabezpečení
+Přečtěte si téma [Přehled](overview.md) služby Defender [for IoT.](architecture.md) Další informace o programu Defender for IoT najdete v tématu [věnovaném](resources-frequently-asked-questions.md) programu Defender [for IoT,](quickstart-onboard-iot-hub.md) jak získat přístup k [nezpracovaným datům zabezpečení](how-to-security-data-access.md) , [jak pochopit](concept-recommendations.md) [výstrahy](concept-security-alerts.md) zabezpečení.

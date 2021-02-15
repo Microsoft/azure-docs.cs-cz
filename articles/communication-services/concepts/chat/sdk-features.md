@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: dcd8222b46262f6ec70459ec670789ae4a433c1d
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 93f90520f9a5f6ec424a7558418abfa4de4699ee
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99625260"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364830"
 ---
 # <a name="chat-client-library-overview"></a>Přehled klientských knihoven pro chat
 
@@ -44,15 +44,17 @@ Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici 
 |                   | Posílání a přijímání oznámení o psaní, když člen aktivně zapisuje zprávu do konverzačního vlákna <br/> *Není k dispozici, pokud je v konverzačním vlákně více než 20 členů.*      | ✔️   | ✔️   | ✔️    | ✔️    |
 |                   | Získá všechny zprávy ve vlákně chatu. <br/> *Podporovaná sada Unicode Emoji*                                                  | ✔️   | ✔️  | ✔️    | ✔️  |
 |                   | Odeslat emoji jako součást obsahu zprávy                                                                              | ✔️   | ✔️  | ✔️    | ✔️  |
-|Signalizace v reálném čase (povoleno pomocí proprietárního balíčku pro signalizaci)| Oznámení o tom, že uživatel obdrží novou zprávu ve vlákně chatu, které je členem                                     | ✔️   | ❌    | ❌  | ❌  |
+|Signalizace v reálném čase (s povoleným proprietárním balíčkem pro signalizaci * * *)| Oznámení o tom, že uživatel obdrží novou zprávu ve vlákně chatu, které je členem                                     | ✔️   | ❌    | ❌  | ❌  |
 |                    | Oznámení o tom, že byla zpráva upravována jiným členem ve vlákně chatu, které je členem                | ✔️   | ❌    | ❌    | ❌  |
 |                    | Oznámení o odstranění zprávy jiným členem v konverzačním vlákně, které je členem                | ✔️   | ❌    | ❌    | ❌  |
 |                    | Dostávat oznámení, když zadá jiný člen konverzačního vlákna                                                             | ✔️   | ❌    | ❌    | ❌  |
 |                    | Dostávat oznámení, když jiný člen přečte zprávu (stvrzenka pro čtení) ve vlákně chatu                               | ✔️   | ❌    | ❌    | ❌  |
 | Události             | Použití Event Grid k přihlášení k odběru aktivity uživatelů při konverzaci v vláknech a integraci vlastních služeb oznámení nebo obchodní logiky     | ✔️   | ✔️  | ✔️    | ✔️  |
-| Sledování        | Monitorování využití z doručených zpráv                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
+| Monitorování        | Monitorování využití z doručených zpráv                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
 |                    | Monitorování kvality a stavu požadavků rozhraní API provedených vaší aplikací a konfigurace výstrah prostřednictvím portálu                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
 |Další funkce | Pomocí [rozhraní API služeb Cognitive Services](../../../cognitive-services/index.yml) společně s klientskou knihovnou chatu můžete povolit inteligentní funkce *překladu jazyka & mínění analýzy příchozích zpráv v klientovi, konverzi řeči na text a vytvoření zprávy, když člen mluví atd.*                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
+
+* * Proprietární balíček signalizace se implementuje pomocí webových soketů. V případě, že nejsou podporovány webové sokety, dojde k přechodu na dlouhé cyklické dotazování.
 
 ## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>Podpora klientské knihovny JavaScript chatu podle operačního systému a prohlížeče
 

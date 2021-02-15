@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/10/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 6dbe15da85a85303742ef28c7ca609755193f25e
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: b8a7679521096cf3d98e8f55748eb0398fdc4ab8
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509095"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523596"
 ---
 # <a name="track-sensor-activity"></a>Sledování aktivity senzorů
 
@@ -89,6 +89,6 @@ Postup filtrování časové osy:
     
       Soubor PCAP obsahuje technické informace, které mohou pomoci síťovým inženýrům určit přesné parametry události. Soubor PCAP můžete analyzovat pomocí analyzátoru síťových protokolů, jako je třeba Wireshark, open source aplikace.
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
 [Zobrazení upozornění](how-to-view-alerts.md)

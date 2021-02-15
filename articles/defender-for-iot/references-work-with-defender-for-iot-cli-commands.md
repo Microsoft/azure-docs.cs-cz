@@ -1,5 +1,5 @@
 ---
-title: Práce s Defenderem pro příkazy rozhraní příkazového řádku IoT
+title: Práce s příkazy CLI Defenderu for IoT
 description: Tento článek popisuje Defender pro příkazy IoT CLI pro senzory a místní konzoly pro správu.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 48c525004b095c1e0f498f86a5395d0002be26f1
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 2ec682bf76e35b54f58acc1956972c57128edd75
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845248"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523137"
 ---
-# <a name="work-with-defender-for-iot-cli-commands"></a>Práce s Defenderem pro příkazy rozhraní příkazového řádku IoT
+# <a name="work-with-defender-for-iot-cli-commands"></a>Práce s příkazy CLI Defenderu for IoT
 
 Tento článek popisuje příkazy rozhraní příkazového řádku pro senzory a místní konzoly pro správu. Příkazy jsou přístupné správcům, uživatelům CyberX a podpoře uživatelů.
 
@@ -109,7 +109,7 @@ Následující tabulka popisuje příkazy, které jsou k dispozici pro konfigura
 |Blink|`network blink`|Povolí změnu parametrů konfigurace sítě.|
 |Překonfigurujte síť. |`network edit-settings`| Povolí změnu parametrů konfigurace sítě. |
 |Zobrazit nastavení sítě |`network list`|Zobrazí parametry síťového adaptéru. |
-|Ověření konfigurace sítě |`network validate` |Zobrazí výstupní nastavení sítě. <br /> <br />Například: <br /> <br />Aktuální nastavení sítě: <br /> rozhraní: eth0 <br /> IP adresa: 10.100.100.1 <br />podsíť: 255.255.255.0 <br />Výchozí brána: 10.100.100.254 <br />DNS: 10.100.100.254 <br />rozhraní monitorování: eth1|
+|Ověření konfigurace sítě |`network validate` |Zobrazí výstupní nastavení sítě. <br /> <br />Příklad: <br /> <br />Aktuální nastavení sítě: <br /> rozhraní: eth0 <br /> IP adresa: 10.100.100.1 <br />podsíť: 255.255.255.0 <br />Výchozí brána: 10.100.100.254 <br />DNS: 10.100.100.254 <br />rozhraní monitorování: eth1|
 |Import certifikátu |`certificate import FILE` |Importuje certifikát HTTPS. Je nutné zadat úplnou cestu, která vede k \* souboru. CRT. |
 |Zobrazit datum |`date` |Vrátí aktuální datum na hostiteli ve formátu GMT. |
 
@@ -290,6 +290,6 @@ Při použití nástroje:
 
 - Ověřte s tím, jak se doména zařízení (jak se zobrazuje v certifikátu) s vaším serverem DNS a odpovídající IP adresou. 
     
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
 [Defender pro rozhraní API pro senzory rozhraní IoT a konzolu pro správu](references-work-with-defender-for-iot-apis.md)

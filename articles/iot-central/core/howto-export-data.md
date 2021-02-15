@@ -8,12 +8,12 @@ ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: d31673b8d789cff5de3ddce63b67a98854b7aabc
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 7152012c7c4a342c7491e5f8b835eaede4269c4c
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515899"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522610"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Export dat IoT do cloudových cílů pomocí exportu dat
 
@@ -168,14 +168,14 @@ Teď, když máte cíl exportovat data do, nastavte export dat do aplikace IoT C
 
 ## <a name="monitor-your-export"></a>Monitorování exportu
 
-Kromě toho, že se ve službě IoT Central zobrazuje stav exportů, můžete sledovat, kolik dat provádí vaše exporty, a sledovat chyby při exportu v datové platformě Azure Monitor. K metrikám o vašich exportech a stavu zařízení můžete přistupovat v grafech v Azure Portal, REST API nebo dotazech v PowerShellu nebo v rozhraní příkazového řádku Azure. V současné době můžete monitorovat tyto metriky exportu dat v Azure Monitor:
+Kromě zobrazení stavu exportů v IoT Central můžete pomocí [Azure monitor](../../azure-monitor/overview.md) zjistit, kolik dat exportujete, a případné chyby při exportu. Pro export a metriky stavu zařízení můžete v grafech v Azure Portal, pomocí REST API nebo pomocí dotazů v PowerShellu nebo v Azure CLI získat přístup. V současné době můžete monitorovat následující metriky exportu dat v Azure Monitor:
 
-1. Počet zpráv, které jsou příchozí pro export před použitím filtrů
-2. Počet zpráv, které procházejí filtry
-3. Počet zpráv úspěšně exportovaných do cílových umístění
-4. Počet zjištěných chyb
- 
-[Přečtěte si další informace o tom, jak získat přístup k IoT Central metriky.](howto-monitor-application-health.md)
+- Počet zpráv, které jsou příchozí pro export před použitím filtrů.
+- Počet zpráv, které procházejí filtry.
+- Počet zpráv úspěšně exportovaných do cílových umístění.
+- Počet zjištěných chyb.
+
+Další informace najdete v tématu [monitorování celkového stavu aplikace IoT Central](howto-monitor-application-health.md).
 
 ## <a name="destinations"></a>Cíle
 

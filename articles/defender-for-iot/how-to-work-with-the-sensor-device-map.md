@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/7/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: edd1438a665e4917d5dd4cdcfba08d9cee01d3bb
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 5b7059129c45149c64bc7fc145c68d9e09a7c046
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509044"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523834"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>Prozkoumat detekci senzorů v mapě zařízení
 
@@ -36,7 +36,7 @@ Následující nástroje slouží k práci na mapě.
 
 Vaše role uživatele určuje, které nástroje jsou k dispozici v okně Mapa zařízení. Podrobnosti o rolích uživatelů najdete v tématu věnovaném [Vytvoření a správě uživatelů](how-to-create-and-manage-users.md) .
 
-| Symbol | Description |
+| Symbol | Popis |
 |---|---|
 | :::image type="icon" source="media/how-to-work-with-maps/search-bar-icon-v2.png" border="false":::| Hledání podle IP adresy nebo adresy MAC pro konkrétní zařízení. Do textového pole zadejte adresu IP nebo adresu MAC. Mapa zobrazí zařízení, které jste hledali pomocí zařízení, která jsou k němu připojená. |
 | Zvýraznění skupin a filtry <br /> :::image type="content" source="media/how-to-work-with-maps/group-highlight-and-filters-v2.png" alt-text="Snímek obrazovky s zvýrazněním a filtry skupiny"::: | Filtrovat nebo zvýraznit mapu na základě výchozích a vlastních skupin zařízení. |
@@ -118,7 +118,7 @@ Zobrazit skupiny podle:
 
 K dispozici jsou následující předdefinované skupiny:
 
-| Název skupiny | Description |
+| Název skupiny | Popis |
 |--|--|
 | **Známé aplikace** | Zařízení, která používají rezervované porty, jako je například TCP.  |
 | **porty, které nejsou standardní (výchozí)** | Zařízení, která používají nestandardní porty nebo porty, kterým nebyl přiřazen alias. |
@@ -267,7 +267,7 @@ K dispozici je rozsáhlá škála nástrojů pro další informace o zařízení
 
 Na zařízeních na mapě se můžou zobrazit tyto popisky a indikátory:
 
-| Popisek zařízení | Description |
+| Popisek zařízení | Popis |
 |--|--|
 | :::image type="content" source="media/how-to-work-with-maps/host-v2.png" alt-text="Název hostitele IP"::: | Název hostitele IP adresy a IP adresa nebo adresy podsítí |
 | :::image type="content" source="media/how-to-work-with-maps/amount-alerts-v2.png" alt-text="Počet výstrah"::: | Počet výstrah přidružených k zařízení |
@@ -313,24 +313,24 @@ Následující informace lze aktualizovat ručně. Informace, které jsou zadán
 
   - Purdue vrstva
 
-  - Description
+  - Popis
 
 | Položka | Popis |
 |--|--|
 | Základní informace | Základní informace, které jsou potřeba. |
-| Name | Název zařízení <br /> Ve výchozím nastavení senzor zjistí název zařízení, jak je definován v síti. Například název definovaný na serveru DNS. <br /> Pokud se žádné takové názvy nedefinovaly, zobrazí se v tomto poli IP adresa zařízení. <br /> Název zařízení můžete změnit ručně. Poskytněte svým zařízením smysluplné názvy, které odpovídají jejich funkcím. |
+| Název | Název zařízení <br /> Ve výchozím nastavení senzor zjistí název zařízení, jak je definován v síti. Například název definovaný na serveru DNS. <br /> Pokud se žádné takové názvy nedefinovaly, zobrazí se v tomto poli IP adresa zařízení. <br /> Název zařízení můžete změnit ručně. Poskytněte svým zařízením smysluplné názvy, které odpovídají jejich funkcím. |
 | Typ | Typ zařízení zjištěný senzorem. <br /> Další informace najdete v tématu [zobrazení typů zařízení](#view-device-types). |
 | Dodavatel | Dodavatel zařízení. To je určeno úvodními znaky adresy MAC zařízení. Toto pole je jen ke čtení. |
 | Operační systém | SYSTÉM zařízení zjistil senzor. |
 | Purdue vrstva | Purdue vrstva určená senzorem pro toto zařízení, včetně: <br /> – Automaticky <br /> – Řízení procesů <br /> – Dohlížecí <br /> – Enterprise |
-| Description | Textové pole zdarma <br /> Přidejte další informace o zařízení. |
+| Popis | Textové pole zdarma <br /> Přidejte další informace o zařízení. |
 | Atributy | Jakékoli další informace, které o zařízení byly zjištěny během období učení a nepatří do jiných kategorií, se zobrazí v části atributy. <br /> Informace jsou typu RO. |
 | Nastavení | Můžete ručně změnit nastavení zařízení, aby nedocházelo k falešně pozitivním hodnotám: <br /> - **Autorizované zařízení**: během období učení se všechna zařízení zjištěná v síti identifikují jako Autorizovaná zařízení. Jakmile se zařízení zjistí po období učení, ve výchozím nastavení se zobrazí jako neoprávněné zařízení. Tuto definici můžete změnit ručně. <br /> - **Známé jako skener**: tuto možnost povolte, pokud víte, že se jedná o zařízení se označuje jako skener a že se k němu nemusíte upozorňovat. <br /> - **Programové zařízení**: tuto možnost povolte, pokud víte, že toto zařízení je známé jako programové zařízení a slouží k provádění změn v programování. Rozpoznání jako programovací zařízení zabrání upozorněním na změny programování pocházející z tohoto prostředku. |
 | Vlastní skupiny | Vlastní skupiny v mapě zařízení, ve kterých se toto zařízení účastní |
 | State | Stav zabezpečení a autorizace zařízení: <br /> – Stav není, `Secured` Pokud nejsou k dispozici žádná upozornění. <br /> – Pokud se zobrazí výstrahy týkající se zařízení, zobrazí se počet výstrah. <br /> – Stav `Unauthorized` se zobrazí pro zařízení, která se přidala do sítě po období učení. Zařízení můžete ručně definovat jako `Authorized Device` v nastavení. <br /> – Pro případ, že je adresa tohoto zařízení definovaná jako Dynamická adresa, `DHCP` přidá se do stavu. |
 
 
-| Síť | Description |
+| Síť | Popis |
 |--|--|
 | Rozhraní | Rozhraní zařízení. Pole typu RO. |
 | Protokoly | Protokoly používané zařízením Pole typu RO. |
@@ -489,7 +489,7 @@ Tato část popisuje, jak zobrazit programové soubory a porovnat verze. Vyhled�
 
 :::image type="content" source="media/how-to-work-with-maps/timeline-view.png" alt-text="okno programovací časová osa":::
 
-|Typ programovací časové osy | Description |
+|Typ programovací časové osy | Popis |
 |--|--|
 | Naprogramované zařízení | Obsahuje podrobné informace o zařízení, které bylo naprogramováno, včetně názvu hostitele a souboru. |
 | Nedávné události | 50 zobrazí nejnovější události, které senzor zjistil. <br />Pokud chcete událost zvýraznit, najeďte na ni myší a klikněte na starou. :::image type="icon" source="media/how-to-work-with-maps/star.png" border="false"::: <br /> Můžete zobrazit poslední 50 události. |
@@ -544,7 +544,7 @@ Pro porovnání:
 
 Kromě kontroly podrobností na časové ose programování můžete získat přístup k programovým informacím v okno Vlastnosti zařízení a inventáři zařízení.
 
-| Typ zařízení | Description |
+| Typ zařízení | Popis |
 |--|--|
 | Vlastnosti zařízení | Okno vlastností zařízení poskytuje informace o poslední události programování zjištěné na device\.. :::image type="content" source="media/how-to-work-with-maps/information-from-device-v2.png" alt-text="Vlastnosti vašeho zařízení"::: |
 | Inventář zařízení | Inventář zařízení indikuje, jestli je zařízení programový device\.. :::image type="content" source="media/how-to-work-with-maps/inventory-v2.png" alt-text="Inventář zařízení"::: |
@@ -709,6 +709,6 @@ Export:
 
 1. Vyberte možnost exportu.
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
 [Prozkoumat detekci senzorů v inventáři zařízení](how-to-investigate-sensor-detections-in-a-device-inventory.md)

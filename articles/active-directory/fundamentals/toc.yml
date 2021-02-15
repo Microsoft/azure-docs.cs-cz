@@ -25,6 +25,8 @@
   items:
     - name: Zabezpečení
       items:
+        - name: Ochrana Microsoftu 365 před místními útoky
+          href: protect-m365-from-on-premises-attacks.md
         - name: Zabezpečená externí spolupráce
           items:
             - name: Přehled zabezpečení externího přístupu
@@ -47,8 +49,20 @@
               href: 8-secure-access-sensitivity-labels.md
             - name: '9. Zabezpečení přístupu k Teams, SharePointu a OneDrivu'
               href: 9-secure-access-teams-sharepoint.md
-        - name: Ochrana Microsoftu 365 před místními útoky
-          href: protect-m365-from-on-premises-attacks.md
+        - name: Účty zabezpečené služby
+          items:
+            - name: Seznámení s místními účty služeb
+              href: service-accounts-on-premises.md
+            - name: Zabezpečení skupiny účty spravované služby
+              href: service-accounts-group-managed.md
+            - name: Zabezpečení samostatných účty spravované služby
+              href: service-accounts-standalone-managed.md
+            - name: Zabezpečení počítačových účtů
+              href: service-accounts-computer.md
+            - name: Zabezpečení účtů služeb založených na uživateli
+              href: service-accounts-user-on-premises.md
+            - name: Řízení účtů místních služeb
+              href: service-accounts-govern-on-premises.md
         - name: Povolení MFA
           href: concept-fundamentals-mfa-get-started.md
         - name: Výchozí nastavení zabezpečení

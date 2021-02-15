@@ -131,8 +131,8 @@
               displayName: 'Active Directory, roles, permissions'
               href: how-to-create-and-manage-users.md
             - name: Definování globálního řízení přístupu uživatelů
-              displayName: 'business unit, site, region'
               href: how-to-define-global-user-access-control.md
+              displayName: 'business unit, site, region, user'
         - name: 'Určení, který provoz se monitoruje'
           displayName: 'Windows, Learning, Smart IT Learning, DNS, DHCP, engines, subnets'
           href: how-to-control-what-traffic-is-monitored.md
@@ -140,8 +140,8 @@
           displayName: 'disconnect, connect, activation file, sensor backup'
           href: how-to-manage-sensors-from-the-on-premises-management-console.md
         - name: Správa individuálních senzorů
-          displayName: 'activation, certificate, connect, timezone time zone, backup, restore, software update, failure'
           href: how-to-manage-individual-sensors.md
+          displayName: 'activation, certificate, SSL, TLS, connect, timezone time zone, backup, restore, software update, failure'
         - name: Správa senzorů v cloudu
           href: how-to-manage-sensors-on-the-cloud.md
         - name: Správa místní konzoly pro správu
@@ -153,10 +153,13 @@
           items:
             - name: Prošetření všech detekovaných podnikových senzorů v inventáři zařízení
               href: how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md
+              displayName: classification
             - name: Prošetření detekovaných senzorů v inventáři zařízení
               href: how-to-investigate-sensor-detections-in-a-device-inventory.md
+              displayName: 'classification, Windows registry'
         - name: Práce s mapou zařízení senzorů
           href: how-to-work-with-the-sensor-device-map.md
+          displayName: 'connections, Purdue, zoom'
         - name: Práce s upozorněními zjištěnými senzorem
           items:
             - name: Práce s upozorněním na senzoru
@@ -165,8 +168,10 @@
               href: how-to-view-alerts.md
             - name: Zobrazení informací uvedených v upozorněních
               href: how-to-view-information-provided-in-alerts.md
+              displayName: PCAP
             - name: Správa události upozornění
               href: how-to-manage-the-alert-event.md
+              displayName: 'PCAP, acknowledge, learn, mute, policy'
             - name: Urychlení reakce na incidenty upozornění
               href: how-to-accelerate-alert-incident-response.md
               displayName: 'custom, alerts, comments, groups'
@@ -175,18 +180,21 @@
               displayName: 'integration, partners, vendor, Syslog server, NetWitness,CEF, LEEF, email'
         - name: 'Získání přehledu o globálních, regionálních a místních hrozbách'
           href: how-to-gain-insight-into-global-regional-and-local-threats.md
+          displayName: 'site, business unit, region, map'
         - name: Práce s upozorněními na místní konzole pro správu
           href: how-to-work-with-alerts-on-premises-management-console.md
         - name: Vytváření sestav
           items:
             - name: Vytváření sestav posouzení rizik
               href: how-to-create-risk-assessment-reports.md
+              displayName: 'vulnerability, security score, score'
             - name: Vytváření sestav vektorů útoku
               href: how-to-create-attack-vector-reports.md
             - name: Vytváření sestav dolování dat
               href: how-to-create-data-mining-queries.md
             - name: Vytváření trendů a statistických sestav
-              href: how-to-create-data-mining-queries.md
+              href: how-to-create-trends-and-statistics-reports.md
+              displayName: 'widgets, charts'
         - name: Rozšíření informací o zařízení
           items:
             - name: Práce s oznámeními zařízení

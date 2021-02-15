@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/14/2021
 ms.author: memildin
-ms.openlocfilehash: 8d6cee5e8d9683ca88a71608595b7dfde8261b8d
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 845697b9d2fd8d43caa3a9992fea8a780b7d9b7c
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520523"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522865"
 ---
 # <a name="pricing-of-azure-security-center"></a>Ceny Azure Security Center
 Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami pro úlohy běžící v Azure, na místních systémech a v jiných cloudech. Poskytuje přehled a kontrolu nad úlohami hybridního cloudu, aktivní ochranou, která snižuje vaše nároky na hrozby a inteligentní zjišťování, které vám pomůže udržet krok s rychle se rozvíjejícími se internetovými riziky.
@@ -108,7 +108,7 @@ Pro povolení služby Azure Defender pro vaše předplatné můžete použít n�
 |||
 
 ### <a name="can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription"></a>Můžu Azure Defender povolit pro podmnožinu serverů v mém předplatném?
-No. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, budou všechny servery v tomto předplatném chráněny pomocí Azure Defenderu. 
+Ne. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, budou všechny servery v tomto předplatném chráněny pomocí Azure Defenderu. 
 
 Alternativou je povolení Azure Defenderu pro servery na úrovni pracovního prostoru Log Analytics. Pokud to uděláte, budou se chránit a fakturovat jenom servery, které se budou hlásit do tohoto pracovního prostoru. Některé možnosti však nebudou k dispozici. Mezi ně patří přístup k virtuálnímu počítači za běhu, detekce sítě, dodržování legislativních předpisů, adaptivní posílení zabezpečení sítě, adaptivní řízení aplikací a další. 
 
@@ -118,18 +118,16 @@ Pokud jste už získali licenci na Microsoft Defender pro koncový bod, nebudete
 Pokud chcete potvrdit svoji slevu, obraťte se na tým podpory Security Center a poskytněte příslušnému ID pracovního prostoru relevantní informace o licenci, oblasti a licence pro jednotlivé příslušné licence.
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>Má předplatné Azure Defender pro servery povolené, mám platit za Nespuštěné servery? 
-No. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, nebudou se vám účtovat žádné počítače, které jsou v nepřiděleném stavu napájení, zatímco jsou v tomto stavu. Počítače se účtují podle jejich stavu napájení, jak je znázorněno v následující tabulce:
+Ne. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, nebudou se vám účtovat žádné počítače, které jsou v nepřiděleném stavu napájení, zatímco jsou v tomto stavu. Počítače se účtují podle jejich stavu napájení, jak je znázorněno v následující tabulce:
 
 | State        | Popis                                                                                                                                      | Využití instance se účtuje |
 |--------------|--------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
 | Spouštění     | Spouští se virtuální počítač.                                                                                                                               | Neúčtuje se            |
 | Spuštěno      | Normální pracovní stav pro virtuální počítač                                                                                                                    | Účtuje                |
 | Zastavování     | Toto je přechodný stav. Po dokončení se zobrazí jako zastaveno.                                                                           | Účtuje                |
-| Zastaveno      | Virtuální počítač se vypnul v hostovaném operačním systému nebo pomocí rozhraní stavu PowerOff API. Hardware je stále přidělen k virtuálnímu počítači a zůstane na hostiteli. | Fakturováno (1)            |
-| Rušení přidělení | Přechodný stav. Po dokončení se virtuální počítač zobrazí jako navrácené.                                                                             | Neúčtováno (1)        |
+| Zastaveno      | Virtuální počítač se vypnul v hostovaném operačním systému nebo pomocí rozhraní stavu PowerOff API. Hardware je stále přidělen k virtuálnímu počítači a zůstane na hostiteli. | Účtuje                |
+| Rušení přidělení | Přechodný stav. Po dokončení se virtuální počítač zobrazí jako navrácené.                                                                             | Neúčtuje se            |
 | Přidělení zrušeno  | Virtuální počítač se úspěšně zastavil a odebral z hostitele.                                                                                  | Neúčtuje se            |
-
-(1) některé prostředky Azure, jako jsou disky a sítě, se účtují za vás. K softwarovým licencím na instanci se neúčtují poplatky.
 
 :::image type="content" source="media/security-center-pricing/deallocated-virtual-machines.png" alt-text="Azure Virtual Machines zobrazující nepřidělený počítač":::
 

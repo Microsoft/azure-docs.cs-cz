@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/03/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 804cdbd6266f2e77b5562d914bac089fce80f645
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 5877db6b3bc7366f28e679882a2c784e6828b1c1
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839132"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523579"
 ---
 # <a name="view-information-in-alerts"></a>Zobrazit informace v upozorněních
 
@@ -72,7 +72,7 @@ Vybrané komentáře jsou uloženy ve zprávě s výstrahou. Práce s poznámkam
 
 Správce nebo analytik zabezpečení předdefinuje komentáře. Vybrané komentáře nejsou předávány partnerským systémům definovaným v pravidlech předávání.
 
-Po kontrole informací v upozornění můžete provádět různé kroky forenzní, které vás provedou správou události výstrahy. Například:
+Po kontrole informací v upozornění můžete provádět různé kroky forenzní, které vás provedou správou události výstrahy. Příklad:
 
 - Analyzovat poslední aktivitu zařízení (sestava dolování dat). 
 
@@ -90,8 +90,8 @@ Pokud chcete stáhnout soubor PCAP, vyberte :::image type="content" source="medi
 
 V oblasti **doporučení** výstrahy se zobrazují informace, které vám pomůžou lépe porozumět události. Před správou události výstrahy nebo provedením akce v zařízení nebo v síti zkontrolujte tyto informace.
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
 [Urychlení pracovních postupů výstrah](how-to-accelerate-alert-incident-response.md)
 
-[Spravovat událost výstrahy](how-to-manage-the-alert-event.md)
+[Správa události upozornění](how-to-manage-the-alert-event.md)

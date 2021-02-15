@@ -4,15 +4,15 @@ description: Naučte se spravovat jednotlivé senzory, včetně správy aktivač
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/12/2021
+ms.date: 02/02/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b35851bae8db39392d10a302d5f1059ba3ace696
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: ba98eb7e87ba277dcd5279ecf17373a8276b1cb1
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508756"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523970"
 ---
 # <a name="manage-individual-sensors"></a>Správa individuálních senzorů
 
@@ -86,7 +86,7 @@ Pokud se aktivační soubor nepovedlo nahrát, zobrazí se chybová zpráva. Moh
 
 - Senzory **připojené k cloudu**: senzor se nemůže připojit k Internetu. Ověřte konfiguraci senzoru sítě. Pokud se váš senzor potřebuje připojit prostřednictvím webového proxy serveru pro přístup k Internetu, ověřte, že je váš proxy server správně nakonfigurovaný na obrazovce **Konfigurace sítě senzorů** . Ověřte, že \* v bráně firewall nebo proxy serveru je povolený. Azure-Devices.NET:443. Pokud se zástupné znaky nepodporují nebo chcete mít větší kontrolu, měli byste v bráně firewall nebo proxy serveru otevřít plně kvalifikovaný název domény pro konkrétního Defenderu pro IoT Hub. Podrobnosti najdete v tématu [IoT Hub koncových bodů reference](../iot-hub/iot-hub-devguide-endpoints.md).  
 
-- **Pro senzory připojené k cloudu**: aktivační soubor je platný, ale Defender pro IoT ho zamítl. Pokud tento problém nemůžete vyřešit, můžete si stáhnout další aktivaci ze stránky **Správa senzorů** v Defenderu pro IoT Portal. Pokud to nepomůže, obraťte se na podpora Microsoftu.
+- **Pro senzory připojené k cloudu**: aktivační soubor je platný, ale Defender pro IoT ho zamítl. Pokud tento problém nemůžete vyřešit, můžete si stáhnout další aktivaci ze stránky lokality a senzory portálu Defender pro IoT Portal. Pokud to nepomůže, obraťte se na podpora Microsoftu.
 
 ## <a name="manage-certificates"></a>Správa certifikátů
 
@@ -114,7 +114,7 @@ Defender pro IoT snímač a místní Konzola pro správu používají SSL a cert
  
  - Zabezpečte komunikaci mezi senzory a místní konzolou pro správu. 
 
-Po nainstalování zařízení vygeneruje místní certifikát podepsaný svým držitelem, který umožňuje předběžný přístup k webové konzole. Certifikáty Enterprise SSL a TLS se můžou nainstalovat pomocí [`cyberx-xsense-certificate-import`](#cli-commands) nástroje příkazového řádku. 
+Po nainstalování zařízení vygeneruje místní certifikát podepsaný svým držitelem, který umožňuje předběžný přístup k webové konzole. Certifikáty Enterprise SSL a TLS se můžou nainstalovat pomocí [`cyberx-xsense-certificate-import`](#cli-commands) nástroje příkazového řádku.
 
  > [!NOTE]
  > Pro integrační a předávací pravidla, kde je zařízení klientem a iniciátorem relace, se používají konkrétní certifikáty a nevztahují se k systémovým certifikátům.  
@@ -282,7 +282,7 @@ Při použití příkazu CLI:
 
 Spravujte certifikáty pomocí následujících příkazů:
 
-| Description | CLI – příkaz |
+| Popis | CLI – příkaz |
 |--|--|
 | Vygenerovat nový privátní klíč a žádost o podepsání certifikátu | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
 | Vygenerování certifikátu podepsaného svým držitelem | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
@@ -292,7 +292,7 @@ Spravujte certifikáty pomocí následujících příkazů:
 
 Pokud potřebujete ověřit informace v rámci certifikátu, CSR nebo privátního klíče, použijte tyto příkazy;
 
-| Description | CLI – příkaz |
+| Popis | CLI – příkaz |
 |--|--|
 | Ověření žádosti o podepsání certifikátu (CSR) | `openssl req -text -noout -verify -in CSR.csr` |
 | Ověřit privátní klíč | `openssl rsa -in privateKey.key -check` |
@@ -300,13 +300,13 @@ Pokud potřebujete ověřit informace v rámci certifikátu, CSR nebo privátní
 
 Pokud se zobrazí chyba, že se soukromý klíč neshoduje s certifikátem, nebo pokud certifikát, který jste nainstalovali do lokality, není důvěryhodný, použijte k opravě chyby tyto příkazy.
 
-| Description | CLI – příkaz |
+| Popis | CLI – příkaz |
 |--|--|
 | Zkontrolujte hodnotu hash MD5 veřejného klíče a ujistěte se, že se shoduje s tím, co je v rámci zástupce nebo privátního klíče. | první. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> odst. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 1. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
 
 Chcete-li převést certifikáty a klíče do různých formátů, aby byly kompatibilní s konkrétními typy serverů nebo softwaru, použijte tyto příkazy;
 
-| Description | CLI – příkaz |
+| Popis | CLI – příkaz |
 |--|--|
 | Převod souboru DER (. CRT. cer. der) na PEM  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
 | Převod souboru PEM na DER | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
@@ -363,15 +363,23 @@ Pokud byl senzor zaregistrován jako senzor připojený k cloudu, název sníma�
 
 Změna názvu:
 
-1. Na portálu Azure Defender pro IoT Portal navštivte stránku **Správa senzorů** .
+1. Na portálu Azure Defender pro IoT Portal navštivte stránku lokality a senzory.
 
-1. Odstraňte senzor z okna **pro správu senzorů** .
+1. Odstraňte senzor ze stránky weby a senzory.
 
-1. Znovu se zaregistrujte s novým názvem.
+1. Zaregistrujte se novým názvem výběrem možnosti připojit **senzor** ze stránky Začínáme.
 
 1. Stáhněte si nový aktivační soubor.
 
-1. Přihlaste se ke senzoru a nahrajte nový aktivační soubor.
+1. Přihlaste se ke konzole služby Defender pro IoT snímač.
+
+1. V konzole senzorů vyberte **nastavení systému** a pak vyberte **Opětovná aktivace**.
+
+   :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/reactivate.png" alt-text="Nahrajte aktivační soubor a znovu aktivujte senzor.":::
+
+1. Vyberte **nahrát** a vyberte soubor, který jste uložili.
+
+1. Vyberte **aktivovat**.
 
 ## <a name="update-the-sensor-network-configuration"></a>Aktualizace konfigurace sítě senzorů
 
@@ -387,7 +395,7 @@ Změna konfigurace:
 
     :::image type="content" source="media/how-to-manage-individual-sensors/edit-network-configuration-screen.png" alt-text="Nakonfigurujte nastavení sítě.":::
 
-3. Parametry nastavte takto:
+3. Nastavte parametry:
 
     | Parametr | Popis |
     |--|--|
@@ -458,7 +466,7 @@ Uložení zálohy na externí server SMB:
 
     - `sudo chmod 777 /<backup_folder_name_on_cyberx_server>/`
 
-3. Upravit `fstab` : 
+3. Upravit `fstab` :
 
     - `sudo nano /etc/fstab`
 
@@ -526,7 +534,7 @@ Následující postup popisuje aktualizaci samostatného senzoru pomocí konzoly
 
     :::image type="content" source="media/how-to-manage-individual-sensors/defender-for-iot-version.png" alt-text="Snímek obrazovky verze upgradu, která se zobrazí po přihlášení":::
 
-## <a name="forward-sensor-failure-alerts"></a>Výstrahy selhání snímače pro dopředný senzor 
+## <a name="forward-sensor-failure-alerts"></a>Výstrahy selhání snímače pro dopředný senzor
 
 Zasílání výstrah třetím stranám vám umožní poskytnout podrobnosti o těchto tématech:
 
@@ -562,7 +570,7 @@ Přístup k vlastnostem systému:
 
 3. V části **Obecné** vyberte **Vlastnosti systému** .
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
 [Analýzy a balíčky pro analýzu hrozeb](how-to-work-with-threat-intelligence-packages.md)
 
