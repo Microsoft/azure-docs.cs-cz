@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 51ba981dcc6f36df3bfaacebb503782faed5c91f
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 1e7ea0dc929fdbb4ca306405e6ed8993ed2e4afe
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581002"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386097"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>Import klíčů chráněných HSM do Key Vault (BYOK)
 
@@ -52,7 +52,7 @@ V následující tabulce jsou uvedeny předpoklady pro používání BYOK v Azur
 | Předplatné Azure |Pokud chcete vytvořit Trezor klíčů v Azure Key Vault, potřebujete předplatné Azure. [Zaregistrujte si bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/). |
 | SKU Key Vault úrovně Premium pro import klíčů chráněných HSM |Další informace o úrovních a funkcích služby v Azure Key Vault najdete v článku o [cenách Key Vault](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Modul HARDWAROVÉho zabezpečení z podporovaného seznamu HSM a nástroj BYOK a pokyny, které poskytuje dodavatel HSM. | Musíte mít oprávnění pro modul HARDWAROVÉho zabezpečení a základní informace o tom, jak používat modul hardwarového zabezpečení (HSM). Viz článek [podporované HSM](#supported-hsms). |
-| Azure CLI verze 2.1.0 nebo novější | Viz [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).|
+| Azure CLI verze 2.1.0 nebo novější | Viz [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).|
 
 ## <a name="supported-hsms"></a>Podporované HSM
 
@@ -63,9 +63,10 @@ V následující tabulce jsou uvedeny předpoklady pro používání BYOK v Azur
 |Fortanix|Výrobců<br/>HSM jako služba|<ul><li>Služba správy klíčů Self-Defending (SDKMS)</li><li>Equinix SmartKey</li></ul>|[Export klíčů SDKMS do poskytovatelů cloudu pro BYOK-Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
 |PERC|Manufacturer|Všechny LiquidSecurity HSM s<ul><li>Firmware verze 2.0.4 nebo novější</li><li>Firmware verze 3,2 nebo novější</li></ul>|[Nástroj a dokumentace k PERC BYOK](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Cryptomathic|ISV (Enterprise Key Management System)|Několik značek HSM a modelů, včetně<ul><li>Podpůrný software nCipher</li><li>Thales</li><li>Utimaco</li></ul>Podrobnosti najdete v tématu [Cryptomathic web](https://www.cryptomathic.com/azurebyok) .|[Nástroj a dokumentace pro Cryptomathic BYOK](https://www.cryptomathic.com/azurebyok)|
-|Securosys SA|Výrobce, HSM jako služba|Primus, rodina HSM, Securosys cloudy HSM|[Nástroj a dokumentace pro Primus BYOK](https://www.securosys.com/primus-azure-byok)|
+|Securosys SA|Výrobců<br/>HSM jako služba|Primus, rodina HSM, Securosys cloudy HSM|[Nástroj a dokumentace pro Primus BYOK](https://www.securosys.com/primus-azure-byok)|
 |StorMagic|ISV (Enterprise Key Management System)|Několik značek HSM a modelů, včetně<ul><li>Utimaco</li><li>Thales</li><li>Podpůrný software nCipher</li></ul>Podrobnosti najdete v tématu [StorMagic web](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm) .|[SvKMS a Azure Key Vault BYOK](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|
 |IBM|Manufacturer|IBM 476x, CryptoExpress|[Společnost IBM Enterprise Key Management Foundation](https://www.ibm.com/security/key-management/ekmf-bring-your-own-key-azure)|
+|Utimaco|Výrobců<br/>HSM jako služba|Kotva u. Trust, CryptoServer|[Utimaco BYOK Tool a Průvodce integrací](https://support.hsm.utimaco.com/support/downloads/byok)|
 ||||
 
 
@@ -100,7 +101,7 @@ KEK musí být:
 > [!NOTE]
 > KEK musí mít ' import ' jako jedinou povolenou operaci klíče. Import se vzájemně vylučuje se všemi ostatními klíčovými operacemi.
 
-Pomocí příkazu [AZ Key trezor Key Create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) vytvořte KEK, který má klíčové operace nastavené na `import` . Poznamenejte si identifikátor klíče ( `kid` ) vrácený z následujícího příkazu. ( `kid` V [kroku 3](#step-3-generate-and-prepare-your-key-for-transfer)použijete hodnotu.)
+Pomocí příkazu [AZ Key trezor Key Create](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-create) vytvořte KEK, který má klíčové operace nastavené na `import` . Poznamenejte si identifikátor klíče ( `kid` ) vrácený z následujícího příkazu. ( `kid` V [kroku 3](#step-3-generate-and-prepare-your-key-for-transfer)použijete hodnotu.)
 
 ```azurecli
 az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import --vault-name ContosoKeyVaultHSM
@@ -108,7 +109,7 @@ az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import 
 
 ### <a name="step-2-download-the-kek-public-key"></a>Krok 2: stažení veřejného klíče KEK
 
-K stažení veřejného klíče KEK do souboru. pem použijte [AZ Key trezor Key Download](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-download) . Cílový klíč, který importujete, je zašifrovaný pomocí veřejného klíče KEK.
+K stažení veřejného klíče KEK do souboru. pem použijte [AZ Key trezor Key Download](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-download) . Cílový klíč, který importujete, je zašifrovaný pomocí veřejného klíče KEK.
 
 ```azurecli
 az keyvault key download --name KEKforBYOK --vault-name ContosoKeyVaultHSM --file KEKforBYOK.publickey.pem
@@ -129,7 +130,7 @@ Přeneste soubor BYOK do připojeného počítače.
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>Krok 4: přenesení klíče do Azure Key Vault
 
-Pokud chcete dokončit import klíče, přeneste balíček přenosu klíčů (soubor BYOK) z odpojeného počítače na počítač připojený k Internetu. Pomocí příkazu [AZ Key trezor Key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) nahrajte soubor BYOK do modulu HSM Key Vault.
+Pokud chcete dokončit import klíče, přeneste balíček přenosu klíčů (soubor BYOK) z odpojeného počítače na počítač připojený k Internetu. Pomocí příkazu [AZ Key trezor Key import](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-import) nahrajte soubor BYOK do modulu HSM Key Vault.
 
 Pokud chcete importovat klíč RSA, použijte následující příkaz. Parametr--KTY je nepovinný a výchozí hodnota je RSA-HSM.
 ```azurecli

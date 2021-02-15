@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 67fc80b5f34cf3a98fd39ddc352cb2dd9a5e7151
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b32baa23a31342095e542d60745a503b81e89a9
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85564913"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092702"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>Připojení zařízení Symantec ICDx 
 
@@ -39,13 +39,13 @@ Symantec ICDx může integrovat a exportovat protokoly přímo do Azure Sentinel
 1. Otevřete konzolu pro správu ICDx a přidejte nástroje pro přeposílání Sentinel (Log Analytics) Microsoft Azure.
 2. Na navigačním panelu ICDx klikněte na **Konfigurace**. 
 3. V horní části obrazovky **Konfigurace** klikněte na nástroje **pro přeposílání**.
-4. V části **pro předávané**aplikace vedle Microsoft Azure Sentinel (Log Analytics) klikněte na **Přidat**. 
+4. V části **pro předávané** aplikace vedle Microsoft Azure Sentinel (Log Analytics) klikněte na **Přidat**. 
 4. V okně **Microsoft Azure Sentinel (Log Analytics)** klikněte na **Zobrazit Upřesnit**. 
 5. V horní části okna Rozšířené do Microsoft Azure Sentinel (Log Analytics) proveďte následující kroky:
     -   **Název**: zadejte název pro server pro zakládání, který nemá více než 30 znaků. Vyberte jedinečný, smysluplný název. Tento název se zobrazí v seznamu služeb pro přesměrování na obrazovce **Konfigurace** a na řídicích panelech na obrazovce **řídicího panelu** . Například: Microsoft Azure Log Analytics východ. Toto pole je vyžadováno.
     -   **Popis**: zadejte popis pro server pro překládání. Tento popis se zobrazí také v seznamu služeb pro přesměrování na obrazovce **Konfigurace** . Zahrňte podrobnosti, jako je předávaný typ události, a skupinu, která potřebuje data kontrolovat.
     -   **Typ spuštění**: Vyberte metodu spuštění pro konfiguraci služby pro přeposílání. Vaše možnosti jsou ruční a automatické.<br>Výchozí hodnota je automatická. 
-6. V části **události**proveďte následující: 
+6. V části **události** proveďte následující: 
     - **Zdroj**: vyberte jeden nebo více archivů, ze kterých mají být události předávány. Můžete vybrat aktivní archivy kolektorů (včetně společného archivu), osamocené archivy kolektory (archivy pro kolekce, které jste odstranili), archivy přijímače ICDx nebo archiv systému. <br>Výchozím nastavením je běžné archivace.
       > [!NOTE]
       > Archivy přijímače ICDx jsou uvedeny samostatně podle názvu. 
@@ -59,12 +59,12 @@ Symantec ICDx může integrovat a exportovat protokoly přímo do Azure Sentinel
     - **Vyloučené atributy**: Zadejte seznam atributů oddělených čárkami, které se mají vyloučit z předávaných dat.
     - **Velikost dávky**: Vyberte počet událostí k odeslání na jednu dávku. Máte tyto možnosti: 10, 50, 100, 500 a 1000.<br>Výchozí hodnota je 100. 
     - **Limit přenosové rychlosti**: Vyberte rychlost přeposílání událostí vyjádřených jako počet událostí za sekundu. Vaše možnosti jsou neomezené, 500, 1000, 5000, 10000. <br> Výchozí hodnota je 5000. 
-7. V části **cíl Azure**postupujte takto: 
+7. V části **cíl Azure** postupujte takto: 
     - **ID pracovního prostoru**: níže vložte ID pracovního prostoru. Toto pole je vyžadováno.
     - **Primární klíč**: níže vložte primární klíč. Toto pole je vyžadováno.
     - **Název vlastního protokolu**: zadejte název vlastního protokolu v pracovním prostoru portál Microsoft Azure Log Analytics, do kterého chcete události přesměrovat. Výchozí hodnota je SymantecICDx. Toto pole je vyžadováno.
 8. Kliknutím na *Uložit* dokončete konfiguraci pro přeposílání. 
-9. Pokud chcete spustit server pro přeposílání, v části **Možnosti**klikněte na **Další** a pak na **Spustit**.
+9. Pokud chcete spustit server pro přeposílání, v části **Možnosti** klikněte na **Další** a pak na **Spustit**.
 10. Pokud chcete pro události Symantec ICDx použít příslušné schéma v Log Analytics, vyhledejte **SymantecICDx_CL**.
 
 

@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: f4a88401b25f5b1472e73b07f61f05016401936b
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: ca61a310f39e132588b3dc8b77adeda4caf7095f
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558967"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095646"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
-|[Azure Machine Learning pracovní prostory by měly být zašifrované pomocí klíče spravovaného zákazníkem (CMK)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fba769a63-b8cc-4b2d-abf6-ac33c7204be8) |Pomocí klíčů spravovaných zákazníkem (CMK) spravujte šifrování v klidovém umístění vašich Azure Machine Learning dat v pracovním prostoru. Ve výchozím nastavení se zákaznická data šifrují pomocí klíčů spravovaných službou, ale CMKs se běžně vyžadují pro dodržování standardů dodržování legislativních předpisů. CMKs povolí šifrování dat pomocí Azure Key Vaultho klíče vytvořeného a vlastněného vámi. Máte plnou kontrolu a zodpovědnost za životní cyklus klíčů, včetně rotace a správy. Další informace o šifrování CMK najdete na adrese [https://aka.ms/azureml-workspaces-cmk](https://aka.ms/azureml-workspaces-cmk) . |Audit, zamítnutí, zakázáno |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_CMKEnabled_Audit.json) |
+|[Azure Machine Learning pracovní prostory by měly být zašifrované pomocí klíče spravovaného zákazníkem](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fba769a63-b8cc-4b2d-abf6-ac33c7204be8) |Pomocí klíčů spravovaných zákazníkem spravujte šifrování za zbývající Azure Machine Learning dat v pracovním prostoru. Ve výchozím nastavení se zákaznická data šifrují pomocí klíčů spravovaných službou, ale klíče spravované zákazníkem se obvykle vyžadují ke splnění standardů dodržování předpisů v legislativních zákonech. Klíče spravované zákazníkem umožňují, aby byla data zašifrovaná pomocí Azure Key Vaultho klíče vytvořeného a vlastněného vámi. Máte plnou kontrolu a zodpovědnost za životní cyklus klíčů, včetně rotace a správy. Další informace najdete na adrese [https://aka.ms/azureml-workspaces-cmk](https://aka.ms/azureml-workspaces-cmk) . |Audit, zamítnutí, zakázáno |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_CMKEnabled_Audit.json) |
 |[Azure Machine Learning pracovní prostory by měly používat privátní odkaz](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F40cec1dd-a100-4920-b15b-3024fe8901ab) |Privátní odkaz Azure umožňuje připojit virtuální síť ke službám Azure bez veřejné IP adresy ve zdroji nebo cíli. Platforma privátních odkazů zpracovává připojení mezi klientem a službami přes páteřní síť Azure. Mapováním privátních koncových bodů na vaše pracovní prostory Azure Machine Learning místo celé služby budete chráněni i proti rizikům úniku dat. Další informace najdete tady: [https://aka.ms/azureml-workspaces-privatelink](https://aka.ms/azureml-workspaces-privatelink) . |Audit, zakázáno |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_PrivateLinkEnabled_Audit.json) |
 |[Konfigurace povolených autorů modulů pro zadané Azure Machine Learning COMPUTE](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F53c70b02-63dd-11ea-bc55-0242ac130003) |Tato zásada pomáhá poskytnout povoleným autorům modulů v zadaných Azure Machine Learning výpočetních a dají se přiřadit v pracovním prostoru. Další informace najdete na adrese [https://aka.ms/amlpolicydoc](https://aka.ms/amlpolicydoc) . |enforceSetting, zakázáno |[1.0.1 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/AllowedModuleAuthors_EnforceSetting.json) |
 |[Konfigurace povolených balíčků Pythonu pro zadané Azure Machine Learning COMPUTE](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F77eeea86-7e81-4a7d-9067-de844d096752) | Tato zásada pomáhá poskytovat povolené balíčky Pythonu v zadaném Azure Machine Learning výpočetních a dají se přiřadit v pracovním prostoru. Další informace najdete na adrese [https://aka.ms/amlpolicydoc](https://aka.ms/amlpolicydoc) . |enforceSetting, zakázáno |[1.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/AllowedPythonPackageChannels_EnforceSetting.json) |

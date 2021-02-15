@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 02/12/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 767f60cae2f74f7e2a928253d45011bb6ceb5d0e
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 6dda65be98934ce90e985b241078ae8019afb7e0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653839"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361260"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -38,9 +38,11 @@ V tomto článku se dozvíte, jak povolit přihlášení AD FS uživatelského �
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Directory B2C](custom-policy-get-started.md).
-- Ujistěte se, že máte přístup k souboru certifikátu. pfx s privátním klíčem. Můžete vygenerovat vlastní podepsaný certifikát a odeslat ho do Azure AD B2C. Azure AD B2C používá tento certifikát k podepsání žádosti SAML odeslané poskytovateli identity SAML. Další informace o tom, jak vygenerovat certifikát, najdete v tématu [vygenerování podpisového certifikátu](identity-provider-salesforce-saml.md#generate-a-signing-certificate).
-- Aby mohl Azure přijmout heslo k souboru. pfx, musí být heslo zašifrované s možností TripleDES-SHA1 v nástroji pro export certifikátů Windows, a to na rozdíl od AES256-SHA256.
+[!INCLUDE [active-directory-b2c-customization-prerequisites-custom-policy](../../includes/active-directory-b2c-customization-prerequisites-custom-policy.md)]
+
+## <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
+
+[!INCLUDE [active-directory-b2c-create-self-signed-certificate](../../includes/active-directory-b2c-create-self-signed-certificate.md)]
 
 ## <a name="create-a-policy-key"></a>Vytvoření klíče zásad
 
@@ -52,7 +54,7 @@ Certifikát musíte uložit do svého tenanta Azure AD B2C.
 4. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
 5. Vyberte **klíče zásad** a pak vyberte **Přidat**.
 6. Pro **Možnosti** vyberte možnost `Upload` .
-7. Zadejte **název** klíče zásad. Například `ADFSSamlCert`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
+7. Zadejte **název** klíče zásad. Například, `SAMLSigningCert`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
 8. Vyhledejte a vyberte soubor Certificate. pfx s privátním klíčem.
 9. Klikněte na **Vytvořit**.
 
@@ -80,7 +82,7 @@ Pokud chcete, aby se uživatelé přihlásili pomocí účtu AD FS, musíte úč
             <Item Key="PartnerEntity">https://your-AD-FS-domain/federationmetadata/2007-06/federationmetadata.xml</Item>
           </Metadata>
           <CryptographicKeys>
-            <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlCert"/>
+            <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SAMLSigningCert"/>
           </CryptographicKeys>
           <OutputClaims>
             <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="userPrincipalName" />
@@ -123,56 +125,28 @@ Pokud chcete, aby se uživatelé přihlásili pomocí účtu AD FS, musíte úč
     </ClaimsProvider>
     ```
 
-1. Uložte soubor.
+1. Soubor uložte.
 
-### <a name="upload-the-extension-file-for-verification"></a>Nahrajte soubor rozšíření pro ověření.
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
-Teď jste nakonfigurovali zásady tak, aby Azure AD B2C vědět, jak komunikovat s účtem AD FS. Zkuste nahrát soubor s příponou zásady jenom tak, aby se ověřilo, že zatím nemá žádné problémy.
-
-1. Na stránce **vlastní zásady** ve vašem tenantovi Azure AD B2C vyberte **Odeslat zásadu**.
-2. Pokud existuje, zapněte **zásadu přepsat** a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions.xml* .
-3. Klikněte na **Odeslat**.
-
-> [!NOTE]
-> Rozšíření Visual Studio Code B2C Extension používá "socialIdpUserId". Pro AD FS se taky vyžadují zásady pro sociální sítě.
->
-
-## <a name="register-the-claims-provider"></a>Registrace zprostředkovatele deklarací identity
-
-V tuto chvíli je poskytovatel identity nastavený, ale není k dispozici na žádném z přihlašovacích obrazovek pro registraci nebo přihlášení. Aby byl k dispozici, vytvořte duplikát existující cesty uživatele šablony a pak ji upravte, aby měl také AD FS zprostředkovatele identity.
-
-1. Otevřete soubor *TrustFrameworkBase.xml* z úvodní sady.
-2. Vyhledejte a zkopírujte celý obsah prvku **UserJourney** , který obsahuje `Id="SignUpOrSignIn"` .
-3. Otevřete *TrustFrameworkExtensions.xml* a vyhledejte element **userjourney** . Pokud element neexistuje, přidejte jej.
-4. Vložte celý obsah elementu **UserJourney** , který jste zkopírovali jako podřízený prvek **userjourney** elementu.
-5. Přejmenujte ID cesty pro uživatele. Například `SignUpSignInADFS`.
-
-### <a name="display-the-button"></a>Zobrazit tlačítko
-
-Element **claimsproviderselection.** se podobá tlačítku poskytovatele identity na obrazovce pro registraci nebo přihlášení. Pokud přidáte prvek **claimsproviderselection.** pro účet AD FS, zobrazí se nové tlačítko, když se uživatel na stránce zařadí.
-
-1. Vyhledejte element **OrchestrationStep** , který obsahuje `Order="1"` cestu k uživateli, kterou jste vytvořili.
-2. Pod **ClaimsProviderSelections** přidejte následující element. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `ContosoExchange` :
-
-    ```xml
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
     <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />
-    ```
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-### <a name="link-the-button-to-an-action"></a>Propojit tlačítko s akcí
-
-Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce je v tomto případě určena pro Azure AD B2C ke komunikaci s účtem AD FS k získání tokenu.
-
-1. Najděte **OrchestrationStep** , který obsahuje `Order="2"` cestu k uživateli.
-2. Přidejte následující prvek **ClaimsExchange** a ujistěte se, že používáte stejnou hodnotu pro ID, které jste použili pro **TargetClaimsExchangeId**:
-
-    ```xml
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-SAML2" />
-    ```
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-    Aktualizujte hodnotu **TechnicalProfileReferenceId** na ID technického profilu, který jste vytvořili dříve. Například `Contoso-SAML2`.
-
-3. Uložte soubor *TrustFrameworkExtensions.xml* a znovu ho nahrajte pro účely ověření.
-
+[!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
 ## <a name="configure-an-ad-fs-relying-party-trust"></a>Konfigurace vztahu důvěryhodnosti předávající strany AD FS
 
@@ -216,17 +190,17 @@ Otevřete prohlížeč a přejděte na adresu URL. Ujistěte se, že jste zadali
 13. V Správce serveru vyberte **nástroje** a pak vyberte **AD FS Správa**.
 14. Vyberte vztah důvěryhodnosti předávající strany, který jste vytvořili, vyberte **aktualizovat z federačních metadat** a pak klikněte na **aktualizovat**.
 
-### <a name="update-and-test-the-relying-party-file"></a>Aktualizace a testování souboru předávající strany
+## <a name="test-your-custom-policy"></a>Testování vlastních zásad
 
-Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatele, kterou jste vytvořili.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
+1. V části **zásady** vyberte **Architektura prostředí identity**
+1. Vyberte třeba zásady předávající strany `B2C_1A_signup_signin` .
+1. V případě **aplikace** vyberte webovou aplikaci, kterou jste [předtím zaregistrovali](tutorial-register-applications.md). Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. Vyberte tlačítko **Spustit** .
 
-1. Vytvořte kopii *SignUpOrSignIn.xml* v pracovním adresáři a přejmenujte ji. Přejmenujte ho například na *SignUpSignInADFS.xml*.
-2. Otevřete nový soubor a aktualizujte hodnotu atributu **PolicyId** pro **TrustFrameworkPolicy** s jedinečnou hodnotou. Například `SignUpSignInADFS`.
-3. Aktualizujte hodnotu **PUBLICPOLICYURI** identifikátorem URI pro zásadu. Například`http://contoso.com/B2C_1A_signup_signin_adfs`
-4. Aktualizujte hodnotu atributu **ReferenceId** v **DefaultUserJourney** tak, aby odpovídala ID nové cesty uživatele, kterou jste vytvořili (SignUpSignInADFS).
-5. Uložte změny, nahrajte soubor a pak v seznamu vyberte novou zásadu.
-6. Ujistěte se, že je vybrána možnost Azure AD B2C aplikace, kterou jste vytvořili v poli **Vybrat aplikaci** , a poté ji otestujte kliknutím na tlačítko **Spustit nyní**.
-
+Pokud je proces přihlášení úspěšný, je váš prohlížeč přesměrován na `https://jwt.ms` , který zobrazuje obsah tokenu vrácený Azure AD B2C.
 ## <a name="troubleshooting-ad-fs-service"></a>Řešení potíží se službou AD FS  
 
 AD FS je nakonfigurován pro použití protokolu aplikace systému Windows. Pokud se setkáte s problémy s nastavením AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad v Azure AD B2C, možná budete chtít ověřit protokol událostí AD FS:

@@ -1,23 +1,19 @@
 ---
 title: Zpracování rozsáhlých datových sad pomocí Data Factory a dávky
 description: Popisuje, jak zpracovávat velké objemy dat v Azure Data Factory kanálu pomocí možnosti paralelního zpracování Azure Batch.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 365de79db450eda897621ccde3b92478ed93ecc3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c59e164d67a665a5e99cb5045b3b0cf38e33dc87
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496156"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364269"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Zpracování rozsáhlých datových sad pomocí Data Factory a dávky
 > [!NOTE]
@@ -87,7 +83,7 @@ Ukázkové řešení je záměrně jednoduché. Je navržený tak, aby vám uká
 
 **Čas:** Pokud jste obeznámeni se základy Azure, Data Factory a Batch a dokončili jste následující požadavky, bude dokončení tohoto řešení trvat jednu až dvě hodiny.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 #### <a name="azure-subscription"></a>Předplatné Azure
 Pokud nemáte předplatné Azure, můžete rychle vytvořit bezplatný zkušební účet. Další informace najdete v článku [bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -122,7 +118,7 @@ Vytvořte fond Batch s aspoň dvěma výpočetními uzly.
 
    f. Vyberte **OK** a vytvořte fond.
 
-#### <a name="azure-storage-explorer"></a>Azure Storage Explorer
+#### <a name="azure-storage-explorer"></a>Průzkumník služby Azure Storage
 Pro kontrolu a změnu dat v projektech úložiště slouží [Průzkumník služby Azure Storage 6](https://azurestorageexplorer.codeplex.com/) nebo [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) (ze softwaru ClumsyLeaf). Můžete také zkontrolovat a změnit data v protokolech aplikací hostovaných v cloudu.
 
 1. Vytvořte kontejner s názvem **myContainer** s privátním přístupem (bez anonymního přístupu).
@@ -193,7 +189,7 @@ Tato metoda má několik klíčových součástí, které je třeba pochopit:
 
    například Vyberte **OK** a vytvořte projekt.
 
-1. Vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**.
+1. Vyberte **Nástroje** > **Správce balíčků NuGet** > **Konzola správce balíčků**.
 
 1. V konzole správce balíčků spusťte následující příkaz pro import Microsoft. Azure. Management. datafactorys:
 

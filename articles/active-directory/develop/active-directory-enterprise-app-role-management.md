@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 076054b7240712fec57d0908615ce7abbfb62013
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 38673df29dd50e77acc4b4d106d69a82cad9c040
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582226"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104344"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: konfigurace deklarace identity role vydané v tokenu SAML pro podnikové aplikace
 
@@ -34,7 +34,7 @@ Tuto funkci použijte, pokud vaše aplikace očekává vlastní role v odpovědi
 
 ## <a name="create-roles-for-an-application"></a>Vytvoření rolí pro aplikaci
 
-1. V <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a>v levém podokně vyberte ikonu **Azure Active Directory** .
+1. V <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>v levém podokně vyberte ikonu **Azure Active Directory** .
 
     ![Ikona Azure Active Directory][1]
 

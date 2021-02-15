@@ -1,25 +1,20 @@
 ---
-title: Průvodce škálovatelností a výkonem aktivity kopírování
+title: Průvodce výkonem a škálovatelností aktivity kopírování
 description: Přečtěte si o klíčových faktorech, které ovlivňují výkon přesunu dat v Azure Data Factory při použití aktivity kopírování.
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/15/2020
-ms.openlocfilehash: a6e89883ec0e1e493bad9572876af86f4a0d3853
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c166b99243e5a6ee576100b8470aa38b9535c7a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324427"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387661"
 ---
-# <a name="copy-activity-performance-and-scalability-guide"></a>Průvodce škálovatelností a výkonem aktivity kopírování
+# <a name="copy-activity-performance-and-scalability-guide"></a>Průvodce výkonem a škálovatelností aktivity kopírování
 
 > [!div class="op_single_selector" title1="Vyberte verzi Azure Data Factory, kterou používáte:"]
 > * [Verze 1](v1/data-factory-copy-activity-performance.md)
@@ -68,8 +63,8 @@ Doba kopírování je vypočítána v následující tabulce. Doba trvání vych
 
 | Velikost dat/ <br/> připojení | 50 Mb/s    | 100 Mb/s  | 500 Mb/s  | 1 Gb/s   | 5 Gb/s   | 10 Gb/s  | 50 GB/s   |
 | --------------------------- | ---------- | --------- | --------- | -------- | -------- | -------- | --------- |
-| **1 GB**                    | 2,7 min.    | 1,4 min.   | 0,3 min.   | 0,1 min.  | 0,03 min. | 0,01 min. | 0,0 min.   |
-| **10 GB**                   | 27,3 min.   | 13,7 min.  | 2,7 min.   | 1,3 min.  | 0,3 min.  | 0,1 min.  | 0,03 min.  |
+| **1 GB**                    | 2,7 min.    | 1,4 min.   | 0,3 min.   | 0,1 min.  | 0,03 min. | 0,01 min. | 0,0 min.   |
+| **10 GB**                   | 27,3 min.   | 13,7 min.  | 2,7 min.   | 1,3 min.  | 0,3 min.  | 0,1 min.  | 0,03 min.  |
 | **100 GB**                  | 4,6 hod.    | 2,3 hod.   | 0,5 hod.   | 0,2 hod.  | 0,05 hod. | 0,02 hod. | 0,0 hod.   |
 | **1 TB**                    | 46,6 hod.   | 23,3 hod.  | 4,7 hod.   | 2,3 hod.  | 0,5 hod.  | 0,2 hod.  | 0,05 hod.  |
 | **10 TB**                   | 19,4 dní  | 9,7 dní  | 1,9 dní  | 0,9 dní | 0,2 dní | 0,1 dní | 0,02 dní |
@@ -159,18 +154,18 @@ Možná budete chtít hostovat rostoucí souběžné zatížení. Nebo možná b
 Horizontální navýšení kapacity funguje pouze v případě, že je procesor a paměť uzlu méně, než je plně využito.
 * V místním prostředí IR _můžete horizontální_ navýšení kapacity přidáním dalších uzlů (počítačů).
 
-Další informace naleznete v tématech:
+Další informace naleznete v tématu:
 
 * [Funkce optimalizace výkonu aktivity kopírování: škálovatelnost v místním prostředí Integration runtime](copy-activity-performance-features.md#self-hosted-integration-runtime-scalability)
 * [Vytvoření a konfigurace prostředí Integration runtime v místním prostředí: požadavky na škálování](create-self-hosted-integration-runtime.md#scale-considerations)
 
 ### <a name="parallel-copy"></a>Paralelní kopírování
 
-Vlastnost můžete nastavit `parallelCopies` tak, aby označovala paralelismus, které má aktivita kopírování použít. Tuto vlastnost si můžete představit jako maximální počet vláken v rámci aktivity kopírování. Vlákna pracují paralelně. Vlákna buď čtou ze zdroje, nebo zapisují do úložišť dat jímky. [Další informace](copy-activity-performance-features.md#parallel-copy).
+Vlastnost můžete nastavit `parallelCopies` tak, aby označovala paralelismus, které má aktivita kopírování použít. Tuto vlastnost si můžete představit jako maximální počet vláken v rámci aktivity kopírování. Vlákna pracují paralelně. Vlákna buď čtou ze zdroje, nebo zapisují do úložišť dat jímky. [Přečtěte si další informace](copy-activity-performance-features.md#parallel-copy).
 
 ### <a name="staged-copy"></a>Připravené kopírování
 
-Operace kopírování dat může odesílat data _přímo_ do úložiště dat jímky. Alternativně můžete zvolit, že chcete jako _dočasné pracovní_ úložiště používat úložiště objektů BLOB. [Další informace](copy-activity-performance-features.md#staged-copy).
+Operace kopírování dat může odesílat data _přímo_ do úložiště dat jímky. Alternativně můžete zvolit, že chcete jako _dočasné pracovní_ úložiště používat úložiště objektů BLOB. [Přečtěte si další informace](copy-activity-performance-features.md#staged-copy).
 
 ## <a name="next-steps"></a>Další kroky
 

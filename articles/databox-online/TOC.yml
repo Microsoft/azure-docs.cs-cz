@@ -385,6 +385,8 @@
           href: azure-stack-edge-return-device.md
         - name: Výměna zařízení
           href: azure-stack-edge-replace-device.md
+        - name: Migrace na zařízení GPU
+          href: azure-stack-edge-migrate-fpga-gpu.md
     - name: "Poznámky k\_verzi"
       items:
         - name: 2101 – aktuální

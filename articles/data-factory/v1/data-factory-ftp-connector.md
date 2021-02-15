@@ -1,23 +1,18 @@
 ---
 title: Přesunutí dat ze serveru FTP pomocí Azure Data Factory
 description: Přečtěte si informace o tom, jak přesunout data ze serveru FTP pomocí Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: eea3bab0-a6e4-4045-ad44-9ce06229c718
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: eeeb122d240d8c3eae4ebe1650f67cf0e4b9dac6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a8a8ca44fbdb7610f85bc53c23d502d2efb01c8b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001639"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363946"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Přesunutí dat ze serveru FTP pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]

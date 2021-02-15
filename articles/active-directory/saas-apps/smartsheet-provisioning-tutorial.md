@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/07/2019
 ms.author: jeedes
-ms.openlocfilehash: aa4e8c2baaaa0c8ccc9bcdda595f040fac72682f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e9ee994564e175d3c41cfd5ce415ead8c67df353
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181437"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103528"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>Kurz: Konfigurace Smartsheet pro Automatické zřizování uživatelů
 
@@ -33,7 +33,7 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v Smartsheet 
 > [!NOTE]
 > Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -137,22 +137,20 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 9. Zkontrolujte atributy uživatele synchronizované z Azure AD do Smartsheet v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Smartsheet pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-   |Atribut|Typ|
-   |---|---|
+   |Atribut|Typ|Podporováno pro filtrování|
+   |---|---|---|
+   |userName|Řetězec|&check;|
    |active|Logická hodnota|
    |title|Řetězec|
-   |userName|Řetězec|
    |name.givenName|Řetězec|
    |name.familyName|Řetězec|
    |phoneNumbers[type eq "work"].value|Řetězec|
    |phoneNumbers[type eq "mobile"].value|Řetězec|
    |phoneNumbers [typ EQ "fax"]. hodnota|Řetězec|
+   |emails[type eq "work"].value|Řetězec|
    |externalId|Řetězec|
-   |role [Primary EQ "true"]. Display|Řetězec|
-   |role [Primary EQ "true"]. Type|Řetězec|
-   |roles[primary eq "True"].value|Řetězec|
    |Role|Řetězec|
-   urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: divize|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: costCenter|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Řetězec|
@@ -188,6 +186,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 ## <a name="change-log"></a>Protokol změn
 
 * 06/16/2020 – Přidali jsme podporu pro atributy podnikového rozšíření "cost Center", "divize", "manažer" a "oddělení" pro uživatele.
+* 02/10/2021 – byla přidána podpora pro základní atributy "e-maily" (typ EQ "Work"] "pro uživatele.
 
 ## <a name="additional-resources"></a>Další zdroje informací
 

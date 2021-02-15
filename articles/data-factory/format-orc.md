@@ -2,19 +2,16 @@
 title: Formát ORC v Azure Data Factory
 description: Toto téma popisuje, jak v Azure Data Factory pracovat s formátem ORC.
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 4a25a1ec5f2d650501a7c5da8bb1c60f57ad549d
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 8973692b90cc9d6caa852616bf2962371d25abfa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945783"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386454"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Formát ORC v Azure Data Factory
 
@@ -68,7 +65,7 @@ Je třeba počítat s následujícím:
 
 ### <a name="orc-as-source"></a>ORC as source
 
-V části *** \* zdroj \* *** aktivity kopírování jsou podporovány následující vlastnosti.
+V části ***\* zdroj \**** aktivity kopírování jsou podporovány následující vlastnosti.
 
 | Vlastnost      | Popis                                                  | Povinné |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -77,7 +74,7 @@ V části *** \* zdroj \* *** aktivity kopírování jsou podporovány následuj
 
 ### <a name="orc-as-sink"></a>ORC jako jímka
 
-V části *** \* jímka \* *** aktivity kopírování jsou podporovány následující vlastnosti.
+V části ***\* jímka \**** aktivity kopírování jsou podporovány následující vlastnosti.
 
 | Vlastnost      | Popis                                                  | Povinné |
 | ------------- | ------------------------------------------------------------ | -------- |

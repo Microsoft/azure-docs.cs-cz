@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/09/2020
+ms.date: 02/10/2021
 ms.author: jeedes
-ms.openlocfilehash: 4d095c3cc7e67938120260c35376b128be73ffa8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: cd6ba1da92a19a1f73fc67c0165bfb19b3bb77aa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98726972"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363788"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-perimeter-81"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s hraniční 81
 
@@ -71,13 +71,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V Azure Portal na stránce pro integraci aplikací **hraničního 81** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `urn:auth0:perimeter81:<SUBDOMAIN>`
+    a. Do textového pole **identifikátor** zadejte hodnotu pomocí následujícího vzoru: `urn:auth0:perimeter81:<SUBDOMAIN>`
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://auth.perimeter81.com/login/callback?connection=<SUBDOMAIN>`
 
@@ -88,9 +88,14 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pro získání těchto hodnot se obraťte na [tým podpory hraničního oddělení 81](mailto:support@perimeter81.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-    ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
+
+1. V části **nastavit hraniční 81** zkopírujte příslušné adresy URL na základě vašeho požadavku.
+
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
@@ -99,7 +104,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -117,7 +122,42 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ## <a name="configure-perimeter-81-sso"></a>Konfigurace hraničního přihlašování 81 SSO
 
-Ke konfiguraci jednotného přihlašování na **hraniční 81** straně je potřeba odeslat **adresu URL federačních metadat aplikace** do [týmu podpory hraničních 81](mailto:support@perimeter81.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+1. Pokud chcete automatizovat konfiguraci v rámci hraničního 81, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
+
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
+
+2. Po přidání rozšíření do prohlížeče klikněte na **nastavit hraniční 81** , které vás přesměruje do aplikace hraničních 81. Odtud zadejte přihlašovací údaje správce, které se budou přihlašovat do hraničního 81. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-7.
+
+    ![Konfigurace instalace](common/setup-sso.png)
+
+3. Pokud chcete ručně nastavit hraniční 81, v jiném okně webového prohlížeče se přihlaste k webu hraničního 81 společnosti jako správce.
+
+4. Přejděte na **Nastavení** a klikněte na **Zprostředkovatelé identity**.
+
+    ![Nastavení hraniční 81](./media/perimeter-81-tutorial/settings.png)
+
+5. Klikněte na tlačítko **Přidat poskytovatele** .
+
+    ![Hraniční 81 přidat poskytovatele](./media/perimeter-81-tutorial/add-provider.png)
+
+6. Vyberte **Zprostředkovatelé identity SAML 2,0** a klikněte na tlačítko **pokračovat** .
+
+    ![Hraniční 81 přidat poskytovatele identity](./media/perimeter-81-tutorial/add-identity-provider.png)
+
+7. V části **Zprostředkovatelé identity SAML 2,0** proveďte následující kroky:
+
+    ![Hraniční 81 nastavení SAML](./media/perimeter-81-tutorial/setting-up-saml.png)
+
+    a. Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **přihlašovací adresa URL**, kterou jste zkopírovali z Azure Portal.
+
+    b. Do textového pole **aliasy domény** zadejte hodnotu aliasu domény.
+
+    c. Otevřete stažený **certifikát (Base64)** z Azure Portal do programu Poznámkový blok a vložte obsah do textového pole **podpisového certifikátu x509** .
+
+    > [!NOTE]
+    > Případně můžete kliknutím na **Odeslat soubor PEM/CERT** nahrát **certifikát (Base64)** , který jste stáhli z Azure Portal.
+    
+    d. Klikněte na **Hotovo**.
 
 ### <a name="create-perimeter-81-test-user"></a>Vytvořit testovacího uživatele hraniční 81
 
@@ -135,7 +175,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 #### <a name="idp-initiated"></a>Iniciované IDP:
 
-* Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k hraniční 81, pro které jste nastavili jednotné přihlašování. 
+* Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste být automaticky přihlášeni k hraniční 81, pro které jste nastavili jednotné přihlašování.
 
 K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Microsoft moje aplikace. Když v okně moje aplikace kliknete na dlaždici hraničního 81, která se nakonfiguruje v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k hraniční 81, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 

@@ -3,12 +3,12 @@ title: Kurz – nasazení clusteru vSphere v Azure
 description: Naučte se, jak nasadit cluster vSphere v Azure pomocí řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 11/19/2020
-ms.openlocfilehash: 93937f8ca0918494810885f5cb45de571a6e1529
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3c8ae3673ad049153c2b9700bd7efae6c4c286ed
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966305"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093943"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Kurz: nasazení privátního cloudu řešení Azure VMware v Azure
 
@@ -74,25 +74,6 @@ Zadejte název skupiny prostředků a privátního cloudu, umístění a velikos
 ```azurecli-interactive
 az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --location eastus --cluster-size 3 --network-block xx.xx.xx.xx/22 --sku AV36
 ```
-
-## <a name="delete-an-azure-vmware-solution-private-cloud"></a>Odstranění privátního cloudu řešení Azure VMware
-
-Pokud máte privátní cloud řešení Azure VMware, který už nepotřebujete, můžete ho odstranit. Privátní cloud řešení Azure VMware zahrnuje izolovanou síťovou doménu, jeden nebo více zřízené clusterů vSphere na vyhrazených hostitelích serverů a několik virtuálních počítačů. Při odstranění privátního cloudu se odstraní všechny virtuální počítače, jejich data a clustery. Vyhrazená holé hostitelé se bezpečně vymažou a vrátí do bezplatného fondu. Síťová doména zřízená pro zákazníka se odstraní.  
-
-> [!CAUTION]
-> Odstranění privátního cloudu je nevratná operace. Po odstranění privátního cloudu se data nedají obnovit, protože ukončí všechny spuštěné úlohy a komponenty a zničí všechna data privátního cloudu a nastavení konfigurace, včetně veřejných IP adres.
-
-### <a name="prerequisites"></a>Požadavky
-
-Po odstranění privátního cloudu neexistuje žádný způsob, jak obnovit virtuální počítače a jejich data. Pokud budete později potřebovat data virtuálního počítače, správce musí před odstraněním privátního cloudu nejprve zálohovat všechna data.
-
-### <a name="steps-to-delete-an-azure-vmware-solution-private-cloud"></a>Postup odstranění privátního cloudu řešení Azure VMware
-
-1. Přejděte na stránku řešení Azure VMware v Azure Portal.
-
-2. Vyberte privátní cloud, který chcete odstranit.
- 
-3. Zadejte název privátního cloudu a vyberte **Ano**. Během několika hodin se proces odstranění dokončí.  
 
 ## <a name="azure-vmware-commands"></a>Příkazy Azure VMware
 

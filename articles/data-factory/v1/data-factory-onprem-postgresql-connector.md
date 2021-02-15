@@ -1,23 +1,18 @@
 ---
 title: Přesun dat z PostgreSQL pomocí Azure Data Factory
 description: Přečtěte si informace o tom, jak přesouvat data z databáze PostgreSQL pomocí Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 888d9ebc-2500-4071-b6d1-0f6bd1b5997c
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ca8770944a12c6e0dd3e4f95d286758ebee5f9e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082830"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387270"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Přesun dat z PostgreSQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -99,7 +94,7 @@ Pokud je zdroj typu **RelationalSource** (který zahrnuje PostgreSQL), jsou v č
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Například: `"query": "select * from \"MySchema\".\"MyTable\""`. |Ne (Pokud je zadaný **TableName** **objektu DataSet** ) |
+| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: `"query": "select * from \"MySchema\".\"MyTable\""`. |Ne (Pokud je zadaný **TableName** **objektu DataSet** ) |
 
 > [!NOTE]
 > V názvech schémat a tabulek se rozlišují velká a malá písmena. Uzavřete je do `""` dotazu (dvojité uvozovky).

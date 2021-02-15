@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 4c4158fe9c976ca214409ef4c0c9833c610ee34c
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6383f63d2118d8618f07bf3cb6cd08a0b16140f3
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584327"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102644"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Kurz: volání rozhraní API Microsoft Graph z aplikace Univerzální platforma Windows (UWP)
 
@@ -345,7 +345,7 @@ private async Task DisplayMessageAsync(string message)
 
 Nyní Zaregistrujte svou aplikaci:
 
-1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
+1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
@@ -356,8 +356,8 @@ Nyní Zaregistrujte svou aplikaci:
 
 Konfigurace ověřování pro vaši aplikaci:
 
-1. Zpátky v <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a>v části **Spravovat** vyberte **ověřování**  >  **Přidat platformu** a pak vyberte **mobilní a desktopové aplikace**.
-1. V části **identifikátory URI pro přesměrování** ověřte **https://login.microsoftonline.com/common/oauth2/nativeclient** .
+1. Zpátky v <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>v části **Spravovat** vyberte **ověřování**  >  **Přidat platformu** a pak vyberte **mobilní a desktopové aplikace**.
+1. V části **identifikátory URI pro přesměrování** zadejte `https://login.microsoftonline.com/common/oauth2/nativeclient` .
 1. Vyberte **Konfigurovat**.
 
 Konfigurace oprávnění rozhraní API pro aplikaci:

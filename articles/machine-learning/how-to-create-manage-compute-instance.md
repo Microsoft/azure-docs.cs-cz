@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 40882f2a0c1a65650d633d0784214afbeef9ae63
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5fc5b52cb8fb4d654bef136f44d8579036921364
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842885"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097190"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Vytvoření a Správa výpočetní instance Azure Machine Learning
 
@@ -34,7 +34,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Výpočetní instance můžou úlohy spouštět bezpečně ve [virtuálním síťovém prostředí](how-to-secure-training-vnet.md), aniž by museli podniky otevírat porty SSH. Úloha se spustí v kontejnerovém prostředí a zabalí závislosti vašich modelů v kontejneru Docker. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -44,9 +44,9 @@ Výpočetní instance můžou úlohy spouštět bezpečně ve [virtuálním sí�
 
 **Časový odhad**: přibližně 5 minut.
 
-Vytvoření výpočetní instance je jednorázový proces pro váš pracovní prostor. Tuto výpočetní kapacitu můžete znovu použít jako pracovní stanici pro vývoj nebo jako cíl pro školení. K vašemu pracovnímu prostoru můžete připojit více výpočetních instancí.
+Vytvoření výpočetní instance je jednorázový proces pro váš pracovní prostor. Výpočetní prostředky můžete znovu použít jako pracovní stanici pro vývoj nebo jako cíl pro školení. K vašemu pracovnímu prostoru můžete připojit více výpočetních instancí.
 
-Vyhrazená jádra na jednu oblast a kvótu pro rodinu virtuálních počítačů, která platí pro vytváření výpočetních instancí, jsou sjednocená a sdílená s Azure Machine Learning školením kvóty výpočetních clusterů. Zastavení výpočetní instance neuvolní kvótu, aby bylo zajištěno, že budete moci restartovat výpočetní instanci. Upozorňujeme, že po vytvoření není možné změnit velikost virtuálního počítače výpočetní instance.
+Vyhrazená jádra na jednu oblast a kvótu pro rodinu virtuálních počítačů, která platí pro vytváření výpočetních instancí, jsou sjednocená a sdílená s Azure Machine Learning školením kvóty výpočetních clusterů. Zastavení výpočetní instance neuvolní kvótu, aby bylo zajištěno, že budete moci restartovat výpočetní instanci. Poznámka: po vytvoření není možné změnit velikost virtuálního počítače výpočetní instance.
 
 Následující příklad ukazuje, jak vytvořit výpočetní instanci:
 
@@ -125,7 +125,7 @@ Vědecký pracovník dat může spustit, zastavit a restartovat výpočetní ins
 
 ## <a name="manage"></a>Spravovat
 
-Spustit, zastavit, restartovat a odstranit výpočetní instanci. Instance výpočetního prostředí se automaticky nezvětšuje, takže nezapomeňte prostředek zastavit, aby nedocházelo k průběžným poplatkům.
+Spuštění, zastavení, restartování a odstranění výpočetní instance. Instance výpočetního prostředí se automaticky nezvětšuje, takže nezapomeňte prostředek zastavit, aby nedocházelo k průběžným poplatkům.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -226,72 +226,18 @@ Pro každou výpočetní instanci v pracovním prostoru, který jste vytvořili 
 
 ---
 
-[Azure RBAC](../role-based-access-control/overview.md) umožňuje řídit, kteří uživatelé v pracovním prostoru můžou vytvořit, odstranit, spustit, zastavit a restartovat výpočetní instanci. Všichni uživatelé v roli přispěvatel a vlastník pracovního prostoru můžou vytvářet, odstraňovat, spouštět, zastavovat a restartovat výpočetní instance v rámci pracovního prostoru. Avšak pouze tvůrce konkrétní výpočetní instance nebo přiřazeného uživatele, pokud byl vytvořen jménem, má povolen přístup k Jupyter, JupyterLab a RStudio této výpočetní instance. Výpočetní instance je vyhrazená jednomu uživateli, který má rootový přístup, a může být terminálem přes Jupyter/JupyterLab/RStudio. Instance COMPUTE bude mít přihlášený jeden uživatel a všechny akce budou používat identitu tohoto uživatele pro Azure RBAC a připisující se ke spuštění experimentu. Přístup přes SSH je řízený pomocí mechanismu veřejného a privátního klíče.
+[Azure RBAC](../role-based-access-control/overview.md) umožňuje řídit, kteří uživatelé v pracovním prostoru můžou vytvořit, odstranit, spustit, zastavit a restartovat výpočetní instanci. Všichni uživatelé v roli přispěvatel a vlastník pracovního prostoru můžou vytvářet, odstraňovat, spouštět, zastavovat a restartovat výpočetní instance v rámci pracovního prostoru. Avšak pouze tvůrce konkrétní výpočetní instance nebo přiřazeného uživatele, pokud byl vytvořen jménem, má povolen přístup k Jupyter, JupyterLab a RStudio této výpočetní instance. Výpočetní instance je vyhrazená jednomu uživateli, který má rootový přístup, a může být terminálem přes Jupyter/JupyterLab/RStudio. Instance COMPUTE bude mít přihlášený jeden uživatel a všechny akce budou používat identitu tohoto uživatele pro Azure RBAC a připisující experimenty. Přístup přes SSH je řízený pomocí mechanismu veřejného a privátního klíče.
 
 Tyto akce lze řídit pomocí Azure RBAC:
 * *Microsoft. MachineLearningServices/pracovní prostory/výpočetní výkon/čtení*
-* *Microsoft. MachineLearningServices/pracovní prostory/výpočty/zapisovat*
+* *Microsoft.MachineLearningServices/workspaces/computes/write*
 * *Microsoft. MachineLearningServices/pracovní prostory/výpočty/odstranit*
 * *Microsoft. MachineLearningServices/pracovní prostory/výpočty/spustit/akce*
 * *Microsoft. MachineLearningServices/pracovní prostory/výpočty/zastavit/akce*
 * *Microsoft. MachineLearningServices/pracovní prostory/výpočty/restartovat/akce*
 
-
-## <a name="access-the-terminal-window"></a>Přístup k oknu terminálu
-
-Otevřete okno terminálu své instance COMPUTE některým z těchto způsobů:
-
-* RStudio: v levém horním rohu vyberte kartu **terminálu** .
-* Jupyter Lab: v **druhém** záhlaví karty spouštěče vyberte dlaždici **terminálu** .
-* Jupyter: v pravém horním rohu na kartě soubory vyberte **nový>terminálu** .
-* SSH k počítači, pokud jste povolili přístup přes SSH při vytváření výpočetní instance.
-
-Okno terminálu použijte k instalaci balíčků a vytváření dalších jader.
-
-## <a name="install-packages"></a>Nainstalovat balíčky
-
-Balíčky můžete nainstalovat přímo do Jupyter Notebook nebo RStudio:
-
-* RStudio použijte kartu **balíčky** v pravém dolním rohu nebo kartu **Konzola** v levém horním rohu.  
-* Python: přidejte instalační kód a proveďte v Jupyter Notebook buňce.
-
-Případně můžete provést instalaci z okna terminálu. Nainstalujte balíčky Pythonu do prostředí **Python 3,6-AzureML** .  Nainstalujte balíčky R do prostředí jazyka **r** .
-
-> [!NOTE]
-> Pro správu balíčků v rámci poznámkového bloku použijte funkce **% PIP** nebo **% conda** Magic k automatické instalaci balíčků do **aktuálně běžícího jádra**, ne z **! PIP** nebo **! conda** , která odkazuje na všechny balíčky (včetně balíčků mimo aktuálně běžící jádro).
-
-## <a name="add-new-kernels"></a>Přidat nové jádra
-
-> [!WARNING]
->  Při přizpůsobování výpočetní instance se ujistěte, že neodstraňujete prostředí **azureml_py36** conda nebo **Python 3,6-AzureML** . To je potřeba pro funkce Jupyter/JupyterLab.
-
-Přidání nového jádra Jupyter do výpočetní instance:
-
-1. Vytvoření nového terminálu z podokna Jupyter, JupyterLab nebo z panelu poznámkových bloků nebo SSH do instance COMPUTE
-2. Pomocí okna terminálu vytvořte nové prostředí.  Například kód uvedený níže vytvoří `newenv` :
-
-    ```shell
-    conda create --name newenv
-    ```
-
-3. Aktivujte prostředí.  Například po vytvoření `newenv` :
-
-    ```shell
-    conda activate newenv
-    ```
-
-4. Instalace balíčku PIP a ipykernel do nového prostředí a vytvoření jádra pro tento conda ENV
-
-    ```shell
-    conda install pip
-    conda install ipykernel
-    python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
-    ```
-
-Můžete nainstalovat kterýkoli z [dostupných jader Jupyter](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) .
-
-
-
 ## <a name="next-steps"></a>Další kroky
 
+* [Přístup k terminálu výpočetních instancí](how-to-access-terminal.md)
+* [Vytváření a Správa souborů](how-to-manage-files.md)
 * [Odeslat školicí běh](how-to-set-up-training-targets.md)

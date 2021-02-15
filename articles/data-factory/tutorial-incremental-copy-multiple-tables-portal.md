@@ -1,22 +1,18 @@
 ---
 title: Přírůstkové kopírování více tabulek pomocí Azure Portal
 description: V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načte rozdílová data z několika tabulek v databázi SQL Server do databáze v Azure SQL Database.
-services: data-factory
 ms.author: yexu
 author: dearandyxu
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: f3060a7308d728b31266008d75e18470883e4480
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 10ebca487e8149b509935b5eb4c8d9f67ced8ade
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508590"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361124"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>Přírůstkové načtení dat z více tabulek v SQL Server do databáze v Azure SQL Database pomocí Azure Portal
 
@@ -479,7 +475,7 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
 
         | Název | Typ | Hodnota | 
         | ---- | ---- | ----- |
-        | LastModifiedtime | Datum a čas | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
+        | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Řetězec | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![Aktivita Uložená procedura – nastavení uložené procedury](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
@@ -525,7 +521,7 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
 ## <a name="review-the-results"></a>Kontrola výsledků
 V SQL Server Management Studiu spusťte následující dotazy na cílovou databázi SQL a ověřte, že data byla ze zdrojových tabulek zkopírována do cílových tabulek: 
 
-*Query (Dotaz) 
+**Dotaz** 
 ```sql
 select * from customer_table
 ```
@@ -542,7 +538,7 @@ PersonID    Name    LastModifytime
 5           Anny    2017-09-05 08:06:00.000
 ```
 
-*Query (Dotaz)
+**Dotaz**
 
 ```sql
 select * from project_table
@@ -559,7 +555,7 @@ project2    2016-02-02 01:23:00.000
 project3    2017-03-04 05:16:00.000
 ```
 
-*Query (Dotaz)
+**Dotaz**
 
 ```sql
 select * from watermarktable
@@ -624,7 +620,7 @@ VALUES
 ## <a name="review-the-final-results"></a>Kontrola konečných výsledků
 V SQL Server Management Studio spusťte následující dotazy na cílovou databázi SQL, abyste ověřili, že aktualizovaná/nová data byla ze zdrojových tabulek zkopírována do cílových tabulek. 
 
-*Query (Dotaz) 
+**Dotaz** 
 ```sql
 select * from customer_table
 ```
@@ -643,7 +639,7 @@ PersonID    Name    LastModifytime
 
 Všimněte si nových hodnot položek **Name** a **LastModifytime** pro **PersonID** pro číslo 3. 
 
-*Query (Dotaz)
+**Dotaz**
 
 ```sql
 select * from project_table
@@ -663,7 +659,7 @@ NewProject  2017-10-01 00:00:00.000
 
 Všimněte si, že do tabulky project_table byla přidána položka **NewProject**. 
 
-*Query (Dotaz)
+**Dotaz**
 
 ```sql
 select * from watermarktable

@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: bf8b705aff8ac608d0eb3626026797f1d106414b
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 820bc7dfe9123db495c151cd5cd0ea5ae337619f
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017748"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103970"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Rychlý Start: Konfigurace aplikace k vystavení webového rozhraní API
 
@@ -45,7 +45,7 @@ Kód v klientské aplikaci požaduje oprávnění k provádění operací defino
 
 Nejprve pomocí těchto kroků vytvořte příklad oboru s názvem `Employees.Read.All` :
 
-1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
+1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
 1. Pokud máte přístup k více klientům, vyberte v horní nabídce možnost **adresář a filtr předplatného** :::image type="icon" source="./media/quickstart-configure-app-expose-web-apis/portal-01-directory-subscription-filter.png" border="false"::: a vyberte klienta, který obsahuje registraci klientské aplikace.
 1. Vyberte **Azure Active Directory**  >  **Registrace aplikací** a pak vyberte registraci aplikace vašeho rozhraní API.
 1. Vyberte **zveřejnit rozhraní API**  >  **Přidat obor**.

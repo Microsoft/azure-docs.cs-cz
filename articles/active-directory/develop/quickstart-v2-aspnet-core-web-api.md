@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 7d38ee1782987afce703fbd8b4203186bbcbb505
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: da53d6bad790e6b204fa2a2b045e7bfdd83e0cc9
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754480"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102525"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>Rychlý Start: ochrana ASP.NET Core webového rozhraní API s platformou Microsoft identity
 
@@ -35,7 +35,7 @@ V tomto rychlém startu si stáhnete ukázku kódu ASP.NET Core webového rozhra
 >
 > Nejdřív Zaregistrujte webové rozhraní API ve vašem tenantovi Azure AD a přidejte obor pomocí následujících kroků:
 >
-> 1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
+> 1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
 > 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 > 1. Vyhledejte a vyberte **Azure Active Directory**.
 > 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
@@ -98,7 +98,7 @@ Middleware *Microsoft. AspNetCore. Authentication* používá `Startup` třídu,
 
 Řádek, který obsahuje `.AddMicrosoftIdentityWebApi` , přidá do vašeho webového rozhraní API autorizaci platformy Microsoft identity. Pak je nakonfigurovaná tak, aby ověřovala přístupové tokeny vydané platformou Microsoft identity na základě informací v `AzureAD` části *appsettings.jsv* konfiguračním souboru:
 
-| *appsettings.jsna* klíč | Popis                                                                                                                                                          |
+| *appsettings.jsna* klíč | Description                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | **ID aplikace (klienta)** aplikace zaregistrované v Azure Portal.                                                                                       |
 | `Instance`             | Koncový bod služby tokenu zabezpečení (STS) pro ověření uživatele. Tato hodnota se obvykle `https://login.microsoftonline.com/` označuje jako veřejný cloud Azure. |

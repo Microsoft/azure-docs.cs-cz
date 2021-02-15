@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 1d30d1e6c9cc60af96336cfdc7bea7126b4df7a8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 3ae6616263de605d5910f244423b9e7ffc036c5d
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017625"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103953"
 ---
 # <a name="how-to-modify-the-accounts-supported-by-an-application"></a>Postup úpravy účtů podporovaných aplikací
 
@@ -34,13 +34,13 @@ V následujících částech se dozvíte, jak změnit registraci vaší aplikace
 
 Pokud chcete zadat jiné nastavení pro typy účtů podporované při registraci existující aplikace:
 
-1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
+1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací** a pak vyberte svou aplikaci.
 1. Nyní určete, kdo může používat aplikaci, někdy označovanou jako *cílová skupina pro přihlášení*.
 
-    | Podporované typy účtu | Popis |
+    | Podporované typy účtu | Description |
     |-------------------------|-------------|
     | **Účty jen v tomto organizačním adresáři** | Tuto možnost vyberte, pokud vytváříte aplikaci pro použití jenom pro uživatele (nebo hosty) ve *vašem* tenantovi.<br><br>Je často označována jako *obchodní* aplikace (LOB), což je **jediná klientská** aplikace na platformě Microsoft identity. |
     | **Účty v libovolném organizačním adresáři** | Tuto možnost vyberte, pokud chcete, aby se vaše aplikace mohla používat pro uživatele v *jakémkoli* tenantovi služby Azure AD. Tato možnost je vhodná, pokud například vytváříte aplikaci typu software jako služba (SaaS), kterou máte v úmyslu poskytnout více organizacím.<br><br>Tato aplikace se označuje jako **víceklientská** aplikace na platformě Microsoft identity. |

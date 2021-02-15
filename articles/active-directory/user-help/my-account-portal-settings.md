@@ -9,22 +9,31 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: 7dcaae80842f06714759cb5c933a62ccd85aac63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 249b013a35df8978a7296086b4e5ada3b78b2c52
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798087"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093824"
 ---
 # <a name="view-or-change-your-settings-in-the-my-account-portal"></a>Zobrazení nebo změna nastavení na portálu Můj účet
 
 Nastavení účtu můžete zobrazit nebo změnit na portálu Můj účet, jako je například jazyk nebo časové pásmo, na stránce **nastavení & osobních údajů** na portálu **můj účet** .
 
+>[!Note]
+> Pokud se vám při přihlašování pomocí osobního účet Microsoft zobrazí chyba, můžete se přihlásit pomocí názvu domény vaší organizace (například contoso.com) nebo **ID tenanta** vaší organizace od správce v jedné z následujících adres URL:
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+
 ## <a name="view-and-manage-your-language-and-regional-settings"></a>Umožňuje zobrazit a spravovat váš jazyk a místní nastavení.
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak přejít na https://myaccount.microsoft.com/ stránku.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak přejít na https://myaccount.microsoft.com/ stránku. Pokud se přihlašujete pomocí osobního účet Microsoft, můžete se i nadále přihlašovat pomocí názvu domény vaší organizace (například contoso.com) nebo **ID tenanta** vaší organizace od správce v jedné z těchto adres URL:
+
+   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
 
 1. V levém navigačním podokně vyberte **nastavení & ochrany osobních údajů** nebo v části **Nastavení & blokování ochrany** osobních údajů vyberte odkaz **Zobrazit nastavení a soukromí** .
 

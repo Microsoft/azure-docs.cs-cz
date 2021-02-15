@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1012dad1b7e0a314687a38e420ff9ad4780051da
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e2aab537c2235fe3e008fa619c96a3098cfa7a27
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111175"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361209"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Přizpůsobení jazyka v Azure Active Directory B2C
 
@@ -48,7 +48,7 @@ Lokalizace vyžaduje tři kroky:
 
 ::: zone-end 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -181,7 +181,7 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 
 ## <a name="add-custom-languages"></a>Přidat vlastní jazyky
 
-Můžete také přidat jazyky, které Microsoft v současné době neposkytuje překlady pro. Budete muset zadat překlady pro všechny řetězce v toku uživatele. Kódy jazyků a kódů národního prostředí jsou omezené na ty, které jsou ve standardu ISO 639-1.
+Můžete také přidat jazyky, které Microsoft v současné době neposkytuje překlady pro. Budete muset zadat překlady pro všechny řetězce v toku uživatele. Kódy jazyků a kódů národního prostředí jsou omezené na ty, které jsou ve standardu ISO 639-1. Formát kódu národního prostředí by měl být "ISO_639-1_code"-"CountryCode" pro například en-GB. Další informace o formátech ID národního prostředí najdete v tématu. https://docs.microsoft.com/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a
 
 1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
 2. Klikněte na tok uživatele, do kterého chcete přidat vlastní jazyky, a pak klikněte na **jazyky**.
