@@ -1,23 +1,18 @@
 ---
 title: Přesun dat pomocí aktivity kopírování
 description: 'Přečtěte si o přesunu dat v Data Factory kanálech: migrace dat mezi cloudových úložišť a mezi místním úložištěm a cloudovým úložištěm. Použijte aktivitu kopírování.'
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 67543a20-b7d5-4d19-8b5e-af4c1fd7bc75
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a48a6de406f14c5339a4e6d92cd09a12357b73f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a3fe99896ff244d2e35737919e6797141095acb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195966"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364014"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Přesun dat pomocí aktivity kopírování
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -77,7 +72,7 @@ Aktivita kopírování ve službě Data Factory kopíruje data ze zdrojového ú
 ### <a name="supported-file-formats"></a>Podporované formáty souborů
 Aktivitu kopírování můžete použít ke **kopírování souborů** mezi dvěma úložišti dat založených na souborech, ale v definicích vstupní i výstupní datové sady můžete přeskočit [oddíl formát](data-factory-create-datasets.md) . Data se zkopírují efektivně bez serializace/deserializace.
 
-Aktivita kopírování také čte a zapisuje do souborů v určených formátech: **text, JSON, Avro, orc a Parquet**a Kompresní kodek **gzip, Deflate, bzip2 a ZipDeflate** jsou podporovány. Viz [podporované formáty souborů a komprese](data-factory-supported-file-and-compression-formats.md) s podrobnostmi.
+Aktivita kopírování také čte a zapisuje do souborů v určených formátech: **text, JSON, Avro, orc a Parquet** a Kompresní kodek **gzip, Deflate, bzip2 a ZipDeflate** jsou podporovány. Viz [podporované formáty souborů a komprese](data-factory-supported-file-and-compression-formats.md) s podrobnostmi.
 
 Můžete například provést následující aktivity kopírování:
 
@@ -96,7 +91,7 @@ Pokud jsou zdrojová i jímka úložiště dat v cloudu, Data Factory používá
 |:--- |:--- |:--- |
 | USA | East US | East US |
 | &nbsp; | USA – východ 2 | USA – východ 2 |
-| &nbsp; | Střední USA | Střední USA |
+| &nbsp; | USA – střed | USA – střed |
 | &nbsp; | USA – středosever | USA – středosever |
 | &nbsp; | Středojižní USA | Středojižní USA |
 | &nbsp; | USA – středozápad | USA – středozápad |
@@ -104,7 +99,7 @@ Pokud jsou zdrojová i jímka úložiště dat v cloudu, Data Factory používá
 | &nbsp; | Západní USA 2 | Západní USA 2 |
 | Kanada | Kanada – východ | Střední Kanada |
 | &nbsp; | Střední Kanada | Střední Kanada |
-| Brazílie | Brazil South | Brazil South |
+| Brazílie | Brazílie – jih | Brazílie – jih |
 | Evropa | Severní Evropa | Severní Evropa |
 | &nbsp; | West Europe | West Europe |
 | Spojené království | Spojené království – západ | Spojené království – jih |
@@ -112,12 +107,12 @@ Pokud jsou zdrojová i jímka úložiště dat v cloudu, Data Factory používá
 | Asie a Tichomoří | Southeast Asia | Southeast Asia |
 | &nbsp; | Východní Asie | Southeast Asia |
 | Austrálie | Austrálie – východ | Austrálie – východ |
-| &nbsp; | Austrálie – jihovýchod | Australia Southeast |
+| &nbsp; | Austrálie – jihovýchod | Austrálie – jihovýchod |
 | Indie | Indie – střed | Indie – střed |
 | &nbsp; | Západní Indie | Indie – střed |
 | &nbsp; | Indie – jih | Indie – střed |
-| Japonsko | Japan East | Japonsko – východ |
-| &nbsp; | Japonsko – západ | Japan East |
+| Japonsko | Japonsko – východ | Japonsko – východ |
+| &nbsp; | Japonsko – západ | Japonsko – východ |
 | Jižní Korea | Jižní Korea – střed | Jižní Korea – střed |
 | &nbsp; | Jižní Korea – jih | Jižní Korea – střed |
 
@@ -186,7 +181,7 @@ Tady je ukázka definice JSON:
   }
 }
 ```
-Plán, který je definován ve výstupní datové sadě, určuje, kdy se aktivita spustí (například **denně**, frekvence jako **den**a interval jako **1**). Aktivita kopíruje data ze vstupní datové sady (**zdroje**) do výstupní datové sady (**jímka**).
+Plán, který je definován ve výstupní datové sadě, určuje, kdy se aktivita spustí (například **denně**, frekvence jako **den** a interval jako **1**). Aktivita kopíruje data ze vstupní datové sady (**zdroje**) do výstupní datové sady (**jímka**).
 
 Pro aktivitu kopírování lze zadat více než jednu vstupní datovou sadu. Slouží k ověření závislostí před spuštěním aktivity. Pouze data z první datové sady jsou však zkopírována do cílové datové sady. Další informace najdete v tématu [plánování a provádění](data-factory-scheduling-and-execution.md).  
 

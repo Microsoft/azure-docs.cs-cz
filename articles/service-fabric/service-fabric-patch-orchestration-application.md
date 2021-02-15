@@ -14,24 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: d64c6383b9a83b759dd8368a4e3e0f1847b5ee16
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 7d52d49ab5d3a47dd69fdc1708f9e52f4f796a92
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791219"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390636"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Oprava operačního systému Windows v clusteru Service Fabric
 
-> 
 > [!IMPORTANT]
-> Od 30. dubna 2019 již není podporována aplikace orchestrace verze 1,2. *. Ujistěte se, že upgradujete na nejnovější verzi.
+> Od 30. dubna 2019 již není podporována aplikace orchestrace verze 1,2. *. Ujistěte se, že upgradujete na nejnovější verzi. Upgrady virtuálních počítačů, kde web Windows Update používá opravy operačního systému bez nahrazení disku s operačním systémem, se nepodporují. 
 
 > [!NOTE]
-> Získání [automatických upgradů bitových kopií operačního systému na základě sady škálování virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) je osvědčeným postupem, jak zachovat aktualizace operačního systému v Azure. Automatické upgrady bitových kopií operačního systému založené na sadě škálování virtuálních počítačů budou vyžadovat u sady škálování stříbrné nebo větší trvanlivost.
->
+> Získání [automatických upgradů bitových kopií operačního systému na základě sady škálování virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) je osvědčeným postupem, jak zachovat aktualizace operačního systému v Azure. Automatické upgrady bitových kopií operačního systému založené na sadě škálování virtuálních počítačů budou vyžadovat u sady škálování stříbrné nebo větší trvanlivost. U typů uzlů s nepodporovanou odolností to není podporováno. v tomto případě použijte prosím aplikaci Orchestration.
 
- Aplikace orchestrace opravy (POA) je obálkou v rámci služby Azure Service Fabric Repair Manager, která umožňuje plánování oprav operačního systému na základě konfigurace pro clustery hostované mimo Azure. Pro clustery, které nejsou hostované na Azure, se nepožaduje POA, ale k opravě Service Fabric hostitelů clusteru bez výpadků je potřeba naplánovat instalaci opravy pomocí aktualizační domény.
+Aplikace orchestrace opravy (POA) je obálkou v rámci služby Azure Service Fabric Repair Manager, která umožňuje plánování oprav operačního systému na základě konfigurace pro clustery hostované mimo Azure. Pro clustery, které nejsou hostované na Azure, se nepožaduje POA, ale k opravě Service Fabric hostitelů clusteru bez výpadků je potřeba naplánovat instalaci opravy pomocí aktualizační domény.
 
 POA je Service Fabric aplikace, která automatizuje opravy operačního systému v clusteru Service Fabric, aniž by docházelo k výpadkům.
 
@@ -313,7 +311,7 @@ Abychom vám pomohli porozumět tomu, jak aktualizace postupují v uzlu, pojďme
 
    Pokud se stále nacházejí další problémy, přihlaste se k virtuálnímu počítači nebo virtuálním počítačům a seznamte se s nimi pomocí protokolů událostí systému Windows. Dřív zmíněná úloha opravy může existovat jenom v následujících podstavech prováděcího modulu:
 
-      ExecutorSubState | Popis
+      ExecutorSubState | Description
     -- | -- 
       Žádné = 1 |  Znamená, že na uzlu neexistují žádné probíhající operace. Stav může být v přechodném stavu.
       DownloadCompleted = 2 | Znamená, že operace stahování byla dokončena se úspěchem, částečnou chybou nebo selháním.
@@ -443,7 +441,7 @@ A: POA používá Service Fabric Repair Manager k vytvoření úloh opravy pro u
 
 - POA shromažďuje telemetrii pro sledování využití a výkonu. Telemetrie aplikace sleduje nastavení nastavení telemetrie Service Fabric runtime (což je ve výchozím nastavení zapnuté).
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 Tato část poskytuje možná řešení pro řešení potíží s chybami při opravách uzlů.
 

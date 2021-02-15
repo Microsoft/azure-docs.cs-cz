@@ -1,20 +1,17 @@
 ---
 title: Přesunout data z MongoDB
 description: Přečtěte si informace o tom, jak přesouvat data z databáze MongoDB pomocí Azure Data Factory.
-services: data-factory
 author: linda33wj
 ms.author: jingwang
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
-ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cedb0b99f04df00763a3ee83287eec90bd5fb45d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79281337"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387508"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Přesun dat z MongoDB pomocí Azure Data Factory
 
@@ -46,7 +43,7 @@ Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z m�
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 
-K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -63,15 +60,15 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 
 | Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| typ |Vlastnost Type musí být nastavená na: **OnPremisesMongoDb** . |Ano |
-| server |IP adresa nebo název hostitele serveru MongoDB |Ano |
+| typ |Vlastnost Type musí být nastavená na: **OnPremisesMongoDb** . |Yes |
+| server |IP adresa nebo název hostitele serveru MongoDB |Yes |
 | port |Port TCP, který server MongoDB používá k naslouchání klientským připojením. |Volitelná výchozí hodnota: 27017 |
-| authenticationType |Basic nebo Anonymous. |Ano |
+| authenticationType |Basic nebo Anonymous. |Yes |
 | username |Uživatelský účet pro přístup k MongoDB. |Ano (Pokud se používá základní ověřování). |
 | heslo |Heslo pro tohoto uživatele. |Ano (Pokud se používá základní ověřování). |
 | authSource |Název databáze MongoDB, kterou chcete použít ke kontrole vašich přihlašovacích údajů pro ověřování. |Volitelné (Pokud se používá základní ověřování). výchozí: používá účet správce a databázi určenou pomocí vlastnosti databaseName. |
-| Databáze |Název databáze MongoDB, ke které chcete získat přístup. |Ano |
-| gatewayName |Název brány, která přistupuje k úložišti dat. |Ano |
+| Databáze |Název databáze MongoDB, ke které chcete získat přístup. |Yes |
+| gatewayName |Název brány, která přistupuje k úložišti dat. |Yes |
 | encryptedCredential |Přihlašovací údaje zašifrované bránou |Volitelné |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
@@ -81,7 +78,7 @@ Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje inf
 
 | Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| collectionName |Název kolekce v databázi MongoDB |Ano |
+| collectionName |Název kolekce v databázi MongoDB |Yes |
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 Úplný seznam sekcí & vlastností dostupných pro definování aktivit najdete v článku [vytvoření kanálů](data-factory-create-pipelines.md) . Pro všechny typy aktivit jsou k dispozici vlastnosti, jako je název, popis, vstupní a výstupní tabulka a zásada.
@@ -90,7 +87,7 @@ Vlastnosti, které jsou k dispozici v části **typeProperties** aktivity, se li
 
 Pokud je zdrojem typ **MongoDbSource** , jsou v oddílu typeProperties k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
 | query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL-92 Příklad: SELECT * FROM MyTable. |Ne (Pokud je zadán parametr **CollectionName** pro **sadu dat** ) |
 
@@ -343,8 +340,8 @@ Tabulka "ExampleTable_Invoices":
 
 | _id | ExampleTable_Invoices_dim1_idx | invoice_id | položka | price | Discount |
 | --- | --- | --- | --- | --- | --- |
-| 1111 |0 |123 |informační zpráva |456 |0,2 |
-| 1111 |1 |124 |termostat |1235 |0,2 |
+| 1111 |0 |123 |informační zpráva |456 |0.2 |
+| 1111 |1 |124 |termostat |1235 |0.2 |
 | 2222 |0 |135 |nákupem ledničky |12543 |0,0 |
 
 Tabulka "ExampleTable_Ratings":

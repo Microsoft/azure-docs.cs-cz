@@ -10,12 +10,12 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: 29b340448f3ce3e18a649065bdcd0b335bab8b73
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 00d5fa43245fb25b8ee99a0523d680bef891b71e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108241"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386998"
 ---
 # <a name="tutorial-power-bi-integration---create-the-predictive-model-with-a-jupyter-notebook-part-1-of-2"></a>Kurz: Power BI Integration – Vytvoření prediktivního modelu s Jupyter Notebook (část 1 ze 2)
 
@@ -118,7 +118,7 @@ Vytvoří novou *buňku kódu* v poznámkovém bloku. Pak zkopírujte následuj�
 import joblib
 from sklearn.linear_model import Ridge
 
-model = Ridge().fit(X,y)
+model = Ridge().fit(X_df,y_df)
 joblib.dump(model, 'sklearn_regression_model.pkl')
 ```
 
@@ -286,10 +286,8 @@ Doporučujeme, abyste otestovali webovou službu, abyste zajistili, že funguje 
 ```python
 import json
 
-
 input_payload = json.dumps({
-    'data': X_df[0:2].values.tolist(),
-    'method': 'predict'  # If you have a classification model, you can get probabilities by changing this to 'predict_proba'.
+    'data': X_df[0:2].values.tolist()
 })
 
 output = service.run(input_payload)

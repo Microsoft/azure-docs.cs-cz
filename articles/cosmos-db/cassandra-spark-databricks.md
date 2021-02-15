@@ -8,19 +8,19 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 5aaf31d8c629e0770b913485de175c38f708390c
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 0a83dd143ae626108fdf8d2645b8cc368a3f3e05
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359621"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516562"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Přístup k datům Azure Cosmos DB rozhraní API Cassandra z Azure Databricks
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
-Tento článek podrobně popisuje, jak workwith Azure Cosmos DB rozhraní API Cassandra ze Sparku na [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks).
+Tento článek podrobně popisuje, jak pracovat s Azure Cosmos DB rozhraní API Cassandra ze Sparku na [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Zřídit účet Azure Cosmos DB rozhraní API Cassandra](create-cassandra-dotnet.md#create-a-database-account)
 
@@ -62,7 +62,7 @@ Programy Spark, které mají být spuštěny jako automatizované procesy na Azu
 
 Níže najdete odkazy, které vám pomůžou začít vytvářet programy Spark Scala pro interakci s Azure Cosmos DB rozhraní API Cassandra.
 * [Jak se připojit k Azure Cosmos DB rozhraní API Cassandra z programu Spark Scala](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/main/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
-* [Jak spustit program Spark Scala jako automatizovanou úlohu na Azure Databricks](https://docs.azuredatabricks.net/user-guide/jobs.html)
+* [Jak spustit program Spark Scala jako automatizovanou úlohu na Azure Databricks](/azure/databricks/jobs)
 * [Úplný seznam ukázek kódu pro práci s rozhraní API Cassandra](cassandra-spark-generic.md#next-steps)
 
 ## <a name="next-steps"></a>Další kroky

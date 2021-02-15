@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/09/2021
+ms.date: 02/10/2021
 ms.author: alkohli
-ms.openlocfilehash: ce063e27620c3b0ccec9336e7a45ebb2ee1ad10d
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 1db6574f8ca22b6fe60899f00700ee19d61eab3b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101687"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382816"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>Migrace úloh z Azure Stack Edge pro FPGA do GPU pro Azure Stack Edge pro
 
@@ -190,8 +190,8 @@ Pomocí těchto kroků obnovte data z místních sdílených složek:
 
 Po přípravě modulů IoT Edge budete muset na cílovém zařízení nasadit IoT Edge úlohy. Pokud máte v nasazení IoT Edgech modulů nějaké chyby, přečtěte si téma:
 
-- [Běžné problémy a jejich řešení pro Azure IoT Edge](../iot-edge/troubleshoot-common-errors.md)a 
-- [IoT Edge chyby modulu runtime] [Správa zařízení GPU Azure Stack Edge pro pomocí Windows PowerShellu](azure-stack-edge-gpu-troubleshoot.md#troubleshoot-iot-edge-errors)
+- [Běžné problémy a jejich řešení pro Azure IoT Edge](../iot-edge/troubleshoot-common-errors.md). 
+- [IoT Edge chyby modulu runtime](azure-stack-edge-gpu-troubleshoot.md#troubleshoot-iot-edge-errors).
 
 ## <a name="verify-data"></a>Ověření dat
 

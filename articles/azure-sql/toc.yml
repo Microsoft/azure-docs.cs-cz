@@ -143,8 +143,10 @@
       items:
         - name: Žádost o navýšení kvóty
           href: database/quota-increase-request.md
-        - name: Automatizace úloh
+        - name: Automatizace úloh s elastickými úlohami
           href: database/job-automation-overview.md
+        - name: Automatizace úloh pomocí agenta SQL
+          href: database/job-automation-managed-instances.md
         - name: Kontinuita podnikových procesů
           items:
             - name: Konfigurace skupiny převzetí služeb při selhání

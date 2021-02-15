@@ -1,19 +1,17 @@
 ---
 title: Odstranění duplicit řádků a vyhledání hodnot null pomocí fragmentů toku dat
 description: Přečtěte si, jak snadno odsazovat řádky a najít hodnoty null pomocí fragmentů kódu v datových tocích.
-services: data-factory
 author: kromerm
+ms.author: makromer
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.author: makromer
-ms.openlocfilehash: cdb522cc4be83eadd2c60c91c7fee33e7ccc039b
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 1b49b2584c4cb462c7c0f520fe8d1b5bf69c8674
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632443"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393662"
 ---
 # <a name="dedupe-rows-and-find-nulls-by-using-data-flow-snippets"></a>Odstranění duplicit řádků a vyhledání hodnot null pomocí fragmentů toku dat
 
@@ -25,7 +23,7 @@ Pomocí fragmentů kódu při mapování toků dat můžete snadno provádět b�
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 
-1. Vyberte **Nový kanál** .
+1. Vyberte **Nový kanál**.
 
 1. Přidejte aktivitu toku dat.
 

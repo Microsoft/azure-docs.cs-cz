@@ -11,21 +11,21 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
-ms.openlocfilehash: c8f0bb6e0e58d672faa0929d6266e5e2c5a4f1f1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cac17bbac96d44d8d9bfce2e168de4ea6d4c5c08
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781052"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364949"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Přehled elastického dotazu Azure SQL Database (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Funkce elastického dotazu (ve verzi Preview) umožňuje spustit dotaz Transact-SQL, který pokrývá více databází v Azure SQL Database. Umožňuje provádět dotazy napříč databázemi pro přístup ke vzdáleným tabulkám a k propojení nástrojů společnosti Microsoft a jiných dodavatelů (Excel, Power BI, Tableau atd.) pro dotazování napříč datovými vrstvami s více databázemi. Pomocí této funkce můžete horizontální navýšení kapacity dotazů na velké úrovně dat a vizualizaci výsledků v sestavách business intelligence (BI).
+Funkce elastických dotazů (ve verzi Preview) umožňuje spouštět dotazy Transact-SQL zahrnující několik databází ve službě Azure SQL Database. Umožňuje provádět dotazy napříč databázemi pro přístup ke vzdáleným tabulkám a k propojení nástrojů společnosti Microsoft a jiných dodavatelů (Excel, Power BI, Tableau atd.) pro dotazování napříč datovými vrstvami s více databázemi. S využitím této funkce můžete škálovat dotazy na velké datové vrstvy na více instancí a vizualizovat výsledky v sestavách business intelligence (BI).
 
 ## <a name="why-use-elastic-queries"></a>Proč používat elastické dotazy
 
-### <a name="azure-sql-database"></a>Databáze Azure SQL
+### <a name="azure-sql-database"></a>Azure SQL Database
 
 Dotazování napříč databázemi v Azure SQL Database zcela v T-SQL. To umožňuje dotazovat se na vzdálené databáze jen pro čtení a poskytuje možnost pro stávající SQL Server zákazníkům migrovat aplikace pomocí názvů tří a čtyř částí nebo propojeného serveru na SQL Database.
 
@@ -73,13 +73,13 @@ Elastický dotaz lze použít k zajištění dat umístěných v databázi v SQL
 > Musíte mít oprávnění ke změně všech externích zdrojů dat. Toto oprávnění je součástí oprávnění ALTER DATABASE. Aby bylo možné odkazovat na podkladový zdroj dat, je třeba změnit všechna oprávnění ke zdroji externích dat.
 >
 
-**Referenční data** : topologie se používá pro správu referenčních dat. Na následujícím obrázku jsou dvě tabulky (T1 a T2) s referenčními daty uchovávány ve vyhrazené databázi. Pomocí elastického dotazu teď můžete přistupovat k tabulkám T1 a T2 vzdáleně z jiných databází, jak je znázorněno na obrázku. Použijte topologii 1, pokud jsou referenční tabulky malé nebo vzdálené dotazy do referenční tabulky mají selektivní predikáty.
+**Referenční data**: topologie se používá pro správu referenčních dat. Na následujícím obrázku jsou dvě tabulky (T1 a T2) s referenčními daty uchovávány ve vyhrazené databázi. Pomocí elastického dotazu teď můžete přistupovat k tabulkám T1 a T2 vzdáleně z jiných databází, jak je znázorněno na obrázku. Použijte topologii 1, pokud jsou referenční tabulky malé nebo vzdálené dotazy do referenční tabulky mají selektivní predikáty.
 
 **Obrázek 2** Vertikální dělení – použití elastického dotazu k dotazování na referenční data
 
 ![Vertikální dělení – použití elastického dotazu k dotazování na referenční data][3]
 
-**Dotazování napříč databázemi** : elastické dotazy umožňují případy použití, které vyžadují dotazování napříč několika databázemi v SQL Database. Obrázek 3 ukazuje čtyři různé databáze: CRM, inventář, HR a produkty. Dotazy provedené v jedné z databází také potřebují přístup k jedné nebo všem ostatním databázím. Pomocí elastického dotazu můžete pro tento případ nakonfigurovat databázi tak, že v každé ze čtyř databází spustíte několik jednoduchých příkazů DDL. Po této jednorázové konfiguraci bude mít přístup ke vzdálené tabulce jednoduché odkazy na místní tabulku z vašich dotazů T-SQL nebo z nástrojů BI. Tento přístup se doporučuje, pokud vzdálené dotazy nevrátí velké výsledky.
+**Dotazování napříč databázemi**: elastické dotazy umožňují případy použití, které vyžadují dotazování napříč několika databázemi v SQL Database. Obrázek 3 ukazuje čtyři různé databáze: CRM, inventář, HR a produkty. Dotazy provedené v jedné z databází také potřebují přístup k jedné nebo všem ostatním databázím. Pomocí elastického dotazu můžete pro tento případ nakonfigurovat databázi tak, že v každé ze čtyř databází spustíte několik jednoduchých příkazů DDL. Po této jednorázové konfiguraci bude mít přístup ke vzdálené tabulce jednoduché odkazy na místní tabulku z vašich dotazů T-SQL nebo z nástrojů BI. Tento přístup se doporučuje, pokud vzdálené dotazy nevrátí velké výsledky.
 
 **Obrázek 3** Vertikální dělení – použití elastického dotazu k dotazování napříč různými databázemi
 
@@ -120,7 +120,7 @@ Další informace o krocích, které jsou potřebné pro scénář horizontáln�
 Chcete-li začít s kódováním, přečtěte si téma [Začínáme s elastickým dotazem pro horizontální dělení (horizontálního dělení)](elastic-query-getting-started.md).
 
 > [!IMPORTANT]
-> Úspěšné provedení elastického dotazu nad velkou sadou databází v průběhu provádění dotazu intenzivně závisí na dostupnosti jednotlivých databází. Pokud není jedna z databází k dispozici, celý dotaz se nezdaří. Pokud plánujete dotazovat stovky nebo tisíce databází najednou, ujistěte se, že vaše klientská aplikace má vloženou logiku opakování, nebo zvažte použití [Elastic Databasech úloh](./job-automation-overview.md#elastic-database-jobs-preview) (Preview) a dotazování na menší podmnožiny databází a konsoliduje výsledky každého dotazu do jednoho cíle.
+> Úspěšné provedení elastického dotazu nad velkou sadou databází v průběhu provádění dotazu intenzivně závisí na dostupnosti jednotlivých databází. Pokud není jedna z databází k dispozici, celý dotaz se nezdaří. Pokud plánujete dotazovat stovky nebo tisíce databází najednou, ujistěte se, že vaše klientská aplikace má vloženou logiku opakování, nebo zvažte použití [Elastic Databasech úloh](./job-automation-overview.md) (Preview) a dotazování na menší podmnožiny databází a konsoliduje výsledky každého dotazu do jednoho cíle.
 
 ## <a name="t-sql-querying"></a>Dotazování T-SQL
 

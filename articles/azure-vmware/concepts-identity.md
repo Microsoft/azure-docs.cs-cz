@@ -3,12 +3,12 @@ title: Koncepty – identita a přístup
 description: Seznamte se s principy identit a přístupu k řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 0f58cbdaa641af24cef53c3cfd9604cf1b0c1c3b
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 68f4ce9136cca1cf9bf0824395e31704d8ed1a17
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538937"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364881"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Koncepty identity řešení Azure VMware
 
@@ -49,7 +49,7 @@ V tabulce jsou uvedena oprávnění **CloudAdmin** a **CloudGlobalAdmin** .
 
 ## <a name="nsx-t-manager-access-and-identity"></a>Přístup a identita správce NSX – T
 
-Pro přístup ke Správci NSX-T použijte účet správce. Má úplná oprávnění a umožňuje vytváření a správu směrovačů T1, logických přepínačů a všech služeb. Oprávnění poskytují přístup ke směrovači NSX-T T0. Změna směrovače T0 by mohla způsobit snížení výkonu sítě nebo přístupu k privátnímu cloudu. Otevřete žádost o podporu v Azure Portal, abyste požádali o změny ve směrovači NSX-T T0.
+Pro přístup ke Správci NSX-T použijte účet *správce* . Má úplná oprávnění a umožňuje vytvářet a spravovat brány (T1) vrstvy 1 (T1), segmenty (logické přepínače) a všechny služby. Oprávnění poskytují přístup k bráně NSX-T úrovně 0 (T0). Změna v bráně T0 by mohla způsobit snížení výkonu sítě nebo přístupu k privátnímu cloudu. Otevřete žádost o podporu v Azure Portal, abyste požádali o změny v bráně NSX-T T0.
   
 ## <a name="next-steps"></a>Další kroky
 

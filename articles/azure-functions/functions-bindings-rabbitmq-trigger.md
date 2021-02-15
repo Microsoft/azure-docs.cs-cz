@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 4ba19fdf700790d89fe04867985fb803c3b0a2fc
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: be3c5bc2d178171aaebd322e13b23b3a6f79c442
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760397"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388987"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>RabbitMQ Trigger for Azure Functions – přehled
 
@@ -27,7 +27,7 @@ Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Následující příklad ukazuje [funkci jazyka C#](functions-dotnet-class-library.md) , která čte a zapisuje zprávu RabbitMQ jako [událost RabbitMQ](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html):
+Následující příklad ukazuje [funkci jazyka C#](functions-dotnet-class-library.md) , která čte a zapisuje zprávu RabbitMQ jako [událost RabbitMQ](https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.Events.BasicDeliverEventArgs.html):
 
 ```cs
 [FunctionName("RabbitMQTriggerCSharp")]
@@ -211,11 +211,11 @@ Další podrobnosti najdete v [příkladu](#example) triggeru.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `RabbitMQTrigger` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový** | neuvedeno | Musí být nastavené na "RabbitMQTrigger".|
-|**směr** | neuvedeno | Musí být nastavené na "in".|
-|**Jméno** | neuvedeno | Název proměnné, která představuje frontu v kódu funkce. |
+|**textový** | Není k dispozici | Musí být nastavené na "RabbitMQTrigger".|
+|**směr** | Není k dispozici | Musí být nastavené na "in".|
+|**Jméno** | Není k dispozici | Název proměnné, která představuje frontu v kódu funkce. |
 |**Proměnné QueueName**|**Proměnné QueueName**| Název fronty, ze které se mají přijímat zprávy |
 |**Název hostitele**|**Název hostitele**|(ignoruje se, pokud používáte ConnectStringSetting) <br>Název hostitele fronty (např.: 10.26.45.210)|
 |**userNameSetting**|**UserNameSetting**|(ignoruje se, pokud používáte ConnectionStringSetting) <br>Název nastavení aplikace, které obsahuje uživatelské jméno pro přístup do fronty. Například UserNameSetting: "% < UserNameFromSettings >%"|
@@ -229,7 +229,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Výchozí typ zprávy je [RabbitMQ událost](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html)a `Body` vlastnost události RabbitMQ lze číst jako níže uvedené typy:
+Výchozí typ zprávy je [RabbitMQ událost](https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.Events.BasicDeliverEventArgs.html)a `Body` vlastnost události RabbitMQ lze číst jako níže uvedené typy:
 
 * `An object serializable as JSON` -Zpráva je doručena jako platný řetězec JSON.
 * `string`
@@ -238,7 +238,7 @@ Výchozí typ zprávy je [RabbitMQ událost](https://www.rabbitmq.com/releases/r
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Výchozí typ zprávy je [RabbitMQ událost](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html)a `Body` vlastnost události RabbitMQ lze číst jako níže uvedené typy:
+Výchozí typ zprávy je [RabbitMQ událost](https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.Events.BasicDeliverEventArgs.html)a `Body` vlastnost události RabbitMQ lze číst jako níže uvedené typy:
 
 * `An object serializable as JSON` -Zpráva je doručena jako platný řetězec JSON.
 * `string`
@@ -280,11 +280,11 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 }
 ```
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------|
 |prefetchCount|30|Získá nebo nastaví počet zpráv, které může příjemce zprávy současně požadovat a který je uložen do mezipaměti.|
-|Proměnné QueueName|neuvedeno| Název fronty, ze které se mají přijímat zprávy|
-|připojovací řetězec|neuvedeno|Připojovací řetězec fronty zpráv RabbitMQ Upozorňujeme, že připojovací řetězec je zde přímo určen a nikoli prostřednictvím nastavení aplikace.|
+|Proměnné QueueName|Není k dispozici| Název fronty, ze které se mají přijímat zprávy|
+|připojovací řetězec|Není k dispozici|Připojovací řetězec fronty zpráv RabbitMQ Upozorňujeme, že připojovací řetězec je zde přímo určen a nikoli prostřednictvím nastavení aplikace.|
 |port|0|(ignoruje se při použití connectionString) Získá nebo nastaví použitý port. Výchozí hodnota je 0, což odkazuje na výchozí nastavení portu RabbitMQ klienta: 5672.|
 
 ## <a name="local-testing"></a>Místní testování
@@ -308,11 +308,11 @@ Pokud testujete místně bez připojovacího řetězce, měli byste nastavit nas
 }
 ```
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------|
-|Název hostitele|neuvedeno|(ignoruje se při použití connectionString) <br>Název hostitele fronty (např.: 10.26.45.210)|
-|userName|neuvedeno|(ignoruje se při použití connectionString) <br>Název pro přístup do fronty |
-|heslo|neuvedeno|(ignoruje se při použití connectionString) <br>Heslo pro přístup do fronty|
+|Název hostitele|Není k dispozici|(ignoruje se při použití connectionString) <br>Název hostitele fronty (např.: 10.26.45.210)|
+|userName|Není k dispozici|(ignoruje se při použití connectionString) <br>Název pro přístup do fronty |
+|heslo|Není k dispozici|(ignoruje se při použití connectionString) <br>Heslo pro přístup do fronty|
 
 
 ## <a name="enable-runtime-scaling"></a>Povolit škálování modulu runtime

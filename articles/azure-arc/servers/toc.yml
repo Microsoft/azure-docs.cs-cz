@@ -59,6 +59,8 @@
           href: managed-identity-authentication.md
         - name: Správa agenta
           href: manage-agent.md
+        - name: Migrovat počítač napříč oblastmi
+          href: manage-howto-migrate.md
     - name: Scénáře
       items:
         - name: Onboarding do Azure Sentinelu

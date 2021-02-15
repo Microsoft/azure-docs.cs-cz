@@ -8,22 +8,22 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: allensu
-ms.openlocfilehash: 35e32627eaf26eb6f73ca382f119eab61ebd8711
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5196b03ccd513e4afd93b8b8fcf18f7c2580024a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417373"
+ms.locfileid: "100519214"
 ---
 # <a name="retrieve-load-balancer-metadata-using-the-azure-instance-metadata-service-imds"></a>Načtení metadat služby Vyrovnávání zatížení pomocí Instance Metadata Service Azure (IMDS)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pro svůj požadavek použijte [nejnovější verzi rozhraní API](/virtual-machines/windows/instance-metadata-service?tabs=windows#supported-api-versions) .
+* Pro svůj požadavek použijte [nejnovější verzi rozhraní API](../virtual-machines/windows/instance-metadata-service.md?tabs=windows#supported-api-versions) .
 
 ## <a name="sample-request-and-response"></a>Ukázková žádost a odpověď
 > [!IMPORTANT]
-> Tento příklad obchází proxy servery. Při dotazování na IMDS je **nutné** obejít proxy servery. Další informace najdete v tématu [proxy](/virtual-machines/windows/instance-metadata-service?tabs=windows#proxies).
+> Tento příklad obchází proxy servery. Při dotazování na IMDS je **nutné** obejít proxy servery. Další informace najdete v tématu [proxy](../virtual-machines/windows/instance-metadata-service.md?tabs=windows#proxies).
 ### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
@@ -82,9 +82,9 @@ curl -H "Metadata:true" --noproxy "*" "http://169.254.169.254:80/metadata/loadba
 ## <a name="next-steps"></a>Další kroky
 [Běžné kódy chyb a postup řešení potíží](troubleshoot-load-balancer-imds.md)
 
-Další informace o [Azure instance metadata Service](/virtual-machines/windows/instance-metadata-service)
+Další informace o [Azure instance metadata Service](../virtual-machines/windows/instance-metadata-service.md)
 
-[Načíst všechna metadata pro instanci](/virtual-machines/windows/instance-metadata-service?tabs=windows#access-azure-instance-metadata-service)
+[Načíst všechna metadata pro instanci](../virtual-machines/windows/instance-metadata-service.md?tabs=windows#access-azure-instance-metadata-service)
 
 [Nasazení standardního nástroje pro vyrovnávání zatížení](quickstart-load-balancer-standard-public-portal.md)
 

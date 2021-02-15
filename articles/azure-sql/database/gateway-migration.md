@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 01e5095e5ff5c65bff508f4bd526ee5f85e3dc56
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 8fa61855b5647c1caefd939af17b70c9d08c2f8f
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575156"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517820"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database migrace provozu na novější brány
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,6 +29,22 @@ Nejaktuálnější informace se budou udržovat v tabulce [IP adres Azure SQL Da
 ## <a name="status-updates"></a>Aktualizace stavu
 
 # <a name="in-progress"></a>[Rozpracované](#tab/in-progress-ip)
+## <a name="march-2021"></a>Březen 2021
+Probíhá deaktivace následujících bran SQL v několika oblastech:
+
+- Brazílie – jih: 104.41.11.5
+- Východní Asie: 191.234.2.139
+- Východní USA: 191.238.6.43
+- Japonsko – východ: 191.237.240.43
+- Japonsko – západ: 191.238.68.11
+- Severní Evropa: 191.235.193.75
+- Střed USA – jih: 23.98.162.75
+- Jihovýchodní Asie: 23.100.117.95
+- Západní Evropa: 191.237.232.75
+- Západní USA: 23.99.34.75
+
+Nepředpokládá se žádný dopad na zákazníky, protože tyto brány (spuštěné na starším hardwaru) nesměrují provoz zákazníků. Po 15. březnu 2021 se IP adresy těchto bran deaktivují.
+
 ## <a name="february-2021"></a>Únor 2021
 Nové brány SQL se přidávají do následujících oblastí:
 
@@ -95,7 +111,7 @@ Nové brány SQL se přidávají do následujících oblastí. Tyto brány SQL z
 - Západní Evropa: 52.236.184.163 
 - Střed USA – jih: 20.45.121.1, 20.49.88.1 
 
-Stávající brány SQL začnou přijímat přenosy v následujících oblastech. Tyto brány SQL začnou přijímat provoz zákazníků dne **1. září 2020** :
+Stávající brány SQL začnou přijímat přenosy v následujících oblastech. Tyto brány SQL začnou přijímat provoz zákazníků dne **1. září 2020**:
 - Japonsko – východ: 40.79.184.8, 40.79.192.5
 
 

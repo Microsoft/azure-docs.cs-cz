@@ -51,7 +51,7 @@
     - name: Poznámky k verzi a značky imagí kontejnerů
       href: ./containers/container-image-tags.md
     - name: Nejčastější dotazy ke kontejnerům
-      href: ./containers/container-faq.md
+      href: ./containers/container-faq.yml
     - name: Návody ke kontejnerům
       items:
         - name: Opakované využití kontejnerů

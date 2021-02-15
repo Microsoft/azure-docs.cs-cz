@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 02/12/2021
 ms.author: allensu
-ms.openlocfilehash: e648d71ed3c501c07a2491054b273a13d74cedaf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e932e211996a05b2740613381735a7de3492e5bf
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417258"
+ms.locfileid: "100519180"
 ---
 # <a name="error-codes-common-error-codes-when-using-imds-to-retrieve-load-balancer-information"></a>Kódy chyb: běžné chybové kódy při použití IMDS k získání informací o vyrovnávání zatížení
 
@@ -28,8 +28,8 @@ Tento článek popisuje běžné chyby nasazení a způsob řešení těchto chy
 | 400 | Neočekávaná žádost Zkontrolujte prosím parametry dotazu a zkuste to znovu. | Kód chyby značí, že formát požadavku není správně nakonfigurován. </br> Další informace najdete v tématu [jak načíst metadata služby Vyrovnávání zatížení pomocí instance metadata Service Azure (IMDS)](howto-load-balancer-imds.md#sample-request-and-response) , abyste opravili tělo žádosti a vydávali opakování. |
 | 404 | Nenašla se žádná metadata služby Vyrovnávání zatížení. Zkontrolujte prosím, jestli váš virtuální počítač používá nestandardní SKU pro vyrovnávání zatížení, a zkuste to znovu později. | Kód chyby indikuje, že váš virtuální počítač není přidružený k nástroji pro vyrovnávání zatížení, nebo že nástroj pro vyrovnávání zatížení je základní SKU místo Standard. </br> Další informace najdete v tématu [rychlý Start: vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal](quickstart-load-balancer-standard-public-portal.md?tabs=option-1-create-load-balancer-standard) k nasazení standardního nástroje pro vyrovnávání zatížení.|
 | 404 | Rozhraní API se nenašlo: cesta = " \<UrlPath> ", metoda = " \<Method> " | Kód chyby indikuje chybnou konfiguraci cesty. </br> Další informace najdete v tématu [jak načíst metadata služby Vyrovnávání zatížení pomocí instance metadata Service Azure (IMDS)](howto-load-balancer-imds.md#sample-request-and-response) , abyste opravili tělo žádosti a vydávali opakování.|
-| 405 | Metoda HTTP není povolena: cesta = " \<UrlPath> ", metoda = " \<Method> " | Kód chyby označuje nepodporovaný příkaz HTTP. </br> Další informace najdete v tématu [Azure instance metadata Service (IMDS)](/virtual-machines/windows/instance-metadata-service?tabs=windows.md#http-verbs) pro podporované operace. |
-| 429 | Příliš mnoho žádostí | Kód chyby označuje omezení přenosové rychlosti. </br> Další informace o omezení četnosti najdete v tématu [Azure instance metadata Service (IMDS)](/virtual-machines/windows/instance-metadata-service?tabs=windows#rate-limiting).|
+| 405 | Metoda HTTP není povolena: cesta = " \<UrlPath> ", metoda = " \<Method> " | Kód chyby označuje nepodporovaný příkaz HTTP. </br> Další informace najdete v tématu [Azure instance metadata Service (IMDS)](../virtual-machines/windows/instance-metadata-service.md?tabs=windows#http-verbs) pro podporované operace. |
+| 429 | Příliš mnoho žádostí | Kód chyby označuje omezení přenosové rychlosti. </br> Další informace o omezení četnosti najdete v tématu [Azure instance metadata Service (IMDS)](../virtual-machines/windows/instance-metadata-service.md?tabs=windows#rate-limiting).|
 | 400 | Text žádosti je větší než MaxBodyLength:... | Kód chyby indikuje požadavek větší než MaxBodyLength. </br> Další informace o délce těla najdete v tématu [jak načíst metadata služby Vyrovnávání zatížení pomocí instance metadata Service Azure (IMDS)](howto-load-balancer-imds.md#sample-request-and-response).|
 | 400 | Délka klíče parametru je větší než MaxParameterKeyLength:... | Kód chyby označuje délku klíče parametru větší než MaxParameterKeyLength. </br> Další informace o délce těla najdete v tématu [jak načíst metadata služby Vyrovnávání zatížení pomocí instance metadata Service Azure (IMDS)](howto-load-balancer-imds.md#sample-request-and-response). |
 | 400 | Délka hodnoty parametru je větší než MaxParameterValueLength:... | Kód chyby označuje délku klíče parametru větší než MaxParameterValueLength. </br> Další informace o délce hodnoty najdete v tématu [jak načíst metadata služby Vyrovnávání zatížení pomocí instance metadata Service Azure (IMDS)](howto-load-balancer-imds.md#sample-request-and-response).|
@@ -41,5 +41,5 @@ Tento článek popisuje běžné chyby nasazení a způsob řešení těchto chy
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [Azure instance metadata Service](/virtual-machines/windows/instance-metadata-service.md)
+Další informace o [Azure instance metadata Service](../virtual-machines/windows/instance-metadata-service.md)
 

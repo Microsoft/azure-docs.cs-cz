@@ -1,21 +1,17 @@
 ---
 title: Spustit Azure Machine Learning kanály
 description: Naučte se spouštět kanály Azure Machine Learning ve vašich Azure Data Factorych kanálech.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.author: daperlov
 author: djpmsft
-manager: anandsub
 ms.date: 07/16/2020
-ms.openlocfilehash: 7239c1516c4a04b57249ea4f39bff4aec9156d72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db1816baf0ebc476a132b344d8db3cdbdd170e50
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337683"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373925"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Spouštění Azure Machine Learningch kanálů v Azure Data Factory
 

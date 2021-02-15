@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 66c315132ef0ef4d320e9edd8e9bcc28b2240924
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 3d9e436d636fbd5414367efb0e122748a8e9e2cb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805086"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390806"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Normalizace v Azure Sentinel
 
@@ -70,6 +70,9 @@ Odkaz na schéma obsahuje taky hodnoty a standardizaci formátu. Zdrojová pole,
 
 ## <a name="parsers"></a>Analyzátorů
 
+- [Co je analýza](#what-is-parsing)
+- [Použití analyzátorů času dotazů](#using-query-time-parsers)
+
 ### <a name="what-is-parsing"></a>Co je analýza
 
 K dispozici je základní sada definovaných normalizovaných tabulek, bude nutné transformovat (analyzovat/mapovat) data do těchto tabulek. To znamená, že v normalizovaném schématu budete z jeho nezpracovaného formuláře extrahovat konkrétní data do známých sloupců. K analýze v Azure Sentinel dojde v **době dotazu** . analyzátory se vytvářejí jako Log Analytics uživatelské funkce (pomocí KQL jazyka Kusto), které transformují data v existujících tabulkách (například CommonSecurityLog, Custom log Tables, syslog) do normalizovaného schématu tabulek.
@@ -77,6 +80,10 @@ K dispozici je základní sada definovaných normalizovaných tabulek, bude nutn
 Druhý druh analýzy, který se ještě v Azure Sentinelu nepodporuje, je **čas** příjmu, který umožňuje shromažďovat data přímo do normalizovaných tabulek, protože je ingestují z jejích zdrojů dat. Analýza času příjmu poskytuje vyšší výkon, protože datový model se dotazuje přímo bez nutnosti používat funkce.
 
 ### <a name="using-query-time-parsers"></a>Použití analyzátorů času dotazů
+
+- [Instalace analyzátoru](#installing-a-parser)
+- [Použití analyzátorů](#using-the-parsers)
+- [Přizpůsobení analyzátorů](#customizing-parsers)
 
 #### <a name="installing-a-parser"></a>Instalace analyzátoru
 
@@ -119,6 +126,12 @@ V pravém podokně rozbalte část "uložené dotazy" a vyhledejte složku ' Nor
 
 Můžete kliknout na každý jednotlivý analyzátor a zobrazit základní funkci, kterou používá, a spustit ji (nebo k ní přistupovat přímo pomocí aliasu, jak je popsáno výše). Všimněte si, že některé analyzátory mohou zachovat původní pole vedle sebe do normalizovaných polí pro usnadnění práce. To lze snadno upravit v dotazu analyzátoru.
 
+> [!TIP]
+> Uložené funkce můžete použít místo tabulek Sentinel Azure v jakémkoli dotazu, včetně loveckých a zjišťovacích dotazů. Další informace naleznete v tématu:
+>
+> - [Normalizace dat v Azure Sentinel](normalization.md#parsers)
+> - [Analyzovat text v protokolech Azure Monitor](/azure/azure-monitor/log-query/parse-text)
+>
 #### <a name="customizing-parsers"></a>Přizpůsobení analyzátorů
 
 Výše uvedený postup můžete opakovat (hledání analyzátoru v Průzkumníku dotazů), kliknout na příslušný analyzátor a zobrazit jeho implementaci funkce.
@@ -131,6 +144,8 @@ Po změně funkce klikněte znovu na Uložit a použijte stejný název, alias a
 :::image type="content" source="./media/normalization/are-you-sure.png" alt-text="Opravdu":::
 
 #### <a name="additional-information"></a>Další informace
+
+JSON, XML a CSV jsou zvláště užitečné pro analýzu v době dotazu. Technologie Azure Sentinel obsahuje integrované funkce analýzy pro JSON, XML a CSV a také nástroj pro analýzu JSON.  Další informace najdete v tématu [použití polí JSON ve službě Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/tip-easily-use-json-fields-in-sentinel/ba-p/768747) (blog). 
 
 Přečtěte si další informace o [uložených dotazech](../azure-monitor/log-query/example-queries.md) (implementaci analyzátorů času dotazů) v Log Analytics.
 

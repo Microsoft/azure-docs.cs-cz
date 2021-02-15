@@ -2,16 +2,15 @@
 title: Řešení potíží s Azure Automation Runbook
 description: Tento článek popisuje, jak řešit problémy s Azure Automation Runbooky a řešit problémy.
 services: automation
-ms.subservice: ''
-ms.date: 11/03/2020
+ms.date: 02/11/2021
 ms.topic: troubleshooting
 ms.custom: has-adal-ref
-ms.openlocfilehash: e154284df8eaad798c5cfaf4de69c40601863cf4
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 0ae7af848fd3ceb1d5b186a5a326c8fa43a69d24
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053665"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388018"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Řešení problémů s runbooky
 
@@ -224,37 +223,46 @@ Při spouštění Runbooků se sada Runbook nedokáže spravovat prostředky Azu
 
 ### <a name="cause"></a>Příčina
 
-Sada Runbook při spuštění nepoužívá správný kontext.
+Sada Runbook při spuštění nepoužívá správný kontext. Důvodem může být to, že se Runbook nesnaží získat přístup k nesprávnému předplatnému.
+
+Můžou se zobrazit chyby, jako je tato:
+
+```error
+Get-AzVM : The client '<automation-runas-account-guid>' with object id '<automation-runas-account-guid>' does not have authorization to perform action 'Microsoft.Compute/virtualMachines/read' over scope '/subscriptions/<subcriptionIdOfSubscriptionWichDoesntContainTheVM>/resourceGroups/REsourceGroupName/providers/Microsoft.Compute/virtualMachines/VMName '.
+   ErrorCode: AuthorizationFailed
+   StatusCode: 403
+   ReasonPhrase: Forbidden Operation
+   ID : <AGuidRepresentingTheOperation> At line:51 char:7 + $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $UNBV... +
+```
 
 ### <a name="resolution"></a>Řešení
 
-Kontext předplatného může být ztracen, když sada Runbook vyvolá více sad Runbook. Chcete-li zajistit, aby byl kontext předplatného předán do sad Runbook, je nutné, aby sada Runbook klienta předávala kontext `Start-AzureRmAutomationRunbook` rutině v `AzureRmContext` parametru. Použijte `Disable-AzureRmContextAutosave` rutinu s `Scope` parametrem nastaveným na `Process` , abyste zajistili, že zadané přihlašovací údaje se použijí jenom pro aktuální Runbook. Další informace najdete v tématu [předplatná](../automation-runbook-execution.md#subscriptions).
+Kontext předplatného může být ztracen, když sada Runbook vyvolá více sad Runbook. Chcete-li se vyhnout nechtěnému pokusu o přístup k nesprávnému předplatnému, postupujte podle pokynů níže.
 
-```azurepowershell-interactive
-# Ensures that any credentials apply only to the execution of this runbook
-Disable-AzContextAutosave –Scope Process
+* Abyste se vyhnuli odkazování na špatné předplatné, zakažte v automatizaci v sadě Runbook ukládání kontextu pomocí následujícího kódu na začátku každé sady Runbook.
 
-# Connect to Azure with Run As account
-$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
+   ```azurepowershell-interactive
+   Disable-AzContextAutosave –Scope Process
+   ```
 
-Connect-AzAccount `
-    -ServicePrincipal `
-    -Tenant $ServicePrincipalConnection.TenantId `
-    -ApplicationId $ServicePrincipalConnection.ApplicationId `
-    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
+* Rutiny Azure PowerShell podporují `-DefaultProfile` parametr. Přidali jsme všechny rutiny AZ a AzureRm, které podporují spouštění více skriptů PowerShellu ve stejném procesu a umožňují určit kontext a které předplatné použít pro jednotlivé rutiny. Pomocí sad Runbook byste při vytváření sady Runbook měli objekt kontextu Uložit (tj. když se účet přihlásí) a pokaždé, když se změní, a při zadání rutiny AZ odkazovat na kontext.
 
-$AzContext = Select-AzSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+   > [!NOTE]
+   > Objekt kontextu byste měli předat i v případě, že pracujete s kontextem přímo pomocí rutin, jako je [set-AzContext](/powershell/module/az.accounts/Set-AzContext) nebo [Select-AzSubscription](/powershell/module/servicemanagement/azure.service/set-azuresubscription).
 
-$params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
-
-Start-AzAutomationRunbook `
-    –AutomationAccountName 'MyAutomationAccount' `
-    –Name 'Test-ChildRunbook' `
-    -ResourceGroupName 'LabRG' `
-    -AzContext $AzContext `
-    –Parameters $params –wait
-```
-
+   ```azurepowershell-interactive
+   $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName 
+   $context = Add-AzAccount `
+             -ServicePrincipal `
+             -TenantId $servicePrincipalConnection.TenantId `
+             -ApplicationId $servicePrincipalConnection.ApplicationId `
+             -Subscription 'cd4dxxxx-xxxx-xxxx-xxxx-xxxxxxxx9749' `
+             -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint 
+   $context = Set-AzContext -SubscriptionName $subscription `
+       -DefaultProfile $context
+   Get-AzVm -DefaultProfile $context
+   ```
+  
 ## <a name="scenario-authentication-to-azure-fails-because-multifactor-authentication-is-enabled"></a><a name="auth-failed-mfa"></a>Scénář: ověřování do Azure selhává, protože je povolené vícefaktorové ověřování.
 
 ### <a name="issue"></a>Problém

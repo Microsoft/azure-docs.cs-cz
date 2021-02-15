@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 12/08/2020
+ms.date: 02/11/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a618da7c9a66b8f687c1b75914530080ed56bea
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: b8f05ca02068c82a3839b22b698e49a7be818a56
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905821"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370542"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Vytvoření kontroly přístupu pro role prostředků Azure v Privileged Identity Management
 
@@ -28,9 +28,9 @@ Přístup k rolím privilegovaného prostředku Azure pro změny zaměstnanců v
 
 Tento článek popisuje, jak vytvořit jednu nebo více kontrol přístupu pro privilegované role prostředků Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-[Správce privilegovaných rolí](../roles/permissions-reference.md#privileged-role-administrator)
+ Chcete-li vytvořit kontroly přístupu, musíte být přiřazeni k roli [vlastníka](../../role-based-access-control/built-in-roles.md#owner) nebo [Správce přístupu uživatele](../../role-based-access-control/built-in-roles.md#user-access-administrator) k roli Azure pro daný prostředek.
 
 ## <a name="open-access-reviews"></a>Otevřít recenze přístupů
 

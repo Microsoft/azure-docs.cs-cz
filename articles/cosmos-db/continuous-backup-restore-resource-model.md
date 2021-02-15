@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 91421b66af441ed2c7e9c8b66c16ee83f489b03e
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: d838425583638aef5199b52df4869923c826553d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538490"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369964"
 ---
 # <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Model prostředků pro funkci obnovení Azure Cosmos DBho bodu v čase (Preview)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -30,14 +30,14 @@ Model prostředků databázového účtu se aktualizuje o několik dalších vla
 
 ### <a name="backuppolicy"></a>BackupPolicy
 
-Nová vlastnost v zásadách zálohování na úrovni účtu s názvem "Type" v parametru "backuppolicy" umožňuje průběžné zálohování a funkce obnovení k určitému bodu v čase. Tento režim se nazývá **průběžné zálohování**. Ve verzi Public Preview můžete tento režim nastavit pouze při vytváření účtu. Po povolení budou mít všechny kontejnery a databáze vytvořené v rámci tohoto účtu průběžné zálohování a funkce obnovení k bodu v čase, které jsou ve výchozím nastavení povolené.
+Nová vlastnost na úrovni účtu zásady zálohování s názvem `Type` v části `backuppolicy` parametr umožňuje průběžné zálohování a funkce obnovení k určitému bodu v čase. Tento režim se nazývá **průběžné zálohování**. Ve verzi Public Preview můžete tento režim nastavit pouze při vytváření účtu. Po povolení budou mít všechny kontejnery a databáze vytvořené v rámci tohoto účtu průběžné zálohování a funkce obnovení k bodu v čase, které jsou ve výchozím nastavení povolené.
 
 > [!NOTE]
 > V současné době je funkce obnovení v okamžiku v čase ve verzi Public Preview a je dostupná pro Azure Cosmos DB API pro MongoDB a účty SQL. Po vytvoření účtu s nepřetržitým režimem ho nemůžete přepnout na pravidelný režim.
 
 ### <a name="createmode"></a>CreateMode
 
-Tato vlastnost indikuje, jak byl účet vytvořen. Možné hodnoty jsou "výchozí" a "obnovení". Chcete-li provést obnovení, nastavte tuto hodnotu na "obnovení" a poskytněte příslušné hodnoty ve `RestoreParameters` Vlastnosti.
+Tato vlastnost indikuje, jak byl účet vytvořen. Možné hodnoty jsou *Default* a *Restore*. Chcete-li provést obnovení, nastavte tuto hodnotu pro *obnovení* a poskytněte příslušné hodnoty `RestoreParameters` Vlastnosti.
 
 ### <a name="restoreparameters"></a>RestoreParameters
 
@@ -45,7 +45,7 @@ Tato vlastnost indikuje, jak byl účet vytvořen. Možné hodnoty jsou "výchoz
 
 |Název vlastnosti |Description  |
 |---------|---------|
-|restoreMode  | Režim obnovení by měl být "PointInTime" |
+|restoreMode  | Režim obnovení by měl být *PointInTime* |
 |restoreSource   |  ID instance zdrojového účtu, ze kterého se má obnovení iniciovat       |
 |restoreTimestampInUtc  | Bod v čase ve standardu UTC, do kterého má být účet obnoven. |
 |databasesToRestore   | Seznam `DatabaseRestoreSource` objektů pro určení, které databáze a kontejnery by měly být obnoveny. Pokud je tato hodnota prázdná, obnoví se celý účet.   |

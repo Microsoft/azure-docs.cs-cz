@@ -8,12 +8,12 @@
       href: whats-new.md
 - name: Rychlé starty
   items:
-    - name: Vytvoření znalostní báze na portálu QnA Maker
+    - name: Vytvoření a dotazování znalostní báze na portálu QnA Maker
       href: Quickstarts/create-publish-knowledge-base.md
+    - name: Vytvoření a dotazování znalostní báze pomocí klientských knihoven nebo REST API
+      href: Quickstarts/quickstart-sdk.md
     - name: Dotazování znalostní báze s rozhraními REST API
       href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
-    - name: Použití klientských knihoven nebo REST API
-      href: Quickstarts/quickstart-sdk.md
 - name: Kurzy
   items:
     - name: Integrace s Power Virtual Agents
@@ -50,15 +50,6 @@
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
     - name: Správa přístupu k prostředkům QnA Maker
       href: How-To/manage-qna-maker-app.md
-    - name: Nastavení aktivního učení za účelem vylepšení znalostní báze
-      items:
-        - name: Aktivace aktivního učení
-          href: How-To/use-active-learning.md
-        - name: Získání navrhovaných alternativních otázek
-          href: How-to/improve-knowledge-base.md
-          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
-    - name: Aktivace aktivního učení
-      href: How-To/use-active-learning.md
     - name: Správa znalostní báze
       items:
         - name: Vytvoření znalostní báze
@@ -79,12 +70,18 @@
         - name: Přidání následných dotazů
           href: How-To/multiturn-conversation.md
           displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
-        - name: Získání navrhovaných alternativních otázek
-          href: How-to/improve-knowledge-base.md
-          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
+        - name: Změna výchozí odpovědi
+          href: How-To/change-default-answer.md
     - name: Znalostní báze dotazů
       href: How-To/metadata-generateanswer-usage.md
       displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+    - name: Nastavení aktivního učení za účelem vylepšení znalostní báze
+      items:
+        - name: Aktivace aktivního učení
+          href: How-To/use-active-learning.md
+        - name: Získání navrhovaných alternativních otázek
+          href: How-to/improve-knowledge-base.md
+          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
     - name: Analýzy a telemetrie
       href: How-To/get-analytics-knowledge-base.md
 - name: Referenční informace
@@ -100,8 +97,6 @@
     - name: Přidání zabezpečených sharepointových souborů
       href: How-To/add-sharepoint-datasources.md
       displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
-    - name: Změna výchozí odpovědi
-      href: How-To/change-default-answer.md
     - name: Konfigurace služeb
       href: reference-app-service.md
     - name: Pokyny k formátu obsahu

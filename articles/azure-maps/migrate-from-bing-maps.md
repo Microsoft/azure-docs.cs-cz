@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 52768874ef27bf87846d4abbd68e9e8c1972f996
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 9bd0516889733a666bf15668cffd124dcc468f3e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679453"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388953"
 ---
 # <a name="tutorial-migrate-from-bing-maps-to-azure-maps"></a>Kurz: migrace z map Bingu na Azure Maps
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
@@ -47,8 +47,8 @@ Následující tabulka obsahuje seznam funkcí mapy Bing na nejvyšší úrovni 
 | Sada Web SDK                               | ✓                  |
 | Android SDK                           | ✓                  |
 | iOS SDK                               | Plánováno            |
-| SADA UWP SDK                               | Plánováno            |
-| SADA WPF SDK                               | Plánováno            |
+| SADA UWP SDK                               | –                 |
+| SADA WPF SDK                               | –                 |
 | Rozhraní API služby REST                     | ✓                  |
 | Automatické návrhy                           | ✓                  |
 | Pokyny (včetně nákladní auto)          | ✓                  |
@@ -101,7 +101,7 @@ Tady je příklad plánu migrace na vysoké úrovni.
 Pokud chcete vytvořit účet Azure Maps a získat přístup k platformě Azure Maps, postupujte podle těchto kroků:
 
 1. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
-2. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+2. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 3. Vytvořte [účet Azure Maps](./how-to-manage-account-keys.md).
 4. [Získejte Azure Maps klíč předplatného](./how-to-manage-authentication.md#view-authentication-details) nebo nastavte Azure Active Directory ověřování pro rozšířené zabezpečení.
 

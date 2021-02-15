@@ -2,13 +2,13 @@
 title: Konfigurace vlastního klíče pro šifrování Azure Service Busch dat v klidovém prostředí
 description: Tento článek poskytuje informace o tom, jak nakonfigurovat vlastní klíč pro šifrování Azure Service Bus data REST.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: 132ee3883b818dcc5a5d8e0cc7b372daee41e273
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/10/2021
+ms.openlocfilehash: 5d14c8953819575d1c2688520838135efc7121e5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928086"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378311"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování Azure Service Bus dat v klidovém formátu pomocí Azure Portal
 Azure Service Bus Premium poskytuje šifrování neaktivních dat pomocí šifrování služby Azure Storage (Azure SSE). Service Bus Premium používá k ukládání dat Azure Storage. Všechna data uložená pomocí Azure Storage se šifrují pomocí klíčů spravovaných Microsoftem. Pokud používáte vlastní klíč (také označovaný jako Bring Your Own Key (BYOK) nebo klíč spravovaný zákazníkem), data se pořád šifrují pomocí klíče spravovaného společností Microsoft, ale navíc klíč spravovaný společností Microsoft bude zašifrovaný pomocí klíče spravovaného zákazníkem. Tato funkce umožňuje vytvořit, otočit, zakázat a odvolat přístup k klíčům spravovaným zákazníkem, které se používají k šifrování klíčů spravovaných společností Microsoft. Povolení funkce BYOK je jednorázovým procesem nastavení v oboru názvů.
@@ -94,6 +94,17 @@ Svůj klíč můžete v trezoru klíčů otočit pomocí mechanismu rotace trezo
 Odvolání přístupu k šifrovacím klíčům neodstraní data z Service Bus. K datům ale nelze přicházet z oboru názvů Service Bus. Šifrovací klíč můžete odvolat pomocí zásad přístupu nebo odstraněním klíče. Přečtěte si další informace o zásadách přístupu a zabezpečení trezoru klíčů před [zabezpečeným přístupem k trezoru klíčů](../key-vault/general/secure-your-key-vault.md).
 
 Po odvolání šifrovacího klíče se služba Service Bus v zašifrovaném oboru názvů stane nefunkčním. Pokud je povolený přístup k klíči nebo dojde k obnovení odstraněného klíče, Service Bus služba vybere klíč, abyste mohli přistupovat k datům z šifrovaného názvového prostoru Service Bus.
+
+## <a name="caching-of-keys"></a>Ukládání klíčů do mezipaměti
+Instance Service Bus se dotazuje na uvedené šifrovací klíče každých 5 minut. Ukládá je do mezipaměti a používá je až do dalšího cyklického dotazování, což je po 5 minutách. Pokud je k dispozici alespoň jeden klíč, jsou fronty a témata přístupné. Pokud jsou všechny uvedené klíče nedostupné při cyklickém dotazování, všechny fronty a témata se stanou nedostupnými. 
+
+Tady jsou další podrobnosti: 
+
+- Každých 5 minut služba Service Bus dotazuje všechny klíče spravované zákazníkem uvedené v záznamu oboru názvů:
+    - Pokud byl klíč otočen, záznam se aktualizuje pomocí nového klíče.
+    - Pokud byl klíč odvolán, klíč se odebere ze záznamu.
+    - Pokud jsou všechny klíče odvolány, stav šifrování oboru názvů je nastaven na **odvolaný**. K datům nelze přistup z oboru názvů Service Bus.. 
+    
 
 ## <a name="use-resource-manager-template-to-enable-encryption"></a>Použití šablony Správce prostředků k povolení šifrování
 V této části se dozvíte, jak provádět následující úlohy pomocí **Azure Resource Manager šablon**. 

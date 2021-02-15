@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: nicolela
-ms.openlocfilehash: dbe4191b64773b71bc1ae04842d824fbfead8e55
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 8d5356f7fd2661d9743d1058a147a0b20f62850e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99628154"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373704"
 ---
 # <a name="set-up-a-lab-for-arcmaparcgis-desktop"></a>Nastavení testovacího prostředí pro ArcMap\ArcGIS Desktop
 
@@ -55,7 +55,7 @@ Postup v této části ukazuje, jak nastavit virtuální počítač šablony:
 1.  Spusťte šablonu virtuálního počítače a připojte se k počítači pomocí protokolu RDP.
 
 2.  Stáhněte a nainstalujte desktopové komponenty ArcGIS pomocí instrukcí od společnosti ESRI.  K těmto krokům patří přiřazení správce licencí pro souběžné používání licencí: 
-    - [Úvod k instalaci a konfiguraci ArcGIS desktopu](https://desktop.arcgis.com/arcmap/latest/get-started/installation-guide/introduction.htm)
+    - [Úvod k instalaci a konfiguraci ArcGIS desktopu](https://desktop.arcgis.com/en/arcmap/latest/get-started/installation-guide/introduction.htm)
 
 3.  Nastavte externí úložiště záloh pro studenty.  Studenti můžou ukládat soubory přímo na jejich přiřazený virtuální počítač, protože všechny změny, které provedou, se ukládají napříč relacemi.  Nicméně doporučujeme, aby studenti zálohovali svou práci do úložiště, které je externí z jejich virtuálního počítače, z několika důvodů:
     - Pokud chcete studentům umožnit přístup k práci po ukončení třídy a testovacího prostředí.  

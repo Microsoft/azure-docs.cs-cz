@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: db53e4407674abc1e6c81090dc4a50afa784940d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2b072107275fba1ff83ab3ddac63ed8bf7766356
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684821"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389106"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>Kurz: migrace webové aplikace z map Bing
 
@@ -33,9 +33,9 @@ Webové aplikace, které používají mapy Bing, často používají sadu SDK sl
 
 Pokud migrujete existující webovou aplikaci, zkontrolujte, zda je použita knihovna Open Source ovládacího prvku mapa, například cesium, leták a OpenLayers. Pokud je to a chcete, aby se tato knihovna dál používala, můžete ji připojit ke službám Azure Maps dlaždice ([cesty](/rest/api/maps/render/getmaptile) \| [satelitních](/rest/api/maps/render/getmapimagerytile)bloků). Odkazy níže poskytují podrobné informace o tom, jak používat Azure Maps v některých běžně používaných Open Source knihovnách ovládacích prvků.
 
-* Cesium – ovládací prvek 3D mapy pro web. [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [Dokumentace](https://cesiumjs.org/)
-* Leták – zjednodušený 2D mapový ovládací prvek pro web. [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [Dokumentace](https://leafletjs.com/)
-* OpenLayers – 2D ovládací prvek mapy pro web, který podporuje projekce. [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [Dokumentace](https://openlayers.org/)
+* [Cesium](https://cesiumjs.org/) – ovládací prvek 3D mapy pro web. [Ukázky kódu](https://azuremapscodesamples.azurewebsites.net/?search=Cesium) \| [Úložiště modulů plug-in]()
+* [Leták](https://leafletjs.com/) – zjednodušený 2D mapový ovládací prvek pro web. [Ukázky kódu](https://azuremapscodesamples.azurewebsites.net/?search=leaflet) \| [Úložiště modulů plug-in]()
+* [OpenLayers](https://openlayers.org/) – 2D ovládací prvek mapy pro web, který podporuje projekce. [Ukázky kódu](https://azuremapscodesamples.azurewebsites.net/?search=openlayers) \| [Úložiště modulů plug-in]()
 
 Při vývoji pomocí JavaScriptu rozhraní může být užitečné jeden z následujících open-source projektů:
 
@@ -64,7 +64,7 @@ V následující tabulce jsou uvedeny klíčové funkce API ve službě Bing Map
 | Vrstvy dlaždic              | ✓                                                                                      |
 | KML vrstva                | ✓                                                                                      |
 | Vrstva obrysu            | [ukázky](https://azuremapscodesamples.azurewebsites.net/?search=contour)              |
-| Vrstva binningu dat       | [ukázky](https://azuremapscodesamples.azurewebsites.net/?search=data%20binning)       |
+| Vrstva binningu dat       | Zahrnuto do modulu Open Source Azure Maps [Gridded data source](https://github.com/Azure-Samples/azure-maps-gridded-data-source)       |
 | Animovaná vrstva dlaždice      | Zahrnutý v modulu Open Source Azure Maps [Animation](https://github.com/Azure-Samples/azure-maps-animations) |
 | Nástroje pro kreslení            | ✓                                                                                      |
 | Služba pro INCODE         | ✓                                                                                      |
@@ -72,10 +72,10 @@ V následující tabulce jsou uvedeny klíčové funkce API ve službě Bing Map
 | Služba matice Distance  | ✓                                                                                      |
 | Prostorová data – služba     | –                                                                                    |
 | Satelitní/letecká satelitní obrázek | ✓                                                                                      |
-| Ptactvo z ptačích očí         | Plánováno                                                                                |
-| Streetsideí snímků       | Plánováno                                                                                |
+| Ptactvo z ptačích očí         | –                                                                                |
+| Streetsideí snímků       | –                                                                                |
 | Podpora pro injson          | ✓                                                                                      |
-| Podpora GeoXML           | ✓                                                                                      |
+| Podpora GeoXML           | [Modul ✓ prostorového vstupu](how-to-use-spatial-io-module.md)                                                                                     |
 | Podpora textu Well-Known  | ✓                                                                                      |
 | Vlastní styly mapy        | Částečné                                                                                |
 

@@ -1,22 +1,17 @@
 ---
 title: Kopírování dat pomocí nástroje Azure Kopírování dat
 description: Vytvořte Azure Data Factory a pak pomocí nástroje Kopírování dat zkopírujte data z jednoho umístění v úložišti objektů BLOB v Azure do jiného umístění.
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 282917a6bbf7edb962a87ad87810adde56206d97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 48624e415649be2fb76aed99c5cb0e1b3b12f04b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013455"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372854"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Rychlý Start: použití nástroje Kopírování dat ke kopírování dat
 
@@ -36,8 +31,8 @@ V tomto rychlém startu použijete Azure Portal k vytvoření datové továrny. 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. Přejděte na web [Azure Portal](https://portal.azure.com). 
-1. V nabídce Azure Portal vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  **Data Factory**:
+1. Přejděte na [Azure Portal](https://portal.azure.com). 
+1. V nabídce Azure Portal vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  :
 
     ![Vytvoření nové datové továrny](./media/doc-common-process/new-azure-data-factory-menu.png)
 
