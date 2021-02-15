@@ -2,13 +2,13 @@
 title: Azure Event Hubs – výjimky (starší verze)
 description: Tento článek poskytuje seznam výjimek zasílání zpráv Azure Event Hubs a navrhovaných akcí.
 ms.topic: article
-ms.date: 11/02/2020
-ms.openlocfilehash: 357a87c53023962dd9195a616bd9ce9e01c55bf9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 02/10/2021
+ms.openlocfilehash: a76c98ec7d6d1f3370ed8787bf10d1d16a7baaa5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340963"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390891"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>Výjimky zasílání zpráv Event Hubs – .NET (starší verze)
 V této části jsou uvedeny výjimky rozhraní .NET generované rozhraním API .NET Framework. 
@@ -125,14 +125,14 @@ K této chybě může dojít z jednoho ze dvou důvodů:
 
     Pokud vidíte hodnoty vyšší než počet počet propustnosti * omezení (1 MB za sekundu pro příchozí nebo 1000 žádosti o přijetí za sekundu, 2 MB za sekundu pro odchozí přenosy), zvyšte počet počet propustnosti pomocí stránky **škálování** (na levé straně) na stránce Event Hubs oboru názvů tak, aby se ručně zvýšila velikost nebo používala funkce [Automatické neploché](event-hubs-auto-inflate.md) Event Hubs. Všimněte si, že automatické rozplochelné může zvyšovat až 20 počet PROPUSTNOSTI. Pokud ho chcete zvýšit na přesně 40 počet propustnosti, odešlete [žádost o podporu](../azure-portal/supportability/how-to-create-azure-support-request.md).
 
-### <a name="error-code-50001"></a>Kód chyby 50001
+### <a name="error-code-50008"></a>Kód chyby 50008
 
 Tato chyba by se měla vyskytovat zřídka. K tomu dojde, pokud je v kontejneru, který spouští kód pro váš obor názvů, nedostatek procesoru – ne více než několik sekund, než začne Nástroj pro vyrovnávání zatížení Event Hubs začínat.
 
-**Řešení**: omezení volání metody getruntimeinformation –. Azure Event Hubs podporuje až 50 volání za sekundu do GetRuntimeInfo za sekundu. Po dosažení limitu se může zobrazit výjimka podobná té následující:
+**Řešení**: Omezte volání metody getruntimeinformation –. Azure Event Hubs podporuje až 50 volání za sekundu na skupinu uživatelů na GetRuntimeInfo za sekundu. Po dosažení limitu se může zobrazit výjimka podobná té následující:
 
 ```
-ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.
+ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50008. Please wait 10 seconds and try again.
 ```
 
 

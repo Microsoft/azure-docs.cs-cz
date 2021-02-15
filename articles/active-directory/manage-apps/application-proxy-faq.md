@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 121dcdf51374f625ad7393bb181b1be215775a0b
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 19a5d223b587e47c562977cc9fea34f990eb0e46
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257773"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370814"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)
 
@@ -106,6 +106,15 @@ Výchozí délka je 85 sekund. Nastavení "Long" je 180 sekund. Časový limit n
 
 Ne, to se v tuto chvíli nepodporuje.
 
+### <a name="what-happens-if-i-delete-cwap_authsecret-the-client-secret-in-the-app-registration"></a>Co se stane, když odstraním CWAP_AuthSecret (tajný klíč klienta) v registraci aplikace?
+
+Tajný kód klienta, také označovaný jako *CWAP_AuthSecret*, je automaticky přidán do objektu aplikace (registrace aplikace) při vytvoření aplikace Azure proxy aplikací služby AD.
+
+Tajný kód klienta je platný po dobu jednoho roku. Vytvoří se nový tajný klíč klienta, který se automaticky vytvoří předtím, než vyprší platnost aktuálního platného tajného klíče klienta. Tři CWAP_AuthSecret tajné klíče klienta jsou neustále uchovávány v objektu aplikace. 
+
+> [!IMPORTANT]
+> Odstranění CWAP_AuthSecret ukončí předběžné ověřování pro Azure Proxy aplikací služby AD. Neodstraňujte CWAP_AuthSecret.
+
 ### <a name="how-do-i-change-the-landing-page-my-application-loads"></a>Návody změnit cílovou stránku Moje aplikace se načte?
 
 Na stránce registrace aplikací můžete změnit adresu URL domovské stránky na požadovanou externí adresu URL cílové stránky. Zadaná stránka se načte při spuštění aplikace z mých aplikací nebo z portálu Office 365. Postup konfigurace najdete v tématu [nastavení vlastní domovské stránky pro publikované aplikace pomocí Azure proxy aplikací služby AD](./application-proxy-configure-custom-home-page.md)
@@ -187,11 +196,11 @@ No. Služba Azure Proxy aplikací služby AD je navržená tak, aby spolupracova
 
 ## <a name="websocket"></a>WebSocket
 
-### <a name="does-websocket-support-work-for-applications-other-than-qliksense"></a>Funguje podpora protokolu WebSocket pro jiné aplikace než QlikSense?
+### <a name="does-websocket-support-work-for-applications-other-than-qliksense-and-remote-desktop-web-client-html5"></a>Funguje podpora protokolu WebSocket pro jiné aplikace než QlikSense a webový klient vzdálené plochy (HTML5)?
 
 V současné době je podpora protokolu WebSocket stále ve verzi Public Preview a nemusí fungovat pro ostatní aplikace. Někteří zákazníci mají při použití protokolu WebSocket v jiných aplikacích smíšenou úspěšnost. Při testování takových scénářů bychom rádi slyšeli vaše výsledky. Pošlete nám prosím svůj názor na aadapfeedback@microsoft.com .
 
-Funkce (události protokolu, PowerShell a Vzdálená plocha) v centru pro správu systému Windows (WAC) nebo webový klient vzdálené plochy (HTML5) nefungují v předběžném prostředí Azure Proxy aplikací služby AD.
+Funkce (události protokolu, PowerShell a Vzdálená plocha) v centru pro správu systému Windows (WAC) nefungují v předběžném prostředí Azure Proxy aplikací služby AD.
 
 ## <a name="link-translation"></a>Překlad propojení
 

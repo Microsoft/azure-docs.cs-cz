@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 642c61414d882b9cfe83f585fda8ff5404e8834a
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 4abfdd0209bd9f13fb7bd902b27a53f65156da2e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538472"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381813"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-resource-manager-templates"></a>Konfigurace a Správa průběžného zálohování a obnovení k určitému bodu v čase (Preview) – používání šablon Azure Resource Manager
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -28,7 +28,7 @@ Tento článek popisuje, jak zřídit účet s průběžným zálohováním a ob
 
 ## <a name="provision-an-account-with-continuous-backup"></a><a id="provision"></a>Zřízení účtu s průběžným zálohováním
 
-Pomocí Azure Resource Manager šablon můžete nasadit účet Azure Cosmos DB s nepřetržitým režimem. Při definování šablony pro zřízení účtu přidejte parametr "backupPolicy", jak je znázorněno v následujícím příkladu:
+Pomocí Azure Resource Manager šablon můžete nasadit účet Azure Cosmos DB s nepřetržitým režimem. Při definování šablony pro zřízení účtu přidejte `backupPolicy` parametr, jak je znázorněno v následujícím příkladu:
 
 ```json
 {
@@ -66,9 +66,9 @@ az group deployment create -g <ResourceGroup> --template-file <ProvisionTemplate
 
 Účet můžete také obnovit pomocí šablony Správce prostředků. Při definování šablony se zahrnou následující parametry:
 
-* Nastavte parametr createMode na Restore.
-* Zadejte "restoreParameters", Všimněte si, že hodnota "restoreSource" je extrahována z výstupu `az cosmosdb restorable-database-account list` příkazu pro váš zdrojový účet. K provedení obnovení se používá atribut ID instance pro název vašeho účtu.
-* Nastavte parametr "restoreMode" na "PointInTime" a nakonfigurujte hodnotu "restoreTimestampInUtc".
+* Nastavte `createMode` parametr, který se má *obnovit* .
+* Definujte `restoreParameters` , Všimněte si, že `restoreSource` hodnota je extrahována z výstupu `az cosmosdb restorable-database-account list` příkazu pro váš zdrojový účet. K provedení obnovení se používá atribut ID instance pro název vašeho účtu.
+* Nastavte `restoreMode` parametr na *PointInTime* a nakonfigurujte `restoreTimestampInUtc` hodnotu.
 
 ```json
 {

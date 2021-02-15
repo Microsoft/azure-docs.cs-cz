@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: b-juche
-ms.openlocfilehash: aca6899da3c92cca0fd8564da5ec3d1679eb2579
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d90061d6d56e24168bf368498d05962296892342
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75890982"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374860"
 ---
 # <a name="azure-netapp-files-videos"></a>Videa ke službě Azure NetApp Files
 Tento článek obsahuje odkazy na videa, která obsahují podrobné diskuze o používání Azure NetApp Files. 
 
 K dispozici je několik videí, která vám pomohou získat další informace o Azure NetApp Files:  
 
-* [Microsoft Ignite 2019: provoz vašich nejnáročnějších podnikových souborů pomocí Azure NetApp Files](https://myignite.techcommunity.microsoft.com/sessions/82938?source=sessions) poskytuje stručný úvod do Azure NetApp Files, včetně případů použití a ukázky, a pak podrobnější informace o funkcích a plánu.
+* [Microsoft Ignite 2019: provoz vašich nejnáročnějších podnikových souborů pomocí Azure NetApp Files](https://azure.microsoft.com/resources/videos/ignite-2018-taking-on-the-most-demanding-enterprise-file-workloads-with-azure-netapp-files/) poskytuje stručný úvod do Azure NetApp Files, včetně případů použití a ukázky, a pak podrobnější informace o funkcích a plánu.
 * [Azure NetApp Files rozhovory od Kirka Ryanu](https://www.youtube.com/channel/UCq1jZkyVXqMsMSIvScBE2qg/playlists) jsou série videí, výukových kurzů a ukázek vyhrazených pro Azure NetApp Files. 

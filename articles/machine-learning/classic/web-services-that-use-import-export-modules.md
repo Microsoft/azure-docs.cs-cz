@@ -4,23 +4,22 @@ description: Naučte se, jak používat importovaná data a exportovat datové m
 services: machine-learning
 author: likebupt
 ms.author: keli19
-editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 ms.date: 03/28/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5dc348318401c9362636893d70294496c7012408
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4824b7a4233bc65d521e1c6ded7d1ea276b2a929
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308466"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520557"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Nasazení webových služeb Azure Machine Learning Studio (Classic), které používají moduly importu a exportu dat
 
-**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Při vytváření prediktivní experimentu obvykle přidáte vstup a výstup webové služby. Při nasazení experimentu mohou uživatelé odesílat a přijímat data z webové služby prostřednictvím vstupů a výstupů. U některých aplikací mohou být data spotřebitele k dispozici z datového kanálu nebo již nacházejí v externím zdroji dat, jako je například úložiště objektů BLOB v Azure. V těchto případech nepotřebují číst a zapisovat data pomocí vstupů a výstupů webové služby. Můžou místo toho použít službu Batch Execution Service (BES) ke čtení dat ze zdroje dat pomocí modulu import dat a zápis výsledků bodování do jiného umístění dat pomocí modulu export dat.
@@ -41,7 +40,7 @@ Když otevřete ukázku 5: výuka, test, vyhodnocení pro binární klasifikaci:
 3. V seznamu výsledků přidejte modul *Import dat* na plátno experimentu.
 4. Připojte výstup modulu *Import dat* do vstupu modulu *Vyčištění chybějících dat* .
 5. V podokně Vlastnosti vyberte v rozevíracím seznamu **zdroj dat** možnost **Azure SQL Database** .
-6. Do polí **název databázového serveru** , **název databáze** , **uživatelské jméno** a **heslo** zadejte příslušné informace pro vaši databázi.
+6. Do polí **název databázového serveru**, **název databáze**, **uživatelské jméno** a **heslo** zadejte příslušné informace pro vaši databázi.
 7. Do pole databázový dotaz zadejte následující dotaz.
 
     ```tsql
@@ -73,7 +72,7 @@ Dále nastavíte prediktivní experiment, ze kterého nasadíte webovou službu.
 4. V seznamu výsledků přidejte modul *Export dat* na plátno experimentu.
 5. Připojte výstup modulu určení *skóre modelu* se vstupem modulu *Export dat* .
 6. V podokně Vlastnosti vyberte v rozevíracím seznamu cíl data možnost **Azure SQL Database** .
-7. Do polí **název** databázového serveru, název **databáze** , **název účtu uživatele serveru** a **heslo účet uživatele serveru** zadejte příslušné informace pro vaši databázi.
+7. Do polí **název** databázového serveru, název **databáze**, **název účtu uživatele serveru** a **heslo účet uživatele serveru** zadejte příslušné informace pro vaši databázi.
 8. V **seznamu sloupců, které mají být uloženy, do pole oddělených čárkami** zadejte popisky s skóre.
 9. Do **pole název tabulky dat** zadejte dbo. ScoredLabels. Pokud tabulka neexistuje, vytvoří se při spuštění experimentu nebo volání webové služby.
 10. Do **textového pole seznam sloupců DataTable** zadejte ScoredLabels.

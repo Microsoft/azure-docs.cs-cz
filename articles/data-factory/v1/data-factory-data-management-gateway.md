@@ -1,23 +1,18 @@
 ---
 title: Správa dat bránu pro Data Factory
 description: K přesunu dat použijte Správa dat bránu v Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
-ms.assetid: b9084537-2e1c-4e96-b5bc-0e2044388ffd
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 94c1bed8d94f73bc7794037b307618f4c36c4518
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 708d84bdb3ebe8fbba6939aa771a9120868d5d1b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450599"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375200"
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
 > [!NOTE]
@@ -71,7 +66,7 @@ Zde je tok dat vysoké úrovně pro a shrnutí kroků pro kopírování pomocí 
 * **Bránu musíte použít** i v případě, že je úložiště dat v cloudu na **virtuálním počítači Azure s IaaS**.
 
 ## <a name="installation"></a>Instalace
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 * Podporované verze **operačního systému** jsou Windows 7, Windows 8/8.1, Windows 10, Windows Server 2008 R2, windows Server 2012, windows Server 2012 R2. Instalace brány pro správu dat v řadiči domény se v tuto chvíli nepodporuje.
 * Vyžaduje se .NET Framework 4.5.1 nebo vyšší. Pokud instalujete bránu na počítač se systémem Windows 7, nainstalujte .NET Framework 4,5 nebo novější. Podrobnosti najdete v tématu [.NET Framework systémových požadavků](/dotnet/framework/get-started/system-requirements) .
 * Doporučená **Konfigurace** pro počítač brány je minimálně 2 GHz, 4 jádra, 8 GB RAM a 80-GB disku.
@@ -140,7 +135,7 @@ Je potřeba vzít v úvahu dvě brány firewall: **podniková brána firewall** 
 
 Na úrovni podnikové brány firewall je potřeba nakonfigurovat následující domény a odchozí porty:
 
-| Názvy domén | Porty | Popis |
+| Názvy domén | Porty | Description |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |Používá se pro komunikaci s back-end služby pro přesun dat. |
 | *.core.windows.net |443 |Používá se pro připravené kopírování pomocí objektu blob Azure (Pokud je nakonfigurované).|
@@ -380,11 +375,11 @@ Na této stránce se zobrazí některá nastavení, která jsou smysluplnější
 ### <a name="gateway-status"></a>Stav brány
 Následující tabulka uvádí možné stavy **uzlu brány**:
 
-Status  | Komentáře a scénáře
+Status    | Komentáře a scénáře
 :------- | :------------------
 Online | Uzel je připojený ke službě Data Factory.
 Offline | Uzel je offline.
-Inovován | Uzel se automaticky aktualizuje.
+Upgrade | Uzel se automaticky aktualizuje.
 Omezeně | Kvůli problému s připojením. Důvodem může být problém s portem HTTP 8050, potížím s připojením k Service Bus nebo problémy s synchronizací přihlašovacích údajů.
 Inactive | Uzel je v konfiguraci odlišnou od konfigurace jiných majoritní uzlů.<br/><br/> Uzel může být neaktivní, pokud se nemůže připojit k jiným uzlům.
 

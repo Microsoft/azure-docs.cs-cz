@@ -7,20 +7,22 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/28/2021
-ms.openlocfilehash: dfd8526a035d4eef4d07539e541e37c88023b500
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/09/2021
+ms.openlocfilehash: 8ae9a89ddba2010603ae5a5f6b812e3aa1e1e3a6
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063209"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097972"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Postup plánování indexerů v Azure Kognitivní hledání
 
 Indexer se normálně spouští jednou ihned po jeho vytvoření. Následně ho můžete znovu spustit na vyžádání pomocí Azure Portal, [indexeru (REST)](/rest/api/searchservice/run-indexer)nebo sady Azure SDK. Případně můžete také nakonfigurovat indexer, který se má spustit podle plánu. V některých situacích, kdy je plánování indexeru užitečné, patří:
 
 * Zdrojová data se v průběhu času mění a chcete, aby indexer vyhledávání automaticky zpracovával rozdíl.
-* Zdrojová data jsou velmi velká a je třeba rozdělit zpracování indexerem v čase. Další informace o indexování velkých objemů dat najdete v tématu [postup indexování velkých datových sad v Azure kognitivní hledání](search-howto-large-index.md).
+
+* Zdrojová data jsou velmi velká a je třeba rozdělit zpracování indexerem v čase. Úlohy indexeru jsou v souladu s maximální dobou spuštění 24 hodin pro běžné zdroje dat a 2 hodiny pro indexery pomocí dovednosti. Pokud indexování nelze dokončit v rámci maximálního intervalu, můžete nakonfigurovat plán, který se spouští každé 2 hodiny. Indexery se mohou automaticky vyznačit tam, kde byly položeno, jako důkaz interní horní značky, která označuje, kde bylo indexování naposledy ukončeno. Spuštění indexeru s opakovaným 2 hodinovým plánem umožňuje IT zpracovat velmi velkou datovou sadu (mnoho milionů dokumentů) nad rámec povolený pro jednu úlohu. Další informace o indexování velkých objemů dat najdete v tématu [postup indexování velkých datových sad v Azure kognitivní hledání](search-howto-large-index.md).
+
 * Index vyhledávání bude vyplněn z více zdrojů dat a chcete, aby indexery běžely v různou dobu, aby se snížily konflikty.
 
 Vizuální plán může vypadat takto: od 1. ledna se spouští každých 50 minut.

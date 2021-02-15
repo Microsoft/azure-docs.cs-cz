@@ -1,20 +1,20 @@
 ---
 title: Vytvoření sady škálování, která používá virtuální počítače Azure
 description: Naučte se vytvářet služby Azure Virtual Machine Scale Sets, které k úsporám šetří náklady pomocí virtuálních počítačů na místě.
-author: cynthn
-ms.author: cynthn
+author: JagVeerappan
+ms.author: jagaveer
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: spot
 ms.date: 03/25/2020
-ms.reviewer: jagaveer
+ms.reviewer: cynthn
 ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 4c5386e2fad0ebdd30ca8f9a8f4933e8adaf5d6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03bf5e0ef7e6268e68139b6d73685f67d88f6231
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729011"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385927"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Virtuální počítače Azure na místě pro Virtual Machine Scale Sets 
 
@@ -29,6 +29,24 @@ Ceny pro instance přímých instancí jsou proměnné na základě oblastí a S
 
 
 S proměnnými cenami máte možnost nastavit maximální cenu v USD (USD), která používá až 5 desetinných míst. Hodnota by měla být například `0.98765` maximální cena $0,98765 USD za hodinu. Pokud nastavíte maximální cenu, instance se nevyřadí na `-1` základě ceny. Cena za instanci bude aktuální cena za cenu nebo cena standardní instance, která je stále menší, pokud je k dispozici kapacita a kvóta.
+
+
+## <a name="limitations"></a>Omezení
+
+Pro Azure na místě se nepodporují následující velikosti:
+ - Řady B-Series
+ - Propagační verze libovolné velikosti (například Dv2, NV, NC, H – propagační velikosti)
+
+Bod Azure se dá nasadit do jakékoli oblasti kromě Microsoft Azure Číně 21Vianet.
+
+<a name="channel"></a>
+
+V současné době jsou podporovány následující [typy nabídek](https://azure.microsoft.com/support/legal/offer-details/) :
+
+-   Smlouva Enterprise
+-   003P kódu nabídky s průběžnými platbami
+-   Financovan
+- Pro poskytovatele cloudových služeb (CSP) se obraťte na svého partnera.
 
 ## <a name="eviction-policy"></a>Zásady vyřazení
 
@@ -163,22 +181,7 @@ Chcete-li odstranit instanci poté, co byla vyřazena, změňte `evictionPolicy`
 
 **Otázka:**  Funguje automatické škálování podle zásad vyřazení (navrácení a odstranění)?
 
-**A:** Ano, ale doporučujeme, abyste při použití automatického škálování nastavili zásadu vyřazení, která se má odstranit. Důvodem je to, že nepřidělené instance se počítají na základě počtu kapacit v sadě škálování. Při použití automatického škálování se pravděpodobně vám v důsledku navrácených instancí dokončí počet cílových instancí rychleji. I vaše operace škálování můžou být ovlivněné vyřazením na místě. Například instance VMSS mohou klesnout pod nastavený minimální počet z důvodu několika přímých vyřazení během operace škálování. 
-
-**Otázka:** Jaké kanály podporují přímé virtuální počítače?
-
-**A:** V následující tabulce najdete informace o dostupnosti virtuálních počítačů.
-
-<a name="channel"></a>
-
-| Kanály Azure               | Dostupnost virtuálních počítačů Azure       |
-|------------------------------|-----------------------------------|
-| Smlouva Enterprise         | Yes                               |
-| Pay As You Go                | Yes                               |
-| Poskytovatel cloudových služeb (CSP) | [Obraťte se na svého partnera.](/partner-center/azure-plan-get-started) |
-| Výhody                     | Není k dispozici                     |
-| Financovan                    | Yes                               |
-| Bezplatná zkušební verze                   | Není k dispozici                     |
+**A:** Ano, ale doporučujeme, abyste při použití automatického škálování nastavili zásadu vyřazení, která se má odstranit. Důvodem je to, že nepřidělené instance se počítají na základě počtu kapacit v sadě škálování. Při použití automatického škálování se pravděpodobně vám v důsledku navrácených instancí dokončí počet cílových instancí rychleji. I vaše operace škálování můžou být ovlivněné vyřazením na místě. Například instance sady škálování virtuálních počítačů mohou klesnout pod nastavení minimální počet v důsledku několika přímých vyřazení během operace škálování. 
 
 
 **Otázka:** Kde můžu publikovat otázky?

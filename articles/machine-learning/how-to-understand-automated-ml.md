@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: d5556ffb18a7a67e9415310f221e470761bf8cb8
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c95a75ef48aa9e3db070c6c237f913fabbe893fa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100098635"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388205"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Vyhodnotit automatizované výsledky experimentování ve strojovém učení
 
@@ -234,10 +234,7 @@ V tomto příkladu si všimněte, že lepší model má předpokládaný vs. tru
 
 Zatímco metriky vyhodnocení modelu a grafy jsou vhodné pro měření obecné kvality modelu, zkontrolujte, které funkce DataSet mají model používaný k tomu, aby jeho předpovědi byl při vyzkoušení zodpovědného AI nezbytný. To je důvod, proč automatizované ML poskytuje řídicí panel pro vyhodnocení modelu, který umožňuje měřit a hlásit relativní příspěvky funkcí datové sady.
 
-![Důležitost funkcí](./media/how-to-understand-automated-ml/how-to-feature-importance.gif)
-
 Zobrazení řídicího panelu pro výklad v studiu:
-
 1. [Přihlaste se ke studiu](https://ml.azure.com/) a přejděte k pracovnímu prostoru.
 2. V nabídce vlevo vyberte **experimenty** .
 3. Výběr experimentu ze seznamu experimentů
@@ -246,10 +243,11 @@ Zobrazení řídicího panelu pro výklad v studiu:
 6. Na kartě **vysvětlení** se může zobrazit vysvětlení již vytvořené, pokud byl model nejlepší
 7. Pokud chcete vytvořit nové vysvětlení, vyberte **vysvětlit model** a vyberte vzdálené výpočty, se kterými se mají vypočítat vysvětlení.
 
+[Přečtěte si další informace o vysvětlení modelů v automatizované ml](how-to-machine-learning-interpretability-automl.md).
+
 > [!NOTE]
 > Model ForecastTCN se v současné době nepodporují pomocí automatizovaných vysvětlení ML a jiné modely prognózy můžou mít omezený přístup k nástrojům pro vyhodnocení.
 
 ## <a name="next-steps"></a>Další kroky
 * Vyzkoušejte si [vzor automatizovaného strojového učení s vysvětlením ukázkových poznámkových bloků](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model).
-* Přečtěte si další informace o [zodpovědných nabídkách AI v automatizovaném ml](how-to-machine-learning-interpretability-automl.md).
 * V případě specifických otázek pro automatizované ML se můžete obrátit na askautomatedml@microsoft.com .

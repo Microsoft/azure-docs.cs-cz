@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 9d30f5325162b9ea447d54aadc092dbd9aa29132
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 82af70547d20509c48f1e07bbc7610fc666a6da1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538689"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393050"
 ---
 # <a name="manage-permissions-to-restore-an-azure-cosmos-db-account"></a>Správa oprávnění k obnovení účtu Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -30,7 +30,7 @@ Obor je sada prostředků, které mají přístup. Další informace o oborech n
 
 ## <a name="assign-roles-for-restore-using-the-azure-portal"></a>Přiřazení rolí pro obnovení pomocí Azure Portal
 
-Aby bylo možné provést obnovení, uživatel nebo objekt zabezpečení potřebuje oprávnění k obnovení (které je "oprávnění" obnovit/Action ") a oprávnění k zřízení nového účtu (s oprávněním" zapsat ").  K udělení těchto oprávnění může vlastník přiřadit objektu zabezpečení předdefinované role "CosmosRestoreOperator" a "Cosmos DB operator".
+Aby bylo možné provést obnovení, uživatel nebo objekt zabezpečení potřebuje oprávnění k obnovení (což je oprávnění *obnovit/akce* ) a oprávnění k zřízení nového účtu (s oprávněním k *zápisu* ).  K udělení těchto oprávnění může vlastník přiřadit `CosmosRestoreOperator` `Cosmos DB Operator` objektu zabezpečení a předdefinované role.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/)
 
@@ -40,7 +40,7 @@ Aby bylo možné provést obnovení, uživatel nebo objekt zabezpečení potřeb
 
    :::image type="content" source="./media/continuous-backup-restore-permissions/assign-restore-operator-roles.png" alt-text="Přiřaďte role operátorů CosmosRestoreOperator a Cosmos DB." border="true":::
 
-1. Výběrem možnosti **Uložit** udělte oprávnění obnovit/akce.
+1. Výběrem možnosti **Uložit** udělte oprávnění *obnovit/akce* .
 
 1. Opakujte krok 3 s rolí **operátora Cosmos DB** , abyste udělili oprávnění k zápisu. Při přiřazení této role z Azure Portal udělí oprávnění obnovit celému předplatnému.
 
@@ -52,7 +52,7 @@ Aby bylo možné provést obnovení, uživatel nebo objekt zabezpečení potřeb
 |Skupina prostředků | /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-cosmosdb-rg |
 |Prostředek účtu CosmosDB obnovitelné | /Subscriptions/00000000-0000-0000-0000-000000000000/Providers/Microsoft.DocumentDB/umístění/Západní USA/restorableDatabaseAccounts/23e99a35-CD36-4df4-9614-f767a03b9995|
 
-Prostředek účtu obnovitelné se dá extrahovat z výstupu `az cosmosdb restorable-database-account list --name <accountname>` příkazu v CLI nebo `Get-AzCosmosDBRestorableDatabaseAccount -DatabaseAccountName <accountname>` rutině v PowerShellu. Atribut Name ve výstupu představuje instanceID účtu obnovitelné. Další informace najdete v článku o [PowerShellu](continuous-backup-restore-powershell.md) nebo rozhraní příkazového [řádku](continuous-backup-restore-command-line.md) .
+Prostředek účtu obnovitelné se dá extrahovat z výstupu `az cosmosdb restorable-database-account list --name <accountname>` příkazu v CLI nebo `Get-AzCosmosDBRestorableDatabaseAccount -DatabaseAccountName <accountname>` rutině v PowerShellu. Atribut Name ve výstupu představuje `instanceID` účet obnovitelné. Další informace najdete v článku o [PowerShellu](continuous-backup-restore-powershell.md) nebo rozhraní příkazového [řádku](continuous-backup-restore-command-line.md) .
 
 ## <a name="permissions"></a>Oprávnění
 
@@ -60,11 +60,11 @@ K provádění různých aktivit, které se vztahují k obnovení účtů režim
 
 |Oprávnění  |Dopad  |Minimální rozsah  |Maximální rozsah  |
 |---------|---------|---------|---------|
-|Microsoft. Resources/Deployments/Validate/Action, Microsoft. Resources/Deployments/Write | Tato oprávnění jsou nutná k vytvoření obnoveného účtu nasazením šablony ARM. Postup nastavení této role najdete níže v ukázce oprávnění [RestorableAction]() . | Nelze použít | Nelze použít  |
+|`Microsoft.Resources/deployments/validate/action`, `Microsoft.Resources/deployments/write` | Tato oprávnění jsou nutná k vytvoření obnoveného účtu nasazením šablony ARM. Postup nastavení této role najdete níže v ukázce oprávnění [RestorableAction](#custom-restorable-action) . | Nelze použít | Nelze použít  |
 |Microsoft.DocumentDB/databaseAccounts/Write | Toto oprávnění se vyžaduje k obnovení účtu do skupiny prostředků. | Skupina prostředků, pod kterou se vytvoří obnovený účet. | Předplatné, pod kterým je vytvořený obnovený účet |
-|Microsoft.DocumentDB/umístění/restorableDatabaseAccounts/Restore/Action |Toto oprávnění je vyžadováno v oboru účtu databáze zdrojového obnovitelné, aby bylo možné provádět akce obnovení.  | Prostředek "RestorableDatabaseAccount" patřící ke zdrojovému účtu, který se má obnovit. Tato hodnota je také přidělena vlastností ID prostředku databázového účtu obnovitelné. Příkladem účtu obnovitelné je `/subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>` | Předplatné obsahující účet databáze obnovitelné Skupinu prostředků nelze zvolit jako obor.  |
-|Microsoft.DocumentDB/umístění/restorableDatabaseAccounts/číst |Toto oprávnění je vyžadováno v oboru databázového účtu obnovitelné zdrojového kódu pro výpis účtů databáze, které je možné obnovit.  | Prostředek "RestorableDatabaseAccount" patřící ke zdrojovému účtu, který se má obnovit. Tato hodnota je také přidělena vlastností ID prostředku databázového účtu obnovitelné. Příkladem účtu obnovitelné je `/subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>`| Předplatné obsahující účet databáze obnovitelné Skupinu prostředků nelze zvolit jako obor.  |
-|Microsoft.DocumentDB/umístění/restorableDatabaseAccounts/*/Read | Toto oprávnění se vyžaduje v oboru zdrojového účtu obnovitelné, aby bylo možné číst prostředky obnovitelné, jako je například seznam databází a kontejnerů pro účet obnovitelné.  | Prostředek "RestorableDatabaseAccount" patřící ke zdrojovému účtu, který se má obnovit. Tato hodnota je také přidělena vlastností ID prostředku databázového účtu obnovitelné. Příkladem účtu obnovitelné je `/subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>`| Předplatné obsahující účet databáze obnovitelné Skupinu prostředků nelze zvolit jako obor. |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` |Toto oprávnění je vyžadováno v oboru účtu databáze zdrojového obnovitelné, aby bylo možné provádět akce obnovení.  | Prostředek *RestorableDatabaseAccount* patřící k obnovenému zdrojovému účtu. Tato hodnota je také dána `ID` vlastností prostředku databázového účtu obnovitelné. Příkladem účtu obnovitelné je */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/Locations/RegionName/restorableDatabaseAccounts/<GUID-instanceid>* | Předplatné obsahující účet databáze obnovitelné Skupinu prostředků nelze zvolit jako obor.  |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` |Toto oprávnění je vyžadováno v oboru databázového účtu obnovitelné zdrojového kódu pro výpis účtů databáze, které je možné obnovit.  | Prostředek *RestorableDatabaseAccount* patřící k obnovenému zdrojovému účtu. Tato hodnota je také dána `ID` vlastností prostředku databázového účtu obnovitelné. Příkladem účtu obnovitelné je */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/Locations/RegionName/restorableDatabaseAccounts/<GUID-instanceid>*| Předplatné obsahující účet databáze obnovitelné Skupinu prostředků nelze zvolit jako obor.  |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` | Toto oprávnění se vyžaduje v oboru zdrojového účtu obnovitelné, aby bylo možné číst prostředky obnovitelné, jako je například seznam databází a kontejnerů pro účet obnovitelné.  | Prostředek *RestorableDatabaseAccount* patřící k obnovenému zdrojovému účtu. Tato hodnota je také dána `ID` vlastností prostředku databázového účtu obnovitelné. Příkladem účtu obnovitelné je */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/Locations/RegionName/restorableDatabaseAccounts/<GUID-instanceid>*| Předplatné obsahující účet databáze obnovitelné Skupinu prostředků nelze zvolit jako obor. |
 
 ## <a name="azure-cli-role-assignment-scenarios-to-restore-at-different-scopes"></a>Scénáře přiřazení role CLI Azure pro obnovení v různých oborech
 
@@ -82,7 +82,7 @@ az role assignment create --role "CosmosRestoreOperator" --assignee <email> –s
 
 * Přiřaďte akci zápisu uživatele do konkrétní skupiny prostředků. Tato akce je nutná k vytvoření nového účtu ve skupině prostředků.
 
-* Přiřaďte předdefinované roli "CosmosRestoreOperator" ke konkrétnímu účtu databáze obnovitelné, který je nutné obnovit. V následujícím příkazu se obor pro "RestorableDatabaseAccount" načítá z vlastnosti "ID" ve výstupu `az cosmosdb restorable-database-account` (Pokud se používá CLI) nebo  `Get-AzCosmosDBRestorableDatabaseAccount` (Pokud používáte PowerShell).
+* Přiřaďte předdefinovanou roli *CosmosRestoreOperator* konkrétnímu účtu databáze obnovitelné, který se musí obnovit. V následujícím příkazu se rozsah pro *RestorableDatabaseAccount* načítá z `ID` vlastnosti ve výstupu `az cosmosdb restorable-database-account` (Pokud se používá CLI) nebo  `Get-AzCosmosDBRestorableDatabaseAccount` (Pokud používáte PowerShell).
 
   ```azurecli-interactive
    az role assignment create --role "CosmosRestoreOperator" --assignee <email> –scope <RestorableDatabaseAccount>
@@ -91,11 +91,11 @@ az role assignment create --role "CosmosRestoreOperator" --assignee <email> –s
 ### <a name="assign-capability-to-restore-from-any-source-account-in-a-resource-group"></a>Přiřaďte schopnost obnovení z libovolného zdrojového účtu ve skupině prostředků.
 Tato operace v tuto chvíli není podporovaná.
 
-## <a name="custom-role-creation-for-restore-action-with-cli"></a>Vytvoření vlastní role pro akci obnovení pomocí rozhraní příkazového řádku
+## <a name="custom-role-creation-for-restore-action-with-cli"></a><a id="custom-restorable-action"></a>Vytvoření vlastní role pro akci obnovení pomocí rozhraní příkazového řádku
 
-Vlastník předplatného může poskytnout oprávnění k obnovení do jakékoli jiné identity Azure AD. Oprávnění k obnovení je založené na akci: "Microsoft.DocumentDB/Locations/restorableDatabaseAccounts/Restore/Action" a měla by být součástí oprávnění k obnovení. K dispozici je integrovaná role s názvem "CosmosRestoreOperator", která má tuto roli zahrnutou. Můžete buď přiřadit oprávnění pomocí této předdefinované role nebo vytvořit vlastní roli.
+Vlastník předplatného může poskytnout oprávnění k obnovení do jakékoli jiné identity Azure AD. Oprávnění k obnovení je založené na akci: `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` a měla by být zahrnutá do oprávnění obnovit. K dispozici je předdefinovaná role s názvem *CosmosRestoreOperator* , která má tuto roli zahrnutou. Můžete buď přiřadit oprávnění pomocí této předdefinované role nebo vytvořit vlastní roli.
 
-RestorableAction níže představuje vlastní roli. Tuto roli musíte explicitně vytvořit. Následující šablona JSON vytvoří vlastní roli "RestorableAction" s oprávněním k obnovení:
+RestorableAction níže představuje vlastní roli. Tuto roli musíte explicitně vytvořit. Následující šablona JSON vytvoří vlastní roli *RestorableAction* s oprávněním obnovit:
 
 ```json
 {

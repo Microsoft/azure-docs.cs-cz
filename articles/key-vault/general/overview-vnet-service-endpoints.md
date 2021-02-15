@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 4a817f386d68c144968540dd05f3fa6859bb0acc
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 42d388aed618a5a92212152166573719c9e973c6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704165"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371018"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Koncové body služby Azure Key Vault pro virtuální síť
 
@@ -52,6 +52,7 @@ Tady je seznam důvěryhodných služeb, které mají povolený přístup k trez
 |Azure SQL Database|[Transparentní šifrování dat s podporou Bring Your Own Key pro Azure SQL Database a Azure synapse Analytics](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&preserve-view=true&viewFallbackFrom=azuresqldb-current).|
 |Azure Storage|[Šifrování služby Storage používání klíčů spravovaných zákazníkem v Azure Key Vault](../../storage/common/customer-managed-keys-configure-key-vault.md).|
 |Azure Data Lake Store|[Šifrování dat v Azure Data Lake Store](../../data-lake-store/data-lake-store-encryption.md) s klíčem spravovaným zákazníkem.|
+|Azure Synapse Analytics|[Šifrování dat pomocí klíčů spravovaných zákazníkem v Azure Key Vault](../../synapse-analytics/security/workspaces-encryption.md)|
 |Azure Databricks|[Služba analýzy založená na rychlé, jednoduché a Apache Spark spolupráci](/azure/databricks/scenarios/what-is-azure-databricks)|
 |Azure API Management|[Nasazení certifikátů pro vlastní doménu z Key Vault pomocí MSI](../../api-management/api-management-howto-use-managed-service-identity.md#use-ssl-tls-certificate-from-azure-key-vault)|
 |Azure Data Factory|[Načíst přihlašovací údaje úložiště dat v Key Vault z Data Factory](https://go.microsoft.com/fwlink/?linkid=2109491)|

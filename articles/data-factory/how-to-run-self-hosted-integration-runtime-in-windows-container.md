@@ -1,22 +1,18 @@
 ---
 title: Spuštění Integration Runtime Self-Hosted v kontejneru Windows
 description: Přečtěte si, jak spustit Self-Hosted Integration Runtime v kontejneru Windows.
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
-ms.openlocfilehash: 7035da173102e59aec9c643381bad701d6facf38
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e34e1f589442be41e2a4eac3ac893f377675e4b5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634534"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379501"
 ---
 # <a name="how-to-run-self-hosted-integration-runtime-in-windows-container"></a>Spuštění Integration Runtime Self-Hosted v kontejneru Windows
 
@@ -25,7 +21,7 @@ ms.locfileid: "92634534"
 V tomto článku se dozvíte, jak spustit Self-Hosted Integration Runtime v kontejneru Windows.
 Azure Data Factory přináší oficiální podporu kontejneru Windows Self-Hosted Integration Runtime. Zdrojový kód sestavení Docker můžete stáhnout a kombinovat proces sestavení a spuštění ve vlastním kanálu průběžného doručování. 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 - [Požadavky na kontejner Windows](/virtualization/windowscontainers/deploy-containers/system-requirements)
 - Docker verze 2,3 a novější 
 - Self-Hosted Integration Runtime verze 4.11.7512.1 a novější 

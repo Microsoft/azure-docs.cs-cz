@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 1d633b1a9f5fee0a5cceb48f2b37aaec2092069f
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 2833fd44b75f4bebf41b5100eb2350ca69436520
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979523"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362790"
 ---
 # <a name="optical-character-recognition-ocr"></a>optické rozpoznávání znaků (OCR),
 
@@ -132,13 +132,13 @@ Podívejte se na následující příklad úspěšné odpovědi JSON:
 }
 ```
 
-## <a name="natural-reading-order-output"></a>Přirozený výstup pořadí čtení
-Pomocí [rozhraní API pro čtení 3,2 Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)určete pořadí, ve kterém jsou textové řádky ve výstupu s `readingOrder` parametrem dotazu. Použijte `natural` pro více uživatelsky přívětivého výstupu pořadí čtení, jak je znázorněno v následujícím příkladu.
+## <a name="natural-reading-order-output-latin-only"></a>Výstup přirozeného pořadí čtení (jenom Latin)
+Pomocí [rozhraní API pro čtení 3,2 Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)určete pořadí, ve kterém jsou textové řádky ve výstupu s `readingOrder` parametrem dotazu. Použijte `natural` pro více uživatelsky přívětivého výstupu pořadí čtení, jak je znázorněno v následujícím příkladu. Tato funkce je podporována pouze v jazycích Latin.
 
 :::image border type="content" source="./Images/ocr-reading-order-example.png" alt-text="Příklad pořadí čtení v OCR":::
 
 ## <a name="handwritten-classification-for-text-lines-latin-only"></a>Ručně psaná klasifikace pro textové řádky (jenom latinku)
-Odpověď [rozhraní API pro čtení 3,2 Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005) zahrnuje klasifikaci, jestli každý textový řádek má styl rukopisu, nebo ne, spolu s hodnocením spolehlivosti. Tato funkce je podporovaná jenom pro jazyky v latince. Následující příklad ukazuje ručně vytvořenou klasifikaci textu v obrázku.
+Odpověď [rozhraní API pro čtení 3,2 Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005) zahrnuje klasifikaci, jestli každý textový řádek má styl rukopisu, nebo ne, spolu s hodnocením spolehlivosti. Tato funkce je podporována pouze v jazycích Latin. Následující příklad ukazuje ručně vytvořenou klasifikaci textu v obrázku.
 
 :::image border type="content" source="./Images/ocr-handwriting-classification.png" alt-text="Příklad klasifikace rukopisu OCR":::
 

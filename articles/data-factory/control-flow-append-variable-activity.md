@@ -1,22 +1,18 @@
 ---
 title: Připojit aktivitu proměnné v Azure Data Factory
 description: Naučte se nastavit aktivitu připojit proměnnou pro přidání hodnoty do existující proměnné pole definované v kanálu Data Factory.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.date: 10/09/2018
-ms.openlocfilehash: 16bdd1d31440ed440faf67e939485da613e3886f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5a9ed44e05c371460ae3ceab721f2236f6ec7fd6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490937"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383402"
 ---
 # <a name="append-variable-activity-in-azure-data-factory"></a>Připojit aktivitu proměnné v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -24,12 +20,12 @@ Aktivitu připojit proměnnou použijte k přidání hodnoty do existující pro
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povinné
+Vlastnost | Popis | Vyžadováno
 -------- | ----------- | --------
 name | Název aktivity v kanálu | Yes
 description | Text popisující, co aktivita dělá | ne
 typ | Typ aktivity je AppendVariable | ano
-value | Hodnota řetězcového literálu nebo objektu výrazu, která se používá pro připojení k zadané proměnné | ano
+hodnota | Hodnota řetězcového literálu nebo objektu výrazu, která se používá pro připojení k zadané proměnné | ano
 variableName | Název proměnné, která bude upravena aktivitou, musí být proměnná typu Array. | ano
 
 ## <a name="next-steps"></a>Další kroky

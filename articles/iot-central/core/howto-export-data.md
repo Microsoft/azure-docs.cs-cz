@@ -4,16 +4,16 @@ description: Jak používat novou export dat k exportu dat IoT do Azure a vlastn
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 11/05/2020
+ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 350cd7c14a4f1ee5058a60ccf60c1205ce97916a
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: d31673b8d789cff5de3ddce63b67a98854b7aabc
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226056"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515899"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Export dat IoT do cloudových cílů pomocí exportu dat
 
@@ -166,6 +166,17 @@ Teď, když máte cíl exportovat data do, nastavte export dat do aplikace IoT C
 
 1. Po dokončení nastavení exportu vyberte **Uložit**. Po několika minutách se vaše data zobrazí ve vašich cílech.
 
+## <a name="monitor-your-export"></a>Monitorování exportu
+
+Kromě toho, že se ve službě IoT Central zobrazuje stav exportů, můžete sledovat, kolik dat provádí vaše exporty, a sledovat chyby při exportu v datové platformě Azure Monitor. K metrikám o vašich exportech a stavu zařízení můžete přistupovat v grafech v Azure Portal, REST API nebo dotazech v PowerShellu nebo v rozhraní příkazového řádku Azure. V současné době můžete monitorovat tyto metriky exportu dat v Azure Monitor:
+
+1. Počet zpráv, které jsou příchozí pro export před použitím filtrů
+2. Počet zpráv, které procházejí filtry
+3. Počet zpráv úspěšně exportovaných do cílových umístění
+4. Počet zjištěných chyb
+ 
+[Přečtěte si další informace o tom, jak získat přístup k IoT Central metriky.](howto-monitor-application-health.md)
+
 ## <a name="destinations"></a>Cíle
 
 ### <a name="azure-blob-storage-destination"></a>Cíl Azure Blob Storage
@@ -233,7 +244,6 @@ Následující příklad ukazuje exportovanou zprávu telemetrie:
     }
 }
 ```
-
 ### <a name="message-properties"></a>Vlastnosti zprávy
 
 Zprávy telemetrie mají kromě datové části telemetrie také vlastnosti pro metadata. Předchozí fragment kódu ukazuje příklady systémových zpráv, například `deviceId` a `enqueuedTime` . Další informace o vlastnostech systémové zprávy najdete v tématu [systémové vlastnosti D2C zpráv o IoT Hub](../../iot-hub/iot-hub-devguide-messages-construct.md#system-properties-of-d2c-iot-hub-messages).

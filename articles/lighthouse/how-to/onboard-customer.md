@@ -1,14 +1,14 @@
 ---
 title: Onboarding zákazníků do služby Azure Lighthouse
 description: Naučte se, jak začlenit zákazníka do Azure Lighthouse, který umožňuje získat a spravovat jejich prostředky prostřednictvím vlastního tenanta pomocí delegované správy prostředků Azure.
-ms.date: 01/14/2021
+ms.date: 02/08/2021
 ms.topic: how-to
-ms.openlocfilehash: 1a7c8fc85819b2c34b5c64dc83cb908b7bee3c41
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c0a886b692b99156cbd53e5f0f5953047560c5b9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232671"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372140"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding zákazníků do služby Azure Lighthouse
 
@@ -36,7 +36,7 @@ Pokud chcete připojit tenanta zákazníka, musí mít aktivní předplatné Azu
 
 Pokud tyto hodnoty ID již nemáte, můžete je načíst jedním z následujících způsobů. Ujistěte se, že používáte tyto přesné hodnoty v nasazení.
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 ID tenanta si můžete zobrazit tak, že najedete myší na název účtu v horní pravé části Azure Portal, nebo výběrem **přepínače Adresář**. Pokud chcete vybrat a zkopírovat ID tenanta, vyhledejte na portálu "Azure Active Directory", pak vyberte **vlastnosti** a zkopírujte hodnotu zobrazenou v poli **ID adresáře** . Pokud chcete najít ID předplatného v tenantovi zákazníka, vyhledejte "Subscriptions" a pak vyberte příslušné ID předplatného.
 
@@ -211,7 +211,7 @@ Po aktualizaci souboru parametrů musí uživatel v tenantovi zákazníka nasadi
 
 Nasazení se může provést v Azure Portal, pomocí PowerShellu nebo pomocí rozhraní příkazového řádku Azure CLI, jak vidíte níže.
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 1. V našem [úložišti GitHub](https://github.com/Azure/Azure-Lighthouse-samples/)vyberte tlačítko **nasadit do Azure** zobrazené vedle šablony, kterou chcete použít. Šablona se otevře v prostředí Azure Portal.
 1. Zadejte hodnoty pro **název nabídky MSP**, **Popis nabídky MSP**, **spravovaný podle ID tenanta** a **autorizací**. Pokud dáváte přednost, můžete vybrat možnost **Upravit parametry** a zadat hodnoty pro `mspOfferName` , `mspOfferDescription` , `managedbyTenantId` a `authorizations` přímo do souboru parametrů. Nezapomeňte aktualizovat tyto hodnoty namísto použití výchozích hodnot z šablony.
@@ -263,7 +263,7 @@ az deployment sub create --name <deploymentName> \
 
 Po úspěšném připojení zákaznického předplatného do Azure Lighthouse uvidí uživatelé v tenantovi poskytovatele služeb předplatné a jeho prostředky (pokud jim k ní byl udělen přístup prostřednictvím výše uvedeného procesu), a to buď jednotlivě, nebo jako člen skupiny Azure AD s příslušnými oprávněními. Potvrďte to tak, že zkontrolujete, že se odběr zobrazuje jedním z následujících způsobů:  
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 V tenantovi poskytovatele služeb:
 
@@ -311,12 +311,13 @@ Pokud po zprovoznění zákazníka potřebujete provést změny, můžete [deleg
 Pokud se vám nepodaří úspěšně připojit zákazníka nebo pokud vaši uživatelé mají potíže s přístupem k delegovaným prostředkům, Projděte si následující tipy a požadavky a zkuste to znovu.
 
 - `managedbyTenantId`Hodnota nesmí být stejná jako ID tenanta pro odběr, který se připojuje.
-- Nemůžete mít více přiřazení ve stejném oboru se stejným oborem `mspOfferName` . 
+- Nemůžete mít více přiřazení ve stejném oboru se stejným oborem `mspOfferName` .
 - U delegovaného předplatného musí být zaregistrován poskytovatel prostředků **Microsoft. ManagedServices** . K tomu by mělo dojít automaticky během nasazování, ale v případě potřeby je můžete [zaregistrovat ručně](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 - Autorizace nesmí obsahovat žádné uživatele s předdefinovanou rolí [vlastníka](../../role-based-access-control/built-in-roles.md#owner) ani žádné předdefinované role s [akcemi](../../role-based-access-control/role-definitions.md#dataactions).
 - Skupiny musí být vytvořeny s [**typem skupiny**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types) nastavenou na **zabezpečení** a nesmí **Microsoft 365**.
 - Před povolením přístupu pro [vnořené skupiny](../..//active-directory/fundamentals/active-directory-groups-membership-azure-portal.md)může docházet k další prodlevě.
 - Uživatelé, kteří potřebují zobrazit prostředky v Azure Portal, musí mít roli [Čtenář](../../role-based-access-control/built-in-roles.md#reader) (nebo jinou předdefinovanou roli, která zahrnuje přístup ke čtenářům).
+- [Předdefinované role Azure](../../role-based-access-control/built-in-roles.md) , které zahrnete do autorizací, nesmí obsahovat žádné zastaralé role. Pokud se předdefinovaná role Azure přestane zastaralá, všichni uživatelé, kteří se připojili k této roli, ztratí přístup a nebudete moct připojit další delegování. Pokud to chcete opravit, aktualizujte šablonu tak, aby používala jenom integrované předdefinované role, a pak proveďte nové nasazení.
 
 ## <a name="next-steps"></a>Další kroky
 

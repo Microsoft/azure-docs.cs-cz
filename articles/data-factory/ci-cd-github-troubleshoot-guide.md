@@ -5,15 +5,14 @@ author: ssabat
 ms.author: susabat
 ms.reviewer: susabat
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: troubleshooting
 ms.date: 12/03/2020
-ms.openlocfilehash: e5e1a4ff676a6677357638dc4b67dc94926adbd2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 091c0cb20877090453f38ab922cc2bd277e90093
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556303"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393747"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>Řešení potíží s CI-CD, Azure DevOps a GitHubem v ADF 
 
@@ -78,14 +77,14 @@ Chyba kanálu CI/CD se nezdařila s následující chybou:
 
 #### <a name="cause"></a>Příčina
 
-Důvodem je Integration Runtime se stejným názvem v cílové továrně, ale s jiným typem. Integration Runtime musí být stejného typu při nasazení.
+Důvodem je prostředí Integration runtime se stejným názvem v cílovém objektu pro vytváření, ale s jiným typem. Integration Runtime musí být stejného typu při nasazení.
 
 #### <a name="recommendation"></a>Doporučení
 
 - Následující osvědčené postupy pro CI/CD najdete níže:
 
     https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd 
-- Prostředí Integration runtime se často nemění a jsou v rámci CI/CD ve všech fázích podobná, takže Data Factory očekává, že budete mít stejný název a typ prostředí Integration runtime ve všech fázích CI/CD. Pokud se názvy a typy & liší, ujistěte se, že se shodují se zdrojovou a cílovou konfigurací IR a pak nasaďte kanál pro vydávání verzí.
+- Prostředí Integration runtime se často nemění a jsou v rámci CI/CD ve všech fázích podobná, takže Data Factory očekává, že budete mít stejný název a typ prostředí Integration runtime ve všech fázích CI/CD. Pokud se název a typy & liší, ujistěte se, že odpovídají konfiguraci zdrojového a cílového prostředí Integration runtime a pak nasaďte kanál pro vydávání verzí.
 - Pokud chcete sdílet prostředí Integration runtime ve všech fázích, zvažte použití Ternární továrny jenom k zahrnutí sdílených prostředí Integration runtime. Tuto sdílenou továrnu můžete použít ve všech prostředích jako typ propojeného prostředí Integration runtime.
 
 ### <a name="document-creation-or-update-failed-because-of-invalid-reference"></a>Vytvoření nebo aktualizace dokumentu se nezdařila z důvodu neplatného odkazu.
@@ -133,7 +132,7 @@ Nemůžete přesunout Data Factory z jedné skupiny prostředků do jiné. chyba
 
 #### <a name="resolution"></a>Řešení
 
-Aby bylo možné operaci přesunu, je nutné odstranit SSIS-IR a sdílený finanční úřad. Pokud nechcete toto finanční úřad odstranit, nejlepším způsobem, jak postupovat podle kopie a klonovaného dokumentu, provést kopírování a po jeho dokončení odstranit starou datovou továrnu.
+Aby bylo možné operaci přesunu, je nutné odstranit SSIS-IR a sdílený finanční úřad. Pokud nechcete prostředí Integration Runtime odstranit, nejlepším způsobem je postupovat podle kopie a klonovaného dokumentu a provést kopírování a po jeho dokončení odstranit původní Data Factory.
 
 ###  <a name="unable-to-export-and-import-arm-template"></a>Nepovedlo se exportovat a importovat šablonu ARM.
 
@@ -150,6 +149,34 @@ Vytvořili jste roli zákazníka jako uživatel a neměli jste potřebná opráv
 #### <a name="resolution"></a>Řešení
 
 Aby bylo možné tento problém vyřešit, musíte do své role přidat následující oprávnění: *Microsoft. DataFactory/Factory/queryFeaturesValue/Action*. Toto oprávnění by mělo být ve výchozím nastavení zahrnuto v roli "Data Factory Přispěvatel".
+
+###  <a name="automatic-publishing-for-cicd-without-clicking-publish-button"></a>Automatické publikování pro CI/CD bez kliknutí na tlačítko publikovat  
+
+#### <a name="issue"></a>Problém
+
+Ruční publikování pomocí kliknutí na tlačítko na portálu ADF nepovoluje automatickou operaci CI/CD.
+
+#### <a name="cause"></a>Příčina
+
+Až do poslední doby používala publikování kanálu ADF pro nasazení na portálu ADF kliknutí na tlačítko. Nyní můžete proces automaticky nastavit. 
+
+#### <a name="resolution"></a>Řešení
+
+Proces CI/CD byl vylepšen. Funkce **automatického publikování** přijímá, ověřuje a exportuje všechny funkce šablon Azure Resource Manager (ARM) z uživatelského prostředí ADF. Díky tomu dá Logical spotřební přístup prostřednictvím veřejně dostupného balíčku npm [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) . To vám umožní programově aktivovat tyto akce místo nutnosti přejít do uživatelského rozhraní ADF a provést kliknutí na tlačítko. Díky tomu budou kanály CI/CD **platit skutečným** prostředím průběžné integrace. Podrobnosti najdete v podrobnostech o [vylepšení publikování ADF/CD](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment-improvements) . 
+
+###  <a name="cannot-publish-because-of-4mb-arm-template-limit"></a>Nejde publikovat kvůli limitu 4 MB ARM šablony.  
+
+#### <a name="issue"></a>Problém
+
+Nemůžete nasadit, protože jste dosáhli Azure Resource Manager limitu velikosti 4 MB pro celkovou velikost šablony. Po překročení limitu budete potřebovat řešení k nasazení. 
+
+#### <a name="cause"></a>Příčina
+
+Azure Resource Manager omezuje velikost šablony na 4 MB. Omezte velikost šablony na 4 MB a každý soubor parametrů na 64 KB. Limit velikosti 4 MB se vztahuje na konečný stav šablony po rozbalení pomocí iterativních definic prostředků a hodnot proměnných a parametrů. Ale jste překročili limit. 
+
+#### <a name="resolution"></a>Řešení
+
+U malých až středních řešení je jednodušší pochopit a spravovat jedinou šablonu. Všechny prostředky a hodnoty vidíte v jednom souboru. Ve složitějších scénářích umožňují propojené šablony rozdělit řešení do specializovaných komponent. Dodržujte prosím osvědčené postupy na [používání propojených a vnořených šablon](https://docs.microsoft.com/azure/azure-resource-manager/templates/linked-templates?tabs=azure-powershell).
 
 ## <a name="next-steps"></a>Další kroky
 

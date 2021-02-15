@@ -1,19 +1,17 @@
 ---
 title: Plánování a Správa nákladů na Azure Data Factory
 description: Tento článek popisuje, jak můžete plánovat a spravovat náklady na Azure Data Factory
-documentationcenter: ''
 author: shirleywangmsft
 ms.author: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: 6271b83749c078b64c168a27f887ed7055e37d96
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: d89275acdb8e13a792ea3166d874fabf911bb686
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97678895"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372888"
 ---
 # <a name="plan-and-manage-costs-for-azure-data-factory"></a>Plánování a Správa nákladů na Azure Data Factory
 

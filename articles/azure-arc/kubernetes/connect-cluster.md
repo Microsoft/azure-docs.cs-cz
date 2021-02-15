@@ -1,22 +1,22 @@
 ---
-title: Připojení clusteru Kubernetes s podporou služby Azure Arc (Preview)
+title: Připojení clusteru Kubernetes s povoleným ARC Azure (Preview)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 02/09/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Připojení clusteru Kubernetes s povoleným ARC Azure pomocí ARC Azure
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: b4ab84153eaaf81c668d8589fec7516853aca5f9
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: e68eccf998592aa7d1ebfea51e4ca66d577b3c7f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008107"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390551"
 ---
-# <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Připojení clusteru Kubernetes s podporou služby Azure Arc (Preview)
+# <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Připojení clusteru Kubernetes s povoleným ARC Azure (Preview)
 
 V tomto článku se dozvíte, jak připojit jakýkoliv cluster s certifikací CNCF (Cloud Native Computing Foundation), jako je AKS Engine v Azure, AKS modul v Azure Stack hub, GKE, EKS a VMware vSphere cluster do Azure ARC.
 
@@ -27,11 +27,11 @@ Ověřte, že jste připravili následující požadavky:
 * Spuštěný cluster Kubernetes. Pokud nemáte existující cluster Kubernetes, můžete k vytvoření testovacího clusteru použít jedno z následujících pokynů:
   * Vytvořte cluster Kubernetes pomocí [Kubernetes v Docker (druh)](https://kind.sigs.k8s.io/).
   * Vytvořte cluster Kubernetes pomocí Docker pro [Mac](https://docs.docker.com/docker-for-mac/#kubernetes) nebo [Windows](https://docs.docker.com/docker-for-windows/#kubernetes).
-* Soubor kubeconfig pro přístup ke clusteru a roli Správce clusteru v clusteru pro nasazení agentů Kubernetes s podporou ARC.
+* Soubor kubeconfig pro přístup ke clusteru a roli Správce clusteru v clusteru pro nasazení agentů Kubernetes s povoleným ARC.
 * Uživatel nebo instanční objekt použitý s `az login` příkazy a `az connectedk8s connect` musí mít oprávnění číst a zapsat pro typ prostředku Microsoft. Kubernetes/connectedclusters. Role "cluster Kubernetes-Azure ARC" má tato oprávnění a lze ji použít k přiřazení rolí pro uživatele nebo instanční objekt.
 * Helm 3 pro registraci clusteru pomocí rozšíření connectedk8s. Pro splnění tohoto požadavku [nainstalujte nejnovější verzi Helm 3](https://helm.sh/docs/intro/install) .
-* Azure CLI verze 2.15 + pro instalaci rozšíření rozhraní příkazového řádku Kubernetes s podporou ARC Azure Nainstalujte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) nebo ho aktualizujte na nejnovější verzi.
-* Instalace rozšíření rozhraní příkazového řádku Kubernetes s povoleným obloukem:
+* Azure CLI verze 2.15 + pro instalaci rozšíření CLI s povoleným rozhraním Azure ARC Kubernetes. Nainstalujte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) nebo ho aktualizujte na nejnovější verzi.
+* Instalace rozšíření Kubernetes CLI s povoleným ARC:
   
   * Nainstalujte `connectedk8s` rozšíření, které vám pomůže připojit clustery Kubernetes do Azure:
   
@@ -72,7 +72,7 @@ Agenti Azure ARC vyžadují, aby následující protokoly/porty/odchozí adresy 
 | `https://mcr.microsoft.com`                                                                            | Vyžaduje se pro získání imagí kontejneru pro agenty Azure ARC.                                                                  |
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  Vyžaduje se pro získání certifikátů spravovaných identitě přiřazených systémem.                                                                  |
 
-## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>Zaregistrujte dva poskytovatele pro Kubernetes s podporou ARC Azure:
+## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>Zaregistrujte dva poskytovatele pro Kubernetes s povoleným ARC Azure:
 
 ```console
 az provider register --namespace Microsoft.Kubernetes
@@ -113,14 +113,14 @@ eastus      AzureArcTest
 Dále připojíme náš cluster Kubernetes k Azure pomocí `az connectedk8s connect` :
 
 1. Ověřte připojení ke clusteru Kubernetes pomocí jednoho z následujících postupů:
-   1. `KUBECONFIG`
-   1. `~/.kube/config`
-   1. `--kube-config`
+   * `KUBECONFIG`
+   * `~/.kube/config`
+   * `--kube-config`
 1. Nasaďte agenty Azure ARC pro Kubernetes s využitím Helm 3 do `azure-arc` oboru názvů:
 
-```console
-az connectedk8s connect --name AzureArcTest1 --resource-group AzureArcTest
-```
+    ```console
+    az connectedk8s connect --name AzureArcTest1 --resource-group AzureArcTest
+    ```
 
 **Výkonem**
 
@@ -169,14 +169,13 @@ Name           Location    ResourceGroup
 AzureArcTest1  eastus      AzureArcTest
 ```
 
-Tento prostředek můžete zobrazit také na [Azure Portal](https://portal.azure.com/). Otevřete portál v prohlížeči a přejděte do skupiny prostředků a prostředku Kubernetes s podporou ARC Azure podle názvu prostředku a názvu skupiny prostředků, které jste použili dříve v `az connectedk8s connect` příkazu.
-
+Tento prostředek můžete zobrazit také na [Azure Portal](https://portal.azure.com/). Otevřete portál v prohlížeči a přejděte do skupiny prostředků a prostředku Kubernetes s povoleným obloukem Azure na základě názvů prostředků a názvů skupin prostředků, které se použily dříve v `az connectedk8s connect` příkazu.  
 > [!NOTE]
-> Po připojení clusteru trvá přibližně 5 až 10 minut, než se na stránce přehledu v prostředku Kubernetes s podporou ARC Azure v Azure Portal zobrazí stránka s přehledem pro prostředky clusteru.
+> Po připojení clusteru trvá přibližně 5 až 10 minut, než se na stránce přehledu v prostředku Kubernetes s povoleným prostředkem Azure ARC v Azure Portal doplní Stránka s přehledem.
 
 ## <a name="connect-using-an-outbound-proxy-server"></a>Připojení pomocí odchozí proxy server
 
-Pokud je váš cluster za odchozím proxy server, Azure CLI a agenti Kubernetes s podporou ARC musí směrovat své žádosti přes odchozí proxy server:
+Pokud je váš cluster za odchozím proxy server, Azure CLI a agenti Kubernetes s povoleným obloukem musí směrovat své žádosti přes odchozí proxy server:
 
 1. Ověřte verzi `connectedk8s` rozšíření nainstalovaného na vašem počítači:
 
@@ -211,13 +210,13 @@ Pokud je váš cluster za odchozím proxy server, Azure CLI a agenti Kubernetes 
     ```
 
 > [!NOTE]
-> 1. Zadání `excludedCIDR` v části `--proxy-skip-range` je důležité, aby se zajistilo, že komunikace v clusteru není pro agenty poškozená.
-> 2. I když se `--proxy-http` `--proxy-https` `--proxy-skip-range` u většiny prostředí odchozího proxy serveru očekává, že se musí do `--proxy-cert` důvěryhodného úložiště certifikátů v části agenti vložit jenom důvěryhodné certifikáty ze serveru proxy.
-> 3. Výše uvedená specifikace proxy serveru se v tuto chvíli používá jenom pro agenty ARC a ne pro tok lusků používaných v sourceControlConfiguration. Kubernetes tým s podporou ARC na této funkci aktivně pracuje a bude brzy k dispozici.
+> * Zadání `excludedCIDR` v části `--proxy-skip-range` je důležité, aby se zajistilo, že komunikace v clusteru není pro agenty poškozená.
+> * I když se `--proxy-http` `--proxy-https` `--proxy-skip-range` u většiny prostředí odchozího proxy serveru očekává, že se musí do `--proxy-cert` důvěryhodného úložiště certifikátů v části agenti vložit jenom důvěryhodné certifikáty ze serveru proxy.
+> * Výše uvedená specifikace proxy serveru se v tuto chvíli používá jenom pro agenty ARC a ne pro tok lusků používaných v sourceControlConfiguration. Kubernetes tým s povoleným obloukem aktivně pracuje na této funkci a brzy bude k dispozici.
 
 ## <a name="azure-arc-agents-for-kubernetes"></a>Agenti Azure ARC pro Kubernetes
 
-Kubernetes s podporou ARC Azure nasadí několik operátorů do `azure-arc` oboru názvů. Tato nasazení a lusky můžete zobrazit pomocí:
+Kubernetes s povoleným obloukem Azure nasadí několik operátorů do `azure-arc` oboru názvů. Tato nasazení a lusky můžete zobrazit pomocí:
 
 ```console
 kubectl -n azure-arc get deployments,pods
@@ -254,7 +253,7 @@ Kubernetes s povoleným ARC Azure se skládá z několika agentů (operátorů),
 | `deployment.apps/metrics-agent`                                                                            | Shromažďuje metriku výkonu jiných agentů ARC.                                                                                    |
 | `deployment.apps/cluster-metadata-operator`                                                                            | Shromažďuje metadata clusteru, jako je verze clusteru, počet uzlů a verze agenta Azure ARC.                                                                  |
 | `deployment.apps/resource-sync-agent`                                                                            |  Synchronizuje výše uvedená metadata clusteru do Azure.                                                                  |
-| `deployment.apps/clusteridentityoperator`                                                                            |  Kubernetes s podporou ARC Azure aktuálně podporuje identitu přiřazenou systémem. `clusteridentityoperator` udržuje certifikát MSI (Managed Service identity), který používají jiní agenti pro komunikaci s Azure.                                                                  |
+| `deployment.apps/clusteridentityoperator`                                                                            |  Kubernetes s povoleným ARC Azure aktuálně podporuje identitu přiřazenou systémem. `clusteridentityoperator` udržuje certifikát MSI (Managed Service identity), který používají jiní agenti pro komunikaci s Azure.                                                                  |
 | `deployment.apps/flux-logs-agent`                                                                            |  Shromažďuje protokoly z operátorů toku nasazených jako součást konfigurace správy zdrojového kódu.                                                                  |
 
 ## <a name="delete-a-connected-cluster"></a>Odstranění připojeného clusteru
@@ -262,13 +261,13 @@ Kubernetes s povoleným ARC Azure se skládá z několika agentů (operátorů),
 Prostředek můžete odstranit `Microsoft.Kubernetes/connectedcluster` pomocí rozhraní příkazového řádku Azure CLI nebo Azure Portal.
 
 
-* **Odstranění pomocí Azure CLI**: k zahájení odstraňování prostředku Kubernetes s podporou ARC Azure použijte následující příkaz rozhraní příkazového řádku Azure.
+* **Odstranění pomocí Azure CLI**: pomocí následujícího příkazu rozhraní příkazového řádku Azure zahajte odstranění prostředku Kubernetes s povoleným ARC Azure.
   ```console
   az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
   ```
   Tento příkaz odebere `Microsoft.Kubernetes/connectedCluster` prostředek a všechny přidružené `sourcecontrolconfiguration` prostředky v Azure. Rozhraní příkazového řádku Azure CLI `helm uninstall` také odebírá agenty spuštěné v clusteru.
 
-* **Odstranění při Azure Portal**: odstranění prostředku Kubernetes s povoleným ARC Azure na Azure Portal odstraní `Microsoft.Kubernetes/connectedcluster` prostředek a všechny přidružené `sourcecontrolconfiguration` prostředky v Azure, ale neodebere agenty spuštěné v clusteru.  
+* **Odstranění při Azure Portal**: odstranění prostředku Kubernetes s povoleným ARC Azure na Azure Portal odstraní `Microsoft.Kubernetes/connectedcluster` prostředek a všechny přidružené `sourcecontrolconfiguration` prostředky v Azure, ale neodebere  agenty spuštěné v clusteru. 
 
   Chcete-li odebrat agenty spuštěné v clusteru, spusťte následující příkaz:
 

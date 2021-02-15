@@ -3,15 +3,15 @@ title: Konfigurace clusteru ve službě Azure Kubernetes Services (AKS)
 description: Informace o tom, jak nakonfigurovat cluster ve službě Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 01/13/2020
+ms.date: 02/09/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: eacca50e00dfe8625d86362c444544e2fd5d5511
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 5519157b58268b30ecb7a1af7b86d13d587a23b8
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201106"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519401"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurace clusteru AKS
 
@@ -19,13 +19,19 @@ V rámci vytváření clusteru AKS možná budete muset přizpůsobit konfigurac
 
 ## <a name="os-configuration"></a>Konfigurace operačního systému
 
-AKS nyní podporuje Ubuntu 18,04 jako operační systém Node (OS) ve všeobecné dostupnosti pro clustery ve verzích Kubernetes vyšších než 1.18.8. Pro verze nižší než 1.18. x je výchozí základní bitová kopie stále výchozí AKS Ubuntu 16,04. Od Kubernetes v 1.18. x a dalších je výchozí základ AKS Ubuntu 18,04.
+AKS teď podporuje Ubuntu 18,04 jako výchozí operační systém pro clustery (GA) ve všeobecné dostupnosti (GA) pro clustery ve verzích Kubernetes vyšší než 1,18 pro verze nižší než 1,18, AKS Ubuntu 16,04 je stále výchozí základní image. Od Kubernetes v 1.18 a vyšší je výchozí základ AKS Ubuntu 18,04.
 
-### <a name="use-aks-ubuntu-1804-generally-available-on-new-clusters"></a>Používat AKS Ubuntu 18,04 všeobecně dostupné v nových clusterech
+> [!IMPORTANT]
+> Fondy uzlů vytvořené ve výchozím nastavení Kubernetes v 1.18 nebo vyšší pro `AKS Ubuntu 18.04` Image Node. Fondy uzlů na podporované verzi Kubernetes, která je menší než 1,18, se přijímají `AKS Ubuntu 16.04` jako image uzlu, ale `AKS Ubuntu 18.04` po aktualizaci verze Kubernetes fondu uzlů na verzi v 1.18 nebo vyšší.
+> 
+> Před použitím clusterů na 1,18 nebo novějším se doporučuje testovat vaše úlohy na fondech uzlů AKS Ubuntu 18,04.
+
+
+### <a name="use-aks-ubuntu-1804-ga-on-new-clusters"></a>Použití AKS Ubuntu 18,04 (GA) v nových clusterech
 
 Clustery vytvořené ve výchozím nastavení Kubernetes v 1.18 nebo vyšší pro `AKS Ubuntu 18.04` Image Node. Fondy uzlů v podporované verzi Kubernetes, která je menší než 1,18, se budou dál přijímat `AKS Ubuntu 16.04` jako image uzlu, ale `AKS Ubuntu 18.04` po aktualizaci verze Kubernetes fondu clusteru nebo uzlu na verzi v 1.18 nebo novějším se aktualizuje.
 
-Před použitím clusterů na 1,18 nebo novějším se doporučuje testovat vaše úlohy na fondech uzlů AKS Ubuntu 18,04. Přečtěte si informace o [testování fondů uzlů Ubuntu 18,04](#test-aks-ubuntu-1804-generally-available-on-existing-clusters).
+Před použitím clusterů na 1,18 nebo novějším se doporučuje testovat vaše úlohy na fondech uzlů AKS Ubuntu 18,04.
 
 Pokud chcete vytvořit cluster pomocí `AKS Ubuntu 18.04` Image uzlu, stačí vytvořit cluster se systémem Kubernetes v 1.18 nebo vyšší, jak je znázorněno níže.
 
@@ -33,11 +39,11 @@ Pokud chcete vytvořit cluster pomocí `AKS Ubuntu 18.04` Image uzlu, stačí vy
 az aks create --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
 ```
 
-### <a name="use-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>Použití AKS Ubuntu 18,04 všeobecně dostupných na existujících clusterech
+### <a name="use-aks-ubuntu-1804-ga-on-existing-clusters"></a>Použití AKS Ubuntu 18,04 (GA) na existujících clusterech
 
 Clustery vytvořené ve výchozím nastavení Kubernetes v 1.18 nebo vyšší pro `AKS Ubuntu 18.04` Image Node. Fondy uzlů v podporované verzi Kubernetes, která je menší než 1,18, se budou dál přijímat `AKS Ubuntu 16.04` jako image uzlu, ale `AKS Ubuntu 18.04` po aktualizaci verze Kubernetes fondu clusteru nebo uzlu na verzi v 1.18 nebo novějším se aktualizuje.
 
-Před použitím clusterů na 1,18 nebo novějším se doporučuje testovat vaše úlohy na fondech uzlů AKS Ubuntu 18,04. Přečtěte si informace o [testování fondů uzlů Ubuntu 18,04](#test-aks-ubuntu-1804-generally-available-on-existing-clusters).
+Před použitím clusterů na 1,18 nebo novějším se doporučuje testovat vaše úlohy na fondech uzlů AKS Ubuntu 18,04.
 
 Pokud jsou clustery nebo fondy uzlů připravené k `AKS Ubuntu 18.04` imagi uzlů, můžete je jednoduše upgradovat na verzi v 1.18 nebo vyšší.
 
@@ -51,7 +57,7 @@ Pokud chcete pouze upgradovat pouze jeden fond uzlů:
 az aks nodepool upgrade -name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
 ```
 
-### <a name="test-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>Test AKS Ubuntu 18,04 všeobecně dostupný na existujících clusterech
+### <a name="test-aks-ubuntu-1804-ga-on-existing-clusters"></a>Test AKS Ubuntu 18,04 (GA) na existujících clusterech
 
 Fondy uzlů vytvořené ve výchozím nastavení Kubernetes v 1.18 nebo vyšší pro `AKS Ubuntu 18.04` Image Node. Fondy uzlů na podporované verzi Kubernetes, která je menší než 1,18, se budou i nadále přijímat `AKS Ubuntu 16.04` jako image uzlu, ale `AKS Ubuntu 18.04` po aktualizaci verze Kubernetes fondu uzlů na hodnotu v 1.18 nebo novějším se aktualizují.
 
@@ -65,58 +71,6 @@ az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes
 
 az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
 ```
-
-### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>Pro nové clustery použijte AKS Ubuntu 18,04 (Preview).
-
-V následující části se dozvíte, jak používat a testovat AKS Ubuntu 18,04 na clusterech, které ještě nepoužívají Kubernetes verze 1.18. x nebo vyšší, nebo které byly vytvořené před tím, než byla tato funkce všeobecně dostupná, pomocí verze Preview konfigurace operačního systému.
-
-Musíte mít nainstalované následující zdroje:
-
-- [Rozhraní příkazového řádku Azure][azure-cli-install], verze 2.2.0 nebo novější
-- Rozšíření AKS-Preview 0.4.35
-
-Pokud chcete nainstalovat rozšíření AKS-Preview 0.4.35 nebo novější, použijte následující příkazy rozhraní příkazového řádku Azure CLI:
-
-```azurecli
-az extension add --name aks-preview
-az extension list
-```
-
-Zaregistrujte `UseCustomizedUbuntuPreview` funkci:
-
-```azurecli
-az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
-```
-
-Může trvat několik minut, než se stav zobrazí jako **zaregistrované**. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature#az-feature-list) :
-
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
-```
-
-Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft.ContainerService` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider#az-provider-register) :
-
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```
-
-Nakonfigurujte cluster tak, aby při vytvoření clusteru používal Ubuntu 18,04. Pomocí `--aks-custom-headers` příznaku nastavte Ubuntu 18,04 jako výchozí operační systém.
-
-```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804
-```
-
-Pokud chcete vytvořit clustery s imagí AKS Ubuntu 16,04, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` značku.
-
-### <a name="use-aks-ubuntu-1804-existing-clusters-preview"></a>Použití existujících clusterů AKS Ubuntu 18,04 (Preview)
-
-Nakonfigurujte nový fond uzlů tak, aby používal Ubuntu 18,04. Pomocí `--aks-custom-headers` příznaku nastavte Ubuntu 18,04 jako výchozí operační systém pro tento fond uzlů.
-
-```azurecli
-az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804
-```
-
-Pokud chcete vytvořit fondy uzlů s imagí AKS Ubuntu 16,04, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` značku.
 
 ## <a name="container-runtime-configuration"></a>Konfigurace modulu runtime kontejneru
 
@@ -139,69 +93,6 @@ Díky použití `containerd` pro uzly AKS zlepšuje latence při spuštění a s
 > 
 > Důrazně doporučujeme testovat úlohy ve fondech uzlů AKS s `containerD` před použitím clusterů na 1,19 nebo vyšší.
 
-V následující části se dozvíte, jak můžete používat a testovat AKS s `containerD` clustery, které ještě nepoužívají Kubernetes verze 1,19 nebo vyšší, nebo byly vytvořené před tím, než se tato funkce všeobecně k dispozici, pomocí ukázky konfigurace modulu runtime kontejneru.
-
-### <a name="use-containerd-as-your-container-runtime-preview"></a>Použijte `containerd` jako modul runtime kontejneru (Preview)
-
-Musíte mít následující požadavky:
-
-- Je nainstalovaná verze rozhraní příkazového [řádku Azure CLI][azure-cli-install]2.8.0 nebo novější.
-- Rozšíření AKS-Preview verze 0.4.53 nebo novější
-- `UseCustomizedContainerRuntime`Příznak funkce je zaregistrovaný.
-- `UseCustomizedUbuntuPreview`Příznak funkce je zaregistrovaný.
-
-Pokud chcete nainstalovat rozšíření AKS-Preview 0.4.53 nebo novější, použijte následující příkazy rozhraní příkazového řádku Azure CLI:
-
-```azurecli
-az extension add --name aks-preview
-az extension list
-```
-
-Zaregistrujte `UseCustomizedContainerRuntime` `UseCustomizedUbuntuPreview` funkce a:
-
-```azurecli
-az feature register --name UseCustomizedContainerRuntime --namespace Microsoft.ContainerService
-az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
-
-```
-
-Může trvat několik minut, než se stav zobrazí jako **zaregistrované**. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature#az-feature-list) :
-
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedContainerRuntime')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
-```
-
-Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft.ContainerService` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider#az-provider-register) :
-
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```  
-
-### <a name="use-containerd-on-new-clusters-preview"></a>Použít `containerd` pro nové clustery (Preview)
-
-Nakonfigurujte cluster, který se použije `containerd` při vytváření clusteru. Pomocí `--aks-custom-headers` příznaku nastavte `containerd` jako modul runtime kontejneru.
-
-> [!NOTE]
-> `containerd`Modul runtime je podporován pouze v uzlech a fondech uzlů pomocí Image AKS Ubuntu 18,04.
-
-```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804,ContainerRuntime=containerd
-```
-
-Pokud chcete vytvořit clustery s modulem runtime Moby (Docker), můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` značku.
-
-### <a name="use-containerd-on-existing-clusters-preview"></a>Použít `containerd` pro existující clustery (Preview)
-
-Nakonfigurujte nový fond uzlů, který se má použít `containerd` . Pomocí `--aks-custom-headers` příznaku nastavte `containerd` modul runtime pro tento fond uzlů.
-
-```azurecli
-az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804,ContainerRuntime=containerd
-```
-
-Pokud chcete vytvořit fondy uzlů s modulem runtime Moby (Docker), můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` značku.
-
-
 ### <a name="containerd-limitationsdifferences"></a>`Containerd` omezení/rozdíly
 
 * Pokud chcete použít `containerd` jako modul runtime kontejneru, musíte jako základní image operačního systému použít AKS Ubuntu 18,04.
@@ -213,9 +104,9 @@ Pokud chcete vytvořit fondy uzlů s modulem runtime Moby (Docker), můžete to 
 * Už nemůžete získat přístup k modulu Docker, `/var/run/docker.sock` ani použít Docker-in-Docker (DinD).
   * Pokud v současné době extrahujete protokoly aplikací nebo monitorovaná data z modulu Docker, použijte místo toho něco jako [Azure monitor for Containers](../azure-monitor/insights/container-insights-enable-new-cluster.md) . AKS navíc nepodporuje spouštění jakýchkoli příkazů mimo pásmo na uzlech agentů, které by mohly způsobit nestabilitu.
   * I když používáte Moby/Docker, sestavování imagí a přímé využití modulu Docker prostřednictvím výše uvedených metod se důrazně nedoporučuje. Kubernetes není plně vědoma těch spotřebovaných prostředků a tyto přístupy obsahují řadu problémů, které jsou [zde](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) popsané, a [tady](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/), například.
-* Sestavování imagí – stávající pracovní postup sestavení Docker můžete dál používat jako normální, pokud imagages nevytváříte v rámci clusteru AKS. V takovém případě zvažte přechod na doporučený postup pro vytváření imagí pomocí [ACR úloh](../container-registry/container-registry-quickstart-task-cli.md)nebo bezpečnější možnost v clusteru, jako je [Docker buildx](https://github.com/docker/buildx).
+* Vytváření imagí – stávající pracovní postup sestavení Docker můžete dál používat jako normální, pokud nevytváříte image v rámci clusteru AKS. V takovém případě zvažte přechod na doporučený postup pro vytváření imagí pomocí [ACR úloh](../container-registry/container-registry-quickstart-task-cli.md)nebo bezpečnější možnost v clusteru, jako je [Docker buildx](https://github.com/docker/buildx).
 
-## <a name="generation-2-virtual-machines-preview"></a>Virtuální počítače generace 2 (Preview)
+## <a name="generation-2-virtual-machines"></a>Virtuální počítače 2. generace
 
 Azure podporuje [virtuální počítače generace 2 (Gen2) (VM](../virtual-machines/generation-2.md)). Virtuální počítače 2. generace podporují klíčové funkce, které nejsou podporované na virtuálních počítačích generace 1 (Gen1). Mezi tyto funkce patří zvýšené množství paměti, rozšíření Intel software Guard (Intel SGX) a virtualizovaná trvalá paměť (vPMEM).
 
@@ -223,59 +114,6 @@ Virtuální počítače generace 2 používají novou architekturu na bázi rozh
 Virtuální počítače Gen2 podporují jenom určité SKU a velikosti. Zkontrolujte [seznam podporovaných velikostí](../virtual-machines/generation-2.md#generation-2-vm-sizes), abyste viděli, jestli vaše SKU podporuje nebo vyžaduje Gen2.
 
 Kromě toho ne všechny image virtuálních počítačů podporují Gen2, na virtuálních počítačích s AKS Gen2 použije nový [Obrázek AKS Ubuntu 18,04](#os-configuration). Tento obrázek podporuje všechny SKU a velikosti Gen2.
-
-Pokud chcete ve verzi Preview používat virtuální počítače s Gen2, budete potřebovat:
-- `aks-preview`Rozšíření CLI je nainstalované.
-- `Gen2VMPreview`Příznak funkce je zaregistrován.
-
-Zaregistrujte `Gen2VMPreview` funkci:
-
-```azurecli
-az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
-```
-
-Může trvat několik minut, než se stav zobrazí jako **zaregistrované**. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature#az-feature-list) :
-
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
-```
-
-Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft.ContainerService` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider#az-provider-register) :
-
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```
-
-K instalaci rozšíření AKS-Preview rozhraní příkazového řádku použijte následující příkazy rozhraní příkazového řádku Azure:
-
-```azurecli
-az extension add --name aks-preview
-```
-
-Pokud chcete aktualizovat rozšíření CLI AKS-Preview, použijte následující příkazy rozhraní příkazového řádku Azure CLI:
-
-```azurecli
-az extension update --name aks-preview
-```
-
-### <a name="use-gen2-vms-on-new-clusters-preview"></a>Použití virtuálních počítačů s Gen2 pro nové clustery (Preview)
-Nakonfigurujte cluster, aby při vytváření clusteru používal virtuální počítače s Gen2 pro vybranou SKU. Pomocí `--aks-custom-headers` příznaku nastavte Gen2 jako generování virtuálního počítače na novém clusteru.
-
-```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
-```
-
-Pokud chcete vytvořit běžný cluster pomocí virtuálních počítačů generace 1 (Gen1), můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` značku. Můžete také přidat další virtuální počítače s Gen1 nebo Gen2, jak je uvedeno níže.
-
-### <a name="use-gen2-vms-on-existing-clusters-preview"></a>Použití virtuálních počítačů s Gen2 pro existující clustery (Preview)
-Nakonfigurujte nový fond uzlů tak, aby používal virtuální počítače s Gen2. Pomocí `--aks-custom-headers` příznaku nastavte Gen2 jako generování virtuálního počítače pro tento fond uzlů.
-
-```azurecli
-az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
-```
-
-Pokud chcete vytvořit regulární fondy uzlů Gen1, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` značku.
-
 
 ## <a name="ephemeral-os"></a>Dočasný operační systém
 

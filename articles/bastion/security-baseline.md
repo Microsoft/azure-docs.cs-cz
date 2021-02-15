@@ -4,15 +4,15 @@ description: Základní plán zabezpečení Azure bastionu poskytuje pokyny a ma
 author: msmbaldwin
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 02/12/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 92c57c863cf09fee500b3ea7392757a4f729e4a5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d20a646eb7675efdab4cbdc5f13e929544dceaa3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723927"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392370"
 ---
 # <a name="azure-security-baseline-for-azure-bastion"></a>Základní hodnoty zabezpečení Azure pro Azure bastionu
 
@@ -69,7 +69,11 @@ Připojení ke Správci brány a značce služby Azure je chráněné (uzamčen�
 
 **Pokyny**: Služba Azure bastionu je integrovaná s Azure Active Directory (Azure AD), což je výchozí služba pro správu identit a přístupu v Azure. Uživatelé mají přístup k Azure Portal pomocí ověřování Azure AD ke správě služby Azure bastionu (vytváření, aktualizace a odstraňování prostředků bastionu).
 
-Připojení k virtuálním počítačům pomocí Azure bastionu spoléhá buď na klíč SSH, nebo na uživatelské jméno a heslo, a v současné době nepodporuje použití přihlašovacích údajů Azure AD.
+Připojení k virtuálním počítačům pomocí Azure bastionu spoléhá buď na klíč SSH, nebo na uživatelské jméno a heslo, a v současné době nepodporuje použití přihlašovacích údajů Azure AD. 
+
+Klíče SSH můžete ukládat jako Azure Key Vault tajných kódů a pomocí těchto tajných klíčů se připojit k virtuálním počítačům pomocí Azure bastionu. Přístup uživatelů k těmto tajným klíčům můžete řídit [přiřazením zásad Key Vault přístupu](../key-vault/general/assign-access-policy-portal.md) buď na jednotlivé uživatele nebo na skupiny Azure AD. Uživatelé budou potřebovat následující oprávnění k použití této metody pro připojení k virtuálnímu počítači:
+- **Získat** přístup k tajným klíčům uloženým ve zvolených Azure Key Vault
+- **Seznamte** se s přístupem k tajným klíčům uloženým ve zvolených Azure Key Vault
 
 Při připojování k virtuálním počítačům pomocí Azure bastionu se kromě klíče SSH nebo uživatelského jména a hesla budou potřebovat následující přiřazení rolí:
 - Role čtenáře na cílovém virtuálním počítači
@@ -106,7 +110,8 @@ Další informace najdete v následujících referenčních materiálech:
 
 ### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4: Použití řídicích prvků silného ověřování pro veškerý přístup založený na Azure Active Directory
 
-**Doprovodné** materiály: Služba Azure bastionu je integrovaná s Azure Active Directory (Azure AD) pro přístup a správu služby. Nakonfigurujte Azure Multi-Factor Authentication pro vašeho tenanta Azure AD. Azure AD podporuje ovládací prvky silného ověřování prostřednictvím služby Multi-Factor Authentication (MFA) a metod silného hesla.  
+**Doprovodné** materiály: Služba Azure bastionu je integrovaná s Azure Active Directory (Azure AD) pro přístup a správu služby. Nakonfigurujte Multi-Factor Authentication Azure Active Directory pro vašeho tenanta Azure AD. Azure AD podporuje ovládací prvky silného ověřování prostřednictvím služby Multi-Factor Authentication (MFA) a metod silného hesla.
+  
 - Multi-Factor Authentication: Povolte Azure AD MFA a sledujte Azure Security Center doporučení pro správu identit a přístupu pro vaše nastavení MFA. Vícefaktorové ověřování se dá vyhovět všem uživatelům, vybrat uživatele nebo na úrovni jednotlivých uživatelů na základě podmínek přihlášení a rizikových faktorů. 
 
 - Ověřování bez hesla: k dispozici jsou tři možnosti ověřování bez hesla: Windows Hello pro firmy, Microsoft Authenticator aplikace a místní metody ověřování, jako jsou čipové karty. 
@@ -375,7 +380,7 @@ Povolte a Shromážděte protokoly prostředků skupiny zabezpečení sítě (NS
 
 - [Principy protokolování a různých typů protokolů v Azure](../azure-monitor/platform/platform-logs-overview.md)
 
-- [Povolení protokolů prostředků Azure pro Azure bastionu ](diagnostic-logs.md)
+- [Povolení protokolů prostředků Azure pro Azure bastionu](diagnostic-logs.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 

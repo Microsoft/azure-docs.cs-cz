@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 41403a59be0395a6d9874c7369bfe59c22f5ac17
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: de7c5dba5a4868b7a8fdb390f974134cfaef7395
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218361"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384516"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>Připojení k prostředkům pracovního prostoru z omezené sítě
 
@@ -74,7 +74,7 @@ Po vytvoření koncového bodu privátního propojení můžete získat přístu
 
 Pokud chcete získat přístup k prostředkům v rámci svého prostředku pracovního prostoru Azure synapse Analytics Studio, musíte vytvořit následující:
 
-- Nejméně jeden koncový bod privátního propojení s typem **vývoje** **target cílového dílčího prostředku**.
+- Aspoň jeden koncový bod privátního propojení s **cílovým typem dílčího prostředku** pro **vývoj**.
 - Dva další nepovinné koncové body privátních propojení s typy **SQL** nebo **SqlOnDemand** podle toho, k jakým prostředkům v pracovním prostoru chcete přistupovat.
 
 Vytváření je podobné jako při vytváření koncového bodu v předchozím kroku.  
@@ -146,7 +146,8 @@ Po přidání odkazu virtuální síť budete muset přidat sadu záznamů DNS v
 
 * Pro **název** zadejte řetězce vyhrazených názvů pro jiný privátní koncový bod: 
   * **Web** je pro soukromý koncový bod přístupu k Azure synapse Analytics studia.
-  * "***YourWorkSpaceName * * _" je pro soukromý koncový bod provádění dotazů SQL ve fondu SQL a také pro soukromý koncový bod pro přístup ke všem ostatním v pracovních prostorech Azure synapse Analytics Studio. _ "*** YourWorkSpaceName *-OnDemand * *" slouží jako soukromý koncový bod provádění dotazu SQL ve vestavěném fondu.
+  * "***YourWorkSpaceName***" je privátní koncový bod provádění dotazu SQL ve fondu SQL a také pro soukromý koncový bod pro přístup k všechno ostatní v pracovních prostorech Azure synapse Analytics Studio.
+  * "***YourWorkSpaceName *-OnDemand**" slouží k zadání privátního koncového bodu pro spuštění dotazu SQL ve vestavěném fondu.
 * Jako **typ** vyberte pouze typ záznamu DNS **A** . 
 * Do pole **IP adresa** zadejte odpovídající IP adresu každého privátního koncového bodu. IP adresu můžete získat v **síťovém rozhraní** z přehledu privátního koncového bodu.
 

@@ -3,13 +3,13 @@ title: Koncepty – základy Kubernetes pro služby Azure Kubernetes (AKS)
 description: Seznamte se se základními komponentami clusterů a úloh Kubernetes a s tím, jak se vztahují k funkcím ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: 54d6f4529c236c7ff9f6258122b5b49d6d3723e8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.date: 12/07/2020
+ms.openlocfilehash: 7485631660395e03c558167c321e6091c6fac755
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674922"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373228"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
 
@@ -31,8 +31,8 @@ Služba Azure Kubernetes Service (AKS) poskytuje spravovanou službu Kubernetes,
 
 Cluster Kubernetes je rozdělen do dvou součástí:
 
-- *Řídicí uzly ovládacích prvků* poskytují základní služby Kubernetes a orchestraci úloh aplikací.
-- *Uzly* spouštějí úlohy vaší aplikace.
+- *Rovina ovládacího prvku* poskytuje základní služby Kubernetes a orchestraci úloh aplikací.
+- *Uzly* , které spouštějí úlohy vaší aplikace.
 
 ![Rovina ovládacího prvku Kubernetes a součásti uzlu](media/concepts-clusters-workloads/control-plane-and-nodes.png)
 

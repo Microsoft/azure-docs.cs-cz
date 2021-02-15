@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: e0fb337defc69354aa625fe63bef9768dbc4cf1f
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: ee6eedbc078e1b9c07ed00922ce1c37b38410128
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538766"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381864"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-portal"></a>Konfigurace a Správa průběžného zálohování a obnovení k určitému bodu v čase (Preview) – použití Azure Portal
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -74,7 +74,7 @@ Pokud chcete například obnovit bod před odstraněním nebo aktualizací urči
 K úplnému obnovení odstraněného účtu do 30 dnů od jeho odstranění můžete použít Azure Portal. Odstraněný účet obnovíte pomocí následujících kroků:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/)
-1. Vyhledejte prostředky "Azure Cosmos DB" na globálním panelu hledání. Obsahuje seznam všech stávajících účtů.
+1. Vyhledejte *Azure Cosmos DB* prostředky na panelu globálního hledání. Obsahuje seznam všech stávajících účtů.
 1. Pak vyberte tlačítko **obnovit** . V podokně obnovení se zobrazí seznam odstraněných účtů, které se dají obnovit v rámci doby uchování, což je 30 dní od času odstranění.
 1. Vyberte účet, který chcete obnovit.
 
@@ -95,7 +95,7 @@ K úplnému obnovení odstraněného účtu do 30 dnů od jeho odstranění mů�
 
 ## <a name="track-the-status-of-restore-operation"></a><a id="track-restore-status"></a>Sledovat stav operace obnovení
 
-Po zahájení operace obnovení vyberte ikonu zvonku **oznámení** v pravém horním rohu portálu. Poskytuje odkaz, který zobrazuje stav obnoveného účtu. I když probíhá obnovení, stav účtu se vytvoří po dokončení operace obnovení, stav účtu se změní na online.
+Po zahájení operace obnovení vyberte ikonu zvonku **oznámení** v pravém horním rohu portálu. Poskytuje odkaz, který zobrazuje stav obnoveného účtu. Během obnovování se stav *účtu vytvoří po* dokončení operace obnovení, stav účtu se změní na *online*.
 
 :::image type="content" source="./media/continuous-backup-restore-portal/track-restore-operation-status.png" alt-text="Stav obnoveného účtu se změní z vytváření na online po dokončení operace." border="true":::
 

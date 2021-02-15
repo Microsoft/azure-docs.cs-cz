@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: 5a3aacd1d07ff068fe50312b2c1d47ac080e5c2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 736d135323e2a2df38a13dc46189e2a243fbe381
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85391719"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097530"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Testování a přeškolování modelu pomocí Custom Vision Service
 
@@ -59,4 +59,4 @@ Pokud chcete použít image odeslanou dříve pro školení, použijte následuj
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vylepšení klasifikátoru](getting-started-improving-your-classifier.md)
+[Vylepšení modelu](getting-started-improving-your-classifier.md)

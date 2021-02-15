@@ -4,12 +4,12 @@ description: Zabrání uživatelům aktualizovat nebo odstraňovat prostředky A
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 912c7e86d253aa18b9a6c60717ceaa70e32fcf0e
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 6df6aec06fadaacc6b1d08ed9ee33b72c5971359
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428313"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369471"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Zamknutí prostředků, aby se zabránilo neočekávaným změnám
 
@@ -32,7 +32,7 @@ Zámky služby Resource Manager se vztahují jen na operace, které probíhají 
 
 Použití zámků může vést k neočekávaným výsledkům, protože některé operace, které nezpůsobují úpravu prostředku, skutečně vyžadují akce blokované zámkem. Zámky zabrání operacím, které vyžadují požadavek POST, na rozhraní Azure Resource Manager API. Mezi běžné příklady operací, které jsou blokované zámky, patří:
 
-* Zámek jen pro čtení v **účtu úložiště** zabraňuje všem uživatelům v výpisu klíčů. Operace výpisu klíčů se zpracovává prostřednictvím požadavku POST, protože vrácené klíče jsou k dispozici pro operace zápisu.
+* Zámek jen pro čtení v **účtu úložiště** zabraňuje uživatelům v výpisu klíčů účtu. Operace s [klíči seznamu](/rest/api/storagerp/storageaccounts/listkeys) Azure Storage se zpracovává prostřednictvím žádosti post k ochraně přístupu k klíčům účtu, které poskytují úplný přístup k datům v účtu úložiště. Pokud je pro účet úložiště nakonfigurovaný zámek jen pro čtení, uživatelé, kteří nemají klíče účtu, musí pro přístup k datům objektů BLOB nebo front použít přihlašovací údaje Azure AD. Zámek jen pro čtení taky brání přiřazení rolí Azure RBAC, které jsou vymezené na účet úložiště nebo na kontejner dat (kontejner objektů BLOB nebo fronta).
 
 * Zámek jen pro čtení u prostředku **App Service** zabraňuje tomu, aby aplikace Visual Studio Průzkumník serveru zobrazování souborů pro daný prostředek, protože tato interakce vyžaduje přístup pro zápis.
 

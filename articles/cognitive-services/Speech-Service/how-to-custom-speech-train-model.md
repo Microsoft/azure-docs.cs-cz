@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 41fdb3d2e69ae39dbe80f21a953fd9fdaa6d1127
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 4da93503c32e380adb82028e7c5e11dddb247d6f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968462"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373364"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Trénování a nasazení modelu Custom Speech
 
@@ -40,7 +40,19 @@ Prvním krokem při výuce modelu je odeslání školicích dat. Podrobné pokyn
 3. Vyberte **model výuky**.
 4. Poskytněte školení **název** a **Popis**.
 5. V seznamu **scénář a základní model** vyberte scénář, který nejlépe odpovídá vaší doméně. Pokud si nejste jistí, který scénář si vybrat, vyberte **Obecné**. Základní model je výchozím bodem pro školení. Nejnovější model je obvykle nejlepší volbou.
-6. Na stránce **Vybrat data školení** zvolte jednu nebo více souvisejících textových datových sad nebo zvuk + přepisně označené datové sady, které chcete použít pro školení. Při učení nového modelu začněte s souvisejícím textem. školení se zvukem + s popisem přepisu může trvat mnohem delší dobu (až do [několika dní](how-to-custom-speech-evaluate-data.md#improve-model-recognition)).
+6. Na stránce **Vybrat data školení** zvolte jednu nebo více souvisejících textových datových sad nebo zvuk + přepisně označené datové sady, které chcete použít pro školení.
+
+> [!NOTE]
+> Při učení nového modelu začněte s souvisejícím textem. školení se zvukem + s popisem přepisu může trvat mnohem delší dobu **(až do [několika dní](how-to-custom-speech-evaluate-data.md#add-audio-with-human-labeled-transcripts)**).
+
+> [!NOTE]
+> Ne všechny základní modely podporují školení se zvukem. Pokud základní model ho nepodporuje, služba řeči bude používat jenom text z přepisů a zvuk bude ignorovat. Seznam základních modelů, které podporují školení se zvukovými daty, najdete v tématu [jazyková podpora](language-support.md#speech-to-text) .
+
+> [!NOTE]
+> V případech, kdy změníte základní model používaný pro školení a máte zvuk v datové sadě školení, *vždy* ověřte, zda nový vybraný základní model [podporuje školení se zvukovými daty](language-support.md#speech-to-text). Pokud dřív použitý základní model nepodporoval školení se zvukovými daty a datová sada pro školení obsahuje zvuk, může se výrazně zvýšit doba školení s novým základním modelem a může se stát, **že budete moct** snadno přejít z několika hodin na několik dní. To platí hlavně v **případě, že** vaše předplatné služby Speech není v [oblasti s vyhrazeným hardwarem](custom-speech-overview.md#set-up-your-azure-account) pro školení.
+>
+> Pokud se setkáte s problémem popsaným v předchozím odstavci, můžete rychle zkrátit dobu školení tím, že snížíte velikost zvuku v datové sadě nebo zcela odeberete a necháte jenom text. Tato možnost se důrazně doporučuje, pokud vaše předplatné služby Speech **není v** [oblasti s vyhrazeným hardwarem](custom-speech-overview.md#set-up-your-azure-account) pro školení.
+
 7. Po dokončení školení můžete provádět testování přesnosti u nově vyučeného modelu. Tento krok je volitelný.
 8. Vyberte **vytvořit** a sestavte vlastní model.
 
@@ -80,7 +92,7 @@ Data protokolování jsou k dispozici pro export, pokud přejdete na stránku ko
 
 * [Naučte se používat vlastní model.](how-to-specify-source-language.md)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Příprava a testování dat](./how-to-custom-speech-test-and-train.md)
 - [Kontrola dat](how-to-custom-speech-inspect-data.md)

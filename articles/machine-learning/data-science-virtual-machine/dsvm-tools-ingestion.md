@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Přečtěte si informace o nástrojích pro přijímání dat a nástrojích, které jsou předinstalované na Data Science Virtual Machine.
 keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 89cf81f8d0a66c29a345f56676fbb97601743710
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 21a6efa8108bfd0a317eb955e8b3ffcfba0862a2
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308979"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519367"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Data Science Virtual Machine nástroje pro přijímání dat
 
@@ -69,7 +68,7 @@ Zde jsou některé nástroje pro přesun dat, které jsou k dispozici v DSVM.
 | Odkazy na ukázky      | [Importovat data CosmosDB](../../cosmos-db/import-data.md)      |
 | Související nástroje na DSVM      | AzCopy, AdlCopy      |
 
-## <a name="azure-storage-explorer"></a>Azure Storage Explorer
+## <a name="azure-storage-explorer"></a>Průzkumník služby Azure Storage
 
 | Kategorie | Hodnota |
 | ------------- | ------------- |
@@ -77,7 +76,7 @@ Zde jsou některé nástroje pro přesun dat, které jsou k dispozici v DSVM.
 | Podporované verze DSVM      | Windows      |
 | Typická použití      | Import a export dat z DSVM.    |
 |  Jak ji použít nebo spustit?    | V nabídce Start vyhledejte "Průzkumník služby Azure Storage". |
-| Odkazy na ukázky      | [Průzkumník služby Azure Storage](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
+| Odkazy na ukázky      | [Azure Storage Explorer](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
 
 
 ## <a name="bcp"></a>bcp
