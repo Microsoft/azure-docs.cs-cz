@@ -278,8 +278,16 @@
         - name: Nastavení vývojových prostředí
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
-        - name: Spuštění poznámkových bloků Jupyter
-          href: how-to-run-jupyter-notebooks.md
+        - name: Nastavení prostředí studia
+          items:
+            - name: Vytváření a Správa souborů
+              href: how-to-manage-files.md
+              displayName: 'Jupyter, notebooks, clone, samples'
+            - name: Spuštění poznámkových bloků Jupyter
+              href: how-to-run-jupyter-notebooks.md
+            - name: Použití terminálu
+              href: how-to-access-terminal.md
+              displayName: 'git, github, clone, kernel, package'
         - name: Nastavení softwarových prostředí
           displayName: 'pip, Conda, anaconda'
           href: how-to-use-environments.md

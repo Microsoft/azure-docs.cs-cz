@@ -2,13 +2,13 @@
 title: Uživatelsky definované funkce v šablonách
 description: Popisuje, jak definovat a používat uživatelsky definované funkce v šabloně Azure Resource Manager (šablona ARM).
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: f428fa3bc827af3820ad9f928f4f92b881c9c84c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 02/11/2021
+ms.openlocfilehash: 9c7480958e6315c8aea1fd8d12613bcf9d606723
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934675"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379620"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>Uživatelsky definované funkce v šabloně ARM
 
@@ -44,7 +44,7 @@ Vaše funkce vyžadují hodnotu oboru názvů, aby se zabránilo konfliktům ná
 
 ## <a name="use-the-function"></a>Použití funkce
 
-Následující příklad ukazuje šablonu, která obsahuje uživatelsky definovanou funkci. Tato funkce používá k získání jedinečného názvu pro účet úložiště. Šablona obsahuje parametr s názvem `storageNamePrefix` , který předává jako parametr funkci.
+Následující příklad ukazuje šablonu, která obsahuje uživatelsky definovanou funkci pro získání jedinečného názvu pro účet úložiště. Šablona obsahuje parametr s názvem `storageNamePrefix` , který je předán jako parametr funkci.
 
 ```json
 {
@@ -92,6 +92,12 @@ Následující příklad ukazuje šablonu, která obsahuje uživatelsky definova
  ]
 }
 ```
+
+Během nasazování se `storageNamePrefix` Parametr předává funkci:
+
+* Šablona definuje parametr s názvem `storageNamePrefix` .
+* Funkce používá, `namePrefix` protože můžete použít pouze parametry definované ve funkci. Další informace najdete v tématu [omezení](#limitations).
+* V `resources` oddílu šablony `name` prvek používá funkci a předá `storageNamePrefix` hodnotu funkci `namePrefix` .
 
 ## <a name="limitations"></a>Omezení
 

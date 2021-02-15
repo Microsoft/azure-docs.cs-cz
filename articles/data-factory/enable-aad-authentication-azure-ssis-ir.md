@@ -1,22 +1,19 @@
 ---
 title: Povolení AAD pro Azure SSIS Integration Runtime
 description: Tento článek popisuje, jak povolit Azure Active Directory ověřování pomocí spravované identity pro Azure Data Factory k vytvoření Azure-SSIS Integration Runtime.
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.devlang: powershell
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
-manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: 30f5b5990e189cb6942c15b65b6a417ce49f0c2b
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: cd3f590e1869b28f0ac08ce98da32a98160e4e86
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637798"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392727"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Povolení ověřování Azure Active Directory pro Azure-SSIS Integration Runtime
 
@@ -86,9 +83,9 @@ Můžete použít existující skupinu Azure AD nebo vytvořit novou pomocí Azu
 
 2.  Vyberte server v SQL Database, který se má nakonfigurovat s ověřováním Azure AD.
 
-3.  V části **Nastavení** v okně vyberte **Správce služby Active Directory** .
+3.  V části **Nastavení** v okně vyberte **Správce služby Active Directory**.
 
-4.  Na panelu příkazů vyberte **nastavit správce** .
+4.  Na panelu příkazů vyberte **nastavit správce**.
 
 5.  Vyberte uživatelský účet Azure AD, který chcete nastavit jako správce serveru, a pak vyberte **Vybrat.**
 
@@ -110,7 +107,7 @@ Pro tento další krok potřebujete [Microsoft SQL Server Management Studio](/sq
 
 6. V **Průzkumník objektů** rozbalte složku **databáze**  ->  **systémových databází** .
 
-7. Klikněte pravým tlačítkem na **Hlavní** databázi a vyberte **Nový dotaz** .
+7. Klikněte pravým tlačítkem na **Hlavní** databázi a vyberte **Nový dotaz**.
 
 8. V okně dotazu zadejte následující příkaz T-SQL a na panelu nástrojů vyberte **Spustit** .
 
@@ -128,7 +125,7 @@ Pro tento další krok potřebujete [Microsoft SQL Server Management Studio](/sq
 
    Příkaz by měl úspěšně doplňovat a udělit tak uživateli možnost vytvořit databázi (SSISDB).
 
-10. Pokud byl váš SSISDB vytvořen pomocí ověřování SQL a chcete pro přístup k tomuto Azure-SSIS IR použít ověřování Azure AD, nejprve se ujistěte, že kroky pro udělení oprávnění k **Hlavní** databázi byly úspěšně dokončeny. Pak klikněte pravým tlačítkem na databázi **SSISDB** a vyberte **Nový dotaz** .
+10. Pokud byl váš SSISDB vytvořen pomocí ověřování SQL a chcete pro přístup k tomuto Azure-SSIS IR použít ověřování Azure AD, nejprve se ujistěte, že kroky pro udělení oprávnění k **Hlavní** databázi byly úspěšně dokončeny. Pak klikněte pravým tlačítkem na databázi **SSISDB** a vyberte **Nový dotaz**.
 
 11. V okně dotazu zadejte následující příkaz T-SQL a na panelu nástrojů vyberte **Spustit** .
 
@@ -160,11 +157,11 @@ Pro tento další krok potřebujete [Microsoft SQL Server Management Studio](/sq
 
 1.  Spusťte SSMS.
 
-2.  Připojte se k spravované instanci SQL pomocí účtu SQL Server, který je **sysadmin** . Toto je dočasné omezení, které se odebere, když se objekty služby Azure AD Server (přihlášení) pro spravovanou instanci Azure SQL stávají GA. Pokud se pokusíte vytvořit přihlášení pomocí účtu správce Azure AD, zobrazí se následující chyba: Msg 15247, úroveň 16, stav 1, řádek 1 uživatel nemá oprávnění k provedení této akce.
+2.  Připojte se k spravované instanci SQL pomocí účtu SQL Server, který je **sysadmin**. Toto je dočasné omezení, které se odebere, když se objekty služby Azure AD Server (přihlášení) pro spravovanou instanci Azure SQL stávají GA. Pokud se pokusíte vytvořit přihlášení pomocí účtu správce Azure AD, zobrazí se následující chyba: Msg 15247, úroveň 16, stav 1, řádek 1 uživatel nemá oprávnění k provedení této akce.
 
 3.  V **Průzkumník objektů** rozbalte složku **databáze**  ->  **systémových databází** .
 
-4.  Klikněte pravým tlačítkem na **Hlavní** databázi a vyberte **Nový dotaz** .
+4.  Klikněte pravým tlačítkem na **Hlavní** databázi a vyberte **Nový dotaz**.
 
 5.  V okně dotazu spusťte následující skript T-SQL, který přidá spravovanou identitu pro váš ADF jako uživatel.
 
@@ -176,7 +173,7 @@ Pro tento další krok potřebujete [Microsoft SQL Server Management Studio](/sq
     
     Příkaz by měl úspěšně doplňovat a udělit spravované identitě pro váš ADF, aby bylo možné vytvořit databázi (SSISDB).
 
-6.  Pokud byl váš SSISDB vytvořen pomocí ověřování SQL a chcete pro přístup k tomuto Azure-SSIS IR použít ověřování Azure AD, nejprve se ujistěte, že kroky pro udělení oprávnění k **Hlavní** databázi byly úspěšně dokončeny. Pak klikněte pravým tlačítkem na databázi **SSISDB** a vyberte **Nový dotaz** .
+6.  Pokud byl váš SSISDB vytvořen pomocí ověřování SQL a chcete pro přístup k tomuto Azure-SSIS IR použít ověřování Azure AD, nejprve se ujistěte, že kroky pro udělení oprávnění k **Hlavní** databázi byly úspěšně dokončeny. Pak klikněte pravým tlačítkem na databázi **SSISDB** a vyberte **Nový dotaz**.
 
 7.  V okně dotazu zadejte následující příkaz T-SQL a na panelu nástrojů vyberte **Spustit** .
 

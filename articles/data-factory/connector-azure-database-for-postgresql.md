@@ -1,22 +1,18 @@
 ---
 title: Kopírování a transformace dat v Azure Database for PostgreSQL
 description: Naučte se, jak kopírovat a transformovat data v Azure Database for PostgreSQL pomocí Azure Data Factory.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/01/2021
-ms.openlocfilehash: 8b1177278583bdb46f17119eb59235e70c58e806
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 32c65a3e1063b29ab6458151aec42e4415a73b62
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223083"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381320"
 ---
 # <a name="copy-and-transform-data-in-azure-database-for-postgresql-by-using-azure-data-factory"></a>Kopírování a transformace dat v Azure Database for PostgreSQL pomocí Azure Data Factory
 
@@ -73,7 +69,7 @@ Typický připojovací řetězec je `Server=<server>.postgres.database.azure.com
 
 **Příklad**:
 
-**_Ukládat heslo v Azure Key Vault_* _
+***Ukládat heslo v Azure Key Vault***
 
 ```json
 {
@@ -99,7 +95,7 @@ Typický připojovací řetězec je `Server=<server>.postgres.database.azure.com
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete [v tématu datové sady v Azure Data Factory](concepts-datasets-linked-services.md). V této části najdete seznam vlastností, které Azure Database for PostgreSQL podporuje v datových sadách.
 
-Chcete-li kopírovat data z Azure Database for PostgreSQL, nastavte vlastnost Type objektu DataSet na _ * AzurePostgreSqlTable * *. Podporovány jsou následující vlastnosti:
+Chcete-li kopírovat data z Azure Database for PostgreSQL, nastavte vlastnost Type datové sady na **AzurePostgreSqlTable**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |

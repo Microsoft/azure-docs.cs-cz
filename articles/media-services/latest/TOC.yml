@@ -13,6 +13,8 @@
   items:
     - name: Nastavení prostředí
       items:
+        - name: Najít ID tenanta
+          href: how-to-set-azure-tenant.md
         - name: Vyhledání předplatného Azure
           href: how-to-set-azure-subscription.md
         - name: Vytvoření účtu Media Services
@@ -70,6 +72,8 @@
           displayName: 'AAD, Active Directory'
     - name: REST
       items:
+        - name: Povolit důvěryhodné úložiště
+          href: tutorial-trusted-storage-rest.md
         - name: Kódování a streamování vzdáleného souboru – REST
           href: stream-files-tutorial-with-rest.md
         - name: Klíče spravované zákazníkem s využitím REST API
@@ -305,6 +309,12 @@
           displayName: 'migration, samples'
 - name: Návody
   items:
+    - name: Vyhledání tenanta a předplatného
+      items:
+        - name: Najít ID tenanta
+          href: how-to-set-azure-tenant.md
+        - name: Najít ID předplatného
+          href: how-to-set-azure-subscription.md
     - name: Vytváření prostředků a nahrávání médií
       items:
         - name: Vytvoření prostředku

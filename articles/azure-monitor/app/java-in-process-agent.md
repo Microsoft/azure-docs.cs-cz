@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 249afa361946e85a8c8ff241f07d7aae608949ae
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 811827c1053349d4fa80a25e5cf362331e5d87bc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745696"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383173"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor monitorování aplikací s kódováním kódu Java Application Insights
 
@@ -143,13 +143,13 @@ Následující tabulka představuje aktuálně podporované vlastní typy teleme
 
 |                     | Mikrometr | Log4j, logback, červenec | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Vlastní události**   |            |                     |  Ano    |
-| **Vlastní metriky**  |  Ano       |                     |  Ano    |
-| **Závislosti**    |            |                     |  Ano    |
-| **Výjimky**      |            |  Ano                |  Ano    |
-| **Page Views**      |            |                     |  Ano    |
-| **Žádosti**        |            |                     |  Ano    |
-| **Trasování**          |            |  Ano                |  Ano    |
+| **Vlastní události**   |            |                     |  Yes    |
+| **Vlastní metriky**  |  Yes       |                     |  Yes    |
+| **Závislosti**    |            |                     |  Yes    |
+| **Výjimky**      |            |  Yes                |  Yes    |
+| **Page Views**      |            |                     |  Yes    |
+| **Žádosti**        |            |                     |  Yes    |
+| **Trasování**          |            |  Yes                |  Yes    |
 
 V tuto chvíli neplánujeme vydání sady SDK pomocí Application Insights 3,0.
 
@@ -230,6 +230,7 @@ try {
 } finally {
     long endTime = System.currentTimeMillis();
     RemoteDependencyTelemetry telemetry = new RemoteDependencyTelemetry();
+    telemetry.setSuccess(success);
     telemetry.setTimestamp(new Date(startTime));
     telemetry.setDuration(new Duration(endTime - startTime));
     telemetryClient.trackDependency(telemetry);

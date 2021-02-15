@@ -12,12 +12,12 @@ ms.date: 08/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73318d1ee14894f5d22f7c4d2e61418e3b1038c1
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 706f759243fd9edbd5f47633cb2638d6b06beec1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636873"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376356"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -45,17 +45,17 @@ Pokud byste ale chtěli mít všechny nejnovější funkce a aktualizace, nejlep
 Další informace o [automatickém upgradu](how-to-connect-install-automatic-upgrade.md) získáte pomocí tohoto odkazu.
 
 >[!IMPORTANT]
-> Od 1. listopadu 2020 zahájíme implementaci procesu vyřazení, přičemž verze Azure AD Connect vydané před více než 18 měsíci budou zastaralé. V tuto chvíli zahájíme tento proces tím, že vyřadíme všechny verze Azure AD Connect s verzí 1.3.20.0 (které byly vydané na 4/24/2019) a starší, a budeme pokračovat, abychom vyhodnotili vyřazení starších verzí Azure AD Connect pokaždé, když dojde k vydání nových verzí.
+> Od 1. dubna 2024 vyřadíme verze Azure AD Connect vydané před 1. května 2018 verze 1.1.751.0 a starší. 
 >
 > Abyste získali optimální prostředí podpory, musíte mít jistotu, že používáte nejnovější verzi Azure AD Connect. 
 >
->Pokud spustíte zastaralou verzi Azure AD Connect nebudete mít k dispozici nejnovější opravy zabezpečení, vylepšení výkonu, řešení potíží a diagnostické nástroje a vylepšení služeb. Pokud ale potřebujete podporu, můžeme vám poskytnout úroveň služby, kterou vaše organizace potřebuje.
+>Pokud spustíte vystaralou verzi Azure AD Connect nebudete mít k dispozici nejnovější opravy zabezpečení, vylepšení výkonu, řešení potíží a diagnostické nástroje a vylepšení služeb. Pokud požadujete podporu, můžeme vám poskytnout úroveň služby, kterou vaše organizace potřebuje.
 >
->Pokud jste povolili Azure AD Connect pro synchronizaci, brzy automaticky zahájíte přijímání oznámení o stavu, která vás upozorní na nadcházející vyřazení, pokud používáte některou ze starších verzí.
+
 >
 >Další informace o tom, jak upgradovat Azure AD Connect na nejnovější verzi najdete v [tomto článku](./how-to-upgrade-previous-version.md) .
 >
->Informace o historii verzí u zastaralých verzí najdete v článku [archiv Historie verzí Azure AD Connect](reference-connect-version-history-archive.md) .
+>Informace o historii verzí v vyřazených verzích najdete v článku [archiv Historie vydání verze Azure AD Connect](reference-connect-version-history-archive.md) .
 
 ## <a name="15450"></a>1.5.45.0
 

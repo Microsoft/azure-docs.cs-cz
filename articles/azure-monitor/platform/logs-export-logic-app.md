@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: 04f1eb0d9db00a2be1a4619cafe38aa18145fc78
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 21b9d73da0df5ada626500a706a19d1025de1dcc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185993"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391962"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>Archivace dat z pracovního prostoru Log Analytics do Azure Storage pomocí aplikace logiky
 Tento článek popisuje způsob, jak použít [Azure Logic Apps](../../logic-apps/index.yml) k dotazování dat z pracovního prostoru Log Analytics v Azure monitor a odeslání do Azure Storage. Tento postup použijte v případě, že potřebujete exportovat data protokolu Azure Monitor pro scénáře auditování a dodržování předpisů nebo pokud chcete, aby mohla jiná služba načíst tato data.  
@@ -39,7 +39,7 @@ SecurityEvent
 
 Při exportu dat podle plánu použijte v dotazu funkci ingestion_time (), abyste se ujistili, že nebudete mít pozdě přijíždějící data. Pokud jsou data zpožděna kvůli problémům se sítí nebo platformou, bude při použití času příjmu zajištěno, že budou zahrnuty do dalšího spuštění aplikace logiky. Příklad najdete v tématu o [akci přidání protokolů Azure monitor](#add-azure-monitor-logs-action) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Níže jsou uvedené požadavky, které je nutné před dokončením tohoto postupu dokončit.
 
 - Log Analytics pracovní prostor. Uživatel, který vytváří aplikaci logiky, musí mít k pracovnímu prostoru oprávnění alespoň pro čtení. 
@@ -69,7 +69,7 @@ V Azure Portal přejděte na **Logic Apps** a klikněte na **Přidat**. Vyberte 
 Klikněte na tlačítko **zkontrolovat + vytvořit** a pak **vytvořit**. Po dokončení nasazení klikněte na **Přejít k prostředku** a otevřete **Návrháře Logic Apps**.
 
 ## <a name="create-a-trigger-for-the-logic-app"></a>Vytvoření triggeru pro aplikaci logiky
-V části **začít se společným triggerem** vyberte **opakování**. Tím se vytvoří aplikace logiky, která se automaticky spustí v pravidelných intervalech. V poli **frekvence** akce vyberte **hodiny** a v poli **interval** zadejte **1** , pokud chcete pracovní postup spustit jednou za den.
+V části **začít se společným triggerem** vyberte **opakování**. Tím se vytvoří aplikace logiky, která se automaticky spustí v pravidelných intervalech. V poli **frekvence** akce vyberte **den** a v poli **interval** zadejte **1** , pokud chcete pracovní postup spustit jednou za den.
 
 ![Akce opakování](media/logs-export-logicapp/recurrence-action.png)
 

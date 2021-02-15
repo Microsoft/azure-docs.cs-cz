@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: b0b0c43039648737b229edc79dd4e0a3dc45f38e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 014c592713a8568b3bbc7e8e536f81b203271ccc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683336"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388069"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Použití spravovaných identit s Azure Machine Learningm (Preview)
 
@@ -29,6 +29,7 @@ V tomto článku se dozvíte, jak používat spravované identity k těmto akcí
 
  * Nakonfigurujte a použijte ACR pro váš pracovní prostor Azure Machine Learning, aniž byste museli povolit přístup uživatelů pro správce k ACR.
  * Přístup k privátnímu externímu ACR k vašemu pracovnímu prostoru a získání základních imagí pro školení nebo odvozování.
+ * Vytvořte pracovní prostor s uživatelem přiřazenou spravovanou identitou pro přístup k přidruženým prostředkům.
 
 > [!IMPORTANT]
 > Použití spravovaných identit k řízení přístupu k prostředkům pomocí Azure Machine Learning je aktuálně ve verzi Preview. Funkce ve verzi Preview je poskytována tak, jak je, bez záruky podpory nebo smlouvy o úrovni služeb. Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
@@ -102,7 +103,7 @@ Pokud nepřinesete vlastní ACR, služba Azure Machine Learning ji při provád�
 
 ### <a name="create-compute-with-managed-identity-to-access-docker-images-for-training"></a>Vytvoření COMPUTE se spravovanou identitou pro přístup k imagí Docker pro školení
 
-Pokud chcete získat přístup k pracovnímu prostoru ACR, vytvořte výpočetní cluster Machine Learning se zapnutou spravovanou identitou přiřazenou systémem. Identitu můžete povolit z Azure Portal nebo studia při vytváření výpočetních prostředků nebo z Azure CLI pomocí
+Pokud chcete získat přístup k pracovnímu prostoru ACR, vytvořte výpočetní cluster Machine Learning se zapnutou spravovanou identitou přiřazenou systémem. Identitu můžete z Azure Portal nebo studia povolit při vytváření výpočetních prostředků nebo v Azure CLI pomocí níže uvedených pokynů. Další informace najdete v tématu [použití spravované identity s výpočetními clustery](how-to-create-attach-compute-cluster.md#managed-identity).
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -171,7 +172,7 @@ env.python.user_managed_dependencies = True
 
 ### <a name="build-azure-machine-learning-managed-environment-into-base-image-from-private-acr-for-training-or-inference"></a>Sestavit Azure Machine Learning spravované prostředí na základní image z privátního ACR pro školení nebo odvozování
 
-V tomto scénáři Azure Machine Learning služba sestaví školicí nebo odvozující prostředí nad základní imagí, kterou zadáte z privátního ACR. Vzhledem k tomu, že úloha sestavení obrázku se v pracovním prostoru ACR pomocí úloh ACR, je nutné provést další kroky, aby byl přístup povolen.
+V tomto scénáři Azure Machine Learning služba sestaví školicí nebo odvozující prostředí nad základní imagí, kterou zadáte z privátního ACR. Vzhledem k tomu, že se úloha sestavení obrázku stane v pracovním prostoru ACR pomocí úloh ACR, je nutné provést další kroky, aby byl přístup povolen.
 
 1. Vytvořte __uživatelsky přiřazenou spravovanou identitu__ a Udělte identitě ACRPull přístup k __privátnímu ACR__.  
 1. Udělte __spravované identitě přiřazené systémem__ pracovního prostoru roli spravovaného operátoru identity v __uživatelsky přiřazené identitě__ z předchozího kroku. Tato role umožňuje pracovnímu prostoru přiřazení spravované identity přiřazené uživateli k ACR úlohy pro vytvoření spravovaného prostředí. 
@@ -228,6 +229,41 @@ Po nakonfigurování ACR bez uživatele s oprávněními správce, jak je popsá
 
 > [!NOTE]
 > Pokud přenesete vlastní cluster AKS, musí mít cluster povolený instanční objekt namísto spravované identity.
+
+## <a name="create-workspace-with-user-assigned-managed-identity"></a>Vytvořit pracovní prostor s uživatelem přiřazenou spravovanou identitou
+
+Při vytváření pracovního prostoru můžete zadat spravovanou identitu přiřazenou uživatelem, která se bude používat pro přístup k přidruženým prostředkům: ACR, Trezor klíčů, Storage a App Insights.
+
+Nejdřív [vytvořte spravovanou identitu přiřazenou uživatelem](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli])a poznamenejte si ID prostředku ARM spravované identity.
+
+Pak pomocí rozhraní příkazového řádku Azure nebo sady Python SDK vytvořte pracovní prostor. Při použití rozhraní příkazového řádku zadejte ID pomocí `--primary-user-assigned-identity` parametru. Při použití sady SDK použijte `primary_user_assigned_identity` . Následují příklady použití rozhraní příkazového řádku Azure CLI a Python k vytvoření nového pracovního prostoru pomocí těchto parametrů:
+
+__Azure CLI__
+
+```azurecli-interactive
+az ml workspace create -w <workspace name> -g <resource group> --primary-user-assigned-identity <managed identity ARM ID>
+```
+
+__Python__
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.create(name="workspace name", 
+    subscription_id="subscription id", 
+    resource_group="resource group name",
+    primary_user_assigned_identity="managed identity ARM ID")
+```
+
+Pomocí [šablony ARM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) můžete také vytvořit pracovní prostor s uživatelem přiřazenou spravovanou identitou.
+
+> [!IMPORTANT]
+> Pokud přenesete vlastní přidružené prostředky, místo toho, aby je služba Azure Machine Learning vytvořit, musíte těmto prostředkům udělit spravované role identity. K provedení přiřazení použijte [šablonu ARM přiřazení role](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment) .
+
+V případě pracovního prostoru s (klíče spravovaného zákazníkem pro šifrování) [ https://docs.microsoft.com/azure/machine-learning/concept-data-encryption ] můžete předat spravovanou identitu přiřazenou uživateli k ověření z úložiště do Key Vault. K předání spravované identity použijte argument __User-Assigned-identity-for-CMK-Encryption__ (CLI) nebo __user_assigned_identity_for_cmk_encryption__ (SDK). Tato spravovaná identita může být stejná nebo jiná jako spravovaná identita přiřazená primárnímu uživateli pracovního prostoru.
+
+Pokud máte existující pracovní prostor, můžete ho aktualizovat ze systému na uživatelsky přiřazenou spravovanou identitu pomocí ```az ml workspace update``` příkazu CLI nebo ```Workspace.update``` metody Python SDK.
+
 
 ## <a name="next-steps"></a>Další kroky
 

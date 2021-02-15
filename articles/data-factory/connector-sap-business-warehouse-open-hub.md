@@ -1,23 +1,18 @@
 ---
 title: Kopírování dat z SAP Business Warehouse přes Open hub
 description: Přečtěte si, jak kopírovat data z SAP Business Warehouse (ČERNOBÍLe) prostřednictvím otevřeného centra pro podporovaná úložiště dat jímky pomocí aktivity kopírování v Azure Data Factoryovém kanálu.
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/02/2020
-ms.openlocfilehash: ca8fad59e581ef3f5a3ebf585356564d539f0bbd
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: b766ce248a3543ef3323e026d760e550a0e3dd75
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430726"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386675"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopírování dat z SAP Business Warehouse přes Open hub pomocí Azure Data Factory
 

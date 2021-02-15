@@ -2,13 +2,13 @@
 title: Izolování Azure Service Bus aplikací proti výpadkům a katastrofám
 description: V tomto článku najdete techniky ochrany aplikací proti možnému výpadku Azure Service Bus.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 4f3ff89e3ec59ad4445ab0b7ee7eeb45d18fa3b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/10/2021
+ms.openlocfilehash: b9090a54cd58788dbd13f528af4dda4aa96005b7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88065620"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374588"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Osvědčené postupy pro ochranu aplikací před haváriemi a výpadky služby Service Bus
 
@@ -23,11 +23,13 @@ Koncepce vysoké dostupnosti a zotavení po havárii jsou postaveny přímo do A
 
 ### <a name="geo-disaster-recovery"></a>Geo-Disaster obnovení
 
-Service Bus Premium podporuje obnovení geografických havárií na úrovni oboru názvů. Další informace najdete v tématu [Azure Service Busho geografického zotavení po havárii](service-bus-geo-dr.md). Funkce zotavení po havárii, která je dostupná jenom pro [SKU Premium](service-bus-premium-messaging.md) , implementuje zotavení po havárii metadat a spoléhá na primární a sekundární obory názvů pro zotavení po havárii.
+Service Bus Premium podporuje obnovení geografických havárií na úrovni oboru názvů. Další informace najdete v tématu [Azure Service Busho geografického zotavení po havárii](service-bus-geo-dr.md). Funkce zotavení po havárii, která je dostupná jenom pro [SKU Premium](service-bus-premium-messaging.md) , implementuje zotavení po havárii metadat a spoléhá na primární a sekundární obory názvů pro zotavení po havárii. Při obnovení Geo-Disaster se mezi primárními a sekundárními obory názvů replikují jenom metadata pro entity.  
 
 ### <a name="availability-zones"></a>Zóny dostupnosti
 
 SKU Service Bus Premium podporuje [zóny dostupnosti](../availability-zones/az-overview.md)a poskytuje umístění s izolací chyb v rámci stejné oblasti Azure. Service Bus spravuje tři kopie úložiště pro zasílání zpráv (1 primární a 2 sekundární). Service Bus udržuje všechny tři kopie synchronizovány s daty a operacemi správy. Pokud primární kopie neproběhne úspěšně, jedna ze sekundárních kopií bude povýšena na primární bez pozorovaného výpadku. Pokud se aplikace zobrazí jako přechodné odpojení od Service Bus, logika opakování v sadě SDK se automaticky znovu připojí k Service Bus. 
+
+Když použijete zóny dostupnosti, metadata i data (zprávy) se replikují napříč datovými centry v zóně dostupnosti. 
 
 > [!NOTE]
 > Podpora Zóny dostupnosti pro Azure Service Bus Premium je dostupná jenom v [oblastech Azure](../availability-zones/az-region.md) , kde se nacházejí zóny dostupnosti.

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 4d071af6f72bfe6136296185e65007d2413ed2c4
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: d83bc653ae8c3ff5a9553de568bc6f2355f18760
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746709"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104616"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Nejčastější dotazy k rozhraní Azure API pro FHIR
 
@@ -108,13 +108,16 @@ Podporujeme řazení podle data poslední aktualizace: _sort = _lastUpdated. Dal
 
 ### <a name="does-the-azure-api-for-fhir-support-everything"></a>$Everything podporuje rozhraní API Azure pro FHIR? 
 
-Ne. V tuto chvíli nepodporujeme $everything. Je však možné dosáhnout pomocí dvou volání rozhraní API. Chcete-li například získat pacient $ All, můžete nejprve záznam pacienta pomocí/Patient/[ID] a pak druhé volání načíst všechna data pacienta pomocí/Patient/[ID]/*.
+No. V tuto chvíli nepodporujeme $everything. Je však možné dosáhnout pomocí dvou volání rozhraní API. Chcete-li například získat pacient $ All, můžete nejprve záznam pacienta pomocí/Patient/[ID] a pak druhé volání načíst všechna data pacienta pomocí/Patient/[ID]/*.
 
 Další podrobnosti najdete v tomto [příspěvku komunity](https://chat.fhir.org/#narrow/stream/179166-implementers/topic/.24everything.20with.20_type). 
 
 ### <a name="how-does-export-work"></a>Jak $export funguje?
 
 $export je součástí specifikace FHIR: https://hl7.org/fhir/uv/bulkdata/export/index.html . Pokud je u služby FHIR nakonfigurovaná spravovaná identita a účet úložiště, a pokud má spravovaná identita přístup k tomuto účtu úložiště, můžete jednoduše volat $export v rozhraní FHIR API a všechny prostředky FHIR se exportují do účtu úložiště. Další informace najdete [v našem článku o $export](./export-data.md).
+
+### <a name="is-de-identified-export-available-at-patient-and-group-level-as-well"></a>Je exportovatelný přístup k dispozici i na úrovni pacienta a skupiny?
+Příkaz pro anonymní export se v současné době podporuje jenom pro úplný export systému (/$export) a ne pro export pacienta (/patient/$export). Pracujeme na tom, aby byl dostupný i na úrovni pacienta.
 
 ## <a name="using-azure-api-for-fhir"></a>Používání Azure API pro FHIR
 

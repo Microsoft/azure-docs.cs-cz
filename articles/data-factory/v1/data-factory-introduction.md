@@ -1,23 +1,18 @@
 ---
 title: Úvod do Data Factory, služba pro integraci dat
 description: Dozvíte se, že Data Factory je cloudová služba pro integraci dat, která orchestruje a automatizuje přesouvání a transformaci dat.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
-ms.assetid: cec68cb5-ca0d-473b-8ae8-35de949a009e
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 101de32aea47bb3dd3c8a04434993c8614939c37
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1cee5f92af4e23a6bc0d195bc13bc3f11f53443d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495561"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382969"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Úvod do služby Azure Data Factory 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -28,7 +23,7 @@ ms.locfileid: "96495561"
 > Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si článek [Úvod do Data Factory V2](../introduction.md).
 
 
-## <a name="what-is-azure-data-factory"></a>Co je služba Azure Data Factory?
+## <a name="what-is-azure-data-factory"></a>Co je Azure Data Factory?
 Jak se ve světě velkých objemů dat využívají existující data ve firmách? Je možné rozšířit data generovaná v cloudu pomocí referenčních dat z místních zdrojů dat nebo jiných různorodých zdrojů dat? 
 
 Například herní společnost shromažďuje protokoly generované hrami v cloudu. Tyto protokoly chce analyzovat, aby získala informace o preferencích zákazníků, demografických ukazatelích, způsobech používání atd. Společnost zároveň chce identifikovat příležitosti křížového a následného prodeje, vyvíjet nové, zajímavé funkce, podpořit obchodní růst a zlepšovat zkušenosti zákazníků. 
@@ -71,7 +66,7 @@ Například můžete shromažďovat data v Azure Data Lake Store a později je t
 ### <a name="transform-and-enrich"></a>Transformace a rozšíření
 Jakmile budou data v centralizovaném úložišti dat v cloudu, můžete je zpracovat nebo transformovat pomocí výpočetních služeb, jako je HDInsight Hadoop, Spark, Data Lake Analytics nebo Machine Learning. Budete chtít spolehlivě produkovat transformovaná data podle udržitelného a řízeného plánu, abyste mohli do produkčních prostředí dodávat důvěryhodná data. 
 
-### <a name="publish"></a>Publikování 
+### <a name="publish"></a>Publikovat 
 Přenášejte transformovaná data z cloudu do místních zdrojů, jako je SQL Server. Případně je můžete uchovávat ve zdrojích cloudového úložiště, aby je mohly využívat nástroje BI, analytické nástroje a další aplikace.
 
 ## <a name="key-components"></a>Klíčové komponenty
@@ -140,7 +135,7 @@ Datové kanály ve službě Azure Data Factory můžete vytvořit pomocí někte
 
 Pokud chcete zjistit, jak sestavit datové továrny s datovými kanály, postupujte podle podrobných pokynů v následujících kurzech:
 
-| Kurz | Popis |
+| Kurz | Description |
 | --- | --- |
 | [Přesun dat mezi dvěma cloudovými úložišti dat](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Vytvořte datovou továrnu s kanálem, který přesouvá data z úložiště objektů blob do SQL Database. |
 | [Transformace dat pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md) |Sestavíte svou první datovou továrnu Azure s datovým kanálem, který zpracovává data pomocí skriptu Hive v clusteru Azure HDInsight (Hadoop). |

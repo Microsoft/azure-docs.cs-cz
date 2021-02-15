@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: 75c6841b7fed354843b955a971f02946be349a02
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 04fe87cd69efc4c064b8fbdc596a5f9e187abbb1
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548881"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102236"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>Azure Defender pro službu IoT – směrný plán a vlastní kontroly
 
@@ -35,9 +35,13 @@ Vlastní kontroly směrného plánu vytvoří vlastní seznam kontrol pro každ�
 ## <a name="setting-baseline-properties"></a>Nastavení vlastností směrného plánu
 
 1. V IoT Hub vyhledejte a vyberte zařízení, které chcete změnit.
+
 1. Klikněte na zařízení a pak klikněte na modul **azureiotsecurity** .
+
 1. Klikněte na možnost **Nevlákenovaná identita modulu**.
+
 1. Nahrajte do zařízení soubor **vlastních kontrol standardních kontrol** .
+
 1. Přidejte do modulu zabezpečení vlastnosti směrného plánu a klikněte na **Uložit**.
 
 ### <a name="baseline-custom-check-file-example"></a>Příklad souboru vlastní kontrolní kontroly směrného plánu
@@ -62,7 +66,7 @@ Konfigurace vlastních kontrol standardních hodnot:
 
 ## <a name="baseline-custom-check-properties"></a>Vlastnosti vlastní kontroly směrného plánu
 
-| Název| Stav | Platné hodnoty| Výchozí hodnoty| Popis |
+| Název| Status | Platné hodnoty| Výchozí hodnoty| Description |
 |------|-----|------|-----|-----|
 |baselineCustomChecksEnabled|Požadováno: true |Platné hodnoty: **logická hodnota** |Výchozí hodnota: **false** |Maximální časový interval před odesláním zpráv s vysokou prioritou.|
 |baselineCustomChecksFilePath |Požadováno: true|Platné hodnoty: **řetězec**, **hodnota null** |Výchozí hodnota: **null** |Úplná cesta k základní konfiguraci XML|

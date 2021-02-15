@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ba00e6f4fe97b0614483fd04ddee9fc768558db5
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 950a786b29a8144c4bb192fa6078e8c88d67481d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102100"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384448"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>Pochopení rolí vyžadovaných k provádění běžných úloh v synapse
 
@@ -87,7 +87,7 @@ Zobrazení protokolů pro Poznámkový blok a provádění úloh |Operátor COMP
 Zrušení všech poznámkových bloků nebo úloh Sparku spuštěných ve fondu Apache Spark|Synapse výpočetní operátor na fondu Apache Spark.|bigDataPools/useCompute
 Vytvoření definice poznámkového bloku nebo úlohy|Synapse uživatel nebo </br>Vlastník, přispěvatel nebo čtenář Azure v pracovním prostoru</br> *Aby bylo možné spustit, publikovat nebo potvrdit změny, jsou vyžadovány další oprávnění.*|čtení</br></br></br></br></br> 
 Seznam a otevření publikovaného poznámkového bloku nebo definice úlohy včetně kontroly uložených výstupů|Uživatel artefaktu synapse, vydavatel artefaktu synapse, přispěvatel synapse v pracovním prostoru|artefakty/čtení
-Spustit Poznámkový blok a zkontrolovat jeho výstup|Synapse Apache Spark Administrator, operátor synapse COMPUTE na vybraném fondu Apache Spark|bigDataPools/useCompute 
+Spustit Poznámkový blok a zkontrolovat jeho výstup nebo odeslat Sparkovou úlohu|Synapse Apache Spark Administrator, operátor synapse COMPUTE na vybraném fondu Apache Spark|bigDataPools/useCompute 
 Publikování nebo odstranění definice poznámkového bloku nebo úlohy (včetně výstupu) do služby|Vydavatel artefaktů v pracovním prostoru, synapse Apache Spark správce|poznámkové bloky/zápis, odstranění
 Potvrďte změny v poznámkovém bloku nebo definici úlohy do úložiště Git.|Oprávnění Gitu|žádné
 KANÁLY, MODULY RUNTIME INTEGRACE, TOKY DAT, DATOVÉ SADY & TRIGGERY|

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9fa23ca2ae655a11d7aaa4be67e08a6b3fa44394
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 6e53a6a4875b3dde55d1822daa342d6cde536d1c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359383"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096425"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Konfigurace nástroje pro vyrovnávání zatížení pro skupinu dostupnosti Always On SQL Server v Azure Virtual Machines
 
@@ -72,11 +72,11 @@ Nejdřív vytvořte Nástroj pro vyrovnávání zatížení.
    | --- | --- |
    | **Název** |Textový název představující Nástroj pro vyrovnávání zatížení. Například **sqlLB**. |
    | **Typ** |**Interní**: většina implementací používá interní nástroj pro vyrovnávání zatížení, který umožňuje aplikacím v rámci stejné virtuální sítě připojit se ke skupině dostupnosti.  </br> **Externí**: umožňuje aplikacím připojit se ke skupině dostupnosti prostřednictvím veřejného internetového připojení. |
-   | **Skladová jednotka (SKU)** |**Basic**: výchozí možnost. Platí pouze v případě, že instance SQL Server jsou ve stejné skupině dostupnosti. </br> **Standardní**: upřednostňovaná. Platí, pokud jsou instance SQL Server ve stejné skupině dostupnosti. Vyžaduje se, pokud jsou vaše SQL Server instance v různých zónách dostupnosti. |
+   | **SKU** |**Basic**: výchozí možnost. Platí pouze v případě, že instance SQL Server jsou ve stejné skupině dostupnosti. </br> **Standardní**: upřednostňovaná. Platí, pokud jsou instance SQL Server ve stejné skupině dostupnosti. Vyžaduje se, pokud jsou vaše SQL Server instance v různých zónách dostupnosti. |
    | **Virtuální síť** |Vyberte virtuální síť, ve které se nacházejí instance SQL Server. |
    | **Podsíť** |Vyberte podsíť, ve které jsou instance SQL Server. |
    | **Přiřazení IP adresy** |**staticky**. |
-   | **Privátní IP adresa** |Zadejte dostupnou IP adresu z podsítě. Tuto IP adresu použijte při vytváření naslouchacího procesu v clusteru. V rámci skriptu PowerShellu dále v tomto článku použijte tuto adresu pro `$ILBIP` proměnnou. |
+   | **Privátní IP adresa** |Zadejte dostupnou IP adresu z podsítě. Tuto IP adresu použijte při vytváření naslouchacího procesu v clusteru. V rámci skriptu PowerShellu dále v tomto článku použijte tuto adresu pro `$ListenerILBIP` proměnnou. |
    | **Předplatné** |Pokud máte více předplatných, může se toto pole zobrazit. Vyberte předplatné, které chcete k tomuto prostředku přidružit. Obvykle se jedná o stejné předplatné, jako všechny prostředky pro skupinu dostupnosti. |
    | **Skupina prostředků** |Vyberte skupinu prostředků, ve které jsou instance SQL Server. |
    | **Umístění** |Vyberte umístění Azure, ve kterém jsou instance SQL Server. |
@@ -120,7 +120,7 @@ Sonda definuje, jak Azure ověřuje, které instance SQL Server aktuálně vlast
    | Nastavení | Hodnota |
    | --- | --- |
    | **Název** |Textový název, který představuje test. Například **SQLAlwaysOnEndPointProbe**. |
-   | **Protokol** |**PROTOKOLU** |
+   | **Protokol** |**TCP** |
    | **Port** |Můžete použít libovolný dostupný port. Například *59999*. |
    | **Interval** |*5* |
    | **Prahová hodnota pro poškozený stav** |*2* |
@@ -146,7 +146,7 @@ Pravidla vyrovnávání zatížení konfigurují způsob, jakým nástroj pro vy
    | Nastavení | Hodnota |
    | --- | --- |
    | **Název** |Textový název reprezentující pravidla vyrovnávání zatížení. Například **SQLAlwaysOnEndPointListener**. |
-   | **Protokol** |**PROTOKOLU** |
+   | **Protokol** |**TCP** |
    | **Port** |*1433* |
    | **Port back-endu** |*1433*. Tato hodnota se ignoruje, protože toto pravidlo používá **plovoucí IP adresu (přímá návratová hodnota serveru)**. |
    | **Sonda** |Použijte název testu, který jste vytvořili pro tento nástroj pro vyrovnávání zatížení. |

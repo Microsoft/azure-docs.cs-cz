@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e1a9f5d08168841d7651a17e2de4995b7a7cf38b
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: f7c8a7eb06490a46e1c5b633944dcd596fa08515
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820717"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093620"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault rozšíření virtuálního počítače pro Windows
 
@@ -35,25 +35,31 @@ Rozšíření virtuálního počítače Key Vault je podporované taky na vlastn
 - #12 PKCS
 - PEM
 
-## <a name="prerequisities"></a>Konfigurátoru
+## <a name="prerequisites"></a>Požadavky
+
   - Key Vault instance s certifikátem Viz [vytvoření Key Vault](../../key-vault/general/quick-create-portal.md)
   - Virtuální počítač musí mít přiřazenou [spravovanou identitu](../../active-directory/managed-identities-azure-resources/overview.md) .
   - Zásady přístupu Key Vault musí být nastavené s tajnými klíči `get` a `list` oprávněním pro SPRAVOVANOU identitu VM/VMSS k načtení části certifikátu tajného klíče. Další informace najdete v tématu [ověření Key Vault](../../key-vault/general/authentication.md) a [přiřazení zásad Key Vault přístupu](../../key-vault/general/assign-access-policy-cli.md).
-  -  VMSS by měla mít následující nastavení identity: ` 
+  -  Virtual Machine Scale Sets by měl mít následující nastavení identity:
+
+  ``` 
   "identity": {
-  "type": "UserAssigned",
-  "userAssignedIdentities": {
-  "[parameters('userAssignedIdentityResourceId')]": {}
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "[parameters('userAssignedIdentityResourceId')]": {}
+    }
   }
-  }
-  `
+  ```
   
-- Rozšíření integrace by mělo mít toto nastavení: `
-                  "authenticationSettings": {
-                    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
-                    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
-                  }
-   `
+  - Rozšíření integrace by mělo mít toto nastavení:
+
+  ```
+  "authenticationSettings": {
+    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
+    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
+  }
+  ```
+
 ## <a name="extension-schema"></a>Schéma rozšíření
 
 Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního počítače. Přípona nevyžaduje chráněná nastavení – veškerá jeho nastavení se považují za veřejné informace. Přípona vyžaduje seznam monitorovaných certifikátů, četnost dotazování a cílové úložiště certifikátů. Konkrétně se jedná o tyto:  
@@ -164,7 +170,9 @@ Pokud to chcete zapnout, nastavte následující:
     ...
 }
 ```
-> Značte Použití této funkce není kompatibilní se šablonou ARM, která vytváří identitu přiřazenou systémem a aktualizuje zásadu přístupu Key Vault s touto identitou. Výsledkem je zablokování, protože zásady přístupu k trezoru se nedají aktualizovat, dokud se nespustila všechna rozšíření. Místo toho byste měli před nasazením použít *jednu přiřazenou IDENTITU MSI* a před nasazením vaše trezory s touto identitou.
+
+> [!Note] 
+> Použití této funkce není kompatibilní se šablonou ARM, která vytváří identitu přiřazenou systémem a aktualizuje zásadu přístupu Key Vault s touto identitou. Výsledkem je zablokování, protože zásady přístupu k trezoru se nedají aktualizovat, dokud se nespustila všechna rozšíření. Místo toho byste měli před nasazením použít *jednu přiřazenou IDENTITU MSI* a před nasazením vaše trezory s touto identitou.
 
 ## <a name="azure-powershell-deployment"></a>Nasazení Azure PowerShell
 > [!WARNING]
@@ -222,9 +230,9 @@ Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření Ke
     
     ```azurecli
        # Start the deployment
-         az vm extension set --name "KeyVaultForWindows" `
+         az vm extension set -name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         --resource-group "<resourcegroup>" `
+         -resource-group "<resourcegroup>" `
          --vm-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
@@ -233,9 +241,9 @@ Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření Ke
 
    ```azurecli
         # Start the deployment
-        az vmss extension set --name "KeyVaultForWindows" `
+        az vmss extension set -name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         --resource-group "<resourcegroup>" `
+         -resource-group "<resourcegroup>" `
          --vmss-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```

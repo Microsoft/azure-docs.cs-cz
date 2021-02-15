@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 0d4ccc1a60f9ac3c2183023d3d3772da6a1e307b
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: f66aef64d68bd5d99d7a27d1382306d9202bd350
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99830749"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388052"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Vytváření a správa projektů Azure Migrate
 
@@ -87,7 +87,7 @@ Vyhledejte projekt následujícím způsobem:
 3. Vyberte odpovídající předplatné a Azure Migrate projekt.
 
 
-### <a name="find-a-legacy-project"></a>Najít starší projekt
+### <a name="find-a-classic-azure-migrate-project"></a>Najít klasický Azure Migrate projekt
 
 Pokud jste projekt vytvořili v [předchozí verzi](migrate-services-overview.md#azure-migrate-versions) Azure Migrate, najděte ho následujícím způsobem:
 

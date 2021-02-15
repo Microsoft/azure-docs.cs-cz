@@ -8,12 +8,12 @@ ms.date: 11/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 035cf5be4471cad7ac11eb8ce9a8a0ecb13a68da
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c5f28e2c2d370329dbee0fb76284a4b76b2b945e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462365"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376506"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Řešení potíží s IoT Edgem zařízením
 
@@ -240,7 +240,7 @@ Ve výchozím nastavení `agent` bude element vypadat jako v následujícím př
      type: docker
      env: {}
      config:
-       image: mcr.microsoft.com/azureiotedge-agent:1.0
+       image: mcr.microsoft.com/azureiotedge-agent:1.1
        auth: {}
    ```
 
@@ -252,7 +252,7 @@ Nahradit `env: {}` :
    ```
 
    > [!WARNING]
-   > Soubory YAML nemůžou obsahovat tabulátory jako identation. Místo toho použijte 2 mezery. Položky nejvyšší úrovně nemohou mít počáteční prázdné znaky.
+   > Soubory YAML nemůžou jako odsazení obsahovat tabulátory. Místo toho použijte 2 mezery. Položky nejvyšší úrovně nemohou mít počáteční prázdné znaky.
 
 Uložte soubor a restartujte správce zabezpečení IoT Edge.
 

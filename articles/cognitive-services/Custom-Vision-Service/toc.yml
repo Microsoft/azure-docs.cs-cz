@@ -59,10 +59,8 @@
       href: ./update-application-to-3.0-sdk.md
 - name: Referenční informace
   items:
-    - name: Rozhraní API Custom Vision pro trénování
-      href: 'https://go.microsoft.com/fwlink/?linkid=865446'
-    - name: Rozhraní API Custom Vision pro predikce
-      href: 'https://go.microsoft.com/fwlink/?linkid=865445'
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/custom-vision/'
     - name: Sady SDK
       items:
         - name: .NET

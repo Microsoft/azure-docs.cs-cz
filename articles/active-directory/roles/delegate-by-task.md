@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ad48141c69d78096981b89758afd56089093021
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 8d096bcd15254df4081a005b268934659e43037d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742926"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380300"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role správce podle úlohy správce v Azure Active Directory
 
@@ -109,7 +109,7 @@ Zobrazení metrik a výstrah služby synchronizace | Čtenář ([Viz dokumentace
 
 Úkol | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
-Spravovat domény | Globální správce | 
+Spravovat domény | Správce názvů domén | 
 Načíst veškerou konfiguraci | Čtečky adresářů | Výchozí role uživatele ([Viz dokumentace](../fundamentals/users-default-permissions.md))
 
 ## <a name="domain-services"></a>Domain Services
@@ -216,9 +216,9 @@ Vyzkoušet nebo koupit předplatné | Správce fakturace |
 Úkol | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Odstranit všechna existující hesla aplikací vytvořená vybranými uživateli | Globální správce | 
-Zakázat MFA | Globální správce | 
-Povolení MFA | Globální správce | 
-Správa nastavení služby MFA | Globální správce | 
+Zakázat MFA | Správce ověřování (prostřednictvím PowerShellu) | Správce privilegovaného ověřování (prostřednictvím PowerShellu)
+Povolení MFA | Správce ověřování (prostřednictvím PowerShellu) | Správce privilegovaného ověřování (prostřednictvím PowerShellu) 
+Správa nastavení služby MFA | Správce zásad ověřování | 
 Vyžadovat, aby vybraní uživatelé znovu poskytovali metody kontaktu | Správce ověřování | 
 Obnovení Multi-Factor Authentication na všech zapamatovaných zařízeních  | Správce ověřování | 
 
@@ -226,15 +226,15 @@ Obnovení Multi-Factor Authentication na všech zapamatovaných zařízeních  |
 
 Úkol | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
-Blokovat/odblokovat uživatele | Globální správce | 
-Konfigurace uzamčení účtu | Globální správce | 
-Konfigurace pravidel ukládání do mezipaměti | Globální správce | 
-Konfigurace výstrahy na podvod | Globální správce
-Konfigurace oznámení | Globální správce | 
-Konfigurace jednorázového přihlášení | Globální správce | 
-Konfigurace nastavení telefonního hovoru | Globální správce | 
-Konfigurovat zprostředkovatele | Globální správce | 
-Konfigurovat nastavení serveru | Globální správce | 
+Blokovat/odblokovat uživatele | Správce zásad ověřování | 
+Konfigurace uzamčení účtu | Správce zásad ověřování | 
+Konfigurace pravidel ukládání do mezipaměti | Správce zásad ověřování | 
+Konfigurace výstrahy na podvod | Správce zásad ověřování
+Konfigurace oznámení | Správce zásad ověřování | 
+Konfigurace jednorázového přihlášení | Správce zásad ověřování | 
+Konfigurace nastavení telefonního hovoru | Správce zásad ověřování | 
+Konfigurovat zprostředkovatele | Správce zásad ověřování | 
+Konfigurovat nastavení serveru | Správce zásad ověřování | 
 Číst sestavu aktivity | Globální čtenář | 
 Načíst veškerou konfiguraci | Globální čtenář | 
 Číst stav serveru | Globální čtenář |  

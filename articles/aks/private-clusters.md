@@ -4,12 +4,12 @@ description: Zjistěte, jak vytvořit privátní cluster služby Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 2749e66375fbd808a9e87f252a813f1054ceff21
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: d3b53c860c150b5b67d38cf5d11db9f070ffb81d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525564"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392795"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Vytvoření privátního clusteru služby Azure Kubernetes
 
@@ -66,7 +66,7 @@ Kde `--enable-private-cluster` je povinný příznak pro soukromý cluster.
 > [!NOTE]
 > Pokud adresa mostu Docker (172.17.0.1/16) koliduje s podsítí CIDR, změňte adresu mostu Docker odpovídajícím způsobem.
 
-## <a name="configure-private-dns-zone"></a>Konfigurovat zónu Privátní DNS
+## <a name="configure-private-dns-zone"></a>Konfigurovat zónu Privátní DNS 
 
 Následující parametry lze využít ke konfiguraci Privátní DNS zóny.
 
@@ -79,7 +79,7 @@ Následující parametry lze využít ke konfiguraci Privátní DNS zóny.
 * Verze Preview verze AKS 0.4.71 nebo novější
 * Rozhraní API verze 2020-11-01 nebo novější
 
-### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>Vytvoření privátního clusteru AKS s Privátní DNS zónou
+### <a name="create-a-private-aks-cluster-with-private-dns-zone-preview"></a>Vytvoření privátního clusteru AKS s využitím zóny Privátní DNS (Preview)
 
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [none|system|custom private dns zone ResourceId]
