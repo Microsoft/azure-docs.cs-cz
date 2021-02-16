@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7cb8cb4d99ca8a63195eba21d82814fcd7820f5c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 5e4785ebd403e48c4de284f196b3233c7d7434a8
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807763"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530565"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Rychlý Start: zprovoznění služby Azure Sentinel
 
@@ -47,7 +47,7 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
 
     | Geografické pracovní prostory | Geografická data generovaná službou Azure Sentinel |
     | --- | --- |
-    | USA<br>Indie<br>Brazílie<br>Afrika<br>Jižní Korea | USA |
+    | USA<br>Indie<br>Brazílie<br>Afrika<br>Jižní Korea<br>Spojené arabské emiráty | USA |
     | Evropa<br>Francie<br>Švýcarsko | Evropa |
     | Austrálie | Austrálie |
     | Spojené království | Spojené království |

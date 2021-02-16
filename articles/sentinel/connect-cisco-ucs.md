@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: caa83b9149f39f69d0cbf44a2d6cb01fdaf29721
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 15e31b8dc5ac6db5861e3ea0fb5390ddf0a8c945
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567885"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530667"
 ---
 # <a name="connect-your-cisco-unified-computing-system-ucs-to-azure-sentinel"></a>Připojte systém Cisco Unified Computing System (UCS) k Azure Sentinel
 
@@ -53,7 +53,7 @@ Nakonfigurujte Cisco UCS pro přeposílání zpráv syslog do pracovního prosto
 
     1. Konfigurovat protokoly, které se mají shromažďovat
 
-        - Vyberte zařízení a závažnost v konfiguraci rozšířených nastavení pracovního prostoru.
+        - V konfiguraci agentů pracovního prostoru vyberte zařízení a závažnost.
 
     1. Konfigurace a připojení Cisco UCS
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 0583846fcd847e92a6f001dae828d31d9d11cb00
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: b10c47a31bf1be10c278d4d9e0dce633bc7bff6c
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567890"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530633"
 ---
 # <a name="connect-your-juniper-srx-firewall-to-azure-sentinel"></a>Připojení brány Juniper SRX firewall k Azure Sentinel
 
@@ -53,7 +53,7 @@ Nakonfigurujte Juniper SRX pro přeposílání zpráv syslog do vašeho pracovn�
 
     1. Konfigurovat protokoly, které se mají shromažďovat
 
-        - Vyberte zařízení a závažnost v konfiguraci rozšířených nastavení pracovního prostoru.
+        - V konfiguraci agentů pracovního prostoru vyberte zařízení a závažnost.
 
     1. Konfigurace a připojení Juniper SRX
 

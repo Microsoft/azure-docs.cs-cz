@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 321d73c78d0192dcb7a303f4aa70a4ff0f18ecea
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 79f3f93338d15562dcc37857d63bc8b2d7e96b05
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593701"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530548"
 ---
 # <a name="remote-rendering-sessions"></a>Relace Remote Renderingu
 
@@ -39,9 +39,9 @@ Každá relace projde několik fází.
 
 ### <a name="session-startup"></a>Spuštění relace
 
-Když požádáte o [Vytvoření nové relace](../how-tos/session-rest-api.md#create-a-session)pomocí ARR, je první věc, kterou vrátí [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)relace. Tento identifikátor UUID vám umožní zadat dotaz na informace o relaci. Identifikátor UUID a některé základní informace o relaci jsou trvalé po dobu 30 dnů, takže je můžete zadat dotaz na tyto informace i po zastavení relace. V tomto okamžiku bude **stav relace** hlášen jako **spuštění**.
+Když požádáte o [Vytvoření nové relace](../how-tos/session-rest-api.md)pomocí ARR, je první věc, kterou vrátí [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)relace. Tento identifikátor UUID vám umožní zadat dotaz na informace o relaci. Identifikátor UUID a některé základní informace o relaci jsou trvalé po dobu 30 dnů, takže je můžete zadat dotaz na tyto informace i po zastavení relace. V tomto okamžiku bude **stav relace** hlášen jako **spuštění**.
 
-V dalším kroku se vzdálené vykreslování Azure pokusí najít server, který může hostovat vaši relaci. Pro toto hledání existují dva parametry. Nejprve bude vyhradit jenom servery ve vaší [oblasti](../reference/regions.md). Důvodem je, že latence sítě v různých oblastech může být příliš vysoká, aby se zaručilo dáté prostředí. Druhý faktor je požadovaná *Velikost* , kterou jste určili. V každé oblasti je k dispozici omezený počet serverů, které mohou splňovat požadavky na velikost [*Standard*](../reference/vm-sizes.md) nebo [*Premium*](../reference/vm-sizes.md) . V důsledku toho platí, že pokud jsou všechny servery požadované velikosti aktuálně používány ve vaší oblasti, vytvoření relace se nezdaří. Důvodem selhání [může být dotazování](../how-tos/session-rest-api.md#get-sessions-properties).
+V dalším kroku se vzdálené vykreslování Azure pokusí najít server, který může hostovat vaši relaci. Pro toto hledání existují dva parametry. Nejprve bude vyhradit jenom servery ve vaší [oblasti](../reference/regions.md). Důvodem je, že latence sítě v různých oblastech může být příliš vysoká, aby se zaručilo dáté prostředí. Druhý faktor je požadovaná *Velikost* , kterou jste určili. V každé oblasti je k dispozici omezený počet serverů, které mohou splňovat požadavky na velikost [*Standard*](../reference/vm-sizes.md) nebo [*Premium*](../reference/vm-sizes.md) . V důsledku toho platí, že pokud jsou všechny servery požadované velikosti aktuálně používány ve vaší oblasti, vytvoření relace se nezdaří. Důvodem selhání [může být dotazování](../how-tos/session-rest-api.md).
 
 > [!IMPORTANT]
 > Pokud vyžádáte velikost *standardního* serveru a požadavek selže kvůli vysokému vyžádání, neznamená to, že požadavek na *prémiový* server selže i nadále. Takže pokud je to pro vás možnost, můžete se pokusit vrátit se k velikosti *Premium* serveru.
@@ -77,7 +77,7 @@ Ve všech případech se po zastavení relace neúčtují další poplatky.
 
 #### <a name="extend-a-sessions-lease-time"></a>Prodloužení doby zapůjčení relace
 
-[Dobu zapůjčení](../how-tos/session-rest-api.md#modify-and-query-session-properties) aktivní relace můžete prodloužit, pokud se tak stane, že ji budete potřebovat.
+[Dobu zapůjčení](../how-tos/session-rest-api.md) aktivní relace můžete prodloužit, pokud se tak stane, že ji budete potřebovat.
 
 ## <a name="example-code"></a>Příklad kódu
 

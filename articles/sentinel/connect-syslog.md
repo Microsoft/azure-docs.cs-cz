@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 35c8c2aa31887feb294b04b8a88bbe5478659e5e
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: f249a95551916311fab51ebef72b55d9a4343c0b
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807899"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530514"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Shromažďování dat ze zdrojů se systémem Linux pomocí protokolu syslog
 
@@ -67,17 +67,17 @@ Další informace najdete v tématu [zdroje dat syslog v Azure monitor](../azure
 
 ### <a name="configure-the-log-analytics-agent"></a>Konfigurace agenta Log Analytics
 
-1. V dolní části okna konektoru syslog klikněte na odkaz **otevřít konfiguraci rozšířených nastavení v pracovním prostoru >** .
+1. V dolní části okna konektoru syslog klikněte na odkaz **otevřít konfiguraci agentů pracovního prostoru >** .
 
-1. V okně **Upřesnit nastavení** vyberte **data**  >  **syslog**. Pak přidejte zařízení, aby se konektor mohl shromažďovat.
+1. V okně **Konfigurace agentů** vyberte kartu **syslog** . Pak přidejte zařízení, aby se konektor mohl shromažďovat. Vyberte **Přidat zařízení** a zvolte možnost z rozevíracího seznamu zařízení.
     
     - Přidejte do svých hlaviček protokolů zařízení, která vaše zařízení syslog zahrnuje. 
     
     - Pokud chcete použít zjišťování přihlášení neobvyklé SSH s daty, která shromáždíte, přidejte **auth** a **authpriv**. Další podrobnosti najdete v [následující části](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) .
 
-1. Po přidání všech zařízení, která chcete monitorovat, a upravení všech možností závažnosti pro každé z nich zaškrtněte políčko **použít pro tyto počítače níže uvedenou konfiguraci**.
+1. Po přidání všech zařízení, která chcete monitorovat, ověřte, zda jsou označena zaškrtávací políčka pro všechny požadované závažnost.
 
-1. Vyberte **Uložit**. 
+1. Vyberte **Použít**. 
 
 1. Na svém VIRTUÁLNÍm počítači nebo zařízení se ujistěte, že posíláte zařízení, která jste zadali.
 
@@ -88,7 +88,6 @@ Další informace najdete v tématu [zdroje dat syslog v Azure monitor](../azure
 > [!NOTE]
 > **Použití stejného počítače pro přeposílání prostých zpráv syslog *a* CEF**
 >
->
 > Existující [počítač pro přeposílání protokolů CEF](connect-cef-agent.md) můžete použít ke shromažďování a posílání protokolů z jednoduchých zdrojů syslog. K tomu, abyste se vyhnuli posílání událostí v obou formátech do služby Azure Sentinel, je nutné provést následující kroky, protože výsledkem bude duplikace událostí.
 >
 >    Již jste nastavili [shromažďování dat z vašich CEF zdrojů](connect-common-event-format.md)a nakonfigurovali jste agenta Log Analytics, jak je uvedeno výše:
@@ -97,7 +96,6 @@ Další informace najdete v tématu [zdroje dat syslog v Azure monitor](../azure
 >
 > 1. Pokud chcete zakázat synchronizaci agenta s konfigurací syslog v Azure Sentinel, musíte na těchto počítačích spustit následující příkaz. Tím se zajistí, že se změna konfigurace, kterou jste provedli v předchozím kroku, nepřepíše.<br>
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
-
 
 ### <a name="configure-the-syslog-connector-for-anomalous-ssh-login-detection"></a>Konfigurace konektoru syslog pro detekci přihlášení neobvyklé SSH
 
@@ -113,10 +111,7 @@ Azure Sentinel může použít Machine Learning (ML) na data syslog k identifika
  
 Tato detekce vyžaduje specifickou konfiguraci konektoru dat syslog: 
 
-1. V kroku 5 v předchozím postupu se ujistěte, že jsou jako zařízení, která chcete monitorovat, vybraná možnost **auth** i **authpriv** . U možností závažnosti nechte výchozí nastavení tak, aby byly všechny vybrané. Příklad:
-    
-    > [!div class="mx-imgBorder"]
-    > ![Zařízení požadovaná pro detekci přihlášení neobvyklé SSH](./media/connect-syslog/facilities-ssh-detection.png)
+1. V kroku 2 v části [Konfigurace agenta Log Analytics](#configure-the-log-analytics-agent) výše se ujistěte, že je vybraná možnost **ověřování** a **authpriv** jako zařízení, která se mají monitorovat, a že jsou vybrané všechny závažnosti. 
 
 2. Umožněte shromažďování informací syslogu dostatek času. Pak přejděte do části **Azure Sentinel-logs** a zkopírujte a vložte následující dotaz:
     

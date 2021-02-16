@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 0dccd8ac4f852688bf7e59e7ed96c4458c08d18b
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 3f3e945a00ec7bba75deebb56118d45aa7ff571d
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784724"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530718"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Povolení analýzy chování uživatelů a entit (UEBA) v Azure Sentinel 
 
 > [!IMPORTANT]
 >
-> - Funkce stránek UEBA a entity jsou teď **obecně dostupné** ve *_všech_* geografických oblastech a oblastech Sentinel Azure.
+> - Funkce stránek UEBA a entity jsou teď **obecně dostupné** ve **_všech_** geografických oblastech a oblastech Sentinel Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,13 +33,16 @@ Chcete-li povolit nebo zakázat tuto funkci (tyto požadavky nejsou nutné k pou
 
 - Uživatel musí být členem Azure Active Directory vaší organizace, a ne uživatelem typu Host.
 
-- Uživateli musí být přiřazeni role správce účtu (*globální správce*) * nebo **Správce zabezpečení** ve službě Azure AD.
+- Uživateli musí být přiřazeni role **globální správce** nebo **Správce zabezpečení** v Azure AD.
 
 - Uživateli musí být přiřazen alespoň jeden z následujících **rolí Azure** ([Další informace o službě Azure RBAC](roles.md)):
     - **Přispěvatel Sentinel Azure** na úrovni pracovního prostoru nebo skupiny prostředků.
     - **Přispěvatel Log Analytics** na úrovni skupiny prostředků nebo předplatného.
 
 - V pracovním prostoru nesmí být použité žádné zámky prostředků Azure. [Přečtěte si další informace o uzamykání prostředků Azure](../azure-resource-manager/management/lock-resources.md).
+
+> [!NOTE]
+> Pro přidání funkce UEBA do služby Azure Sentinel není nutná žádná zvláštní licence, ale mohou platit **Další poplatky** .
 
 ## <a name="how-to-enable-user-and-entity-behavior-analytics"></a>Jak povolit analýzu chování uživatelů a entit
 

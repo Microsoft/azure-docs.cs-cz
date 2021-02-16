@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: bf48f873127a12c3cabb28da33d34cedcda2793b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 2ac7c3c2149ce43c860c7726381733ef377de8d3
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831562"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530735"
 ---
 # <a name="examine-the-video-indexer-output"></a>Kontrola výstupu Video Indexer
 
@@ -104,7 +104,7 @@ V této části se zobrazuje souhrn přehledů.
 |plošky/animatedCharacters|Může obsahovat nula nebo více plošek. Podrobnější informace najdete v tématu [plošky/animatedCharacters](#facesanimatedcharacters).|
 |klíčová slova|Může obsahovat nula nebo více klíčových slov. Podrobnější informace najdete v tématu [klíčová slova](#keywords).|
 |zabarvení|Může obsahovat nula nebo více zabarvení. Podrobnější informace najdete v tématu [zabarvení](#sentiments).|
-|audioEffects| Může obsahovat nula nebo více audioEffects. Podrobnější informace najdete v tématu [audioEffects](#audioeffects).|
+|audioEffects| Může obsahovat nula nebo více audioEffects. Podrobnější informace najdete v tématu [audioEffects](#audioeffects-public-preview).|
 |popisky| Může obsahovat nula nebo více popisků. Podrobnější informace najdete v tématu [Labels](#labels).|
 |značky| Může obsahovat nula nebo více značek. Podrobnější informace najdete v tématu [značky](#brands).|
 |týkají | Podrobnější informace najdete v tématu [Statistika](#statistics).|
@@ -181,7 +181,7 @@ Ploška může mít ID, název, miniaturu, další metadata a seznam jeho dočas
 |popisky|Přehled [štítků](#labels)|
 |řizování|Přehled [snímků](#shots) .|
 |značky|Přehled [značek](#brands) .|
-|audioEffects|Přehled [audioEffects](#audioeffects)|
+|audioEffects|Přehled [audioEffects](#audioeffects-public-preview)|
 |zabarvení|Přehled [zabarvení](#sentiments)|
 |visualContentModeration|Přehled [visualContentModeration](#visualcontentmoderation)|
 |textualContentModeration|Přehled [textualContentModeration](#textualcontentmoderation)|
@@ -334,7 +334,7 @@ Příklad:
 
 `animatedCharacters` element nahrazuje prvek `faces` pro případ, že bylo video indexováno pomocí animovaného modelu znaků. To se provádí pomocí vlastního modelu v Custom Vision, Video Indexer ho spouští na klíčových snímcích.
 
-Pokud jsou k dispozici plošky (ne animované znaky), Video Indexer používá Face API na všech snímcích videa k detekci plošek a celebrit.
+Pokud jsou k dispozici plošky (ne animované znaky), Video Indexer používá rozhraní API pro rozpoznávání tváře na všech snímcích videa k detekci plošek a celebrit.
 
 |Název|Popis|
 |---|---|
@@ -590,26 +590,28 @@ Názvy značek firmy a produktu zjištěné v řeči pro přepis textu a/nebo vi
 |SpeakerLongestMonolog|Nejdelší monolog mluvčího. Pokud mluvčí obsahuje tiché v monolog, je součástí. Odstraní se tiché na začátku a na konci monolog.| 
 |SpeakerTalkToListenRatio|Výpočet vychází z doby strávené monologem mluvčího (bez ticha v mezi) dělený celkovým časem videa. Čas se zaokrouhluje na třetí desetinnou čárku.|
 
-#### <a name="audioeffects"></a>audioEffects
+#### <a name="audioeffects-public-preview"></a>audioEffects (Public Preview)
 
-|Název|Popis|
+|Název|Popis
 |---|---|
 |id|ID zvukového efektu|
-|typ|Typ zvukového efektu (například Clapping, řeč, tichá).|
-|instance|Seznam časových rozsahů, ve kterých se tento zvukový efekt objevil.|
+|typ|Typ zvukového efektu|
+|instance|Seznam časových rozsahů, ve kterých se tento zvukový efekt objevil. Každá instance má pole s jistotou.|
 
 ```json
 "audioEffects": [
 {
     "id": 0,
-    "type": "Clapping",
+    "type": "Siren",
     "instances": [
     {
+       "confidence": 0.87,
         "start": "00:00:00",
         "end": "00:00:03"
     },
     {
-        "start": "00:01:13",
+       "confidence": 0.87,
+       "start": "00:01:13",
         "end": "00:01:21"
     }
     ]

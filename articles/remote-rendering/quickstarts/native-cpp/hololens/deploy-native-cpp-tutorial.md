@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: b469f0cae1e356c47bfe60af99c4fa2e73eab78d
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: b340a180927b3df9ad51295383b09b03dbbb2d98
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594023"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530582"
 ---
 # <a name="quickstart-deploy-native-c-sample-to-hololens"></a>Rychlý Start: nasazení nativní ukázky C++ na HoloLens
 
@@ -81,7 +81,7 @@ Vzhledem k tomu, že přihlašovací údaje účtu jsou pevně zakódované ve z
 Konkrétně změňte následující hodnoty:
 * `init.AccountId`, `init.AccountKey` a `init.AccountDomain` pro použití dat vašeho účtu. Přečtěte si článek o tom, jak [načíst informace o účtu](../../../how-tos/create-an-account.md#retrieve-the-account-information).
 * Určete, kde vytvořit relaci vzdáleného vykreslování změnou části oblasti v `init.RemoteRenderingDomain` řetězci pro jiné oblasti `westus2` , než je třeba `"westeurope.mixedreality.azure.com"` .
-* Kromě toho se `m_sessionOverride` dá změnit na existující ID relace. Relace je možné vytvořit mimo tuto ukázku, například pomocí [skriptu PowerShellu](../../../samples/powershell-example-scripts.md#script-renderingsessionps1) nebo přímo pomocí [REST API relace](../../../how-tos/session-rest-api.md#create-a-session) .
+* Kromě toho se `m_sessionOverride` dá změnit na existující ID relace. Relace je možné vytvořit mimo tuto ukázku, například pomocí [skriptu PowerShellu](../../../samples/powershell-example-scripts.md#script-renderingsessionps1) nebo přímo pomocí [REST API relace](../../../how-tos/session-rest-api.md) .
 Vytvoření relace mimo ukázku se doporučuje, když by se vzorek spouštěl víckrát. Pokud není předána žádná relace, ukázka při každém spuštění vytvoří novou relaci, která může trvat několik minut.
 
 Nyní může být aplikace zkompilována.

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4e8ba291f32456bf2b8432620d1f9ea313629c9d
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 46c41a4868c80bf9ba1c2c6d4a8286c3a8f47c3d
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600514"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530429"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
@@ -72,7 +72,7 @@ Pomocná třída `BasicDigitalTwin` umožňuje ukládat pole vlastností přímo
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwin_withHelper":::
 
 >[!NOTE]
-> `BasicDigitalTwin` objekty jsou dodávány s `Id` polem. Toto pole můžete nechat prázdné, ale pokud přidáte hodnotu ID, musí se shodovat s parametrem ID předaným `CreateOrReplaceDigitalTwinAsync()` volání. Například:
+> `BasicDigitalTwin` objekty jsou dodávány s `Id` polem. Toto pole můžete nechat prázdné, ale pokud přidáte hodnotu ID, musí se shodovat s parametrem ID předaným `CreateOrReplaceDigitalTwinAsync()` volání. Příklad:
 >
 >```csharp
 >twin.Id = "myRoomId";
@@ -86,7 +86,7 @@ Můžete získat přístup k podrobnostem jakéhokoliv digitálního vlákna vol
 
 Toto volání vrátí dvojitá data jako typ objektu silně typovaného typu, jako je například `BasicDigitalTwin` . `BasicDigitalTwin` je pomocná třída serializace, která je součástí sady SDK, která vrátí základní a vlastnosti s dvojitou analýzou. Tady je příklad toho, jak se má použít k zobrazení podrobností o zdvojených událostech:
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin" highlight="2":::
 
 Po načtení vlákna s metodou se vrátí pouze vlastnosti, které byly nastaveny alespoň jednou `GetDigitalTwin()` .
 
@@ -130,7 +130,7 @@ Výsledek volání `object result = await client.GetDigitalTwinAsync("my-moon");
 Definované vlastnosti digitálního vlákna jsou vráceny jako vlastnosti nejvyšší úrovně u digitálního vlákna. Metadata nebo systémové informace, které nejsou součástí definice DTDL, se vrátí s `$` předponou. Mezi vlastnosti metadat patří:
 * ID digitálního vlákna v této instanci digitálních vláken Azure, jako je `$dtId` .
 * `$etag`, standardní pole HTTP přiřazené webovým serverem.
-* Další vlastnosti v `$metadata` oddílu. Mezi ně patří:
+* Další vlastnosti v `$metadata` oddílu. Tady jsou některé z nich:
     - DTMI modelu digitálního vlákna.
     - Stav synchronizace pro každou zapisovatelnou vlastnost. To je nejužitečnější pro zařízení, kde je možné, že služba a zařízení mají Rozbíhající se stavy (například když je zařízení offline). V současné době se tato vlastnost vztahuje pouze na fyzická zařízení připojená k IoT Hub. S daty v části metadata je možné pochopit úplný stav vlastnosti a také poslední změněná časová razítka. Další informace o stavu synchronizace najdete v [tomto IoT Hub kurzu](../iot-hub/tutorial-device-twins.md) synchronizace stavu zařízení.
     - Metadata specifická pro službu, například z IoT Hub nebo z digitálních vláken Azure. 
@@ -208,9 +208,9 @@ Dvě volání, která mění *Twin1* , se spustí jednou po druhém a při každ
 
 Můžete odstranit vlákna pomocí `DeleteDigitalTwin()` metody. Můžete však odstranit pouze dvojitou hodnotu, pokud nemá žádné další relace. Proto nejprve odstraňte příchozí a odchozí vztahy vlákna.
 
-Zde je příklad kódu pro odstranění vláken a jejich vztahů:
+Zde je příklad kódu pro odstranění vláken a jejich vztahů. `DeleteDigitalTwin`Volání sady SDK je zvýrazněno k objasnění, kde se nachází v kontextu širšího příkladu.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="DeleteTwin":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="DeleteTwin" highlight="7":::
 
 ### <a name="delete-all-digital-twins"></a>Odstranit všechny digitální vlákna
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2020
 ms.author: yelevin
-ms.openlocfilehash: c375595951eb760d5341db424c5572719b97046a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: aa57963ce369e4c8f84f4aae5f99fe343181ff6b
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102875"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530497"
 ---
 # <a name="connect-cyberark-enterprise-password-vault-epv-to-azure-sentinel"></a>Připojení EPV (CyberArk Enterprise Password) do Azure Sentinel
 
@@ -36,9 +36,9 @@ Konektor syslog CyberArk vám umožňuje snadno propojit všechna vaše protokol
 
 Protokoly EPV CyberArk jsou odesílány z trezoru na server pro předávání protokolů založený na systému Linux (se spuštěným rsyslog nebo syslog-ng) s nainstalovaným agentem Log Analytics, který exportuje protokoly do Azure Sentinel. Pokud nemáte takový server pro předávání protokolů, přečtěte si [tyto pokyny](connect-cef-agent.md) , abyste si ho mohli stáhnout a spustit.
 
-1. Na portálu Sentinel Azure klikněte na **datové konektory** , vyberte **CyberArk (Enterprise Password Password) (EPV) události (Preview)** a pak **otevřete stránku konektor** .
+1. Na portálu Sentinel Azure klikněte na **datové konektory**, vyberte **CyberArk (Enterprise Password Password) (EPV) události (Preview)** a pak **otevřete stránku konektor**.
 
-1. Postupujte podle pokynů CyberArk EPV a nakonfigurujte odesílání dat syslog na server pro předávání protokolů.
+1. Postupujte podle [pokynů CYBERARK EPV](https://docs.cyberark.com/Product-Doc/OnlineHelp/PAS/Latest/en/Content/PASIMP/DV-Integrating-with-SIEM-Applications.htm) a nakonfigurujte odesílání dat syslog na server pro předávání protokolů.
 
 1. Ověřte připojení a ověřte příjem dat pomocí [těchto pokynů](connect-cef-verify.md). Může trvat až 20 minut, než se vaše protokoly začnou zobrazovat v Log Analytics.
 

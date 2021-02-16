@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/11/2020
+ms.date: 02/05/2021
 ms.author: juliako
-ms.openlocfilehash: 06f5e19718445f44dd2302faf280f083cce0774f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 12d23ec471329bd4e0ecb502750198e946e58872
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98783797"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530225"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Co je Video Indexer služby Azure Media Services?
 
@@ -84,7 +84,7 @@ Následující seznam obsahuje přehledy, které můžete z videí načíst pomo
 * **Výčet mluvčího**: mapuje a rozumí, ke kterému paprsku mluvčího se slova a kdy. Šestnáct mluvčích se dá zjistit v jednom zvukovém souboru.
 * **Statistika mluvčího**: poskytuje statistiku pro poměr řeči mluvčích.
 * **Zmírnění textového obsahu**: Detekuje explicitní text v přepisu zvuku.
-* **Zvukové efekty**: identifikuje zvukové efekty, jako je claps, řeč a tiché.
+* **Zvukové efekty** (Public Preview): detekuje následující zvukové efekty v segmentech nehlasu obsahu: Gunshot, skleněná Shatter, alarm, Siren, výbuch, pes, kůra, výkřiku, Laughter, reelné reakce (vše, clapping a booing) a netiché. Poznámka: Úplná sada událostí je k dispozici pouze v případě, že v přednastavení nahrávání zvolíte možnost Rozšířená analýza zvuku, jinak budou k dispozici pouze tiché a přeplněné reakce.
 * **Detekce emoce**: identifikuje emoce na základě řeči (co se říká) a hlasového tónového (jak se říká). Emoce můžou mít radost, smutek, hněv nebo obavy.
 * **Překlad**: Vytvoří překlady přepisu zvuku do 54 různých jazyků.
 
