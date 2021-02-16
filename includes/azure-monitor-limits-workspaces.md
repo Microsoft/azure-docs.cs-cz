@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 86c5c6fff06f43bf66427ba1935852fcf97a71c6
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 1f461c4870b398a49387472c49d45b90929405c7
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356206"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100529670"
 ---
 **Objem shromažďování dat a jejich uchovávání** 
 
@@ -56,13 +56,19 @@ ms.locfileid: "96356206"
 | Maximální doba běhu dotazu | 10 minut | Podrobnosti najdete v podrobnostech o [časových limitech](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts) .  |
 | Maximální počet požadavků | 200 požadavků za 30 sekund na uživatele nebo IP adresu klienta služby Azure AD | Podrobnosti najdete v tématu [omezení přenosové rychlosti](https://dev.loganalytics.io/documentation/Using-the-API/Limits) . |
 
+**Konektor protokolů služby Azure Monitor**
+| Kategorie | Omezení | Komentáře |
+|:---|:---|:---|
+| Maximální počet záznamů | 500 000 | |
+| Maximální časový limit dotazu | 110 sekunda | |
+| Grafy | | Vizualizace na stránce protokoly a konektor používá různé knihovny grafů a některé funkce v současnosti nejsou k dispozici v konektoru. |
+
 **Obecné limity pracovního prostoru**
 
 | Kategorie | Omezení | Komentáře |
 |:---|:---|:---|
 | Maximální počet sloupců v tabulce         | 500 | |
 | Maximální počet znaků pro název sloupce | 500 | |
-| Export dat | Momentálně není k dispozici | Pomocí funkce Azure Functions nebo aplikace logiky můžete agregovat a exportovat data. | 
 
 **<a name="data-ingestion-volume-rate">Frekvence přijímání dat</a>**
 
