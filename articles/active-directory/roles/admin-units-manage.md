@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 537847d84b417814bddb16cf5b961bdb221af488
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 44faaa6f05a325c2c64040938a1c9d0eb3e864e7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740444"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574150"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Správa jednotek pro správu v Azure Active Directory
 
@@ -38,7 +38,7 @@ Pro přesnější administrativní řízení v Azure Active Directory (Azure AD)
     ![Snímek obrazovky s odkazem "udělení souhlasu správce k Průzkumníku Graph".](./media/admin-units-manage/select-graph-explorer.png)
 
 
-1. Použijte verzi Preview služby Azure AD PowerShell.
+1. Použijte [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/).
 
 ## <a name="add-an-administrative-unit"></a>Přidat jednotku pro správu
 
@@ -58,7 +58,7 @@ Jednotku pro správu můžete přidat pomocí Azure Portal nebo PowerShellu.
 
 ### <a name="use-powershell"></a>Použití prostředí PowerShell
 
-Než se pokusíte spustit následující příkazy, nainstalujte Azure AD PowerShell (Preview):
+Než se pokusíte spustit následující příkazy, nainstalujte [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/) :
 
 ```powershell
 Connect-AzureAD
@@ -100,7 +100,7 @@ Remove-AzureADMSAdministrativeUnit -ObjectId $delau.ObjectId
 
 Hodnoty, které jsou uzavřeny v uvozovkách, můžete upravit podle potřeby konkrétního prostředí.
 
-### <a name="use-the-graph-api"></a>Použití Graph API
+### <a name="use-the-graph-api"></a>Pomocí rozhraní Graph API
 
 ```http
 HTTP request

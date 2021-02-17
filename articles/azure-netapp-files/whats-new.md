@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/04/2020
 ms.author: b-juche
-ms.openlocfilehash: bba3dce2a2a18888cb88f4cf8b33cd48d6a4cd69
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: b40bbd6c470302b78b78744307805021a3649376
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631155"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571025"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Co je nového v Azure NetApp Files
 
@@ -99,7 +99,7 @@ Azure NetApp Files se pravidelně aktualizují. Tento článek obsahuje souhrn n
 
 ## <a name="may-2020"></a>Květen 2020
 
-* [Uživatelé zásad zálohování](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection) (Preview)
+* [Uživatelé zásad zálohování](create-active-directory-connections.md) (Preview)
 
     Azure NetApp Files vám umožní zahrnout další účty, které vyžadují zvýšená oprávnění k účtu počítače vytvořenému pro použití s Azure NetApp Files. U zadaných účtů bude povoleno změnit oprávnění systému souborů NTFS na úrovni souboru nebo složky. Můžete například zadat účet neprivilegované služby, který se používá k migraci dat do sdílené složky SMB v Azure NetApp Files. Funkce uživatelé zásad zálohování je teď ve verzi Preview.
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: 1e6376cd8389a4f1f0defebce0a2c7b6d0f9deed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f50628395526783face11fcb1438e2716135b640
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323261"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584025"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Nastavení Azure Monitor pro aplikaci Python
 
@@ -18,7 +18,7 @@ Azure Monitor podporuje distribuované trasování, shromažďování metrik a p
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 - Instalace Pythonu Tento článek používá [Python 3.7.0](https://www.python.org/downloads/release/python-370/), i když jiné verze budou nejspíš fungovat s menšími změnami. Sada SDK podporuje pouze Python v 2.7 a v 3.4-v 3.7.
 - Vytvořte [prostředek](./create-new-resource.md)Application Insights. K vašemu prostředku budete mít přiřazený vlastní klíč instrumentace (ikey).
 
@@ -33,7 +33,7 @@ python -m pip install opencensus-ext-azure
 > [!NOTE]
 > `python -m pip install opencensus-ext-azure`Příkaz předpokládá, že máte `PATH` nastavenou proměnnou prostředí pro instalaci Pythonu. Pokud jste tuto proměnnou nenakonfigurovali, musíte zadat úplnou cestu k adresáři, kde se nachází spustitelný soubor Pythonu. Výsledkem je příkaz podobný tomuto: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure` .
 
-Sada SDK používá tři Azure Monitor vývozců k posílání různých typů telemetrie do Azure Monitor. Jedná se o trasování, metriky a protokoly. Další informace o těchto typech telemetrie najdete v tématu [Přehled datové platformy](../platform/data-platform.md). Pomocí následujících pokynů můžete odeslat tyto typy telemetrie prostřednictvím tří vývozců.
+Sada SDK používá tři Azure Monitor vývozců k posílání různých typů telemetrie do Azure Monitor. Jedná se o trasování, metriky a protokoly. Další informace o těchto typech telemetrie najdete v tématu [Přehled datové platformy](../data-platform.md). Pomocí následujících pokynů můžete odeslat tyto typy telemetrie prostřednictvím tří vývozců.
 
 ## <a name="telemetry-type-mappings"></a>Mapování typů telemetrie
 
@@ -438,7 +438,7 @@ Jak je znázorněno, existují tři různé Azure Monitor vývozců, kteří pod
 Každý vývozce přijímá stejné argumenty pro konfiguraci a předává je prostřednictvím konstruktorů. Podrobnosti o každé z nich můžete zobrazit tady:
 
 - `connection_string`: Připojovací řetězec, který se používá pro připojení k vašemu Azure Monitor prostředku. Má přednost před `instrumentation_key` .
-- `enable_standard_metrics`: Používá se pro `AzureMetricsExporter` . Signalizuje, že vývozce automaticky pošle metriky [čítače výkonu](../platform/app-insights-metrics.md#performance-counters) Azure monitor. Výchozí hodnota je `True` .
+- `enable_standard_metrics`: Používá se pro `AzureMetricsExporter` . Signalizuje, že vývozce automaticky pošle metriky [čítače výkonu](../essentials/app-insights-metrics.md#performance-counters) Azure monitor. Výchozí hodnota je `True` .
 - `export_interval`: Používá se k určení frekvence v sekundách exportu.
 - `instrumentation_key`: Klíč instrumentace, který se používá pro připojení k vašemu Azure Monitor prostředku.
 - `logging_sampling_rate`: Používá se pro `AzureLogHandler` . Poskytuje vzorkovací frekvenci [0, 1,0] pro export protokolů. Výchozí hodnota je 1,0.
@@ -458,7 +458,7 @@ V seznamu pod položkou **aktivní**:
 - U telemetrie odesílaných pomocí Azure Monitorch metriky se v části zobrazuje metrika `customMetrics` .
 - U telemetrie odesílaných pomocí nástroje Azure Monitorch protokolů se zobrazí protokoly v části `traces` . Výjimky se zobrazí v části `exceptions` .
 
-Podrobnější informace o používání dotazů a protokolů najdete [v tématu protokoly v Azure monitor](../platform/data-platform-logs.md).
+Podrobnější informace o používání dotazů a protokolů najdete [v tématu protokoly v Azure monitor](../logs/data-platform-logs.md).
 
 ## <a name="learn-more-about-opencensus-for-python"></a>Další informace o OpenCensus pro Python
 
@@ -473,11 +473,11 @@ Podrobnější informace o používání dotazů a protokolů najdete [v tématu
 * [Sledování příchozích požadavků](./opencensus-python-dependency.md)
 * [Sledování požadavků](./opencensus-python-request.md)
 * [Mapa aplikace](./app-map.md)
-* [Monitorování výkonu na konci](../learn/tutorial-performance.md)
+* [Monitorování výkonu na konci](../app/tutorial-performance.md)
 
 ### <a name="alerts"></a>Výstrahy
 
 * [Testy dostupnosti:](./monitor-web-app-availability.md) Vytvářejte testy, abyste ověřili viditelnost svého webu na internetu.
 * [Inteligentní diagnostika:](./proactive-diagnostics.md) Tyto testy se spouštějí automaticky, takže je nemusíte nijak nastavovat. Upozorní vás, pokud má aplikace nezvykle velký podíl neúspěšných požadavků.
-* [Výstrahy metriky](../platform/alerts-log.md): Nastavte výstrahy, které vás upozorní, pokud metrika překračuje prahovou hodnotu. Upozornění můžete nastavit u vlastních metrik, které v aplikaci naprogramujete.
+* [Výstrahy metriky](../alerts/alerts-log.md): Nastavte výstrahy, které vás upozorní, pokud metrika překračuje prahovou hodnotu. Upozornění můžete nastavit u vlastních metrik, které v aplikaci naprogramujete.
 

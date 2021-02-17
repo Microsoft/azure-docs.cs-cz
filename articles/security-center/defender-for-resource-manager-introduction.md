@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 9591dae058a19cea73d88513b7c4ff4ab8f88045
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 922189909da21aac65d1e2e898df58598868b929
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797752"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590471"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>Seznámení s Azure Defenderem pro Správce prostředků
 
@@ -48,7 +48,7 @@ Azure Defender pro Správce prostředků chrání proti problémům, včetně:
 
 Výstrahy zabezpečení z Azure Defenderu pro Správce prostředků jsou založené na hrozbách zjištěných monitorováním Azure Resource Managerch operací. Azure Defender používá interní zdroje protokolů Azure Resource Manager a také protokol aktivit Azure, protokol platformy v Azure, který poskytuje přehled o událostech na úrovni předplatného.
 
-Přečtěte si další informace o [protokolu aktivit Azure](../azure-monitor/platform/activity-log.md).
+Přečtěte si další informace o [protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md).
 
 Postup při zkoumání výstrah zabezpečení z Azure Defenderu pro Správce prostředků:
 

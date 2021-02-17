@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: a2df2489e4b216b4b33524e35691bf93468edda0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 318b5498c826b1e29baa35850594cebca72c4f3f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222157"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575930"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Použití dynamických skupin s Update Managementem
 
@@ -43,7 +43,7 @@ Pokud chcete zobrazit náhled výsledků dotazu dynamické skupiny, klikněte na
 
 ## <a name="define-dynamic-groups-for-non-azure-machines"></a>Definování dynamických skupin pro počítače mimo Azure
 
-Dynamická skupina pro počítače mimo Azure používá uložená hledání, označované taky jako skupiny počítačů. Informace o tom, jak vytvořit uložené hledání, najdete v tématu [Vytvoření skupiny počítačů](../../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Po vytvoření uloženého hledání ho můžete vybrat ze seznamu uložených hledání ve **správě aktualizací** v Azure Portal. Kliknutím na **Náhled** zobrazíte v uložených hledáních počítače.
+Dynamická skupina pro počítače mimo Azure používá uložená hledání, označované taky jako skupiny počítačů. Informace o tom, jak vytvořit uložené hledání, najdete v tématu [Vytvoření skupiny počítačů](../../azure-monitor/logs/computer-groups.md#creating-a-computer-group). Po vytvoření uloženého hledání ho můžete vybrat ze seznamu uložených hledání ve **správě aktualizací** v Azure Portal. Kliknutím na **Náhled** zobrazíte v uložených hledáních počítače.
 
 ![Snímek obrazovky se zobrazí stránka vybrat skupiny pro jiný než Azure (Preview) a podokno náhledu na pravé straně.](./media/configure-groups/select-groups-2.png)
 

@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: 69168060cbce4a904c53d7f79895e909c8c42e01
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: b7e40eb936a6151f0f31c34c5a8030153a87f08c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935219"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571103"
 ---
-# <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Konfigurace šifrování protokolu Kerberos NFSv 4.1 pro Azure NetApp Files
+# <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Konfigurace šifrování Kerberos NFSv4.1 pro Azure NetApp Files
 
 Azure NetApp Files podporuje šifrování klienta NFS v režimech Kerberos (krb5, Krb5i a krb5p) pomocí šifrování AES-256. Tento článek popisuje požadované konfigurace pro použití svazku NFSv 4.1 s šifrováním protokolu Kerberos.
 
@@ -57,7 +57,7 @@ Pro šifrování klientů NFSv 4.1 se platí následující požadavky:
 
 ## <a name="configure-the-azure-portal"></a>Nakonfigurovat Azure Portal 
 
-1.  Postupujte podle pokynů v tématu [vytvoření připojení ke službě Active Directory](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection).  
+1.  Postupujte podle pokynů v tématu [vytvoření připojení ke službě Active Directory](create-active-directory-connections.md).  
 
     Protokol Kerberos vyžaduje, abyste ve službě Active Directory vytvořili aspoň jeden účet počítače. Informace o účtu, které poskytnete, se používají k vytváření účtů pro svazky Kerberos protokolu SMB *i* nfsv 4.1. Tento počítač je vytvořen automaticky během vytváření svazku.
 
@@ -175,5 +175,5 @@ Dopad na výkon krb5p:
 * [Řešení potíží se svazkem NFSv 4.1 protokolu Kerberos](troubleshoot-nfsv41-kerberos-volumes.md)
 * [Nejčastější dotazy týkající se Azure NetApp Files](azure-netapp-files-faqs.md)
 * [Vytvoření svazku NFS pro službu Azure NetApp Files](azure-netapp-files-create-volumes.md)
-* [Vytvoření připojení ke službě Active Directory](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)
+* [Vytvoření připojení ke službě Active Directory](create-active-directory-connections.md)
 * [Konfigurace klienta NFS pro Azure NetApp Files](configure-nfs-clients.md) 

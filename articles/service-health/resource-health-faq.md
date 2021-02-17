@@ -3,12 +3,12 @@ title: Nejčastější dotazy k Azure Resource Health
 description: Přehled Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: a5ad8867b110039e4dcc34b20c8a61fccfd39eaf
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: dc24688d8393b7a13e8c93d3f4d0171cce4c213c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032860"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570066"
 ---
 # <a name="azure-resource-health-faq"></a>Nejčastější dotazy k Azure Resource Health
 Přečtěte si odpovědi na nejčastější dotazy týkající se Azure Resource Health.
@@ -46,7 +46,7 @@ Ano, pokud prostředek není k dispozici, Resource Health identifikuje hlavní p
 Na portálu se uživatelem iniciované akce zobrazují pomocí modré ikony oznámení, zatímco plánované a neplánované události se zobrazují pomocí červené výstražné ikony. Další podrobnosti najdete v [přehledu Resource Health](Resource-health-overview.md).  
 
 ## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Můžu Resource Health integrovat s nástroji pro monitorování?
-Resource Health [podporuje](resource-health-alert-arm-template-guide.md) výstrahy založené na protokolu aktivit. Výstrahy protokolu aktivit používají [skupiny akcí](../azure-monitor/platform/action-groups.md) k upozornění uživatelů na aktivaci výstrahy. Skupiny akcí podporují různé kanály oznámení, jako jsou e-maily, SMS, Webhooky a ITSM akce.
+Resource Health [podporuje](resource-health-alert-arm-template-guide.md) výstrahy založené na protokolu aktivit. Výstrahy protokolu aktivit používají [skupiny akcí](../azure-monitor/alerts/action-groups.md) k upozornění uživatelů na aktivaci výstrahy. Skupiny akcí podporují různé kanály oznámení, jako jsou e-maily, SMS, Webhooky a ITSM akce.
 
 ## <a name="where-do-i-find-resource-health"></a>Kde najdu Resource Health?
 Až se přihlásíte k Azure Portal, máte k dispozici několik způsobů, jak získat přístup k Resource Health:

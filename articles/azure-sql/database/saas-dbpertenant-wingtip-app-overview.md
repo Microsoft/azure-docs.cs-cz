@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 09651ed5c7472c12d82108fdbd450cca6e84349f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0efc8105295ca7f97e6f465071c31b193173c5cd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447092"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588727"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Úvod do víceklientské aplikace SaaS, která používá model databáze na tenanta s Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,13 +40,13 @@ Při procházení kurzů a práci s aplikací se zaměřte na vzory SaaS, které
 Po nasazení aplikace si Prozkoumejte následující kurzy, které se sestavují při počátečním nasazení. Tyto kurzy projednávají běžné SaaS vzory, které využívají integrované funkce SQL Database, Azure synapse Analytics a dalších služeb Azure. Mezi kurzy patří skripty PowerShellu s podrobnými vysvětleními. Vysvětlení zjednodušují porozumění a implementaci stejných vzorů správy SaaS ve vašich aplikacích.
 
 
-| Kurz | Popis |
+| Kurz | Description |
 |:--|:--|
 | [Doprovodné materiály a tipy pro SQL Database víceklientské aplikace SaaS App](saas-tenancy-wingtip-app-guidance-tips.md) | Stáhněte a spusťte PowerShellové skripty pro přípravu částí aplikace. |
 |[Nasazení a zkoumání aplikace Wingtip SaaS](./saas-dbpertenant-get-started-deploy.md)|  Nasaďte a prozkoumejte aplikaci Wingtip SaaS s vaším předplatným Azure. |
 |[Zřízení a katalog tenantů](./saas-dbpertenant-provision-and-catalog.md)| Naučte se, jak se aplikace připojuje ke klientům pomocí databáze katalogu a jak katalog mapuje klienty na svá data. |
 |[Monitorování a Správa výkonu](./saas-dbpertenant-performance-monitoring.md)| Naučte se používat monitorovací funkce SQL Database a nastavovat výstrahy při překročení prahových hodnot výkonu. |
-|[Monitorování pomocí protokolů služby Azure Monitor](./saas-dbpertenant-log-analytics.md) | Naučte se používat [protokoly Azure monitor](../../azure-monitor/log-query/log-query-overview.md) k monitorování velkých objemů prostředků napříč několika fondy. |
+|[Monitorování pomocí protokolů služby Azure Monitor](./saas-dbpertenant-log-analytics.md) | Naučte se používat [protokoly Azure monitor](../../azure-monitor/logs/log-query-overview.md) k monitorování velkých objemů prostředků napříč několika fondy. |
 |[Obnovení jednoho tenanta](./saas-dbpertenant-restore-single-tenant.md)| Přečtěte si, jak obnovit databázi tenanta k předchozímu bodu v čase. Naučíte se také, jak obnovit do paralelní databáze, která opustí stávající databázi tenanta online. |
 |[Spravovat schéma databáze tenanta](saas-tenancy-schema-management.md)| Naučte se aktualizovat schéma a aktualizovat referenční data napříč všemi databázemi tenanta. |
 |[Spustit distribuované dotazy mezi klienty](saas-tenancy-cross-tenant-reporting.md) | Vytvořte databázi ad hoc Analytics a spouštějte distribuované dotazy v reálném čase napříč všemi klienty.  |

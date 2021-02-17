@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 3bbfd167e89ae1b5f9b7de1df5fd1cb72c720cb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c420c62e6f8f09a2b29398590cdb4ad410e5d296
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86254522"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574058"
 ---
 # <a name="configure-cloud-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Konfigurace metrik a protokolů cloudu pro Azure API Management bránu pro samoobslužné hostování
 
@@ -49,7 +49,7 @@ Tady je Ukázková konfigurace:
 
 Brána pro samoobslužné hostování aktuálně generuje následující metriky prostřednictvím Azure Monitor:
 
-| Metrika  | Popis |
+| Metric  | Popis |
 | ------------- | ------------- |
 | Žádosti  | Počet požadavků na rozhraní API v období |
 | Doba trvání žádostí o bránu | Počet milisekund od chvíle, kdy brána přijala požadavek, do chvíle odeslání úplné odpovědi. |
@@ -59,7 +59,7 @@ Brána pro samoobslužné hostování aktuálně generuje následující metriky
 
 Samoobslužná brána aktuálně neodesílá [diagnostické protokoly](./api-management-howto-use-azure-monitor.md#activity-logs) do cloudu. Nicméně je možné [nakonfigurovat a uchovat protokoly místně](how-to-configure-local-metrics-logs.md) tam, kde je nasazená samoobslužná brána. 
 
-Pokud je brána nasazená ve [službě Azure Kubernetes](https://azure.microsoft.com/services/kubernetes-service/), můžete povolit [Azure monitor kontejnerů](../azure-monitor/insights/container-insights-overview.md) pro shromažďování protokolů z kontejnerů a jejich zobrazení v Log Analytics. 
+Pokud je brána nasazená ve [službě Azure Kubernetes](https://azure.microsoft.com/services/kubernetes-service/), můžete povolit [Azure monitor kontejnerů](../azure-monitor/containers/container-insights-overview.md) pro shromažďování protokolů z kontejnerů a jejich zobrazení v Log Analytics. 
 
 
 ## <a name="next-steps"></a>Další kroky

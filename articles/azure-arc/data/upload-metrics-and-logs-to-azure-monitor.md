@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: 66b10efb6ca93bc6b4dd67d700daaf1f9049de68
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ac9c8efbe29bf1420a94d486b650758cc22bec2f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183426"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575762"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Nahrajte data o využití, metriky a protokoly do Azure Monitor
 
@@ -42,18 +42,18 @@ Viz [Instalace nástrojů](./install-client-tools.md).
 
 ## <a name="register-the-resource-provider"></a>Registrace poskytovatele prostředků
 
-Předtím, než do Azure nahrajete metriky nebo uživatelská data, musíte zajistit, aby vaše předplatné Azure mělo `Microsoft.AzureData` zaregistrovaný poskytovatel prostředků.
+Předtím, než do Azure nahrajete metriky nebo uživatelská data, musíte zajistit, aby vaše předplatné Azure mělo `Microsoft.AzureArcData` zaregistrovaný poskytovatel prostředků.
 
 Chcete-li ověřit poskytovatele prostředků, spusťte následující příkaz:
 
 ```azurecli
-az provider show -n Microsoft.AzureData -o table
+az provider show -n Microsoft.AzureArcData -o table
 ```
 
 Pokud poskytovatel prostředků není v současné době zaregistrován v rámci vašeho předplatného, můžete ho zaregistrovat. Pokud ho chcete zaregistrovat, spusťte následující příkaz.  Dokončení příkazu může trvat minutu či dvě.
 
 ```azurecli
-az provider register -n Microsoft.AzureData --wait
+az provider register -n Microsoft.AzureArcData --wait
 ```
 
 ## <a name="create-service-principal"></a>Vytvoření instančního objektu
@@ -193,7 +193,7 @@ Operace vytvoření, čtení, aktualizace a odstranění (CRUD) na datových slu
 
 Během období Preview se tento proces děje v noci. Obecně platí, že je možné nahrávat použití jenom jednou za den. Pokud se informace o použití exportují a nahrají víckrát během jednoho období 24 hodin, aktualizuje se v Azure Portal jenom inventář prostředků, ale ne využití prostředků.
 
-V případě nahrávání metrik akceptuje Azure monitor jenom posledních 30 minut dat ([Další informace](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting)). Pokyny pro nahrávání metrik je odeslání metrik ihned po vytvoření souboru exportu, takže můžete zobrazit celou sadu dat v Azure Portal. Pokud jste například exportovali metriky na 2:00 PM a spustili jste příkaz pro nahrání na 2:50 odp. Vzhledem k tomu, že Azure Monitor akceptuje jenom data za posledních 30 minut, na portálu se nemusí zobrazovat žádná data. 
+V případě nahrávání metrik akceptuje Azure monitor jenom posledních 30 minut dat ([Další informace](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)). Pokyny pro nahrávání metrik je odeslání metrik ihned po vytvoření souboru exportu, takže můžete zobrazit celou sadu dat v Azure Portal. Pokud jste například exportovali metriky na 2:00 PM a spustili jste příkaz pro nahrání na 2:50 odp. Vzhledem k tomu, že Azure Monitor akceptuje jenom data za posledních 30 minut, na portálu se nemusí zobrazovat žádná data. 
 
 ## <a name="next-steps"></a>Další kroky
 

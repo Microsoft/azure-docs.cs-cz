@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: 13bdc8797af8facaa73d3e43ecfbe504a6bd1dc2
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: caf46850b3d8d6946225575b8a9a732a90847482
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618871"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574144"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Povolit audity zabezpečení pro Azure Active Directory Domain Services
 
@@ -36,11 +36,11 @@ Následující tabulka obsahuje přehled scénářů pro každý typ cílového 
 > [!IMPORTANT]
 > Než povolíte audity zabezpečení Azure služba AD DS, je potřeba vytvořit cílový prostředek. Tyto prostředky můžete vytvořit pomocí Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure.
 
-| Cílový prostředek | Scénář |
+| Cílový prostředek | Scenario |
 |:---|:---|
 |Azure Storage| Tento cíl by měl být použit v případě, že vaše primární potřeba ukládá události auditu zabezpečení pro účely archivace. Pro účely archivace lze použít jiné cíle, ale tyto cíle poskytují možnosti nad rámec hlavní potřeby archivace. <br /><br />Než povolíte události auditu zabezpečení Azure služba AD DS, [vytvořte nejdřív Azure Storage účet](../storage/common/storage-account-create.md).|
 |Azure Event Hubs| Tento cíl by měl být použit v případě, že je potřeba, aby se události auditu zabezpečení sdílely pomocí dalšího softwaru, jako je například software pro analýzu dat & nebo software pro správu událostí (SIEM).<br /><br />Než povolíte události auditu zabezpečení Azure služba AD DS, [vytvořte centrum událostí pomocí Azure Portal](../event-hubs/event-hubs-create.md)|
-|Pracovní prostor Azure Log Analytics| Tento cíl by měl být použit, pokud je vaše primární potřeba analyzovat a kontrolovat zabezpečené audity přímo z Azure Portal.<br /><br />Než povolíte události auditu zabezpečení Azure služba AD DS, [vytvořte v Azure Portal pracovní prostor Log Analytics.](../azure-monitor/learn/quick-create-workspace.md)|
+|Pracovní prostor Azure Log Analytics| Tento cíl by měl být použit, pokud je vaše primární potřeba analyzovat a kontrolovat zabezpečené audity přímo z Azure Portal.<br /><br />Než povolíte události auditu zabezpečení Azure služba AD DS, [vytvořte v Azure Portal pracovní prostor Log Analytics.](../azure-monitor/logs/quick-create-workspace.md)|
 
 ## <a name="enable-security-audit-events-using-the-azure-portal"></a>Povolit události auditu zabezpečení pomocí Azure Portal
 
@@ -100,7 +100,7 @@ Pokud chcete povolit události auditu zabezpečení Azure služba AD DS pomocí 
         > [!IMPORTANT]
         > Ujistěte se, že jste nastavili autorizační pravidlo v oboru názvů centra událostí a ne na samotném centru událostí.
 
-    * **Analytické pracovní prostory**  -  pro Azure log [Vytvoří Log Analytics pracovní prostor s Azure PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md).
+    * **Analytické pracovní prostory**  -  pro Azure log [Vytvoří Log Analytics pracovní prostor s Azure PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md).
 
 1. Pomocí rutiny [Get-AzResource](/powershell/module/Az.Resources/Get-AzResource) Získejte ID prostředku pro spravovanou doménu Azure služba AD DS. Vytvořte proměnnou s názvem *$aadds. ResourceId* pro uchování hodnoty:
 
@@ -141,9 +141,9 @@ Pokud chcete povolit události auditu zabezpečení Azure služba AD DS pomocí 
 V protokolu analytické pracovní prostory můžete zobrazit a analyzovat události auditu zabezpečení pomocí Azure Monitor a jazyka dotazů Kusto. Tento dotazovací jazyk je navržený pro použití jen pro čtení, které Boasts možnosti analytického analytika se snadno čitelným syntaxí. Další informace o tom, jak začít používat jazyky dotazů Kusto, najdete v následujících článcích:
 
 * [Dokumentace k Azure Monitor](../azure-monitor/index.yml)
-* [Začínáme s Log Analytics v Azure Monitor](../azure-monitor/log-query/log-analytics-tutorial.md)
-* [Začínáme s dotazy protokolů v Azure Monitoru](../azure-monitor/log-query/get-started-queries.md)
-* [Vytváření a sdílení řídicích panelů s daty Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
+* [Začínáme s Log Analytics v Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md)
+* [Začínáme s dotazy protokolů v Azure Monitoru](../azure-monitor/logs/get-started-queries.md)
+* [Vytváření a sdílení řídicích panelů s daty Log Analytics](../azure-monitor/visualize/tutorial-logs-dashboards.md)
 
 Pomocí následujících ukázkových dotazů můžete začít s analýzou událostí auditu zabezpečení z Azure služba AD DS.
 
@@ -217,7 +217,7 @@ Audity zabezpečení Azure služba AD DS odpovídají tradičnímu auditu pro tr
 
 K dispozici jsou následující kategorie událostí auditu:
 
-| Název kategorie auditu | Popis |
+| Název kategorie auditu | Description |
 |:---|:---|
 | Přihlášení k účtu|Audit se pokusí ověřit data účtu na řadiči domény nebo v místním správci zabezpečení účtů (SAM).</p>Nastavení zásad přihlášení a odhlášení a události sledují pokusy o přístup k určitému počítači. Nastavení a události v této kategorii se zaměřují na databázi účtů, která se používá. Tato kategorie obsahuje následující podkategorie:<ul><li>[Auditovat ověřování pověření](/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Auditovat ověřovací službu protokolu Kerberos](/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[Auditovat operace lístku služby Kerberos](/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[Auditovat jiné události přihlášení a odhlášení](/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
 | Správa účtů|Audituje změny účtů uživatelů a počítačů a skupin. Tato kategorie obsahuje následující podkategorie:<ul><li>[Auditovat správu skupin aplikací](/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[Auditovat správu účtů počítače](/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[Auditovat správu skupin distribuce](/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[Auditovat další správu účtů](/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[Auditovat správu skupiny zabezpečení](/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[Auditovat správu účtů uživatelů](/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|

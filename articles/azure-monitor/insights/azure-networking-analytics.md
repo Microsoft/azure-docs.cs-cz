@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 19370eee9d9fa524de9beeaa85a15521580bd8e6
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: cdb43bd8b91881905b1734d0c0b36c33fb27d232
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97707686"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577506"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Řešení monitorování sítě Azure v Azure Monitor
 
@@ -113,11 +113,11 @@ Sešit Network Insights vám umožní využít výhod nejnovějších funkcí Az
 
 * Centralizovaná Konzola pro monitorování a řešení potíží s daty [metriky](../insights/network-insights-overview.md#resource-health-and-metrics) a protokolů.
 
-* Flexibilní plátno pro podporu vytváření vlastních propracovaných [vizualizací](../platform/workbooks-overview.md#visualizations).
+* Flexibilní plátno pro podporu vytváření vlastních propracovaných [vizualizací](../visualize/workbooks-overview.md#visualizations).
 
-* Možnost využívat a [sdílet šablony sešitů](../platform/workbooks-overview.md#workbooks-versus-workbook-templates) s širší komunitou
+* Možnost využívat a [sdílet šablony sešitů](../visualize/workbooks-overview.md#workbooks-versus-workbook-templates) s širší komunitou
 
-Další informace o možnostech nového sešitu řešení pro rezervaci [sešitů – přehled](../platform/workbooks-overview.md)
+Další informace o možnostech nového sešitu řešení pro rezervaci [sešitů – přehled](../visualize/workbooks-overview.md)
 
 ## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>Migrace z řešení Azure Gateway Analytics do sešitů Azure Monitor
 
@@ -129,7 +129,7 @@ Další informace o možnostech nového sešitu řešení pro rezervaci [sešit�
 > [!NOTE]
 > Všechna minulá data jsou již k dispozici v rámci sešitu z nastavení diagnostiky bodu byla původně povolena. Není vyžadován žádný přenos dat.
 
-2. Přístup k [výchozímu sešitu Insights](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights) pro váš Application Gateway prostředek. Všechny existující přehledy podporované řešením Application Gateway Analytics už v sešitu existují. To můžete roztáhnout tak, že přidáte vlastní [vizualizace](../platform/workbooks-overview.md#visualizations) na základě metriky & data protokolu.
+2. Přístup k [výchozímu sešitu Insights](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights) pro váš Application Gateway prostředek. Všechny existující přehledy podporované řešením Application Gateway Analytics už v sešitu existují. To můžete roztáhnout tak, že přidáte vlastní [vizualizace](../visualize/workbooks-overview.md#visualizations) na základě metriky & data protokolu.
 
 3. Až budete moct zobrazit veškerou metriku a log Insights, můžete řešení Azure Gateway Analytics odstranit z pracovního prostoru pomocí stránky řešení.
 
@@ -232,5 +232,5 @@ Data shromážděná před změnou nejsou v novém řešení viditelná. Můžet
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>Další kroky
-* K zobrazení podrobných dat diagnostiky Azure použijte [dotazy protokolu v Azure monitor](../log-query/log-query-overview.md) .
+* K zobrazení podrobných dat diagnostiky Azure použijte [dotazy protokolu v Azure monitor](../logs/log-query-overview.md) .
 

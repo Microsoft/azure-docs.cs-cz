@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.date: 11/09/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 06a29cd07a870e7553d599b5f719943acb259c2a
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 089d5d70d8ad8060455e5c1bee45e0bee4a12fae
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054919"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575833"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Povolení Update Managementu z účtu Automation
 
@@ -24,7 +24,8 @@ Tento článek popisuje, jak můžete účet Automation použít k povolení fun
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Účet Automation](../automation-security-overview.md) pro správu počítačů.
-* [Virtuální počítač Azure](../../virtual-machines/windows/quick-create-portal.md)nebo virtuální počítač nebo server zaregistrovaný u serverů s podporou ARC. Virtuální počítače nebo servery mimo Azure musí mít nainstalovaného [agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md) pro Windows nebo Linux a vytváření sestav k pracovnímu prostoru, který je propojený s účtem Automation Update Management je povolený v. Doporučujeme nainstalovat agenta Log Analytics pro Windows nebo Linux, a to tak, že nejprve připojíte počítač k [serverům s podporou ARC Azure](../../azure-arc/servers/overview.md)a pak pomocí Azure Policy přiřadíte předdefinovanou zásadu pro [nasazení agenta Log Analytics pro počítače se systémem *Linux* nebo *Windows* Azure](../../governance/policy/samples/built-in-policies.md#monitoring) . Případně, pokud plánujete monitorovat počítače pomocí Azure Monitor pro virtuální počítače, použijte raději iniciativu [Enable Azure monitor pro virtuální počítače](../../governance/policy/samples/built-in-initiatives.md#monitoring) .
+* [Virtuální počítač Azure](../../virtual-machines/windows/quick-create-portal.md)nebo virtuální počítač nebo server zaregistrovaný u serverů s podporou ARC. Virtuální počítače nebo servery mimo Azure musí mít nainstalovaného [agenta Log Analytics](../../azure-monitor/agents/log-analytics-agent.md) pro Windows nebo Linux a vytváření sestav k pracovnímu prostoru, který je propojený s účtem Automation Update Management je povolený v. Doporučujeme nainstalovat agenta Log Analytics pro Windows nebo Linux, a to tak, že nejprve připojíte počítač k [serverům s podporou ARC Azure](../../azure-arc/servers/overview.md)a pak pomocí Azure Policy přiřadíte předdefinovanou zásadu pro [nasazení agenta Log Analytics pro počítače se systémem *Linux* nebo *Windows* Azure](../../governance/policy/samples/built-in-policies.md#monitoring) . Případně, pokud plánujete monitorovat počítače pomocí Azure Monitor pro virtuální počítače, použijte raději iniciativu [Enable Azure monitor pro virtuální počítače](../../governance/policy/samples/built-in-initiatives.md#monitoring) .
+
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -54,7 +55,7 @@ Pro počítače nebo servery hostované mimo Azure včetně těch, které jsou z
 
 1. Z účtu Automation v části **Správa aktualizací** vyberte **Správa aktualizací** .
 
-2. Vyberte **Přidat jiný počítač než Azure**. Tato akce otevře nové okno prohlížeče s [pokyny k instalaci a konfiguraci agenta Log Analytics pro systém Windows](../../azure-monitor/platform/log-analytics-agent.md) , aby mohl počítač začít vytvářet sestavy pro Update Management. Pokud povolíte počítač, který je aktuálně spravovaný pomocí Operations Manager, nový agent se nevyžaduje. Informace o pracovním prostoru jsou přidány do konfigurace agenti.
+2. Vyberte **Přidat jiný počítač než Azure**. Tato akce otevře nové okno prohlížeče s [pokyny k instalaci a konfiguraci agenta Log Analytics pro systém Windows](../../azure-monitor/agents/log-analytics-agent.md) , aby mohl počítač začít vytvářet sestavy pro Update Management. Pokud povolíte počítač, který je aktuálně spravovaný pomocí Operations Manager, nový agent se nevyžaduje. Informace o pracovním prostoru jsou přidány do konfigurace agenti.
 
 ## <a name="enable-machines-in-the-workspace"></a>Povolit počítače v pracovním prostoru
 

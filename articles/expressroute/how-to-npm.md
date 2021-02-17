@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 837d1f78a9fde72137383e6c22adb8870997dc9b
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 907c03bd15463368def316e72f55ce214cb3e617
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986035"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571047"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurace Network Performance Monitoru pro ExpressRoute
 
@@ -54,7 +54,7 @@ Vytvořte pracovní prostor v předplatném, který má odkaz virtuální sítě
 1. V [Azure Portal](https://portal.azure.com)vyberte předplatné, které má virtuální sítě partnerský vztah k vašemu okruhu ExpressRoute. Pak vyhledejte v seznamu služeb na **webu Marketplace** pro ' Network Performance Monitor '. Kliknutím na tlačítko Zpět otevřete stránku **Network Performance Monitor** .
 
    >[!NOTE]
-   >Můžete vytvořit nový pracovní prostor nebo použít existující pracovní prostor. Pokud chcete použít existující pracovní prostor, musíte zajistit, aby byl pracovní prostor migrován do nového dotazovacího jazyka. [Další informace...](../azure-monitor/log-query/log-query-overview.md)
+   >Můžete vytvořit nový pracovní prostor nebo použít existující pracovní prostor. Pokud chcete použít existující pracovní prostor, musíte zajistit, aby byl pracovní prostor migrován do nového dotazovacího jazyka. [Další informace...](../azure-monitor/logs/log-query-overview.md)
    >
 
    ![portál](./media/how-to-npm/3.png)<br><br>
@@ -118,7 +118,7 @@ Doporučujeme nainstalovat alespoň dva agenty na každou stranu připojení Exp
 
 ### <a name="23-configure-proxy-settings-optional"></a><a name="proxy"></a>2,3: Konfigurace nastavení proxy serveru (volitelné)
 
-Pokud používáte webový proxy server pro přístup k Internetu, použijte následující postup ke konfiguraci nastavení proxy serveru pro Microsoft Monitoring Agent. Proveďte tyto kroky pro každý server. pokud máte mnoho serverů, které je nutné nakonfigurovat, může být jednodušší použít skript, který tento proces zautomatizuje. Pokud ano, přečtěte si téma [Konfigurace nastavení proxy serveru pro Microsoft Monitoring Agent pomocí skriptu](../azure-monitor/platform/agent-windows.md).
+Pokud používáte webový proxy server pro přístup k Internetu, použijte následující postup ke konfiguraci nastavení proxy serveru pro Microsoft Monitoring Agent. Proveďte tyto kroky pro každý server. pokud máte mnoho serverů, které je nutné nakonfigurovat, může být jednodušší použít skript, který tento proces zautomatizuje. Pokud ano, přečtěte si téma [Konfigurace nastavení proxy serveru pro Microsoft Monitoring Agent pomocí skriptu](../azure-monitor/agents/agent-windows.md).
 
 Konfigurace nastavení proxy serveru pro Microsoft Monitoring Agent pomocí ovládacích panelů:
 

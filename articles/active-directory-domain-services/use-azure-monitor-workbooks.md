@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 3067388265fb69b916fe0e179cb896401b7c2dc4
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 9a126fe4676f340fb45677382a3aeeed79291f0b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618157"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574201"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Kontrola událostí auditu zabezpečení v Azure Active Directory Domain Services používání sešitů Azure Monitor
 
@@ -46,7 +46,7 @@ Azure služba AD DS obsahuje následující dvě šablony sešitu:
 * Sestava přehledu zabezpečení
 * Sestava aktivity účtu
 
-Další informace o tom, jak upravovat a spravovat sešity, najdete v tématu [přehled Azure Monitorch sešitů](../azure-monitor/platform/workbooks-overview.md).
+Další informace o tom, jak upravovat a spravovat sešity, najdete v tématu [přehled Azure Monitorch sešitů](../azure-monitor/visualize/workbooks-overview.md).
 
 ## <a name="use-the-security-overview-report-workbook"></a>Použití sešitu se sestavou přehledu zabezpečení
 

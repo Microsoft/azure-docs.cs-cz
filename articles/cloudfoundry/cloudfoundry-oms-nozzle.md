@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: fde0afcd37cd464b0b87e5ccd257d4a7a684eeb0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9fafa9bd014a44fdd0098ef2364375c3f9672bea
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021584"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571063"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Nasazení služby Azure Log Analytics trysek pro Cloud Foundry sledování systému
 
@@ -183,7 +183,7 @@ Pokud jste pracovní prostor Log Analytics vytvořili ručně, vytvořte zobraze
 
 ### <a name="1-import-the-oms-view"></a>1. Import zobrazení OMS
 
-Na portálu OMS přejděte k **zobrazení Náhled**  >  **importu** návrháře  >  **Browse** a vyberte jeden ze souborů omsview. Vyberte například *Cloud Foundry. omsview* a uložte zobrazení. Na stránce **Přehled** se teď zobrazí dlaždice. Vyberte ho a podívejte se na vizuální metriky.
+Na portálu OMS přejděte k **zobrazení Náhled**  >  **importu** návrháře  >  a vyberte jeden ze souborů omsview. Vyberte například *Cloud Foundry. omsview* a uložte zobrazení. Na stránce **Přehled** se teď zobrazí dlaždice. Vyberte ho a podívejte se na vizuální metriky.
 
 Tato zobrazení můžete přizpůsobit nebo vytvořit nová zobrazení prostřednictvím **návrháře zobrazení**.
 
@@ -191,7 +191,7 @@ Tato zobrazení můžete přizpůsobit nebo vytvořit nová zobrazení prostřed
 
 ### <a name="2-create-alert-rules"></a>2. vytvoření pravidel upozornění
 
-Můžete [vytvořit výstrahy](../azure-monitor/platform/alerts-overview.md)a podle potřeby upravit dotazy a prahové hodnoty. Následující jsou doporučené výstrahy:
+Můžete [vytvořit výstrahy](../azure-monitor/alerts/alerts-overview.md)a podle potřeby upravit dotazy a prahové hodnoty. Následující jsou doporučené výstrahy:
 
 | Vyhledávací dotaz                                                                  | Generovat výstrahu na základě | Description                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |

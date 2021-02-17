@@ -6,22 +6,22 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: 5ad40ca051677ced0c6d8b5c35e8563272ff598f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5650ff0e039d1e9211b8d0013726e101efdfab78
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183970"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572258"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Protokoly prostředků pro službu Azure Signal Service
 
 Tento kurz popisuje, jaké jsou protokoly prostředků pro službu Azure Signal, jak je nastavit a jak s nimi řešit potíže. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud chcete povolit protokoly prostředků, budete si muset někam uložit data protokolu. V tomto kurzu se používá Azure Storage a Log Analytics.
 
-* [Azure Storage](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) – zachovává protokoly prostředků pro audit zásad, statickou analýzu nebo zálohování.
-* [Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) – flexibilní nástroj pro hledání a analýzu protokolů, který umožňuje analýzu nezpracovaných protokolů generovaných prostředkem Azure.
+* [Azure Storage](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) – zachovává protokoly prostředků pro audit zásad, statickou analýzu nebo zálohování.
+* [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) – flexibilní nástroj pro hledání a analýzu protokolů, který umožňuje analýzu nezpracovaných protokolů generovaných prostředkem Azure.
 
 ## <a name="set-up-resource-logs-for-an-azure-signalr-service"></a>Nastavení protokolů prostředků pro službu Azure Signal
 
@@ -50,7 +50,7 @@ Ve výchozím nastavení jsou protokoly prostředků zakázané. Pokud chcete po
 
 Nové nastavení se projeví přibližně po dobu 10 minut. Pak se protokoly objeví v nakonfigurovaném cíli archivace v podokně **diagnostické protokoly** .
 
-Další informace o konfiguraci diagnostiky najdete v tématu [Přehled protokolů prostředků Azure](../azure-monitor/platform/platform-logs-overview.md).
+Další informace o konfiguraci diagnostiky najdete v tématu [Přehled protokolů prostředků Azure](../azure-monitor/essentials/platform-logs-overview.md).
 
 ### <a name="resource-logs-categories"></a>Kategorie protokolů prostředků
 
@@ -68,7 +68,7 @@ Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON).
 
 **Formát**
 
-Název | Popis
+Název | Description
 ------- | -------
 time | Čas události protokolu
 úroveň | Úroveň události protokolu
@@ -81,7 +81,7 @@ properties | Podrobné vlastnosti související s touto událostí protokolu Dal
 
 **Tabulka vlastností**
 
-Název | Popis
+Název | Description
 ------- | -------
 typ | Typ události protokolu V současné době poskytujeme informace o připojení ke službě Azure Signal. `ConnectivityLogs`K dispozici je jenom typ.
  – kolekce | Kolekce události protokolu Povolené hodnoty jsou: `Connection` `Authorization` a `Throttling`
@@ -122,19 +122,19 @@ Chcete-li zobrazit protokoly prostředků, postupujte podle následujících kro
 
     ![Položka nabídky Log Analytics](./media/signalr-tutorial-diagnostic-logs/log-analytics-menu-item.png)
 
-2. Zadejte `SignalRServiceDiagnosticLogs` a vyberte časový rozsah pro dotazování protokolů prostředků. Rozšířené dotazy najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/log-query/log-analytics-tutorial.md)
+2. Zadejte `SignalRServiceDiagnosticLogs` a vyberte časový rozsah pro dotazování protokolů prostředků. Rozšířené dotazy najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/logs/log-analytics-tutorial.md)
 
     ![Dotaz pro přihlášení Log Analytics](./media/signalr-tutorial-diagnostic-logs/query-log-in-log-analytics.png)
 
 Sloupce protokolu archivu obsahují prvky uvedené v následující tabulce:
 
-Název | Popis
+Název | Description
 ------- | ------- 
 TimeGenerated | Čas události protokolu
 Kolekce | Kolekce události protokolu Povolené hodnoty jsou: `Connection` `Authorization` a `Throttling`
 OperationName | Název operace události
 Umístění | Umístění služby signalizace Azure
-Úroveň | Úroveň události protokolu
+Level | Úroveň události protokolu
 CallerIpAddress | IP adresa vašeho serveru/klienta
 Zpráva | Podrobná zpráva události protokolu
 UserId | Identita uživatele
@@ -162,7 +162,7 @@ Rozdíl mezi `ConnectionAborted` a `ConnectionEnded` je `ConnectionEnded` oček�
 
 Důvody přerušení jsou uvedeny v následující tabulce:
 
-Důvod | Popis
+Důvod | Description
 ------- | ------- 
 Počet připojení dosáhl limitu. | Počet připojení dosáhl limitu aktuální cenové úrovně. Zvažte horizontální navýšení kapacity jednotek služby
 Aplikační server uzavřel připojení. | App Server aktivuje přerušení. Dá se zvážit jako očekávané přerušení.

@@ -3,12 +3,12 @@ title: Řešení potíží s rozšířením virtuálních počítačů s povolen
 description: V tomto článku se dozvíte, jak řešit problémy s rozšířeními virtuálních počítačů Azure, která vznikají u serverů s podporou ARC Azure.
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: ffd7db5ff7da3d7f60762117f80d7b9b5af6f646
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 799e5c8ec00a894c6a54c64494edd8f259faf2dc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91344613"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584663"
 ---
 # <a name="troubleshoot-arc-enabled-servers-vm-extension-issues"></a>Řešení potíží s rozšířením virtuálních počítačů s povolenými ARC
 
@@ -38,7 +38,7 @@ Následující kroky pro řešení potíží se vztahují na všechna rozšíře
 
 - Agent Log Analytics verze 1.13.9 (odpovídající verze rozšíření je 1.13.15) nesprávně označuje nahraná data pomocí ID prostředku serveru s podporou ARC Azure. I když se protokoly odesílají do služby, když se pokusíte zobrazit data z vybraného povoleného serveru po výběru **protokolů** nebo **přehledů**, nevrátí se žádná data. Data můžete zobrazit spuštěním dotazů z protokolů Azure Monitor nebo z Azure Monitor pro virtuální počítače, která jsou vymezena v pracovním prostoru.
 
-- Agent Log Analytics pro Linux v současné době nepodporuje některé distribuce. Agent vyžaduje, aby byly nainstalovány další závislosti, včetně Pythonu 2. Seznamte se s maticí podpory a požadavky [tady](../../azure-monitor/platform/agents-overview.md#supported-operating-systems).
+- Agent Log Analytics pro Linux v současné době nepodporuje některé distribuce. Agent vyžaduje, aby byly nainstalovány další závislosti, včetně Pythonu 2. Seznamte se s maticí podpory a požadavky [tady](../../azure-monitor/agents/agents-overview.md#supported-operating-systems).
 
 - Kód chyby 52 ve stavové zprávě značí chybějící závislost. Další informace o tom, která závislost chybí, najdete ve výstupu a v protokolech.
 

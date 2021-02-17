@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: eb74137e515bff7a432367e75b4208490b1243c0
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 33cd19f7bb1881b17f1ca9080a9634162014808a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681383"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574286"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Použití Azure Monitor s pracovním prostorem Azure synapse Analytics
 
@@ -28,7 +28,7 @@ Další informace najdete v tématu [přehled Azure monitor](../../azure-monitor
 
 S monitorováním můžete získat přehled o výkonu a stavu úloh Azure. Nejdůležitější typ dat monitorování je metrika, která se také označuje jako čítač výkonu. Metriky generuje většina prostředků Azure. Monitorování nabízí několik způsobů konfigurace a využívání těchto metrik pro monitorování a řešení potíží.
 
-Pokud chcete získat přístup k těmto metrikám, postupujte podle pokynů v [Azure monitor datovou platformu](../../azure-monitor/platform/data-platform.md).
+Pokud chcete získat přístup k těmto metrikám, postupujte podle pokynů v [Azure monitor datovou platformu](../../azure-monitor/data-platform.md).
 
 ### <a name="workspace-level-metrics"></a>Metriky na úrovni pracovního prostoru
 
@@ -171,7 +171,7 @@ Vytvořte nebo přidejte nastavení diagnostiky pro váš pracovní prostor, vyh
 1. Zadejte název nastavení, vyberte **Odeslat do Log Analytics** a pak vyberte pracovní prostor z **pracovního prostoru Log Analytics**.
 
     > [!NOTE]
-    > Vzhledem k tomu, že tabulka protokolů Azure nemůže mít více než 500 sloupců, **důrazně doporučujeme** vybrat _režim specifický pro daný prostředek_. Další informace najdete v tématu [Log Analytics známá omezení](../../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics).
+    > Vzhledem k tomu, že tabulka protokolů Azure nemůže mít více než 500 sloupců, **důrazně doporučujeme** vybrat _režim specifický pro daný prostředek_. Další informace najdete v tématu [Log Analytics známá omezení](../../azure-monitor/essentials/resource-logs.md#column-limit-in-azurediagnostics).
 
 1. Vyberte **Uložit**.
 

@@ -3,16 +3,16 @@ title: Schéma prostředků založené na pracovním prostoru Azure Monitor Appl
 description: Přečtěte si o nové struktuře a schématu tabulek pro Azure Monitor Application Insights prostředky založené na pracovním prostoru.
 ms.topic: conceptual
 ms.date: 05/09/2020
-ms.openlocfilehash: e63d4a680ad76ccd6895aed53f3276a5775b1226
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ef9d22cd2b45679928ee54778b2a521ea9ecab03
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385961"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575599"
 ---
 # <a name="workspace-based-resource-changes"></a>Změny prostředků na základě pracovního prostoru
 
-Před představením [Application Insights prostředků na základě pracovního prostoru](create-workspace-resource.md)se Application Insights data v Azure monitor uložila odděleně od jiných dat protokolů. Obě jsou založené na Azure Průzkumník dat a používají stejný dotazovací jazyk KQL (Kusto Query Language). Tento postup je popsaný v tématu [protokoly v Azure monitor](../platform/data-platform-logs.md).
+Před představením [Application Insights prostředků na základě pracovního prostoru](create-workspace-resource.md)se Application Insights data v Azure monitor uložila odděleně od jiných dat protokolů. Obě jsou založené na Azure Průzkumník dat a používají stejný dotazovací jazyk KQL (Kusto Query Language). Tento postup je popsaný v tématu [protokoly v Azure monitor](../logs/data-platform-logs.md).
 
 Data prostředků Application Insights na základě pracovního prostoru se ukládají do pracovního prostoru Log Analytics s dalšími daty monitorování a daty aplikací. Tím se zjednoduší vaše konfigurace tím, že vám umožní snadněji analyzovat data napříč více řešeními a využívat možnosti pracovních prostorů.
 
@@ -464,6 +464,6 @@ Starší tabulka: trasování
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zkoumání metrik](../platform/metrics-charts.md)
-* [Psaní analytických dotazů](../log-query/log-query-overview.md)
+* [Zkoumání metrik](../essentials/metrics-charts.md)
+* [Psaní analytických dotazů](../logs/log-query-overview.md)
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 28ec6659430cfdbc81533f05863ccb0ddc560e32
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 5d8c5eb385baff4aac450c470fb6103e2fb315f3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508028"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590422"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Seznámení se službou Azure Defender pro SQL
 
@@ -43,8 +43,8 @@ Azure Defender pro SQL zahrnuje dva plány Azure Defenderu, které rozšiřuje [
 - **Azure Defender pro servery SQL na počítačích** rozšiřuje ochranu pro vaše servery SQL nativní pro Azure tak, aby plně podporovala hybridní prostředí a chránila SQL servery (všechny podporované verze) hostované v Azure, v jiných cloudových prostředích a dokonce i v místních počítačích:
     - [SQL Server na virtuálních počítačích](https://azure.microsoft.com/services/virtual-machines/sql-server/)
     - Místní SQL servery:
-        - [SQL Server s podporou služby Azure Arc (Preview)](/sql/sql-server/azure-arc/overview)
-        - [SQL Server běžící na počítačích s Windows bez ARC Azure](../azure-monitor/platform/agent-windows.md)
+        - [SQL Server s podporou služby Azure Arc (Preview)](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)
+        - [SQL Server běžící na počítačích s Windows bez ARC Azure](../azure-monitor/agents/agent-windows.md)
 
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-sql"></a>Jaké jsou výhody Azure Defenderu pro SQL?

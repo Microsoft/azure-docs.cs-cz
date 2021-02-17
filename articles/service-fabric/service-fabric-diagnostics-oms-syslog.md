@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: fe31c6fdca3651bfe56e798b30d50c9f047c680b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a98a833baefa9b1c2d1ebd9ff8147206c2106bf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258640"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570209"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Události clusteru Service Fabric Linux v protokolu syslog
 
@@ -87,7 +87,7 @@ Tady jsou změny, které se mají zavolat.
 ```
 
 ## <a name="azure-monitor-logs-integration"></a>Integrace protokolů Azure Monitor
-Tyto události syslog můžete číst v monitorovacím nástroji, jako jsou protokoly Azure Monitor. Pracovní prostor Log Analytics můžete vytvořit pomocí Azure Marketplace pomocí těchto [pokynů]. (.. /Azure-monitor/Learn/Quick-Create-Workspace.MD) je také potřeba přidat agenta Log Analytics do clusteru, aby bylo možné tato data shromažďovat a odesílat do pracovního prostoru. To je stejný agent, který se používá ke shromažďování čítačů výkonu. 
+Tyto události syslog můžete číst v monitorovacím nástroji, jako jsou protokoly Azure Monitor. Pracovní prostor Log Analytics můžete vytvořit pomocí Azure Marketplace pomocí těchto [pokynů]. (.. /Azure-monitor/logs/Quick-Create-Workspace.MD) je také potřeba přidat agenta Log Analytics do clusteru, aby bylo možné tato data shromažďovat a odesílat do pracovního prostoru. To je stejný agent, který se používá ke shromažďování čítačů výkonu. 
 
 1. Přejít `Advanced Settings` na okno
 
@@ -113,6 +113,6 @@ Výše uvedený příklad je NodeDown události. Úplný seznam událostí můž
 
 ## <a name="next-steps"></a>Další kroky
 * [Nasaďte agenta Log Analytics](service-fabric-diagnostics-oms-agent.md) do svých uzlů, abyste mohli shromažďovat čítače výkonu a shromažďovat statistiky a protokoly Docker pro vaše kontejnery.
-* Seznámení s funkcemi [prohledávání protokolů a dotazování](../azure-monitor/log-query/log-query-overview.md) , které nabízí jako součást protokolů Azure monitor
-* [Použití návrháře zobrazení k vytváření vlastních zobrazení v protokolech Azure Monitor](../azure-monitor/platform/view-designer.md)
-* Referenční informace o tom, jak [Azure monitor protokoly integrace s protokolem SYSLOG](../azure-monitor/platform/data-sources-syslog.md).
+* Seznámení s funkcemi [prohledávání protokolů a dotazování](../azure-monitor/logs/log-query-overview.md) , které nabízí jako součást protokolů Azure monitor
+* [Použití návrháře zobrazení k vytváření vlastních zobrazení v protokolech Azure Monitor](../azure-monitor/visualize/view-designer.md)
+* Referenční informace o tom, jak [Azure monitor protokoly integrace s protokolem SYSLOG](../azure-monitor/agents/data-sources-syslog.md).

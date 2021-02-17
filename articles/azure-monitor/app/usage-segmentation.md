@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d11b12ba37d543ec21985c52c4ffb3399bfc56d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d1076239938988119d8a9838d0e060d70a22082
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323515"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583367"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Uživatelé, relace a analýza událostí v Application Insights
 
@@ -41,10 +41,10 @@ Prozkoumejte různé skupiny uživatelů tak, že upravíte možnosti dotazu v h
 * Kdo používá: vyberte vlastní události a zobrazení stránek.
 * Během: vyberte časový rozsah.
 * Podle: Vyberte způsob, jakým se mají data zablokovat, a to buď v časovém intervalu, nebo jinou vlastností, jako je například prohlížeč nebo město.
-* Rozdělit podle: vyberte vlastnost, podle které chcete data rozdělit nebo segmentovat. 
-* Přidat filtry: Omezte dotaz na konkrétní uživatele, relace nebo události na základě jejich vlastností, jako je například prohlížeč nebo město. 
- 
-## <a name="saving-and-sharing-reports"></a>Ukládání a sdílení sestav 
+* Rozdělit podle: vyberte vlastnost, podle které chcete data rozdělit nebo segmentovat. 
+* Přidat filtry: Omezte dotaz na konkrétní uživatele, relace nebo události na základě jejich vlastností, jako je například prohlížeč nebo město. 
+ 
+## <a name="saving-and-sharing-reports"></a>Ukládání a sdílení sestav 
 Můžete ukládat sestavy uživatelů, které jsou v části Mé sestavy, buď soukromé, nebo sdílené se všemi ostatními s přístupem k tomuto Application Insights prostředku v části sdílené sestavy.
 
 Sdílení odkazu na sestavu uživatelé, relace nebo události; na panelu nástrojů klikněte na **sdílet** a potom odkaz zkopírujte.
@@ -60,8 +60,8 @@ V části **splnění uživatelů** se zobrazí informace o pěti ukázkových u
 - Chcete-li povolit prostředí používání, začněte odesílat [vlastní události](./api-custom-events-metrics.md#trackevent) nebo [zobrazení stránek](./api-custom-events-metrics.md#page-views).
 - Pokud jste už odeslali vlastní události nebo zobrazení stránky, prozkoumejte nástroje využití a zjistěte, jak uživatelé používají vaši službu.
     - [Trychtýře](usage-funnels.md)
-    - [Uchovávání](usage-retention.md)
+    - [Toalet](usage-retention.md)
     - [Toky uživatelů](usage-flows.md)
-    - [Workbooks](../platform/workbooks-overview.md)
+    - [Workbooks](../visualize/workbooks-overview.md)
     - [Přidat kontext uživatele](usage-send-user-context.md)
 

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 4714b9330c4a9d9cd390a58f814e3cdb4b591038
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 62cc5e1762a2a54b26cbebae5aa7cfbf64204ba5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168137"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584621"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostika v Durable Functions v Azure
 
@@ -20,7 +20,7 @@ K dispozici je několik možností pro diagnostiku problémů s [Durable Functio
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) je doporučený způsob, jak diagnostikovat a monitorovat v Azure Functions. Totéž platí pro Durable Functions. Přehled toho, jak ve vaší aplikaci Function App využít Application Insights, najdete v tématu [monitorování Azure Functions](../functions-monitoring.md).
 
-Azure Functions trvalá přípona také generuje *sledovací události* , které umožňují sledovat komplexní provádění orchestrace. Tyto události sledování se dají najít a dotazovat pomocí nástroje [Application Insights Analytics](../../azure-monitor/log-query/log-query-overview.md) v Azure Portal.
+Azure Functions trvalá přípona také generuje *sledovací události* , které umožňují sledovat komplexní provádění orchestrace. Tyto události sledování se dají najít a dotazovat pomocí nástroje [Application Insights Analytics](../../azure-monitor/logs/log-query-overview.md) v Azure Portal.
 
 ### <a name="tracking-data"></a>Sledování dat
 
@@ -159,7 +159,7 @@ Při prohlížení protokolů vysílaných službou DTFx je důležité pochopit
 * **DurableTask. Core**: obsahuje informace o provádění Orchestrace a plánování nízké úrovně.
 * **DurableTask. AzureStorage**: obsahuje informace týkající se interakcí s Azure Storage artefakty, včetně vnitřních front, objektů BLOB a tabulek úložiště, které se používají k ukládání a načítání interního stavu orchestrace.
 
-Tyto protokoly můžete povolit tak, že aktualizujete `logging/logLevel` částhost.jsaplikace Function App ** na** soubor. Následující příklad ukazuje, jak povolit protokoly upozornění a chyb z obou `DurableTask.Core` i `DurableTask.AzureStorage` :
+Tyto protokoly můžete povolit tak, že aktualizujete `logging/logLevel` částhost.jsaplikace Function App **na** soubor. Následující příklad ukazuje, jak povolit protokoly upozornění a chyb z obou `DurableTask.Core` i `DurableTask.AzureStorage` :
 
 ```json
 {
@@ -453,7 +453,7 @@ Klienti získají následující odpověď:
 
 Azure Functions podporuje přímo ladění kódu funkce a tato podpora přenáší do Durable Functions, ať už běží v Azure nebo lokálně. Existuje však několik chování, která je potřeba znát při ladění:
 
-* **Přehrát**znovu: funkce Orchestrator se pravidelně [přehrávají](durable-functions-orchestrations.md#reliability) , když se přijímají nové vstupy. Toto chování znamená, že jediné *logické* spuštění funkce Orchestrator může vést ke stejné zarážce několikrát, zejména pokud je nastaveno na začátku v kódu funkce.
+* **Přehrát** znovu: funkce Orchestrator se pravidelně [přehrávají](durable-functions-orchestrations.md#reliability) , když se přijímají nové vstupy. Toto chování znamená, že jediné *logické* spuštění funkce Orchestrator může vést ke stejné zarážce několikrát, zejména pokud je nastaveno na začátku v kódu funkce.
 * **Await**: pokaždé `await` , když se ve funkci Orchestrator narazí, vrátí řízení k trvalému dispečeru rozhraní úloh. Pokud se jedná o první `await` nalezenou konkrétní úlohu, přidružený úkol nebude *nikdy* obnoven. Vzhledem k tomu, že se úloha nikdy neobnoví *, krokování* na await (F10 v aplikaci Visual Studio) není možné. Krokování funguje pouze při opětovném přehrání úkolu.
 * **Vypršení časových limitů zasílání zpráv**: Durable Functions interně používá zprávy ve frontě k řízení provádění funkcí Orchestrator, Activity a entity. V prostředí s více virtuálními počítači může rozdělení do ladění po dlouhou dobu způsobit, že jiný virtuální počítač tuto zprávu vybere a bude mít za následek duplicitní provádění. Toto chování existuje i u běžných funkcí triggeru fronty, ale je důležité, abyste v tomto kontextu odkazovali, protože fronty představují podrobnosti implementace.
 * **Zastavování a spouštění**: zprávy v trvalých funkcích trvaly mezi relacemi ladění. Pokud zastavíte ladění a ukončíte proces místního hostitele, zatímco je vykonávána trvalá funkce, tato funkce se může v budoucí ladicí relaci znovu spustit automaticky. Toto chování může být matoucí, pokud není očekáváno. Pro zamezení tohoto chování je mazání všech zpráv z [interních front úložiště](durable-functions-perf-and-scale.md#internal-queue-triggers) mezi relacemi ladění jedním způsobem.

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: dde9575a70ea80ad262bc01bb9d5d0015c803427
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d311ea3158e1f9d53c51fe239103039849597d11
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94543013"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579194"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>Pomalé dotazy v protokolech v Azure Database for MySQL flexibilním serveru (Preview)
 
@@ -27,10 +27,10 @@ Ve výchozím nastavení je protokol pomalého dotazu zakázán. Pokud chcete pr
 
 Další parametry, které můžete upravit pro řízení chování pomalého protokolování dotazů, zahrnují:
 
-- **long_query_time** : Zaprotokolujte dotaz, pokud trvá dokončení déle než `long_query_time` (v sekundách). Výchozí hodnota je 10 sekund.
-- **log_slow_admin_statements** : Určuje, zda jsou příkazy správy (např. `ALTER_TABLE`, `ANALYZE_TABLE` ) jsou protokolovány.
-- **log_queries_not_using_indexes** : Určuje, zda jsou protokolovány dotazy, které nepoužívají indexy.
-- **log_throttle_queries_not_using_indexes** : omezuje počet neindexovaných dotazů, které lze zapsat do protokolu pomalých dotazů. Tento parametr se projeví `log_queries_not_using_indexes` , pokud je nastaven na hodnotu *on* .
+- **long_query_time**: Zaprotokolujte dotaz, pokud trvá dokončení déle než `long_query_time` (v sekundách). Výchozí hodnota je 10 sekund.
+- **log_slow_admin_statements**: Určuje, zda jsou příkazy správy (např. `ALTER_TABLE`, `ANALYZE_TABLE` ) jsou protokolovány.
+- **log_queries_not_using_indexes**: Určuje, zda jsou protokolovány dotazy, které nepoužívají indexy.
+- **log_throttle_queries_not_using_indexes**: omezuje počet neindexovaných dotazů, které lze zapsat do protokolu pomalých dotazů. Tento parametr se projeví `log_queries_not_using_indexes` , pokud je nastaven na hodnotu *on* .
 
 > [!IMPORTANT]
 > Pokud nejsou tabulky indexovány, `log_queries_not_using_indexes` může nastavení parametrů a na hodnotu `log_throttle_queries_not_using_indexes` **on** ovlivnit výkon MySQL, protože všechny dotazy běžící proti těmto neindexovaným tabulkám budou zapsány do protokolu pomalého dotazu.
@@ -39,7 +39,7 @@ Další parametry, které můžete upravit pro řízení chování pomalého pro
 
 ## <a name="access-slow-query-logs"></a>Přístup k protokolům pomalým dotazům
 
-Pomalé protokoly dotazů jsou integrované s Azure Monitor nastavení diagnostiky. Po povolení protokolů pomalých dotazů na flexibilním serveru MySQL je můžete vygenerovat, abyste Azure Monitor protokoly, Event Hubs nebo Azure Storage. Další informace o nastavení diagnostiky najdete v [dokumentaci k diagnostickým protokolům](../../azure-monitor/platform/platform-logs-overview.md). Další informace o tom, jak povolit nastavení diagnostiky v Azure Portal, najdete v [článku pomalým na portálu pro protokol dotazů](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics).
+Pomalé protokoly dotazů jsou integrované s Azure Monitor nastavení diagnostiky. Po povolení protokolů pomalých dotazů na flexibilním serveru MySQL je můžete vygenerovat, abyste Azure Monitor protokoly, Event Hubs nebo Azure Storage. Další informace o nastavení diagnostiky najdete v [dokumentaci k diagnostickým protokolům](../../azure-monitor/essentials/platform-logs-overview.md). Další informace o tom, jak povolit nastavení diagnostiky v Azure Portal, najdete v [článku pomalým na portálu pro protokol dotazů](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics).
 
 Následující tabulka popisuje výstup pomalého protokolu dotazů. V závislosti na metodě Output se pole, která jsou součástí, a pořadí, ve kterém se zobrazují, můžou lišit.
 

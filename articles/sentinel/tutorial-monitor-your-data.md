@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 63a9a6dc9f052c01a7440f616f0baeaab083ad73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a07670e3348f74fb5c6eaec57f5e9da627e8c09
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843069"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586728"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Kurz: Vizualizace a monitorování dat
 
 
 
-Po [připojení zdrojů dat](quickstart-onboard.md)   ke službě Azure Sentinel můžete vizualizovat a monitorovat data pomocí přijetí Azure Monitorch sešitů pomocí Azure Sentinel, což zajišťuje univerzálnost při vytváření vlastních řídicích panelů. Přestože se sešity ve službě Azure Sentinel zobrazují odlišně, může být užitečné, abyste viděli, jak [vytvářet interaktivní sestavy pomocí Azure monitor sešity](../azure-monitor/platform/workbooks-overview.md). Azure Sentinel umožňuje vytvářet vlastní sešity napříč vašimi daty a také nabízí předdefinované šablony sešitu, které vám umožní rychle získat přehled o vašich datech, jakmile připojíte zdroj dat.
+Po [připojení zdrojů dat](quickstart-onboard.md) ke službě Azure Sentinel můžete vizualizovat a monitorovat data pomocí přijetí Azure Monitorch sešitů pomocí Azure Sentinel, což zajišťuje univerzálnost při vytváření vlastních řídicích panelů. Přestože se sešity ve službě Azure Sentinel zobrazují odlišně, může být užitečné, abyste viděli, jak [vytvářet interaktivní sestavy pomocí Azure monitor sešity](../azure-monitor/visualize/workbooks-overview.md). Azure Sentinel umožňuje vytvářet vlastní sešity napříč vašimi daty a také nabízí předdefinované šablony sešitu, které vám umožní rychle získat přehled o vašich datech, jakmile připojíte zdroj dat.
 
 
 Tento kurz vám pomůže vizualizovat data v Azure Sentinel.
@@ -46,17 +46,17 @@ Tento kurz vám pomůže vizualizovat data v Azure Sentinel.
   ![Přejít na sešity](./media/tutorial-monitor-data/access-workbooks.png)
 1. Kliknutím na **Zobrazit šablonu** zobrazíte šablonu vyplněnou daty.
   
-1. Chcete-li upravit sešit, vyberte možnost **Uložit**a poté vyberte umístění, kam chcete uložit soubor JSON pro šablonu. 
+1. Chcete-li upravit sešit, vyberte možnost **Uložit** a poté vyberte umístění, kam chcete uložit soubor JSON pro šablonu. 
 
    > [!NOTE]
    > Tím se vytvoří prostředek Azure založený na příslušné šabloně a uloží se soubor JSON sešitu, nikoli data.
 
 
-1. Vyberte **Zobrazit uložený sešit**. Pak klikněte na tlačítko **Upravit** v horní části. Teď můžete sešit upravit a přizpůsobit ho podle svých potřeb. Další informace o tom, jak sešit přizpůsobit, najdete v tématu [vytváření interaktivních sestav pomocí Azure monitor sešitů](../azure-monitor/platform/workbooks-overview.md).
+1. Vyberte **Zobrazit uložený sešit**. Pak klikněte na tlačítko **Upravit** v horní části. Teď můžete sešit upravit a přizpůsobit vašim potřebám. Další informace o tom, jak sešit přizpůsobit, najdete v tématu [vytváření interaktivních sestav pomocí Azure monitor sešitů](../azure-monitor/visualize/workbooks-overview.md).
 ![Zobrazit sešity](./media/tutorial-monitor-data/workbook-graph.png)
 1. Až změny provedete, můžete sešit uložit. 
 
-1. Sešit můžete také klonovat: vyberte **Upravit** a pak ho **uložte jako**a nezapomeňte ho uložit s jiným názvem, a to v rámci stejného předplatného a skupiny prostředků. Tyto naklonované sešity se zobrazují na kartě **Moje sešity** .
+1. Sešit můžete také klonovat: vyberte **Upravit** a pak ho **uložte jako** a nezapomeňte ho uložit s jiným názvem, a to v rámci stejného předplatného a skupiny prostředků. Tyto naklonované sešity se zobrazují na kartě **Moje sešity** .
 
 
 ## <a name="create-new-workbook"></a>Vytvořit nový sešit
@@ -64,9 +64,9 @@ Tento kurz vám pomůže vizualizovat data v Azure Sentinel.
 1. Chcete-li vytvořit nový sešit od začátku, klikněte na **sešity** a pak vyberte **Přidat sešit** .
   ![Snímek obrazovky, který ukazuje obrazovku nového sešitu.](./media/tutorial-monitor-data/create-workbook.png)
 
-1. Chcete-li upravit sešit, vyberte možnost **Upravit**a pak podle potřeby přidejte text, dotazy a parametry. Další informace o tom, jak sešit přizpůsobit, najdete v tématu [vytváření interaktivních sestav pomocí Azure monitor sešitů](../azure-monitor/platform/workbooks-overview.md). 
+1. Chcete-li upravit sešit, vyberte možnost **Upravit** a pak podle potřeby přidejte text, dotazy a parametry. Další informace o tom, jak sešit přizpůsobit, najdete v tématu [vytváření interaktivních sestav pomocí Azure monitor sešitů](../azure-monitor/visualize/workbooks-overview.md). 
 
-1. Při vytváření dotazu se ujistěte, že je **zdroj dat** nastavený na **protokoly** a **typ prostředku** je nastavený na **Log Analytics**a pak zvolte příslušné pracovní prostory. 
+1. Při vytváření dotazu se ujistěte, že je **zdroj dat** nastavený na **protokoly** a **typ prostředku** je nastavený na **Log Analytics** a pak zvolte příslušné pracovní prostory. 
 
 1. Po vytvoření sešitu sešit uložte a ujistěte se, že jste ho uložili v rámci předplatného a skupiny prostředků pracovního prostoru Azure Sentinel.
 

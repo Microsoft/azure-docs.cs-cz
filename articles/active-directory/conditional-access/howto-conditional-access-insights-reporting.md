@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c2364eae0d04da8f8e6fe38ae80db7adb8666ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae802038626a1fbf8d533800a0b8eb43c4565e8c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049413"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574169"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Přehledy podmíněného přístupu a vytváření sestav
 
@@ -43,15 +43,15 @@ Uživatelé také potřebují jednu z následujících Log Analytics rolí praco
 
 Pokud jste protokoly služby Azure AD neintegroval s protokoly Azure Monitor, bude nutné provést následující kroky předtím, než se sešit načte:  
 
-1. [Vytvoří Log Analytics pracovní prostor v Azure monitor](../../azure-monitor/learn/quick-create-workspace.md).
+1. [Vytvoří Log Analytics pracovní prostor v Azure monitor](../../azure-monitor/logs/quick-create-workspace.md).
 1. [Integrujte protokoly služby Azure AD s protokoly Azure monitor](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
 
 ## <a name="how-it-works"></a>Jak to funguje 
 
 Přístup k sešitu Insights a vytváření sestav:  
 
-1. Přihlaste se k **portálu Azure Portal**.
-1. Přejděte na **Azure Active Directory**  >  **zabezpečení**  >  a přehled**podmíněného přístupu**  >  **a vytváření sestav**.
+1. Přihlaste se na **Azure Portal**.
+1. Přejděte na **Azure Active Directory**  >  **zabezpečení**  >  a přehled **podmíněného přístupu**  >  **a vytváření sestav**.
 
 ### <a name="get-started-select-parameters"></a>Začínáme: Výběr parametrů 
 
@@ -105,7 +105,7 @@ Přihlášení konkrétního uživatele můžete prozkoumat také tak, že v dol
 Konfigurace zásad podmíněného přístupu v režimu pouze pro sestavy:
 
 1. Přihlaste se k **Azure Portal** jako správce podmíněného přístupu, správce zabezpečení nebo globální správce.
-1. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
+1. Vyhledejte **Azure Active Directory**  >    >  **podmíněný přístup** zabezpečení.
 1. Vyberte existující zásadu nebo vytvořte novou zásadu.
 1. V části **Povolit zásadu** nastavte přepínač na režim **pouze pro sestavy** .
 1. Vyberte **Uložit**.
@@ -119,7 +119,7 @@ Konfigurace zásad podmíněného přístupu v režimu pouze pro sestavy:
 
 Aby bylo možné získat přístup k sešitu, potřebujete správná oprávnění služby Azure AD a také Log Analytics oprávnění k pracovnímu prostoru. Pokud chcete otestovat, jestli máte správná oprávnění k pracovnímu prostoru, spusťte ukázkový dotaz Log Analytics:
 
-1. Přihlaste se k **portálu Azure Portal**.
+1. Přihlaste se na **Azure Portal**.
 1. Přejděte na **Azure Active Directory**  >  **protokoly**.
 1. `SigninLogs`Do pole dotaz zadejte a vyberte **Spustit**.
 1. Pokud dotaz nevrátí žádné výsledky, váš pracovní prostor možná není správně nakonfigurovaný. 
@@ -146,7 +146,7 @@ Pokud svazek přihlášení překračuje kapacitu dotazu Log Analytics, vrátí 
 
 ### <a name="can-i-save-my-parameter-selections"></a>Můžu uložit výběry parametrů?  
 
-Výběry parametrů můžete uložit v horní části sešitu tak, že na **Azure Active Directory**  >  **sešity**vydáte  >  **přehledy podmíněného přístupu a vytváření sestav**. Tady najdete šablonu sešitu, kde můžete sešit upravovat a ukládat do svého pracovního prostoru kopii, včetně výběrů parametrů, v **mých sestavách** nebo ve **sdílených sestavách**. 
+Výběry parametrů můžete uložit v horní části sešitu tak, že na **Azure Active Directory**  >  **sešity** vydáte  >  **přehledy podmíněného přístupu a vytváření sestav**. Tady najdete šablonu sešitu, kde můžete sešit upravovat a ukládat do svého pracovního prostoru kopii, včetně výběrů parametrů, v **mých sestavách** nebo ve **sdílených sestavách**. 
 
 ### <a name="can-i-edit-and-customize-the-workbook-with-additional-queries"></a>Můžu sešit upravovat a přizpůsobovat dalším dotazům? 
 

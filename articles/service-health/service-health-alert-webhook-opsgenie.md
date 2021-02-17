@@ -3,12 +3,12 @@ title: Odesílání upozornění na Azure Service Health s OpsGenie pomocí webh
 description: Získejte přizpůsobená oznámení o událostech služby Service Health do vaší instance OpsGenie.
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 112774cb1f9e16b08225471e8dbc1bb79b1bd37d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8867d442d0c7fe563f6429fc1ff4edb212737c5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86529093"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594598"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Odesílání upozornění na Azure Service Health s OpsGenie pomocí webhooků
 
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak nastavit upozornění na stav služby Azure po
 
 1.  **Pojmenujte** upozornění a zadejte pole **přiřazeno týmu** .
 
-1.  Vyplňte další pole, jako jsou **příjemci**, **Povolení**a **potlačení oznámení**.
+1.  Vyplňte další pole, jako jsou **příjemci**, **Povolení** a **potlačení oznámení**.
 
 1.  Zkopírujte a uložte **adresu URL integrace**, která by již měla obsahovat vaše `apiKey` připojení ke konci.
 
@@ -67,7 +67,7 @@ V tomto článku se dozvíte, jak nastavit upozornění na stav služby Azure po
 1. Po dokončení aktualizace skupiny akcí vyberte **Uložit** .
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testování integrace Webhooku prostřednictvím požadavku HTTP POST
-1. Vytvořte datovou část stavu služby, kterou chcete odeslat. Ukázkovou datovou část Webhooku pro stav služby najdete na [webhookech pro výstrahy protokolu aktivit Azure](../azure-monitor/platform/activity-log-alerts-webhook.md).
+1. Vytvořte datovou část stavu služby, kterou chcete odeslat. Ukázkovou datovou část Webhooku pro stav služby najdete na [webhookech pro výstrahy protokolu aktivit Azure](../azure-monitor/alerts/activity-log-alerts-webhook.md).
 
 1. Požadavek HTTP POST vytvoříte takto:
 
@@ -84,6 +84,6 @@ V tomto článku se dozvíte, jak nastavit upozornění na stav služby Azure po
 
 ## <a name="next-steps"></a>Další kroky
 - Naučte se [Konfigurovat oznámení Webhooku pro stávající systémy správy problémů](service-health-alert-webhook-guide.md).
-- Zkontrolujte [schéma Webhooku upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts-webhook.md). 
+- Zkontrolujte [schéma Webhooku upozornění protokolu aktivit](../azure-monitor/alerts/activity-log-alerts-webhook.md). 
 - Přečtěte si o [oznámeních o stavu služby](./service-notifications.md).
-- Přečtěte si další informace o [skupinách akcí](../azure-monitor/platform/action-groups.md).
+- Přečtěte si další informace o [skupinách akcí](../azure-monitor/alerts/action-groups.md).
