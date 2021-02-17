@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 12/10/2020
 ms.author: rolyon
-ms.openlocfilehash: 81224b5e16f3bca5da641bbb2e9c82dd59000e79
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 5a4be6052e72c27ad83b5af64f1acb3ad8d4e3be
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185882"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555904"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Přenos předplatného Azure do jiného adresáře Azure AD
 
@@ -69,21 +69,21 @@ Několik prostředků Azure má závislost na předplatném nebo adresáři. V z
 
 | Služba nebo prostředek | Ovlivněné | Obnovitelné | Máte vliv na to? | Co můžete dělat |
 | --------- | --------- | --------- | --------- | --------- |
-| Přiřazení rolí | Yes | Yes | [Zobrazení seznamu přiřazení rolí](#save-all-role-assignments) | Všechna přiřazení rolí se trvale odstraní. Je nutné mapovat uživatele, skupiny a instanční objekty k odpovídajícím objektům v cílovém adresáři. Je nutné znovu vytvořit přiřazení rolí. |
-| Vlastní role | Yes | Yes | [Výpis vlastních rolí](#save-custom-roles) | Všechny vlastní role se trvale odstraní. Je nutné znovu vytvořit vlastní role a jakékoli přiřazení rolí. |
-| Spravované identity přiřazené systémem | Yes | Yes | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Je nutné zakázat a znovu povolit spravované identity. Je nutné znovu vytvořit přiřazení rolí. |
-| Spravované identity přiřazené uživatelem | Yes | Yes | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Spravované identity musíte odstranit, znovu vytvořit a připojit k příslušnému prostředku. Je nutné znovu vytvořit přiřazení rolí. |
-| Azure Key Vault | Yes | Yes | [Seznam Key Vault zásad přístupu](#list-key-vaults) | Je nutné aktualizovat ID tenanta přidruženého k trezorům klíčů. Je nutné odebrat a přidat nové zásady přístupu. |
-| Databáze SQL Azure s povolenou integrací ověřování Azure AD | Yes | No | [Ověření databází Azure SQL pomocí ověřování Azure AD](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
-| Azure Storage a Azure Data Lake Storage Gen2 | Yes | Yes |  | Je nutné znovu vytvořit všechny seznamy ACL. |
-| Azure Data Lake Storage Gen1 | Ano | Yes |  | Je nutné znovu vytvořit všechny seznamy ACL. |
-| Azure Files | Yes | Yes |  | Je nutné znovu vytvořit všechny seznamy ACL. |
-| Synchronizace souborů Azure | Yes | Yes |  |  |
-| Spravované disky Azure | Yes | Yes |  |  Pokud používáte šifrovací sady disku k šifrování Managed Disks pomocí klíčů spravovaných zákazníkem, je nutné zakázat a znovu povolit identity přiřazené systémem, které jsou přidruženy k sadám šifrování disku. A musíte znovu vytvořit přiřazení rolí, tj. znovu udělit požadovaná oprávnění sadám Disk Encryption v trezorech klíčů. |
-| Azure Kubernetes Service | Yes | Yes |  |  |
-| Azure Policy | Yes | No | Všechny Azure Policy objekty, včetně vlastních definicí, přiřazení, výjimek a dat o dodržování předpisů. | Je nutné [exportovat](../governance/policy/how-to/export-resources.md), importovat a znovu přiřazovat definice. Pak vytvořte nová přiřazení zásad a všechny potřebné [výjimky zásad](../governance/policy/concepts/exemption-structure.md). |
-| Azure Active Directory Domain Services | Yes | No |  |  |
-| Registrace aplikací | Yes | Yes |  |  |
+| Přiřazení rolí | Ano | Ano | [Zobrazení seznamu přiřazení rolí](#save-all-role-assignments) | Všechna přiřazení rolí se trvale odstraní. Je nutné mapovat uživatele, skupiny a instanční objekty k odpovídajícím objektům v cílovém adresáři. Je nutné znovu vytvořit přiřazení rolí. |
+| Vlastní role | Ano | Ano | [Výpis vlastních rolí](#save-custom-roles) | Všechny vlastní role se trvale odstraní. Je nutné znovu vytvořit vlastní role a jakékoli přiřazení rolí. |
+| Spravované identity přiřazené systémem | Ano | Ano | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Je nutné zakázat a znovu povolit spravované identity. Je nutné znovu vytvořit přiřazení rolí. |
+| Spravované identity přiřazené uživatelem | Ano | Ano | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Spravované identity musíte odstranit, znovu vytvořit a připojit k příslušnému prostředku. Je nutné znovu vytvořit přiřazení rolí. |
+| Azure Key Vault | Ano | Ano | [Seznam Key Vault zásad přístupu](#list-key-vaults) | Je nutné aktualizovat ID tenanta přidruženého k trezorům klíčů. Je nutné odebrat a přidat nové zásady přístupu. |
+| Databáze SQL Azure s povolenou integrací ověřování Azure AD | Ano | Ne | [Ověření databází Azure SQL pomocí ověřování Azure AD](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
+| Azure Storage a Azure Data Lake Storage Gen2 | Ano | Ano |  | Je nutné znovu vytvořit všechny seznamy ACL. |
+| Azure Data Lake Storage Gen1 | Ano | Ano |  | Je nutné znovu vytvořit všechny seznamy ACL. |
+| Azure Files | Ano | Ano |  | Je nutné znovu vytvořit všechny seznamy ACL. |
+| Synchronizace souborů Azure | Ano | Ano |  |  |
+| Spravované disky Azure | Ano | Ano |  |  Pokud používáte šifrovací sady disku k šifrování Managed Disks pomocí klíčů spravovaných zákazníkem, je nutné zakázat a znovu povolit identity přiřazené systémem, které jsou přidruženy k sadám šifrování disku. A musíte znovu vytvořit přiřazení rolí, tj. znovu udělit požadovaná oprávnění sadám Disk Encryption v trezorech klíčů. |
+| Azure Kubernetes Service | Ano | Ano |  |  |
+| Azure Policy | Ano | Ne | Všechny Azure Policy objekty, včetně vlastních definicí, přiřazení, výjimek a dat o dodržování předpisů. | Je nutné [exportovat](../governance/policy/how-to/export-resources.md), importovat a znovu přiřazovat definice. Pak vytvořte nová přiřazení zásad a všechny potřebné [výjimky zásad](../governance/policy/concepts/exemption-structure.md). |
+| Azure Active Directory Domain Services | Ano | Ne |  |  |
+| Registrace aplikací | Ano | Ano |  |  |
 
 > [!WARNING]
 > Pokud používáte šifrování v klidovém umístění pro určitý prostředek, jako je například účet úložiště nebo databáze SQL, která má závislost na trezoru klíčů, který není **ve stejném** předplatném, které se přenáší, může vést k neodstranitelné situaci. Pokud máte tuto situaci, měli byste podniknout kroky k použití jiného trezoru klíčů nebo k dočasnému zakázání klíčů spravovaných zákazníkem, abyste se vyhnuli tomuto neopravitelnému scénáři.
@@ -299,7 +299,7 @@ V tomto kroku převedete předplatné ze zdrojového adresáře do cílového ad
     az account set --subscription "Contoso"
     ```
 
-### <a name="create-custom-roles"></a>Vytvoření vlastních rolí
+### <a name="create-custom-roles"></a>Vytváření vlastních rolí
         
 - Pomocí [AZ role definition Create vytvořte](/cli/azure/role/definition#az_role_definition_create) vytvořte jednotlivé vlastní role ze souborů, které jste vytvořili dříve. Další informace najdete v tématu [Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure CLI](custom-roles-cli.md).
 
@@ -307,9 +307,9 @@ V tomto kroku převedete předplatné ze zdrojového adresáře do cílového ad
     az role definition create --role-definition <role_definition>
     ```
 
-### <a name="create-role-assignments"></a>Vytvoření přiřazení rolí
+### <a name="assign-roles"></a>Přiřazení rolí
 
-- Pomocí [AZ role Assignment Create vytvořte](/cli/azure/role/assignment#az_role_assignment_create) přiřazení rolí pro uživatele, skupiny a instanční objekty. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure CLI](role-assignments-cli.md).
+- Pomocí [AZ role Assignment Create](/cli/azure/role/assignment#az_role_assignment_create) můžete přiřadit role uživatelům, skupinám a instančním objektům. Další informace najdete v tématu [přiřazení rolí Azure pomocí Azure CLI](role-assignments-cli.md).
 
     ```azurecli
     az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
@@ -325,7 +325,7 @@ V tomto kroku převedete předplatné ze zdrojového adresáře do cílového ad
     | Škálovací sady virtuálních počítačů | [Konfigurace spravovaných identit pro prostředky Azure v sadě škálování virtuálního počítače pomocí Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
     | Další služby | [Služby, které podporují spravované identity prostředků Azure](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) |
 
-1. Pomocí [AZ role Assignment Create vytvořte](/cli/azure/role/assignment#az_role_assignment_create) přiřazení rolí pro spravované identity přiřazené systémem. Další informace najdete v tématu [přiřazení přístupu spravované identity k prostředku pomocí Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
+1. Pomocí [AZ role Assignment Create](/cli/azure/role/assignment#az_role_assignment_create) můžete přiřadit role k spravovaným identitám přiřazeným systémem. Další informace najdete v tématu [přiřazení přístupu spravované identity k prostředku pomocí Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -341,7 +341,7 @@ V tomto kroku převedete předplatné ze zdrojového adresáře do cílového ad
     | Škálovací sady virtuálních počítačů | [Konfigurace spravovaných identit pro prostředky Azure v sadě škálování virtuálního počítače pomocí Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
     | Další služby | [Služby, které podporují spravované identity prostředků Azure](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)<br/>[Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem pomocí Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) |
 
-1. Pomocí [AZ role Assignment Create vytvořte](/cli/azure/role/assignment#az_role_assignment_create) přiřazení rolí pro spravované identity přiřazené uživatelem. Další informace najdete v tématu [přiřazení přístupu spravované identity k prostředku pomocí Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
+1. Pomocí [AZ role Assignment Create](/cli/azure/role/assignment#az_role_assignment_create) můžete přiřadit role k spravovaným identitám přiřazeným uživateli. Další informace najdete v tématu [přiřazení přístupu spravované identity k prostředku pomocí Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -361,7 +361,7 @@ Tato část popisuje základní kroky pro aktualizaci trezorů klíčů. Další
 
 1. Pokud používáte Azure Data Lake Storage Gen1, přiřaďte příslušné seznamy ACL. Další informace najdete v tématu [zabezpečení dat uložených v Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-secure-data.md).
 
-1. Pokud používáte Azure Data Lake Storage Gen2, přiřaďte příslušné seznamy ACL. Další informace najdete v tématu [řízení přístupu v Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
+1. Pokud používáte Azure Data Lake Storage Gen2, přiřaďte příslušné seznamy ACL. Další informace najdete v tématu [Řízení přístupu ve službě Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
 
 1. Pokud používáte soubory Azure, přiřaďte příslušné seznamy ACL.
 

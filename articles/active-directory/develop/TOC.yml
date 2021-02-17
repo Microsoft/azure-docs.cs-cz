@@ -62,12 +62,16 @@
           href: quickstart-v2-uwp.md
         - name: Windows Desktop .NET
           href: quickstart-v2-windows-desktop.md
+        - name: Node.js elektron
+          href: quickstart-v2-nodejs-desktop.md
     - name: Proces démon nebo back-endová služba
       items:
         - name: Konzola .NET Core (proces démon)
           href: quickstart-v2-netcore-daemon.md
         - name: Proces démon konzoly v Pythonu
           href: quickstart-v2-python-daemon.md
+        - name: Démon konzoly Node.js
+          href: quickstart-v2-nodejs-console.md
         - name: Démon konzoly Java
           href: quickstart-v2-java-daemon.md
 - name: Kurzy
@@ -88,6 +92,8 @@
           href: tutorial-v2-asp-webapp.md
         - name: Blazor Server
           href: tutorial-blazor-server.md
+        - name: Kurz Node.js webové aplikace
+          href: tutorial-v2-nodejs-webapp-msal.md
     - name: Mobilní a desktopové
       items:
         - name: Android
@@ -101,10 +107,14 @@
           href: tutorial-v2-windows-desktop.md
         - name: Použití režimu sdíleného zařízení v aplikaci pro Android
           href: tutorial-v2-shared-device-mode.md
+        - name: Aplikace v elektronovém počítači
+          href: tutorial-v2-nodejs-desktop.md
     - name: Proces démon nebo back-endová služba
       items:
         - name: Webová aplikace démona ASP.NET
           href: tutorial-v2-aspnet-daemon-web-app.md
+        - name: Démon konzoly Node.js
+          href: tutorial-v2-nodejs-console.md
 - name: ukázky
   href: sample-v2-code.md
 - name: Koncepty

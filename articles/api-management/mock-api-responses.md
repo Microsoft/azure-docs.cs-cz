@@ -5,14 +5,14 @@ author: vladvino
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 231ce9d946a2fb6650f25d90aaa423d1c95fb106
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 75727d139242e1b537505d2ed907ae20fc5479f8
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930709"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547235"
 ---
 # <a name="tutorial-mock-api-responses"></a>Kurz: napodobení odpovědí rozhraní API
 
@@ -46,18 +46,20 @@ Postup v této části ukazuje, jak vytvořit prázdné rozhraní API bez jakéh
 
 
 1. Přihlaste se k Azure Portal a přejděte k instanci API Management.
-1. Vyberte **rozhraní API**  >  **+ Přidat rozhraní**API  >  **prázdné rozhraní API**.
+1. Vyberte **rozhraní API**  >  **+ Přidat rozhraní** API  >  **prázdné rozhraní API**.
 1. V okně **vytvořit prázdné rozhraní API** vyberte **plná**.
 1. Zadejte *testovací rozhraní API* pro **zobrazované jméno**.
-1. Pro **produkty**vyberte **neomezeno** .
-1. Zajistěte, aby byl v **bráně**vybraný **spravovaný** .
+1. Pro **produkty** vyberte **neomezeno** .
+1. Zajistěte, aby byl v **bráně** vybraný **spravovaný** .
 1. Vyberte **Vytvořit**.
 
-    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-01-create-test-api.png" alt-text="Napodobná odpověď rozhraní API":::
+    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-01-create-test-api.png" alt-text="Vytvoření prázdného rozhraní API":::
 
 ## <a name="add-an-operation-to-the-test-api"></a>Přidání operace do testovacího rozhraní API
 
 Rozhraní API zpřístupňuje jednu nebo více operací. V této části přidejte operaci do prázdného rozhraní API, které jste vytvořili. Zavolání operace po dokončení kroků v této části způsobí chybu. Po dokončení kroků později v části povolení napodobení [odpovědi](#enable-response-mocking) se nezobrazí žádné chyby.
+
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Vyberte rozhraní API, které jste vytvořili v předchozím kroku.
 1. Vyberte **+ Přidat operaci**.
@@ -71,21 +73,54 @@ Rozhraní API zpřístupňuje jednu nebo více operací. V této části přidej
     | **Popis**     |                                   |  Nepovinný popis operace, který se používá k poskytnutí dokumentace na portálu pro vývojáře vývojářům pomocí tohoto rozhraní API.                                                    |
     
 1. Vyberte kartu **odpovědi** , která se nachází pod poli Adresa URL, zobrazovaný název a popis. Zadáním nastavení na této kartě můžete definovat stavové kódy odpovědí, typy obsahu, příklady a schémata.
-1. Vyberte **+ Přidat odpověď**a v seznamu vyberte **200 OK** .
+1. Vyberte **+ Přidat odpověď** a v seznamu vyberte **200 OK** .
 1. Pod záhlavím **Reprezentace** na pravé straně vyberte **+ Přidat reprezentaci**.
 1. Do vyhledávacího pole zadejte *Application/JSON* a vyberte typ obsahu **Application/JSON** .
 1. Do textového pole **Ukázka** zadejte `{ "sampleField" : "test" }`.
 1. Vyberte **Uložit**.
 
-:::image type="content" source="media/mock-api-responses/03-mock-api-responses-02-add-operation.png" alt-text="Napodobná odpověď rozhraní API" border="false":::
+:::image type="content" source="media/mock-api-responses/03-mock-api-responses-02-add-operation.png" alt-text="Přidat operaci rozhraní API" border="false":::
 
 I když se v tomto příkladu nevyžaduje, další nastavení pro operaci rozhraní API můžete nakonfigurovat na dalších kartách, včetně těchto:
 
 
-|Karta      |Description  |
+|Karta      |Popis  |
 |---------|---------|
 |**Dotaz**     |  Přidejte parametry dotazu. Kromě zadání názvu a popisu můžete zadat hodnoty, které jsou přiřazeny parametru dotazu. Jedna z hodnot může být označená jako výchozí (volitelné).        |
 |**Žádost**     |  Definujte typy obsahu, příklady a schémata požadavku.       |
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Chcete-li začít používat rozhraní příkazového řádku Azure:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Chcete-li přidat operaci do testovacího rozhraní API, spusťte příkaz [AZ APIM API operace CREATE](/cli/azure/apim/api/operation#az_apim_api_operation_create) :
+
+```azurecli
+az apim api operation create --resource-group apim-hello-word-resource-group \
+    --display-name "Test call" --api-id test-api --method GET \
+    --url-template /test --service-name apim-hello-world 
+```
+
+Spuštěním příkazu [AZ APIM API Operations list](/cli/azure/apim/api/operation#az_apim_api_operation_list) zobrazíte všechny operace pro rozhraní API:
+
+```azurecli
+az apim api operation list --resource-group apim-hello-word-resource-group \
+    --api-id test-api --service-name apim-hello-world --output table
+```
+
+Pokud chcete operaci odebrat, použijte příkaz [AZ APIM API Operation Delete](/cli/azure/apim/api/operation#az_apim_api_operation_delete) . Získá ID operace z předchozího příkazu.
+
+```azurecli
+az apim api operation delete --resource-group apim-hello-word-resource-group \
+    --api-id test-api --operation-id 00000000000000000000000000000000 \
+    --service-name apim-hello-world
+```
+
+Tuto operaci ponechte pro použití ve zbývající části tohoto článku.
+
+---
 
 ## <a name="enable-response-mocking"></a>Povolení napodobování odpovědí
 
@@ -94,15 +129,15 @@ I když se v tomto příkladu nevyžaduje, další nastavení pro operaci rozhra
 1. V okně na pravé straně se ujistěte, že je vybraná karta **Návrh** .
 1. V okně **příchozí zpracování** vyberte **+ Přidat zásadu**.
 
-    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-03-enable-mocking.png" alt-text="Napodobná odpověď rozhraní API" border="false":::
+    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-03-enable-mocking.png" alt-text="Přidat zásady zpracování" border="false":::
 
 1. Z Galerie vyberte **přípravou odezvu**  .
 
-    :::image type="content" source="media/mock-api-responses/mock-responses-policy-tile.png" alt-text="Napodobná odpověď rozhraní API" border="false":::
+    :::image type="content" source="media/mock-api-responses/mock-responses-policy-tile.png" alt-text="Dlaždice zásady Napodobení odpovědí" border="false":::
 
 1. Do textového pole **Odpověď služby API Management** zadejte **200 OK, application/json**. Tento výběr určuje, že by vaše rozhraní API mělo vracet ukázku odpovědi, kterou jste definovali v předchozí části.
 
-    :::image type="content" source="media/mock-api-responses/mock-api-responses-set-mocking.png" alt-text="Napodobná odpověď rozhraní API":::
+    :::image type="content" source="media/mock-api-responses/mock-api-responses-set-mocking.png" alt-text="Nastavit napodobnou odezvu":::
 
 1. Vyberte **Uložit**.
 
@@ -115,11 +150,11 @@ I když se v tomto příkladu nevyžaduje, další nastavení pro operaci rozhra
 1. Vyberte kartu **Test**.
 1. Ujistěte se, že je vybrané rozhraní API **Test call**. Vyberte **Odeslat** a proveďte testovací volání.
 
-   :::image type="content" source="media/mock-api-responses/03-mock-api-responses-04-test-mocking.png" alt-text="Napodobná odpověď rozhraní API":::
+   :::image type="content" source="media/mock-api-responses/03-mock-api-responses-04-test-mocking.png" alt-text="Test imitace rozhraní API":::
 
 1. V **odpovědi HTTP** se zobrazí JSON zadaný jako ukázka v první části tohoto kurzu.
 
-    :::image type="content" source="media/mock-api-responses/mock-api-responses-test-response.png" alt-text="Napodobná odpověď rozhraní API":::
+    :::image type="content" source="media/mock-api-responses/mock-api-responses-test-response.png" alt-text="Napodobná odpověď HTTP":::
 
 ## <a name="next-steps"></a>Další kroky
 

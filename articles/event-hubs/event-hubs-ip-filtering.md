@@ -3,12 +3,12 @@ title: Pravidla brány firewall pro Azure Event Hubs | Microsoft Docs
 description: Pomocí pravidel brány firewall povolte připojení z konkrétních IP adres do Azure Event Hubs.
 ms.topic: article
 ms.date: 02/12/2021
-ms.openlocfilehash: 18d043ebff7ff317207d0a33eaeba741fea8cc8a
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: ca5995c3e1b9923d925ddc4deae299c28261d18a
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517191"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560843"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Povolení přístupu k oborům názvů Azure Event Hubs z konkrétních IP adres nebo rozsahů
 Ve výchozím nastavení jsou Event Hubs obory názvů přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na další jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v zápisu [CIDR (bez třídy) (směrování Inter-Domain)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
@@ -17,6 +17,10 @@ Tato funkce je užitečná ve scénářích, ve kterých by měl být Azure Even
 
 >[!WARNING]
 > Pokud požadavky pocházejí ze služby, která není povolená pro veřejné IP adresy, zapnete pravidla brány firewall pro obor názvů Event Hubs zablokuje příchozí požadavky ve výchozím nastavení. Blokované požadavky zahrnují ty z jiných služeb Azure, od Azure Portal, ze služeb protokolování a metriky atd. V případě výjimky můžete povolit přístup k Event Hubs prostředkům z určitých důvěryhodných služeb i v případě, že je povolené filtrování IP adres. Seznam důvěryhodných služeb najdete v tématu [důvěryhodné služby společnosti Microsoft](#trusted-microsoft-services).
+
+> [!IMPORTANT]
+> Zadejte alespoň jedno pravidlo IP nebo pravidlo virtuální sítě pro obor názvů, aby bylo možné provozovat pouze ze zadaných IP adres nebo podsítě virtuální sítě. Pokud neexistují žádná pravidla IP a virtuální sítě, můžete k oboru názvů přistupovat prostřednictvím veřejného Internetu (pomocí přístupového klíče).  
+
 
 ## <a name="ip-firewall-rules"></a>Pravidla brány firewall protokolu IP
 Pravidla brány firewall protokolu IP se používají na úrovni oboru názvů Event Hubs. Pravidla se proto vztahují na všechna připojení z klientů pomocí libovolného podporovaného protokolu. Všechny pokusy o připojení z IP adresy, které neodpovídají povolenému pravidlu IP v oboru názvů Event Hubs, jsou odmítnuty jako neautorizované. Odpověď nezmiňuje pravidlo protokolu IP. Pravidla filtru IP se aplikují v pořadí a první pravidlo, které odpovídá IP adrese, určuje akci přijmout nebo odmítnout.
@@ -38,7 +42,10 @@ V této části se dozvíte, jak pomocí Azure Portal vytvořit pravidla brány 
 1. Pokud chcete omezit přístup ke konkrétním IP adresám, potvrďte, že je vybraná možnost **vybraná síť** . V části **Brána firewall** postupujte podle následujících kroků:
     1. Vyberte možnost **Přidat IP adresu klienta** a poskytněte vaší aktuální IP adrese přístup k oboru názvů. 
     2. Pro **Rozsah adres** zadejte konkrétní IPv4 adresu nebo rozsah adres IPv4 v zápisu CIDR. 
-3. Určete, zda chcete, aby **důvěryhodné služby společnosti Microsoft vynechal tuto bránu firewall**. Podrobnosti najdete v tématu [důvěryhodné služby Microsoftu](#trusted-microsoft-services) . 
+
+    >[!WARNING]
+    > Pokud vyberete možnost **vybrané sítě** a na tuto stránku nepřidáte aspoň jedno pravidlo firewallu IP nebo virtuální síť, přístup k oboru názvů se dá získat přes veřejný Internet (pomocí přístupové klávesy).
+1. Určete, zda chcete, aby **důvěryhodné služby společnosti Microsoft vynechal tuto bránu firewall**. Podrobnosti najdete v tématu [důvěryhodné služby Microsoftu](#trusted-microsoft-services) . 
 
       ![Firewall – vybraná možnost všechny sítě](./media/event-hubs-firewall/firewall-selected-networks-trusted-access-disabled.png)
 3. Nastavení uložte kliknutím na **Uložit** na panelu nástrojů. Počkejte několik minut, než se potvrzení zobrazí v oznámeních na portálu.

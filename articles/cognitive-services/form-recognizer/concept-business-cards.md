@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 4cd762d6c264d95ecb1bd0f3f4c3a4d96eb5a57d
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: c2543f74b90205a36d3f5b4481beca35c779f77e
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585088"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546019"
 ---
 # <a name="form-recognizer-prebuilt-business-cards-model"></a>Model předdefinovaných obchodních karet pro rozpoznávání formulářů 
 
@@ -31,7 +31,7 @@ Předem připravené rozhraní API na vizitce extrahuje klíčová pole z obchod
 
 ### <a name="fields-extracted"></a>Extrahovaná pole:
 
-|Název| Typ | Description | Text | 
+|Název| Typ | Popis | Text | 
 |:-----|:----|:----|:----|
 | ContactNames | pole objektů | Název kontaktu extrahovaný z vizitky | [{"FirstName": "Jan"; "LastName": "Chvojková"}] |
 | FirstName | řetězec | První (zadaný) jméno kontaktu | Jan | 
@@ -76,7 +76,11 @@ Pokud má pole **stav** hodnotu **úspěch** , odpověď JSON bude v případě 
 
 ### <a name="sample-json-output"></a>Ukázkový výstup JSON
 
-Podívejte se na následující příklad úspěšné odpovědi JSON: uzel "readResults" obsahuje veškerý rozpoznaný text. Text je uspořádán podle stránky, potom podle řádku, podle jednotlivých slov. Uzel "documentResults" obsahuje hodnoty specifické pro obchodní karty, které model zjistil. Tady najdete užitečné kontaktní údaje, jako je křestní jméno, příjmení, název společnosti a další.
+Odpověď na operaci získání výsledku analýzy obchodních karet bude strukturovaná reprezentace vizitky se všemi extrahovanými informacemi.  Podívejte se na [ukázku souboru firemní karty](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-english.jpg) a jeho strukturovaný výstup [ukázkový výstup](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-result.json)na vizitce.
+
+Podívejte se na následující příklad úspěšné odpovědi JSON:
+* `"readResults"`Uzel obsahuje veškerý rozpoznaný text. Text je uspořádán podle stránky, potom podle řádku, podle jednotlivých slov. 
+* `"documentResults"`Uzel obsahuje hodnoty specifické pro obchodní karty, které model zjistil. Tady najdete užitečné kontaktní údaje, jako je křestní jméno, příjmení, název společnosti a další.
 
 ```json
 {

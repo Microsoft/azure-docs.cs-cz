@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4c758dca9f6020fd948ad8c3a8cdf014306e8ae7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b61636d6048f63ae962d4f755a29c02e6785d5e1
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96343983"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557535"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Správci předplatného Azure Classic
 
@@ -38,7 +38,7 @@ Tento článek popisuje, jak přidat nebo změnit role Co-Administrator a správ
 
     Co-Administrators lze přiřadit pouze v oboru předplatného.
 
-1. Klikněte na **Řízení přístupu (IAM)** .
+1. Klikněte na **Řízení přístupu (IAM)**.
 
 1. Klikněte na kartu **Classic Administrators** .
 
@@ -71,7 +71,7 @@ Uživatelům typu Host, kterým byla přiřazena role Co-Administrator, se můž
 
 Očekáváte, že uživatel B může spravovat všechno. Důvodem tohoto rozdílu je to, že se účet Microsoft do předplatného přidal jako uživatel typu Host, a ne jako uživatel s členem. Uživatelé typu Host mají ve srovnání s členskými uživateli různá výchozí oprávnění ve službě Azure AD. Například členské uživatelé mohou číst jiné uživatele v Azure AD a uživatelé typu Host nemůžou. Členové členů můžou registrovat nové instanční objekty ve službě Azure AD a uživatelé typu Host nemůžou.
 
-Pokud uživatel typu Host potřebuje, aby mohl provádět tyto úlohy, je možné řešení přiřadit konkrétní role Azure AD, které uživatel typu Host potřebuje. Například v předchozím scénáři můžete přiřadit roli [čtenáři adresáře](../active-directory/roles/permissions-reference.md#directory-readers) pro čtení dalších uživatelů a přiřazení role [vývojáře aplikace](../active-directory/roles/permissions-reference.md#application-developer) , aby bylo možné vytvářet instanční objekty. Další informace o členech a uživatelích typu Host a jejich oprávněních najdete v tématu [co jsou výchozí oprávnění uživatele v Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md). Další informace o tom, jak udělit přístup pro uživatele typu Host, najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pro externí uživatele typu Host pomocí Azure Portal](role-assignments-external-users.md).
+Pokud uživatel typu Host potřebuje, aby mohl provádět tyto úlohy, je možné řešení přiřadit konkrétní role Azure AD, které uživatel typu Host potřebuje. Například v předchozím scénáři můžete přiřadit roli [čtenáři adresáře](../active-directory/roles/permissions-reference.md#directory-readers) pro čtení dalších uživatelů a přiřazení role [vývojáře aplikace](../active-directory/roles/permissions-reference.md#application-developer) , aby bylo možné vytvářet instanční objekty. Další informace o členech a uživatelích typu Host a jejich oprávněních najdete v tématu [co jsou výchozí oprávnění uživatele v Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md). Další informace o tom, jak udělit přístup pro uživatele typu Host, najdete v tématu [přiřazení rolí Azure k externím uživatelům typu Host pomocí Azure Portal](role-assignments-external-users.md).
 
 Všimněte si, že [předdefinované role Azure](../role-based-access-control/built-in-roles.md) se liší od [rolí Azure AD](../active-directory/roles/permissions-reference.md). Předdefinované role neudělují žádnému přístupu ke službě Azure AD. Další informace najdete v tématu [pochopení různých rolí](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
@@ -83,7 +83,7 @@ Informace, které porovnávají uživatele členů a uživatele typu Host, najde
 
 1. Otevřete [Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) a vyberte předplatné.
 
-1. Klikněte na **Řízení přístupu (IAM)** .
+1. Klikněte na **Řízení přístupu (IAM)**.
 
 1. Klikněte na kartu **Classic Administrators** .
 
@@ -138,7 +138,7 @@ Správce účtu je uživatel, který původně zaregistroval předplatné Azure,
 
 Pomocí těchto kroků zobrazíte správce účtu.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Otevřete **cost management + fakturace** a vyberte předplatné.
 
@@ -151,5 +151,5 @@ Pomocí těchto kroků zobrazíte správce účtu.
 ## <a name="next-steps"></a>Další kroky
 
 * [Vysvětlení různých rolí](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [Přidání nebo odebrání přiřazení rolí Azure pomocí portálu Azure Portal](../role-based-access-control/role-assignments-portal.md)
+* [Přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md)
 * [Přidávání a změna správců předplatného Azure](../cost-management-billing/manage/add-change-subscription-administrator.md)

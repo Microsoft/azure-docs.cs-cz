@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/15/2021
-ms.openlocfilehash: 3be043af7b057c47f360ce36db6bb7c3afd80638
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 7149233782815deebebde53767a3c654ac2321bb
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/16/2021
-ms.locfileid: "100535344"
+ms.locfileid: "100547753"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rychlé zprovoznění: Vytvoření služby Azure Cognitive Search na portálu
 
@@ -83,22 +83,19 @@ Požadavky na název služby:
 
 ## <a name="choose-a-location"></a>Zvolte umístění.
 
-Azure Kognitivní hledání je k dispozici ve většině oblastí. Seznam podporovaných oblastí najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/search/).
+Azure Kognitivní hledání je k dispozici ve většině oblastí, jak je uvedeno na [stránce s cenami](https://azure.microsoft.com/pricing/details/search/).
 
-> [!Note]
-> Střed Indie a Spojené arabské emiráty sever nejsou aktuálně k dispozici pro nové služby. Pro služby, které už jsou v těchto oblastech, můžete škálovat bez omezení a služba je v této oblasti plně podporovaná. Tato omezení jsou dočasná a omezená jenom na nové služby. Tato poznámka se odstraní, když už neplatí omezení.
->
-> Dvojité šifrování je dostupné jenom v určitých oblastech. Další informace najdete v tématu [dvojité šifrování](search-security-overview.md#double-encryption).
+Obecně platí, že pokud používáte více služeb Azure, vyberte oblast, která je také hostitelem vašich dat nebo aplikační služby. Tím dojde k minimalizaci nebo zrušení poplatků za šířku pásma pro odchozí data (pro odchozí data se neúčtují žádné poplatky, pokud jsou služby ve stejné oblasti).
 
-### <a name="requirements"></a>Požadavky
+Zákazníci, kteří mají požadavky na provozní kontinuitu a zotavení po havárii (BCDR), by měli vytvořit své služby v [regionálních párů](../best-practices-availability-paired-regions.md#azure-regional-pairs). Pokud například pracujete v Severní Amerika, můžete pro každou službu zvolit Východní USA a Západní USA, nebo Střed USA – sever a Jižní centra USA.
 
- Pokud používáte rozšíření AI, vytvořte vyhledávací službu ve stejné oblasti jako Cognitive Services. *Společné umístění Azure kognitivní hledání a Cognitive Services ve stejné oblasti je požadavek na obohacení AI*.
+Následující funkce jsou k dispozici pouze v určitých oblastech:
 
- Zákazníci, kteří mají požadavky na provozní kontinuitu a zotavení po havárii (BCDR), by měli vytvořit své služby v [regionálních párů](../best-practices-availability-paired-regions.md#azure-regional-pairs). Pokud například pracujete v Severní Amerika, můžete pro každou službu zvolit Východní USA a Západní USA, nebo Střed USA – sever a Jižní centra USA.
+* Rozšíření AI vyžaduje, aby Cognitive Services být ve stejné oblasti jako Azure Kognitivní hledání. Nejdříve zvolte [oblast Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) (seznam je menší) a pak zvolte stejnou oblast pro vyhledávací službu.
 
-### <a name="recommendations"></a>Doporučení
+* Dvojité šifrování je dostupné jenom v určitých oblastech. Další informace najdete v tématu [dvojité šifrování](search-security-overview.md#double-encryption) .
 
-Pokud používáte více služeb Azure, vyberte oblast, která je také hostitelem vašich dat nebo aplikační služby. Tím dojde k minimalizaci nebo zrušení poplatků za šířku pásma pro odchozí data (pro odchozí data se neúčtují žádné poplatky, pokud jsou služby ve stejné oblasti).
+* Podpora zón dostupnosti se v konkrétních oblastech nabízí na službách vytvořených po konkrétních datech. Další informace najdete [v části "zóny dostupnosti" v tématu škálování pro výkon](search-performance-optimization.md#availability-zones).
 
 ## <a name="choose-a-pricing-tier"></a>Výběr cenové úrovně
 

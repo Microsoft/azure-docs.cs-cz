@@ -5,14 +5,14 @@ author: vladvino
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 10/30/2020
+ms.date: 02/10/2021
 ms.author: apimpm
-ms.openlocfilehash: 4a107b4cc0dbf0b0845211ca64691fb0e792a47c
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: f6ea02c32ec7fcb694d63f29c63c3880a7cfff9e
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679092"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546648"
 ---
 # <a name="tutorial-publish-multiple-versions-of-your-api"></a>Kurz: publikování několika verzí vašeho rozhraní API 
 
@@ -87,6 +87,32 @@ Například pro přidání verze do **neomezeného** produktu:
 1. Klikněte na **Vybrat**.
 
 :::image type="content" source="media/api-management-getstarted-publish-versions/08-add-multiple-versions-03-add-version-product.png" alt-text="Přidat verzi k produktu":::
+
+## <a name="use-version-sets"></a>Použití sad verzí
+
+Když vytvoříte více verzí, vytvoří Azure Portal *sadu verzí*, která představuje sadu verzí pro jedno logické rozhraní API. Vyberte název rozhraní API, které obsahuje více verzí. Azure Portal zobrazí **sadu verzí**. Můžete přizpůsobit **název** a **Popis** virtuální sady.
+
+Můžete přímo komunikovat se sadami verzí pomocí Azure CLI:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Pokud chcete zobrazit všechny sady verzí, spusťte příkaz [AZ APIM API versionset list](/cli/azure/apim/api/versionset#az_apim_api_versionset_list) :
+
+```azurecli
+az apim api versionset list --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --output table
+```
+
+Když Azure Portal vytvoří pro vás sadu verzí, přiřadí alfanumerický název, který se zobrazí ve sloupci **název** v seznamu. Tento název použijte v dalších příkazech rozhraní příkazového řádku Azure.
+
+Pokud chcete zobrazit podrobnosti o sadě verzí, spusťte příkaz [AZ APIM API versionset show](/api/versionset#az_apim_api_versionset_show) :
+
+```azurecli
+az apim api versionset show --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --version-set-id 00000000000000000000000
+```
+
+Další informace o sadách verzí najdete v tématu [verze v Azure API Management](api-management-versions.md#how-versions-are-represented).
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>Zobrazení verze na portálu pro vývojáře
 

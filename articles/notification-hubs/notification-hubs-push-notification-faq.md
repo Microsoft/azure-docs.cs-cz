@@ -11,16 +11,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 11/13/2019
+ms.date: 02/12/2021
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 9d476b1db645ed1f91b62fcf11464f7077a8fb3c
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e34fbdca51e7680a80c768e49bae891cb56dfa9d
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491422"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546444"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Nabízená oznámení s Azure Notification Hubs: nejčastější dotazy
 
@@ -34,16 +34,16 @@ Azure Notification Hubs má dvě úrovně prostředků: centra a obory názvů. 
 
 Nejnovější informace o cenách najdete na stránce s [cenami Notification Hubs] . Notification Hubs se účtuje na úrovni oboru názvů. (Pro definici oboru názvů, přečtěte si téma "Co je struktura prostředků Notification Hubs?") Notification Hubs nabízí tři úrovně:
 
-* **Zdarma** : Tato úroveň je dobrým výchozím bodem pro zkoumání nabízených funkcí. Nedoporučuje se pro produkční aplikace. Získáte 500 zařízení a 1 000 000 nabízených oznámení na obor názvů za měsíc bez záruky smlouvy o úrovni služeb (SLA).
-* **Basic** : Tato vrstva (nebo úroveň Standard) se doporučuje pro menší produkční aplikace. Dostanete 200 000 zařízení a 10 000 000 nabízených oznámení na obor názvů za měsíc jako standardní hodnoty.
-* **Standard** : Tato úroveň se doporučuje pro střední až velké produkční aplikace. Dostanete 10 000 000 zařízení a 10 000 000 nabízených oznámení na obor názvů za měsíc jako standardní hodnoty. Obsahuje bohatou telemetrii (další údaje o nabízeném stavu push).
+* **Zdarma**: Tato úroveň je dobrým výchozím bodem pro zkoumání nabízených funkcí. Nedoporučuje se pro produkční aplikace. Získáte 500 zařízení a 1 000 000 nabízených oznámení na obor názvů za měsíc bez záruky smlouvy o úrovni služeb (SLA).
+* **Basic**: Tato vrstva (nebo úroveň Standard) se doporučuje pro menší produkční aplikace. Dostanete 200 000 zařízení a 10 000 000 nabízených oznámení na obor názvů za měsíc jako standardní hodnoty.
+* **Standard**: Tato úroveň se doporučuje pro střední až velké produkční aplikace. Dostanete 10 000 000 zařízení a 10 000 000 nabízených oznámení na obor názvů za měsíc jako standardní hodnoty. Obsahuje bohatou telemetrii (další údaje o nabízeném stavu push).
 
 Funkce úrovně Standard:
 
-* **Bohatá telemetrie** : pomocí Notification Hubs telemetrie zpráv můžete sledovat všechny žádosti o nabízené oznámení a systém oznámení platformy zpětnou vazbu pro ladění.
+* **Bohatá telemetrie**: pomocí Notification Hubs telemetrie zpráv můžete sledovat všechny žádosti o nabízené oznámení a systém oznámení platformy zpětnou vazbu pro ladění.
 * **Víceklientská architektura: můžete** pracovat s přihlašovacími údaji systém oznámení platformy na úrovni oboru názvů. Tato možnost umožňuje snadno rozdělit klienty do Center v rámci stejného oboru názvů.
 * **Naplánovaná nabízená** oznámení: můžete naplánovat, aby se oznámení odesílala kdykoli.
-* **Hromadné operace** : umožňuje registraci funkcí exportu/importu, jak je popsáno v dokumentu [Export/Import registrací] .
+* **Hromadné operace**: umožňuje registraci funkcí exportu/importu, jak je popsáno v dokumentu [Export/Import registrací] .
 
 ### <a name="what-is-the-notification-hubs-sla"></a>Jaká je smlouva SLA pro Notification Hubs?
 
@@ -103,6 +103,10 @@ PNS nezaručuje smlouvu SLA pro doručování oznámení. Většina nabízených
 
 Vzhledem k povaze nabízených oznámení (jsou dodávány externím PNS specifickým pro konkrétní platformu) není zaručena latence. Většina nabízených oznámení je obvykle dodána během několika minut.
 
+### <a name="where-does-azure-notification-hubs-store-data"></a>Kde Azure Notification Hubs ukládá data?
+
+Azure Notification Hubs ukládá data o registraci zákazníka v oblasti vybrané zákazníkem. Notification Hubs poskytuje pokrytí zotavení po havárii metadat (název Notification Hubs, připojovací řetězec a další důležité informace). U všech oblastí s výjimkou Brazílie – jih a jihovýchodní Asie je zálohování metadat hostované v jiné oblasti (obvykle spárováno s Azure). Pro oblast Brazílie – jih a jihovýchodní Asie jsou zálohy uložené ve stejné oblasti, aby vyhovovaly požadavkům na umístění dat pro tyto oblasti.
+
 ### <a name="what-do-i-need-to-consider-when-designing-a-solution-with-namespaces-and-notification-hubs"></a>Co je potřeba vzít v úvahu při navrhování řešení pomocí oborů názvů a Center oznámení?
 
 #### <a name="mobile-appenvironment"></a>Mobilní aplikace/prostředí
@@ -119,7 +123,7 @@ Vzhledem k povaze nabízených oznámení (jsou dodávány externím PNS specifi
 
 Při registraci mobilní aplikace portálu pro vývojáře platformy (například Apple nebo Google) se odesílají identifikátory aplikace a tokeny zabezpečení. Back-end aplikace poskytuje tyto tokeny PNS platformy, aby bylo možné odesílat nabízená oznámení do zařízení. Tokeny zabezpečení můžou být ve formě certifikátů (například Apple iOS nebo Windows Phone) nebo klíčů zabezpečení (například Google Android nebo Windows). Musí být nakonfigurovány v centrech oznámení. Konfigurace se obvykle provádí na úrovni centra oznámení, ale je možné ji také provést na úrovni oboru názvů ve scénáři s více klienty.
 
-#### <a name="namespaces"></a>Jmenné prostory
+#### <a name="namespaces"></a>Obory názvů
 
 Obory názvů lze použít pro seskupení nasazení. Můžou se také použít k reprezentaci všech Center oznámení pro všechny klienty stejné aplikace ve scénáři s více klienty.
 
@@ -176,7 +180,7 @@ Azure Notification Hubs šifruje všechna neaktivní zákaznická data s výjimk
 
 ### <a name="is-there-audit-log-capability"></a>Je k dispozici možnost protokolu auditu?
 
-Yes. Všechny operace správy Notification Hubs aktualizují protokol aktivit Azure, ke kterému se v [Azure Portal]zveřejňuje. Protokol aktivit Azure nabízí přehledy o operacích provedených u prostředků ve vašich předplatných. Pomocí protokolu aktivit můžete určit, kdo a kdy se mají u prostředků ve vašem předplatném provádět operace zápisu (PUT, POST, DELETE). Můžete také pochopit stav operací a dalších relevantních vlastností. Naopak. Protokol aktivit nezahrnuje operaci čtení (GET).
+Ano. Všechny operace správy Notification Hubs aktualizují protokol aktivit Azure, ke kterému se v [Azure Portal]zveřejňuje. Protokol aktivit Azure nabízí přehledy o operacích provedených u prostředků ve vašich předplatných. Pomocí protokolu aktivit můžete určit, kdo a kdy se mají u prostředků ve vašem předplatném provádět operace zápisu (PUT, POST, DELETE). Můžete také pochopit stav operací a dalších relevantních vlastností. Naopak. Protokol aktivit nezahrnuje operaci čtení (GET).
 
 ## <a name="monitoring-and-troubleshooting"></a>Monitorování a řešení potíží
 

@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: b6f99f1f58faece3ab286b2bc3cb571cdcba87de
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 8450a4bf172abcc57f93ccd20bc84642946e7ba9
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99088900"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555064"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>Paměťově optimalizovaná Dv2 a Dsv2-Series
 
@@ -28,7 +28,7 @@ Velikosti řady Dv2-Series běží na Intel® Xeon® Platinum 8272CL (Cascade La
 [Migrace za provozu](maintenance-and-updates.md): podporováno<br>
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1<br>
-[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
+[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované (*vyžaduje minimálně 4 vCPU*)<br>
 [Dočasné disky s operačním systémem](ephemeral-os-disks.md): nepodporované <br>
 <br> 
 
@@ -53,7 +53,7 @@ Velikosti řady DSv2-Series běží na Intel® Xeon® Platinum 8272CL (Cascade L
 [Migrace za provozu](maintenance-and-updates.md): podporováno<br>
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
-[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
+[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované (*vyžaduje minimálně 4 vCPU*)<br>
 [Dočasné disky s operačním systémem](ephemeral-os-disks.md): podporované <br>
 <br> 
 
