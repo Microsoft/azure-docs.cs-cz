@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 01/07/2021
-ms.openlocfilehash: fd0a779ec5ac5537dd3e3ed6a82cf818b42cff15
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.date: 02/16/2021
+ms.openlocfilehash: e9fbafa9f3c33d10496e84f61e1f2b97f6328d3b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018788"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581818"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Plánování a spouštění opakujících se automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps
 
@@ -90,8 +90,8 @@ Tady je několik vzorů, které ukazují, jak můžete řídit opakování s po�
 | Čas spuštění | Opakování bez plánu | Opakování s plánem (jenom Trigger opakování) |
 |------------|-----------------------------|----------------------------------------------------|
 | nTato | Okamžitě spustí první úlohu. <p>Spustí budoucí úlohy na základě času posledního spuštění. | Okamžitě spustí první úlohu. <p>Spustí budoucí úlohy na základě zadaného plánu. |
-| Čas začátku v minulosti | Trigger **opakování** : vypočítá dobu běhu založenou na zadaném čase zahájení a zahodí minulé časy spuštění. Spustí první úlohu v příštím budoucím čase spuštění. <p>Spustí budoucí úlohy na základě výpočtů z posledního času spuštění. <p><p>Aktivační událost **posuvných oken** : vypočítá časy spuštění na základě zadaného počátečního času a respektuje minulé časy spuštění. <p>Spustí budoucí úlohy na základě výpočtů z určeného počátečního času. <p><p>Další vysvětlení najdete v příkladu následujícím v této tabulce. | Spustí první úlohu, která *není dřív* než čas spuštění, podle plánu vypočítaného z času spuštění. <p>Spustí budoucí úlohy na základě zadaného plánu. <p>**Poznámka:** Pokud zadáte opakování s plánem, ale nezadáte hodiny nebo minuty pro tento plán, Logic Apps vypočítá dobu v budoucích časech pomocí hodin nebo minut v době prvního spuštění. |
-| Spustit čas nyní nebo v budoucnu | Spustí první úlohu v zadaném počátečním čase. <p>Spustí budoucí úlohy na základě výpočtů z posledního času spuštění. | Spustí první úlohu, která *není dřív* než čas spuštění, podle plánu vypočítaného z času spuštění. <p>Spustí budoucí úlohy na základě zadaného plánu. <p>**Poznámka:** Pokud zadáte opakování s plánem, ale nezadáte hodiny nebo minuty pro tento plán, Logic Apps vypočítá dobu v budoucích časech pomocí hodin nebo minut v době prvního spuštění. |
+| Čas začátku v minulosti | Trigger **opakování** : vypočítá dobu běhu založenou na zadaném čase zahájení a zahodí minulé časy spuštění. <p><p>Spustí první úlohu v příštím budoucím čase spuštění. <p><p>Spustí budoucí úlohy na základě času posledního spuštění. <p><p>Aktivační událost **posuvných oken** : vypočítá časy spuštění na základě zadaného počátečního času a respektuje minulé časy spuštění. <p><p>Spustí budoucí úlohy na základě zadaného počátečního času. <p><p>Další vysvětlení najdete v příkladu následujícím v této tabulce. | Spustí první úlohu, která *není dřív* než čas spuštění, podle plánu vypočítaného z času spuštění. <p><p>Spustí budoucí úlohy na základě zadaného plánu. <p><p>**Poznámka:** Pokud zadáte opakování s plánem, ale nezadáte hodiny nebo minuty pro tento plán, Logic Apps vypočítá dobu v budoucích časech pomocí hodin nebo minut v době prvního spuštění. |
+| Spustit čas nyní nebo v budoucnu | Spustí první úlohu v zadaném počátečním čase. <p><p>Trigger **opakování** : spustí budoucí úlohy na základě posledního času spuštění. <p><p>Aktivační událost **posuvných oken** : spustí budoucí úlohy na základě zadaného počátečního času. | Spustí první úlohu, která *není dřív* než čas spuštění, podle plánu vypočítaného z času spuštění. <p><p>Spustí budoucí úlohy na základě zadaného plánu. <p>**Poznámka:** Pokud zadáte opakování s plánem, ale nezadáte hodiny nebo minuty pro tento plán, Logic Apps vypočítá dobu v budoucích časech pomocí hodin nebo minut v době prvního spuštění. |
 ||||
 
 *Příklad pro čas zahájení a opakování, ale žádný plán*
@@ -152,7 +152,7 @@ Pokud tyto aplikace logiky používají zónu UTC-6:00 (střed & USA –), tato 
 
   * #1 aplikace logiky
 
-    | Datum | Čas (místní) | Čas (UTC) | Poznámky |
+    | Date (Datum) | Čas (místní) | Čas (UTC) | Poznámky |
     |------|--------------|------------|-------|
     | 03/09/2019 | 1:30:00 DOP. | 7:30:00 DOP. | ČAS UTC před dnem, kdy začne platit letní čas. |
     | 03/10/2019 | 1:30:00 DOP. | 7:30:00 DOP. | ČAS UTC je stejný, protože letní čas nevede k jeho uplatnění. |
@@ -161,7 +161,7 @@ Pokud tyto aplikace logiky používají zónu UTC-6:00 (střed & USA –), tato 
 
   * #2 aplikace logiky
 
-    | Datum | Čas (místní) | Čas (UTC) | Poznámky |
+    | Date (Datum) | Čas (místní) | Čas (UTC) | Poznámky |
     |------|--------------|------------|-------|
     | 03/09/2019 | 2:30:00 DOP. | 8:30:00 DOP. | ČAS UTC před dnem, kdy začne platit letní čas. |
     | 03/10/2019 | 3:30:00 DOP. × | 8:30:00 DOP. | Datum a čas je již v platnosti, takže místní čas se přesunul o hodinu dopředu, protože časové pásmo UTC-6:00 se změní na UTC-5:00. Další informace najdete v tématu [triggery, které začínají v rozmezí od 2:00 do 3:00](#dst-window). |
@@ -174,7 +174,7 @@ Pokud tyto aplikace logiky používají zónu UTC-6:00 (střed & USA –), tato 
 
   * #1 aplikace logiky
 
-    | Datum | Čas (místní) | Čas (UTC) | Poznámky |
+    | Date (Datum) | Čas (místní) | Čas (UTC) | Poznámky |
     |------|--------------|------------|-------|
     | 11/02/2019 | 1:30:00 DOP. | 6:30:00 DOP. ||
     | 11/03/2019 | 1:30:00 DOP. | 6:30:00 DOP. ||
@@ -183,7 +183,7 @@ Pokud tyto aplikace logiky používají zónu UTC-6:00 (střed & USA –), tato 
 
   * #2 aplikace logiky
 
-    | Datum | Čas (místní) | Čas (UTC) | Poznámky |
+    | Date (Datum) | Čas (místní) | Čas (UTC) | Poznámky |
     |------|--------------|------------|-------|
     | 11/02/2019 | 2:30:00 DOP. | 7:30:00 DOP. ||
     | 11/03/2019 | 2:30:00 DOP. | 8:30:00 DOP. ||

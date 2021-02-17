@@ -1,29 +1,35 @@
 ---
 title: Připojit Cognitive Services k dovednosti
 titleSuffix: Azure Cognitive Search
-description: Pokyny pro připojení Cognitive Servicesho předplatného ke kanálu rozšíření AI ve službě Azure Kognitivní hledání.
-manager: nitinme
+description: Naučte se připojit Cognitive Services ke kanálu rozšíření AI v Azure Kognitivní hledání předplatné.
 author: LuisCabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: c9f6a5ebc4f3242181196bd40b62f7522d025b84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/16/2021
+ms.openlocfilehash: 77735166fafe9d39dff483baa89a4b31db31275d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924973"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577934"
 ---
-# <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Připojení prostředku Cognitive Services k dovednosti v Azure Kognitivní hledání 
+# <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Připojení prostředku Cognitive Services k dovednosti v Azure Kognitivní hledání
 
-Při konfiguraci kanálu rozšíření v Azure Kognitivní hledání můžete rozšířit omezený počet dokumentů zdarma. V případě větších a častých úloh byste měli připojit Fakturovatelné Cognitive Services prostředku.
+Při konfiguraci [kanálu rozšíření AI](cognitive-search-concept-intro.md) v Azure kognitivní hledání můžete rozšířit omezený počet dokumentů zdarma. V případě větších a častých úloh byste měli připojit Fakturovatelné Cognitive Services prostředku "vše v jednom". Předplatné "All-in-One" odkazuje na "Cognitive Services" jako nabídku, a ne na jednotlivé služby, s přístupem uděleným přes jeden klíč rozhraní API.
 
-V tomto článku se dozvíte, jak připojit prostředek přiřazením klíče k dovednosti, který definuje kanál pro rozšíření.
+Prostředek Cognitive Services "All-in-One" vydává [předdefinované dovednosti](cognitive-search-predefined-skills.md) , které můžete zahrnout do dovednosti:
 
-## <a name="resources-used-during-enrichment"></a>Prostředky použité během obohacení
++ [Počítačové zpracování obrazu](https://azure.microsoft.com/services/cognitive-services/computer-vision/) pro analýzu obrázků a optické rozpoznávání znaků (OCR)
++ [Analýza textu](https://azure.microsoft.com/services/cognitive-services/text-analytics/) pro detekci jazyka, rozpoznávání entit, analýzu mínění a extrakci klíčových frází
++ [Překlad textu](https://azure.microsoft.com/services/cognitive-services/translator-text-api/)
 
-Azure Kognitivní hledání má závislost na Cognitive Services, včetně [počítačové zpracování obrazu](https://azure.microsoft.com/services/cognitive-services/computer-vision/) pro analýzu obrazu a optické rozpoznávání znaků (OCR), [Analýza textu](https://azure.microsoft.com/services/cognitive-services/text-analytics/) pro zpracování přirozeného jazyka a dalších rozšíření, jako je [Převod textu](https://azure.microsoft.com/services/cognitive-services/translator-text-api/). V souvislosti s obohacením v Azure Kognitivní hledání jsou tyto algoritmy AI zabaleny do *dovednosti*, jsou umístěné v *dovednosti*a na ně odkazuje *indexer* během indexování.
+Klíč Cognitive Services "All-in-One" je v definici dovednosti nepovinný. Když číslo denních transakcí je nižší než 20 za den, náklady jsou absorbovany. Pokud však transakce překročí tento počet, je vyžadován platný klíč prostředku, aby zpracování pokračovalo.
+
+Klíč prostředku "All-in-One" je platný. Služba vyhledávání interně použije prostředek, který je umístěn ve stejné fyzické oblasti, i když je klíč "vše v jednom" pro prostředek v jiné oblasti. Stránka [dostupnost produktu](https://azure.microsoft.com/global-infrastructure/services/?products=search) zobrazuje oblastní dostupnost vedle sebe.
+
+> [!NOTE]
+> Pokud vynecháte předdefinované dovednosti v dovednosti, nebudete mít k dispozici Cognitive Services a nebude se vám účtovat ani v případě, že dovednosti určí klíč.
 
 ## <a name="how-billing-works"></a>Jak funguje fakturace
 
@@ -37,9 +43,9 @@ Azure Kognitivní hledání má závislost na Cognitive Services, včetně [poč
 
 ## <a name="same-region-requirement"></a>Požadavek stejné oblasti
 
-Vyžadujeme, aby Azure Kognitivní hledání a Azure Cognitive Services existovaly ve stejné oblasti. V opačném případě se tato zpráva zobrazí v době běhu: `"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
+Kognitivní hledání i Cognitive Services musí existovat ve stejné fyzické oblasti, jak je uvedeno na stránce [dostupnost produktu](https://azure.microsoft.com/global-infrastructure/services/?products=search) . Většina oblastí, které nabízí Kognitivní hledání také nabízí Cognitive Services.
 
-Neexistuje žádný způsob, jak přesunout službu mezi oblastmi. Pokud se zobrazí tato chyba, měli byste vytvořit nový prostředek Cognitive Services ve stejné oblasti jako Azure Kognitivní hledání.
+Pokud se pokusíte o rozšíření AI v oblasti, která nemá obě služby, zobrazí se tato zpráva: "poskytnutý klíč není platným klíčem Cognitiveservices Account typu pro oblast vaší vyhledávací služby."
 
 > [!NOTE]
 > Některé integrované dovednosti jsou založené na neoblastní Cognitive Services (například [dovednost překladu textu](cognitive-search-skill-text-translation.md)). Používání neregionálních dovedností znamená, že váš požadavek se může obsluhovat v jiné oblasti, než je oblast Azure Kognitivní hledání. Další informace neregionální služby najdete na stránce [Cognitive Services produktu podle oblasti](https://aka.ms/allinoneregioninfo) .
@@ -48,19 +54,11 @@ Neexistuje žádný způsob, jak přesunout službu mezi oblastmi. Pokud se zobr
 
 Můžete použít omezené a bezplatné možnosti zpracování pro dokončení kurzu obohacení AI a rychlé cvičení.
 
-Prostředky Free (omezené obohacení) jsou na jeden indexer omezené na 20 dokumentů za den. Indexer můžete odstranit a znovu vytvořit, aby se obnovila hodnota čítače.
+Prostředky Free (omezené obohacení) jsou na jeden indexer omezené na 20 dokumentů za den. Můžete [resetovat indexer](search-howto-run-reset-indexers.md) , aby se obnovila hodnota čítače.
 
-1. Otevřete Průvodce importem dat:
+Pokud používáte Průvodce **importem dat** pro obohacení AI, najdete možnosti "připojit Cognitive Services" na stránce **Přidat rozšíření AI (volitelné)** .
 
-   ![Otevření Průvodce importem dat](media/search-get-started-portal/import-data-cmd.png "Otevření Průvodce importem dat")
-
-1. Vyberte zdroj dat a pokračujte v **přidávání rozšíření AI (volitelné)**. Podrobný návod k tomuto průvodci najdete v tématu [vytvoření indexu v Azure Portal](search-get-started-portal.md).
-
-1. Rozbalte položku **připojit Cognitive Services** a pak vyberte možnost **Free (omezená rozšíření)**:
-
-   ![Rozbalená Cognitive Services oddíl připojení](./media/cognitive-search-attach-cognitive-services/attach1.png "Rozbalená Cognitive Services oddíl připojení")
-
-1. Teď můžete pokračovat k dalším krokům, včetně **Přidání dovedností rozpoznávání**.
+![Rozbalená Cognitive Services oddíl připojení](./media/cognitive-search-attach-cognitive-services/attach1.png "Rozbalená Cognitive Services oddíl připojení")
 
 ## <a name="use-billable-resources"></a>Použití fakturovatelných prostředků
 
@@ -68,13 +66,13 @@ Pro úlohy, které vytvářejí více než 20 obohacení za den, nezapomeňte p�
 
 Účtují se vám jenom dovednosti, které volají rozhraní API služeb Cognitive Services. Neúčtují se vám žádné [vlastní dovednosti](cognitive-search-create-custom-skill-example.md)ani dovednosti, jako je například [fúze textu](cognitive-search-skill-textmerger.md), [rozdělování textu](cognitive-search-skill-textsplit.md)a [Shaper](cognitive-search-skill-shaper.md), což není založené na rozhraní API.
 
-1. Otevřete Průvodce importem dat, vyberte zdroj dat a pokračujte v **přidávání rozšíření AI (volitelné)**.
+Pokud používáte Průvodce **importem dat** , můžete nakonfigurovat Fakturovatelné prostředky ze stránky **Přidat rozšíření AI (volitelné)** .
 
 1. Rozbalte položku **připojit Cognitive Services** a pak vyberte **vytvořit nový prostředek Cognitive Services**. Otevře se nová karta, abyste mohli vytvořit prostředek:
 
    ![Vytvoření prostředku služeb Cognitive Services](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Vytvoření prostředku služeb Cognitive Services")
 
-1. V seznamu **umístění** vyberte oblast, ve které se nachází vaše služba Azure kognitivní hledání. Nezapomeňte tuto oblast používat z důvodů výkonu. Použití této oblasti také nevrací poplatky za odchozí šířku pásma napříč oblastmi.
+1. V seznamu **umístění** vyberte stejnou oblast, která má vyhledávací službu.
 
 1. V seznamu **cenová úroveň** vyberte **S0** , abyste získali celou kolekci funkcí Cognitive Services, včetně funkcí Vision a Language, které jsou v Azure kognitivní hledání dostupné v rámci předdefinovaných dovedností.
 
@@ -86,7 +84,7 @@ Pro úlohy, které vytvářejí více než 20 obohacení za den, nezapomeňte p�
 
 1. Vyberte **vytvořit** pro zřízení nového prostředku Cognitive Services.
 
-1. Vraťte se na předchozí kartu, která obsahuje Průvodce importem dat. Vyberte **aktualizovat** , aby se zobrazil prostředek Cognitive Services, a pak vyberte prostředek:
+1. Vraťte se na předchozí kartu. Vyberte **aktualizovat** , aby se zobrazil prostředek Cognitive Services, a pak vyberte prostředek:
 
    ![Vyberte prostředek Cognitive Services](./media/cognitive-search-attach-cognitive-services/attach2.png "Vyberte prostředek Cognitive Services")
 
@@ -96,7 +94,7 @@ Pro úlohy, které vytvářejí více než 20 obohacení za den, nezapomeňte p�
 
 Pokud máte existující dovednosti, můžete ho připojit k novému nebo jinému prostředku Cognitive Services.
 
-1. Na stránce **Přehled služby** vyberte **dovednosti**:
+1. Na stránce Přehled služby Search vyberte **dovednosti**:
 
    ![Karta dovednosti](./media/cognitive-search-attach-cognitive-services/attach-existing1.png "Karta dovednosti")
 
@@ -116,8 +114,6 @@ Následující příklad ukazuje tento model. Všimněte si `cognitiveServices` 
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
 api-key: [admin key]
 Content-Type: application/json
-```
-```json
 {
     "name": "skillset name",
     "skills": 
@@ -168,6 +164,7 @@ Ceny uvedené v tomto článku jsou hypotetické. Slouží k ilustraci procesu o
 To všechno dohromady zaplatíte přibližně $57,00, abyste ingestují 1 000 dokumentů PDF tohoto typu s popisem dovednosti.
 
 ## <a name="next-steps"></a>Další kroky
+
 + [Stránka s cenami za Azure Kognitivní hledání](https://azure.microsoft.com/pricing/details/search/)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
 + [Vytvořit dovednosti (REST)](/rest/api/searchservice/create-skillset)

@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 4a099a9850289a046435b4e1763d7f54a702c0d0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 632aae766e6fd1328dc6e0135a88a942d7ad0910
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545085"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595792"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql---flexible-server"></a>Použití Azure Portal k nastavení výstrah pro metriky pro Azure Database for MySQL-flexibilní Server 
 
@@ -28,26 +28,26 @@ Můžete nakonfigurovat výstrahu, která provede následující akce při trigg
 * Volání webhooku
 
 Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
-* [Azure Portal](../../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
-* [Azure CLI](../../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure Portal](../../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
 * [Rozhraní REST API služby Azure Monitor](/rest/api/monitor/metricalerts)
 
-## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Vytvoření pravidla výstrahy na metrikě z Azure Portal
+## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Vytvoření pravidla upozornění na metriku na webu Azure Portal
 1. V [Azure Portal](https://portal.azure.com/)vyberte Azure Database for MySQL flexibilní Server, který chcete monitorovat.
-2. V části **monitorování** v postranním panelu vyberte **výstrahy** .
-3. Vyberte **+ Nové pravidlo upozornění** .
-4. Otevře se stránka **Vytvořit pravidlo** . Vyplňte požadované informace:
-5. V části **Podmínka** zvolte **možnost vybrat podmínku** .
+2. V části **monitorování** v postranním panelu vyberte **výstrahy**.
+3. Vyberte **+ Nové pravidlo upozornění**.
+4. Otevře se stránka **Vytvořit pravidlo**. Vyplňte požadované informace:
+5. V části **Podmínka** zvolte **možnost vybrat podmínku**.
 6. Zobrazí se seznam podporovaných signálů, vyberte metriku, na které chcete vytvořit výstrahu. Vyberte například "procento úložiště".
 7. Zobrazí se graf metriky za posledních 6 hodin. Pomocí rozevíracího seznamu **období grafu** můžete vybrat, že se má zobrazit historie metriky.
 8. Vyberte typ **prahové hodnoty** (např. "Static" nebo "Dynamic"), **operátor** (ex. "Větší než") a **typ agregace** (např. průměr). Tím se určí logika, kterou vyhodnotí pravidlo výstrahy metriky.
     - Pokud používáte **statickou** prahovou hodnotu, pokračujte v definování **prahové hodnoty** (např. 85 procent). Graf metriky vám pomůže určit, co může být vhodnou prahovou hodnotou.
-    - Pokud používáte **dynamickou** prahovou hodnotu, pokračujte v definování **prahové hodnoty citlivosti** . V grafu metriky se zobrazí vypočtené prahové hodnoty na základě nedávných dat. [Přečtěte si další informace o typu dynamické prahové hodnoty a možnosti citlivosti](../../azure-monitor/platform/alerts-dynamic-thresholds.md).
+    - Pokud používáte **dynamickou** prahovou hodnotu, pokračujte v definování **prahové hodnoty citlivosti**. V grafu metriky se zobrazí vypočtené prahové hodnoty na základě nedávných dat. [Přečtěte si další informace o typu dynamické prahové hodnoty a možnosti citlivosti](../../azure-monitor/alerts/alerts-dynamic-thresholds.md).
 9. Upřesněte podmínku tak, že upravíte interval **členitosti agregace (tečka)** , přes který jsou datové body seskupeny pomocí funkce typ agregace (např. "30 minut") a **frekvence** (ex "každých 15 minut").
-10. Klikněte na **Hotovo** .
+10. Klikněte na **Hotovo**.
 11. Přidejte skupinu akcí. Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. V části **skupiny akcí** zvolte **možnost vybrat skupinu akcí** a vyberte již existující skupinu akcí, kterou chcete připojit k pravidlu výstrahy.
-12. Můžete také vytvořit novou skupinu akcí pro příjem oznámení o výstraze. Další informace najdete v tématu [Vytvoření a Správa skupiny akcí](../../azure-monitor/platform/action-groups.md) .
-13. Chcete-li vytvořit novou skupinu akcí, vyberte možnost **+ vytvořit skupinu akcí** . Vyplňte formulář vytvořit skupinu akcí pomocí **předplatného** , **skupiny prostředků** , **názvu skupiny akcí** a **zobrazovaného názvu** .
+12. Můžete také vytvořit novou skupinu akcí pro příjem oznámení o výstraze. Další informace najdete v tématu [Vytvoření a Správa skupiny akcí](../../azure-monitor/alerts/action-groups.md) .
+13. Chcete-li vytvořit novou skupinu akcí, vyberte možnost **+ vytvořit skupinu akcí**. Vyplňte formulář vytvořit skupinu akcí pomocí **předplatného**, **skupiny prostředků**, **názvu skupiny akcí** a **zobrazovaného názvu**.
 14. Nakonfigurujte **oznámení** pro skupinu akcí.
     
     V části **Typ oznámení** zvolte Azure Resource Manager role e-mailu a vyberte vlastníky, přispěvatele a čtenáři předplatného, kteří budou dostávat oznámení. Vyberte **roli Azure Resource Manager** pro odeslání e-mailu.
@@ -57,7 +57,7 @@ Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
 
     <!--:::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="Action group":::-->
     
-15. Vyplňte **Podrobnosti pravidla upozornění** , jako **je název pravidla výstrahy** , **Popis** , **uložení pravidla upozornění na skupinu prostředků** a **závažnost** .
+15. Vyplňte **Podrobnosti pravidla upozornění** , jako **je název pravidla výstrahy**, **Popis**, **uložení pravidla upozornění na skupinu prostředků** a **závažnost**.
 
     <!--:::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="Action group":::-->
 
@@ -72,6 +72,6 @@ Jakmile vytvoříte výstrahu, můžete ji vybrat a provést následující akce
 
 
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si další informace o [Nastavení výstrahy na metrikách](../../azure-monitor/platform/alerts-metric.md).
+- Přečtěte si další informace o [Nastavení výstrahy na metrikách](../../azure-monitor/alerts/alerts-metric.md).
 - Přečtěte si další informace o dostupných [metrikách v Azure Database for MySQL flexibilním serveru](./concepts-monitoring.md).
-- [Principy fungování upozornění na metriky ve službě Azure Monitor](../../azure-monitor/platform/alerts-metric-overview.md)
+- [Principy fungování upozornění na metriky ve službě Azure Monitor](../../azure-monitor/alerts/alerts-metric-overview.md)

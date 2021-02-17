@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: a8a27a782d5e05b5febda659009284c22d3608c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a955273c01d8c0d865aabd91bb1bfcce70fd373
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318976"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587371"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Agent Application Insights (dřív pojmenovaný Monitorování stavu v2): podrobné pokyny
 
@@ -160,7 +160,7 @@ Pokud z nějakého důvodu nemůžete připojit modul PowerShellu, můžete ruč
 
 1. Přejděte na https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
 2. V tabulce **Historie verzí** vyberte nejnovější verzi souboru.
-3. V části **Možnosti instalace**vyberte **Ruční stažení**.
+3. V části **Možnosti instalace** vyberte **Ruční stažení**.
 
 ### <a name="option-1-install-into-a-powershell-modules-directory"></a>Možnost 1: instalace do adresáře modulů PowerShellu
 Nainstalujte ručně stažený modul PowerShellu do adresáře PowerShellu, aby byl zjistitelný pomocí relací PowerShellu.
@@ -231,9 +231,9 @@ Podrobný popis způsobu použití této rutiny najdete v [referenčních inform
 
  Zobrazení telemetrických dat:
 
-- [Prozkoumejte metriky](../platform/metrics-charts.md) pro monitorování výkonu a využití.
+- [Prozkoumejte metriky](../essentials/metrics-charts.md) pro monitorování výkonu a využití.
 - [Prohledejte události a protokoly](./diagnostic-search.md) a Diagnostikujte problémy.
-- K pokročilejším dotazům [použijte Analytics](../log-query/log-query-overview.md) .
+- K pokročilejším dotazům [použijte Analytics](../logs/log-query-overview.md) .
 - [Vytváření řídicích panelů](./overview-dashboard.md).
 
  Přidání další telemetrie:

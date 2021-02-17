@@ -9,12 +9,12 @@ ms.subservice: faq
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3bc259f9ee6cb1e6fd927af82a1740403d3ae7d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016705"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587942"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Nejčastější dotazy ke škálovacím sadám virtuálních počítačů Azure
 
@@ -71,15 +71,15 @@ Ano. Další informace najdete v [dokumentu zóna sady škálování](./virtual-
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>Co jsou osvědčené postupy pro automatické škálování Azure?
 
-Osvědčené postupy pro automatické škálování najdete v tématu [osvědčené postupy pro automatické škálování virtuálních počítačů](../azure-monitor/platform/autoscale-best-practices.md).
+Osvědčené postupy pro automatické škálování najdete v tématu [osvědčené postupy pro automatické škálování virtuálních počítačů](../azure-monitor/autoscale/autoscale-best-practices.md).
 
 ### <a name="where-do-i-find-metric-names-for-autoscaling-that-uses-host-based-metrics"></a>Kde najdu názvy metrik pro automatické škálování, které používá metriky založené na hostiteli?
 
-Názvy metrik pro automatické škálování, které používá metriky založené na hostiteli, najdete v tématu [podporované metriky s Azure monitor](../azure-monitor/platform/metrics-supported.md).
+Názvy metrik pro automatické škálování, které používá metriky založené na hostiteli, najdete v tématu [podporované metriky s Azure monitor](../azure-monitor/essentials/metrics-supported.md).
 
 ### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>Existují nějaké příklady automatického škálování na základě Azure Service Busho tématu a délky fronty?
 
-Ano. Příklady automatického škálování na základě Azure Service Busho tématu a délky fronty najdete v tématu [Azure monitor automatické škálování běžných metrik](../azure-monitor/platform/autoscale-common-metrics.md).
+Ano. Příklady automatického škálování na základě Azure Service Busho tématu a délky fronty najdete v tématu [Azure monitor automatické škálování běžných metrik](../azure-monitor/autoscale/autoscale-common-metrics.md).
 
 Pro Service Bus frontu použijte následující kód JSON:
 
@@ -104,9 +104,9 @@ Nahraďte příklady hodnot pomocí identifikátorů URI (Uniform Resource Ident
 
 Na virtuálním počítači můžete vytvořit nastavení automatického škálování, které bude používat metriky na úrovni hostitele nebo metriky na základě hostovaného operačního systému.
 
-Seznam podporovaných metrik najdete v tématu [Azure monitor automatické škálování běžných metrik](../azure-monitor/platform/autoscale-common-metrics.md).
+Seznam podporovaných metrik najdete v tématu [Azure monitor automatické škálování běžných metrik](../azure-monitor/autoscale/autoscale-common-metrics.md).
 
-Úplnou ukázku pro Virtual Machine Scale Sets najdete v tématu [Pokročilá konfigurace automatického škálování pomocí Správce prostředků šablon pro Virtual Machine Scale Sets](../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md).
+Úplnou ukázku pro Virtual Machine Scale Sets najdete v tématu [Pokročilá konfigurace automatického škálování pomocí Správce prostředků šablon pro Virtual Machine Scale Sets](../azure-monitor/autoscale/autoscale-virtual-machine-scale-sets.md).
 
 Ukázka používá metriku CPU na úrovni hostitele a metriku počtu zpráv.
 
@@ -114,13 +114,13 @@ Ukázka používá metriku CPU na úrovni hostitele a metriku počtu zpráv.
 
 ### <a name="how-do-i-set-alert-rules-on-a-virtual-machine-scale-set"></a>Návody nastavit pravidla upozornění pro sadu škálování virtuálního počítače?
 
-Pomocí PowerShellu nebo rozhraní příkazového řádku Azure můžete vytvářet upozornění na metriky pro služby Virtual Machine Scale Sets. Další informace najdete v tématu ukázky rychlého startu ukázek [Azure monitor PowerShellu](../azure-monitor/samples/powershell-samples.md#create-metric-alerts) a [Azure monitor pro rychlé zprovoznění CLI pro různé platformy](../azure-monitor/samples/cli-samples.md#work-with-alerts).
+Pomocí PowerShellu nebo rozhraní příkazového řádku Azure můžete vytvářet upozornění na metriky pro služby Virtual Machine Scale Sets. Další informace najdete v tématu ukázky rychlého startu ukázek [Azure monitor PowerShellu](../azure-monitor/powershell-samples.md#create-metric-alerts) a [Azure monitor pro rychlé zprovoznění CLI pro různé platformy](../azure-monitor/cli-samples.md#work-with-alerts).
 
 Parametrem targetresourceid sady škálování virtuálního počítače vypadá takto:
 
 /subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
-Můžete zvolit libovolný čítač výkonu virtuálního počítače jako metriku pro nastavení výstrahy. Další informace najdete v článku [metriky hostovaného operačního systému Správce prostředků pro virtuální počítače s Windows](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms) a [metriky hostovaného operačního systému pro virtuální počítače](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-linux-vms) se systémem Linux v článku věnovaném [Azure monitor automatické škálování běžných metrik](../azure-monitor/platform/autoscale-common-metrics.md) .
+Můžete zvolit libovolný čítač výkonu virtuálního počítače jako metriku pro nastavení výstrahy. Další informace najdete v článku [metriky hostovaného operačního systému Správce prostředků pro virtuální počítače s Windows](../azure-monitor/autoscale/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms) a [metriky hostovaného operačního systému pro virtuální počítače](../azure-monitor/autoscale/autoscale-common-metrics.md#guest-os-metrics-linux-vms) se systémem Linux v článku věnovaném [Azure monitor automatické škálování běžných metrik](../azure-monitor/autoscale/autoscale-common-metrics.md) .
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>Návody nastavit automatické škálování pro sadu škálování virtuálního počítače pomocí PowerShellu?
 
@@ -129,7 +129,7 @@ Pokud chcete nastavit automatické škálování pro sadu škálování virtuál
 
 ### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>Pokud jsem virtuální počítač přestal (navrácený), je tento virtuální počítač spuštěný jako součást operace automatického škálování?
 
-Ne. Pokud pravidla automatického škálování vyžadují další instance virtuálních počítačů v rámci sady škálování, vytvoří se nová instance virtuálního počítače. Instance virtuálních počítačů, které jsou zastavené (přidělení zrušeno), se nespouští jako součást události automatického škálování. Zastavené (navrácené) virtuální počítače se ale můžou odstranit jako součást události automatického škálování, která se škáluje podle počtu instancí stejným způsobem, jakým se může libovolná instance virtuálního počítače odstranit na základě pořadí ID instance virtuálního počítače.
+No. Pokud pravidla automatického škálování vyžadují další instance virtuálních počítačů v rámci sady škálování, vytvoří se nová instance virtuálního počítače. Instance virtuálních počítačů, které jsou zastavené (přidělení zrušeno), se nespouští jako součást události automatického škálování. Zastavené (navrácené) virtuální počítače se ale můžou odstranit jako součást události automatického škálování, která se škáluje podle počtu instancí stejným způsobem, jakým se může libovolná instance virtuálního počítače odstranit na základě pořadí ID instance virtuálního počítače.
 
 
 

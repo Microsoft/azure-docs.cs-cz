@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 01/05/2021
+ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: detekce anomálií, strojové učení, algoritmy
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 425c6cab4a4a5e1329e2d38f49c5058ec8ffc5b9
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: ad3bd1eed6e5e7efb783c4a40958e16c3ca23691
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901364"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572086"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Co je rozhraní API Detektoru anomálií?
 
@@ -53,13 +53,13 @@ Pokud se chcete dozvědět, jak volat rozhraní API pro detekci anomálií, zkus
 Chcete-li spustit Poznámkový blok, proveďte následující kroky:
 
 1. Získejte platný klíč předplatného rozhraní API detektoru anomálií a koncový bod rozhraní API. Následující část obsahuje pokyny k registraci.
-1. Přihlaste se a v pravém horním rohu klikněte na klonovat.
+1. Přihlaste se a v pravém horním rohu vyberte klonovat.
 1. Před dokončením operace klonování zrušte v dialogovém okně možnost Public. v opačném případě bude veřejný Poznámkový blok, včetně všech klíčů předplatného.
-1. Klikněte na **Spustit na bezplatné výpočetní** prostředky
+1. Vybrat **Spustit při bezplatném výpočetním** prostředí
 1. Vyberte jeden z poznámkových bloků.
 1. Do proměnné přidejte svůj platný klíč předplatného rozhraní API detektoru anomálií `subscription_key` .
 1. Změňte `endpoint` proměnnou na koncový bod. Příklad: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
-1. V horním řádku nabídek klikněte na **buňka** a pak na **Spustit vše**.
+1. V horním panelu nabídek vyberte položku **buňka** a pak možnost **Spustit vše**.
 
 ## <a name="workflow"></a>Pracovní postup
 
@@ -89,7 +89,7 @@ Po registraci:
 
 ### <a name="is-the-anomaly-detector-service-zone-resilient"></a>Je zóna služeb anomálie odolná proti chybám?
 
-Yes. Služba detektor anomálií je ve výchozím nastavení odolná proti zónám.
+Ano. Služba detektor anomálií je ve výchozím nastavení odolná proti zónám.
 
 ### <a name="how-do-i-configure-the-anomaly-detector-service-to-be-zone-resilient"></a>Návody nakonfigurovat službu Anomáliého detektoru tak, aby byla odolná proti zóně?
 
@@ -97,7 +97,7 @@ Pro povolení odolnosti zóny není nutná žádná konfigurace zákazníka. Zó
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>Nasazení místně pomocí kontejnerů Docker
 
-[Pomocí kontejnerů detektoru anomálií](anomaly-detector-container-howto.md) nasaďte funkce rozhraní API místně. Kontejnery Docker vám umožní přiblížit službu k vašim datům z hlediska dodržování předpisů, zabezpečení nebo jiných provozních důvodů.
+[Pomocí kontejnerů detektoru anomálií](anomaly-detector-container-howto.md) nasaďte funkce rozhraní API místně. Kontejnery Docker umožňují přenést službu blíž k vašim datům, aby bylo možné dodržovat dodržování předpisů, zabezpečení nebo jiné provozní důvody.
 
 ## <a name="join-the-anomaly-detector-community"></a>Zapojení do komunity Detektoru anomálií
 

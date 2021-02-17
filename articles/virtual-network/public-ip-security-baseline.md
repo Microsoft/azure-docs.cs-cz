@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: cba362004e764ffbbc734fb06c8898f380ffdf88
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b26a020b9b4b1641d67a4f5ca55908b8d37f31e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806914"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596498"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Základní hodnota zabezpečení Azure pro veřejnou IP adresu Azure
 
@@ -52,7 +52,7 @@ Veřejná IP adresa poskytuje nástroje pro monitorování, diagnostiku, zobraze
 
 Místo toho můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany.
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -64,7 +64,7 @@ Místo toho můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace a zjišťovat změny pro vaše veřejné instance IP. Jiná než na řídicí rovině (například Azure Portal), samotná veřejná IP adresa negeneruje protokoly auditu. Veřejná IP adresa poskytuje nástroje pro monitorování, diagnostiku, zobrazení metrik a povolení nebo zakázání protokolů pro prostředky ve službě Azure Virtual Network.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -74,7 +74,7 @@ Místo toho můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 **Pokyny**: pomocí Azure monitor nastavit dobu uchování protokolu pro pracovní prostory Log Analytics přidružené k instancím veřejné IP adresy na dodržování předpisů vaší organizace.
 
-- [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -88,7 +88,7 @@ Pomocí protokolu aktivit Azure můžete monitorovat konfigurace a zjišťovat z
 
 Veřejná IP adresa sama negeneruje protokoly týkající se síťového provozu jiného než na řídicí rovině (například Azure Portal).
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 

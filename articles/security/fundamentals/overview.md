@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 749c32091ed10d5bb39d7b67c8b737e002fc9909
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 56965310c818f8d9089ab244641bdc562428a337
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693728"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580467"
 ---
 # <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
 ## <a name="overview"></a>Přehled
@@ -81,12 +81,12 @@ Application Insights vytvoří grafy a tabulky, které vám ukáže například 
 Pokud dojde k chybám, selháním nebo problémům s výkonem, můžete prohledat data telemetrie podrobněji a diagnostikovat příčinu. A služba vám pošle e-maily, pokud dojde ke změnám v dostupnosti a výkonu vaší aplikace. Vhledem z hlediska aplikace je tak cenný nástroj zabezpečení, protože pomáhá s dostupností v Triad zabezpečení důvěrnosti, integrity a dostupnosti.
 
 ### <a name="azure-monitor"></a>Azure Monitor
-[Azure monitor](/azure/monitoring-and-diagnostics/) nabízí vizualizaci, dotaz, směrování, upozorňování, automatické škálování a automatizaci dat jak z infrastruktury Azure ([Protokol aktivit](../../azure-monitor/platform/platform-logs-overview.md)), tak z každého jednotlivého prostředku Azure ([diagnostické protokoly](../../azure-monitor/platform/platform-logs-overview.md)). Pomocí Azure Monitor můžete upozorňovat na události související se zabezpečením, které jsou generovány v protokolech Azure.
+[Azure monitor](/azure/monitoring-and-diagnostics/) nabízí vizualizaci, dotaz, směrování, upozorňování, automatické škálování a automatizaci dat jak z infrastruktury Azure ([Protokol aktivit](../../azure-monitor/essentials/platform-logs-overview.md)), tak z každého jednotlivého prostředku Azure ([diagnostické protokoly](../../azure-monitor/essentials/platform-logs-overview.md)). Pomocí Azure Monitor můžete upozorňovat na události související se zabezpečením, které jsou generovány v protokolech Azure.
 
 ### <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 [Protokoly Azure monitor](https://azure.microsoft.com/documentation/services/log-analytics/) – poskytuje kromě prostředků Azure i řešení pro správu IT pro místní i cloudovou infrastrukturu (například AWS). Data z Azure Monitor můžete směrovat přímo do protokolů Azure Monitor, abyste viděli metriky a protokoly pro celé prostředí na jednom místě.
 
-Protokoly Azure Monitor můžou být užitečným nástrojem v forenzní a jiné analýze zabezpečení, protože nástroj umožňuje rychle prohledávat velké objemy položek souvisejících se zabezpečením s flexibilním přístupem k dotazům. Kromě toho je [možné místní bránu firewall a protokoly proxy exportovat do Azure a zpřístupnit je pro účely analýzy pomocí protokolů Azure monitor.](../../azure-monitor/platform/agent-windows.md)
+Protokoly Azure Monitor můžou být užitečným nástrojem v forenzní a jiné analýze zabezpečení, protože nástroj umožňuje rychle prohledávat velké objemy položek souvisejících se zabezpečením s flexibilním přístupem k dotazům. Kromě toho je [možné místní bránu firewall a protokoly proxy exportovat do Azure a zpřístupnit je pro účely analýzy pomocí protokolů Azure monitor.](../../azure-monitor/agents/agent-windows.md)
 
 ### <a name="azure-advisor"></a>Azure Advisor
 [Azure Advisor](../../advisor/index.yml) je přizpůsobený cloudový poradce, který vám pomůže optimalizovat nasazení Azure. Analyzuje telemetrii využití a konfiguraci prostředků. Pak doporučí řešení, která pomáhají zlepšit [výkon](../../advisor/advisor-performance-recommendations.md), [zabezpečení](../../advisor/advisor-security-recommendations.md)a [vysokou dostupnost](../../advisor/advisor-high-availability-recommendations.md) vašich prostředků a současně hledají příležitosti ke [snížení celkové útraty Azure](../../advisor/advisor-cost-recommendations.md). Azure Advisor poskytuje doporučení pro zabezpečení, která můžou významně zlepšit celkové stav zabezpečení pro řešení nasazená v Azure. Tato doporučení se vykreslují z analýzy zabezpečení provedené [Azure Security Center.](../../security-center/security-center-introduction.md)
@@ -101,7 +101,7 @@ V části najdete další informace týkající se klíčových funkcí v zabezp
 ### <a name="web-application-vulnerability-scanning"></a>Kontrola ohrožení zabezpečení webové aplikace
 Jedním z nejjednodušších způsobů, jak začít s testováním ohrožení zabezpečení ve vaší [aplikaci App Service](../../app-service/overview.md) , je použití [integrace se zabezpečením TINFOIL](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) k provedení kontroly ohrožení zabezpečení na vaší aplikaci jedním kliknutím. Výsledky testů můžete zobrazit v snadno srozumitelné sestavě a Naučte se, jak opravit jednotlivé chyby zabezpečení pomocí podrobných pokynů.
 
-### <a name="penetration-testing"></a>Testování průniku
+### <a name="penetration-testing"></a>Penetrační testování
 Pokud dáváte přednost vlastním testům průniku nebo chcete použít jinou sadu nebo poskytovatele, musíte postupovat podle [procesu schválení testování průniku do Azure](./pen-testing.md) a získat předchozí schválení k provedení požadovaných testů průniku.
 
 ### <a name="web-application-firewall"></a>Firewall webových aplikací

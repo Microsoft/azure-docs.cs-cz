@@ -3,12 +3,12 @@ title: Přehled agenta připojeného počítače systému Windows
 description: Tento článek poskytuje podrobný přehled dostupného agenta serverů s podporou ARC Azure, který podporuje monitorování virtuálních počítačů hostovaných v hybridních prostředích.
 ms.date: 02/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 82562bf3b1f8392e56a53ba0f968a76b050e7b13
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 8c06989d726a30e95f0b9c4dcc15a967d498f92a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558496"
+ms.locfileid: "100580881"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Přehled agenta serverů s podporou ARC Azure
 
@@ -110,7 +110,7 @@ Abychom zajistili zabezpečení dat při přenosu do Azure, důrazně doporučuj
 Agent připojeného počítače pro systémy Linux a Windows komunikuje zabezpečeným způsobem přes Azure ARC přes port TCP 443. Pokud se počítač připojí prostřednictvím brány firewall nebo proxy server komunikovat přes Internet, Projděte si následující informace, abyste pochopili požadavky na konfiguraci sítě.
 
 > [!NOTE]
-> Servery s podporou ARC nepodporují použití [Log Analytics brány](../../azure-monitor/platform/gateway.md) jako proxy pro agenta připojeného počítače.
+> Servery s podporou ARC nepodporují použití [Log Analytics brány](../../azure-monitor/agents/gateway.md) jako proxy pro agenta připojeného počítače.
 >
 
 Pokud je odchozí připojení omezeno bránou firewall nebo proxy server, ujistěte se, že níže uvedené adresy URL nejsou blokované. Pokud povolíte pouze rozsahy IP adres nebo názvy domén, které musí agent komunikovat se službou, budete potřebovat přístup k následujícím značkám služby a adresám URL.
@@ -124,7 +124,7 @@ Značky služby:
 
 Adrese
 
-| Prostředek agenta | Popis |
+| Prostředek agenta | Description |
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
@@ -136,7 +136,7 @@ Adrese
 
 Agenti Preview (verze 0,11 a nižší) také vyžadují přístup k následujícím adresám URL:
 
-| Prostředek agenta | Popis |
+| Prostředek agenta | Description |
 |---------|---------|
 |`agentserviceapi.azure-automation.net`|Konfigurace hosta|
 |`*-agentservice-prod-1.azure-automation.net`|Konfigurace hosta|
@@ -200,7 +200,7 @@ Po instalaci agenta připojeného počítače pro systém Windows jsou apliková
 
 * Během instalace se vytvoří následující instalační složky.
 
-    |Složka |Popis |
+    |Složka |Description |
     |-------|------------|
     |%ProgramFiles%\AzureConnectedMachineAgent |Výchozí instalační cesta obsahující soubory podpory agenta.|
     |%ProgramData%\AzureConnectedMachineAgent |Obsahuje konfigurační soubory agenta.|
@@ -212,7 +212,7 @@ Po instalaci agenta připojeného počítače pro systém Windows jsou apliková
 
 * Následující služby systému Windows se v cílovém počítači vytvoří během instalace agenta.
 
-    |Název služby |Zobrazované jméno |Název procesu |Popis |
+    |Název služby |Zobrazované jméno |Název procesu |Description |
     |-------------|-------------|-------------|------------|
     |himds |Hybridní Instance Metadata Service Azure |himds |Tato služba implementuje službu metadat Azure instance (IMDS) pro správu připojení k Azure a identitě Azure připojeného počítače.|
     |GCArcService |Služba ARC konfigurace hosta |gc_service |Monitoruje konfiguraci požadovaného stavu počítače.|
@@ -220,14 +220,14 @@ Po instalaci agenta připojeného počítače pro systém Windows jsou apliková
 
 * Během instalace agenta se vytvoří následující proměnné prostředí.
 
-    |Název |Výchozí hodnota |Popis |
+    |Name |Výchozí hodnota |Description |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
 
 * Pro řešení potíží je k dispozici několik souborů protokolu. Jsou popsány v následující tabulce.
 
-    |Protokol |Popis |
+    |Protokol |Description |
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Zaznamenává údaje služby agenti (HIMDS) a interakce s Azure.|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |Obsahuje výstup příkazů nástroje azcmagent, pokud je použit argument verbose (-v).|
@@ -252,7 +252,7 @@ Po instalaci agenta připojeného počítače pro Linux se aplikují následují
 
 * Během instalace se vytvoří následující instalační složky.
 
-    |Složka |Popis |
+    |Složka |Description |
     |-------|------------|
     |/var/opt/azcmagent/ |Výchozí instalační cesta obsahující soubory podpory agenta.|
     |/opt/azcmagent/ |
@@ -264,7 +264,7 @@ Po instalaci agenta připojeného počítače pro Linux se aplikují následují
 
 * Následující procesy démon jsou vytvořeny v cílovém počítači během instalace agenta.
 
-    |Název služby |Zobrazované jméno |Název procesu |Popis |
+    |Název služby |Zobrazované jméno |Název procesu |Description |
     |-------------|-------------|-------------|------------|
     |himdsd. Service |Služba agenta připojeného počítače Azure |himds |Tato služba implementuje službu metadat Azure instance (IMDS) pro správu připojení k Azure a identitě Azure připojeného počítače.|
     |gcad.servce |Služba oblouku GC |gc_linux_service |Monitoruje konfiguraci požadovaného stavu počítače. |
@@ -272,7 +272,7 @@ Po instalaci agenta připojeného počítače pro Linux se aplikují následují
 
 * Pro řešení potíží je k dispozici několik souborů protokolu. Jsou popsány v následující tabulce.
 
-    |Protokol |Popis |
+    |Protokol |Description |
     |----|------------|
     |/var/opt/azcmagent/log/himds.log |Zaznamenává údaje služby agenti (HIMDS) a interakce s Azure.|
     |/var/opt/azcmagent/log/azcmagent.log |Obsahuje výstup příkazů nástroje azcmagent, pokud je použit argument verbose (-v).|
@@ -283,7 +283,7 @@ Po instalaci agenta připojeného počítače pro Linux se aplikují následují
 
 * Během instalace agenta se vytvoří následující proměnné prostředí. Tyto proměnné jsou nastaveny v `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Název |Výchozí hodnota |Popis |
+    |Name |Výchozí hodnota |Description |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||

@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
-ms.openlocfilehash: 88fd707d769c7aed53160a9f22fefd15cce19a4b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 89d47f1fe941dad6a2450df86bfed2d25a1d8f7d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340729"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595673"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Správa uživatelských dat nalezených v Azure Security Center šetření
-Tento článek poskytuje informace o tom, jak spravovat uživatelská data zjištěná v rámci vyšetřovací funkce Azure Security Center. Data o vyšetřování jsou uložená v [protokolech Azure monitor](../azure-monitor/log-query/log-query-overview.md) a zpřístupněna v Security Center. Správa uživatelských dat zahrnuje možnost odstraňovat nebo exportovat data.
+Tento článek poskytuje informace o tom, jak spravovat uživatelská data zjištěná v rámci vyšetřovací funkce Azure Security Center. Data o vyšetřování jsou uložená v [protokolech Azure monitor](../azure-monitor/logs/log-query-overview.md) a zpřístupněna v Security Center. Správa uživatelských dat zahrnuje možnost odstraňovat nebo exportovat data.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
@@ -57,4 +57,4 @@ Security Center uživatel, kterému byla přiřazena role vlastníka, přispěva
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o správě uživatelských dat najdete v tématu [Správa uživatelských dat v Azure Security Center](security-center-privacy.md).
-Další informace o odstraňování privátních dat v protokolu Azure Monitor najdete v tématu [Jak exportovat a odstranit privátní data](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).
+Další informace o odstraňování privátních dat v protokolu Azure Monitor najdete v tématu [Jak exportovat a odstranit privátní data](../azure-monitor/logs/personal-data-mgmt.md#how-to-export-and-delete-private-data).

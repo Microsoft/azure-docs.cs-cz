@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 02/16/2021
 ms.author: victorh
-ms.openlocfilehash: 637ef56ca79dd333a587d38ed6a685664c7566ca
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 8922e6e0d5137a3a900e0f57f685d449c08b3f47
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547039"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596964"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Metriky a protokoly Azure Firewallu
 
@@ -187,4 +187,4 @@ Pro Azure Firewall jsou k dispozici následující metriky:
 
 - Informace o tom, jak monitorovat protokoly Azure Firewall a metriky, najdete v tématu [kurz: monitorování protokolů Azure firewall](./firewall-diagnostics.md).
 
-- Další informace o metrikách v Azure Monitor najdete v tématu [metriky v Azure monitor](../azure-monitor/platform/data-platform-metrics.md).
+- Další informace o metrikách v Azure Monitor najdete v tématu [metriky v Azure monitor](../azure-monitor/essentials/data-platform-metrics.md).

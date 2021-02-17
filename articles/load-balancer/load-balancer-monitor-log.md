@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 59359cdd3e3c035d4cb6789295d41bb3908019bb
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 7a456057bc088264cefb91be9f3e5069b29474a1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785816"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596809"
 ---
 # <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Protokoly Azure Monitor pro Azure Standard Load Balancer
 
@@ -63,7 +63,7 @@ Protokolování aktivit je u každého prostředku Správce prostředků povolen
      5. V rozevíracím seznamu **Vybrat název zásad centra událostí** vyberte název.
      6. Vyberte **OK**.
 
-   * **Odeslat do Log Analytics**. Pro tento proces budete potřebovat pracovní prostor Log Analytics vytvořený a nakonfigurovaný. Chcete-li vytvořit pracovní prostor Log Analytics, přečtěte si téma [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../azure-monitor/learn/quick-create-workspace.md).
+   * **Odeslat do Log Analytics**. Pro tento proces budete potřebovat pracovní prostor Log Analytics vytvořený a nakonfigurovaný. Chcete-li vytvořit pracovní prostor Log Analytics, přečtěte si téma [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../azure-monitor/logs/quick-create-workspace.md).
      1. Zaškrtněte políčko **Poslat do Log Analytics**.
      2. V rozevíracím seznamu **předplatné** vyberte předplatné, ve kterém je váš pracovní prostor Log Analytics.
      3. V rozevíracím seznamu **Log Analytics pracovní prostor** vyberte pracovní prostor.
@@ -100,10 +100,10 @@ Pokud exportujete do úložiště, připojte se k účtu úložiště a načtět
 > Pokud jste obeznámeni se sadou Visual Studio a základními koncepty úprav hodnot konstant a proměnných v jazyce C#, můžete použít [Nástroje pro převod protokolů](https://github.com/Azure-Samples/networking-dotnet-log-converter) , které jsou k dispozici na GitHubu.
 
 ## <a name="stream-to-an-event-hub"></a>Streamovat do centra událostí
-Když se diagnostické informace streamují do centra událostí, můžete je použít pro centralizovanou analýzu protokolů v nástroji SIEM partnera s integrací Azure Monitor. Další informace najdete v tématu [streamování dat monitorování Azure do centra událostí](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration).
+Když se diagnostické informace streamují do centra událostí, můžete je použít pro centralizovanou analýzu protokolů v nástroji SIEM partnera s integrací Azure Monitor. Další informace najdete v tématu [streamování dat monitorování Azure do centra událostí](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration).
 
 ## <a name="send-to-log-analytics"></a>Odeslání do Log Analytics
-Diagnostické informace o prostředcích v Azure můžete odesílat přímo do pracovního prostoru Log Analytics. V tomto pracovním prostoru můžete spouštět složité dotazy na informace pro řešení potíží a analýzu. Další informace najdete v tématu [shromáždění protokolů prostředků Azure v pracovním prostoru Log Analytics v Azure monitor](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
+Diagnostické informace o prostředcích v Azure můžete odesílat přímo do pracovního prostoru Log Analytics. V tomto pracovním prostoru můžete spouštět složité dotazy na informace pro řešení potíží a analýzu. Další informace najdete v tématu [shromáždění protokolů prostředků Azure v pracovním prostoru Log Analytics v Azure monitor](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace).
 
 ## <a name="limitations"></a>Omezení
 Funkce exportu metriky do protokolu pro Azure Load Balancer má následující omezení:

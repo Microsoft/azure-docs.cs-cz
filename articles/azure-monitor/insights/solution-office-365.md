@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: bde1c503d0aaaff1afcee67a26245d5021c43bb4
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d031b64b36bd7ff91c64960642cfbf00fb1682ab
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807746"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587309"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -118,7 +118,7 @@ ms.locfileid: "99807746"
 - Monitorujte aktivity správce a sledujte změny konfigurace nebo operace s vysokými oprávněními.
 - Umožňuje detekovat a prozkoumat nežádoucí chování uživatelů, které je možné přizpůsobit potřebám vaší organizace.
 - Předvedení auditu a dodržování předpisů. Například můžete monitorovat operace přístupu k souborům u důvěrných souborů, které vám pomůžou s procesem auditu a dodržování předpisů.
-- Řešení potíží s operačním systémem pomocí [dotazů protokolu](../log-query/log-query-overview.md) na data o aktivitách vaší organizace v Office 365.
+- Řešení potíží s operačním systémem pomocí [dotazů protokolu](../logs/log-query-overview.md) na data o aktivitách vaší organizace v Office 365.
 
 
 ## <a name="uninstall"></a>Odinstalovat
@@ -473,6 +473,6 @@ Následující tabulka uvádí Ukázky dotazů protokolu pro záznamy aktualizac
 
 ## <a name="next-steps"></a>Další kroky
 
-* K zobrazení podrobných dat aktualizace použijte [dotazy protokolu v Azure monitor](../log-query/log-query-overview.md) .
-* [Vytvořte si vlastní řídicí panely](../learn/tutorial-logs-dashboards.md) pro zobrazení oblíbených vyhledávacích dotazů sady Office 365.
-* [Vytvářejte výstrahy](../platform/alerts-overview.md) , které se proaktivně informují o důležitých aktivitách Office 365.  
+* K zobrazení podrobných dat aktualizace použijte [dotazy protokolu v Azure monitor](../logs/log-query-overview.md) .
+* [Vytvořte si vlastní řídicí panely](../visualize/tutorial-logs-dashboards.md) pro zobrazení oblíbených vyhledávacích dotazů sady Office 365.
+* [Vytvářejte výstrahy](../alerts/alerts-overview.md) , které se proaktivně informují o důležitých aktivitách Office 365.  

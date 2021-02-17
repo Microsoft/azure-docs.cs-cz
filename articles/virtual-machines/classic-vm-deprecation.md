@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 7ed2a672f0f7149240e799b5529a7a3a6836a702
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 004a84cd98381af027c554a7ef40e27e69ec6dbc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499301"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587910"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>Migrace prostředků IaaS do Azure Resource Manager do 1. března 2023 
 
@@ -30,9 +30,9 @@ Virtuální počítače vytvořené pomocí modelu nasazení Classic se budou ř
 - Od 1. března 2023 budou předplatná, která nejsou migrována na Azure Resource Manager, informována o časových osách pro odstranění všech zbývajících virtuálních počítačů (Classic).  
 
 Toto vyřazení *nemá vliv na* tyto služby a funkce Azure: 
-- Azure Cloud Services 
+- [Cloud Services Azure (Classic)](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me)
 - *Účty úložiště* nepoužívané virtuálními počítači (klasické) 
-- Virtuální sítě *not* nepoužívané virtuálními počítači (Classic) 
+- Virtuální sítě  nepoužívané virtuálními počítači (Classic) 
 - Jiné klasické prostředky
 
 ## <a name="what-actions-should-i-take"></a>Jaké akce mám provést? 
@@ -49,9 +49,9 @@ Začněte plánovat migraci na Azure Resource Manager dnes.
 
 1. Pro migraci stávajících virtuálních počítačů se třemi jednoduchými kroky doporučujeme spustit plánování pomocí [Nástroje pro migraci podpory platformy](./migration-classic-resource-manager-overview.md) : Ověřte, připravte a potvrďte. Tento nástroj je navržený tak, aby se virtuální počítače migrovali do minimálního výpadku. 
 
-   1. První krok, ověřit, nemá žádný vliv na stávající nasazení a obsahuje seznam všech nepodporovaných scénářů migrace. 
-   1. Projděte si [seznam alternativních řešení](./migration-classic-resource-manager-overview.md#unsupported-features-and-configurations) a opravte nasazení a připravte ho na migraci. 
-   1. V ideálním případě, když jsou všechny chyby ověřování opraveny, neměli byste během postupu přípravy a potvrzení narazit na žádné problémy. Po úspěšném potvrzení se nasazení migruje za provozu do Azure Resource Manager a pak se dá spravovat prostřednictvím nových rozhraní API vystavených Azure Resource Manager. 
+   - První krok, ověřit, nemá žádný vliv na stávající nasazení a obsahuje seznam všech nepodporovaných scénářů migrace. 
+   - Projděte si [seznam alternativních řešení](./migration-classic-resource-manager-overview.md#unsupported-features-and-configurations) a opravte nasazení a připravte ho na migraci. 
+   - V ideálním případě, když jsou všechny chyby ověřování opraveny, neměli byste během postupu přípravy a potvrzení narazit na žádné problémy. Po úspěšném potvrzení se nasazení migruje za provozu do Azure Resource Manager a pak se dá spravovat prostřednictvím nových rozhraní API vystavených Azure Resource Manager. 
 
    Pokud nástroj pro migraci není vhodný pro migraci, můžete prozkoumat [jiné výpočetní nabídky](/azure/architecture/guide/technology-choices/compute-decision-tree) pro migraci. Vzhledem k tomu, že existuje spousta nabídek Azure COMPUTE a liší se od sebe, nemůžeme jim poskytnout cestu k migraci podporovanou platformou.  
 
@@ -65,6 +65,6 @@ Začněte plánovat migraci na Azure Resource Manager dnes.
 
 - [Podpora migrace do Azure](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"1135e3d0-20e2-aec5-4ef0-55fd3dae2d58"}): tým vyhrazené podpory pro technickou pomoc při migraci.
 
-- [Rychlé sledování společnosti Microsoft](https://www.microsoft.com/fasttrack): rychlá stopa může pomáhat oprávněným zákazníkům s plánováním & provádění této migrace. [Jmenujeme sami sebe](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fprograms%2Fazure-fasttrack%2F%23nomination&data=02%7C01%7CTanmay.Gore%40microsoft.com%7C3e75bbf3617944ec663a08d85c058340%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637360526032558561&sdata=CxWTVQQPVWNwEqDZKktXzNV74pX91uyJ8dY8YecIgGc%3D&reserved=0).  
+- [Rychlé sledování společnosti Microsoft](https://www.microsoft.com/fasttrack): rychlá stopa může pomáhat oprávněným zákazníkům s plánováním & provádění této migrace. [Identifikujte](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fprograms%2Fazure-fasttrack%2F%23nomination&data=02%7C01%7CTanmay.Gore%40microsoft.com%7C3e75bbf3617944ec663a08d85c058340%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637360526032558561&sdata=CxWTVQQPVWNwEqDZKktXzNV74pX91uyJ8dY8YecIgGc%3D&reserved=0) se pro program pro migraci řadiče domény.  
 
 - Pokud vaše společnost nebo organizace spolupracuje se společností Microsoft nebo spolupracuje s zástupci Microsoftu (jako jsou architekti cloudových řešení (CSAs) nebo správci technického účtu (TAMs)), pracujte s nimi pro další prostředky pro migraci.

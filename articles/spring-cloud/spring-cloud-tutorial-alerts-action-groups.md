@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: c706f38dabbe21e5bafb096bf406e70af0855aa3
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 59791b72272ccd721a61da88d13b973119cef5d6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089974"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596148"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Kurz: jak monitorovat prostředky jarní cloudu pomocí výstrah a skupin akcí
 
@@ -24,7 +24,7 @@ Pro nastavení kanálu výstrah existují dva kroky:
 1. Nastavte skupinu akcí s akcemi, které se mají provést, když se aktivuje výstraha, například e-mail, SMS, Runbook nebo Webhook. Skupiny akcí lze znovu použít mezi různými výstrahami.
 2. Nastavte pravidla upozornění. Pravidla vážou modely metrik se skupinami akcí na základě cílového prostředku, metriky, podmínky, agregace času atd.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Kromě požadavků na jarní kapacitu Azure postup v tomto kurzu pracuje s nasazenou instancí cloudu pro Azure jaře.  Začněte pomocí [rychlého](spring-cloud-quickstart.md) startu.
 
@@ -88,11 +88,11 @@ Předchozí kroky vytvořily **skupinu akcí** , která používá e-mail. Můž
 
    Podrobnosti o podmínkách, které je možné monitorovat, najdete v tématu [Možnosti metrik portálu User Portal](spring-cloud-concept-metrics.md#user-metrics-options).
 
-1. V části **Akce**klikněte na **Vybrat skupinu akcí**. V podokně **Akce** vyberte dříve definovanou **skupinu akcí**.
+1. V části **Akce** klikněte na **Vybrat skupinu akcí**. V podokně **Akce** vyberte dříve definovanou **skupinu akcí**.
 
    ![Nové pravidlo upozornění na portálu snímků obrazovky 4](media/alerts-action-groups/alerts-3-3.png) 
 
-1. Posuňte se dolů a v části **Podrobnosti o výstraze**pojmenujte pravidlo upozornění.
+1. Posuňte se dolů a v části **Podrobnosti o výstraze** pojmenujte pravidlo upozornění.
 
 1. Nastavte **závažnost**.
 
@@ -113,7 +113,7 @@ Pravidlo je také možné vytvořit pomocí stránky **metriky** :
 V tomto kurzu jste zjistili, jak nastavit výstrahy a skupiny akcí pro aplikaci pro jarní Cloud v Azure. Další informace o skupinách akcí najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Vytváření a správa skupin akcí na webu Azure Portal](../azure-monitor/platform/action-groups.md)
+> [Vytváření a správa skupin akcí na webu Azure Portal](../azure-monitor/alerts/action-groups.md)
 
 > [!div class="nextstepaction"]
-> [Chování výstrah SMS ve skupinách akcí](../azure-monitor/platform/alerts-sms-behavior.md)
+> [Chování výstrah SMS ve skupinách akcí](../azure-monitor/alerts/alerts-sms-behavior.md)

@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 389c0b1fd5a2fde33c2bf19ac2807cca45691523
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5e2ecf8dff432f2a0ce6b3356ce3eca7a8127932
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373143"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586865"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Monitorování a Data Factory výstrah pomocí Azure Monitor
 
@@ -76,7 +76,7 @@ Vytvořte nebo přidejte nastavení diagnostiky pro datovou továrnu.
    ![Pojmenujte nastavení a vyberte pracovní prostor Log-Analytics.](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
     > [!NOTE]
-    > Vzhledem k tomu, že tabulka protokolů Azure nemůže mít více než 500 sloupců, **důrazně doporučujeme** vybrat _režim specifický pro daný prostředek_. Další informace najdete v tématu [Log Analytics známá omezení](../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics).
+    > Vzhledem k tomu, že tabulka protokolů Azure nemůže mít více než 500 sloupců, **důrazně doporučujeme** vybrat _režim specifický pro daný prostředek_. Další informace najdete v tématu [Log Analytics známá omezení](../azure-monitor/essentials/resource-logs.md#column-limit-in-azurediagnostics).
 
 1. Vyberte **Uložit**.
 
@@ -151,7 +151,7 @@ Tady jsou některé metriky vydávané Azure Data Factory verze 2:
 | SSISPackageExecutionFailed           | Neúspěšné metriky spuštění balíčku SSIS    | Počet    | Celkem                | Celkový počet spuštěných SSIS balíčků, které selhaly během minutového okna. |
 | SSISPackageExecutionSucceeded        | Úspěšné metriky spuštění balíčku SSIS | Počet    | Celkem                | Celkový počet spuštěných SSIS balíčků, které byly úspěšně dokončeny během minutového okna. |
 
-Pokud chcete získat přístup k metrikám, postupujte podle pokynů v [Azure monitor datovou platformu](../azure-monitor/platform/data-platform.md).
+Pokud chcete získat přístup k metrikám, postupujte podle pokynů v [Azure monitor datovou platformu](../azure-monitor/data-platform.md).
 
 > [!NOTE]
 > Emitují se jenom události z dokončených, aktivované aktivity a spuštění kanálu. Probíhající a ladicí běhy **nejsou generovány** . Na druhé straně se generují události ze **všech** spuštění balíčků SSIS, včetně těch, které jsou dokončené a probíhající, bez ohledu na jejich metody vyvolání. Můžete například vyvolat spouštění balíčků na Azure-Enabled SQL Server Data Tools (SSDT), pomocí T-SQL v SSMS, agenta SQL Server nebo jiných určených nástrojů a jako aktivované nebo ladění spuštění aktivit balíčku SSIS v kanálech ADF.
@@ -848,7 +848,7 @@ Pokud chcete nazvednutím & posunout úlohy SSIS, můžete [ZŘÍDIT SSIS IR v A
 
 Po zřízení můžete [ověřit provozní stav SSIS IR pomocí Azure PowerShell nebo na rozbočovači **monitorování** na portálu ADF](./monitor-integration-runtime.md#azure-ssis-integration-runtime). Pomocí modelu nasazení projektu jsou protokoly spouštění balíčků SSIS uloženy v interních tabulkách nebo zobrazeních SSISDB, takže je můžete dotazovat, analyzovat a vizuálně prezentovat pomocí určených nástrojů jako SSMS. Pomocí modelu nasazení balíčku můžete protokoly spuštění balíčků SSIS ukládat do systému souborů nebo souborů Azure jako soubory CSV, které ještě potřebujete k analýze a zpracování pomocí jiných určených nástrojů, než je budete moct dotazovat, analyzovat a vizuálně prezentovat.
 
-Nyní s [Azure monitor](../azure-monitor/platform/data-platform.md) integrací můžete zadávat dotazy, analyzovat a vizuálně prezentovat všechny metriky a protokoly vygenerované z operací SSIS IR a spouštění balíčků SSIS na Azure Portal. Kromě toho můžete také vyvolávat výstrahy.
+Nyní s [Azure monitor](../azure-monitor/data-platform.md) integrací můžete zadávat dotazy, analyzovat a vizuálně prezentovat všechny metriky a protokoly vygenerované z operací SSIS IR a spouštění balíčků SSIS na Azure Portal. Kromě toho můžete také vyvolávat výstrahy.
 
 ### <a name="configure-diagnostic-settings-and-workspace-for-ssis-operations"></a>Konfigurace nastavení diagnostiky a pracovního prostoru pro operace SSIS
 
@@ -856,9 +856,9 @@ Pro odesílání všech metrik a protokolů vygenerovaných z SSISch operací IR
 
 ### <a name="ssis-operational-metrics"></a>Provozní metriky SSIS
 
-Provozní [metriky](../azure-monitor/platform/data-platform-metrics.md) SSIS jsou čítače výkonu nebo číselné hodnoty, které popisují stav operací spuštění a zastavení infračerveného přenosu dat SSIS a také provádění balíčků SSIS v určitém bodě v čase. Jsou součástí [metriky ADF v Azure monitor](#data-factory-metrics).
+Provozní [metriky](../azure-monitor/essentials/data-platform-metrics.md) SSIS jsou čítače výkonu nebo číselné hodnoty, které popisují stav operací spuštění a zastavení infračerveného přenosu dat SSIS a také provádění balíčků SSIS v určitém bodě v čase. Jsou součástí [metriky ADF v Azure monitor](#data-factory-metrics).
 
-Když konfigurujete nastavení diagnostiky a pracovní prostor pro ADF na Azure Monitor, zaškrtnutím políčka _AllMetrics_ zpřístupníte SSIS provozní metriky pro [interaktivní analýzu pomocí Azure Průzkumník metrik](../azure-monitor/platform/metrics-getting-started.md), [prezentace na řídicím panelu Azure](../azure-monitor/learn/tutorial-app-dashboards.md)a [Upozornění téměř v reálném čase](../azure-monitor/platform/alerts-metric.md).
+Když konfigurujete nastavení diagnostiky a pracovní prostor pro ADF na Azure Monitor, zaškrtnutím políčka _AllMetrics_ zpřístupníte SSIS provozní metriky pro [interaktivní analýzu pomocí Azure Průzkumník metrik](../azure-monitor/essentials/metrics-getting-started.md), [prezentace na řídicím panelu Azure](../azure-monitor/app/tutorial-app-dashboards.md)a [Upozornění téměř v reálném čase](../azure-monitor/alerts/alerts-metric.md).
 
 ![Pojmenujte nastavení a vyberte pracovní prostor Log-Analytics.](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
@@ -874,9 +874,9 @@ Pokud chcete vygenerovat upozornění na provozní metriky SSIS z Azure Portal, 
 
 ### <a name="ssis-operational-logs"></a>Provozní protokoly SSIS
 
-Provozní [protokoly](../azure-monitor/platform/data-platform-logs.md) SSIS jsou události generované SSISmi infračervenými operacemi a prováděním balíčků SSIS, které poskytují dostatek kontextu u všech zjištěných problémů a jsou užitečné pro analýzu původní příčiny. 
+Provozní [protokoly](../azure-monitor/logs/data-platform-logs.md) SSIS jsou události generované SSISmi infračervenými operacemi a prováděním balíčků SSIS, které poskytují dostatek kontextu u všech zjištěných problémů a jsou užitečné pro analýzu původní příčiny. 
 
-Když konfigurujete nastavení diagnostiky a pracovní prostor pro ADF v Azure Monitor, můžete vybrat relevantní provozní protokoly SSIS a odeslat je Log Analytics založené na Azure Průzkumník dat. V takovém případě budou k dispozici pro [analýzu pomocí bohatých dotazovacích jazyků](../azure-monitor/log-query/log-query-overview.md), [prezentace na řídicím panelu Azure](../azure-monitor/learn/tutorial-app-dashboards.md)a [Upozornění téměř v reálném čase](../azure-monitor/platform/alerts-log.md).
+Když konfigurujete nastavení diagnostiky a pracovní prostor pro ADF v Azure Monitor, můžete vybrat relevantní provozní protokoly SSIS a odeslat je Log Analytics založené na Azure Průzkumník dat. V takovém případě budou k dispozici pro [analýzu pomocí bohatých dotazovacích jazyků](../azure-monitor/logs/log-query-overview.md), [prezentace na řídicím panelu Azure](../azure-monitor/app/tutorial-app-dashboards.md)a [Upozornění téměř v reálném čase](../azure-monitor/alerts/alerts-log.md).
 
 ![Pojmenujte nastavení a vyberte pracovní prostor Log-Analytics.](media/data-factory-monitor-oms/monitor-oms-image2.png)
 

@@ -3,18 +3,18 @@ title: Šablona pro vytvoření výstrah Resource Health
 description: Vytvářejte výstrahy programově, které vás upozorní, když vaše prostředky Azure nebudou k dispozici.
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: 3859bb0ce2497b1c1f547c3750e53745ef6d6f28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f1cbe1e2d2c185906feb4ccba380cb31df864f5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537425"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588209"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurace upozornění na stav prostředků s využitím šablon Resource Manageru
 
 V tomto článku se dozvíte, jak pomocí šablon Azure Resource Manager a Azure PowerShell vytvářet výstrahy protokolu aktivit Resource Health programově.
 
-Azure Resource Health vás informují o aktuálním a historickém stavu vašich prostředků Azure. Výstrahy Azure Resource Health vás můžou zobrazit téměř v reálném čase, když tyto prostředky mají změnu stavu. Vytváření výstrah Resource Health programově umožňuje uživatelům vytvářet a přizpůsobovat hromadnou výstrahu.
+Azure Resource Health vás informují o aktuálním a historickém stavu vašich prostředků Azure. Upozornění služby Azure Resource Health vás můžou téměř v reálném čase informovat o změnách stavu těchto prostředků. Vytváření výstrah Resource Health programově umožňuje uživatelům vytvářet a přizpůsobovat hromadnou výstrahu.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -23,7 +23,7 @@ Azure Resource Health vás informují o aktuálním a historickém stavu vašich
 Pokud chcete postupovat podle pokynů na této stránce, musíte předem nastavit pár věcí:
 
 1. Je potřeba nainstalovat [modul Azure PowerShell](/powershell/azure/install-az-ps) .
-2. Musíte [vytvořit nebo znovu použít skupinu akcí](../azure-monitor/platform/action-groups.md) nakonfigurovanou pro upozorňování
+2. Musíte [vytvořit nebo znovu použít skupinu akcí](../azure-monitor/alerts/action-groups.md) nakonfigurovanou pro upozorňování
 
 ## <a name="instructions"></a>Pokyny
 1. Pomocí PowerShellu se přihlaste k Azure pomocí svého účtu a vyberte předplatné, se kterým chcete pracovat.
@@ -452,4 +452,4 @@ Další informace o Resource Health:
 
 Vytvořit výstrahy Service Health:
 -  [Konfigurace upozornění pro Service Health](./alerts-activity-log-service-notifications-portal.md) 
--  [Schéma událostí protokolu aktivit Azure](../azure-monitor/platform/activity-log-schema.md)
+-  [Schéma událostí protokolu aktivit Azure](../azure-monitor/essentials/activity-log-schema.md)

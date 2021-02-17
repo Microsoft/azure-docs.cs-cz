@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: cf749f3aef10a0c67814722577f79906f447ffdb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b344e2a845a9da8333860599bd4ff9041108202f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532777"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588260"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---flexible-server"></a>Protokolování auditu Azure Database for PostgreSQL – flexibilní Server
 
@@ -20,7 +20,7 @@ Auditování protokolování databázových aktivit v Azure Database for Postgre
 > [!IMPORTANT]
 > Azure Database for PostgreSQL – flexibilní Server je ve verzi Preview.
 
-Pokud chcete protokoly na úrovni prostředků Azure pro operace, jako jsou výpočty a škálování úložiště, si můžete prohlédnout v [protokolu aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md).
+Pokud chcete protokoly na úrovni prostředků Azure pro operace, jako jsou výpočty a škálování úložiště, si můžete prohlédnout v [protokolu aktivit Azure](../../azure-monitor/essentials/platform-logs-overview.md).
 
 ## <a name="usage-considerations"></a>Požadavky na využití
 Ve výchozím nastavení příkazy protokolování pgAudit vysílá standardní protokolovací zařízení Postgres společně s normálními příkazy protokolování. V Azure Database for PostgreSQL-flexibilní Server můžete nakonfigurovat všechny protokoly, které se mají odeslat do Azure Monitor úložiště protokolu pro pozdější analýzy v Log Analytics. Pokud povolíte Azure Monitor protokolování prostředků, protokoly se automaticky odešlou (ve formátu JSON) do protokolů Azure Storage, Event Hubs nebo Azure Monitor, podle toho, co jste vybrali.
@@ -57,9 +57,9 @@ Každá položka auditu je uvedena `AUDIT:` poblíž začátku řádku protokolu
 Chcete-li rychle začít, nastavte `pgaudit.log` na `WRITE` a otevřete protokoly serveru a zkontrolujte výstup. 
 
 ## <a name="viewing-audit-logs"></a>Zobrazení protokolů auditu
-Způsob přístupu k protokolům závisí na tom, který koncový bod zvolíte. Azure Storage najdete v článku [log Storage Account](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) . Event Hubs najdete v článku [streamování protokolů Azure](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) .
+Způsob přístupu k protokolům závisí na tom, který koncový bod zvolíte. Azure Storage najdete v článku [log Storage Account](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) . Event Hubs najdete v článku [streamování protokolů Azure](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs) .
 
-Protokoly Azure Monitor jsou odesílány do vybraného pracovního prostoru. Protokoly Postgres používají režim kolekce **AzureDiagnostics** , takže se dají dotazovat z tabulky AzureDiagnostics. Pole v tabulce jsou popsána níže. Přečtěte si další informace o dotazování a upozorňování v přehledu [dotazů Azure Monitorch protokolů](../../azure-monitor/log-query/log-query-overview.md) .
+Protokoly Azure Monitor jsou odesílány do vybraného pracovního prostoru. Protokoly Postgres používají režim kolekce **AzureDiagnostics** , takže se dají dotazovat z tabulky AzureDiagnostics. Pole v tabulce jsou popsána níže. Přečtěte si další informace o dotazování a upozorňování v přehledu [dotazů Azure Monitorch protokolů](../../azure-monitor/logs/log-query-overview.md) .
 
 Pomocí tohoto dotazu můžete začít. Výstrahy můžete konfigurovat na základě dotazů.
 

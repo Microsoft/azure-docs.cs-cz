@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 5cecf24f4ba086feba5ab87b5752fd665c540dff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 338dc22c7a4f9fbca9f007ae76c092a3fe5f6762
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86498674"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587240"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Cílení řešení monitorování v Azure Monitor (Preview)
 Když přidáte řešení monitorování do předplatného, automaticky se nasadí ve výchozím nastavení na všechny agenty systému Windows a Linux připojené k vašemu pracovnímu prostoru Log Analytics.  Můžete chtít spravovat náklady a omezit množství shromažďovaných dat pro řešení tím, že je omezíte na konkrétní sadu agentů.  Tento článek popisuje, jak používat **cílení na řešení** , což je funkce, která umožňuje použít obor pro vaše řešení.
@@ -23,7 +23,7 @@ Existují tři kroky pro cílení řešení, jak je popsáno v následujících 
 
 
 ### <a name="1-create-a-computer-group"></a>1. Vytvoření skupiny počítačů
-Počítače, které chcete zahrnout do oboru, určíte tak, že v Azure Monitor vytvoříte [skupinu počítačů](../platform/computer-groups.md) .  Skupina počítačů může být založená na dotazu protokolu nebo naimportovaná z jiných zdrojů, jako je například služba Active Directory nebo skupiny WSUS. Jak je [popsáno níže](#solutions-and-agents-that-cant-be-targeted), do oboru budou zahrnuty pouze počítače, které jsou přímo připojeny k Azure monitor.
+Počítače, které chcete zahrnout do oboru, určíte tak, že v Azure Monitor vytvoříte [skupinu počítačů](../logs/computer-groups.md) .  Skupina počítačů může být založená na dotazu protokolu nebo naimportovaná z jiných zdrojů, jako je například služba Active Directory nebo skupiny WSUS. Jak je [popsáno níže](#solutions-and-agents-that-cant-be-targeted), do oboru budou zahrnuty pouze počítače, které jsou přímo připojeny k Azure monitor.
 
 Až budete mít v pracovním prostoru vytvořenou skupinu počítačů, zahrnete ji do konfigurace oboru, kterou je možné použít pro jedno nebo více řešení.
  
@@ -69,4 +69,4 @@ Cílení na řešení nelze použít s těmito řešeními, i když splňují za
 
 ## <a name="next-steps"></a>Další kroky
 - Další informace o řešeních monitorování, včetně řešení dostupných pro instalaci ve vašem prostředí, najdete v části [Přidání řešení Azure Log Analytics monitorování do vašeho pracovního prostoru](solutions.md).
-- Přečtěte si další informace o vytváření skupin počítačů [ve skupinách počítačů v Azure Monitorch dotazech protokolu](../platform/computer-groups.md).
+- Přečtěte si další informace o vytváření skupin počítačů [ve skupinách počítačů v Azure Monitorch dotazech protokolu](../logs/computer-groups.md).

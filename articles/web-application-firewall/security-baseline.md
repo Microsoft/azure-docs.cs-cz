@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b50ab8cae91aab56be287f517fa6e6a0b25db8e1
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d1f0b0b36c8f0ed5ede7b5c3113207ae3cce10fd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807865"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581242"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Základní hodnota zabezpečení Azure pro Firewall webových aplikací Azure
 
@@ -111,9 +111,9 @@ Vyberte Azure PowerShell nebo rozhraní příkazového řádku Azure, abyste moh
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny nastavení sítě a prostředků, které souvisejí s nasazeními firewallu webových aplikací Azure (WAF). Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny kritických nastavení sítě nebo prostředků.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -153,9 +153,9 @@ Azure Sentinel má integrovaný sešit Azure WAF, který poskytuje přehled udá
 
 - [Přehled protokolování](ag/ag-overview.md#logging)
 
-- [Přehled dotazování protokolu Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
+- [Přehled dotazování protokolu Azure Monitor](../azure-monitor/logs/log-query-overview.md)
 
-- [Přehled protokolů platformy Azure](../azure-monitor/platform/platform-logs-overview.md)
+- [Přehled protokolů platformy Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -192,9 +192,9 @@ Azure Sentinel má integrovaný sešit událostí WAF-firewall, který poskytuje
 
 **Doprovodné** materiály: Povolte nastavení diagnostiky protokolu aktivit Azure a také nastavení diagnostiky pro Azure WAF a odešlete protokoly do pracovního prostoru Log Analytics. Můžete provádět dotazy v Log Analytics k hledání podmínek, identifikaci trendů, analýze vzorů a poskytování mnoha dalších přehledů na základě shromážděných dat. Vytvořte výstrahy pro aktivitu neobvyklé na základě metrik WAF. Například pokud blokovaný počet požadavků překročí "X", "do" Y ".
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
-- [Vytvoření upozornění v rámci Azure](../azure-monitor/learn/tutorial-response.md)
+- [Vytvoření upozornění v rámci Azure](../azure-monitor/alerts/tutorial-response.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
