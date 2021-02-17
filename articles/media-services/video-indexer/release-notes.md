@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/01/2021
 ms.author: juliako
-ms.openlocfilehash: c0d332c00635444ab4d694e46486a498b43137f2
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: a6b1fc5adba166aa15a786d3440be1eca7f0a260
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99427650"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560505"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
@@ -67,7 +67,7 @@ Budete se moct zaregistrovat a přihlásit pomocí některého z těchto poskyto
 > [!NOTE]
 > Účty Video Indexer připojené k LinkedInu a Facebooku nebudou dostupné po 1. březnu 2021. 
 > 
-> Měli byste [pozvat](invite-users.md) e-maily Azure AD, Microsoft nebo Google na účet video indexer, abyste k němu měli přístup i nadále.<br/>
+> Měli byste [pozvat](invite-users.md) e-maily Azure AD, Microsoft nebo Google na účet video indexer, abyste k němu měli přístup i nadále. Můžete přidat další vlastníka podporovaných zprostředkovatelů, jak je popsáno v [pozvánce](invite-users.md). <br/>
 > Případně můžete vytvořit placený účet a migrovat data.
 
 ## <a name="august-2020"></a>Srpen 2020

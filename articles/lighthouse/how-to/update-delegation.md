@@ -1,14 +1,14 @@
 ---
 title: Aktualizace delegování
 description: Přečtěte si, jak aktualizovat delegování pro zákazníka dříve připojeného do Azure Lighthouse.
-ms.date: 12/03/2020
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: eec5d1f2d34e8e3c9e0ded59cb111624b1981873
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: f0ed5222cdbac3d0e4d193941c2a6f233d15938c
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791335"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555767"
 ---
 # <a name="update-a-delegation"></a>Aktualizace delegování
 
@@ -48,7 +48,7 @@ Pokud aktualizujete nabídku jenom pro úpravu autorizací a zachováte stejné 
 Odebrání přístupu k delegování může provést libovolný uživatel ve správě tenanta, kterému bylo uděleno [přiřazení registrace spravovaných služeb](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) v původním delegování. Pokud žádný uživatel ve vašem tenantovi pro správu nemá tuto roli, můžete požádat zákazníka, aby [odebral přístup k této nabídce v Azure Portal](view-manage-service-providers.md#add-or-remove-service-provider-offers).
 
 > [!TIP]
-> Pokud jste předchozí delegování odebrali podle výše uvedených kroků a stále nemůžete nasadit novou šablonu ARM, možná budete muset [definici registrace úplně odebrat](/powershell/module/az.managedservices/remove-azmanagedservicesdefinition). To může udělat libovolný uživatel s rolí vlastníka v tenantovi zákazníka.  
+> Pokud jste předchozí delegování odebrali podle výše uvedených kroků a stále nemůžete nasadit novou šablonu ARM, možná budete muset [definici registrace úplně odebrat](/powershell/module/az.managedservices/remove-azmanagedservicesdefinition). To může udělat libovolný uživatel s rolí, která má oprávnění, jako je například `Microsoft.Authorization/roleAssignments/write` [vlastník](../../role-based-access-control/built-in-roles.md#owner), v tenantovi zákazníka.  
 
 ## <a name="deploy-the-arm-template"></a>Nasazení šablony ARM
 

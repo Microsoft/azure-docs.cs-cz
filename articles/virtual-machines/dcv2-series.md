@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: fecd707d96b03eef4f093c0b256e32f11bb8a3f7
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 84987b12657a37264d3a1ca67fdc423ed8085662
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095852"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557908"
 ---
 # <a name="dcsv2-series"></a>DCsv2-Series
 
@@ -21,15 +21,15 @@ DCsv2-Series může přispět k ochraně důvěrnosti a integrity vašich dat a 
 
 Příklady případů použití: důvěrné sdílení dat s více částmi, odhalování podvodů, praní proti podvodným materiálům, blockchainí, analýzy důvěrných údajů, analýza informací a důvěrný strojové učení.
 
-[Premium Storage](premium-storage-performance.md): podporované *<br>
-[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
-[Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
-[Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
-[Podpora generování virtuálních počítačů](generation-2.md): generace 2<br>
-[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
+[Premium Storage](premium-storage-performance.md): podporované *<br> 
+ [Premium Storage ukládání do mezipaměti](premium-storage-performance.md): podporované <br> 
+ [migrace za provozu](maintenance-and-updates.md): Nepodporovaná <br> 
+ [paměť pro zachovávání aktualizací](maintenance-and-updates.md): Nepodporovaná <br> 
+ [Podpora generování virtuálních počítačů](generation-2.md): <br> 
+ podporovaná [síť](../virtual-network/create-vm-accelerated-networking-cli.md)2. generace: podporováno (* vyžaduje minimálně 4 vCPU *) <br>
 [Dočasné disky s operačním systémem](ephemeral-os-disks.md): podporované <br>
 
-* S výjimkou Standard_DC8_v2
+* S výjimkou Standard_DC8_v2 <br>
 
 | Velikost             | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) | Paměť EPC (MiB) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|----------------------------------------------|---------------------|

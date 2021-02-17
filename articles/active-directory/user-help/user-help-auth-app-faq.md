@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: f4640bbd445b27942d757cc4e09aa7e673550ebc
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 84dde96276414e98cbde05d6e046dce03227f60d
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226518"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547855"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Nejčastější dotazy k aplikaci Microsoft Authenticator
 
@@ -94,6 +94,7 @@ Odpověď **: některé** organizace vyžadují, aby ověřovací data pracovala
 ### <a name="device-registration"></a>Registrace zařízení
 
 **Otázka**: co je registrace zařízení?
+
 Odpověď **: vaše** organizace může vyžadovat, abyste si zaregistrovali zařízení, abyste mohli sledovat přístup k zabezpečeným prostředkům, například k souborům a aplikacím. Můžou taky zapnout podmíněný přístup, aby se snížilo riziko nechtěného přístupu k těmto prostředkům. V **Nastavení** můžete zrušit registraci zařízení, ale možná ztratíte přístup k e-mailům v Outlooku, souborům na OneDrivu a ztratíte možnost používat přihlášení telefonem.
 
 ### <a name="verification-codes-when-connected"></a>Ověřovací kódy při připojení

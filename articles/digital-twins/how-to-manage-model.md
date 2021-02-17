@@ -1,5 +1,5 @@
 ---
-title: Správa vlastních modelů
+title: Správa modelů DTDL
 titleSuffix: Azure Digital Twins
 description: Podívejte se, jak vytvořit, upravit a odstranit model v rámci digitálních vláken Azure.
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c193565035435b29f77177086c535fae0903ccd4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: be8f4ba8552521d25992d7c3a405dc2628fbbb85
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737774"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560807"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Správa modelů digitálních vláken Azure
 
@@ -61,7 +61,7 @@ Všimněte si, že `CreateModels` Metoda přijímá více souborů v jedné tran
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModels_multi":::
 
-Soubory modelu mohou obsahovat více než jeden model. V takovém případě musí být modely umístěny do pole JSON. Například:
+Soubory modelu mohou obsahovat více než jeden model. V takovém případě musí být modely umístěny do pole JSON. Příklad:
 
 :::code language="json" source="~/digital-twins-docs-samples/models/Planet-Moon.json":::
 

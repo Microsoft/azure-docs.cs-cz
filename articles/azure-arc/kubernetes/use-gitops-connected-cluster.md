@@ -2,52 +2,32 @@
 title: Nasazení konfigurací pomocí GitOps v clusteru Kubernetes s podporou Azure Arc (Preview)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/09/2021
+ms.date: 02/15/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Použití GitOps ke konfiguraci clusteru Kubernetes s povoleným ARC Azure (Preview)
 keywords: GitOps, Kubernetes, K8s, Azure, ARC, Azure Kubernetes Service, AKS, Containers
-ms.openlocfilehash: 072bfc8c243eb9b69e06366961019b88b67e0941
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3cadcdf80abd997ec10aeb9521680944d455898f
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392234"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560173"
 ---
-# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Nasazení konfigurací pomocí GitOps v clusteru Kubernetes s podporou Azure Arc (Preview)
+# <a name="deploy-configurations-using-gitops-on-an-arc-enabled-kubernetes-cluster-preview"></a>Nasazení konfigurací pomocí GitOps na clusteru Kubernetes s povoleným obloukem (Preview)
 
-V souvislosti s Kubernetes je GitOps postup, který deklaruje požadovaný stav konfigurací clusterů Kubernetes (nasazení, obory názvů atd.) v úložišti Git. Tato deklarace je následována nasazením těchto clusterů, které je založené na vyžádání, pomocí operátoru. 
-
-Tento článek popisuje nastavení pracovních postupů GitOps v clusterech Kubernetes s povoleným ARC Azure.
-
-Připojení mezi clusterem a úložištěm Git je vytvořeno jako `Microsoft.KubernetesConfiguration/sourceControlConfigurations` prostředek rozšíření v Azure Resource Manager. `sourceControlConfiguration`Vlastnosti prostředku reprezentují, kde a jak by se měly prostředky Kubernetes z Gitu přesměrovat do vašeho clusteru. `sourceControlConfiguration`Data jsou uložena v zašifrovaném umístění v databázi Azure Cosmos DB, aby se zajistila důvěrnost dat.
-
-Služba `config-agent` spuštěná v clusteru zodpovídá za:
-* Sledování nových nebo aktualizovaných `sourceControlConfiguration` prostředků rozšíření u prostředku Kubernetes s povoleným ARC Azure
-* Nasazení operátora toku pro sledování úložiště Git pro každou z nich `sourceControlConfiguration` .
-* Aplikují se jakékoli aktualizace, které jste udělali `sourceControlConfiguration` . 
-
-`sourceControlConfiguration`Pro dosažení víceklientské architektury můžete vytvořit více prostředků na stejném clusteru Kubernetes s povoleným ARC Azure. Omezení nasazení na příslušné obory názvů vytvořením každého `sourceControlConfiguration` s jiným `namespace` oborem.
-
-Úložiště Git může obsahovat:
-* YAML – manifesty popisující jakékoli platné prostředky Kubernetes, včetně oborů názvů, ConfigMaps, nasazení, DaemonSets atd. 
-* Helm grafy pro nasazení aplikací. 
-
-Mezi běžné sady scénářů patří definování standardních hodnot konfigurace pro vaši organizaci, jako jsou například běžné role a vazby Azure, agenti monitorování nebo protokolování nebo služby pro clustery v rámci clusteru.
-
-Stejný vzor lze použít ke správě větší kolekce clusterů, které mohou být nasazeny v heterogenních prostředích. Máte například jedno úložiště, které definuje základní konfiguraci pro vaši organizaci, která se vztahuje na více clusterů Kubernetes najednou. [Azure Policy může automatizovat](use-azure-policy.md) vytváření a `sourceControlConfiguration` pomocí konkrétní sady parametrů ve všech prostředcích Azure ARC s povolenými prostředky Kubernetes v rámci oboru (předplatného nebo skupiny prostředků).
-
-Projděte si následující postup, ve kterém se dozvíte, jak použít sadu konfigurací s `cluster-admin` oborem.
+Tento článek popisuje použití konfigurací v clusteru Kubernetes s povoleným ARC Azure. Koncepční přehled stejného typu najdete [tady](./conceptual-configurations.md).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Ověřte, že máte existující cluster Kubernetes s povoleným připojením k Azure ARC. Pokud potřebujete připojený cluster, přečtěte si [rychlý Start clusteru Kubernetes s povoleným připojením Azure ARC](./connect-cluster.md).
+* Ověřte, že máte existující cluster Kubernetes s povoleným připojením k Azure ARC. Pokud potřebujete připojený cluster, přečtěte si [rychlý Start clusteru Kubernetes s povoleným připojením Azure ARC](./connect-cluster.md).
+
+* Přečtěte si [článek konfigurace a GitOps s obloukem for Kubernetes](./conceptual-configurations.md) , abyste porozuměli výhodám a architektuře této funkce.
 
 ## <a name="create-a-configuration"></a>Vytvořit konfiguraci
 
 [Ukázkové úložiště](https://github.com/Azure/arc-k8s-demo) , které se používá v tomto článku, je rozčleněné na uživatele operátora clusteru, který by chtěl zřídit několik oborů názvů, nasadit společnou úlohu a poskytnout konfiguraci specifickou pro tým. Pomocí tohoto úložiště se ve vašem clusteru vytvoří následující prostředky:
-
 
 * **Obory názvů:** `cluster-config` , `team-a` , `team-b`
 * **Nasazení:**`cluster-config/azure-vote`
@@ -249,7 +229,7 @@ Při `sourceControlConfiguration` Vytvoření nebo aktualizaci se v digestoři s
 
 Během procesu zřizování se `sourceControlConfiguration` přesunou mezi několika změnami stavu. Sledujte průběh pomocí `az k8sconfiguration show ...` příkazu výše:
 
-| Změna fáze | Description |
+| Změna fáze | Popis |
 | ------------- | ------------- |
 | `complianceStatus`-> `Pending` | Představuje počáteční a průběžné stavy. |
 | `complianceStatus` -> `Installed`  | `config-agent` Služba byla schopna úspěšně nakonfigurovat cluster a nasadit `flux` bez chyb. |

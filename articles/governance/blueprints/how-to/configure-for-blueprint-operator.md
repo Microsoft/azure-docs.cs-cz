@@ -3,12 +3,12 @@ title: Nastavení prostředí pro operátor podrobného plánu
 description: Přečtěte si, jak nakonfigurovat prostředí Azure pro použití s integrovanou rolí operátora podrobného plánu Azure.
 ms.date: 02/05/2021
 ms.topic: how-to
-ms.openlocfilehash: 0e0f6680ab39481a480919af10fadc0f7103a1fb
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: b43a33f4bac92903bd07454041d11850f217d480
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99591597"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558718"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>Konfigurace prostředí pro operátora podrobného plánu
 
@@ -22,7 +22,7 @@ Prvním krokem je udělení role **operátora** podrobného plánu na účet neb
 
 1. Doporučil [Vytvoření skupiny zabezpečení a přidání členů](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
-1. [Přidání přiřazení role](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) **operátora** podrobného plánu k účtu nebo skupině zabezpečení
+1. [Přiřazení role Azure](../../../role-based-access-control/role-assignments-portal.md) **operátora** podrobného plánu k účtu nebo skupině zabezpečení
 
 ## <a name="user-assign-managed-identity"></a>Přiřazení spravované identity uživatelem
 
@@ -32,7 +32,7 @@ Definice podrobného plánu může používat spravované identity přiřazené 
 
 1. Udělte uživatelsky přiřazené spravované identitě jakékoli role nebo oprávnění, které vyžaduje definice podrobného plánu pro zamýšlený rozsah.
 
-1. [Přidejte přiřazení role](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) **spravovaného operátoru identity** k účtu nebo skupině zabezpečení. Určení rozsahu přiřazení role k nové uživatelsky přiřazené spravované identitě.
+1. [Přiřaďte roli Azure](../../../role-based-access-control/role-assignments-portal.md) **spravovaného operátora identity** k účtu nebo skupině zabezpečení. Určení rozsahu přiřazení role k nové uživatelsky přiřazené spravované identitě.
 
 1. Jako **operátor** podrobného plánu [přiřaďte podrobný plán](../create-blueprint-portal.md#assign-a-blueprint) , který používá novou spravovanou identitu přiřazenou uživatelem.
 

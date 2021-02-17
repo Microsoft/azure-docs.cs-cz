@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 410f8ab4de0d93262647cbc07e0792cd39f7a844
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 79382dde5780827d7b0393858fe8896c5da1b56d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593633"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559452"
 ---
-# <a name="call-flows"></a>Toky volání
+# <a name="call-flow-basics"></a>Základy toků volání
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
@@ -76,6 +76,14 @@ Pokud klientská knihovna nemůže použít UDP pro média z důvodu omezení br
 
 :::image type="content" source="./media/call-flows/about-voice-group-calls-2.png" alt-text="Diagram znázorňující tok procesu multimédií TCP v rámci komunikačních služeb.":::
 
+### <a name="case-5-communication-services-client-library-and-microsoft-teams-in-a-scheduled-teams-meeting"></a>Případ 5: Klientská knihovna a Microsoft Teams služby Communications na schůzi v plánovaném týmu
+
+Signalizace toků prostřednictvím kontroleru signalizace. Multimediální toky přes procesor médií. Řadič signalizace a procesor médií se sdílí mezi komunikačními službami a Microsoft Teams. 
+
+:::image type="content" source="./media/call-flows/teams-communication-services-meeting.png" alt-text="Diagram znázorňující klientskou knihovnu a týmy klienta komunikačních služeb v rámci schůzky naplánované v týmu.":::
+
+
+
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
@@ -85,3 +93,4 @@ Následující dokumenty můžou být zajímavé:
 
 - Další informace o [typech volání](../concepts/voice-video-calling/about-call-types.md)
 - Informace o [architektuře klient-server](./client-and-server-architecture.md)
+- Další informace o [topologiích toku volání](./detailed-call-flows.md)

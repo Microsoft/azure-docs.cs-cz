@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: a7937745e839b54d9ee7b6f056d10ff627e191d3
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 54aca389ea56594b004212c1479d5cc2568a2527
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327327"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560887"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm-through-a-browser"></a>Kurz: Konfigurace bastionu a připojení k virtuálnímu počítači s Windows pomocí prohlížeče
 
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Virtuální síť.
 * Virtuální počítač s Windows ve virtuální síti.
@@ -47,7 +47,7 @@ Přihlaste se na [Azure Portal](https://portal.azure.com).
 Tato část vám pomůže vytvořit objekt bastionu ve vaší virtuální síti. To je nutné, aby se vytvořilo zabezpečené připojení k virtuálnímu počítači ve virtuální síti.
 
 1. Z **domovské** stránky vyberte **+ vytvořit prostředek**.
-1. Na **nové** stránce zadejte do vyhledávacího pole **bastionu**a pak vyberte **ENTER** , abyste se dostali do výsledků hledání. Na výsledku pro **bastionu**ověřte, že je Vydavatel Microsoft.
+1. Na **nové** stránce zadejte do vyhledávacího pole **bastionu** a pak vyberte **ENTER** , abyste se dostali do výsledků hledání. Na výsledku pro **bastionu** ověřte, že je Vydavatel Microsoft.
 1. Vyberte **Vytvořit**.
 1. Na stránce **vytvořit bastionu** Nakonfigurujte nový prostředek bastionu.
 
@@ -64,7 +64,7 @@ Tato část vám pomůže vytvořit objekt bastionu ve vaší virtuální síti.
          * Podsíť musí být aspoň/27 nebo větší.
 
       Nemusíte vyplnit další pole. Vyberte **OK** a potom v horní části stránky vyberte **vytvořit bastionu** a vraťte se na stránku konfigurace bastionu.
-    * **Veřejná IP adresa**: veřejná IP adresa prostředku bastionu, ke kterému bude přístup RDP/SSH (přes port 443). Vytvořte novou veřejnou IP adresu. Veřejná IP adresa musí být ve stejné oblasti jako prostředek bastionu, který vytváříte. Tato IP adresa nemá nic k tomu, abyste mohli provádět žádné z virtuálních počítačů, ke kterým se chcete připojit. Pro prostředek hostitele bastionu je to veřejná IP adresa.
+    * **Veřejná IP adresa**: veřejná IP adresa prostředku bastionu, ke kterému bude přístup RDP/SSH (přes port 443). Vytvořte novou veřejnou IP adresu. Veřejná IP adresa musí být ve stejné oblasti jako prostředek bastionu, který vytváříte. Tato IP adresa neobsahuje nic k tomu, abyste mohli provádět žádné z virtuálních počítačů, ke kterým se chcete připojit. Pro prostředek hostitele bastionu je to veřejná IP adresa.
     * **Název veřejné IP adresy**: název prostředku veřejné IP adresy. Pro tento kurz můžete ponechat výchozí nastavení.
     * **SKU veřejné IP adresy**: Toto nastavení je ve výchozím nastavení předem naplněné na **Standard**. Azure bastionu používá nebo podporuje jenom standardní IP SKU Standard.
     * **Přiřazení**: Toto nastavení je ve výchozím nastavení předem naplněné na **statické**.

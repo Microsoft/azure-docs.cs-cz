@@ -4,15 +4,15 @@ description: Naučte se vytvářet, publikovat a škálovat aplikace v App Servi
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 5/10/2020
+ms.date: 9/22/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e4653419d974db2e597111487c64682c75ffc40b
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: e8cc42500b9d8bfc507683b5cc96c7b12f95909b
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826009"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548450"
 ---
 # <a name="use-an-app-service-environment"></a>Použití prostředí App Service Environment
 
@@ -161,11 +161,11 @@ Bez dalších změn nebudou internetové systémy CI, jako je GitHub a Azure Dev
 
 Koncové body pro publikování pro aplikace ve službě ASE s interním nástrojem pro vyrovnávání zatížení používají doménu, pomocí které byla služba ASE s interním nástrojem pro vyrovnávání zatížení vytvořená. Můžete ji zobrazit v publikačním profilu aplikace a v podokně portálu aplikace (v části **Přehled**  >  **Essentials** a také ve **vlastnostech**).
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 Pomocného programu má 1 TB úložiště pro všechny aplikace v pomocném formuláři. Plán App Service v izolované cenové SKU má limit 250 GB. V rámci pomocného mechanismu se 250 GB úložiště přidají za App Service plánu až do velikosti 1 TB. Můžete mít více App Service plánů než jenom čtyři, ale za omezení 1 TB se nepřidalo žádné další úložiště.
 
-## <a name="logging"></a>Protokolování
+## <a name="logging"></a>protokolování
 
 Pomocí Azure Monitor můžete integrovat své pomocného mechanismu pro odesílání protokolů o pomocném programu do Azure Storage, Azure Event Hubs nebo Log Analytics. Tyto položky jsou protokolovány Dnes:
 
@@ -218,7 +218,7 @@ Pokud používáte https://resources.azure.com , nastavte hodnotu **upgradePrefe
 1. Přejít na resources.azure.com a přihlaste se pomocí svého účtu Azure.
 1. Projděte si materiály k předplatným \/ \[ název předplatné \] \/ resourceGroups název \/ \[ skupiny prostředků \] \/ poskytovatelé název \/ Microsoft. Web \/ hostingEnvironments \/ \[ pomocné jméno \] .
 1. V horní části vyberte **čtení i zápis** .
-1. Vyberte **Edit** (Upravit).
+1. Vyberte **Upravit**.
 1. Nastavte **upgradePreference** na jednu ze tří hodnot, které chcete.
 1. Vyberte možnost **opravit**.
 

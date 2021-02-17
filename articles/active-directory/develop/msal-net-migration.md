@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 2b8577af2c8a6296ae6f4f090e8ff233e51ee6fb
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 64107c3f667dd7e59fcf6d191e83457029b3a277
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583921"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546342"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrace aplikací do MSAL.NET
 
@@ -59,7 +59,7 @@ V MSAL.NET je také možné získat přístup k prostředkům v 1.0. Podívejte 
 
 - ADAL.NET používá [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD) jako znázornění připojení ke službě tokenů zabezpečení (STS) nebo k autorizačnímu serveru prostřednictvím autority. V opačném případě je MSAL.NET navržený kolem [klientských aplikací](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications). Poskytuje dvě samostatné třídy: `PublicClientApplication` a `ConfidentialClientApplication`
 
-- Získání tokenů: ADAL.NET a MSAL.NET mají stejná ověřovací volání ( `AcquireTokenAsync` a  `AcquireTokenSilentAsync` pro ADAL.NET a `AcquireTokenInteractive` a `AcquireTokenSilent` v MSAL.NET), ale vyžadují různé parametry. Jedním rozdílem je skutečnost, že v MSAL.NET už nemusíte předávat do `ClientID` aplikace v každém volání AcquireTokenXX. Ve skutečnosti `ClientID` je při sestavování (nebo) nastaveno pouze jednou `IPublicClientApplication` `IConfidentialClientApplication` .
+- Získání tokenů: ADAL.NET a MSAL.NET mají stejná ověřovací volání ( `AcquireTokenAsync` a `AcquireTokenSilentAsync` pro ADAL.NET a `AcquireTokenInteractive` a `AcquireTokenSilent` v MSAL.NET), ale vyžadují různé parametry. Jedním rozdílem je skutečnost, že v MSAL.NET už nemusíte předávat do `ClientID` aplikace v každém volání AcquireTokenXX. Ve skutečnosti `ClientID` je při sestavování (nebo) nastaveno pouze jednou `IPublicClientApplication` `IConfidentialClientApplication` .
 
 ### <a name="iaccount-not-iuser"></a>IAccount není IUser
 
@@ -170,7 +170,7 @@ Pokud chcete získat tokeny pro aplikaci přijímající tokeny v 1.0 (napříkl
 Chcete-li například získat přístup k názvu uživatelského rozhraní API pro uživatele a v 1.0, které identifikátor ID aplikace je `ResourceId` , chcete použít:
 
 ```csharp
-var scopes = new [] {  ResourceId+"/user_impersonation"};
+var scopes = new [] { ResourceId+"/user_impersonation" };
 ```
 
 Pokud chcete číst a zapisovat pomocí MSAL.NET Azure Active Directory pomocí rozhraní Microsoft Graph API ( https://graph.microsoft.com/) , vytvořili byste seznam oborů, jako v následujícím fragmentu kódu:
@@ -205,7 +205,7 @@ Například pokud chcete získat token pro všechny statické obory aplikace v 1
 
 ```csharp
 ResourceId = "someAppIDURI";
-var scopes = new [] {  ResourceId+"/.default"};
+var scopes = new [] { ResourceId+"/.default" };
 ```
 
 ### <a name="scopes-to-request-in-the-case-of-client-credential-flow--daemon-app"></a>Rozsahy, které se mají požádat v případě aplikace Flow/démon přihlašovacích údajů klienta

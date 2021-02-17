@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 02/16/2021
 ms.author: b-juche
-ms.openlocfilehash: 390b025ec039d5b04cead3f6bb22fedd0e987673
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: e9e7451e411ed9160eace0a60c65b5b74bf8f750
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537775"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559476"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Architektury řešení s využitím Azure NetApp Files
 Tento článek poskytuje odkazy na osvědčené postupy, které vám pomůžou pochopit architektury řešení pro použití Azure NetApp Files.  
@@ -94,6 +94,8 @@ Tato část poskytuje odkazy na řešení SAP v Azure.
 * [Azure NetApp Files – SAP HANA přesměrování zálohování pomocí synchronizace cloudu](https://blog.netapp.com/azure-netapp-files-sap-hana)
 * [Urychlení SAP HANA systémových kopií pomocí Azure NetApp Files](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
 * [Cloudové svazky ONTAP a Azure NetApp Files: Snadná migrace systému SAP HANA](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/)
+* [Rozhodnutí o architektuře pro maximalizaci investic do ANF v HANA N + M Scale-Out architektury – 1. – Technická komunita Microsoftu](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2078737)
+* [Rozhodnutí o architektuře pro maximalizaci investic do ANF v HANA N + M Scale-Out architektuře – 2. část Microsoftu – technická komunita](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2117130)
 
 ## <a name="azure-vmware-solutions"></a>Řešení Azure VMware
 
@@ -146,6 +148,7 @@ Tato část poskytuje řešení pro služby platformy Azure.
 
 * [Integrace Azure NetApp Files se službou Azure Kubernetes](../aks/azure-netapp-files.md)
 * [Špičkový výkon Kubernetes v Azure s využitím Azure NetApp Files](https://cloud.netapp.com/blog/ma-anf-blg-configure-kubernetes-openshift)
+* [Azure NetApp Files + Trident = dynamické a trvalé úložiště pro Kubernetes](https://anfcommunity.com/2021/02/16/azure-netapp-files-trident-dynamic-and-persistent-storage-for-kubernetes/)
 * [Trident – úložiště Orchestrator pro kontejnery](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/operations/tasks/backends/anf.html)
 * [Platforma Magento elektronického obchodování ve službě Azure Kubernetes Service (AKS)](/azure/architecture/example-scenario/magento/magento-azure)
 
