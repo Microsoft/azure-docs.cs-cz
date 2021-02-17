@@ -3,17 +3,17 @@ title: Diagnostika a řešení potíží s dostupností sad Azure Cosmos SDK v p
 description: Seznamte se s chováním dostupnosti sady SDK Azure Cosmos při provozu ve více regionálních prostředích.
 author: ealsur
 ms.service: cosmos-db
-ms.date: 10/20/2020
+ms.date: 02/16/2021
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b1c2377ba26b4ca64f5028fb1a51ca4e64f6a67c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 34c6e7ad8473f02f2772c84ea63aee2a41b97306
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097885"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559687"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>Diagnostika a řešení potíží s dostupností sad Azure Cosmos SDK v prostředí s více oblastmi
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,7 +35,7 @@ Když nastavíte místní předvolbu, klient se připojí k oblasti, jak je uved
 | Jedna oblast zápisu | Upřednostňovaná oblast | Primární oblast  |
 | Více oblastí zápisu | Upřednostňovaná oblast | Upřednostňovaná oblast  |
 
-Pokud **nenastavíte upřednostňovanou oblast** , klient sady SDK bude ve výchozím nastavení primární oblastí:
+Pokud **nenastavíte upřednostňovanou oblast**, klient sady SDK bude ve výchozím nastavení primární oblastí:
 
 |Typ účtu |Čtení |Zápisy |
 |------------------------|--|--|
@@ -47,11 +47,11 @@ Pokud **nenastavíte upřednostňovanou oblast** , klient sady SDK bude ve vých
 
 Za normálních okolností se klient SDK připojí k upřednostňované oblasti (Pokud je nastavená místní předvolba) nebo do primární oblasti (Pokud není nastavená žádná předvolba) a operace budou omezené na tuto oblast, pokud nedošlo k žádnému z následujících scénářů.
 
-V těchto případech klient, který používá sadu Azure Cosmos SDK, zveřejňuje protokoly a obsahuje informace o opakování jako součást **diagnostických informací o operaci** :
+V těchto případech klient, který používá sadu Azure Cosmos SDK, zveřejňuje protokoly a obsahuje informace o opakování jako součást **diagnostických informací o operaci**:
 
 * Vlastnost *RequestDiagnosticsString* na odpovědích v sadě .NET v2 SDK.
 * Vlastnost *Diagnostic* na odpovědích a výjimkách v sadě .NET V3 SDK.
-* Metoda *Getdiagnostics ()* na odpovědích a výjimkách v sadě Java v4 SDK.
+* Pomocí metody *getDiagnostics()* u odpovědí a výjimek v sadě Java SDK v4.
 
 Při určování další oblasti v upřednostňovaném pořadí bude klient sady SDK používat seznam oblastí účtu a stanovit prioritu upřednostňovaných oblastí (pokud existují).
 
@@ -83,9 +83,9 @@ Při použití [konzistence relací](consistency-levels.md#guarantees-associated
 
 ## <a name="transient-connectivity-issues-on-tcp-protocol"></a>Problémy s přechodným připojením v protokolu TCP
 
-Ve scénářích, kdy je klient služby Azure Cosmos SDK nakonfigurovaný tak, aby používal protokol TCP, může pro daný požadavek dojít k situaci, kdy podmínky sítě dočasně ovlivňují komunikaci s konkrétním koncovým bodem. Tyto dočasné síťové podmínky se můžou nacházet jako časový limit TCP. Klient zopakuje požadavek lokálně na stejném koncovém bodu po určitou dobu.
+Ve scénářích, kdy je klient služby Azure Cosmos SDK nakonfigurovaný tak, aby používal protokol TCP, může pro daný požadavek dojít k situaci, kdy podmínky sítě dočasně ovlivňují komunikaci s konkrétním koncovým bodem. Tyto dočasné síťové podmínky se můžou vystavovat jako vypršení časových limitů TCP a nedostupných služeb (HTTP 503). Klient bude požadavek opakovat lokálně na stejném koncovém bodu, než zpřístupnění chybu.
 
-Pokud uživatel nakonfiguroval seznam upřednostňovaných oblastí s více než jednou oblastí a účet Azure Cosmos je více oblastí zápisu nebo jedna oblast pro zápis a operace je požadavek na čtení, bude klient opakovat tuto jednu operaci v další oblasti ze seznamu předvoleb.
+Pokud uživatel nakonfiguroval seznam upřednostňovaných oblastí s více než jednou oblastí a účet Azure Cosmos je více oblastí zápisu nebo jedna oblast pro zápis a operace je požadavek na čtení, klient zjistí místní selhání a zopakuje jednu operaci v další oblasti v seznamu předvoleb.
 
 ## <a name="next-steps"></a>Další kroky
 

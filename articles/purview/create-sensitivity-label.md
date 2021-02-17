@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: b376883ab7d8ef0ffd57a271e74862b684788ebd
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 70aaa528fc86c9e543267b68b5b4cf157ec2dc65
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630272"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535259"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Automatické označování dat ve službě Azure dosah
 
@@ -41,17 +41,17 @@ Popisky citlivosti ve službě Azure dosah se dají použít k automatickému po
 Další informace naleznete v tématu:
 
 - [Informace o popisech citlivosti](/microsoft-365/compliance/sensitivity-labels) v dokumentaci k Microsoft 365
-- [Co jsou pravidla pro popisky?](#what-are-autolabeling-rules)
+- [Co jsou pravidla automatického označování?](#what-are-auto-labeling-rules)
 - [Podporované datové typy pro popisky citlivosti ve službě Azure dosah](#supported-data-types-for-sensitivity-labels-in-azure-purview)
 - [Označování pro sloupce SQL Database](#labeling-for-sql-database-columns)
 
-#### <a name="what-are-autolabeling-rules"></a>Co jsou pravidla pro popisky?
+#### <a name="what-are-auto-labeling-rules"></a>Co jsou pravidla automatického označování?
 
 Vaše data se neustále zvětšují a mění. Sledování dat, která jsou v tuto chvíli neoznačená, a postup ručního použití popisků je nenáročný, ale také je nepotřebná starostí. 
 
-Pravidla autolabeling jsou podmínky, které zadáte, a určete, kdy má být použit konkrétní popisek. Když jsou tyto podmínky splněné, popisek se automaticky přiřadí k datům a uchovává konzistentní popisky citlivosti pro vaše data ve velkém měřítku.
+Pravidla automatického označování jsou podmínky, které zadáte, a určení, kdy má být použit konkrétní popisek. Když jsou tyto podmínky splněné, popisek se automaticky přiřadí k datům a uchovává konzistentní popisky citlivosti pro vaše data ve velkém měřítku.
 
-Při vytváření popisků nezapomeňte definovat pravidla automatických popisků pro [soubory](#define-autolabeling-rules-for-files) i [databázové sloupce](#define-autolabeling-rules-for-database-columns) , abyste mohli popisky použít automaticky při každé kontrole dat. 
+Při vytváření popisků nezapomeňte definovat pravidla automatického označování pro [soubory](#define-auto-labeling-rules-for-files) i [databázové sloupce](#define-auto-labeling-rules-for-database-columns) , abyste mohli popisky použít automaticky při každé kontrole dat. 
 
 Po kontrole dat v dosah můžete popisky zobrazit automaticky v katalogu dosah a v sestavách Insight.
 #### <a name="supported-data-types-for-sensitivity-labels-in-azure-purview"></a>Podporované datové typy pro popisky citlivosti ve službě Azure dosah
@@ -104,7 +104,7 @@ Rozšířením popisků citlivosti MIP do Azure dosah můžou organizace zjišť
 
 V Microsoft 365 přejděte na stránku **Information Protection** . V části **rozšiřování popisků na prostředky v Azure dosah** vyberte tlačítko **zapnout** a potom v potvrzovacím dialogovém okně, které se zobrazí, vyberte **Ano** .
 
-Například:
+Příklad:
 
 :::image type="content" source="media/create-sensitivity-label/extend-sensitivity-labels-to-purview-small.png" alt-text="Vyberte * * zapnout * * a rozšíříte tak popisky citlivosti na dosah." lightbox="media/create-sensitivity-label/extend-sensitivity-labels-to-purview.png":::
  
@@ -123,10 +123,10 @@ Jakmile rozšíříte popisky na prostředky v Azure dosah, můžete vybrat popi
 
 1. Postupujte podle dalších pokynů v průvodci pro nastavení popisku. 
 
-    Konkrétně definujte pravidla pro autoštítky pro soubory a databázové sloupce:
+    Konkrétně definujte pravidla automatického označování pro soubory a databázové sloupce:
 
-    - [Definování pravidel pro autoštítky pro soubory](#define-autolabeling-rules-for-files)
-    - [Definování pravidel autolabeling pro sloupce databáze](#define-autolabeling-rules-for-database-columns)
+    - [Definování pravidel automatického označování pro soubory](#define-auto-labeling-rules-for-files)
+    - [Definování pravidel automatického označování pro sloupce databáze](#define-auto-labeling-rules-for-database-columns)
 
     Další informace o možnostech průvodce najdete v dokumentaci k Microsoft 365, [které popisky citlivosti můžou dělat](/microsoft-365/compliance/sensitivity-labels#what-sensitivity-labels-can-do) .
 
@@ -156,21 +156,21 @@ Pokračujte tím, že zkontrolujete [data a použijete popisky automaticky](#sca
 - [Zobrazit popisky u prostředků](#view-labels-on-assets)
 - [Zobrazení sestav Insight pro klasifikace a popisky citlivosti](#view-insight-reports-for-the-classifications-and-sensitivity-labels)
 
-#### <a name="define-autolabeling-rules-for-files"></a>Definování pravidel pro autoštítky pro soubory
+#### <a name="define-auto-labeling-rules-for-files"></a>Definování pravidel automatického označování pro soubory
 
-Definujte pravidla autolabeling pro soubory v průvodci při vytváření nebo úpravě popisku. 
+Při vytváření nebo úpravě popisku definujte pravidla automatického označování pro soubory v průvodci. 
 
 Na stránce **Automatické označování pro aplikace Office** povolte **Automatické označování pro aplikace Office** a pak definujte podmínky, ve kterých má být popisek automaticky použit pro vaše data.
 
-Například:
+Příklad:
 
-:::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-files-small.png" alt-text="Definování pravidel autolabeling pro soubory v centru zabezpečení Microsoft 365 Security a dodržování předpisů" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-files.png":::
+:::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-files-small.png" alt-text="Definování pravidel automatického označování pro soubory v centru zabezpečení Microsoft 365 Security a dodržování předpisů" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-files.png":::
  
 Další informace najdete v tématu [použití popisku citlivosti na data automaticky](/microsoft-365/compliance/apply-sensitivity-label-automatically#how-to-configure-auto-labeling-for-office-apps) v dokumentaci Microsoft 365. 
 
-#### <a name="define-autolabeling-rules-for-database-columns"></a>Definování pravidel autolabeling pro sloupce databáze
+#### <a name="define-auto-labeling-rules-for-database-columns"></a>Definování pravidel automatického označování pro sloupce databáze
 
-V průvodci definujte pravidla autolabeling pro sloupce databáze při vytváření nebo úpravě popisku. 
+Definujte pravidla automatického označování pro sloupce databáze v průvodci při vytváření nebo úpravě popisku. 
 
 V rámci možnosti **Azure dosah assets (Preview)** :
 
@@ -178,9 +178,9 @@ V rámci možnosti **Azure dosah assets (Preview)** :
 
 1. Výběrem možnosti **Vyhledat citlivé informace** zvolte typy citlivých informací, které chcete použít u popisku.
 
-Například:
+Příklad:
         
-:::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-db-columns-small.png" alt-text="Definování pravidel autolabeling pro sloupce SQL v centru zabezpečení Microsoft 365 a dodržování předpisů" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-db-columns.png":::
+:::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-db-columns-small.png" alt-text="Definování pravidel automatického označování pro sloupce SQL v centru zabezpečení Microsoft 365 a dodržování předpisů" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-db-columns.png":::
 
 ## <a name="scan-your-data-to-apply-labels-automatically"></a>Prověřování dat pro automatické použití popisků
 
@@ -197,15 +197,15 @@ Další informace o tom, jak nastavit kontroly v různých assetech v Azure dosa
 
 ## <a name="view-labels-on-assets"></a>Zobrazit popisky u prostředků
 
-Po definování pravidel automatických popisků pro popisky v Microsoft 365 a prohledávání vašich dat v Azure dosah se štítky automaticky aplikují na vaše assety. 
+Po definování automatických popisků pro popisky v Microsoft 365 a prohledávání vašich dat v Azure dosah se štítky automaticky aplikují na vaše assety. 
 
 **Zobrazení popisků použitých pro vaše prostředky v katalogu Azure dosah:**
 
-V katalogu Azure dosah použijte možnosti filtrování **popisku** k zobrazení souborů s konkrétními popisky. Například: 
+V katalogu Azure dosah použijte možnosti filtrování **popisku** k zobrazení souborů s konkrétními popisky. Příklad: 
 
 :::image type="content" source="media/create-sensitivity-label/filter-search-results-small.png" alt-text="Hledat prostředky podle popisku" lightbox="media/create-sensitivity-label/filter-search-results.png":::
 
-Například:
+Příklad:
 
 :::image type="content" source="media/create-sensitivity-label/view-labeled-files-blob-storage-small.png" alt-text="Zobrazení označení citlivosti v souboru v Azure Blob Storage" lightbox="media/create-sensitivity-label/view-labeled-files-blob-storage.png":::
 

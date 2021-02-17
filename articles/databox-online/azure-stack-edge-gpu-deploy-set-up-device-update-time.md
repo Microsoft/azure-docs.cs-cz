@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: dd4078d414048d858c46f6757daa0a87a698eaab
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ceaa16ee2a54886cde45f37ea90ed617abafffc1
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976063"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546903"
 ---
 # <a name="tutorial-configure-the-device-settings-for-azure-stack-edge-pro-with-gpu"></a>Kurz: Konfigurace nastavení zařízení pro Azure Stack Edge pro pomocí GPU
 
@@ -26,12 +26,12 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Předpoklady
+> * Požadavky
 > * Konfigurace nastavení zařízení
 > * Konfigurace aktualizace 
 > * Konfigurovat čas
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než nakonfigurujete nastavení související s zařízením na zařízení Azure Stack Edge pro pomocí GPU, ujistěte se, že:
 
@@ -82,7 +82,7 @@ Pomocí těchto kroků můžete nakonfigurovat nastavení týkající se zaříz
         ![Místní webové uživatelské rozhraní stránky aktualizace serveru 2](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-3.png)
 
         > [!NOTE] 
-        > Pokud je nakonfigurován samostatný web Windows Update Server a pokud se rozhodnete připojit přes *protokol HTTPS* (namísto *http*), jsou vyžadovány podpisové řetězy, které jsou vyžadovány pro připojení k serveru aktualizací. Informace o tom, jak vytvořit a nahrát certifikáty, najdete v tématu [Správa certifikátů](azure-stack-edge-j-series-manage-certificates.md). 
+        > Pokud je nakonfigurován samostatný web Windows Update Server a pokud se rozhodnete připojit přes *protokol HTTPS* (namísto *http*), jsou vyžadovány podpisové řetězy, které jsou vyžadovány pro připojení k serveru aktualizací. Informace o tom, jak vytvořit a nahrát certifikáty, najdete v tématu [Správa certifikátů](azure-stack-edge-gpu-manage-certificates.md). 
 
 2. Vyberte **Použít**.
 3. Po nakonfigurování serveru aktualizací vyberte **Další: čas**.
@@ -120,7 +120,7 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Předpoklady
+> * Požadavky
 > * Konfigurace nastavení zařízení
 > * Konfigurace aktualizace 
 > * Konfigurovat čas

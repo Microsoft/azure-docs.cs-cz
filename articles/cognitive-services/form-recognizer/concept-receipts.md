@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: c1ae52b2b92c5c8d5a1a98632e19d3140672d6ea
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 565ba3f7cd02a5ca8a3a858dc29a8fa6c7df16c1
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585037"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546002"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Model předdefinovaného příjmového formuláře pro rozpoznávání formulářů
 
@@ -38,7 +38,7 @@ Předem vytvořená Příjemová služba extrahuje obsah prodejních příjmů &
 
 ### <a name="fields-extracted"></a>Extrahovaná pole
 
-|Název| Typ | Description | Text | Hodnota (standardní výstup) |
+|Název| Typ | Popis | Text | Hodnota (standardní výstup) |
 |:-----|:----|:----|:----| :----|
 | ReceiptType | řetězec | Typ prodejní účtenky | Oddělené |  |
 | Obchodní | řetězec | Název obchodníka, který vystavil příjem | Contoso |  |
@@ -51,7 +51,7 @@ Předem vytvořená Příjemová služba extrahuje obsah prodejních příjmů &
 | Daň | číslo | Daň na účtence, často prodejní daň nebo ekvivalent | $2,00 | 2,00 |
 | Tip | číslo | Tip zahrnutý nákupčím | $1,00 | 1.00 |
 | Položky | pole objektů | Extrahované položky řádku, včetně názvu, množství, ceny za jednotku a celkové ceny extrahované | |
-| Name | řetězec | Název položky | Plocha pro 6 | |
+| Název | řetězec | Název položky | Plocha pro 6 | |
 | Množství | číslo | Množství jednotlivých položek | 1 | |
 | Cena | číslo | Jednotlivá cena za každou jednotku položky | $999,00 | 999,00 |
 | Celková cena | číslo | Celková cena položky řádku | $999,00 | 999,00 |
@@ -115,7 +115,12 @@ Pokud má pole **stav** hodnotu **úspěch** , bude odpověď JSON zahrnovat por
 
 ### <a name="sample-json-output"></a>Ukázkový výstup JSON
 
-Podívejte se na následující příklad úspěšné odpovědi JSON: uzel "readResults" obsahuje veškerý rozpoznaný text. Text je uspořádán podle stránky, potom podle řádku, podle jednotlivých slov. Uzel "documentResults" obsahuje hodnoty specifické pro obchodní karty, které model zjistil. Tady najdete užitečné páry klíč/hodnota jako křestní jméno, příjmení, název společnosti a další.
+
+Odpověď na operaci získání výsledku analýzy výsledků se bude strukturou reprezentací pro příjem všech extrahovaných informací.  Podívejte se na [ukázku pro soubor pro příjem vzorků](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg) a jeho strukturovaný výstupní [výstup pro příjem vzorků](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/receipt-result.json).
+
+Podívejte se na následující příklad úspěšné odpovědi JSON:
+* `"readResults"`Uzel obsahuje veškerý rozpoznaný text. Text je uspořádán podle stránky, potom podle řádku, podle jednotlivých slov. 
+* `"documentResults"`Uzel obsahuje hodnoty specifické pro obchodní karty, které model zjistil. Tady najdete užitečné páry klíč/hodnota jako křestní jméno, příjmení, název společnosti a další.
 
 ```json
 { 

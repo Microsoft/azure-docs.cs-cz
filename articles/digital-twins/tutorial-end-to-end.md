@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 5ef06f2db487a3e6d897e26758da840f37c3ecaf
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: cff40385edc89c0f6d2d105d089b66c046b0c04b
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575801"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545934"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Kurz: sestavení kompletního řešení
 
@@ -124,8 +124,6 @@ Zpět v okně aplikace Visual Studio, kde je otevřen projekt _**AdtE2ESample**_
 ### <a name="assign-permissions-to-the-function-app"></a>Přiřazení oprávnění k aplikaci Function App
 
 Pokud chcete povolit aplikaci Function App přístup k digitálním úlohám Azure, je dalším krokem konfigurace nastavení aplikace, přiřazení této aplikace identitě spravované systémem Azure AD a udělení této identity roli *vlastníka dat v Azure Digital* realiass v instanci digitálních vláken Azure. Tato role se vyžaduje pro libovolného uživatele nebo funkci, která chce v instanci provést mnoho aktivit roviny dat. Další informace o zabezpečení a přiřazování rolí si můžete přečíst v tématu [*Koncepty: zabezpečení pro řešení digitálních vláken Azure*](concepts-security.md).
-
-[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 V Azure Cloud Shell pomocí následujícího příkazu nastavte nastavení aplikace, které vaše aplikace Function App použije k odkazování na instanci digitálních vláken Azure. Zadejte zástupné symboly s podrobnostmi o vašich prostředcích (Nezapomeňte, že adresa URL instance digitálního vlákna Azure představuje název hostitele, kterému předchází *https://*).
 

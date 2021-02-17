@@ -6,15 +6,15 @@ documentationcenter: ''
 author: johndowns
 ms.service: api-management
 ms.topic: article
-ms.date: 06/12/2020
+ms.date: 02/10/2021
 ms.author: jodowns
 ms.custom: fasttrack-new
-ms.openlocfilehash: 578bb511175d88a1507af9520265a1acd068b27c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dc44b4b898603df88d1bdd8c36ddfb6449335ac
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87096842"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547192"
 ---
 # <a name="versions-in-azure-api-management"></a>Verze v Azure API Management
 
@@ -64,9 +64,13 @@ Pokud přidáte verzi do rozhraní API bez verze, `Original` bude automaticky vy
 
 ## <a name="how-versions-are-represented"></a>Jak jsou zastoupeny verze
 
-Azure API Management udržuje prostředek nazvaný *sadu verzí*, který představuje sadu verzí pro jedno logické rozhraní API. Když použijete Azure Portal ke správě verzí, u kterých se nezobrazuje sada verzí, ale pokud budete pracovat se službou API Management pomocí PowerShellu, šablon Správce prostředků nebo Azure Resource Manager rozhraní API, můžete přímo zobrazit a spravovat sady verzí. Sada verzí obsahuje zobrazovaný název rozhraní API s verzí a také [schéma správy verzí](#versioning-schemes) , které se používá k přímému zpracování požadavků na zadané verze.
+Azure API Management udržuje prostředek nazvaný *sadu verzí*, který představuje sadu verzí pro jedno logické rozhraní API. Sada verzí obsahuje zobrazovaný název rozhraní API pro správu verzí a [schéma správy verzí](#versioning-schemes) , které se používá k přímému zpracování požadavků na zadané verze.
 
-Každá verze rozhraní API se udržuje jako vlastní prostředek rozhraní API, který je pak přidružený k sadě verzí. Sada verzí může obsahovat rozhraní API s velmi odlišnými operacemi nebo zásadami, což odráží skutečnost, že mezi verzemi rozhraní API můžete udělat významné změny.
+Každá verze rozhraní API se udržuje jako vlastní prostředek rozhraní API, který je pak přidružený k sadě verzí. Sada verzí může obsahovat rozhraní API s různými operacemi nebo zásadami. Mezi verzemi v sadě můžete významně měnit.
+
+Azure Portal vytvoří pro vás sady verzí. Můžete upravit název a popis sady verzí v Azure Portal.
+
+Sady verzí můžete zobrazit a spravovat přímo pomocí [Azure CLI](/cli/azure/apim/api/versionset), [Azure PowerShell](/powershell/module/az.apimanagement/#api-management), [Správce prostředků šablon](/azure/templates/microsoft.apimanagement/service/apiversionsets)nebo [rozhraní API pro Azure Resource Manager](/rest/api/apimanagement/2020-06-01-preview/apiversionset).
 
 ### <a name="migrating-a-non-versioned-api-to-a-versioned-api"></a>Migrace rozhraní API bez správy verzí na rozhraní API s verzí
 

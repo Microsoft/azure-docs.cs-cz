@@ -1,14 +1,14 @@
 ---
 title: Publikování nabídky spravované služby pro Azure Marketplace
 description: Naučte se publikovat nabídku spravované služby, která zákazníkům zařadí do Azure Lighthouse.
-ms.date: 02/10/2021
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 9abac28d982e5b33bc4952f73336810abcb44e45
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3af460f17533d70b24f76ab40460a5fa920cdece
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372056"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555799"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Publikování nabídky spravované služby pro Azure Marketplace
 
@@ -26,13 +26,13 @@ Následující tabulka vám pomůže určit, jestli se zákazníci mají připoj
 
 |**Aspekty**  |**Nabídka spravované služby**  |**Šablony ARM**  |
 |---------|---------|---------|
-|Vyžaduje [účet partnerského centra](../../marketplace/partner-center-portal/create-account.md)   |Yes         |No        |
-|Vyžaduje [úroveň kompetence cloudové platformy stříbrného nebo Gold](/partner-center/learn-about-competencies) nebo [Azure expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) .      |Yes         |No         |
-|K dispozici novým zákazníkům prostřednictvím Azure Marketplace     |Yes     |No       |
-|Může omezit nabídku na konkrétní zákazníky.     |Ano (jenom s privátními nabídkami, které se nedají použít s odběry vytvořenými prostřednictvím prodejce v programu Cloud Solution Provider (CSP))         |Yes         |
-|Vyžaduje přijetí zákazníkem v Azure Portal     |Yes     |No   |
-|Může používat automatizaci k připojování více předplatných, skupin prostředků nebo zákazníků. |No     |Yes    |
-|Okamžitý přístup k novým vestavěným rolím a funkcím Azure Lighthouse     |Ne vždy (všeobecně dostupné po nějaké prodlevě)         |Yes         |
+|Vyžaduje [účet partnerského centra](../../marketplace/partner-center-portal/create-account.md)   |Ano         |Ne        |
+|Vyžaduje [úroveň kompetence cloudové platformy stříbrného nebo Gold](/partner-center/learn-about-competencies) nebo [Azure expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) .      |Ano         |Ne         |
+|K dispozici novým zákazníkům prostřednictvím Azure Marketplace     |Ano     |Ne       |
+|Může omezit nabídku na konkrétní zákazníky.     |Ano (jenom s privátními nabídkami, které se nedají použít s odběry vytvořenými prostřednictvím prodejce v programu Cloud Solution Provider (CSP))         |Ano         |
+|Vyžaduje přijetí zákazníkem v Azure Portal     |Ano     |Ne   |
+|Může používat automatizaci k připojování více předplatných, skupin prostředků nebo zákazníků. |Ne     |Ano    |
+|Okamžitý přístup k novým vestavěným rolím a funkcím Azure Lighthouse     |Ne vždy (všeobecně dostupné po nějaké prodlevě)         |Ano         |
 
 ## <a name="create-your-offer"></a>Vytvoření nabídky
 
@@ -56,7 +56,7 @@ Po dokončení všech oddílů je dalším krokem publikování nabídky Azure M
 Jakmile zákazník přidá vaši nabídku, bude moct [delegovat jedno nebo několik konkrétních předplatných nebo skupin prostředků](view-manage-service-providers.md#delegate-resources), které se pak připojí do Azure Lighthouse. Pokud zákazník nabídku přijal, ale ještě nedelegoval žádné prostředky, uvidí v **horní části stránky** poskytovatelé [**služeb**](view-manage-service-providers.md) v Azure Portal poznámku.
 
 > [!IMPORTANT]
-> Delegování musí provést účet bez hosta v tenantovi zákazníka, který má [předdefinovanou roli](../../role-based-access-control/built-in-roles.md#owner) předplatného pro odběr (nebo který obsahuje skupiny prostředků, které jsou připojené). Pokud chcete zobrazit všechny uživatele, kteří můžou delegovat předplatné, uživatel v tenantovi zákazníka může vybrat předplatné ve Azure Portal, otevřít **řízení přístupu (IAM)** a [Zobrazit všechny uživatele s rolí vlastníka](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
+> Delegování je nutné provést pomocí účtu, který není hostem v tenantovi zákazníka, který má roli s `Microsoft.Authorization/roleAssignments/write` oprávněním, jako je například [vlastník](../../role-based-access-control/built-in-roles.md#owner), pro odběr, který se připojuje (nebo který obsahuje skupiny prostředků, které jsou připojené). Pokud chcete najít uživatele, kteří můžou delegovat předplatné, uživatel v tenantovi zákazníka může vybrat předplatné ve Azure Portal, otevřít **řízení přístupu (IAM)** a [Zobrazit všechny uživatele s rolí vlastníka](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 
 Jakmile zákazník deleguje předplatné (nebo jednu nebo více skupin prostředků v rámci předplatného), zaregistruje se pro toto předplatné poskytovatele prostředků **Microsoft. ManagedServices** a uživatelé ve vašem tenantovi budou mít přístup k delegovaným prostředkům v závislosti na autorizacích vaší nabídky.
 

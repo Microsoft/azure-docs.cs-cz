@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/22/2020
+ms.date: 02/15/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: a18e3cb65b2ef70a04ca1d7e74dd9d5f42e3a933
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 0345362e0e5bce9912a247fc90dee63943a1cb3b
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355762"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557848"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Instanční objekty aplikací a služeb v Azure Active Directory
 
@@ -27,9 +27,9 @@ Tento článek popisuje registraci aplikace, aplikační objekty a instanční o
 ## <a name="application-registration"></a>Registrace aplikací
 Aby bylo možné delegovat funkce pro správu identit a přístupu do služby Azure AD, musí být aplikace zaregistrovaná v [Tenantovi](developer-glossary.md#tenant)Azure AD. Při registraci aplikace ve službě Azure AD vytváříte konfiguraci identity pro vaši aplikaci, která umožňuje integraci se službou Azure AD. Při registraci aplikace v [Azure Portal][AZURE-Portal]zvolíte, zda se jedná o jediného tenanta (k dispozici pouze ve vašem tenantovi) nebo k víceklientskému přístupu (přístup v jiných klientech), a volitelně můžete nastavit identifikátor URI přesměrování (kam se přístupový token posílá).
 
-:::image type="content" source="media/app-objects-and-service-principals/app-registration.png" alt-text="Snímek obrazovky s podoknem registru aplikace Azure Portal":::
+Podrobné pokyny k registraci aplikace najdete v tématu [rychlý Start k registraci aplikace](quickstart-register-app.md).
 
-Po dokončení registrace aplikace budete mít globálně jedinečnou instanci aplikace (objekt aplikace), která je umístěná v rámci vašeho domovského tenanta nebo adresáře.  Máte také globálně jedinečné ID vaší aplikace (ID aplikace nebo klienta).  Na portálu můžete přidat tajné klíče, certifikáty a obory, aby vaše aplikace fungovala, přizpůsobení značky vaší aplikace v dialogovém okně přihlášení a další.
+Po dokončení registrace aplikace budete mít globálně jedinečnou instanci aplikace ( [objekt aplikace](#application-object)), která je umístěná v rámci vašeho domovského tenanta nebo adresáře.  Máte také globálně jedinečné ID vaší aplikace (ID aplikace nebo klienta).  Na portálu můžete přidat tajné klíče, certifikáty a obory, aby vaše aplikace fungovala, přizpůsobení značky vaší aplikace v dialogovém okně přihlášení a další.
 
 Pokud zaregistrujete aplikaci na portálu, objekt aplikace a objekt instančního objektu se automaticky vytvoří v domovském tenantovi.  Pokud zaregistrujete nebo vytvoříte aplikaci pomocí rozhraní Microsoft Graph API, vytvoří se objekt instančního objektu jako samostatný krok.
 

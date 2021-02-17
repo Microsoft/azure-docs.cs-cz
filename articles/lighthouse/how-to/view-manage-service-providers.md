@@ -1,51 +1,45 @@
 ---
 title: Zobrazení a správa poskytovatelů služeb
 description: Zákazníci mohou pomocí stránky poskytovatelé služeb v Azure Portal zobrazit informace o poskytovatelích služeb, nabídkách poskytovatele služeb a delegovaných prostředcích.
-ms.date: 12/16/2020
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 5ee897503c997ab10fdb489f7921c9d2d001e472
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: f6ee5fb154d75ff715acf99c5184cd1652ccdb80
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617200"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555587"
 ---
 # <a name="view-and-manage-service-providers"></a>Zobrazení a správa poskytovatelů služeb
 
-Stránka **poskytovatelé služeb** v [Azure Portal](https://portal.azure.com) poskytuje zákazníkům kontrolu a viditelnost svých poskytovatelů služeb, kteří používají [Azure Lighthouse](../overview.md). Zákazníci si můžou zobrazit podrobnosti o poskytovatelích služeb, delegovat konkrétní prostředky, nakupovat nové nabídky poskytovatelů služeb, odebírat přístup k poskytovateli služeb a další.
+Stránka **poskytovatelé služeb** v [Azure Portal](https://portal.azure.com) poskytuje zákazníkům kontrolu a viditelnost svých poskytovatelů služeb, kteří používají [Azure Lighthouse](../overview.md). Zákazníci si můžou zobrazit podrobnosti o poskytovatelích služeb, delegovat konkrétní prostředky, hledat nové nabídky, odebrat přístup k poskytovateli služeb a další.
 
-> [!TIP]
-> V takovém případě budeme odkazováni na poskytovatele služeb a zákazníky a podniky, které [spravují víc tenantů](../concepts/enterprise.md) , můžou stejný postup využít k konsolidaci prostředí pro správu.
-
-Pro přístup ke stránce **poskytovatelé služeb** v Azure Portal může zákazník vybrat **všechny služby** a pak vyhledat **poskytovatele služeb** a vybrat ho. Můžou je taky najít zadáním "poskytovatelé služeb" nebo "Azure Lighthouse" do vyhledávacího pole v horní části Azure Portal.
+Chcete-li zobrazit stránku **poskytovatelé služeb** v Azure Portal, vyberte **všechny služby**, vyhledejte **poskytovatele služeb** a vyberte jej. Tuto stránku můžete najít také zadáním "poskytovatelé služeb" nebo "Azure Lighthouse" do vyhledávacího pole v horní části Azure Portal.
 
 > [!NOTE]
 > Aby bylo možné zobrazit stránku **poskytovatelé služeb** , musí mít uživatel v tenantovi zákazníka [vestavěnou roli Čtenář](../../role-based-access-control/built-in-roles.md#reader) (nebo jinou předdefinovanou roli, která zahrnuje přístup ke čtenářům).
 >
-> Chcete-li přidat nebo aktualizovat nabídky, delegovat prostředky a odebrat nabídky, musí mít uživatel [předdefinovanou roli](../../role-based-access-control/built-in-roles.md#owner) pro předplatné.
+> Chcete-li přidat nebo aktualizovat nabídky, delegovat prostředky a odebrat nabídky, uživatel musí mít roli s `Microsoft.Authorization/roleAssignments/write` oprávněním, jako je například [vlastník](../../role-based-access-control/built-in-roles.md#owner).
 
-Mějte na paměti, že na stránce **poskytovatelé služeb** se zobrazují jenom informace o poskytovatelích služeb, kteří mají přístup k předplatným zákazníků nebo ke skupinám prostředků prostřednictvím Azure Lighthouse. Pokud zákazník spolupracuje s dalšími poskytovateli služeb, kteří k přístupu k prostředkům zákazníka nepoužívají Azure Lighthouse, informace o těchto poskytovatelích služeb tady nejsou uvedené.
-
-> [!TIP]
-> Poskytovatelé služeb můžou zobrazit informace o svých zákaznících tak, že v Azure Portal přejdou na **Moje zákazníky** . Další informace najdete v tématu [zobrazení a Správa zákazníků a delegovaných prostředků](view-manage-customers.md).
+Mějte na paměti, že na stránce **poskytovatelé služeb** se zobrazují jenom informace o poskytovatelích služeb, kteří mají přístup k předplatným zákazníků nebo ke skupinám prostředků prostřednictvím Azure Lighthouse. Pokud zákazník spolupracuje s dalšími poskytovateli služeb, kteří nepoužívají Azure Lighthouse, nezobrazí se tady žádné informace o těchto poskytovatelích služeb.
 
 ## <a name="view-service-provider-details"></a>Zobrazit podrobnosti o poskytovateli služeb
 
-Chcete-li zobrazit podrobnosti o poskytovatelích služeb, zákazník může vybrat **nabídku poskytovatele služeb** na levé straně stránky **poskytovatelé služeb** .
+Pokud chcete zobrazit podrobnosti o aktuálních poskytovatelích služeb pomocí Azure Lighthouse pro práci na tenantovi zákazníka, vyberte na levé straně stránky **poskytovatelé** služeb **nabídky poskytovatele služeb** .
 
-Pro každou nabídku poskytovatele služeb uvidí Zákazník název poskytovatele služeb a nabídku, která je k ní přidružená, spolu s názvem, který zákazník zadal během procesu připojování.
+U každé nabídky se zobrazí název poskytovatele služeb a nabídka, která je k ní přidružená. Můžete vybrat nabídku pro zobrazení popisu a dalších podrobností, včetně přiřazení rolí, kterým byl poskytovatel služeb udělen.
 
-Ve sloupci **delegování** si zákazník uvidí, kolik předplatných a skupin prostředků bylo delegováno pro poskytovatele služeb této nabídky. Poskytovatel služeb bude moci získat přístup k těmto předplatným a skupinám prostředků a spravovat je podle úrovní přístupu zadaných v nabídce.
+Ve sloupci **delegování** můžete zobrazit, kolik předplatných a skupin prostředků bylo delegováno poskytovateli služeb pro danou nabídku. Poskytovatel služeb bude moci získat přístup k těmto předplatným a skupinám prostředků a spravovat je podle úrovní přístupu zadaných v nabídce.
 
 ## <a name="add-or-remove-service-provider-offers"></a>Přidat nebo odebrat nabídky poskytovatele služeb
 
-Zákazník může přidat novou nabídku poskytovatele služeb ze stránky **nabídky poskytovatele služeb** výběrem možnosti **přidat nabídku**. Poskytovatel služeb musí publikovat nabídku pro tohoto zákazníka. Zákazník pak může vybrat tuto nabídku z obrazovky **soukromé nabídky** a pak vybrat **vytvořit**.
+Pokud chcete přidat novou nabídku poskytovatele služeb ze stránky **nabídky poskytovatele služeb** , vyberte **přidat nabídku**. Vyberte **soukromé nabídky** k zobrazení nabídek, které poskytovatel služeb publikoval pro tohoto zákazníka. Tuto nabídku pak můžete vybrat z obrazovky **soukromé nabídky** a pak vybrat **nastavit + odběr**.
 
-Pokud chce zákazník odebrat nabídku poskytovatele služeb, může to provést kdykoli tak, že na řádku této nabídky vybere ikonu odpadkového koše. Po potvrzení odstranění již poskytovatel služeb nebude mít přístup k zákaznickým prostředkům, které byly dříve delegovány pro tuto nabídku.
+Nabídku poskytovatele služeb můžete kdykoli odebrat tak, že na řádku této nabídky vyberete ikonu odpadkového koše. Po potvrzení odstranění nebude tento poskytovatel služeb nadále mít přístup k prostředkům, které byly dříve delegovány pro tuto nabídku.
 
 ## <a name="delegate-resources"></a>Delegování prostředků
 
-Předtím, než může poskytovatel služeb získat přístup k prostředkům zákazníka a spravovat je, musí být delegovaný. Pokud zákazník nabídku přijal, ale ještě nedelegoval žádné prostředky, uvidí poznámku na začátku části **nabídky poskytovatele služeb** . To zákazníkovi ví, že musí provést akci předtím, než bude moci poskytovatel služeb získat přístup k některým prostředkům zákazníka.
+Předtím, než může poskytovatel služeb získat přístup k prostředkům zákazníka a spravovat je, musí být jeden nebo více konkrétních předplatných nebo skupin prostředků delegováno. Pokud zákazník nabídku přijal, ale ještě nedelegoval žádné prostředky, uvidí poznámku na začátku části **nabídky poskytovatele služeb** . To zákazníkovi ví, že musí provést akci předtím, než bude moci poskytovatel služeb získat přístup k některým prostředkům zákazníka.
 
 Delegování předplatných nebo skupin prostředků:
 
@@ -57,11 +51,11 @@ Delegování předplatných nebo skupin prostředků:
 
 ## <a name="update-service-provider-offers"></a>Aktualizovat nabídky poskytovatele služeb
 
-Po přidání nabídky může poskytovatel služeb publikovat aktualizovanou verzi stejné nabídky, která Azure Marketplace. Například mohou chtít přidat novou definici role. Pokud byla publikována nová verze nabídky, na stránce **nabídky poskytovatele služeb** se zobrazí ikona "aktualizace" na řádku této nabídky. Zákazník může tuto ikonu vybrat, aby se zobrazily rozdíly mezi aktuální verzí nabídky a novou.
+Po přidání nabídky může poskytovatel služeb publikovat aktualizovanou verzi stejné nabídky, která Azure Marketplace. Například mohou chtít přidat novou definici role. Pokud byla publikována nová verze nabídky, na stránce **nabídky poskytovatele služeb** se zobrazí ikona "aktualizace" na řádku této nabídky. Tuto ikonu vyberte, pokud chcete zobrazit rozdíly mezi aktuální verzí nabídky a novou.
 
  ![Ikona nabídky aktualizace](../media/update-offer.jpg)
 
-Po kontrole změn si může zákazník vybrat, že se má aktualizovat na novou verzi. Jakmile to uděláte, autorizaci a další nastavení zadaná v nové verzi budou platit pro všechna předplatná nebo skupiny prostředků, které jsou pro tuto nabídku delegované.
+Po kontrole změn si může zákazník vybrat, že se má aktualizovat na novou verzi. Autorizace a další nastavení zadaná v nové verzi se pak vztahují na všechna předplatná nebo skupiny prostředků, které jsou pro tuto nabídku delegované.
 
 ## <a name="view-delegations"></a>Zobrazit delegování
 
@@ -87,3 +81,5 @@ Další informace o tom, jak přiřadit zásadu a zobrazit výsledky stavu dodr�
 - Přečtěte si další informace o [Azure Lighthouse](../overview.md).
 - Přečtěte si, jak [Auditovat aktivitu poskytovatele služeb](view-service-provider-activity.md).
 - Naučte se, jak můžou poskytovatelé služeb [zobrazovat a spravovat zákazníky](view-manage-customers.md) na stránce **moji zákazníci** v Azure Portal.
+- Přečtěte si, jak podniky, které [spravují víc tenantů](../concepts/enterprise.md) , můžou pomocí Azure Lighthouse konsolidovat své prostředí pro správu.
+

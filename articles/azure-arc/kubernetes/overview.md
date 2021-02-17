@@ -2,19 +2,19 @@
 title: Přehled povolených Kubernetesů Azure ARC
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 02/15/2021
 ms.topic: overview
 author: mlearned
 ms.author: mlearned
 description: Tento článek poskytuje přehled služby Azure ARC s povoleným Kubernetes.
 keywords: Kubernetes, oblouk, Azure, kontejnery
 ms.custom: references_regions
-ms.openlocfilehash: 7e48ebf98f12e79cb154fb50d8e6dbdfaea1cd95
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 54b439d73ed5dfb0709d33dea1f588b8bdf4489f
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371303"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560268"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Co je Kubernetes s podporou služby Azure Arc (Preview)?
 
@@ -60,22 +60,6 @@ Kubernetes se zapnutým Azure ARC v tuto chvíli podporuje tyto oblasti:
 
 * East US 
 * West Europe
-
-## <a name="frequently-asked-questions"></a>Nejčastější dotazy
-
-* Jaký je rozdíl mezi Kubernetes a službou Azure Kubernetes (AKS) s podporou ARC?
-
-    Azure Kubernetes Service (AKS) je spravovaná nabídka Kubernetes v Azure. AKS usnadňuje nasazení spravovaného clusteru Kubernetes v Azure. AKS zjednodušuje správu Kubernetes a snižuje provozní režii s tím spojenou díky přenášení většiny zodpovědnosti na Azure. Hlavní servery Kubernetes spravuje Azure. Pouze spravujete a udržujete uzly agentů.
-
-    Kubernetes s povoleným ARC Azure umožňuje propojit clustery Kubernetes s Azure a rozšířit možnosti správy Azure, jako je Azure Monitor a Azure Policy. Údržba samotného clusteru Kubernetes se provádí sami.
-
-* Potřebuji připojit clustery služby Azure Kubernetes spuštěné v Azure do Azure ARC?
-
-    Ne. Všechny funkce služby Azure ARC s povoleným Kubernetes, jako je Azure Monitor, Azure Policy (gatekeeper), jsou nativně dostupné v AKS, které už mají v Azure reprezentaci prostředků.
-    
-* Mám svůj cluster AKS připojit k Azure Stack HCL do Azure ARC? Jaké clustery Kubernetes běží na rozbočovači Azure Stack nebo Azure Stack Edge?
-
-    Ano, připojení těchto clusterů ke službě Azure ARC má výhody. Poskytuje reprezentaci prostředků pro tyto clustery Kubernetes v Azure Resource Manager. Pomocí této reprezentace prostředků se dají rozšířit možnosti jako konfigurace clusteru, Azure Monitor Azure Policy (gatekeeper) na tyto clustery Kubernetes.
 
 ## <a name="next-steps"></a>Další kroky
 

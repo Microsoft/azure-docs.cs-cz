@@ -10,24 +10,24 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 418446e0d465b606b8d580297cebd73c466d4841
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 9bd436b972dfb1549232831b1f07c3726ff459dd
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109008"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556496"
 ---
 # <a name="create-a-user-flow-in-azure-active-directory-b2c"></a>Vytvoření toku uživatele v Azure Active Directory B2C
 
 V tenantovi Azure Active Directory B2C (Azure AD B2C) můžete vytvářet [uživatelské toky](user-flow-overview.md) různých typů a podle potřeby je používat ve svých aplikacích. Toky uživatelů se dají znovu použít napříč aplikacemi.
 
 > [!IMPORTANT]
-> Změnili jsme způsob, jakým jsme odkazovali na verze uživatelského toku. Dříve jsme nabídli verze V1 (připravené pro produkční prostředí) a verze V 1.1 a v2 (Preview). Nyní jsme konsolidované toky uživatelů **doporučili doporučeným** (ve verzi Preview nové generace) a **standardní** (všeobecně dostupné) verze. Od **1. srpna 2021** se toky všech uživatelských toků verze Preview a v2 starší verze nacházejí v cestě k vyřazení. Podrobnosti najdete v tématu [verze toku uživatele v Azure AD B2C](user-flow-versions.md).
+> Změnili jsme způsob, jakým označujeme verze toků uživatelů. Dříve jsme nabízeli verze v1 (připravené pro produkční prostředí) a verze v1.1 a v2 (Preview). Nyní jsme konsolidované toky uživatelů **doporučili doporučeným** (ve verzi Preview nové generace) a **standardní** (všeobecně dostupné) verze. Od **1. srpna 2021** se toky všech uživatelských toků verze Preview a v2 starší verze nacházejí v cestě k vyřazení. Podrobnosti najdete v tématu [verze toku uživatele v Azure AD B2C](user-flow-versions.md).
 
 ## <a name="before-you-begin"></a>Než začnete
 
 - **Zaregistrujte aplikaci** , kterou chcete použít k testování toku nového uživatele. Příklad najdete v [kurzu: registrace webové aplikace v Azure AD B2C](tutorial-register-applications.md).
-- Pokud chcete povolit přihlašování uživatelů pomocí poskytovatelů, jako je Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft nebo Twitter, **přidejte externí zprostředkovatele identity** . Příklad najdete v tématu [kurz: Přidání zprostředkovatelů identit do aplikací v Azure AD B2C](tutorial-add-identity-providers.md).
+- Pokud chcete povolit přihlašování uživatelů pomocí poskytovatelů, jako je Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft nebo Twitter, **přidejte externí zprostředkovatele identity** . Další informace najdete [v tématu Přidání zprostředkovatelů identity k vašim aplikacím v Azure AD B2C](add-identity-provider.md).
 - **Nakonfigurujte poskytovatele identity místního účtu** a určete typy identit (e-mail, uživatelské jméno, telefonní číslo), které chcete podporovat pro místní účty ve vašem tenantovi. Pak můžete vybírat z těchto podporovaných typů identity při vytváření toků jednotlivých uživatelů. Když uživatel dokončí tok uživatele, vytvoří se ve vašem adresáři Azure AD B2C místní účet a poskytovatel identity **místního účtu** ověří informace o uživateli. Nakonfigurujte zprostředkovatele identity místního účtu vašeho tenanta pomocí těchto kroků:
 
    1. Přihlaste se na [Azure Portal](https://portal.azure.com/). 
@@ -66,7 +66,7 @@ V tenantovi Azure Active Directory B2C (Azure AD B2C) můžete vytvářet [uživ
 
    - **Místní účet**. Pokud chcete uživatelům dovolit, aby ve svém tenantovi Azure AD B2C vytvářet místní účty, vyberte typ identifikátoru, který chcete použít (například e-mail, ID uživatele nebo telefon). V seznamu jsou uvedené jenom typy identit, které jsou nakonfigurované v nastavení [zprostředkovatele identity místního účtu](#before-you-begin) .
 
-   - **Zprostředkovatelé sociálních identit**. Pokud chcete uživatelům přihlašovat pomocí [poskytovatelů sociálních identit, které jste přidali](tutorial-add-identity-providers.md), jako je Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft nebo Twitter, vyberte poskytovatele ze seznamu.
+   - **Zprostředkovatelé sociálních identit**. Pokud chcete uživatelům přihlašovat pomocí [poskytovatelů sociálních identit, které jste přidali](add-identity-provider.md), jako je Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft nebo Twitter, vyberte poskytovatele ze seznamu.
 
 9. V případě **atributů a deklarací uživatelů** vyberte deklarace identity a atributy, které chcete shromáždit a odeslat uživateli během registrace. Vyberte **Zobrazit další**. Vyberte atributy a deklarace identity a pak vyberte **OK**.
 

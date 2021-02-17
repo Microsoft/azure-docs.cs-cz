@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: d09cb92055c69b6585fa3b55609144c0e680964a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 61aa5ffcbab493109371067b1eb9d199a29cb852
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997799"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551223"
 ---
 **Požadavky na konfigurační a procesní Server**
 
@@ -68,7 +68,7 @@ https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-
 
 **Komponenta** | **Požadavek** 
 --- | ---
-VMware vSphere PowerCLI | Pokud konfigurační server běží na virtuálním počítači VMware, měla by být nainstalovaná [verze PowerCLI 6,0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) .
+VMware vSphere PowerCLI | Nepožadováno pro verze 9,14 a vyšší
 MYSQL | Je potřeba nainstalovat MySQL. Instalaci můžete provést ručně, nebo ji Site Recovery nainstalovat. (Další informace najdete v tématu [Konfigurace nastavení](../articles/site-recovery/vmware-azure-deploy-configuration-server.md#configure-settings) .)
 |
 

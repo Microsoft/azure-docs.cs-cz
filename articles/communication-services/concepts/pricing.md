@@ -9,19 +9,19 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 779fa577b25bd4f2aa92aa8b8cc1244a58bdf1ae
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 883be25716d94130984baef5e7a1eab80888a2b9
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126186"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558472"
 ---
 # <a name="pricing-scenarios"></a>Cenové scénáře
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 
-Ceny za komunikační služby Azure jsou obecně založené na modelu průběžných plateb.
+Ceny za komunikační služby Azure jsou obecně založené na modelu průběžných plateb. Ceny v následujících příkladech jsou pro ilustrativní účely a nemusí odrážet nejnovější ceny Azure.
 
 ## <a name="voicevideo-calling-and-screen-sharing"></a>Volání hlasu a videa a sdílení obrazovky
 
@@ -48,9 +48,32 @@ Alice provedla volání skupiny s kolegy, Bobem a Charlie. Alice a Bob použily 
 
 **Celkové náklady na volání skupiny**: $0,48 + $0,172 = $0,652
 
+### <a name="pricing-example-a-user-of-the-communication-services-js-client-library-joins-a-scheduled-microsoft-teams-meeting"></a>Příklad ceny: uživatel klientské knihovny služby Communications Services JS se připojí k plánované schůzce Microsoft Teams.
+
+Alice je lékařem, který se účastní svého pacienta, Bob. Alice bude připojovat se k návštěvě z desktopové aplikace Teams. Bob obdrží odkaz pro připojení pomocí webu poskytovatele zdravotní péče, který se připojí ke schůzce pomocí klientské knihovny služby Communication Services JS. Bob použije svůj mobilní telefon k zadání schůzky pomocí webového prohlížeče (iPhone s Safari). Chat bude k dispozici během virtuální návštěvy. 
+
+- Volání trvá celkem 30 minut.
+- Alice a Bob se účastní celého volání. Alice zapíná své video pět minut po zahájení hovoru a sdílí obrazovku po dobu 13 minut. Bob má své video pro celé volání.
+- Alice posílá pět zpráv a Bob odpoví třemi zprávami.
+
+
+**Výpočty nákladů**
+
+- 1 účastník (Bob) × 30 minut × $0,004 za účastníka za minutu = $0,12 [pro video a zvuk se účtuje stejná sazba]
+- 1 účastník (Alice) × 30 minut × $0,000 na účastníka za minutu = $0,0 *. 
+- 1 účastník (Bob) × 3 zprávy chatu × $0,0008 = $0,0024.
+- 1 účastník (Alice) × 5 zpráv chatu × $0,000 = $0,0 *. 
+
+* Účast Alice se zabývá licencí týmu. Vaše faktura Azure bude zobrazovat zprávy o minutách a chatech, které týmům mají uživatelé služby Communication Services pro vaše pohodlí, ale tyto minuty a zprávy pocházející z klienta týmů nebudou mít náklady.
+
+**Celkové náklady na návštěvu**: 
+- Připojování uživatelů pomocí klientské knihovny služby Communication Services JS: $0,12 + $0,0024 = $0,1224
+- Připojování uživatelů na desktopové aplikaci Teams: $0 (zahrnuté v licencích týmu) 
+
+
 ## <a name="chat"></a>Chat
 
-Pomocí komunikačních služeb můžete rozšířit aplikaci o možnost odesílat a přijímat zprávy chatu mezi 2 nebo více uživateli. Chat pro klientské knihovny jsou k dispozici pro jazyky JavaScript, .NET, Python a Java. [Další informace o knihovnách klienta najdete na této stránce](./sdk-options.md) .
+Pomocí komunikačních služeb můžete rozšířit aplikaci o možnost odesílat a přijímat zprávy chatu mezi dvěma nebo více uživateli. Chat pro klientské knihovny jsou k dispozici pro jazyky JavaScript, .NET, Python a Java. [Další informace o knihovnách klienta najdete na této stránce](./sdk-options.md) .
 
 ### <a name="price"></a>Cena
 
@@ -58,7 +81,7 @@ Za každou odeslanou zprávu chatu se vám bude účtovat $0,0008.
 
 ### <a name="pricing-example-chat-between-two-users"></a>Příklad ceny: chat mezi dvěma uživateli 
 
-Geeta spustí chatovací vlákno s Emily ke sdílení aktualizace a pošle 5 zpráv. Chat trvá 10 minut na Geeta a Emily odeslání dalších 15 zpráv.
+Geeta spustí chatovací vlákno s Emily ke sdílení aktualizace a pošle 5 zpráv. Chat bude trvat 10 minut. Geeta a Emily posílají další 15 zpráv.
 
 **Výpočty nákladů** 
 - Počet odeslaných zpráv (5 + 15 + 15) × $0,0008 = $0,028

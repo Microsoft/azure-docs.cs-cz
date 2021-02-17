@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 891885dce52ee57fa163bb71b427591156091651
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 922ef24bff7d6e60a3ba3b91113003f8206b8177
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362845"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548637"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Zabezpečení a ochrana dat pro Azure Stack Edge pro R a Azure Stack Edge Mini R
 
@@ -77,7 +77,7 @@ Další možnosti:
 
 ### <a name="establish-trust-with-the-device-via-certificates"></a>Navázání vztahu důvěryhodnosti se zařízením pomocí certifikátů
 
-Azure Stack robustní zařízení umožňuje přenášet vlastní certifikáty a instalovat je, aby je bylo možné použít pro všechny veřejné koncové body. Další informace najdete v [poznámkách k nahrání certifikátu](azure-stack-edge-j-series-manage-certificates.md#upload-certificates). Seznam všech certifikátů, které se dají na svém zařízení nainstalovat, najdete v části [Správa certifikátů v zařízení](azure-stack-edge-j-series-manage-certificates.md).
+Azure Stack robustní zařízení umožňuje přenášet vlastní certifikáty a instalovat je, aby je bylo možné použít pro všechny veřejné koncové body. Další informace najdete v [poznámkách k nahrání certifikátu](azure-stack-edge-gpu-manage-certificates.md#upload-certificates). Seznam všech certifikátů, které se dají na svém zařízení nainstalovat, najdete v části [Správa certifikátů v zařízení](azure-stack-edge-gpu-manage-certificates.md).
 
 - Při konfiguraci výpočetní kapacity na zařízení se vytvoří zařízení IoT a zařízení IoT Edge. Těmto zařízením jsou automaticky přiřazeny symetrické přístupové klíče. Z hlediska zabezpečení je nejvhodnější tyto klíče pravidelně střídat prostřednictvím služby IoT Hub.
 

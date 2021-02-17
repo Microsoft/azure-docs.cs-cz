@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7854aff0b4194efae7c4df653dee18e2676fdd41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8d21f9eea0258175195529c4d8b72ee9085dc77
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446319"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546971"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-with-gpu"></a>Kurz: Konfigurace certifikátů pro Azure Stack Edge pro pomocí GPU
 
@@ -35,10 +35,10 @@ Než nakonfigurujete a nastavíte Azure Stack Edge pro zařízení s grafickým 
 
 * Nainstalovali jste fyzické zařízení, jak je popsáno v části [instalace Azure Stack Edge pro](azure-stack-edge-gpu-deploy-install.md).
 * Pokud máte v plánu používat vlastní certifikáty:
-    - Vaše certifikáty by měly být připravené v příslušném formátu včetně certifikátu podpisového řetězce. Podrobnosti o certifikátu najdete na webu [Správa certifikátů](azure-stack-edge-j-series-manage-certificates.md) .
+    - Vaše certifikáty by měly být připravené v příslušném formátu včetně certifikátu podpisového řetězce. Podrobnosti o certifikátu najdete na webu [Správa certifikátů](azure-stack-edge-gpu-manage-certificates.md) .
 
 <!--    - If your device is deployed in Azure Government or Azure Government Secret or Azure Government top secret cloud and not deployed in Azure public cloud, a signing chain certificate is required before you can activate your device. 
-    For details on certificate, go to [Manage certificates](azure-stack-edge-j-series-manage-certificates.md).-->
+    For details on certificate, go to [Manage certificates](azure-stack-edge-gpu-manage-certificates.md).-->
 
 
 ## <a name="configure-certificates-for-device"></a>Konfigurace certifikátů pro zařízení
@@ -78,7 +78,7 @@ Pomocí těchto kroků znovu vygenerujte a stáhněte certifikáty zařízení A
 
     ![Vygenerovat a stáhnout certifikát 1](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-3.png)
 
-2. V části **generovat certifikáty zařízení**vyberte **Generovat**. 
+2. V části **generovat certifikáty zařízení** vyberte **Generovat**. 
 
     ![Vygenerovat a stáhnout certifikát 2](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-4.png)
 
@@ -120,16 +120,16 @@ Pomocí těchto kroků znovu vygenerujte a stáhněte certifikáty zařízení A
 
 Tyto certifikáty budete muset nainstalovat v klientském systému, který používáte pro přístup k koncovým bodům v zařízení pomocného mechanismu. Tyto certifikáty naváží vztah důvěryhodnosti mezi klientem a zařízením.
 
-Při importu a instalaci těchto certifikátů na klienta, který používáte pro přístup k zařízení, postupujte podle kroků v části [Import certifikátů v klientech, kteří přistupují k zařízení Azure Stack Edge pro](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device). 
+Při importu a instalaci těchto certifikátů na klienta, který používáte pro přístup k zařízení, postupujte podle kroků v části [Import certifikátů v klientech, kteří přistupují k zařízení Azure Stack Edge pro](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device). 
 
 Pokud používáte Průzkumník služby Azure Storage, budete muset nainstalovat certifikáty na klienta ve formátu PEM a budete muset převést certifikáty vygenerované zařízením na formát PEM. 
 
 > [!IMPORTANT]
 > - Odkaz ke stažení je dostupný jenom pro certifikáty vygenerované zařízením, a ne v případě, že přenesete vlastní certifikáty.
-> - Můžete se rozhodnout, že budete mít k dispozici kombinaci certifikátů generovaných zařízením a máte vlastní certifikáty, pokud jsou splněné jiné požadavky na certifikáty. Další informace najdete v požadavcích na [certifikát](azure-stack-edge-j-series-certificate-requirements.md).
+> - Můžete se rozhodnout, že budete mít k dispozici kombinaci certifikátů generovaných zařízením a máte vlastní certifikáty, pokud jsou splněné jiné požadavky na certifikáty. Další informace najdete v požadavcích na [certifikát](azure-stack-edge-gpu-certificate-requirements.md).
     
 
-### <a name="bring-your-own-certificates"></a>Přineste si vlastní certifikáty
+### <a name="bring-your-own-certificates"></a>Používání vlastních certifikátů
 
 Pomocí těchto kroků můžete přidat vlastní certifikáty včetně podpisového řetězce.
 

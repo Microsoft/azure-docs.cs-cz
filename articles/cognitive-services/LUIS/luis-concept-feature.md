@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 08ab71375171d4bb4167c725bc7118bec2e1ebfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da85abdff3d1022659f2d4e83fd14c5ae6003fc9
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371991"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546053"
 ---
 # <a name="machine-learning-features"></a>Funkce strojového učení
 
@@ -160,11 +160,9 @@ Adresa příjemce (entita počítač se naučila)
 
 ### <a name="required-feature-using-prebuilt-entities"></a>Požadovaná funkce s využitím předem připravených entit
 
-Město, stát a země/oblast jsou všeobecně uzavřenou sadou seznamů, což znamená, že se v průběhu času nemění. Tyto entity mohou mít relevantní doporučené funkce a tyto funkce mohou být označeny jako povinné. To znamená, že pokud se entity, které mají požadované funkce, nenaleznou, celá dodací adresa se nevrátí.
+Předem připravené entity, jako je město, stát a země/oblast, jsou všeobecně uzavřenou sadou seznamů, což znamená, že se v průběhu času nemění. Tyto entity mohou mít relevantní doporučené funkce a tyto funkce mohou být označeny jako povinné. `isRequired`Příznak se však vztahuje pouze k entitě, ke které je přiřazen, a nemá vliv na hierarchii. Pokud se nenalezne předdefinovaná funkce subentity, nebude to mít vliv na detekci a návrat nadřazené entity.
 
-Co když se město, stát nebo země/oblast nacházejí v utterance, ale nacházejí se v umístění nebo jsou slangem, že LUIS neočekává? Pokud chcete poskytnout nějaké následné zpracování, které vám pomůžou tuto entitu vyřešit, protože skóre s nízkou mírou spolehlivosti z LUIS, nepoužívejte tuto funkci podle potřeby.
-
-Dalším příkladem požadované funkce pro doručovací adresu je zadání požadovaného a [předem připraveného](luis-reference-prebuilt-entities.md) čísla. Uživatel tak může zadat "1 Microsoft Way" nebo "One Microsoft". Oba se překládají na číslice "1" pro subentity s číslem ulice.
+Jako příklad požadované funkce zvažte, že chcete zjistit adresy. Můžete uvažovat o tom, že bude nutné určit číslo ulice. Uživatel tak může zadat "1 Microsoft Way" nebo "One Microsoft" a obě se budou překládat na číslice "1" pro dílčí entitu číslo. Další informace najdete v článku [předdefinovaná entita ](luis-reference-prebuilt-entities.md) .
 
 ### <a name="required-feature-using-list-entities"></a>Požadovaná funkce využívající seznam entit
 
@@ -201,13 +199,13 @@ K popisu vlastností nebo konceptu můžete použít více než jednu funkci. Sp
 
 ### <a name="example-ticket-booking-entity-features-for-a-travel-app"></a>Příklad: funkce entity pro rezervaci lístků pro cestovní aplikaci  
 
-Jako základní příklad si představte aplikaci pro rezervaci letu s _záměrem_ rezervace letu a _entitou_rezervace lístků. Entita rezervace lístku zachycuje informace pro lístek lístku v letadle v rezervačním systému. 
+Jako základní příklad si představte aplikaci pro rezervaci letu s _záměrem_ rezervace letu a _entitou_ rezervace lístků. Entita rezervace lístku zachycuje informace pro lístek lístku v letadle v rezervačním systému. 
 
 Entita strojového učení pro lístek má dvě podentity, které zachytí počátek a cíl. Funkce musí být přidány do každé dílčí entity, nikoli jako entita nejvyšší úrovně.
 
 :::image type="content" source="media/luis-concept-features/ticket-booking-entity.png" alt-text="Ticketbooking – schéma entit":::
 
-Entita rezervace lístku je entita strojového učení s podentitami, včetně _původu_ a _cíle_. Tyto subentity označují zeměpisné umístění. Pro účely extrakce umístění a rozlišení mezi _zdrojem_ a _cílem_by měly být v každé podentitě funkce.
+Entita rezervace lístku je entita strojového učení s podentitami, včetně _původu_ a _cíle_. Tyto subentity označují zeměpisné umístění. Pro účely extrakce umístění a rozlišení mezi _zdrojem_ a _cílem_ by měly být v každé podentitě funkce.
 
 |Typ|Podentita původu |Cílová subentita|
 |--|--|--|
@@ -226,7 +224,7 @@ Po vytvoření entity strojového učení musíte do záměru přidat příklad 
 
 Pro příklad rezervace lístku označte příklad projevy v záměru s `TicketBooking` entitou a všemi podentitami v textu.
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Ticketbooking – schéma entit":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Příklad popisku projevy":::
 
 ### <a name="example-pizza-ordering-app"></a>Příklad: aplikace řazení Pizza
 
@@ -234,13 +232,13 @@ V druhém příkladu si představte aplikaci pro Pizza restauraci, která přij�
 
 Entita strojového učení v tomto příkladu je složitější s vnořenými subentitami, seznamy frází, předem sestavenými entitami a vlastními entitami.
 
-:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Ticketbooking – schéma entit":::
+:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Schéma entity objednávky Pizza":::
 
 Tento příklad používá funkce na úrovni subentity a podřízenosti úrovně subentity. Jakou úroveň získá seznam frází nebo model jako funkci, je důležitou součástí návrhu vaší entity.
 
 I když mohou podklíče obsahovat mnoho frázových seznamů jako funkce, které vám pomůžou detekovat entitu, má každá podentita jenom jeden model jako funkci. V této [aplikaci Pizza](https://github.com/Azure/pizza_luis_bot/blob/master/CognitiveModels/MicrosoftPizza.json)jsou tyto modely primárně vypsány.
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Ticketbooking – schéma entit":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Záměr Pizza objednávek s popisem projevy":::
 
 Správně označený příklad projevy zobrazení způsobem, který ukazuje, jak jsou entity vnořené. 
 

@@ -1,15 +1,15 @@
 ---
 title: Průběžná integrace s využitím Azure Pipelines
 description: Naučte se průběžně sestavovat, testovat a nasazovat šablony Azure Resource Manager (šablony ARM).
-ms.date: 08/24/2020
+ms.date: 02/16/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e7e2cda0524e4d754fbf879c046fee2d43c44cb3
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: d367da33d6b9997d77606e9a77a961808d66ff99
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98701708"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560895"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>Kurz: průběžná integrace šablon ARM pomocí Azure Pipelines
 
@@ -83,8 +83,8 @@ Složka _CreateWebApp_ je složka, ve které je šablona uložena. `pwd`Příkaz
 
 Místo vytváření šablon můžete stáhnout šablony a uložit je do složky _CreateWebApp_ .
 
-* Hlavní Šablona: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
-* Odkazovaná Šablona: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
+* Hlavní Šablona: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/azuredeploy.json
+* Odkazovaná Šablona: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/linkedStorageAccount.json
 
 Název složky i názvy souborů se používají tak, jak jsou v kanálu. Pokud tyto názvy změníte, je nutné aktualizovat názvy používané v kanálu.
 
@@ -105,7 +105,7 @@ _azuredeploy.jsv_ byla přidána do místního úložiště. V dalším kroku na
 
     Může se zobrazit upozornění na LF. Upozornění můžete ignorovat. **Main** je hlavní větev.  Pro každou aktualizaci obvykle vytvoříte větev. Pro zjednodušení tohoto kurzu použijete hlavní větev přímo.
 
-1. Přejděte do úložiště GitHub z prohlížeče. Adresa URL je `https://github.com/[YourAccountName]/[YourGitHubRepository]` . V rámci složky se zobrazí složka _CreateWebApp_ a tři soubory.
+1. Přejděte do úložiště GitHub z prohlížeče. Adresa URL je `https://github.com/[YourAccountName]/[YourGitHubRepository]` . V rámci této složky se zobrazí složka _CreateWebApp_ a dva soubory.
 1. Vyberte _linkedStorageAccount.js_ pro otevření šablony.
 1. Vyberte tlačítko **nezpracované** . Adresa URL začíná `https://raw.githubusercontent.com` .
 1. Zkopírujte adresu URL. Tuto hodnotu musíte zadat při konfiguraci kanálu později v tomto kurzu.
@@ -134,7 +134,7 @@ Vytvořte připojení služby, které se používá k nasazení projektů do Azu
 
 1. V dolní části nabídky vlevo vyberte **nastavení projektu** .
 1. V části **kanály** vyberte **připojení služby** .
-1. Vyberte možnost **nové připojení služby**, vyberte možnost **Azure Resource Manager** a potom vyberte možnost **Další**.
+1. Vyberte **vytvořit připojení služby**, vyberte **Azure Resource Manager** a pak vyberte **Další**.
 1. Vyberte **instanční objekt** a pak vyberte **Další**.
 1. Zadejte tyto hodnoty:
 
@@ -155,7 +155,7 @@ Až do této chvíle jste dokončili následující úlohy.  Pokud přeskočíte
 Vytvoření kanálu s krokem pro nasazení šablony:
 
 1. V nabídce vlevo vyberte **kanály** .
-1. Vyberte **Nový kanál**.
+1. Vyberte **vytvořit kanál**.
 1. Na kartě **Connect** (Připojit) vyberte **GitHub**. Pokud se zobrazí výzva, zadejte svoje přihlašovací údaje k GitHubu a pak postupujte podle pokynů. Pokud se zobrazí následující obrazovka, vyberte **jenom možnost vybrat úložiště** a ověřte, jestli je vaše úložiště v seznamu, než vyberete **schválit & nainstalovat**.
 
     ![Azure Resource Manager Azure DevOps Azure Pipelines vybrat jenom úložiště](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-only-select-repositories.png)
