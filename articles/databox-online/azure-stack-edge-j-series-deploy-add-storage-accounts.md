@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: c24970b30e522d593a491194dbbabb0421ad7f4b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b346cf37a8275b1783e94e0f51859b8c87eb9b67
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185528"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546818"
 ---
 # <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-pro-gpu"></a>Kurz: přenos dat prostřednictvím účtů úložiště s grafickým procesorem Azure Stack Edge pro 
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Připojení k účtu úložiště
 
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než přidáte účty úložiště do Azure Stack Edge pro, ujistěte se, že:
 
@@ -137,9 +137,9 @@ Každý z těchto kroků je popsaný v následujících částech.
 
 Přístup k úložišti objektů BLOB přes HTTPS vyžaduje certifikát SSL pro zařízení. Tento certifikát také nahrajete do zařízení Azure Stack Edge pro jako soubor *. pfx* s připojeným privátním klíčem. Další informace o tom, jak vytvořit (jenom pro účely testování a vývoje) a nahrát tyto certifikáty do zařízení Azure Stack Edge pro, najdete tady:
 
-- [Vytvořte certifikát koncového bodu objektu BLOB](azure-stack-edge-j-series-manage-certificates.md#create-certificates-optional).
-- [Nahrajte certifikát koncového bodu objektu BLOB](azure-stack-edge-j-series-manage-certificates.md#upload-certificates).
-- [Importujte certifikáty na klienta](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device), který přistupuje k zařízení.
+- [Vytvořte certifikát koncového bodu objektu BLOB](azure-stack-edge-gpu-manage-certificates.md#create-certificates-optional).
+- [Nahrajte certifikát koncového bodu objektu BLOB](azure-stack-edge-gpu-manage-certificates.md#upload-certificates).
+- [Importujte certifikáty na klienta](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device), který přistupuje k zařízení.
 
 ### <a name="import-certificate"></a>Import certifikátu
 

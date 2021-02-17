@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ca023af0666899ae94d5bf82fc6f0736d5a8efa5
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 6b0bdc5a5b58c205d888c8892a4333225a9b316f
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614264"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557147"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Kurz: vytvoření toků uživatelů v Azure Active Directory B2C
 
@@ -33,9 +33,9 @@ V tomto kurzu se dozvíte, jak vytvořit několik doporučených uživatelských
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!IMPORTANT]
-> Změnili jsme způsob, jakým jsme odkazovali na verze uživatelského toku. Dříve jsme nabídli verze V1 (připravené pro produkční prostředí) a verze V 1.1 a v2 (Preview). Nyní jsme konsolidované toky uživatelů **doporučili doporučeným** (ve verzi Preview nové generace) a **standardní** (všeobecně dostupné) verze. Od **1. srpna 2021** se toky všech uživatelských toků verze Preview a v2 starší verze nacházejí v cestě k vyřazení. Podrobnosti najdete v tématu [verze toku uživatele v Azure AD B2C](user-flow-versions.md).
+> Změnili jsme způsob, jakým označujeme verze toků uživatelů. Dříve jsme nabízeli verze v1 (připravené pro produkční prostředí) a verze v1.1 a v2 (Preview). Nyní jsme konsolidované toky uživatelů **doporučili doporučeným** (ve verzi Preview nové generace) a **standardní** (všeobecně dostupné) verze. Od **1. srpna 2021** se toky všech uživatelských toků verze Preview a v2 starší verze nacházejí v cestě k vyřazení. Podrobnosti najdete v tématu [verze toku uživatele v Azure AD B2C](user-flow-versions.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [Zaregistrujte své aplikace](tutorial-register-applications.md) , které jsou součástí uživatelských toků, které chcete vytvořit.
 
@@ -133,7 +133,7 @@ V tomto článku jste zjistili, jak:
 > * Vytvoření toku uživatele upravujícího profil
 > * Vytvoření toku uživatele pro resetování hesla
 
-V dalším kroku se dozvíte, jak přidat zprostředkovatele identity k vašim aplikacím a povolit tak přihlašování uživatelů pomocí poskytovatelů, jako je Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft nebo Twitter.
+V dalším kroku se dozvíte, jak používat Azure AD B2C k přihlášení a registraci uživatelů v aplikaci. Postupujte podle webové aplikace ASP.NET, která je propojena níže, nebo v obsahu v části **ověřování uživatelů** přejděte do jiné aplikace.
 
 > [!div class="nextstepaction"]
-> [Přidejte do svých aplikací zprostředkovatele identity >](tutorial-add-identity-providers.md)
+> [Kurz: povolení ověřování ve webové aplikaci pomocí Azure AD B2C >](tutorial-web-app-dotnet.md)

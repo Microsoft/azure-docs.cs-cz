@@ -7,23 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/23/2021
-ms.openlocfilehash: 57867cc4fb539b07fc1e4117f6e956078c41e2c6
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.date: 02/15/2021
+ms.openlocfilehash: 3be043af7b057c47f360ce36db6bb7c3afd80638
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746692"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535344"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rychlé zprovoznění: Vytvoření služby Azure Cognitive Search na portálu
 
 [Azure kognitivní hledání](search-what-is-azure-search.md) je prostředek Azure, který se používá k přidání funkce fulltextového vyhledávání do vlastních aplikací. Můžete ji snadno integrovat s jinými službami Azure, které poskytují data nebo další zpracování, s aplikacemi na síťových serverech nebo se softwarem běžícím na jiných cloudových platformách.
 
-V tomto článku se dozvíte, jak vytvořit vyhledávací službu v [Azure Portal](https://portal.azure.com/).
+Službu Search můžete vytvořit pomocí [Azure Portal](https://portal.azure.com/), který je popsaný v tomto článku. Můžete také použít [Azure PowerShell](search-manage-powershell.md), [Azure CLI](/cli/azure/search)nebo [šablonu služby Azure Resource Manager](https://azure.microsoft.com/resources/templates/101-azure-search-create/).
 
 [![Animovaný GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
-
-Dáváte přednost prostředí PowerShell? Použijte [šablonu služby](https://azure.microsoft.com/resources/templates/101-azure-search-create/) Azure Resource Manageru. Nápovědu k části Začínáme najdete v tématu [Správa služby Azure kognitivní hledání pomocí prostředí PowerShell](search-manage-powershell.md).
 
 ## <a name="before-you-start"></a>Než začnete
 
@@ -136,9 +134,9 @@ Koncový bod a klíč nejsou pro úlohy založené na portálu vyžadovány. Por
 
 Po zřízení můžete službu škálovat tak, aby vyhovovala vašim potřebám. Pokud jste pro službu Azure Kognitivní hledání zvolili úroveň Standard, můžete škálovat službu ve dvou dimenzích: repliky a oddíly. Pokud byste zvolili úroveň Basic, mohli byste přidávat pouze repliky. Při zřízení bezplatné služby škálování není k dispozici.
 
-**_Oddíly_* _ umožní službě ukládat a prohledávat více dokumentů.
+***Oddíly***: Umožňují službě ukládat a prohledávat více dokumentů.
 
-_*_Repliky_*_ umožňují vaší službě zpracovávat větší zatížení vyhledávacích dotazů.
+***Repliky***: Umožňují službě zpracovat větší množství vyhledávacích dotazů.
 
 Přidáním prostředků se zvýší vaše měsíční náklady. [Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/) vám pomůže porozumět důsledkům přidání prostředků na fakturaci. Mějte na paměti, že prostředky můžete upravit na základě zatížení. Například můžete navýšit prostředky kvůli vytvoření úplného počátečního indexu a později je pak snížit na úroveň vhodnější pro přírůstkové indexování.
 
@@ -146,7 +144,7 @@ Přidáním prostředků se zvýší vaše měsíční náklady. [Cenová kalkul
 > Služba musí mít [2 repliky pro smlouvu SLA jen pro čtení a 3 repliky pro smlouvu SLA se čtením a zápisem](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 1. Přejděte na stránku vyhledávací služby na webu Azure Portal.
-2. V levém navigačním podokně vyberte _ *Nastavení** > **škálování**.
+2. V levém navigačním podokně vyberte **Nastavení**  >  **škálovat**.
 3. Přetažením posuvníku můžete přidat prostředky obou typů.
 
 :::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="Přidání kapacity prostřednictvím replik a oddílů" border="false":::

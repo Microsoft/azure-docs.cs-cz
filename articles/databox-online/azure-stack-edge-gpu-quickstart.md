@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/27/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to quickly deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 642ab348cd2bb5cd2cedd2b481b0d06fb6c4b425
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 4f3ecb6c9aa4ec200cd1a53b82d7c81a2c8d4dcd
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953933"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546784"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>Rychlý Start: Začínáme s Azure Stack Edge pro s grafickým procesorem 
 
@@ -64,7 +64,7 @@ Před nasazením se ujistěte, že jsou splněné následující předpoklady:
 10. **Konfigurace certifikátů**: Pokud jste změnili název zařízení nebo doménu DNS, musíte vygenerovat certifikáty nebo přidat certifikáty k aktivaci zařízení. 
 
     - K otestování neprodukčních úloh použijte [možnost generovat certifikáty](azure-stack-edge-gpu-deploy-configure-certificates.md#generate-device-certificates). 
-    - Pokud přenesete vlastní certifikáty včetně podpisových řetězců, [přidejte certifikáty](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates) v příslušném formátu. Nejdříve si nezapomeňte nahrát podpisový řetězec. Přečtěte si téma [Vytvoření certifikátů](azure-stack-edge-j-series-create-certificates-tool.md) a [nahrávání certifikátů prostřednictvím místního uživatelského rozhraní](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates).
+    - Pokud přenesete vlastní certifikáty včetně podpisových řetězců, [přidejte certifikáty](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates) v příslušném formátu. Nejdříve si nezapomeňte nahrát podpisový řetězec. Přečtěte si téma [Vytvoření certifikátů](azure-stack-edge-gpu-create-certificates-tool.md) a [nahrávání certifikátů prostřednictvím místního uživatelského rozhraní](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates).
 
 11. **Activate**: získání aktivačního klíče 
 
@@ -73,7 +73,7 @@ Před nasazením se ujistěte, že jsou splněné následující předpoklady:
 
 12. **Konfigurace výpočtů**: v Azure Portal najdete **Přehled > zařízení**. Ověřte, že je zařízení **online**. V levém podokně přejdete na **Edge compute > začínáme > konfigurace hraničních výpočtů > výpočetních** prostředků. Poskytněte existující nebo novou službu IoT Hub a počkejte asi 20 minut, než se výpočetní prostředí nakonfiguruje. Přečtěte si další informace o [kurzu: Konfigurace výpočtů na zařízeních GPU Azure Stack Edge pro](azure-stack-edge-gpu-deploy-configure-compute.md)
 
-Do svého zařízení jste připraveni nasadit výpočetní úlohy [prostřednictvím IoT Edge](azure-stack-edge-gpu-deploy-sample-module-marketplace.md), [prostřednictvím `kubectl` ](azure-stack-edge-gpu-create-kubernetes-cluster.md) nebo [prostřednictvím Kubernetes s povoleným obloukem Azure](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md). Pokud při instalaci dojde k problémům, Projděte si témata [řešení]()potíží se zařízeními [, problémy s výkonem,](azure-stack-edge-gpu-troubleshoot.md) [problémy s certifikáty](azure-stack-edge-j-series-certificate-troubleshooting.md)nebo Kubernetes problémy. 
+Do svého zařízení jste připraveni nasadit výpočetní úlohy [prostřednictvím IoT Edge](azure-stack-edge-gpu-deploy-sample-module-marketplace.md), [prostřednictvím `kubectl` ](azure-stack-edge-gpu-create-kubernetes-cluster.md) nebo [prostřednictvím Kubernetes s povoleným obloukem Azure](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md). Pokud při instalaci dojde k problémům, Projděte si témata [řešení]()potíží se zařízeními [, problémy s výkonem,](azure-stack-edge-gpu-troubleshoot.md) [problémy s certifikáty](azure-stack-edge-gpu-certificate-troubleshooting.md)nebo Kubernetes problémy. 
 
 ## <a name="next-steps"></a>Další kroky
 

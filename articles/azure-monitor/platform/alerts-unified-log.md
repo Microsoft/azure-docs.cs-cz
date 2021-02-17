@@ -4,14 +4,14 @@ description: Aktivovat e-maily, oznámení, volat adresy URL webů (Webhooky) ne
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 5/31/2019
+ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: a913bc0ae01507cb26c1650d63918a8319eeacf4
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 0f81dd14988b069931bddf5f5636cb1bab426641
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857422"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100544863"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Protokolování výstrah v Azure Monitor
 
@@ -64,7 +64,7 @@ Podobně jako v Log Analytics časový rozsah omezuje data dotazu na zadaný roz
 
 Například dotaz vyhledává 60 minut, pokud je časový rozsah 60 minut, a to i v případě, že text obsahuje hodnotu **před (1d)**. Časový rozsah a filtrování času dotazu se musí shodovat. V ukázkovém případě bude změna   /  **rozsahu času dotazu přepisu** období na jeden den fungovat podle očekávání.
 
-### <a name="measure"></a>Míra
+### <a name="measure"></a>Measure
 
 Výstrahy protokolu zapínají protokol na číselné hodnoty, které lze vyhodnotit. Můžete změřit dvě různé věci:
 
@@ -102,7 +102,7 @@ U pracovních prostorů a Application Insights se říká na **základě** **mě
 
 ### <a name="aggregation-type"></a>Typ agregace
 
-Výpočet, který je proveden na více záznamech pro agregaci na jednu číselnou hodnotu. Například:
+Výpočet, který je proveden na více záznamech pro agregaci na jednu číselnou hodnotu. Příklad:
 - **Count** vrátí počet záznamů v dotazu.
 - Funkce **Average** Vrátí průměrnou hodnotu definování [**členitosti**](#aggregation-granularity) sloupce měr.
 

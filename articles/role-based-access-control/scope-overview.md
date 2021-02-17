@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/08/2020
 ms.author: rolyon
-ms.openlocfilehash: ad906e3665c6ffc354cf6292c2559d1184037594
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: deee42c46c9b08bb265c972695b9319413d4fcb1
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856142"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555922"
 ---
 # <a name="understand-scope-for-azure-rbac"></a>Vysvětlení oboru pro Azure RBAC
 
@@ -32,7 +32,7 @@ Skupiny pro správu jsou úrovní rozsahu nad odběry, ale skupiny pro správu p
 
 ## <a name="scope-format"></a>Formát oboru
 
-Pokud přidáte přiřazení rolí pomocí příkazového řádku, musíte zadat obor. Pro nástroje příkazového řádku je rozsah potenciálně dlouhý řetězec, který identifikuje přesný rozsah přiřazení role. V Azure Portal je tento obor obvykle uveden jako *ID prostředku*.
+Pokud přiřadíte role pomocí příkazového řádku, musíte zadat obor. Pro nástroje příkazového řádku je rozsah potenciálně dlouhý řetězec, který identifikuje přesný rozsah přiřazení role. V Azure Portal je tento obor obvykle uveden jako *ID prostředku*.
 
 Obor se skládá z řady identifikátorů oddělených znakem lomítka (/). Tento řetězec si můžete představit jako vyjadřující následující hierarchii, kde text bez zástupných znaků ( `{}` ) jsou pevné identifikátory:
 
@@ -66,7 +66,7 @@ Skupiny pro správu jsou vyšší úrovně předplatných a mají nejširší (n
 ## <a name="scope-examples"></a>Příklady oboru
 
 > [!div class="mx-tableFixed"]
-> | Rozsah | Příklad |
+> | Obor | Příklad |
 > | --- | --- |
 > | Skupina pro správu | `/providers/Microsoft.Management/managementGroups/marketing-group` |
 > | Předplatné | `/subscriptions/00000000-0000-0000-0000-000000000000` |
@@ -122,6 +122,6 @@ Určení rozsahu skupiny pro správu, předplatného nebo skupiny prostředků j
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kroky pro přidání přiřazení role](role-assignments-steps.md)
+- [Postup přiřazení role Azure](role-assignments-steps.md)
 - [Poskytovatelé prostředků pro služby Azure](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Co jsou skupiny pro správu Azure?](../governance/management-groups/overview.md)

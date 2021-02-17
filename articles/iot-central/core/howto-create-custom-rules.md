@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 7e3292a9070e6676faad15e73d357e7f6875b5f4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 824308b66803d2dfa05383ff06ce97c48626619d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371656"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557567"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Rozšíření Azure IoT Central o vlastní pravidla s využitím služeb Stream Analytics, Azure Functions a SendGrid
 
@@ -119,26 +119,26 @@ IoT Central aplikaci můžete nakonfigurovat tak, aby průběžně exportovali t
 
 Váš Event Hubs obor názvů vypadá jako na následujícím snímku obrazovky: 
 
-    :::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="Screenshot of Event Hubs namespace." border="false":::
+```:::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="Screenshot of Event Hubs namespace." border="false":::
 
-## <a name="define-the-function"></a>Definovat funkci
+## Define the function
 
-Toto řešení používá aplikaci Azure Functions k odeslání e-mailového oznámení, když úloha Stream Analytics detekuje zastavené zařízení. Vytvoření aplikace Function App:
+This solution uses an Azure Functions app to send an email notification when the Stream Analytics job detects a stopped device. To create your function app:
 
-1. V Azure Portal přejděte na instanci **App Service** ve skupině prostředků **DetectStoppedDevices** .
-1. Tuto možnost vyberte **+** , pokud chcete vytvořit novou funkci.
-1. Vyberte **Trigger http**.
-1. Vyberte **Přidat**.
+1. In the Azure portal, navigate to the **App Service** instance in the **DetectStoppedDevices** resource group.
+1. Select **+** to create a new function.
+1. Select **HTTP Trigger**.
+1. Select **Add**.
 
-    :::image type="content" source="media/howto-create-custom-rules/add-function.png" alt-text="Obrázek výchozí funkce triggeru HTTP"::: 
+    :::image type="content" source="media/howto-create-custom-rules/add-function.png" alt-text="Image of the Default HTTP trigger function"::: 
 
-## <a name="edit-code-for-http-trigger"></a>Upravit kód pro Trigger HTTP
+## Edit code for HTTP Trigger
 
-Portál vytvoří výchozí funkci nazvanou **HttpTrigger1**:
+The portal creates a default function called **HttpTrigger1**:
 
-    :::image type="content" source="media/howto-create-custom-rules/default-function.png" alt-text="Screenshot of Edit HTTP trigger function.":::
+```:::image type="content" source="media/howto-create-custom-rules/default-function.png" alt-text="Screenshot of Edit HTTP trigger function.":::
 
-1. Kód jazyka C# nahraďte následujícím kódem:
+1. Replace the C# code with the following code:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -177,50 +177,50 @@ Portál vytvoří výchozí funkci nazvanou **HttpTrigger1**:
     }
     ```
 
-    Může se zobrazit chybová zpráva, dokud neuložíte nový kód.
-1. Vyberte **Uložit** a funkci uložte.
+    You may see an error message until you save the new code.
+1. Select **Save** to save the function.
 
-## <a name="add-sendgrid-key"></a>Přidat klíč SendGrid
+## Add SendGrid Key
 
-Pokud chcete přidat klíč rozhraní API SendGrid, musíte ho přidat k **klíčům funkcí** následujícím způsobem:
+To add your SendGrid API Key, you need to add it to your **Function Keys** as follows:
 
-1. Vyberte **klíče funkce**.
-1. Vyberte **+ nový klíč funkce**.
-1. Zadejte *název* a *hodnotu* klíče rozhraní API, který jste vytvořili dříve.
-1. Klikněte na tlačítko **OK.**
+1. Select **Function Keys**.
+1. Choose **+ New Function Key**.
+1. Enter the *Name* and *Value* of the API Key you created before.
+1. Click **OK.**
 
-    :::image type="content" source="media/howto-create-custom-rules/add-key.png" alt-text="Snímek obrazovky s přidáním klíče Sangrid":::
+    :::image type="content" source="media/howto-create-custom-rules/add-key.png" alt-text="Screenshot of Add Sangrid Key.":::
 
 
-## <a name="configure-httptrigger-function-to-use-sendgrid"></a>Konfigurace funkce HttpTrigger pro použití SendGrid
+## Configure HttpTrigger function to use SendGrid
 
-Pro posílání e-mailů pomocí SendGrid je nutné nakonfigurovat vazby pro funkci následujícím způsobem:
+To send emails with SendGrid, you need to configure the bindings for your function as follows:
 
-1. Vyberte **Integrace**.
-1. V části **http ($Return)** vyberte **Přidat výstup** .
-1. Vyberte **Odstranit.**
-1. Vyberte **+ Nový výstup**.
-1. Pro typ vazby zvolte **SendGrid**.
-1. Pro typ nastavení klíč rozhraní SendGrid API klikněte na nový.
-1. Zadejte *název* a *hodnotu* klíče rozhraní API SendGrid.
-1. Přidejte následující informace:
+1. Select **Integrate**.
+1. Choose **Add Output** under **HTTP ($return)**.
+1. Select **Delete.**
+1. Choose **+ New Output**.
+1. For Binding Type, then choose **SendGrid**.
+1. For SendGrid API Key Setting Type, click New.
+1. Enter the *Name* and *Value* of your SendGrid API key.
+1. Add the following information:
 
-| Nastavení | Hodnota |
+| Setting | Value |
 | ------- | ----- |
-| Název parametru zprávy | Zvolit jméno |
-| Na adresu | Vyberte název, který chcete adresovat. |
-| Z adresy | Vyberte jméno z adresy. |
-| Předmět zprávy | Zadejte hlavičku předmětu |
-| Text zprávy | Zadejte zprávu z integrace |
+| Message parameter name | Choose your name |
+| To address | Choose the name of your To Address |
+| From address | Choose the name of your From Address |
+| Message subject | Enter your subject header |
+| Message text | Enter the message from your integration |
 
-1. Vyberte **OK**.
+1. Select **OK**.
 
-    :::image type="content" source="media/howto-create-custom-rules/add-output.png" alt-text="Snímek obrazovky s přidáním výstupu SandGrid":::
+    :::image type="content" source="media/howto-create-custom-rules/add-output.png" alt-text="Screenshot of Add SandGrid Output.":::
 
 
-### <a name="test-the-function-works"></a>Testování funkce
+### Test the function works
 
-Chcete-li otestovat funkci na portálu, nejprve v dolní části editoru kódu vyberte možnost **protokoly** . Pak zvolte **test** napravo od editoru kódu. Jako **Text žádosti** použijte následující JSON:
+To test the function in the portal, first choose **Logs** at the bottom of the code editor. Then choose **Test** to the right of the code editor. Use the following JSON as the **Request body**:
 
 ```json
 [{"deviceid":"test-device-1","time":"2019-05-02T14:23:39.527Z"},{"deviceid":"test-device-2","time":"2019-05-02T14:23:50.717Z"},{"deviceid":"test-device-3","time":"2019-05-02T14:24:28.919Z"}]
@@ -228,9 +228,9 @@ Chcete-li otestovat funkci na portálu, nejprve v dolní části editoru kódu v
 
 Zprávy protokolu funkcí se zobrazí na panelu **protokoly** :
 
-    :::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="Function log output":::
+```:::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="Function log output":::
 
-Po několika minutách **obdrží e-mailová** adresa e-mail s následujícím obsahem:
+After a few minutes, the **To** email address receives an email with the following content:
 
 ```txt
 The following device(s) have stopped sending telemetry:
@@ -311,9 +311,11 @@ Toto řešení používá Stream Analytics dotaz k detekci, kdy se zařízení z
 
     :::image type="content" source="media/howto-create-custom-rules/stream-analytics.png" alt-text="Snímek obrazovky Stream Analytics.":::
 
-## <a name="configure-export-in-iot-central"></a>Konfigurace exportu v IoT Central
+## <a name="configure-export-in-iot-central"></a>Konfigurace exportu v IoT Central 
 
-Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) přejděte do IoT Central aplikace, kterou jste vytvořili ze šablony společnosti Contoso. V této části nakonfigurujete aplikaci pro streamování telemetrie z simulovaných zařízení do centra událostí. Konfigurace exportu:
+Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) přejděte na vytvořenou aplikaci IoT Central.
+
+V této části nakonfigurujete aplikaci pro streamování telemetrie z simulovaných zařízení do centra událostí. Konfigurace exportu:
 
 1. Přejděte na stránku pro **Export dat** , vyberte **+ Nový** a pak **Azure Event Hubs**.
 1. Pro konfiguraci exportu použijte následující nastavení a pak vyberte **Uložit**: 
@@ -322,13 +324,11 @@ Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) přejd
     | ------- | ----- |
     | Zobrazovaný název | Exportovat do Event Hubs |
     | Povoleno | Zapnout |
-    | Obor názvů služby Event Hubs | Název oboru názvů Event Hubs |
-    | Centrum událostí | centralexport |
-    | Měření | Zapnout |
-    | Zařízení | Vypnout |
-    | Šablony zařízení | Vypnout |
+    | Typ dat k exportu | Telemetrie |
+    | Obohacení | Zadejte požadovaný klíč/hodnotu, jak chcete exportovat exportovaná data. | 
+    | Cíl | Vytvořte nové a zadejte informace, kde se budou data exportovat. |
 
-    :::image type="content" source="media/howto-create-custom-rules/cde-configuration.png" alt-text="Snímek obrazovky s konfigurací průběžného exportu dat":::
+    :::image type="content" source="media/howto-create-custom-rules/cde-configuration.png" alt-text="Snímek obrazovky s exportem dat":::
 
 Než budete pokračovat, počkejte, než se **spustí** stav exportu.
 

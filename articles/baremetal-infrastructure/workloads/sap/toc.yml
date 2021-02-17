@@ -9,6 +9,7 @@
 - name: Návody
   items:
     - name: Správa jednotek instancí služby BareMetal v Azure
+      displayName: 'Azure CLI, az baremetalinstance, az baremetalinstance restart'
       href: baremetal-infrastructure-portal.md
 - name: Referenční informace
   items:

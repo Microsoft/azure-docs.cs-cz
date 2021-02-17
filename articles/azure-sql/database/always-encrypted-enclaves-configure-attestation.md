@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 51431bf0da9145e1b61da708942b675e4c3eea78
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 664733f3d4c4e4bf17440db0323580c5d2c8c2ce
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733810"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555668"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>Konfigurace Azure Attestation pro logický Server Azure SQL
 
@@ -114,7 +114,7 @@ Během pracovního postupu ověření identity logický Server Azure SQL, který
 
 ### <a name="use-azure-portal-to-assign-permission"></a>Přiřazení oprávnění pomocí Azure Portal
 
-Pokud chcete přiřadit identitu serveru SQL Azure k roli čtenáře ověření identity pro poskytovatele ověření identity, postupujte podle obecných pokynů v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md). Když jste v podokně **Přidat přiřazení role** :
+Pokud chcete přiřadit identitu serveru SQL Azure k roli čtenáře ověření identity pro poskytovatele ověření identity, postupujte podle obecných pokynů v tématu [přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md). Když jste v podokně **Přidat přiřazení role** :
 
 1. V rozevíracím seznamu **role** vyberte roli **čtenáře ověření identity** .
 1. Do pole **Vybrat** zadejte název vašeho serveru SQL Azure, který chcete vyhledat.
@@ -143,7 +143,7 @@ $attestationResourceGroupName = "<attestation provider resource group name>"
 New-AzRoleAssignment -ObjectId $server.Identity.PrincipalId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName
 ```
 
-Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md#add-role-assignment-examples).
+Další informace najdete v tématu [přiřazení rolí Azure pomocí Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md#assign-role-examples).
 
 ## <a name="next-steps"></a>Další kroky
 

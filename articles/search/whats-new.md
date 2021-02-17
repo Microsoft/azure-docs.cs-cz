@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 02/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 13cb22c178be29af71b57d0f50fdbd0e95718069
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 2b6685952aee1c8600321070794f001e0881604b
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104599"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535208"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -21,14 +21,14 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 
 ## <a name="february-2021"></a>Únor 2021
 
-|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Dostupnost  |
+|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Popis | Dostupnost  |
 |------------------------------|---------------|---------------|
 | [Resetovat dokumenty (Preview)](search-howto-run-reset-indexers.md) |  Znovu zpracuje jednotlivě vybrané dokumenty hledání v úlohách indexeru. | [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/index-preview) |
 | [Zóny dostupnosti](search-performance-optimization.md#availability-zones)| Vyhledávací služby se dvěma nebo více replikami v určitých oblastech, jak je uvedeno v [tomto článku](search-performance-optimization.md#availability-zones), získají odolnost proti chybám ve dvou nebo více různých fyzických umístěních.  | Oblast a datum vytvoření služby vyhledávání, která určuje dostupnost. Podrobnosti najdete v dokumentu ladění výkonu. |
 
 ## <a name="january-2021"></a>Leden 2021
 
-|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Dostupnost  |
+|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Popis | Dostupnost  |
 |------------------------------|-------------|---------------|
 | [Akcelerátor řešení pro Azure Kognitivní hledání a QnA Maker](https://github.com/Azure-Samples/search-qna-maker-accelerator) | Vyžádá si otázky a odpovědi z dokumentu a navrhne relevantní odpovědi. Živou ukázkovou aplikaci najdete na adrese [https://aka.ms/qnaWithAzureSearchDemo](https://aka.ms/qnaWithAzureSearchDemo) .  | Open source projekt (bez smlouvy SLA) |
 
@@ -77,7 +77,7 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 |Listopad | [Dovednost překladu textu](cognitive-search-skill-text-translation.md) | Vnímání znalostí používané při indexování, který vyhodnocuje a překládá text. Všeobecně k dispozici.|
 |Listopad | [Šablony Power BI](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md) | Šablona pro vizualizaci obsahu ve znalostní bázi Store |
 |Listopad | [Azure Data Lake Storage Gen2 (Preview)](search-howto-index-azure-data-lake-storage.md), [Cosmos DB Gremlin API (preview)](search-howto-index-cosmosdb.md)a [Cosmos DB rozhraní API Cassandra (Preview)](search-howto-index-cosmosdb.md) | Nové zdroje dat indexeru ve verzi Public Preview. |
-|Červenec | [Podpora cloudu Azure Government](../azure-government/compare-azure-government-global-azure.md#azure-cognitive-search) | Všeobecně k dispozici.|
+|Červenec | [Podpora cloudu Azure Government](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia&products=search) | Všeobecně k dispozici.|
 
 <a name="new-service-name"></a>
 

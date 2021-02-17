@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 9b1a2f87498d7869b21e6a8ab44fc1f9660456ad
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e25db6213c99afaa46732831534956b01adba0b4
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648289"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555221"
 ---
 # <a name="tutorial-grant-a-group-access-to-azure-resources-using-azure-powershell"></a>Kurz: udělení přístupu skupině k prostředkům Azure pomocí Azure PowerShell
 
@@ -46,10 +46,10 @@ Pro absolvování tohoto kurzu potřebujete:
 
 Když ve službě Azure RBAC udělíte přístup, vytvoříte přiřazení role. Přiřazení role se skládá ze tří prvků: objekt zabezpečení, definice role a obor. Tady jsou dvě přiřazení rolí, která v tomto kurzu provedete:
 
-| Objekt zabezpečení | Definice role | Rozsah |
+| Objekt zabezpečení | Definice role | Obor |
 | --- | --- | --- |
-| Skupina<br>(RBAC Tutorial Group) | [Čtenář](built-in-roles.md#reader) | Předplatné |
-| Skupina<br>(RBAC Tutorial Group)| [Přispěvatel](built-in-roles.md#contributor) | Skupina prostředků<br>(rbac-tutorial-resource-group) |
+| Group (Skupina)<br>(RBAC Tutorial Group) | [Čtenář](built-in-roles.md#reader) | Předplatné |
+| Group (Skupina)<br>(RBAC Tutorial Group)| [Přispěvatel](built-in-roles.md#contributor) | Skupina prostředků<br>(rbac-tutorial-resource-group) |
 
    ![Přiřazení rolí pro skupinu](./media/tutorial-role-assignments-group-powershell/rbac-role-assignments.png)
 
@@ -294,4 +294,4 @@ Pokud chcete vyčistit prostředky vytvořené v tomto kurzu, odstraňte skupinu
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přidání nebo odebrání přiřazení rolí v Azure pomocí Azure PowerShellu](role-assignments-powershell.md)
+> [Přiřazení rolí Azure pomocí Azure PowerShell](role-assignments-powershell.md)

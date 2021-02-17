@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 3112c93e0877a8441875e3c7627c2a7b84ac8ab1
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 8ba24d5a59beade1429b9d86ed549f1dae3c2f1f
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808539"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552501"
 ---
 > [!NOTE]
 > V tomto průvodci se k provádění volání REST API používá oblé. K dispozici je také [ukázkový kód na GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/FormRecognizer/rest) , který ukazuje, jak volat rozhraní REST API pomocí Pythonu.
@@ -85,9 +85,14 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeR
 
 Dostanete `200 (success)` odpověď s obsahem JSON.
 
-Podívejte se na následující obrázek faktury a příslušný výstup JSON. Výstup byl zkrácen pro zjednodušení. `"readResults"`Uzel obsahuje všechny řádky textu s příslušným umístěním ohraničovacího rámečku na stránce. `"selectionMarks"`Uzel (ve verzi 2.1 Preview) zobrazuje každou značku výběru (zaškrtávací políčko, přepínač) a zda má stav "vybráno" nebo "nevybrané". `"pageResults"`Oddíl obsahuje extrahované tabulky. Pro každou tabulku jsou extrahovány řádky text, řádek a sloupec, řádková a sloupec, ohraničovací rámeček a další.
+Podívejte se na následující obrázek faktury a příslušný výstup JSON.
+* `"readResults"`Uzel obsahuje všechny řádky textu s příslušným umístěním ohraničovacího rámečku na stránce. 
+* `"selectionMarks"`Uzel (ve verzi 2.1 Preview) zobrazuje každou značku výběru (zaškrtávací políčko, přepínač) a zda má stav "vybráno" nebo "nevybrané". 
+* `"pageResults"`Oddíl obsahuje extrahované tabulky. Pro každou tabulku jsou extrahovány řádky text, řádek a sloupec, řádková a sloupec, ohraničovací rámeček a další.
 
 :::image type="content" source="../../media/contoso-invoice.png" alt-text="Dokument contoso pro výpis projektu s tabulkou":::
+
+Tento výstup byl zkrácen pro zjednodušení. Podívejte se na [úplný ukázkový výstup na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-layout-output.json).
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)    
 ```json
@@ -355,11 +360,16 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoic
 
 ### <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Dostanete `200 (Success)` odpověď s výstupem JSON. `"readResults"`Pole obsahuje všechny řádky textu, které byly extrahovány z faktury, `"pageResults"` zahrnuje tabulky a výběry, které byly extrahovány z faktury a `"documentResults"` pole obsahuje informace o klíč/hodnotě pro nejrelevantnější části faktury.
+Dostanete `200 (Success)` odpověď s výstupem JSON. 
+* `"readResults"`Pole obsahuje všechny řádky textu, které byly extrahovány z faktury.
+* `"pageResults"`Obsahuje tabulky a výběry, které jsou extrahovány z faktury.
+* `"documentResults"`Pole obsahuje informace o klíč/hodnotě pro nejrelevantnější části faktury.
 
-Podívejte se na následující dokument faktury a příslušný výstup JSON. Obsah JSON byl zkrácen pro čitelnost.
+Podívejte se na následující dokument faktury a příslušný výstup JSON. 
 
 * [Ukázková faktura](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-invoice.pdf)
+
+Tento obsah JSON se zkrátil kvůli čitelnosti. Podívejte se na [úplný ukázkový výstup na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-invoice-output.json).
 
 ```json
 {
@@ -716,7 +726,7 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview/custom/models/{model
 
 Ve vlastních modelech vyškolených bez popisků jsou přidružení párů klíč/hodnota a tabulky v `"pageResults"` uzlu výstupu JSON. Ve vlastních modelech vyškolených pomocí popisků jsou přidružení dvojic klíč/hodnota v `"documentResults"` uzlu. Pokud jste zadali také extrakci prostého textu prostřednictvím parametru adresy URL *includeTextDetails* , `"readResults"` uzel zobrazí obsah a pozice veškerého textu v dokumentu.
 
-Tento ukázkový výstup JSON byl zkrácen pro zjednodušení.
+Tento ukázkový výstup JSON byl zkrácen pro zjednodušení. Podívejte se na [úplný ukázkový výstup na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/analyze-result-invoice-6.pdf.json).
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)
 ```JSON
@@ -1041,13 +1051,15 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/a
 
 ### <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Dostanete `200 (Success)` odpověď s výstupem JSON. První pole `"status"` indikuje stav operace. Pokud je operace dokončena, `"readResults"` pole obsahuje každý řádek textu, který byl extrahován z účtenky, a `"documentResults"` pole obsahuje informace o klíč/hodnotě pro nejrelevantnější části účtenky. Pokud operace není dokončena, hodnota `"status"` bude `"running"` nebo `"notStarted"` a později byste měli zavolat rozhraní API, a to buď ručně, nebo prostřednictvím skriptu. Pro mezi voláními doporučujeme interval o délce jedné sekundy nebo více.
+Dostanete `200 (Success)` odpověď s výstupem JSON. První pole `"status"` indikuje stav operace. Pokud operace není dokončena, hodnota `"status"` bude `"running"` nebo `"notStarted"` a později byste měli zavolat rozhraní API, a to buď ručně, nebo prostřednictvím skriptu. Pro mezi voláními doporučujeme interval o délce jedné sekundy nebo více.
 
-Podívejte se na následující obrázek účtenky a příslušný výstup JSON. Výstup byl zkrácen z důvodu čitelnosti.
+`"readResults"`Uzel obsahuje veškerý rozpoznaný text (Pokud nastavíte volitelný parametr *includeTextDetails* na hodnotu `true` ). Text je uspořádán podle stránky, potom podle řádku, podle jednotlivých slov. `"documentResults"`Uzel obsahuje hodnoty specifické pro příjem, které model zjistil. Tady najdete užitečné páry klíč/hodnota, jako je daň, celková, obchodní adresa atd.
+
+Podívejte se na následující obrázek účtenky a příslušný výstup JSON.
 
 ![Účtenka z obchodu contoso](../../media/contoso-allinone.jpg)
 
-`"readResults"`Uzel obsahuje veškerý rozpoznaný text (Pokud nastavíte volitelný parametr *includeTextDetails* na hodnotu `true` ). Text je uspořádán podle stránky, potom podle řádku, podle jednotlivých slov. `"documentResults"`Uzel obsahuje hodnoty specifické pro příjem, které model zjistil. Tady najdete užitečné páry klíč/hodnota, jako je daň, celková, obchodní adresa atd.
+Tento výstup se zkrátil kvůli čitelnosti. Podívejte se na [úplný ukázkový výstup na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/receipt-result.json).
 
 ```json
 {
@@ -1386,11 +1398,11 @@ Podívejte se na následující obrázek účtenky a příslušný výstup JSON.
 Tato část ukazuje, jak pomocí předem připraveného modelu analyzovat a extrahovat běžná pole z anglických vizitek. Další informace o analýze vizitky najdete v tématu [koncepční příručka pro obchodní karty](../../concept-business-cards.md). Pokud chcete začít s analýzou vizitky, zavoláte rozhraní API pro **[analýzu vizitky](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)** pomocí příkazu kudrlinkou níže. Před spuštěním příkazu proveďte tyto změny:
 
 1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
-1. Nahraďte `{your receipt URL}` adresou URL obrázku účtenky.
+1. Nahraďte `{your business card URL}` adresou URL obrázku účtenky.
 1. Nahraďte `{subscription key}` klíčem předplatného, který jste zkopírovali z předchozího kroku.
 
 ```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your business card URL}'}"
 ```
 
 Dostanete `202 (Success)` odpověď, která zahrnuje hlavičku **Operations – Location Location** . Hodnota této hlavičky obsahuje ID operace, pomocí které můžete zadat dotaz na stav asynchronní operace a získat výsledky.
@@ -1414,11 +1426,13 @@ curl -v -X GET "https://westcentralus.api.cognitive.microsoft.com/formrecognizer
 
 ### <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Dostanete `200 (Success)` odpověď s výstupem JSON. `"readResults"`Uzel obsahuje veškerý rozpoznaný text. Text je uspořádán podle stránky, potom podle řádku, podle jednotlivých slov. `"documentResults"`Uzel obsahuje hodnoty specifické pro obchodní karty, které model zjistil. Tady najdete užitečné kontaktní údaje, jako je název společnosti, jméno, příjmení, telefonní číslo atd.
+Dostanete `200 (Success)` odpověď s výstupem JSON. 
+
+`"readResults"`Uzel obsahuje veškerý rozpoznaný text. Text je uspořádán podle stránky, potom podle řádku, podle jednotlivých slov. `"documentResults"`Uzel obsahuje hodnoty specifické pro obchodní karty, které model zjistil. Tady najdete užitečné kontaktní údaje, jako je název společnosti, jméno, příjmení, telefonní číslo atd.
 
 ![Firemní karta od společnosti Contoso](../../media/business-card-english.jpg)
 
-Tato ukázka znázorňuje výstup JSON vrácený nástrojem pro rozpoznávání formulářů. Bylo zkráceno pro čtení.
+Tento ukázkový výstup JSON se zkracuje pro čitelnost. Podívejte se na [úplný ukázkový výstup na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-result.json).
 
 ```json
 {

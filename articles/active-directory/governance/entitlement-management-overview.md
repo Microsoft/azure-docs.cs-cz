@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c9815355b26a9c14c02110e4bb5fff4f998d2105
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7efaaf9cbfdb13c80ce653c99d05da451c2b8968
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032028"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547311"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Co je správa nároků Azure AD?
 
@@ -167,12 +167,13 @@ Další informace o licencích najdete v tématu [přiřazení nebo odebrání l
 
 Tady je několik ukázkových scénářů licencí, které vám pomůžou určit počet licencí, které musíte mít.
 
-| Scénář | Výpočet | Počet licencí |
+| Scenario | Výpočet | Počet licencí |
 | --- | --- | --- |
 | Globální správce v Woodgrove Bank vytvoří počáteční katalogy a deleguje úlohy správy na 6 dalších uživatelů. Jedna ze zásad určuje, že **Všichni zaměstnanci** (2 000 zaměstnanců) si můžou vyžádat konkrétní sadu přístupových balíčků. 150 zaměstnanci požadují balíčky pro přístup. | 2 000 zaměstnanců, kteří **můžou** žádat o přístup k balíčkům | 2 000 |
 | Globální správce v Woodgrove Bank vytvoří počáteční katalogy a deleguje úlohy správy na 6 dalších uživatelů. Jedna ze zásad určuje, že **Všichni zaměstnanci** (2 000 zaměstnanců) si můžou vyžádat konkrétní sadu přístupových balíčků. Jiné zásady určují, že někteří uživatelé z **partnerských společností Contoso** (Guests) můžou vyžádat stejné balíčky přístupu, které se vztahují ke schválení. Společnost Contoso má 30 000 uživatelů. 150 zaměstnanci požadují balíčky pro přístup a 10 500 uživatelům požadavek na přístup k žádosti společnosti Contoso. | 2 000 zaměstnanců + 500 uživatelé typu Host od společnosti Contoso, kteří překračují poměr 1:5 (10 500-(2 000 * 5)) | 2,500 |
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kurz: vytvoření prvního balíčku pro přístup](entitlement-management-access-package-first.md)
+- Pokud vás zajímá použití Azure Portal ke správě přístupu k prostředkům, přečtěte si téma [kurz: Správa přístupu k prostředkům – Azure Portal](entitlement-management-access-package-first.md).
+- Pokud vás zajímá použití Microsoft Graph ke správě přístupu k prostředkům, přečtěte si téma [kurz: Správa přístupu k prostředkům – Microsoft Graph](/graph/tutorial-access-package-api?toc=/azure/active-directory/governance/toc.json&bc=/azure/active-directory/governance/breadcrumb/toc.json)
 - [Obvyklé scénáře](entitlement-management-scenarios.md)

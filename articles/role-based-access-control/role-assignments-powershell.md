@@ -1,22 +1,22 @@
 ---
-title: Přidání nebo odebrání přiřazení rolí Azure pomocí Azure PowerShell – Azure RBAC
+title: Přiřazení rolí Azure pomocí Azure PowerShell – Azure RBAC
 description: Naučte se, jak udělit přístup k prostředkům Azure pro uživatele, skupiny, instanční objekty nebo spravované identity pomocí Azure PowerShell a řízení přístupu na základě role v Azure (Azure RBAC).
 services: active-directory
 author: rolyon
-manager: mtillman
+manager: daveba
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/25/2020
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: 3bb09133ba6991554072b4bf68b5306c78f868a7
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 00f663b90f34f3b557329692f844bbbc1bf3207d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964282"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556796"
 ---
-# <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Přidání nebo odebrání přiřazení rolí v Azure pomocí Azure PowerShellu
+# <a name="assign-azure-roles-using-azure-powershell"></a>Přiřazení rolí Azure pomocí Azure PowerShell
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Tento článek popisuje, jak přiřadit role pomocí Azure PowerShell.
 
@@ -24,19 +24,19 @@ ms.locfileid: "97964282"
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující:
+K přiřazení rolí musíte mít:
 
-- `Microsoft.Authorization/roleAssignments/write`a `Microsoft.Authorization/roleAssignments/delete` oprávnění, jako je například správce nebo [vlastník](built-in-roles.md#owner) [přístupu uživatele](built-in-roles.md#user-access-administrator)
+- `Microsoft.Authorization/roleAssignments/write`oprávnění, jako je například správce nebo [vlastník](built-in-roles.md#owner) [přístupu uživatele](built-in-roles.md#user-access-administrator)
 - [PowerShell v Azure Cloud Shell](../cloud-shell/overview.md) nebo [Azure PowerShell](/powershell/azure/install-az-ps)
 - Účet, který použijete ke spuštění příkazu prostředí PowerShell, musí mít `Directory.Read.All` oprávnění Microsoft Graph.
 
-## <a name="steps-to-add-a-role-assignment"></a>Kroky pro přidání přiřazení role
+## <a name="steps-to-assign-an-azure-role"></a>Postup přiřazení role Azure
 
-Když v Azure RBAC udělíte přístup, přidáte přiřazení role. Přiřazení role se skládá ze tří prvků: objekt zabezpečení, definice role a obor. Chcete-li přidat přiřazení role, postupujte podle těchto kroků.
+Přiřazení role se skládá ze tří prvků: objekt zabezpečení, definice role a obor.
 
 ### <a name="step-1-determine-who-needs-access"></a>Krok 1: určení toho, kdo potřebuje přístup
 
-Roli můžete přiřadit uživateli, skupině, objektu služby nebo spravované identitě. Chcete-li přidat přiřazení role, bude pravděpodobně nutné zadat jedinečné ID objektu. ID má formát: `11111111-1111-1111-1111-111111111111` . ID můžete získat pomocí Azure Portal nebo Azure PowerShell.
+Roli můžete přiřadit uživateli, skupině, objektu služby nebo spravované identitě. K přiřazení role možná budete muset zadat jedinečné ID objektu. ID má formát: `11111111-1111-1111-1111-111111111111` . ID můžete získat pomocí Azure Portal nebo Azure PowerShell.
 
 **Uživatel**
 
@@ -74,7 +74,7 @@ Get-AzADServicePrincipal -SearchString <principalName>
 (Get-AzADServicePrincipal -DisplayName <principalName>).id
 ```
     
-### <a name="step-2-find-the-appropriate-role"></a>Krok 2: vyhledání příslušné role
+### <a name="step-2-select-the-appropriate-role"></a>Krok 2: vyberte příslušnou roli.
 
 Oprávnění se seskupují do rolí. Můžete vybrat ze seznamu několika [předdefinovaných rolí Azure](built-in-roles.md) nebo můžete použít vlastní role. Osvědčeným postupem je udělit přístup s nejmenším možným oprávněním, takže se nepřiřazují širší role.
 
@@ -128,9 +128,9 @@ Pro rozsah skupiny pro správu potřebujete název skupiny pro správu. Název m
 Get-AzManagementGroup
 ```
     
-### <a name="step-4-add-role-assignment"></a>Krok 4: přidání přiřazení role
+### <a name="step-4-assign-role"></a>Krok 4: přiřazení role
 
-K přidání přiřazení role použijte příkaz [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) . V závislosti na rozsahu má příkaz obvykle jeden z následujících formátů.
+K přiřazení role použijte příkaz [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) . V závislosti na rozsahu má příkaz obvykle jeden z následujících formátů.
 
 **Obor prostředku**
 
@@ -190,9 +190,9 @@ New-AzRoleAssignment -ObjectId <objectId> `
 -Scope /providers/Microsoft.Management/managementGroups/<groupName>
 ``` 
     
-## <a name="add-role-assignment-examples"></a>Přidat příklady přiřazení rolí
+## <a name="assign-role-examples"></a>Přiřazení příkladů rolí
 
-#### <a name="add-role-assignment-for-all-blob-containers-in-a-storage-account-resource-scope"></a>Přidání přiřazení role pro všechny kontejnery objektů BLOB v oboru prostředků účtu úložiště
+#### <a name="assign-a-role-for-all-blob-containers-in-a-storage-account-resource-scope"></a>Přiřaďte roli pro všechny kontejnery objektů BLOB v oboru prostředků účtu úložiště.
 
 Přiřadí roli [Přispěvatel dat objektu BLOB služby Storage](built-in-roles.md#storage-blob-data-contributor) k instančnímu objektu s ID *55555555-5555-5555-5555-555555555555* v oboru prostředků pro účet úložiště s názvem *storage12345*.
 
@@ -212,7 +212,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-a-specific-blob-container-resource-scope"></a>Přidání přiřazení role pro konkrétní obor prostředku kontejneru objektů BLOB
+#### <a name="assign-a-role-for-a-specific-blob-container-resource-scope"></a>Přiřazení role ke konkrétnímu oboru prostředků kontejneru objektů BLOB
 
 Přiřadí roli [Přispěvatel dat objektu BLOB služby Storage](built-in-roles.md#storage-blob-data-contributor) k instančnímu objektu s ID *55555555-5555-5555-5555-555555555555* v oboru prostředků pro kontejner objektů BLOB s názvem *BLOB-Container-01*.
 
@@ -233,7 +233,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-a-group-in-a-specific-virtual-network-resource-scope"></a>Přidání přiřazení role pro skupinu v konkrétním oboru prostředků virtuální sítě
+#### <a name="assign-a-role-for-a-group-in-a-specific-virtual-network-resource-scope"></a>Přiřazení role pro skupinu v konkrétním oboru prostředků virtuální sítě
 
 Přiřadí roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) ke skupině *Pharma Sales Admins* s ID aaaaaaaa-AAAA-AAAA-AAAA-aaaaaaaaaaaa v oboru prostředků pro virtuální síť s názvem *Pharma-Sales-Project-Network*.
 
@@ -258,7 +258,7 @@ ObjectType         : Group
 CanDelegate        : False
 ```
 
-#### <a name="add-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>Přidání přiřazení role pro uživatele v oboru skupiny prostředků
+#### <a name="assign-a-role-for-a-user-at-a-resource-group-scope"></a>Přiřazení role pro uživatele v oboru skupiny prostředků
 
 Přiřadí roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) , aby *patlong uživatele \@ contoso.com* v oboru skupiny prostředků *Pharma-Sales* .
 
@@ -297,7 +297,7 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>Přidání přiřazení role pro uživatele pomocí jedinečného ID role v oboru skupiny prostředků
+#### <a name="assign-a-role-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>Přiřazení role pro uživatele pomocí jedinečného ID role v oboru skupiny prostředků
 
 V některých případech se může stát, že se název role změní například takto:
 
@@ -324,7 +324,7 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-an-application-at-a-resource-group-scope"></a>Přidání přiřazení role pro aplikaci do oboru skupiny prostředků
+#### <a name="assign-a-role-for-an-application-at-a-resource-group-scope"></a>Přiřazení role pro aplikaci v oboru skupiny prostředků
 
 Přiřadí roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) k aplikaci s ID objektu zabezpečení služby 77777777-7777-7777-7777-777777777777 v oboru skupiny prostředků *Pharma-Sales* .
 
@@ -344,7 +344,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-a-user-at-a-subscription-scope"></a>Přidání přiřazení role pro uživatele v oboru předplatného
+#### <a name="assign-a-role-for-a-user-at-a-subscription-scope"></a>Přiřazení role pro uživatele v oboru předplatného
 
 Přiřadí roli [Čtenář](built-in-roles.md#reader) k uživateli *annm \@ example.com* v oboru předplatného.
 
@@ -364,7 +364,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-a-user-at-a-management-group-scope"></a>Přidání přiřazení role pro uživatele v oboru skupiny pro správu
+#### <a name="assign-a-role-for-a-user-at-a-management-group-scope"></a>Přiřazení role pro uživatele v oboru skupiny pro správu
 
 Přiřadí roli [Čtenář fakturace](built-in-roles.md#billing-reader) pro uživatele *Alain \@ example.com* v oboru skupiny pro správu.
 
@@ -383,36 +383,6 @@ ObjectId           : 44444444-4444-4444-4444-444444444444
 ObjectType         : User
 CanDelegate        : False
 ```
-
-## <a name="remove-a-role-assignment"></a>Odebrání přiřazení role
-
-Pokud chcete v Azure RBAC odebrat přístup, odeberte přiřazení role pomocí funkce [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment).
-
-Následující příklad odebere přiřazení role [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) z uživatele *patlong \@ contoso.com* ve skupině prostředků *Pharma-Sales* :
-
-```azurepowershell
-PS C:\> Remove-AzRoleAssignment -SignInName patlong@contoso.com `
--RoleDefinitionName "Virtual Machine Contributor" `
--ResourceGroupName pharma-sales
-```
-
-Odebere roli [Čtenář](built-in-roles.md#reader) z týmové skupiny *Ann Mack* s ID 22222222-2222-2222-2222-222222222222 v oboru předplatného.
-
-```azurepowershell
-PS C:\> Remove-AzRoleAssignment -ObjectId 22222222-2222-2222-2222-222222222222 `
--RoleDefinitionName "Reader" `
--Scope "/subscriptions/00000000-0000-0000-0000-000000000000"
-```
-
-Odebere roli [Čtenář fakturace](built-in-roles.md#billing-reader) z uživatele *Alain \@ example.com* v oboru skupiny pro správu.
-
-```azurepowershell
-PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com `
--RoleDefinitionName "Billing Reader" `
--Scope "/providers/Microsoft.Management/managementGroups/marketing-group"
-```
-
-Pokud se zobrazí chybová zpráva: "zadané informace nejsou namapovány na přiřazení role", ujistěte se, že jste zadali také `-Scope` `-ResourceGroupName` parametry nebo. Další informace najdete v tématu [řešení potíží s Azure RBAC](troubleshooting.md#role-assignments-with-identity-not-found).
 
 ## <a name="next-steps"></a>Další kroky
 

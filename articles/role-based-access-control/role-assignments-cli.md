@@ -1,5 +1,5 @@
 ---
-title: Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI – Azure RBAC
+title: Přiřazení rolí Azure pomocí Azure CLI – Azure RBAC
 description: Naučte se, jak udělit přístup k prostředkům Azure pro uživatele, skupiny, instanční objekty nebo spravované identity pomocí Azure CLI a řízení přístupu na základě role Azure (Azure RBAC).
 services: active-directory
 author: rolyon
@@ -10,31 +10,31 @@ ms.workload: identity
 ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: e1aa4945391e159f99c82fecff99c238ae0e7e93
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: ee356f32b6799c6182ec1c9e061a35271a4bbc23
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964401"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556975"
 ---
-# <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Přidání nebo odebrání přiřazení rolí v Azure pomocí Azure CLI
+# <a name="assign-azure-roles-using-azure-cli"></a>Přiřazení rolí Azure pomocí Azure CLI
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Tento článek popisuje, jak přiřadit role pomocí Azure CLI.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující:
+K přiřazení rolí musíte mít:
 
-- `Microsoft.Authorization/roleAssignments/write`a `Microsoft.Authorization/roleAssignments/delete` oprávnění, jako je například správce nebo [vlastník](built-in-roles.md#owner) [přístupu uživatele](built-in-roles.md#user-access-administrator)
+- `Microsoft.Authorization/roleAssignments/write`oprávnění, jako je například správce nebo [vlastník](built-in-roles.md#owner) [přístupu uživatele](built-in-roles.md#user-access-administrator)
 - [Bash v Azure Cloud Shell](../cloud-shell/overview.md) nebo [Azure CLI](/cli/azure)
 
-## <a name="steps-to-add-a-role-assignment"></a>Kroky pro přidání přiřazení role
+## <a name="steps-to-assign-an-azure-role"></a>Postup přiřazení role Azure
 
-Když v Azure RBAC udělíte přístup, přidáte přiřazení role. Přiřazení role se skládá ze tří prvků: objekt zabezpečení, definice role a obor. Chcete-li přidat přiřazení role, postupujte podle těchto kroků.
+Přiřazení role se skládá ze tří prvků: objekt zabezpečení, definice role a obor.
 
 ### <a name="step-1-determine-who-needs-access"></a>Krok 1: určení toho, kdo potřebuje přístup
 
-Roli můžete přiřadit uživateli, skupině, objektu služby nebo spravované identitě. Chcete-li přidat přiřazení role, bude pravděpodobně nutné zadat jedinečné ID objektu. ID má formát: `11111111-1111-1111-1111-111111111111` . ID můžete získat pomocí Azure Portal nebo rozhraní příkazového řádku Azure CLI.
+Roli můžete přiřadit uživateli, skupině, objektu služby nebo spravované identitě. K přiřazení role možná budete muset zadat jedinečné ID objektu. ID má formát: `11111111-1111-1111-1111-111111111111` . ID můžete získat pomocí Azure Portal nebo rozhraní příkazového řádku Azure CLI.
 
 **Uživatel**
 
@@ -75,7 +75,7 @@ Pokud chcete jenom vypsat spravované identity přiřazené uživateli, můžete
 az identity list
 ```
     
-### <a name="step-2-find-the-appropriate-role"></a>Krok 2: vyhledání příslušné role
+### <a name="step-2-select-the-appropriate-role"></a>Krok 2: vyberte příslušnou roli.
 
 Oprávnění se seskupují do rolí. Můžete vybrat ze seznamu několika [předdefinovaných rolí Azure](built-in-roles.md) nebo můžete použít vlastní role. Osvědčeným postupem je udělit přístup s nejmenším možným oprávněním, takže se nepřiřazují širší role.
 
@@ -129,9 +129,9 @@ Pro rozsah skupiny pro správu potřebujete název skupiny pro správu. Název n
 az account management-group list --query "[].{name:name, id:id}" --output tsv
 ```
     
-### <a name="step-4-add-role-assignment"></a>Krok 4: přidání přiřazení role
+### <a name="step-4-assign-role"></a>Krok 4: přiřazení role
 
-Přiřazení role přidáte pomocí příkazu [AZ role Assignment Create](/cli/azure/role/assignment#az_role_assignment_create) . V závislosti na rozsahu má příkaz obvykle jeden z následujících formátů.
+K přiřazení role použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az_role_assignment_create) . V závislosti na rozsahu má příkaz obvykle jeden z následujících formátů.
 
 **Obor prostředku**
 
@@ -181,9 +181,9 @@ Následující příklad ukazuje příklad výstupu při přiřazení role [Při
 }
 ```
     
-## <a name="add-role-assignment-examples"></a>Přidat příklady přiřazení rolí
+## <a name="assign-role-examples"></a>Přiřazení příkladů rolí
 
-#### <a name="add-role-assignment-for-all-blob-containers-in-a-storage-account-resource-scope"></a>Přidání přiřazení role pro všechny kontejnery objektů BLOB v oboru prostředků účtu úložiště
+#### <a name="assign-a-role-for-all-blob-containers-in-a-storage-account-resource-scope"></a>Přiřaďte roli pro všechny kontejnery objektů BLOB v oboru prostředků účtu úložiště.
 
 Přiřadí roli [Přispěvatel dat objektu BLOB služby Storage](built-in-roles.md#storage-blob-data-contributor) k instančnímu objektu s ID *55555555-5555-5555-5555-555555555555* v oboru prostředků pro účet úložiště s názvem *storage12345*.
 
@@ -193,7 +193,7 @@ az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg/providers/Microsoft.Storage/storageAccounts/storage12345"
 ```
 
-#### <a name="add-role-assignment-for-a-specific-blob-container-resource-scope"></a>Přidání přiřazení role pro konkrétní obor prostředku kontejneru objektů BLOB
+#### <a name="assign-a-role-for-a-specific-blob-container-resource-scope"></a>Přiřazení role ke konkrétnímu oboru prostředků kontejneru objektů BLOB
 
 Přiřadí roli [Přispěvatel dat objektu BLOB služby Storage](built-in-roles.md#storage-blob-data-contributor) k instančnímu objektu s ID *55555555-5555-5555-5555-555555555555* v oboru prostředků pro kontejner objektů BLOB s názvem *BLOB-Container-01*.
 
@@ -203,7 +203,7 @@ az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg/providers/Microsoft.Storage/storageAccounts/storage12345/blobServices/default/containers/blob-container-01"
 ```
 
-#### <a name="add-role-assignment-for-a-group-in-a-specific-virtual-network-resource-scope"></a>Přidání přiřazení role pro skupinu v konkrétním oboru prostředků virtuální sítě
+#### <a name="assign-a-role-for-a-group-in-a-specific-virtual-network-resource-scope"></a>Přiřazení role pro skupinu v konkrétním oboru prostředků virtuální sítě
 
 Přiřadí roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) ke skupině *týmu Ann Mack* s ID 22222222-2222-2222-2222-222222222222 v oboru prostředků pro virtuální síť s názvem *Pharma-Sales-Project-Network*.
 
@@ -213,7 +213,7 @@ az role assignment create --assignee "22222222-2222-2222-2222-222222222222" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/pharma-sales/providers/Microsoft.Network/virtualNetworks/pharma-sales-project-network"
 ```
 
-#### <a name="add-role-assignment-for-a-user-at-a-resource-group-scope"></a>Přidání přiřazení role pro uživatele v oboru skupiny prostředků
+#### <a name="assign-a-role-for-a-user-at-a-resource-group-scope"></a>Přiřazení role pro uživatele v oboru skupiny prostředků
 
 Přiřadí roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) , aby *patlong uživatele \@ contoso.com* v oboru skupiny prostředků *Pharma-Sales* .
 
@@ -223,7 +223,7 @@ az role assignment create --assignee "patlong@contoso.com" \
 --resource-group "pharma-sales"
 ```
 
-#### <a name="add-role-assignment-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>Přidání přiřazení role pro uživatele pomocí jedinečného ID role v oboru skupiny prostředků
+#### <a name="assign-a-role-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>Přiřazení role pro uživatele pomocí jedinečného ID role v oboru skupiny prostředků
 
 V některých případech se může stát, že se název role změní například takto:
 
@@ -240,7 +240,7 @@ az role assignment create --assignee "patlong@contoso.com" \
 --resource-group "pharma-sales"
 ```
 
-#### <a name="add-role-assignment-for-all-blob-containers-at-a-resource-group-scope"></a>Přidání přiřazení role pro všechny kontejnery objektů BLOB v oboru skupiny prostředků
+#### <a name="assign-a-role-for-all-blob-containers-at-a-resource-group-scope"></a>Přiřazení role pro všechny kontejnery objektů BLOB v oboru skupiny prostředků
 
 Přiřadí roli [Přispěvatel dat objektu BLOB služby Storage](built-in-roles.md#storage-blob-data-contributor) k instančnímu objektu s ID *55555555-5555-5555-5555-555555555555* v oboru skupiny prostředků *RG úložiště* .
 
@@ -258,7 +258,7 @@ az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg"
 ```
 
-#### <a name="add-role-assignment-for-an-application-at-a-resource-group-scope"></a>Přidání přiřazení role pro aplikaci do oboru skupiny prostředků
+#### <a name="assign-a-role-for-an-application-at-a-resource-group-scope"></a>Přiřazení role pro aplikaci v oboru skupiny prostředků
 
 Přiřadí roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) k aplikaci s ID objektu zabezpečení služby 44444444-4444-4444-4444-444444444444 v oboru skupiny prostředků *Pharma-Sales* .
 
@@ -268,11 +268,11 @@ az role assignment create --assignee "44444444-4444-4444-4444-444444444444" \
 --resource-group "pharma-sales"
 ```
 
-#### <a name="add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope"></a>Přidání přiřazení role pro nový instanční objekt v oboru skupiny prostředků
+#### <a name="assign-a-role-for-a-new-service-principal-at-a-resource-group-scope"></a>Přiřazení role novému instančnímu objektu v oboru skupiny prostředků
 
 Pokud vytvoříte nový instanční objekt a hned se pokusíte přiřadit roli k tomuto instančnímu objektu, toto přiřazení role může v některých případech selhat. Pokud například použijete skript k vytvoření nové spravované identity a potom se pokusíte přiřadit roli k tomuto instančnímu objektu, přiřazení role se nemusí zdařit. Důvodem této chyby je nejspíš zpoždění replikace. Instanční objekt se vytvoří v jedné oblasti. přiřazení role se ale může vyskytnout v jiné oblasti, která ještě nereplikoval instanční objekt. Chcete-li tento scénář vyřešit, je nutné při vytváření přiřazení role zadat typ objektu zabezpečení.
 
-Chcete-li přidat přiřazení role, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az_role_assignment_create), zadejte hodnotu pro `--assignee-object-id` a pak nastavte `--assignee-principal-type` na `ServicePrincipal` .
+Pokud chcete přiřadit roli, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az_role_assignment_create), zadejte hodnotu pro `--assignee-object-id` a pak nastavte `--assignee-principal-type` na `ServicePrincipal` .
 
 ```azurecli
 az role assignment create --assignee-object-id "{assigneeObjectId}" \
@@ -291,7 +291,7 @@ az role assignment create --assignee-object-id "33333333-3333-3333-3333-33333333
 --resource-group "pharma-sales"
 ```
 
-#### <a name="add-role-assignment-for-a-user-at-a-subscription-scope"></a>Přidání přiřazení role pro uživatele v oboru předplatného
+#### <a name="assign-a-role-for-a-user-at-a-subscription-scope"></a>Přiřazení role pro uživatele v oboru předplatného
 
 Přiřadí roli [Čtenář](built-in-roles.md#reader) k uživateli *annm \@ example.com* v oboru předplatného.
 
@@ -301,7 +301,7 @@ az role assignment create --assignee "annm@example.com" \
 --subscription "00000000-0000-0000-0000-000000000000"
 ```
 
-#### <a name="add-role-assignment-for-a-group-at-a-subscription-scope"></a>Přidání přiřazení role pro skupinu v oboru předplatného
+#### <a name="assign-a-role-for-a-group-at-a-subscription-scope"></a>Přiřazení role pro skupinu v oboru předplatného
 
 Přiřadí roli [čtenáře](built-in-roles.md#reader) ke skupině *týmu Ann Mack* s ID 22222222-2222-2222-2222-222222222222 v oboru předplatného.
 
@@ -311,7 +311,7 @@ az role assignment create --assignee "22222222-2222-2222-2222-222222222222" \
 --subscription "00000000-0000-0000-0000-000000000000"
 ```
 
-#### <a name="add-role-assignment-for-all-blob-containers-at-a-subscription-scope"></a>Přidání přiřazení role pro všechny kontejnery objektů BLOB v oboru předplatného
+#### <a name="assign-a-role-for-all-blob-containers-at-a-subscription-scope"></a>Přiřazení role pro všechny kontejnery objektů BLOB v oboru předplatného
 
 Přiřadí roli [čtečky dat objektů BLOB úložiště](built-in-roles.md#storage-blob-data-reader) k *Alain \@ example.com* uživatele v oboru předplatného.
 
@@ -321,40 +321,12 @@ az role assignment create --assignee "alain@example.com" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000"
 ```
 
-#### <a name="add-role-assignment-for-a-user-at-a-management-group-scope"></a>Přidání přiřazení role pro uživatele v oboru skupiny pro správu
+#### <a name="assign-a-role-for-a-user-at-a-management-group-scope"></a>Přiřazení role pro uživatele v oboru skupiny pro správu
 
 Přiřadí roli [Čtenář fakturace](built-in-roles.md#billing-reader) pro uživatele *Alain \@ example.com* v oboru skupiny pro správu.
 
 ```azurecli
 az role assignment create --assignee "alain@example.com" \
---role "Billing Reader" \
---scope "/providers/Microsoft.Management/managementGroups/marketing-group"
-```
-
-## <a name="remove-a-role-assignment"></a>Odebrání přiřazení role
-
-Chcete-li v Azure RBAC odebrat přístup, odeberte přiřazení role pomocí funkce [AZ role Assignment Delete](/cli/azure/role/assignment#az_role_assignment_delete).
-
-Následující příklad odebere přiřazení role [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) z uživatele *patlong \@ contoso.com* ve skupině prostředků *Pharma-Sales* :
-
-```azurecli
-az role assignment delete --assignee "patlong@contoso.com" \
---role "Virtual Machine Contributor" \
---resource-group "pharma-sales"
-```
-
-Odebere roli [Čtenář](built-in-roles.md#reader) z týmové skupiny *Ann Mack* s ID 22222222-2222-2222-2222-222222222222 v oboru předplatného.
-
-```azurecli
-az role assignment delete --assignee "22222222-2222-2222-2222-222222222222" \
---role "Reader" \
---subscription "00000000-0000-0000-0000-000000000000"
-```
-
-Odebere roli [Čtenář fakturace](built-in-roles.md#billing-reader) z uživatele *Alain \@ example.com* v oboru skupiny pro správu.
-
-```azurecli
-az role assignment delete --assignee "alain@example.com" \
 --role "Billing Reader" \
 --scope "/providers/Microsoft.Management/managementGroups/marketing-group"
 ```

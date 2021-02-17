@@ -1,14 +1,14 @@
 ---
 title: Povolení rozšíření virtuálního počítače pomocí šablony Azure Resource Manager
 description: Tento článek popisuje, jak nasadit rozšíření virtuálních počítačů na servery s podporou ARC Azure běžícími v hybridních cloudových prostředích pomocí šablony Azure Resource Manager.
-ms.date: 02/03/2021
+ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: cfba14ac30553178bd509d0b0e7ba9c60332d299
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 0115bda614133891275daff96c94dc4b1a680ccf
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493324"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555109"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>Povolení rozšíření virtuálních počítačů Azure pomocí šablony ARM
 
@@ -631,13 +631,43 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault VM (Preview). 
 
 ```json
 {
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "autoUpgradeMinorVersion":{
+            "type": "bool"
+        },
+        "pollingIntervalInS":{
+          "type": "int"
+        },
+        "certificateStoreName":{
+          "type": "string"
+        },
+        "certificateStoreLocation":{
+          "type": "string"
+        },
+        "observedCertificates":{
+          "type": "string"
+        },
+        "msiEndpoint":{
+          "type": "string"
+        },
+        "msiClientId":{
+          "type": "string"
+        }
+},
+"resources": [
+   {
       "type": "Microsoft.HybridCompute/machines/extensions",
-      "name": "KeyVaultForLinux",
-      "apiVersion": "2019-07-01",
-      "location": "<location>",
-      "dependsOn": [
-          "[concat('Microsoft.HybridCompute/machines/extensions/', <machineName>)]"
-      ],
+      "name": "[concat(parameters('vmName'),'/KVVMExtensionForLinux')]",
+      "apiVersion": "2019-12-12",
+      "location": "[parameters('location')]",
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForLinux",
@@ -646,12 +676,18 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault VM (Preview). 
       "settings": {
           "secretsManagementSettings": {
           "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
-          "certificateStoreName": <ingnored on linux>,
+          "certificateStoreName": <ignored on linux>,
           "certificateStoreLocation": <disk path where certificate is stored, default: "/var/lib/waagent/Microsoft.Azure.KeyVault">,
           "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
-          }
+          },
+          "authenticationSettings": {
+                "msiEndpoint":  <MSI endpoint e.g.: "http://localhost:40342/metadata/identity">,
+                "msiClientId":  <MSI identity e.g.: "c7373ae5-91c2-4165-8ab6-7381d6e75619">
+        }
       }
-     }
+    }
+  }
+ ]
 }
 ```
 
@@ -659,13 +695,49 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault VM (Preview). 
 
 ```json
 {
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "autoUpgradeMinorVersion":{
+            "type": "bool"
+        },
+        "pollingIntervalInS":{
+          "type": "int"
+        },
+        "certificateStoreName":{
+          "type": "string"
+        },
+        "linkOnRenewal":{
+          "type": "bool"
+        },
+        "certificateStoreLocation":{
+          "type": "string"
+        },
+        "requireInitialSync":{
+          "type": "bool"
+        },
+        "observedCertificates":{
+          "type": "string"
+        },
+        "msiEndpoint":{
+          "type": "string"
+        },
+        "msiClientId":{
+          "type": "string"
+        }
+},
+"resources": [
+   {
       "type": "Microsoft.HybridCompute/machines/extensions",
-      "name": "KVVMExtensionForWindows",
-      "apiVersion": "2019-07-01",
-      "location": "<location>",
-      "dependsOn": [
-          "[concat('Microsoft.HybridCompute/machines/extensions/', <machineName>)]"
-      ],
+      "name": "[concat(parameters('vmName'),'/KVVMExtensionForWindows')]",
+      "apiVersion": "2019-12-12",
+      "location": "[parameters('location')]",
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForWindows",
@@ -673,28 +745,35 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault VM (Preview). 
       "autoUpgradeMinorVersion": true,
       "settings": {
         "secretsManagementSettings": {
-          "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
+          "pollingIntervalInS": "3600",
           "certificateStoreName": <certificate store name, e.g.: "MY">,
           "linkOnRenewal": <Only Windows. This feature ensures s-channel binding when certificate renews, without necessitating a re-deployment.  e.g.: false>,
           "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
           "requireInitialSync": <initial synchronization of certificates e..g: true>,
-          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net"
         },
         "authenticationSettings": {
-                "msiEndpoint":  <Optional MSI endpoint e.g.: "http://169.254.169.254/metadata/identity">,
-                "msiClientId":  <Optional MSI identity e.g.: "c7373ae5-91c2-4165-8ab6-7381d6e75619">
+                "msiEndpoint": <MSI endpoint e.g.: "http://localhost:40342/metadata/identity">,
+                "msiClientId": <MSI identity e.g.: "c7373ae5-91c2-4165-8ab6-7381d6e75619">
         }
       }
-     }
+    }
+  }
+ ]
 }
 ```
 
 > [!NOTE]
 > Vaše sledované adresy URL certifikátů by měly být ve formátu `https://myVaultName.vault.azure.net/secrets/myCertName` .
-> 
+>
 > Důvodem je to `/secrets` , že cesta vrátí úplný certifikát, včetně privátního klíče, ale `/certificates` cesta ne. Další informace o certifikátech najdete tady: [Key Vault certifikátů](../../key-vault/general/about-keys-secrets-certificates.md) .
 
-Uložte soubor šablony na disk. Pak můžete rozšíření nainstalovat na všechny připojené počítače ve skupině prostředků pomocí následujícího příkazu.
+### <a name="template-deployment"></a>Nasazení šablon
+
+Uložte soubor šablony na disk. Pak můžete rozšíření nasadit do připojeného počítače pomocí následujícího příkazu.
+
+> [!NOTE]
+> Rozšíření virtuálního počítače by vyžadovalo přiřazení identity přiřazené systému k ověření do trezoru klíčů. Další informace najdete v tématu [ověření pro Key Vault používání spravované identity](managed-identity-authentication.md) pro servery s podporou ARC pro Windows a Linux.
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\KeyVaultExtension.json"
@@ -778,7 +857,9 @@ Chcete-li použít integrované rozšíření skeneru v programu Azure Defender,
 }
 ```
 
-Uložte soubor šablony na disk. Pak můžete rozšíření nainstalovat na všechny připojené počítače ve skupině prostředků pomocí následujícího příkazu.
+### <a name="template-deployment"></a>Nasazení šablon
+
+Uložte soubor šablony na disk. Pak můžete rozšíření nasadit do připojeného počítače pomocí následujícího příkazu.
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\AzureDefenderScanner.json"

@@ -10,12 +10,12 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: beea0c5cecd7bb99973a4692a4cce17e7a69d708
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 96915fe5cc7bc7b2f88e0cbd8619c10a6433dd71
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631308"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557485"
 ---
 # <a name="create-or-update-azure-custom-roles-using-an-arm-template"></a>Vytvoření nebo aktualizace vlastních rolí Azure pomocí šablony ARM
 
@@ -207,5 +207,5 @@ Chcete-li odebrat vlastní roli, postupujte podle těchto kroků.
 ## <a name="next-steps"></a>Další kroky
 
 - [Vysvětlení definic rolí Azure](role-definitions.md)
-- [Rychlý Start: přidání přiřazení role Azure pomocí šablony Azure Resource Manager](quickstart-role-assignments-template.md)
+- [Rychlý Start: přiřazení role Azure pomocí šablony Azure Resource Manager](quickstart-role-assignments-template.md)
 - [Dokumentace k šablonám ARM](../azure-resource-manager/templates/index.yml)

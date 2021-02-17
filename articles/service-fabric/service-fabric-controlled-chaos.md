@@ -1,17 +1,17 @@
 ---
 title: Vyvolat chaos v clusterech Service Fabric
 description: Správa chaos v clusteru pomocí injektáže chyb a rozhraní API služby Analysis Services pro clustery
-author: motanv
+author: georgewallace
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.author: motanv
+ms.author: gwallace
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 34ec43593d50e359f09059cd3d51522df62cf567
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 727e0c8a738258434036652dd3df1f686f7433bb
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789647"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546376"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>NaChaos řízených v clusterech Service Fabric
 Rozsáhlé distribuované systémy, jako jsou cloudové infrastruktury, jsou v podstatě nespolehlivé. Azure Service Fabric umožňuje vývojářům psát spolehlivé distribuované služby nad nespolehlivou infrastrukturou. Aby mohli vývojáři psát robustní distribuované služby nad nespolehlivou infrastrukturou, musí být schopni testovat stabilitu svých služeb, zatímco základní nespolehlivá infrastruktura prochází složitými přechody stavu v důsledku chyb.

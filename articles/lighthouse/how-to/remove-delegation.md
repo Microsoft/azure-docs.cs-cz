@@ -1,14 +1,14 @@
 ---
 title: Odebrání přístupu k delegování
 description: Naučte se, jak odebrat přístup k prostředkům, které byly delegované pro poskytovatele služeb pro Azure Lighthouse.
-ms.date: 12/03/2020
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 7218c8829c9b2500e8311fbb3d5e9ff4eb986529
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c53b678ba6e37ece1bcaf2860abceb9eea980532
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791352"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555775"
 ---
 # <a name="remove-access-to-a-delegation"></a>Odebrání přístupu k delegování
 
@@ -21,7 +21,7 @@ Odebrání delegování může provést uživatel v tenantovi zákazníka nebo v
 
 ## <a name="customers"></a>Zákazníci
 
-Uživatelé v tenantovi zákazníka, kteří mají [předdefinovanou roli](../../role-based-access-control/built-in-roles.md#owner) předplatného pro předplatné, můžou odebrat přístup poskytovatele služeb k tomuto předplatnému (nebo ke skupinám prostředků v tomto předplatném). K tomu může uživatel v tenantovi zákazníka přejít na [stránku poskytovatelé služeb](view-manage-service-providers.md#add-or-remove-service-provider-offers) Azure Portal, najít nabídku na obrazovce **nabídky poskytovatel služeb** a vybrat ikonu odpadkového koše na řádku této nabídky.
+Uživatelé v tenantovi zákazníka, kteří mají roli s `Microsoft.Authorization/roleAssignments/write` oprávněním, jako je například [vlastník](../../role-based-access-control/built-in-roles.md#owner), mohou odebrat přístup poskytovatele služeb k tomuto předplatnému (nebo ke skupinám prostředků v tomto předplatném). Pokud to chcete udělat, může uživatel přejít na [stránku poskytovatelé služeb](view-manage-service-providers.md#add-or-remove-service-provider-offers) Azure Portal, najít nabídku na obrazovce **nabídky poskytovatele služeb** a vybrat ikonu odpadkového koše na řádku této nabídky.
 
 Po potvrzení odstranění nebudou mít žádní uživatelé v tenantovi poskytovatele služeb přístup k prostředkům, které už byly delegované.
 
@@ -45,7 +45,7 @@ Tato role se dá vybrat taky při **autorizaci** při [vytváření nabídky spr
 
 Uživatel s tímto oprávněním může odebrat delegování jedním z následujících způsobů.
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 1. Přejděte na [stránku Moji zákazníci](view-manage-customers.md).
 2. Vyberte **delegování**.

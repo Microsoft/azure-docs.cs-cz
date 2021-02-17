@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9dad8ffc9971894a2777e8bda9bcf6d78eee00a9
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 3c9018322c9e5075ff59024f9d791e7431035e3d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369272"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555949"
 ---
 # <a name="list-azure-role-definitions"></a>Vypsat definice rolí Azure
 
@@ -356,7 +356,7 @@ K vypsání definic rolí použijte REST API [seznam definice rolí](/rest/api/a
 1. Nahraďte *{Filter}* podmínkou, kterou chcete použít k filtrování seznamu definic rolí.
 
     > [!div class="mx-tableFixed"]
-    > | Filtr | Popis |
+    > | Filtrovat | Popis |
     > | --- | --- |
     > | `$filter=atScopeAndBelow()` | Vypisuje definice rolí pro zadaný obor a všechny podobory. |
     > | `$filter=type+eq+'{type}'` | Vypisuje definice rolí zadaného typu. Typ role může být `CustomRole` nebo `BuiltInRole` . |
@@ -476,7 +476,7 @@ Následující příklad ukazuje příklad výstupu:
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Předdefinované role v Azure](built-in-roles.md)
+- [Předdefinované role Azure](built-in-roles.md)
 - [Vlastní role Azure](custom-roles.md)
 - [Vypsání přiřazení rolí Azure pomocí Azure Portal](role-assignments-list-portal.md)
-- [Přidání nebo odebrání přiřazení rolí Azure pomocí portálu Azure Portal](role-assignments-portal.md)
+- [Přiřazení rolí Azure pomocí Azure Portal](role-assignments-portal.md)

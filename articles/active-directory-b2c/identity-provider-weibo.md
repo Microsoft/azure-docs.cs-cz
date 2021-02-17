@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 26c4e154deec02b0642e6c131ced50acb02f9899
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: d69675d7ab07e4097556d269c97c3ecb66dc2fc6
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98951515"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545830"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Weibo pomocí Azure Active Directory B2C
 
@@ -32,19 +32,19 @@ ms.locfileid: "98951515"
 
 ## <a name="create-a-weibo-application"></a>Vytvoření aplikace v Weibo
 
-Pokud chcete povolit přihlášení pro uživatele s účtem Weibo v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci na [portálu pro vývojáře Weibo](https://open.weibo.com/). Pokud ještě nemáte účet Weibo, můžete se zaregistrovat [https://weibo.com](https://weibo.com/signup/signup.php?lang=en-us) .
+Pokud chcete povolit přihlášení pro uživatele s účtem Weibo v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci na portálu pro vývojáře Weibo. Pokud ještě nemáte účet Weibo, můžete se zaregistrovat [https://weibo.com](https://weibo.com/signup/signup.php?lang=en-us) .
 
-1. Přihlaste se k [portálu pro vývojáře Weibo](https://open.weibo.com/) pomocí přihlašovacích údajů k účtu Weibo.
+1. Přihlaste se k portálu pro vývojáře Weibo pomocí přihlašovacích údajů k účtu Weibo.
 1. Po přihlášení vyberte své zobrazované jméno v pravém horním rohu.
 1. V rozevíracím seznamu vyberte **编辑开发者信息** (upravit informace pro vývojáře).
 1. Zadejte požadované informace a vyberte **提交** (Odeslat).
 1. Dokončete proces ověření e-mailu.
-1. Přejít na [stránku ověření identity](https://open.weibo.com/developers/identity/edit).
+1. Přejít na stránku ověření identity.
 1. Zadejte požadované informace a vyberte **提交** (Odeslat).
 
 ### <a name="register-a-weibo-application"></a>Registrace aplikace Weibo
 
-1. Přejít na [novou registrační stránku aplikace Weibo](https://open.weibo.com/apps/new)
+1. Přejít na novou registrační stránku aplikace Weibo
 1. Zadejte potřebné informace o aplikaci.
 1. Vyberte **创建** (vytvořit).
 1. Zkopírujte hodnoty **klíče aplikace** a **tajného klíče aplikace**. Obě tyto služby potřebujete k přidání poskytovatele identity k vašemu tenantovi.
@@ -92,7 +92,7 @@ Je potřeba uložit tajný klíč klienta, který jste předtím nahráli ve sv�
 4. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
 5. Vyberte **klíče zásad** a pak vyberte **Přidat**.
 6. Pro **Možnosti** vyberte možnost `Manual` .
-7. Zadejte **název** klíče zásad. Například `WeiboSecret`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
+7. Zadejte **název** klíče zásad. Například, `WeiboSecret`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
 8. Do **tajného klíče** zadejte tajný klíč klienta, který jste předtím nahráli.
 9. Pro **použití klíče** vyberte `Signature` .
 10. Klikněte na **Vytvořit**.

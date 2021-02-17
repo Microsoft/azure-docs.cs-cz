@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 02/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 367f6713102912786ce258c471278373636f7326
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5fe09d1543b26b721b621cc6bd31fc034b54c967
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458910"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556786"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s KnowledgeOwl
 
@@ -25,8 +25,6 @@ V tomto kurzu se dozvíte, jak integrovat KnowledgeOwl s Azure Active Directory 
 * Řízení ve službě Azure AD, která má přístup k KnowledgeOwl.
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k KnowledgeOwl svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
-
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,54 +37,53 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* KnowledgeOwl podporuje jednotné přihlašování (SSO) **a IDP** .
+* KnowledgeOwl podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
 * KnowledgeOwl podporuje zřizování uživatelů **jenom v čase** .
 
-## <a name="adding-knowledgeowl-from-the-gallery"></a>Přidání KnowledgeOwl z Galerie
+## <a name="add-knowledgeowl-from-the-gallery"></a>Přidání KnowledgeOwl z Galerie
 
 Pokud chcete nakonfigurovat integraci KnowledgeOwl do služby Azure AD, musíte přidat KnowledgeOwl z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **KnowledgeOwl** .
 1. Na panelu výsledků vyberte **KnowledgeOwl** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-
-## <a name="configure-and-test-azure-ad-single-sign-on-for-knowledgeowl"></a>Konfigurace a testování jednotného přihlašování Azure AD pro KnowledgeOwl
+## <a name="configure-and-test-azure-ad-sso-for-knowledgeowl"></a>Konfigurace a testování jednotného přihlašování Azure AD pro KnowledgeOwl
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí KnowledgeOwl pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v KnowledgeOwl.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí KnowledgeOwl, dokončete následující stavební bloky:
+K nakonfigurování a testování jednotného přihlašování Azure AD pomocí KnowledgeOwl postupujte takto:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
 1. **[Nakonfigurujte KNOWLEDGEOWL SSO](#configure-knowledgeowl-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    * **[Vytvořte KnowledgeOwl Test User](#create-knowledgeowl-test-user)** -to, abyste měli protějšek B. Simon v KnowledgeOwl, která je propojená s reprezentací uživatele v Azure AD.
+    1. **[Vytvořte KnowledgeOwl Test User](#create-knowledgeowl-test-user)** -to, abyste měli protějšek B. Simon v KnowledgeOwl, která je propojená s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **KnowledgeOwl** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce integrace aplikací **KnowledgeOwl** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí jednoho z následujících vzorů:
     
     ```http
     https://app.knowledgeowl.com/sp
     https://app.knowledgeowl.com/sp/id/<unique ID>
     ```
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí jednoho z následujících vzorů:
     
     ```http
     https://subdomain.knowledgeowl.com/help/saml-login
@@ -99,7 +96,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí jednoho z následujících vzorů:
     
     ```http
     https://subdomain.knowledgeowl.com/help/saml-login
@@ -119,7 +116,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace KnowledgeOwl několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name | Zdrojový atribut | Obor názvů |
+    | Název | Zdrojový atribut | Obor názvů |
     | ------------ | -------------------- | -----|
     | ssoid | uživatel. pošta | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
 
@@ -135,7 +132,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -147,18 +144,12 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k KnowledgeOwl.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **KnowledgeOwl**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
-
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ## <a name="configure-knowledgeowl-sso"></a>Konfigurace jednotného přihlašování KnowledgeOwl
@@ -167,11 +158,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na **Nastavení** a pak vyberte **zabezpečení**.
 
-    ![Snímek obrazovky zobrazuje zabezpečení vybraný v nabídce nastavení.](./media/knowledgeowl-tutorial/configure1.png)
+    ![Snímek obrazovky zobrazuje zabezpečení vybraný v nabídce nastavení.](./media/knowledgeowl-tutorial/configure-1.png)
 
 1. Přejděte do **integrace SAML SSO** a proveďte následující kroky:
 
-    ![Snímek obrazovky ukazuje integraci S protokolem SAML S S O, kde můžete provádět změny popsané tady.](./media/knowledgeowl-tutorial/configure2.png)
+    ![Snímek obrazovky ukazuje integraci S protokolem SAML S S O, kde můžete provádět změny popsané tady.](./media/knowledgeowl-tutorial/configure-2.png)
 
     a. Vyberte možnost **Povolit jednotné přihlašování SAML**.
 
@@ -183,13 +174,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     e. Do textového pole **Adresa URL pro přihlášení IDP** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
-    f. Do textového pole **Adresa URL pro odhlášení IDP** vložte hodnotu **URL pro odhlášení** , kterou jste zkopírovali z Azure Portal
+    f. Do textového pole **Adresa URL pro odhlášení IDP** vložte hodnotu **URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
 
-    například Kliknutím na **nahrát IDP certifikát**nahrajte stažený certifikát Azure Portal na formulář.
+    například Kliknutím na **nahrát IDP certifikát** nahrajte stažený certifikát Azure Portal na formulář.
 
     h. Klikněte na **mapování atributů SAML** pro mapování atributů a proveďte následující kroky:
 
-    ![Snímek obrazovky ukazuje mapy atributů SAML, kde můžete provádět změny popsané tady.](./media/knowledgeowl-tutorial/configure3.png)
+    ![Snímek obrazovky ukazuje mapy atributů SAML, kde můžete provádět změny popsané tady.](./media/knowledgeowl-tutorial/configure-3.png)
 
     * Zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` do textového pole **ID jednotného přihlašování** .
     * `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`Do textového pole **uživatelské jméno/e-mail** zadejte.
@@ -199,7 +190,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     i. V dolní části stránky klikněte na **Uložit**.
 
-    ![Snímek obrazovky ukazuje tlačítko Uložit.](./media/knowledgeowl-tutorial/configure4.png)
+    ![Snímek obrazovky ukazuje tlačítko Uložit.](./media/knowledgeowl-tutorial/configure-4.png)
 
 ### <a name="create-knowledgeowl-test-user"></a>Vytvořit testovacího uživatele KnowledgeOwl
 
@@ -210,16 +201,20 @@ V této části se v KnowledgeOwl vytvoří uživatel s názvem B. Simon. Knowle
 
 ## <a name="test-sso"></a>Test SSO
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-Když na přístupovém panelu kliknete na dlaždici KnowledgeOwl, měli byste se automaticky přihlásit k KnowledgeOwl, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>Zahájena SP:
 
-## <a name="additional-resources"></a>Další zdroje
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro přihlášení k KnowledgeOwl, kde můžete spustit tok přihlášení.  
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
+* Přejít na adresu URL pro přihlášení k KnowledgeOwl přímo a zahájit tok přihlášení.
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>Iniciované IDP:
 
-- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
+* Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k KnowledgeOwl, pro které jste nastavili jednotné přihlašování. 
 
-- [Vyzkoušejte si KnowledgeOwl s Azure AD](https://aad.portal.azure.com/)
+K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici KnowledgeOwl v nabídce Moje aplikace, pokud je nakonfigurovaná v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k KnowledgeOwl, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="next-steps"></a>Další kroky
+
+Po nakonfigurování KnowledgeOwl můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

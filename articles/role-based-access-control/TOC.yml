@@ -55,13 +55,13 @@
           href: role-assignments-list-cli.md
         - name: REST API
           href: role-assignments-list-rest.md
-    - name: Přidání nebo odebrání přiřazení rolí
+    - name: Přiřazení rolí
       items:
-        - name: Kroky pro přidání přiřazení role
+        - name: Postup přiřazení role
           href: role-assignments-steps.md
         - name: Portál
           items:
-            - name: Přidání nebo odebrání přiřazení rolí
+            - name: Přiřazení rolí
               href: role-assignments-portal.md
             - name: Správce předplatného
               href: role-assignments-portal-subscription-admin.md
@@ -78,6 +78,8 @@
         - name: Šablona ARM
           displayName: Resource Manager
           href: role-assignments-template.md
+    - name: Odebrání přiřazení rolí
+      href: role-assignments-remove.md
     - name: Zobrazení seznamu zamítnutých přiřazení
       items:
         - name: Přehled

@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 02/16/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 02661c9c2a581ab21a2ae9dc31e5da95426c0edd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 24fbe843986b732a04c9e356c54f3d768d6739be
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843379"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558174"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>Konfigurace šifrování s použitím klíčů spravovaných zákazníkem uložených v Azure Key Vault
 
@@ -175,10 +175,11 @@ Azure Storage může automaticky aktualizovat klíč spravovaný zákazníkem, k
 Pokud chcete konfigurovat klíče spravované zákazníkem pomocí automatických aktualizací verze klíče v Azure Portal, postupujte takto:
 
 1. Přejděte na svůj účet úložiště.
-1. V okně **Nastavení** pro účet úložiště klikněte na **šifrování**. Vyberte možnost **spravované klíče zákazníka** , jak je znázorněno na následujícím obrázku.
+1. V okně **Nastavení** pro účet úložiště klikněte na **šifrování**. Ve výchozím nastavení je Správa klíčů nastavená na **spravované klíče společnosti Microsoft**, jak je znázorněno na následujícím obrázku.
 
     ![Snímek obrazovky portálu ukazující možnost šifrování](./media/customer-managed-keys-configure-key-vault/portal-configure-encryption-keys.png)
 
+1. Vyberte možnost **Customer Managed Keys** .
 1. Zvolte možnost **vybrat z Key Vault** .
 1. Vyberte **možnost vyberte Trezor klíčů a klíč**.
 1. Vyberte Trezor klíčů obsahující klíč, který chcete použít.
