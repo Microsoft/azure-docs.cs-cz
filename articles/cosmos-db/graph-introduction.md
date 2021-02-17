@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 11/25/2020
 ms.author: chrande
-ms.openlocfilehash: c2165ea6273ad90cfb95242dfe72538c0a5ef64c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 806904943f4e4a20734d595f835dc9450afdded5
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350054"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547271"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Úvod do rozhraní Gremlin API v Azure Cosmos DB
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
-[Azure Cosmos DB](introduction.md)   je globálně distribuovaná databázová služba pro více modelů od Microsoftu pro klíčové aplikace. Je to databáze s více modely a podporuje datové modely typu dokument, klíč-hodnota, graf a řada sloupců. "Azure Cosmos DB poskytuje databázovou službu grafu prostřednictvím rozhraní API Gremlin pro plně spravovanou databázovou službu určenou pro libovolné škálování.  
+[Azure Cosmos DB](introduction.md)   je globálně distribuovaná databázová služba pro více modelů od Microsoftu pro klíčové aplikace. Je to databáze s více modely a podporuje datové modely typu dokument, klíč-hodnota, graf a řada sloupců. Azure Cosmos DB poskytuje databázovou službu grafu prostřednictvím rozhraní API Gremlin pro plně spravovanou databázovou službu určenou pro libovolné škálování.  
 
 :::image type="content" source="./media/graph-introduction/cosmosdb-graph-architecture.png" alt-text="Architektura grafu služby Azure Cosmos DB" border="false":::
 

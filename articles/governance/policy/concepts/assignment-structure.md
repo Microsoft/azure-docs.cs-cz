@@ -3,12 +3,12 @@ title: Podrobnosti struktury přiřazení zásad
 description: Popisuje definici přiřazení zásad, kterou používá Azure Policy k přidružení definic a parametrů zásad k prostředkům pro vyhodnocení.
 ms.date: 01/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 12acbe368c9ccd6fa5654d3394e0fecb286984bf
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 1151c931863e1139b76c34ced12c4e2842f83cc6
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219562"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558460"
 ---
 # <a name="azure-policy-assignment-structure"></a>Struktura přiřazení Azure Policy
 
@@ -67,10 +67,10 @@ Vlastnost **enforcementMode** poskytuje zákazníkům možnost Testovat výslede
 
 Tato vlastnost má následující hodnoty:
 
-|Režim |Hodnota JSON |Typ |Opravit ručně |Položka protokolu aktivit |Description |
+|Režim |Hodnota JSON |Typ |Opravit ručně |Položka protokolu aktivit |Popis |
 |-|-|-|-|-|-|
-|Povoleno |Výchozí |řetězec |Yes |Yes |Účinek zásad se vynutil při vytváření nebo aktualizaci prostředku. |
-|Zakázáno |DoNotEnforce |řetězec |Yes |No | Při vytváření nebo aktualizaci prostředku není uplatněna zásada. |
+|Povoleno |Výchozí |řetězec |Ano |Ano |Účinek zásad se vynutil při vytváření nebo aktualizaci prostředku. |
+|Zakázáno |DoNotEnforce |řetězec |Ano |Ne | Při vytváření nebo aktualizaci prostředku není uplatněna zásada. |
 
 Pokud není v definici zásady nebo iniciativy zadaný **enforcementMode** , použije se _výchozí_ hodnota. Pro zásady [deployIfNotExists](./effects.md#deployifnotexists) se dají spouštět [úlohy nápravy](../how-to/remediate-resources.md) , a to i v případě, že **EnforcementMode** je nastavená na _DoNotEnforce_.
 
@@ -98,7 +98,7 @@ Chcete-li nastavit vlastní zprávu s popisem příčin, proč prostředek není
 ]
 ```
 
-Pokud je přiřazení v iniciativě, můžete pro každou definici zásad v iniciativě nakonfigurovat různé zprávy. Zprávy používají `policyDefinitionReferenceId` hodnotu nakonfigurovanou v definici iniciativy. Podrobnosti najdete v tématu [vlastnosti definic](./initiative-definition-structure.md#policy-definition-properties)vlastností.
+Pokud je přiřazení v iniciativě, můžete pro každou definici zásad v iniciativě nakonfigurovat různé zprávy. Zprávy používají `policyDefinitionReferenceId` hodnotu nakonfigurovanou v definici iniciativy. Podrobnosti najdete v tématu [vlastnosti definic zásad](./initiative-definition-structure.md#policy-definition-properties).
 
 ```json
 "nonComplianceMessages": [

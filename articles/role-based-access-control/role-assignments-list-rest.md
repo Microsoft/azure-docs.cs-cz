@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 7d00c40a021bbe087d906fd6d9b767188a7b169a
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 1d90e83405cf9c560f644277a04012571e1a5a9d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964320"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556909"
 ---
 # <a name="list-azure-role-assignments-using-the-rest-api"></a>Vypsání přiřazení rolí Azure pomocí REST API
 
@@ -42,7 +42,7 @@ V Azure RBAC pro vypsání přístupu k seznamu získáte seznam přiřazení ro
 1. V rámci identifikátoru URI nahraďte *{Scope}* oborem, pro který chcete zobrazit seznam přiřazení rolí.
 
     > [!div class="mx-tableFixed"]
-    > | Rozsah | Typ |
+    > | Obor | Typ |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Skupina pro správu |
     > | `subscriptions/{subscriptionId1}` | Předplatné |
@@ -54,7 +54,7 @@ V Azure RBAC pro vypsání přístupu k seznamu získáte seznam přiřazení ro
 1. Nahraďte *{Filter}* podmínkou, kterou chcete použít k filtrování seznamu přiřazení role.
 
     > [!div class="mx-tableFixed"]
-    > | Filtr | Popis |
+    > | Filtrovat | Popis |
     > | --- | --- |
     > | `$filter=atScope()` | Vypíše přiřazení rolí jenom pro zadaný obor, včetně přiřazení rolí v podoborech. |
     > | `$filter=assignedTo('{objectId}')` | Vypisuje přiřazení rolí pro zadaného uživatele nebo instanční objekt.<br/>Pokud je uživatel členem skupiny, která má přiřazení role, zobrazí se také toto přiřazení role. Tento filtr je přenosný pro skupiny, což znamená, že pokud je uživatel členem skupiny a tato skupina je členem jiné skupiny, která má přiřazení role, bude toto přiřazení role také uvedené.<br/>Tento filtr přijímá pouze ID objektu uživatele nebo instančního objektu. Nelze předat ID objektu pro skupinu. |
@@ -92,5 +92,5 @@ Následující příklad ukazuje příklad výstupu:
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přidání nebo odebrání přiřazení rolí v Azure pomocí REST API](role-assignments-rest.md)
+- [Přiřazení rolí Azure pomocí REST API](role-assignments-rest.md)
 - [Reference k rozhraní Azure REST API](/rest/api/azure/)

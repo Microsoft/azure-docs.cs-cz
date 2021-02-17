@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: fc410ef903ac7eca2457516df2c71260a4b19b89
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 656b2e44ec4a4e9de0d594301cb3e4c1b9a33b13
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097485"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558627"
 ---
 # <a name="edv4-and-edsv4-series"></a>Řada Edv4 a Edsv4
 
@@ -30,7 +30,7 @@ Velikosti řady Edv4-Series běží na &reg; &reg; procesorech Intel Xeon Platin
 [Migrace za provozu](maintenance-and-updates.md): podporováno<br>
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
-[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
+[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované (*vyžaduje minimálně 4 vCPU*)<br>
 [Dočasné disky s operačním systémem](ephemeral-os-disks.md): nepodporované <br>
 <br>
 
@@ -58,7 +58,7 @@ Velikosti řady Edsv4-Series běží na &reg; &reg; procesorech Intel Xeon Plati
 [Migrace za provozu](maintenance-and-updates.md): podporováno<br>
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
-[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
+[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované (*vyžaduje minimálně 4 vCPU*)<br>
 [Dočasné disky s operačním systémem](ephemeral-os-disks.md): podporované <br>
 <br>
 

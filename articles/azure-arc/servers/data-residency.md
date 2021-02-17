@@ -2,14 +2,14 @@
 title: Rezidence dat
 description: Data zasídlí a informace o serverech s podporou ARC Azure.
 ms.topic: reference
-ms.date: 10/08/2020
+ms.date: 02/16/2021
 ms.custom: references_regions
-ms.openlocfilehash: c5ece96acc3ee07ba2896279888363c7d52d737e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4764772473bbf2e5aafe2607a9462c9a6a15203
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856445"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559498"
 ---
 # <a name="azure-arc-enabled-servers-data-residency"></a>Servery s podporou ARC Azure: zasídlí dat
 
@@ -23,10 +23,16 @@ Servery s podporou ARC Azure ukládají nastavení konfigurace [rozšíření vi
 
 Shromažďují se taky informace o metadatech připojeného počítače. Konkrétně se jedná o tyto:
 
-* Název a verze operačního systému
+* Název, typ a verze operačního systému
 * Název počítače
 * Plně kvalifikovaný název domény počítače (FQDN)
 * Verze agenta připojeného počítače
+* Plně kvalifikovaný název domény služby Active Directory a DNS (FQDN)
+* UUID (ID SYSTÉMU BIOS)
+* Prezenční signál agenta připojeného počítače
+* Verze agenta připojeného počítače
+* Veřejný klíč pro spravovanou identitu
+* Stav dodržování zásad a podrobnosti (Pokud se používá Azure Policy zásady konfigurace hostů)
 
 Servery s podporou ARC umožňují zadat oblast, ve které budou vaše data uložená. Microsoft se může replikovat do jiných oblastí s cílem zajistit odolnost dat, ale Microsoft nereplikuje ani nepřesouvá data mimo zeměpisnou oblast. Tato data jsou uložená v oblasti, kde je nakonfigurovaný prostředek počítače Azure ARC. Například pokud je počítač zaregistrován pomocí ARC v oblasti Východní USA, tato data jsou uložena v oblasti USA.
 

@@ -1,14 +1,14 @@
 ---
 title: Přehled agenta připojeného počítače systému Windows
 description: Tento článek poskytuje podrobný přehled dostupného agenta serverů s podporou ARC Azure, který podporuje monitorování virtuálních počítačů hostovaných v hybridních prostředích.
-ms.date: 02/03/2021
+ms.date: 02/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: ed77ee00510fedaf42226081fcf11c4753b8a63a
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 82562bf3b1f8392e56a53ba0f968a76b050e7b13
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626304"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558496"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Přehled agenta serverů s podporou ARC Azure
 
@@ -32,6 +32,30 @@ Balíček agenta připojeného počítače Azure obsahuje několik logických so
     * Přiřazení se odstraní po 14 dnech a po 14 dnech se znovu nepřiřazují k počítači.
 
 * Agent rozšíření spravuje rozšíření virtuálních počítačů, včetně instalace, odinstalace a upgradu. Rozšíření se stáhnou z Azure a zkopírují se do `%SystemDrive%\%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads` složky ve Windows a pro Linux do `/opt/GC_Ext/downloads` . V systému Windows je rozšíření nainstalováno v následující cestě `%SystemDrive%\Packages\Plugins\<extension>` a v systému Linux je rozšíření nainstalováno do nástroje `/var/lib/waagent/<extension>` .
+
+## <a name="instance-metadata"></a>Metadata instance
+
+Informace o metadatech připojeného počítače jsou shromažďovány po registraci agenta připojeného počítače s povolenými servery ARC. Konkrétně se jedná o tyto:
+
+* Název, typ a verze operačního systému
+* Název počítače
+* Plně kvalifikovaný název domény počítače (FQDN)
+* Verze agenta připojeného počítače
+* Plně kvalifikovaný název domény služby Active Directory a DNS (FQDN)
+* UUID (ID SYSTÉMU BIOS)
+* Prezenční signál agenta připojeného počítače
+* Verze agenta připojeného počítače
+* Veřejný klíč pro spravovanou identitu
+* Stav dodržování zásad a podrobnosti (Pokud se používá Azure Policy zásady konfigurace hostů)
+
+Agent z Azure požaduje následující informace metadat:
+
+* Umístění prostředku (oblast)
+* ID virtuálního počítače
+* Značky
+* Azure Active Directory certifikát spravované identity
+* Přiřazení zásad konfigurace hostů
+* Požadavky na rozšíření – Instalace, aktualizace a odstranění.
 
 ## <a name="download-agents"></a>Stáhnout agenty
 
@@ -100,7 +124,7 @@ Značky služby:
 
 Adrese
 
-| Prostředek agenta | Description |
+| Prostředek agenta | Popis |
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
@@ -112,7 +136,7 @@ Adrese
 
 Agenti Preview (verze 0,11 a nižší) také vyžadují přístup k následujícím adresám URL:
 
-| Prostředek agenta | Description |
+| Prostředek agenta | Popis |
 |---------|---------|
 |`agentserviceapi.azure-automation.net`|Konfigurace hosta|
 |`*-agentservice-prod-1.azure-automation.net`|Konfigurace hosta|
@@ -176,7 +200,7 @@ Po instalaci agenta připojeného počítače pro systém Windows jsou apliková
 
 * Během instalace se vytvoří následující instalační složky.
 
-    |Složka |Description |
+    |Složka |Popis |
     |-------|------------|
     |%ProgramFiles%\AzureConnectedMachineAgent |Výchozí instalační cesta obsahující soubory podpory agenta.|
     |%ProgramData%\AzureConnectedMachineAgent |Obsahuje konfigurační soubory agenta.|
@@ -188,7 +212,7 @@ Po instalaci agenta připojeného počítače pro systém Windows jsou apliková
 
 * Následující služby systému Windows se v cílovém počítači vytvoří během instalace agenta.
 
-    |Název služby |Zobrazované jméno |Název procesu |Description |
+    |Název služby |Zobrazované jméno |Název procesu |Popis |
     |-------------|-------------|-------------|------------|
     |himds |Hybridní Instance Metadata Service Azure |himds |Tato služba implementuje službu metadat Azure instance (IMDS) pro správu připojení k Azure a identitě Azure připojeného počítače.|
     |GCArcService |Služba ARC konfigurace hosta |gc_service |Monitoruje konfiguraci požadovaného stavu počítače.|
@@ -196,14 +220,14 @@ Po instalaci agenta připojeného počítače pro systém Windows jsou apliková
 
 * Během instalace agenta se vytvoří následující proměnné prostředí.
 
-    |Name |Výchozí hodnota |Description |
+    |Název |Výchozí hodnota |Popis |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
 
 * Pro řešení potíží je k dispozici několik souborů protokolu. Jsou popsány v následující tabulce.
 
-    |Protokol |Description |
+    |Protokol |Popis |
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Zaznamenává údaje služby agenti (HIMDS) a interakce s Azure.|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |Obsahuje výstup příkazů nástroje azcmagent, pokud je použit argument verbose (-v).|
@@ -228,7 +252,7 @@ Po instalaci agenta připojeného počítače pro Linux se aplikují následují
 
 * Během instalace se vytvoří následující instalační složky.
 
-    |Složka |Description |
+    |Složka |Popis |
     |-------|------------|
     |/var/opt/azcmagent/ |Výchozí instalační cesta obsahující soubory podpory agenta.|
     |/opt/azcmagent/ |
@@ -240,7 +264,7 @@ Po instalaci agenta připojeného počítače pro Linux se aplikují následují
 
 * Následující procesy démon jsou vytvořeny v cílovém počítači během instalace agenta.
 
-    |Název služby |Zobrazované jméno |Název procesu |Description |
+    |Název služby |Zobrazované jméno |Název procesu |Popis |
     |-------------|-------------|-------------|------------|
     |himdsd. Service |Služba agenta připojeného počítače Azure |himds |Tato služba implementuje službu metadat Azure instance (IMDS) pro správu připojení k Azure a identitě Azure připojeného počítače.|
     |gcad.servce |Služba oblouku GC |gc_linux_service |Monitoruje konfiguraci požadovaného stavu počítače. |
@@ -248,7 +272,7 @@ Po instalaci agenta připojeného počítače pro Linux se aplikují následují
 
 * Pro řešení potíží je k dispozici několik souborů protokolu. Jsou popsány v následující tabulce.
 
-    |Protokol |Description |
+    |Protokol |Popis |
     |----|------------|
     |/var/opt/azcmagent/log/himds.log |Zaznamenává údaje služby agenti (HIMDS) a interakce s Azure.|
     |/var/opt/azcmagent/log/azcmagent.log |Obsahuje výstup příkazů nástroje azcmagent, pokud je použit argument verbose (-v).|
@@ -259,7 +283,7 @@ Po instalaci agenta připojeného počítače pro Linux se aplikují následují
 
 * Během instalace agenta se vytvoří následující proměnné prostředí. Tyto proměnné jsou nastaveny v `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Name |Výchozí hodnota |Description |
+    |Název |Výchozí hodnota |Popis |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||

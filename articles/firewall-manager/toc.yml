@@ -10,6 +10,9 @@
     - name: Zabezpečené virtuální centrum – šablona Resource Manageru
       displayName: Resource Manager
       href: quick-secure-virtual-hub.md
+    - name: Nasazení brány firewall se šablonou zásady – ARM
+      displayName: Resource Manager
+      href: quick-firewall-policy.md
 - name: Kurzy
   items:
     - name: Zabezpečení virtuálního centra – portál

@@ -8,10 +8,12 @@
       href: whats-new.md
 - name: Rychlé starty
   items:
-    - name: Vytvoření a dotazování znalostní báze na portálu QnA Maker
-      href: Quickstarts/create-publish-knowledge-base.md
-    - name: Vytvoření a dotazování znalostní báze pomocí klientských knihoven nebo REST API
-      href: Quickstarts/quickstart-sdk.md
+    - name: Vytvoření a dotazování znalostní báze
+      items:
+        - name: Portál QnA Makeru
+          href: Quickstarts/create-publish-knowledge-base.md
+        - name: Klientské knihovny nebo REST API
+          href: Quickstarts/quickstart-sdk.md
     - name: Dotazování znalostní báze s rozhraními REST API
       href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
 - name: Kurzy

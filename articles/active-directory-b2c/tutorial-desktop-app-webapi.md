@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8eca6297a704e1ef478c09baf227cf622d6890bb
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 12951f25feb6f3710b8d35fbc682caeeb480e788
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953147"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555605"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Kurz: Poskytnutí přístupu k webovému rozhraní API Node.js z desktopové aplikace pomocí Azure Active Directory B2C
 
@@ -43,7 +43,7 @@ Obory poskytují způsob řízení přístupu k chráněným prostředkům. Webo
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-Poznamenejte si hodnotu **SCOPES** `demo.read` rozsah, který se má použít v pozdějším kroku při konfiguraci aplikace klasické pracovní plochy. Úplná hodnota oboru je podobná `https://contosob2c.onmicrosoft.com/api/demo.read` .
+Poznamenejte si hodnotu  `demo.read` rozsah, který se má použít v pozdějším kroku při konfiguraci aplikace klasické pracovní plochy. Úplná hodnota oboru je podobná `https://contosob2c.onmicrosoft.com/api/demo.read` .
 
 ## <a name="grant-permissions"></a>Udělení oprávnění
 
@@ -164,4 +164,4 @@ V tomto kurzu jste se naučili:
 > * Aktualizace ukázky pro použití aplikace
 
 > [!div class="nextstepaction"]
-> [Kurz: Přidání zprostředkovatelů identit do aplikací v Azure Active Directory B2C](tutorial-add-identity-providers.md)
+> [Přidejte do svých aplikací zprostředkovatele identity v Azure Active Directory B2C](add-identity-provider.md)

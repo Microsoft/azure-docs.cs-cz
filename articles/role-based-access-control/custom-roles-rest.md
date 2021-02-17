@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b459f44308827308c28687db3c3fc33df470ea8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab64765fc4e329c8edbf7a4db813113d20d476b3
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84790183"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557521"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>Pomocí REST API vytvořit nebo aktualizovat vlastní role Azure
 
@@ -44,7 +44,7 @@ K vypsání všech vlastních rolí v adresáři použijte REST API [Definice ro
 1. Nahraďte *{Filter}* typem role.
 
     > [!div class="mx-tableFixed"]
-    > | Filtrovat | Description |
+    > | Filtrovat | Popis |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | Filtrovat podle typu CustomRole |
 
@@ -61,7 +61,7 @@ K vypsání vlastních rolí v oboru použijte REST API [Definice rolí – sezn
 1. V rámci identifikátoru URI nahraďte *{Scope}* oborem, pro který chcete zobrazit seznam rolí.
 
     > [!div class="mx-tableFixed"]
-    > | Rozsah | Typ |
+    > | Obor | Typ |
     > | --- | --- |
     > | `subscriptions/{subscriptionId1}` | Předplatné |
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | Skupina prostředků |
@@ -71,7 +71,7 @@ K vypsání vlastních rolí v oboru použijte REST API [Definice rolí – sezn
 1. Nahraďte *{Filter}* typem role.
 
     > [!div class="mx-tableFixed"]
-    > | Filtrovat | Description |
+    > | Filtrovat | Popis |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | Filtrovat podle typu CustomRole |
 
@@ -88,7 +88,7 @@ Pokud chcete získat informace o vlastní roli pomocí jejího zobrazovaného n�
 1. V rámci identifikátoru URI nahraďte *{Scope}* oborem, pro který chcete zobrazit seznam rolí.
 
     > [!div class="mx-tableFixed"]
-    > | Rozsah | Typ |
+    > | Obor | Typ |
     > | --- | --- |
     > | `subscriptions/{subscriptionId1}` | Předplatné |
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | Skupina prostředků |
@@ -98,7 +98,7 @@ Pokud chcete získat informace o vlastní roli pomocí jejího zobrazovaného n�
 1. Nahraďte *{Filter}* zobrazovaným názvem role.
 
     > [!div class="mx-tableFixed"]
-    > | Filtrovat | Description |
+    > | Filtrovat | Popis |
     > | --- | --- |
     > | `$filter=roleName+eq+'{roleDisplayName}'` | Použijte kódovaný formát URL s přesným zobrazovaným názvem role. Například `$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
 
@@ -117,7 +117,7 @@ Pokud chcete získat informace o vlastní roli pomocí jejího jedinečného ide
 1. V rámci identifikátoru URI nahraďte *{Scope}* oborem, pro který chcete zobrazit seznam rolí.
 
     > [!div class="mx-tableFixed"]
-    > | Rozsah | Typ |
+    > | Obor | Typ |
     > | --- | --- |
     > | `subscriptions/{subscriptionId1}` | Předplatné |
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | Skupina prostředků |
@@ -171,7 +171,7 @@ Pokud chcete vytvořit vlastní roli, použijte [Definice rolí – vytvořit ne
 1. V rámci identifikátoru URI nahraďte *{Scope}* první `assignableScopes` z vlastní role.
 
     > [!div class="mx-tableFixed"]
-    > | Rozsah | Typ |
+    > | Obor | Typ |
     > | --- | --- |
     > | `subscriptions/{subscriptionId1}` | Předplatné |
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | Skupina prostředků |
@@ -240,7 +240,7 @@ Pokud chcete aktualizovat vlastní roli, použijte [Definice rolí – vytvořit
 1. V rámci identifikátoru URI nahraďte *{Scope}* první `assignableScopes` z vlastní role.
 
     > [!div class="mx-tableFixed"]
-    > | Rozsah | Typ |
+    > | Obor | Typ |
     > | --- | --- |
     > | `subscriptions/{subscriptionId1}` | Předplatné |
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | Skupina prostředků |
@@ -330,7 +330,7 @@ Pokud chcete odstranit vlastní roli, použijte [Definice rolí – odstranit](/
 1. V rámci identifikátoru URI nahraďte *{Scope}* oborem, ve kterém chcete odstranit vlastní roli.
 
     > [!div class="mx-tableFixed"]
-    > | Rozsah | Typ |
+    > | Obor | Typ |
     > | --- | --- |
     > | `subscriptions/{subscriptionId1}` | Předplatné |
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | Skupina prostředků |
@@ -341,5 +341,5 @@ Pokud chcete odstranit vlastní roli, použijte [Definice rolí – odstranit](/
 ## <a name="next-steps"></a>Další kroky
 
 - [Vlastní role Azure](custom-roles.md)
-- [Přidání nebo odebrání přiřazení rolí v Azure pomocí REST API](role-assignments-rest.md)
+- [Přiřazení rolí Azure pomocí REST API](role-assignments-rest.md)
 - [Reference k rozhraní Azure REST API](/rest/api/azure/)

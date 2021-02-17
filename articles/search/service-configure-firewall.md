@@ -7,20 +7,19 @@ author: mrcarter8
 ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 67fa53e565de70d3da0b90e36a968b68d54d667f
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.date: 02/16/2021
+ms.openlocfilehash: 98a516e76d5e4f5c225873b934949759d7fcba8d
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573241"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535327"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>Konfigurace brány firewall protokolu IP pro Azure Kognitivní hledání
 
 Azure Kognitivní hledání podporuje pravidla protokolu IP pro podporu příchozích bran firewall. Tento model poskytuje další úroveň zabezpečení pro vaši vyhledávací službu podobně jako pravidla protokolu IP, která najdete ve skupině zabezpečení virtuální sítě Azure. Pomocí těchto pravidel IP adres můžete nakonfigurovat vyhledávací službu tak, aby byla dostupná jenom ze schválené sady počítačů a/nebo cloudových služeb. Přístup k datům uloženým ve službě vyhledávání z těchto schválených sad počítačů a služeb bude nadále vyžadovat, aby volající předložil platný autorizační token.
 
-> [!Important]
-> Pravidla protokolu IP ve službě Azure Kognitivní hledání můžete nakonfigurovat pomocí Azure Portal nebo [REST API pro správu verze 2020-03-13](/rest/api/searchmanagement/).
+Můžete nastavit pravidla protokolu IP v Azure Portal, jak je popsáno v tomto článku. Alternativně můžete použít [REST API správy verze 2020-03-13](/rest/api/searchmanagement/), [Azure POWERSHELL](/powershell/module/az.search)nebo [Azure CLI](/cli/azure/search).
 
 ## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a> Konfigurace brány firewall protokolu IP pomocí Azure Portal
 

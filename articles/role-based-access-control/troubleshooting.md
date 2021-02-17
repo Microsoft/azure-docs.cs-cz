@@ -15,12 +15,12 @@ ms.date: 11/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: e30af9522d7c8fa81c4d93e11d252aefc4426586
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d77468619fcd67887273b2fbd452b37add1e19b0
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184259"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555889"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Řešení potíží s Azure RBAC
 
@@ -51,7 +51,7 @@ $ras.Count
 
 ## <a name="problems-with-azure-role-assignments"></a>Problémy s přiřazením rolí Azure
 
-- Pokud nemůžete přidat přiřazení role v Azure Portal v **řízení přístupu (IAM)** , protože možnost **Přidat**  >  **přiřazení role přidání** je zakázaná nebo se zobrazí chyba oprávnění "klient s ID objektu nemá autorizaci k provedení akce", ověřte, že jste aktuálně přihlášení pomocí uživatele, kterému je přiřazena role s oprávněním, jako je `Microsoft.Authorization/roleAssignments/write` [vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatele](built-in-roles.md#user-access-administrator) v oboru, ke kterému se snažíte přiřadit roli.
+- Pokud nemůžete přiřadit roli v Azure Portal pro **řízení přístupu (IAM)** , protože možnost **Přidat**  >  **přiřazení role přidání** je zakázaná nebo se zobrazí chyba oprávnění "klient s ID objektu nemá autorizaci k provedení akce", ověřte, že jste aktuálně přihlášení pomocí uživatele, kterému je přiřazena role s oprávněním, jako je `Microsoft.Authorization/roleAssignments/write` [vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatele](built-in-roles.md#user-access-administrator) v oboru, ke kterému se snažíte přiřadit roli.
 - Pokud k přiřazení rolí používáte instanční objekt, může se zobrazit chyba "nedostatečná oprávnění k dokončení operace". Řekněme například, že máte instanční objekt, kterému byla přiřazena role vlastníka, a pokusíte se vytvořit následující přiřazení role jako instanční objekt pomocí Azure CLI:
 
     ```azurecli
@@ -63,7 +63,7 @@ $ras.Count
 
     Existují dva způsoby, jak potenciálně vyřešit tuto chybu. Prvním způsobem je přiřazení role [čtenáři adresáře](../active-directory/roles/permissions-reference.md#directory-readers) k instančnímu objektu, aby bylo možné číst data v adresáři.
 
-    Druhým způsobem, jak tuto chybu vyřešit, je vytvořit přiřazení role pomocí `--assignee-object-id` parametru místo `--assignee` . Pomocí rozhraní `--assignee-object-id` příkazového řádku Azure CLI přeskočí vyhledávání Azure AD. Budete muset získat ID objektu uživatele, skupiny nebo aplikace, ke které chcete přiřadit roli. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](role-assignments-cli.md#add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope).
+    Druhým způsobem, jak tuto chybu vyřešit, je vytvořit přiřazení role pomocí `--assignee-object-id` parametru místo `--assignee` . Pomocí rozhraní `--assignee-object-id` příkazového řádku Azure CLI přeskočí vyhledávání Azure AD. Budete muset získat ID objektu uživatele, skupiny nebo aplikace, ke které chcete přiřadit roli. Další informace najdete v tématu [přiřazení rolí Azure pomocí Azure CLI](role-assignments-cli.md#assign-a-role-for-a-new-service-principal-at-a-resource-group-scope).
 
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
@@ -151,7 +151,7 @@ Podobně platí, že pokud toto přiřazení role vypíšete pomocí Azure CLI, 
 }
 ```
 
-Nejedná se o problém s ponechání těchto přiřazení rolí, kde byl odstraněn objekt zabezpečení. Pokud chcete, můžete tato přiřazení role odebrat pomocí kroků, které jsou podobné jiným přiřazením rolí. Informace o tom, jak odebrat přiřazení rolí, najdete v tématu [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)nebo [Azure CLI](role-assignments-cli.md#remove-a-role-assignment) .
+Nejedná se o problém s ponechání těchto přiřazení rolí, kde byl odstraněn objekt zabezpečení. Pokud chcete, můžete tato přiřazení role odebrat pomocí kroků, které jsou podobné jiným přiřazením rolí. Informace o tom, jak odebrat přiřazení rolí, najdete v tématu [Odebrání přiřazení rolí Azure](role-assignments-remove.md).
 
 Pokud se v prostředí PowerShell pokusíte odstranit přiřazení rolí pomocí ID objektu a definice role a na základě parametrů se shoduje více než jedno přiřazení role, zobrazí se chybová zpráva: "zadané informace nejsou namapovány na přiřazení role". Následující výstup ukazuje příklad chybové zprávy:
 
@@ -174,7 +174,7 @@ PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -
 
 ## <a name="role-assignment-changes-are-not-being-detected"></a>Změny přiřazení role se nezjišťují.
 
-Azure Resource Manager někdy ukládá do mezipaměti konfigurace a data pro zlepšení výkonu. Když přidáváte nebo odebíráte přiřazení rolí, může trvat až 30 minut, než se změny projeví. Pokud používáte Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure, můžete vynutit aktualizaci změn přiřazení role odhlášením a přihlášením. Pokud provádíte změny přiřazení rolí pomocí REST API volání, můžete vynutit aktualizaci pomocí aktualizace přístupového tokenu.
+Azure Resource Manager někdy ukládá do mezipaměti konfigurace a data pro zlepšení výkonu. Když přiřadíte role nebo odeberete přiřazení rolí, může trvat až 30 minut, než se změny projeví. Pokud používáte Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure, můžete vynutit aktualizaci změn přiřazení role odhlášením a přihlášením. Pokud provádíte změny přiřazení rolí pomocí REST API volání, můžete vynutit aktualizaci pomocí aktualizace přístupového tokenu.
 
 Pokud přidáváte nebo odebíráte přiřazení role v oboru skupiny pro správu a role má `DataActions` , nemusí být přístup k rovině dat aktualizován po dobu několika hodin. To platí jenom pro rozsah skupiny pro správu a rovinu dat.
 
@@ -249,5 +249,5 @@ Některé funkce [Azure Functions](../azure-functions/functions-overview.md) vy�
 ## <a name="next-steps"></a>Další kroky
 
 - [Řešení potíží pro uživatele typu Host](role-assignments-external-users.md#troubleshoot)
-- [Přidání nebo odebrání přiřazení rolí Azure pomocí portálu Azure Portal](role-assignments-portal.md)
+- [Přiřazení rolí Azure pomocí Azure Portal](role-assignments-portal.md)
 - [Zobrazení protokolů aktivit pro změny v Azure RBAC](change-history-report.md)

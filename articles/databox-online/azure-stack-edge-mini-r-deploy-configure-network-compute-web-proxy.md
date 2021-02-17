@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1cca747003a127371db7d110500e2b4168f10219
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: a202ee1d708feebc7643fa6f20aafa9d8603fc38
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594447"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546767"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-mini-r"></a>Kurz: konfigurace sítě pro Azure Stack hraniční Mini R
 
@@ -50,7 +50,7 @@ Pomocí těchto kroků nakonfigurujete síť pro vaše zařízení.
 
 2. Pokud je potřeba aktualizace nulového dne, můžete to udělat tak, že nakonfigurujete datový port s kabelovým připojením. Další informace o tom, jak nastavit kabelové připojení pro toto zařízení, najdete v tématu věnovaném [kabelu zařízení](azure-stack-edge-mini-r-deploy-install.md#cable-the-device). Po dokončení aktualizace můžete kabelové připojení odebrat.
 
-3. Vytvořte certifikáty pro Wi-Fi a podpisový řetězec. Podpisový řetězec i certifikáty Wi-Fi musí mít formát DER s příponou souboru *. cer* . Pokyny najdete v tématu [Vytvoření certifikátů](azure-stack-edge-j-series-manage-certificates.md).
+3. Vytvořte certifikáty pro Wi-Fi a podpisový řetězec. Podpisový řetězec i certifikáty Wi-Fi musí mít formát DER s příponou souboru *. cer* . Pokyny najdete v tématu [Vytvoření certifikátů](azure-stack-edge-gpu-manage-certificates.md).
 
 4. V místním webovém uživatelském rozhraní si přečtěte web **Začínáme**. Na dlaždici **zabezpečení** vyberte **certifikáty** a pak vyberte **Konfigurovat**. 
 

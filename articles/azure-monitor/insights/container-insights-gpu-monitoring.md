@@ -4,11 +4,11 @@ description: Tento článek popisuje, jak můžete nakonfigurovat monitorování
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.openlocfilehash: e391117ab57211aa5d178d11c27b934b4ccd37f8
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905583"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100561449"
 ---
 # <a name="configure-gpu-monitoring-with-azure-monitor-for-containers"></a>Konfigurace monitorování GPU pomocí Azure Monitor pro kontejnery
 
@@ -27,7 +27,7 @@ Azure Monitor for Containers automaticky spouští monitorování využití GPU 
 >[!NOTE]
 >Po zřízení clusteru s uzly GPU zajistěte, aby byl pro spuštění úloh GPU nainstalovaný [ovladač GPU](../../aks/gpu-cluster.md) , jak to vyžaduje AKS. Azure Monitor pro kontejnery shromažďují metriky GPU prostřednictvím ovladače GPU, které běží v uzlu. 
 
-|Název metriky |Dimenze metriky (značky) |Description |
+|Název metriky |Dimenze metriky (značky) |Popis |
 |------------|------------------------|------------|
 |containerGpuDutyCycle |container.azm.ms/clusterId, container.azm.ms/clusterName, ContainerName, gpuId, gpuModel, gpuVendor|Procento času v průběhu minulého ukázkového období (60 sekund), během kterého byl procesor GPU zaneprázdněný nebo aktivně zpracováván pro kontejner. Cyklus cel je číslo mezi 1 a 100. |
 |containerGpuLimits |container.azm.ms/clusterId, container.azm.ms/clusterName, ContainerName |Každý kontejner může určovat omezení jako jeden nebo více GPU. Není možné vyžádat ani omezit zlomek GPU. |

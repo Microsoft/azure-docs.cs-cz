@@ -4,13 +4,13 @@ description: Tento článek popisuje, jak nakonfigurovat monitorování pomocí 
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 77b536141f0e7c6094964011719a0e536e8d33f1
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994457"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100561474"
 ---
-# <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Povolit monitorování clusteru Kubernetes s povoleným ARC Azure
+# <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Povolení monitorování clusteru Kubernetes s podporou Azure Arc (Preview)
 
 Azure Monitor for Containers poskytuje bohatou monitorovací prostředí pro clustery Azure Kubernetes Service (AKS) a AKS Engine. Tento článek popisuje, jak povolit monitorování clusterů Kubernetes hostovaných mimo Azure, které jsou povolené pomocí ARC Azure, abyste dosáhli podobných možností monitorování.
 
@@ -97,7 +97,7 @@ Pokud chcete monitorovat svůj cluster pomocí skriptu prostředí PowerShell ne
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
-    Ve výstupu vyhledejte název pracovního prostoru a zkopírujte úplné ID prostředku, které Log Analytics pracovní prostor pod **ID**pole.
+    Ve výstupu vyhledejte název pracovního prostoru a zkopírujte úplné ID prostředku, které Log Analytics pracovní prostor pod **ID** pole.
 
 ## <a name="enable-monitoring-using-powershell"></a>Povolení monitorování pomocí prostředí PowerShell
 
@@ -119,7 +119,7 @@ Pokud chcete monitorovat svůj cluster pomocí skriptu prostředí PowerShell ne
     $kubeContext = "<kubeContext name of your k8s cluster>"
     ```
 
-4. Pokud chcete použít existující pracovní prostor Azure Monitor Log Analytics, nakonfigurujte proměnnou `$logAnalyticsWorkspaceResourceId` s odpovídající hodnotou, která představuje ID prostředku pracovního prostoru. Jinak nastavte proměnnou na `""` a skript vytvoří výchozí pracovní prostor ve výchozí skupině prostředků v rámci předplatného clusteru, pokud ještě neexistuje v této oblasti. Výchozí vytvořený pracovní prostor se podobá formátu *DefaultWorkspace- \<SubscriptionID> - \<Region> *.
+4. Pokud chcete použít existující pracovní prostor Azure Monitor Log Analytics, nakonfigurujte proměnnou `$logAnalyticsWorkspaceResourceId` s odpovídající hodnotou, která představuje ID prostředku pracovního prostoru. Jinak nastavte proměnnou na `""` a skript vytvoří výchozí pracovní prostor ve výchozí skupině prostředků v rámci předplatného clusteru, pokud ještě neexistuje v této oblasti. Výchozí vytvořený pracovní prostor se podobá formátu *DefaultWorkspace- \<SubscriptionID> - \<Region>*.
 
     ```powershell
     $logAnalyticsWorkspaceResourceId = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>"
@@ -184,7 +184,7 @@ Provedením následujících kroků povolíte monitorování pomocí zadaného s
     export kubeContext="<kubeContext name of your k8s cluster>"
     ```
 
-4. Pokud chcete použít existující pracovní prostor Azure Monitor Log Analytics, nakonfigurujte proměnnou `logAnalyticsWorkspaceResourceId` s odpovídající hodnotou, která představuje ID prostředku pracovního prostoru. Jinak nastavte proměnnou na `""` a skript vytvoří výchozí pracovní prostor ve výchozí skupině prostředků v rámci předplatného clusteru, pokud ještě neexistuje v této oblasti. Výchozí vytvořený pracovní prostor se podobá formátu *DefaultWorkspace- \<SubscriptionID> - \<Region> *.
+4. Pokud chcete použít existující pracovní prostor Azure Monitor Log Analytics, nakonfigurujte proměnnou `logAnalyticsWorkspaceResourceId` s odpovídající hodnotou, která představuje ID prostředku pracovního prostoru. Jinak nastavte proměnnou na `""` a skript vytvoří výchozí pracovní prostor ve výchozí skupině prostředků v rámci předplatného clusteru, pokud ještě neexistuje v této oblasti. Výchozí vytvořený pracovní prostor se podobá formátu *DefaultWorkspace- \<SubscriptionID> - \<Region>*.
 
     ```bash
     export logAnalyticsWorkspaceResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>"

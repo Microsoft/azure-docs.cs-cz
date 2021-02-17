@@ -11,12 +11,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: 8db0f5fa39c7f489db0e30e98ee2684c74eee7e8
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 8e78fc5bd49aaf2b31fdc83ced132e2a39ca83d5
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180026"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558902"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Publikujte svou aktivní, školenou aplikaci do pracovního nebo produkčního koncového bodu.
 
@@ -57,7 +57,6 @@ Například pro aplikaci vytvořenou v [www.Luis.AI](https://www.luis.ai), pokud
 Po výběru slotu nakonfigurujte nastavení publikování pro:
 
 * Analýza mínění
-* [Oprava pravopisu](luis-tutorial-bing-spellcheck.md)
 * Neprojevení řeči
 
 Po publikování jsou tato nastavení dostupná ke kontrole na stránce **Správa** **Nastavení publikování** oddílu. Nastavení můžete změnit při každém publikování. Pokud zrušíte publikování, všechny změny, které jste provedli během publikování, se také zruší.
@@ -79,37 +78,6 @@ Nemusíte zadávat Analýza textu klíč a za tuto službu se neúčtují žádn
 Mínění data jsou skóre mezi 1 a 0 značící kladné (blíže k 1) nebo záporné (navýšení na 0) mínění dat. Popisek mínění `positive` , `neutral` a `negative` je na podporovanou jazykovou verzi. V současné době podporuje popisky mínění jenom angličtina.
 
 Další informace o odpovědích koncových bodů JSON s analýzou mínění najdete v tématu [Analýza mínění](luis-reference-prebuilt-sentiment.md) .
-
-## <a name="spelling-correction"></a>Oprava pravopisu
-
-Prediktivní rozhraní API V3 teď podporuje rozhraní API pro kontrolu pravopisu Bingu. Do své aplikace můžete přidat kontrolu pravopisu, a to tak, že do hlavičky vašich požadavků přidáte klíč do svého prostředku vyhledávání Bingu. Můžete použít existující prostředek Bingu, pokud už vlastníte, nebo [vytvořit nový](https://portal.azure.com/#create/Microsoft.BingSearch) , abyste mohli tuto funkci používat. 
-
-|Klíč záhlaví|Hodnota hlavičky|
-|--|--|
-|`mkt-bing-spell-check-key`|Klíče nalezené v okně **klíče a koncový bod** vašeho prostředku|
-
-Příklad výstupu předpovědi pro nesprávně napsaný dotaz:
-
-```json
-{
-  "query": "bouk me a fliht to kayro",
-  "prediction": {
-    "alteredQuery": "book me a flight to cairo",
-    "topIntent": "book a flight",
-    "intents": {
-      "book a flight": {
-        "score": 0.9480589
-      }
-      "None": {
-        "score": 0.0332136229
-      }
-    },
-    "entities": {}
-  }
-}
-```
-
-Opravy pro kontrolu pravopisu se provádí před předvídáním LUIS uživatele utterance. V odpovědi můžete zobrazit všechny změny v původních utterance, včetně pravopisu.
 
 ## <a name="speech-priming"></a>Neprojevení řeči
 

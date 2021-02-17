@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q1, azuread-video-2020
-ms.openlocfilehash: a39ae904bb1dd36c3d3e19e8f51ff24e8d975f9b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 5bf9b79621ae1cd2c73f2e3ce18b0780bcdd2a71
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033914"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559341"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Co je řízení přístupu na základě role v Azure (Azure RBAC)?
 
@@ -38,7 +38,7 @@ Tady je několik příkladů toho, co můžete dělat s Azure RBAC:
 
 ## <a name="how-azure-rbac-works"></a>Jak funguje Azure RBAC
 
-Způsob řízení přístupu k prostředkům pomocí Azure RBAC je vytvoření přiřazení rolí. Jedná se o klíčový koncept, který vám pomůže pochopit – jak se vynutila oprávnění. Přiřazení role se skládá ze tří prvků: objekt zabezpečení, definice role a obor.
+Způsob řízení přístupu k prostředkům pomocí Azure RBAC je přiřazení rolí Azure. Jedná se o klíčový koncept, který vám pomůže pochopit – jak se vynutila oprávnění. Přiřazení role se skládá ze tří prvků: objekt zabezpečení, definice role a obor.
 
 ### <a name="security-principal"></a>Objekt zabezpečení
 
@@ -62,7 +62,7 @@ Azure obsahuje operace s daty, které umožňují udělit přístup k datům v r
 
 Další informace najdete v tématu [vysvětlení definic rolí Azure](role-definitions.md).
 
-### <a name="scope"></a>Rozsah
+### <a name="scope"></a>Obor
 
 *Obor* je sada prostředků, na které se vztahuje přístup. Když přiřadíte roli, můžete definováním oboru dále omezit akce, které jsou povoleny. To je užitečné, pokud chcete, aby někomu byl [Přispěvatel webu](built-in-roles.md#website-contributor), ale jenom pro jednu skupinu prostředků.
 
@@ -80,9 +80,9 @@ Následující diagram znázorňuje příklad přiřazení role. V tomto příkl
 
 ![Přiřazení role za účelem řízení přístupu](./media/overview/rbac-overview.png)
 
-Přiřazení rolí můžete vytvořit pomocí portálu Azure Portal, Azure CLI, Azure PowerShellu, sad Azure SDK nebo rozhraní REST API.
+Role můžete přiřadit pomocí Azure Portal, Azure CLI, Azure PowerShell, sady Azure SDK nebo rozhraní REST API.
 
-Další informace najdete v tématu [Postup přidání přiřazení role](role-assignments-steps.md).
+Další informace najdete v tématu věnovaném [postupu přiřazení role Azure](role-assignments-steps.md).
 
 ## <a name="multiple-role-assignments"></a>Přiřazení více rolí
 
@@ -122,6 +122,6 @@ Níže jsou uvedené kroky vysoké úrovně, které Azure RBAC používá k urč
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přidání nebo odebrání přiřazení rolí Azure pomocí portálu Azure Portal](role-assignments-portal.md)
+- [Přiřazení rolí Azure pomocí Azure Portal](role-assignments-portal.md)
 - [Vysvětlení různých rolí](rbac-and-directory-admin-roles.md)
 - [Architektura pro přijetí do cloudu: Správa přístupu k prostředkům v Azure](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

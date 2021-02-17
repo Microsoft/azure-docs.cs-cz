@@ -3,12 +3,12 @@ title: Doručení událostí pomocí služby privátního propojení
 description: Tento článek popisuje, jak obejít omezení neschopnýho doručovat události pomocí služby privátního propojení.
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: ad6f500830383f60e0350a297d2650bfbeae2f6f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4343740ea6c34c9ae282723b79007f7035785b04
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417228"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548606"
 ---
 # <a name="deliver-events-using-private-link-service"></a>Doručení událostí pomocí služby privátního propojení
 V současné době není možné doručovat události pomocí [privátních koncových bodů](../private-link/private-endpoint-overview.md). To znamená, že pokud máte přísné požadavky na izolaci sítě, u kterých vaše doručováné události nesmí opustit privátní IP adresu, neexistuje žádná podpora. 
@@ -19,7 +19,7 @@ Pokud ale vaše požadavky zavolají zabezpečený způsob, jak odesílat událo
 Pak můžete pomocí privátního odkazu nakonfigurovaného v Azure Functions nebo Webhooku nasazeného ve virtuální síti vyžádat události. Viz Ukázka: [připojení k privátním koncovým bodům pomocí Azure Functions](/samples/azure-samples/azure-functions-private-endpoints/connect-to-private-endpoints-with-azure-functions/).
 
 
-:::image type="content" source="./media/consume-private-endpoints/deliver-private-link-service.png" alt-text="Doručení prostřednictvím služby privátního propojení":::
+:::image type="content" source="./media/consume-private-endpoints/deliver-private-link-service.svg" alt-text="Doručení prostřednictvím služby privátního propojení":::
 
 
 V rámci této konfigurace přechází přenos přes veřejnou IP adresu nebo Internet z Event Grid na Event Hubs, Service Bus nebo Azure Storage, kanál ale může být zašifrovaný a používá se spravovaná identita Event Grid. Pokud nakonfigurujete Azure Functions nebo Webhook nasazený do virtuální sítě tak, aby používal Event Hubs, Service Bus nebo Azure Storage prostřednictvím privátního propojení, Tato část provozu bude v Azure zůstat v provozu.

@@ -5,14 +5,14 @@ author: yanivlavi
 ms.author: yalavi
 services: monitoring
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: 97c3ead4dbdf0608c6b7cd1be6a9edf242ecd2b5
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0ab254ac64cb2234c45f24b56e212ab835dbad1f
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510759"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100544999"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akce webhooku pro pravidla výstrah protokolu
 

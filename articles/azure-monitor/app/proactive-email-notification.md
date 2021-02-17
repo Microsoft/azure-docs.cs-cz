@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 03/13/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8e2bf4e451ebc3c9ebba2c01dae6703fc79aa606
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63d1a0bf437df6bc0b68474e092ca23985493b24
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324127"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559584"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>Změna e-mailových oznámení inteligentního zjišťování
 
@@ -19,7 +19,7 @@ Na základě zpětné vazby od zákazníků od 1. dubna 2019 měníme výchozí 
 
 ## <a name="what-is-changing"></a>Co se mění?
 
-V současné době se e-mailová oznámení inteligentní detekce standardně odesílají do rolí _vlastník_předplatného, _přispěvatele_předplatného a _modulu pro čtení předplatného_ Tyto role často zahrnují uživatele, kteří nejsou aktivně zapojeni do monitorování, což způsobí, že mnohé z těchto uživatelů dostanou oznámení zbytečně. Pro zlepšení tohoto prostředí provádíme změnu, aby e-mailová oznámení ve výchozím nastavení přešla jenom na role [Čtenář monitorování](../../role-based-access-control/built-in-roles.md#monitoring-reader) a [sledování](../../role-based-access-control/built-in-roles.md#monitoring-contributor) .
+V současné době se e-mailová oznámení inteligentní detekce standardně odesílají do rolí _vlastník_ předplatného, _přispěvatele_ předplatného a _modulu pro čtení předplatného_ Tyto role často zahrnují uživatele, kteří nejsou aktivně zapojeni do monitorování, což způsobí, že mnohé z těchto uživatelů dostanou oznámení zbytečně. Pro zlepšení tohoto prostředí provádíme změnu, aby e-mailová oznámení ve výchozím nastavení přešla jenom na role [Čtenář monitorování](../../role-based-access-control/built-in-roles.md#monitoring-reader) a [sledování](../../role-based-access-control/built-in-roles.md#monitoring-contributor) .
 
 ## <a name="scope-of-this-change"></a>Rozsah této změny
 
@@ -33,7 +33,7 @@ Tato změna bude mít vliv na všechna pravidla inteligentního zjišťování, 
 
 Aby bylo zajištěno, že budou pro příslušné uživatele zasílána e-mailová oznámení od inteligentního zjišťování, musí být uživatelé přiřazeni ke službě [Sledování monitorování](../../role-based-access-control/built-in-roles.md#monitoring-reader) nebo k rolím [přispěvatele](../../role-based-access-control/built-in-roles.md#monitoring-contributor) v předplatném.
 
-Pokud chcete přiřazovat uživatele k rolím přispěvatele monitorování nebo monitorování pomocí Azure Portal, postupujte podle kroků popsaných v článku [Přidání přiřazení role](../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) . Ujistěte se, že jste jako roli, ke které jsou přiřazeni uživatelé, vybrali možnost _Čtenář monitorování_ nebo _Přispěvatel monitorování_ .
+Pokud chcete přiřazovat uživatele k rolím přispěvatele monitorování nebo monitorování pomocí Azure Portal, postupujte podle kroků popsaných v článku [přiřazení rolí Azure](../../role-based-access-control/role-assignments-portal.md) . Ujistěte se, že jste jako roli, ke které jsou přiřazeni uživatelé, vybrali možnost _Čtenář monitorování_ nebo _Přispěvatel monitorování_ .
 
 > [!NOTE]
 > Tato změna nebude mít vliv na konkrétní příjemce oznámení inteligentní detekce nakonfigurovaných pomocí možnosti _Další příjemci e-mailu_ v nastavení pravidla. Tito příjemci budou dál dostávat e-mailová oznámení.

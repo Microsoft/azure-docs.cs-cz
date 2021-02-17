@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 598673bca5b893236cfd38a7fa220ff25ee9dd7e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 78958dc0f95d2bc7a9e393ac2e769a97f7e92efa
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388511"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556444"
 ---
 # <a name="azure-storage-redundancy"></a>Redundance Azure Storage
 
@@ -179,10 +179,10 @@ Následující tabulka uvádí, zda jsou vaše data v daném scénáři odolná 
 
 | Scénář výpadku | LRS | ZRS | GRS/RA – GRS | GZRS/RA – GZRS |
 |:-|:-|:-|:-|:-|
-| Uzel v datovém centru nebude dostupný. | Yes | Yes | Yes | Yes |
-| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast). | No | Yes | Ano<sup>1</sup> | Yes |
-| V primární oblasti dojde k výpadku v rámci oblasti. | No | No | Ano<sup>1</sup> | Ano<sup>1</sup> |
-| Přístup pro čtení do sekundární oblasti je k dispozici, pokud primární oblast nebude k dispozici. | No | No | Ano (s RA-GRS) | Ano (s RA-GZRS) |
+| Uzel v datovém centru nebude dostupný. | Ano | Ano | Ano | Ano |
+| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast). | Ne | Ano | Ano<sup>1</sup> | Ano |
+| V primární oblasti dojde k výpadku v rámci oblasti. | Ne | Ne | Ano<sup>1</sup> | Ano<sup>1</sup> |
+| Přístup pro čtení do sekundární oblasti je k dispozici, pokud primární oblast nebude k dispozici. | Ne | Ne | Ano (s RA-GRS) | Ano (s RA-GZRS) |
 
 <sup>1</sup> převzetí služeb při selhání účtu se vyžaduje k obnovení dostupnosti pro zápis, pokud primární oblast nebude k dispozici. Další informace najdete v tématu [převzetí služeb při selhání při zotavení po havárii a účtu úložiště](storage-disaster-recovery-guidance.md).
 
@@ -200,7 +200,7 @@ Následující tabulka uvádí, které možnosti redundance jsou podporovány je
 
 | LRS | ZRS | GRS/RA – GRS | GZRS/RA – GZRS |
 |:-|:-|:-|:-|
-| Účty pro obecné účely verze 2<br /> Účty pro obecné účely verze 1<br /> Úložiště objektů blob bloku<br /> Blob Storage<br /> File Storage | Účty pro obecné účely verze 2<br /> Úložiště objektů blob bloku<br /> File Storage | Účty pro obecné účely verze 2<br /> Účty pro obecné účely verze 1<br /> Blob Storage | Účty pro obecné účely verze 2 |
+| Účty pro obecné účely verze 2<br /> Účty pro obecné účely verze 1<br /> BlockBlobStorage<br /> Blob Storage<br /> Úložiště | Účty pro obecné účely verze 2<br /> BlockBlobStorage<br /> Úložiště | Účty pro obecné účely verze 2<br /> Účty pro obecné účely verze 1<br /> Blob Storage | Účty pro obecné účely verze 2 |
 
 Všechna data pro všechny účty úložiště se zkopírují podle možnosti redundance pro účet úložiště. Zkopírují se objekty, mezi které patří objekty blob bloku, doplňovací objekty blob, objekty blob stránky, fronty, tabulky a soubory. Data na všech úrovních, včetně archivní úrovně, se zkopírují. Další informace o úrovních objektů BLOB najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](../blobs/storage-blob-storage-tiers.md).
 

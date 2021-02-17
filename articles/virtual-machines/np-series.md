@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: 2606881cec5527084c3c2788d40f8bdfd8abf5a3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0b73697097e13f26a83eeaa72837fc00c31ef826
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417234"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557188"
 ---
 # <a name="np-series-preview"></a>NP-Series (Preview)
 
@@ -29,7 +29,7 @@ Podpora generování virtuálních počítačů: generace 1<br>
 <br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | FPGA | FPGA paměť: GiB | Max. datových disků | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) | 
-|---|---|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|---|
 | Standard_NP10s | 10 | 168 | 736  | 1 | 64  | 8 | 1 / 7500 | 
 | Standard_NP20s | 20 | 336 | 1474 | 2 | 128 | 16 | 2 / 15000 | 
 | Standard_NP40s | 40 | 672 | 2948 | 4 | 256 | 32 | 4 / 30000 | 

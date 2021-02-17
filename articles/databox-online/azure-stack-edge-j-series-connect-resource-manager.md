@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 54aad90cf86f1a20d76f04f3a829f29c47023558
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: ebadfc889eb648b734747e5a2a45662e82aab643
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805802"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546801"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Připojení k Azure Resource Manager na zařízení Azure Stack Edge pro
 
@@ -93,9 +93,9 @@ Pokud se chcete připojit k Azure Resource Manager, budete muset vytvořit nebo 
 
 Pouze pro testovací a vývojové použití můžete pomocí prostředí Windows PowerShell vytvořit certifikáty v místním systému. Při vytváření certifikátů pro klienta postupujte podle těchto pokynů:
 
-1. Nejprve musíte vytvořit kořenový certifikát pro podpisový řetězec. Další informace najdete v tématu Postup [Vytvoření certifikátů podpisového řetězce](azure-stack-edge-j-series-manage-certificates.md#create-signing-chain-certificate).
+1. Nejprve musíte vytvořit kořenový certifikát pro podpisový řetězec. Další informace najdete v tématu Postup [Vytvoření certifikátů podpisového řetězce](azure-stack-edge-gpu-manage-certificates.md#create-signing-chain-certificate).
 
-2. Můžete dále vytvořit certifikáty koncového bodu pro objekt BLOB a Azure Resource Manager. Tyto koncové body můžete získat ze stránky **zařízení** v místním webovém uživatelském rozhraní. Podívejte se na postup [Vytvoření certifikátů koncového bodu](azure-stack-edge-j-series-manage-certificates.md#create-signed-endpoint-certificates).
+2. Můžete dále vytvořit certifikáty koncového bodu pro objekt BLOB a Azure Resource Manager. Tyto koncové body můžete získat ze stránky **zařízení** v místním webovém uživatelském rozhraní. Podívejte se na postup [Vytvoření certifikátů koncového bodu](azure-stack-edge-gpu-manage-certificates.md#create-signed-endpoint-certificates).
 
 3. U všech těchto certifikátů se ujistěte, že název subjektu a alternativní název subjektu splňují následující pokyny:
 
@@ -105,26 +105,26 @@ Pouze pro testovací a vývojové použití můžete pomocí prostředí Windows
     |Blob Storage|`*.blob.<Device name>.<Dns Domain>`|`*.blob.< Device name>.<Dns Domain>`|`*.blob.mydevice1.microsoftdatabox.com` |
     |Jeden certifikát pro více sítí SAN pro oba koncové body|`<Device name>.<dnsdomain>`|`login.<Device name>.<Dns Domain>`<br>`management.<Device name>.<Dns Domain>`<br>`*.blob.<Device name>.<Dns Domain>`|`mydevice1.microsoftdatabox.com` |
 
-Další informace o certifikátech najdete v tématu [Správa certifikátů](azure-stack-edge-j-series-manage-certificates.md).
+Další informace o certifikátech najdete v tématu [Správa certifikátů](azure-stack-edge-gpu-manage-certificates.md).
 
 ### <a name="upload-certificates-on-the-device"></a>Nahrávání certifikátů na zařízení
 
 Certifikáty, které jste vytvořili v předchozím kroku, se budou nacházet v osobním úložišti na vašem klientovi. Tyto certifikáty je nutné exportovat v klientovi do odpovídajících souborů formátu, které je možné odeslat do zařízení.
 
-1. Kořenový certifikát musí být exportován jako soubor formátu DER s příponou souboru *. cer* . Podrobný postup najdete v tématu [export certifikátů jako soubor ve formátu. cer](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-der-format).
+1. Kořenový certifikát musí být exportován jako soubor formátu DER s příponou souboru *. cer* . Podrobný postup najdete v tématu [export certifikátů jako soubor ve formátu. cer](azure-stack-edge-gpu-manage-certificates.md#export-certificates-as-der-format).
 
-2. Certifikáty koncového bodu musí být exportovány jako soubory *. pfx* s privátními klíči. Podrobný postup najdete v tématu [export certifikátů jako soubor. pfx s privátními klíči](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key).
+2. Certifikáty koncového bodu musí být exportovány jako soubory *. pfx* s privátními klíči. Podrobný postup najdete v tématu [export certifikátů jako soubor. pfx s privátními klíči](azure-stack-edge-gpu-manage-certificates.md#export-certificates-as-pfx-format-with-private-key).
 
-3. Kořenové a koncové certifikáty se pak nahrají na zařízení pomocí možnosti **+ Přidat certifikát** na stránce **certifikáty** v místním webovém uživatelském rozhraní. Pokud chcete nahrát certifikáty, postupujte podle kroků v části [nahrávání certifikátů](azure-stack-edge-j-series-manage-certificates.md#upload-certificates).
+3. Kořenové a koncové certifikáty se pak nahrají na zařízení pomocí možnosti **+ Přidat certifikát** na stránce **certifikáty** v místním webovém uživatelském rozhraní. Pokud chcete nahrát certifikáty, postupujte podle kroků v části [nahrávání certifikátů](azure-stack-edge-gpu-manage-certificates.md#upload-certificates).
 
 
 ### <a name="import-certificates-on-the-client-running-azure-powershell"></a>Import certifikátů na klienta se spuštěným Azure PowerShell
 
 Klient systému Windows, ve kterém budete vyvolávat rozhraní API pro Azure Resource Manager, musí vytvořit vztah důvěryhodnosti se zařízením. Z tohoto důvodu musí být certifikáty, které jste vytvořili v předchozím kroku, naimportovány do příslušného úložiště certifikátů na vašem klientovi Windows.
 
-1. Kořenový certifikát, který jste exportovali jako Formát DER s příponou *. cer* , by se teď měl naimportovat do důvěryhodných kořenových certifikačních autorit v klientském počítači. Podrobný postup najdete v tématu [Import certifikátů do úložiště Důvěryhodné kořenové certifikační autority.](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format)
+1. Kořenový certifikát, který jste exportovali jako Formát DER s příponou *. cer* , by se teď měl naimportovat do důvěryhodných kořenových certifikačních autorit v klientském počítači. Podrobný postup najdete v tématu [Import certifikátů do úložiště Důvěryhodné kořenové certifikační autority.](azure-stack-edge-gpu-manage-certificates.md#import-certificates-as-der-format)
 
-2. Certifikáty koncového bodu, které jste exportovali jako soubor *. pfx* , se musí exportovat jako *. cer*. Tento *CER* se pak naimportuje do **osobního** úložiště certifikátů ve vašem systému. Podrobný postup najdete v tématu [Import certifikátů do osobního úložiště](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format).
+2. Certifikáty koncového bodu, které jste exportovali jako soubor *. pfx* , se musí exportovat jako *. cer*. Tento *CER* se pak naimportuje do **osobního** úložiště certifikátů ve vašem systému. Podrobný postup najdete v tématu [Import certifikátů do osobního úložiště](azure-stack-edge-gpu-manage-certificates.md#import-certificates-as-der-format).
 
 ## <a name="step-3-install-powershell-on-the-client"></a>Krok 3: instalace PowerShellu na klienta 
 

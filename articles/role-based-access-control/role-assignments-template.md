@@ -1,25 +1,29 @@
 ---
-title: Přidání přiřazení rolí Azure pomocí šablon Azure Resource Manager – Azure RBAC
+title: Přiřazení rolí Azure pomocí šablon Azure Resource Manager – Azure RBAC
 description: Naučte se, jak udělit přístup k prostředkům Azure pro uživatele, skupiny, instanční objekty nebo spravované identity pomocí šablon Azure Resource Manager a řízení přístupu na základě role v Azure (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
-manager: mtillman
+manager: daveba
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
 ms.date: 01/21/2021
 ms.author: rolyon
-ms.openlocfilehash: 023aa086cdafc3ab1459c2f748b2181575c14191
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 65b4ec369085e44cdffb0550e9eeaef0196cd35a
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675332"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556019"
 ---
-# <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Přidání přiřazení rolí Azure pomocí šablon Azure Resource Manager
+# <a name="assign-azure-roles-using-azure-resource-manager-templates"></a>Přiřazení rolí Azure pomocí šablon Azure Resource Manager
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Kromě používání Azure PowerShell nebo rozhraní příkazového řádku Azure CLI můžete role přiřadit pomocí [šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md). Šablony mohou být užitečné, pokud potřebujete nasadit prostředky konzistentně a opakovaně. Tento článek popisuje, jak přiřadit role pomocí šablon.
+
+## <a name="prerequisites"></a>Požadavky
+
+[!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 
 ## <a name="get-object-ids"></a>Získat ID objektů
 
@@ -37,7 +41,7 @@ $objectid = (Get-AzADUser -DisplayName "{name}").id
 objectid=$(az ad user show --id "{email}" --query objectId --output tsv)
 ```
 
-### <a name="group"></a>Skupina
+### <a name="group"></a>Group (Skupina)
 
 Pokud chcete získat ID skupiny, můžete použít příkazy [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) nebo [AZ AD Group show](/cli/azure/ad/group#az-ad-group-show) .
 
@@ -73,13 +77,13 @@ $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
 objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output tsv)
 ```
 
-## <a name="add-a-role-assignment"></a>Přidat přiřazení role
+## <a name="assign-an-azure-role"></a>Přiřazení role Azure
 
-Když v Azure RBAC udělíte přístup, přidáte přiřazení role.
+V Azure RBAC pro udělení přístupu přiřadíte roli.
 
 ### <a name="resource-group-scope-without-parameters"></a>Obor skupiny prostředků (bez parametrů)
 
-Následující šablona ukazuje základní způsob, jak přidat přiřazení role. Některé hodnoty jsou zadány v rámci šablony. Následující šablona znázorňuje:
+Následující šablona ukazuje základní způsob přiřazení role. Některé hodnoty jsou zadány v rámci šablony. Následující šablona znázorňuje:
 
 -  Přiřazení role [čtenáře](built-in-roles.md#reader) k uživateli, skupině nebo aplikaci v oboru skupiny prostředků
 
@@ -206,7 +210,7 @@ az deployment sub create --location centralus --template-file rbac-test.json --p
 
 ### <a name="resource-scope"></a>Obor prostředku
 
-Pokud potřebujete přidat přiřazení role na úrovni prostředku, nastavte `scope` vlastnost u přiřazení role na název prostředku.
+Pokud potřebujete přiřadit roli na úrovni prostředku, nastavte `scope` u přiřazení role vlastnost na název prostředku.
 
 Následující šablona znázorňuje:
 
@@ -369,15 +373,6 @@ az deployment group create --resource-group ExampleGroup2 --template-file rbac-t
 Následuje příklad přiřazení role přispěvatele k novému instančnímu objektu služby spravované identity po nasazení šablony.
 
 ![Přiřazení role nového objektu spravované služby identity](./media/role-assignments-template/role-assignment-template-msi.png)
-
-## <a name="remove-a-role-assignment"></a>Odebrání přiřazení role
-
-Když ve službě Azure RBAC odeberete přístup k prostředku Azure, odeberete přiřazení role. Neexistuje způsob, jak odebrat přiřazení role pomocí šablony. Chcete-li odebrat přiřazení role, je nutné použít jiné nástroje, jako například:
-
-- [Azure Portal](role-assignments-portal.md#remove-a-role-assignment)
-- [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
-- [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
-- [REST API](role-assignments-rest.md#remove-a-role-assignment)
 
 ## <a name="next-steps"></a>Další kroky
 

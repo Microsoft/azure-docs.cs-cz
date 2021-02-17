@@ -1,14 +1,14 @@
 ---
 title: Onboarding zákazníků do služby Azure Lighthouse
 description: Naučte se, jak začlenit zákazníka do Azure Lighthouse, který umožňuje získat a spravovat jejich prostředky prostřednictvím vlastního tenanta pomocí delegované správy prostředků Azure.
-ms.date: 02/08/2021
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: c0a886b692b99156cbd53e5f0f5953047560c5b9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4487dd82b30e14f9db2001dc10f7437a53e745f3
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372140"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556110"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding zákazníků do služby Azure Lighthouse
 
@@ -205,7 +205,7 @@ Poslední autorizace v předchozím příkladu přidá **principalId** s rolí s
 Po aktualizaci souboru parametrů musí uživatel v tenantovi zákazníka nasadit šablonu Azure Resource Manager v rámci svého tenanta. Pro každé předplatné, které chcete připojit, je potřeba samostatné nasazení (nebo pro každé předplatné, které obsahuje skupiny prostředků, které chcete připojit).
 
 > [!IMPORTANT]
-> Toto nasazení musí provést účet bez hosta v tenantovi zákazníka, který má [předdefinovanou roli](../../role-based-access-control/built-in-roles.md#owner) předplatného pro odběr (nebo který obsahuje skupiny prostředků, které jsou připojené). Pokud chcete zobrazit všechny uživatele, kteří můžou delegovat předplatné, uživatel v tenantovi zákazníka může vybrat předplatné ve Azure Portal, otevřít **řízení přístupu (IAM)** a [Zobrazit všechny uživatele s rolí vlastníka](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription). 
+> Toto nasazení musí provést účet bez hosta v tenantovi zákazníka, který má roli s `Microsoft.Authorization/roleAssignments/write` oprávněním, jako je například [vlastník](../../role-based-access-control/built-in-roles.md#owner), pro odběr přihlášený (nebo který obsahuje skupiny prostředků, které jsou připojené). Pokud chcete najít uživatele, kteří můžou delegovat předplatné, uživatel v tenantovi zákazníka může vybrat předplatné ve Azure Portal, otevřít **řízení přístupu (IAM)** a [Zobrazit všechny uživatele s rolí vlastníka](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription). 
 >
 > Pokud bylo předplatné vytvořeno prostřednictvím [programu Cloud Solution Provider (CSP)](../concepts/cloud-solution-provider.md), může nasazení provést libovolný uživatel, který má v tenantovi poskytovatele služeb roli [agenta správce](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) .
 

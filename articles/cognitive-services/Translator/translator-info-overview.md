@@ -6,26 +6,26 @@ services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: translator-text
 ms.topic: overview
-ms.date: 09/11/2020
+ms.subservice: translator-text
+ms.date: 02/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: Překladatel, překlad textu, strojové překlady, překladatelské služby
-ms.openlocfilehash: 37f0d64879493abcf3e5b9448068b86b7a36dccb
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 12f6d22f263747a8c43b2d98e6ade1de78aea1ce
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896693"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556263"
 ---
 # <a name="what-is-the-translator-service"></a>Co je služba Translator?
 
-Translator je cloudová služba pro strojový překlad, která je součástí řady rozhraní API pro rozpoznávání [Cognitive Services v Azure](../../index.yml?panel=ai&pivot=products) , která slouží k vytváření inteligentních aplikací. Překladatel se snadno integruje do aplikací, webů, nástrojů a řešení. Umožňuje přidat vícejazyčná uživatelská prostředí ve [více než 70 jazycích](./language-support.md)a můžete ji použít na libovolné hardwarové platformě s jakýmkoli operačním systémem pro překlad textu.
+Translator je cloudová služba pro strojový překlad, která je součástí řady rozhraní API pro rozpoznávání [Cognitive Services v Azure](../../index.yml?panel=ai&pivot=products) , která slouží k vytváření inteligentních aplikací. Překladatel se snadno integruje do aplikací, webů, nástrojů a řešení. Umožňuje přidat vícejazyčná uživatelská prostředí ve [více než 70 jazycích](./language-support.md). A dá se použít na jakékoli hardwarové platformě s jakýmkoli operačním systémem pro překlad textu.
 
 ## <a name="about-microsoft-translator"></a>Informace o službě Microsoft Translator
 
-Translator je řada produktů a služeb společnosti Microsoft a používá se v nich v rámci svých aplikací a pracovních postupů tisíce firem po celém světě, což umožňuje, aby jejich obsah dosáhl globální cílové skupiny.
+Překladatelé řady produktů a služeb Microsoftu a využívají tisíce firem po celém světě v rámci svých aplikací a pracovních postupů.
 
 Překlad řeči, který využívá překladatel, je také k dispozici prostřednictvím [služby Azure Speech Service](../speech-service/index.yml). Kombinuje funkce z Translator Speech API a Custom Speech Service do sjednocené a plně přizpůsobitelné služby. 
 
@@ -45,15 +45,15 @@ Přečtěte si další informace o [tom, jak NMT funguje](https://www.microsoft.
 
 ## <a name="improve-translations-with-custom-translator"></a>Vylepšení překladů pomocí vlastního překladatele
 
-Rozšíření služby Translator, vlastní Překladatel se dá použít společně s překladatelem, který vám usnadní přizpůsobení neuronové systému překladu a vylepšení překladu konkrétní terminologie a stylu.
+ Vlastní překladatel, rozšíření služby Translator, se dá použít spolu s překladatelem k přizpůsobení systému překladu neuronové a vylepšení překladu konkrétní terminologie a stylu.
 
-S rozšířením Custom Translator můžete vytvářet překladové systémy, které si poradí s terminologií používanou ve vaší firmě nebo oboru. Přizpůsobený systém překladu se pak snadno integruje do vašich stávajících aplikací, pracovních postupů a webů napříč různými typy zařízení prostřednictvím pravidelného překladatele pomocí parametru Category (kategorie).
+Pomocí vlastního překladatele můžete vytvářet překladatelské systémy pro zpracování terminologie používané ve vašem podniku nebo v průmyslu. Přizpůsobený systém překladu můžete snadno integrovat s vašimi stávajícími aplikacemi, pracovními postupy, weby a zařízeními prostřednictvím pravidelného překladatele pomocí parametru Category.
 
 Přečtěte si další informace o funkci [Custom Translator](customization.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Zaregistrujte](./translator-how-to-signup.md) si přístupový klíč.
+- [Vytvořte službu Translator](./translator-how-to-signup.md) pro získání přístupových klíčů a koncového bodu.
 - Vyzkoušejte si náš [rychlý Start](quickstart-translator.md) pro rychlé volání služby Translator.
 - [Reference k rozhraní API](./reference/v3-0-reference.md) poskytuje technickou dokumentaci k rozhraním API.
 - [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
