@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 31a1169ca6c2194b8d5564e5d0df50116dd25084
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: ae0d9696d869b2a260de643482a9f86c34bcc824
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505661"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575468"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Začínáme s auditováním spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Auditování [spravované instance Azure SQL](sql-managed-instance-paas-overview
 
 V následující části je popsána konfigurace auditování na spravované instanci.
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 2. Vytvořte **kontejner** Azure Storage, ve kterém jsou uložené protokoly auditu.
 
    1. Přejděte do účtu služby Azure Storage, do kterého chcete ukládat protokoly auditu.
@@ -79,11 +79,11 @@ V následující části je popsána konfigurace auditování na spravované ins
 
         - SAS nakonfigurujte následujícím způsobem:
 
-          - **Povolené služby** : BLOB
+          - **Povolené služby**: BLOB
 
-          - **Počáteční datum** : Chcete-li se vyhnout problémům s časovými pásmy, použijte včerejší datum.
+          - **Počáteční datum**: Chcete-li se vyhnout problémům s časovými pásmy, použijte včerejší datum.
 
-          - **Koncové datum** : vyberte datum, kdy vyprší platnost tohoto tokenu SAS.
+          - **Koncové datum**: vyberte datum, kdy vyprší platnost tohoto tokenu SAS.
 
             > [!NOTE]
             > Obnovte token po vypršení platnosti, abyste se vyhnuli selháním auditu.
@@ -126,11 +126,11 @@ V následující části je popsána konfigurace auditování na spravované ins
 
      1. Rozbalte hlavní poznámku Průzkumník objektů.
 
-     1. Rozbalte uzel **zabezpečení** , klikněte pravým tlačítkem na uzel **audity** a klikněte na **nový audit** :
+     1. Rozbalte uzel **zabezpečení** , klikněte pravým tlačítkem na uzel **audity** a klikněte na **nový audit**:
 
         ![Rozbalte uzel zabezpečení a audit.](./media/auditing-configure/10_mi_SSMS_new_audit.png)
 
-     1. Ujistěte se, že je v **cíli auditu** vybraná **Adresa URL** a klikněte na **Procházet** :
+     1. Ujistěte se, že je v **cíli auditu** vybraná **Adresa URL** a klikněte na **Procházet**:
 
         ![Procházet Azure Storage](./media/auditing-configure/11_mi_SSMS_audit_browse.png)
 
@@ -138,7 +138,7 @@ V následující části je popsána konfigurace auditování na spravované ins
 
         ![Přihlášení k Azure](./media/auditing-configure/12_mi_SSMS_sign_in_to_azure.png)
 
-     1. V rozevíracích seznamech vyberte předplatné, účet úložiště a kontejner objektů blob, nebo vytvořte vlastní kontejner kliknutím na **vytvořit**. Po dokončení klikněte na **OK** :
+     1. V rozevíracích seznamech vyberte předplatné, účet úložiště a kontejner objektů blob, nebo vytvořte vlastní kontejner kliknutím na **vytvořit**. Po dokončení klikněte na **OK**:
 
         ![Výběr předplatného Azure, účtu úložiště a kontejneru objektů BLOB](./media/auditing-configure/13_mi_SSMS_select_subscription_account_container.png)
 
@@ -223,7 +223,7 @@ Pro využívání dat protokolů auditu z Event Hubs budete muset nastavit datov
 
 Pokud jsou protokoly auditu zapisovány do protokolů Azure Monitor, jsou k dispozici v pracovním prostoru Log Analytics, kde můžete spustit pokročilé vyhledávání dat auditu. Jako výchozí bod přejděte do pracovního prostoru Log Analytics. V části **Obecné** klikněte na **protokoly** a zadejte jednoduchý dotaz, například: `search "SQLSecurityAuditEvents"` k zobrazení protokolů auditu.  
 
-Protokoly Azure Monitor poskytují informace o provozu v reálném čase pomocí integrovaného vyhledávání a vlastních řídicích panelů, které umožňují snadno analyzovat miliony záznamů napříč všemi vašimi úlohami a servery. Další užitečné informace o tom, jak hledat jazyk a příkazy protokolu Azure Monitor naleznete v tématu [Azure monitor v protokolech hledání](../../azure-monitor/log-query/log-query-overview.md).
+Protokoly Azure Monitor poskytují informace o provozu v reálném čase pomocí integrovaného vyhledávání a vlastních řídicích panelů, které umožňují snadno analyzovat miliony záznamů napříč všemi vašimi úlohami a servery. Další užitečné informace o tom, jak hledat jazyk a příkazy protokolu Azure Monitor naleznete v tématu [Azure monitor v protokolech hledání](../../azure-monitor/logs/log-query-overview.md).
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 

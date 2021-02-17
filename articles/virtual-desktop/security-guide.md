@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a106455ea9d7b7a64fecd7c4255c294d0bd62db8
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: cfc980fdabdb9c6e7085088db12754243f133d89
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562612"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581388"
 ---
 # <a name="security-best-practices"></a>Osvědčené postupy zabezpečení
 
@@ -29,16 +29,16 @@ Tady jsou požadavky na zabezpečení, na které zodpovídáte při nasazení vi
 
 | Nutnost zabezpečení | Je zákazník zodpovědný za to? |
 |---------------|:-------------------------:|
-|Identita|Ano|
-|Zařízení uživatelů (mobilní zařízení a počítač)|Ano|
-|Zabezpečení aplikací|Ano|
-|Operační systém hostitele relace|Ano|
-|Konfigurace nasazení|Ano|
-|Správa sítě|Ano|
-|Rovina řízení virtualizace|Ne|
-|Fyzičtí hostitelé|Ne|
-|Fyzická síť|Ne|
-|Fyzické datacentrum|Ne|
+|Identita|Yes|
+|Zařízení uživatelů (mobilní zařízení a počítač)|Yes|
+|Zabezpečení aplikací|Yes|
+|Operační systém hostitele relace|Yes|
+|Konfigurace nasazení|Yes|
+|Správa sítě|Yes|
+|Rovina řízení virtualizace|No|
+|Fyzičtí hostitelé|No|
+|Fyzická síť|No|
+|Fyzické datacentrum|No|
 
 Zabezpečení vyžaduje, aby zákazník nezodpovědný za zpracování Microsoftem.
 
@@ -80,10 +80,10 @@ Povolením [podmíněného přístupu](../active-directory/conditional-access/ov
 
 Povolením shromažďování protokolů auditu můžete zobrazit aktivitu uživatelů a správců, která souvisí s virtuálním počítačem s Windows. Mezi klíčové protokoly auditu patří například:
 
--   [Protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
+-   [Protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 -   [Protokol aktivit Azure Active Directory](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
--   [Hostitelé relace](../azure-monitor/platform/agent-windows.md)
+-   [Hostitelé relace](../azure-monitor/agents/agent-windows.md)
 -   [Diagnostický protokol virtuálních klientů Windows](../virtual-desktop/diagnostics-log-analytics.md)
 -   [Protokoly Key Vault](../key-vault/general/logging.md)
 

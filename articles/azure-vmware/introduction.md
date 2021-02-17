@@ -3,12 +3,12 @@ title: Úvod
 description: Seznamte se s funkcemi a výhodami řešení Azure VMware pro nasazení a správu úloh na bázi VMware v Azure.
 ms.topic: overview
 ms.date: 11/11/2020
-ms.openlocfilehash: 57edfc5786dfc95070b66eb9c8e2e038bafdcd35
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 255d3599385c60d3b13f4769796ced41a1177311
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534649"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579294"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Co je Azure VMware Solution?
 
@@ -48,12 +48,12 @@ Po nasazení řešení Azure VMware do svého předplatného [Azure monitor prot
 
 V privátním cloudu můžete:
 - Shromažďovat protokoly na všech vašich virtuálních počítačích.
-- [Stáhněte a nainstalujte agenta MMA](../azure-monitor/platform/log-analytics-agent.md#installation-options) na virtuální počítače se systémy Linux a Windows.
-- Povolte [rozšíření Azure Diagnostics](../azure-monitor/platform/diagnostics-extension-overview.md).
-- [Vytvořte a spusťte nové dotazy](../azure-monitor/platform/data-platform-logs.md#log-queries).
+- [Stáhněte a nainstalujte agenta MMA](../azure-monitor/agents/log-analytics-agent.md#installation-options) na virtuální počítače se systémy Linux a Windows.
+- Povolte [rozšíření Azure Diagnostics](../azure-monitor/agents/diagnostics-extension-overview.md).
+- [Vytvořte a spusťte nové dotazy](../azure-monitor/logs/data-platform-logs.md#log-queries).
 - Spouštějte stejné dotazy, které obvykle spouštíte na virtuálních počítačích.
 
-Vzorce monitorování v řešení Azure VMware jsou podobné virtuálním počítačům Azure v rámci platformy IaaS. Další informace a postupy najdete v tématu [monitorování virtuálních počítačů Azure pomocí Azure monitor](../azure-monitor/insights/monitor-vm-azure.md).
+Vzorce monitorování v řešení Azure VMware jsou podobné virtuálním počítačům Azure v rámci platformy IaaS. Další informace a postupy najdete v tématu [monitorování virtuálních počítačů Azure pomocí Azure monitor](../azure-monitor/vm/monitor-vm-azure.md).
 
 ## <a name="next-steps"></a>Další kroky
 

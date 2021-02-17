@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e8915e1c15972341befd176b412925f4e87c94f6
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: fadbed5607c7ebdd61a42ae054f431840c529d69
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201446"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573062"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Základní Azure Policy zabezpečení pro Azure Security test
 
@@ -31,9 +31,9 @@ Azure Policy používá pojem _vlastnictví_ místo _zodpovědnosti_. Podrobnost
 
 **Doprovodné** materiály: Azure Policy používá protokol aktivit, které jsou automaticky povoleny, aby zahrnoval zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky.
 
-* [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../../azure-monitor/platform/diagnostic-settings.md)
+* [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Principy protokolování a různých typů protokolů v Azure](../../../azure-monitor/platform/platform-logs-overview.md)
+* [Principy protokolování a různých typů protokolů v Azure](../../../azure-monitor/essentials/platform-logs-overview.md)
 
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
@@ -89,7 +89,7 @@ Pomocí [Azure AD Privileged Identity Management](../../../active-directory/priv
 
 **Doprovodné** materiály: pomocí Azure monitor s protokoly aktivit můžete vytvořit upozornění, když se změny probíhají v Azure Policy.
 
-* [Vytvoření upozornění pro události protokolu aktivit Azure](../../../azure-monitor/platform/alerts-activity-log.md)
+* [Vytvoření upozornění pro události protokolu aktivit Azure](../../../azure-monitor/alerts/alerts-activity-log.md)
 
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici

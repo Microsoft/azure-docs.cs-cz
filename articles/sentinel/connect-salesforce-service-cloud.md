@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 152fee2e4e72cee6a7bc1c768c0a8ca7b031ec39
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 1efd91d92bac1bc1f39d82aaa0cc71daa0275f8e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878914"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570542"
 ---
 # <a name="connect-your-salesforce-service-cloud-to-azure-sentinel"></a>Připojení cloudu služby Salesforce k Azure Sentinel
 
@@ -35,7 +35,7 @@ Tento článek vysvětluje, jak připojit vaše cloudové řešení služby Sale
 
 - V pracovním prostoru Azure Sentinel musíte mít oprávnění ke čtení a zápisu.
 
-- Pro pracovní prostor musíte mít oprávnění ke čtení sdílených klíčů. [Přečtěte si další informace o klíčích pracovních prostorů](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
+- Pro pracovní prostor musíte mít oprávnění ke čtení sdílených klíčů. [Přečtěte si další informace o klíčích pracovních prostorů](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key).
 
 - Abyste mohli Azure Functions vytvořit Function App, musíte mít oprávnění ke čtení a zápisu. [Přečtěte si další informace o Azure Functions](../azure-functions/index.yml).
 

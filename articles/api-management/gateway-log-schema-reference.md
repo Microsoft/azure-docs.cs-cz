@@ -8,16 +8,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 064ac21e01239f7be3ddca9e48089ce880c6af58
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: df0018e323bc0c5725c9752b25b77612f035c196
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93380355"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582493"
 ---
 # <a name="reference-api-management-resource-log-schema"></a>Referenční dokumentace: API Management schéma protokolu prostředků
 
-Tento článek poskytuje referenční informace ke schématu pro protokol prostředků Azure API Management GatewayLogs. Položky protokolu zahrnují také pole ve [společném schématu nejvyšší úrovně](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema).
+Tento článek poskytuje referenční informace ke schématu pro protokol prostředků Azure API Management GatewayLogs. Položky protokolu zahrnují také pole ve [společném schématu nejvyšší úrovně](../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema).
 
 Pokud chcete povolit shromažďování protokolu prostředků v API Management, přečtěte si téma [monitorování publikovaných rozhraní API](api-management-howto-use-azure-monitor.md#resource-logs).
 
@@ -25,7 +25,7 @@ Pokud chcete povolit shromažďování protokolu prostředků v API Management, 
 
 Následující vlastnosti jsou protokolovány pro každou žádost rozhraní API.
 
-| Vlastnost  | Typ | Popis |
+| Vlastnost  | Typ | Description |
 | ------------- | ------------- | ------------- |
 | method | řetězec | Metoda HTTP příchozího požadavku. |
 | url | řetězec | Adresa URL příchozího požadavku. |
@@ -49,5 +49,5 @@ Následující vlastnosti jsou protokolovány pro každou žádost rozhraní API
 ## <a name="next-steps"></a>Další kroky
 
 * Informace o rozhraních API pro monitorování v API Management najdete v tématu [monitorování publikovaných rozhraní API](api-management-howto-use-azure-monitor.md) .
-* Další informace o [Common a schématu specifického pro službu pro protokoly prostředků Azure](../azure-monitor/platform/resource-logs-schema.md)
+* Další informace o [Common a schématu specifického pro službu pro protokoly prostředků Azure](../azure-monitor/essentials/resource-logs-schema.md)
 

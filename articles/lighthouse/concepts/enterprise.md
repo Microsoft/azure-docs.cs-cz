@@ -3,12 +3,12 @@ title: Azure Lighthouse v podnikových scénářích
 description: Funkce Azure Lighthouse se dají použít ke zjednodušení správy mezi klienty v rámci podniku, který používá víc tenantů Azure AD.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3f452e6810fa6809b5ba1b83b664f8b38d82a895
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ca3d73a6c5b88f7531c3d76eb3bd348fdfe8fa39
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004241"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573016"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse v podnikových scénářích
 
@@ -38,7 +38,7 @@ V obou případech nezapomeňte [při definování, kteří uživatelé budou m�
 
 Azure Lighthouse poskytuje jenom logické odkazy mezi správou tenanta a spravovaných tenantů místo fyzického přesouvání dat nebo prostředků. Přístup navíc vždy probíhá pouze v jednom směru, od správy tenanta po spravované klienty.  Uživatelé a skupiny v tenantovi pro správu by měli i nadále používat vícefaktorové ověřování při provádění operací správy u prostředků spravovaného tenanta.
 
-Podniky s interním nebo externím řízením a dodržováním předpisů guardrails můžou používat [protokoly aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md) ke splnění svých požadavků na transparentnost. Když podniková klienti navázali vztahy správy a spravovaného tenanta, můžou uživatelé v každém tenantovi zobrazit protokolované aktivity a zobrazit tak akce provedené uživateli ve správě tenanta.
+Podniky s interním nebo externím řízením a dodržováním předpisů guardrails můžou používat [protokoly aktivit Azure](../../azure-monitor/essentials/platform-logs-overview.md) ke splnění svých požadavků na transparentnost. Když podniková klienti navázali vztahy správy a spravovaného tenanta, můžou uživatelé v každém tenantovi zobrazit protokolované aktivity a zobrazit tak akce provedené uživateli ve správě tenanta.
 
 ## <a name="onboarding-considerations"></a>Pokyny k připojování
 

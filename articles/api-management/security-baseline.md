@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8a572221ca8899c5e4f4cf76e4b89c995952a2f3
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 6f82114874c9e85e44df6684d0b0cf624903a50f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258553"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582520"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Základní hodnoty zabezpečení Azure pro API Management
 
@@ -210,9 +210,9 @@ Plány Azure můžete použít také ke zjednodušení rozsáhlých nasazení Az
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků přidružených k nasazením Azure API Management. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -238,7 +238,7 @@ Kromě Azure Monitor může být služba Azure API Management integrovaná s jed
 
 Volitelně můžete povolit a začlenit data do Azure Sentinel nebo incidentu zabezpečení a správu událostí třetích stran (SIEM).
 
-* [Postup konfigurace nastavení diagnostiky](../azure-monitor/platform/diagnostic-settings.md#create-in-azure-portal)
+* [Postup konfigurace nastavení diagnostiky](../azure-monitor/essentials/diagnostic-settings.md#create-in-azure-portal)
 
 * [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -258,7 +258,7 @@ Volitelně můžete povolit a začlenit data do Azure Sentinel nebo incidentu za
 
 V případě protokolování auditu roviny dat poskytují diagnostické protokoly podrobné informace o operacích a chybách, které jsou důležité pro auditování, a také pro účely řešení potíží. Diagnostické protokoly se liší od protokolů aktivit. Protokoly aktivit poskytují přehled o operacích provedených ve vašich prostředcích Azure. Diagnostické protokoly poskytují přehled o operacích, které provedly vaše prostředky.
 
-* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
+* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 * [Postup povolení nastavení diagnostiky pro Azure API Management](./api-management-howto-use-azure-monitor.md#activity-logs)
 
@@ -278,9 +278,9 @@ V případě protokolování auditu roviny dat poskytují diagnostické protokol
 
 **Doprovodné** materiály: v rámci Azure monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
 
-* [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-* [Postup archivace protokolů na účet Azure Storage](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+* [Postup archivace protokolů na účet Azure Storage](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -294,9 +294,9 @@ Volitelně můžete integrovat API Management s Azure Application Insights a pou
 
 * [Jak monitorovat a prohlížet protokoly pro Azure API Management](./api-management-howto-use-azure-monitor.md)
 
-* [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+* [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
-* [Principy Log Analyticsho pracovního prostoru](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Principy Log Analyticsho pracovního prostoru](../azure-monitor/logs/log-analytics-tutorial.md)
 
 * [Postup při integraci s Azure Application Insights](./api-management-howto-app-insights.md)
 
@@ -314,7 +314,7 @@ Volitelně můžete integrovat API Management s Azure Application Insights a pou
 
 Volitelně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany.
 
-* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
+* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 * [Postup povolení nastavení diagnostiky pro Azure API Management](./api-management-howto-use-azure-monitor.md#activity-logs)
 
@@ -669,7 +669,7 @@ Microsoft spravuje základní infrastrukturu pro Azure API Management a implemen
 
 **Pokyny**: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na to, kdy změny probíhají v produkčních Azure Functionsch aplikacích i v jiných důležitých nebo souvisejících prostředcích.
 
-* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
+* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Jak používat Azure Monitor a protokol aktivit Azure v Azure API Management](./api-management-howto-use-azure-monitor.md)
 

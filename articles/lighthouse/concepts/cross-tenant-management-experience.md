@@ -3,12 +3,12 @@ title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
 ms.date: 02/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: b76723c9ea94581561f5bdb04ea1fd8335da77b7
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 97b28409a7f180ffbf4f8766ee281710d6226019
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981081"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573091"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -100,7 +100,7 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 - [Log Analytics](../../azure-monitor/platform/service-providers.md): dotazování dat ze vzdálených pracovních prostorů ve více klientech (Všimněte si, že účty Automation používané pro přístup k datům z pracovních prostorů v klientech zákazníka se musí vytvořit ve stejném tenantovi)
 - [Vytváření, zobrazování a správa výstrah protokolu aktivit](../../azure-monitor/platform/alerts-activity-log.md) v klientech zákazníků
 - Vytváření výstrah v klientech zákazníků, kteří spouštějí automatizaci, například Azure Automation Runbooky nebo Azure Functions, v části Správa tenanta prostřednictvím webhooků
-- Vytvoření [nastavení diagnostiky](../..//azure-monitor/platform/diagnostic-settings.md) v klientech zákazníka pro posílání protokolů prostředků do pracovních prostorů v tenantovi pro správu
+- Vytvoření [nastavení diagnostiky](../..//azure-monitor/essentials/diagnostic-settings.md) v klientech zákazníka pro posílání protokolů prostředků do pracovních prostorů v tenantovi pro správu
 - Pro úlohy SAP [Sledujte metriky řešení SAP s agregovaným zobrazením napříč klienty zákazníka](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293) .
 
 [Sítě Azure](../../networking/networking-overview.md):

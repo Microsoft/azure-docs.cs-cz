@@ -3,12 +3,12 @@ title: Vytvořit nový prostředek služby Azure Application Insights | Microsof
 description: Ručně nastavte Application Insights monitorování pro novou živou aplikaci.
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: 3233aed895eac269bd34a961728b3302581ff360
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 1ec5e929f591c0b7ada36f345d86c6de591892c8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104582"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575619"
 ---
 # <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 
@@ -35,7 +35,7 @@ Přihlaste se k [Azure Portal](https://portal.azure.com)a vytvořte prostředek 
    | **Režim prostředků** | `Classic` nebo `Workspace-based` | Prostředky založené na pracovních prostorech jsou momentálně ve verzi Public Preview a umožňují vám odeslat Application Insights telemetrii do společného pracovního prostoru Log Analytics. Další informace najdete v [článku o prostředcích založených na pracovních prostorech](create-workspace-resource.md).
 
 > [!NOTE]
-> I když můžete použít stejný název prostředku v různých skupinách prostředků, může být výhodné použít globálně jedinečný název. To může být užitečné v případě, že plánujete [provádění dotazů mezi prostředky](../log-query/cross-workspace-query.md#identifying-an-application) , protože je zjednodušená požadovaná syntaxe.
+> I když můžete použít stejný název prostředku v různých skupinách prostředků, může být výhodné použít globálně jedinečný název. To může být užitečné v případě, že plánujete [provádění dotazů mezi prostředky](../logs/cross-workspace-query.md#identifying-an-application) , protože je zjednodušená požadovaná syntaxe.
 
 Zadejte příslušné hodnoty do požadovaných polí a potom vyberte **zkontrolovat + vytvořit**.
 
@@ -159,13 +159,13 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 
 ## <a name="next-steps"></a>Další kroky
 * [Diagnostické hledání](./diagnostic-search.md)
-* [Zkoumání metrik](../platform/metrics-charts.md)
-* [Psaní analytických dotazů](../log-query/log-query-overview.md)
+* [Zkoumání metrik](../essentials/metrics-charts.md)
+* [Psaní analytických dotazů](../logs/log-query-overview.md)
 
 <!--Link references-->
 
 [api]: ./api-custom-events-metrics.md
 [diagnostic]: ./diagnostic-search.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 [start]: ./app-insights-overview.md
 

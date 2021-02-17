@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 226d5a46482d6611fdecf214d040fc27af9ac586
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: bc75ee64174957ad6486146b4da6f8a66a2120e5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632042"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570560"
 ---
 # <a name="connect-windows-security-events"></a>Připojení událostí zabezpečení systému Windows 
 
@@ -56,7 +56,7 @@ Shromažďování událostí zabezpečení systému Windows v rámci služby Azu
 
 1. Ověřte, zda máte příslušná oprávnění, jak je popsáno v části **požadavky** na stránce konektor.
 
-1. Stáhněte a nainstalujte [agenta Log Analytics](../azure-monitor/platform/log-analytics-agent.md) (také označovaného jako Microsoft Monitoring Agent nebo MMA) na počítačích, pro které chcete streamovat události zabezpečení do Azure Sentinel.
+1. Stáhněte a nainstalujte [agenta Log Analytics](../azure-monitor/agents/log-analytics-agent.md) (také označovaného jako Microsoft Monitoring Agent nebo MMA) na počítačích, pro které chcete streamovat události zabezpečení do Azure Sentinel.
 
     Pro Azure Virtual Machines:
     
@@ -73,9 +73,9 @@ Shromažďování událostí zabezpečení systému Windows v rámci služby Azu
     >
     > Pokud chcete, aby systémy Windows bez nezbytného připojení k Internetu pořád mohly streamovat události do služby Azure Sentinel, Stáhněte a nainstalujte **bránu OMS** na samostatném počítači pomocí odkazu v pravém dolním rohu, který bude fungovat jako proxy server.  I nadále bude nutné nainstalovat agenta Log Analytics do každého systému Windows, jehož události chcete shromáždit.
     >
-    > Další informace o tomto scénáři najdete v dokumentaci ke službě [ **Log Analytics Gateway**](../azure-monitor/platform/gateway.md).
+    > Další informace o tomto scénáři najdete v dokumentaci ke službě [ **Log Analytics Gateway**](../azure-monitor/agents/gateway.md).
 
-    Další možnosti instalace a další podrobnosti najdete v [dokumentaci k **agentovi Log Analytics**](../azure-monitor/platform/agent-windows.md).
+    Další možnosti instalace a další podrobnosti najdete v [dokumentaci k **agentovi Log Analytics**](../azure-monitor/agents/agent-windows.md).
 
 1. Vyberte, kterou sadu událostí ([všechny, společné nebo minimální](#event-sets)) chcete streamovat.
 

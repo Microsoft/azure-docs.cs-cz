@@ -3,12 +3,12 @@ title: Shromažďovat & analyzovat protokoly prostředků
 description: Přečtěte si, jak odesílat protokoly prostředků a data událostí ze skupin kontejnerů v Azure Container Instances do protokolů Azure Monitor
 ms.topic: article
 ms.date: 07/13/2020
-ms.openlocfilehash: b110ba46bdcf2741e5f16845f28fe8305bcee1a1
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cfdcd1cc8e36a118c4e3c4435eaa002e4d3b1b93
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148639"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579329"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Protokolování skupiny kontejnerů a instance s protokoly Azure Monitor
 
@@ -23,11 +23,11 @@ Následující části popisují, jak vytvořit skupinu kontejnerů s povoleným
 > [!NOTE]
 > V současné době můžete odesílat data událostí z instancí kontejnerů Linux pouze do Log Analytics.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli povolit protokolování ve vašich instancích kontejnerů, potřebujete následující:
 
-* [Pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md)
+* [Pracovní prostor Log Analytics](../azure-monitor/logs/quick-create-workspace.md)
 * [Rozhraní Azure CLI](/cli/azure/install-azure-cli) (nebo službu [Cloud Shell](../cloud-shell/overview.md))
 
 ## <a name="get-log-analytics-credentials"></a>Získání přihlašovacích údajů služby Log Analytics
@@ -37,7 +37,7 @@ Služba Azure Container Instances potřebuje oprávnění k odesílání dat do 
 Získání ID a primárního klíče pracovního prostoru Log Analytics:
 
 1. Na webu Azure Portal přejděte do svého pracovního prostoru služby Log Analytics.
-1. V části **Nastavení**vyberte **Správa agentů** .
+1. V části **Nastavení** vyberte **Správa agentů** .
 1. Poznamenejte si:
    * **ID pracovního prostoru**
    * **Primární klíč**
@@ -105,7 +105,7 @@ Po nasazení skupiny kontejnerů může trvat několik minut (až 10), než se p
 Chcete-li zobrazit protokoly skupiny kontejnerů v `ContainerInstanceLog_CL` tabulce:
 
 1. Na webu Azure Portal přejděte do svého pracovního prostoru služby Log Analytics.
-1. V části **Obecné**vyberte **protokoly** .  
+1. V části **Obecné** vyberte **protokoly** .  
 1. Zadejte následující dotaz: `ContainerInstanceLog_CL | limit 50`
 1. Vyberte **Spustit** .
 
@@ -118,7 +118,7 @@ Měl by se zobrazit několik výsledků zobrazených dotazem. Pokud nevidíte ž
 Události pro instance kontejnerů můžete zobrazit také v Azure Portal. Události zahrnují čas vytvoření instance a její spuštění. Zobrazení dat událostí v `ContainerEvent_CL` tabulce:
 
 1. Na webu Azure Portal přejděte do svého pracovního prostoru služby Log Analytics.
-1. V části **Obecné**vyberte **protokoly** .  
+1. V části **Obecné** vyberte **protokoly** .  
 1. Zadejte následující dotaz: `ContainerEvent_CL | limit 50`
 1. Vyberte **Spustit** .
 
@@ -153,8 +153,8 @@ ContainerInstanceLog_CL
 
 Další informace o dotazování protokolů a konfiguraci výstrah v Azure Monitorch protokolech najdete v tématech:
 
-* [Principy prohledávání protokolů v Azure Monitorch protokolech](../azure-monitor/log-query/log-query-overview.md)
-* [Sjednocená upozornění ve službě Azure Monitor](../azure-monitor/platform/alerts-overview.md)
+* [Principy prohledávání protokolů v Azure Monitorch protokolech](../azure-monitor/logs/log-query-overview.md)
+* [Sjednocená upozornění ve službě Azure Monitor](../azure-monitor/alerts/alerts-overview.md)
 
 
 ### <a name="monitor-container-cpu-and-memory"></a>Monitorování procesoru a paměti kontejneru

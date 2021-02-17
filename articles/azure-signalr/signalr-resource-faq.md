@@ -7,12 +7,12 @@ ms.topic: overview
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 910de9efbd132fb98a0c4bd596867800f65f5ad5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c65bc7e92d925f819a48fd8ab9a8160bc3eb72e3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150960"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579302"
 ---
 # <a name="azure-signalr-service-faq"></a>Nejčastější dotazy ke službě Azure Signal
 
@@ -44,7 +44,7 @@ Můžete [kontrolovat zdrojový kód](https://github.com/Azure/azure-signalr/blo
 
 ## <a name="can-i-configure-the-transports-available-in-azure-signalr-service-on-the-server-side-with-aspnet-core-signalr-for-example-can-i-disable-websocket-transport"></a>Můžu ve službě Azure Signal Service nakonfigurovat transporty, které jsou k dispozici na straně serveru pomocí služby ASP.NET Core Signal? Například je možné zakázat přenos protokolu WebSocket?
 
-Ne.
+No.
 
 Služba signalizace Azure poskytuje všechny tři přenosy, které ASP.NET Core signál podporuje ve výchozím nastavení. Nedá se nakonfigurovat. Služba signalizace Azure zpracuje připojení a přenosy pro všechna připojení klientů.
 
@@ -54,7 +54,7 @@ Můžete nakonfigurovat přenosy na straně klienta, jak je popsáno v [ASP.NET 
 
 Můžete najít podrobnosti o tom, jak tyto metriky ve [zprávách a připojeních ve službě Azure Signal Service](signalr-concept-messages-and-connections.md)počítat.
 
-V podokně Přehled prostředků služby signalizace Azure jsme už pro vás zvolili odpovídající typ agregace. Pokud přejdete do podokna metrik, můžete jako referenci použít typ agregace pro [zprávy a připojení ve službě Azure Signal](../azure-monitor/platform/metrics-supported.md#microsoftsignalrservicesignalr) .
+V podokně Přehled prostředků služby signalizace Azure jsme už pro vás zvolili odpovídající typ agregace. Pokud přejdete do podokna metrik, můžete jako referenci použít typ agregace pro [zprávy a připojení ve službě Azure Signal](../azure-monitor/essentials/metrics-supported.md#microsoftsignalrservicesignalr) .
 
 ## <a name="what-is-the-meaning-of-the-default-serverless-and-classic-service-modes-how-can-i-choose"></a>Jaký je význam `Default` `Serverless` režimů, a `Classic` služby? Jak si můžu vybrat?
 

@@ -5,12 +5,12 @@ description: Na nejčastějších dotazech se můžete podívat, když ve služb
 services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: 00e749a8b066f72518b38685dd7a7779e406cf74
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b20ebe82556bb4db6844511ec0953f4d4e75f383
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013963"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574728"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>Nejčastější dotazy týkající se fondů uzlů Windows serveru v AKS
 
@@ -60,7 +60,7 @@ V současné době [zachování IP adresy zdrojového klienta][client-source-ip]
 
 ## <a name="can-i-change-the-max--of-pods-per-node"></a>Můžu změnit max. # lusků na uzel?
 
-Yes. Důsledky a možnosti, které jsou k dispozici, najdete v části [maximální počet lusků][maximum-number-of-pods].
+Ano. Důsledky a možnosti, které jsou k dispozici, najdete v části [maximální počet lusků][maximum-number-of-pods].
 
 ## <a name="why-am-i-seeing-an-error-when-i-try-to-create-a-new-windows-agent-pool"></a>Proč se mi při pokusu o vytvoření nového fondu agentů Windows zobrazuje chyba?
 
@@ -115,7 +115,7 @@ Cluster s uzly Windows může mít přibližně 500 služeb před tím, než doj
 
 ## <a name="can-i-use-azure-hybrid-benefit-with-windows-nodes"></a>Můžu použít Zvýhodněné hybridní využití Azure s uzly Windows?
 
-Yes. Zvýhodněné hybridní využití Azure pro Windows Server snižuje provozní náklady tím, že vám umožní převést místní licenci Windows serveru na AKS uzly Windows.
+Ano. Zvýhodněné hybridní využití Azure pro Windows Server snižuje provozní náklady tím, že vám umožní převést místní licenci Windows serveru na AKS uzly Windows.
 
 Zvýhodněné hybridní využití Azure lze použít na celém clusteru AKS nebo na jednotlivých uzlech. Pro jednotlivé uzly je potřeba přejít do [skupiny prostředků uzlu][resource-groups] a použít zvýhodněné hybridní využití Azure na uzly přímo. Další informace o použití Zvýhodněné hybridní využití Azure u jednotlivých uzlů najdete v tématu [zvýhodněné hybridní využití Azure pro Windows Server][hybrid-vms]. 
 
@@ -189,7 +189,7 @@ Pokud chcete začít s kontejnery Windows serveru v AKS, [vytvořte fond uzlů, 
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
 [maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node
-[azure-monitor]: ../azure-monitor/insights/container-insights-overview.md#what-does-azure-monitor-for-containers-provide
+[azure-monitor]: ../azure-monitor/containers/container-insights-overview.md#what-does-azure-monitor-for-containers-provide
 [client-source-ip]: concepts-network.md#ingress-controllers
 [kubernetes-dashboard]: kubernetes-dashboard.md
 [windows-rdp]: rdp.md
