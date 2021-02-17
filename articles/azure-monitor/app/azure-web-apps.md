@@ -4,12 +4,12 @@ description: Sledování výkonu aplikací pro Azure App Services. Zatížení g
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: cd203c64695a9a61a93409a96f6a92b9acf9fe70
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 55682215a990643111d5813db437b1f1e4612868
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365221"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547226"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu služby Azure App Service
 
@@ -61,11 +61,11 @@ Existují dva způsoby, jak povolit monitorování aplikací pro hostované apli
         
 | Data | Kolekce ASP.NET úrovně Basic | ASP.NET Doporučené shromažďování |
 | --- | --- | --- |
-| Přidání trendů využití procesoru, paměti a vstupně-výstupních operací |Yes |Yes |
-| Shromažďování trendů využití a povolení korelace mezi výsledky dostupnosti a transakcemi | Yes |Yes |
-| Shromažďování výjimek nezpracovaných hostitelským procesem | Yes |Yes |
-| Zlepšení přesnosti metrik APM v případě zatížení při použití vzorkování | Yes |Yes |
-| Korelace mikroslužeb napříč požadavky a závislostmi | Ne (jenom možnosti APM s jednou instancí) |Yes |
+| Přidání trendů využití procesoru, paměti a vstupně-výstupních operací |Ano |Ano |
+| Shromažďování trendů využití a povolení korelace mezi výsledky dostupnosti a transakcemi | Ano |Ano |
+| Shromažďování výjimek nezpracovaných hostitelským procesem | Ano |Ano |
+| Zlepšení přesnosti metrik APM v případě zatížení při použití vzorkování | Ano |Ano |
+| Korelace mikroslužeb napříč požadavky a závislostmi | Ne (jenom možnosti APM s jednou instancí) |Ano |
 
 3. Pokud chcete nakonfigurovat nastavení, jako je vzorkování, které byste mohli dříve řídit prostřednictvím souboru applicationinsights.config, můžete teď s těmito nastaveními pracovat pomocí nastavení aplikace s odpovídající předponou. 
 
@@ -76,7 +76,7 @@ Existují dva způsoby, jak povolit monitorování aplikací pro hostované apli
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
 > [!IMPORTANT]
-> Podporovány jsou následující verze ASP.NET Core: ASP.NET Core 2,1, 3,1 a 5,0. Verze 2,0, 2,2 a 3,0 byly vyřazeny a již nejsou podporovány. Pokud chcete, aby byla Automatická instrumentace fungovat, upgradujte prosím na [podporovanou verzi](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) .NET Core.
+> Podporovány jsou následující verze ASP.NET Core: ASP.NET Core 2,1 a 3,1. Verze 2,0, 2,2 a 3,0 byly vyřazeny a již nejsou podporovány. Pokud chcete, aby byla Automatická instrumentace fungovat, upgradujte prosím na [podporovanou verzi](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) .NET Core.
 
 Cílení na úplné rozhraní z ASP.NET Core, samostatného nasazení a aplikací založených na systému Linux se v současnosti **nepodporují** pomocí monitorování založeného na agentech nebo rozšíření. ([Ruční instrumentace](./asp-net-core.md) přes kód bude fungovat ve všech předchozích scénářích.)
 

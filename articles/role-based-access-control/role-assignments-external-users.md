@@ -1,35 +1,35 @@
 ---
-title: Přidání nebo odebrání přiřazení rolí Azure pro externí uživatele pomocí Azure Portal – Azure RBAC
+title: Přiřazení rolí Azure k externím uživatelům typu Host pomocí Azure Portal – Azure RBAC
 description: Naučte se, jak udělit přístup k prostředkům Azure pro uživatele mimo organizaci pomocí Azure Portal a řízení přístupu na základě role Azure (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
-manager: mtillman
-editor: ''
-ms.assetid: ''
+manager: daveba
 ms.service: role-based-access-control
 ms.devlang: ''
 ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: a18fc3e4851c2daf03c662cf40cef58cc7d9e77a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: d834f4ccd8dba26c895e0578f161813fc49332ea
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117703"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556296"
 ---
-# <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Přidání nebo odebrání přiřazení rolí Azure pro externí uživatele typu Host pomocí Azure Portal
+# <a name="assign-azure-roles-to-external-guest-users-using-the-azure-portal"></a>Přiřazení rolí Azure externím uživatelům typu Host pomocí Azure Portal
 
 [Řízení přístupu na základě role Azure (Azure RBAC)](overview.md) umožňuje lepší správu zabezpečení pro velké organizace a malé a středně velké firmy pracující s externími spolupracovníky, dodavateli nebo prodejci, kteří potřebují přístup ke konkrétním prostředkům ve vašem prostředí, ale ne nutně k celé infrastruktuře nebo k žádným oborům souvisejícím s fakturací. Funkce v [Azure Active Directory B2B](../active-directory/external-identities/what-is-b2b.md) můžete využít ke spolupráci s externími uživateli typu Host a můžete použít Azure RBAC k udělení pouze oprávnění, která uživatelé v prostředí potřebují.
 
 ## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
+Pokud chcete přiřadit role Azure nebo odebrat přiřazení rolí, musíte mít:
+
+- `Microsoft.Authorization/roleAssignments/write`a `Microsoft.Authorization/roleAssignments/delete` oprávnění, jako je například správce nebo [vlastník](built-in-roles.md#owner) [přístupu uživatele](built-in-roles.md#user-access-administrator)
+
 
 ## <a name="when-would-you-invite-guest-users"></a>Kdy byste mohli pozvat uživatele typu Host?
 
@@ -65,9 +65,9 @@ Aby mohl uživatel typu Host získat přístup k adresáři, musí dokončit pro
 
 Další informace o procesu pozvánky najdete v tématu [Azure Active Directory uplatnění pozvánky B2B pro spolupráci](../active-directory/external-identities/redemption-experience.md).
 
-## <a name="add-a-role-assignment-for-a-guest-user"></a>Přidání přiřazení role pro uživatele typu Host
+## <a name="assign-a-role-to-a-guest-user"></a>Přiřazení role uživateli typu Host
 
-V Azure RBAC pro udělení přístupu přiřadíte roli. Chcete-li přidat přiřazení role pro uživatele typu Host, postupujte [stejným způsobem](role-assignments-portal.md#add-a-role-assignment) jako u člena, skupiny, instančního objektu nebo spravované identity. Postupujte podle těchto kroků a přidejte přiřazení role pro uživatele typu Host v různých oborech.
+V Azure RBAC pro udělení přístupu přiřadíte roli. Pokud chcete přiřadit roli uživateli typu Host, použijte [stejný postup](role-assignments-portal.md) jako u člena, skupiny, instančního objektu nebo spravované identity. Postupujte podle těchto kroků a přiřaďte roli uživateli typu Host v různých oborech.
 
 1. Na webu Azure Portal klikněte na **Všechny služby**.
 
@@ -101,9 +101,9 @@ V Azure RBAC pro udělení přístupu přiřadíte roli. Chcete-li přidat při�
 
     ![Přiřazení role pro přispěvatele virtuálních počítačů](./media/role-assignments-external-users/access-control-role-assignments.png)
 
-## <a name="add-a-role-assignment-for-a-guest-user-not-yet-in-your-directory"></a>Přidejte přiřazení role pro uživatele typu Host, který ještě není ve vašem adresáři.
+## <a name="assign-a-role-to-a-guest-user-not-yet-in-your-directory"></a>Přiřaďte roli uživateli typu Host, který ještě není ve vašem adresáři.
 
-Chcete-li přidat přiřazení role pro uživatele typu Host, postupujte [stejným způsobem](role-assignments-portal.md#add-a-role-assignment) jako u člena, skupiny, instančního objektu nebo spravované identity.
+Pokud chcete přiřadit roli uživateli typu Host, použijte [stejný postup](role-assignments-portal.md) jako u člena, skupiny, instančního objektu nebo spravované identity.
 
 Pokud uživatel typu Host ještě není ve vašem adresáři, můžete uživatele pozvat přímo z podokna přidat přiřazení role.
 
@@ -187,7 +187,7 @@ Pokud uživatel typu Host potřebuje v adresáři další oprávnění, můžete
 
 ### <a name="guest-user-cannot-browse-users-groups-or-service-principals-to-assign-roles"></a>Uživatel typu Host nemůže procházet role uživatelů, skupin nebo objektů služby.
 
-Uživatelé typu Host mají omezená oprávnění k adresáři. I v případě, že uživatel typu Host je [vlastníkem](built-in-roles.md#owner) v oboru, pokud se pokusí přidat přiřazení role, aby udělil přístup někomu jinému, nemůže procházet seznam uživatelů, skupin nebo instančních objektů.
+Uživatelé typu Host mají omezená oprávnění k adresáři. I v případě, že uživatel typu Host je [vlastníkem](built-in-roles.md#owner) v oboru, pokud se pokusí přiřadit roli, aby udělil přístup někomu jinému, nemůže procházet seznam uživatelů, skupin ani objektů služby.
 
 ![Uživatel typu Host nemůže procházet objekty zabezpečení a přiřazovat role.](./media/role-assignments-external-users/directory-no-browse.png)
 

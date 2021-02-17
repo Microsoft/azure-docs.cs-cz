@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
-ms.openlocfilehash: cb9a035217734028df325555cb0954dedd29ac30
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
-ms.translationtype: HT
+ms.openlocfilehash: d234227de98beeed6898697fb6ed8e0865546e16
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372285"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555855"
 ---
 # <a name="transfer-subscriptions-under-an-azure-plan-from-one-partner-to-another-preview"></a>Převod předplatných v rámci plánu Azure na jiného partnera (Preview)
 
@@ -22,7 +22,7 @@ Tento článek vám pomůže pochopit, co potřebujete vědět před tím, než 
 
 Převod nebude mít vliv na přístup ke stávajícím uživatelům, skupinám nebo instančním objektům přiděleným pomocí řízení přístupu na základě role v Azure (Azure RBAC). [Azure RBAC](../../role-based-access-control/overview.md) pomáhá spravovat, kdo má přístup k prostředkům Azure, co může s těmito prostředky dělat a k jakým oblastem má přístup. Převod předplatného nezajistí novému partnerovi přístup Azure RBAC k vašim prostředkům. Předchozí partner si zachová přístup Azure RBAC.
 
-V důsledku toho je důležité odebrat přístup Azure RBAC pro starého partnera a přidat přístup pro nového partnera. Další informace o postupu při přidělování přístupu novému partnerovi najdete v tématu [Co je řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md). Další informace o odebrání přístupu Azure RBAC pro předchozího partnera najdete v tématu [Odebrání přiřazení role](../../role-based-access-control/role-assignments-portal.md#remove-a-role-assignment).
+V důsledku toho je důležité odebrat přístup Azure RBAC pro starého partnera a přidat přístup pro nového partnera. Další informace o postupu při přidělování přístupu novému partnerovi najdete v tématu [Co je řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md). Další informace o odebrání přístupu k Azure RBAC v předchozím partnerovi najdete v tématu [Odebrání přiřazení rolí Azure](../../role-based-access-control/role-assignments-remove.md).
 
 Kromě toho nový partner automaticky nezíská přístup [AOBO (Admin on Behalf Of)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) k vašim předplatným. AOBO je potřeba k tomu, aby partner mohl spravovat předplatná Azure za vás. Další informace o oprávněních Azure najdete v tématu [Získání oprávnění ke správě služby nebo předplatného zákazníka](/partner-center/customers-revoke-admin-privileges).
 

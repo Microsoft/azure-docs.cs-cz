@@ -3,12 +3,12 @@ title: Matice podpory pro zotavení po havárii VMware/fyzický v Azure Site Rec
 description: Shrnuje podporu pro zotavení po havárii virtuálních počítačů VMware a fyzického serveru do Azure pomocí Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: f684f57ed1acb5c48694196b4e19de809c98dc9f
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: aecc7ccb6e633fc9c27b254f98931d682fa3d21b
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102253"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100534667"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -189,10 +189,10 @@ Přidat disk na replikovaný virtuální počítač | Nepodporováno<br/> Zakaž
 Seskupování síťových adaptérů hostitele | Podporováno pro virtuální počítače VMware. <br/><br/>Není podporováno pro replikaci fyzického počítače.
 Síť VLAN sítě hostitele | Ano.
 Síť IPv4 hostitele | Ano.
-Síť IPv6 hostitele | No.
-Seskupování síťových adaptérů hosta/serveru | No.
+Síť IPv6 hostitele | Ne.
+Seskupování síťových adaptérů hosta/serveru | Ne.
 Síť IPv4 hosta/serveru | Ano.
-Síť s protokolem IPv6 Host/Server | No.
+Síť s protokolem IPv6 Host/Server | Ne.
 Statická IP adresa sítě hosta/serveru (Windows) | Ano.
 Statická IP adresa sítě hosta nebo serveru (Linux) | Ano. <br/><br/>Virtuální počítače jsou nakonfigurovány na používání protokolu DHCP při navrácení služeb po obnovení.
 Síť s více síťovými kartami Host/Server | Ano.
@@ -328,6 +328,17 @@ Maximální četnost změn dat za den s podporou procesového serveru | 2 TB
 - Toto jsou průměrné hodnoty za předpokladu, že se vstupně-výstupní operace z 30 % překrývají.
 - Služba Site Recovery je schopna zpracovávat větší propustnost v závislosti na poměru překrývání, větší velikosti zápisů a skutečného chování vstupně-výstupních operací úloh.
 - Tato čísla předpokládají typické nevyřízené položky přibližně pět minut. To znamená, že zpracování nahrávaných dat a vytvoření bodu obnovení proběhne do pěti minut od nahrání.
+
+## <a name="storage-account-limits"></a>Omezení účtu úložiště
+
+Jak se zvýší průměrná doba na discích, může se snížit počet disků, které může účet úložiště podporovat. Následující tabulka se dá použít jako vodítko pro rozhodování o počtu účtů úložiště, které je potřeba zřídit.
+ 
+**Typ účtu úložiště**    |    **Četnosti = 4 MB/s na disk**    |    **Změny = 8 MB/s na disk**
+---    |    ---    |    ---
+Účet úložiště v1    |    disky 600    |    disky 300
+Účet úložiště v2    |    disky 1500    |    disky 750
+
+Počítejte s tím, že výše uvedená omezení platí jenom pro hybridní scénáře zotavení po havárii.
 
 ## <a name="vault-tasks"></a>Úlohy trezoru
 

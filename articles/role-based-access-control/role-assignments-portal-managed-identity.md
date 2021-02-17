@@ -1,27 +1,27 @@
 ---
-title: Přidání přiřazení role pro spravovanou identitu (Preview) – Azure RBAC
-description: Naučte se, jak přidat přiřazení role pomocí spravované identity a pak vybrat rozsah a roli pomocí Azure Portal a řízení přístupu na základě role Azure (Azure RBAC).
+title: Přiřazení rolí Azure ke spravované identitě (Preview) – Azure RBAC
+description: Zjistěte, jak přiřadit role Azure pomocí spravované identity a pak vybrat rozsah a roli pomocí Azure Portal a řízení přístupu na základě role Azure (Azure RBAC).
 services: active-directory
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 01/11/2021
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: a01246c0cf35653f4d13262183cf9df28b056c69
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 57c8c00a64996bc6223fbe7e514db9db38ccdcc2
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122089"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556862"
 ---
-# <a name="add-a-role-assignment-for-a-managed-identity-preview"></a>Přidání přiřazení role pro spravovanou identitu (Preview)
+# <a name="assign-azure-roles-to-a-managed-identity-preview"></a>Přiřazení rolí Azure ke spravované identitě (Preview)
 
-Přiřazení rolí pro spravovanou identitu můžete přidat pomocí stránky **řízení přístupu (IAM)** , jak je popsáno v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](role-assignments-portal.md). Když použijete stránku řízení přístupu (IAM), začnete s oborem a pak vyberete spravovanou identitu a roli. Tento článek popisuje alternativní způsob přidání přiřazení rolí pro spravovanou identitu. Pomocí těchto kroků zahájíte spravovanou identitu a pak vyberete obor a roli.
+K spravované identitě můžete přiřadit roli pomocí stránky **řízení přístupu (IAM)** , jak je popsáno v tématu [přiřazení rolí Azure pomocí Azure Portal](role-assignments-portal.md). Když použijete stránku řízení přístupu (IAM), začnete s oborem a pak vyberete spravovanou identitu a roli. Tento článek popisuje alternativní způsob přiřazení rolí pro spravovanou identitu. Pomocí těchto kroků zahájíte spravovanou identitu a pak vyberete obor a roli.
 
 > [!IMPORTANT]
-> Přidání přiřazení role pro spravovanou identitu pomocí těchto alternativních kroků je aktuálně ve verzi Preview.
+> Přiřazení role ke spravované identitě pomocí těchto alternativních kroků je aktuálně ve verzi Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -92,5 +92,5 @@ Pomocí těchto kroků přiřadíte roli spravované identitě přiřazené uži
 ## <a name="next-steps"></a>Další kroky
 
 - [Jaké jsou spravované identity prostředků Azure?](../active-directory/managed-identities-azure-resources/overview.md)
-- [Přidání nebo odebrání přiřazení rolí Azure pomocí portálu Azure Portal](role-assignments-portal.md)
+- [Přiřazení rolí Azure pomocí Azure Portal](role-assignments-portal.md)
 - [Vypsání přiřazení rolí Azure pomocí Azure Portal](role-assignments-list-portal.md)

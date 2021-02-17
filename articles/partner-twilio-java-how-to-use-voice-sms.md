@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.custom: devx-track-java
-ms.openlocfilehash: 5e44ae3280d3ca0f8d5052be10d0955ba342352f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: e7ff925534a9cab6523097f84a8ae199e9cb83eb
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652870"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548722"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>Použití Twilio pro hlasové funkce a možnosti SMS v Java
 Tato příručka ukazuje, jak provádět běžné programovací úlohy pomocí služby Twilio API v Azure. Mezi zahrnuté scénáře patří telefonní hovor a odeslání zprávy o krátké službě zprávy (SMS). Další informace o Twilio a použití hlasu a SMS v aplikacích najdete v části [Další kroky](#NextSteps) .
@@ -76,7 +76,7 @@ Při registraci účtu Twilio obdržíte ID účtu a ověřovací token. Pro vol
 
 ## <a name="create-a-java-application"></a><a id="create_app"></a>Vytvoření aplikace v Javě
 1. Získejte SKLENICi Twilio a přidejte ji do cesty k sestavení Java a do sestavení pro nasazení WAR. Na [https://github.com/twilio/twilio-java][twilio_java] webu můžete stáhnout zdroje GitHubu a vytvořit vlastní sklenici nebo si stáhnout předem připravený jar (s závislostmi nebo bez nich).
-2. Ujistěte se, že úložiště klíčů **cacerts** pro JDK obsahuje certifikát zabezpečené certifikační autority Equifax s OTISKem MD5.67:: 9d: C0:13:24:8a: 82:9b: B2:17:1e: D1:1b: ES: D4 (sériové číslo je 35: de: F4: CF a otisk SHA1, je D2:32:09: AD: 23: D3:14:23:21:74: E4:0d: 7f: 9d: 62:13:86:63:3A). Toto je certifikát certifikační autority (CA) pro [https://api.twilio.com][twilio_api_service] službu, která je volána při použití rozhraní Twilio API. Informace o tom, jak JDK úložiště klíčů **cacerts** obsahuje správný certifikát certifikační autority, najdete v tématu [Přidání certifikátu do úložiště certifikátů certifikační autority Java][add_ca_cert].
+2. Ujistěte se, že úložiště klíčů **cacerts** pro JDK obsahuje certifikát zabezpečené certifikační autority Equifax s OTISKem MD5.67:: 9d: C0:13:24:8a: 82:9b: B2:17:1e: D1:1b: ES: D4 (sériové číslo je 35: de: F4: CF a otisk SHA1, je D2:32:09: AD: 23: D3:14:23:21:74: E4:0d: 7f: 9d: 62:13:86:63:3A). Toto je certifikát certifikační autority (CA) pro [https://api.twilio.com][twilio_api_service] službu, která je volána při použití rozhraní Twilio API.
 
 Podrobné pokyny pro použití klientské knihovny Twilio pro jazyk Java jsou k dispozici v článku [jak uskutečnit telefonní hovor pomocí Twilio v aplikaci Java v Azure][howto_phonecall_java].
 
@@ -217,7 +217,6 @@ Teď, když jste se seznámili se základy služby Twilio, můžete získat dal�
 
 [twilio_java]: https://github.com/twilio/twilio-java
 [twilio_api_service]: https://api.twilio.com
-[add_ca_cert]: /azure/developer/java/sdk/java-sdk-add-certificate-ca-store
 [howto_phonecall_java]: partner-twilio-java-phone-call-example.md
 [misc_role_config_settings]: /previous-versions/azure/hh690945(v=azure.100)
 [twimlet_message_url]: https://twimlets.com/message

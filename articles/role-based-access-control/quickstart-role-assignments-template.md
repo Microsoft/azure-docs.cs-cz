@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: přidání přiřazení role Azure pomocí šablony Azure Resource Manager – Azure RBAC'
+title: 'Rychlý Start: přiřazení role Azure pomocí šablony Azure Resource Manager – Azure RBAC'
 description: Naučte se, jak udělit přístup k prostředkům Azure pro uživatele v oboru skupiny prostředků pomocí šablon Azure Resource Manager a řízení přístupu na základě role v Azure (Azure RBAC).
 services: role-based-access-control,azure-resource-manager
 author: rolyon
@@ -8,16 +8,16 @@ ms.service: role-based-access-control
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.workload: identity
-ms.date: 05/21/2020
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: 622f37fa4fda20fdc854edf5cd7c192b4113c4e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6e8f194cd85a3c381bdabf206777a99dce3c29b6
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88690438"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559261"
 ---
-# <a name="quickstart-add-an-azure-role-assignment-using-an-arm-template"></a>Rychlý Start: přidání přiřazení role Azure pomocí šablony ARM
+# <a name="quickstart-assign-an-azure-role-using-an-arm-template"></a>Rychlý Start: přiřazení role Azure pomocí šablony ARM
 
 [Řízení přístupu na základě role Azure (Azure RBAC)](overview.md) je způsob, jakým můžete spravovat přístup k prostředkům Azure. V tomto rychlém startu vytvoříte skupinu prostředků a udělíte uživateli přístup k vytváření a správě virtuálních počítačů ve skupině prostředků. Tento rychlý Start používá pro udělení přístupu šablonu Azure Resource Manager (šablonu ARM).
 
@@ -29,11 +29,11 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li přidat přiřazení rolí, je nutné mít následující:
+Pokud chcete přiřadit role Azure a odebrat přiřazení rolí, musíte mít:
 
-- Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - `Microsoft.Authorization/roleAssignments/write`a `Microsoft.Authorization/roleAssignments/delete` oprávnění, jako je například správce nebo [vlastník](built-in-roles.md#owner) [přístupu uživatele](built-in-roles.md#user-access-administrator)
-- Chcete-li přidat přiřazení role, je nutné zadat tři prvky: objekt zabezpečení, definice role a obor. V tomto rychlém startu je objekt zabezpečení vy nebo jiný uživatel ve vašem adresáři, definice role je [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor)a obor je skupina prostředků, kterou určíte.
+- Chcete-li přiřadit roli, je nutné zadat tři prvky: objekt zabezpečení, definice role a obor. V tomto rychlém startu je objekt zabezpečení vy nebo jiný uživatel ve vašem adresáři, definice role je [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor)a obor je skupina prostředků, kterou určíte.
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
@@ -47,7 +47,7 @@ Prostředek definovaný v šabloně je:
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Určete svou e-mailovou adresu, která je přidružená k vašemu předplatnému Azure. Nebo určete e-mailovou adresu jiného uživatele ve vašem adresáři.
 

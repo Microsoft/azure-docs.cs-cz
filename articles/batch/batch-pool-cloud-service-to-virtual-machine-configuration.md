@@ -2,13 +2,13 @@
 title: Migrace konfigurace fondu Batch z Cloud Services na Virtual Machines
 description: Naučte se aktualizovat konfiguraci fondu na nejnovější a doporučenou konfiguraci.
 ms.topic: how-to
-ms.date: 1/6/2021
-ms.openlocfilehash: 417738be2c69101129079b8ff3a3d80634f9f99c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 2/16/2021
+ms.openlocfilehash: 9cbcf3864526bd8f8132f3b0f729e2d728e07bb8
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731495"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546036"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>Migrace konfigurace fondu Batch z Cloud Services na Virtual Machines
 
@@ -36,6 +36,19 @@ Při aktualizaci konfigurace fondu byste měli zvážit toto:
    > Stejně jako u Virtual Machines a Virtual Machine Scale Sets se na spravovaný disk s operačním systémem, který se používá pro každý uzel, účtují náklady, což je další náklady na virtuální počítače. Pro uzly cloudServiceConfiguration se neúčtují žádné náklady na disk s operačním systémem, protože disk s operačním systémem se vytváří v uzlech místní SSD.
 
 - Časy spuštění fondu a uzlů se mohou mírně lišit mezi fondy ' cloudServiceConfiguration ' a fondy ' virtualMachineConfiguration '.
+
+## <a name="azure-data-factory-custom-activity-pools"></a>Azure Data Factory vlastní fondy aktivit
+
+Fondy Azure Batch se dají použít ke spouštění Data Factory vlastních aktivit. Všechny fondy ' cloudServiceConfiguration ' používané ke spouštění vlastních aktivit budou muset být odstraněny a vytvořily se nové fondy ' virtualMachineConfiguration '.
+
+- Kanály by se měly pozastavit před odstraněním nebo vytvořením, aby se zajistilo, že nedojde k přerušení žádného spuštění.
+- Stejné ID fondu se dá použít k tomu, abyste se vyhnuli změnám konfigurace propojených služeb.
+- Obnoví kanály, když se vytvoří nové fondy.
+
+Další informace o použití Azure Batch ke spouštění Data Factory vlastní aktivity:
+
+- [Propojená služba Azure Batch](../data-factory/compute-linked-services.md#azure-batch-linked-service)
+- [Vlastní aktivity v kanálu Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="next-steps"></a>Další kroky
 

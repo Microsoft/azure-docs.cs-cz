@@ -6,14 +6,14 @@ documentationcenter: ''
 author: vladvino
 ms.service: api-management
 ms.topic: article
-ms.date: 12/14/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 344500d5635f591b34a45130c7dd6b63659ad84d
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 2bc9b1c5724fa7bab1fdf5ac9332d87ba03a6d11
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491004"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545815"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Použití pojmenovaných hodnot v zásadách Azure API Management
 
@@ -25,7 +25,7 @@ ms.locfileid: "99491004"
 
 ## <a name="value-types"></a>Typy hodnot
 
-|Typ  |Description  |
+|Typ  |Popis  |
 |---------|---------|
 |Podobě     |  Řetězcový literál nebo výraz zásady     |
 |Tajný kód     |   Řetězcový literál nebo výraz zásad, který je zašifrovaný pomocí API Management      |
@@ -86,6 +86,8 @@ Viz [předpoklady pro integraci trezoru klíčů](#prerequisites-for-key-vault-i
 
 ### <a name="add-a-plain-or-secret-value"></a>Přidat jednoduchou nebo tajnou hodnotu
 
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
 1. V [Azure Portal](https://portal.azure.com)přejděte k instanci API Management.
 1. V části **rozhraní API** vyberte **pojmenované hodnoty**  >  **+ Přidat**.
 1. Zadejte identifikátor **názvu** a zadejte **Zobrazovaný název** , který se použije k odkazování na vlastnost v zásadách.
@@ -96,11 +98,55 @@ Viz [předpoklady pro integraci trezoru klíčů](#prerequisites-for-key-vault-i
 
 Jakmile se pojmenovaná hodnota vytvoří, můžete ji upravit tak, že vyberete název. Změníte-li zobrazovaný název, všechny zásady, které se na tuto pojmenovanou hodnotu odkazují, se automaticky aktualizují, aby používaly nový zobrazovaný název.
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Chcete-li začít používat rozhraní příkazového řádku Azure:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Pojmenovanou hodnotu přidáte pomocí příkazu [AZ APIM NV Create](/cli/azure/apim/nv#az_apim_nv_create) :
+
+```azurecli
+az apim nv create --resource-group apim-hello-word-resource-group \
+    --display-name "named_value_01" --named-value-id named_value_01 \
+    --secret true --service-name apim-hello-world --value test
+```
+
+Po vytvoření pojmenované hodnoty ji můžete aktualizovat pomocí příkazu [AZ APIM NV Update](/cli/azure/apim/nv#az_apim_nv_update) . Chcete-li zobrazit všechny pojmenované hodnoty, spusťte příkaz [AZ APIM NV list](/cli/azure/apim/nv#az_apim_nv_list) :
+
+```azurecli
+az apim nv list --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --output table
+```
+
+Chcete-li zobrazit podrobné informace o pojmenované hodnotě, kterou jste pro tento příklad vytvořili, spusťte příkaz [AZ APIM NV show](/cli/azure/apim/nv#az_apim_nv_show) :
+
+```azurecli
+az apim nv show --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --named-value-id named_value_01
+```
+
+Tento příklad je tajná hodnota. Předchozí příkaz nevrací hodnotu. Tuto hodnotu zobrazíte spuštěním příkazu [AZ APIM NV show-Secret](/cli/azure/apim/nv#az_apim_nv_show_secret) :
+
+```azurecli
+az apim nv show-secret --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --named-value-id named_value_01
+```
+
+Pojmenovanou hodnotu odstraníte pomocí příkazu [AZ APIM NV Delete](/cli/azure/apim/nv#az_apim_nv_delete) :
+
+```azurecli
+az apim nv delete --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --named-value-id named_value_01
+```
+
+---
+
 ## <a name="use-a-named-value"></a>Použít pojmenovanou hodnotu
 
 Příklady v této části používají pojmenované hodnoty uvedené v následující tabulce.
 
-| Name               | Hodnota                      | Tajný kód | 
+| Název               | Hodnota                      | Tajný kód | 
 |--------------------|----------------------------|--------|---------|
 | ContosoHeader      | `TrackingId`                 | Ne  | 
 | ContosoHeaderValue | ••••••••••••••••••••••     | Ano   | 

@@ -22,7 +22,7 @@
           href: character-counts.md
     - name: Návody
       items:
-        - name: Registrace ke službě Translator
+        - name: Vytvoření prostředku překladatele
           href: ./translator-how-to-signup.md
         - name: Migrace na Text API v3
           href: migrate-to-v3.md

@@ -14,14 +14,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/23/2019
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 09/23/2019
-ms.openlocfilehash: b871775bc7a6d795e86147ae9cffa27bdd2f3348
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07600b1fe0cb7420989fbbfbe55c2f1a4197d2fc
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76263757"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548246"
 ---
 # <a name="notification-hubs-security"></a>Notification Hubs zabezpečení
 
@@ -36,7 +36,7 @@ Notification Hubs implementuje schéma zabezpečení na úrovni entit označovan
 Při vytváření rozbočovače se automaticky vytvoří dvě pravidla: jednu s právy na **naslouchání** (kterou používá klientská aplikace) a druhá se **všemi** právy (které používá back-end aplikace):
 
 - **DefaultListenSharedAccessSignature**: uděluje pouze oprávnění k **naslouchání** .
-- **DefaultFullSharedAccessSignature**: uděluje **příjem**, **správu**a **odesílání** oprávnění. Tato zásada se použije jenom v back-endu vaší aplikace. Nepoužívejte ho v klientských aplikacích. Použijte zásady jenom s přístupem **naslouchat** . Pokud chcete vytvořit nové zásady vlastního přístupu pomocí nového tokenu SAS, přečtěte si téma [tokeny SAS pro zásady přístupu](#sas-tokens-for-access-policies) dále v tomto článku.
+- **DefaultFullSharedAccessSignature**: uděluje **příjem**, **správu** a **odesílání** oprávnění. Tato zásada se použije jenom v back-endu vaší aplikace. Nepoužívejte ho v klientských aplikacích. Použijte zásady jenom s přístupem **naslouchat** . Pokud chcete vytvořit nové zásady vlastního přístupu pomocí nového tokenu SAS, přečtěte si téma [tokeny SAS pro zásady přístupu](#sas-tokens-for-access-policies) dále v tomto článku.
 
 Pokud při provádění správy registrace z klientských aplikací nejsou informace odesílané prostřednictvím oznámení citlivé (například aktualizace počasí), je pro přístup k centru oznámení běžný způsob, jak získat přístup ke službě centra oznámení, zadat klíčovou hodnotu pravidla pro příjem přístupu k klientské aplikaci a poskytnout klíčovou hodnotu pravidla úplný přístup k back-endu aplikace.
 
@@ -46,7 +46,7 @@ Klíč s přístupem k **naslouchání** umožňuje klientské aplikaci zaregist
 
 ## <a name="security-claims"></a>Deklarace identity zabezpečení
 
-Podobně jako u jiných entit jsou operace centra oznámení povoleny pro tři deklarace zabezpečení: **naslouchat**, **odesílat**a **Spravovat**.
+Podobně jako u jiných entit jsou operace centra oznámení povoleny pro tři deklarace zabezpečení: **naslouchat**, **odesílat** a **Spravovat**.
 
 | Deklarovat   | Popis                                          | Povolené operace |
 | ------- | ---------------------------------------------------- | ------------------ |
@@ -71,7 +71,7 @@ Pokud chcete vytvořit novou deklaraci zabezpečení nebo zobrazit existující 
 5. Vyberte **nové zásady** a vytvořte novou deklaraci zabezpečení. Zadejte název zásady a vyberte oprávnění, která chcete udělit. Pak vyberte **OK**.
 6. V okně zásady přístupu se zobrazí úplný připojovací řetězec (včetně nového klíče SAS). Tento řetězec můžete zkopírovat do schránky pro pozdější použití.
 
-Pokud chcete získat klíč SAS z konkrétní zásady, vyberte tlačítko **Kopírovat** vedle zásady obsahující klíč SAS, který chcete. Vložte tuto hodnotu do dočasného umístění a pak zkopírujte část klíče SAS připojovacího řetězce. V tomto příkladu se používá obor názvů Notification Hubs s názvem **mytestnamespace1**a zásada s názvem **policy2**. Klíč SAS je hodnota poblíž konce řetězce, kterou Určuje **SharedAccessKey**:
+Pokud chcete získat klíč SAS z konkrétní zásady, vyberte tlačítko **Kopírovat** vedle zásady obsahující klíč SAS, který chcete. Vložte tuto hodnotu do dočasného umístění a pak zkopírujte část klíče SAS připojovacího řetězce. V tomto příkladu se používá obor názvů Notification Hubs s názvem **mytestnamespace1** a zásada s názvem **policy2**. Klíč SAS je hodnota poblíž konce řetězce, kterou Určuje **SharedAccessKey**:
 
 ```shell
 Endpoint=sb://mytestnamespace1.servicebus.windows.net/;SharedAccessKeyName=policy2;SharedAccessKey=<SAS key value here>

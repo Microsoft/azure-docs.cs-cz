@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 02/01/2021
+ms.date: 02/15/2021
 ms.custom: generated
-ms.openlocfilehash: 384d00ee41f2b6bfc2e91815bfcf54819c7d9ab2
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: d9a2667907108cfb4c8d7a2a2c9b1558e02a9110
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809368"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535123"
 ---
 # <a name="azure-built-in-roles"></a>Předdefinované role Azure
 
@@ -176,15 +176,15 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [Azure Sentinel Contributor](#azure-sentinel-contributor) (přispěvatel) | Azure Sentinel Contributor (přispěvatel) | ab8e14d6-4a74-4a29-9ba8-549422addade |
 > | [Azure Sentinel Reader](#azure-sentinel-reader) (čtenář) | Azure Sentinel Reader (čtenář) | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
 > | [Azure Sentinel Responder](#azure-sentinel-responder) (reagující) | Azure Sentinel Responder | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
-> | [Správce Key Vault (Preview)](#key-vault-administrator-preview) | Proveďte všechny operace roviny dat u trezoru klíčů a všech objektů, včetně certifikátů, klíčů a tajných klíčů. Nejde spravovat prostředky trezoru klíčů ani spravovat přiřazení rolí. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
-> | [Key Vault úřední certifikát (Preview)](#key-vault-certificates-officer-preview) | S výjimkou oprávnění spravovat je možné provést jakoukoli akci s certifikáty trezoru klíčů. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | a4417e6f-fecd-4de8-b567-7b0420556985 |
+> | [Správce Key Vault](#key-vault-administrator) | Proveďte všechny operace roviny dat u trezoru klíčů a všech objektů, včetně certifikátů, klíčů a tajných klíčů. Nejde spravovat prostředky trezoru klíčů ani spravovat přiřazení rolí. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
+> | [Key Vault úřední certifikát](#key-vault-certificates-officer) | S výjimkou oprávnění spravovat je možné provést jakoukoli akci s certifikáty trezoru klíčů. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | a4417e6f-fecd-4de8-b567-7b0420556985 |
 > | [Přispěvatel Key Vault](#key-vault-contributor) | Spravujte trezory klíčů, ale neumožňuje přiřadit role v Azure RBAC a neumožňuje přístup k tajným klíčům, klíčům nebo certifikátům. | f25e0fa2-a7c8-4377-a976-54943a77a395 |
-> | [Key Vault kryptografický pracovník (Preview)](#key-vault-crypto-officer-preview) | Proveďte jakoukoli akci s klíči trezoru klíčů s výjimkou oprávnění ke správě. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
-> | [Uživatel šifrování Key Vault šifrovací služby (Preview)](#key-vault-crypto-service-encryption-user-preview) | Čtení metadat klíčů a provádění operací zalamování nebo rozbalení. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
-> | [Key Vault kryptografický uživatel (Preview)](#key-vault-crypto-user-preview) | Provádějte kryptografické operace pomocí klíčů. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 12338af0-0e69-4776-bea7-57ae8d297424 |
-> | [Key Vault Reader (Preview)](#key-vault-reader-preview) | Číst metadata trezorů klíčů a jeho certifikátů, klíčů a tajných klíčů. Nelze číst citlivé hodnoty, jako je například obsah tajného klíče nebo klíčové materiály. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 21090545-7ca7-4776-b22c-e363652d74d2 |
-> | [Úředník Key Vault tajných klíčů (Preview)](#key-vault-secrets-officer-preview) | Vykoná jakoukoli akci s tajnými kódy trezoru klíčů s výjimkou oprávnění ke správě. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
-> | [Uživatel Key Vault tajných kódů (Preview)](#key-vault-secrets-user-preview) | Číst tajný obsah. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 4633458b-17de-408a-b874-0445c86b69e6 |
+> | [Key Vault kryptografický pracovník](#key-vault-crypto-officer) | Proveďte jakoukoli akci s klíči trezoru klíčů s výjimkou oprávnění ke správě. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
+> | [Uživatel šifrování Key Vault šifrovací služby](#key-vault-crypto-service-encryption-user) | Čtení metadat klíčů a provádění operací zalamování nebo rozbalení. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
+> | [Key Vault kryptografický uživatel](#key-vault-crypto-user) | Provádějte kryptografické operace pomocí klíčů. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 12338af0-0e69-4776-bea7-57ae8d297424 |
+> | [Čtecí modul Key Vault](#key-vault-reader) | Číst metadata trezorů klíčů a jeho certifikátů, klíčů a tajných klíčů. Nelze číst citlivé hodnoty, jako je například obsah tajného klíče nebo klíčové materiály. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 21090545-7ca7-4776-b22c-e363652d74d2 |
+> | [Úředník Key Vault tajných klíčů](#key-vault-secrets-officer) | Vykoná jakoukoli akci s tajnými kódy trezoru klíčů s výjimkou oprávnění ke správě. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
+> | [Uživatel Key Vault tajných klíčů](#key-vault-secrets-user) | Číst tajný obsah. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 4633458b-17de-408a-b874-0445c86b69e6 |
 > | [Spravovaný Přispěvatel HSM](#managed-hsm-contributor) | Umožňuje spravovat spravované fondy HSM, ale ne přístup k nim. | 18500a29-7fe2-46b2-a342-b16a415e101d |
 > | [Správce zabezpečení](#security-admin) | Zobrazit a aktualizovat oprávnění pro Security Center. Stejná oprávnění jako role čtecího modulu zabezpečení a mohou také aktualizovat zásady zabezpečení a zapustit výstrahy a doporučení. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [Přispěvatel vyhodnocení zabezpečení](#security-assessment-contributor) | Umožňuje doručovat hodnocení do Security Center | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
@@ -2175,8 +2175,9 @@ Povoluje výpis a opětovné generování přístupových klíčů účtu úlož
 > | **Akce dataactions** |  |
 > | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/BLOBs/DELETE | Odstraní objekt BLOB. |
 > | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/BLOBs/Read | Vrátí objekt BLOB nebo seznam objektů BLOB. |
-> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/BLOBs/Move/Action | Přesune objekt BLOB z jedné cesty na jiný. |
 > | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/BLOBs/Write | Zápis do objektu BLOB. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/BLOBs/Move/Action | Přesune objekt BLOB z jedné cesty na jiný. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/BLOBs/Add/Action | Vrátí výsledek přidání obsahu objektu BLOB. |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -2200,8 +2201,9 @@ Povoluje výpis a opětovné generování přístupových klíčů účtu úlož
       "dataActions": [
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action",
-        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action"
       ],
       "notDataActions": []
     }
@@ -4399,6 +4401,8 @@ Umožňuje spravovat zásady týkající se zabezpečení serverů a databází 
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Read | Vrátí seznam spravovaných instancí nebo získá vlastnosti zadané spravované instance. |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/azureADOnlyAuthentications/* |  |
 > | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/sqlVulnerabilityAssessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Administrators/Read | Načte seznam správců spravované instance. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Administrators/Read | Získá konkrétní objekt správce Azure Active Directory. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -4461,7 +4465,9 @@ Umožňuje spravovat zásady týkající se zabezpečení serverů a databází 
         "Microsoft.Sql/servers/azureADOnlyAuthentications/*",
         "Microsoft.Sql/managedInstances/read",
         "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/*",
-        "Microsoft.Security/sqlVulnerabilityAssessments/*"
+        "Microsoft.Security/sqlVulnerabilityAssessments/*",
+        "Microsoft.Sql/managedInstances/administrators/read",
+        "Microsoft.Sql/servers/administrators/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -7562,7 +7568,7 @@ Azure Sentinel Responder – další [informace](../sentinel/roles.md)
 }
 ```
 
-### <a name="key-vault-administrator-preview"></a>Správce Key Vault (Preview)
+### <a name="key-vault-administrator"></a>Správce Key Vault
 
 Proveďte všechny operace roviny dat u trezoru klíčů a všech objektů, včetně certifikátů, klíčů a tajných klíčů. Nejde spravovat prostředky trezoru klíčů ani spravovat přiřazení rolí. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure.
 
@@ -7615,13 +7621,13 @@ Proveďte všechny operace roviny dat u trezoru klíčů a všech objektů, vče
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Administrator (preview)",
+  "roleName": "Key Vault Administrator",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-certificates-officer-preview"></a>Key Vault úřední certifikát (Preview)
+### <a name="key-vault-certificates-officer"></a>Key Vault úřední certifikát
 
 S výjimkou oprávnění spravovat je možné provést jakoukoli akci s certifikáty trezoru klíčů. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure.
 
@@ -7676,7 +7682,7 @@ S výjimkou oprávnění spravovat je možné provést jakoukoli akci s certifik
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Certificates Officer (preview)",
+  "roleName": "Key Vault Certificates Officer",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -7737,7 +7743,7 @@ Spravujte trezory klíčů, ale neumožňuje přiřadit role v Azure RBAC a neum
 }
 ```
 
-### <a name="key-vault-crypto-officer-preview"></a>Key Vault kryptografický pracovník (Preview)
+### <a name="key-vault-crypto-officer"></a>Key Vault kryptografický pracovník
 
 Proveďte jakoukoli akci s klíči trezoru klíčů s výjimkou oprávnění ke správě. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure.
 
@@ -7790,13 +7796,13 @@ Proveďte jakoukoli akci s klíči trezoru klíčů s výjimkou oprávnění ke 
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto Officer (preview)",
+  "roleName": "Key Vault Crypto Officer",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-crypto-service-encryption-user-preview"></a>Uživatel šifrování Key Vault šifrovací služby (Preview)
+### <a name="key-vault-crypto-service-encryption-user"></a>Uživatel šifrování Key Vault šifrovací služby
 
 Čtení metadat klíčů a provádění operací zalamování nebo rozbalení. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure.
 
@@ -7839,13 +7845,13 @@ Proveďte jakoukoli akci s klíči trezoru klíčů s výjimkou oprávnění ke 
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto Service Encryption User (preview)",
+  "roleName": "Key Vault Crypto Service Encryption User",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-crypto-user-preview"></a>Key Vault kryptografický uživatel (Preview)
+### <a name="key-vault-crypto-user"></a>Key Vault kryptografický uživatel
 
 Provádějte kryptografické operace pomocí klíčů. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure.
 
@@ -7894,13 +7900,13 @@ Provádějte kryptografické operace pomocí klíčů. Funguje jenom pro trezory
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto User (preview)",
+  "roleName": "Key Vault Crypto User",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-reader-preview"></a>Key Vault Reader (Preview)
+### <a name="key-vault-reader"></a>Čtecí modul Key Vault
 
 Číst metadata trezorů klíčů a jeho certifikátů, klíčů a tajných klíčů. Nelze číst citlivé hodnoty, jako je například obsah tajného klíče nebo klíčové materiály. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure.
 
@@ -7955,13 +7961,13 @@ Provádějte kryptografické operace pomocí klíčů. Funguje jenom pro trezory
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Reader (preview)",
+  "roleName": "Key Vault Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-secrets-officer-preview"></a>Úředník Key Vault tajných klíčů (Preview)
+### <a name="key-vault-secrets-officer"></a>Úředník Key Vault tajných klíčů
 
 Vykoná jakoukoli akci s tajnými kódy trezoru klíčů s výjimkou oprávnění ke správě. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure.
 
@@ -8014,13 +8020,13 @@ Vykoná jakoukoli akci s tajnými kódy trezoru klíčů s výjimkou oprávněn�
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Secrets Officer (preview)",
+  "roleName": "Key Vault Secrets Officer",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-secrets-user-preview"></a>Uživatel Key Vault tajných kódů (Preview)
+### <a name="key-vault-secrets-user"></a>Uživatel Key Vault tajných klíčů
 
 Číst tajný obsah. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure.
 
@@ -8055,7 +8061,7 @@ Vykoná jakoukoli akci s tajnými kódy trezoru klíčů s výjimkou oprávněn�
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Secrets User (preview)",
+  "roleName": "Key Vault Secrets User",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -10415,7 +10421,7 @@ Umožňuje spravovat značky entit bez poskytnutí přístupu k samotným entit�
 }
 ```
 
-## <a name="other"></a>Jiné
+## <a name="other"></a>Ostatní
 
 
 ### <a name="azure-digital-twins-data-owner"></a>Vlastník dat digitálních vláken Azure

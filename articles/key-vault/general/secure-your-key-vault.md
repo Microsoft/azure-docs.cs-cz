@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: f82c7060f703aff6c19f0082454779b8fea1ba76
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 552aad3e3b41bcfd55d1b57a53d8dff2080a6210
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526251"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100534698"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Zabezpečení přístupu k trezoru klíčů
 
@@ -182,13 +182,13 @@ Pro naše role musíme autorizovat tyto operace:
 
 Následující tabulka shrnuje přístupová oprávnění pro naše role a aplikace.
 
-| Role | Oprávnění k rovině správy | Oprávnění k rovině dat – zásady přístupu k trezoru | Oprávnění roviny dat – Azure RBAC (Preview)  |
+| Role | Oprávnění k rovině správy | Oprávnění k rovině dat – zásady přístupu k trezoru | Oprávnění k rovině dat – Azure RBAC  |
 | --- | --- | --- | --- |
-| Bezpečnostní tým | [Přispěvatel Key Vault](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | Certifikáty: všechny operace <br> Klíče: všechny operace <br> Tajné kódy: všechny operace | [Správce Key Vault (Preview)](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
+| Bezpečnostní tým | [Přispěvatel Key Vault](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | Certifikáty: všechny operace <br> Klíče: všechny operace <br> Tajné kódy: všechny operace | [Správce Key Vault](../../role-based-access-control/built-in-roles.md#key-vault-administrator) |
 | Vývojáři a &nbsp; operátoři | Oprávnění k nasazení Key Vault<br><br> **Poznámka**: Toto oprávnění umožňuje nasazeným virtuálním počítačům načíst tajné kódy z trezoru klíčů. | Žádné | Žádné |
-| Auditoři | Žádné | Certifikáty: seznam <br> Klíče: vypsat (list)<br>Tajné klíče: vypsat (list)<br><br> **Poznámka**: Toto oprávnění umožňuje auditorům kontrolovat atributy (značky, data aktivace, data vypršení platnosti) pro klíče a tajné klíče, které nejsou v protokolech vygenerovány. | [Key Vault Reader (Preview)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) |
-| Účet služby Azure Storage | Žádné | Klíče: Get, list, wrapKey, unwrapKey <br> | [Uživatel šifrování Key Vault šifrovací služby](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user-preview) |
-| Aplikace | Žádné | Tajné kódy: získat, seznam <br> Certifikáty: získat, vypsat | [Key Vault Reader (Preview)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview), [Key Vault tajného uživatele (Preview)](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
+| Auditoři | Žádné | Certifikáty: seznam <br> Klíče: vypsat (list)<br>Tajné klíče: vypsat (list)<br><br> **Poznámka**: Toto oprávnění umožňuje auditorům kontrolovat atributy (značky, data aktivace, data vypršení platnosti) pro klíče a tajné klíče, které nejsou v protokolech vygenerovány. | [Čtecí modul Key Vault](../../role-based-access-control/built-in-roles.md#key-vault-reader) |
+| Účet služby Azure Storage | Žádné | Klíče: Get, list, wrapKey, unwrapKey <br> | [Uživatel šifrování Key Vault šifrovací služby](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user) |
+| Aplikace | Žádné | Tajné kódy: získat, seznam <br> Certifikáty: získat, vypsat | [Key Vault čtenář](../../role-based-access-control/built-in-roles.md#key-vault-reader) [Key Vault tajného uživatele](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user) |
 
 Tři role týmu potřebují přístup k dalším prostředkům spolu s oprávněními Key Vault. Pokud chcete nasadit virtuální počítače (nebo funkci Web Apps Azure App Service), vývojáři a operátory potřebují přístup k nasazení. Auditoři potřebují přístup pro čtení k účtu úložiště, ve kterém jsou uložené protokoly Key Vault.
 

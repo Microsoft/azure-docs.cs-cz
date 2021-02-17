@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 8243619bc7a32c5fa86b6e108d954674b54394e5
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 0408341eff483de71d76a24a933ece4cbdc2b947
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913718"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535276"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů na webu Azure Portal
 
@@ -57,7 +57,7 @@ Nejdřív vytvořte pomocí portálu veřejné Standard Load Balancer. Název a 
 Škálovací sadu můžete nasadit s použitím image Windows Serveru nebo image Linuxu, jako je například RHEL, CentOS, Ubuntu nebo SLES.
 
 1. Do vyhledávacího pole zadejte **Scale set** . Ve výsledcích klikněte v části **Marketplace** na možnost **Virtual Machine Scale Sets**. Na stránce **sady škálování virtuálních počítačů** vyberte **vytvořit** a otevře se stránka **vytvořit sadu škálování virtuálního počítače** . 
-1. Přesvědčte se, že je na kartě **Základy** v části **Podrobnosti o projektu** vybrané správné předplatné a pak ve Skupině prostředků vyberte **Vytvořit nový**. Jako název zadejte *myVMSSResourceGroup* a pak vyberte **OK** . 
+1. Na kartě **základy** v části **Project Details (podrobnosti projektu**) Zkontrolujte, zda je vybráno správné předplatné a vyberte *myVMSSResourceGroup* ze seznamu skupin prostředků. 
 1. Jako název sady škálování zadejte *myScaleSet* .
 1. V **oblasti oblast** vyberte oblast, která je blízko vaší oblasti.
 1. Vyberte obrázek Marketplace pro **Obrázek**. V tomto příkladu jsme zvolili *Ubuntu Server 18,04 LTS*.

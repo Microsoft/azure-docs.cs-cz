@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1d54ecdac739bbc5a072426f5bf73f71ab394159
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5c216661e45e5ed34a95e8a56002f3ad175b089a
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417294"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545903"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-portal"></a>Povolit spravovanou identitu pro směrování událostí digitálních vláken Azure (Preview): Azure Portal
 
@@ -102,8 +102,9 @@ K přiřazení role k identitě Začněte otevřením [Azure Portal](https://por
 
 1. Na následující stránce **Přidat přiřazení role** vyplňte hodnoty:
     * **Role**: vyberte požadovanou roli z rozevírací nabídky.
-    * **Přiřadit přístup pro**: vyberte **uživatele, skupinu nebo instanční objekt** .
-    * **Vyberte**: tady vyberete spravovanou identitu instance digitálního vlákna Azure, ke které se přiřadí role. Název spravované identity se shoduje s názvem instance, proto vyhledejte název instance digitálního vlákna Azure. Když vyberete výsledek, identita pro instanci se zobrazí v části **Vybrané členy** .
+    * **Přiřadit přístup k**: v části **spravovaná identita přiřazená systémem** vyberte **digitální vlákna**.
+    * **Předplatné**: Vyberte předplatné. V rámci vybraného předplatného se zobrazí všechny spravované identity digitálních vláken Azure.
+    * **Vyberte**: tady vyberete spravovanou identitu instance digitálního vlákna Azure, ke které se přiřadí role. Název spravované identity se shoduje s názvem instance, proto si vyberte název instance digitálního vlákna Azure. Když vyberete tuto možnost, identita pro instanci se zobrazí v části **Vybrané členy** v dolní části podokna.
 
     :::row:::
         :::column:::
