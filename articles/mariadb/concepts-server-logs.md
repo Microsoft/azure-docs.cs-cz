@@ -3,15 +3,15 @@ title: Protokoly pomalých dotazů – Azure Database for MariaDB
 description: V této části najdete popis protokolů dostupných v Azure Database for MariaDB a dostupných parametrů pro povolení různých úrovní protokolování.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/6/2020
-ms.openlocfilehash: 2d3c3c92cc4d0da38f18c7895f4f7f3f3385c653
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 2e7e56616300566839fadef762c2165c8d989e6e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664159"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570810"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Pomalé dotazování protokolů v Azure Database for MariaDB
 V Azure Database for MariaDB je k dispozici pro uživatele protokol pomalých dotazů. Přístup k transakčnímu protokolu není podporován. Protokol pomalých dotazů se dá použít k identifikaci problémových míst výkonu pro řešení problémů.
@@ -53,7 +53,7 @@ Protokoly se otočí každých 24 hodin nebo 7 GB, podle toho, co nastane dřív
 > Výše uvedené uchování protokolu se nevztahuje na protokoly, které jsou v kanálu Azure Monitor diagnostické protokoly. Dobu uchování dat, která se emitují, můžete změnit (např. Azure Storage).
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
-Azure Database for MariaDB je integrován s protokoly diagnostiky Azure Monitor. Po povolení protokolů pomalých dotazů na serveru MariaDB se můžete rozhodnout, že se mají vysílat pro Azure Monitor protokolů, Event Hubs nebo Azure Storage. Další informace o tom, jak povolit diagnostické protokoly, naleznete v části Postupy v [dokumentaci diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md).
+Azure Database for MariaDB je integrován s protokoly diagnostiky Azure Monitor. Po povolení protokolů pomalých dotazů na serveru MariaDB se můžete rozhodnout, že se mají vysílat pro Azure Monitor protokolů, Event Hubs nebo Azure Storage. Další informace o tom, jak povolit diagnostické protokoly, naleznete v části Postupy v [dokumentaci diagnostické protokoly](../azure-monitor/essentials/platform-logs-overview.md).
 
 Následující tabulka popisuje, co je v každém protokolu. V závislosti na metodě Output se pole, která jsou součástí, a pořadí, ve kterém se zobrazují, můžou lišit.
 

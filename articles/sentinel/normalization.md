@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 3d9e436d636fbd5414367efb0e122748a8e9e2cb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 35b3f4fe5703e9ce902553f992dfa44cea7db78f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390806"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570448"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Normalizace v Azure Sentinel
 
@@ -147,7 +147,7 @@ Po změně funkce klikněte znovu na Uložit a použijte stejný název, alias a
 
 JSON, XML a CSV jsou zvláště užitečné pro analýzu v době dotazu. Technologie Azure Sentinel obsahuje integrované funkce analýzy pro JSON, XML a CSV a také nástroj pro analýzu JSON.  Další informace najdete v tématu [použití polí JSON ve službě Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/tip-easily-use-json-fields-in-sentinel/ba-p/768747) (blog). 
 
-Přečtěte si další informace o [uložených dotazech](../azure-monitor/log-query/example-queries.md) (implementaci analyzátorů času dotazů) v Log Analytics.
+Přečtěte si další informace o [uložených dotazech](../azure-monitor/logs/example-queries.md) (implementaci analyzátorů času dotazů) v Log Analytics.
 
 
 ## <a name="next-steps"></a>Další kroky

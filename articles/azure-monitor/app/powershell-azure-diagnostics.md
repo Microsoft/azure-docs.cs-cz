@@ -3,16 +3,16 @@ title: Použití prostředí PowerShell k nastavení Application Insights v Azur
 description: Automatizuje konfiguraci Azure Diagnostics pro přenos dat do Application Insights.
 ms.topic: conceptual
 ms.date: 08/06/2019
-ms.openlocfilehash: 0fd69b90ce6329041f96b8e3173f1f17270f68ee
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c7c385888d7322b212cdd62497c9bbbabb970d65
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699725"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583845"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>Použití PowerShellu k nastavení Application Insights pro Azure Cloud Services
 
-[Microsoft Azure](https://azure.com) může být [konfigurované k odesílání Azure Diagnostics](../platform/diagnostics-extension-to-application-insights.md) do [Azure Application Insights](./app-insights-overview.md). Diagnostika se týká cloudových služeb Azure a virtuálních počítačů Azure. Doplňují telemetrii, kterou odesíláte z aplikace pomocí Application Insights SDK. Jako součást automatizace procesu vytváření nových prostředků v Azure můžete nakonfigurovat diagnostiku pomocí prostředí PowerShell.
+[Microsoft Azure](https://azure.com) může být [konfigurované k odesílání Azure Diagnostics](../agents/diagnostics-extension-to-application-insights.md) do [Azure Application Insights](./app-insights-overview.md). Diagnostika se týká cloudových služeb Azure a virtuálních počítačů Azure. Doplňují telemetrii, kterou odesíláte z aplikace pomocí Application Insights SDK. Jako součást automatizace procesu vytváření nových prostředků v Azure můžete nakonfigurovat diagnostiku pomocí prostředí PowerShell.
 
 ## <a name="azure-template"></a>Šablony Azure
 Pokud je webová aplikace v Azure a vy vytvoříte své prostředky pomocí šablony správce prostředků Azure, můžete nakonfigurovat Application Insights přidáním tohoto uzlu prostředků:
@@ -40,7 +40,7 @@ Pokud je webová aplikace v Azure a vy vytvoříte své prostředky pomocí šab
 * `myWebAppName` – ID webové aplikace
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Povolit rozšíření diagnostiky jako součást nasazení cloudové služby
-Rutina `New-AzureDeployment` obsahuje parametr `ExtensionConfiguration`, který přijímá pole konfigurace diagnostiky. Ty lze vytvořit pomocí rutiny `New-AzureServiceDiagnosticsExtensionConfig`. Například:
+Rutina `New-AzureDeployment` obsahuje parametr `ExtensionConfiguration`, který přijímá pole konfigurace diagnostiky. Ty lze vytvořit pomocí rutiny `New-AzureServiceDiagnosticsExtensionConfig`. Příklad:
 
 ```azurepowershell
 $service_package = "CloudService.cspkg"
@@ -125,6 +125,6 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 ## <a name="see-also"></a>Viz také
 * [Monitorování aplikací Azure Cloud Services pomocí nástroje Application Insights](./cloudservices.md)
-* [Odesílání Azure Diagnostics do Application Insights](../platform/diagnostics-extension-to-application-insights.md)
+* [Odesílání Azure Diagnostics do Application Insights](../agents/diagnostics-extension-to-application-insights.md)
 
 

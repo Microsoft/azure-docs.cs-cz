@@ -5,12 +5,12 @@ services: automation
 ms.date: 01/25/2020
 ms.topic: troubleshooting
 ms.subservice: update-management
-ms.openlocfilehash: d4fbc566cb82eb3b728b37aa1f1cc20ff92f4fca
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 9516210021ce48f069ae3b3b4e02503527e0db24
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896236"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580890"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Řešení problémů s agentem Windows Update
 
@@ -87,7 +87,7 @@ Konfigurace proxy serveru a brány firewall musí umožňovat, aby agent Hybrid 
 
 Tato kontrolu určuje, zda je na počítači spuštěn Agent Log Analytics pro systém Windows ( `healthservice` ). Další informace o řešení potíží se službou najdete v tématu [agent Log Analytics pro Windows není spuštěný](hybrid-runbook-worker.md#mma-not-running).
 
-Chcete-li přeinstalovat agenta Log Analytics pro systém Windows, přečtěte si téma [instalace agenta pro systém Windows](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
+Chcete-li přeinstalovat agenta Log Analytics pro systém Windows, přečtěte si téma [instalace agenta pro systém Windows](../../azure-monitor/vm/quick-collect-windows-computer.md#install-the-agent-for-windows).
 
 ### <a name="monitoring-agent-service-events"></a>Události služby Monitoring Agent
 

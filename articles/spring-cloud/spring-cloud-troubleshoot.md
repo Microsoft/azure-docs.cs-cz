@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 09415c47432f71310b10c86390c10e55f1ccc4b2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9350b5dbcedd2773e94ef9d35cfe26f97fbd97bc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498604"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571616"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Řešení běžných problémů s jarním cloudem v Azure
 
@@ -66,7 +66,7 @@ Při ladění selhání aplikace Začněte kontrolou stavu spuštění a stavu z
 
 
 
-Další informace o Azure Log Analytics najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/log-query/log-analytics-tutorial.md).
+Další informace o Azure Log Analytics najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/logs/log-analytics-tutorial.md).
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>V aplikaci dochází k vysokému využití procesoru nebo paměti
 
@@ -88,7 +88,7 @@ Další informace najdete v tématu [metriky pro jarní cloud Azure](spring-clou
 
 Pokud jsou všechny instance v provozu, můžete přejít na Azure Log Analytics a dotazovat se na protokoly aplikací a zkontrolovat logiku kódu. To vám pomůže zjistit, jestli některý z nich může ovlivnit dělení stupnice. Další informace najdete v tématu [Analýza protokolů a metrik pomocí nastavení diagnostiky](diagnostic-services.md).
 
-Další informace o Azure Log Analytics najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/log-query/log-analytics-tutorial.md). Dotazování protokolů pomocí [dotazovacího jazyka Kusto](/azure/kusto/query/)
+Další informace o Azure Log Analytics najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/logs/log-analytics-tutorial.md). Dotazování protokolů pomocí [dotazovacího jazyka Kusto](/azure/kusto/query/)
 
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Kontrolní seznam pro nasazení aplikace pružiny do jarního cloudu Azure
 
@@ -163,7 +163,7 @@ Pokud migrujete existující jarní cloudové řešení do Azure, ujistěte se, 
 
 Můžete také ověřit protokoly klienta _registru služby_ v Azure Log Analytics. Další informace najdete v tématu [Analýza protokolů a metrik pomocí nastavení diagnostiky](diagnostic-services.md) .
 
-Další informace o Azure Log Analytics najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/log-query/log-analytics-tutorial.md). Dotazování protokolů pomocí [dotazovacího jazyka Kusto](/azure/kusto/query/)
+Další informace o Azure Log Analytics najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/logs/log-analytics-tutorial.md). Dotazování protokolů pomocí [dotazovacího jazyka Kusto](/azure/kusto/query/)
 
 ### <a name="i-want-to-inspect-my-applications-environment-variables"></a>Chci zkontrolovat proměnné prostředí moje aplikace
 
@@ -223,7 +223,7 @@ Zkontrolujte `spring-boot-actuator` , zda je závislost povolena v balíčku apl
 </dependency>
 ```
 
-Pokud se protokoly aplikací můžou archivovat do účtu úložiště, ale neodesílají se do Azure Log Analytics, zkontrolujte, jestli jste [pracovní prostor správně nastavili](../azure-monitor/learn/quick-create-workspace.md). Pokud používáte bezplatnou úroveň Azure Log Analytics, mějte na paměti, že úroveň [Free neposkytuje smlouvu o úrovni služeb (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
+Pokud se protokoly aplikací můžou archivovat do účtu úložiště, ale neodesílají se do Azure Log Analytics, zkontrolujte, jestli jste [pracovní prostor správně nastavili](../azure-monitor/logs/quick-create-workspace.md). Pokud používáte bezplatnou úroveň Azure Log Analytics, mějte na paměti, že úroveň [Free neposkytuje smlouvu o úrovni služeb (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
 
 ## <a name="next-steps"></a>Další kroky
 

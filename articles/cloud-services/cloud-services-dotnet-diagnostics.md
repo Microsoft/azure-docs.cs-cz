@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 89ba50b91e8ff2e2d7a05d59f2b738a1f87a5fd2
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: e4b5372a2b6e9b833f3a0213d69649b75ae2589b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742144"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578182"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>Povolení Azure Diagnostics v Azure Cloud Services (Classic)
 
@@ -189,13 +189,13 @@ V **Průzkumník serveru** sady Visual Studio přejděte do účtu úložiště 
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>Schéma konfiguračního souboru
-Konfigurační soubor diagnostiky definuje hodnoty, které se použijí k inicializaci nastavení konfigurace diagnostiky při spuštění agenta diagnostiky. Platné hodnoty a příklady najdete v [nejnovějším referenčním schématu](../azure-monitor/platform/diagnostics-extension-versions.md) .
+Konfigurační soubor diagnostiky definuje hodnoty, které se použijí k inicializaci nastavení konfigurace diagnostiky při spuštění agenta diagnostiky. Platné hodnoty a příklady najdete v [nejnovějším referenčním schématu](../azure-monitor/agents/diagnostics-extension-versions.md) .
 
 ## <a name="troubleshooting"></a>Řešení potíží
-Pokud máte problémy, přečtěte si téma [řešení potíží s Azure Diagnostics](../azure-monitor/platform/diagnostics-extension-troubleshooting.md) , kde najdete nápovědu k běžným problémům.
+Pokud máte problémy, přečtěte si téma [řešení potíží s Azure Diagnostics](../azure-monitor/agents/diagnostics-extension-troubleshooting.md) , kde najdete nápovědu k běžným problémům.
 
 ## <a name="next-steps"></a>Další kroky
-Pokud chcete změnit shromažďovaná data, [Podívejte se na seznam souvisejících diagnostických článků Azure Virtual-Machine](../azure-monitor/platform/diagnostics-extension-overview.md) , které vám pomohou při řešení potíží nebo další informace o diagnostice obecně.
+Pokud chcete změnit shromažďovaná data, [Podívejte se na seznam souvisejících diagnostických článků Azure Virtual-Machine](../azure-monitor/agents/diagnostics-extension-overview.md) , které vám pomohou při řešení potíží nebo další informace o diagnostice obecně.
 
 [EventSource Class]: /dotnet/api/system.diagnostics.tracing.eventsource
 

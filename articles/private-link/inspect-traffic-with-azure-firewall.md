@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 7812d0f2e42dfed6cdd661244b77969297093a5d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 3ed349616ae6456913c19bb073f6e9ea28e7d549
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879169"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575128"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Použití Azure Firewall ke kontrole provozu určeného pro soukromý koncový bod
 
@@ -106,7 +106,7 @@ Platí stejné požadavky jako ve scénáři 2 výše. V tomto scénáři se ne�
 * Předplatné Azure.
 * Pracovní prostor služby Log Analytics.  
 
-Pokud ve svém předplatném nemáte nějaké předplatné, můžete si v [Azure Portal vytvořit pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md) .
+Pokud ve svém předplatném nemáte nějaké předplatné, můžete si v [Azure Portal vytvořit pracovní prostor Log Analytics](../azure-monitor/logs/quick-create-workspace.md) .
 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
@@ -174,7 +174,7 @@ V krocích níže nahraďte následující parametry:
     | Skupina prostředků | Vyberte **myResourceGroup**. Tuto skupinu prostředků jste vytvořili v předchozí části.  |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM**. |
-    | Region (Oblast) | Vyberte **(US) Střed USA – jih**. |
+    | Oblast | Vyberte **(US) Střed USA – jih**. |
     | Možnosti dostupnosti | Nechte výchozí nastavení **bez nutnosti redundance infrastruktury**. |
     | Image | Vyberte **Ubuntu Server 18,04 LTS-Gen1**. |
     | Velikost | Vyberte **Standard_B2s**. |
@@ -223,7 +223,7 @@ V krocích níže nahraďte následující parametry:
     | Skupina prostředků | Vyberte **myResourceGroup**.  |
     | **Podrobnosti o instancích** |  |
     | Name | Zadejte **myAzureFirewall**. |
-    | Region (Oblast) | Vyberte **střed USA – jih**. |
+    | Oblast | Vyberte **střed USA – jih**. |
     | Zóna dostupnosti | Nechejte výchozí nastavení **žádné**. |
     | Volba virtuální sítě    |    Vyberte **použít existující**.    |
     | Virtuální síť    |    Vyberte **myAzFwVNet**.    |
@@ -309,7 +309,7 @@ V této části vytvoříte privátní koncový bod pro Azure SQL Database v př
     | Skupina prostředků | Vyberte **myResourceGroup**. |
     | **Podrobnosti o instancích** | |
     | Name | Zadejte **SQLPrivateEndpoint**. |
-    | Region (Oblast) | Vyberte **(US) Střed USA – jih.** |
+    | Oblast | Vyberte **(US) Střed USA – jih.** |
 
 6. Vyberte kartu **prostředek** nebo v dolní části stránky vyberte položku **Další: prostředek** .
 
@@ -497,7 +497,7 @@ Trasa odesílá provoz z podsítě **myVM** do adresního prostoru služby Virtu
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**.  |
     | **Podrobnosti o instancích** |  |
-    | Region (Oblast) | Vyberte **střed USA – jih**. |
+    | Oblast | Vyberte **střed USA – jih**. |
     | Name | Zadejte **VMsubnet-to-AzureFirewall**. |
     | Šíření tras brány | Vyberte **Ne**. |
 

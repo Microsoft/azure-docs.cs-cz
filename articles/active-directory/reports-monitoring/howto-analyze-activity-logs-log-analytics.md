@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c4fde22b1b8d72ae8ae775c090e0da25ce0665f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 905261058c2de0afae18cbc5572c64962bef8834
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181165"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580017"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Analýza protokolů aktivit Azure AD pomocí protokolů Azure Monitor
 
@@ -32,13 +32,13 @@ V tomto článku se dozvíte, jak analyzovat protokoly aktivit Azure AD v pracov
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 Pokud chcete postup sledovat, potřebujete:
 
-* Log Analytics pracovní prostor ve vašem předplatném Azure. Naučte se, jak [vytvořit pracovní prostor Log Analytics](../../azure-monitor/learn/quick-create-workspace.md).
+* Log Analytics pracovní prostor ve vašem předplatném Azure. Naučte se, jak [vytvořit pracovní prostor Log Analytics](../../azure-monitor/logs/quick-create-workspace.md).
 * Nejdřív proveďte kroky pro [Směrování protokolů aktivit služby Azure AD do vašeho pracovního prostoru Log Analytics](howto-integrate-activity-logs-with-log-analytics.md).
-*  [Přístup](../../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions) k pracovnímu prostoru Log Analytics
+*  [Přístup](../../azure-monitor/logs/manage-access.md#manage-access-using-workspace-permissions) k pracovnímu prostoru Log Analytics
 * Následující role v Azure Active Directory (Pokud přistupujete Log Analytics prostřednictvím Azure Active Directoryového portálu)
     - Správce zabezpečení
     - Čtenář zabezpečení
@@ -47,7 +47,7 @@ Pokud chcete postup sledovat, potřebujete:
     
 ## <a name="navigate-to-the-log-analytics-workspace"></a>Přejděte do pracovního prostoru Log Analytics.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 
 2. Vyberte **Azure Active Directory** a potom v části **monitorování** vyberte **protokoly** . tím otevřete pracovní prostor Log Analytics. Pracovní prostor se otevře s výchozím dotazem.
 
@@ -96,7 +96,7 @@ Pro svůj dotaz můžete také nastavit výstrahy. Pokud třeba chcete nakonfigu
 
 3. Zadejte název a popis výstrahy a vyberte úroveň závažnosti. V našem příkladu jsme ho mohli nastavit na **informativní**.
 
-4. Vyberte **skupinu akcí** , která bude upozorněna, když dojde k signálu. Můžete se rozhodnout, že budete svému týmu informovat prostřednictvím e-mailu nebo textové zprávy, nebo můžete automatizovat akci pomocí webhooků, Azure Functions nebo Logic Apps. Přečtěte si další informace o [vytváření a správě skupin výstrah v Azure Portal](../../azure-monitor/platform/action-groups.md).
+4. Vyberte **skupinu akcí** , která bude upozorněna, když dojde k signálu. Můžete se rozhodnout, že budete svému týmu informovat prostřednictvím e-mailu nebo textové zprávy, nebo můžete automatizovat akci pomocí webhooků, Azure Functions nebo Logic Apps. Přečtěte si další informace o [vytváření a správě skupin výstrah v Azure Portal](../../azure-monitor/alerts/action-groups.md).
 
 5. Po nakonfigurování výstrahy vyberte **vytvořit výstrahu** a povolte ji. 
 
@@ -110,6 +110,6 @@ Sešity obsahují několik sestav, které se týkají běžných scénářů tý
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Začínáme s dotazy v protokolech Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
-* [Vytváření a Správa skupin výstrah v Azure Portal](../../azure-monitor/platform/action-groups.md)
+* [Začínáme s dotazy v protokolech Azure Monitor](../../azure-monitor/logs/get-started-queries.md)
+* [Vytváření a Správa skupin výstrah v Azure Portal](../../azure-monitor/alerts/action-groups.md)
 * [Instalace a použití zobrazení Log Analytics pro Azure Active Directory](howto-install-use-log-analytics-views.md)

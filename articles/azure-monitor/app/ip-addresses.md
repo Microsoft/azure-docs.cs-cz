@@ -3,12 +3,12 @@ title: IP adresy, které používá Azure Monitor
 description: Výjimky brány firewall serveru vyžadované Application Insights
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 0e7028c59b4588ac23424a63f4e3ce240391dfb8
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 72f825630ec94b5c32a949a4395c431318afa87f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220798"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584100"
 ---
 # <a name="ip-addresses-used-by-azure-monitor"></a>IP adresy, které používá Azure Monitor
 [Azure monitor](../overview.md) používá několik IP adres. Azure Monitor se skládá z metrik základní platformy a přihlašování k Log Analytics a Application Insights. Pokud je aplikace nebo infrastruktura, kterou sledujete, hostována za bránou firewall, může být potřeba tyto adresy znát.
@@ -254,21 +254,21 @@ Správa změn u zdrojových IP adres může trvat poměrně dlouho. Použití **
    1. Přidejte název skupiny prostředků a zadejte *Podrobnosti o instanci*.
    1. Klikněte na tlačítko **Revize + vytvořit** a potom klikněte na tlačítko *vytvořit*.
    
-   :::image type="content" source="../platform/media/action-groups/action-group-create-security-group.png" alt-text="Příklad vytvoření skupiny zabezpečení sítě."border="true":::
+   :::image type="content" source="../alerts/media/action-groups/action-group-create-security-group.png" alt-text="Příklad vytvoření skupiny zabezpečení sítě."border="true":::
 
 3. Přejděte do skupiny prostředků a potom klikněte na *skupinu zabezpečení sítě* , kterou jste vytvořili.
 
     1. Vyberte *příchozí pravidla zabezpečení*.
     1. Klikněte na **Přidat**.
     
-    :::image type="content" source="../platform/media/action-groups/action-group-add-service-tag.png" alt-text="Příklad přidání značky služby"border="true":::
+    :::image type="content" source="../alerts/media/action-groups/action-group-add-service-tag.png" alt-text="Příklad přidání značky služby"border="true":::
 
 4. Otevře se nové okno v pravém podokně.
     1.  Vybrat zdroj: **značka služby**
     1.  Značka zdrojové služby: parametr **Action**
     1.  Klikněte na **Přidat**.
     
-    :::image type="content" source="../platform/media/action-groups/action-group-service-tag.png" alt-text="Příklad přidání značky služby"border="true":::
+    :::image type="content" source="../alerts/media/action-groups/action-group-service-tag.png" alt-text="Příklad přidání značky služby"border="true":::
 
 
 ## <a name="profiler"></a>Profiler

@@ -6,20 +6,20 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: d1f575d9d588ccd99523c6b6d5d2ceba6369dc3d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 5de795811923c965a1473f8d91e3fd654aeef266
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309918"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574552"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>Zobrazení a vytváření dotazů pro monitorování a sledování v protokolech Azure Monitor pro Azure Logic Apps
 
-Můžete zobrazit základní dotazy, které vytvářejí výsledky z [Azure monitor protokoly](../azure-monitor/log-query/log-query-overview.md) a vytvářet dotazy, které filtrují výsledky na základě konkrétních kritérií. Můžete například vyhledat zprávy na základě konkrétního kontrolního čísla výměny. Dotazy používají [dotazovací jazyk Kusto](/azure/data-explorer/kusto/query/), který můžete upravit, pokud chcete zobrazit různé výsledky. Další informace najdete v tématu [Azure monitor dotazy protokolu](/azure/data-explorer/kusto/query/).
+Můžete zobrazit základní dotazy, které vytvářejí výsledky z [Azure monitor protokoly](../azure-monitor/logs/log-query-overview.md) a vytvářet dotazy, které filtrují výsledky na základě konkrétních kritérií. Můžete například vyhledat zprávy na základě konkrétního kontrolního čísla výměny. Dotazy používají [dotazovací jazyk Kusto](/azure/data-explorer/kusto/query/), který můžete upravit, pokud chcete zobrazit různé výsledky. Další informace najdete v tématu [Azure monitor dotazy protokolu](/azure/data-explorer/kusto/query/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Pracovní prostor služby Log Analytics. Pokud nemáte pracovní prostor Log Analytics, přečtěte si, [jak vytvořit pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
+* Pracovní prostor služby Log Analytics. Pokud nemáte pracovní prostor Log Analytics, přečtěte si, [jak vytvořit pracovní prostor Log Analytics](../azure-monitor/logs/quick-create-workspace.md).
 
 * Aplikace logiky, která je nastavená s Azure Monitor protokolování a odesílá tyto informace do pracovního prostoru Log Analytics. Přečtěte si, [jak nastavit protokoly Azure monitor pro vaši aplikaci logiky](../logic-apps/monitor-logic-apps.md).
 
@@ -45,15 +45,15 @@ Chcete-li zobrazit nebo upravit dotaz, který vytváří výsledky v souhrnu pra
 
 ## <a name="create-your-own-query"></a>Vytvoření vlastního dotazu
 
-Pokud chcete výsledky najít nebo filtrovat na základě konkrétních vlastností nebo hodnot, můžete vytvořit vlastní dotaz tak, že začnete od prázdného dotazu, nebo použijete existující dotaz. Další informace najdete v tématu [Začínáme s dotazy protokolu v Azure monitor](../azure-monitor/log-query/get-started-queries.md).
+Pokud chcete výsledky najít nebo filtrovat na základě konkrétních vlastností nebo hodnot, můžete vytvořit vlastní dotaz tak, že začnete od prázdného dotazu, nebo použijete existující dotaz. Další informace najdete v tématu [Začínáme s dotazy protokolu v Azure monitor](../azure-monitor/logs/get-started-queries.md).
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte pracovní prostor Log Analytics.
 
-1. V nabídce pracovního prostoru v části **Obecné**vyberte **protokoly**.
+1. V nabídce pracovního prostoru v části **Obecné** vyberte **protokoly**.
 
 1. Začněte od prázdného dotazu nebo všech dostupných existujících dotazů.
 
-   * Chcete-li ověřit, zda jsou k dispozici nějaké existující dotazy, vyberte na **Samples queries**panelu nástrojů dotaz  >  **historii**dotazů, které zobrazují dotazy z předchozích spuštěných dotazů, nebo vyberte možnost **Průzkumník dotazů**, který zobrazuje předem připravené dotazy.
+   * Chcete-li ověřit, zda jsou k dispozici nějaké existující dotazy, vyberte na panelu nástrojů dotaz  >  **historii** dotazů, které zobrazují dotazy z předchozích spuštěných dotazů, nebo vyberte možnost **Průzkumník dotazů**, který zobrazuje předem připravené dotazy.
 
      Například řešení Logic Apps B2B poskytuje tyto předem sestavené dotazy:
 

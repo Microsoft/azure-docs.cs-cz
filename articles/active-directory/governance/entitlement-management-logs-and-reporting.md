@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af9921510ba11ab1bd7d0664b2c4c19e042864d3
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 1a7f0d937d41ee42bf0fe678eb2f49e78882f881
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746639"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577867"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archivace protokolů a vytváření sestav o správě nároků Azure AD v Azure Monitor
 
@@ -59,7 +59,7 @@ Archivace protokolů auditu Azure AD vyžaduje, abyste měli Azure Monitor v př
 
 ## <a name="view-events-for-an-access-package"></a>Zobrazit události pro balíček pro přístup  
 
-Pokud chcete zobrazit události pro balíček pro přístup, musíte mít přístup k základnímu pracovnímu prostoru Azure monitor (informace najdete v tématu [Správa přístupu k datům protokolů a pracovním prostorům v Azure monitor](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions) pro informace) a v jedné z následujících rolí: 
+Pokud chcete zobrazit události pro balíček pro přístup, musíte mít přístup k základnímu pracovnímu prostoru Azure monitor (informace najdete v tématu [Správa přístupu k datům protokolů a pracovním prostorům v Azure monitor](../../azure-monitor/logs/manage-access.md#manage-access-using-azure-permissions) pro informace) a v jedné z následujících rolí: 
 
 - Globální správce  
 - Správce zabezpečení  
@@ -128,7 +128,7 @@ Chcete-li nastavit přiřazení role a vytvořit dotaz, proveďte následující
 
     ![Přidat přiřazení role](./media/entitlement-management-logs-and-reporting/workspace-set-role-assignment.png)
 
-### <a name="install-azure-powershell-module"></a>Instalace modulu Azure PowerShellu
+### <a name="install-azure-powershell-module"></a>Nainstalovat modul Azure PowerShell
 
 Jakmile budete mít příslušné přiřazení role, spusťte PowerShell a [nainstalujte Azure PowerShell modul](/powershell/azure/install-az-ps?view=azps-3.3.0) (Pokud jste to ještě neudělali), a to tak, že zadáte:
 
@@ -189,4 +189,4 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>Další kroky:
-- [Vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../../azure-monitor/platform/workbooks-overview.md)
+- [Vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../../azure-monitor/visualize/workbooks-overview.md)

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: f24a4a0d982ff78ca4d6726e950825ed2c784e67
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 0c1273f4a2025658520118ed843d90b3378a129f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184537"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577884"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Povolení protokolování prostředků v Azure Traffic Manager
 
@@ -54,7 +54,7 @@ Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://she
       Zajistěte, aby se všechny kategorie protokolů přidružené k prostředku profilu Traffic Manager zobrazovaly jako povolené. Ověřte také, že je účet úložiště správně nastavený.
 
 ## <a name="access-log-files"></a>Přístup k souborům protokolu
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 1. Na portálu přejděte na účet Azure Storage.
 2. Na stránce **Přehled** účtu úložiště Azure v části **služby** vyberte **objekty blob**.
 3. V části **kontejnery** vyberte **Insights-logs-probehealthstatusevents** a přejděte dolů na PT1H.jsv souboru a kliknutím na **Stáhnout** Stáhněte a uložte kopii tohoto souboru protokolu.
@@ -64,7 +64,7 @@ Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://she
 
 ## <a name="traffic-manager-log-schema"></a>Schéma Traffic Managerho protokolu
 
-Všechny protokoly prostředků dostupné prostřednictvím Azure Monitor sdílejí společné schéma nejvyšší úrovně s flexibilitou pro každou službu, aby vygenerovala jedinečné vlastnosti pro vlastní události. Schéma pro protokoly prostředků na nejvyšší úrovni najdete v tématu [podporované služby, schémata a kategorie pro protokoly prostředků Azure](../azure-monitor/platform/resource-logs-schema.md).
+Všechny protokoly prostředků dostupné prostřednictvím Azure Monitor sdílejí společné schéma nejvyšší úrovně s flexibilitou pro každou službu, aby vygenerovala jedinečné vlastnosti pro vlastní události. Schéma pro protokoly prostředků na nejvyšší úrovni najdete v tématu [podporované služby, schémata a kategorie pro protokoly prostředků Azure](../azure-monitor/essentials/resource-logs-schema.md).
 
 Následující tabulka obsahuje schéma protokolů specifické pro prostředek profilu Azure Traffic Manager.
 

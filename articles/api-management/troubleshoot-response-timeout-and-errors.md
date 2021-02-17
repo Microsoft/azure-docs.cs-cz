@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/04/2020
 ms.author: apimpm
 ms.service: api-management
-ms.openlocfilehash: 770a8191b1b07a7ebc779b84f443ae96d66d1c97
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 6cace4a02c8d45cacbbc34e9778b5c4a78ada27f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96841396"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576522"
 ---
 # <a name="troubleshooting-client-response-timeouts-and-errors-with-api-management"></a>Řešení potíží s časovými limity odezvy klienta a chybami API Management
 
@@ -24,7 +24,7 @@ Klientské aplikace volající rozhraní API prostřednictvím služby API Manag
 * Občasné chyby HTTP 500
 * Chybové zprávy časového limitu
 
-Tyto příznaky se manifestují jako instance `BackendConnectionFailure` v [protokolech prostředků Azure monitor](../azure-monitor/platform/resource-logs.md).
+Tyto příznaky se manifestují jako instance `BackendConnectionFailure` v [protokolech prostředků Azure monitor](../azure-monitor/essentials/resource-logs.md).
 
 ## <a name="cause"></a>Příčina
 

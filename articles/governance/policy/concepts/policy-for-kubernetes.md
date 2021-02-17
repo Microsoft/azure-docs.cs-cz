@@ -3,12 +3,12 @@ title: Další informace Azure Policy Kubernetes
 description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů se systémem Kubernetes v Azure nebo místním prostředí.
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: f25b64bc28535d125c7883f16c9e747d6250ca96
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0aaf610cd5712ee195ed2a4108cf9e5ca9c65183
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789734"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577091"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Principy Azure Policy pro clustery Kubernetes
 
@@ -122,7 +122,7 @@ Před instalací doplňku Azure Policy nebo povolením jakékoli funkce služby 
 
 Po dokončení výše uvedených požadovaných kroků nainstalujte doplněk Azure Policy v clusteru AKS, který chcete spravovat.
 
-- Portál Azure Portal
+- portál Azure
 
   1. Spusťte službu AKS v Azure Portal tím, že vyberete **všechny služby** a pak vyhledáte a vyberete **služby Kubernetes**.
 
@@ -447,7 +447,7 @@ Další požadavky:
 ## <a name="logging"></a>protokolování
 
 Jako Kubernetes Controller nebo kontejner se v clusteru Kubernetes udržují protokoly _Azure-Policy_ i _gatekeeper_ . Protokoly se dají zveřejnit na stránce **Přehled** v clusteru Kubernetes.
-Další informace najdete v tématu [monitorování výkonu clusteru Kubernetes s využitím Azure monitor pro kontejnery](../../../azure-monitor/insights/container-insights-analyze.md).
+Další informace najdete v tématu [monitorování výkonu clusteru Kubernetes s využitím Azure monitor pro kontejnery](../../../azure-monitor/containers/container-insights-analyze.md).
 
 Chcete-li zobrazit protokoly doplňku, použijte `kubectl` :
 
@@ -471,7 +471,7 @@ Další informace o řešení potíží s doplňkem pro Kubernetes najdete v [č
 
 Pokud chcete odebrat doplněk Azure Policy z clusteru AKS, použijte Azure Portal nebo rozhraní příkazového řádku Azure:
 
-- Portál Azure Portal
+- portál Azure
 
   1. Spusťte službu AKS v Azure Portal tím, že vyberete **všechny služby** a pak vyhledáte a vyberete **služby Kubernetes**.
 

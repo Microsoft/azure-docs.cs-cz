@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e0be6decf28fcbb2edacd5019f567d26403b1f31
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e9da1071686dafa003a5a49d0864b77644493344
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466815"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594463"
 ---
 # <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment-preview"></a>Monitorování nasazení pomocí Azure Monitor pro virtuální počítač s Windows (Preview)
 
@@ -98,7 +98,7 @@ Přečtěte si další informace o tom, jak povolit diagnostiku na všech objekt
 
 ## <a name="configure-log-analytics"></a>Konfigurace služby Log Analytics
 
-Pokud chcete začít používat Azure Monitor pro virtuální počítače s Windows, budete také potřebovat aspoň jeden pracovní prostor Log Analytics, abyste mohli shromažďovat data z prostředí, které chcete monitorovat, a dodat ho do sešitu. Pokud už máte nastavené nastavení, přeskočte dopředu a [nastavte čítače výkonu](#set-up-performance-counters). Pokud chcete nastavit nový pracovní prostor pro Log Analytics pro předplatné Azure, které obsahuje prostředí pro virtuální počítače s Windows, přečtěte si téma [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../azure-monitor/learn/quick-create-workspace.md).
+Pokud chcete začít používat Azure Monitor pro virtuální počítače s Windows, budete také potřebovat aspoň jeden pracovní prostor Log Analytics, abyste mohli shromažďovat data z prostředí, které chcete monitorovat, a dodat ho do sešitu. Pokud už máte nastavené nastavení, přeskočte dopředu a [nastavte čítače výkonu](#set-up-performance-counters). Pokud chcete nastavit nový pracovní prostor pro Log Analytics pro předplatné Azure, které obsahuje prostředí pro virtuální počítače s Windows, přečtěte si téma [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../azure-monitor/logs/quick-create-workspace.md).
 
 >[!NOTE]
 >Použijí se standardní poplatky za úložiště dat pro Log Analytics. Chcete-li začít, doporučujeme vám zvolit Model průběžných plateb a upravit při škálování nasazení a využít více dat. Další informace najdete v tématu [Azure monitor ceny](https://azure.microsoft.com/pricing/details/monitor/).
@@ -107,7 +107,7 @@ Pokud chcete začít používat Azure Monitor pro virtuální počítače s Wind
 
 Pro kolekci je nutné povolit specifické čítače výkonu v příslušném vzorkovacím intervalu v pracovním prostoru Log Analytics. Tyto čítače výkonu jsou jediné čítače, které budete potřebovat k monitorování virtuálního klienta Windows. Můžete zakázat všechny ostatní, aby ušetřily náklady.
 
-Pokud již máte povolené čítače výkonu a chcete je odebrat, postupujte podle pokynů v části [Konfigurace čítačů výkonu](../azure-monitor/platform/data-sources-performance-counters.md) a překonfigurujte čítače výkonu. I když tento článek popisuje, jak přidat čítače, můžete je také odebrat ve stejném umístění.
+Pokud již máte povolené čítače výkonu a chcete je odebrat, postupujte podle pokynů v části [Konfigurace čítačů výkonu](../azure-monitor/agents/data-sources-performance-counters.md) a překonfigurujte čítače výkonu. I když tento článek popisuje, jak přidat čítače, můžete je také odebrat ve stejném umístění.
 
 Pokud jste ještě nenastavili čítače výkonu, tady je postup, jak je nakonfigurovat pro Azure Monitor pro virtuální počítače s Windows:
 
@@ -128,7 +128,7 @@ Po počáteční konfiguraci můžete také přidat nové čítače výkonu, kdy
 >[!NOTE]
 >Čítače výkonu zpoždění vstupu jsou kompatibilní pouze s Windows 10 RS5 a novějším nebo Windows serverem 2019 a novějším.
 
-Další informace o tom, jak ručně přidat čítače výkonu, které ještě nejsou povolené pro shromažďování, najdete v tématu [Konfigurace čítačů výkonu](../azure-monitor/platform/data-sources-performance-counters.md).
+Další informace o tom, jak ručně přidat čítače výkonu, které ještě nejsou povolené pro shromažďování, najdete v tématu [Konfigurace čítačů výkonu](../azure-monitor/agents/data-sources-performance-counters.md).
 
 ### <a name="set-up-windows-events"></a>Nastavení událostí Windows
 
@@ -138,7 +138,7 @@ Nastavení událostí systému Windows:
 
 1. Pokud už máte události systému Windows povolené a chcete je odebrat, odeberte události, které nepotřebujete, než použijete konfigurační sešit, aby bylo možné povolit sadu požadovanou pro monitorování.
 
-2. V aka.ms/azmonwvdi klikněte na Azure Monitor pro virtuální plochu Windows na [aka.ms/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)a potom v dolní části okna vyberte **sešit konfigurace** .
+2. V aka.ms/azmonwvdi klikněte na Azure Monitor pro virtuální plochu Windows na [](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)a potom v dolní části okna vyberte **sešit konfigurace** .
 
 3. V **konfiguraci událostí systému Windows** je k dispozici seznam událostí systému Windows, které jsou požadovány pro monitorování. Na pravé straně tohoto seznamu se nachází seznam **chybějících událostí** , kde najdete požadované názvy událostí a typy událostí, které nejsou aktuálně povolené pro váš pracovní prostor. Každý z těchto názvů si poznamenejte pro pozdější účely.
 
@@ -160,7 +160,7 @@ Nakonec budete muset nainstalovat agenta Log Analytics na všech hostitelích ve
 
 Instalace agenta Log Analytics:
 
-1. V aka.ms/azmonwvdi klikněte na Azure Monitor pro virtuální plochu Windows na [aka.ms/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)a potom v dolní části okna vyberte **sešit konfigurace** .
+1. V aka.ms/azmonwvdi klikněte na Azure Monitor pro virtuální plochu Windows na [](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)a potom v dolní části okna vyberte **sešit konfigurace** .
 
 2. Pokud není Log Analytics nakonfigurovaný pro všechny hostitele ve fondu hostitelů, zobrazí se v dolní části oddílu konfigurace Log Analytics chyba se zprávou "Někteří hostitelé v hostitelském fondu neodesílají data do vybraného Log Analytics pracovního prostoru." Vyberte **Přidat hostitele do pracovního prostoru** a přidejte tak vybrané hostitele. Pokud se chybová zpráva nezobrazí, zastavte se sem.
 
@@ -171,7 +171,7 @@ Instalace agenta Log Analytics:
 
 ## <a name="optional-configure-alerts"></a>Volitelné: Konfigurace výstrah
 
-Můžete nakonfigurovat Azure Monitor pro virtuální počítače s Windows, aby vás upozornila na to, jestli se ve vybraném předplatném nevyskytují závažné Azure Monitor výstrahy. Pokud to chcete provést, postupujte podle pokynů v tématu [reakce na události s výstrahami Azure monitor](../azure-monitor/learn/tutorial-response.md).
+Můžete nakonfigurovat Azure Monitor pro virtuální počítače s Windows, aby vás upozornila na to, jestli se ve vybraném předplatném nevyskytují závažné Azure Monitor výstrahy. Pokud to chcete provést, postupujte podle pokynů v tématu [reakce na události s výstrahami Azure monitor](../azure-monitor/alerts/tutorial-response.md).
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnostika a data o používání
 

@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: d4bff4ee7980002d911426ed46ffef6fc28c43e9
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a0c8286b2fb36642723ae28b8bc88e9e49f8a8fb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920743"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577951"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Zpracování chyb a výjimek v Azure Logic Apps
 
@@ -27,7 +27,7 @@ U většiny základních výjimek a zpracování chyb můžete použít *zásady
 
 Tady jsou typy zásad opakování:
 
-| Typ | Popis |
+| Typ | Description |
 |------|-------------|
 | **Výchozí** | Tato zásada odesílá až čtyři opakované pokusy ve *exponenciálně rostoucích* intervalech, které se škálují po 7,5 sekund, ale jsou omezené mezi 5 a 45 sekundami. |
 | **Exponenciální interval**  | Tato zásada počká náhodný interval vybraný z exponenciálně rostoucího rozsahu před odesláním dalšího požadavku. |
@@ -69,7 +69,7 @@ Případně můžete zásady opakování zadat ručně v `inputs` části pro ak
 
 *Povinné*
 
-| Hodnota | Typ | Popis |
+| Hodnota | Typ | Description |
 |-------|------|-------------|
 | <*opakování – typ zásad*> | Řetězec | Typ zásady opakování, který chcete použít: `default` , `none` , `fixed` nebo `exponential` |
 | <*interval opakování*> | Řetězec | Interval opakování, ve kterém hodnota musí používat [formát ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Výchozí minimální interval je `PT5S` a maximální interval je `PT1D` . Když použijete exponenciální zásadu intervalu, můžete zadat jiné minimální a maximální hodnoty. |
@@ -78,7 +78,7 @@ Případně můžete zásady opakování zadat ručně v `inputs` části pro ak
 
 *Volitelné*
 
-| Hodnota | Typ | Popis |
+| Hodnota | Typ | Description |
 |-------|------|-------------|
 | <*minimální interval*> | Řetězec | Pro pravidlo exponenciálního intervalu, nejmenší interval náhodně vybraného intervalu ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
 | <*maximální interval*> | Řetězec | Pro pravidlo exponenciálního intervalu, nejdelší interval pro náhodně vybraný interval ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
@@ -362,7 +362,7 @@ Chcete-li provádět různé vzory zpracování výjimek, můžete použít výr
 
 ## <a name="set-up-azure-monitor-logs"></a>Nastavení protokolů Azure Monitor
 
-Předchozí vzory představují skvělý způsob zpracování chyb a výjimek v rámci spuštění, ale můžete také identifikovat a reagovat na chyby nezávisle na samotném spuštění. [Azure monitor](../azure-monitor/overview.md) poskytuje jednoduchý způsob, jak odeslat všechny události pracovního postupu, včetně všech stavů spuštění a akce, do [pracovního prostoru Log Analytics](../azure-monitor/platform/data-platform-logs.md), [účtu Azure Storage](../storage/blobs/storage-blobs-overview.md)nebo [Azure Event Hubs](../event-hubs/event-hubs-about.md).
+Předchozí vzory představují skvělý způsob zpracování chyb a výjimek v rámci spuštění, ale můžete také identifikovat a reagovat na chyby nezávisle na samotném spuštění. [Azure monitor](../azure-monitor/overview.md) poskytuje jednoduchý způsob, jak odeslat všechny události pracovního postupu, včetně všech stavů spuštění a akce, do [pracovního prostoru Log Analytics](../azure-monitor/logs/data-platform-logs.md), [účtu Azure Storage](../storage/blobs/storage-blobs-overview.md)nebo [Azure Event Hubs](../event-hubs/event-hubs-about.md).
 
 Chcete-li vyhodnotit stavy spuštění, můžete monitorovat protokoly a metriky nebo je publikovat do libovolného nástroje pro monitorování, které dáváte přednost. Jednou z možných možností je streamování všech událostí prostřednictvím Event Hubs do [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). V Stream Analytics můžete psát živé dotazy na základě jakýchkoli anomálií, průměrů nebo chyb z diagnostických protokolů. K posílání informací do jiných zdrojů dat, jako jsou fronty, témata, SQL, Azure Cosmos DB nebo Power BI, můžete použít Stream Analytics.
 

@@ -16,16 +16,16 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8e6c13600cb5940351d31b54af403584cc68a5f
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 204d83b96e3cbe26759d678126d8826d0b2e492e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515644"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577855"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegování a role v Azure AD – Správa nároků
 
-Ve výchozím nastavení můžou globální správci a správci uživatelů vytvářet a spravovat všechny aspekty správy nároků služby Azure AD. Uživatelé v těchto rolích ale nemusí znát všechny situace, kdy je potřeba získat přístup k balíčkům. Obvykle se jedná o uživatele v rámci příslušných oddělení, týmů nebo projektů, kteří vědí, kdo s nimi spolupracuje, pomocí jakých prostředků a jak dlouho. Místo udělení neomezených oprávnění nesprávcům můžete uživatelům udělit nejnižší oprávnění, která potřebují k provedení své úlohy, a vyhnout se tak vytváření konfliktních nebo nevhodných přístupových práv.
+Ve výchozím nastavení můžou globální správci a správci uživatelů vytvářet a spravovat všechny aspekty správy nároků služby Azure AD. Uživatelé v těchto rolích ale nemusí znát všechny situace, kdy je potřeba získat přístup k balíčkům. Obvykle se jedná o uživatele v rámci příslušných oddělení, týmů nebo projektů, kteří ví, kdo spolupracuje s, a to s využitím prostředků a o tom, jak dlouho. Místo udělení neomezených oprávnění nesprávcům můžete uživatelům udělit nejnižší oprávnění, která potřebují ke své práci, a vyhnout se tak vytváření konfliktních nebo nevhodných přístupových práv.
 
 Toto video poskytuje přehled o tom, jak delegovat řízení přístupu od správce IT na uživatele, kteří nejsou správci.
 
@@ -39,7 +39,7 @@ Pokud chcete pochopit, jak byste mohli delegovat řízení přístupu ve správ�
 
 Jako správce IT má Hana kontakty v každém oddělení – Mamta marketing, označovat finance a Jana, kteří zodpovídají za prostředky svého oddělení a jejich důležitý obsah.
 
-Správa nároků vám umožní delegovat řízení přístupu pro tyto správce bez oprávnění, protože se jedná o ty, kteří znají, kteří uživatelé potřebují mít přístup, jak dlouho a na jaké prostředky. Tím se zajistí, že uživatelé budou mít ke svým oddělením přístup i oprávnění.
+Díky správě nároků můžete zásadám správného řízení přístupu delegovat přístup správcům bez oprávnění, protože se jedná o ty, kteří znají, kteří uživatelé potřebují mít přístup, jak dlouho a na jaké prostředky. Delegování uživatelům, kteří nepoužívají správce, zajistí, aby měli oprávnění ke správě přístupu ke svým oddělením.
 
 Tady je jeden ze způsobů, jak může Hana delegovat řízení přístupu na marketing, finance a právní oddělení.
 
@@ -47,15 +47,13 @@ Tady je jeden ze způsobů, jak může Hana delegovat řízení přístupu na ma
 
 1. Hana přidá tuto skupinu do role tvůrci katalogu.
 
-    Mamta, Mark a Jana teď můžou vytvářet katalogy pro svoje oddělení, přidávat prostředky, které jejich oddělení potřebují, a provádět další delegování v rámci katalogu.
-
-    Všimněte si, že Mamta, Mark a Jana se nemohou podívat na ostatní katalogy.
+    Mamta, Mark a Jana teď můžou vytvářet katalogy pro svoje oddělení, přidávat prostředky, které jejich oddělení potřebují, a provádět další delegování v rámci katalogu. Nevidí tyto katalogy ostatních.
 
 1. Mamta vytvoří **marketingový** katalog, který je kontejnerem prostředků.
 
 1. Mamta přidá prostředky, které má marketingový oddělení vlastní k tomuto katalogu.
 
-1. Mamta může přidat další lidi z jejího oddělení jako vlastníky katalogu pro tento katalog. To pomáhá sdílet zodpovědnost za správu katalogu.
+1. Mamta může přidat další lidi z jejího oddělení jako vlastníky katalogu pro tento katalog, což pomáhá sdílet zodpovědnost za správu katalogu.
 
 1. Mamta může dále delegovat vytváření a správu balíčků přístupu v marketingovém katalogu do vedoucích projektů v marketingovém oddělení. To může provést přiřazením do role správce balíčků přístupu. Správce balíčků přístupu může vytvářet a spravovat balíčky přístupu. 
 
@@ -78,19 +76,19 @@ Správa nároků má následující role, které jsou specifické pro správu n�
 
 | Role správy oprávnění | Description |
 | --- | --- |
-| Tvůrce katalogu | Vytvářejte a spravujte katalogy. Obvykle správce IT, který není globálním správcem, nebo vlastníkem prostředku pro kolekci prostředků. Osoba, která automaticky vytvoří katalog, se bude nacházet jako s prvním vlastníkem katalogu katalogu a může přidat další vlastníky katalogu. Tvůrce katalogu nemůže spravovat ani zobrazovat katalogy, které nevlastní, a nemůže přidat prostředky, které nevlastní katalog. Pokud tvůrce katalogu potřebuje spravovat další katalog nebo přidat prostředky, které nevlastní, můžou požádat o spoluvlastníky tohoto katalogu nebo prostředku. |
-| Vlastník katalogu | Umožňuje upravovat a spravovat existující katalogy. Obvykle správce IT nebo vlastníci prostředků nebo uživatel, který určil vlastníka katalogu. |
+| Tvůrce katalogu | Vytvářejte a spravujte katalogy. Obvykle správce IT, který není globálním správcem nebo vlastníkem prostředku pro kolekci prostředků. Osoba, která automaticky vytvoří katalog, se bude nacházet jako s prvním vlastníkem katalogu katalogu a může přidat další vlastníky katalogu. Tvůrce katalogu nemůže spravovat ani zobrazovat katalogy, které nevlastní, a nemůže přidat prostředky, které nevlastní katalog. Pokud tvůrce katalogu potřebuje spravovat další katalog nebo přidat prostředky, které nevlastní, můžou požádat o spoluvlastníky tohoto katalogu nebo prostředku. |
+| Vlastník katalogu | Umožňuje upravovat a spravovat existující katalogy. Obvykle správce IT nebo vlastníci prostředků nebo uživatel, který si zvolil vlastníka katalogu. |
 | Přístup ke Správci balíčků | Umožňuje upravovat a spravovat všechny existující balíčky přístupu v rámci katalogu. |
 | Přístup správce přiřazení balíčku | Umožňuje upravit a spravovat všechna existující přiřazení přístupových balíčků. |
 
-Kromě toho má určený schvalovatel a žadatel pro přístupovou sadu také práva, i když se nejedná o role.
+Vybraný schvalovatel a žadatel balíčku pro přístup mají také práva, i když se nejedná o role.
 
 | Vpravo | Description |
 | --- | --- |
 | Schvalovatel | Autorizováno zásadou ke schválení nebo zamítnutí žádostí o přístup k balíčkům, i když nemůžou měnit definice přístupového balíčku. |
 | Requestor | Autorizován zásadou přístupového balíčku pro vyžádání přístupového balíčku. |
 
-V následující tabulce jsou uvedeny úlohy, které mohou provádět role správy oprávnění.
+V následující tabulce jsou uvedeny úkoly, které mohou provádět role správy oprávnění.
 
 | Úkol | správce | Tvůrce katalogu | Vlastník katalogu | Přístup ke Správci balíčků | Přístup správce přiřazení balíčku |
 | --- | :---: | :---: | :---: | :---: | :---: |
@@ -118,7 +116,7 @@ V následující tabulce jsou uvedeny úlohy, které mohou provádět role sprá
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>Požadované role pro přidání prostředků do katalogu
 
-Globální správce může přidat nebo odebrat jakékoli skupiny (v cloudu vytvořené skupiny zabezpečení nebo cloudové skupiny vytvořené Microsoft 365), aplikaci nebo web SharePointu Online v katalogu. Správce uživatele může v katalogu přidat nebo odebrat jakoukoli skupinu nebo aplikaci, s výjimkou skupiny nakonfigurované jako přiřaditelné k roli adresáře. Všimněte si, že správce uživatele může spravovat balíčky pro přístup v katalogu, který obsahuje skupiny nakonfigurované jako přiřaditelné k roli adresáře.
+Globální správce může přidat nebo odebrat jakékoli skupiny (v cloudu vytvořené skupiny zabezpečení nebo cloudové skupiny vytvořené Microsoft 365), aplikaci nebo web SharePointu Online v katalogu. Správce uživatele může v katalogu přidat nebo odebrat jakoukoli skupinu nebo aplikaci, s výjimkou skupiny nakonfigurované jako přiřaditelné k roli adresáře. Všimněte si, že správce uživatele může spravovat balíčky pro přístup v katalogu, který obsahuje skupiny nakonfigurované jako přiřaditelné k roli adresáře.  Pokud chcete získat další informace o skupinách přiřazení rolí, odkaz na [Vytvoření skupiny s přiřazením rolí v Azure Active Directory](../roles/groups-create-eligible.md).
 
 Pro uživatele, který není globálním správcem nebo správcem uživatelů, pokud chcete přidat skupiny, aplikace nebo weby SharePointu Online do katalogu, musí mít tento uživatel *jak* požadovanou roli adresáře služby Azure AD, tak roli správy oprávnění vlastníka katalogu. V následující tabulce jsou uvedeny kombinace rolí, které jsou nutné k přidání prostředků do katalogu. Chcete-li odebrat prostředky z katalogu, je nutné mít stejné role.
 

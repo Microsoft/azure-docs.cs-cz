@@ -3,12 +3,12 @@ title: Návody... v Azure Application Insights | Microsoft Docs
 description: Nejčastější dotazy v Application Insights.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 134089f4df8f80147182835ca8746322c1de7e50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74a4d7ee65dccead132cfcebd9bf8c0de9b761a5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319248"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584167"
 ---
 # <a name="how-do-i--in-application-insights"></a>Jak mám udělat ... pomocí Application Insights?
 ## <a name="get-an-email-when-"></a>Získat e-mail, když...
@@ -16,7 +16,7 @@ ms.locfileid: "87319248"
 Nastavte [webový test dostupnosti](./monitor-web-app-availability.md).
 
 ### <a name="email-if-my-site-is-overloaded"></a>E-mail, pokud je můj web přetížený
-Nastavte [Upozornění](../platform/alerts-log.md) na **dobu odezvy serveru**. Musí fungovat prahová hodnota mezi 1 a 2 sekundami.
+Nastavte [Upozornění](../alerts/alerts-log.md) na **dobu odezvy serveru**. Musí fungovat prahová hodnota mezi 1 a 2 sekundami.
 
 ![Snímek obrazovky, který ukazuje, jak nastavit výstrahu pro dobu odezvy serveru.](./media/how-do-i/030-server.png)
 
@@ -26,10 +26,10 @@ Pokud chcete nastavit výstrahu pro **serverové výjimky**, možná budete muse
 
 ### <a name="email-on-exceptions"></a>E-mail na výjimkách
 1. [Nastavení sledování výjimek](./asp-net-exceptions.md)
-2. [Nastavení upozornění](../platform/alerts-log.md) na metriku počtu výjimek
+2. [Nastavení upozornění](../alerts/alerts-log.md) na metriku počtu výjimek
 
 ### <a name="email-on-an-event-in-my-app"></a>E-mail na události v aplikaci
-Řekněme, že byste chtěli při výskytu určité události získat e-mail. Application Insights neposkytuje toto zařízení přímo, ale může [Odeslat výstrahu, pokud metrika přetrvá prahovou hodnotu](../platform/alerts-log.md).
+Řekněme, že byste chtěli při výskytu určité události získat e-mail. Application Insights neposkytuje toto zařízení přímo, ale může [Odeslat výstrahu, pokud metrika přetrvá prahovou hodnotu](../alerts/alerts-log.md).
 
 Výstrahy je možné nastavit na [vlastní metriky](./api-custom-events-metrics.md#trackmetric), ale ne na vlastní události. Napsání kódu pro zvýšení metriky, když dojde k události:
 
@@ -51,7 +51,7 @@ Vzhledem k tomu, že výstrahy mají dva stavy, je nutné při zvážení výstr
 telemetry.TrackMetric("Alarm", 0.5);
 ```
 
-V [Průzkumníkovi metriky](../platform/metrics-charts.md) vytvořte graf, ve kterém se zobrazí upozornění:
+V [Průzkumníkovi metriky](../essentials/metrics-charts.md) vytvořte graf, ve kterém se zobrazí upozornění:
 
 ![Snímek obrazovky, který ukazuje, jak vytvořit graf v Průzkumníkovi metrik, aby se zobrazila vaše signalizace.](./media/how-do-i/010-alarm.png)
 
@@ -71,11 +71,11 @@ Některé body ke zvážení:
 * Vzhledem k tomu, že e-maily jsou odesílány na "Alert" a "v pořádku", možná budete chtít vzít v úvahu, že se událost jednoho snímku považuje za podmínku dvou stavů. Například namísto události "dokončená úloha" se zobrazí podmínka "probíhá úloha", kde získáte e-maily na začátku a na konci úlohy.
 
 ### <a name="set-up-alerts-automatically"></a>Nastavit výstrahy automaticky
-[Použití PowerShellu k vytváření nových výstrah](../platform/alerts-log.md)
+[Použití PowerShellu k vytváření nových výstrah](../alerts/alerts-log.md)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>Použití PowerShellu ke správě Application Insights
 * [Vytvoření nových prostředků](./create-new-resource.md#creating-a-resource-automatically)
-* [Vytvořit nové výstrahy](../platform/alerts-log.md)
+* [Vytvořit nové výstrahy](../alerts/alerts-log.md)
 
 ## <a name="separate-telemetry-from-different-versions"></a>Samostatná telemetrie z různých verzí
 
@@ -88,7 +88,7 @@ Některé body ke zvážení:
 
 ## <a name="visualize-data"></a>Vizualizace dat
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>Řídicí panel s metrikami z více aplikací
-* V [Průzkumníku metrik](../platform/metrics-charts.md)upravte svůj graf a uložte ho jako oblíbenou položku. Připněte ho na řídicí panel Azure.
+* V [Průzkumníku metrik](../essentials/metrics-charts.md)upravte svůj graf a uložte ho jako oblíbenou položku. Připněte ho na řídicí panel Azure.
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Řídicí panel s daty z jiných zdrojů a Application Insights
 * [Exportujte telemetrii do Power BI](./export-power-bi.md).
@@ -165,6 +165,6 @@ Mezi metrikami, které můžete zobrazit v Průzkumníkovi metrik, patří sada 
 * Server se systémem **UNIX**  -  [Nainstalovat shromážděné](./java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>Zobrazení dalších čítačů výkonu
-* Nejdřív [přidejte nový graf](../platform/metrics-charts.md) a podívejte se, jestli je čítač v základní sadě, kterou nabízíme.
+* Nejdřív [přidejte nový graf](../essentials/metrics-charts.md) a podívejte se, jestli je čítač v základní sadě, kterou nabízíme.
 * V takovém případě [přidejte čítač do sady shromážděné modulem čítače výkonu](./performance-counters.md).
 

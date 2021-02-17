@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: 3c86b21c5e0533ab6a1a3c64dc601eb8bb573547
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 069f70d27bd7e721be2bf82f6ef64ce9c531ab8e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318092"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577555"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimalizace prostředí Active Directory s využitím řešení kontroly stavu Active Directory ve službě Azure Monitor
 
@@ -46,9 +46,9 @@ Po přidání řešení a dokončení kontroly se na řídicím panelu **kontrol
 
 Aby bylo možné provést kontrolu stavu proti řadičům domény, které jsou členy domény, který se má vyhodnotit, vyžaduje každý řadič domény v této doméně agenta a připojení k Azure Monitor pomocí jedné z následujících podporovaných metod:
 
-1. Nainstalujte [agenta Log Analytics pro systém Windows](../platform/agent-windows.md) , pokud řadič domény ještě není monitorovaný pomocí nástroje System Center 2016-Operations Manager nebo Operations Manager 2012 R2.
+1. Nainstalujte [agenta Log Analytics pro systém Windows](../agents/agent-windows.md) , pokud řadič domény ještě není monitorovaný pomocí nástroje System Center 2016-Operations Manager nebo Operations Manager 2012 R2.
 2. Pokud je monitorovaná pomocí nástroje System Center 2016-Operations Manager nebo Operations Manager 2012 R2 a skupina pro správu není integrována s Azure Monitor, může být řadič domény s Azure Monitorem k shromažďování dat a jejich přeposílání do služby a nadále monitorován pomocí Operations Manager.  
-3. V opačném případě, pokud je vaše skupina pro správu Operations Manager integrovaná se službou, je nutné přidat řadiče domény pro shromažďování dat službou podle kroků v části [Přidání počítačů spravovaných agentem](../platform/om-agents.md#connecting-operations-manager-to-azure-monitor) po povolení řešení ve vašem pracovním prostoru.  
+3. V opačném případě, pokud je vaše skupina pro správu Operations Manager integrovaná se službou, je nutné přidat řadiče domény pro shromažďování dat službou podle kroků v části [Přidání počítačů spravovaných agentem](../agents/om-agents.md#connecting-operations-manager-to-azure-monitor) po povolení řešení ve vašem pracovním prostoru.  
 
 Agent na vašem řadiči domény, který hlásí skupinu pro správu Operations Manager, shromažďuje data, přepošle jim přiřazenou management server a pak se pošle přímo z management server do Azure Monitor.  Data nejsou zapsána do databází Operations Manager.  
 
@@ -56,7 +56,7 @@ Agent na vašem řadiči domény, který hlásí skupinu pro správu Operations 
 
 Při kontrole stavu služby Active Directory se shromažďují data z následujících zdrojů pomocí agenta, který jste povolili:
 
-- Registry
+- Registr
 - LDAP
 - .NET Framework
 - Protokol událostí
@@ -118,7 +118,7 @@ Podívejte se na souhrnná vyhodnocení dodržování předpisů pro vaši infra
 
     ![Obrázek doporučení pro kontrolu stavu](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
 
-4. V **navrhovaných akcích**můžete provést opravné akce. Po vyřešení této položky si později vyhodnotí, že byly provedeny doporučené akce a vaše skóre dodržování předpisů se zvýší. Opravené položky se zobrazí jako **předané objekty**.
+4. V **navrhovaných akcích** můžete provést opravné akce. Po vyřešení této položky si později vyhodnotí, že byly provedeny doporučené akce a vaše skóre dodržování předpisů se zvýší. Opravené položky se zobrazí jako **předané objekty**.
 
 ## <a name="ignore-recommendations"></a>Ignorování doporučení
 
@@ -215,5 +215,5 @@ Výsledky pak lze exportovat do aplikace Excel pro další kontrolu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí [Azure Monitorch dotazů protokolu](../log-query/log-query-overview.md) se dozvíte, jak analyzovat podrobné údaje o kontrole stavu a doporučení služby AD.
+Pomocí [Azure Monitorch dotazů protokolu](../logs/log-query-overview.md) se dozvíte, jak analyzovat podrobné údaje o kontrole stavu a doporučení služby AD.
 

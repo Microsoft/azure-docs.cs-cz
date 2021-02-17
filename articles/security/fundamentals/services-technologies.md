@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 8a33e9d462f3105bfee295ac82384a38325f7c7c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 27443eb9c04c69567b3a1374f11e8b53837040f2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498791"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585410"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Služby a technologie zabezpečení dostupné v Azure
 
@@ -35,7 +35,7 @@ V průběhu času se tento seznam změní a rozroste stejně jako Azure. Nezapom
 |--------|--------|
 |[Azure &nbsp; Security &nbsp; Center](../../security-center/security-center-introduction.md)| Řešení ochrany zátěže v cloudu, které poskytuje správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudy.|
 |[Azure Key Vault](../../key-vault/general/overview.md)| Zabezpečené úložiště tajných kódů pro hesla, připojovací řetězce a další informace, které potřebujete k zajištění fungování vašich aplikací. |
-|[Protokoly Azure Monitoru](../../azure-monitor/log-query/log-query-overview.md)|Služba monitorování, která shromažďuje telemetrii a jiná data a poskytuje dotazovací jazyk a analytický modul pro poskytování provozních přehledů pro vaše aplikace a prostředky. Dá se použít samostatně nebo s jinými službami, jako je Security Center. |
+|[Protokoly Azure Monitoru](../../azure-monitor/logs/log-query-overview.md)|Služba monitorování, která shromažďuje telemetrii a jiná data a poskytuje dotazovací jazyk a analytický modul pro poskytování provozních přehledů pro vaše aplikace a prostředky. Dá se použít samostatně nebo s jinými službami, jako je Security Center. |
 |[Vývojové a testovací cvičení pro Azure](../../devtest-labs/devtest-lab-overview.md)|Služba, která vývojářům a testerům pomáhá rychle vytvářet prostředí v Azure během minimalizace odpadů a řízení nákladů.  |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](/azure/azure-security-disk-encryption-overview)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
@@ -71,7 +71,7 @@ V průběhu času se tento seznam změní a rozroste stejně jako Azure. Nezapom
 | [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)|Cloudové úložiště ověřování, které podporuje víceklientské cloudové adresáře a služby více služeb správy identit v rámci Azure.  |
 | [Azure Active Directory B2C](../../active-directory-b2c/overview.md)|Služba správy identit, která umožňuje řídit, jak se můžou zákazníci přihlašovat, přihlašovat a spravovat jejich profily při používání aplikací založených na Azure.   |
 | [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md)| Cloudová a spravovaná verze Active Directory Domain Services. |
-| [Multi-Factor Authentication Azure AD](../../active-directory/authentication/concept-mfa-howitworks.md)| Zřizování zabezpečení, které využívá několik různých forem ověřování a ověření před tím, než povolí přístup k zabezpečeným informacím. |
+| [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)| Zřizování zabezpečení, které využívá několik různých forem ověřování a ověření před tím, než povolí přístup k zabezpečeným informacím. |
 
 ## <a name="backup-and-disaster-recovery"></a>Zálohování a zotavení po havárii
 |Služba|Popis|

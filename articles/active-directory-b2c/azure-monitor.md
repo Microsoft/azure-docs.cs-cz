@@ -11,21 +11,21 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 01/29/2021
-ms.openlocfilehash: e44a029c61db5a22513387772c2b0d7a3e4d1a40
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 712a933276393890bf017a2517196031306233ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219226"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572996"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Monitorování Azure AD B2C s využitím Azure Monitor
 
-Pomocí Azure Monitor můžete směrovat přihlašování Azure Active Directory B2C (Azure AD B2C) a protokoly [auditování](view-audit-logs.md) do různých řešení monitorování. Protokoly můžete uchovávat pro dlouhodobé použití nebo integraci s nástroji SIEM (Security Information and Event Management) třetích stran, abyste získali přehled o vašem prostředí.
+Pomocí Azure Monitor můžete směrovat přihlašování Azure Active Directory B2C (Azure AD B2C) a protokoly [auditování](view-audit-logs.md) do různých řešení monitorování. Protokoly můžete ukládat pro účely dlouhodobého používání nebo integrovat s nástroji pro správu akcí a informací o zabezpečení (SIEM) třetích stran a získat tak přehled o vašem prostředí.
 
 Události protokolu můžete směrovat do:
 
 * Účet služby Azure [Storage](../storage/blobs/storage-blobs-introduction.md).
-* [Pracovní prostor Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) (pro analýzu dat, vytváření řídicích panelů a upozornění na konkrétní události).
+* [Pracovní prostor Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) (pro analýzu dat, vytváření řídicích panelů a upozornění na konkrétní události).
 * [Centrum událostí](../event-hubs/event-hubs-about.md) Azure (a integrujte je s vašimi logickými instancemi Splunk a sumo).
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
@@ -38,7 +38,7 @@ V tomto článku se dozvíte, jak přenést protokoly do pracovního prostoru Az
 
 ## <a name="deployment-overview"></a>Přehled nasazení
 
-Azure AD B2C využívá [Azure Active Directory monitorování](../active-directory/reports-monitoring/overview-monitoring.md). Pokud chcete povolit *nastavení diagnostiky* v Azure Active Directory v rámci vašeho tenanta Azure AD B2C, použijte [Azure Lighthouse](../lighthouse/concepts/azure-delegated-resource-management.md) k [delegování prostředku](../lighthouse/concepts/azure-delegated-resource-management.md), který umožňuje vašemu Azure AD B2C ( **poskytovateli služeb**) spravovat prostředek služby Azure AD ( **zákazníka**). Po dokončení kroků v tomto článku budete mít přístup ke skupině prostředků *Azure-AD-B2C-monitor* , která obsahuje [pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md) na portálu **Azure AD B2C** . Protokoly budete moct přenést z Azure AD B2C do pracovního prostoru Log Analytics.
+Azure AD B2C využívá [Azure Active Directory monitorování](../active-directory/reports-monitoring/overview-monitoring.md). Pokud chcete povolit *nastavení diagnostiky* v Azure Active Directory v rámci vašeho tenanta Azure AD B2C, použijte [Azure Lighthouse](../lighthouse/concepts/azure-delegated-resource-management.md) k [delegování prostředku](../lighthouse/concepts/azure-delegated-resource-management.md), který umožňuje vašemu Azure AD B2C ( **poskytovateli služeb**) spravovat prostředek služby Azure AD ( **zákazníka**). Po dokončení kroků v tomto článku budete mít přístup ke skupině prostředků *Azure-AD-B2C-monitor* , která obsahuje [pracovní prostor Log Analytics](../azure-monitor/logs/quick-create-workspace.md) na portálu **Azure AD B2C** . Protokoly budete moct přenést z Azure AD B2C do pracovního prostoru Log Analytics.
 
 Během tohoto nasazení autorizujete uživatele nebo skupinu v adresáři Azure AD B2C ke konfiguraci instance pracovního prostoru Log Analytics v rámci tenanta, který obsahuje vaše předplatné Azure. Pokud chcete vytvořit autorizaci, nasadíte šablonu [Azure Resource Manager](../azure-resource-manager/index.yml) do svého tenanta služby Azure AD obsahujícího předplatné.
 
@@ -62,7 +62,7 @@ Nejprve vytvořte nebo vyberte skupinu prostředků, která obsahuje cílový Lo
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho **tenanta Azure AD**.
-1. [Vytvořte pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md). V tomto příkladu se používá pracovní prostor Log Analytics s názvem *AzureAdB2C* ve skupině prostředků s názvem *Azure-AD-B2C-monitor*.
+1. [Vytvořte pracovní prostor Log Analytics](../azure-monitor/logs/quick-create-workspace.md). V tomto příkladu se používá pracovní prostor Log Analytics s názvem *AzureAdB2C* ve skupině prostředků s názvem *Azure-AD-B2C-monitor*.
 
 ## <a name="3-delegate-resource-management"></a>3. delegování správy prostředků
 
@@ -104,7 +104,7 @@ V dalším kroku vytvoříte šablonu Azure Resource Manager, která uděluje Az
    | Pole   | Definice |
    |---------|------------|
    | Předplatné |  Vyberte adresář, který obsahuje předplatné Azure, ve kterém se vytvořila skupina prostředků *Azure-AD-B2C-monitor* . |
-   | Region (Oblast)| Vyberte oblast, do které se prostředek nasadí.  | 
+   | Oblast| Vyberte oblast, do které se prostředek nasadí.  | 
    | Název nabídky MSP| Název popisující tuto definici. Například *Azure AD B2C monitoring*.  |
    | Popis nabídky MSP| Stručný popis vaší nabídky Například *povolí Azure monitor v Azure AD B2C*.|
    | Spravované podle ID tenanta| **ID tenanta** vašeho tenanta Azure AD B2C (označuje se také jako ID adresáře). |
@@ -144,9 +144,9 @@ Po nasazení šablony a dokončení projekce prostředků počkejte několik min
 
 Nastavení diagnostiky definují, kam se mají odesílat protokoly a metriky prostředku. Možné cíle:
 
-- [Účet úložiště Azure](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
-- Řešení [centra událostí](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)
-- [Pracovní prostor Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)
+- [Účet úložiště Azure](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
+- Řešení [centra událostí](../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)
+- [Pracovní prostor Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)
 
 V tomto příkladu používáme pracovní prostor Log Analytics k vytvoření řídicího panelu.
 
@@ -171,7 +171,7 @@ Postup konfigurace nastavení monitorování pro Azure AD B2C protokoly aktivit:
 1. Vyberte **Uložit**.
 
 > [!NOTE]
-> Může trvat až 15 minut, než se událost vygeneruje, aby se [zobrazila v pracovním prostoru Log Analytics](../azure-monitor/platform/data-ingestion-time.md). Přečtěte si taky další informace o [latencích generování sestav služby Active Directory](../active-directory/reports-monitoring/reference-reports-latencies.md), které mohou mít vliv na zastaralost dat a hrají důležitou roli při vytváření sestav.
+> Může trvat až 15 minut, než se událost vygeneruje, aby se [zobrazila v pracovním prostoru Log Analytics](../azure-monitor/logs/data-ingestion-time.md). Přečtěte si taky další informace o [latencích generování sestav služby Active Directory](../active-directory/reports-monitoring/reference-reports-latencies.md), které mohou mít vliv na zastaralost dat a hrají důležitou roli při vytváření sestav.
 
 Pokud se zobrazí chybová zpráva "Pokud chcete nastavit nastavení diagnostiky pro použití Azure Monitor pro adresář Azure AD B2C, budete muset nastavit delegovanou správu prostředků," Ujistěte se, že jste se přihlásili s uživatelem, který je členem [skupiny zabezpečení](#32-select-a-security-group) , a [vyberete své předplatné](#4-select-your-subscription).
 
@@ -181,7 +181,7 @@ Teď můžete nakonfigurovat svůj pracovní prostor Log Analytics k vizualizaci
 
 ### <a name="61-create-a-query"></a>6,1 vytvořit dotaz
 
-Dotazy protokolu umožňují plně využít hodnoty dat shromažďovaných v protokolech Azure Monitor. Výkonný dotazovací jazyk umožňuje spojit data z více tabulek, agregovat velké sady dat a provádět komplexní operace s minimálním kódem. Prakticky všechny dotazy mohou být zodpovězeny a analýzou provedeny, pokud jsou shromážděna podpůrná data a rozumíte tomu, jak vytvořit správný dotaz. Další informace najdete v tématu [Začínáme s dotazy protokolu v Azure monitor](../azure-monitor/log-query/get-started-queries.md).
+Dotazy protokolu umožňují plně využít hodnoty dat shromažďovaných v protokolech Azure Monitor. Výkonný dotazovací jazyk umožňuje spojit data z více tabulek, agregovat velké sady dat a provádět komplexní operace s minimálním kódem. Prakticky všechny dotazy mohou být zodpovězeny a analýzou provedeny, pokud jsou shromážděna podpůrná data a rozumíte tomu, jak vytvořit správný dotaz. Další informace najdete v tématu [Začínáme s dotazy protokolu v Azure monitor](../azure-monitor/logs/get-started-queries.md).
 
 1. V **Log Analytics pracovním prostoru** vyberte **protokoly** .
 1. V editoru dotazů vložte následující dotaz dotazovacího [jazyka Kusto](/azure/data-explorer/kusto/query/) . Tento dotaz zobrazí použití zásad podle operace za posledních x dní. Výchozí doba trvání je nastavená na 90 dní (90d). Všimněte si, že dotaz se zaměřuje pouze na operaci, kde je token nebo kód vydán zásadami.
@@ -228,7 +228,7 @@ Další ukázky najdete v [úložišti GitHub Azure AD B2C Siem](https://aka.ms/
 
 ### <a name="62-create-a-workbook"></a>6,2 Vytvoření sešitu
 
-Sešity poskytují flexibilní plátno pro analýzu dat a vytváření bohatých vizuálních sestav v rámci webu Azure Portal. Umožňují využívat více zdrojů dat v rámci Azure a kombinovat je do sjednocených interaktivních prostředí. Další informace najdete v tématu [Azure monitor sešity](../azure-monitor/platform/workbooks-overview.md).
+Sešity poskytují flexibilní plátno pro analýzu dat a vytváření bohatých vizuálních sestav v rámci webu Azure Portal. Umožňují využívat více zdrojů dat v rámci Azure a kombinovat je do sjednocených interaktivních prostředí. Další informace najdete v tématu [Azure monitor sešity](../azure-monitor/visualize/workbooks-overview.md).
 
 Podle pokynů níže vytvořte nový sešit pomocí šablony Galerie JSON. Tento sešit poskytuje řídicí panel pro **uživatele** a **ověřování** pro Azure AD B2C tenanta.
 
@@ -259,10 +259,10 @@ Sešit zobrazí sestavy ve formě řídicího panelu.
 
 ## <a name="create-alerts"></a>Vytváření upozornění
 
-Upozornění vytvářejí pravidla upozornění služby Azure Monitor. Pravidla mohou v pravidelných intervalech automaticky spouštět uložené dotazy nebo vlastní prohledávání protokolů. Můžete vytvářet upozornění na základě konkrétních metrik výkonu, vytvoření určitých událostí, chybějící události nebo počtu událostí vytvořených v konkrétním časovém intervalu. Výstrahy můžete například použít k upozornění, když průměrný počet přihlášení překročí určitou prahovou hodnotu. Další informace najdete v tématu o [vytváření výstrah](../azure-monitor/learn/tutorial-response.md).
+Upozornění vytvářejí pravidla upozornění služby Azure Monitor. Pravidla mohou v pravidelných intervalech automaticky spouštět uložené dotazy nebo vlastní prohledávání protokolů. Můžete vytvářet upozornění na základě konkrétních metrik výkonu, vytvoření určitých událostí, chybějící události nebo počtu událostí vytvořených v konkrétním časovém intervalu. Výstrahy můžete například použít k upozornění, když průměrný počet přihlášení překročí určitou prahovou hodnotu. Další informace najdete v tématu o [vytváření výstrah](../azure-monitor/alerts/tutorial-response.md).
 
 
-Pomocí následujících pokynů můžete vytvořit nové upozornění Azure, které pošle [e-mailové oznámení](../azure-monitor/platform/action-groups.md#configure-notifications) pokaždé, když dojde k 25% poklesu **celkového počtu požadavků** na předchozí období. Výstraha se spustí každých 5 minut a vyhledá se v oknech za posledních 24 hodin. Výstrahy se vytvářejí pomocí dotazovacího jazyka Kusto.
+Pomocí následujících pokynů můžete vytvořit nové upozornění Azure, které pošle [e-mailové oznámení](../azure-monitor/alerts/action-groups.md#configure-notifications) pokaždé, když dojde k 25% poklesu **celkového počtu požadavků** na předchozí období. Výstraha se spustí každých 5 minut a vyhledá se v oknech za posledních 24 hodin. Výstrahy se vytvářejí pomocí dotazovacího jazyka Kusto.
 
 
 1. Z **Log Analytics pracovního prostoru** vyberte **protokoly**. 
@@ -296,7 +296,7 @@ Po vytvoření výstrahy přejdete do **Log Analytics pracovního prostoru** a v
 
 ### <a name="configure-action-groups"></a>Konfigurace skupin akcí
 
-Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Můžete zahrnout odesílání hlasových hovorů, SMS, e-mailu. nebo spouštějí různé typy automatizovaných akcí. Postupujte podle pokynů [v části Vytvoření a Správa skupin akcí v Azure Portal](../azure-monitor/platform/action-groups.md)
+Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Můžete zahrnout odesílání hlasových hovorů, SMS, e-mailu. nebo spouštějí různé typy automatizovaných akcí. Postupujte podle pokynů [v části Vytvoření a Správa skupin akcí v Azure Portal](../azure-monitor/alerts/action-groups.md)
 
 Tady je příklad e-mailu s oznámením o výstraze. 
 
@@ -306,7 +306,7 @@ Tady je příklad e-mailu s oznámením o výstraze.
 
 Pokud chcete připojit více Azure AD B2Cch protokolů klientů ke stejnému pracovnímu prostoru Log Analytics (nebo účtu úložiště Azure nebo centra událostí), budete potřebovat samostatná nasazení s různými hodnotami **názvu nabídky MSP** . Ujistěte se, že je váš pracovní prostor Log Analytics ve stejné skupině prostředků jako ten, který jste nakonfigurovali v části [vytvořit nebo zvolit skupinu prostředků](#1-create-or-choose-resource-group).
 
-Pokud pracujete s více Log Analyticsmi pracovními prostory, použijte [dotaz napříč pracovními](../azure-monitor/log-query/cross-workspace-query.md) prostory k vytváření dotazů, které fungují v několika pracovních prostorech. Následující dotaz například provede spojení dvou protokolů auditu z různých tenantů na základě stejné kategorie (například ověřování):
+Pokud pracujete s více Log Analyticsmi pracovními prostory, použijte [dotaz napříč pracovními](../azure-monitor/logs/cross-workspace-query.md) prostory k vytváření dotazů, které fungují v několika pracovních prostorech. Následující dotaz například provede spojení dvou protokolů auditu z různých tenantů na základě stejné kategorie (například ověřování):
 
 ```kusto
 workspace("AD-B2C-TENANT1").AuditLogs
@@ -316,12 +316,12 @@ workspace("AD-B2C-TENANT1").AuditLogs
 
 ## <a name="change-the-data-retention-period"></a>Změna doby uchovávání dat
 
-Protokoly Azure Monitor jsou navržené tak, aby bylo možné škálovat a podporovat shromažďování, indexování a ukládání velkých objemů dat za den z libovolného zdroje ve vaší firmě nebo v Azure, které jsou nasazené v Azure. Ve výchozím nastavení se protokoly uchovávají po dobu 30 dnů, ale doba uchování se dá prodloužit na až dva roky. Naučte se [spravovat využití a náklady pomocí protokolů Azure monitor](../azure-monitor/platform/manage-cost-storage.md). Po výběru cenové úrovně můžete [změnit dobu uchovávání dat](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period).
+Protokoly Azure Monitor jsou navržené tak, aby bylo možné škálovat a podporovat shromažďování, indexování a ukládání velkých objemů dat za den z libovolného zdroje ve vaší firmě nebo v Azure, které jsou nasazené v Azure. Ve výchozím nastavení se protokoly uchovávají po dobu 30 dnů, ale doba uchování se dá prodloužit na až dva roky. Naučte se [spravovat využití a náklady pomocí protokolů Azure monitor](../azure-monitor/logs/manage-cost-storage.md). Po výběru cenové úrovně můžete [změnit dobu uchovávání dat](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period).
 
 ## <a name="next-steps"></a>Další kroky
 
 * Další ukázky najdete v galerii Azure AD B2C [Siem](https://aka.ms/b2csiem). 
 
-* Další informace o přidání a konfiguraci nastavení diagnostiky v Azure Monitor najdete v tématu [kurz: shromáždění a analýza protokolů prostředků z prostředku Azure](../azure-monitor/insights/monitor-azure-resource.md).
+* Další informace o přidání a konfiguraci nastavení diagnostiky v Azure Monitor najdete v tématu [kurz: shromáždění a analýza protokolů prostředků z prostředku Azure](../azure-monitor/essentials/monitor-azure-resource.md).
 
 * Informace o streamování protokolů služby Azure AD do centra událostí najdete v tématu [kurz: streamování Azure Active Directory protokoly do centra událostí Azure](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md).

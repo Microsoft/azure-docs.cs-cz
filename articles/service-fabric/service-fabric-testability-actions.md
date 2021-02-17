@@ -1,17 +1,15 @@
 ---
 title: Simulace chyb v mikroslužbách Azure
 description: Tento článek pojednává o akcích testování zjištěných v Microsoft Azure Service Fabric.
-author: georgewallace
 ms.topic: conceptual
 ms.date: 06/07/2017
-ms.author: gwallace
 ms.custom: devx-track-csharp
-ms.openlocfilehash: aea918f75ad9c8aa58b5201d2fdd967794085438
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: c57f54096a9593f5ab25a5722d3f2d2b9878b511
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547073"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595022"
 ---
 # <a name="testability-actions"></a>Testovací akce
 Pro simulaci nespolehlivé infrastruktury vám Azure Service Fabric poskytne vývojářům možnosti simulovat různé chyby reálného světa a přechody do stavu. Jsou přístupné jako akce testování. Akce jsou rozhraní API na nízké úrovni, která způsobují konkrétní vkládání chyb, přechod stavu nebo ověřování. Kombinací těchto akcí můžete napsat komplexní testovací scénáře pro vaše služby.

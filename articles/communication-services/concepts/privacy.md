@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7c522abd04f4a3e480bb5c3e14e78cc03dbd5d86
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: a047761669920d6460c3d6fb6d74b970effa7846
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888636"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572029"
 ---
 # <a name="region-availability-and-data-residency"></a>Rezidence dat a dostupnost oblastí
 
@@ -73,7 +73,7 @@ Zvuková a obrazová komunikace je ephemerally zpracovávána službou a žádn�
 
 ## <a name="azure-monitor-and-log-analytics"></a>Azure Monitor a Log Analytics
 
-Komunikační služby Azure budou předávány do Azure Monitor dat protokolování pro porozumění provoznímu stavu a využití služby. Některé z těchto protokolů zahrnují identity komunikačních služeb a telefonní čísla jako data polí. Chcete-li odstranit všechny potenciálně osobní údaje, [použijte tyto postupy pro Azure monitor](../../azure-monitor/platform/personal-data-mgmt.md). Můžete také chtít nakonfigurovat [výchozí dobu uchování pro Azure monitor](../../azure-monitor/platform/manage-cost-storage.md).
+Komunikační služby Azure budou předávány do Azure Monitor dat protokolování pro porozumění provoznímu stavu a využití služby. Některé z těchto protokolů zahrnují identity komunikačních služeb a telefonní čísla jako data polí. Chcete-li odstranit všechny potenciálně osobní údaje, [použijte tyto postupy pro Azure monitor](../../azure-monitor/logs/personal-data-mgmt.md). Můžete také chtít nakonfigurovat [výchozí dobu uchování pro Azure monitor](../../azure-monitor/logs/manage-cost-storage.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací
 

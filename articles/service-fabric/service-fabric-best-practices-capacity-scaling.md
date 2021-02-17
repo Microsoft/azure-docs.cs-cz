@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d7d9ed8fa695c636e7aaf36fd034babb4de012d9
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 32a9c26bb9e89cf4057cc753b02ad3c006d0bae6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784676"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595073"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Plánování kapacity a škálování pro Azure Service Fabric
 
@@ -26,7 +26,7 @@ Díky automatickému škálování přes služby Virtual Machine Scale Sets bude
 
 * Nasazení šablon Správce prostředků s příslušnou deklarovanou kapacitou nepodporuje váš případ použití.
      
-   Kromě ručního škálování můžete [v Azure DevOps Services nakonfigurovat kanál průběžné integrace a doručování pomocí projektů nasazení skupiny prostředků Azure](../azure-resource-manager/templates/add-template-to-azure-pipelines.md). Tento kanál je běžně aktivovaný aplikací logiky, která využívá metriky výkonu virtuálních počítačů, které se dotazují z [Azure Monitor REST API](../azure-monitor/platform/rest-api-walkthrough.md). Kanál efektivně spolupracuje na základě jakékoli metriky, kterou chcete, při optimalizaci pro Správce prostředků šablony.
+   Kromě ručního škálování můžete [v Azure DevOps Services nakonfigurovat kanál průběžné integrace a doručování pomocí projektů nasazení skupiny prostředků Azure](../azure-resource-manager/templates/add-template-to-azure-pipelines.md). Tento kanál je běžně aktivovaný aplikací logiky, která využívá metriky výkonu virtuálních počítačů, které se dotazují z [Azure Monitor REST API](../azure-monitor/essentials/rest-api-walkthrough.md). Kanál efektivně spolupracuje na základě jakékoli metriky, kterou chcete, při optimalizaci pro Správce prostředků šablony.
 * V jednu chvíli budete muset horizontálně škálovat jenom jeden uzel sady škálování virtuálních počítačů.
    
    Pro horizontální navýšení kapacity na tři nebo více uzlů byste měli [škálovat cluster Service Fabric tím, že přidáte sadu škálování virtuálního počítače](virtual-machine-scale-set-scale-node-type-scale-out.md). Je bezpečnější škálovat a škálovat sady virtuálních počítačů škálované na horizontální dobu jednoho uzlu.
@@ -42,7 +42,7 @@ Díky automatickému škálování přes služby Virtual Machine Scale Sets bude
 
 ## <a name="vertical-scaling-considerations"></a>Požadavky vertikálního škálování
 
-[Vertikální škálování](./virtual-machine-scale-set-scale-node-type-scale-out.md) typ uzlu v Azure Service Fabric vyžaduje několik kroků a důležitých informací. Například:
+[Vertikální škálování](./virtual-machine-scale-set-scale-node-type-scale-out.md) typ uzlu v Azure Service Fabric vyžaduje několik kroků a důležitých informací. Příklad:
 
 * Před škálováním musí být cluster v pořádku. V opačném případě budete cluster dále rozstabilizovat.
 * Pro všechny Service Fabric typy uzlů clusteru, které hostují stavové služby, se vyžaduje úroveň trvanlivosti stříbra nebo vyšší.
@@ -117,7 +117,7 @@ Pokud chcete ručně škálovat, aktualizujte kapacitu ve vlastnosti SKU požado
 }
 ```
 
-Je nutné připravit uzel na vypnutí, aby bylo možné programově škálovat. Vyhledejte uzel, který má být odebrán (nejvyšší uzel instance). Například:
+Je nutné připravit uzel na vypnutí, aby bylo možné programově škálovat. Vyhledejte uzel, který má být odebrán (nejvyšší uzel instance). Příklad:
 
 ```csharp
 using (var client = new FabricClient())

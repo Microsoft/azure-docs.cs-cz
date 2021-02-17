@@ -3,12 +3,12 @@ title: Odesílání upozornění na Azure Service Health pomocí PagerDuty
 description: Získejte přizpůsobená oznámení o událostech služby Service Health do vaší instance PagerDuty.
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 5c70af2ad2ded919cda0b174705d1d3245eac627
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ae5141f33ebf4ec6e32029625af3a199a04d67b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87091534"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594534"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>Odesílání upozornění na Azure Service Health s PagerDuty pomocí webhooků
 
@@ -23,7 +23,7 @@ V tomto článku se dozvíte, jak nastavit oznámení o stavu služby Azure pros
 
 1.  Vyberte **Přidat novou službu** nebo otevřete existující službu, kterou jste nastavili.
 
-1.  V **Nastavení integrace**vyberte následující:
+1.  V **Nastavení integrace** vyberte následující:
 
     a. **Typ integrace**: Microsoft Azure
 
@@ -69,7 +69,7 @@ V tomto článku se dozvíte, jak nastavit oznámení o stavu služby Azure pros
 1. Po dokončení aktualizace skupiny akcí vyberte **Uložit** .
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testování integrace Webhooku prostřednictvím požadavku HTTP POST
-1. Vytvořte datovou část stavu služby, kterou chcete odeslat. Ukázkovou datovou část Webhooku pro stav služby najdete na [webhookech pro výstrahy protokolu aktivit Azure](../azure-monitor/platform/activity-log-alerts-webhook.md).
+1. Vytvořte datovou část stavu služby, kterou chcete odeslat. Ukázkovou datovou část Webhooku pro stav služby najdete na [webhookech pro výstrahy protokolu aktivit Azure](../azure-monitor/alerts/activity-log-alerts-webhook.md).
 
 1. Požadavek HTTP POST vytvoříte takto:
 
@@ -86,6 +86,6 @@ V tomto článku se dozvíte, jak nastavit oznámení o stavu služby Azure pros
 
 ## <a name="next-steps"></a>Další kroky
 - Naučte se [Konfigurovat oznámení Webhooku pro stávající systémy správy problémů](service-health-alert-webhook-guide.md).
-- Zkontrolujte [schéma Webhooku upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts-webhook.md). 
+- Zkontrolujte [schéma Webhooku upozornění protokolu aktivit](../azure-monitor/alerts/activity-log-alerts-webhook.md). 
 - Přečtěte si o [oznámeních o stavu služby](./service-notifications.md).
-- Přečtěte si další informace o [skupinách akcí](../azure-monitor/platform/action-groups.md).
+- Přečtěte si další informace o [skupinách akcí](../azure-monitor/alerts/action-groups.md).

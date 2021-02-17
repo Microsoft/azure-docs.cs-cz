@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3e123ab6d5b9d801908112239cf3e9cb72b4abbb
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4716679de08bbae137e42f91db5b6f93c0c96e22
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093959"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593372"
 ---
 # <a name="azure-security-baseline-for-azure-signalr-service"></a>Směrný plán zabezpečení Azure pro službu Azure Signal
 
@@ -481,9 +481,9 @@ Služba Azure Signaler ale protokoluje síťový provoz, který IT zpracovává 
 
 Povolte protokoly prostředků Azure pro službu Azure Signal. Pomocí Azure Security Center a Azure Policy můžete povolit protokoly prostředků a shromažďovat data protokolů. Tyto protokoly můžou být klíčové pro pozdější zkoumání incidentů zabezpečení a provádění forenzních cvičení.
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Principy protokolování a různých typů protokolů v Azure](../azure-monitor/platform/platform-logs-overview.md)
+- [Principy protokolování a různých typů protokolů v Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Protokoly prostředků pro službu Azure Signal Service](signalr-howto-diagnostic-logs.md)
 
@@ -503,7 +503,7 @@ Kromě toho povolte a zaveďte data do Azure Sentinel nebo do systému správy u
 
 Řada organizací zvolí použití Azure Sentinel pro "horká" data, která se používají často a Azure Storage pro "studená" data, která se používají méně často.
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 

@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1818dc558ba45e318b71e1443556cc48feaede8b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1453d43707a3680380e553fe69d738b27fe5ae3a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367669"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571347"
 ---
 # <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>Řešení potíží s Azure Monitor pro virtuální počítače s Windows (Preview)
 
@@ -26,9 +26,9 @@ Pokud sešit konfigurace nepracuje správně a automatizuje instalaci, můžete 
 
 - Pokud chcete ručně povolit diagnostiku nebo získat přístup k pracovnímu prostoru Log Analytics, přečtěte si téma [odeslání diagnostiky virtuálních počítačů Windows do Log Analytics](diagnostics-log-analytics.md).
 - Ruční instalace rozšíření Log Analytics na hostitele najdete v tématu [Log Analytics rozšíření virtuálních počítačů pro Windows](../virtual-machines/extensions/oms-windows.md).
-- Pokud chcete nastavit nový pracovní prostor Log Analytics, přečtěte si téma [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../azure-monitor/learn/quick-create-workspace.md).
-- Chcete-li přidat nebo odebrat čítače výkonu, přečtěte si téma [Konfigurace čítačů výkonu](../azure-monitor/platform/data-sources-performance-counters.md).
-- Chcete-li konfigurovat události pro pracovní prostor Log Analytics, přečtěte si téma [shromáždění zdrojů dat protokolu událostí systému Windows pomocí agenta Log Analytics](../azure-monitor/platform/data-sources-windows-events.md).
+- Pokud chcete nastavit nový pracovní prostor Log Analytics, přečtěte si téma [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../azure-monitor/logs/quick-create-workspace.md).
+- Chcete-li přidat nebo odebrat čítače výkonu, přečtěte si téma [Konfigurace čítačů výkonu](../azure-monitor/agents/data-sources-performance-counters.md).
+- Chcete-li konfigurovat události pro pracovní prostor Log Analytics, přečtěte si téma [shromáždění zdrojů dat protokolu událostí systému Windows pomocí agenta Log Analytics](../azure-monitor/agents/data-sources-windows-events.md).
 
 ## <a name="my-data-isnt-displaying-properly"></a>Moje data se nezobrazují správně
 
@@ -44,7 +44,7 @@ Pokud se vaše data nezobrazují správně, ověřte svou konfiguraci, oprávně
 
 - Je možné, že budete muset v bráně firewall serveru otevřít odchozí porty, aby bylo možné Azure Monitor odesílat data na portál, viz téma [Odchozí porty](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses). 
 
-- Nezobrazuje se data z nedávné aktivity? Možná budete chtít počkat na 15 minut a aktualizovat informační kanál. Azure Monitor je doba latence 15 minut pro naplnění dat protokolu. Další informace najdete v tématu [čas příjmu dat protokolu v Azure monitor](../azure-monitor/platform/data-ingestion-time.md).
+- Nezobrazuje se data z nedávné aktivity? Možná budete chtít počkat na 15 minut a aktualizovat informační kanál. Azure Monitor je doba latence 15 minut pro naplnění dat protokolu. Další informace najdete v tématu [čas příjmu dat protokolu v Azure monitor](../azure-monitor/logs/data-ingestion-time.md).
 
 Pokud nechybí žádné informace, ale vaše data stále nejsou správně zobrazená, může se jednat o problém v dotazu nebo zdroji dat. Projděte si naše známé problémy a omezení. 
 
@@ -52,7 +52,7 @@ Pokud nechybí žádné informace, ale vaše data stále nejsou správně zobraz
 
 Azure Monitor pro virtuální počítače s Windows používá Azure Monitor sešity. Sešity vám umožní uložit kopii šablony sešitu virtuálních počítačů s Windows a vytvořit vlastní vlastní nastavení.
 
-Podle návrhu nebudou vlastní šablony sešitu automaticky přijímat aktualizace ze skupiny Products. Další informace najdete v tématu [řešení potíží s přehledem na základě sešitu](../azure-monitor/insights/troubleshoot-workbooks.md) a v části [sešity](../azure-monitor/platform/workbooks-overview.md).
+Podle návrhu nebudou vlastní šablony sešitu automaticky přijímat aktualizace ze skupiny Products. Další informace najdete v tématu [řešení potíží s přehledem na základě sešitu](../azure-monitor/insights/troubleshoot-workbooks.md) a v části [sešity](../azure-monitor/visualize/workbooks-overview.md).
 
 ## <a name="i-cant-interpret-the-data"></a>Nejde interpretovat data
 

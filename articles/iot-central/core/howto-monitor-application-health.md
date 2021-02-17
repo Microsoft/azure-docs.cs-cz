@@ -7,12 +7,12 @@ ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1c16da10a8a7853b1392383855aba0ff24424f33
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: d0e59f73dd9b62b528c3d86d315b613312df7773
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515865"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577042"
 ---
 # <a name="monitor-the-overall-health-of-an-iot-central-application"></a>Monitorování celkového stavu aplikace IoT Central
 
@@ -23,7 +23,7 @@ ms.locfileid: "100515865"
 
 V tomto článku se naučíte, jak pomocí sady metrik poskytovaných pomocí IoT Central vyhodnotit stav zařízení, která jsou připojená k vaší IoT Central aplikaci, a stav vašich spuštěných exportů dat.
 
-Metriky jsou ve výchozím nastavení povolené pro vaši aplikaci IoT Central a vy k nim přistupujete z [Azure Portal](https://portal.azure.com/). [Azure monitor datovou platformu zpřístupňuje tyto metriky](../../azure-monitor/platform/data-platform-metrics.md) a nabízí několik způsobů, jak s nimi pracovat. Například můžete použít grafy v Azure Portal, REST API nebo dotazech v prostředí PowerShell nebo v rozhraní příkazového řádku Azure CLI.
+Metriky jsou ve výchozím nastavení povolené pro vaši aplikaci IoT Central a vy k nim přistupujete z [Azure Portal](https://portal.azure.com/). [Azure monitor datovou platformu zpřístupňuje tyto metriky](../../azure-monitor/essentials/data-platform-metrics.md) a nabízí několik způsobů, jak s nimi pracovat. Například můžete použít grafy v Azure Portal, REST API nebo dotazech v prostředí PowerShell nebo v rozhraní příkazového řádku Azure CLI.
 
 ### <a name="trial-applications"></a>Zkušební verze aplikací
 
@@ -46,7 +46,7 @@ Přístup k metrikám v Azure Portal spravuje [řízení přístupu na základě
 
 ## <a name="iot-central-metrics"></a>IoT Central metriky
 
-Seznam metrik, které jsou aktuálně k dispozici pro IoT Central, najdete v tématu [podporované metriky s Azure monitor](../../azure-monitor/platform/metrics-supported.md#microsoftiotcentraliotapps).
+Seznam metrik, které jsou aktuálně k dispozici pro IoT Central, najdete v tématu [podporované metriky s Azure monitor](../../azure-monitor/essentials/metrics-supported.md#microsoftiotcentraliotapps).
 
 ### <a name="metrics-and-invoices"></a>Metriky a faktury
 

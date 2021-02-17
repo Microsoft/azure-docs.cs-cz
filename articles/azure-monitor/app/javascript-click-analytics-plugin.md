@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: b2e9c267b0a3723c9ac7b3edd49e23b95741962f
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 5ad3e1a5a4ff47fe3d5fee8b8bc79235838995b8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660449"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593629"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Klikněte na Analytics modul plug-in pro automatické shromažďování pro Application Insights JavaScript SDK
 
@@ -314,5 +314,5 @@ appInsights.loadAppInsights();
 
 - Podívejte se na [úložiště GitHub](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js) a [balíček npm](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js) pro modul plug-in automatických kolekcí pro analýzu.
 - [Analýza událostí v prostředí používání](usage-segmentation.md) slouží k analýze horních kliknutí a řezů podle dostupných dimenzí.
-- V poli customDimensions v tabulce CustomEvents v [Log Analytics](../log-query/log-analytics-tutorial.md#write-a-query)klikněte na data v oblasti obsah v části atribut. Další pokyny najdete v [ukázkové aplikaci](https://go.microsoft.com/fwlink/?linkid=2152871) .
-- Sestavte [sešit](../platform/workbooks-overview.md) , abyste mohli vytvářet vlastní vizualizace kliknutí na data.
+- V poli customDimensions v tabulce CustomEvents v [Log Analytics](../logs/log-analytics-tutorial.md#write-a-query)klikněte na data v oblasti obsah v části atribut. Další pokyny najdete v [ukázkové aplikaci](https://go.microsoft.com/fwlink/?linkid=2152871) .
+- Sestavte [sešit](../visualize/workbooks-overview.md) , abyste mohli vytvářet vlastní vizualizace kliknutí na data.

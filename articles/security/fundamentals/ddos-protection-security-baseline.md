@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b4b2a3bf8c9a3a2e2ec7f1b22785a037f8dedc60
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 21ae8986761483658f5ac4254e4bb378e0bc4ba9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98873956"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575051"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Základní hodnoty zabezpečení Azure pro Azure DDoS Protection Standard
 
@@ -26,7 +26,7 @@ Tato základní hodnota zabezpečení se vztahuje na pokyny z [srovnávacího te
 
 **Doprovodné** materiály: Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do Log Analytics pracovního prostoru, centra událostí Azure nebo účtu úložiště Azure pro archivaci. Protokoly aktivit poskytují přehled o operacích, které byly provedeny na vašich Azure DDoS Protectionch plánech na úrovni řídicích rovin. Pomocí dat protokolu aktivit Azure můžete určit "co, kdo a kdy" pro všechny operace zápisu (PUT, POST, DELETE) prováděné na úrovni ovládacího prvku pro vaše Azure DDoS Protection instance.
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../../azure-monitor/platform/activity-log.md)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../../azure-monitor/essentials/activity-log.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -40,7 +40,7 @@ Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do 
 
 - [Zobrazení a konfigurace protokolování diagnostiky DDoS](../../ddos-protection/diagnostic-logging.md)
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../../azure-monitor/platform/activity-log.md)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../../azure-monitor/essentials/activity-log.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -50,7 +50,7 @@ Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do 
 
 **Doprovodné** materiály: v Azure monitor nastavte dobu uchování protokolu pro pracovní prostory Log Analytics přidružené k vašim Azure DDoS Protection tarifům podle předpisů pro dodržování předpisů vaší organizace.
 
-- [Postup nastavení parametrů uchovávání protokolů](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Postup nastavení parametrů uchovávání protokolů](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -62,9 +62,9 @@ Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do 
 
 - [Informace o přístupu k telemetrie, protokolům a analýze útoků pro službu DDoS Protection Standard](../../ddos-protection/telemetry.md)
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../../azure-monitor/platform/activity-log.md)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../../azure-monitor/essentials/activity-log.md)
 
-- [Jak shromažďovat a analyzovat protokoly aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor](../../azure-monitor/platform/activity-log.md)
+- [Jak shromažďovat a analyzovat protokoly aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor](../../azure-monitor/essentials/activity-log.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -80,7 +80,7 @@ Připojit Log Analytics pracovní prostor do Azure Sentinel, protože poskytuje 
 
 - [Jak připojit Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-- [Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor](../../azure-monitor/platform/alerts-log.md)
+- [Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor](../../azure-monitor/alerts/alerts-log.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -276,7 +276,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro změny Azure DDoS Protection plánů a dalších důležitých nebo souvisejících prostředků.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](../../azure-monitor/platform/alerts-activity-log.md)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Ano
 

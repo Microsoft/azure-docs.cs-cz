@@ -9,18 +9,18 @@ ms.subservice: autoscale
 ms.date: 04/18/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 37602f7b9a8669ce0e8db984f7f7617cffdd431c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b172f1f7137b53e98384d92c9c709694eaf0b7e9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87029276"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594499"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikální automatické škálování se sadami škálování virtuálních počítačů
 
 Tento článek popisuje, jak vertikálně škálovat [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/) Azure s přezřizováním nebo bez něj. 
 
-Vertikální škálování, označované také jako *horizontální navýšení kapacity* *, znamená*zvýšení nebo snížení velikosti virtuálních počítačů v reakci na zatížení. Porovnejte toto chování s [horizontálním škálováním](virtual-machine-scale-sets-autoscale-overview.md), které se také označuje jako horizontální navýšení *kapacity* a *horizontální*navýšení kapacity, kde se počet virtuálních počítačů mění v závislosti na zatížení.
+Vertikální škálování, označované také jako *horizontální navýšení kapacity* *, znamená* zvýšení nebo snížení velikosti virtuálních počítačů v reakci na zatížení. Porovnejte toto chování s [horizontálním škálováním](virtual-machine-scale-sets-autoscale-overview.md), které se také označuje jako horizontální navýšení *kapacity* a *horizontální* navýšení kapacity, kde se počet virtuálních počítačů mění v závislosti na zatížení.
 
 Opětovné zřízení znamená odebrání existujícího virtuálního počítače a jeho nahrazení novým. Když zvětšíte nebo zmenšíte velikost virtuálních počítačů ve službě Virtual Machine Scale set, v některých případech budete chtít změnit velikost stávajících virtuálních počítačů a zachovat data, zatímco v jiných případech potřebujete nasadit nové virtuální počítače nové velikosti. Tento dokument popisuje oba případy.
 
@@ -87,7 +87,7 @@ Můžete nastavit svislé škálování, které se aktivuje na základě výstra
 > 
 
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>Vytvoření účtu Azure Automation s možností spuštění jako
-První věc, kterou potřebujete udělat, je vytvořit účet Azure Automation, který hostuje Runbooky používané pro škálování instancí sady škálování virtuálních počítačů. Nedávno [Azure Automation](https://azure.microsoft.com/services/automation/) zavedli funkci účet Spustit jako, která umožňuje nastavit instanční objekt pro automatické spouštění Runbooků jménem uživatele. Další informace naleznete v tématech:
+První věc, kterou potřebujete udělat, je vytvořit účet Azure Automation, který hostuje Runbooky používané pro škálování instancí sady škálování virtuálních počítačů. Nedávno [Azure Automation](https://azure.microsoft.com/services/automation/) zavedli funkci účet Spustit jako, která umožňuje nastavit instanční objekt pro automatické spouštění Runbooků jménem uživatele. Další informace naleznete v tématu:
 
 * [Ověření runbooků pomocí účtu Spustit v Azure jako](../automation/manage-runas-account.md)
 
@@ -118,7 +118,7 @@ Po importu runbooků přidejte Webhook do Runbooku, aby ho mohl aktivovat výstr
 
 ## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>Přidání výstrahy do sady škálování virtuálních počítačů
 
-Níže je skript PowerShellu, který ukazuje, jak přidat výstrahu do sady škálování virtuálních počítačů. V následujícím článku najdete název metriky, na které se má upozornění aktivovat: [Azure monitor automatické škálování běžných metrik](../azure-monitor/platform/autoscale-common-metrics.md).
+Níže je skript PowerShellu, který ukazuje, jak přidat výstrahu do sady škálování virtuálních počítačů. V následujícím článku najdete název metriky, na které se má upozornění aktivovat: [Azure monitor automatické škálování běžných metrik](../azure-monitor/autoscale/autoscale-common-metrics.md).
 
 ```powershell
 $actionEmail = New-AzAlertRuleEmail -CustomEmail user@contoso.com
@@ -153,10 +153,10 @@ Add-AzMetricAlertRule  -Name  $alertName `
 
 Další informace o tom, jak vytvářet výstrahy, najdete v následujících článcích:
 
-* [Ukázky Azure Monitor PowerShellu](../azure-monitor/samples/powershell-samples.md)
-* [Azure Monitor ukázky rozhraní příkazového řádku pro různé platformy](../azure-monitor/samples/cli-samples.md)
+* [Ukázky Azure Monitor PowerShellu](../azure-monitor/powershell-samples.md)
+* [Azure Monitor ukázky rozhraní příkazového řádku pro různé platformy](../azure-monitor/cli-samples.md)
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Tento článek ukázal jednoduché příklady vertikálního škálování. Pomocí těchto stavebních bloků – účet Automation, Runbooky, Webhooky, výstrahy – můžete připojit bohatou řadu událostí s přizpůsobenou sadou akcí.
 

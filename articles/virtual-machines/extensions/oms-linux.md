@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: f75ad90a562a39f940e1006a2e4d9123eff2b47c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 202cdc341ce31c2347552e6fbc430c679ef28d7f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202177"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580084"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Rozšíření Log Analytics pro virtuální počítače pro Linux
 
@@ -37,7 +37,7 @@ Protokoly Azure Monitor poskytují možnosti monitorování, upozorňování a n
 
 ### <a name="operating-system"></a>Operační systém
 
-Podrobnosti o podporovaných distribucích systému Linux najdete v článku [přehled Azure Monitorch agentů](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) .
+Podrobnosti o podporovaných distribucích systému Linux najdete v článku [přehled Azure Monitorch agentů](../../azure-monitor/agents/agents-overview.md#supported-operating-systems) .
 
 ### <a name="agent-and-vm-extension-version"></a>Verze agenta a rozšíření virtuálního počítače
 Následující tabulka poskytuje mapování verze Log Analyticsho rozšíření virtuálního počítače a sady Log Analytics agenta pro každou verzi. Obsahuje odkaz na poznámky k verzi pro verzi sady Log Analytics agentů. Poznámky k verzi obsahují podrobnosti o opravách chyb a nové funkce, které jsou k dispozici pro danou verzi agenta.  
@@ -76,7 +76,7 @@ Rozšíření agenta Log Analytics pro Linux vyžaduje, aby byl cílový virtuá
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-Následující JSON zobrazuje schéma pro rozšíření agenta Log Analytics. Přípona vyžaduje ID pracovního prostoru a klíč pracovního prostoru z cílového pracovního prostoru Log Analytics; Tyto hodnoty najdete [v pracovním prostoru Log Analytics](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key) v Azure Portal. Vzhledem k tomu, že klíč pracovního prostoru by měl být považován za citlivá data, měl by být uložen v konfiguraci chráněného nastavení. Data nastavení chráněná rozšířením virtuálního počítače Azure jsou šifrovaná a v cílovém virtuálním počítači se dešifrují jenom. Všimněte si, že **ID pracovního prostoru** a **workspaceKey** rozlišují velká a malá písmena.
+Následující JSON zobrazuje schéma pro rozšíření agenta Log Analytics. Přípona vyžaduje ID pracovního prostoru a klíč pracovního prostoru z cílového pracovního prostoru Log Analytics; Tyto hodnoty najdete [v pracovním prostoru Log Analytics](../../azure-monitor/vm/quick-collect-linux-computer.md#obtain-workspace-id-and-key) v Azure Portal. Vzhledem k tomu, že klíč pracovního prostoru by měl být považován za citlivá data, měl by být uložen v konfiguraci chráněného nastavení. Data nastavení chráněná rozšířením virtuálního počítače Azure jsou šifrovaná a v cílovém virtuálním počítači se dešifrují jenom. Všimněte si, že **ID pracovního prostoru** a **workspaceKey** rozlišují velká a malá písmena.
 
 ```json
 {
@@ -221,7 +221,7 @@ Výstup spuštění rozšíření se zaznamená do následujícího souboru:
 | 53 | Toto rozšíření se nepovedlo kvůli chybějícím nebo chybným parametrům konfigurace. | Další informace o chybě najdete ve výstupu a v protokolech. Dále zkontrolujte správnost ID pracovního prostoru a ověřte, zda je počítač připojen k Internetu. |
 | 55 | Nelze se připojit ke službě Azure Monitor nebo chybí požadované balíčky nebo je správce balíčků bázi dpkg uzamčen.| Ověřte, že systém buď má přístup k Internetu, nebo jestli je zadaný platný proxy server HTTP. Dále zkontrolujte správnost ID pracovního prostoru a ověřte, zda jsou nainstalovány nástroje pro kudrlinkou a tar. |
 
-Další informace o řešení potíží najdete v [Průvodci odstraňováním potíží s Log Analytics-agenty pro Linux](../../azure-monitor/platform/vmext-troubleshoot.md).
+Další informace o řešení potíží najdete v [Průvodci odstraňováním potíží s Log Analytics-agenty pro Linux](../../azure-monitor/visualize/vmext-troubleshoot.md).
 
 ### <a name="support"></a>Podpora
 

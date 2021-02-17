@@ -4,12 +4,12 @@ description: Získejte zobrazení stránky a počty relací, data webového klie
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 60b3e9229adb93ce32c97c2822a465f7f629d47d
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 317050abd0aa77649800493c36b03b298f256096
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234354"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573795"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -107,7 +107,7 @@ Každá možnost konfigurace je uvedená výše na novém řádku, pokud nechcet
 
 Dostupné možnosti konfigurace jsou
 
-| Název | Typ | Popis
+| Název | Typ | Description
 |------|------|----------------
 | src | řetězec **[povinné]** | Úplná adresa URL, ze které se má načíst sada SDK Tato hodnota se používá pro atribut src dynamicky přidávaného &lt; skriptu nebo &gt; značky. Můžete použít veřejné umístění CDN nebo vlastní soukromý hostovaný.
 | name | řetězec *[nepovinné]* | Globální název inicializované sady SDK, výchozí hodnota `appInsights` . Proto ```window.appInsights``` bude odkaz na inicializovaná instanci. Poznámka: Pokud zadáte hodnotu názvu nebo předchozí instanci, která má být přiřazena (prostřednictvím globálního názvu appInsightsSDK), bude tato hodnota názvu také definována v globálním oboru názvů jako ```window.appInsightsSDK=<name value>``` , to je vyžadováno inicializačním kódem sady SDK, aby bylo zajištěno, že se inicializuje a aktualizuje správné kostry fragmentů a metod proxy.
@@ -132,7 +132,7 @@ appInsights.trackPageView();
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Posílání telemetrie do Azure Portal
 
-Ve výchozím nastavení Application Insights JavaScript SDK automaticky shromáždí řadu položek telemetrie, které jsou užitečné při určování stavu aplikace a podkladového uživatelského prostředí. Mezi ně patří:
+Ve výchozím nastavení Application Insights JavaScript SDK automaticky shromáždí řadu položek telemetrie, které jsou užitečné při určování stavu aplikace a podkladového uživatelského prostředí. Tady jsou některé z nich:
 
 - **Nezachycené výjimky** v aplikaci, včetně informací o
     - Trasování zásobníku
@@ -170,7 +170,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfigurace
 Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na hodnotu false. Všechna pole jsou volitelná s výjimkou `instrumentationKey` .
 
-| Název | Výchozí | Popis |
+| Name | Výchozí | Description |
 |------|---------|-------------|
 | instrumentationKey | null | **Povinné**<br>Klíč instrumentace, který jste získali z Azure Portal. |
 | accountId | null | Volitelné ID účtu, pokud vaše aplikace seskupí uživatele na účty. Žádné mezery, čárky, středníky, rovny nebo svislé čáry |
@@ -180,8 +180,8 @@ Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na ho
 | maxBatchInterval | 15 000 | Doba, po kterou se má telemetrie v dávce před odesláním (milisekundy) |
 | disableExceptionTracking | false (nepravda) | Je-li nastavena hodnota true, výjimky se nebudou shromažďovat. Výchozí hodnota je false. |
 | disableTelemetry | false (nepravda) | Pokud je nastaveno na true, telemetrie se neshromažďuje ani neposílá. Výchozí hodnota je false. |
-| enableDebug | false (nepravda) | Při hodnotě true se **interní** data ladění vydávají jako výjimka **namísto** zaznamenávání bez ohledu na nastavení protokolování SDK. Výchozí hodnota je false. <br>**_Poznámka:_* _ povolení tohoto nastavení bude mít za následek vyřazení telemetrie při každém výskytu vnitřní chyby. To může být užitečné, pokud chcete rychle identifikovat problémy s konfigurací nebo využitím sady SDK. Pokud nechcete při ladění přijít o telemetrii, zvažte použití `consoleLoggingLevel` nebo `telemetryLoggingLevel` místo `enableDebug` . |
-| loggingLevelConsole | 0 | Protokoluje *interní** Application Insights chyby do konzoly. <br>0: vypnuto, <br>1: jenom kritické chyby, <br>2: vše (chyby & upozornění) |
+| enableDebug | false (nepravda) | Při hodnotě true se **interní** data ladění vydávají jako výjimka **namísto** zaznamenávání bez ohledu na nastavení protokolování SDK. Výchozí hodnota je false. <br>**_Poznámka:_** Povolení tohoto nastavení způsobí, že dojde k zahození telemetrie při každém výskytu vnitřní chyby. To může být užitečné, pokud chcete rychle identifikovat problémy s konfigurací nebo využitím sady SDK. Pokud nechcete při ladění přijít o telemetrii, zvažte použití `consoleLoggingLevel` nebo `telemetryLoggingLevel` místo `enableDebug` . |
+| loggingLevelConsole | 0 | Zaznamená **vnitřní** chyby Application Insights do konzoly. <br>0: vypnuto, <br>1: jenom kritické chyby, <br>2: vše (chyby & upozornění) |
 | loggingLevelTelemetry | 1 | Odesílá **interní** chyby Application Insights jako telemetrii. <br>0: vypnuto, <br>1: jenom kritické chyby, <br>2: vše (chyby & upozornění) |
 | diagnosticLogInterval | 10000 | vnitřních Interval dotazování (v MS) pro interní frontu protokolování |
 | samplingPercentage | 100 | Procento událostí, které budou odeslány. Výchozí hodnota je 100, což znamená, že jsou odesílány všechny události. Tuto hodnotu nastavte, pokud chcete zachovat svůj limit dat pro aplikace ve velkém měřítku. |
@@ -219,7 +219,7 @@ Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na ho
 
 ## <a name="enable-time-on-page-tracking"></a>Povolit sledování času na stránce
 
-Nastavením se `autoTrackPageVisitTime: true` sleduje čas strávený uživateli na každé stránce. V každém novém PageView je doba, kterou uživatel strávil na *Předchozí* stránce, odeslána jako [vlastní metrika](../platform/metrics-custom-overview.md) s názvem `PageVisitTime` . Tato vlastní metrika je zobrazitelná v [Průzkumník metrik](../platform/metrics-getting-started.md) jako metrika založená na protokolu.
+Nastavením se `autoTrackPageVisitTime: true` sleduje čas strávený uživateli na každé stránce. V každém novém PageView je doba, kterou uživatel strávil na *Předchozí* stránce, odeslána jako [vlastní metrika](../essentials/metrics-custom-overview.md) s názvem `PageVisitTime` . Tato vlastní metrika je zobrazitelná v [Průzkumník metrik](../essentials/metrics-getting-started.md) jako metrika založená na protokolu.
 
 ## <a name="enable-correlation"></a>Povolit korelaci
 

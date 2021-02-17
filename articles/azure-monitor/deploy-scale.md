@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: f2f2272363cbc26895b061fe7b6263ed2a29fbab
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f06ed85e362f15e36e030cd11639d9d17348e938
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993252"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573610"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Nasazení Azure Monitor ve velkém měřítku pomocí Azure Policy
 I když jsou některé funkce Azure Monitor nakonfigurované jednou nebo omezeným počtem časů, musí se pro každý prostředek, který chcete monitorovat, opakovat jiné. Tento článek popisuje metody použití Azure Policy k implementaci Azure Monitor škálování, aby se zajistilo, že monitorování je konzistentně a správně nakonfigurované pro všechny prostředky Azure.
@@ -33,19 +33,19 @@ Azure Policy se skládá z objektů v následující tabulce. Podrobnější vys
 | Přiřazení | Definice zásady nebo podnět se neprojeví, dokud není přiřazena k oboru. Přiřaďte například zásadu ke skupině prostředků, kterou použijete pro všechny prostředky vytvořené v tomto prostředku, nebo ji použijte u předplatného, aby ji bylo možné použít u všech prostředků v tomto předplatném.  Další podrobnosti najdete v tématu [Struktura přiřazení Azure Policy](../governance/policy/concepts/assignment-structure.md). |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>Předdefinované definice zásad pro Azure Monitor
-Azure Policy obsahuje několik předem sestavených definic souvisejících s Azure Monitor. Tyto definice zásad můžete přiřadit k existujícímu předplatnému nebo je použít jako základ pro vytvoření vlastních definicí. Úplný seznam integrovaných politika v kategorii **monitorování** najdete v tématu [Azure Policy předdefinované definice zásad pro Azure monitor](./samples/policy-reference.md).
+Azure Policy obsahuje několik předem sestavených definic souvisejících s Azure Monitor. Tyto definice zásad můžete přiřadit k existujícímu předplatnému nebo je použít jako základ pro vytvoření vlastních definicí. Úplný seznam integrovaných politika v kategorii **monitorování** najdete v tématu [Azure Policy předdefinované definice zásad pro Azure monitor](.//policy-reference.md).
 
 Pokud chcete zobrazit integrované definice zásad související s monitorováním, udělejte toto:
 
 1. V Azure Portal přejít na **Azure Policy** .
 2. Vyberte **definice**.
-3. Pro **typ**vyberte možnost *předdefinované* a pro **kategorii**vyberte možnost *monitorování*.
+3. Pro **typ** vyberte možnost *předdefinované* a pro **kategorii** vyberte možnost *monitorování*.
 
   ![Snímek obrazovky se stránkou Azure Policy definice v Azure Portal zobrazující seznam definic zásad pro kategorii monitorování a integrovaný typ.](media/deploy-scale/builtin-policies.png)
 
 
 ## <a name="diagnostic-settings"></a>Nastavení diagnostiky
-[Nastavení diagnostiky](platform/diagnostic-settings.md) shromažďují protokoly prostředků a metriky z prostředků Azure do několika umístění, obvykle do log Analyticsho pracovního prostoru, který umožňuje analyzovat data pomocí [dotazů protokolů](log-query/log-query-overview.md) a [výstrah protokolů](platform/alerts-log.md). Pomocí zásad můžete automaticky vytvořit nastavení diagnostiky pokaždé, když vytvoříte prostředek.
+[Nastavení diagnostiky](essentials/diagnostic-settings.md) shromažďují protokoly prostředků a metriky z prostředků Azure do několika umístění, obvykle do log Analyticsho pracovního prostoru, který umožňuje analyzovat data pomocí [dotazů protokolů](logs/log-query-overview.md) a [výstrah protokolů](alerts/alerts-log.md). Pomocí zásad můžete automaticky vytvořit nastavení diagnostiky pokaždé, když vytvoříte prostředek.
 
 Každý typ prostředku Azure má jedinečnou sadu kategorií, které je třeba uvést v nastavení diagnostiky. Z tohoto důvodu každý typ prostředku vyžaduje samostatnou definici zásad. Některé typy prostředků mají předdefinované definice zásad, které můžete přiřadit beze změny. U jiných typů prostředků je potřeba vytvořit vlastní definici.
 
@@ -122,7 +122,7 @@ Iniciativa bude platit pro každý virtuální počítač při jeho vytvoření.
 
 
 ## <a name="azure-monitor-for-vms"></a>Azure Monitor pro virtuální počítače
-[Azure monitor pro virtuální počítače](insights/vminsights-overview.md) je primárním nástrojem v Azure monitor pro monitorování virtuálních počítačů. Povolení Azure Monitor pro virtuální počítače nainstaluje agenta Log Analytics i agenta závislostí. Místo toho, abyste tyto úlohy prováděli ručně, použijte Azure Policy, abyste zajistili, že se každý virtuální počítač nakonfiguroval při jeho vytváření.
+[Azure monitor pro virtuální počítače](vm/vminsights-overview.md) je primárním nástrojem v Azure monitor pro monitorování virtuálních počítačů. Povolení Azure Monitor pro virtuální počítače nainstaluje agenta Log Analytics i agenta závislostí. Místo toho, abyste tyto úlohy prováděli ručně, použijte Azure Policy, abyste zajistili, že se každý virtuální počítač nakonfiguroval při jeho vytváření.
 
 > [!NOTE]
 > Azure Monitor pro virtuální počítače obsahuje funkci nazvanou **Azure monitor pro virtuální počítače pokrytí zásad** , která umožňuje zjistit a opravit nekompatibilní virtuální počítače ve vašem prostředí. Tuto funkci můžete použít místo toho, aby fungovala přímo s Azure Policy pro virtuální počítače Azure a pro hybridní virtuální počítače připojené pomocí ARC Azure. V případě Azure Virtual Machine Scale Sets je potřeba přiřazení vytvořit pomocí Azure Policy.
@@ -130,7 +130,7 @@ Iniciativa bude platit pro každý virtuální počítač při jeho vytvoření.
 
 Azure Monitor pro virtuální počítače obsahuje následující integrované iniciativy, které instalují oba agenty, aby umožňovaly úplné monitorování. 
 
-|Název |Popis |
+|Název |Description |
 |:---|:---|
 |Povolit Azure Monitor pro virtuální počítače | Nainstaluje agenta Log Analytics a agenta závislostí na virtuální počítače Azure a hybridní virtuální počítače připojené pomocí ARC Azure. |
 |Povolit Azure Monitor pro Virtual Machine Scale Sets | Nainstaluje agenta Log Analytics a agenta závislostí do sady škálování virtuálních počítačů Azure. |
@@ -139,7 +139,7 @@ Azure Monitor pro virtuální počítače obsahuje následující integrované i
 ### <a name="virtual-machines"></a>Virtuální počítače
 Místo vytváření úloh pro tyto iniciativy pomocí rozhraní Azure Policy Azure Monitor pro virtuální počítače obsahuje funkci, která vám umožní zkontrolovat počet virtuálních počítačů v jednotlivých oborech, abyste zjistili, jestli se iniciativa používala. Pak můžete nakonfigurovat pracovní prostor a vytvořit všechna požadovaná přiřazení pomocí tohoto rozhraní.
 
-Podrobnosti o tomto procesu najdete v tématu [povolení Azure monitor pro virtuální počítače pomocí Azure Policy](./insights/vminsights-enable-policy.md).
+Podrobnosti o tomto procesu najdete v tématu [povolení Azure monitor pro virtuální počítače pomocí Azure Policy](./vm/vminsights-enable-policy.md).
 
 ![Zásady Azure Monitor pro virtuální počítače](media/deploy-scale/vminsights-policy.png)
 
@@ -148,7 +148,7 @@ Pokud chcete použít Azure Policy k povolení monitorování pro virtuální po
 
 ![Snímek stránky přiřadit iniciativu v Azure Portal. Definice iniciativy je nastavená tak, aby umožňovala Azure Monitor pro Virtual Machine Scale Sets.](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
 
-Vyberte pracovní prostor, do kterého se budou data odesílat. Tento pracovní prostor musí mít nainstalované řešení *VMInsights* , jak je popsáno v tématu []() .
+Vyberte pracovní prostor, do kterého se budou data odesílat. Tento pracovní prostor musí mít nainstalované řešení *VMInsights* , jak je popsáno v tématu [Konfigurace log Analyticsho pracovního prostoru pro Azure monitor pro virtuální počítače](vm/vminsights-configure-workspace.md).
 
 ![Výběr pracovního prostoru](media/deploy-scale/virtual-machine-scale-set-workspace.png)
 
@@ -163,7 +163,7 @@ Můžete mít scénáře, kdy chcete nainstalovat agenta Log Analytics, ale ne a
 > Neexistuje žádný důvod k tomu, aby bylo možné nasadit agenta závislostí sami, protože vyžaduje, aby agent Log Analytics doručovat data do Azure Monitor.
 
 
-|Název |Popis |
+|Název |Description |
 |-----|------------|
 |Audit – nasazení agenta Log Analytics – image virtuálního počítače (OS) není v seznamu |Hlásí virtuální počítače jako nedodržující předpisy, pokud image virtuálního počítače (OS) není v seznamu definovaná a Agent není nainstalovaný. |
 |Nasazení agenta Log Analytics pro virtuální počítače se systémem Linux |Nasaďte agenta Log Analytics pro virtuální počítače se systémem Linux, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |
@@ -181,4 +181,4 @@ Můžete mít scénáře, kdy chcete nainstalovat agenta Log Analytics, ale ne a
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [Azure Policy](../governance/policy/overview.md).
-- Přečtěte si další informace o [nastavení diagnostiky](platform/diagnostic-settings.md).
+- Přečtěte si další informace o [nastavení diagnostiky](essentials/diagnostic-settings.md).

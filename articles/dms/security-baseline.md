@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3d1386ea3d7096e0926825c9b53cf62466c09cc3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 002c6762c71d5ffb45e56f3bc74d911570bca8bd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789832"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571948"
 ---
 # <a name="azure-security-baseline-for-azure-database-migration-service"></a>Základní hodnoty zabezpečení Azure pro Azure Database Migration Service
 
@@ -422,7 +422,7 @@ Kromě toho povolte a zaveďte data do Azure Sentinel nebo SIEM třetí strany.
 
 Řada organizací zvolí použití Azure Sentinel pro "horká" data, která se používají často a Azure Storage pro "studená" data, která se používají méně často.
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
