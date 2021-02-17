@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 02/01/2021
+ms.date: 02/15/2021
 ms.custom: generated
-ms.openlocfilehash: 72a8f2eb93a9c12510b093e29c7b8fc6867cb2eb
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: ba38955666b296a0f8f0e9ab0aac9183277fb4ac
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809373"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535140"
 ---
 # <a name="azure-resource-provider-operations"></a>Operace poskytovatele prostředků Azure
 
@@ -159,7 +159,6 @@ Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v ná
 | **Intune** |
 | [Microsoft.Intune](#microsoftintune) |
 | **Další** |
-| [Microsoft. BingMaps](#microsoftbingmaps) |
 | [Microsoft. DesktopVirtualization](#microsoftdesktopvirtualization) |
 | [Microsoft. DigitalTwins](#microsoftdigitaltwins) |
 | [Microsoft. ServicesHub](#microsoftserviceshub) |
@@ -199,17 +198,17 @@ Služba Azure: jádro
 > | Microsoft. Marketplace/privateStores/DELETE | Odstraní PrivateStore. |
 > | Microsoft. Marketplace/privateStores/nabídky/Action | Nabízí aktualizace v PrivateStore. |
 > | Microsoft. Marketplace/privateStores/Read | Přečte PrivateStores. |
-> | Microsoft. Marketplace/privateStores/Notifications/Read | Přečte oznámení soukromého úložiště. |
+> | Microsoft. Marketplace/privateStores/requestApprovals/Action | Aktualizace schválení žádostí |
+> | Microsoft. Marketplace/privateStores/adminRequestApprovals/Read | Načíst podrobnosti o schválení žádostí, jenom správci |
+> | Microsoft. Marketplace/privateStores/adminRequestApprovals/Write | Správce aktualizuje žádost o rozhodnutí na žádosti. |
 > | Microsoft. Marketplace/privateStores/nabídky/zápis | Vytvoří nabídku v PrivateStore. |
 > | Microsoft. Marketplace/privateStores/nabídky/DELETE | Odstraní nabídku z PrivateStore. |
 > | Microsoft. Marketplace/privateStores/nabídky/číst | Načte nabídky PrivateStore. |
-> | Microsoft. Marketplace/privateStores/nabídky/requestApprovals/Action | Aktualizace schválení žádostí |
-> | Microsoft. Marketplace/privateStores/nabídky/oznámení/akce | Aktualizovat oznámení |
-> | Microsoft. Marketplace/privateStores/nabídky/adminRequestApprovals/Action | Správce aktualizuje žádost o rozhodnutí na žádosti. |
-> | Microsoft. Marketplace/privateStores/nabídky/adminRequestApprovals/číst | Načíst podrobnosti o schválení žádostí, jenom správci |
-> | Microsoft. Marketplace/privateStores/nabídky/requestApprovals/číst | Čtení žádostí o schválení |
-> | Microsoft. Marketplace/privateStores/nabídky/requestApprovals/Write | Vytvoření žádosti o schválení |
-> | Microsoft. Marketplace/privateStores/nabídky/requestApprovals/DELETE | Odstranit schválení žádosti |
+> | Microsoft. Marketplace/privateStores/queryNotificationsState/Read | Zobrazit podrobnosti o stavu oznámení, pouze správci |
+> | Microsoft. Marketplace/privateStores/requestApprovals/Read | Čtení žádostí o schválení |
+> | Microsoft. Marketplace/privateStores/requestApprovals/Write | Vytvoření žádosti o schválení |
+> | Microsoft. Marketplace/privateStores/RequestApprovals/nabídky/acknowledgeNotification/Write | Potvrzení oznámení, jenom správců |
+> | Microsoft. Marketplace/privateStores/RequestApprovals/withdrawPlan/Write | Stažení plánu z oznámení nabídky |
 
 ### <a name="microsoftmarketplaceapps"></a>Microsoft. MarketplaceApps
 
@@ -694,6 +693,19 @@ Služba Azure: [Content Delivery Network](../cdn/index.yml)
 > | Microsoft. CDN/operationresults/profileresults/CheckResourceUsage/Action |  |
 > | Microsoft. CDN/operationresults/profileresults/GenerateSsoUri/Action |  |
 > | Microsoft. CDN/operationresults/profileresults/GetSupportedOptimizationTypes/Action |  |
+> | Microsoft. CDN/operationresults/profileresults/afdendpointresults/Read |  |
+> | Microsoft. CDN/operationresults/profileresults/afdendpointresults/Write |  |
+> | Microsoft. CDN/operationresults/profileresults/afdendpointresults/DELETE |  |
+> | Microsoft. CDN/operationresults/profileresults/afdendpointresults/vyprázdnit/Action |  |
+> | Microsoft. CDN/operationresults/profileresults/afdendpointresults/použití/akce |  |
+> | Microsoft. CDN/operationresults/profileresults/afdendpointresults/ValidateCustomDomain/Action |  |
+> | Microsoft. CDN/operationresults/profileresults/afdendpointresults/routeresults/Read |  |
+> | Microsoft. CDN/operationresults/profileresults/afdendpointresults/routeresults/Write |  |
+> | Microsoft. CDN/operationresults/profileresults/afdendpointresults/routeresults/DELETE |  |
+> | Microsoft. CDN/operationresults/profileresults/customdomainresults/Read |  |
+> | Microsoft. CDN/operationresults/profileresults/customdomainresults/Write |  |
+> | Microsoft. CDN/operationresults/profileresults/customdomainresults/DELETE |  |
+> | Microsoft. CDN/operationresults/profileresults/customdomainresults/RefreshValidationToken/Action |  |
 > | Microsoft. CDN/operationresults/profileresults/endpointresults/Read |  |
 > | Microsoft. CDN/operationresults/profileresults/endpointresults/Write |  |
 > | Microsoft. CDN/operationresults/profileresults/endpointresults/DELETE |  |
@@ -714,6 +726,27 @@ Služba Azure: [Content Delivery Network](../cdn/index.yml)
 > | Microsoft. CDN/operationresults/profileresults/endpointresults/originresults/Read |  |
 > | Microsoft. CDN/operationresults/profileresults/endpointresults/originresults/Write |  |
 > | Microsoft. CDN/operationresults/profileresults/endpointresults/originresults/DELETE |  |
+> | Microsoft. CDN/operationresults/profileresults/origingroupresults/Read |  |
+> | Microsoft. CDN/operationresults/profileresults/origingroupresults/Write |  |
+> | Microsoft. CDN/operationresults/profileresults/origingroupresults/DELETE |  |
+> | Microsoft. CDN/operationresults/profileresults/origingroupresults/použití/akce |  |
+> | Microsoft. CDN/operationresults/profileresults/origingroupresults/originresults/Read |  |
+> | Microsoft. CDN/operationresults/profileresults/origingroupresults/originresults/Write |  |
+> | Microsoft. CDN/operationresults/profileresults/origingroupresults/originresults/DELETE |  |
+> | Microsoft. CDN/operationresults/profileresults/rulesetresults/Read |  |
+> | Microsoft. CDN/operationresults/profileresults/rulesetresults/Write |  |
+> | Microsoft. CDN/operationresults/profileresults/rulesetresults/DELETE |  |
+> | Microsoft. CDN/operationresults/profileresults/rulesetresults/použití/akce |  |
+> | Microsoft. CDN/operationresults/profileresults/rulesetresults/ruleresults/Read |  |
+> | Microsoft. CDN/operationresults/profileresults/rulesetresults/ruleresults/Write |  |
+> | Microsoft. CDN/operationresults/profileresults/rulesetresults/ruleresults/DELETE |  |
+> | Microsoft. CDN/operationresults/profileresults/secretresults/Read |  |
+> | Microsoft. CDN/operationresults/profileresults/secretresults/Write |  |
+> | Microsoft. CDN/operationresults/profileresults/secretresults/DELETE |  |
+> | Microsoft. CDN/operationresults/profileresults/secretresults/ValidateSecret/Action |  |
+> | Microsoft. CDN/operationresults/profileresults/securitypoliciesresults/Read |  |
+> | Microsoft. CDN/operationresults/profileresults/securitypoliciesresults/Write |  |
+> | Microsoft. CDN/operationresults/profileresults/securitypoliciesresults/DELETE |  |
 > | Microsoft. CDN/Operations/Read |  |
 > | Microsoft. CDN/profily/číst |  |
 > | Microsoft. CDN/Profiles/Write |  |
@@ -721,6 +754,19 @@ Služba Azure: [Content Delivery Network](../cdn/index.yml)
 > | Microsoft. CDN/Profiles/CheckResourceUsage/Action |  |
 > | Microsoft. CDN/Profiles/GenerateSsoUri/Action |  |
 > | Microsoft. CDN/Profiles/GetSupportedOptimizationTypes/Action |  |
+> | Microsoft. CDN/Profiles/afdendpoints/Read |  |
+> | Microsoft. CDN/Profiles/afdendpoints/Write |  |
+> | Microsoft. CDN/Profiles/afdendpoints/DELETE |  |
+> | Microsoft. CDN/Profiles/afdendpoints/vyprázdnit/Action |  |
+> | Microsoft. CDN/Profiles/afdendpoints/Usage/Action |  |
+> | Microsoft. CDN/Profiles/afdendpoints/ValidateCustomDomain/Action |  |
+> | Microsoft. CDN/Profiles/afdendpoints/Routes/Read |  |
+> | Microsoft. CDN/Profiles/afdendpoints/Routes/Write |  |
+> | Microsoft. CDN/Profiles/afdendpoints/Routes/DELETE |  |
+> | Microsoft. CDN/Profiles/customdomains/Read |  |
+> | Microsoft. CDN/Profiles/customdomains/Write |  |
+> | Microsoft. CDN/Profiles/customdomains/DELETE |  |
+> | Microsoft. CDN/Profiles/customdomains/RefreshValidationToken/Action |  |
 > | Microsoft. CDN/Profiles/Endpoints/Read |  |
 > | Microsoft. CDN/Profiles/Endpoints/Write |  |
 > | Microsoft. CDN/Profiles/Endpoints/DELETE |  |
@@ -741,6 +787,27 @@ Služba Azure: [Content Delivery Network](../cdn/index.yml)
 > | Microsoft. CDN/Profiles/koncových bodů/původu/čtení |  |
 > | Microsoft. CDN/Profiles/koncových bodů/origines/Write |  |
 > | Microsoft. CDN/Profiles/Endpoints/origines/DELETE |  |
+> | Microsoft. CDN/Profiles/origingroups/Read |  |
+> | Microsoft. CDN/Profiles/origingroups/Write |  |
+> | Microsoft. CDN/Profiles/origingroups/DELETE |  |
+> | Microsoft. CDN/Profiles/origingroups/Usage/Action |  |
+> | Microsoft. CDN/Profiles/origingroups/origines/Read |  |
+> | Microsoft. CDN/Profiles/origingroups/origines/Write |  |
+> | Microsoft. CDN/Profiles/origingroups/origines/DELETE |  |
+> | Microsoft. CDN/Profiles/RuleSets/Read |  |
+> | Microsoft. CDN/Profiles/RuleSets/Write |  |
+> | Microsoft. CDN/Profiles/RuleSets/DELETE |  |
+> | Microsoft. CDN/Profiles/RuleSets/Usage/Action |  |
+> | Microsoft. CDN/Profiles/RuleSets/Rules/Read |  |
+> | Microsoft. CDN/Profiles/RuleSets/Rules/Write |  |
+> | Microsoft. CDN/Profiles/RuleSets/Rules/DELETE |  |
+> | Microsoft. CDN/Profiles/tajné/číst |  |
+> | Microsoft. CDN/profily/tajné/zapisovat |  |
+> | Microsoft. CDN/Profiles/tajné/odstranit |  |
+> | Microsoft. CDN/Profiles/tajné/ValidateSecret/Action |  |
+> | Microsoft. CDN/Profiles/securitypolicies/Read |  |
+> | Microsoft. CDN/Profiles/securitypolicies/Write |  |
+> | Microsoft. CDN/Profiles/securitypolicies/DELETE |  |
 
 ### <a name="microsoftclassicnetwork"></a>Microsoft. ClassicNetwork
 
@@ -1548,6 +1615,9 @@ Služba Azure: [Azure NetApp Files](../azure-netapp-files/index.yml)
 > | Microsoft. NetApp/netAppAccounts/snapshotPolicies/svazky/akce | Vypíše svazky připojené k zásadě snímku. |
 > | Microsoft. NetApp/netAppAccounts/snapshotPolicies/ListVolumes/Action | Vypíše svazky připojené k zásadě snímku. |
 > | Microsoft. NetApp/netAppAccounts/trezory/číst | Přečte prostředek trezoru. |
+> | Microsoft. NetApp/netAppAccounts/volumeGroups/Read | Přečte prostředek skupiny svazků. |
+> | Microsoft. NetApp/netAppAccounts/volumeGroups/Write | Zapíše prostředek skupiny svazků. |
+> | Microsoft. NetApp/netAppAccounts/volumeGroups/DELETE | Odstraní prostředek skupiny svazků. |
 > | Microsoft. NetApp/Operations/Read | Přečte prostředky operace. |
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage
@@ -2116,6 +2186,10 @@ Služba Azure: [Media Services](../media-services/index.yml)
 > | Microsoft. Media/MediaServices/transformes/Jobs/DELETE | Odstranění libovolné úlohy |
 > | Microsoft. Media/MediaServices/transformes/Jobs/cancelJob/Action | Zrušit úlohu |
 > | Microsoft. Media/Operations/Read | Získat dostupné operace |
+> | Microsoft. Media/videoAnalyzers/Read | Čtení účtu nástroje video Analyzer |
+> | Microsoft. Media/videoAnalyzers/Write | Zápis účtu nástroje video Analyzer |
+> | Microsoft. Media/videoAnalyzers/DELETE | Odstranění účtu video Analyzer |
+> | Microsoft. Media/videoAnalyzers/syncStorageKeys/Action | Synchronizace klíčů úložiště připojeného účtu úložiště |
 
 ### <a name="microsoftsearch"></a>Microsoft. Search
 
@@ -3352,6 +3426,7 @@ Služba Azure: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/Factory/privateEndpointConnectionProxies/Validate/Action | Ověřte proxy server připojení privátního koncového bodu. |
 > | Microsoft. DataFactory/Factory/privateEndpointConnectionProxies/operationresults/Read | Přečtěte si výsledky vytvoření proxy připojení privátního koncového bodu. |
 > | Microsoft. DataFactory/Factory/privateEndpointConnectionProxies/operationstatuses/Read | Přečtěte si stav vytvoření proxy připojení privátního koncového bodu. |
+> | Microsoft. DataFactory/Factory/queryFeaturesValue/Read | Přečte hodnoty funkcí řízení expozice pro seznam funkcí. |
 > | Microsoft. DataFactory/Factory/querypipelineruns/Read | Přečte výsledek spuštění kanálu dotazů. |
 > | Microsoft. DataFactory/Factory/querytriggerruns/Read | Přečte výsledek spuštění triggeru. |
 > | Microsoft. DataFactory/Factory/sandboxpipelineruns/Read | Získá informace o běhu ladění pro kanál. |
@@ -3984,6 +4059,8 @@ Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), Azure [SQL
 > | Microsoft. SQL/Locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/DELETE | Odstraní zálohu LTR pro databázi spravované instance. |
 > | Microsoft. SQL/Locations/longTermRetentionManagedInstances/longTermRetentionManagedInstanceBackups/Read | Vrátí seznam záloh spravované instance pro konkrétní spravovanou instanci. |
 > | Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionBackups/Read | Uvádí dlouhodobé zálohy uchovávání pro každou databázi na serveru. |
+> | Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/Copy/Action | Kopírovat dlouhodobou zálohu uchovávání informací |
+> | Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/Update/Action | Aktualizace dlouhodobého uchovávání záloh |
 > | Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/Read | Uvádí dlouhodobé zálohy uchovávání pro databázi. |
 > | Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/DELETE | Odstraní zálohu dlouhodobého uchovávání. |
 > | Microsoft. SQL/Locations/managedDatabaseRestoreAzureAsyncOperation/completeRestore/Action | Dokončena operace obnovení spravované databáze |
@@ -4143,6 +4220,8 @@ Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), Azure [SQL
 > | Microsoft. SQL/servery/communicationLinks/Read | Vrátí seznam komunikačních propojení určeného serveru. |
 > | Microsoft. SQL/servery/communicationLinks/Write | Vytvoří nebo aktualizuje odkaz na komunikaci serveru. |
 > | Microsoft. SQL/servery/communicationLinks/DELETE | Odstraní existující odkaz na komunikaci serveru. |
+> | Microsoft. SQL/servery/connectionPolicies/Read | Vrátí seznam zásad připojení k serveru u zadaného serveru. |
+> | Microsoft. SQL/servery/connectionPolicies/Write | Vytvoří nebo aktualizuje zásadu připojení serveru. |
 > | Microsoft. SQL/servery/databáze/číst | Vrátí seznam databází nebo získá vlastnosti zadané databáze. |
 > | Microsoft. SQL/servery/databáze/zápis | Vytvoří databázi se zadanými parametry nebo aktualizuje vlastnosti nebo značky pro zadanou databázi. |
 > | Microsoft. SQL/servery/databáze/odstranit | Odstraní existující databázi. |
@@ -4207,7 +4286,6 @@ Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), Azure [SQL
 > | Microsoft. SQL/servery/databáze/recommendedSensitivityLabels/Read | Vypsat popisky citlivosti dané databáze |
 > | Microsoft. SQL/servery/databáze/recommendedSensitivityLabels/Write | Doporučené popisky citlivosti aktualizace Batch |
 > | Microsoft. SQL/servery/databáze/replicationLinks/Read | Vrátí seznam replikačních propojení nebo získá vlastnosti pro zadané replikační odkazy. |
-> | Microsoft. SQL/servery/databáze/replicationLinks/DELETE | Nuceně ukončit vztah replikace a s potenciální ztrátou dat |
 > | Microsoft. SQL/servery/databáze/replicationLinks/převzetí služeb při selhání/akce | Převzetí služeb při selhání po synchronizaci všech změn z primární databáze, aby se tato databáze relationship\u0027s jako primární a prováděla se vzdálená primární databáze sekundární |
 > | Microsoft. SQL/servery/databáze/replicationLinks/forceFailoverAllowDataLoss/Action | Převzetí služeb při selhání hned s možnou ztrátou dat, provedení této databáze na primárním relationship\u0027s replikace a provedení vzdálené primární databáze do sekundárního počítače |
 > | Microsoft. SQL/servery/databáze/replicationLinks/updateReplicationMode/Action | Aktualizovat režim replikace pro odkaz na synchronní nebo asynchronní režim |
@@ -4706,6 +4784,9 @@ Služba Azure: [Power BI Embedded](/azure/power-bi-embedded/)
 > | Akce | Popis |
 > | --- | --- |
 > | Microsoft. PowerBIDedicated/Register/Action | Zaregistruje Power BI vyhrazeného poskytovatele prostředků. |
+> | Microsoft. PowerBIDedicated/autoScaleVCores/Read | Načte informace o konkrétním Power BI automatického škálování V jádru. |
+> | Microsoft. PowerBIDedicated/autoScaleVCores/Write | Vytvoří nebo aktualizuje zadané Power BI automatické škálování V jádru. |
+> | Microsoft. PowerBIDedicated/autoScaleVCores/DELETE | Odstraní Power BI automatické škálování V jádru. |
 > | Microsoft. PowerBIDedicated/kapacit/čtení | Načte informace o zadané kapacitě Power BI. |
 > | Microsoft. PowerBIDedicated/kapacit/Write | Vytvoří nebo aktualizuje zadanou kapacitu Power BI. |
 > | Microsoft. PowerBIDedicated/kapacit/DELETE | Odstraní kapacitu Power BI. |
@@ -4796,7 +4877,7 @@ Služba Azure: [Stream Analytics](../stream-analytics/index.yml)
 
 ### <a name="microsoftsynapse"></a>Microsoft. synapse
 
-Služba Azure: [Analýza synapse](../synapse-analytics/index.yml)
+Služba Azure: [Azure synapse Analytics](../synapse-analytics/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -4804,6 +4885,36 @@ Služba Azure: [Analýza synapse](../synapse-analytics/index.yml)
 > | Microsoft. synapse/checkNameAvailability/Action | Kontroluje dostupnost názvu pracovního prostoru. |
 > | Microsoft. synapse/Register/Action | Zaregistruje poskytovatele prostředků Azure synapse Analytics (pracovní prostory) a povolí vytváření pracovních prostorů. |
 > | Microsoft. synapse/zrušit registraci/akce | Zruší registraci poskytovatele prostředků Azure synapse Analytics (pracovní prostory) a zakáže vytváření pracovních prostorů. |
+> | Microsoft. synapse/Locations/operationResults/Read | Přečtěte si výsledek asynchronní operace. |
+> | Microsoft. synapse/Locations/operationStatuses/Read | Přečtěte si stav asynchronní operace. |
+> | Microsoft. synapse/Operations/Read | Přečtěte si dostupné operace od poskytovatele prostředků Azure synapse Analytics. |
+> | Microsoft. synapse/privateLinkHubs/Write | Vytvořte libovolný PrivateLinkHubs. |
+> | Microsoft. synapse/privateLinkHubs/Read | Přečtěte si všechny PrivateLinkHubs. |
+> | Microsoft. synapse/privateLinkHubs/DELETE | Odstraňte PrivateLinkHubs. |
+> | Microsoft. synapse/privateLinkHubs/privateEndpointConnections/Write | Vytvořit nebo aktualizovat připojení privátního koncového bodu pro PrivateLinkHub |
+> | Microsoft. synapse/privateLinkHubs/privateEndpointConnections/Read | Číst jakékoliv připojení privátního koncového bodu pro PrivateLinkHub |
+> | Microsoft. synapse/privateLinkHubs/privateEndpointConnections/DELETE | Odstranit připojení privátního koncového bodu pro PrivateLinkHub |
+> | Microsoft. synapse/privateLinkHubs/privateLinkResources/Read | Získat seznam prostředků privátního propojení |
+> | Microsoft. synapse/resourceGroups/operationStatuses/Read | Přečtěte si stav asynchronní operace. |
+> | Microsoft. synapse/pracovní prostory/replaceAllIpFirewallRules/Action | Nahrazuje všechna pravidla brány firewall protokolu IP pro pracovní prostor. |
+> | Microsoft. synapse/pracovní prostory/zápis | Vytvořte nebo aktualizujte všechny pracovní prostory. |
+> | Microsoft. synapse/pracovní prostory/číst | Přečtěte si všechny pracovní prostory. |
+> | Microsoft. synapse/pracovní prostory/odstranit | Odstraňte všechny pracovní prostory. |
+> | Microsoft. synapse/pracovní prostory/checkDefaultStorageAccountStatus/Action | Kontroluje výchozí stav účtu úložiště. |
+> | Microsoft. synapse/pracovní prostory/správci/zápis | Nastavení správce služby Active Directory v pracovním prostoru |
+> | Microsoft. synapse/pracovní prostory/správci/číst | Získat správce služby Active Directory pracovního prostoru |
+> | Microsoft. synapse/pracovní prostory/správci/odstranit | Odstranit správce služby Active Directory pracovního prostoru |
+> | Microsoft. synapse/pracovní prostory/auditingSettings/Write | Vytvoří nebo aktualizuje nastavení auditování SQL serveru. |
+> | Microsoft. synapse/pracovní prostory/auditingSettings/číst | Přečte výchozí nastavení auditování SQL serveru. |
+> | Microsoft. synapse/pracovní prostory/auditingSettings/operationResults/číst | Nastavení auditování SQL Server |
+> | Microsoft. synapse/pracovní prostory/bigDataPools/Write | Vytvořte nebo aktualizujte všechny fondy Spark. |
+> | Microsoft. synapse/pracovní prostory/bigDataPools/číst | Přečtěte si všechny fondy Spark. |
+> | Microsoft. synapse/pracovní prostory/bigDataPools/DELETE | Odstraňte všechny fondy Spark. |
+> | Microsoft. synapse/pracovní prostory/extendedAuditingSettings/Write | Vytvoří nebo aktualizuje rozšířené nastavení auditování pro SQL Server. |
+> | Microsoft. synapse/pracovní prostory/extendedAuditingSettings/číst | Přečte výchozí nastavení rozšířeného auditování SQL serveru. |
+> | Microsoft. synapse/pracovní prostory/firewallRules/Write | Vytvoří nebo aktualizuje všechna pravidla brány firewall protokolu IP. |
+> | Microsoft. synapse/pracovní prostory/firewallRules/číst | Číst pravidlo brány firewall protokolu IP |
+> | Microsoft. synapse/pracovní prostory/firewallRules/DELETE | Odstraňte všechna pravidla brány firewall protokolu IP. |
 > | Microsoft. synapse/pracovní prostory/integrationRuntimes/číst | Získejte libovolné Integration Runtime. |
 > | Microsoft. synapse/pracovní prostory/integrationruntimes/Write | Vytvoří nebo aktualizuje všechny prostředí Integration runtime. |
 > | Microsoft. synapse/pracovní prostory/integrationRuntimes/DELETE | Odstranit všechny Integration Runtime |
@@ -4823,24 +4934,32 @@ Služba Azure: [Analýza synapse](../synapse-analytics/index.yml)
 > | Microsoft. synapse/pracovní prostory/integrationRuntimes/disableInteractiveQuery/Action | Zakázat interaktivní dotaz u libovolného Integration Runtime |
 > | Microsoft. synapse/pracovní prostory/integrationRuntimes/refreshObjectMetadata/Action | Aktualizace metadat objektu u jakékoli disběhové prostředí |
 > | Microsoft. synapse/pracovní prostory/integrationRuntimes/getObjectMetadata/Action | Získání metadat objektu na jakémkoli prostředí pro mezisebou |
-> | Microsoft. synapse/pracovní prostory/managedIdentitySqlControlSettings/Write | Aktualizace nastavení řízení SQL spravované identity v pracovním prostoru |
-> | Microsoft. synapse/pracovní prostory/managedIdentitySqlControlSettings/číst | Získat nastavení řízení SQL spravované identity |
-> | Microsoft. synapse/pracovní prostory/scopePools/Write | Vytvořte nebo aktualizujte všechny fondy oborů. |
-> | Microsoft. synapse/pracovní prostory/scopePools/číst | Přečtěte si všechny fondy oborů. |
-> | Microsoft. synapse/pracovní prostory/scopePools/DELETE | Odstraňte všechny fondy oborů. |
-> | Microsoft. synapse/Operations/Read | Přečtěte si dostupné operace od poskytovatele prostředků Azure synapse Analytics. |
 > | Microsoft. synapse/pracovní prostory/integrationRuntimes/Nodes/Read | Získá libovolný uzel Integration Runtime. |
 > | Microsoft. synapse/pracovní prostory/integrationRuntimes/Nodes/DELETE | Odstraňte libovolný uzel Integration Runtime. |
 > | Microsoft. synapse/pracovní prostory/integrationRuntimes/Nodes/Write | Opravte všechny Integration Runtime uzlu. |
 > | Microsoft. synapse/pracovní prostory/integrationRuntimes/Nodes/ipAddress/Action | Získat IP adresu Integration Runtime |
-> | Microsoft. synapse/pracovní prostory/firewallRules/Write | Vytvoří nebo aktualizuje všechna pravidla brány firewall protokolu IP. |
-> | Microsoft. synapse/pracovní prostory/firewallRules/číst | Číst pravidlo brány firewall protokolu IP |
-> | Microsoft. synapse/pracovní prostory/firewallRules/DELETE | Odstraňte všechna pravidla brány firewall protokolu IP. |
-> | Microsoft. synapse/pracovní prostory/replaceAllIpFirewallRules/Action | Nahrazuje všechna pravidla brány firewall protokolu IP pro pracovní prostor. |
-> | Microsoft. synapse/pracovní prostory/zápis | Vytvořte nebo aktualizujte všechny pracovní prostory. |
-> | Microsoft. synapse/pracovní prostory/číst | Přečtěte si všechny pracovní prostory. |
-> | Microsoft. synapse/pracovní prostory/odstranit | Odstraňte všechny pracovní prostory. |
-> | Microsoft. synapse/pracovní prostory/checkDefaultStorageAccountStatus/Action | Kontroluje výchozí stav účtu úložiště. |
+> | Microsoft. synapse/pracovní prostory/klíče/zápis | Vytvořit nebo aktualizovat klíče pracovního prostoru |
+> | Microsoft. synapse/pracovní prostory/klíče/číst | Přečtěte si libovolné definice klíče pracovního prostoru. |
+> | Microsoft. synapse/pracovní prostory/klíče/odstranit | Odstraňte libovolný klíč pracovního prostoru. |
+> | Microsoft. synapse/pracovní prostory/knihovny/čtení | Čtení artefaktů knihovny |
+> | Microsoft. synapse/pracovní prostory/managedIdentitySqlControlSettings/Write | Aktualizace nastavení řízení SQL spravované identity v pracovním prostoru |
+> | Microsoft. synapse/pracovní prostory/managedIdentitySqlControlSettings/číst | Získat nastavení řízení SQL spravované identity |
+> | Microsoft. synapse/pracovní prostory/operationResults/číst | Přečtěte si výsledek asynchronní operace. |
+> | Microsoft. synapse/pracovní prostory/operationStatuses/číst | Přečtěte si stav asynchronní operace. |
+> | Microsoft. synapse/pracovní prostory/privateEndpointConnections/Write | Vytvořit nebo aktualizovat připojení privátního koncového bodu |
+> | Microsoft. synapse/pracovní prostory/privateEndpointConnections/číst | Číst jakékoli připojení privátního koncového bodu |
+> | Microsoft. synapse/pracovní prostory/privateEndpointConnections/DELETE | Odstranit připojení privátního koncového bodu |
+> | Microsoft. synapse/pracovní prostory/privateLinkResources/číst | Získat seznam prostředků privátního propojení |
+> | Microsoft. synapse/pracovní prostory/recoverableSqlpools/číst | Získá obnovitelné fondy SQL Analytics, které jsou prostředky reprezentující geografické zálohy fondů SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/restorableDroppedSqlPools/číst | Načte odstraněný fond SQL, který se dá obnovit. |
+> | Microsoft. synapse/pracovní prostory/scopePools/Write | Vytvořte nebo aktualizujte všechny fondy oborů. |
+> | Microsoft. synapse/pracovní prostory/scopePools/číst | Přečtěte si všechny fondy oborů. |
+> | Microsoft. synapse/pracovní prostory/scopePools/DELETE | Odstraňte všechny fondy oborů. |
+> | Microsoft. synapse/pracovní prostory/securityAlertPolicies/Write | Vytvořte nebo aktualizujte zásady výstrah zabezpečení systému SQL Server. |
+> | Microsoft. synapse/pracovní prostory/securityAlertPolicies/číst | Číst výchozí zásady výstrah zabezpečení systému SQL Server. |
+> | Microsoft. synapse/pracovní prostory/sqlAdministrators/Write | Nastavení správce služby Active Directory v pracovním prostoru |
+> | Microsoft. synapse/pracovní prostory/sqlAdministrators/číst | Získat správce služby Active Directory pracovního prostoru |
+> | Microsoft. synapse/pracovní prostory/sqlAdministrators/DELETE | Odstranit správce služby Active Directory pracovního prostoru |
 > | Microsoft. synapse/pracovní prostory/sqlPools/Write | Vytvořte nebo aktualizujte všechny fondy SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/číst | Přečtěte si všechny fondy SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/DELETE | Odstraňte všechny fondy SQL Analytics. |
@@ -4848,114 +4967,76 @@ Služba Azure: [Analýza synapse](../synapse-analytics/index.yml)
 > | Microsoft. synapse/pracovní prostory/sqlPools/Resume/Action | Obnoví všechny fondy SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/restorePoints/Action | Vytvoří bod obnovení fondu SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/Move/Action | Přejmenujte všechny fondy SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/dataWarehouseQueries/číst | Přečtěte si všechny dotazy fondu SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/geoBackupPolicies/číst | Přečtěte si všechny zásady geografického zálohování ve fondu SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/dataWarehouseUserActivities/číst | Přečtěte si všechny uživatelské aktivity fondu SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/restorePoints/číst | Načte všechny body obnovení fondu SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/restorePoints/DELETE | Odstraní bod obnovení. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/dataWarehouseQueries/dataWarehouseQuerySteps/Read | Přečtěte si všechny kroky dotazu na fond SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/maintenanceWindows/číst | Přečtěte si všechna okna údržby fondu SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/maintenanceWindows/Write | Přečtěte si všechna okna údržby fondu SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/maintenanceWindowOptions/číst | Přečtěte si možnosti okna údržby fondu SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/replicationLinks/číst | Přečtěte si všechny odkazy na replikaci fondu SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/transparentDataEncryption/číst | Přečtěte si transparentní šifrování dat konfiguraci všech fondů SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/transparentDataEncryption/Write | Vytvoří nebo aktualizuje libovolný fond SQL Analytics transparentní šifrování dat konfiguraci. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/transparentDataEncryption/operationResults/Read | Načtěte si výsledky operace konfigurace transparentní šifrování dat všech fondů SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/auditingSettings/číst | Přečtěte si všechna nastavení auditování fondu SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/auditingSettings/Write | Vytvoří nebo aktualizuje všechna nastavení auditování fondu SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/operace/číst | Přečtěte si všechny operace fondu SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/použití/číst | Přečtěte si všechna využití fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/auditRecords/číst | Získat záznamy auditu objektů BLOB fondu SQL |
+> | Microsoft. synapse/pracovní prostory/sqlPools/sloupce/číst | Vrátí seznam sloupců pro fond SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/connectionPolicies/číst | Přečtěte si všechny zásady připojení ke fondu SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/currentSensitivityLabels/číst | Přečtěte si aktuální popisky citlivosti všech fondů SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/currentSensitivityLabels/Write | Aktualizovat aktuální popisky citlivosti v dávce |
+> | Microsoft. synapse/pracovní prostory/sqlPools/dataMaskingPolicies/číst | Vrátí seznam zásad pro maskování dat ve fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/dataMaskingPolicies/Write | Vytvoří nebo aktualizuje zásadu maskování dat ve fondu SQL Analytics. |
+> | Microsoft. synapse/Workspaces/sqlPools/dataMaskingPolicies/Rules/Read | Načte seznam pravidel maskování dat ve fondu SQL Analytics. |
+> | Microsoft. synapse/Workspaces/sqlPools/dataMaskingPolicies/Rules/Write | Vytvoří nebo aktualizuje pravidlo maskování dat ve fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/dataWarehouseQueries/číst | Přečtěte si všechny dotazy fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/dataWarehouseQueries/dataWarehouseQuerySteps/Read | Přečtěte si všechny kroky dotazu na fond SQL Analytics. |
+> | Microsoft. synapse/Workspaces/sqlPools/dataWarehouseQueries/Step/Read | Přečtěte si všechny kroky dotazu na fond SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/dataWarehouseUserActivities/číst | Přečtěte si všechny uživatelské aktivity fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/extendedAuditingSettings/číst | Přečtěte si rozšířené nastavení auditování fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/extendedAuditingSettings/Write | Vytvořte nebo aktualizujte rozšířené nastavení auditování fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/rozšíření/číst | Získat rozšíření pro fond SQL Analytics |
+> | Microsoft. synapse/Workspaces/sqlPools/Extensions/Write | Změna rozšíření pro daný fond SQL Analytics |
+> | Microsoft. synapse/pracovní prostory/sqlPools/geoBackupPolicies/číst | Přečtěte si všechny zásady geografického zálohování ve fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/maintenanceWindowOptions/číst | Přečtěte si možnosti okna údržby fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/maintenanceWindows/číst | Přečtěte si všechna okna údržby fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/maintenanceWindows/Write | Přečtěte si všechna okna údržby fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/metadataSync/Write | Vytvoří nebo aktualizuje konfiguraci synchronizace metadat fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/metadataSync/číst | Přečíst konfiguraci synchronizace metadat fondu SQL Analytics |
+> | Microsoft. synapse/pracovní prostory/sqlPools/operationResults/číst | Přečtěte si výsledek asynchronní operace. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/operace/číst | Přečtěte si všechny operace fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/operationStatuses/číst | Přečtěte si výsledek asynchronní operace. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/recommendedSensitivityLabels/číst | Přečtěte si doporučené popisky citlivosti pro všechny fondy SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/recommendedSensitivityLabels/Write | Doporučené popisky citlivosti aktualizace Batch |
+> | Microsoft. synapse/pracovní prostory/sqlPools/replicationLinks/číst | Přečtěte si všechny odkazy na replikaci fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/restorePoints/číst | Načte všechny body obnovení fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/restorePoints/DELETE | Odstraní bod obnovení. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/schémata/číst | Přečtěte si všechna schémata fondů SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/schémata/tabulky/čtení | Přečtěte si všechny tabulky schématu fondu SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/schémata/tabulky/sloupce/číst | Načte všechny sloupce tabulky schématu fondu SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/connectionPolicies/číst | Přečtěte si všechny zásady připojení ke fondu SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/vulnerabilityAssessments/číst | Přečtěte si posouzení ohrožení zabezpečení ve fondu SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/vulnerabilityAssessments/Write | Vytvoří nebo aktualizuje posouzení ohrožení zabezpečení pro fond SQL. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/vulnerabilityAssessments/DELETE | Odstraňte všechny posouzení ohrožení zabezpečení ve fondu SQL Analytics. |
-> | Microsoft. synapse/Workspaces/sqlPools/vulnerabilityAssessments/prověřování/čtení | Přečtěte si všechny záznamy kontroly posouzení ohrožení zabezpečení ve fondu SQL Analytics. |
-> | Microsoft. synapse/Workspaces/sqlPools/vulnerabilityAssessments/prověřování/initiateScan/Action | Zahajte všechny záznamy kontroly posouzení ohrožení zabezpečení ve fondu SQL Analytics. |
-> | Microsoft. synapse/Workspaces/sqlPools/vulnerabilityAssessments/prověřování/export/akce | Exportujte všechny záznamy kontroly posouzení ohrožení zabezpečení ve fondu SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/securityAlertPolicies/číst | Přečtěte si všechny zásady detekce hrozeb ve fondu SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/securityAlertPolicies/Write | Vytvoří nebo aktualizuje všechny zásady detekce hrozeb fondu SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/schémata/tabulky/sloupce/sensitivityLabels/čtení | Získá popisek citlivosti daného sloupce. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/schémata/tabulky/sloupce/sensitivityLabels/povolit/akce | Povolte všechny popisky citlivosti fondu SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/schémata/tabulky/sloupce/sensitivityLabels/zakázat/akce | Zakažte všechny popisky citlivosti fondu SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/schémata/tabulky/sloupce/sensitivityLabels/Write | Vytvoří nebo aktualizuje všechny popisky citlivosti fondu SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/schémata/tabulky/sloupce/sensitivityLabels/odstranit | Odstraňte všechny popisky citlivosti fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/securityAlertPolicies/číst | Přečtěte si všechny zásady detekce hrozeb ve fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/securityAlertPolicies/Write | Vytvoří nebo aktualizuje všechny zásady detekce hrozeb fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/sensitivityLabels/číst | Získá popisek citlivosti daného sloupce. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/transparentDataEncryption/číst | Přečtěte si transparentní šifrování dat konfiguraci všech fondů SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/transparentDataEncryption/Write | Vytvoří nebo aktualizuje libovolný fond SQL Analytics transparentní šifrování dat konfiguraci. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/transparentDataEncryption/operationResults/Read | Načtěte si výsledky operace konfigurace transparentní šifrování dat všech fondů SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/použití/číst | Přečtěte si všechna využití fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/vulnerabilityAssessments/číst | Přečtěte si posouzení ohrožení zabezpečení ve fondu SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/vulnerabilityAssessments/Write | Vytvoří nebo aktualizuje posouzení ohrožení zabezpečení pro fond SQL. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/vulnerabilityAssessments/DELETE | Odstraňte všechny posouzení ohrožení zabezpečení ve fondu SQL Analytics. |
 > | Microsoft. synapse/Workspaces/sqlPools/vulnerabilityAssessments/Rules/směrný plán/číst | Načte směrný plán pravidla posouzení ohrožení zabezpečení fondu SQL Analytics. |
 > | Microsoft. synapse/Workspaces/sqlPools/vulnerabilityAssessments/Rules/směrný plán/Write | Vytvoří nebo aktualizuje jakékoli standardní hodnoty pravidla posouzení ohrožení zabezpečení fondu SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/vulnerabilityAssessments/Rules/směrný plán/odstranit | Odstraňte všechny směrné plány pravidla posouzení ohrožení zabezpečení ve fondu SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/operationStatuses/číst | Přečtěte si stav asynchronní operace. |
-> | Microsoft. synapse/pracovní prostory/operationResults/číst | Přečtěte si výsledek asynchronní operace. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/operationResults/číst | Přečtěte si výsledek asynchronní operace. |
-> | Microsoft. synapse/pracovní prostory/bigDataPools/Write | Vytvořte nebo aktualizujte všechny fondy Spark. |
-> | Microsoft. synapse/pracovní prostory/bigDataPools/číst | Přečtěte si všechny fondy Spark. |
-> | Microsoft. synapse/pracovní prostory/bigDataPools/DELETE | Odstraňte všechny fondy Spark. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/metadataSync/Write | Vytvoří nebo aktualizuje konfiguraci synchronizace metadat fondu SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/metadataSync/číst | Přečíst konfiguraci synchronizace metadat fondu SQL Analytics |
-> | Microsoft. synapse/pracovní prostory/recoverableSqlpools/číst | Získá obnovitelné fondy SQL Analytics, které jsou prostředky reprezentující geografické zálohy fondů SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/správci/zápis | Nastavení správce služby Active Directory v pracovním prostoru |
-> | Microsoft. synapse/pracovní prostory/správci/číst | Získat správce služby Active Directory pracovního prostoru |
-> | Microsoft. synapse/pracovní prostory/správci/odstranit | Odstranit správce služby Active Directory pracovního prostoru |
-> | Microsoft. synapse/pracovní prostory/privateEndpointConnections/Write | Vytvořit nebo aktualizovat připojení privátního koncového bodu |
-> | Microsoft. synapse/pracovní prostory/privateEndpointConnections/číst | Číst jakékoli připojení privátního koncového bodu |
-> | Microsoft. synapse/pracovní prostory/privateEndpointConnections/DELETE | Odstranit připojení privátního koncového bodu |
-> | Microsoft. synapse/pracovní prostory/privateLinkResources/číst | Získat seznam prostředků privátního propojení |
-> | Microsoft. synapse/pracovní prostory/sqlPools/rozšíření/číst | Získat rozšíření pro fond SQL Analytics |
-> | Microsoft. synapse/Workspaces/sqlPools/Extensions/Write | Změna rozšíření pro daný fond SQL Analytics |
-> | Microsoft. synapse/privateLinkHubs/Write | Vytvořte libovolný PrivateLinkHubs. |
-> | Microsoft. synapse/privateLinkHubs/Read | Přečtěte si všechny PrivateLinkHubs. |
-> | Microsoft. synapse/privateLinkHubs/DELETE | Odstraňte PrivateLinkHubs. |
-> | Microsoft. synapse/Locations/operationStatuses/Read | Přečtěte si stav asynchronní operace. |
-> | Microsoft. synapse/Locations/operationResults/Read | Přečtěte si výsledek asynchronní operace. |
-> | Microsoft. synapse/privateLinkHubs/privateLinkResources/Read | Získat seznam prostředků privátního propojení |
-> | Microsoft. synapse/privateLinkHubs/privateEndpointConnections/Write | Vytvořit nebo aktualizovat připojení privátního koncového bodu pro PrivateLinkHub |
-> | Microsoft. synapse/privateLinkHubs/privateEndpointConnections/Read | Číst jakékoliv připojení privátního koncového bodu pro PrivateLinkHub |
-> | Microsoft. synapse/privateLinkHubs/privateEndpointConnections/DELETE | Odstranit připojení privátního koncového bodu pro PrivateLinkHub |
-> | Microsoft. synapse/pracovní prostory/sqlPools/operationStatuses/číst | Přečtěte si výsledek asynchronní operace. |
-> | Microsoft. synapse/pracovní prostory/klíče/zápis | Vytvořit nebo aktualizovat klíče pracovního prostoru |
-> | Microsoft. synapse/pracovní prostory/klíče/číst | Přečtěte si libovolné definice klíče pracovního prostoru. |
-> | Microsoft. synapse/pracovní prostory/klíče/odstranit | Odstraňte libovolný klíč pracovního prostoru. |
-> | Microsoft. synapse/pracovní prostory/knihovny/čtení | Čtení artefaktů knihovny |
+> | Microsoft. synapse/Workspaces/sqlPools/vulnerabilityAssessments/prověřování/čtení | Přečtěte si všechny záznamy kontroly posouzení ohrožení zabezpečení ve fondu SQL Analytics. |
+> | Microsoft. synapse/Workspaces/sqlPools/vulnerabilityAssessments/prověřování/initiateScan/Action | Zahajte všechny záznamy kontroly posouzení ohrožení zabezpečení ve fondu SQL Analytics. |
+> | Microsoft. synapse/Workspaces/sqlPools/vulnerabilityAssessments/prověřování/export/akce | Exportujte všechny záznamy kontroly posouzení ohrožení zabezpečení ve fondu SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/workloadGroups/číst | Vypíše skupiny úloh pro vybraný fond SQL. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/workloadGroups/Write | Nastaví vlastnosti pro určitou skupinu úloh. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/workloadGroups/DELETE | Uvolní konkrétní skupinu úloh. |
+> | Microsoft. synapse/pracovní prostory/sqlPools/workloadGroups/operationStatuses/Read | Stav operace skupiny úloh fondu SQL Analytics |
 > | Microsoft. synapse/pracovní prostory/sqlPools/workloadGroups/workloadClassifiers/Read | Vypisuje klasifikátory úloh pro vybraný fond SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/workloadGroups/workloadClassifiers/Write | Nastaví vlastnosti pro konkrétní třídění úloh. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/workloadGroups/workloadClassifiers/DELETE | Zruší konkrétní třídění úloh. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/extendedAuditingSettings/číst | Přečtěte si rozšířené nastavení auditování fondu SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/extendedAuditingSettings/Write | Vytvořte nebo aktualizujte rozšířené nastavení auditování fondu SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/dataMaskingPolicies/číst | Vrátí seznam zásad pro maskování dat ve fondu SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/dataMaskingPolicies/Write | Vytvoří nebo aktualizuje zásadu maskování dat ve fondu SQL Analytics. |
-> | Microsoft. synapse/Workspaces/sqlPools/dataMaskingPolicies/Rules/Read | Načte seznam pravidel maskování dat ve fondu SQL Analytics. |
-> | Microsoft. synapse/Workspaces/sqlPools/dataMaskingPolicies/Rules/Write | Vytvoří nebo aktualizuje pravidlo maskování dat ve fondu SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/sloupce/číst | Vrátí seznam sloupců pro fond SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/sensitivityLabels/číst | Získá popisek citlivosti daného sloupce. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/auditRecords/číst | Získat záznamy auditu objektů BLOB fondu SQL |
-> | Microsoft. synapse/resourceGroups/operationStatuses/Read | Přečtěte si stav asynchronní operace. |
-> | Microsoft. synapse/pracovní prostory/extendedAuditingSettings/Write | Vytvoří nebo aktualizuje rozšířené nastavení auditování pro SQL Server. |
-> | Microsoft. synapse/pracovní prostory/extendedAuditingSettings/číst | Přečte výchozí nastavení rozšířeného auditování SQL serveru. |
-> | Microsoft. synapse/pracovní prostory/auditingSettings/Write | Vytvoří nebo aktualizuje nastavení auditování SQL serveru. |
-> | Microsoft. synapse/pracovní prostory/auditingSettings/číst | Přečte výchozí nastavení auditování SQL serveru. |
-> | Microsoft. synapse/pracovní prostory/securityAlertPolicies/Write | Vytvořte nebo aktualizujte zásady výstrah zabezpečení systému SQL Server. |
-> | Microsoft. synapse/pracovní prostory/securityAlertPolicies/číst | Číst výchozí zásady výstrah zabezpečení systému SQL Server. |
+> | Microsoft. synapse/Workspaces/sqlPools/workloadGroups/workloadClassifiers/operationResults/číst | Výsledek operace klasifikátoru úlohy fondu SQL Analytics |
+> | Microsoft. synapse/Workspaces/sqlPools/workloadGroups/workloadClassifiers/operationStatuses/číst | Stav operace klasifikátoru úloh ve fondu SQL Analytics |
+> | Microsoft. synapse/pracovní prostory/sqlUsages/číst | Získá omezení využití dostupná pro fondy SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/vulnerabilityAssessments/Write | Vytvoří nebo aktualizuje assementou zprávu o ohrožení zabezpečení SQL serveru. |
 > | Microsoft. synapse/pracovní prostory/vulnerabilityAssessments/číst | Přečte výchozí assementou zprávu o ohrožení zabezpečení SQL serveru. |
 > | Microsoft. synapse/pracovní prostory/vulnerabilityAssessments/DELETE | Odstraní assementou zprávu o ohrožení zabezpečení SQL serveru. |
-> | Microsoft. synapse/pracovní prostory/restorableDroppedSqlPools/číst | Načte odstraněný fond SQL, který se dá obnovit. |
-> | Microsoft. synapse/Workspaces/sqlPools/dataWarehouseQueries/Step/Read | Přečtěte si všechny kroky dotazu na fond SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/sqlPools/workloadGroups/operationStatuses/Read | Stav operace skupiny úloh fondu SQL Analytics |
-> | Microsoft. synapse/Workspaces/sqlPools/workloadGroups/workloadClassifiers/operationStatuses/číst | Stav operace klasifikátoru úloh ve fondu SQL Analytics |
-> | Microsoft. synapse/Workspaces/sqlPools/workloadGroups/workloadClassifiers/operationResults/číst | Výsledek operace klasifikátoru úlohy fondu SQL Analytics |
-> | Microsoft. synapse/pracovní prostory/sqlUsages/číst | Získá omezení využití dostupná pro fondy SQL Analytics. |
-> | Microsoft. synapse/pracovní prostory/auditingSettings/operationResults/číst | Nastavení auditování SQL Server |
-> | Microsoft. synapse/pracovní prostory/sqlAdministrators/Write | Nastavení správce služby Active Directory v pracovním prostoru |
-> | Microsoft. synapse/pracovní prostory/sqlAdministrators/číst | Získat správce služby Active Directory pracovního prostoru |
-> | Microsoft. synapse/pracovní prostory/sqlAdministrators/DELETE | Odstranit správce služby Active Directory pracovního prostoru |
 
 ## <a name="blockchain"></a>Blockchain
 
@@ -6000,6 +6081,11 @@ Služba Azure: [prostorové kotvy Azure](../spatial-anchors/index.yml)
 > | Microsoft. MixedReality/Register/Action | Zaregistruje předplatné pro poskytovatele prostředků smíšené reality. |
 > | Microsoft. MixedReality/zrušit registraci/akce | Zruší registraci předplatného pro poskytovatele prostředků smíšené reality. |
 > | Microsoft. MixedReality/Locations/checknameavailability/Read | Kontroluje dostupnost názvu. |
+> | Microsoft. MixedReality/ObjectAnchorsAccounts/DELETE | Odstraní účet kotev objektu. |
+> | Microsoft. MixedReality/ObjectAnchorsAccounts/klíče listkey/Action | Výpis klíčů účtu ukotvení objektu |
+> | Microsoft. MixedReality/ObjectAnchorsAccounts/Read | Přečtěte si téma vlastnosti účet Kotv objektů. |
+> | Microsoft. MixedReality/ObjectAnchorsAccounts/regeneratekeys/Action | Znovu vygenerovat klíče účtu kotev objektů |
+> | Microsoft. MixedReality/ObjectAnchorsAccounts/Write | Aktualizace vlastností účtu ukotvení objektu |
 > | Microsoft. MixedReality/ObjectUnderstandingAccounts/DELETE | Odstranění objektu porozumění účtu |
 > | Microsoft. MixedReality/ObjectUnderstandingAccounts/klíče listkey/Action | Seznam klíčů, které objekt rozumí účtu |
 > | Microsoft. MixedReality/ObjectUnderstandingAccounts/Read | Přečtěte si vlastnosti objekt porozumění účtu. |
@@ -6021,6 +6107,8 @@ Služba Azure: [prostorové kotvy Azure](../spatial-anchors/index.yml)
 > | Microsoft. MixedReality/spatialAnchorsAccounts/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro Microsoft. MixedReality/spatialAnchorsAccounts. |
 > | Microsoft. MixedReality/spatialAnchorsAccounts/Providers/Microsoft. Insights/metricDefinitions/Read | Získá dostupné metriky pro Microsoft. MixedReality/spatialAnchorsAccounts. |
 > | **Akce dataaction** | **Popis** |
+> | Microsoft. MixedReality/ObjectAnchorsAccounts/ingesta/akce | Vytvořit úlohu ingestování modelu |
+> | Microsoft. MixedReality/ObjectAnchorsAccounts/ingestovat/číst | Získat stav úlohy příjmu modelu |
 > | Microsoft. MixedReality/ObjectUnderstandingAccounts/ingesta/akce | Vytvořit úlohu ingestování modelu |
 > | Microsoft. MixedReality/ObjectUnderstandingAccounts/ingestovat/číst | Získat stav úlohy příjmu modelu |
 > | Microsoft. MixedReality/RemoteRenderingAccounts/Convert/Action | Spustit převod assetu |
@@ -6052,7 +6140,7 @@ Služba Azure: [API Management](../api-management/index.yml)
 > | Microsoft. ApiManagement/zrušit registraci/akce | Zrušení registrace předplatného pro poskytovatele prostředků Microsoft. ApiManagement |
 > | Microsoft. ApiManagement/checkNameAvailability/Read | Zkontroluje, jestli je zadaný název služby k dispozici. |
 > | Microsoft. ApiManagement/deletedservices/Read | Odstraněné API Management služby, které je možné obnovit v období obnovitelného odstranění |
-> | Microsoft. ApiManagement/deletedservices/DELETE | Odstranit službu API Management bez možnosti obnovení |
+> | Microsoft. ApiManagement/Locations/deletedservices/DELETE | Odstranit službu API Management bez možnosti obnovení |
 > | Microsoft. ApiManagement/Operations/Read | Načte všechny operace rozhraní API, které jsou k dispozici pro prostředek Microsoft. ApiManagement. |
 > | Microsoft. ApiManagement/Reports/Read | Získejte sestavy agregované podle časových období, geografické oblasti, vývojářů, produktů, rozhraní API, operací, předplatných a byRequest. |
 > | Microsoft. ApiManagement/Service/Write | Vytvořit nebo aktualizovat instanci služby API Management |
@@ -7530,6 +7618,7 @@ Služba Azure: [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. migruje/assessmentprojects/vmwarecollectors/DELETE | Odstraní kolektor VMware. |
 > | Microsoft. migruje/Locations/checknameavailability/Action | Ověří dostupnost názvu prostředku pro dané předplatné v daném umístění. |
 > | Microsoft. migruje/Locations/assessmentOptions/Read | Získá možnosti posouzení, které jsou k dispozici v daném umístění. |
+> | Microsoft. migruje/Locations/rmsOperationResults/Read | Získá stav operace založené na rámci geografického umístění předplatného. |
 > | Microsoft. migruje/migrateprojects/Read | Získá vlastnosti migrace projektu. |
 > | Microsoft. migruje/migrateprojects/Write | Vytvoří nový projekt migrace nebo aktualizuje existující projekt migrace. |
 > | Microsoft. migruje/migrateprojects/DELETE | Odstraní projekt migrace. |
@@ -7570,6 +7659,7 @@ Služba Azure: [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. migruje/moveCollections/moveResources/Write | Vytvoří nebo aktualizuje prostředek přesunutí. |
 > | Microsoft. migruje/moveCollections/moveResources/DELETE | Odstraní prostředek přesunutí z kolekce Move. |
 > | Microsoft. migruje/moveCollections/Operations/Read | Získá stav operace. |
+> | Microsoft. migruje/moveCollections/requiredFor/Read | Získá prostředky, které budou používat prostředek předaný v parametru dotazu. |
 > | Microsoft. migruje/moveCollections/unresolvedDependencies/Read | Načte seznam nevyřešených závislostí v kolekci Move. |
 > | Microsoft. migrace/operace/čtení | Zobrazí seznam operací, které jsou k dispozici v Microsoft. migrace prostředků Provider |
 > | Microsoft. migrace/projekty/číst | Získá vlastnosti projektu. |
@@ -9438,11 +9528,15 @@ Služba Azure: [Azure Resource Manager](../azure-resource-manager/index.yml)
 > | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Features/Register/Action | Zaregistruje funkci předplatného. |
+> | Microsoft. Features/featureProviders/subscriptionFeatureRegistrations/Read | Získá registraci funkce předplatného v daném poskytovateli prostředků. |
+> | Microsoft. Features/featureProviders/subscriptionFeatureRegistrations/Write | Přidá do daného poskytovatele prostředků registraci funkce předplatného. |
+> | Microsoft. Features/featureProviders/subscriptionFeatureRegistrations/DELETE | Odstraní registraci funkce předplatného v daném poskytovateli prostředků. |
 > | Microsoft. Features/Features/Read | Získá funkce předplatného. |
 > | Microsoft. Features/Operations/Read | Získá seznam operací. |
 > | Microsoft. Features/Providers/Features/Read | Získá funkci předplatného v daném poskytovateli prostředků. |
 > | Microsoft. Features/Providers/Features/Register/Action | Zaregistruje funkci pro předplatné v daném poskytovateli prostředků. |
 > | Microsoft. Features/poskytovatelé/funkce/zrušit registraci/akce | Zruší registraci funkce pro předplatné v daném poskytovateli prostředků. |
+> | Microsoft. Features/subscriptionFeatureRegistrations/Read | Získá registraci funkce předplatného. |
 
 ### <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
 
@@ -9905,76 +9999,78 @@ Služba Azure: [Site Recovery](../site-recovery/index.yml)
 > | Akce | Popis |
 > | --- | --- |
 > | Microsoft. RecoveryServices/Register/Action | Zaregistruje předplatné pro daného poskytovatele prostředků. |
-> | Microsoft. recoveryservices/Locations/backupCrossRegionRestore/Action | Aktivovat obnovení mezi oblastmi |
-> | Microsoft. recoveryservices/Locations/backupCrrJob/Action | Získejte podrobnosti o úloze obnovení mezi oblastmi v sekundární oblasti pro Recovery Services trezor. |
-> | Microsoft. recoveryservices/Locations/backupCrrJobs/Action | Vypíše úlohy obnovení mezi oblastmi v sekundární oblasti pro Recovery Services trezor. |
-> | Microsoft. recoveryservices/Locations/backupPreValidateProtection/Action |  |
-> | Microsoft. recoveryservices/Locations/backupStatus/Action | Zkontroluje stav zálohování pro trezory Recovery Services. |
-> | Microsoft. recoveryservices/Locations/backupValidateFeatures/Action | Ověřit funkce |
+> | Microsoft. RecoveryServices/Locations/backupCrossRegionRestore/Action | Aktivovat obnovení mezi oblastmi |
+> | Microsoft. RecoveryServices/Locations/backupCrrJob/Action | Získejte podrobnosti o úloze obnovení mezi oblastmi v sekundární oblasti pro Recovery Services trezor. |
+> | Microsoft. RecoveryServices/Locations/backupCrrJobs/Action | Vypíše úlohy obnovení mezi oblastmi v sekundární oblasti pro Recovery Services trezor. |
+> | Microsoft. RecoveryServices/Locations/backupPreValidateProtection/Action |  |
+> | Microsoft. RecoveryServices/Locations/backupStatus/Action | Zkontroluje stav zálohování pro trezory Recovery Services. |
+> | Microsoft. RecoveryServices/Locations/backupValidateFeatures/Action | Ověřit funkce |
 > | Microsoft. RecoveryServices/Locations/allocateStamp/Action | AllocateStamp je interní operace, kterou používá služba. |
 > | Microsoft. RecoveryServices/Locations/checkNameAvailability/Action | Ověřit dostupnost názvu prostředku je rozhraní API, které kontroluje, jestli je název prostředku dostupný. |
 > | Microsoft. RecoveryServices/Locations/allocatedStamp/Read | GetAllocatedStamp je interní operace, kterou používá služba. |
-> | Microsoft. recoveryservices/Locations/backupAadProperties/Read | Získejte vlastnosti AAD pro ověřování ve třetí oblasti pro obnovení mezi oblastmi. |
-> | Microsoft. recoveryservices/Locations/backupCrrOperationResults/Read | Vrátí výsledek operace CRR pro trezor Recovery Services. |
-> | Microsoft. recoveryservices/Locations/backupCrrOperationsStatus/Read | Vrátí stav operace CRR pro trezor Recovery Services. |
-> | Microsoft. recoveryservices/Locations/backupProtectedItem/Write | Vytvořit položku chráněnou zálohováním |
-> | Microsoft. recoveryservices/Locations/backupProtectedItems/Read | Vrátí seznam všech chráněných položek. |
+> | Microsoft. RecoveryServices/Locations/backupAadProperties/Read | Získejte vlastnosti AAD pro ověřování ve třetí oblasti pro obnovení mezi oblastmi. |
+> | Microsoft. RecoveryServices/Locations/backupCrrOperationResults/Read | Vrátí výsledek operace CRR pro trezor Recovery Services. |
+> | Microsoft. RecoveryServices/Locations/backupCrrOperationsStatus/Read | Vrátí stav operace CRR pro trezor Recovery Services. |
+> | Microsoft. RecoveryServices/Locations/backupProtectedItem/Write | Vytvořit položku chráněnou zálohováním |
+> | Microsoft. RecoveryServices/Locations/backupProtectedItems/Read | Vrátí seznam všech chráněných položek. |
 > | Microsoft. RecoveryServices/Locations/stav operationstatus/Read | Získá stav operace pro danou operaci. |
 > | Microsoft. RecoveryServices/Operations/Read | Operace vrátí seznam operací pro poskytovatele prostředků. |
-> | Microsoft. recoveryservices/trezory/backupJobsExport/Action | Exportovat úlohy |
-> | Microsoft. recoveryservices/trezory/backupSecurityPIN/Action | Vrátí informace o bezpečnostním PIN kódu pro trezor Recovery Services. |
-> | Microsoft. recoveryservices/trezory/backupValidateOperation/Action | Ověřit operaci pro chráněnou položku |
+> | Microsoft. RecoveryServices/trezory/backupJobsExport/Action | Exportovat úlohy |
+> | Microsoft. RecoveryServices/trezory/backupSecurityPIN/Action | Vrátí informace o bezpečnostním PIN kódu pro trezor Recovery Services. |
+> | Microsoft. RecoveryServices/trezory/backupValidateOperation/Action | Ověřit operaci pro chráněnou položku |
 > | Microsoft. RecoveryServices/trezory/Write | Operace vytvořit trezor vytvoří prostředek Azure typu trezor. |
 > | Microsoft. RecoveryServices/trezory/číst | Operace získat úložiště Získá objekt, který představuje prostředek Azure typu trezor. |
 > | Microsoft. RecoveryServices/trezory/odstranit | Operace odstranění trezoru odstraní zadaný prostředek Azure typu trezor. |
-> | Microsoft. recoveryservices/trezory/backupconfig/Read | Vrátí konfiguraci pro trezor Recovery Services. |
-> | Microsoft. recoveryservices/trezory/backupconfig/Write | Aktualizuje konfiguraci pro trezor Recovery Services. |
-> | Microsoft. recoveryservices/trezory/backupEncryptionConfigs/Read | Získá konfiguraci šifrování prostředků zálohování. |
-> | Microsoft. recoveryservices/trezory/backupEncryptionConfigs/Write | Aktualizuje konfiguraci šifrování prostředků zálohy. |
-> | Microsoft. recoveryservices/trezory/backupEngines/Read | Vrátí všechny servery pro správu zálohování zaregistrované s trezorem. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/refreshContainers/Action | Aktualizuje seznam kontejnerů. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/backupProtectionIntent/DELETE | Odstranit záložní záměr ochrany |
-> | Microsoft. recoveryservices/trezory/backupFabrics/backupProtectionIntent/Read | Získat záložní záměr ochrany |
-> | Microsoft. recoveryservices/trezory/backupFabrics/backupProtectionIntent/Write | Vytvořit záložní záměr ochrany |
-> | Microsoft. recoveryservices/trezory/backupFabrics/operationResults/Read | Vrátí stav operace. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/operationsStatus/Read | Vrátí stav operace. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectableContainers/Read | Získat všechny chráněné kontejnery |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/DELETE | Odstraní registrovaný kontejner. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/Dotázat se/Action | Dotazování na úlohy v rámci kontejneru |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/Read | Vrátí všechny registrované kontejnery. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/Write | Vytvoří registrovaný kontejner. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/Items/Read | Získat všechny položky v kontejneru |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/operationResults/Read | Načte výsledek operace provedené na kontejneru ochrany. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/operationsStatus/Read | Načte stav operace provedené na kontejneru ochrany. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/Backup/Action | Provede zálohování chráněné položky. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/DELETE | Odstraní chráněnou položku. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/Read | Vrátí podrobnosti objektu chráněné položky. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/Write | Vytvořit položku chráněnou zálohováním |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/operationResults/číst | Načte výsledek operace provedené na chráněných položkách. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/operationsStatus/číst | Vrátí stav operace provedené na chráněných položkách. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/accessToken/Action | Získejte AccessToken pro obnovení mezi oblastmi. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/Action | Zřídit rychlé obnovení položky pro chráněnou položku |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/číst | Získat body obnovení pro chráněné položky. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/Restore/Action | Obnoví body obnovení pro chráněné položky. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/Action | Odvolání okamžitého obnovení položky pro chráněnou položku |
-> | Microsoft. recoveryservices/trezory/backupJobs/Cancel/Action | Zrušit úlohu |
-> | Microsoft. recoveryservices/trezory/backupJobs/Read | Vrátí všechny objekty úlohy. |
-> | Microsoft. recoveryservices/trezory/backupJobs/operationResults/Read | Vrátí výsledek operace úlohy. |
-> | Microsoft. recoveryservices/trezory/backupJobs/operationsStatus/Read | Vrátí stav operace úlohy. |
-> | Microsoft. recoveryservices/trezory/backupOperationResults/Read | Vrátí výsledek operace zálohování pro Recovery Services trezor. |
-> | Microsoft. recoveryservices/trezory/backupOperations/Read | Vrátí stav operace zálohování pro trezor Recovery Services. |
-> | Microsoft. recoveryservices/trezory/backupPolicies/DELETE | Odstraní zásady ochrany. |
-> | Microsoft. recoveryservices/trezory/backupPolicies/Read | Vrátí všechny zásady ochrany. |
-> | Microsoft. recoveryservices/trezory/backupPolicies/Write | Vytvoří zásady ochrany. |
-> | Microsoft. recoveryservices/trezory/backupPolicies/operationResults/Read | Načte výsledky operace zásad. |
-> | Microsoft. recoveryservices/trezory/backupPolicies/operace/číst | Získá stav operace zásad. |
-> | Microsoft. recoveryservices/trezory/backupProtectableItems/Read | Vrátí seznam všech chráněných položek. |
-> | Microsoft. recoveryservices/trezory/backupProtectedItems/Read | Vrátí seznam všech chráněných položek. |
-> | Microsoft. recoveryservices/trezory/backupProtectionContainers/Read | Vrátí všechny kontejnery patřící k předplatnému. |
-> | Microsoft. recoveryservices/trezory/backupProtectionIntents/Read | Vypsat všechny záložní záměry ochrany |
-> | Microsoft. recoveryservices/trezory/backupstorageconfig/Read | Vrátí konfiguraci úložiště pro Recovery Services trezor. |
-> | Microsoft. recoveryservices/trezory/backupstorageconfig/Write | Aktualizuje konfiguraci úložiště pro trezor Recovery Services. |
-> | Microsoft. recoveryservices/trezory/backupUsageSummaries/Read | Vrátí souhrny pro chráněné položky a chráněné servery pro Recovery Services. |
+> | Microsoft. RecoveryServices/trezory/backupconfig/Read | Vrátí konfiguraci pro trezor Recovery Services. |
+> | Microsoft. RecoveryServices/trezory/backupconfig/Write | Aktualizuje konfiguraci pro trezor Recovery Services. |
+> | Microsoft. RecoveryServices/trezory/backupEncryptionConfigs/Read | Získá konfiguraci šifrování prostředků zálohování. |
+> | Microsoft. RecoveryServices/trezory/backupEncryptionConfigs/Write | Aktualizuje konfiguraci šifrování prostředků zálohy. |
+> | Microsoft. RecoveryServices/trezory/backupEngines/Read | Vrátí všechny servery pro správu zálohování zaregistrované s trezorem. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/refreshContainers/Action | Aktualizuje seznam kontejnerů. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/backupProtectionIntent/DELETE | Odstranit záložní záměr ochrany |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/backupProtectionIntent/Read | Získat záložní záměr ochrany |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/backupProtectionIntent/Write | Vytvořit záložní záměr ochrany |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/operationResults/Read | Vrátí stav operace. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/operationsStatus/Read | Vrátí stav operace. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectableContainers/Read | Získat všechny chráněné kontejnery |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/DELETE | Odstraní registrovaný kontejner. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Dotázat se/Action | Dotazování na úlohy v rámci kontejneru |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Read | Vrátí všechny registrované kontejnery. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Write | Vytvoří registrovaný kontejner. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Items/Read | Získat všechny položky v kontejneru |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/operationResults/Read | Načte výsledek operace provedené na kontejneru ochrany. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/operationsStatus/Read | Načte stav operace provedené na kontejneru ochrany. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/Backup/Action | Provede zálohování chráněné položky. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/DELETE | Odstraní chráněnou položku. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/Read | Vrátí podrobnosti objektu chráněné položky. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPointsRecommendedForMove/Action | Získat body obnovení doporučené pro přesun na jinou úroveň |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/Write | Vytvořit položku chráněnou zálohováním |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/operationResults/číst | Načte výsledek operace provedené na chráněných položkách. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/operationsStatus/číst | Vrátí stav operace provedené na chráněných položkách. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/accessToken/Action | Získejte AccessToken pro obnovení mezi oblastmi. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/Move/Action | Přesunout bod obnovení do jiné úrovně |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/Action | Zřídit rychlé obnovení položky pro chráněnou položku |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/číst | Získat body obnovení pro chráněné položky. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/Restore/Action | Obnoví body obnovení pro chráněné položky. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/Action | Odvolání okamžitého obnovení položky pro chráněnou položku |
+> | Microsoft. RecoveryServices/trezory/backupJobs/Cancel/Action | Zrušit úlohu |
+> | Microsoft. RecoveryServices/trezory/backupJobs/Read | Vrátí všechny objekty úlohy. |
+> | Microsoft. RecoveryServices/trezory/backupJobs/operationResults/Read | Vrátí výsledek operace úlohy. |
+> | Microsoft. RecoveryServices/trezory/backupJobs/operationsStatus/Read | Vrátí stav operace úlohy. |
+> | Microsoft. RecoveryServices/trezory/backupOperationResults/Read | Vrátí výsledek operace zálohování pro Recovery Services trezor. |
+> | Microsoft. RecoveryServices/trezory/backupOperations/Read | Vrátí stav operace zálohování pro trezor Recovery Services. |
+> | Microsoft. RecoveryServices/trezory/backupPolicies/DELETE | Odstraní zásady ochrany. |
+> | Microsoft. RecoveryServices/trezory/backupPolicies/Read | Vrátí všechny zásady ochrany. |
+> | Microsoft. RecoveryServices/trezory/backupPolicies/Write | Vytvoří zásady ochrany. |
+> | Microsoft. RecoveryServices/trezory/backupPolicies/operationResults/Read | Načte výsledky operace zásad. |
+> | Microsoft. RecoveryServices/trezory/backupPolicies/operace/číst | Získá stav operace zásad. |
+> | Microsoft. RecoveryServices/trezory/backupProtectableItems/Read | Vrátí seznam všech chráněných položek. |
+> | Microsoft. RecoveryServices/trezory/backupProtectedItems/Read | Vrátí seznam všech chráněných položek. |
+> | Microsoft. RecoveryServices/trezory/backupProtectionContainers/Read | Vrátí všechny kontejnery patřící k předplatnému. |
+> | Microsoft. RecoveryServices/trezory/backupProtectionIntents/Read | Vypsat všechny záložní záměry ochrany |
+> | Microsoft. RecoveryServices/trezory/backupstorageconfig/Read | Vrátí konfiguraci úložiště pro Recovery Services trezor. |
+> | Microsoft. RecoveryServices/trezory/backupstorageconfig/Write | Aktualizuje konfiguraci úložiště pro trezor Recovery Services. |
+> | Microsoft. RecoveryServices/trezory/backupUsageSummaries/Read | Vrátí souhrny pro chráněné položky a chráněné servery pro Recovery Services. |
 > | Microsoft. RecoveryServices/trezory/certifikáty/zapisovat | Operace aktualizovat certifikát prostředku aktualizuje certifikát přihlašovacích údajů k prostředku nebo úložišti. |
 > | Microsoft. RecoveryServices/trezory/extendedInformation/Read | Operace získat rozšířené informace získá rozšířené informace o objektu, které představují prostředek Azure typu? trezor? |
 > | Microsoft. RecoveryServices/trezory/extendedInformation/Write | Operace získat rozšířené informace získá rozšířené informace o objektu, které představují prostředek Azure typu? trezor? |
@@ -9983,14 +10079,14 @@ Služba Azure: [Site Recovery](../site-recovery/index.yml)
 > | Microsoft. RecoveryServices/trezory/monitoringAlerts/Write | Vyřeší upozornění. |
 > | Microsoft. RecoveryServices/trezory/monitoringConfigurations/Read | Získá konfiguraci oznámení trezoru služby Recovery Services. |
 > | Microsoft. RecoveryServices/trezory/monitoringConfigurations/Write | Nakonfiguruje e-mailová oznámení pro trezor služby Recovery Services. |
-> | Microsoft. recoveryservices/trezory/privateEndpointConnectionProxies/DELETE | Počkejte několik minut a potom operaci opakujte. Pokud problém přetrvá, obraťte se na podporu Microsoftu. |
-> | Microsoft. recoveryservices/trezory/privateEndpointConnectionProxies/Read | Získat všechny chráněné kontejnery |
-> | Microsoft. recoveryservices/trezory/privateEndpointConnectionProxies/ověřit/akci | Získat všechny chráněné kontejnery |
-> | Microsoft. recoveryservices/trezory/privateEndpointConnectionProxies/Write | Získat všechny chráněné kontejnery |
-> | Microsoft. recoveryservices/trezory/privateEndpointConnectionProxies/operationsStatus/Read | Získat všechny chráněné kontejnery |
-> | Microsoft. recoveryservices/trezory/privateEndpointConnections/DELETE | Odstranění požadavků na soukromý koncový bod Toto volání provádí správce zálohování. |
-> | Microsoft. recoveryservices/trezory/privateEndpointConnections/Write | Schvalte nebo odmítněte požadavky na soukromý koncový bod. Toto volání provádí správce zálohování. |
-> | Microsoft. recoveryservices/trezory/privateEndpointConnections/operationsStatus/Read | Vrátí stav operace pro připojení privátního koncového bodu. |
+> | Microsoft. RecoveryServices/trezory/privateEndpointConnectionProxies/DELETE | Počkejte několik minut a potom operaci opakujte. Pokud problém přetrvá, obraťte se na podporu Microsoftu. |
+> | Microsoft. RecoveryServices/trezory/privateEndpointConnectionProxies/Read | Získat všechny chráněné kontejnery |
+> | Microsoft. RecoveryServices/trezory/privateEndpointConnectionProxies/ověřit/akci | Získat všechny chráněné kontejnery |
+> | Microsoft. RecoveryServices/trezory/privateEndpointConnectionProxies/Write | Získat všechny chráněné kontejnery |
+> | Microsoft. RecoveryServices/trezory/privateEndpointConnectionProxies/operationsStatus/Read | Získat všechny chráněné kontejnery |
+> | Microsoft. RecoveryServices/trezory/privateEndpointConnections/DELETE | Odstranění požadavků na soukromý koncový bod Toto volání provádí správce zálohování. |
+> | Microsoft. RecoveryServices/trezory/privateEndpointConnections/Write | Schvalte nebo odmítněte požadavky na soukromý koncový bod. Toto volání provádí správce zálohování. |
+> | Microsoft. RecoveryServices/trezory/privateEndpointConnections/operationsStatus/Read | Vrátí stav operace pro připojení privátního koncového bodu. |
 > | Microsoft. RecoveryServices/trezory/registeredIdentities/Write | Operaci kontejneru registrovat službu lze použít k registraci kontejneru pomocí služby Recovery Services. |
 > | Microsoft. RecoveryServices/trezory/registeredIdentities/Read | Operaci získat kontejnery lze použít k získání kontejnerů zaregistrovaných pro určitý prostředek. |
 > | Microsoft. RecoveryServices/trezory/registeredIdentities/DELETE | Operaci zrušení registrace kontejneru lze použít k odregistraci kontejneru. |
@@ -10103,6 +10199,7 @@ Služba Azure: [Site Recovery](../site-recovery/index.yml)
 > | Microsoft. RecoveryServices/trezory/replicationStorageClassificationMappings/Read | Čtení jakýchkoli mapování klasifikací úložiště |
 > | Microsoft. RecoveryServices/trezory/replicationStorageClassifications/Read | Čtení všech klasifikací úložiště |
 > | Microsoft. RecoveryServices/trezory/replicationSupportedOperatingSystems/Read | Přečíst vše  |
+> | Microsoft. RecoveryServices/trezory/replicationSupportedRegionMappings/Read | Přečíst vše  |
 > | Microsoft. RecoveryServices/trezory/replicationUsages/Read | Čtení všech využití replikace trezoru |
 > | Microsoft. RecoveryServices/trezory/replicationVaultHealth/Read | Přečtěte si stav replikace trezoru |
 > | Microsoft. RecoveryServices/trezory/replicationVaultHealth/Refresh/Action | Aktualizovat stav trezoru |
@@ -10110,7 +10207,7 @@ Služba Azure: [Site Recovery](../site-recovery/index.yml)
 > | Microsoft. RecoveryServices/trezory/replicationVaultSettings/Read | Přečíst vše  |
 > | Microsoft. RecoveryServices/trezory/replicationVaultSettings/Write | Vytvořit nebo aktualizovat libovolnou  |
 > | Microsoft. RecoveryServices/trezory/replicationvCenters/Read | Číst libovolný servery vCenter |
-> | Microsoft. recoveryservices/trezory/používání/čtení | Vrátí podrobnosti využití trezoru Recovery Services. |
+> | Microsoft. RecoveryServices/trezory/používání/čtení | Vrátí podrobnosti využití trezoru Recovery Services. |
 > | Microsoft. RecoveryServices/trezory/používání/čtení | Čtení všech použití trezoru |
 > | Microsoft. RecoveryServices/trezory/vaultTokens/Read | Operaci tokenu trezoru jde použít k získání tokenu trezoru pro operace back-endu na úrovni trezoru. |
 
@@ -10251,24 +10348,7 @@ Služba Azure: přehledy monitorování Microsoftu
 > | Microsoft. Intune/diagnosticsettings/DELETE | Odstranění nastavení diagnostiky |
 > | Microsoft. Intune/diagnosticsettingscategories/Read | Čtení kategorií nastavení diagnostiky |
 
-## <a name="other"></a>Jiné
-
-### <a name="microsoftbingmaps"></a>Microsoft. BingMaps
-
-Služba Azure: [mapy Bing](/BingMaps/)
-
-> [!div class="mx-tableFixed"]
-> | Akce | Popis |
-> | --- | --- |
-> | Microsoft. BingMaps/updateCommunicationPreference/Action | Aktualizuje předvolby komunikace pro vlastníka Microsoft. BingMaps. |
-> | Microsoft. BingMaps/listCommunicationPreference/Action | Získá předvolby komunikace pro vlastníka Microsoft. BingMaps. |
-> | Microsoft. BingMaps/mapApis/Read | Získá prostředek pro Microsoft. BingMaps/mapApis. |
-> | Microsoft. BingMaps/mapApis/Write | Aktualizuje prostředek pro Microsoft. BingMaps/mapApis. |
-> | Microsoft. BingMaps/mapApis/DELETE | Odstraní prostředek pro Microsoft. BingMaps/mapApis. |
-> | Microsoft. BingMaps/mapApis/regenerateKey/Action | Znovu vygenerovat klíč (y) pro Microsoft. BingMaps/mapApis |
-> | Microsoft. BingMaps/mapApis/listSecrets/Action | Výpis tajných kódů pro Microsoft. BingMaps/mapApis |
-> | Microsoft. BingMaps/mapApis/listUsageMetrics/Action | Vypíše metriky pro Microsoft. BingMaps/mapApis. |
-> | Microsoft. BingMaps/Operations/Read | Výpis operací pro Microsoft. BingMaps |
+## <a name="other"></a>Ostatní
 
 ### <a name="microsoftdesktopvirtualization"></a>Microsoft. DesktopVirtualization
 

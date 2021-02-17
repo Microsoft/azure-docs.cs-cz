@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 5658bfcf0bf877db1dd001c2af58a40f3b027bd9
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: d54207de9d74944e5b44e9970c1c5b896a56a373
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576240"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560765"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Kurz: prozkoumání digitálních vláken Azure pomocí ukázkové klientské aplikace
 
@@ -118,7 +118,7 @@ CreateModels Room
 ```
 
 Jelikož modely nelze přepsat, nyní bude vrácena chyba služby.
-Podrobnosti o tom, jak odstranit existující modely, naleznete v tématu [*How to: Manage Custom Models*](how-to-manage-model.md).
+Podrobnosti o tom, jak odstranit existující modely, naleznete v tématu [*How to: Manage DTDL Models*](how-to-manage-model.md).
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)

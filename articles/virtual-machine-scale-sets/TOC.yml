@@ -344,7 +344,7 @@
               href: ../virtual-machines/windows/dedicated-hosts-powershell.md
             - name: Portál
               href: ../virtual-machines/dedicated-hosts-portal.md
-        - name: Použití spotové instance
+        - name: Virtual Machines na místě Azure
           href: use-spot.md
     - name: Spravovat
       items:

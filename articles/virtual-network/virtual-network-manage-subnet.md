@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2020
 ms.author: kumud
-ms.openlocfilehash: 54228ac0aa582d15509fbf967728364841e52453
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: d591194f09e85c3e34ed4b904249df994a14bff5
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220571"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558595"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Přidání, změna nebo odstranění podsítě virtuální sítě
 
@@ -81,7 +81,7 @@ Pokud ho nemáte, nastavte účet Azure s aktivním předplatným. [Vytvořte si
     | Nastavení | Popis |
     | --- | --- |
     | **Rozsah adres** | Pokud v rámci podsítě nejsou nasazené žádné prostředky, můžete změnit rozsah adres. Pokud v podsíti existují nějaké prostředky, musíte buď přesunout prostředky do jiné podsítě, nebo je nejdřív odstranit z podsítě. Postup přesunutí nebo odstranění prostředku se liší v závislosti na prostředku. Pokud chcete zjistit, jak přesunout nebo odstranit prostředky, které jsou v podsítích, přečtěte si dokumentaci pro každý z těchto typů prostředků. Prohlédněte si omezení pro **Rozsah adres** v kroku 4 [Přidání podsítě](#add-a-subnet). |
-    | **Uživatelé** | Přístup k podsíti můžete řídit pomocí integrovaných rolí nebo vlastních rolí. Další informace o přiřazování rolí a uživatelů pro přístup k podsíti najdete v tématu [Přidání přiřazení role](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-role-assignment). |
+    | **Uživatelé** | Přístup k podsíti můžete řídit pomocí integrovaných rolí nebo vlastních rolí. Další informace o přiřazování rolí a uživatelů pro přístup k podsíti najdete v tématu [přiřazení rolí Azure](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). |
     | **Skupina zabezpečení sítě** a **Tabulka směrování** | Viz krok 4 [Přidání podsítě](#add-a-subnet). |
     | **Koncové body služby** | <p>Viz koncové body služby v kroku 4 [Přidání podsítě](#add-a-subnet). Při povolování koncového bodu služby pro existující podsíť zajistěte, aby na žádném prostředku v podsíti neběžely žádné kritické úlohy. Koncové body služby přepínají trasy v každém síťovém rozhraní v podsíti. Koncové body služby se nacházejí v používání výchozí trasy s předponou adresy *0.0.0.0/0* a typem dalšího segmentu směrování *Internet*, aby bylo možné použít novou trasu s předponami adres služby a typem dalšího segmentu směrování *VirtualNetworkServiceEndpoint*.</p><p>Během přepínače se můžou ukončit všechna otevřená připojení TCP. Koncový bod služby není povolený, dokud se přenos toků ke službě pro všechna síťová rozhraní neaktualizuje pomocí nové trasy. Další informace o směrování najdete v tématu [směrování provozu virtuální sítě](virtual-networks-udr-overview.md).</p> |
     | **Delegování podsítě** | Viz koncové body služby v kroku 4 [Přidání podsítě](#add-a-subnet). Delegování podsítě lze změnit na hodnotu nula nebo více delegování, které jsou pro něj povoleny. Pokud je prostředek pro službu už v podsíti nasazený, delegování podsítě nejde přidat ani odebrat, dokud se neodstraní všechny prostředky pro tuto službu. Chcete-li delegovat jinou službu, v seznamu **služeb** vyberte službu, ze které chcete delegovat oprávnění. |
@@ -120,7 +120,7 @@ Podsíť můžete odstranit pouze v případě, že v podsíti nejsou žádné p
 
 Aby bylo možné provádět úlohy v podsítích, musí být váš účet přiřazen k [roli Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazená k příslušným akcím v následující tabulce:
 
-|Akce                                                                   |   Name                                       |
+|Akce                                                                   |   Název                                       |
 |-----------------------------------------------------------------------  |   -----------------------------------------  |
 |Microsoft. Network/virtualNetworks/podsítí/čtení                           |   Čtení podsítě virtuální sítě              |
 |Microsoft. Network/virtualNetworks/podsítí/Write                          |   Vytvoření nebo aktualizace podsítě virtuální sítě  |

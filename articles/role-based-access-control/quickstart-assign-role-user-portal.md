@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: c6736bb2642ff08d0aa3cda536ef1599324efded
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcba9cad208c2ac170f91cc06a6db22e271f2a70
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85362006"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559326"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-the-azure-portal"></a>Kurz: udělení přístupu uživatele k prostředkům Azure pomocí Azure Portal
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Udělení přístupu pro uživatele v oboru skupiny prostředků
 > * Odebrání přístupu
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -44,7 +44,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
    ![Přidání nové skupiny prostředků](./media/quickstart-assign-role-user-portal/resource-group.png)
 
-1. Jako **název skupiny prostředků**zadejte **RBAC-Resource-Group**.
+1. Jako **název skupiny prostředků** zadejte **RBAC-Resource-Group**.
 
 1. Vyberte předplatné a umístění.
 
@@ -58,9 +58,9 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="grant-access"></a>Udělení přístupu
 
-Když ve službě Azure RBAC udělíte přístup, vytvoříte přiřazení role.
+Když ve službě Azure RBAC udělíte přístup, přiřadíte roli Azure.
 
-1. V seznamu **skupin prostředků**klikněte na novou skupinu prostředků **RBAC-Resource-Group** .
+1. V seznamu **skupin prostředků** klikněte na novou skupinu prostředků **RBAC-Resource-Group** .
 
 1. Klikněte na **Řízení přístupu (IAM)**.
 
@@ -82,7 +82,7 @@ Když ve službě Azure RBAC udělíte přístup, vytvoříte přiřazení role.
 
 1. V seznamu **Vybrat** vyberte sebe nebo jiného uživatele.
 
-1. Kliknutím na **Uložit** vytvořte přiřazení role.
+1. Kliknutím na **Uložit** roli přiřaďte.
 
    Po chvíli se uživateli přiřadí role Přispěvatel virtuálního počítače v oboru skupin prostředků RBAC-Resource-Group.
 
@@ -90,7 +90,7 @@ Když ve službě Azure RBAC udělíte přístup, vytvoříte přiřazení role.
 
 ## <a name="remove-access"></a>Odebrání přístupu
 
-Pokud chcete v Azure RBAC odebrat přístup, odeberte přiřazení role.
+Když chcete v Azure RBAC odebrat přístup, odeberete přiřazenou roli.
 
 1. V seznamu přiřazení rolí přidejte značku zaškrtnutí vedle uživatele s rolí Přispěvatel virtuálních počítačů.
 

@@ -1,6 +1,6 @@
 ---
-title: Kurz – vytvoření balíčku pro přístup – Správa nároků Azure AD
-description: Podrobný návod, jak vytvořit první balíček přístupu v Azure Active Directory správě nároků.
+title: Kurz – Správa přístupu k prostředkům v Azure AD – Správa nároků
+description: Podrobný návod, jak vytvořit první balíček přístupu pomocí Azure Portal v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
 author: ajburnle
@@ -16,14 +16,14 @@ ms.date: 09/30/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2625b1e0ccc4c3129f412eff144f47d9dc97b961
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1adbc653c8b698cb7b439b54b0a77d2b8cd4042a
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937900"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547396"
 ---
-# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Kurz: vytvoření prvního balíčku přístupu ve správě nároků Azure AD
+# <a name="tutorial-manage-access-to-resources-in-azure-ad-entitlement-management"></a>Kurz: Správa přístupu k prostředkům v Azure AD – Správa nároků
 
 Správa přístupu ke všem zdrojům prostředků, jako jsou skupiny, aplikace a weby, je důležitou funkcí pro organizace. Chcete zaměstnancům udělit správnou úroveň přístupu, které potřebují k zajištění produktivity, a odebrat svůj přístup, když už ho nepotřebujete.
 
@@ -41,8 +41,6 @@ V tomto kurzu se naučíte:
 Podrobný příklad procesu nasazení správy opravňujících Azure Active Directory, včetně vytvoření prvního balíčku pro přístup, najdete v následujícím videu:
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
-
-Balíček pro přístup můžete také vytvořit programově pomocí Microsoft Graph. Kurz, ve kterém se dozvíte, jak vytvořit balíček pro přístup prostřednictvím kódu programu, najdete v tématu [rozhraní API pro správu oprávnění](/graph/tutorial-access-package-api?view=graph-rest-beta).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -67,7 +65,7 @@ Adresář prostředků má jeden nebo více prostředků ke sdílení. V tomto k
 
 1. Vytvořte nebo nakonfigurujte následující dva uživatele. Můžete použít tyto názvy nebo jiné názvy. **Admin1** může být uživatel, ke kterému jste aktuálně přihlášení.
 
-    | Name | Role adresáře |
+    | Název | Role adresáře |
     | --- | --- |
     | **Uživateli** | Globální správce<br/>-nebo-<br/>Správce uživatelů |
     | **Requestor1** | User |

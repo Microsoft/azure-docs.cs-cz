@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 01/04/2021
+ms.date: 02/09/2021
 ms.reviewer: sngun
-ms.openlocfilehash: e227e230c4de1234e068f72958367dc2ac709426
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: ee05cbdfb2634ed7c299f736b3343ce2dfbd3520
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881952"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548399"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Změna modelu vyžádání obsahu kanálu v Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "97881952"
 Pomocí modelu vyžádání změny kanálu můžete využívat Azure Cosmos DB změnového kanálu vlastním tempem. Jak už můžete s [procesorem Change feed](change-feed-processor.md)pracovat, můžete použít model vyžádání změny kanálu, který paralelizovat zpracování změn napříč několika spotřebiteli kanálu změn.
 
 > [!NOTE]
-> Model Pull pro změnu kanálu je momentálně ve [verzi Preview v sadě Azure Cosmos DB .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.15.0-preview) . Verze Preview není ještě dostupná pro jiné verze sady SDK.
+> Model Pull pro změnu kanálu je momentálně ve [verzi Preview v sadě Azure Cosmos DB .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.17.0-preview) . Verze Preview není ještě dostupná pro jiné verze sady SDK.
 
 ## <a name="comparing-with-change-feed-processor"></a>Porovnání s procesorem Change feed
 
@@ -65,19 +65,19 @@ Volitelně můžete zadat, `ChangeFeedRequestOptions` Chcete-li nastavit `PageSi
 Zde je příklad pro získání `FeedIterator` , který vrací objekty entity, v tomto případě `User` objekt:
 
 ```csharp
-FeedIterator<User> InteratorWithPOCOS = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning());
+FeedIterator<User> InteratorWithPOCOS = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning());
 ```
 
 Zde je příklad získání a `FeedIterator` , který vrátí `Stream` :
 
 ```csharp
-FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator<User>(ChangeFeedStartFrom.Beginning());
+FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning());
 ```
 
 Pokud neposkytnete do `FeedRange` `FeedIterator` , můžete zpracovat celý kanál změn kontejneru vlastním tempem. Tady je příklad, který začíná číst všechny změny počínaje aktuálním časem:
 
 ```csharp
-FeedIterator iteratorForTheEntireContainer = container.GetChangeFeedStreamIterator<User>(ChangeFeedStartFrom.Now());
+FeedIterator iteratorForTheEntireContainer = container.GetChangeFeedStreamIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Now());
 
 while (iteratorForTheEntireContainer.HasMoreResults)
 {
@@ -103,7 +103,9 @@ Vzhledem k tomu, že kanál změn je efektivně nekonečný seznam položek zahr
 V některých případech můžete chtít zpracovat pouze změny určitého klíče oddílu. Můžete získat `FeedIterator` konkrétní klíč oddílu a zpracovat změny stejným způsobem jako u celého kontejneru.
 
 ```csharp
-FeedIterator<User> iteratorForPartitionKey = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(FeedRange.FromPartitionKey(new PartitionKey("PartitionKeyValue"))));
+FeedIterator<User> iteratorForPartitionKey = container.GetChangeFeedIterator<User>(
+    ChangeFeedMode.Incremental, 
+    ChangeFeedStartFrom.Beginning(FeedRange.FromPartitionKey(new PartitionKey("PartitionKeyValue"))));
 
 while (iteratorForThePartitionKey.HasMoreResults)
 {
@@ -147,7 +149,7 @@ Tady je ukázka, která ukazuje, jak číst ze začátku kanálu změn kontejner
 Počítač 1:
 
 ```csharp
-FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[0]));
+FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning(ranges[0]));
 while (iteratorA.HasMoreResults)
 {
     try {
@@ -169,7 +171,7 @@ while (iteratorA.HasMoreResults)
 Počítač 2:
 
 ```csharp
-FeedIterator<User> iteratorB = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[1]));
+FeedIterator<User> iteratorB = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning(ranges[1]));
 while (iteratorB.HasMoreResults)
 {
     try {
@@ -193,7 +195,7 @@ while (iteratorB.HasMoreResults)
 Polohu své aplikace můžete uložit `FeedIterator` vytvořením tokenu pro pokračování. Token pokračování je řetězcová hodnota, která udržuje přehled o naposledy zpracovaných změnách FeedIterator. To umožňuje `FeedIterator` pokračovat v tomto okamžiku později. Následující kód bude čten prostřednictvím kanálu změn od vytvoření kontejneru. Až nebudou k dispozici žádné další změny, zachová se token pro pokračování, aby mohla být později obnovena možnost změnit spotřebu kanálů.
 
 ```csharp
-FeedIterator<User> iterator = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning());
+FeedIterator<User> iterator = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning());
 
 string continuation = null;
 
@@ -216,7 +218,7 @@ while (iterator.HasMoreResults)
 }
 
 // Some time later
-FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.ContinuationToken(continuation));
+FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.ContinuationToken(continuation));
 ```
 
 Dokud kontejner Cosmos stále existuje, token pro pokračování FeedIterator nikdy nevyprší.

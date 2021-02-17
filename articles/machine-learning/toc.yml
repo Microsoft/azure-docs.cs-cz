@@ -174,6 +174,8 @@
           href: security-baseline.md
         - name: Mechanismy zabezpečení služby Azure Policy
           href: ./security-controls-policy.md
+        - name: Šifrování dat
+          href: concept-data-encryption.md
     - name: Zodpovědné strojové učení
       items:
         - name: Přehled zodpovědného strojového učení

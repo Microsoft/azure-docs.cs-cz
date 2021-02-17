@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f949747649e351947ba65666fdb57c0beac3aa23
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 07ad53191c8212ccde5633a4068f31aa00ab69b1
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492106"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100554729"
 ---
 # <a name="calling-client-library-overview"></a>Přehled klientských knihoven pro hovory
 
@@ -96,9 +96,10 @@ Komunikační služby volající klientské knihovny podporují následující k
 
 |           |Web | Android/iOS|
 |-----------|----|------------|
-|**počet odchozích streamů, které se dají poslat současně** |1 sdílení obrazovky a 1 video + 1 | 1 video |
-|**počet příchozích streamů, které se dají vykreslovat současně** |1 sdílení obrazovky a 1 video + 1| 6 sdílení obrazovky a videa 1 |
+|**počet odchozích streamů, které se dají poslat současně** |1 audio/video nebo 1 sdílení zvuku/obrazovky | 1 zvuk/video | 
+|**počet příchozích streamů, které se dají vykreslovat současně** |1 audio/video nebo 1 sdílení zvuku/obrazovky| 6 audio/video nebo 1 sdílení obrazovky |
 
+Všimněte si, že ve scénářích skupiny je jeden smíšený zvukový stream použit k podpoře všech účastníků zvuku.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -106,6 +107,6 @@ Komunikační služby volající klientské knihovny podporují následující k
 > [Začínáme s voláním](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
 
 Další informace najdete v následujících článcích:
-- Seznamte se s obecnými [toky volání](../call-flows.md)
+- Seznamte se s obecnými [toky volání](../call-flows.md) 
 - Další informace o [typech volání](../voice-video-calling/about-call-types.md)
 - [Plánování řešení veřejné sítě](../telephony-sms/plan-solution.md)

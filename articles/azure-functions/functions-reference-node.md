@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 3e99b156d220b4c24a368886b1c0ca0813ffdc51
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 58e31cfa42faabbfab217a451e14d33f2cf45863
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674129"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100554806"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions příručka pro vývojáře JavaScriptu
 
@@ -20,7 +20,7 @@ Jako Express.js, Node.js nebo vývojář JavaScriptu, pokud jste Azure Functions
 
 | Začínáme | Koncepty| Učení s asistencí |
 | -- | -- | -- | 
-| <ul><li>[Node.js funkce pomocí Visual Studio Code](./create-first-function-vs-code-node.md)</li><li>[Node.js funkce pomocí terminálu/příkazového řádku](./create-first-function-cli-node.md)</li></ul> | <ul><li>[Příručka pro vývojáře](functions-reference.md)</li><li>[Možnosti hostování](functions-scale.md)</li><li>[Funkce TypeScriptu](#typescript)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li></ul> | <ul><li>[Vytváření bezserverových aplikací](/learn/paths/create-serverless-applications/)</li><li>[Refaktoring rozhraní API bez serveru Node.js a Express](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
+| <ul><li>[Node.js funkce pomocí Visual Studio Code](./create-first-function-vs-code-node.md)</li><li>[Node.js funkce pomocí terminálu/příkazového řádku](./create-first-function-cli-node.md)</li><li>[Node.js funkce pomocí Azure Portal](functions-create-function-app-portal.md)</li></ul> | <ul><li>[Příručka pro vývojáře](functions-reference.md)</li><li>[Možnosti hostování](functions-scale.md)</li><li>[Funkce TypeScriptu](#typescript)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li></ul> | <ul><li>[Vytváření bezserverových aplikací](/learn/paths/create-serverless-applications/)</li><li>[Refaktoring rozhraní API bez serveru Node.js a Express](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
 ## <a name="javascript-function-basics"></a>Základy funkcí JavaScriptu
 
@@ -201,7 +201,7 @@ module.exports = (context) => {
 
 Kontext předaný do funkce zpřístupňuje `executionContext` vlastnost, což je objekt s následujícími vlastnostmi:
 
-| Název vlastnosti  | Typ  | Description |
+| Název vlastnosti  | Typ  | Popis |
 |---------|---------|---------|
 | `invocationId` | Řetězec | Poskytuje jedinečný identifikátor pro konkrétní vyvolání funkce. |
 | `functionName` | Řetězec | Poskytuje název běžící funkce. |

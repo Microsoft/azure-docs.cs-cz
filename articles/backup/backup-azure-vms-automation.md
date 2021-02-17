@@ -3,12 +3,12 @@ title: Zálohování a obnovení virtuálních počítačů Azure pomocí PowerS
 description: Popisuje postup zálohování a obnovení virtuálních počítačů Azure pomocí Azure Backup pomocí prostředí PowerShell.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 66b8fe0109a4dd2e054106b67f893def2ee596b0
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: cbb962cd6ddde3d0ee8280c0a548067446a58d55
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100095080"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548543"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu
 
@@ -622,7 +622,7 @@ Výsledné Podrobnosti úlohy poskytují identifikátor URI šablony, který lze
 3. Nasaďte šablonu k vytvoření nového virtuálního počítače, jak je vysvětleno [zde](../azure-resource-manager/templates/deploy-powershell.md).
 
     ```powershell
-    New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobFullURI -storageAccountType Standard_GRS
+    New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobFullURI -storageAccountType Standard_GRS
     ```
 
 ### <a name="create-a-vm-using-the-config-file"></a>Vytvoření virtuálního počítače pomocí konfiguračního souboru
