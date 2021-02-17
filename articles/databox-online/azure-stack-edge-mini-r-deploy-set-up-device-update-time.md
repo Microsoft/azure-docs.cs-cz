@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R  so I can use it to transfer data to Azure.
-ms.openlocfilehash: ee3805d128a7b6d122f93e692291db1a387cfcf5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e9f4d4f4ad27081bb105cdb1698438837fc2fe02
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468211"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546665"
 ---
 # <a name="tutorial-configure-the-device-settings-for-azure-stack-edge-mini-r"></a>Kurz: Konfigurace nastavení zařízení pro Azure Stack hraniční Mini R
 
@@ -26,12 +26,12 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Předpoklady
+> * Požadavky
 > * Konfigurace nastavení zařízení
 > * Konfigurace aktualizace 
 > * Konfigurovat čas
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předtím, než nakonfigurujete nastavení související s zařízením na Azure Stack hraničním zařízení v systému R pomocí GPU, ujistěte se, že:
 
@@ -85,7 +85,7 @@ Pomocí těchto kroků můžete nakonfigurovat nastavení týkající se zaříz
         ![Místní webové uživatelské rozhraní stránky aktualizace serveru 2](./media/azure-stack-edge-mini-r-deploy-set-up-device-update-time/update-server-2.png)
 
         > [!NOTE] 
-        > Pokud je nakonfigurován samostatný web Windows Update Server a pokud se rozhodnete připojit přes *protokol HTTPS* (namísto *http*), jsou vyžadovány podpisové řetězy, které jsou vyžadovány pro připojení k serveru aktualizací. Informace o tom, jak vytvořit a nahrát certifikáty, najdete v tématu [Správa certifikátů](azure-stack-edge-j-series-manage-certificates.md). Pro práci v odpojeném režimu, jako je například vaše Azure Stack hraničních zařízení vrstev pro modulární datové centrum, povolte možnost WSUS. Při aktivaci zařízení vyhledává aktualizace a pokud server není nastavený, aktivace se nezdaří. 
+        > Pokud je nakonfigurován samostatný web Windows Update Server a pokud se rozhodnete připojit přes *protokol HTTPS* (namísto *http*), jsou vyžadovány podpisové řetězy, které jsou vyžadovány pro připojení k serveru aktualizací. Informace o tom, jak vytvořit a nahrát certifikáty, najdete v tématu [Správa certifikátů](azure-stack-edge-gpu-manage-certificates.md). Pro práci v odpojeném režimu, jako je například vaše Azure Stack hraničních zařízení vrstev pro modulární datové centrum, povolte možnost WSUS. Při aktivaci zařízení vyhledává aktualizace a pokud server není nastavený, aktivace se nezdaří. 
 
 2. Vyberte **Použít**.
 3. Po nakonfigurování serveru aktualizací vyberte **Další: čas**.
@@ -123,7 +123,7 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Předpoklady
+> * Požadavky
 > * Konfigurace nastavení zařízení
 > * Konfigurace aktualizace 
 > * Konfigurovat čas

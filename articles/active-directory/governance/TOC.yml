@@ -14,8 +14,10 @@
 - name: Kurzy
   expanded: true
   items:
-    - name: Vytvoření prvního přístupového balíčku
+    - name: Správa přístupu k prostředkům – Azure Portal
       href: entitlement-management-access-package-first.md
+    - name: Správa přístupu k prostředkům – Microsoft Graph
+      href: /graph/tutorial-access-package-api?toc=/azure/active-directory/governance/toc.json&bc=/azure/active-directory/governance/breadcrumb/toc.json
 - name: Koncepty
   expanded: true
   items:

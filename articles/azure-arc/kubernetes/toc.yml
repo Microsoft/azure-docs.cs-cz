@@ -4,6 +4,14 @@
   items:
     - name: Informace o Kubernetes s podporou služby Arc
       href: overview.md
+- name: Koncepty
+  items:
+    - name: Architektura agenta
+      href: conceptual-agent-architecture.md
+    - name: Konfigurace a GitOps
+      href: conceptual-configurations.md
+    - name: Nejčastější dotazy
+      href: faq.md
 - name: Návody
   items:
     - name: Připojení ke službě Azure Arc
@@ -12,7 +20,7 @@
           href: connect-cluster.md
         - name: Instanční objekt pro onboarding
           href: create-onboarding-service-principal.md
-    - name: Spravovat
+    - name: Scénáře
       items:
         - name: Nasazení konfigurací s využitím GitOps
           href: use-gitops-connected-cluster.md

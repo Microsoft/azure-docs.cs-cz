@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 01/11/2021
 ms.author: rolyon
-ms.openlocfilehash: b15238a4308fe055f914d1a684b79b38a2c64870
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: dec5888127ed1fc291bec244a44cfb71e343e3bb
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122096"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556839"
 ---
 # <a name="assign-a-user-as-an-administrator-of-an-azure-subscription"></a>Přiřazení role správce předplatného Azure uživateli
 
@@ -26,7 +26,7 @@ Pokud chcete, aby uživatel měl správce předplatného Azure, přiřaďte mu r
 
 ## <a name="step-1-open-the-subscription"></a>Krok 1: otevření předplatného
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Do vyhledávacího pole v horní části vyhledejte předplatná.
 
@@ -89,6 +89,6 @@ Role [vlastníka](built-in-roles.md#owner) uděluje úplný přístup ke správ�
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přidání nebo odebrání přiřazení rolí Azure pomocí portálu Azure Portal](role-assignments-portal.md)
+- [Přiřazení rolí Azure pomocí Azure Portal](role-assignments-portal.md)
 - [Vypsání přiřazení rolí Azure pomocí Azure Portal](role-assignments-list-portal.md)
 - [Uspořádání prostředků s využitím skupin pro správu Azure](../governance/management-groups/overview.md)

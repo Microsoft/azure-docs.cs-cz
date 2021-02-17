@@ -2,13 +2,13 @@
 title: Jednotky instancí BareMetal v Azure
 description: Naučte se identifikovat a interagovat s jednotkami instancí BareMetal prostřednictvím Azure Portal.
 ms.topic: how-to
-ms.date: 1/4/2021
-ms.openlocfilehash: b089b45c35ff05f10ae59f8ce793645361be1e9b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 02/17/2021
+ms.openlocfilehash: 076e84473a7d067712625dd12a2d5cae42bfa91a
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733259"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548161"
 ---
 # <a name="manage-baremetal-instances-through-the-azure-portal"></a>Správa instancí BareMetal pomocí webu Azure Portal
  
@@ -17,25 +17,9 @@ Tento článek ukazuje, jak [Azure Portal](https://portal.azure.com/) zobrazuje 
 ## <a name="register-the-resource-provider"></a>Registrace poskytovatele prostředků
 Poskytovatel prostředků Azure pro instance BareMetal poskytuje viditelnost instancí v Azure Portal v současnosti ve verzi Public Preview. Ve výchozím nastavení předplatné Azure, které používáte pro nasazení instancí BareMetal, zaregistruje poskytovatele prostředků *BareMetalInfrastructure* . Pokud se nezobrazuje vaše nasazené jednotky instance BareMetal, musíte poskytovatele prostředků zaregistrovat u svého předplatného. 
 
-Existují dva způsoby, jak zaregistrovat poskytovatele prostředků instance BareMetal:
- 
-* [Azure CLI](#azure-cli)
- 
-* [Azure Portal](#azure-portal)
- 
-### <a name="azure-cli"></a>Azure CLI
- 
-Přihlaste se k předplatnému Azure, které používáte pro nasazení instance BareMetal prostřednictvím rozhraní příkazového řádku Azure CLI. Poskytovatele prostředků BareMetalInfrastructure můžete zaregistrovat pomocí:
+Poskytovatele prostředků instance BareMetal můžete zaregistrovat pomocí Azure Portal nebo Azure CLI.
 
-```azurecli-interactive
-az provider register --namespace Microsoft.BareMetalInfrastructure
-```
- 
-Další informace najdete v článku [poskytovatelé a typy prostředků Azure](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell).
- 
-### <a name="azure-portal"></a>portál Azure
- 
-Poskytovatele prostředků BareMetalInfrastructure můžete zaregistrovat prostřednictvím Azure Portal.
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
  
 V Azure Portal budete muset uvést své předplatné a pak dvakrát kliknout na předplatné, které jste použili k nasazení jednotek instance BareMetal.
  
@@ -53,12 +37,32 @@ V Azure Portal budete muset uvést své předplatné a pak dvakrát kliknout na 
 >Pokud poskytovatel prostředků není zaregistrovaný, vyberte **zaregistrovat**.
  
 :::image type="content" source="media/baremetal-infrastructure-portal/register-resource-provider-azure-portal.png" alt-text="Snímek obrazovky zobrazující registrovanou jednotku instance BareMetal":::
- 
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Chcete-li začít používat rozhraní příkazového řádku Azure:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Přihlaste se k předplatnému Azure, které používáte pro nasazení instance BareMetal prostřednictvím rozhraní příkazového řádku Azure CLI. Zaregistrujte `BareMetalInfrastructure` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider#az_provider_register) :
+
+```azurecli
+az provider register --namespace Microsoft.BareMetalInfrastructure
+```
+
+K zobrazení všech dostupných zprostředkovatelů můžete použít příkaz [AZ Provider list](/cli/azure/provider#az_provider_list) .
+
+---
+
+Další informace o poskytovatelích prostředků najdete v tématu [poskytovatelé a typy prostředků Azure](../../../azure-resource-manager/management/resource-providers-and-types.md).
+
 ## <a name="baremetal-instance-units-in-the-azure-portal"></a>Jednotky instance BareMetal v Azure Portal
  
 Když odešlete žádost o nasazení instance BareMetal, zadáte předplatné Azure, které se připojujete k instancím BareMetal. Použijte stejné předplatné, které používáte k nasazení aplikační vrstvy, která funguje s jednotkami instancí BareMetal.
  
 Během nasazování instancí BareMetal se v předplatném Azure, které jste použili v žádosti o nasazení, vytvoří nová [Skupina prostředků Azure](../../../azure-resource-manager/management/manage-resources-portal.md) . Tato nová skupina prostředků obsahuje všechny jednotky instancí BareMetal, které jste nasadili v rámci konkrétního předplatného.
+
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. V předplatném BareMetal ve Azure Portal vyberte **skupiny prostředků**.
  
@@ -75,10 +79,27 @@ Během nasazování instancí BareMetal se v předplatném Azure, které jste po
    
    >[!NOTE]
    >Pokud jste nasadili několik tenantů instancí BareMetal v rámci stejného předplatného Azure, měli byste vidět několik skupin prostředků Azure.
- 
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pokud chcete zobrazit všechny instance BareMetal, spusťte příkaz [AZ baremetalinstance list](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_list) pro vaši skupinu prostředků:
+
+```azurecli
+az baremetalinstance list --resource-group DSM05A-T550 –output table
+```
+
+> [!TIP]
+> `--output`Parametr je globální parametr, který je k dispozici pro všechny příkazy. Hodnota **tabulky** prezentuje výstup v popisném formátu. Další informace najdete v tématu [formáty výstupu pro příkazy rozhraní příkazového řádku Azure CLI](/cli/azure/format-output-azure-cli).
+
+---
+
 ## <a name="view-the-attributes-of-a-single-instance"></a>Zobrazení atributů jedné instance
- 
-Můžete zobrazit podrobnosti jedné jednotky. V seznamu instance BareMetal vyberte jednu instanci, kterou chcete zobrazit.
+
+Můžete zobrazit podrobnosti jedné jednotky.
+
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+V seznamu instance BareMetal vyberte jednu instanci, kterou chcete zobrazit.
  
 :::image type="content" source="media/baremetal-infrastructure-portal/view-attributes-single-baremetal-instance.png" alt-text="Snímek obrazovky zobrazující atributy jednotky instance BareMetal jedné instance" lightbox="media/baremetal-infrastructure-portal/view-attributes-single-baremetal-instance.png":::
  
@@ -101,6 +122,18 @@ Na pravé straně se také nachází název [skupiny umístění s blízkostií 
  
 >[!TIP]
 >Pokud chcete vrstvu aplikace najít ve stejném datovém centru Azure jako revizi 4. x, přečtěte si téma [skupiny umístění blízkosti Azure pro optimální latenci sítě](../../../virtual-machines/workloads/sap/sap-proximity-placement-scenarios.md).
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pokud chcete zobrazit podrobnosti o instanci BareMetal, spusťte příkaz [AZ baremetalinstance show](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_show) :
+
+```azurecli
+az baremetalinstance show --resource-group DSM05A-T550 --instance-name orcllabdsm01
+```
+
+Pokud si nejste jisti názvem instance, spusťte `az baremetalinstance list` příkaz, který je popsaný výše.
+
+---
  
 ## <a name="check-activities-of-a-single-instance"></a>Kontrolovat aktivity jedné instance
  
@@ -113,11 +146,31 @@ Změny v metadatech jednotky v Azure se také zaznamenávají v protokolu aktivi
 Další zaznamenaná aktivita je při přidání nebo odstranění [značky](../../../azure-resource-manager/management/tag-resources.md) instance.
  
 ## <a name="add-and-delete-an-azure-tag-to-an-instance"></a>Přidání a odstranění značky Azure do instance
+
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
  
 Můžete přidat značky Azure do jednotky instance BareMetal nebo je odstranit. Způsob přiřazování značek se neliší od přiřazení značek k virtuálním počítačům. Stejně jako u virtuálních počítačů existují značky v metadatech Azure a u instancí BareMetal mají stejná omezení jako značky pro virtuální počítače.
  
 Odstranění značek funguje stejným způsobem jako u virtuálních počítačů. Použití a odstranění značky jsou uvedeny v protokolu aktivit jednotky instance BareMetal.
- 
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Přiřazení značek k BareMetal instancím funguje stejně jako u virtuálních počítačů. Značky existují v metadatech Azure a pro instance BareMetal mají stejná omezení jako značky pro virtuální počítače.
+
+Chcete-li přidat značky do jednotky instance BareMetal, spusťte příkaz [AZ baremetalinstance Update](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_update) :
+
+```azurecli
+az baremetalinstance update --resource-group DSM05a-T550 --instance-name orcllabdsm01 --set tags.Dept=Finance tags.Status=Normal
+```
+
+Pro odebrání značky použijte stejný příkaz:
+
+```azurecli
+az baremetalinstance update --resource-group DSM05a-T550 --instance-name orcllabdsm01 --remove tags.Dept
+```
+
+---
+
 ## <a name="check-properties-of-an-instance"></a>Zkontroluje vlastnosti instance.
  
 Když získáte instance, můžete přejít do části Properties (vlastnosti) a zobrazit shromážděná data o instancích. Shromažďovaná data zahrnují připojení Azure, back-end úložiště, ID okruhu ExpressRoute, jedinečné ID prostředku a ID předplatného. Tyto informace použijete v žádostech o podporu nebo při nastavování konfigurace snímku úložiště.
@@ -127,15 +180,29 @@ Další důležité informace najdete v části IP adresa úložiště NFS. Izol
 :::image type="content" source="media/baremetal-infrastructure-portal/baremetal-instance-properties.png" alt-text="Snímek obrazovky zobrazující nastavení vlastnosti instance BareMetal" lightbox="media/baremetal-infrastructure-portal/baremetal-instance-properties.png":::
  
 ## <a name="restart-a-unit-through-the-azure-portal"></a>Restartování jednotky pomocí Azure Portal
- 
-Existují různé situace, kdy operační systém nedokončí restart, což vyžaduje restart jednotky instance BareMetal. Restartování jednotky můžete provést přímo z Azure Portal:
+
+Existují různé situace, kdy operační systém nedokončí restart, což vyžaduje restart jednotky instance BareMetal.
+
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+Restartování jednotky můžete provést přímo z Azure Portal:
  
 Vyberte **restartovat** a potvrďte restartování jednotky kliknutím na **Ano** .
  
 :::image type="content" source="media/baremetal-infrastructure-portal/baremetal-instance-restart.png" alt-text="Snímek obrazovky, který ukazuje, jak restartovat jednotku instance BareMetal":::
  
 Po restartování jednotky instance BareMetal se dostanou zpoždění. Během této prodlevy se stav napájení přesune od **začátku** do **začátku**, což znamená, že se operační systém kompletně spustil. V důsledku toho se po restartování nemůžete přihlásit k jednotce hned po přepnutí stavu na **začátek**.
- 
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pokud chcete restartovat jednotku instance BareMetal, použijte příkaz [AZ baremetalinstance restart](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_restart) :
+
+```azurecli
+az baremetalinstance restart --resource-group DSM05a-T550 --instance-name orcllabdsm01
+```
+
+---
+
 >[!IMPORTANT]
 >V závislosti na velikosti paměti v jednotce instance BareMetal může restartování a restartování hardwaru a operačního systému trvat až jednu hodinu.
  

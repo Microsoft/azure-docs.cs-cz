@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: c7f7f162355b919c395dd0ee6d03b2bc5526e3da
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 69355b58e36f435b5b5dbe94af72d55d9806b156
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936688"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557180"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Kurz pro rozšíření Azure AD B2C k ochraně místních aplikací pomocí vrstev
 
@@ -29,7 +29,7 @@ Maverics identity Orchestrator rozšiřuje Azure AD B2C k ochraně místních ap
 
 - **Snadná konfigurace**: Azure AD B2C poskytuje jednoduché podrobné uživatelské rozhraní pro připojení konektorů Maverics identity Orchestrator nebo OIDC k Azure AD B2C.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli začít, budete potřebovat:
 
@@ -85,7 +85,7 @@ Pokud chcete získat software, který budete používat k integraci své starš�
 
 2. **Vytvoření toku uživatele**: Vytvořte [uživatelský tok pro registraci a přihlašování](./tutorial-create-user-flows.md).
 
-3. **Přidat IDP**: vyberte, abyste se přihlásili ke svému uživateli pomocí místního účtu nebo společenského nebo podnikového [IdPu](./tutorial-add-identity-providers.md).
+3. **Přidat IDP**: vyberte, abyste se přihlásili ke svému uživateli pomocí místního účtu nebo společenského nebo podnikového [IdPu](./add-identity-provider.md).
 
 4. **Definovat atributy uživatele**: definujte atributy, které mají být shromážděny při registraci.
 

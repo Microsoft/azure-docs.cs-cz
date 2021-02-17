@@ -4,16 +4,16 @@ description: Naučte se identifikovat, diagnostikovat a řešit potíže s Azure
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 02/02/2021
+ms.date: 02/16/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 6875fc53a651b89fcfe88d3217ff86bd21204f6c
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 6701a580cbe7790dcce2cbbcc46889f9dff00107
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524283"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559981"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Řešení potíží s dotazy při používání služby Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -213,6 +213,12 @@ Níže jsou uvedeny některé běžné systémové funkce, které nepoužívají
 | Horní/dolní                         | Namísto použití systémové funkce k normalizování dat pro porovnání, Normalizujte při vložení velká a malá písmena. Dotaz, jako ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` se má ```SELECT * FROM c WHERE c.name = 'BOB'``` . |
 | GetCurrentDateTime/GetCurrentTimestamp/GetCurrentTicks | Vypočítá aktuální čas před provedením dotazu a použije tuto řetězcovou hodnotu v `WHERE` klauzuli. |
 | Matematické funkce (neagregace) | Pokud v dotazu potřebujete často vypočítat hodnotu, zvažte uložení hodnoty jako vlastnosti v dokumentu JSON. |
+
+Tyto systémové funkce mohou používat indexy s výjimkou případů, kdy se používá v dotazech s agregacemi:
+
+| **Systémová funkce**                     | **Nápady pro optimalizaci**             |
+| --------------------------------------- |------------------------------------------------------------ |
+| Funkce prostorového systému                        | Uložení výsledků dotazu do materializované zobrazení v reálném čase |
 
 Při použití v `SELECT` klauzuli neefektivní systémové funkce nebudou mít vliv na to, jak dotazy mohou používat indexy.
 

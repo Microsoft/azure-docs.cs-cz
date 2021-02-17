@@ -1,6 +1,6 @@
 ---
 title: Správa kontejnerů svazků pro zařízení řady StorSimple 8000
-description: Vysvětluje, jak můžete pomocí stránky StorSimple Device Managerch kontejnerů svazků služby přidat, upravit nebo odstranit kontejner svazků.
+description: Vysvětluje, jak můžete pomocí stránky StorSimple Správce zařízeních kontejnerů svazků služby přidat, upravit nebo odstranit kontejner svazků.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -12,19 +12,19 @@ ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/19/2017
+ms.date: 02/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 5a6cd904d7baa71c8b383022523909ca30000ce8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f0a0fd48e3717d14a714e42c5566cd7bcf090d5
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514990"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545284"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-volume-containers"></a>Použití služby Správce zařízení StorSimple ke správě kontejnerů svazků StorSimple
 
 ## <a name="overview"></a>Přehled
-V tomto kurzu se dozvíte, jak používat službu StorSimple Device Manager k vytváření a správě kontejnerů svazků StorSimple.
+V tomto kurzu se dozvíte, jak používat službu StorSimple Správce zařízení k vytváření a správě kontejnerů svazků StorSimple.
 
 Kontejner svazků v Microsoft Azure StorSimpleovém zařízení obsahuje jeden nebo víc svazků, které sdílejí nastavení spotřeby v rámci účtu úložiště, šifrování a šířky pásma. Zařízení může mít několik kontejnerů svazků pro všechny jeho svazky. 
 
@@ -58,5 +58,5 @@ V kontejneru svazků jsou svazky. Dá se odstranit jenom v případě, že se ne
 
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o [správě svazků StorSimple](storsimple-8000-manage-volumes-u2.md). 
-* Přečtěte si další informace o [používání služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Přečtěte si další informace o [používání služby StorSimple Správce zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

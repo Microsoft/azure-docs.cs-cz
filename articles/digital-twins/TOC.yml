@@ -19,8 +19,18 @@
       href: tutorial-end-to-end.md
 - name: Koncepty
   items:
-    - name: Vlastní modely
+    - name: Modely DTDL
       href: concepts-models.md
+    - name: Ontologie
+      items:
+        - name: Co je Ontology?
+          href: concepts-ontologies.md
+        - name: Přijetí oboru standardní ontologie
+          href: concepts-ontologies-adopt.md
+        - name: Převádění ontologie
+          href: concepts-ontologies-convert.md
+        - name: Rozšíření ontologie
+          href: concepts-ontologies-extend.md
     - name: Digitální dvojčata a graf dvojčat
       href: concepts-twins-graph.md
     - name: Dotazovací jazyk
@@ -65,10 +75,8 @@
           href: how-to-move-regions.md
     - name: Návrh modelů
       items:
-        - name: Správa vlastních modelů
+        - name: Správa modelů DTDL
           href: how-to-manage-model.md
-        - name: Integrace oborových standardních modelů
-          href: how-to-integrate-models.md
         - name: Parsování a ověření modelů
           href: how-to-parse-models.md
         - name: Přidání značek
@@ -249,6 +257,12 @@
           href: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer/
         - name: Validátor DTDL (ukázka)
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
+        - name: Odeslání modelu (ukázka)
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader'
+        - name: Vizualizér modelů (ukázka)
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer'
+        - name: OWL2DTDL konvertor
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/OWL2DTDL'
         - name: Ukázka integrace ioT Hubu a DPS
           href: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
         - name: Ukázka integrace SignalR

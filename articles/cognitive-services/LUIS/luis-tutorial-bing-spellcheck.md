@@ -9,18 +9,41 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: f416fe8ef4f6e89d07e6065d4c9435642d9bacb9
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ef9cb083c9bbe6eae5c34cd3799debde771231b6
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179635"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558196"
 ---
-# <a name="correct-misspelled-words-with-bing-search-resource"></a>Oprava nesprávně napsaných slov pomocí Vyhledávání Bingu prostředku
+# <a name="correct-misspelled-words-with-bing-resource"></a>Oprava nesprávně napsaných slov pomocí prostředku Bingu
 
-Můžete integrovat aplikaci LUIS s [vyhledávání Bingu](https://ms.portal.azure.com/#create/Microsoft.BingSearch) , aby opravila nesprávně napsaná slova v projevy před tím, než Luis předpovídá skóre a entity utterance.
+Prediktivní rozhraní API V3 teď podporuje [rozhraní API pro kontrolu pravopisu Bingu](https://docs.microsoft.com/bing/search-apis/bing-spell-check/overview). Přidejte do své aplikace kontrolu pravopisu tím, že zahrnete klíč do svého prostředku vyhledávání Bingu v hlavičce vašich požadavků. Můžete použít existující prostředek Bingu, pokud už vlastníte, nebo [vytvořit nový](https://portal.azure.com/#create/Microsoft.BingSearch) , abyste mohli tuto funkci používat. 
 
-## <a name="create-endpoint-key"></a>Vytvořit klíč koncového bodu
+Příklad výstupu předpovědi pro nesprávně napsaný dotaz:
+
+```json
+{
+  "query": "bouk me a fliht to kayro",
+  "prediction": {
+    "alteredQuery": "book me a flight to cairo",
+    "topIntent": "book a flight",
+    "intents": {
+      "book a flight": {
+        "score": 0.9480589
+      }
+      "None": {
+        "score": 0.0332136229
+      }
+    },
+    "entities": {}
+  }
+}
+```
+
+Opravy pro kontrolu pravopisu se provádí před předvídáním LUIS uživatele utterance. V odpovědi můžete zobrazit všechny změny v původních utterance, včetně pravopisu.
+
+## <a name="create-bing-search-resource"></a>Vytvořit prostředek Vyhledávání Bingu
 
 Pokud chcete vytvořit prostředek Vyhledávání Bingu v Azure Portal, postupujte podle těchto pokynů:
 
@@ -32,7 +55,8 @@ Pokud chcete vytvořit prostředek Vyhledávání Bingu v Azure Portal, postupuj
 
 4. Informační panel se zobrazí vpravo obsahující informace, včetně právního oznámení. Výběrem **vytvořit** zahájíte proces vytváření předplatného.
 
-    :::image type="content" source="./media/luis-tutorial-bing-spellcheck/bing-search-resource-portal.png" alt-text="Prostředek rozhraní API Bingu pro kontrolu pravopisu v7":::
+> [!div class="mx-imgBorder"]
+> ![Prostředek rozhraní API Bingu pro kontrolu pravopisu v7](./media/luis-tutorial-bing-spellcheck/bing-search-resource-portal.png)
 
 5. Na dalším panelu zadejte nastavení služby. Počkejte na dokončení procesu vytváření služby.
 
@@ -40,15 +64,23 @@ Pokud chcete vytvořit prostředek Vyhledávání Bingu v Azure Portal, postupuj
 
 7. Zkopírujte jeden z klíčů, který se přidá do hlavičky žádosti o předpověď. Budete potřebovat jenom jeden ze dvou klíčů.
 
-8. Přidejte klíč do `mkt-bing-spell-check-key` hlavičky žádosti o předpověď.
-
 <!--
 ## Using the key in LUIS test panel
 There are two places in LUIS to use the key. The first is in the [test panel](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key isn't saved into LUIS but instead is a session variable. You need to set the key every time you want the test panel to apply the Bing Spell Check API v7 service to the utterance. See [instructions](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) in the test panel for setting the key.
 -->
+## <a name="enable-spell-check-from-ui"></a>Povolit kontrolu pravopisu z uživatelského rozhraní 
+Můžete povolit kontrolu pravopisu pro ukázkový dotaz pomocí [portálu Luis](https://www.luis.ai). V horní části obrazovky vyberte **Spravovat** a **prostředky Azure** v levém navigačním panelu. Po přidružení prostředku předpovědi k aplikaci můžete vybrat možnost **změnit parametry dotazu** v dolní části stránky a vložit klíč prostředku do pole **Povolit kontrolu pravopisu** .
+    
+   > [!div class="mx-imgBorder"]
+   > ![Povolit kontrolu pravopisu](./media/luis-tutorial-bing-spellcheck/spellcheck-query-params.png)
+
+
 ## <a name="adding-the-key-to-the-endpoint-url"></a>Přidání klíče k adrese URL koncového bodu
 Pro každý dotaz, na který chcete použít korekci pravopisu, vyžaduje dotaz na koncový bod klíč prostředku kontroly pravopisu Bingu předaný do parametru záhlaví dotazu. Můžete mít chatovací robot, který volá LUIS, nebo můžete volat rozhraní API koncového bodu LUIS přímo. Bez ohledu na to, jakým způsobem je koncový bod volán, každé a každé volání musí obsahovat požadované informace v žádosti hlavičky pro správné fungování oprav pravopisu. Je nutné nastavit hodnotu pomocí **MKT-Bing-check-Key** na hodnotu klíče.
 
+|Klíč záhlaví|Hodnota hlavičky|
+|--|--|
+|`mkt-bing-spell-check-key`|Klíče nalezené v okně **klíče a koncový bod** vašeho prostředku|
 
 ## <a name="send-misspelled-utterance-to-luis"></a>Odeslání nesprávně napsaného utteranceu do LUIS
 1. Přidejte nesprávně napsaný utterance do dotazu předpovědi, který budete odesílat, například "jak daleko je mountainn?". V angličtině `mountain` je u jedné `n` správné pravopisné zadání.

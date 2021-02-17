@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: bf92765431ea6b0f80b96ab7d61e8e830220dc82
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b589f98ee78d0709b2a74ba4e364cec0e486e968
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934526"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547158"
 ---
 # <a name="secure-azure-digital-twins"></a>Zabezpečení digitálních vláken Azure
 
@@ -53,11 +53,6 @@ Azure poskytuje **dvě předdefinované role Azure** pro autorizaci přístupu k
 | --- | --- | --- |
 | Vlastník dat digitálních vláken Azure | Poskytuje úplný přístup k prostředkům digitálních vláken Azure. | bcd981a7-7f74-457b-83e1-cceb9e632ffe |
 | Čtečka dat digitálních vláken Azure | Poskytuje přístup jen pro čtení k prostředkům digitálních vláken Azure. | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
-
->[!NOTE]
-> Tyto role byly ve verzi Preview nedávno přejmenovány ze starších názvů:
-> * *Vlastník dat digitálních vláken Azure* byl dřív *vlastníkem digitálních vláken Azure (Preview)*.
-> * *Čtečka dat digitálních vláken Azure* se dřív používala *pro čtečku digitálních vláken Azure (Preview)*.
 
 Role můžete přiřadit dvěma způsoby:
 * prostřednictvím podokna řízení přístupu (IAM) pro digitální vlákna Azure v Azure Portal (viz [*Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal*](../role-based-access-control/role-assignments-portal.md))
@@ -132,7 +127,7 @@ Níže jsou uvedeny podrobnosti o značce služby **AzureDigitalTwins** .
 
 | Značka | Účel | Dá se použít příchozí nebo odchozí? | Je možné je rozregionovat? | Lze použít s Azure Firewall? |
 | --- | --- | --- | --- | --- |
-| AzureDigitalTwins | Azure Digital Twins<br>Poznámka: Tato značka nebo IP adresy, na které se vztahuje tato značka, se dají použít k omezení přístupu k koncovým bodům nakonfigurovaným pro [trasy událostí](concepts-route-events.md). | Příchozí | No | Yes |
+| AzureDigitalTwins | Azure Digital Twins<br>Poznámka: Tato značka nebo IP adresy, na které se vztahuje tato značka, se dají použít k omezení přístupu k koncovým bodům nakonfigurovaným pro [trasy událostí](concepts-route-events.md). | Příchozí | Ne | Ano |
 
 ### <a name="using-service-tags-for-accessing-event-route-endpoints"></a>Použití značek služby pro přístup k koncovým bodům směrování událostí 
 

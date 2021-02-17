@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/06/2019
+ms.date: 02/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 16c9d64cc4dd49898245d74108cd6a4f2f0e4660
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: ed3a808085e09ec7b5989fc623cc9129244ca2a6
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455166"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559095"
 ---
 # <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>Kurz: integrace Costpoint s Azure Active Directory
 
@@ -26,71 +26,56 @@ V tomto kurzu se dozvíte, jak integrovat Costpoint s Azure Active Directory (Az
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Costpoint svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Předplatné s povoleným Costpointm jednotným přihlašováním (SSO).
+* Costpoint odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu budete konfigurovat a testovat jednotné přihlašování Azure AD v testovacím prostředí. Costpoint podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
+V tomto kurzu budete konfigurovat a testovat jednotné přihlašování Azure AD v testovacím prostředí. 
+
+* Costpoint podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
 
 ## <a name="generate-costpoint-metadata"></a>Generovat metadata Costpoint
 
 Costpoint konfigurace jednotného přihlašování SAML se vysvětluje v příručce pro **DeltekCostpoint711Security.pdf** . Tento průvodce si můžete stáhnout z webu podpory Deltek Costpoint a přečtěte si téma **instalace jednotného přihlašování SAML**  >  **Konfigurace jednotného přihlašování SAML mezi Costpoint a Microsoft Azure** . Postupujte podle pokynů a vygenerujte soubor **XML federačních metadat pro COSTPOINT SP** . 
 
-![Snímek obrazovky zobrazující, že nástroj pro konfiguraci produktu má vybranou kartu WebLogic-Security.](./media/costpoint-tutorial/config-utility.png)
+![Snímek obrazovky zobrazující, že nástroj pro konfiguraci produktu má vybranou kartu WebLogic-Security.](./media/costpoint-tutorial/configuration-utility.png)
 
 ## <a name="add-costpoint-from-the-gallery"></a>Přidání Costpoint z Galerie
 
-Pro integraci Costpoint s Azure AD nejdřív přidejte Costpoint do seznamu spravovaných aplikací SaaS z galerie v Azure Portal:
+Pokud chcete nakonfigurovat integraci Costpoint do služby Azure AD, musíte přidat Costpoint z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
-
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-
-   ![Tlačítko Azure Active Directory](common/select-azuread.png)
-
-1. Vyberte **podnikové aplikace**  >  **všechny aplikace**.
-
-   ![Okno podnikové aplikace](common/enterprise-applications.png)
-
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
-
-   ![Tlačítko Nová aplikace](common/add-new-app.png)
-
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Costpoint** .
+1. Na panelu výsledků vyberte **Costpoint** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-   ![Costpoint v seznamu výsledků](common/search-new-app.png)
-
-1. V seznamu výsledků vyberte **Costpoint**a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
-
-## <a name="configure-and-test-azure-ad-single-sgn-on"></a>Konfigurace a testování funkce Azure AD Single SGN – on
+## <a name="configure-and-test-azure-ad-sso-for-costpoint"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Costpoint
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Costpoint pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Costpoint.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Costpoint, dokončete následující stavební bloky:
+K nakonfigurování a testování jednotného přihlašování Azure AD pomocí Costpoint postupujte takto:
 
-1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** , aby vaši uživatelé mohli používat tuto funkci.
-1. **[Nakonfigurujte Costpoint](#configure-costpoint)** pro konfiguraci nastavení jednotného přihlašování SAML na straně aplikace.
-1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** pro testování jednotného přihlašování Azure AD pomocí B. Simon.
-1. Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD, **[přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** .
-1. **[Vytvořte Costpoint testovacího uživatele](#create-a-costpoint-test-user)** , který bude mít protějšek B. Simon v Costpoint, který se odkazuje na reprezentaci uživatele v Azure AD.
-1. **[Otestujte jednotné přihlašování](#test-sso)** a ověřte, jestli konfigurace funguje.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte COSTPOINT SSO](#configure-costpoint-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte Costpoint Test User](#create-costpoint-test-user)** -to, abyste měli protějšek B. Simon v Costpoint, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal:
 
 1. Na stránce integrace aplikací **Costpoint** vyberte **jednotné přihlašování**.
 
-   ![Konfigurace odkazu jednotného přihlašování](common/select-sso.png)
-
-1. V části **základní konfigurace SAML** Pokud máte *soubor metadat poskytovatele služby*, proveďte tyto kroky:
+1. V části **základní konfigurace SAML** Pokud máte **soubor metadat poskytovatele služby**, proveďte tyto kroky:
 
    > [!NOTE]
    > Soubor metadat poskytovatele služeb získáte v části [generování metadat Costpoint](#generate-costpoint-metadata). Použití souboru je vysvětleno dále v tomto kurzu.
@@ -104,67 +89,45 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
       > [!NOTE]
       > Pokud hodnoty **adresy URL** **identifikátoru** a odpovědi nejsou automaticky polulated, zadejte hodnoty ručně podle vašich požadavků. Ověřte, že je správně nastavený **identifikátor (ID entity)** a **Adresa URL odpovědi (adresa URL služby pro příjemce kontrolního výrazu)** a že **Adresa URL služby ACS** je platná adresa URL Costpoint, která končí na **/LoginServlet.CPS**.
 
-   1. Vyberte **nastavit další adresy URL**. Do pole **stav přenosu**zadejte hodnotu pomocí následujícího vzoru: `system=[your system]` (například **System = DELTEKCP**).
+   1. Vyberte **nastavit další adresy URL**. Do pole **stav přenosu** zadejte hodnotu pomocí následujícího vzoru: `system=[your system]` (například **System = DELTEKCP**).
 
 1. Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte v části **podpisový certifikát SAML** ikonu **kopírování** a zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do poznámkového bloku.
 
    ![Podpisový certifikát SAML](common/copy-metadataurl.png)
 
-### <a name="configure-costpoint"></a>Konfigurace Costpoint
-
-1. Vraťte se do konfiguračního nástroje Costpoint. Do textového pole **XML federačních metadat IDP** vložte obsah souboru *adresy URL federačních metadat aplikace* . 
-
-   ![Nástroj pro konfiguraci Costpoint](./media/costpoint-tutorial/config-utility-idp.png)
-
-1. Pokračujte v pokynech průvodce **DeltekCostpoint711Security.pdf** a dokončete instalaci Costpoint SAML.
-
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem B. Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V Azure Portal v levém podokně vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
-
-   ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
-
-1. Vyberte **Nový uživatel**.
-
-   ![Tlačítko pro nového uživatele](common/new-user.png)
-
-1. V části vlastnosti **uživatele** proveďte tyto kroky:
-
-   ![Uživatelský dialog](common/user-properties.png)
-
-   1. Do pole **název** zadejte **B. Simon**.
-   
-   1. Do pole **uživatelské jméno** zadejte `b.simon\@yourcompanydomain.extension` (například B.Simon@contoso.com ).
-   
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   
-   1. Vyberte **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte B. Simon přístup k Costpoint.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Costpoint.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**  >  **všechny aplikace**.
-
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Costpoint**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-1. V části **Správa** na stránce Přehled aplikace vyberte **Uživatelé a skupiny**.
+## <a name="configure-costpoint-sso"></a>Konfigurace jednotného přihlašování Costpoint
 
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+1. Vraťte se do konfiguračního nástroje Costpoint. Do textového pole **XML federačních metadat IDP** vložte obsah souboru *adresy URL federačních metadat aplikace* . 
 
-1. Vyberte možnost **Přidat uživatele**. V dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
+   ![Nástroj pro konfiguraci Costpoint](./media/costpoint-tutorial/configuration-utility-metadata.png)
 
-   ![Odkaz Přidat uživatele](common/add-assign-user.png)
+1. Pokračujte v pokynech průvodce **DeltekCostpoint711Security.pdf** a dokončete instalaci Costpoint SAML.
 
-1. V dialogovém okně **Uživatelé a skupiny** v seznamu **Uživatelé** vyberte **B. Simon**. Pak zvolte **Vybrat**.
-
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak zvolte **Vybrat**.
-
-1. V dialogovém okně **Přidat přiřazení** vyberte **přiřadit**.
-
-### <a name="create-a-costpoint-test-user"></a>Vytvořit testovacího uživatele v Costpoint
+### <a name="create-costpoint-test-user"></a>Vytvořit testovacího uživatele Costpoint
 
 V této části vytvoříte uživatele v Costpoint. Předpokládejme, že ID uživatele je **b. Simon** a jméno uživatele je **b. Simon**. Pokud chcete přidat uživatele na platformě Costpoint, pracujte s [týmem podpory klienta Costpoint](https://www.deltek.com/about/contact-us) . Aby bylo možné použít jednotné přihlašování, musí být uživatel vytvořen a aktivován.
 
@@ -172,14 +135,22 @@ Po vytvoření uživatele musí být výběr **metody ověřování** uživatele
 
 ![Uživatel Costpoint](./media/costpoint-tutorial/costpoint-user.png)
 
-### <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>Test SSO
 
-Když na přístupovém panelu vyberete dlaždici Costpoint, měli byste být automaticky přihlášeni k aplikaci Costpoint, protože jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-## <a name="additional-resources"></a>Další zdroje
+#### <a name="sp-initiated"></a>Zahájena SP:
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro přihlášení k Costpoint, kde můžete spustit tok přihlášení.  
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+* Přejít na adresu URL pro přihlášení k Costpoint přímo a zahájit tok přihlášení.
 
-- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
+#### <a name="idp-initiated"></a>Iniciované IDP:
+
+* Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k Costpoint, pro které jste nastavili jednotné přihlašování. 
+
+K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Costpoint v nabídce Moje aplikace, pokud je nakonfigurovaná v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k Costpoint, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="next-steps"></a>Další kroky
+
+Po nakonfigurování Costpoint můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

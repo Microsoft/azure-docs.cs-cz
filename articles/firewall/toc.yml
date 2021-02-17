@@ -32,6 +32,12 @@
   items:
     - name: Funkce Azure Firewallu
       href: features.md
+    - name: Azure Firewall prémiové funkce
+      href: premium-features.md
+    - name: Azure Firewall Premium na portálu
+      href: premium-portal.md
+    - name: Certifikáty Azure Firewall Premium
+      href: premium-certificates.md
     - name: Značky plně kvalifikovaných názvů domén
       href: fqdn-tags.md
     - name: Plně kvalifikované názvy domén infrastruktury
@@ -91,6 +97,10 @@
       displayName: 'Azure CLI, az monitor diagnostic-settings create, monitor diagnostic settings'
     - name: Sešit služby Azure Firewall
       href: firewall-workbook.md
+    - name: Nasazení a konfigurace brány firewall Premium
+      href: premium-deploy.md
+    - name: Migrace na Azure Firewall Premium
+      href: premium-migrate.md
 - name: Referenční informace
   items:
     - name: Azure CLI

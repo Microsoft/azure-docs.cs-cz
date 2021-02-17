@@ -1,6 +1,6 @@
 ---
-title: Použití virtuálních počítačů Azure na místě
-description: Naučte se používat virtuální počítače Azure na místě k úsporám za cenu.
+title: Použít Azure na místě Virtual Machines
+description: Naučte se používat Azure spot Virtual Machines k úsporám za cenu.
 author: JagVeerappan
 ms.author: jagaveer
 ms.service: virtual-machines
@@ -8,23 +8,23 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 1e82da3bc45bc8fb88b3955bd59091372f56d292
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 460529ab6e3227a998ac04c4819171274307ff9e
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375455"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557825"
 ---
-# <a name="use-spot-vms-in-azure"></a>Použití bodových virtuálních počítačů v Azure
+# <a name="use-azure-spot-virtual-machines"></a>Použít Azure na místě Virtual Machines 
 
-Použití přímých virtuálních počítačů vám umožní využít výhod naší nevyužité kapacity s významnou úsporou nákladů. V jakémkoli okamžiku, kdy Azure potřebuje kapacitu zpátky, vyřadí infrastruktura Azure virtuální počítače na místě. Proto jsou virtuální počítače Skvělé pro úlohy, které mohou zpracovávat přerušení, jako jsou úlohy dávkového zpracování, vývojové a testovací prostředí, velké výpočetní úlohy a další.
+Použití Azure spot Virtual Machines umožňuje využít výhod naší nevyužité kapacity s významnou úsporou nákladů. V jakémkoli okamžiku, kdy Azure potřebuje kapacitu zpátky, vyřadí infrastruktura Azure místo Virtual Machines Azure. Proto jsou Azure spot Virtual Machines Skvělé pro úlohy, které mohou zpracovávat přerušení, jako jsou úlohy dávkového zpracování, vývojové a testovací prostředí, velké výpočetní úlohy a další.
 
-Množství dostupné kapacity se může lišit v závislosti na velikosti, oblasti, denní době a dalších. Při nasazování virtuálních počítačů na místě Azure přidělí virtuální počítače, pokud je k dispozici dostatek kapacity, ale pro tyto virtuální počítače neexistuje žádná smlouva SLA. Virtuální počítač s přímým dostupností nenabízí žádné záruky vysoké dostupnosti. V jakémkoli okamžiku, kdy Azure potřebuje kapacitu zpátky, vyřadí infrastruktura Azure na místě virtuální počítače s oznámením po dobu 30 sekund. 
+Množství dostupné kapacity se může lišit v závislosti na velikosti, oblasti, denní době a dalších. Když nasazujete Azure na místě Virtual Machines, Azure bude přidělovat virtuální počítače, pokud je dostupná kapacita, ale pro tyto virtuální počítače neexistuje žádná smlouva SLA. Virtuální počítač se službou Azure na místě nabízí žádné záruky vysoké dostupnosti. V jakémkoli okamžiku, kdy Azure potřebuje kapacitu zpátky, vyřadí infrastruktura Azure na místě Azure Point Virtual Machines s oznámením 30 sekund. 
 
 
 ## <a name="eviction-policy"></a>Zásady vyřazení
 
-Virtuální počítače je možné vyřadit na základě kapacity nebo maximální ceny, kterou jste nastavili. Při vytváření virtuálního počítače s přímým použitím můžete nastavit zásady vyřazení, aby se nastavilo zrušení *přidělení* (výchozí) nebo *odstranění*. 
+Virtuální počítače je možné vyřadit na základě kapacity nebo maximální ceny, kterou jste nastavili. Při vytváření virtuálního počítače se službou Azure na místě můžete nastavit zásady vyřazení, aby se nastavilo zrušení *přidělení* (výchozí nastavení) nebo *odstranění*. 
 
 Zásada zrušení *přidělení* přesune váš virtuální počítač do stavu Zastaveno (přidělení zrušeno), což vám umožní později ho znovu nasadit. Neexistuje však záruka, že přidělení bude úspěšné. Navrácené virtuální počítače se budou počítat s vaší kvótou a za základní disky se vám budou účtovat náklady na úložiště. 
 
@@ -47,11 +47,11 @@ Můžete se přihlásit k odběru oznámení na virtuálním počítači prostř
 
 ## <a name="limitations"></a>Omezení
 
-Následující velikosti virtuálních počítačů nejsou podporované pro virtuální počítače s přímým odkazem:
+Následující velikosti virtuálních počítačů nejsou podporované pro Azure spot Virtual Machines:
  - Řady B-Series
  - Propagační verze libovolné velikosti (například Dv2, NV, NC, H – propagační velikosti)
 
-Virtuální počítače s přímým použitím se dají nasadit do jakékoli oblasti, kromě Microsoft Azure Čína 21Vianet.
+Službu Azure spot Virtual Machines lze nasadit do jakékoli oblasti s výjimkou Microsoft Azure Čínu 21Vianet.
 
 <a name="channel"></a>
 
@@ -65,7 +65,7 @@ V současné době jsou podporovány následující [typy nabídek](https://azur
 
 ## <a name="pricing"></a>Ceny
 
-Ceny pro virtuální počítače na místě jsou proměnné na základě oblastí a SKU. Další informace najdete v tématu ceny virtuálních počítačů pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) a [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
+Ceny za Azure na místě Virtual Machines jsou proměnné na základě oblastí a SKU. Další informace najdete v tématu ceny virtuálních počítačů pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) a [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
 
 Můžete také zadat dotaz na informace o cenách pomocí [rozhraní API maloobchodních cen Azure](/rest/api/cost-management/retail-prices/azure-retail-prices) a dotazovat se na informace o cenách s cenami. `meterName`A `skuName` bude obsahovat oba `Spot` .
 
@@ -87,24 +87,24 @@ V oblasti portálu můžete zobrazit historické ceny a sazby vyřazení podle v
 
 ##  <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-**Otázka:** Po vytvoření je virtuální počítač na místě stejný jako běžný standardní virtuální počítač?
+**Otázka:** Po vytvoření je virtuální počítač se službou Azure na místě stejný jako běžný standardní virtuální počítač?
 
-**A:** Ano, s výjimkou smlouvy SLA pro virtuální počítače na místě a jejich vyřazení z provozu kdykoli se dá provést.
+**A:** Ano, s výjimkou smlouvy SLA pro Azure na místě Virtual Machines a je možné je kdykoli vyřadit.
 
 
 **Otázka:** Co dělat při vyřazení, ale stále potřebují kapacitu?
 
-**A:** Pokud potřebujete kapacitu hned, doporučujeme použít virtuální počítače místo přímých virtuálních počítačů.
+**A:** Pokud potřebujete kapacitu hned, doporučujeme místo Azure na místě Virtual Machines používat standardní virtuální počítače.
 
 
-**Otázka:** Jak se Správa kvót spravuje pro virtuální počítače na místě?
+**Otázka:** Jak se Správa kvót spravuje pro Azure spot Virtual Machines?
 
-**A:** Virtuální počítače s přímým chodem budou mít samostatný fond kvót. Kvóta na místě se bude sdílet mezi virtuálními počítači a instancemi sady škálování. Další informace najdete v tématu [Limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md).
+**A:** Azure spot Virtual Machines bude mít samostatný fond kvót. Kvóta na místě se bude sdílet mezi virtuálními počítači a instancemi sady škálování. Další informace najdete v tématu [Limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 
-**Otázka:** Můžu požádat o další kvótu na místě?
+**Otázka:** Můžu požádat o dodatečnou kvótu pro Azure spot Virtual Machines?
 
-**A:** Ano, žádost budete moci odeslat, abyste zvýšili kvótu pro virtuální počítače pomocí [procesu žádosti o standardní kvótu](../azure-portal/supportability/per-vm-quota-requests.md).
+**A:** Ano, žádost bude možné odeslat za účelem zvýšení kvóty pro Azure na místě Virtual Machines prostřednictvím [procesu standardní žádosti o kvótu](../azure-portal/supportability/per-vm-quota-requests.md).
 
 
 **Otázka:** Kde můžu publikovat otázky?
@@ -117,8 +117,8 @@ V oblasti portálu můžete zobrazit historické ceny a sazby vyřazení podle v
 **A:** Než budete moct změnit maximální cenu, musíte virtuální počítač navrátit. Pak můžete na portálu změnit maximální cenu z **konfiguračního** oddílu pro daný virtuální počítač. 
 
 ## <a name="next-steps"></a>Další kroky
-K nasazení virtuálních počítačů na místě použijte rozhraní příkazového [řádku](./linux/spot-cli.md), [portálu](spot-portal.md), [ARM](./linux/spot-template.md)nebo [PowerShell](./windows/spot-powershell.md) .
+K nasazení služby Azure spot Virtual Machines použijte rozhraní příkazového [řádku](./linux/spot-cli.md), [portálu](spot-portal.md), [ARM](./linux/spot-template.md)nebo [PowerShell](./windows/spot-powershell.md) .
 
-Můžete také nasadit [sadu škálování s instancemi virtuálních počítačů na místě](../virtual-machine-scale-sets/use-spot.md).
+Můžete také nasadit [sadu škálování s instancemi virtuálních počítačů Azure na místě](../virtual-machine-scale-sets/use-spot.md).
 
 Pokud dojde k chybě, přečtěte si [kódy chyb](./error-codes-spot.md).
