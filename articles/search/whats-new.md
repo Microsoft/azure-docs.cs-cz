@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 02/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 2b6685952aee1c8600321070794f001e0881604b
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: d37b39f596a9986f001663847e0b8e6ae8adb987
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/16/2021
-ms.locfileid: "100535208"
+ms.locfileid: "100545509"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -24,7 +24,7 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 |Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Popis | Dostupnost  |
 |------------------------------|---------------|---------------|
 | [Resetovat dokumenty (Preview)](search-howto-run-reset-indexers.md) |  Znovu zpracuje jednotlivě vybrané dokumenty hledání v úlohách indexeru. | [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/index-preview) |
-| [Zóny dostupnosti](search-performance-optimization.md#availability-zones)| Vyhledávací služby se dvěma nebo více replikami v určitých oblastech, jak je uvedeno v [tomto článku](search-performance-optimization.md#availability-zones), získají odolnost proti chybám ve dvou nebo více různých fyzických umístěních.  | Oblast a datum vytvoření služby vyhledávání, která určuje dostupnost. Podrobnosti najdete v dokumentu ladění výkonu. |
+| [Zóny dostupnosti](search-performance-optimization.md#availability-zones)| Vyhledávací služby se dvěma nebo více replikami v určitých oblastech, jak je uvedeno v [rozsahu pro výkon](search-performance-optimization.md#availability-zones), získáte odolnost při používání replik ve dvou nebo více různých fyzických umístěních.  | Oblast a datum vytvoření služby vyhledávání, která určuje dostupnost. Podrobnosti najdete v článku věnovaném škálování na výkon. |
 
 ## <a name="january-2021"></a>Leden 2021
 

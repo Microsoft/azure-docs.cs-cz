@@ -3,17 +3,17 @@ title: Vytvoření privátního koncového bodu pro zabezpečené připojení
 titleSuffix: Azure Cognitive Search
 description: Nastavte privátní koncový bod ve virtuální síti pro zabezpečené připojení ke službě Azure Kognitivní hledání.
 manager: nitinme
-author: mrcarter8
-ms.author: mcarter
+author: markheff
+ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/19/2020
-ms.openlocfilehash: 6ee72a25fc8435159ae75ac3296742eda58617b6
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.date: 02/16/2021
+ms.openlocfilehash: 7445ac5d750ac29d3e6ce466a48e82efd1bcde40
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779936"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545526"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Vytvoření privátního koncového bodu pro zabezpečené připojení k Azure Kognitivní hledání
 
@@ -21,8 +21,10 @@ V tomto článku použijete Azure Portal k vytvoření nové instance služby Az
 
 Soukromé koncové body poskytuje služba [Azure Private Link](../private-link/private-link-overview.md)jako samostatnou službu. Další informace o nákladech najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/private-link/).
 
-> [!Important]
-> Podporu privátního koncového bodu pro Azure Kognitivní hledání můžete nakonfigurovat pomocí Azure Portal nebo [REST API pro správu verze 2020-03-13](/rest/api/searchmanagement/). Pokud je koncový bod služby privátní, některé funkce portálu jsou zakázané. Budete moct zobrazit a spravovat informace o úrovni služby, ale přístup k indexovým datům a různým součástem ve službě, jako je index, indexer a definice dovednosti, je z bezpečnostních důvodů omezený. Jako alternativu k portálu můžete použít [rozšíření vs Code](https://aka.ms/vscode-search) k interakci s různými komponentami ve službě.
+V Azure Portal můžete vytvořit privátní koncový bod, jak je popsáno v tomto článku. Alternativně můžete použít [REST API správy verze 2020-03-13](/rest/api/searchmanagement/), [Azure POWERSHELL](/powershell/module/az.search)nebo [Azure CLI](/cli/azure/search).
+
+> [!NOTE]
+> Pokud je koncový bod služby privátní, některé funkce portálu jsou zakázané. Můžete zobrazit a spravovat informace o úrovni služby, ale informace o indexu, indexerech a dovednosti se z bezpečnostních důvodů skryjí. Jako alternativu k portálu můžete použít [rozšíření vs Code](https://aka.ms/vscode-search) k interakci s různými komponentami ve službě.
 
 ## <a name="why-use-a-private-endpoint-for-secure-access"></a>Proč používat privátní koncový bod pro zabezpečený přístup?
 
@@ -110,7 +112,7 @@ V této části vytvoříte novou službu Azure Kognitivní hledání s privátn
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >  **Compute**  >  **virtuální počítač** Compute.
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >    >  **virtuální počítač** Compute.
 
 1. V nástroji **vytvořit virtuální počítač základy** zadejte nebo vyberte tyto informace:
 
@@ -218,7 +220,7 @@ Pokud je koncový bod vyhledávací služby privátní, některé funkce portál
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 Po dokončení používání privátního koncového bodu, služby vyhledávání a virtuálního počítače odstraňte skupinu prostředků a všechny prostředky, které obsahuje:
-1.  *myResourceGroup*   Do **vyhledávacího** pole v horní části portálu zadejte myResourceGroup a ve výsledcích hledání vyberte  *myResourceGroup*   . 
+1.  **   Do **vyhledávacího** pole v horní části portálu zadejte myResourceGroup a ve výsledcích hledání vyberte  *myResourceGroup*   . 
 1. Vyberte **Odstranit skupinu prostředků**. 
 1. Zadejte  *myResourceGroup*   pro **typ název skupiny prostředků** a vyberte **Odstranit**.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 1444ee3643222ceebc67298bdb580955b1432104
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: d58398c42cdc6faed758e5dba3431e0841fc0b03
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526411"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555562"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Osvědčené postupy pro službu Azure RBAC
 
@@ -30,7 +30,7 @@ Následující diagram znázorňuje navrhovaný vzor pro používání Azure RBA
 
 ![Azure RBAC a nejnižší oprávnění](./media/best-practices/rbac-least-privilege.png)
 
-Informace o tom, jak přidat přiřazení rolí, najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](role-assignments-portal.md).
+Informace o tom, jak přiřadit role, najdete v tématu [přiřazení rolí Azure pomocí Azure Portal](role-assignments-portal.md).
 
 ## <a name="limit-the-number-of-subscription-owners"></a>Omezení počtu vlastníků předplatného
 

@@ -5,41 +5,42 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 10/08/2020
+ms.date: 02/16/2021
 ms.author: victorh
-ms.openlocfilehash: 69eaf3ca60378afd810d712d85ea7ef732e41e3e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 9f89d84fc7033645b2b094e9f40a1d85b076623b
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788226"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100544829"
 ---
 # <a name="azure-firewall-features"></a>Funkce Azure Firewallu
 
-[Azure firewall](overview.md) je spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky Azure Virtual Network..
+[Azure firewall](overview.md) je spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky Azure Virtual Network.
 
 ![Přehled brány firewall](media/overview/firewall-threat.png)
 
 Azure Firewall obsahuje následující funkce:
 
-- [Integrovaná vysoká dostupnost](#built-in-high-availability)
-- [Zóny dostupnosti](#availability-zones)
-- [Neomezená škálovatelnost cloudu](#unrestricted-cloud-scalability)
-- [Pravidla filtrování plně kvalifikovaných názvů domén aplikací](#application-fqdn-filtering-rules)
-- [Pravidla filtrování síťového provozu](#network-traffic-filtering-rules)
-- [Značky plně kvalifikovaných názvů domén](#fqdn-tags)
-- [Značky služeb](#service-tags)
-- [Analýza hrozeb](#threat-intelligence)
-- [Podpora pro odchozí SNAT](#outbound-snat-support)
-- [Podpora DNAT u příchozích přenosů](#inbound-dnat-support)
-- [Několik veřejných IP adres](#multiple-public-ip-addresses)
-- [Protokolování Azure Monitor](#azure-monitor-logging)
-- [Vynucené tunelování](#forced-tunneling)
-- [Certifikace](#certifications)
+- Integrovaná vysoká dostupnost
+- Zóny dostupnosti
+- Neomezená cloudová škálovatelnost
+- Pravidla filtrování plně kvalifikovaných názvů domén aplikací
+- Pravidla filtrování síťového provozu
+- Značky plně kvalifikovaných názvů domén
+- Značky služeb
+- Analýza hrozeb
+- Podpora pro odchozí SNAT
+- Podpora DNAT u příchozích přenosů
+- Několik veřejných IP adres
+- Protokolování Azure Monitor
+- Vynucené tunelování
+- Webové kategorie (Preview)
+- Certifikace
 
 ## <a name="built-in-high-availability"></a>Integrovaná vysoká dostupnost
 
-Máte vestavěnou vysokou dostupnost, takže se nevyžadují žádné další nástroje pro vyrovnávání zatížení a nemusíte nic konfigurovat.
+Je integrovaná vysoká dostupnost, takže se nevyžadují žádné další nástroje pro vyrovnávání zatížení a nemusíte nic konfigurovat.
 
 ## <a name="availability-zones"></a>Zóny dostupnosti
 
@@ -47,7 +48,7 @@ Azure Firewall se dá nakonfigurovat během nasazení, aby se zvýšila dostupno
 
 K určité zóně taky můžete přidružit Azure Firewall jenom z důvodů blízkosti, a to pomocí smlouvy SLA pro službu Standard 99,95%.
 
-Pro bránu firewall, která je nasazená v zóně dostupnosti, se neúčtují žádné další náklady. U příchozích a odchozích přenosů dat spojených s Zóny dostupnosti však existují další náklady. Další informace najdete v tématu [Podrobnosti o cenách šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/).
+Pro bránu firewall, která je nasazená v zóně dostupnosti, se neúčtují žádné další náklady. U příchozích a odchozích přenosů dat přidružených k Zóny dostupnosti jsou však přidané náklady. Další informace najdete v tématu [Podrobnosti o cenách šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/).
 
 Azure Firewall Zóny dostupnosti jsou k dispozici v oblastech, které podporují Zóny dostupnosti. Další informace najdete v tématu [oblasti, které podporují zóny dostupnosti v Azure](../availability-zones/az-region.md) .
 
@@ -110,6 +111,24 @@ Azure Firewall sešit nabízí flexibilní plátno pro Azure Firewall analýzu d
 ## <a name="forced-tunneling"></a>Vynucené tunelování
 
 Azure Firewall můžete nakonfigurovat tak, aby směroval veškerý provoz vázaný na Internet na určený další segment směrování a nemuseli jít přímo na Internet. Můžete mít například místní hraniční bránu firewall nebo jiné síťové virtuální zařízení (síťové virtuální zařízení) pro zpracování síťového provozu před předáním na Internet. Další informace najdete v tématu [Azure firewall vynucené tunelování](forced-tunneling.md).
+
+## <a name="web-categories-preview"></a>Webové kategorie (Preview)
+
+Webové kategorie správcům umožňují povolit nebo odepřít přístup uživatelů k kategoriím webu, jako jsou například weby hazardních her, weby sociálních médií a další. Webové kategorie jsou zahrnuté ve Azure Firewall Standard, ale je lépe vyladěná v Azure Firewall Premium Preview. Na rozdíl od možností kategorií webu ve standardní SKU, které odpovídají kategorii na základě plně kvalifikovaného názvu domény, skladová položka Premium odpovídá kategorii podle celé adresy URL pro přenos HTTP i HTTPS. Další informace o Azure Firewall Premium Preview najdete v tématu [Azure firewall funkce Premium Preview](premium-features.md).
+
+Pokud například Azure Firewall zachytí požadavek HTTPS pro `www.google.com/news` , je očekávána následující kategorizace: 
+
+- Firewall Standard – bude prověřena pouze část plně kvalifikovaného názvu domény, takže `www.google.com` bude zařazena do kategorie jako *vyhledávací modul*. 
+
+- Firewall Premium – bude prověřena úplná adresa URL, takže `www.google.com/news` bude zařazena do kategorie *zpráv*.
+
+Kategorie jsou seřazené na základě závažnosti v oblasti **zodpovědnosti**, **vysoké šířky pásma**, **používání firmy**, **ztráty produktivity**, **Obecné procházení** a **Nezařazeno do kategorie**.
+
+### <a name="category-exceptions"></a>Výjimky kategorie
+
+Můžete vytvořit výjimky pro pravidla vaší webové kategorie. Vytvořte samostatnou kolekci pravidel povolení nebo odepření s vyšší prioritou v rámci skupiny kolekce pravidel. Můžete například nakonfigurovat kolekci pravidel, která umožňuje `www.linkedin.com` s prioritou 100, s kolekcí pravidel, která zakazuje **sociální sítě** s prioritou 200. Tím se vytvoří výjimka pro předdefinovanou webovou kategorii **sítě pro sociální sítě** .
+
+
 
 ## <a name="certifications"></a>Certifikace
 

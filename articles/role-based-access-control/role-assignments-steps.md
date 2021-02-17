@@ -1,5 +1,5 @@
 ---
-title: Postup přidání přiřazení role – Azure RBAC
+title: Postup přiřazení role Azure – Azure RBAC
 description: Naučte se, jak přiřadit role Azure uživatelům, skupinám, instančním objektům nebo spravovaným identitám pomocí řízení přístupu na základě role Azure (RBAC).
 services: active-directory
 author: rolyon
@@ -7,18 +7,18 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/30/2020
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: e746c7d09bb568d457ab1037b56c7c2973b29ad7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 081335779ffc4b3a6ddf09e56b773c6d34b210be
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117244"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556032"
 ---
-# <a name="steps-to-add-a-role-assignment"></a>Kroky pro přidání přiřazení role
+# <a name="steps-to-assign-an-azure-role"></a>Postup přiřazení role Azure
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Tento článek popisuje kroky vysoké úrovně k přidání přiřazení role pomocí [Azure Portal](role-assignments-portal.md), [Azure PowerShell](role-assignments-powershell.md), rozhraní příkazového [řádku Azure](role-assignments-cli.md)nebo [REST API](role-assignments-rest.md).
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Tento článek popisuje kroky vysoké úrovně k přiřazení rolí Azure pomocí [Azure Portal](role-assignments-portal.md), [Azure PowerShell](role-assignments-powershell.md), rozhraní příkazového [řádku Azure](role-assignments-cli.md)nebo [REST API](role-assignments-rest.md).
 
 ## <a name="step-1-determine-who-needs-access"></a>Krok 1: určení toho, kdo potřebuje přístup
 
@@ -79,16 +79,16 @@ Chcete-li přiřadit role, musíte být přihlášeni pomocí uživatele, které
 
 Pokud váš uživatelský účet nemá oprávnění k přiřazení role v rámci vašeho předplatného, zobrazí se chybová zpráva, že váš účet nemá oprávnění k provedení akce Microsoft. Authorization/roleAssignments/Write. V takovém případě kontaktujte správce předplatného, aby k němu mohli přiřazovat oprávnění vaším jménem.
 
-## <a name="step-5-add-role-assignment"></a>Krok 5. Přidat přiřazení role
+## <a name="step-5-assign-role"></a>Krok 5. Přiřazení role
 
-Jakmile budete znát objekt zabezpečení, roli a rozsah, můžete roli přiřadit. Přiřazení rolí můžete přidat pomocí Azure Portal, Azure PowerShell, Azure CLI, Azure SDK nebo rozhraní REST API. V každém předplatném můžete mít až **2000** přiřazení rolí. Toto omezení zahrnuje přiřazení rolí v rámci předplatného, skupiny prostředků a oborů prostředků. V každé skupině pro správu můžete mít až **500** přiřazení rolí.
+Jakmile budete znát objekt zabezpečení, roli a rozsah, můžete roli přiřadit. Role můžete přiřadit pomocí Azure Portal, Azure PowerShell, Azure CLI, Azure SDK nebo rozhraní REST API. V každém předplatném můžete mít až **2000** přiřazení rolí. Toto omezení zahrnuje přiřazení rolí v rámci předplatného, skupiny prostředků a oborů prostředků. V každé skupině pro správu můžete mít až **500** přiřazení rolí.
 
-Podrobné pokyny, jak přidat přiřazení rolí, najdete v následujících článcích.
+Podrobné pokyny k přiřazení rolí najdete v následujících článcích.
 
-- [Přidání nebo odebrání přiřazení rolí Azure pomocí portálu Azure Portal](role-assignments-portal.md)
-- [Přidání nebo odebrání přiřazení rolí v Azure pomocí Azure PowerShellu](role-assignments-powershell.md)
-- [Přidání nebo odebrání přiřazení rolí v Azure pomocí Azure CLI](role-assignments-cli.md)
-- [Přidání nebo odebrání přiřazení rolí v Azure pomocí REST API](role-assignments-rest.md)
+- [Přiřazení rolí Azure pomocí Azure Portal](role-assignments-portal.md)
+- [Přiřazení rolí Azure pomocí Azure PowerShell](role-assignments-powershell.md)
+- [Přiřazení rolí Azure pomocí Azure CLI](role-assignments-cli.md)
+- [Přiřazení rolí Azure pomocí REST API](role-assignments-rest.md)
 
 ## <a name="next-steps"></a>Další kroky
 

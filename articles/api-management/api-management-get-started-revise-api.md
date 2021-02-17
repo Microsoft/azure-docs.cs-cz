@@ -8,14 +8,14 @@ author: vladvino
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 10/30/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 3804bfb2a269c431b1a00947f5c7613566a78f49
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: acb121bb00df481c926ebed9594bf0fe1b9b17ed
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377483"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546631"
 ---
 # <a name="tutorial-use-revisions-to-make-non-breaking-api-changes-safely"></a>Kurz: použití revizí k bezpečnému provedení neprůlomových změn rozhraní API
 Jakmile bude vaše rozhraní API připravené a začnou ho využívat vývojáři, časem bude potřeba provádět změny rozhraní API, aniž by to mělo negativní vliv na volající vašeho rozhraní API. Také je užitečné informovat vývojáře o prováděných změnách. 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 :::image type="content" source="media/api-management-getstarted-revise-api/azure-portal.png" alt-text="Revize rozhraní API v Azure Portal":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Dokončete následující rychlý Start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
@@ -51,10 +51,10 @@ V tomto kurzu se naučíte:
    :::image type="content" source="media/api-management-getstarted-revise-api/07-add-revisions-01-add-new-revision.png" alt-text="Přidání revize rozhraní API":::
 
     > [!TIP]
-    > Můžete také vybrat **Přidat revizi** v místní nabídce ( **...** ) rozhraní API.
+    > Můžete také vybrat **Přidat revizi** v místní nabídce (**...**) rozhraní API.
 
 5. Zadejte popis nové revize, který vám pomůže zapamatovat si, k čemu se bude používat.
-6. Vyberte **vytvořit** ,
+6. Vyberte **vytvořit**,
 7. Teď se vytvoří vaše nová revize.
 
     > [!NOTE]
@@ -78,14 +78,71 @@ V tomto kurzu se naučíte:
 
 ## <a name="make-your-revision-current-and-add-a-change-log-entry"></a>Nastavení revize jako aktuální a přidání položky protokolu změn
 
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
 1. V nabídce v horní části stránky vyberte kartu **Revize**.
-1. Otevřete místní nabídku ( **...** ) pro **Revizi 2**.
+1. Otevřete místní nabídku (**...**) pro **Revizi 2**.
 1. Vyberte **nastavit jako aktuální**.
 1. Zaškrtněte políčko **publikovat do veřejného protokolu změn pro toto rozhraní API** , pokud chcete publikovat poznámky k této změně. Zadejte popis změny, kterou vývojáři uvidí, například: **testování revizí. Byla přidána nová operace "test".**
 1. **Revize 2** je teď nastavená jako aktuální.
 
     :::image type="content" source="media/api-management-getstarted-revise-api/revisions-menu.png" alt-text="Nabídka revize v okně Revize":::
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Chcete-li začít používat rozhraní příkazového řádku Azure:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Pomocí tohoto postupu můžete vytvořit a aktualizovat verzi.
+
+1. Spuštěním příkazu [AZ APIM API list](/cli/azure/apim/api#az_apim_api_list) zobrazíte ID rozhraní API:
+
+   ```azurecli
+   az apim api list --resource-group apim-hello-word-resource-group \
+       --service-name apim-hello-world --output table
+   ```
+
+   ID rozhraní API, které se má použít v dalším příkazu, je `Name` hodnota. Revize rozhraní API je ve `ApiRevision` sloupci.
+
+1. Pokud chcete vytvořit vydání, pomocí poznámky k verzi spusťte příkaz [AZ APIM API Release Create](/cli/azure/apim/api/release#az_apim_api_release_create) :
+
+   ```azurecli
+   az apim api release create --resource-group apim-hello-word-resource-group \
+       --api-id demo-conference-api --api-revision 2 --service-name apim-hello-world \
+       --notes 'Testing revisions. Added new "test" operation.'
+   ```
+
+   Verze, kterou vydáte, se stala aktuální revizí.
+
+1. Chcete-li zobrazit vaše verze, použijte příkaz [AZ APIM API Release list](/cli/azure/apim/api/release#az_apim_api_release_list) :
+
+   ```azurecli
+   az apim api release list --resource-group apim-hello-word-resource-group \
+       --api-id echo-api --service-name apim-hello-world --output table
+   ```
+
+   Poznámky, které zadáte, se zobrazí v protokolu změn. Můžete je zobrazit ve výstupu předchozího příkazu.
+
+1. Když vytvoříte vydání, `--notes` parametr je nepovinný. Poznámky můžete přidat nebo změnit později pomocí příkazu [AZ APIM API Release Update](/cli/azure/apim/api/release#az_apim_api_release_update) :
+
+   ```azurecli
+   az apim api release update --resource-group apim-hello-word-resource-group \
+       --api-id demo-conference-api --release-id 00000000000000000000000000000000 \
+       --service-name apim-hello-world --notes "Revised notes."
+   ```
+
+   `Name`Pro ID vydané verze použijte hodnotu ve sloupci.
+
+Všechny vydané verze můžete odebrat spuštěním příkazu [AZ APIM API Release Delete ](/cli/azure/apim/api/release#az_apim_api_release_delete) :
+
+```azurecli
+az apim api release delete --resource-group apim-hello-word-resource-group \
+    --api-id demo-conference-api --release-id 00000000000000000000000000000000 
+    --service-name apim-hello-world
+```
+
+---
 
 ## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>Procházení portálu pro vývojáře a zobrazení změn a protokolu změn
 
@@ -111,4 +168,4 @@ V tomto kurzu jste se naučili:
 Přejděte k dalšímu kurzu:
 
 > [!div class="nextstepaction"]
-> [Publikování několika verzí rozhraní API](api-management-get-started-publish-versions.md)
+> [Publikování několika verzí vašeho rozhraní API](api-management-get-started-publish-versions.md)

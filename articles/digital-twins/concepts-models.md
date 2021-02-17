@@ -1,20 +1,20 @@
 ---
-title: Vlastní modely
+title: Modely DTDL
 titleSuffix: Azure Digital Twins
-description: Pochopte, jak digitální vlákna Azure používá uživatelsky definované modely k popisu entit ve vašem prostředí.
+description: Pochopte, jak digitální vlákna Azure používá vlastní modely k popisu entit ve vašem prostředí.
 author: baanders
 ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 599bb93e747acf504a4ebf43aaea771ed5064886
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 9abf389eb7f8862440f860c53a0dbd8b10315c67
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131385"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558138"
 ---
-# <a name="understand-twin-models-in-azure-digital-twins"></a>Principy dvojitých modelů v digitálních prozdvojeních Azure
+# <a name="understand-twin-models-in-azure-digital-twins"></a>Principy modelů dvojčat v Azure Digital Twins
 
 Klíčovou charakteristikou digitálních vláken Azure je možnost definovat vlastní slovník a vytvořit dvojitou graf v rámci podmínek vaší firmy. Tato funkce je k dispozici prostřednictvím uživatelsky definovaných **modelů**. Modely si můžete představit jako podstatná jména v popisu svého světa. 
 
@@ -24,7 +24,7 @@ Modely digitálních vláken Azure jsou reprezentovány ve formátu **digitáln�
 
 ## <a name="digital-twin-definition-language-dtdl-for-models"></a>DTDL (Digital redefinition Language) pro modely
 
-Modely pro digitální vlákna Azure jsou definovány pomocí jazyka DTDL (Digital nedefinovaný jazyk). DTDL je založen na JSON-LD a je nezávislý na programovacím jazyce. DTDL není výhradně pro digitální vlákna Azure, ale používá se také k reprezentaci dat zařízení v jiných službách IoT, jako je [IoT technologie Plug and Play](../iot-pnp/overview-iot-plug-and-play.md). 
+K definování modelů služby Azure Digital Twins se používá jazyk DTDL (Digital Twins Definition Language). DTDL vychází z jazyka JSON-LD a je nezávislý na programovacích jazycích. DTDL není výhradně pro digitální vlákna Azure, ale používá se také k reprezentaci dat zařízení v jiných službách IoT, jako je [IoT technologie Plug and Play](../iot-pnp/overview-iot-plug-and-play.md). 
 
 Digitální vlákna Azure používá **DTDL _verze 2_**. Další informace o této verzi DTDL najdete v dokumentaci k jejímu specifikaci v GitHubu: [*Digital DTDLing Definition Language () – verze 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Použití DTDL _verze 1_ u digitálních vláken Azure je teď zastaralé.
 
@@ -35,7 +35,7 @@ Digitální vlákna Azure používá **DTDL _verze 2_**. Další informace o té
 
 ## <a name="elements-of-a-model"></a>Prvky modelu
 
-V rámci definice modelu je položka kódu nejvyšší úrovně **rozhraní**. Tím se zapouzdřuje celý model a zbytek modelu je definovaný v rámci rozhraní. 
+V rámci definice modelu je položka kódu nejvyšší úrovně **rozhraní**. Zapouzdřuje celý model a zbytek modelu je definovaný v rámci tohoto rozhraní. 
 
 Rozhraní modelu DTDL může obsahovat nula, jednu nebo mnoho z následujících polí:
 * **Vlastnost** -Properties jsou datová pole, která představují stav entity (jako jsou vlastnosti v mnoha objektově orientovaných programovacích jazycích). Vlastnosti mají záložní úložiště a dají se číst kdykoli.
@@ -92,7 +92,7 @@ Vezměte v úvahu, že Planet může také interagovat s **Moons** , které jsou
 
 Pole modelu jsou:
 
-| Pole | Description |
+| Pole | Popis |
 | --- | --- |
 | `@id` | Identifikátor modelu. Musí být ve formátu `dtmi:<domain>:<unique model identifier>;<model version number>` . |
 | `@type` | Určuje druh informací, které jsou popsány. Pro rozhraní je typ *rozhraní*. |
@@ -136,23 +136,31 @@ Při návrhu modelů tak, aby odrážely entity ve vašem prostředí, může b�
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
-## <a name="integrating-with-industry-standard-models"></a>Integrace s oborově standardními modely
+## <a name="tools-for-models"></a>Nástroje pro modely 
 
-Používání modelů založených na oborových standardech nebo použití standardní reprezentace Ontology, jako je například RDF nebo OWL, poskytuje bohatý výchozí bod při návrhu modelů digitálních vláken Azure. Používání průmyslových modelů pomáhá také při standardizaci a sdílení informací.
+K dispozici je několik ukázek, díky kterým je ještě snazší pracovat s modely a ontologie. Jsou umístěné v tomto úložišti: [Nástroje pro digitální DTDL (Digital-in Definition Language)](https://github.com/Azure/opendigitaltwins-tools).
 
-Aby bylo možné použít s digitálními podmnožinami Azure, musí být model reprezentovaný v [**jazyce DTDL (Digital vlákna)**](concepts-models.md)založeném na JSON – ld. Proto pokud chcete použít standardní model, musíte ho nejdřív převést na DTDL, aby ho mohly používat digitální vlákna Azure. Model DTDL pak slouží jako zdroj pravdy pro model v rámci digitálních vláken Azure.
+Tato část popisuje aktuální sadu ukázek podrobněji.
 
-Existují dva hlavní cesty k integraci standardních modelů s DTDL, a to v závislosti na vaší situaci:
-* Pokud jste ještě vytvořili vaše modely, můžete je navrhnout kolem **stávajícího úvodní DTDL ontologie** , která obsahuje jazyk specifický pro váš obor.
-* Pokud už máte existující modely založené na oborovém standardu, budete je muset **převést na DTDL** , aby se daly přenést do digitálních vláken Azure.
+### <a name="model-uploader"></a>Odeslání modelu 
 
-Další informace o obou těchto procesech naleznete v tématu [*How to: Integral a Industry Standard Models*](how-to-integrate-models.md).
+_**Pro nahrávání modelů do digitálních vláken Azure**_
+
+Jakmile dokončíte vytváření, rozšiřování nebo výběr vašich modelů, můžete je odeslat do instance digitálního vlákna Azure, aby byly k dispozici pro použití ve vašem řešení. To se provádí pomocí [rozhraní API pro digitální vlákna Azure](how-to-use-apis-sdks.md), jak je popsáno v tématu [*Postupy: Správa modelů DTDL*](how-to-manage-model.md#upload-models).
+
+Pokud ale máte mnoho modelů, které se mají nahrát – nebo pokud mají mnoho vzájemných závislostí, které by pomohly objednat složitá jednotlivá nahrávání – můžete použít tuto ukázku k nahrání velkého množství modelů najednou: odeslání [**modelu z digitálního vlákna Azure**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader). Podle pokynů uvedených v ukázce nakonfigurujte a použijte tento projekt k nahrání modelů do vaší vlastní instance.
+
+### <a name="model-visualizer"></a>Vizualizér modelů 
+
+_**Pro vizualizaci modelů**_
+
+Po nahrání modelů do instance digitálního vlákna Azure můžete zobrazit modely v instanci digitálních vláken Azure, včetně všech vztahů dědičnosti a modelu, pomocí [**Vizualizér modelů ADT**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer). Tato ukázka je aktuálně ve stavu konceptu. Doporučujeme, aby komunita pro vývoj digitálních vláken rozšířila a přispívala k ukázce. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si téma Správa modelů pomocí rozhraní DigitalTwinModels API:
-* [*Postupy: Správa vlastních modelů*](how-to-manage-model.md)
+* Seznamte se s vytvářením modelů na základě standardních ontologie: [ *Koncepty: co je Ontology?*](concepts-ontologies.md)
 
-Nebo se dozvíte, jak se vytváří digitální vlákna na základě modelů:
-* [*Koncepty: digitální vlákna a Dvojitá graf*](concepts-twins-graph.md)
+* Podrobně hlouběji se správou modelů pomocí operací rozhraní API: [ *Postupy: Správa modelů DTDL*](how-to-manage-model.md)
+
+* Přečtěte si, jak se používají modely k vytváření digitálních vláken: [ *Koncepty: digitální vlákna a Dvojitá graf*](concepts-twins-graph.md)
 

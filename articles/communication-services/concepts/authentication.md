@@ -2,19 +2,19 @@
 title: Ověřování ve službě Azure Communication Services
 titleSuffix: An Azure Communication Services concept document
 description: Seznamte se s různými způsoby, kterými se aplikace nebo služba může ověřit pro komunikační služby.
-author: matthewrobertson
+author: GrantMeStrength
 manager: jken
 services: azure-communication-services
-ms.author: marobert
+ms.author: jken
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 4d6e02852dcd2d30a764417a4b5e0e012a1d2ab5
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e20c822c2e792c67ed655080385a3c90794d53fd
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571092"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545135"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Ověřování ve službě Azure Communication Services
 
@@ -72,11 +72,11 @@ Pokud nepoužíváte klientskou knihovnu k provádění požadavků HTTP na rozh
 
 Tokeny přístupu uživatele umožňují klientským aplikacím ověřování přímo proti komunikačním službám Azure. K dosažení tohoto problému byste měli nastavit důvěryhodnou službu, která ověřuje vaše uživatele aplikace a vydává tokeny přístupu uživatele pomocí klientské knihovny pro správu. Další informace o našich možnostech architektury najdete v Koncepční dokumentaci [architektury klienta a serveru](./client-and-server-architecture.md) .
 
-`CommunicationUserCredential`Třída obsahuje logiku pro poskytnutí přihlašovacích údajů tokenu uživatele k klientským knihovnám a správě jejich životního cyklu.
+`CommunicationTokenCredential`Třída obsahuje logiku pro poskytnutí přihlašovacích údajů tokenu uživatele k klientským knihovnám a správě jejich životního cyklu.
 
 ### <a name="initialize-the-client-libraries"></a>Inicializace klientských knihoven
 
-Pokud chcete inicializovat klientské knihovny Azure Communications, které vyžadují ověřování pomocí tokenu přístupu uživatele, musíte nejdřív vytvořit instanci `CommunicationUserCredential` třídy a pak ji použít k inicializaci klienta rozhraní API.
+Pokud chcete inicializovat klientské knihovny Azure Communications, které vyžadují ověřování pomocí tokenu přístupu uživatele, musíte nejdřív vytvořit instanci `CommunicationTokenCredential` třídy a pak ji použít k inicializaci klienta rozhraní API.
 
 Následující fragmenty kódu ukazují, jak inicializovat knihovnu klienta chatu pomocí přístupového tokenu uživatele:
 
@@ -86,8 +86,8 @@ Následující fragmenty kódu ukazují, jak inicializovat knihovnu klienta chat
 // user access tokens should be created by a trusted service using the Administration client library
 var token = "<valid-user-access-token>";
 
-// create a CommunicationUserCredential instance
-var userCredential = new CommunicationUserCredential(token);
+// create a CommunicationTokenCredential instance
+var userCredential = new CommunicationTokenCredential(token);
 
 // initialize the chat client library with the credential
 var chatClient = new ChatClient(ENDPOINT_URL, userCredential);
@@ -99,8 +99,8 @@ var chatClient = new ChatClient(ENDPOINT_URL, userCredential);
 // user access tokens should be created by a trusted service using the Administration client library
 const token = "<valid-user-access-token>";
 
-// create a CommunicationUserCredential instance with the AzureCommunicationUserCredential class
-const userCredential = new AzureCommunicationUserCredential(token);
+// create a CommunicationTokenCredential instance with the AzureCommunicationTokenCredential class
+const userCredential = new AzureCommunicationTokenCredential(token);
 
 // initialize the chat client library with the credential
 let chatClient = new ChatClient(ENDPOINT_URL, userCredential);
@@ -112,8 +112,8 @@ let chatClient = new ChatClient(ENDPOINT_URL, userCredential);
 // user access tokens should be created by a trusted service using the Administration client library
 let token = "<valid-user-access-token>";
 
-// create a CommunicationUserCredential instance
-let userCredential = try CommunicationUserCredential(token: token)
+// create a CommunicationTokenCredential instance
+let userCredential = try CommunicationTokenCredential(token: token)
 
 // initialize the chat client library with the credential
 let chatClient = try CommunicationChatClient(credential: userCredential, endpoint: ENDPOINT_URL)
@@ -125,8 +125,8 @@ let chatClient = try CommunicationChatClient(credential: userCredential, endpoin
 // user access tokens should be created by a trusted service using the Administration client library
 String token = "<valid-user-access-token>";
 
-// create a CommunicationUserCredential instance
-CommunicationUserCredential userCredential = new CommunicationUserCredential(token);
+// create a CommunicationTokenCredential instance
+CommunicationTokenCredential userCredential = new CommunicationTokenCredential(token);
 
 // Initialize the chat client
 final ChatClientBuilder builder = new ChatClientBuilder();
@@ -140,12 +140,12 @@ ChatClient chatClient = builder.buildClient();
 
 ### <a name="refreshing-user-access-tokens"></a>Aktualizují se tokeny přístupu uživatele.
 
-Tokeny přístupu uživatele jsou krátkodobé přihlašovací údaje, které je potřeba znovu vystavit, aby nedocházelo k přerušení služeb uživatelů. `CommunicationUserCredential`Konstruktor přijímá funkci zpětného volání při aktualizaci, která umožňuje aktualizovat tokeny přístupu uživatele předtím, než vyprší jejich platnost. Toto zpětné volání byste měli použít k načtení nového přístupového tokenu uživatele z vaší důvěryhodné služby.
+Tokeny přístupu uživatele jsou krátkodobé přihlašovací údaje, které je potřeba znovu vystavit, aby nedocházelo k přerušení služeb uživatelů. `CommunicationTokenCredential`Konstruktor přijímá funkci zpětného volání při aktualizaci, která umožňuje aktualizovat tokeny přístupu uživatele předtím, než vyprší jejich platnost. Toto zpětné volání byste měli použít k načtení nového přístupového tokenu uživatele z vaší důvěryhodné služby.
 
 #### <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
-var userCredential = new CommunicationUserCredential(
+var userCredential = new CommunicationTokenCredential(
     initialToken: token,
     refreshProactively: true,
     tokenRefresher: cancellationToken => fetchNewTokenForCurrentUser(cancellationToken)
@@ -155,7 +155,7 @@ var userCredential = new CommunicationUserCredential(
 #### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
-const userCredential = new AzureCommunicationUserCredential({
+const userCredential = new AzureCommunicationTokenCredential({
   tokenRefresher: async () => fetchNewTokenForCurrentUser(),
   refreshProactively: true,
   initialToken: token
@@ -165,7 +165,7 @@ const userCredential = new AzureCommunicationUserCredential({
 #### <a name="swift"></a>[Swift](#tab/swift)
 
 ```swift
- let userCredential = try CommunicationUserCredential(initialToken: token, refreshProactively: true) { |completionHandler|
+ let userCredential = try CommunicationTokenCredential(initialToken: token, refreshProactively: true) { |completionHandler|
    let updatedToken = fetchTokenForCurrentUser()
    completionHandler(updatedToken, nil)
  }
@@ -181,7 +181,7 @@ TokenRefresher tokenRefresher = new TokenRefresher() {
     }
 }
 
-CommunicationUserCredential credential = new CommunicationUserCredential(tokenRefresher, token, true);
+CommunicationTokenCredential credential = new CommunicationTokenCredential(tokenRefresher, token, true);
 ```
 ---
 
