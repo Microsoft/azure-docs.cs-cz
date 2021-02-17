@@ -3,12 +3,12 @@ title: Vytvoření nového prostředku založeného na pracovním prostoru Azure
 description: Přečtěte si o krocích požadovaných k povolení nových Azure Monitorch Application Insightsch prostředků založených na pracovních prostorech.
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: 23994190df89b47d9c7e90ed62a724545389b1fe
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 3ec0b25a24af13b29a3568165009f8a6d66e0218
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063362"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578344"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Prostředky Application Insights založené na pracovním prostoru
 
@@ -23,10 +23,10 @@ To umožňuje také společné řízení přístupu na základě role Azure (Azu
 
 Application Insights na základě pracovního prostoru vám umožní využít výhod nejnovějších možností Azure Monitor a Log Analytics, včetně:
 
-* [Klíče spravované zákazníkem (CMK)](../platform/customer-managed-keys.md) poskytují šifrování v klidovém prostředí pro vaše data pomocí šifrovacích klíčů, ke kterým máte přístup.
-* [Privátní odkaz Azure](../platform/private-link-security.md) umožňuje bezpečně propojit služby Azure PaaS s vaší virtuální sítí pomocí privátních koncových bodů.
+* [Klíče spravované zákazníkem (CMK)](../logs/customer-managed-keys.md) poskytují šifrování v klidovém prostředí pro vaše data pomocí šifrovacích klíčů, ke kterým máte přístup.
+* [Privátní odkaz Azure](../logs/private-link-security.md) umožňuje bezpečně propojit služby Azure PaaS s vaší virtuální sítí pomocí privátních koncových bodů.
 * [Přineste si vlastní úložiště (BYOS) pro Profiler a Snapshot Debugger](./profiler-bring-your-own-storage.md) vám poskytne plnou kontrolu nad zásadami šifrování, zásadami správy životnosti a přístupem k síti pro všechna data přidružená k Application Insights Profiler a Snapshot Debugger. 
-* [Úrovně rezervace kapacity](../platform/manage-cost-storage.md#pricing-model) umožňují v porovnání s průběžnými platbami ušetřit až 25%. 
+* [Úrovně rezervace kapacity](../logs/manage-cost-storage.md#pricing-model) umožňují v porovnání s průběžnými platbami ušetřit až 25%. 
 * Rychlejší příjem dat prostřednictvím Log Analytics příjmu streamování.
 
 ## <a name="create-workspace-based-resource"></a>Vytvoření prostředku založeného na pracovních prostorech
@@ -36,7 +36,7 @@ Přihlaste se k [Azure Portal](https://portal.azure.com)a vytvořte prostředek 
 > [!div class="mx-imgBorder"]
 > ![Prostředek Application Insights založený na pracovním prostoru](./media/create-workspace-resource/create-workspace-based.png)
 
-Pokud ještě nemáte existující Log Analytics pracovní prostor, [Projděte si dokumentaci k vytváření pracovních prostorů Log Analytics](../learn/quick-create-workspace.md).
+Pokud ještě nemáte existující Log Analytics pracovní prostor, [Projděte si dokumentaci k vytváření pracovních prostorů Log Analytics](../logs/quick-create-workspace.md).
 
 **Prostředky založené na pracovním prostoru jsou aktuálně k dispozici ve všech komerčních oblastech a Azure Government**
 
@@ -212,5 +212,5 @@ Funkce starší verze průběžného exportu není u prostředků založených n
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zkoumání metrik](../platform/metrics-charts.md)
-* [Psaní analytických dotazů](../log-query/log-query-overview.md)
+* [Zkoumání metrik](../essentials/metrics-charts.md)
+* [Psaní analytických dotazů](../logs/log-query-overview.md)

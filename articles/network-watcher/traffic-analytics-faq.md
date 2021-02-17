@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: a5fdde954d2826f34c671552a88365f9276b89a0
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: f4d97b81bf8f11b8380f04dcbfdb72bd658805ab
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895219"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579240"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu nejčastějších dotazech
 
@@ -112,7 +112,7 @@ Pracovní prostor Log Analytics musí existovat v následujících oblastech:
 - Southeast Asia 
 - Jižní Korea – střed
 - Indie – střed
-- Japan East
+- Japonsko – východ
 - USA (Gov) – Virginia
 - Čína – východ 2
 
@@ -122,11 +122,11 @@ Ano, tyto skupin zabezpečení sítě můžou být v různých oblastech, než j
 
 ## <a name="can-multiple-nsgs-be-configured-within-a-single-workspace"></a>Dá se víc skupin zabezpečení sítě nakonfigurovat v jednom pracovním prostoru?
 
-Yes.
+Ano.
 
 ## <a name="can-i-use-an-existing-workspace"></a>Můžu použít stávající pracovní prostor?
 
-Yes. Pokud vyberete existující pracovní prostor, ujistěte se, že byl migrován do nového dotazovacího jazyka. Pokud pracovní prostor nechcete upgradovat, je nutné vytvořit nový. Další informace o novém dotazovacím jazyku najdete v tématu [Azure monitor protokoluje upgrade na nové prohledávání protokolu](../azure-monitor/log-query/log-query-overview.md).
+Ano. Pokud vyberete existující pracovní prostor, ujistěte se, že byl migrován do nového dotazovacího jazyka. Pokud pracovní prostor nechcete upgradovat, je nutné vytvořit nový. Další informace o novém dotazovacím jazyku najdete v tématu [Azure monitor protokoluje upgrade na nové prohledávání protokolu](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Může být můj účet Azure Storage v jednom předplatném a pracovní prostor Log Analytics má v jiném předplatném?
 
@@ -134,7 +134,7 @@ Ano, váš účet Azure Storage může být v jednom předplatném a váš praco
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>Můžu v jiném předplatném ukládat nezpracované protokoly?
 
-Yes. Protokoly toku NSG můžete nakonfigurovat tak, aby se odesílaly do účtu úložiště umístěného v jiném předplatném, pokud máte příslušná oprávnění a účet úložiště je umístěný ve stejné oblasti jako NSG. NSG a cílový účet úložiště musí také sdílet stejný tenant Azure Active Directory.
+Ano. Protokoly toku NSG můžete nakonfigurovat tak, aby se odesílaly do účtu úložiště umístěného v jiném předplatném, pokud máte příslušná oprávnění a účet úložiště je umístěný ve stejné oblasti jako NSG. NSG a cílový účet úložiště musí také sdílet stejný tenant Azure Active Directory.
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>Co když nemůžu nakonfigurovat NSG pro analýzu provozu z důvodu chyby "Nenalezeno"?
 
@@ -262,7 +262,7 @@ Analýza provozu nemá integrovanou podporu pro výstrahy. Vzhledem k tomu, že 
 - Nabídne můžete použít pro Log Analytics v Analýza provozu. 
 - Pro psaní dotazů použijte [zde dokumentované schéma](traffic-analytics-schema.md) . 
 - Pokud chcete vytvořit upozornění, klikněte na nové pravidlo upozornění.
-- Informace o vytvoření výstrahy najdete v [dokumentaci k protokolům výstrah](../azure-monitor/platform/alerts-log.md) .
+- Informace o vytvoření výstrahy najdete v [dokumentaci k protokolům výstrah](../azure-monitor/alerts/alerts-log.md) .
 
 ## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>Návody ověřit, které virtuální počítače přijímají většinu místních přenosů?
 
@@ -403,4 +403,4 @@ Stránka topologie virtuální podsítě obsahuje dvě hlavní části:
 - Na výběr všech takových uzlů můžete všechny své připojení navštívit tak, že stisknete `Shift+Left arrow` klávesu. Fokus se přesune do **pole informační nástroj** daného připojení. V jakémkoli okamžiku se dá fokus přesunout zpátky na uzel stisknutím klávesy `Shift+Right arrow` znovu.
 
 ## <a name="are-classic-nsgs-supported"></a>Jsou podporovány klasické skupin zabezpečení sítě?
-Ne, Analýza provozu nepodporuje klasický NSG. Doporučuje se migrovat prostředky IaaS z modelu Classic na Azure Resource Manager, protože klasické prostředky budou [zastaralé](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation). V tomto článku najdete informace [o tom, jak provést migraci](https://docs.microsoft.com/azure/virtual-machines/migration-classic-resource-manager-overview).
+Ne, Analýza provozu nepodporuje klasický NSG. Doporučuje se migrovat prostředky IaaS z modelu Classic na Azure Resource Manager, protože klasické prostředky budou [zastaralé](../virtual-machines/classic-vm-deprecation.md). V tomto článku najdete informace [o tom, jak provést migraci](../virtual-machines/migration-classic-resource-manager-overview.md).

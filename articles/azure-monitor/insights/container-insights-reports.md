@@ -3,15 +3,15 @@ title: Sestavy v Azure Monitor pro kontejnery
 description: Popisuje sestavy, které jsou k dispozici pro analýzu dat shromažďovaných Azure Monitor pro kontejnery.
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 3cc2f8fb9bfaa278ce06b4a8cd6d379397b7129a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 94709cf4a8b579447c11f91f9bc6863ab4b4fe08
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907489"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582309"
 ---
 # <a name="reports-in-azure-monitor-for-containers"></a>Sestavy v Azure Monitor pro kontejnery
-Sestavy v Azure Monitor pro kontejnery jsou doporučeny pro předem připravené [sešity Azure](../platform/workbooks-overview.md). Tento článek popisuje různé dostupné sestavy a přístup k nim.
+Sestavy v Azure Monitor pro kontejnery jsou doporučeny pro předem připravené [sešity Azure](../visualize/workbooks-overview.md). Tento článek popisuje různé dostupné sestavy a přístup k nim.
 
 ## <a name="viewing-reports"></a>Zobrazení sestav
 Z nabídky **Azure monitor** v Azure Portal vyberte **kontejnery**. V části **monitorování** vyberte **přehledy** , zvolte konkrétní cluster a pak vyberte stránku **sestavy (Preview)** . 
@@ -19,7 +19,7 @@ Z nabídky **Azure monitor** v Azure Portal vyberte **kontejnery**. V části **
 [![Stránka sestavy](media/container-insights-reports/reports-page.png)](media/container-insights-reports/reports-page.png#lightbox)
 
 ## <a name="create-a-custom-workbook"></a>Vytvoření vlastního sešitu
-Pokud chcete vytvořit vlastní sešit založený na některém z těchto sešitů, vyberte rozevírací seznam **Zobrazit sešity** a potom v dolní části rozevírací nabídky klikněte **na AKS Gallery** . Další informace o sešitech a používání šablon sešitu najdete v tématu [Azure monitor sešity](../platform/workbooks-overview.md) .
+Pokud chcete vytvořit vlastní sešit založený na některém z těchto sešitů, vyberte rozevírací seznam **Zobrazit sešity** a potom v dolní části rozevírací nabídky klikněte **na AKS Gallery** . Další informace o sešitech a používání šablon sešitu najdete v tématu [Azure monitor sešity](../visualize/workbooks-overview.md) .
 
 [![Galerie AKS](media/container-insights-reports/aks-gallery.png)](media/container-insights-reports/aks-gallery.png#lightbox)
 
@@ -78,4 +78,4 @@ Pokud chcete vytvořit vlastní sešit založený na některém z těchto sešit
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podrobnosti o sešitech v Azure Monitor najdete v tématu [Azure monitor sešity](../platform/workbooks-overview.md) .
+- Podrobnosti o sešitech v Azure Monitor najdete v tématu [Azure monitor sešity](../visualize/workbooks-overview.md) .

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 40405607e7f7198f190f621121022537ac3b3171
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: f2ce8d482231b4a95c322e9d495a75f89953c32a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046035"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581115"
 ---
 # <a name="management-of-azure-automation-data"></a>Správa dat služby Azure Automation
 
@@ -28,7 +28,7 @@ Aby se zajistilo zabezpečení dat při přenosu do Azure Automation, důrazně 
 
 Zjistili jsme, že starší verze TLS/SSL (Secure Sockets Layer) (SSL) jsou zranitelné a i když stále fungují k tomu, aby se zajistila zpětná kompatibilita, **nedoporučuje** se. Nedoporučujeme explicitně nastavit vašeho agenta tak, aby používal jenom TLS 1,2, pokud to není nezbytně nutné, protože může přerušit funkce zabezpečení na úrovni platformy, které vám umožní automaticky zjišťovat a využívat novější bezpečnější protokoly, jako je třeba TLS 1,3.
 
-Informace o podpoře TLS 1,2 s agentem Log Analytics pro systémy Windows a Linux, což je závislost pro roli Hybrid Runbook Worker, najdete v tématu [Přehled agenta Log Analytics-TLS 1,2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol).
+Informace o podpoře TLS 1,2 s agentem Log Analytics pro systémy Windows a Linux, což je závislost pro roli Hybrid Runbook Worker, najdete v tématu [Přehled agenta Log Analytics-TLS 1,2](..//azure-monitor/agents/log-analytics-agent.md#tls-12-protocol).
 
 ### <a name="platform-specific-guidance"></a>Doprovodné materiály pro konkrétní platformu
 
@@ -45,7 +45,7 @@ Když prostředek odstraníte z Azure Automation, uchová se po několik dní pr
 
 Následující tabulka shrnuje zásady uchovávání informací pro různé prostředky.
 
-| Data | Zásada |
+| Data | Zásady |
 |:--- |:--- |
 | Účty |Účet se trvale odebere 30 dní poté, co ho uživatel odstraní. |
 | Prostředky |Asset se trvale odebere 30 dní poté, co ho uživatel odstraní nebo 30 dní poté, co uživatel odstraní účet, který má Asset. Prostředky zahrnují proměnné, plány, přihlašovací údaje, certifikáty, balíčky Python 2 a připojení. |

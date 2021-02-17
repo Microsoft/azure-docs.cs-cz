@@ -3,17 +3,17 @@ title: Shlukování spravovaných disků
 description: Přečtěte si informace o shlukování disku pro disky Azure a virtuální počítače Azure.
 author: albecker1
 ms.author: albecker
-ms.date: 09/22/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: dcdbf94e547581cb9ff885ac5896467abdf316ae
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1cedac5814d1c547a28e9b1c894f416af5a924b5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576189"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585056"
 ---
 # <a name="managed-disk-bursting"></a>Shlukování spravovaných disků
 [!INCLUDE [managed-disks-bursting](../../includes/managed-disks-bursting.md)]
@@ -30,3 +30,7 @@ Pro virtuální počítače, které ji podporují, je shluking povolen ve výcho
 K dispozici je taky naše [Premium SSD](disks-types.md#premium-ssd) pro velikosti disků P20 a menší ve všech oblastech v cloudech veřejných, vládních a čínských Azure. Pro všechna nová a stávající nasazení velikostí disků, která to podporují, je rozšíření disku ve výchozím nastavení povolené. 
 
 [!INCLUDE [managed-disks-bursting](../../includes/managed-disks-bursting-2.md)]
+
+## <a name="next-steps"></a>Další kroky
+
+Informace o tom, jak získat přehled o prostředcích shlukování, najdete v tématu [metriky shlukování disku](disks-metrics.md).

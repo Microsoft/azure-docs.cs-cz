@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
-ms.openlocfilehash: ca483d993290e4d66ba257d4cb5de7fc3c952405
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b88185a09e69b1c7bd6c6c58b8e22190b4a2e394
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660827"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576757"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>Loven pro hrozby s Sentinel Azure
 
@@ -66,7 +66,7 @@ S ohledem na dodržování ověřovacích funkcí Azure můžete využít výhod
 
 ## <a name="query-language"></a>Dotazovací jazyk 
 
-Lov v Azure Sentinel je založený na jazyce dotazů Kusto. Další informace o dotazovacím jazyku a podporovaných operátorech naleznete v tématu [Referenční dokumentace jazyka dotazů](../azure-monitor/log-query/get-started-queries.md).
+Lov v Azure Sentinel je založený na jazyce dotazů Kusto. Další informace o dotazovacím jazyku a podporovaných operátorech naleznete v tématu [Referenční dokumentace jazyka dotazů](../azure-monitor/logs/get-started-queries.md).
 
 ## <a name="public-hunting-query-github-repository"></a>Úložiště GitHub pro veřejné lovecké dotazy
 

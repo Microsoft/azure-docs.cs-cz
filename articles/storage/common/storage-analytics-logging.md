@@ -9,12 +9,12 @@ ms.date: 01/29/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 217a804b0155d7886a068283f8669ace0bc81856
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: f1d254eecc41ebef690b4fc9f8294bee5a368ae4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99218515"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570035"
 ---
 # <a name="azure-storage-analytics-logging"></a>Protokolování analýz služby Azure Storage
 
@@ -76,7 +76,7 @@ Většina nástrojů pro procházení úložiště vám umožní zobrazit metada
  ```powershell
  Get-AzStorageBlob -Container '$logs' |  
  Where-Object {  
-     $_.Name -match 'table/2014/05/21/05' -and   
+     $_.Name -match 'blob/2014/05/21/05' -and   
      $_.ICloudBlob.Metadata.LogType -match 'write'  
  } |  
  ForEach-Object {  

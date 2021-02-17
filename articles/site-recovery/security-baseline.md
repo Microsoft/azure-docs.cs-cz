@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c3e2245ae47504e058921c532ed40a220e95423d
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: bf91c0a6e533acb326fe815c3e3c1088c959a603
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197570"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576724"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>Základní hodnoty zabezpečení Azure pro Site Recovery
 
@@ -66,9 +66,9 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledat nebo provádět akce s
 
 **Doprovodné** materiály: Sledujte všechny změny konfigurace síťových prostředků, které se vztahují ke službě Site Recovery pomocí protokolů aktivit Azure. V Azure Monitor můžete vytvářet výstrahy, které vám upozorní na změnu důležitých Site Recovery síťových prostředků.
 
-- [Zobrazení a načtení událostí protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Zobrazení a načtení událostí protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření, zobrazování a správa výstrah protokolu aktivit pomocí Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Vytváření, zobrazování a správa výstrah protokolu aktivit pomocí Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -86,7 +86,7 @@ Data protokolu aktivit Azure použijte k určení "co, kdo a kdy" pro všechny o
 
 Ingestování Site Recovery protokolů v Azure Monitor k agregaci generovaných dat zabezpečení. V rámci Azure Monitor Používejte pracovní prostory Log Analytics k dotazování a provádění analýz a používejte účty úložiště pro dlouhodobé nebo archivaci úložiště. Můžete také povolit a začlenit data do Azure Sentinel nebo řešení pro řízení událostí a zabezpečení SIEM (Event Management) jiného výrobce.
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 - [Monitorování Site Recovery s využitím protokolů Azure Monitoru](monitor-log-analytics.md)
 
@@ -104,7 +104,7 @@ Data protokolu aktivit Azure použijte k určení "co, kdo a kdy" pro všechny o
 
 Ingestování Site Recovery protokolů pomocí Azure Monitor k agregaci generovaných dat zabezpečení. V rámci Azure Monitor Používejte pracovní prostory Log Analytics k dotazování a provádění analýz a k dlouhodobému a Archivačnímu úložišti používejte účty úložiště. Povolte a zapněte data pro Azure Sentinel nebo řešení incidentu zabezpečení a řízení událostí (SIEM) jiného výrobce.
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 - [Monitorování Site Recovery s využitím protokolů Azure Monitoru](monitor-log-analytics.md)
 
@@ -118,7 +118,7 @@ Ingestování Site Recovery protokolů pomocí Azure Monitor k agregaci generova
 
 **Pokyny**: Nastavte dobu uchování protokolu pro Log Analytics pracovní prostory přidružené k vašim trezorům Azure Recovery Services pomocí Azure monitor podle předpisů pro dodržování předpisů vaší organizace. 
 
-- [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -132,9 +132,9 @@ Provádějte dotazy v Log Analytics k hledání podmínek, identifikujte trendy,
 
 - [Monitorování Site Recovery](site-recovery-monitor-and-troubleshoot.md)
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
-- [Jak shromažďovat a analyzovat protokoly aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Jak shromažďovat a analyzovat protokoly aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -150,7 +150,7 @@ Vizualizujte a Dotazujte výsledky protokolu a nakonfigurujte výstrahy tak, aby
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor](../azure-monitor/platform/alerts-log.md)
+- [Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor](../azure-monitor/alerts/alerts-log.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -413,7 +413,7 @@ K šifrovacímu klíči má přístup jenom zákazník při použití trezoru Re
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: protokolovat a upozornit na změny kritických prostředků Azure
 
 **Pokyny**: pomocí Azure monitor s protokoly aktivit Azure můžete vytvářet výstrahy, když se změny projeví u kritických prostředků. Tyto prostředky můžou zahrnovat produkční instance Recovery Servicesch trezorů, prostředků služby Site Recovery a souvisejících prostředků.
-- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 

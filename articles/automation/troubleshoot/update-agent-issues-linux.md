@@ -5,12 +5,12 @@ services: automation
 ms.date: 01/25/2021
 ms.topic: troubleshooting
 ms.subservice: update-management
-ms.openlocfilehash: 2fd92d79a3322b17f528194b9d39c26bf4c93b0c
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: da7c0ea670b4c4201930ce5d0f01e7bd9d9835e9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896253"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581042"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>Řešení potíží s agentem Linux Update
 
@@ -62,7 +62,7 @@ Kontroly operačního systému ověří, zda Hybrid Runbook Worker používá je
 
 ### <a name="log-analytics-agent"></a>Agent Log Analytics
 
-Tato kontrolu zajistí, že je nainstalován agent Log Analytics pro Linux. Pokyny k instalaci najdete v tématu [instalace agenta pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux).
+Tato kontrolu zajistí, že je nainstalován agent Log Analytics pro Linux. Pokyny k instalaci najdete v tématu [instalace agenta pro Linux](../../azure-monitor/vm/quick-collect-linux-computer.md#install-the-agent-for-linux).
 
 ### <a name="log-analytics-agent-status"></a>Stav agenta Log Analytics
 

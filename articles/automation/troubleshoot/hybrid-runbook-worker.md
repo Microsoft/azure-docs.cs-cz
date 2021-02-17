@@ -7,12 +7,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: af432d9c6323bd2328eb8dd84d8572a8a5ae05a7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 15a18cbfc3a80bbfea0b92e5b616104dc0f593af
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388001"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580991"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Řešení problémů s funkcí Hybrid Runbook Worker
 
@@ -128,7 +128,7 @@ Následující problémy jsou možné příčiny:
 #### <a name="resolution"></a>Řešení
 
 ##### <a name="mistyped-workspace-id-or-key"></a>ID nebo klíč netypového pracovního prostoru
-Pokud chcete ověřit, jestli se ID pracovního prostoru nebo klíč pracovního prostoru agenta nevytvořilo, přečtěte si téma [Přidání nebo odebrání pracovního prostoru – agent](../../azure-monitor/platform/agent-manage.md#windows-agent) pro Windows pro agenta Windows nebo [Přidání nebo odebrání pracovního prostoru – agenta Linux](../../azure-monitor/platform/agent-manage.md#linux-agent) pro agenta Linux. Ujistěte se, že jste vybrali úplný řetězec z Azure Portal a pečlivě ho zkopírujte a vložte.
+Pokud chcete ověřit, jestli se ID pracovního prostoru nebo klíč pracovního prostoru agenta nevytvořilo, přečtěte si téma [Přidání nebo odebrání pracovního prostoru – agent](../../azure-monitor/agents/agent-manage.md#windows-agent) pro Windows pro agenta Windows nebo [Přidání nebo odebrání pracovního prostoru – agenta Linux](../../azure-monitor/agents/agent-manage.md#linux-agent) pro agenta Linux. Ujistěte se, že jste vybrali úplný řetězec z Azure Portal a pečlivě ho zkopírujte a vložte.
 
 ##### <a name="configuration-not-downloaded"></a>Konfigurace nebyla stažena.
 
@@ -169,7 +169,7 @@ Uložte tento soubor do stejné složky, ve které je spustitelný soubor `Orche
 
 ## <a name="linux"></a>Linux
 
-Hybrid Runbook Worker pro Linux závisí na [agentovi Log Analytics pro Linux](../../azure-monitor/platform/log-analytics-agent.md) ke komunikaci s vaším účtem Automation za účelem registrace pracovního procesu, příjmu úloh Runbooku a stavu sestavy. V případě, že se registrace pracovního procesu nezdařila, můžete k chybě použít některé možné příčiny.
+Hybrid Runbook Worker pro Linux závisí na [agentovi Log Analytics pro Linux](../../azure-monitor/agents/log-analytics-agent.md) ke komunikaci s vaším účtem Automation za účelem registrace pracovního procesu, příjmu úloh Runbooku a stavu sestavy. V případě, že se registrace pracovního procesu nezdařila, můžete k chybě použít některé možné příčiny.
 
 ### <a name="scenario-linux-hybrid-runbook-worker-receives-prompt-for-a-password-when-signing-a-runbook"></a><a name="prompt-for-password"></a>Scénář: Linux Hybrid Runbook Worker přijímá při podepisování Runbooku výzvu k zadání hesla
 
@@ -225,7 +225,7 @@ wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/inst
 
 ## <a name="windows"></a>Windows
 
-Hybrid Runbook Worker Windows závisí na [agentu Log Analytics](../../azure-monitor/platform/log-analytics-agent.md) , aby Windows komunikoval s vaším účtem Automation za účelem registrace pracovního procesu, příjmu úloh Runbooku a stavu sestavy. V případě, že se registrace pracovního procesu nezdařila, obsahuje tato část některé z možných důvodů.
+Hybrid Runbook Worker Windows závisí na [agentu Log Analytics](../../azure-monitor/agents/log-analytics-agent.md) , aby Windows komunikoval s vaším účtem Automation za účelem registrace pracovního procesu, příjmu úloh Runbooku a stavu sestavy. V případě, že se registrace pracovního procesu nezdařila, obsahuje tato část některé z možných důvodů.
 
 ### <a name="scenario-the-log-analytics-agent-for-windows-isnt-running"></a><a name="mma-not-running"></a>Scénář: Agent Log Analytics pro Windows není spuštěný.
 
@@ -253,7 +253,7 @@ Důvodem může být to, že proxy server nebo brána firewall sítě blokuje ko
 
 #### <a name="resolution"></a>Řešení
 
-Protokoly se ukládají místně na každý hybridní pracovní proces na C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes.. V protokolech událostí **aplikace a služby Logs\Microsoft-SMA\Operations** a **Application and Services Logs\Operations Manager** můžete ověřit, zda jsou k dispozici nějaké události upozornění nebo chyby. Tyto protokoly označují připojení nebo jiný typ problému, který má vliv na povolení Azure Automation role, nebo při běžných operacích došlo k potížím. Další pomoc při řešení potíží s agentem Log Analytics najdete v tématu [řešení potíží s agentem Log Analytics Windows](../../azure-monitor/platform/agent-windows-troubleshoot.md).
+Protokoly se ukládají místně na každý hybridní pracovní proces na C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes.. V protokolech událostí **aplikace a služby Logs\Microsoft-SMA\Operations** a **Application and Services Logs\Operations Manager** můžete ověřit, zda jsou k dispozici nějaké události upozornění nebo chyby. Tyto protokoly označují připojení nebo jiný typ problému, který má vliv na povolení Azure Automation role, nebo při běžných operacích došlo k potížím. Další pomoc při řešení potíží s agentem Log Analytics najdete v tématu [řešení potíží s agentem Log Analytics Windows](../../azure-monitor/agents/agent-windows-troubleshoot.md).
 
 Hybridní pracovní procesy odesílají [výstup a zprávy Runbooku](../automation-runbook-output-and-messages.md) do Azure Automation stejným způsobem jako úlohy Runbooku běžící v cloudu odesílají výstup a zprávy. Můžete povolit streamování s podrobnými a průběhy stejně jako u runbooků.
 

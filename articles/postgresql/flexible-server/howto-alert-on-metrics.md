@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: ac252c3898eb014885bf9a6bf6bdedb7db74fb62
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3c6f1dd581f7b07bb7892cbfe23dd76348124f9a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545833"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579051"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---flexible-server"></a>Použití Azure Portal k nastavení výstrah pro metriky pro Azure Database for PostgreSQL-flexibilní Server
 
@@ -30,11 +30,11 @@ Můžete nakonfigurovat výstrahu, která provede následující akce při trigg
 
 Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
 
-* [Azure Portal](../../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
-* [Azure CLI](../../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure Portal](../../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
 * [Rozhraní REST API služby Azure Monitor](/rest/api/monitor/metricalerts)
 
-## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Vytvoření pravidla výstrahy na metrikě z Azure Portal
+## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Vytvoření pravidla upozornění na metriku na webu Azure Portal
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte server Azure Database for PostgreSQL, který chcete monitorovat.
 
@@ -46,19 +46,19 @@ Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
 
 4. Otevře se stránka **vytvořit pravidlo** , jak je znázorněno níže. Vyplňte požadované informace:
 
-   :::image type="content" source="./media/howto-alert-on-metrics/4-add-rule-form.png" alt-text="Vybrat pravidla výstrah":::
+   :::image type="content" source="./media/howto-alert-on-metrics/4-add-rule-form.png" alt-text="Přidat formulář upozornění metriky":::
 
-5. V části **Podmínka** vyberte **Přidat podmínku** .
+5. V části **Podmínka** vyberte **Přidat podmínku**.
 
 6. Vyberte metriku ze seznamu signálů, na kterých se má upozornit. V tomto příkladu vyberte "úložiště v procentech".
 
-   :::image type="content" source="./media/howto-alert-on-metrics/6-configure-signal-logic.png" alt-text="Vybrat pravidla výstrah":::
+   :::image type="content" source="./media/howto-alert-on-metrics/6-configure-signal-logic.png" alt-text="Vybrat metriku":::
 
-7. Nakonfigurujte logiku výstrahy včetně **podmínky** (např. "Větší než"), **prahová hodnota** (ex. 85 procent), **Časová agregace** , časový **interval** , po který musí být pravidlo metriky splněno před triggery výstrahy (např. Za posledních 30 minut a **frekvence** .
+7. Nakonfigurujte logiku výstrahy včetně **podmínky** (např. "Větší než"), **prahová hodnota** (ex. 85 procent), **Časová agregace**, časový **interval** , po který musí být pravidlo metriky splněno před triggery výstrahy (např. Za posledních 30 minut a **frekvence**.
 
    Po dokončení vyberte **Hotovo** .
 
-   :::image type="content" source="./media/howto-alert-on-metrics/7-set-threshold-time.png" alt-text="Vybrat pravidla výstrah":::
+   :::image type="content" source="./media/howto-alert-on-metrics/7-set-threshold-time.png" alt-text="Nastavit prahovou hodnotu":::
 
 8. V části **skupiny akcí** vyberte **vytvořit novou** a vytvořte novou skupinu pro příjem oznámení o výstraze.
 
@@ -72,11 +72,11 @@ Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
 
     3. Po dokončení vyberte **OK** .
 
-    :::image type="content" source="./media/howto-alert-on-metrics/10-action-group-type.png" alt-text="Vybrat pravidla výstrah":::
+    :::image type="content" source="./media/howto-alert-on-metrics/10-action-group-type.png" alt-text="Skupina akcí":::
 
 11. Zadejte název, popis a závažnost pravidla výstrahy.
 
-    :::image type="content" source="./media/howto-alert-on-metrics/11-name-description-severity.png" alt-text="Vybrat pravidla výstrah"::: 
+    :::image type="content" source="./media/howto-alert-on-metrics/11-name-description-severity.png" alt-text="Zadat, popis a závažnost názvu"::: 
 
 12. Vyberte **vytvořit pravidlo výstrahy** a vytvořte výstrahu.
 
@@ -92,5 +92,5 @@ Jakmile vytvoříte výstrahu, můžete ji vybrat a provést následující akce
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [konfiguraci webhooků v upozorněních](../../azure-monitor/platform/alerts-webhooks.md).
-* Získejte [Přehled o kolekci metrik](../../azure-monitor/platform/data-platform.md) , abyste měli jistotu, že je vaše služba dostupná a reaguje.
+* Přečtěte si další informace o [konfiguraci webhooků v upozorněních](../../azure-monitor/alerts/alerts-webhooks.md).
+* Získejte [Přehled o kolekci metrik](../../azure-monitor/data-platform.md) , abyste měli jistotu, že je vaše služba dostupná a reaguje.

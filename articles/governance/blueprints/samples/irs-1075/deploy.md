@@ -3,12 +3,12 @@ title: Ukázka nasazení úřadu pro plán 1075
 description: Nasaďte kroky pro příklad podrobného plánu finančního 1075 úřadu (rev. 11 – 2016), včetně podrobností parametrů artefaktu podrobného plánu.
 ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: f4be1b642961b9642ea9d638521653dbc33f0334
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 6df2781207c623e10daf0681865b9246be1b1f4c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045202"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571918"
 ---
 # <a name="deploy-the-irs-1075-blueprint-sample"></a>Nasazení ukázky finančního úřadu 1075
 
@@ -94,7 +94,7 @@ Následující tabulka uvádí seznam parametrů artefaktů podrobného plánu:
 |Název artefaktu|Typ artefaktu|Název parametru|Description|
 |-|-|-|-|
 |Auditovat řízení a nasazovat konkrétní rozšíření pro finanční nasazení na základě požadavků na audit pro podporu auditu 1075 (rev. 11 – 2016)|Přiřazení zásady|ID pracovního prostoru Log Analytics, pro který by se měly virtuální počítače nakonfigurovat|Toto je ID (GUID) Log Analyticsho pracovního prostoru, pro který by se měly virtuální počítače nakonfigurovat.|
-|Auditovat řízení a nasazovat konkrétní rozšíření pro finanční nasazení na základě požadavků na audit pro podporu auditu 1075 (rev. 11 – 2016)|Přiřazení zásady|Seznam typů prostředků, které by měly mít povolené diagnostické protokoly|Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas).|
+|Auditovat řízení a nasazovat konkrétní rozšíření pro finanční nasazení na základě požadavků na audit pro podporu auditu 1075 (rev. 11 – 2016)|Přiřazení zásady|Seznam typů prostředků, které by měly mít povolené diagnostické protokoly|Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas).|
 |Auditovat řízení a nasazovat konkrétní rozšíření pro finanční nasazení na základě požadavků na audit pro podporu auditu 1075 (rev. 11 – 2016)|Přiřazení zásady|Seznam uživatelů, kteří mají být vyloučeni ze skupiny správců virtuálních počítačů s Windows|Středníkem oddělený seznam členů, kteří by měli být vyloučení v místní skupině Administrators. Např.: Správce; myUser1; myUser2|
 |Auditovat řízení a nasazovat konkrétní rozšíření pro finanční nasazení na základě požadavků na audit pro podporu auditu 1075 (rev. 11 – 2016)|Přiřazení zásady|Seznam uživatelů, které by měly být zahrnuté ve skupině Správci virtuálních počítačů s Windows|Středníkem oddělený seznam členů, kteří by měli být zahrnutí do místní skupiny Administrators. Např.: Správce; myUser1; myUser2|
 |Nasazení agenta Log Analytics pro Linux VM Scale Sets (VMSS)|Přiřazení zásady|Log Analytics pracovní prostor pro Linux VM Scale Sets (VMSS)|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|

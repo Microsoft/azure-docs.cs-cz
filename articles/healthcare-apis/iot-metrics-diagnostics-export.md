@@ -8,16 +8,16 @@ ms.subservice: iomt
 ms.topic: how-to
 ms.date: 11/13/2020
 ms.author: jasteppe
-ms.openlocfilehash: 14fd5378f37ebfc20b2d7084c08f15ea8f7a00b2
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 00abad784048b67e9d89c12b9be3f631f586fb07
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630528"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574538"
 ---
 # <a name="export-azure-iot-connector-for-fhir-preview-metrics-through-diagnostic-settings"></a>Export metrik konektoru Azure IoT pro FHIR (Preview) přes nastavení diagnostiky
 
-V tomto článku se dozvíte, jak exportovat službu Azure IoT Connector pro rychlé interoperability prostředků (FHIR&#174;) * protokolů metrik. Funkce, která umožňuje protokolování metrik, je [**nastavení diagnostiky**](../azure-monitor/platform/diagnostic-settings.md) v Azure Portal. 
+V tomto článku se dozvíte, jak exportovat službu Azure IoT Connector pro rychlé interoperability prostředků (FHIR&#174;) * protokolů metrik. Funkce, která umožňuje protokolování metrik, je [**nastavení diagnostiky**](../azure-monitor/essentials/diagnostic-settings.md) v Azure Portal. 
 
 > [!TIP]
 > Podle pokynů v části [Povolení protokolování diagnostiky v rozhraní Azure API pro FHIR a Azure IoT Connector pro FHIR](enable-diagnostic-logging.md#enable-diagnostic-logging-in-azure-api-for-fhir) nastavte protokolování auditu.
@@ -48,7 +48,7 @@ V tomto článku se dozvíte, jak exportovat službu Azure IoT Connector pro ryc
 > [!Note] 
 > Může trvat až 15 minut, než se první protokoly metrik zobrazí v úložišti dle vašeho výběru.  
  
-Další informace o tom, jak pracovat s diagnostickými protokoly, najdete v [dokumentaci k protokolu prostředků Azure](../azure-monitor/platform/platform-logs-overview.md) .
+Další informace o tom, jak pracovat s diagnostickými protokoly, najdete v [dokumentaci k protokolu prostředků Azure](../azure-monitor/essentials/platform-logs-overview.md) .
 
 ## <a name="conclusion"></a>Závěr 
 Přístup k protokolům metrik je nezbytný pro monitorování a řešení potíží.  Azure IoT Connector pro FHIR umožňuje provádět tyto akce prostřednictvím protokolů metrik. 

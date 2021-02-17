@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Technical Support'
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 81558526500f3c01e975d9a963b4a6a98ec6d753
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8bd20e3c7207c75e87a2132fca89906885de2676
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446410"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579250"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Monitorování, diagnostika a řešení potíží odpojení pomocí Azure IoT Hub
 
@@ -82,7 +82,7 @@ Metrika [*připojených zařízení (Preview)*](monitor-iot-hub-reference.md#dev
 
 Pomocí pravidel upozornění na metriky můžete monitorovat anomálie odpojení zařízení ve velkém měřítku. To znamená, že když se neočekávaně odpojí velký počet zařízení. Pokud je takový výskyt zjištěn, můžete se podívat na protokoly, které vám pomohou problém vyřešit. Pokud chcete monitorovat odpojení podle zařízení a odpojuje je s důležitými zařízeními; je však nutné použít Event Grid. Event Grid také nabízí další možnosti v reálném čase než metriky Azure.
 
-Další informace o výstrahách s IoT Hub najdete v tématu [výstrahy v IoT Hub monitorování](monitor-iot-hub.md#alerts). Návod k vytváření výstrah v IoT Hub najdete v [kurzu použití metrik a protokolů](tutorial-use-metrics-and-diags.md). Podrobnější přehled výstrah najdete v tématu [Přehled výstrah v Microsoft Azure](../azure-monitor/platform/alerts-overview.md) v dokumentaci k Azure monitor.
+Další informace o výstrahách s IoT Hub najdete v tématu [výstrahy v IoT Hub monitorování](monitor-iot-hub.md#alerts). Návod k vytváření výstrah v IoT Hub najdete v [kurzu použití metrik a protokolů](tutorial-use-metrics-and-diags.md). Podrobnější přehled výstrah najdete v tématu [Přehled výstrah v Microsoft Azure](../azure-monitor/alerts/alerts-overview.md) v dokumentaci k Azure monitor.
 
 ## <a name="azure-monitor-use-logs-to-resolve-connectivity-errors"></a>Azure Monitor: k vyřešení chyb připojení použijte protokoly.
 

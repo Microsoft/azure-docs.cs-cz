@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: 691f3b7987c2591b0f6cea3f7b520c03c0ba9a9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba62ac80b2f8d318d0d13e81e88cc63a8d893a2b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258649"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570352"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Nastavení protokolů Azure Monitor pro cluster
 
@@ -47,13 +47,13 @@ Pokud používáte Windows, pokračujte podle následujících pokynů a připoj
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Připojení pracovního prostoru Log Analytics k vašemu clusteru 
 
-1. Pracovní prostor musí být připojený ke diagnostická data, která přicházejí z vašeho clusteru. Přejít do skupiny prostředků, ve které jste vytvořili řešení Service Fabric Analytics. Vyberte **ServiceFabric \<nameOfWorkspace\> ** a přejít na jeho stránku s přehledem. Odtud můžete změnit nastavení řešení, nastavení pracovního prostoru a získat přístup k pracovnímu prostoru Log Analytics.
+1. Pracovní prostor musí být připojený ke diagnostická data, která přicházejí z vašeho clusteru. Přejít do skupiny prostředků, ve které jste vytvořili řešení Service Fabric Analytics. Vyberte **ServiceFabric \<nameOfWorkspace\>** a přejít na jeho stránku s přehledem. Odtud můžete změnit nastavení řešení, nastavení pracovního prostoru a získat přístup k pracovnímu prostoru Log Analytics.
 
-2. V levé navigační nabídce v části **zdroje dat pracovního prostoru**vyberte **protokoly účtů úložiště**.
+2. V levé navigační nabídce v části **zdroje dat pracovního prostoru** vyberte **protokoly účtů úložiště**.
 
 3. Na stránce **protokoly účtu úložiště** vyberte **Přidat** v horní části a přidejte do pracovního prostoru protokoly vašeho clusteru.
 
-4. Vyberte **účet úložiště** a přidejte příslušný účet vytvořený v clusteru. Pokud jste použili výchozí název, účet úložiště je **sfdg \<resourceGroupName\> **. Můžete to také ověřit pomocí šablony Azure Resource Manager používané k nasazení clusteru, a to tak, že zkontrolujete hodnotu použitou pro **applicationDiagnosticsStorageAccountName**. Pokud se název nezobrazuje, posuňte se dolů a vyberte **načíst další**. Vyberte název účtu úložiště.
+4. Vyberte **účet úložiště** a přidejte příslušný účet vytvořený v clusteru. Pokud jste použili výchozí název, účet úložiště je **sfdg \<resourceGroupName\>**. Můžete to také ověřit pomocí šablony Azure Resource Manager používané k nasazení clusteru, a to tak, že zkontrolujete hodnotu použitou pro **applicationDiagnosticsStorageAccountName**. Pokud se název nezobrazuje, posuňte se dolů a vyberte **načíst další**. Vyberte název účtu úložiště.
 
 5. Zadejte datový typ. Nastavte ji na **Service Fabric události**.
 
@@ -119,9 +119,9 @@ Set-AzOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -Wor
 
 Až budete hotovi, připojte Azure Monitor protokoly k příslušnému účtu úložiště podle kroků v předchozí části.
 
-Pomocí prostředí PowerShell můžete také přidat další řešení nebo provádět další úpravy pracovního prostoru Log Analytics. Další informace najdete v tématu [Správa protokolů Azure monitor pomocí prostředí PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md).
+Pomocí prostředí PowerShell můžete také přidat další řešení nebo provádět další úpravy pracovního prostoru Log Analytics. Další informace najdete v tématu [Správa protokolů Azure monitor pomocí prostředí PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md).
 
 ## <a name="next-steps"></a>Další kroky
 * [Nasaďte agenta Log Analytics](service-fabric-diagnostics-oms-agent.md) do svých uzlů, abyste mohli shromažďovat čítače výkonu a shromažďovat statistiky a protokoly Docker pro vaše kontejnery.
-* Seznámení s funkcemi [prohledávání protokolů a dotazování](../azure-monitor/log-query/log-query-overview.md) , které nabízí jako součást protokolů Azure monitor
-* [Použití návrháře zobrazení k vytváření vlastních zobrazení v protokolech Azure Monitor](../azure-monitor/platform/view-designer.md)
+* Seznámení s funkcemi [prohledávání protokolů a dotazování](../azure-monitor/logs/log-query-overview.md) , které nabízí jako součást protokolů Azure monitor
+* [Použití návrháře zobrazení k vytváření vlastních zobrazení v protokolech Azure Monitor](../azure-monitor/visualize/view-designer.md)

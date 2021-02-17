@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 719fcca74d2cd048bf170940eff7da6a25425469
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 00e44185c938c94903e9b85a4748906721dac27f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373279"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571695"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Práce s předchozí verzí Azure Migrate
 
@@ -210,14 +210,14 @@ Pokud chcete použít vizualizaci závislostí, přidružte pracovní prostor Lo
 1. Pokud chcete k projektu připojit Log Analytics pracovní prostor, klikněte v **přehledu**> **Essentials** na **vyžaduje konfiguraci**.
 2. Můžete vytvořit nový pracovní prostor nebo připojit stávající:
   - Chcete-li vytvořit nový pracovní prostor, zadejte název. Pracovní prostor se vytvoří v oblasti ve stejném [geografickém regionu Azure](https://azure.microsoft.com/global-infrastructure/geographies/) jako projekt migrace.
-  - Když připojíte existující pracovní prostor, můžete vybrat ze všech dostupných pracovních prostorů ve stejném předplatném jako projekt migrace. V seznamu jsou uvedeny pouze ty pracovní prostory, které byly vytvořeny v [podporované Service map oblasti](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions). Pokud chcete připojit pracovní prostor, ujistěte se, že máte přístup čtenář k pracovnímu prostoru.
+  - Když připojíte existující pracovní prostor, můžete vybrat ze všech dostupných pracovních prostorů ve stejném předplatném jako projekt migrace. V seznamu jsou uvedeny pouze ty pracovní prostory, které byly vytvořeny v [podporované Service map oblasti](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions). Pokud chcete připojit pracovní prostor, ujistěte se, že máte přístup čtenář k pracovnímu prostoru.
 
 > [!NOTE]
 > Pracovní prostor přidružený k projektu migrace nemůžete změnit.
 
 ### <a name="download-and-install-vm-agents"></a>Stažení a instalace agentů virtuálních počítačů
 
-Po nakonfigurování pracovního prostoru můžete stáhnout a nainstalovat agenty na každý místní počítač, který chcete vyhodnotit. Kromě toho, pokud máte počítače bez připojení k Internetu, je potřeba stáhnout a nainstalovat [Log Analytics bránu](../azure-monitor/platform/gateway.md) .
+Po nakonfigurování pracovního prostoru můžete stáhnout a nainstalovat agenty na každý místní počítač, který chcete vyhodnotit. Kromě toho, pokud máte počítače bez připojení k Internetu, je potřeba stáhnout a nainstalovat [Log Analytics bránu](../azure-monitor/agents/gateway.md) .
 
 1. V části **Přehled** klikněte na možnost **Spravovat**  >  **počítače** a vyberte požadovaný počítač.
 2. Ve sloupci **závislosti** klikněte na možnost **instalovat agenty**.
@@ -238,7 +238,7 @@ Instalace agenta na počítač s Windows:
 4. V **Možnosti nastavení agenta** vyberte **Azure Log Analytics**  >  **Další**.
 5. Kliknutím na **Přidat** přidejte nový pracovní prostor Log Analytics. Vložte do ID a klíče pracovního prostoru, který jste zkopírovali z portálu. Klikněte na **Next** (Další).
 
-Agenta můžete nainstalovat z příkazového řádku nebo pomocí automatizované metody, jako je Configuration Manager. [Přečtěte si další informace](../azure-monitor/platform/log-analytics-agent.md#installation-options) o použití těchto metod k instalaci agenta MMA.
+Agenta můžete nainstalovat z příkazového řádku nebo pomocí automatizované metody, jako je Configuration Manager. [Přečtěte si další informace](../azure-monitor/agents/log-analytics-agent.md#installation-options) o použití těchto metod k instalaci agenta MMA.
 
 #### <a name="install-the-mma-agent-on-a-linux-machine"></a>Instalace agenta MMA do počítače se systémem Linux
 
@@ -249,11 +249,11 @@ Instalace agenta na počítač se systémem Linux:
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-[Přečtěte si další informace](../azure-monitor/platform/agents-overview.md#supported-operating-systems) o seznamu operačních systémů Linux, které podporuje MMA.
+[Přečtěte si další informace](../azure-monitor/agents/agents-overview.md#supported-operating-systems) o seznamu operačních systémů Linux, které podporuje MMA.
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Instalace agenta MMA na počítači monitorovaném nástrojem Operations Manager
 
-Pro počítače monitorované nástrojem System Center Operations Manager 2012 R2 nebo novějším není potřeba instalovat agenta MMA. Service Map se integruje s Operations Manager MMA ke shromáždění potřebných dat závislostí. [Přečtěte si další informace](../azure-monitor/insights/service-map-scom.md#prerequisites). Je potřeba nainstalovat agenta závislostí.
+Pro počítače monitorované nástrojem System Center Operations Manager 2012 R2 nebo novějším není potřeba instalovat agenta MMA. Service Map se integruje s Operations Manager MMA ke shromáždění potřebných dat závislostí. [Přečtěte si další informace](../azure-monitor/vm/service-map-scom.md#prerequisites). Je potřeba nainstalovat agenta závislostí.
 
 ### <a name="install-the-dependency-agent"></a>Instalace agenta závislostí
 
@@ -262,8 +262,8 @@ Pro počítače monitorované nástrojem System Center Operations Manager 2012 R
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- Přečtěte si další informace o [podpoře agenta závislostí](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) pro operační systémy Windows a Linux.
-- [Přečtěte si další informace](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent) o tom, jak můžete pomocí skriptů nainstalovat agenta závislostí.
+- Přečtěte si další informace o [podpoře agenta závislostí](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) pro operační systémy Windows a Linux.
+- [Přečtěte si další informace](../azure-monitor/vm/vminsights-enable-hybrid.md#dependency-agent) o tom, jak můžete pomocí skriptů nainstalovat agenta závislostí.
 
 >[!NOTE]
 > Článek Azure Monitor pro virtuální počítače, na který se odkazuje, obsahuje přehled systémových požadavků a metod nasazení agenta závislostí, které se vztahují také na řešení Service Map.
@@ -298,7 +298,7 @@ Po vytvoření skupiny se doporučuje nainstalovat agenty na všech počítačí
 
 ## <a name="query-dependency-data-from-azure-monitor-logs"></a>Dotazování dat závislosti z protokolů Azure Monitor
 
-Data závislostí zachycená Service Map jsou k dispozici pro dotazování v pracovním prostoru Log Analytics přidruženém k vašemu projektu Azure Migrate. [Přečtěte si další informace](../azure-monitor/insights/service-map.md#log-analytics-records) o Service map tabulek dat pro dotazování v protokolech Azure monitor. 
+Data závislostí zachycená Service Map jsou k dispozici pro dotazování v pracovním prostoru Log Analytics přidruženém k vašemu projektu Azure Migrate. [Přečtěte si další informace](../azure-monitor/vm/service-map.md#log-analytics-records) o Service map tabulek dat pro dotazování v protokolech Azure monitor. 
 
 Spuštění dotazů Kusto:
 
@@ -308,15 +308,15 @@ Spuštění dotazů Kusto:
 4. Napište dotaz pro shromažďování dat závislosti pomocí protokolů Azure Monitor. V další části najdete Ukázkové dotazy.
 5. Spusťte dotaz kliknutím na spustit. 
 
-[Přečtěte si další informace](../azure-monitor/log-query/log-analytics-tutorial.md) o tom, jak zapisovat dotazy Kusto. 
+[Přečtěte si další informace](../azure-monitor/logs/log-analytics-tutorial.md) o tom, jak zapisovat dotazy Kusto. 
 
 ### <a name="sample-azure-monitor-logs-queries"></a>Ukázka dotazů v protokolu Azure Monitor
 
-Následují ukázkové dotazy, které můžete použít k extrakci dat závislostí. Můžete upravit dotazy pro extrakci preferovaných datových bodů. Vyčerpávající seznam polí v datových záznamech závislostí je k dispozici [zde](../azure-monitor/insights/service-map.md#log-analytics-records). [Tady](../azure-monitor/insights/service-map.md#sample-log-searches)najdete další Ukázkové dotazy.
+Následují ukázkové dotazy, které můžete použít k extrakci dat závislostí. Můžete upravit dotazy pro extrakci preferovaných datových bodů. Vyčerpávající seznam polí v datových záznamech závislostí je k dispozici [zde](../azure-monitor/vm/service-map.md#log-analytics-records). [Tady](../azure-monitor/vm/service-map.md#sample-log-searches)najdete další Ukázkové dotazy.
 
 #### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>Sumarizace příchozích připojení na sadu počítačů
 
-Záznamy v tabulce pro metriky připojení, VMConnection, reprezentují jednotlivá fyzická síťová připojení. Několik fyzických síťových připojení se seskupí do logického připojení. [Přečtěte si další informace](../azure-monitor/insights/service-map.md#connections) o tom, jak se data fyzického připojení k síti agreguje do jednoho logického záznamu v VMConnection. 
+Záznamy v tabulce pro metriky připojení, VMConnection, reprezentují jednotlivá fyzická síťová připojení. Několik fyzických síťových připojení se seskupí do logického připojení. [Přečtěte si další informace](../azure-monitor/vm/service-map.md#connections) o tom, jak se data fyzického připojení k síti agreguje do jednoho logického záznamu v VMConnection. 
 
 ```
 // the machines of interest

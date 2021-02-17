@@ -3,18 +3,18 @@ title: Připojení hybridních počítačů k Azure z centra pro správu Windows
 description: V tomto článku se dozvíte, jak nainstalovat agenta a připojit počítače k Azure pomocí serverů s podporou ARC Azure z centra pro správu systému Windows.
 ms.date: 10/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8fa118a254689feade2897f083bb3aa2dc9db02c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5fa7a61b1e3b22503377cbcbe308a82be89dac72
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183409"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584767"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-windows-admin-center"></a>Připojení hybridních počítačů k Azure z centra pro správu Windows
 
 Servery s podporou ARC Azure můžete povolit pro jeden nebo více počítačů s Windows ve vašem prostředí provedením sady kroků ručně. Nebo můžete použít [Centrum pro správu systému Windows](/windows-server/manage/windows-admin-center/understand/what-is) k nasazení agenta připojeného počítače a registraci místních serverů bez nutnosti provádět žádné kroky mimo tento nástroj.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Servery s podporou ARC – zkontrolujte [požadavky](agent-overview.md#prerequisites) a ověřte, že vaše předplatné, účet Azure a prostředky splňují požadavky.
 
@@ -67,6 +67,6 @@ Po instalaci agenta a jeho konfiguraci pro připojení k serverům s podporou AR
 
 * Informace o řešení potíží najdete v části [Poradce při potížích s agentem připojeného počítače](troubleshoot-agent-onboard.md).
 
-* Naučte se, jak spravovat počítač pomocí [Azure Policy](../../governance/policy/overview.md), jako je [Konfigurace hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače, ověření, že se počítač hlásí k očekávanému log Analyticsmu pracovnímu prostoru, povolit monitorování pomocí [Azure monitor s virtuálními počítači](../../azure-monitor/insights/vminsights-enable-policy.md)a mnohem víc.
+* Naučte se, jak spravovat počítač pomocí [Azure Policy](../../governance/policy/overview.md), jako je [Konfigurace hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače, ověření, že se počítač hlásí k očekávanému log Analyticsmu pracovnímu prostoru, povolit monitorování pomocí [Azure monitor s virtuálními počítači](../../azure-monitor/vm/vminsights-enable-policy.md)a mnohem víc.
 
-* Přečtěte si další informace o [agentovi Log Analytics](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je vyžadován, pokud chcete shromažďovat data o monitorování operačního systému a úloh, spravovat je pomocí runbooků nebo funkcí automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-introduction.md).
+* Přečtěte si další informace o [agentovi Log Analytics](../../azure-monitor/agents/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je vyžadován, pokud chcete shromažďovat data o monitorování operačního systému a úloh, spravovat je pomocí runbooků nebo funkcí automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-introduction.md).

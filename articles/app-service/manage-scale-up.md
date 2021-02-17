@@ -5,12 +5,12 @@ ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
 ms.topic: article
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 617a2717a1d1265d067cb3e1f26531d135d47941
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb0ce5cfadbab247299cd3c22bf6ee618bf19731
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743909"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582475"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Horizontální navýšení kapacity aplikace v Azure App Service
 
@@ -18,7 +18,7 @@ V tomto článku se dozvíte, jak škálovat aplikaci v Azure App Service. Exist
 
 * [Horizontální navýšení kapacity](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Získejte více procesorů, paměti, místa na disku a navíc funkce, jako jsou vyhrazené virtuální počítače (VM), vlastní domény a certifikáty, pracovní sloty, automatické škálování a další. Horizontální navýšení kapacity můžete škálovat změnou cenové úrovně App Service plánu, ke kterému vaše aplikace patří.
 * [Horizontální](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)navýšení kapacity: zvyšte počet instancí virtuálních počítačů, ve kterých běží vaše aplikace.
-  V závislosti na cenové úrovni můžete škálovat na až 30 instancí. [App Service prostředí](environment/intro.md) v **izolované** úrovni dále zvyšují počet škálování na více instancí 100. Další informace o horizontálním navýšení kapacity najdete v tématu [Ruční nebo automatické škálování počtu instancí](../azure-monitor/platform/autoscale-get-started.md). Zde zjistíte, jak používat automatické škálování, což znamená automatické škálování počtu instancí na základě předdefinovaných pravidel a plánů.
+  V závislosti na cenové úrovni můžete škálovat na až 30 instancí. [App Service prostředí](environment/intro.md) v **izolované** úrovni dále zvyšují počet škálování na více instancí 100. Další informace o horizontálním navýšení kapacity najdete v tématu [Ruční nebo automatické škálování počtu instancí](../azure-monitor/autoscale/autoscale-get-started.md). Zde zjistíte, jak používat automatické škálování, což znamená automatické škálování počtu instancí na základě předdefinovaných pravidel a plánů.
 
 Nastavení škálování trvá jenom pár sekund, které se mají použít, a ovlivňuje všechny aplikace v [plánu App Service](../app-service/overview-hosting-plans.md).
 Nevyžadují změnu kódu nebo opětovného nasazení aplikace.
@@ -77,7 +77,7 @@ Tabulka omezení, kvót a omezení služby a podporovaných funkcí v jednotliv�
 
 ## <a name="more-resources"></a>Další zdroje informací
 
-[Ruční nebo automatické škálování počtu instancí](../azure-monitor/platform/autoscale-get-started.md)  
+[Ruční nebo automatické škálování počtu instancí](../azure-monitor/autoscale/autoscale-get-started.md)  
 [Konfigurace PremiumV3 úrovně pro App Service](app-service-configure-premium-tier.md)
 
 <!-- LINKS -->

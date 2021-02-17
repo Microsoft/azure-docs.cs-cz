@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: b91a8a8742a5bdc9454ebcbd8894889084a12a79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47017fdb5f1fbaba800e71dea21afe2c39bd91e7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258687"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570139"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Sledování výkonu pomocí protokolů Azure Monitor
 
@@ -67,15 +67,15 @@ Tuto šablonu můžete stáhnout a upravit, abyste mohli nasadit cluster, který
 
 Teď, když jste přidali agenta Log Analytics, přecházíte na portál Log Analytics a zvolíte si čítače výkonu, které chcete shromažďovat.
 
-1. V Azure Portal přejdete do skupiny prostředků, ve které jste vytvořili řešení Service Fabric Analytics. Vyberte **ServiceFabric \<nameOfLog AnalyticsWorkspace\> **.
+1. V Azure Portal přejdete do skupiny prostředků, ve které jste vytvořili řešení Service Fabric Analytics. Vyberte **ServiceFabric \<nameOfLog AnalyticsWorkspace\>**.
 
-2. Klikněte na** Log Analytics**.
+2. Klikněte na **Log Analytics**.
 
 3. Klikněte na **Upřesnit nastavení**.
 
-4. Klikněte na **data**a pak na **čítače výkonu Windows nebo Linux**. K dispozici je seznam výchozích čítačů, které můžete povolit, a můžete nastavit interval pro shromažďování dat. Můžete také přidat [Další čítače výkonu](service-fabric-diagnostics-event-generation-perf.md) ke shromáždění. Správný formát je odkazován v tomto [článku](/windows/win32/perfctrs/specifying-a-counter-path).
+4. Klikněte na **data** a pak na **čítače výkonu Windows nebo Linux**. K dispozici je seznam výchozích čítačů, které můžete povolit, a můžete nastavit interval pro shromažďování dat. Můžete také přidat [Další čítače výkonu](service-fabric-diagnostics-event-generation-perf.md) ke shromáždění. Správný formát je odkazován v tomto [článku](/windows/win32/perfctrs/specifying-a-counter-path).
 
-5. Klikněte na **Uložit**a pak na **OK**.
+5. Klikněte na **Uložit** a pak na **OK**.
 
 6. Zavřete okno Upřesnit nastavení.
 
@@ -91,6 +91,6 @@ Teď, když jste přidali agenta Log Analytics, přecházíte na portál Log Ana
 
 ## <a name="next-steps"></a>Další kroky
 
-* Shromážděte relevantní [čítače výkonu](service-fabric-diagnostics-event-generation-perf.md). Chcete-li nakonfigurovat agenta Log Analytics pro shromažďování konkrétních čítačů výkonu, přečtěte si téma [Konfigurace zdrojů dat](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources).
-* Konfigurace protokolů Azure Monitor pro nastavení [automatizovaného upozorňování](../azure-monitor/platform/alerts-overview.md) na pomoc při zjišťování a diagnostice
+* Shromážděte relevantní [čítače výkonu](service-fabric-diagnostics-event-generation-perf.md). Chcete-li nakonfigurovat agenta Log Analytics pro shromažďování konkrétních čítačů výkonu, přečtěte si téma [Konfigurace zdrojů dat](../azure-monitor/agents/agent-data-sources.md#configuring-data-sources).
+* Konfigurace protokolů Azure Monitor pro nastavení [automatizovaného upozorňování](../azure-monitor/alerts/alerts-overview.md) na pomoc při zjišťování a diagnostice
 * Jako alternativu můžete shromažďovat čítače výkonu prostřednictvím [rozšíření Azure Diagnostics a posílat je Application Insights](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)

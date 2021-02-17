@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 1519e0b5cef6055cf8d8b0aded0d8ad323d548a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e7063cd1ae560fa077bd0b1b1279e4515e70464
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707842"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579025"
 ---
 # <a name="monitor-metrics-on-azure-database-for-postgresql---flexible-server"></a>Monitorování metrik na Azure Database for PostgreSQL – flexibilní Server
 
@@ -21,13 +21,13 @@ ms.locfileid: "91707842"
 Sledování dat o vašich serverech vám pomůže při řešení potíží a optimalizaci pro vaše úlohy. Azure Database for PostgreSQL poskytuje různé možnosti monitorování, které poskytují přehled o chování serveru.
 
 ## <a name="metrics"></a>Metriky
-Azure Database for PostgreSQL poskytuje různé metriky, které poskytují přehled o chování prostředků, které podporují server PostgreSQL. Každá metrika je vygenerována s jednou minutovou frekvencí a má až [93 dní v historii](../../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics). Výstrahy můžete nakonfigurovat pro metriky. Mezi další možnosti patří nastavení automatizovaných akcí, provádění pokročilých analýz a archivace historie. Další informace najdete v tématu [Přehled metrik Azure](../../azure-monitor/platform/data-platform-metrics.md).
+Azure Database for PostgreSQL poskytuje různé metriky, které poskytují přehled o chování prostředků, které podporují server PostgreSQL. Každá metrika je vygenerována s jednou minutovou frekvencí a má až [93 dní v historii](../../azure-monitor/essentials/data-platform-metrics.md#retention-of-metrics). Výstrahy můžete nakonfigurovat pro metriky. Mezi další možnosti patří nastavení automatizovaných akcí, provádění pokročilých analýz a archivace historie. Další informace najdete v tématu [Přehled metrik Azure](../../azure-monitor/essentials/data-platform-metrics.md).
 
 ### <a name="list-of-metrics"></a>Seznam metrik
 Pro PostgreSQL flexibilní Server jsou k dispozici následující metriky:
 
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Description|
+|Metric|Zobrazovaný název metriky|Jednotka|Description|
 |---|---|---|---|
 | active_connections | Aktivní připojení | Počet | Počet připojení k serveru | 
 | backup_storage_used | Využité úložiště záloh | Bajty | Velikost využitého úložiště záloh Tato metrika představuje součet úložiště spotřebovaného všemi úplnými zálohami databáze, rozdílové zálohy a zálohy protokolů, které jsou zachovány na základě nastaveného období uchovávání záloh pro server. Frekvence zálohování je spravována službou. V případě geograficky redundantního úložiště je využití úložiště zálohování dvakrát místní redundantní úložiště. |

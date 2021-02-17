@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 89b33a697e818539ab6666be33fc1542c5bdcc51
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3e7d93d7a1d0e804f340a7ce785ccc1165e93ee5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736589"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570112"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>Kurz: monitorování virtuálního počítače s Windows v Azure
 
@@ -86,18 +86,18 @@ Postup povolení monitorování virtuálního počítače Azure pomocí Azure Mo
 
 3. Na stránce **přehledy (Preview)** vyberte **vyzkoušet nyní**.
 
-    ![Povolení Azure Monitor pro virtuální počítače pro virtuální počítač](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
+    ![Povolení Azure Monitor pro virtuální počítače pro virtuální počítač](../../azure-monitor/vm/media/vminsights-enable-portal/enable-vminsights-vm-portal.png)
 
 4. Pokud máte v rámci stejného předplatného pracovní prostor Log Analytics, v rozevíracím seznamu vyberte na stránce pro **registraci Azure monitor Insights** .  
 
     Seznam předchází výchozí pracovní prostor a umístění, kde je virtuální počítač nasazený v předplatném. 
 
     >[!NOTE]
-    >Informace o vytvoření nového pracovního prostoru Log Analytics pro uložení dat monitorování z virtuálního počítače najdete v tématu [Vytvoření pracovního prostoru Log Analytics](../../azure-monitor/learn/quick-create-workspace.md). Pracovní prostor musí patřit do jedné z [podporovaných oblastí](../../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions).
+    >Informace o vytvoření nového pracovního prostoru Log Analytics pro uložení dat monitorování z virtuálního počítače najdete v tématu [Vytvoření pracovního prostoru Log Analytics](../../azure-monitor/logs/quick-create-workspace.md). Pracovní prostor musí patřit do jedné z [podporovaných oblastí](../../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions).
 
 Po povolení monitorování může být nutné počkat několik minut, než budete moci zobrazit metriky výkonu pro virtuální počítač.
 
-![Povolení zpracování nasazení Azure Monitor pro virtuální počítače monitorování](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+![Povolení zpracování nasazení Azure Monitor pro virtuální počítače monitorování](../../azure-monitor/vm/media/vminsights-enable-portal/onboard-vminsights-vm-portal-status.png)
 
 ## <a name="view-vm-performance-metrics"></a>Zobrazit metriky výkonu virtuálních počítačů
 

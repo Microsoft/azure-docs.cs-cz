@@ -3,22 +3,22 @@ title: Zprovoznění serveru s povolenou službou Azure ARC do Azure Sentinel
 description: Naučte se, jak přidat servery s podporou ARC Azure do Azure Sentinel a aktivně monitorovat jejich stav zabezpečení.
 ms.date: 11/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 60018e710613a27bcb5c00f38ee90be6ff46c61d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 2364ba72ac5b10ec4e1f433cc6d591c3ca389ecd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94810992"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584743"
 ---
 # <a name="onboard-azure-arc-enabled-servers-to-azure-sentinel"></a>Připojení serverů s povoleným obloukem Azure do Azure Sentinel
 
 Tento článek je určený k tomu, aby vám pomohla připojit server s podporou Azure ARC do [Azure Sentinel](../../sentinel/overview.md) a zahájit shromažďování událostí souvisejících se zabezpečením. Služba Azure Sentinel poskytuje jedno řešení pro detekci výstrah, viditelnost hrozeb, proaktivní lov a reakci na hrozby napříč podnikem.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že jste splnili následující požadavky:
 
-- [Pracovní prostor služby Log Analytics](../../azure-monitor/platform/data-platform-logs.md). Další informace o Log Analytics pracovních prostorech najdete v tématu [navrhování Azure Monitorch protokolů nasazení](../../azure-monitor/platform/design-logs-deployment.md).
+- [Pracovní prostor služby Log Analytics](../../azure-monitor/logs/data-platform-logs.md). Další informace o Log Analytics pracovních prostorech najdete v tématu [navrhování Azure Monitorch protokolů nasazení](../../azure-monitor/logs/design-logs-deployment.md).
 
 - [Ve vašem předplatném je povolená](../../sentinel/quickstart-onboard.md)možnost Azure Sentinel.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 725f15d72694534da1fd924b3b6ffe223722fd3d
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 0079c123f908a38cc1e4923790439f18352bf3ce
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104463"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574638"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku s duálním protokolem (NFSv3 a protokolu SMB) pro Azure NetApp Files
 
@@ -35,7 +35,7 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 
 ## <a name="considerations"></a>Požadavky
 
-* Ujistěte se, že splňujete [požadavky pro připojení ke službě Active Directory](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections). 
+* Ujistěte se, že splňujete [požadavky pro připojení ke službě Active Directory](create-active-directory-connections.md#requirements-for-active-directory-connections). 
 * Na serveru DNS vytvořte zónu zpětného vyhledávání a přidejte do této zóny zpětného vyhledávání záznam ukazatele (PTR) hostitelského počítače služby AD. V opačném případě se vytvoření svazku se dvěma protokoly nezdaří.
 * Ujistěte se, že je klient NFS aktuální a že používá nejnovější aktualizace pro daný operační systém.
 * Ujistěte se, že je server služby Active Directory (AD) LDAP v provozu a funguje ve službě AD. Můžete to udělat tak, že nainstalujete a nakonfigurujete roli [Služba AD LDS (Active Directory Lightweight Directory Services) (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) na počítači AD.
