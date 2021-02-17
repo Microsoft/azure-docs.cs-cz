@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 6502d4259aa383c1466967d01282cecfbb8d1ded
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 5335882c11ee6a1a7352ef3dc9822cfa88eda196
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832959"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573514"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Řešení Network Performance Monitor: sledování výkonu
 
@@ -131,4 +131,5 @@ Na následujícím obrázku se v červené cestě a segmentech směrování zobr
 ![Mapa topologie s vybranými vlastnostmi uzlu](media/network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
 ## <a name="next-steps"></a>Další kroky
-V [protokolech hledání](../log-query/log-query-overview.md) zobrazíte podrobné záznamy dat o výkonu sítě.
+V [protokolech hledání](../logs/log-query-overview.md) zobrazíte podrobné záznamy dat o výkonu sítě.
+

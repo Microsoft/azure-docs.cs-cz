@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/9/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d988617fcaf7479c7bb3356e6ef6f87824ed23a7
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: c600ced8896a3847b80d854c9e230310cca4c98d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616650"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588603"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Řešení potíží se službou Azure Digital nevláken: protokolování diagnostiky
 
@@ -35,8 +35,8 @@ Zapnutím nastavení diagnostiky zahajte shromažďování protokolů na instanc
     :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Snímek obrazovky zobrazující stránku nastavení diagnostiky a tlačítko, které se má přidat" lightbox="media/troubleshoot-diagnostics/diagnostic-settings.png":::
 
 3. Na následující stránce zadejte následující hodnoty:
-     * **Název nastavení diagnostiky** : zadejte název diagnostického nastavení.
-     * **Podrobnosti kategorie** : vyberte operace, které chcete monitorovat, a zaškrtněte políčka pro povolení diagnostiky pro tyto operace. Operace, které nastavení diagnostiky mohou hlásit:
+     * **Název nastavení diagnostiky**: zadejte název diagnostického nastavení.
+     * **Podrobnosti kategorie**: vyberte operace, které chcete monitorovat, a zaškrtněte políčka pro povolení diagnostiky pro tyto operace. Operace, které nastavení diagnostiky mohou hlásit:
         - DigitalTwinsOperation
         - EventRoutesOperation
         - ModelsOperation
@@ -44,7 +44,7 @@ Zapnutím nastavení diagnostiky zahajte shromažďování protokolů na instanc
         - AllMetrics
         
         Další podrobnosti o těchto kategoriích a informacích, které obsahují, najdete v části [*Kategorie protokolů*](#log-categories) níže.
-     * **Podrobnosti cíle** : vyberte, kam chcete protokoly odesílat. Můžete vybrat libovolnou kombinaci tří možností:
+     * **Podrobnosti cíle**: vyberte, kam chcete protokoly odesílat. Můžete vybrat libovolnou kombinaci tří možností:
         - Odeslání do Log Analytics
         - Archivovat v účtu úložiště
         - Streamovat do centra událostí
@@ -57,13 +57,13 @@ Zapnutím nastavení diagnostiky zahajte shromažďování protokolů na instanc
 
 Nové nastavení se projeví přibližně po dobu 10 minut. Po této konfiguraci se protokoly zobrazí na stránce **nastavení diagnostiky na stránce nastavení diagnostiky** pro vaši instanci. 
 
-Podrobnější informace o nastavení diagnostiky a jejich možnostech instalace najdete na stránce [*Vytvoření nastavení diagnostiky pro odesílání protokolů a metrik platforem do různých umístění*](../azure-monitor/platform/diagnostic-settings.md).
+Podrobnější informace o nastavení diagnostiky a jejich možnostech instalace najdete na stránce [*Vytvoření nastavení diagnostiky pro odesílání protokolů a metrik platforem do různých umístění*](../azure-monitor/essentials/diagnostic-settings.md).
 
 ## <a name="log-categories"></a>Kategorie protokolů
 
 Tady jsou další podrobnosti o kategoriích protokolů, které shromažďuje digitální vlákna Azure.
 
-| Kategorie protokolu | Popis |
+| Kategorie protokolu | Description |
 | --- | --- |
 | ADTModelsOperation | Protokolovat všechna volání rozhraní API týkající se modelů |
 | ADTQueryOperation | Protokolování všech volání rozhraní API vztahujících se k dotazům |
@@ -255,10 +255,10 @@ Tady je postup dotazování protokolů vaší instance.
     - Karta *dotazy* obsahuje příklady dotazů, které lze načíst do editoru.
     - Karta *Filtr* umožňuje přizpůsobit filtrované zobrazení dat vrácených dotazem.
 
-Podrobnější informace o dotazech protokolů a o tom, jak je napsat, najdete [*v tématu Přehled dotazů protokolu v Azure monitor*](../azure-monitor/log-query/log-query-overview.md).
+Podrobnější informace o dotazech protokolů a o tom, jak je napsat, najdete [*v tématu Přehled dotazů protokolu v Azure monitor*](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o konfiguraci diagnostiky najdete v tématu [*shromažďování a využívání dat protokolů z prostředků Azure*](../azure-monitor/platform/platform-logs-overview.md).
+* Další informace o konfiguraci diagnostiky najdete v tématu [*shromažďování a využívání dat protokolů z prostředků Azure*](../azure-monitor/essentials/platform-logs-overview.md).
 * Informace o metrikách digitálních vláken Azure najdete v tématu [*řešení potíží: zobrazení metrik pomocí Azure monitor*](troubleshoot-metrics.md).
 * Informace o tom, jak povolit výstrahy pro metriky, najdete v tématu [*řešení potíží: nastavení výstrah*](troubleshoot-alerts.md).

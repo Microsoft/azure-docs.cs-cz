@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: yuajia
-ms.openlocfilehash: cd99be40700ab1c34176f2bf7497e4debf5cd424
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d1f3e59cc88ea9cb30e7eacbd26591e08d71be61
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483793"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575238"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Monitorování metrik a protokolů v frontách Azure na předních dveřích
 
@@ -29,7 +29,7 @@ Pomocí front-dveří Azure můžete monitorovat prostředky následujícími zp
 
 Metriky jsou funkce pro určité prostředky Azure, které umožňují zobrazit čítače výkonu na portálu. K dispozici jsou následující metriky front dveří:
 
-| Metrika | Zobrazovaný název metriky | Jednotka | Dimenze | Popis |
+| Metric | Zobrazovaný název metriky | Jednotka | Dimenze | Description |
 | --- | --- | --- | --- | --- |
 | RequestCount | Počet požadavků | Počet | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet požadavků klientů poskytovaných předními dveřmi.  |
 | RequestSize | Velikost požadavku | Bajty | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet bajtů odeslaných jako požadavek od klientů do předních dveří. |
@@ -59,7 +59,7 @@ Přístup k protokolům aktivit ve front-Vratích nebo ve všech protokolech pro
 ## <a name="diagnostic-logs"></a><a name="diagnostic-logging"></a>Diagnostické protokoly
 Diagnostické protokoly poskytují obsáhlé informace o operacích a chybách, které jsou důležité pro auditování a řešení potíží. Diagnostické protokoly se liší od protokolů aktivit.
 
-Protokoly aktivit poskytují přehled o operacích provedených v prostředcích Azure. Diagnostické protokoly poskytují přehled o operacích, které váš prostředek dokončil. Další informace najdete v tématu [Azure monitor diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md).
+Protokoly aktivit poskytují přehled o operacích provedených v prostředcích Azure. Diagnostické protokoly poskytují přehled o operacích, které váš prostředek dokončil. Další informace najdete v tématu [Azure monitor diagnostické protokoly](../azure-monitor/essentials/platform-logs-overview.md).
 
 :::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="Diagnostické protokoly":::
 
@@ -121,8 +121,8 @@ Pokud je hodnota false, znamená to, že požadavek reaguje od počátku ochrany
 
 | Scénáře | Počet položek protokolu | POP | BackendHostname | isReceivedFromClient | CacheStatus |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Pravidlo směrování bez povoleného ukládání do mezipaměti | 1 | Hraniční kód POP | Back-end, kde byl požadavek předán | Pravda | CONFIG_NOCACHE |
-| Pravidlo směrování s povoleným ukládáním do mezipaměti. Přístup do mezipaměti na hraničním okně Edge | 1 | Hraniční kód POP | Obsahovat | Pravda | KLEPNUTÍ |
+| Pravidlo směrování bez povoleného ukládání do mezipaměti | 1 | Hraniční kód POP | Back-end, kde byl požadavek předán | Ano | CONFIG_NOCACHE |
+| Pravidlo směrování s povoleným ukládáním do mezipaměti. Přístup do mezipaměti na hraničním okně Edge | 1 | Hraniční kód POP | Obsahovat | Ano | KLEPNUTÍ |
 | Pravidlo směrování s povoleným ukládáním do mezipaměti. Neúspěšné přístupy do mezipaměti na hraničním místě POP, ale přístupů do mezipaměti v nadřazené mezipaměti | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. název hostitele POP nadřazené mezipaměti</br>2. prázdné | 1. true</br>2. false | 1. NEÚSPĚŠNÉ</br>2. PŘÍSTUPŮ |
 | Pravidlo směrování s povoleným ukládáním do mezipaměti. Při ukládání do mezipaměti došlo na hraničním bodu POP, ale při ČÁSTEČNÉm přístupu do mezipaměti v nadřazené mezipaměti POP | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. název hostitele POP nadřazené mezipaměti</br>2. back-end, který pomáhá naplnit mezipaměť | 1. true</br>2. false | 1. NEÚSPĚŠNÉ</br>2. PARTIAL_HIT |
 | Pravidlo směrování s povoleným ukládáním do mezipaměti. Ukládat PARTIAL_HIT mezipaměti na hraničním bodu POP, ale v mezipaměti se nachází v nadřazené mezipaměti | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. true</br>2. false | 1. PARTIAL_HIT</br>2. PŘÍSTUPŮ |

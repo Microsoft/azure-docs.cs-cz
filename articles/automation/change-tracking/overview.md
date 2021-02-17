@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0ef821634669739ff5aed58e4404d7c21b8d8222
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: e2371f3de8ed73250bca6639e6c749811c5559ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896625"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572603"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Přehled Change Tracking a inventáře
 
@@ -34,9 +34,9 @@ Change Tracking a inventář využívá [Azure Security Center sledování integ
 
 Povolení všech funkcí, které jsou součástí Change Tracking a inventáře, může způsobit další poplatky. Než budete pokračovat, přečtěte si téma [ceny služby Automation](https://azure.microsoft.com/pricing/details/automation/) a [ceny Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).
 
-Change Tracking a inventář předávají data do protokolů Azure Monitor a Tato shromážděná data se ukládají do Log Analyticsho pracovního prostoru. Funkce monitoring integrity souborů (FIM) je dostupná jenom v případě, že je **Azure Defender pro servery** povolený. Další informace najdete v tématu Azure Security Center [ceny](../../security-center/security-center-pricing.md) . FIM nahraje data do stejného Log Analytics pracovního prostoru jako ten vytvořený pro ukládání dat z Change Tracking a inventáře. Doporučujeme monitorovat svůj propojený pracovní prostor Log Analytics, abyste mohli sledovat přesné využití. Další informace o analýze využití dat protokolů Azure Monitor najdete v tématu [Správa využití a nákladů](../../azure-monitor/platform/manage-cost-storage.md).
+Change Tracking a inventář předávají data do protokolů Azure Monitor a Tato shromážděná data se ukládají do Log Analyticsho pracovního prostoru. Funkce monitoring integrity souborů (FIM) je dostupná jenom v případě, že je **Azure Defender pro servery** povolený. Další informace najdete v tématu Azure Security Center [ceny](../../security-center/security-center-pricing.md) . FIM nahraje data do stejného Log Analytics pracovního prostoru jako ten vytvořený pro ukládání dat z Change Tracking a inventáře. Doporučujeme monitorovat svůj propojený pracovní prostor Log Analytics, abyste mohli sledovat přesné využití. Další informace o analýze využití dat protokolů Azure Monitor najdete v tématu [Správa využití a nákladů](../../azure-monitor/logs/manage-cost-storage.md).
 
-Počítače připojené k pracovnímu prostoru Log Analytics používají [agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md) ke shromažďování dat o změnách nainstalovaného softwaru, služeb Microsoftu, registru a souborů systému Windows a démonech systému Linux na monitorovaných serverech. Když jsou data k dispozici, agent je pošle do Azure Monitor protokolů pro zpracování. Protokoly Azure Monitor aplikují logiku na přijatá data, zaznamenává je a zpřístupňují pro účely analýzy.
+Počítače připojené k pracovnímu prostoru Log Analytics používají [agenta Log Analytics](../../azure-monitor/agents/log-analytics-agent.md) ke shromažďování dat o změnách nainstalovaného softwaru, služeb Microsoftu, registru a souborů systému Windows a démonech systému Linux na monitorovaných serverech. Když jsou data k dispozici, agent je pošle do Azure Monitor protokolů pro zpracování. Protokoly Azure Monitor aplikují logiku na přijatá data, zaznamenává je a zpřístupňují pro účely analýzy.
 
 > [!NOTE]
 > Change Tracking a inventář vyžaduje propojení pracovního prostoru Log Analytics s vaším účtem Automation. Konečný seznam podporovaných oblastí najdete v tématu [mapování pracovních prostorů Azure](../how-to/region-mappings.md). Mapování oblastí neovlivňují možnost spravovat virtuální počítače v samostatné oblasti z účtu Automation.
@@ -48,7 +48,7 @@ Change Tracking a inventář nepodporují nebo mají následující omezení:
 - Rekurze pro sledování registru Windows
 - Síťové systémy souborů
 - Různé metody instalace
-- *soubory *_. exe_* uložené ve Windows
+- *soubory **. exe** uložené ve Windows
 - Sloupec **maximální velikost souboru** a hodnoty jsou v aktuální implementaci nepoužitelné.
 - Pokud se pokusíte shromáždit více než 2500 souborů v cyklu shromažďování, Change Tracking a výkon inventáře může být snížený.
 - Pokud je síťový provoz vysoký, může zobrazení změn záznamů trvat až šest hodin.
@@ -58,7 +58,7 @@ Change Tracking a inventář nepodporují nebo mají následující omezení:
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
-Change Tracking a inventář se podporují ve všech operačních systémech, které splňují požadavky agenta Log Analytics. Seznam verzí operačních systémů Windows a Linux, které jsou aktuálně podporované agentem Log Analytics, najdete v části [podporované operační systémy](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) .
+Change Tracking a inventář se podporují ve všech operačních systémech, které splňují požadavky agenta Log Analytics. Seznam verzí operačních systémů Windows a Linux, které jsou aktuálně podporované agentem Log Analytics, najdete v části [podporované operační systémy](../../azure-monitor/agents/agents-overview.md#supported-operating-systems) .
 
 Informace o požadavcích klienta na TLS 1,2 najdete v tématu [vynucení TLS 1,2 pro Azure Automation](../automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
@@ -159,7 +159,7 @@ V následující tabulce jsou uvedené limity sledovaných položek na počíta�
 |Služby|250|
 |Procesy démon|250|
 
-Průměrné využití dat Log Analytics počítači pomocí Change Tracking a inventáře je přibližně 40 MB za měsíc v závislosti na vašem prostředí. Díky funkci využití a odhad nákladů v pracovním prostoru Log Analytics můžete zobrazit data ingestovaná pomocí Change Tracking a inventáře v grafu využití. Toto zobrazení dat slouží k vyhodnocení využití vašich dat a určení toho, jak má na faktuře vliv. Podívejte [se na informace o využití a odhadované náklady](../../azure-monitor/platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs).
+Průměrné využití dat Log Analytics počítači pomocí Change Tracking a inventáře je přibližně 40 MB za měsíc v závislosti na vašem prostředí. Díky funkci využití a odhad nákladů v pracovním prostoru Log Analytics můžete zobrazit data ingestovaná pomocí Change Tracking a inventáře v grafu využití. Toto zobrazení dat slouží k vyhodnocení využití vašich dat a určení toho, jak má na faktuře vliv. Podívejte [se na informace o využití a odhadované náklady](../../azure-monitor/logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs).
 
 ### <a name="microsoft-service-data"></a>Data služby společnosti Microsoft
 
@@ -176,7 +176,7 @@ Pro optimalizaci výkonu Log Analytics agent sledovat pouze změny. Nastavením 
 
 Klíčovou funkcí Change Tracking a inventáře jsou výstrahy týkající se změn stavu konfigurace hybridního prostředí. K dispozici je mnoho užitečných akcí, které je možné aktivovat v reakci na výstrahy. Například akce v Azure Functions, Runbooky automatizace, webhookech a podobně. Upozornění na změny v souboru **c:\Windows\System32\drivers\etc\hosts** pro počítač je jedním z užitečných výstrah pro Change Tracking a data inventáře. K dispozici je mnoho dalších scénářů pro upozorňování, včetně scénářů dotazu definovaných v následující tabulce.
 
-|Dotaz  |Popis  |
+|Dotaz  |Description  |
 |---------|---------|
 |ConfigurationChange <br>&#124;, kde ConfigChangeType = = "Files" a FileSystemPath obsahuje "c \\ : \\ ovladače Windows system32 \\ \\ "|Hodí se ke sledování změn souborů důležitých pro systém.|
 |ConfigurationChange <br>&#124;, kde FieldsChanged obsahuje "FileContentChecksum" a FileSystemPath = = "c \\ : \\ ovladače systému Windows system32 atd. \\ \\ \\ "|Hodí se ke sledování úprav konfiguračních souborů klíčů.|

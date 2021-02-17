@@ -4,12 +4,12 @@ description: Upozorňuje na neobvyklé změny v rychlosti neúspěšných požad
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 978b63d74e6be4104ff53eef66e9633c78b90eb8
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0f4de3aaba4acf86df37048134089326196e87ff
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510630"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587550"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Inteligentní zjišťování – anomálie selhání
 [Application Insights](./app-insights-overview.md) vás automaticky upozorní téměř v reálném čase, pokud vaše webová aplikace působí abnormální nárůst frekvence neúspěšných žádostí. Detekuje neobvyklé zvýšení rychlosti požadavků HTTP nebo volání závislostí, která jsou hlášena jako neúspěšná. V případě požadavků mají neúspěšné požadavky obvykle kódy odpovědí 400 nebo vyšší. V podrobnostech výstrahy jsou k dispozici analýzy vlastností selhání a souvisejících dat aplikací, které vám pomůžou při třídění a diagnostikování problému. K dispozici jsou také odkazy na portál Application Insights pro další diagnostiku. Tato funkce nevyžaduje žádné nastavení ani konfiguraci, protože používá algoritmy strojového učení pro předpověď běžné míry selhání.
@@ -31,7 +31,7 @@ Podrobnosti výstrahy vám sdělí:
 * Odkazuje přímo na relevantní hledání dat v Application Insights.
 
 ## <a name="benefits-of-smart-detection"></a>Výhody inteligentní detekce
-Běžné [výstrahy metriky s upozorněním](../platform/alerts-log.md) , že se může jednat o problém. Inteligentní detekce ale spustí diagnostickou práci za vás a provede mnoho analýz, které byste jinak museli dělat sami. Výsledky získáte v hotovém balení, což vám pomůže rychle se dostat k hlavnímu adresáři problému.
+Běžné [výstrahy metriky s upozorněním](../alerts/alerts-log.md) , že se může jednat o problém. Inteligentní detekce ale spustí diagnostickou práci za vás a provede mnoho analýz, které byste jinak museli dělat sami. Výsledky získáte v hotovém balení, což vám pomůže rychle se dostat k hlavnímu adresáři problému.
 
 ## <a name="how-it-works"></a>Jak to funguje
 Inteligentní detekce monitoruje data přijatá z vaší aplikace a zejména míry selhání. Toto pravidlo spočítá počet požadavků, pro které má `Successful request` vlastnost hodnotu false, a počet volání závislostí, pro které má `Successful call` vlastnost hodnotu false. Pro požadavky, ve výchozím nastavení `Successful request == (resultCode < 400)` (Pokud jste nenapsali vlastní kód pro [filtrování](./api-filtering-sampling.md#filtering) nebo generování vlastních volání [TrackRequest](./api-custom-events-metrics.md#trackrequest) ). 
@@ -48,7 +48,7 @@ Když je vaše služba instrumentovaná pomocí těchto volání, analyzátor vy
 
 Výsledná analýza se vám pošle jako výstraha, pokud jste ji nenakonfigurovali na.
 
-Podobně jako u [výstrah, které jste nastavili ručně](../platform/alerts-log.md), můžete zkontrolovat stav aktivované výstrahy, která může být vyřešena, pokud je problém vyřešen. Nakonfigurujte pravidla výstrahy na stránce výstrahy v prostředku Application Insights. Ale na rozdíl od jiných výstrah nemusíte nastavovat nebo konfigurovat inteligentní zjišťování. Pokud chcete, můžete ho zakázat nebo změnit jeho cílové e-mailové adresy.
+Podobně jako u [výstrah, které jste nastavili ručně](../alerts/alerts-log.md), můžete zkontrolovat stav aktivované výstrahy, která může být vyřešena, pokud je problém vyřešen. Nakonfigurujte pravidla výstrahy na stránce výstrahy v prostředku Application Insights. Ale na rozdíl od jiných výstrah nemusíte nastavovat nebo konfigurovat inteligentní zjišťování. Pokud chcete, můžete ho zakázat nebo změnit jeho cílové e-mailové adresy.
 
 ### <a name="alert-logic-details"></a>Podrobnosti logiky výstrahy
 
@@ -64,11 +64,11 @@ Výstrahy spouští náš proprietární algoritmus strojového učení, takže 
 
 Pravidlo výstrahy inteligentního zjišťování můžete zakázat z portálu nebo pomocí Azure Resource Manager ([Viz příklad šablony](./proactive-arm-config.md)).
 
-Toto pravidlo upozornění se vytvoří s přidruženou [skupinou akcí](../platform/action-groups.md) s názvem Application Insights inteligentní zjišťování, která obsahuje akce e-mailu a Webhooku, a dá se rozšířit tak, aby se aktivovaly další akce, když se výstraha aktivuje.
+Toto pravidlo upozornění se vytvoří s přidruženou [skupinou akcí](../alerts/action-groups.md) s názvem Application Insights inteligentní zjišťování, která obsahuje akce e-mailu a Webhooku, a dá se rozšířit tak, aby se aktivovaly další akce, když se výstraha aktivuje.
 
 > [!NOTE]
 > E-mailová oznámení odesílaná z tohoto pravidla upozornění se teď posílají ve výchozím nastavení uživatelům přidruženým ke čtenářům monitorování předplatného a k monitorování rolí přispěvatele. Další informace, které jsou k dispozici, [najdete tady](./proactive-email-notification.md).
-> Oznámení odesílaná z tohoto pravidla výstrahy následují po [běžném schématu výstrah](../platform/alerts-common-schema.md).
+> Oznámení odesílaná z tohoto pravidla výstrahy následují po [běžném schématu výstrah](../alerts/alerts-common-schema.md).
 >
 
 Otevřete stránku výstrahy. Pravidla výstrah upozorňující na chyby jsou zahrnuta společně se všemi výstrahami, které jste nastavili ručně, a vidíte, zda je aktuálně ve stavu výstrahy.
@@ -410,7 +410,7 @@ Kliknutím na **výstrahy** na stránce Application Insights prostředku se dost
 ## <a name="whats-the-difference-"></a>Jaký je rozdíl...
 Inteligentní zjišťování anomálií selhání doplňuje jiné podobné, ale odlišné funkce Application Insights.
 
-* [výstrahy metriky](../platform/alerts-log.md) jsou nastavené vámi a můžou monitorovat široké spektrum metrik, jako je obsazení procesoru, počet požadavků, doba načítání stránek a tak dále. Můžete je použít k upozornění, například pokud potřebujete přidat další prostředky. Naproti tomu inteligentní detekce anomálií selhání pokrývá malý rozsah kritických metrik (aktuálně jenom četnost neúspěšných požadavků), která je navržená k upozorňování téměř v reálném čase, jakmile se v porovnání s normálním chováním webové aplikace zvýší míra neúspěšných požadavků vaší webové aplikace. Inteligentní detekce na rozdíl od výstrah metrik automaticky nastavuje a aktualizuje prahové hodnoty v reakci na změny v chování. Inteligentní zjišťování také spouští diagnostickou práci za vás a šetří vám čas při řešení problémů.
+* [výstrahy metriky](../alerts/alerts-log.md) jsou nastavené vámi a můžou monitorovat široké spektrum metrik, jako je obsazení procesoru, počet požadavků, doba načítání stránek a tak dále. Můžete je použít k upozornění, například pokud potřebujete přidat další prostředky. Naproti tomu inteligentní detekce anomálií selhání pokrývá malý rozsah kritických metrik (aktuálně jenom četnost neúspěšných požadavků), která je navržená k upozorňování téměř v reálném čase, jakmile se v porovnání s normálním chováním webové aplikace zvýší míra neúspěšných požadavků vaší webové aplikace. Inteligentní detekce na rozdíl od výstrah metrik automaticky nastavuje a aktualizuje prahové hodnoty v reakci na změny v chování. Inteligentní zjišťování také spouští diagnostickou práci za vás a šetří vám čas při řešení problémů.
 
 * [Inteligentní detekce anomálií s výkonem](proactive-performance-diagnostics.md) taky využívá Machine Intelligence ke zjišťování neobvyklých vzorů ve vašich metrikách a nevyžaduje žádnou konfiguraci. Ale na rozdíl od inteligentní detekce anomálií při selhání je účel inteligentní detekce anomálií ve výkonu najít segmenty vašeho sběrného segmentu, které by mohly být chybně obsluhovány – například konkrétní stránky na konkrétního typu prohlížeče. Analýza se provádí denně a v případě, že se najde nějaký výsledek, bude pravděpodobně mnohem méně naléhavější než výstraha. Naproti tomu je analýza anomálií selhání prováděna průběžně na příchozích datech aplikací a během několika minut budete upozorněni na to, jestli jsou míry selhání serveru větší, než se očekávalo.
 
@@ -441,16 +441,16 @@ Inteligentní zjišťování anomálií selhání doplňuje jiné podobné, ale 
 
 *Některé výstrahy se týkají známých problémů a nechci je přijímat.*
 
-* Můžete použít funkci potlačení [pravidel akcí výstrah](../platform/alerts-action-rules.md) .
+* Můžete použít funkci potlačení [pravidel akcí výstrah](../alerts/alerts-action-rules.md) .
 
 ## <a name="next-steps"></a>Další kroky
 Tyto diagnostické nástroje vám pomůžou zkontrolovat data z vaší aplikace:
 
-* [Průzkumník metrik](../platform/metrics-charts.md)
+* [Průzkumník metrik](../essentials/metrics-charts.md)
 * [Průzkumník vyhledávání](./diagnostic-search.md)
-* [Analýza – výkonný dotazovací jazyk](../log-query/log-analytics-tutorial.md)
+* [Analýza – výkonný dotazovací jazyk](../logs/log-analytics-tutorial.md)
 
 Inteligentní detekce jsou automatické. Možná byste ale chtěli nastavit ještě nějaké další výstrahy?
 
-* [Ručně nakonfigurované výstrahy metriky](../platform/alerts-log.md)
+* [Ručně nakonfigurované výstrahy metriky](../alerts/alerts-log.md)
 * [Testy dostupnosti webu](./monitor-web-app-availability.md)

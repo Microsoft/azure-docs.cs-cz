@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 094ecd88c8b493d44b756d03d700b43cbcba1ee9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 683367251c220abe36660d61463bce9e5a0c52f9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362395"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577763"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Plánování nasazení Azure Active Directory vytváření sestav a monitorování
 
@@ -47,7 +47,7 @@ S monitorováním Azure AD můžete směrovat protokoly do:
 * centrum událostí Azure, kde se můžete integrovat s existujícími nástroji SIEM, jako je Splunk, SumoLogic nebo QRadar.
 
 > [!NOTE]
-Nedávno jsme začali používat místo Log Analytics Azure Monitor protokoly. Data protokolu se pořád ukládají do Log Analyticsho pracovního prostoru a pořád se shromažďují a analyzují pomocí stejné služby Log Analytics. Aktualizujeme terminologii, aby lépe odrážela roli [protokolů v Azure monitor](../../azure-monitor/platform/data-platform.md). Podrobnosti najdete v tématu [Azure monitor změny terminologie](../../azure-monitor/terminology.md) .
+Nedávno jsme začali používat místo Log Analytics Azure Monitor protokoly. Data protokolu se pořád ukládají do Log Analyticsho pracovního prostoru a pořád se shromažďují a analyzují pomocí stejné služby Log Analytics. Aktualizujeme terminologii, aby lépe odrážela roli [protokolů v Azure monitor](../../azure-monitor/data-platform.md). Podrobnosti najdete v tématu [Azure monitor změny terminologie](../../azure-monitor/terminology.md) .
 
 [Přečtěte si další informace o zásadách uchovávání sestav](./reference-reports-data-retention.md).
 
@@ -97,9 +97,9 @@ Vytváření sestav a monitorování se používá ke splnění vašich obchodn�
 
 * Vyžadováno pro řešení pro splnění obchodních potřeb
 * Skvělé vyhovět potřebám podniku
-* Nelze použít
+* Neuvedeno
 
-|Plošný |Popis |
+|Plošný |Description |
 |-|-|
 |Uchovávání| **Protokolujte uchovávání více než 30 dní**. Vzhledem k právním nebo podnikovým požadavkům se vyžaduje ukládání protokolů auditu a přihlášení do protokolů služby Azure AD déle než 30 dní. |
 |Analýzy| **Protokoly musí být prohledávatelné**. Uložené protokoly musí být prohledávatelné pomocí analytických nástrojů. |
@@ -121,7 +121,7 @@ Informace o [směrování dat do účtu úložiště](./quickstart-azure-monitor
 
 #### <a name="send-logs-to-azure-monitor-logs"></a>Odeslat protokoly do protokolů Azure Monitor
 
-[Protokoly Azure monitor](../../azure-monitor/log-query/log-query-overview.md) slučují data monitorování z různých zdrojů. Poskytuje také dotazovací jazyk a analytický modul, který vám poskytne přehled o provozu aplikací a používání prostředků. Odesláním protokolů aktivit Azure AD do Azure Monitor protokolů můžete shromažďovat, monitorovat a upozorňovat na shromážděná data. Tuto metodu použijte, pokud nemáte existující řešení SIEM, ve kterém chcete data odesílat přímo, ale chcete dotazy a analýzy. Jakmile budou data v Azure Monitor protokoly, můžete je odeslat do centra událostí a odtud do SIEM, pokud chcete.
+[Protokoly Azure monitor](../../azure-monitor/logs/log-query-overview.md) slučují data monitorování z různých zdrojů. Poskytuje také dotazovací jazyk a analytický modul, který vám poskytne přehled o provozu aplikací a používání prostředků. Odesláním protokolů aktivit Azure AD do Azure Monitor protokolů můžete shromažďovat, monitorovat a upozorňovat na shromážděná data. Tuto metodu použijte, pokud nemáte existující řešení SIEM, ve kterém chcete data odesílat přímo, ale chcete dotazy a analýzy. Jakmile budou data v Azure Monitor protokoly, můžete je odeslat do centra událostí a odtud do SIEM, pokud chcete.
 
 Naučte se [odesílat data do protokolů Azure monitor](./howto-integrate-activity-logs-with-log-analytics.md).
 

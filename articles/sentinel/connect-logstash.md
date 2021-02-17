@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 63b9d74fbbb1a79dd4f3d3e7c5fb094a372282e0
-ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
+ms.openlocfilehash: d388478fb3bc9b4e355d8c3cd3f16c0a785b8b27
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96299628"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578918"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Použití Logstash k připojení zdrojů dat k Sentinel Azure
 
@@ -49,7 +49,7 @@ Modul Logstash se skládá ze tří součástí:
 Modul plug-in Azure Sentinel Output pro Logstash odesílá data ve formátu JSON do vašeho pracovního prostoru Log Analytics pomocí Log Analytics REST API kolekce dat HTTP. Data se ingestují do vlastních protokolů.
 
 - Přečtěte si další informace o [REST API Log Analytics](/rest/api/loganalytics/create-request).
-- Přečtěte si další informace o [vlastních protokolech](../azure-monitor/platform/data-sources-custom-logs.md).
+- Přečtěte si další informace o [vlastních protokolech](../azure-monitor/agents/data-sources-custom-logs.md).
 
 ## <a name="deploy-the-azure-sentinel-output-plugin-in-logstash"></a>Nasazení modulu plug-in Azure Sentinel Output v Logstash
 
@@ -57,7 +57,7 @@ Modul plug-in Azure Sentinel Output pro Logstash odesílá data ve formátu JSON
 
 Modul plug-in Azure Sentinel Output je k dispozici v kolekci Logstash.
 
-- Pokud chcete nainstalovat modul plug-in *_[Microsoft-Logstash-Output-Azure-loganalytics](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics)_* _, postupujte podle pokynů v dokumentu Logstash [Working with plugins](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) .
+- Pokud chcete nainstalovat modul plug-in ***[Microsoft-Logstash-Output-Azure-loganalytics](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics)*** , postupujte podle pokynů v dokumentu Logstash [Working with plugins](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) .
    
 - Pokud váš systém Logstash nemá přístup k Internetu, připravte a použijte offline balíček modulu plug-in pomocí pokynů v dokumentu [správy modulu plug-in](https://www.elastic.co/guide/en/logstash/current/offline-plugins.html) Logstash. (To bude vyžadovat, abyste vytvořili jiný Logstash systém s přístupem k Internetu.)
 
@@ -65,9 +65,9 @@ Modul plug-in Azure Sentinel Output je k dispozici v kolekci Logstash.
 
 Použijte informace ze struktury Logstash dokumentu [konfiguračního souboru](https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html) a přidejte do konfigurace modul plug-in Azure Sentinel Output s následujícími klíči a hodnotami. (Správná syntaxe konfiguračního souboru se zobrazí za tabulkou.)
 
-| Název pole | Datový typ | Popis |
+| Název pole | Datový typ | Description |
 |----------------|---------------|-----------------|
-| `workspace_id` | řetězec | Zadejte identifikátor GUID ID vašeho pracovního prostoru. _ |
+| `workspace_id` | řetězec | Zadejte identifikátor GUID ID vašeho pracovního prostoru. * |
 | `workspace_key` | řetězec | Zadejte identifikátor GUID primárního klíče pracovního prostoru. * |
 | `custom_log_table_name` | řetězec | Nastavte název tabulky, do které budou přijímány protokoly. Pro každý výstupní modul plug-in se dá nakonfigurovat jenom jeden název tabulky. V části **protokoly** v **tabulkách** v kategorii **vlastní protokoly** se jako přípona zobrazí tabulka protokolu Azure Sentinel `_CL` . |
 | `endpoint` | řetězec | Volitelné pole. Ve výchozím nastavení je to koncový bod Log Analytics. Pomocí tohoto pole můžete nastavit alternativní koncový bod. |

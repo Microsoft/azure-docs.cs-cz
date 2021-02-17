@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: a4f3e0bbd282fb1253e206e71c2eb1667773248e
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: b734c4cdec022f2bf43ee7123b06331f67c10390
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834081"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570847"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Kurz: Monitorování síťové komunikace mezi dvěma virtuálními počítači na webu Azure Portal
 
@@ -81,7 +81,7 @@ Proveďte znovu kroky uvedené v části [Vytvoření prvního virtuálního po�
 |Krok|Nastavení|Hodnota|
 |---|---|---|
 | 1 | Vybrat verzi **serveru Ubuntu** |                                                                         |
-| 3 | Název                                  | myVm2                                                                   |
+| 3 | Name                                  | myVm2                                                                   |
 | 3 | Typ ověřování                   | Vložte váš veřejný klíč SSH nebo vyberte **Heslo** a zadejte heslo. |
 | 3 | Skupina prostředků                        | Vyberte **Použít existující** a pak vyberte **myResourceGroup**.                 |
 | 6 | Rozšíření                            | **Agent Network Watcher pro Linux**                                             |
@@ -137,7 +137,7 @@ Upozornění vytvářejí pravidla upozornění služby Azure Monitor. Pravidla 
 2. Klikněte na **Vybrat cíl** a pak vyberte prostředky, na které chcete cílit. Vyberte **Předplatné** a nastavte **Typ prostředku**, abyste vyfiltrovali monitorování připojení, které chcete použít.
 
     ![Obrazovka upozornění s vybraným cílem](./media/connection-monitor/set-alert-rule.png)
-1. Jakmile vyberete prostředek, na který chcete cílit, vyberte **Přidat kritéria**. Network Watcher nabízí [metriky, podle kterých můžete vytvářet upozornění](../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported). Nastavte **Dostupné signály** na metriky ProbesFailedPercent a AverageRoundtripMs:
+1. Jakmile vyberete prostředek, na který chcete cílit, vyberte **Přidat kritéria**. Network Watcher nabízí [metriky, podle kterých můžete vytvářet upozornění](../azure-monitor/alerts/alerts-metric-near-real-time.md#metrics-and-dimensions-supported). Nastavte **Dostupné signály** na metriky ProbesFailedPercent a AverageRoundtripMs:
 
     ![Stránka upozornění s vybranými signály](./media/connection-monitor/set-alert-signals.png)
 1. Vyplňte podrobnosti o upozornění, jako je název pravidla upozornění, popis a závažnost. K upozornění můžete také přidat skupinu akcí, která vám umožní automatizovat a přizpůsobit reakci na upozornění.

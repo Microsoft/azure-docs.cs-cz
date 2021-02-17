@@ -3,12 +3,12 @@ title: Vylepšení provozního excellencyu pomocí Poradce
 description: Využijte Azure Advisor k optimalizaci a vyspělosti vaší provozní kvality vašich předplatných Azure.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 63e88129a7418e82ea13429c33d8735e96616476
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 0b938a0c7a42182bb8d2a50b48d65a0844d952a6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122615"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579963"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Dosažení provozní úrovně pomocí Azure Advisor
 
@@ -38,7 +38,7 @@ Pokud váš fond používá zastaralou interní komponentu, odstraňte a znovu v
 
 ## <a name="repair-invalid-log-alert-rules"></a>Opravit neplatná pravidla upozornění protokolu
 
-Azure Advisor detekuje pravidla výstrah, která mají v oddílu podmínky zadány neplatné dotazy. Můžete vytvořit pravidla upozornění protokolu v Azure Monitor a použít je ke spouštění analytických dotazů v zadaných intervalech. Výsledky dotazu určují, jestli je potřeba aktivovat upozornění. Analytické dotazy se můžou v průběhu času stát neplatnými kvůli změnám v odkazovaných prostředcích, tabulkách nebo příkazech. Poradce doporučuje, abyste v pravidle výstrahy opravili dotaz, abyste zabránili jeho automatickému zakázání a zajistili monitorování pokrytí vašich prostředků v Azure. [Přečtěte si další informace o řešení potíží s pravidly výstrah.](../azure-monitor/platform/alerts-troubleshoot-log.md)
+Azure Advisor detekuje pravidla výstrah, která mají v oddílu podmínky zadány neplatné dotazy. Můžete vytvořit pravidla upozornění protokolu v Azure Monitor a použít je ke spouštění analytických dotazů v zadaných intervalech. Výsledky dotazu určují, jestli je potřeba aktivovat upozornění. Analytické dotazy se můžou v průběhu času stát neplatnými kvůli změnám v odkazovaných prostředcích, tabulkách nebo příkazech. Poradce doporučuje, abyste v pravidle výstrahy opravili dotaz, abyste zabránili jeho automatickému zakázání a zajistili monitorování pokrytí vašich prostředků v Azure. [Přečtěte si další informace o řešení potíží s pravidly výstrah.](../azure-monitor/alerts/alerts-troubleshoot-log.md)
 
 ## <a name="use-azure-policy-recommendations"></a>Použití Azure Policy doporučení
 

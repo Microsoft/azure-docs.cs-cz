@@ -4,18 +4,17 @@ summary: Azure Red Hat OpenShift poskytuje vysoce dostupné clustery Kubernetes 
 metadata:
   title: Dokumentace k Azure Red Hat OpenShiftu
   description: Microsoft Azure Red Hat OpenShift umožňuje do Azure nasadit cluster Red Hat OpenShift připravený pro produkční prostředí. V těchto kurzech a praktických průvodcích se dozvíte, jak postupovat.
-  ms.service: container-service
-  services: container-service
+  ms.service: azure-redhat-openshift
   ms.topic: landing-page
   author: jimzim
   ms.author: jzim
   ms.date: 03/06/2020
-  ms.openlocfilehash: 74ba5f8270e366621a0fd352bd76747077d9cc08
-  ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
-  ms.translationtype: HT
+  ms.openlocfilehash: 06c6b14d62bb471ecc6dee50d72f11469e3cd161
+  ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 11/10/2020
-  ms.locfileid: "94411316"
+  ms.lasthandoff: 02/17/2021
+  ms.locfileid: "100633202"
 landingContent:
 - title: Informace o platformě Azure Red Hat OpenShift
   linkLists:

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 02/02/2021
-ms.openlocfilehash: e8f18f56c746f0d12f43cc2fb6ce9088a9b82b45
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: aa18baf9739663c7132a49d3d07434b9d187f02b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492378"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588752"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Omezení prostředků pro Azure SQL Database a Azure synapse Analytics Server
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -106,11 +106,11 @@ Při zjištění chyb při nedostatku paměti patří mezi ně i tyto možnosti:
 
 ## <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>Spotřeba prostředků podle uživatelských zatížení a interních procesů
 
-Využití CPU a paměti podle uživatelských úloh v každé databázi se oznamuje v zobrazeních [Sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) a [Sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) , ve `avg_cpu_percent` sloupcích a `avg_memory_usage_percent` . Pro elastické fondy se spotřeba prostředků na úrovni fondu hlásí v zobrazení [Sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) . Spotřeba procesoru uživatele je také hlášena prostřednictvím `cpu_percent` Azure monitor metriky pro izolované [databáze](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserversdatabases) a [elastické fondy](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserverselasticpools) na úrovni fondu.
+Využití CPU a paměti podle uživatelských úloh v každé databázi se oznamuje v zobrazeních [Sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) a [Sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) , ve `avg_cpu_percent` sloupcích a `avg_memory_usage_percent` . Pro elastické fondy se spotřeba prostředků na úrovni fondu hlásí v zobrazení [Sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) . Spotřeba procesoru uživatele je také hlášena prostřednictvím `cpu_percent` Azure monitor metriky pro izolované [databáze](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserversdatabases) a [elastické fondy](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserverselasticpools) na úrovni fondu.
 
 Azure SQL Database vyžaduje výpočetní prostředky k implementaci základních funkcí služby, jako je vysoká dostupnost a zotavení po havárii, zálohování a obnovení databáze, monitorování, úložiště dotazů, automatické ladění atd. Systém nastavuje určitou omezené část celkových prostředků pro tyto interní procesy pomocí mechanismů [zásad správného řízení prostředků](#resource-governance) a zpřístupňuje zbývající prostředky pro úlohy uživatelů. V době, kdy interní procesy nepoužívají výpočetní prostředky, je systém zpřístupní pro úlohy uživatelů.
 
-Celková spotřeba procesoru a paměti podle uživatelských zatížení a interních procesů je hlášena v zobrazení [Sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) a [Sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) , ve `avg_instance_cpu_percent` `avg_instance_memory_percent` sloupcích a. Tato data jsou také uvedena prostřednictvím `sqlserver_process_core_percent` metrik a `sqlserver_process_memory_percent` Azure monitor pro izolované [databáze](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserversdatabases) a [elastické fondy](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserverselasticpools) na úrovni fondu.
+Celková spotřeba procesoru a paměti podle uživatelských zatížení a interních procesů je hlášena v zobrazení [Sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) a [Sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) , ve `avg_instance_cpu_percent` `avg_instance_memory_percent` sloupcích a. Tato data jsou také uvedena prostřednictvím `sqlserver_process_core_percent` metrik a `sqlserver_process_memory_percent` Azure monitor pro izolované [databáze](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserversdatabases) a [elastické fondy](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserverselasticpools) na úrovni fondu.
 
 Podrobnější rozpis poslední spotřeby prostředků uživatelskými úlohami a interními procesy se oznamuje v zobrazeních [Sys.dm_resource_governor_resource_pools_history_ex](/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database) a [Sys.dm_resource_governor_workload_groups_history_ex](/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database) . Podrobnosti o fondech prostředků a skupinách úloh, na které se odkazuje v těchto zobrazeních, najdete v tématu [řízení prostředků](#resource-governance). Tato zobrazení vykazují informace o využití prostředků uživateli a specifických interních procesech v přidružených fondech zdrojů a skupinách úloh.
 

@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9b93ac774dffb837d93853353e83b8da4ab4d8d4
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: c419411b0956cdc42055f0e97a47fc8e4ddb38c9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027155"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589735"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Metriky založené na protokolech a předem agregované metriky ve službě Application Insights
 
@@ -30,12 +30,12 @@ Současně může být shromažďování kompletní sady událostí pro aplikace
 
 ## <a name="pre-aggregated-metrics"></a>Předem agregované metriky
 
-Kromě metrik založených na protokolu v 2018 se tým Application Insights dodal ve verzi Public Preview metrik, které jsou uložené ve specializovaném úložišti, které je optimalizované pro časové řady. Nové metriky se už neuchovávají jako jednotlivé události s velkým množstvím vlastností. Místo toho jsou uloženy jako předem agregované časové řady a pouze s dimenzemi Key. Díky tomu jsou nové metriky nadřazené době dotazu: načítání dat je mnohem rychlejší a vyžaduje méně výpočetní výkon. V důsledku toho to umožňuje nové scénáře, jako je například [upozorňování téměř v reálném čase, u dimenzí metrik](../platform/alerts-metric-near-real-time.md), rychlejších [řídicích panelů](./overview-dashboard.md)a dalších.
+Kromě metrik založených na protokolu v 2018 se tým Application Insights dodal ve verzi Public Preview metrik, které jsou uložené ve specializovaném úložišti, které je optimalizované pro časové řady. Nové metriky se už neuchovávají jako jednotlivé události s velkým množstvím vlastností. Místo toho jsou uloženy jako předem agregované časové řady a pouze s dimenzemi Key. Díky tomu jsou nové metriky nadřazené době dotazu: načítání dat je mnohem rychlejší a vyžaduje méně výpočetní výkon. V důsledku toho to umožňuje nové scénáře, jako je například [upozorňování téměř v reálném čase, u dimenzí metrik](../alerts/alerts-metric-near-real-time.md), rychlejších [řídicích panelů](./overview-dashboard.md)a dalších.
 
 > [!IMPORTANT]
 > V Application Insights existují i předem agregované metriky založené na protokolu a. Pro odlišení těchto dvou Application Insights v uživatelském prostředí předběžně agregované metriky nyní označují "Standardní metriky (Preview)", zatímco tradiční metriky z událostí byly přejmenovány na "metriky založené na protokolu".
 
-Novější sady SDK ([Application Insights 2,7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK nebo novější pro .NET) předem agregované metriky během shromažďování. To platí pro  [Standardní metriky, které jsou ve výchozím nastavení posílány](../platform/metrics-supported.md#microsoftinsightscomponents) , takže se vzorkováním ani filtrováním neovlivní přesnost. Vztahuje se také na vlastní metriky odesílané pomocí [Getmetric](./api-custom-events-metrics.md#getmetric) , což vede k menšímu příjmu dat a snížení nákladů.
+Novější sady SDK ([Application Insights 2,7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK nebo novější pro .NET) předem agregované metriky během shromažďování. To platí pro  [Standardní metriky, které jsou ve výchozím nastavení posílány](../essentials/metrics-supported.md#microsoftinsightscomponents) , takže se vzorkováním ani filtrováním neovlivní přesnost. Vztahuje se také na vlastní metriky odesílané pomocí [Getmetric](./api-custom-events-metrics.md#getmetric) , což vede k menšímu příjmu dat a snížení nákladů.
 
 Pro sady SDK, které neimplementují předagregační (to znamená starší verze sady Application Insights SDK nebo instrumentace prohlížeče) Application Insights back-end stále naplní nové metriky agregací událostí přijatých koncovým bodem shromažďování událostí Application Insights. To znamená, že i když nebudete využívat redukovaný objem dat přenášených po síti, můžete stále používat předem agregované metriky a využívat lepší výkon a podporu pro multidimenzionální upozorňování v reálném čase pomocí sad SDK, které během shromažďování nemají předem agregované metriky.
 
@@ -81,7 +81,7 @@ Kolekce vlastních dimenzí metrik je ve výchozím nastavení vypnutá, protož
 
 ## <a name="creating-charts-and-exploring-log-based-and-standard-pre-aggregated-metrics"></a>Vytváření grafů a zkoumání předem agregovaných metrik na základě protokolů a standardu
 
-Pomocí [Azure Monitor Průzkumník metrik](../platform/metrics-getting-started.md) můžete kreslit grafy z předem agregovaných metrik a metriky založené na protokolu a vytvářet řídicí panely pomocí grafů. Po výběru požadovaného prostředku Application Insights použijte výběr oboru názvů pro přepínání mezi standardem (Preview) a metrikami založenými na protokolu nebo vyberte vlastní obor názvů metriky:
+Pomocí [Azure Monitor Průzkumník metrik](../essentials/metrics-getting-started.md) můžete kreslit grafy z předem agregovaných metrik a metriky založené na protokolu a vytvářet řídicí panely pomocí grafů. Po výběru požadovaného prostředku Application Insights použijte výběr oboru názvů pro přepínání mezi standardem (Preview) a metrikami založenými na protokolu nebo vyberte vlastní obor názvů metriky:
 
 ![Obor názvů metriky](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 
@@ -93,5 +93,5 @@ Když vyberete možnost [Povolit upozorňování u vlastních dimenzí metriky](
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Upozorňování téměř v reálném čase](../platform/alerts-metric-near-real-time.md)
+* [Upozorňování téměř v reálném čase](../alerts/alerts-metric-near-real-time.md)
 * [Getmetric a TrackValue](./api-custom-events-metrics.md#getmetric)

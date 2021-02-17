@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 17d48b6093d88a926569d5cfe84475fc0c306a0d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 4fb4981925593a22ed65df9d3ed0da5f45062f23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874379"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578935"
 ---
 # <a name="azure-network-security-overview"></a>Přehled zabezpečení sítě v Azure
 
@@ -395,7 +395,7 @@ Další informace:
 
 Protokolování na úrovni sítě je klíčovou funkcí pro jakýkoli scénář zabezpečení sítě. V Azure můžete protokolovat informace získané pro skupin zabezpečení sítě a získat informace o protokolování na úrovni sítě. Pomocí protokolování NSG získáte informace z těchto údajů:
 
-* [Protokoly aktivit](../../azure-monitor/platform/platform-logs-overview.md). Pomocí těchto protokolů můžete zobrazit všechny operace odeslané do předplatných Azure. Tyto protokoly jsou ve výchozím nastavení povolené a dají se použít v rámci Azure Portal. Dříve se nazývaly jako audit nebo provozní protokoly.
+* [Protokoly aktivit](../../azure-monitor/essentials/platform-logs-overview.md). Pomocí těchto protokolů můžete zobrazit všechny operace odeslané do předplatných Azure. Tyto protokoly jsou ve výchozím nastavení povolené a dají se použít v rámci Azure Portal. Dříve se nazývaly jako audit nebo provozní protokoly.
 * Protokoly událostí. Tyto protokoly obsahují informace o tom, jaká pravidla NSG byla použita.
 * Protokoly čítače. Tyto protokoly vám umožní zjistit, kolikrát se každé pravidlo NSG použilo pro odepření nebo povolení provozu.
 

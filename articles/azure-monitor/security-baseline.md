@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: da3386692d2d02015c0d3f59c88ae78a6c84b9ab
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d6ffeeb1470fbe51885c81f30ab8b96c4e27d707
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203095"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586984"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>Základní hodnoty zabezpečení Azure pro Azure Monitor
 
@@ -34,9 +34,9 @@ Pravidla virtuální sítě umožňují Azure Monitor přijímat jenom komunikac
 
 Pomocí Log Analytics brány můžete odesílat data do pracovního prostoru Log Analytics v Azure Monitor jménem počítačů, které se nemůžou přímo připojit k Internetu, což brání tomu, aby se počítače připojovaly k Internetu. 
 
-- [Jak nastavit privátní odkaz pro Azure Monitor](platform/private-link-security.md)
+- [Jak nastavit privátní odkaz pro Azure Monitor](logs/private-link-security.md)
 
-- [Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor](platform/gateway.md)
+- [Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor](agents/gateway.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -48,9 +48,9 @@ Pomocí Log Analytics brány můžete odesílat data do pracovního prostoru Log
 
 Při použití Azure Monitor s privátním odkazem získáte přístup k protokolování sítě, jako jsou data zpracovaná privátním koncovým bodem (v/v).
 
-- [Požadavky na síť pro agenty Azure Monitor](platform/log-analytics-agent.md#network-requirements)
+- [Požadavky na síť pro agenty Azure Monitor](agents/log-analytics-agent.md#network-requirements)
 
-- [Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor](platform/gateway.md)
+- [Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor](agents/gateway.md)
 
 - [Jak povolit protokoly toku skupin zabezpečení sítě](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -76,9 +76,9 @@ Při použití Azure Monitor s privátním odkazem získáte přístup k protoko
 
 **Doprovodné** materiály: Azure monitor je součástí služeb Azure Core a nelze je nasadit jako službu samostatně. Azure Monitor součásti, včetně agenta Azure Monitor a sady Application Insights SDK, mohou být nasazeny s vašimi prostředky a to může mít vliv na stav zabezpečení těchto prostředků.
 
-- [Požadavky na síť pro agenty Azure Monitor](platform/log-analytics-agent.md#network-requirements)
+- [Požadavky na síť pro agenty Azure Monitor](agents/log-analytics-agent.md#network-requirements)
 
-- [Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor](platform/gateway.md) 
+- [Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor](agents/gateway.md) 
 
 - [Viz Začínáme s Application Insights](./app/app-insights-overview.md#get-started)
 
@@ -92,9 +92,9 @@ Při použití Azure Monitor s privátním odkazem získáte přístup k protoko
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace prostředků a zjišťovat změny v síťových prostředcích, které souvisejí s Azure monitor. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny těchto důležitých síťových prostředků.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](./platform/activity-log.md#view-the-activity-log)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](./essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](platform/alerts-activity-log.md)
+- [Vytváření výstrah v Azure Monitor](alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -110,9 +110,9 @@ Při použití Azure Monitor s privátním odkazem získáte přístup k protoko
 
 Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany.
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](platform/diagnostic-settings.md)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](essentials/diagnostic-settings.md)
 
-- [Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure pomocí Azure Monitor](learn/quick-collect-azurevm.md)
+- [Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure pomocí Azure Monitor](vm/quick-collect-azurevm.md)
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -126,9 +126,9 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 **Pokyny**: Azure monitor používá protokoly aktivit, protokol aktivit je automaticky povolen a ukládá operace prováděné na Azure Monitorch prostředcích, jako například: kdo spustil operaci, kdy k operaci došlo, stavu operace a dalších užitečných informací o auditu. 
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](platform/diagnostic-settings.md)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](essentials/diagnostic-settings.md)
 
-- [Principy protokolování a různých typů protokolů v Azure](platform/platform-logs-overview.md)
+- [Principy protokolování a různých typů protokolů v Azure](essentials/platform-logs-overview.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -138,7 +138,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 **Doprovodné** materiály: v Azure monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro jakékoliv dlouhodobé nebo archivní úložiště protokolů.
 
-- [Změnit dobu uchovávání dat v Log Analytics](platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Změnit dobu uchovávání dat v Log Analytics](logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -154,9 +154,9 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Začínáme s Log Analytics dotazy](./log-query/log-analytics-tutorial.md)
+- [Začínáme s Log Analytics dotazy](./logs/log-analytics-tutorial.md)
 
-- [Jak provádět vlastní dotazy v Azure Monitor](log-query/get-started-queries.md)
+- [Jak provádět vlastní dotazy v Azure Monitor](logs/get-started-queries.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -170,7 +170,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 - [Správa výstrah v Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Upozornění na data protokolu Log Analytics](learn/tutorial-response.md)
+- [Upozornění na data protokolu Log Analytics](alerts/tutorial-response.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -316,7 +316,7 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-- [Správa přístupu k datům protokolů a pracovním prostorům ve službě Azure Monitor](platform/manage-access.md)
+- [Správa přístupu k datům protokolů a pracovním prostorům ve službě Azure Monitor](logs/manage-access.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -342,7 +342,7 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 Application Insights a Log Analytics obou pokračovat, umožní ingestovat data TLS 1,1 a TLS 1,0. Data mohou být omezena na TLS 1,2 nakonfigurováním na straně klienta.
 
-- [Bezpečné posílání dat pomocí protokolu TLS 1,2](platform/data-security.md#sending-data-securely-using-tls-12)
+- [Bezpečné posílání dat pomocí protokolu TLS 1,2](logs/data-security.md#sending-data-securely-using-tls-12)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -363,7 +363,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Pokyny**: pomocí řízení přístupu na základě role Azure (Azure RBAC) spravujte přístup k Azure monitor.
 
-- [Role, oprávnění a zabezpečení v Azure Monitor](platform/roles-permissions-security.md)
+- [Role, oprávnění a zabezpečení v Azure Monitor](/roles-permissions-security.md)
 
 - [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
@@ -375,9 +375,9 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné** materiály: Azure monitor zajistí, že všechna data a uložené dotazy budou v klidovém stavu zašifrované pomocí klíčů spravovaných Microsoftem (MMK). Azure Monitor taky nabízí možnost šifrování pomocí vlastního klíče, který je uložený ve vaší Azure Key Vault a k němuž má přístup úložiště pomocí spravovaného ověřování identity přiřazené systémem. Tento klíč spravovaný zákazníkem (CMK) může být buď software, nebo hardware-HSM Protected.
 
-- [Azure Monitor klíčů spravovaných zákazníkem](platform/customer-managed-keys.md)
+- [Azure Monitor klíčů spravovaných zákazníkem](logs/customer-managed-keys.md)
 
-- [Zabezpečení dat Log Analytics](platform/data-security.md)
+- [Zabezpečení dat Log Analytics](logs/data-security.md)
 
 - [Shromažďování, uchování a ukládání dat v nástroji Application Insights](app/data-retention-privacy.md)
 
@@ -391,7 +391,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro změny v Azure monitor a souvisejících prostředcích.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](platform/alerts-activity-log.md)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -423,7 +423,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 - [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
-- [Role, oprávnění a zabezpečení v Azure Monitor](platform/roles-permissions-security.md)
+- [Role, oprávnění a zabezpečení v Azure Monitor](/roles-permissions-security.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -479,7 +479,7 @@ Pomocí Azure Resource Graphu se můžete dotazovat na prostředky v rámci jeji
 
 **Doprovodné** materiály: sjednotit inventář v pravidelných intervalech a zajistit, aby se v předplatném včas odstranily neautorizované Azure monitor související prostředky.  
 
-- [Odstranit pracovní prostor Azure Log Analytics](platform/delete-workspace.md)
+- [Odstranit pracovní prostor Azure Log Analytics](logs/delete-workspace.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -647,7 +647,7 @@ K detekci malwaru nahraného do účtů úložiště použijte detekci hrozeb Az
 
 **Pokyny**: pomocí Azure Resource Manager exportujte Azure monitor a související prostředky do šablony JavaScript Object Notation (JSON), která se dá použít jako záloha pro Azure monitor a související konfigurace.  K automatickému spouštění zálohovacích skriptů použijte Azure Automation. 
 
-- [Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager](./samples/resource-manager-workspace.md)
+- [Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager](./logs/resource-manager-workspace.md)
 
 - [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -661,7 +661,7 @@ K detekci malwaru nahraného do účtů úložiště použijte detekci hrozeb Az
 
 **Pokyny**: pomocí Azure Resource Manager exportujte Azure monitor a související prostředky do šablony JavaScript Object Notation (JSON), která se dá použít jako záloha pro Azure monitor a související konfigurace.  Zálohování klíčů spravovaných zákazníkem v rámci služby Azure Key Vault Pokud Azure Monitor související prostředky používají klíče spravované zákazníkem, 
 
-- [Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager](./samples/resource-manager-workspace.md)
+- [Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager](./logs/resource-manager-workspace.md)
 
 - [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -675,7 +675,7 @@ K detekci malwaru nahraného do účtů úložiště použijte detekci hrozeb Az
 
 **Doprovodné** materiály: Zajistěte, aby bylo možné pravidelně provádět obnovování pomocí Azure Resource Manager zálohovaných souborů šablon.  Test obnovení zálohovaných klíčů spravovaných zákazníkem
 
-- [Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager](./samples/resource-manager-workspace.md)
+- [Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager](./logs/resource-manager-workspace.md)
 
 - [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 

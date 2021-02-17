@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c1bcde3f2b1f61fd241143e308a508d5f19e7b0c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 2a5c31270f18c2e6149d93fa522818704b9747d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090566"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588615"
 ---
 # <a name="azure-security-baseline-for-azure-managed-applications"></a>Základní hodnoty zabezpečení Azure pro Azure Managed Applications
 
@@ -415,9 +415,9 @@ Azure Security Center může také upozorňovat na určité podezřelé aktivity
 
 **Doprovodné** materiály: protokoly aktivit, které jsou automaticky k dispozici, obsahují všechny operace zápisu (Put, post, DELETE) pro prostředky spravované aplikace s výjimkou operací čtení (Get). Protokoly aktivit se dají použít k nalezení chyby při odstraňování potíží nebo sledování, jak uživatel ve vaší organizaci změnil prostředek.
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md) 
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Principy protokolování a různých typů protokolů v Azure](../../azure-monitor/platform/platform-logs-overview.md)
+- [Principy protokolování a různých typů protokolů v Azure](../../azure-monitor/essentials/platform-logs-overview.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -432,7 +432,7 @@ Kromě toho povolte a zaveďte data do Azure Sentinel nebo SIEM třetí strany.
 
 Řada organizací zvolí použití Azure Sentinel pro "horká" data, která se používají často a Azure Storage pro "studená" data, která se používají méně často.
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Jak připojit Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
@@ -445,7 +445,7 @@ Kromě toho povolte a zaveďte data do Azure Sentinel nebo SIEM třetí strany.
 **Pokyny**: Ujistěte se, že všechny účty úložiště nebo pracovní prostory Log Analytics používané pro ukládání protokolů vytvořených prostředky spravované aplikace mají dobu uchování protokolu nastavenou v souladu s předpisy pro dodržování předpisů vaší organizace.
 V Azure Monitor můžete nastavit dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte Azure Storage, Data Lake nebo Log Analytics účty pracovního prostoru pro dlouhodobé a archivační úložiště.
 
-- [Jak nakonfigurovat dobu uchování Log Analytics pracovního prostoru](../../azure-monitor/platform/manage-cost-storage.md)
+- [Jak nakonfigurovat dobu uchování Log Analytics pracovního prostoru](../../azure-monitor/logs/manage-cost-storage.md)
 
 - [Ukládání protokolů prostředků v Azure Storagem účtu](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 

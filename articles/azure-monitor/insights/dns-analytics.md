@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: 7bdea9239faa4ec66fffa236bea40afd5e628e62
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: c3934af1af040b8b45175bacde43237802ab82cf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607139"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582399"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Získejte přehled o vaší infrastruktuře DNS pomocí řešení DNS Analytics Preview.
 
@@ -35,10 +35,10 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 
 | **Připojený zdroj** | **Podpora** | **Popis** |
 | --- | --- | --- |
-| [Agenti systému Windows](../platform/agent-windows.md) | Yes | Řešení shromažďuje informace o DNS z agentů Windows. |
-| [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | No | Řešení neshromažďuje informace DNS z přímých agentů systému Linux. |
-| [Skupina pro správu nástroje System Center Operations Manager](../platform/om-agents.md) | Yes | Řešení shromažďuje informace o DNS od agentů v připojené skupině pro správu Operations Manager. Přímé připojení od agenta Operations Manager k Azure Monitor není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
-| [Účet úložiště Azure](../platform/resource-logs.md#send-to-log-analytics-workspace) | No | Řešení Azure Storage se v řešení nepoužívá. |
+| [Agenti systému Windows](../agents/agent-windows.md) | Yes | Řešení shromažďuje informace o DNS z agentů Windows. |
+| [Agenti systému Linux](../vm/quick-collect-linux-computer.md) | No | Řešení neshromažďuje informace DNS z přímých agentů systému Linux. |
+| [Skupina pro správu nástroje System Center Operations Manager](../agents/om-agents.md) | Yes | Řešení shromažďuje informace o DNS od agentů v připojené skupině pro správu Operations Manager. Přímé připojení od agenta Operations Manager k Azure Monitor není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
+| [Účet úložiště Azure](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | Řešení Azure Storage se v řešení nepoužívá. |
 
 ### <a name="data-collection-details"></a>Podrobnosti shromažďování dat
 
@@ -48,7 +48,7 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 
 Pro konfiguraci řešení použijte následující informace:
 
-- Na každém serveru DNS, který chcete monitorovat, musíte mít agenta [Windows](../platform/agent-windows.md) nebo [Operations Manager](../platform/om-agents.md) .
+- Na každém serveru DNS, který chcete monitorovat, musíte mít agenta [Windows](../agents/agent-windows.md) nebo [Operations Manager](../agents/om-agents.md) .
 - Řešení DNS Analytics můžete přidat do pracovního prostoru Log Analytics z [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace). Můžete také použít proces popsaný v tématu [přidání Azure monitor řešení z galerie řešení](solutions.md).
 
 Řešení začne shromažďovat data bez nutnosti další konfigurace. K přizpůsobení shromažďování dat ale můžete použít následující konfiguraci.
@@ -76,7 +76,7 @@ Pokud je vaše skupina pro správu Operations Manager připojená k pracovnímu 
 - Sada Microsoft DNS data collector Intelligence Pack (Microsoft. IntelligencePacks. DNS)
 - Konfigurace nástroje Microsoft System Center Advisor DNS Analytics (Microsoft.IntelligencePack.Dns.Configuration)
 
-Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../platform/om-agents.md).
+Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../agents/om-agents.md).
 
 ## <a name="use-the-dns-analytics-solution"></a>Použití řešení DNS Analytics
 
@@ -185,4 +185,4 @@ Pokud chcete poskytnout zpětnou vazbu, přejděte na [stránku Log Analytics Us
 
 ## <a name="next-steps"></a>Další kroky
 
-V [protokolech dotazů](../log-query/log-query-overview.md) zobrazíte podrobné záznamy protokolu DNS.
+V [protokolech dotazů](../logs/log-query-overview.md) zobrazíte podrobné záznamy protokolu DNS.

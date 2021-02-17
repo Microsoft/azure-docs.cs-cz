@@ -3,12 +3,12 @@ title: Analýza využití pomocí Azure Application Insights | Dokumentace Micro
 description: Pochopte uživatele a to, co dělají s vaší aplikací.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 633d35ec16f5eb9de664421c38cd4c824dc240cf
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 0888b6743a10c9934ab85a6f2b3b637b857f643a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233844"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583396"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analýzy používání pomocí nástroje Application Insights
 
@@ -38,7 +38,7 @@ Nejlepší prostředí získáte instalací Application Insights jak v kódu apl
 
     Další informace o pokročilejších konfiguracích pro monitorování webů najdete v [referenčním článku o sadě JavaScript SDK](./javascript.md).
 
-3. **Kód mobilní aplikace:** Pomocí sady App Center SDK můžete shromažďovat události z vaší aplikace a pak tyto události poslat do Application Insights pro účely analýzy pomocí [této příručky](../learn/mobile-center-quickstart.md).
+3. **Kód mobilní aplikace:** Pomocí sady App Center SDK můžete shromažďovat události z vaší aplikace a pak tyto události poslat do Application Insights pro účely analýzy pomocí [této příručky](../app/mobile-center-quickstart.md).
 
 4. **Získat telemetrii:** Spusťte projekt v režimu ladění po dobu několika minut a potom vyhledejte výsledky v okně Přehled v Application Insights.
 
@@ -177,8 +177,8 @@ Všechny nové TelemetryClients automaticky přidají hodnotu vlastnosti, kterou
 ## <a name="next-steps"></a>Další kroky
    - [Uživatelé, relace, události](usage-segmentation.md)
    - [Trychtýře](usage-funnels.md)
-   - [Uchovávání](usage-retention.md)
+   - [Toalet](usage-retention.md)
    - [Toky uživatelů](usage-flows.md)
-   - [Workbooks](../platform/workbooks-overview.md)
+   - [Workbooks](../visualize/workbooks-overview.md)
    - [Přidat kontext uživatele](usage-send-user-context.md)
 

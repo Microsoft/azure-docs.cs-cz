@@ -3,12 +3,12 @@ title: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 description: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 09b4e28437c79961d53cf07b068e3169d20fe0c4
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c192f881dd4a8544b9c833eece56fb3765cd07f8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789900"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582020"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 
@@ -34,7 +34,7 @@ V následujícím článku se dozvíte, jak nakonfigurovat synchronizaci času p
 ### <a name="22-configure-central-security-log-management"></a>2,2: Konfigurace centrální správy protokolů zabezpečení
 **Doprovodné materiály:** Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do Log Analytics pracovního prostoru, centra událostí Azure nebo účtu Azure Storage pro archivaci. Protokoly aktivit poskytují přehled o operacích, které byly provedeny na vašich Azure DevTest Labs instancích na úrovni roviny správy. Pomocí dat protokolu aktivit Azure můžete určit "co, kdo a kdy" pro všechny operace zápisu (PUT, POST, DELETE) provedené na úrovni roviny správy pro instance DevTest Labs.
 
-Další informace najdete v tématu [Vytvoření nastavení diagnostiky pro odesílání protokolů platforem a metrik do různých umístění](../azure-monitor/platform/diagnostic-settings.md).
+Další informace najdete v tématu [Vytvoření nastavení diagnostiky pro odesílání protokolů platforem a metrik do různých umístění](../azure-monitor/essentials/diagnostic-settings.md).
 
 **Monitorování Azure Security Center:** Momentálně není k dispozici
 
@@ -43,7 +43,7 @@ Další informace najdete v tématu [Vytvoření nastavení diagnostiky pro odes
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: povolení protokolování auditu pro prostředky Azure
 **Doprovodné materiály:** Povolte nastavení diagnostiky protokolu aktivit Azure a odešlete protokoly do Log Analytics pracovního prostoru, centra událostí Azure nebo účtu Azure Storage pro archivaci. Protokoly aktivit poskytují přehled o operacích, které byly provedeny na vašich Azure DevTest Labs instancích na úrovni roviny správy. Pomocí dat protokolu aktivit Azure můžete určit "co, kdo a kdy" pro všechny operace zápisu (PUT, POST, DELETE) provedené na úrovni roviny správy pro instance DevTest Labs.
 
-Další informace najdete v tématu [Vytvoření nastavení diagnostiky pro odesílání protokolů platforem a metrik do různých umístění](../azure-monitor/platform/diagnostic-settings.md).
+Další informace najdete v tématu [Vytvoření nastavení diagnostiky pro odesílání protokolů platforem a metrik do různých umístění](../azure-monitor/essentials/diagnostic-settings.md).
 
 **Monitorování Azure Security Center:** Momentálně není k dispozici
 
@@ -54,7 +54,7 @@ Další informace najdete v tématu [Vytvoření nastavení diagnostiky pro odes
 
 Další informace najdete v následujících článcích: 
 
-- [Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure pomocí Azure Monitor](../azure-monitor/learn/quick-collect-azurevm.md)
+- [Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure pomocí Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 - [Pochopení Azure Security Center shromažďování dat](../security-center/security-center-enable-data-collection.md)
 
 **Monitorování Azure Security Center:** Ano
@@ -62,9 +62,9 @@ Další informace najdete v následujících článcích:
 **Zodpovědnost:** Zákazníka
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurace uchovávání úložiště protokolu zabezpečení
-**_Doprovodné materiály:_* V Azure Monitor nastavte dobu uchování protokolu pro pracovní prostory Log Analytics přidružené k vašim Azure DevTest Labs instancí podle předpisů pro dodržování předpisů vaší organizace.
+***Doprovodné materiály:** V Azure Monitor nastavte dobu uchování protokolu pro pracovní prostory Log Analytics přidružené k vašim Azure DevTest Labs instancí podle předpisů pro dodržování předpisů vaší organizace.
 
-Další informace najdete v následujícím článku: [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) .
+Další informace najdete v následujícím článku: [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) .
 
 **Monitorování Azure Security Center:** Nelze použít
 
@@ -75,8 +75,8 @@ Další informace najdete v následujícím článku: [Postup nastavení paramet
 
 Další informace najdete v následujících článcích:
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/platform/diagnostic-settings.md)
-- [Jak shromažďovat a analyzovat protokoly aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/diagnostic-settings.md)
+- [Jak shromažďovat a analyzovat protokoly aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Monitorování Azure Security Center:** Nelze použít
 
@@ -85,7 +85,7 @@ Další informace najdete v následujících článcích:
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: povolení výstrah pro aktivitu neobvyklé
 **Doprovodné materiály:** Pracovní prostor Azure Log Analytics slouží k monitorování a upozorňování na aktivity neobvyklé v protokolech zabezpečení a událostech souvisejících s vaší Azure DevTest Labs.
 
-Další informace najdete v následujícím článku: [jak upozornit na data protokolu Log Analytics](../azure-monitor/learn/tutorial-response.md)
+Další informace najdete v následujícím článku: [jak upozornit na data protokolu Log Analytics](../azure-monitor/alerts/tutorial-response.md)
 
 **Monitorování Azure Security Center:** Momentálně není k dispozici
 
@@ -109,8 +109,8 @@ Další informace najdete v následujícím článku: [jak upozornit na data pro
 **Doprovodné materiály:** Azure DevTest Labs vytvoří výpočetní počítače Azure, které jsou vlastněné a spravované zákazníkem. K zaznamenání události vytvoření procesu a pole použijte Microsoft Monitoring Agent na všech podporovaných virtuálních počítačích Azure s Windows `CommandLine` . U podporovaných virtuálních počítačů se systémem Azure Linux můžete ručně nakonfigurovat protokolování konzoly na bázi jednotlivých uzlů a pomocí protokolu syslog ukládat data. K prohlížení protokolů a spouštění dotazů na protokolovaná data z virtuálních počítačů Azure taky použijte pracovní prostor Azure Monitor Log Analytics.
 
 - [Shromažďování dat v Azure Security Center](../security-center/security-center-enable-data-collection.md#data-collection-tier)
-- [Spuštění vlastních dotazů v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
-- [Zdroje dat Syslogu ve službě Azure Monitor](../azure-monitor/platform/data-sources-syslog.md)
+- [Spuštění vlastních dotazů v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
+- [Zdroje dat Syslogu ve službě Azure Monitor](../azure-monitor/agents/data-sources-syslog.md)
 
 **Monitorování Azure Security Center:** Ano
 
@@ -175,9 +175,9 @@ Kromě toho můžete použít doporučení z Azure Security Center nebo integrov
 - [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)  
 - [Jak monitorovat identitu a přístup v rámci Azure Security Center](../security-center/security-center-identity-access.md)
 
-**Monitorování Azure Security Center:** _ Ano
+**Monitorování Azure Security Center:*** Ano
 
-_ *Zodpovědnost:** zákazník
+**Zodpovědnost:** Zákazníka
 
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Používejte vyhrazené počítače (privilegovaný přístup k pracovní stanici) pro všechny úlohy správy
@@ -353,7 +353,7 @@ Ve výchozím nastavení jsou všechny operační systémy a datové disky testo
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: protokolovat a upozornit na změny kritických prostředků Azure
 **Doprovodné materiály:** Pomocí Azure Monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro případy, kdy změny vznikne na instance DevTest Labs a další důležité nebo související prostředky.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 - [Vytvoření upozornění pro události protokolu aktivit DevTest Labs](create-alerts.md)
 
 **Monitorování Azure Security Center:** Nelze použít
@@ -387,7 +387,7 @@ Microsoft provádí správu ohrožení zabezpečení na podkladových zdrojích,
 **Zodpovědnost:** Zákazníka
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: nasazení automatizovaného řešení pro správu oprav softwaru třetí strany
-**_Doprovodné materiály:_* _ jako správce testovacího prostředí můžete použít [artefakty DevTest Labs](add-artifact-vm.md) k automatizaci aktualizací vlastních imagí testovacího prostředí, včetně oprav zabezpečení a dalších aktualizací. 
+***Doprovodné materiály:*** Jako správce testovacího prostředí můžete použít [artefakty DevTest Labs](add-artifact-vm.md) k automatizaci aktualizací vlastních imagí testovacího prostředí, včetně oprav zabezpečení a dalších aktualizací. 
 
 Přečtěte si další informace o [objektu pro vytváření imagí DevTest Labs](image-factory-create.md), což je řešení pro konfiguraci s kódováním, které vytváří a distribuuje image automaticky v pravidelných intervalech se všemi požadovanými konfiguracemi. 
 
@@ -396,7 +396,7 @@ Jako správce předplatného můžete také pomocí řešení Azure Update Manag
 - [Řešení Update Management v Azure](../automation/update-management/overview.md)
 - [Správa aktualizací a oprav pro virtuální počítače](../automation/update-management/overview.md)
 
-_ *Azure Security Center monitorování:** nelze použít
+**Monitorování Azure Security Center:** Nelze použít
 
 **Zodpovědnost:** Zákazníka
 

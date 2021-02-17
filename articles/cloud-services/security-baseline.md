@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e6a42a39e55e379865332fce8a9aed8dfe78f57b
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 28be34e9323697759b2492d86b968f8e3d47a28e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201327"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572053"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>Základní hodnoty zabezpečení Azure pro Azure Cloud Services
 
@@ -175,9 +175,9 @@ Získejte přehled z protokolu aktivit, protokolu platformy v Azure, do událost
 
 Vytvořte nastavení diagnostiky pro odeslání protokolu aktivit Azure Monitor, Azure Event Hubs k přeposílání mimo Azure nebo pro účely archivace Azure Storage. Nakonfigurujte Azure Monitor upozornění na oznámení v případě, že se změní kritické prostředky v Azure Cloud Services. 
 
-- [Protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
+- [Protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
-- [Vytváření, zobrazování a správa výstrah protokolu aktivit pomocí Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Vytváření, zobrazování a správa výstrah protokolu aktivit pomocí Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Monitorování Traffic Manager](../traffic-manager/traffic-manager-monitoring.md)
 
@@ -233,7 +233,7 @@ Službu Azure Cloud Services je možné monitorovat pomocí Application Insights
 
 - [Zapnout diagnostiku v aplikaci Visual Studio před nasazením](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true#to-turn-on-diagnostics-in-visual-studio-before-deployment)
 
-- [Zobrazit historii změn](../azure-monitor/platform/activity-log.md#view-change-history)
+- [Zobrazit historii změn](../azure-monitor/essentials/activity-log.md#view-change-history)
 
 - [Application Insights pro cloudovou službu Azure (Classic)](../azure-monitor/app/cloudservices.md)
 
@@ -465,9 +465,9 @@ Data aplikace uložená na dočasných discích nejsou šifrována. Zákazník j
 
 Kromě toho Application Insights můžou monitorovat aplikace Azure Cloud Services z důvodu dostupnosti, výkonu, selhání a využití. Používá kombinovaná data z Application Insights sad SDK a Azure Diagnostics data z Azure Cloud Services.
 
-- [Vytváření, zobrazování a Správa klasických výstrah metrik pomocí Azure Monitor](../azure-monitor/platform/alerts-classic-portal.md)
+- [Vytváření, zobrazování a Správa klasických výstrah metrik pomocí Azure Monitor](../azure-monitor/alerts/alerts-classic-portal.md)
 
-- [Přehled výstrah metrik](../azure-monitor/platform/alerts-metric-overview.md) 
+- [Přehled výstrah metrik](../azure-monitor/alerts/alerts-metric-overview.md) 
 
 - [Application Insights pro cloudovou službu Azure (Classic)](../azure-monitor/app/cloudservices.md)
 

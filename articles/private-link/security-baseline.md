@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b38d86402f418e5c2b484bb9101e2b4cc3575d6e
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 692b52e8ea6a88a119ca98985864cb9e1daa14c3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196618"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595747"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>Základní plán zabezpečení Azure pro privátní propojení Azure
 
@@ -28,9 +28,9 @@ Tato základní hodnota zabezpečení se vztahuje na doprovodné materiály z [A
 
 Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických prostředcích.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -50,7 +50,7 @@ V závislosti na organizačních požadavcích společnosti můžete také povol
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Protokolování a sledování privátního odkazu](private-link-overview.md#logging-and-monitoring)
 
@@ -66,9 +66,9 @@ V závislosti na organizačních požadavcích společnosti můžete také povol
 
 **Doprovodné** materiály: povolí Azure monitor protokoly aktivit, které protokolují operace prováděné na soukromých linkách, například, kdo tuto operaci zahájil, kdy k ní došlo, stavu operace a dalších užitečných informací o auditu. 
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Zobrazení a načtení událostí protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Zobrazení a načtení událostí protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 - [Protokolování a sledování privátního odkazu](private-link-overview.md#logging-and-monitoring)
 
@@ -80,7 +80,7 @@ V závislosti na organizačních požadavcích společnosti můžete také povol
 
 **Doprovodné** materiály: u protokolů souvisejících s privátním odkazem nastavte Log Analytics dobu uchování pracovního prostoru podle předpisů pro dodržování předpisů vaší organizace v Azure monitor. Používejte účty Azure Storage pro jakékoliv dlouhodobé nebo archivní úložiště protokolů.
 
-- [Změnit dobu uchovávání dat v Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Změnit dobu uchovávání dat v Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -96,9 +96,9 @@ Další možností je povolit a začlenit data do Azure Sentinel nebo SIEM třet
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Principy Log Analyticsho pracovního prostoru](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Principy Log Analyticsho pracovního prostoru](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -114,7 +114,7 @@ Povolte a zapněte data do Azure Sentinel nebo SIEM třetí strany na základě 
 
 - [Správa výstrah v Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Upozornění na data protokolu Log Analytics](../azure-monitor/learn/tutorial-response.md)
+- [Upozornění na data protokolu Log Analytics](../azure-monitor/alerts/tutorial-response.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -192,7 +192,7 @@ Pomocí služby Azure Active Directory (Azure AD) Privileged Identity Management
 
 - [Integrace protokolů aktivit Azure do služby Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Jak nakonfigurovat skupiny akcí pro vlastní výstrahy a oznámení](../azure-monitor/platform/action-groups.md)
+- [Jak nakonfigurovat skupiny akcí pro vlastní výstrahy a oznámení](../azure-monitor/alerts/action-groups.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -318,7 +318,7 @@ Zpřístupněte službu jako soukromou pro využití z jiných virtuálních sí
 
 - [Protokolování diagnostiky pro skupinu zabezpečení sítě](private-link-overview.md#logging-and-monitoring)
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
