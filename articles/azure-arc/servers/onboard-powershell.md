@@ -3,12 +3,12 @@ title: Připojení hybridních počítačů k Azure pomocí PowerShellu
 description: V tomto článku se dozvíte, jak nainstalovat agenta a připojit počítač k Azure pomocí serverů s podporou ARC Azure. Můžete to provést pomocí PowerShellu.
 ms.date: 10/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0218235179e1a8a883360d0061e685c04079cbf4
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 07a00de9077378ce3e3f7a7578b66e93d1b04f2b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95492937"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584945"
 ---
 # <a name="connect-hybrid-machines-to-azure-by-using-powershell"></a>Připojení hybridních počítačů k Azure pomocí PowerShellu
 
@@ -103,6 +103,6 @@ Po instalaci a konfiguraci agenta pro registraci u serverů s podporou ARC Azure
 
 * V případě potřeby si přečtěte téma [Poradce při potížích s agentem připojené počítače](troubleshoot-agent-onboard.md).
 
-* Naučte se spravovat počítač pomocí [Azure Policy](../../governance/policy/overview.md). Můžete použít [konfiguraci hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače, ověřit, že se počítač hlásí do očekávaného pracovního prostoru Log Analytics a povolit monitorování pomocí [Azure monitor s virtuálními počítači](../../azure-monitor/insights/vminsights-enable-policy.md).
+* Naučte se spravovat počítač pomocí [Azure Policy](../../governance/policy/overview.md). Můžete použít [konfiguraci hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače, ověřit, že se počítač hlásí do očekávaného pracovního prostoru Log Analytics a povolit monitorování pomocí [Azure monitor s virtuálními počítači](../../azure-monitor/vm/vminsights-enable-policy.md).
 
-* Přečtěte si další informace o [agentovi Log Analytics](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je vyžadován, pokud chcete shromažďovat data o monitorování operačního systému a úloh, nebo je spravovat pomocí Azure Automation runbooků nebo funkcí, jako je Update Management. Tento agent je taky nutný k používání dalších služeb Azure, například [Azure Security Center](../../security-center/security-center-introduction.md).
+* Přečtěte si další informace o [agentovi Log Analytics](../../azure-monitor/agents/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je vyžadován, pokud chcete shromažďovat data o monitorování operačního systému a úloh, nebo je spravovat pomocí Azure Automation runbooků nebo funkcí, jako je Update Management. Tento agent je taky nutný k používání dalších služeb Azure, například [Azure Security Center](../../security-center/security-center-introduction.md).

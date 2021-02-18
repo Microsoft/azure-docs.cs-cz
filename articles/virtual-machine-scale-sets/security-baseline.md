@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b5ce8e3d6482c13a8ba02065f2a97074610c25bb
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 2d902bbdc03596fe246fc36813895e72c53da05a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98877710"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571404"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>Základní hodnoty zabezpečení Azure pro Virtual Machine Scale Sets
 
@@ -178,9 +178,9 @@ K omezení rizika Windows Virtual Machines na schválené IP adresy po omezenou 
 
 Použijte Azure Policy k ověření (nebo nápravě) konfigurací síťových prostředků souvisejících se sadou škálování virtuálního počítače.
 
-* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -216,7 +216,7 @@ Použijte Azure Security Center k poskytnutí monitorování protokolu událost�
 
 Pokud vaše organizace chce zachovat data protokolu událostí zabezpečení z virtuálního počítače, může být uložená v pracovním prostoru Log Analytics v požadované vrstvě shromažďování dat nakonfigurované v rámci Azure Security Center.
 
-* [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+* [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 * [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -224,7 +224,7 @@ Pokud vaše organizace chce zachovat data protokolu událostí zabezpečení z v
 
 * [Shromažďování dat v Azure Security Center](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-* [Jak monitorovat virtuální počítače v Azure](../azure-monitor/insights/monitor-vm-azure.md)
+* [Jak monitorovat virtuální počítače v Azure](../azure-monitor/vm/monitor-vm-azure.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -238,11 +238,11 @@ Povolte shromažďování diagnostických dat hostovaného operačního systému
 
 Pro pokročilou představu o aplikacích a službách, které podporuje sada škálování virtuálního počítače Azure, můžete povolit jak Azure Monitor pro virtuální počítače, tak Application Insights. Pomocí Application Insights můžete monitorovat aplikaci a zachytit telemetrii, jako jsou požadavky HTTP, výjimky atd., takže můžete sladit problémy mezi virtuálními počítači a vaší aplikací.
 
-* [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+* [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Zobrazení a načtení událostí protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Zobrazení a načtení událostí protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Jak monitorovat virtuální počítače v Azure](../azure-monitor/insights/monitor-vm-azure.md)
+* [Jak monitorovat virtuální počítače v Azure](../azure-monitor/vm/monitor-vm-azure.md)
 
 * [Přehled služby Application Insights](../azure-monitor/app/app-insights-overview.md)
 
@@ -258,7 +258,7 @@ Pokud vaše organizace chce zachovat data protokolu událostí zabezpečení z v
 
 * [Shromažďování dat v Azure Security Center](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-* [Jak monitorovat virtuální počítače v Azure](../azure-monitor/insights/monitor-vm-azure.md)
+* [Jak monitorovat virtuální počítače v Azure](../azure-monitor/vm/monitor-vm-azure.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -268,9 +268,9 @@ Pokud vaše organizace chce zachovat data protokolu událostí zabezpečení z v
 
 **Pokyny**: Ujistěte se, že všechny účty úložiště nebo pracovní prostory Log Analytics používané pro ukládání protokolů virtuálních počítačů mají dobu uchování protokolu nastavenou v souladu s pravidly dodržování předpisů vaší organizace.
 
-* [Jak monitorovat virtuální počítače v Azure](../azure-monitor/insights/monitor-vm-azure.md)
+* [Jak monitorovat virtuální počítače v Azure](../azure-monitor/vm/monitor-vm-azure.md)
 
-* [Jak nakonfigurovat dobu uchování Log Analytics pracovního prostoru](../azure-monitor/platform/manage-cost-storage.md)
+* [Jak nakonfigurovat dobu uchování Log Analytics pracovního prostoru](../azure-monitor/logs/manage-cost-storage.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -284,9 +284,9 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 * [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [Principy Log Analyticsho pracovního prostoru](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Principy Log Analyticsho pracovního prostoru](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+* [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -302,7 +302,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 * [Správa výstrah v Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Upozornění na data protokolu Log Analytics](../azure-monitor/learn/tutorial-response.md)
+* [Upozornění na data protokolu Log Analytics](../azure-monitor/alerts/tutorial-response.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -340,9 +340,9 @@ Pro virtuální počítače se systémem Linux můžete ručně nakonfigurovat p
 
 * [Shromažďování dat v Azure Security Center](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-* [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+* [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
-* [Zdroje dat Syslogu ve službě Azure Monitor](../azure-monitor/platform/data-sources-syslog.md)
+* [Zdroje dat Syslogu ve službě Azure Monitor](../azure-monitor/agents/data-sources-syslog.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -430,7 +430,7 @@ Pro virtuální počítače se systémem Linux můžete ručně nakonfigurovat p
 
 * [Integrace protokolů aktivit Azure do služby Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Jak nakonfigurovat skupiny akcí pro vlastní výstrahy a oznámení](../azure-monitor/platform/action-groups.md)
+* [Jak nakonfigurovat skupiny akcí pro vlastní výstrahy a oznámení](../azure-monitor/alerts/action-groups.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -472,13 +472,13 @@ Pro virtuální počítače se systémem Linux můžete ručně nakonfigurovat p
 
 **Pokyny**: Konfigurace nastavení diagnostiky pro Azure Active Directory pro odesílání protokolů auditu a protokolů přihlášení do pracovního prostoru Log Analytics. K prohlížení protokolů a provádění dotazů na data protokolů z virtuálních počítačů Azure taky použijte Azure Monitor.
 
-* [Principy Log Analyticsho pracovního prostoru](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Principy Log Analyticsho pracovního prostoru](../azure-monitor/logs/log-analytics-tutorial.md)
 
 * [Integrace protokolů aktivit Azure do služby Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+* [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
-* [Jak monitorovat virtuální počítače v Azure](../azure-monitor/insights/monitor-vm-azure.md)
+* [Jak monitorovat virtuální počítače v Azure](../azure-monitor/vm/monitor-vm-azure.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -610,7 +610,7 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 **Pokyny**: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro změny virtuálních počítačů, které se týkají sady škálování a souvisejících prostředků.
 
-* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
+* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Protokolování analýz služby Azure Storage](../storage/common/storage-analytics-logging.md)
 

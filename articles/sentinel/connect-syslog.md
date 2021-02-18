@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: f249a95551916311fab51ebef72b55d9a4343c0b
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: d35a97b0008a7ce3069185dd557a60221776b0ba
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530514"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595468"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Shromažďování dat ze zdrojů se systémem Linux pomocí protokolu syslog
 
@@ -34,7 +34,7 @@ Pomocí agenta Log Analytics pro Linux (dřív označovaného jako agent OMS) m�
 
 **SYSLOG** je protokol protokolování událostí, který je společný pro Linux. Když je na VIRTUÁLNÍm počítači nebo zařízení nainstalovaný **agent Log Analytics pro Linux** , rutina instalace nakonfiguruje místní démon syslog, aby předal zprávy agentovi na portu TCP 25224. Agent pak pošle zprávu do vašeho pracovního prostoru Log Analytics přes HTTPS, kde se analyzuje do položky protokolu událostí v tabulce syslog v **protokolech služby Azure Sentinel >**.
 
-Další informace najdete v tématu [zdroje dat syslog v Azure monitor](../azure-monitor/platform/data-sources-syslog.md).
+Další informace najdete v tématu [zdroje dat syslog v Azure monitor](../azure-monitor/agents/data-sources-syslog.md).
 
 ## <a name="configure-syslog-collection"></a>Konfigurovat shromažďování syslog
 
@@ -83,7 +83,7 @@ Další informace najdete v tématu [zdroje dat syslog v Azure monitor](../azure
 
 1. Chcete-li zadat dotaz na data protokolu syslog v **protokolech**, zadejte `Syslog` do okna dotazu.
 
-1. Pomocí parametrů dotazu popsaných v tématu [použití funkcí v Azure Monitorch](../azure-monitor/log-query/functions.md) dotazech protokolu můžete analyzovat zprávy syslog. Dotaz pak můžete uložit jako novou funkci Log Analytics a použít ji jako nový datový typ.
+1. Pomocí parametrů dotazu popsaných v tématu [použití funkcí v Azure Monitorch](../azure-monitor/logs/functions.md) dotazech protokolu můžete analyzovat zprávy syslog. Dotaz pak můžete uložit jako novou funkci Log Analytics a použít ji jako nový datový typ.
 
 > [!NOTE]
 > **Použití stejného počítače pro přeposílání prostých zpráv syslog *a* CEF**
@@ -92,7 +92,7 @@ Další informace najdete v tématu [zdroje dat syslog v Azure monitor](../azure
 >
 >    Již jste nastavili [shromažďování dat z vašich CEF zdrojů](connect-common-event-format.md)a nakonfigurovali jste agenta Log Analytics, jak je uvedeno výše:
 >
-> 1. V každém počítači, který odesílá protokoly ve formátu CEF, je nutné upravit konfigurační soubor syslog a odebrat tak zařízení, která se používají k odesílání zpráv CEF. Zařízení, která jsou odesílána v CEF, nebudou také odesílána ve službě syslog. Podrobné pokyny k tomu, jak to udělat, najdete v tématu [Konfigurace protokolu syslog v agentovi Linux](../azure-monitor/platform/data-sources-syslog.md#configure-syslog-on-linux-agent) .
+> 1. V každém počítači, který odesílá protokoly ve formátu CEF, je nutné upravit konfigurační soubor syslog a odebrat tak zařízení, která se používají k odesílání zpráv CEF. Zařízení, která jsou odesílána v CEF, nebudou také odesílána ve službě syslog. Podrobné pokyny k tomu, jak to udělat, najdete v tématu [Konfigurace protokolu syslog v agentovi Linux](../azure-monitor/agents/data-sources-syslog.md#configure-syslog-on-linux-agent) .
 >
 > 1. Pokud chcete zakázat synchronizaci agenta s konfigurací syslog v Azure Sentinel, musíte na těchto počítačích spustit následující příkaz. Tím se zajistí, že se změna konfigurace, kterou jste provedli v předchozím kroku, nepřepíše.<br>
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`

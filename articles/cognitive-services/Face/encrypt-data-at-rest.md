@@ -9,16 +9,16 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 8c6f4f7db312355b719deb434bf6a46fa55eec9d
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: a46253e586aaf90a85bc10e2c62ab6eb238f2ead
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100524495"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650809"
 ---
 # <a name="face-service-encryption-of-data-at-rest"></a>Šifrování neaktivních dat ve službě Face
 
-Služba obličeje automaticky šifruje vaše data při trvalém ukládání do cloudu. Šifrování služby Face chrání vaše data a usnadňuje splnění závazků týkajících se zabezpečení a dodržování předpisů vaší organizace.
+Služba obličeje automaticky šifruje vaše data při trvalém ukládání do cloudu. Šifrování služby Face chrání vaše data a pomáhá splnit závazky zabezpečení a dodržování předpisů vaší organizace.
 
 [!INCLUDE [cognitive-services-about-encryption](../includes/cognitive-services-about-encryption.md)]
 

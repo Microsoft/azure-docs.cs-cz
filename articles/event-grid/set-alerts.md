@@ -3,15 +3,15 @@ title: Nastavení upozornění pro Azure Event Grid metriky a operace protokolu 
 description: Tento článek popisuje, jak vytvořit výstrahy pro Azure Event Grid metriky a operace protokolu aktivit.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 615ebef749be49822a09470eb0d47d8eb31b9a5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48cb402e31435cb3e9390e8aeb461fcc5f90702f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119136"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572009"
 ---
 # <a name="set-alerts-on-azure-event-grid-metrics-and-activity-logs"></a>Nastavení upozornění na Azure Event Grid metriky a protokoly aktivit
-Tento článek popisuje, jak vytvořit výstrahy pro Azure Event Grid metriky a operace protokolu aktivit. Můžete vytvářet upozornění na metriky publikování i doručování pro Azure Event Grid prostředky (témata a domény). Pro systémová témata [vytvořte výstrahy pomocí stránky **metriky** ](#create-alerts-using-the-metrics-page).
+Tento článek popisuje, jak vytvořit výstrahy pro Azure Event Grid metriky a operace protokolu aktivit. Můžete vytvářet upozornění na metriky publikování i doručování pro Azure Event Grid prostředky (témata a domény). Pro systémová témata [vytvořte výstrahy pomocí stránky **metriky**](#create-alerts-using-the-metrics-page).
 
 ## <a name="create-alerts-on-dead-lettered-events"></a>Vytváření výstrah pro události s nedoručenými písmeny
 Následující postup ukazuje, jak vytvořit výstrahu pro metriku **událostí s nedoručenými zprávami** pro vlastní téma. V tomto příkladu se odešle e-mail vlastníkovi skupiny prostředků Azure, když počet nedoručených událostí pro téma překročí 10. 
@@ -21,23 +21,23 @@ Následující postup ukazuje, jak vytvořit výstrahu pro metriku **událostí 
     :::image type="content" source="./media/monitor-event-delivery/new-alert-button.png" alt-text="Stránka výstrahy – tlačítko pro pravidlo nového upozornění":::
 2. Na stránce **vytvořit pravidlo výstrahy** ověřte, že je pro prostředek vybraný váš článek. Pak klikněte na **vybrat podmínku**. 
 
-    :::image type="content" source="./media/monitor-event-delivery/alert-select-condition.png" alt-text="Stránka výstrahy – tlačítko pro pravidlo nového upozornění":::    
+    :::image type="content" source="./media/monitor-event-delivery/alert-select-condition.png" alt-text="Stránka výstrahy – výběr podmínky":::    
 3. Na stránce **Konfigurovat logiku signálu** proveďte tyto kroky:
     1. Vyberte metriku nebo položku protokolu aktivit. V tomto příkladu je vybrána možnost **nedoručené události** . 
 
-        :::image type="content" source="./media/monitor-event-delivery/select-dead-lettered-events.png" alt-text="Stránka výstrahy – tlačítko pro pravidlo nového upozornění":::        
+        :::image type="content" source="./media/monitor-event-delivery/select-dead-lettered-events.png" alt-text="Vybrat události s nedoručenými písmeny":::        
     2. Vyberte dimenze (volitelné). 
         
-        :::image type="content" source="./media/monitor-event-delivery/configure-signal-logic.png" alt-text="Stránka výstrahy – tlačítko pro pravidlo nového upozornění":::        
+        :::image type="content" source="./media/monitor-event-delivery/configure-signal-logic.png" alt-text="Konfigurace logiky signálů":::        
 
         > [!NOTE]
         > Můžete vybrat **+** tlačítko pro **EventSubscriptionName** a zadat název odběru události pro filtrování událostí. 
-    3. Posuňte se dolů. V části **logika výstrahy** vyberte **operátor**, **typ agregace**a zadejte **mezní hodnotu**a potom vyberte **Hotovo**. V tomto příkladu se aktivuje výstraha v případě, že celkový počet nedoručených událostí je větší než 10. 
+    3. Posuňte se dolů. V části **logika výstrahy** vyberte **operátor**, **typ agregace** a zadejte **mezní hodnotu** a potom vyberte **Hotovo**. V tomto příkladu se aktivuje výstraha v případě, že celkový počet nedoručených událostí je větší než 10. 
     
-        :::image type="content" source="./media/monitor-event-delivery/alert-logic.png" alt-text="Stránka výstrahy – tlačítko pro pravidlo nového upozornění":::                
+        :::image type="content" source="./media/monitor-event-delivery/alert-logic.png" alt-text="Logika výstrahy":::                
 4. Zpátky na stránce **vytvořit pravidlo výstrahy** klikněte na **Vybrat skupinu akcí**.
 
-    :::image type="content" source="./media/monitor-event-delivery/select-action-group-button.png" alt-text="Stránka výstrahy – tlačítko pro pravidlo nového upozornění":::
+    :::image type="content" source="./media/monitor-event-delivery/select-action-group-button.png" alt-text="Tlačítko pro výběr skupiny akcí":::
 5. Na panelu nástrojů vyberte **vytvořit skupinu akcí** a vytvořte novou skupinu akcí. Můžete také vybrat existující skupinu akcí.        
 6. Na stránce **Přidat skupinu akcí** proveďte tyto kroky:
     1. Zadejte **název skupiny akcí**.
@@ -48,30 +48,30 @@ Následující postup ukazuje, jak vytvořit výstrahu pro metriku **událostí 
     1. Vyberte **typ akce**. V tomto příkladu je vybraná **role e-mailu Azure Resource Manager** , konkrétně role **vlastníci** . 
     1. Kliknutím na **tlačítko OK** stránku zavřete. 
     
-        :::image type="content" source="./media/monitor-event-delivery/add-action-group-page.png" alt-text="Stránka výstrahy – tlačítko pro pravidlo nového upozornění":::                   
+        :::image type="content" source="./media/monitor-event-delivery/add-action-group-page.png" alt-text="Přidat stránku skupiny akcí":::                   
 7. Zpět na stránce **vytvořit pravidlo výstrahy** zadejte název pravidla výstrahy a pak vyberte **vytvořit pravidlo upozornění**.
 
-    :::image type="content" source="./media/monitor-event-delivery/alert-rule-name.png" alt-text="Stránka výstrahy – tlačítko pro pravidlo nového upozornění":::  
+    :::image type="content" source="./media/monitor-event-delivery/alert-rule-name.png" alt-text="Název pravidla upozornění":::  
 8. Nyní se na stránce **výstrahy** v tématu zobrazí odkaz na správu pravidel výstrah, pokud zatím nejsou k dispozici žádná upozornění. Pokud jsou výstrahy, vyberte na panelu nástrojů možnost **pravidla výstrah správce** .  
 
-    :::image type="content" source="./media/monitor-event-delivery/manage-alert-rules.png" alt-text="Stránka výstrahy – tlačítko pro pravidlo nového upozornění":::
+    :::image type="content" source="./media/monitor-event-delivery/manage-alert-rules.png" alt-text="Správa výstrah":::
 
 ## <a name="create-alerts-on-other-metrics-or-activity-log-operations"></a>Vytváření upozornění na jiné metriky nebo operace protokolu aktivit
 Předchozí část ukázala, jak vytvořit upozornění na události s nedoručenými zprávami. Postup vytvoření upozornění na jiné metriky nebo operace protokolu aktivit jsou podobné. 
 
 Pokud například chcete vytvořit výstrahu pro událost selhání doručení, vyberte na stránce **Konfigurovat logiku signálu** **neúspěšné doručování událostí** . 
 
-:::image type="content" source="./media/set-alerts/delivery-failed-events.png" alt-text="Stránka výstrahy – tlačítko pro pravidlo nového upozornění":::
+:::image type="content" source="./media/set-alerts/delivery-failed-events.png" alt-text="Vybrat události neúspěšného doručení":::
 
 
 ## <a name="create-alerts-using-the-metrics-page"></a>Vytváření výstrah pomocí stránky metriky
 Výstrahy můžete také vytvořit pomocí stránky **metriky** . Postup je podobný. Pro systémová témata můžete k vytváření výstrah použít jenom stránku **metriky** , protože stránka **výstrahy** není k dispozici. 
 
-:::image type="content" source="./media/monitor-event-delivery/metric-page-create-alert-button.png" alt-text="Stránka výstrahy – tlačítko pro pravidlo nového upozornění":::   
+:::image type="content" source="./media/monitor-event-delivery/metric-page-create-alert-button.png" alt-text="Stránka metrik – tlačítko vytvořit výstrahu":::   
     
 
 > [!NOTE]
-> Tento článek se nezabývá všemi různými kroky a kombinacemi, které můžete použít k vytvoření výstrahy. Přehled výstrah najdete v tématu [výstrahy přehled](../azure-monitor/platform/alerts-metric.md).
+> Tento článek se nezabývá všemi různými kroky a kombinacemi, které můžete použít k vytvoření výstrahy. Přehled výstrah najdete v tématu [výstrahy přehled](../azure-monitor/alerts/alerts-metric.md).
 
 ## <a name="next-steps"></a>Další kroky
 

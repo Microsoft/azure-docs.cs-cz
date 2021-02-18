@@ -59,7 +59,7 @@
   items:
     - name: Vývoj
       items:
-        - name: Příprava aplikace Java Spring pro nasazení
+        - name: Příprava aplikace na nasazení
           href: spring-cloud-tutorial-prepare-app-deployment.md
         - name: Nastavení konfiguračního serveru
           href: spring-cloud-tutorial-config-server.md

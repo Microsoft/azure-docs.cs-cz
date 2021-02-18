@@ -3,12 +3,12 @@ title: Azure Service Fabric – diagnostikování běžných scénářů
 description: Přečtěte si o řešení běžných scénářů monitorování a diagnostiky v rámci aplikací Azure Service Fabric.
 ms.topic: article
 ms.date: 02/25/2019
-ms.openlocfilehash: f92bc02082d8bcd9d917f05c93d3da413f772cd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3083348948ce97ae9d99098896878d79081a15f0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257728"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580481"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnostika běžných scénářů pomocí Service Fabric
 
@@ -133,9 +133,9 @@ V těchto odkazech najdete úplný seznam čítačů výkonu pro spolehlivé [sl
 ## <a name="next-steps"></a>Další kroky
 
 * [Vyhledat společné chyby při aktivaci balíčku kódu](./service-fabric-diagnostics-code-package-errors.md)
-* [V AI nastavte výstrahy](../azure-monitor/platform/alerts-log.md) na změny výkonu nebo využití.
+* [V AI nastavte výstrahy](../azure-monitor/alerts/alerts-log.md) na změny výkonu nebo využití.
 * [Inteligentní zjišťování v Application Insights](../azure-monitor/app/proactive-diagnostics.md) provádí proaktivní analýzu telemetrie, která se POSÍLÁ do AI a upozorňuje na potenciální problémy s výkonem.
-* Přečtěte si další informace o tom, Azure Monitor protokoly [upozorňují](../azure-monitor/platform/alerts-overview.md) na pomoc při detekci a diagnostice.
-* U místních clusterů nabízí Azure Monitor protokoly bránu (proxy server HTTP, která se dá použít k odesílání dat do protokolů Azure Monitor. Přečtěte si další informace o tom, jak v [počítačích připojit počítače bez přístupu k internetu Azure monitor protokoly pomocí Log Analytics brány](../azure-monitor/platform/gateway.md) .
-* Seznámení s funkcemi [prohledávání protokolů a dotazování](../azure-monitor/log-query/log-query-overview.md) , které nabízí jako součást protokolů Azure monitor
+* Přečtěte si další informace o tom, Azure Monitor protokoly [upozorňují](../azure-monitor/alerts/alerts-overview.md) na pomoc při detekci a diagnostice.
+* U místních clusterů nabízí Azure Monitor protokoly bránu (proxy server HTTP, která se dá použít k odesílání dat do protokolů Azure Monitor. Přečtěte si další informace o tom, jak v [počítačích připojit počítače bez přístupu k internetu Azure monitor protokoly pomocí Log Analytics brány](../azure-monitor/agents/gateway.md) .
+* Seznámení s funkcemi [prohledávání protokolů a dotazování](../azure-monitor/logs/log-query-overview.md) , které nabízí jako součást protokolů Azure monitor
 * Získejte podrobnější přehled o Azure Monitor protokolů a o tom, co nabízí, najdete v článku [co jsou protokoly Azure monitor?](../azure-monitor/overview.md)

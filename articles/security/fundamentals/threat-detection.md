@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: eb8332bda2105c3f83c0c1cc28fb7db4b1ca0102
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 79262b85e9591ae4b41e8467abdcbccb3804d4ec
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549919"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590339"
 ---
 # <a name="azure-threat-protection"></a>Ochrana před hrozbami Azure
 
@@ -89,7 +89,7 @@ Kromě poskytování cenných služeb vlastním způsobem Azure Monitor protokol
 Protokoly Azure Monitor vám pomůžou rychle a snadno pochopit celkové staví zabezpečení jakéhokoli prostředí, a to vše v kontextu provozu IT, včetně posouzení aktualizací softwaru, antimalwarového posouzení a standardních hodnot konfigurace. Data protokolu zabezpečení jsou snadno dostupná pro zjednodušení procesů auditu zabezpečení a dodržování předpisů.
 
 ### <a name="insight-and-analytics"></a>Přehledy a analýzy
-V centru [Azure monitor protokolů](../../azure-monitor/log-query/log-query-overview.md) je úložiště hostované v Azure.
+V centru [Azure monitor protokolů](../../azure-monitor/logs/log-query-overview.md) je úložiště hostované v Azure.
 
 ![Diagram Insight and Analytics](./media/threat-detection/azure-threat-detection-fig4.png)
 
@@ -98,8 +98,8 @@ Data se shromažďují do úložiště z připojených zdrojů tak, že se nakon
 Zdroje dat a řešení každý vytvoří samostatné typy záznamů s vlastní sadou vlastností, ale můžete je i nadále analyzovat v dotazech do úložiště. Stejné nástroje a metody můžete použít pro práci s nejrůznějšími daty, která jsou shromažďována různými zdroji.
 
 Většina vašich interakcí s protokoly Azure Monitor je prostřednictvím Azure Portal, která se spouští v jakémkoli prohlížeči a poskytuje přístup k nastavení konfigurace a několika nástrojům pro analýzy shromážděných dat a práci s nimi. Z portálu můžete použít:
-* [Hledání v protokolu](../../azure-monitor/log-query/log-query-overview.md) , kde můžete vytvářet dotazy pro analýzu shromážděných dat.
-* [Řídicí panely](../../azure-monitor/learn/tutorial-logs-dashboards.md), které můžete přizpůsobit pomocí grafických zobrazení vašich nejcennějších hledání.
+* [Hledání v protokolu](../../azure-monitor/logs/log-query-overview.md) , kde můžete vytvářet dotazy pro analýzu shromážděných dat.
+* [Řídicí panely](../../azure-monitor/visualize/tutorial-logs-dashboards.md), které můžete přizpůsobit pomocí grafických zobrazení vašich nejcennějších hledání.
 * [Řešení](../../azure-monitor/insights/solutions.md), která poskytují další funkce a analytické nástroje.
 
 Řešení přidávají funkce do protokolů Azure Monitor. Primárně běží v cloudu a poskytují analýzu dat, která jsou shromážděna v úložišti Log Analytics. Řešení mohou také definovat nové typy záznamů, které mají být shromažďovány, které lze analyzovat pomocí hledání v protokolu nebo pomocí dalšího uživatelského rozhraní, které řešení poskytuje v řídicím panelu Log Analytics.

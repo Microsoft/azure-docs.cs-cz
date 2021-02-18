@@ -3,12 +3,12 @@ title: Protokoly diagnostiky Azure Service Bus | Microsoft Docs
 description: Tento článek poskytuje přehled všech provozních a diagnostických protokolů, které jsou k dispozici pro Azure Service Bus.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f227f5a988ccd51425b4f43e87b4ed4d9af74e1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2672d61285025eadb8f742ca2518297107595ce
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88064430"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585262"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Povolit protokoly diagnostiky pro Service Bus
 
@@ -25,9 +25,9 @@ Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON) 
 
 Řetězce JSON provozního protokolu obsahují prvky uvedené v následující tabulce:
 
-| Název | Popis |
+| Název | Description |
 | ------- | ------- |
-| ActivityId | Interní ID, které slouží k identifikaci zadané aktivity |
+| ID aktivity | Interní ID, které slouží k identifikaci zadané aktivity |
 | EventName | Název operace |
 | ResourceId | ID prostředku Azure Resource Manager |
 | SubscriptionId | ID předplatného |
@@ -62,7 +62,7 @@ Provozní protokoly zaznamenávají všechny operace správy, které jsou prová
 
 Následující operace správy jsou zachyceny v provozních protokolech: 
 
-| Rozsah | Operace|
+| Obor | Operace|
 |-------| -------- |
 | Obor názvů | <ul> <li> Vytvořit obor názvů</li> <li> Aktualizovat obor názvů </li> <li> Odstranit obor názvů </li> <li> Aktualizovat zásadu SharedAccess oboru názvů </li> </ul> | 
 | Fronta | <ul> <li> Vytvořit frontu</li> <li> Fronta aktualizací</li> <li> Odstranit frontu </li> <li> Odstranit frontu pro odstranění </li> </ul> | 
@@ -76,7 +76,7 @@ Následující operace správy jsou zachyceny v provozních protokolech:
 
 Provozní protokoly jsou ve výchozím nastavení zakázané. Pokud chcete povolit diagnostické protokoly, udělejte toto:
 
-1. V [Azure Portal](https://portal.azure.com)přejdete do oboru názvů Azure Service Bus a v části **monitorování**vyberte  **nastavení diagnostiky**.
+1. V [Azure Portal](https://portal.azure.com)přejdete do oboru názvů Azure Service Bus a v části **monitorování** vyberte  **nastavení diagnostiky**.
 
    ![Odkaz "nastavení diagnostiky"](./media/service-bus-diagnostic-logs/image1.png)
 
@@ -101,7 +101,7 @@ Provozní protokoly jsou ve výchozím nastavení zakázané. Pokud chcete povol
 
 Nové nastavení se projeví přibližně po 10 minutách. Protokoly se zobrazí v konfigurovaném cíli archivace v podokně **diagnostické protokoly** .
 
-Další informace o konfiguraci nastavení diagnostiky najdete v tématu [Přehled protokolů diagnostiky Azure](../azure-monitor/platform/platform-logs-overview.md).
+Další informace o konfiguraci nastavení diagnostiky najdete v tématu [Přehled protokolů diagnostiky Azure](../azure-monitor/essentials/platform-logs-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 

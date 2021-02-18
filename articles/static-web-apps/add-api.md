@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: 53be2ee9b6b3ab46f081747aec58b9c99fc54f0d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 8a42ca4cf69515c99bb2e0bd28bb62dfed0e18f8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349952"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650676"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Přidání rozhraní API do služby Azure static Web Apps Preview pomocí Azure Functions
 
@@ -61,7 +61,7 @@ V dalším kroku vytvoříte Azure Functions projekt jako rozhraní API aplikace
 
    :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="Snímek obrazovky se zobrazí jako složka P I a na tlačítko vybrat.":::
 
-1. Zadejte následující informace na následujících dotazech:
+1. Podle pokynů na obrazovce zadejte tyto informace:
 
     - _Vyberte jazyk_: zvolte **JavaScript** .
     - _Vyberte šablonu pro funkci prvního projektu_: zvolte **aktivační událost http** .
@@ -234,7 +234,7 @@ Pak přidejte nastavení specifické pro aplikaci.
 1. Klikněte na tlačítko **Přihlásit se přes GitHub** a ověřte se v této službě.
 1. Vybrat upřednostňovanou _organizaci_
 1. Z rozevíracího seznamu _úložiště_ vyberte **My-Vanilla-API** .
-1. V rozevíracím seznamu _větev_ vyberte **Hlavní** .
+1. V rozevíracím seznamu _větev_ vyberte **Main (Hlavní** ).
 1. V rozevíracím seznamu _přednastavení sestavení_ vyberte rozhraní podle vašeho výběru pro konfiguraci buildu.
 
  > Tato pole budou odpovídat výchozí struktuře projektu typu aplikace. Změňte hodnoty tak, aby vyhovovaly vaší aplikaci.

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: ea99c34f03cd74185840767605c17ee6c65eb701
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0ff11c9601fb55e27d8780185d77c177e9d9201b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389701"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584636"
 ---
 # <a name="monitor-azure-cache-for-redis"></a>Monitorování mezipaměti Azure pro Redis
 
@@ -52,13 +52,13 @@ Pokud chcete zobrazit metriky Redis a vytvářet vlastní grafy pomocí Azure Mo
 
 ![V levém navigačním podokně contoso55 je metrika možnost v části monitorování a je zvýrazněna. V metrikách je seznam metrik. Jsou vybrány přístupy do mezipaměti a Neúspěšné přístupy do mezipaměti.](./media/cache-how-to-monitor/redis-cache-monitor.png)
 
-Další informace o práci s metrikami pomocí Azure Monitor najdete v tématu [Přehled metrik v Microsoft Azure](../azure-monitor/platform/data-platform.md).
+Další informace o práci s metrikami pomocí Azure Monitor najdete v tématu [Přehled metrik v Microsoft Azure](../azure-monitor/data-platform.md).
 
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>Exportovat metriky mezipaměti
 
-Ve výchozím nastavení se metriky mezipaměti v Azure Monitor [ukládají po dobu 30 dnů](../azure-monitor/platform/data-platform-metrics.md) a pak se odstraní. Pokud chcete uchovat metriky mezipaměti po dobu delší než 30 dní, můžete [určit účet úložiště](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) a zadat zásady **uchovávání (dnů)** pro metriky mezipaměti. 
+Ve výchozím nastavení se metriky mezipaměti v Azure Monitor [ukládají po dobu 30 dnů](../azure-monitor/essentials/data-platform-metrics.md) a pak se odstraní. Pokud chcete uchovat metriky mezipaměti po dobu delší než 30 dní, můžete [určit účet úložiště](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) a zadat zásady **uchovávání (dnů)** pro metriky mezipaměti. 
 
 Konfigurace účtu úložiště pro metriky mezipaměti:
 
@@ -74,10 +74,10 @@ Konfigurace účtu úložiště pro metriky mezipaměti:
 ![Diagnostika Redis](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
 
 >[!NOTE]
->Kromě archivace metrik mezipaměti do úložiště je můžete také [streamovat do centra událostí nebo je odeslat do protokolů Azure monitor](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-values).
+>Kromě archivace metrik mezipaměti do úložiště je můžete také [streamovat do centra událostí nebo je odeslat do protokolů Azure monitor](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-values).
 >
 
-Chcete-li získat přístup k metrikám, můžete je zobrazit v Azure Portal, jak je popsáno výše v tomto článku, a můžete k nim také přistupovat pomocí [Azure Monitorch metrik REST API](../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+Chcete-li získat přístup k metrikám, můžete je zobrazit v Azure Portal, jak je popsáno výše v tomto článku, a můžete k nim také přistupovat pomocí [Azure Monitorch metrik REST API](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md).
 
 > [!NOTE]
 > Pokud změníte účty úložiště, data v dříve nakonfigurovaném účtu úložiště zůstanou k dispozici ke stažení, ale nezobrazí se v Azure Portal.  
@@ -127,9 +127,9 @@ Můžete nakonfigurovat odesílání upozornění na základě metrik a protokol
 
 Pokud chcete nakonfigurovat pravidla upozornění pro vaši mezipaměť, klikněte v **nabídce prostředek** na **pravidla výstrah** .
 
-![Monitorování](./media/cache-how-to-monitor/redis-cache-monitoring.png)
+![Sledování](./media/cache-how-to-monitor/redis-cache-monitoring.png)
 
-Další informace o konfiguraci a používání výstrah najdete v tématu [Přehled výstrah](../azure-monitor/platform/alerts-classic-portal.md).
+Další informace o konfiguraci a používání výstrah najdete v tématu [Přehled výstrah](../azure-monitor/alerts/alerts-classic-portal.md).
 
 ## <a name="activity-logs"></a>Protokoly aktivit
 Protokoly aktivit poskytují přehled o operacích, které byly provedeny v mezipaměti Azure pro instance Redis. Dříve se nazývaly protokoly auditu nebo provozní protokoly. Pomocí protokolů aktivit můžete určit "co, kdo a kdy" pro všechny operace zápisu (PUT, POST, DELETE) provedené v mezipaměti Azure pro instance Redis. 
@@ -140,4 +140,4 @@ Protokoly aktivit poskytují přehled o operacích, které byly provedeny v mezi
 
 Protokoly aktivit pro vaši mezipaměť zobrazíte kliknutím na **protokoly aktivit** v **nabídce prostředek**.
 
-Další informace o protokolech aktivit najdete v tématu [Přehled protokolu aktivit Azure](../azure-monitor/platform/platform-logs-overview.md).
+Další informace o protokolech aktivit najdete v tématu [Přehled protokolu aktivit Azure](../azure-monitor/essentials/platform-logs-overview.md).
