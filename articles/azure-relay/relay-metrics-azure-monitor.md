@@ -4,12 +4,12 @@ description: Tento článek poskytuje informace o tom, jak můžete pomocí Azur
 services: service-bus-relay
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f39019dc092740c166798a7f85d5bdba686adbf4
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 7f91ac0aec46d0fc24901585156dceabb18640c1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179958"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586828"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Relay metriky v Azure Monitor 
 Azure Relay metriky poskytují stav prostředků ve vašem předplatném Azure. S bohatou sadou dat metrik můžete posoudit celkový stav svých prostředků přenosu, nejen na úrovni oboru názvů, ale také na úrovni entity. Tyto statistiky můžou být důležité, protože vám pomohou monitorovat stav Azure Relay. Metriky taky můžou pomoct řešit problémy s hlavními příčinami, aniž byste museli kontaktovat podporu Azure.
@@ -21,9 +21,9 @@ Azure Monitor poskytuje jednotná uživatelská rozhraní pro monitorování nap
 
 ## <a name="access-metrics"></a>Metriky přístupu
 
-Azure Monitor poskytuje více způsobů přístupu k metrikám. Můžete buď přistupovat ke metrikám prostřednictvím [Azure Portal](https://portal.azure.com), nebo použít rozhraní API Azure monitor (Rest a .NET) a analytická řešení, jako je Operations Management Suite a Event Hubs. Další informace najdete v tématu [monitorování dat shromažďovaných pomocí Azure monitor](../azure-monitor/platform/data-platform.md).
+Azure Monitor poskytuje více způsobů přístupu k metrikám. Můžete buď přistupovat ke metrikám prostřednictvím [Azure Portal](https://portal.azure.com), nebo použít rozhraní API Azure monitor (Rest a .NET) a analytická řešení, jako je Operations Management Suite a Event Hubs. Další informace najdete v tématu [monitorování dat shromažďovaných pomocí Azure monitor](../azure-monitor/data-platform.md).
 
-Metriky jsou ve výchozím nastavení povolené a můžete získat přístup k nejnovějším 30 dnům dat. Pokud potřebujete zachovat data po delší dobu, můžete archivovat data metrik na účet Azure Storage. Tato možnost je nakonfigurována v [nastavení diagnostiky](../azure-monitor/platform/diagnostic-settings.md) v Azure monitor.
+Metriky jsou ve výchozím nastavení povolené a můžete získat přístup k nejnovějším 30 dnům dat. Pokud potřebujete zachovat data po delší dobu, můžete archivovat data metrik na účet Azure Storage. Tato možnost je nakonfigurována v [nastavení diagnostiky](../azure-monitor/essentials/diagnostic-settings.md) v Azure monitor.
 
 ## <a name="access-metrics-in-the-portal"></a>Přístup k metrikám na portálu
 

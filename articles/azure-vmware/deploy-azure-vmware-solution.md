@@ -1,35 +1,27 @@
 ---
 title: Nasazení a konfigurace řešení Azure VMware
-description: Naučte se používat informace shromážděné ve fázi plánování k nasazení privátního cloudu řešení Azure VMware.
+description: Naučte se používat informace shromážděné ve fázi plánování k nasazení a konfiguraci privátního cloudu řešení Azure VMware.
 ms.topic: tutorial
-ms.date: 12/24/2020
-ms.openlocfilehash: 4c6929ca59bae022642082e8382203a10bd41309
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.custom: contperf-fy21q3
+ms.date: 02/17/2021
+ms.openlocfilehash: bfd057a19ebe26a66d11b52ddf17c285a1f9a308
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382051"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652730"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Nasazení a konfigurace řešení Azure VMware
 
-V tomto článku použijete informace z [části plánování](production-ready-deployment-steps.md) k nasazení řešení Azure VMware. 
+V tomto článku použijete informace z [části plánování](production-ready-deployment-steps.md) k nasazení a konfiguraci řešení Azure VMware. 
 
 >[!IMPORTANT]
 >Pokud jste ještě tyto informace nedefinovali, vraťte se zpět do [části plánování](production-ready-deployment-steps.md) a teprve potom pokračujte.
 
-## <a name="register-the-resource-provider"></a>Registrace poskytovatele prostředků
 
-[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
+## <a name="create-an-azure-vmware-solution-private-cloud"></a>Vytvoření privátního cloudu řešení Azure VMware
 
-
-## <a name="deploy-azure-vmware-solution"></a>Nasazení služby Azure VMware Solution
-
-Použijte informace, které jste shromáždili v článku [Plánování nasazení řešení Azure VMware](production-ready-deployment-steps.md) :
-
->[!NOTE]
->K nasazení řešení Azure VMware je nutné mít v předplatném minimální úroveň přispěvatele.
-
-[!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
+Postupujte podle pokynů a kroků v kurzu [Vytvoření privátního cloudu řešení Azure VMware](tutorial-create-private-cloud.md) . Privátní cloud řešení Azure VMware můžete vytvořit pomocí [Azure Portal](tutorial-create-private-cloud.md#azure-portal) nebo pomocí [Azure CLI](tutorial-create-private-cloud.md#azure-cli).  
 
 >[!NOTE]
 >Kompletní přehled tohoto kroku najdete v článku [Řešení Azure VMware:](https://www.youtube.com/embed/gng7JjxgayI) video o nasazení.
@@ -60,7 +52,7 @@ Pokud jste nedefinovali virtuální síť v kroku nasazení a vaším záměrem 
 
 Pole s odkazem se nachází ve virtuální síti, ve které se řešení Azure VMware připojuje přes svůj okruh ExpressRoute.  V Azure přejděte do síťového rozhraní pro skok a [Podívejte se na efektivní trasy](../virtual-network/manage-route-table.md#view-effective-routes).
 
-V seznamu efektivní trasy by se měly zobrazit sítě vytvořené jako součást nasazení řešení Azure VMware. Uvidíte několik sítí, které byly odvozeny od [ `/22` sítě, kterou jste definovali](production-ready-deployment-steps.md#ip-address-segment) během [postupu nasazení](#deploy-azure-vmware-solution) dříve v tomto článku.
+V seznamu efektivní trasy by se měly zobrazit sítě vytvořené jako součást nasazení řešení Azure VMware. Zobrazí se několik sítí, které byly odvozeny ze [ `/22` sítě, kterou jste definovali](production-ready-deployment-steps.md#ip-address-segment) při [vytváření privátního cloudu](#create-an-azure-vmware-solution-private-cloud).  
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Ověřte síťové trasy inzerované z řešení Azure VMware do Azure Virtual Network" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 

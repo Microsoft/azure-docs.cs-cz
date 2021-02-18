@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 6a075ae721d767faf25e4774dd545d36eedfaef4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1548b878d5b1261d2d4b91ed6c081c27845d99d1
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379648"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653498"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -83,6 +83,8 @@ Následující třídy a rozhraní zpracovávají některé hlavní funkce služ
 
 ## <a name="create-a-chat-client"></a>Vytvoření chatového klienta
 Chcete-li vytvořit chatovacího klienta, použijte koncový bod komunikační služby a přístupový token, který byl vygenerován jako součást požadavků. Tokeny přístupu uživatele umožňují vytvářet klientské aplikace, které se přímo ověřují na komunikačních službách Azure. Po vygenerování těchto tokenů na serveru je předejte zpátky do klientského zařízení. K předání tokenu klientovi konverzace je nutné použít třídu CommunicationTokenCredential ze společné klientské knihovny. 
+
+Další informace o [architektuře chatu](../../../concepts/chat/concepts.md)
 
 Při přidávání příkazů importu nezapomeňte přidat pouze importy z modelu COM. Azure. Communications. chat a com. Azure. Communications. chat. Models Namespaces, a ne z oboru názvů com. Azure. Communication. chat. Implements. V souboru App. Java, který byl vygenerován prostřednictvím Maven, můžete použít následující kód, který začíná na:
 

@@ -7,7 +7,7 @@
     - name: Porovnání služeb zasílání zpráv
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
-    - name: Použití služby Service Bus se službou Java Message Service (JMS) 2.0 (Preview)
+    - name: 'Použití Service Bus se službou Java Message Service (JMS) 2,0'
       href: how-to-use-java-message-service-20.md
 - name: Rychlé starty
   items:
@@ -90,6 +90,10 @@
       href: service-bus-samples.md
 - name: Koncepty
   items:
+    - name: 'Fronty, témata a odběry'
+      href: service-bus-queues-topics-subscriptions.md
+    - name: Akce a filtry témat
+      href: topic-filters.md
     - name: Zasílání zpráv úrovně Premium
       href: service-bus-premium-messaging.md
     - name: Srovnání front Azure a front Service Bus
@@ -158,12 +162,16 @@
       href: service-bus-create-namespace-portal.md
     - name: Vývoj
       items:
+        - name: Nastavení filtrů a akcí předplatného
+          href: service-bus-filter-examples.md
         - name: Zpracování zpráv
           items:
             - name: 'Fronty, témata a odběry'
               href: service-bus-queues-topics-subscriptions.md
-            - name: Entity služby Java Message Service (JMS) 2.0 (Preview)
+            - name: 'Entity služby zprávy Java (JMS) 2,0'
               href: java-message-service-20-entities.md
+            - name: JMS (Java Message Service) – guide.md pro vývojáře
+              href: jms-developer-guide.md
             - name: 'Zprávy, datové části a serializace'
               href: service-bus-messages-payloads.md
             - name: 'Přenosy zpráv, zámky a vyrovnání'
@@ -172,8 +180,6 @@
               href: message-sequencing.md
             - name: Vypršení platnosti zpráv (hodnota TTL)
               href: message-expiration.md
-        - name: Akce a filtry témat
-          href: topic-filters.md
         - name: Migrace z oborů názvů Standard na obory názvů Premium
           href: service-bus-migrate-standard-premium.md
         - name: Dělené fronty a témata

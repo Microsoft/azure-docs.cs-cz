@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 02/16/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: e038cdcb50c7ee15960c904c8e234d6917d02f3b
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 44473efbfb1c07c628c939fd05805ed92e691736
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706375"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651813"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Import dat do služby Soubory Azure pomocí služby Azure Import/Export
 
@@ -30,7 +30,7 @@ Před vytvořením úlohy importu pro přenos dat do souborů Azure pečlivě zk
 - Mít aspoň jeden Azure Storage účet. Podívejte se na seznam [podporovaných účtů úložiště a typů úložiště pro službu import/export](storage-import-export-requirements.md). Informace o vytvoření nového účtu úložiště najdete v tématu [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
 - Mít dostatečný počet disků [podporovaných typů](storage-import-export-requirements.md#supported-disks).
 - Má systém Windows s [podporovanou verzí operačního systému](storage-import-export-requirements.md#supported-operating-systems).
-- [Stáhněte si WAImportExport verze 2](https://aka.ms/waiev2) v systému Windows. Rozbalte do výchozí složky `waimportexport` . Například `C:\WaImportExport`.
+- [Stáhněte si WAImportExport verze 2](https://aka.ms/waiev2) v systému Windows. Rozbalte do výchozí složky `waimportexport` . Například, `C:\WaImportExport`.
 - Mít účet FedEx/DHL. Pokud chcete použít nosný operátor jiný než FedEx/DHL, obraťte se na Azure Data Box provozní tým na adrese `adbops@microsoft.com` .
     - Účet musí být platný, měl by mít zůstatek a musí mít možnosti vrácení expedice.
     - Vygenerujte sledovací číslo pro úlohu exportu.
@@ -119,13 +119,13 @@ Další ukázky najdete v [ukázkách pro soubory deníku](#samples-for-journal-
 
 Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
 1. Přihlaste se k https://portal.azure.com/ .
-2. **> úlohy import/export přejít na všechny služby > úložiště**.
+2. Vyhledejte **úlohy import/export**.
 
-    ![Přejít na import/export](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
+    ![Vyhledat úlohy importu/exportu](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
-3. Klikněte na **vytvořit úlohu importu/exportu**.
+3. Vyberte **+ Nový**.
 
-    ![Klikněte na úloha importu/exportu.](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
+    ![Pokud chcete vytvořit nový, vyberte nový. ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. **Základní informace**:
 
@@ -136,7 +136,7 @@ Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
     - Vyberte předplatné.
     - Vyberte skupinu prostředků.
 
-        ![Vytvořit úlohu importu – krok 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+        ![Vytvořit úlohu importu – krok 1](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
 
 3. V **podrobnostech úlohy**:
 
@@ -144,7 +144,7 @@ Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
     - Vyberte účet úložiště, do kterého se budou data importovat.
     - Umístění dropoff se automaticky vyplní podle oblasti vybraného účtu úložiště.
 
-       ![Vytvoření úlohy importu – krok 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
+       ![Vytvoření úlohy importu – krok 2](./media/storage-import-export-data-to-blobs/import-to-blob-4.png)
 
 4. V **informace o expedici zpět**:
 
@@ -155,7 +155,7 @@ Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
         > [!TIP]
         > Místo zadání e-mailové adresy pro jednoho uživatele zadejte skupinu. Tím zajistíte, že budete dostávat oznámení i v případě, že správce opustí.
 
-       ![Vytvořit úlohu importu – krok 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+       ![Vytvořit úlohu importu – krok 3](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
 
 
 5. V **souhrnu**:
@@ -163,7 +163,7 @@ Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
     - Poskytněte dodací adresu datacentra Azure pro expedici disků zpátky do Azure. Ujistěte se, že název úlohy a úplná adresa jsou uvedené na štítku pro expedici.
     - Vytvoření úlohy importu dokončíte kliknutím na **OK** .
 
-        ![Vytvořit úlohu importu – krok 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+        ![Vytvořit úlohu importu – krok 4](./media/storage-import-export-data-to-blobs/import-to-blob-6.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

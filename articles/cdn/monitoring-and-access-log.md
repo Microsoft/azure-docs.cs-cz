@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: yuajia
-ms.openlocfilehash: 43f53d1098e08a0f913e3baec2c6aaf3d65054d0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8a4b48586c564ee5d14a0768156b0477e2935ccf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501463"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575452"
 ---
 # <a name="real-time-monitoring-metrics-and-access-logs-for-azure-cdn"></a>Monitorování, metriky a protokoly přístupu v reálném čase pro Azure CDN
 Pomocí Azure CDN od Microsoftu můžete sledovat prostředky následujícími způsoby, které vám pomůžou při odstraňování problémů, sledování a ladění problémů. 
@@ -28,7 +28,7 @@ Pomocí Azure CDN od Microsoftu můžete sledovat prostředky následujícími z
 > [!IMPORTANT]
 > Pro Azure CDN od Microsoftu je k dispozici funkce HTTP holých protokolů.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -215,18 +215,18 @@ Metriky se zobrazují v grafech a jsou přístupné prostřednictvím PowerShell
 
 Azure CDN z měření od Microsoftu a odesílají své metriky v intervalech 60 – sekund. Zobrazení metrik na portálu může trvat až 3 minuty. 
 
-Další informace najdete v tématu [Azure monitor metriky](../azure-monitor/platform/data-platform-metrics.md).
+Další informace najdete v tématu [Azure monitor metriky](../azure-monitor/essentials/data-platform-metrics.md).
 
 **Metriky podporované Azure CDN od Microsoftu**
 
-| Metriky  | Popis | Dimenze |
+| Metriky  | Description | Dimenze |
 | ------------- | ------------- | ------------- |
 | Poměr přístupů do bajtů * | Procento výstupu z mezipaměti CDN vypočítané na celkový výstup. | Koncový bod |
 | RequestCount | Počet požadavků klientů poskytovaných službou CDN. | Koncový bod </br> Země klienta. </br> Oblast klienta. </br> Stav HTTP. </br> Stavová skupina HTTP. |
 | ResponseSize | Počet bajtů odeslaných jako odpověď z hraniční sítě CDN klientům. |Koncový bod </br> Země klienta. </br> Oblast klienta. </br> Stav HTTP. </br> Stavová skupina HTTP. |
 | TotalLatency | Celková doba od žádosti klienta přijatá službou CDN, **dokud se nepošle poslední bajt odpovědi z CDN klientovi**. |Koncový bod </br> Země klienta. </br> Oblast klienta. </br> Stav HTTP. </br> Stavová skupina HTTP. |
 
-**_Počet úspěšných bajtů v dávce = (výstup z Edge-výstup od počátku)/Egress z Edge_*
+***Počet úspěšných bajtů v dávce = (výstup z Edge-výstup od počátku)/Egress z Edge**
 
 Počet vyloučených scénářů v bajtech poměru přístupů:
 
@@ -259,13 +259,13 @@ Počet vyloučených scénářů v bajtech poměru přístupů:
 
 ### <a name="alerts"></a>Výstrahy
 
-Můžete nastavit výstrahy pro Microsoft CDN výběrem **Monitoring**  >>  **výstrahy** monitorování.
+Můžete nastavit výstrahy pro Microsoft CDN výběrem   >>  **výstrahy** monitorování.
 
 Vyberte **nové pravidlo výstrahy** pro metriky uvedené v části metriky:
 
 :::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="Nakonfigurujte výstrahy pro koncový bod CDN." border="true":::
 
-Výstraha se bude účtovat na základě Azure Monitor. Další informace o výstrahách naleznete v tématu [Azure monitor Alerts](../azure-monitor/platform/alerts-overview.md).
+Výstraha se bude účtovat na základě Azure Monitor. Další informace o výstrahách naleznete v tématu [Azure monitor Alerts](../azure-monitor/alerts/alerts-overview.md).
 
 ### <a name="additional-metrics"></a>Další metriky
 Další metriky můžete povolit pomocí Azure Log Analytics a nezpracovaných protokolů za další náklady.
@@ -299,4 +299,4 @@ Další informace o Azure CDN a dalších službách Azure, které jsou uvedené
 
 * Přečtěte si další informace o [Azure monitor](../azure-monitor/overview.md).
 
-* Nakonfigurujte [Log Analytics v Azure monitor](../azure-monitor/log-query/log-analytics-tutorial.md).
+* Nakonfigurujte [Log Analytics v Azure monitor](../azure-monitor/logs/log-analytics-tutorial.md).
