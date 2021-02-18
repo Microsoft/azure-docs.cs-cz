@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 6c65f28c040b15aaa2ec8f3425209351e4b60486
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 822a4249b6ed054f36605d0367803da68bab090b
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100524421"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652254"
 ---
 # <a name="custom-vision-encryption-of-data-at-rest"></a>Custom Vision šifrování dat v klidovém umístění
 
@@ -24,15 +24,6 @@ Azure Custom Vision automaticky šifruje vaše data při trvalém ukládání do
 
 > [!IMPORTANT]
 > Klíče spravované zákazníkem jsou dostupné jenom prostředky vytvořené po 11. května 2020. Pokud chcete používat CMK s Custom Vision, budete muset vytvořit nový prostředek Custom Vision. Po vytvoření prostředku můžete k nastavení spravované identity použít Azure Key Vault.
-
-## <a name="regional-availability"></a>Regionální dostupnost
-
-Klíče spravované zákazníkem jsou v tuto chvíli dostupné v těchto oblastech:
-
-* USA (střed) – jih
-* Západní USA 2
-* East US
-* USA (Gov) – Virginia
 
 [!INCLUDE [cognitive-services-cmk](../includes/configure-customer-managed-keys.md)]
 

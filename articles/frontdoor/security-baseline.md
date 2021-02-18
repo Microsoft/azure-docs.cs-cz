@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c922ae19c496d9f377b47ec43d38807f494593bc
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 59eef7654e677ccfef79445f4a9cab26800bdfc5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789124"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589148"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>Základní hodnoty zabezpečení Azure pro přední dveře Azure
 
@@ -222,9 +222,9 @@ Přední dvířka Azure zapisuje všechny síťové přenosy, které IT zpracov�
 
 Povolte protokoly prostředků Azure pro přední dveře Azure. Pomocí Azure Security Center a Azure Policy můžete povolit protokoly prostředků a shromažďovat data protokolů. Tyto protokoly můžou být klíčové pro pozdější zkoumání incidentů zabezpečení a provádění forenzních cvičení.
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Principy protokolování a různých typů protokolů v Azure](../azure-monitor/platform/platform-logs-overview.md) 
+- [Principy protokolování a různých typů protokolů v Azure](../azure-monitor/essentials/platform-logs-overview.md) 
 
 - [Pochopení Azure Security Center shromažďování dat](../security-center/security-center-enable-data-collection.md)
 

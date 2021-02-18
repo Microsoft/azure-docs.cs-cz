@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 6720058ce6e7614284111a75a2ab3a91525df1a3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b03c21eea18c966616154b5cfc5df5d8924fd335
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488761"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589313"
 ---
 # <a name="use-the-intelligent-insights-performance-diagnostics-log-of-azure-sql-database-and-azure-sql-managed-instance-performance-issues"></a>Použití Intelligent Insights protokolu diagnostiky výkonu Azure SQL Database a problémů s výkonem spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Tato stránka obsahuje informace o tom, jak používat protokol diagnostiky výkonu generovaný [Intelligent Insights](intelligent-insights-overview.md) Azure SQL Database a problémy s výkonem spravované instance Azure SQL, jejich formát a data, která obsahuje pro vlastní potřeby vývoje. Tento diagnostický protokol můžete odeslat do [protokolů Azure monitor](../../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs), [Azure Storage](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)nebo řešení třetí strany pro vlastní funkce upozorňování a vytváření sestav DevOps.
+Tato stránka obsahuje informace o tom, jak používat protokol diagnostiky výkonu generovaný [Intelligent Insights](intelligent-insights-overview.md) Azure SQL Database a problémy s výkonem spravované instance Azure SQL, jejich formát a data, která obsahuje pro vlastní potřeby vývoje. Tento diagnostický protokol můžete odeslat do [protokolů Azure monitor](../../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs), [Azure Storage](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)nebo řešení třetí strany pro vlastní funkce upozorňování a vytváření sestav DevOps.
 
 > [!NOTE]
 > Inteligentní přehledy jsou funkce ve verzi Preview, která není dostupná v následujících oblastech: Západní Evropa, Severní Evropa, Západní USA 1 a Východní USA 1.
@@ -145,4 +145,4 @@ Můžete použít protokol výkonu Intelligent Insights s [protokoly Azure monit
 - Přečtěte si o [Intelligent Insights](intelligent-insights-overview.md) konceptech.
 - Naučte [se řešit potíže s výkonem pomocí Intelligent Insights](intelligent-insights-troubleshoot-performance.md).
 - Naučte se [monitorovat problémy s výkonem pomocí Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md).
-- Naučte se [shromažďovat a využívat data protokolu z vašich prostředků Azure](../../azure-monitor/platform/platform-logs-overview.md).
+- Naučte se [shromažďovat a využívat data protokolu z vašich prostředků Azure](../../azure-monitor/essentials/platform-logs-overview.md).

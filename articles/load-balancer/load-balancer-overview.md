@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: 6f83df22465a2dc5fb871ae4e2c6dedd75e00075
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 716acec51226e9e4ff47605c3ee2bd9a86be1933
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834217"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588566"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
@@ -44,7 +44,7 @@ Pomocí Standard Load Balancer můžete škálovat aplikace a vytvářet vysoce 
 
 Mezi klíčové scénáře, které můžete provádět pomocí Standard Load Balancer patří:
 
-- Vyrovnávání zatížení **[interního](./quickstart-load-balancer-standard-internal-portal.md)** a **[externího](./tutorial-load-balancer-standard-manage-portal.md)** provozu do virtuálních počítačů Azure.
+- Vyrovnávání zatížení **[interního](./quickstart-load-balancer-standard-internal-portal.md)** a **[externího](./quickstart-load-balancer-standard-public-portal.md)** provozu do virtuálních počítačů Azure.
 
 - Zvyšte dostupnost díky distribuci prostředků **[v rámci](./tutorial-load-balancer-standard-public-zonal-portal.md)** zón a **[mezi](./tutorial-load-balancer-standard-public-zone-redundant-portal.md)** nimi.
 

@@ -1,33 +1,36 @@
 ---
-title: Použití JavaScriptu pro soubory & seznamů ACL v Azure Data Lake Storage Gen2
-description: Pomocí Azure Storage Data Lake klientské knihovny pro JavaScript můžete spravovat adresáře a seznamy řízení přístupu (ACL) souborů a adresářů v účtech úložiště, které mají povolený hierarchický obor názvů (HNS).
+title: Použití JavaScriptu ke správě dat v Azure Data Lake Storage Gen2
+description: Pomocí Azure Storage Data Lake klientské knihovny pro JavaScript můžete spravovat adresáře a soubory v účtech úložiště s povoleným hierarchickým oborem názvů.
 author: normesta
 ms.service: storage
-ms.date: 03/20/2020
+ms.date: 02/17/2021
 ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-js
-ms.openlocfilehash: a929fcbc87a1ce11b226e9def46354c24a151a0c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8ce5df805ddce6cdb52e4225bb77e2d8dfa9b9b0
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913364"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650163"
 ---
-# <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí JavaScriptu
+# <a name="use-javascript-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Správa adresářů a souborů v Azure Data Lake Storage Gen2 pomocí JavaScriptu
 
-V tomto článku se dozvíte, jak pomocí JavaScriptu vytvářet a spravovat adresáře, soubory a oprávnění v účtech úložiště, které mají povolený hierarchický obor názvů (HNS). 
+V tomto článku se dozvíte, jak pomocí JavaScriptu vytvářet a spravovat adresáře a soubory v účtech úložiště, které mají hierarchický obor názvů.
+
+Další informace o tom, jak získat, nastavit a aktualizovat seznamy řízení přístupu (ACL) adresářů a souborů, najdete v tématu [použití JavaScriptu ke správě seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-acl-javascript.md).
 
 [Balíček (Správce balíčků uzlů)](https://www.npmjs.com/package/@azure/storage-file-datalake)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-java/issues)
 
 ## <a name="prerequisites"></a>Požadavky
 
-> [!div class="checklist"]
-> * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-> * Účet úložiště, který má povolený hierarchický obor názvů (HNS). Pokud ho chcete vytvořit, postupujte podle [těchto](../common/storage-account-create.md) pokynů.
-> * Pokud tento balíček používáte v Node.js aplikaci, budete potřebovat Node.js 8.0.0 nebo vyšší.
+- Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
+
+- Účet úložiště s povoleným hierarchickým oborem názvů. Pokud ho chcete vytvořit, postupujte podle [těchto](create-data-lake-storage-account.md) pokynů.
+
+- Pokud tento balíček používáte v Node.js aplikaci, budete potřebovat Node.js 8.0.0 nebo vyšší.
 
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
@@ -67,10 +70,11 @@ function GetDataLakeServiceClient(accountName, accountKey) {
 }      
 
 ```
-> [!NOTE]
-> Tato metoda autorizace funguje jenom pro Node.js aplikace. Pokud máte v úmyslu spustit kód v prohlížeči, můžete autorizovat pomocí Azure Active Directory (AD). 
 
-### <a name="connect-by-using-azure-active-directory-ad"></a>Připojení pomocí Azure Active Directory (AD)
+> [!NOTE]
+> Tato metoda autorizace funguje jenom pro Node.js aplikace. Pokud máte v úmyslu spustit kód v prohlížeči, můžete autorizovat pomocí Azure Active Directory (Azure AD).
+
+### <a name="connect-by-using-azure-active-directory-azure-ad"></a>Připojení pomocí Azure Active Directory (Azure AD)
 
 K ověření vaší aplikace v Azure AD můžete použít [klientskou knihovnu Azure identity pro js](https://www.npmjs.com/package/@azure/identity) .
 
@@ -166,8 +170,6 @@ async function DeleteDirectory(fileSystemClient) {
 }
 ```
 
-
-
 ## <a name="upload-a-file-to-a-directory"></a>Nahrání souboru do adresáře
 
 Nejprve si přečtěte soubor. V tomto příkladu se používá `fs` modul Node.js. Pak vytvořte odkaz na soubor v cílovém adresáři tak, že vytvoříte instanci **klienta** souborů a potom zavoláte metodu **klient. Create** . Nahrajte soubor voláním metody **klient. Append** . Ujistěte se, že jste dokončí nahrávání voláním metody **klient. Flush** .
@@ -201,7 +203,7 @@ async function UploadFile(fileSystemClient) {
 Nejprve vytvořte instanci **FileSystemClient** , která představuje soubor, který chcete stáhnout. K načtení souboru použijte metodu **FileSystemClient. Read** . Pak zapište soubor. V tomto příkladu se `fs` k tomu používá modul Node.js. 
 
 > [!NOTE]
-> Tato metoda stažení souboru funguje pouze pro Node.js aplikace. Pokud máte v úmyslu spustit kód v prohlížeči, přečtěte si soubor [Azure Storage soubor Data Lake klientské knihovny pro JavaScript](https://www.npmjs.com/package/@azure/storage-file-datalake) Readme, kde najdete příklad toho, jak to provést v prohlížeči. 
+> Tato metoda stažení souboru funguje pouze pro Node.js aplikace. Pokud máte v úmyslu spustit kód v prohlížeči, přečtěte si soubor [Azure Storage soubor Data Lake klientské knihovny pro JavaScript](https://www.npmjs.com/package/@azure/storage-file-datalake) Readme, kde najdete příklad toho, jak to provést v prohlížeči.
 
 ```javascript
 async function DownloadFile(fileSystemClient) {
@@ -253,125 +255,8 @@ async function ListFilesInDirectory(fileSystemClient) {
 }
 ```
 
-## <a name="manage-access-control-lists-acls"></a>Správa seznamů řízení přístupu (ACL)
-
-Můžete získat, nastavit a aktualizovat přístupová oprávnění adresářů a souborů.
-
-> [!NOTE]
-> Pokud k autorizaci přístupu používáte Azure Active Directory (Azure AD), ujistěte se, že je vašemu objektu zabezpečení přiřazená [role vlastníka dat objektu BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma  [řízení přístupu v Azure Data Lake Storage Gen2](./data-lake-storage-access-control.md).
-
-### <a name="manage-a-directory-acl"></a>Správa seznamu ACL adresáře
-
-Tento příklad načte a potom nastaví seznam řízení přístupu k adresáři s názvem `my-directory` . Tento příklad uděluje vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním přístup pro čtení.
-
-> [!NOTE]
-> Pokud vaše aplikace autorizuje přístup pomocí Azure Active Directory (Azure AD), ujistěte se, že se k objektu zabezpečení, který vaše aplikace používá k autorizaci přístupu, přiřadila [role vlastníka dat objektu BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma  [řízení přístupu v Azure Data Lake Storage Gen2](./data-lake-storage-access-control.md).
-
-```javascript
-async function ManageDirectoryACLs(fileSystemClient) {
-
-    const directoryClient = fileSystemClient.getDirectoryClient("my-directory"); 
-    const permissions = await directoryClient.getAccessControl();
-
-    console.log(permissions.acl);
-
-    const acl = [
-    {
-      accessControlType: "user",
-      entityId: "",
-      defaultScope: false,
-      permissions: {
-        read: true,
-        write: true,
-        execute: true
-      }
-    },
-    {
-      accessControlType: "group",
-      entityId: "",
-      defaultScope: false,
-      permissions: {
-        read: true,
-        write: false,
-        execute: true
-      }
-    },
-    {
-      accessControlType: "other",
-      entityId: "",
-      defaultScope: false,
-      permissions: {
-        read: true,
-        write: true,
-        execute: false
-      }
-
-    }
-
-  ];
-
-  await directoryClient.setAccessControl(acl);
-}
-```
-
-Můžete také získat a nastavit seznam ACL kořenového adresáře kontejneru. Chcete-li získat kořenový adresář, předejte prázdný řetězec ( `/` ) do metody **DataLakeFileSystemClient. getDirectoryClient** .
-
-### <a name="manage-a-file-acl"></a>Správa seznamu ACL souboru
-
-Tento příklad načte a potom nastaví seznam řízení přístupu k souboru s názvem `upload-file.txt` . Tento příklad uděluje vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním přístup pro čtení.
-
-> [!NOTE]
-> Pokud vaše aplikace autorizuje přístup pomocí Azure Active Directory (Azure AD), ujistěte se, že se k objektu zabezpečení, který vaše aplikace používá k autorizaci přístupu, přiřadila [role vlastníka dat objektu BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma  [řízení přístupu v Azure Data Lake Storage Gen2](./data-lake-storage-access-control.md).
-
-```javascript
-async function ManageFileACLs(fileSystemClient) {
-
-  const fileClient = fileSystemClient.getFileClient("my-directory/uploaded-file.txt"); 
-  const permissions = await fileClient.getAccessControl();
-
-  console.log(permissions.acl);
-
-  const acl = [
-  {
-    accessControlType: "user",
-    entityId: "",
-    defaultScope: false,
-    permissions: {
-      read: true,
-      write: true,
-      execute: true
-    }
-  },
-  {
-    accessControlType: "group",
-    entityId: "",
-    defaultScope: false,
-    permissions: {
-      read: true,
-      write: false,
-      execute: true
-    }
-  },
-  {
-    accessControlType: "other",
-    entityId: "",
-    defaultScope: false,
-    permissions: {
-      read: true,
-      write: true,
-      execute: false
-    }
-
-  }
-
-];
-
-await fileClient.setAccessControl(acl);        
-}
-```
-
 ## <a name="see-also"></a>Viz také
 
-* [Balíček (Správce balíčků uzlů)](https://www.npmjs.com/package/@azure/storage-file-datalake)
-* [ukázky](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)
-* [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-java/issues)
+- [Balíček (Správce balíčků uzlů)](https://www.npmjs.com/package/@azure/storage-file-datalake)
+- [ukázky](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)
+- [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-java/issues)

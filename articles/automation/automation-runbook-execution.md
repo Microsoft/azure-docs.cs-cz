@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 71273c456b14fa4ea289e2a48d441de99ce8a4b1
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: ca28d5829689dca46bbf3a94ce7c1591c20cf7b0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053903"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586038"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spouštění runbooků ve službě Azure Automation
 
@@ -85,18 +85,18 @@ Sada Runbook vyžaduje příslušné [přihlašovací údaje](shared-resources/c
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-Azure Automation využívá [Azure monitor](../azure-monitor/overview.md) ke sledování operací počítače. Operace vyžadují Log Analytics pracovní prostor a [agenta Log Analytics](../azure-monitor/platform/log-analytics-agent.md).
+Azure Automation využívá [Azure monitor](../azure-monitor/overview.md) ke sledování operací počítače. Operace vyžadují Log Analytics pracovní prostor a [agenta Log Analytics](../azure-monitor/agents/log-analytics-agent.md).
 
 ### <a name="log-analytics-agent-for-windows"></a>Agent Log Analytics pro Windows
 
-[Agent Log Analytics pro systém Windows](../azure-monitor/platform/agent-windows.md) spolupracuje s Azure monitor ke správě virtuálních počítačů a fyzických počítačů s Windows. Počítače můžou běžet v Azure nebo v prostředí mimo Azure, například v místním datovém centru.
+[Agent Log Analytics pro systém Windows](../azure-monitor/agents/agent-windows.md) spolupracuje s Azure monitor ke správě virtuálních počítačů a fyzických počítačů s Windows. Počítače můžou běžet v Azure nebo v prostředí mimo Azure, například v místním datovém centru.
 
 >[!NOTE]
 >Agent Log Analytics pro systém Windows byl dříve označován jako Microsoft Monitoring Agent (MMA).
 
 ### <a name="log-analytics-agent-for-linux"></a>Agent Log Analytics pro Linux
 
-[Agent Log Analytics pro Linux](../azure-monitor/platform/agent-linux.md) funguje podobně jako agent pro systém Windows, ale připojuje počítače se systémem linux k Azure monitor. Agent se instaluje s uživatelským účtem **nxautomation** , který umožňuje provedení příkazů vyžadujících oprávnění root, například na Hybrid Runbook Worker. Účet **nxautomation** je systémový účet, který nevyžaduje heslo.
+[Agent Log Analytics pro Linux](../azure-monitor/agents/agent-linux.md) funguje podobně jako agent pro systém Windows, ale připojuje počítače se systémem linux k Azure monitor. Agent se instaluje s uživatelským účtem **nxautomation** , který umožňuje provedení příkazů vyžadujících oprávnění root, například na Hybrid Runbook Worker. Účet **nxautomation** je systémový účet, který nevyžaduje heslo.
 
 Během [instalace procesu Hybrid Runbook](automation-linux-hrw-install.md)Worker pro Linux musí být přítomen účet **nxautomation** s odpovídajícími oprávněními sudo. Pokud se pokusíte nainstalovat pracovní proces a účet není přítomen nebo nemáte příslušná oprávnění, instalace se nezdařila.
 

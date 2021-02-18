@@ -10,12 +10,12 @@ ms.date: 2/11/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 7833656b9b9be45aa3a0f0a8aa45cd70f925ce73
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d006168de89a2709ed607568f36cacf5f924efcb
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379649"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653496"
 ---
 ## <a name="prerequisites"></a>Požadavky
 Než začnete, nezapomeňte:
@@ -120,6 +120,10 @@ let endpoint = "<ACS_RESOURCE_ENDPOINT>"
 
 Nahraďte `<ACS_RESOURCE_ENDPOINT>` koncovým bodem prostředku ACS.
 Nahraďte `<ACCESS_TOKEN>` platným přístupovým tokenem ACS.
+
+V tomto rychlém startu se nezabývá vytvořením vrstvy služby pro správu tokenů pro aplikaci Chat, i když se doporučuje. Další informace o [architektuře chatu](../../../concepts/chat/concepts.md) najdete v následující dokumentaci.
+
+Přečtěte si další informace o [tokenech přístupu uživatele](../../access-tokens.md).
 
 ## <a name="object-model"></a>Objektový model 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce služby Azure Communications Library chat pro JavaScript.

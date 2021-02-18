@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5e2f6d8ca1f3911959f396eb1ed77ce8377c0e3c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 9831f70a88aba497eb7d6a759233c3d7d7be62c6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807831"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585124"
 ---
 # <a name="azure-security-baseline-for-azure-synapse-analytics"></a>Základní hodnoty zabezpečení Azure pro Azure synapse Analytics
 
@@ -167,9 +167,9 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které souvisejí s vaším vyhrazeným fondem SQL. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -237,7 +237,7 @@ Auditování lze povolit na úrovni databáze nebo serveru a je navrženo, aby b
 
 * [Správa životního cyklu úložiště objektů blob v Azure](../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)
 
-* [Postup nastavení parametrů uchovávání protokolů v pracovním prostoru Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Postup nastavení parametrů uchovávání protokolů v pracovním prostoru Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 * [Zachytávání událostí streamování v Event Hubs](../event-hubs/event-hubs-capture-overview.md)
 
@@ -629,7 +629,7 @@ Autorizaci řídí členství v databázové roli vašeho uživatelského účtu
 
 Kromě toho můžete nastavit výstrahy pro databáze ve fondu SQL synapse pomocí Azure Portal. Když některá metrika (například velikost databáze nebo využití procesoru) dosáhne prahové hodnoty, můžou vám výstrahy poslat e-mail nebo zavolat webový Hook.
 
-* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
+* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Vytvoření upozornění pro Azure SQL synapse](../azure-sql/database/alerts-insights-configure-portal.md)
 

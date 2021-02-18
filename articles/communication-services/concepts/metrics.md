@@ -9,16 +9,16 @@ ms.author: mikben
 ms.date: 05/19/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e7ed4ba181d3730ebbea7725451567c93433afb8
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: edbf29b103a84240299f4a9f389a8c7a90012821
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251093"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572070"
 ---
 # <a name="metrics-overview"></a>Přehled metrik
 
-Komunikační služby Azure aktuálně poskytují metriky pro chat a SMS. Služba [Azure Průzkumník metrik](../../azure-monitor/platform/metrics-getting-started.md) se dá použít k seznámení s vlastními grafy, prozkoumání neobvyklých hodnot metrik a pochopení provozu rozhraní API pomocí dat metrik, která vygenerují požadavky v konverzaci a SMS.
+Komunikační služby Azure aktuálně poskytují metriky pro chat a SMS. Služba [Azure Průzkumník metrik](../../azure-monitor/essentials/metrics-getting-started.md) se dá použít k seznámení s vlastními grafy, prozkoumání neobvyklých hodnot metrik a pochopení provozu rozhraní API pomocí dat metrik, která vygenerují požadavky v konverzaci a SMS.
 
 ## <a name="where-to-find-metrics"></a>Kde najít metriky
 
@@ -30,7 +30,7 @@ Existují dva typy požadavků, které jsou zastoupeny v rámci metrik komunika�
 
 Metriky žádostí o rozhraní API pro chat a SMS obsahují tři dimenze, pomocí kterých můžete filtrovat data metrik. Tyto dimenze se dají agregovat společně pomocí `Count` typu agregace a podporují všechny standardní agregační časové řady Azure `Sum` , včetně, `Average` , `Min` a `Max` .
 
-Další informace o podporovaných typech agregace a agregacích časových řad najdete v [části Pokročilé funkce Azure Průzkumník metrik](../../azure-monitor/platform/metrics-charts.md#aggregation)
+Další informace o podporovaných typech agregace a agregacích časových řad najdete v [části Pokročilé funkce Azure Průzkumník metrik](../../azure-monitor/essentials/metrics-charts.md#aggregation)
 
 - **Operace** – všechny operace nebo trasy, které lze volat v bráně programu ACS chat.
 - **Stavový kód** – odpověď stavového kódu odeslaného po žádosti.
@@ -41,7 +41,7 @@ Další informace o podporovaných typech agregace a agregacích časových řad
 
 V metrikách žádostí rozhraní API chatu jsou k dispozici následující operace:
 
-| Operace/trasa    | Popis                                                                                    |
+| Operace/trasa    | Description                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | GetChatMessage       | Získá zprávu podle ID zprávy. |
 | ListChatMessages     | Načte seznam zpráv chatu z vlákna. |
@@ -68,7 +68,7 @@ Pokud se u operace, která není rozpoznaná, dostane požadavek, obdržíte odp
 
 V metrikách žádostí na rozhraní API služby SMS jsou k dispozici následující operace:
 
-| Operace/trasa    | Popis                                                                                    |
+| Operace/trasa    | Description                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | SMSMessageSent       | Odešle zprávu SMS. |
 | SMSDeliveryReportsReceived     | Načte sestavy doručení SMS. |
@@ -81,7 +81,7 @@ V metrikách žádostí na rozhraní API služby SMS jsou k dispozici následuj�
 
 V metrikách žádosti rozhraní API pro ověřování jsou dostupné tyto operace:
 
-| Operace/trasa    | Popis                                                                                    |
+| Operace/trasa    | Description                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | CreateIdentity       | Vytvoří identitu představující jednoho uživatele. |
 | DeleteIdentity       | Odstraní identitu. |
@@ -90,4 +90,4 @@ V metrikách žádosti rozhraní API pro ověřování jsou dostupné tyto opera
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [metrikách datových platforem](../../azure-monitor/platform/data-platform-metrics.md)
+- Další informace o [metrikách datových platforem](../../azure-monitor/essentials/data-platform-metrics.md)
