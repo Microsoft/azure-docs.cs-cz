@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e661b99e3c5028f40ea69ddedc22c7ee2895acec
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: b4e600581880ccca4f8716db02064e5bb353787c
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888721"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653777"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Zpracování událostí v komunikačních službách Azure
 
@@ -25,6 +25,9 @@ Komunikační služby Azure se integrují s [Azure Event Grid](https://azure.mic
 Azure Event Grid je plně spravovaná služba Směrování událostí, která používá model publikování a odběru. Event Grid obsahuje integrovanou podporu pro služby Azure, jako je [Azure Functions](../../azure-functions/functions-overview.md) a [Azure Logic Apps](../../azure-functions/functions-overview.md). Může doručovat výstrahy událostí na služby mimo Azure pomocí webhooků. Úplný seznam obslužných rutin událostí, které Event Grid podporuje, najdete v [úvodu k Azure Event Grid](../../event-grid/overview.md).
 
 :::image type="content" source="https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png" alt-text="Diagram znázorňující model události Azure Event Grid":::
+
+> [!NOTE]
+> Další informace o tom, jak se data zajišťují v souvislosti s zpracováním událostí, najdete v [Koncepční dokumentaci k datům o sídle](./privacy.md) .
 
 ## <a name="events-types"></a>Typy událostí
 

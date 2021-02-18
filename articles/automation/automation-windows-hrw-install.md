@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 09c86e23379cf9ccecf77d88a99ad6b3a7019a87
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: f6858c7350e6c72a096b2f2bd5f4a4ff606bf023
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100006985"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651353"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker Windows
 
-Pomocí funkce User Hybrid Runbook Worker of Azure Automation můžete spouštět Runbooky přímo na počítačích Azure nebo mimo Azure, včetně serverů zaregistrovaných u [serverů s podporou ARC Azure](../azure-arc/servers/overview.md). Z počítače nebo serveru, který je hostitelem role, můžete spouštět Runbooky přímo a s prostředky v prostředí pro správu těchto místních prostředků.
+Pomocí funkce User Hybrid Runbook Worker Azure Automation můžete spouštět Runbooky přímo na počítačích Azure nebo mimo Azure, včetně serverů zaregistrovaných u [serverů s podporou ARC Azure](../azure-arc/servers/overview.md). Z počítače nebo serveru, který je hostitelem role, můžete spouštět Runbooky přímo proti němu a k prostředkům v prostředí pro správu těchto místních prostředků.
 
 Azure Automation ukládá a spravuje Runbooky a pak je doručí do jednoho nebo více určených počítačů. Tento článek popisuje, jak nasadit Hybrid Runbook Worker uživatelů na počítač s Windows, jak odebrat pracovní proces a jak odebrat skupinu Hybrid Runbook Worker.
 
@@ -26,13 +26,13 @@ Než začnete, ujistěte se, že máte následující.
 
 ### <a name="a-log-analytics-workspace"></a>Pracovní prostor Log Analytics
 
-Role Hybrid Runbook Worker závisí na pracovním prostoru Azure Monitor Log Analytics k instalaci a konfiguraci role. Můžete ji vytvořit prostřednictvím [Azure Resource Manager](../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace), prostřednictvím [PowerShellu](../azure-monitor/scripts/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)nebo v [Azure Portal](../azure-monitor/learn/quick-create-workspace.md).
+Role Hybrid Runbook Worker závisí na pracovním prostoru Azure Monitor Log Analytics k instalaci a konfiguraci role. Můžete ji vytvořit prostřednictvím [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace), prostřednictvím [PowerShellu](../azure-monitor/logs/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)nebo v [Azure Portal](../azure-monitor/logs/quick-create-workspace.md).
 
-Pokud nemáte pracovní prostor Azure Monitor Log Analytics, před vytvořením pracovního prostoru si přečtěte téma [Průvodce návrhem protokolu Azure monitor](../azure-monitor/platform/design-logs-deployment.md) .
+Pokud nemáte pracovní prostor Azure Monitor Log Analytics, před vytvořením pracovního prostoru si přečtěte téma [Průvodce návrhem protokolu Azure monitor](../azure-monitor/logs/design-logs-deployment.md) .
 
 ### <a name="log-analytics-agent"></a>Agent Log Analytics
 
-Role Hybrid Runbook Worker vyžaduje, aby byl [Agent pro Log Analytics](../azure-monitor/platform/log-analytics-agent.md) podporovaný operačním systémem Windows. U serverů nebo počítačů hostovaných mimo Azure můžete agenta Log Analytics nainstalovat pomocí [serverů s podporou ARC Azure](../azure-arc/servers/overview.md).
+Role Hybrid Runbook Worker vyžaduje, aby byl [Agent pro Log Analytics](../azure-monitor/agents/log-analytics-agent.md) podporovaný operačním systémem Windows. U serverů nebo počítačů hostovaných mimo Azure můžete agenta Log Analytics nainstalovat pomocí [serverů s podporou ARC Azure](../azure-arc/servers/overview.md).
 
 ### <a name="supported-windows-operating-system"></a>Podporovaný operační systém Windows
 

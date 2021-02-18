@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 4d3781c7a3894429cb5daccb334655543e3eea01
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: af42b83fc005397d4564b7570eedaff0305a8bc8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100552141"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653536"
 ---
 ## <a name="prerequisites"></a>Požadavky
 Než začnete, nezapomeňte:
@@ -88,24 +88,7 @@ Vytvořte soubor v kořenovém adresáři vašeho projektu s názvem **client.js
 
 Pokud chcete ve webové aplikaci vytvořit chatovacího klienta, použijte **koncový bod** komunikační služby a **přístupový token** , který byl vygenerován jako součást požadavků. 
 
-Tokeny přístupu uživatele umožňují vytvářet klientské aplikace, které se přímo ověřují na komunikačních službách Azure.
-
-##### <a name="server-vs-client-side"></a>Server vs. strana klienta
-
-K vygenerování přístupových tokenů doporučujeme použít komponentu na straně serveru, která je předává klientské aplikaci. V tomto scénáři by strana na straně serveru byla zodpovědná za vytváření a správu uživatelů a vydávání tokenů. Na straně klienta potom může získat přístupové tokeny ze služby a použít je k ověření klientských knihoven služby Azure Communication Services.
-
-Tokeny je také možné vystavit na straně klienta pomocí knihovny pro správu komunikace Azure pro JavaScript. V tomto scénáři by strana klienta musela znát uživatele, aby vydávala své tokeny.
-
-Další informace o [architektuře klientů a serverů](../../../concepts/client-and-server-architecture.md) najdete v následující dokumentaci.
-
-V diagramu pod aplikací na straně klienta obdrží přístupový token z úrovně důvěryhodné služby. Aplikace pak pomocí tokenu ověří knihovny komunikačních služeb. Po ověření může aplikace nyní použít klientské knihovny služby Communications Services k provádění operací, jako je například konverzace s ostatními uživateli.
-
-:::image type="content" source="../../../media/scenarios/archdiagram-access.png" alt-text="Diagram znázorňující architekturu tokenu uživatelského přístupu":::
-
-##### <a name="instructions"></a>Pokyny
-Tato ukázka nepokrývá vytvoření vrstvy služby pro vaši aplikaci chatu. 
-
-Pokud jste vygenerovali uživatele a jejich tokeny, postupujte podle těchto pokynů: [token přístupu uživatele](../../access-tokens.md). Nezapomeňte nastavit rozsah na "chat", nikoli "VoIP".
+Tokeny přístupu uživatele umožňují vytvářet klientské aplikace, které se přímo ověřují na komunikačních službách Azure. V tomto rychlém startu se nezabývá vytvořením úrovně služby pro správu tokenů pro vaši aplikaci chatu. Další informace o architektuře s přístupovými tokeny najdete v tématu věnovaném [konceptům](../../../concepts/chat/concepts.md) chatu a na [tokenech přístupu uživatele](../../access-tokens.md) .
 
 V následujícím kódu **client.js** pomocí koncového bodu a přístupového tokenu přidat funkci chatu pomocí klientské knihovny služby Azure Communications chat pro JavaScript.
 
@@ -142,7 +125,7 @@ Azure Communication Chat client created!
 ## <a name="object-model"></a>Objektový model 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce služby Azure Communications Library chat pro JavaScript.
 
-| Název                                   | Popis                                                                                                                                                                           |
+| Název                                   | Description                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ChatClient | Tato třída je potřebná pro funkci chatu. Vytvoří se jeho instance s informacemi o předplatném a použije se k vytváření, získávání a odstraňování vláken. |
 | ChatThreadClient | Tato třída je potřebná pro funkci konverzačního vlákna. Získáte instanci prostřednictvím ChatClient a použijete ji k posílání, přijímání, aktualizaci a odstraňování zpráv, přidávání, odebírání a získávání uživatelů, odesílání oznámení o přečtení a čtení a čtení a k odběru událostí chatu. |

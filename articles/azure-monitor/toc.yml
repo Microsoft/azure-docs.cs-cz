@@ -68,7 +68,7 @@
     - name: Šablony Resource Manageru
       items:
         - name: Přehled
-          href: /resource-manager-samples.md
+          href: resource-manager-samples.md
         - name: Agenti
           href: agents/resource-manager-agent.md
         - name: Výstrahy
@@ -102,9 +102,9 @@
         - name: Azure Monitor pro virtuální počítače
           href: vm/resource-manager-vminsights.md
     - name: Azure CLI
-      href: /cli-samples.md
+      href: cli-samples.md
     - name: Azure PowerShell
-      href: /powershell-samples.md
+      href: powershell-samples.md
 - name: Koncepty
   items:
     - name: Co můžete monitorovat?
@@ -114,7 +114,7 @@
     - name: Zdroje dat
       href: agents/data-sources.md
     - name: Platforma dat
-      href: /data-platform.md
+      href: data-platform.md
     - name: Zabezpečení dat
       items:
         - name: Protokolování dat
@@ -142,7 +142,7 @@
     - name: Vizualizace dat
       href: visualizations.md
     - name: Integrace partnerů
-      href: /partners.md
+      href: partners.md
     - name: Zabezpečení
       items:
         - name: Standardní hodnoty zabezpečení
@@ -169,14 +169,14 @@
     - name: Správa a konfigurace
       items:
         - name: Zabezpečení a oprávnění rolí
-          href: /roles-permissions-security.md
+          href: roles-permissions-security.md
         - name: IP adresy
           href: app/ip-addresses.md
           displayname: 'firewall, firewall exceptions, whitelist'
         - name: Využití a náklady
           items:
             - name: Využití a odhadované náklady
-              href: /usage-estimated-costs.md
+              href: usage-estimated-costs.md
             - name: Náklady a využití aplikací
               href: app/pricing.md
             - name: Protokolování nákladů a využití dat
@@ -1399,7 +1399,7 @@
           href: /azure/templates/microsoft.operationalinsights/allversions
     - name: Integrované služby Azure Policy
       displayName: 'samples, policies, definitions'
-      href: /policy-reference.md
+      href: policy-reference.md
     - name: Vyřazení funkcí a rozhraní API z provozu
       items:
         - name: Rozhraní API OperationalInsights

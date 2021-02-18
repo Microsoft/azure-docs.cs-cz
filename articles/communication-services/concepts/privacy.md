@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a047761669920d6460c3d6fb6d74b970effa7846
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5ea4e4fcce380a3bd9c30312639f7aa10bf0bb90
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572029"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653461"
 ---
 # <a name="region-availability-and-data-residency"></a>Rezidence dat a dostupnost oblastí
 
@@ -23,7 +23,11 @@ Komunikační služby Azure se zavazují, aby naši zákazníci mohli splnit po�
 
 ## <a name="data-residency"></a>Rezidence dat
 
-Při vytváření prostředku komunikačních služeb zadáte **geografickou** hodnotu (ne datové centrum Azure). Všechna data uložená v rámci služby Communication Services v klidovém znění budou v tomto geografickém umístění zachována v datovém centru, které je vybráno interně komunikačními službami Data však mohou být přenášena nebo zpracována v jiných zeměpisných oblastech. Tyto globální koncové body jsou nezbytné k zajištění vysoce výkonného prostředí s nízkou latencí pro koncové uživatele bez ohledu na jejich umístění.
+Při vytváření prostředku komunikačních služeb zadáte **geografickou** hodnotu (ne datové centrum Azure). Všechna data uložená v rámci služby Communication Services v klidovém znění budou v tomto geografickém umístění zachována v datovém centru, které je vybráno interně komunikačními službami Data mohou být přepravována nebo zpracována v jiných geografických oblastech. Tyto globální koncové body jsou nezbytné k zajištění vysoce výkonného prostředí s nízkou latencí pro koncové uživatele bez ohledu na jejich umístění.
+
+## <a name="data-residency-and-events"></a>Zasídlení dat a události
+
+Všechna Event Grid systémová témata nakonfigurovaná pomocí komunikačních služeb Azure budou vytvořena v globálním umístění. Pro podporu spolehlivého doručování může globální Event Grid systému ukládat data událostí do libovolného datového centra společnosti Microsoft. Když nakonfigurujete Event Grid s komunikačními službami Azure, dodáváte data události do Event Grid, což je prostředek Azure pod vaším ovládacím prvkem. I když může být služba Azure Communication Services nakonfigurovaná tak, aby využívala Azure Event Grid, zodpovídáte za správu prostředků Event Grid a dat uložených v této službě.
 
 ## <a name="relating-humans-to-azure-communication-services-identities"></a>Identity spojené s lidmi a službami Azure Communication Services
 

@@ -1,29 +1,36 @@
 ---
-title: Jak povolit prostředek řešení Azure VMware
-description: Přečtěte si, jak odeslat žádost o podporu pro povolení prostředku řešení Azure VMware. V existujícím privátním cloudu řešení Azure VMware si také můžete vyžádat další hostitele.
+title: Požádat o kvótu hostitele a povolit řešení Azure VMware
+description: Přečtěte si, jak požádat o kvótu a kapacitu hostitele a povolit poskytovatele prostředků řešení Azure VMware. Můžete také požádat o další hostitele v existujícím privátním cloudu řešení Azure VMware.
 ms.topic: how-to
-ms.date: 11/12/2020
-ms.openlocfilehash: 6d614dffc4ab3127e1e6740b1a8773e5fd7c23ff
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.custom: contperf-fy21q3
+ms.date: 02/17/2021
+ms.openlocfilehash: 5d154f5c63ffccdbf1729e641133b54be478d884
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630883"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653158"
 ---
-# <a name="how-to-enable-azure-vmware-solution-resource"></a>Jak povolit prostředek řešení Azure VMware
-Přečtěte si, jak odeslat žádost o podporu pro povolení prostředku [Řešení Azure VMware](introduction.md) . V existujícím privátním cloudu řešení Azure VMware si také můžete vyžádat další hostitele.
+# <a name="request-host-quota-and-enable-azure-vmware-solution"></a>Požádat o kvótu hostitele a povolit řešení Azure VMware
+
+V tomto postupu se naučíte, jak požádat o kvótu a kapacitu hostitele a povolit poskytovatele prostředků [Řešení Azure VMware](introduction.md) , který službu povoluje. Než budete moct povolit řešení Azure VMware, budete muset odeslat lístek podpory, aby se vaši hostitelé přidělili. Pokud máte existující privátní cloud řešení Azure VMware a chcete přidělit více hostitelů, budete postupovat podle stejného postupu.
+
+>[!IMPORTANT]
+>Přidělení hostitelů může trvat několik dní v závislosti na požadovaném počtu.  Proto si požádejte o to, co je potřeba k zřizování, takže nemusíte vyžádat zvýšení kvóty často.
+
+
+Celkový proces je jednoduchý a obsahuje dva kroky:
+- Požádat o další kvótu hostitele nebo kapacitu pro zákazníky se [smlouvou EA](#request-host-quota-for-ea-customers) nebo pro [zákazníky CSP](#request-host-quota-for-csp-customers) 
+- Povolení poskytovatele prostředků Microsoft. AVS
 
 ## <a name="eligibility-criteria"></a>Kritéria způsobilosti
 
-Budete potřebovat účet Azure v předplatném Azure. Předplatné Azure musí splňovat jedno z následujících kritérií:
+Budete potřebovat účet Azure v předplatném Azure. Předplatné Azure musí následovat po jednom z následujících kritérií:
 
-* Předplatné v rámci [Azure smlouva Enterprise (EA)](../cost-management-billing/manage/ea-portal-agreements.md) s Microsoftem.
-* Předplatné spravované poskytovatelem Cloud Solution Provider (CSP) v rámci existujícího zprostředkovatele CSP Azure nabízí smlouvu nebo plán Azure.
+- Předplatné v rámci [Azure smlouva Enterprise (EA)](../cost-management-billing/manage/ea-portal-agreements.md) s Microsoftem.
+- Předplatné spravované poskytovatelem Cloud Solution Provider (CSP) v rámci existujícího zprostředkovatele CSP Azure nabízí smlouvu nebo plán Azure.
 
-
-## <a name="enable-azure-vmware-solution-for-ea-customers"></a>Povolit řešení Azure VMware pro zákazníky se smlouvou EA
-Před vytvořením prostředku řešení Azure VMware budete muset odeslat lístek podpory, který bude mít přidělené hostitele. Jakmile tým podpory obdrží vaši žádost, trvá vám až pět pracovních dní, aby vaši žádost zkontroloval a rozdělila své hostitele. Pokud máte existující privátní cloud řešení Azure VMware a chcete přidělit více hostitelů, Projděte si stejný postup.
-
+## <a name="request-host-quota-for-ea-customers"></a>Požádat o kvótu hostitele pro zákazníky se smlouvou EA
 
 1. V Azure Portal v části **pomoc a podpora** vytvořte **[novou žádost o podporu](https://rc.portal.azure.com/#create/Microsoft.Support)** a zadejte pro lístek následující informace:
    - **Typ problému:** Odbornou
@@ -46,84 +53,65 @@ Před vytvořením prostředku řešení Azure VMware budete muset odeslat líst
 
 1. Kliknutím na tlačítko **zkontrolovat + vytvořit** odešlete žádost.
 
-   Může trvat až pět pracovních dnů, než se zástupce podpory potvrdí vaší žádosti.
 
-   >[!IMPORTANT] 
-   >Pokud už máte nějaké řešení Azure VMware a požadujete další hostitele, je potřeba si uvědomit, že k přidělení hostitelů potřebujeme pět pracovních dnů. 
-
-1. Než budete moci zřídit hostitele, nezapomeňte zaregistrovat poskytovatele prostředků **Microsoft. AVS** v Azure Portal.  
-
-   ```azurecli-interactive
-   az provider register -n Microsoft.AVS --subscription <your subscription ID>
-   ```
-
-   Další způsoby registrace poskytovatele prostředků najdete v tématu [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md).
-
-## <a name="enable-azure-vmware-solution-for-csp-customers"></a>Povolit řešení Azure VMware pro zákazníky CSP 
+## <a name="request-host-quota-for-csp-customers"></a>Požádat o kvótu hostitele pro zákazníky CSP 
 
 Poskytovatelé CSP musí používat [Partnerské centrum Microsoftu](https://partner.microsoft.com) k povolení řešení Azure VMware pro své zákazníky. Tento článek používá [plán Azure CSP](/partner-center/azure-plan-lp) jako příklad k ilustraci kupního postupu pro partnery.
 
-   >[!IMPORTANT] 
-   >Služba řešení Azure VMware neposkytuje víceklientské požadavky. Hostující partneři vyžadují, aby se nepodporovali. 
+Přístup k Azure Portal pomocí procedury **správce jménem** (administrate) z partnerského centra.
 
-1. V **partnerském centru** vyberte **CSP** pro přístup k oblasti **Customers** .
+>[!IMPORTANT] 
+>Služba řešení Azure VMware neposkytuje víceklientské požadavky. Hostující partneři vyžadují, aby se nepodporovali. 
 
-   :::image type="content" source="media/enable-azure-vmware-solution/csp-customers-screen.png" alt-text="Oblast pro zákazníky partnerského centra Microsoftu" lightbox="media/enable-azure-vmware-solution/csp-customers-screen.png":::
+1. Konfigurace plánu Azure CSP:
 
-1. Vyberte zákazníka a pak vyberte **Přidat produkty**.
+   1. V **partnerském centru** vyberte **CSP** pro přístup k oblasti **Customers** .
+   
+      :::image type="content" source="media/enable-azure-vmware-solution/csp-customers-screen.png" alt-text="Oblast pro zákazníky partnerského centra Microsoftu" lightbox="media/enable-azure-vmware-solution/csp-customers-screen.png":::
+   
+   1. Vyberte zákazníka a pak vyberte **Přidat produkty**.
+   
+      :::image type="content" source="media/enable-azure-vmware-solution/csp-partner-center.png" alt-text="Partnerské centrum Microsoftu" lightbox="media/enable-azure-vmware-solution/csp-partner-center.png":::
+   
+   1. Vyberte **plán Azure** a pak vyberte **Přidat do košíku**. 
+   
+   1. Přečtěte si a dokončete Obecné nastavení předplatného Azure Plan pro vašeho zákazníka. Další informace najdete v [dokumentaci k Microsoft Partner Center](/partner-center/azure-plan-manage).
 
-   :::image type="content" source="media/enable-azure-vmware-solution/csp-partner-center.png" alt-text="Partnerské centrum Microsoftu" lightbox="media/enable-azure-vmware-solution/csp-partner-center.png":::
+1. Až nakonfigurujete plán Azure a máte pro toto předplatné potřebná [oprávnění pro Azure RBAC](/partner-center/azure-plan-manage) , vyžádáte si kvótu pro předplatné plánu Azure. 
 
-1. Vyberte **plán Azure** a pak vyberte **Přidat do košíku**. 
+   1. Přístup k Azure Portal z [partnerského centra Microsoftu](https://partner.microsoft.com) pomocí postupu **správce jménem** (administrate).
+   
+   1. Vyberte **CSP** pro přístup k oblasti **Customers** .
+   
+   1. Rozbalte položku Podrobnosti o zákazníkovi a vyberte **portál pro správu Microsoft Azure**.
+   
+   1. V Azure Portal v části **pomoc a podpora** vytvořte **[novou žádost o podporu](https://rc.portal.azure.com/#create/Microsoft.Support)** a zadejte pro lístek následující informace:
+      - **Typ problému:** Odbornou
+      - **Předplatné:** Vyberte své předplatné.
+      - **Služba:** Všechny služby > řešení Azure VMware
+      - **Prostředek:** Obecná otázka 
+      - **Shrnutí:** Potřebná kapacita
+      - **Typ problému:** Problémy se správou kapacity
+      - **Podtyp problému:** Požadavek zákazníka na další kvótu/kapacitu hostitele
+   
+   1. V **popisu** lístku podpory zadejte na kartě **Podrobnosti** :
+   
+      - KONCEPCE nebo produkce 
+      - Název oblasti
+      - Počet hostitelů
+      - Všechny další podrobnosti
+      - Je určeno k hostování více zákazníků?
+   
+      >[!NOTE]
+      >Řešení Azure VMware doporučuje minimálně tři hostitele, aby se nastavil váš privátní cloud a redundance N + 1 hostitelů. 
+   
+   1. Kliknutím na tlačítko **zkontrolovat + vytvořit** odešlete žádost.
 
-1. Přečtěte si a dokončete Obecné nastavení předplatného Azure pro vaše zákazníky. Další informace najdete v [dokumentaci k Microsoft Partner Center](/partner-center/azure-plan-manage).
+## <a name="register-the-microsoftavs-resource-provider"></a>Zaregistrujte poskytovatele prostředků **Microsoft. AVS** .
 
-Po nakonfigurování plánu Azure a nastavení potřebných [oprávnění Azure RBAC](/partner-center/azure-plan-manage) pro předplatné zahájíte Microsoftu, aby se povolila kvóta pro předplatné plánu Azure. Přístup k Azure Portal z [partnerského centra Microsoftu](https://partner.microsoft.com) pomocí postupu Administrate ( **admin) jménem uživatele** ().
-
-1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com).
-
-1. Vyberte **CSP** pro přístup k oblasti **Customers** .
-
-1. Rozbalte položku Podrobnosti o zákazníkovi a vyberte **portál pro správu Microsoft Azure**.
-
-1. V Azure Portal v části **pomoc a podpora** vytvořte **[novou žádost o podporu](https://rc.portal.azure.com/#create/Microsoft.Support)** a zadejte pro lístek následující informace:
-   - **Typ problému:** Odbornou
-   - **Předplatné:** Vyberte své předplatné.
-   - **Služba:** Všechny služby > řešení Azure VMware
-   - **Prostředek:** Obecná otázka 
-   - **Shrnutí:** Potřebná kapacita
-   - **Typ problému:** Problémy se správou kapacity
-   - **Podtyp problému:** Požadavek zákazníka na další kvótu/kapacitu hostitele
-
-1. V **popisu** lístku podpory zadejte na kartě **Podrobnosti** :
-
-   - KONCEPCE nebo produkce 
-   - Název oblasti
-   - Počet hostitelů
-   - Všechny další podrobnosti
-   - Je určeno k hostování více zákazníků?
-
-   >[!NOTE]
-   >Řešení Azure VMware doporučuje minimálně tři hostitele, aby se nastavil váš privátní cloud a redundance N + 1 hostitelů. 
-
-1. Kliknutím na tlačítko **zkontrolovat + vytvořit** odešlete žádost.
-
-   Může trvat až pět pracovních dnů, než se zástupce podpory potvrdí vaší žádosti.
-
-   >[!IMPORTANT] 
-   >Pokud už máte nějaké řešení Azure VMware a požadujete další hostitele, je potřeba si uvědomit, že k přidělení hostitelů potřebujeme pět pracovních dnů. 
-
-1. Pokud je předplatné spravováno poskytovatelem služeb, musí mít tým pro správu přístup k Azure Portal postupovat podle pokynů **správce** (administrate) z partnerského centra. Jednu z Azure Portal spustit instanci [Cloud Shell](../cloud-shell/overview.md) a zaregistrovat poskytovatele prostředků **Microsoft. AVS** a pokračovat v nasazení privátního cloudu řešení Azure VMware.  
-
-   ```azurecli-interactive
-   az provider register -n Microsoft.AVS --subscription <your subscription ID>
-   ```
-
-   Další způsoby registrace poskytovatele prostředků najdete v tématu [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md).
-
-1. Pokud je předplatné přímo spravované zákazníkem, musí registrace poskytovatele prostředků **Microsoft. AVS** provést uživatel s dostatečnými oprávněními v rámci předplatného. Další informace a způsoby, jak registrovat poskytovatele prostředků, najdete v tématu [poskytovatelé prostředků a typy Azure](../azure-resource-manager/management/resource-providers-and-types.md) . 
+[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Po povolení prostředku řešení Azure VMware a máte k dispozici správné sítě, můžete [vytvořit privátní cloud](tutorial-create-private-cloud.md).
+Po povolení prostředku a správné síťové sítě můžete [vytvořit privátní cloud](tutorial-create-private-cloud.md).

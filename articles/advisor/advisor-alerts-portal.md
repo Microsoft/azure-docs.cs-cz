@@ -3,18 +3,18 @@ title: Vytváření výstrah Azure Advisor pro nová doporučení pomocí Azure 
 description: Vytvořit upozornění Azure Advisor pro nové doporučení
 ms.topic: article
 ms.date: 09/09/2019
-ms.openlocfilehash: 837f12a12e532902ee76e345afa430f758f79c10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c51479821914ef34edcd13d8708344169f17aae
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90973649"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590104"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>Vytváření Azure Advisor upozornění na nová doporučení pomocí Azure Portal 
 
 V tomto článku se dozvíte, jak nastavit upozornění pro nová doporučení od Azure Advisor pomocí Azure Portal. 
 
-Kdykoli Azure Advisor zjistí nové doporučení pro jeden z vašich prostředků, uloží se do [protokolu aktivit Azure](../azure-monitor/platform/platform-logs-overview.md). Pro tyto události můžete nastavit výstrahy z Azure Advisor pomocí prostředí pro vytváření výstrah specifických pro doporučení. Můžete vybrat předplatné a volitelně také skupinu prostředků a určit prostředky, na které chcete dostávat výstrahy. 
+Kdykoli Azure Advisor zjistí nové doporučení pro jeden z vašich prostředků, uloží se do [protokolu aktivit Azure](../azure-monitor/essentials/platform-logs-overview.md). Pro tyto události můžete nastavit výstrahy z Azure Advisor pomocí prostředí pro vytváření výstrah specifických pro doporučení. Můžete vybrat předplatné a volitelně také skupinu prostředků a určit prostředky, na které chcete dostávat výstrahy. 
 
 Můžete také určit typy doporučení pomocí těchto vlastností:
 
@@ -27,13 +27,13 @@ Můžete taky nakonfigurovat akci, která se provede, když se aktivuje výstrah
 * Výběr existující skupiny akcí
 * Vytváří se nová skupina akcí.
 
-Další informace o skupinách akcí naleznete v tématu [Create and Manage Action Groups](../azure-monitor/platform/action-groups.md).
+Další informace o skupinách akcí naleznete v tématu [Create and Manage Action Groups](../azure-monitor/alerts/action-groups.md).
 
 > [!NOTE] 
 > Výstrahy služby Advisor jsou momentálně dostupné jenom pro doporučení vysoké dostupnosti, výkonu a nákladů. Doporučení zabezpečení nejsou podporovaná. 
 
 ## <a name="create-alert-rule"></a>Vytvořit pravidlo výstrahy
-1. Na **portálu**vyberte **Azure Advisor**.
+1. Na **portálu** vyberte **Azure Advisor**.
 
     ![Azure Advisor na portálu](./media/advisor-alerts/create1.png)
 
@@ -57,7 +57,7 @@ Další informace o skupinách akcí naleznete v tématu [Create and Manage Acti
 
     ![Skupina akcí výstrah Advisoru](./media/advisor-alerts/create6.png)
 
-7. V části **skupiny akcí** vyberte **Přidat existující** a použijte skupinu akcí, kterou jste už vytvořili, nebo vyberte **vytvořit novou** a nastavte novou [skupinu akcí](../azure-monitor/platform/action-groups.md). 
+7. V části **skupiny akcí** vyberte **Přidat existující** a použijte skupinu akcí, kterou jste už vytvořili, nebo vyberte **vytvořit novou** a nastavte novou [skupinu akcí](../azure-monitor/alerts/action-groups.md). 
 
     ![Upozornění poradce přidat existující](./media/advisor-alerts/create7.png)
 
@@ -185,13 +185,13 @@ Mezi další důležitá pole, která byste mohli chtít použít, patří:
 
 Z Azure Advisor můžete výstrahy pro doporučení upravit, odstranit nebo zakázat a povolit. 
 
-1. Na **portálu**vyberte **Azure Advisor**.
+1. Na **portálu** vyberte **Azure Advisor**.
 
-    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="Snímek obrazovky oddílu podrobností výstrahy":::
+    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="Snímek obrazovky Azure Portal nabídky zobrazující Azure Advisor vybrané.":::
 
 2. V části **monitorování** v levé nabídce vyberte **výstrahy**.
 
-    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="Snímek obrazovky oddílu podrobností výstrahy":::
+    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="Snímek obrazovky nabídky Azure Portal s vybranými výstrahami":::
 
 3. Chcete-li upravit výstrahu, kliknutím na název výstrahy otevřete výstrahu a upravte pole, která chcete upravit.
 
@@ -199,5 +199,5 @@ Z Azure Advisor můžete výstrahy pro doporučení upravit, odstranit nebo zak�
  
 
 ## <a name="next-steps"></a>Další kroky
-- Získejte [Přehled výstrah protokolu aktivit](../azure-monitor/platform/alerts-overview.md)a Naučte se přijímat výstrahy.
-- Přečtěte si další informace o [skupinách akcí](../azure-monitor/platform/action-groups.md).
+- Získejte [Přehled výstrah protokolu aktivit](../azure-monitor/alerts/alerts-overview.md)a Naučte se přijímat výstrahy.
+- Přečtěte si další informace o [skupinách akcí](../azure-monitor/alerts/action-groups.md).

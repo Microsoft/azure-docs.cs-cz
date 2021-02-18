@@ -3,20 +3,20 @@ title: Azure Automation typy runbooků
 description: Tento článek popisuje typy sad Runbook, které lze použít v Azure Automation a požadavky na určení typu, který se má použít.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/08/2021
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: c1398d25b6d2540abea0012acd69555e5e53e25c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 067096943cd95913077ada817c94640ff5264520
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050965"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634885"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation typy runbooků
 
 Funkce automatizace procesu Azure Automation podporuje několik typů sad Runbook, jak je definováno v následující tabulce. Další informace o prostředí automatizace procesu naleznete v tématu [Spuštění Runbooku v Azure Automation](automation-runbook-execution.md).
 
-| Typ | Popis |
+| Typ | Description |
 |:--- |:--- |
 | [Grafický](#graphical-runbooks)|Grafická sada Runbook založená na prostředí Windows PowerShell a vytvořena a upravována zcela v grafickém editoru v Azure Portal. |
 | [Grafický pracovní postup PowerShellu](#graphical-runbooks)|Grafická sada Runbook založená na pracovním postupu prostředí Windows PowerShell a vytvořená a upravená úplně v grafickém editoru v Azure Portal. |
@@ -101,6 +101,11 @@ Runbooky pracovních postupů PowerShellu jsou textové Runbooky založené na [
 ## <a name="python-runbooks"></a>Runbooky Python
 
 Runbooky Pythonu jsou kompilovány v Pythonu 2 a Python 3. Sady Python 3 Runbooky jsou momentálně ve verzi Preview. Můžete přímo upravit kód sady Runbook pomocí textového editoru v Azure Portal. Můžete také použít textový editor offline a [importovat Runbook](manage-runbooks.md) do Azure Automation.
+
+Sady Runbook Python 3 jsou podporovány v následujících globálních infrastrukturách Azure:
+
+* Globální Azure
+* Azure Government
 
 ### <a name="advantages"></a>Výhody
 

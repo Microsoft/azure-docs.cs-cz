@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/26/2021
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 9f39988375f58f75dad2b623cd3d937022a072e7
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: c4861192c7f2bbfb2a51e19b88daee45b501949b
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806186"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634766"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
 
@@ -101,7 +101,7 @@ Ochrana před hrozbami Security Center vám umožní detekovat a bránit hrozbá
 
 Ochrana před hrozbami Security Center zahrnuje analýzu dezaktivačního řetězu fúze, která automaticky koreluje výstrahy ve vašem prostředí založené na počítačové analýze dezaktivačního řetězu, které vám pomůžou lépe pochopit úplný příběh k útokům na útoky, kde začaly a jaký má dopad na vaše prostředky.
 
-:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Výstrahy zabezpečení":::
+:::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Seznam výstrah zabezpečení Azure Security Center":::
 
 ### <a name="integration-with-microsoft-defender-for-endpoint"></a>Integrace s Microsoft Defenderem pro koncový bod
 

@@ -3,16 +3,16 @@ title: Získání přehledů pomocí centra zálohování
 description: Naučte se analyzovat historické trendy a získat hlubší přehled o zálohách pomocí centra zálohování.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: c5f707ce3bc8d1172805ac14958a50bf59d1412d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 3086224e4dbb1be2ccfadbfcfcb7441b68a5ff6b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98893689"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592021"
 ---
 # <a name="obtain-insights-using-backup-center-preview"></a>Získání přehledů pomocí centra zálohování (Preview)
 
-K analýze historických trendů a získání hlubších přehledů o zálohách poskytuje centrum zálohování rozhraní pro [zálohování sestav (Preview)](configure-reports.md), které používá [protokoly Azure monitor](../azure-monitor/platform/data-platform-logs.md) a [sešity Azure](../azure-monitor/platform/workbooks-overview.md). Sestavy zálohování nabízí následující možnosti:
+K analýze historických trendů a získání hlubších přehledů o zálohách poskytuje centrum zálohování rozhraní pro [zálohování sestav (Preview)](configure-reports.md), které používá [protokoly Azure monitor](../azure-monitor/logs/data-platform-logs.md) a [sešity Azure](../azure-monitor/visualize/workbooks-overview.md). Sestavy zálohování nabízí následující možnosti:
 
 - Přidělování a prognózování spotřebovaného cloudového úložiště.
 

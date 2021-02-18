@@ -4,14 +4,14 @@ description: Zjistěte, jak vytvořit cluster Microsoft Azure Red Hat OpenShift 
 author: sakthi-vetrivel
 ms.author: suvetriv
 ms.topic: tutorial
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.date: 10/26/2020
-ms.openlocfilehash: e6be2b659223fb110d7e13b14d732561df9ad408
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: b690d3b3c29d2943e28a0992730d932b35c20734
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072232"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653036"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Kurz: Vytvoření clusteru Azure Red Hat OpenShift 4
 
@@ -26,6 +26,8 @@ V tomto kurzu, který je první částí tři, připravíte své prostředí, ab
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 Pro vytvoření a spuštění clusteru OpenShift vyžaduje Azure Red Hat OpenShift minimálně 40 jader. Výchozí kvóta prostředků Azure pro nové předplatné Azure nesplňuje tento požadavek. Pokud chcete požádat o zvýšení limitu prostředků, přečtěte si část [standardní kvóta: zvýšení limitů podle řady virtuálních počítačů](../azure-portal/supportability/per-vm-quota-requests.md).
+
+Tajný kód pro vyžádání obsahu ARO nemění náklady na licenci RH OpenShift pro ARO společnosti.
 
 ### <a name="verify-your-permissions"></a>Ověření oprávnění
 

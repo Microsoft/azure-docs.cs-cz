@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8492e986b378ea19f8c3c4cb7f94fcb0f155b427
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cfa2548abb28fa6f84178a1fb5716d0c03b163f1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487843"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570728"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Řízení zabezpečení: protokolování a sledování
 
@@ -22,7 +22,7 @@ Protokolování zabezpečení a monitorování se zaměřuje na aktivity souvise
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 2.1 | 6.1 | Partnerský vztah Microsoftu |
+| 2.1 | 6.1 | Microsoft |
 
 Microsoft udržuje časové zdroje pro prostředky Azure, ale máte možnost spravovat nastavení synchronizace času pro výpočetní prostředky.
 
@@ -42,9 +42,9 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 - [Jak připojit Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure pomocí Azure Monitor](../../azure-monitor/learn/quick-collect-azurevm.md)
+- [Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure pomocí Azure Monitor](../../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Jak začít s Azure Monitor a integrací SIEM třetích stran](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -56,9 +56,9 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 Povolte nastavení diagnostiky prostředků Azure pro přístup k protokolům auditu, zabezpečení a diagnostickým protokolům. Protokoly aktivit, které jsou automaticky k dispozici, zahrnují zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky.
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Principy protokolování a různých typů protokolů v Azure](../../azure-monitor/platform/platform-logs-overview.md)
+- [Principy protokolování a různých typů protokolů v Azure](../../azure-monitor/essentials/platform-logs-overview.md)
 
 ## <a name="24-collect-security-logs-from-operating-systems"></a>2,4: shromáždění protokolů zabezpečení z operačních systémů
 
@@ -68,7 +68,7 @@ Povolte nastavení diagnostiky prostředků Azure pro přístup k protokolům au
 
 Pokud je výpočetní prostředek vlastněn společností Microsoft, zodpovídá za jeho monitorování společnost Microsoft. Pokud je výpočetní prostředek vlastněn vaší organizací, máte zodpovědnost za jeho monitorování. Pomocí Azure Security Center můžete monitorovat operační systém. Data shromažďovaná Security Center z operačního systému zahrnují typ a verzi operačního systému, operační systém (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy a přihlášený uživatel. Agent Log Analytics také shromažďuje soubory s výpisem stavu systému.
 
-- [Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure pomocí Azure Monitor](../../azure-monitor/learn/quick-collect-azurevm.md)
+- [Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure pomocí Azure Monitor](../../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Pochopení Azure Security Center shromažďování dat](../../security-center/security-center-enable-data-collection.md)
 
@@ -80,7 +80,7 @@ Pokud je výpočetní prostředek vlastněn společností Microsoft, zodpovídá
 
 V rámci Azure Monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
 
-- [Změnit dobu uchovávání dat v Log Analytics](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Změnit dobu uchovávání dat v Log Analytics](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](../../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -96,9 +96,9 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo jiného d
 
 - [Jak připojit Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-- [Principy Log Analyticsho pracovního prostoru](../../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Principy Log Analyticsho pracovního prostoru](../../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Jak provádět vlastní dotazy v Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
+- [Jak provádět vlastní dotazy v Azure Monitor](../../azure-monitor/logs/get-started-queries.md)
 
 ## <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: povolení výstrah pro aktivity neobvyklé
 
@@ -114,7 +114,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
 - [Správa výstrah v Azure Security Center](../../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Upozornění na data protokolu Log Analytics](../../azure-monitor/learn/tutorial-response.md)
+- [Upozornění na data protokolu Log Analytics](../../azure-monitor/alerts/tutorial-response.md)
 
 ## <a name="28-centralize-anti-malware-logging"></a>2,8: centralizace protokolování proti malwaru
 
@@ -148,9 +148,9 @@ Pomocí Microsoft Monitoring Agent na všech podporovaných virtuálních počí
 
 - [Shromažďování dat v Azure Security Center](../../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-- [Jak provádět vlastní dotazy v Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
+- [Jak provádět vlastní dotazy v Azure Monitor](../../azure-monitor/logs/get-started-queries.md)
 
-- [Zdroje dat Syslogu ve službě Azure Monitor](../../azure-monitor/platform/data-sources-syslog.md)
+- [Zdroje dat Syslogu ve službě Azure Monitor](../../azure-monitor/agents/data-sources-syslog.md)
 
 
 ## <a name="next-steps"></a>Další kroky

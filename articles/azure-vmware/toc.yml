@@ -52,7 +52,7 @@
       href: concepts-upgrades.md
 - name: Návody
   items:
-    - name: Povolení služby Azure VMware Solution
+    - name: Požádat o kvótu hostitele a povolit řešení Azure VMware
       href: enable-azure-vmware-solution.md
     - name: Úspora nákladů s využitím rezervované instance
       href: reserved-instance.md

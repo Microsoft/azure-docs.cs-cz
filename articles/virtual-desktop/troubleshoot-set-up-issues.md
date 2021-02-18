@@ -3,15 +3,16 @@ title: Vytvoření fondu hostitelů prostředí virtuálních počítačů s Win
 description: Řešení potíží a řešení problémů s fondem klientů a hostitelů během instalace prostředí virtuálních počítačů s Windows
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.custom: references_regions
+ms.date: 02/17/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0a5439a9d1fd43154379c1dc1a95a6e98b6e877b
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: c31a32b32a685087c53198ec52af1188d0071cab
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539632"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652441"
 ---
 # <a name="host-pool-creation"></a>Vytvoření fondu hostitelů
 
@@ -49,9 +50,21 @@ Pokud vaše operace překročí limit kvóty, můžete provést jednu z následu
 
 ### <a name="error-cant-see-user-assignments-in-app-groups"></a>Chyba: nelze zobrazit přiřazení uživatelů ve skupinách aplikací.
 
-Příčina: k této chybě obvykle dochází po přesunu předplatného z klienta 1 Azure Active Directory (AD) do jiného. Pokud jsou stará přiřazení stále vázaná na starý tenant služby Azure AD, Azure Portal je bude sledovat.
+**Příčina**: k této chybě obvykle dochází po přesunu předplatného z klienta 1 Azure Active Directory (AD) do jiného. Pokud jsou stará přiřazení stále vázaná na starý tenant služby Azure AD, Azure Portal je bude sledovat.
 
-Oprava: bude nutné znovu přiřadit uživatele ke skupinám aplikací.
+**Oprava**: bude nutné znovu přiřadit uživatele ke skupinám aplikací.
+
+### <a name="i-only-see-us-when-setting-the-location-for-my-service-objects"></a>Při nastavování umístění pro moje objekty služby se zobrazuje jenom nám
+
+**Příčina**: Azure v tuto chvíli nepodporuje tuto oblast pro službu Virtual Desktop systému Windows. Pokud se chcete dozvědět, které geografické oblasti podporujeme, podívejte se na [umístění dat](data-locations.md). Pokud virtuální plocha Windows podporuje umístění, ale pořád se nezobrazí při pokusu o výběr umístění, znamená to, že váš poskytovatel prostředků se ještě neaktualizoval.
+
+**Oprava**: Chcete-li získat nejnovější seznam oblastí, znovu zaregistrujte poskytovatele prostředků:
+
+1. Přejít na **předplatná** a vybrat relevantní předplatné.
+2. Vyberte **poskytovatele prostředků**.
+3. Vyberte **Microsoft. DesktopVirtualization** a pak v nabídce Akce vyberte **znovu registrovat** .
+
+Když znovu zaregistrujete poskytovatele prostředků, neuvidíte žádnou konkrétní zpětnou vazbu uživatelského rozhraní nebo stav aktualizace. Proces opakované registrace také nekoliduje s vašimi stávajícími prostředími.
 
 ## <a name="azure-resource-manager-template-errors"></a>Chyby šablon Azure Resource Manager
 

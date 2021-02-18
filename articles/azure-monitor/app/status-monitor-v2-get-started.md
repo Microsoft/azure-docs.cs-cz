@@ -6,12 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 01/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f340b4fdf7fef6daecf8801d16d19aee9b89e4d5
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 21184e1623fd47e8367d4c5dfbc2c85debe93124
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746454"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587383"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Začínáme s agentem Azure Monitor Application Insights pro místní servery
 
@@ -79,9 +79,9 @@ Enable-ApplicationInsightsMonitoring -ConnectionString xxxxxxxx-xxxx-xxxx-xxxx-x
 
  Zobrazení telemetrických dat:
 
-- [Prozkoumejte metriky](../platform/metrics-charts.md) pro monitorování výkonu a využití.
+- [Prozkoumejte metriky](../essentials/metrics-charts.md) pro monitorování výkonu a využití.
 - [Prohledejte události a protokoly](./diagnostic-search.md) a Diagnostikujte problémy.
-- K pokročilejším dotazům [použijte Analytics](../log-query/log-query-overview.md) .
+- K pokročilejším dotazům [použijte Analytics](../logs/log-query-overview.md) .
 - [Vytváření řídicích panelů](./overview-dashboard.md).
 
  Přidání další telemetrie:

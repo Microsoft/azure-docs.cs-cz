@@ -9,16 +9,17 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6f03195c801f241a79a6bf68ef9d398370b0d4c6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a3a082b0143d315284483b44d61f10e40c60448e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391809"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651081"
 ---
 # <a name="sms-concepts"></a>Koncepce SMS
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Služba Communications Services Azure umožňuje odesílat a přijímat textové zprávy SMS pomocí klientských knihoven služby Communication Services SMS. Tyto klientské knihovny lze použít k podpoře scénářů služeb zákazníkům, připomenutí schůzky, dvojúrovňového ověřování a dalších požadavků na komunikaci v reálném čase. Služba Communications Services SMS vám umožní spolehlivě odesílat zprávy a vystavovat přehledy o dodávkách a odpovědích na vaše kampaně.
 

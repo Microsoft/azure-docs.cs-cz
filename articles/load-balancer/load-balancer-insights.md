@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: 88c287c4aa87b4df41bfe6bbc1992262b21d07aa
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 190a9e431dedfb0f0fe6077e903174f253f5c773
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232756"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589102"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>Monitorování a konfigurace Azure Load Balancer pomocí přehledů
 
@@ -40,7 +40,7 @@ U standardních nástrojů pro vyrovnávání zatížení jsou prostředky vaše
 
 ## <a name="metrics-dashboard"></a>Řídicí panel metrik
 
-V okně přehledy Load Balancer můžete vybrat podrobnější metriky a zobrazit předem nakonfigurovaný [Azure monitor sešit](../azure-monitor/platform/workbooks-overview.md) obsahující vizuály metriky, které jsou relevantní pro konkrétní aspekty vašeho Load Balancer. Tento řídicí panel zobrazí stav Load Balancer a odkazy na příslušnou dokumentaci v horní části stránky.
+V okně přehledy Load Balancer můžete vybrat podrobnější metriky a zobrazit předem nakonfigurovaný [Azure monitor sešit](../azure-monitor/visualize/workbooks-overview.md) obsahující vizuály metriky, které jsou relevantní pro konkrétní aspekty vašeho Load Balancer. Tento řídicí panel zobrazí stav Load Balancer a odkazy na příslušnou dokumentaci v horní části stránky.
 
 Nejprve se zobrazí karta Přehled. Můžete procházet dostupné karty, z nichž každý obsahuje vizuály relevantní pro konkrétní aspekty vašeho Load Balancer. Explicitní doprovodné materiály pro každý z nich jsou k dispozici na řídicím panelu v dolní části každé karty.
 
@@ -80,4 +80,4 @@ Karta definice metriky obsahuje všechny informace, které jsou uvedeny v [člá
 * Pokud máte všechno, co se dá zlepšit, Projděte si řídicí panel a sdělte nám svůj názor pomocí níže uvedeného odkazu.
 * [Přečtěte si dokumentaci k metrikám a ujistěte se, že rozumíte tomu, jak se každá metrika počítá.](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)
 * [Vytvoření monitorování připojení pro Load Balancer](../network-watcher/connection-monitor.md)
-* [Vytvořte si vlastní sešity](../azure-monitor/platform/workbooks-overview.md), můžete inspiraci kliknutím na tlačítko Upravit na podrobném řídicím panelu metriky.
+* [Vytvořte si vlastní sešity](../azure-monitor/visualize/workbooks-overview.md), můžete inspiraci kliknutím na tlačítko Upravit na podrobném řídicím panelu metriky.

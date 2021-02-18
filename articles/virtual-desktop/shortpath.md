@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: c1cdafe2929502293aada32dbae06e342761862b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 295a46f6d1074ddf8422233ea3ccfa4d65c28fd8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876694"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571587"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows Virtual Desktop RDP ShortPath (Preview)
 
@@ -151,7 +151,8 @@ Pokud chcete povolit přístup k naslouchacímu procesu RDP ShortPath napříč 
 Pomocí [dokumentace skupiny zabezpečení sítě](../virtual-machines/windows/nsg-quickstart-portal.md) vytvořte příchozí pravidlo zabezpečení, které umožní provoz s následujícími parametry:
 
 * **Zdroj**  -  **Libovolný** rozsah IP adres, ve kterém se klienti nacházejí
-* **Zdrojové rozsahy portů** – * *\** _ _ **cíl**  -  **Any**
+* **Rozsahy zdrojových portů** - **\***
+* **Cíl**  -  **Jakékoli**
 * **Rozsahy**  -  cílových portů **3390**
 * **Protokol**  -  **Protokol UDP**
 * **Akce**  -  **Povolení**
@@ -188,7 +189,7 @@ Možné hodnoty jsou:
 * **0** – připojení uživatele nepoužívá protokol RDP ShortPath
 * **1** – připojení uživatele používá ShortPath RDP.
   
-Následující seznam dotazů vám umožní zkontrolovat informace o připojení. Tento dotaz můžete spustit v [Editoru dotazů Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query). Pro každý dotaz nahraďte `userupn` hlavní název uživatele (UPN), kterého chcete vyhledat.
+Následující seznam dotazů vám umožní zkontrolovat informace o připojení. Tento dotaz můžete spustit v [Editoru dotazů Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md#write-a-query). Pro každý dotaz nahraďte `userupn` hlavní název uživatele (UPN), kterého chcete vyhledat.
 
 ```kusto
 let Events = WVDConnections | where UserName == "userupn" ;

@@ -1,14 +1,14 @@
 ---
 title: Event Hubs – zachycení událostí streamování pomocí Azure Portal
 description: Tento článek popisuje, jak povolit zachycování událostí streamování prostřednictvím Azure Event Hubs pomocí Azure Portal.
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 2381bfa627d00a78ed91af0ba81579588ee016ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c89a6e56c2d0bc7b7ff09d5fd63737009239eb9
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613573"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653947"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Povolení zachytávání událostí streamování prostřednictvím Azure Event Hubs
 
@@ -37,7 +37,7 @@ Výchozí časový interval je 5 minut. Minimální hodnota je 1, maximální ho
 1. Podle článku [Vytvoření účtu úložiště](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account) vytvořte účet Azure Storage. Nastavte **hierarchický obor názvů** **na kartu** **Upřesnit** , abyste si ho vytvořili Azure Data Lake Storage účet Gen 2.
 2. Při vytváření centra událostí proveďte následující kroky: 
 
-    1. Pro **zachytávání**vyberte **zapnuto** . 
+    1. Pro **zachytávání** vyberte **zapnuto** . 
     2. Jako poskytovatele Capture vyberte **Azure Storage** . Možnost **Azure Data Lake Store** , kterou vidíte pro **poskytovatele služby Capture** , je určena pro 1. generace Azure Data Lake Storage. Chcete-li použít Gen 2 Azure Data Lake Storage, vyberte **Azure Storage**.
     2. Vyberte tlačítko **Vybrat kontejner** . 
 

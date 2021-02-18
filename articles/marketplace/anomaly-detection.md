@@ -4,31 +4,29 @@ description: Přečtěte si, jak automatické zjišťování anomálií pro úč
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 1/09/2021
+ms.date: 2/17/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: d4fb88854359dcd6e383b47d2a8ce4e9c91f867a
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 7f1bcac49ccb12ea1e0517aed5a139e549451ec0
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989362"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653002"
 ---
 # <a name="anomaly-detection-for-metered-billing"></a>Detekce anomálií pro účtované měřené platby
 
-Tento článek poskytuje podrobné informace o službě měření na webu Marketplace a přidružené funkci pro detekci automatizovaných anomálií, které vám pomůžou zajistit, aby zákazníci mohli správně fakturovat pro své měřené využití. Možnost účtovaného účtování je aktuálně dostupná pro nabídky [software jako služba](plan-saas-offer.md) (SaaS) a [aplikace Azure](plan-azure-application-offer.md#types-of-plans) s plánem spravované aplikace. Tato možnost umožňuje partnerům vytvářet nabídky v programu komerčního tržiště, které se účtují podle nestandardních jednotek.
+Možnost vlastního měření podle objemu dat je teď k dispozici pro nabídky [software jako služba](plan-saas-offer.md) (SaaS) a [aplikace Azure](plan-azure-application-offer.md#types-of-plans) s plánem spravované aplikace.
 
-Partneři, kteří mají vlastní měřiče nasazené pro SaaS a spravované aplikace, můžou zobrazit odchylku od očekávaného chování při používání jako anomálie _u určitých_ _vlastních měřičů_ v partnerském centru. Pro zmírnění rizika Partnerská služba používá službu detekce anomálií, která aplikuje algoritmy strojového učení, aby zjistila normální chování účtovaného měření, analyzuje využití účtované fakturace a objevují anomálie s minimálním zásahem uživatele. Partnerské centrum se zaměřuje na to, aby při použití _modelů detekce anomálií_ v datových sadách s měřením vyúčtováním na základě měřené ceny informovali vydavatele o tom, že hlášené využití překračuje očekávané využití.
+Pokud používáte možnost účtovaného účtování k vytváření nabídek v programu komerčního tržiště, který vám umožní účtovat využití na základě nestandardních jednotek, musíte znát, kdy zákazník použil více služeb, než se očekávalo.
 
-## <a name="usability-experience"></a>Prostředí pro použitelnost
+## <a name="use-the-anomaly-detection-feature"></a>Použití funkce detekce anomálií
 
-Microsoft spoléhá na to, že partner bude hlásit využívání služeb SaaS nebo Azure spravované aplikace před tím, než ho Microsoft fakturuje. Pokud je hlášeno nesprávné použití, zákazník by potenciálně mohl získat nesprávnou fakturu, může podvést i důvěryhodnost partnera.
+Společnost Microsoft se spoléhá na vás, partner, aby vyhlásil nadlimitní využití svých SaaS nebo spravovaných aplikací Azure před tím, než společnost Microsoft fakturuje zákazníka. Pokud je hlášeno nesprávné použití, zákazník by potenciálně mohl získat nesprávnou fakturu, může podvést i důvěryhodnost partnera.
 
-Aby se to dalo zmírnit, je k dispozici funkce detekce automatizované anomálií pro aplikace SaaS i plány spravovaných aplikací Azure. Tato funkce je model strojového učení, který aktivně monitoruje využití na základě účtovaného měření a předpovídá očekávanou hodnotu využití v očekávaném rozsahu. Pokud je využití mimo očekávaný rozsah, je považováno za anomálii a na stránce s přehledem služby komerčního portálu se zobrazí oznámení o výstrahách na stránce Přehled nabídky v programu pro partnery.
+Aby bylo zajištěno, že se vaši zákazníci účtují správně, použijte funkci **detekce anomálií** pro aplikace SaaS i plány spravované aplikace Azure. Tato funkce monitoruje využití na základě účtovaného měření a předpovídá očekávanou hodnotu využití v očekávaném rozsahu. Pokud je využití mimo očekávaný rozsah, je považováno za neočekávané, (anomálii) a na stránce s přehledem vaší nabídky v programu komerčního portálu pro partnery partnera obdržíte oznámení výstrah. Využití vašich zákazníků můžete sledovat každý den v každé vlastní dimenzi měřičů, kterou jste nastavili.
 
-Denní využití analýz modelů machine learningu Vydavatel uvidí všechny anomálie hlášené na využívání nadlimitního využití zákazníků pro každou vlastní dimenzi měřičů nabídek.
-
-### <a name="view-and-manage-metered-usage-anomalies"></a>Zobrazení a Správa anomálií měřeného využití
+## <a name="view-and-manage-metered-usage-anomalies"></a>Zobrazení a Správa anomálií měřeného využití
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
 1. V navigační nabídce vlevo vyberte **komerční web Marketplace**  >  **analyzovat**.

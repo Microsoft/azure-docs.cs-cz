@@ -2,17 +2,17 @@
 title: Azure Service Bus filtry témat | Microsoft Docs
 description: Tento článek vysvětluje, jak můžou předplatitelé definovat, které zprávy chce přijímat z tématu zadáním filtrů.
 ms.topic: conceptual
-ms.date: 01/22/2021
-ms.openlocfilehash: 63cf6e67d4fa32c5c7f52f569094e1165554108c
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.date: 02/17/2021
+ms.openlocfilehash: f28b26ee112b47b9782823f6c79670dee9a3f082
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742960"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651659"
 ---
 # <a name="topic-filters-and-actions"></a>Akce a filtry témat
 
-Odběratelé mohou definovat zprávy, které chtějí z tématu přijímat. Tyto zprávy se určují ve formě jednoho nebo více pojmenovaných pravidel odběru. Každé pravidlo se skládá z podmínky **filtru** , která vybere konkrétní zprávy, a **volitelně** obsahuje **akci** , která vydává poznámku vybrané zprávě. 
+Odběratelé mohou definovat zprávy, které chtějí z tématu přijímat. Tyto zprávy se určují ve formě jednoho nebo více pojmenovaných pravidel odběru. Každé pravidlo se skládá z **podmínky filtru** , která vybere konkrétní zprávy, a **volitelně** obsahuje **akci** , která vydává poznámku vybrané zprávě. 
 
 Všechna pravidla **bez akcí** se kombinují pomocí `OR` podmínky a výsledkem je **jediná zpráva** v předplatném, a to i v případě, že máte více pravidel pro porovnání. 
 
@@ -32,9 +32,7 @@ Každé nově vytvořené předplatné tématu má počáteční výchozí pravi
 Service Bus podporuje tři podmínky filtru:
 
 -   *Filtry SQL* – **SqlFilter** obsahuje podmíněný výraz podobný SQL, který se vyhodnocuje ve zprostředkovateli proti uživatelsky definovaným vlastnostem a vlastnostem systému. Všechny vlastnosti systému musí být `sys.` v podmíněném výrazu předponou. [Podmnožina jazyka SQL pro podmínky filtru](service-bus-messaging-sql-filter.md) testy pro existenci vlastností ( `EXISTS` ), hodnot null ( `IS NULL` ), logických operátorů not/a/nebo, relačních operátorů, jednoduchého číselného aritmetického zpracování a jednoduchých textových vzorů `LIKE` .
-
 -   *Logické filtry* – **TrueFilter** a **FalseFilter** buď způsobí, že se pro odběr vybraly všechny přicházející zprávy (**true**) nebo žádná z doručených zpráv (**false**). Tyto dva filtry jsou odvozeny z filtru SQL. 
-
 -   *Filtry korelace* – **CorrelationFilter** obsahuje sadu podmínek, které se shodují s jednou nebo více uživateli a vlastnostmi systému, které přicházejí. Běžné použití se shoduje s vlastností **ID korelace** , ale aplikace může také zvolit shodu s následujícími vlastnostmi:
 
     - **Třída**
@@ -66,7 +64,8 @@ Vytváření oddílů používá filtry k distribuci zpráv v několika stávaj�
 
 Směrování používá filtry k distribuci zpráv mezi předplatnými tématu, ale ne nutně exkluzivní. Ve spojení s funkcí [automatického předávání](service-bus-auto-forwarding.md) je možné pomocí filtrů v rámci oboru názvů Service Bus v rámci oblasti Azure vytvořit komplexní grafy směrování v rámci oboru názvů pro distribuci zpráv. Když Azure Functions nebo Azure Logic Apps funguje jako most mezi Azure Service Bus obory názvů, můžete vytvořit komplexní globální topologie s přímou integrací do obchodních aplikací.
 
-[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
+## <a name="examples"></a>Příklady
+Příklady najdete v tématu [Příklady filtru Service Bus](service-bus-filter-examples.md).
 
 
 

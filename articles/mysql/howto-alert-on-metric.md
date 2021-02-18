@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 81003be986524b94e9c4487cd0d8606540445d16
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 5b9e7938f404a37672fe8d13725b1e64d665bf18
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542078"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576258"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Pomocí Azure Portal můžete nastavit výstrahy pro metriky pro Azure Database for MySQL 
 
@@ -25,11 +25,11 @@ Můžete nakonfigurovat výstrahu, která provede následující akce při trigg
 * Volání webhooku
 
 Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
-* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
-* [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure Portal](../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
 * [Rozhraní REST API služby Azure Monitor](/rest/api/monitor/metricalerts)
 
-## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Vytvoření pravidla výstrahy na metrikě z Azure Portal
+## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Vytvoření pravidla upozornění na metriku na webu Azure Portal
 1. V [Azure Portal](https://portal.azure.com/)vyberte server Azure Database for MySQL, který chcete monitorovat.
 
 2. V části **monitorování** na bočním panelu vyberte **výstrahy** , jak je znázorněno níže:
@@ -48,7 +48,7 @@ Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
    
    :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="Vybrat metriku":::
 
-7. Nakonfigurujte logiku výstrahy včetně **podmínky** (např. "Větší než"), **prahová hodnota** (ex. 85 procent), **Časová agregace** , časový **interval** , po který musí být pravidlo metriky splněno před triggery výstrahy (např. Za posledních 30 minut a **frekvence**.
+7. Nakonfigurujte logiku výstrahy včetně **podmínky** (např. "Větší než"), **prahová hodnota** (ex. 85 procent), **Časová agregace**, časový **interval** , po který musí být pravidlo metriky splněno před triggery výstrahy (např. Za posledních 30 minut a **frekvence**.
    
    Po dokončení vyberte **Hotovo** .
 
@@ -85,5 +85,5 @@ Jakmile vytvoříte výstrahu, můžete ji vybrat a provést následující akce
 
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si další informace o [konfiguraci webhooků v upozorněních](../azure-monitor/platform/alerts-webhooks.md).
-* Získejte [Přehled o kolekci metrik](../azure-monitor/platform/data-platform.md) , abyste měli jistotu, že je vaše služba dostupná a reaguje.
+* Přečtěte si další informace o [konfiguraci webhooků v upozorněních](../azure-monitor/alerts/alerts-webhooks.md).
+* Získejte [Přehled o kolekci metrik](../azure-monitor/data-platform.md) , abyste měli jistotu, že je vaše služba dostupná a reaguje.

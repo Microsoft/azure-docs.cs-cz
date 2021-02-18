@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.custom: devx-track-js
-ms.openlocfilehash: e24a2a19eb39e2c6c7612631ad98f95cb4c5b9ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4430ed34858077b13b4fec69756c1c7e9f3ef7ac
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250160"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652349"
 ---
 # <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>Kurz: publikování webu Gatsby ve službě Azure static Web Apps Preview
 
@@ -75,7 +75,7 @@ Abyste mohli vytvořit nový prostředek statického Web Apps Azure, musíte mí
 1. Vložte své místní úložiště do GitHubu.
 
    ```bash
-   git push --set-upstream origin master
+   git push --set-upstream origin main
    ```
 
 ## <a name="deploy-your-web-app"></a>Nasazení webové aplikace
@@ -92,17 +92,17 @@ Následující kroky ukazují, jak vytvořit novou aplikaci statické lokality a
 
    :::image type="content" source="./media/publish-gatsby/create-in-portal.png" alt-text="Vytvoření statického Web Apps (Preview) na portálu":::
 
-1. U _předplatného_přijměte uvedené předplatné nebo v rozevíracím seznamu vyberte nový.
+1. U _předplatného_ přijměte uvedené předplatné nebo v rozevíracím seznamu vyberte nový.
 
-1. V _skupiny prostředků_vyberte **Nový**. Do _název nové skupiny prostředků_zadejte **Gatsby-static-Web-App** a vyberte **OK**.
+1. V _skupiny prostředků_ vyberte **Nový**. Do _název nové skupiny prostředků_ zadejte **Gatsby-static-Web-App** a vyberte **OK**.
 
 1. Dále do pole **název** zadejte název vaší aplikace. Mezi platné znaky `a-z` patří `A-Z` , `0-9` a `-` .
 
-1. V _oblasti oblast_vyberte dostupnou oblast, která je blízko vás.
+1. V _oblasti oblast_ vyberte dostupnou oblast, která je blízko vás.
 
-1. V případě _SKU_vyberte možnost **Free**.
+1. V případě _SKU_ vyberte možnost **Free**.
 
-   :::image type="content" source="./media/publish-gatsby/basic-app-details.png" alt-text="Vytvoření statického Web Apps (Preview) na portálu":::
+   :::image type="content" source="./media/publish-gatsby/basic-app-details.png" alt-text="Podrobnosti vyplněné":::
 
 1. Klikněte na tlačítko **Přihlásit se pomocí GitHubu** .
 
@@ -110,15 +110,15 @@ Následující kroky ukazují, jak vytvořit novou aplikaci statické lokality a
 
 1. Jako _úložiště_ vyberte **Gatsby-static-Web-App** .
 
-1. Pro _větev_ vyberte **hlavní**uzel.
+1. Pro _větev_ vyberte **Main (hlavní**).
 
-   :::image type="content" source="./media/publish-gatsby/completed-github-info.png" alt-text="Vytvoření statického Web Apps (Preview) na portálu":::
+   :::image type="content" source="./media/publish-gatsby/completed-github-info.png" alt-text="Informace o dokončeném GitHubu":::
 
 ### <a name="build"></a>Sestavení
 
 Dále přidejte nastavení konfigurace, které proces sestavení používá k sestavení vaší aplikace.
 
-1. Klikněte na tlačítko **Další: Build >** (Další: Sestavení) a upravte konfiguraci sestavení.
+1. Klikněte na tlačítko **Další: Sestavení >** a upravte konfiguraci sestavení.
 
 1. Pokud chcete nakonfigurovat nastavení kroku v akcích GitHubu, nastavte _umístění aplikace_ na **/** .
 
@@ -126,9 +126,9 @@ Dále přidejte nastavení konfigurace, které proces sestavení používá k se
 
    Hodnota pro _umístění rozhraní API_ není nutná, protože v tuto chvíli nebudete NASAZOVAT rozhraní API.
 
-   :::image type="content" source="./media/publish-gatsby/build-details.png" alt-text="Vytvoření statického Web Apps (Preview) na portálu":::
+   :::image type="content" source="./media/publish-gatsby/build-details.png" alt-text="Nastavení sestavení":::
 
-### <a name="review-and-create"></a>Podokno Zkontrolovat a vytvořit
+### <a name="review-and-create"></a>Zkontrolovat a vytvořit
 
 1. Kliknutím na tlačítko **Revize + vytvořit** ověřte správnost podrobností.
 
@@ -138,7 +138,7 @@ Dále přidejte nastavení konfigurace, které proces sestavení používá k se
 
 1. Na obrazovce prostředek kliknutím na odkaz _URL_ otevřete nasazenou aplikaci. Aby se akce GitHubu mohla dokončit, možná budete muset počkat minutu nebo dvě.
 
-   :::image type="content" source="./media/publish-gatsby/deployed-app.png" alt-text="Vytvoření statického Web Apps (Preview) na portálu":::
+   :::image type="content" source="./media/publish-gatsby/deployed-app.png" alt-text="Nasazená aplikace":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

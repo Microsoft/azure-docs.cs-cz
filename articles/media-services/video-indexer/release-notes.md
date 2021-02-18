@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 02/01/2021
+ms.date: 02/16/2021
 ms.author: juliako
-ms.openlocfilehash: a6b1fc5adba166aa15a786d3440be1eca7f0a260
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: c8fcd6e662a0beff61209de4b5c4331618b45ea1
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560505"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653295"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
@@ -29,6 +29,33 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 * Známé problémy
 * Opravy chyb
 * Zastaralé funkce
+
+## <a name="february-2021"></a>Únor 2021
+
+### <a name="multiple-account-owners"></a>Více vlastníků účtu 
+
+Do Video Indexer se přidala role vlastníka účtu. Můžete přidávat, měnit a odebírat uživatele. změňte jejich roli. Podrobnosti o tom, jak sdílet účet, najdete v tématu [pozvání uživatelů](invite-users.md).
+
+### <a name="audio-event-detection-public-preview"></a>Detekce zvukové události (Public Preview)
+
+> [!NOTE]
+> Tato funkce je k dispozici pouze v účtech zkušební verze. 
+
+Video Indexer nyní detekuje následující zvukové efekty v segmentech nehlasu obsahu: gunshot, skleněná Shatter, alarm, Siren, výbuch, pes kůra, výkřiku, Laughter, reelné reakce (, clapping a booing) a ticho. 
+
+Nově přidaný zvuk, který ovlivňuje funkci, je k dispozici při indexování souboru výběrem **Možnosti Upřesnit možnost** Upřesnit  ->  **zvuk** (v části video a indexování zvuků). Standardní indexování bude zahrnovat jenom **tiché** a přeplněné **reakce**. 
+
+Typ události **clapping** , který byl zahrnut v předchozím modelu zvukových efektů, je teď extrahovaný jako součást typu události **přeplněných reakcí** .
+
+Pokud se rozhodnete, že se mají vaše video na webu [video indexer](https://www.videoindexer.ai/) **Zobrazit,** zvukové efekty se zobrazí na stránce.
+
+:::image type="content" source="./media/release-notes/audio-detection.png" alt-text="Detekce zvukové události":::
+
+### <a name="named-entities-enhancement"></a>Vylepšení pojmenovaných entit  
+
+Extrahovaný seznam lidí a umístění se obecně rozšířil a aktualizoval. 
+
+Model teď navíc zahrnuje lidi a umístění v kontextu, které nejsou ve videu slavných jako Sam nebo Home. 
 
 ## <a name="january-2021"></a>Leden 2021
 

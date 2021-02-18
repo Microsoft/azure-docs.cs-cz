@@ -1,59 +1,54 @@
 ---
-title: Důvěrné výpočetní uzly ve službě Azure Kubernetes Service (AKS) Public Preview
+title: Důvěrné výpočetní uzly ve službě Azure Kubernetes (AKS)
 description: Důvěrné výpočetní uzly na AKS
 services: virtual-machines
 author: agowdamsft
 ms.service: container-service
 ms.topic: overview
-ms.date: 9/22/2020
+ms.date: 2/08/2021
 ms.author: amgowda
-ms.openlocfilehash: 1b945ac9f656a227bcc3335cb0ec995626f98f77
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9ca98c032a7c8bd1820a92bff77079a61c515d65
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564170"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653376"
 ---
-# <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Důvěrné výpočetní uzly ve službě Azure Kubernetes (Public Preview)
+# <a name="confidential-computing-nodes-on-azure-kubernetes-service"></a>Důvěrné výpočetní uzly ve službě Azure Kubernetes
 
-[Důvěrné výpočetní prostředí Azure](overview.md) umožňuje chránit citlivá data, když se používají. Základní infrastruktura chrání tato data od ostatních aplikací, správců a poskytovatelů cloudu pomocí zálohovaných kontejnerů důvěryhodných spuštění s využitím hardwaru.
+[Důvěrné výpočetní prostředí Azure](overview.md) umožňuje chránit citlivá data, když se používají. Základní tajná cloudová infrastruktura chrání tato data od jiných aplikací, správců a poskytovatelů cloudu pomocí zálohovaných kontejnerů důvěryhodných spuštění s využitím hardwaru. Přidání důvěrných výpočetních uzlů vám umožní cílit aplikaci kontejneru, aby běžela v izolovaném prostředí, chráněném hardwarem a s ověřováním identity.
 
 ## <a name="overview"></a>Přehled
 
-Služba Azure Kubernetes Service (AKS) podporuje přidávání [DCsv2 důvěrných výpočetních uzlů](confidential-computing-enclaves.md) využívajících technologii Intel SGX. Tyto uzly můžou spouštět citlivé úlohy v rámci důvěryhodného spuštění prostředí (TEE) založeného na hardwaru, protože umožňují přidělovat privátní oblasti paměti pomocí kódu na úrovni uživatele. Tyto oblasti soukromé paměti se nazývají enclaves. Enclaves jsou určeny k ochraně kódu a dat z procesů spuštěných s vyšším oprávněním. Model spuštění SGX odebere mezilehlé vrstvy hostovaného operačního systému, hostitelského operačního systému a hypervisoru. *Hardware založený na modelu spouštění izolovaného kontejneru* umožňuje aplikacím přímé spouštění s využitím procesoru, přičemž se přitom udržuje speciální blok paměti zašifrovaný. Důvěrné výpočetní uzly vám pomůžou s celkovým zabezpečením stav aplikací kontejnerů na AKS a s velkou doplněním strategie pro důkladnou hloubkovou strategii kontejnerů. 
+Služba Azure Kubernetes Service (AKS) podporuje přidávání [DCsv2 důvěrných výpočetních uzlů](confidential-computing-enclaves.md) využívajících technologii Intel SGX. Tyto uzly umožňují spouštět citlivé úlohy v rámci důvěryhodného spuštění prostředí (TEE) založeného na hardwaru. TEE umožňuje kódu na úrovni uživatele z kontejnerů přidělit privátní oblasti paměti, aby se kód spustil přímo s PROCESORem. Tyto oblasti privátních paměti, které se spouštějí přímo s PROCESORem, se nazývají enclaves. Enclaves chrání důvěrnost dat, integritu dat a integritu kódu z jiných procesů spuštěných na stejných uzlech. Model spuštění Intel SGX také odebere mezilehlé vrstvy hostovaného operačního systému, hostitelského operačního systému a hypervisoru a tím snižuje prostor pro útoky. *Hardware založený na modelu spuštění izolovaného kontejneru* v uzlu umožňuje aplikacím přímým spouštění s procesorem a přitom zachovat speciální blok paměti zašifrovaný na kontejner. Důvěrné výpočetní uzly s důvěrnými kontejnery jsou skvělým doplňkem k vašemu plánování zabezpečení s nulovou důvěryhodností a k důkladné strategii kontejneru.
 
 ![Přehled uzlu SGX](./media/confidential-nodes-aks-overview/sgxaksnode.jpg)
 
 ## <a name="aks-confidential-nodes-features"></a>Funkce AKSch důvěrných uzlů
 
-- Izolace kontejneru na základě hardwaru a úrovně procesu prostřednictvím prostředí SGX Trusted Execution Environment (TEE) 
+- Izolace kontejneru na úrovni hardwaru a procesu prostřednictvím prostředí TEE (Trusted Execution Environment) Intel SGX 
 - Clustery fondu uzlů heterogenní (kombinace důvěrných a nedůvěrných fondů uzlů)
-- Plánování založené na paměti šifrované stránky (EPC)
-- Předinstalované ovladače SGX DCAP
-- Předem nainstalovaná oprava Intel FSGS
-- Podporuje automatické škálování a automatické škálování v závislosti na PROCESORech na základě horizontálního škálování pod.
-- Pomocník pro ověření identity mimo proc prostřednictvím AKS daemonset
+- Naplánovaná paměťová mezipaměť (EPC) na základě paměti (vyžaduje doplněk)
+- Předinstalované ovladače Intel SGX DCAP
+- Automatické škálování a automatické škálování v závislosti na PROCESORech na bázi horizontálního škálování pod sebou
 - Podpora kontejnerů pro Linux prostřednictvím pracovních uzlů virtuálních počítačů Ubuntu 18,04 Gen 2
 
-## <a name="aks-provided-daemon-sets-addon"></a>AKS zadané sady démonů (doplněk)
+## <a name="confidential-computing-add-on-for-aks"></a>Doplněk důvěrné výpočetní služby pro AKS
+Funkce doplňku povoluje při spouštění fondů důvěrných výpočetních uzlů v clusteru navíc možnost AKS. Tento doplněk umožňuje následující funkce.
 
-#### <a name="sgx-device-plugin"></a>Modul plug-in zařízení SGX <a id="sgx-plugin"></a>
+#### <a name="azure-device-plugin-for-intel-sgx"></a>Modul plug-in zařízení Azure pro Intel SGX <a id="sgx-plugin"></a>
 
-Modul plug-in zařízení SGX implementuje rozhraní modulu plug-in zařízení Kubernetes pro paměť EPC. Tento modul plug-in zajišťuje v Kubernetes paměť EPC další typ prostředku. Uživatelé můžou u tohoto prostředku zadat omezení stejně jako na jiné prostředky. Kromě funkce plánování pomáhá modul plug-in zařízení přiřazovat SGX k důvěrným kontejnerům úloh oprávnění ovladačů zařízení. Ukázková implementace ukázky nasazení na bázi paměti EPC `kubernetes.azure.com/sgx_epc_mem_in_MiB` je [tady](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/helloworld/helm/templates/helloworld.yaml) .
+Modul plug-in zařízení implementuje rozhraní modulu plug-in zařízení Kubernetes pro paměť služby EPC (Encrypted Page cache) a zpřístupňuje ovladače zařízení z uzlů. Tento modul plug-in v Kubernetes zpřístupňuje paměť EPC jako jiný typ prostředku. Uživatelé můžou u tohoto prostředku zadat omezení stejně jako na jiné prostředky. Kromě funkce plánování pomáhá modul plug-in zařízení přiřadit oprávnění ovladače zařízení Intel SGX k důvěrným kontejnerům úloh. Tento vývojář modulů plug-in se může vyhnout připojení svazků ovladačů Intel SGX v souborech nasazení. Ukázková implementace ukázky nasazení na bázi paměti EPC `kubernetes.azure.com/sgx_epc_mem_in_MiB` je [tady](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/helloworld/helm/templates/helloworld.yaml) .
 
-#### <a name="sgx-quote-helper-service"></a>Pomocná služba SGX Quota <a id="sgx-quote"></a>
 
-Enklávy aplikace, které provádějí vzdálené ověření identity, musí vygenerovat citát. Tato nabídka poskytuje kryptografický důkaz identity a stavu aplikace a prostředí, ve kterém je spuštěný enklávy. Generování uvozovek spoléhá na určité důvěryhodné softwarové komponenty od společnosti Intel, které jsou součástí komponent SGX Platform Software Components (PSW/DCAP). Tento PSW je zabalen jako sada démonů, která běží na jeden uzel. Dá se využít při žádosti o CITÁTy ověření z aplikací enklávy. Použití poskytnuté služby AKS vám pomůže zajistit lepší kompatibilitu mezi PSW a dalšími SW SW v hostiteli. [Další](confidential-nodes-out-of-proc-attestation.md) informace najdete v podrobnostech o využití a funkcích.
-
-## <a name="programming--application-models"></a>Programování & modelů aplikací
+## <a name="programming-models"></a>Programovací modely
 
 ### <a name="confidential-containers"></a>Důvěrné kontejnery
 
-[Důvěrné kontejnery](confidential-containers.md) spouštějí stávající programy a nejběžnější modul runtime **programovacího jazyka** (Python, Node, Java atd.) spolu s jejich stávajícími závislostmi knihoven bez jakýchkoli úprav zdrojového kódu nebo rekompilace. Tento model je nejrychlejší model pro zajištění důvěrnosti povolený prostřednictvím open source projektů & partnerů Azure. Image kontejnerů, které jsou připravené k běhu v zabezpečených enclaves, se označují jako důvěrné kontejnery.
+[Důvěrné kontejnery](confidential-containers.md) vám pomůžou spouštět stávající neupravené aplikace kontejneru nejběžnějšími moduly runtime **programovacích jazyků** (Python, Node, Java atd.) v tajnosti. Tento model balení nepotřebuje žádné úpravy zdrojového kódu ani rekompilaci. Toto je nejrychlejší způsob, jakým se dá zajistit důvěrnost pomocí balíčků standardních kontejnerů Docker s Open-Source projekty nebo partnerskými řešeními Azure. V tomto balení a prováděcím modelu jsou všechny části aplikace kontejneru načteny do důvěryhodné hranice (enklávy). Tento model funguje dobře pro vypnuté aplikace kontejneru pro polici dostupné na trhu nebo ve vlastních aplikacích, které aktuálně běží na obecných uzlech.
 
 ### <a name="enclave-aware-containers"></a>Kontejnery s podporou enklávy
-
-AKS podporuje aplikace, které jsou naprogramované pro spouštění na důvěrných uzlech a využívají **speciální sadu instrukcí** , která je k dispozici prostřednictvím sad SDK a platforem. Tento model aplikace poskytuje maximální kontrolu nad vašimi aplikacemi s nejnižším důvěryhodným výpočetním základem (TCB). [Přečtěte si další](enclave-aware-containers.md) informace o kontejnerech s podporou enklávy.
+Důvěrné výpočetní uzly v AKS také podporují kontejnery, které jsou naprogramované pro běh v enklávy pro využití **speciální sady instrukcí** dostupné z procesoru. Tento programovací model umožňuje úzkou kontrolu nad tokem spouštění a vyžaduje použití speciálních sad SDK a platforem. Tento programovací model poskytuje většinu řízení toku aplikace s nejnižším důvěryhodným výpočetním základem (TCB). Enklávy, který podporuje vývoj kontejnerů, zahrnuje nedůvěryhodné a důvěryhodné součásti pro kontejnerové aplikace, takže vám umožní spravovat běžná paměť a paměť v mezipaměti šifrované stránky (EPC), kde je spuštěný enklávy. [Přečtěte si další](enclave-aware-containers.md) informace o kontejnerech s podporou enklávy.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -62,6 +57,8 @@ AKS podporuje aplikace, které jsou naprogramované pro spouštění na důvěrn
 [Stručné ukázky kontejneru důvěrného Starter](https://github.com/Azure-Samples/confidential-container-samples)
 
 [Seznam SKU DCsv2](../virtual-machines/dcv2-series.md)
+
+[Důkladná ochrana díky webinář relaci důvěrných kontejnerů](https://www.youtube.com/watch?reload=9&v=FYZxtHI_Or0&feature=youtu.be)
 
 <!-- LINKS - external -->
 [Azure Attestation]: ../attestation/index.yml

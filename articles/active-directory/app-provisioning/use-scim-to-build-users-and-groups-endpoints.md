@@ -1,6 +1,6 @@
 ---
 title: Vytvoření koncového bodu SCIM pro zřizování uživatelů pro aplikace z Azure Active Directory
-description: Systém pro správu identit mezi doménami (SCIM) standardizace Automatické zřizování uživatelů. Naučte se vyvíjet SCIM koncový bod, Integrujte své rozhraní SCIM API pomocí Azure Active Directory a začněte automatizovat zřizování uživatelů a skupin do cloudových aplikací pomocí Azure Active Directory.
+description: Naučte se vyvíjet SCIM koncový bod, integrovat rozhraní SCIM API do služby Azure AD a automaticky zřizovat uživatele a skupiny do svých cloudových aplikací pomocí Azure Active Directory.
 services: active-directory
 author: kenwith
 manager: daveba
@@ -11,70 +11,71 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 6b7451b0d664995a6b647f7926d856b0db6090d8
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 9fac8db6747d1e081fa884ed794e55b98f44577f
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256098"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652033"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint"></a>Kurz: vývoj ukázkového koncového bodu SCIM
 
-Nikdo nechce vytvořit nový koncový bod od začátku, takže jsme vytvořili pár [referenčních kódů](https://aka.ms/scimreferencecode) , abyste mohli začít s [SCIM](https://aka.ms/scimoverview). V tomto kurzu se dozvíte, jak nasadit referenční kód SCIM v Azure a otestovat ho pomocí post nebo integrací s klientem Azure AD SCIM. Svůj koncový bod SCIM můžete hned po dobu 5 minut začít používat bez kódu. Tento kurz je určený pro vývojáře, kteří chtějí začít s SCIM nebo jinými uživateli, kteří mají zájem o testování koncového bodu SICM. 
+Nikdo nechce vytvořit nový koncový bod od začátku, takže jsme vytvořili pár [referenčních kódů](https://aka.ms/scimreferencecode) , abyste mohli začít pracovat se [systémem pro správu identit mezi doménami (SCIM)](https://aka.ms/scimoverview). Svůj koncový bod SCIM můžete začít používat bez kódu za pouhých pět minut.
 
-V tomto kurzu získáte informace o těchto tématech:
+V tomto kurzu se dozvíte, jak nasadit referenční kód SCIM v Azure a otestovat ho pomocí post nebo integrací s klientem služby Azure Active Directory (Azure AD) SCIM. Tento kurz je určený pro vývojáře, kteří chtějí začít pracovat s SCIM, nebo kdokoli, kdo se zajímá o testování koncového bodu SCIM.
+
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Nasazení koncového bodu SCIM v Azure
-> * Testování koncového bodu SCIM
+>
+> * Nasaďte koncový bod SCIM v Azure.
+> * Otestujte koncový bod SCIM.
 
 ## <a name="deploy-your-scim-endpoint-in-azure"></a>Nasazení koncového bodu SCIM v Azure
 
-Zde uvedené kroky nasadí koncový bod SCIM do služby pomocí sady [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) a [Azure App Services](https://docs.microsoft.com/azure/app-service/). Referenční kód SCIM lze také spustit místně, hostovaný místním serverem nebo nasadit do jiné externí služby. 
-
-### <a name="open-solution-and-deploy-to-azure-app-service"></a>Otevřete řešení a nasaďte ho do Azure App Service
+Tento postup umožňuje nasadit koncový bod SCIM do služby pomocí sady [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) a [Azure App Service](https://docs.microsoft.com/azure/app-service/). Referenční kód SCIM lze také spustit místně, hostovaný místním serverem nebo nasadit do jiné externí služby.
 
 1. Z GitHubu můžete přejít na [referenční kód](https://github.com/AzureAD/SCIMReferenceCode) a vybrat **klonovat nebo stáhnout**.
 
-1. Zvolte buď možnost **otevřít v aplikaci Desktop**, nebo zkopírujte odkaz, otevřete **aplikaci Visual Studio** a vyberte možnost **klonovat nebo rezervovat kód** pro zadání zkopírovaného odkazu a vytvoření místní kopie.
+1. Vyberte možnost **otevřít v počítači** nebo zkopírujte odkaz, otevřete aplikaci Visual Studio a vyberte možnost **klonovat nebo rezervovat kód** pro zadání zkopírovaného odkazu a vytvoření místní kopie.
 
-1. V **aplikaci Visual Studio** se ujistěte, že se přihlašujete k účtu, který má přístup k vašim hostitelským prostředkům.
+1. V aplikaci Visual Studio se přihlaste k účtu, který má přístup k vašim hostitelským prostředkům.
 
-1. V **Průzkumník řešení** otevřete soubor *Microsoft. SCIM. sln* a klikněte pravým tlačítkem myši na soubor *Microsoft. SCIM. WebHostSample* . Vyberte **Publikovat**.
+1. V Průzkumník řešení otevřete soubor *Microsoft. SCIM. sln* a klikněte pravým tlačítkem myši na soubor *Microsoft. SCIM. WebHostSample* . Vyberte **Publikovat**.
 
-    ![publikování v cloudu](media/use-scim-to-build-users-and-groups-endpoints/cloud-publish.png)
+    ![Snímek obrazovky, který zobrazuje ukázkový soubor.](media/use-scim-to-build-users-and-groups-endpoints/cloud-publish.png)
 
     > [!NOTE]
     > Pokud chcete toto řešení spustit lokálně, poklikejte na projekt a vyberte **IIS Express** pro spuštění projektu jako webové stránky s adresou URL místního hostitele.
 
 1. Vyberte **vytvořit profil** a ujistěte se, že jsou vybrané **App Service** a **vytvořit nové** .
 
-    ![publikování v cloudu 2](media/use-scim-to-build-users-and-groups-endpoints/cloud-publish-2.png)
+    ![Snímek obrazovky, který zobrazuje okno pro publikování.](media/use-scim-to-build-users-and-groups-endpoints/cloud-publish-2.png)
 
 1. Projděte si možnosti dialogového okna a přejmenujte aplikaci na název podle vašeho výběru. Tento název se používá jak v aplikaci, tak i v adrese URL koncového bodu SCIM.
 
-    ![publikování v cloudu 3](media/use-scim-to-build-users-and-groups-endpoints/cloud-publish-3.png)
+    ![Snímek obrazovky, který ukazuje vytvoření nové služby App Service.](media/use-scim-to-build-users-and-groups-endpoints/cloud-publish-3.png)
 
-1. Vyberte skupinu prostředků, kterou chcete použít, a zvolte **publikovat**.
+1. Vyberte skupinu prostředků, kterou chcete použít, a vyberte **publikovat**.
 
-1. Přejděte do aplikace ve **službě Azure App Services**  >  **Konfigurace** a výběrem **nastavení nová aplikace** přidejte nastavení *Token__TokenIssuer* s hodnotou `https://sts.windows.net/<tenant_id>/` . Nahraďte `<tenant_id>` tenant_idm Azure AD a pokud chcete otestovat koncový bod SCIM pomocí [post](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint), přidejte také *ASPNETCORE_ENVIRONMENT* nastavení s hodnotou `Development` . 
+1. Chcete-li   >  Přidat nastavení *Token__TokenIssuer* s hodnotou, v části **Konfigurace** aplikace Azure App Service vyberte možnost **nové nastavení aplikace** `https://sts.windows.net/<tenant_id>/` . Nahraďte `<tenant_id>` ID tenanta Azure AD. Pokud chcete otestovat koncový bod SCIM pomocí [metody post](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint), přidejte nastavení *ASPNETCORE_ENVIRONMENT* s hodnotou `Development` .
 
-   ![nastavení AppService](media/use-scim-to-build-users-and-groups-endpoints/app-service-settings.png)
+   ![Snímek obrazovky, který zobrazuje okno nastavení aplikace.](media/use-scim-to-build-users-and-groups-endpoints/app-service-settings.png)
 
-   Při testování koncového bodu s podnikovou aplikací v Azure Portal vyberte možnost zachovat prostředí jako `Development` a poskytněte token vygenerovaný z `/scim/token` koncového bodu pro účely testování nebo změňte prostředí na `Production` a nechte pole tokenu v [Azure Portal](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client)v podnikové aplikaci prázdné. 
+   Při testování koncového bodu s podnikovou aplikací v [Azure Portal](use-scim-to-provision-users-and-groups.md#integrate-your-scim-endpoint-with-the-aad-scim-client)máte dvě možnosti. Můžete ponechat prostředí v nástroji `Development` a poskytnout testovací token z `/scim/token` koncového bodu, nebo můžete změnit prostředí na `Production` a nechat pole tokenu prázdné.
 
-A to je vše! Váš koncový bod SCIM je teď publikovaný a umožňuje vám použít Azure App Service URL k otestování koncového bodu SCIM.
+A to je vše! Váš koncový bod SCIM je teď publikovaný a pomocí Azure App Service URL můžete testovat koncový bod SCIM.
 
 ## <a name="test-your-scim-endpoint"></a>Testování koncového bodu SCIM
 
-Požadavky na koncový bod SCIM vyžadují autorizaci a SCIM Standard ponechává více možností pro ověřování a autorizaci, jako jsou soubory cookie, základní ověřování, ověřování klienta TLS nebo kterákoli z metod uvedených v [dokumentu RFC 7644](https://tools.ietf.org/html/rfc7644#section-2).
+Požadavky na koncový bod SCIM vyžadují autorizaci. SCIM Standard obsahuje několik možností pro ověřování a autorizaci, včetně souborů cookie, základního ověřování, ověřování klientů TLS nebo kterékoli z metod uvedených v [dokumentu RFC 7644](https://tools.ietf.org/html/rfc7644#section-2).
 
-Nepoužívejte nezabezpečené metody, jako je uživatelské jméno a heslo, a přihlaste se k bezpečnější metodě, jako je třeba OAuth. Azure AD podporuje dlouhodobé tokeny nosiče (pro aplikace v galerii a mimo galerii) a udělení autorizace OAuth (pro aplikace publikované v galerii aplikací).
+Snažte se vyhnout metodám, které nejsou zabezpečené, jako je uživatelské jméno a heslo, a přihlaste se tak bezpečnější metodou, jako je například OAuth. Azure AD podporuje dlouhodobé tokeny nosiče (pro aplikace v galerii a mimo galerii) a udělení autorizace OAuth (pro aplikace v galerii).
 
 > [!NOTE]
-> Metody autorizace, které jsou k dispozici v úložišti, jsou určené pouze pro testování. Při integraci s Azure AD si můžete projít pokyny k autorizaci, viz [plánování zřizování pro koncový bod SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#authorization-for-provisioning-connectors-in-the-application-gallery). 
+> Metody autorizace, které jsou k dispozici v úložišti, jsou určené pouze pro testování. Když provádíte integraci s Azure AD, můžete si projít pokyny k autorizaci. Viz [plánování zřizování pro koncový bod SCIM](use-scim-to-provision-users-and-groups.md).
 
-Vývojové prostředí umožňuje, aby byly funkce nebezpečné pro produkční prostředí, například referenční kód pro řízení chování ověření tokenu zabezpečení. Ověřovací kód tokenu je nakonfigurován pro použití tokenu zabezpečení podepsaného svým držitelem a podpisový klíč je uložen v konfiguračním souboru, viz parametr **token: IssuerSigningKey** v souboru *appsettings.Development.json* .
+Vývojové prostředí povoluje funkce, které jsou nebezpečné pro produkci, například referenční kód pro řízení chování ověření tokenu zabezpečení. Ověřovací kód tokenu používá token zabezpečení podepsaný svým držitelem a podpisový klíč je uložen v konfiguračním souboru. Podívejte se na parametr **token: IssuerSigningKey** v souboru *appsettings.Development.js* .
 
 ```json
 "Token": {
@@ -86,9 +87,9 @@ Vývojové prostředí umožňuje, aby byly funkce nebezpečné pro produkční 
 ```
 
 > [!NOTE]
-> Odesláním žádosti o **získání** na `/scim/token` koncový bod se token vydá pomocí nakonfigurovaného klíče a dá se použít jako nosný token pro následnou autorizaci.
+> Když odešlete požadavek **Get** na `/scim/token` koncový bod, vystaví se token pomocí nakonfigurovaného klíče. Tento token se dá použít jako nosný token pro následnou autorizaci.
 
-Výchozí kód pro ověření tokenu je nakonfigurovaný tak, aby používal token vydaný Azure Active Directory a vyžaduje, aby byl vydávající tenant nakonfigurovaný pomocí parametru **token: TokenIssuer** v *appsettings.jsv* souboru.
+Výchozí kód pro ověření tokenu je nakonfigurovaný tak, aby používal token Azure AD, a vyžaduje, aby vydaný tenant byl nakonfigurovaný pomocí parametru **token: TokenIssuer** v *appsettings.jsv* souboru.
 
 ``` json
 "Token": {
@@ -99,43 +100,41 @@ Výchozí kód pro ověření tokenu je nakonfigurovaný tak, aby používal tok
 
 ### <a name="use-postman-to-test-endpoints"></a>Použít post k testování koncových bodů
 
-Po nasazení koncového bodu SCIM můžete otestovat a ujistit se, že je SCIM kompatibilní se specifikací RFC. Tento příklad poskytuje sadu testů v nástroji **post** za účelem ověření operací CRUD pro uživatele a skupiny, filtrování, aktualizace členství ve skupinách a zakázání uživatelů.
+Po nasazení koncového bodu SCIM můžete otestovat a ujistit se, že je kompatibilní s dokumentem RFC SCIM. Tento příklad poskytuje sadu testů v členovi, který ověřuje operace CRUD (vytváření, čtení, aktualizace a odstraňování) u uživatelů a skupin, filtrování, aktualizace členství ve skupinách a zakázání uživatelů.
 
-Koncové body jsou umístěné v `{host}/scim/` adresáři a lze je používat s použitím standardních požadavků HTTP. Postup změny `/scim/` trasy naleznete v tématu *ControllerConstant.cs* in **AzureADProvisioningSCIMreference**  >  **ScimReferenceApi**  >  **Controllers**.
+Koncové body jsou v `{host}/scim/` adresáři a můžete k jejich interakci použít standardní požadavky HTTP. Postup změny `/scim/` trasy naleznete v tématu *ControllerConstant.cs* in **AzureADProvisioningSCIMreference**  >  **ScimReferenceApi**  >  **Controllers**.
 
 > [!NOTE]
-> Pro místní testy můžete použít jenom koncové body HTTP, protože služba zřizování Azure AD vyžaduje, aby koncový bod podporoval HTTPS.
+> Koncové body HTTP můžete použít pouze pro místní testy. Služba zřizování Azure AD vyžaduje, aby koncový bod podporoval protokol HTTPS.
 
-#### <a name="open-postman-and-run-tests"></a>Otevřete post a spusťte testy.
+1. Stáhněte si [post](https://www.getpostman.com/downloads/) a spusťte aplikaci.
+1. Zkopírujte a vložte tento odkaz do metody post pro import kolekce testů: `https://aka.ms/ProvisioningPostman` .
 
-1. Stáhněte si aplikaci pro [publikování](https://www.getpostman.com/downloads/) a spuštění.
-1. Zkopírujte odkaz [https://aka.ms/ProvisioningPostman](https://aka.ms/ProvisioningPostman) a vložte ho do příspěvku pro import kolekce testů.
+    ![Snímek obrazovky, který ukazuje import kolekce testů v poli post.](media/use-scim-to-build-users-and-groups-endpoints/postman-collection.png)
 
-    ![kolekce post](media/use-scim-to-build-users-and-groups-endpoints/postman-collection.png)
-
-1. Vytvořte testovací prostředí s proměnnými uvedenými níže:
+1. Vytvořte testovací prostředí, které má tyto proměnné:
 
    |Prostředí|Proměnná|Hodnota|
    |-|-|-|
    |Spustit projekt místně pomocí IIS Express|||
    ||**Server**|`localhost`|
-   ||**Port**|`:44359`*(nezapomeňte na **:**)*|
+   ||**Port**|`:44359`*(nezapomeňte na **`:`** )*|
    ||**API**|`scim`|
    |Spustit projekt místně pomocí Kestrel|||
    ||**Server**|`localhost`|
-   ||**Port**|`:5001`*(nezapomeňte na **:**)*|
+   ||**Port**|`:5001`*(nezapomeňte na **`:`** )*|
    ||**API**|`scim`|
    |Hostování koncového bodu v Azure|||
    ||**Server**|*(zadejte adresu URL SCIM)*|
    ||**Port**|*(ponechte prázdné)*|
    ||**API**|`scim`|
 
-1. Použijte **Get Key** z kolekce post a odešlete požadavek **Get** na koncový bod tokenu a načtěte token zabezpečení, který bude uložen v proměnné **tokenu** pro následné požadavky. 
+1. Použijte **Get Key** z kolekce post a odešlete požadavek **Get** na koncový bod tokenu a načtěte token zabezpečení, který bude uložen v proměnné **tokenu** pro následné požadavky.
 
-   ![klíč pro odeslání po načtení](media/use-scim-to-build-users-and-groups-endpoints/postman-get-key.png)
+   ![Snímek obrazovky, který zobrazuje složku pro získání klíčů pro odeslání](media/use-scim-to-build-users-and-groups-endpoints/postman-get-key.png)
 
    > [!NOTE]
-   > Aby byly SCIM koncové body zabezpečené, potřebujete před připojením token zabezpečení a kurz používá `{host}/scim/token` ke generování tokenu podepsaného svým držitelem koncový bod.
+   > Aby byl SCIM koncový bod zabezpečený, budete před připojením potřebovat token zabezpečení. Kurz používá `{host}/scim/token` ke generování tokenu podepsaného svým držitelem koncový bod.
 
 A to je vše! Nyní můžete spustit kolekci **post** a otestovat funkci koncového bodu SCIM.
 

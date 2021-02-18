@@ -4,12 +4,12 @@ description: Nastavení testů webu ve službě Application Insights. Zasílán�
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: b0f66608c6e0f23b861e207d0dea07a546b41c2a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 41338760034918dce30ffb45c738588a2aa29786
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937420"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585946"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Monitorování dostupnosti jakéhokoli webu
 
@@ -151,7 +151,7 @@ Kliknutím na řádek výjimky zobrazíte podrobnosti o výjimce na straně serv
 
 ![Diagnostika na straně serveru](./media/monitor-web-app-availability/open-instance-4.png)
 
-Kromě nezpracovaných výsledků můžete také zobrazit dvě klíčové metriky dostupnosti v [Průzkumník metrik](../platform/metrics-getting-started.md):
+Kromě nezpracovaných výsledků můžete také zobrazit dvě klíčové metriky dostupnosti v [Průzkumník metrik](../essentials/metrics-getting-started.md):
 
 1. Dostupnost: procento testů, které proběhly úspěšně, vzhledem k celkovému počtu provedení testu.
 2. Doba trvání testu: průměrná doba trvání u všech provedení testu.
@@ -159,7 +159,7 @@ Kromě nezpracovaných výsledků můžete také zobrazit dvě klíčové metrik
 ## <a name="automation"></a>Automation
 
 * [Automatické nastavení testu dostupnosti pomocí skriptů PowerShell](./powershell.md#add-an-availability-test).
-* Nastavení [webhook](../platform/alerts-webhooks.md), který je volán při vydání výstrahy.
+* Nastavení [webhook](../alerts/alerts-webhooks.md), který je volán při vydání výstrahy.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

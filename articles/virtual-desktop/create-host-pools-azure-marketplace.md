@@ -3,15 +3,16 @@ title: Azure Portal fondu hostitelů virtuálních počítačů s Windows – Az
 description: Postup vytvoření fondu hostitelů virtuálních počítačů s Windows pomocí Azure Portal.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.custom: references_regions
+ms.date: 02/17/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 268f1c4bff84a2c9ef67c3f6b5749bc8d0b90e85
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 46a029a3b803428d6250b74059190f66183be452
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735177"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651455"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Portal
 
@@ -67,6 +68,9 @@ Chcete-li začít vytvářet nový fond hostitelů:
 
      > [!div class="mx-imgBorder"]
      > ![Snímek obrazovky Azure Portal zobrazující pole umístění s vybraným Východní USAm umístěním Vedle pole je text "metadata budou uložena v Východní USA."](media/portal-location-field.png)
+  
+   >[!NOTE]
+   > Pokud chcete vytvořit fond hostitelů v [podporované oblasti](data-locations.md) mimo nás, budete muset znovu zaregistrovat poskytovatele prostředků. Po opětovné registraci byste měli v rozevíracím seznamu pro výběr umístění zobrazit další oblasti. Přečtěte si, jak se znovu zaregistrovat v článku věnovaném řešení potíží při [vytváření fondu hostitelů](troubleshoot-set-up-issues.md#i-only-see-us-when-setting-the-location-for-my-service-objects) .
 
 8. V části typ fondu hostitelů vyberte, jestli fond hostitelů bude **osobní** nebo **sdružený**.
 

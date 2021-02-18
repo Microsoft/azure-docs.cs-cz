@@ -3,12 +3,12 @@ title: Syntaxe filtru SQL pro pravidlo předplatného Azure Service Bus | Micros
 description: Tento článek poskytuje podrobné informace o gramatice filtru SQL. Filtr SQL podporuje podmnožinu standardu SQL-92.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 810d17d458de79c851b6f1ada4556a231bfd20eb
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 022f6cb1d698a10dc216db8d41c172691f7535ab
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742977"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652937"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>Syntaxe filtru SQL pravidla předplatného
 
@@ -269,8 +269,8 @@ Vezměte v úvahu následující sémantiku [SqlFilter](/dotnet/api/microsoft.se
   
 -   Aritmetické operátory jako `+` , `-` , `*` , `/` a `%` sledují stejnou sémantiku jako vazba operátoru jazyka C# v propagačních akcích datových typů a implicitních převodech.
 
-
-[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
+## <a name="examples"></a>Příklady
+Příklady najdete v tématu [Příklady filtru Service Bus](service-bus-filter-examples.md).
 
 ## <a name="next-steps"></a>Další kroky
 

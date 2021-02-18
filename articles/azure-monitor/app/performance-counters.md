@@ -4,12 +4,12 @@ description: Monitorovat systémové a vlastní čítače výkonu rozhraní .NET
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f772b129e20fbaaade7305d84064a713dd734199
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5f1bd3ac4542dcce0d41f69a9c1664b747214554
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937392"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583880"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Čítače výkonu systému v Application Insights
 
@@ -110,7 +110,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 ```
 
 ## <a name="performance-counters-in-analytics"></a>Čítače výkonu v analýzách
-Sestavy čítače výkonu můžete vyhledávat a zobrazovat v [analýzách](../log-query/log-query-overview.md).
+Sestavy čítače výkonu můžete vyhledávat a zobrazovat v [analýzách](../logs/log-query-overview.md).
 
 Schéma **čítače výkonu** zpřístupňuje `category` , `counter` název a `instance` název každého čítače výkonu.  V telemetrii pro každou aplikaci uvidíte pouze čítače této aplikace. Například, chcete-li zjistit, jaké čítače jsou k dispozici: 
 
@@ -148,7 +148,7 @@ Podpora čítačů výkonu v ASP.NET Core je omezená:
 * Verze sady SDK 2.8.0 a novější podporují čítač procesorů a paměti v systému Linux. V systému Linux není podporován žádný jiný čítač. Doporučený způsob, jak získat systémové čítače v systémech Linux (a dalších prostředích mimo Windows), je použití [EventCounters](eventcounters.md)
 
 ## <a name="alerts"></a>Výstrahy
-Podobně jako u jiných metrik můžete [nastavit výstrahu](../platform/alerts-log.md) , která vás upozorní, pokud počítadlo výkonu dosáhne mimo zadaný limit. Otevřete podokno výstrahy a klikněte na Přidat výstrahu.
+Podobně jako u jiných metrik můžete [nastavit výstrahu](../alerts/alerts-log.md) , která vás upozorní, pokud počítadlo výkonu dosáhne mimo zadaný limit. Otevřete podokno výstrahy a klikněte na Přidat výstrahu.
 
 ## <a name="next-steps"></a><a name="next"></a>Další kroky
 

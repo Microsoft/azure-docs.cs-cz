@@ -7,20 +7,20 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
-ms.date: 09/23/2020
+ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: c5db04a673c1cdc0c0f24e128f340f4ae55fea81
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 3d2e01b645c1661d4b44520193b9c4557cbc1ea0
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825511"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652161"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Vysoce výkonná obsluha s odvozeným serverem Triton (Preview) 
 
-Naučte se používat [Triton odvozený Server NVIDIA](https://developer.nvidia.com/nvidia-triton-inference-server) ke zlepšení výkonu webové služby, která se používá pro odvození modelu.
+Naučte se používat [Triton odvozený Server NVIDIA](https://aka.ms/nvidia-triton-docs) ke zlepšení výkonu webové služby, která se používá pro odvození modelu.
 
 Jedním z způsobů, jak nasadit model pro odvození, je jako webová služba. Například nasazení do služby Azure Kubernetes nebo Azure Container Instances. Ve výchozím nastavení používá Azure Machine Learning k nasazení webové služby jedinou vláknovou webovou architekturu pro *obecné účely* .
 
@@ -30,7 +30,7 @@ Triton je rozhraní *optimalizované pro odvození*. Poskytuje lepší využití
 > Použití Triton pro nasazení z Azure Machine Learning je aktuálně ve __verzi Preview__. Na funkci verze Preview nemusí vztahovat zákaznická podpora. Další informace najdete v tématu s [doplňkovými podmínkami použití pro Microsoft Azure Preview.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 > [!TIP]
-> Fragmenty kódu v tomto dokumentu jsou pro ilustrativní účely a nemusí zobrazovat kompletní řešení. Pro pracovní příklad kódu si přečtěte [kompletní ukázky Triton v tématu Azure Machine Learning](https://github.com/Azure/azureml-examples/tree/main/tutorials).
+> Fragmenty kódu v tomto dokumentu jsou pro ilustrativní účely a nemusí zobrazovat kompletní řešení. Pro pracovní příklad kódu si přečtěte [kompletní ukázky Triton v tématu Azure Machine Learning](https://aka.ms/triton-aml-sample).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -47,48 +47,45 @@ Než se pokusíte použít Triton pro svůj vlastní model, je důležité pocho
 
 * Více pracovních procesů [Gunicorn](https://gunicorn.org/) se spouští souběžně se zpracováním příchozích požadavků.
 * Tito pracovníci zpracovávají předběžné zpracování, volání modelu a následné zpracování. 
-* Požadavky na odvození používají __identifikátor URI pro vyhodnocování__. Například `https://myserevice.azureml.net/score`.
+* Klienti používají __identifikátor URI pro vyhodnocování Azure ml__. Například, `https://myservice.azureml.net/score`.
 
 :::image type="content" source="./media/how-to-deploy-with-triton/normal-deploy.png" alt-text="Diagram architektury pro nasazení Normal, non-Triton,":::
 
-### <a name="setting-the-number-of-workers"></a>Nastavení počtu pracovních procesů
+**Přímé nasazení pomocí Triton**
 
-Chcete-li nastavit počet pracovních procesů v nasazení, nastavte proměnnou prostředí `WORKER_COUNT` . Vzhledem k tomu, že máte objekt [prostředí](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) s názvem `env` , můžete provést následující akce:
+* Požadavky směřují přímo na server Triton.
+* Triton zpracovává požadavky v dávkách k maximalizaci využití GPU.
+* Klient používá k vytvoření požadavků __identifikátor URI Triton__ . Například, `https://myservice.azureml.net/v2/models/${MODEL_NAME}/versions/${MODEL_VERSION}/infer`.
 
-```{py}
-env.environment_variables["WORKER_COUNT"] = "1"
-```
-
-Díky tomu bude Azure ML informovat o tom, kolik pracovníků zadáte.
-
+:::image type="content" source="./media/how-to-deploy-with-triton/triton-deploy.png" alt-text="Nasazení Inferenceconfig jenom s Triton a bez middlewaru Pythonu":::
 
 **Odvození nasazení konfigurace pomocí Triton**
 
 * Více pracovních procesů [Gunicorn](https://gunicorn.org/) se spouští souběžně se zpracováním příchozích požadavků.
 * Žádosti jsou předávány na **Server Triton**. 
 * Triton zpracovává požadavky v dávkách k maximalizaci využití GPU.
-* Klient používá k vytvoření požadavků __identifikátor URI pro vyhodnocování__ . Například `https://myserevice.azureml.net/score`.
+* Klient pro vytváření požadavků používá __identifikátor URI pro vyhodnocování Azure ml__ . Například, `https://myservice.azureml.net/score`.
 
-:::image type="content" source="./media/how-to-deploy-with-triton/inferenceconfig-deploy.png" alt-text="Nasazení Inferenceconfig s Triton":::
+:::image type="content" source="./media/how-to-deploy-with-triton/inference-config-deploy.png" alt-text="Nasazení pomocí middlewaru Triton a Pythonu":::
 
 Pracovní postup pro použití Triton pro nasazení modelu:
 
-1. Ověřte, že Triton může sloužit vašemu modelu.
+1. Slouží k přímému využití modelu pomocí Triton.
 1. Ověřte, že můžete odesílat požadavky do modelu nasazeného v Triton.
-1. Zahrňte svůj kód specifický pro Triton do nasazení AML.
+1. Volitelné Vytvoření vrstvy middlewaru pro Python na straně serveru před a po zpracování
 
-## <a name="verify-that-triton-can-serve-your-model"></a>Ověřte, že Triton může sloužit vašemu modelu.
+## <a name="deploying-triton-without-python-pre--and-post-processing"></a>Nasazení Triton bez předběžného a následného zpracování Pythonu
 
 Nejprve postupujte podle následujících kroků a ověřte, zda může Triton odvozený Server sloužit vašemu modelu.
 
 ### <a name="optional-define-a-model-config-file"></a>Volitelné Definování konfiguračního souboru modelu
 
-Konfigurační soubor modelu oznamuje, kolik vstupů očekává a jaké dimenze budou mít tyto vstupy. Další informace o vytvoření konfiguračního souboru najdete v dokumentaci ke NVIDIA v tématu [Konfigurace modelu](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_configuration.html) .
+Konfigurační soubor modelu oznamuje, kolik vstupů očekává a jaké dimenze budou mít tyto vstupy. Další informace o vytvoření konfiguračního souboru najdete v dokumentaci ke NVIDIA v tématu [Konfigurace modelu](https://aka.ms/nvidia-triton-docs) .
 
 > [!TIP]
 > Používáme `--strict-model-config=false` možnost při spouštění Triton odvozeného serveru, což znamená, že nemusíte zadávat `config.pbtxt` soubor pro modely ONNX nebo TensorFlow.
 > 
-> Další informace o této možnosti naleznete v tématu [vygenerovaná konfigurace modelu](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_configuration.html#generated-model-configuration) v dokumentaci NVIDIA.
+> Další informace o této možnosti naleznete v tématu [vygenerovaná konfigurace modelu](https://aka.ms/nvidia-triton-docs) v dokumentaci NVIDIA.
 
 ### <a name="use-the-correct-directory-structure"></a>Použití správné adresářové struktury
 
@@ -106,92 +103,128 @@ models
 ```
 
 > [!IMPORTANT]
-> Tato adresářová struktura je úložiště modelů Triton a je vyžadováno pro to, aby vaše modely pracovaly s Triton. Další informace najdete v dokumentaci k rozhraní NVIDIA v tématu [úložiště modelu Triton](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_repository.html) .
+> Tato adresářová struktura je úložiště modelů Triton a je vyžadováno pro to, aby vaše modely pracovaly s Triton. Další informace najdete v dokumentaci k rozhraní NVIDIA v tématu [úložiště modelu Triton](https://aka.ms/nvidia-triton-docs) .
 
-### <a name="test-with-triton-and-docker"></a>Testování pomocí Triton a Docker
+### <a name="register-your-triton-model"></a>Registrace modelu Triton
 
-K otestování modelu, abyste se ujistili, že běží s Triton, můžete použít Docker. Následující příkazy stáhnou kontejner Triton do místního počítače a pak spustí Triton Server:
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-1. Pokud chcete načíst image pro server Triton do místního počítače, použijte následující příkaz:
+```azurecli-interactive
+az ml model register -n my_triton_model -p models --model-framework=Multi
+```
 
-    ```bash
-    docker pull nvcr.io/nvidia/tritonserver:20.09-py3
-    ```
+Další informace o nástroji `az ml model register` najdete v [referenční dokumentaci](/cli/azure/ext/azure-cli-ml/ml/model).
 
-1. K spuštění serveru Triton použijte následující příkaz. Nahraďte `<path-to-models/triton>` cestou k úložišti Triton modelů, které obsahuje vaše modely:
+# <a name="python"></a>[Python](#tab/python)
 
-    ```bash
-    docker run --rm -ti -v<path-to-models/triton>:/models nvcr.io/nvidia/tritonserver:20.09-py3 tritonserver --model-repository=/models --strict-model-config=false
-    ```
 
-    > [!IMPORTANT]
-    > Pokud používáte systém Windows, může se při prvním spuštění příkazu zobrazit výzva k povolení síťového připojení k tomuto procesu. Pokud ano, vyberte, pokud chcete povolit přístup.
+```python
 
-    Po spuštění se do příkazového řádku zaprotokolují informace podobné následujícímu textu:
+from azureml.core.model import Model
 
-    ```bash
-    I0923 19:21:30.582866 1 http_server.cc:2705] Started HTTPService at 0.0.0.0:8000
-    I0923 19:21:30.626081 1 http_server.cc:2724] Started Metrics Service at 0.0.0.0:8002
-    ```
+model_path = "models"
 
-    První řádek označuje adresu webové služby. V tomto případě `0.0.0.0:8000` , který je stejný jako `localhost:8000` .
+model = Model.register(
+    model_path=model_path,
+    model_name="bidaf-9-tutorial",
+    tags={"area": "Natural language processing", "type": "Question-answering"},
+    description="Question answering from ONNX model zoo",
+    workspace=ws,
+    model_framework=Model.Framework.MULTI,  # This line tells us you are registering a Triton model
+)
 
-1. Pro přístup ke koncovému bodu stavu použijte nástroj, jako je například kudrlinkou.
+```
+Další informace naleznete v dokumentaci k [třídě modelu](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py).
 
-    ```bash
-    curl -L -v -i localhost:8000/v2/health/ready
-    ```
+---
 
-    Tento příkaz vrátí informace podobné následujícímu. Poznámka: `200 OK` Tento stav znamená, že je webový server spuštěný.
+### <a name="deploy-your-model"></a>Nasazení modelu
 
-    ```bash
-    *   Trying 127.0.0.1:8000...
-    * Connected to localhost (127.0.0.1) port 8000 (#0)
-    > GET /v2/health/ready HTTP/1.1
-    > Host: localhost:8000
-    > User-Agent: curl/7.71.1
-    > Accept: */*
-    >
-    * Mark bundle as not supporting multiuse
-    < HTTP/1.1 200 OK
-    HTTP/1.1 200 OK
-    ```
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-Kromě základní kontroly stavu můžete vytvořit klienta, který bude odesílat data do Triton pro odvození. Další informace o vytváření klienta najdete v [příkladech klienta](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/client_example.html) v dokumentaci k NVIDIA. K dispozici jsou také [ukázky Pythonu na GitHubu Triton](https://github.com/triton-inference-server/server/tree/master/src/clients/python/examples).
+Pokud máte pomocí Azure Machine Learning vytvořený cluster služby Azure Kubernetes s podporou GPU s názvem AKS-GPU, můžete model nasadit pomocí následujícího příkazu.
 
-Další informace o spouštění Triton pomocí Docker najdete v tématu [spuštění Triton v systému s grafickým procesorem](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/run.html#running-triton-on-a-system-with-a-gpu) a [spuštění Triton v systému bez GPU](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/run.html#running-triton-on-a-system-without-a-gpu).
-
-### <a name="register-your-model"></a>Registrace modelu
-
-Teď, když jste ověřili, že váš model spolupracuje s Triton, zaregistrujte ho pomocí Azure Machine Learning. Registrace modelu ukládá vaše soubory modelů v pracovním prostoru Azure Machine Learning a používá se při nasazení pomocí sady Python SDK a Azure CLI.
-
-Následující příklady ukazují, jak registrovat model (y):
+```azurecli
+az ml model deploy -n triton-webservice -m triton_model:1 --dc deploymentconfig.json --compute-target aks-gpu
+```
 
 # <a name="python"></a>[Python](#tab/python)
 
 ```python
-from azureml.core.model import Model
+from azureml.core.webservice import AksWebservice
+from azureml.core.model import InferenceConfig
+from random import randint
 
-model = Model.register(
-    model_path=os.path.join("..", "triton"),
-    model_name="bidaf_onnx",
-    tags={'area': "Natural language processing", 'type': "Question answering"},
-    description="Question answering model from ONNX model zoo",
-    workspace=ws
-```
+service_name = "triton-webservice"
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+config = AksWebservice.deploy_configuration(
+    compute_target_name="aks-gpu",
+    gpu_cores=1,
+    cpu_cores=1,
+    memory_gb=4,
+    auth_enabled=True,
+)
 
-```azurecli
-az ml model register --model-path='triton' \
---name='bidaf_onnx' \
---workspace-name='<my_workspace>'
+service = Model.deploy(
+    workspace=ws,
+    name=service_name,
+    models=[model],
+    deployment_config=config,
+    overwrite=True,
+)
 ```
 ---
 
-<a id="processing"></a>
+[Další informace o nasazování modelů najdete v této dokumentaci](how-to-deploy-and-where.md).
 
-## <a name="verify-you-can-call-into-your-model"></a>Ověření, že můžete volat do svého modelu
+### <a name="call-into-your-deployed-model"></a>Volání do nasazeného modelu
+
+Nejdřív získejte identifikátor URI a nosiče s hodnocením.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+
+```azurecli
+az ml service show --name=triton-webservice
+```
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import requests
+
+print(service.scoring_uri)
+print(service.get_keys())
+
+```
+
+---
+
+Pak zajistěte, aby služba běžela tímto způsobem: 
+
+```{bash}
+!curl -v $scoring_uri/v2/health/ready -H 'Authorization: Bearer '"$service_key"''
+```
+
+Tento příkaz vrátí informace podobné následujícímu. Poznámka: `200 OK` Tento stav znamená, že je webový server spuštěný.
+
+```{bash}
+*   Trying 127.0.0.1:8000...
+* Connected to localhost (127.0.0.1) port 8000 (#0)
+> GET /v2/health/ready HTTP/1.1
+> Host: localhost:8000
+> User-Agent: curl/7.71.1
+> Accept: */*
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+HTTP/1.1 200 OK
+```
+
+Jakmile provedete kontrolu stavu, můžete vytvořit klienta, který bude odesílat data do Triton pro odvození. Další informace o vytváření klienta najdete v [příkladech klienta](https://aka.ms/nvidia-client-examples) v dokumentaci k NVIDIA. K dispozici jsou také [ukázky Pythonu na GitHubu Triton](https://aka.ms/nvidia-triton-docs).
+
+Pokud nechcete do nasazené služby webwebservice přidat předem a následné zpracování Pythonu, můžete to udělat. Pokud chcete přidat tuto logiku předem a po zpracování, přečtěte si.
+
+## <a name="optional-re-deploy-with-a-python-entry-script-for-pre--and-post-processing"></a>Volitelné Opětovné nasazení pomocí vstupního skriptu Pythonu pro předběžné a následné zpracování
 
 Po ověření, že je Triton schopen zajišťovat váš model, můžete přidat kód před a po zpracování definováním _skriptu pro vložení_. Tento soubor má název `score.py` . Další informace o vstupních skriptech najdete v tématu [Definování skriptu pro zadání](how-to-deploy-and-where.md#define-an-entry-script).
 
@@ -236,7 +269,7 @@ res = triton_client.infer(model_name,
 
 <a id="redeploy"></a>
 
-## <a name="redeploy-with-an-inference-configuration"></a>Znovu nasadit s použitím konfigurace odvození
+### <a name="redeploy-with-an-inference-configuration"></a>Znovu nasadit s použitím konfigurace odvození
 
 Odvozená konfigurace umožňuje používat vstupní skript i proces nasazení Azure Machine Learning pomocí sady Python SDK nebo rozhraní příkazového řádku Azure CLI.
 
@@ -244,6 +277,19 @@ Odvozená konfigurace umožňuje používat vstupní skript i proces nasazení A
 > Je nutné zadat toto `AzureML-Triton` [prostředí](./resource-curated-environments.md).
 >
 > Příklad kódu Pythonu se klonuje `AzureML-Triton` do jiného prostředí s názvem `My-Triton` . I toto prostředí používá kód Azure CLI. Další informace o klonování prostředí naleznete v tématu [prostředí. Clone ()](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#clone-new-name-) reference.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+> [!TIP]
+> Další informace o vytvoření konfigurace odvození naleznete v tématu [schéma konfigurace odvození](./reference-azure-machine-learning-cli.md#inference-configuration-schema).
+
+```azurecli
+az ml model deploy -n triton-densenet-onnx \
+-m densenet_onnx:1 \
+--ic inference-config.json \
+-e My-Triton --dc deploymentconfig.json \
+--overwrite --compute-target=aks-gpu
+```
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -283,48 +329,47 @@ print(local_service.state)
 print(local_service.scoring_uri)
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-> [!TIP]
-> Další informace o vytvoření konfigurace odvození naleznete v tématu [schéma konfigurace odvození](./reference-azure-machine-learning-cli.md#inference-configuration-schema).
-
-```azurecli
-az ml model deploy -n triton-densenet-onnx \
--m densenet_onnx:1 \
---ic inference-config.json \
--e My-Triton --dc deploymentconfig.json \
---overwrite --compute-target=aks-gpu
-```
-
 ---
 
 Po dokončení nasazení se zobrazí identifikátor URI pro vyhodnocování. Pro toto místní nasazení bude `http://localhost:6789/score` . Pokud nasadíte do cloudu, můžete pomocí příkazu [AZ ml Service show](/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) CLI získat identifikátor URI pro vyhodnocování.
 
 Informace o tom, jak vytvořit klienta, který odesílá požadavky na odvození do identifikátoru URI pro vyhodnocování, najdete v tématu [Spotřeba modelu nasazeného jako webové služby](how-to-consume-web-service.md).
 
+### <a name="setting-the-number-of-workers"></a>Nastavení počtu pracovních procesů
+
+Chcete-li nastavit počet pracovních procesů v nasazení, nastavte proměnnou prostředí `WORKER_COUNT` . Vzhledem k tomu, že máte objekt [prostředí](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) s názvem `env` , můžete provést následující akce:
+
+```{py}
+env.environment_variables["WORKER_COUNT"] = "1"
+```
+
+Díky tomu bude Azure ML informovat o tom, kolik pracovníků zadáte.
+
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud plánujete pokračování v používání pracovního prostoru Azure Machine Learning, ale chcete se zbavit nasazené služby, použijte jednu z následujících možností:
 
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az ml service delete -n triton-densenet-onnx
+```
 # <a name="python"></a>[Python](#tab/python)
 
 ```python
 local_service.delete()
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```azurecli
-az ml service delete -n triton-densenet-onnx
-```
 
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Viz kompletní ukázky Triton v tématu Azure Machine Learning](https://aka.ms/aml-triton-sample)
-* Podívejte se na [Příklady klienta Triton](https://github.com/triton-inference-server/server/tree/master/src/clients/python/examples)
-* Přečtěte si [dokumentaci k Triton serveru pro odvození](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/index.html) .
+* Podívejte se na [Příklady klienta Triton](https://aka.ms/nvidia-client-examples)
+* Přečtěte si [dokumentaci k Triton serveru pro odvození](https://aka.ms/nvidia-triton-docs) .
 * [Řešení potíží s neúspěšným nasazením](how-to-troubleshoot-deployment.md)
 * [Nasazení do Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)
 * [Aktualizace webové služby](how-to-deploy-update-web-service.md)
