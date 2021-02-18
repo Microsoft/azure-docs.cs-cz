@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: riroloff
 ms.subservice: metrics
-ms.openlocfilehash: 176acea34dead929986acb807b465593f9ffda5a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 23507a01f3ed0015690d9655fde92a875f89c2da
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609822"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095481"
 ---
 # <a name="view-multiple-resources-in-the-azure-metrics-explorer"></a>Zobrazení více prostředků v Průzkumníkovi metrik Azure
 
@@ -33,7 +33,7 @@ Některé typy prostředků se mohou dotazovat na metriky v několika prostředc
 ![Snímek obrazovky zobrazující nabídku prostředků, které jsou kompatibilní s více prostředky.](./media/metrics-dynamic-scope/020.png)
 
 > [!WARNING] 
-> Aby bylo možné vizualizovat metriky napříč několika prostředky, skupinami prostředků nebo předplatnými, musíte mít oprávnění čtenář monitoring na úrovni předplatného. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+> Aby bylo možné vizualizovat metriky napříč několika prostředky, skupinami prostředků nebo předplatnými, musíte mít oprávnění čtenář monitoring na úrovni předplatného. Další informace najdete v tématu [přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 Pokud chcete vizualizovat metriky v několika prostředcích, Začněte výběrem několika prostředků v rámci výběru oboru prostředků. 
 
@@ -81,7 +81,7 @@ V tomto příkladu filtrujeme podle TailspinToysDemo. V tomto případě filtr o
 
 ## <a name="pin-multiple-resource-charts"></a>Připnutí grafů s více prostředky 
 
-Grafy s více prostředky, které vizualizují metriky napříč skupinami prostředků a předplatnými, vyžadují, aby měl uživatel oprávnění *Čtenář monitorování* na úrovni předplatného. Zajistěte, aby všichni uživatelé řídicích panelů, na které připnutí grafů s více prostředky mají dostatečná oprávnění. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+Grafy s více prostředky, které vizualizují metriky napříč skupinami prostředků a předplatnými, vyžadují, aby měl uživatel oprávnění *Čtenář monitorování* na úrovni předplatného. Zajistěte, aby všichni uživatelé řídicích panelů, na které připnutí grafů s více prostředky mají dostatečná oprávnění. Další informace najdete v tématu [přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 Pokud chcete připnout graf s více prostředky na řídicí panel, přečtěte si téma [připnutí na řídicí panely](../essentials/metrics-charts.md#pinning-to-dashboards). 
 

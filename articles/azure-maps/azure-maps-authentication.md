@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: d47e98273e696a4b6e827d8ebbc71a297f2861cb
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9c973859c8b7a3d04693946f50377837c3538b85
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905311"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094091"
 ---
 # <a name="authentication-with-azure-maps"></a>Ověřování s využitím Azure Maps
 
@@ -84,7 +84,7 @@ Azure Maps podporuje přístup ke všem objektům zabezpečení pro [řízení p
 
 V dalších částech najdete koncepty a součásti Azure Maps integrace se službou Azure RBAC. V rámci procesu nastavení účtu Azure Maps je adresář služby Azure AD přidružený k předplatnému Azure, ke kterému se nachází účet Azure Maps. 
 
-Při konfiguraci služby Azure RBAC zvolíte objekt zabezpečení a použijete ho pro přiřazení role. Další informace o přidání přiřazení rolí na Azure Portal najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure](../role-based-access-control/role-assignments-portal.md).
+Při konfiguraci služby Azure RBAC zvolíte objekt zabezpečení a použijete ho pro přiřazení role. Další informace o přidání přiřazení rolí na Azure Portal najdete v tématu [přiřazení rolí Azure](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="picking-a-role-definition"></a>Výběr definice role
 
@@ -114,7 +114,7 @@ Vlastní definice role se pak dá použít v přiřazení role pro libovolný ob
 
 Tady je několik ukázkových scénářů, ve kterých můžou vlastní role zlepšit zabezpečení aplikací.
 
-| Scénář                                                                                                                                                                                                                 | Akce s daty vlastní role                                                                                                                  |
+| Scenario                                                                                                                                                                                                                 | Akce s daty vlastní role                                                                                                                  |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
 | Veřejná nebo interaktivní přihlašovací webová stránka s dlaždicemi základní mapy a bez dalších rozhraní REST API.                                                                                                                              | `Microsoft.Maps/accounts/services/render/read`                                                                                              |
 | Aplikace, která vyžaduje pouze reverzní geografické kódování a žádná další rozhraní REST API.                                                                                                                                             | `Microsoft.Maps/accounts/services/search/read`                                                                                              |

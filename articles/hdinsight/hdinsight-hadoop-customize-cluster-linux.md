@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, contperf-fy21q2
 ms.date: 09/02/2020
-ms.openlocfilehash: 46be3349490f04660d4fc8b69e4cdc295d8ecc1c
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d85aa1b66170acb25bd88435b83b1d28cda954f0
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945804"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093584"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Přizpůsobení clusterů Azure HDInsight pomocí akcí skriptů
 
@@ -68,7 +68,7 @@ Někdo, který má minimálně přístup Přispěvatel k předplatnému Azure, m
 Získejte další informace o práci se správou přístupu:
 
 - [Začínáme se správou přístupu na webu Azure Portal](../role-based-access-control/overview.md)
-- [Použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md)
+- [Přiřazení rolí Azure ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="methods-for-using-script-actions"></a>Metody použití akcí skriptů
 
@@ -265,7 +265,7 @@ Než začnete, ujistěte se, že jste nainstalovali a nakonfigurovali rozhraní 
     az hdinsight script-action execute --cluster-name CLUSTERNAME --name SCRIPTNAME --resource-group RESOURCEGROUP --roles ROLES
     ```
 
-    Platné role jsou `headnode` , `workernode` , `zookeepernode` , `edgenode` . Pokud má být skript použit pro několik typů uzlů, oddělte role mezerou. Například `--roles headnode workernode`.
+    Platné role jsou `headnode` , `workernode` , `zookeepernode` , `edgenode` . Pokud má být skript použit pro několik typů uzlů, oddělte role mezerou. Například, `--roles headnode workernode`.
 
     Pro zachování skriptu přidejte `--persist-on-success` . Skript můžete také zachovat později pomocí `az hdinsight script-action promote` .
 

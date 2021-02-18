@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: c49ee2778d3198cc7109c34bceb1591756d82b1c
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 502f93df8d9948a6d6682b14ea13b59e324833cb
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653444"
+ms.locfileid: "101091460"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -191,6 +191,7 @@ Neuronové hlasy se dají použít k zajištění většího přirozeného a pou
 | finština (Finsko) | `fi-FI` | Female | `fi-FI-SelmaNeural` <sup>Nová</sup> | Obecné |
 | finština (Finsko) | `fi-FI` | Male | `fi-FI-HarriNeural` <sup>Nová</sup> | Obecné |
 | Francouzština (Kanada) | `fr-CA` | Female | `fr-CA-SylvieNeural` | Obecné |
+| Francouzština (Kanada) | `fr-CA` | Male | `fr-CA-AntoineNeural` <sup>Nová</sup> | Obecné |
 | Francouzština (Kanada) | `fr-CA` | Male | `fr-CA-JeanNeural` | Obecné |
 | francouzština (Francie) | `fr-FR` | Female | `fr-FR-DeniseNeural` | Obecné |
 | francouzština (Francie) | `fr-FR` | Male | `fr-FR-HenriNeural` | Obecné |

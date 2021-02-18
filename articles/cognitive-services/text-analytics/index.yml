@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/29/2019
   ms.author: aahi
-  ms.openlocfilehash: 48d045fb89a4b04826ecb9fd0c7d0b2ac676d64a
-  ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+  ms.openlocfilehash: 322be97658752fb1fd6c775ba25fc74f4e04e50d
+  ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 01/28/2021
-  ms.locfileid: "98944973"
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "101093289"
 landingContent:
 - title: Informace o rozhraní API pro analýzu textu
   linkLists:
@@ -114,6 +114,36 @@ landingContent:
     links:
     - text: rozpoznávání entit,
       url: how-tos/text-analytics-how-to-entity-linking.md
+- title: Zodpovědné využití AI
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Poznámka k transparentnosti pro Analýza textu
+      url: /legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context
+    - text: Poznámka transparentnosti pro stav
+      url: /legal/cognitive-services/text-analytics/transparency-note-health?context=/azure/cognitive-services/text-analytics/context/context
+    - text: Poznámka transparentnosti pro PII
+      url: /legal/cognitive-services/text-analytics/transparency-note-personally-identifiable-information?context=/azure/cognitive-services/text-analytics/context/context
+    - text: Poznámka k transparentnosti pro Analýza mínění
+      url: /legal/cognitive-services/text-analytics/transparency-note-sentiment-analysis?context=/azure/cognitive-services/text-analytics/context/context
+  - linkListType: concept
+    links:
+    - text: Integrace a zodpovědné využití
+      url: /legal/cognitive-services/text-analytics/guidance-integration-responsible-use?context=/azure/cognitive-services/text-analytics/context/context
+- title: Použití kontejnerů Dockeru
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Instalace a spuštění kontejnerů Analýzy textu
+      url: how-tos/text-analytics-how-to-install-containers.md
+    - text: Konfigurace kontejnerů Analýzy textu
+      url: text-analytics-resource-container-config.md
+    - text: Použití kontejneru Analýzy textu pro zdravotnictví
+      url: How-tos/text-analytics-for-health.md
+    - text: Nasazení instance kontejneru do Azure
+      url: ../containers/azure-container-instance-recipe.md
+    - text: Nasazení kontejneru do Azure Kubernetes Service (AKS)
+      url: how-tos/text-analytics-how-to-use-kubernetes-service.md
 - title: Referenční informace
   linkLists:
   - linkListType: reference
@@ -134,20 +164,6 @@ landingContent:
       url: /powershell/module/az.cognitiveservices
     - text: Azure CLI
       url: /cli/azure/cognitiveservices?view=azure-cli-latest
-- title: Použití kontejnerů Dockeru
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Instalace a spuštění kontejnerů Analýzy textu
-      url: how-tos/text-analytics-how-to-install-containers.md
-    - text: Konfigurace kontejnerů Analýzy textu
-      url: text-analytics-resource-container-config.md
-    - text: Použití kontejneru Analýzy textu pro zdravotnictví
-      url: How-tos/text-analytics-for-health.md
-    - text: Nasazení instance kontejneru do Azure
-      url: ../containers/azure-container-instance-recipe.md
-    - text: Nasazení kontejneru do Azure Kubernetes Service (AKS)
-      url: how-tos/text-analytics-how-to-use-kubernetes-service.md
 - title: Nápověda a zpětná vazba
   linkLists:
   - linkListType: reference

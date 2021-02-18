@@ -36,6 +36,8 @@
       href: front-door-quickstart-template-samples.md
 - name: Koncepty
   items:
+    - name: SKU úrovně Standard/Premium
+      href: standard-premium/overview.md
     - name: Zabezpečení
       items:
         - name: Standardní hodnoty zabezpečení

@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: e2274a551542b06996941b49e7d047baf3e8b3ca
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 12d704b0a3d92aa0585fb120f969000def282396
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92894028"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092201"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Správa prostředků Azure pomocí Azure Portal
 
@@ -29,12 +29,12 @@ Po vytvoření šablony Správce prostředků můžete použít Azure Portal k n
 
 ## <a name="open-resources"></a>Otevřené prostředky
 
-Prostředky Azure se uspořádávají podle služeb Azure a skupin prostředků. Následující postupy ukazují, jak otevřít účet úložiště s názvem **mystorage0207** . Virtuální počítač se nachází ve skupině prostředků s názvem **mystorage0207rg** .
+Prostředky Azure se uspořádávají podle služeb Azure a skupin prostředků. Následující postupy ukazují, jak otevřít účet úložiště s názvem **mystorage0207**. Virtuální počítač se nachází ve skupině prostředků s názvem **mystorage0207rg**.
 
 Postup otevření prostředku podle typu služby:
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
-2. V levém podokně vyberte službu Azure. V tomto případě **účty úložiště** .  Pokud uvedenou službu nevidíte, vyberte **všechny služby** a potom vyberte typ služby.
+2. V levém podokně vyberte službu Azure. V tomto případě **účty úložiště**.  Pokud uvedenou službu nevidíte, vyberte **všechny služby** a potom vyberte typ služby.
 
     ![otevřít prostředek Azure na portálu](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
 
@@ -63,17 +63,17 @@ Snímek obrazovky ukazuje možnosti správy pro virtuální počítač Azure. M�
 ## <a name="delete-resources"></a>Odstranění prostředků
 
 1. Otevřete prostředek na portálu. Postup najdete v tématu [Open Resources](#open-resources).
-2. Vyberte **Odstranit** . Následující snímek obrazovky ukazuje možnosti správy pro virtuální počítač.
+2. Vyberte **Odstranit**. Následující snímek obrazovky ukazuje možnosti správy pro virtuální počítač.
 
     ![odstranit prostředek Azure](./media/manage-resources-portal/manage-azure-resources-portal-delete-resource.png)
-3. Zadáním názvu prostředku potvrďte odstranění a pak vyberte **Odstranit** .
+3. Zadáním názvu prostředku potvrďte odstranění a pak vyberte **Odstranit**.
 
 Další informace o tom, jak Azure Resource Manager objednává odstranění prostředků, najdete v tématu [Azure Resource Manager odstranění skupiny prostředků](delete-resource-group.md).
 
 ## <a name="move-resources"></a>Přesunutí prostředků
 
 1. Otevřete prostředek na portálu. Postup najdete v tématu [Open Resources](#open-resources).
-2. Vyberte **přesunout** . Následující snímek obrazovky ukazuje možnosti správy pro účet úložiště.
+2. Vyberte **přesunout**. Následující snímek obrazovky ukazuje možnosti správy pro účet úložiště.
 
     ![přesunout prostředek Azure](./media/manage-resources-portal/manage-azure-resources-portal-move-resource.png)
 3. Vyberte **přesunout do jiné skupiny prostředků** nebo **Přejít na jiné předplatné** v závislosti na vašich potřebách.
@@ -85,7 +85,7 @@ Další informace najdete v tématu, které se zabývá [přesunutím prostředk
 Uzamykání brání jiným uživatelům ve vaší organizaci v neúmyslném odstranění nebo úpravě důležitých prostředků, jako je například předplatné Azure, skupina prostředků nebo prostředek. 
 
 1. Otevřete prostředek na portálu. Postup najdete v tématu [Open Resources](#open-resources).
-2. Vyberte **zámky** . Následující snímek obrazovky ukazuje možnosti správy pro účet úložiště.
+2. Vyberte **zámky**. Následující snímek obrazovky ukazuje možnosti správy pro účet úložiště.
 
     ![Uzamknout prostředek Azure](./media/manage-resources-portal/manage-azure-resources-portal-lock-resource.png)
 3. Vyberte **Přidat** a pak zadejte vlastnosti zámku.
@@ -97,10 +97,10 @@ Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resour
 Označení pomáhá organizovat skupinu prostředků a prostředky logicky. 
 
 1. Otevřete prostředek na portálu. Postup najdete v tématu [Open Resources](#open-resources).
-2. Vyberte **Značky** . Následující snímek obrazovky ukazuje možnosti správy pro účet úložiště.
+2. Vyberte **Značky**. Následující snímek obrazovky ukazuje možnosti správy pro účet úložiště.
 
     ![označení prostředku Azure](./media/manage-resources-portal/manage-azure-resources-portal-tag-resource.png)
-3. Zadejte vlastnosti značky a potom vyberte **Uložit** .
+3. Zadejte vlastnosti značky a potom vyberte **Uložit**.
 
 Informace najdete v tématu [použití značek k uspořádání prostředků Azure](tag-resources.md#portal).
 
@@ -114,7 +114,7 @@ Můžete vybrat ikonu připnutí v pravém horním rohu grafů a připnout graf 
 
 ## <a name="manage-access-to-resources"></a>Správa přístupu k prostředkům
 
-[Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md) je způsob, jakým můžete spravovat přístup k prostředkům v Azure. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+[Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md) je způsob, jakým můžete spravovat přístup k prostředkům v Azure. Další informace najdete v tématu [přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Další kroky
 

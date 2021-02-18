@@ -4,12 +4,12 @@ description: Naučte se zabezpečit lusky pomocí Azure Policy ve službě Azure
 services: container-service
 ms.topic: article
 ms.date: 09/22/2020
-ms.openlocfilehash: 8e437095b3d527647a453ba89adaa2ab62672177
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 34f2bfe346d7163a254e2ccecd1d7ef63ddb4194
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348521"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092622"
 ---
 # <a name="secure-pods-with-azure-policy"></a>Zabezpečené pody s využitím Azure Policy
 
@@ -60,7 +60,7 @@ Na Azure Policy doplňku pro clustery Kubernetes se vztahují následující obe
 Následující omezení platí pouze pro Azure Policy doplněk pro AKS:
 
 - [Zásada zabezpečení AKS pod (Preview)](use-pod-security-policies.md) a doplněk Azure Policy pro AKS nelze povolit současně. 
-- Obory názvů automaticky vyloučené Azure Policy doplněk pro vyhodnocení: _Kube-System_ , _gatekeeper-System_ a _AKS-Periscope_.
+- Obory názvů automaticky vyloučené Azure Policy doplněk pro vyhodnocení: _Kube-System_, _gatekeeper-System_ a _AKS-Periscope_. Pokud používáte zásady sítě Calico s Kubernetes verze 1,20 a vyšší, vyloučí se 2 další obory názvů, což jsou _Calico-System_ a _Tigera-operator_.
 
 ### <a name="recommendations"></a>Doporučení
 
@@ -151,9 +151,9 @@ If the built-in initiatives to address pod security do not match your requiremen
 
 AKS vyžaduje, aby se systémové lusky spouštěly na clusteru a poskytovaly důležité služby, jako je například překlad DNS. Zásady, které omezují funkčnost, můžou ovlivnit stabilitu systému pod. V důsledku toho jsou během **žádosti o přijetí při vytváření, aktualizaci a auditování zásad vyloučené z vyhodnocení zásad** tyto obory názvů. To vynutí, aby se nová nasazení do těchto oborů názvů vyloučila ze zásad Azure.
 
-1. Kube – systém
+1. kube-system
 1. Server Gatekeeper
-1. Azure – ARC
+1. azure-arc
 1. AKS – Periscope
 
 Další vlastní obory názvů je možné z vyhodnocení vyloučit během vytváření, aktualizace a auditu. Tato vyloučení by měla být použita, pokud máte specializované lusky, které jsou spuštěny ve schváleném oboru názvů a chcete se vyhnout aktivaci narušení auditu.
@@ -252,7 +252,7 @@ Vytvořte pod pomocí příkazu [kubectl Applu][kubectl-apply] a zadejte název 
 kubectl apply -f nginx-unprivileged.yaml
 ```
 
-V části se úspěšně naplánovalo. Když zkontrolujete stav pod, pomocí příkazu [kubectl Get lusky][kubectl-get] je *spuštěný* :
+V části se úspěšně naplánovalo. Když zkontrolujete stav pod, pomocí příkazu [kubectl Get lusky][kubectl-get] je *spuštěný*:
 
 ```console
 $ kubectl get pods
@@ -298,7 +298,7 @@ Chcete-li provést migraci ze zásad zabezpečení pod, je třeba provést násl
 
 Níže je souhrn změn chování mezi zásadami zabezpečení a Azure Policy.
 
-|Scénář| Zásady zabezpečení pod | Azure Policy |
+|Scenario| Zásady zabezpečení pod | Azure Policy |
 |---|---|---|
 |Instalace|Funkce zásady zabezpečení Povolit pod |Povolit Azure Policy doplněk
 |Nasadit zásady| Prostředek nasazení pod zásadou zabezpečení| Přiřaďte zásady Azure k oboru skupiny prostředků nebo předplatnému. Pro aplikace prostředků Kubernetes je vyžadován doplněk Azure Policy.

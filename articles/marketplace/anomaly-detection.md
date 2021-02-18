@@ -1,20 +1,20 @@
 ---
-title: Detekce anomálií pro účtované podle objemu dat | Azure Marketplace
-description: Přečtěte si, jak automatické zjišťování anomálií pro účtované podle objemu dat pomáhá zajistit, aby se vaši zákazníci správně účtovali na měření využití komerční nabídky na webu Marketplace.
+title: Správa anomálií s měřením fakturace v partnerském centru | Azure Marketplace
+description: Přečtěte si, jak Automatická detekce anomálií pro účtované náklady pomáhá zajistit, aby se vaši zákazníci správně účtovali na měřené využití vašich komerčních nabídek na webu Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 2/17/2021
+ms.date: 2/18/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 7f1bcac49ccb12ea1e0517aed5a139e549451ec0
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 1ff6262a75261c575082f3fc48d588c868ad0b51
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653002"
+ms.locfileid: "101092517"
 ---
-# <a name="anomaly-detection-for-metered-billing"></a>Detekce anomálií pro účtované měřené platby
+# <a name="manage-metered-billing-anomalies-in-partner-center"></a>Správa anomálií s měřením fakturace v partnerském centru
 
 Možnost vlastního měření podle objemu dat je teď k dispozici pro nabídky [software jako služba](plan-saas-offer.md) (SaaS) a [aplikace Azure](plan-azure-application-offer.md#types-of-plans) s plánem spravované aplikace.
 
@@ -80,3 +80,4 @@ Když označíte překročené využití jako anomálii nebo potvrdili model, kt
 ## <a name="see-also"></a>Viz také
 - [Měřená fakturace pro SaaS s využitím komerční služby měření na webu Marketplace](./partner-center-portal/saas-metered-billing.md)
 - [Spravovaná fakturace podle objemu spravované aplikace](./partner-center-portal/azure-app-metered-billing.md)
+- [Služba detekce anomálií pro fakturaci na základě měření](./partner-center-portal/anomaly-detection-service-for-metered-billing.md)

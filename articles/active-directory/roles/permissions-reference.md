@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 509eae7acf0dd9f6b8ae80befb7423422f778710
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 0211388f3b638080c79a58330ba1fff1989def7d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518823"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095872"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -2176,6 +2176,6 @@ Správce uživatelů | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_ch
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o tom, jak přiřadit uživatele jako správce předplatného Azure, najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) .
+* Další informace o tom, jak přiřadit uživatele jako správce předplatného Azure, najdete v tématu [přiřazení uživatele jako správce předplatného Azure](../../role-based-access-control/role-assignments-portal-subscription-admin.md) .
 * Další informace o tom, jak se řídí přístup k prostředkům v Microsoft Azure, najdete v tématu [pochopení různých rolí](../../role-based-access-control/rbac-and-directory-admin-roles.md) .
 * Podrobnosti o vztahu mezi předplatnými a klientem služby Azure AD nebo pokyny k přidružení nebo přidání předplatného najdete v tématu [přidružení nebo přidání předplatného Azure do tenanta Azure Active Directory](../fundamentals/active-directory-how-subscriptions-associated-directory.md) .

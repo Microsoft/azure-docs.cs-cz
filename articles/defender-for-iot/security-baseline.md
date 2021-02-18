@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6fbd70c1de99818e2baf73d15ed365db3a54e43d
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: adb9cb234e76da5dab4503c59eb19ba6645e56c8
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246719"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092651"
 ---
 # <a name="azure-security-baseline-for-azure-defender-for-iot"></a>Základní plán zabezpečení Azure pro Azure Defender pro IoT
 
@@ -167,7 +167,7 @@ Využijte k přidělování oprávnění předdefinované role a vlastní role v
 
 - [Co je řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/overview.md) 
 
-- [Konfigurace řízení přístupu na základě role Azure](../role-based-access-control/role-assignments-portal.md) 
+- [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/role-assignments-portal.md) 
 
 - [Používání kontrol přístupu a identit Azure AD](../active-directory/governance/access-reviews-overview.md)
 

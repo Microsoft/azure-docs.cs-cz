@@ -8,23 +8,23 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: overview
-ms.date: 09/15/2020
+ms.date: 02/17/2021
 ms.author: ambapat
-ms.openlocfilehash: 2ae7b28d5e9e7a520ee8cbd090b6681d5ad7015a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 3c4bb61217c7b972220a55a4837c2b3db980f2ca
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422752"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095991"
 ---
 # <a name="about-keys"></a>Informace o klíčích
 
-Azure Key Vault poskytuje dva typy prostředků pro ukládání a správu kryptografických klíčů:
+Azure Key Vault poskytuje dva typy prostředků pro ukládání a správu kryptografických klíčů. Trezory podporují klíče chráněné softwarem a modulem hardwarového zabezpečení (HSM). Spravovaná HSM podporuje jenom klíče chráněné HSM. 
 
 |Typ prostředku|Metody ochrany klíčů|Základní adresa URL koncového bodu datové roviny|
 |--|--|--|
 | **Trezory** | Chráněný softwarem<br/><br/>a<br/><br/>Chráněná HSM (s SKU Premium)</li></ul> | https://{trezor-Name}. trezor. Azure. NET |
-| **Spravované fondy HSM** | Chráněná HSM | https://{HSM-Name}. managedhsm. Azure. NET |
+| * * Spravované HSM * * | Chráněná HSM | https://{HSM-Name}. managedhsm. Azure. NET |
 ||||
 
 - **Trezory** – trezory poskytují nízký náklady, snadnou nasazování, víceklientské využití pro více tenantů (kde je dostupné) a vysoce dostupné řešení pro správu klíčů, které je vhodné pro většinu běžných scénářů cloudových aplikací.
@@ -45,7 +45,7 @@ Základní specifikace JWK/JWA se také rozšiřují tak, aby umožňovaly typy 
 Klíče chráněné HSM (označované také jako klíče HSM) se zpracovávají v modulu HSM (Hardware Security Module) a vždy zůstávají v hranici ochrany modulem HSM. 
 
 - Trezory používají ověřený **Standard FIPS 140-2 úrovně 2** HSM k ochraně klíčů HSM ve sdílené back-ENDOVÉ infrastruktuře HSM. 
-- Spravované fondy HSM používají ověřované moduly HSM **140-2 úrovně 3** k ochraně vašich klíčů. Každý fond HSM je izolovaná instance jednoho tenanta s vlastní [doménou zabezpečení](../managed-hsm/security-domain.md) , která poskytuje úplnou izolaci šifrování ze všech ostatních fondů HSM, které sdílejí stejnou hardwarovou infrastrukturu.
+- Spravovaný HSM používá pro ochranu vašich klíčů ověřované moduly HSM **140-2 úrovně 3** . Každý fond HSM je izolovaná instance jednoho tenanta s vlastní [doménou zabezpečení](../managed-hsm/security-domain.md) , která poskytuje úplnou izolaci šifrování ze všech ostatních HSM sdílejících stejnou hardwarovou infrastrukturu.
 
 Tyto klíče jsou chráněné ve fondech HSM pro jeden tenant. Můžete importovat RSA, EC a symetrický klíč, v měkkém tvaru nebo vyexportovat z podporovaného zařízení HSM. Můžete také vygenerovat klíče ve fondech HSM. Když naimportujete klíče HSM pomocí metody popsané ve [specifikaci BYOK (Přineste si vlastní klíč)](../keys/byok-specification.md), umožníte klíčům zabezpečeného přenosu klíčů do spravovaných fondů HSM. 
 
@@ -53,24 +53,35 @@ Další informace o geografických hranicích najdete v tématu [Microsoft Azure
 
 ## <a name="key-types-and-protection-methods"></a>Typy klíčů a metody ochrany
 
-Key Vault podporuje RSA, EC a symetrické klíče. 
+Key Vault podporuje klíče RSA a ES. Spravovaný HSM podporuje RSA, EC a symetrický klíč. 
 
 ### <a name="hsm-protected-keys"></a>Klíče chráněné pomocí HSM
 
-|Typ klíče|Trezory (jenom SKU úrovně Premium)|Spravované fondy HSM|
-|--|--|--|--|
-**ES-HSM** : eliptický klíč křivky|Modul HARDWAROVÉho zabezpečení FIPS 140-2 úrovně 2|Modul HARDWAROVÉho zabezpečení FIPS 140-2 úrovně 3
-**RSA-HSM** : klíč RSA|Modul HARDWAROVÉho zabezpečení FIPS 140-2 úrovně 2|Modul HARDWAROVÉho zabezpečení FIPS 140-2 úrovně 3
-**zámořské modul HSM** : symetrické|Nepodporováno|Modul HARDWAROVÉho zabezpečení FIPS 140-2 úrovně 3
-||||
+|Typ klíče|Trezory (jenom SKU úrovně Premium)|Spravované HSM|
+|--|--|--|
+|**ES-HSM**: eliptický klíč křivky | Podporováno | Podporováno|
+|**RSA-HSM**: klíč RSA|Podporováno|Podporováno|
+|**zámořské modul HSM**: symetrický klíč|Nepodporováno|Podporováno|
+|||
 
 ### <a name="software-protected-keys"></a>Klíče chráněné softwarem
 
-|Typ klíče|Trezory|Spravované fondy HSM|
-|--|--|--|--|
-**RSA** : klíč RSA chráněný softwarem|FIPS 140-2 úrovně 1|Nepodporováno
-**ES** : klíč eliptické křivky "software-Protected"|FIPS 140-2 úrovně 1|Nepodporováno
-||||
+|Typ klíče|Trezory|Spravované HSM|
+|--|--|--|
+**RSA**: klíč RSA chráněný softwarem|Podporováno|Nepodporováno
+**ES**: klíč eliptické křivky "software-Protected"|Podporováno|Nepodporováno
+|||
+
+### <a name="compliance"></a>Dodržování předpisů
+
+|Typ a cíl klíče|Dodržování předpisů|
+|---|---|
+|Klíče chráněné softwarem v trezorech (SKU Premium & Standard) | FIPS 140-2 úrovně 1|
+|Klíče chráněné HSM v trezorech (SKU úrovně Premium)| FIPS 140-2 Level 2|
+|Klíče chráněné HSM ve spravovaném modulu HSM|FIPS 140-2 úrovně 3|
+|||
+
+
 
 Podrobnosti o jednotlivých typech klíčů, algoritmech, operacích, atributech a značkách najdete v tématu [typy klíčů, algoritmy a operace](about-keys-details.md) .
 

@@ -4,12 +4,12 @@ description: K přesunutí prostředků do nové skupiny prostředků nebo před
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cd05fe045532ee1b1f1fb88e502d786daabf9365
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aca1e5255c89e99a2c996e072e5106da8dc3eef9
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319550"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093620"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -37,7 +37,7 @@ Před přesunem prostředků je potřeba provést několik důležitých kroků.
 
 1. Pokud přesunete prostředek, který má přiřazenou roli Azure, přímo k prostředku (nebo podřízenému prostředku), přiřazení role se nepřesune a bude osamocené. Po přesunutí musíte znovu vytvořit přiřazení role. Nakonec se automaticky odebere přiřazení osamocené role, ale je osvědčeným postupem odebrání přiřazení role před přesunutím prostředku.
 
-    Informace o tom, jak spravovat přiřazení rolí, najdete v tématech [seznam přiřazení rolí Azure](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) a [Přidání nebo odebrání přiřazení rolí Azure](../../role-based-access-control/role-assignments-portal.md).
+    Informace o tom, jak spravovat přiřazení rolí, najdete v tématech [seznam přiřazení rolí Azure](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) a [přiřazení rolí Azure](../../role-based-access-control/role-assignments-portal.md).
 
 1. Zdrojové a cílové odběry musí být aktivní. Pokud máte potíže s povolením zakázaného účtu, [vytvořte žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Jako typ problému vyberte **Správa předplatného** .
 
@@ -178,11 +178,11 @@ Když si zobrazíte skupinu prostředků, možnost přesunout je zakázaná.
 
 Chcete-li povolit možnost přesunout, vyberte prostředky, které chcete přesunout. Chcete-li vybrat všechny prostředky, zaškrtněte políčko v horní části seznamu. Případně vyberte prostředky jednotlivě. Po výběru prostředků je povolena možnost přesunout.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="možnost přesunutí zakázána":::
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="vybrat prostředky":::
 
 Vyberte tlačítko **přesunout** .
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="možnost přesunutí zakázána":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="Možnosti přesunutí":::
 
 Toto tlačítko nabízí tři možnosti:
 
@@ -194,11 +194,11 @@ Vyberte, jestli přesouváte prostředky do nové skupiny prostředků nebo do n
 
 Vyberte cílovou skupinu prostředků. Potvrďte, že potřebujete aktualizovat skripty pro tyto prostředky a vyberte **OK**. Pokud jste vybrali možnost přesunout se k novému předplatnému, musíte také vybrat cílové předplatné.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="možnost přesunutí zakázána":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="vybrat cíl":::
 
 Po ověření, že se prostředky dají přesunout, se zobrazí oznámení o běhu operace přesunutí.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="možnost přesunutí zakázána":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="zveřejnění":::
 
 Po dokončení budete upozorněni na výsledek.
 

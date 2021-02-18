@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/23/2019
-ms.openlocfilehash: 121c5850ef47999f54d206b95b69e10775d3e5c9
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 0fffe763f77fffcec6010d43deb92ffea9ece15d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946095"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094924"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Vytvoření aplikace .NET HDInsight bez interaktivního ověřování
 
@@ -28,7 +28,7 @@ Cluster An HDInsight. Podívejte se na [Úvodní kurz](hadoop/apache-hadoop-linu
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Přiřazení role k aplikaci Azure AD
 
-Přiřaďte aplikaci Azure AD [roli](../role-based-access-control/built-in-roles.md)a udělte jí oprávnění k provádění akcí. Rozsah můžete nastavit na úrovni předplatného, skupiny prostředků nebo prostředku. Oprávnění jsou děděna do nižších úrovní rozsahu. Například přidání aplikace do role čtenář pro skupinu prostředků znamená, že aplikace může číst skupinu prostředků a všechny prostředky v ní. V tomto článku nastavíte obor na úrovni skupiny prostředků. Další informace najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).
+Přiřaďte aplikaci Azure AD [roli](../role-based-access-control/built-in-roles.md)a udělte jí oprávnění k provádění akcí. Rozsah můžete nastavit na úrovni předplatného, skupiny prostředků nebo prostředku. Oprávnění jsou děděna do nižších úrovní rozsahu. Například přidání aplikace do role čtenář pro skupinu prostředků znamená, že aplikace může číst skupinu prostředků a všechny prostředky v ní. V tomto článku nastavíte obor na úrovni skupiny prostředků. Další informace najdete v tématu [přiřazení rolí Azure ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).
 
 **Přidání role vlastníka do aplikace Azure AD**
 

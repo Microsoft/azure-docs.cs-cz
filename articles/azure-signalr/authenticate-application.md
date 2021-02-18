@@ -6,12 +6,12 @@ ms.author: tefa
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 08/03/2020
-ms.openlocfilehash: 97386b18360e22b457dbcdda53c4f81e7d4ed272
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 597b69c1180ea1fb2a6812d648f8b8ad37707d66
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797483"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092602"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-azure-signalr-service"></a>Ověření aplikace s Azure Active Directory pro přístup ke službě Azure Signal
 Microsoft Azure poskytuje integrované řízení přístupu pro prostředky a aplikace založené na Azure Active Directory (Azure AD). Klíčovou výhodou použití Azure AD se službou Azure Signaler je, že nemusíte ukládat přihlašovací údaje do kódu již. Místo toho můžete požádat o přístupový token OAuth 2,0 z platformy Microsoft Identity Platform. Název prostředku pro vyžádání tokenu `https://signalr.azure.com/` . Azure AD ověřuje objekt zabezpečení (aplikaci, skupinu prostředků nebo instanční objekt), který spouští aplikaci. Pokud je ověření úspěšné, služba Azure AD vrátí přístupový token do aplikace a aplikace pak může pomocí přístupového tokenu autorizovat požadavky na prostředky služby signalizace Azure.
@@ -55,8 +55,8 @@ Místo vytvoření tajného klíče klienta můžete také odeslat certifikaci.
 
 ![Odeslat certifikaci](./media/authenticate/certification.png)
 
-## <a name="add-rbac-roles-using-the-azure-portal"></a>Přidání rolí RBAC pomocí Azure Portal  
-Další informace o správě přístupu k prostředkům Azure pomocí RBAC a Azure Portal najdete v [tomto článku](..//role-based-access-control/role-assignments-portal.md). 
+## <a name="assign-azure-roles-using-the-azure-portal"></a>Přiřazení rolí Azure pomocí Azure Portal  
+Další informace o správě přístupu k prostředkům Azure pomocí Azure RBAC a Azure Portal najdete v [tomto článku](..//role-based-access-control/role-assignments-portal.md). 
 
 Po určení vhodného oboru pro přiřazení role přejděte k tomuto prostředku v Azure Portal. Zobrazit nastavení řízení přístupu (IAM) pro prostředek a podle těchto pokynů můžete spravovat přiřazení rolí:
 

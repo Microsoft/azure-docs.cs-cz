@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: e8420f68fba40ddb61d06770f9f5bc2fafe5616a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
-ms.translationtype: HT
+ms.openlocfilehash: 1ceed171b0516e293ffe58bca0225d3d3dfdb414
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560521"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094658"
 ---
 # <a name="managing-azure-enterprise-agreement-roles"></a>Správa rolí pro smlouvu Enterprise v Azure
 
@@ -197,12 +197,12 @@ V následující tabulce je uvedený vztah mezi rolemi správce smlouvy Enterpri
 |Vlastník účtu nebo Správce oddělení|✘ Zakázáno |Žádná|Žádné ceny|
 |Žádná|Neuvedeno |Vlastník|Maloobchodní ceny|
 
-Role správce smlouvy Enterprise a zásady zobrazování nákladů se nastavují na webu Enterprise Portal. Roli Azure je možné aktualizovat na webu Azure Portal. Další informace najdete v tématu [Správa přístupu pomocí RBAC a webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+Role správce smlouvy Enterprise a zásady zobrazování nákladů se nastavují na webu Enterprise Portal. Roli Azure je možné aktualizovat na webu Azure Portal. Další informace najdete v tématu [přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Správa přístupu k fakturačním údajům v Azure](manage-billing-access.md)
-- [Správa přístupu pomocí RBAC a portálu Azure Portal](../../role-based-access-control/role-assignments-portal.md)
+- [Přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md)
 - [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md)

@@ -4,12 +4,12 @@ description: Jak nakonfigurovat uzly transakcí služby Azure blockchain
 ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 50f9b2aa0f5e1a1b1095b6c799ce0706b6e541de
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0b659fa9f15cd41e9e55de526747d470046cafa4
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150869"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091255"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Konfigurace uzlů transakcí služby Azure blockchain
 
@@ -17,7 +17,7 @@ Uzly transakce slouží k posílání transakcí blockchain do služby Azure blo
 
 Zobrazení podrobností o výchozích uzlech transakce:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Přejděte ke členu služby Azure blockchain. Vyberte **uzly transakce**.
 
     ![Vybrat výchozí uzel transakce](./media/configure-transaction-nodes/nodes.png)
@@ -69,13 +69,13 @@ Udělení řízení přístupu Azure AD ke koncovému bodu:
 
     | Nastavení | Akce |
     |---------|-------------|
-    | Role | Vyberte možnost **vlastník**, **Přispěvatel**nebo **Čtenář**.
+    | Role | Vyberte možnost **vlastník**, **Přispěvatel** nebo **Čtenář**.
     | Přiřadit přístup | Vyberte **uživatele, skupinu nebo instanční objekt služby Azure AD**.
     | Vyberte | Vyhledejte uživatele, skupinu nebo instanční objekt, který chcete přidat.
 
 1. Vyberte **Uložit** a přidejte přiřazení role.
 
-Další informace o řízení přístupu Azure AD najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md)
+Další informace o řízení přístupu Azure AD najdete v tématu [přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md)
 
 Podrobnosti o tom, jak se připojit pomocí ověřování Azure AD, najdete v tématu [připojení k uzlu pomocí ověřování AAD](configure-aad.md).
 

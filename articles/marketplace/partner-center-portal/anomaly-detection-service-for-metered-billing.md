@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: 5ab57bcccb6f681f5c9282ef461181952ed5a679
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: ac3e07c67ca82c2960de1c4341a714b33751bfc1
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653070"
+ms.locfileid: "101092395"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>Služba detekce anomálií pro fakturaci na základě měření
 
@@ -50,7 +50,7 @@ Model funguje tak, že se generují opakované intervaly spolehlivosti. Prognóz
 
 ## <a name="anomaly-detection-notification"></a>Oznámení o detekci anomálií
 
-V partnerském centru můžete vyhodnocovat, spravovat a potvrdit anomálie. Informace o tom, jak se dozvědět, najdete v tématu [zjištění anomálií pro účtované podle objemu](../anomaly-detection.md).
+V partnerském centru můžete vyhodnocovat, spravovat a potvrdit anomálie. Další informace najdete v tématu [Správa anomálií s měřenými fakturami v partnerském centru](../anomaly-detection.md).
 
 Aby se zajistilo, že se vašim zákazníkům neúčtují měřené využití, měli byste prozkoumat, jestli jsou zjištěné anomálie reálné problémy. Pokud ano, můžete potvrdit nesprávné použití v partnerském centru.
 
@@ -83,4 +83,4 @@ Další možnosti podpory vydavatelů najdete [v tématu Podpora programu komer�
 ## <a name="next-steps"></a>Další kroky
 
 - Seznamte se s [rozhraním API služby pro měření na webu Marketplace](marketplace-metering-service-apis.md).
-- [Detekce anomálií pro účtované měřené platby](../anomaly-detection.md)
+- [Správa anomálií s měřením fakturace v partnerském centru](../anomaly-detection.md)

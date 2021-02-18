@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 1500a635d5177ed8899cdc3f1364e57a8525892c
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: b71c5426b6fba6f232b5a7aa42347f6b25d46299
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099944"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094954"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Řešení běžných problémů s agentem virtuálních počítačů s Windows
 
@@ -269,6 +269,7 @@ Pokud v tomto článku nemůžete najít problém nebo vám pokyny neudělaly, d
 - Nezobrazují se vaše virtuální počítače v seznamu hostitelé relací
 - V okně služby se nezobrazuje **zavaděč agenta vzdálené plochy** .
 - Ve Správci úloh se nezobrazuje součást **RdAgentBootLoader** .
+- Od **zprostředkovatele připojení se** nedaří ověřit chybu nastavení u virtuálních počítačů vlastních imagí.
 - Pokyny v tomto článku nevyřešily váš problém.
 
 ### <a name="step-1-uninstall-all-agent-boot-loader-and-stack-component-programs"></a>Krok 1: odinstalujte všechny programy agentů, spouštěcí zavaděč a součásti stacku.

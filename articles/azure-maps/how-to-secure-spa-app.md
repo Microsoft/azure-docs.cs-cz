@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 3b647a02731a4fa404aab4bb648853eea766d92e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 9d2af0bf731ab069a8512cb10feccf5ba18d3fa0
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684068"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092733"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Jak zabezpečit jednostránkové aplikaci pomocí neinteraktivního přihlašování
 
@@ -111,7 +111,7 @@ Přístup k *řízení přístupu na základě role Azure udělujete (Azure RBAC
 
 2. Na kartě **přiřazení rolí** v části **Role** vyberte předdefinované Azure Maps definice role, jako je **Azure Maps data Reader** nebo **Azure Maps Přispěvatel dat**. V části **přiřadit přístup k** vyberte **Function App**. Vyberte objekt zabezpečení podle názvu. Pak vyberte **Uložit**.
 
-   * Podívejte se na podrobnosti o [Přidání nebo odebrání přiřazení rolí](../role-based-access-control/role-assignments-portal.md).
+   * Přečtěte si podrobnosti o [přiřazení rolí Azure](../role-based-access-control/role-assignments-portal.md).
 
 > [!WARNING]
 > Azure Maps předdefinované definice rolí poskytují velmi velký přístup k mnoha Azure Mapsám rozhraní REST API. Pokud chcete omezení přístupu k rozhraním API omezit na minimum, přečtěte si téma [Vytvoření vlastní definice role a přiřazení identity přiřazené systému](../role-based-access-control/custom-roles.md) k definici vlastní role. Tím umožníte, aby aplikace měla k disAzure Maps nejnižší oprávnění, která jsou nezbytná pro přístup k.

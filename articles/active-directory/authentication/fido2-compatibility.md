@@ -11,12 +11,12 @@ author: knicholasa
 manager: martinco
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e324ae0fc80bb5990f9cf15901080684086a549
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: a8ed99338a10eb226823c4bd4857d812038ff632
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652237"
+ms.locfileid: "101094513"
 ---
 # <a name="browser-support-of-fido2-passwordless-authentication"></a>Podpora prohlížeče pro FIDO2 ověřování s nehesly
 
@@ -32,6 +32,17 @@ Tato tabulka ukazuje podporu ověřování Azure Active Directory (Azure AD) a �
 | **Windows**  | ![Chrome podporuje rozhraní USB ve Windows pro účty AAD.][y] | ![Chrome podporuje NFC ve Windows pro účty AAD.][y] | ![Chrome podporuje tabulku v systému Windows pro účty AAD.][y] | ![Edge podporuje USB ve Windows pro účty AAD.][y] | ![Edge podporuje NFC v systému Windows pro účty AAD.][y] | ![Edge podporuje tabulku v systému Windows pro účty AAD.][y] | ![Firefox podporuje USB ve Windows pro účty AAD.][y] | ![Firefox podporuje NFC ve Windows pro účty AAD.][y] | ![Firefox podporuje tabulku ve Windows pro účty AAD.][y] |
 | **macOS**  | ![Chrome podporuje rozhraní USB v macOS pro účty AAD.][y] | ![Chrome nepodporuje NFC v macOS pro účty AAD.][n] | ![Chrome nepodporuje tabulku macOS pro účty AAD.][n] | ![Edge podporuje USB v macOS pro účty AAD.][y] | ![Edge nepodporuje NFC v macOS pro účty AAD.][n] | ![Edge nepodporuje tabulku macOS pro účty AAD.][n] | ![Firefox nepodporuje USB v macOS pro účty AAD.][n] | ![Firefox nepodporuje NFC v macOS pro účty AAD.][n] | ![Firefox nepodporuje tabulku macOS pro účty AAD.][n] |
 | **Linux**  | ![Chrome podporuje rozhraní USB v systému Linux pro účty AAD.][y] | ![Chrome nepodporuje NFC v systémech Linux pro účty AAD.][n] | ![Chrome nepodporuje tabulku v systému Linux pro účty AAD.][n] | ![Edge nepodporuje pro účty AAD služby USB v systému Linux.][n] | ![Edge nepodporuje NFC v systémech Linux pro účty AAD.][n] | ![Edge nepodporuje tabulku v systému Linux pro účty AAD.][n] | ![Firefox nepodporuje pro účty AAD služby USB v systému Linux.][n] | ![Firefox nepodporuje NFC v systémech Linux pro účty AAD.][n] | ![Firefox nepodporuje tabulku v systému Linux pro účty AAD.][n] |
+
+## <a name="unsupported-browsers"></a>Nepodporované prohlížeče
+
+Následující kombinace operačních systémů a prohlížečů nejsou podporovány, ale probíhá šetření budoucí podpory a testování. Pokud chcete zobrazit další podpora operačního systému a prohlížeče, zachovejte prosím svůj názor pomocí nástroje pro zpětnou vazbu k produktu v dolní části stránky.
+
+| Operační systém | Prohlížeč |
+| ---- | ---- |
+| iOS | Safari, Brave |
+| macOS | Safari |
+| Android | Chrome |
+| ChromeOS | Chrome |
 
 ## <a name="operating-system-versions-tested"></a>Testované verze operačního systému
 

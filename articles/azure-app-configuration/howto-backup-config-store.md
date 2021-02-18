@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 04edf2eeb231ff1444c732840def2b78b1373e79
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 39c50f539c04a6c49316f4541c759859be861f9d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565921"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095507"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Zálohování úložišť konfigurací aplikací automaticky
 
@@ -177,7 +177,7 @@ az functionapp identity assign --name $functionAppName --resource-group $resourc
 ```
 
 > [!NOTE]
-> Aby bylo možné provést požadované vytváření prostředků a správu rolí, váš účet potřebuje `Owner` oprávnění v příslušném oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si, [jak přidat nebo odebrat přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md).
+> Aby bylo možné provést požadované vytváření prostředků a správu rolí, váš účet potřebuje `Owner` oprávnění v příslušném oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si, [jak přiřadit role Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 Pomocí následujících příkazů nebo [Azure Portal](./howto-integrate-azure-managed-service-identity.md#grant-access-to-app-configuration) udělte spravované identitě aplikace Function App přístup k vašim úložištím konfigurace vaší aplikace. Použijte tyto role:
 - Přiřaďte `App Configuration Data Reader` roli v primárním úložišti konfigurace aplikace.

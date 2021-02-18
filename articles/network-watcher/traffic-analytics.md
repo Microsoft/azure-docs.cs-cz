@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: 42536480a72e8d2160064a82eee7bac11c17746c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 87dacd28223fd88866edb90266aa76fd3cdf86cf
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585520"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095357"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -71,33 +71,34 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
       USA – střed  
       Čína – východ 2  
       Čína – sever 2  
+      Východní Asie       
    :::column-end:::
    :::column span="":::
-      Východní Asie  
       East US  
       USA – východ 2  
       Východní USA 2 EUAP  
       Francie – střed  
-      Japonsko – východ  
+      Německo – středozápad Japonsko – východ  
       Japonsko – západ  
       Jižní Korea – střed  
       Jižní Korea – jih  
       USA – středosever  
+      Severní Evropa    
    :::column-end:::
    :::column span="":::
-      Severní Evropa  
       Jižní Afrika – sever  
       Středojižní USA  
       Indie – jih  
       Southeast Asia  
       Švýcarsko – sever  
       Švýcarsko – západ  
+      Spojené arabské emiráty sever  
       Spojené království – jih  
-      Spojené království – západ  
+      Spojené království – západ   
       USGov Arizona  
+      USGov Texas
    :::column-end:::
    :::column span="":::
-      USGov Texas  
       USGov Virginie  
       USNat východ  
       USNat – západ  
@@ -143,14 +144,15 @@ Pracovní prostor Log Analytics musí existovat v následujících oblastech:
       Švýcarsko – sever  
       Švýcarsko – západ  
       Spojené arabské emiráty – střed  
+      Spojené arabské emiráty sever  
       Spojené království – jih  
-      Spojené království – západ  
+      Spojené království – západ   
       USGov Arizona  
       USGov Virginie  
-      USNat východ  
-      USNat – západ  
+      USNat východ   
    :::column-end:::
    :::column span="":::
+      USNat – západ   
       USSec východ  
       USSec – západ  
       USA – středozápad  

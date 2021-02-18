@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/13/2020
 tags: connectors
-ms.openlocfilehash: 790879894c3b268fcd55aafc96507319b29fe1e5
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 87a9c8a38ede7008d658068329c8c72e7e3c4117
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055072"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095459"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Správa e-mailů, kontaktů a kalendářů v Office 365 Outlooku s využitím Azure Logic Apps
 
@@ -98,7 +98,7 @@ Pokud se pokusíte připojit k Outlooku pomocí jiného účtu, než který je a
 
   1. V nabídce skupiny prostředků vaší aplikace logiky vyberte **řízení přístupu (IAM)**. Nastavte druhý účet pomocí role **Přispěvatel** . 
   
-     Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí webu Azure Portal](../role-based-access-control/role-assignments-portal.md).
+     Další informace najdete v tématu [přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
   1. Po nastavení této role se přihlaste k Azure Portal pomocí účtu, který má teď oprávnění přispěvatele. Nyní můžete tento účet použít k vytvoření připojení k aplikaci Outlook.
 

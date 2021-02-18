@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/06/2021
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 51cd3bf3349e1880d4dc9f5d98d2d9b5dc5bb228
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3f9ec395e8ccf6d5162717b2e38b0650ccc84812
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610443"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091802"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky s Azure Monitor
 
@@ -154,21 +154,21 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 |Metric|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
-|aktivní – časovač-počet|Yes|System. Runtime|aktivní – časovač-počet|Počet|Průměr|Počet časovačů, které jsou aktuálně aktivní|Nasazení, AppName, pod|
-|přidělení – sazba|Yes|System. Runtime|přidělení – sazba|Bajty|Průměr|Počet bajtů přidělených ve spravované haldě|Nasazení, AppName, pod|
+|aktivní – časovač-počet|Yes|aktivní – časovač-počet|Počet|Průměr|Počet časovačů, které jsou aktuálně aktivní|Nasazení, AppName, pod|
+|přidělení – sazba|Yes|přidělení – sazba|Bajty|Průměr|Počet bajtů přidělených ve spravované haldě|Nasazení, AppName, pod|
 |AppCpuUsage|Yes|Využití CPU aplikací (Preview)|Procento|Průměr|Poslední využití procesoru pro aplikaci|Nasazení, AppName, pod|
-|počet sestavení|Yes|System. Runtime|počet sestavení|Počet|Průměr|Počet načtených sestavení|Nasazení, AppName, pod|
-|využití procesoru|Yes|System. Runtime|využití procesoru|Procento|Průměr|% doby využití procesoru procesem|Nasazení, AppName, pod|
-|aktuální požadavky|Yes|Microsoft. AspNetCore. hosting|aktuální požadavky|Počet|Průměr|Celkový počet požadavků zpracovávaných během životního cyklu procesu|Nasazení, AppName, pod|
-|počet výjimek|Yes|System. Runtime|počet výjimek|Počet|Celkem|Počet výjimek|Nasazení, AppName, pod|
-|neúspěšné – požadavky|Yes|Microsoft. AspNetCore. hosting|neúspěšné – požadavky|Počet|Průměr|Celkový počet neúspěšných žádostí během životnosti procesu|Nasazení, AppName, pod|
-|GC-velikost haldy|Yes|System. Runtime|GC-velikost haldy|Počet|Průměr|Celková velikost haldy hlášené GC (MB)|Nasazení, AppName, pod|
-|gen-0-GC-Count|Yes|System. Runtime|gen-0-GC-Count|Počet|Průměr|Počet Gců 0. generace|Nasazení, AppName, pod|
-|gen-0-velikost|Yes|System. Runtime|gen-0-velikost|Bajty|Průměr|Velikost haldy 0. generace|Nasazení, AppName, pod|
-|Obecná-1-GC-Count|Yes|System. Runtime|Obecná-1-GC-Count|Počet|Průměr|System. Runtime|Počet Gců 1. generace|Nasazení, AppName, pod|
-|Obecná-1-velikost|Yes|System. Runtime|Obecná-1-velikost|Bajty|Průměr|Velikost haldy 1. generace|Nasazení, AppName, pod|
-|Gen-2 – GC-Count|Yes|System. Runtime|Gen-2 – GC-Count|Počet|Průměr|Počet Gců Gen 2|Nasazení, AppName, pod|
-|Obecná 2 – velikost|Yes|System. Runtime|Obecná 2 – velikost|Bajty|Průměr|Velikost haldy 2. generace|Nasazení, AppName, pod|
+|počet sestavení|Yes|počet sestavení|Počet|Průměr|Počet načtených sestavení|Nasazení, AppName, pod|
+|využití procesoru|Yes|využití procesoru|Procento|Průměr|% doby využití procesoru procesem|Nasazení, AppName, pod|
+|aktuální požadavky|Yes|aktuální požadavky|Počet|Průměr|Celkový počet požadavků zpracovávaných během životního cyklu procesu|Nasazení, AppName, pod|
+|počet výjimek|Yes|počet výjimek|Počet|Celkem|Počet výjimek|Nasazení, AppName, pod|
+|neúspěšné – požadavky|Yes|neúspěšné – požadavky|Počet|Průměr|Celkový počet neúspěšných žádostí během životnosti procesu|Nasazení, AppName, pod|
+|GC-velikost haldy|Yes|GC-velikost haldy|Počet|Průměr|Celková velikost haldy hlášené GC (MB)|Nasazení, AppName, pod|
+|gen-0-GC-Count|Yes|gen-0-GC-Count|Počet|Průměr|Počet Gců 0. generace|Nasazení, AppName, pod|
+|gen-0-velikost|Yes|gen-0-velikost|Bajty|Průměr|Velikost haldy 0. generace|Nasazení, AppName, pod|
+|Obecná-1-GC-Count|Yes|Obecná-1-GC-Count|Počet|Průměr|Počet Gců 1. generace|Nasazení, AppName, pod|
+|Obecná-1-velikost|Yes|Obecná-1-velikost|Bajty|Průměr|Velikost haldy 1. generace|Nasazení, AppName, pod|
+|Gen-2 – GC-Count|Yes|Gen-2 – GC-Count|Počet|Průměr|Počet Gců Gen 2|Nasazení, AppName, pod|
+|Obecná 2 – velikost|Yes|Obecná 2 – velikost|Bajty|Průměr|Velikost haldy 2. generace|Nasazení, AppName, pod|
 |JVM. GC. Live. data. Size|Yes|JVM. GC. Live. data. Size|Bajty|Průměr|Velikost staré generace fondu paměti po úplném GC|Nasazení, AppName, pod|
 |JVM. GC. max. data. Size|Yes|JVM. GC. max. data. Size|Bajty|Průměr|Maximální velikost staré generace fondu paměti|Nasazení, AppName, pod|
 |JVM. GC. Memory. alokovaný|Yes|JVM. GC. Memory. alokovaný|Bajty|Maximum|Zvýšeno na zvýšení velikosti fondu paměti pro mladé generaci po jednom GC na další|Nasazení, AppName, pod|
@@ -178,15 +178,15 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |JVM. Memory. potvrzený|Yes|JVM. Memory. potvrzený|Bajty|Průměr|Paměť přiřazená k JVM v bajtech|Nasazení, AppName, pod|
 |JVM. Memory. max|Yes|JVM. Memory. max|Bajty|Maximum|Maximální množství paměti v bajtech, které lze použít pro správu paměti|Nasazení, AppName, pod|
 |JVM. Memory .Ed – použito|Yes|JVM. Memory .Ed – použito|Bajty|Průměr|Využitá paměť aplikace v bajtech|Nasazení, AppName, pod|
-|LOH-Size|Yes|System. Runtime|LOH-Size|Bajty|Průměr|Velikost haldy LOH|Nasazení, AppName, pod|
-|Monitor-Lock-Content – Count|Yes|System. Runtime|Monitor-Lock-Content – Count|Počet|Průměr|Počet sporů při pokusu o provedení zámku monitoru|Nasazení, AppName, pod|
+|LOH-Size|Yes|LOH-Size|Bajty|Průměr|Velikost haldy LOH|Nasazení, AppName, pod|
+|Monitor-Lock-Content – Count|Yes|Monitor-Lock-Content – Count|Počet|Průměr|Počet sporů při pokusu o provedení zámku monitoru|Nasazení, AppName, pod|
 |Process. CPU. Usage|Yes|Process. CPU. Usage|Procento|Průměr|Poslední využití CPU pro proces JVM|Nasazení, AppName, pod|
-|požadavky – za sekundu|Yes|Microsoft. AspNetCore. hosting|požadavky – sazba|Počet|Průměr|Počet požadavků|Nasazení, AppName, pod|
+|požadavky – za sekundu|Yes|požadavky – sazba|Počet|Průměr|Počet požadavků|Nasazení, AppName, pod|
 |System. CPU. Usage|Yes|System. CPU. Usage|Procento|Průměr|Poslední využití CPU pro celý systém|Nasazení, AppName, pod|
-|nedokončené dokončování – položky-počet|Yes|System. Runtime|nedokončené dokončování – položky-počet|Počet|Průměr|Počet dokončených pracovních položek fondu vláken|Nasazení, AppName, pod|
-|nevlákenná doba zařazení do fronty|Yes|System. Runtime|nevlákenná doba zařazení do fronty|Počet|Průměr|Délka fronty pracovních položek fondu vláken|Nasazení, AppName, pod|
-|počet podprocesů|Yes|System. Runtime|počet podprocesů|Počet|Průměr|Počet podprocesů vláken|Nasazení, AppName, pod|
-|doba do GC|Yes|System. Runtime|doba do GC|Procento|Průměr|% času v GC od posledního GC|Nasazení, AppName, pod|
+|nedokončené dokončování – položky-počet|Yes|nedokončené dokončování – položky-počet|Počet|Průměr|Počet dokončených pracovních položek fondu vláken|Nasazení, AppName, pod|
+|nevlákenná doba zařazení do fronty|Yes|nevlákenná doba zařazení do fronty|Počet|Průměr|Délka fronty pracovních položek fondu vláken|Nasazení, AppName, pod|
+|počet podprocesů|Yes|počet podprocesů|Počet|Průměr|Počet podprocesů vláken|Nasazení, AppName, pod|
+|doba do GC|Yes|doba do GC|Procento|Průměr|% času v GC od posledního GC|Nasazení, AppName, pod|
 |Tomcat. Global. Error|Yes|Tomcat. Global. Error|Počet|Celkem|Globální chyba Tomcat|Nasazení, AppName, pod|
 |Tomcat. Global. Received|Yes|Tomcat. Global. Received|Bajty|Celkem|Celkový počet přijatých bajtů Tomcat|Nasazení, AppName, pod|
 |Tomcat. Global. Request. prům. time|Yes|Tomcat. Global. Request. prům. time|Milisekund|Průměr|Průměrná doba požadavku Tomcat|Nasazení, AppName, pod|
@@ -202,8 +202,8 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |Tomcat. Sessions. odmítnuto|Yes|Tomcat. Sessions. odmítnuto|Počet|Celkem|Počet odmítnutých relací Tomcat|Nasazení, AppName, pod|
 |tomcat.threads.config. max|Yes|tomcat.threads.config. max|Počet|Celkem|Maximální počet vláken konfigurace Tomcat|Nasazení, AppName, pod|
 |Tomcat. Threads. Current|Yes|Tomcat. Threads. Current|Počet|Celkem|Počet aktuálních vláken Tomcat|Nasazení, AppName, pod|
-|celkem – požadavky|Yes|Microsoft. AspNetCore. hosting|celkem – požadavky|Počet|Průměr|Celkový počet žádostí za dobu života procesu|Nasazení, AppName, pod|
-|pracovní sada|Yes|System. Runtime|pracovní sada|Počet|Průměr|Množství pracovní sady používané procesem (MB)|Nasazení, AppName, pod|
+|celkem – požadavky|Yes|celkem – požadavky|Počet|Průměr|Celkový počet žádostí za dobu života procesu|Nasazení, AppName, pod|
+|pracovní sada|Yes|pracovní sada|Počet|Průměr|Množství pracovní sady používané procesem (MB)|Nasazení, AppName, pod|
 
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts

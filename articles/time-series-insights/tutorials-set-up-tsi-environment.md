@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 01/19/2021
 ms.custom: seodec18
-ms.openlocfilehash: 912dbf48254a8d68b9bf76db04734fd791a3edb9
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 56f4cb49f42936e7b9f64c2546b94c99d16bac79
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677050"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092091"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>Kurz: nastavení prostředí Azure Time Series Insights Gen2
 
@@ -38,7 +38,7 @@ Zaregistrujte si [bezplatné předplatné Azure](https://azure.microsoft.com/fre
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Minimálně musíte mít roli **přispěvatele** pro předplatné Azure. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md).
+* Minimálně musíte mít roli **přispěvatele** pro předplatné Azure. Pokud chcete získat další informace, přečtěte si téma [přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="create-a-device-simulation"></a>Vytvoření simulace zařízení
 
@@ -91,8 +91,8 @@ Tato část popisuje, jak vytvořit prostředí Azure Time Series Insights Gen2 
     | **Skupina prostředků** | Vyberte existující skupinu prostředků nebo vytvořte novou skupinu prostředků pro prostředek prostředí Azure Time Series Insights Gen2. Skupina prostředků představuje kontejner prostředků Azure. Osvědčeným postupem je použití stejné skupiny prostředků jako u jiných prostředků IoT, které jsou vytvořené simulátorem zařízení. |
     | **Umístění** | Vyberte oblast datového centra pro prostředí Azure Time Series Insights Gen2. Abyste se vyhnuli další latenci, je nejlepší vytvořit prostředí Azure Time Series Insights Gen2 ve stejné oblasti, ve které se služba IoT Hub vytvořila simulátorem zařízení. |
     | **Úroveň** |  Vyberte **Gen2 (L1)**. Toto je SKU pro produkt Azure Time Series Insights Gen2. |
-    | **Název vlastnosti Time Series ID** | Zadejte název vlastnosti, která obsahuje hodnoty, které jedinečně identifikují instance časových řad. Hodnota, kterou zadáte do pole **název vlastnosti** jako časový interval, se nedá později změnit. V tomto kurzu zadejte **_iothub-Connection-Device-ID_* _. Pokud chcete získat další informace o ID časové řady včetně ID složené časové řady, přečtěte si [osvědčené postupy pro výběr ID časové řady](./how-to-select-tsid.md). |
-    | _ *Název účtu úložiště** | Zadejte globálně jedinečný název nového účtu úložiště.|
+    | **Název vlastnosti Time Series ID** | Zadejte název vlastnosti, která obsahuje hodnoty, které jedinečně identifikují instance časových řad. Hodnota, kterou zadáte do pole **název vlastnosti** jako časový interval, se nedá později změnit. Pro tento kurz zadejte **_iothub-Connection-Device-ID_**. Pokud chcete získat další informace o ID časové řady včetně ID složené časové řady, přečtěte si [osvědčené postupy pro výběr ID časové řady](./how-to-select-tsid.md). |
+    | **Název účtu úložiště** | Zadejte globálně jedinečný název nového účtu úložiště.|
     | **Druh účtu úložiště** | Vyberte druh úložiště pro nový účet úložiště. Doporučujeme StorageV2|
     | **Replikace účtu úložiště** | Vyberte druh úložiště pro nový účet úložiště. Na základě vašeho výběru polohy si můžete vybrat z LRS, GRS a ZRS. Pro tento kurz můžete vybrat LRS|
     | **Hierarchický obor názvů** |Tato možnost se dá vybrat, když vyberete druh úložiště, který se má StorageV2. Ve výchozím nastavení je zakázaný. V tomto kurzu ho můžete nechat ve výchozím stavu *zakázáno* .|
@@ -288,7 +288,7 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
         | --- | --- |
         | **Hierarchie** | Vybrat **hierarchii umístění** |
         | **Země** | Zadejte **USA** . |
-        | **Vatikán** | Zadejte **Seattle** |
+        | **City (Město)** | Zadejte **Seattle** |
         | **Kapacit** | Zadat **ručičku místa** |
 
     1. Vyberte **Uložit**.
@@ -304,7 +304,7 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
     | **Popis** | Zadejte **instanci pro výtah 2** . |
     | **Hierarchie** | Vybrat **hierarchii umístění** |
     | **Země** | Zadejte **USA** . |
-    | **Vatikán** | Zadejte **Seattle** |
+    | **City (Město)** | Zadejte **Seattle** |
     | **Kapacit** | Zadejte **střed pro Tichomoří – věda** |
 
     **Pro výtah 3:**
@@ -316,7 +316,7 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
     | **Popis** | Zadejte **instanci pro výtah 3** . |
     | **Hierarchie** | Vybrat **hierarchii umístění** |
     | **Země** | Zadejte **USA** . |
-    | **Vatikán** | Zadejte **New York** |
+    | **City (Město)** | Zadejte **New York** |
     | **Kapacit** | Zadejte **sestavení stavu Empire** |
 
     [![Zobrazit aktualizované instance.](media/v2-update-provision/iot-solution-accelerator-instances.png)](media/v2-update-provision/iot-solution-accelerator-instances.png#lightbox)

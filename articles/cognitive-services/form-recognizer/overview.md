@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatizované zpracování dat, zpracování dokumentů, automatizované zadávání dat, zpracování formulářů
-ms.openlocfilehash: 2d3a37165994a8c7ff9d46ac24e63b7f58404ce3
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 95bbc33035ca99a64242274570be5c9263029aef
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584562"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094380"
 ---
 # <a name="what-is-form-recognizer"></a>Co je služba Rozpoznávání formulářů?
 
@@ -27,26 +27,27 @@ Nástroj pro rozpoznávání formulářů Azure je softwarová služba, která u
 Nástroj pro rozpoznávání formulářů se skládá z vlastních modelů zpracování dokumentů, předem vytvořených modelů pro faktury, příjmy a obchodní karty a model rozložení. Můžete volat modely pro rozpoznávání formulářů pomocí REST API nebo sad SDK klientské knihovny, abyste snížili složitost a mohli je integrovat do pracovního postupu nebo aplikace.
 
 Nástroj pro rozpoznávání formulářů se skládá z následujících služeb:
+
 * **[Rozhraní API pro rozložení](#layout-api)** – extrakce textu, značek výběru a struktur tabulek spolu s jejich souřadnicemi ohraničovacích rámečků z dokumentů
 * **[Vlastní modely](#custom-models)** – z formulářů extrahuje text, páry klíč/hodnota, značky výběru a tabulková data. Tyto modely jsou vyškolené s vašimi vlastními daty, takže jsou přizpůsobené vašim formám.
 * Předem **[připravené modely](#prebuilt-models)** – extrakce dat z jedinečných typů formulářů pomocí předem sestavených modelů. Aktuálně dostupné jsou tyto předem připravené modely.
-    * [Faktury](./concept-invoices.md)
-    * [Prodejní příjmy](./concept-receipts.md)
-    * [Vizitky](./concept-business-cards.md)
-
+  * [Faktury](./concept-invoices.md)
+  * [Prodejní příjmy](./concept-receipts.md)
+  * [Vizitky](./concept-business-cards.md)
 
 ## <a name="try-it-out"></a>Vyzkoušet
 
 Chcete-li vyzkoušet službu pro rozpoznávání formulářů, použijte nástroj uživatelské rozhraní online Sample:
-
-
-# <a name="v20"></a>[v2.0](#tab/v2-0)
-> [!div class="nextstepaction"]
-> [Vyzkoušet Nástroj pro rozpoznávání formulářů](https://fott.azurewebsites.net/)
-
+<!-- markdownlint-disable MD025 -->
 # <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)
+
 > [!div class="nextstepaction"]
 > [Vyzkoušet Nástroj pro rozpoznávání formulářů](https://fott-preview.azurewebsites.net/)
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)
+
+> [!div class="nextstepaction"]
+> [Vyzkoušet Nástroj pro rozpoznávání formulářů](https://fott.azurewebsites.net/)
 
 ---
 
@@ -137,12 +138,11 @@ Pomocí následujících rozhraní API můžete vyškolit modely a extrahovat st
 | **Analyzovat příjem** | Analyzujte příjmový dokument pro extrakci informací o klíči a další text účtenky.|
 | **Analyzovat obchodní kartu** | Analyzovat vizitku pro extrakci klíčových informací a textu|
 
+# <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)
+Další informace najdete v [referenční dokumentaci k REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeWithCustomForm) . Pokud jste obeznámeni s předchozí verzí rozhraní API, přečtěte si článek [co je nového](./whats-new.md) , kde se dozvíte o nejnovějších změnách.
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)
 Další informace najdete v [referenční dokumentaci k REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) . Pokud jste obeznámeni s předchozí verzí rozhraní API, přečtěte si článek [co je nového](./whats-new.md) , kde se dozvíte o nejnovějších změnách.
-
-# <a name="v21"></a>[v 2.1](#tab/v2-1)
-Další informace najdete v [referenční dokumentaci k REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeWithCustomForm) . Pokud jste obeznámeni s předchozí verzí rozhraní API, přečtěte si článek [co je nového](./whats-new.md) , kde se dozvíte o nejnovějších změnách.
 
 ---
 

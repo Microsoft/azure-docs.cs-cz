@@ -3,12 +3,12 @@ title: Vytváření řídicích panelů Azure prostřednictvím kódu programu
 description: K programovému vytváření řídicích panelů Azure použijte řídicí panel v Azure Portal jako šablonu. Obsahuje odkaz JSON.
 ms.topic: how-to
 ms.date: 12/4/2020
-ms.openlocfilehash: e69d3f3cea0ff63f94e797047eb10b9583678b1b
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: bd56dc1c729c5aa7a77e79aa3af3366166fdcfea
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745804"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095181"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Vytváření řídicích panelů Azure prostřednictvím kódu programu
 
@@ -46,7 +46,7 @@ Po nakonfigurování řídicího panelu je dalším krokem publikování řídic
 
 ![sdílení řídicího panelu](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-Po výběru možnosti **sdílet** budete vyzváni k výběru předplatného a skupiny prostředků, do které chcete publikovat. Musíte mít oprávnění k zápisu do předplatného a skupiny prostředků, kterou si zvolíte. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí webu Azure Portal](../role-based-access-control/role-assignments-portal.md).
+Po výběru možnosti **sdílet** budete vyzváni k výběru předplatného a skupiny prostředků, do které chcete publikovat. Musíte mít oprávnění k zápisu do předplatného a skupiny prostředků, kterou si zvolíte. Další informace najdete v tématu [přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ![provedení změn pro sdílení a přístup](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 

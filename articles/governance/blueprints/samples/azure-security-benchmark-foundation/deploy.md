@@ -1,14 +1,14 @@
 ---
 title: Příklad nasazení Azure Security benchmark Foundation Sample
 description: Nasaďte kroky pro ukázkový plán Azure Security benchmark Foundation, včetně podrobností parametrů artefaktu podrobného plánu.
-ms.date: 02/12/2020
+ms.date: 02/17/2020
 ms.topic: sample
-ms.openlocfilehash: 84c157d696dc8ababe1f252136672ea600e604af
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: aaaabc8767c6d80548a26d64d8557587180fb6f3
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633950"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095300"
 ---
 # <a name="deploy-the-azure-security-benchmark-foundation-blueprint-sample"></a>Nasazení ukázky plánu Azure Security benchmark Foundation
 
@@ -92,6 +92,9 @@ Po úspěšném **publikování** kopie ukázky podrobného plánu je možné ji
      - **Network Watcher název**: název prostředku Network Watcher
      - **Network Watcher název skupiny prostředků**: název pro skupinu prostředků Network Watcher
      - **Povolit ochranu DDoS**: Pokud chcete určit, jestli je ve virtuální síti povolená DDoS Protection, zadejte ' true ' nebo ' false '.
+     
+    > [!NOTE] 
+    > Pokud je už Network Watcher povolený, doporučuje se použít existující skupinu prostředků Network Watcher. Musíte taky zadat umístění pro existující skupinu prostředků Network Watcher pro parametr artefaktu **Network Watcher umístění skupiny prostředků**.
 
    - Parametry artefaktů
 
@@ -132,8 +135,14 @@ Následující tabulka uvádí seznam parametrů podrobného plánu:
 |Šablona Azure Virtual Network paprsku|Šablona Resource Manageru|Názvy adres podsítě (volitelné)|Pole názvů podsítí, která se mají nasadit do virtuální sítě s paprsky; například "SUBNET1", "podsíť subnet2"|
 |Šablona Azure Virtual Network paprsku|Šablona Resource Manageru|Předpony adres podsítě (volitelné)|Pole předpon IP adres pro volitelné podsítě pro virtuální síť hvězdicové sítě; například "10.0.7.0/24", "10.0.8.0/24"|
 |Šablona Azure Virtual Network paprsku|Šablona Resource Manageru|Nasazení paprsku|Zadáním hodnoty true nebo false určete, jestli přiřazení nasadí součásti paprsků architektury.|
-|Šablona Azure Network Watcher|Šablona Resource Manageru|Umístění Network Watcher|Pokud je už Network Watcher povolený, hodnota tohoto parametru se **musí** shodovat s umístěním existující Network Watcher skupiny prostředků.|
+|Šablona Azure Network Watcher|Šablona Resource Manageru|Umístění Network Watcher|Umístění prostředku Network Watcher|
 |Šablona Azure Network Watcher|Šablona Resource Manageru|Network Watcher umístění skupiny prostředků|Pokud je už Network Watcher povolený, hodnota tohoto parametru se **musí** shodovat s názvem existující skupiny prostředků Network Watcher.|
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+Pokud dojde k chybě `The resource group 'NetworkWatcherRG' failed to deploy due to the
+following error: Invalid resource group location '{location}'. The Resource group already exists in
+location '{location}'.` , ověřte, že parametr podrobného plánu **Network Watcher název skupiny prostředků** určuje existující Network Watcher název skupiny prostředků a že parametr artefaktu **Network Watcher umístění skupiny prostředků** určuje existující Network Watcher umístění skupiny prostředků.
 
 ## <a name="next-steps"></a>Další kroky
 

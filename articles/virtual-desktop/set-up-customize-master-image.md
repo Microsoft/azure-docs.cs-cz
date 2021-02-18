@@ -6,19 +6,19 @@ ms.topic: how-to
 ms.date: 01/19/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 33af83934e8ecc5745f2edad3a7832a870406452
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: ca92e6e888ead6bbd79c7a8d524516ee95e8c45d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602372"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092932"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobení hlavní image VHD
 
 V tomto článku se dozvíte, jak připravit hlavní image virtuálního pevného disku (VHD) pro nahrání do Azure, včetně postupu při vytváření virtuálních počítačů a instalaci softwaru na tyto počítače. Tyto pokyny se týkají konfigurace specifické pro virtuální počítače s Windows, které se dají použít s existujícími procesy vaší organizace.
 
 >[!IMPORTANT]
->Doporučujeme použít image z Galerie imagí Azure. Pokud ale potřebujete použít přizpůsobenou image, ujistěte se, že na svém zařízení ještě není nainstalovaný agent virtuálních počítačů s WIndows. Použití vlastní image s agentem virtuálních klientů Windows může způsobit problémy s imagí.  
+>Doporučujeme použít image z Galerie imagí Azure. Pokud ale potřebujete použít přizpůsobenou image, ujistěte se, že na svém VIRTUÁLNÍm počítači ještě není nainstalovaný agent virtuálních počítačů s Windows. Použití vlastní image s agentem virtuálních klientů Windows může způsobit problémy s imagí, jako je blokování registrace a prevence připojení uživatelské relace.  
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
@@ -216,3 +216,5 @@ Teď, když máte image, můžete vytvořit nebo aktualizovat fondy hostitelů. 
 - [Vytvoření fondu hostitelů pomocí PowerShellu](create-host-pools-powershell.md)
 - [Vytvoření kontejneru profilů pro fond hostitelů s využitím sdílené složky](create-host-pools-user-profile.md)
 - [Konfigurace metody vyrovnávání zatížení Windows Virtual Desktop](configure-host-pool-load-balancing.md)
+
+Pokud jste narazili na problém s připojením po přípravě nebo přizpůsobení image VHD, Projděte si nápovědu [Průvodce odstraňováním potíží](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) .
