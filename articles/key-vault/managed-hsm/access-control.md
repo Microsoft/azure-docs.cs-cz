@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 02/17/2021
 ms.author: ambapat
-ms.openlocfilehash: 816941fe0ec3a81c41da56acedcedf2de7febe74
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 0c0a0c5f62f92aaf195e207dfd505ffb017d924e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445230"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653896"
 ---
 # <a name="managed-hsm-access-control"></a>Řízení přístupu pro Managed HSM
 
@@ -63,7 +63,7 @@ V následující tabulce jsou uvedeny koncové body pro řídicí a datové rovi
 | &nbsp;Rovina přístupu | Koncové body přístupu | Operace | Mechanismus řízení přístupu |
 | --- | --- | --- | --- |
 | Rovina správy | **Globální**<br> management.azure.com:443<br> | Vytváření, čtení, aktualizace, odstranění a přesun spravovaných HSM<br>Nastavení spravovaných značek HSM | Azure RBAC |
-| Rovina dat | **Globální**<br> &lt;HSM-name &gt; . Vault.Azure.NET:443<br> | **Klíče** : dešifrování, šifrování,<br> rozbalení, zalomení, ověření, podepsání, získání, seznam, aktualizace, vytvoření, import, odstranění, zálohování, obnovení, vyprázdnění<br/><br/> **Správa rolí roviny dat (spravovaná místní RBAC)**_: seznam definic rolí, přiřazování rolí, odstraňování přiřazení rolí, definování vlastních rolí <br/> <br/>_ * zálohování a obnovení **: zálohování, obnovení, <br/> <br/> kontrolu stavu zálohování/obnovení** v doméně zabezpečení * *: stažení a nahrání domény zabezpečení | Spravovaná místní RBAC pro HSM |
+| Rovina dat | **Globální**<br> &lt;HSM-name &gt; . managedhsm.Azure.NET:443<br> | **Klíče**: dešifrování, šifrování,<br> rozbalení, zalomení, ověření, podepsání, získání, seznam, aktualizace, vytvoření, import, odstranění, zálohování, obnovení, vyprázdnění<br/><br/> **Správa rolí roviny dat (spravovaná místní RBAC)**_: seznam definic rolí, přiřazování rolí, odstraňování přiřazení rolí, definování vlastních rolí <br/> <br/>_* zálohování a obnovení **: zálohování, obnovení, <br/> <br/> kontrolu stavu zálohování/obnovení** v doméně zabezpečení * *: stažení a nahrání domény zabezpečení | Spravovaná místní RBAC pro HSM |
 |||||
 ## <a name="management-plane-and-azure-rbac"></a>Rovina správy a Azure RBAC
 
@@ -71,10 +71,10 @@ V rovině správy pomocí Azure RBAC autorizujete operace, které volající mů
 
 V rámci skupiny prostředků můžete vytvořit Trezor klíčů a spravovat přístup pomocí Azure Active Directory. Uživatelům nebo skupinám udělíte možnost spravovat trezory klíčů ve skupině prostředků. Přístup na konkrétní úroveň oboru udělíte tak, že jim přiřadíte příslušné role Azure. Chcete-li uživateli udělit přístup ke správě trezorů klíčů, přiřaďte uživatele předdefinované `key vault Contributor` role v konkrétním oboru. K roli Azure se dají přiřadit tyto úrovně oborů:
 
-- **Skupina pro správu** : role Azure přiřazená na úrovni předplatného se vztahuje na všechna předplatná v této skupině pro správu.
-- **Předplatné** : role Azure přiřazená na úrovni předplatného se vztahuje na všechny skupiny prostředků a prostředky v rámci daného předplatného.
-- **Skupina prostředků** : role Azure přiřazená na úrovni skupiny prostředků se vztahuje na všechny prostředky v této skupině prostředků.
-- **Konkrétní prostředek** : na tento prostředek se vztahuje role Azure přiřazená pro konkrétní prostředek. V tomto případě je prostředkem konkrétní Trezor klíčů.
+- **Skupina pro správu**: role Azure přiřazená na úrovni předplatného se vztahuje na všechna předplatná v této skupině pro správu.
+- **Předplatné**: role Azure přiřazená na úrovni předplatného se vztahuje na všechny skupiny prostředků a prostředky v rámci daného předplatného.
+- **Skupina prostředků**: role Azure přiřazená na úrovni skupiny prostředků se vztahuje na všechny prostředky v této skupině prostředků.
+- **Konkrétní prostředek**: na tento prostředek se vztahuje role Azure přiřazená pro konkrétní prostředek. V tomto případě je prostředkem konkrétní Trezor klíčů.
 
 Existuje několik předdefinovaných rolí. Pokud předdefinovaná role nevyhovuje vašim potřebám, můžete definovat vlastní roli. Další informace najdete v tématu [Azure RBAC: předdefinované role](../../role-based-access-control/built-in-roles.md).
 
@@ -82,8 +82,8 @@ Existuje několik předdefinovaných rolí. Pokud předdefinovaná role nevyhovu
 
 Přístup k objektu zabezpečení udělíte oprávnění k provádění konkrétních operací s klíči přiřazením role. Pro každé přiřazení role potřebujete zadat roli a rozsah, přes který se toto přiřazení vztahuje. Pro spravované místní RBAC jsou dostupné dva obory.
 
-- **"/" nebo "/Keys"** : rozsah úrovně HSM. Objekty zabezpečení přiřazené roli v tomto oboru můžou provádět operace definované v roli pro všechny objekty (klíče) ve spravovaném modulu HSM.
-- **"/Keys/ &lt; klíč-název &gt; "** : obor úrovně klíče. Objekty zabezpečení přiřazené roli v tomto oboru můžou provádět operace definované v této roli jenom pro všechny verze zadaného klíče.
+- **"/" nebo "/Keys"**: rozsah úrovně HSM. Objekty zabezpečení přiřazené roli v tomto oboru můžou provádět operace definované v roli pro všechny objekty (klíče) ve spravovaném modulu HSM.
+- **"/Keys/ &lt; klíč-název &gt; "**: obor úrovně klíče. Objekty zabezpečení přiřazené roli v tomto oboru můžou provádět operace definované v této roli jenom pro všechny verze zadaného klíče.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.author: chpalm
 ms.date: 10/06/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: ed9af178c10d033806b05f73372a0642bb28cab4
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 24926640de3b50823dfeaf195500f33b49aebc18
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91801635"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652713"
 ---
 # <a name="quickstart-send-sms-messages-in-azure-logic-apps-with-azure-communication-services"></a>Rychlý Start: odesílání zpráv SMS v Azure Logic Apps s využitím komunikačních služeb Azure
 
@@ -27,7 +27,7 @@ I když se tento rychlý Start zaměřuje na použití konektoru k reakci na Tri
 > [!NOTE]
 > Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným nebo si [vytvořte účet Azure zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -39,6 +39,8 @@ I když se tento rychlý Start zaměřuje na použití konektoru k reakci na Tri
 
 - Telefonní číslo s povoleným SMS nebo [získat telefonní číslo](./get-phone-number.md).
 
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
+
 ## <a name="add-an-sms-action"></a>Přidat akci SMS
 
 Pokud chcete přidat akci **Odeslat SMS** jako nový krok pracovního postupu pomocí konektoru služby Azure Communications Services, postupujte podle těchto kroků v [Azure Portal](https://portal.azure.com) s vaším pracovním postupem aplikace logiky otevřeným v návrháři aplikace logiky:
@@ -47,7 +49,7 @@ Pokud chcete přidat akci **Odeslat SMS** jako nový krok pracovního postupu po
 
 1. Do vyhledávacího pole **Vybrat operaci** zadejte `Azure Communication Services` . V seznamu akce vyberte **Odeslat SMS**.
 
-   :::image type="content" source="./media/logic-app/select-send-sms-action.png" alt-text="Snímek obrazovky zobrazující Azure Portal, který je otevřený v návrháři aplikace logiky, a ukazuje ukázkovou aplikaci logiky, která používá akci odeslat SMS pro konektor Azure Communication Services.":::
+   :::image type="content" source="./media/logic-app/select-send-sms-action.png" alt-text="Snímek obrazovky, který zobrazuje návrháře aplikace logiky a konektor Azure Communications Services s vybranou akcí odeslat SMS.":::
 
 1. Nyní vytvořte připojení ke zdroji komunikačních služeb.
 
@@ -57,7 +59,7 @@ Pokud chcete přidat akci **Odeslat SMS** jako nový krok pracovního postupu po
 
    1. Vyberte **Vytvořit**.
 
-   :::image type="content" source="./media/logic-app/send-sms-configuration.png" alt-text="Snímek obrazovky zobrazující Azure Portal, který je otevřený v návrháři aplikace logiky, a ukazuje ukázkovou aplikaci logiky, která používá akci odeslat SMS pro konektor Azure Communication Services.":::
+   :::image type="content" source="./media/logic-app/send-sms-configuration.png" alt-text="Snímek obrazovky, který zobrazuje konfiguraci akcí odeslat zprávu SMS s ukázkovými informacemi":::
 
 1. V akci **Odeslat zprávu SMS** zadejte následující informace: 
 
@@ -67,7 +69,7 @@ Pokud chcete přidat akci **Odeslat SMS** jako nový krok pracovního postupu po
 
    Tady je akce **odeslání zprávy SMS** s příklady informací:
 
-   :::image type="content" source="./media/logic-app/send-sms-action.png" alt-text="Snímek obrazovky zobrazující Azure Portal, který je otevřený v návrháři aplikace logiky, a ukazuje ukázkovou aplikaci logiky, která používá akci odeslat SMS pro konektor Azure Communication Services.":::
+   :::image type="content" source="./media/logic-app/send-sms-action.png" alt-text="Snímek obrazovky zobrazující akci odeslat zprávu SMS s ukázkovými informacemi":::
 
 1. Až budete hotovi, na panelu nástrojů návrháře vyberte **Uložit**.
 
@@ -93,5 +95,5 @@ V tomto rychlém startu jste zjistili, jak odesílat zprávy SMS pomocí Azure L
 Další informace o SMS v komunikačních službách Azure najdete v těchto článcích:
 
 - [Koncepce SMS](../../concepts/telephony-sms/concepts.md)
-- [Plánování telefonie a řešení pro SMS](../../concepts/telephony-sms/plan-solution.md)
+- [Typy telefonních čísel](../../concepts/telephony-sms/plan-solution.md)
 - [SADA SMS SDK](../../concepts/telephony-sms/sdk-features.md)

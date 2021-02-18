@@ -2,13 +2,13 @@
 title: Přehled AMQP 1,0 v Azure Service Bus
 description: Přečtěte si, jak Azure Service Bus podporuje rozšířený protokol řízení front zpráv (AMQP) (AMQP), což je otevřený standardní protokol.
 ms.topic: article
-ms.date: 11/20/2020
-ms.openlocfilehash: 58c2cc8e9d92fff31a286b6e9bd63b63bee26aee
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.date: 02/17/2021
+ms.openlocfilehash: b2ca126312f5fc3da2a7ff6e20a9ade252f489f1
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632880"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653879"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Podpora AMQP 1,0 v Service Bus
 Cloudová služba Azure Service Bus jako svůj primární způsob komunikace používá [Rozšířený Protokol AMQP (Message Queueing Protocol) 1,0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) . Společnost Microsoft spolupracuje s partnery v celém odvětví, od zákazníků a dodavatelů konkurenčních zprostředkovatelů zasílání zpráv, aby bylo možné vyvíjet a vyvíjet AMQP za poslední desetiletí, a to s novými rozšířeními vyvinutými v [technickém výboru Oasis AMQP](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp). AMQP 1,0 je standard ISO a IEC ([iso 19464:20149](https://www.iso.org/standard/64955.html)). 
@@ -47,7 +47,7 @@ Aktuální židle [technického výboru Oasis AMQP](https://www.oasis-open.org/c
 Mezi běžně citované výhody otevřených standardů patří:
 
 * Menší pravděpodobnost uzamčení dodavatele
-* Interoperabilita
+* Vzájemná funkční spolupráce
 * Široká dostupnost knihoven a nástrojů
 * Ochrana proti obsolescence
 * Dostupnost znalostních zaměstnanců
@@ -84,9 +84,8 @@ Jste připraveni na další informace? Navštivte následující odkazy:
 
 * [Použití Service Bus z rozhraní .NET s AMQP]
 * [Použití Service Bus z Java s AMQP]
-* [Instalace Apache Qpid Proton-C na virtuálním počítači Azure Linux]
 
 [0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
 [Použití Service Bus z rozhraní .NET s AMQP]: service-bus-amqp-dotnet.md
 [Použití Service Bus z Java s AMQP]: ./service-bus-java-how-to-use-jms-api-amqp.md
-[Instalace Apache Qpid Proton-C na virtuálním počítači Azure Linux]::
+

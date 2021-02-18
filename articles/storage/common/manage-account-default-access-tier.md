@@ -8,16 +8,16 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: klaasl
-ms.openlocfilehash: 10d4e99d7bbebb6bc7d7def308e233507ed99ce9
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 637f748882b3ac84127c8b71761a06629e1e0957
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98166480"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653828"
 ---
 # <a name="manage-the-default-access-tier-of-an-azure-storage-account"></a>Správa výchozí úrovně přístupu účtu Azure Storage
 
-Každý Azure Storage účet má výchozí úroveň přístupu, horkou, studenou nebo archivní. Úroveň přístupu přiřadíte při vytváření účtu úložiště. Výchozí úroveň přístupu je horká.
+Každý Azure Storage účet má výchozí úroveň přístupu, ať už horkou, nebo studenou. Úroveň přístupu přiřadíte při vytváření účtu úložiště. Výchozí úroveň přístupu je horká.
 
 Výchozí úroveň účtu můžete změnit nastavením atributu **úroveň přístupu** v účtu úložiště. Změna úrovně účtu se vztahuje na všechny objekty uložené v účtu, které nemají explicitně nastavenou úroveň. Přepínání úrovně účtu z horké na studenou povede k operacím zápisu (za 10 000) pro všechny objekty blob bez nastavené úrovně v účtech GPv2 a přepínání ze studené na horkou se účtují poplatky za operace čtení (za 10 000) a načítání dat (za GB) pro všechny objekty BLOB v účtech Blob Storage a GPv2.
 
@@ -31,7 +31,7 @@ Následující scénáře používají Azure Portal nebo PowerShell:
 
 # <a name="portal"></a>[Azure Portal](#tab/portal)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. V Azure Portal vyhledejte a vyberte **všechny prostředky**.
 

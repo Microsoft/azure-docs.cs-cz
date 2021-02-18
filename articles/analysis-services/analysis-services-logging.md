@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d5537079341823275ba521c9d44139a0e0305286
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 2bee856adef1208aabbe65ecd5fd11235579bb82
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014932"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582705"
 ---
 # <a name="setup-diagnostic-logging"></a>Nastavení protokolování diagnostiky
 
-Důležitou součástí jakéhokoli řešení Analysis Services je monitorování, jak vaše servery provádějí. Služba Azure Analysis Services je integrovaná s Azure Monitor. Pomocí [Azure Monitorch protokolů prostředků](../azure-monitor/platform/platform-logs-overview.md)můžete protokoly monitorovat a odesílat [Azure Storage](https://azure.microsoft.com/services/storage/), streamovat je do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a exportovat je do [protokolů Azure monitor](../azure-monitor/overview.md).
+Důležitou součástí jakéhokoli řešení Analysis Services je monitorování, jak vaše servery provádějí. Služba Azure Analysis Services je integrovaná s Azure Monitor. Pomocí [Azure Monitorch protokolů prostředků](../azure-monitor/essentials/platform-logs-overview.md)můžete protokoly monitorovat a odesílat [Azure Storage](https://azure.microsoft.com/services/storage/), streamovat je do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a exportovat je do [protokolů Azure monitor](../azure-monitor/overview.md).
 
 ![Protokolování prostředků do protokolů úložiště, Event Hubs nebo Azure Monitor](./media/analysis-services-logging/aas-logging-overview.png)
 
@@ -24,7 +24,7 @@ Důležitou součástí jakéhokoli řešení Analysis Services je monitorován�
 
 ## <a name="whats-logged"></a>Co se protokoluje?
 
-Můžete vybrat kategorie **modul**, **služby**a **metriky** .
+Můžete vybrat kategorie **modul**, **služby** a **metriky** .
 
 ### <a name="engine"></a>Modul
 
@@ -82,7 +82,7 @@ Kategorie metriky zapisuje stejné [metriky serveru](analysis-services-monitor.m
 
     * **Archivujte do účtu úložiště**. Pokud chcete použít tuto možnost, budete potřebovat existující účet úložiště, ke kterému se chcete připojit. Viz [Vytvoření účtu úložiště](../storage/common/storage-account-create.md). Podle pokynů vytvořte Správce prostředků účet pro obecné účely a pak vyberte svůj účet úložiště tak, že se vrátíte na tuto stránku na portálu. Může trvat několik minut, než se nově vytvořené účty zobrazí v rozevírací nabídce.
     * **Streamování do centra událostí**. Pokud chcete použít tuto možnost, budete potřebovat existující obor názvů centra událostí a centrum událostí, ke kterým se chcete připojit. Další informace najdete v tématu [Vytvoření oboru názvů služby Event Hubs a centra událostí pomocí webu Azure Portal](../event-hubs/event-hubs-create.md). Pak se vraťte na tuto stránku na portálu a vyberte obor názvů a název zásady centra událostí.
-    * **Odeslat do Azure monitor (pracovní prostor Log Analytics)**. Pokud chcete tuto možnost použít, buď použijte existující pracovní prostor, nebo na portálu [vytvořte nový prostředek pracovního prostoru](../azure-monitor/learn/quick-create-workspace.md) . Další informace o zobrazení protokolů najdete v části [zobrazení protokolů v Log Analytics pracovním prostoru](#view-logs-in-log-analytics-workspace) v tomto článku.
+    * **Odeslat do Azure monitor (pracovní prostor Log Analytics)**. Pokud chcete tuto možnost použít, buď použijte existující pracovní prostor, nebo na portálu [vytvořte nový prostředek pracovního prostoru](../azure-monitor/logs/quick-create-workspace.md) . Další informace o zobrazení protokolů najdete v části [zobrazení protokolů v Log Analytics pracovním prostoru](#view-logs-in-log-analytics-workspace) v tomto článku.
 
     * **Modul**. Tuto možnost vyberte, pokud chcete protokolovat xEvents. Pokud provádíte archivaci na účet úložiště, můžete vybrat dobu uchování pro protokoly prostředků. Protokoly se po vypršení doby uchování odstraní znovu.
     * **Služba**. Tuto možnost vyberte, pokud chcete protokolovat události na úrovni služby. Pokud provádíte archivaci na účet úložiště, můžete vybrat dobu uchování pro protokoly prostředků. Protokoly se po vypršení doby uchování odstraní znovu.
@@ -90,7 +90,7 @@ Kategorie metriky zapisuje stejné [metriky serveru](analysis-services-monitor.m
 
 3. Klikněte na **Uložit**.
 
-    Pokud se zobrazí chyba s informacemi o tom, že se nepovedlo aktualizovat diagnostiku pro \<workspace name> . Předplatné \<subscription id> není zaregistrované pro používání Microsoft. Insights. pomocí pokynů [Azure Diagnostics Poradce při potížích](../azure-monitor/platform/resource-logs.md) zaregistrujte účet a potom tento postup opakujte.
+    Pokud se zobrazí chyba s informacemi o tom, že se nepovedlo aktualizovat diagnostiku pro \<workspace name> . Předplatné \<subscription id> není zaregistrované pro používání Microsoft. Insights. pomocí pokynů [Azure Diagnostics Poradce při potížích](../azure-monitor/essentials/resource-logs.md) zaregistrujte účet a potom tento postup opakujte.
 
     Pokud chcete změnit způsob, jakým se protokoly prostředků ukládají do libovolného bodu v budoucnu, můžete se na tuto stránku vrátit a změnit nastavení.
 
@@ -134,20 +134,20 @@ Pokud chcete povolit metriky a protokolování prostředků pomocí PowerShellu,
 
 Tyto parametry můžete kombinovat a povolit tak různé možnosti výstupu.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 
 Zde zjistíte, jak [změnit nastavení diagnostiky pomocí rozhraní REST API služby Azure Monitor](/rest/api/monitor/). 
 
 ### <a name="resource-manager-template"></a>Šablona Resource Manageru
 
-Zde zjistíte, jak [povolit nastavení diagnostiky při vytváření prostředku pomocí šablony Resource Manageru](../azure-monitor/samples/resource-manager-diagnostic-settings.md). 
+Zde zjistíte, jak [povolit nastavení diagnostiky při vytváření prostředku pomocí šablony Resource Manageru](../azure-monitor/essentials/resource-manager-diagnostic-settings.md). 
 
 ## <a name="manage-your-logs"></a>Správa protokolů
 
-Protokoly jsou obvykle k dispozici během několika hodin od nastavení protokolování. Správa protokolů v účtu úložiště je pouze na vás:
+Protokoly jsou obvykle k dispozici během několika hodin od nastavení protokolování. Správa protokolů ve vašem účtu úložiště záleží na vás:
 
-* Zabezpečte protokoly pomocí standardních metod řízení přístupu Azure a určete, kdo k nim má přístup.
-* Odstraňte protokoly, které už nechcete uchovávat v účtu úložiště.
+* Protokoly můžete zabezpečit, když k nim omezíte přístup pomocí standardních metod pro řízení přístupu Azure.
+* Odstraňujte protokoly, které už nechcete uchovávat v účtu úložiště.
 * Nezapomeňte nastavit dobu uchování, aby se staré protokoly odstranily z účtu úložiště.
 
 ## <a name="view-logs-in-log-analytics-workspace"></a>Zobrazit protokoly v pracovním prostoru Log Analytics
@@ -208,7 +208,7 @@ window
 | order by TimeGenerated asc 
 ```
 
-Existují stovky dotazů, které můžete použít. Další informace o dotazech najdete v tématu [Začínáme s Azure monitor dotazy protokolu](../azure-monitor/log-query/get-started-queries.md).
+Existují stovky dotazů, které můžete použít. Další informace o dotazech najdete v tématu [Začínáme s Azure monitor dotazy protokolu](../azure-monitor/logs/get-started-queries.md).
 
 
 ## <a name="turn-on-logging-by-using-powershell"></a>Zapnutí protokolování pomocí PowerShellu
@@ -316,7 +316,7 @@ Tags                        :
 
 Tento výstup potvrdí, že protokolování je teď pro server povolené, a ukládá informace do účtu úložiště.
 
-Pro protokoly můžete také nastavit zásady uchovávání informací, aby se automaticky odstranily staré protokoly. Například nastavte zásady uchovávání informací pomocí příznaku **-RetentionEnabled** na **$true**a nastavte parametr **-RetentionInDays** na **90**. Protokoly starší než 90 dní se odstraní automaticky.
+Pro protokoly můžete také nastavit zásady uchovávání informací, aby se automaticky odstranily staré protokoly. Například nastavte zásady uchovávání informací pomocí příznaku **-RetentionEnabled** na **$true** a nastavte parametr **-RetentionInDays** na **90**. Protokoly starší než 90 dní se odstraní automaticky.
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
@@ -326,6 +326,6 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [Azure monitor protokolování prostředků](../azure-monitor/platform/platform-logs-overview.md).
+Přečtěte si další informace o [Azure monitor protokolování prostředků](../azure-monitor/essentials/platform-logs-overview.md).
 
 Viz rutina [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) v nápovědě PowerShellu.

@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 01/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: f82432c1dd8c66e8ce845831ff35d534a34e3e04
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 9c3ff91cbfb6423099040a6ea46eeb66f5461f48
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202534"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589661"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Konfigurace Přineste si vlastní úložiště (BYOS) pro Application Insights Profiler a Snapshot Debugger
 
@@ -21,9 +21,9 @@ Když použijete Application Insights Profiler nebo Snapshot Debugger, artefakty
 Pomocí Přineste si vlastní úložiště se tyto artefakty nahrají do účtu úložiště, který ovládáte. To znamená, že budete řídit zásady šifrování na místě, zásady správy životního cyklu a přístup k síti. Budete ale odpovědní za náklady spojené s tímto účtem úložiště.
 
 > [!NOTE]
-> Pokud povolujete privátní propojení, je nutné použít vlastní úložiště. Další informace o privátním odkazu pro Application Insights [najdete v dokumentaci.](../platform/private-link-security.md)
+> Pokud povolujete privátní propojení, je nutné použít vlastní úložiště. Další informace o privátním odkazu pro Application Insights [najdete v dokumentaci.](../logs/private-link-security.md)
 >
-> Pokud povolujete Customer-Managed klíče, je nutné uvést vlastní úložiště. Další informace o Customer-Managed klíčů pro Application Insights [najdete v dokumentaci.](../platform/customer-managed-keys.md)
+> Pokud povolujete Customer-Managed klíče, je nutné uvést vlastní úložiště. Další informace o Customer-Managed klíčů pro Application Insights [najdete v dokumentaci.](../logs/customer-managed-keys.md)
 
 ## <a name="how-will-my-storage-account-be-accessed"></a>Jak bude k účtu úložiště přistup?
 1. Agenti, kteří jsou spuštěni ve vašem Virtual Machines nebo App Service, nahrávají artefakty (profily, snímky a symboly) do kontejnerů objektů BLOB ve vašem účtu. Tento proces zahrnuje kontaktování služby Application Insights Profiler nebo Snapshot Debugger k získání tokenu SAS (sdíleného přístupového podpisu) k novému objektu BLOB ve vašem účtu úložiště.

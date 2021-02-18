@@ -3,16 +3,16 @@ title: Migrace z Azure Red Hat OpenShiftu 3.11 na Azure Red Hat OpenShift 4
 description: Migrace z Azure Red Hat OpenShiftu 3.11 na Azure Red Hat OpenShift 4
 author: sakthi-vetrivel
 ms.author: suvetriv
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: migrace, ARO, OpenShift, Red Hat
-ms.openlocfilehash: f9bfc924581d5dbe33c7c2683a0f6083cb2abc23
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 371672de83a6d745d7b367f8327a64e11059923e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071031"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653274"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>Migrace z Azure Red Hat OpenShift 3,11 na Azure Red Hat OpenShift 4
 
@@ -100,13 +100,13 @@ Informace o konfiguraci těchto typů úložišť najdete v tématu [Konfigurace
 
 Azure Red Hat OpenShift 4 dokáže sestavovat image ze zdrojového kódu, nasazovat je a spravovat jejich životní cyklus. Pokud to chcete povolit, Azure Red Hat OpenShift poskytuje 4 [interní integrovaný registr kontejnerů imagí](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html) , který se dá nasadit do prostředí Azure Red Hat OpenShift pro místní správu imagí.
 
-Pokud používáte externí Registry, například [Azure Container Registry](../container-registry/index.yml), [Red Hat Quay Registry](ttps://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-quay-overview_registry-options)nebo [ověřování s povoleným ověřováním Red Hat](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options), postupujte podle pokynů pro zadání přihlašovacích údajů do clusteru, aby cluster mohl přistupovat k úložištím.
+Pokud používáte externí Registry, například [Azure Container Registry](../container-registry/index.yml), [Red Hat Quay Registry](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-quay-overview_registry-options)nebo [ověřování s povoleným ověřováním Red Hat](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options), postupujte podle pokynů pro zadání přihlašovacích údajů do clusteru, aby cluster mohl přistupovat k úložištím.
 
 ### <a name="monitoring"></a>Sledování
 
 Azure Red Hat OpenShift zahrnuje předem nakonfigurovanou, předem nainstalovanou a samostatnou sadu monitorování, která je založená na Prometheus open source projektu a jeho širším ekosystému. Poskytuje monitorování součástí clusteru a obsahuje sadu výstrah, které okamžitě upozorní správce clusteru na všechny problémy, ke kterým dochází, a na sadu Grafanach řídicích panelů. Zásobník monitorování clusteru se podporuje jenom pro monitorování clusterů Azure Red Hat OpenShift. Další informace najdete v tématu [monitorování clusteru pro Azure Red Hat OpenShift](https://docs.openshift.com/container-platform/4.6/monitoring/understanding-the-monitoring-stack.html).
 
-Pokud jste pro [Azure Red Hat OpenShift 3,11 používali Azure monitor for Containers](../azure-monitor/insights/container-insights-azure-redhat-setup.md), můžete také povolit Azure monitor pro kontejnery pro [clustery Azure Red Hat OpenShift 4](../azure-monitor/insights/container-insights-azure-redhat4-setup.md) a nadále používat stejný Log Analytics pracovní prostor.
+Pokud jste pro [Azure Red Hat OpenShift 3,11 používali Azure monitor for Containers](../azure-monitor/containers/container-insights-azure-redhat-setup.md), můžete také povolit Azure monitor pro kontejnery pro [clustery Azure Red Hat OpenShift 4](../azure-monitor/containers/container-insights-azure-redhat4-setup.md) a nadále používat stejný Log Analytics pracovní prostor.
 
 ## <a name="move-your-dns-or-load-balancer-configuration-to-the-new-cluster"></a>Přesuňte konfiguraci DNS nebo nástroje pro vyrovnávání zatížení do nového clusteru.
 

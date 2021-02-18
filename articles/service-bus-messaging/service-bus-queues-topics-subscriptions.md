@@ -1,14 +1,14 @@
 ---
 title: Azure Service Bus zasílání zpráv – fronty, témata a odběry
 description: Tento článek poskytuje přehled entit zasílání zpráv Azure Service Bus (fronty, témata a odběry).
-ms.topic: article
-ms.date: 11/04/2020
-ms.openlocfilehash: 54b6a1fd2d4e8e5ef5bb6522374646257213e4b4
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.topic: conceptual
+ms.date: 02/16/2021
+ms.openlocfilehash: f647164ba18cb83e35b5bd174f09e07a4a9f9aa7
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95791612"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652815"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Fronty, témata a odběry služby Service Bus
 Azure Service Bus podporuje sadu cloudových technologií orientovaných na zprávy, včetně spolehlivé služby Řízení front zpráv a trvalého publikování/odběru zpráv. Tyto možnosti zprostředkujícího zasílání zpráv se dají představit jako funkce odděleného zasílání zpráv, které podporují publikování a dočasná odhlašování a vyrovnávání zatížení pomocí úlohy Service Busho zasílání zpráv. Oddělená komunikace má mnoho výhod. Například klienti a servery se mohou připojit podle potřeby a provádět jejich operace asynchronním způsobem.
@@ -26,19 +26,16 @@ Použití front ke mezilehlým výrobcům zpráv a spotřebitelům poskytuje pod
 Fronty můžete vytvářet pomocí šablon [Azure Portal](service-bus-quickstart-portal.md), [PowerShellu](service-bus-quickstart-powershell.md), [CLI](service-bus-quickstart-cli.md)nebo [Správce prostředků](service-bus-resource-manager-namespace-queue.md). Pak můžete odesílat a přijímat zprávy pomocí klientů napsaných v [jazycích C#](service-bus-dotnet-get-started-with-queues.md), [Java](service-bus-java-how-to-use-queues.md), [Python](service-bus-python-how-to-use-queues.md), [JavaScript](service-bus-nodejs-how-to-use-queues.md), [php](service-bus-php-how-to-use-queues.md)a [Ruby](service-bus-ruby-how-to-use-queues.md). 
 
 ### <a name="receive-modes"></a>Režimy příjmu
-Můžete zadat dva různé režimy, v nichž Service Bus přijímá zprávy: **ReceiveAndDelete** nebo **PeekLock**. Service Bus když v [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) režimu obdrží požadavek od příjemce, označí zprávu jako spotřebou a vrátí ji do aplikace příjemce. Tento režim je nejjednodušším modelem. Funguje nejlépe ve scénářích, ve kterých může aplikace tolerovat nezpracovávání zprávy, pokud dojde k selhání. Pro pochopení tohoto scénáře Vezměte v úvahu scénář, ve kterém příjemce vystaví žádost o přijetí, a poté dojde k chybě před jejím zpracováním. Jakmile Service Bus označí zprávu jako spotřebou, aplikace zahájí zpracování zpráv po restartování. Neobjeví se mu zpráva, kterou spotřeboval před selháním.
+Můžete určit dva různé režimy, v nichž Service Bus přijímá zprávy.
 
-V režimu [PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) se operace Receive stane dvěma fázemi, což umožňuje podporovat aplikace, které neumožňují tolerovat chybějící zprávy. Když Service Bus obdrží požadavek, provede následující operace:
+- **Přijmout a odstranit**. Když v tomto režimu Service Bus přijme požadavek od příjemce, označí zprávu jako spotřebou a vrátí ji do aplikace příjemce. Tento režim je nejjednodušším modelem. Funguje nejlépe ve scénářích, ve kterých může aplikace tolerovat nezpracovávání zprávy, pokud dojde k selhání. Pro pochopení tohoto scénáře Vezměte v úvahu scénář, ve kterém příjemce vystaví žádost o přijetí, a poté dojde k chybě před jejím zpracováním. Jakmile Service Bus označí zprávu jako spotřebou, aplikace zahájí zpracování zpráv po restartování. Neobjeví se mu zpráva, kterou spotřeboval před selháním.
+- **Prohlížet zámek**. V tomto režimu se operace Receive stane dvěma fázemi, což umožňuje podporovat aplikace, které neumožňují tolerovat chybějící zprávy. 
+    1. Najde další zprávu, která se má spotřebovat, **zamkne** ji, aby zabránila ostatním uživatelům v jejich přijetí, a potom vrátí zprávu do aplikace. 
+    1. Poté, co aplikace dokončí zpracování zprávy, požádá službu Service Bus, aby dokončila druhou fázi procesu příjmu. Potom služba **označí zprávu jako spotřebovaná**. 
 
-1. Najde další zprávu, která se má spotřebovat.
-1. Zamkne, aby zabránil ostatním uživatelům v jejich přijímání.
-1. Pak vraťte zprávu do aplikace. 
+        Pokud aplikace z nějakého důvodu nemůže zprávu zpracovat, může požádat službu Service Bus o **opuštění** zprávy. Service Bus **odemkne** zprávu a zpřístupní ji pro opětovné přijetí, a to buď stejným příjemcem, nebo jiným konkurenčním zákazníkem. Za druhé je **časový limit** přidružený k zámku. Pokud aplikace nedokáže zpracovat zprávu před vypršením časového limitu zámku, Service Bus zprávu odemkne a zpřístupní ji, aby ji bylo možné znovu přijmout.
 
-Poté, co aplikace dokončí zpracování zprávy nebo je bude spolehlivě uložena pro budoucí zpracování, dokončí druhou fázi procesu příjmu voláním [`CompleteAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) ve zprávě. Když Service Bus přijme požadavek **CompleteAsync** , označí zprávu jako spotřebovaná.
-
-Pokud aplikace nemůže z nějakého důvodu zprávu zpracovat, může volat [`AbandonAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.abandonasync) metodu ve zprávě (místo [`CompleteAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) ). Tato metoda umožňuje Service Bus odemknout zprávu a zpřístupnit ji, aby ji bylo možné znovu přijmout, a to buď stejným příjemcem, nebo jiným konkurenčním zákazníkem. Za druhé je časový limit přidružený k zámku. Pokud aplikace nedokáže zpracovat zprávu před vypršením časového limitu zámku, Service Bus zprávu odemkne a zpřístupní ji, aby ji bylo možné znovu přijmout.
-
-Pokud aplikace po zpracování zprávy dojde k chybě, ale před voláním [`CompleteAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) , Service Bus znovu doručí zprávu do aplikace při restartu. Tento proces se často nazývá aspoň **po** zpracování. To znamená, že každá zpráva se zpracuje alespoň jednou. V některých případech ale může být stejná zpráva doručena znovu. Pokud váš scénář nemůže tolerovat duplicitní zpracování, přidejte do aplikace další logiku, která bude zjišťovat duplicity. Můžete to dosáhnout pomocí vlastnosti [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid) zprávy, která zůstává konstantní při pokusů o doručení. Tato funkce se označuje stejně jako zpracování **právě jednou** .
+        Pokud aplikace po zpracování zprávy dojde k chybě, ale před tím, než požádá službu Service Bus o dokončení zprávy, Service Bus zprávu po restartování znovu doručí do aplikace. Tento proces se často nazývá aspoň **po** zpracování. To znamená, že každá zpráva se zpracuje alespoň jednou. V některých případech ale může být stejná zpráva doručena znovu. Pokud váš scénář nemůže tolerovat duplicitní zpracování, přidejte do aplikace další logiku, která bude zjišťovat duplicity. Další informace najdete v tématu [zjištění duplicit](duplicate-detection.md). Tato funkce se označuje stejně jako zpracování **právě jednou** .
 
 ## <a name="topics-and-subscriptions"></a>Témata a předplatná
 Fronta umožňuje zpracování zprávy jedním příjemcem. Na rozdíl od front, témat a předplatných nabízí ve vzoru **publikování a odběru** formu typu 1: n. Je užitečné pro škálování na velký počet příjemců. Každá publikovaná zpráva je zpřístupněna pro každé předplatné registrované v tématu. Vydavatel pošle zprávu do tématu a jednomu nebo více předplatitelům obdrží kopii zprávy v závislosti na pravidlech filtru nastavených u těchto předplatných. Odběry mohou použít další filtry k omezení zpráv, které chtějí přijímat. Vydavatelé odesílají zprávy do tématu stejným způsobem, jako odesílají zprávy do fronty. Ale uživatelé neobdrží zprávy přímo z tématu. Místo toho příjemci obdrží zprávy z předplatných tématu. Předplatné tématu se podobá virtuální frontě, která přijímá kopie zpráv odesílaných do tématu. Příjemci obdrží zprávy z předplatného stejně, jako jim obdrží zprávy z fronty.
@@ -55,7 +52,7 @@ V mnoha scénářích musí být zprávy, které mají specifické vlastnosti, z
 
 Další informace o možných hodnotách filtru naleznete v dokumentaci ke třídám [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) a [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) .
 
-## <a name="java-message-service-jms-20-entities-preview"></a>Entity služby zprávy Java (JMS) 2,0 (Preview)
+## <a name="java-message-service-jms-20-entities"></a>Entity služby zprávy Java (JMS) 2,0
 K dispozici jsou tyto entity prostřednictvím rozhraní JMS (Java Message Service) 2,0 API.
 
   * Dočasné fronty

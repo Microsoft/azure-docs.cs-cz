@@ -4,12 +4,12 @@ description: Porozumění způsobu, jakým jsou zpracovávány IP adresy a geogr
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 3a8969d5d0df2fdacf78815c6f47c7c6bfa73a37
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 91b3aa07720e39aa8aeeceb9c35e38205e7d7c76
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100521913"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584077"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Geografická poloha a zpracování IP adres
 
@@ -30,7 +30,7 @@ Toto chování je záměrné, což umožňuje vyhnout se zbytečné kolekci osob
 
 Výchozí hodnota není shromažďovat IP adresy. Pořád nabízíme flexibilitu pro přepsání tohoto chování. Nicméně doporučujeme ověřit, že kolekce neruší žádné požadavky na dodržování předpisů ani místní předpisy. 
 
-Další informace o zpracování osobních údajů v Application Insights najdete v [pokynech k osobním údajům](../platform/personal-data-mgmt.md).
+Další informace o zpracování osobních údajů v Application Insights najdete v [pokynech k osobním údajům](../logs/personal-data-mgmt.md).
 
 ## <a name="storing-ip-address-data"></a>Ukládání dat IP adresy
 
@@ -245,6 +245,6 @@ Při testování z místního hostitele a hodnoty pro `customDimensions_client-i
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [shromažďování osobních údajů](../platform/personal-data-mgmt.md) v Application Insights.
+* Přečtěte si další informace o [shromažďování osobních údajů](../logs/personal-data-mgmt.md) v Application Insights.
 
 * Přečtěte si další informace o tom, jak [shromažďování IP adres](https://apmtips.com/posts/2016-07-05-client-ip-address/) v Application Insights funguje. (Tento článek popisuje starší externí Blogový příspěvek napsaný jedním z našich inženýrů. Předchází aktuálnímu výchozímu chování, při kterém je zaznamenána IP adresa `0.0.0.0` , ale má větší hloubku v rámci integrovaného mechanismu `ClientIpHeaderTelemetryInitializer` .)

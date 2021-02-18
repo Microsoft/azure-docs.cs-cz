@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/15/2021
-ms.openlocfilehash: 8a61ad1599a2d4d1aeaf8b36d2f92d95ec1896a0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e183d81355d4db81e677f34b02330ddb9b631957
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573029"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651982"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rychlé zprovoznění: Vytvoření služby Azure Cognitive Search na portálu
 
 [Azure kognitivní hledání](search-what-is-azure-search.md) je prostředek Azure, který se používá k přidání funkce fulltextového vyhledávání do vlastních aplikací. Můžete ji snadno integrovat s jinými službami Azure, které poskytují data nebo další zpracování, s aplikacemi na síťových serverech nebo se softwarem běžícím na jiných cloudových platformách.
 
-Službu Search můžete vytvořit pomocí [Azure Portal](https://portal.azure.com/), který je popsaný v tomto článku. Můžete také použít [Azure PowerShell](search-manage-powershell.md), [Azure CLI](/cli/azure/search)nebo [šablonu služby Azure Resource Manager](https://azure.microsoft.com/resources/templates/101-azure-search-create/).
+Službu Search můžete vytvořit pomocí [Azure Portal](https://portal.azure.com/), který je popsaný v tomto článku. Můžete také použít [Azure PowerShell](search-manage-powershell.md), [Azure CLI](/cli/azure/search), [REST API pro správu](/rest/api/searchmanagement/)nebo [šablonu služby Azure Resource Manager](https://azure.microsoft.com/resources/templates/101-azure-search-create/).
 
 [![Animovaný GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -85,7 +85,7 @@ Požadavky na název služby:
 
 Služba Azure Kognitivní hledání je k dispozici ve většině oblastí, jak je uvedeno v [produktech dostupných v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=search). Obecně platí, že pokud používáte více služeb Azure, vyberte oblast, která je také hostitelem vašich dat nebo aplikační služby. Tím dojde k minimalizaci nebo zrušení poplatků za šířku pásma pro odchozí data (pro odchozí data se neúčtují žádné poplatky, pokud jsou služby ve stejné oblasti).
 
-+ [Rozšíření AI](cognitive-search-concept-intro.md) vyžaduje, aby Cognitive Services být ve stejné fyzické oblasti jako Azure kognitivní hledání. V takovém případě některé oblasti neposkytují obě možnosti. Stránka [produkty dostupné v oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=search) indikuje dvojí dostupnost zobrazením dvou skládaných značek zaškrtnutí. V nedostupné kombinaci chybí značka zaškrtnutí:
++ [Rozšíření AI](cognitive-search-concept-intro.md) vyžaduje, aby Cognitive Services být ve stejné fyzické oblasti jako Azure kognitivní hledání. Existuje jen několik oblastí, které neposkytují obojí. Stránka [produkty dostupné v oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=search) indikuje dvojí dostupnost zobrazením dvou skládaných značek zaškrtnutí. V nedostupné kombinaci chybí značka zaškrtnutí:
 
   :::image type="content" source="media/search-create-service-portal/region-availability.png" alt-text="Regionální dostupnost" border="true":::
 

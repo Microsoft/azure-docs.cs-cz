@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: bcb9ca9e73c0898dc778202eca036a5ae92bebf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87fc8e30274f0a11b7ddfc5eeb184f1a45a5351d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87076133"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588374"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Agregace a shromažďování událostí pomocí Azure Diagnostics Windows
 > [!div class="op_single_selector"]
@@ -346,7 +346,7 @@ V části "WadCfg" šablony Správce prostředků přidejte "jímku", včetně n
 
 V předchozích fragmentech kódu byl použit název "applicationInsights" k popisu jímky. Nejedná se o požadavek a pokud je název jímky obsažený v části "jímky", můžete nastavit název libovolného řetězce.
 
-V současné době se protokoly z clusteru zobrazují jako **trasování** v prohlížeči protokolu Application Insights. Vzhledem k tomu, že většina trasování přicházejících z platformy je úrovně "informativní", můžete také zvážit změnu konfigurace jímky jenom na Odeslat protokoly typu "upozornění" nebo "Chyba". To lze provést přidáním "kanálů" do jímky, jak je znázorněno v [tomto článku](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
+V současné době se protokoly z clusteru zobrazují jako **trasování** v prohlížeči protokolu Application Insights. Vzhledem k tomu, že většina trasování přicházejících z platformy je úrovně "informativní", můžete také zvážit změnu konfigurace jímky jenom na Odeslat protokoly typu "upozornění" nebo "Chyba". To lze provést přidáním "kanálů" do jímky, jak je znázorněno v [tomto článku](../azure-monitor/agents/diagnostics-extension-to-application-insights.md).
 
 >[!NOTE]
 >Pokud používáte nesprávný Application Insights klíč buď na portálu, nebo v šabloně Správce prostředků, budete muset ručně změnit klíč a aktualizovat cluster nebo ho znovu nasadit.
