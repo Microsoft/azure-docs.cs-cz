@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: azure-monitor
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: ba8a82ed1113bfb3e71560ca9a6c713602df21f2
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 95f20737b044140fe12ea939e71cd2397cb4826d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590643"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576694"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Referenční informace ke službě Azure Queue Storage monitoring data
 
@@ -36,9 +36,9 @@ Azure Storage poskytuje v Azure Monitor následující metriky kapacity.
 
 #### <a name="queue-storage-metrics"></a>Queue Storage metriky
 
-Tato tabulka ukazuje [Queue Storage metriky](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices).
+Tato tabulka ukazuje [Queue Storage metriky](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsqueueservices).
 
-| Metrika | Popis |
+| Metric | Popis |
 | ------------------- | ----------------- |
 | **QueueCapacity** | Množství Queue Storage používaného účtem úložiště <br><br> Jednotce `Bytes` <br> Typ agregace: `Average` <br> Příklad hodnoty: `1024` |
 | **QueueCount** | Počet front v účtu úložiště. <br><br> Jednotce `Count` <br> Typ agregace: `Average` <br> Příklad hodnoty: `1024` |
@@ -80,4 +80,4 @@ V následující tabulce jsou uvedeny vlastnosti Azure Storagech protokolů pros
 ## <a name="see-also"></a>Viz také
 
 - Popis monitorování Azure Queue Storage najdete v tématu [monitorování azure Queue Storage](monitor-queue-storage.md) .
-- Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](../../azure-monitor/insights/monitor-azure-resource.md) .
+- Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](../../azure-monitor/essentials/monitor-azure-resource.md) .

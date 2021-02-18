@@ -6,14 +6,14 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/19/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 368c45433247c441631bdf79bfc9caa28a41f1b4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 849701caf73a4fb289773c67bccaab2e0f39dbd1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546742"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583733"
 ---
-# <a name="troubleshooting"></a>Poradce při potížích
+# <a name="troubleshooting"></a>Řešení potíží
 
 Tento článek vám pomůže vyřešit běžné problémy, ke kterým může dojít při použití monitorování dostupnosti.
 
@@ -32,7 +32,7 @@ Sestava Poradce při potížích umožňuje snadno diagnostikovat běžné probl
 
 |Krok | Chybová zpráva | Možná příčina |
 |-----|---------------|----------------|
-| Opakované použití připojení | neuvedeno | Obvykle závisí na dřív navázaném připojení, což znamená, že je krok webového testu závislý. Proto by nebyl nutný žádný krok DNS, připojení nebo SSL. |
+| Opakované použití připojení | Není k dispozici | Obvykle závisí na dřív navázaném připojení, což znamená, že je krok webového testu závislý. Proto by nebyl nutný žádný krok DNS, připojení nebo SSL. |
 | Překlad DNS | Vzdálený název se nedal přeložit: "vaše adresa URL" | Proces překladu DNS se nezdařil, pravděpodobně v důsledku nesprávně konfigurovaných záznamů DNS nebo dočasných selhání serveru DNS. |
 | Vytváření připojení | Pokus o připojení se nezdařil, protože připojená strana nereagovala po určitém časovém intervalu správně. | Obecně to znamená, že váš server neodpovídá na požadavek HTTP. Běžným řešením je, že naše testovací agenti jsou na serveru zablokované bránou firewall. Pokud byste chtěli testovat v rámci Virtual Network Azure, měli byste do svého prostředí přidat značku služby dostupnosti.|
 | Přenos TLS  | Klient a server nemohou komunikovat, protože nemají společný algoritmus.| Podporují se jenom TLS 1,0, 1,1 a 1,2. Protokol SSL není podporován. Tento krok neověřuje certifikáty SSL a vytváří jenom zabezpečené připojení. Tento krok se zobrazí jenom v případě, že dojde k chybě. |
@@ -62,7 +62,7 @@ Zkontrolujte konfiguraci klasických výstrah a potvrďte, že je váš e-mail p
 
 ### <a name="i-did-not-receive-the-webhook-notification"></a>Nedostali jsme oznámení Webhooku?
 
-Zkontrolujte, zda je k dispozici aplikace, která přijímá oznámení Webhooku, a úspěšně zpracuje žádosti Webhooku. Další informace najdete v [tomto](../platform/alerts-log-webhook.md) tématu.
+Zkontrolujte, zda je k dispozici aplikace, která přijímá oznámení Webhooku, a úspěšně zpracuje žádosti Webhooku. Další informace najdete v [tomto](../alerts/alerts-log-webhook.md) tématu.
 
 ### <a name="i-am-getting--403-forbidden-errors-what-does-this-mean"></a>Zobrazují se chyby 403 zakázáno, co to znamená?
 
@@ -81,7 +81,7 @@ Pokud máte pro aplikaci na straně serveru nastavenou službu Application Insig
 
 ### <a name="can-i-call-code-from-my-web-test"></a>Mohu volat kód z mého webového testu?
 
-Ne. Kroky testu musí být v souboru .webtest. A nemůžete volat jiné webové testy nebo používat smyčky. Existují různé zásuvné moduly, které se vám můžou hodit.
+No. Kroky testu musí být v souboru .webtest. A nemůžete volat jiné webové testy nebo používat smyčky. Existují různé zásuvné moduly, které se vám můžou hodit.
 
 
 ### <a name="is-there-a-difference-between-web-tests-and-availability-tests"></a>Existuje rozdíl mezi "webovými testy" a "testy dostupnosti"?
@@ -113,7 +113,7 @@ To se v tuto chvíli nepodporuje.
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>Kdo obdrží oznámení o výstrahách (Classic)?
 
-Tato část platí jenom pro klasické výstrahy a pomůže vám optimalizovat oznámení o výstrahách, abyste zajistili, že oznámení budou dostávat jenom vaši dožádaný příjemce. Pokud chcete získat další informace o rozdílu mezi [klasickými výstrahami](../platform/alerts-classic.overview.md)a s novým prostředím výstrah, přečtěte si [článek Přehled výstrah](../platform/alerts-overview.md). Pro řízení upozornění na upozornění v novém prostředí výstrahy použijte [skupiny akcí](../platform/action-groups.md).
+Tato část platí jenom pro klasické výstrahy a pomůže vám optimalizovat oznámení o výstrahách, abyste zajistili, že oznámení budou dostávat jenom vaši dožádaný příjemce. Pokud chcete získat další informace o rozdílu mezi [klasickými výstrahami](../alerts/alerts-classic.overview.md)a s novým prostředím výstrah, přečtěte si [článek Přehled výstrah](../alerts/alerts-overview.md). Pro řízení upozornění na upozornění v novém prostředí výstrahy použijte [skupiny akcí](../alerts/action-groups.md).
 
 * Pro klasická oznámení o výstrahách doporučujeme používat konkrétní příjemce.
 
@@ -124,7 +124,7 @@ Tato část platí jenom pro klasické výstrahy a pomůže vám optimalizovat o
 > [!NOTE]
 > Pokud v tuto chvíli používáte možnost **hromadného a skupinového** zaškrtávacího políčka a zakážete ji, nebudete moct změnu vrátit.
 
-Pokud potřebujete upozornit uživatele na základě jejich rolí, použijte nové výstrahy Výstrahy a možnosti téměř v reálném čase. Pomocí [skupin akcí](../platform/action-groups.md)můžete nakonfigurovat e-mailová oznámení uživatelům pomocí kterékoli role Přispěvatel/vlastník/čtenář (bez kombinace společně s jednou možností).
+Pokud potřebujete upozornit uživatele na základě jejich rolí, použijte nové výstrahy Výstrahy a možnosti téměř v reálném čase. Pomocí [skupin akcí](../alerts/action-groups.md)můžete nakonfigurovat e-mailová oznámení uživatelům pomocí kterékoli role Přispěvatel/vlastník/čtenář (bez kombinace společně s jednou možností).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 9c100ca82b751a050e74cce85e1794701a789288
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: f9b50c831b435a6189a9b9e4d79a934a2661b033
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95498465"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570403"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Oprávnění ve službě Azure Sentinel
 
@@ -91,7 +91,7 @@ V následující tabulce najdete souhrn rolí a povolených akcí pro Azure Sent
 
 - Kromě toho můžete pomocí předdefinovaných rolí Azure vytvořit vlastní role Azure pro Sentinel. Vlastní role Azure Sentinel pro Azure Sentinel jsou vytvořené stejným způsobem jako jiné [vlastní role](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)Azure, a to na základě [konkrétních oprávnění pro službu Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) a [prostředků Azure Log Analytics](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights).
 
-- Můžete použít Log Analytics pokročilé řízení přístupu na základě role Azure napříč daty v pracovním prostoru Azure Sentinel. To zahrnuje jak Azure RBAC, tak i Azure na základě prostředků. Další informace o rolích Log Analytics najdete [v tématu Správa dat protokolů a pracovních prostorů v Azure monitor](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions).
+- Můžete použít Log Analytics pokročilé řízení přístupu na základě role Azure napříč daty v pracovním prostoru Azure Sentinel. To zahrnuje řízení přístupu na základě role v Azure pro jednotlivé datové typy i prostředky. Další informace o rolích Log Analytics najdete v části [Správa dat protokolů a pracovních prostorů ve službě Azure Monitor](../azure-monitor/logs/manage-access.md#manage-access-using-workspace-permissions).
 
 ## <a name="next-steps"></a>Další kroky
 

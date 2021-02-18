@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/06/2020
 ms.author: surmb
-ms.openlocfilehash: be629d9f8441ad40fe15f005f4aeb0ec5565a7ec
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 9faa3a284aa7151880526c1ee70cfadc3dbf3089
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437061"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576107"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriky pro Application Gateway
 
-Application Gateway zveřejňuje datové body označované jako metriky, aby se [Azure monitor](../azure-monitor/overview.md) pro výkon instancí Application Gateway a back-endu. Tyto metriky jsou číselné hodnoty v seřazené sadě dat časových řad, které popisují nějaký aspekt aplikační brány v určitou dobu. Pokud jsou požadavky odesílány prostřednictvím Application Gateway, měří a odesílá své metriky v intervalech 60 – sekund. Pokud neexistují žádné požadavky na Application Gateway ani žádná data pro metriku, metrika není hlášena. Další informace najdete v tématu [Azure monitor metriky](../azure-monitor/platform/data-platform-metrics.md).
+Application Gateway zveřejňuje datové body označované jako metriky, aby se [Azure monitor](../azure-monitor/overview.md) pro výkon instancí Application Gateway a back-endu. Tyto metriky jsou číselné hodnoty v seřazené sadě dat časových řad, které popisují nějaký aspekt aplikační brány v určitou dobu. Pokud jsou požadavky odesílány prostřednictvím Application Gateway, měří a odesílá své metriky v intervalech 60 – sekund. Pokud neexistují žádné požadavky na Application Gateway ani žádná data pro metriku, metrika není hlášena. Další informace najdete v tématu [Azure monitor metriky](../azure-monitor/essentials/data-platform-metrics.md).
 
 ## <a name="metrics-supported-by-application-gateway-v2-sku"></a>Metriky podporované Application Gatewaymi SKU verze 2
 
@@ -200,7 +200,7 @@ Na následujícím obrázku vidíte příklad se třemi metrikami zobrazenými z
 
 :::image type="content" source="media/application-gateway-diagnostics/figure5.png" alt-text="Zobrazení metriky." lightbox="media/application-gateway-diagnostics/figure5-lb.png":::
 
-Pokud chcete zobrazit aktuální seznam metrik, přečtěte si téma [podporované metriky s Azure monitor](../azure-monitor/platform/metrics-supported.md).
+Pokud chcete zobrazit aktuální seznam metrik, přečtěte si téma [podporované metriky s Azure monitor](../azure-monitor/essentials/metrics-supported.md).
 
 ### <a name="alert-rules-on-metrics"></a>Pravidla výstrah pro metriky
 
@@ -230,9 +230,9 @@ Po vytvoření výstrahy metriky se zobrazí seznam výstrah. Poskytuje přehled
 
 ![Seznam výstrah a pravidel][9]
 
-Další informace o oznámeních výstrah najdete v tématu [přijímání oznámení](../azure-monitor/platform/alerts-overview.md)o výstrahách.
+Další informace o oznámeních výstrah najdete v tématu [přijímání oznámení](../azure-monitor/alerts/alerts-overview.md)o výstrahách.
 
-Další informace o webhookech a o tom, jak je můžete používat s výstrahami, najdete [v tématu Konfigurace Webhooku na upozornění metriky Azure](../azure-monitor/platform/alerts-webhooks.md).
+Další informace o webhookech a o tom, jak je můžete používat s výstrahami, najdete [v tématu Konfigurace Webhooku na upozornění metriky Azure](../azure-monitor/alerts/alerts-webhooks.md).
 
 ## <a name="next-steps"></a>Další kroky
 

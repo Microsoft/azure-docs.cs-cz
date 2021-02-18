@@ -3,12 +3,12 @@ title: Vykreslování aplikací
 description: Je možné použít jakékoli aplikace pro vykreslování Azure Batch. Azure Marketplace imagí virtuálních počítačů ale jsou k dispozici společně s předinstalovanými běžnými aplikacemi.
 ms.date: 02/12/2021
 ms.topic: how-to
-ms.openlocfilehash: e296ab09498b6bb7ee21e3d88c9c416c66368d69
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 18fc142d2fa9c819b9872c64ef7aae4c73cc2428
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362229"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635332"
 ---
 # <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>Předinstalované aplikace na imagí virtuálních počítačů dávkového vykreslování
 
@@ -20,7 +20,7 @@ Některé aplikace podporují jenom Windows, ale většina je podporovaná v sys
 
 ## <a name="applications-on-latest-centos-7-rendering-image"></a>Aplikace na nejnovější obrázek vykreslování CentOS 7
 
-Následující seznam se vztahuje na obrázek vykreslování CentOS verze 1.1.7.
+Následující seznam se vztahuje na obrázek vykreslování CentOS verze 1.2.0.
 
 * Autodesk Maya I/O 2020 aktualizace 4,6
 * Autodesk Arnold pro Maya 2020 (Arnold verze 6.2.0.0) MtoA-4.2.0-2020

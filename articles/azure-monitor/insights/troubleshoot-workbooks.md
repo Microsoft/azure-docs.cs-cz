@@ -6,12 +6,12 @@ ms.author: lagayhar
 author: lgayhardt
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 3a2765e9dcf3b0e7bf28191e6ecbb069f26c42f5
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: a823b5e2ae31e62ff6d876f0b3468953c0ed9c35
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208518"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587152"
 ---
 # <a name="troubleshooting-workbook-based-insights"></a>Řešení potíží s přehledy na základě sešitu
 
@@ -72,4 +72,4 @@ Pokud chcete změnit název kroku v uloženém sešitu, v kroku vyberte Upravit 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o scénářích, které jsou navržené tak, aby podporovaly, jak vytvářet nové a přizpůsobovat stávající sestavy a které se dají provádět pomocí kontroly [vytváření interaktivních sestav pomocí Azure monitor sešitů](../platform/workbooks-overview.md)
+Přečtěte si další informace o scénářích, které jsou navržené tak, aby podporovaly, jak vytvářet nové a přizpůsobovat stávající sestavy a které se dají provádět pomocí kontroly [vytváření interaktivních sestav pomocí Azure monitor sešitů](../visualize/workbooks-overview.md)

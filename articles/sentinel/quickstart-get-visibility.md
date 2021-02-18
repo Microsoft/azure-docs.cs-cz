@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Začínáme se službou Azure Sentinel'
+title: 'Rychlý start: Začínáme s Azure Sentinelem'
 description: V tomto rychlém startu se dozvíte, jak rychle zobrazit a monitorovat, co se děje ve vašem prostředí pomocí funkce Azure Sentinel.
 services: sentinel
 author: yelevin
@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 369847810cdb7f7e93a13f5d410f226d3663080d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 384c6df86b4aadb117bb31b4604fa4c2ffcda09a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188577"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570590"
 ---
-# <a name="quickstart-get-started-with-azure-sentinel"></a>Rychlý start: Začínáme se službou Azure Sentinel
+# <a name="quickstart-get-started-with-azure-sentinel"></a>Rychlý start: Začínáme s Azure Sentinelem
 
 
 
@@ -52,9 +52,9 @@ Hlavní část stránky s přehledem poskytuje rychlý přehled o stavu zabezpe�
 
 ## <a name="use-built-in-workbooks"></a>Použití vestavěných sešitů<a name="dashboards"></a>
 
-Předdefinované sešity poskytují integrovaná data z připojených zdrojů dat a umožňují vám tak podrobně události vygenerované v těchto službách. Předdefinované sešity zahrnují Azure AD, události aktivit Azure a místní, což může být data z událostí systému Windows ze serverů, výstrahy od první strany, od jakékoli třetí strany, včetně protokolů přenosů z brány firewall, sady Office 365 a nezabezpečené protokoly založené na událostech systému Windows. Sešity jsou založené na Azure Monitor sešity, které vám poskytnou rozšířenou možnost úprav a flexibility při navrhování vlastního sešitu. Další informace najdete v tématu [sešity](../azure-monitor/platform/workbooks-overview.md).
+Předdefinované sešity poskytují integrovaná data z připojených zdrojů dat a umožňují vám tak podrobně události vygenerované v těchto službách. Předdefinované sešity zahrnují Azure AD, události aktivit Azure a místní, což může být data z událostí systému Windows ze serverů, výstrahy od první strany, od jakékoli třetí strany, včetně protokolů přenosů z brány firewall, sady Office 365 a nezabezpečené protokoly založené na událostech systému Windows. Sešity jsou založené na Azure Monitor sešity, které vám poskytnou rozšířenou možnost úprav a flexibility při navrhování vlastního sešitu. Další informace najdete v tématu [sešity](../azure-monitor/visualize/workbooks-overview.md).
 
-1. V části **Nastavení** vyberte **sešity**. V části **nainstalováno** uvidíte všechny nainstalované sešity. V části **vše** můžete zobrazit celou galerii vestavěných sešitů, které jsou k dispozici pro instalaci. 
+1. V části **Nastavení** vyberte **sešity**. V části **nainstalováno** uvidíte všechny nainstalované sešity. V části **Všechny** se zobrazí celá galerie předdefinovaných sešitů dostupných k instalaci. 
 2. Vyhledáním konkrétního sešitu zobrazíte celý seznam a popis toho, co jednotlivé nabídky nabízí. 
 3. Za předpokladu, že používáte Azure AD, můžete začít pracovat se službou Azure Sentinel, doporučujeme nainstalovat alespoň následující sešity:
    - **Azure AD**: použijte jednu nebo obě z následujících možností:
@@ -66,14 +66,14 @@ Předdefinované sešity poskytují integrovaná data z připojených zdrojů da
       ![Řídicí panel Palo Alto](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-Sešity můžete přizpůsobit úpravou ![ tlačítka pro úpravy hlavního dotazu dotazu ](./media/qs-get-visibility/edit-query-button.png) . Kliknutím na tlačítko Log Analytics tlačítko ![ ](./media/qs-get-visibility/go-to-la-button.png) přejdete na Log Analytics a [upravíte dotaz tam](../azure-monitor/log-query/log-analytics-tutorial.md)a můžete vybrat tři tečky (...) a vybrat **přizpůsobit data dlaždice**, což umožňuje upravit hlavní filtr času nebo odebrat konkrétní dlaždice ze sešitu.
+Sešity můžete přizpůsobit úpravou ![ tlačítka pro úpravy hlavního dotazu dotazu ](./media/qs-get-visibility/edit-query-button.png) . Kliknutím na tlačítko Log Analytics tlačítko ![ ](./media/qs-get-visibility/go-to-la-button.png) přejdete na Log Analytics a [upravíte dotaz tam](../azure-monitor/logs/log-analytics-tutorial.md)a můžete vybrat tři tečky (...) a vybrat **přizpůsobit data dlaždice**, což umožňuje upravit hlavní filtr času nebo odebrat konkrétní dlaždice ze sešitu.
 
-Další informace o práci s dotazy najdete v tématu [kurz: vizuální data v Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
+Další informace o práci s dotazy najdete v tématu [kurz: vizuální data v Log Analytics](../azure-monitor/visualize/tutorial-logs-dashboards.md)
 
 ### <a name="add-a-new-tile"></a>Přidat novou dlaždici
 
 Pokud chcete přidat novou dlaždici, můžete ji přidat do existujícího sešitu, který vytvoříte, nebo do předdefinovaného sešitu ověřovacího protokolu Azure. 
-1. V Log Analytics vytvořte dlaždici pomocí pokynů v tématu [kurz: vizuální data v Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md). 
+1. V Log Analytics vytvořte dlaždici pomocí pokynů v tématu [kurz: vizuální data v Log Analytics](../azure-monitor/visualize/tutorial-logs-dashboards.md). 
 2. Po vytvoření dlaždice vyberte v části **připnout** sešit, ve kterém se má dlaždice zobrazit.
 
 ## <a name="create-new-workbooks"></a>Vytváření nových sešitů

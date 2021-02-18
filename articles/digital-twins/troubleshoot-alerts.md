@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 057a1b08095a71e2fca6119f5b63bfdc787eea88
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 461d7a82854ce62ee99eef1227c13c7a8f0371e2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616598"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594862"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Řešení potíží se službou Azure Digital vlákna: výstrahy
 
 Digitální vlákna Azure shromažďuje [metriky](troubleshoot-metrics.md) pro vaši instanci služby, která poskytuje informace o stavu vašich prostředků. Tyto metriky můžete použít k vyhodnocení celkového stavu služby digitálních vláken Azure a prostředků, které jsou k ní připojené.
 
-**Výstrahy** proaktivně upozorňují na to, kdy jsou v datech metriky zjištěny důležité podmínky. Umožňují identifikovat a řešit problémy předtím, než si ji uživatelé vašeho systému všimnete. Můžete si přečíst další informace o výstrahách v tématu [*Přehled výstrah v Microsoft Azure*](../azure-monitor/platform/alerts-overview.md).
+**Výstrahy** proaktivně upozorňují na to, kdy jsou v datech metriky zjištěny důležité podmínky. Umožňují identifikovat a řešit problémy předtím, než si ji uživatelé vašeho systému všimnete. Můžete si přečíst další informace o výstrahách v tématu [*Přehled výstrah v Microsoft Azure*](../azure-monitor/alerts/alerts-overview.md).
 
 ## <a name="turn-on-alerts"></a>Zapnout výstrahy
 
@@ -38,7 +38,7 @@ Tady je postup, jak povolit upozornění pro instanci digitálních vláken Azur
 
 :::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Snímek obrazovky se stránkou vytvořit pravidlo výstrahy s oddíly pro podrobnosti oboru, podmínky, skupiny akcí a pravidla výstrahy" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
 
-Návod k vyplnění těchto polí najdete v tématu [*Přehled výstrah v Microsoft Azure*](../azure-monitor/platform/alerts-overview.md). Níže jsou uvedeny některé příklady, jak budou tyto kroky vypadat jako u digitálních vláken Azure.
+Návod k vyplnění těchto polí najdete v tématu [*Přehled výstrah v Microsoft Azure*](../azure-monitor/alerts/alerts-overview.md). Níže jsou uvedeny některé příklady, jak budou tyto kroky vypadat jako u digitálních vláken Azure.
 
 ### <a name="select-conditions"></a>Vybrat podmínky
 
@@ -58,6 +58,6 @@ Po nastavení výstrah se zobrazí zpátky na stránce s *upozorněními* pro va
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o výstrahách s Azure Monitor najdete v tématu [*Přehled výstrah v Microsoft Azure*](../azure-monitor/platform/alerts-overview.md).
+* Další informace o výstrahách s Azure Monitor najdete v tématu [*Přehled výstrah v Microsoft Azure*](../azure-monitor/alerts/alerts-overview.md).
 * Informace o metrikách digitálních vláken Azure najdete v tématu [*řešení potíží: zobrazení metrik pomocí Azure monitor*](troubleshoot-metrics.md).
 * Pokud chcete zjistit, jak povolit protokolování diagnostiky pro metriky, přečtěte si téma [*řešení potíží: nastavení diagnostiky*](troubleshoot-diagnostics.md).

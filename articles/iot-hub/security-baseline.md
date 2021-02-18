@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 862e8f07e321975ec5b673cfe5c86de85c9d160b
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 2947faa8c7b56fdbe4cf549529b63d506b810750
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202296"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570859"
 ---
 # <a name="azure-security-baseline-for-azure-iot-hub"></a>Základní hodnoty zabezpečení Azure pro Azure IoT Hub
 
@@ -148,9 +148,9 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků souvisejících s Azure IoT Hub. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -185,9 +185,9 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 - [Nastavení protokolů IoT Hub Azure](monitor-iot-hub-reference.md#resource-logs)
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Principy protokolování a různých typů protokolů v Azure](../azure-monitor/platform/platform-logs-overview.md)
+- [Principy protokolování a různých typů protokolů v Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -205,7 +205,7 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 **Doprovodné** materiály: v Azure monitor nastavte dobu uchování protokolu pro pracovní prostory Log Analytics přidružené k vašim instancím Azure IoT Hub podle předpisů pro dodržování předpisů vaší organizace.
 
-- [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -220,9 +220,9 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 - [Monitorování stavu Azure IoT](monitor-iot-hub.md)
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
   
-- [Začínáme s Log Analytics dotazy](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Začínáme s Log Analytics dotazy](../azure-monitor/logs/log-analytics-tutorial.md)
    
-- [ Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+- [ Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -236,7 +236,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 - [Azure Security Center pro výstrahy IoT](../defender-for-iot/concept-security-alerts.md)
 
-- [Upozornění na data protokolu Log Analytics](../azure-monitor/learn/tutorial-response.md)
+- [Upozornění na data protokolu Log Analytics](../azure-monitor/alerts/tutorial-response.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -527,7 +527,7 @@ Azure IoT Hub poskytuje šifrování neaktivních a přenášených dat, která 
 
 **Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro případy, kdy změny probíhají v produkčních instancích Azure IoT Hub a dalších důležitých nebo souvisejících prostředcích.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování Azure Security Center**: nelze použít
 

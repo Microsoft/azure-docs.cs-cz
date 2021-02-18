@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/01/2021
 ms.author: apimpm
-ms.openlocfilehash: e34c25b2e3bfa845e258dc5d9699497d7ffcb004
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 2b66663c9ee8033bcb12bfac57964ea0eafecdac
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526666"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594179"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Konfigurace místních metrik a protokolů pro bránu Azure API Management pro samoobslužnou hostování
 
@@ -204,7 +204,7 @@ V samoobslužné bráně se `stdout` `stderr` ve výchozím nastavení protokolu
 kubectl logs <pod-name>
 ```
 
-Pokud je vaše místní hostská brána nasazená ve službě Azure Kubernetes, můžete povolit [Azure monitor pro kontejnery](../azure-monitor/insights/container-insights-overview.md) shromažďovat `stdout` a `stderr` z vašich úloh a zobrazovat protokoly v Log Analytics. 
+Pokud je vaše místní hostská brána nasazená ve službě Azure Kubernetes, můžete povolit [Azure monitor pro kontejnery](../azure-monitor/containers/container-insights-overview.md) shromažďovat `stdout` a `stderr` z vašich úloh a zobrazovat protokoly v Log Analytics. 
 
 Samoobslužná brána také podporuje několik protokolů `localsyslog` , a to včetně, `rfc5424` a `journal` . Níže uvedená tabulka shrnuje všechny podporované možnosti. 
 

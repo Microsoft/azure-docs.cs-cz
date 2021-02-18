@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/08/2021
-ms.openlocfilehash: 0c75f9938b3bc4fa8a2e650f77a3708e91180fea
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 3ee8d5f36977a5a9f20c7e636118ffa9f6ee0b6d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059216"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570998"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB bez serveru (Preview)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -64,7 +64,7 @@ Při procházení podokna **metrik** vašeho účtu najdete graf s názvem **jed
 
 :::image type="content" source="./media/serverless/request-units-consumed.png" alt-text="Graf znázorňující spotřebované jednotky žádostí" border="false":::
 
-Stejný graf můžete najít při použití Azure Monitor, jak je popsáno [zde](monitor-request-unit-usage.md). Všimněte si, že Azure Monitor vám umožní nastavit [Upozornění](../azure-monitor/platform/alerts-metric-overview.md), která se můžou použít k upozornění, když spotřeba jednotky žádosti předala určitou prahovou hodnotu.
+Stejný graf můžete najít při použití Azure Monitor, jak je popsáno [zde](monitor-request-unit-usage.md). Všimněte si, že Azure Monitor vám umožní nastavit [Upozornění](../azure-monitor/alerts/alerts-metric-overview.md), která se můžou použít k upozornění, když spotřeba jednotky žádosti předala určitou prahovou hodnotu.
 
 ## <a name="performance"></a><a id="performance"></a>Výkon
 

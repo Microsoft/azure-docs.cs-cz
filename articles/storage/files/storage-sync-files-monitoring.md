@@ -1,30 +1,30 @@
 ---
-title: Azure File Sync monitorování | Microsoft Docs
-description: Přečtěte si, jak monitorovat nasazení Azure File Sync pomocí Azure Monitor, služby synchronizace úložiště a Windows serveru.
+title: Synchronizace souborů Azure monitorování | Microsoft Docs
+description: Přečtěte si, jak monitorovat nasazení Synchronizace souborů Azure pomocí Azure Monitor, služby synchronizace úložiště a Windows serveru.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1cc2cd1a7c5c16b1f9d1542e3f2d14dc030bb090
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: d1e51552acdd869a3f304a6d48e18e9d2aa6c782
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586546"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576780"
 ---
 # <a name="monitor-azure-file-sync"></a>Sledování služby Synchronizace souborů Azure
 
-Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
+Pomocí Synchronizace souborů Azure můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
 
-Tento článek popisuje, jak monitorovat nasazení Azure File Sync pomocí Azure Monitor, služby synchronizace úložiště a Windows serveru.
+Tento článek popisuje, jak monitorovat nasazení Synchronizace souborů Azure pomocí Azure Monitor, služby synchronizace úložiště a Windows serveru.
 
 V této příručce jsou uvedené následující scénáře: 
-- Zobrazit Azure File Sync metriky v Azure Monitor.
+- Zobrazit Synchronizace souborů Azure metriky v Azure Monitor.
 - Vytvoří výstrahy v Azure Monitor k proaktivnímu upozorňování na kritické podmínky.
-- Zobrazte stav nasazení Azure File Sync pomocí Azure Portal.
-- Jak používat protokoly událostí a čítače výkonu na serverech Windows k monitorování stavu nasazení Azure File Sync. 
+- Zobrazte stav nasazení Synchronizace souborů Azure pomocí Azure Portal.
+- Jak používat protokoly událostí a čítače výkonu na serverech Windows k monitorování stavu nasazení Synchronizace souborů Azure. 
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
@@ -32,17 +32,17 @@ Pomocí [Azure monitor](../../azure-monitor/overview.md) můžete zobrazit metri
 
 ### <a name="metrics"></a>Metriky
 
-Metriky pro Azure File Sync jsou ve výchozím nastavení povolené a odesílají se Azure Monitor každých 15 minut.
+Metriky pro Synchronizace souborů Azure jsou ve výchozím nastavení povolené a odesílají se Azure Monitor každých 15 minut.
 
-**Jak zobrazit metriky Azure File Sync v Azure Monitor**
+**Jak zobrazit metriky Synchronizace souborů Azure v Azure Monitor**
 1. Přejděte do **služby synchronizace úložiště** v **Azure Portal** a klikněte na **metriky**.
 2. Klikněte na rozevírací seznam **metrika** a vyberte metriku, kterou chcete zobrazit.
 
-![Snímek obrazovky Azure File Sync metriky](media/storage-sync-files-troubleshoot/file-sync-metrics.png)
+![Snímek obrazovky Synchronizace souborů Azure metriky](media/storage-sync-files-troubleshoot/file-sync-metrics.png)
 
-V Azure Monitor jsou k dispozici následující metriky pro Azure File Sync:
+V Azure Monitor jsou k dispozici následující metriky pro Synchronizace souborů Azure:
 
-| Název metriky | Popis |
+| Název metriky | Description |
 |-|-|
 | Synchronizované bajty | Velikost přenesených dat (nahrávání a stahování).<br><br>Jednotka: bajtů<br>Typ agregace: součet<br>Použitelné dimenze: název koncového bodu serveru, směr synchronizace, název skupiny synchronizace |
 | Stažení vrstvení cloudu | Velikost vrácených dat.<br><br>**Poznámka**: Tato metrika bude v budoucnu odebrána. K monitorování velikosti vrácených dat použijte metriku velikosti volání ve vrstvách cloudu.<br><br>Jednotka: bajtů<br>Typ agregace: součet<br>Platná dimenze: název serveru |
@@ -56,9 +56,9 @@ V Azure Monitor jsou k dispozici následující metriky pro Azure File Sync:
 
 ### <a name="alerts"></a>Výstrahy
 
-Výstrahy proaktivně upozorňují na skutečnost, že jsou ve vašich datech monitorování zjištěny důležité podmínky. Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Přehled výstrah v Microsoft Azure](../../azure-monitor/platform/alerts-overview.md).
+Výstrahy proaktivně upozorňují na skutečnost, že jsou ve vašich datech monitorování zjištěny důležité podmínky. Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Přehled výstrah v Microsoft Azure](../../azure-monitor/alerts/alerts-overview.md).
 
-**Jak vytvořit výstrahy pro Azure File Sync**
+**Jak vytvořit výstrahy pro Synchronizace souborů Azure**
 
 1. V **Azure Portal** přejdete do **služby synchronizace úložiště** . 
 2. V části monitorování klikněte na **výstrahy** a pak klikněte na **+ nové pravidlo výstrahy**.
@@ -72,7 +72,7 @@ Výstrahy proaktivně upozorňují na skutečnost, že jsou ve vašich datech mo
 
 V následující tabulce jsou uvedeny příklady scénářů, které je třeba monitorovat, a správnou metriku pro použití výstrahy:
 
-| Scénář | Metrika, která se má použít pro upozornění |
+| Scenario | Metrika, která se má použít pro upozornění |
 |-|-|
 | Stav koncového bodu serveru ukazuje na portálu chybu. | Výsledek relace synchronizace |
 | Neúspěšné synchronizace souborů na koncový bod serveru nebo cloudu | Soubory se nesynchronizují |
@@ -83,7 +83,7 @@ Pokyny, jak vytvořit výstrahy pro tyto scénáře, naleznete v části [Přík
 
 ## <a name="storage-sync-service"></a>Služba synchronizace úložiště
 
-Chcete-li zobrazit stav nasazení Azure File Sync v **Azure Portal**, přejděte do **služby synchronizace úložiště** a k dispozici jsou následující informace:
+Chcete-li zobrazit stav nasazení Synchronizace souborů Azure v **Azure Portal**, přejděte do **služby synchronizace úložiště** a k dispozici jsou následující informace:
 
 - Stav registrovaného serveru
 - Stav koncového bodu serveru
@@ -101,7 +101,7 @@ Chcete-li zobrazit **registrovaný stav serveru** na portálu, přejděte do č�
 ![Snímek obrazovky stavu registrovaných serverů](media/storage-sync-files-troubleshoot/file-sync-registered-servers.png)
 
 - Pokud je stav **registrovaného serveru** **online**, server úspěšně komunikuje se službou.
-- Pokud je stav **registrovaného serveru** **zobrazený v režimu offline**, proces monitorování synchronizace úložiště (AzureStorageSyncMonitor.exe) není spuštěný nebo Server nemůže získat přístup ke službě Azure File Sync. Pokyny najdete v [dokumentaci k řešení problémů](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#server-endpoint-noactivity) .
+- Pokud je stav **registrovaného serveru** **zobrazený v režimu offline**, proces monitorování synchronizace úložiště (AzureStorageSyncMonitor.exe) není spuštěný nebo Server nemůže získat přístup ke službě synchronizace souborů Azure. Pokyny najdete v [dokumentaci k řešení problémů](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#server-endpoint-noactivity) .
 
 ### <a name="server-endpoint-health"></a>Stav koncového bodu serveru
 
@@ -118,7 +118,7 @@ Pokud chcete zobrazit stav **koncového bodu serveru** na portálu, přejděte d
 
 - Na portálu služby synchronizace úložiště se mohou zobrazit následující grafy metrik:
 
-  | Název metriky | Popis | Název okna |
+  | Název metriky | Description | Název okna |
   |-|-|-|
   | Synchronizované bajty | Velikost přenesených dat (nahrávání a stahování) | Skupina synchronizace, koncový bod serveru |
   | Stažení vrstvení cloudu | Velikost vrácených dat | Registrované servery |
@@ -133,7 +133,7 @@ Pokud chcete zobrazit stav **koncového bodu serveru** na portálu, přejděte d
 
 ## <a name="windows-server"></a>Windows Server
 
-Na **Windows serveru** s nainstalovaným agentem Azure File Sync můžete zobrazit stav koncových bodů serveru na tomto serveru pomocí **protokolů událostí** a **čítačů výkonu**.
+Na **Windows serveru** s nainstalovaným agentem synchronizace souborů Azure můžete zobrazit stav koncových bodů serveru na tomto serveru pomocí **protokolů událostí** a **čítačů výkonu**.
 
 ### <a name="event-logs"></a>Protokoly událostí
 
@@ -172,13 +172,13 @@ Stav vrstvení cloudu
 
 ### <a name="performance-counters"></a>Čítače výkonu
 
-K monitorování synchronizační aktivity použijte Azure File Sync čítače výkonu na serveru.
+K monitorování synchronizační aktivity použijte Synchronizace souborů Azure čítače výkonu na serveru.
 
-Chcete-li zobrazit Azure File Sync čítače výkonu na serveru, spusťte nástroj sledování výkonu (Perfmon.exe). Čítače můžete najít v části **přenesené bajty AFS** a objekty **operace synchronizace AFS** .
+Chcete-li zobrazit Synchronizace souborů Azure čítače výkonu na serveru, spusťte nástroj sledování výkonu (Perfmon.exe). Čítače můžete najít v části **přenesené bajty AFS** a objekty **operace synchronizace AFS** .
 
-V nástroji Sledování výkonu jsou k dispozici následující čítače výkonu pro Azure File Sync:
+V nástroji Sledování výkonu jsou k dispozici následující čítače výkonu pro Synchronizace souborů Azure:
 
-| Název Object\Counter výkonu | Popis |
+| Název Object\Counter výkonu | Description |
 |-|-|
 | Bajty AFS Transferred\Downloaded bajty/s | Počet stažených bajtů za sekundu |
 | Bajty AFS Transferred\Uploaded bajty/s | Počet odeslaných bajtů za sekundu |
@@ -188,7 +188,7 @@ V nástroji Sledování výkonu jsou k dispozici následující čítače výkon
 | Operace synchronizace souborů Operations\Total synchronizace AFS za sekundu | Celkový počet synchronizovaných souborů (nahrání a stažení). |
 
 ## <a name="alert-examples"></a>Příklady výstrah
-V této části najdete příklady výstrah pro Azure File Sync.
+V této části najdete příklady výstrah pro Synchronizace souborů Azure.
 
   > [!Note]  
   > Pokud vytvoříte výstrahu a je příliš hlučná, upravte prahovou hodnotu a logiku výstrahy.

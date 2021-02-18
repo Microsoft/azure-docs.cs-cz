@@ -7,12 +7,12 @@ ms.date: 01/27/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 56f1e78e0f2bbba15b50664b88bd8808731e6836
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 6090adffbab7c8c57837b62e190f90c8ffb18e3d
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807610"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636420"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Úloha DevOps služby Azure image Builder
 
@@ -21,7 +21,7 @@ V tomto článku se dozvíte, jak pomocí úlohy Azure DevOps vložit artefakty 
 ## <a name="devops-task-versions"></a>Verze úloh DevOps
 Existují dva úlohy DevOps pro sestavovatele bitových kopií virtuálních počítačů (AIB) Azure:
 
-* [Úkol "stabilní" AIB](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder), který nám umožňuje předcházet nejnovějším aktualizacím a funkcím, umožnit zákazníkům jejich otestování před tím, než ho budeme povýšit na úkol "stabilní", přibližně 1 týden později. 
+* ["Stabilní" AIB úloha](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder), jedná se o nejnovější stabilní testovaný Build a telemetrie nezobrazuje žádné problémy. 
 
 
 * [Nestabilní úloha AIB](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder-canary), která nám umožní umístit do nejnovějších aktualizací a funkcí a umožnit zákazníkům jejich otestování, než ji povýšíme na "stabilní" úlohu. Pokud neexistují žádné nahlášené problémy a naše telemetrie nezobrazuje žádné problémy, přibližně 1 týden později, budeme povýšit kód úlohy na stabilní. 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ba15deed98af16b9b501439082ee6c9237fe20b7
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d95a2318d94f52352c9546aedc24d0111c5ba0a4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807203"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571663"
 ---
 # <a name="azure-security-baseline-for-azure-sentinel"></a>Základní plán zabezpečení Azure pro službu Azure Sentinel
 
@@ -37,9 +37,9 @@ Tato základní hodnota zabezpečení se vztahuje na pokyny od [verze Azure Secu
 
 - [Jak povolit auditování v Azure Sentinel](resources.md)
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -73,7 +73,7 @@ Tato základní hodnota zabezpečení se vztahuje na pokyny od [verze Azure Secu
 
 **Doprovodné** materiály: v Azure monitor nastavte dobu uchování protokolu pro Log Analytics pracovní prostory, které jsou přidružené k pracovním prostorům Sentinel Azure v souladu s předpisy pro dodržování předpisů vaší organizace.
 
-- [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -341,7 +341,7 @@ Každý sešit Sentinel je navíc prostředkem Azure a pro správu přístupu m�
 
 **Pokyny**: pracovní prostory Azure Sentinel a Azure monitor Log Analytics aktuálně používají klíče spravované společností Microsoft k šifrování libovolných obsažených dat v klidovém prostředí. Možnost přenášet vlastní klíč ještě není plně podporovaná pro Sentinel, ale v blízké budoucnosti bude.
 
-- [Přehled Azure Monitor klíč spravovaný zákazníkem](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-overview)
+- [Přehled Azure Monitor klíč spravovaný zákazníkem](../azure-monitor/logs/customer-managed-keys.md#customer-managed-key-overview)
 
 - [Vysvětlení klíčů spravovaných zákazníkem v Azure Sentinel (Preview)](customer-managed-keys.md)
 
