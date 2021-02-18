@@ -4,12 +4,12 @@ description: V tomto kurzu nakonfigurujete protokoly Azure Monitor pro monitorov
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: cf14cce631a505a951ec4d9c0955431b9a98527e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7689d6e259055137a8d1d3c61552790ab9f28d3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840672"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588242"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Kurz: monitorování kontejnerů Windows na Service Fabric pomocí protokolů Azure Monitor
 
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 
@@ -75,7 +75,7 @@ Proveďte následující změny v souboru *template.json*.
     "omsSolution": "ServiceFabric"
     ```
 
-3. Přidejte agenta Microsoft Monitoring Agent jako rozšíření virtuálního počítače. Hledání prostředku Virtual Machine Scale Sets: *prostředky*  >  *"apiVersion": "[proměnné (' vmssApiVersion ')]"*. V části *vlastnosti*  >  *virtualMachineProfile*  >  *extensionProfile*  >  *rozšíření*extensionProfile virtualMachineProfile přidejte následující popis rozšíření v rámci rozšíření *ServiceFabricNode* : 
+3. Přidejte agenta Microsoft Monitoring Agent jako rozšíření virtuálního počítače. Hledání prostředku Virtual Machine Scale Sets: *prostředky*  >  *"apiVersion": "[proměnné (' vmssApiVersion ')]"*. V části *vlastnosti*  >    >    >  *rozšíření* extensionProfile virtualMachineProfile přidejte následující popis rozšíření v rámci rozšíření *ServiceFabricNode* : 
     
     ```json
     {
@@ -185,7 +185,7 @@ Pokud chcete ve svém pracovním prostoru nastavit řešení kontejnerů, vyhled
 
 ![Přidání řešení kontejnerů](./media/service-fabric-tutorial-monitoring-wincontainers/containers-solution.png)
 
-Po zobrazení výzvy k zadání *pracovního prostoru Log Analytics*vyberte pracovní prostor, který se vytvořil ve vaší skupině prostředků, a vyberte **vytvořit**. Tím do svého pracovního prostoru přidáte *řešení pro monitorování kontejnerů* a inicializujete agenta Log Analytics nasazeného šablonou a začnete shromažďovat protokoly a statistiky Docker.
+Po zobrazení výzvy k zadání *pracovního prostoru Log Analytics* vyberte pracovní prostor, který se vytvořil ve vaší skupině prostředků, a vyberte **vytvořit**. Tím do svého pracovního prostoru přidáte *řešení pro monitorování kontejnerů* a inicializujete agenta Log Analytics nasazeného šablonou a začnete shromažďovat protokoly a statistiky Docker.
 
 Vraťte se do své *skupiny prostředků*, kde by se teď mělo zobrazit nově přidané řešení pro monitorování. Pokud ho vyberete, cílová stránka by měla zobrazit počet imagí kontejneru, které jste spustili.
 
@@ -210,7 +210,7 @@ Další výhodou použití agenta Log Analytics je schopnost měnit čítače v�
 Tím přejdete do svého pracovního prostoru služby Log Analytics, kde můžete zobrazit svá řešení, vytvářet vlastní řídicí panely a také konfigurovat agenta Log Analytics. 
 * Výběrem **Možnosti Upřesnit nastavení** otevřete nabídku Upřesnit nastavení.
 * Vyberte **připojené zdroje**  >  **Windows servery** , abyste ověřili, že máte *připojené 5 počítačů s Windows*.
-* Vyberte **Data**  >  **čítače výkonu data systému Windows** , které chcete vyhledat, a přidejte nové čítače výkonu. Tady se zobrazí seznam doporučení z protokolů Azure Monitor pro čítače výkonu, které můžete shromažďovat, a také možnost vyhledat jiné čítače. Ověřte, že se shromažďují informace z čítačů **Procesor(_Celkem)\%Čas procesoru** a **Paměť(*)\Dostupné MB**.
+* Vyberte   >  **čítače výkonu data systému Windows** , které chcete vyhledat, a přidejte nové čítače výkonu. Tady se zobrazí seznam doporučení z protokolů Azure Monitor pro čítače výkonu, které můžete shromažďovat, a také možnost vyhledat jiné čítače. Ověřte, že se shromažďují informace z čítačů **Procesor(_Celkem)\%Čas procesoru** a **Paměť(*)\Dostupné MB**.
 
 Za několik minut **aktualizujte** řešení pro monitorování kontejnerů. Měla by se vám začít zobrazovat příchozí data o *výkonu počítačů*. Ta vám pomůžou porozumět využití vašich prostředků. Tyto metriky můžete využít také k přijímání patřičných rozhodnutí o škálování clusteru nebo k potvrzení, jestli cluster vyrovnává zatížení podle očekávání.
 
@@ -230,6 +230,6 @@ V tomto kurzu jste se naučili:
 Teď, když jste nakonfigurovali monitorování pro svou kontejnerovou aplikaci, zkuste:
 
 * Konfigurace protokolů Azure Monitor pro clustery se systémem Linux, podobně jako v tomto kurzu. Při provádění změn šablony Resource Manageru můžete jako vodítko použít [tuto šablonu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS).
-* Nakonfigurujte protokoly Azure Monitor a nastavte [Automatické upozorňování](../azure-monitor/platform/alerts-overview.md) , které pomáhají při zjišťování a diagnostice.
+* Nakonfigurujte protokoly Azure Monitor a nastavte [Automatické upozorňování](../azure-monitor/alerts/alerts-overview.md) , které pomáhají při zjišťování a diagnostice.
 * Prozkoumejte seznam [doporučených čítačů výkonů](service-fabric-diagnostics-event-generation-perf.md) Service Fabric, které můžete nakonfigurovat pro svůj cluster.
-* Seznamte se s funkcemi [prohledávání protokolů a dotazování](../azure-monitor/log-query/log-query-overview.md) , které nabízí jako součást protokolů Azure monitor.
+* Seznamte se s funkcemi [prohledávání protokolů a dotazování](../azure-monitor/logs/log-query-overview.md) , které nabízí jako součást protokolů Azure monitor.

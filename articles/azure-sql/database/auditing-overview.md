@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/03/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: e96aa32c6b67290fc4b4ee62ae98c4e72399fd4b
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 0e85019c8f02b8a4a97426d50a30d047b95378a1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509583"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572290"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Auditování pro Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -139,7 +139,7 @@ Pokud chcete nakonfigurovat zápis protokolů auditu do pracovního prostoru Log
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
-Další informace o pracovním prostoru Azure Monitor Log Analytics najdete v tématu [návrh Azure Monitorch protokolů nasazení](../../azure-monitor/platform/design-logs-deployment.md) .
+Další informace o pracovním prostoru Azure Monitor Log Analytics najdete v tématu [návrh Azure Monitorch protokolů nasazení](../../azure-monitor/logs/design-logs-deployment.md) .
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Auditovat cíl centra událostí
 
@@ -170,7 +170,7 @@ Pokud se rozhodnete zapisovat protokoly auditu do protokolů Azure Monitor:
     ![Log Analytics přehledy zabezpečení](media/auditing-overview/auditing-log-analytics-dashboard-data.png)
 
 - Případně můžete také získat přístup k protokolům auditu z okna Log Analytics. Otevřete pracovní prostor Log Analytics a v části **Obecné** klikněte na **protokoly**. Můžete začít jednoduchým dotazem, jako je: *Search "SQLSecurityAuditEvents"* , chcete-li zobrazit protokoly auditu.
-    Z tohoto místa můžete také použít [protokoly Azure monitor](../../azure-monitor/log-query/log-query-overview.md)  a spustit tak rozšířené vyhledávání dat v protokolu auditu. Protokoly Azure Monitor poskytují informace o provozu v reálném čase pomocí integrovaného vyhledávání a vlastních řídicích panelů, které umožňují snadno analyzovat miliony záznamů napříč všemi vašimi úlohami a servery. Další užitečné informace o tom, jak hledat jazyk a příkazy protokolu Azure Monitor naleznete v tématu [Azure monitor v protokolech hledání](../../azure-monitor/log-query/log-query-overview.md).
+    Z tohoto místa můžete také použít [protokoly Azure monitor](../../azure-monitor/logs/log-query-overview.md)  a spustit tak rozšířené vyhledávání dat v protokolu auditu. Protokoly Azure Monitor poskytují informace o provozu v reálném čase pomocí integrovaného vyhledávání a vlastních řídicích panelů, které umožňují snadno analyzovat miliony záznamů napříč všemi vašimi úlohami a servery. Další užitečné informace o tom, jak hledat jazyk a příkazy protokolu Azure Monitor naleznete v tématu [Azure monitor v protokolech hledání](../../azure-monitor/logs/log-query-overview.md).
 
 Pokud se rozhodnete zapisovat protokoly auditu do centra událostí:
 

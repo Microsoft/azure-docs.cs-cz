@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b4f0c64abf150165e3239e78e8cf9b824b34eed6
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 5e44515c8ca71d115ced65c9123e2b1ae3bdf23a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202364"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578240"
 ---
 # <a name="azure-security-baseline-for-azure-resource-manager"></a>Základní hodnoty zabezpečení Azure pro Azure Resource Manager
 
@@ -31,9 +31,9 @@ Obsah je seskupen podle **řízení zabezpečení** definovaného srovnávacím 
 
 - [Jak připojit Azure Sentinel](../../sentinel/quickstart-onboard.md) 
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md) 
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure pomocí Azure Monitor](../../azure-monitor/learn/quick-collect-azurevm.md) 
+- [Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure pomocí Azure Monitor](../../azure-monitor/vm/quick-collect-azurevm.md) 
 
 - [Jak začít s Azure Monitor a integrací SIEM třetích stran](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -45,9 +45,9 @@ Obsah je seskupen podle **řízení zabezpečení** definovaného srovnávacím 
 
 **Doprovodné** materiály: Azure Resource Manager používá protokol aktivit, které jsou automaticky povoleny, aby zahrnoval zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky.
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md) 
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Principy protokolování a různých typů protokolů v Azure](../../azure-monitor/platform/platform-logs-overview.md)
+- [Principy protokolování a různých typů protokolů v Azure](../../azure-monitor/essentials/platform-logs-overview.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -61,9 +61,9 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 - [Jak připojit Azure Sentinel](../../sentinel/quickstart-onboard.md) 
 
-- [Začínáme s Log Analytics dotazy](../../azure-monitor/log-query/log-analytics-tutorial.md) 
+- [Začínáme s Log Analytics dotazy](../../azure-monitor/logs/log-analytics-tutorial.md) 
 
-- [Jak provádět vlastní dotazy v Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
+- [Jak provádět vlastní dotazy v Azure Monitor](../../azure-monitor/logs/get-started-queries.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -77,7 +77,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 - [Správa výstrah v Azure Security Center](../../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [Upozornění na data protokolu Log Analytics](../../azure-monitor/learn/tutorial-response.md)
+- [Upozornění na data protokolu Log Analytics](../../azure-monitor/alerts/tutorial-response.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -261,7 +261,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Pokyny**: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy, když se změny projeví u kritických prostředků Azure.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](../../azure-monitor/platform/alerts-activity-log.md)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Ano
 

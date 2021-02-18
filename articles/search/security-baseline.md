@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f393c5df23b9552f598e05d25aaf09e529324abe
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8c32d06247516611fc79bd6f77b60fec6b73044d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201990"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591802"
 ---
 # <a name="azure-security-baseline-for-azure-cognitive-search"></a>Základní hodnoty zabezpečení Azure pro Azure Kognitivní hledání
 
@@ -171,7 +171,7 @@ Případně můžete tato data povolit a zařadit do Azure Sentinel nebo SIEM t�
 
 - [Jak začít s Azure Monitor a integrací SIEM třetích stran](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -185,7 +185,7 @@ Případně můžete tato data povolit a zařadit do Azure Sentinel nebo SIEM t�
 
 - [Jak shromažďovat a analyzovat data protokolu pro Azure Kognitivní hledání](./search-monitor-logs.md)
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -205,7 +205,7 @@ Případně můžete tato data povolit a zařadit do Azure Sentinel nebo SIEM t�
 
 V Azure Monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště. 
 
-- [Změnit dobu uchovávání dat v Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Změnit dobu uchovávání dat v Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -223,9 +223,9 @@ V Azure Monitor nastavte dobu uchování pracovního prostoru Log Analytics podl
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Přečtěte si o službě Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Přečtěte si o službě Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -239,7 +239,7 @@ V Azure Monitor nastavte dobu uchování pracovního prostoru Log Analytics podl
 
 - [Správa výstrah v Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Upozornění na data protokolu Log Analytics](../azure-monitor/learn/tutorial-response.md)
+- [Upozornění na data protokolu Log Analytics](../azure-monitor/alerts/tutorial-response.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -532,7 +532,7 @@ Společnost Microsoft spravuje základní infrastrukturu pro Kognitivní hledán
 
 **Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro případy, kdy změny probíhají v produkčních instancích kognitivní hledání a dalších důležitých nebo souvisejících prostředcích.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Postup vytvoření výstrah pro aktivity Kognitivní hledání](./search-monitor-logs.md)
 

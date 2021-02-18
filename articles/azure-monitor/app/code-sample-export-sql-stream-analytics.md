@@ -3,12 +3,12 @@ title: Export do SQL z Azure Application Insights | Microsoft Docs
 description: Průběžně exportujte Application Insights data do SQL pomocí Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 5fb7093dd9945893b17f1b8f5e596cfe5181c3b6
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 25d28bb0fc35ef76231c085dc1d9d8a1234a264c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942415"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587749"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Návod: Export do jazyka SQL z Application Insights pomocí Stream Analytics
 Tento článek popisuje, jak přesunout data telemetrie z [Azure Application Insights][start] do Azure SQL Database pomocí [průběžného exportu][export] a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -61,7 +61,7 @@ Průběžný export vždycky ukládá data do účtu Azure Storage, takže nejd�
     ![Výběr typů událostí](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. Nechte si shromažďovat data. Nasaďte se zpátky a umožněte lidem, aby na chvíli používali vaši aplikaci. Telemetrie se objeví v a v [diagnostickém vyhledávání](./diagnostic-search.md)uvidíte statistické grafy v [Průzkumníkovi metrik](../platform/metrics-charts.md) a jednotlivé události. 
+1. Nechte si shromažďovat data. Nasaďte se zpátky a umožněte lidem, aby na chvíli používali vaši aplikaci. Telemetrie se objeví v a v [diagnostickém vyhledávání](./diagnostic-search.md)uvidíte statistické grafy v [Průzkumníkovi metrik](../essentials/metrics-charts.md) a jednotlivé události. 
    
     Data budou také exportována do vašeho úložiště. 
 2. Zkontrolujte exportovaná data, a to buď na portálu – zvolte **Procházet**, vyberte svůj účet úložiště a pak **kontejnery** – nebo v aplikaci Visual Studio. V aplikaci Visual Studio vyberte možnost **Zobrazit/Cloud Průzkumník** a otevřete Azure/úložiště. (Pokud nemáte tuto možnost nabídky, musíte nainstalovat sadu Azure SDK: otevřete dialogové okno Nový projekt a otevřete Visual C#/Cloud/získat Microsoft Azure SDK pro .NET.)
@@ -252,7 +252,7 @@ FROM [dbo].[PageViewsTable]
 
 [diagnostic]: ./diagnostic-search.md
 [export]: ./export-telemetry.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 [portal]: https://portal.azure.com/
 [start]: ./app-insights-overview.md
 

@@ -3,12 +3,12 @@ title: Azure Service Bus metriky v Azure Monitor | Microsoft Docs
 description: Tento článek vysvětluje, jak pomocí Azure Monitor monitorovat Service Bus entit (fronty, témata a odběry).
 ms.topic: article
 ms.date: 02/12/2021
-ms.openlocfilehash: fa242b4d8c8a6ce83801667e686864f858f8a000
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 1e57def2ee7409ae62cdbe065c36e8a53a140e18
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100519095"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570573"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus metriky v Azure Monitor
 
@@ -21,9 +21,9 @@ Azure Monitor poskytuje jednotná uživatelská rozhraní pro monitorování nap
 
 ## <a name="access-metrics"></a>Metriky přístupu
 
-Azure Monitor poskytuje více způsobů přístupu k metrikám. Můžete buď přistupovat ke metrikám prostřednictvím [Azure Portal](https://portal.azure.com), nebo použít rozhraní API Azure monitor (Rest a .NET) a analytická řešení, jako jsou Azure monitor protokoly a Event Hubs. Další informace najdete v tématu [metriky v Azure monitor](../azure-monitor/platform/data-platform-metrics.md).
+Azure Monitor poskytuje více způsobů přístupu k metrikám. Můžete buď přistupovat ke metrikám prostřednictvím [Azure Portal](https://portal.azure.com), nebo použít rozhraní API Azure monitor (Rest a .NET) a analytická řešení, jako jsou Azure monitor protokoly a Event Hubs. Další informace najdete v tématu [metriky v Azure monitor](../azure-monitor/essentials/data-platform-metrics.md).
 
-Metriky jsou ve výchozím nastavení povolené a můžete získat přístup k nejnovějším 30 dnům dat. Pokud potřebujete zachovat data po delší dobu, můžete archivovat data metrik na účet Azure Storage. Tato hodnota je nakonfigurována v [nastavení diagnostiky](../azure-monitor/platform/diagnostic-settings.md) v Azure monitor.
+Metriky jsou ve výchozím nastavení povolené a můžete získat přístup k nejnovějším 30 dnům dat. Pokud potřebujete zachovat data po delší dobu, můžete archivovat data metrik na účet Azure Storage. Tato hodnota je nakonfigurována v [nastavení diagnostiky](../azure-monitor/essentials/diagnostic-settings.md) v Azure monitor.
 
 ## <a name="access-metrics-in-the-portal"></a>Přístup k metrikám na portálu
 
@@ -100,7 +100,7 @@ Následující dva typy chyb jsou klasifikovány jako chyby uživatele:
 > [!NOTE] 
 > Následující metriky jsou k dispozici pouze s úrovní **Premium** . 
 > 
-> Důležité metriky, které je třeba monitorovat pro výpadky úrovně Premium: **využití CPU na obor názvů** a **velikost paměti na obor názvů**. [Nastavte výstrahy](../azure-monitor/platform/alerts-metric.md) pro tyto metriky pomocí Azure monitor.
+> Důležité metriky, které je třeba monitorovat pro výpadky úrovně Premium: **využití CPU na obor názvů** a **velikost paměti na obor názvů**. [Nastavte výstrahy](../azure-monitor/alerts/alerts-metric.md) pro tyto metriky pomocí Azure monitor.
 > 
 > Další metrikou, kterou můžete monitorovat: **omezené požadavky**. Nemělo by se jednat o problém, dokud obor názvů zůstane v rámci omezení paměti, procesoru a zprostředkovaných připojení. Další informace najdete v tématu [omezování v Azure Service Bus úrovně Premium](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier) .
 

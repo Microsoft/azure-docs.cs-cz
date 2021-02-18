@@ -3,12 +3,12 @@ title: Správa rozšíření virtuálních počítačů pomocí serverů s podpo
 description: Servery s podporou ARC Azure můžou spravovat nasazení rozšíření virtuálních počítačů, která poskytují konfiguraci po nasazení a úlohy automatizace s virtuálními počítači mimo Azure.
 ms.date: 01/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5430b1c1318747cccfb95f031700fddaad716284
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: b39149eb7ac572ac3bd50bb6303f28d2340f387d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020617"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580862"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Správa rozšíření virtuálních počítačů pomocí serverů s podporou Azure Arc
 
@@ -27,9 +27,9 @@ Podpora rozšíření virtuálních počítačů serverů s podporou ARC Azure n
 
 - [Konfigurace stavu Azure Automation](../../automation/automation-dsc-overview.md) slouží k centrálnímu ukládání konfigurací a údržbě požadovaného stavu hybridních připojených počítačů povolených prostřednictvím rozšíření virtuálního počítače DSC.
 
-- Shromažďovat data protokolu pro analýzu s [protokoly v Azure monitor](../../azure-monitor/platform/data-platform-logs.md) povolené prostřednictvím rozšíření virtuálního počítače agenta Log Analytics. To je užitečné při komplexní analýze napříč daty z různých druhů zdrojů.
+- Shromažďovat data protokolu pro analýzu s [protokoly v Azure monitor](../../azure-monitor/logs/data-platform-logs.md) povolené prostřednictvím rozšíření virtuálního počítače agenta Log Analytics. To je užitečné při komplexní analýze napříč daty z různých druhů zdrojů.
 
-- Díky [Azure monitor pro virtuální počítače](../../azure-monitor/insights/vminsights-overview.md)analyzuje výkon virtuálních počítačů s Windows a Linux a monitoruje jejich procesy a závislosti na dalších prostředcích a externích procesech. Toho dosáhnete tím, že povolíte rozšíření Log Analytics agenta a rozšíření virtuálního počítače agenta závislostí.
+- Díky [Azure monitor pro virtuální počítače](../../azure-monitor/vm/vminsights-overview.md)analyzuje výkon virtuálních počítačů s Windows a Linux a monitoruje jejich procesy a závislosti na dalších prostředcích a externích procesech. Toho dosáhnete tím, že povolíte rozšíření Log Analytics agenta a rozšíření virtuálního počítače agenta závislostí.
 
 - Stahovat a spouštět skripty na hybridních připojených počítačích pomocí rozšíření vlastních skriptů. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalaci softwaru nebo jakékoli jiné úlohy konfigurace nebo správy.
 
@@ -55,7 +55,7 @@ Další informace o balíčku agenta připojeného počítače Azure a podrobnos
 |Agent Log Analytics |Microsoft. EnterpriseCloud. Monitoring |MicrosoftMonitoringAgent |[Log Analytics rozšíření virtuálního počítače pro Windows](../../virtual-machines/extensions/oms-windows.md)|
 |Azure Monitor pro virtuální počítače (přehledy) |Microsoft. Azure. Monitoring. DependencyAgent |DependencyAgentWindows | [Rozšíření pro virtuální počítače s agentem závislosti pro Windows](../../virtual-machines/extensions/agent-dependency-windows.md)|
 |Azure Key Vault synchronizace certifikátů | Microsoft. Azure. Key. trezor |KeyVaultForWindows | [Key Vault rozšíření virtuálního počítače pro Windows](../../virtual-machines/extensions/key-vault-windows.md) |
-|Agent Azure Monitoru |Microsoft. Azure. monitor |AzureMonitorWindowsAgent |[Instalace agenta Azure Monitor (Preview)](../../azure-monitor/platform/azure-monitor-agent-install.md) |
+|Agent Azure Monitoru |Microsoft. Azure. monitor |AzureMonitorWindowsAgent |[Instalace agenta Azure Monitor (Preview)](../../azure-monitor/agents/azure-monitor-agent-install.md) |
 
 ### <a name="linux-extensions"></a>Rozšíření pro Linux
 
@@ -67,7 +67,7 @@ Další informace o balíčku agenta připojeného počítače Azure a podrobnos
 |Agent Log Analytics |Microsoft. EnterpriseCloud. Monitoring |OmsAgentForLinux |[Rozšíření virtuálního počítače s Log Analytics pro Linux](../../virtual-machines/extensions/oms-linux.md) |
 |Azure Monitor pro virtuální počítače (přehledy) |Microsoft. Azure. Monitoring. DependencyAgent |DependencyAgentLinux |[Rozšíření pro virtuální počítače s agentem závislosti pro Linux](../../virtual-machines/extensions/agent-dependency-linux.md) |
 |Azure Key Vault synchronizace certifikátů | Microsoft. Azure. Key. trezor |KeyVaultForLinux | [Key Vault rozšíření virtuálního počítače pro Linux](../../virtual-machines/extensions/key-vault-linux.md) |
-|Agent Azure Monitoru |Microsoft. Azure. monitor |AzureMonitorLinuxAgent |[Instalace agenta Azure Monitor (Preview)](../../azure-monitor/platform/azure-monitor-agent-install.md) |
+|Agent Azure Monitoru |Microsoft. Azure. monitor |AzureMonitorLinuxAgent |[Instalace agenta Azure Monitor (Preview)](../../azure-monitor/agents/azure-monitor-agent-install.md) |
 
 ## <a name="prerequisites"></a>Požadavky
 

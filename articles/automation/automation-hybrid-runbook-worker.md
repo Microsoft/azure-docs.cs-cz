@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7cf18b6b677daaf97d425c86a0cad91b3abcb225
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: c95ccb5ea1a23e8173d58bd3a18490e9b8e630e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896948"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581268"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Přehled funkce Hybrid Runbook Worker
 
@@ -20,12 +20,12 @@ Runbooky v Azure Automation nemusí mít přístup k prostředkům v jiných clo
 
 Existují dva typy pracovních procesů Runbooku – systém a uživatel. Rozdíly mezi nimi jsou popsány v následující tabulce.
 
-|Typ | Popis |
+|Typ | Description |
 |-----|-------------|
 |**Systém** |Nástroj podporuje sadu skrytých runbooků používaných funkcí Update Management, které jsou určeny k instalaci aktualizací určených uživatelem na počítačích se systémem Windows a Linux.<br> Tento typ Hybrid Runbook Worker není členem skupiny Hybrid Runbook Worker, a proto nespouští Runbooky, které cílí na skupinu Runbook Worker. |
 |**Uživatel** |Podporuje uživatelsky definované Runbooky, které mají být spouštěny přímo na počítači s Windows a Linux, které jsou členy jedné nebo více skupin Runbook Worker. |
 
-Hybrid Runbook Worker lze spustit buď v operačním systému Windows nebo Linux, a tato role spoléhá na [Log Analytics agenta](../azure-monitor/platform/log-analytics-agent.md) sestav do Azure monitor [Log Analytics pracovního prostoru](../azure-monitor/platform/design-logs-deployment.md). Pracovní prostor není pouze monitorující počítač pro podporovaný operační systém, ale také ke stažení součástí potřebných k instalaci Hybrid Runbook Worker.
+Hybrid Runbook Worker lze spustit buď v operačním systému Windows nebo Linux, a tato role spoléhá na [Log Analytics agenta](../azure-monitor/agents/log-analytics-agent.md) sestav do Azure monitor [Log Analytics pracovního prostoru](../azure-monitor/logs/design-logs-deployment.md). Pracovní prostor není pouze monitorující počítač pro podporovaný operační systém, ale také ke stažení součástí potřebných k instalaci Hybrid Runbook Worker.
 
 Pokud je povolená Azure Automation [Update Management](./update-management/overview.md) , je počítač připojený k vašemu Log Analytics pracovnímu prostoru automaticky nakonfigurovaný jako Hybrid Runbook Worker systému. Postup při konfiguraci Hybrid Runbook Worker jako uživatel Windows najdete v tématu nasazení [Hybrid Runbook Worker systému Windows](automation-windows-hrw-install.md) a pro Linux najdete v tématu [nasazení Hybrid Runbook Worker pro Linux](automation-linux-hrw-install.md).
 
@@ -62,7 +62,7 @@ Pokud používáte proxy server ke komunikaci mezi Azure Automation a počítač
 
 ### <a name="firewall-use"></a>Použití brány firewall
 
-Pokud používáte bránu firewall k omezení přístupu k Internetu, musíte bránu firewall nakonfigurovat tak, aby povolovala přístup. Pokud používáte bránu Log Analytics jako proxy, ujistěte se, že je nakonfigurovaná pro procesy Hybrid Runbook Worker. Viz téma [Konfigurace brány Log Analytics pro procesy Hybrid Runbook Worker pro automatizaci](../azure-monitor/platform/gateway.md).
+Pokud používáte bránu firewall k omezení přístupu k Internetu, musíte bránu firewall nakonfigurovat tak, aby povolovala přístup. Pokud používáte bránu Log Analytics jako proxy, ujistěte se, že je nakonfigurovaná pro procesy Hybrid Runbook Worker. Viz téma [Konfigurace brány Log Analytics pro procesy Hybrid Runbook Worker pro automatizaci](../azure-monitor/agents/gateway.md).
 
 ### <a name="service-tags"></a>Značky služeb
 

@@ -15,12 +15,12 @@ ms.date: 02/12/2021
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: e34fbdca51e7680a80c768e49bae891cb56dfa9d
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 0f79402956148c566bc34faa88e10895657883c2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546444"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591735"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Nabízená oznámení s Azure Notification Hubs: nejčastější dotazy
 
@@ -196,7 +196,7 @@ Můžete také programově přistupovat k metrikám. Další informace najdete v
 
 - [Načtěte metriky Azure monitor pomocí .NET](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/). V této ukázce se používá uživatelské jméno a heslo. Chcete-li použít certifikát, přetížením metody FromServicePrincipal poskytněte certifikát, jak je znázorněno v [tomto příkladu](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs). 
 - [Získání metrik a protokolů aktivit pro prostředek](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
-- [Průvodce rozhraním REST API pro monitorování Azure](../azure-monitor/platform/rest-api-walkthrough.md)
+- [Průvodce rozhraním REST API pro monitorování Azure](../azure-monitor/essentials/rest-api-walkthrough.md)
 
 > [!NOTE]
 > Úspěšná oznámení znamenají jednoduše, že nabízená oznámení byla doručena externímu PNS (například APNs pro iOS a macOS nebo FCM pro zařízení s Androidem). PNS je zodpovědný za doručování oznámení na cílová zařízení. PNS obvykle nevystavuje metriky doručení třetím stranám.  
@@ -211,7 +211,7 @@ Můžete také programově přistupovat k metrikám. Další informace najdete v
 [Model zabezpečení Notification Hubs]: /previous-versions/azure/azure-services/dn495373(v=azure.100)
 [Kurz zabezpečeného nabízení oznámení Notification Hubs]: ./notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md
 [Řešení potíží s Notification Hubs]: ./notification-hubs-push-notification-fixer.md
-[Notification Hubs metriky]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
+[Notification Hubs metriky]: ../azure-monitor/essentials/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Registrace – export/import]: ./export-modify-registrations-bulk.md
 [Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples

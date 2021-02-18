@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 5aab78ad99b80ff1d7be92bd36847b01dbc0e33b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d38a0ea7307584c25ddec9389feaef7518bcf925
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542214"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591764"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>Sledovat činnost databáze pomocí protokolů auditu v Azure Database for MySQL flexibilním serveru
 
@@ -36,7 +36,7 @@ Další parametry, které můžete upravit pro řízení chování protokolován
 > [!NOTE]
 > `audit_log_include_users` má vyšší prioritu `audit_log_exclude_users` . Například pokud `audit_log_include_users`  =  `demouser` a `audit_log_exclude_users`  =  `demouser` , bude uživatel zahrnut v protokolech auditu, protože `audit_log_include_users` má vyšší prioritu.
 
-| **Událostí** | **Popis** |
+| **Událost** | **Popis** |
 |---|---|
 | `CONNECTION` | – Iniciování připojení (úspěšné nebo neúspěšné) <br> – Opakované ověření uživatele s jiným uživatelem nebo heslem během relace <br> – Ukončení připojení |
 | `DML_SELECT`| VYBRAT dotazy |
@@ -50,7 +50,7 @@ Další parametry, které můžete upravit pro řízení chování protokolován
 
 ## <a name="access-audit-logs"></a>Přístup k protokolům auditu
 
-Protokoly auditu jsou integrované s nastavením diagnostiky Azure Monitor. Po povolení protokolů auditu na flexibilním serveru MySQL je můžete vygenerovat k Azure Monitor protokolů, Event Hubs nebo Azure Storage. Další informace o nastavení diagnostiky najdete v [dokumentaci k diagnostickým protokolům](../../azure-monitor/platform/platform-logs-overview.md). Další informace o tom, jak povolit nastavení diagnostiky v Azure Portal, najdete v [článku na portálu protokolu auditu](how-to-configure-audit-logs-portal.md#set-up-diagnostics).
+Protokoly auditu jsou integrované s nastavením diagnostiky Azure Monitor. Po povolení protokolů auditu na flexibilním serveru MySQL je můžete vygenerovat k Azure Monitor protokolů, Event Hubs nebo Azure Storage. Další informace o nastavení diagnostiky najdete v [dokumentaci k diagnostickým protokolům](../../azure-monitor/essentials/platform-logs-overview.md). Další informace o tom, jak povolit nastavení diagnostiky v Azure Portal, najdete v [článku na portálu protokolu auditu](how-to-configure-audit-logs-portal.md#set-up-diagnostics).
 
 Následující části popisují výstup protokolů auditu MySQL na základě typu události. V závislosti na metodě Output se pole, která jsou součástí, a pořadí, ve kterém se zobrazují, můžou lišit.
 

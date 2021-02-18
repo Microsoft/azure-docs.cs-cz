@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 850171a4f1f303ef344fa5007325093c6363615b
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: ac2982b021172893e4aabe0f21c7077115684eff
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789073"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592620"
 ---
 # <a name="azure-security-baseline-for-azure-hpc-cache"></a>Základní hodnota zabezpečení Azure pro mezipaměť HPC Azure
 
@@ -613,9 +613,9 @@ Implementujte řešení od jiného výrobce z Azure Marketplace pro řešení pr
 
 Pomocí Azure Security Center a Azure Policy můžete také povolit protokoly prostředků Azure pro mezipaměť HPC a shromažďování dat a jejich protokolování. Tyto protokoly můžou být klíčové pro pozdější zkoumání incidentů zabezpečení a provádění forenzních cvičení.
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Principy protokolování a různých typů protokolů v Azure](../azure-monitor/platform/platform-logs-overview.md) 
+- [Principy protokolování a různých typů protokolů v Azure](../azure-monitor/essentials/platform-logs-overview.md) 
 
 - [Pochopení Azure Security Center shromažďování dat](../security-center/security-center-enable-data-collection.md)
 
@@ -633,7 +633,7 @@ Kromě toho povolte a zaveďte data do Azure Sentinel nebo SIEM třetí strany.
 
 Řada organizací zvolí použití Azure Sentinel pro "horká" data, která se používají často a Azure Storage pro "studená" data, která se používají méně často.
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -812,7 +812,7 @@ Použijte řízení přístupu na základě role v Azure Backup, Azure Key Vault
 
 - [Přehled funkcí zabezpečení v Azure Backup](../backup/security-overview.md) 
 
-- [Šifrování zálohovaných dat pomocí klíčů spravovaných zákazníkem](../backup/encryption-at-rest-with-cmk.md)  
+- [Šifrování zálohovaných dat s využitím klíčů spravovaných zákazníkem](../backup/encryption-at-rest-with-cmk.md)  
 
 - [Postup zálohování klíčů Key Vault v Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-5.1.0)
 

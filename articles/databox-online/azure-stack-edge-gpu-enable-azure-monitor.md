@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 171b4dbfb2a5852e270c483a28cad31f97dcb42b
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 199ec8e2f1e8eb74d971286a4fc6180eb8b72f2a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493908"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595975"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>Povolení Azure Monitor na zařízení GPU pro Azure Stack Edge pro
 
@@ -49,7 +49,7 @@ Pokud chcete vytvořit pracovní prostor Log Analytics, proveďte následující
 
         ![Kontrola a vytvoření pro Log Analytics pracovní prostor](media/azure-stack-edge-gpu-enable-azure-monitor/create-log-analytics-workspace-review-create-1.png)
 
-Další informace najdete v podrobných krocích v tématu [Vytvoření pracovního prostoru Log Analytics prostřednictvím Azure Portal](../azure-monitor/learn/quick-create-workspace.md).
+Další informace najdete v podrobných krocích v tématu [Vytvoření pracovního prostoru Log Analytics prostřednictvím Azure Portal](../azure-monitor/logs/quick-create-workspace.md).
 
 
 
@@ -57,7 +57,7 @@ Další informace najdete v podrobných krocích v tématu [Vytvoření pracovn�
 
 Pokud chcete ve svém pracovním prostoru povolit službu Container Insights, proveďte následující kroky. 
 
-1. Postupujte podle podrobných kroků v tématu [Postup přidání řešení Azure monitor Containers](../azure-monitor/insights/container-insights-hybrid-setup.md#how-to-add-the-azure-monitor-containers-solution). Použijte následující soubor šablony `containerSolution.json` :
+1. Postupujte podle podrobných kroků v tématu [Postup přidání řešení Azure monitor Containers](../azure-monitor/containers/container-insights-hybrid-setup.md#how-to-add-the-azure-monitor-containers-solution). Použijte následující soubor šablony `containerSolution.json` :
 
     ```yml
     {

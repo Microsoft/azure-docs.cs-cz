@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 20683808c81b32560170b175edf1c37c332f47ad
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 58c340c97bd8e46c5a588b4bf0ba2673712ffb95
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183613"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581188"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker pro Linux
 
@@ -20,19 +20,19 @@ Linux Hybrid Runbook Worker spouští Runbooky jako speciálního uživatele, kt
 
 Po úspěšném nasazení služby Runbook Worker si přečtěte téma [spuštění runbooků na Hybrid Runbook Worker](automation-hrw-run-runbooks.md) , kde se dozvíte, jak konfigurovat Runbooky pro automatizaci procesů v místním datovém centru nebo v jiném cloudovém prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující.
 
 ### <a name="a-log-analytics-workspace"></a>Pracovní prostor Log Analytics
 
-Role Hybrid Runbook Worker závisí na pracovním prostoru Azure Monitor Log Analytics k instalaci a konfiguraci role. Můžete ji vytvořit prostřednictvím [Azure Resource Manager](../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace), prostřednictvím [PowerShellu](../azure-monitor/scripts/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)nebo v [Azure Portal](../azure-monitor/learn/quick-create-workspace.md).
+Role Hybrid Runbook Worker závisí na pracovním prostoru Azure Monitor Log Analytics k instalaci a konfiguraci role. Můžete ji vytvořit prostřednictvím [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace), prostřednictvím [PowerShellu](../azure-monitor/logs/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)nebo v [Azure Portal](../azure-monitor/logs/quick-create-workspace.md).
 
-Pokud nemáte pracovní prostor Azure Monitor Log Analytics, před vytvořením pracovního prostoru si přečtěte téma [Průvodce návrhem protokolu Azure monitor](../azure-monitor/platform/design-logs-deployment.md) .
+Pokud nemáte pracovní prostor Azure Monitor Log Analytics, před vytvořením pracovního prostoru si přečtěte téma [Průvodce návrhem protokolu Azure monitor](../azure-monitor/logs/design-logs-deployment.md) .
 
 ### <a name="log-analytics-agent"></a>Agent Log Analytics
 
-Role Hybrid Runbook Worker vyžaduje, aby byl pro podporovaný operační systém Linux [Log Analytics agent](../azure-monitor/platform/log-analytics-agent.md) . U serverů nebo počítačů hostovaných mimo Azure můžete agenta Log Analytics nainstalovat pomocí [serverů s podporou ARC Azure](../azure-arc/servers/overview.md).
+Role Hybrid Runbook Worker vyžaduje, aby byl pro podporovaný operační systém Linux [Log Analytics agent](../azure-monitor/agents/log-analytics-agent.md) . U serverů nebo počítačů hostovaných mimo Azure můžete agenta Log Analytics nainstalovat pomocí [serverů s podporou ARC Azure](../azure-arc/servers/overview.md).
 
 >[!NOTE]
 >Po instalaci agenta Log Analytics pro Linux byste neměli měnit oprávnění ke `sudoers.d` složce nebo jejímu vlastnictví. Pro účet **nxautomation** se vyžaduje oprávnění sudo, což je kontext uživatele, ke kterému se Hybrid Runbook Worker spouští. Oprávnění by se neměla odebírat. Omezení tohoto omezení na určité složky nebo příkazy může mít za následek zásadní změnu.
@@ -87,7 +87,7 @@ Procesy Hybrid Runbook Worker pro Linux podporují v Azure Automation omezené s
 
 |Typ Runbooku | Podporováno |
 |-------------|-----------|
-|Python 2 |Ano |
+|Python 2 |Yes |
 |PowerShell |Ano<sup>1</sup> |
 |Pracovní postup PowerShellu |No |
 |Grafický |No |

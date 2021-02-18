@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 64b39dfa581b242fbb490d61b388f2bf260976ef
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 20241ad316da1c5d713617f3f371d02e2a4e6cc9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460408"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570830"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Průvodce odstraňováním potíží pro službu Azure Security Center
 
@@ -42,7 +42,7 @@ Zákazníci můžou sdílet zpětnou vazbu ohledně popisu a relevance výstrahy
 
 ## <a name="audit-log"></a>Protokol auditu
 
-U většiny postupů odstraňování potíží prováděných v rámci služby Security Center je třeba nejprve si prohlédnout záznamy [protokolu auditu](../azure-monitor/platform/platform-logs-overview.md) pro komponentu, u které se potíže vyskytly. Na základě protokolů auditu můžete zjistit:
+U většiny postupů odstraňování potíží prováděných v rámci služby Security Center je třeba nejprve si prohlédnout záznamy [protokolu auditu](../azure-monitor/essentials/platform-logs-overview.md) pro komponentu, u které se potíže vyskytly. Na základě protokolů auditu můžete zjistit:
 
 * Které operace proběhly
 * Kdo operaci zahájil
@@ -81,14 +81,14 @@ Existují dva scénáře instalace, které mohou při instalaci agenta Log Analy
 
 **Stav monitorování** indikuje důvod, proč se službě Security Center nepodařilo úspěšně monitorovat virtuální počítače a počítače inicializované pro automatické zřizování. Seznam hodnot, popisů a postupů řešení pro hodnoty **stavu monitorování** najdete v následující tabulce.
 
-| Stav monitorování | Popis | Postup řešení |
+| Stav monitorování | Description | Postup řešení |
 |---|---|---|
 | Čeká se na instalaci agenta | Instalace agenta Log Analytics stále běží.  Instalace může trvat i několik hodin. | Počkejte na dokončení automatické instalace. |
 | Stav napájení je vypnuto | Virtuální počítač je zastavený.  Agent Log Analytics může být nainstalovaný jenom na virtuálním počítači, na kterém běží. | Restartujte virtuální počítač. |
 | Agent virtuálního počítače Azure chybí nebo není platný | Agent Log Analytics ještě není nainstalovaný.  Aby služba Security Center mohla nainstalovat rozšíření, potřebuje platného agenta virtuálního počítače Azure. | Nainstalujte, přeinstalujte nebo upgradujte na virtuálním počítači agenta virtuálního počítače Azure. |
 | Stav virtuálního počítače není připravený k instalaci  | Agent Log Analytics ještě není nainstalovaný, protože virtuální počítač není připravený k instalaci. Virtuální počítač není připraven pro instalaci z důvodu problému s agentem nebo zřizováním virtuálního počítače. | Zkontrolujte stav virtuálního počítače. Vraťte se na portálu na obrazovku **Virtual Machines** a výběrem virtuálního počítače zobrazte jeho stav. |
-|Instalace selhala – obecná chyba | Agent Log Analytics byl nainstalován, ale selhal z důvodu chyby. | [Ručně rozšíření nainstalujte](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) nebo odinstalujte, aby se ho služba Security Center mohla pokusit znovu nainstalovat. |
-| Instalace selhala – místní agent je už nainstalovaný | Nepovedlo se nainstalovat agenta Log Analytics. Security Center identifikovali místního agenta (Log Analytics nebo System Center Operations Manager), který je už na virtuálním počítači nainstalovaný. Aby se zabránilo konfiguraci více domovských stránek, kde se virtuální počítač hlásí do dvou samostatných pracovních prostorů, instalace agenta Log Analytics se zastavila. | Je možné to vyřešit dvěma způsoby: [nainstalovat rozšíření ručně](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) a připojit ho do požadovaného pracovního prostoru. Nebo nastavit požadovaný pracovní prostor jako výchozí a povolit automatické zřizování agenta.  Viz [zapnutí automatického zřizování](security-center-enable-data-collection.md). |
+|Instalace selhala – obecná chyba | Agent Log Analytics byl nainstalován, ale selhal z důvodu chyby. | [Ručně rozšíření nainstalujte](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) nebo odinstalujte, aby se ho služba Security Center mohla pokusit znovu nainstalovat. |
+| Instalace selhala – místní agent je už nainstalovaný | Nepovedlo se nainstalovat agenta Log Analytics. Security Center identifikovali místního agenta (Log Analytics nebo System Center Operations Manager), který je už na virtuálním počítači nainstalovaný. Aby se zabránilo konfiguraci více domovských stránek, kde se virtuální počítač hlásí do dvou samostatných pracovních prostorů, instalace agenta Log Analytics se zastavila. | Je možné to vyřešit dvěma způsoby: [nainstalovat rozšíření ručně](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) a připojit ho do požadovaného pracovního prostoru. Nebo nastavit požadovaný pracovní prostor jako výchozí a povolit automatické zřizování agenta.  Viz [zapnutí automatického zřizování](security-center-enable-data-collection.md). |
 | Agent se nemůže připojit k pracovnímu prostoru | Agent Log Analytics se nainstaloval, ale selhal kvůli připojení k síti.  Zkontrolujte připojení k internetu a jestli je pro agenta nakonfigurovaný správný proxy server HTTP. | Viz požadavky agenta monitorování na síť. |
 | Agent je připojený do chybějícího nebo neznámého pracovního prostoru | Security Center zjistila, že agent Log Analytics nainstalovaný na virtuálním počítači je připojený k pracovnímu prostoru, ke kterému nemá přístup. | K tomu může dojít ve dvou případech. Pracovní prostor byl odstraněn a už neexistuje. Znovu nainstalujte agenta s použitím správného pracovního prostoru nebo agenta odinstalujte a povolte službě Security Center provést jeho instalaci pomocí automatického zřizování. Druhou možností je, že pracovní prostor patří do předplatného, pro které nemá Security Center oprávnění. Security Center vyžaduje, aby předplatné povolovalo přístup zprostředkovateli služby Microsoft Security Resource Provider. Napravíte to tak, že dané předplatné zaregistrujete do služby Microsoft Security Resource Provider. Můžete to udělat přes rozhraní API, v prostředí PowerShell, na portálu nebo jednoduše pomocí filtrování podle předplatného na řídicím panelu **Přehled** služby Security Center. Další informace najdete v tématu [Poskytovatelé a typy prostředků](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). |
 | Agent neodpovídá nebo chybí ID | Security Center nemůže z virtuálního počítače načíst shromážděná data zabezpečení, přestože je agent nainstalovaný. | Agent nevrací žádná data, a to ani prezenční signál. Agent může být poškozený nebo něco blokuje provoz. Nebo agent hlásí data, ale chybí ID prostředku Azure, takže není možné, aby se data shodovala s virtuálním počítačem Azure. Řešení potíží s Linuxem najdete v tématu [Průvodce odstraňováním potíží pro Log Analytics agenta pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal). Informace o řešení problémů ve Windows najdete v tématu [Odstraňování problémů virtuálních počítačů Windows](../virtual-machines/extensions/oms-windows.md#troubleshoot-and-support). |
@@ -98,7 +98,7 @@ Existují dva scénáře instalace, které mohou při instalaci agenta Log Analy
 
 Agenti, kteří se připojují ke službě Security Center a registrují se v ní, musí mít přístup k síťovým prostředkům, včetně čísel portů a doménových adres URL.
 
-* U proxy serverů musíte zajistit konfiguraci příslušných prostředků proxy serveru v nastavení agenta. Přečtěte si tento článek, ve kterém se dozvíte další informace o [tom, jak změnit nastavení proxy](../azure-monitor/platform/agent-windows.md).
+* U proxy serverů musíte zajistit konfiguraci příslušných prostředků proxy serveru v nastavení agenta. Přečtěte si tento článek, ve kterém se dozvíte další informace o [tom, jak změnit nastavení proxy](../azure-monitor/agents/agent-windows.md).
 * Pokud používáte k omezení přístupu k internetu bránu firewall, je nutné ji nakonfigurovat tak, aby povolovala přístup k Log Analytics. V nastavení agenta nemusíte nic konfigurovat.
 
 V následující tabulce najdete přehled prostředků potřebných pro komunikaci.

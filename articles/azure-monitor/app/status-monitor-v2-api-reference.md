@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2f814c54aeca8a337f786beb8da1b98accbeef7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2278b9d70e888fa546dc64da4743b2bf5b6c45e8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318993"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587517"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Reference k rozhraní API agenta Azure Monitor Application Insights
 
@@ -392,7 +392,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime
 
 Můžete zkontrolovat proces v instrumentované počítači a zjistit, jestli jsou všechny knihovny DLL načtené. Pokud monitorování funguje, měli byste načíst aspoň 12 knihoven DLL.
 
-Spusťte příkaz `Get-ApplicationInsightsMonitoringStatus -InspectProcess` :
+Spusťte příkaz `Get-ApplicationInsightsMonitoringStatus -InspectProcess`:
 
 
 ```
@@ -637,9 +637,9 @@ Timeout Reached. Stopping...
 ## <a name="next-steps"></a>Další kroky
 
   Zobrazení telemetrických dat:
- - [Prozkoumejte metriky](../platform/metrics-charts.md) pro monitorování výkonu a využití.
+ - [Prozkoumejte metriky](../essentials/metrics-charts.md) pro monitorování výkonu a využití.
 - [Prohledejte události a protokoly](./diagnostic-search.md) a Diagnostikujte problémy.
-- K pokročilejším dotazům použijte [Analytics](../log-query/log-query-overview.md) .
+- K pokročilejším dotazům použijte [Analytics](../logs/log-query-overview.md) .
 - [Vytváření řídicích panelů](./overview-dashboard.md).
  
  Přidání další telemetrie:

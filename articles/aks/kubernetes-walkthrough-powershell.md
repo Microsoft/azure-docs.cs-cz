@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/13/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 41412a4ec95bb9b89df5fded6962965594e823fc
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 131469a955190561d8854aad4a7f77c8ca15a222
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98248509"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578774"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>Rychlý Start: nasazení clusteru služby Azure Kubernetes pomocí prostředí PowerShell
 
@@ -22,7 +22,7 @@ Další informace o vytváření fondu uzlů Windows serveru najdete v tématu [
 
 Tento rychlý start předpokládá základní znalosti konceptů Kubernetes. Další informace najdete v tématu [základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -235,7 +235,7 @@ Pokud chcete zobrazit hlasovou aplikaci Azure v akci, otevřete webový prohlí�
 
 ![Hlasovací aplikace nasazená ve službě Azure Kubernetes](./media/kubernetes-walkthrough-powershell/voting-app-deployed-in-azure-kubernetes-service.png)
 
-Po vytvoření clusteru AKS byly povoleny [Azure monitor pro kontejnery](../azure-monitor/insights/container-insights-overview.md) pro zachycení metrik stavu pro uzly clusteru a lusky. Tyto metriky stavu jsou k dispozici na webu Azure Portal.
+Po vytvoření clusteru AKS byly povoleny [Azure monitor pro kontejnery](../azure-monitor/containers/container-insights-overview.md) pro zachycení metrik stavu pro uzly clusteru a lusky. Tyto metriky stavu jsou k dispozici na webu Azure Portal.
 
 ## <a name="delete-the-cluster"></a>Odstranění clusteru
 

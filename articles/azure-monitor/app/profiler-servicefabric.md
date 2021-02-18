@@ -7,12 +7,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 317c02fe03a56ea3cd3a98b00f8a0080b3917108
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67e7765a1f46c2be5790c11687e06ea624702b9b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88930277"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589566"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Profilování živých aplikací Service Fabric Azure pomocí Application Insights
 
@@ -29,7 +29,7 @@ Chcete-li nastavit prostředí, proveďte následující akce:
 
 1. Profiler podporuje .NET Framework a .Net Core. Pokud používáte .NET Framework, ujistěte se, že používáte [.NET Framework 4.6.1](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) nebo novější. Je dostačující ověřit, zda je nasazený operační systém `Windows Server 2012 R2` nebo novější. Profiler podporuje .NET Core 2,1 a novější aplikace.
 
-1. Vyhledejte rozšíření [Azure Diagnostics](../platform/diagnostics-extension-overview.md) v souboru šablony nasazení.
+1. Vyhledejte rozšíření [Azure Diagnostics](../agents/diagnostics-extension-overview.md) v souboru šablony nasazení.
 
 1. Přidejte následující `SinksConfig` oddíl jako podřízený element prvku `WadCfg` . Nahraďte `ApplicationInsightsProfiler` hodnotu vlastnosti vlastním klíčem instrumentace Application Insights:  
 

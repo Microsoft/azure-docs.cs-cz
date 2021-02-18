@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 8dcc6dd355e0c89aa4120a6cc7f331159d56c1bc
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 0b6096f980234c09bf1c2da2b4621b8ed66b495d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742178"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578164"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-classic-using-powershell"></a>Povolení diagnostiky v Azure Cloud Services (Classic) pomocí PowerShellu
 
@@ -134,5 +134,5 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 ## <a name="next-steps"></a>Další kroky
 * Další pokyny týkající se používání diagnostiky Azure a dalších postupů k řešení problémů najdete v tématu [Povolení diagnostiky v Azure Cloud Services a Virtual Machines](cloud-services-dotnet-diagnostics.md).
-* [Schéma konfigurace diagnostiky](../azure-monitor/platform/diagnostics-extension-schema-windows.md) vysvětluje různé možnosti konfigurace XML pro diagnostické rozšíření.
+* [Schéma konfigurace diagnostiky](../azure-monitor/agents/diagnostics-extension-schema-windows.md) vysvětluje různé možnosti konfigurace XML pro diagnostické rozšíření.
 * Informace o tom, jak povolit rozšíření diagnostiky pro Virtual Machines, najdete v tématu [Vytvoření virtuálního počítače s Windows pomocí monitorování a diagnostiky pomocí šablony Azure Resource Manager](../virtual-machines/extensions/diagnostics-template.md) .

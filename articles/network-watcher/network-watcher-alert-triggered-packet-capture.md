@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 3b6cb195f44bf6c868402481480d9b10802c4d59
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8e2af73be0fc887b132f523133159472ce1d1f98
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965663"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570987"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Použití zachytávání paketů pro proaktivní monitorování sítě s výstrahami a Azure Functions
 
@@ -41,7 +41,7 @@ Pomocí Network Watcher, upozorňování a funkcí v rámci ekosystému Azure m�
 * Existující instance Network Watcher. Pokud ho ještě nemáte, [vytvořte instanci Network Watcher](network-watcher-create.md).
 * Existující virtuální počítač ve stejné oblasti jako Network Watcher s rozšířením [virtuálního počítače](../virtual-machines/extensions/network-watcher-linux.md)se [systémem Windows](../virtual-machines/extensions/network-watcher-windows.md) nebo Linux.
 
-## <a name="scenario"></a>Scénář
+## <a name="scenario"></a>Scenario
 
 V tomto příkladu váš virtuální počítač posílá více segmentů TCP, než je obvyklé, a chcete být upozorněni. Segmenty TCP se tady používají jako příklad, ale můžete použít libovolnou podmínku výstrahy.
 
@@ -68,7 +68,7 @@ Tento scénář provádí následující akce:
 
 Prvním krokem je vytvoření funkce Azure pro zpracování výstrahy a vytvoření zachytávání paketů.
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek**  >  **Compute**  >  **Function App** Compute.
+1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek**  >    >  **Function App** Compute.
 
     ![Vytvoření aplikace funkcí][1-1]
 
@@ -80,7 +80,7 @@ Prvním krokem je vytvoření funkce Azure pro zpracování výstrahy a vytvoře
     |**Předplatné**|[Vaše předplatné] Předplatné, pro které chcete vytvořit aplikaci Function App.||
     |**Skupina prostředků**|PacketCaptureRG|Skupina prostředků, která obsahuje aplikaci Function App|
     |**Plán hostování**|Plán Consumption| Typ plánování použití aplikace Function App Možnosti jsou spotřeba nebo plán Azure App Service. |
-    |**Umístění**|Střední USA| Oblast, ve které se má vytvořit aplikace Function App|
+    |**Umístění**|USA – střed| Oblast, ve které se má vytvořit aplikace Function App|
     |**Účet úložiště**|automaticky generované| Účet úložiště, který Azure Functions potřeby pro účely obecného úložiště.|
 
 3. V okně **aplikací funkcí PacketCaptureExample** vyberte **funkce**  >  **vlastní funkce**  > **+** .
@@ -332,7 +332,7 @@ V následujícím příkladu je kód prostředí PowerShell, který lze použít
 
     ![Kopírování adresy URL funkce][2]
 
-Pokud požadujete vlastní vlastnosti v datové části požadavku POST Webhooku, přečtěte si téma [Konfigurace Webhooku na upozornění metriky Azure](../azure-monitor/platform/alerts-webhooks.md).
+Pokud požadujete vlastní vlastnosti v datové části požadavku POST Webhooku, přečtěte si téma [Konfigurace Webhooku na upozornění metriky Azure](../azure-monitor/alerts/alerts-webhooks.md).
 
 ## <a name="configure-an-alert-on-a-vm"></a>Konfigurace upozornění na virtuálním počítači
 
@@ -340,7 +340,7 @@ Výstrahy je možné nakonfigurovat tak, aby upozornily na uživatele, když kon
 
 ### <a name="create-the-alert-rule"></a>Vytvoření pravidla výstrahy
 
-Přejít na existující virtuální počítač a pak přidat pravidlo výstrahy. Podrobnější dokumentaci týkající se konfigurace výstrah najdete v popisu [Vytvoření upozornění v Azure monitor pro služby Azure – Azure Portal](../azure-monitor/platform/alerts-classic-portal.md). V okně **pravidlo výstrahy** zadejte následující hodnoty a pak vyberte **OK**.
+Přejít na existující virtuální počítač a pak přidat pravidlo výstrahy. Podrobnější dokumentaci týkající se konfigurace výstrah najdete v popisu [Vytvoření upozornění v Azure monitor pro služby Azure – Azure Portal](../azure-monitor/alerts/alerts-classic-portal.md). V okně **pravidlo výstrahy** zadejte následující hodnoty a pak vyberte **OK**.
 
   |**Nastavení** | **Hodnota** | **Podrobnosti** |
   |---|---|---|

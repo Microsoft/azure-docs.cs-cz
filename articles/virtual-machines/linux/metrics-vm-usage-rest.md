@@ -8,12 +8,12 @@ ms.custom: REST
 ms.topic: how-to
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 9430eaeb3ba22bd0d9fc0675ab97c84944a0cf7c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a7237bfc82a932b774b4b6ef293c242a84fd75af
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737842"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591206"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Získat metriky využití virtuálních počítačů pomocí REST API
 
@@ -23,7 +23,7 @@ Kompletní Referenční dokumentace a další ukázky pro REST API jsou k dispoz
 
 ## <a name="build-the-request"></a>Sestavení požadavku
 
-Pomocí následující žádosti GET Shromážděte [procento metriky procesoru](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) z virtuálního počítače.
+Pomocí následující žádosti GET Shromážděte [procento metriky procesoru](../../azure-monitor/essentials/metrics-supported.md#microsoftcomputevirtualmachines) z virtuálního počítače.
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmname}/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=Percentage%20CPU&timespan=2018-06-05T03:00:00Z/2018-06-07T03:00:00Z
@@ -40,7 +40,7 @@ Jsou vyžadovány následující hlavičky:
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-| Název | Popis |
+| Název | Description |
 | :--- | :---------- |
 | subscriptionId | ID předplatného, které identifikuje předplatné Azure. Pokud máte více předplatných, přečtěte si téma [práce s více předplatnými](/cli/azure/manage-azure-subscriptions-azure-cli). |
 | resourceGroupName | Název skupiny prostředků Azure přidružené k prostředku. Tuto hodnotu můžete získat z rozhraní Azure Resource Manager API, CLI nebo na portálu. |

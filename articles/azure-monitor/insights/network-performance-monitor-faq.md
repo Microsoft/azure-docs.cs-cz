@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 1faeb047783b9db24348425e5a6453754e550d4d
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: c58f94bcdb659eed67ebf023af473545d8cee1a7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833010"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587278"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Nejčastější dotazy k řešení Network Performance Monitor
 
@@ -43,7 +43,7 @@ Možnost monitorování sítí pomocí uzlů se systémem Linux je teď všeobec
 Aby bylo možné spustit řešení NPM na virtuálních počítačích uzlů pro monitorování sítí, musí mít uzly alespoň 500 MB paměti a jednu jádro. Nemusíte používat samostatné uzly pro používání NPM. Řešení může běžet na uzlech, na kterých běží jiné úlohy. Řešení má možnost zastavit proces monitorování, pokud používá více než 5% CPU.
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>Pokud chcete použít NPM, mám uzly připojit jako přímý agent nebo prostřednictvím System Center Operations Manager?
-Monitorování výkonu i možnosti monitorování připojení služby podporují uzly [připojené jako přímí agenti](../platform/agent-windows.md) a [připojení prostřednictvím Operations Manager](../platform/om-agents.md).
+Monitorování výkonu i možnosti monitorování připojení služby podporují uzly [připojené jako přímí agenti](../agents/agent-windows.md) a [připojení prostřednictvím Operations Manager](../agents/om-agents.md).
 
 Pro funkci monitorování ExpressRoute by uzly Azure měly být připojené pouze jako přímí agenti. Uzly Azure, které jsou připojené prostřednictvím Operations Manager, se nepodporují. U místních uzlů se pro monitorování okruhu ExpressRoute podporují uzly připojené jako přímí agenti a prostřednictvím Operations Manager.
 
@@ -71,7 +71,7 @@ Pro každou podsíť, kterou chcete monitorovat, byste měli použít aspoň jed
 ### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>Jaký je maximální počet agentů, které můžu použít, nebo se zobrazuje chyba... dosáhli jste limitu konfigurace?
 NPM omezuje počet IP adres na jeden pracovní prostor na 5000. Pokud má uzel adresy IPv4 i IPv6, bude se tento uzel počítat jako 2 IP adresy. Proto tento limit 5000 IP adres určí horní limit počtu agentů. Neaktivních agentů můžete odstranit na kartě uzly v NPM >> nakonfigurovat. NPM také udržuje historii všech IP adres, které byly někdy přiřazeny k virtuálnímu počítači, který je hostitelem agenta, a každá z nich se počítá jako samostatná IP adresa přispívající k tomuto hornímu limitu 5000 IP adres. Pokud chcete pro svůj pracovní prostor uvolnit IP adresy, můžete pomocí stránky uzly odstranit IP adresy, které se nepoužívají.
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 ### <a name="how-are-loss-and-latency-calculated"></a>Jak se počítají ztráty a latence
 Zdrojové agenti odesílají žádosti TCP SYN (Pokud je zvolen protokol TCP jako protokol pro monitorování) nebo požadavky na ODEZVu ICMP (Pokud se protokol ICMP vybere jako protokol pro monitorování) do cílové IP adresy v pravidelných intervalech, aby se zajistilo, že se pokryje všechny cesty mezi kombinací IP adresy zdroje a cíle. Procento přijatých paketů a doba odezvy přenosu paketů se měří k výpočtu ztráty a latence každé cesty. Tato data se agreguje v intervalu cyklického dotazování a přes všechny cesty, aby se získaly agregované hodnoty ztráty a latence pro danou kombinaci IP adres pro konkrétní interval dotazování.
@@ -98,7 +98,7 @@ Pokud je směrování červené, znamená to, že je součástí nejméně jedn�
 NPM používá mechanismus pravděpodobnostní pro přiřazení pravděpodobnosti chyby každé síťové cestě, segmentu sítě a směrování sítě v závislosti na počtu nezdravých cest, které jsou součástí. Protože segmenty sítě a směrování se stanou součástí většího počtu špatných cest, zvyšují se pravděpodobnost selhání, která jsou k nim přidružená. Tento algoritmus funguje nejlépe tehdy, když máte spoustu uzlů s NPM agentem, který se navzájem připojuje. tím se zvyšuje počet datových bodů pro výpočet pravděpodobnosti selhání.
 
 ### <a name="how-can-i-create-alerts-in-npm"></a>Jak můžu vytvářet upozornění v NPM?
-V současné době se vytváření výstrah z uživatelského rozhraní NPM nedaří kvůli známému problému. [Vytvořte prosím výstrahy ručně](../platform/alerts-log.md).
+V současné době se vytváření výstrah z uživatelského rozhraní NPM nedaří kvůli známému problému. [Vytvořte prosím výstrahy ručně](../alerts/alerts-log.md).
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>Jaké jsou výchozí Log Analytics dotazy na výstrahy
 Dotaz na sledování výkonu

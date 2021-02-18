@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f13909d3835bdbd2931277a88244abfae3f80759
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 29c49ceb3647964030f53c94276e831dc0f648c7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466816"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576626"
 ---
 # <a name="azure-monitor-for-windows-virtual-desktop-preview-glossary"></a>Glosář Azure Monitor pro virtuální počítače s Windows (Preview)
 
@@ -24,7 +24,7 @@ Tento článek uvádí a stručně popisuje klíčové pojmy a koncepty týkají
 
 ## <a name="alerts"></a>Výstrahy
 
-Na stránce Přehled se zobrazí všechny výstrahy Active Azure Monitor, které jste nakonfigurovali v rámci předplatného a jsou klasifikovány jako [závažnost 1](#severity-1-alerts) . Informace o tom, jak nastavit výstrahy, najdete v tématu [reakce na události s výstrahami Azure monitor](../azure-monitor/learn/tutorial-response.md).
+Na stránce Přehled se zobrazí všechny výstrahy Active Azure Monitor, které jste nakonfigurovali v rámci předplatného a jsou klasifikovány jako [závažnost 1](#severity-1-alerts) . Informace o tom, jak nastavit výstrahy, najdete v tématu [reakce na události s výstrahami Azure monitor](../azure-monitor/alerts/tutorial-response.md).
 
 ## <a name="available-sessions"></a>Dostupné relace
 
@@ -128,7 +128,7 @@ Následující tabulka uvádí doporučené čítače výkonu a časové interva
 |Síť RemoteFX ( \* ) \\ aktuální doba RTT TCP|30 sekund|
 |\* \\ Aktuální šířka pásma UDP sítě RemoteFX|30 sekund|
 
-Další informace o tom, jak číst čítače výkonu, najdete v tématu [Konfigurace čítačů výkonu](../azure-monitor/platform/data-sources-performance-counters.md).
+Další informace o tom, jak číst čítače výkonu, najdete v tématu [Konfigurace čítačů výkonu](../azure-monitor/agents/data-sources-performance-counters.md).
 
 Další informace o čítačích výkonu zpoždění vstupu najdete v tématu [čítače výkonu zpoždění vstupu uživatele](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/).
 
@@ -186,7 +186,7 @@ Následující tabulka uvádí požadované události Windows pro Azure Monitor 
 | Microsoft-FSLogix – aplikace/provozní|Chyba, upozornění a informace|
 |Microsoft-FSLogix – aplikace/Správce|Chyba, upozornění a informace|
 
-Další informace o událostech systému Windows naleznete v tématu [vlastnosti záznamů událostí systému Windows](../azure-monitor/platform/data-sources-windows-events.md).
+Další informace o událostech systému Windows naleznete v tématu [vlastnosti záznamů událostí systému Windows](../azure-monitor/agents/data-sources-windows-events.md).
 
 ## <a name="next-steps"></a>Další kroky
 
