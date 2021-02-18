@@ -2,24 +2,23 @@
 title: Registrace poskytovatele prostředků řešení Azure VMware
 description: Postup registrace poskytovatele prostředků řešení Azure VMware
 ms.topic: include
-ms.date: 12/24/2020
-ms.openlocfilehash: 7d24ce86f24c941c7d48d3b73576dcdfda120f51
-ms.sourcegitcommit: 489ce69c0ff3f5188889ecfef5ffa76f7121e0d3
+ms.date: 02/17/2021
+ms.openlocfilehash: 80010a232f80865b20c2e3d953dc1d9d22ece1c6
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97770811"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653159"
 ---
-<!-- Used in avs-deployment.md and tutorial-create-private-cloud.md -->
+<!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
-Pokud chcete používat řešení Azure VMware, musíte nejdřív zaregistrovat poskytovatele prostředků s vaším předplatným.  
+Pokud chcete používat řešení Azure VMware, musíte nejdřív zaregistrovat poskytovatele prostředků s vaším předplatným. Další informace o poskytovatelích prostředků najdete v tématu [poskytovatelé a typy prostředků Azure](/azure/azure-resource-manager/management/resource-providers-and-types).
 
 ### <a name="azure-cli"></a>Azure CLI 
 
 ```azurecli-interactive
 az provider register -n Microsoft.AVS --subscription <your subscription ID>
 ```
-
 
 ### <a name="azure-portal"></a>portál Azure
  

@@ -991,6 +991,8 @@
           href: managed-instance/alerts-create.md
         - name: Ruční iniciování převzetí služeb při selhání pro spravovanou instanci
           href: managed-instance/user-initiated-failover.md
+        - name: Migrace databáze pomocí služby opětovného přehrání protokolů
+          href: managed-instance/log-replay-service-migrate.md
     - name: ukázky
       items:
         - name: Azure CLI

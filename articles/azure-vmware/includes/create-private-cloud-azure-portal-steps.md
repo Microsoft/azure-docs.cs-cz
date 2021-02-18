@@ -1,18 +1,18 @@
 ---
-title: Nasazení služby Azure VMware Solution
-description: Postup nasazení řešení Azure VMware pomocí Azure Portal.
+title: Vytvoření privátního cloudu řešení Azure VMware
+description: Postup vytvoření privátního cloudu řešení Azure VMware pomocí Azure Portal.
 ms.topic: include
-ms.date: 09/28/2020
-ms.openlocfilehash: 4d0881721cd8c13d1b6c9fb3a29e4cdb6d6a753f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/17/2021
+ms.openlocfilehash: 983dccfaa9ea43955bfecc68bbbe432c579d51d1
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578307"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653125"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Vyberte **vytvořit nový prostředek**. Do textového pole **Hledat na Marketplace** zadejte `Azure VMware Solution` a ze seznamu vyberte **Řešení Azure VMware** . V okně **Řešení Azure VMware** vyberte **vytvořit**.
 
@@ -24,7 +24,7 @@ ms.locfileid: "91578307"
    | **Skupina prostředků** | Skupina prostředků pro prostředky privátního cloudu. |
    | **Umístění** | Vyberte umístění, jako je například **východní USA**.|
    | **Název prostředku** | Název vašeho privátního cloudu řešení Azure VMware. |
-   | **Skladová jednotka (SKU)** | Vyberte následující hodnotu SKU: AV36 |
+   | **SKU** | Vyberte následující hodnotu SKU: AV36 |
    | **Hostitelé** | Počet hostitelů, kteří mají být přidáni do clusteru privátního cloudu. Výchozí hodnota je 3, což může být vyvoláno nebo sníženo po nasazení.  |
    | **heslo správce vCenter** | Zadejte heslo správce cloudu. |
    | **Heslo správce NSX-T** | Zadejte heslo správce NSX-T. |
@@ -40,4 +40,4 @@ ms.locfileid: "91578307"
 
 1. Ověřte, že nasazení proběhlo úspěšně. Přejděte do skupiny prostředků, kterou jste vytvořili, a vyberte svůj privátní cloud.  Po dokončení nasazení se zobrazí stav **dokončeno** . 
 
-   :::image type="content" source="../media/tutorial-create-private-cloud/validate-deployment.png" alt-text="Na kartě základy zadejte hodnoty polí." border="true":::
+   :::image type="content" source="../media/tutorial-create-private-cloud/validate-deployment.png" alt-text="Ověřte, že nasazení proběhlo úspěšně." border="true":::

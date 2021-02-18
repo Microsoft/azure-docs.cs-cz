@@ -4,16 +4,16 @@ description: Zákazníci, kteří potřebují pomoc, můžou pomocí Azure Porta
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.topic: how-to
 ms.date: 06/25/2020
-ms.openlocfilehash: 11ca7925ce1664b5586ab8ec0fb523a2d562ee80
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 71aba8f2769a75805f47d90b71a8db4eeb26a97a
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745583"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652390"
 ---
 # <a name="create-an-azure-support-request"></a>Vytvoření žádosti o podporu Azure
 
-Azure umožňuje vytvářet a spravovat žádosti o podporu, označované taky jako lístky podpory. Můžete vytvářet a spravovat požadavky v [Azure Portal](https://portal.azure.com), který je popsaný v tomto článku. Žádosti můžete také vytvářet a spravovat programově pomocí [lístku podpory Azure REST API](/rest/api/support).
+Azure umožňuje vytvářet a spravovat žádosti o podporu, označované taky jako lístky podpory. Můžete vytvářet a spravovat požadavky v [Azure Portal](https://portal.azure.com), který je popsaný v tomto článku. Žádosti můžete také vytvářet a spravovat programově, pomocí [lístku podpory Azure REST API](/rest/api/support)nebo pomocí [Azure CLI](/cli/azure/azure-cli-support-request).
 
 > [!NOTE]
 > Adresa URL Azure Portal je specifická pro cloud Azure, ve kterém je vaše organizace nasazená.

@@ -12,14 +12,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/30/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: d3ed064547b1202aa562fffdfde85a28cbe8514e
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 5e39093e0472705111907e72b70446db53770012
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809543"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634480"
 ---
 # <a name="quickstart-set-up-azure-security-center"></a>Rychlý Start: nastavení Azure Security Center
 
@@ -88,7 +88,7 @@ Povolení automatického zřizování agenta Log Analytics:
 
 1. V nabídce Security Center vyberte **cenové & nastavení**.
 1. Vyberte příslušné předplatné.
-1. Na stránce **shromažďování dat** nastavte **Automatické zřizování** na **zapnuto**.
+1. V případě **automatického zřizování** na stránce **Agent Log Analytics pro virtuální počítače Azure** nastavte stav na **zapnuto**.
 1. Vyberte **Uložit**.
 
     :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Povolení automatického zřizování agenta Log Analytics":::

@@ -12,12 +12,12 @@ ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
 adobe-target: true
-ms.openlocfilehash: da47967b719b5ce601d8049f54597c207ea732c8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d8c6a9cc000d307490745b923a1f1ba6c93abf53
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372030"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652220"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>Nasazení modelů strojového učení do Azure
 
@@ -325,6 +325,14 @@ Následující tabulka popisuje různé stavy služby:
 
 > [!TIP]
 > Při nasazování jsou image Docker pro cíle výpočtů sestavené a načtené z Azure Container Registry (ACR). Ve výchozím nastavení Azure Machine Learning vytvoří ACR, který používá *základní* úroveň služby. Změna ACR pro váš pracovní prostor na úroveň Standard nebo Premium může zkrátit dobu potřebnou k sestavování a nasazování imagí do vašich výpočetních cílů. Další informace najdete v tématu [Azure Container Registry úrovně služeb](../container-registry/container-registry-skus.md).
+
+> [!NOTE]
+> Pokud model nasazujete do služby Azure Kubernetes Service (AKS), doporučujeme vám povolit [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-enable-existing-clusters) pro tento cluster. Pomůže vám to pochopit celkový stav clusteru a využití prostředků. Můžete taky najít užitečné následující zdroje:
+>
+> * [Kontrolovat Resource Health události, které mají vliv na váš cluster AKS](https://docs.microsoft.com/azure/aks/aks-resource-health)
+> * [Diagnostika služby Azure Kubernetes](https://docs.microsoft.com/azure/aks/concepts-diagnostics)
+>
+> Při pokusu o nasazení modelu do poškozeného nebo přetíženého clusteru se očekává, že dojde k problémům. Pokud potřebujete pomoc s řešením problémů s clustery AKS, obraťte se na podporu AKS.
 
 ### <a name="batch-inference"></a><a id="azuremlcompute"></a> Odvození dávky
 Azure Machine Learning výpočetní cíle jsou vytvářeny a spravovány pomocí Azure Machine Learning. Je možné je použít ke dávkové předpovědi z Azure Machine Learningch kanálů.

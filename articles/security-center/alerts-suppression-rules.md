@@ -5,15 +5,15 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 09/10/2020
+ms.date: 02/17/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 12cc2de6cd1a8e9ddf40b358c94b720b8b2cf594
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 646495597565bbb033ac3adaa15f3754f33e8fd6
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920439"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634157"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Potlačit výstrahy z Azure Defenderu
 
@@ -60,9 +60,7 @@ Postup vytvoření pravidla přímo v Azure Portal:
 
 1. V horní části stránky Upozornění zabezpečení služby Security Center
 
-    - Vyhledejte konkrétní výstrahu, kterou už nechcete vidět, a z nabídky se třemi tečkami (...) pro výstrahu vyberte **vytvořit pravidlo potlačení**:
-
-        [![* * Vytvořit pravidlo potlačení * * možnost](media/alerts-suppression-rules/auto-dismiss-future-option.png)](media/alerts-suppression-rules/auto-dismiss-future-option.png#lightbox)
+    - Vyberte konkrétní výstrahu, kterou už nechcete vidět, a v podokně podrobností vyberte **provést akci**.
 
     - Případně vyberte odkaz **pravidla potlačení** v horní části stránky a na stránce Pravidla potlačení vyberte **vytvořit nové pravidlo potlačení**:
 
@@ -85,9 +83,9 @@ Postup vytvoření pravidla přímo v Azure Portal:
 1. Uložte pravidlo. 
 
 
-## <a name="edit-a-suppression-rules"></a>Úprava pravidel potlačení
+## <a name="edit-a-suppression-rule"></a>Upravit pravidlo potlačení
 
-Pokud chcete upravit pravidla, která jste vytvořili, použijte stránku pravidla potlačení.
+Pokud chcete upravit pravidlo, které jste vytvořili, použijte stránku pravidla potlačení.
 
 1. Na stránce výstrahy zabezpečení Security Center v horní části stránky vyberte odkaz **pravidla potlačení** .
 1. Otevře se stránka pravidla potlačení se všemi pravidly pro vybraná předplatná.
@@ -106,20 +104,6 @@ Pokud chcete odstranit jedno nebo více pravidel, která jste vytvořili, použi
 1. Pokud chcete odstranit jedno pravidlo, otevřete nabídku se třemi tečkami (...) pro pravidlo a vyberte **Odstranit**.
 1. Pokud chcete odstranit víc pravidel, zaškrtněte políčka pro pravidla, která se mají odstranit, a vyberte **Odstranit**.
     ![Odstranění jednoho nebo více pravidel potlačení](media/alerts-suppression-rules/delete-multiple-alerts.png)
-
-## <a name="view-suppressed-alerts"></a>Zobrazit potlačené výstrahy
-
-Budou se vygenerovat i výstrahy, které odpovídají povoleným pravidlům potlačení, ale jejich **stav se nastaví** na zastaveno. Můžete zobrazit stav v Azure Portal, nebo máte přístup k výstrahám zabezpečení Security Center. 
-
-> [!TIP]
-> Pro potlačené výstrahy [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) nevytvoří incidenty. U jiných systémů Siem můžete filtrovat potlačitelné výstrahy pomocí stavu výstrahy (zastaveno).
-
-Pomocí filtru Security Center můžete zobrazit výstrahy, které vaše pravidla vystavila.
-
-* Na stránce výstrahy zabezpečení Security Center otevřete možnosti filtru a vyberte možnost **zavřeno**.  
-
-   [![Zobrazení odeslaných výstrah](media/alerts-suppression-rules/view-dismissed-alerts.png)](media/alerts-suppression-rules/view-dismissed-alerts.png#lightbox)
-
 
 ## <a name="create-and-manage-suppression-rules-with-the-api"></a>Vytváření a Správa pravidel potlačení pomocí rozhraní API
 

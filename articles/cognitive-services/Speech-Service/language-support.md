@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 9dfd950303d1cb838d44ae672fed33dd4cd7b5ec
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c49ee2778d3198cc7109c34bceb1591756d82b1c
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381898"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653444"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -38,92 +38,92 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Jazyk                 | Národní prostředí (BCP-47) | Vlastní nastavení  | [Rozpoznávání jazyka](how-to-automatic-language-detection.md) |
 |------------------------------------|--------|---------------------------------------------------|-------------------------------|
-| Arabština (Bahrajn), moderní Standard  | `ar-BH` | Jazykový model                                   | Yes                           | 
-| Arabština (Egypt)                     | `ar-EG` | Jazykový model                                   | Yes                          |
-| Arabština (Irák)                      | `ar-IQ` | Jazykový model                                   |                           |
-| Arabština (Izrael)                    | `ar-IL` | Jazykový model                                   |                           |
-| Arabština (Jordánsko)                    | `ar-JO` | Jazykový model                                   |                           |
-| Arabština (Kuvajt)                    | `ar-KW` | Jazykový model                                   |                           |
-| Arabština (Libanon)                   | `ar-LB` | Jazykový model                                   |                           |
-| Arabština (Omán)                      | `ar-OM` | Jazykový model                                   |                           |
-| Arabština (Katar)                     | `ar-QA` | Jazykový model                                   |                           |
-| Arabština (Saúdská Arábie)              | `ar-SA` | Jazykový model                                   | Yes                          |
-| Arabština (stav palestinská samospráva)        | `ar-PS` | Jazykový model                                   |                           |
-| Arabština (Sýrie)                     | `ar-SY` | Jazykový model                                   | Yes                          |
-| Arabština (Spojené arabské emiráty)      | `ar-AE` | Jazykový model                                   |                           |
-| Bulharština (Bulharsko)               | `bg-BG` | Jazykový model                                   |                           |
-| katalánština (Španělsko)                    | `ca-ES` | Jazykový model                                   | Yes                          |
-| Čínština (kantonština, tradiční)   | `zh-HK` | Akustický model (20201015)<br>Jazykový model                 |        Yes                   |
-| Čínština (Mandarin, zjednodušená)     | `zh-CN` | Akustický model (20200910)<br>Jazykový model                 |     Yes                      |
-| Čínština (tchajwanský mandarinka)       | `zh-TW` | Akustický model (20190701, 20201015)<br>Jazykový model                 |           Yes                |
-| chorvatština (Chorvatsko)                 | `hr-HR` | Jazykový model                                   |                           |
-| čeština (Česká republika)             | `cs-CZ` | Jazykový model                                   |                           |
-| dánština (Dánsko)                   | `da-DK` | Jazykový model                                   | Yes                          |
-| nizozemština (Nizozemsko)                | `nl-NL` | Akustický model (20201015)<br>Jazykový model                                   |    Yes                       |
-| Angličtina (Austrálie)                | `en-AU` | Akustický model (20201019)<br>Jazykový model                 | Yes                          |
-| Angličtina (Kanada)                   | `en-CA` | Akustický model (20201019)<br>Jazykový model                 | Yes                          |
-| Angličtina (Hongkong)                | `en-HK` | Jazykový model                                   |                           |
-| Angličtina (Indie)                    | `en-IN` | Akustický model (20200923)<br>Jazykový model                 | Yes                          |
-| Angličtina (Irsko)                  | `en-IE` | Jazykový model                                   |                           |
-| Angličtina (Nový Zéland)              | `en-NZ` | Akustický model (20201019)<br>Jazykový model                 |  Yes                         |
-| Angličtina (Nigérie)                  | `en-NG` | Jazykový model                                   |                           |
-| Angličtina (Filipíny)              | `en-PH` | Jazykový model                                   |                           |
-| Angličtina (Singapur)                | `en-SG` | Jazykový model                                   |                           |
-| Angličtina (Jihoafrická republika)             | `en-ZA` | Jazykový model                                   |                           |
-| Angličtina (Spojené království)           | `en-GB` | Akustický model (20201019)<br>Jazykový model<br>Výslovnost| Yes                          |
-| Angličtina (Spojené státy)            | `en-US` | Akustický model (20201019)<br>Jazykový model<br>Výslovnost| Yes                          |
-| Estonština (Estonsko)                  | `et-EE` | Jazykový model                                   |                           |
-| finština (Finsko)                  | `fi-FI` | Jazykový model                                   |     Yes                      |
-| Francouzština (Kanada)                    | `fr-CA` | Akustický model (20201015)<br>Jazykový model                 |     Yes                      |
-| francouzština (Francie)                    | `fr-FR` | Akustický model (20201015)<br>Jazykový model<br>Výslovnost|      Yes                     |
-| němčina (Německo)                   | `de-DE` | Akustický model (20190701, 20200619, 20201127)<br>Jazykový model<br>Výslovnost|  Yes                         |
-| Řečtina (Řecko)                     | `el-GR` | Jazykový model                                   |                           |
-| Gudžarátština (Indie)                  | `gu-IN` | Jazykový model                                   |                           |
-| hindština (Indie)                      | `hi-IN` | Akustický model (20200701)<br>Jazykový model                 |     Yes                      |
-| Maďarština (Maďarsko)                | `hu-HU` | Jazykový model                                   |                           |
-| Irština (Irsko)                     | `ga-IE` | Jazykový model                                   |                           |
-| italština (Itálie)                    | `it-IT` | Akustický model (20201016)<br>Jazykový model<br>Výslovnost|      Yes                     |
-| japonština (Japonsko)                   | `ja-JP` | Jazykový model                                   |      Yes                     |
-| korejština (Jižní Korea)                     | `ko-KR` | Akustický model (20201015)<br>Jazykový model                 |      Yes                     |
-| lotyština (Lotyšsko)                   | `lv-LV` | Jazykový model                                   |                           |
-| litevština (Litva)             | `lt-LT` | Jazykový model                                   |                           |
-| Maltština (Malta)                     | `mt-MT` | Jazykový model                                   |                           |
-| Maráthština (Indie)                    | `mr-IN` | Jazykový model                                   |                           |
-| Norština, Bokmål (Norsko)         | `nb-NO` | Jazykový model                                   |     Yes                      |
-| polština (Polsko)                    | `pl-PL` | Jazykový model                                   |       Yes                    |
-| Portugalština (Brazílie)                | `pt-BR` | Akustický model (20190620, 20201015)<br>Jazykový model<br>Výslovnost|          Yes                 |
-| portugalština (Portugalsko)              | `pt-PT` | Jazykový model                                   |             Yes              |
-| rumunština (Rumunsko)                 | `ro-RO` | Jazykový model                                   |                           |
-| ruština (Rusko)                   | `ru-RU` | Akustický model (20200907)<br>Jazykový model                 |                Yes           |
-| slovenština (Slovensko)                  | `sk-SK` | Jazykový model                                   |                           |
-| slovinština (Slovinsko)               | `sl-SI` | Jazykový model                                   |                           |
-| Španělština (Argentina)                | `es-AR` | Jazykový model                                   |                           |
-| Španělština (Bolívie)                  | `es-BO` | Jazykový model                                   |                           |
-| Španělština (Chile)                    | `es-CL` | Jazykový model                                   |                           |
-| Španělština (Kolumbie)                 | `es-CO` | Jazykový model                                   |                           |
-| Španělština (Kostarika)               | `es-CR` | Jazykový model                                   |                           |
-| Španělština (Kuba)                     | `es-CU` | Jazykový model                                   |                           |
-| Španělština (Dominikánská republika)       | `es-DO` | Jazykový model                                   |                           |
-| Španělština (Ekvádor)                  | `es-EC` | Jazykový model                                   |                           |
-| Španělština (Salvador)              | `es-SV` | Jazykový model                                   |                           |
-| Španělština (Rovníková Guinea)        | `es-GQ` | Jazykový model                                   |                           |
-| Španělština (Guatemala)                | `es-GT` | Jazykový model                                   |                           |
-| Španělština (Honduras)                 | `es-HN` | Jazykový model                                   |                           |
-| Španělština (Mexiko)                   | `es-MX` | Akustický model (20200907)<br>Jazykový model                 |    Yes                       |
-| Španělština (Nikaragua)                | `es-NI` | Jazykový model                                   |                           |
-| Španělština (Panama)                   | `es-PA` | Jazykový model                                   |                           |
-| Španělština (Paraguay)                 | `es-PY` | Jazykový model                                   |                           |
-| Španělština (Peru)                     | `es-PE` | Jazykový model                                   |                           |
-| Španělština (Portoriko)              | `es-PR` | Jazykový model                                   |                           |
-| Španělština (Španělsko)                    | `es-ES` | Akustický model (20201015)<br>Jazykový model                 |  Yes                         |
-| Španělština (Uruguay)                  | `es-UY` | Jazykový model                                   |                           |
-| Španělština (USA)                      | `es-US` | Jazykový model                                   |                           |
-| Španělština (Venezuela)                | `es-VE` | Jazykový model                                   |                           |
-| švédština (Švédsko)                   | `sv-SE` | Jazykový model                                   |   Yes                        |
-| Tamilština (Indie)                      | `ta-IN` | Jazykový model                                   |                           |
-| Telugština (Indie)                     | `te-IN` | Jazykový model                                   |                           |
-| thajština (Thajsko)                    | `th-TH` | Jazykový model                                   |      Yes                     |
-| turečtina (Turecko)                   | `tr-TR` | Jazykový model                                   |                           |
+| Arabština (Bahrajn), moderní Standard  | `ar-BH` | Text                                   | Yes                           | 
+| Arabština (Egypt)                     | `ar-EG` | Text                                   | Yes                          |
+| Arabština (Irák)                      | `ar-IQ` | Text                                   |                           |
+| Arabština (Izrael)                    | `ar-IL` | Text                                   |                           |
+| Arabština (Jordánsko)                    | `ar-JO` | Text                                   |                           |
+| Arabština (Kuvajt)                    | `ar-KW` | Text                                   |                           |
+| Arabština (Libanon)                   | `ar-LB` | Text                                   |                           |
+| Arabština (Omán)                      | `ar-OM` | Text                                   |                           |
+| Arabština (Katar)                     | `ar-QA` | Text                                   |                           |
+| Arabština (Saúdská Arábie)              | `ar-SA` | Text                                   | Yes                          |
+| Arabština (stav palestinská samospráva)        | `ar-PS` | Text                                   |                           |
+| Arabština (Sýrie)                     | `ar-SY` | Text                                   | Yes                          |
+| Arabština (Spojené arabské emiráty)      | `ar-AE` | Text                                   |                           |
+| Bulharština (Bulharsko)               | `bg-BG` | Text                                   |                           |
+| katalánština (Španělsko)                    | `ca-ES` | Text                                   | Yes                          |
+| Čínština (kantonština, tradiční)   | `zh-HK` | Zvuk (20201015)<br>Text                 |        Yes                   |
+| Čínština (Mandarin, zjednodušená)     | `zh-CN` | Zvuk (20200910)<br>Text                 |     Yes                      |
+| Čínština (tchajwanský mandarinka)       | `zh-TW` | Zvuk (20190701, 20201015)<br>Text                 |           Yes                |
+| chorvatština (Chorvatsko)                 | `hr-HR` | Text                                   |                           |
+| čeština (Česká republika)             | `cs-CZ` | Text                                   |                           |
+| dánština (Dánsko)                   | `da-DK` | Text                                   | Yes                          |
+| nizozemština (Nizozemsko)                | `nl-NL` | Zvuk (20201015)<br>Text                                   |    Yes                       |
+| Angličtina (Austrálie)                | `en-AU` | Zvuk (20201019)<br>Text                 | Yes                          |
+| Angličtina (Kanada)                   | `en-CA` | Zvuk (20201019)<br>Text                 | Yes                          |
+| Angličtina (Hongkong)                | `en-HK` | Text                                   |                           |
+| Angličtina (Indie)                    | `en-IN` | Zvuk (20200923)<br>Text                 | Yes                          |
+| Angličtina (Irsko)                  | `en-IE` | Text                                   |                           |
+| Angličtina (Nový Zéland)              | `en-NZ` | Zvuk (20201019)<br>Text                 |  Yes                         |
+| Angličtina (Nigérie)                  | `en-NG` | Text                                   |                           |
+| Angličtina (Filipíny)              | `en-PH` | Text                                   |                           |
+| Angličtina (Singapur)                | `en-SG` | Text                                   |                           |
+| Angličtina (Jihoafrická republika)             | `en-ZA` | Text                                   |                           |
+| Angličtina (Spojené království)           | `en-GB` | Zvuk (20201019)<br>Text<br>Výslovnost| Yes                          |
+| Angličtina (Spojené státy)            | `en-US` | Zvuk (20201019)<br>Text<br>Výslovnost| Yes                          |
+| Estonština (Estonsko)                  | `et-EE` | Text                                   |                           |
+| finština (Finsko)                  | `fi-FI` | Text                                   |     Yes                      |
+| Francouzština (Kanada)                    | `fr-CA` | Zvuk (20201015)<br>Text                 |     Yes                      |
+| francouzština (Francie)                    | `fr-FR` | Zvuk (20201015)<br>Text<br>Výslovnost|      Yes                     |
+| němčina (Německo)                   | `de-DE` | Zvuk (20190701, 20200619, 20201127)<br>Text<br>Výslovnost|  Yes                         |
+| Řečtina (Řecko)                     | `el-GR` | Text                                   |                           |
+| Gudžarátština (Indie)                  | `gu-IN` | Text                                   |                           |
+| hindština (Indie)                      | `hi-IN` | Zvuk (20200701)<br>Text                 |     Yes                      |
+| Maďarština (Maďarsko)                | `hu-HU` | Text                                   |                           |
+| Irština (Irsko)                     | `ga-IE` | Text                                   |                           |
+| italština (Itálie)                    | `it-IT` | Zvuk (20201016)<br>Text<br>Výslovnost|      Yes                     |
+| japonština (Japonsko)                   | `ja-JP` | Text                                   |      Yes                     |
+| korejština (Jižní Korea)                     | `ko-KR` | Zvuk (20201015)<br>Text                 |      Yes                     |
+| lotyština (Lotyšsko)                   | `lv-LV` | Text                                   |                           |
+| litevština (Litva)             | `lt-LT` | Text                                   |                           |
+| Maltština (Malta)                     | `mt-MT` | Text                                   |                           |
+| Maráthština (Indie)                    | `mr-IN` | Text                                   |                           |
+| Norština, Bokmål (Norsko)         | `nb-NO` | Text                                   |     Yes                      |
+| polština (Polsko)                    | `pl-PL` | Text                                   |       Yes                    |
+| Portugalština (Brazílie)                | `pt-BR` | Zvuk (20190620, 20201015)<br>Text<br>Výslovnost|          Yes                 |
+| portugalština (Portugalsko)              | `pt-PT` | Text                                   |             Yes              |
+| rumunština (Rumunsko)                 | `ro-RO` | Text                                   |                           |
+| ruština (Rusko)                   | `ru-RU` | Zvuk (20200907)<br>Text                 |                Yes           |
+| slovenština (Slovensko)                  | `sk-SK` | Text                                   |                           |
+| slovinština (Slovinsko)               | `sl-SI` | Text                                   |                           |
+| Španělština (Argentina)                | `es-AR` | Text                                   |                           |
+| Španělština (Bolívie)                  | `es-BO` | Text                                   |                           |
+| Španělština (Chile)                    | `es-CL` | Text                                   |                           |
+| Španělština (Kolumbie)                 | `es-CO` | Text                                   |                           |
+| Španělština (Kostarika)               | `es-CR` | Text                                   |                           |
+| Španělština (Kuba)                     | `es-CU` | Text                                   |                           |
+| Španělština (Dominikánská republika)       | `es-DO` | Text                                   |                           |
+| Španělština (Ekvádor)                  | `es-EC` | Text                                   |                           |
+| Španělština (Salvador)              | `es-SV` | Text                                   |                           |
+| Španělština (Rovníková Guinea)        | `es-GQ` | Text                                   |                           |
+| Španělština (Guatemala)                | `es-GT` | Text                                   |                           |
+| Španělština (Honduras)                 | `es-HN` | Text                                   |                           |
+| Španělština (Mexiko)                   | `es-MX` | Zvuk (20200907)<br>Text                 |    Yes                       |
+| Španělština (Nikaragua)                | `es-NI` | Text                                   |                           |
+| Španělština (Panama)                   | `es-PA` | Text                                   |                           |
+| Španělština (Paraguay)                 | `es-PY` | Text                                   |                           |
+| Španělština (Peru)                     | `es-PE` | Text                                   |                           |
+| Španělština (Portoriko)              | `es-PR` | Text                                   |                           |
+| Španělština (Španělsko)                    | `es-ES` | Zvuk (20201015)<br>Text                 |  Yes                         |
+| Španělština (Uruguay)                  | `es-UY` | Text                                   |                           |
+| Španělština (USA)                      | `es-US` | Text                                   |                           |
+| Španělština (Venezuela)                | `es-VE` | Text                                   |                           |
+| švédština (Švédsko)                   | `sv-SE` | Text                                   |   Yes                        |
+| Tamilština (Indie)                      | `ta-IN` | Text                                   |                           |
+| Telugština (Indie)                     | `te-IN` | Text                                   |                           |
+| thajština (Thajsko)                    | `th-TH` | Text                                   |      Yes                     |
+| turečtina (Turecko)                   | `tr-TR` | Text                                   |                           |
 
 ## <a name="text-to-speech"></a>Převod textu na řeč
 

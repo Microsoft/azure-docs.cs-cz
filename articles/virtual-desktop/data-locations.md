@@ -3,15 +3,16 @@ title: Umístění dat pro virtuální počítače s Windows – Azure
 description: Stručný přehled, ve kterém jsou uložená data a metadata virtuálních počítačů s Windows v.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.custom: references_regions
+ms.date: 02/17/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e626b7e729e394b1012848904f5ce12279c3ef24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12ec71a86a5df5954c14097e6a0ec5c8a5138fc5
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88010068"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652424"
 ---
 # <a name="data-and-metadata-locations-for-windows-virtual-desktop"></a>Data a umístění metadat pro virtuální počítače s Windows
 
@@ -26,6 +27,14 @@ Virtuální plocha Windows je aktuálně dostupná pro všechna geografická um�
 >[!IMPORTANT]
 >Virtuální desktop Windows ukládá globální informace o metadatech, jako jsou názvy tenantů, názvy fondů hostitelů, názvy skupin aplikací a hlavní názvy uživatelů v datacentru. Pokaždé, když zákazník vytvoří objekt služby, musí zadat umístění pro objekt služby. Umístění, které zadáte, určuje, kam se budou ukládat metadata pro objekt. Zákazník vybere oblast Azure a metadata budou uložená v související zeměpisné oblasti. Seznam všech oblastí Azure a souvisejících geografických oblastí najdete v části [geografických oblastí Azure](https://azure.microsoft.com/global-infrastructure/geographies/).
 
-V tuto chvíli podporujeme ukládání metadat jenom v geograficky USA (US) Azure. Uložená metadata jsou šifrovaná v klidovém stavu a geograficky redundantní zrcátka se udržují v rámci geografické oblasti. Všechna zákaznická data, jako jsou nastavení aplikace a uživatelská data, se nacházejí v umístění, které zákazník zvolí a není spravován službou. Další geografické oblasti budou k dispozici, jakmile se služba rozrůstá.
+V současné době podporujeme ukládání metadat v následujících geografických oblastech:
+
+- USA (US) (všeobecně dostupné)
+- Evropa (EU) (Public Preview) 
+
+>[!NOTE]
+> Když vybíráte oblast pro vytváření objektů služby virtuálního počítače s Windows v, uvidíte oblasti v geografických oblastech USA a EU. Abyste se ujistili, kterou oblast nejlépe vyhovuje vašemu nasazení, podívejte se na [naši mapu globální infrastruktury Azure](https://azure.microsoft.com/global-infrastructure/geographies/#geographies).
+
+Uložená metadata jsou šifrovaná v klidovém stavu a geograficky redundantní zrcátka se udržují v rámci geografické oblasti. Všechna zákaznická data, jako jsou nastavení aplikace a uživatelská data, se nacházejí v umístění, které zákazník zvolí a není spravován službou. Další geografické oblasti budou k dispozici, jakmile se služba rozrůstá.
 
 Metadata služby se replikují v rámci Azure geografie pro účely zotavení po havárii.

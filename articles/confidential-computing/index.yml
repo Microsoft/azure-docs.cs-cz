@@ -10,12 +10,12 @@ metadata:
   author: JBCook
   ms.author: jencook
   ms.date: 09/22/2020
-  ms.openlocfilehash: 4e35449f5dd34d366d0d6095830002690940e6ae
-  ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+  ms.openlocfilehash: d41addbcf1c7e5bf673ba0082e5eaa216b5f946d
+  ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 02/08/2021
-  ms.locfileid: "99831463"
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "100652628"
 landingContent:
 - title: Informace o důvěrných výpočetních operacích Azure
   linkLists:
@@ -67,7 +67,7 @@ landingContent:
   linkLists:
   - linkListType: get-started
     links:
-    - text: Důvěrné výpočetní uzly v Azure Kubernetes Service (AKS) (Preview)
+    - text: Důvěrné výpočetní uzly v AKS (služba Azure Kubernetes)
       url: confidential-nodes-aks-overview.md
   - linkListType: concept
     links:
@@ -83,7 +83,7 @@ landingContent:
       url: confidential-nodes-aks-get-started.md
   - linkListType: sample
     links:
-    - text: Ukázky důvěrných kontejnerů (nezměněné kontejnery v SGX)
+    - text: Ukázky důvěrného kontejneru (neupravené kontejnery v SGX)
       url: https://github.com/Azure-Samples/confidential-container-samples
     - text: Ukázky kontejnerů s podporou enklávy
       url: https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/confidential-computing/enclave-aware-containers.md
@@ -105,7 +105,7 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Ukázka důvěrného zdravotnictví v AKS
+    - text: Tajná ukázka zdravotní péče na AKS
       url: https://github.com/Azure-Samples/confidential-container-samples
     - text: Ověřený vzájemný protokol TLS s využitím Open Enclave v AKS
       url: https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/confidential-computing/enclave-aware-containers.md

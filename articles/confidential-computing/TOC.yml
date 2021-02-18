@@ -38,7 +38,7 @@
     - name: Výpočetní prostředky kontejneru
       expanded: true
       items:
-        - name: Důvěrné kontejnery (metoda „lift and shift“)
+        - name: Důvěrné kontejnery
           items:
             - name: Začínáme
               href: confidential-containers.md
@@ -58,7 +58,7 @@
       href: how-to-fortanix-enclave-manager.md
 - name: Reference
   items:
-    - name: Pomocná funkce SGX Quote
+    - name: Pomocná funkce pro SGX uvozovky
       href: confidential-nodes-out-of-proc-attestation.md
 - name: Zdroje informací
   items:

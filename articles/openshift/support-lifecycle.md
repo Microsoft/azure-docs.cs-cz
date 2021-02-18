@@ -3,15 +3,15 @@ title: Životní cyklus podpory Azure Red Hat OpenShift
 description: Pochopení životního cyklu podpory a podporovaných verzí pro Azure Red Hat OpenShift
 author: sakthi-vetrivel
 ms.author: suvetriv
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 5b5ae695ac11ae687a9b076005a765feaa46f83c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: fca01c77a1ff47cbeee167eb408ed9f29a1307bd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049503"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634324"
 ---
 # <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Podpora životního cyklu pro Azure Red Hat OpenShift 4
 
@@ -102,7 +102,7 @@ Další informace najdete v následující příručce k [historii verzí v minu
 |4.5|Červenec 2020| Listopad 2020|4,7 GA
 |4,6|Říjen 2020| Únor 2021|4,8 GA|
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Co se stane, když uživatel upgraduje cluster OpenShift s menší verzí, která není podporovaná?**
 

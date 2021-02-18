@@ -3,12 +3,12 @@ title: Příklad nasazení Azure Security benchmark Foundation Sample
 description: Nasaďte kroky pro ukázkový plán Azure Security benchmark Foundation, včetně podrobností parametrů artefaktu podrobného plánu.
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: e1a5e011f5b53d35971fa43613914c0a43549600
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 84c157d696dc8ababe1f252136672ea600e604af
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100421787"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633950"
 ---
 # <a name="deploy-the-azure-security-benchmark-foundation-blueprint-sample"></a>Nasazení ukázky plánu Azure Security benchmark Foundation
 
@@ -132,10 +132,8 @@ Následující tabulka uvádí seznam parametrů podrobného plánu:
 |Šablona Azure Virtual Network paprsku|Šablona Resource Manageru|Názvy adres podsítě (volitelné)|Pole názvů podsítí, která se mají nasadit do virtuální sítě s paprsky; například "SUBNET1", "podsíť subnet2"|
 |Šablona Azure Virtual Network paprsku|Šablona Resource Manageru|Předpony adres podsítě (volitelné)|Pole předpon IP adres pro volitelné podsítě pro virtuální síť hvězdicové sítě; například "10.0.7.0/24", "10.0.8.0/24"|
 |Šablona Azure Virtual Network paprsku|Šablona Resource Manageru|Nasazení paprsku|Zadáním hodnoty true nebo false určete, jestli přiřazení nasadí součásti paprsků architektury.|
-|Network Watcher skupina prostředků|Skupina prostředků|Název skupiny prostředků|Uzamčené – používá Network Watcher název skupiny prostředků.|
-|Network Watcher skupina prostředků|Skupina prostředků|Umístění skupiny prostředků|Uzamčené – používá umístění centra.|
-|Šablona Azure Network Watcher|Šablona Resource Manageru|Umístění Network Watcher|Umístění prostředku Network Watcher|
-|Šablona Azure Network Watcher|Šablona Resource Manageru|Network Watcher umístění skupiny prostředků|Umístění skupiny prostředků Network Watcher|
+|Šablona Azure Network Watcher|Šablona Resource Manageru|Umístění Network Watcher|Pokud je už Network Watcher povolený, hodnota tohoto parametru se **musí** shodovat s umístěním existující Network Watcher skupiny prostředků.|
+|Šablona Azure Network Watcher|Šablona Resource Manageru|Network Watcher umístění skupiny prostředků|Pokud je už Network Watcher povolený, hodnota tohoto parametru se **musí** shodovat s názvem existující skupiny prostředků Network Watcher.|
 
 ## <a name="next-steps"></a>Další kroky
 

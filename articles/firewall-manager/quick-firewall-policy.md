@@ -6,14 +6,14 @@ author: vhorne
 ms.service: firewall-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 02/16/2021
+ms.date: 02/17/2021
 ms.author: victorh
-ms.openlocfilehash: 26d7336d60449db11122c9921a3a59807bd82911
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 9cc263d311bd550a92a0c8f14ab5ce86d72e9ee3
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100562179"
+ms.locfileid: "100633627"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-a-firewall-policy---arm-template"></a>Rychlý Start: vytvoření Azure Firewall a šablony pro zásady brány firewall – ARM
 
@@ -39,7 +39,7 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
-Tato šablona vytvoří zabezpečeného virtuálního rozbočovače pomocí nástroje Azure Firewall Manager spolu s nezbytnými prostředky pro podporu tohoto scénáře.
+Tato šablona vytvoří virtuální síť rozbočovače spolu s nezbytnými prostředky pro podporu tohoto scénáře.
 
 Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-azurefirewall-create-with-firewallpolicy-apprule-netrule-ipgroups/).
 

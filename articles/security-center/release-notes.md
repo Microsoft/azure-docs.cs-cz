@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2021
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: d40d6107d3eee4b45f2184a61b1cdfc99559e9c7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 837ba5a0fd5ff94cc4f55cd4b01b8cb8a27425fd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379002"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634256"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -35,11 +35,29 @@ Další informace o *plánovaných* změnách, které už brzy Security Center, 
 
 Aktualizace v únoru zahrnují:
 
+- [Nová stránka výstrah zabezpečení v Azure Portal vydaná pro obecnou dostupnost (GA)](#new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga)
 - [Doporučení pro ochranu úloh Kubernetes vydaná pro obecnou dostupnost (GA)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
 - [Přímá vazba na zásadu ze stránky s podrobnostmi o doporučení](#direct-link-to-policy-from-recommendation-details-page)
 - [Doporučení klasifikace dat SQL už nemá vliv na vaše zabezpečené skóre.](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
 - [Automatizace pracovního postupu se můžou aktivovat změnami pro vyhodnocení dodržování předpisů v legislativních režimech (Preview).](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
 - [Vylepšení stránky inventáře prostředků](#asset-inventory-page-enhancements)
+
+
+### <a name="new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga"></a>Nová stránka výstrah zabezpečení v Azure Portal vydaná pro obecnou dostupnost (GA)
+
+Přenavrhli jsme stránku výstrahy zabezpečení Azure Security Center, aby poskytovala tyto:
+
+- **Vylepšené možnosti třídění výstrah** – pomáhají snížit únavu výstrah a soustředit se na nejrelevantnější hrozby, a to díky tomu, že seznam obsahuje přizpůsobitelné filtry a možnosti seskupení.
+- **Další informace najdete v seznamu výstrah** , například MITRE ATT&ACK taktiku.
+- **Tlačítko pro vytvoření ukázkových upozornění** – k vyhodnocení možností Azure Defenderu a otestování výstrah. konfigurace (pro integraci SIEM, e-mailová oznámení a automatizace pracovních postupů) můžete vytvářet ukázkové výstrahy ze všech plánů Azure Defenderu.
+- **Sbližování s incidentem funkce Sentinel Azure** – pro zákazníky, kteří používají oba produkty, je teď mezi nimi přepínání mezi nimi jednodušší a je snadné se o jeden další.
+- **Lepší výkon** u rozsáhlých seznamů výstrah.
+- **Navigace pomocí klávesnice** v seznamu výstrah.
+- **Výstrahy z Azure Resource graphu** – pro všechny vaše prostředky můžete zadávat dotazy na výstrahy v Azure Resource graphu, Kusto jako rozhraní API. To je užitečné také při vytváření vlastních řídicích panelů výstrah. [Přečtěte si další informace o Azure Resource graphu](../governance/resource-graph/index.yml).
+- **Vytvoření ukázkové** výstrahy – Pokud chcete vytvořit ukázkové výstrahy z nového prostředí výstrah, přečtěte si téma [Generování ukázkových výstrah v Azure Defenderu](security-center-alert-validation.md#generate-sample-azure-defender-alerts).
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Seznam výstrah zabezpečení Azure Security Center":::
+
 
 ### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Doporučení pro ochranu úloh Kubernetes vydaná pro obecnou dostupnost (GA)
 

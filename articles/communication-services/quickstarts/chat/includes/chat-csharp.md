@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 04e658e3107ac0c9622ca1601eb93b01b9986fef
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1db7eeb61bc4ded2d7015baecaacd974d7767812
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100645480"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653497"
 ---
 ## <a name="prerequisites"></a>Požadavky
 Než začnete, nezapomeňte:
@@ -60,7 +60,11 @@ Následující třídy zpracovávají některé z hlavních funkcí služby Azur
 
 ## <a name="create-a-chat-client"></a>Vytvoření chatového klienta
 
-Chcete-li vytvořit chatovacího klienta, použijte koncový bod komunikačních služeb a přístupový token, který byl vygenerován jako součást požadovaných kroků. Chcete-li `CommunicationIdentityClient` `Administration` vytvořit uživatele a vystavit token, který bude předat klientovi chat, je nutné použít třídu z klientské knihovny. Přečtěte si další informace o [tokenech přístupu uživatele](../../access-tokens.md).
+Chcete-li vytvořit chatovacího klienta, použijte koncový bod komunikačních služeb a přístupový token, který byl vygenerován jako součást požadovaných kroků. Chcete-li `CommunicationIdentityClient` `Administration` vytvořit uživatele a vystavit token, který bude předat klientovi chat, je nutné použít třídu z klientské knihovny.
+
+Přečtěte si další informace o [tokenech přístupu uživatele](../../access-tokens.md).
+
+V tomto rychlém startu se nezabývá vytvořením vrstvy služby pro správu tokenů pro aplikaci Chat, i když se doporučuje. Další informace o [architektuře chatu](../../../concepts/chat/concepts.md)
 
 ```csharp
 using Azure.Communication.Identity;

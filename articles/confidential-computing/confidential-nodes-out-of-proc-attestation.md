@@ -1,32 +1,39 @@
 ---
-title: Podpora ověřování mimo proc pomocí DaemonSet pomocníka Intel SGX pro uvozovky v Azure
+title: Podpora ověřování mimo proc pomocí Daemonset pomocníka Intel SGX pro uvozovky v Azure (Preview)
 description: DaemonSet pro generování uvozovek mimo proces aplikace SGX. V tomto článku se dozvíte, jak je k dispozici zařízení ověření mimo proc pro důvěrné úlohy běžící uvnitř kontejneru.
 ms.service: container-service
 author: agowdamsft
 ms.topic: overview
-ms.date: 9/22/2020
+ms.date: 2/12/2021
 ms.author: amgowda
-ms.openlocfilehash: b79b3b40f3fbfe7d70550db3aaf7b365aa455e89
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 89890740b06a399bad4678ff6ddd9be09c1cda0e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564153"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653325"
 ---
-# <a name="platform-software-management-with-sgx-quote-helper-daemon-set"></a>Správa softwaru platformy pomocí pomocné rutiny pomocníka SGX
+# <a name="platform-software-management-with-sgx-quote-helper-daemon-set-preview"></a>Správa softwaru platforem pomocí rutiny pomocníka SGX citace (Preview)
 
 [Enklávy aplikace](confidential-computing-enclaves.md) , které provádějí vzdálené ověření identity, vyžadují VYgenerovanou uvozovky. Tato nabídka poskytuje kryptografické ověření identity a stavu aplikace a také prostředí, ve kterém je spuštěný enklávy. Generace této nabídky vyžaduje důvěryhodné softwarové komponenty, které jsou součástí komponent Intel Platform Software Component Components (PSW).
 
 ## <a name="overview"></a>Přehled
  
 Intel podporuje pro spuštění generování nabídky dva režimy ověření identity:
-- **in-proc** : hostuje důvěryhodné softwarové komponenty uvnitř procesu aplikace enklávy.
+- **in-proc**: hostuje důvěryhodné softwarové komponenty uvnitř procesu aplikace enklávy.
 
-- **mimo proc** : hostuje důvěryhodné softwarové komponenty mimo aplikaci enklávy.
+- **mimo proc**: hostuje důvěryhodné softwarové komponenty mimo aplikaci enklávy.
  
 SGX aplikace sestavené pomocí sady Open enklávy SDK ve výchozím nastavení používají režim ověření identity v režimu proc. Aplikace založené na SGX umožňují použití mimo proc a vyžadují další hostování a vystavování požadovaných komponent, jako je například architektura enklávy Service Manager (AESM), které jsou pro aplikaci externí.
 
-Použití této funkce se **důrazně doporučuje** , protože vylepšuje dobu provozu aplikací enklávy během aktualizací platforem Intel nebo aktualizací ovladačů DCAP.
+Použití této funkce se **důrazně doporučuje**, protože vylepšuje dobu provozu aplikací enklávy během aktualizací platforem Intel nebo aktualizací ovladačů DCAP.
+
+Pokud chcete tuto funkci povolit v clusteru AKS, při povolování doplňku pro důvěrné výpočty prosím změňte příkaz Add--Enable-sgxquotehelper na CLI. Podrobné pokyny pro rozhraní příkazového řádku [najdete tady](confidential-nodes-aks-get-started.md): 
+
+```azurecli-interactive
+# Create a new AKS cluster with system node pool with Confidential Computing addon enabled and SGX Quote Helper
+az aks create -g myResourceGroup --name myAKSCluster --generate-ssh-keys --enable-addon confcom --enable-sgxquotehelper
+```
 
 ## <a name="why-and-what-are-the-benefits-of-out-of-proc"></a>Proč a jaké jsou výhody mimo proc?
 

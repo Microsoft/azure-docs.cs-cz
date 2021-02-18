@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 06/15/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 2b5dc30de19704b5e8950515cfa6224b4bbdbaf0
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 722a508679c74f9d62df07575ffa1006528f4398
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341342"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652093"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Správa incidentů zabezpečení v Azure Security Center
 
@@ -29,11 +29,19 @@ Ve službě Security Center představuje bezpečnostní incident souhrn všech v
 
 ## <a name="managing-security-incidents"></a>Správa incidentů zabezpečení
 
-1. Na stránce Přehled Security Center vyberte dlaždici **výstrahy zabezpečení** . Zobrazí se incidenty a výstrahy. Všimněte si, že bezpečnostní incidenty mají jinou ikonu výstrah zabezpečení.
+1. Na stránce s výstrahami Security Center použijte tlačítko **Přidat filtr** pro filtrování podle názvu výstrahy na incident zabezpečení s názvem výstrahy **zjištěného u několika prostředků**. 
 
-    ![Zobrazit incidenty zabezpečení](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
+    :::image type="content" source="media/security-center-incident/locating-incidents.png" alt-text="Hledání incidentů na stránce s výstrahami v Azure Security Center":::
 
-1. Pokud chcete zobrazit podrobnosti, vyberte incident. Na stránce **incident zabezpečení** se zobrazí další podrobnosti. 
+    Seznam je teď filtrovaný tak, aby zobrazoval jenom incidenty. Všimněte si, že bezpečnostní incidenty mají jinou ikonu výstrah zabezpečení.
+
+    :::image type="content" source="media/security-center-incident/incidents-list.png" alt-text="Seznam incidentů na stránce s výstrahami v Azure Security Center":::
+
+1. Pokud chcete zobrazit podrobnosti o incidentu, vyberte ho ze seznamu. Zobrazí se boční podokno s dalšími podrobnostmi o incidentu.
+
+    :::image type="content" source="media/security-center-incident/incident-quick-peek.png" alt-text="Boční podokno zobrazující podrobnosti incidentu":::
+
+1. Pokud chcete zobrazit další podrobnosti, vyberte **Zobrazit úplné podrobnosti**.
 
     [![Reakce na incidenty zabezpečení v Azure Security Center](media/security-center-incident/incident-details.png)](media/security-center-incident/incident-details.png#lightbox)
 

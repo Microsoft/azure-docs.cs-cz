@@ -74,7 +74,7 @@
           href: concepts/telephony-sms/concepts.md
         - name: Koncepce telefonního subsystému
           href: concepts/telephony-sms/telephony-concept.md
-        - name: Typy telefonních čísel v komunikačních službách Azure
+        - name: Typy telefonních čísel
           href: concepts/telephony-sms/plan-solution.md
         - name: Požadavky na infrastrukturu rozhraní SIP
           href: concepts/telephony-sms/sip-interface-infrastructure.md

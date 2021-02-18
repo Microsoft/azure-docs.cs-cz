@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b019c12103a0324e21ef7c06b0c7a5d7fe14e6ec
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 740201b84323f5a01ab01bb21ec458a19832e499
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743883"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652016"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Eliminujte chybná hesla pomocí Azure Active Directory ochrany heslem.
 
@@ -174,7 +174,7 @@ Uvažujte následující příklad:
 Dalším krokem je identifikace všech instancí zakázaných hesel v normalizovaném novém heslu uživatele. Body jsou přiřazeny na základě následujících kritérií:
 
 1. Každé zakázané heslo, které se nachází v uživatelském hesle, je přiděleno na jeden bod.
-1. Každý zbývající jedinečný znak je dán jedním bodem.
+1. Každý zbývající znak, který není součástí zakázaného hesla, je dán jedním bodem.
 1. Heslo musí mít aspoň pět (5) bodů, které se mají přijmout.
 
 V dalších dvou ukázkových scénářích používá contoso používání ochrany heslem Azure AD a má ve svém vlastním seznamu zakázaných hesel "contoso". Pojďme také předpokládat, že je "prázdná" v globálním seznamu.

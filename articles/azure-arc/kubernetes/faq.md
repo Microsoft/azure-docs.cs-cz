@@ -2,18 +2,18 @@
 title: Nejčastější dotazy k Azure ARC s povoleným Kubernetes
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 02/17/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Tento článek obsahuje seznam nejčastějších dotazů souvisejících s povoleným Kubernetesem Azure ARC.
 keywords: Kubernetes, oblouk, Azure, kontejnery, konfigurace, GitOps, nejčastější dotazy
-ms.openlocfilehash: 237b2629b833a63552b172636f46a1ac92e321c0
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: e0d7501dc1a82940571d0168222c396f61a70bce
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100561496"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652492"
 ---
 # <a name="frequently-asked-questions---azure-arc-enabled-kubernetes"></a>Nejčastější dotazy – Kubernetes s povoleným obloukem Azure
 
@@ -27,30 +27,30 @@ Služba Azure ARC s povoleným Kubernetes umožňuje rozšiřování clusterů K
 
 ## <a name="do-i-need-to-connect-my-aks-clusters-running-on-azure-to-azure-arc"></a>Potřebuji připojit své clustery AKS běžící na Azure do Azure ARC?
 
-Ne. Všechny funkce Kubernetes s podporou ARC Azure, včetně Azure Monitor a Azure Policy (gatekeeper), jsou k dispozici na AKS (nativní prostředek v Azure Resource Manager).
+No. Všechny funkce Kubernetes s podporou ARC Azure, včetně Azure Monitor a Azure Policy (gatekeeper), jsou k dispozici na AKS (nativní prostředek v Azure Resource Manager).
     
 ## <a name="should-i-connect-my-aks-hci-cluster-and-kubernetes-clusters-on-azure-stack-hub-and-azure-stack-edge-to-azure-arc"></a>Mám připojit cluster AKS-HCI a clustery Kubernetes v centru Azure Stack a Azure Stack Edge do Azure ARC?
 
-Ano, propojíte cluster AKS-HCI nebo clustery Kubernetes v Azure Stack Edge nebo centrum Azure Stack do Azure ARC, které poskytuje clustery se reprezentacemi prostředků v Azure Resource Manager. Tato reprezentace prostředků rozšiřuje možnosti, jako je konfigurace clusteru, Azure Monitor a Azure Policy (gatekeeper), do clusterů Kubernetes, které připojujete.
+Ano, propojíte cluster AKS-HCI nebo clustery Kubernetes v Azure Stack Edge nebo centrum Azure Stack do Azure ARC, které poskytuje clustery se reprezentacemi prostředků v Azure Resource Manager. Tato reprezentace prostředků rozšiřuje možnosti jako konfigurace clusteru, Azure Monitor a Azure Policy (gatekeeper) na připojené clustery Kubernetes.
 
 ## <a name="how-to-address-expired-azure-arc-enabled-kubernetes-resources"></a>Jak vyřešíte neplatných prostředků Kubernetes s povoleným obloukem ARC Azure?
 
-Certifikát služby (MSI), který je přidružený k vašemu Kuberenetes s povoleným obloukem Azure ARC, má období 90 dní. Po vypršení platnosti certifikátu se prostředek posuzuje `Expired` a všechny funkce, jako je konfigurace, monitorování a zásady, přestanou v tomto clusteru fungovat. Pomocí následujícího postupu můžete znovu získat svůj cluster Kubernetes s obloukem Azure ARC:
+Certifikát Identita spravované služby (MSI) přidružený k vašemu Kubernetesu s povoleným ARC Azure má období 90 dnů. Po vypršení platnosti certifikátu se tento prostředek posuzuje `Expired` a všechny funkce (třeba konfigurace, monitorování a zásady) přestanou na tomto clusteru fungovat. Postup opětovného fungování clusteru Kubernetes s obloukem Azure ARC:
 
-1. Odstranění prostředku a agentů Kubernetes s povoleným ARC Azure v clusteru 
+1. Odstraňte prostředky a agenty Kubernetes s povoleným ARC Azure v clusteru. 
 
     ```console
     az connectedk8s delete -n <name> -g <resource-group>
     ```
 
-1. Znovu vytvořte prostředek Kubernetes s povoleným ARC Azure tím, že do clusteru znovu nasadíte agenty.
+1. Nasaďte agenty do clusteru a znovu vytvořte prostředek Kubernetes s povoleným ARC Azure.
     
     ```console
     az connectedk8s connect -n <name> -g <resource-group>
     ```
 
 > [!NOTE]
-> `az connectedk8s delete` odstraní také konfigurace nad clusterem. Po spuštění `az connectedk8s connect` vytvořte konfigurace v clusteru znovu, a to buď ručně, nebo pomocí Azure Policy.
+> `az connectedk8s delete` odstraní také konfigurace nad clusterem. Po spuštění `az connectedk8s connect` znovu vytvořte konfigurace v clusteru, a to buď ručně, nebo pomocí Azure Policy.
 
 ## <a name="if-i-am-already-using-cicd-pipelines-can-i-still-use-azure-arc-enabled-kubernetes-and-configurations"></a>I když už používám kanály CI/CD, můžu dál používat Kubernetes a konfigurace s povoleným ARC Azure?
 
@@ -62,9 +62,11 @@ Kanál CI/CD aplikuje změny pouze jednou při spuštění kanálu. Operátor Gi
 
 **Použít GitOps ve velkém měřítku**
 
-Kanály CI/CD jsou vhodné pro nasazení řízená událostmi do vašeho clusteru Kubernetes, kde může být událost nabízená do úložiště Git. Nasazení stejné konfigurace do všech clusterů Kubernetes ale vyžaduje, aby byl kanál CI/CD nakonfigurovaný s přihlašovacími údaji každého z těchto clusterů Kubernetes ručně. Na druhé straně platí, že v případě, že Azure Resource Manager spravuje vaše konfigurace, můžete použít Azure Policy k automatizaci aplikace požadované konfigurace na všech clusterech Kubernetes v rámci předplatného nebo rozsahu skupiny prostředků v jednom přechodu. Tato možnost se vztahuje i na prostředky Kubernetes s povoleným ARC Azure vytvořené po přiřazení zásady.
+Kanály CI/CD jsou užitečné pro nasazení řízená událostmi do vašeho clusteru Kubernetes (například nabízené oznámení do úložiště Git). Pokud ale chcete nasadit stejnou konfiguraci do všech clusterů Kubernetes, budete muset ručně nakonfigurovat každé přihlašovací údaje clusteru Kubernetes na kanál CI/CD. 
 
-Funkce konfigurace se používá k aplikování konfigurace standardních hodnot, jako jsou zásady sítě, vazby rolí a zásady zabezpečení v celém inventáři Kubernetes clusterů pro dodržování předpisů a požadavky na dodržování zásad správného řízení.
+U Kubernetes s podporou Azure ARC, protože Azure Resource Manager spravuje vaše konfigurace, můžete automatizovat vytváření stejné konfigurace ve všech prostředcích Kubernetes s povolenou službou Azure ARC pomocí Azure Policy, a to v oboru předplatného nebo skupiny prostředků. Tato možnost se vztahuje i na prostředky Kubernetes s povoleným ARC Azure vytvořené po přiřazení zásady.
+
+Tato funkce používá základní konfigurace (jako jsou zásady sítě, vazby rolí a zásady zabezpečení pod celým) v celém inventáři Kubernetes clusteru pro splnění požadavků na dodržování předpisů a zásad správného řízení.
 
 ## <a name="next-steps"></a>Další kroky
 

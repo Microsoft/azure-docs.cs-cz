@@ -3,12 +3,12 @@ title: Azure Service Bus syntaxe akce SQL pravidla předplatného | Microsoft Do
 description: Tento článek poskytuje referenci pro syntaxi akce pravidla SQL. Akce jsou zapsány v syntaxi založené na jazyce SQL, které se provádí na základě zprávy.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: f7b8cdfcccc22508b98a42391d2a0ef9955232d0
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 75ff437bace59d7f4de07342277f0760480a5b0f
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742674"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652832"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>Syntaxe akce SQL pravidla předplatného
 
@@ -199,7 +199,8 @@ Logické konstanty jsou reprezentovány klíčovými slovy `TRUE` nebo `FALSE` .
   
 `property(name)`Funkce vrátí hodnotu vlastnosti, na kterou odkazuje `name` . `name`Hodnotou může být libovolný platný výraz, který vrací řetězcovou hodnotu.  
 
-[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
+## <a name="examples"></a>Příklady
+Příklady najdete v tématu [Příklady filtru Service Bus](service-bus-filter-examples.md).
   
 ## <a name="considerations"></a>Požadavky
 

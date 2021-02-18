@@ -1,18 +1,18 @@
 ---
-title: Kurz – nasazení clusteru vSphere v Azure
-description: Naučte se, jak nasadit cluster vSphere v Azure pomocí řešení Azure VMware.
+title: Kurz – vytvoření a nasazení privátního cloudu řešení Azure VMware
+description: Naučte se vytvářet a nasazovat privátní cloud řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 11/19/2020
-ms.openlocfilehash: 3c8ae3673ad049153c2b9700bd7efae6c4c286ed
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c8383e987e13e43ea9bc9ba5be196538a259aa8c
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093943"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653124"
 ---
-# <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Kurz: nasazení privátního cloudu řešení Azure VMware v Azure
+# <a name="tutorial-create-an-azure-vmware-solution-private-cloud"></a>Kurz: Vytvoření privátního cloudu řešení Azure VMware
 
-Řešení Azure VMware nabízí možnost nasadit cluster vSphere v Azure. Minimální počáteční nasazení je tři hostitele. Další hostitele je možné přidat najednou, maximálně 16 hostitelů na jeden cluster. 
+V tomto kurzu se dozvíte, jak vytvořit a nasadit privátní cloud řešení Azure VMware. Minimální počáteční nasazení hostitelů je tři. Další hostitele je možné přidat najednou, maximálně 16 hostitelů na jeden cluster. 
 
 Vzhledem k tomu, že řešení Azure VMware neumožňuje spravovat váš privátní cloud s vaším místním systémem vCenter při spuštění, je potřeba provést další konfiguraci. Tyto postupy a související požadavky jsou pokryté v tomto kurzu.
 
@@ -25,13 +25,10 @@ V tomto kurzu se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Odpovídající práva správce a oprávnění k vytvoření privátního cloudu.
+- Odpovídající práva správce a oprávnění k vytvoření privátního cloudu. V předplatném musíte mít minimální úroveň přispěvatele.
+- Podle informací, které jste shromáždili v článku [plánování](production-ready-deployment-steps.md) , nasaďte řešení Azure VMware.
 - Ujistěte se, že máte nakonfigurované příslušné síťové služby, jak je popsáno v tématu [kurz: kontrolní seznam sítě](tutorial-network-checklist.md).
-
-## <a name="register-the-resource-provider"></a>Registrace poskytovatele prostředků
-
-[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
-
+- Byli zřízeni hostitelé a poskytovatele prostředků Microsoft. AVS, jak je popsáno v [části hostitelé požadavku a povolení poskytovatele prostředků Microsoft. AVS](enable-azure-vmware-solution.md).
 
 ## <a name="create-a-private-cloud"></a>Vytvoření privátního cloudu
 

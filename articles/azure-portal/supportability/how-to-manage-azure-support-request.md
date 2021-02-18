@@ -5,16 +5,16 @@ tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
 ms.date: 12/14/2020
-ms.openlocfilehash: 8110f87401da1352309fb55615093d49981c754d
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: d6c68dd341e0794a690b41b73ecc4be954db7359
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504810"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653845"
 ---
 # <a name="manage-an-azure-support-request"></a>Správa žádosti o podporu Azure
 
-Po [Vytvoření žádosti o podporu Azure](how-to-create-azure-support-request.md)ji můžete spravovat v [Azure Portal](https://portal.azure.com), který je popsaný v tomto článku. Žádosti můžete také vytvářet a spravovat programově pomocí [lístku podpory Azure REST API](/rest/api/support).
+Po [Vytvoření žádosti o podporu Azure](how-to-create-azure-support-request.md)ji můžete spravovat v [Azure Portal](https://portal.azure.com), který je popsaný v tomto článku. Žádosti můžete také vytvářet a spravovat programově, pomocí [lístku podpory Azure REST API](/rest/api/support)nebo pomocí [Azure CLI](/cli/azure/azure-cli-support-request).
 
 ## <a name="view-support-requests"></a>Zobrazení žádostí o podporu
 
@@ -76,7 +76,7 @@ Možnost nahrávání souborů můžete použít k nahrání diagnostických sou
 
 1. Na stránce **žádost o podporu** vyhledejte soubor a pak vyberte **Odeslat**. Pokud máte více souborů, opakujte tento postup.
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="Nahrání souboru":::
+    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="Nahrát soubor":::
 
 ### <a name="file-upload-guidelines"></a>Pokyny pro nahrávání souborů
 
@@ -127,7 +127,7 @@ Pokud potřebujete zavřít žádost o podporu, [odešlete zprávu s](#send-a-me
 
 Pokud potřebujete znovu otevřít uzavřenou žádost o podporu, vytvořte [novou zprávu](#send-a-message), která automaticky znovu otevře požadavek.
 
-## <a name="cancel-a-support-plan"></a>Zrušit plán podpory
+## <a name="cancel-a-support-plan"></a>Zrušení plánu podpory
 
 Pokud potřebujete zrušit plán podpory, přečtěte si článek [zrušení plánu podpory](../../cost-management-billing/manage/cancel-azure-subscription.md#cancel-a-support-plan).
 

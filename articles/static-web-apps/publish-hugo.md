@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: e49a84f5ac507ac80481313c103701a88934083a
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 4539c32a367bb0974212d989176a96b530da21a4
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900769"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652325"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Kurz: publikování webu Hugo ve službě Azure static Web Apps Preview
 
@@ -88,7 +88,7 @@ K připojení ke statickým Web Appsm Azure budete potřebovat úložiště na G
 1. Vložení místního úložiště do GitHubu
 
    ```bash
-   git push --set-upstream origin master
+   git push --set-upstream origin main
    ```
 
 ## <a name="deploy-your-web-app"></a>Nasazení webové aplikace
@@ -123,7 +123,7 @@ Následující kroky ukazují, jak vytvořit novou aplikaci statické lokality a
 
 1. Jako _úložiště_ vyberte **Hugo-static-App** .
 
-1. Pro _větev_ vyberte **hlavní** uzel.
+1. Pro _větev_ vyberte **Main (hlavní**).
 
    :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Informace o dokončeném GitHubu":::
 

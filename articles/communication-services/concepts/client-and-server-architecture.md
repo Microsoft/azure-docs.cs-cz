@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 8b63ce25d6839e8672027240099859dc7aad96c5
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 2cc7e1d0c108d45383a68258fb6f62fcab87d1f7
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886069"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653811"
 ---
 # <a name="client-and-server-architecture"></a>Architektura klienta a serveru
 
@@ -60,7 +60,7 @@ Komunikace přes telefonní systém může výrazně zvýšit dosah vaší aplik
 
 :::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="Diagram znázorňující architekturu PSTN služby Communications Services":::
 
-Další informace o řešeních PSTN a SMS najdete v tématu [Plánování sítě PSTN a řešení SMS](../concepts/telephony-sms/plan-solution.md) .
+Další informace o telefonních číslech PSTN najdete v tématu [typy telefonních](../concepts/telephony-sms/plan-solution.md) čísel.
 
 ## <a name="humans-communicating-with-bots-and-other-services"></a>Lidé, kteří komunikují s roboty a dalšími službami
 
@@ -83,7 +83,7 @@ Můžete chtít si vyměňovat libovolná data mezi uživateli, například sync
 Další informace najdete v následujících článcích:
 
 - Další informace o [ověřování](../concepts/authentication.md)
-- Další informace o [řešeních PSTN a SMS](../concepts/telephony-sms/plan-solution.md)
+- Další informace o [typech telefonních čísel](../concepts/telephony-sms/plan-solution.md)
 
 - [Přidání chatu do aplikace](../quickstarts/chat/get-started.md)
 - [Přidání hlasových hovorů do aplikace](../quickstarts/voice-video-calling/getting-started-with-calling.md)

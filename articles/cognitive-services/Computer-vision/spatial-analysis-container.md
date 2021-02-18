@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: db21f1170dacbfa1e4367e7f22143ec3d0b0f6e4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a43a27a8e880c76ba21639437c0c20f583620d50
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737332"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653614"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Instalace a spuštění kontejneru prostorové analýzy (Preview)
 
@@ -249,7 +249,7 @@ sudo systemctl --now enable nvidia-mps.service
 
 ## <a name="configure-azure-iot-edge-on-the-host-computer"></a>Konfigurace Azure IoT Edge na hostitelském počítači
 
-Pokud chcete nasadit kontejner prostorových analýz v hostitelském počítači, vytvořte instanci služby [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) pomocí cenové úrovně Standard (S1) nebo Free (F0). Pokud je hostitelský počítač Azure Stack Edge, použijte stejné předplatné a skupinu prostředků, které používá prostředek Azure Stack Edge.
+Pokud chcete nasadit kontejner prostorových analýz v hostitelském počítači, vytvořte instanci služby [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) pomocí cenové úrovně Standard (S1) nebo Free (F0). 
 
 Pomocí rozhraní příkazového řádku Azure vytvořte instanci služby Azure IoT Hub. Nahraďte parametry tam, kde je to vhodné. Alternativně můžete vytvořit IoT Hub Azure na [Azure Portal](https://portal.azure.com/).
 
@@ -264,7 +264,7 @@ sudo az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test
 sudo az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-Pokud hostitelský počítač není Azure Stack hraniční zařízení, bude nutné nainstalovat [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) verze 1.0.9. Chcete-li stáhnout správnou verzi, postupujte podle následujících kroků:
+Bude nutné nainstalovat [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) 1.0.9 verze. Chcete-li stáhnout správnou verzi, postupujte podle následujících kroků:
 
 Ubuntu Server 18,04:
 ```bash
@@ -396,7 +396,73 @@ sudo apt-get install -y docker-ce nvidia-docker2
 sudo systemctl restart docker
 ```
 
-Teď, když jste nastavili a nakonfigurovali svůj virtuální počítač, použijte následující postup k nasazení kontejneru prostorové analýzy. 
+Teď, když jste nastavili a nakonfigurovali svůj virtuální počítač, nakonfigurujte Azure IoT Edge podle následujících kroků. 
+
+## <a name="configure-azure-iot-edge-on-the-vm"></a>Konfigurace Azure IoT Edge na virtuálním počítači
+
+Pokud chcete nasadit kontejner prostorových analýz na virtuálním počítači, vytvořte instanci služby [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) s využitím cenové úrovně Standard (S1) nebo Free (F0).
+
+Pomocí rozhraní příkazového řádku Azure vytvořte instanci služby Azure IoT Hub. Nahraďte parametry tam, kde je to vhodné. Alternativně můžete vytvořit IoT Hub Azure na [Azure Portal](https://portal.azure.com/).
+
+```bash
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+sudo az login
+sudo az account set --subscription <name or ID of Azure Subscription>
+sudo az group create --name "test-resource-group" --location "WestUS"
+
+sudo az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-resource-group"
+
+sudo az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
+```
+
+Bude nutné nainstalovat [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) 1.0.9 verze. Chcete-li stáhnout správnou verzi, postupujte podle následujících kroků:
+
+Ubuntu Server 18,04:
+```bash
+curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+```
+
+Zkopírujte vygenerovaný seznam.
+```bash
+sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+```
+
+Nainstalujte veřejný klíč Microsoft GPG.
+
+```bash
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+```
+
+Aktualizujte seznamy balíčků na vašem zařízení.
+
+```bash
+sudo apt-get update
+```
+
+Instalace verze 1.0.9:
+
+```bash
+sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
+```
+
+V dalším kroku zaregistrujete virtuální počítač jako zařízení IoT Edge ve vaší instanci IoT Hub pomocí [připojovacího řetězce](../../iot-edge/how-to-manual-provision-symmetric-key.md?view=iotedge-2018-06).
+
+Zařízení IoT Edge musíte připojit k Azure IoT Hub. Je nutné zkopírovat připojovací řetězec z IoT Edge zařízení, které jste vytvořili dříve. Případně můžete spustit níže uvedený příkaz v rozhraní příkazového řádku Azure CLI.
+
+```bash
+sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+```
+
+Na virtuálním počítači otevřeném  `/etc/iotedge/config.yaml` pro úpravy. Nahraďte `ADD DEVICE CONNECTION STRING HERE` připojovacím řetězcem. Uložte soubor a zavřete ho. Spuštěním tohoto příkazu restartujte službu IoT Edge na virtuálním počítači.
+
+```bash
+sudo systemctl restart iotedge
+```
+
+Nasaďte kontejner prostorových analýz jako modul IoT na virtuálním počítači, a to buď z [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) nebo prostřednictvím rozhraní příkazového [řádku Azure](../cognitive-services-apis-create-account-cli.md?tabs=windows). Pokud používáte portál, nastavte identifikátor URI image na umístění vašeho Azure Container Registry. 
+
+Pomocí následujících kroků nasaďte kontejner pomocí Azure CLI.
 
 ---
 
