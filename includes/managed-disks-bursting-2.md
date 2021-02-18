@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 28c92004fe67de35e5776cd7dc24cf534ec6f8f3
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 801f0f03b49d20c84a4531bd0daad7630a0ed01d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98061048"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585049"
 ---
 ## <a name="common-scenarios"></a>Obvyklé scénáře
 Při navýšení zátěže můžou významně těžit z následujících scénářů:
@@ -37,6 +37,7 @@ Existují tři stavy, ve kterých může být prostředek zapnutý s povoleným 
 - **Konstanta** – provoz prostředku je přesně v cíli výkonu.
 
 ## <a name="examples-of-bursting"></a>Příklady shlukování
+
 Následující příklady znázorňují způsob, jakým funguje shlukování s různými kombinacemi virtuálních počítačů a disků. Aby bylo možné tyto příklady snadno sledovat, zaměřte se na MB/s, ale stejná logika se použije nezávisle na IOPS.
 
 ### <a name="non-burstable-virtual-machine-with-burstable-disks"></a>Virtuální počítač bez zátěže s použitím diskových disků s více shluky
@@ -50,17 +51,17 @@ Následující příklady znázorňují způsob, jakým funguje shlukování s r
     - Zřízené MB/s: 100
     - Maximální počet shluků MB/s: 170
 
- Když se virtuální počítač spustí, načtou se data z disku s operačním systémem. Vzhledem k tomu, že disk s operačním systémem je součástí virtuálního počítače, který začíná, bude disk s operačním systémem plným kreditem. Tyto kredity umožní, aby se při spuštění disku s operačním systémem za sekundu 170 MB/s, jak vidíte níže:
+ Když se virtuální počítač spustí, načte data z disku s operačním systémem. Vzhledem k tomu, že disk s operačním systémem je součástí virtuálního počítače, který se spouští, bude disk s operačním systémem plný kredity. Tyto kredity umožní, aby se při spuštění disku s operačním systémem za sekundu 170 MB/s.
 
-![Spouštění neshlukování virtuálních počítačů při nastavování shlukování disku](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-startup.jpg)
+![Virtuální počítač odešle požadavek na propustnost 192 MB/s na disk s operačním systémem a disk s operačním systémem odpoví 170 MB/s dat.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-startup.jpg)
 
-Po dokončení spuštění se aplikace na virtuálním počítači spustí a má nekritickou úlohu. Tato úloha vyžaduje 15 MB/S, která se rovnoměrně rozprostře mezi všechny disky:
+Po dokončení spuštění se aplikace na virtuálním počítači spustí a má nekritickou úlohu. Tato úloha vyžaduje 15 MB/S, která se rovnoměrně rozloží napříč všemi disky.
 
-![Nečinnost shlukování virtuálních počítačů bez shlukování](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-idling.jpg)
+![Aplikace pošle požadavek na 15 MB/s propustnosti virtuálnímu počítači, virtuální počítač provede požadavek a pošle každému z nich požadavek na 5 MB/s. Každý disk vrátí 5 MB/s, virtuální počítač vrátí 15 MB/s do aplikace.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-idling.jpg)
 
-Aplikace pak potřebuje zpracovat dávkovou úlohu, která vyžaduje 192 MB/s. Disk s operačním systémem používá 2 MB/s a zbývající jsou rovnoměrně rozdělená mezi datové disky:
+Aplikace pak potřebuje zpracovat dávkovou úlohu, která vyžaduje 192 MB/s. disk s operačním systémem používá 2 MB/s a zbývající jsou rovnoměrně rozdělená mezi datovými disky.
 
-![Shlukování virtuálních počítačů bez shlukování při roztržení](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-bursting.jpg)
+![Aplikace odesílá požadavek na virtuální počítač z propustnosti 192 MB/s a pošle žádost do datových disků (95 MB/s každého) a 2 MB na disk s operačním systémem, datové disky, které splňují požadavky, a všechny disky vrátí požadovanou propustnost do virtuálního počítače, který je vrátí do aplikace.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-bursting.jpg)
 
 ### <a name="burstable-virtual-machine-with-non-burstable-disks"></a>Virtualizovaný virtuální počítač s disky, které nelze rozshlukovat
 **Kombinace virtuálních počítačů a disků:** 
@@ -72,11 +73,12 @@ Aplikace pak potřebuje zpracovat dávkovou úlohu, která vyžaduje 192 MB/s. D
 - 2 datové disky P10 
     - Zřízené MB/s: 250
 
- Po počátečním spuštění se aplikace na virtuálním počítači spustí a má nekritickou úlohu. Tato úloha vyžaduje 30 MB/s, která se rovnoměrně rozloží na všechny disky: ![ shlukování nečinnosti virtuálních počítačů bez shlukování na více instancích](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
+ Po počátečním spuštění se aplikace na virtuálním počítači spustí a má nekritickou úlohu. Tato úloha vyžaduje 30 MB/s, která se rovnoměrně rozloží napříč všemi disky.
+![Aplikace pošle požadavek na virtuální počítač o 30 MB/s a pošle požadavek na virtuální počítač a pošle každý z nich požadavek na 10 MB/s. Každý disk vrátí 10 MB/s, virtuální počítač vrátí 30 MB/s na aplikaci.](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
 
-Aplikace pak potřebuje zpracovat dávkovou úlohu, která vyžaduje 600 MB/s. Standard_L8s_v2 rozšíří, aby splňovala tuto poptávku, a požadavky na disky se rovnoměrně rozloží na P50 disky:
+Aplikace pak potřebuje zpracovat dávkovou úlohu, která vyžaduje 600 MB/s. Standard_L8s_v2 rozšíří, aby splňovala tuto poptávku, a požadavky na disky se rovnoměrně rozloží na P50 disky.
 
-![Shlukování virtuálních počítačů bez shlukování na disku](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-bursting.jpg)
+![Aplikace odesílá požadavek na virtuální počítač z propustnosti 600 MB/s, virtuální počítač bere v úvahu nárůst požadavků a každý z jeho disků pošle požadavek na 200 MB/s. Každý disk vrátí 200 MB/s, protože shluky virtuálních počítačů vrátí do aplikace 600 MB/s.](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-bursting.jpg)
 ### <a name="burstable-virtual-machine-with-burstable-disks"></a>Virtuální počítač s více podsítěmi s roztržením disků
 **Kombinace virtuálních počítačů a disků:** 
 - Standard_L8s_v2 
@@ -89,14 +91,14 @@ Aplikace pak potřebuje zpracovat dávkovou úlohu, která vyžaduje 600 MB/s. S
     - Zřízené MB/s: 25
     - Maximální počet shluků MB/s: 170 
 
-Když se virtuální počítač spustí, bude nárůst požadavku na jeho hraniční limit 1 280 MB/s z disku s operačním systémem a disk s operačním systémem bude reagovat na výkon při roztržení 170 MB/s.
+Když se virtuální počítač spustí, bude nárůst požadavků na jeho limit počtu 1 280 MB/s z disku s operačním systémem a disk s operačním systémem bude reagovat na výkon při jeho nárůstu na 170 MB/s.
 
-![Nastavování shlukování virtuálních počítačů při vypínání zatížení](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-startup.jpg)
+![Při spuštění se virtuální počítač rozpíná za účelem odeslání žádosti o 1 280 MB/s na disk s operačním systémem, nárůsty disku s operačním systémem za účelem vrácení 1 280 MB/s.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-startup.jpg)
 
-Po dokončení spuštění aplikace se pak na virtuálním počítači spustí. Aplikace má nekritickou úlohu, která vyžaduje 15 MB/s, která se rovnoměrně rozloží napříč všemi disky:
+Po spuštění spustíte aplikaci, která má nekritickou úlohu. Tato aplikace vyžaduje 15 MB/s, která se rovnoměrně rozšíří napříč všemi disky.
 
-![Nečinnost shlukování virtuálních počítačů při nečinnosti](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
+![Aplikace pošle požadavek na 15 MB/s propustnosti virtuálnímu počítači, virtuální počítač provede požadavek a pošle každému z nich požadavek na 5 MB/s. Každý disk vrátí 5 MB/s, virtuální počítač vrátí 15 MB/s do aplikace.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
 
-Aplikace pak potřebuje zpracovat dávkovou úlohu, která vyžaduje 360 MB/s. Standard_L8s_v2 se rozpíná, aby splňovala tuto poptávku, a pak požadavky. Disk s operačním systémem vyžaduje jenom 20 MB/s. Zbývajících 340 MB/s se zpracovává na základě zatížení datových disků P4:  
+Aplikace pak potřebuje zpracovat dávkovou úlohu, která vyžaduje 360 MB/s. Standard_L8s_v2 se rozpíná, aby splňovala tuto poptávku, a pak požadavky. Disk s operačním systémem vyžaduje jenom 20 MB/s. Zbývajících 340 MB/s se zpracovává na základě shlukování datových disků P4.
 
-![Shlukování shlukování virtuálních počítačů na více počítačů](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-bursting.jpg)
+![Aplikace odesílá požadavek na virtuální počítač z propustnosti 360 MB/s, virtuální počítač bere v úvahu nárůst požadavků a každý z nich odešle požadavek na 170 MB/s a 20 MB/s z disku s operačním systémem. Každý disk vrátí požadované MB/s, což počet nárůstů virtuálních počítačů vrátí do aplikace v počtu 360 MB/s.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-bursting.jpg)

@@ -4,19 +4,19 @@ description: Efektivní sledování webových rolí a rolí pracovních procesů
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: ccd863db55ef0ff9f4051947321321c8b01430c4
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 1f9204534fcdfbf7c393eaafdbae62c4c4321f2f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920684"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573873"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights pro Azure Cloud Services
-[Application Insights][start] můžou monitorovat [aplikace cloudových služeb Azure](https://azure.microsoft.com/services/cloud-services/) kvůli dostupnosti, výkonu, selhání a využití díky kombinování dat ze Application Insights sad SDK s [Azure Diagnosticsmi](../platform/diagnostics-extension-overview.md) daty z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
+[Application Insights][start] můžou monitorovat [aplikace cloudových služeb Azure](https://azure.microsoft.com/services/cloud-services/) kvůli dostupnosti, výkonu, selhání a využití díky kombinování dat ze Application Insights sad SDK s [Azure Diagnosticsmi](../agents/diagnostics-extension-overview.md) daty z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
 
 ![Řídicí panel přehled](./media/cloudservices/overview-graphs.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než začnete, budete potřebovat:
 
 * Předplatné [Azure](https://azure.com) . Přihlaste se pomocí účet Microsoft pro Windows, Xbox Live nebo jiné cloudové služby Microsoftu. 
@@ -32,7 +32,7 @@ Tato možnost zobrazí aplikaci za běhu a poskytne vám veškerou telemetrii, k
 
 Pokud potřebujete tuto možnost, jste hotovi. 
 
-Vaše další kroky [zobrazují metriky z vaší aplikace](../platform/metrics-charts.md)a [dotazují se na data s analýzou](../log-query/log-query-overview.md). 
+Vaše další kroky [zobrazují metriky z vaší aplikace](../essentials/metrics-charts.md)a [dotazují se na data s analýzou](../logs/log-query-overview.md). 
 
 Chcete-li monitorovat výkon v prohlížeči, můžete také chtít nastavit [testy dostupnosti](./monitor-web-app-availability.md) a [přidat kód na webové stránky](./javascript.md).
 
@@ -95,7 +95,7 @@ Pokud jste se rozhodli použít samostatný prostředek Application Insights pro
 
 To má vliv na vložení klíčů instrumentace Application Insights do souborů s názvem *ServiceConfiguration. \* . cscfg*. Zde je [ukázkový kód](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
 
-Pokud chcete změnit úroveň diagnostických informací, které se odesílají do Application Insights, můžete to provést tak, že [přímo upravíte soubory *. cscfg*](../platform/diagnostics-extension-to-application-insights.md).
+Pokud chcete změnit úroveň diagnostických informací, které se odesílají do Application Insights, můžete to provést tak, že [přímo upravíte soubory *. cscfg*](../agents/diagnostics-extension-to-application-insights.md).
 
 ## <a name="install-the-sdk-in-each-project"></a><a name="sdk"></a>Instalace sady SDK v každém projektu
 Pomocí této možnosti můžete přidat vlastní obchodní telemetrii k libovolné roli. Možnost poskytuje užší analýzu způsobu použití a provádění vaší aplikace.
@@ -167,7 +167,7 @@ Tento krok je nutný pouze v případě, že chcete zachytit úplné dotazy SQL 
 
 1. Otevřete Application Insights prostředky, které jste vytvořili.
 
-   V [Průzkumníku metrik](../platform/metrics-charts.md)se zobrazí jednotlivé datové [body a][diagnostic]agregovaná data se zobrazí.
+   V [Průzkumníku metrik](../essentials/metrics-charts.md)se zobrazí jednotlivé datové [body a][diagnostic]agregovaná data se zobrazí.
 
 1. Přidejte další telemetrii (podívejte se na další části) a pak publikujte aplikaci, abyste získali živou diagnostiku a používání zpětné vazby. 
 
@@ -180,17 +180,17 @@ Pokud žádná data neexistují, udělejte toto:
 Další informace naleznete v tématu [Poradce při potížích][qna].
 
 ## <a name="view-azure-diagnostics-events"></a>Zobrazit Azure Diagnostics události
-Informace o [Azure Diagnostics](../platform/diagnostics-extension-overview.md) v Application Insights najdete v následujících umístěních:
+Informace o [Azure Diagnostics](../agents/diagnostics-extension-overview.md) v Application Insights najdete v následujících umístěních:
 
 * Čítače výkonu se zobrazují jako vlastní metriky. 
 * Protokoly událostí systému Windows se zobrazují jako trasování a vlastní události.
 * Protokoly aplikací, protokoly trasování událostí pro Windows a veškeré protokoly infrastruktury diagnostiky se zobrazují jako trasování.
 
-Chcete-li zobrazit čítače výkonu a počty událostí, otevřete [Průzkumník metrik](../platform/metrics-charts.md) a přidejte následující graf:
+Chcete-li zobrazit čítače výkonu a počty událostí, otevřete [Průzkumník metrik](../essentials/metrics-charts.md) a přidejte následující graf:
 
 ![Data Azure Diagnostics](./media/cloudservices/23-wad.png)
 
-Pokud chcete hledat v různých protokolech trasování odesílaných pomocí Azure Diagnostics, použijte [vyhledávací](./diagnostic-search.md) dotaz nebo [dotaz Analytics](../log-query/log-analytics-tutorial.md). Předpokládejme například, že máte neošetřenou výjimku, která způsobila selhání a recyklaci role. Tyto informace se zobrazují v kanálu Aplikace protokolu událostí systému Windows. Pomocí služby Search můžete zobrazit chybu protokolu událostí systému Windows a získat úplné trasování zásobníku pro výjimku. V takovém případě vám pomůže najít hlavní příčinu problému.
+Pokud chcete hledat v různých protokolech trasování odesílaných pomocí Azure Diagnostics, použijte [vyhledávací](./diagnostic-search.md) dotaz nebo [dotaz Analytics](../logs/log-analytics-tutorial.md). Předpokládejme například, že máte neošetřenou výjimku, která způsobila selhání a recyklaci role. Tyto informace se zobrazují v kanálu Aplikace protokolu událostí systému Windows. Pomocí služby Search můžete zobrazit chybu protokolu událostí systému Windows a získat úplné trasování zásobníku pro výjimku. V takovém případě vám pomůže najít hlavní příčinu problému.
 
 ![Hledání Azure Diagnostics](./media/cloudservices/25-wad.png)
 
@@ -261,7 +261,7 @@ Pro celkový přehled systému můžete na jednom [řídicím panelu](./overview
 
 Pokud váš systém používá jiné služby Azure, například Stream Analytics, zahrňte také jejich sledovací grafy. 
 
-Pokud máte mobilní klientskou aplikaci, použijte [App Center](../learn/mobile-center-quickstart.md). V [Analytics](../log-query/log-query-overview.md) můžete vytvářet dotazy pro zobrazení počtu událostí a můžete je připnout na řídicí panel.
+Pokud máte mobilní klientskou aplikaci, použijte [App Center](../app/mobile-center-quickstart.md). V [Analytics](../logs/log-query-overview.md) můžete vytvářet dotazy pro zobrazení počtu událostí a můžete je připnout na řídicí panel.
 
 ## <a name="example"></a>Příklad
 V [příkladu](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) se monitoruje služba s webovou rolí a dvěma rolemi pracovních procesů.
@@ -274,7 +274,7 @@ Vytvořili jste sestavení pro .NET 4.6? Rozhraní .NET 4,6 se v rolích Azure C
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>Další kroky
-* [Konfigurace odesílání diagnostiky Azure do Application Insights](../platform/diagnostics-extension-to-application-insights.md)
+* [Konfigurace odesílání diagnostiky Azure do Application Insights](../agents/diagnostics-extension-to-application-insights.md)
 * [Automatické vytváření Application Insightsch prostředků](./powershell.md)
 * [Automatizace Azure Diagnostics](./powershell-azure-diagnostics.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)

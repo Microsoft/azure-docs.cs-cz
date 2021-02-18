@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b7dc7a9f93d6d70abec57632ffc95aea8a6bc699
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 82e15712fe1e7a5791b1374e4aa4cd446f8f5e90
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804984"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574424"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>Základní hodnoty zabezpečení Azure pro Network Watcher
 
@@ -118,9 +118,9 @@ Network Watcher by měl být povolený.
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat změny provedené v Azure Network Watcher. Můžete vytvářet výstrahy v rámci Azure Monitor, které se aktivují, když dojde k provedení změn.
 
-* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -142,7 +142,7 @@ Network Watcher by měl být povolený.
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace a zjišťovat změny pro instance Azure Network Watcher. Jiné než na řídicí rovině (např. Azure Portal), Network Watcher sám negeneruje protokoly související se síťovými přenosy. Network Watcher poskytuje nástroje pro monitorování, diagnostiku, zobrazení metrik a povolení nebo zakázání protokolů pro prostředky ve službě Azure Virtual Network.
 
-* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Pochopení Network Watcher](./network-watcher-monitoring-overview.md)
 
@@ -154,7 +154,7 @@ Network Watcher by měl být povolený.
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace a zjišťovat změny pro instance Azure Network Watcher. Jiné než na řídicí rovině (např. Azure Portal), Network Watcher sám o sobě negeneruje protokoly auditu. Network Watcher poskytuje nástroje pro monitorování, diagnostiku, zobrazení metrik a povolení nebo zakázání protokolů pro prostředky ve službě Azure Virtual Network.
 
-* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Pochopení Network Watcher](./network-watcher-monitoring-overview.md)
 
@@ -174,7 +174,7 @@ Network Watcher by měl být povolený.
 
 **Doprovodné** materiály: v Azure monitor nastavte dobu uchování protokolu pro Log Analytics pracovní prostory, které jsou přidružené k Azure Network Watcher na základě předpisů pro dodržování předpisů vaší organizace.
 
-* [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -184,7 +184,7 @@ Network Watcher by měl být povolený.
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace a zjišťovat změny pro instance Azure Network Watcher. Jiné než na řídicí rovině (např. Azure Portal), Network Watcher sám negeneruje protokoly související se síťovými přenosy. Network Watcher poskytuje nástroje pro monitorování, diagnostiku, zobrazení metrik a povolení nebo zakázání protokolů pro prostředky ve službě Azure Virtual Network.
 
-* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Pochopení Network Watcher](./network-watcher-monitoring-overview.md)
 
@@ -479,7 +479,7 @@ Pokud chcete používat funkce Network Watcher, účet, ke kterému se přihlaš
 
 **Pokyny**: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro změny v Azure Network Watcher a dalších důležitých nebo souvisejících prostředcích.
 
-* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
+* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Ano
 

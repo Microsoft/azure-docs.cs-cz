@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.openlocfilehash: b41575208d0793a33864556ec4313ae1a71f2db5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f73091552a78760024189b173897913edca724bb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184463"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593402"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Doporučení srovnávacích testů výkonnosti pro Azure NetApp Files
 
@@ -113,7 +113,7 @@ Můžete také vytvořit řídicí panel v Azure Monitor pro Azure NetApp Files 
 
 ### <a name="azure-monitor-api-access"></a>Přístup k rozhraní API Azure Monitor
 
-K Azure NetApp Filesm čítačům můžete přistupovat pomocí volání REST API. Další informace najdete v tématu [podporované metriky ve službě Azure monitor: Microsoft. NetApp/netAppAccounts/capacityPools/](../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) Volumes pro čítače pro fondy kapacity a svazky.
+K Azure NetApp Filesm čítačům můžete přistupovat pomocí volání REST API. Další informace najdete v tématu [podporované metriky ve službě Azure monitor: Microsoft. NetApp/netAppAccounts/capacityPools/](../azure-monitor/essentials/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) Volumes pro čítače pro fondy kapacity a svazky.
 
 Následující příklad ukazuje adresu URL GET pro zobrazení velikosti logického svazku:
 

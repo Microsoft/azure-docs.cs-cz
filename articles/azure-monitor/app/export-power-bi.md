@@ -3,12 +3,12 @@ title: Export do Power BI z Azure Application Insights | Microsoft Docs
 description: Analytické dotazy se dají zobrazit v Power BI.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 1e88d60cd9a9d0e6267998237b33a361b12ffd84
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4bdae09d193d5ae9c59fe9352e07b8219a76841d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186996"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584317"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Power BI informačního kanálu od Application Insights
 [Power BI](https://www.powerbi.com/) je sada obchodních nástrojů, která pomáhá analyzovat data a sdílet přehledy. V každém zařízení jsou k dispozici řídicí panely s bohatou dostupností. Můžete kombinovat data z mnoha zdrojů, včetně analytických dotazů z [Azure Application Insights](./app-insights-overview.md).
@@ -31,7 +31,7 @@ Pokud chcete importovat Application Insights dotaz, použijte desktopovou verzi 
 Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-an-analytics-query"></a>Export analytického dotazu
-1. [Otevřete Analytics a napište dotaz](../log-query/log-analytics-tutorial.md).
+1. [Otevřete Analytics a napište dotaz](../logs/log-analytics-tutorial.md).
 2. Otestujte a zužte dotaz, dokud nebudete spokojeni s výsledky. Před exportem se ujistěte, že dotaz běží v analýze správně.
 3. V nabídce **Export** vyberte možnost **Power BI (M)**. Uložte textový soubor.
    
@@ -77,7 +77,7 @@ Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
    ![Snímek obrazovky Power BI Desktop se zvýrazněnou změnou názvu](./media/export-power-bi/changetitle.png)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Může dojít k chybám souvisejícím s přihlašovacími údaji nebo velikostí datové sady. Zde jsou některé informace o tom, co dělat o těchto chybách.
 
@@ -146,4 +146,4 @@ Po počátečním importu se řídicí panel a sestavy budou dál aktualizovat d
 
 ## <a name="next-steps"></a>Další kroky
 * [Power BI – informace](https://www.powerbi.com/learning/)
-* [Kurz analýzy](../log-query/log-analytics-tutorial.md)
+* [Kurz analýzy](../logs/log-analytics-tutorial.md)

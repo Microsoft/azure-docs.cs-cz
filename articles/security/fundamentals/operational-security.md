@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: f968267d4233c765bfd107d81957cf04edace923
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7380c0d9679fe74bc91eea269f53fea750922b79
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408511"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575004"
 ---
 # <a name="azure-operational-security"></a>Provozní zabezpečení Azure
 ## <a name="introduction"></a>Úvod
@@ -108,7 +108,7 @@ Chráněná data ve službě Azure Backup se ukládají do trezoru záloh umíst
 
 ![Řešení pro správu](./media/operational-security/azure-operational-security-fig4.png)
 
-Dobrým příkladem řešení, které využívá více služeb k poskytnutí dalších funkcí je [Update Management řešení](../../automation/update-management/overview.md). Toto řešení používá agenta [Azure Monitorch protokolů](../../azure-monitor/log-query/log-query-overview.md) pro systémy Windows a Linux ke shromáždění informací o požadovaných aktualizacích u každého agenta. Tato data zapisuje do úložiště protokolů Azure Monitor, kde je můžete analyzovat pomocí vloženého řídicího panelu.
+Dobrým příkladem řešení, které využívá více služeb k poskytnutí dalších funkcí je [Update Management řešení](../../automation/update-management/overview.md). Toto řešení používá agenta [Azure Monitorch protokolů](../../azure-monitor/logs/log-query-overview.md) pro systémy Windows a Linux ke shromáždění informací o požadovaných aktualizacích u každého agenta. Tato data zapisuje do úložiště protokolů Azure Monitor, kde je můžete analyzovat pomocí vloženého řídicího panelu.
 
 Při vytváření nasazení se k instalaci požadovaných aktualizací použijí Runbooky v [Azure Automation](../../automation/automation-intro.md) . Celý tento proces spravujete na portálu a nemusíte se starat o podrobnosti.
 
@@ -148,19 +148,19 @@ Security Center shromažďuje data z vašich virtuálních počítačů za úče
 
 Služba Azure Security Center pomáhá zákazníkům předcházet hrozbám, detekovat je a reagovat na ně tím, že shromažďuje a zpracovává data související se zabezpečením, včetně informací o konfiguraci, metadat, protokolů událostí, souborů se stavem systému a dalších dat. Společnost Microsoft dodržuje přísné pokyny pro dodržování předpisů a zabezpečení – od psaní kódu po provoz služeb.
 
--   **Oddělení dat** : Data se v rámci služby ukládají logicky oddělená pro jednotlivé komponenty. Všechna data jsou označená podle organizace. Toto značení přetrvává v průběhu celého životního cyklu dat a je vyžadováno na každé úrovni služby.
+-   **Oddělení dat**: Data se v rámci služby ukládají logicky oddělená pro jednotlivé komponenty. Všechna data jsou označená podle organizace. Toto značení přetrvává v průběhu celého životního cyklu dat a je vyžadováno na každé úrovni služby.
 
--   **Přístup k datům** : aby bylo možné poskytnout doporučení pro zabezpečení a prozkoumat potenciální bezpečnostní hrozby, mohou pracovníci společnosti Microsoft získat přístup k informacím shromažďovaným nebo analyzovaným službami Azure, včetně souborů s výpisem stavu systému, událostí vytváření procesů, snímků disků virtuálních počítačů a artefaktů, které mohou neúmyslně zahrnovat zákaznická data nebo osobní údaje z vašich virtuálních počítačů. V [souladu s podmínkami služby Microsoft Online Services a prohlášením o zásadách ochrany osobních údajů](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), které společnost Microsoft nepoužívá zákaznická data ani informace z nich nevyužívá pro reklamní nebo podobné obchodní účely.
+-   **Přístup k datům**: aby bylo možné poskytnout doporučení pro zabezpečení a prozkoumat potenciální bezpečnostní hrozby, mohou pracovníci společnosti Microsoft získat přístup k informacím shromažďovaným nebo analyzovaným službami Azure, včetně souborů s výpisem stavu systému, událostí vytváření procesů, snímků disků virtuálních počítačů a artefaktů, které mohou neúmyslně zahrnovat zákaznická data nebo osobní údaje z vašich virtuálních počítačů. V [souladu s podmínkami služby Microsoft Online Services a prohlášením o zásadách ochrany osobních údajů](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), které společnost Microsoft nepoužívá zákaznická data ani informace z nich nevyužívá pro reklamní nebo podobné obchodní účely.
 
--   **Použití dat** : Společnost Microsoft vylepšuje své schopnosti prevence a detekce pomocí schémat a analýzy hrozeb napříč několika klienty. Činíme tak v souladu se závazky k ochraně osobních údajů popsanými v našem [Prohlášení o zásadách ochrany osobních údajů](https://www.microsoft.com/en-us/privacystatement/OnlineServices/).
+-   **Použití dat**: Společnost Microsoft vylepšuje své schopnosti prevence a detekce pomocí schémat a analýzy hrozeb napříč několika klienty. Činíme tak v souladu se závazky k ochraně osobních údajů popsanými v našem [Prohlášení o zásadách ochrany osobních údajů](https://www.microsoft.com/en-us/privacystatement/OnlineServices/).
 
 ### <a name="data-location"></a>Umístění dat
 
 Azure Security Center shromažďuje dočasné kopie souborů se stavem systému a analyzuje je za účelem detekce stop pokusů o napadení zabezpečení, neúspěšných i úspěšných. Azure Security Center provádí tuto analýzu v rámci stejné geografie jako pracovní prostor a po dokončení analýzy tyto dočasné kopie odstraní. Artefakty počítačů se ukládají centrálně ve stejné oblasti jako virtuální počítač.
 
--   **Vaše účty úložiště** : účet úložiště je zadaný pro každou oblast, ve které jsou spuštěné virtuální počítače. To umožňuje ukládání dat v oblasti, kde se nachází virtuální počítač, ze kterého data jsou shromažďována.
+-   **Vaše účty úložiště**: účet úložiště je zadaný pro každou oblast, ve které jsou spuštěné virtuální počítače. To umožňuje ukládání dat v oblasti, kde se nachází virtuální počítač, ze kterého data jsou shromažďována.
 
--   **Azure Security Center Storage** : Informace o výstrahách zabezpečení, včetně partnerských výstrah, doporučení a stavu zabezpečení, se ukládají centrálně (v současnosti v USA). Tyto informace mohou podle potřeby zahrnovat související údaje o konfiguraci a událostech zabezpečení shromažďované z virtuálních počítačů, a to za účelem poskytování výstrah zabezpečení, doporučení nebo informací o stavu zabezpečení.
+-   **Azure Security Center Storage**: Informace o výstrahách zabezpečení, včetně partnerských výstrah, doporučení a stavu zabezpečení, se ukládají centrálně (v současnosti v USA). Tyto informace mohou podle potřeby zahrnovat související údaje o konfiguraci a událostech zabezpečení shromažďované z virtuálních počítačů, a to za účelem poskytování výstrah zabezpečení, doporučení nebo informací o stavu zabezpečení.
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
@@ -195,17 +195,17 @@ Tyto protokoly jsou vydávány prostředkem a poskytují bohatou a častou data 
 
 Například protokoly událostí systému Windows jsou jednou z kategorií diagnostického protokolu pro virtuální počítače a protokoly objektů blob, tabulek a front jsou kategoriemi diagnostických protokolů pro účty úložiště.
 
-Diagnostické protokoly se liší od [protokolu aktivit (dříve označovaného jako protokol auditu nebo operační protokol)](../../azure-monitor/platform/platform-logs-overview.md). Protokol aktivit nabízí přehled o operacích provedených u prostředků v rámci vašeho předplatného. Diagnostické protokoly poskytují přehled o operacích, které provedly samotné vaše prostředky.
+Diagnostické protokoly se liší od [protokolu aktivit (dříve označovaného jako protokol auditu nebo operační protokol)](../../azure-monitor/essentials/platform-logs-overview.md). Protokol aktivit nabízí přehled o operacích provedených u prostředků v rámci vašeho předplatného. Diagnostické protokoly poskytují přehled o operacích, které provedly samotné vaše prostředky.
 
 ### <a name="metrics"></a>Metriky
 
-Azure Monitor vám umožňuje využívat telemetrii, abyste získali přehled o výkonu a stavu vašich úloh v Azure. Nejdůležitější typ dat telemetrie Azure jsou metriky (označované taky jako čítače výkonu) vydávané většinou prostředků Azure. Azure Monitor poskytuje několik způsobů, jak nakonfigurovat a využívat tyto [metriky](../../azure-monitor/platform/data-platform.md) pro monitorování a řešení potíží. Metriky představují hodnotný zdroj telemetrie a umožňují provádět následující úlohy:
+Azure Monitor vám umožňuje využívat telemetrii, abyste získali přehled o výkonu a stavu vašich úloh v Azure. Nejdůležitější typ dat telemetrie Azure jsou metriky (označované taky jako čítače výkonu) vydávané většinou prostředků Azure. Azure Monitor poskytuje několik způsobů, jak nakonfigurovat a využívat tyto [metriky](../../azure-monitor/data-platform.md) pro monitorování a řešení potíží. Metriky představují hodnotný zdroj telemetrie a umožňují provádět následující úlohy:
 
 -   **Sledujte výkon** svého prostředku (jako je virtuální počítač, web nebo aplikace logiky), a to tak, že vykreslíte jeho metriky v grafu portálu a připnete ho k řídicímu panelu.
 
 -   **Zobrazí se oznámení o problému** , který ovlivňuje výkon vašeho prostředku, pokud metrika překračuje určitou prahovou hodnotu.
 
--   **Konfigurace automatizovaných akcí** , jako je automatické škálování prostředku nebo vyvolávání Runbooku, pokud metrika převyšuje určitou prahovou hodnotu.
+-   **Konfigurace automatizovaných akcí**, jako je automatické škálování prostředku nebo vyvolávání Runbooku, pokud metrika převyšuje určitou prahovou hodnotu.
 
 -   **Provádění pokročilých analýz** nebo vytváření sestav o trendech výkonu a využití vašeho prostředku.
 
@@ -213,7 +213,7 @@ Azure Monitor vám umožňuje využívat telemetrii, abyste získali přehled o 
 
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-Je to schopnost v Azure, která umožňuje shromažďování diagnostických dat v nasazené aplikaci. Můžete použít diagnostické rozšíření z různých různých zdrojů. V současné době jsou podporované [webové role a role pracovních procesů Azure Cloud Service](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service), [Azure Virtual Machines](../../virtual-machines/windows/overview.md) se systémem Microsoft Windows a [Service Fabric](../../azure-monitor/platform/diagnostics-extension-overview.md). Další služby Azure mají svou vlastní samostatnou diagnostiku.
+Je to schopnost v Azure, která umožňuje shromažďování diagnostických dat v nasazené aplikaci. Můžete použít diagnostické rozšíření z různých různých zdrojů. V současné době jsou podporované [webové role a role pracovních procesů Azure Cloud Service](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service), [Azure Virtual Machines](../../virtual-machines/windows/overview.md) se systémem Microsoft Windows a [Service Fabric](../../azure-monitor/agents/diagnostics-extension-overview.md). Další služby Azure mají svou vlastní samostatnou diagnostiku.
 
 ## <a name="azure-network-watcher"></a>Azure Network Watcher
 
@@ -225,7 +225,7 @@ Auditování zabezpečení sítě je důležité pro detekci ohrožení zabezpe�
 
 Network Watcher v současné době má následující možnosti:
 
--   **<a href="/azure/network-watcher/network-watcher-monitoring-overview">Protokoly auditu</a>** – zaprotokolují se operace prováděné jako součást konfigurace sítí. Tyto protokoly můžete zobrazit v Azure Portal nebo načíst pomocí nástrojů Microsoftu, jako jsou Power BI nebo nástroje třetích stran. Protokoly auditu jsou k dispozici prostřednictvím portálu, PowerShellu, CLI a rozhraní REST API. Další informace o protokolech auditu najdete v tématu operace auditu s Správce prostředků. Protokoly auditu jsou k dispozici pro operace provedené na všech síťových prostředcích.
+-   **<a href="/azure/network-watcher/network-watcher-monitoring-overview">Protokoly auditu</a>**– zaprotokolují se operace prováděné jako součást konfigurace sítí. Tyto protokoly můžete zobrazit v Azure Portal nebo načíst pomocí nástrojů Microsoftu, jako jsou Power BI nebo nástroje třetích stran. Protokoly auditu jsou k dispozici prostřednictvím portálu, PowerShellu, CLI a rozhraní REST API. Další informace o protokolech auditu najdete v tématu operace auditu s Správce prostředků. Protokoly auditu jsou k dispozici pro operace provedené na všech síťových prostředcích.
 
 
 -   **<a href="/azure/network-watcher/network-watcher-ip-flow-verify-overview">Ověření toku protokolu IP</a>** – kontroluje, jestli je paket povolený nebo zakázaný na základě informací o toku 5 – parametry paketů řazené kolekce členů (cílová IP adresa, zdrojová IP adresa, cílový port, zdrojový port a protokol). Pokud je paket odepřen skupinou zabezpečení sítě, vrátí se pravidlo a skupina zabezpečení sítě, která paket zamítla.
@@ -308,7 +308,7 @@ Události v sestavě auditu Azure AD se uchovávají po dobu 180 dnů.
 
 Pro zákazníky, kteří mají zájem o ukládání svých [událostí auditu](../../active-directory/reports-monitoring/concept-audit-logs.md) pro delší dobu uchování, se dá rozhraní API pro vytváření sestav použít k pravidelnému vystavování událostí auditu do samostatného úložiště dat.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku se dozvíte, jak ochránit vaše osobní údaje a zabezpečovat vaše data, a přitom doručovat software a služby, které vám pomůžou se správou IT infrastruktury vaší organizace. Společnost Microsoft rozpoznává, že když pověří svá data jinými uživateli, je nutné, aby důvěryhodnost vyžadovala přísné zabezpečení. Společnost Microsoft dodržuje přísné pokyny pro dodržování předpisů a zabezpečení – od psaní kódu po provoz služeb. Zabezpečení a ochrana dat je nejvyšší prioritou Microsoftu.
 

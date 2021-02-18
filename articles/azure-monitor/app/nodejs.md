@@ -4,12 +4,12 @@ description: Monitorujte výkon a diagnostikujte problémy ve službách Node.js
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0d414ce44a8d6ab308bd31f7372bb1c146fac9f5
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 9eba74bcf2b4b047b3ed881342db4f7b1011f928
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611011"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585753"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorování služeb a aplikací Node.js pomocí Application Insights
 
@@ -383,7 +383,7 @@ appInsights.defaultClient.addTelemetryProcessor(removeStackTraces);
 
 Můžete vytvořit několik prostředků Application Insights a do každého odeslat různá data pomocí příslušných klíčů instrumentace ("ikey").
 
- Například:
+ Příklad:
 
 ```javascript
 let appInsights = require("applicationinsights");
@@ -425,7 +425,7 @@ Tyto vlastnosti jsou specifické pro konkrétního klienta, takže je můžete n
 ## <a name="next-steps"></a>Další kroky
 
 * [Monitorování vaší telemetrie na portálu](./overview-dashboard.md)
-* [Zápis analytických dotazů nad telemetrií](../log-query/log-analytics-tutorial.md)
+* [Zápis analytických dotazů nad telemetrií](../logs/log-analytics-tutorial.md)
 
 <!--references-->
 

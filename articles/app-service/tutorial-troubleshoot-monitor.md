@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: af2711a3d219bb472334ad61bad0b87f6c691dab
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: d45a8b8f426df32b9f5ac6f64237107083e0f9ab
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183196"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586283"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Kurz: řešení potíží s aplikací App Service pomocí Azure Monitor
 
@@ -22,7 +22,7 @@ V tomto kurzu se dozvíte, jak řešit [App Service](overview.md) aplikaci pomoc
 
 [Azure monitor](../azure-monitor/overview.md) maximalizuje dostupnost a výkon vašich aplikací a služeb tím, že poskytuje ucelené řešení pro shromažďování, analýzu a vykonávání telemetrie z vašich cloudových a místních prostředí.
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Konfigurace webové aplikace s Azure Monitor
@@ -78,7 +78,7 @@ Nastavení diagnostiky lze použít ke shromáždění metrik pro určité služ
 Spuštěním následujících příkazů vytvořte nastavení diagnostiky pro AppServiceConsoleLogs (standardní výstup/chyba) a AppServiceHTTPLogs (protokoly webového serveru). Nahraďte _\<app-name>_ a _\<workspace-name>_ hodnotami. 
 
 > [!NOTE]
-> První dva příkazy, `resourceID` a `workspaceID` , jsou proměnné, které mají být použity v `az monitor diagnostic-settings create` příkazu. Další informace o tomto příkazu najdete v tématu [Vytvoření nastavení diagnostiky pomocí Azure CLI](../azure-monitor/platform/diagnostic-settings.md#create-using-azure-cli) .
+> První dva příkazy, `resourceID` a `workspaceID` , jsou proměnné, které mají být použity v `az monitor diagnostic-settings create` příkazu. Další informace o tomto příkazu najdete v tématu [Vytvoření nastavení diagnostiky pomocí Azure CLI](../azure-monitor/essentials/diagnostic-settings.md#create-using-azure-cli) .
 >
 
 ```bash
@@ -129,7 +129,7 @@ V Azure Portal vyberte pracovní prostor Log Analytics.
 
 ### <a name="log-queries"></a>Dotazy na protokoly
 
-Dotazy protokolu umožňují plně využít hodnoty dat shromažďovaných v protokolech Azure Monitor. Pomocí dotazů protokolu můžete identifikovat protokoly v AppServiceHTTPLogs i AppServiceConsoleLogs. Další informace o dotazech protokolu najdete v tématu [Přehled dotazů protokolu](../azure-monitor/log-query/log-query-overview.md) .
+Dotazy protokolu umožňují plně využít hodnoty dat shromažďovaných v protokolech Azure Monitor. Pomocí dotazů protokolu můžete identifikovat protokoly v AppServiceHTTPLogs i AppServiceConsoleLogs. Další informace o dotazech protokolu najdete v tématu [Přehled dotazů protokolu](../azure-monitor/logs/log-query-overview.md) .
 
 ### <a name="view-appservicehttplogs-with-log-query"></a>Zobrazit AppServiceHTTPLogs s dotazem protokolu
 
@@ -269,6 +269,6 @@ Naučili jste se:
 > * Použití dotazů protokolu k identifikaci a řešení chyb webových aplikací
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> Další kroky
-* [Dotazování protokolů pomocí Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
+* [Dotazování protokolů pomocí Azure Monitor](../azure-monitor/logs/log-query-overview.md)
 * [Řešení potíží s Azure App Service v aplikaci Visual Studio](troubleshoot-dotnet-visual-studio.md)
 * [Analýza protokolů aplikací v HDInsight](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

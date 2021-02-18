@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ef5cddc131e25a1966ca86c3c8650452f73be69e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5a9bc576541c5991bb5f9352dc41fb0cce99c601
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879676"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594269"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Základní hodnoty zabezpečení Azure pro Windows Virtual Machines
 
@@ -174,9 +174,9 @@ K omezení rizika Windows Virtual Machines na schválené IP adresy po omezenou 
 
 Použijte Azure Policy k ověření (nebo nápravě) konfigurací síťových prostředků souvisejících s Windows Virtual Machines.
 
-* [Jak zobrazit a načíst události protokolu aktivit Azure](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Jak zobrazit a načíst události protokolu aktivit Azure](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Vytváření výstrah v Azure Monitor](../../azure-monitor/platform/alerts-activity-log.md)
+* [Vytváření výstrah v Azure Monitor](../../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Jak nakonfigurovat a spravovat Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -220,13 +220,13 @@ Pro pokročilou viditelnost aplikací a služeb podporovaných vašimi virtuáln
 
 Kromě toho povolte Azure Monitor pro přístup k protokolům auditu a aktivitám, které zahrnují zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky.
 
-* [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
+* [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Přehled agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md)
+* [Přehled agenta Log Analytics](../../azure-monitor/agents/log-analytics-agent.md)
 
 * [Rozšíření pro virtuální počítače Log Analytics pro Windows](../extensions/oms-windows.md)
 
-* [Zobrazení a načtení událostí protokolu aktivit Azure](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Zobrazení a načtení událostí protokolu aktivit Azure](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Přehled služby Application Insights](../../azure-monitor/app/app-insights-overview.md)
 
@@ -242,7 +242,7 @@ Pokud vaše organizace chce zachovat data protokolu událostí zabezpečení z v
 
 * [Shromažďování dat v Azure Security Center](../../security-center/security-center-enable-data-collection.md)
 
-* [Chcete-li zachytit data syslog pro monitorování, bude nutné povolit rozšíření Log Analytics.](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
+* [Chcete-li zachytit data syslog pro monitorování, bude nutné povolit rozšíření Log Analytics.](../../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -252,9 +252,9 @@ Pokud vaše organizace chce zachovat data protokolu událostí zabezpečení z v
 
 **Pokyny**: Ujistěte se, že všechny účty úložiště nebo pracovní prostory Log Analytics používané pro ukládání protokolů virtuálních počítačů mají dobu uchování protokolu nastavenou v souladu s pravidly dodržování předpisů vaší organizace.
 
-* [Jak monitorovat virtuální počítače v Azure](../../azure-monitor/insights/monitor-vm-azure.md)
+* [Jak monitorovat virtuální počítače v Azure](../../azure-monitor/vm/monitor-vm-azure.md)
 
-* [Jak nakonfigurovat dobu uchování Log Analytics pracovního prostoru](../../azure-monitor/platform/manage-cost-storage.md)
+* [Jak nakonfigurovat dobu uchování Log Analytics pracovního prostoru](../../azure-monitor/logs/manage-cost-storage.md)
 
 **Monitorování Azure Security Center**: není k dispozici.
 
@@ -268,15 +268,15 @@ Analyzujte a monitorujte protokoly pro neobvyklé chování a pravidelně kontro
 
 Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany a monitorovat a kontrolovat protokoly.
 
-* [Přehled agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md)
+* [Přehled agenta Log Analytics](../../azure-monitor/agents/log-analytics-agent.md)
 
 * [Rozšíření pro virtuální počítače Log Analytics pro Windows](../extensions/oms-windows.md)
 
 * [Jak připojit Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-* [Principy Log Analyticsho pracovního prostoru](../../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Principy Log Analyticsho pracovního prostoru](../../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Jak provádět vlastní dotazy v Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
+* [Jak provádět vlastní dotazy v Azure Monitor](../../azure-monitor/logs/get-started-queries.md)
 
 **Monitorování Azure Security Center**: není k dispozici.
 
@@ -292,7 +292,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 * [Správa výstrah v Azure Security Center](../../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Upozornění na data protokolu Log Analytics](../../azure-monitor/learn/tutorial-response.md)
+* [Upozornění na data protokolu Log Analytics](../../azure-monitor/alerts/tutorial-response.md)
 
 **Monitorování Azure Security Center**: není k dispozici.
 
@@ -410,7 +410,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 * [Integrace protokolů aktivit Azure do služby Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Jak nakonfigurovat skupiny akcí pro vlastní výstrahy a oznámení](../../azure-monitor/platform/action-groups.md)
+* [Jak nakonfigurovat skupiny akcí pro vlastní výstrahy a oznámení](../../azure-monitor/alerts/action-groups.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -452,13 +452,13 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 **Pokyny**: Konfigurace nastavení diagnostiky pro Azure Active Directory pro odesílání protokolů auditu a protokolů přihlášení do pracovního prostoru Log Analytics. K prohlížení protokolů a provádění dotazů na data protokolů z virtuálních počítačů Azure taky použijte Azure Monitor.
 
-* [Principy Log Analyticsho pracovního prostoru](../../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Principy Log Analyticsho pracovního prostoru](../../azure-monitor/logs/log-analytics-tutorial.md)
 
 * [Integrace protokolů aktivit Azure do služby Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Jak provádět vlastní dotazy v Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
+* [Jak provádět vlastní dotazy v Azure Monitor](../../azure-monitor/logs/get-started-queries.md)
 
-* [Jak monitorovat virtuální počítače v Azure](../../azure-monitor/insights/monitor-vm-azure.md)
+* [Jak monitorovat virtuální počítače v Azure](../../azure-monitor/vm/monitor-vm-azure.md)
 
 **Monitorování Azure Security Center**: není k dispozici.
 
@@ -592,9 +592,9 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 **Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na to, kdy změny probíhají na virtuálních počítačích a souvisejících prostředcích.
 
-* [Vytvoření upozornění pro události protokolu aktivit Azure](../../azure-monitor/platform/alerts-activity-log.md)
+* [Vytvoření upozornění pro události protokolu aktivit Azure](../../azure-monitor/alerts/alerts-activity-log.md)
 
-* [Vytvoření upozornění pro události protokolu aktivit Azure](../../azure-monitor/platform/alerts-activity-log.md)
+* [Vytvoření upozornění pro události protokolu aktivit Azure](../../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Protokolování analýz služby Azure Storage](../../storage/common/storage-analytics-logging.md)
 

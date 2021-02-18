@@ -12,16 +12,16 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: b9f0b3219a75900a44a73ca0fc3e453f023bddb8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: aeabfb42d378f22ff660214517fea031d678b208
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787155"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635570"
 ---
-# <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Kurz: třídění, zkoumání a reakce na výstrahy zabezpečení
+# <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Kurz: Určování priorit podle dostupnosti zdrojů, prošetřování a reakce na upozornění zabezpečení
 Security Center průběžně analyzuje úlohy hybridního cloudu pomocí pokročilých analýz a analýzy hrozeb, které vás upozorní na potenciálně škodlivé aktivity v cloudových prostředcích. Do Security Center také můžete integrovat výstrahy z dalších produktů a služeb zabezpečení. Po vyvolání výstrahy je potřeba k prozkoumání a nápravě potenciálního problému se zabezpečením použít akci SWIFT. 
 
 V tomto kurzu se naučíte, jak:
@@ -31,9 +31,9 @@ V tomto kurzu se naučíte, jak:
 > * Prověření výstrahy zabezpečení a určení hlavní příčiny
 > * Reakce na výstrahu zabezpečení a zmírnění této hlavní příčiny
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pro krokování s funkcemi popsanými v tomto kurzu musíte mít povolený Azure Defender. Azure Defender si můžete vyzkoušet bez jakýchkoli nákladů. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). Rychlý Start [Začínáme s Security Center](security-center-get-started.md) vás provede upgradem.
 
 
@@ -42,7 +42,7 @@ Security Center poskytuje jednotné zobrazení všech výstrah zabezpečení. V�
 
 Třídění upozornění ze stránky **výstrahy zabezpečení** :
 
-:::image type="content" source="./media/tutorial-security-incident/alerts-list.png" alt-text="Stránka seznam výstrah zabezpečení" lightbox="./media/tutorial-security-incident/alerts-list.png":::
+:::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Seznam výstrah zabezpečení Azure Security Center":::
 
 Pomocí této stránky můžete zkontrolovat aktivní výstrahy zabezpečení ve vašem prostředí, abyste se rozhodli, která výstraha se má prozkoumat jako první.
 
@@ -60,7 +60,7 @@ Až se rozhodnete, která výstraha se má prozkoumat jako první:
 1. Na stránce Přehled výstrah vyberte prostředek, který chcete prozkoumat jako první.
 1. Zahajte šetření v levém podokně, ve kterém se zobrazí informace vysoké úrovně výstrahy zabezpečení.
 
-    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="Stránka seznam výstrah zabezpečení":::
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="Levé podokno stránky s podrobnostmi výstrahy, které zvýrazňuje informace vysoké úrovně":::
 
     V tomto podokně se zobrazí:
     - Závažnost výstrahy, stav a čas aktivity
@@ -80,24 +80,24 @@ Po prozkoumání výstrahy a porozumění jejímu oboru můžete reagovat na vý
 
 1.  Otevřete kartu **provést akci** a zobrazte doporučené odpovědi.
 
-    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="Stránka seznam výstrah zabezpečení" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="Karta akce přijmout výstrahy zabezpečení" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
 
 1.  Přečtěte si část **zmírnění hrozby** pro kroky ručního šetření potřebné k vyřešení problému.
 1.  Pokud chcete posílit svoje prostředky a zabránit budoucím útokům tohoto druhu, opravte doporučení zabezpečení v části **prevence budoucích útoků** .
 1.  Chcete-li aktivovat aplikaci logiky pomocí automatizovaných kroků odezvy, použijte část **Automatická odpověď triggeru** .
 1.  Pokud zjištěná aktivita *není* škodlivá, můžete potlačit budoucí výstrahy tohoto druhu pomocí oddílu **potlačit podobné výstrahy** .
 
-1.  Až se dokončí šetření výstrahy a odpovídajícím způsobem odpovíte, změňte stav na **neúspěšné** .
+1.  Až se dokončí šetření výstrahy a odpovídajícím způsobem odpovíte, změňte stav na **neúspěšné**.
 
-    :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="Stránka seznam výstrah zabezpečení":::
+    :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="Nastavení stavu výstrahy":::
 
     Tím se výstraha z hlavního seznamu výstrah odstraní. Pomocí filtru ze stránky seznam výstrah můžete zobrazit všechny výstrahy se stavem **odeslané** .
 
 1.  Doporučujeme vám poskytnout zpětnou vazbu k této výstraze Microsoftu:
-    1. Označení výstrahy jako **užitečné** nebo **neužitečné** .
+    1. Označení výstrahy jako **užitečné** nebo **neužitečné**.
     1. Vyberte důvod a přidejte komentář.
 
-        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Stránka seznam výstrah zabezpečení":::
+        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Poskytněte Microsoftu zpětnou vazbu na užitečnost výstrahy.":::
 
     > [!TIP]
     > Prověříme váš názor, abychom vylepšili naše algoritmy a zajistili lepší výstrahy zabezpečení.
@@ -108,11 +108,11 @@ Další rychlé starty a kurzy v této kolekci vycházejí z tohoto rychlého st
 
 Pokud pokračovat nechcete, nebo pokud chcete zakázat některou z těchto funkcí:
 
-1. Vraťte se do hlavní nabídky Security Center a vyberte **ceny a nastavení** .
+1. Vraťte se do hlavní nabídky Security Center a vyberte **ceny a nastavení**.
 1. Vyberte příslušné předplatné.
-1. Pokud chcete downgradovat, vyberte **Azure Defender vypnuto** .
-1. Pokud chcete zakázat Automatické zřizování, otevřete stránku **shromažďování dat** a nastavte **Automatické zřizování** na **vypnuto** .
-4. Vyberte **Uložit** .
+1. Pokud chcete downgradovat, vyberte **Azure Defender vypnuto**.
+1. Pokud chcete zakázat Automatické zřizování, otevřete stránku **shromažďování dat** a nastavte **Automatické zřizování** na **vypnuto**.
+4. Vyberte **Uložit**.
 
 >[!NOTE]
 > Zakázání automatického zřizování neodebere agenta Log Analytics z virtuálních počítačů Azure, které už mají agenta. Vypnutí automatického zřizování omezí sledování zabezpečení pro vaše prostředky.
@@ -123,4 +123,4 @@ V tomto kurzu jste se dozvěděli o Security Center funkcích, které se mají p
 
 - [Reakce na upozornění Azure Defenderu pro Key Vault](defender-for-key-vault-usage.md)
 - [Upozornění zabezpečení – Referenční příručka](alerts-reference.md)
-- [Seznámení s Azure Defenderem](azure-defender.md)
+- [Úvod do Azure Defenderu](azure-defender.md)

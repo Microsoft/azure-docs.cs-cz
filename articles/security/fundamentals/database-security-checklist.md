@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: e9845eaf6d84caad3ddb8c7e615cb72f71c91f3b
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 80455b442bbfb9c8a7d40799b2ddd5fc25460578
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412829"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595580"
 ---
 # <a name="azure-database-security-checklist"></a>Kontrolní seznam zabezpečení Azure Database
 
 Pro lepší zabezpečení zahrnuje Azure Database řadu integrovaných ovládacích prvků zabezpečení, které můžete použít k omezení a řízení přístupu.
 
-Mezi ně patří:
+Tady jsou některé z nich:
 
 -    Bránu firewall, která umožňuje vytvářet [pravidla brány firewall](../../azure-sql/database/firewall-configure.md) s omezením připojení podle IP adresy,
 -    Brána firewall na úrovni serveru dostupná z Azure Portal
@@ -44,7 +44,7 @@ Cloud computing vyžaduje nové paradigma zabezpečení, které neznají mnoho u
 Doporučujeme, abyste si před kontrolou tohoto kontrolního seznamu přečetli článek věnované [osvědčeným postupům zabezpečení Azure Database](../../azure-sql/database/security-best-practice.md)  . Až porozumíte osvědčeným postupům, budete moct získat co nejvíc tohoto kontrolního seznamu. Tento kontrolní seznam pak můžete použít k tomu, abyste se ujistili, že byly vyřešeny důležité problémy v zabezpečení databáze Azure.
 
 
-|Kategorie kontrolního seznamu| Popis|
+|Kategorie kontrolního seznamu| Description|
 | ------------ | -------- |
 |**Ochrana dat**||
 | <br> Šifrování při pohybu nebo přenosu| <ul><li>[Transport Layer Security](/windows-server/security/tls/transport-layer-security-protocol)pro šifrování dat při přesunu dat do sítí.</li><li>Databáze vyžaduje zabezpečenou komunikaci od klientů založenou na protokolu [TDS (Tabular data Stream)](/openspecs/windows_protocols/ms-tds/893fcc7e-8a39-4b3c-815a-773b7b982c50) přes protokol TLS (Transport Layer Security).</li></ul> |
@@ -53,7 +53,7 @@ Doporučujeme, abyste si před kontrolou tohoto kontrolního seznamu přečetli 
 |<br> Přístup k databázi | <ul><li>[Ověřování (Azure Active Directory](../../azure-sql/database/logins-create-manage.md) ověřování) ověřování AD používá identity spravované pomocí Azure Active Directory.</li><li>[Autorizace](../../azure-sql/database/logins-create-manage.md) uděluje uživatelům nejnižší potřebná oprávnění.</li></ul> |
 |<br>Přístup k aplikaci| <ul><li>[Zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security) (pomocí zásad zabezpečení zároveň omezuje přístup na úrovni řádků na základě identity, role nebo kontextu spuštění uživatele).</li><li>[Dynamické maskování dat](../../azure-sql/database/dynamic-data-masking-overview.md) (pomocí zásad & oprávnění, omezování ohrožení citlivých dat jejich maskování pro uživatele bez oprávnění)</li></ul>|
 |**Proaktivní monitorování**||  
-| <br>Sledování & zjišťování| <ul><li>[Auditování](../../azure-sql/database/auditing-overview.md) sleduje události databáze a zapisuje je do protokolu auditu nebo protokolu aktivit v [účtu Azure Storage](../../storage/common/storage-account-create.md).</li><li>Sledujte službu Azure Database Health pomocí [Azure monitor protokolů aktivit](../../azure-monitor/platform/platform-logs-overview.md).</li><li>[Detekce hrozeb](../../azure-sql/database/threat-detection-configure.md) detekuje neobvyklé databázové aktivity, které indikují potenciální ohrožení zabezpečení databáze. </li></ul> |
+| <br>Sledování & zjišťování| <ul><li>[Auditování](../../azure-sql/database/auditing-overview.md) sleduje události databáze a zapisuje je do protokolu auditu nebo protokolu aktivit v [účtu Azure Storage](../../storage/common/storage-account-create.md).</li><li>Sledujte službu Azure Database Health pomocí [Azure monitor protokolů aktivit](../../azure-monitor/essentials/platform-logs-overview.md).</li><li>[Detekce hrozeb](../../azure-sql/database/threat-detection-configure.md) detekuje neobvyklé databázové aktivity, které indikují potenciální ohrožení zabezpečení databáze. </li></ul> |
 |<br>Azure Security Center| <ul><li>[Monitorování dat](../../security-center/security-center-remediate-recommendations.md) Jako centralizované řešení pro monitorování zabezpečení pro SQL a další služby Azure použijte Azure Security Center.</li></ul>|        
 
 ## <a name="conclusion"></a>Závěr

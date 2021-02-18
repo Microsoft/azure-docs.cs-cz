@@ -2,13 +2,13 @@
 title: Azure Service Bus úrovně Premium a Standard
 description: Tento článek popisuje úrovně Standard a Premium Azure Service Bus. Porovná tyto úrovně a poskytuje technické rozdíly.
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.openlocfilehash: 31c53a1375078cd5d185945cba55a6e5a6dd5ffb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/17/2021
+ms.openlocfilehash: 0385526560e6aafaab66d9212ff54caff2362ebd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90966794"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636505"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Úrovně zasílání zpráv Service Bus Premium a Standard
 
@@ -23,12 +23,12 @@ V následující tabulce je zvýrazněno několik nejvýraznějších rozdílů.
 | Vysoká propustnost |Variabilní propustnost |
 | Předvídatelný výkon |Variabilní latence |
 | Pevné ceny |Variabilní průběžná cena  |
-| Možnost vertikálně navýšit a snížit kapacitu |Není k dispozici |
+| Možnost vertikálně navýšit a snížit kapacitu |– |
 | Velikost zprávy je až 1 MB. Toto omezení může být vyvoláno v budoucnu. Nejnovější důležité aktualizace této služby najdete v tématu [zasílání zpráv na blogu Azure](https://techcommunity.microsoft.com/t5/messaging-on-azure/bg-p/MessagingonAzureBlog). |Velikost zprávy do 256 kB |
 
 **Zasílání zpráv Service Bus Premium** zajišťuje izolaci prostředků na úrovni CPU a paměti, takže každá úloha zákazníka běží izolovaně. Kontejner prostředků se nazývá *jednotka zasílání zpráv*. Každému prémiovému obor názvů se přiřadí aspoň jedna jednotka zasílání zpráv. Pro každý obor názvů Service Bus Premium si můžete koupit 1, 2, 4 nebo 8 jednotek zasílání zpráv. Jedna úloha nebo entita může zabírat několik jednotek zasílání zpráv a počet jednotek zasílání zpráv se dá změnit na. Výsledkem je předvídatelný a opakovatelný výkon vašeho řešení postaveného na Service Bus.
 
-Vedle toho, že je tento výkon předvídatelnější, je také rychlejší. Zasílání zpráv Service Bus Premium staví na modulu úložiště zavedeném ve [službě Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Se zasíláním zpráv na úrovni Premium je výkon ve špičce mnohem vyšší než na úrovni Standard.
+Vedle toho, že je tento výkon předvídatelnější, je také rychlejší. Se zasíláním zpráv na úrovni Premium je výkon ve špičce mnohem vyšší než na úrovni Standard.
 
 ## <a name="premium-messaging-technical-differences"></a>Technické rozdíly zasílání zpráv na úrovni Premium
 
@@ -40,9 +40,7 @@ Dělené fronty a témata nejsou v zasílání zpráv na úrovni Premium podporo
 
 ### <a name="express-entities"></a>Expresní entity
 
-Protože zasílání zpráv na úrovni Premium běží v izolovaném prostředí, nejsou expresní entity v oborech názvů úrovně Premium podporované. Další informace o expresní funkci najdete v popisu vlastnosti [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress).
-
-Pokud je váš kód spuštěný v rámci zasílání zpráv úrovně Standard a chcete přejít na úroveň Premium, ověřte, že vlastnost [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) je nastavena na hodnotu **false** (výchozí hodnota).
+Protože zasílání zpráv na úrovni Premium běží v izolovaném prostředí, nejsou expresní entity v oborech názvů úrovně Premium podporované. Entita Express uchovává zprávu v paměti dočasně předtím, než ji zapíše do trvalého úložiště. Pokud máte kód spuštěný v rámci standardního zasílání zpráv a chcete ho přenést na úroveň Premium, zajistěte, aby byla funkce Express entity zakázaná.
 
 ## <a name="premium-messaging-resource-usage"></a>Využívání prostředků pro zasílání zpráv na úrovni Premium
 Obecně platí, že jakákoli operace s entitou může způsobit využití procesoru a paměti. Tady jsou některé z těchto operací: 
@@ -69,15 +67,15 @@ Při rozhodování o počtu jednotek zasílání zpráv pro vaši architekturu j
 
 - Začněte s ***1 nebo 2 jednotkami pro zasílání zpráv*** přidělenou vašemu oboru názvů.
 - Prostudujte metriky využití CPU v rámci [metrik využití prostředků](service-bus-metrics-azure-monitor.md#resource-usage-metrics) pro váš obor názvů.
-    - Pokud je využití procesoru ***menší než 20%***, možná budete moci ***škálovat*** počet jednotek zasílání zpráv přidělených vašemu oboru názvů.
-    - Pokud je využití procesoru ***nad 70%***, bude vaše aplikace využívat ***škálování*** počtu jednotek zasílání zpráv, které jsou přiděleny vašemu oboru názvů.
+    - Pokud je využití procesoru ***nižší než 20%** _, může být možné _ *_škálovat × snížit_* počet jednotek zasílání zpráv, které jsou přiděleny vašemu oboru názvů.
+    - Pokud je využití procesoru ***vyšší než 70%** _, bude mít vaše aplikace za to, že bude vertikální *_navýšení_* kapacity × počet jednotek zasílání zpráv, které jsou přiděleny vašemu oboru názvů.
 
 Informace o tom, jak nakonfigurovat obor názvů Service Bus pro automatické škálování (zvýšení nebo snížení počtu jednotek pro zasílání zpráv), najdete v tématu [Automatické aktualizace jednotek zasílání zpráv](automate-update-messaging-units.md).
 
 > [!NOTE]
 > **Škálování** prostředků přidělených oboru názvů může být buď přepnuto, nebo reaktivní.
 >
->  * **Nemožnost: Pokud**je očekáváno další zatížení (z důvodu sezónnost nebo trendů), můžete pokračovat v přidělování více jednotek zasílání zpráv do oboru názvů před dosažením zatížení.
+>  * **Nemožnost: Pokud** je očekáváno další zatížení (z důvodu sezónnost nebo trendů), můžete pokračovat v přidělování více jednotek zasílání zpráv do oboru názvů před dosažením zatížení.
 >
 >  * **Reactive**: Pokud se při studiu metrik využití prostředků identifikují další úlohy, dají se k oboru názvů přidělit další prostředky, které budou zahrnovat rostoucí poptávku.
 >
@@ -86,7 +84,7 @@ Informace o tom, jak nakonfigurovat obor názvů Service Bus pro automatické š
 
 ## <a name="get-started-with-premium-messaging"></a>Začínáme se zasíláním zpráv na úrovni Premium
 
-Využití zasílání zpráv na úrovni Premium je jednoduché a je podobné standardnímu zasílání zpráv. Začněte [vytvořením oboru názvů](service-bus-create-namespace-portal.md) na webu [Azure Portal](https://portal.azure.com). Ujistěte se, že jste v části **cenová úroveň**vybrali **Premium** . Kliknutím na **Zobrazit všechny podrobnosti o cenách** zobrazíte další informace o jednotlivých úrovních.
+Využití zasílání zpráv na úrovni Premium je jednoduché a je podobné standardnímu zasílání zpráv. Začněte [vytvořením oboru názvů](service-bus-create-namespace-portal.md) na webu [Azure Portal](https://portal.azure.com). Ujistěte se, že jste v části **cenová úroveň** vybrali **Premium** . Kliknutím na **Zobrazit všechny podrobnosti o cenách** zobrazíte další informace o jednotlivých úrovních.
 
 ![create-premium-namespace][create-premium-namespace]
 

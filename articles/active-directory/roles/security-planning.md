@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ae8dbf6ffd2d827bbcd0fd723f63255d71d47a5
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 9f2fe29ede2bf0f92049d1ae82bae87326057a63
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090786"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594291"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD
 
@@ -212,7 +212,7 @@ Použijte portál Enterprise a Azure Portal k identifikaci předplatných ve va�
 
 #### <a name="monitor-azure-activity"></a>Monitorování aktivity Azure
 
-Protokol aktivit Azure poskytuje historii událostí na úrovni předplatného v Azure. Nabízí informace o tom, kdo vytvořil, aktualizoval a odstranil prostředky a kdy k těmto událostem došlo. Další informace najdete v tématu [auditování a příjem oznámení o důležitých akcích ve vašem předplatném Azure](../../azure-monitor/platform/alerts-activity-log.md).
+Protokol aktivit Azure poskytuje historii událostí na úrovni předplatného v Azure. Nabízí informace o tom, kdo vytvořil, aktualizoval a odstranil prostředky a kdy k těmto událostem došlo. Další informace najdete v tématu [auditování a příjem oznámení o důležitých akcích ve vašem předplatném Azure](../../azure-monitor/alerts/alerts-activity-log.md).
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Další kroky pro organizace, které spravují přístup k jiným cloudovým aplikacím přes Azure AD
 

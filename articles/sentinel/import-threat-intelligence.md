@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
-ms.openlocfilehash: 5bf94d7c5889bb5a743655d65e48f021e91e01b7
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 0b2a6088effc735076d56ba83dd85135392147b8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807135"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574985"
 ---
 # <a name="import-threat-intelligence-into-azure-sentinel"></a>Import analýzy hrozeb do Azure Sentinelu
 
@@ -419,7 +419,7 @@ Podívejme se, jak najít sešit s přehledem hrozeb, který je k dispozici v Az
 
     :::image type="content" source="media/import-threat-intelligence/threat-intel-bar-chart.png" alt-text="Pruhový graf":::
 
-Pracovní sešity poskytují výkonné interaktivní řídicí panely, které vám poskytnou přehled o všech aspektech Azure Sentinel. Existuje celá řada, kterou můžete dělat se sešity, a zatímco poskytnuté šablony jsou skvělým výchozím bodem, pravděpodobně budete chtít podrobně a přizpůsobit tyto šablony, nebo můžete vytvořit nové řídicí panely, které kombinují mnoho různých zdrojů dat, abyste data mohli vizualizovat jedinečnými způsoby. Vzhledem k tomu, že jsou sešity Sentinel v Azure založené na Azure Monitor sešitech, už je dostupná rozsáhlá dokumentace a mnoho dalších šablon. Dobrým místem, kde začít, je tento článek o [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../azure-monitor/platform/workbooks-overview.md). 
+Pracovní sešity poskytují výkonné interaktivní řídicí panely, které vám poskytnou přehled o všech aspektech Azure Sentinel. Existuje celá řada, kterou můžete dělat se sešity, a zatímco poskytnuté šablony jsou skvělým výchozím bodem, pravděpodobně budete chtít podrobně a přizpůsobit tyto šablony, nebo můžete vytvořit nové řídicí panely, které kombinují mnoho různých zdrojů dat, abyste data mohli vizualizovat jedinečnými způsoby. Vzhledem k tomu, že jsou sešity Sentinel v Azure založené na Azure Monitor sešitech, už je dostupná rozsáhlá dokumentace a mnoho dalších šablon. Dobrým místem, kde začít, je tento článek o [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../azure-monitor/visualize/workbooks-overview.md). 
 
 K dispozici je také bohatá komunita [Azure Monitorch sešitů na GitHubu](https://github.com/microsoft/Application-Insights-Workbooks) , kde si můžete stáhnout další šablony a přispět k vlastním šablonám.
 

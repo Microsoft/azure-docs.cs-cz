@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 3dac47aa7cf93ca882c4c1d0d191dabf0eb7178c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c122a21fc7149e9943825cafbed77069b7919f3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88227209"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593596"
 ---
 # <a name="native-react-plugin-for-application-insights-javascript-sdk"></a>Modul plug-in inreakce pro Application Insights JavaScript SDK
 
@@ -59,4 +59,4 @@ appInsights.loadAppInsights();
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o sadě JavaScript SDK naleznete v dokumentaci k [sadě sdk Application Insights JavaScript](javascript.md).
-- Další informace o dotazovacím jazyku Kusto a dotazování na data v Log Analytics najdete v tématu [Přehled dotazů protokolu](../../azure-monitor/log-query/log-query-overview.md).
+- Další informace o dotazovacím jazyku Kusto a dotazování na data v Log Analytics najdete v tématu [Přehled dotazů protokolu](../../azure-monitor/logs/log-query-overview.md).

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 587ad53fa3a4875f7019a8c094db1b9a5f096519
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: bf230032afe80680dc392c2a74da2a5aef381983
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509549"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586090"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Monitorování aplikací v Azure App Service
 [Azure App Service](./overview.md) poskytuje integrované funkce monitorování pro webové aplikace, mobilní aplikace a aplikace API v [Azure Portal](https://portal.azure.com).
@@ -136,7 +136,7 @@ K dispozici jsou dvě metriky, které odrážejí využití CPU:
 **Procento využití procesoru**: užitečné pro aplikace hostované v plánech Basic, Standard a Premium, protože je možné je škálovat. Procento využití procesoru je dobrým označením celkového využití napříč všemi instancemi.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Členitost metrik a zásady uchovávání informací
-Metriky pro aplikaci a plán služby App Service jsou protokolovány a agregovány službou a uchovávají se v [souladu s těmito pravidly](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics).
+Metriky pro aplikaci a plán služby App Service jsou protokolovány a agregovány službou a uchovávají se v [souladu s těmito pravidly](../azure-monitor/essentials/data-platform-metrics.md#retention-of-metrics).
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Monitorování kvót a metrik v Azure Portal
 Pokud chcete zkontrolovat stav různých kvót a metrik, které mají vliv na aplikaci, použijte [Azure Portal](https://portal.azure.com).
@@ -153,14 +153,14 @@ Pokud chcete najít kvóty, vyberte **Nastavení**  >  **kvóty**. V grafu můž
 
 Kliknutím na některý z těchto grafů přejdete k zobrazení metrik, kde můžete vytvářet vlastní grafy, dotazovat se na různé metriky a mnohem víc. 
 
-Další informace o metrikách najdete v tématu [monitorování metrik služby](../azure-monitor/platform/data-platform.md).
+Další informace o metrikách najdete v tématu [monitorování metrik služby](../azure-monitor/data-platform.md).
 
 ## <a name="alerts-and-autoscale"></a>Výstrahy a automatické škálování
-Metriky pro aplikaci nebo plán App Service můžete připojit k výstrahám. Další informace naleznete v tématu [Doručování oznámení o upozorněních](../azure-monitor/platform/alerts-classic-portal.md).
+Metriky pro aplikaci nebo plán App Service můžete připojit k výstrahám. Další informace naleznete v tématu [Doručování oznámení o upozorněních](../azure-monitor/alerts/alerts-classic-portal.md).
 
 App Service aplikace hostované v plánech Basic a vyšší App Service podporují automatické škálování. Díky automatickému škálování můžete nakonfigurovat pravidla, která monitorují metriky App Service plánu. Pravidla mohou zvýšit nebo snížit počet instancí, což může poskytovat další prostředky podle potřeby. Pravidla vám také pomůžou ušetřit peníze při zřizování aplikace.
 
-Další informace o automatickém škálování najdete v tématu [Jak škálovat](../azure-monitor/platform/autoscale-get-started.md) a [osvědčené postupy pro Azure monitor automatického škálování](../azure-monitor/platform/autoscale-best-practices.md).
+Další informace o automatickém škálování najdete v tématu [Jak škálovat](../azure-monitor/autoscale/autoscale-get-started.md) a [osvědčené postupy pro Azure monitor automatického škálování](../azure-monitor/autoscale/autoscale-best-practices.md).
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169

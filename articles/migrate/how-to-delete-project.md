@@ -6,12 +6,12 @@ ms.author: panshar
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 10/22/2019
-ms.openlocfilehash: face3d02ee72d1e05c6c08330dae4fffc2fd0e0b
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: bfb4db5d3ebf69f9c7f552c175d33a8b817d1562
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754245"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595134"
 ---
 # <a name="delete-an-azure-migrate-project"></a>Odstranění projektu Azure Migrate
 
@@ -26,8 +26,8 @@ Před odstraněním projektu:
 - Pokud jste připojili Log Analytics pracovní prostor k nástroji pro vyhodnocení závislostí, rozhodněte se, zda chcete odstranit pracovní prostor. 
     - Pracovní prostor se automaticky neodstraní. Odstraňte ji ručně.
     - Ověřte, že se pracovní prostor používá pro předtím, než ho odstraníte. Stejný pracovní prostor Log Analytics lze použít pro více scénářů.
-    - Před odstraněním projektu můžete v části pracovní prostor OMS najít odkaz na pracovní prostor v **Azure Migrate-servery**  >  **Azure Migrate – posouzení serveru**. **OMS Workspace**
-    - Pokud chcete odstranit pracovní prostor po odstranění projektu, najděte pracovní prostor v příslušné skupině prostředků a postupujte podle [těchto pokynů](../azure-monitor/platform/delete-workspace.md).
+    - Před odstraněním projektu můžete v části pracovní prostor OMS najít odkaz na pracovní prostor v **Azure Migrate-servery**  >  **Azure Migrate – posouzení serveru**. 
+    - Pokud chcete odstranit pracovní prostor po odstranění projektu, najděte pracovní prostor v příslušné skupině prostředků a postupujte podle [těchto pokynů](../azure-monitor/logs/delete-workspace.md).
 
 
 ## <a name="delete-a-project"></a>Odstranit projekt

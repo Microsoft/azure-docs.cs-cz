@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 387c5e70d50e53f922530cfb1fa91494fa7cc624
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ab4f92c9723dc98d0b6c32d3a49df8d4f724ebfa
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100376305"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585473"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Základní hodnoty zabezpečení Azure pro Azure Data Factory
 
@@ -175,9 +175,9 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které souvisejí s vašimi Azure Data Factory instancemi. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -201,7 +201,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 Alternativně můžete povolit a začlenit data do Azure Sentinel nebo incidentu zabezpečení a řízení událostí zabezpečení (SIEM) třetí strany. Můžete také integrovat Azure Data Factory s Git a využít několik výhod správy zdrojového kódu, jako je například schopnost sledovat nebo auditovat změny a schopnost vracet změny, které zavádějí chyby.
 
-* [Postup konfigurace nastavení diagnostiky](../azure-monitor/platform/diagnostic-settings.md)
+* [Postup konfigurace nastavení diagnostiky](../azure-monitor/essentials/diagnostic-settings.md)
 
 * [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -219,7 +219,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo incidentu
 
 Pomocí nastavení diagnostiky můžete nakonfigurovat diagnostické protokoly pro nevýpočetní prostředky v Azure Data Factory, jako jsou metriky a data spuštění kanálů. Azure Data Factory ukládá data o běhu kanálu po dobu 45 dnů. Pokud chcete tato data po delší dobu uchovávat, uložte diagnostické protokoly do účtu úložiště pro auditování nebo ruční kontrolu a zadejte dobu uchování ve dnech. Protokoly můžete také streamovat do Azure Event Hubs nebo je odeslat do Log Analytics pracovního prostoru pro účely analýzy.
 
-* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
+* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 * [Vysvětlení diagnostických protokolů Azure Data Factory](./monitor-using-azure-monitor.md)
 
@@ -233,7 +233,7 @@ Pomocí nastavení diagnostiky můžete nakonfigurovat diagnostické protokoly p
 
 Pokud by vaše organizace měla uchovávat data protokolu událostí zabezpečení, může být uložená v rámci úrovně shromažďování dat, v takovém případě se může dotazovat na Log Analytics.
 
-* [Jak shromažďovat data z Azure Virtual Machines v Azure Monitor](../azure-monitor/learn/quick-collect-azurevm.md)
+* [Jak shromažďovat data z Azure Virtual Machines v Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
 * [Povolení shromažďování dat v Azure Security Center](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
@@ -247,7 +247,7 @@ Pokud by vaše organizace měla uchovávat data protokolu událostí zabezpečen
 
 * [Postup povolení diagnostických protokolů v Azure Data Factory](./monitor-using-azure-monitor.md)
 
-* [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -263,7 +263,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 * [Log Analytics schéma](./monitor-using-azure-monitor.md#schema-of-logs-and-events)
 
-* [Jak shromažďovat data z virtuálního počítače Azure pomocí Azure Monitor](../azure-monitor/learn/quick-collect-azurevm.md)
+* [Jak shromažďovat data z virtuálního počítače Azure pomocí Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
 * [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -281,9 +281,9 @@ Navíc se ujistěte, že jste povolili nastavení diagnostiky pro služby souvis
 
 * [Výstrahy v Azure Data Factory](./monitor-visually.md#alerts)
 
-* [Stránka všechny podporované metriky](../azure-monitor/platform/metrics-supported.md)
+* [Stránka všechny podporované metriky](../azure-monitor/essentials/metrics-supported.md)
 
-* [Postup konfigurace výstrah v pracovním prostoru Log Analytics](../azure-monitor/platform/alerts-log.md)
+* [Postup konfigurace výstrah v pracovním prostoru Log Analytics](../azure-monitor/alerts/alerts-log.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -652,9 +652,9 @@ Přihlašovací údaje nebo tajné hodnoty můžete ukládat do Azure Key Vault 
 
 **Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na to, kdy se změny provedly pro Azure Data Factory a související prostředky.
 
-* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
+* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
-* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
+* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Protokolování analýz služby Azure Storage](../storage/common/storage-analytics-logging.md)
 
