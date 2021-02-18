@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: a5589a46a63437fb395db280222f8a9e84775df3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 169a90c12b30e0d083ce5c53ab7c6dd2495c4c23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935071"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592388"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Monitorování požadavků na dotazy v Azure Kognitivní hledání
 
@@ -100,7 +100,7 @@ Na následujícím snímku obrazovky je první číslo počet (nebo počet metri
 
 Chcete-li rychle zobrazit aktuální čísla, karta **monitorování** na stránce Přehled služby zobrazuje tři metriky (**latence hledání**, **hledané dotazy za sekundu (na jednotku vyhledávání)**, **procento omezených vyhledávacích dotazů**) za pevné intervaly měřené v hodinách, dnech a týdnech s možností změny typu agregace.
 
-Pro hlubší zkoumání otevřete Průzkumníka metrik z nabídky **monitorování** , abyste mohli vrstvy, přiblížení a vizualizaci dat prozkoumat trendy a anomálií. Další informace o Průzkumníkovi metrik najdete [v tomto kurzu o vytváření grafu metrik](../azure-monitor/learn/tutorial-metrics-explorer.md).
+Pro hlubší zkoumání otevřete Průzkumníka metrik z nabídky **monitorování** , abyste mohli vrstvy, přiblížení a vizualizaci dat prozkoumat trendy a anomálií. Další informace o Průzkumníkovi metrik najdete [v tomto kurzu o vytváření grafu metrik](../azure-monitor/essentials/tutorial-metrics-explorer.md).
 
 1. V části monitorování vyberte **metriky** a otevřete Průzkumníka metrik s oborem nastaveným na vyhledávací službu.
 

@@ -4,22 +4,22 @@ description: Zaznamenává a analyzuje události diagnostického protokolu pro p
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: fe2697c73f2a5f3f0b33cfb598f11f39420ed723
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 83411d7018155955f5be71bd41803e510edbc9da
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994107"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592672"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metriky, výstrahy a protokoly služby Batch pro vyhodnocení a monitorování diagnostiky
 
-Tento článek vysvětluje, jak monitorovat účet Batch pomocí funkcí [Azure monitor](../azure-monitor/overview.md). Azure Monitor shromažďuje [metriky](../azure-monitor/platform/data-platform-metrics.md) a [diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md) pro prostředky v účtu Batch. Shromažďovat a spotřebovávat tato data různými způsoby, jak monitorovat účet Batch a diagnostikovat problémy. Můžete také nakonfigurovat [Upozornění na metriky](../azure-monitor/platform/alerts-overview.md) , abyste obdrželi oznámení, když metrika dosáhne zadané hodnoty.
+Tento článek vysvětluje, jak monitorovat účet Batch pomocí funkcí [Azure monitor](../azure-monitor/overview.md). Azure Monitor shromažďuje [metriky](../azure-monitor/essentials/data-platform-metrics.md) a [diagnostické protokoly](../azure-monitor/essentials/platform-logs-overview.md) pro prostředky v účtu Batch. Shromažďovat a spotřebovávat tato data různými způsoby, jak monitorovat účet Batch a diagnostikovat problémy. Můžete také nakonfigurovat [Upozornění na metriky](../azure-monitor/alerts/alerts-overview.md) , abyste obdrželi oznámení, když metrika dosáhne zadané hodnoty.
 
 ## <a name="batch-metrics"></a>Metriky dávky
 
 Metriky jsou data telemetrie Azure (označují se taky jako čítače výkonu), která vycházejí z vašich prostředků Azure a jsou využívaná službou Azure Monitor. Příklady metrik v účtu Batch jsou události vytvoření fondu, Low-Priority počet uzlů a události dokončení úlohy.
 
-Podívejte se na [seznam podporovaných metrik dávky](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts).
+Podívejte se na [seznam podporovaných metrik dávky](../azure-monitor/essentials/metrics-supported.md#microsoftbatchbatchaccounts).
 
 Metriky jsou:
 
@@ -65,12 +65,12 @@ Postup konfigurace výstrahy metriky v Azure Portal:
 2. V části **monitorování** vyberte **výstrahy** a pak vyberte **nové pravidlo výstrahy**.
 3. Klikněte na **vybrat podmínku** a pak vyberte metriku. Potvrďte hodnoty pro **periodu grafu**, **Typ prahové** hodnoty, **operátora** a **typ agregace** a zadejte **prahovou hodnotu**. Potom vyberte **Done** (Hotovo).
 4. Přidejte skupinu akcí k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
-5. V části **Podrobnosti pravidla výstrahy** zadejte název a popis **pravidla upozornění** a vyberte **Description** **závažnost** .
+5. V části **Podrobnosti pravidla výstrahy** zadejte název a popis **pravidla upozornění** a vyberte  **závažnost** .
 6. Vyberte **Vytvořit pravidlo upozornění**.
 
-Další informace o vytváření výstrah metrik najdete v tématu [vysvětlení, jak výstrahy metrik fungují v Azure monitor](../azure-monitor/platform/alerts-metric-overview.md) a [vytváření, zobrazování a správa výstrah metrik pomocí Azure monitor](../azure-monitor/platform/alerts-metric.md).
+Další informace o vytváření výstrah metrik najdete v tématu [vysvětlení, jak výstrahy metrik fungují v Azure monitor](../azure-monitor/alerts/alerts-metric-overview.md) a [vytváření, zobrazování a správa výstrah metrik pomocí Azure monitor](../azure-monitor/alerts/alerts-metric.md).
 
-Můžete také nakonfigurovat upozornění téměř v reálném čase pomocí [REST API](/rest/api/monitor/)Azure monitor. Další informace najdete v tématu [Přehled výstrah v Microsoft Azure](../azure-monitor/platform/alerts-overview.md). Pokud chcete do upozornění zahrnout informace o úlohách, úkolech nebo fondech, přečtěte si informace o vyhledávacích dotazech v tématu [reakce na události s výstrahami Azure monitor](../azure-monitor/learn/tutorial-response.md).
+Můžete také nakonfigurovat upozornění téměř v reálném čase pomocí [REST API](/rest/api/monitor/)Azure monitor. Další informace najdete v tématu [Přehled výstrah v Microsoft Azure](../azure-monitor/alerts/alerts-overview.md). Pokud chcete do upozornění zahrnout informace o úlohách, úkolech nebo fondech, přečtěte si informace o vyhledávacích dotazech v tématu [reakce na události s výstrahami Azure monitor](../azure-monitor/alerts/tutorial-response.md).
 
 ## <a name="batch-diagnostics"></a>Diagnostika služby Batch
 
@@ -88,7 +88,7 @@ Běžným scénářem je výběr účtu Azure Storage jako cíle protokolu. Chce
 Alternativně můžete:
 
 - Umožňuje streamovat události protokolu diagnostiky služby Batch do [centra událostí Azure](../event-hubs/event-hubs-about.md). Event Hubs může ingestovat miliony událostí za sekundu, které pak můžete transformovat a ukládat pomocí libovolného zprostředkovatele analýz v reálném čase.
-- Odešlete diagnostické protokoly do [protokolů Azure monitor](../azure-monitor/log-query/log-query-overview.md), kde je můžete analyzovat nebo exportovat pro účely analýzy v Power BI nebo Excelu.
+- Odešlete diagnostické protokoly do [protokolů Azure monitor](../azure-monitor/logs/log-query-overview.md), kde je můžete analyzovat nebo exportovat pro účely analýzy v Power BI nebo Excelu.
 
 > [!NOTE]
 > Pro ukládání nebo zpracování dat protokolů diagnostiky se službami Azure můžete účtovat další náklady.
@@ -105,7 +105,7 @@ Chcete-li vytvořit nové nastavení diagnostiky v Azure Portal, postupujte podl
 6. Vyberte **ServiceLog**, **AllMetrics** nebo obojí.
 7. Vyberte **Save (Uložit** ) a vytvořte nastavení diagnostiky.
 
-Můžete také [Povolit shromažďování prostřednictvím Azure monitor v Azure Portal](../azure-monitor/platform/diagnostic-settings.md) ke konfiguraci nastavení diagnostiky, pomocí [šablony Správce prostředků](../azure-monitor/samples/resource-manager-diagnostic-settings.md)nebo pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure CLI. Další informace najdete v tématu [Přehled protokolů platformy Azure](../azure-monitor/platform/platform-logs-overview.md).
+Můžete také [Povolit shromažďování prostřednictvím Azure monitor v Azure Portal](../azure-monitor/essentials/diagnostic-settings.md) ke konfiguraci nastavení diagnostiky, pomocí [šablony Správce prostředků](../azure-monitor/essentials/resource-manager-diagnostic-settings.md)nebo pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure CLI. Další informace najdete v tématu [Přehled protokolů platformy Azure](../azure-monitor/essentials/platform-logs-overview.md).
 
 ### <a name="access-diagnostics-logs-in-storage"></a>Přístup k diagnostickým protokolům v úložišti
 
@@ -119,7 +119,7 @@ m={two-digit numeric month}/d={two-digit numeric day}/
 h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-Například:
+Příklad:
 
 ```json
 insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/
@@ -135,7 +135,7 @@ Níže je uveden příklad `PoolResizeCompleteEvent` položky v `PT1H.json` soub
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
 ```
 
-Další informace o schématu diagnostických protokolů v účtu úložiště najdete v tématu [archivace protokolů prostředků Azure do účtu úložiště](../azure-monitor/platform/resource-logs.md#send-to-azure-storage). Pokud chcete získat přístup k protokolům v účtu úložiště programově, použijte rozhraní API pro úložiště.
+Další informace o schématu diagnostických protokolů v účtu úložiště najdete v tématu [archivace protokolů prostředků Azure do účtu úložiště](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage). Pokud chcete získat přístup k protokolům v účtu úložiště programově, použijte rozhraní API pro úložiště.
 
 ### <a name="service-log-events"></a>Události protokolu služby
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8cfbe26458de630aaf411aade4a31cb4e9c72b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8015f610dfd9404810a1fa19c951078ebb45ac4f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295423"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588491"
 ---
 # <a name="diagnostic-logs-schemas"></a>Schémata diagnostických protokolů
 
@@ -26,13 +26,13 @@ ms.locfileid: "89295423"
 
 [Azure monitor](../../azure-monitor/overview.md) vám umožní monitorovat metriky a diagnostické protokoly, které vám pomůžou pochopit, jak vaše aplikace provádí. Můžete monitorovat protokoly diagnostiky Media Services a vytvářet výstrahy a oznámení pro shromážděné metriky a protokoly. Můžete odeslat protokoly do [Azure Storage](https://azure.microsoft.com/services/storage/), streamovat je do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a exportovat je do [Log Analytics](https://azure.microsoft.com/services/log-analytics/)nebo použít služby třetích stran.
 
-Podrobné informace najdete v tématu [Azure monitor metriky](../../azure-monitor/platform/data-platform.md) a [Azure monitor diagnostických protokolů](../../azure-monitor/platform/platform-logs-overview.md).
+Podrobné informace najdete v tématu [Azure monitor metriky](../../azure-monitor/data-platform.md) a [Azure monitor diagnostických protokolů](../../azure-monitor/essentials/platform-logs-overview.md).
 
 Tento článek popisuje Media Services schémat diagnostických protokolů.
 
 ## <a name="top-level-diagnostic-logs-schema"></a>Schéma diagnostických protokolů nejvyšší úrovně
 
-Podrobný popis schématu diagnostických protokolů nejvyšší úrovně najdete v tématu [podporované služby, schémata a kategorie pro diagnostické protokoly Azure](../../azure-monitor/platform/resource-logs-schema.md).
+Podrobný popis schématu diagnostických protokolů nejvyšší úrovně najdete v tématu [podporované služby, schémata a kategorie pro diagnostické protokoly Azure](../../azure-monitor/essentials/resource-logs-schema.md).
 
 ## <a name="key-delivery-log-schema"></a>Schéma protokolu doručení klíčů
 
@@ -40,7 +40,7 @@ Podrobný popis schématu diagnostických protokolů nejvyšší úrovně najdet
 
 Tyto vlastnosti jsou specifické pro schéma protokolu doručení klíčů.
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |keyId|ID požadovaného klíče|
 |keyType|Může to být jedna z následujících hodnot: "Clear" (bez šifrování), "FairPlay", "PlayReady" nebo "Widevine".|

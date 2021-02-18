@@ -3,18 +3,18 @@ title: Sledování změn delegování ve vašem tenantovi pro správu
 description: Přečtěte si, jak monitorovat aktivitu delegování z klientů zákazníka do vašeho spravovaného tenanta.
 ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 9fdf47df4ac37fec44cf53b565b7fe1411540793
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 3bf6cc044d807d0c830b15c6d9c9a6d507f1a54f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089409"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593141"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Sledování změn delegování ve vašem tenantovi pro správu
 
 Jako poskytovatel služeb možná budete chtít vědět, že předplatná zákazníků nebo skupiny prostředků jsou delegovaná na vašeho tenanta prostřednictvím [Azure Lighthouse](../overview.md)nebo když se odebraly dřív delegované prostředky.
 
-V rámci správy tenanta sleduje [Protokol aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md) aktivitu delegování na úrovni tenanta. Tato zaznamenaná aktivita zahrnuje všechny přidané nebo odebrané delegace ze všech zákaznických klientů.
+V rámci správy tenanta sleduje [Protokol aktivit Azure](../../azure-monitor/essentials/platform-logs-overview.md) aktivitu delegování na úrovni tenanta. Tato zaznamenaná aktivita zahrnuje všechny přidané nebo odebrané delegace ze všech zákaznických klientů.
 
 Toto téma vysvětluje oprávnění potřebná ke sledování aktivity delegování pro vašeho tenanta (mezi všemi vašimi zákazníky). Obsahuje také ukázkový skript, který ukazuje jednu metodu pro dotazování a vytváření sestav s těmito daty.
 
@@ -104,7 +104,7 @@ Při dotazování na tato data Pamatujte:
 - Pokud je v jednom nasazení delegovaných víc skupin prostředků, pro každou skupinu prostředků se vrátí samostatné položky.
 - Změny provedené v předchozím delegování (například aktualizace struktury oprávnění) budou protokolovány jako přidané delegování.
 - Jak je uvedeno výše, účet musí mít integrovanou roli Azure Monitoring Reader v kořenovém oboru (/), aby bylo možné získat přístup k těmto datům na úrovni tenanta.
-- Tato data můžete použít ve svých vlastních pracovních postupech a vytváření sestav. Můžete například použít [rozhraní API kolekce dat http (Public Preview)](../../azure-monitor/platform/data-collector-api.md) k protokolování dat do Azure monitor z klienta REST API a pak pomocí [skupin akcí](../../azure-monitor/platform/action-groups.md) vytvořit oznámení nebo výstrahy.
+- Tato data můžete použít ve svých vlastních pracovních postupech a vytváření sestav. Můžete například použít [rozhraní API kolekce dat http (Public Preview)](../../azure-monitor/logs/data-collector-api.md) k protokolování dat do Azure monitor z klienta REST API a pak pomocí [skupin akcí](../../azure-monitor/alerts/action-groups.md) vytvořit oznámení nebo výstrahy.
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -181,5 +181,5 @@ else {
 ## <a name="next-steps"></a>Další kroky
 
 - Naučte se začlenit zákazníky do [Azure Lighthouse](../concepts/azure-delegated-resource-management.md).
-- Přečtěte si o [Azure monitor](../../azure-monitor/index.yml) a [protokolu aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md).
+- Přečtěte si o [Azure monitor](../../azure-monitor/index.yml) a [protokolu aktivit Azure](../../azure-monitor/essentials/platform-logs-overview.md).
 - Projděte si ukázkový sešit [protokolů aktivit podle domény](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) a zjistěte, jak zobrazit protokoly aktivit Azure v rámci předplatných s možností filtrování podle názvu domény.

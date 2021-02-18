@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: d465106725e9b936172fb74e1cc265c14942f662
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 27f94c43266fe324016a73e2e6d31e8488457416
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898092"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593042"
 ---
 # <a name="read-nsg-flow-logs"></a>Čtení protokolů toku NSG
 
@@ -27,7 +27,7 @@ Protokoly toku NSG se ukládají v účtu úložiště v objektech [blob bloku](
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario"></a>Scénář
+## <a name="scenario"></a>Scenario
 
 V následujícím scénáři máte ukázkový protokol toku, který je uložený v účtu úložiště. Naučíte se, jak selektivně číst nejnovější události v protokolech toku NSG. V tomto článku používáte PowerShell, ale koncepty popsané v článku nejsou omezené na programovací jazyk a platí pro všechny jazyky, které rozhraní API pro Azure Storage podporuje.
 
@@ -189,6 +189,6 @@ Tento scénář je příkladem čtení záznamů v protokolech toku NSG bez nutn
 
 Podívejte se na téma [použití elastického zásobníku](network-watcher-visualize-nsg-flow-logs-open-source-tools.md), [použití Grafana](network-watcher-nsg-grafana.md)a další informace o způsobech zobrazení protokolů toku NSG [pomocí graylogu](network-watcher-analyze-nsg-flow-logs-graylog.md) . Open Source přístup ke službě Azure Functions pro přímé využívání objektů BLOB a vydávání různých příjemců Log Analytics najdete tady: [konektor protokolů toku Azure Network WATCHER NSG](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector).
 
-Pomocí služby [Azure Analýza provozu](./traffic-analytics.md) můžete získat přehled o přenosových tocích. Analýza provozu používá [Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) k zajištění Queryable toku přenosu.
+Pomocí služby [Azure Analýza provozu](./traffic-analytics.md) můžete získat přehled o přenosových tocích. Analýza provozu používá [Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) k zajištění Queryable toku přenosu.
 
 Další informace o objektech blob úložiště najdete v těchto [vazbách: Azure Functions BLOB Storage](../azure-functions/functions-bindings-storage-blob.md) .

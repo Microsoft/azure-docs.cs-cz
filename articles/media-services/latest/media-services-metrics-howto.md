@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 91e74668224d1cdbbc462bf6c2c0a22c4f0a9837
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ab89c222648a66ad7451f9bb47e254c55b925630
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916571"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590747"
 ---
 # <a name="monitor-media-services-metrics"></a>Monitorování metrik služby Media Services
 
@@ -69,8 +69,8 @@ Pokud chcete získat další metriky, nahraďte "výstup" pro název metriky, kt
 
 ## <a name="see-also"></a>Viz také
 
-- [Metriky Azure Monitoru](../../azure-monitor/platform/data-platform.md)
-- [Umožňuje vytvářet, zobrazovat a spravovat výstrahy metrik pomocí Azure monitor](../../azure-monitor/platform/alerts-metric.md).
+- [Metriky Azure Monitoru](../../azure-monitor/data-platform.md)
+- [Umožňuje vytvářet, zobrazovat a spravovat výstrahy metrik pomocí Azure monitor](../../azure-monitor/alerts/alerts-metric.md).
 
 ## <a name="next-steps"></a>Další kroky
 

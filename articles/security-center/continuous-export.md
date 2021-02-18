@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 845ff6f0905b232b9ec68dbe127ef7f47a6ad898
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 226ca943554ca24f3332f24f5a9baf571b432917
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916776"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590621"
 ---
 # <a name="continuously-export-security-center-data"></a>Průběžný export Security Center dat
 
@@ -185,7 +185,7 @@ Chcete-li zobrazit schémata událostí exportovaných datových typů, navštiv
 
 ##  <a name="view-exported-alerts-and-recommendations-in-azure-monitor"></a>Zobrazení exportovaných výstrah a doporučení v Azure Monitor
 
-Můžete se také rozhodnout zobrazit exportované výstrahy zabezpečení nebo doporučení v [Azure monitor](../azure-monitor/platform/alerts-overview.md). 
+Můžete se také rozhodnout zobrazit exportované výstrahy zabezpečení nebo doporučení v [Azure monitor](../azure-monitor/alerts/alerts-overview.md). 
 
 Azure Monitor poskytuje jednotné prostředí pro upozorňování na nejrůznější výstrahy Azure, včetně diagnostického protokolu, výstrah metrik a vlastních výstrah, a to na základě Log Analytics dotazů v pracovním prostoru.
 
@@ -195,13 +195,13 @@ Chcete-li zobrazit výstrahy a doporučení z Security Center v Azure Monitor, n
 
     ![Stránka s výstrahami Azure Monitor](./media/continuous-export/azure-monitor-alerts.png)
 
-1. Na stránce Vytvořit pravidlo nakonfigurujte nové pravidlo (stejným způsobem, jako byste nakonfigurovali [pravidlo upozornění protokolu v Azure monitor](../azure-monitor/platform/alerts-unified-log.md)):
+1. Na stránce Vytvořit pravidlo nakonfigurujte nové pravidlo (stejným způsobem, jako byste nakonfigurovali [pravidlo upozornění protokolu v Azure monitor](../azure-monitor/alerts/alerts-unified-log.md)):
 
     * Jako **prostředek** vyberte pracovní prostor Log Analytics, do kterého jste exportovali výstrahy a doporučení zabezpečení.
 
     * V případě **podmínky** vyberte **vlastní prohledávání protokolu**. Na zobrazené stránce nakonfigurujte dotaz, období lookback a periodu četnosti. Do vyhledávacího dotazu můžete zadat *SecurityAlert* nebo *SecurityRecommendation* pro dotazování datových typů, které Security Center průběžně exportovat do funkce průběžný export do Log Analytics. 
     
-    * Volitelně můžete nakonfigurovat [skupinu akcí](../azure-monitor/platform/action-groups.md) , kterou chcete aktivovat. Skupiny akcí můžou aktivovat odesílání e-mailů, lístky ITSM, Webhooky a další.
+    * Volitelně můžete nakonfigurovat [skupinu akcí](../azure-monitor/alerts/action-groups.md) , kterou chcete aktivovat. Skupiny akcí můžou aktivovat odesílání e-mailů, lístky ITSM, Webhooky a další.
     ![Azure Monitor pravidlo výstrahy](./media/continuous-export/azure-monitor-alert-rule.png)
 
 Nyní se zobrazí nové výstrahy Azure Security Center nebo doporučení (v závislosti na konfigurovaných pravidlech průběžného exportu a podmínky, které jste definovali v pravidle Azure Monitor výstrahy), v části Azure Monitor výstrahy s automatickou aktivací skupiny akcí (Pokud je k dispozici).
@@ -229,7 +229,7 @@ Přečtěte si další informace o [cenách služby Azure Event hub](https://azu
 
 ### <a name="does-the-export-include-data-about-the-current-state-of-all-resources"></a>Zahrnuje export data o aktuálním stavu všech prostředků?
 
-Ne. Průběžný export je sestaven pro streamování **událostí**:
+No. Průběžný export je sestaven pro streamování **událostí**:
 
 - **Výstrahy** přijaté před povolením exportu nebudou exportovány.
 - **Doporučení** se odesílají pokaždé, když se změní stav dodržování předpisů prostředku. Například pokud se prostředek změní na stav není v pořádku. Vzhledem k tomu, že se jedná o upozornění, nebudou exportována doporučení pro prostředky, které nezměnily stav od povolení exportu.

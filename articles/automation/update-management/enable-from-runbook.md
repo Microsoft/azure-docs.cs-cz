@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: mvc
-ms.openlocfilehash: 219efe05b399677c60922542f3d7acd76ca37d26
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 5377a3ff7ef7033b57f8785baa615a717ef7fa0f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054885"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575876"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Povolení Update Managementu z runbooku
 
@@ -29,7 +29,7 @@ Tato metoda používá dva Runbooky:
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Účet Automation](../automation-security-overview.md) pro správu počítačů.
-* [Pracovní prostor Log Analytics](../../azure-monitor/platform/design-logs-deployment.md)
+* [Pracovní prostor Log Analytics](../../azure-monitor/logs/design-logs-deployment.md)
 * [Virtuální počítač](../../virtual-machines/windows/quick-create-portal.md).
 * Dva prostředky služby Automation, které jsou používány v sadě Runbook **Enable-AutomationSolution** . Tato sada Runbook, pokud už ve vašem účtu Automation neexistuje, je během prvního spuštění automaticky naimportována pomocí Runbooku **Enable-MultipleSolution** .
     * *LASolutionSubscriptionId*: ID předplatného, kde se nachází Log Analytics pracovní prostor.

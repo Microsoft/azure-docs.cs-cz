@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
 ms.date: 09/30/2020
-ms.openlocfilehash: 3d28cf1a89ff455cfbed26aad234607ec8cd7e63
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6b56da68b10bc40304097fbe9eeaf200d422b663
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490563"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592697"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Monitorování a ladění výkonu ve službách Azure SQL Database a Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -99,11 +99,11 @@ Nastavení diagnostiky nakonfigurujete pro streamování kategorií metrik a pro
 
 ### <a name="log-analytics-workspace-in-azure-monitor"></a>Pracovní prostor Log Analytics v Azure Monitor
 
-Metriky a protokoly prostředků můžete streamovat do [Log Analytics pracovního prostoru v Azure monitor](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace). Data streamovaná tady můžou využívat [SQL Analytics](../../azure-monitor/insights/azure-sql.md), což je jenom cloudové řešení monitorování, které poskytuje inteligentní monitorování vašich databází, které obsahuje sestavy výkonu, výstrahy a doporučení pro zmírnění rizik. Data streamovaná do pracovního prostoru Log Analytics lze analyzovat pomocí dalších shromažďovaných dat monitorování a také vám umožní využít jiné funkce Azure Monitor, jako jsou výstrahy a vizualizace.
+Metriky a protokoly prostředků můžete streamovat do [Log Analytics pracovního prostoru v Azure monitor](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace). Data streamovaná tady můžou využívat [SQL Analytics](../../azure-monitor/insights/azure-sql.md), což je jenom cloudové řešení monitorování, které poskytuje inteligentní monitorování vašich databází, které obsahuje sestavy výkonu, výstrahy a doporučení pro zmírnění rizik. Data streamovaná do pracovního prostoru Log Analytics lze analyzovat pomocí dalších shromažďovaných dat monitorování a také vám umožní využít jiné funkce Azure Monitor, jako jsou výstrahy a vizualizace.
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
-Do [Azure Event Hubs](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)můžete streamovat metriky a protokoly prostředků. Streamování diagnostiky diagnostiky do centra událostí, které poskytuje následující funkce:
+Do [Azure Event Hubs](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)můžete streamovat metriky a protokoly prostředků. Streamování diagnostiky diagnostiky do centra událostí, které poskytuje následující funkce:
 
 - **Streamování protokolů do systémů protokolování a telemetrie třetích stran**
 
@@ -117,7 +117,7 @@ Do [Azure Event Hubs](../../azure-monitor/platform/resource-logs.md#send-to-azur
 
 ### <a name="azure-storage"></a>Azure Storage
 
-[Azure Storage](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)metriky proudu a protokoly prostředků. Využijte Azure Storage k archivaci obrovského množství diagnostické telemetrie za zlomek nákladů na předchozí dvě možnosti streamování.
+[Azure Storage](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)metriky proudu a protokoly prostředků. Využijte Azure Storage k archivaci obrovského množství diagnostické telemetrie za zlomek nákladů na předchozí dvě možnosti streamování.
 
 ## <a name="use-extended-events"></a>Použití rozšířených událostí 
 

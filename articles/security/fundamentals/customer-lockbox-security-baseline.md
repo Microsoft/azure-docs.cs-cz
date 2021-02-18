@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dd54459cef3d6f20180b4c7c41eefbdd42c6980c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b58d96adba690084580fe11b42253a1e77370379
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807916"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595593"
 ---
 # <a name="azure-security-baseline-for-customer-lockbox-for-microsoft-azure"></a>Základní hodnoty zabezpečení Azure pro Customer Lockbox pro Microsoft Azure
 
@@ -164,7 +164,7 @@ Připojte protokoly aktivit generované Customer Lockbox do Azure Sentinel nebo 
 
 **Doprovodné** materiály: v Azure monitor nastavte dobu uchování protokolu pro Log Analytics pracovní prostory, které jsou přidružené k vašemu Customer Lockbox podle předpisů pro dodržování předpisů vaší organizace.
 
-* [Postup nastavení parametrů uchovávání protokolů](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Postup nastavení parametrů uchovávání protokolů](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -186,7 +186,7 @@ Připojte protokoly aktivit generované Customer Lockbox do Azure Sentinel nebo 
 
 * [Protokoly auditu v Customer Lockbox](./customer-lockbox-overview.md#auditing-logs)
 
-* [Upozornění na data protokolu Log Analytics](../../azure-monitor/learn/tutorial-response.md)
+* [Upozornění na data protokolu Log Analytics](../../azure-monitor/alerts/tutorial-response.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -461,9 +461,9 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro Azure
 
 * [Postup povolení auditování v Customer Lockbox](./customer-lockbox-overview.md)
 
-* [Jak zobrazit a načíst události protokolu aktivit Azure](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Jak zobrazit a načíst události protokolu aktivit Azure](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Vytváření výstrah v Azure Monitor](../../azure-monitor/platform/alerts-activity-log.md)
+* [Vytváření výstrah v Azure Monitor](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Ano
 

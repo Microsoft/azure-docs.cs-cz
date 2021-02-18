@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 293245d6778a40e234cdca177905c15dc88dd04f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0f3b36729fb07c6f5ae03a46e199e4cadb44a25e
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737757"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635587"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Přehled Red Hat Enterprise Linuxch imagí
 
@@ -65,6 +65,9 @@ Porovnání verzí tohoto obrázku je provedeno porovnáním hodnot jako objektu
 
 ## <a name="rhel-6-image-types"></a>Typy imagí RHEL 6
 
+>[!NOTE]
+> Od prosince 30 2020 RHEL 6,10 zadal konec životnosti (konce řádku). Pokud chcete pokračovat v podpoře, povolte ELS jako součást fáze podpory rozšířené životního cyklu. Další informace najdete v [dokumentaci k Red Hat ELS](./redhat-extended-lifecycle-support.md).
+
 Pro image RHEL 6. x jsou typy obrázků uvedené v následující tabulce.
 
 |Publisher | Nabídka | Hodnota SKU | Verze | Podrobnosti
@@ -106,7 +109,15 @@ Podrobnosti o typech imagí RHEL 8 jsou uvedené níže.
 |RedHat | RHEL | 8 | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 8.0.20191023) | Tyto image jsou image s RHEL 8 LVM oddíly připojené ke standardním úložištím Red Hat.
 |RedHat | RHEL | 8 – Gen2 | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 8.0.20191024) | Tyto image jsou image Hyper-V generace 2 RHEL 8 LVM-dělené bitové kopie připojené ke standardním úložištím Red Hat. Další informace o virtuálních počítačích 2. generace v Azure najdete v tématu [Podpora virtuálních počítačů 2. generace v Azure](../../generation-2.md).
 
-## <a name="rhel-longer-support-add-ons"></a>RHEL už podporuje doplňky.
+## <a name="rhel-extended-support-add-ons"></a>Doplňky RHEL Extended Support Doplňky
+
+### <a name="extended-life-cycle-support"></a>Rozšířená podpora životního cyklu
+
+Doplněk prodloužená podpora životního cyklu (ELS) je volitelný odběr, který umožňuje kritické a důležité opravy zabezpečení pro vydané verze, které dosáhly konce životnosti (konce řádku). Další informace o RHEL EUS najdete v [dokumentaci k Red Hat](https://access.redhat.com/support/policy/updates/errata#Extended_Life_Cycle_Support).
+
+ELS je aktuálně dostupná jenom pro RHEL 6,10. V případě imagí s průběžnými platbami můžete ELS povolit podle kroků v [dokumentaci k Red Hat ELS](./redhat-extended-lifecycle-support.md).
+
+Pokud používáte starší verzi nástroje, je potřeba upgradovat na RHEL 6,10, abyste mohli povolit ELS.
 
 ### <a name="extended-update-support"></a>Podpora rozšířené aktualizace
 

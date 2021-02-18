@@ -406,6 +406,54 @@
           href: service-fabric-get-started-mac.md
         - name: Nastavení rozhraní příkazového řádku Service Fabric
           href: service-fabric-cli.md
+        - name: Práce v integrovaném vývojovém prostředí (IDE)
+          items:
+            - name: Práce ve vývojovém prostředí Windows/VS
+              items:
+                - name: Správa aplikací v sadě Visual Studio
+                  href: service-fabric-manage-application-in-visual-studio.md
+                - name: Konfigurace zabezpečených připojení v sadě Visual Studio
+                  href: service-fabric-visualstudio-configure-secure-connections.md
+                - name: Ladění služby .NET ve VS
+                  href: service-fabric-debugging-your-application.md
+                - name: Ladění kontejnerů Windows s využitím služby Service Fabric a VS
+                  href: service-fabric-how-to-debug-windows-containers.md
+                - name: Běžné chyby a výjimky
+                  href: service-fabric-errors-and-exceptions.md
+                - name: Místní monitorování a diagnostika
+                  href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
+                - name: Nastavení linuxového clusteru ve Windows
+                  href: service-fabric-local-linux-cluster-windows.md
+                - name: Nasazení aplikace .NET Core do vzdáleného linuxového clusteru z VS
+                  href: service-fabric-how-to-publish-linux-app-vs.md
+            - name: Práce ve vývojovém prostředí Linux/Eclipse
+              items:
+                - name: Začínáme s modulem plug-in Eclipse pro Java Development
+                  href: service-fabric-get-started-eclipse.md
+                - name: Ladění služby Java v Eclipse
+                  href: service-fabric-debugging-your-application-java.md
+                - name: Místní monitorování a diagnostika
+                  href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md
+            - name: Práce v prostředí VS Code
+              items:
+                - name: Začínáme s editorem VS Code
+                  href: service-fabric-get-started-vs-code.md
+                - name: Vývoj aplikací Service Fabric v C# s využitím VS Code
+                  href: service-fabric-develop-csharp-applications-with-vs-code.md
+                - name: Vývoj aplikací Service Fabric v Javě s využitím VS Code
+                  href: service-fabric-develop-java-applications-with-vs-code.md
+    - name: Použití spravovaných clusterů Service Fabric
+      items:
+        - name: Přidání rozšíření škálovací sady virtuálních počítačů do typu uzlu spravovaného clusteru
+          href: how-to-managed-cluster-vmss-extension.md
+        - name: Konfigurace spravovaného clusteru
+          href: how-to-managed-cluster-configuration.md
+        - name: Nasazení aplikací spravovaného clusteru pomocí šablony ARM
+          href: how-to-managed-cluster-app-deployment-template.md
+        - name: Konfigurace spravovaného clusteru se spravovanou identitou
+          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
+        - name: Povolit šifrování disku pro uzly spravovaného clusteru
+          href: how-to-enable-managed-cluster-disk-encryption.md
     - name: Plánování a příprava
       items:
         - name: Plánování kapacity clusteru
@@ -416,6 +464,142 @@
           href: service-fabric-disaster-recovery.md
         - name: Plánování kapacity aplikace
           href: service-fabric-capacity-planning.md
+    - name: Vytvoření a správa clusterů
+      items:
+        - name: Clustery v Azure
+          items:
+            - name: Vytvořit
+              items:
+                - name: Plán pro nasazení clusteru
+                  href: service-fabric-cluster-azure-deployment-preparation.md
+                - name: Vytvoření na webu Azure Portal
+                  href: service-fabric-cluster-creation-via-portal.md
+                - name: Nasazení clusteru služby Azure Service Fabric napříč zónami dostupnosti
+                  href: service-fabric-cross-availability-zones.md
+                - name: Nasazení clusteru služby Azure Service Fabric s bezstavovými typy uzlů
+                  href: service-fabric-stateless-node-types.md
+                - name: Nastavení ověřování pomocí Azure Active Directory
+                  href: service-fabric-cluster-creation-setup-aad.md
+                - name: Vytvoření vlastní šablony clusteru
+                  href: service-fabric-cluster-creation-create-template.md
+                - name: Vytvoření pomocí Resource Manageru
+                  href: service-fabric-cluster-creation-via-arm.md
+                - name: Vytvoření s využitím běžného názvu certifikátu
+                  href: service-fabric-create-cluster-using-cert-cn.md
+                - name: Vytvoření clusteru s Linuxem
+                  href: service-fabric-tutorial-create-vnet-and-linux-cluster.md
+            - name: Měřítko
+              items:
+                - name: Ruční horizontální navýšení kapacity
+                  href: service-fabric-cluster-scale-in-out.md
+                - name: Horizontální navýšení kapacity prostřednictvím kódu programu
+                  href: service-fabric-cluster-programmatic-scaling.md
+                - name: Škálování primárního typu uzlu
+                  href: service-fabric-scale-up-primary-node-type.md
+                - name: Přidání typu uzlu
+                  href: virtual-machine-scale-set-scale-node-type-scale-out.md
+                - name: Odebrání typu uzlu
+                  href: service-fabric-how-to-remove-node-type.md
+            - name: Upgrade
+              items:
+                - name: Upgrade verze Service Fabric
+                  href: service-fabric-cluster-upgrade-version-azure.md
+                - name: Upgrade konfigurace clusteru
+                  href: service-fabric-cluster-config-upgrade-azure.md
+                - name: Oprava uzlů clusteru (Windows)
+                  href: service-fabric-patch-orchestration-application.md
+                - name: Povolení šifrování disků (Windows)
+                  href: service-fabric-enable-azure-disk-encryption-windows.md
+                - name: Povolení šifrování disků (Linux)
+                  href: service-fabric-enable-azure-disk-encryption-linux.md
+                - name: Nastavení řízení přístupu
+                  href: service-fabric-cluster-security-roles.md
+                - name: Otevření portu v nástroji pro vyrovnávání zatížení
+                  href: create-load-balancer-rule.md
+                - name: Změna certifikátu clusteru na běžný název
+                  href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
+                - name: Ruční přesměrování certifikátů clusteru
+                  href: service-fabric-cluster-rollover-cert-cn.md
+                - name: Správa certifikátů clusteru
+                  href: service-fabric-cluster-security-update-certs-azure.md
+                - name: Vzdálené připojení k virtuálnímu počítači uzlu clusteru
+                  href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+        - name: Samostatné clustery
+          items:
+            - name: Vytvořit
+              items:
+                - name: Místní vytvoření
+                  href: service-fabric-cluster-creation-for-windows-server.md
+                - name: Zabezpečení pomocí certifikátů
+                  href: service-fabric-windows-cluster-x509-security.md
+                - name: Zabezpečení pomocí zabezpečení systému Windows
+                  href: service-fabric-windows-cluster-windows-security.md
+                - name: Obsah samostatného balíčku
+                  href: service-fabric-cluster-standalone-package-contents.md
+            - name: Měřítko
+              href: service-fabric-cluster-windows-server-add-remove-nodes.md
+            - name: Upgrade
+              items:
+                - name: Upgrade verze Service Fabric
+                  href: service-fabric-cluster-upgrade-windows-server.md
+                - name: Upgrade konfigurace clusteru
+                  href: service-fabric-cluster-config-upgrade-windows-server.md
+                - name: Nastavení konfigurace
+                  href: service-fabric-cluster-manifest.md
+                - name: Nastavení řízení přístupu
+                  href: service-fabric-cluster-security-roles.md
+                - name: Oprava uzlů clusteru (Windows)
+                  href: service-fabric-patch-orchestration-application.md
+        - name: Vizualizace s využitím Service Fabric Exploreru
+          href: service-fabric-visualizing-your-cluster.md
+        - name: Připojení k zabezpečenému clusteru
+          href: service-fabric-connect-to-secure-cluster.md
+    - name: Monitorování a diagnóza
+      items:
+        - name: Diagnostika běžných scénářů
+          href: service-fabric-diagnostics-common-scenarios.md
+        - name: Diagnostika chyb balíčků kódu
+          href: service-fabric-diagnostics-code-package-errors.md
+        - name: Monitorování aplikací
+          items:
+            - name: Přidání protokolování do aplikace
+              href: service-fabric-how-to-diagnostics-log.md
+            - name: Analýza s využitím Application Insights
+              href: service-fabric-diagnostics-event-analysis-appinsights.md
+            - name: Agregace protokolů s využitím EventFlow
+              href: service-fabric-diagnostics-event-aggregation-eventflow.md
+            - name: Monitorování kontejnerů
+              href: service-fabric-diagnostics-oms-containers.md
+        - name: Monitorování clusterů
+          items:
+            - name: Konfigurace protokolů služby Azure Monitor pro shromažďování událostí clusteru
+              href: service-fabric-diagnostics-oms-setup.md
+            - name: Monitorování clusteru s využitím protokolů služby Azure Monitor
+              href: service-fabric-diagnostics-event-analysis-oms.md
+            - name: Dotazování rozhraní API EventStoru
+              href: service-fabric-diagnostics-eventstore-query.md
+            - name: Diagnostika clusterů Windows
+              href: service-fabric-diagnostics-event-aggregation-wad.md
+            - name: Diagnostika clusterů Linux
+              href: service-fabric-diagnostics-oms-syslog.md
+        - name: Monitorování infrastruktury
+          items:
+            - name: Shromažďování čítačů výkonu pomocí agenta Log Analytics
+              href: service-fabric-diagnostics-oms-agent.md
+            - name: Shromažďování čítačů výkonu pomocí WAD
+              href: service-fabric-diagnostics-perf-wad.md
+        - name: Monitorování stavu
+          items:
+            - name: Reportování a kontrola stavu
+              href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
+            - name: Řešení potíží se systémovými stavovými sestavami
+              href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
+            - name: Zobrazení stavových sestav
+              href: service-fabric-view-entities-aggregated-health.md
+        - name: Diagnostika událostí reverzního proxy serveru
+          href: service-fabric-reverse-proxy-diagnostics.md
+        - name: Řešení potíží s místním clusterem
+          href: service-fabric-troubleshoot-local-cluster-setup.md
     - name: První vytvoření...
       items:
         - name: Aplikace typu kontejner pro Windows
@@ -434,7 +618,7 @@
           href: service-fabric-create-your-first-linux-application-with-java.md
         - name: Aplikace spustitelná hostem ve Windows
           href: quickstart-guest-app.md
-    - name: Sestavení aplikace
+    - name: Sestavování aplikací
       items:
         - name: Sestavení služby spustitelné hostem
           items:
@@ -547,52 +731,6 @@
           href: service-fabric-backuprestoreservice-quickstart-standalonecluster.md
         - name: Migrace staré aplikace v Javě pro podporu Mavenu
           href: service-fabric-migrate-old-javaapp-to-use-maven.md
-    - name: Práce v integrovaném vývojovém prostředí (IDE)
-      items:
-        - name: Práce ve vývojovém prostředí Windows/VS
-          items:
-            - name: Správa aplikací v sadě Visual Studio
-              href: service-fabric-manage-application-in-visual-studio.md
-            - name: Konfigurace zabezpečených připojení v sadě Visual Studio
-              href: service-fabric-visualstudio-configure-secure-connections.md
-            - name: Ladění služby .NET ve VS
-              href: service-fabric-debugging-your-application.md
-            - name: Ladění kontejnerů Windows s využitím služby Service Fabric a VS
-              href: service-fabric-how-to-debug-windows-containers.md
-            - name: Běžné chyby a výjimky
-              href: service-fabric-errors-and-exceptions.md
-            - name: Místní monitorování a diagnostika
-              href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
-            - name: Nastavení linuxového clusteru ve Windows
-              href: service-fabric-local-linux-cluster-windows.md
-            - name: Nasazení aplikace .NET Core do vzdáleného linuxového clusteru z VS
-              href: service-fabric-how-to-publish-linux-app-vs.md
-        - name: Práce ve vývojovém prostředí Linux/Eclipse
-          items:
-            - name: Začínáme s modulem plug-in Eclipse pro Java Development
-              href: service-fabric-get-started-eclipse.md
-            - name: Ladění služby Java v Eclipse
-              href: service-fabric-debugging-your-application-java.md
-            - name: Místní monitorování a diagnostika
-              href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md
-        - name: Práce v prostředí VS Code
-          items:
-            - name: Začínáme s editorem VS Code
-              href: service-fabric-get-started-vs-code.md
-            - name: Vývoj aplikací Service Fabric v C# s využitím VS Code
-              href: service-fabric-develop-csharp-applications-with-vs-code.md
-            - name: Vývoj aplikací Service Fabric v Javě s využitím VS Code
-              href: service-fabric-develop-java-applications-with-vs-code.md
-    - name: Migrace ze služby Cloud Services
-      items:
-        - name: Porovnání služby Cloud Services se Service Fabric
-          href: service-fabric-cloud-services-migration-differences.md
-        - name: Migrace do Service Fabric
-          href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
-        - name: Doporučené postupy
-          href: /azure/architecture/service-fabric/migrate-from-cloud-services
-        - name: Modernizace vaší aplikace
-          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
     - name: Správa životního cyklu aplikace
       items:
         - name: Balení aplikace
@@ -651,144 +789,6 @@
           href: service-fabric-reverseproxy-setup.md
         - name: Konfigurace reverzního proxy serveru pro zabezpečenou komunikaci
           href: service-fabric-reverseproxy-configure-secure-communication.md
-    - name: Vytvoření a správa clusterů
-      items:
-        - name: Clustery v Azure
-          items:
-            - name: Vytvořit
-              items:
-                - name: Plán pro nasazení clusteru
-                  href: service-fabric-cluster-azure-deployment-preparation.md
-                - name: Vytvoření na webu Azure Portal
-                  href: service-fabric-cluster-creation-via-portal.md
-                - name: Nasazení clusteru služby Azure Service Fabric napříč zónami dostupnosti
-                  href: service-fabric-cross-availability-zones.md
-                - name: Nasazení clusteru služby Azure Service Fabric s bezstavovými typy uzlů
-                  href: service-fabric-stateless-node-types.md
-                - name: Nastavení ověřování pomocí Azure Active Directory
-                  href: service-fabric-cluster-creation-setup-aad.md
-                - name: Vytvoření vlastní šablony clusteru
-                  href: service-fabric-cluster-creation-create-template.md
-                - name: Vytvoření pomocí Resource Manageru
-                  href: service-fabric-cluster-creation-via-arm.md
-                - name: Vytvoření s využitím běžného názvu certifikátu
-                  href: service-fabric-create-cluster-using-cert-cn.md
-                - name: Vytvoření clusteru s Linuxem
-                  href: service-fabric-tutorial-create-vnet-and-linux-cluster.md
-            - name: Měřítko
-              items:
-                - name: Ruční horizontální navýšení kapacity
-                  href: service-fabric-cluster-scale-in-out.md
-                - name: Horizontální navýšení kapacity prostřednictvím kódu programu
-                  href: service-fabric-cluster-programmatic-scaling.md
-                - name: Škálování primárního typu uzlu
-                  href: service-fabric-scale-up-primary-node-type.md
-                - name: Přidání typu uzlu
-                  href: virtual-machine-scale-set-scale-node-type-scale-out.md
-                - name: Odebrání typu uzlu
-                  href: service-fabric-how-to-remove-node-type.md
-            - name: Upgrade
-              items:
-                - name: Přidání rozšíření škálovací sady virtuálních počítačů do typu uzlu spravovaného clusteru
-                  href: how-to-managed-cluster-vmss-extension.md
-                - name: Upgrade verze Service Fabric
-                  href: service-fabric-cluster-upgrade-version-azure.md
-                - name: Upgrade konfigurace clusteru
-                  href: service-fabric-cluster-config-upgrade-azure.md
-                - name: Oprava uzlů clusteru (Windows)
-                  href: service-fabric-patch-orchestration-application.md
-                - name: Povolení šifrování disků (Windows)
-                  href: service-fabric-enable-azure-disk-encryption-windows.md
-                - name: Povolení šifrování disků (Linux)
-                  href: service-fabric-enable-azure-disk-encryption-linux.md
-                - name: Nastavení řízení přístupu
-                  href: service-fabric-cluster-security-roles.md
-                - name: Otevření portu v nástroji pro vyrovnávání zatížení
-                  href: create-load-balancer-rule.md
-                - name: Změna certifikátu clusteru na běžný název
-                  href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
-                - name: Ruční přesměrování certifikátů clusteru
-                  href: service-fabric-cluster-rollover-cert-cn.md
-                - name: Správa certifikátů clusteru
-                  href: service-fabric-cluster-security-update-certs-azure.md
-                - name: Vzdálené připojení k virtuálnímu počítači uzlu clusteru
-                  href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
-        - name: Samostatné clustery
-          items:
-            - name: Vytvořit
-              items:
-                - name: Místní vytvoření
-                  href: service-fabric-cluster-creation-for-windows-server.md
-                - name: Zabezpečení pomocí certifikátů
-                  href: service-fabric-windows-cluster-x509-security.md
-                - name: Zabezpečení pomocí zabezpečení systému Windows
-                  href: service-fabric-windows-cluster-windows-security.md
-                - name: Obsah samostatného balíčku
-                  href: service-fabric-cluster-standalone-package-contents.md
-            - name: Měřítko
-              href: service-fabric-cluster-windows-server-add-remove-nodes.md
-            - name: Upgrade
-              items:
-                - name: Upgrade verze Service Fabric
-                  href: service-fabric-cluster-upgrade-windows-server.md
-                - name: Upgrade konfigurace clusteru
-                  href: service-fabric-cluster-config-upgrade-windows-server.md
-                - name: Nastavení konfigurace
-                  href: service-fabric-cluster-manifest.md
-                - name: Nastavení řízení přístupu
-                  href: service-fabric-cluster-security-roles.md
-                - name: Oprava uzlů clusteru (Windows)
-                  href: service-fabric-patch-orchestration-application.md
-        - name: Vizualizace s využitím Service Fabric Exploreru
-          href: service-fabric-visualizing-your-cluster.md
-        - name: Připojení k zabezpečenému clusteru
-          href: service-fabric-connect-to-secure-cluster.md
-    - name: Monitorování a diagnóza
-      items:
-        - name: Diagnostika běžných scénářů
-          href: service-fabric-diagnostics-common-scenarios.md
-        - name: Diagnostika chyb balíčků kódu
-          href: service-fabric-diagnostics-code-package-errors.md
-        - name: Monitorování aplikací
-          items:
-            - name: Přidání protokolování do aplikace
-              href: service-fabric-how-to-diagnostics-log.md
-            - name: Analýza s využitím Application Insights
-              href: service-fabric-diagnostics-event-analysis-appinsights.md
-            - name: Agregace protokolů s využitím EventFlow
-              href: service-fabric-diagnostics-event-aggregation-eventflow.md
-            - name: Monitorování kontejnerů
-              href: service-fabric-diagnostics-oms-containers.md
-        - name: Monitorování clusterů
-          items:
-            - name: Konfigurace protokolů služby Azure Monitor pro shromažďování událostí clusteru
-              href: service-fabric-diagnostics-oms-setup.md
-            - name: Monitorování clusteru s využitím protokolů služby Azure Monitor
-              href: service-fabric-diagnostics-event-analysis-oms.md
-            - name: Dotazování rozhraní API EventStoru
-              href: service-fabric-diagnostics-eventstore-query.md
-            - name: Diagnostika clusterů Windows
-              href: service-fabric-diagnostics-event-aggregation-wad.md
-            - name: Diagnostika clusterů Linux
-              href: service-fabric-diagnostics-oms-syslog.md
-        - name: Monitorování infrastruktury
-          items:
-            - name: Shromažďování čítačů výkonu pomocí agenta Log Analytics
-              href: service-fabric-diagnostics-oms-agent.md
-            - name: Shromažďování čítačů výkonu pomocí WAD
-              href: service-fabric-diagnostics-perf-wad.md
-        - name: Monitorování stavu
-          items:
-            - name: Reportování a kontrola stavu
-              href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
-            - name: Řešení potíží se systémovými stavovými sestavami
-              href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
-            - name: Zobrazení stavových sestav
-              href: service-fabric-view-entities-aggregated-health.md
-        - name: Diagnostika událostí reverzního proxy serveru
-          href: service-fabric-reverse-proxy-diagnostics.md
-        - name: Řešení potíží s místním clusterem
-          href: service-fabric-troubleshoot-local-cluster-setup.md
     - name: Použití spravované identity pro aplikace Service Fabric
       items:
         - name: Nastavení clusteru
@@ -797,8 +797,6 @@
               href: configure-existing-cluster-enable-managed-identity-token-service.md
             - name: Konfigurace nového clusteru Azure Service Fabric pomocí spravované identity
               href: configure-new-azure-service-fabric-enable-managed-identity.md
-            - name: Konfigurace spravovaného clusteru Service Fabric pomocí spravované identity
-              href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
         - name: Nastavení aplikace
           items:
             - name: Nasazení aplikace pomocí spravované identity
@@ -811,12 +809,22 @@
           href: how-to-managed-identity-service-fabric-app-code.md
         - name: Udělení přístupu k dalším prostředkům Azure
           href: how-to-grant-access-other-resources.md
+    - name: Migrace ze služby Cloud Services
+      items:
+        - name: Porovnání služby Cloud Services se Service Fabric
+          href: service-fabric-cloud-services-migration-differences.md
+        - name: Migrace do Service Fabric
+          href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
+        - name: Doporučené postupy
+          href: /azure/architecture/service-fabric/migrate-from-cloud-services
+        - name: Modernizace vaší aplikace
+          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
 - name: Referenční informace
   items:
     - name: Azure PowerShell
       href: /powershell/module/az.servicefabric/
     - name: PowerShell
-      href: /powershell/module/ServiceFabric/New-ServiceFabricService?view=azureservicefabricps
+      href: /powershell/module/servicefabric/?view=azureservicefabricps
     - name: Azure CLI (az sf)
       href: /cli/azure/sf
     - name: Service Fabric CLI (sfctl)

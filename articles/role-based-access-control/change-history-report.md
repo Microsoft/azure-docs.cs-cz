@@ -15,16 +15,16 @@ ms.date: 07/27/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 3e4d75c59d0e3c97b0900dd72a27d4afbf4015c9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 53b72ac22df845f88dc82b14aa5dfaa57973b0d1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492314"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595838"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Zobrazení protokolů aktivit pro změny v Azure RBAC
 
-Někdy potřebujete informace o změnách řízení přístupu na základě role v Azure (Azure RBAC), například pro účely auditování nebo řešení potíží. Kdykoli někdo provede změny v přiřazení rolí nebo definicích rolí v rámci předplatných, změny se přihlásí do [protokolu aktivit Azure](../azure-monitor/platform/platform-logs-overview.md). V protokolech aktivit si můžete zobrazit všechny změny v rámci Azure RBAC za posledních 90 dní.
+Někdy potřebujete informace o změnách řízení přístupu na základě role v Azure (Azure RBAC), například pro účely auditování nebo řešení potíží. Kdykoli někdo provede změny v přiřazení rolí nebo definicích rolí v rámci předplatných, změny se přihlásí do [protokolu aktivit Azure](../azure-monitor/essentials/platform-logs-overview.md). V protokolech aktivit si můžete zobrazit všechny změny v rámci Azure RBAC za posledních 90 dní.
 
 ## <a name="operations-that-are-logged"></a>Operace, které jsou protokolovány
 
@@ -122,7 +122,7 @@ az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 
 
 ## <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 
-[Protokoly Azure monitor](../azure-monitor/log-query/log-query-overview.md) jsou další nástroj, který můžete použít ke shromažďování a analýze změn ve službě Azure RBAC pro všechny prostředky Azure. Protokoly Azure Monitor mají následující výhody:
+[Protokoly Azure monitor](../azure-monitor/logs/log-query-overview.md) jsou další nástroj, který můžete použít ke shromažďování a analýze změn ve službě Azure RBAC pro všechny prostředky Azure. Protokoly Azure Monitor mají následující výhody:
 
 - Zápis složitých dotazů a logiky
 - Integrace s výstrahami, Power BI a dalšími nástroji
@@ -131,15 +131,15 @@ az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 
 
 Zde jsou základní kroky, jak začít:
 
-1. [Vytvořte pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
+1. [Vytvořte pracovní prostor Log Analytics](../azure-monitor/logs/quick-create-workspace.md).
 
-1. [Nakonfigurujte řešení Activity Log Analytics](../azure-monitor/platform/activity-log.md#activity-log-analytics-monitoring-solution) pro váš pracovní prostor.
+1. [Nakonfigurujte řešení Activity Log Analytics](../azure-monitor/essentials/activity-log.md#activity-log-analytics-monitoring-solution) pro váš pracovní prostor.
 
-1. [Zobrazení protokolů aktivit](../azure-monitor/platform/activity-log.md#activity-log-analytics-monitoring-solution). Rychlý způsob, jak přejít na stránku Přehled řešení Activity Log Analytics, je kliknout na možnost **protokoly** .
+1. [Zobrazení protokolů aktivit](../azure-monitor/essentials/activity-log.md#activity-log-analytics-monitoring-solution). Rychlý způsob, jak přejít na stránku Přehled řešení Activity Log Analytics, je kliknout na možnost **protokoly** .
 
    ![Možnost protokolů Azure Monitor na portálu](./media/change-history-report/azure-log-analytics-option.png)
 
-1. Volitelně můžete použít [Log Analytics Azure monitor](../azure-monitor/log-query/log-analytics-tutorial.md) k dotazování a zobrazení protokolů. Další informace najdete v tématu [Začínáme s Azure monitor dotazy protokolu](../azure-monitor/log-query/get-started-queries.md).
+1. Volitelně můžete použít [Log Analytics Azure monitor](../azure-monitor/logs/log-analytics-tutorial.md) k dotazování a zobrazení protokolů. Další informace najdete v tématu [Začínáme s Azure monitor dotazy protokolu](../azure-monitor/logs/get-started-queries.md).
 
 Tady je dotaz, který vrací přiřazení nových rolí uspořádaná podle poskytovatele cílových prostředků:
 
@@ -163,4 +163,4 @@ AzureActivity
 
 ## <a name="next-steps"></a>Další kroky
 * [Zobrazení událostí v protokolu aktivit](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
-* [Monitorování aktivit předplatného s protokolem aktivit Azure](../azure-monitor/platform/platform-logs-overview.md)
+* [Monitorování aktivit předplatného s protokolem aktivit Azure](../azure-monitor/essentials/platform-logs-overview.md)

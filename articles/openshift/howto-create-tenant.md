@@ -3,15 +3,15 @@ title: Vytvoření tenanta Azure AD pro Azure Red Hat OpenShift
 description: Tady je postup vytvoření klienta Azure Active Directory (Azure AD) pro hostování Microsoft Azureho clusteru Red Hat OpenShift.
 author: jimzim
 ms.author: jzim
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: b57bafdc3f4748bf634955334424941b55e02fd8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b98f02adeb850f16127658c7d02d44754512e216
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492365"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635005"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Vytvoření tenanta Azure AD pro Azure Red Hat OpenShift
 
@@ -43,7 +43,7 @@ Vytvoření tenanta:
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 
 Další informace o [klientech Azure AD](../active-directory/develop/quickstart-create-new-tenant.md)najdete v [dokumentaci k Azure Active Directory](../active-directory/index.yml) .
 

@@ -3,12 +3,12 @@ title: Ukázkové ovládací prvky FedRAMP středního podrobného plánu
 description: Mapování ovládacích prvků FedRAMP pro střední plán. Každý ovládací prvek je namapován na jednu nebo více Azure Policy definic, které pomáhají s posouzením.
 ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 30fd8030150613e6e429501ec27d5cad5cbe2a45
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 7a78ebf631d2c7eb21fea64b0b6aa307bb500e0d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034794"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594707"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>Mapování ovládacích prvků FedRAMP pro střední plán
 
@@ -284,7 +284,7 @@ Teď, když jste zkontrolovali mapování ovládacích prvků FedRAMP pro střed
 
 > [!div class="nextstepaction"]
 > [FedRAMP – střední podrobný plán – přehled](./index.md) 
->  [FodRAMP střední podrobný plán – nasazení kroků](./deploy.md)
+>  [FedRAMP střední podrobný plán – nasazení kroků](./deploy.md)
 
 Další články věnované podrobným plánům a postupu jejich využití:
 
