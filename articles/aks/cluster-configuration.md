@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/09/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 5519157b58268b30ecb7a1af7b86d13d587a23b8
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: eaf512915532b482c25e830cd9f2e01d61aa4524
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100519401"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572773"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurace clusteru AKS
 
@@ -100,9 +100,9 @@ Díky použití `containerd` pro uzly AKS zlepšuje latence při spuštění a s
 * `containerd`V případě nástroje doporučujeme použít [`crictl`](https://kubernetes.io/docs/tasks/debug-application-cluster/crictl) jako náhradní příkaz CLI místo Docker CLI pro **řešení potíží s** podmnožinami, kontejnery a imagemi kontejnerů na uzlech Kubernetes (například `crictl ps` ). 
    * Neposkytuje kompletní funkce rozhraní příkazového řádku Docker. Je určený jenom pro odstraňování potíží.
    * `crictl` nabízí více kubernetesch zobrazení kontejnerů, s koncepty, jako jsou lusky atd.
-* `Containerd` Nastaví protokolování pomocí standardizovaného `cri` formátu protokolování (to se liší od toho, co aktuálně pochází z ovladače rozhraní JSON Docker). Vaše řešení protokolování vyžaduje podporu `cri` formátu protokolování (například [Azure monitor pro kontejnery](../azure-monitor/insights/container-insights-enable-new-cluster.md)).
+* `Containerd` Nastaví protokolování pomocí standardizovaného `cri` formátu protokolování (to se liší od toho, co aktuálně pochází z ovladače rozhraní JSON Docker). Vaše řešení protokolování vyžaduje podporu `cri` formátu protokolování (například [Azure monitor pro kontejnery](../azure-monitor/containers/container-insights-enable-new-cluster.md)).
 * Už nemůžete získat přístup k modulu Docker, `/var/run/docker.sock` ani použít Docker-in-Docker (DinD).
-  * Pokud v současné době extrahujete protokoly aplikací nebo monitorovaná data z modulu Docker, použijte místo toho něco jako [Azure monitor for Containers](../azure-monitor/insights/container-insights-enable-new-cluster.md) . AKS navíc nepodporuje spouštění jakýchkoli příkazů mimo pásmo na uzlech agentů, které by mohly způsobit nestabilitu.
+  * Pokud v současné době extrahujete protokoly aplikací nebo monitorovaná data z modulu Docker, použijte místo toho něco jako [Azure monitor for Containers](../azure-monitor/containers/container-insights-enable-new-cluster.md) . AKS navíc nepodporuje spouštění jakýchkoli příkazů mimo pásmo na uzlech agentů, které by mohly způsobit nestabilitu.
   * I když používáte Moby/Docker, sestavování imagí a přímé využití modulu Docker prostřednictvím výše uvedených metod se důrazně nedoporučuje. Kubernetes není plně vědoma těch spotřebovaných prostředků a tyto přístupy obsahují řadu problémů, které jsou [zde](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) popsané, a [tady](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/), například.
 * Vytváření imagí – stávající pracovní postup sestavení Docker můžete dál používat jako normální, pokud nevytváříte image v rámci clusteru AKS. V takovém případě zvažte přechod na doporučený postup pro vytváření imagí pomocí [ACR úloh](../container-registry/container-registry-quickstart-task-cli.md)nebo bezpečnější možnost v clusteru, jako je [Docker buildx](https://github.com/docker/buildx).
 

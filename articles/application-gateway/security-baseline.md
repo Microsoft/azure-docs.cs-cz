@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4f28665998dcac9f641d4142a0dea60707fb02e9
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 579baa611db47215c8ada554328d254ce99f17cf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805356"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579761"
 ---
 # <a name="azure-security-baseline-for-azure-application-gateway"></a>Základní hodnoty zabezpečení Azure pro Azure Application Gateway
 
@@ -188,9 +188,9 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny nastavení sítě a prostředků souvisejících s nasazeními Azure Application Gateway. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když dojde ke změně kritických nastavení sítě nebo prostředků.
 
-* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -216,7 +216,7 @@ Kromě protokolů aktivit můžete nakonfigurovat nastavení diagnostiky pro nas
 
 Azure Application Gateway také nabízí integrovanou integraci s Azure Application Insights. Application Insights shromažďuje údaje o protokolech, výkonu a chybách. Application Insights automaticky detekuje anomálie výkonu a zahrnuje výkonné analytické nástroje, které vám pomůžou diagnostikovat problémy a pochopit, jak se používají vaše webové aplikace. Průběžný export můžete povolit pro export telemetrie z Application Insights do centralizovaného umístění, aby data byla delší než standardní doba uchovávání dat.
 
-* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
+* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 * [Postup povolení nastavení diagnostiky pro Azure Application Gateway](./application-gateway-diagnostics.md)
 
@@ -236,7 +236,7 @@ Kromě protokolů aktivit můžete nakonfigurovat nastavení diagnostiky pro nas
 
 Azure Application Gateway také nabízí integrovanou integraci s Azure Application Insights. Application Insights shromažďuje údaje o protokolech, výkonu a chybách. Application Insights automaticky detekuje anomálie výkonu a zahrnuje výkonné analytické nástroje, které vám pomůžou diagnostikovat problémy a pochopit, jak se používají vaše webové aplikace. Průběžný export můžete povolit pro export telemetrie z Application Insights do centralizovaného umístění, aby data byla delší než standardní doba uchovávání dat.
 
-* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
+* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 * [Postup povolení nastavení diagnostiky pro Azure Application Gateway](./application-gateway-diagnostics.md)
 
@@ -260,7 +260,7 @@ Azure Application Gateway také nabízí integrovanou integraci s Azure Applicat
 
 **Doprovodné** materiály: v rámci Azure monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
 
-* [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -274,7 +274,7 @@ Pomocí Azure Monitor pro sítě získáte komplexní přehled o stavu a metrik�
 
 Volitelně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany.
 
-* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
+* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 * [Postup povolení nastavení diagnostiky pro Azure Application Gateway](./application-gateway-diagnostics.md)
 
@@ -294,13 +294,13 @@ Pomocí Azure Monitor pro sítě získáte komplexní přehled o stavu a metrik�
 
 * [Jak nasadit Azure WAF](../web-application-firewall/ag/create-waf-policy-ag.md)
 
-* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
+* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 * [Postup povolení nastavení diagnostiky pro Azure Application Gateway](./application-gateway-diagnostics.md)
 
 * [Jak používat Azure Monitor pro sítě](../azure-monitor/insights/network-insights-overview.md)
 
-* [Vytvoření upozornění v rámci Azure](../azure-monitor/learn/tutorial-response.md)
+* [Vytvoření upozornění v rámci Azure](../azure-monitor/alerts/tutorial-response.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -591,7 +591,7 @@ Microsoft spravuje základní infrastrukturu pro Azure Application Gateway a imp
 
 **Pokyny**: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na případy, kdy změny probíhají v produkčních instancích Azure Application Gateway, i v jiných důležitých nebo souvisejících prostředcích.
 
-* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
+* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Ano
 

@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: dfd819d82f5e35183802e33e5d423cad4de36c38
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 48b646881b12047b28490999a96326f6076af2c1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461581"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591845"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-azure-monitor-resource-logs"></a>Migrace IoT Hub z monitorování operací na protokoly prostředků Azure Monitor
 
-Zákazníci, kteří používají [monitorování operací](iot-hub-operations-monitoring.md) ke sledování stavu operací v IoT Hub, můžou tento pracovní postup migrovat do [Azure Monitorch protokolů prostředků](../azure-monitor/platform/platform-logs-overview.md), což je funkce Azure monitor. Protokoly prostředků poskytují diagnostické informace na úrovni prostředku pro mnoho služeb Azure.
+Zákazníci, kteří používají [monitorování operací](iot-hub-operations-monitoring.md) ke sledování stavu operací v IoT Hub, můžou tento pracovní postup migrovat do [Azure Monitorch protokolů prostředků](../azure-monitor/essentials/platform-logs-overview.md), což je funkce Azure monitor. Protokoly prostředků poskytují diagnostické informace na úrovni prostředku pro mnoho služeb Azure.
 
 **Funkce monitorování operací IoT Hub je zastaralá** a byla odebrána z portálu. Tento článek popisuje kroky, jak přesunout vaše úlohy z monitorování provozu do Azure Monitorch protokolů prostředků. Další informace o časové ose zastaralosti najdete v tématu [monitorování řešení Azure IoT pomocí Azure monitor a Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/).
 
@@ -49,9 +49,9 @@ Chcete-li aktualizovat IoT Hub v Azure Portal, nejprve vytvořte nastavení diag
 
 1. Vyberte **Uložit** a nastavení se uloží.
 
-Nové nastavení se projeví přibližně po dobu 10 minut. Pak se protokoly zobrazí v nakonfigurovaném cíli. Další informace o konfiguraci diagnostiky najdete v tématu [shromažďování a využívání dat protokolů z prostředků Azure](../azure-monitor/platform/platform-logs-overview.md).
+Nové nastavení se projeví přibližně po dobu 10 minut. Pak se protokoly zobrazí v nakonfigurovaném cíli. Další informace o konfiguraci diagnostiky najdete v tématu [shromažďování a využívání dat protokolů z prostředků Azure](../azure-monitor/essentials/platform-logs-overview.md).
 
-Podrobnější informace o tom, jak vytvořit nastavení diagnostiky, včetně PowerShellu a rozhraní příkazového řádku Azure, najdete v tématu [nastavení diagnostiky](../azure-monitor/platform/diagnostic-settings.md) v dokumentaci k Azure monitor.
+Podrobnější informace o tom, jak vytvořit nastavení diagnostiky, včetně PowerShellu a rozhraní příkazového řádku Azure, najdete v tématu [nastavení diagnostiky](../azure-monitor/essentials/diagnostic-settings.md) v dokumentaci k Azure monitor.
 
 ### <a name="turn-off-operations-monitoring"></a>Vypnout monitorování operací
 

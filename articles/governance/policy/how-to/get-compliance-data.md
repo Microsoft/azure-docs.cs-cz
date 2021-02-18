@@ -3,12 +3,12 @@ title: Získat data dodržování zásad
 description: Azure Policy hodnocení a účinky určují dodržování předpisů. Přečtěte si, jak získat podrobnosti o dodržování předpisů pro vaše prostředky Azure.
 ms.date: 10/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 112badce00ec56df0f80c7b51bb4789a414cdcbd
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 3c1c128b414444c6004f32f3f3173548f81a82e1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920232"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577125"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získání dat o dodržování předpisů u prostředků Azure
 
@@ -197,7 +197,7 @@ Kromě **kompatibilních** a **nekompatibilních** zásad a prostředků mají �
 
 Azure Policy používá pole **typ**, **název** nebo **druh** v definici k určení, zda se jedná o shodu prostředku. Pokud se prostředek shoduje, je považován za platný a má stav buď **kompatibilní**, **nekompatibilní** nebo **vyloučený**. Pokud je v definici jedinou vlastností **typu**, **název** nebo **druh** , jsou všechny zahrnuté a nevyňaté prostředky považovány za použitelné a vyhodnocují se.
 
-Procento dodržování předpisů je určeno vydělením **kompatibilních** a **osvobozených** prostředků _celkovými prostředky_. _Celkem prostředků_ je definováno jako součet **kompatibilních** a **nekompatibilních, nekompatibilních** a **konfliktních** prostředků. **Exempt** Celková čísla dodržování předpisů jsou součtem různých prostředků, které jsou v souladu s **předpisy** , a jejich **vyloučení** je dělené součtem všech různých prostředků. Na následujícím obrázku je více než 20 různých prostředků, které jsou k dispozici, a pouze jeden z nich **nedodržuje předpisy**.
+Procento dodržování předpisů je určeno vydělením **kompatibilních** a **osvobozených** prostředků _celkovými prostředky_. _Celkem prostředků_ je definováno jako součet **kompatibilních** a **nekompatibilních, nekompatibilních** a **konfliktních** prostředků.  Celková čísla dodržování předpisů jsou součtem různých prostředků, které jsou v souladu s **předpisy** , a jejich **vyloučení** je dělené součtem všech různých prostředků. Na následujícím obrázku je více než 20 různých prostředků, které jsou k dispozici, a pouze jeden z nich **nedodržuje předpisy**.
 Celkové dodržování předpisů prostředků je 95% (19 z 20).
 
 :::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Snímek obrazovky s podrobnostmi o dodržování předpisů zásad ze stránky dodržování předpisů." border="false":::
@@ -683,7 +683,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 
-Pokud máte [pracovní prostor Log Analytics](../../../azure-monitor/log-query/log-query-overview.md) s `AzureActivity` z [Activity log Analyticsho řešení](../../../azure-monitor/platform/activity-log.md) svázaného s vaším předplatným, můžete si také zobrazit výsledky nedodržení předpisů ze hodnocení nových a aktualizovaných prostředků pomocí jednoduchých dotazů Kusto a `AzureActivity` tabulky. S podrobnostmi v protokolech Azure Monitor můžete výstrahy nakonfigurovat tak, aby sledovaly nedodržování předpisů.
+Pokud máte [pracovní prostor Log Analytics](../../../azure-monitor/logs/log-query-overview.md) s `AzureActivity` z [Activity log Analyticsho řešení](../../../azure-monitor/essentials/activity-log.md) svázaného s vaším předplatným, můžete si také zobrazit výsledky nedodržení předpisů ze hodnocení nových a aktualizovaných prostředků pomocí jednoduchých dotazů Kusto a `AzureActivity` tabulky. S podrobnostmi v protokolech Azure Monitor můžete výstrahy nakonfigurovat tak, aby sledovaly nedodržování předpisů.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Snímek obrazovky Azure Monitor protokolů se zobrazenými Azure Policy akcemi v tabulce AzureActivity" border="false":::
 

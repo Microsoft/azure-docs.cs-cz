@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 02/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1957adc0effd5b37d7aff3f813267da6ca065e0a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 15e5aba2bad4cd7ae63ceb9c9f67f7e653a82a91
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368961"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650146"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Tento článek popisuje požadavky a požadavky na hardware pro službu Azure Active Directory (Azure AD) Connect.
@@ -167,6 +167,17 @@ Před verzí 1.1.614.0 Azure AD Connect ve výchozím nastavení používá TLS 
     "SchUseStrongCrypto"=dword:00000001
     ```
 1. Pokud také chcete povolit TLS 1,2 mezi serverem synchronizace a vzdáleným SQL Server, ujistěte se, že máte nainstalované požadované verze pro [podporu TLS 1,2 pro Microsoft SQL Server](https://support.microsoft.com/kb/3135244).
+
+### <a name="dcom-prerequisites-on-the-synchronization-server"></a>Požadavky modelu DCOM na synchronizační Server
+Během instalace synchronizační služby Azure AD Connect zkontroluje přítomnost následujícího klíče registru:
+
+- HKEY_LOCAL_MACHINE: Software\Microsoft\Ole
+
+V rámci tohoto klíče registru Azure AD Connect zkontroluje, jestli jsou k dispozici následující hodnoty a nepoškozená: 
+
+- [MachineAccessRestriction](https://docs.microsoft.com/windows/win32/com/machineaccessrestriction)
+- [MachineLaunchRestriction](https://docs.microsoft.com/windows/win32/com/machinelaunchrestriction)
+- [DefaultLaunchPermission](https://docs.microsoft.com/windows/win32/com/defaultlaunchpermission)
 
 ## <a name="prerequisites-for-federation-installation-and-configuration"></a>Předpoklady pro instalaci a konfiguraci federace
 ### <a name="windows-remote-management"></a>Vzdálená správa systému Windows

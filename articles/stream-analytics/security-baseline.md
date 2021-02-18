@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c1e61e9434d96148fbce840f4bad7f6a3b2ecb6b
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: e37171fce5dd7fe625550c5f554f211cf148ea07
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202721"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591439"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Základní hodnoty zabezpečení Azure pro Stream Analytics
 
@@ -114,9 +114,9 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace prostředků a zjišťovat změny vašich Stream Analyticsch prostředků. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických prostředcích.
 
-* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -138,7 +138,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Doprovodné** materiály: ingestování protokolů prostřednictvím Azure monitor k agregaci dat zabezpečení, jako jsou události auditu a požadavky. V rámci Azure Monitor můžete Log Analytics pracovní prostory použít k dotazování na analýzu a k provádění analýz a k používání Azure Storageho dlouhodobého úložiště pro accountyfor, případně k funkcím zabezpečení, jako je například neměnné úložiště a zajištěné uchování.
 
-* [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+* [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -170,7 +170,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 * [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
-* [Změnit dobu uchovávání dat v Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Změnit dobu uchovávání dat v Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -182,9 +182,9 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 * [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [Další informace o pracovním prostoru Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Další informace o pracovním prostoru Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+* [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -196,7 +196,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 * [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [Upozornění na data protokolu Log Analytics](../azure-monitor/learn/tutorial-response.md)
+* [Upozornění na data protokolu Log Analytics](../azure-monitor/alerts/tutorial-response.md)
 
 * [Azure Stream Analytics poskytuje diagnostické protokoly a data aktivit ke kontrole.](./stream-analytics-job-diagnostic-logs.md)
 
@@ -474,7 +474,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Pokyny**: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro případy, kdy se změny provedly do produkčních instancí prostředků Azure Stream Analytics.
 
-* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
+* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Ano
 

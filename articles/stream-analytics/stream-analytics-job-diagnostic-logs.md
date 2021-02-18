@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.custom: contperf-fy21q1
 ms.date: 06/18/2020
-ms.openlocfilehash: 56c7ad49fc9af3ca4f30aa5309623c31e9db7385
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 93d881419c4854b8e46608e150b55072267e0347
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011114"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574406"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Řešení potíží s Azure Stream Analytics pomocí protokolů prostředků
 
@@ -24,9 +24,9 @@ Důrazně doporučujeme povolit protokoly prostředků pro všechny úlohy, prot
 
 Stream Analytics nabízí dva typy protokolů:
 
-* [Protokoly aktivit](../azure-monitor/platform/platform-logs-overview.md) (Always On), které poskytují přehled o operacích provedených v úlohách.
+* [Protokoly aktivit](../azure-monitor/essentials/platform-logs-overview.md) (Always On), které poskytují přehled o operacích provedených v úlohách.
 
-* [Protokoly prostředků](../azure-monitor/platform/platform-logs-overview.md) (konfigurovatelné), které poskytují podrobné přehledy o všech úlohách, které se v rámci úlohy děje. Protokoly prostředků se spustí při vytvoření a ukončení úlohy, když se úloha odstraní. Pokrývají události při aktualizaci úlohy a při jejím spuštění.
+* [Protokoly prostředků](../azure-monitor/essentials/platform-logs-overview.md) (konfigurovatelné), které poskytují podrobné přehledy o všech úlohách, které se v rámci úlohy děje. Protokoly prostředků se spustí při vytvoření a ukončení úlohy, když se úloha odstraní. Pokrývají události při aktualizaci úlohy a při jejím spuštění.
 
 > [!NOTE]
 > K analýze nevyhovujících dat můžete použít služby, jako jsou Azure Storage, Azure Event Hubs a protokoly Azure Monitor. Účtují se vám poplatky podle cenového modelu pro tyto služby.
@@ -94,7 +94,7 @@ Azure Stream Analytics zachycuje dvě kategorie protokolů prostředků:
 
 Všechny protokoly jsou uložené ve formátu JSON. Každá položka má následující obecná pole řetězců:
 
-Název | Popis
+Název | Description
 ------- | -------
 time | Časové razítko (v UTC) protokolu
 resourceId | ID prostředku, na kterém byla operace provedena, v horním případě. Obsahuje ID předplatného, skupinu prostředků a název úlohy. Například **/Subscriptions/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/my-Resource-Group/Providers/Microsoft. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
@@ -133,7 +133,7 @@ V závislosti na hodnotě **OperationName** mají chyby dat následující sché
 
 Obecné události se týkají všech ostatních.
 
-Název | Popis
+Název | Description
 -------- | --------
 Chyba | volitelné Informace o chybě. Obvykle se jedná o výjimku, pokud je k dispozici.
 Zpráva| Zpráva protokolu

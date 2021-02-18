@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 1a319c728b918dbad7dd5f240bc7a0bfeb0c4c09
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 244012f0945f467fe79e95d652ba22e3b62a1b7a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881040"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596949"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizace a řešení potíží s AzCopy
 
@@ -183,7 +183,7 @@ Když úlohu obnovíte, AzCopy se podívá na soubor plánu úlohy. Soubor plán
 
 ## <a name="change-the-location-of-the-plan-and-log-files"></a>Změna umístění plánu a souborů protokolu
 
-Ve výchozím nastavení se soubory schématu a protokolu nacházejí v `%USERPROFILE%\.azcopy` adresáři ve Windows nebo v adresáři v systému `$HOME$\.azcopy` Mac a Linux. Toto umístění můžete změnit.
+Ve výchozím nastavení se soubory schématu a protokolu nacházejí v `%USERPROFILE%\.azcopy` adresáři ve Windows nebo v adresáři v systému `$HOME/.azcopy` Mac a Linux. Toto umístění můžete změnit.
 
 ### <a name="change-the-location-of-plan-files"></a>Změna umístění souborů plánu
 

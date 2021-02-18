@@ -4,16 +4,16 @@ description: Naučte se, jak získat události prostředku prostřednictvím pro
 ms.topic: article
 ms.date: 04/24/2020
 ms.author: msangapu
-ms.openlocfilehash: c5c84891187c540c0b24162cf5c8c7f96e9e731a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c20028a4f84dae9d292cf855a1e164bd69864909
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962294"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574031"
 ---
 # <a name="get-resource-events-in-azure-app-service"></a>Získat události prostředků v Azure App Service
 
-Azure App Service poskytuje integrované nástroje pro sledování stavu a stavu vašich prostředků. Události prostředků vám pomůžou pochopit všechny změny provedené v prostředcích webových aplikací a provádět v případě potřeby akci. Mezi příklady událostí patří: škálování instancí, aktualizace nastavení aplikace, restartování webové aplikace a spousta dalších. V tomto článku se dozvíte, jak zobrazit [protokoly aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log) a povolit [Event Grid](../event-grid/index.yml) monitorování událostí prostředků souvisejících s vaší App Service webovou aplikací.
+Azure App Service poskytuje integrované nástroje pro sledování stavu a stavu vašich prostředků. Události prostředků vám pomůžou pochopit všechny změny provedené v prostředcích webových aplikací a provádět v případě potřeby akci. Mezi příklady událostí patří: škálování instancí, aktualizace nastavení aplikace, restartování webové aplikace a spousta dalších. V tomto článku se dozvíte, jak zobrazit [protokoly aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log) a povolit [Event Grid](../event-grid/index.yml) monitorování událostí prostředků souvisejících s vaší App Service webovou aplikací.
 
 > [!NOTE]
 > App Service integrace s Event Grid je ve **verzi Preview**. [Další podrobnosti najdete v oznámení.](https://aka.ms/app-service-event-grid-announcement)
@@ -33,7 +33,7 @@ Protokoly aktivit Azure pro App Service podrobnosti, jako například:
 
 K protokolům aktivit Azure se dá dotázat pomocí Azure Portal, PowerShellu, REST API nebo rozhraní příkazového řádku. Protokoly můžete odeslat do účtu úložiště, centra událostí a Log Analytics. Můžete je také analyzovat v Power BI nebo vytvářet výstrahy, abyste si mohli zůstat aktualizovat události prostředků.
 
-[Zobrazit a načíst události protokolu aktivit Azure.](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+[Zobrazit a načíst události protokolu aktivit Azure.](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 ## <a name="ship-activity-logs-to-event-grid"></a>Odeslání protokolů aktivit do Event Grid
 
@@ -44,7 +44,7 @@ Nebo můžete pomocí služeb Event Grid a Logic Apps zpracovávat data kdekoli 
 [Zobrazení vlastností a schématu pro události Azure App Service.](../event-grid/event-schema-app-service.md)
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> Další kroky
-* [Dotazování protokolů pomocí Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
+* [Dotazování protokolů pomocí Azure Monitor](../azure-monitor/logs/log-query-overview.md)
 * [Jak monitorovat Azure App Service](web-sites-monitor.md)
 * [Řešení potíží s Azure App Service v aplikaci Visual Studio](troubleshoot-dotnet-visual-studio.md)
 * [Analýza protokolů aplikací v HDInsight](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

@@ -7,12 +7,12 @@ ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 5e9f6ecc733eccf317e3013752ee2f5b0586ea78
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: d3a89e7733cc033792056b8de5232232b8327025
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540561"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580383"
 ---
 # <a name="virtual-machine-and-disk-performance"></a>Výkon disků a virtuálních počítačů
 [!INCLUDE [VM and Disk Performance](../../includes/virtual-machine-disk-performance.md)]
@@ -22,6 +22,3 @@ Virtuální počítače, které jsou povolené pro úložiště Premium Storage 
 
 [!INCLUDE [VM and Disk Performance](../../includes/virtual-machine-disk-performance-2.md)]
 
-Pojďme spustit test srovnávacích testů na tomto virtuálním počítači a kombinaci disků, která vytváří vstupně-výstupní činnost. Informace o tom, jak srovnávací službu Storage v Azure, najdete v tématu [srovnávací testy vaší aplikace na Azure Disk Storage](disks-benchmarks.md). V nástroji pro srovnávací testy vidíte, že kombinace virtuálních počítačů a disků může dosahovat 22 800 IOPS:
-
-[!INCLUDE [VM and Disk Performance](../../includes/virtual-machine-disk-performance-3.md)]

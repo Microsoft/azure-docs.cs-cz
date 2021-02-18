@@ -4,12 +4,12 @@ description: Přečtěte si, jak škálovat nebo snížit kapacitu clusterů Azu
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: 126be55c63c625995ad52b84a51a8983e220652d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 610c43f64f9073aefe8008473209039122cf36d7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85610196"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591786"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Škálování clusterů Azure Service Fabric
 Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Clustery můžou obsahovat potenciálně tisíce uzlů. Po vytvoření clusteru Service Fabric můžete škálovat cluster vodorovně (změnit počet uzlů) nebo vertikálně (změnit prostředky uzlů).  Cluster můžete škálovat kdykoli, a to i v případě, že úlohy běží v clusteru.  I když se cluster škáluje, vaše aplikace se automaticky škálují.
@@ -40,7 +40,7 @@ V mnoha scénářích je vhodné škálovat [cluster ručně nebo s pravidly aut
 - Ruční škálování vyžaduje, abyste se přihlásili a explicitně vyžadovali operace škálování. Pokud se operace škálování vyžadují často nebo v nepředvídatelných časech, tento přístup nemusí být dobrým řešením.
 - Když pravidla automatického škálování odeberou instanci ze sady škálování virtuálních počítačů, automaticky neodstraní znalosti tohoto uzlu z přidruženého clusteru Service Fabric, pokud typ uzlu nemá úroveň odolnosti stříbrného nebo zlata. Vzhledem k tomu, že pravidla automatického škálování fungují na úrovni sady škálování (místo na úrovni Service Fabric), pravidla automatického škálování můžou odebrat Service Fabric uzlů, aniž by je bylo možné řádně vypnout. Tento hrubé uzel po dokončení operací škálování ponechá stav "Ghost" Service Fabric uzlu. Jednotlivec (nebo služba) by musel pravidelně vyčistit odebraný stav uzlu v clusteru Service Fabric.
 - Typ uzlu s úrovní trvanlivosti Gold nebo stříbrné automaticky čistí odebrané uzly, takže není potřeba žádné další čištění.
-- I když pravidla automatického škálování podporují [mnoho metrik](../azure-monitor/platform/autoscale-common-metrics.md) , je stále omezená sada. Pokud váš scénář volá škálování na základě některé metriky, která není pokrytá v dané sadě, nemusejí být pravidla automatického škálování vhodná pro možnost.
+- I když pravidla automatického škálování podporují [mnoho metrik](../azure-monitor/autoscale/autoscale-common-metrics.md) , je stále omezená sada. Pokud váš scénář volá škálování na základě některé metriky, která není pokrytá v dané sadě, nemusejí být pravidla automatického škálování vhodná pro možnost.
 
 Způsob přístupu Service Fabric škálování závisí na vašem scénáři. Pokud je škálování Neběžné, je pravděpodobně dostačující možnost Přidat nebo odebrat uzly ručně. V případě složitějších scénářů automaticky Škálujte pravidla a sady SDK, které vystavují schopnost škálování programově nabízet výkonné alternativy.
 

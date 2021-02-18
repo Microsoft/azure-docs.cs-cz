@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 02/15/2021
 ms.custom: generated
-ms.openlocfilehash: d9a2667907108cfb4c8d7a2a2c9b1558e02a9110
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 1cd86ac2b9500c15bc32445e1866a40ca1c6b409
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100535123"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576993"
 ---
 # <a name="azure-built-in-roles"></a>Předdefinované role Azure
 
@@ -196,9 +196,9 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | **Monitorování** |  |  |
 > | [Přispěvatel Application Insights komponent](#application-insights-component-contributor) | Může spravovat součásti Application Insights. | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Poskytuje uživateli oprávnění k zobrazení a stažení snímků ladění shromážděných pomocí Snapshot Debugger Application Insights. Všimněte si, že tato oprávnění nejsou zahrnutá v rolích [vlastník](#owner) nebo [Přispěvatel](#contributor) . Když uživatelům udělíte roli Application Insights Snapshot Debugger, musíte roli udělit přímo uživateli. Role se při přidání do vlastní role nerozpoznala. | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
-> | [Přispěvatel monitorování](#monitoring-contributor) | Může číst všechna data monitorování a upravovat nastavení monitorování. Přečtěte si také téma [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
+> | [Přispěvatel monitorování](#monitoring-contributor) | Může číst všechna data monitorování a upravovat nastavení monitorování. Přečtěte si také téma [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles). | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
 > | [Monitorování vydavatele metrik](#monitoring-metrics-publisher) | Povoluje publikování metrik pro prostředky Azure. | 3913510d-42f4-4e42-8a64-420c390055eb |
-> | [Čtečka monitorování](#monitoring-reader) | Může číst všechna data monitorování (metriky, protokoly atd.). Přečtěte si také téma [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
+> | [Čtečka monitorování](#monitoring-reader) | Může číst všechna data monitorování (metriky, protokoly atd.). Přečtěte si také téma [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles). | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
 > | [Přispěvatel sešitu](#workbook-contributor) | Může ukládat Sdílené sešity. | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
 > | [Čtenář sešitu](#workbook-reader) | Může číst sešity. | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
 > | **Správa a zásady správného řízení** |  |  |
@@ -4774,7 +4774,7 @@ Vytváření a Správa datových továren a také podřízených prostředků v 
 
 ### <a name="data-purger"></a>Nástroj pro vyprázdnění dat
 
-Může vyprázdnit analytické údaje. [Další informace](../azure-monitor/platform/personal-data-mgmt.md)
+Může vyprázdnit analytické údaje. [Další informace](../azure-monitor/logs/personal-data-mgmt.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -4917,7 +4917,7 @@ Může číst, vytvářet, upravovat a odstraňovat související operace služb
 
 ### <a name="log-analytics-contributor"></a>Přispěvatel Log Analytics
 
-Přispěvatel Log Analytics může číst všechna data monitorování a upravovat nastavení monitorování. Úprava nastavení monitorování zahrnuje přidání rozšíření virtuálního počítače do virtuálních počítačů. čtení klíčů účtu úložiště, aby bylo možné konfigurovat shromažďování protokolů z Azure Storage; vytváření a konfigurace účtů služby Automation; přidávání řešení; a konfigurují se diagnostiky Azure na všech prostředcích Azure. [Další informace](../azure-monitor/platform/manage-access.md)
+Přispěvatel Log Analytics může číst všechna data monitorování a upravovat nastavení monitorování. Úprava nastavení monitorování zahrnuje přidání rozšíření virtuálního počítače do virtuálních počítačů. čtení klíčů účtu úložiště, aby bylo možné konfigurovat shromažďování protokolů z Azure Storage; vytváření a konfigurace účtů služby Automation; přidávání řešení; a konfigurují se diagnostiky Azure na všech prostředcích Azure. [Další informace](../azure-monitor/logs/manage-access.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -4982,7 +4982,7 @@ Přispěvatel Log Analytics může číst všechna data monitorování a upravov
 
 ### <a name="log-analytics-reader"></a>Čtenář Log Analytics
 
-Log Analytics čtenář může zobrazit a vyhledat všechna data monitorování a také zobrazit nastavení monitorování, včetně zobrazení konfigurace diagnostiky Azure na všech prostředcích Azure. [Další informace](../azure-monitor/platform/manage-access.md)
+Log Analytics čtenář může zobrazit a vyhledat všechna data monitorování a také zobrazit nastavení monitorování, včetně zobrazení konfigurace diagnostiky Azure na všech prostředcích Azure. [Další informace](../azure-monitor/logs/manage-access.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -8596,7 +8596,7 @@ Poskytuje uživateli oprávnění k zobrazení a stažení snímků ladění shr
 
 ### <a name="monitoring-contributor"></a>Přispěvatel monitorování
 
-Může číst všechna data monitorování a upravovat nastavení monitorování. Přečtěte si také téma [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). [Další informace](../azure-monitor/platform/roles-permissions-security.md)
+Může číst všechna data monitorování a upravovat nastavení monitorování. Přečtěte si také téma [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles). [Další informace](../azure-monitor/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -8742,7 +8742,7 @@ Umožňuje publikovat metriky pro prostředky Azure. další [informace](../azur
 
 ### <a name="monitoring-reader"></a>Čtečka monitorování
 
-Může číst všechna data monitorování (metriky, protokoly atd.). Přečtěte si také téma [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). [Další informace](../azure-monitor/platform/roles-permissions-security.md)
+Může číst všechna data monitorování (metriky, protokoly atd.). Přečtěte si také téma [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles). [Další informace](../azure-monitor/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -10421,7 +10421,7 @@ Umožňuje spravovat značky entit bez poskytnutí přístupu k samotným entit�
 }
 ```
 
-## <a name="other"></a>Ostatní
+## <a name="other"></a>Jiné
 
 
 ### <a name="azure-digital-twins-data-owner"></a>Vlastník dat digitálních vláken Azure

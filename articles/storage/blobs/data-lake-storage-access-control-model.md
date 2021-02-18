@@ -5,14 +5,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 02/17/2021
 ms.author: normesta
-ms.openlocfilehash: 65d1ef76ffae113a4b526eec75301abbfea751e7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e5f62456b85791bad5bb66f3abf67e523558d76e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017708"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650384"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Model řízení přístupu v Azure Data Lake Storage Gen2
 
@@ -35,7 +35,7 @@ Tento článek se zaměřuje na Azure RBAC a seznamy ACL a na tom, jak ho systé
 
 Azure RBAC používá přiřazení rolí k použití sad oprávnění pro [objekty zabezpečení](../../role-based-access-control/overview.md#security-principal). Objekt zabezpečení je objekt, který představuje uživatele, skupinu, instanční objekt nebo spravovanou identitu, která je definovaná v Azure Active Directory (AD). Sada oprávnění může objektu zabezpečení poskytnout "hrubý" stupeň přístupu, jako je čtení nebo zápis **všech** dat v účtu úložiště nebo **všech** dat v kontejneru. 
 
-Následující role umožňují objektu zabezpečení získat přístup k datům v účtu úložiště. 
+Následující role umožňují objektu zabezpečení získat přístup k datům v účtu úložiště.
 
 |Role|Popis|
 |--|--|
@@ -85,12 +85,12 @@ V následující tabulce se dozvíte, jak kombinovat role Azure a položky sezna
 |                          |   Žádné                           | `--X`    | `--X`    | `--X`     | `RW-`  |
 | Odstranit Data.txt          |   Vlastník dat v objektech blob služby Storage        | N/A      | N/A      | N/A       | N/A    |
 |                          |   Přispěvatel dat v objektech blob služby Storage  | N/A      | N/A      | N/A       | N/A    |
-|                          |   Čtenář dat v objektech blob služby Storage       | `--X`    | `--X`    | `-WX`     | Není k dispozici    |
-|                          |   Žádné                           | `--X`    | `--X`    | `-WX`     | Není k dispozici    |
+|                          |   Čtenář dat v objektech blob služby Storage       | `--X`    | `--X`    | `-WX`     | –    |
+|                          |   Žádné                           | `--X`    | `--X`    | `-WX`     | –    |
 | Vytvořit Data.txt          |   Vlastník dat v objektech blob služby Storage        | N/A      | N/A      | N/A       | N/A    |
 |                          |   Přispěvatel dat v objektech blob služby Storage  | N/A      | N/A      | N/A       | N/A    |
-|                          |   Čtenář dat v objektech blob služby Storage       | `--X`    | `--X`    | `-WX`     | Není k dispozici    |
-|                          |   Žádné                           | `--X`    | `--X`    | `-WX`     | Není k dispozici    |
+|                          |   Čtenář dat v objektech blob služby Storage       | `--X`    | `--X`    | `-WX`     | –    |
+|                          |   Žádné                           | `--X`    | `--X`    | `-WX`     | –    |
 | Seznamu                   |   Vlastník dat v objektech blob služby Storage        | N/A      | N/A      | N/A       | N/A    |
 |                          |   Přispěvatel dat v objektech blob služby Storage  | N/A      | N/A      | N/A       | N/A    |
 |                          |   Čtenář dat v objektech blob služby Storage       | N/A      | N/A      | N/A       | N/A    |
@@ -102,7 +102,7 @@ V následující tabulce se dozvíte, jak kombinovat role Azure a položky sezna
 | Seznam/Oregon/Portland/   |   Vlastník dat v objektech blob služby Storage        | N/A      | N/A      | N/A       | N/A    |
 |                          |   Přispěvatel dat v objektech blob služby Storage  | N/A      | N/A      | N/A       | N/A    |
 |                          |   Čtenář dat v objektech blob služby Storage       | N/A      | N/A      | N/A       | N/A    |
-|                          |   Žádné                           | `--X`    | `--X`    | `R-X`     | Není k dispozici    |
+|                          |   Žádné                           | `--X`    | `--X`    | `R-X`     | –    |
 
 
 > [!NOTE] 

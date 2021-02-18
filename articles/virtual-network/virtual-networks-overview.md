@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2020
 ms.author: kumud
-ms.openlocfilehash: e1efd02d60ba874178f24da2b441fc122e4a1912
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 849127ed0846928a77795ac0a1ea3f7a091468b5
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218530"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635944"
 ---
 # <a name="what-is-azure-virtual-network"></a>Co je Azure Virtual Network?
 
 Azure Virtual Network (VNet) je základní stavební blok vaší privátní sítě v Azure. Virtuální síť umožňuje mnoha typům prostředků Azure, jako je Azure Virtual Machines (VM), bezpečně komunikovat mezi sebou, internetem a místními sítěmi. Virtuální síť je podobná tradiční síti, kterou provozujete ve svém vlastním datovém centru, ale přináší další výhody infrastruktury Azure, jako je například škálování, dostupnost a izolace.
 
 ## <a name="why-use-an-azure-virtual-network"></a>Proč používat službu Azure Virtual Network?
-Azure Virtual Network umožňuje prostředkům Azure zabezpečeně komunikovat mezi sebou, internetem a místními sítěmi. Mezi klíčové scénáře, které můžete provést mezi virtuálními sítěmi, patří komunikace prostředků Azure s internetem, komunikace mezi prostředky Azure, komunikace s místními prostředky, filtrování síťového provozu, směrování síťového provozu a integrace se službami Azure.
+Azure Virtual Network umožňuje prostředkům Azure zabezpečeně komunikovat mezi sebou, internetem a místními sítěmi. Mezi klíčové scénáře, které můžete s virtuální sítí provádět, patří komunikace prostředků Azure s internetem, komunikace mezi prostředky Azure, komunikace s místními prostředky, filtrování síťového provozu, směrování síťového provozu a integrace se službami Azure.
 
 ### <a name="communicate-with-the-internet"></a>Komunikace s internetem
 
@@ -49,14 +49,14 @@ Své místní počítače a sítě můžete připojit k virtuální síti pomoc�
 - **Síť VPN typu Site-to-Site:** Vytváří se mezi místním zařízením VPN a službou Azure VPN Gateway nasazenou do virtuální sítě. Tento typ připojení povoluje přístup k virtuální síti všem místním prostředkům, které autorizujete. Komunikace mezi místním zařízením VPN a službou Azure VPN Gateway se odesílá prostřednictvím šifrovaného tunelu přes internet. Další informace najdete v tématu popisujícím [síť VPN typu Site-to-Site](../vpn-gateway/design.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti).
 - **Azure ExpressRoute:** Vytváří se mezi vaší sítí a Azure prostřednictvím partnera ExpressRoute. Toto připojení je soukromé. Provoz se nepřenáší přes internet. Další informace najdete v tématu popisujícím [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-### <a name="filter-network-traffic"></a>Filtrování síťového provozu
+### <a name="filter-network-traffic"></a>Filtrování provozu sítě
 
 Síťový provoz mezi podsítěmi můžete filtrovat pomocí jedné nebo obou z následujících možností:
 
 - **Skupiny zabezpečení sítě:** Skupiny zabezpečení sítě a skupiny zabezpečení aplikací můžou obsahovat několik příchozích a odchozích pravidel zabezpečení, která umožňují filtrovat provoz do a z prostředků podle zdrojové a cílové IP adresy, portu a protokolu. Další informace najdete v tématu [skupiny zabezpečení sítě](./network-security-groups-overview.md#network-security-groups) nebo [skupiny zabezpečení aplikací](./network-security-groups-overview.md#application-security-groups).
 - **Síťová virtuální zařízení:** Síťové virtuální zařízení je virtuální počítač, který provádí určitou síťovou funkci, jako je například brána firewall, optimalizace sítě WAN nebo jiná síťová funkce. Úplný seznam dostupných síťových virtuálních zařízení, která můžete nasadit do virtuální sítě, najdete na webu [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances).
 
-### <a name="route-network-traffic"></a>Směrování síťového provozu
+### <a name="route-network-traffic"></a>Směrování provozu sítě
 
 Azure ve výchozím nastavení směruje provoz mezi podsítěmi, propojenými virtuálními sítěmi, místními sítěmi a internetem. K přepsání výchozích tras, které Azure vytváří, můžete implementovat jednu nebo obě z následujících možností:
 

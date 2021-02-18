@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: 6ffb6ced6fc828733dd627943a3d4b54e8293ad2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3ddc385b9d489e0c2ab4abf35a6ade011970342b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791898"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572951"
 ---
 # <a name="stream-alerts-to-a-siem-soar-or-it-service-management-solution"></a>Streamování výstrah do řešení pro správu služeb SIEM, společnosti nebo IT
 
@@ -63,22 +63,22 @@ Toto rozhraní API můžete použít ke streamování výstrah z **celého tenan
 - **Power BI**  -  [Připojení k rozhraní API zabezpečení Microsoft Graph v Power BI Desktop](/power-bi/connect-data/desktop-connect-graph-security)
 - **ServiceNow**  -  [Podle pokynů nainstalujte a nakonfigurujte aplikaci Microsoft Graph Security API z úložiště ServiceNow](https://docs.servicenow.com/bundle/orlando-security-management/page/product/secops-integration-sir/secops-integration-ms-graph/task/ms-graph-install.html)
 - **QRadar**  -  [Modul podpory zařízení IBM pro Azure Security Center přes rozhraní API Microsoft Graph](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/com.ibm.dsm.doc/c_dsm_guide_ms_azure_security_center_overview.html) 
-- **Palo Alto Networks** , **anomálie** , pro **hledání** , **inspark** a další [Microsoft Graph rozhraní API pro zabezpečení](https://www.microsoft.com/security/business/graph-security-api#office-MultiFeatureCarousel-09jr2ji) .
+- **Palo Alto Networks**, **anomálie**, pro **hledání**, **inspark** a další [Microsoft Graph rozhraní API pro zabezpečení](https://www.microsoft.com/security/business/graph-security-api#office-MultiFeatureCarousel-09jr2ji) .
 
 [Přečtěte si další informace o rozhraní API pro Microsoft Graph zabezpečení](https://www.microsoft.com/security/business/graph-security-api).
 
 
 ## <a name="stream-alerts-with-azure-monitor"></a>Streamování výstrah pomocí Azure Monitor 
 
-Pro streamování výstrah do **ArcSight** , **Splunk** , **SumoLogic** , serverů syslog, **LogRhythm** , **LOGZ.IO platformy pro pozorování cloudu** a dalších řešení monitorování. připojení Security Center ke službě Azure monitor prostřednictvím Azure Event Hubs:
+Pro streamování výstrah do **ArcSight**, **Splunk**, **SumoLogic**, serverů syslog, **LogRhythm**, **LOGZ.IO platformy pro pozorování cloudu** a dalších řešení monitorování. připojení Security Center ke službě Azure monitor prostřednictvím Azure Event Hubs:
 
 1. Umožněte [průběžný export](continuous-export.md) pro streamování Security Center výstrahy do vyhrazeného centra událostí Azure na úrovni předplatného. 
     > [!TIP]
     > Pokud to chcete udělat na úrovni skupiny pro správu pomocí Azure Policy, přečtěte si téma [Vytvoření průběžného exportu konfigurací automatizace ve velkém měřítku](continuous-export.md?tabs=azure-policy#configure-continuous-export-at-scale-using-the-supplied-policies) .
 
-1. [Připojte centrum událostí Azure k preferovanému řešení pomocí integrovaných konektorů Azure monitor](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration).
+1. [Připojte centrum událostí Azure k preferovanému řešení pomocí integrovaných konektorů Azure monitor](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration).
 
-1. Volitelně můžete streamovat nezpracované protokoly do centra událostí Azure a připojit se k preferovanému řešení. Další informace najdete v informacích o [monitorování dostupných dat](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#monitoring-data-available).
+1. Volitelně můžete streamovat nezpracované protokoly do centra událostí Azure a připojit se k preferovanému řešení. Další informace najdete v informacích o [monitorování dostupných dat](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md#monitoring-data-available).
 
 > [!TIP]
 > Chcete-li zobrazit schémata událostí exportovaných datových typů, navštivte [schéma událostí centra událostí](https://aka.ms/ASCAutomationSchemas).

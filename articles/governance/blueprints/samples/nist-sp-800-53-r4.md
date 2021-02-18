@@ -3,12 +3,12 @@ title: Ukázka podrobného plánu NIST SP 800-53 R4 – přehled
 description: Přehled ukázky podrobného plánu NIST SP 800-53 R4 Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly NIST SP 800-53 R4.
 ms.date: 01/27/2021
 ms.topic: sample
-ms.openlocfilehash: b773013c61a8bed3c5c5f4e8b24878f10889f954
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: cff59a53642bcaf0828d9d6a99052bca4d651f31
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918124"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577138"
 ---
 # <a name="nist-sp-800-53-r4-blueprint-sample"></a>Ukázka NIST SP 800-53 R4 podrobný plán
 
@@ -18,7 +18,7 @@ Ukázka podrobného plánu NIST SP 800-53 R4 poskytuje ochranné mantinely zása
 
 [Mapování ovládacího prvku Azure Policy](../../policy/samples/nist-sp-800-53-r4.md) poskytuje podrobné informace o definicích zásad zahrnutých v tomto podrobném plánu a způsobu mapování těchto definic zásad na domény a **ovládací prvky** **dodržování předpisů** v NIST SP 800-53 R4. Při přiřazení k architektuře jsou prostředky vyhodnocovány Azure Policym při nedodržení předpisů s přiřazenými definicemi zásad. Další informace najdete v tématu [Azure Policy](../../policy/overview.md).
 
-## <a name="deploy"></a>Nasazení
+## <a name="deploy"></a>Nasadit
 
 Pokud chcete nasadit ukázku Azure modrotisky NIST SP 800-53 R4, je potřeba provést tyto kroky:
 
@@ -102,7 +102,7 @@ Následující tabulka uvádí seznam parametrů artefaktů podrobného plánu:
 |Název artefaktu|Typ artefaktu|Název parametru|Description|
 |-|-|-|-|
 |\[Verze Preview \] : audit NIST SP 800-53 R4 a nasazení specifických rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásady|ID pracovního prostoru Log Analytics, pro který by se měly virtuální počítače nakonfigurovat|Toto je ID (GUID) Log Analyticsho pracovního prostoru, pro který by se měly virtuální počítače nakonfigurovat.|
-|\[Verze Preview \] : audit NIST SP 800-53 R4 a nasazení specifických rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásady|Seznam typů prostředků, které by měly mít povolené diagnostické protokoly|Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas).|
+|\[Verze Preview \] : audit NIST SP 800-53 R4 a nasazení specifických rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásady|Seznam typů prostředků, které by měly mít povolené diagnostické protokoly|Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas).|
 |\[Verze Preview \] : audit NIST SP 800-53 R4 a nasazení specifických rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásady|Seznam uživatelů, kteří mají být vyloučeni ze skupiny správců virtuálních počítačů s Windows|Středníkem oddělený seznam členů, kteří by měli být vyloučení v místní skupině Administrators. Např.: Správce; myUser1; myUser2|
 |\[Verze Preview \] : audit NIST SP 800-53 R4 a nasazení specifických rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásady|Seznam uživatelů, které by měly být zahrnuté ve skupině Správci virtuálních počítačů s Windows|Středníkem oddělený seznam členů, kteří by měli být zahrnutí do místní skupiny Administrators. Např.: Správce; myUser1; myUser2|
 |\[Verze Preview \] : nasazení agenta Log Analytics pro Linux VM Scale Sets (VMSS)|Přiřazení zásady|Log Analytics pracovní prostor pro Linux VM Scale Sets (VMSS)|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|

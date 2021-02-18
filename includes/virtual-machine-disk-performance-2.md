@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/12/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 3c4ab8362b2a717a348a59c0baf829b61e1a8006
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 82b4c127f983f3133326bf7fb538e40713ef9655
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808511"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580373"
 ---
 ![Graf znázorňující specifikace D s v 3.](media/vm-disk-performance/dsv3-documentation.jpg)
 
@@ -117,57 +117,3 @@ V takovém případě aplikace spuštěná ve virtuálním počítači s Standar
 - Vzhledem k tomu, že tři disky, které používají ukládání hostitelů do mezipaměti, jsou v rámci limitů v mezipaměti 16 000, tyto požadavky byly úspěšně dokončeny. Nedochází k capping výkonu úložiště.
 - Vzhledem k tomu, že dva disky, které nepoužívají ukládání hostitelů do mezipaměti, jsou v rámci limitů neukládaných do mezipaměti 12 800, tyto požadavky jsou také úspěšně dokončeny. Nedošlo k žádnému capping.
 
-## <a name="disk-performance-metrics"></a>Metriky výkonu disku
-
-Máme metriky v Azure, které vám poskytnou přehled o tom, jak vaše virtuální počítače a disky provádějí. Tyto metriky lze zobrazit pomocí Azure Portal. Lze je také načíst prostřednictvím volání rozhraní API. Metriky se počítají v intervalu jedné minuty. K dispozici jsou následující metriky, které vám pomohou získat informace o virtuálním počítači a vstupně-výstupních discích a také propustnosti:
-
-- **Hloubka fronty disku s operačním systémem**: Počet aktuálních nezpracovaných vstupně-výstupních požadavků, které čekají na čtení nebo zapisování na disk s operačním systémem.
-- **Bajty přečtené z disku s operačním systémem/s**: počet bajtů čtených za sekundu z disku s operačním systémem.
-- **Operace čtení disku s operačním systémem/s**: počet vstupních operací, které se z disku s operačním systémem čtou za sekundu.
-- **Bajty zápisu na disk s operačním systémem/s**: počet bajtů zapsaných za sekundu z disku s operačním systémem.
-- **Operace zápisu na disk s operačním systémem/s**: Počet výstupních operací zapsaných za sekundu z disku s operačním systémem.
-- **Hloubka fronty datových disků**: Počet aktuálních nezpracovaných vstupně-výstupních požadavků, které čekají na čtení nebo zapisování na datové disky.
-- **Bajty přečtené z datového disku/s**: počet bajtů čtených za sekundu z datových disků.
-- **Operace čtení z datového disku/s**: počet vstupních operací, které jsou z datových disků čteny za sekundu.
-- Bajty zapsané na **datový disk/s**: počet bajtů zapsaných za sekundu z datových disků.
-- **Operace zápisu na datový disk/s**: Počet výstupních operací zapsaných za sekundu z datových disků.
-- **Bajty čtení z disku/s**: celkový počet bajtů čtených za sekundu ze všech disků připojených k virtuálnímu počítači.
-- **Operace čtení z disku/s**: počet vstupních operací, které se za sekundu čtou ze všech disků připojených k virtuálnímu počítači.
-- **Bajty zápisu na disk/s**: počet bajtů zapsaných za sekundu ze všech disků připojených k virtuálnímu počítači.
-- **Operace zápisu na disk/s**: Počet výstupních operací zapsaných za sekundu ze všech disků připojených k virtuálnímu počítači.
-
-## <a name="storage-io-utilization-metrics"></a>Metriky využití v/v úložiště
-Následující metriky vám pomůžou diagnostikovat kritická místa v kombinaci virtuálních počítačů a disků. Tyto metriky jsou dostupné jenom při použití virtuálního počítače s povolenou úrovní Premium. Tyto metriky jsou k dispozici pro všechny typy disků s výjimkou Ultra. 
-
-Metriky, které vám pomůžou diagnostikovat disk v/v capping:
-
-- **Procento využitého počtu vstupně**-výstupních operací pro datový disk: procento vypočítané IOPS datového disku bylo dokončeno v případě IOPS zřízeného datového disku. Pokud je tato hodnota na 100%, je vaše aplikace spuštěná v/v omezené z limitu IOPS datového disku.
-- **Procento využité šířky pásma dat**: procentuální hodnota vypočítaná propustností datového disku dokončenou při propustnosti zřízeného datového disku. Pokud je tato hodnota na 100%, je vaše aplikace spuštěná v/v omezené z limitu šířky pásma datového disku.
-- **Procento využitého počtu vstupně-výstupních operací pro operační systém**: procento vypočítané IOPS disku operačního systému se dokončilo prostřednictvím zřízené IOPS disku operačního systému. Pokud je tato hodnota na 100%, je vaše aplikace spuštěná v/v omezené z limitu IOPS disku s operačním systémem.
-- **Spotřebované procento šířky pásma disku s operačním systémem**: procentuální hodnota vypočítaná propustností disku s operačním systémem, která se dokončila prostřednictvím zřízené propustnosti disku s operačním systémem. Pokud je tato hodnota na 100%, je vaše aplikace spuštěná v/v omezené z limitu šířky pásma disku s operačním systémem.
-
-Metriky, které vám pomůžou diagnostikovat virtuální počítač v/v capping:
-
-- **Procento využitých vstupně**-výstupních operací IOPS virtuálních počítačů: procento vypočítané celkovým počtem IOPS dokončených přes maximální limit počtu IOPS virtuálního počítače v mezipaměti. Pokud je tato hodnota na 100%, je vaše aplikace spuštěná v/v omezené z limitu IOPS v mezipaměti virtuálního počítače.
-- **Procento spotřebované šířky pásma v mezipaměti virtuálního počítače**: procento vypočítané celkovou propustností disku dokončenou při maximální propustnosti virtuálního počítače v mezipaměti. Pokud je tato hodnota na 100%, je vaše aplikace spuštěná v/v omezené z limitu šířky pásma v mezipaměti virtuálního počítače.
-- **Procento využitých vstupně**-výstupních operací IOPS v mezipaměti: procento počítané celkovými IOPS na virtuálním počítači, které se dokončily v maximálním limitu počtu vstupně-výstupních operací virtuálních počítačů. Pokud je tato hodnota na 100%, je vaše aplikace spuštěná v/v omezené z limitu IOPS bez mezipaměti virtuálního počítače.
-- **Procento spotřebované šířky pásma neuložené v mezipaměti**: procento vypočítané celkovou propustností disku na virtuálním počítači dokončené přes maximální propustnost zajištěných virtuálních počítačů. Pokud je tato hodnota na 100%, je vaše aplikace spuštěná v/v omezené z neuloženého limitu šířky pásma virtuálního počítače.
-
-## <a name="storage-io-utilization-metrics-example"></a>Příklad metrik využití v/v úložiště
-
-Podívejme se na příklad použití těchto nových metrik využití v/v úložiště, které nám pomůžou ladit, kde je v našem systému kritický bod. Nastavení systému je stejné jako v předchozím příkladu, s výjimkou toho, že připojený disk s operačním systémem *není* uložen v mezipaměti.
-
-**Obecného**
-
-- Standard_D8s_v3
-  - IOPS v mezipaměti: 16 000
-  - Neuložené IOPS s mezipamětí: 12 800
-- Disk s operačním systémem P30
-  - IOPS: 5 000
-  - Ukládání hostitele do mezipaměti: **zakázáno**
-- Dva datové disky P30 × 2
-  - IOPS: 5 000
-  - Mezipaměť hostitele: **čtení i zápis**
-- Dva datové disky P30 × 2
-  - IOPS: 5 000
-  - Ukládání hostitele do mezipaměti: **zakázáno**

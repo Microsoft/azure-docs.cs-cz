@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/13/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 9ccaddec73a9c74123471c34b1b973b78eacfff8
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: c16b032502401b633532ab0fcf9518aa85a1b8d6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890777"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579747"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Řešení problémů s Update Managementem
 
@@ -135,7 +135,7 @@ K tomuto problému může dojít při potížích s místními konfiguracemi neb
 
 1. Spusťte Poradce při potížích pro [Windows](update-agent-issues.md#troubleshoot-offline) nebo [Linux](update-agent-issues-linux.md#troubleshoot-offline), a to v závislosti na operačním systému.
 
-2. Ujistěte se, že váš počítač hlásí správný pracovní prostor. Pokyny k tomu, jak tento aspekt ověřit, najdete v tématu [ověření připojení agenta k Azure monitor](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Také se ujistěte, že je tento pracovní prostor propojený s vaším účtem Azure Automation. Potvrďte to tak, že přejdete na svůj účet Automation a v části **související prostředky** vyberete **propojený pracovní prostor** .
+2. Ujistěte se, že váš počítač hlásí správný pracovní prostor. Pokyny k tomu, jak tento aspekt ověřit, najdete v tématu [ověření připojení agenta k Azure monitor](../../azure-monitor/agents/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Také se ujistěte, že je tento pracovní prostor propojený s vaším účtem Azure Automation. Potvrďte to tak, že přejdete na svůj účet Automation a v části **související prostředky** vyberete **propojený pracovní prostor** .
 
 3. Ujistěte se, že se počítače zobrazí v pracovním prostoru Log Analytics, který je propojený s vaším účtem Automation. Spusťte následující dotaz v pracovním prostoru Log Analytics.
 
@@ -144,7 +144,7 @@ K tomuto problému může dojít při potížích s místními konfiguracemi neb
    | summarize by Computer, Solutions
    ```
 
-    Pokud počítač ve výsledcích dotazu nevidíte, nebude nedávno vrácen se změnami. Pravděpodobně došlo k potížím s místní konfigurací a je třeba [agenta přeinstalovat](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
+    Pokud počítač ve výsledcích dotazu nevidíte, nebude nedávno vrácen se změnami. Pravděpodobně došlo k potížím s místní konfigurací a je třeba [agenta přeinstalovat](../../azure-monitor/vm/quick-collect-windows-computer.md#install-the-agent-for-windows).
 
     Pokud je váš počítač uvedený ve výsledcích dotazu, ověřte pod vlastností **řešení** **, které jsou** uvedeny v seznamu. Ověří, jestli je zaregistrované u Update Management. Pokud tomu tak není, vyhledejte problémy s konfigurací oboru. [Konfigurace oboru](../update-management/scope-configuration.md) určuje, které počítače jsou nakonfigurovány pro Update Management. Pokud chcete nakonfigurovat konfiguraci oboru pro cílový počítač, přečtěte si téma [Povolení počítačů v pracovním prostoru](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace).
 

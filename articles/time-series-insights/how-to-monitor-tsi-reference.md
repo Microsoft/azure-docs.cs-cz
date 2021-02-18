@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: 0b564ddfdea2cf24b7f9b1bc608d47fa4cfe541b
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: bfd0d04313f0b519b4013a43e29d88400c73ea31
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632668"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591377"
 ---
 # <a name="monitoring-azure-time-series-insights-data-reference"></a>Referenční informace o Azure Time Series Insights dat monitorování
 
@@ -23,12 +23,12 @@ Seznamte se s daty a prostředky shromažďovanými nástrojem Azure Monitor ze 
 
 ## <a name="metrics"></a>Metriky
 
-V této části jsou uvedené všechny automaticky shromážděné metriky platforem pro Azure Time Series Insights. Seznam všech metrik podpory Azure Monitor (včetně Azure Time Series Insights) najdete v tématu [Azure monitor podporované metriky](../azure-monitor/platform/metrics-supported.md). Poskytovatel prostředků pro tyto metriky je [Microsoft. TimeSeriesInsights/Environment/EventSources](../azure-monitor/platform/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) a [Microsoft. TimeSeriesInsights/Environments](../azure-monitor/platform/metrics-supported.md#microsofttimeseriesinsightsenvironments).
+V této části jsou uvedené všechny automaticky shromážděné metriky platforem pro Azure Time Series Insights. Seznam všech metrik podpory Azure Monitor (včetně Azure Time Series Insights) najdete v tématu [Azure monitor podporované metriky](../azure-monitor/essentials/metrics-supported.md). Poskytovatel prostředků pro tyto metriky je [Microsoft. TimeSeriesInsights/Environment/EventSources](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) a [Microsoft. TimeSeriesInsights/Environments](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironments).
 
 
 ### <a name="ingress"></a>Příchozí přenos dat
  
-|Metric|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|
+|Metric|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|
 |---|---|---|---|---|
 |IngressReceivedBytes|Přijaté bajty příchozího přenosu dat|Bajty|Celkem|Počet přečtených bajtů ze zdroje události|
 |IngressReceivedInvalidMessages|Příchozí přenos dat přijal neplatné zprávy.|Počet|Celkem|Počet neplatných zpráv přečtených ze zdroje události|
@@ -40,7 +40,7 @@ V této části jsou uvedené všechny automaticky shromážděné metriky platf
 
 ### <a name="storage"></a>Storage
 
-|Metric|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|
+|Metric|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|
 |---|---|---|---|---|
 |WarmStorageMaxProperties|Maximální počet vlastností služby teplé úložiště|Počet|Maximum|Maximální počet vlastností používaných prostředím pro SKU S1/S2 a maximální počet vlastností povolený pro PAYG SKU v rámci služby teplé úložiště|
 |WarmStorageUsedProperties|Vlastnosti použití teplého úložiště |Počet|Maximum|Počet vlastností používaných prostředím pro SKU S1/S2 a počet vlastností, které používá služba pro zahřívání v úložišti pro PAYG|

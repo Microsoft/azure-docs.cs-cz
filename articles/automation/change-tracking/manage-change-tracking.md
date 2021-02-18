@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 12/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 636dbf95567f761aee19bd567b0835173ce36ccc
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: dff314f3c9fb72c565a7c2d522694d533c487895
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093617"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572651"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Správa řešení Change Tracking a Inventory
 
@@ -35,7 +35,7 @@ Pomocí Change Tracking a inventáře můžete sledovat změny souborů a slože
 
 Ke konfiguraci sledování souborů na počítačích se systémem Windows použijte následující postup:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte **Automation**. Po zahájení psaní seznam vyfiltruje návrhy na základě vašeho vstupu. Vyberte **Účty Automation**.
 
@@ -53,7 +53,7 @@ Ke konfiguraci sledování souborů na počítačích se systémem Windows použ
     |---------|---------|
     |Povoleno     | True, pokud je nastavení použito, a jinak false.        |
     |Název položky     | Popisný název souboru, který se má sledovat        |
-    |Skupina     | Název skupiny pro logicky seskupené soubory.        |
+    |Group (Skupina)     | Název skupiny pro logicky seskupené soubory.        |
     |Zadat cestu     | Cesta pro kontrolu souboru, například **c:\Temp \\ \* . txt**. Můžete také použít proměnné prostředí, například `%winDir%\System32\\\*.*` .       |
     |Typ cesty     | Typ cesty Možné hodnoty jsou soubor a složka.        |    
     |Rekurze     | True, pokud se používá rekurze při hledání položky, která se má sledovat, a v opačném případě false.        |    
@@ -82,7 +82,7 @@ Ke konfiguraci sledování souborů na počítačích se systémem Linux použij
     |---------|---------|
     |Povoleno     | True, pokud je nastavení použito, a jinak false.        |
     |Název položky     | Popisný název souboru, který se má sledovat        |
-    |Skupina     | Název skupiny pro logicky seskupené soubory.        |
+    |Group (Skupina)     | Název skupiny pro logicky seskupené soubory.        |
     |Zadat cestu     | Cesta pro kontrolu souboru, například **/etc/*. conf**.       |
     |Typ cesty     | Typ cesty Možné hodnoty jsou soubor a adresář.        |
     |Rekurze     | True, pokud se používá rekurze při hledání položky, která se má sledovat, a v opačném případě false.        |
@@ -152,14 +152,14 @@ Ke konfiguraci sledování klíčů registru v počítačích se systémem Windo
     |---------|---------|
     |Povoleno     | True, pokud je nastavení použito, a jinak false.        |
     |Název položky     | Popisný název klíče registru, který se má sledovat        |
-    |Skupina     | Název skupiny pro logicky seskupené klíče registru.        |
+    |Group (Skupina)     | Název skupiny pro logicky seskupené klíče registru.        |
     |Klíč registru systému Windows   | Název klíče s cestou, například `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup` .      |
 
 ## <a name="search-logs-for-change-records"></a>V protokolech hledání záznamů změn
 
 Můžete provádět různé vyhledávání v protokolech Azure Monitor pro záznamy změn. Otevřete stránku pro sledování změn, kliknutím na **Log Analytics** otevřete stránku protokoly. V následující tabulce jsou uvedeny ukázky hledání v protokolech pro záznamy změn.
 
-|Dotaz  |Popis  |
+|Dotaz  |Description  |
 |---------|---------|
 |`ConfigurationData`<br>&#124; `where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124; `where SvcState == "Stopped"`<br>&#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Zobrazuje nejaktuálnější záznamy inventáře pro služby společnosti Microsoft, které byly nastaveny na hodnotu automaticky, ale byly hlášeny jako zastaveno. Výsledky jsou omezené na nejnovější záznam pro zadaný název softwaru a počítač.    |
 |`ConfigurationChange`<br>&#124; `where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124; `order by TimeGenerated desc`|Zobrazuje záznamy změn pro odebraný software.|
@@ -167,7 +167,7 @@ Můžete provádět různé vyhledávání v protokolech Azure Monitor pro zázn
 ## <a name="next-steps"></a>Další kroky
 
 * Informace o konfiguracích oboru najdete v tématu [omezení Change Tracking a rozsahu nasazení inventáře](manage-scope-configurations.md).
-* Pokud potřebujete hledat protokoly uložené v protokolech Azure Monitor, přečtěte si téma [prohledávání protokolů v](../../azure-monitor/log-query/log-query-overview.md)protokolech Azure monitor.
+* Pokud potřebujete hledat protokoly uložené v protokolech Azure Monitor, přečtěte si téma [prohledávání protokolů v](../../azure-monitor/logs/log-query-overview.md)protokolech Azure monitor.
 * Pokud jste dokončili nasazení, přečtěte si téma [odebrání Change Tracking a inventáře](remove-feature.md).
 * Pokud chcete virtuální počítače odstranit z Change Tracking a inventáře, přečtěte si téma [Odebrání virtuálních počítačů z Change Tracking a inventáře](remove-vms-from-change-tracking.md).
 * Řešení chyb funkcí najdete v tématu [řešení potíží s Change Tracking a inventářem](../troubleshoot/change-tracking.md).

@@ -3,20 +3,20 @@ title: Odhad nákladů na plán spotřeby v Azure Functions
 description: Naučte se, jak lépe odhadnout náklady, které vám mohou vzniknout při spuštění aplikace Function App v plánu spotřeby v Azure.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 430804d478df718f51ae1da9adb6693f597157a9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 4967e0ff79a638891da4f784cf2f5f1ca4ddfe51
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934879"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578557"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Odhad nákladů na plán spotřeby
 
 Existují tři typy hostujících plánů pro aplikaci, která běží v Azure Functions, přičemž každý plán má svůj vlastní cenový model: 
 
-| Plánování | Popis |
+| Plánování | Description |
 | ---- | ----------- |
-| [**Consumption**](consumption-plan.md) | Účtují se vám jenom čas, který aplikace Function App spouští. Tento plán zahrnuje[stránku s cenami] [bezplatného grantu]na jednotlivých předplatných.|
+| [**Využití**](consumption-plan.md) | Účtují se vám jenom čas, který aplikace Function App spouští. Tento plán zahrnuje[stránku s cenami] [bezplatného grantu]na jednotlivých předplatných.|
 | [**Premium**](functions-premium-plan.md) | Poskytuje stejný mechanismus funkcí a škálování jako plán spotřeby, ale s vylepšeným výkonem a přístupem k virtuální síti. Náklady jsou založené na vaší zvolené cenové úrovni. Další informace najdete v tématu [plán Azure Functions Premium](functions-premium-plan.md). |
 | [**Vyhrazeno (App Service)**](dedicated-plan.md) <br/>(úroveň Basic nebo vyšší) | Pokud potřebujete spustit na vyhrazených virtuálních počítačích nebo v izolaci, použijte vlastní image nebo využijte své nadměrné App Service plánování kapacity. Používá k [fakturaci pravidelného plánování App Service](https://azure.microsoft.com/pricing/details/app-service/). Náklady jsou založené na vaší zvolené cenové úrovni.|
 
@@ -67,11 +67,11 @@ Ve [vaší faktuře](../cost-management-billing/understand/download-azure-invoic
 
 ### <a name="function-app-level-metrics"></a>Funkce metrik na úrovni aplikace
 
-Abyste lépe pochopili dopad vašich funkcí, můžete pomocí Azure Monitor zobrazit metriky související s náklady aktuálně vygenerované vašimi aplikacemi Function App. K získání těchto dat můžete použít buď [průzkumníka Azure monitor metriky](../azure-monitor/platform/metrics-getting-started.md) v rozhraních API [Azure Portal] nebo REST.
+Abyste lépe pochopili dopad vašich funkcí, můžete pomocí Azure Monitor zobrazit metriky související s náklady aktuálně vygenerované vašimi aplikacemi Function App. K získání těchto dat můžete použít buď [průzkumníka Azure monitor metriky](../azure-monitor/essentials/metrics-getting-started.md) v rozhraních API [Azure Portal] nebo REST.
 
 #### <a name="monitor-metrics-explorer"></a>Monitorovat Průzkumníka metrik
 
-Pomocí [Azure monitor Průzkumníku metrik](../azure-monitor/platform/metrics-getting-started.md) můžete zobrazit data související s náklady pro aplikace funkcí plánu spotřeby v grafickém formátu. 
+Pomocí [Azure monitor Průzkumníku metrik](../azure-monitor/essentials/metrics-getting-started.md) můžete zobrazit data související s náklady pro aplikace funkcí plánu spotřeby v grafickém formátu. 
 
 1. V horní části [Azure Portal] v části **Hledat služby, prostředky a hledání dokumentů** vyhledejte `monitor` a v části **služby** vyberte **monitor** .
 

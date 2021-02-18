@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 1f5db17549c2b95d5dd0dd2f866ca1d1c0e7d8aa
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0868c99a29b8da4376b639a54988fc821433e26d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965115"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576972"
 ---
 # <a name="planning-and-operations-guide"></a>Průvodce plánováním a provozem
 Tato příručka je určena odborníkům v oblasti informačních technologií (IT), architektům v oblasti IT, analytikům zabezpečení informací a správcům cloudu plánuje používat Azure Security Center.
@@ -40,7 +40,7 @@ V závislosti na velikosti a struktuře vaší organizace můžou službu Securi
 
 ![Role](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
 
-Security Center umožňuje těmto osobám tyto různé povinnosti plnit. Například:
+Security Center umožňuje těmto osobám tyto různé povinnosti plnit. Příklad:
 
 **Jeff (vlastník úloh)**
 
@@ -135,7 +135,7 @@ Azure Security Center používá agenta Log Analytics – to je stejný agent, k
 
 ### <a name="agent"></a>Agent
 
-Pokud je v zásadách zabezpečení zapnuté Automatické zřizování, agent Log Analytics (pro [Windows](../azure-monitor/platform/agent-windows.md) nebo [Linux](../azure-monitor/learn/quick-collect-linux-computer.md)) je nainstalovaný na všech podporovaných virtuálních počítačích Azure a všech nově vytvořených. Pokud je na VIRTUÁLNÍm počítači nebo počítači již nainstalován agent Log Analytics, Azure Security Center bude využívat aktuálně nainstalovaného agenta. Proces agenta je navržený tak, aby neinvazivní a měl velmi minimální dopad na výkon virtuálního počítače.
+Pokud je v zásadách zabezpečení zapnuté Automatické zřizování, agent Log Analytics (pro [Windows](../azure-monitor/agents/agent-windows.md) nebo [Linux](../azure-monitor/vm/quick-collect-linux-computer.md)) je nainstalovaný na všech podporovaných virtuálních počítačích Azure a všech nově vytvořených. Pokud je na VIRTUÁLNÍm počítači nebo počítači již nainstalován agent Log Analytics, Azure Security Center bude využívat aktuálně nainstalovaného agenta. Proces agenta je navržený tak, aby neinvazivní a měl velmi minimální dopad na výkon virtuálního počítače.
 
 Agent Log Analytics pro Windows vyžaduje použití portu TCP 443. Další podrobnosti najdete v [článku Řešení problémů](security-center-troubleshooting-guide.md).
 

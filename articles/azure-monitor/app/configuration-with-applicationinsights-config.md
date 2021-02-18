@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.custom: devx-track-csharp
 ms.reviewer: olegan
-ms.openlocfilehash: d05503c2a22c476d9ab08e8aeb058ca1b9826778
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b15e39b55dfe49a3fb3c1e0e38798570efdf46bd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928691"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592753"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurace sady Application Insights SDK pomocí souboru ApplicationInsights.config nebo .xml
 Sada Application Insights .NET SDK se skládá z řady balíčků NuGet. [Základní balíček](https://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro posílání telemetrie do Application Insights. [Další balíčky](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují *moduly* telemetrie a *Inicializátory* pro automatické sledování telemetrie z vaší aplikace a jejího kontextu. Úpravou konfiguračního souboru můžete povolit nebo zakázat moduly a Inicializátory telemetrie a nastavit parametry pro některé z nich.
@@ -121,7 +121,7 @@ Standardní Inicializátory jsou nastaveny buď pomocí webu, nebo WindowsServer
 * `OperationNameTelemetryInitializer` aktualizuje `Name` vlastnost `RequestTelemetry` a `Name` vlastnosti `Operation` kontextu všech položek TELEMETRIE na základě metody HTTP a také názvů kontroléru ASP.NET MVC a akce vyvolané ke zpracování žádosti.
 * `OperationIdTelemetryInitializer` nebo `OperationCorrelationTelemetryInitializer` aktualizuje `Operation.Id` vlastnost Context všech položek telemetrie, které jsou sledovány při zpracování žádosti s automaticky vygenerovaným objektem `RequestTelemetry.Id` .
 * `SessionTelemetryInitializer` aktualizuje `Id` vlastnost `Session` Context pro všechny položky telemetrie s hodnotou extrahovanou ze `ai_session` souboru cookie generovaného kódem instrumentace ApplicationInsights JavaScript spuštěným v prohlížeči uživatele.
-* `SyntheticTelemetryInitializer` nebo `SyntheticUserAgentTelemetryInitializer` aktualizuje `User` vlastnosti, `Session` a `Operation` kontexty všech položek telemetrie, které jsou sledovány při zpracování žádosti z syntetického zdroje, jako je například test dostupnosti nebo robot vyhledávače. Ve výchozím nastavení [Průzkumník metrik](../platform/metrics-charts.md) nezobrazuje syntetickou telemetrii.
+* `SyntheticTelemetryInitializer` nebo `SyntheticUserAgentTelemetryInitializer` aktualizuje `User` vlastnosti, `Session` a `Operation` kontexty všech položek telemetrie, které jsou sledovány při zpracování žádosti z syntetického zdroje, jako je například test dostupnosti nebo robot vyhledávače. Ve výchozím nastavení [Průzkumník metrik](../essentials/metrics-charts.md) nezobrazuje syntetickou telemetrii.
 
     `<Filters>`Sada identifikující vlastnosti požadavků.
 * `UserTelemetryInitializer` aktualizuje `Id` vlastnosti a `AcquisitionDate` `User` pro kontext pro všechny položky telemetrie s hodnotami extrahované ze `ai_user` souboru cookie generovaného kódem Application Insights JavaScript instrumentace spuštěným v prohlížeči uživatele.

@@ -3,12 +3,12 @@ title: Inteligentní zjišťování v Azure Application Insights | Microsoft Doc
 description: Application Insights provádí automatickou hloubkovou analýzu telemetrie aplikací a upozorňuje na potenciální problémy.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 2b6e9370387bf3bb87555261b3949db2917e9911
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 974795e853416ff7a4c051530b050fc663c9423d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186248"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585651"
 ---
 # <a name="smart-detection-in-application-insights"></a>Inteligentní zjišťování v Application Insights
  Inteligentní zjišťování vás automaticky upozorní na potenciální problémy s výkonem a anomálie při selhání ve vaší webové aplikaci. Provádí proaktivní analýzu telemetrie, kterou vaše aplikace odesílá [Application Insights](./app-insights-overview.md). Pokud dojde k náhlému nárůstu sazeb za selhání nebo abnormálních vzorů v výkonu klienta nebo serveru, zobrazí se upozornění. Tato funkce nepotřebuje žádnou konfiguraci. Funguje, pokud vaše aplikace posílá dostatek telemetrie.
@@ -53,11 +53,11 @@ Alternativně můžete změnit konfiguraci pomocí Azure Resource Manager šablo
 ## <a name="next-steps"></a>Další kroky
 Tyto diagnostické nástroje vám pomůžou zkontrolovat telemetrii z vaší aplikace:
 
-* [Průzkumník metrik](../platform/metrics-charts.md)
+* [Průzkumník metrik](../essentials/metrics-charts.md)
 * [Průzkumník vyhledávání](./diagnostic-search.md)
-* [Analýza – výkonný dotazovací jazyk](../log-query/log-analytics-tutorial.md)
+* [Analýza – výkonný dotazovací jazyk](../logs/log-analytics-tutorial.md)
 
 Inteligentní zjišťování je zcela automatické. Možná byste ale chtěli nastavit ještě nějaké další výstrahy?
 
-* [Ručně nakonfigurované výstrahy metriky](../platform/alerts-log.md)
+* [Ručně nakonfigurované výstrahy metriky](../alerts/alerts-log.md)
 * [Testy dostupnosti webu](./monitor-web-app-availability.md)
