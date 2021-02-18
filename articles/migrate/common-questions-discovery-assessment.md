@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 944d867ef888e70faa659adcc0e2d4c02f003c97
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 40afa1d743b8d074fa46dde46163f6479ebf87c2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567410"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589073"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Analýzy zjišťování, hodnocení a závislostí – běžné otázky
 
@@ -150,9 +150,9 @@ Rozdíly mezi vizualizacemi bez agentů a vizualizací na základě agentů jsou
 **Požadavek** | **Bez agenta** | **Založené na agentovi**
 --- | --- | ---
 Podpora | Tato možnost je momentálně ve verzi Preview a je dostupná jenom pro virtuální počítače VMware. [Zkontrolujte](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) podporované operační systémy. | Obecně dostupná (GA).
-Agent | Není nutné instalovat agenty na počítačích, které chcete křížově kontrolovat. | Agenti, kteří se mají nainstalovat na každý místní počítač, který chcete analyzovat: [Microsoft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)a [Agent závislostí](../azure-monitor/platform/agents-overview.md#dependency-agent). 
+Agent | Není nutné instalovat agenty na počítačích, které chcete křížově kontrolovat. | Agenti, kteří se mají nainstalovat na každý místní počítač, který chcete analyzovat: [Microsoft Monitoring Agent (MMA)](../azure-monitor/agents/agent-windows.md)a [Agent závislostí](../azure-monitor/agents/agents-overview.md#dependency-agent). 
 Požadavky | [Projděte si](concepts-dependency-visualization.md#agentless-analysis) požadavky a požadavky na nasazení. | [Projděte si](concepts-dependency-visualization.md#agent-based-analysis) požadavky a požadavky na nasazení.
-Log Analytics | Nevyžadují se. | Azure Migrate používá řešení [Service map](../azure-monitor/insights/service-map.md) v [protokolech Azure monitor](../azure-monitor/log-query/log-query-overview.md) pro vizualizaci závislostí. [Přečtěte si další informace](concepts-dependency-visualization.md#agent-based-analysis).
+Log Analytics | Nevyžadují se. | Azure Migrate používá řešení [Service map](../azure-monitor/vm/service-map.md) v [protokolech Azure monitor](../azure-monitor/logs/log-query-overview.md) pro vizualizaci závislostí. [Přečtěte si další informace](concepts-dependency-visualization.md#agent-based-analysis).
 Jak to funguje | Zachycuje data připojení TCP na počítačích, které jsou povoleny pro vizualizaci závislostí. Po zjištění se data shromáždí v intervalech po pěti minutách. | Agenti Service Map nainstalovaná na počítači shromažďují data o procesech TCP a příchozích a odchozích připojeních pro jednotlivé procesy.
 Data | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port. | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port.<br/><br/> Pro Log Analytics dotazy se shromažďují a k dispozici informace o počtu připojení, latenci a přenosu dat. 
 Vizualizace | Mapa závislostí jednoho serveru se dá zobrazit po dobu od 1 hodiny do 30 dnů. | Mapa závislostí pro jeden server.<br/><br/> Mapu lze zobrazit pouze za hodinu.<br/><br/> Mapa závislostí skupiny serverů.<br/><br/> Přidejte nebo odeberte servery ve skupině z zobrazení mapy.
@@ -171,8 +171,8 @@ No. Přečtěte si další informace o [cenách Azure Migrate](https://azure.mic
 
 Chcete-li použít vizualizaci závislostí založenou na agentech, Stáhněte a nainstalujte agenty na každý místní počítač, který chcete vyhodnotit:
 
-- [Microsoft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)
-- [Agent závislostí](../azure-monitor/platform/agents-overview.md#dependency-agent)
+- [Microsoft Monitoring Agent (MMA)](../azure-monitor/agents/agent-windows.md)
+- [Agent závislostí](../azure-monitor/agents/agents-overview.md#dependency-agent)
 - Pokud máte počítače, které nemají připojení k Internetu, Stáhněte a nainstalujte na ně bránu Log Analytics.
 
 Tyto agenty potřebujete jenom v případě, že používáte vizualizaci závislostí založenou na agentech.
@@ -189,14 +189,14 @@ Ne, sestavu vizualizace závislosti v rámci vizualizace založenou na agentech 
 
 Pro vizualizaci závislostí založenou na agentech:
 
-- Pomocí [skriptu nainstalujte agenta závislostí](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent).
-- Pro MMA [použijte příkazový řádek nebo automatizaci](../azure-monitor/platform/log-analytics-agent.md#installation-options)nebo použijte [skript](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
+- Pomocí [skriptu nainstalujte agenta závislostí](../azure-monitor/vm/vminsights-enable-hybrid.md#dependency-agent).
+- Pro MMA [použijte příkazový řádek nebo automatizaci](../azure-monitor/agents/log-analytics-agent.md#installation-options)nebo použijte [skript](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
 - Kromě skriptů můžete k nasazení agentů použít nástroje pro nasazení, jako je Microsoft Endpoint Configuration Manager a [Intigua](https://www.intigua.com/intigua-for-azure-migration) .
 
 ## <a name="what-operating-systems-does-mma-support"></a>Jaké operační systémy MMA podporuje?
 
-- Prohlédněte si seznam [operačních systémů Windows, které podporuje MMA](../azure-monitor/platform/log-analytics-agent.md#installation-options).
-- Prohlédněte si seznam [operačních systémů Linux, které podporuje MMA](../azure-monitor/platform/log-analytics-agent.md#installation-options).
+- Prohlédněte si seznam [operačních systémů Windows, které podporuje MMA](../azure-monitor/agents/log-analytics-agent.md#installation-options).
+- Prohlédněte si seznam [operačních systémů Linux, které podporuje MMA](../azure-monitor/agents/log-analytics-agent.md#installation-options).
 
 ## <a name="can-i-visualize-dependencies-for-more-than-one-hour"></a>Je možné vizualizovat závislosti po dobu více než jedné hodiny?
 

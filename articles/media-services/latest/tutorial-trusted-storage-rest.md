@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 2/8/2021
-ms.openlocfilehash: b20da64c135f7e54a7f6bc74beea073140a1e0a9
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 18cb4e3ada94822c2f4cb1ca7675310a37e44e84
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101689"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590645"
 ---
 # <a name="tutorial-media-services-trusted-storage"></a>Kurz: Media Services důvěryhodné úložiště
 
@@ -23,6 +23,9 @@ V tomto kurzu se naučíte:
 > - Jak dát službám Azure přístup k účtu úložiště při použití řízení přístupu k síti, jako je brána firewall nebo VPN
 
 S rozhraním API 2020-05-01 můžete povolit důvěryhodné úložiště tím, že přidružíte spravovanou identitu k Media Servicesmu účtu.
+
+>[!NOTE]
+>Důvěryhodné úložiště je k dispozici pouze v rozhraní API a aktuálně není povoleno v Azure Portal.
 
 Media Services může automaticky přistupovat k účtu úložiště pomocí ověřování systému. Media Services ověří, že účet Media Services a účet úložiště jsou ve stejném předplatném. Ověří také, že uživatel přidávající přidružení má přístup k účtu úložiště s Azure Resource Manager RBAC.
 

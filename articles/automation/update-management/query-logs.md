@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 833e2f7808b4b8efa210bc6a903ed30fe9ac53e0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 5eb0c7d72896cc9a27907743b1b9c3d5a40614dd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222235"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592855"
 ---
 # <a name="query-update-management-logs"></a>Dotazování na protokoly Update Managementu
 
@@ -39,7 +39,7 @@ Vytvoří se záznam s typem `RequiredUpdate` , který představuje aktualizace 
 | TenantId | Jedinečný identifikátor, který představuje instanci vaší organizace Azure Active Directory. |
 | TimeGenerated | Datum a čas vytvoření záznamu |
 | Typ | *Aktualizace* |
-| UpdateClassification | Určuje typ aktualizací, které lze použít. Ve Windows:<br> *Důležité aktualizace*<br> *Aktualizace zabezpečení*<br> *Kumulativní aktualizace*<br> *Balíčky funkcí*<br> *Aktualizace Service Pack*<br> *Aktualizace definic*<br> *Nástroje*<br> *Aktualizace*. Pro Linux:<br> *Důležité aktualizace a aktualizace zabezpečení*<br> *Další* |
+| UpdateClassification | Určuje typ aktualizací, které lze použít. Ve Windows:<br> *Důležité aktualizace*<br> *Aktualizace zabezpečení*<br> *Kumulativní aktualizace*<br> *Balíčky funkcí*<br> *Aktualizace Service Pack*<br> *Aktualizace definic*<br> *Nástroje*<br> *Aktualizace*. V Linuxu:<br> *Důležité aktualizace a aktualizace zabezpečení*<br> *Další* |
 | UpdateSeverity | Hodnocení závažnosti pro chybu zabezpečení. Hodnoty jsou:<br> *Kritické*<br> *Důležité upozornění*<br> *Pokročilé*<br> *Nízká* |
 | UpdateTitle | Název aktualizace|
 
@@ -51,7 +51,7 @@ Vytvoří se záznam s typem `Update` , který představuje dostupné aktualizac
 |----------|-------------|
 | ApprovalSource | Platí jenom pro operační systém Windows. Zdroj schválení záznamu Hodnota je Microsoft Update. |
 | Schválené | True, pokud je záznam schválen, nebo jinak false. |
-| Classification | Klasifikace schválení. Hodnota je Updates. |
+| Klasifikace | Klasifikace schválení. Hodnota je Updates. |
 | Počítač | Plně kvalifikovaný název domény počítače pro vytváření sestav. |
 | ComputerEnvironment | Hlediska. Možné hodnoty jsou Azure nebo mimo Azure. |
 | MSRCBulletinID | Číslo ID bulletinu zabezpečení |
@@ -60,7 +60,7 @@ Vytvoří se záznam s typem `Update` , který představuje dostupné aktualizac
 | ManagementGroupName | Název Operations Manager skupiny pro správu nebo pracovního prostoru Log Analytics. |
 | UpdateID | Jedinečný identifikátor aktualizace softwaru. |
 | RevisionNumber | Číslo revize konkrétní revize aktualizace. |
-| Nepovinné | True, pokud je záznam volitelný, nebo jinak false. |
+| Volitelné | True, pokud je záznam volitelný, nebo jinak false. |
 | RebootBehavior | Chování při restartování po instalaci nebo odinstalaci aktualizace. |
 | _ResourceId | Jedinečný identifikátor prostředku přidruženého k záznamu |
 | Typ | Typ záznamu Hodnota je aktualizovat. |
@@ -195,7 +195,7 @@ Na počítači s Windows můžete zkontrolovat následující informace a ověř
 
 1. Otevřete protokol událostí systému Windows. V části **Application and Services Logs\Operations Manager** vyhledejte události ID 3000 a id události 5002 ze zdrojového **konektoru služby**. Tyto události znamenají, že se počítač zaregistroval do pracovního prostoru služby Log Analytics a přijímá konfiguraci.
 
-Pokud Agent nemůže komunikovat s protokoly Azure Monitor a Agent je nakonfigurován pro komunikaci s internetem prostřednictvím brány firewall nebo proxy server, ověřte, zda je správně nakonfigurována brána firewall nebo proxy server. Informace o tom, jak ověřit, jestli je brána firewall nebo proxy server správně nakonfigurovaná, najdete v tématu [Konfigurace sítě pro agenta Windows](../../azure-monitor/platform/agent-windows.md) nebo [konfiguraci sítě pro agenta Linux](../../azure-monitor/learn/quick-collect-linux-computer.md).
+Pokud Agent nemůže komunikovat s protokoly Azure Monitor a Agent je nakonfigurován pro komunikaci s internetem prostřednictvím brány firewall nebo proxy server, ověřte, zda je správně nakonfigurována brána firewall nebo proxy server. Informace o tom, jak ověřit, jestli je brána firewall nebo proxy server správně nakonfigurovaná, najdete v tématu [Konfigurace sítě pro agenta Windows](../../azure-monitor/agents/agent-windows.md) nebo [konfiguraci sítě pro agenta Linux](../../azure-monitor/vm/quick-collect-linux-computer.md).
 
 > [!NOTE]
 > Pokud jsou vaše systémy Linux nakonfigurované pro komunikaci s proxy serverem nebo Log Analytics bránou a povolujete Update Management, aktualizujte `proxy.conf` oprávnění tak, aby skupině omiuser udělil oprávnění ke čtení souboru pomocí následujících příkazů:
@@ -205,7 +205,7 @@ Pokud Agent nemůže komunikovat s protokoly Azure Monitor a Agent je nakonfigur
 
 Nově přidaní agenti Linux zobrazují po provedení posouzení stav **aktualizovaný** . Tento proces může trvat až 6 hodin.
 
-Pokud chcete ověřit, že skupina pro správu Operations Manager komunikuje s protokoly Azure Monitor, přečtěte si téma [ověření Operations Manager integrace s protokoly Azure monitor](../../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor).
+Pokud chcete ověřit, že skupina pro správu Operations Manager komunikuje s protokoly Azure Monitor, přečtěte si téma [ověření Operations Manager integrace s protokoly Azure monitor](../../azure-monitor/agents/om-agents.md#validate-operations-manager-integration-with-azure-monitor).
 
 ### <a name="single-azure-vm-assessment-queries-windows"></a>Dotazy na vyhodnocení pro jeden virtuální počítač Azure (Windows)
 
@@ -410,5 +410,5 @@ Update
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podrobnosti o protokolech Azure Monitor najdete v tématu [protokoly Azure monitor](../../azure-monitor/log-query/log-query-overview.md).
+* Podrobnosti o protokolech Azure Monitor najdete v tématu [protokoly Azure monitor](../../azure-monitor/logs/log-query-overview.md).
 * Nápovědu k výstrahám najdete v tématu [Konfigurace výstrah](configure-alerts.md).

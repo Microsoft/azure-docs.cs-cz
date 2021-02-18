@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 5659f3b2d020a97ed2460c55283bb41f2f7606cc
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 16c18d8f86890baaf1882c532c19ff32ab2017da
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943733"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592658"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytváření a správa rozpočtů Azure
 
@@ -140,7 +140,7 @@ Vyhodnocení rozpočtových nákladů vychází ze skutečných nákladů a neza
 
 ## <a name="trigger-an-action-group"></a>Aktivace skupiny akcí
 
-Když vytváříte nebo upravujete rozpočet pro předplatné nebo obor skupiny prostředků, můžete ho nakonfigurovat tak, aby volal skupinu akcí. Skupina akcí může při dosažení prahové hodnoty rozpočtu provádět různé akce. Skupiny akcí jsou aktuálně podporovány jenom pro předplatná a obory skupin prostředků. Další informace o skupinách akcí najdete v tématu týkajícím se [vytváření a správy skupin akcí na webu Azure Portal](../../azure-monitor/platform/action-groups.md). Další informace o používání automatizace pro rozpočty pomocí skupin akcí najdete v tématu popisujícím [správu nákladů pomocí rozpočtů Azure](../manage/cost-management-budget-scenario.md).
+Když vytváříte nebo upravujete rozpočet pro předplatné nebo obor skupiny prostředků, můžete ho nakonfigurovat tak, aby volal skupinu akcí. Skupina akcí může při dosažení prahové hodnoty rozpočtu provádět různé akce. Skupiny akcí jsou aktuálně podporovány jenom pro předplatná a obory skupin prostředků. Další informace o skupinách akcí najdete v tématu týkajícím se [vytváření a správy skupin akcí na webu Azure Portal](../../azure-monitor/alerts/action-groups.md). Další informace o používání automatizace pro rozpočty pomocí skupin akcí najdete v tématu popisujícím [správu nákladů pomocí rozpočtů Azure](../manage/cost-management-budget-scenario.md).
 
 Pokud chcete vytvořit nebo aktualizovat skupiny akcí, vyberte během vytváření nebo úprav rozpočtu **Spravovat skupiny akcí**.
 
@@ -160,7 +160,7 @@ Následující příklad ukazuje prahové hodnoty rozpočtu nastavené na 50 %,
 
 ![Příklad znázorňující podmínky upozornění nakonfigurované s různými skupinami akcí a typem akcí](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
 
-Integrace rozpočtu se skupinami akcí funguje jenom pro skupiny akcí, které mají zakázané běžné schéma upozornění. Další informace o zakázání schématu najdete v tématu popisujícím [možnosti povolení běžného schématu upozornění](../../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema).
+Integrace rozpočtu se skupinami akcí funguje jenom pro skupiny akcí, které mají zakázané běžné schéma upozornění. Další informace o zakázání schématu najdete v tématu popisujícím [možnosti povolení běžného schématu upozornění](../../azure-monitor/alerts/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema).
 
 ## <a name="create-and-edit-budgets-with-powershell"></a>Vytváření a úpravy rozpočtů pomocí PowerShellu
 

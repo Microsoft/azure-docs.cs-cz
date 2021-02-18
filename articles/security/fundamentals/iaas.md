@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 9b9a83cf71dfa7658c34c3c98f8d12a056adad0c
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e7e8d51b8227acd033c95583d6e61d78a56d62a3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698780"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590275"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Osvědčené postupy zabezpečení pro úlohy IaaS v Azure
 Tento článek popisuje osvědčené postupy zabezpečení pro virtuální počítače a operační systémy.
@@ -130,17 +130,17 @@ K monitorování stav zabezpečení [virtuálních počítačů](../../security-
 
 Security Center můžou aktivně monitorovat hrozby a potenciální hrozby se zveřejňují v výstrahách zabezpečení. Korelační hrozby jsou shrnuty v jednom zobrazení s názvem incident zabezpečení.
 
-Security Center ukládá data v [protokolech Azure monitor](../../azure-monitor/log-query/log-query-overview.md). Protokoly Azure Monitor poskytují dotazovací jazyk a analytické moduly, které vám poskytnou přehled o provozu aplikací a prostředků. Data se shromažďují taky z [Azure monitor](../../batch/monitoring-overview.md), řešení pro správu a agentů nainstalovaných na virtuálních počítačích v cloudu nebo místně. Tyto sdílené funkce umožňují, abyste si vytvořili úplný přehled o vašem prostředí.
+Security Center ukládá data v [protokolech Azure monitor](../../azure-monitor/logs/log-query-overview.md). Protokoly Azure Monitor poskytují dotazovací jazyk a analytické moduly, které vám poskytnou přehled o provozu aplikací a prostředků. Data se shromažďují taky z [Azure monitor](../../batch/monitoring-overview.md), řešení pro správu a agentů nainstalovaných na virtuálních počítačích v cloudu nebo místně. Tyto sdílené funkce umožňují, abyste si vytvořili úplný přehled o vašem prostředí.
 
 Organizace, které nevyžadují silné zabezpečení pro své virtuální počítače, nevědí o potenciálních pokusech neautorizovaných uživatelů, aby mohli obejít bezpečnostní prvky zabezpečení.
 
 ## <a name="monitor-vm-performance"></a>Monitorování výkonu virtuálního počítače
 Zneužití prostředků může být problém, když procesy virtuálních počítačů spotřebovávají víc prostředků, než by měly. Problémy s výkonem virtuálního počítače mohou způsobit přerušení služby, což porušuje princip zabezpečení dostupnosti. To je důležité zejména pro virtuální počítače, které hostují službu IIS nebo jiné webové servery, protože vysoké využití procesoru nebo paměti může znamenat útok na útok DoS (Denial of Service). Je nutné monitorovat přístup k virtuálnímu počítači nejen znovu, pokud k problému dojde, ale také aktivně na základě směrného výkonu, který je změřen během normálního provozu.
 
-Doporučujeme použít [Azure monitor](../../azure-monitor/platform/data-platform.md) , abyste získali přehled o stavu prostředku. Azure Monitor funkce:
+Doporučujeme použít [Azure monitor](../../azure-monitor/data-platform.md) , abyste získali přehled o stavu prostředku. Azure Monitor funkce:
 
-- [Soubory protokolu diagnostiky prostředků](../../azure-monitor/platform/platform-logs-overview.md): monitoruje prostředky virtuálních počítačů a identifikuje potenciální problémy, které by mohly ohrozit výkon a dostupnost.
-- [Rozšíření Azure Diagnostics](../../azure-monitor/platform/diagnostics-extension-overview.md): poskytuje funkce pro monitorování a diagnostiku na virtuálních počítačích s Windows. Tyto funkce můžete povolit zahrnutím rozšíření v rámci [šablony Azure Resource Manager](../../virtual-machines/extensions/diagnostics-template.md).
+- [Soubory protokolu diagnostiky prostředků](../../azure-monitor/essentials/platform-logs-overview.md): monitoruje prostředky virtuálních počítačů a identifikuje potenciální problémy, které by mohly ohrozit výkon a dostupnost.
+- [Rozšíření Azure Diagnostics](../../azure-monitor/agents/diagnostics-extension-overview.md): poskytuje funkce pro monitorování a diagnostiku na virtuálních počítačích s Windows. Tyto funkce můžete povolit zahrnutím rozšíření v rámci [šablony Azure Resource Manager](../../virtual-machines/extensions/diagnostics-template.md).
 
 Organizace, které nemonitorují výkon virtuálních počítačů, nemůžou určit, jestli jsou některé změny v vzorech výkonu normální nebo neobvyklé. Virtuální počítač, který spotřebovává více prostředků než obvykle, může indikovat útok z externího prostředku nebo napadený proces spuštěný ve virtuálním počítači.
 

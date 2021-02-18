@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
-ms.openlocfilehash: 90b0ab4fdabd40e803d1f85a640e4cb387e40c44
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b04dacfdedded417e2557d1568e01bc9fa8f5745
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958944"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590130"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure ve Windows pomocí protokolu SMB (Azure NetApp Files) pro aplikace SAP
 
@@ -81,7 +81,7 @@ Nejprve si přečtěte následující poznámky a dokumenty SAP:
 * [Architektura a scénáře s vysokou dostupností pro Azure Virtual Machines pro SAP NetWeaver](./sap-high-availability-architecture-scenarios.md)
 * [Přidat port sondy v konfiguraci clusteru ASCS](sap-high-availability-installation-wsfc-file-share.md)
 * [Instalace instance SCS (A) do clusteru s podporou převzetí služeb při selhání](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
-* [Vytvoření svazku SMB pro službu Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)
+* [Vytvoření svazku SMB pro službu Azure NetApp Files](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections)
 * [NetApp aplikace SAP na Microsoft Azure pomocí Azure NetApp Files][anf-sap-applications-azure]
 
 ## <a name="overview"></a>Přehled
@@ -114,9 +114,9 @@ Proveďte následující kroky, jako přípravu na použití Azure NetApp Files.
 4. Azure NetApp Files prostředky se musí nacházet v delegované podsíti. Podle pokynů v části [delegování podsítě Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md) vytvořit delegovanou podsíť.  
 
    > [!IMPORTANT]
-   > Před vytvořením svazku SMB musíte vytvořit připojení ke službě Active Directory. Projděte si [požadavky na připojení ke službě Active Directory](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections).  
+   > Před vytvořením svazku SMB musíte vytvořit připojení ke službě Active Directory. Projděte si [požadavky na připojení ke službě Active Directory](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections).  
 
-5. Vytvořte připojení ke službě Active Directory, jak je popsáno v tématu [vytvoření připojení ke službě Active Directory](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection) .  
+5. Vytvořte připojení ke službě Active Directory, jak je popsáno v tématu [vytvoření připojení ke službě Active Directory](../../../azure-netapp-files/create-active-directory-connections.md#create-an-active-directory-connection) .  
 6. Vytvořte svazek SMB Azure NetApp Files SMB podle pokynů v části [Přidání svazku SMB](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) .  
 7. Připojte svazek SMB na virtuálním počítači s Windows.
 

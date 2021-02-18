@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 11/29/2020
 ms.author: mikben
-ms.openlocfilehash: f5c8d8065149a1e380224b2016a45916e72d388e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: bba0d07a0135644eff8ae1ef59ab3b43fd99a380
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947228"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651017"
 ---
 > [!IMPORTANT]
-> Dostupnost telefonního čísla se v současné době omezuje na předplatná Azure, která mají fakturační adresu v USA. Další informace najdete v dokumentaci k nástroji pro [telefonickou službu a pro plánování řešení SMS](../concepts/telephony-sms/plan-solution.md) .
+> Dostupnost telefonního čísla se v současné době omezuje na předplatná Azure, která mají fakturační adresu v USA. Další informace najdete v dokumentaci k [typům telefonního čísla](../concepts/telephony-sms/plan-solution.md) .

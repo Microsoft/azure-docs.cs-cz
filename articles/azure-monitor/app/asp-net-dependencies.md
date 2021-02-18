@@ -4,12 +4,12 @@ description: Monitorování volání závislostí z vaší místní nebo Microso
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df13042656aa077b30bf144aab0a47d9fc0a0662
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05b6c29b121cbf42cf0ebe12b2879e50735db7ea
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263925"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651999"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Sledování závislostí v Azure Application Insights 
 
@@ -109,9 +109,10 @@ V případě aplikací ASP.NET je úplný text dotazu SQL shromážděn pomocí 
 Kromě výše uvedených kroků specifických pro platformu je **také nutné explicitně vyjádřit výslovný souhlas s povolením shromažďování příkazů SQL** úpravou souboru applicationInsights.config následujícím způsobem:
 
 ```xml
-<Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">
-<EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
-</Add>
+<TelemetryModules>
+  <Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">
+    <EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
+  </Add>
 ```
 
 Ve výše uvedených případech je správným způsobem, jak ověřit, že je modul instrumentace správně nainstalovaný, ověření, že je shromážděná verze sady SDK `DependencyTelemetry` "rddp". ' rdddsd ' nebo ' rddf ' označuje závislosti, které jsou shromažďovány prostřednictvím zpětného volání DiagnosticSource nebo EventSource, takže plný dotaz SQL nebude zachycen.
@@ -156,7 +157,7 @@ Tady budete moct zobrazit počet neúspěšných závislostí. Pokud chcete zís
 
 ## <a name="logs-analytics"></a>Protokoly (analýza)
 
-Závislosti můžete sledovat v [dotazovacím jazyku Kusto](/azure/kusto/query/). Tady je pár příkladů.
+Závislosti můžete sledovat v [dotazovacím jazyku Kusto](/azure/kusto/query/). Tady je několik příkladů.
 
 * Vyhledání všech neúspěšných volání závislostí:
 

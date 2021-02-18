@@ -86,6 +86,22 @@
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: Dodržování předpisů
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+- name: Překlad dokumentu
+  items:
+    - name: Přehled
+      items:
+        - name: Co je překlad dokumentů?
+          href: document-translation/overview.md
+    - name: Návody
+      items:
+        - name: Začínáme s překladem dokumentů
+          href: document-translation/get-started-with-document-translation.md
+        - name: Vytváření tokenů SAS
+          href: document-translation/create-sas-tokens.md
+    - name: Reference
+      items:
+        - name: Reference k rozhraní API pro překlad dokumentu
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/translator/translation'
 - name: Custom Translator
   items:
     - name: Přehled

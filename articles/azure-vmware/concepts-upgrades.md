@@ -2,17 +2,17 @@
 title: Koncepty – aktualizace a upgrady v privátním cloudu
 description: Přečtěte si o klíčových procesech upgradu a funkcích v řešení Azure VMware.
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 78d4b566aa9156cdddfdcd69b50ebfd1d10aa784
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.date: 02/16/2021
+ms.openlocfilehash: d93453cbf6ad744844a04cd298cc18ad181cc0b0
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100006697"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634988"
 ---
 # <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Aktualizace a upgrady privátního cloudu řešení Azure VMware
 
-Jednou z klíčových výhod privátních cloudů řešení Azure VMware je to, že platforma je zachována za vás. Údržba platformy zahrnuje automatizované aktualizace pro validované softwarové sady VMware, což pomáhá zajistit, abyste používali nejnovější verzi ověřeného soukromého cloudového softwaru řešení Azure VMware.
+Jednou z výhod privátních cloudů řešení Azure VMware je platforma zachováváme za vás. Údržba zahrnuje automatizované aktualizace sady prostředků ověřovaného VMware, které vám pomůžou zajistit, abyste používali nejnovější verzi privátního cloudového softwaru řešení Azure VMware.
 
 Konkrétně privátní cloud řešení Azure VMware zahrnuje:
 
@@ -22,7 +22,7 @@ Konkrétně privátní cloud řešení Azure VMware zahrnuje:
 - VMware síti vSAN DataStore pro virtuální počítače úloh vSphere  
 - HCX VMware pro mobilitu úloh  
 
-Kromě těchto součástí zahrnuje privátní cloud řešení Azure VMware prostředky ve službě Azure Underlay, která je nutná pro připojení a provozování privátního cloudu. Řešení Azure VMware nepřetržitě monitoruje stav obou komponent Underlay i VMware. Když řešení Azure VMware zjistí selhání, provede akci, aby opravila komponenty, které selhaly. 
+Privátní cloud řešení Azure VMware zahrnuje i prostředky v Azure Underlay, které se vyžadují pro připojení a provozování privátního cloudu. Řešení Azure VMware nepřetržitě monitoruje stav obou komponent Underlay i VMware. Když řešení Azure VMware zjistí selhání, provede akci, aby opravila komponenty, které selhaly. 
 
 ## <a name="what-components-get-updated"></a>Které součásti se aktualizují?   
 
@@ -42,16 +42,16 @@ Kromě těchto součástí zahrnuje privátní cloud řešení Azure VMware pros
 - Aktualizace: Aktualizace dílčí verze jedné nebo více komponent VMware. 
 - Upgrady: Aktualizace hlavní verze jedné nebo více komponent VMware.
 
-Budete upozorněni před a po použití oprav pro vaše privátní cloudy. Budeme s vámi také spolupracovat, abyste naplánovali časový interval pro správu a údržbu před instalací aktualizací nebo upgradů do vašeho privátního cloudu. 
+Budete upozorněni před a po použití oprav do privátních cloudů. Kromě toho budeme s vámi naplánovali časový interval pro správu a údržbu před instalací aktualizací nebo upgradů do vašeho privátního cloudu. 
 
 ## <a name="vmware-appliance-backup"></a>Zálohování zařízení VMware 
 
-Kromě toho, že řešení Azure VMware má k disloze tyto komponenty VMware, převezme tyto informace:
+Řešení Azure VMware také provádí zálohu konfigurace následujících komponent VMware:
 
 - vCenter Server 
 - Správce NSX – T 
 
-V případě selhání může řešení Azure VMware je obnovit ze zálohy konfigurace. 
+V případě selhání může řešení Azure VMware tyto součásti obnovit ze zálohy konfigurace. 
 
 Další informace o verzích softwaru VMware najdete v [článku koncept privátních cloudů a clusterů](concepts-private-clouds-clusters.md) a v [nejčastějších dotazech](faq.yml).
 

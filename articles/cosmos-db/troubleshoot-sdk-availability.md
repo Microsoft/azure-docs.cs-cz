@@ -8,12 +8,12 @@ ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 34c6e7ad8473f02f2772c84ea63aee2a41b97306
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 641b7d44407f8f3760c673f45d69dcfdc8b363b8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559687"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650979"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>Diagnostika a řešení potíží s dostupností sad Azure Cosmos SDK v prostředí s více oblastmi
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,17 @@ Pokud **nenastavíte upřednostňovanou oblast**, klient sady SDK bude ve výcho
 | Více oblastí zápisu | Primární oblast  | Primární oblast  |
 
 > [!NOTE]
-> Primární oblast odkazuje na první oblast v [seznamu oblastí účtu Azure Cosmos](distribute-data-globally.md) .
+> Primární oblast odkazuje na první oblast v [seznamu oblast účtu Azure Cosmos](distribute-data-globally.md).
+> Pokud se hodnoty zadané jako místní preference neshodují se stávajícími oblastmi Azure, budou ignorovány. Pokud se shodují s existující oblastí, ale do ní účet není replikovaný, klient se připojí k další upřednostňované oblasti, která odpovídá nebo k primární oblasti.
+
+> [!WARNING]
+> Zakázáním opakovaného zjišťování koncových bodů (tj. nastavení na hodnotu false) v konfiguraci klienta zakážete všechny převzetí služeb při selhání a dostupnost, které jsou popsány v tomto dokumentu.
+> Tato konfigurace je dostupná v každé sadě Azure Cosmos SDK pomocí následujících parametrů:
+>
+> * Vlastnost [ConnectionPolicy. EnableEndpointRediscovery](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.enableendpointdiscovery) v sadě .NET v2 SDK.
+> * Metoda [CosmosClientBuilder. endpointDiscoveryEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.endpointdiscoveryenabled) v sadě Java v4 SDK.
+> * Parametr [CosmosClient.enable_endpoint_discovery](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) v sadě Python SDK.
+> * Parametr [CosmosClientOptions. ConnectionPolicy. enableEndpointDiscovery](/javascript/api/@azure/cosmos/connectionpolicy#enableEndpointDiscovery) v sadě js SDK.
 
 Za normálních okolností se klient SDK připojí k upřednostňované oblasti (Pokud je nastavená místní předvolba) nebo do primární oblasti (Pokud není nastavená žádná předvolba) a operace budou omezené na tuto oblast, pokud nedošlo k žádnému z následujících scénářů.
 
@@ -59,7 +69,7 @@ Podrobné informace o zárukách SLA v těchto událostech najdete v [SLA dostup
 
 ## <a name="removing-a-region-from-the-account"></a><a id="remove-region"></a>Odebrání oblasti z účtu
 
-Když odeberete oblast z účtu Azure Cosmos, vyhledá kterýkoli klient sady SDK, který aktivně používá účet, odebrání oblasti prostřednictvím kódu odpovědi back-endu. Klient pak označí místní koncový bod jako nedostupný. Klient opakuje aktuální operaci a všechny budoucí operace budou trvale směrovány do další oblasti v pořadí podle priority.
+Když odeberete oblast z účtu Azure Cosmos, vyhledá kterýkoli klient sady SDK, který aktivně používá účet, odebrání oblasti prostřednictvím kódu odpovědi back-endu. Klient pak označí místní koncový bod jako nedostupný. Klient opakuje aktuální operaci a všechny budoucí operace budou trvale směrovány do další oblasti v pořadí podle priority. V případě, že má seznam předvoleb jenom jednu položku (nebo byla prázdná), ale účet má k dispozici jiné oblasti, bude v seznamu účtů směrován na další oblast.
 
 ## <a name="adding-a-region-to-an-account"></a>Přidání oblasti k účtu
 

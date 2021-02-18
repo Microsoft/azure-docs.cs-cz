@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: bd6acc5d3b7cd6e88b56e4a922e777adca031538
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 0b064e8491b5d4fa988e9f476143cc0711e3934a
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102559"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651370"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Rychlý Start: Konfigurace klientské aplikace pro přístup k webovému rozhraní API
 
@@ -110,7 +110,7 @@ Některá oprávnění, například soubory Microsoft Graph *. Read. All* , vyž
 
 ### <a name="configure-client-credentials"></a>Konfigurace přihlašovacích údajů klienta
 
-Aplikace, které používají oprávnění aplikace, se ověřují samostatně pomocí svých vlastních přihlašovacích údajů bez nutnosti zásahu uživatele. Předtím, než vaše aplikace (nebo rozhraní API) může získat přístup k Microsoft Graph, vlastnímu webovému rozhraní API nebo jakémukoli jinému rozhraní API pomocí oprávnění aplikace, musíte nakonfigurovat přihlašovací údaje klientské aplikace.
+Aplikace, které používají oprávnění aplikace, se ověřují samostatně pomocí svých vlastních přihlašovacích údajů bez nutnosti zásahu uživatele. Předtím, než vaše aplikace (nebo rozhraní API) může získat přístup k Microsoft Graph, vlastnímu webovému rozhraní API nebo jinému rozhraní API pomocí oprávnění aplikace, musíte nakonfigurovat přihlašovací údaje klientské aplikace.
 
 Další informace o konfiguraci přihlašovacích údajů aplikace najdete v části [Přidání přihlašovacích údajů](quickstart-register-app.md#add-credentials) v [rychlém startu: registrace aplikace s platformou Microsoft Identity](quickstart-register-app.md).
 

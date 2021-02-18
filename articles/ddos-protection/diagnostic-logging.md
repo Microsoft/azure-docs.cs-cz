@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 42d4467a6441e517ef3194f701eb47e7e68505b1
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: cc5b3b85d6d13fda532da0993fa7f733126b8eae
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806303"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591883"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>Zobrazení a konfigurace protokolování diagnostiky DDoS
 
@@ -57,9 +57,9 @@ Pokud chcete automaticky povolit protokolování diagnostiky u všech veřejnýc
 
 7. V části **Podrobnosti o cíli** vyberte tolik z následujících možností, kolik budete potřebovat:
 
-    - **Archivace do účtu úložiště**: data se zapisují do účtu Azure Storage. Další informace o této možnosti najdete v tématu [archivní protokoly prostředků](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage).
-    - **Streamování do centra událostí**: umožňuje přijímači protokolu vybírat protokoly pomocí centra událostí Azure. Centra událostí umožňují integraci s Splunk nebo jinými systémy SIEM. Další informace o této možnosti najdete v tématu [streamování protokolů prostředků do centra událostí](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs).
-    - **Odeslat do Log Analytics**: zapisuje protokoly do služby Azure monitor. Další informace o této možnosti najdete v tématu [shromáždění protokolů pro použití v protokolech Azure monitor](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-log-analytics-workspace).
+    - **Archivace do účtu úložiště**: data se zapisují do účtu Azure Storage. Další informace o této možnosti najdete v tématu [archivní protokoly prostředků](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage).
+    - **Streamování do centra událostí**: umožňuje přijímači protokolu vybírat protokoly pomocí centra událostí Azure. Centra událostí umožňují integraci s Splunk nebo jinými systémy SIEM. Další informace o této možnosti najdete v tématu [streamování protokolů prostředků do centra událostí](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs).
+    - **Odeslat do Log Analytics**: zapisuje protokoly do služby Azure monitor. Další informace o této možnosti najdete v tématu [shromáždění protokolů pro použití v protokolech Azure monitor](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-log-analytics-workspace).
 
 ### <a name="log-schemas"></a>Schémata protokolů
 

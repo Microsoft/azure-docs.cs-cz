@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 07ad53191c8212ccde5633a4068f31aa00ab69b1
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 666474b7c7b823114b6dee2925ed5f81973e212d
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100554729"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650928"
 ---
 # <a name="calling-client-library-overview"></a>Přehled klientských knihoven pro hovory
 
@@ -109,4 +109,4 @@ Všimněte si, že ve scénářích skupiny je jeden smíšený zvukový stream 
 Další informace najdete v následujících článcích:
 - Seznamte se s obecnými [toky volání](../call-flows.md) 
 - Další informace o [typech volání](../voice-video-calling/about-call-types.md)
-- [Plánování řešení veřejné sítě](../telephony-sms/plan-solution.md)
+- Další informace o [typech telefonních čísel](../telephony-sms/plan-solution.md)

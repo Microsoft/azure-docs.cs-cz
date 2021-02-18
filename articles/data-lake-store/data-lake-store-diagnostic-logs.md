@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 07bf22cfc683d8c6f2c765364334ed1594e2fdaa
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 0b84e26962b00ee5b9d4c34cab7efbcc9aa0bf01
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745880"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582805"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Přístup k diagnostickým protokolům pro Azure Data Lake Storage Gen1
 Naučte se, jak povolit protokolování diagnostiky pro váš účet Azure Data Lake Storage Gen1 a jak zobrazit protokoly shromážděné pro váš účet.
@@ -46,7 +46,7 @@ Organizace můžou povolit protokolování diagnostiky pro svůj účet Azure Da
         
         * Vyberte možnost **streamování do centra událostí** pro streamování dat protokolu do centra událostí Azure. Tato možnost bude pravděpodobně použita, pokud máte k analýze příchozích protokolů v reálném čase kanál pro zpracování dat. Pokud vyberete tuto možnost, musíte zadat podrobnosti o centru událostí Azure, které chcete použít.
 
-        * Vyberte možnost **odeslání Log Analytics** k použití služby Azure monitor k analýze generovaných dat protokolu. Pokud vyberete tuto možnost, musíte zadat podrobné informace o pracovním prostoru Log Analytics, které byste použili při analýze protokolu. Podrobnosti o používání protokolů Azure Monitor najdete v tématu [zobrazení nebo analýza dat shromážděných pomocí protokolu Azure monitor](../azure-monitor/log-query/log-analytics-tutorial.md) .
+        * Vyberte možnost **odeslání Log Analytics** k použití služby Azure monitor k analýze generovaných dat protokolu. Pokud vyberete tuto možnost, musíte zadat podrobné informace o pracovním prostoru Log Analytics, které byste použili při analýze protokolu. Podrobnosti o používání protokolů Azure Monitor najdete v tématu [zobrazení nebo analýza dat shromážděných pomocí protokolu Azure monitor](../azure-monitor/logs/log-analytics-tutorial.md) .
      
    * Určete, zda chcete získat protokoly auditu nebo protokoly žádostí nebo obojí.
    * Zadejte počet dní, po které musí být data uchována. Uchování se dá použít jenom v případě, že k archivaci dat protokolu používáte účet Azure Storage.
@@ -115,7 +115,7 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
 ```
 
 #### <a name="request-log-schema"></a>Schéma protokolu žádostí
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | --- | --- | --- |
 | time |Řetězec |Časové razítko (v UTC) protokolu |
 | resourceId |Řetězec |ID prostředku, na kterém byla operace provedena |
@@ -128,7 +128,7 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
 | properties |JSON |Podrobnosti najdete níže. |
 
 #### <a name="request-log-properties-schema"></a>Vlastnosti protokolu žádosti – schéma
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | --- | --- | --- |
 | HttpMethod |Řetězec |Metoda HTTP použitá pro operaci Například GET. |
 | Cesta |Řetězec |Cesta, na které byla operace provedena |
@@ -167,7 +167,7 @@ Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BL
 ```
 
 #### <a name="audit-log-schema"></a>Schéma protokolu auditu
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | --- | --- | --- |
 | time |Řetězec |Časové razítko (v UTC) protokolu |
 | resourceId |Řetězec |ID prostředku, na kterém byla operace provedena |
@@ -180,12 +180,12 @@ Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BL
 | properties |JSON |Podrobnosti najdete níže. |
 
 #### <a name="audit-log-properties-schema"></a>Schéma vlastností protokolu auditu
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | --- | --- | --- |
 | StreamName |Řetězec |Cesta, na které byla operace provedena |
 
 ## <a name="samples-to-process-the-log-data"></a>Ukázky pro zpracování dat protokolu
-Při odesílání protokolů z Azure Data Lake Storage Gen1 do protokolů Azure Monitor (podrobnosti o používání protokolů Azure Monitor naleznete v tématu [zobrazení nebo analýza dat shromážděných pomocí protokolu Azure monitor log](../azure-monitor/log-query/log-analytics-tutorial.md) ). následující dotaz vrátí tabulku obsahující seznam zobrazovaných uživatelských jmen, čas událostí a počet událostí pro čas události spolu s vizuálním grafem. Dá se snadno upravit, aby se zobrazil identifikátor GUID uživatele nebo jiné atributy:
+Při odesílání protokolů z Azure Data Lake Storage Gen1 do protokolů Azure Monitor (podrobnosti o používání protokolů Azure Monitor naleznete v tématu [zobrazení nebo analýza dat shromážděných pomocí protokolu Azure monitor log](../azure-monitor/logs/log-analytics-tutorial.md) ). následující dotaz vrátí tabulku obsahující seznam zobrazovaných uživatelských jmen, čas událostí a počet událostí pro čas události spolu s vizuálním grafem. Dá se snadno upravit, aby se zobrazil identifikátor GUID uživatele nebo jiné atributy:
 
 ```
 search *
