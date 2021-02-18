@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: aab99721b61ababe218e509ab1078198b5f4152b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c54a56843be5121e16449d95fb18c24901a95a8d
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030361"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650557"
 ---
 # <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>Rychlý Start: vytvoření prvního statického webu v Azure Portal
 
@@ -55,7 +55,7 @@ Až se přihlásíte pomocí GitHubu, zadejte informace o úložišti.
 
 1. Vybrat upřednostňovanou _organizaci_
 1. Z rozevíracího seznamu _úložiště_ vyberte **My-First-web-static-App** .
-1. V rozevíracím seznamu _větev_ vyberte **Hlavní** .
+1. V rozevíracím seznamu _větev_ vyberte **Main (Hlavní** ).
 
 > [!NOTE]
 > Pokud nevidíte žádná úložiště, možná budete muset autorizovat Azure static Web Apps v GitHubu. Přejděte do úložiště GitHub a přejděte na **nastavení > aplikace > autorizovaných aplikací OAuth**, vyberte **statické Web Apps Azure** a pak vyberte **udělit**. V případě úložišť organizace musíte být vlastníkem organizace, abyste udělili oprávnění.

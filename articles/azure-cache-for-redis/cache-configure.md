@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: c13821544ff9725a387534370fc716c70072bb85
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: ba021d280f71504ad5c1e1aea0dc1c8c6b507b1e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831769"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581080"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak nakonfigurovat Azure cache pro Redis
 Toto téma popisuje konfigurace dostupné pro instance Redis v mezipaměti Azure. Toto téma také popisuje výchozí konfiguraci serveru Redis pro Azure cache pro instance Redis.
@@ -321,7 +321,7 @@ Chcete-li restartovat jeden nebo více uzlů mezipaměti, vyberte požadované u
 >
 
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 Část **monitorování** vám umožní nakonfigurovat diagnostiku a monitorování pro mezipaměť Azure pro Redis.
 Další informace o službě Azure cache pro monitorování a diagnostiku Redis najdete v tématu [monitorování mezipaměti Azure pro Redis](cache-how-to-monitor.md).
@@ -341,10 +341,10 @@ Kliknutím na **pravidla výstrah** můžete nakonfigurovat výstrahy založené
 
 ### <a name="diagnostics"></a>Diagnostika
 
-Ve výchozím nastavení se metriky mezipaměti v Azure Monitor [ukládají po dobu 30 dnů](../azure-monitor/platform/data-platform-metrics.md) a pak se odstraní. Pokud chcete uchovat metriky mezipaměti déle než 30 dní, klikněte na **Diagnostika** a [Nakonfigurujte účet úložiště](cache-how-to-monitor.md#export-cache-metrics) , který se používá k ukládání diagnostiky mezipaměti.
+Ve výchozím nastavení se metriky mezipaměti v Azure Monitor [ukládají po dobu 30 dnů](../azure-monitor/essentials/data-platform-metrics.md) a pak se odstraní. Pokud chcete uchovat metriky mezipaměti déle než 30 dní, klikněte na **Diagnostika** a [Nakonfigurujte účet úložiště](cache-how-to-monitor.md#export-cache-metrics) , který se používá k ukládání diagnostiky mezipaměti.
 
 >[!NOTE]
->Kromě archivace metrik mezipaměti do úložiště je můžete také [streamovat do centra událostí nebo je odeslat do protokolů Azure monitor](../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+>Kromě archivace metrik mezipaměti do úložiště je můžete také [streamovat do centra událostí nebo je odeslat do protokolů Azure monitor](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md).
 >
 >
 

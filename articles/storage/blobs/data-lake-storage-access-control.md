@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 2a1455c5956297a19d640146879f93b61d035139
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: c1e2b6abe378df1450967ee0e1df6021ca0d5744
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185899"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650367"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Seznamy řízení přístupu (ACL) v Azure Data Lake Storage Gen2
 
@@ -28,18 +28,20 @@ K souborům a adresářům můžete přidružit [objekt zabezpečení](../../rol
 > [!NOTE]
 > Seznamy ACL platí jenom pro objekty zabezpečení ve stejném tenantovi a nevztahují se na uživatele, kteří používají ověřování pomocí sdíleného klíče nebo sdíleného přístupového podpisu (SAS). Důvodem je skutečnost, že k volajícímu není přidružena žádná identita, a proto nelze provést autorizaci na základě oprávnění zabezpečení.  
 
+<a id="set-access-control-lists"></a>
+
 ## <a name="how-to-set-acls"></a>Postup nastavení seznamů ACL
 
 Chcete-li nastavit oprávnění na úrovni souborů a adresářů, přečtěte si některé z následujících článků:
 
 | Prostředí | Článek |
 |--------|-----------|
-|Průzkumník služby Azure Storage |[Správa adresářů, souborů a seznamů ACL ve službě Azure Data Lake Storage Gen2 pomocí Průzkumníka služby Azure Storage](data-lake-storage-explorer.md#managing-access)|
-|.NET |[Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí .NET](data-lake-storage-directory-file-acl-dotnet.md#manage-access-control-lists-acls)|
-|Java|[Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí jazyka Java](data-lake-storage-directory-file-acl-java.md#manage-access-control-lists-acls)|
-|Python|[Použití Pythonu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md#manage-access-control-lists-acls)|
-|PowerShell|[Použití PowerShellu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-powershell.md#manage-access-control-lists-acls)|
-|Azure CLI|[Použití Azure CLI ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-cli.md#manage-access-control-lists-acls)|
+|Průzkumník služby Azure Storage |[Použití Průzkumník služby Azure Storage k nastavení seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-explorer-acl.md)|
+|.NET |[Použití .NET k nastavení seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-acl-dotnet.md)|
+|Java|[Použití jazyka Java k nastavení seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-acl-java.md)|
+|Python|[Použití Pythonu k nastavení seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-acl-python.md)|
+|PowerShell|[Použití PowerShellu k nastavení seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-acl-powershell.md)|
+|Azure CLI|[Použití rozhraní příkazového řádku Azure k nastavení seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-acl-cli.md)|
 |REST API |[Cesta – aktualizace](/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
@@ -255,7 +257,7 @@ def set_default_acls_for_new_child(parent, child):
         child_acls.add( new_entry )
 ```
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>Je třeba povolit podporu pro seznamy ACL?
 
@@ -273,7 +275,7 @@ Informace o tom, jak systém vyhodnocuje v Azure RBAC a seznamy ACL dohromady a 
 
 ### <a name="what-are-the-limits-for-azure-role-assignments-and-acl-entries"></a>Jaká jsou omezení pro přiřazení rolí Azure a položky seznamu ACL?
 
-V následující tabulce najdete Přehled limitů, které je potřeba vzít v úvahu při používání Azure RBAC ke správě "hrubých" oprávnění (oprávnění, která se vztahují na účty úložiště nebo kontejnery) a používání seznamů ACL ke správě "jemně odstupňovaného" oprávnění (oprávnění, která se vztahují na soubory a adresáře). Použijte skupiny zabezpečení pro přiřazení seznamu ACL. Při použití skupin je méně pravděpodobnější, že bude překročen maximální počet přiřazení rolí na předplatné a maximální počet položek seznamu ACl na soubor nebo adresář. 
+V následující tabulce najdete Přehled limitů, které je potřeba vzít v úvahu při používání Azure RBAC ke správě "hrubých" oprávnění (oprávnění, která se vztahují na účty úložiště nebo kontejnery) a používání seznamů ACL ke správě "jemně odstupňovaného" oprávnění (oprávnění, která se vztahují na soubory a adresáře). Použijte skupiny zabezpečení pro přiřazení seznamu ACL. Při použití skupin je méně pravděpodobnější, že bude překročen maximální počet přiřazení rolí na předplatné a maximální počet položek seznamu ACL na soubor nebo adresář. 
 
 [!INCLUDE [Security groups](../../../includes/azure-storage-data-lake-rbac-acl-limits.md)] 
 
@@ -344,6 +346,6 @@ Azure Storage REST API obsahuje operaci s názvem [seznam ACL kontejneru](/rest/
 * [POSIX ACL na Ubuntu](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [ACL: Using Access Control Lists on Linux (Seznamy ACL: Používání seznamů řízení přístupu v Linuxu)](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [Model řízení přístupu v Azure Data Lake Storage Gen2](data-lake-storage-access-control-model.md)

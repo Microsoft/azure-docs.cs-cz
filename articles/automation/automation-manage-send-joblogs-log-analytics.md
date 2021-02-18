@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2e7e798967541748b5572994d48cb5bdf7474cb1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4199c5576662eee1dd6cedc388440a71e21f8b74
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182865"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581207"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Předávání dat úloh Azure Automation do protokolů Azure Monitoru
 
@@ -22,7 +22,7 @@ Azure Automation může odesílat datové proudy úloh sady Runbook a streamová
 * Korelujte úlohy mezi účty Automation.
 * Pomocí vlastních zobrazení a vyhledávacích dotazů můžete vizualizovat výsledky Runbooku, stav úlohy Runbooku a další související klíčové ukazatele nebo metriky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete začít odesílat protokoly pro automatizaci Azure Monitor protokolů, budete potřebovat:
 
@@ -56,7 +56,7 @@ Pokud chcete vrátit výsledky z konkrétní skupiny prostředků, zahrňte `-Re
 
 Pokud máte ve výstupu předchozích příkazů více než jeden účet služby Automation nebo pracovní prostor, můžete najít název a další související vlastnosti, které jsou součástí úplného ID prostředku vašeho účtu Automation, a to následujícím způsobem:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V Azure Portal na stránce **účty Automation** vyberte svůj účet Automation.
 1. Na stránce vybraného účtu Automation v části **Nastavení účtu** vyberte **vlastnosti**.
 1. Na stránce **vlastnosti** si všimněte níže uvedených podrobností.
@@ -72,7 +72,7 @@ Nastavení diagnostiky automatizace podporuje předávání následujících pro
 * DSCNodeStatus
 * Metriky – celkový počet úloh, celkový počet spuštěných počítačů pro nasazení aktualizací, celkový počet spuštění nasazení aktualizací
 
-Pokud chcete začít odesílat protokoly služby Automation do protokolů Azure Monitor, přečtěte si téma [Vytvoření nastavení diagnostiky](../azure-monitor/platform/diagnostic-settings.md) , které vám pomůže pochopit funkce a metody, které jsou k dispozici pro konfiguraci nastavení diagnostiky pro odesílání protokolů
+Pokud chcete začít odesílat protokoly služby Automation do protokolů Azure Monitor, přečtěte si téma [Vytvoření nastavení diagnostiky](../azure-monitor/essentials/diagnostic-settings.md) , které vám pomůže pochopit funkce a metody, které jsou k dispozici pro konfiguraci nastavení diagnostiky pro odesílání protokolů
 
 ## <a name="azure-monitor-log-records"></a>Záznamy protokolu Azure Monitor
 
@@ -140,7 +140,7 @@ Chcete-li vytvořit pravidlo výstrahy, začněte tím, že vytvoříte hledán�
 
    Pokud jste v pracovním prostoru nastavili protokoly z více než jednoho účtu Automation nebo předplatného, můžete své výstrahy seskupit podle předplatného a účtu Automation. Název účtu Automation najdete v `Resource` poli hledání `JobLogs` .
 
-3. Obrazovku **vytvořit pravidlo** otevřete kliknutím na **nové pravidlo výstrahy** v horní části stránky. Další informace o možnostech konfigurace výstrahy najdete v tématu [protokolování výstrah v Azure](../azure-monitor/platform/alerts-unified-log.md).
+3. Obrazovku **vytvořit pravidlo** otevřete kliknutím na **nové pravidlo výstrahy** v horní části stránky. Další informace o možnostech konfigurace výstrahy najdete v tématu [protokolování výstrah v Azure](../azure-monitor/alerts/alerts-unified-log.md).
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>Vyhledá všechny úlohy, které byly dokončeny s chybami.
 
@@ -192,8 +192,8 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o vytváření vyhledávacích dotazů a kontrole protokolů úloh služby Automation pomocí protokolů Azure Monitor najdete [v tématu prohledávání protokolů v protokolech Azure monitor](../azure-monitor/log-query/log-query-overview.md).
+* Další informace o vytváření vyhledávacích dotazů a kontrole protokolů úloh služby Automation pomocí protokolů Azure Monitor najdete [v tématu prohledávání protokolů v protokolech Azure monitor](../azure-monitor/logs/log-query-overview.md).
 * Informace o vytváření a načítání výstupních a chybové zprávy ze sad Runbook najdete v tématu [monitorování výstupu Runbooku](automation-runbook-output-and-messages.md).
 * Další informace o spuštění sady Runbook, způsobu monitorování úloh sady Runbook a dalších technických informací naleznete v tématu [spuštění sady Runbook v Azure Automation](automation-runbook-execution.md).
-* Další informace o Azure Monitor protokolů a zdrojích shromažďování dat najdete [v tématu shromažďování dat služby Azure Storage v protokolech Azure monitor přehled](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
-* Pomoc při řešení potíží s Log Analytics najdete v tématu [řešení potíží, proč Log Analytics už neshromažďují data](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data).
+* Další informace o Azure Monitor protokolů a zdrojích shromažďování dat najdete [v tématu shromažďování dat služby Azure Storage v protokolech Azure monitor přehled](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace).
+* Pomoc při řešení potíží s Log Analytics najdete v tématu [řešení potíží, proč Log Analytics už neshromažďují data](../azure-monitor/logs/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data).

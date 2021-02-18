@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 22cc9bf1bdfdb8a3026bb09f44e007ab3438325a
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 1b394a6daf7ba680d193a13dd4cb25dbebc576e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046817"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580069"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Rozšíření Log Analytics pro virtuální počítače pro Windows
 
@@ -30,12 +30,12 @@ Protokoly Azure Monitor poskytují možnosti monitorování v cloudových i mís
 
 ### <a name="operating-system"></a>Operační systém
 
-Podrobnosti o podporovaných operačních systémech Windows najdete v článku [přehled Azure Monitorch agentů](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) .
+Podrobnosti o podporovaných operačních systémech Windows najdete v článku [přehled Azure Monitorch agentů](../../azure-monitor/agents/agents-overview.md#supported-operating-systems) .
 
 ### <a name="agent-and-vm-extension-version"></a>Verze agenta a rozšíření virtuálního počítače
 Následující tabulka poskytuje mapování verze rozšíření virtuálního počítače s Windows Log Analytics a sady Log Analytics agenta pro každou verzi. 
 
-| Log Analytics verze sady Windows Agent | Log Analytics verze rozšíření virtuálního počítače s Windows | Datum vydání | Poznámky k verzi |
+| Log Analytics verze sady Windows Agent | Log Analytics verze rozšíření virtuálního počítače s Windows | Datum vydání | Poznámky k verzi |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
 | 10.20.18053| 1.0.18053.0 | Říjen 2020   | <ul><li>Poradce při potížích s novým agentem</li><li>Aktualizuje způsob, jakým Agent zpracovává změny certifikátů ve službách Azure.</li></ul> |
 | 10.20.18040 | 1.0.18040.2 | Srpen 2020   | <ul><li>Vyřeší problém v Arc Azure</li></ul> |
@@ -89,7 +89,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Log Analytics. P�
 ```
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad |
+| Name | Hodnota/příklad |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | vydavatel | Microsoft. EnterpriseCloud. Monitoring |
@@ -101,14 +101,14 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Log Analytics. P�
 \* ID pracovního prostoru se nazývá consumerId v rozhraní Log Analytics API.
 
 > [!NOTE]
-> Další vlastnosti najdete v tématu [připojení počítačů s Windows k Azure a Azure monitor](../../azure-monitor/platform/agent-windows.md).
+> Další vlastnosti najdete v tématu [připojení počítačů s Windows k Azure a Azure monitor](../../azure-monitor/agents/agent-windows.md).
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
 Rozšíření virtuálních počítačů Azure je možné nasadit pomocí šablon Azure Resource Manager. Schéma JSON popsané v předchozí části lze použít v šabloně Azure Resource Manager ke spuštění rozšíření agenta Log Analytics během nasazování šablony Azure Resource Manager. Ukázková šablona, která obsahuje rozšíření virtuálního počítače agenta Log Analytics, se dá najít v [galerii Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
 
 >[!NOTE]
->Šablona nepodporuje zadání více než jednoho ID pracovního prostoru a klíč pracovního prostoru, pokud chcete nakonfigurovat agenta tak, aby nahlásil do více pracovních prostorů. Chcete-li nakonfigurovat agenta tak, aby nahlásil do více pracovních prostorů, přečtěte si téma [Přidání nebo odebrání pracovního prostoru](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace).  
+>Šablona nepodporuje zadání více než jednoho ID pracovního prostoru a klíč pracovního prostoru, pokud chcete nakonfigurovat agenta tak, aby nahlásil do více pracovních prostorů. Chcete-li nakonfigurovat agenta tak, aby nahlásil do více pracovních prostorů, přečtěte si téma [Přidání nebo odebrání pracovního prostoru](../../azure-monitor/agents/agent-manage.md#adding-or-removing-a-workspace).  
 
 JSON pro rozšíření virtuálního počítače se dá vnořit do prostředku virtuálního počítače nebo umístit na kořenovou nebo nejvyšší úroveň šablony Správce prostředků JSON. Umístění formátu JSON má vliv na hodnotu názvu a typu prostředku. Další informace najdete v tématu [Nastavení názvu a typu pro podřízené prostředky](../../azure-resource-manager/templates/child-resource-name-type.md). 
 

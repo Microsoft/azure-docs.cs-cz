@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: ee5aec2e483f41c73d57fc1d91427e5657bda3e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9fce67c0ffe1951b0bfc325603b6d8f985dd804d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87317990"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592202"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Plánování kapacity virtuálních počítačů Hyper-V pomocí řešení Capacity and Performance (zastaralé)
 
@@ -41,10 +41,10 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 
 | Připojený zdroj | Podpora | Description |
 |---|---|---|
-| [Agenti systému Windows](../platform/agent-windows.md) | Yes | Řešení shromažďuje informace o kapacitě a datech o výkonu od agentů systému Windows. |
-| [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | No | Řešení neshromažďuje informace o kapacitě a datech výkonu z přímých agentů systému Linux.|
-| [Skupina pro správu SCOM](../platform/om-agents.md) | Yes |Řešení shromažďuje data o kapacitě a výkonu od agentů v připojené skupině pro správu systému SCOM. Přímé připojení od agenta SCOM k Log Analytics není vyžadováno.|
-| [Účet úložiště Azure](../platform/resource-logs.md#send-to-log-analytics-workspace) | No | Služba Azure Storage neobsahuje data o kapacitě a výkonu.|
+| [Agenti systému Windows](../agents/agent-windows.md) | Yes | Řešení shromažďuje informace o kapacitě a datech o výkonu od agentů systému Windows. |
+| [Agenti systému Linux](../vm/quick-collect-linux-computer.md) | No    | Řešení neshromažďuje informace o kapacitě a datech výkonu z přímých agentů systému Linux.|
+| [Skupina pro správu SCOM](../agents/om-agents.md) | Yes |Řešení shromažďuje data o kapacitě a výkonu od agentů v připojené skupině pro správu systému SCOM. Přímé připojení od agenta SCOM k Log Analytics není vyžadováno.|
+| [Účet úložiště Azure](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | Služba Azure Storage neobsahuje data o kapacitě a výkonu.|
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -72,7 +72,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 Když se aktualizuje řešení Capacity and Performance, číslo verze se změní.
 
-Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../platform/om-agents.md).
+Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../agents/om-agents.md).
 
 ## <a name="using-the-solution"></a>Použití řešení
 
@@ -129,5 +129,5 @@ V následující tabulce najdete ukázková hledání v protokolech pro data o k
 
 
 ## <a name="next-steps"></a>Další kroky
-* Pomocí [prohledávání protokolů v Log Analytics](../log-query/log-query-overview.md) můžete zobrazit podrobná data Capacity and Performance.
+* Pomocí [prohledávání protokolů v Log Analytics](../logs/log-query-overview.md) můžete zobrazit podrobná data Capacity and Performance.
 

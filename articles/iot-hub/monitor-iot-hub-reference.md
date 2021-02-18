@@ -7,12 +7,12 @@ ms.topic: reference
 ms.service: iot-hub
 ms.custom: subject-monitoring
 ms.date: 10/22/2020
-ms.openlocfilehash: f198b59f106b7d2a29e35d77b54274328be6fa93
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6c7fd0a310663b664d33027951ade885b83d458a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581597"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570954"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Monitorování referenčních informací o službě Azure IoT Hub
 
@@ -24,25 +24,48 @@ V této části jsou uvedené všechny automaticky shromážděné metriky platf
 
 Následující podčásti rozdělují IoT Hub metriky platforem podle obecné kategorie a uvádějí je podle zobrazovaného názvu, který se zobrazí v Azure Portal. K dispozici jsou také informace týkající se metrik, které se zobrazují v jednotlivých pododdílech.
 
-V dokumentaci k Azure Monitor můžete také najít jednu tabulku se seznamem všech metrik IoT Hub platformou podle názvu metriky v části [Microsoft. Devices/IotHubs](../azure-monitor/platform/metrics-supported.md#microsoftdevicesiothubs) . Uvědomte si, že tato tabulka neposkytuje některé informace, jako jsou [podporované agregace](#supported-aggregations) pro některé metriky, které jsou k dispozici v tomto článku.
+V dokumentaci k Azure Monitor můžete také najít jednu tabulku se seznamem všech metrik IoT Hub platformou podle názvu metriky v části [Microsoft. Devices/IotHubs](../azure-monitor/essentials/metrics-supported.md#microsoftdevicesiothubs) . Uvědomte si, že tato tabulka neposkytuje některé informace, jako jsou [podporované agregace](#supported-aggregations) pro některé metriky, které jsou k dispozici v tomto článku.
 
-Další informace o metrikách podporovaných jinými službami Azure najdete v tématu [podporované metriky s Azure monitor](../azure-monitor/platform/metrics-supported.md).
+Další informace o metrikách podporovaných jinými službami Azure najdete v tématu [podporované metriky s Azure monitor](../azure-monitor/essentials/metrics-supported.md).
 
 **Témata v této části**
 
-- [Podporované agregace](#supported-aggregations)
-- [Metriky příkazů z cloudu do zařízení](#cloud-to-device-command-metrics)
-- [Metriky přímých metod cloudu na zařízení](#cloud-to-device-direct-methods-metrics)
-- [Metriky s dvojitou operací z cloudu na zařízení](#cloud-to-device-twin-operations-metrics)
-- [Konfigurace metrik](#configurations-metrics)
-- [Denní metriky kvót](#daily-quota-metrics)
-- [Metriky zařízení](#device-metrics)
-- [Metriky telemetrie zařízení](#device-telemetry-metrics)
-- [Metriky nevlákenných operací zařízení do cloudu](#device-to-cloud-twin-operations-metrics)
-- [Metriky Event gridu](#event-grid-metrics)
-- [Metriky úloh](#jobs-metrics)
-- [Metriky směrování](#routing-metrics)
-- [Dvojitá metrika dotazu](#twin-query-metrics)
+- [Monitorování referenčních informací o službě Azure IoT Hub](#monitoring-azure-iot-hub-data-reference)
+  - [Metriky](#metrics)
+    - [Podporované agregace](#supported-aggregations)
+    - [Metriky příkazů z cloudu do zařízení](#cloud-to-device-command-metrics)
+    - [Metriky přímých metod cloudu na zařízení](#cloud-to-device-direct-methods-metrics)
+    - [Metriky s dvojitou operací z cloudu na zařízení](#cloud-to-device-twin-operations-metrics)
+    - [Konfigurace metrik](#configurations-metrics)
+    - [Denní metriky kvót](#daily-quota-metrics)
+    - [Metriky zařízení](#device-metrics)
+    - [Metriky telemetrie zařízení](#device-telemetry-metrics)
+    - [Metriky nevlákenných operací zařízení do cloudu](#device-to-cloud-twin-operations-metrics)
+    - [Metriky Event gridu](#event-grid-metrics)
+    - [Metriky úloh](#jobs-metrics)
+    - [Metriky směrování](#routing-metrics)
+    - [Dvojitá metrika dotazu](#twin-query-metrics)
+  - [Dimenze metriky](#metric-dimensions)
+  - [Protokoly prostředků](#resource-logs)
+    - [Připojení](#connections)
+    - [Telemetrie zařízení](#device-telemetry)
+    - [Příkazy cloud-zařízení](#cloud-to-device-commands)
+    - [Operace identity zařízení](#device-identity-operations)
+    - [Operace nahrávání souborů](#file-upload-operations)
+    - [Trasy](#routes)
+    - [Zdvojené operace mezi zařízeními a cloudem](#device-to-cloud-twin-operations)
+    - [Zdvojené operace z cloudu na zařízení](#cloud-to-device-twin-operations)
+    - [Zdvojené dotazy](#twin-queries)
+    - [Operace úloh](#jobs-operations)
+    - [Přímé metody](#direct-methods)
+    - [Distribuované trasování (Preview)](#distributed-tracing-preview)
+      - [Protokoly IoT Hub D2C (zařízení-Cloud)](#iot-hub-d2c-device-to-cloud-logs)
+      - [IoT Hub protokoly příchozího přenosu dat](#iot-hub-ingress-logs)
+      - [Protokoly odchozího IoT Hub](#iot-hub-egress-logs)
+    - [Konfigurace](#configurations)
+    - [Datové proudy zařízení (Preview)](#device-streams-preview)
+  - [Tabulky protokolů Azure Monitor](#azure-monitor-logs-tables)
+  - [Viz také](#see-also)
 
 ### <a name="supported-aggregations"></a>Podporované agregace
 
@@ -226,31 +249,50 @@ Azure IoT Hub má následující dimenze, které jsou přidružené k některým
 |**Výsledek**| Buď **úspěch** , nebo **neúspěch**.|
 |**RoutingSource**| Zprávy zařízení<br>Události s dvojitou změnou<br>Události životního cyklu zařízení|
 
-Další informace o dimenzích metrik najdete v tématu multidimenzionální [metriky](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics).
+Další informace o dimenzích metrik najdete v tématu multidimenzionální [metriky](../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics).
 
 ## <a name="resource-logs"></a>Protokoly prostředků
 
-V této části jsou uvedené všechny typy kategorií protokolu prostředků a schémata shromážděná pro Azure IoT Hub. Poskytovatel prostředků a typ pro všechny protokoly IoT Hub jsou [Microsoft. Devices/IotHubs](../azure-monitor/platform/resource-logs-categories.md#microsoftdevicesiothubs).
+V této části jsou uvedené všechny typy kategorií protokolu prostředků a schémata shromážděná pro Azure IoT Hub. Poskytovatel prostředků a typ pro všechny protokoly IoT Hub jsou [Microsoft. Devices/IotHubs](../azure-monitor/essentials/resource-logs-categories.md#microsoftdevicesiothubs).
 
 **Témata v této části**
 
-- [Připojení](#connections)
-- [Telemetrie zařízení](#device-telemetry)
-- [Příkazy cloud-zařízení](#cloud-to-device-commands)
-- [Operace identity zařízení](#device-identity-operations)
-- [Operace nahrávání souborů](#file-upload-operations)
-- [Trasy](#routes)
-- [Zdvojené operace mezi zařízeními a cloudem](#device-to-cloud-twin-operations)
-- [Zdvojené operace z cloudu na zařízení](#cloud-to-device-twin-operations)
-- [Zdvojené dotazy](#twin-queries)
-- [Operace úloh](#jobs-operations)
-- [Přímé metody](#direct-methods)
-- [Distribuované trasování (Preview)](#distributed-tracing-preview)
-  - [Protokoly IoT Hub D2C (zařízení-Cloud)](#iot-hub-d2c-device-to-cloud-logs)
-  - [IoT Hub protokoly příchozího přenosu dat](#iot-hub-ingress-logs)
-  - [Protokoly odchozího IoT Hub](#iot-hub-egress-logs)
-- [Konfigurace](#configurations)
-- [Datové proudy zařízení (Preview)](#device-streams-preview)
+- [Monitorování referenčních informací o službě Azure IoT Hub](#monitoring-azure-iot-hub-data-reference)
+  - [Metriky](#metrics)
+    - [Podporované agregace](#supported-aggregations)
+    - [Metriky příkazů z cloudu do zařízení](#cloud-to-device-command-metrics)
+    - [Metriky přímých metod cloudu na zařízení](#cloud-to-device-direct-methods-metrics)
+    - [Metriky s dvojitou operací z cloudu na zařízení](#cloud-to-device-twin-operations-metrics)
+    - [Konfigurace metrik](#configurations-metrics)
+    - [Denní metriky kvót](#daily-quota-metrics)
+    - [Metriky zařízení](#device-metrics)
+    - [Metriky telemetrie zařízení](#device-telemetry-metrics)
+    - [Metriky nevlákenných operací zařízení do cloudu](#device-to-cloud-twin-operations-metrics)
+    - [Metriky Event gridu](#event-grid-metrics)
+    - [Metriky úloh](#jobs-metrics)
+    - [Metriky směrování](#routing-metrics)
+    - [Dvojitá metrika dotazu](#twin-query-metrics)
+  - [Dimenze metriky](#metric-dimensions)
+  - [Protokoly prostředků](#resource-logs)
+    - [Připojení](#connections)
+    - [Telemetrie zařízení](#device-telemetry)
+    - [Příkazy cloud-zařízení](#cloud-to-device-commands)
+    - [Operace identity zařízení](#device-identity-operations)
+    - [Operace nahrávání souborů](#file-upload-operations)
+    - [Trasy](#routes)
+    - [Zdvojené operace mezi zařízeními a cloudem](#device-to-cloud-twin-operations)
+    - [Zdvojené operace z cloudu na zařízení](#cloud-to-device-twin-operations)
+    - [Zdvojené dotazy](#twin-queries)
+    - [Operace úloh](#jobs-operations)
+    - [Přímé metody](#direct-methods)
+    - [Distribuované trasování (Preview)](#distributed-tracing-preview)
+      - [Protokoly IoT Hub D2C (zařízení-Cloud)](#iot-hub-d2c-device-to-cloud-logs)
+      - [IoT Hub protokoly příchozího přenosu dat](#iot-hub-ingress-logs)
+      - [Protokoly odchozího IoT Hub](#iot-hub-egress-logs)
+    - [Konfigurace](#configurations)
+    - [Datové proudy zařízení (Preview)](#device-streams-preview)
+  - [Tabulky protokolů Azure Monitor](#azure-monitor-logs-tables)
+  - [Viz také](#see-also)
 
 ### <a name="connections"></a>Připojení
 
@@ -690,4 +732,4 @@ Odkaz na všechny Azure Monitor protokolů/Log Analytics tabulek najdete v téma
 ## <a name="see-also"></a>Viz také
 
 * Popis monitorování Azure IoT Hub najdete v tématu [monitorování azure IoT Hub](monitor-iot-hub.md) .
-* Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](../azure-monitor/insights/monitor-azure-resource.md) .
+* Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](../azure-monitor/essentials/monitor-azure-resource.md) .

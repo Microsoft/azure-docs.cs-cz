@@ -24,9 +24,9 @@
       items:
         - name: Zasílání zpráv v cloudu Firebase
           items:
-            - name: Odesílání nabízených oznámení všem registracím (SDK verze 1.0.0-preview1)
+            - name: Odesílat nabízená oznámení všem registrům (aktuální sada SDK)
               href: android-sdk.md
-            - name: Odesílání nabízených oznámení všem registracím (SDK verze 0.6)
+            - name: Odeslání nabízených oznámení na všechny registrace (starší verze sady SDK)
               href: notification-hubs-android-push-notification-google-fcm-get-started.md
             - name: Odesílání nabízených oznámení konkrétním zařízením
               href: push-notifications-android-specific-devices-firebase-cloud-messaging.md
@@ -50,10 +50,10 @@
           items:
             - name: Předpoklady pro kurzy k iOS
               href: ios-sdk-get-started.md
-            - name: Objective-C (verze 3.0.0-preview1)
-              href: ios-sdk-300.md
-            - name: Objective-C (verze 2.0.4)
-              href: ios-sdk-204.md
+            - name: Cíl-C (aktuální sada SDK)
+              href: ios-sdk-current.md
+            - name: Cíl-C (starší sada SDK)
+              href: ios-sdk-legacy.md
         - name: Odesílání nabízených oznámení konkrétním zařízením
           href: notification-hubs-ios-xplat-segmented-apns-push-notification.md
         - name: Odesílání nabízených oznámení konkrétním uživatelům

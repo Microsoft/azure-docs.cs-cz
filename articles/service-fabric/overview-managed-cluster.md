@@ -2,13 +2,13 @@
 title: Service Fabric spravované clustery (Preview)
 description: Service Fabric spravované clustery představují vývoj modelu prostředků clusteru Azure Service Fabric, který zjednodušuje správu nasazení a clusterů.
 ms.topic: overview
-ms.date: 09/28/2020
-ms.openlocfilehash: 3d26a92126491662d5c51b3c4e8900ffa547f830
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 02/15/2021
+ms.openlocfilehash: 8b90b73ef5f3202788ac7857875427673ebb562b
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91410482"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635141"
 ---
 # <a name="service-fabric-managed-clusters-preview"></a>Service Fabric spravované clustery (Preview)
 
@@ -59,20 +59,25 @@ Service Fabric spravované clustery jsou k dispozici v jednotkách Basic a Stand
 | Minimální počet uzlů (instance virtuálního počítače) | 3 | 5 |
 | Maximální počet uzlů na typ uzlu | 100 | 100 |
 | Maximální počet typů uzlů | 1 | 20 |
-| Přidat nebo odebrat typy uzlů | Ne | Ano |
-| Zónová redundance | Ne | Ano |
+| Přidat nebo odebrat typy uzlů | No | Yes |
+| Zónová redundance | No | Yes |
 
-## <a name="service-fabric-managed-cluster-feature-roadmap"></a>Service Fabric plán funkcí spravovaného clusteru
-Protože se jedná o předběžnou verzi Preview Service Fabric spravovaných clusterů, je potřeba mít na paměti několik nedostatků. Tyto funkce budou k dispozici v budoucích verzích. 
+## <a name="whats-new-for-service-fabric-managed-clusters"></a>Co je nového u Service Fabric spravovaných clusterů
 
-* Publikování aplikací do clusterů přímo ze sady Visual Studio
-* Spravované identity 
-* Nasazení aplikací ARM 
-* Zóny dostupnosti 
-* Reverzní proxy 
-* Automatické škálování 
-* Aktualizují se pravidla NSG 
-* Automatické upgrady operačního systému
+Nejnovější funkce pro Service Fabric spravované clustery ve verzi Preview zahrnují podporu pro:
+
+* [Nasazení aplikací pomocí šablon ARM](how-to-managed-cluster-app-deployment-template.md)
+* [Automatické upgrady operačního systému](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades)
+* [Šifrování disku](how-to-enable-managed-cluster-disk-encryption.md)
+* [Použití pravidel NSG](how-to-managed-cluster-configuration.md#apply-nsg-rules)
+
+Mezi funkce, které se mají přidat v nadcházejících verzích, patří:
+
+* Nasazení aplikací pomocí sady Visual Studio
+* Podpora spravovaných identit
+* Zóny dostupnosti
+* Reverzní proxy
+* Automatické škálování
 
 ## <a name="next-steps"></a>Další kroky
 

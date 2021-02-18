@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 89230b6aca9e225c28a1efd0b99476b35f4d8db0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f160948a06d8a3175158e0100345ee2a330048c
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439545"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634688"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Porovnání standardních hodnot s využitím monitorování integrity souborů
 
@@ -36,7 +36,7 @@ Mnoho standardů dodržování předpisů, jako je PCI-DSS & ISO 17799, ale vyž
 
 Výchozí nastavení podregistru služby FIM nabízí pohodlný způsob, jak monitorovat rekurzivní změny v rámci běžných oblastí zabezpečení.  Nežádoucí osoba může například nakonfigurovat skript, který se spustí v kontextu LOCAL_SYSTEM, nakonfigurováním spuštění při spuštění nebo vypnutí.  Chcete-li monitorovat změny tohoto typu, povolte vestavěnou kontrolu.  
 
-![Registry](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
+![Registr](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
 
 >[!NOTE]
 > Rekurzivní kontroly se vztahují jenom na Doporučené podregistry zabezpečení a ne na vlastní cesty registru.  
@@ -62,23 +62,22 @@ Směrné plány FIM začínají určením vlastností známého stavu, který je
 > [!NOTE]
 > Další informace o nastaveních registru podporovaných různými verzemi operačních systémů najdete v [referenční tabulce nastavení zásady skupiny](https://www.microsoft.com/download/confirmation.aspx?id=25250).
 
-*Konfigurace produktu FIM pro monitorování standardních hodnot registru:*
+Konfigurace produktu FIM pro monitorování standardních hodnot registru:
 
-1. V okně **Přidat registr systému Windows pro Change Tracking** zadejte do textového pole **klíč registru systému Windows** klíč registru.
+1. V okně **Přidat registr Windows pro Change Tracking** zadejte do textového pole **klíč registru Windows** následující klíč registru:
 
-    <code>
-
+    ```
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters
-    </code>
+    ```
 
-      ![Povolení produktu FIM v registru](./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png)
+    :::image type="content" source="./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png" alt-text="Povolení produktu FIM v registru":::
 
 ## <a name="track-changes-to-windows-files"></a>Sledování změn souborů Windows
 
 1. V okně **Přidat soubor Windows pro Change Tracking** zadejte do textového pole **zadat cestu** složku obsahující soubory, které chcete sledovat. V příkladu na následujícím obrázku se **Webová aplikace Contoso** nachází v D:\. jednotka ve struktuře složek **ContosWebApp**  
 1. Vytvořte vlastní položku souboru systému Windows zadáním názvu třídy nastavení, povolením rekurze a zadáním horní složky se zástupnou příponou (*).
 
-    ![Povolit FIM pro soubor](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)
+    :::image type="content" source="./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png" alt-text="Povolit FIM pro soubor":::
 
 ## <a name="retrieve-change-data"></a>Načíst data změny
 

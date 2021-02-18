@@ -8,12 +8,12 @@ ms.date: 01/20/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 542b1ed96025f6bd40cd4da766b434dde3569c25
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 9f8de6ed4f0312a342526fb2ba5d100dfd9ec91f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98663770"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582627"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je Azure Analysis Services?
 
@@ -81,7 +81,7 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 
 |Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
-|Brazil South     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
+|Brazílie – jih     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Střední Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |Střední Kanada     |     S8v2, S9v2   |    1    |
 |East US     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
@@ -115,9 +115,9 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 |---------|---------|:---------:|
 |Austrálie – východ     |    B1, B2, S0, S1, S2, S4     |    3     |
 |Austrálie – východ     |    S8v2, S9v2    |    1     |
-|Australia Southeast     | B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Japan East     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Japan East     |    S8v2, S9v2    |    1     |
+|Austrálie – jihovýchod     | B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Japonsko – východ     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Japonsko – východ     |    S8v2, S9v2    |    1     |
 |Southeast Asia     |     B1, B2, S0, S1, S2, S4, D1     |   1      |
 |Southeast Asia     |     S8v2, S9v2     |   1      |
 |Západní Indie     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
@@ -238,7 +238,7 @@ Podporují se všechny moderní nástroje pro zkoumání a vizualizaci dat, jako
 
 ## <a name="monitoring-and-diagnostics"></a>Monitorování a diagnostika
 
-Azure Analysis Services je integrovaná s metrikami Azure Monitor a poskytuje velký počet metrik specifických pro prostředky, které vám pomůžou monitorovat výkon a stav serverů. Další informace najdete v tématu [Monitorování metrik serveru](analysis-services-monitor.md). Zaznamenejte metriky s [protokoly platformy prostředků](../azure-monitor/platform/platform-logs-overview.md). Monitorování a posílání protokolů [Azure Storage](https://azure.microsoft.com/services/storage/), jejich streamování do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a jejich export do [protokolů Azure monitor](https://azure.microsoft.com/services/log-analytics/), služby [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite). Další informace najdete v článku o [nastavení protokolování diagnostiky](analysis-services-logging.md).
+Azure Analysis Services je integrovaná s metrikami Azure Monitor a poskytuje velký počet metrik specifických pro prostředky, které vám pomůžou monitorovat výkon a stav serverů. Další informace najdete v tématu [Monitorování metrik serveru](analysis-services-monitor.md). Zaznamenejte metriky s [protokoly platformy prostředků](../azure-monitor/essentials/platform-logs-overview.md). Monitorování a posílání protokolů [Azure Storage](https://azure.microsoft.com/services/storage/), jejich streamování do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a jejich export do [protokolů Azure monitor](https://azure.microsoft.com/services/log-analytics/), služby [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite). Další informace najdete v článku o [nastavení protokolování diagnostiky](analysis-services-logging.md).
 
 Služba Azure Analysis Services také podporuje používání [zobrazení dynamické správy](/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services). Zobrazení dynamické správy koordinují na základě syntaxe SQL sady řádků schématu, které vracejí metadata a informace monitorování týkající se instance serveru.
 

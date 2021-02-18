@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: cefcd4ce287eecfe2c764d88d5d2233cc8ac0a5c
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 4eeda2e4e418920522f7a65bef68928963c43ad4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753441"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581796"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Řešení potíží s vyhodnocením a vizualizací závislostí
 
@@ -75,7 +75,7 @@ Posouzení serveru Azure Migrate může doporučit skladové položky Azure s v�
 
 - Doporučení SKU virtuálního počítače závisí na vlastnostech posouzení.
 - To je ovlivněno typem posouzení, které provádíte při posuzování serveru: na *základě výkonu* nebo *jako v* místním prostředí.
-- U posouzení na základě výkonu považuje server hodnocení za využití dat z místních virtuálních počítačů (CPU, paměti, disku a sítě) k určení správné cílové SKU virtuálního počítače pro vaše místní virtuální počítače. Přináší také faktor komfortu při určování efektivního využití.
+- V případě hodnocení na základě výkonu nástroj Hodnocení serverů při určování správné cílové skladové položky virtuálního počítače pro vaše místní virtuální počítače zohledňuje data o využití místních virtuálních počítačů (využití procesoru, paměti, disků a sítě). Přináší také faktor komfortu při určování efektivního využití.
 - Pro místní velikost se data o výkonu neberou v úvahu a cílová skladová jednotka se doporučuje na základě místního přidělení.
 
 Pokud chcete vidět, jak to může ovlivnit doporučení, Podívejme se na příklad:
@@ -160,12 +160,12 @@ Pro virtuální počítače s Windows:
 
     ![Stav MMA](./media/troubleshoot-assessment/mma-properties.png)
 
-Pro virtuální počítače se systémem Linux se ujistěte, že instalační příkazy pro MMA a agenta závislostí byly úspěšné. Další pokyny k odstraňování potíží najdete [tady](../azure-monitor/insights/service-map.md#post-installation-issues).
+Pro virtuální počítače se systémem Linux se ujistěte, že instalační příkazy pro MMA a agenta závislostí byly úspěšné. Další pokyny k odstraňování potíží najdete [tady](../azure-monitor/vm/service-map.md#post-installation-issues).
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
-- **Agent MMS**: Zkontrolujte podporované operační systémy [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)a [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) .
-- **Agent závislostí**: podporované operační systémy [Windows a Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) .
+- **Agent MMS**: Zkontrolujte podporované operační systémy [Windows](../azure-monitor/agents/agents-overview.md#supported-operating-systems)a [Linux](../azure-monitor/agents/agents-overview.md#supported-operating-systems) .
+- **Agent závislostí**: podporované operační systémy [Windows a Linux](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) .
 
 ## <a name="visualize-dependencies-for--hour"></a>Vizualizace závislostí pro > hodinu
 
@@ -198,7 +198,7 @@ Azure Migrate v současné době podporuje vytvoření pracovního prostoru OMS 
 
 Shromážděte protokoly síťového provozu následujícím způsobem:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Stisknutím klávesy F12 spusťte Vývojářské nástroje. V případě potřeby zrušte zaškrtnutí  **políčka vymazat položky u nastavení navigace** .
 3. Vyberte kartu **síť** a zahajte zachytávání síťového provozu:
    - V části Chrome vyberte **zachovat protokol**. Záznam by se měl spustit automaticky. Červený kroužek indikuje, že se zaznamenává provoz. Pokud se červené kolečko nezobrazí, vyberte černý kroužek, který chcete spustit.

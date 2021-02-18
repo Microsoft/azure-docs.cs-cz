@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
-ms.openlocfilehash: bff846b4b64778d5e40ea7f08f88faf3dde81d9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55263d3c742d18cf03303f96f08fb9aa370c7af8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371605"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592068"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>Zobrazit artefakt definice v Azure Managed Applications
 
@@ -125,10 +125,10 @@ Když toto zobrazení zadáte v **viewDefinition.jsna**, potlačí se výchozí 
 }
 ```
 
-|Vlastnost|Požaduje se|Popis|
+|Vlastnost|Povinné|Popis|
 |---------|---------|---------|
 |header|No|Záhlaví stránky s přehledem|
-|Popis|No|Popis spravované aplikace.|
+|description|No|Popis spravované aplikace.|
 |příkazy|No|Pole dalších tlačítek panelu nástrojů na stránce Přehled naleznete v tématu [příkazy](#commands).|
 
 ![Snímek obrazovky znázorňující přehled spravované aplikace pomocí testovacího ovládacího prvku akce pro spuštění ukázkové aplikace.](./media/view-definition/overview.png)
@@ -137,7 +137,7 @@ Když toto zobrazení zadáte v **viewDefinition.jsna**, potlačí se výchozí 
 
 `"kind": "Metrics"`
 
-Zobrazení metrik umožňuje shromažďovat a agregovat data z prostředků spravovaných aplikací v [Azure Monitorch metrik](../../azure-monitor/platform/data-platform-metrics.md).
+Zobrazení metrik umožňuje shromažďovat a agregovat data z prostředků spravovaných aplikací v [Azure Monitorch metrik](../../azure-monitor/essentials/data-platform-metrics.md).
 
 ```json
 {
@@ -164,23 +164,23 @@ Zobrazení metrik umožňuje shromažďovat a agregovat data z prostředků spra
 }
 ```
 
-|Vlastnost|Požaduje se|Popis|
+|Vlastnost|Povinné|Popis|
 |---------|---------|---------|
 |displayName|No|Zobrazený nadpis zobrazení|
 |verze|No|Verze platformy použité k vykreslení zobrazení|
-|spojnic|Yes|Pole grafů stránky metrik.|
+|charts|Yes|Pole grafů stránky metrik.|
 
 ### <a name="chart"></a>Graf
 
-|Vlastnost|Požaduje se|Popis|
+|Vlastnost|Povinné|Popis|
 |---------|---------|---------|
 |displayName|Yes|Zobrazený Nadpis grafu|
 |chartType|No|Vizualizace, která se má použít pro tento graf Ve výchozím nastavení používá spojnicový graf. Podporované typy grafů: `Bar, Line, Area, Scatter` .|
-|metriky|Yes|Pole metrik, která se mají vykreslovat v tomto grafu Další informace o metrikách podporovaných v Azure Portal najdete v tématu [podporované metriky s Azure monitor](../../azure-monitor/platform/metrics-supported.md)|
+|metriky|Yes|Pole metrik, která se mají vykreslovat v tomto grafu Další informace o metrikách podporovaných v Azure Portal najdete v tématu [podporované metriky s Azure monitor](../../azure-monitor/essentials/metrics-supported.md)|
 
-### <a name="metric"></a>Metrika
+### <a name="metric"></a>Metric
 
-|Vlastnost|Požaduje se|Popis|
+|Vlastnost|Povinné|Popis|
 |---------|---------|---------|
 |name|Yes|Název metriky.|
 |aggregationType|Yes|Typ agregace, který se má použít pro tuto metriku Podporované typy agregace: `none, sum, min, max, avg, unique, percentile, count`|
@@ -224,9 +224,9 @@ V tomto zobrazení můžete provádět operace GET, PUT, DELETE a POST pro vlast
 }
 ```
 
-|Vlastnost|Požaduje se|Popis|
+|Vlastnost|Povinné|Popis|
 |---------|---------|---------|
-|displayName|Yes|Zobrazený nadpis zobrazení Název by měl být **jedinečný** pro každé zobrazení CustomResources v **viewDefinition.js**v.|
+|displayName|Yes|Zobrazený nadpis zobrazení Název by měl být **jedinečný** pro každé zobrazení CustomResources v **viewDefinition.js** v.|
 |verze|No|Verze platformy použité k vykreslení zobrazení|
 |resourceType|Yes|Vlastní typ prostředku. Musí se jednat o **jedinečný** vlastní typ prostředku vašeho vlastního poskytovatele.|
 |ikona|No|Ikona zobrazení Seznam ukázkových ikon je definován ve [schématu JSON](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).|
@@ -253,7 +253,7 @@ Příkazy jsou pole dalších tlačítek panelu nástrojů, která se zobrazují
 }
 ```
 
-|Vlastnost|Požaduje se|Popis|
+|Vlastnost|Povinné|Popis|
 |---------|---------|---------|
 |displayName|Yes|Zobrazované jméno příkazového tlačítka|
 |program|Yes|Název akce vlastního zprostředkovatele. Akce musí být definována v **mainTemplate.js**.|
@@ -280,9 +280,9 @@ V tomto zobrazení můžete roztáhnout existující prostředky Azure na zákla
 }
 ```
 
-|Vlastnost|Požaduje se|Popis|
+|Vlastnost|Povinné|Popis|
 |---------|---------|---------|
-|displayName|Yes|Zobrazený nadpis zobrazení Název by měl být **jedinečný** pro každé zobrazení přidružení v **viewDefinition.js**v.|
+|displayName|Yes|Zobrazený nadpis zobrazení Název by měl být **jedinečný** pro každé zobrazení přidružení v **viewDefinition.js** v.|
 |verze|No|Verze platformy použité k vykreslení zobrazení|
 |targetResourceType|Yes|Cílový typ prostředku. Jedná se o typ prostředku, který se zobrazí pro registraci prostředku.|
 |createUIDefinition|No|Vytvořte schéma definice uživatelského rozhraní pro příkaz vytvořit prostředek přidružení. Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md) .|

@@ -6,12 +6,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.subservice: ''
-ms.openlocfilehash: 26e7dbf3f5629d4691211b6c9b82446ba4035421
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: f3c9197faaae89e0ffb238f987ee66dafea8abdd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347611"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579796"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>Použití privátního odkazu Azure k bezpečnému připojení sítí k Azure Automation
 
@@ -34,7 +34,7 @@ Pomocí privátního odkazu můžete:
 - Připojte soukromě k Azure Monitor Log Analytics pracovním prostoru bez nutnosti otevírat přístup k veřejné síti.
 
     >[!NOTE]
-    >Pokud je váš účet Automation propojený s pracovním prostorem Log Analytics, aby se data úloh předal, a když jste povolili funkce, jako je například Update Management, Change Tracking a inventář, konfigurace stavu nebo Start/Stop VMs during off-hours, je vyžadován samostatný privátní koncový bod pro váš Log Analytics pracovní prostor. Další informace o privátním odkazu pro Azure Monitor najdete v tématu [použití privátního odkazu Azure k bezpečnému připojení sítí k Azure monitor](../../azure-monitor/platform/private-link-security.md).
+    >Pokud je váš účet Automation propojený s pracovním prostorem Log Analytics, aby se data úloh předal, a když jste povolili funkce, jako je například Update Management, Change Tracking a inventář, konfigurace stavu nebo Start/Stop VMs during off-hours, je vyžadován samostatný privátní koncový bod pro váš Log Analytics pracovní prostor. Další informace o privátním odkazu pro Azure Monitor najdete v tématu [použití privátního odkazu Azure k bezpečnému připojení sítí k Azure monitor](../../azure-monitor/logs/private-link-security.md).
 
 - Ujistěte se, že k datům automatizace máte jenom oprávnění prostřednictvím autorizovaných privátních sítí.
 - Zajistěte, aby se data exfiltrace ze svých privátních sítí, a to tak, že definujete prostředek Azure Automation, který se připojuje přes
@@ -46,8 +46,8 @@ Další informace najdete v tématu  [klíčové výhody privátního propojení
 ## <a name="limitations"></a>Omezení
 
 - V aktuální implementaci privátního propojení nemůžou cloudové úlohy účtu Automation získat přístup k prostředkům Azure zabezpečeným pomocí privátního koncového bodu. Například Azure Key Vault, Azure SQL, účet Azure Storage atd. K tomuto problému použijte místo toho [Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md) .
-- Je nutné použít nejnovější verzi [agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md) pro systém Windows nebo Linux.
-- [Brána Log Analytics](../../azure-monitor/platform/gateway.md) nepodporuje privátní propojení.
+- Je nutné použít nejnovější verzi [agenta Log Analytics](../../azure-monitor/agents/log-analytics-agent.md) pro systém Windows nebo Linux.
+- [Brána Log Analytics](../../azure-monitor/agents/gateway.md) nepodporuje privátní propojení.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
@@ -76,7 +76,7 @@ Systém Hybrid Runbook Worker podporuje sadu skrytých runbooků používaných 
 
 Pokud chcete, aby se počítače nakonfigurované pro správu aktualizací připojovaly ke službě Automation & Log Analytics pracovní prostor zabezpečeným způsobem prostřednictvím kanálu privátního propojení, je nutné povolit privátní propojení pro Log Analytics pracovní prostor propojený s účtem Automation nakonfigurovaným pomocí privátního odkazu.
 
-Pomocí postupu popsaného v části [konfigurace Log Analytics](../../azure-monitor/platform/private-link-security.md#configure-log-analytics)můžete řídit, jak se dá k pracovnímu prostoru Log Analytics získat přístup mimo rozsah privátních odkazů. Pokud nastavíte možnost **povolí přístup k veřejné síti pro** ingestování na **ne**, počítače mimo připojené obory nemůžou do tohoto pracovního prostoru nahrávat data. Pokud nastavíte možnost **povolí přístup k veřejné síti pro dotazy** na **ne**, počítače mimo rozsah nebudou mít přístup k datům v tomto pracovním prostoru.
+Pomocí postupu popsaného v části [konfigurace Log Analytics](../../azure-monitor/logs/private-link-security.md#configure-log-analytics)můžete řídit, jak se dá k pracovnímu prostoru Log Analytics získat přístup mimo rozsah privátních odkazů. Pokud nastavíte možnost **povolí přístup k veřejné síti pro** ingestování na **ne**, počítače mimo připojené obory nemůžou do tohoto pracovního prostoru nahrávat data. Pokud nastavíte možnost **povolí přístup k veřejné síti pro dotazy** na **ne**, počítače mimo rozsah nebudou mít přístup k datům v tomto pracovním prostoru.
 
 K povolení privátního odkazu pro uživatelské & systémových hybridních pracovních procesů použijte cílový dílčí prostředek **DSCAndHybridWorker** .
 
@@ -113,7 +113,7 @@ V této části vytvoříte privátní koncový bod pro svůj účet Automation.
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
     | **PODROBNOSTI INSTANCE** |  |
-    | Název | Zadejte své *PrivateEndpoint*. |
+    | Name | Zadejte své *PrivateEndpoint*. |
     | Oblast | Vyberte **YourRegion**. |
     |||
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: c3674b6877438a0dd4fe53569cf6852e872334a7
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 4bc30fbf342a9bc85b52c9f88ce7ca1df3c36e23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693608"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595495"
 ---
 # <a name="azure-operational-security-overview"></a>Přehled služby Azure Operational Security
 
@@ -94,7 +94,7 @@ Security Center posuzuje konfiguraci vašich prostředků pro identifikaci probl
 >[!Note]
 >Další informace o rolích a povolených akcích v Security Center najdete v tématu [oprávnění v Azure Security Center](../../security-center/security-center-permissions.md).
 
-Security Center používá Microsoft Monitoring Agent. Toto je stejný agent, kterého používá služba Azure Monitor. Data shromážděná z tohoto agenta se ukládají do stávajícího Log Analyticsho [pracovního prostoru](../../azure-monitor/platform/manage-access.md) přidruženého k vašemu předplatnému Azure nebo novému pracovnímu prostoru, přičemž se vezme v úvahu geografická poloha virtuálního počítače.
+Security Center používá Microsoft Monitoring Agent. Toto je stejný agent, kterého používá služba Azure Monitor. Data shromážděná z tohoto agenta se ukládají do stávajícího Log Analyticsho [pracovního prostoru](../../azure-monitor/logs/manage-access.md) přidruženého k vašemu předplatnému Azure nebo novému pracovnímu prostoru, přičemž se vezme v úvahu geografická poloha virtuálního počítače.
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
@@ -108,23 +108,23 @@ Azure Monitor obsahuje následující součásti.
 
 ### <a name="azure-activity-log"></a>Protokol aktivit Azure
 
-[Protokol aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md) poskytuje přehled o operacích, které byly provedeny u prostředků v rámci vašeho předplatného. Dříve se nazýval protokol auditu nebo provozní protokol, protože pro vaše předplatná hlásí události řízení a roviny.
+[Protokol aktivit Azure](../../azure-monitor/essentials/platform-logs-overview.md) poskytuje přehled o operacích, které byly provedeny u prostředků v rámci vašeho předplatného. Dříve se nazýval protokol auditu nebo provozní protokol, protože pro vaše předplatná hlásí události řízení a roviny.
 
 ### <a name="azure-diagnostic-logs"></a>Diagnostické protokoly Azure
 
-[Diagnostické protokoly Azure](../../azure-monitor/platform/platform-logs-overview.md) jsou vydávány prostředkem a poskytují bohatou a častou data o provozu daného prostředku. Obsah těchto protokolů se liší podle typu prostředku.
+[Diagnostické protokoly Azure](../../azure-monitor/essentials/platform-logs-overview.md) jsou vydávány prostředkem a poskytují bohatou a častou data o provozu daného prostředku. Obsah těchto protokolů se liší podle typu prostředku.
 
 Protokoly událostí systému Windows jsou jednou z kategorií diagnostických protokolů pro virtuální počítače. Protokoly objektů blob, tabulek a front jsou kategoriemi diagnostických protokolů pro účty úložiště.
 
-Diagnostické protokoly se liší od [protokolu aktivit](../../azure-monitor/platform/platform-logs-overview.md). Protokol aktivit nabízí přehled o operacích provedených u prostředků v rámci vašeho předplatného. Diagnostické protokoly poskytují přehled o operacích, které se provedly samotným prostředkem.
+Diagnostické protokoly se liší od [protokolu aktivit](../../azure-monitor/essentials/platform-logs-overview.md). Protokol aktivit nabízí přehled o operacích provedených u prostředků v rámci vašeho předplatného. Diagnostické protokoly poskytují přehled o operacích, které se provedly samotným prostředkem.
 
 ### <a name="metrics"></a>Metriky
 
-Azure Monitor poskytuje telemetrii, která vám poskytne přehled o výkonu a stavu vašich úloh v Azure. Nejdůležitější typ dat telemetrie Azure jsou [metriky](../../azure-monitor/platform/data-platform.md) (označované taky jako čítače výkonu) vydávané většinou prostředků Azure. Azure Monitor poskytuje několik způsobů, jak nakonfigurovat a využívat tyto metriky pro monitorování a řešení potíží.
+Azure Monitor poskytuje telemetrii, která vám poskytne přehled o výkonu a stavu vašich úloh v Azure. Nejdůležitější typ dat telemetrie Azure jsou [metriky](../../azure-monitor/data-platform.md) (označované taky jako čítače výkonu) vydávané většinou prostředků Azure. Azure Monitor poskytuje několik způsobů, jak nakonfigurovat a využívat tyto metriky pro monitorování a řešení potíží.
 
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-Azure Diagnostics povoluje shromažďování diagnostických dat v nasazené aplikaci. Diagnostické rozšíření můžete použít z různých zdrojů. Aktuálně se podporuje [role cloudových služeb Azure](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service), [virtuální počítače Azure](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service) se systémem Microsoft Windows a [Azure Service Fabric](../../azure-monitor/platform/diagnostics-extension-overview.md).
+Azure Diagnostics povoluje shromažďování diagnostických dat v nasazené aplikaci. Diagnostické rozšíření můžete použít z různých zdrojů. Aktuálně se podporuje [role cloudových služeb Azure](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service), [virtuální počítače Azure](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service) se systémem Microsoft Windows a [Azure Service Fabric](../../azure-monitor/agents/diagnostics-extension-overview.md).
 
 ## <a name="azure-network-watcher"></a>Azure Network Watcher
 

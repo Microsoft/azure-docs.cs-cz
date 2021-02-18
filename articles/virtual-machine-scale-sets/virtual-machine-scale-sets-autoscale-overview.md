@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 092b95845ed033ac0705e325fc6535739088848f
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: dbd2d6dc3034ff64ef6b5d4d36d836ce8462b154
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888789"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591403"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Přehled automatického škálování pomocí škálovacích sad virtuálních počítačů Azure
 Sada škálování virtuálních počítačů Azure může automaticky zvýšit nebo snížit počet instancí virtuálních počítačů, které spouštějí vaši aplikaci. Toto automatizované a elastické chování omezuje režijní náklady na správu, které sledují a optimalizují výkon vaší aplikace. Vytvoříte pravidla, která definují přijatelný výkon pro pozitivní prostředí zákazníka. Když jsou splněné tyto prahové hodnoty, pravidla automatického škálování přijímají akci pro úpravu kapacity sady škálování. Můžete také naplánovat události pro automatické zvýšení nebo snížení kapacity sady škálování v pevně dané době. Tento článek poskytuje přehled o dostupných metrikách výkonu a o tom, jaké akce lze provádět pomocí automatického škálování.
@@ -142,4 +142,4 @@ Tento přehled podrobně popisuje, jak používat pravidla automatického škál
 
 Informace o tom, jak spravovat instance virtuálních počítačů, najdete v tématu [Správa služby Virtual Machine Scale Sets pomocí Azure PowerShell](./virtual-machine-scale-sets-manage-powershell.md).
 
-Informace o tom, jak generovat výstrahy při aktivaci pravidel automatického škálování, najdete [v tématu použití akcí automatického škálování k odesílání oznámení o výstrahách e-mailu a Webhooku v Azure monitor](../azure-monitor/platform/autoscale-webhook-email.md). [Protokoly auditu můžete použít také k posílání oznámení o výstrahách e-mailu a Webhooku v Azure monitor](../azure-monitor/platform/alerts-log-webhook.md).
+Informace o tom, jak generovat výstrahy při aktivaci pravidel automatického škálování, najdete [v tématu použití akcí automatického škálování k odesílání oznámení o výstrahách e-mailu a Webhooku v Azure monitor](../azure-monitor/autoscale/autoscale-webhook-email.md). [Protokoly auditu můžete použít také k posílání oznámení o výstrahách e-mailu a Webhooku v Azure monitor](../azure-monitor/alerts/alerts-log-webhook.md).

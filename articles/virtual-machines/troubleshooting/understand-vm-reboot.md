@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 4694b6ac829c42f20c6783810c248ee18d220433
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c3dcb4a7b92f5aab1336e49a7d299614855b48fd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965756"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591168"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Principy restartování systému pro virtuální počítač Azure
 
@@ -64,7 +64,7 @@ Aktualizace více instancí (pro virtuální počítače ve skupině dostupnosti
 
 ### <a name="user-initiated-reboot-or-shutdown-actions"></a>Akce restartování nebo vypnutí zahájené uživatelem
 
-Pokud provedete restartování z Azure Portal, Azure PowerShell, rozhraní příkazového řádku nebo REST API, můžete najít událost v [protokolu aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md).
+Pokud provedete restartování z Azure Portal, Azure PowerShell, rozhraní příkazového řádku nebo REST API, můžete najít událost v [protokolu aktivit Azure](../../azure-monitor/essentials/platform-logs-overview.md).
 
 Pokud provedete akci z operačního systému virtuálního počítače, můžete najít událost v systémových protokolech.
 

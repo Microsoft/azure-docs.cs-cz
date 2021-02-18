@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e451e55a9a73022f9c90ba4adae91b520840481e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 58e604eccaca4630a235f4ae83724df20d6b1e26
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880755"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592527"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Shromažďování souborů protokolu kanálu Machine Learning v Application Insights pro výstrahy a ladění
 
@@ -164,6 +164,6 @@ Některé z následujících dotazů používají ' customDimensions. Level '. T
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile budete mít v instanci Application Insights protokoly, dají se použít k nastavení [Azure monitor výstrahy](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on) na základě výsledků dotazu.
+Jakmile budete mít v instanci Application Insights protokoly, dají se použít k nastavení [Azure monitor výstrahy](../azure-monitor/alerts/alerts-overview.md#what-you-can-alert-on) na základě výsledků dotazu.
 
-Můžete také přidat výsledky z dotazů na [řídicí panel Azure](../azure-monitor/learn/tutorial-app-dashboards.md#add-logs-query) pro další přehledy.
+Můžete také přidat výsledky z dotazů na [řídicí panel Azure](../azure-monitor/app/tutorial-app-dashboards.md#add-logs-query) pro další přehledy.

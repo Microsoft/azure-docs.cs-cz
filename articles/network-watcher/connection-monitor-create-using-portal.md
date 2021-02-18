@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: bd13712d137ec5a1fdfa6dec8e6f6d1e0a7432cb
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 61cb37e727808566db1bc9b1161960926e03cb91
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833163"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570898"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Vytvoření monitorování v monitorování připojení pomocí Azure Portal
 
@@ -186,7 +186,7 @@ V Azure Portal chcete vytvořit výstrahy pro monitorování připojení, zadejt
 
 - **Název podmínky**: výstraha se vytvoří u `Test Result(preview)` metriky. Pokud výsledek testu monitorování připojení selže, pravidlo výstrahy se aktivuje. 
 
-- **Název skupiny akcí**: můžete zadat přímo svůj e-mail nebo můžete vytvořit upozornění prostřednictvím skupin akcí. Pokud přímo zadáte svůj e-mail, vytvoří se skupina akcí, která má vytvořenou skupinu akcí s názvem **npm e-mail** . ID e-mailu se přidá do této skupiny akcí. Pokud se rozhodnete použít skupiny akcí, je nutné vybrat dříve vytvořenou skupinu akcí. Informace o tom, jak vytvořit skupinu akcí, najdete v tématu [Vytvoření skupin akcí v Azure Portal](../azure-monitor/platform/action-groups.md). Po vytvoření výstrahy můžete [Spravovat výstrahy](../azure-monitor/platform/alerts-metric.md#view-and-manage-with-azure-portal). 
+- **Název skupiny akcí**: můžete zadat přímo svůj e-mail nebo můžete vytvořit upozornění prostřednictvím skupin akcí. Pokud přímo zadáte svůj e-mail, vytvoří se skupina akcí, která má vytvořenou skupinu akcí s názvem **npm e-mail** . ID e-mailu se přidá do této skupiny akcí. Pokud se rozhodnete použít skupiny akcí, je nutné vybrat dříve vytvořenou skupinu akcí. Informace o tom, jak vytvořit skupinu akcí, najdete v tématu [Vytvoření skupin akcí v Azure Portal](../azure-monitor/alerts/action-groups.md). Po vytvoření výstrahy můžete [Spravovat výstrahy](../azure-monitor/alerts/alerts-metric.md#view-and-manage-with-azure-portal). 
 
 - **Název pravidla výstrahy**: název monitorování připojení.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: 1c33011d947d6dc9dd9ee4dd6331c24c06d99b38
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 411a95154c9ca36595dff4472e9ab8e1ae8a767e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693820"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571364"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>Řešení Azure monitor pro SAP (Preview)
 
@@ -35,7 +35,7 @@ Podporované databáze:
 - Databáze SAP HANA
 - Microsoft SQL Server
 
-Azure Monitor pro řešení SAP používá výkon stávajících funkcí [Azure monitor](../../../azure-monitor/overview.md) , jako je například Log Analytics a [sešity](../../../azure-monitor/platform/workbooks-overview.md) , k zajištění dalších možností monitorování. Zákazníci můžou vytvářet [vlastní vizualizace](../../../azure-monitor/platform/workbooks-overview.md#getting-started) úpravou výchozích sešitů poskytovaných Azure monitor pro řešení SAP, psát [vlastní dotazy](../../../azure-monitor/log-query/log-analytics-tutorial.md) a vytvářet [vlastní výstrahy](../../../azure-monitor/learn/tutorial-response.md) pomocí Azure Log Analytics Workspace, využívat výhod [flexibilního období uchovávání](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) a připojovat data monitorování k systému lístků.
+Azure Monitor pro řešení SAP používá výkon stávajících funkcí [Azure monitor](../../../azure-monitor/overview.md) , jako je například Log Analytics a [sešity](../../../azure-monitor/visualize/workbooks-overview.md) , k zajištění dalších možností monitorování. Zákazníci můžou vytvářet [vlastní vizualizace](../../../azure-monitor/visualize/workbooks-overview.md#getting-started) úpravou výchozích sešitů poskytovaných Azure monitor pro řešení SAP, psát [vlastní dotazy](../../../azure-monitor/logs/log-analytics-tutorial.md) a vytvářet [vlastní výstrahy](../../../azure-monitor/alerts/tutorial-response.md) pomocí Azure Log Analytics Workspace, využívat výhod [flexibilního období uchovávání](../../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) a připojovat data monitorování k systému lístků.
 
 ## <a name="what-data-does-azure-monitor-for-sap-solutions-collect"></a>Jaká data Azure Monitor pro shromažďování řešení SAP?
 
@@ -91,9 +91,9 @@ Klíčové součásti architektury jsou:
    - Virtuální počítač Azure: taky se označuje jako *virtuální počítač kolektoru*. Toto je Standard_B2ms virtuální počítač. Hlavním účelem tohoto virtuálního počítače je hostování *datové části monitorování*. Datová část monitorování označuje logiku shromažďování telemetrie ze zdrojových systémů a přenos shromážděných dat do monitorovacího rozhraní. Ve výše uvedeném diagramu obsahuje datová část monitorování logiku pro připojení k SAP HANA databázi přes port SQL.
    - [Azure Key Vault](../../../key-vault/general/basic-concepts.md): Tento prostředek je nasazen pro bezpečné uchovávání přihlašovacích údajů databáze SAP Hana a ukládání informací o [poskytovatelích](./azure-monitor-providers.md).
    - Log Analytics pracovní prostor: cíl, ve kterém se nacházejí data telemetrie.
-      - Vizualizace je postavená na telemetrie v Log Analytics pomocí [sešitů Azure](../../../azure-monitor/platform/workbooks-overview.md). Zákazníci si můžou vizualizaci přizpůsobit. Zákazníci mohou v sešitech také připnout své sešity nebo konkrétní vizualizaci do řídicího panelu Azure pro funkci AutoRefresh s nejnižším rozlišením 30 minut.
+      - Vizualizace je postavená na telemetrie v Log Analytics pomocí [sešitů Azure](../../../azure-monitor/visualize/workbooks-overview.md). Zákazníci si můžou vizualizaci přizpůsobit. Zákazníci mohou v sešitech také připnout své sešity nebo konkrétní vizualizaci do řídicího panelu Azure pro funkci AutoRefresh s nejnižším rozlišením 30 minut.
       - Zákazníci můžou použít svůj stávající pracovní prostor v rámci stejného předplatného jako prostředek sledování SAP, a to výběrem této možnosti v době nasazení.
-      - Zákazníci můžou pomocí Kusto dotazovacího jazyka (KQL) spouštět [dotazy](../../../azure-monitor/log-query/log-query-overview.md) na nezpracované tabulky v pracovním prostoru Log Analytics. Podívejte se na *vlastní protokoly*.
+      - Zákazníci můžou pomocí Kusto dotazovacího jazyka (KQL) spouštět [dotazy](../../../azure-monitor/logs/log-query-overview.md) na nezpracované tabulky v pracovním prostoru Log Analytics. Podívejte se na *vlastní protokoly*.
 
 > [!Note]
 > Zákazníci zodpovídají za opravy a údržbu virtuálních počítačů, které jsou nasazené ve spravované skupině prostředků.
