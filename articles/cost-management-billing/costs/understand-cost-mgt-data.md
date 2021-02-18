@@ -3,18 +3,18 @@ title: Vysvětlení dat služby Azure Cost Management
 description: Tento článek vám pomůže lépe porozumět datům, která obsahuje služba Azure Cost Management, a tomu, jak často se zpracovávají, shromažďují, zobrazují a uzavírají.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/06/2021
+ms.date: 01/17/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e6096c259ec1870a711a515bf02d5d00b4f75345
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
-ms.translationtype: HT
+ms.openlocfilehash: ad099fc7dfcee168186ef5229785933f4b1c5a90
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964146"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650877"
 ---
 # <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
@@ -31,6 +31,7 @@ Následující informace zobrazují aktuálně podporované [nabídky Microsoft 
 | **Kategorie**  | **Název nabídky** | **ID kvóty** | **Číslo nabídky** | **Dostupnost dat od** |
 | --- | --- | --- | --- | --- |
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | Květen 2014<sup>1</sup> |
+| **Azure Government** | Průběžné platby za Azure Government | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P | 2\. října 2018<sup>2</sup> |
 | **Smlouva Enterprise (EA)** | Enterprise pro vývoj/testování                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | Květen 2014<sup>1</sup> |
 | **Smlouva Enterprise (EA)** | Microsoft Azure Enterprise | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | Květen 2014<sup>1</sup> |
 | **Smlouva se zákazníkem Microsoftu** | Plán Microsoft Azure | EnterpriseAgreement_2014-09-01 | – | Březen 2019<sup>3</sup> |
@@ -51,7 +52,7 @@ Následující informace zobrazují aktuálně podporované [nabídky Microsoft 
 
 _<sup>**1**</sup> Pokud jde od data před květnem 2014, přejděte na [portál Azure Enterprise](https://ea.azure.com)._
 
-_<sup>**2**</sup> Pokud jde o data před 2. říjnem 2018, navštivte [Centrum účtů Azure](https://account.azure.com/subscriptions)._
+_<sup>**2**</sup> pro data do 2. října 2018 navštivte [centrum účtů Azure](https://account.azure.com/subscriptions) pro globální účty a [centrum účtů Azure gov](https://account.windowsazure.us/subscriptions) pro účty státní správy Azure._
 
 _<sup>**3**</sup> Smlouvy se zákazníkem Microsoft začaly platit od března 2019 a před tímto datem nemají žádná historická data._
 
@@ -62,7 +63,6 @@ Následující nabídky se dosud nepodporují:
 | Kategorie  | **Název nabídky** | **ID kvóty** | **Číslo nabídky** |
 | --- | --- | --- | --- |
 | **Azure (Německo)** | Průběžné platby za Azure (Německo) | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
-| **Azure Government** | Průběžné platby za Azure Government | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P |
 | **CSP (Cloud Solution Provider)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
 | **CSP (Cloud Solution Provider)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
 | **CSP (Cloud Solution Provider)** | Azure (Německo) v CSP pro Microsoft Cloud Germany   | CSP_2015-05-01 | MS-AZR-DE-0145P |
@@ -161,7 +161,7 @@ Jakmile jsou údaje o nákladech a využití k dispozici v modulu Cost Managemen
 
 ### <a name="rerated-data"></a>Opakovaně vyhodnocená data
 
-Ať už data načítáte pomocí rozhraní API služby Cost Management, Power BI, nebo prostřednictvím webu Azure Portal, počítejte s tím, že poplatky pro aktuální fakturační období se přepočítávají a následně mění až do uzavření faktury.
+Bez ohledu na to, jestli k načtení dat používáte rozhraní API Cost Management, Power BI nebo Azure Portal, můžete očekávat, že se aktuální poplatky za fakturační období mají přepočítat. Poplatky se mohou změnit až do uzavření faktury.
 
 ## <a name="cost-rounding"></a>Zaokrouhlení nákladů
 
@@ -175,7 +175,7 @@ Náklady uvedené ve službě Cost Management jsou zaokrouhlené. Náklady vrace
 
 ## <a name="historical-data-might-not-match-invoice"></a>Historická data nemusí odpovídat faktuře
 
-Historická data pro nabídky založené na kreditech a platbách předem nemusí odpovídat vaší faktuře. Některé nabídky průběžných plateb, MSDN a sady Visual Studio mohou mít na faktuře uvedeny kredity Azure a předplacené částky. Historická data zobrazená ve službě Cost Management jsou ale založena pouze na odhadovaných poplatcích za využití. Historická data Cost Management nezahrnují platby a kredity. Historická data zobrazená u následujících nabídek nemusí přesně odpovídat faktuře.
+Historická data pro nabídky založené na kreditech a platbách předem nemusí odpovídat vaší faktuře. Některé nabídky průběžných plateb, MSDN a sady Visual Studio mohou mít na faktuře uvedeny kredity Azure a předplacené částky. Historická data uvedená v Cost Management jsou založená jenom na odhadovaných nákladech za spotřebu. Historická data Cost Management nezahrnují platby a kredity. Historická data zobrazená pro následující nabídky nemusí přesně odpovídat vaší faktuře.
 
 - Azure for Students (MS-AZR-0170P)
 - Azure v rámci licenčního programu Open License (MS-AZR-0111P)

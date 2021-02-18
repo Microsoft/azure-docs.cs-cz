@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: f6b68ea756253a30f006983c214e287c75637278
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 5508ffc758b08642b05b1f77b66c9f29be1c85a2
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100642375"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650775"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Začínáme s překladem dokumentů (Preview)
 
@@ -98,7 +98,7 @@ V [**účtu služby Azure Blob Storage**](https://ms.portal.azure.com/#create/Mi
 
 * Vytvořte nový projekt Node.js.
 * Nainstalujte knihovnu Axios pomocí nástroje `npm i axios` .
-* Zkopírujte do projektu vložený kód uvedený níže.
+* Zkopírujte do projektu vložte kód níže.
 * Nastavte hodnoty pro koncový bod, klíč předplatného a adresu URL kontejneru.
 * Spustíte program.
 
@@ -108,7 +108,7 @@ V [**účtu služby Azure Blob Storage**](https://ms.portal.azure.com/#create/Mi
 * Zkopírujte a vložte kód z jedné z ukázek do projektu.
 * Nastavte hodnoty pro koncový bod, klíč předplatného a adresu URL kontejneru.
 * Spustíte program. Příklad: `python translate.py`.
-  
+
 ### <a name="java"></a>[Java](#tab/java)
 
 * Vytvořte pracovní adresář pro váš projekt. Příklad:
@@ -127,7 +127,7 @@ mkdir sample-project
 mkdir -p src/main/java/
 ```
 
-* Zdrojové soubory Java (například _Sample. Java_) živě v src/Main/**Java**.
+**Poznámka**: zdrojové soubory Java (například _Sample. Java_) živě v src/Main/**Java**.
 
 * V kořenovém adresáři (například *ukázkový projekt*) inicializujte projekt pomocí Gradle:
 
@@ -136,6 +136,7 @@ gradle init --type basic
 ```
 
 * Po zobrazení výzvy k výběru **DSL** vyberte **Kotlin**.
+
 * Aktualizujte `build.gradle.kts`  soubor. Mějte na paměti, že budete muset aktualizovat v `mainClassName` závislosti na ukázce:
 
   ```java
@@ -155,7 +156,8 @@ gradle init --type basic
   ```
 
 * Vytvořte soubor Java v adresáři **Java** a zkopírujte nebo vložte kód ze zadané ukázky. Nezapomeňte přidat klíč předplatného a koncový bod.
-**Sestavte a spusťte ukázku z kořenového adresáře**:
+
+* **Sestavte a spusťte ukázku z kořenového adresáře**:
 
 ```powershell
 gradle build
@@ -172,7 +174,7 @@ gradle run
 * Sestavte soubor, například: ' jít příklad sestavení-Code. přejít '.
 * Spusťte soubor, například: "ukázkový kód".
 
----
+ ---
 
 ## <a name="make-document-translation-requests"></a>Vytváření požadavků na překlad dokumentů
 

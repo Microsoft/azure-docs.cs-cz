@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 00aa24f0ff8c918c645239ca36888c6a214062c8
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 98c1ce9367e9bf2aa1a381a772b3cbc73f96b519
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028756"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650942"
 ---
 # <a name="voice-and-video-concepts"></a>Koncepce hlasových hovorů a videohovorů
 
@@ -59,5 +59,5 @@ V rámci verze Preview můžete ke stejné konverzaci použít ID skupiny. Můž
 
 Další informace najdete v následujících článcích:
 - Seznamte se s obecnými [toky volání](../call-flows.md)
-- [Plánování řešení veřejné sítě](../telephony-sms/plan-solution.md)
+- [Typy telefonních čísel](../telephony-sms/plan-solution.md)
 - Informace o [možnostech volání klientské knihovny](../voice-video-calling/calling-sdk-features.md)

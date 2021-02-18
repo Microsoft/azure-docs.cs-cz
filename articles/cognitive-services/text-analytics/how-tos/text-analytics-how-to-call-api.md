@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 708c70a5144e4e38dd5de9524711c80ef28cd839
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 9302bde13a303dda2107900dc0c10cc180669a18
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100092124"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650724"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Způsob volání Analýza textu REST API
 
@@ -37,7 +37,7 @@ Před použitím rozhraní API pro analýzu textu budete muset vytvořit prostř
 
 ## <a name="change-your-pricing-tier"></a>Změna cenové úrovně 
 
-Pokud máte existující Analýza textu prostředek pomocí cenové úrovně S4 S0, můžete ho aktualizovat tak, aby používala [cenovou úroveň](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)Standard (S):
+Pokud máte existující Analýza textu prostředek pomocí cenové úrovně S4 S0, měli byste ho aktualizovat tak, aby používaly [cenovou úroveň](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)Standard (S). Cenové úrovně S0 až S4 budou vyřazeny. Aktualizace cen prostředků:
 
 1. V [Azure Portal](https://portal.azure.com/)přejděte k prostředku analýza textu.
 2. V navigační nabídce vlevo vyberte **cenovou úroveň** . Bude se nacházet pod **správou prostředků**. 
