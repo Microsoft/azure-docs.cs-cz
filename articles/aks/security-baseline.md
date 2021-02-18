@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4cf623ed960fd2efe6fdf506751858796008cef4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8e86679e7531bb70d6d4f1a27718c2fc8f0e8a9c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202024"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578536"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Základní hodnoty zabezpečení Azure pro Azure Kubernetes Service
 
@@ -196,9 +196,9 @@ Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou pro
 
 Protokoly Azure Monitor můžete použít k povolení a dotazování protokolů z AKS hlavních komponent, Kube-apiserver a Kube-Controller-Manager. Vytvářejte a spravujte uzly, které spouštějí kubelet, s modulem runtime kontejneru a nasaďte své aplikace prostřednictvím spravovaného serveru rozhraní Kubernetes API. 
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Povolení a kontrola protokolů hlavních uzlů Kubernetes ve službě Azure Kubernetes Service (AKS)](view-master-logs.md)
 
@@ -240,9 +240,9 @@ Povolte a zapněte tato data do Azure Sentinel nebo SIEM třetí strany na zákl
 
 - [Tady si přečtěte schéma protokolu včetně rolí protokolů.](view-master-logs.md)
 
-- [Principy Azure Monitor pro kontejnery](../azure-monitor/insights/container-insights-overview.md)
+- [Principy Azure Monitor pro kontejnery](../azure-monitor/containers/container-insights-overview.md)
 
-- [Postup povolení Azure Monitor pro kontejnery](../azure-monitor/insights/container-insights-onboard.md)
+- [Postup povolení Azure Monitor pro kontejnery](../azure-monitor/containers/container-insights-onboard.md)
 
 - [Povolení a kontrola protokolů hlavních uzlů Kubernetes ve službě Azure Kubernetes Service (AKS)](view-master-logs.md)
 
@@ -294,7 +294,7 @@ Shromažďování dat je nutné, aby poskytovala přehled o chybějících aktua
 
 **Doprovodné** materiály: zprovoznění instancí služby Azure KUBERNETES (AKS) pro Azure monitor a nastavení odpovídající doby uchování pracovního prostoru Azure Log Analytics podle požadavků vaší organizace na dodržování předpisů. 
 
-- [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -312,7 +312,7 @@ Podívejte se na protokoly generované hlavními komponentami AKS (Kube-apiserve
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -422,7 +422,7 @@ Vytvořte zásady a postupy týkající se používání vyhrazených účtů pr
 
 **Pokyny**: použití jednotného přihlašování pro službu Azure Kubernetes Service (AKS) Azure Active Directory s integrovaným ověřováním služby Azure AD pro cluster AKS.
 
-- [Jak zobrazit protokoly Kubernetes, události a metriky pod v reálném čase](../azure-monitor/insights/container-insights-livedata-overview.md)
+- [Jak zobrazit protokoly Kubernetes, události a metriky pod v reálném čase](../azure-monitor/containers/container-insights-livedata-overview.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -518,7 +518,7 @@ Uvědomte si role používané pro účely podpory nebo řešení potíží. Nap
 **Pokyny**: Integrujte ověřování uživatelů pro službu Azure Kubernetes Service (AKS) s Azure Active Directory (Azure AD). Vytvořte nastavení diagnostiky pro Azure AD a odešlete protokoly auditu a přihlašování do pracovního prostoru Azure Log Analytics. Nakonfigurujte požadované výstrahy (například při pokusu o přihlášení k deaktivovanému účtu) v pracovním prostoru Azure Log Analytics.
 - [Integrace protokolů aktivit Azure do služby Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Jak vytvářet, zobrazovat a spravovat výstrahy protokolu pomocí Azure Monitor](../azure-monitor/platform/alerts-log.md)
+- [Jak vytvářet, zobrazovat a spravovat výstrahy protokolu pomocí Azure Monitor](../azure-monitor/alerts/alerts-log.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -673,11 +673,11 @@ Nakonfigurujte výstrahy pro proaktivní oznamování nebo vytváření protokol
 
 Pomocí protokolu aktivit Azure můžete monitorovat clustery AKS a související prostředky na nejvyšší úrovni. Integrací s Prometheus můžete zobrazit metriky aplikací a úloh, které shromažďuje z uzlů a Kubernetes pomocí dotazů pro vytváření vlastních výstrah, řídicích panelů a podrobných podrobných analýz.
 
-- [Principy Azure Monitor pro kontejnery](../azure-monitor/insights/container-insights-overview.md)
+- [Principy Azure Monitor pro kontejnery](../azure-monitor/containers/container-insights-overview.md)
 
-- [Postup povolení Azure Monitor pro kontejnery](../azure-monitor/insights/container-insights-onboard.md)
+- [Postup povolení Azure Monitor pro kontejnery](../azure-monitor/containers/container-insights-onboard.md)
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Monitorování služby Azure Security Center:** Ano
 

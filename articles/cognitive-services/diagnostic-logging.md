@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: e33e8fe6e626700790a3b62265c6889f06e0861b
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a2005ca7b32136ff0032d27e04035c46b2e4e904
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366600"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595356"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Povolení protokolování diagnostiky pro Azure Cognitive Services
 
@@ -24,25 +24,25 @@ Tato příručka poskytuje podrobné pokyny, jak povolit diagnostické protokolo
 
 Pokud chcete povolit protokolování diagnostiky, budete muset někam ukládat data protokolu. V tomto kurzu se používá Azure Storage a Log Analytics.
 
-* [Azure Storage](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) – uchovává protokoly diagnostiky pro audit zásad, statickou analýzu nebo zálohování. Účet úložiště nemusí být ve stejném předplatném, jako je prostředek vysílaný protokoly, pokud uživatel, který nastavení nakonfiguruje, má odpovídající přístup k oběma předplatným Azure RBAC.
-* [Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) – flexibilní nástroj pro hledání a analýzu protokolů, který umožňuje analýzu nezpracovaných protokolů generovaných prostředkem Azure.
+* [Azure Storage](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) – uchovává protokoly diagnostiky pro audit zásad, statickou analýzu nebo zálohování. Účet úložiště nemusí být ve stejném předplatném, jako je prostředek vysílaný protokoly, pokud uživatel, který nastavení nakonfiguruje, má odpovídající přístup k oběma předplatným Azure RBAC.
+* [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) – flexibilní nástroj pro hledání a analýzu protokolů, který umožňuje analýzu nezpracovaných protokolů generovaných prostředkem Azure.
 
 > [!NOTE]
-> K dispozici jsou další možnosti konfigurace. Další informace najdete v tématu [shromažďování a využívání dat protokolů z prostředků Azure](../azure-monitor/platform/platform-logs-overview.md).
+> K dispozici jsou další možnosti konfigurace. Další informace najdete v tématu [shromažďování a využívání dat protokolů z prostředků Azure](../azure-monitor/essentials/platform-logs-overview.md).
 
 ## <a name="enable-diagnostic-log-collection"></a>Povolit shromažďování protokolů diagnostiky  
 
 Pojďme začít tím, že povolíte protokolování diagnostiky pomocí Azure Portal.
 
 > [!NOTE]
-> Pokud chcete tuto funkci povolit pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI, postupujte podle pokynů uvedených v tématu [shromáždění a využití dat protokolu z vašich prostředků Azure](../azure-monitor/platform/platform-logs-overview.md).
+> Pokud chcete tuto funkci povolit pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI, postupujte podle pokynů uvedených v tématu [shromáždění a využití dat protokolu z vašich prostředků Azure](../azure-monitor/essentials/platform-logs-overview.md).
 
 1. Přejděte na Azure Portal. Pak vyhledejte a vyberte prostředek Cognitive Services. Například vaše předplatné Vyhledávání na webu Bingu.   
 2. Dále v navigační nabídce vlevo vyhledejte **monitorování** a vyberte **nastavení diagnostiky**. Tato obrazovka obsahuje všechna dříve vytvořená nastavení diagnostiky pro tento prostředek.
 3. Pokud existuje dříve vytvořený prostředek, který byste chtěli použít, můžete ho teď vybrat. V opačném případě vyberte **+ Přidat nastavení diagnostiky**.
 4. Zadejte název nastavení. Pak vyberte možnost **archivovat do účtu úložiště** a **Odeslat do Log Analytics**.
-5. Po zobrazení výzvy ke konfiguraci vyberte účet úložiště a pracovní prostor OMS, který chcete použít k ukládání diagnostických protokolů. **Poznámka** : Pokud nemáte účet úložiště nebo pracovní prostor OMS, vytvořte ho podle pokynů.
-6. Vyberte **audit** , **operace RequestResponse** a **AllMetrics**. Pak nastavte dobu uchování dat diagnostického protokolu. Pokud jsou zásady uchovávání informací nastavené na hodnotu nula, ukládají se události pro tuto kategorii protokolu po neomezenou dobu.
+5. Po zobrazení výzvy ke konfiguraci vyberte účet úložiště a pracovní prostor OMS, který chcete použít k ukládání diagnostických protokolů. **Poznámka**: Pokud nemáte účet úložiště nebo pracovní prostor OMS, vytvořte ho podle pokynů.
+6. Vyberte **audit**, **operace RequestResponse** a **AllMetrics**. Pak nastavte dobu uchování dat diagnostického protokolu. Pokud jsou zásady uchovávání informací nastavené na hodnotu nula, ukládají se události pro tuto kategorii protokolu po neomezenou dobu.
 7. Klikněte na **Uložit**.
 
 Může trvat až dvě hodiny, než budou data protokolování k dispozici pro dotazování a analýzu. Nedělejte si starosti, Pokud nevidíte nic hned.
@@ -58,7 +58,7 @@ Azure Storage je robustní řešení úložiště objektů, které je optimalizo
 
 Přečtěte si další informace o tom, co můžete dělat s diagnostickými daty v [Azure Storage](../storage/blobs/storage-blobs-introduction.md).
 
-## <a name="view-logs-in-log-analytics"></a>Zobrazení protokolů ve službě Log Analytics
+## <a name="view-logs-in-log-analytics"></a>Zobrazení protokolů v Log Analytics
 
 Podle těchto pokynů Prozkoumejte data Log Analytics pro váš prostředek.
 
@@ -85,7 +85,7 @@ AzureDiagnostics
 | take 10
 ```
 
-Spusťte tento dotaz pro seskupení operací podle **prostředku** :
+Spusťte tento dotaz pro seskupení operací podle **prostředku**:
 
 ```kusto
 AzureDiagnostics
@@ -113,9 +113,9 @@ by bin(TimeGenerated, 10s), OperationName
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete pochopit, jak povolit protokolování, a také kategorie metrik a protokolů, které jsou podporované různými službami Azure, přečtěte si [Přehled metrik](../azure-monitor/platform/data-platform.md) v tématu Microsoft Azure a [Přehled článků o diagnostických protokolech Azure](../azure-monitor/platform/platform-logs-overview.md) .
+* Pokud chcete pochopit, jak povolit protokolování, a také kategorie metrik a protokolů, které jsou podporované různými službami Azure, přečtěte si [Přehled metrik](../azure-monitor/data-platform.md) v tématu Microsoft Azure a [Přehled článků o diagnostických protokolech Azure](../azure-monitor/essentials/platform-logs-overview.md) .
 * Přečtěte si tyto články, abyste se seznámili s centry událostí:
   * [Co je služba Azure Event Hubs?](../event-hubs/event-hubs-about.md)
   * [Začínáme s Event Hubs](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 * Přečtěte si téma [stažení metrik a diagnostické protokoly z Azure Storage](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs).
-* Přečtěte si [vysvětlení hledání v protokolu v](../azure-monitor/log-query/log-query-overview.md)protokolech Azure monitor.
+* Přečtěte si [vysvětlení hledání v protokolu v](../azure-monitor/logs/log-query-overview.md)protokolech Azure monitor.

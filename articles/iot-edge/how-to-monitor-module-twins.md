@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1a11d3a9a972188af4cf8f054349da98d69691a3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: d968fb066e68fe1bb6986c63ce750c5de5c98cf9
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876154"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633174"
 ---
 # <a name="monitor-module-twins"></a>Monitorování dvojčat modulu
 
@@ -30,7 +30,7 @@ Podobně požadované vlastnosti zadané pro vlastní moduly v deployment.jsv so
 Tento článek popisuje, jak zkontrolovat nevlákenná vlákna v modulu Azure Portal, Azure CLI a v Visual Studio Code. Informace o sledování, jak vaše zařízení dostanou nasazení, najdete v tématu [monitorování nasazení IoT Edge](how-to-monitor-iot-edge-deployments.md). Přehled konceptu nevlákenných modulů naleznete [v tématu pochopení a použití vláken modulu v IoT Hub](../iot-hub/iot-hub-devguide-module-twins.md).
 
 > [!TIP]
-> Hlášené vlastnosti běhového modulu můžou být zastaralé, pokud se zařízení IoT Edge odpojí od služby IoT Hub. [ping](how-to-edgeagent-direct-method.md#ping) `$edgeAgent` Pokud chcete zjistit, jestli se připojení ztratilo, můžete na něm použít test z tohoto modulu.
+> Hlášené vlastnosti běhového modulu můžou být zastaralé, pokud se zařízení IoT Edge odpojí od služby IoT Hub. [](how-to-edgeagent-direct-method.md#ping) `$edgeAgent` Pokud chcete zjistit, jestli se připojení ztratilo, můžete na něm použít test z tohoto modulu.
 
 ## <a name="monitor-runtime-module-twins"></a>Sledovat vlákna modulu runtime
 
@@ -200,8 +200,8 @@ Pokud se zobrazí zpráva "pro tento modul neexistuje identita modulu", tato chy
 Chcete-li zkontrolovat a upravit modul s dvojitou podmnožinou:
 
 1. Pokud ještě není nainstalovaná, nainstalujte [rozšíření Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) pro Visual Studio Code.
-1. V **Průzkumníkovi**rozbalte **IoT Hub Azure**a potom rozbalte zařízení s modulem, který chcete monitorovat.
-1. Klikněte pravým tlačítkem na modul a vyberte **Upravit modul s dvojitou**čárkou. Dočasný soubor s nevlákenou modulu se stáhne do vašeho počítače a zobrazí se v Visual Studio Code.
+1. V **Průzkumníkovi** rozbalte **IoT Hub Azure** a potom rozbalte zařízení s modulem, který chcete monitorovat.
+1. Klikněte pravým tlačítkem na modul a vyberte **Upravit modul s dvojitou** čárkou. Dočasný soubor s nevlákenou modulu se stáhne do vašeho počítače a zobrazí se v Visual Studio Code.
 
   ![Získání nevlákenných modulů pro úpravu v Visual Studio Code](./media/how-to-monitor-module-twins/edit-module-twin-vscode.png)
 
@@ -213,7 +213,7 @@ Pokud provedete změny, vyberte možnost **aktualizovat modul s dvojitým** kód
 
 Pokud chcete zjistit, jestli je IoT Edge spuštěná, použijte příkaz [AZ IoT Hub Invoke-Module-Method](how-to-edgeagent-direct-method.md#ping) k otestování agenta IoT Edge.
 
-[Modul AZ IoT Hub Module-zdvojená](/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-twin) struktura poskytuje tyto příkazy:
+[Modul AZ IoT Hub Module-zdvojená](/cli/azure/ext/azure-iot/iot/hub/module-twin) struktura poskytuje tyto příkazy:
 
 * **AZ IoT Hub Module-zdvojené zobrazení** -zobrazení definice vlákna v modulu
 * **AZ IoT Hub Module-zdvojená aktualizace** – aktualizuje definici s dvojím načtením.

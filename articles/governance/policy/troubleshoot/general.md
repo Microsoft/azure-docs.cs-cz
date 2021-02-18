@@ -3,12 +3,12 @@ title: Odstraňování běžných chyb
 description: Naučte se řešit problémy s vytvářením definic zásad, různých sad SDK a doplňku pro Kubernetes.
 ms.date: 01/26/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 0a64346188696cc7cc16d832474ec4ee6befdae2
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 6e0e4067f07266bae9c87fd4443d27314cc28c0b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917739"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592613"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>Řešení chyb pomocí Azure Policy
 
@@ -87,7 +87,7 @@ Pokud stále máte problém s vámi vytvořenou duplicitou a přizpůsobenou def
 
 #### <a name="issue"></a>Problém
 
-Prostředek, na který očekáváte, Azure Policy pracovat, není v [protokolu aktivit Azure](../../../azure-monitor/platform/platform-logs-overview.md)žádný záznam.
+Prostředek, na který očekáváte, Azure Policy pracovat, není v [protokolu aktivit Azure](../../../azure-monitor/essentials/platform-logs-overview.md)žádný záznam.
 
 #### <a name="cause"></a>Příčina
 
@@ -123,7 +123,7 @@ Přiřazení zásady k oboru nového nebo aktualizovaného prostředku splňuje 
 
 #### <a name="resolution"></a>Řešení
 
-Chybová zpráva z přiřazení zásady odepření zahrnuje ID přiřazení definice zásad a zásad. Pokud informace o chybě ve zprávě chybí, je také k dispozici v [protokolu aktivit](../../../azure-monitor/platform/activity-log.md#view-the-activity-log). Tyto informace slouží k získání dalších informací, které vám pomohou pochopit omezení prostředků a upravit vlastnosti prostředku v žádosti tak, aby odpovídaly povoleným hodnotám.
+Chybová zpráva z přiřazení zásady odepření zahrnuje ID přiřazení definice zásad a zásad. Pokud informace o chybě ve zprávě chybí, je také k dispozici v [protokolu aktivit](../../../azure-monitor/essentials/activity-log.md#view-the-activity-log). Tyto informace slouží k získání dalších informací, které vám pomohou pochopit omezení prostředků a upravit vlastnosti prostředku v žádosti tak, aby odpovídaly povoleným hodnotám.
 
 ## <a name="template-errors"></a>Chyby šablon
 

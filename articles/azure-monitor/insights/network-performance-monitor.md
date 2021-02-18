@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 4ae0a85c8608ff96777bc6b952554f1ccd917306
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: 92326ea4d3de896a67b2953fb612b79948044d08
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530600"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573419"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Řešení Network Performance Monitor v Azure
 
@@ -76,7 +76,7 @@ Seznam podporovaných oblastí pro monitorování ExpressRoute je k dispozici v 
 
 ### <a name="install-and-configure-agents"></a>Instalace a konfigurace agentů 
 
-Pomocí základních procesů nainstalujete agenty na [počítačích s Windows připojit k Azure monitor](../platform/agent-windows.md), [připojíte počítače se systémem Linux k Azure monitor (Preview)](../../virtual-machines/extensions/oms-linux.md) a [připojíte Operations Manager k Azure monitor](../platform/om-agents.md).
+Pomocí základních procesů nainstalujete agenty na [počítačích s Windows připojit k Azure monitor](../agents/agent-windows.md), [připojíte počítače se systémem Linux k Azure monitor (Preview)](../../virtual-machines/extensions/oms-linux.md) a [připojíte Operations Manager k Azure monitor](../agents/om-agents.md).
 
 ### <a name="where-to-install-the-agents"></a>Kam nainstalovat agenty 
 
@@ -266,13 +266,13 @@ Topologie zobrazená v mapě je topologie vrstvy 3 a neobsahuje zařízení a p�
 
 ## <a name="log-queries-in-azure-monitor"></a>Dotazy protokolu v Azure Monitor
 
-Všechna data, která jsou zveřejněna prostřednictvím řídicího panelu Network Performance Monitor a stránky s přehledem podrobností, jsou také k dispozici v [protokolových dotazech](../log-query/log-query-overview.md). Můžete provádět interaktivní analýzu dat v úložišti a korelovat data z různých zdrojů. Můžete také vytvořit vlastní výstrahy a zobrazení a exportovat data do aplikace Excel, Power BI nebo odkaz Shared. Oblast **Common dotazů** na řídicím panelu obsahuje několik užitečných dotazů, které můžete použít jako výchozí bod k vytváření vlastních dotazů a sestav. 
+Všechna data, která jsou zveřejněna prostřednictvím řídicího panelu Network Performance Monitor a stránky s přehledem podrobností, jsou také k dispozici v [protokolových dotazech](../logs/log-query-overview.md). Můžete provádět interaktivní analýzu dat v úložišti a korelovat data z různých zdrojů. Můžete také vytvořit vlastní výstrahy a zobrazení a exportovat data do aplikace Excel, Power BI nebo odkaz Shared. Oblast **Common dotazů** na řídicím panelu obsahuje několik užitečných dotazů, které můžete použít jako výchozí bod k vytváření vlastních dotazů a sestav. 
 
 ## <a name="alerts"></a>Výstrahy
 
-Network Performance Monitor používá funkce upozorňování [Azure monitor](../platform/alerts-overview.md).
+Network Performance Monitor používá funkce upozorňování [Azure monitor](../alerts/alerts-overview.md).
 
-To znamená, že všechna oznámení jsou spravovaná pomocí [skupin akcí](../platform/action-groups.md).  
+To znamená, že všechna oznámení jsou spravovaná pomocí [skupin akcí](../alerts/action-groups.md).  
 
 Pokud jste uživatelem NPM, který vytváří upozornění prostřednictvím Log Analytics: 
 1. Zobrazí se odkaz, který vás přesměruje na Azure Portal. Kliknutím na něj získáte přístup k portálu.
@@ -283,7 +283,7 @@ Pokud jste uživatelem NPM, který vytváří upozornění prostřednictvím Log
 Pokud jste uživatelem NPM, který vytváří upozornění prostřednictvím Azure Portal:  
 1. Svůj e-mail můžete zadat přímo nebo můžete zvolit vytvoření výstrah prostřednictvím skupin akcí.
 2. Pokud se rozhodnete zadat přímo svůj e-mail, vytvoří se skupina akcí se skupinou **akcí název npm e-mail** a do této skupiny akcí se přidá ID e-mailu.
-3. Pokud se rozhodnete použít skupiny akcí, budete muset vybrat dříve vytvořenou skupinu akcí. Informace o tom, jak vytvořit skupinu akcí, najdete [tady.](../platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) 
+3. Pokud se rozhodnete použít skupiny akcí, budete muset vybrat dříve vytvořenou skupinu akcí. Informace o tom, jak vytvořit skupinu akcí, najdete [tady.](../alerts/action-groups.md#create-an-action-group-by-using-the-azure-portal) 
 4. Po úspěšném vytvoření výstrahy můžete pomocí odkazu spravovat výstrahy spravovat výstrahy. 
 
 Pokaždé, když vytvoříte upozornění, NPM vytvoří pravidlo výstrahy protokolu založené na dotazech v Azure Monitor. Tento dotaz se ve výchozím nastavení spouští každých 5 minut. Azure monitor neúčtuje za první vytvořená pravidla upozornění protokolu 250 a všechna pravidla výstrah nad limitem pravidel upozornění protokolů 250 se budou fakturovat podle ceny za výstrahy na [stránce Azure monitor Price](https://azure.microsoft.com/pricing/details/monitor/).

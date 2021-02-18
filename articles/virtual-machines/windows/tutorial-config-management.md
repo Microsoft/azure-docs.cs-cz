@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b28d7ee5d2eeb1015695e32e5918bd94f9051050
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a478d9c620219a768983570897715f924565a80f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736664"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594313"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Kurz: monitorování změn a aktualizace virtuálního počítače s Windows v Azure
 
@@ -76,7 +76,7 @@ Povolení Update Management pro virtuální počítač:
 
 K určení, jestli je pro tento virtuální počítač povolená Update Management, se provede ověření. Ověřování zahrnuje kontroly Log Analytics pracovního prostoru pro propojený účet Automation a pro to, jestli je řešení v pracovním prostoru.
 
-Pracovní prostor [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) slouží ke shromažďování dat generovaných funkcemi a službami, jako je například Update Management. Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
+Pracovní prostor [Log Analytics](../../azure-monitor/logs/log-query-overview.md) slouží ke shromažďování dat generovaných funkcemi a službami, jako je například Update Management. Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
 
 K provedení dalších akcí na virtuálních počítačích, které vyžadují aktualizace, můžete použít Azure Automation ke spouštění Runbooků na virtuálních počítačích. Mezi tyto akce patří stahování nebo použití aktualizací.
 
@@ -86,7 +86,7 @@ V okně **povolit Update Management** zvolte pracovní prostor Log Analytics a �
 
 Automaticky se přidávají některé z následujících požadavků, které během připojování chybí:
 
-* Pracovní prostor [Log Analytics](../../azure-monitor/log-query/log-query-overview.md)
+* Pracovní prostor [Log Analytics](../../azure-monitor/logs/log-query-overview.md)
 * [Automation](../../automation/index.yml)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md), který je ve virtuálním počítači povolený
 
@@ -113,7 +113,7 @@ Pokud chcete naplánovat nové nasazení aktualizace pro virtuální počítač,
 | **Název** |Zadejte jedinečný název pro identifikaci nasazení aktualizace. |
 |**Operační systém**| Vyberte možnost **Linux** nebo **Windows**.|
 | **Skupiny, které se mají aktualizovat** |U virtuálních počítačů hostovaných v Azure definujte dotaz na základě kombinace předplatného, skupin prostředků, umístění a značek. Tento dotaz vytvoří dynamickou skupinu virtuálních počítačů hostovaných v Azure, které se mají zahrnout do nasazení. </br></br>U virtuálních počítačů, které nejsou hostované v Azure, vyberte existující uložené výsledky hledání. Pomocí tohoto hledání můžete vybrat skupinu těchto virtuálních počítačů, které chcete zahrnout do nasazení. </br></br> Další informace najdete v tématu [dynamické skupiny](../../automation/update-management/configure-groups.md).|
-| **Počítače, které se mají aktualizovat** |Vyberte **uložené hledání**, **importované skupiny** nebo **počítače**.<br/><br/>Pokud vyberete možnost **počítače**, můžete z rozevíracího seznamu zvolit jednotlivé počítače. Připravenost jednotlivých počítačů se zobrazí ve sloupci **připravenosti agenta aktualizace** v tabulce.</br></br> Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../../azure-monitor/platform/computer-groups.md) |
+| **Počítače, které se mají aktualizovat** |Vyberte **uložené hledání**, **importované skupiny** nebo **počítače**.<br/><br/>Pokud vyberete možnost **počítače**, můžete z rozevíracího seznamu zvolit jednotlivé počítače. Připravenost jednotlivých počítačů se zobrazí ve sloupci **připravenosti agenta aktualizace** v tabulce.</br></br> Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../../azure-monitor/logs/computer-groups.md) |
 |**Update classifications**|Vyberte všechny potřebné klasifikace aktualizací.|
 |**Zahrnout nebo vyloučit aktualizace**|Tuto možnost vyberte, pokud chcete otevřít podokno **zahrnutí/vyloučení** . Aktualizace, které se mají zahrnout, a ty, které se mají vyloučit, jsou na různých kartách. Další informace o způsobu zpracování zahrnutí najdete v tématu [Naplánování nasazení aktualizací](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment). |
 |**Nastavení plánu**|Zvolte čas **spuštění a vyberte jeden nebo znovu** **.**|

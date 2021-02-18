@@ -66,8 +66,8 @@
               href: build-enrollment-app.md
 - name: Referenční informace
   items:
-    - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/face/'
+    - name: Rozhraní API pro rozpoznávání tváře
+      href: APIReference.md
     - name: Sady SDK
       items:
         - name: .NET

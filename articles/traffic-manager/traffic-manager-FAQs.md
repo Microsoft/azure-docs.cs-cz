@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: duau
-ms.openlocfilehash: 17ccfeb709c530a868a75ecd87052618aaea4846
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: fa8dba12a050e42e258e4224f29e379ff53f09d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184573"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576678"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Nejčastější dotazy Traffic Manager
 
@@ -347,7 +347,7 @@ Azure Resource Manager vyžaduje, aby všechny skupiny prostředků určovaly um
 
 Aktuální stav monitorování každého koncového bodu (kromě celkového profilu) se zobrazí v Azure Portal. Tyto informace jsou také k dispozici prostřednictvím [REST API](/rest/api/trafficmanager/)monitorování provozu, [rutin prostředí PowerShell](/powershell/module/az.trafficmanager)a [rozhraní příkazového řádku Azure CLI pro různé platformy](/cli/azure/install-classic-cli).
 
-Můžete také použít Azure Monitor ke sledování stavu koncových bodů a k zobrazení vizuální reprezentace. Další informace o používání Azure Monitor najdete v [dokumentaci ke službě Azure Monitoring](../azure-monitor/platform/data-platform.md).
+Můžete také použít Azure Monitor ke sledování stavu koncových bodů a k zobrazení vizuální reprezentace. Další informace o používání Azure Monitor najdete v [dokumentaci ke službě Azure Monitoring](../azure-monitor/data-platform.md).
 
 ### <a name="can-i-monitor-https-endpoints"></a>Můžu monitorovat koncové body HTTPS?
 
@@ -458,7 +458,7 @@ Počet kontrol Traffic Manager stavu, které dosáhnou svého koncového bodu, z
 
 ### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Jak získám oznámení, pokud se některý z mých koncových bodů přestane nastavovat?
 
-Jedna z metrik poskytovaných nástrojem Traffic Manager je stavem koncových bodů v profilu. Tohle vidíte jako agregaci všech koncových bodů v profilu (například 75% vašich koncových bodů je v pořádku) nebo na úrovni jednotlivých koncových bodů. Traffic Manager metriky jsou zpřístupněny prostřednictvím Azure Monitor a pomocí [možností upozorňování](../azure-monitor/platform/alerts-metric.md) můžete dostávat oznámení, když dojde ke změně stavu koncového bodu. Další podrobnosti najdete v tématu [Traffic Manager metrik a upozornění](traffic-manager-metrics-alerts.md).  
+Jedna z metrik poskytovaných nástrojem Traffic Manager je stavem koncových bodů v profilu. Tohle vidíte jako agregaci všech koncových bodů v profilu (například 75% vašich koncových bodů je v pořádku) nebo na úrovni jednotlivých koncových bodů. Traffic Manager metriky jsou zpřístupněny prostřednictvím Azure Monitor a pomocí [možností upozorňování](../azure-monitor/alerts/alerts-metric.md) můžete dostávat oznámení, když dojde ke změně stavu koncového bodu. Další podrobnosti najdete v tématu [Traffic Manager metrik a upozornění](traffic-manager-metrics-alerts.md).  
 
 ## <a name="traffic-manager-nested-profiles"></a>Traffic Manager vnořené profily
 

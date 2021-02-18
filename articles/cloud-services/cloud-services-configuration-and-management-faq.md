@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: c5dd09292897d69f90606e8661b4e6cb28090612
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 04a30a2446061df75d133bdbd088b7e71c59cade
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742586"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578223"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Problémy s konfigurací a správou pro Azure Cloud Services (Classic): nejčastější dotazy
 
@@ -240,9 +240,9 @@ Automatické škálování na základě metriky paměti pro Cloud Services se mo
 
 Pokud chcete tento problém obejít, můžete použít Application Insights. Automatické škálování podporuje Application Insights jako zdroj metrik a může škálovat počet instancí role na základě metriky hosta, jako je "paměť".  Je nutné nakonfigurovat Application Insights v souboru balíčku projektu cloudové služby (*. cspkg) a povolit rozšíření Azure Diagnostics na službě pro implementaci tohoto feat.
 
-Další podrobnosti o využití vlastní metriky prostřednictvím Application Insights ke konfiguraci automatického škálování pro Cloud Services najdete v tématu [Začínáme s automatickým škálováním podle vlastní metriky v Azure](../azure-monitor/platform/autoscale-custom-metric.md) .
+Další podrobnosti o využití vlastní metriky prostřednictvím Application Insights ke konfiguraci automatického škálování pro Cloud Services najdete v tématu [Začínáme s automatickým škálováním podle vlastní metriky v Azure](../azure-monitor/autoscale/autoscale-custom-metric.md) .
 
-Další informace o tom, jak integrovat Azure Diagnostics s Application Insights pro Cloud Services, najdete v tématu [odeslání cloudové služby, virtuálního počítače nebo Service Fabric diagnostických dat do Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
+Další informace o tom, jak integrovat Azure Diagnostics s Application Insights pro Cloud Services, najdete v tématu [odeslání cloudové služby, virtuálního počítače nebo Service Fabric diagnostických dat do Application Insights](../azure-monitor/agents/diagnostics-extension-to-application-insights.md)
 
 Další informace o povolení Application Insights pro Cloud Services najdete v tématu [Application Insights pro Azure Cloud Services](../azure-monitor/app/cloudservices.md)
 

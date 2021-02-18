@@ -10,14 +10,14 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: a76c6467dac69fd3d21aa659c52227046c166938
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 04e658e3107ac0c9622ca1601eb93b01b9986fef
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94816675"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100645480"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než začnete, nezapomeňte:
 - Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Nainstalovat [Visual Studio](https://visualstudio.microsoft.com/downloads/) 
@@ -46,17 +46,17 @@ dotnet build
 Instalace klientské knihovny služby Azure Communications chat pro .NET
 
 ```PowerShell
-dotnet add package Azure.Communication.Chat --version 1.0.0-beta.3
+dotnet add package Azure.Communication.Chat --version 1.0.0-beta.4
 ``` 
 
 ## <a name="object-model"></a>Objektový model
 
 Následující třídy zpracovávají některé z hlavních funkcí služby Azure Communications chat Client Library pro C#.
 
-| Název                                  | Popis                                                  |
+| Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | ChatClient | Tato třída je potřebná pro funkci chatu. Vytvoří se jeho instance s informacemi o předplatném a použije se k vytváření, získávání a odstraňování vláken. |
-| ChatThreadClient | Tato třída je potřebná pro funkci konverzačního vlákna. Získáte instanci prostřednictvím ChatClient a použijete ji k posílání, přijímání, aktualizaci a odstraňování zpráv, přidávání, odebírání a získávání uživatelů, posílání oznámení a čtení. |
+| ChatThreadClient | Tato třída je potřebná pro funkci konverzačního vlákna. Získáte instanci prostřednictvím ChatClient a použijete ji k posílání, přijímání, aktualizaci a odstraňování zpráv, přidávání, odebírání a získávání účastníků, odesílání oznámení o přečtení a čtení. |
 
 ## <a name="create-a-chat-client"></a>Vytvoření chatového klienta
 
@@ -69,24 +69,25 @@ using Azure.Communication.Chat;
 // Your unique Azure Communication service endpoint
 Uri endpoint = new Uri("https://<RESOURCE_NAME>.communication.azure.com");
 
-CommunicationUserCredential communicationUserCredential = new CommunicationUserCredential(<Access_Token>);
-ChatClient chatClient = new ChatClient(endpoint, communicationUserCredential);
+CommunicationTokenCredential communicationTokenCredential = new CommunicationTokenCredential(<Access_Token>);
+ChatClient chatClient = new ChatClient(endpoint, communicationTokenCredential);
 ```
 
 ## <a name="start-a-chat-thread"></a>Spustit chatovací vlákno
 
-Použijte `createChatThread` metodu k vytvoření vlákna chatu.
-- Použijte `topic` k poskytnutí tématu tomuto chatu; Téma lze aktualizovat poté, co je vlákno konverzace vytvořeno pomocí `UpdateThread` funkce.
-- Pomocí `members` vlastnosti můžete předat seznam `ChatThreadMember` objektů, které mají být přidány do konverzačního vlákna. `ChatThreadMember`Objekt je inicializován s `CommunicationUser` objektem. Chcete-li získat `CommunicationUser` objekt, budete muset předat ID přístupu, které jste vytvořili pomocí pokynů pro [Vytvoření uživatele](../../access-tokens.md#create-an-identity) .
+Pomocí `createChatThread` metody v chatClient vytvořte vlákno chatu.
+- Použijte `topic` k poskytnutí tématu tomuto chatu; Téma lze aktualizovat poté, co je vlákno konverzace vytvořeno pomocí `UpdateTopic` funkce.
+- Pomocí `participants` vlastnosti můžete předat seznam `ChatParticipant` objektů, které mají být přidány do konverzačního vlákna. `ChatParticipant`Objekt je inicializován s `CommunicationIdentifier` objektem. `CommunicationIdentifier` může být typu `CommunicationUserIdentifier` `MicrosoftTeamsUserIdentifier` nebo `PhoneNumberIdentifier` . Například pro získání `CommunicationIdentifier` objektu budete muset předat ID přístupu, které jste vytvořili pomocí pokynů pro [Vytvoření uživatele](../../access-tokens.md#create-an-identity) .
 
-Odpověď `chatThreadClient` se používá k provádění operací na vytvořeném konverzačním vlákně: Přidání členů do konverzačního vlákna, odeslání zprávy, odstranění zprávy atd. Obsahuje atribut, `Id` který je jedinečným identifikátorem konverzačního vlákna. 
+Objekt Response z metody createChatThread obsahuje podrobnosti o chatThread. Chcete-li pracovat s operacemi vlákna chatu, jako je například přidání účastníků, odeslání zprávy, odstranění zprávy atd., je nutné instanci klienta chatThreadClient vytvořit pomocí metody GetChatThreadClient v klientovi ChatClient. 
 
 ```csharp
-var chatThreadMember = new ChatThreadMember(new CommunicationUser("<Access_ID>"))
+var chatParticipant = new ChatParticipant(communicationIdentifier: new CommunicationUserIdentifier(id: "<Access_ID>"))
 {
     DisplayName = "UserDisplayName"
 };
-ChatThreadClient chatThreadClient = await chatClient.CreateChatThreadAsync(topic: "Chat Thread topic C# sdk", members: new[] { chatThreadMember });
+CreateChatThreadResult createChatThreadResult = await chatClient.CreateChatThreadAsync(topic: "Hello world!", participants: new[] { chatParticipant });
+ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(createChatThreadResult.ChatThread.Id);
 string threadId = chatThreadClient.Id;
 ```
 
@@ -100,21 +101,24 @@ ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId);
 
 ## <a name="send-a-message-to-a-chat-thread"></a>Odeslání zprávy do konverzačního vlákna
 
-Použijte `SendMessage` metodu k odeslání zprávy do vlákna identifikovaného pomocí IDvlákna.
+Slouží `SendMessage` k odeslání zprávy do vlákna.
 
-- Použijte `content` k zadání obsahu zprávy chatu, která je povinná.
-- Použijte `priority` k zadání úrovně priority zprávy, jako je ' Normal ' nebo ' High ', pokud není zadaná, použije se ' Normal '.
-- Slouží `senderDisplayName` k zadání zobrazovaného názvu odesílatele, pokud není zadaný, použije se prázdný název.
-
-`SendChatMessageResult` je odpověď vrácená z odeslání zprávy, obsahuje ID, což je jedinečné ID zprávy.
+- Slouží `content` k zadání obsahu zprávy, která je povinná.
+- Používá `type` se pro typ obsahu zprávy, například text nebo HTML. Není-li tento parametr zadán, bude nastavena hodnota "text".
+- Slouží `senderDisplayName` k zadání zobrazovaného jména odesílatele. Pokud není zadán, bude nastaven prázdný řetězec.
 
 ```csharp
-var content = "hello world";
-var priority = ChatMessagePriority.Normal;
-var senderDisplayName = "sender name";
+var messageId = await chatThreadClient.SendMessageAsync(content:"hello world", type: );
+```
+## <a name="get-a-message"></a>Získat zprávu
 
-SendChatMessageResult sendChatMessageResult = await chatThreadClient.SendMessageAsync(content, priority, senderDisplayName);
-string messageId = sendChatMessageResult.Id;
+Slouží `GetMessage` k načtení zprávy ze služby.
+`messageId` je jedinečné ID zprávy.
+
+`ChatMessage` je odpověď vrácená z získání zprávy, obsahuje ID, což je jedinečný identifikátor zprávy, mimo jiné pole. Přečtěte si prosím Azure. Communication. chat. ChatMessage.
+
+```csharp
+ChatMessage chatMessage = await chatThreadClient.GetMessageAsync(messageId);
 ```
 
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>Příjem zpráv chatu z konverzačního vlákna
@@ -137,11 +141,13 @@ await foreach (ChatMessage message in allMessages)
 
 - `Text`: Běžná zpráva chatu odeslaná členem vlákna.
 
-- `ThreadActivity/TopicUpdate`: Systémová zpráva, která indikuje, že téma bylo aktualizováno.
+- `Html`: Naformátovaná textová zpráva. Všimněte si, že uživatelé komunikačních služeb aktuálně nemůžou odesílat zprávy RTF. Tento typ zprávy je podporován zprávami odesílanými od týmů uživatelů ke komunikačním službám ve scénářích spolupráce týmů.
 
-- `ThreadActivity/AddMember`: Systémová zpráva, která indikuje, že jeden nebo více členů bylo přidáno do konverzačního vlákna.
+- `TopicUpdated`: Systémová zpráva, která indikuje, že téma bylo aktualizováno. ReadOnly
 
-- `ThreadActivity/DeleteMember`: Systémová zpráva, která indikuje, že člen byl odebrán z konverzačního vlákna.
+- `ParticipantAdded`: Systémová zpráva, která indikuje, že jeden nebo více účastníků bylo přidáno do konverzačního vlákna. ReadOnly
+
+- `ParticipantRemoved`: Systémová zpráva, která indikuje, že účastník byl odebrán z konverzačního vlákna.
 
 Další podrobnosti najdete v tématu [typy zpráv](../../../concepts/chat/concepts.md#message-types).
 
@@ -164,31 +170,77 @@ string id = "id-of-message-to-delete";
 await chatThreadClient.DeleteMessageAsync(id);
 ```
 
-## <a name="add-a-user-as-member-to-the-chat-thread"></a>Přidat uživatele jako člena do vlákna chatu
+## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Přidat uživatele jako účastníka do konverzačního vlákna
 
-Po vytvoření vlákna můžete z něj přidat a odebrat uživatele. Přidáním uživatelů udělíte jim přístup, aby bylo možné odesílat zprávy do vlákna a přidávat nebo odebírat další členy. Před voláním `AddMembers` se ujistěte, že jste pro tohoto uživatele získali nový přístupový token a identitu. Uživatel bude potřebovat přístupový token, aby mohl inicializovat svého chatového klienta.
+Po vytvoření vlákna můžete z něj přidat a odebrat uživatele. Přidáním uživatelů udělíte jim přístup, aby bylo možné odesílat zprávy do vlákna a přidat nebo odebrat jiného účastníka. Před voláním `AddParticipants` se ujistěte, že jste pro tohoto uživatele získali nový přístupový token a identitu. Uživatel bude potřebovat přístupový token, aby mohl inicializovat svého chatového klienta.
 
-Použijte `AddMembers` metodu pro přidání členů vlákna do vlákna identifikovaného pomocí IDvlákna.
-
- - Slouží `members` k vypsání členů, kteří mají být přidáni do konverzačního vlákna;
- - `User`je vyžadována identita, kterou získáte pro tohoto nového uživatele.
- - `DisplayName`volitelné, je zobrazované jméno člena vlákna.
- - `ShareHistoryTime`, volitelné, čas, ze kterého je historie chatu sdílena s členem. Chcete-li sdílet historii od začátku konverzačního vlákna, nastavte ji na DateTime. MinValue. Chcete-li sdílet žádnou historii, předchozí až po přidání člena, nastavte jej na aktuální čas. Chcete-li sdílet částečnou historii, nastavte ji na bod v čase mezi vytvořením vlákna a aktuálním časem.
+Slouží `AddParticipants` k přidání jednoho nebo více účastníků do konverzačního vlákna. Následující jsou podporované atributy pro každého účastníka vlákna:
+- `communicationUser`, požadováno, je identita účastníka vlákna.
+- `displayName`volitelné, je zobrazované jméno účastníka vlákna.
+- `shareHistoryTime`, volitelné, čas, ze kterého je historie chatu sdílena s účastníkem.
 
 ```csharp
-ChatThreadMember member = new ChatThreadMember(communicationUser);
-member.DisplayName = "display name member 1";
-member.ShareHistoryTime = DateTime.MinValue; // share all history
-await chatThreadClient.AddMembersAsync(members: new[] {member});
+var josh = new CommunicationUserIdentifier(id: "<Access_ID_For_Josh>");
+var gloria = new CommunicationUserIdentifier(id: "<Access_ID_For_Gloria>");
+var amy = new CommunicationUserIdentifier(id: "<Access_ID_For_Amy>");
+
+var participants = new[]
+{
+    new ChatParticipant(josh) { DisplayName = "Josh" },
+    new ChatParticipant(gloria) { DisplayName = "Gloria" },
+    new ChatParticipant(amy) { DisplayName = "Amy" }
+};
+
+await chatThreadClient.AddParticipantsAsync(participants);
 ```
 ## <a name="remove-user-from-a-chat-thread"></a>Odebrání uživatele z konverzačního vlákna
 
-Podobně jako při přidávání uživatele do vlákna můžete odebrat uživatele z konverzačního vlákna. K tomu je potřeba sledovat identitu (CommunicationUser) členů, které jste přidali.
+Podobně jako při přidávání uživatele do vlákna můžete odebrat uživatele z konverzačního vlákna. K tomu je potřeba sledovat identitu `CommunicationUser` účastníka, kterého jste přidali.
 
 ```csharp
-await chatThreadClient.RemoveMemberAsync(communicationUser);
+var gloria = new CommunicationUserIdentifier(id: "<Access_ID_For_Gloria>");
+await chatThreadClient.RemoveParticipantAsync(gloria);
 ```
 
+## <a name="get-thread-participants"></a>Získat účastníky vlákna
+
+Slouží `GetParticipants` k načtení účastníků konverzačního vlákna.
+
+```csharp
+AsyncPageable<ChatParticipant> allParticipants = chatThreadClient.GetParticipantsAsync();
+await foreach (ChatParticipant participant in allParticipants)
+{
+    Console.WriteLine($"{((CommunicationUserIdentifier)participant.User).Id}:{participant.DisplayName}:{participant.ShareHistoryTime}");
+}
+```
+
+## <a name="send-typing-notification"></a>Odeslat oznámení o zápisu
+
+Slouží `SendTypingNotification` k označení toho, že uživatel zadává odpověď do vlákna.
+
+```csharp
+await chatThreadClient.SendTypingNotificationAsync();
+```
+
+## <a name="send-read-receipt"></a>Odeslat oznámení pro čtení
+
+Slouží `SendReadReceipt` k oznámení ostatním účastníkům, že uživatel přečte zprávu.
+
+```csharp
+await chatThreadClient.SendReadReceiptAsync(messageId);
+```
+
+## <a name="get-read-receipts"></a>Získat účtenky pro čtení
+
+Slouží `GetReadReceipts` ke kontrole stavu zpráv, abyste viděli, které jsou čteny ostatními účastníky konverzačního vlákna.
+
+```csharp
+AsyncPageable<ChatMessageReadReceipt> allReadReceipts = chatThreadClient.GetReadReceiptsAsync();
+await foreach (ChatMessageReadReceipt readReceipt in allReadReceipts)
+{
+    Console.WriteLine($"{readReceipt.ChatMessageId}:{((CommunicationUserIdentifier)readReceipt.Sender).Id}:{readReceipt.ReadOn}");
+}
+```
 ## <a name="run-the-code"></a>Spuštění kódu
 
 Spusťte aplikaci z adresáře aplikace pomocí `dotnet run` příkazu.

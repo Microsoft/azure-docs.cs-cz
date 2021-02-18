@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/22/2020
 ms.author: kumud
-ms.openlocfilehash: 6cf082aa33d2063982d85cf0c2fdd68d61072217
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 74e09b4798a648b6a881fb05f1128831ad5f4aff
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216933"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586442"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Vytvoření, změna nebo odstranění síťového rozhraní
 
@@ -90,7 +90,7 @@ Po vytvoření můžete zobrazit a změnit většinu nastavení síťového rozh
    - **Vlastnosti:** Zobrazí nastavení klíče síťového rozhraní, včetně jeho adresy MAC (prázdné, pokud síťové rozhraní není připojené k virtuálnímu počítači) a předplatné, ve kterém existuje.
    - **Platná pravidla zabezpečení:**  Pravidla zabezpečení jsou uvedena, pokud je síťové rozhraní připojené k běžícímu virtuálnímu počítači a NSG je přidružen k síťovému rozhraní, podsíti, ke které je přiřazen, nebo k oběma. Další informace o tom, co se zobrazuje, najdete v tématu [zobrazení efektivních pravidel zabezpečení](#view-effective-security-rules). Další informace o skupin zabezpečení sítě najdete v tématu [skupiny zabezpečení sítě](./network-security-groups-overview.md).
    - **Efektivní trasy:** Pokud je síťové rozhraní připojené k běžícímu virtuálnímu počítači, jsou uvedené trasy. Trasy jsou kombinací výchozích tras Azure, všech uživatelem definovaných tras a všech tras protokolu BGP, které mohou existovat pro podsíť, ke které je síťové rozhraní přiřazeno. Další informace o tom, co se zobrazuje, najdete v tématu [zobrazení efektivních tras](#view-effective-routes). Další informace o výchozích trasách Azure a uživatelem definovaných trasách najdete v tématu [Přehled směrování](virtual-networks-udr-overview.md).
-Nastavení běžných Azure Resource Manager: Další informace o běžných nastaveních Azure Resource Manager najdete v tématu [Protokol aktivit](../azure-monitor/platform/platform-logs-overview.md), [řízení přístupu (IAM)](../role-based-access-control/overview.md), [značky](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [zámky](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)a [skript Automation](../azure-resource-manager/templates/export-template-portal.md).
+Nastavení běžných Azure Resource Manager: Další informace o běžných nastaveních Azure Resource Manager najdete v tématu [Protokol aktivit](../azure-monitor/essentials/platform-logs-overview.md), [řízení přístupu (IAM)](../role-based-access-control/overview.md), [značky](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [zámky](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)a [skript Automation](../azure-resource-manager/templates/export-template-portal.md).
 
 <a name="view-settings-commands"></a>**Příkaz**
 

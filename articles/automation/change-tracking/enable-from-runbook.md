@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 9f7a37fa2101e4a386c9c6f2338f185b3ecdc986
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e5b42d6102737b778ea5d19cd7da3c2f64881b1b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052613"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585931"
 ---
 # <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>Povolení řešení Change Tracking a Inventory z runbooku
 
@@ -28,7 +28,7 @@ Tato metoda používá dva Runbooky:
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Účet Automation](../automation-security-overview.md) pro správu počítačů.
-* [Pracovní prostor Log Analytics](../../azure-monitor/platform/design-logs-deployment.md)
+* [Pracovní prostor Log Analytics](../../azure-monitor/logs/design-logs-deployment.md)
 * [Virtuální počítač](../../virtual-machines/windows/quick-create-portal.md).
 * Dva prostředky služby Automation, které jsou používány v sadě Runbook **Enable-AutomationSolution** . Tato sada Runbook, pokud už ve vašem účtu Automation neexistuje, je během prvního spuštění automaticky naimportována pomocí Runbooku **Enable-MultipleSolution** .
     * *LASolutionSubscriptionId*: ID předplatného, kde se nachází Log Analytics pracovní prostor.

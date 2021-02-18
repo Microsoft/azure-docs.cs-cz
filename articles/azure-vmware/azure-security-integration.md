@@ -3,12 +3,12 @@ title: Chraňte své virtuální počítače s řešeními VMware Azure pomocí 
 description: Chraňte své virtuální počítače řešení Azure VMware pomocí nástrojů pro nativní zabezpečení Azure na řídicím panelu Azure Security Center.
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: b37d09d6e8f239586a18c0fa3b1dcd7bfee98102
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 7292ea4486a61f5b0cfd8f656d2763a3ce655e79
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516358"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578258"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Chraňte své virtuální počítače s řešeními VMware Azure pomocí Integrace Azure Security Center
 
@@ -50,7 +50,7 @@ V pracovním prostoru Log Analytics můžete nakonfigurovat Azure Sentinel pro d
 
 ## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru služby Log Analytics
 
-Abyste mohli shromažďovat data z různých zdrojů, budete potřebovat Log Analytics pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics z Azure Portal](../azure-monitor/learn/quick-create-workspace.md). 
+Abyste mohli shromažďovat data z různých zdrojů, budete potřebovat Log Analytics pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics z Azure Portal](../azure-monitor/logs/quick-create-workspace.md). 
 
 ## <a name="deploy-security-center-and-configure-azure-vmware-solution-vms"></a>Nasazení Security Center a konfigurace virtuálních počítačů s řešeními Azure VMware
 
@@ -243,5 +243,5 @@ Můžete vytvářet dotazy nebo používat dostupný předem definovaný dotaz v
 Teď, když jste se seznámili s postupem ochrany vašich virtuálních počítačů s Azure VMware, se můžete seznámit s těmito řešeními:
 
 - Pomocí [řídicího panelu Azure Defenderu](../security-center/azure-defender-dashboard.md).
-- [Pokročilá detekce útoků s více fázemi v Azure Sentinel](../azure-monitor/learn/quick-create-workspace.md).
+- [Pokročilá detekce útoků s více fázemi v Azure Sentinel](../azure-monitor/logs/quick-create-workspace.md).
 - [Správa životního cyklu virtuálních počítačů řešení Azure VMware](lifecycle-management-of-azure-vmware-solution-vms.md).

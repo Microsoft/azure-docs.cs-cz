@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: be8123d3c8a4acc684610aeaa9ee263c5defa17d
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 8fa2a06b1310e7cd825c918e92ea7af9b9b488de
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813611"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596153"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Automatické zřizování agentů a rozšíření z Azure Security Center
 
@@ -38,8 +38,8 @@ Data se shromažďují pomocí:
 |-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Stav vydaných verzí:          | **Funkce**: Automatické zřizování je všeobecně dostupné (GA).<br>**Agenti a rozšíření**: Agent Log Analytics pro virtuální počítače Azure je v cloudu, protože je ve verzi Preview, doplněk zásad pro KUBERNETES je GA.                |
 | Stanov                | Free                                                                                                                                                                                                                         |
-| Podporovaná umístění: | ![Ano](./media/icons/yes-icon.png) Počítače Azure<br>![Ne](./media/icons/no-icon.png) Počítače ARC Azure<br>![Ne](./media/icons/no-icon.png) Uzly Kubernetes<br>![Ne](./media/icons/no-icon.png) Virtual Machine Scale Sets |
-| Cloud                 | ![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov, Čína gov, jiné gov                                                                                                      |
+| Podporovaná umístění: | ![Yes](./media/icons/yes-icon.png) Počítače Azure<br>![No](./media/icons/no-icon.png) Počítače ARC Azure<br>![No](./media/icons/no-icon.png) Uzly Kubernetes<br>![No](./media/icons/no-icon.png) Virtual Machine Scale Sets |
+| Cloud                 | ![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov, Čína gov, jiné gov                                                                                                      |
 |                         |                                                                                                                                                                                                                              |
 
 
@@ -83,7 +83,7 @@ Povolení automatického zřizování agenta Log Analytics:
 
     - **Připojení virtuálních počítačů Azure k jinému pracovnímu prostoru** – v rozevíracím seznamu vyberte pracovní prostor pro ukládání shromážděných dat. Rozevírací seznam obsahuje všechny pracovní prostory ve všech vašich předplatných. Tuto možnost můžete použít ke shromažďování dat z virtuálních počítačů spuštěných v různých předplatných a jejich uložení ve vybraném pracovním prostoru.  
 
-        Pokud již máte pracovní prostor Log Analytics, můžete chtít použít stejný pracovní prostor (vyžaduje oprávnění ke čtení a zápisu v pracovním prostoru). Tato možnost je užitečná, pokud používáte centralizovaný pracovní prostor ve vaší organizaci a chcete ho použít pro shromažďování dat zabezpečení. Další informace najdete v podrobnějších informacích o [správě přístupu k datům a pracovním prostorům v Azure monitor](../azure-monitor/platform/manage-access.md).
+        Pokud již máte pracovní prostor Log Analytics, můžete chtít použít stejný pracovní prostor (vyžaduje oprávnění ke čtení a zápisu v pracovním prostoru). Tato možnost je užitečná, pokud používáte centralizovaný pracovní prostor ve vaší organizaci a chcete ho použít pro shromažďování dat zabezpečení. Další informace najdete v podrobnějších informacích o [správě přístupu k datům a pracovním prostorům v Azure monitor](../azure-monitor/logs/manage-access.md).
 
         Pokud váš vybraný pracovní prostor už má povolené řešení Security nebo SecurityCenterFree, ceny se nastaví automaticky. V takovém případě nainstalujte řešení Security Center v pracovním prostoru:
 
@@ -131,7 +131,7 @@ Povolení automatického zřizování jiného rozšíření než agenta Log Anal
 
 1. Vyberte **Uložit**. Zásada Azure je přiřazena a je vytvořen úkol nápravy.
 
-    |Linka  |Zásada  |
+    |Linka  |Zásady  |
     |---------|---------|
     |Doplněk zásad pro Kubernetes|[Nasazení Azure Policy doplňku do clusterů služby Azure Kubernetes](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
     |Microsoft Dependency Agent (Preview) (virtuální počítače s Windows)|[Nasazení agenta závislostí pro virtuální počítače s Windows](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1c210e94-a481-4beb-95fa-1571b434fb04)         |
@@ -218,7 +218,7 @@ Ruční instalace agenta Log Analytics:
    - [Instalace agenta Log Analytics pro Windows](../virtual-machines/extensions/oms-windows.md)
    - [Instalace agenta Log Analytics pro Linux](../virtual-machines/extensions/oms-linux.md)
 
-1. Pokud chcete nasadit agenty na svém stávajícím virtuálním počítači, postupujte podle pokynů v tématu [shromáždění dat o službě Azure Virtual Machines](../azure-monitor/learn/quick-collect-azurevm.md) (část **shromažďování dat o událostech a výkonu** je volitelná).
+1. Pokud chcete nasadit agenty na svém stávajícím virtuálním počítači, postupujte podle pokynů v tématu [shromáždění dat o službě Azure Virtual Machines](../azure-monitor/vm/quick-collect-azurevm.md) (část **shromažďování dat o událostech a výkonu** je volitelná).
 
 1. Pokud chcete použít PowerShell k nasazení agentů, postupujte podle pokynů v dokumentaci k virtuálním počítačům:
 

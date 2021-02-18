@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: b9920956a8983a1c71c1f91cd1c19a6e84be6aee
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: ad56b6af9a9071812ad6fa581954010df3b6b5d7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780293"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574833"
 ---
 # <a name="azure-table-storage-monitoring-data-reference"></a>Referenční informace k datům monitorování úložiště tabulek v Azure
 
@@ -34,11 +34,11 @@ Azure Storage poskytuje v Azure Monitor následující metriky kapacity.
 
 [!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-account-capacity-metrics.md)]
 
-#### <a name="table-storage"></a>Úložiště Table
+#### <a name="table-storage"></a>Table Storage
 
-Tato tabulka zobrazuje [metriky úložiště tabulek](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountstableservices).
+Tato tabulka zobrazuje [metriky úložiště tabulek](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountstableservices).
 
-| Metrika | Popis |
+| Metric | Popis |
 | ------------------- | ----------------- |
 | TableCapacity | Velikost úložiště tabulek, kterou používá účet úložiště <br/><br/> Jednotka: bajtů <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 |
 | TableCount   | Počet tabulek v účtu úložiště <br/><br/> Jednotka: počet <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 |
@@ -80,4 +80,4 @@ V následující tabulce jsou uvedeny vlastnosti Azure Storagech protokolů pros
 ## <a name="see-also"></a>Viz také
 
 - Popis monitorování Azure Storage najdete v tématu [monitorování úložiště Azure Table](monitor-table-storage.md) .
-- Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](../../azure-monitor/insights/monitor-azure-resource.md) .
+- Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](../../azure-monitor/essentials/monitor-azure-resource.md) .

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 345748380479d81f1ea0df9ecf327200482a6cd7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 58aabd52b8c5493671e0a76d0032a6d7c3081f40
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937179"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582037"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>Směrný plán zabezpečení Azure pro sdílení dat Azure
 
@@ -34,7 +34,7 @@ Případně můžete tato data povolit a zařadit do Azure Sentinel nebo SIEM t�
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [Jak začít s Azure Monitor a integrací SIEM třetích stran](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
@@ -48,11 +48,11 @@ Případně můžete tato data povolit a zařadit do Azure Sentinel nebo SIEM t�
 
 Povolte diagnostické protokoly pro Azure Data Share, konkrétně protokoly diagnostiky pro MicrosoftDataShareSentShareSnapshotsLog &amp; MicrosoftDataShareReceivedShareSnapshotsLog. Tyto protokoly vám umožní zachytit klíčové informace, jako je čas zahájení synchronizace, čas ukončení, stav a další podrobnosti. Tyto protokoly můžou být klíčové pro pozdější zkoumání incidentů zabezpečení a provádění forenzních cvičení.
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Principy protokolování a různých typů protokolů v Azure](../azure-monitor/platform/platform-logs-overview.md)
+- [Principy protokolování a různých typů protokolů v Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
-- [Jak nakonfigurovat nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
+- [Jak nakonfigurovat nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -62,9 +62,9 @@ Povolte diagnostické protokoly pro Azure Data Share, konkrétně protokoly diag
 
 **Doprovodné** materiály: Zajistěte, aby všechny účty úložiště nebo pracovní prostory Log Analytics používané pro ukládání protokolů sdílené složky Azure měly dobu uchování protokolu nastavenou v souladu s předpisy pro dodržování předpisů vaší organizace.
 
-- [Jak nakonfigurovat dobu uchování Log Analytics pracovního prostoru](../azure-monitor/platform/manage-cost-storage.md)
+- [Jak nakonfigurovat dobu uchování Log Analytics pracovního prostoru](../azure-monitor/logs/manage-cost-storage.md)
 
-- [Ukládání protokolů prostředků v Azure Storagem účtu](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [Ukládání protokolů prostředků v Azure Storagem účtu](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -78,9 +78,9 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Začínáme s Log Analytics dotazy](../azure-monitor/log-query/log-analytics-tutorial.md) 
+- [Začínáme s Log Analytics dotazy](../azure-monitor/logs/log-analytics-tutorial.md) 
 
-- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/log-query/get-started-queries.md) 
+- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md) 
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -94,7 +94,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 - [Správa výstrah v Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [Upozornění na data protokolu Log Analytics](../azure-monitor/learn/tutorial-response.md) 
+- [Upozornění na data protokolu Log Analytics](../azure-monitor/alerts/tutorial-response.md) 
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -209,7 +209,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet Azure monitor výstrahy, pro které se změny projeví u kritických prostředků Azure.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md) 
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md) 
 
 **Monitorování služby Azure Security Center:** Ano
 

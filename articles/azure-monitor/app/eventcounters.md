@@ -4,12 +4,12 @@ description: Monitorujte systém a vlastní .NET/.NET Core EventCounters v Appli
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a9af36f3c81ee52b41a8eed875c1a286b95bf838
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1ae0937c25a68798acd87fe8b2a0a54aa765b35
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803639"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579533"
 ---
 # <a name="eventcounters-introduction"></a>Úvod do EventCounters
 
@@ -88,14 +88,14 @@ Podobný přístup lze také použít pro WorkerService SDK, ale obor názvů mu
 
 ## <a name="event-counters-in-metric-explorer"></a>Čítače událostí v Průzkumníkovi metrik
 
-Pokud chcete v [Průzkumníkovi metriky](../platform/metrics-charts.md)zobrazit EventCounter metriky, vyberte Application Insights prostředek a zvolte metriky založené na protokolu jako obor názvů metriky. Pak se metriky EventCounter zobrazí v kategorii vlastní.
+Pokud chcete v [Průzkumníkovi metriky](../essentials/metrics-charts.md)zobrazit EventCounter metriky, vyberte Application Insights prostředek a zvolte metriky založené na protokolu jako obor názvů metriky. Pak se metriky EventCounter zobrazí v kategorii vlastní.
 
 > [!div class="mx-imgBorder"]
 > ![Čítače událostí hlášené v Průzkumníkovi metrik Application Insights](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Čítače událostí v analýzách
 
-V tabulce **customMetrics** můžete také vyhledávat a zobrazovat sestavy čítače událostí v části [analýzy](../log-query/log-query-overview.md).
+V tabulce **customMetrics** můžete také vyhledávat a zobrazovat sestavy čítače událostí v části [analýzy](../logs/log-query-overview.md).
 
 Například spuštěním následujícího dotazu zjistíte, jaké čítače jsou shromažďovány a k dispozici pro dotaz:
 
@@ -121,7 +121,7 @@ customMetrics
 Podobně jako u jiné telemetrie má **customMetrics** také sloupec `cloud_RoleInstance` , který označuje identitu instance hostitelského serveru, na které je vaše aplikace spuštěná. Výše uvedený dotaz ukazuje hodnotu čítače na instanci a lze ji použít k porovnání výkonu různých instancí serveru.
 
 ## <a name="alerts"></a>Výstrahy
-Podobně jako u jiných metrik můžete [nastavit výstrahu](../platform/alerts-log.md) , která vás upozorní, pokud počítadlo události překročí zadaný limit. Otevřete podokno výstrahy a klikněte na Přidat výstrahu.
+Podobně jako u jiných metrik můžete [nastavit výstrahu](../alerts/alerts-log.md) , která vás upozorní, pokud počítadlo události překročí zadaný limit. Otevřete podokno výstrahy a klikněte na Přidat výstrahu.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

@@ -7,29 +7,33 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 2ec682bf76e35b54f58acc1956972c57128edd75
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 93efc89722d3152d92b6f8c8038deaa566741f7c
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523137"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636556"
 ---
 # <a name="work-with-defender-for-iot-cli-commands"></a>Práce s příkazy CLI Defenderu for IoT
 
-Tento článek popisuje příkazy rozhraní příkazového řádku pro senzory a místní konzoly pro správu. Příkazy jsou přístupné správcům, uživatelům CyberX a podpoře uživatelů.
+Tento článek popisuje příkazy rozhraní příkazového řádku pro senzory a místní konzoly pro správu. Příkazy jsou k dispozici pro následující uživatele:
 
-Definujte pravidla vyloučení při plánování aktivit údržby nebo aktivity, která nevyžaduje výstrahu.
+- Správce
+- CyberX 
+- Podpora
+
+Pokud chcete začít pracovat v rozhraní příkazového řádku, připojte se pomocí terminálu. Například název terminálu `Putty` a `Support` uživatel. 
 
 ## <a name="create-local-alert-exclusion-rules"></a>Vytvořit pravidla vyloučení místních výstrah
 
-Pravidlo vyloučení můžete vytvořit zadáním následujícího příkazu do příkazového řádku:
+Zadáním následujícího příkazu do rozhraní příkazového řádku můžete vytvořit pravidlo vyloučení místních výstrah:
 
 ```azurecli-interactive
 alerts exclusion-rule-create [-h] -n NAME [-ts TIMES] [-dir DIRECTION]  
 [-dev DEVICES] [-a ALERTS]
 ```
 
-Atributy, které můžete definovat v rámci pravidel vyloučení výstrahy, jsou následující:
+S pravidly vyloučení výstrah lze použít následující atributy:
 
 | Atribut | Popis |
 |--|--|
@@ -42,18 +46,18 @@ Atributy, které můžete definovat v rámci pravidel vyloučení výstrahy, jso
 
 ## <a name="append-local-alert-exclusion-rules"></a>Připojit pravidla vyloučení místních výstrah
 
-Zadáním následujícího příkazu v rozhraní příkazového řádku můžete přidat nová pravidla pro aktuální pravidla vyloučení výstrahy:
+Můžete připojit pravidla vyloučení místních výstrah zadáním následujícího příkazu v rozhraní příkazového řádku:
 
 ```azurecli-interactive
 alerts exclusion-rule-append [-h] -n NAME [-ts TIMES] [-dir DIRECTION]  
 [-dev DEVICES] [-a ALERTS]
 ```
 
-Zde používané atributy jsou podobné atributům, které jsou popsány při vytváření místních pravidel pro vyloučení výstrah. V tomto příkladu jsou atributy aplikovány na stávající pravidla.
+Zde používané atributy jsou stejné jako atributy vysvětlené v části Vytvoření pravidel vyloučení místních výstrah. Rozdíl v použití je, že zde jsou atributy aplikovány na stávající pravidla.
 
 ## <a name="show-local-alert-exclusion-rules"></a>Zobrazit pravidla vyloučení místních výstrah
 
-Zadáním následujícího příkazu zobrazíte všechna existující pravidla vyloučení:
+Zadejte následující příkaz pro zobrazení existujícího seznamu pravidel vyloučení:
 
 ```azurecli-interactive
 alerts exclusion-rule-list [-h] -n NAME [-ts TIMES] [-dir DIRECTION]  
@@ -69,7 +73,7 @@ alerts exclusion-rule-remove [-h] -n NAME [-ts TIMES] [-dir DIRECTION]
 [-dev DEVICES] [-a ALERTS]
 ```
 
-Pro pravidla vyloučení výstrah můžete použít následující atribut:
+Pomocí pravidel pro vyloučení výstrah lze použít následující atribut:
 
 | Atribut | Popis|
 | --------- | ---------------------------------- |
@@ -77,11 +81,11 @@ Pro pravidla vyloučení výstrah můžete použít následující atribut:
 
 ## <a name="sync-time-from-the-ntp-server"></a>Čas synchronizace ze serveru NTP
 
-Můžete povolit nebo zakázat synchronizaci času ze serveru NTP.
+Můžete povolit nebo zakázat synchronizaci času z určeného serveru NTP.
 
 ### <a name="enable-ntp-sync"></a>Povolit synchronizaci NTP
 
-Zadáním následujícího příkazu umožníte pravidelné načítání aktuálního času ze zadaného serveru NTP:
+Zadejte následující příkaz, který bude pravidelně získávat čas ze zadaného serveru NTP:
 
 ```azurecli-interactive
 ntp enable IP
@@ -91,7 +95,7 @@ Atribut, který můžete definovat v rámci příkazu, je IP adresa serveru NTP.
 
 ### <a name="disable-ntp-sync"></a>Zakázat synchronizaci NTP
 
-Zadáním následujícího příkazu zakážete synchronizaci času se zadaným serverem NTP:
+Zadejte následující příkaz, který zakazuje synchronizaci času se zadaným serverem NTP:
 
 ```azurecli-interactive
 ntp disable IP
@@ -99,15 +103,15 @@ ntp disable IP
 
 Atribut, který můžete definovat v rámci příkazu, je IP adresa serveru NTP.
 
-## <a name="configure-the-network"></a>Konfigurace sítě
+## <a name="network-configuration"></a>Konfigurace sítě
 
 Následující tabulka popisuje příkazy, které jsou k dispozici pro konfiguraci možností sítě pro Azure Defender pro IoT:
 
-|Název|Příkaz|Popis|
+|Name|Příkaz|Popis|
 |-----------|-------|-----------|
-|Ping|`ping IP `| Příkazy otestuje adresy mimo Defender pro platformu IoT.|
-|Blink|`network blink`|Povolí změnu parametrů konfigurace sítě.|
-|Překonfigurujte síť. |`network edit-settings`| Povolí změnu parametrů konfigurace sítě. |
+|Ping|`ping IP`| Otestujete adresu a adresu mimo Defender pro platformu IoT.|
+|Blink|`network blink`| Vyhledejte připojení tím, že se indikátory rozhraní zablikají. |
+|Překonfigurujte síť. |`network edit-settings`| Povolí změnu v parametrech konfigurace sítě. |
 |Zobrazit nastavení sítě |`network list`|Zobrazí parametry síťového adaptéru. |
 |Ověření konfigurace sítě |`network validate` |Zobrazí výstupní nastavení sítě. <br /> <br />Příklad: <br /> <br />Aktuální nastavení sítě: <br /> rozhraní: eth0 <br /> IP adresa: 10.100.100.1 <br />podsíť: 255.255.255.0 <br />Výchozí brána: 10.100.100.254 <br />DNS: 10.100.100.254 <br />rozhraní monitorování: eth1|
 |Import certifikátu |`certificate import FILE` |Importuje certifikát HTTPS. Je nutné zadat úplnou cestu, která vede k \* souboru. CRT. |
@@ -115,7 +119,7 @@ Následující tabulka popisuje příkazy, které jsou k dispozici pro konfigura
 
 ## <a name="filter-network-configurations"></a>Filtrovat síťové konfigurace
 
-`network capture-filter`Příkaz umožňuje správcům eliminovat síťový provoz, který není nutné analyzovat. Filtrovat provoz pomocí seznamu zahrnutí nebo seznamu vyloučení.
+`network capture-filter`Příkaz umožňuje správcům eliminovat síťový provoz, který není nutné analyzovat. Provoz můžete filtrovat pomocí seznamu zahrnutí nebo seznamu vyloučení.
 
 ```azurecli-interactive
 network capture-filter
@@ -125,7 +129,7 @@ Po zadání příkazu se zobrazí následující otázka:
 
 >`Would you like to supply devices and subnet masks you wish to include in the capture filter? [Y/N]:`
 
-Výběrem `Y` otevřete soubor nano, kde můžete přidat zařízení, kanály, porty a podmnožiny v závislosti na následující syntaxi:
+Výběrem `Y` otevřete soubor nano, do kterého můžete přidat zařízení, kanál, port a podmnožinu podle následující syntaxe:
 
 | Atribut | Popis |
 |--|--|
@@ -137,11 +141,11 @@ Oddělte argumenty vyřazením řádku.
 
 Když zahrnete zařízení, kanál nebo podsíť, zpracuje senzor veškerý platný provoz tohoto argumentu, včetně portů a přenosů, které se obvykle nezpracovávají.
 
-Pak se zobrazí výzva k zadání následujících kroků:
+Pak se zobrazí výzva k zadání následující otázky:
 
 >`Would you like to supply devices and subnet masks you wish to exclude from the capture filter? [Y/N]:`
 
-Výběrem `Y` otevřete soubor nano, kde můžete přidat zařízení, kanály, porty a podmnožiny podle následující syntaxe:
+Výběrem `Y` otevřete soubor nano, kde můžete přidat zařízení, kanál, port a podmnožiny podle následující syntaxe:
 
 | Atribut | Popis |
 |--|--|
@@ -173,7 +177,7 @@ Zahrňte nebo vylučte porty UDP a TCP pro veškerý provoz.
 
 ### <a name="components"></a>Komponenty
 
-Budete požádáni o následující:
+Budete požádáni o následující otázku:
 
 >`In which component do you wish to apply this capture filter?`
 
@@ -232,7 +236,7 @@ sudo cyberx-xsense-capture-filter -p all -m all-connected
 
 ## <a name="define-client-and-server-hosts"></a>Definování hostitelů klienta a serveru
 
-Pokud program Defender pro IoT nerozpoznal hostitele klienta a serveru, zadejte následující příkaz pro nastavení hostitelů klienta a serveru:
+Pokud program Defender pro IoT nedetekuje klienta automaticky a hostitele serveru, zadejte následující příkaz pro nastavení hostitelů klienta a serveru:
 
 ```azurecli-interactive
 directions [-h] [--identifier IDENTIFIER] [--port PORT] [--remove] [--add]  
@@ -254,8 +258,9 @@ Pomocí příkazu můžete použít následující atributy `directions` :
 ## <a name="system-actions"></a>Systémové akce
 Následující tabulka popisuje příkazy, které jsou k dispozici pro provádění různých systémových akcí v programu Defender pro IoT:
 
-|Název|Kód|Popis|
+|Name|Kód|Description|
 |----|----|-----------|
+|Zobrazit datum|`date`|Vrátí aktuální datum na hostiteli ve formátu GMT.|
 |Restartujte hostitele.|`system reboot`|Restartuje hostitelské zařízení.|
 |Vypnout hostitele|`system shutdown`|Ukončí hostitele.|
 |Zálohování systému|`system backup`|Iniciuje okamžitou zálohu (Neplánovaná záloha).|
@@ -290,6 +295,6 @@ Při použití nástroje:
 
 - Ověřte s tím, jak se doména zařízení (jak se zobrazuje v certifikátu) s vaším serverem DNS a odpovídající IP adresou. 
     
-## <a name="next-steps"></a>Další kroky
+## <a name="see-also"></a>Viz také
 
 [Defender pro rozhraní API pro senzory rozhraní IoT a konzolu pro správu](references-work-with-defender-for-iot-apis.md)

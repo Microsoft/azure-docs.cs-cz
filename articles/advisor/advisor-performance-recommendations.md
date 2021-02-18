@@ -3,12 +3,12 @@ title: Zlepšení výkonu aplikací Azure pomocí služby Advisor
 description: Využijte doporučení k výkonu v Azure Advisor ke zlepšení rychlosti a odezvy vašich důležitých podnikových aplikací.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: f546527011402b9ea33321d56356d8aabe2412c1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 69fd86226375073c71903af5704ef3a635eeaffb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735524"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579915"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Zlepšení výkonu aplikací Azure pomocí Azure Advisor
 
@@ -88,7 +88,7 @@ Migrujte model nasazení účtu úložiště na Azure Resource Manager, abyste m
 Služba Advisor identifikuje všechny samostatné účty úložiště, které používají model nasazení Classic, a doporučuje migraci na model nasazení Správce prostředků.
 
 > [!NOTE]
-> Klasické výstrahy v Azure Monitor byly vyřazeny v srpnu 2019. Doporučujeme vám upgradovat klasický účet úložiště, aby používal Správce prostředků k uchování funkcí upozorňování s novou platformou. Další informace najdete v tématu [vyřazení klasických výstrah](../azure-monitor/platform/monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform).
+> Klasické výstrahy v Azure Monitor byly vyřazeny v srpnu 2019. Doporučujeme vám upgradovat klasický účet úložiště, aby používal Správce prostředků k uchování funkcí upozorňování s novou platformou. Další informace najdete v tématu [vyřazení klasických výstrah](../azure-monitor/alerts/monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform).
 
 ## <a name="design-your-storage-accounts-to-prevent-reaching-the-maximum-subscription-limit"></a>Navrhněte svoje účty úložiště, abyste zabránili dosažení maximálního limitu předplatného.
 

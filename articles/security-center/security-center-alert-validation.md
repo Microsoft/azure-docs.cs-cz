@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 598c13b0434a364e73471b53c82663b94fb42f4e
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 3bdc0af2ea581954cb5edd2c7d00d286f814506c
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560097"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633593"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Ověřování výstrah v Azure Security Center
 Pomocí tohoto dokumentu se naučíte ověřovat, jestli je váš systém správně nakonfigurovaný pro výstrahy služby Azure Security Center.
@@ -28,7 +28,7 @@ Výstrahy jsou oznámení, která Security Center generuje, když zjistí ohrož
 Další informace najdete v tématech [výstrahy zabezpečení v Security Center](security-center-alerts-overview.md) a [Správa a reakce na výstrahy zabezpečení](security-center-managing-and-responding-alerts.md) .
 
 
-## <a name="generate-sample-azure-defender-alerts"></a>Generování ukázkových výstrah Azure Defenderu
+## <a name="generate-sample-azure-defender-alerts"></a>Generování ukázkových upozornění Azure Defenderu
 
 Pokud používáte nové prostředí výstrah ve verzi Preview, jak je popsáno v tématu [Správa a reakce na výstrahy zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md), můžete pomocí několika kliknutí na stránce výstrahy zabezpečení v Azure Portal vytvořit ukázkové výstrahy.
 
@@ -36,11 +36,6 @@ Použijte ukázkové výstrahy pro:
 
 - vyhodnocení hodnoty a možností v Azure Defenderu
 - Ověřte všechny konfigurace, které jste udělali pro výstrahy zabezpečení (například integrace SIEM, automatizace pracovních postupů a e-mailová oznámení).
-
-> [!NOTE]
-> Tento postup vyžaduje, aby v horní části stránky **výstrahy zabezpečení** bylo dostupné nové (Preview) výstrahy.
->
-> :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="Banner s odkazem na nové prostředí upozornění ve verzi Preview":::
 
 Postup vytvoření ukázkových výstrah:
 
