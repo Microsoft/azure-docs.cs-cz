@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 01/21/2021
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: e4a5803b3d04b59316f71e50af24945efc87cb69
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 944e233fafc4cf5c8c90041e18f94d0e53b7bb46
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677559"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591534"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Zabránit autorizaci sdíleného klíče pro účet Azure Storage (Preview)
 
@@ -41,7 +41,7 @@ Další informace o interpretaci požadavků provedených se sdíleným přístu
 
 ### <a name="monitor-how-many-requests-are-authorized-with-shared-key"></a>Sledovat, kolik požadavků je autorizováno se sdíleným klíčem
 
-Chcete-li sledovat, jak jsou požadavky na účet úložiště autorizovány, použijte Azure Průzkumník metrik v Azure Portal. Další informace o Průzkumník metrik najdete v tématu [Začínáme s Azure Průzkumník metrik](../../azure-monitor/platform/metrics-getting-started.md).
+Chcete-li sledovat, jak jsou požadavky na účet úložiště autorizovány, použijte Azure Průzkumník metrik v Azure Portal. Další informace o Průzkumník metrik najdete v tématu [Začínáme s Azure Průzkumník metrik](../../azure-monitor/essentials/metrics-getting-started.md).
 
 Pomocí těchto kroků můžete vytvořit metriku, která bude sledovat požadavky vytvořené pomocí sdíleného klíče nebo SAS:
 
@@ -67,7 +67,7 @@ Po nakonfigurování metriky se v grafu začnou zobrazovat požadavky na váš �
 
 :::image type="content" source="media/shared-key-authorization-prevent/metric-shared-key-requests.png" alt-text="Snímek obrazovky znázorňující agregované požadavky s povoleným sdíleným klíčem":::
 
-Můžete také nakonfigurovat pravidlo výstrahy, které vás upozorní, když se v účtu úložiště vytvoří určitý počet požadavků, které jsou autorizované se sdíleným klíčem. Další informace najdete v tématu [Vytvoření, zobrazení a správa výstrah metrik pomocí Azure monitor](../../azure-monitor/platform/alerts-metric.md).
+Můžete také nakonfigurovat pravidlo výstrahy, které vás upozorní, když se v účtu úložiště vytvoří určitý počet požadavků, které jsou autorizované se sdíleným klíčem. Další informace najdete v tématu [Vytvoření, zobrazení a správa výstrah metrik pomocí Azure monitor](../../azure-monitor/alerts/alerts-metric.md).
 
 ### <a name="analyze-logs-to-identify-clients-that-are-authorizing-requests-with-shared-key-or-sas"></a>Analýza protokolů pro identifikaci klientů, kteří autorizují žádosti se sdíleným klíčem nebo SAS
 
@@ -75,14 +75,14 @@ Protokoly Azure Storage zaznamenávají informace o požadavcích provedených p
 
 Pokud chcete protokolovat požadavky na účet Azure Storage, abyste mohli vyhodnotit, jak jsou autorizované, můžete použít Azure Storage přihlášení Azure Monitor (Preview). Další informace najdete v tématu [monitorování Azure Storage](../blobs/monitor-blob-storage.md).
 
-Azure Storage přihlášení Azure Monitor podporuje použití dotazů protokolu k analýze dat protokolu. K dotazování protokolů můžete použít pracovní prostor Azure Log Analytics. Další informace o dotazech protokolu najdete v tématu [kurz: Začínáme s Log Analytics dotazy](../../azure-monitor/log-query/log-analytics-tutorial.md).
+Azure Storage přihlášení Azure Monitor podporuje použití dotazů protokolu k analýze dat protokolu. K dotazování protokolů můžete použít pracovní prostor Azure Log Analytics. Další informace o dotazech protokolu najdete v tématu [kurz: Začínáme s Log Analytics dotazy](../../azure-monitor/logs/log-analytics-tutorial.md).
 
 #### <a name="create-a-diagnostic-setting-in-the-azure-portal"></a>Vytvoření nastavení diagnostiky v Azure Portal
 
 Pokud chcete protokolovat data Azure Storage pomocí Azure Monitor a analyzovat je pomocí Azure Log Analytics, musíte nejdřív vytvořit nastavení diagnostiky, které indikuje, jaké typy požadavků a pro které služby úložiště chcete data protokolovat. Chcete-li v Azure Portal vytvořit nastavení diagnostiky, postupujte takto:
 
 1. Zaregistrujte se [Azure Storage přihlašování Azure monitor ve verzi Preview](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u).
-1. Vytvořte nový pracovní prostor Log Analytics v předplatném, které obsahuje účet Azure Storage, nebo použijte existující Log Analytics pracovní prostor. Po nakonfigurování protokolování účtu úložiště budou protokoly k dispozici v pracovním prostoru Log Analytics. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../azure-monitor/learn/quick-create-workspace.md).
+1. Vytvořte nový pracovní prostor Log Analytics v předplatném, které obsahuje účet Azure Storage, nebo použijte existující Log Analytics pracovní prostor. Po nakonfigurování protokolování účtu úložiště budou protokoly k dispozici v pracovním prostoru Log Analytics. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../azure-monitor/logs/quick-create-workspace.md).
 1. Na webu Azure Portal přejděte na svůj účet úložiště.
 1. V části monitorování vyberte **nastavení diagnostiky (Preview)**.
 1. Vyberte službu Azure Storage, pro kterou chcete protokolovat požadavky. Například vyberte **objekt BLOB** , který bude protokolovat požadavky do úložiště objektů BLOB.
@@ -95,7 +95,7 @@ Pokud chcete protokolovat data Azure Storage pomocí Azure Monitor a analyzovat 
 
 Pro každý typ Azure Storage prostředku v účtu úložiště můžete vytvořit nastavení diagnostiky.
 
-Po vytvoření nastavení diagnostiky se požadavky na účet úložiště následně protokolují podle tohoto nastavení. Další informace najdete v tématu [Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik prostředků v Azure](../../azure-monitor/platform/diagnostic-settings.md).
+Po vytvoření nastavení diagnostiky se požadavky na účet úložiště následně protokolují podle tohoto nastavení. Další informace najdete v tématu [Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik prostředků v Azure](../../azure-monitor/essentials/diagnostic-settings.md).
 
 Odkaz na pole, která jsou k dispozici v Azure Storage protokoly v Azure Monitor, najdete v tématu [protokoly prostředků (Preview)](../blobs/monitor-blob-storage-reference.md#resource-logs-preview).
 
@@ -110,7 +110,7 @@ StorageBlobLogs
 | top 10 by count_ desc
 ```
 
-Můžete také nakonfigurovat pravidlo výstrahy na základě tohoto dotazu, které vás upozorní na požadavky autorizované se sdíleným klíčem nebo SAS. Další informace najdete v tématu [Vytvoření, zobrazení a správa výstrah protokolu pomocí Azure monitor](../../azure-monitor/platform/alerts-log.md).
+Můžete také nakonfigurovat pravidlo výstrahy na základě tohoto dotazu, které vás upozorní na požadavky autorizované se sdíleným klíčem nebo SAS. Další informace najdete v tématu [Vytvoření, zobrazení a správa výstrah protokolu pomocí Azure monitor](../../azure-monitor/alerts/alerts-log.md).
 
 ## <a name="remediate-authorization-via-shared-key"></a>Opravit autorizaci pomocí sdíleného klíče
 
@@ -193,13 +193,13 @@ resources
 
 ## <a name="permissions-for-allowing-or-disallowing-shared-key-access"></a>Oprávnění pro povolení nebo zákaz přístupu ke sdíleným klíčům
 
-Aby uživatel mohl nastavit vlastnost **AllowSharedKeyAccess** pro účet úložiště, musí mít oprávnění k vytváření a správě účtů úložiště. Role řízení přístupu na základě role Azure (Azure RBAC), které poskytují tato oprávnění, zahrnují akci **Microsoft. Storage/storageAccounts/Write** nebo **Microsoft. Storage/ \* storageAccounts/* _. Mezi předdefinované role s touto akcí patří:
+Aby uživatel mohl nastavit vlastnost **AllowSharedKeyAccess** pro účet úložiště, musí mít oprávnění k vytváření a správě účtů úložiště. Role řízení přístupu na základě role Azure (Azure RBAC), které poskytují tato oprávnění, zahrnují **Microsoft. Storage/storageAccounts/Write** nebo **Microsoft. Storage/storageAccounts \* /** Action. Mezi předdefinované role s touto akcí patří:
 
 - Role [vlastníka](../../role-based-access-control/built-in-roles.md#owner) Azure Resource Manager
 - Role [přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) Azure Resource Manager
 - Role [Přispěvatel účtu úložiště](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Tyto role neposkytují přístup k datům v účtu úložiště prostřednictvím služby Azure Active Directory (Azure AD). Zahrnují však _ * Microsoft. Storage/storageAccounts/klíče listkey/Action * *, který uděluje přístup k klíčům pro přístup k účtu. S tímto oprávněním může uživatel použít přístupové klíče účtu pro přístup ke všem datům v účtu úložiště.
+Tyto role neposkytují přístup k datům v účtu úložiště prostřednictvím služby Azure Active Directory (Azure AD). Zahrnují však **akci Microsoft. Storage/storageAccounts/klíče listkey/Action**, která uděluje přístup k klíčům pro přístup k účtu. S tímto oprávněním může uživatel použít přístupové klíče účtu pro přístup ke všem datům v účtu úložiště.
 
 Přiřazení role musí být vymezené na úrovni účtu úložiště nebo vyšší, aby uživatel mohl povolit nebo zakázat přístup ke sdíleným klíčům pro účet úložiště. Další informace o rozsahu role najdete v tématu [vysvětlení oboru pro službu Azure RBAC](../../role-based-access-control/scope-overview.md).
 
