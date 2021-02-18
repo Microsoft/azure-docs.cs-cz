@@ -5,12 +5,12 @@ author: anthonychu
 ms.author: antchu
 ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: f527b387afc01eb60bd582adc13a4ad3d516055b
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: dd112c74ea9f013a0e14bddd735060ddbf73c14e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936987"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578530"
 ---
 # <a name="azure-functions-custom-handlers"></a>Azure Functions vlastní obslužné rutiny
 
@@ -121,9 +121,6 @@ Pro vlastní obslužné rutiny nastavte `FUNCTIONS_WORKER_RUNTIME` na `Custom` i
   }
 }
 ```
-
-> [!NOTE]
-> `Custom` nemusí být rozpoznán jako platný modul runtime v plánech pro Linux Premium nebo App Service. Pokud je to váš cíl nasazení, nastavte `FUNCTIONS_WORKER_RUNTIME` na prázdný řetězec.
 
 ### <a name="function-metadata"></a>Metadata funkce
 
@@ -580,7 +577,7 @@ Tuto strategii můžete použít také v kanálech CI/CD a spouštět automatizo
 
 Vlastní obslužné rutiny běží ve stejném prostředí jako typická aplikace Azure Functions. Otestujte obslužnou rutinu, abyste zajistili, že prostředí obsahuje všechny závislosti, které musí spustit. U aplikací, které vyžadují další závislosti, je možná budete muset spustit pomocí [vlastní image kontejneru](functions-create-function-linux-custom-image.md) hostované v plánu Azure Functions [Premium](functions-premium-plan.md).
 
-### <a name="get-support"></a>Získat podporu
+### <a name="get-support"></a>Získání podpory
 
 Pokud potřebujete pomoc s vlastními obslužnými rutinami aplikace Function App, můžete odeslat žádost prostřednictvím běžných kanálů podpory. Vzhledem k nejrůznějším jazykům, které se používají k vytváření vlastních obslužných rutin, ale podpora není neomezené.
 

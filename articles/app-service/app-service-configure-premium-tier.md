@@ -6,18 +6,18 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 7ade24b6478f78a51e0be68ae69ae0b076ecff1f
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: c187a1521762c0b69d42c81f464694729d3c02f7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607870"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594220"
 ---
 # <a name="configure-premiumv3-tier-for-azure-app-service"></a>Konfigurace PremiumV3 úrovně pro Azure App Service
 
 Nová cenová úroveň **PremiumV3** poskytuje rychlejší procesory, SSD úložiště a čtyřnásobné poměry paměti k jádrům pro stávající cenové úrovně (dvě úrovně **PremiumV2** ). Díky výhodám výkonu můžete ušetřit peníze tím, že své aplikace spustíte na méně instancí. V tomto článku se dozvíte, jak vytvořit aplikaci ve vrstvě **PremiumV3** nebo jak škálovat aplikaci na **PremiumV3** vrstvu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli škálovat aplikaci na **PremiumV3**, musíte mít Azure App Service aplikaci, která běží v cenové úrovni nižší než **PremiumV3**, a aplikace musí běžet v nasazení App Service, které podporuje PremiumV3.
 
@@ -124,4 +124,4 @@ New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
 ## <a name="more-resources"></a>Další zdroje informací
 
 [Horizontální navýšení kapacity aplikace v Azure](manage-scale-up.md) 
- [Ruční nebo automatické škálování počtu instancí](../azure-monitor/platform/autoscale-get-started.md)
+ [Ruční nebo automatické škálování počtu instancí](../azure-monitor/autoscale/autoscale-get-started.md)

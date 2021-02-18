@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 2d72027082ed2b57b28a15a736c35801ba88188c
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: a5639d583d9b98f6527e47bf5db213cb191ebeb7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832517"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575303"
 ---
 # <a name="view-and-configure-ddos-protection-alerts"></a>Zobrazení a konfigurace upozornění ochrany před útoky DDoS
 
@@ -72,7 +72,7 @@ Během několika minut detekce útoku byste měli obdržet e-mail od Azure Monit
 
 ![Upozornění na útok](./media/manage-ddos-protection/ddos-alert.png)
 
-Můžete si taky přečíst další informace o [konfiguraci webhooků](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [Logic Apps](../logic-apps/logic-apps-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro vytváření výstrah.
+Můžete si taky přečíst další informace o [konfiguraci webhooků](../azure-monitor/alerts/alerts-webhooks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [Logic Apps](../logic-apps/logic-apps-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro vytváření výstrah.
 
 ## <a name="view-alerts-in-azure-security-center"></a>Zobrazit výstrahy v Azure Security Center
 

@@ -7,12 +7,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: bf8ea45f37e421d70a68c4a6e138f5203e92d78f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 620dadbaba049d6baea54b3b64c9e248fc48004a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87045765"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573441"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Monitorování skupin prostředků pomocí Azure Monitor (Preview)
 
@@ -46,9 +46,9 @@ Stránka přehledy skupiny prostředků nabízí několik dalších nástrojů s
 
    |         |          |
    | ---------------- |:-----|
-   | [**Výstrahy**](../platform/alerts-overview.md)      |  Zobrazovat, vytvářet a spravovat výstrahy. |
-   | [**Metriky**](../platform/data-platform.md) | Vizualizujte a zkoumejte data založená na metrikách.    |
-   | [**Protokoly aktivit**](../platform/platform-logs-overview.md) | Události na úrovni předplatného, ke kterým došlo v Azure  |
+   | [**Výstrahy**](../alerts/alerts-overview.md)      |  Zobrazovat, vytvářet a spravovat výstrahy. |
+   | [**Metriky**](../data-platform.md) | Vizualizujte a zkoumejte data založená na metrikách.    |
+   | [**Protokoly aktivit**](../essentials/platform-logs-overview.md) | Události na úrovni předplatného, ke kterým došlo v Azure  |
    | [**Mapa aplikace**](../app/app-map.md) | Pokud chcete identifikovat problémová místa výkonu nebo výpadky selhání, přejděte k topologii distribuované aplikace. |
 
 ## <a name="failures-and-performance"></a>Selhání a výkon
@@ -113,10 +113,10 @@ Pokud chcete zobrazit výstrahy v Azure Monitor pro skupiny prostředků, musí 
 
 Azure Monitor pro skupiny prostředků spoléhá na to, že systém pro správu výstrah Azure Monitor načítá stav výstrahy. Správa výstrah není ve výchozím nastavení nakonfigurována pro každou skupinu prostředků a předplatné a může ji povolit pouze osoba s rolí vlastníka nebo přispěvatele. Dá se povolit buď pomocí:
 * Otevírají se Azure Monitor pro skupiny prostředků pro libovolnou skupinu prostředků v předplatném.
-* Nebo kliknutím na předplatné, kliknutím na **poskytovatelé prostředků**klikněte na **zaregistrovat pro výstrahy. Management**.
+* Nebo kliknutím na předplatné, kliknutím na **poskytovatelé prostředků** klikněte na **zaregistrovat pro výstrahy. Management**.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Monitor sešity](../platform/workbooks-overview.md)
+- [Azure Monitor sešity](../visualize/workbooks-overview.md)
 - [Azure Resource Health](../../service-health/resource-health-overview.md)
-- [Upozornění služby Azure Monitor](../platform/alerts-overview.md)
+- [Upozornění služby Azure Monitor](../alerts/alerts-overview.md)

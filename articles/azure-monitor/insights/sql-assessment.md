@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 98caca31e172f54c3e37f33c5a463790d9d27032
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0a7a5b9e19436deaed45382fe23063fa61edadf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325980"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587247"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Optimalizujte prostředí SQL pomocí řešení pro kontrolu stavu SQL Server v Azure Monitor
 
@@ -44,9 +44,9 @@ Po přidání řešení a dokončení posouzení se souhrnné informace pro obla
 
 Chcete-li provést kontrolu stavu na serverech SQL Server, vyžadují agenta a připojení k Azure Monitor pomocí jedné z následujících podporovaných metod:
 
-1. Nainstalujte [Microsoft Monitoring Agent (MMA)](../platform/agent-windows.md) , pokud server ještě není monitorovaný pomocí nástroje System Center 2016-Operations Manager nebo Operations Manager 2012 R2.
+1. Nainstalujte [Microsoft Monitoring Agent (MMA)](../agents/agent-windows.md) , pokud server ještě není monitorovaný pomocí nástroje System Center 2016-Operations Manager nebo Operations Manager 2012 R2.
 2. Pokud je monitorovaná pomocí nástroje System Center 2016-Operations Manager nebo Operations Manager 2012 R2 a skupina pro správu není integrována s Azure Monitor, může být server s využitím více domovských Log Analytics pro shromažďování dat a přeposílání do služby a nadále je monitorován pomocí Operations Manager.  
-3. V opačném případě, pokud je vaše skupina pro správu Operations Manager integrovaná se službou, je nutné přidat řadiče domény pro shromažďování dat službou podle kroků v části [Přidání počítačů spravovaných agentem](../platform/om-agents.md#connecting-operations-manager-to-azure-monitor) po povolení řešení ve vašem pracovním prostoru.  
+3. V opačném případě, pokud je vaše skupina pro správu Operations Manager integrovaná se službou, je nutné přidat řadiče domény pro shromažďování dat službou podle kroků v části [Přidání počítačů spravovaných agentem](../agents/om-agents.md#connecting-operations-manager-to-azure-monitor) po povolení řešení ve vašem pracovním prostoru.  
 
 Agent na vašem SQL Server, který hlásí skupinu pro správu Operations Manager, shromažďuje data, přechází na přiřazenou management server a pak se pošle přímo z management server do Azure Monitor.  Data nejsou zapsána do databází Operations Manager.  
 
@@ -56,7 +56,7 @@ Pokud je SQL Server monitorovaná pomocí Operations Manager, je třeba nakonfig
 Při kontrole stavu SQL se shromažďují data z následujících zdrojů pomocí agenta, který jste povolili:
 
 * Windows Management Instrumentation (WMI)
-* Registry
+* Registr
 * Čítače výkonu
 * Výsledky zobrazení dynamické správy SQL Server
 
@@ -77,7 +77,7 @@ Pomocí následujících informací nastavte účet Operations Manager spustit j
 >
 
 1. V Operations Manager otevřete konzoli Operations Console a klikněte na **Správa**.
-2. V části **Konfigurace spustit jako**klikněte na **profily**a otevřete **SQL Assessment profil spustit jako**.
+2. V části **Konfigurace spustit jako** klikněte na **profily** a otevřete **SQL Assessment profil spustit jako**.
 3. Na stránce **Účty Spustit jako** klikněte na tlačítko **Přidat**.
 4. Vyberte účet Spustit jako pro Windows, který obsahuje přihlašovací údaje potřebné pro SQL Server, nebo klikněte na **Nový** a vytvořte si ho.
 
@@ -161,7 +161,7 @@ Podívejte se na souhrnná vyhodnocení dodržování předpisů pro vaši infra
 4. Na stránce **Přehled** klikněte na dlaždici **kontroly stavu SQL** .
 5. Na stránce **Kontrola stavu** zkontrolujte souhrnné informace v jednom z oken detailní oblasti a potom klikněte na jednu pro zobrazení doporučení pro tuto oblast výběru.
 6. Na kterékoli stránce oblasti pro zaměření si můžete prohlédnout doporučení s prioritou vytvořená pro vaše prostředí. Kliknutím na doporučení v části **Ovlivněné objekty** zobrazíte podrobnosti o tom, proč se doporučení udělalo.<br><br> ![Obrázek doporučení pro kontrolu stavu SQL](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
-7. V **navrhovaných akcích**můžete provést opravné akce. Po vyřešení této položky budou později vyhodnoceny záznamy o tom, že byly provedeny doporučené akce a že se bude zvyšovat skóre dodržování předpisů. Opravené položky se zobrazí jako **předané objekty**.
+7. V **navrhovaných akcích** můžete provést opravné akce. Po vyřešení této položky budou později vyhodnoceny záznamy o tom, že byly provedeny doporučené akce a že se bude zvyšovat skóre dodržování předpisů. Opravené položky se zobrazí jako **předané objekty**.
 
 ## <a name="ignore-recommendations"></a>Ignorování doporučení
 Pokud máte doporučení, která chcete ignorovat, můžete vytvořit textový soubor, který Azure Monitor použít k tomu, aby se předešlo zobrazování doporučení ve výsledcích hodnocení.
@@ -236,7 +236,7 @@ Výsledky pak lze exportovat do aplikace Excel pro další kontrolu.
 
 * Shromažďují se tyto typy dat:
   * Rozhraní WMI
-  * Registry
+  * Registr
   * Čítače výkonu
   * Zobrazení dynamické správy SQL (DMV).
 
@@ -257,5 +257,5 @@ Výsledky pak lze exportovat do aplikace Excel pro další kontrolu.
 * Ano, podívejte se na část [Ignorovat doporučení](#ignore-recommendations) výše.
 
 ## <a name="next-steps"></a>Další kroky
-* [Dotazy protokolu](../log-query/log-query-overview.md) pro informace o tom, jak analyzovat podrobné údaje o kontrole stavu SQL a doporučení.
+* [Dotazy protokolu](../logs/log-query-overview.md) pro informace o tom, jak analyzovat podrobné údaje o kontrole stavu SQL a doporučení.
 

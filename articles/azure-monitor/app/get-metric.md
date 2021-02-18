@@ -5,12 +5,12 @@ ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 345d0d31528f7bdc40be4400e783ad5be45df72f
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: b4a255235b2c6d772ab9a05dffacd4574ddd3280
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930556"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584183"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Kolekce vlastních metrik v rozhraní .NET a .NET Core
 
@@ -109,7 +109,7 @@ Pokud prověříme náš Application Insights prostředek v prostředí log (Ana
 > [!NOTE]
 > I když nezpracovaná položka telemetrie neobsahovala explicitní vlastnost Sum nebo pole, vytvoříme pro vás jednu. V tomto případě `value` `valueSum` představuje vlastnost i stejnou věc.
 
-K vlastní telemetrii metriky můžete také přistupovat v části [_metriky_](../platform/metrics-charts.md) na portálu. Jak v závislosti na protokolu, tak i ve [vlastní metrikě](pre-aggregated-metrics-log-metrics.md). (Na snímku obrazovky níže je příklad založený na protokolu.) ![Zobrazení Průzkumníka metrik](./media/get-metric/metrics-explorer.png)
+K vlastní telemetrii metriky můžete také přistupovat v části [_metriky_](../essentials/metrics-charts.md) na portálu. Jak v závislosti na protokolu, tak i ve [vlastní metrikě](pre-aggregated-metrics-log-metrics.md). (Na snímku obrazovky níže je příklad založený na protokolu.) ![Zobrazení Průzkumníka metrik](./media/get-metric/metrics-explorer.png)
 
 ### <a name="caching-metric-reference-for-high-throughput-usage"></a>Ukládání referenčních informací metriky do mezipaměti pro použití s vysokou propustností
 
@@ -302,6 +302,6 @@ SeverityLevel.Error);
 
 * [Přečtěte si další informace ](./worker-service.md)o monitorování aplikací služby Worker.
 * Pro další podrobnosti o [protokolech založených na protokolu a předem agregovaných metrikách](./pre-aggregated-metrics-log-metrics.md).
-* [Průzkumník metrik](../platform/metrics-getting-started.md)
+* [Průzkumník metrik](../essentials/metrics-getting-started.md)
 * Postup povolení Application Insights pro [ASP.NET Core aplikace](asp-net-core.md)
 * Postup povolení Application Insights pro [aplikace ASP.NET](asp-net.md)

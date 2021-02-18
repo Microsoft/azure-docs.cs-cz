@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 82af70547d20509c48f1e07bbc7610fc666a6da1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8b3ce2c195dc2fa3dd703306e731aa5b807b78b1
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393050"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100648599"
 ---
 # <a name="manage-permissions-to-restore-an-azure-cosmos-db-account"></a>Správa oprávnění k obnovení účtu Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -61,7 +61,7 @@ K provádění různých aktivit, které se vztahují k obnovení účtů režim
 |Oprávnění  |Dopad  |Minimální rozsah  |Maximální rozsah  |
 |---------|---------|---------|---------|
 |`Microsoft.Resources/deployments/validate/action`, `Microsoft.Resources/deployments/write` | Tato oprávnění jsou nutná k vytvoření obnoveného účtu nasazením šablony ARM. Postup nastavení této role najdete níže v ukázce oprávnění [RestorableAction](#custom-restorable-action) . | Nelze použít | Nelze použít  |
-|Microsoft.DocumentDB/databaseAccounts/Write | Toto oprávnění se vyžaduje k obnovení účtu do skupiny prostředků. | Skupina prostředků, pod kterou se vytvoří obnovený účet. | Předplatné, pod kterým je vytvořený obnovený účet |
+|`Microsoft.DocumentDB/databaseAccounts/write` | Toto oprávnění se vyžaduje k obnovení účtu do skupiny prostředků. | Skupina prostředků, pod kterou se vytvoří obnovený účet. | Předplatné, pod kterým je vytvořený obnovený účet |
 |`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` |Toto oprávnění je vyžadováno v oboru účtu databáze zdrojového obnovitelné, aby bylo možné provádět akce obnovení.  | Prostředek *RestorableDatabaseAccount* patřící k obnovenému zdrojovému účtu. Tato hodnota je také dána `ID` vlastností prostředku databázového účtu obnovitelné. Příkladem účtu obnovitelné je */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/Locations/RegionName/restorableDatabaseAccounts/<GUID-instanceid>* | Předplatné obsahující účet databáze obnovitelné Skupinu prostředků nelze zvolit jako obor.  |
 |`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` |Toto oprávnění je vyžadováno v oboru databázového účtu obnovitelné zdrojového kódu pro výpis účtů databáze, které je možné obnovit.  | Prostředek *RestorableDatabaseAccount* patřící k obnovenému zdrojovému účtu. Tato hodnota je také dána `ID` vlastností prostředku databázového účtu obnovitelné. Příkladem účtu obnovitelné je */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/Locations/RegionName/restorableDatabaseAccounts/<GUID-instanceid>*| Předplatné obsahující účet databáze obnovitelné Skupinu prostředků nelze zvolit jako obor.  |
 |`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` | Toto oprávnění se vyžaduje v oboru zdrojového účtu obnovitelné, aby bylo možné číst prostředky obnovitelné, jako je například seznam databází a kontejnerů pro účet obnovitelné.  | Prostředek *RestorableDatabaseAccount* patřící k obnovenému zdrojovému účtu. Tato hodnota je také dána `ID` vlastností prostředku databázového účtu obnovitelné. Příkladem účtu obnovitelné je */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/Locations/RegionName/restorableDatabaseAccounts/<GUID-instanceid>*| Předplatné obsahující účet databáze obnovitelné Skupinu prostředků nelze zvolit jako obor. |

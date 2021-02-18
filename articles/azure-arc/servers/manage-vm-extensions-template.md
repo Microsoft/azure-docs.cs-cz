@@ -3,12 +3,12 @@ title: Povolení rozšíření virtuálního počítače pomocí šablony Azure 
 description: Tento článek popisuje, jak nasadit rozšíření virtuálních počítačů na servery s podporou ARC Azure běžícími v hybridních cloudových prostředích pomocí šablony Azure Resource Manager.
 ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0115bda614133891275daff96c94dc4b1a680ccf
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: b84f9d4d13de3ce2d661e254528e1f0a304001f4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555109"
+ms.locfileid: "100580932"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>Povolení rozšíření virtuálních počítačů Azure pomocí šablony ARM
 
@@ -545,7 +545,7 @@ Chcete-li použít rozšíření PowerShell DSC, je k dispozici následující u
 
 ## <a name="deploy-the-dependency-agent-extension"></a>Nasazení rozšíření agenta závislostí
 
-Chcete-li použít rozšíření agenta závislosti Azure Monitor, je k dispozici následující ukázka pro spuštění v systému Windows a Linux. Pokud neznáte agenta závislostí, přečtěte si téma [přehled Azure Monitorch agentů](../../azure-monitor/platform/agents-overview.md#dependency-agent).
+Chcete-li použít rozšíření agenta závislosti Azure Monitor, je k dispozici následující ukázka pro spuštění v systému Windows a Linux. Pokud neznáte agenta závislostí, přečtěte si téma [přehled Azure Monitorch agentů](../../azure-monitor/agents/agents-overview.md#dependency-agent).
 
 ### <a name="template-file-for-linux"></a>Soubor šablony pro Linux
 

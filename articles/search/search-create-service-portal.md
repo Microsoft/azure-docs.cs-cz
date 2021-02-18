@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/15/2021
-ms.openlocfilehash: 7149233782815deebebde53767a3c654ac2321bb
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 8a61ad1599a2d4d1aeaf8b36d2f92d95ec1896a0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547753"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573029"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rychlé zprovoznění: Vytvoření služby Azure Cognitive Search na portálu
 
@@ -27,9 +27,9 @@ Službu Search můžete vytvořit pomocí [Azure Portal](https://portal.azure.co
 
 Pro dobu života služby jsou opraveny následující vlastnosti služby – změna kterékoli z nich vyžaduje novou službu. Vzhledem k tomu, že jsou pevně dané, zvažte použití dopadu při vyplňování jednotlivých vlastností:
 
-* Název služby se může nacházet v rámci koncového bodu adresy URL ([recenze tipů](#name-the-service) pro užitečné názvy služeb).
-* [Úroveň služby](search-sku-tier.md) má vliv na fakturaci a nastavuje limit nahoru pro kapacitu. Některé funkce nejsou dostupné na úrovni Free.
-* Oblast služby může určit dostupnost určitých scénářů. Pokud potřebujete [funkce s vysokým zabezpečením](search-security-overview.md) nebo [obohacení AI](cognitive-search-concept-intro.md), budete muset vytvořit Azure kognitivní hledání ve stejné oblasti jako jiné služby nebo v oblastech, které tuto funkci poskytují. 
++ Název služby se může nacházet v rámci koncového bodu adresy URL ([recenze tipů](#name-the-service) pro užitečné názvy služeb).
++ [Úroveň služby](search-sku-tier.md) má vliv na fakturaci a nastavuje limit nahoru pro kapacitu. Některé funkce nejsou dostupné na úrovni Free.
++ Oblast služby může určit dostupnost určitých scénářů. Pokud potřebujete [funkce s vysokým zabezpečením](search-security-overview.md) nebo [obohacení AI](cognitive-search-concept-intro.md), budete muset vytvořit Azure kognitivní hledání ve stejné oblasti jako jiné služby nebo v oblastech, které tuto funkci poskytují. 
 
 ## <a name="subscribe-free-or-paid"></a>Předplatné (bezplatné nebo placené)
 
@@ -72,30 +72,30 @@ V části Podrobnosti o instanci zadejte název služby do pole **Adresa URL** .
 
 Požadavky na název služby:
 
-* Musí být jedinečný v rámci oboru názvů search.windows.net.
-* Musí mít délku 2 až 60 znaků.
-* Je nutné použít malá písmena, číslice nebo pomlčky (-).
-* Nepoužívejte pomlčky ("-") v prvních 2 znacích nebo jako poslední znak.
-* Nemusíte používat po sobě jdoucí pomlčky ("--") kdekoli
++ Musí být jedinečný v rámci oboru názvů search.windows.net.
++ Musí mít délku 2 až 60 znaků.
++ Je nutné použít malá písmena, číslice nebo pomlčky (-).
++ Nepoužívejte pomlčky ("-") v prvních 2 znacích nebo jako poslední znak.
++ Nemusíte používat po sobě jdoucí pomlčky ("--") kdekoli
 
 > [!TIP]
 > Pokud si myslíte, že budete používat víc služeb, doporučujeme, abyste do názvu služby jako zásadu vytváření názvů zavedli také oblast (nebo umístění). Služby v rámci stejné oblasti můžou bezplatně vyměňovat data, takže pokud je Azure Kognitivní hledání v Západní USA a máte i další služby v Západní USA, název, který vám `mysearchservice-westus` může při rozhodování o kombinování a připojování prostředků ušetřit cestu na stránku vlastností.
 
 ## <a name="choose-a-location"></a>Zvolte umístění.
 
-Azure Kognitivní hledání je k dispozici ve většině oblastí, jak je uvedeno na [stránce s cenami](https://azure.microsoft.com/pricing/details/search/).
+Služba Azure Kognitivní hledání je k dispozici ve většině oblastí, jak je uvedeno v [produktech dostupných v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=search). Obecně platí, že pokud používáte více služeb Azure, vyberte oblast, která je také hostitelem vašich dat nebo aplikační služby. Tím dojde k minimalizaci nebo zrušení poplatků za šířku pásma pro odchozí data (pro odchozí data se neúčtují žádné poplatky, pokud jsou služby ve stejné oblasti).
 
-Obecně platí, že pokud používáte více služeb Azure, vyberte oblast, která je také hostitelem vašich dat nebo aplikační služby. Tím dojde k minimalizaci nebo zrušení poplatků za šířku pásma pro odchozí data (pro odchozí data se neúčtují žádné poplatky, pokud jsou služby ve stejné oblasti).
++ [Rozšíření AI](cognitive-search-concept-intro.md) vyžaduje, aby Cognitive Services být ve stejné fyzické oblasti jako Azure kognitivní hledání. V takovém případě některé oblasti neposkytují obě možnosti. Stránka [produkty dostupné v oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=search) indikuje dvojí dostupnost zobrazením dvou skládaných značek zaškrtnutí. V nedostupné kombinaci chybí značka zaškrtnutí:
 
-Zákazníci, kteří mají požadavky na provozní kontinuitu a zotavení po havárii (BCDR), by měli vytvořit své služby v [regionálních párů](../best-practices-availability-paired-regions.md#azure-regional-pairs). Pokud například pracujete v Severní Amerika, můžete pro každou službu zvolit Východní USA a Západní USA, nebo Střed USA – sever a Jižní centra USA.
+  :::image type="content" source="media/search-create-service-portal/region-availability.png" alt-text="Regionální dostupnost" border="true":::
 
-Následující funkce jsou k dispozici pouze v určitých oblastech:
++ Požadavky na provozní kontinuitu a zotavení po havárii (BCDR) by měly být splněné vytvořením několika vyhledávacích služeb v [regionálních páru](../best-practices-availability-paired-regions.md#azure-regional-pairs). Pokud například pracujete v Severní Amerika, můžete pro každou vyhledávací službu zvolit Východní USA a Západní USA, případně Střed USA – sever a Jižní centra USA.
 
-* Rozšíření AI vyžaduje, aby Cognitive Services být ve stejné oblasti jako Azure Kognitivní hledání. Nejdříve zvolte [oblast Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) (seznam je menší) a pak zvolte stejnou oblast pro vyhledávací službu.
+Několik funkcí má omezené dostupnosti na základě oblastí. Tato omezení jsou popsaný v dokumentaci k funkcím:
 
-* Dvojité šifrování je dostupné jenom v určitých oblastech. Další informace najdete v tématu [dvojité šifrování](search-security-overview.md#double-encryption) .
++ [Dvojité šifrování](search-security-overview.md#double-encryption)
 
-* Podpora zón dostupnosti se v konkrétních oblastech nabízí na službách vytvořených po konkrétních datech. Další informace najdete [v části "zóny dostupnosti" v tématu škálování pro výkon](search-performance-optimization.md#availability-zones).
++ ["Zóny dostupnosti" ve škále pro výkon](search-performance-optimization.md#availability-zones).
 
 ## <a name="choose-a-pricing-tier"></a>Výběr cenové úrovně
 
@@ -121,7 +121,7 @@ Pokud nepoužíváte portál, programový přístup k vaší nové službě vyž
 
 1. Na stránce **Přehled** vyhledejte a zkopírujte koncový bod adresy URL na pravé straně stránky.
 
-2. Na stránce **klíče** zkopírujte jeden z klíčů správce (Jedná se o ekvivalentní). K vytváření, aktualizaci a odstraňování objektů ve službě se vyžadují klíče rozhraní API pro správu. Naproti tomu klíče dotazů poskytují přístup pro čtení k obsahu indexu.
+1. Na stránce **klíče** zkopírujte jeden z klíčů správce (Jedná se o ekvivalentní). K vytváření, aktualizaci a odstraňování objektů ve službě se vyžadují klíče rozhraní API pro správu. Naproti tomu klíče dotazů poskytují přístup pro čtení k obsahu indexu.
 
    :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="Stránka s přehledem služby s koncovým bodem adresy URL" border="false":::
 
@@ -141,8 +141,8 @@ Přidáním prostředků se zvýší vaše měsíční náklady. [Cenová kalkul
 > Služba musí mít [2 repliky pro smlouvu SLA jen pro čtení a 3 repliky pro smlouvu SLA se čtením a zápisem](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 1. Přejděte na stránku vyhledávací služby na webu Azure Portal.
-2. V levém navigačním podokně vyberte **Nastavení**  >  **škálovat**.
-3. Přetažením posuvníku můžete přidat prostředky obou typů.
+1. V levém navigačním podokně vyberte **Nastavení**  >  **škálovat**.
+1. Přetažením posuvníku můžete přidat prostředky obou typů.
 
 :::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="Přidání kapacity prostřednictvím replik a oddílů" border="false":::
 

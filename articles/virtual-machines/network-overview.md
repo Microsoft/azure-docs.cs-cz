@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 723b556a2e5fd1fae32d50a382c99025ad726bff
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 20cc67d5c6436d7c0f44071509e13af324a88eea
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977353"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578871"
 ---
 # <a name="virtual-networks-and-virtual-machines-in-azure"></a>Virtuální sítě a virtuální počítače v Azure 
 
@@ -33,7 +33,7 @@ Virtuální síť můžete vytvořit předtím, než vytvoříte virtuální po�
 Vedle těchto základních prostředků byste měli zvážit také následující volitelné:
 
 - Skupiny zabezpečení sítě
-- Nástrojů pro vyrovnávání zatížení 
+- Nástroje pro vyrovnávání zatížení 
 
 ## <a name="network-interfaces"></a>Síťová rozhraní
 
@@ -93,7 +93,7 @@ Tato tabulka shrnuje metody, které můžete použít k vytvoření virtuální 
 | [Azure Portal](../virtual-network/quick-create-portal.md) | Pokud při vytváření virtuálního počítače necháte Azure vytvořit virtuální síť, bude její název kombinací názvu skupiny prostředků, která tuto virtuální síť obsahuje, a řetězce **-vnet**. Adresní prostor je 10.0.0.0/24, název požadované podsítě je **default** a rozsah adres podsítě je 10.0.0.0/24. |
 | [Azure PowerShell](../virtual-network/quick-create-powershell.md) | K vytvoření podsítě a virtuální sítě použijete [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworkSubnetConfig) a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) . K přidání podsítě do existující virtuální sítě můžete také použít [příkaz Add-AzVirtualNetworkSubnetConfig](/powershell/module/Az.Network/Add-AzVirtualNetworkSubnetConfig) . |
 | [Azure CLI](../virtual-network/quick-create-cli.md) | Podsíť a virtuální síť se vytvoří ve stejnou dobu. Pro [az network vnet create](/cli/azure/network/vnet) zadejte parametr **--subnet-name** s názvem podsítě. |
-| Šablona | Nejjednodušší způsob, jak vytvořit virtuální síť a podsítě, je stáhnout existující šablonu, například [Virtual Network se dvěma podsítěmi](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets), a upravit ji podle svých potřeb. |
+| Template (Šablona) | Nejjednodušší způsob, jak vytvořit virtuální síť a podsítě, je stáhnout existující šablonu, například [Virtual Network se dvěma podsítěmi](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets), a upravit ji podle svých potřeb. |
 
 ## <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 
@@ -116,7 +116,7 @@ Tato tabulka shrnuje metody, které můžete použít k vytvoření skupiny zabe
 | [Azure CLI](../virtual-network/tutorial-filter-network-traffic-cli.md) | K úvodnímu vytvoření NSG použijte [az network nsg create](/cli/azure/network/nsg). Pro přidání pravidel k NSG použijte [az network nsg rule create](/cli/azure/network/nsg/rule). K přidání NSG do podsítě použijte [az network vnet subnet update](/cli/azure/network/vnet/subnet). |
 | [Šablona](../virtual-network/template-samples.md) | Jako vodítko při nasazování skupiny zabezpečení sítě pomocí šablony použijte článek věnovaný [vytvoření skupiny zabezpečení sítě](https://github.com/Azure/azure-quickstart-templates/tree/master/101-security-group-create). |
 
-## <a name="load-balancers"></a>Nástrojů pro vyrovnávání zatížení
+## <a name="load-balancers"></a>Nástroje pro vyrovnávání zatížení
 
 [Azure Load Balancer](../load-balancer/load-balancer-overview.md) zajišťuje vysokou dostupnost a výkon sítě pro vaše aplikace. Nástroj pro vyrovnávání zatížení je možné nakonfigurovat tak, aby [vyrovnával příchozí přenosy z Internetu](../load-balancer/components.md#frontend-ip-configurations) k virtuálním počítačům nebo aby [vyrovnával přenosy mezi virtuálními počítači ve virtuální síti](../load-balancer/components.md#frontend-ip-configurations). Nástroj pro vyrovnávání zatížení může také vyrovnávat přenosy mezi místními a virtuálními počítači na různých místech v síti nebo předávat externí přenosy konkrétnímu virtuálnímu počítači.
 
@@ -135,10 +135,10 @@ Tato tabulka shrnuje metody, které můžete použít k vytvoření internetové
 
 | Metoda | Popis |
 | ------ | ----------- |
-| portál Azure |  [Pomocí Azure Portal můžete vyrovnávat zatížení internetového provozu na virtuálních počítačích](../load-balancer/tutorial-load-balancer-standard-manage-portal.md). |
-| [Azure PowerShell](../load-balancer/quickstart-load-balancer-standard-internal-powershell.md) | Pokud chcete zadat identifikátor veřejné IP adresy, kterou jste vytvořili dřív, použijte [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) s parametrem **-PublicIpAddress** . Pomocí [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) vytvořte konfiguraci fondu back-end adres. Pomocí [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) vytvořte pravidla příchozího překladu adres (NAT) přidružená ke konfiguraci front-endové IP adresy, kterou jste vytvořili. Pomocí [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) můžete vytvořit sondy, které potřebujete. Pomocí [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) vytvořte konfiguraci nástroje pro vyrovnávání zatížení. K vytvoření nástroje pro vyrovnávání zatížení použijte [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) .|
+| portál Azure |  [Pomocí Azure Portal můžete vyrovnávat zatížení internetového provozu na virtuálních počítačích](../load-balancer/quickstart-load-balancer-standard-public-portal.md). |
+| [Azure PowerShell](../load-balancer/quickstart-load-balancer-standard-public-powershell.md) | Pokud chcete zadat identifikátor veřejné IP adresy, kterou jste vytvořili dřív, použijte [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) s parametrem **-PublicIpAddress** . Pomocí [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) vytvořte konfiguraci fondu back-end adres. Pomocí [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) vytvořte pravidla příchozího překladu adres (NAT) přidružená ke konfiguraci front-endové IP adresy, kterou jste vytvořili. Pomocí [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) můžete vytvořit sondy, které potřebujete. Pomocí [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) vytvořte konfiguraci nástroje pro vyrovnávání zatížení. K vytvoření nástroje pro vyrovnávání zatížení použijte [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) .|
 | [Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md) | Pro vytvoření úvodní konfigurace nástroje pro vyrovnávání zatížení použijte [az network lb create](/cli/azure/network/lb). Pro přidání veřejné IP adresy, kterou jste vytvořili dřív, použijte [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip). K přidání konfigurace fondu back-endových adres použijte [az network lb address-pool create](/cli/azure/network/lb/address-pool). K přidání pravidel NAT použijte [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule). K přidání pravidel nástroje pro vyrovnávání zatížení použijte [az network lb rule create](/cli/azure/network/lb/rule). K přidání sond použijte [az network lb probe create](/cli/azure/network/lb/probe). |
-| [Šablona](../load-balancer/quickstart-load-balancer-standard-public-template.md) | Jako vodítko při nasazování nástroje pro vyrovnávání zatížení pomocí šablony použijte článek věnovaný [vytvoření dvou virtuálních počítačů v nástroji pro vyrovnávání zatížení a konfiguraci pravidel NAT v tomto prostředí](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create). |
+| [Šablona](../load-balancer/quickstart-load-balancer-standard-public-template.md) | Použití [3 virtuálních počítačů v Load Balancer](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create) jako Průvodce nasazením nástroje pro vyrovnávání zatížení pomocí šablony. |
     
 Tato tabulka shrnuje metody, které můžete použít k vytvoření interního nástroje pro vyrovnávání zatížení.
 
@@ -147,7 +147,7 @@ Tato tabulka shrnuje metody, které můžete použít k vytvoření interního n
 | portál Azure | [Zatížení interního provozu můžete vyrovnávat pomocí nástroje pro vyrovnávání zatížení v Azure Portal](../load-balancer/quickstart-load-balancer-standard-internal-portal.md). |
 | [Azure PowerShell](../load-balancer/quickstart-load-balancer-standard-internal-powershell.md) | Pokud chcete v podsíti sítě zadat privátní IP adresu, použijte příkaz [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) s parametrem **-PrivateIpAddress** . Pomocí [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) vytvořte konfiguraci fondu back-end adres. Pomocí [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) vytvořte pravidla příchozího překladu adres (NAT) přidružená ke konfiguraci front-endové IP adresy, kterou jste vytvořili. Pomocí [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) můžete vytvořit sondy, které potřebujete. Pomocí [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) vytvořte konfiguraci nástroje pro vyrovnávání zatížení. K vytvoření nástroje pro vyrovnávání zatížení použijte [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) .|
 | [Azure CLI](../load-balancer/quickstart-load-balancer-standard-internal-cli.md) | Pro vytvoření úvodní konfigurace nástroje pro vyrovnávání zatížení použijte příkaz [az network lb create](/cli/azure/network/lb). K definování privátní IP adresy použijte [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip) s parametrem **--private-ip-address**. K přidání konfigurace fondu back-endových adres použijte [az network lb address-pool create](/cli/azure/network/lb/address-pool). K přidání pravidel NAT použijte [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule). K přidání pravidel nástroje pro vyrovnávání zatížení použijte [az network lb rule create](/cli/azure/network/lb/rule). K přidání sond použijte [az network lb probe create](/cli/azure/network/lb/probe).|
-| [Šablona](../load-balancer/quickstart-load-balancer-standard-internal-template.md) | Jako vodítko při nasazování nástroje pro vyrovnávání zatížení pomocí šablony použijte článek věnovaný [vytvoření dvou virtuálních počítačů v nástroji pro vyrovnávání zatížení a konfiguraci pravidel NAT v tomto prostředí](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer). |
+| [Šablona](../load-balancer/quickstart-load-balancer-standard-internal-template.md) | Jako vodítko pro nasazení nástroje pro vyrovnávání zatížení pomocí šablony použijte [2 virtuální počítače v Load Balancer](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer) . |
 
 ### <a name="virtual-machine-scale-sets"></a>Škálovací sady virtuálních počítačů
 

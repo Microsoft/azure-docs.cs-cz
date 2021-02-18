@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3678ead9f3e1ba2556fde3c2fbe30df4e7dc2225
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 96d1c4c0ad210352be94255609a3a373b408ed23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737231"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593309"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Základní hodnoty zabezpečení Azure pro Batch
 
@@ -142,7 +142,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 - [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
 
-- [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -200,7 +200,7 @@ V případě potřeby se můžete ke svým uzlům fondu připojit pomocí protok
 
 - [Postup konfigurace Azure Batch monitorování a protokolování](monitoring-overview.md)
 
-- [Jak nakonfigurovat dobu uchování v pracovním prostoru Azure Log Analytics](../azure-monitor/platform/manage-cost-storage.md)
+- [Jak nakonfigurovat dobu uchování v pracovním prostoru Azure Log Analytics](../azure-monitor/logs/manage-cost-storage.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -514,7 +514,7 @@ Azure Disk Encryption se dá využít k ochraně a ochraně vašich dat, aby spl
 
 Nakonfigurujte nastavení diagnostiky pro účty úložiště přidružené k fondu Azure Batch, abyste mohli monitorovat a protokolovat všechny operace CRUD pro data fondu.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Jak povolit další protokolování/auditování pro účet Azure Storage](../storage/common/storage-monitor-storage-account.md)
 

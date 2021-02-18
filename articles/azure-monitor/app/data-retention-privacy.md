@@ -4,12 +4,12 @@ description: Prohlášení o zásadách uchovávání a ochrany osobních údaj�
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2205ab1115a66092ae6dd6d75ee7004ab281eec7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54d3e53b71b5f63da84e41a752bbbb6fce65c045
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263908"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579583"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
 
@@ -120,7 +120,7 @@ Ano, některé kanály telemetrie budou uchovávat data místně, pokud koncový
 
 Kanály telemetrie, které využívají místní úložiště, vytvářejí dočasné soubory v adresářích TEMP nebo v adresářích, které jsou omezené na konkrétní účet, na kterém je spuštěná vaše aplikace. K tomu může dojít v případě, že koncový bod nebyl dočasně dostupný nebo pokud jste dosáhli limitu omezení. Až se tento problém vyřeší, kanál telemetrie bude pokračovat v odesílání všech nových a trvalých dat.
 
-Tato trvalá data nejsou šifrována místně. Pokud se to týká, zkontrolujte data a omezte shromažďování soukromých dat. (Další informace najdete v tématu [Jak exportovat a odstranit soukromá data](../platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).)
+Tato trvalá data nejsou šifrována místně. Pokud se to týká, zkontrolujte data a omezte shromažďování soukromých dat. (Další informace najdete v tématu [Jak exportovat a odstranit soukromá data](../logs/personal-data-mgmt.md#how-to-export-and-delete-private-data).)
 
 Pokud zákazník potřebuje nakonfigurovat tento adresář s konkrétními požadavky na zabezpečení, je možné ho nakonfigurovat na rozhraní. Ujistěte se prosím, že proces, ve kterém je aplikace spuštěná, má přístup pro zápis do tohoto adresáře, ale také se ujistěte, že je tento adresář chráněný, aby nedocházelo ke čtení telemetrie nezamýšlenými uživateli.
 
@@ -199,7 +199,7 @@ AzureLogHandler(
 
 ## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>Návody posílat data Application Insights pomocí TLS 1,2?
 
-Aby se zajistilo zabezpečení dat při přenosu do koncových bodů Application Insights, důrazně doporučujeme zákazníkům nakonfigurovat, aby používali aspoň protokol TLS (Transport Layer Security) 1,2. Zjistili jsme, že starší verze TLS/SSL (Secure Sockets Layer) (SSL) jsou zranitelné a i když stále fungují k tomu, aby se zajistila zpětná kompatibilita, **nedoporučuje**se a odvětví se rychle přesouvá na zrušení podpory těchto starších protokolů. 
+Aby se zajistilo zabezpečení dat při přenosu do koncových bodů Application Insights, důrazně doporučujeme zákazníkům nakonfigurovat, aby používali aspoň protokol TLS (Transport Layer Security) 1,2. Zjistili jsme, že starší verze TLS/SSL (Secure Sockets Layer) (SSL) jsou zranitelné a i když stále fungují k tomu, aby se zajistila zpětná kompatibilita, **nedoporučuje** se a odvětví se rychle přesouvá na zrušení podpory těchto starších protokolů. 
 
 [Rada standardů zabezpečení PCI](https://www.pcisecuritystandards.org/) nastavila [konečný termín 30. června 2018](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) pro zakázání starších verzí TLS/SSL a upgradování na bezpečnější protokoly. Až Azure sníží podporu starší verze, pokud vaše aplikace nebo klienti nemůžou komunikovat přes aspoň protokol TLS 1,2, nebudete moct odesílat data Application Insights. Přístup, který jste probrali k otestování a ověření podpory protokolu TLS vaší aplikace, se liší v závislosti na operačním systému nebo platformě a na jazyku nebo architektuře, které vaše aplikace používá.
 
@@ -212,7 +212,7 @@ Nedoporučujeme explicitně nastavit aplikaci tak, aby používala protokol TLS 
 | Azure App Services  | Podporuje se může vyžadovat konfigurace. | Podpora byla oznámena v dubnu 2018. [Podrobnosti o konfiguraci](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!)najdete v oznámení.  |
 | Aplikace Azure Functions | Podporuje se může vyžadovat konfigurace. | Podpora byla oznámena v dubnu 2018. [Podrobnosti o konfiguraci](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!)najdete v oznámení. |
 |.NET | Podporováno, konfigurace se liší podle verze. | Podrobné informace o konfiguraci pro .NET 4,7 a starší verze najdete v [těchto pokynech](/dotnet/framework/network-programming/tls#support-for-tls-12).  |
-|Monitorování stavu | Podporováno, vyžaduje se konfigurace | Monitorování stavu spoléhá na [OS Configuration](/windows-server/security/tls/tls-registry-settings)  +  [konfiguraci rozhraní .NET](/dotnet/framework/network-programming/tls#support-for-tls-12) konfigurace operačního systému pro podporu TLS 1,2.
+|Monitorování stavu | Podporováno, vyžaduje se konfigurace | Monitorování stavu spoléhá na [](/windows-server/security/tls/tls-registry-settings)  +  [konfiguraci rozhraní .NET](/dotnet/framework/network-programming/tls#support-for-tls-12) konfigurace operačního systému pro podporu TLS 1,2.
 |Node.js |  V 10.5.0 může být vyžadována konfigurace, která je podporována. | Pro jakoukoliv konfiguraci specifickou pro aplikaci použijte [oficiální Node.js dokumentaci TLS/SSL](https://nodejs.org/api/tls.html) . |
 |Java | Podpora JDK pro TLS 1,2 byla přidána do [JDK 6 aktualizace 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) a [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | JDK 8 používá standardně [TLS 1,2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
 |Linux | Distribuce systému Linux se obvykle spoléhají na [OpenSSL](https://www.openssl.org) pro podporu TLS 1,2.  | Zkontrolujte [OpenSSL protokolu změn](https://www.openssl.org/news/changelog.html) a potvrďte, že je podporovaná vaše verze OpenSSL.|
@@ -220,7 +220,7 @@ Nedoporučujeme explicitně nastavit aplikaci tak, aby používala protokol TLS 
 | Windows Server 2012 – 2016 | Podporované a povolené ve výchozím nastavení. | Potvrzení, že stále používáte [výchozí nastavení](/windows-server/security/tls/tls-registry-settings) |
 | Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporované, ale nejsou ve výchozím nastavení povolené. | Podrobnosti o tom, jak povolit, najdete na stránce [nastavení registru TLS (Transport Layer Security)](/windows-server/security/tls/tls-registry-settings) .  |
 | Windows Server 2008 SP2 | Podpora TLS 1,2 vyžaduje aktualizaci. | Pokud [chcete přidat podporu pro TLS 1,2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) ve Windows serveru 2008 SP2, viz aktualizace. |
-|Windows Vista | Nepodporuje se. | Není k dispozici
+|Windows Vista | Nepodporuje se. | –
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Ověřte, jakou verzi OpenSSL je vaše distribuce systému Linux spuštěná.
 
@@ -240,7 +240,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Osobní údaje uložené v Application Insights
 
-Náš [článek Application Insights osobních údajů](../platform/personal-data-mgmt.md) popisuje tento problém podrobně.
+Náš [článek Application Insights osobních údajů](../logs/personal-data-mgmt.md) popisuje tento problém podrobně.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>Je možné, že se moji uživatelé vypnou Application Insights?
 Ne přímo. Neposkytujeme přepínač, který můžou uživatelé používat k vypnutí Application Insights.
@@ -262,7 +262,7 @@ Sady SDK se mezi platformami liší a je možné nainstalovat několik součást
 | [TrackMetric volání][api] |Číselné hodnoty<br/>**Vlastnosti** |
 | [Hovorová stopa *][api] |Název události<br/>**Vlastnosti** |
 | [TrackException volání][api] |**Výjimky**<br/>Výpis zásobníku<br/>**Vlastnosti** |
-| Sada SDK nemůže shromažďovat data. Například: <br/> – nejde získat přístup k čítačům výkonu.<br/> – výjimka v inicializátoru telemetrie |Diagnostika sady SDK |
+| Sada SDK nemůže shromažďovat data. Příklad: <br/> – nejde získat přístup k čítačům výkonu.<br/> – výjimka v inicializátoru telemetrie |Diagnostika sady SDK |
 
 Pro [sady SDK pro jiné platformy][platforms]se podívejte na jejich dokumenty.
 
@@ -293,7 +293,7 @@ Pro [sady SDK pro jiné platformy][platforms]se podívejte na jejich dokumenty.
 [Některá data můžete odpínat úpravou ApplicationInsights.config][config]
 
 > [!NOTE]
-> IP adresa klienta se používá k odvodit zeměpisnou polohu, ale ve výchozím nastavení se data IP už neukládají a do přidruženého pole se zapisují všechny nuly. Chcete-li získat další informace o zpracování osobních údajů, doporučujeme tento [článek](../platform/personal-data-mgmt.md#application-data). Pokud potřebujete ukládat údaje o IP adrese, Projděte si tyto možnosti podle [článku](./ip-collection.md) .
+> IP adresa klienta se používá k odvodit zeměpisnou polohu, ale ve výchozím nastavení se data IP už neukládají a do přidruženého pole se zapisují všechny nuly. Chcete-li získat další informace o zpracování osobních údajů, doporučujeme tento [článek](../logs/personal-data-mgmt.md#application-data). Pokud potřebujete ukládat údaje o IP adrese, Projděte si tyto možnosti podle [článku](./ip-collection.md) .
 
 ## <a name="credits"></a>Kredity
 Tento produkt zahrnuje data GeoLite2 vytvořená v MaxMind, která jsou dostupná z [https://www.maxmind.com](https://www.maxmind.com) .

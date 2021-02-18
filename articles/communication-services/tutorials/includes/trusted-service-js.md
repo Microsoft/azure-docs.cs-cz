@@ -8,12 +8,12 @@ ms.author: dademath
 ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: a16846b8859f93a2d376691115e4b2dd0a7163b6
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 3bf0831084b9dd6f16d8208def87033fc0be2900
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633291"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100645352"
 ---
 ## <a name="download-code"></a>Stáhnout kód
 
@@ -74,13 +74,13 @@ Nyní budeme pokračovat k instalaci knihoven služby Azure Communication Servic
 
 ### <a name="install-communication-services-libraries"></a>Nainstalovat knihovny komunikačních služeb
 
-`Administration`K vygenerování budeme použít knihovnu `User Access Tokens` .
+`Identity`K vygenerování budeme použít knihovnu `User Access Tokens` .
 
 Pomocí `npm install` příkazu nainstalujte klientskou knihovnu pro správu služby Azure Communication Services pro JavaScript.
 
 ```console
 
-npm install @azure/communication-administration --save
+npm install @azure/communication-identity --save
 
 ```
 
@@ -89,7 +89,7 @@ npm install @azure/communication-administration --save
 V horní části `index.js` souboru importujte rozhraní pro `CommunicationIdentityClient`
 
 ```javascript
-const { CommunicationIdentityClient } = require('@azure/communication-administration');
+const { CommunicationIdentityClient } = require('@azure/communication-identity');
 ```
 
 ## <a name="access-token-generation"></a>Generování přístupového tokenu
@@ -136,7 +136,7 @@ Otevřete adresu URL v prohlížeči a měli byste vidět text odpovědi s ID u�
 
 Pokud chcete nasadit funkci Azure Functions, můžete postupovat podle podrobných [pokynů](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#sign-in-to-azure) .
 
-Obecně platí, že budete potřebovat:
+V souhrnu budete potřebovat:
 1. Přihlášení k Azure ze sady Visual Studio
 2. Publikujte projekt do svého účtu Azure. Tady budete muset zvolit stávající předplatné.
 3. Vytvořte nový prostředek funkce Azure Functions pomocí Průvodce pro Visual Studio nebo použijte existující prostředek. V případě nového prostředku ho budete muset nakonfigurovat do požadované oblasti, modulu runtime a jedinečného identifikátoru.

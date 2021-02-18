@@ -1,32 +1,32 @@
 ---
-title: Vlastní výstrahy zabezpečení
-description: Přečtěte si o přizpůsobitelných výstrahách zabezpečení a doporučené nápravě pomocí programu Defender pro funkce a službu IoT.
+title: Vlastní výstrahy zabezpečení pro IoT Hub
+description: Přečtěte si o přizpůsobitelných výstrahách zabezpečení a doporučené nápravě pomocí programu Defender pro funkce a službu IoT Hub.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/04/2020
-ms.author: mlottner
-ms.openlocfilehash: 021b05176da141fad2f4555b0617b5a4a51e453f
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.date: 2/16/2021
+ms.author: shhazam
+ms.openlocfilehash: 04198432f2b600a3c703d5e4f253656f116000db
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809282"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636522"
 ---
-# <a name="defender-for-iot-custom-security-alerts"></a>Defender pro vlastní výstrahy zabezpečení IoT
+# <a name="defender-for-iot-hub-custom-security-alerts"></a>Defender pro IoT Hub vlastní výstrahy zabezpečení
 
 Defender pro IoT průběžně analyzuje vaše řešení IoT pomocí pokročilých analýz a analýzy hrozeb, které vás upozorní na škodlivou aktivitu.
 
 Doporučujeme, abyste vytvořili vlastní výstrahy na základě vašich znalostí očekávaného chování zařízení a zajistili, že výstrahy budou fungovat jako nejúčinnější indikátory potenciálního ohrožení v rámci jedinečného nasazení organizace a na šířku.
 
-Následující seznamy programu Defender pro výstrahy IoT je možné definovat podle vašeho očekávaného IoT Hub nebo chování zařízení. Další informace o tom, jak přizpůsobit jednotlivé výstrahy, najdete v tématu [Vytvoření vlastních výstrah](quickstart-create-custom-alerts.md).
+Následující seznamy programu Defender pro výstrahy IoT je možné definovat podle očekávaného chování IoT Hub. Další informace o tom, jak přizpůsobit jednotlivé výstrahy, najdete v tématu [Vytvoření vlastních výstrah](quickstart-create-custom-alerts.md).
 
 ## <a name="built-in-custom-alerts-in-the-iot-hub"></a>Integrované vlastní výstrahy v IoT Hub
 
@@ -46,18 +46,6 @@ Následující seznamy programu Defender pro výstrahy IoT je možné definovat 
 | Nízká | Vlastní výstraha – počet vyprázdnění fronty příkazů, které jsou mimo povolený rozsah | IoT Hub | Velikost fronty příkazů v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah. |  |
 | Nízká | Vlastní výstraha – počet nepracujících aktualizací modulu je mimo povolený rozsah. | IoT Hub | Množství nespuštěných aktualizací v rámci určitého časového okna je mimo aktuálně nakonfigurovaný a povolený rozsah. |
 | Nízká | Vlastní výstraha – počet neautorizovaných operací je mimo povolený rozsah. | IoT Hub | Množství neautorizovaných operací v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah. |
-
-
-## <a name="agent-based-security-custom-alerts"></a>Vlastní výstrahy zabezpečení založené na agentech
-
-| Závažnost | Název upozornění | Zdroj dat | Description | Navrhovaná náprava |
-|--|--|--|--|--|
-| Nízká | Vlastní výstraha – počet aktivních připojení je mimo povolený rozsah. | Klasický modul zabezpečení, Azure RTO | Počet aktivních připojení v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah. | Prozkoumejte protokoly zařízení. Zjistěte, kde připojení pochází, a zjistěte, jestli je neškodný nebo škodlivý. Pokud máte škodlivou, odstraňte možný malware a porozumět zdroji. Pokud je neškodný, přidejte zdroj do seznamu povolených připojení. |
-| Nízká | Vlastní výstraha – odchozí připojení vytvořené na IP adresu není povolené. | Klasický modul zabezpečení, Azure RTO | Odchozí připojení bylo vytvořeno na IP adresu, která je mimo povolený seznam IP adres. | Prozkoumejte protokoly zařízení. Zjistěte, kde připojení pochází, a zjistěte, jestli je neškodný nebo škodlivý. Pokud máte škodlivou, odstraňte možný malware a porozumět zdroji. Pokud je neškodný, přidejte zdroj do seznamu povolených IP adres. |
-| Nízká | Vlastní výstraha – počet neúspěšných místních přihlášení je mimo povolený rozsah. | Klasický modul zabezpečení, Azure RTO | Počet neúspěšných místních přihlášení v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah. |  |
-| Nízká | Vlastní výstraha – přihlášení uživatele, který není v seznamu povolených uživatelů | Klasický modul zabezpečení, Azure RTO | Místní uživatel mimo seznam povolených uživatelů, přihlášený k zařízení. | Pokud ukládáte nezpracovaná data, přejděte k účtu Log Analytics a pomocí dat Prozkoumejte zařízení, identifikujte zdroj a pak pro tato nastavení opravte seznam povolených/blokovaných dat. Pokud v současné době neukládáte nezpracovaná data, přečtěte si zařízení a opravte seznam povolených a blokovaných dat pro tato nastavení. |
-| Nízká | Vlastní výstraha – proces byl spuštěn, což není povoleno. | Klasický modul zabezpečení, Azure RTO | V zařízení se spustil proces, který není povolený. | Pokud ukládáte nezpracovaná data, přejděte k účtu Log Analytics a pomocí dat Prozkoumejte zařízení, identifikujte zdroj a pak pro tato nastavení opravte seznam povolených/blokovaných dat. Pokud v současné době neukládáte nezpracovaná data, přečtěte si zařízení a opravte seznam povolených a blokovaných dat pro tato nastavení. |
-|
 
 ## <a name="next-steps"></a>Další kroky
 

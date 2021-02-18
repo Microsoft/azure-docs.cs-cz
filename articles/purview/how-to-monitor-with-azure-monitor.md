@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 22c69288479e0247e499a33c2e818c19f7edb2ae
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: b13d03f05b7225a1c88f6b10b454749bd7b42477
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879944"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588338"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Metriky Azure dosah v Azure Monitor
 
@@ -24,7 +24,7 @@ Správci Azure dosah můžou pomocí Azure Monitor sledovat provozní stav účt
 
 ## <a name="aggregated-metrics"></a>Agregovaná metrika
 
-K metrikám se dá dostat z Azure Portal účtu dosah. Přístup ke metrikám řídí přiřazení role účtu dosah. Aby bylo možné zobrazit metriky, musí být uživatelé součástí role čtenář monitoring v Azure dosah. Další informace o úrovních přístupu rolí najdete v podrobnostech o [oprávnění role čtenář monitoring](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles) .
+K metrikám se dá dostat z Azure Portal účtu dosah. Přístup ke metrikám řídí přiřazení role účtu dosah. Aby bylo možné zobrazit metriky, musí být uživatelé součástí role čtenář monitoring v Azure dosah. Další informace o úrovních přístupu rolí najdete v podrobnostech o [oprávnění role čtenář monitoring](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles) .
 
 Osoba, která vytvořila účet dosah, automaticky získá oprávnění k zobrazení metrik. Pokud chce nikdo jiný zobrazit metriky, přidejte je do role **Čtenář monitorování** pomocí následujících kroků:
 
@@ -58,11 +58,11 @@ Uživatelé Azure dosah mají přístup také ke stránce metriky přímo z cent
 
 ### <a name="available-metrics"></a>Dostupné metriky
 
-Chcete-li se seznámit s tím, jak používat část metriky v Azure Portal Přečtěte si následující dva dokumenty. [Začínáme s Průzkumníkem metrik](../azure-monitor/platform/metrics-getting-started.md) a [pokročilými funkcemi Průzkumníka metrik](../azure-monitor/platform/metrics-charts.md).
+Chcete-li se seznámit s tím, jak používat část metriky v Azure Portal Přečtěte si následující dva dokumenty. [Začínáme s Průzkumníkem metrik](../azure-monitor/essentials/metrics-getting-started.md) a [pokročilými funkcemi Průzkumníka metrik](../azure-monitor/essentials/metrics-charts.md).
 
 Následující tabulka obsahuje seznam metrik, které lze prozkoumat v Azure Portal:
 
-| Název metriky | Obor názvů metriky | Typ agregace | Popis |
+| Název metriky | Obor názvů metriky | Typ agregace | Description |
 | ------------------- | ------------------- | ------------------- | ----------------- |
 | Kontrola zrušena | Automatizovaná kontrola | Sum <br> Počet | Agregovat zrušené kontroly zdrojů dat za časové období |
 | Kontrola dokončena | Automatizovaná kontrola | Sum <br> Počet | Agregovat dokončené kontroly zdrojů dat za časové období |
@@ -75,7 +75,7 @@ Nezpracované události telemetrie se generují Azure Monitor. Události se daj�
 
 Postupujte podle pokynů pro vytvoření nastavení diagnostiky pro váš účet Azure dosah.
 
-1. Pomocí tohoto článku vytvořte nové nastavení diagnostiky pro shromažďování protokolů a metrik platforem: [vytvořte nastavení diagnostiky a odešlete protokoly platforem a metriky do různých umístění](../azure-monitor/platform/diagnostic-settings.md). Vyberte cíl jenom jako účet úložiště Azure.
+1. Pomocí tohoto článku vytvořte nové nastavení diagnostiky pro shromažďování protokolů a metrik platforem: [vytvořte nastavení diagnostiky a odešlete protokoly platforem a metriky do různých umístění](../azure-monitor/essentials/diagnostic-settings.md). Vyberte cíl jenom jako účet úložiště Azure.
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png" alt-text="Snímek obrazovky znázorňující vytvoření diagnostického protokolu" lightbox="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png":::
 

@@ -3,12 +3,12 @@ title: Migrace klasického prostředku Azure Monitor Application Insights do pro
 description: Seznamte se s kroky potřebnými k upgradu Azure Monitorch klasických prostředků Application Insights na nový model založený na pracovním prostoru.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 5316bf5b919fe8b24ea1dd601214df62aa034f37
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5791abe33dee2e62aadb00ae1024338e1e44a900
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945099"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584257"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Migrace na prostředky Application Insights na základě pracovního prostoru
 
@@ -22,21 +22,21 @@ Prostředky založené na pracovních prostorech umožňují společné řízen�
 
 Application Insights na základě pracovního prostoru vám umožní využít výhod všech nejnovějších možností Azure Monitor a Log Analytics včetně:
 
-* [Klíče spravované zákazníkem (CMK)](../platform/customer-managed-keys.md) poskytují šifrování v klidovém prostředí pro vaše data pomocí šifrovacích klíčů, ke kterým máte přístup.
-* [Privátní odkaz Azure](../platform/private-link-security.md) umožňuje bezpečně propojit služby Azure PaaS s vaší virtuální sítí pomocí privátních koncových bodů.
+* [Klíče spravované zákazníkem (CMK)](../logs/customer-managed-keys.md) poskytují šifrování v klidovém prostředí pro vaše data pomocí šifrovacích klíčů, ke kterým máte přístup.
+* [Privátní odkaz Azure](../logs/private-link-security.md) umožňuje bezpečně propojit služby Azure PaaS s vaší virtuální sítí pomocí privátních koncových bodů.
 * [Přineste si vlastní úložiště (BYOS) pro Profiler a Snapshot Debugger](./profiler-bring-your-own-storage.md) vám poskytne plnou kontrolu nad zásadami šifrování, zásadami správy životnosti a přístupem k síti pro všechna data přidružená k Application Insights Profiler a Snapshot Debugger. 
-* [Úrovně rezervace kapacity](../platform/manage-cost-storage.md#pricing-model) umožňují v porovnání s průběžnými platbami ušetřit až 25%. 
+* [Úrovně rezervace kapacity](../logs/manage-cost-storage.md#pricing-model) umožňují v porovnání s průběžnými platbami ušetřit až 25%. 
 * Rychlejší příjem dat prostřednictvím Log Analytics příjmu streamování.
 
 ## <a name="migration-process"></a>Proces migrace
 
 Když migrujete do prostředku založeného na pracovním prostoru, nepřesunou se žádná data z úložiště klasických prostředků do nového úložiště založeného na pracovních prostorech. Pokud se rozhodnete migrovat, místo toho se změní umístění, do kterého se zapisují nová data do Log Analyticsho pracovního prostoru, přičemž se zachovává přístup k datům vašich klasických prostředků. 
 
-Vaše Klasická data prostředků budou trvalá a budou se řídit nastaveními uchovávání v klasickém Application Insights prostředku. Všechna nová data ingestovaná po migraci budou podléhat [Nastavení uchování](../platform/manage-cost-storage.md#change-the-data-retention-period) přidruženého pracovního prostoru Log Analytics, který také podporuje [různá nastavení uchovávání informací podle datového typu](../platform/manage-cost-storage.md#retention-by-data-type).
+Vaše Klasická data prostředků budou trvalá a budou se řídit nastaveními uchovávání v klasickém Application Insights prostředku. Všechna nová data ingestovaná po migraci budou podléhat [Nastavení uchování](../logs/manage-cost-storage.md#change-the-data-retention-period) přidruženého pracovního prostoru Log Analytics, který také podporuje [různá nastavení uchovávání informací podle datového typu](../logs/manage-cost-storage.md#retention-by-data-type).
 Proces migrace je **trvalý a nemůže být obrácený**. Jakmile provedete migraci prostředku do Application Insights založeného na pracovních prostorech, bude to vždycky prostředek založený na pracovním prostoru. Jakmile však migrujete, budete moci cílový pracovní prostor kdykoli změnit podle potřeby. 
 
 > [!NOTE]
-> Ingestování a uchovávání dat pro prostředky Application Insights založené na pracovních prostorech se [účtují prostřednictvím pracovního prostoru Log Analytics](../platform/manage-cost-storage.md) , kde se data nacházejí. Pokud jste pro data ingestovaná do klasického Application Insights prostředku od migrace vybrali uchovávání dat větší než 90 dní, uchovávání dat se bude dál účtovat prostřednictvím tohoto prostředku Application Insights. [Přečtěte si další informace]( ./pricing.md#workspace-based-application-insights) o fakturaci pro prostředky Application Insights založené na pracovních prostorech.
+> Ingestování a uchovávání dat pro prostředky Application Insights založené na pracovních prostorech se [účtují prostřednictvím pracovního prostoru Log Analytics](../logs/manage-cost-storage.md) , kde se data nacházejí. Pokud jste pro data ingestovaná do klasického Application Insights prostředku od migrace vybrali uchovávání dat větší než 90 dní, uchovávání dat se bude dál účtovat prostřednictvím tohoto prostředku Application Insights. [Přečtěte si další informace]( ./pricing.md#workspace-based-application-insights) o fakturaci pro prostředky Application Insights založené na pracovních prostorech.
 
 Pokud nepotřebujete migrovat existující prostředek a místo toho chcete vytvořit nový prostředek Application Insights založený na pracovním prostoru, použijte [Průvodce vytvářením prostředků založených na pracovních prostorech](create-workspace-resource.md).
 
@@ -44,12 +44,12 @@ Pokud nepotřebujete migrovat existující prostředek a místo toho chcete vytv
 
 - Log Analytics pracovní prostor s režimem řízení přístupu nastaveným na **`use resource or workspace permissions`** nastavení. 
 
-    - Prostředky Application Insights založené na pracovním prostoru nejsou kompatibilní s pracovními prostory nastavenými na vyhrazené **`workspace based permissions`** nastavení. Další informace o řízení přístupu k pracovnímu prostoru Log Analytics najdete v části [Log Analytics konfigurace pokynů pro režim řízení přístupu](../platform/manage-access.md#configure-access-control-mode) .
+    - Prostředky Application Insights založené na pracovním prostoru nejsou kompatibilní s pracovními prostory nastavenými na vyhrazené **`workspace based permissions`** nastavení. Další informace o řízení přístupu k pracovnímu prostoru Log Analytics najdete v části [Log Analytics konfigurace pokynů pro režim řízení přístupu](../logs/manage-access.md#configure-access-control-mode) .
 
-    - Pokud ještě nemáte existující Log Analytics pracovní prostor, [Projděte si dokumentaci k vytváření pracovních prostorů Log Analytics](../learn/quick-create-workspace.md).
+    - Pokud ještě nemáte existující Log Analytics pracovní prostor, [Projděte si dokumentaci k vytváření pracovních prostorů Log Analytics](../logs/quick-create-workspace.md).
     
 - Průběžný export není u prostředků založených na pracovních prostorech podporován a je třeba jej zakázat.
-Po dokončení migrace můžete pomocí [nastavení diagnostiky](../platform/diagnostic-settings.md) nakonfigurovat archivaci dat do účtu úložiště nebo streamovat do služby Azure Event hub.  
+Po dokončení migrace můžete pomocí [nastavení diagnostiky](../essentials/diagnostic-settings.md) nakonfigurovat archivaci dat do účtu úložiště nebo streamovat do služby Azure Event hub.  
 
 - V části **Obecné**  >  **použití a odhadované náklady**  >  na pracovní prostor Log Analytics ověřte aktuální nastavení uchovávání **dat** . Toto nastavení bude mít vliv na to, jak dlouho se budou po migraci prostředku Application Insights ukládat všechna data, která se budou přijímat. Pokud v současné době ukládáte Application Insights data déle než výchozí 90 dní a chcete zachovat tuto větší dobu uchování, možná budete muset upravit nastavení uchovávání pracovního prostoru.
 
@@ -209,7 +209,7 @@ V podokně Application Insights prostředku vyberte **vlastnosti**  >  **změnit
 
 **Chybová zpráva:** *vybraný pracovní prostor je konfigurován pomocí režimu přístupu na základě pracovního prostoru. Může to mít vliv na některé funkce APM. V nastavení pracovního prostoru vyberte jiný pracovní prostor nebo povolte přístup na základě prostředků. Tuto chybu můžete přepsat pomocí rozhraní příkazového řádku.* 
 
-Aby mohl prostředek Application Insights založený na pracovním prostoru správně fungovat, je třeba změnit režim řízení přístupu cílového pracovního prostoru Log Analytics na nastavení **oprávnění prostředku nebo pracovního prostoru** . Toto nastavení se nachází v uživatelském rozhraní log Analyticsového prostoru v části **vlastnosti**  >  **režimu řízení přístupu**. Podrobné pokyny najdete v tématu věnovaném [Log Analytics konfiguraci pokynů pro režim řízení přístupu](../platform/manage-access.md#configure-access-control-mode). Pokud je režim řízení přístupu nastavený na nastavení výhradní přístup k **pracovnímu prostoru vyžadovat** , migrace pomocí možnosti migrace na portálu zůstane blokovaná.
+Aby mohl prostředek Application Insights založený na pracovním prostoru správně fungovat, je třeba změnit režim řízení přístupu cílového pracovního prostoru Log Analytics na nastavení **oprávnění prostředku nebo pracovního prostoru** . Toto nastavení se nachází v uživatelském rozhraní log Analyticsového prostoru v části **vlastnosti**  >  **režimu řízení přístupu**. Podrobné pokyny najdete v tématu věnovaném [Log Analytics konfiguraci pokynů pro režim řízení přístupu](../logs/manage-access.md#configure-access-control-mode). Pokud je režim řízení přístupu nastavený na nastavení výhradní přístup k **pracovnímu prostoru vyžadovat** , migrace pomocí možnosti migrace na portálu zůstane blokovaná.
 
 Pokud nemůžete změnit režim řízení přístupu z důvodů zabezpečení pro aktuální cílový pracovní prostor, doporučujeme vytvořit nový pracovní prostor Log Analytics, který se bude používat pro migraci. 
 
@@ -229,7 +229,7 @@ Funkce starší verze průběžného exportu není u prostředků založených n
 
 - Jakmile vyberete zakázat, můžete přejít zpět na uživatelské rozhraní migrace. Pokud se zobrazí stránka upravit průběžný export vás vyzve k uložení nastavení, můžete pro tuto výzvu Vybrat OK, protože se nevztahují k zakázání nebo povolení průběžného exportu.
 
-- Po úspěšné migraci prostředku Application Insights do služby založené na pracovním prostoru můžete pomocí nastavení diagnostiky nahradit funkce, které průběžný export používá k poskytnutí. V rámci vašeho prostředku Application Insights vyberte **nastavení diagnostiky**  >  **Přidat nastavení diagnostiky** . Můžete vybrat všechny tabulky nebo podmnožinu tabulek k archivaci do účtu úložiště nebo streamovat do centra událostí Azure. Podrobné pokyny k nastavení diagnostiky najdete v [pokynech k nastavení diagnostiky Azure monitor](../platform/diagnostic-settings.md).
+- Po úspěšné migraci prostředku Application Insights do služby založené na pracovním prostoru můžete pomocí nastavení diagnostiky nahradit funkce, které průběžný export používá k poskytnutí. V rámci vašeho prostředku Application Insights vyberte **nastavení diagnostiky**  >  **Přidat nastavení diagnostiky** . Můžete vybrat všechny tabulky nebo podmnožinu tabulek k archivaci do účtu úložiště nebo streamovat do centra událostí Azure. Podrobné pokyny k nastavení diagnostiky najdete v [pokynech k nastavení diagnostiky Azure monitor](../essentials/diagnostic-settings.md).
 
 ### <a name="retention-settings"></a>Nastavení uchovávání
 
@@ -241,5 +241,5 @@ Můžete kontrolovat aktuální nastavení uchování pro Log Analytics v část
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zkoumání metrik](../platform/metrics-charts.md)
-* [Psaní analytických dotazů](../log-query/log-query-overview.md)
+* [Zkoumání metrik](../essentials/metrics-charts.md)
+* [Psaní analytických dotazů](../logs/log-query-overview.md)

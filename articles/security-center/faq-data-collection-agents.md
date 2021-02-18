@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 64fa6c72e3bc37276dd108e3981bbefb5a2021a7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 30744ab97549d585cb6893dc2e2e12009e8cd3fb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444525"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595772"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Nejčastější dotazy týkající se shromažďování dat, agentů a pracovních prostorů
 
@@ -27,7 +27,7 @@ Security Center shromažďuje data z virtuálních počítačů Azure, sady šk�
 
 ## <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Účtují se mi Azure Monitor protokoly v pracovních prostorech vytvořených pomocí Security Center?
 
-Ne. Pracovní prostory vytvořené pomocí Security Center, i když jsou nakonfigurované pro Azure Monitor protokolů za uzel, se neúčtují Azure Monitor poplatky. Security Center fakturace je vždycky založená na vašich Security Center zásadách zabezpečení a řešeních, která jsou nainstalovaná v pracovním prostoru:
+No. Pracovní prostory vytvořené pomocí Security Center, i když jsou nakonfigurované pro Azure Monitor protokolů za uzel, se neúčtují Azure Monitor poplatky. Security Center fakturace je vždycky založená na vašich Security Center zásadách zabezpečení a řešeních, která jsou nainstalovaná v pracovním prostoru:
 
 - **Azure Defender off** – Security Center ve výchozím pracovním prostoru povolí řešení ' SecurityCenterFree '. Pokud je Azure Defender vypnutý, nebude se vám účtovat.
 
@@ -43,7 +43,7 @@ Další informace o cenách najdete v tématu [Security Center ceny](https://azu
 
 ## <a name="what-is-the-log-analytics-agent"></a>Co je agent Log Analytics?
 
-Pokud chcete monitorovat ohrožení zabezpečení a hrozby, Azure Security Center závisí na [agentu Log Analytics](../azure-monitor/platform/log-analytics-agent.md) – to je stejný agent, kterého používá služba Azure monitor. 
+Pokud chcete monitorovat ohrožení zabezpečení a hrozby, Azure Security Center závisí na [agentu Log Analytics](../azure-monitor/agents/log-analytics-agent.md) – to je stejný agent, kterého používá služba Azure monitor. 
 
 Agent se někdy označuje jako Microsoft Monitoring Agent (nebo "MMA"). 
 
@@ -51,9 +51,9 @@ Agent shromažďuje různé podrobnosti konfigurace a protokoly událostí souvi
 
 Zajistěte, aby počítače používaly jeden z podporovaných operačních systémů pro agenta, jak je popsáno na následujících stránkách:
 
-* [Agent Log Analytics pro podporované operační systémy Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [Agent Log Analytics pro podporované operační systémy Windows](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
 
-* [Agent Log Analytics pro podporované operační systémy Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [Agent Log Analytics pro podporované operační systémy Linux](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
 
 Přečtěte si další informace o [datech shromažďovaných agentem Log Analytics](security-center-enable-data-collection.md).
 
@@ -255,7 +255,7 @@ V zásadách zabezpečení můžete v rámci svého předplatného Azure Povolit
 
 ## <a name="what-happens-when-data-collection-is-enabled"></a>Co se stane, když je povolené shromažďování dat?
 
-Když je povolené Automatické zřizování, Security Center zřídí agenta Log Analytics na všech podporovaných virtuálních počítačích Azure a všech nově vytvořených. Automatické zřizování se doporučuje, ale k dispozici je také ruční instalace agenta. [Přečtěte si, jak nainstalovat rozšíření agenta Log Analytics](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension). 
+Když je povolené Automatické zřizování, Security Center zřídí agenta Log Analytics na všech podporovaných virtuálních počítačích Azure a všech nově vytvořených. Automatické zřizování se doporučuje, ale k dispozici je také ruční instalace agenta. [Přečtěte si, jak nainstalovat rozšíření agenta Log Analytics](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension). 
 
 Agent umožňuje událost vytvoření procesu 4688 a pole *CommandLine* v události 4688. Nové procesy vytvořené na virtuálním počítači se zaznamenávají protokolem událostí a monitorují služby zjišťování Security Center. Další informace o podrobnostech zaznamenaných pro každý nový proces najdete v tématu [Popis polí v 4688](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). Agent také shromažďuje události 4688 vytvořené na virtuálním počítači a ukládá je do vyhledávání.
 
@@ -267,7 +267,7 @@ Když Security Center detekuje podezřelou aktivitu na virtuálním počítači,
 ## <a name="will-security-center-work-using-an-oms-gateway"></a>Bude Security Center pracovat s bránou OMS?
 
 Ano. Azure Security Center využívá Azure Monitor ke shromažďování dat z virtuálních počítačů a serverů Azure pomocí agenta Log Analytics.
-Ke shromáždění dat se musí každý virtuální počítač a Server připojit k Internetu pomocí protokolu HTTPS. Připojení může být přímo, pomocí proxy serveru nebo pomocí [brány OMS](../azure-monitor/platform/gateway.md).
+Ke shromáždění dat se musí každý virtuální počítač a Server připojit k Internetu pomocí protokolu HTTPS. Připojení může být přímo, pomocí proxy serveru nebo pomocí [brány OMS](../azure-monitor/agents/gateway.md).
 
 
 ## <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>Ovlivňuje agent monitorování výkon mých serverů?

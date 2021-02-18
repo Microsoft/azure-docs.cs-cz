@@ -2,13 +2,13 @@
 title: Přehled přenosu zpráv ve službě Azure Service Bus | Dokumentace Microsoftu
 description: Tento článek poskytuje podrobný přehled Azure Service Bus, plně spravovaného zprostředkovatele zpráv Enterprise Integration.
 ms.topic: overview
-ms.date: 01/28/2021
-ms.openlocfilehash: 232f25ca94e9426a20755940caf284426502cfb3
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.date: 02/16/2021
+ms.openlocfilehash: 897729b9748d69ad3c6de507e800dbb3a1a3619c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219158"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570463"
 ---
 # <a name="what-is-azure-service-bus"></a>Co je Azure Service Bus?
 Microsoft Azure Service Bus je plně spravovaný zprostředkovatel podnikových zpráv s frontami zpráv a tématy pro publikování a odběr. Service Bus slouží k tomu, aby bylo možné oddělit aplikace a služby od sebe od sebe, a nabízí následující výhody:
@@ -118,11 +118,10 @@ Dávkování na straně klienta umožňuje klientovi nebo tématu nashromáždit
 Transakce seskupí dvě nebo více operací dohromady do *oboru provádění*. Service Bus umožňuje seskupit operace do více entit zasílání zpráv v rámci oboru jedné transakce. Entita zprávy může být frontou, tématem nebo předplatným. Další informace najdete v tématu [Přehled zpracování transakcí Service Bus](service-bus-transactions.md).
 
 ### <a name="autodelete-on-idle"></a>Autodelete při nečinnosti
-
-Automatické odstranění při nečinnosti umožňuje zadat interval nečinnosti, po kterém se automaticky odstraní odběr fronty nebo tématu. Minimální doba trvání je 5 minut. Další informace najdete v tématu [vlastnost QueueDescription. AutoDeleteOnIdle](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle).
+Automatické odstranění při nečinnosti umožňuje zadat interval nečinnosti, po kterém se automaticky odstraní odběr fronty nebo tématu. Minimální doba trvání je 5 minut. 
 
 ### <a name="duplicate-detection"></a>Vyhledávání duplicit
-Funkce zjišťování duplicit umožňuje odesílateli znovu znovu odeslat stejnou zprávu a, aby zprostředkovatel vynechal potenciální duplicitu. Zjišťování duplicitních dat je založeno na sledování `message-id` vlastnosti zprávy, což znamená, že aplikace musí při opakovaném odesílání zprávy použít stejnou hodnotu, což může být přímo odvozeno z určitého kontextu specifického pro aplikaci. Další informace najdete v tématu [zjištění duplicit](duplicate-detection.md).
+Funkce zjišťování duplicit umožňuje odesílateli znovu znovu odeslat stejnou zprávu a, aby zprostředkovatel vynechal potenciální duplicitu. Další informace najdete v tématu [zjištění duplicit](duplicate-detection.md).
 
 ### <a name="geo-disaster-recovery"></a>Geografické zotavení po havárii
 

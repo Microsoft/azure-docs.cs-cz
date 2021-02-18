@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/02/2020
-ms.openlocfilehash: 6da9c6775a6d5c96bc52183fefc3e5330272e9ff
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: f9f25ec2dd8fb8b859f7863c1e695e22cb9a9cec
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585122"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575069"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Referenční informace k datům monitorování Azure Machine Learning
 
@@ -23,7 +23,7 @@ Seznamte se s daty a prostředky shromažďovanými nástrojem Azure Monitor z p
 
 ## <a name="metrics"></a>Metriky
 
-V této části jsou uvedené všechny automaticky shromážděné metriky platforem pro Azure Machine Learning. Poskytovatel prostředků pro tyto metriky je [Microsoft. MachineLearningServices/Workspaces](../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces).
+V této části jsou uvedené všechny automaticky shromážděné metriky platforem pro Azure Machine Learning. Poskytovatel prostředků pro tyto metriky je [Microsoft. MachineLearningServices/Workspaces](../azure-monitor/essentials/metrics-supported.md#microsoftmachinelearningservicesworkspaces).
 
 **Modelování**
 
@@ -74,7 +74,7 @@ Informace o spuštěných školicích kurzech.
 
 ## <a name="metric-dimensions"></a>Dimenze metriky
 
-Další informace o tom, jaké dimenze metriky jsou, najdete v tématu multidimenzionální [metriky](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics).
+Další informace o tom, jaké dimenze metriky jsou, najdete v tématu multidimenzionální [metriky](../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics).
 
 Azure Machine Learning má k jeho metrikám přidružené následující dimenze.
 
@@ -117,7 +117,7 @@ V následující tabulce jsou uvedeny operace týkající se Azure Machine Learn
 
 V této části jsou uvedené typy protokolů prostředků, které můžete shromažďovat pro Azure Machine Learning pracovní prostor.
 
-Poskytovatel prostředků a typ: [Microsoft. MachineLearningServices/Workspace](../azure-monitor/platform/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces).
+Poskytovatel prostředků a typ: [Microsoft. MachineLearningServices/Workspace](../azure-monitor/essentials/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces).
 
 | Kategorie | Zobrazovaný název |
 | ----- | ----- |
@@ -232,4 +232,4 @@ Následující schémata používá Azure Machine Learning
 ## <a name="see-also"></a>Viz také
 
 - Popis Azure Machine Learning monitorování najdete v tématu [monitorování Azure Machine Learning](monitor-azure-machine-learning.md) .
-- Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](../azure-monitor/insights/monitor-azure-resource.md) .
+- Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](../azure-monitor/essentials/monitor-azure-resource.md) .
