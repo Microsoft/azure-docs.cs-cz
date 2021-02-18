@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 4a273170a1f3842a9a11a61d41d4150eb98eace4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0616d14a890cfd5dd1a486dd21670c7c58dbeebc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734137"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573529"
 ---
 # <a name="azure-monitor-for-networks"></a>Azure Monitor pro sítě
 
-Azure Monitor pro sítě poskytuje komplexní přehled o [stavu](../../service-health/resource-health-checks-resource-types.md) a [metrikách](../platform/metrics-supported.md) pro všechny nasazené síťové prostředky, a to bez nutnosti konfigurace. Poskytuje taky přístup k funkcím monitorování sítě, jako je [monitorování připojení](../../network-watcher/connection-monitor-overview.md), [protokolování toku pro skupiny zabezpečení sítě (skupin zabezpečení sítě)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md), a [Analýza provozu](../../network-watcher/traffic-analytics.md). A poskytuje další funkce [diagnostiky](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) sítě.
+Azure Monitor pro sítě poskytuje komplexní přehled o [stavu](../../service-health/resource-health-checks-resource-types.md) a [metrikách](../essentials/metrics-supported.md) pro všechny nasazené síťové prostředky, a to bez nutnosti konfigurace. Poskytuje taky přístup k funkcím monitorování sítě, jako je [monitorování připojení](../../network-watcher/connection-monitor-overview.md), [protokolování toku pro skupiny zabezpečení sítě (skupin zabezpečení sítě)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md), a [Analýza provozu](../../network-watcher/traffic-analytics.md). A poskytuje další funkce [diagnostiky](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) sítě.
 
 Azure Monitor pro sítě je členěné kolem těchto klíčových komponent monitorování:
 - [Stav sítě a metriky](#networkhealth)
@@ -149,4 +149,4 @@ Sešit, který vidíte v jakémkoli bočním panelu nebo podrobné zobrazení me
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o monitorování sítě: [co je Azure Network Watcher?](../../network-watcher/network-watcher-monitoring-overview.md)
-- Seznamte se s scénáři, které jsou navržené tak, aby podporovaly, vytváření sestav a přizpůsobení existujících sestav a další: [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../platform/workbooks-overview.md) .
+- Seznamte se s scénáři, které jsou navržené tak, aby podporovaly, vytváření sestav a přizpůsobení existujících sestav a další: [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../visualize/workbooks-overview.md) .

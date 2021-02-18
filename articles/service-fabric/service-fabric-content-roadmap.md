@@ -3,12 +3,12 @@ title: Další informace o Azure Service Fabric
 description: Přečtěte si o základních konceptech a hlavních oblastech Azure Service Fabric. Poskytuje rozšířený přehled Service Fabric a vytváření mikroslužeb.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 011ddf5db1555e83a1a61a349cc19ed791ab900b
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: c709abe1087a9cc69c9e6e23cd1ff344a3dbebd2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526762"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589043"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Chcete se dozvědět o Service Fabric?
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Service Fabric má ale velkou oblast povrchu, ale máme spoustu informací.  Tento článek obsahuje stručný přehled Service Fabric a popisuje základní koncepty, programovací modely, životní cyklus aplikací, testování, clustery a monitorování stavu. Přečtěte si [Přehled](service-fabric-overview.md) a [co jsou mikroslužby?](service-fabric-overview-microservices.md) Úvod do Service Fabric, jak se dá použít k vytváření mikroslužeb. Tento článek neobsahuje úplný seznam obsahu, ale obsahuje odkaz na přehled a zahájení práce pro každou oblast Service Fabric. 
@@ -87,7 +87,7 @@ Service Fabric se integruje s [ASP.NET Core](service-fabric-reliable-services-co
 ## <a name="application-lifecycle"></a>Životní cyklus aplikace
 Stejně jako u jiných platforem aplikace na Service Fabric obvykle prochází následujícími fázemi: návrh, vývoj, testování, nasazení, upgrade, údržba a odebrání. Service Fabric poskytuje prvotřídní podporu pro plný životní cyklus aplikací cloudových aplikací, od vývoje prostřednictvím nasazení, každodenní správy a údržby až po případné vyřazení z provozu. Model služby umožňuje, aby se v životním cyklu aplikace nezávisle účastnilo několik různých rolí. [Service Fabric životní cyklus aplikace](service-fabric-application-lifecycle.md) poskytuje přehled rozhraní API a způsob jejich používání různými rolemi v průběhu fáze životního cyklu aplikace Service Fabric. 
 
-Celý životní cyklus aplikace se dá spravovat pomocí [rutin PowerShellu](/powershell/module/ServiceFabric/New-ServiceFabricService), [příkazů CLI](service-fabric-sfctl.md), [rozhraní API jazyka C#](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [rozhraní API Java](/java/api/overview/azure/servicefabric)a [rozhraní REST API](/rest/api/servicefabric/). Kanály průběžné integrace a průběžného nasazování můžete také nastavit pomocí nástrojů, jako je [Azure Pipelines](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) nebo [Jenkinse](/azure/developer/jenkins/deploy-to-service-fabric-cluster).
+Celý životní cyklus aplikace se dá spravovat pomocí [rutin PowerShellu](/powershell/module/servicefabric/?view=azureservicefabricps), [příkazů CLI](service-fabric-sfctl.md), [rozhraní API jazyka C#](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [rozhraní API Java](/java/api/overview/azure/servicefabric)a [rozhraní REST API](/rest/api/servicefabric/). Kanály průběžné integrace a průběžného nasazování můžete také nastavit pomocí nástrojů, jako je [Azure Pipelines](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) nebo [Jenkinse](/azure/developer/jenkins/deploy-to-service-fabric-cluster).
 
 ## <a name="test-applications-and-services"></a>Testování aplikací a služeb
 Aby bylo možné vytvářet vysoce škálovatelné služby, je důležité ověřit, že vaše aplikace a služby můžou naodolat chybám reálného světa. Služba analýzy chyb je navržena pro testování služeb, které jsou postaveny na Service Fabric. Pomocí [služby analýzy chyb](service-fabric-testability-overview.md)můžete navolávat smysluplné chyby a spouštět kompletní testovací scénáře pro vaše aplikace. Tyto chyby a scénáře cvičení a ověřují množství stavů a přechodů, ke kterým dojde v průběhu své životnosti, a to vše v kontrolovaném, bezpečném a konzistentním způsobem.
@@ -160,7 +160,7 @@ Mimo box Service Fabric komponenty hlásí stav u všech entit v clusteru. [Sest
 
 Service Fabric poskytuje více způsobů [zobrazení sestav stavu](service-fabric-view-entities-aggregated-health.md) agregovaných v Health Store:
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) nebo jiné nástroje pro vizualizaci.
-* Dotazy na stav (prostřednictvím [PowerShellu](/powershell/module/ServiceFabric/New-ServiceFabricService), [CLI](service-fabric-sfctl.md), rozhraní API pro [C# FabricClient](/dotnet/api/system.fabric.fabricclient.healthclient) a rozhraní API [Java FabricClient](/java/api/system.fabric)nebo [rozhraní REST API](/rest/api/servicefabric)).
+* Dotazy na stav (prostřednictvím [PowerShellu](/powershell/module/servicefabric/?view=azureservicefabricps), [CLI](service-fabric-sfctl.md), rozhraní API pro [C# FabricClient](/dotnet/api/system.fabric.fabricclient.healthclient) a rozhraní API [Java FabricClient](/java/api/system.fabric)nebo [rozhraní REST API](/rest/api/servicefabric)).
 * Obecné dotazy, které vracejí seznam entit, které mají stav jako jednu z vlastností (prostřednictvím PowerShellu, CLI, rozhraní API nebo REST).
 
 ## <a name="monitoring-and-diagnostics"></a>Monitorování a diagnostika

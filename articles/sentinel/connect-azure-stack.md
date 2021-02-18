@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 120f160e3c7bc7a9a0e81586ea4b97ee827dd33e
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 5999e8da5dffce85dd12ecd01cd5991ea4abc098
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807424"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590244"
 ---
 # <a name="connect-azure-stack-hub-virtual-machines-to-azure-sentinel"></a>Připojení virtuálních počítačů služby Azure Stack hub k Azure Sentinel
 
@@ -50,9 +50,9 @@ Přidejte rozšíření **Azure monitor, Update a Správa konfigurace** virtuál
 
 1. Po dokončení instalace rozšíření se jeho stav zobrazí jako **úspěšné zřízení**. Může trvat až jednu hodinu, než se virtuální počítač objeví na portálu Sentinel Azure.
 
-Další informace o instalaci a konfiguraci agenta pro systém Windows najdete v tématu [připojení počítačů se systémem Windows](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard).
+Další informace o instalaci a konfiguraci agenta pro systém Windows najdete v tématu [připojení počítačů se systémem Windows](../azure-monitor/agents/agent-windows.md#install-agent-using-setup-wizard).
 
-Informace o řešení problémů agenta pro Linux najdete v tématu [řešení potíží s agentem Azure Log Analytics Linux](../azure-monitor/platform/agent-linux-troubleshoot.md).
+Informace o řešení problémů agenta pro Linux najdete v tématu [řešení potíží s agentem Azure Log Analytics Linux](../azure-monitor/agents/agent-linux-troubleshoot.md).
 
 Na portálu Sentinel Azure v Azure v části **Virtual Machines** máte přehled o všech virtuálních počítačích a počítačích spolu s jejich stavem. 
 

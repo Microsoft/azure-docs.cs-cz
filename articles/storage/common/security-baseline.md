@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f6825fee4cfb78ab54d782cd4d942bb994bedae9
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b484873f6c118c49712cbcd66eeb6a63d8aa05f6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195717"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591547"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Základní hodnoty zabezpečení Azure pro Azure Storage
 
@@ -158,7 +158,7 @@ Můžete také využít integrované definice zásad související s účtem úl
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Vytváření výstrah v Azure Monitor](../../azure-monitor/platform/alerts-activity-log.md)
+- [Vytváření výstrah v Azure Monitor](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -180,7 +180,7 @@ Můžete také využít integrované definice zásad související s účtem úl
 
 **Doprovodné** materiály: ingestování protokolů prostřednictvím Azure monitor k agregaci dat zabezpečení generovaných zařízeními koncových bodů, síťovými prostředky a dalšími systémy zabezpečení. V rámci Azure Monitor Používejte pracovní prostory Log Analytics k dotazování a provádění analýz a používejte účty Azure Storage pro dlouhodobé a archivační úložiště, a to v případě funkcí zabezpečení, jako je například neměnné úložiště a zajištěné uchování.
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -210,7 +210,7 @@ Můžete také využít integrované definice zásad související s účtem úl
 
 - [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](./storage-monitor-storage-account.md#configure-logging)
 
-- [Změnit dobu uchovávání dat v Log Analytics](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Změnit dobu uchovávání dat v Log Analytics](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -238,7 +238,7 @@ Také pro svůj účet Azure Storage povolit rozšířenou ochranu před interne
 
 - [Správa výstrah v Azure Security Center](../../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Upozornění na data protokolu Log Analytics](../../azure-monitor/learn/tutorial-response.md)
+- [Upozornění na data protokolu Log Analytics](../../azure-monitor/alerts/tutorial-response.md)
 
 - [Protokolování analýz služby Azure Storage](./storage-analytics-logging.md)
 
@@ -362,7 +362,7 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 - [Vysvětlení zjišťování rizik Azure AD](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Jak nakonfigurovat skupiny akcí pro vlastní výstrahy a oznámení](../../azure-monitor/platform/action-groups.md)
+- [Jak nakonfigurovat skupiny akcí pro vlastní výstrahy a oznámení](../../azure-monitor/alerts/action-groups.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -572,7 +572,7 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 **Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro změny prostředků účtů úložiště, ke kterým dochází. Můžete také povolit protokolování Azure Storage, abyste mohli sledovat, jak byl každý požadavek vytvořený proti Azure Storage autorizovaný. Protokoly označují, zda byl požadavek anonymně vytvořen pomocí tokenu OAuth 2,0, pomocí sdíleného klíče nebo pomocí sdíleného přístupového podpisu (SAS). Kromě toho použijte Azure Monitor k upozornění na anonymní přístup k účtům úložiště pomocí podmínky anonymního ověřování.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](../../azure-monitor/platform/alerts-activity-log.md)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Protokolování analýz služby Azure Storage](./storage-analytics-logging.md)
 

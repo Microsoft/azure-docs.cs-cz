@@ -3,12 +3,12 @@ title: Azure Functions vyhrazené hostování
 description: Přečtěte si o výhodách spuštění Azure Functions ve vyhrazeném App Servicem plánu hostování.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 0ebf83aa919d91f161b247539ae20873242a8ed8
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 0ee32d4c4a7d33664da88b133a1f7011fc09f298
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937622"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591062"
 ---
 # <a name="dedicated-hosting-plans-for-azure-functions"></a>Vyhrazené plány hostování pro Azure Functions
 
@@ -33,7 +33,7 @@ I při zapnuté funkci Always On je časový limit spuštění pro jednotlivé f
 
 ## <a name="scaling"></a>Škálování
 
-Pomocí App Serviceho plánu můžete ruční horizontální navýšení kapacity přidáním dalších instancí virtuálních počítačů. Můžete také povolit automatické škálování, i když automatické škálování bude pomalejší než Elastické škálování plánu Premium. Další informace najdete v tématu [Ruční nebo automatické škálování počtu instancí](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Horizontální navýšení kapacity můžete také škálovat tak, že vyberete jiný plán App Service. Další informace najdete v tématu [horizontální navýšení kapacity aplikace v Azure](../app-service/manage-scale-up.md). 
+Pomocí App Serviceho plánu můžete ruční horizontální navýšení kapacity přidáním dalších instancí virtuálních počítačů. Můžete také povolit automatické škálování, i když automatické škálování bude pomalejší než Elastické škálování plánu Premium. Další informace najdete v tématu [Ruční nebo automatické škálování počtu instancí](../azure-monitor/autoscale/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Horizontální navýšení kapacity můžete také škálovat tak, že vyberete jiný plán App Service. Další informace najdete v tématu [horizontální navýšení kapacity aplikace v Azure](../app-service/manage-scale-up.md). 
 
 > [!NOTE] 
 > Při spouštění funkcí JavaScriptu (Node.js) v plánu App Service byste měli zvolit plán, který má méně vCPU. Další informace najdete v tématu [Výběr plánů App Service s jedním jádrem](functions-reference-node.md#choose-single-vcpu-app-service-plans). 

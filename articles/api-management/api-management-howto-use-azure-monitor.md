@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 5e5c59d611cb7f4b5333b9919488e6fc083611cd
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 1cb902c4b59193c46dbeca47bb355f0695a0f2c7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779239"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572790"
 ---
 # <a name="tutorial-monitor-published-apis"></a>Kurz: monitorování publikovaných rozhraní API
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 
 Pomocí předdefinovaných [analýz](howto-use-analytics.md) API Management taky můžete monitorovat využití a výkon vašich rozhraní API.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Dokončete následující rychlý Start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
@@ -39,7 +39,7 @@ Pomocí předdefinovaných [analýz](howto-use-analytics.md) API Management taky
 
 ## <a name="view-metrics-of-your-apis"></a>Zobrazení metrik vašich rozhraní API
 
-API Management generuje [metriky](../azure-monitor/platform/data-platform-metrics.md) každou minutu a poskytuje vám téměř v reálném čase přehled o stavu a stavu vašich rozhraní API. Níže jsou uvedené dvě nejčastěji používané metriky. Seznam všech dostupných metrik najdete v tématu [podporované metriky](../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice).
+API Management generuje [metriky](../azure-monitor/essentials/data-platform-metrics.md) každou minutu a poskytuje vám téměř v reálném čase přehled o stavu a stavu vašich rozhraní API. Níže jsou uvedené dvě nejčastěji používané metriky. Seznam všech dostupných metrik najdete v tématu [podporované metriky](../azure-monitor/essentials/metrics-supported.md#microsoftapimanagementservice).
 
 * **Kapacita** – pomáhá při rozhodování o upgradu/downgrade služeb APIM Services. Metrika se generuje každou minutu a odráží kapacitu brány v čase vytvoření sestavy. Její hodnoty se pohybují v rozsahu od 0 do 100 a počítají se na základě prostředků brány, jako je využití procesoru nebo paměti.
 * **Požadavky** – pomáhají analyzovat provoz rozhraní API, který prochází přes vaše API Management služby. Metrika je vygenerována za minutu a oznamuje počet požadavků brány s dimenzemi, včetně kódů odpovědí, umístění, názvu hostitele a chyb. 
@@ -62,7 +62,7 @@ Přístup k metrikám:
 
 ## <a name="set-up-an-alert-rule"></a>Nastavení pravidla výstrahy 
 
-Můžete přijímat [výstrahy](../azure-monitor/platform/alerts-metric-overview.md) na základě metrik a protokolů aktivit. Azure Monitor umožňuje [nakonfigurovat výstrahu](../azure-monitor/platform/alerts-metric.md) , která při triggeru provede následující akce:
+Můžete přijímat [výstrahy](../azure-monitor/alerts/alerts-metric-overview.md) na základě metrik a protokolů aktivit. Azure Monitor umožňuje [nakonfigurovat výstrahu](../azure-monitor/alerts/alerts-metric.md) , která při triggeru provede následující akce:
 
 * Odeslání e-mailového oznámení
 * Volání webhooku
@@ -92,7 +92,7 @@ Postup konfigurace ukázkového pravidla výstrahy na základě metriky požadav
 
 1. Zadejte název a popis pravidla výstrahy a vyberte úroveň závažnosti. 
 1. Vyberte **Vytvořit pravidlo upozornění**.
-1. Nyní otestujte pravidlo výstrahy voláním rozhraní API pro konferenci bez klíče rozhraní API. Například:
+1. Nyní otestujte pravidlo výstrahy voláním rozhraní API pro konferenci bez klíče rozhraní API. Příklad:
 
     ```bash
     curl GET https://apim-hello-world.azure-api.net/conference/speakers HTTP/1.1 
@@ -140,7 +140,7 @@ Konfigurace protokolů prostředků:
 
    Protokoly prostředků můžete archivovat spolu s metrikami v účtu úložiště, streamovat je do centra událostí nebo je odeslat do Log Analytics pracovního prostoru. 
 
-Další informace najdete v tématu [Vytvoření nastavení diagnostiky pro odesílání protokolů platforem a metrik do různých umístění](../azure-monitor/platform/diagnostic-settings.md).
+Další informace najdete v tématu [Vytvoření nastavení diagnostiky pro odesílání protokolů platforem a metrik do různých umístění](../azure-monitor/essentials/diagnostic-settings.md).
 
 ## <a name="view-diagnostic-data-in-azure-monitor"></a>Zobrazit diagnostická data v Azure Monitor
 
@@ -151,7 +151,7 @@ Pokud povolíte shromažďování GatewayLogs nebo metrik v pracovním prostoru 
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/logs-menu-item.png" alt-text="Snímek obrazovky s položkou Logs v nabídce monitorování":::
 
-Spusťte dotazy pro zobrazení dat. Je k dispozici několik [ukázkových dotazů](../azure-monitor/log-query/example-queries.md) nebo vlastní spuštění. Například následující dotaz načte nejaktuálnější 24 hodin dat z tabulky GatewayLogs:
+Spusťte dotazy pro zobrazení dat. Je k dispozici několik [ukázkových dotazů](../azure-monitor/logs/example-queries.md) nebo vlastní spuštění. Například následující dotaz načte nejaktuálnější 24 hodin dat z tabulky GatewayLogs:
 
 ```kusto
 ApiManagementGatewayLogs
@@ -160,9 +160,9 @@ ApiManagementGatewayLogs
 
 Další informace o použití protokolů prostředků pro API Management najdete v tématech:
 
-* Začněte [s Azure Monitor Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)nebo vyzkoušejte [ukázkové prostředí Log Analytics](https://portal.loganalytics.io/demo).
+* Začněte [s Azure Monitor Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)nebo vyzkoušejte [ukázkové prostředí Log Analytics](https://portal.loganalytics.io/demo).
 
-* [Přehled dotazů protokolu v Azure monitor](../azure-monitor/log-query/log-query-overview.md).
+* [Přehled dotazů protokolu v Azure monitor](../azure-monitor/logs/log-query-overview.md).
 
 Následující JSON označuje vzorový záznam v GatewayLogs pro úspěšnou žádost o rozhraní API. Podrobnosti najdete v [referenčních](gateway-log-schema-reference.md)informacích ke schématu. 
 

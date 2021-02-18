@@ -3,16 +3,16 @@ title: Shromažďovat & analyzovat protokoly prostředků
 description: Zaznamenává a analyzuje události protokolu prostředků pro Azure Container Registry, jako je například ověřování, vkládání obrázků a vyžádanou image.
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: 8b05d34e6c50fea3760e30d28f59e55d8c5f211a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 952f239e94df6b3b21317985f56d3d7a999813fe
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348581"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571995"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Protokoly Azure Container Registry pro vyhodnocení a auditování diagnostiky
 
-Tento článek vysvětluje, jak shromažďovat data protokolu pro službu Azure Container Registry pomocí funkcí [Azure monitor](../azure-monitor/overview.md). Azure Monitor shromažďuje [protokoly prostředků](../azure-monitor/platform/platform-logs-overview.md) (dříve nazývané *diagnostické protokoly*) pro události řízené uživateli v registru. Shromažďování a využívání těchto dat pro splnění potřeb, jako jsou:
+Tento článek vysvětluje, jak shromažďovat data protokolu pro službu Azure Container Registry pomocí funkcí [Azure monitor](../azure-monitor/overview.md). Azure Monitor shromažďuje [protokoly prostředků](../azure-monitor/essentials/platform-logs-overview.md) (dříve nazývané *diagnostické protokoly*) pro události řízené uživateli v registru. Shromažďování a využívání těchto dat pro splnění potřeb, jako jsou:
 
 * Auditování událostí ověřování registru za účelem zajištění zabezpečení a dodržování předpisů 
 
@@ -39,21 +39,21 @@ Protokoly prostředků obsahují informace vydávané prostředky Azure, které 
 
 * **ContainerRegistryLoginEvents**  – události a stav ověřování registru, včetně příchozí identity a IP adresy
 * **ContainerRegistryRepositoryEvents** – operace jako push a pull pro image a další artefakty v úložištích registru
-* **AzureMetrics**  -  [Metriky registru kontejnerů](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) , jako je agregovaná nabízená oznámení a počty vyžádaného čtení.
+* **AzureMetrics**  -  [Metriky registru kontejnerů](../azure-monitor/essentials/metrics-supported.md#microsoftcontainerregistryregistries) , jako je agregovaná nabízená oznámení a počty vyžádaného čtení.
 
 V případě operací zahrnuje data protokolu:
   * Stav úspěch nebo neúspěch
   * Počáteční a koncové časové razítko
 
-Kromě protokolů prostředků poskytuje Azure [Protokol aktivit](../azure-monitor/platform/platform-logs-overview.md), což je jeden záznam událostí správy Azure na úrovni předplatného, jako je například vytvoření nebo odstranění registru kontejneru.
+Kromě protokolů prostředků poskytuje Azure [Protokol aktivit](../azure-monitor/essentials/platform-logs-overview.md), což je jeden záznam událostí správy Azure na úrovni předplatného, jako je například vytvoření nebo odstranění registru kontejneru.
 
 ## <a name="enable-collection-of-resource-logs"></a>Povolit shromažďování protokolů prostředků
 
-Kolekce protokolů prostředků pro registr kontejneru není ve výchozím nastavení povolená. Explicitně povolte nastavení diagnostiky pro každý registr, který chcete monitorovat. Možnosti pro povolení nastavení diagnostiky najdete [v tématu Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik platforem v Azure](../azure-monitor/platform/diagnostic-settings.md).
+Kolekce protokolů prostředků pro registr kontejneru není ve výchozím nastavení povolená. Explicitně povolte nastavení diagnostiky pro každý registr, který chcete monitorovat. Možnosti pro povolení nastavení diagnostiky najdete [v tématu Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik platforem v Azure](../azure-monitor/essentials/diagnostic-settings.md).
 
 Pokud například chcete zobrazit protokoly a metriky pro registr kontejnerů téměř v reálném čase v Azure Monitor, Shromážděte protokoly prostředků v pracovním prostoru Log Analytics. Povolení tohoto nastavení diagnostiky pomocí Azure Portal:
 
-1. Pokud ještě nemáte pracovní prostor, vytvořte pracovní prostor pomocí [Azure Portal](../azure-monitor/learn/quick-create-workspace.md). Chcete-li minimalizovat latenci v shromažďování dat, ujistěte se, že je pracovní prostor ve **stejné oblasti** jako registr kontejneru.
+1. Pokud ještě nemáte pracovní prostor, vytvořte pracovní prostor pomocí [Azure Portal](../azure-monitor/logs/quick-create-workspace.md). Chcete-li minimalizovat latenci v shromažďování dat, ujistěte se, že je pracovní prostor ve **stejné oblasti** jako registr kontejneru.
 1. Na portálu vyberte registr a vyberte **monitorování > nastavení diagnostiky > přidat nastavení diagnostiky**.
 1. Zadejte název nastavení a vyberte **Odeslat do Log Analytics**.
 1. Vyberte pracovní prostor pro diagnostické protokoly registru.
@@ -81,9 +81,9 @@ Následující obrázek ukazuje vzorový výstup:
 
 ![Dotazy na data protokolů](media/container-registry-diagnostics-audit-logs/azure-monitor-query.png)
 
-Kurz týkající se použití Log Analytics v Azure Portal najdete v tématu [Začínáme s Azure Monitor Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)nebo vyzkoušejte [ukázkové prostředí](https://portal.loganalytics.io/demo)Log Analytics. 
+Kurz týkající se použití Log Analytics v Azure Portal najdete v tématu [Začínáme s Azure Monitor Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)nebo vyzkoušejte [ukázkové prostředí](https://portal.loganalytics.io/demo)Log Analytics. 
 
-Další informace o dotazech protokolu najdete v tématu [Přehled dotazů protokolu v Azure monitor](../azure-monitor/log-query/log-query-overview.md).
+Další informace o dotazech protokolu najdete v tématu [Přehled dotazů protokolu v Azure monitor](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="query-examples"></a>Příklady dotazů
 
@@ -146,5 +146,5 @@ Události diagnostického protokolu můžete také streamovat do [centra událos
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o použití [Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) a vytváření [dotazů protokolu](../azure-monitor/log-query/get-started-queries.md).
-* Další informace o protokolech platforem, které jsou k dispozici v různých vrstvách Azure, najdete v tématu [Přehled protokolů platformy Azure](../azure-monitor/platform/platform-logs-overview.md) .
+* Přečtěte si další informace o použití [Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) a vytváření [dotazů protokolu](../azure-monitor/logs/get-started-queries.md).
+* Další informace o protokolech platforem, které jsou k dispozici v různých vrstvách Azure, najdete v tématu [Přehled protokolů platformy Azure](../azure-monitor/essentials/platform-logs-overview.md) .

@@ -3,12 +3,12 @@ title: Konfigurace sestav Azure Backup
 description: Konfigurace a zobrazení sestav pro Azure Backup pomocí Log Analytics a sešitů Azure
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 39d1aa17c5e92eccd34013738937e49890109561
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 78ab22bece54caa15e23021e594eaa0742505f79
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897271"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591982"
 ---
 # <a name="configure-azure-backup-reports-preview"></a>Konfigurace sestav Azure Backup (Preview)
 
@@ -18,7 +18,7 @@ Běžným požadavkem pro správce zálohování je získat přehled o zálohác
 - Auditování záloh a obnovení.
 - Identifikujte klíčové trendy v různých úrovních členitosti.
 
-Dnes Azure Backup poskytuje řešení pro vytváření sestav, které používá [protokoly Azure monitor](../azure-monitor/log-query/log-analytics-tutorial.md) a [sešity Azure](../azure-monitor/platform/workbooks-overview.md). Tyto prostředky vám pomůžou získat přehled o vašich zálohách napříč celou záloze. Tento článek vysvětluje, jak konfigurovat a zobrazovat sestavy Azure Backup.
+Dnes Azure Backup poskytuje řešení pro vytváření sestav, které používá [protokoly Azure monitor](../azure-monitor/logs/log-analytics-tutorial.md) a [sešity Azure](../azure-monitor/visualize/workbooks-overview.md). Tyto prostředky vám pomůžou získat přehled o vašich zálohách napříč celou záloze. Tento článek vysvětluje, jak konfigurovat a zobrazovat sestavy Azure Backup.
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
@@ -41,9 +41,9 @@ Chcete-li začít používat sestavy, postupujte podle těchto kroků.
 
 Nastavte jeden nebo více pracovních prostorů Log Analytics pro uložení dat generování sestav zálohování. Umístění a předplatné, kde se dá tento Log Analytics pracovní prostor vytvořit, nezávisí na umístění a předplatném, kde existují vaše trezory.
 
-Pokud chcete nastavit pracovní prostor Log Analytics, přečtěte si téma [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../azure-monitor/learn/quick-create-workspace.md).
+Pokud chcete nastavit pracovní prostor Log Analytics, přečtěte si téma [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../azure-monitor/logs/quick-create-workspace.md).
 
-Ve výchozím nastavení jsou data v pracovním prostoru Log Analytics uchována po dobu 30 dnů. Chcete-li zobrazit data pro časový horizont delší dobu, změňte dobu uchování Log Analytics pracovního prostoru. Pokud chcete změnit dobu uchovávání, přečtěte si téma [Správa využití a nákladů pomocí protokolů Azure monitor](../azure-monitor/platform/manage-cost-storage.md).
+Ve výchozím nastavení jsou data v pracovním prostoru Log Analytics uchována po dobu 30 dnů. Chcete-li zobrazit data pro časový horizont delší dobu, změňte dobu uchování Log Analytics pracovního prostoru. Pokud chcete změnit dobu uchovávání, přečtěte si téma [Správa využití a nákladů pomocí protokolů Azure monitor](../azure-monitor/logs/manage-cost-storage.md).
 
 ### <a name="2-configure-diagnostics-settings-for-your-vaults"></a>2. Konfigurace nastavení diagnostiky pro vaše trezory
 

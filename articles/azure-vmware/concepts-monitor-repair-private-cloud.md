@@ -3,13 +3,13 @@ title: Koncepty – monitorování a oprava privátních cloudů řešení Azure
 description: Přečtěte si, jak řešení Azure VMware monitoruje a opravuje VMware ESXi servery v privátním cloudu řešení Azure VMware.
 ms.topic: conceptual
 ms.custom: contperf-fy21q2
-ms.date: 02/03/2021
-ms.openlocfilehash: 6174df429fd9b21c7f685c8ba14e6d5c0bba4c83
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.date: 02/16/2021
+ms.openlocfilehash: 59319b5598be9770e82b9676a28444648230a019
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538954"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633134"
 ---
 # <a name="monitor-and-repair-azure-vmware-solution-private-clouds"></a>Monitorování a oprava privátních cloudů řešení VMware Azure
 
@@ -17,7 +17,7 @@ ms.locfileid: "99538954"
 
 ## <a name="what-azure-vmware-solution-monitors"></a>Co monitoruje řešení Azure VMware
 
-Řešení Azure VMware monitoruje u hostitele následující chyby:  
+Řešení Azure VMware monitoruje na hostiteli tyto podmínky:  
 
 - Stav procesoru 
 - Stav paměti 
@@ -37,9 +37,9 @@ ms.locfileid: "99538954"
 
 ## <a name="azure-vmware-solution-host-remediation"></a>Náprava hostitele řešení Azure VMware  
 
-Když řešení Azure VMware detekuje snížení nebo selhání uzlu řešení Azure VMware v privátním cloudu tenanta, aktivuje proces nápravy hostitele. Náprava hostitele zahrnuje nahrazení chybného uzlu novým dobrým uzlem.  
+Když řešení Azure VMware detekuje snížení nebo selhání uzlu řešení Azure VMware, spustí proces nápravy hostitele. Náprava hostitele zahrnuje nahrazení chybného uzlu novým dobrým uzlem.  
 
-Proces nápravy hostitele se spustí přidáním nového uzlu v pořádku v clusteru. Pokud je to možné, je poškozený hostitel umístěný v režimu údržby VMware vSphere. VMware vMotion slouží k přesunu virtuálních počítačů z vadného hostitele na jiné dostupné servery v clusteru, což může způsobit nenáročné migrace úloh za provozu. Ve scénářích, kde nelze umístit vadného hostitele do režimu údržby, je hostitel odebrán z clusteru.
+Náprava hostitelů začíná přidáním nového uzlu v pořádku v clusteru. Pokud je to možné, je poškozený hostitel umístěný v režimu údržby VMware vSphere. VMware vMotion přesouvá virtuální počítače z vadného hostitele na jiné dostupné servery v clusteru, což potenciálně umožňuje nulové výpadky migrace zatížení za provozu. Pokud se chybný hostitel nedá umístit do režimu údržby, hostitel se odebere z clusteru.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 078118ec793530720a49a19046854e5ea4b7f5c4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3f0d191157fbabeab2b6f08a9d0a9b3bf1a35250
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388936"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591894"
 ---
 # <a name="evaluate-and-improve-custom-speech-accuracy"></a>Vyhodnocení a vylepšení přesnosti služby Custom Speech
 
@@ -109,12 +109,13 @@ Zvuk s přepisy s lidskými štítky nabízí nejlepší vylepšení přesnosti,
 
 Vezměte v úvahu tyto podrobnosti:
 
-* Custom Speech může zachytit kontext slova, aby se snížily chyby při nahrazování, ne chyby vložení nebo odstranění.
+* Školení se zvukem přináší nejvíc výhod, pokud je zvuk také obtížné pochopit pro lidi. Ve většině případů byste měli začít školení jenom pomocí souvisejícího textu.
+* Pokud používáte jeden z nejčastěji používaných jazyků, jako je například USA – angličtina, je velmi pravděpodobné, že nebudete muset vlakovat se zvukovými daty. V takových jazycích základní modely nabízejí ve většině scénářů již velmi dobré výsledky rozpoznávání. je pravděpodobně dostačující ke školení se souvisejícím textem.
+* Custom Speech může zachytit kontext slova, aby se snížily chyby při nahrazování, ne vkládání nebo chyby při odstraňování.
 * Vyhněte se ukázkám, které obsahují chyby přepisu, ale zahrnují různorodost kvality zvuku.
 * Vyhněte se vět, které nesouvisí s vaší doménou problému. Nesouvisející věty můžou poškodit váš model.
 * V případě, že se kvalita přepisů liší, je možné duplikovat nevyhovující věty (například Skvělé přepisy, které obsahují klíčové fráze) ke zvýšení jejich váhy.
 * Služba Speech automaticky použije přepisy k vylepšení rozpoznávání slov specifických pro doménu a frází, jako kdyby byly přidány jako související text.
-* Školení se zvukem přináší nejvíc výhod, pokud je zvuk také obtížné pochopit pro lidi. Ve většině případů byste měli začít školení jenom pomocí souvisejícího textu.
 * Dokončení školicí operace může trvat několik dní. Pro zlepšení rychlosti školení nezapomeňte vytvořit předplatné služby Speech Service v [oblasti s vyhrazeným hardwarem](custom-speech-overview.md#set-up-your-azure-account) pro školení.
 
 > [!NOTE]

@@ -4,12 +4,12 @@ description: Výchozí nastavení Azure Portal můžete změnit tak, aby splňov
 keywords: nastavení, časový limit, jazyk, oblast
 ms.date: 08/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 5a108f1cd3b5af6655b592e7283192d4d54498ac
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 591b1ce6c2c069f9c0266588bf32f7303bf49708
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094106"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588808"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Správa nastavení a předvoleb na webu Azure Portal
 
@@ -71,7 +71,7 @@ Pokud chcete číst všechna oznámení přijatá během vaší aktuální relac
 
 ![Snímek obrazovky zobrazující Azure Portal globální záhlaví s zvýrazněnými oznámeními](./media/set-preferences/read-notifications.png)
 
-Pokud chcete číst oznámení z předchozích relací, vyhledejte události v protokolu aktivit. Další informace najdete v tématu [zobrazení protokolu aktivit](../azure-monitor/platform/activity-log.md#view-the-activity-log). 
+Pokud chcete číst oznámení z předchozích relací, vyhledejte události v protokolu aktivit. Další informace najdete v tématu [zobrazení protokolu aktivit](../azure-monitor/essentials/activity-log.md#view-the-activity-log). 
 
 ## <a name="change-the-inactivity-timeout-setting"></a>Změna nastavení časového limitu nečinnosti
 

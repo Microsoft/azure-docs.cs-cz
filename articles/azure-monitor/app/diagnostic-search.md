@@ -3,18 +3,18 @@ title: Používání služby Search v Azure Application Insights | Microsoft Doc
 description: Hledání a filtrování nezpracovaných telemetrie odesílaných vaší webovou aplikací
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: f87a972b417bf6074de1c10b7a54bd2416f88daa
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f7c2229a2e497fb052db79d61fcfeff140897798
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187013"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579540"
 ---
 # <a name="using-search-in-application-insights"></a>Použití vyhledávání v Application Insights
 
 Hledání je funkce [Application Insights](./app-insights-overview.md) , kterou používáte k vyhledání a prohlížení jednotlivých položek telemetrie, jako jsou například zobrazení stránky, výjimky nebo webové požadavky. A můžete zobrazit protokol trasování a události, které jste nastavili.
 
-(Pro složitější dotazy přes vaše data použijte [Analytics](../log-query/log-analytics-tutorial.md).)
+(Pro složitější dotazy přes vaše data použijte [Analytics](../logs/log-analytics-tutorial.md).)
 
 ## <a name="where-do-you-see-search"></a>Kde se zobrazuje hledání?
 
@@ -81,7 +81,7 @@ Chcete-li najít všechny položky se stejnou hodnotou vlastnosti, buď je zadej
 ## <a name="search-the-data"></a>Hledání dat
 
 > [!NOTE]
-> Pokud chcete v horní části okna hledání zapisovat složitější dotazy, otevřete [**protokoly (Analytics)**](../log-query/log-analytics-tutorial.md) .
+> Pokud chcete v horní části okna hledání zapisovat složitější dotazy, otevřete [**protokoly (Analytics)**](../logs/log-analytics-tutorial.md) .
 >
 
 Můžete hledat výrazy v jakékoli z hodnot vlastností. To je užitečné, pokud jste napsali [vlastní události](./api-custom-events-metrics.md) s hodnotami vlastností.
@@ -145,7 +145,7 @@ Data POST neprotokolují automaticky, ale můžete použít [TrackTrace nebo log
 
 ## <a name="next-steps"></a><a name="add"></a>Další kroky
 
-* [Zápis složitých dotazů do analýz](../log-query/log-analytics-tutorial.md)
+* [Zápis složitých dotazů do analýz](../logs/log-analytics-tutorial.md)
 * [Odeslání protokolů a vlastní telemetrie do Application Insights](./asp-net-trace-logs.md)
 * [Nastavení testů dostupnosti a odezvy](./monitor-web-app-availability.md)
 * [Řešení potíží](../faq.md)

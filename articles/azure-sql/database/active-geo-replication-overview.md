@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: c7a24dbe93bf0096e327804be07acc3f67d2f03b
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 3a678f6280b5f2d0fd372e75bfbeb6eb2e9b1577
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985752"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634290"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Vytvoření a použití aktivní geografické replikace – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,6 +25,9 @@ Aktivní geografická replikace je funkce Azure SQL Database, která umožňuje 
 
 > [!NOTE]
 > Aktivní geografická replikace není službou Azure SQL Managed instance podporována. Pro geografické převzetí služeb při selhání instancí spravované instance SQL použijte [skupiny s automatickým převzetím služeb při selhání](auto-failover-group-overview.md).
+
+> [!NOTE]
+> Migrace databází SQL z Azure Německo pomocí aktivní geografické replikace najdete v tématu [migrace SQL Database pomocí aktivní geografické replikace](../../germany/germany-migration-databases.md#migrate-sql-database-using-active-geo-replication).
 
 Aktivní geografická replikace je navržená jako řešení pro provozní kontinuitu, které umožňuje aplikaci provádět rychlé zotavení po havárii jednotlivých databází v případě regionálních havárií nebo výpadku velkého rozsahu. Pokud je geografická replikace povolená, může aplikace iniciovat převzetí služeb při selhání sekundární databází v jiné oblasti Azure. Ve stejných nebo různých oblastech se podporuje až čtyři sekundární databáze a sekundární je taky možné použít pro dotazy přístupu jen pro čtení. Převzetí služeb při selhání je nutné iniciovat ručně aplikací nebo uživatelem. Po převzetí služeb při selhání má nový primární server jiný koncový bod připojení.
 
@@ -292,6 +295,9 @@ Jak je popsáno výše, aktivní geografická replikace se dá spravovat taky pr
 | [Odkazy replikace – seznam podle databáze](/rest/api/sql/replicationlinks/listbydatabase) | Získá všechny odkazy replikace pro danou databázi v rámci partnerství geografické replikace. Načte informace viditelné v zobrazení katalogu sys.geo_replication_links. |
 | [Odstranit odkaz replikace](/rest/api/sql/replicationlinks/delete) | Odstraní odkaz replikace databáze. Nejde provést během převzetí služeb při selhání. |
 |  | |
+
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

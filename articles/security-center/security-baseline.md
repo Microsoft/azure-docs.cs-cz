@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0e4c749d875ab22f8cdf26adf6050e1fa0476b28
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 195c264eca0c40712816495a09e1387fcaa2c910
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202245"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572934"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>Základní hodnoty zabezpečení Azure pro Security Center
 
@@ -30,7 +30,7 @@ Tato základní hodnota zabezpečení se vztahuje na pokyny z [srovnávacího te
 
 - [Souborového síťový provoz se skupinou zabezpečení sítě](../virtual-network/tutorial-filter-network-traffic.md)
 
-- [Požadavky na bránu firewall pro použití agenta Log Analytics](../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)
+- [Požadavky na bránu firewall pro použití agenta Log Analytics](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements)
 
 - [Principy privátního odkazu Azure](../private-link/private-link-overview.md) 
 
@@ -46,7 +46,7 @@ Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tí
 
 - [Shromažďování dat v Azure Security Center](security-center-enable-data-collection.md)
 
-- [Požadavky na bránu firewall pro použití agenta Log Analytics](../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)
+- [Požadavky na bránu firewall pro použití agenta Log Analytics](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements)
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
@@ -70,7 +70,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledat nebo provádět akce s
 
 - [Shromažďování dat v Azure Security Center](security-center-enable-data-collection.md)
 
-- [Požadavky na bránu firewall pro použití agenta Log Analytics](../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)
+- [Požadavky na bránu firewall pro použití agenta Log Analytics](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements)
 
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md) 
 
@@ -86,9 +86,9 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledat nebo provádět akce s
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace prostředků a zjišťovat změny síťových prostředků, které souvisejí s Azure Security Center. V Azure Monitor můžete vytvářet výstrahy, které vám upozorní na to, kdy probíhají změny kritických prostředků.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log) 
 
-- [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -112,9 +112,9 @@ Případně můžete odesílat data vytvořená Security Center do Azure Sentine
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure pomocí Azure Monitor](../azure-monitor/learn/quick-collect-azurevm.md)
+- [Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure pomocí Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Jak začít s Azure Monitor a integrací SIEM třetích stran](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -126,11 +126,11 @@ Případně můžete odesílat data vytvořená Security Center do Azure Sentine
 
 **Doprovodné** materiály: protokoly aktivit Azure monitor jsou automaticky dostupné, tyto protokoly obsahují všechny operace zápisu pro váš prostředek, jako je Azure Security Center, včetně toho, jaké operace byly provedeny, kdy operace začala a kdy k nim došlo. Odešlete protokoly aktivit Azure do pracovního prostoru Log Analytics pro konsolidaci protokolů a zvýšené uchovávání.
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Principy protokolování a různých typů protokolů v Azure](../azure-monitor/platform/platform-logs-overview.md)
+- [Principy protokolování a různých typů protokolů v Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
-- [Odeslání protokolů aktivit do Log Analytics pracovního prostoru](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace)
+- [Odeslání protokolů aktivit do Log Analytics pracovního prostoru](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -140,7 +140,7 @@ Případně můžete odesílat data vytvořená Security Center do Azure Sentine
 
 **Doprovodné** materiály: v Azure monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště. 
 
-- [Změnit dobu uchovávání dat v Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) 
+- [Změnit dobu uchovávání dat v Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) 
 
 - [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -156,9 +156,9 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Začínáme s Log Analytics dotazy](../azure-monitor/log-query/log-analytics-tutorial.md) 
+- [Začínáme s Log Analytics dotazy](../azure-monitor/logs/log-analytics-tutorial.md) 
 
-- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -174,11 +174,11 @@ Případně můžete povolit a začlenit data související s a vyprodukovanými
 
 - [Správa výstrah v Azure Security Center](security-center-managing-and-responding-alerts.md) 
 
-- [Upozornění na data protokolu Log Analytics](../azure-monitor/learn/tutorial-response.md)
+- [Upozornění na data protokolu Log Analytics](../azure-monitor/alerts/tutorial-response.md)
 
 - [Nastavení automatizovaných reakcí na hrozby ve službě Azure Sentinel](../sentinel/tutorial-respond-threats-playbook.md)
 
-- [Protokolování výstrah v Azure Monitor](../azure-monitor/platform/alerts-unified-log.md)
+- [Protokolování výstrah v Azure Monitor](../azure-monitor/alerts/alerts-unified-log.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -368,7 +368,7 @@ Ve výchozím nastavení se Azure Security Center data ukládají do back-endov�
 
 Pokud je to možné, postupujte podle Azure Security Center doporučení pro šifrování v klidovém režimu a šifrování. 
 
-- [Bezpečné posílání dat do Log Analytics](../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)
+- [Bezpečné posílání dat do Log Analytics](../azure-monitor/logs/data-security.md#sending-data-securely-using-tls-12)
 
 - [Pochopení šifrování při přenosu pomocí Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
@@ -394,7 +394,7 @@ Pokud je to možné, postupujte podle Azure Security Center doporučení pro ši
 
 **Doprovodné** materiály: Azure Security Center používá nakonfigurovaný pracovní prostor Log Analytics k ukládání dat, upozornění a doporučení, která generuje. Nakonfigurujte klíč spravovaný zákazníkem (CMK) pro pracovní prostor, který jste nakonfigurovali pro Security Center shromažďování dat. CMK povolí šifrování všech dat uložených v pracovním prostoru a jejich odeslání pomocí Azure Key Vaultho klíče vytvořeného a vlastněného vámi. 
 
-- [Klíč spravovaný zákazníkem v Azure Monitoru](../azure-monitor/platform/customer-managed-keys.md)
+- [Klíč spravovaný zákazníkem v Azure Monitoru](../azure-monitor/logs/customer-managed-keys.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -404,7 +404,7 @@ Pokud je to možné, postupujte podle Azure Security Center doporučení pro ši
 
 **Pokyny**: pomocí Azure monitor můžete vytvářet výstrahy, když se změny projeví u důležitých prostředků Azure souvisejících s Azure Security Center. Tyto změny mohou zahrnovat akce, které upravují konfigurace související se Security Center, jako je například zakázání výstrah nebo doporučení, nebo aktualizace nebo odstranění úložišť dat.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -596,7 +596,7 @@ Pomocí Azure Resource Graphu se můžete dotazovat na prostředky v rámci jeji
 
 **Doprovodné** materiály: Azure Security Center používá nakonfigurovaný pracovní prostor Log Analytics k ukládání dat, upozornění a doporučení, která generuje. Nakonfigurujte klíč spravovaný zákazníkem (CMK) pro pracovní prostor, který jste nakonfigurovali pro Security Center shromažďování dat. CMK povolí šifrování všech dat uložených v pracovním prostoru a jejich odeslání pomocí Azure Key Vaultho klíče vytvořeného a vlastněného vámi. 
 
-- [Klíč spravovaný zákazníkem v Azure Monitoru](../azure-monitor/platform/customer-managed-keys.md)
+- [Klíč spravovaný zákazníkem v Azure Monitoru](../azure-monitor/logs/customer-managed-keys.md)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 
@@ -656,7 +656,7 @@ Pomocí Azure Resource Graphu se můžete dotazovat na prostředky v rámci jeji
 
 **Doprovodné** materiály: Zajistěte, aby bylo možné pravidelně provádět obnovování pomocí Azure Resource Manager zálohovaných souborů šablon. Test obnovení zálohovaných klíčů spravovaných zákazníkem
 
-- [Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager](../azure-monitor/samples/resource-manager-workspace.md)
+- [Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md)
 
 - [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 

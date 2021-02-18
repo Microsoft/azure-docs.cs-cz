@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 05fdf681b7cdc3b8145a30041e261eece420e560
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5653b59ed29495334079e932fb305fd4ba10475c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878083"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592348"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Doporučení zabezpečení pro úložiště objektů BLOB
 
@@ -71,7 +71,7 @@ Azure Security Center pravidelně analyzuje stav zabezpečení vašich prostřed
 | Doporučení | Komentáře | Security Center |
 |-|----|--|
 | Sledování způsobu autorizace požadavků | Povolte protokolování Azure Storage, abyste mohli sledovat, jak byl každý požadavek vytvořený proti Azure Storage autorizovaný. Protokoly označují, zda byl požadavek anonymně vytvořen pomocí tokenu OAuth 2,0, pomocí sdíleného klíče nebo pomocí sdíleného přístupového podpisu (SAS). Další informace najdete v tématu [monitorování služby Azure Blob Storage pomocí Azure monitor](monitor-blob-storage.md) nebo [Azure Storage protokolování analýz s klasickým monitorováním](../common/storage-analytics-logging.md). | - |
-| Nastavení výstrah v Azure Monitor | Nakonfigurujte výstrahy protokolu pro vyhodnocení protokolů prostředků v nastavené četnosti a vystavení výstrahy na základě výsledků. Další informace najdete v tématu [protokolování výstrah v Azure monitor](../../azure-monitor/platform/alerts-unified-log.md). | - |
+| Nastavení výstrah v Azure Monitor | Nakonfigurujte výstrahy protokolu pro vyhodnocení protokolů prostředků v nastavené četnosti a vystavení výstrahy na základě výsledků. Další informace najdete v tématu [protokolování výstrah v Azure monitor](../../azure-monitor/alerts/alerts-unified-log.md). | - |
 
 ## <a name="next-steps"></a>Další kroky
 

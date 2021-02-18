@@ -4,12 +4,12 @@ description: Automatizace vlastních denních, týdenních nebo měsíčních se
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: da465fbc899cb52fc48dbde830d3db4f3b58c68b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 39970227fc94d3073688b23cc530462f368a6ecf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680446"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590046"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatizace vlastních sestav pomocí Azure Application Insights dat
 
@@ -31,7 +31,7 @@ Každá organizace má své jedinečné požadavky na vytváření sestav, jako 
 
 [Pomocí programového dotazování](https://dev.applicationinsights.io/) na data Application Insights můžete vytvářet vlastní sestavy podle plánu. Následující možnosti vám pomůžou rychle začít:
 
-* [Automatizace sestav s využitím Power automatizovat](../platform/logicapp-flow-connector.md)
+* [Automatizace sestav s využitím Power automatizovat](../logs/logicapp-flow-connector.md)
 * [Automatizace sestav pomocí Logic Apps](automate-with-logic-apps.md)
 * V scénáři monitorování použijte šablonu [Azure Functions](../../azure-functions/functions-get-started.md) "Application Insights naplánovaný výtah". Tato funkce používá SendGrid k doručování e-mailů. 
 
@@ -150,7 +150,7 @@ Tyto kroky platí pouze v případě, že ještě nemáte nakonfigurovaný úče
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o vytváření [analytických dotazů](../log-query/get-started-queries.md).
+* Přečtěte si další informace o vytváření [analytických dotazů](../logs/get-started-queries.md).
 * Další informace o [programovém dotazování Application Insights dat](https://dev.applicationinsights.io/)
 * Další informace o [Logic Apps](../../logic-apps/logic-apps-overview.md).
 * Přečtěte si další informace o [Microsoft Power automatizuje](https://ms.flow.microsoft.com).

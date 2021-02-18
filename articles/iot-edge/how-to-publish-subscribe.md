@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 13bfd7c602389ff286a80f625829da5924a73bdf
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: e4043fd8b7c9571b62cbf65d7398754b27375efd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621891"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633967"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Publikování a přihlášení k odběru pomocí Azure IoT Edge
 
@@ -171,7 +171,7 @@ Při psaní zásad autorizace je potřeba mít na paměti několik věcí:
     - `{{iot:identity}}` představuje identitu aktuálně připojeného klienta. Například identitu zařízení jako `myDevice` nebo identitu modulu `myEdgeDevice/SampleModule` , například.
     - `{{iot:device_id}}` představuje identitu aktuálně připojeného zařízení. Například identitu zařízení jako `myDevice` nebo identitu zařízení, na které se modul spouští `myEdgeDevice` .
     - `{{iot:module_id}}` představuje identitu aktuálně připojeného modulu. Tato proměnná je prázdná pro připojená zařízení nebo identitu modulu, jako je `SampleModule` .
-    - `{{iot:this_device_id}}` představuje identitu zařízení IoT Edge, na kterém je spuštěná zásada autorizace. Například `myIoTEdgeDevice`.
+    - `{{iot:this_device_id}}` představuje identitu zařízení IoT Edge, na kterém je spuštěná zásada autorizace. Například, `myIoTEdgeDevice`.
 
 Ověřování pro témata služby IoT Hub se zpracovává trochu jinak než uživatelsky definovaná témata. Tady jsou klíčové body, které si zapamatujete:
 
@@ -366,8 +366,8 @@ Sady [SDK pro zařízení Azure IoT](https://github.com/Azure/azure-iot-sdks) ji
 
 Posílání dat telemetrie do IoT Hub se podobá publikování v uživatelsky definovaném tématu, ale pomocí konkrétního IoT Hubho tématu:
 
-- V případě zařízení se telemetrie odesílají v tématu: `devices/<device_name>/messages/events`
-- Pro modul se telemetrie pošle v tématu: `devices/<device_name>/<module_name>/messages/events`
+- V případě zařízení se telemetrie odesílají v tématu: `devices/<device_name>/messages/events/`
+- Pro modul se telemetrie pošle v tématu: `devices/<device_name>/<module_name>/messages/events/`
 
 Navíc můžete vytvořit trasu, například `FROM /messages/* INTO $upstream` k odeslání telemetrie z zprostředkovatele IoT Edge MQTT do služby IoT Hub. Další informace o směrování naleznete v tématu [Declare Routes](module-composition.md#declare-routes).
 

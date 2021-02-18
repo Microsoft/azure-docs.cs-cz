@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: subject-monitoring
-ms.openlocfilehash: 6dd53358b67eef481948d3349afc07086ea26fcd
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: b37586f66106e33b2a8dad034a6e7c131484be73
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584902"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571631"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Referenční informace k datům monitorování úložiště objektů BLOB v Azure
 
@@ -36,7 +36,7 @@ Azure Storage poskytuje v Azure Monitor následující metriky kapacity.
 
 #### <a name="blob-storage"></a>Blob Storage
 
-Tato tabulka zobrazuje [metriky služby Blob Storage](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices).
+Tato tabulka zobrazuje [metriky služby Blob Storage](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsblobservices).
 
 | Metric | Popis |
 | ------------------- | ----------------- |
@@ -176,4 +176,4 @@ V následující tabulce jsou uvedeny vlastnosti Azure Storagech protokolů pros
 ## <a name="see-also"></a>Viz také
 
 - Popis Azure Storage monitorování najdete v tématu [monitorování Azure Storage](monitor-blob-storage.md) .
-- Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](../../azure-monitor/insights/monitor-azure-resource.md) .
+- Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](../../azure-monitor/essentials/monitor-azure-resource.md) .

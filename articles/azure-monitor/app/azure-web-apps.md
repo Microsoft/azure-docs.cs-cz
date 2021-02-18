@@ -4,12 +4,12 @@ description: Sledování výkonu aplikací pro Azure App Services. Zatížení g
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 55682215a990643111d5813db437b1f1e4612868
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 74b39219b3b18c8de0214367d141085f6dc5f674
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547226"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574007"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu služby Azure App Service
 
@@ -61,11 +61,11 @@ Existují dva způsoby, jak povolit monitorování aplikací pro hostované apli
         
 | Data | Kolekce ASP.NET úrovně Basic | ASP.NET Doporučené shromažďování |
 | --- | --- | --- |
-| Přidání trendů využití procesoru, paměti a vstupně-výstupních operací |Ano |Ano |
-| Shromažďování trendů využití a povolení korelace mezi výsledky dostupnosti a transakcemi | Ano |Ano |
-| Shromažďování výjimek nezpracovaných hostitelským procesem | Ano |Ano |
-| Zlepšení přesnosti metrik APM v případě zatížení při použití vzorkování | Ano |Ano |
-| Korelace mikroslužeb napříč požadavky a závislostmi | Ne (jenom možnosti APM s jednou instancí) |Ano |
+| Přidání trendů využití procesoru, paměti a vstupně-výstupních operací |Yes |Yes |
+| Shromažďování trendů využití a povolení korelace mezi výsledky dostupnosti a transakcemi | Yes |Yes |
+| Shromažďování výjimek nezpracovaných hostitelským procesem | Yes |Yes |
+| Zlepšení přesnosti metrik APM v případě zatížení při použití vzorkování | Yes |Yes |
+| Korelace mikroslužeb napříč požadavky a závislostmi | Ne (jenom možnosti APM s jednou instancí) |Yes |
 
 3. Pokud chcete nakonfigurovat nastavení, jako je vzorkování, které byste mohli dříve řídit prostřednictvím souboru applicationinsights.config, můžete teď s těmito nastaveními pracovat pomocí nastavení aplikace s odpovídající předponou. 
 
@@ -434,8 +434,8 @@ Nejnovější aktualizace a opravy chyb [najdete v poznámkách k verzi](./web-a
 ## <a name="next-steps"></a>Další kroky
 * [Spusťte profiler v živé aplikaci](./profiler.md).
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) – monitorujte službu Azure Functions pomocí Application Insights.
-* [Povolte odesílání diagnostiky Azure](../platform/diagnostics-extension-to-application-insights.md) do Application Insights.
-* [Monitorujte metriky stavu služby](../platform/data-platform.md), abyste zajistili dostupnost služby a její schopnost dobře reagovat.
-* [Přijímejte oznámení o výstrahách](../platform/alerts-overview.md) vždy, když nastanou provozní události nebo když metriky překročí prahovou hodnotu.
+* [Povolte odesílání diagnostiky Azure](../agents/diagnostics-extension-to-application-insights.md) do Application Insights.
+* [Monitorujte metriky stavu služby](../data-platform.md), abyste zajistili dostupnost služby a její schopnost dobře reagovat.
+* [Přijímejte oznámení o výstrahách](../alerts/alerts-overview.md) vždy, když nastanou provozní události nebo když metriky překročí prahovou hodnotu.
 * Použitím [Application Insights pro aplikace JavaScript a webové stránky](javascript.md) získávejte telemetrické údaje klienta z prohlížečů, které webovou stránky navštíví.
 * [Nastavte testy dostupnosti webu](monitor-web-app-availability.md) tak, aby se aktivovaly výstrahy, pokud je webový server mimo provoz.
