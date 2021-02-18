@@ -9,16 +9,16 @@ ms.reviewer: dseven
 ms.author: cavoeg
 author: CaitlinV39
 ms.date: 02/03/2021
-ms.openlocfilehash: 8dc87ae5b296f322d9d5a4d59c0a8c9b1c50d5da
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 220618f93d23ec71ee3246e8bd68bfd724860696
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575431"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581977"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Povolení protokolování diagnostiky v Azure API pro FHIR
 
-V tomto článku se dozvíte, jak povolit protokolování diagnostiky v rozhraní Azure API pro FHIR a prohlédnout si některé ukázkové dotazy pro tyto protokoly. Přístup k diagnostickým protokolům je nezbytný pro jakoukoli službu zdravotní péče, kde se musí jednat o dodržování zákonných požadavků (například HIPAA). Funkce v rozhraní Azure API pro FHIR, která umožňuje diagnostické protokoly, je [**nastavení diagnostiky**](../azure-monitor/platform/diagnostic-settings.md) v Azure Portal. 
+V tomto článku se dozvíte, jak povolit protokolování diagnostiky v rozhraní Azure API pro FHIR a prohlédnout si některé ukázkové dotazy pro tyto protokoly. Přístup k diagnostickým protokolům je nezbytný pro jakoukoli službu zdravotní péče, kde se musí jednat o dodržování zákonných požadavků (například HIPAA). Funkce v rozhraní Azure API pro FHIR, která umožňuje diagnostické protokoly, je [**nastavení diagnostiky**](../azure-monitor/essentials/diagnostic-settings.md) v Azure Portal. 
 
 ## <a name="enable-audit-logs"></a>Povolit protokoly auditu
 1. Pokud chcete povolit protokolování diagnostiky v Azure API pro FHIR, vyberte rozhraní Azure API pro službu FHIR v Azure Portal 
@@ -45,7 +45,7 @@ V tomto článku se dozvíte, jak povolit protokolování diagnostiky v rozhran�
 > [!Note] 
 > Zobrazení prvních protokolů v Log Analytics může trvat až 15 minut.  
  
-Další informace o tom, jak pracovat s diagnostickými protokoly, najdete v [dokumentaci k protokolu prostředků Azure](../azure-monitor/platform/platform-logs-overview.md) .
+Další informace o tom, jak pracovat s diagnostickými protokoly, najdete v [dokumentaci k protokolu prostředků Azure](../azure-monitor/essentials/platform-logs-overview.md) .
 
 ## <a name="audit-log-details"></a>Podrobnosti protokolu auditu
 V tuto chvíli vrátí služba Azure API for FHIR v protokolu auditu následující pole: 

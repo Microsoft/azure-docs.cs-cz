@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: f9b3be69ab57c0abf7523169303def899f325229
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7778607b533a836eb5a47a12b73374c2a8299621
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789212"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590568"
 ---
 # <a name="security-alerts-schemas"></a>Schémata výstrah zabezpečení
 
@@ -24,7 +24,7 @@ Pokud je ve vašem předplatném Azure Defender povolený, obdržíte výstrahy 
 
 Tyto výstrahy zabezpečení můžete zobrazit na stránkách **ochrany před internetovými útoky** v Azure Security Center nebo prostřednictvím externích nástrojů, jako jsou:
 
-- [Azure Sentinel](../sentinel/index.yml) – cloudová nativní Siem Microsoftu Konektor Sentinel získá výstrahy od Azure Security Center a pošle je do [pracovního prostoru Log Analytics](../azure-monitor/learn/quick-create-workspace.md) pro Sentinel Azure.
+- [Azure Sentinel](../sentinel/index.yml) – cloudová nativní Siem Microsoftu Konektor Sentinel získá výstrahy od Azure Security Center a pošle je do [pracovního prostoru Log Analytics](../azure-monitor/logs/quick-create-workspace.md) pro Sentinel Azure.
 - Systémů Siem třetích stran – odesílá data do [Azure Event Hubs](../event-hubs/index.yml). Potom Integrujte data centra událostí s SIEM třetí strany. Další informace o [výstrahách služby streamování pro Siem, společnosti nebo řešení správy služeb](export-to-siem.md)v oddělení IT.
 - [REST API](/rest/api/securitycenter/) – pokud používáte REST API k přístupu k výstrahám, přečtěte si [dokumentaci k rozhraní API pro online výstrahy](/rest/api/securitycenter/alerts).
 
@@ -140,7 +140,7 @@ Události výstrahy zabezpečení v protokolu aktivit můžete zobrazit tak, že
 
 ### <a name="the-data-model-of-the-schema"></a>Datový model schématu
 
-|Pole|Popis|
+|Pole|Description|
 |----|----|
 |**barev**|Konstanta, "operace"|
 |**ID**|ID výstrahy Azure Security Center|
@@ -187,4 +187,4 @@ Další informace o způsobech přístupu k výstrahám zabezpečení z vnějš�
 - [Azure Sentinel](../sentinel/index.yml) – cloudová nativní Siem Microsoftu
 - [Azure Event Hubs](../event-hubs/index.yml) – plně spravovaná služba pro přijímání dat v reálném čase od Microsoftu
 - [Průběžný export Security Center dat](continuous-export.md)
-- [Log Analytics pracovní prostory](../azure-monitor/learn/quick-create-workspace.md) – Azure monitor ukládá data protokolu v pracovním prostoru Log Analytics, kontejneru, který obsahuje informace o datech a konfiguraci.
+- [Log Analytics pracovní prostory](../azure-monitor/logs/quick-create-workspace.md) – Azure monitor ukládá data protokolu v pracovním prostoru Log Analytics, kontejneru, který obsahuje informace o datech a konfiguraci.

@@ -2,23 +2,23 @@
 title: Připojení clusteru Kubernetes s povoleným ARC Azure (Preview)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 02/17/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Připojení clusteru Kubernetes s povoleným ARC Azure pomocí ARC Azure
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 5e2058c5128075de4c37eb9768b204532cd09ffa
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 876bc15a3f4db1d12afec37c69656c431e5e6773
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558553"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652509"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Připojení clusteru Kubernetes s povoleným ARC Azure (Preview)
 
-Tento článek poskytuje návod, jak připojit libovolný existující cluster Kubernetes ke službě Azure ARC. Koncepční přehled stejného typu najdete [tady](./conceptual-agent-architecture.md).
+Tento článek vás provede připojením existujícího clusteru Kubernetes ke službě Azure ARC. Informace o propojování clusterů najdete v článku o [architektuře agenta Kubernetes s povoleným agentem Azure](./conceptual-agent-architecture.md).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -28,12 +28,12 @@ Ověřte, že jste připravili následující požadavky:
   * Vytvořte cluster Kubernetes pomocí [Kubernetes v Docker (druh)](https://kind.sigs.k8s.io/).
   * Vytvořte cluster Kubernetes pomocí Docker pro [Mac](https://docs.docker.com/docker-for-mac/#kubernetes) nebo [Windows](https://docs.docker.com/docker-for-windows/#kubernetes).
 * Soubor kubeconfig pro přístup ke clusteru a roli Správce clusteru v clusteru pro nasazení agentů Kubernetes s povoleným ARC.
-* Uživatel nebo instanční objekt použitý s `az login` příkazy a `az connectedk8s connect` musí mít oprávnění číst a zapsat pro typ prostředku Microsoft. Kubernetes/connectedclusters. Role "cluster Kubernetes-Azure ARC" má tato oprávnění a lze ji použít k přiřazení rolí pro uživatele nebo instanční objekt.
+* Oprávnění číst a zapsat pro uživatele nebo instanční objekt použitý s `az login` `az connectedk8s connect` příkazy a u `Microsoft.Kubernetes/connectedclusters` typu prostředku. Role "cluster Kubernetes-Azure ARC" má tato oprávnění a lze ji použít k přiřazení rolí pro uživatele nebo instanční objekt.
 * Helm 3 pro registraci clusteru pomocí `connectedk8s` rozšíření. Pro splnění tohoto požadavku [nainstalujte nejnovější verzi Helm 3](https://helm.sh/docs/intro/install) .
 * Azure CLI verze 2.15 + pro instalaci rozšíření CLI s povoleným rozhraním Azure ARC Kubernetes. Nainstalujte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) nebo ho aktualizujte na nejnovější verzi.
-* Instalace rozšíření CLI s povoleným Kubernetes rozhraním Azure ARC:
+* Rozšíření Kubernetes CLI s povoleným rozšířením Azure ARC:
   
-  * Nainstalujte `connectedk8s` rozšíření, které vám pomůže připojit clustery Kubernetes do Azure:
+  * Instalace `connectedk8s` rozšíření, které vám pomůžou připojit clustery Kubernetes do Azure:
   
   ```azurecli
   az extension add --name connectedk8s
@@ -64,13 +64,13 @@ Agenti Azure ARC vyžadují, aby následující protokoly/porty/odchozí adresy 
 * TCP na portu 443: `https://:443`
 * TCP na portu 9418: `git://:9418`
 
-| Koncový bod (DNS)                                                                                               | Popis                                                                                                                 |
+| Koncový bod (DNS)                                                                                               | Description                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | Vyžaduje se, aby se agent připojil k Azure a zaregistroval cluster.                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | Koncový bod roviny dat pro agenta, aby načetl stav a načetl informace o konfiguraci.                                      |
 | `https://login.microsoftonline.com`                                                                            | Vyžaduje se pro načtení a aktualizaci tokenů Azure Resource Manager.                                                                                    |
 | `https://mcr.microsoft.com`                                                                            | Vyžaduje se pro získání imagí kontejneru pro agenty Azure ARC.                                                                  |
-| `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  Vyžaduje se pro získání certifikátů spravovaných identitě přiřazených systémem.                                                                  |
+| `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  Požadováno pro vyžádání certifikátů s přiřazenými systémy Identita spravované služby (MSI).                                                                  |
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>Registrace dvou poskytovatelů pro Kubernetes s povoleným ARC Azure
 
@@ -177,7 +177,9 @@ Name           Location    ResourceGroup
 AzureArcTest1  eastus      AzureArcTest
 ```
 
-Tento prostředek můžete zobrazit také na [Azure Portal](https://portal.azure.com/). Otevřete portál v prohlížeči a přejděte do skupiny prostředků a prostředku Kubernetes s povoleným obloukem Azure na základě názvů prostředků a názvů skupin prostředků, které se použily dříve v `az connectedk8s connect` příkazu.  
+Tento prostředek můžete zobrazit také na [Azure Portal](https://portal.azure.com/).
+1. Otevřete portál v prohlížeči.
+1. Přejděte do skupiny prostředků a prostředku Kubernetes s povoleným obloukem Azure na základě názvů prostředků a názvů skupin prostředků, které se použily dříve v `az connectedk8s connect` příkazu.  
 > [!NOTE]
 > Po připojení clusteru trvá přibližně 5 až 10 minut, než se na stránce přehledu v prostředku Kubernetes s povoleným prostředkem Azure ARC v Azure Portal doplní Stránka s přehledem.
 
@@ -220,7 +222,7 @@ Pokud je váš cluster za odchozím proxy server, Azure CLI a agenti Azure ARC s
 > [!NOTE]
 > * Zadání `excludedCIDR` v části `--proxy-skip-range` je důležité, aby se zajistilo, že komunikace v clusteru není pro agenty poškozená.
 > * I když se `--proxy-http` `--proxy-https` `--proxy-skip-range` u většiny prostředí odchozího proxy serveru očekává, že se musí do `--proxy-cert` důvěryhodného úložiště certifikátů v části agenti vložit jenom důvěryhodné certifikáty ze serveru proxy.
-> * Výše uvedená specifikace proxy serveru se v tuto chvíli používá jenom pro agenty ARC a ne pro tok lusků používaných v sourceControlConfiguration. Kubernetes tým s povoleným obloukem Azure na této funkci aktivně pracuje a bude brzy k dispozici.
+> * Výše uvedená specifikace proxy serveru se momentálně používá jenom pro agenty Azure ARC a ne pro tok lusků používaných v `sourceControlConfiguration` . Kubernetes tým s povoleným obloukem Azure na této funkci aktivně pracuje.
 
 ## <a name="azure-arc-agents-for-kubernetes"></a>Agenti Azure ARC pro Kubernetes
 

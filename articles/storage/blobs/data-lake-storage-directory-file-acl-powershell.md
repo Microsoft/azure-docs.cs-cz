@@ -1,35 +1,39 @@
 ---
-title: Azure Data Lake Storage Gen2 PowerShell pro soubory & seznamy řízení přístupu
-description: Pomocí rutin PowerShellu můžete spravovat adresáře a seznamy řízení přístupu (ACL) souborů a adresářů v účtech úložiště, které mají povolený hierarchický obor názvů (HNS).
+title: 'Použití PowerShellu ke správě dat: Azure Data Lake Storage Gen2'
+description: Pomocí rutin PowerShellu můžete spravovat adresáře a soubory v účtech úložiště, které mají povolený hierarchický obor názvů.
 services: storage
 author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: how-to
-ms.date: 01/06/2021
+ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fb715840ec3b3b1d5e65f17d4c18eb719e6acf80
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: fe7ad949d7301a035eb17d2b4d8d678dfb2e0546
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043570"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650191"
 ---
-# <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Použití PowerShellu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2
+# <a name="use-powershell-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Použití PowerShellu ke správě adresářů a souborů v Azure Data Lake Storage Gen2
 
-V tomto článku se dozvíte, jak pomocí PowerShellu vytvářet a spravovat adresáře, soubory a oprávnění v účtech úložiště, které mají povolený hierarchický obor názvů (HNS). 
+V tomto článku se dozvíte, jak pomocí PowerShellu vytvářet a spravovat adresáře a soubory v účtech úložiště, které mají hierarchický obor názvů.
+
+Další informace o tom, jak získat, nastavit a aktualizovat seznamy řízení přístupu (ACL) adresářů a souborů, najdete v tématu [použití PowerShellu ke správě seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-acl-powershell.md).
 
 [Referenční informace](/powershell/module/Az.Storage/)  |  Mapování Gen1 na [Gen2](#gen1-gen2-map)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-powershell/issues)
 
 ## <a name="prerequisites"></a>Požadavky
 
-> [!div class="checklist"]
-> * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-> * Účet úložiště, který má povolený hierarchický obor názvů (HNS). Pokud ho chcete vytvořit, postupujte podle [těchto](../common/storage-account-create.md) pokynů.
-> * .NET Framework 4.7.2 nebo větší je nainstalovaná. Viz [stažení .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework).
-> * Verze prostředí PowerShell `5.1` nebo vyšší.
+- Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
+
+- Účet úložiště s povoleným hierarchickým oborem názvů. Pokud ho chcete vytvořit, postupujte podle [těchto](create-data-lake-storage-account.md) pokynů.
+
+- .NET Framework 4.7.2 nebo větší je nainstalovaná. Viz [stažení .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework).
+
+- Verze prostředí PowerShell `5.1` nebo vyšší.
 
 ## <a name="install-the-powershell-module"></a>Instalace modulu PowerShellu
 
@@ -38,9 +42,9 @@ V tomto článku se dozvíte, jak pomocí PowerShellu vytvářet a spravovat adr
    ```powershell
    echo $PSVersionTable.PSVersion.ToString() 
    ```
-    
+
    Pokud chcete upgradovat verzi PowerShellu, přečtěte si téma [upgrade existujícího prostředí Windows PowerShell](/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell) .
-    
+
 2. Nainstalujte modul **AZ. Storage** .
 
    ```powershell
@@ -53,7 +57,7 @@ V tomto článku se dozvíte, jak pomocí PowerShellu vytvářet a spravovat adr
 
 Vyberte způsob, jakým mají příkazy získat autorizaci k účtu úložiště. 
 
-### <a name="option-1-obtain-authorization-by-using-azure-active-directory-ad"></a>Možnost 1: získání autorizace pomocí Azure Active Directory (AD)
+### <a name="option-1-obtain-authorization-by-using-azure-active-directory-azure-ad"></a>Možnost 1: získání autorizace pomocí Azure Active Directory (Azure AD)
 
 V rámci tohoto přístupu systém zajistí, že váš uživatelský účet má odpovídající přiřazení Azure na základě role (Azure RBAC) a oprávnění ACL.
 
@@ -127,6 +131,7 @@ $dir.Owner
 $dir.Properties
 $dir.Properties.Metadata
 ```
+
 > [!NOTE]
 > Chcete-li získat kořenový adresář kontejneru, vynechejte `-Path` parametr.
 
@@ -159,7 +164,7 @@ Move-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname
 
 Odstraňte adresář pomocí `Remove-AzDataLakeGen2Item` rutiny.
 
-Tento příklad odstraní adresář s názvem `my-directory` . 
+Tento příklad odstraní adresář s názvem `my-directory` .
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -173,7 +178,7 @@ Pomocí `-Force` parametru můžete soubor odebrat bez výzvy.
 
 Stáhněte si soubor z adresáře pomocí `Get-AzDataLakeGen2ItemContent` rutiny.
 
-Tento příklad stáhne soubor s názvem `upload.txt` z adresáře s názvem `my-directory` . 
+Tento příklad stáhne soubor s názvem `upload.txt` z adresáře s názvem `my-directory` .
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -267,143 +272,6 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 
 Pomocí `-Force` parametru můžete soubor odebrat bez výzvy.
 
-## <a name="manage-access-control-lists-acls"></a>Správa seznamů řízení přístupu (ACL)
-
-Můžete získat, nastavit a aktualizovat přístupová oprávnění adresářů a souborů.
-
-> [!NOTE]
-> Pokud k autorizaci příkazů používáte Azure Active Directory (Azure AD), ujistěte se, že je vašemu objektu zabezpečení přiřazená [role vlastníka dat objektu BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma  [řízení přístupu v Azure Data Lake Storage Gen2](./data-lake-storage-access-control.md).
-
-### <a name="get-an-acl"></a>Získat seznam ACL
-
-Získat seznam řízení přístupu k adresáři nebo souboru pomocí `Get-AzDataLakeGen2Item` rutiny.
-
-Tento příklad získá seznam řízení přístupu kořenového adresáře **kontejneru** a pak vytiskne seznam řízení přístupu do konzoly.
-
-```powershell
-$filesystemName = "my-file-system"
-$filesystem = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName
-$filesystem.ACL
-```
-
-Tento příklad získá seznam ACL **adresáře** a pak vytiskne seznam řízení přístupu do konzoly.
-
-```powershell
-$filesystemName = "my-file-system"
-$dirname = "my-directory/"
-$dir = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname
-$dir.ACL
-```
-
-Tento příklad získá seznam řízení přístupu k **souboru** a poté vytiskne seznam řízení přístupu do konzoly.
-
-```powershell
-$filePath = "my-directory/upload.txt"
-$file = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $filePath
-$file.ACL
-```
-
-Následující obrázek ukazuje výstup po získání seznamu ACL adresáře.
-
-![Získat výstup ACL pro adresář](./media/data-lake-storage-directory-file-acl-powershell/get-acl.png)
-
-V tomto příkladu má vlastnící uživatel oprávnění ke čtení, zápisu a spouštění. Vlastnící skupina má pouze oprávnění ke čtení a spouštění. Další informace o seznamech řízení přístupu najdete [v tématu řízení přístupu v Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
-
-### <a name="set-an-acl"></a>Nastavení seznamu ACL
-
-Pomocí `set-AzDataLakeGen2ItemAclObject` rutiny vytvořte seznam ACL pro vlastnícího uživatele, vlastnící skupinu nebo jiné uživatele. Potom pomocí `Update-AzDataLakeGen2Item` rutiny potvrďte seznam řízení přístupu.
-
-Tento příklad nastavuje seznam řízení přístupu v kořenovém adresáři **kontejneru** pro vlastnícího uživatele, vlastnící skupinu nebo jiné uživatele a pak vytiskne seznam řízení přístupu do konzoly.
-
-```powershell
-$filesystemName = "my-file-system"
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission -wx -InputObject $acl
-Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Acl $acl
-$filesystem = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName
-$filesystem.ACL
-```
-
-Tento příklad nastavuje seznam řízení přístupu v **adresáři** pro vlastnícího uživatele, vlastnící skupinu nebo jiné uživatele a pak vytiskne seznam řízení přístupu do konzoly.
-
-```powershell
-$filesystemName = "my-file-system"
-$dirname = "my-directory/"
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission -wx -InputObject $acl
-Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
-$dir = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname
-$dir.ACL
-```
-
-> [!NOTE]
-> Pokud chcete nastavit **výchozí** položku seznamu řízení přístupu (ACL), použijte při spuštění příkazu **set-AzDataLakeGen2ItemAclObject** parametr **-DefaultScope platná** . Příklad: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`.
-
-Tento příklad nastavuje seznam řízení přístupu pro **soubor** pro vlastnícího uživatele, vlastnící skupinu nebo jiné uživatele a pak vytiskne seznam řízení přístupu do konzoly.
-
-```powershell
-$filesystemName = "my-file-system"
-$filePath = "my-directory/upload.txt"
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "-wx" -InputObject $acl
-Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $filePath -Acl $acl
-$file = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $filePath
-$file.ACL
-```
-> [!NOTE]
-> Pokud chcete nastavit **výchozí** položku seznamu řízení přístupu (ACL), použijte při spuštění příkazu **set-AzDataLakeGen2ItemAclObject** parametr **-DefaultScope platná** . Příklad: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`.
-
-Následující obrázek ukazuje výstup po nastavení seznamu ACL souboru.
-
-![Získat výstup ACL pro soubor](./media/data-lake-storage-directory-file-acl-powershell/set-acl.png)
-
-V tomto příkladu mají vlastnící uživatel a vlastnící skupina jenom oprávnění ke čtení a zápisu. Všichni ostatní uživatelé mají oprávnění k zápisu a spouštění. Další informace o seznamech řízení přístupu najdete [v tématu řízení přístupu v Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
-
-### <a name="add-or-update-an-acl-entry"></a>Přidat nebo aktualizovat položku seznamu řízení přístupu
-
-Nejdřív Získejte seznam ACL. Potom pomocí `set-AzDataLakeGen2ItemAclObject` rutiny přidejte nebo aktualizujte položku seznamu řízení přístupu. Pomocí `Update-AzDataLakeGen2Item` rutiny potvrďte seznam řízení přístupu.
-
-Tento příklad vytvoří nebo aktualizuje seznam řízení přístupu pro uživatele v **adresáři** .
-
-```powershell
-$filesystemName = "my-file-system"
-$dirname = "my-directory/"
-$acl = (Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname).ACL
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityID xxxxxxxx-xxxx-xxxxxxxxxxx -Permission r-x -InputObject $acl 
-Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
-```
-
-> [!NOTE]
-> Pokud chcete aktualizovat **výchozí** položku seznamu řízení přístupu (ACL), použijte při spuštění příkazu **set-AzDataLakeGen2ItemAclObject** parametr **-DefaultScope platná** . Příklad: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityID xxxxxxxx-xxxx-xxxxxxxxxxx -Permission r-x -DefaultScope`.
-
-### <a name="remove-an-acl-entry"></a>Odebrat položku seznamu řízení přístupu
-
-Tento příklad odebere položku z existujícího seznamu ACL.
-
-```powershell
-$id = "xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-
-# Create the new ACL object.
-[Collections.Generic.List[System.Object]]$aclnew =$acl
-
-foreach ($a in $aclnew)
-{
-    if ($a.AccessControlType -eq "User"-and $a.DefaultScope -eq $false -and $a.EntityId -eq $id)
-    {
-        $aclnew.Remove($a);
-        break;
-    }
-}
-Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $aclnew
-```
-
-### <a name="set-an-acl-recursively"></a>Rekurzivní nastavení seznamu ACL
-
-Seznamy ACL můžete přidat, aktualizovat a odebrat rekurzivně na existujících podřízených položkách nadřazeného adresáře bez nutnosti provádět tyto změny jednotlivě pro každou podřízenou položku. Další informace najdete v tématu [rekurzivní nastavení seznamů řízení přístupu (ACL) pro Azure Data Lake Storage Gen2](recursive-access-control-lists.md).
-
 <a id="gen1-gen2-map"></a>
 
 ## <a name="gen1-to-gen2-mapping"></a>Mapování Gen1 na Gen2
@@ -423,5 +291,5 @@ Následující tabulka ukazuje, jak rutiny používané pro Data Lake Storage Ge
 
 ## <a name="see-also"></a>Viz také
 
-* [Známé problémy](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-* [Rutiny PowerShellu pro úložiště](/powershell/module/az.storage)
+- [Známé problémy](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+- [Rutiny PowerShellu pro úložiště](/powershell/module/az.storage)

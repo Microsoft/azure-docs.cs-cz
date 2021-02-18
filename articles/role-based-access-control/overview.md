@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q1, azuread-video-2020
-ms.openlocfilehash: 5bf9b79621ae1cd2c73f2e3ce18b0780bcdd2a71
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 4241e476b2f778ff63057d0491b5dc8666c7520c
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559341"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650860"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Co je řízení přístupu na základě role v Azure (Azure RBAC)?
 
@@ -86,7 +86,7 @@ Další informace najdete v tématu věnovaném [postupu přiřazení role Azure
 
 ## <a name="multiple-role-assignments"></a>Přiřazení více rolí
 
-Co se stane, když máte více překrývajících se přiřazení rolí? Azure RBAC je doplňkovým modelem, takže vaše skutečná oprávnění jsou součtem přiřazení rolí. Vezměte v úvahu následující příklad, kdy je uživateli udělena role Přispěvatel v oboru předplatného a role čtenář ve skupině prostředků. Součet oprávnění přispěvatele a oprávnění čtenářů je efektivně rolí přispěvatele pro skupinu prostředků. Proto v takovém případě přiřazení role čtenáře nemá žádný vliv.
+Co se stane, když máte více překrývajících se přiřazení rolí? Azure RBAC je doplňkovým modelem, takže vaše skutečná oprávnění jsou součtem přiřazení rolí. Vezměte v úvahu následující příklad, kdy je uživateli udělena role Přispěvatel v oboru předplatného a role čtenář ve skupině prostředků. Součet oprávnění přispěvatele a oprávnění čtenářů je efektivně rolí přispěvatele předplatného. Proto v takovém případě přiřazení role čtenáře nemá žádný vliv.
 
 ![Přiřazení více rolí](./media/overview/rbac-multiple-roles.png)
 

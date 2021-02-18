@@ -5,17 +5,17 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ef90603e8c8cdd66d43b9f88f6d128d8a472fd8a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1c4cff264b63506432daf350be3557bae7234584
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150324"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594235"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí ve službě Azure App Service
 <a name="Overview"></a>
 
-Když nasadíte webovou aplikaci, webovou aplikaci v systému Linux, back-end Mobile nebo aplikaci API na [Azure App Service](./overview.md), můžete místo výchozího produkčního slotu použít samostatný slot pro nasazení, když pracujete na úrovni plánu **Standard**, **Premium**nebo **Isolated** App Service. Sloty nasazení jsou živé aplikace s vlastními názvy hostitelů. Prvky obsahu aplikace a konfigurace je možné prohodit mezi dvěma sloty nasazení, včetně produkčního slotu. 
+Když nasadíte webovou aplikaci, webovou aplikaci v systému Linux, back-end Mobile nebo aplikaci API na [Azure App Service](./overview.md), můžete místo výchozího produkčního slotu použít samostatný slot pro nasazení, když pracujete na úrovni plánu **Standard**, **Premium** nebo **Isolated** App Service. Sloty nasazení jsou živé aplikace s vlastními názvy hostitelů. Prvky obsahu aplikace a konfigurace je možné prohodit mezi dvěma sloty nasazení, včetně produkčního slotu. 
 
 Nasazení aplikace do neprodukčního slotu má následující výhody:
 
@@ -30,7 +30,7 @@ Pokud chcete aplikaci škálovat na jinou úroveň, ujistěte se, že cílová v
 <a name="Add"></a>
 
 ## <a name="add-a-slot"></a>Přidat slot
-Aby bylo možné povolit více slotů nasazení, musí být aplikace spuštěná v úrovni **Standard**, **Premium**nebo **izolovaná** .
+Aby bylo možné povolit více slotů nasazení, musí být aplikace spuštěná v úrovni **Standard**, **Premium** nebo **izolovaná** .
 
 
 1. v [Azure Portal](https://portal.azure.com/)vyhledejte a vyberte **App Services** a vyberte svou aplikaci. 
@@ -43,7 +43,7 @@ Aby bylo možné povolit více slotů nasazení, musí být aplikace spuštěná
     ![Přidání nového slotu nasazení](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
-   > Pokud aplikace ještě není v úrovni **Standard**, **Premium**nebo **izolovaná** , zobrazí se zpráva, která indikuje podporované úrovně pro povolení vystavení při dvoufázovém publikování. V tomto okamžiku máte možnost vybrat **upgrade** a před pokračováním přejít na kartu **škálování** aplikace.
+   > Pokud aplikace ještě není v úrovni **Standard**, **Premium** nebo **izolovaná** , zobrazí se zpráva, která indikuje podporované úrovně pro povolení vystavení při dvoufázovém publikování. V tomto okamžiku máte možnost vybrat **upgrade** a před pokračováním přejít na kartu **škálování** aplikace.
    > 
 
 3. V dialogovém okně **Přidat slot** zadejte název slotu a vyberte, jestli se má naklonovat konfigurace aplikace z jiného slotu nasazení. Pokračujte výběrem **Přidat** .
@@ -183,9 +183,9 @@ Automatické prohození zjednodušuje scénáře Azure DevOps, ve kterých chcet
 
 Konfigurace automatického prohození:
 
-1. Přejít na stránku prostředků vaší aplikace. Vyberte **Konfigurace slotů pro nasazení**  >  *\<desired source slot>*  >  **Configuration**  >  **Obecné nastavení**.
+1. Přejít na stránku prostředků vaší aplikace. Vyberte **Konfigurace slotů pro nasazení**  >  *\<desired source slot>*  >    >  **Obecné nastavení**.
    
-2. Pro **Automatické prohození**vyberte **zapnuto**. Pak vyberte požadovanou cílovou patici pro **slot nasazení automatického prohození**a na panelu příkazů vyberte **Uložit** . 
+2. Pro **Automatické prohození** vyberte **zapnuto**. Pak vyberte požadovanou cílovou patici pro **slot nasazení automatického prohození** a na panelu příkazů vyberte **Uložit** . 
    
     ![Výběry pro konfiguraci automatického prohození](./media/web-sites-staged-publishing/AutoSwap02.png)
 
@@ -222,7 +222,7 @@ Pokud máte nějaké problémy, přečtěte si téma [řešení potíží se zah
 
 ## <a name="monitor-a-swap"></a>Monitorování swapu
 
-Pokud se [operace prohození](#AboutConfiguration) trvá příliš dlouho, můžete získat informace o operaci swapu v [protokolu aktivit](../azure-monitor/platform/platform-logs-overview.md).
+Pokud se [operace prohození](#AboutConfiguration) trvá příliš dlouho, můžete získat informace o operaci swapu v [protokolu aktivit](../azure-monitor/essentials/platform-logs-overview.md).
 
 Na stránce prostředků vaší aplikace na portálu v levém podokně vyberte **Protokol aktivit**.
 

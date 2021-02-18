@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/05/2021
 ms.author: akjosh
-ms.openlocfilehash: ebc4867f0ce16657c550b3d33d76fccdb41cef54
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: d45535f11568fddd10130d506af3329dcdfb0484
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980639"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580275"
 ---
 # <a name="use-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>Monitorování metrik a protokolů pomocí diagnostického rozšíření Linux 4,0
 
@@ -238,7 +238,7 @@ Tato sada informací o konfiguraci obsahuje citlivé informace, které by měly 
 }
 ```
 
-Název | Hodnota
+Name | Hodnota
 ---- | -----
 storageAccountName | Název účtu úložiště, ve kterém se má rozšíření zapsat data
 storageAccountEndPoint | volitelné Koncový bod identifikující Cloud, ve kterém existuje účet úložiště. Pokud toto nastavení chybí, LAD se výchozí nastavení pro veřejný cloud Azure, `https://core.windows.net` . Pokud chcete použít účet úložiště v Azure Německo, Azure Government nebo Azure Čína, nastavte tuto hodnotu odpovídajícím způsobem.
@@ -827,6 +827,6 @@ V příslušné [dokumentaci k EventHubs](../../event-hubs/event-hubs-about.md) 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Vytvořte výstrahy metriky v [Azure monitor](../../azure-monitor/platform/alerts-classic-portal.md) pro metriky, které shromažďujete.
-* Vytvořte [grafy monitorování](../../azure-monitor/platform/data-platform.md) pro vaše metriky.
+* Vytvořte výstrahy metriky v [Azure monitor](../../azure-monitor/alerts/alerts-classic-portal.md) pro metriky, které shromažďujete.
+* Vytvořte [grafy monitorování](../../azure-monitor/data-platform.md) pro vaše metriky.
 * Naučte se [vytvořit sadu škálování virtuálního počítače](../linux/tutorial-create-vmss.md) pomocí vašich metrik k řízení automatického škálování.

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 2af9608006eac37ccdfe76d66e619d5a64cad9f1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a935b34c4fcebe9128d8af0316658072e20ddfbe
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746645"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596204"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Rychlý Start: monitorování jarních cloudových aplikací Azure díky protokolům, metrikám a trasování
 
@@ -22,7 +22,7 @@ Díky integrované možnosti monitorování v Azure jaře cloudu můžete ladit 
 
 Následující postupy vysvětlují, jak používat streamování protokolů, Log Analytics, metriky a distribuované trasování s ukázkovou aplikací, kterou jste nasadili v předchozích rychlých startech.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Dokončete předchozí rychlé starty v této sérii:
 
@@ -69,7 +69,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
     
 1. Upravte dotaz tak, aby se odebraly klauzule WHERE, které omezují zobrazení na upozornění a protokoly chyb.
 
-1. Pak vyberte `Run` a zobrazíte protokoly. Další pokyny k zápisu dotazů najdete v tématu [Azure Log Analytics docs](../azure-monitor/log-query/get-started-queries.md) .
+1. Pak vyberte `Run` a zobrazíte protokoly. Další pokyny k zápisu dotazů najdete v tématu [Azure Log Analytics docs](../azure-monitor/logs/get-started-queries.md) .
 
    [![Dotaz na analýzu protokolů – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png#lightbox)
 
@@ -109,7 +109,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 ::: zone pivot="programming-language-java"
 Díky integrované možnosti monitorování v Azure jaře cloudu můžete ladit a monitorovat složité problémy. Jarní cloud Azure integruje [jarní Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) s využitím Azure [Application Insights](../azure-monitor/app/app-insights-overview.md). Tato integrace poskytuje výkonné protokoly, metriky a možnosti distribuované vektorizace z Azure Portal. Následující postupy vysvětlují, jak používat streamování protokolů, Log Analytics, metriky a distribuované trasování s nasazenými aplikacemi PiggyMetrics.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Dokončete předchozí kroky: 
 
@@ -142,7 +142,7 @@ Zobrazí se protokoly takto:
 
 Postup získání protokolů pomocí Azure Toolkit for IntelliJ:
 
-1. Vyberte **Azure Explorer** a pak **jarní Cloud** .
+1. Vyberte **Azure Explorer** a pak **jarní Cloud**.
 
 1. Klikněte pravým tlačítkem na spuštěnou aplikaci.
 
@@ -150,7 +150,7 @@ Postup získání protokolů pomocí Azure Toolkit for IntelliJ:
 
    ![Výběr protokolů streamování](media/spring-cloud-intellij-howto/streaming-logs.png)
     
-1. Vyberte **instanci** .
+1. Vyberte **instanci**.
 
    ![Vybrat instanci](media/spring-cloud-intellij-howto/select-instance.png)
     
@@ -165,7 +165,7 @@ Postup získání protokolů pomocí Azure Toolkit for IntelliJ:
 
    [![Položka ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png) Log Analytics](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
-1. Pak se zobrazí filtrované protokoly. Další pokyny k zápisu dotazů najdete v tématu [Azure Log Analytics docs](../azure-monitor/log-query/get-started-queries.md) .
+1. Pak se zobrazí filtrované protokoly. Další pokyny k zápisu dotazů najdete v tématu [Azure Log Analytics docs](../azure-monitor/logs/get-started-queries.md) .
 
    [![Dotaz na ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png) analýzu protokolů](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png#lightbox)
 

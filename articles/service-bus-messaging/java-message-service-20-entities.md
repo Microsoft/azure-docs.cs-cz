@@ -1,24 +1,24 @@
 ---
-title: Azure Service Bus zasílání zpráv – entity služby zprávy Java (Preview)
+title: Azure Service Bus zasílání zpráv – entity služby zpráv v jazyce Java
 description: Tento článek poskytuje přehled entit zasílání zpráv Azure Service Bus přístupných prostřednictvím rozhraní API služby Java Message Service.
 ms.topic: article
 ms.date: 07/20/2020
-ms.openlocfilehash: 1a7fe3d6355146ccf0fce50266a6f3b8da5231b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee4e0124dced16b86d5292c647e129aa87645f22
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87801580"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652577"
 ---
-# <a name="java-message-service-jms-20-entities-preview"></a>Entity služby zprávy Java (JMS) 2,0 (Preview)
+# <a name="java-message-service-jms-20-entities"></a>Entity služby zprávy Java (JMS) 2,0
 
-Klientské aplikace, které se připojují k Azure Service Bus Premium a využívají [knihovnu Azure Service Bus JMS](https://search.maven.org/artifact/com.microsoft.azure/azure-servicebus-jms) , mohou využít níže uvedené entity.
+Klientské aplikace připojující se k Azure Service Bus Premium a pomocí [knihovny Azure Service Bus JMS](https://search.maven.org/artifact/com.microsoft.azure/azure-servicebus-jms) mohou používat níže uvedené entity.
 
 ## <a name="queues"></a>Fronty
 
 Fronty v JMS jsou sémanticky srovnatelné s tradičními [Service Bus frontami](service-bus-queues-topics-subscriptions.md#queues).
 
-Chcete-li vytvořit frontu, využijte níže uvedené metody ve `JMSContext` třídě –
+Chcete-li vytvořit frontu, použijte níže uvedené metody `JMSContext` třídy –
 
 ```java
 Queue createQueue(String queueName)
@@ -28,7 +28,7 @@ Queue createQueue(String queueName)
 
 Témata v JMS jsou sémanticky srovnatelná s tradičními [tématy Service Bus](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions).
 
-Chcete-li vytvořit téma, využijte níže uvedené metody ve `JMSContext` třídě –
+Chcete-li vytvořit téma, použijte níže uvedené metody ve `JMSContext` třídě –
 
 ```java
 Topic createTopic(String topicName)
@@ -36,9 +36,9 @@ Topic createTopic(String topicName)
 
 ## <a name="temporary-queues"></a>Dočasné fronty
 
-Když klientská aplikace vyžaduje dočasnou entitu, která existuje po dobu života aplikace, může použít dočasné fronty. Ty jsou využívány ve vzoru [požadavek-odpověď](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html) .
+Pokud klientská aplikace vyžaduje dočasnou entitu, která existuje po dobu života aplikace, může použít dočasné fronty. Tyto entity se používají ve vzoru [požadavek-odpověď](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html) .
 
-Chcete-li vytvořit dočasnou frontu, využijte níže uvedené metody ve `JMSContext` třídě –
+Chcete-li vytvořit dočasnou frontu, použijte níže uvedené metody `JMSContext` třídy –
 
 ```java
 TemporaryQueue createTemporaryQueue()
@@ -48,7 +48,7 @@ TemporaryQueue createTemporaryQueue()
 
 Stejně jako dočasné fronty existují dočasná témata, která umožňují publikování/přihlášení k odběru prostřednictvím dočasné entity, která existuje po dobu života aplikace.
 
-Chcete-li vytvořit dočasné téma, využijte níže uvedené metody ve `JMSContext` třídě –
+Chcete-li vytvořit dočasné téma, použijte níže uvedené metody ve `JMSContext` třídě –
 
 ```java
 TemporaryTopic createTemporaryTopic()
@@ -56,19 +56,19 @@ TemporaryTopic createTemporaryTopic()
 
 ## <a name="java-message-service-jms-subscriptions"></a>Odběry zpráv JMS (Java Message Service)
 
-I když jsou tyto odběry sémanticky podobné [předplatným](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) (tj. existují v tématu a umožňují sémantiku publikování a odběru), uvádí specifikace služby Java Message Services koncepty **sdílených**, **nesdílených**, **trvalých** a **netrvalých** atributů v daném předplatném.
+I když jsou tyto odběry sémanticky podobné [předplatným](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) (tj. existují v tématu a umožňují sémantiku publikování a odběru), představuje specifikace služby zprávy Java koncepty **sdílených**, **nesdílených**, * * odolných a **netrvalých** atributů daného předplatného.
 
 > [!NOTE]
-> Níže uvedené odběry jsou dostupné v Azure Service Bus Premium úrovně Preview pro klientské aplikace, které se připojují k Azure Service Bus pomocí [knihovny Azure Service Bus JMS](https://search.maven.org/artifact/com.microsoft.azure/azure-servicebus-jms).
+> Níže uvedené odběry jsou dostupné v Azure Service Bus úrovně Premium pro klientské aplikace, které se připojují k Azure Service Bus pomocí [knihovny Azure Service Bus JMS](https://search.maven.org/artifact/com.microsoft.azure/azure-servicebus-jms).
 >
-> V rámci verze Public Preview nelze tyto odběry vytvořit pomocí Azure Portal.
+> Pomocí Azure Portal lze vytvořit pouze trvalé odběry.
 >
 
 ### <a name="shared-durable-subscriptions"></a>Sdílená trvalá předplatná
 
 Sdílené odolné předplatné se používá v případě, že se všechny zprávy publikované v tématu mají přijmout a zpracovat aplikace bez ohledu na to, jestli aplikace aktivně spotřebovává předplatné z předplatného.
 
-Vzhledem k tomu, že se jedná o sdílené předplatné, můžou z předplatného přijímat všechny aplikace, které jsou ověřené pro příjem z Service Bus.
+Všechny aplikace, které jsou ověřené pro příjem z Service Bus, můžou přijímat ze sdíleného trvalého předplatného.
 
 Chcete-li vytvořit sdílené trvalé předplatné, použijte níže uvedené metody `JMSContext` třídy –
 
@@ -86,7 +86,7 @@ void unsubscribe(String name)
 
 ### <a name="unshared-durable-subscriptions"></a>Nesdílené trvalé odběry
 
-Stejně jako u sdíleného odolného předplatného se používá nesdílené trvalé předplatné, pokud jsou všechny zprávy publikované v tématu přijaté a zpracovávané aplikací, bez ohledu na to, jestli aplikace aktivně spotřebovává z předplatného.
+Podobně jako u sdíleného odolného předplatného se používá nesdílené trvalé předplatné, pokud jsou všechny zprávy publikované v tématu přijaté a zpracovávané aplikací, bez ohledu na to, jestli aplikace aktivně spotřebovává z předplatného.
 
 Vzhledem k tomu, že se jedná o nesdílené předplatné, může z něho přijmout jenom aplikace, která předplatné vytvořila.
 
@@ -126,7 +126,7 @@ Sdílené netrvalé předplatné bude i nadále existovat, dokud neobdrží akti
 
 ### <a name="unshared-non-durable-subscriptions"></a>Nesdílené odběry, které nejsou trvalé
 
-Nesdílené netrvalé předplatné se používá, když klientská aplikace potřebuje přijmout a zpracovat zprávu z předplatného, jenom až do chvíle, kdy se z něho bude aktivně spotřebovávat. V tomto předplatném může existovat jenom jeden příjemce, tj. na klienta, který předplatné vytvořil.
+Nesdílené netrvalé předplatné se používá, když klientská aplikace potřebuje přijmout a zpracovat zprávu z předplatného, jenom až do chvíle, kdy se z něho bude aktivně spotřebovávat. V tomto předplatném může existovat jenom jeden příjemce, to znamená klient, který předplatné vytvořil.
 
 Vzhledem k tomu, že odběr není trvalý, není trvalý. Pokud není k dispozici žádný aktivní spotřebitel, zprávy toto předplatné neobdrží.
 
@@ -152,12 +152,55 @@ Stejně jako **filtry a akce** existují pro pravidelná Service Bus předplatn�
 
 Selektory zpráv je možné nastavit u každého předplatného JMS a existují jako podmínka filtru ve vlastnostech záhlaví zprávy. Doručovat se jenom zprávy s vlastnostmi záhlaví, které odpovídají výrazu selektoru zpráv. Hodnota null nebo prázdný řetězec značí, že neexistuje selektor zpráv pro předplatné JMS nebo spotřebitele.
 
+## <a name="additional-concepts-for-java-message-service-jms-20-subscriptions"></a>Další koncepty pro předplatná JMS (Java Message Service) 2,0
+
+### <a name="client-scoping"></a>Obor klienta
+
+Předplatná, jak je uvedeno ve službě Java Message Service (JMS) 2,0 API, může nebo nemusí být *vymezená na konkrétní klientské aplikace/s* (s odpovídajícím způsobem `clientId` ).
+
+Když je předplatné vymezené, dá se **k němu dostat jenom** z klientských aplikací, které mají stejné ID klienta. 
+
+Jakékoli pokusy o přístup k předplatnému s rozsahem konkrétního ID klienta (například clientId1) z aplikace, která má jiné ID klienta (říká clientId2), povede k vytvoření dalšího oboru předplatného pro druhé ID klienta (clientId2).
+
+> [!NOTE]
+> ID klienta může mít hodnotu null nebo být prázdné, ale musí odpovídat ID klienta nastavenému v klientské aplikaci JMS. Z Azure Service Bus perspektivy mají ID klienta null a prázdné ID klienta stejné chování.
+>
+> Pokud je ID klienta nastaveno na hodnotu null nebo je prázdné, je přístupné pouze klientským aplikacím, jejichž ID klienta je také nastaveno na hodnotu null nebo prázdné.
+>
+
+### <a name="shareability"></a>Potřebující
+
+**Sdílené** odběry umožňují, aby od nich mohli přijímat zprávy více klientů/příjemců (tj. JMSConsumer objekty).
+
+>[!NOTE]
+> Ke sdíleným předplatným vymezeným na konkrétní ID klienta může mít stále přistup více klientů nebo uživatelů (tj. JMSConsumer objekty), ale každá z klientských aplikací musí mít stejné ID klienta.
+>
+ 
+
+**Nesdílené** odběry umožňují přijímat zprávy pouze jeden klient/příjemce (tj. objekt JMSConsumer). Pokud `JMSConsumer` se vytvoří v nesdíleném předplatném, zatímco už má aktivní `JMSConsumer` naslouchání zpráv, `JMSException` vyvolá se.
+
+
+### <a name="durability"></a>Stálost
+
+**Trvalé** odběry jsou trvalé a nadále shromažďují zprávy z tématu bez ohledu na to, zda aplikace ( `JMSConsumer` ) zpracovává zprávy z něj.
+
+**Netrvalá** předplatná nejsou trvalá a shromažďují zprávy z tématu, pokud aplikace ( `JMSConsumer` ) spotřebovává zprávy. 
+
+## <a name="representation-of-client-scoped-subscriptions"></a>Reprezentace předplatných s rozsahem klienta
+
+Vzhledem k toho, že odběry v oboru klienta (JMS) musí existovat společně se [stávajícími předplatnými](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions), způsob, jakým jsou předplatná v oboru klienta (JMS) reprezentovaná, postupujte podle následujícího formátu.
+
+   * **\<SUBSCRIPTION-NAME\>**$**\<CLIENT-ID\>**$**D** (pro trvalá předplatná)
+   * **\<SUBSCRIPTION-NAME\>**$**\<CLIENT-ID\>**$**ND** (pro netrvalá předplatná)
+
+Tady **$** je oddělovač.
+
 ## <a name="next-steps"></a>Další kroky
 
 Další informace a příklady použití zasílání zpráv Service Bus najdete v následujících tématech pokročilých:
 
 * [Přehled Service Busho zasílání zpráv](service-bus-messaging-overview.md)
-* [Použití rozhraní Java Message Service 2,0 API s Azure Service Bus Premium (Preview)](how-to-use-java-message-service-20.md)
+* [Použití rozhraní Java Message Service 2,0 API s Azure Service Bus Premium](how-to-use-java-message-service-20.md)
 
 
 

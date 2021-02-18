@@ -7,12 +7,12 @@ keywords: Změna, sledování, sledování změn, inventář, automatizace
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 28c440f27dcbd4ac509adea83d5c3085488cb488
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a223ac4296dd160bbdd904e1d3443552d4f49a23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204244"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587939"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Řešení potíží se změnami na virtuálním počítači Azure
 
@@ -54,7 +54,7 @@ Nejdřív musíte pro tento kurz povolit Change Tracking a inventář. Pokud jst
 
     ![Povolit změnu](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
 
-3. Vyberte pracovní prostor [Log Analytics](../azure-monitor/log-query/log-query-overview.md) . Tento pracovní prostor shromažďuje data generovaná funkcemi, jako jsou Change Tracking a inventář. Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
+3. Vyberte pracovní prostor [Log Analytics](../azure-monitor/logs/log-query-overview.md) . Tento pracovní prostor shromažďuje data generovaná funkcemi, jako jsou Change Tracking a inventář. Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
 
     [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -80,7 +80,7 @@ ConfigurationChange
 | where ConfigChangeType == "WindowsServices" and SvcState == "Stopped"
 ```
 
-Další informace o spouštění a hledání souborů protokolu v protokolech Azure Monitor najdete v tématu [protokoly Azure monitor](../azure-monitor/log-query/log-query-overview.md).
+Další informace o spouštění a hledání souborů protokolu v protokolech Azure Monitor najdete v tématu [protokoly Azure monitor](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="configure-change-tracking"></a>Konfigurace sledování změn
 
@@ -172,7 +172,7 @@ Zobrazení změn na webu Azure Portal může být užitečné, ale užitečněj�
 
 1. V Azure Portal klikněte na **monitorování**. 
 
-2. V části **sdílené služby**vyberte **výstrahy** a klikněte na **+ nové pravidlo výstrahy**.
+2. V části **sdílené služby** vyberte **výstrahy** a klikněte na **+ nové pravidlo výstrahy**.
 
 3. Pro výběr prostředku klikněte na **Vybrat** . 
 
@@ -194,21 +194,21 @@ Zobrazení změn na webu Azure Portal může být užitečné, ale užitečněj�
 
     Tento dotaz vrátí počítače, na kterých se v zadaném období zastavila služba W3SVC.
 
-9. V **části** **logika výstrahy**zadejte hodnotu **0**. Až skončíte, klikněte na **Hotovo**.
+9. V **části** **logika výstrahy** zadejte hodnotu **0**. Až skončíte, klikněte na **Hotovo**.
 
     ![Konfigurace logiky signálů](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
 
-10. V části **skupiny akcí**vyberte **vytvořit novou** . Skupina akcí se skládá z akcí, které můžete použít ve více upozorněních. Mezi akce můžou patřit mimo jiné e-mailová oznámení, runbooky, webhooky a řada dalších. Další informace o skupinách akcí naleznete v tématu [Create and Manage Action Groups](../azure-monitor/platform/action-groups.md).
+10. V části **skupiny akcí** vyberte **vytvořit novou** . Skupina akcí se skládá z akcí, které můžete použít ve více upozorněních. Mezi akce můžou patřit mimo jiné e-mailová oznámení, runbooky, webhooky a řada dalších. Další informace o skupinách akcí naleznete v tématu [Create and Manage Action Groups](../azure-monitor/alerts/action-groups.md).
 
-11. V části **Podrobnosti výstrahy**zadejte název a popis výstrahy. 
+11. V části **Podrobnosti výstrahy** zadejte název a popis výstrahy. 
 
 12. Nastavte **Závažnost** na **Informativní (záv. 2)**, **Upozornění (záv. 1)** nebo **Kritické (záv. 0)**.
 
 13. Do pole **Název skupiny akcí** zadejte název a krátký název upozornění. Krátký název se použije místo úplného názvu skupiny akcí při odesílání oznámení pomocí této skupiny.
 
-14. V části **Akce**zadejte název akce, například **správce e-mailu**. 
+14. V části **Akce** zadejte název akce, například **správce e-mailu**. 
 
-15. Jako **typ akce**vyberte **e-mail/SMS/Push/Voice**. 
+15. Jako **typ akce** vyberte **e-mail/SMS/Push/Voice**. 
 
 16. Pokud chcete zobrazit **Podrobnosti**, vyberte **Upravit podrobnosti**.
 
@@ -218,7 +218,7 @@ Zobrazení změn na webu Azure Portal může být užitečné, ale užitečněj�
 
 18. Pokud chcete přizpůsobit předmět e-mailu s výstrahou, vyberte **přizpůsobit akce**. 
 
-19. V možnosti **vytvořit pravidlo**vyberte **Předmět e-mailu**a pak zvolte **vytvořit pravidlo upozornění**. Pravidlo vás upozorní na úspěšné nasazení aktualizací a poskytne informace o tom, které počítače byly součástí dané hromadné postupné aktualizace. Na následujícím obrázku je příklad e-mailu přijatý při zastavení služby W3SVC.
+19. V možnosti **vytvořit pravidlo** vyberte **Předmět e-mailu** a pak zvolte **vytvořit pravidlo upozornění**. Pravidlo vás upozorní na úspěšné nasazení aktualizací a poskytne informace o tom, které počítače byly součástí dané hromadné postupné aktualizace. Na následujícím obrázku je příklad e-mailu přijatý při zastavení služby W3SVC.
 
     ![Snímek obrazovky zobrazuje e-mailové oznámení obdržené, když se zastaví služby W 3 S V C.](./media/automation-tutorial-troubleshoot-changes/email.png)
 

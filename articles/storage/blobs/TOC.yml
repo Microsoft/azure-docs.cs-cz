@@ -635,20 +635,16 @@
       items:
         - name: Úvodní informace ke službě Data Lake Store
           href: data-lake-storage-introduction.md
-    - name: Rychlé starty
-      items:
-        - name: Analýza dat s využitím Databricks
-          href: data-lake-storage-quickstart-create-databricks-account.md
     - name: Kurzy
       items:
-        - name: 'Extrakce, transformace a načítání dat pomocí Azure Databricks'
-          href: /azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Přístup k datům Data Lake Storage se službou Databricks s využitím Sparku
+        - name: Použití s datacihlami a Sparkem
           href: data-lake-storage-use-databricks-spark.md
-        - name: 'Extrakce, transformace a načítání dat s využitím Apache Hivu ve službě Azure HDInsight'
+        - name: Použití s Apache Hive a HDInsight
           href: data-lake-storage-tutorial-extract-transform-load-hive.md
-        - name: Vložení dat do rozdílových tabulek Databricks pomocí Event Gridu
+        - name: Použití s rozdílem datacihly a Event Grid
           href: data-lake-storage-events.md
+        - name: Použití s ostatními službami Azure
+          href: data-lake-storage-integrate-with-services-tutorials.md
     - name: Koncepty
       items:
         - name: Zpracování velkých objemů dat
@@ -705,7 +701,7 @@
       items:
         - name: vytvořit účet úložiště
           href: create-data-lake-storage-account.md
-        - name: Migrace
+        - name: Migrace účtů a úložišť dat
           items:
             - name: Migrace ze služby Data Lake Storage Gen1
               href: data-lake-storage-migrate-gen1-to-gen2.md
@@ -713,31 +709,7 @@
               href: data-lake-storage-migrate-on-premises-HDFS-cluster.md
             - name: Migrace úložiště HDFS online
               href: migrate-gen2-wandisco-live-data-platform.md
-        - name: Spravovat
-          items:
-            - name: .NET
-              href: data-lake-storage-directory-file-acl-dotnet.md
-            - name: Java
-              href: data-lake-storage-directory-file-acl-java.md
-            - name: Python
-              href: data-lake-storage-directory-file-acl-python.md
-            - name: JavaScript
-              href: data-lake-storage-directory-file-acl-javascript.md
-            - name: PowerShell
-              href: data-lake-storage-directory-file-acl-powershell.md
-            - name: Rozhraní příkazového řádku
-              href: data-lake-storage-directory-file-acl-cli.md
-            - name: Storage Explorer
-              href: data-lake-storage-explorer.md
-            - name: Rozhraní příkazového řádku systému souborů Hadoop
-              href: data-lake-storage-use-hdfs-data-lake-storage.md
-            - name: Rekurzivní nastavení seznamů ACL
-              href: recursive-access-control-lists.md
-        - name: Dotaz
-          items:
-            - name: Filtrování dat s využitím akcelerace dotazů
-              href: data-lake-storage-query-acceleration-how-to.md
-        - name: Přenos
+        - name: Přenos dat
           items:
             - name: AzCopy
               items:
@@ -761,9 +733,47 @@
               href: data-lake-storage-use-distcp.md
             - name: Přenos dat s využitím knihovny pro přesun dat
               href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Optimalizace
+        - name: Správa řízení přístupu
           items:
-            - name: Optimalizace výkonu
+            - name: Storage Explorer
+              href: data-lake-storage-explorer-acl.md
+            - name: PowerShell
+              href: data-lake-storage-acl-powershell.md
+            - name: Rozhraní příkazového řádku
+              href: data-lake-storage-acl-cli.md
+            - name: .NET
+              href: data-lake-storage-acl-dotnet.md
+            - name: Java
+              href: data-lake-storage-acl-java.md
+            - name: Python
+              href: data-lake-storage-acl-python.md
+            - name: JavaScript
+              href: data-lake-storage-acl-javascript.md
+        - name: Práce s daty
+          items:
+            - name: Storage Explorer
+              href: data-lake-storage-explorer.md
+            - name: PowerShell
+              href: data-lake-storage-directory-file-acl-powershell.md
+            - name: Rozhraní příkazového řádku
+              href: data-lake-storage-directory-file-acl-cli.md
+            - name: .NET
+              href: data-lake-storage-directory-file-acl-dotnet.md
+            - name: Java
+              href: data-lake-storage-directory-file-acl-java.md
+            - name: Python
+              href: data-lake-storage-directory-file-acl-python.md
+            - name: JavaScript
+              href: data-lake-storage-directory-file-acl-javascript.md
+            - name: Akcelerace dotazů
+              href: data-lake-storage-query-acceleration-how-to.md
+            - name: Rozhraní příkazového řádku systému souborů Hadoop
+              href: data-lake-storage-use-hdfs-data-lake-storage.md
+        - name: Použití se službami Azure
+          href: data-lake-storage-integrate-with-services-tutorials.md
+        - name: Optimalizace výkonu
+          items:
+            - name: Přehled optimalizace výkonu
               href: data-lake-storage-performance-tuning-guidance.md
             - name: Optimalizace Sparku v HDInsightu
               href: data-lake-storage-performance-tuning-spark.md

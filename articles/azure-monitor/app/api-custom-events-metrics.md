@@ -4,12 +4,12 @@ description: Pokud chcete sledovat využití a diagnostikovat problémy, vložte
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 72e79ff90422a6f055d5b883ba208555244687b3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 881c657b25d04834d83221c738c578b8281752b7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927813"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593750"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API služby Application Insights pro vlastní události a metriky
 
@@ -108,7 +108,7 @@ V Node.js projekty můžete použít `new applicationInsights.TelemetryClient(in
 
 ## <a name="trackevent"></a>TrackEvent
 
-V Application Insights *vlastní událost* je datový bod, který lze zobrazit v [Průzkumník metrik](../platform/metrics-charts.md) jako agregovaný počet a v [diagnostickém vyhledávání](./diagnostic-search.md) jako jednotlivé výskyty. (Nesouvisí s událostmi MVC nebo jinými rozhraními.)
+V Application Insights *vlastní událost* je datový bod, který lze zobrazit v [Průzkumník metrik](../essentials/metrics-charts.md) jako agregovaný počet a v [diagnostickém vyhledávání](./diagnostic-search.md) jako jednotlivé výskyty. (Nesouvisí s událostmi MVC nebo jinými rozhraními.)
 
 Vložením `TrackEvent` volání do kódu můžete spočítat různé události. Jak často uživatelé vyberou konkrétní funkci, jak často dosahují konkrétního cíle, nebo jak často provádějí konkrétní typy chyb.
 
@@ -146,7 +146,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>Vlastní události v analýzách
 
-Telemetrii je k dispozici v `customEvents` tabulce na [kartě protokoly Application Insights](../log-query/log-query-overview.md) nebo v [prostředí používání](usage-overview.md). Události můžou pocházet z `trackEvent(..)` nebo [kliknout na analýza modul plug-in automatické kolekce](javascript-click-analytics-plugin.md).
+Telemetrii je k dispozici v `customEvents` tabulce na [kartě protokoly Application Insights](../logs/log-query-overview.md) nebo v [prostředí používání](usage-overview.md). Události můžou pocházet z `trackEvent(..)` nebo [kliknout na analýza modul plug-in automatické kolekce](javascript-click-analytics-plugin.md).
 
  
 
@@ -204,7 +204,7 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 
 ### <a name="custom-metrics-in-analytics"></a>Vlastní metriky v analýzách
 
-Telemetrii je k dispozici v `customMetrics` tabulce v [Application Insights Analytics](../log-query/log-query-overview.md). Každý řádek představuje volání `trackMetric(..)` ve vaší aplikaci.
+Telemetrii je k dispozici v `customMetrics` tabulce v [Application Insights Analytics](../logs/log-query-overview.md). Každý řádek představuje volání `trackMetric(..)` ve vaší aplikaci.
 
 * `valueSum` – Toto je součet měření. Chcete-li získat střední hodnotu, rozdělte `valueCount` .
 * `valueCount` – Počet měření, které byly agregovány do tohoto `trackMetric(..)` volání.
@@ -274,7 +274,7 @@ Výsledná trvání načtení stránky zobrazená v Průzkumník metrik jsou odv
 
 ### <a name="page-telemetry-in-analytics"></a>Telemetrie stránky v analýzách
 
-V [analytických](../log-query/log-query-overview.md) dvou tabulkách se zobrazují data z operací prohlížeče:
+V [analytických](../logs/log-query-overview.md) dvou tabulkách se zobrazují data z operací prohlížeče:
 
 * `pageViews`Tabulka obsahuje data o adrese URL a názvu stránky.
 * `browserTimings`Tabulka obsahuje data o výkonu klienta, například čas potřebný ke zpracování příchozích dat.
@@ -310,7 +310,7 @@ Doporučený způsob odeslání telemetrie požadavků je však, že požadavek 
 
 ## <a name="operation-context"></a>Kontext operace
 
-Můžete sladit položky telemetrie dohromady jejich přidružením k kontextu operace. Standardní modul pro sledování požadavků provádí tyto výjimky a další události, které jsou odeslány během zpracování požadavku HTTP. V části [vyhledávání](./diagnostic-search.md) a [Analýza](../log-query/log-query-overview.md)můžete snadno najít jakékoli události přidružené k žádosti pomocí jejího ID operace.
+Můžete sladit položky telemetrie dohromady jejich přidružením k kontextu operace. Standardní modul pro sledování požadavků provádí tyto výjimky a další události, které jsou odeslány během zpracování požadavku HTTP. V části [vyhledávání](./diagnostic-search.md) a [Analýza](../logs/log-query-overview.md)můžete snadno najít jakékoli události přidružené k žádosti pomocí jejího ID operace.
 
 Další informace o korelaci najdete [v tématu korelace telemetrie v Application Insights](./correlation.md) .
 
@@ -348,7 +348,7 @@ Další informace o sledování vlastních operací najdete v tématu [sledován
 
 ### <a name="requests-in-analytics"></a>Požadavky v analýzách
 
-V [Application Insights Analytics](../log-query/log-query-overview.md)se žádosti zobrazují v `requests` tabulce.
+V [Application Insights Analytics](../logs/log-query-overview.md)se žádosti zobrazují v `requests` tabulce.
 
 Pokud je [vzorkování](./sampling.md) v provozu, vlastnost vlastnost ItemCount zobrazí hodnotu větší než 1. Například vlastnost ItemCount = = 10 znamená, že u 10 volání trackRequest () proces vzorkování přenáší pouze jeden z nich. Chcete-li získat správný počet požadavků a průměrnou dobu, segmentované podle názvů požadavků, použijte následující kód:
 
@@ -361,7 +361,7 @@ requests
 
 Odeslat výjimky do Application Insights:
 
-* Pokud [je chcete spočítat](../platform/metrics-charts.md), jako indikaci četnosti problému.
+* Pokud [je chcete spočítat](../essentials/metrics-charts.md), jako indikaci četnosti problému.
 * K [prohlédnutí jednotlivých výskytů](./diagnostic-search.md).
 
 Sestavy zahrnují trasování zásobníku.
@@ -430,7 +430,7 @@ Sady SDK zachycují mnoho výjimek automaticky, takže nemusíte vždy volat Tra
 
 ### <a name="exceptions-in-analytics"></a>Výjimky v analýzách
 
-V [Application Insights Analytics](../log-query/log-query-overview.md)se výjimky zobrazují v `exceptions` tabulce.
+V [Application Insights Analytics](../logs/log-query-overview.md)se výjimky zobrazují v `exceptions` tabulce.
 
 Pokud je [vzorkování](./sampling.md) v provozu, `itemCount` vlastnost zobrazuje hodnotu větší než 1. Například vlastnost ItemCount = = 10 znamená, že u 10 volání trackException () proces vzorkování přenáší pouze jeden z nich. Chcete-li získat správný počet výjimek segmenticky podle typu výjimky, použijte kód jako:
 
@@ -525,7 +525,7 @@ V [hledání](./diagnostic-search.md)můžete snadno odfiltrovat všechny zpráv
 
 ### <a name="traces-in-analytics"></a>Trasování v analýzách
 
-V [Application Insights Analytics](../log-query/log-query-overview.md)se v tabulce zobrazí volání TrackTrace `traces` .
+V [Application Insights Analytics](../logs/log-query-overview.md)se v tabulce zobrazí volání TrackTrace `traces` .
 
 Pokud je [vzorkování](./sampling.md) v provozu, vlastnost vlastnost ItemCount zobrazí hodnotu větší než 1. Například vlastnost ItemCount = = 10 znamená, že 10 volání do `trackTrace()` , proces vzorkování přenáší pouze jeden z nich. Chcete-li získat správný počet volání trasování, měli byste použít kód, například `traces | summarize sum(itemCount)` .
 
@@ -607,7 +607,7 @@ Chcete-li vypnout standardní modul Sledování závislosti v jazyce C#, upravte
 
 ### <a name="dependencies-in-analytics"></a>Závislosti v analýzách
 
-V [Application Insights Analytics](../log-query/log-query-overview.md)se v tabulce zobrazí volání trackDependency `dependencies` .
+V [Application Insights Analytics](../logs/log-query-overview.md)se v tabulce zobrazí volání trackDependency `dependencies` .
 
 Pokud je [vzorkování](./sampling.md) v provozu, vlastnost vlastnost ItemCount zobrazí hodnotu větší než 1. Například vlastnost ItemCount = = 10 znamená, že u 10 volání trackDependency () proces vzorkování přenáší pouze jeden z nich. Chcete-li získat správný počet závislostí segmentované cílovou komponentou, použijte kód jako:
 
@@ -695,7 +695,7 @@ Pokud vaše aplikace seskupí uživatele na účty, můžete také předat ident
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-V [Průzkumník metrik](../platform/metrics-charts.md)můžete vytvořit graf, který počítá **uživatele, ověřené** a **uživatelské účty**.
+V [Průzkumník metrik](../essentials/metrics-charts.md)můžete vytvořit graf, který počítá **uživatele, ověřené** a **uživatelské účty**.
 
 Můžete také [Vyhledat](./diagnostic-search.md) body dat klienta s konkrétními uživatelskými jmény a účty.
 
@@ -816,7 +816,7 @@ telemetry.TrackEvent(event);
 
 ### <a name="custom-measurements-and-properties-in-analytics"></a>Vlastní měření a vlastnosti v analýzách
 
-V rámci [analýzy](../log-query/log-query-overview.md)se vlastní metriky a vlastnosti zobrazují v `customMeasurements` `customDimensions` atributech a každého záznamu telemetrie.
+V rámci [analýzy](../logs/log-query-overview.md)se vlastní metriky a vlastnosti zobrazují v `customMeasurements` `customDimensions` atributech a každého záznamu telemetrie.
 
 Pokud jste například přidali vlastnost s názvem "Game" do telemetrie žádosti, tento dotaz počítá výskyty různých hodnot "Game" a zobrazí průměr vlastní metriky "skóre":
 

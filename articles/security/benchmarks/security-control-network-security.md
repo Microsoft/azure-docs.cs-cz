@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3a232f8e8c35e265a8243ac79e465c03f6b9650e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cc52d1f6eec5f1aedb0db37b3945f7be6d9f62a8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487860"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595628"
 ---
 # <a name="security-control-network-security"></a>Řízení zabezpečení: zabezpečení sítě
 
@@ -22,7 +22,7 @@ Doporučení zabezpečení sítě se zaměřují na určení, které síťové p
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 1,1 | 9,2, 9,4, 14,1, 14,2, 14,3 | Zákazník |
+| 1.1 | 9,2, 9,4, 14,1, 14,2, 14,3 | Zákazník |
 
 Zajistěte, aby všechna nasazení Virtual Network podsítí měla skupinu zabezpečení sítě použitou pro řízení přístupu k síti, která jsou specifická pro důvěryhodné porty a zdroje vaší aplikace. Pokud je k dispozici, pomocí privátních koncových bodů s privátním odkazem Zabezpečte prostředky služby Azure do vaší virtuální sítě rozšířením identity virtuální sítě na službu. Pokud privátní koncové body a soukromý odkaz nejsou k dispozici, použijte koncové body služby. Požadavky na konkrétní služby najdete v doporučení zabezpečení této konkrétní služby. 
 
@@ -42,7 +42,7 @@ Případně, pokud máte konkrétní případ použití, požadavek může být 
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 1,2 | 9,3, 12,2, 12,8 | Zákazník |
+| 1.2 | 9,3, 12,2, 12,8 | Zákazník |
 
 Použijte Azure Security Center a sledujte doporučení k ochraně síťových prostředků v Azure pomocí doporučení pro ochranu sítě. Povolte protokoly toku NSG a odešlete protokoly do účtu úložiště pro audit provozu. Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytics a používat Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Analýza provozu patří schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a označovat nesprávné konfigurace sítě.
 
@@ -116,7 +116,7 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 1,7 | 12,9, 12,10 | Zákazník |
+| 1.7 | 12,9, 12,10 | Zákazník |
 
 Nasaďte Azure Application Gateway pro webové aplikace s povoleným protokolem HTTPS/TLS pro důvěryhodné certifikáty.
 
@@ -144,7 +144,7 @@ Skupiny zabezpečení aplikací můžete použít také ke zjednodušení složi
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 1,9 | 11,1 | Zákazník |
+| 1.9 | 11,1 | Zákazník |
 
 Definování a implementace standardních konfigurací zabezpečení pro síťové prostředky pomocí Azure Policy.
 
@@ -178,13 +178,13 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 1,11 | 11,3 | Zákazník |
+| 1,11 | 11.3 | Zákazník |
 
 Pomocí protokolu aktivit Azure můžete monitorovat konfigurace prostředků a zjišťovat změny vašich prostředků Azure. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických prostředcích.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](../../azure-monitor/platform/alerts-activity-log.md)
+- [Vytváření výstrah v Azure Monitor](../../azure-monitor/alerts/alerts-activity-log.md)
 
 ## <a name="next-steps"></a>Další kroky
 

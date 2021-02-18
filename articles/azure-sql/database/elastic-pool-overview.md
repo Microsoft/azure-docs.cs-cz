@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 12/9/2020
-ms.openlocfilehash: f50042caf21630c5054ead76825e49b820405c5b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c478edf95ae345d64da630400fbf63ac613b73a6
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732690"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653631"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Elastické fondy vám pomůžou se správou a škálováním více databází v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -90,15 +90,10 @@ V případě úrovní služeb a omezení prostředků v jednotlivých nákupníc
 Následující kroky vám pomůžou odhadnout, jestli je fond cenově výhodnější než izolované databáze:
 
 1. Odhadované eDTU nebo virtuální jádra, které jsou potřeba pro fond, následujícím způsobem:
-
-Pro nákupní model založený na DTU:
-
-MAX (<*Celkový počet databáze* x *průměrného využití dtu na databázi*>, <*počet souběžných* *využití dtu ve špičce databáze X na databázi*>)
-
-Pro nákupní model založený na vCore:
-
-MAX (<*Celkový počet databáze* x *průměrného využití vCore na db*>, <*počet souběžných* zvýšení *využití ve špičce databáze X na DB*>)
-
+   - Pro nákupní model založený na DTU:
+     - Max (<*Celkový počet databáze* &times; *využití DTU na databázi*>, <*počet souběžnosti databáze* &times; *nejvyšší využití DTU na databázi*>)
+   - Pro nákupní model založený na vCore:
+     - Max (<*Celkový počet databáze* &times; *využití Vcore na DB*>, <*počet současně ve špičce databáze* &times; *Vcore využití na databázi*>)
 2. Odhadem celkového prostoru úložiště potřebného pro fond přidejte velikost dat potřebnou pro všechny databáze ve fondu. Pro model nákupu DTU pak určete velikost fondu eDTU, která poskytuje toto množství úložiště.
 3. V případě nákupního modelu založeného na DTU Vezměte v úvahu větší z odhadů eDTU z kroku 1 a krok 2. U nákupního modelu založeného na vCore proveďte odhad vCore z kroku 1.
 4. Podívejte se na [stránku s cenami SQL Database](https://azure.microsoft.com/pricing/details/sql-database/) a najděte nejmenší velikost fondu, která je větší než odhad z kroku 3.

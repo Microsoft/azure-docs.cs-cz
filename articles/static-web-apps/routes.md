@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 0cece3f531d50356fdefb81a598109d7c067c5ed
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 39950b4d62b7dbfacba94f5ba3c5de50bbb974b3
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805955"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653669"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Trasy ve službě Azure static Web Apps Preview
 
@@ -77,7 +77,7 @@ V poli můžete podle potřeby vytvořit nové role `allowedRoles` . Chcete-li z
 }
 ```
 
-- Máte plnou kontrolu nad názvy rolí; neexistuje žádný hlavní seznam, na který musí vaše role dodržovat.
+- Máte plnou kontrolu nad názvy rolí; neexistuje žádný seznam, na který musí vaše role dodržovat.
 - Jednotliví uživatelé jsou přidruženi k rolím prostřednictvím [pozvánk](authentication-authorization.md).
 
 ## <a name="wildcards"></a>Zástupné znaky

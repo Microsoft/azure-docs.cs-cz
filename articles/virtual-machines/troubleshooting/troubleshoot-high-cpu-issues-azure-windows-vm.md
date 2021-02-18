@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/24/2020
 ms.author: mnanda
-ms.openlocfilehash: ffac5ac4d1a8143590e1d72aaafc8a02d6ab04ca
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 124650f4570608efabba3d8002c14ad06c4782ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977251"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571508"
 ---
 # <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>Řešení potíží s vysokým využitím procesoru pro virtuální počítače Azure s Windows
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 K problémům s výkonem dochází v různých operačních systémech nebo aplikacích a každý problém vyžaduje k řešení potíží jedinečný přístup. Většina těchto problémů se rozchází kolem procesoru, paměti, sítě a vstupu a výstupu (v/v) jako klíčových umístění, kde dochází k problému. Každá z těchto oblastí generuje různé příznaky (někdy současně) a vyžaduje jinou diagnostiku a řešení.
 
@@ -116,7 +116,7 @@ Pokud vyberete **instalovat**, instalace nabízí různé možnosti shromažďov
 
 Číslované možnosti v snímku obrazovky se vztahují na následující komentáře:
 
-1. Pro možnost **vysoký procesor**vyberte **Analýza výkonu** nebo **Upřesnit**.
+1. Pro možnost **vysoký procesor** vyberte **Analýza výkonu** nebo **Upřesnit**.
 
 2. Přidáte-li zde příznaky, budou přidány do sestavy, která vám pomůže sdílet informace s podporou Azure.
 
@@ -225,7 +225,7 @@ V programu Perfmon nejsou k dispozici žádné výchozí sestavy připravené pr
 
 Začněte tím, že vyberete kategorii **Přidat čítače** .
 
-1. V části **Dostupné čítače**vyberte čítač **% ProcessorTime** v kategorii **informace o procesoru** .
+1. V části **Dostupné čítače** vyberte čítač **% ProcessorTime** v kategorii **informace o procesoru** .
 
 1. Vyberte **_Total**, což vám poskytne statistiku všech kombinovaných jader.
 
@@ -237,7 +237,7 @@ Po načtení čítačů se v časovém rámci shromažďování zobrazí grafy t
 
   ![Nastavení sledování výkonu](./media/troubleshoot-high-cpu-issues-azure-windows-vm/12-performance-monitor-1.png)
 
-Každý čítač bude mít **průměrnou**, **minimální**a **maximální** hodnotu. Zaměřte se na **průměrné** i **maximální** hodnoty, protože průměrná hodnota se může lišit v závislosti na délce trvání sběru dat. Pokud se aktivita s vysokým PROCESORem zobrazila po dobu 10 minut, ale celková kolekce byla 40 minut, bude průměrná hodnota mnohem nižší.
+Každý čítač bude mít **průměrnou**, **minimální** a **maximální** hodnotu. Zaměřte se na **průměrné** i **maximální** hodnoty, protože průměrná hodnota se může lišit v závislosti na délce trvání sběru dat. Pokud se aktivita s vysokým PROCESORem zobrazila po dobu 10 minut, ale celková kolekce byla 40 minut, bude průměrná hodnota mnohem nižší.
 
 Graf předchozí trend ukazuje, že **Celkový procesor** byl téměř 80% po dobu přibližně 15 minut.
 
@@ -289,7 +289,7 @@ Až budou nastavení povolená, můžete tyto čítače **hosta** zobrazit v č�
 
   ![Obor názvů metrik](./media/troubleshoot-high-cpu-issues-azure-windows-vm/19-metrics-namespace.png)
 
-Další informace o tom, jak používat Azure monitor ke správě virtuálních počítačů Azure, najdete v tématu [monitorování virtuálních počítačů Azure pomocí Azure monitor](../../azure-monitor/insights/monitor-vm-azure.md).
+Další informace o tom, jak používat Azure monitor ke správě virtuálních počítačů Azure, najdete v tématu [monitorování virtuálních počítačů Azure pomocí Azure monitor](../../azure-monitor/vm/monitor-vm-azure.md).
 
 ### <a name="reactive-troubleshooting"></a>Reaktivní odstraňování potíží
 
@@ -303,7 +303,7 @@ PerfInsights ještě nemá **plánovanou možnost spuštění** . Nástroj Perfm
 
 ### <a name="logman-command"></a>Logman – příkaz
 
-Příkaz **logman create Counter** se používá ke spuštění kolekce Perfmon prostřednictvím příkazového řádku, k jeho naplánování pomocí **Správce úloh**nebo k jeho vzdálenému spuštění.
+Příkaz **logman create Counter** se používá ke spuštění kolekce Perfmon prostřednictvím příkazového řádku, k jeho naplánování pomocí **Správce úloh** nebo k jeho vzdálenému spuštění.
 
 **Ukázka** (zahrnuje režim vzdálené kolekce)
 

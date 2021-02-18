@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 5dff78989eef17f95d8b8dd108baafc53a3f761a
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1779df1c5f9baf2aa46ff809ecae9ec5e3cd7adb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657018"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581561"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Monitorování výkonu pomocí úložiště dotazů
 
@@ -166,7 +166,7 @@ Toto zobrazení vrátí data událostí čekání v úložišti dotazů. Pro ka�
 | event | text |  | Název události čekání, pokud back-end momentálně čeká |
 | volání | Integer |  | Číslo stejné zachycené události |
 
-### <a name="functions"></a>Funkce
+### <a name="functions"></a>Functions
 
 Query_store Query_store.qs_reset () vrátí typ void.
 
@@ -178,7 +178,7 @@ Query_store Query_store.staging_data_reset () vrátí typ void.
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
-Azure Database for PostgreSQL je integrován s [nastavením diagnostiky Azure monitor](../azure-monitor/platform/diagnostic-settings.md). Nastavení diagnostiky umožňuje odeslat protokoly Postgres ve formátu JSON, abyste [Azure monitor protokoly](../azure-monitor/log-query/log-query-overview.md) pro analýzy a upozorňování, Event Hubs pro streamování a Azure Storage k archivaci.
+Azure Database for PostgreSQL je integrován s [nastavením diagnostiky Azure monitor](../azure-monitor/essentials/diagnostic-settings.md). Nastavení diagnostiky umožňuje odeslat protokoly Postgres ve formátu JSON, abyste [Azure monitor protokoly](../azure-monitor/logs/log-query-overview.md) pro analýzy a upozorňování, Event Hubs pro streamování a Azure Storage k archivaci.
 
 >[!IMPORTANT]
 > Tato diagnostická funkce pro je dostupná jenom v Pro obecné účely a paměťově optimalizované cenové úrovně.
@@ -195,7 +195,7 @@ Postup povolení protokolů prostředku pomocí Azure Portal:
 5. Vyberte typy protokolů **QueryStoreRuntimeStatistics** a **QueryStoreWaitStatistics**.
 6. Uložte nastavení.
 
-Pokud chcete toto nastavení povolit pomocí PowerShellu, rozhraní příkazového řádku nebo REST API, přejděte na [článek nastavení diagnostiky](../azure-monitor/platform/diagnostic-settings.md).
+Pokud chcete toto nastavení povolit pomocí PowerShellu, rozhraní příkazového řádku nebo REST API, přejděte na [článek nastavení diagnostiky](../azure-monitor/essentials/diagnostic-settings.md).
 
 ### <a name="json-log-format"></a>Formát protokolu JSON
 V následujících tabulkách jsou popsána pole pro dva typy protokolů. V závislosti na zvoleném výstupním koncovém bodu se můžou pole zahrnutá a pořadí, ve kterém se zobrazují, lišit.

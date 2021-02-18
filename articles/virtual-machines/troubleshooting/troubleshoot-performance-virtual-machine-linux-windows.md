@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: ec605fd30252b9a0cfb80d0bc3ff145ed3b5a1d4
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: cde84a018d307bada6a6b6f3b5467b8addd007b1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573305"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571444"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Řešení potíží s výkonem virtuálních počítačů Azure v systému Linux nebo Windows
 
@@ -30,7 +30,7 @@ Tento článek vás provede monitorováním a diagnostikuje potíže s výkonem.
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Monitorování virtuálních počítačů Azure IAAS
 
-Pokud chcete monitorovat virtuální počítač hosta, použijte monitorování virtuálních počítačů Azure, které vás upozorní na určité podmínky prostředků na vysoké úrovni. Pokud chcete zjistit, jestli máte zapnutou diagnostiku virtuálních počítačů, přečtěte si téma [Přehled protokolů prostředků Azure](../../azure-monitor/learn/tutorial-resource-logs.md). Pokud se zobrazí následující informace, pravděpodobně nemáte povolenou diagnostiku:
+Pokud chcete monitorovat virtuální počítač hosta, použijte monitorování virtuálních počítačů Azure, které vás upozorní na určité podmínky prostředků na vysoké úrovni. Pokud chcete zjistit, jestli máte zapnutou diagnostiku virtuálních počítačů, přečtěte si téma [Přehled protokolů prostředků Azure](../../azure-monitor/essentials/tutorial-resource-logs.md). Pokud se zobrazí následující informace, pravděpodobně nemáte povolenou diagnostiku:
 
 ![Monitorování není povoleno.](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -101,7 +101,7 @@ Pokud chcete zjistit, jestli máte nějaké kritické body prostředků, Projdě
 
 ### <a name="cpu-observe-trends"></a>Sledování trendů procesoru
 
-Při hledání potíží s výkonem si pamatujte na trendy a zjistěte, jestli vás na ně mají vliv. V dalších částech budeme k zobrazení trendů používat grafy monitorování z portálu. Můžou to být užitečné i při křížovém odkazování na chování prostředků ve stejném časovém období. Pokud chcete grafy přizpůsobit, klikněte na [Azure monitor datovou platformu](../../azure-monitor/platform/data-platform.md).
+Při hledání potíží s výkonem si pamatujte na trendy a zjistěte, jestli vás na ně mají vliv. V dalších částech budeme k zobrazení trendů používat grafy monitorování z portálu. Můžou to být užitečné i při křížovém odkazování na chování prostředků ve stejném časovém období. Pokud chcete grafy přizpůsobit, klikněte na [Azure monitor datovou platformu](../../azure-monitor/data-platform.md).
 
 Spiking – spiking může souviset s plánovanou úlohou nebo známou událostí. Pokud můžete úlohu identifikovat, zjistěte, jestli je úloha spuštěná na požadované úrovni výkonu. Pokud je výkon přijatelný, možná nebudete muset zvyšovat prostředky.
 

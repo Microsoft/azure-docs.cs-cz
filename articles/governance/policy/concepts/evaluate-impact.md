@@ -3,12 +3,12 @@ title: Vyhodnotit dopad nové definice Azure Policy
 description: Pochopení procesu, který se má provést při zavedení nové definice zásady do prostředí Azure
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9d73d703c38dce1335a471bfad9171d8b30a83c5
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: cf52d25aa846388bc387430913a733d5206df82e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873863"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590812"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>Vyhodnotit dopad nové definice Azure Policy
 
@@ -63,7 +63,7 @@ Jakékoli změny rozsahu (úrovně nebo vyloučení) by se měly plně ověřit 
 
 ## <a name="monitor-your-policy-and-compliance"></a>Monitorování zásad a dodržování předpisů
 
-Implementace a přiřazení definice zásad není posledním krokem. Průběžně monitorujte úroveň [dodržování předpisů](../how-to/get-compliance-data.md) u prostředků na novou definici zásad a nastavte vhodné [Azure monitor výstrahy a oznámení,](../../../azure-monitor/platform/alerts-overview.md) když se identifikují zařízení, která nedodržují předpisy. Doporučuje se také vyhodnotit definici zásady a související přiřazení na základě plánu, aby definice zásad splňovala požadavky na obchodní zásady a dodržování předpisů. Zásady by se měly odebrat, pokud už je nepotřebujete. Zásady se taky musí aktualizovat v čase, protože základní prostředky Azure se vyvíjí a přidávají nové vlastnosti a možnosti.
+Implementace a přiřazení definice zásad není posledním krokem. Průběžně monitorujte úroveň [dodržování předpisů](../how-to/get-compliance-data.md) u prostředků na novou definici zásad a nastavte vhodné [Azure monitor výstrahy a oznámení,](../../../azure-monitor/alerts/alerts-overview.md) když se identifikují zařízení, která nedodržují předpisy. Doporučuje se také vyhodnotit definici zásady a související přiřazení na základě plánu, aby definice zásad splňovala požadavky na obchodní zásady a dodržování předpisů. Zásady by se měly odebrat, pokud už je nepotřebujete. Zásady se taky musí aktualizovat v čase, protože základní prostředky Azure se vyvíjí a přidávají nové vlastnosti a možnosti.
 
 ## <a name="next-steps"></a>Další kroky
 

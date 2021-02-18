@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5bfa4bf8a9d20cc1a7baf1b5432e68501d65a509
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: a848c7c15bf786ba26b8a1fdb1dab41b9aa20b8d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222371"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575772"
 ---
 # <a name="integrate-update-management-with-microsoft-endpoint-configuration-manager"></a>Integrace Update Management s koncovým bodem Microsoft Configuration Manager
 
@@ -21,11 +21,11 @@ Spravované servery Windows můžete nahlásit a aktualizovat tak, že vytvoří
 >[!NOTE]
 >I když Update Management podporuje posouzení aktualizací a opravy Windows serveru 2008 R2, nepodporuje klienty spravované koncovým bodem Microsoft Configuration Manager spuštění tohoto operačního systému.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Musíte mít [Azure Automation Update Management](overview.md) přidat do svého účtu Automation.
 * Windows servery, které aktuálně spravuje prostředí Microsoft Endpoint Configuration Manager, musí také nahlásit pracovnímu prostoru Log Analytics, který má také povolený Update Management.
-* Tato funkce je povolená v Microsoft Endpoint Configuration Manager aktuální větev verze 1606 a vyšší. Chcete-li integrovat službu Microsoft Endpoint Configuration Manager lokalitu centrální správy nebo samostatnou primární lokalitu s protokoly Azure Monitor a importovanými kolekcemi, přečtěte si téma [připojení Configuration Manager a protokoly Azure monitor](../../azure-monitor/platform/collect-sccm.md).  
+* Tato funkce je povolená v Microsoft Endpoint Configuration Manager aktuální větev verze 1606 a vyšší. Chcete-li integrovat službu Microsoft Endpoint Configuration Manager lokalitu centrální správy nebo samostatnou primární lokalitu s protokoly Azure Monitor a importovanými kolekcemi, přečtěte si téma [připojení Configuration Manager a protokoly Azure monitor](../../azure-monitor/logs/collect-sccm.md).  
 * Agenti systému Windows musí být buď nakonfigurováni pro komunikaci se serverem služby Windows Server Update Services (WSUS), nebo mít přístup k Microsoft Update, pokud neobdrží aktualizace zabezpečení od služby Microsoft Endpoint Configuration Manager.
 
 Jak spravovat klienty hostované v Azure IaaS s existujícím prostředím Microsoft Endpoint Configuration Manager primárně závisí na připojení, které máte mezi datacentry Azure a vaší infrastrukturou. Toto připojení má vliv na změny v návrhu, které může být nutné provést v infrastruktuře služby Microsoft Endpoint Configuration Manager a související náklady na podporu potřebných změn. Pokud chcete lépe pochopit, jaké aspekty plánování byste měli vyhodnotit, než budete pokračovat dál, přečtěte si [nejčastější dotazy ke Configuration Manageru v Azure](/configmgr/core/understand/configuration-manager-on-azure#networking).
