@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 175c00440fe9723bbd389db39616f525c2b7f436
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b2d86083077b95312415099f64a13509ed60091b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805474"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582641"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Základní hodnoty zabezpečení Azure pro Service Fabric
 
@@ -178,9 +178,9 @@ Pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure (CLI) můž
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které souvisejí s nasazeními Azure Service Fabric. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -224,7 +224,7 @@ Pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure (CLI) můž
 
 * [Jak nasadit agenta Log Analytics do svých uzlů](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics prohledávání protokolu](../azure-monitor/log-query/log-query-overview.md)
+* [Log Analytics prohledávání protokolu](../azure-monitor/logs/log-query-overview.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -240,7 +240,7 @@ Pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure (CLI) můž
 
 * [Jak nasadit agenta Log Analytics do svých uzlů](./service-fabric-diagnostics-oms-agent.md)
 
-* [Jak nakonfigurovat dobu uchování Log Analytics pracovního prostoru](../azure-monitor/platform/manage-cost-storage.md)
+* [Jak nakonfigurovat dobu uchování Log Analytics pracovního prostoru](../azure-monitor/logs/manage-cost-storage.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -256,7 +256,7 @@ Pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure (CLI) můž
 
 * [Jak nasadit agenta Log Analytics do svých uzlů](./service-fabric-diagnostics-oms-agent.md)
 
-* [Jak nakonfigurovat dobu uchování Log Analytics pracovního prostoru](../azure-monitor/platform/manage-cost-storage.md)
+* [Jak nakonfigurovat dobu uchování Log Analytics pracovního prostoru](../azure-monitor/logs/manage-cost-storage.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -266,7 +266,7 @@ Pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure (CLI) můž
 
 **Pokyny**: použití dotazů v pracovním prostoru Azure Log Analytics k dotazování protokolů služby Azure Service Fabric.
 
-* [Log Analytics prohledávání protokolu](../azure-monitor/log-query/log-query-overview.md)
+* [Log Analytics prohledávání protokolu](../azure-monitor/logs/log-query-overview.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -278,7 +278,7 @@ Pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure (CLI) můž
 
 * [Správa výstrah v Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Upozornění na data protokolu Log Analytics](../azure-monitor/learn/tutorial-response.md)
+* [Upozornění na data protokolu Log Analytics](../azure-monitor/alerts/tutorial-response.md)
 
 **Monitorování služby Azure Security Center:** Ano
 
@@ -586,7 +586,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné** materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění, když se změny projeví u kritických prostředků Azure.
 
-* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
+* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2020
 ms.author: memildin
-ms.openlocfilehash: 49533947ff01aea07eaacd9d761b6414fb672a1c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 0c21c916d152188031212b47704dfb41d3f64a82
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339471"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596284"
 ---
 # <a name="azure-security-center-data-security"></a>Zabezpečení dat Azure Security Center
 
@@ -82,8 +82,8 @@ Zákazníci mohou získat přístup k Security Center související data z násl
 
 | Datový proud                                                                                | Typy dat                                                                                                                                                                                                          |
 |---------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Protokol aktivit Azure](../azure-monitor/platform/activity-log.md)                       | Všechny výstrahy zabezpečení, schválené Security Center požadavky na přístup [za běhu](security-center-just-in-time.md) a všechny výstrahy vygenerované [adaptivními ovládacími prvky aplikace](security-center-adaptive-application.md).|
-| [Protokoly Azure Monitoru](../azure-monitor/platform/data-platform.md)                      | Všechny výstrahy zabezpečení                                                                                                                                                                                                |
+| [Protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)                       | Všechny výstrahy zabezpečení, schválené Security Center požadavky na přístup [za běhu](security-center-just-in-time.md) a všechny výstrahy vygenerované [adaptivními ovládacími prvky aplikace](security-center-adaptive-application.md).|
+| [Protokoly Azure Monitoru](../azure-monitor/data-platform.md)                      | Všechny výstrahy zabezpečení                                                                                                                                                                                                |
 | [Azure Resource Graph](../governance/resource-graph/overview.md)                      | Výstrahy zabezpečení, doporučení zabezpečení, výsledky posouzení ohrožení zabezpečení, informace o bezpečném hodnocení, stav kontrol dodržování předpisů a další.                                                                       |
 | [Rozhraní REST API služby Azure Security Center](/rest/api/securitycenter/) | Výstrahy zabezpečení, doporučení zabezpečení a další.                                                                                                                                                                |
 |                                                                                       |                                                                                                                                                                                                                     |

@@ -14,22 +14,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.author: b-juche
-ms.openlocfilehash: 6bb787084d4396737d3002bb98fe50e283c5764a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 91f4f90658281282cdcb01b091bd9c9647d8d702
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582894"
+ms.locfileid: "100635481"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
 Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS (NFSv3 a NFSv 4.1), SMB3 nebo duálního protokolu (NFSv3 a SMB). Spotřeba kapacity svazku se počítá proti zřízené kapacitě příslušného fondu. V tomto článku se dozvíte, jak vytvořit svazek SMB3.
 
 ## <a name="before-you-begin"></a>Než začnete 
-Musíte mít už nastavený fond kapacity.   
-[Nastavení fondu kapacity](azure-netapp-files-set-up-capacity-pool.md)   
-Podsíť musí být delegovaná na Azure NetApp Files.  
-[Delegování podsítě na službu Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
+
+* Musíte mít už nastavený fond kapacity. Viz [nastavení fondu kapacit](azure-netapp-files-set-up-capacity-pool.md).     
+* Podsíť musí být delegovaná na Azure NetApp Files. Viz [delegování podsítě na Azure NetApp Files](azure-netapp-files-delegate-subnet.md).
 
 ## <a name="configure-active-directory-connections"></a>Konfigurace připojení ke službě Active Directory 
 

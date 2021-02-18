@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 8c9641e722cf3892450bbfbea54f169ac6dc764b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7f91d5eebfae990f60b47f2c98f364046bafbf04
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963291"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594358"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Životní cyklus a stavy virtuálních počítačů
 
@@ -267,7 +267,7 @@ Zde jsou přechodné stavy operace poté, co platforma přijala akci iniciované
 :::row:::
    :::column span="":::
 
-   **Doplnění**
+   **Aktualizace**
 
    :::column-end:::
    :::column span="2":::
@@ -428,4 +428,4 @@ Pokud chcete načíst stav napájení všech virtuálních počítačů ve vaše
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o monitorování virtuálního počítače najdete v tématu [monitorování virtuálních počítačů v Azure](../azure-monitor/insights/monitor-vm-azure.md).
+Další informace o monitorování virtuálního počítače najdete v tématu [monitorování virtuálních počítačů v Azure](../azure-monitor/vm/monitor-vm-azure.md).

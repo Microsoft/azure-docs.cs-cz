@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: d6b23a831426a3308a0b47946d5a82679e937bbe
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: cba8b97adb40ca2c277268188ff6ad541c7e9676
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683125"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596461"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>Řešení potíží při použití Azure Cosmos DB Java SDK V4 s účty SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +40,7 @@ Začněte s tímto seznamem:
 * Pokud jste nenalezli řešení, přečtěte si zbytek tohoto článku. Pak zapište [problém GitHubu](https://github.com/Azure/azure-sdk-for-java/issues). Pokud je k dispozici možnost Přidat značky k vašemu problému GitHubu, přidejte značku *Cosmos: v4-Item* .
 
 ### <a name="retry-logic"></a>Logika opakování <a id="retry-logics"></a>
-Cosmos DB SDK při selhání v/v dojde k pokusu o opakování neúspěšné operace, pokud je to možné znovu v sadě SDK. Pokus o jakékoli selhání je dobrým zvykem, ale konkrétně při zpracování nebo opakování selhání zápisu je potřeba. Doporučuje se použít nejnovější sadu SDK, protože se nepřetržitě vylepšuje logika opakování.
+Pokud sada SDK služby Cosmos DB umožňuje opakování, při každém selhání vstupně-výstupních operací se sada SDK pokusí neúspěšnou operaci zopakovat Pokus o jakékoli selhání je dobrým zvykem, ale konkrétně při zpracování nebo opakování selhání zápisu je potřeba. Doporučuje se použít nejnovější sadu SDK, protože se nepřetržitě vylepšuje logika opakování.
 
 1. Čtení a vstupně-výstupní chyby se budou opakovat sadou SDK, aniž by je zpřístupnění koncovým uživatelům.
 2. Zápisy (Create, Upsert, Replace, DELETE) jsou "NOT" idempotentní a proto sada SDK nemůže vždy bez chybně opakovat operace zápisu. Je nutné, aby logika aplikace uživatele mohla zpracovat selhání a opakovat akci.
@@ -54,7 +54,7 @@ Cosmos DB SDK při selhání v/v dojde k pokusu o opakování neúspěšné oper
 Nejlepší výkon:
 * Ujistěte se, že aplikace běží ve stejné oblasti jako váš Azure Cosmos DB účet. 
 * Ověřte využití procesoru na hostiteli, kde je aplikace spuštěná. Pokud je využití CPU 50 nebo více, spusťte aplikaci na hostiteli s vyšší konfigurací. Nebo můžete zatížení distribuovat do více počítačů.
-    * Pokud aplikaci spouštíte ve službě Azure Kubernetes, můžete [k monitorování využití procesoru použít Azure monitor](../azure-monitor/insights/container-insights-analyze.md).
+    * Pokud aplikaci spouštíte ve službě Azure Kubernetes, můžete [k monitorování využití procesoru použít Azure monitor](../azure-monitor/containers/container-insights-analyze.md).
 
 #### <a name="connection-throttling"></a>Omezování připojení
 Omezení připojení může nastat kvůli [limitu připojení na hostitelském počítači] nebo [vyčerpání portů Azure SNAT (Pat)].

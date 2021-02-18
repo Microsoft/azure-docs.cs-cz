@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d59d5de0d98380be215747c7daa33721fcebf33c
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: dccb99c43e53231c15fbf158411c87e91bc96f84
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533821"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576738"
 ---
 # <a name="set-up-autoscale-for-microservice-applications"></a>Nastavení automatického škálování pro aplikace mikroslužeb
 
@@ -20,11 +20,11 @@ ms.locfileid: "96533821"
 
 Automatické škálování je integrovaná funkce Azure jarního cloudu, která pomáhá aplikacím mikroslužeb při změnách na vyžádání vykonat jejich nejlepší výkon. To zahrnuje úpravu počtu virtuálních procesorů, paměti a instancí aplikací. Tento článek popisuje, jak nastavit nastavení automatického škálování pro vaše aplikace pomocí portál Microsoft Azure nebo rozhraní příkazového řádku Azure CLI.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li provést tyto postupy, potřebujete:
 
-* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Nasazená instance služby jarní cloudová služba Azure Pokud chcete začít, postupujte podle pokynů k [rychlému zprovoznění nasazení aplikace přes Azure CLI](./spring-cloud-quickstart.md) .
 * V instanci služby už je vytvořená aspoň jedna aplikace.
 
@@ -70,5 +70,5 @@ Pokud se nacházíte na úrovni Basic a omezujete je na jednu nebo více těchto
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přehled automatického škálování v Microsoft Azure](../azure-monitor/platform/autoscale-overview.md)
+* [Přehled automatického škálování v Microsoft Azure](../azure-monitor/autoscale/autoscale-overview.md)
 * [Automatické škálování monitorování Azure CLI](/cli/azure/monitor/autoscale?preserve-view=true&view=azure-cli-latest)
