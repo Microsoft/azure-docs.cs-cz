@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: 3fc880e238c1c9f45c663975470a6ab57267a648
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 940f7efc7130ef80817be3b42e3c0eff83588a90
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879540"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587984"
 ---
 # <a name="monitoring-time-series-insights"></a>Time Series Insights monitorování
 
@@ -29,7 +29,7 @@ Stránka **Přehled** v Azure Portal pro každé prostředí Time Series Insight
 
 Time Series Insights vytváří data monitorování pomocí [Azure monitor](../azure-monitor/overview.md), což je plná služba monitorování zásobníku v Azure, která poskytuje kompletní sadu funkcí pro monitorování prostředků Azure kromě prostředků v jiných cloudech a místních prostředích.
 
-Začněte s článkem [monitorování prostředků Azure pomocí Azure monitor](../azure-monitor/insights/monitor-azure-resource.md), který popisuje následující koncepty:
+Začněte s článkem [monitorování prostředků Azure pomocí Azure monitor](../azure-monitor/essentials/monitor-azure-resource.md), který popisuje následující koncepty:
 
 - Co je Azure Monitor?
 - Náklady spojené s monitorováním
@@ -40,11 +40,11 @@ Začněte s článkem [monitorování prostředků Azure pomocí Azure monitor](
 Následující části jsou uvedené v tomto článku, které popisují konkrétní data shromážděná pro Azure Time Series Insights. Tyto části obsahují také příklady konfigurace shromažďování dat a analýzy těchto dat pomocí nástrojů Azure.
 
 > [!TIP]
-> Pokud chcete pochopit náklady spojené s Azure Monitor, přečtěte si téma [využití a odhadované náklady](../azure-monitor/platform/usage-estimated-costs.md). Pokud chcete pochopit, jak dlouho trvá, aby se data zobrazovala v Azure Monitor, přečtěte si část [Doba přijímání dat protokolu](../azure-monitor/platform/data-ingestion-time.md).
+> Pokud chcete pochopit náklady spojené s Azure Monitor, přečtěte si téma [využití a odhadované náklady](../azure-monitor//usage-estimated-costs.md). Pokud chcete pochopit, jak dlouho trvá, aby se data zobrazovala v Azure Monitor, přečtěte si část [Doba přijímání dat protokolu](../azure-monitor/logs/data-ingestion-time.md).
 
 ## <a name="monitoring-data-from-azure-time-series-insights"></a>Monitorování dat z Azure Time Series Insights
 
-Azure Time Series Insights shromažďuje stejné typy dat monitorování jako další prostředky Azure, které jsou popsány v tématu [monitorování dat z prostředků Azure](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data). 
+Azure Time Series Insights shromažďuje stejné typy dat monitorování jako další prostředky Azure, které jsou popsány v tématu [monitorování dat z prostředků Azure](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data). 
 
 Podrobné informace o protokolech a metrikách, které můžete shromažďovat, najdete v tématu [referenční informace o monitorování dat Azure Time Series Insights](how-to-monitor-tsi-reference.md) .
 
@@ -53,7 +53,7 @@ Podrobné informace o protokolech a metrikách, které můžete shromažďovat, 
 Metriky platformy se shromažďují a ukládají automaticky, ale můžou se směrovat do jiných umístění pomocí diagnostického nastavení.
 
 Protokoly prostředků se neshromažďují a ukládají, dokud nevytvoříte nastavení diagnostiky a nebudete je směrovat do jednoho nebo více umístění.
-Podrobný postup pro vytvoření nastavení diagnostiky pomocí Azure Portal, CLI nebo PowerShellu najdete v tématu [Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik platforem v Azure](../azure-monitor/platform/diagnostic-settings.md) . Při vytváření nastavení diagnostiky určíte, které kategorie protokolů se mají shromáždit.
+Podrobný postup pro vytvoření nastavení diagnostiky pomocí Azure Portal, CLI nebo PowerShellu najdete v tématu [Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik platforem v Azure](../azure-monitor/essentials/diagnostic-settings.md) . Při vytváření nastavení diagnostiky určíte, které kategorie protokolů se mají shromáždit.
 
 Pro Azure Time Series Insights můžete shromažďovat protokoly z následujících kategorií:
 
@@ -80,7 +80,7 @@ Protokoly prostředků můžete přistupovat buď jako objekt BLOB v účtu úlo
 
 Data v Azure Monitor protokoly se ukládají v tabulkách, ve kterých každá tabulka má vlastní sadu jedinečných vlastností.
 
-Všechny protokoly prostředků v Azure Monitor mají stejná pole následovaná poli pro konkrétní služby. Společné schéma je popsáno v [Azure monitor schéma protokolu prostředků](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema). Seznam typů protokolů prostředků shromážděných pro Azure Time Series Insights naleznete v tématu [Azure Time Series Insights monitoring data reference](how-to-monitor-tsi-reference.md#resource-logs).
+Všechny protokoly prostředků v Azure Monitor mají stejná pole následovaná poli pro konkrétní služby. Společné schéma je popsáno v [Azure monitor schéma protokolu prostředků](../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema). Seznam typů protokolů prostředků shromážděných pro Azure Time Series Insights naleznete v tématu [Azure Time Series Insights monitoring data reference](how-to-monitor-tsi-reference.md#resource-logs).
 
 Azure Time Series Insights ukládá data v následujících tabulkách.
 
@@ -122,4 +122,4 @@ Při vytváření pravidla výstrahy na základě metrik platforem mějte na pam
 ## <a name="next-steps"></a>Další kroky
 
 * Odkaz na protokoly a metriky vytvořené pomocí Azure Time Series Insights najdete v tématu informace o [monitorování Azure Time Series Insights dat](how-to-monitor-tsi-reference.md) .
-* Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](../azure-monitor/insights/monitor-azure-resource.md) .
+* Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](../azure-monitor/essentials/monitor-azure-resource.md) .

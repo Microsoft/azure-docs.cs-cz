@@ -3,19 +3,19 @@ title: Automatizace procesů Azure Application Insights pomocí Logic Apps
 description: Přečtěte si, jak můžete rychle automatizovat opakované procesy tím, že do aplikace logiky přidáte konektor Application Insights.
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: f6406c2e6fb933c561a8ae54009499768c81a204
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7ff75be3cb847235405a740df4a20803cdc87b3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970873"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589930"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Automatizace Application Insights procesů pomocí Logic Apps
 
 Najdete v datech telemetrie opakované spouštění stejných dotazů, abyste zkontrolovali, jestli služba funguje správně? Chcete tyto dotazy automatizovat pro hledání trendů a anomálií a pak pro ně sestavovat vlastní pracovní postupy? Konektor služby Azure Application Insights pro Logic Apps je pravý Nástroj pro tento účel.
 
 > [!NOTE]
-> Konektor služby Azure Application Insights byl nahrazen [konektorem Azure monitor](../platform/logicapp-flow-connector.md) , který je integrovaný se Azure Active Directory místo vyžadování klíče rozhraní API a také umožňuje načíst data z Log Analytics pracovního prostoru.
+> Konektor služby Azure Application Insights byl nahrazen [konektorem Azure monitor](../logs/logicapp-flow-connector.md) , který je integrovaný se Azure Active Directory místo vyžadování klíče rozhraní API a také umožňuje načíst data z Log Analytics pracovního prostoru.
 
 Pomocí této integrace můžete automatizovat mnoho procesů bez nutnosti psát jediný řádek kódu. Pomocí konektoru Application Insights můžete vytvořit aplikaci logiky a rychle tak automatizovat všechny Application Insights procesy. 
 
@@ -26,13 +26,13 @@ Můžete také přidat další akce. Funkce Logic Apps v Azure App Service zpř�
 V tomto kurzu se naučíte, jak vytvořit aplikaci logiky, která používá algoritmus autocluster Analytics k seskupení atributů v datech webové aplikace. Tok automaticky odesílá výsledky na základě e-mailu, stačí jenom jeden z příkladů, jak můžete Application Insights Analytics a Logic Apps společně používat. 
 
 ### <a name="step-1-create-a-logic-app"></a>Krok 1: Vytvoření aplikace logiky
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-1. Klikněte na **vytvořit prostředek**, vyberte **web a mobilní zařízení**a pak vyberte **Aplikace logiky**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Klikněte na **vytvořit prostředek**, vyberte **web a mobilní zařízení** a pak vyberte **Aplikace logiky**.
 
     ![Nové okno aplikace logiky](./media/automate-with-logic-apps/1createlogicapp.png)
 
 ### <a name="step-2-create-a-trigger-for-your-logic-app"></a>Krok 2: vytvoření triggeru pro vaši aplikaci logiky
-1. V okně **návrháře aplikace logiky** v části **začít se společným triggerem**vyberte **opakování**.
+1. V okně **návrháře aplikace logiky** v části **začít se společným triggerem** vyberte **opakování**.
 
     ![Okno návrháře aplikace logiky](./media/automate-with-logic-apps/2logicappdesigner.png)
 
@@ -45,7 +45,7 @@ V tomto kurzu se naučíte, jak vytvořit aplikaci logiky, která používá alg
 
 1. Do vyhledávacího pole **zvolit akci** zadejte **Azure Application Insights**.
 
-1. V části **Akce**klikněte na **analytické dotazy Azure Application Insights – vizualizace**.
+1. V části **Akce** klikněte na **analytické dotazy Azure Application Insights – vizualizace**.
 
     ![Návrhář aplikace logiky "Výběr akce"](./media/automate-with-logic-apps/4visualize.png)
 
@@ -118,7 +118,7 @@ Když vytváříte vlastní dotazy, ověřte, že správně fungují v analytick
       ![Obrazovka konfigurace e-mailu Office 365](./media/automate-with-logic-apps/12emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-logic-app"></a>Krok 7: uložení a otestování aplikace logiky
-* Kliknutím na **Uložit** uložte změny.
+* Kliknutím na **Uložit** změny uložte.
 
 Můžete počkat, až aktivační událost spustí aplikaci logiky, nebo můžete spustit aplikaci logiky hned po výběru možnosti **Spustit**.
 
@@ -130,7 +130,7 @@ Po spuštění aplikace logiky obdrží příjemci, které jste zadali v seznamu
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o vytváření [analytických dotazů](../log-query/get-started-queries.md).
+- Přečtěte si další informace o vytváření [analytických dotazů](../logs/get-started-queries.md).
 - Další informace o [Logic Apps](../../logic-apps/logic-apps-overview.md).
 
 

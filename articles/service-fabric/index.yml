@@ -7,12 +7,12 @@ metadata:
   author: erikadoyle
   ms.author: edoyle
   ms.date: 07/31/2020
-  ms.openlocfilehash: 2f9b7264fe8199cb25772b0598354e474196ca93
-  ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-  ms.translationtype: HT
+  ms.openlocfilehash: e850855a4f794e5e90abe9c86d6ddedd0af26a6b
+  ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 12/02/2020
-  ms.locfileid: "96499794"
+  ms.lasthandoff: 02/17/2021
+  ms.locfileid: "100634834"
 landingContent:
 - title: Vyzkoušení spravovaných clusterů služby Service Fabric (Preview)
   linkLists:
@@ -24,8 +24,6 @@ landingContent:
       url: quickstart-managed-cluster-template.md
   - linkListType: tutorial
     links:
-    - text: Vytvoření spravovaného clusteru (Preview)
-      url: tutorial-managed-cluster-deploy.md
     - text: Škálování typu uzlu spravovaného clusteru na více instancí (Preview)
       url: tutorial-managed-cluster-scale.md
     - text: Přidání a odebrání typů uzlu spravovaného clusteru (Preview)
@@ -34,6 +32,8 @@ landingContent:
       url: tutorial-managed-cluster-deploy-app.md
     - text: Přidání rozšíření škálovací sady virtuálních počítačů do typu uzlu spravovaného clusteru (Preview)
       url: how-to-managed-cluster-vmss-extension.md
+    - text: Povolit šifrování disku pro uzly spravovaného clusteru
+      url: how-to-enable-managed-cluster-disk-encryption.md
   - linkListType: whats-new
     links:
     - text: Nejčastější dotazy ke spravovaným clusterům služby Service Fabric

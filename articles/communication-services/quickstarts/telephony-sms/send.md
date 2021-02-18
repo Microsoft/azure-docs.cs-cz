@@ -11,20 +11,22 @@ ms.topic: overview
 ms.service: azure-communication-services
 ms.custom: tracking-python, devx-track-js
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 60c51de4e4549649c681c961c6ddc1acdb12e698
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 9d665df8eacfa575cd8dc50251662730e58fa7b3
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659688"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653427"
 ---
 # <a name="quickstart-send-an-sms-message"></a>Rychlý Start: odeslání zprávy SMS
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
+
 
 > [!IMPORTANT]
 > Zprávy SMS lze odesílat a přijímat z USA telefonní čísla. Telefonní čísla nacházející se v jiných geografických oblastech ještě nepodporují komunikační služby SMS.
-> Další informace najdete v tématu **[plánování telefonního subsystému a řešení SMS](../../concepts/telephony-sms/plan-solution.md)**.
+> Další informace najdete v tématu **[typy telefonních čísel](../../concepts/telephony-sms/plan-solution.md)**.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Send SMS with .NET client library](./includes/send-sms-net.md)]
@@ -58,7 +60,7 @@ V tomto rychlém startu jste zjistili, jak odesílat zprávy SMS pomocí komunik
 > [Přihlášení k odběru událostí SMS](./handle-sms-events.md)
 
 > [!div class="nextstepaction"]
-> [Plánování řešení veřejné sítě](../../concepts/telephony-sms/plan-solution.md)
+> [Typy telefonních čísel](../../concepts/telephony-sms/plan-solution.md)
 
 > [!div class="nextstepaction"]
 > [Další informace o SMS](../../concepts/telephony-sms/concepts.md)

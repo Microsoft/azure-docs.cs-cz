@@ -3,12 +3,12 @@ title: Povolit rozšíření virtuálního počítače z Azure Portal
 description: Tento článek popisuje, jak nasadit rozšíření virtuálních počítačů na servery s podporou ARC Azure běžícími v hybridních cloudových prostředích z Azure Portal.
 ms.date: 01/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 43bbcef28b77e7c7112880fdac1bbd4809791cef
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b0e114b314179d42ccd47b7d7bd534d3a824a411
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728941"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587668"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>Povolit rozšíření virtuálních počítačů Azure z Azure Portal
 
@@ -33,7 +33,7 @@ Rozšíření virtuálních počítačů můžete použít k použití ARC pro s
 
     ![Nainstalovat rozšíření virtuálního počítače Log Analytics](./media/manage-vm-extensions/mma-extension-config.png)
 
-    K dokončení instalace je nutné zadat ID a primární klíč pracovního prostoru. Pokud nejste obeznámeni s tím, jak tyto informace najít, přečtěte si téma [získání ID a klíče pracovního prostoru](../../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
+    K dokončení instalace je nutné zadat ID a primární klíč pracovního prostoru. Pokud nejste obeznámeni s tím, jak tyto informace najít, přečtěte si téma [získání ID a klíče pracovního prostoru](../../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key).
 
 4. Po potvrzení požadovaných informací vyberte **vytvořit**. Zobrazí se souhrn nasazení a můžete zkontrolovat stav nasazení.
 

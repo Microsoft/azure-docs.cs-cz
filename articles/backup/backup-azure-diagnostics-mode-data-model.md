@@ -3,12 +3,12 @@ title: Datový model Azure Monitor protokolů
 description: V tomto článku se dozvíte informace o Azure Monitor Log Analytics datových modelů pro Azure Backup data.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 1fcb4eb0c584f792132f19c8c4d66289342aa36e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d2146612763bac39eb636bb7da522586a0daee2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020945"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586782"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics datový model pro Azure Backup data
 
@@ -462,7 +462,7 @@ Níže najdete několik ukázek, které vám pomohou při psaní dotazů na Azur
 
 ## <a name="v1-schema-vs-v2-schema"></a>Schéma v1 schématu vs v2
 
-Dříve byla diagnostická data pro Azure Backup agenta a zálohování virtuálních počítačů Azure odeslána do tabulky Azure Diagnostics ve schématu, které se říká ***schématu v1***. Následně byly přidány nové sloupce pro podporu jiných scénářů a úloh a diagnostická data byla vložena do nového schématu, které se říká jako ***schéma v2***.  
+Dříve byla diagnostická data pro Azure Backup agenta a zálohování virtuálních počítačů Azure odeslána do tabulky Azure Diagnostics ve schématu, které se říká jako ***v1 schéma** _. Následně byly přidány nové sloupce pro podporu jiných scénářů a úloh a data diagnostiky byla vložena do nového schématu, které je označováno jako "schéma _ *_v2_* *".  
 
 Z důvodu zpětné kompatibility se v současné době odesílají diagnostická data pro Azure Backup agenta a zálohování virtuálních počítačů Azure do Azure Diagnostics tabulky ve schématu V1 a v2 (se schématem v1 nyní na cestě k vyřazení). Pomocí filtrování záznamů pro SchemaVersion_s = = v1 v dotazech protokolu můžete určit, které záznamy v Log Analytics mají schéma v1.
 
@@ -495,4 +495,4 @@ Vzhledem k tomu, že je schéma V1 na cestě pro vyřazení, doporučuje se pou�
 
 ## <a name="next-steps"></a>Další kroky
 
-Po kontrole datového modelu můžete začít [vytvářet vlastní dotazy](../azure-monitor/learn/tutorial-logs-dashboards.md) v protokolech Azure monitor a vytvořit si tak vlastní řídicí panel.
+Po kontrole datového modelu můžete začít [vytvářet vlastní dotazy](../azure-monitor/visualize/tutorial-logs-dashboards.md) v protokolech Azure monitor a vytvořit si tak vlastní řídicí panel.

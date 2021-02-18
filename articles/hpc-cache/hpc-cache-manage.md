@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: v-erkel
-ms.openlocfilehash: 067b12d4dcfd5ba2b730204ef680b900d79f1b72
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 40d091782f37a32b75659cd274e49798dbe527cb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648068"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590786"
 ---
 # <a name="manage-your-cache"></a>Správa mezipaměti
 
@@ -253,7 +253,7 @@ Stránka Přehled obsahuje grafy pro některé základní statistiky mezipaměti
 
 ![snímek obrazovky se třemi spojnicovým grafem ukazující výše uvedenou statistikou pro ukázkovou mezipaměť](media/hpc-cache-overview-stats.png)
 
-Tyto grafy jsou součástí integrovaných nástrojů pro monitorování a analýzu v Azure. Další nástroje a výstrahy jsou k dispozici na stránkách pod hlavičkou **monitorování** na bočním panelu na portálu. Další informace najdete v části portál v [dokumentaci ke službě Azure Monitoring](../azure-monitor/insights/monitor-azure-resource.md#monitoring-in-the-azure-portal).
+Tyto grafy jsou součástí integrovaných nástrojů pro monitorování a analýzu v Azure. Další nástroje a výstrahy jsou k dispozici na stránkách pod hlavičkou **monitorování** na bočním panelu na portálu. Další informace najdete v části portál v [dokumentaci ke službě Azure Monitoring](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-in-the-azure-portal).
 
 ## <a name="next-steps"></a>Další kroky
 
