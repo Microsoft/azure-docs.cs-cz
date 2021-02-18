@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
-ms.openlocfilehash: 1996f4c6c73040fa16a1c5a0468ebcced3ab1641
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: c41c5350e29555a11bb74eeca9af62a6b87cfced
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516477"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094276"
 ---
 # <a name="manage-an-azure-machine-learning-studio-classic-workspace"></a>Správa pracovního prostoru Azure Machine Learning Studio (Classic)
 
@@ -48,7 +48,7 @@ Pro správu webových služeb přidružených k tomuto pracovnímu prostoru stud
 > [!NOTE]
 > Chcete-li nasadit nebo spravovat nové webové služby, musíte mít přiřazenou roli přispěvatel nebo správce v předplatném, ve kterém je webová služba nasazená. Pokud budete pozvat jiného uživatele k pracovnímu prostoru Machine Learning Studio (Classic), musíte je přiřadit k roli přispěvatel nebo správce v předplatném, aby mohli nasadit nebo spravovat webové služby. 
 > 
->Další informace o nastavení přístupových oprávnění najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+>Další informace o nastavení přístupových oprávnění najdete v tématu [přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o [nasazení Machine Learning s využitím šablon Azure Resource Manager](deploy-with-resource-manager-template.md).

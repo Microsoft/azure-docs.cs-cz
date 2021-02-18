@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: bbd3e5774c6effa45888f6e59874d29f3b55b45f
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 5e8b873e0e4e89979769183cfbf0ad473069e897
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545577"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096439"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Škálování pro výkon v Azure Kognitivní hledání
 
@@ -100,6 +100,7 @@ Azure Kognitivní hledání aktuálně podporuje Zóny dostupnosti pro služby �
 + Austrálie – východ (vytvořeno 30. ledna 2021 nebo novější)
 + Kanada – střed (vytvořeno 30. ledna 2021 nebo novější)
 + Střed USA (vytvořeno 4. prosince 2020 nebo novější)
++ Východní USA (vytvořeno 27. ledna 2021 nebo novější)
 + Východní USA 2 (vytvořeno 30. ledna 2021 nebo novější)
 + Francie – střed (vytvořeno 23. října 2020 nebo novější)
 + Japonsko – východ (vytvořeno 30. ledna 2021 nebo novější)

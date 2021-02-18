@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0d98edb820e3a6d27f0a57bfde801f064a905a5b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2625e4a4954dc74fd0037c6563d0a32734c90b01
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575399"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096256"
 ---
 # <a name="azure-security-baseline-for-content-delivery-network"></a>Základní hodnoty zabezpečení Azure pro Content Delivery Network
 
@@ -78,7 +78,7 @@ Kromě toho používejte předdefinované role k přidělení oprávnění a v p
 
 - [Co je řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/overview.md) 
 
-- [Konfigurace řízení přístupu na základě role Azure](../role-based-access-control/role-assignments-portal.md) 
+- [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/role-assignments-portal.md) 
 
 - [Používání kontrol přístupu a identit Azure AD](../active-directory/governance/access-reviews-overview.md)
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 42c425963f0915004c4cd33c45429bf785baa5bc
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 077bda7c254e00e919a22423038a051dc7eafe60
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255063"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094893"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>Kurz: migrace programu RDS PostgreSQL do služby Azure DB pro PostgreSQL online pomocí DMS
 
@@ -53,8 +53,8 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 
 * Vytvořte instanci [Azure Database for PostgreSQL](../postgresql/quickstart-create-server-database-portal.md) nebo [Azure Database for PostgreSQL-Citus (škálování](../postgresql/quickstart-create-hyperscale-portal.md)na více instancí). Podrobnosti o tom, jak se připojit k serveru PostgreSQL pomocí pgAdmin, najdete v této [části](../postgresql/quickstart-create-server-database-portal.md#connect-to-the-server-with-psql) dokumentu.
 * Vytvořte Microsoft Azure Virtual Network pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který umožňuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](../expressroute/expressroute-introduction.md) nebo [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md). Další informace o vytváření virtuálních sítí najdete v [dokumentaci k Virtual Network](../virtual-network/index.yml)a zejména v článcích rychlý Start s podrobnými údaji.
-* Zajistěte, aby pravidla skupiny zabezpečení sítě virtuálních sítí neblokovala následující odchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445 a 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](../virtual-network/virtual-network-vnet-plan-design-arm.md).
-* Nakonfigurujte bránu [Windows Firewall pro přístup k databázovému stroji](https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules).
+* Zajistěte, aby pravidla skupiny zabezpečení sítě virtuálních sítí neblokovala odchozí port 443 ServiceTag pro ServiceBus, Storage a AzureMonitor. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](../virtual-network/virtual-network-vnet-plan-design-arm.md).
+* Nakonfigurujte bránu [Windows Firewall pro přístup k databázovému stroji](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Otevřete bránu Windows Firewall, abyste povolili Azure Database Migration Service přístup ke zdrojovému serveru PostgreSQL, který je ve výchozím nastavení port TCP 5432.
 * Pokud před zdrojovými databázemi používáte zařízení brány firewall, možná bude potřeba přidat pravidla brány firewall, která službě Azure Database Migration Service povolí přístup ke zdrojovým databázím za účelem migrace.
 * Vytvořte [pravidlo brány firewall](https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules) na úrovni serveru pro Azure Database for PostgreSQL Server, aby bylo možné Azure Database Migration Service přístup k cílovým databázím. Zadejte rozsah podsítě virtuální sítě, která se používá pro Azure Database Migration Service.

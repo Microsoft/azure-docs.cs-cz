@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 80011b2ae2a70ce4c540ac31897cc8be4a6580c3
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 4caf804a274956556d6e9ca396c8f08594b11a87
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618616"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092886"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Známé problémy: běžné výstrahy a řešení v Azure Active Directory Domain Services
 
@@ -162,7 +162,7 @@ Tato chyba je neopravitelná. Pokud chcete tuto výstrahu vyřešit, [odstraňte
 
 Některé automaticky generované objekty služby se používají ke správě a vytváření prostředků pro spravovanou doménu. Pokud dojde ke změně oprávnění pro přístup k některému z těchto instančních objektů, doména nemůže správně spravovat prostředky. Následující kroky ukazují, jak pochopit a pak udělit přístupová oprávnění k instančnímu objektu:
 
-1. Přečtěte si o [řízení přístupu na základě role a o tom, jak udělit přístup k aplikacím v Azure Portal](../role-based-access-control/role-assignments-portal.md).
+1. Přečtěte si o [řízení přístupu na základě role v Azure a o tom, jak udělit přístup k aplikacím v Azure Portal](../role-based-access-control/role-assignments-portal.md).
 2. Zkontrolujte přístup, který instanční objekt s ID *abba844e-bc0e-44b0-947a-dc74e5d09022* má, a udělte přístup, který byl zamítnut v dřívější datum.
 
 ## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: ve spravované doméně není dostatečná IP adresa.

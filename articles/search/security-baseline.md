@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8c32d06247516611fc79bd6f77b60fec6b73044d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0618e4445629893fbe623df4bc937698bd307c7c
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591802"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096575"
 ---
 # <a name="azure-security-baseline-for-azure-cognitive-search"></a>Základní hodnoty zabezpečení Azure pro Azure Kognitivní hledání
 
@@ -495,7 +495,7 @@ Microsoft spravuje základní platformu a považuje veškerý obsah zákazníka 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: ke správě přístupu k prostředkům použijte službu Azure RBAC.
 
 **Doprovodné** materiály: pro správu služeb použijte řízení přístupu na základě role Azure (Azure RBAC) ke správě přístupu ke klíčům a konfiguraci. Pro operace s obsahem, jako je indexování a dotazy, Kognitivní hledání používá místo modelu řízení přístupu založeného na identitě klíče. K řízení přístupu k klíčům použijte službu Azure RBAC.
-- [Konfigurace řízení přístupu na základě role Azure](../role-based-access-control/role-assignments-portal.md) 
+- [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/role-assignments-portal.md) 
 
  
 - [Použití rolí pro přístup pro správu k Kognitivní hledání](./search-security-rbac.md)

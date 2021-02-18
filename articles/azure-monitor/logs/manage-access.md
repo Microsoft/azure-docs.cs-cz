@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 184d5c98b2b434c87e112c569ff4e8ab347344c5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f16e5363af7de2152a7fa73bb52219d87971a249
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609363"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091192"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Správa přístupu k datům protokolů a pracovním prostorům ve službě Azure Monitor
 
@@ -120,7 +120,7 @@ Následující aktivity také vyžadují oprávnění Azure:
 
 ## <a name="manage-access-using-azure-permissions"></a>Správa přístupu pomocí oprávnění Azure
 
-Pokud chcete udělit přístup k pracovnímu prostoru služby Log Analytics pomocí oprávnění Azure, postupujte podle kroků v tématu [Použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md). Například vlastní role najdete v tématu [Příklady vlastních rolí](#custom-role-examples) .
+Pokud chcete udělit přístup k pracovnímu prostoru Log Analytics pomocí oprávnění Azure, postupujte podle kroků v části [přiřazení rolí Azure ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md). Například vlastní role najdete v tématu [Příklady vlastních rolí](#custom-role-examples) .
 
 Azure má dvě předdefinované role uživatelů pro Log Analytics pracovní prostory:
 

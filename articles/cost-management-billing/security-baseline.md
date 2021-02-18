@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0155ed4df9ee2c22d1461633ac9efe225b53f9ca
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
-ms.translationtype: HT
+ms.openlocfilehash: 627c6bcd01a11356d1f207aa079c75d4b6194c59
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530506"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093275"
 ---
 # <a name="azure-security-baseline-for-cost-management"></a>Standardní hodnoty zabezpečení Azure pro službu Cost Management
 
@@ -174,7 +174,7 @@ Azure Cost Management nabízí předdefinované role čtenářů a přispěvatel
 
 [Co je řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md) 
 
-- [Konfigurace řízení přístupu na základě role Azure](../role-based-access-control/role-assignments-portal.md) 
+- [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/role-assignments-portal.md) 
 
 - [Používání kontrol přístupu a identit Azure AD](../active-directory/governance/access-reviews-overview.md)
 

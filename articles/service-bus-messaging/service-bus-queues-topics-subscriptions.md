@@ -3,12 +3,12 @@ title: Azure Service Bus zasílání zpráv – fronty, témata a odběry
 description: Tento článek poskytuje přehled entit zasílání zpráv Azure Service Bus (fronty, témata a odběry).
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: f647164ba18cb83e35b5bd174f09e07a4a9f9aa7
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b8fb68509ad920fc6911290377f49b89ec610b58
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652815"
+ms.locfileid: "101096333"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Fronty, témata a odběry služby Service Bus
 Azure Service Bus podporuje sadu cloudových technologií orientovaných na zprávy, včetně spolehlivé služby Řízení front zpráv a trvalého publikování/odběru zpráv. Tyto možnosti zprostředkujícího zasílání zpráv se dají představit jako funkce odděleného zasílání zpráv, které podporují publikování a dočasná odhlašování a vyrovnávání zatížení pomocí úlohy Service Busho zasílání zpráv. Oddělená komunikace má mnoho výhod. Například klienti a servery se mohou připojit podle potřeby a provádět jejich operace asynchronním způsobem.
@@ -36,6 +36,9 @@ Můžete určit dva různé režimy, v nichž Service Bus přijímá zprávy.
         Pokud aplikace z nějakého důvodu nemůže zprávu zpracovat, může požádat službu Service Bus o **opuštění** zprávy. Service Bus **odemkne** zprávu a zpřístupní ji pro opětovné přijetí, a to buď stejným příjemcem, nebo jiným konkurenčním zákazníkem. Za druhé je **časový limit** přidružený k zámku. Pokud aplikace nedokáže zpracovat zprávu před vypršením časového limitu zámku, Service Bus zprávu odemkne a zpřístupní ji, aby ji bylo možné znovu přijmout.
 
         Pokud aplikace po zpracování zprávy dojde k chybě, ale před tím, než požádá službu Service Bus o dokončení zprávy, Service Bus zprávu po restartování znovu doručí do aplikace. Tento proces se často nazývá aspoň **po** zpracování. To znamená, že každá zpráva se zpracuje alespoň jednou. V některých případech ale může být stejná zpráva doručena znovu. Pokud váš scénář nemůže tolerovat duplicitní zpracování, přidejte do aplikace další logiku, která bude zjišťovat duplicity. Další informace najdete v tématu [zjištění duplicit](duplicate-detection.md). Tato funkce se označuje stejně jako zpracování **právě jednou** .
+
+        > [!NOTE]
+        > Další informace o těchto dvou režimech najdete v tématu věnovaném [Vyrovnávání operací příjmu](message-transfers-locks-settlement.md#settling-receive-operations).
 
 ## <a name="topics-and-subscriptions"></a>Témata a předplatná
 Fronta umožňuje zpracování zprávy jedním příjemcem. Na rozdíl od front, témat a předplatných nabízí ve vzoru **publikování a odběru** formu typu 1: n. Je užitečné pro škálování na velký počet příjemců. Každá publikovaná zpráva je zpřístupněna pro každé předplatné registrované v tématu. Vydavatel pošle zprávu do tématu a jednomu nebo více předplatitelům obdrží kopii zprávy v závislosti na pravidlech filtru nastavených u těchto předplatných. Odběry mohou použít další filtry k omezení zpráv, které chtějí přijímat. Vydavatelé odesílají zprávy do tématu stejným způsobem, jako odesílají zprávy do fronty. Ale uživatelé neobdrží zprávy přímo z tématu. Místo toho příjemci obdrží zprávy z předplatných tématu. Předplatné tématu se podobá virtuální frontě, která přijímá kopie zpráv odesílaných do tématu. Příjemci obdrží zprávy z předplatného stejně, jako jim obdrží zprávy z fronty.

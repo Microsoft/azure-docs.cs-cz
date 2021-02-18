@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5151f97386ebb6b06be2320505771dc8f47d59a0
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: eb31d6e25ce1c1ff5c3e4dbabb4fa53da0bd2ef3
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107528"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093933"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k Azure Key Vaultu 
 
@@ -34,11 +34,11 @@ Získáte informace o těchto tématech:
 > * Udělení přístupu virtuálnímu počítači k tajnému kódu uloženému ve službě Key Vault 
 > * Použití identity virtuálního počítače k získání přístupového tokenu a použití tohoto tokenu k načtení tajného kódu z Key Vault 
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Základní porozumění spravovaným identitám. Pokud ještě neznáte funkci spravovaných identit pro prostředky Azure, podívejte se na tento [přehled](overview.md). 
 - Účet Azure, [Zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/).
-- Oprávnění "vlastník" v příslušném oboru (vaše předplatné nebo skupina prostředků) k provedení požadovaných kroků vytváření prostředků a správy rolí. Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [Použití řízení přístupu na základě role ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md).
+- Oprávnění "vlastník" v příslušném oboru (vaše předplatné nebo skupina prostředků) k provedení požadovaných kroků vytváření prostředků a správy rolí. Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [přiřazení rolí Azure ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md).
 - Potřebujete také virtuální počítač se systémem Linux, který má povolené spravované identity přiřazené systémem.
   - Pokud pro tento kurz potřebujete vytvořit virtuální počítač, můžete postupovat podle článku [s názvem vytvoření virtuálního počítače se systémem Linux pomocí Azure Portal](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)
 

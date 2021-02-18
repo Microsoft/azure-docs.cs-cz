@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 3e4211da59193d0c48398d9f2822fd12cc217d8b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 43aa86504d265927cb94e4333f86bb9cc9d2e2ea
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390568"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095565"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Změna podpory kanálu v Azure Blob Storage
 
@@ -268,7 +268,7 @@ Popis jednotlivých vlastností najdete v tématu [Azure Event Grid schéma udá
 
 - Změny záznamů událostí, kde `eventType` má hodnota, `Control` jsou interní systémové záznamy a neodrážejí změnu objektů ve vašem účtu. Tyto záznamy můžete bezpečně ignorovat.
 
-- Hodnoty v `storageDiagnonstics` kontejneru objektů a dat jsou určené pouze pro interní použití a nejsou určeny pro použití vaší aplikací. Vaše aplikace by neměly mít na těchto datech smluvní závislost. Tyto vlastnosti můžete bezpečně ignorovat.
+- Hodnoty v `storageDiagnostics` kontejneru objektů a dat jsou určené pouze pro interní použití a nejsou určeny pro použití vaší aplikací. Vaše aplikace by neměly mít na těchto datech smluvní závislost. Tyto vlastnosti můžete bezpečně ignorovat.
 
 - Čas reprezentovaný segmentem je **přibližný** s mezemi po dobu 15 minut. Aby se zajistila spotřeba všech záznamů v určitou dobu, využijte po sobě jdoucí a další hodinový segment.
 

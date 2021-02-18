@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: ed2c5b4175745fa14864b2d360bcbf5e5237a495
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 9be00fd89234be0a8b5740af9e12811f36a47619
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897641"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092338"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamické balení v Media Services V3
 
@@ -57,7 +57,7 @@ Váš klient streamování může určit následující formáty HLS:
 |HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`||
 
 > [!NOTE]
-> V předchozích pokynech od společnosti Apple se doporučuje, aby záloha pro sítě s malou šířkou pásma poskytovala datový proud, který je jen pro zvuk.  V současné době Media Services kodér automaticky vygeneruje zvuk, který se jenom sleduje.  Pokyny pro Apple nyní obsahují informace o tom, *že by nemělo být* zahrnuté zvukové stopy, zejména pro distribuci Apple TV.  Chcete-li zabránit přehrávači ve výchozím nastavení zvukového zvuku, doporučujeme použít značku "pouze zvuk = false" v adrese URL, která odebere pouze zvukovou verzi v HLS, nebo jednoduše použít HLS-v3. Například `http://host/locator/asset.ism/manifest(format=m3u8-aapl,audio-only=false)`.
+> V předchozích pokynech od společnosti Apple se doporučuje, aby záloha pro sítě s malou šířkou pásma poskytovala datový proud, který je jen pro zvuk.  V současné době Media Services kodér automaticky vygeneruje zvuk, který se jenom sleduje.  Pokyny pro Apple nyní obsahují informace o tom, *že by nemělo být* zahrnuté zvukové stopy, zejména pro distribuci Apple TV.  Chcete-li zabránit přehrávači ve výchozím nastavení zvukového zvuku, doporučujeme použít značku "pouze zvuk = false" v adrese URL, která odebere pouze zvukovou verzi v HLS, nebo jednoduše použít HLS-v3. Například, `http://host/locator/asset.ism/manifest(format=m3u8-aapl,audio-only=false)`.
 
 ### <a name="mpeg-dash-protocol"></a>Protokol MPEG-SPOJOVNÍK
 

@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 342fa722d704933f22cec00a46d11ccc38fc6e4d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b255cafb9040f87c902fe6c094c3e0db3d461e4b
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91650642"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093642"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Rychlé zprovoznění: Vytvoření a publikování definice spravované aplikace
 
@@ -315,7 +315,7 @@ Předtím, než bude možné nasadit definici spravované aplikace do svého ú�
 1. Vyberte **řízení přístupu (IAM)** a zobrazte nastavení řízení přístupu pro účet úložiště. Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí.
 1. V okně **Přidat přiřazení role** vyberte roli **Přispěvatel** .
 1. V poli **přiřadit přístup k** vyberte možnost **uživatel, skupina nebo instanční objekt služby Azure AD**.
-1. V části **Vybrat**vyhledejte roli **poskytovatele prostředků zařízení** a vyberte ji.
+1. V části **Vybrat** vyhledejte roli **poskytovatele prostředků zařízení** a vyberte ji.
 1. Uložte přiřazení role.
 
 ### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>Nasazení definice spravované aplikace pomocí šablony ARM
@@ -401,7 +401,7 @@ Můžete ověřit, zda jsou soubory definic aplikace uloženy v zadaném účtu 
 
 ## <a name="make-sure-users-can-see-your-definition"></a>Je potřeba zajistit, že budou uživatelé vidět vaši definici.
 
-Máte přístup k definici spravované aplikace, ale je potřeba zajistit přístup i pro ostatní uživatele ve vaší organizaci. Udělte jim k definici alespoň přístup role Čtenář. Je možné, že tuto úroveň přístupu zdědili z předplatného nebo skupiny prostředků. Pokud chcete zjistit, kdo má přístup k definici a přidat uživatele nebo skupiny, přečtěte si téma [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+Máte přístup k definici spravované aplikace, ale je potřeba zajistit přístup i pro ostatní uživatele ve vaší organizaci. Udělte jim k definici alespoň přístup role Čtenář. Je možné, že tuto úroveň přístupu zdědili z předplatného nebo skupiny prostředků. Pokud chcete zjistit, kdo má přístup k definici a přidat uživatele nebo skupiny, přečtěte si téma [přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Další kroky
 

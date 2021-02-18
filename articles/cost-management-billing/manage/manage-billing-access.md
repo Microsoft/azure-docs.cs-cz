@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 01/26/2021
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 23e3adad12a726b03f6efe309dde0ec4a93bcd5b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1574149e0587701323cb9ae5ae0c5cfeaccf47c7
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897421"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096413"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Správa přístupu k fakturačním údajům v Azure
 
@@ -40,7 +40,7 @@ Správce účtu může udělit přístup k fakturačním údajům Azure jiným o
 
 Tyto role mají přístup k fakturačním údajům na webu [Azure Portal](https://portal.azure.com/). Lidé, kteří mají přiřazené tyto role, můžou také využívat [rozhraní API pro fakturaci](consumption-api-overview.md#usage-details-api), která umožňují programový přístup k fakturám a informacím o využití.
 
-Pokud chcete přiřazovat role, projděte si téma [Přidání nebo odebrání přiřazení rolí v Azure pomocí webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+Pokud chcete přiřadit role, přečtěte si téma [přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ** Pokud jste zákazníkem se smlouvou Enterprise, vlastník účtu může přiřadit výše uvedenou roli ostatním uživatelům ze svého týmu. Pokud si ale tito uživatelé chtějí zobrazovat fakturační údaje, musí podnikový správce na webu Enterprise Portal povolit nastavení AO view charges (Vlastník účtu může zobrazit náklady).
 
@@ -105,7 +105,7 @@ Funkce role Čtenář fakturace je ve verzi Preview a ještě nepodporuje jiné 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Uživatelé v jiných rolích, například Vlastník nebo Přispěvatel, mají přístup nejen k fakturačním údajům, ale také ke službám Azure. Pokud chcete spravovat tyto role, projděte si téma [Přidání nebo odebrání přiřazení rolí v Azure pomocí webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+- Uživatelé v jiných rolích, například Vlastník nebo Přispěvatel, mají přístup nejen k fakturačním údajům, ale také ke službám Azure. Pokud chcete spravovat tyto role, přečtěte si téma [přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 - Další informace o rolích najdete v tématu věnovaném [předdefinovaným rolím v Azure](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: c44d00a5b23bff5e00864b44a396bcedfe5ea668
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f16f034af18e0076da555aed0c7159de66da995b
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391197"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094696"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Kopírování dat z databáze SQL Server do úložiště objektů BLOB v Azure
 
@@ -41,7 +41,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 ### <a name="azure-roles"></a>Role Azure
 Pro vytvoření instancí služby Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, přiřazený k roli *Přispěvatel* nebo *vlastník* nebo musí být *správcem* předplatného Azure.
 
-Pokud chcete zobrazit oprávnění, která v předplatném máte, přejděte na web Azure Portal. V pravém horním rohu vyberte své uživatelské jméno a pak vyberte **Oprávnění**. Pokud máte přístup k několika předplatným, vyberte odpovídající předplatné. Ukázku pokynů pro přidání uživatele k roli najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md).
+Pokud chcete zobrazit oprávnění, která v předplatném máte, přejděte na web Azure Portal. V pravém horním rohu vyberte své uživatelské jméno a pak vyberte **Oprávnění**. Pokud máte přístup k několika předplatným, vyberte odpovídající předplatné. Ukázku pokynů pro přidání uživatele k roli najdete v tématu [přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014, 2016 a 2017
 V tomto kurzu použijete databázi SQL Server jako *zdrojové* úložiště dat. Kanál v datové továrně, který vytvoříte v tomto kurzu, kopíruje data z této SQL Server databáze (zdroj) do úložiště objektů BLOB (jímka). Pak vytvoříte tabulku s názvem **EMP** v databázi SQL Server a do tabulky vložíte několik vzorových položek.

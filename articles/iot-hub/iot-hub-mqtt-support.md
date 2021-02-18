@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: d206f40380ddb60a53ec8af2802a65af94f5820d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: df706a83c4892c15140e5d5c827a248156b66069
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027794"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095679"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikace se službou IoT Hub pomocí protokolu MQTT
 
@@ -55,9 +55,9 @@ Následující tabulka obsahuje odkazy na ukázky kódu pro každý podporovaný
 | Jazyk | Parametr protokolu MQTT | MQTT přes parametr protokolu webové sokety
 | --- | --- | --- |
 | [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | Azure-IoT-Device-MQTT. MQTT | Azure-IoT-Device-MQTT. MqttWs |
-| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable). MQTT | IotHubClientProtocol.MQTT_WS |
+| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable&preserve-view=true). MQTT | IotHubClientProtocol.MQTT_WS |
 | [R](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet). MQTT | TransportType. MQTT se vrátí do MQTT přes webové sokety, pokud MQTT selhání. K určení MQTT jenom přes webové sokety použijte TransportType.Mqtt_WebSocket_Only |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet&preserve-view=true). MQTT | TransportType. MQTT se vrátí do MQTT přes webové sokety, pokud MQTT selhání. K určení MQTT jenom přes webové sokety použijte TransportType.Mqtt_WebSocket_Only |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | Podporuje MQTT ve výchozím nastavení | Přidat `websockets=True` do volání pro vytvoření klienta |
 
 Následující fragment ukazuje, jak zadat protokol MQTT over Web Sockets při použití sady Azure IoT Node.js SDK:
@@ -81,11 +81,11 @@ Aby se zajistilo, že připojení typu klient/IoT Hub zůstane aktivní, služba
 
 |Jazyk  |Výchozí interval Keep-Alive  |Konfigurovatelné  |
 |---------|---------|---------|
-|Node.js     |   180 sekund      |     Ne    |
-|Java     |    230 sekund     |     Ne    |
+|Node.js     |   180 sekund      |     No    |
+|Java     |    230 sekund     |     No    |
 |C     | 240 sekund |  [Ano](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 sekund |  [Ano](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python   | 60 sekund |  Ne   |
+|Python   | 60 sekund |  No   |
 
 Po [specifikaci MQTT](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)je interval časového limitu pro udržování připojení IoT Hub, což je 1,5 časů hodnoty Keep-Alive klienta. IoT Hub ale omezuje maximální časový limit na straně serveru na 29,45 minut (1767 sekund), protože všechny služby Azure jsou svázané s časovým limitem nečinnosti protokolu TCP pro vyrovnávání zatížení Azure, což je 29,45 minut. 
 
@@ -110,6 +110,8 @@ V takovém případě nezapomeňte zkontrolovat následující položky:
 V [ukázkovém úložišti IoT MQTT](https://github.com/Azure-Samples/IoTMQTTSample)najdete několik ukázkových projektů C/C++, které ukazují, jak odesílat zprávy telemetrie a přijímat události pomocí služby IoT Hub bez použití sady Azure IoT C SDK. 
 
 Tyto ukázky používají knihovnu Mosquitto zatmění k posílání zpráv do zprostředkovatele MQTT implementovaného ve službě IoT Hub.
+
+Další informace o tom, jak přizpůsobit ukázky pro používání konvencí [technologie Plug and Play Azure IoT](../iot-pnp/overview-iot-plug-and-play.md) , najdete v tématu [kurz – použití MQTT ke zřízení klienta zařízení IoT technologie Plug and Play](../iot-pnp/tutorial-use-mqtt.md).
 
 Toto úložiště obsahuje:
 
@@ -158,7 +160,7 @@ Pokud zařízení nemůže používat sady SDK pro zařízení, může se stále
 
   Další informace o tom, jak generovat tokeny SAS, najdete v části zařízení [použití tokenů zabezpečení IoT Hub](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app).
 
-  Při testování můžete také použít [nástroje Azure IoT Tools pro různé platformy pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) nebo rozšíření CLI. pomocí příkazu [AZ IoT Hub Generate-SAS-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token) můžete rychle vygenerovat token SAS, který můžete zkopírovat a vložit do vlastního kódu.
+  Při testování můžete také použít [nástroje Azure IoT Tools pro různé platformy pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) nebo rozšíření CLI. pomocí příkazu [AZ IoT Hub Generate-SAS-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token&preserve-view=true) můžete rychle vygenerovat token SAS, který můžete zkopírovat a vložit do vlastního kódu.
 
 ### <a name="for-azure-iot-tools"></a>Pro Azure IoT Tools
 
@@ -315,7 +317,7 @@ IoT Hub doručuje zprávy s **názvem tématu** `devices/{device_id}/messages/de
 
 V případě zpráv z cloudu na zařízení se hodnoty v kontejneru objektů a dat reprezentují jako v následující tabulce:
 
-| Hodnota vlastnosti | Obrázek | Popis |
+| Hodnota vlastnosti | Obrázek | Description |
 |----|----|----|
 | `null` | `key` | V kontejneru objektů a dat se zobrazí jenom klíč. |
 | prázdný řetězec | `key=` | Klíč následovaný rovnítkem bez hodnoty |

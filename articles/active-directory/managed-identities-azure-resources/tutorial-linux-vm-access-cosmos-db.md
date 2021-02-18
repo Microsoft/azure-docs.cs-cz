@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1ece1fbd75c975f549cb9096149c2a2d562dec6
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: b81f80af69b47152f7111066070e173bb1ede5f4
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107562"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093948"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k Azure Cosmos DB 
 
@@ -36,11 +36,11 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 > * Získání přístupového tokenu a jeho použití k volání Azure Resource Manageru
 > * Získání přístupových klíčů z Azure Resource Manageru kvůli volání služby Cosmos DB
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud ještě neznáte funkci spravovaných identit pro prostředky Azure, podívejte se na tento [přehled](overview.md). 
 - Pokud nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- K provedení potřebných kroků k vytvoření prostředku a správě rolí potřebuje váš účet oprávnění vlastníka v odpovídajícím oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [Použití řízení přístupu na základě role ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md).
+- K provedení potřebných kroků k vytvoření prostředku a správě rolí potřebuje váš účet oprávnění vlastníka v odpovídajícím oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [přiřazení rolí Azure ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md).
 - Chcete-li spustit ukázkové skripty, máte dvě možnosti:
     - Použijte [Azure Cloud Shell](../../cloud-shell/overview.md), který můžete otevřít pomocí tlačítka **vyzkoušet** v pravém horním rohu bloků kódu.
     - Spusťte skripty místně pomocí instalace nejnovější verze rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)a pak se přihlaste k Azure pomocí [AZ Login](/cli/azure/reference-index#az-login). Použijte účet přidružený k předplatnému Azure, ve kterém byste chtěli vytvářet prostředky.

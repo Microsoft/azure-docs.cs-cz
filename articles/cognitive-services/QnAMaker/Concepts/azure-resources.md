@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: f46a0938ebb8d9fe7e032162120056dca96b9567
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: f5a248b8701c71b2dcf0415c6656b9b565535232
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979758"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096547"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Prostředky Azure pro QnA Maker
 
@@ -142,16 +142,16 @@ Vaše služba QnA Maker se zabývá dvěma druhy klíčů: **vytváření klíč
 
 Tyto klíče použijte při provádění požadavků na službu prostřednictvím rozhraní API.
 
-![Správa klíčů](../media/qnamaker-how-to-key-management/key-management.png)
+![Správa klíčů](../media/authoring-key.png)
 
 |Název|Umístění|Účel|
 |--|--|--|
-|Vytváření a klíč předplatného|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Tyto klíče se používají pro přístup k [rozhraním API služby QnA maker Management](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase). Tato rozhraní API umožňují upravovat otázky a odpovědi ve znalostní bázi a publikovat znalostní bázi. Tyto klíče se vytvoří při vytvoření nové služby QnA Maker.<br><br>Tyto klíče najdete na **Cognitive Services** prostředku na stránce **klíče** .|
+|Vytváření a klíč předplatného|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Tyto klíče se používají pro přístup k [rozhraním API služby QnA maker Management](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase). Tato rozhraní API umožňují upravovat otázky a odpovědi ve znalostní bázi a publikovat znalostní bázi. Tyto klíče se vytvoří při vytvoření nové služby QnA Maker.<br><br>Tyto klíče najdete na **Cognitive Services** prostředku na stránce **klíče a koncový bod** .|
 |Klíč koncového bodu dotazu|[Portál QnA Makeru](https://www.qnamaker.ai)|Tyto klíče se používají k dotazování publikovaného koncového bodu znalostní báze, aby se zobrazila odpověď pro otázku uživatele. Tento koncový bod dotazu obvykle používáte v robotovi chatu nebo v kódu klientské aplikace, který se připojuje ke službě QnA Maker. Tyto klíče se vytvoří při publikování QnA Maker znalostní báze Knowledge Base.<br><br>Tyto klíče najdete na stránce **nastavení služby** . Vyhledá tuto stránku v nabídce uživatele v pravém horním rohu stránky v rozevírací nabídce.|
 
 ### <a name="find-authoring-keys-in-the-azure-portal"></a>Hledání klíčů pro vytváření Azure Portal
 
-Klíče pro vytváření obsahu můžete zobrazit a obnovit z Azure Portal, kde jste vytvořili prostředek QnA Maker. Tyto klíče mohou být označovány jako klíče předplatného.
+Klíče pro vytváření obsahu můžete zobrazit a obnovit z Azure Portal, kde jste vytvořili prostředek QnA Maker.
 
 1. V Azure Portal otevřete prostředek QnA Maker a vyberte prostředek, který má typ _Cognitive Services_ :
 
@@ -189,12 +189,12 @@ Tyto klíče použijte při provádění požadavků na službu prostřednictví
 
 |Název|Umístění|Účel|
 |--|--|--|
-|Vytváření a klíč předplatného|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Tyto klíče se používají pro přístup k [rozhraním API služby QnA maker Management](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase). Tato rozhraní API umožňují upravovat otázky a odpovědi ve znalostní bázi a publikovat znalostní bázi. Tyto klíče se vytvoří při vytvoření nové služby QnA Maker.<br><br>Tyto klíče najdete na **Cognitive Services** prostředku na stránce **klíče** .|
+|Vytváření a klíč předplatného|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Tyto klíče se používají pro přístup k [rozhraním API služby QnA maker Management](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase). Tato rozhraní API umožňují upravovat otázky a odpovědi ve znalostní bázi a publikovat znalostní bázi. Tyto klíče se vytvoří při vytvoření nové služby QnA Maker.<br><br>Tyto klíče najdete na **Cognitive Services** prostředku na stránce **klíče a koncový bod** .|
 |Klíč správce Azure Kognitivní hledání|[Azure Portal](../../../search/search-security-api-keys.md)|Tyto klíče se používají ke komunikaci se službou Azure vnímání Search nasazenou v předplatném Azure uživatele. Pokud přidružíte vyhledávání rozpoznávání Azure ke službě QnA Maker Managed (Preview), klíč správce se automaticky předává službě QnA Maker. <br><br>Tyto klíče najdete na prostředku **kognitivní hledání Azure** na stránce **klíče** .|
 
 ### <a name="find-authoring-keys-in-the-azure-portal"></a>Hledání klíčů pro vytváření Azure Portal
 
-Klíče pro vytváření obsahu můžete zobrazit a obnovit z Azure Portal, kde jste vytvořili prostředek QnA Maker Managed (Preview). Tyto klíče mohou být označovány jako klíče předplatného.
+Klíče pro vytváření obsahu můžete zobrazit a obnovit z Azure Portal, kde jste vytvořili prostředek QnA Maker Managed (Preview).
 
 1. V Azure Portal klikněte na prostředek QnA Maker Managed (Preview) a vyberte prostředek, který má typ *Cognitive Services* :
 
@@ -365,6 +365,6 @@ S QnA Maker spravované (Preview) máte možnost nastavit službu QnA Maker pro 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o QnA Maker [znalostní bázi Knowledge Base](../index.yml)
+* Další informace o QnA Maker [znalostní bázi Knowledge Base](../How-To/manage-knowledge-bases.md)
 * Pochopení [životního cyklu znalostní báze](development-lifecycle-knowledge-base.md)
 * Kontrola [omezení](../limits.md) služby a znalostí znalostní báze

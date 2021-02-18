@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 982ca04237d16979d65260a040f5aed783822ac7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: ea57a623546df99408d488da4522411f55ab0dd9
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023220"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094364"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>Kurz: vytvoření prostředí Azure Time Series Insights Gen1
 
@@ -36,7 +36,7 @@ Tento kurz vás provede procesem vytvoření Azure Time Series Insights prostře
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Účet pro přihlášení do Azure musí být také členem role **vlastníka** předplatného. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md).
+* Účet pro přihlášení do Azure musí být také členem role **vlastníka** předplatného. Pokud chcete získat další informace, přečtěte si téma [přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="review-video"></a>Zkontrolovat video
 

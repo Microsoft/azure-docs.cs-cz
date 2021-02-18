@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: c0269464352fa333c6447834a56c25348ecb71a3
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1eb0bf2c0e214c3e076895903176d15ee792c70c
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895250"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093051"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Začínáme s operátory IT Azure
 
@@ -140,11 +140,11 @@ Azure je globální cloudová platforma, která je obecně dostupná v mnoha obl
 
 Jednou z výhod používání Azure je to, že můžete své aplikace nasadit do různých Datacenter po celém světě. Oblast, kterou zvolíte, může ovlivnit výkon aplikace. Je optimální zvolit oblast, která je blíže většině vašich zákazníků, aby se snížila latence v případě síťových požadavků. Můžete také vybrat oblast, která bude vyhovovat zákonným požadavkům pro distribuci aplikace v určitých zemích nebo oblastech.
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Azure Portal je webová aplikace, která se dá použít k vytváření, správě a odebírání prostředků a služeb Azure. Azure Portal najdete na adrese [Portal.Azure.com](https://portal.azure.com). Zahrnuje přizpůsobitelný řídicí panel a nástroje pro správu prostředků Azure. Poskytuje také informace o fakturaci a předplatném. Další informace najdete v tématu [přehled portál Microsoft Azure](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) a [Správa prostředků Azure prostřednictvím portálu](../../azure-resource-manager/management/manage-resources-portal.md).
 
-### <a name="resources"></a>Zdroje a prostředky
+### <a name="resources"></a>Zdroje informací
 
 Prostředky Azure jsou individuální výpočetní prostředí, sítě, data nebo služby hostování aplikací, které se nasadily do předplatného Azure. Mezi běžné prostředky patří virtuální počítače, účty úložiště nebo databáze SQL. Služby Azure se často skládají z několika souvisejících prostředků Azure. Virtuální počítač Azure může například zahrnovat virtuální počítač, účet úložiště, síťový adaptér a veřejnou IP adresu. Tyto prostředky je možné vytvořit, spravovat a odstranit jednotlivě nebo jako skupinu. Prostředky Azure jsou podrobněji popsány dále v této příručce.
 
@@ -200,7 +200,7 @@ Průběžné **platby**: s tímto předplatným platíte za to, co využijete, p
 
 Azure RBAC má několik předdefinovaných rolí, které můžete použít k přiřazení oprávnění. Pokud chcete, aby uživatel měl správce předplatného Azure, přiřaďte mu roli [vlastníka](../../role-based-access-control/built-in-roles.md#owner) v oboru předplatného. Role Vlastník poskytuje uživateli úplný přístup ke všem prostředkům v předplatném, včetně práva delegovat přístup na ostatní.
 
-Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+Další informace najdete v tématu [přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="view-billing-information-in-the-azure-portal"></a>Zobrazit fakturační údaje v Azure Portal
 
@@ -304,7 +304,7 @@ Tady je několik příkladů [předdefinovaných rolí v Azure](../../role-based
 
 - **Přispěvatel účtu úložiště**: uživatel s touto rolí může spravovat účty úložiště, ale nemůže spravovat přístup k účtům úložiště.
 
-Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+Další informace najdete v tématu [přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="azure-virtual-machines"></a>Azure Virtual Machines
 

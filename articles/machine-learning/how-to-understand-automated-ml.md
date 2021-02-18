@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: c95a75ef48aa9e3db070c6c237f913fabbe893fa
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2a07b2fc70a21dd192f74eb5260f3444e09cdca0
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388205"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092916"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Vyhodnotit automatizované výsledky experimentování ve strojovém učení
 
@@ -192,7 +192,7 @@ explained_variance|Vysvětluje odchylku míry, na kterou je rozsah pro variaci v
 mean_absolute_error|Střední absolutní chyba je očekávaná hodnota absolutní hodnoty rozdíl mezi cílem a předpovědi.<br><br> **Cíl:** Blíže k 0, lepší <br> **Rozsah:** [0, INF) <br><br> Druhy <br>`mean_absolute_error` <br>  `normalized_mean_absolute_error`, mean_absolute_error dělený rozsahem dat. | [Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|
 mean_absolute_percentage_error|Střední absolutní procentuální chyba (MAPE) je míra průměrného rozdílu mezi předpokládanou hodnotou a skutečnou hodnotou.<br><br> **Cíl:** Blíže k 0, lepší <br> **Rozsah:** [0, INF) ||
 median_absolute_error|Střední absolutní chyba je medián všech absolutních rozdílů mezi cílem a předpovědi. Tato ztráta je robustní pro odlehlé hodnoty.<br><br> **Cíl:** Blíže k 0, lepší <br> **Rozsah:** [0, INF)<br><br>Druhy <br> `median_absolute_error`<br> `normalized_median_absolute_error`: median_absolute_error dělený rozsahem dat. |[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|
-r2_score|R ^ 2 je koeficient stanovení nebo procento snížení počtu kvadratických chyb v porovnání se základním modelem, který má za následek výstup středníku. <br> <br> **Cíl:** Blíže k 1 lepšímu <br> **Rozsah:** [-1, 1] <br><br> Poznámka: R ^ 2 má často rozsah (-INF, 1], ale automatizovaná ML ořízne záporné hodnoty pro velmi špatné modely na-1.|[Výpočet](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
+r2_score|R<sup>2</sup> (koeficient stanovitelnosti) měří proporcionální snížení středníku chyby (MSE) vzhledem k celkovému rozptylu pozorovaných dat. <br> <br> **Cíl:** Blíže k 1 lepšímu <br> **Rozsah:** [-1, 1]<br><br>Poznámka: R<sup>2</sup> má často rozsah (-INF, 1]. Rozhraní MSE může být větší než zjištěnou odchylku, takže R<sup>2</sup> může mít v závislosti na datech a předpovědi modelu libovolně velké záporné hodnoty. Automatizované klipy ML nahlásily R<sup>2</sup> skóre na hodnotu-1, takže hodnota-1 pro R<sup>2</sup> nejspíš znamená, že skutečné skóre r<sup>2</sup> je menší než-1. Vezměte v úvahu další hodnoty metrik a vlastnosti dat při interpretaci negativního skóre R<sup>2</sup> .|[Výpočet](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
 root_mean_squared_error |Hlavní střední hodnota chyby (RMSE) je druhá odmocnina očekávaného čtvercového rozdílu mezi cílem a předpovědi. Pro neposunuté Estimator se RMSE rovná směrodatné odchylce.<br> <br> **Cíl:** Blíže k 0, lepší <br> **Rozsah:** [0, INF)<br><br>Druhy<br> `root_mean_squared_error` <br> `normalized_root_mean_squared_error`: root_mean_squared_error dělený rozsahem dat. |[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|
 root_mean_squared_log_error|Hodnota hlavní střední Chyba protokolu je druhá odmocnina očekávané čtvercové chyby.<br><br>**Cíl:** Blíže k 0, lepší <br> **Rozsah:** [0, INF) <br> <br>Druhy <br>`root_mean_squared_log_error` <br> `normalized_root_mean_squared_log_error`: root_mean_squared_log_error dělený rozsahem dat.  |[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|
 spearman_correlation| Korelace Spearman je neparametrová míra monotonicity vztahu mezi dvěma datovými sadami. Na rozdíl od korelace Pearsonova nepředpokládá korelace Spearman, že obě datové sady jsou normálně distribuovány. Podobně jako u jiných korelačních korelace se Spearman liší od-1 do 1 s 0, což neimplikuje žádnou korelaci. Korelace-1 nebo 1 implikuje přesný vztah monotónní. <br><br> Spearman je metrika korelace pořadí řazení, což znamená, že změny předpokládaných nebo skutečných hodnot nemění výsledek Spearman, pokud se nezmění pořadí řazení předpokládaných nebo skutečných hodnot.<br> <br> **Cíl:** Blíže k 1 lepšímu <br> **Rozsah:** [-1, 1]|[Výpočet](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|

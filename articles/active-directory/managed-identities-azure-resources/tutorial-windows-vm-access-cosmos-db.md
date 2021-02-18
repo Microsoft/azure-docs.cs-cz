@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc3417284137cdbc9f93ac02f825820bfe744843
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 04508f1aa8ee9d6b4f730f57c60d959fab209122
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107494"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093789"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Cosmos DB
 
@@ -34,11 +34,11 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 > * Získání přístupového tokenu pomocí spravované identity přiřazené systémem na virtuálním počítači s Windows k volání Azure Resource Manageru
 > * Získání přístupových klíčů z Azure Resource Manageru kvůli volání služby Cosmos DB
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud ještě neznáte funkci spravovaných identit pro prostředky Azure, podívejte se na tento [přehled](overview.md). 
 - Pokud nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- K provedení potřebných kroků k vytvoření prostředku a správě rolí potřebuje váš účet oprávnění vlastníka v odpovídajícím oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [Použití řízení přístupu na základě role ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md).
+- K provedení potřebných kroků k vytvoření prostředku a správě rolí potřebuje váš účet oprávnění vlastníka v odpovídajícím oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [přiřazení rolí Azure ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md).
 - Nainstalovat nejnovější verzi [Azure PowerShell](/powershell/azure/install-az-ps)
 - Budete také potřebovat virtuální počítač s Windows, který má povolené spravované identity přiřazené systémem.
   - Pokud pro tento kurz potřebujete vytvořit virtuální počítač, můžete postupovat podle článku [s názvem vytvořit virtuální počítač s povolenou identitou přiřazenou systémem](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity) .

@@ -212,8 +212,10 @@
               href: application-proxy-integrate-with-microsoft-cloud-application-security.md
             - name: Integrace se Vzdálenou plochou
               href: application-proxy-integrate-with-remote-desktop-services.md
-            - name: Integrace se SharePointem
+            - name: Integrace se službou SharePoint (Kerberos)
               href: application-proxy-integrate-with-sharepoint-server.md
+            - name: Integrace se službou SharePoint (SAML)
+              href: application-proxy-integrate-with-sharepoint-server-saml.md
             - name: Integrace s Teams
               href: application-proxy-integrate-with-teams.md
             - name: Integrace s Tableau

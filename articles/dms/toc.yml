@@ -37,10 +37,8 @@
   items:
     - name: Migrace SQL Serveru
       items:
-        - name: Do služby Azure SQL Database (offline)
+        - name: pro Azure SQL Database
           href: tutorial-sql-server-to-azure-sql.md
-        - name: Do služby Azure SQL Database (online)
-          href: tutorial-sql-server-azure-sql-online.md
         - name: Do Azure SQL Managed Instance (offline)
           href: tutorial-sql-server-to-managed-instance.md
         - name: Do Azure SQL Managed Instance (online)

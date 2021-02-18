@@ -9,15 +9,16 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 01/26/2021
-ms.openlocfilehash: 7588ce055ce0df89a7dca87a75a38c8acccf6d46
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.date: 02/17/2021
+ms.openlocfilehash: ecd97efbf12fb149037a94749bc899169f2c5a92
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806092"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096515"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Ruční převzetí služeb při selhání iniciované uživatelem ve službě SQL Managed Instance
+[!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Tento článek vysvětluje, jak ručně převzetí služeb při selhání primárního uzlu na úrovních služby SQL Managed instance Pro obecné účely (GP) a Pro důležité obchodní informace (BC) a ruční převzetí služeb při selhání sekundárního uzlu repliky jen pro čtení jenom na úrovni služby BC.
 

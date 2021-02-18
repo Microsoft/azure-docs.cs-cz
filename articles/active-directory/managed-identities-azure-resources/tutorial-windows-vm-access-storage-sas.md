@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba8c88f040bbd527b0d9f219a81fa090f53c84ed
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 45b4a6f7915f931e2eff24b56b178957a039e1ff
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590541"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096585"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Kurz: použití spravované identity přiřazené systémem Windows VM pro přístup k Azure Storage prostřednictvím přihlašovacích údajů SAS
 
@@ -35,11 +35,11 @@ SAS služby poskytuje možnost udělit omezený přístup k objektům v účtu �
 > * Udělení přístupu k SAS účtu úložiště v Resource Manageru pro virtuální počítač 
 > * Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k načtení SAS z Resource Manageru 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Porozumění spravovaným identitám. Pokud ještě neznáte funkci spravovaných identit pro prostředky Azure, podívejte se na tento [přehled](overview.md). 
 - Účet Azure, [Zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/).
-- Oprávnění "vlastník" v příslušném oboru (vaše předplatné nebo skupina prostředků) k provedení požadovaných kroků vytváření prostředků a správy rolí. Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [Použití řízení přístupu na základě role ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md).
+- Oprávnění "vlastník" v příslušném oboru (vaše předplatné nebo skupina prostředků) k provedení požadovaných kroků vytváření prostředků a správy rolí. Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [přiřazení rolí Azure ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md).
 - Budete také potřebovat virtuální počítač s Windows, který má povolené spravované identity přiřazené systémem.
   - Pokud pro tento kurz potřebujete vytvořit virtuální počítač, můžete postupovat podle článku [s názvem vytvořit virtuální počítač s povolenou identitou přiřazenou systémem](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity) .
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 320eaaf9e80fcbfc65aa311c983ecbc9beb31cd7
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 66a2bf17ac7cb94dc8e1429d662d7bfe14aa196a
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99254202"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096316"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>Kurz: migrace PostgreSQL do Azure DB pro PostgreSQL online pomocí DMS prostřednictvím Azure Portal
 
@@ -59,8 +59,8 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
     >
     > Tato konfigurace je nezbytná, protože Azure Database Migration Service nemá připojení k Internetu.
 
-* Zajistěte, aby pravidla skupiny zabezpečení sítě (NSG) pro vaši virtuální síť neblokovala následující odchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](../virtual-network/virtual-network-vnet-plan-design-arm.md).
-* Nakonfigurujte bránu [Windows Firewall pro přístup k databázovému stroji](https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules).
+* Zajistěte, aby pravidla skupiny zabezpečení sítě (NSG) pro vaši virtuální síť neblokovala odchozí port 443 z ServiceTag pro ServiceBus, úložiště a AzureMonitor. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](../virtual-network/virtual-network-vnet-plan-design-arm.md).
+* Nakonfigurujte bránu [Windows Firewall pro přístup k databázovému stroji](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Otevřete bránu Windows Firewall, abyste povolili Azure Database Migration Service přístup ke zdrojovému serveru PostgreSQL, který je ve výchozím nastavení port TCP 5432.
 * Pokud před zdrojovými databázemi používáte zařízení brány firewall, možná bude potřeba přidat pravidla brány firewall, která službě Azure Database Migration Service povolí přístup ke zdrojovým databázím za účelem migrace.
 * Vytvořte [pravidlo brány firewall](https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules) na úrovni serveru pro Azure Database for PostgreSQL, které povolí Azure Database Migration Service přístup k cílovým databázím. Zadejte rozsah podsítě virtuální sítě, která se používá pro Azure Database Migration Service.

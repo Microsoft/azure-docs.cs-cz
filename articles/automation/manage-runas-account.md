@@ -5,12 +5,12 @@ services: automation
 ms.subservice: ''
 ms.date: 01/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: f9e99318c526bb935d0e035fdbf59874249390da
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: f170fc948f136f4f46634e7ae2645ed2eb357afa
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050935"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096457"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Správa účtu Azure Automation spustit jako
 
@@ -64,10 +64,10 @@ Před udělením oprávnění účtu Spustit jako musíte nejdřív poznamenat z
 
 Podrobné pokyny, jak přidat přiřazení rolí, najdete v následujících článcích v závislosti na metodě, kterou chcete použít.
 
-* [Přidat přiřazení role Azure z Azure Portal](../role-based-access-control/role-assignments-portal.md)
-* [Přidání přiřazení role Azure pomocí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
-* [Přidání přiřazení role Azure pomocí Azure CLI](../role-based-access-control/role-assignments-cli.md)
-* [Přidání přiřazení role Azure pomocí REST API](..//role-based-access-control/role-assignments-rest.md)
+* [Přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md)
+* [Přiřazení rolí Azure pomocí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
+* [Přiřazení rolí Azure pomocí Azure CLI](../role-based-access-control/role-assignments-cli.md)
+* [Přiřazení rolí Azure pomocí REST API](..//role-based-access-control/role-assignments-rest.md)
 
 Po přiřazení účtu Spustit jako k roli v sadě Runbook určete, že má být `Set-AzContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"` použit kontext předplatného. Další informace najdete v tématu [set-AzContext](/powershell/module/az.accounts/set-azcontext).
 

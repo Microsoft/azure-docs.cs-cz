@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: beb45d0d650b07f6106a3307d2d3a955095ee8b1
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 0f03cd536d329a94ec80ef884c380c79b5687289
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592258"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096641"
 ---
 # <a name="manage-qna-maker-resources"></a>Správa prostředků QnA Maker
 
@@ -111,6 +111,8 @@ Tento postup slouží k vytvoření prostředků Azure potřebných ke správě 
       * Stáhněte si [rozsahy IP adres pro všechny značky služeb](https://www.microsoft.com/download/details.aspx?id=56519).
       * Vyberte IP adresy "CognitiveServicesManagement".
       * Přejděte do části sítě v prostředku App Service a kliknutím na možnost konfigurovat omezení přístupu přidejte IP adresy do povolených.
+
+    ![výjimky portů pro příchozí spojení](../media/inbound-ports.png)    
 
     K dispozici je také automatizovaný skript, který bude pro váš App Service stejný. [Skript PowerShellu můžete nakonfigurovat tak, aby povolených](https://github.com/pchoudhari/QnAMakerBackupRestore/blob/master/AddRestrictedIPAzureAppService.ps1) na GitHubu. Je potřeba zadat ID předplatného, skupinu prostředků a skutečný název App Service jako parametry skriptu. Po spuštění skriptu se tyto IP adresy automaticky přidají App Service povolených.
 

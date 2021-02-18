@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: b1c98bfa6b2cf45a59b70126001442ed80659668
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 98e87cf9d1f46ddb8ee1d433bd0b0ba8806fac89
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955881"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091922"
 ---
 # <a name="how-to-scale-media-reserved-units"></a>Postup škálování rezervovaných jednotek médií
 
@@ -31,8 +31,6 @@ V tomto článku se dozvíte, jak škálovat rezervované jednotky médií (MRSs
 [Vytvořte účet Media Services](./create-account-howto.md).
 
 Principy [rezervovaných jednotek médií](concept-media-reserved-units.md).
-
-[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="scale-media-reserved-units-with-cli"></a>Škálování rezervovaných jednotek médií pomocí rozhraní příkazového řádku
 

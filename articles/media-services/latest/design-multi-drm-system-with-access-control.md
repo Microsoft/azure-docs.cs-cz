@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: e0104dd2761f74fbd84486aebbf8c3c4e128eb08
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: bb43396260e1b914f9f5b9e9ae489e87042a3154
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954897"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092432"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu
 
@@ -66,8 +66,8 @@ Udělejte si výběr:
 * Widevine se nativně implementuje na všech zařízeních s Androidem, v Chrome a v některých dalších zařízeních. Widevine je také podporován v prohlížečích Firefox a Operau nad POMLČKou.
 * FairPlay je k dispozici v iOS, macOS a tvOS.
 
-
 ## <a name="a-reference-design"></a>Referenční návrh
+
 V této části najdete referenční návrh, který se nezávislá na technologie používané k jeho implementaci.
 
 Subsystém DRM může obsahovat následující součásti:

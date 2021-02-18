@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: a460d77a032f36505c8036bc60aa37017f630e55
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 7e72f628bf328a3b93e81c60aa65b8c2495f7f2b
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501137"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095262"
 ---
 # <a name="what-is-azure-iot-hub"></a>Co je Azure IoT Hub?
 
@@ -104,6 +104,8 @@ IoT Hub a sady SDK pro zařízení podporují připojení zařízení pomocí n�
 * AMQP přes WebSockets
 * MQTT
 * MQTT přes WebSockets
+
+IoT Hub a sady SDK pro zařízení podporují konvence [technologie Plug and Play Azure IoT](../iot-pnp/overview-iot-plug-and-play.md) pro připojení zařízení. Zařízení IoT technologie Plug and Play používají model zařízení k inzerování svých schopností aplikacím s podporou IoT technologie Plug and Play. Model zařízení umožňuje tvůrcům řešení integrovat inteligentní zařízení s jejich řešeními bez jakékoli ruční konfigurace.
 
 Pokud vaše řešení nemůže používat knihovny zařízení, můžou se zařízení připojovat k vašemu centru nativně pomocí protokolů MQTT v3.1.1, HTTPS 1.1 nebo AMQP 1.0.
 

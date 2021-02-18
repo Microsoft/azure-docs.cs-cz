@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/24/2020
-ms.openlocfilehash: df789161bb9db8d49f069992600b5fcb4f78dd03
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ab280bbab71926a6ffb70605fdbf463164469623
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006538"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096354"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Kurz: migrace Oracle pro Azure Database for PostgreSQL online pomocí DMS (Preview)
 
@@ -63,7 +63,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
   >
   > Tato konfigurace je nezbytná, protože Azure Database Migration Service nemá připojení k Internetu.
 
-* Zajistěte, aby pravidla skupiny zabezpečení sítě (NSG) vaší virtuální sítě neblokovala následující příchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](../virtual-network/virtual-network-vnet-plan-design-arm.md).
+* Zajistěte, aby pravidla skupiny zabezpečení sítě (NSG) neblokovala odchozí port 443 z ServiceTag pro ServiceBus, úložiště a AzureMonitor. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](../virtual-network/virtual-network-vnet-plan-design-arm.md).
 * Nakonfigurujte bránu [Windows Firewall pro přístup k databázovému stroji](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Otevřete bránu Windows Firewall a umožněte Azure Database Migration Service přistupovat ke zdrojovému serveru Oracle, který je ve výchozím nastavení port TCP 1521.
 * Pokud používáte zařízení brány firewall před zdrojovými databázemi, budete možná muset přidat pravidla firewallu, která Azure Database Migration Service umožní přístup ke zdrojovým databázím pro migraci.
@@ -186,7 +186,7 @@ Můžete spustit ora2pg pro export všech databázových objektů do souborů. S
 psql -f [FILENAME] -h [AzurePostgreConnection] -p 5432 -U [AzurePostgreUser] -d database 
 ```
 
-Například:
+Příklad:
 
 ```
 psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database
@@ -239,7 +239,7 @@ Jak začít:
 
     Pokud název schématu ve zdroji Oracle odpovídá hodnotě v Azure Database for PostgreSQL, Azure Database Migration Service *vytvoří schéma tabulky pomocí stejného případu jako v cíli*.
 
-    Například:
+    Příklad:
 
     | Zdrojové schéma Oracle | Cílová databáze PostgreSQL. schéma | DMS vytvořil schéma. Table. Column. |
     | ------------- | ------------- | ------------- |
