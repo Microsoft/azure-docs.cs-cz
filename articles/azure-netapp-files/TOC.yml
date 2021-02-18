@@ -77,6 +77,8 @@
       href: manage-manual-qos-capacity-pool.md
     - name: Delegování podsítě do Azure NetApp Files
       href: azure-netapp-files-delegate-subnet.md
+    - name: Vytváření a Správa připojení ke službě Active Directory
+      href: create-active-directory-connections.md
     - name: Vytvoření a správa svazku NFS
       items:
         - name: Vytvoření svazku NFS

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: f0ce969a4ab016d6a036d33a0e9bf027bb580a20
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 69f80856150e461c6edfafdf0aa89de77c4ab0fd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186214"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583803"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Nasazení agenta Azure Monitor Application Insights pro místní servery
 
@@ -45,7 +45,7 @@ Agent Application Insights se nachází zde: https://www.powershellgallery.com/p
 - [Set-ApplicationInsightsMonitoringConfig](./status-monitor-v2-api-reference.md#set-applicationinsightsmonitoringconfig)
 - [Spustit – ApplicationInsightsMonitoringTrace](./status-monitor-v2-api-reference.md#start-applicationinsightsmonitoringtrace)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 - [Řešení potíží](status-monitor-v2-troubleshoot.md)
 - [Známé problémy](status-monitor-v2-troubleshoot.md#known-issues)
 
@@ -67,7 +67,7 @@ Každá z těchto možností je popsaná v [podrobných pokynech](status-monitor
   - Pomocí rutiny [Get-ApplicationInsightsMonitoringStatus](./status-monitor-v2-api-reference.md#get-applicationinsightsmonitoringstatus) můžete ověřit, že je povolení úspěšné.
   - K rychlému určení, jestli vaše aplikace posílá telemetrii, doporučujeme použít [živé metriky](./live-stream.md) .
 
-  - [Log Analytics](../log-query/log-analytics-tutorial.md) můžete použít také k vypsání všech cloudových rolí, které aktuálně odesílají telemetrii:
+  - [Log Analytics](../logs/log-analytics-tutorial.md) můžete použít také k vypsání všech cloudových rolí, které aktuálně odesílají telemetrii:
       ```Kusto
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
@@ -76,9 +76,9 @@ Každá z těchto možností je popsaná v [podrobných pokynech](status-monitor
 
 Zobrazení telemetrických dat:
 
-* [Prozkoumejte metriky](../platform/metrics-charts.md) pro monitorování výkonu a využití.
+* [Prozkoumejte metriky](../essentials/metrics-charts.md) pro monitorování výkonu a využití.
 * [Prohledejte události a protokoly](./diagnostic-search.md) a Diagnostikujte problémy.
-* K pokročilejším dotazům [použijte Analytics](../log-query/log-query-overview.md) .
+* K pokročilejším dotazům [použijte Analytics](../logs/log-query-overview.md) .
 * [Vytváření řídicích panelů](./overview-dashboard.md).
 
 Přidání další telemetrie:

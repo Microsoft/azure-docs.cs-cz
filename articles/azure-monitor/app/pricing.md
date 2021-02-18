@@ -7,17 +7,17 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 2/7/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3ae3224ae17d0dee2ed1080669c6057ca62959d9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: db5506f1f1fcabf3a922115c24aa64e35b888fbd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384499"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573747"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa využití a nákladů pro službu Application Insights
 
 > [!NOTE]
-> Tento článek popisuje, jak pochopit a řídit náklady na Application Insights.  Související článek, [sledování využití a odhadované náklady](../platform/usage-estimated-costs.md) popisuje, jak zobrazit využití a odhadované náklady napříč více funkcemi monitorování Azure pro různé cenové modely.
+> Tento článek popisuje, jak pochopit a řídit náklady na Application Insights.  Související článek, [sledování využití a odhadované náklady](..//usage-estimated-costs.md) popisuje, jak zobrazit využití a odhadované náklady napříč více funkcemi monitorování Azure pro různé cenové modely.
 
 Application Insights je navržený tak, aby získal vše, co potřebujete k monitorování dostupnosti, výkonu a využití webových aplikací, ať už jsou hostované v Azure nebo místně. Application Insights podporuje oblíbené jazyky a architektury, jako je .NET, Java a Node.js, a integruje se s procesy a nástroji DevOps, jako je Azure DevOps, JIRA a PagerDuty. Je důležité porozumět tomu, co určuje náklady na monitorování vašich aplikací. V tomto článku si projdeme, jaké jednotky vaše aplikace sledují a jak je můžete aktivně monitorovat a řídit.
 
@@ -33,7 +33,7 @@ Možnost Application Insights [Povolit upozorňování na vlastní dimenze metri
 
 ### <a name="workspace-based-application-insights"></a>Application Insights na základě pracovního prostoru
 
-U Application Insights prostředků, které odesílají svá data do pracovního prostoru Log Analytics nazývaného [prostředky Application Insights založené na pracovním prostoru](create-workspace-resource.md), se fakturace za příjem a uchování dat provádí v pracovním prostoru, kde se nacházejí Application Insights data. To zákazníkům umožňuje využít všechny možnosti Log Analytics [cenového modelu](../platform/manage-cost-storage.md#pricing-model) , který zahrnuje rezervace kapacity kromě průběžných plateb. Log Analytics také obsahuje další možnosti uchovávání dat, včetně [uchovávání informací podle datového typu](../platform/manage-cost-storage.md#retention-by-data-type). Application Insights datové typy v pracovním prostoru obdrží 90 dnů uchování bez poplatků. Použití webových testů a povolení upozorňování na vlastní dimenze metriky je stále hlášeno prostřednictvím Application Insights. Přečtěte si, jak sledovat příjem dat a dobu uchovávání v Log Analytics pomocí [odhadu využití a odhadované náklady](../platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs), [Azure cost management + fakturace](../platform/manage-cost-storage.md#viewing-log-analytics-usage-on-your-azure-bill) a [Log Analytics dotazy](#data-volume-for-workspace-based-application-insights-resources). 
+U Application Insights prostředků, které odesílají svá data do pracovního prostoru Log Analytics nazývaného [prostředky Application Insights založené na pracovním prostoru](create-workspace-resource.md), se fakturace za příjem a uchování dat provádí v pracovním prostoru, kde se nacházejí Application Insights data. To zákazníkům umožňuje využít všechny možnosti Log Analytics [cenového modelu](../logs/manage-cost-storage.md#pricing-model) , který zahrnuje rezervace kapacity kromě průběžných plateb. Log Analytics také obsahuje další možnosti uchovávání dat, včetně [uchovávání informací podle datového typu](../logs/manage-cost-storage.md#retention-by-data-type). Application Insights datové typy v pracovním prostoru obdrží 90 dnů uchování bez poplatků. Použití webových testů a povolení upozorňování na vlastní dimenze metriky je stále hlášeno prostřednictvím Application Insights. Přečtěte si, jak sledovat příjem dat a dobu uchovávání v Log Analytics pomocí [odhadu využití a odhadované náklady](../logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs), [Azure cost management + fakturace](../logs/manage-cost-storage.md#viewing-log-analytics-usage-on-your-azure-bill) a [Log Analytics dotazy](#data-volume-for-workspace-based-application-insights-resources). 
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Odhad nákladů na správu aplikace
 
@@ -106,7 +106,7 @@ systemEvents
 | summarize sum(BillingTelemetrySizeInBytes) by BillingTelemetryType, bin(timestamp, 1d) | render barchart  
 ```
 
-Všimněte si, že tento dotaz se dá použít v [upozornění protokolu Azure](../platform/alerts-unified-log.md) k nastavení výstrah na datových svazcích.  
+Všimněte si, že tento dotaz se dá použít v [upozornění protokolu Azure](../alerts/alerts-unified-log.md) k nastavení výstrah na datových svazcích.  
 
 Pokud se chcete dozvědět víc o změnách dat telemetrie, můžeme k získání počtu událostí podle typu použít dotaz:
 
@@ -224,7 +224,7 @@ Chcete-li [změnit denní limit pomocí Azure Resource Manager](./powershell.md)
 
 ### <a name="create-alerts-for-the-daily-cap"></a>Vytváření výstrah pro denní limit
 
-Application Insights denní limit vytvoří událost v protokolu aktivit Azure, když přijímané datové svazky dosáhnou úrovně upozornění nebo úrovně denního limitu.  Můžete [vytvořit výstrahu na základě těchto událostí protokolu aktivit](../platform/alerts-activity-log.md#create-with-the-azure-portal). Názvy signálů pro tyto události jsou:
+Application Insights denní limit vytvoří událost v protokolu aktivit Azure, když přijímané datové svazky dosáhnou úrovně upozornění nebo úrovně denního limitu.  Můžete [vytvořit výstrahu na základě těchto událostí protokolu aktivit](../alerts/alerts-activity-log.md#create-with-the-azure-portal). Názvy signálů pro tyto události jsou:
 
 * Dosažena prahová hodnota pro upozornění na denní limit součásti Application Insights
 
@@ -248,7 +248,7 @@ Pokud chcete nastavit vzorkování ingestování, použijte v podokně s  **cena
 > Podokno **vzorkování dat** řídí pouze hodnotu vzorkování ingestování. Neodráží vzorkovací frekvenci, kterou sada Application Insights SDK používá ve vaší aplikaci. Pokud již byla v sadě SDK provedena ukázka příchozí telemetrie, vzorkování ingestování se nepoužije.
 >
 
-Pokud chcete zjistit skutečnou vzorkovací frekvenci, bez ohledu na to, kde se používá, použijte [dotaz Analytics](../log-query/log-query-overview.md). Dotaz vypadá takto:
+Pokud chcete zjistit skutečnou vzorkovací frekvenci, bez ohledu na to, kde se používá, použijte [dotaz Analytics](../logs/log-query-overview.md). Dotaz vypadá takto:
 
 ```kusto
 requests | where timestamp > ago(1d)
@@ -288,7 +288,7 @@ Pro včasnou přihlášené služby Azure Application Insights stále existují 
 
 Tyto starší cenové úrovně se přejmenovaly. Cenová úroveň Enterprise je nyní volána **na uzel** a cenová úroveň Basic je nyní volána **za GB**. Tyto nové názvy se používají níže a v Azure Portal.  
 
-Úroveň na uzel (dříve Enterprise) má poplatek za uzel a každý uzel obdrží denní povolený objem dat. V cenové úrovni jednotlivých uzlů se vám budou účtovat data ingestovaná nad rámec zahrnutého příspěvku. Pokud používáte Operations Management Suite, měli byste zvolit vrstvu na jednu uzel. V dubnu 2018 jsme [zavedli](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) nový cenový model pro monitorování Azure. Tento model přijímá jednoduchý model průběžných plateb v rámci kompletního portfolia monitorovacích služeb. Přečtěte si další informace o [novém cenovém modelu](../platform/usage-estimated-costs.md).
+Úroveň na uzel (dříve Enterprise) má poplatek za uzel a každý uzel obdrží denní povolený objem dat. V cenové úrovni jednotlivých uzlů se vám budou účtovat data ingestovaná nad rámec zahrnutého příspěvku. Pokud používáte Operations Management Suite, měli byste zvolit vrstvu na jednu uzel. V dubnu 2018 jsme [zavedli](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) nový cenový model pro monitorování Azure. Tento model přijímá jednoduchý model průběžných plateb v rámci kompletního portfolia monitorovacích služeb. Přečtěte si další informace o [novém cenovém modelu](..//usage-estimated-costs.md).
 
 Aktuální ceny v měně a oblasti najdete v tématu [Application Insights ceny](https://azure.microsoft.com/pricing/details/application-insights/).
 

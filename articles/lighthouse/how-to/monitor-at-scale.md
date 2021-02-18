@@ -3,21 +3,21 @@ title: Monitorování delegovaných prostředků ve velkém měřítku
 description: Naučte se efektivně používat Azure Monitor protokoly škálovatelným způsobem napříč klienty zákazníka, které spravujete.
 ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: f3a789c855f7b05d24cdacd0fb31ee7d6d3e188b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: aadd14bb3e4aad61fb2afc0735b5714deedfe301
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379229"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593126"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Monitorování delegovaných prostředků ve velkém měřítku
 
 Jako poskytovatel služeb můžete mít k [Azure Lighthouse](../overview.md)k dispozici několik klientů pro zákazníky. Azure Lighthouse umožňuje poskytovatelům služeb provádět operace ve velkém měřítku napříč několika klienty najednou, což usnadňuje úlohy správy.
 
-V tomto tématu se dozvíte, jak používat [Azure monitor protokoly](../../azure-monitor/platform/data-platform-logs.md) škálovatelným způsobem napříč klienty zákazníka, které spravujete. I když v tomto tématu odkazujeme na poskytovatele služeb a zákazníky, tyto doprovodné materiály se vztahují také na [podniky, které používají Azure Lighthouse ke správě více tenantů](../concepts/enterprise.md).
+V tomto tématu se dozvíte, jak používat [Azure monitor protokoly](../../azure-monitor/logs/data-platform-logs.md) škálovatelným způsobem napříč klienty zákazníka, které spravujete. I když v tomto tématu odkazujeme na poskytovatele služeb a zákazníky, tyto doprovodné materiály se vztahují také na [podniky, které používají Azure Lighthouse ke správě více tenantů](../concepts/enterprise.md).
 
 > [!NOTE]
-> Ujistěte se, že uživatelé ve vaší správě tenantů mají k dispozici [potřebné role pro správu pracovních prostorů Log Analytics](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions) na delegovaných zákaznických předplatných.
+> Ujistěte se, že uživatelé ve vaší správě tenantů mají k dispozici [potřebné role pro správu pracovních prostorů Log Analytics](../../azure-monitor/logs/manage-access.md#manage-access-using-azure-permissions) na delegovaných zákaznických předplatných.
 
 ## <a name="create-log-analytics-workspaces"></a>Vytváření Log Analyticsch pracovních prostorů
 
@@ -28,7 +28,7 @@ Tyto pracovní prostory doporučujeme vytvořit přímo v klientech zákazníka.
 > [!TIP]
 > Jakýkoli účet Automation, který se používá pro přístup k datům z Log Analytics pracovního prostoru, se musí vytvořit ve stejném tenantovi jako pracovní prostor.
 
-Pracovní prostor Log Analytics můžete vytvořit pomocí [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md), pomocí rozhraní příkazového [řádku Azure](../../azure-monitor/learn/quick-create-workspace-cli.md)nebo pomocí [Azure PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md).
+Pracovní prostor Log Analytics můžete vytvořit pomocí [Azure Portal](../../azure-monitor/logs/quick-create-workspace.md), pomocí rozhraní příkazového [řádku Azure](../../azure-monitor/logs/quick-create-workspace-cli.md)nebo pomocí [Azure PowerShell](../../azure-monitor/logs/powershell-workspace-configuration.md).
 
 > [!IMPORTANT]
 > I v případě, že jsou všechny pracovní prostory vytvořeny v tenantovi zákazníka, musí být poskytovatel prostředků Microsoft. Insights také zaregistrován v rámci předplatného ve správě tenanta.
@@ -43,11 +43,11 @@ Když určíte, které zásady se mají nasadit, můžete [je nasadit na škálo
 
 ## <a name="analyze-the-gathered-data"></a>Analyzovat shromážděná data
 
-Po nasazení zásad se data přihlásí do Log Analytics pracovních prostorů, které jste vytvořili v každém tenantovi zákazníka. Pokud chcete získat přehledy pro všechny spravované zákazníky, můžete pomocí nástrojů, jako jsou [Azure monitor sešity](../../azure-monitor/platform/workbooks-overview.md) , shromažďovat a analyzovat informace z více zdrojů dat.
+Po nasazení zásad se data přihlásí do Log Analytics pracovních prostorů, které jste vytvořili v každém tenantovi zákazníka. Pokud chcete získat přehledy pro všechny spravované zákazníky, můžete pomocí nástrojů, jako jsou [Azure monitor sešity](../../azure-monitor/visualize/workbooks-overview.md) , shromažďovat a analyzovat informace z více zdrojů dat.
 
 ## <a name="view-alerts-across-customers"></a>Zobrazit výstrahy mezi zákazníky
 
-Můžete zobrazit [výstrahy](../../azure-monitor/platform/alerts-overview.md) pro delegovaná předplatná v klientech zákazníků, které spravujete.
+Můžete zobrazit [výstrahy](../../azure-monitor/alerts/alerts-overview.md) pro delegovaná předplatná v klientech zákazníků, které spravujete.
 
 Ve spravovaném tenantovi můžete [výstrahy protokolu aktivit vytvářet, zobrazovat a spravovat](../../azure-monitor/platform/alerts-activity-log.md) v Azure Portal nebo prostřednictvím rozhraní API a nástrojů pro správu.
 

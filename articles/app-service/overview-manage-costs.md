@@ -5,12 +5,12 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: 3df08705859678525526f8fef198826f58249d8b
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: ada4c1991a57c8252247c9617e097dc82cb3b4a9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573360"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593979"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>Plánování a Správa nákladů na Azure App Service
 
@@ -38,7 +38,7 @@ V závislosti na tom, jakou funkci používáte v App Service, se můžou vytvo�
 - **Plán App Service**  Vyžaduje se pro hostování aplikace App Service.
 - **Izolovaná vrstva**  Pro App Service prostředí se vyžaduje [Virtual Network](../virtual-network/index.yml) .
 - **Záložní kopie**  K provedení zálohování je nutný [účet úložiště](../storage/index.yml) .
-- **Diagnostické protokoly**  Jako možnost protokolování můžete vybrat možnost [účet úložiště](../storage/index.yml) nebo integrovat s [Azure Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md).
+- **Diagnostické protokoly**  Jako možnost protokolování můžete vybrat možnost [účet úložiště](../storage/index.yml) nebo integrovat s [Azure Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md).
 - **App Service certifikátů**  Certifikáty, které zakoupíte v Azure, se musí udržovat v [Azure Key Vault](../key-vault/index.yml).
 
 Další nákladové prostředky pro App Service jsou (podrobnosti najdete v tématu [App Service ceny](https://azure.microsoft.com/pricing/details/app-service/) ):
@@ -114,7 +114,7 @@ Produkční úlohy se dodávají s doporučením pro vyhrazenou **standardní** 
 > [!NOTE]
 > **Premium V3** podporuje kontejnery Windows i kontejnery platformy Linux. 
 
-Po výběru cenové úrovně, kterou chcete, byste měli minimalizovat nečinné instance. V nasazení se škálováním na více instancí můžete vymezit peníze v nevyužitých výpočetních instancích. Měli byste [nakonfigurovat automatické škálování](../azure-monitor/platform/autoscale-get-started.md), které je dostupné na úrovni **Standard** a vyšší. Když vytvoříte plány škálování na více instancí i pravidla škálování na více instancí, platíte jenom za ty, které skutečně v daném okamžiku skutečně potřebujete.
+Po výběru cenové úrovně, kterou chcete, byste měli minimalizovat nečinné instance. V nasazení se škálováním na více instancí můžete vymezit peníze v nevyužitých výpočetních instancích. Měli byste [nakonfigurovat automatické škálování](../azure-monitor/autoscale/autoscale-get-started.md), které je dostupné na úrovni **Standard** a vyšší. Když vytvoříte plány škálování na více instancí i pravidla škálování na více instancí, platíte jenom za ty, které skutečně v daném okamžiku skutečně potřebujete.
 
 ### <a name="azure-reservations"></a>Rezervace Azure
 

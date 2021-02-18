@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 454d44eecd4eaa6d5c1f50edbd7edb1024ace041
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 0593d2b675da533035a70c66784812543909c9db
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256877"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574193"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>Informace o tom, jak se zřizování integruje s protokoly Azure Monitor
 
@@ -24,7 +24,7 @@ Zřizování se integruje s protokoly Azure Monitor a Log Analytics. S monitorov
 
 ## <a name="enabling-provisioning-logs"></a>Povolení protokolů zřizování
 
-Službu Azure Monitoring a Log Analytics byste už měli znát. Pokud ne, přeskočte na Další informace a potom se vraťte k informací o protokolech zřizování aplikací. Další informace o monitorování Azure najdete v tématu [přehled Azure monitor](../../azure-monitor/overview.md). Další informace o protokolech a Log Analytics Azure Monitor najdete [v tématu Přehled dotazů protokolu v Azure monitor](../../azure-monitor/log-query/log-query-overview.md).
+Službu Azure Monitoring a Log Analytics byste už měli znát. Pokud ne, přeskočte na Další informace a potom se vraťte k informací o protokolech zřizování aplikací. Další informace o monitorování Azure najdete v tématu [přehled Azure monitor](../../azure-monitor/overview.md). Další informace o protokolech a Log Analytics Azure Monitor najdete [v tématu Přehled dotazů protokolu v Azure monitor](../../azure-monitor/logs/log-query-overview.md).
 
 Po nakonfigurování monitorování Azure můžete povolit protokoly pro zřizování aplikací. Možnost je umístěna na stránce **nastavení diagnostiky** .
 
@@ -47,7 +47,7 @@ Podkladový datový proud, který zřizování odesílá, je téměř identický
 
 ## <a name="azure-monitor-workbooks"></a>Azure Monitor sešity
 
-Azure Monitor sešity poskytují flexibilní plátno pro analýzu dat. Také poskytují vytváření bohatých vizuálních sestav v rámci Azure Portal. Další informace najdete v tématu [přehled Azure Monitorch sešitů](../../azure-monitor/platform/workbooks-overview.md).
+Azure Monitor sešity poskytují flexibilní plátno pro analýzu dat. Také poskytují vytváření bohatých vizuálních sestav v rámci Azure Portal. Další informace najdete v tématu [přehled Azure Monitorch sešitů](../../azure-monitor/visualize/workbooks-overview.md).
 
 Zřizování aplikací se dodává se sadou předem připravených sešitů. Můžete je najít na stránce sešity. Chcete-li zobrazit data, je nutné zajistit, aby všechny filtry (timeRange, jobID, appName) byly naplněny. Budete také muset zajistit, aby byla aplikace zajištěna, jinak nebudou v protokolech žádná data.
 
@@ -57,7 +57,7 @@ Zřizování aplikací se dodává se sadou předem připravených sešitů. Mů
 
 ## <a name="custom-queries"></a>Vlastní dotazy
 
-Můžete vytvářet vlastní dotazy a zobrazovat data na řídicích panelech Azure. Další informace najdete v tématu [Vytvoření a sdílení řídicích panelů Log Analytics dat](../../azure-monitor/log-query/get-started-queries.md). Nezapomeňte také zkontrolovat [Přehled dotazů protokolu v Azure monitor](../../azure-monitor/log-query/log-query-overview.md).
+Můžete vytvářet vlastní dotazy a zobrazovat data na řídicích panelech Azure. Další informace najdete v tématu [Vytvoření a sdílení řídicích panelů Log Analytics dat](../../azure-monitor/logs/get-started-queries.md). Nezapomeňte také zkontrolovat [Přehled dotazů protokolu v Azure monitor](../../azure-monitor/logs/log-query-overview.md).
 
 Tady jsou některé ukázky, které vám pomohou začít s zřizováním aplikací.
 
@@ -96,7 +96,7 @@ AADProvisioningLogs
 
 Azure Monitor vám umožní nakonfigurovat vlastní výstrahy, abyste mohli dostávat oznámení o klíčových událostech týkajících se zřizování. Můžete například chtít dostávat upozornění na špičky při selháních. Nebo možná špičky zakáže nebo odstraní. Dalším příkladem, kde můžete chtít být upozornění, je chybějící jakékoli zřizování, což znamená, že je něco špatné.
 
-Další informace o výstrahách najdete v tématu [reakce na události s výstrahami Azure monitor](../../azure-monitor/learn/tutorial-response.md).
+Další informace o výstrahách najdete v tématu [reakce na události s výstrahami Azure monitor](../../azure-monitor/alerts/tutorial-response.md).
 
 Upozorní, když dojde k selhání špičky. Nahraďte jobID řetězcem jobID pro vaši aplikaci.
 
@@ -118,7 +118,7 @@ Přijímáme open source a přístup založený na komunitě pro dotazy a řídi
 ## <a name="next-steps"></a>Další kroky
 
 - [Log Analytics](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md)
-- [Začínáme s dotazy v protokolech Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
-- [Vytváření a Správa skupin výstrah v Azure Portal](../../azure-monitor/platform/action-groups.md)
+- [Začínáme s dotazy v protokolech Azure Monitor](../../azure-monitor/logs/get-started-queries.md)
+- [Vytváření a Správa skupin výstrah v Azure Portal](../../azure-monitor/alerts/action-groups.md)
 - [Instalace a použití zobrazení Log Analytics pro Azure Active Directory](../reports-monitoring/howto-install-use-log-analytics-views.md)
 - [Rozhraní API pro zřizování protokolů](/graph/api/resources/provisioningobjectsummary?preserve-view=true&view=graph-rest-beta.md)

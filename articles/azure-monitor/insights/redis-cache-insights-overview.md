@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: 35f575410caa7a8a8ffbda35bdfa876418db8945
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: fee454073c50b9542e140576ef0629a39b8f4294
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210371"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573465"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>Prozkoumejte Azure Monitor pro Azure cache pro Redis
 
@@ -44,7 +44,7 @@ Tato funkce nevyžaduje, abyste povolili nebo nenakonfigurovali cokoli. Ve vých
 
 Pokud chcete zobrazit využití a výkon účtů úložiště napříč všemi vašimi předplatnými, proveďte následující kroky:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Vyhledejte **monitorování** a vyberte **monitorování**.
 
@@ -186,6 +186,6 @@ Pokyny k řešení potíží najdete v článku věnovaném [řešení potíží
 
 ## <a name="next-steps"></a>Další kroky
 
-* Nakonfigurujte [výstrahy metrik](../platform/alerts-metric.md) a [oznámení o stavu služby](../../service-health/alerts-activity-log-service-notifications-portal.md) , abyste nastavili automatizované výstrahy, které pomáhají při zjišťování problémů.
+* Nakonfigurujte [výstrahy metrik](../alerts/alerts-metric.md) a [oznámení o stavu služby](../../service-health/alerts-activity-log-service-notifications-portal.md) , abyste nastavili automatizované výstrahy, které pomáhají při zjišťování problémů.
 
-* Přečtěte si o scénářích, které sešit podporuje, jak vytvářet a přizpůsobovat sestavy, a další informace najdete v tématu [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../platform/workbooks-overview.md).
+* Přečtěte si o scénářích, které sešit podporuje, jak vytvářet a přizpůsobovat sestavy, a další informace najdete v tématu [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../visualize/workbooks-overview.md).

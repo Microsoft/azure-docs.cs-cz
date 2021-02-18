@@ -3,16 +3,16 @@ title: Nasazení aplikace v jazyce Java s otevřeným nástrojem svobody/WebSphe
 description: Nasaďte aplikaci Java s otevřeným a WebSpherem v clusteru Azure Red Hat OpenShift 4.
 author: jiangma
 ms.author: jiangma
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: Java, jakartaee, JavaEE, mikroprofile, Open-svoboda, WebSphere-svoboda, ARO, OpenShift, Red Hat
-ms.openlocfilehash: 0c17c911d1eefe646785314a26b6a9b1e964ca67
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: acb448a9662daa58b5d2ff42861e238e23586b33
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493933"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633882"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Nasazení aplikace v jazyce Java s otevřeným nástrojem svobody/WebSphere Svoboda v clusteru Azure Red Hat OpenShift 4
 
@@ -20,7 +20,7 @@ V této příručce se dozvíte, jak spustit aplikaci v jazyce Java, Java EE, [J
 
 [!INCLUDE [aro-support](includes/aro-support.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K úspěšnému procházení tohoto průvodce dokončete následující požadavky.
 
@@ -97,7 +97,7 @@ Po vytvoření a připojení ke clusteru nainstalujte operátor Open.  Hlavní p
 1. Přihlaste se k webové konzole OpenShift z prohlížeče pomocí `kubeadmin` přihlašovacích údajů.
 2. Přejděte na **operátory**  >  **OperatorHub** a vyhledejte **otevřený operátor svoboda**.
 3. Ve výsledcích hledání vyberte **otevřít z operátora** .
-4. Vyberte **Install** (Nainstalovat).
+4. Vyberte **Nainstalovat**.
 5. V místní nabídce **Vytvořit předplatné operátora** ověřte **všechny obory názvů v clusteru (výchozí)** pro **režim instalace**, **beta verzi** **kanálu pro aktualizaci** a **automatickou** **strategii schvalování**:
 
    ![vytvořit odběr operátoru pro otevření operátoru svoboda](./media/howto-deploy-java-liberty-app/install-operator.png)

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: b7c683edd15ab05e9efc239ffe07759078754607
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: a68e1a3f60930e290e97084ff2ec9350b18e2873
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222645"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594974"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Přehled zásad sítě Azure Kubernetes
 
@@ -112,15 +112,15 @@ Uživatelé dřív byli schopni získat informace o konfiguraci sítě jenom pom
 ### <a name="supported-metrics"></a>Podporované metriky
 Níže je seznam podporovaných metrik:
 
-|Název metriky |Popis  |Typ metriky Prometheus  |Popisky  |
+|Název metriky |Description  |Typ metriky Prometheus  |Popisky  |
 |---------|---------|---------|---------|
 |`npm_num_policies`     |počet zásad sítě          |Měřidlo         |-         |
 |`npm_num_iptables_rules`     | počet pravidel softwaru iptables     | Měřidlo        |-         |         
 |`npm_num_ipsets`     |počet IPSets         |Měřidlo            |-         |
 |`npm_num_ipset_entries`     |počet položek IP adres ve všech IPSets         |Měřidlo         |-         |
-|`npm_add_policy_exec_time`     |modul runtime pro přidání zásady sítě         |Shrnutí         |Quantile (0,5, 0,9 nebo 0,99)         |
-|`npm_add_iptables_rule_exec_time`     |modul runtime pro přidání pravidla softwaru iptables         |Shrnutí         |Quantile (0,5, 0,9 nebo 0,99)         |
-|`npm_add_ipset_exec_time`     |modul runtime pro přidání IPSet         |Shrnutí         |Quantile (0,5, 0,9 nebo 0,99)         |
+|`npm_add_policy_exec_time`     |modul runtime pro přidání zásady sítě         |Souhrn         |Quantile (0,5, 0,9 nebo 0,99)         |
+|`npm_add_iptables_rule_exec_time`     |modul runtime pro přidání pravidla softwaru iptables         |Souhrn         |Quantile (0,5, 0,9 nebo 0,99)         |
+|`npm_add_ipset_exec_time`     |modul runtime pro přidání IPSet         |Souhrn         |Quantile (0,5, 0,9 nebo 0,99)         |
 |`npm_ipset_counts` Upřesnit     |počet položek v rámci jednotlivých IPSet         |GaugeVec         |nastavit název & hodnota hash         |
 
 Různé úrovně Quantile v metrikách "exec_time" vám pomůžou rozlišovat mezi obecnými a nejhoršími případy.
@@ -130,7 +130,7 @@ Pro každou "exec_time" souhrnnou metriku jsou k dispozici také metrika "exec_t
 Metriky je možné vyřadit prostřednictvím Azure Monitor pro kontejnery nebo přes Prometheus.
 
 ### <a name="setup-for-azure-monitor"></a>Instalační program pro Azure Monitor
-Prvním krokem je povolení Azure Monitor pro kontejnery pro cluster Kubernetes. Postup najdete v článku [Azure monitor for Containers Overview](../azure-monitor/insights/container-insights-overview.md). Jakmile budete mít Azure Monitor pro kontejnery povolené, nakonfigurujte [Azure monitor kontejnerů ConfigMap](https://aka.ms/container-azm-ms-agentconfig) tak, aby umožňovaly integraci npm a shromažďování METRIK Prometheus npm. Azure monitor pro kontejnery ConfigMap obsahuje ```integrations``` část s nastavením pro shromažďování METRIK npm. Tato nastavení jsou ve výchozím nastavení ve ConfigMap zakázaná. Povolením základního nastavení ```collect_basic_metrics = true``` budou shromažďovány základní metriky npm. Když se povolí rozšířené nastavení, ```collect_advanced_metrics = true``` budou se kromě základních metrik shromažďovat i pokročilé metriky. 
+Prvním krokem je povolení Azure Monitor pro kontejnery pro cluster Kubernetes. Postup najdete v článku [Azure monitor for Containers Overview](../azure-monitor/containers/container-insights-overview.md). Jakmile budete mít Azure Monitor pro kontejnery povolené, nakonfigurujte [Azure monitor kontejnerů ConfigMap](https://aka.ms/container-azm-ms-agentconfig) tak, aby umožňovaly integraci npm a shromažďování METRIK Prometheus npm. Azure monitor pro kontejnery ConfigMap obsahuje ```integrations``` část s nastavením pro shromažďování METRIK npm. Tato nastavení jsou ve výchozím nastavení ve ConfigMap zakázaná. Povolením základního nastavení ```collect_basic_metrics = true``` budou shromažďovány základní metriky npm. Když se povolí rozšířené nastavení, ```collect_advanced_metrics = true``` budou se kromě základních metrik shromažďovat i pokročilé metriky. 
 
 Po úpravě ConfigMap ho uložte místně a použijte ConfigMap pro váš cluster následujícím způsobem.
 
@@ -143,7 +143,7 @@ integrations: |-
 ```
 Rozšířené metriky jsou volitelné a když je zapnete, budou automaticky zapnuty základní kolekce metrik. Rozšířené metriky aktuálně obsahují pouze `npm_ipset_counts`
 
-Další informace o [nastavení kolekce kontejnerů pro Azure monitor v mapování konfigurace](../azure-monitor/insights/container-insights-agent-config.md)
+Další informace o [nastavení kolekce kontejnerů pro Azure monitor v mapování konfigurace](../azure-monitor/containers/container-insights-agent-config.md)
 
 ### <a name="visualization-options-for-azure-monitor"></a>Možnosti vizualizace pro Azure Monitor
 Jakmile je kolekce metriky NPM povolená, můžete zobrazit metriky v Azure Portal pomocí kontejnerových přehledů nebo v Grafana.
@@ -154,7 +154,7 @@ Otevřete Azure Portal. Jakmile budete mít přehled o clusteru, přejděte do �
 Kromě zobrazení sešitu (obrázky níže) můžete také přímo zadat dotaz na metriky Prometheus v části protokoly v části přehledy. Tento dotaz bude například vracet všechny shromažďované metriky.
 | kde TimeGenerated > před (5H) | kde název obsahuje "npm_"
 
-Můžete také zadat dotaz na Log Analytics přímo pro metriky. Další informace o Začínáme s [dotazy Log Analytics](../azure-monitor/insights/container-insights-log-search.md) 
+Můžete také zadat dotaz na Log Analytics přímo pro metriky. Další informace o Začínáme s [dotazy Log Analytics](../azure-monitor/containers/container-insights-log-search.md) 
 
 #### <a name="viewing-in-grafana-dashboard"></a>Zobrazení v řídicím panelu Grafana
 Nastavte server Grafana a nakonfigurujte zdroj dat Log Analytics, jak je popsáno [zde](https://grafana.com/grafana/plugins/grafana-azure-monitor-datasource). Pak naimportujte [řídicí panel Grafana pomocí back-endu Log Analytics](https://grafana.com/grafana/dashboards/10956) do Grafana Labs.

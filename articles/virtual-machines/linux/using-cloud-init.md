@@ -6,14 +6,14 @@ ms.service: virtual-machines-linux
 ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 10/14/2020
+ms.date: 02/14/2021
 ms.author: danis
-ms.openlocfilehash: 87cb4a233470fadc9cde616790aff0d5cd7b151b
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: a4fc51c8bb8a07f768da16224b9258bbdbf6d9b4
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096653"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100632930"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Podpora Cloud-init pro virtuální počítače v Azure
 V tomto článku se dozvíte, jak podpora pro [Cloud-init](https://cloudinit.readthedocs.io) nakonfigurovat virtuální počítač (VM) nebo službu Virtual Machine Scale Sets v době zřizování v Azure. Tyto konfigurace Cloud-init se po prvním spuštění spustí, jakmile se prostředky zřídí v Azure.  
@@ -46,7 +46,7 @@ K dispozici jsou dvě fáze pro zajištění, že se Cloud-init zpřístupní v 
 | Vydavatel/verze | Nabídka | SKU | Verze | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |ano | Ano – podpora z verze balíčku: *18.2-1.el7_6.2*|
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ano (Poznámka: Toto je náhled obrázku a **nesmí** se již používat, bude odebrána 1. září 2020) | Není k dispozici |
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ano (Poznámka: Toto je náhled obrázku a **nesmí** se již používat, bude odebrána 1. září 2020) | – |
 |RedHat 7,7 (Gen1)|RHEL |7.7 | 7.7.2020051912 | ano | Ano – podpora z verze balíčku: *18.5 -6. el7*|
 |RedHat 7,7 (Gen2)|RHEL | 77 – Gen2 | 7.7.2020051913 | ano | Ano – podpora z verze balíčku: *18.5 -6. el7*|
 |RedHat 7,7 (Gen1)|RHEL |7 – LVM | 7.7.2020051921 | ano | Ano – podpora z verze balíčku: *18.5 -6. el7*|
@@ -61,7 +61,7 @@ K dispozici jsou dvě fáze pro zajištění, že se Cloud-init zpřístupní v 
 
 | Vydavatel/verze | Nabídka | SKU | Verze | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Ano (Poznámka: Toto je náhled obrázku a **nesmí** se již používat, bude odebrána 1. září 2020) | Není k dispozici |
+|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Ano (Poznámka: Toto je náhled obrázku a **nesmí** se již používat, bude odebrána 1. září 2020) | – |
 |OpenLogic 7,7 |CentOS | 7.7 |7.7.2020062400 |ano | Ano – podpora z verze balíčku: `18.5-6.el7.centos.5`|
 |OpenLogic 7,7 (Gen2) |CentOS | 7_7 – Gen2 |7.7.2020062401 |ano | Ano – podpora z verze balíčku: `18.5-6.el7.centos.5`|
 |OpenLogic 7,7 |CentOS – HPC | 7.7 |7.6.2020062600 |ano | Ano – podpora z verze balíčku: `18.5-6.el7.centos.5`|
@@ -135,6 +135,10 @@ package_upgrade: true
 packages:
   - httpd
 ```
+> [!NOTE]
+> Cloud-init má více [vstupních typů](https://cloudinit.readthedocs.io/en/latest/topics/format.html), Cloud-init použije první řádek CustomData/UserData k označení toho, jak by měl vstup zpracovat, například `#cloud-config` indikuje, že by se měl obsah zpracovat jako konfigurace Cloud-init.
+
+
 Stisknutím `ctrl-X` zavřete soubor, zadáním `y` uložte soubor a stisknutím klávesy `enter` potvrďte název souboru při ukončení.
 
 Posledním krokem je vytvoření virtuálního počítače pomocí příkazu [AZ VM Create](/cli/azure/vm) . 

@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 4c6d8fabbd236a2653fff8168ad73c0b45f09d64
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 4970cacb0995678bdad87f14ba971b8fb88ffa09
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98027838"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593637"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>Reakce modulu plug-in pro Application Insights JavaScript SDK
 
@@ -77,7 +77,7 @@ export default withAITracking(reactPlugin, MyComponent);
 
 ## <a name="configuration"></a>Konfigurace
 
-| Název    | Výchozí | Popis                                                                                                    |
+| Name    | Výchozí | Description                                                                                                    |
 |---------|---------|----------------------------------------------------------------------------------------------------------------|
 | historie | null    | Reagovat na historii směrovače. Další informace najdete v dokumentaci k balíčku s informacemi o [směrovači](https://reactrouter.com/web/api/history). Pokud se chcete dozvědět, jak přistupovat k objektu History mimo součásti, přečtěte si [Nejčastější dotazy k reakci – směrovač](https://github.com/ReactTraining/react-router/blob/master/FAQ.md#how-do-i-access-the-history-object-outside-of-components) .    |
 
@@ -226,4 +226,4 @@ Podívejte se na [ukázku reakce Application Insights](https://github.com/Azure-
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o sadě JavaScript SDK naleznete v dokumentaci k [sadě sdk Application Insights JavaScript](javascript.md).
-- Další informace o dotazovacím jazyku Kusto a dotazování na data v Log Analytics najdete v tématu [Přehled dotazů protokolu](../../azure-monitor/log-query/log-query-overview.md).
+- Další informace o dotazovacím jazyku Kusto a dotazování na data v Log Analytics najdete v tématu [Přehled dotazů protokolu](../../azure-monitor/logs/log-query-overview.md).

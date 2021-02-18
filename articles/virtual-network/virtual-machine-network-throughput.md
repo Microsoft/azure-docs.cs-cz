@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: 280b3cbef8307691b0d50c4a26f6dca18b7fb65b
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: cb128f9269895f04d1e0dad8e0c8d06c481e86c6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233861"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576168"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Šířka pásma sítě virtuálních počítačů
 
@@ -55,12 +55,12 @@ Přenos dat mezi koncovými body vyžaduje vytvoření několika toků kromě t�
 ## <a name="flow-limits-and-active-connections-recommendations"></a>Omezení toků a doporučení aktivních připojení
 
 V současné době podporuje zásobník sítě Azure pro virtuální počítač 1 milion celkových toků (příchozí a 500 000 odchozí přenosy 500 000). K disdílnému počtu aktivních připojení, která může být zpracována virtuálním počítačem v různých scénářích:
-- Virtuální počítače, které patří do virtuální sítě, můžou zpracovávat 500 000 **_aktivní připojení_* _ pro všechny velikosti virtuálních počítačů pomocí 500 000 _*_aktivních toků v každém směru_*_.  
-- Virtuální počítače se síťovými virtuálními zařízeními (síťová virtuální zařízení), jako je brána, proxy a firewall, můžou zpracovávat 250 tisíc _*_aktivní připojení_*_ s 500 000 _ *_aktivních toků v každém směru_** kvůli předávání a dodatečnému novému vytváření toků při novém nastavení připojení k dalšímu segmentu směrování, jak je znázorněno na výše uvedeném diagramu. 
+- Virtuální počítače, které patří do virtuální sítě, můžou zpracovávat 500 000 ***aktivní připojení** _ pro všechny velikosti virtuálních počítačů pomocí 500 000 _ *_aktivních toků v každém směru_* *.  
+- Virtuální počítače se síťovými virtuálními zařízeními (síťová virtuální zařízení), jako je brána, proxy server nebo brána firewall, můžou zpracovávat 250 tisíc ***aktivní připojení** _ pomocí 500 000 _ *_aktivních toků v každém směru_** kvůli předávání a dodatečnému novému vytváření toků při novém nastavení připojení k dalšímu segmentu směrování, jak je znázorněno na výše uvedeném diagramu. 
 
 Po dosažení tohoto limitu jsou další připojení vyřazená. Zatížení sítě a sazby za ukončení můžou mít vliv na výkon sítě, protože vytváření připojení a ukončení sdílí procesor s rutinami zpracování paketů. Doporučujeme, abyste provedli úlohy srovnávacích testů oproti očekávaným tokům provozu a mohli škálovat úlohy správně, aby odpovídaly vašim požadavkům na výkon.
 
-Metriky jsou k dispozici v [Azure monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) ke sledování počtu toků sítě a rychlosti vytváření toku na INSTANCÍCH virtuálních počítačů nebo VMSS.
+Metriky jsou k dispozici v [Azure monitor](../azure-monitor/essentials/metrics-supported.md#microsoftcomputevirtualmachines) ke sledování počtu toků sítě a rychlosti vytváření toku na INSTANCÍCH virtuálních počítačů nebo VMSS.
 
 ![Snímek obrazovky se stránkou metrik Azure Monitor se spojnicovým grafem a součty pro příchozí a výstupní toky.](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 
