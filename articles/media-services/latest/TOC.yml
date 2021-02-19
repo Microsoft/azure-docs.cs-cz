@@ -327,6 +327,8 @@
           href: how-to-create-transform.md
         - name: Vytvoření základní transformace zvuku s využitím REST
           href: how-to-create-basic-audio-transform.md
+        - name: Vytvořit miniaturní Sprite
+          href: how-to-create-thumbnail-sprites.md
         - name: Vytvoření transformace copyAllBitrateNonInterleaved s využitím REST
           href: how-to-create-copyallbitratenoninterleaved-transform.md
         - name: Kopírování videí bez kódování s využitím REST
@@ -503,5 +505,3 @@
       href: azure-clouds-regions.md
     - name: Regionální kódové názvy a koncové body
       href: azure-regions-code-names.md
-    - name: Aktualizace dokumentace
-      href: docs-release-notes.md
