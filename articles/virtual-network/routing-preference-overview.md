@@ -11,22 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/02/2020
+ms.date: 02/01/2021
 ms.author: mnayak
-ms.openlocfilehash: 7fdd23aea5e435c94493a0cbe86b6ffcdb0d2e10
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.custom: references_regions
+ms.openlocfilehash: b0235286260910a45523e3236e7ed3a114eaf57f
+ms.sourcegitcommit: 8c93b05c27c7e8a5ba62a4d6fc6fc4d0c3980a21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539065"
+ms.lasthandoff: 02/26/2021
+ms.locfileid: "101601329"
 ---
-# <a name="what-is-routing-preference-preview"></a>Co je předvolby směrování (Preview)?
+# <a name="what-is-routing-preference"></a>Co je předvolba směrování?
 
 Předvolby směrování Azure vám umožní zvolit způsob přenosu tras mezi Azure a internetem. Provoz můžete směrovat buď přes síť Microsoft, nebo prostřednictvím sítě poskytovatele internetových služeb (veřejný Internet). Tyto možnosti se také označují jako *Směrování studených brambor* a *horké směrování brambor* . Cena za odchozí přenosy dat se liší v závislosti na výběru směrování. Při vytváření veřejné IP adresy můžete zvolit možnost směrování. Veřejná IP adresa může být přidružená k prostředkům, jako jsou virtuální počítače, sady škálování virtuálních počítačů, internetový nástroj pro vyrovnávání zatížení atd. Můžete také nastavit předvolby směrování pro prostředky služby Azure Storage, jako jsou objekty blob, soubory, webové služby a Azure datalake. Ve výchozím nastavení jsou přenosy směrovány prostřednictvím globální sítě Microsoft pro všechny služby Azure.
-
-> [!IMPORTANT]
-> Předvolby směrování jsou momentálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="routing-via-microsoft-global-network"></a>Směrování prostřednictvím globální sítě Microsoft
 
@@ -70,13 +67,13 @@ Pro úložiště primární koncové body vždy používají **globální síť 
 * Azure DataLake
 
 ## <a name="pricing"></a>Ceny
-Cenový rozdíl mezi oběma možnostmi se odráží v ceně za přenos dat z Internetu. Směrování prostřednictvím služby **Microsoft Global Network** Data Transfer je stejné jako aktuální cena za internetovou cenu. Nejnovější informace o cenách najdete na [stránce s cenami na šířku pásma Azure](https://azure.microsoft.com/pricing/details/bandwidth/) . 
+Cenový rozdíl mezi oběma možnostmi se odráží v ceně za přenos dat z Internetu. Směrování prostřednictvím služby **Microsoft Global Network** Data Transfer je stejné jako aktuální cena za internetovou cenu. Nejnovější informace o cenách najdete na [stránce s cenami na šířku pásma Azure](https://azure.microsoft.com/pricing/details/bandwidth/) .
 
 ## <a name="limitations"></a>Omezení
 
+* Preference směrování v současnosti není podporována v oblasti Austrálie – střed, Austrálie – východ, Kanada – jih, Korea – střed a Korea – jih.
 * Preference směrování je kompatibilní jenom se standardní SKU zóny s redundantními verzemi veřejné IP adresy. Základní SKU veřejné IP adresy se nepodporuje.
 * Preference směrování aktuálně podporuje jenom veřejné IP adresy IPv4. Veřejné IP adresy protokolu IPv6 nejsou podporovány.
-* Virtuální počítače s několika síťovými kartami můžou mít jenom jeden typ předvolby směrování.
 
 
 ## <a name="next-steps"></a>Další kroky
