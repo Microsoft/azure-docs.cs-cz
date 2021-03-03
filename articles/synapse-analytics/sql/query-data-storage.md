@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: b5025aa322ae26f9dd7c683d0e54762fd33eb355
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d299afca0bd8070a1da738e02812b64c41a7101c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735377"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675046"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Dotazování souborů úložiště s neserverovým fondem SQL ve službě Azure synapse Analytics
 
 Fond SQL bez serveru umožňuje dotazovat se na data ve službě Data Lake. Nabízí oblast dotazu T-SQL, která se vejde na částečně strukturované a nestrukturované datové dotazy. Pro dotazování jsou podporovány následující aspekty T-SQL:
 
-- Celý [Výběr](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) oblasti plochy, včetně většiny [funkcí a operátorů SQL](overview-features.md)
+- Celý [Výběr](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) oblasti plochy, včetně většiny [funkcí a operátorů SQL](overview-features.md)
 - Možnost vytvořit externí tabulku jako SELECT ([CETAS](develop-tables-cetas.md)) vytvoří [externí tabulku](develop-tables-external-tables.md) a potom exportuje paralelně výsledky příkazu SELECT jazyka Transact-SQL pro Azure Storage.
 
 Další informace o tom, co je vs. v současné době není podporováno, najdete v článku [Přehled fondu SQL bez serveru](on-demand-workspace-overview.md) nebo v následujících článcích:
@@ -184,21 +184,21 @@ Ve výchozím nastavení `OPENROWSET` funkce odpovídá názvu a cestě zdrojov�
 - Funkce vrací skalární hodnotu, jako je int, Decimal, a varchar, ze zadaného elementu a v zadané cestě pro všechny typy Parquet, které nejsou ve skupině vnořeného typu.
 - Pokud cesta odkazuje na element, který je vnořeného typu, funkce vrátí fragment JSON od horního prvku na zadané cestě. Fragment kódu JSON je typu varchar (8000).
 - Pokud vlastnost nebyla nalezena v zadaném column_name, funkce vrátí chybu.
-- Pokud vlastnost nelze nalézt v zadaném column_path v závislosti na [režimu cesty](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#PATHMODE), funkce vrátí chybu v režimu Strict nebo null v režimu Lax.
+- Pokud vlastnost nelze nalézt v zadaném column_path v závislosti na [režimu cesty](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true#PATHMODE), funkce vrátí chybu v režimu Strict nebo null v režimu Lax.
 
 V případě ukázek dotazů si přečtěte část přístupové prvky z vnořených sloupců v článku [dotaz Parquet nesteded Types](query-parquet-nested-types.md#read-properties-from-nested-object-columns) .
 
 #### <a name="access-elements-from-repeated-columns"></a>Přístup k prvkům z opakujících se sloupců
 
-Chcete-li získat přístup k prvkům z opakujícího se sloupce, jako je například prvek pole nebo mapa, použijte funkci [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) pro každý skalární prvek, který potřebujete k projektu a poskytnout:
+Chcete-li získat přístup k prvkům z opakujícího se sloupce, jako je například prvek pole nebo mapa, použijte funkci [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) pro každý skalární prvek, který potřebujete k projektu a poskytnout:
 
 - Vnořený nebo opakovaný sloupec jako první parametr
-- [Cesta JSON](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) , která určuje element nebo vlastnost, pro kterou má být přístup, jako druhý parametr
+- [Cesta JSON](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true) , která určuje element nebo vlastnost, pro kterou má být přístup, jako druhý parametr
 
-Chcete-li získat přístup k neskalárním prvkům z opakujícího se sloupce, použijte funkci [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) pro každý neskalární prvek, který potřebujete k projektu a poskytnout:
+Chcete-li získat přístup k neskalárním prvkům z opakujícího se sloupce, použijte funkci [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest&preserve-view=true) pro každý neskalární prvek, který potřebujete k projektu a poskytnout:
 
 - Vnořený nebo opakovaný sloupec jako první parametr
-- [Cesta JSON](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) , která určuje element nebo vlastnost, pro kterou má být přístup, jako druhý parametr
+- [Cesta JSON](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true) , která určuje element nebo vlastnost, pro kterou má být přístup, jako druhý parametr
 
 Viz fragment syntaxe níže:
 
@@ -219,7 +219,7 @@ Můžete najít Ukázky dotazů pro přístup k elementům z opakujících se sl
 
 Můžete se dozvědět více o dotazování různých typů dat pomocí ukázkových dotazů.
 
-### <a name="tools"></a>Nástroje
+### <a name="tools"></a>nástroje
 
 Nástroje, které potřebujete k vydávání dotazů:
     - Azure Synapse Studio 

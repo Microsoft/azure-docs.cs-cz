@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: sstein
 ms.reviewer: vanto
-ms.openlocfilehash: 15209bc9dae1f10e1158c805ba7903b9f946766f
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 57f504b15c0a9c72a2cb0f17b486846f44171a25
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593942"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101682395"
 ---
 V tomto kroku vytvoříte [logický SQL Server](../database/logical-servers.md) a samostatnou [databázi](../database/single-database-overview.md) , která používá ukázková data AdventureWorksLT. Databázi můžete vytvořit pomocí nabídek a obrazovek Azure Portal nebo pomocí skriptu Azure CLI nebo PowerShellu v Azure Cloud Shell.
 
@@ -32,14 +32,14 @@ Postup vytvoření skupiny prostředků, serveru a izolované databáze v Azure 
 
    ![Vytvoření izolované databáze](./media/sql-database-create-single-database/create-single-database.png)
 
-1. Na kartě **základy** ve formuláři **vytvořit databázi SQL** v části **Project Details (podrobnosti projektu** ) vyberte správné **předplatné** Azure, pokud ještě není vybrané.
-1. V části **Skupina prostředků** vyberte **vytvořit novou** , zadejte *myResourceGroup* a vyberte **OK**.
+1. Na kartě **základy** ve formuláři **vytvořit databázi SQL** v části **Project Details (podrobnosti projektu**) vyberte správné **předplatné** Azure, pokud ještě není vybrané.
+1. V části **Skupina prostředků** vyberte **vytvořit novou**, zadejte *myResourceGroup* a vyberte **OK**.
 1. V části **Podrobnosti databáze** zadejte do **pole název databáze** *mySampleDatabase*.
 1. Pro možnost **Server** vyberte **vytvořit novou** a vyplňte formulář **nového serveru** následujícím způsobem:
-   - **Název serveru** : zadejte *MySQLServer* a některé znaky pro jedinečnost.
-   - **Přihlašovací jméno správce serveru** : zadejte *azureuser*.
-   - **Heslo** : zadejte heslo, které splňuje požadavky, a znovu ho zadejte do pole **Potvrdit heslo** .
-   - **Umístění** : rozevírací seznam a vyberte umístění, například **(US) východní USA**.
+   - **Název serveru**: zadejte *MySQLServer* a některé znaky pro jedinečnost.
+   - **Přihlašovací jméno správce serveru**: zadejte *azureuser*.
+   - **Heslo**: zadejte heslo, které splňuje požadavky, a znovu ho zadejte do pole **Potvrdit heslo** .
+   - **Umístění**: rozevírací seznam a vyberte umístění, například **(US) východní USA**.
 
    Vyberte **OK**.
 
@@ -69,6 +69,8 @@ Postup vytvoření skupiny prostředků, serveru a izolované databáze v Azure 
    Další informace o nastavení brány firewall najdete v tématu [Povolení služeb a prostředků Azure pro přístup k tomuto serveru](../database/network-access-controls-overview.md) a [Přidání privátního koncového bodu](../database/private-endpoint-overview.md).
 
 1. Na kartě **Další nastavení** v části **zdroj dat** pro možnost **použít existující data** vyberte **Ukázka**.
+1. Volitelně můžete povolit [Azure Defender pro SQL](../database/azure-defender-for-sql.md).
+1. Volitelně můžete nastavit časové [intervaly pro správu a údržbu](../database/maintenance-window.md) , aby se plánovaná údržba prováděla v nejvhodnější době pro vaši databázi.
 1. V dolní části stránky vyberte **zkontrolovat + vytvořit** .
 
    ![Karta Další nastavení](./media/sql-database-create-single-database/additional-settings.png)

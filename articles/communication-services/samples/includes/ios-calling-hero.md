@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 618efc8d2c3784a487c302661f35d5a284c68178
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 7d39decaa6376c614e48b65ad2fc1b3043aa0a3c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475622"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101682408"
 ---
 [!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
 
@@ -74,8 +74,8 @@ V případě demonstračních účely Tato ukázka ve výchozím nastavení pou�
 V případě další konfigurace Tato ukázka podporuje připojení ke koncovému bodu chráněného **Azure Active Directory** (Azure AD), takže přihlášení uživatele vyžaduje, aby aplikace mohla načíst token služby Azure Communication Services. Viz následující postup:
 
 1. Povolte Azure Active Directory ověřování ve vaší aplikaci.  
-   - [Registrace aplikace v rámci Azure Active Directory (použití nastavení platformy iOS/macOS)](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-ios) 
-    - [Konfigurace App Service nebo Azure Functions aplikace pro použití přihlášení Azure AD](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
+   - [Registrace aplikace v rámci Azure Active Directory (použití nastavení platformy iOS/macOS)](../../../active-directory/develop/tutorial-v2-ios.md) 
+    - [Konfigurace App Service nebo Azure Functions aplikace pro použití přihlášení Azure AD](../../../app-service/configure-authentication-provider-aad.md)
 2. V části Azure Active Directory registrace aplikací přejít na stránku Přehled vaší registrované aplikace. Poznamenejte si `Application (client) ID` , `Directory (tenant) ID` , `Application ID URI`
 
 :::image type="content" source="../media/calling/aad-overview.png" alt-text="Konfigurace Azure Active Directory Azure Portal.":::
