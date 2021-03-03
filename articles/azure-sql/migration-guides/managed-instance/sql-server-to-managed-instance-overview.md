@@ -9,13 +9,13 @@ ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
-ms.date: 11/06/2020
-ms.openlocfilehash: 9afe50e419f9c180b0b5efcd6182eb693dc6622a
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.date: 02/18/2020
+ms.openlocfilehash: 5485d97638679651a3890e0b7578787e481437c6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093938"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656274"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Přehled migrace: SQL Server do spravované instance SQL
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -90,6 +90,7 @@ V následující tabulce jsou uvedené doporučené nástroje pro migraci:
 |---------|---------|
 |[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md)  | Služba Azure první strany, která podporuje migraci v režimu offline pro aplikace, které můžou během procesu migrace dovolit výpadky. Na rozdíl od nepřetržité migrace v online režimu spustí migrace offline režimu jednorázové obnovení úplné zálohy databáze ze zdroje do cíle. | 
 |[Nativní zálohování a obnovení](../../managed-instance/restore-sample-database-quickstart.md) | Spravovaná instance SQL podporuje obnovení nativních záloh databáze SQL Server (soubory. bak), což usnadňuje možnost migrace pro zákazníky, kteří můžou poskytovat úplné zálohy databází do Azure Storage. Úplné a rozdílové zálohy se také podporují a zdokumentují v [části assety migrace](#migration-assets) dále v tomto článku.| 
+|[Služba pro opětovné přehrání protokolů (LRS)](../../managed-instance/log-replay-service-migrate.md) | Toto je cloudová služba povolená pro spravovanou instanci založenou na technologii SQL Server přenosů protokolů. díky tomu je možnost migrace pro zákazníky, kteří můžou poskytovat úplné, rozdílové a zaprotokolované zálohy databáze do služby Azure Storage. LRS se používá k obnovení záložních souborů z Azure Blob Storage do spravované instance SQL.| 
 | | |
 
 ### <a name="alternative-tools"></a>Alternativní nástroje
@@ -116,6 +117,7 @@ Následující tabulka porovnává Doporučené možnosti migrace:
 |---------|---------|---------|
 |[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | – Migrujte jednotlivé databáze nebo více databází se škálováním. </br> – Může během procesu migrace pojmout výpadky. </br> </br> Podporované zdroje: </br> -SQL Server (2005-2019) místní nebo Azure VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP COMPUTE SQL Server virtuální počítač |  – Migrace ve velkém měřítku může být automatizovaná přes [PowerShell](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md). </br> -Doba k dokončení migrace závisí na velikosti databáze a ovlivněná časem zálohování a obnovení. </br> – Může být vyžadováno dostatečné výpadky. |
 |[Nativní zálohování a obnovení](../../managed-instance/restore-sample-database-quickstart.md) | – Migrujte jednotlivé databáze obchodních aplikací.  </br> – Rychlá a snadná migrace bez samostatné služby nebo nástroje pro migraci  </br> </br> Podporované zdroje: </br> -SQL Server (2005-2019) místní nebo Azure VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP COMPUTE SQL Server virtuální počítač | -Záloha databáze používá více vláken pro optimalizaci přenosu dat do služby Azure Blob Storage, ale šířka pásma a velikost databáze ISV může ovlivnit přenosovou rychlost. </br> -Výpadky by měly pojmout dobu potřebnou k provedení úplného zálohování a obnovení (což je velikost operace s daty).| 
+|[Služba pro opětovné přehrání protokolů (LRS)](../../managed-instance/log-replay-service-migrate.md) | – Migrujte jednotlivé databáze obchodních aplikací.  </br> – Pro migrace databáze je potřeba více ovládacích prvků.  </br> </br> Podporované zdroje: </br> -SQL Server (2008-2019) místní nebo Azure VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP COMPUTE SQL Server virtuální počítač | – Migrace zahrnuje vytvoření úplných záloh databáze při SQL Server a zkopírování záložních souborů do Azure Blob Storage. LRS se používá k obnovení záložních souborů z Azure Blob Storage do spravované instance SQL. </br> – Databáze obnovované během procesu migrace budou v režimu obnovení a nelze je použít ke čtení nebo zápisu do dokončení procesu.| 
 | | | |
 
 ### <a name="alternative-options"></a>Alternativní možnosti
@@ -203,7 +205,7 @@ Některé funkce jsou dostupné až po změně [úrovně kompatibility databáze
 
 Další pomoc najdete v následujících materiálech, které byly vyvinuty pro projekty z reálného světa migrace.
 
-|Prostředek  |Description  |
+|Prostředek  |Popis  |
 |---------|---------|
 |[Model a nástroj pro vyhodnocení datových úloh](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Tento nástroj poskytuje navrženou cílovou platformu "nejlépe vyhovující", připravenost na Cloud a úroveň nápravy aplikace nebo databáze pro danou úlohu. Nabízí jednoduché výpočetní operace s jedním kliknutím a generování sestav, které pomáhají zrychlit vyhodnocení velkých nemovitostí tím, že zajišťují a automatizují a automatizují rozhodovací procesy na základě cílové platformy.|
 |[Nástroj DBLoader](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|DBLoader lze použít k načtení dat z textových souborů s oddělovači do SQL Server. Tento nástroj konzoly Windows používá rozhraní SQL Server BulkLoad Native Client, které funguje na všech verzích SQL Server, včetně Azure SQL MI.|

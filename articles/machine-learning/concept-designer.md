@@ -10,14 +10,14 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 059b521461969d8148ced90cb3ceffd14a00c4bb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b439c5f084c762d3a256806d2e45dab96832bb78
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322251"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661082"
 ---
-# <a name="what-is-azure-machine-learning-designer"></a>Co je Azure Machine Learning Designer? 
+# <a name="what-is-azure-machine-learning-designer"></a>Co je návrhář služby Azure Machine Learning? 
 
 
 Azure Machine Learning Designer vám umožňuje vizuálně propojit [datové sady](#datasets) a [moduly](#module) na interaktivním plátně a vytvářet modely strojového učení. Informace o tom, jak začít s návrhářem, najdete v tématu [kurz: předpověď ceny automobilu pomocí návrháře.](tutorial-designer-automobile-price-train-score.md)
@@ -26,7 +26,7 @@ Azure Machine Learning Designer vám umožňuje vizuálně propojit [datové sad
 
 Návrhář používá [pracovní prostor](concept-workspace.md) Azure Machine Learning k uspořádání sdílených prostředků, jako jsou:
 
-+ [Kanály](#pipeline)
++ [Pipelines](#pipeline)
 + [Datové sady](#datasets)
 + [Výpočetní prostředky](#compute)
 + [Registrované modely](concept-azure-machine-learning-architecture.md#models)
@@ -44,7 +44,7 @@ Návrhář nabízí vizuální plátno pro sestavování, testování a nasazen�
 + [Publikování](#publish) kanálů do **koncového bodu kanálu** REST pro odeslání nového kanálu, který běží s různými parametry a datovými sadami.
     + Publikování **výukového kanálu** pro opakované použití jednoho kanálu pro výuku více modelů při změně parametrů a datových sad.
     + Publikování **kanálu odvození dávky** , aby se předpovědi na nová data pomocí dříve poučeného modelu.
-+ [Deploy](#deploy) Nasaďte **kanál pro odvození v reálném čase** do koncového bodu v reálném čase, abyste mohli předpovědi na nových datech v reálném čase.
++ [](#deploy) Nasaďte **kanál pro odvození v reálném čase** do koncového bodu v reálném čase, abyste mohli předpovědi na nových datech v reálném čase.
 
 ![Diagram pracovního postupu pro školení, odvozování dávek a odvození v reálném čase v Návrháři](./media/concept-designer/designer-workflow-diagram.png)
 
@@ -81,7 +81,7 @@ Modul je algoritmus, který je možné provést na datech. Návrhář má někol
 
 Modul může obsahovat sadu parametrů, pomocí kterých je možné konfigurovat jeho vnitřní algoritmy. Když na plátnu vyberete modul, parametry modulu se zobrazí v podokně Vlastnosti napravo od plátna. Úpravou parametrů v tomto podokně můžete model optimalizovat. Můžete nastavit výpočetní prostředky pro jednotlivé moduly v návrháři. 
 
-:::image type="content" source="./media/concept-designer/properties.png"alt-text="Vlastnosti modulu":::
+:::image type="content" source="./media/concept-designer/properties.png" alt-text="Vlastnosti modulu":::
 
 
 Další nápovědu k dispozici v knihovně strojového učení, najdete v tématu [Přehled modulu & algoritmu](algorithm-module-reference/module-reference.md). Nápovědu k výběru algoritmu najdete v [tahákm listu s algoritmem Azure Machine Learning](algorithm-cheat-sheet.md).
@@ -98,7 +98,7 @@ Pomocí výpočetních prostředků z pracovního prostoru můžete spustit kan�
 
 Cíle výpočetní služby jsou připojeny k vašemu [pracovnímu prostoru Azure Machine Learning](concept-workspace.md). Výpočetní cíle můžete spravovat ve vašem pracovním prostoru v [Azure Machine Learning Studiu](https://ml.azure.com).
 
-## <a name="deploy"></a>Nasazení
+## <a name="deploy"></a>Nasadit
 
 Chcete-li provést Inferencing v reálném čase, je nutné nasadit kanál jako **koncový bod v reálném** čase. Koncový bod v reálném čase vytvoří rozhraní mezi externí aplikací a modelem bodování. Volání koncového bodu v reálném čase vrátí výsledky předpovědi do aplikace v reálném čase. Pro volání koncového bodu v reálném čase předáte klíč rozhraní API, který byl vytvořen při nasazení koncového bodu. Koncový bod je založený na REST, oblíbené architektuře, která je vhodná pro projekty webového programování.
 

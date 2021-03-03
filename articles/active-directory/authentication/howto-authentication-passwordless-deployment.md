@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 02/22/2021
 ms.author: baselden
 author: justinha
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24d04c148e8a96e3b1d72c5301f6226df6d9a569
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: dc5916cf4277935f6d7d7f453fd4dd76d7909ef2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530344"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651123"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Plánování nasazení ověřování s neplatnými hesly v Azure Active Directory
 
@@ -149,7 +149,7 @@ K dispozici jsou tři typy nasazení přihlášení bez hesla s bezpečnostními
 
 -    Azure Active Directory webové aplikace v podporovaném prohlížeči
 -    Azure Active Directory připojená zařízení s Windows 10
--    Zařízení s Windows 10 připojená k hybridnímu Azure Active Directory (Preview)
+-    Zařízení s Windows 10 připojená k hybridnímu Azure Active Directory
      -    Poskytuje přístup ke cloudovým i místním prostředkům. Další informace o přístupu k místním prostředkům najdete v tématu [jednotné přihlašování k místním prostředkům pomocí FIDO2 klíčů](./howto-authentication-passwordless-security-key-on-premises.md) .
 
 Musíte povolit **kompatibilní bezpečnostní klíče FIDO2**. Společnost Microsoft oznámila [klíčová partnerství s dodavateli FIDO2 klíčů](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Microsoft-passwordless-partnership-leads-to-innovation-and-great/ba-p/566493).
@@ -193,7 +193,7 @@ Povolení přihlášení Windows 10 pomocí klíčů zabezpečení FIDO2 vyžadu
 
 #### <a name="enable-on-premises-integration"></a>Povolit místní integraci
 
-Pokud chcete povolit přístup k místním prostředkům, postupujte podle pokynů pro [Povolení nezabezpečeného přihlášení k místním prostředkům (Preview) pomocí klíče zabezpečení bez hesla](howto-authentication-passwordless-security-key-on-premises.md).
+Pokud chcete povolit přístup k místním prostředkům, postupujte podle kroků pro [Povolení přihlášení klíče zabezpečení bez hesla k místním prostředkům](howto-authentication-passwordless-security-key-on-premises.md).
 
 > [!IMPORTANT]
 > Tyto kroky je potřeba provést taky pro všechna zařízení připojená k hybridní službě Azure AD, která využívají klíče zabezpečení FIDO2 pro přihlášení Windows 10.

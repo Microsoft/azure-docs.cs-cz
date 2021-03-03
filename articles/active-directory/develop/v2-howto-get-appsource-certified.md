@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: d366664981894933f9afb177e9147ccae6695872
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: 7731aa2eb1a962d4674ed382911ba0058e1ebdaf
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222162"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647502"
 ---
 # <a name="get-appsource-certified-for-azure-active-directory"></a>Získání AppSource certifikace pro Azure Active Directory
 
@@ -104,9 +104,9 @@ Další informace o zkušebním prostředí AppSource najdete v [tomto videu](ht
 
 ## <a name="get-support"></a>Získání podpory
 
-Pro integraci služby Azure AD používáme pro poskytování podpory [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html) společně s komunitou.
+Pro integraci služby Azure AD používáme pro poskytování podpory [Microsoft Q&A](/answers/topics/azure-active-directory.html) společně s komunitou.
 
-Důrazně doporučujeme, abyste si položili své dotazy na [Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-active-directory.html) a Projděte si stávající problémy, abyste zjistili, jestli se někdo na vaši otázku předá dotaz. Ujistěte se, že jsou vaše dotazy nebo komentáře označené pomocí [`[azure-active-directory]`](https://docs.microsoft.com/answers/topics/azure-active-directory.html) .
+Důrazně doporučujeme, abyste si položili své dotazy na [Microsoft Q&](/answers/topics/azure-active-directory.html) a Projděte si stávající problémy, abyste zjistili, jestli se někdo na vaši otázku předá dotaz. Ujistěte se, že jsou vaše dotazy nebo komentáře označené pomocí [`[azure-active-directory]`](/answers/topics/azure-active-directory.html) .
 
 Následující komentáře vám poskytnou zpětnou vazbu a pomáhají nám zdokonalit a obsloužit náš obsah.
 

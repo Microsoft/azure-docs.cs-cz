@@ -1,40 +1,38 @@
 ---
-title: Použití Azure Policy k použití konfigurací clusteru ve velkém měřítku (Preview)
+title: Použití Azure Policy k aplikování konfigurace clusteru ve velkém měřítku
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 03/02/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Použití Azure Policy k aplikování konfigurace clusteru ve velkém měřítku
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
-ms.openlocfilehash: 23cd42458c396afd31741c648d713934250a4112
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7f85050666c383ba49730bd88ce1f26d55607e7a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587799"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652143"
 ---
-# <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Použití Azure Policy k použití konfigurací clusteru ve velkém měřítku (Preview)
+# <a name="use-azure-policy-to-apply-cluster-configurations-at-scale"></a>Použití Azure Policy k aplikování konfigurace clusteru ve velkém měřítku
 
 ## <a name="overview"></a>Přehled
 
-Můžete použít Azure Policy k vymáhání konkrétního `Microsoft.KubernetesConfiguration/sourceControlConfigurations` uplatnění následujících prostředků:
-*  `Microsoft.Kubernetes/connectedclusters` partner.
-* Prostředek s podporou GitOps `Microsoft.ContainerService/managedClusters` 
+Azure Policy můžete použít k aplikování konfigurací ( `Microsoft.KubernetesConfiguration/sourceControlConfigurations` typu prostředku) na škále u clusterů Azure s podporou Kubernetes ( `Microsoft.Kubernetes/connectedclusters` ).
 
 Pokud chcete použít Azure Policy, vyberte existující definici zásady a vytvořte přiřazení zásady. Při vytváření přiřazení zásady:
 1. Nastavte rozsah přiřazení.
     * Oborem bude skupina prostředků nebo předplatné Azure. 
-2. Nastavte parametry pro `sourceControlConfiguration` , které budou vytvořeny. 
+2. Nastavte parametry pro konfiguraci, která se vytvoří. 
 
-Jakmile je přiřazení vytvořeno, modul Azure Policy identifikuje všechny `connectedCluster` `managedCluster` prostředky v rámci oboru a použije je `sourceControlConfiguration` pro každé z nich.
+Po vytvoření přiřazení Azure Policy modul identifikuje všechny clustery s podporou Azure ARC v rámci oboru a použije konfiguraci na jednotlivé clustery.
 
-Můžete povolit více úložišť Git jako zdroje pravdy pro každý cluster pomocí několika přiřazení zásad. Každé přiřazení zásad se nakonfiguruje tak, aby používalo jiné úložiště Git. například jedno úložiště pro ústředního operátora IT/cluster a další úložiště pro aplikační týmy.
+Pomocí několika přiřazení zásad můžete vytvořit více konfigurací, z nichž každá odkazuje na jiné úložiště Git. Například jedno úložiště pro ústředního operátora IT/cluster a další úložiště pro týmy aplikace.
 
 ## <a name="prerequisite"></a>Požadavek
 
-Ověřte, že máte `Microsoft.Authorization/policyAssignments/write` oprávnění pro obor (předplatné nebo skupinu prostředků), kde budete toto přiřazení zásad vytvářet.
+Ověřte, že máte `Microsoft.Authorization/policyAssignments/write` oprávnění pro obor (předplatné nebo skupinu prostředků), kde vytvoříte toto přiřazení zásady.
 
 ## <a name="create-a-policy-assignment"></a>Vytvoření přiřazení zásad
 
@@ -54,23 +52,20 @@ Ověřte, že máte `Microsoft.Authorization/policyAssignments/write` oprávněn
     * Další informace najdete v tématu [rychlý Start k vytvoření přiřazení zásady](../../governance/policy/assign-policy-portal.md) a [napravení nevyhovujících prostředků pomocí Azure Policy článku](../../governance/policy/how-to/remediate-resources.md).
 1. Vyberte **Zkontrolovat a vytvořit**.
 
-Po vytvoření přiřazení zásady se použije `sourceControlConfiguration` pro některý z následujících prostředků, které se nacházejí v rámci rozsahu přiřazení:
-* Nové `connectedCluster` prostředky.
-* Nové `managedCluster` prostředky s nainstalovanými agenty GitOps. 
+Po vytvoření přiřazení zásady se tato konfigurace použije na nové clustery Kubernetes s podporou ARC Azure vytvořené v rámci přiřazení zásad.
 
 U existujících clusterů budete muset ručně spustit úlohu nápravy. Tato úloha obvykle trvá 10 až 20 minut, než se přiřazení zásady projeví.
 
 ## <a name="verify-a-policy-assignment"></a>Ověření přiřazení zásady
 
-1. V Azure Portal přejděte k jednomu z vašich `connectedCluster` prostředků.
+1. V Azure Portal přejděte k jednomu z clusterů Kubernetes s povoleným ARC Azure.
 1. V části **Nastavení** na bočním panelu vyberte **zásady**. 
-    * Prostředí AKS clusteru není ještě implementováno.
     * V seznamu zásady byste měli vidět přiřazení zásad, které jste vytvořili dříve, se **stavem dodržování předpisů** nastaveným jako *kompatibilní*.
 1. V části **Nastavení** na bočním panelu vyberte **Konfigurace**.
-    * V seznamu konfigurace by se mělo zobrazit `sourceControlConfiguration` , že přiřazení zásady bylo vytvořeno.
+    * V seznamu konfigurace by se měla zobrazit konfigurace vytvořená přiřazením zásad.
 1. Použijte `kubectl` k dotazování clusteru. 
-    * Měl by se zobrazit obor názvů a artefakty, které byly vytvořeny pomocí `sourceControlConfiguration` .
-    * Během 5 minut byste měli vidět v clusteru artefakty, které jsou popsány v manifestech v nakonfigurovaném úložišti Git.
+    * Měl by se zobrazit obor názvů a artefakty, které byly vytvořeny pomocí prostředků konfigurace.
+    * Během 5 minut (za předpokladu, že cluster má síťové připojení k Azure), byste měli vidět objekty popsané v manifestech v úložišti Git, které se vytvářejí v clusteru.
 
 ## <a name="next-steps"></a>Další kroky
 

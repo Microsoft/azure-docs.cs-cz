@@ -5,29 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51602e97a8424bade542eec6f88b673130fee8b5
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a08cc9f5b6bf7f02666406bcc541edb677196eeb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586019"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647332"
 ---
-# <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Přidání uživatelského toku samoobslužné registrace do aplikace (Preview)
-> [!NOTE]
-> Samoobslužná registrace je funkce veřejné verze Preview služby Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+# <a name="add-a-self-service-sign-up-user-flow-to-an-app"></a>Přidání uživatelského toku samoobslužné registrace do aplikace
 
 Můžete vytvářet toky uživatelů pro aplikace, které jsou sestavené vaší organizací. Přidružení toku uživatele k aplikaci vám umožní povolit registraci této aplikace. Můžete zvolit více než jednu aplikaci, kterou chcete přidružit k toku uživatele. Po přidružení toku uživatele k jedné nebo více aplikacím se uživatelé, kteří navštíví tuto aplikaci, budou moci zaregistrovat a získat účet Guest pomocí možností nakonfigurovaných v toku uživatele.
 
 > [!NOTE]
 > Můžete přidružit toky uživatelů k aplikacím vytvořeným vaší organizací. Toky uživatelů se nedají použít pro aplikace Microsoftu, jako je SharePoint nebo Teams.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 ### <a name="add-social-identity-providers-optional"></a>Přidat zprostředkovatele sociálních identit (volitelné)
 
@@ -35,9 +33,6 @@ Služba Azure AD je výchozím zprostředkovatelem identity pro samoobslužné r
 
 - [Přidat Facebook do seznamu poskytovatelů sociálních identit](facebook-federation.md)
 - [Přidat Google do seznamu poskytovatelů sociálních identit](google-federation.md)
-
-> [!NOTE]
-> Pokud je v aktuální verzi Preview přidružený uživatelský tok samoobslužné registrace k aplikaci a odešlete uživateli pozvánku k této aplikaci, uživatel nebude moct použít účet Gmail k uplatnění pozvánky. Alternativním řešením je, že uživatel může projít samoobslužným procesem registrace. Nebo můžou uplatnit pozvánku pomocí přístupu k jiné aplikaci nebo pomocí portálu moje aplikace na https://myapps.microsoft.com .
 
 ### <a name="define-custom-attributes-optional"></a>Definovat vlastní atributy (volitelné)
 
@@ -50,7 +45,7 @@ Předtím, než budete moci do svých aplikací přidat samoobslužný uživatel
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce.
 2. V části **služby Azure** vyberte **Azure Active Directory**.
 3. Vyberte **nastavení uživatele** a potom v části **externí uživatelé** vyberte **Spravovat nastavení externí spolupráce**.
-4. Nastavte možnost **Povolit samoobslužnou registraci hosta prostřednictvím uživatelských toků (Preview)** na **Ano**.
+4. Nastavte možnost **Povolit samoobslužnou registraci hosta prostřednictvím uživatelských toků** přepnout na **Ano**.
 
    ![Povolit samoobslužnou registraci hosta](media/self-service-sign-up-user-flow/enable-self-service-sign-up.png)
 5. Vyberte **Uložit**.
@@ -61,7 +56,7 @@ V dalším kroku vytvoříte uživatelský tok pro samoobslužnou registraci a p
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce.
 2. V části **služby Azure** vyberte **Azure Active Directory**.
 3. V nabídce vlevo vyberte **externí identity**.
-4. Vyberte **toky uživatelů (Preview)** a pak vyberte **Nový tok uživatele**.
+4. Vyberte **toky uživatelů** a potom vyberte **Nový tok uživatele**.
 
    ![Tlačítko pro přidání nového uživatelského toku](media/self-service-sign-up-user-flow/new-user-flow.png)
 
@@ -75,14 +70,14 @@ V dalším kroku vytvoříte uživatelský tok pro samoobslužnou registraci a p
 > Atributy můžete shromažďovat pouze v případě, že se uživatel poprvé zaregistruje. Po zaregistrování se uživatel už nebude vyzván ke shromažďování informací o atributu, a to i v případě, že změníte tok uživatele.
 
 8. Vyberte **Vytvořit**.
-9. Nový tok uživatele se zobrazí v seznamu **toky uživatelů (Preview)** . V případě potřeby aktualizujte stránku.
+9. Nový tok uživatele se zobrazí v seznamu **toky uživatelů** . V případě potřeby aktualizujte stránku.
 
 ## <a name="select-the-layout-of-the-attribute-collection-form"></a>Vyberte rozložení formuláře kolekce atributů.
 
 Můžete zvolit pořadí, ve kterém se atributy zobrazí na stránce pro registraci. 
 
 1. Na portálu [Azure Portal](https://portal.azure.com) vyberte **Azure Active Directory**.
-2. Vyberte **externí identity**, vyberte **toky uživatelů (Preview)**.
+2. Vyberte **externí identity**, vyberte **toky uživatelů**.
 3. V seznamu vyberte tok uživatele samoobslužné registrace.
 4. V části **přizpůsobit** vyberte **rozložení stránky**.
 5. Zobrazí se atributy, které jste si zvolili ke shromáždění. Chcete-li změnit pořadí zobrazení, vyberte atribut a pak vyberte možnost **Přesunout nahoru**, **Přesunout dolů**, **přesunout do horní části** nebo **Přejít na konec**.
@@ -95,7 +90,7 @@ Nyní můžete přidružit aplikace k toku uživatele.
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce.
 2. V části **služby Azure** vyberte **Azure Active Directory**.
 3. V nabídce vlevo vyberte **externí identity**.
-4. V části **samoobslužné registrace** vyberte **toky uživatelů (Preview)**.
+4. V části **samoobslužné registrace** vyberte **toky uživatelů**.
 5. V seznamu vyberte tok uživatele samoobslužné registrace.
 6. V nabídce vlevo v části **použít** vyberte **aplikace**.
 7. Vyberte **Přidat aplikaci**.

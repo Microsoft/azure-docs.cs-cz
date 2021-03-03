@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ead05598c6ca4d096e1a68c8d640938ecd771c2
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 42ed42a1fc9a2750cc928b5fd03eb4b32f770276
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355507"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644081"
 ---
 # <a name="identity-providers-for-external-identities"></a>Zprostředkovatelé identity pro externí identity
 
@@ -27,9 +27,6 @@ Můžete ale uživatelům povolit, aby se přihlásili pomocí různých poskyto
 - **Google**: Google Federation umožňuje externím uživatelům uplatnit pozvánky od vás tím, že se přihlásí k aplikacím pomocí vlastních účtů Gmail. Google Federation se dá použít taky v uživatelských tocích samoobslužné registrace.
    > [!IMPORTANT]
    > **Od 4. ledna 2021** je Google [zastaralá podpora přihlašování v nástroji WebView](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Pokud používáte Google Federation nebo samoobslužnou registraci pomocí služby Gmail, měli byste [testovat kompatibilitu vašich obchodních nativních aplikací](google-federation.md#deprecation-of-webview-sign-in-support).
-
-   > [!NOTE]
-   > Pokud je v aktuálním předplatném samoobslužné přihlášení přidaný tok uživatele k aplikaci a když uživateli odešlete pozvánku k této aplikaci, uživatel nebude moct použít účet Gmail k uplatnění pozvánky. Alternativním řešením je, že uživatel může projít samoobslužným procesem registrace. Nebo můžou uplatnit pozvánku pomocí přístupu k jiné aplikaci nebo pomocí portálu moje aplikace na https://myapps.microsoft.com .
 
 - **Facebook**: při sestavování aplikace můžete nakonfigurovat samoobslužné registrace a povolit facebookovou federaci, aby se uživatelé mohli k vaší aplikaci zaregistrovat pomocí vlastních účtů Facebook. Facebook se dá použít jenom pro uživatelské toky přihlašování k samoobslužným službám a není k dispozici jako možnost přihlášení, když uživatelé uplatní pozvánky od vás.
 

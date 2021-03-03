@@ -10,17 +10,17 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 1db7eeb61bc4ded2d7015baecaacd974d7767812
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: cea87f23bcd9dc21ab9f594d6cb0d6008ef98f13
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653497"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661625"
 ---
 ## <a name="prerequisites"></a>Požadavky
 Než začnete, nezapomeňte:
-- Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
-- Nainstalovat [Visual Studio](https://visualstudio.microsoft.com/downloads/) 
+- Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Nainstalovat [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 - Vytvořte prostředek služby Azure Communication Services. Podrobnosti najdete v tématu [vytvoření prostředku komunikace Azure](../../create-communication-resource.md). Pro tento rychlý Start budete muset zaznamenat **koncový bod** prostředku.
 - [Přístupový token uživatele](../../access-tokens.md). Ujistěte se, že jste nastavili obor na "chat" a poznamenali jste řetězec tokenu a také řetězec userId.
 
@@ -47,20 +47,20 @@ Instalace klientské knihovny služby Azure Communications chat pro .NET
 
 ```PowerShell
 dotnet add package Azure.Communication.Chat --version 1.0.0-beta.4
-``` 
+```
 
 ## <a name="object-model"></a>Objektový model
 
 Následující třídy zpracovávají některé z hlavních funkcí služby Azure Communications chat Client Library pro C#.
 
-| Název                                  | Description                                                  |
+| Název                                  | Popis                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | ChatClient | Tato třída je potřebná pro funkci chatu. Vytvoří se jeho instance s informacemi o předplatném a použije se k vytváření, získávání a odstraňování vláken. |
 | ChatThreadClient | Tato třída je potřebná pro funkci konverzačního vlákna. Získáte instanci prostřednictvím ChatClient a použijete ji k posílání, přijímání, aktualizaci a odstraňování zpráv, přidávání, odebírání a získávání účastníků, odesílání oznámení o přečtení a čtení. |
 
 ## <a name="create-a-chat-client"></a>Vytvoření chatového klienta
 
-Chcete-li vytvořit chatovacího klienta, použijte koncový bod komunikačních služeb a přístupový token, který byl vygenerován jako součást požadovaných kroků. Chcete-li `CommunicationIdentityClient` `Administration` vytvořit uživatele a vystavit token, který bude předat klientovi chat, je nutné použít třídu z klientské knihovny.
+Chcete-li vytvořit chatovacího klienta, použijte koncový bod komunikačních služeb a přístupový token, který byl vygenerován jako součást požadovaných kroků. Chcete-li `CommunicationIdentityClient` vytvořit uživatele a vystavit token, který bude předat klientovi chat, je nutné použít třídu z klientské knihovny identity.
 
 Přečtěte si další informace o [tokenech přístupu uživatele](../../access-tokens.md).
 
@@ -83,7 +83,7 @@ Pomocí `createChatThread` metody v chatClient vytvořte vlákno chatu.
 - Použijte `topic` k poskytnutí tématu tomuto chatu; Téma lze aktualizovat poté, co je vlákno konverzace vytvořeno pomocí `UpdateTopic` funkce.
 - Pomocí `participants` vlastnosti můžete předat seznam `ChatParticipant` objektů, které mají být přidány do konverzačního vlákna. `ChatParticipant`Objekt je inicializován s `CommunicationIdentifier` objektem. `CommunicationIdentifier` může být typu `CommunicationUserIdentifier` `MicrosoftTeamsUserIdentifier` nebo `PhoneNumberIdentifier` . Například pro získání `CommunicationIdentifier` objektu budete muset předat ID přístupu, které jste vytvořili pomocí pokynů pro [Vytvoření uživatele](../../access-tokens.md#create-an-identity) .
 
-Objekt Response z metody createChatThread obsahuje podrobnosti o chatThread. Chcete-li pracovat s operacemi vlákna chatu, jako je například přidání účastníků, odeslání zprávy, odstranění zprávy atd., je nutné instanci klienta chatThreadClient vytvořit pomocí metody GetChatThreadClient v klientovi ChatClient. 
+Objekt Response z `createChatThread` metody obsahuje `chatThread` Podrobnosti. Pro interakci s operacemi vlákna chatu, jako je přidání účastníků, odeslání zprávy, odstranění zprávy atd. `chatThreadClient` instance klienta musí být vytvořena pomocí `GetChatThreadClient` metody v `ChatClient` klientovi.
 
 ```csharp
 var chatParticipant = new ChatParticipant(communicationIdentifier: new CommunicationUserIdentifier(id: "<Access_ID>"))

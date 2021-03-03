@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 09/03/2020
-ms.openlocfilehash: cb7a441a6d86cd64847300d1e597cf6f86067282
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.date: 01/27/2021
+ms.openlocfilehash: c0e86cad252da1b5484944c12351d4ee1e39edbe
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740942"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656295"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Rychlý Start: vytvoření samostatné databáze Azure SQL Database
 
@@ -70,6 +70,8 @@ Pokud chcete v Azure Portal vytvořit izolovanou databázi, spustí se v tomto r
   
 
 1. Na kartě **Další nastavení** v části **zdroj dat** pro možnost **použít existující data** vyberte **Ukázka**. Tím se vytvoří ukázková databáze AdventureWorksLT, aby byly k dispozici některé tabulky a data pro dotazování a experimentování s, a to na rozdíl od prázdné prázdné databáze.
+1. Volitelně můžete povolit [Azure Defender pro SQL](../database/azure-defender-for-sql.md).
+1. Volitelně můžete nastavit časové [intervaly pro správu a údržbu](../database/maintenance-window.md) , aby se plánovaná údržba prováděla v nejvhodnější době pro vaši databázi.
 1. V dolní části stránky vyberte **zkontrolovat + vytvořit** :
 
    ![Karta Další nastavení](./media/single-database-create-quickstart/additional-settings.png)

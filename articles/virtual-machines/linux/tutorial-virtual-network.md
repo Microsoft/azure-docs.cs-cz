@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: c806e5d1d9c9242b6ba57496327c672d7fed0654
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 83c76e085efd8ac3352c477a137820019171cb41
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704486"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668254"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Kurz: Vytváření a správa virtuálních sítí Azure pro virtuální počítače s Linuxem pomocí Azure CLI
 
@@ -300,4 +300,4 @@ V tomto kurzu jste v souvislosti s virtuálními počítači vytvořili a zabezp
 > * Zabezpečení provozu sítě
 > * Vytvoření back-endového virtuálního počítače
 
-Další informace o ochraně disků virtuálních počítačů najdete v tématu [zálohování a zotavení po havárii pro disky](backup-and-disaster-recovery-for-azure-iaas-disks.md).
+Další informace o ochraně disků virtuálních počítačů najdete v tématu [zálohování a zotavení po havárii pro disky](../backup-and-disaster-recovery-for-azure-iaas-disks.md).

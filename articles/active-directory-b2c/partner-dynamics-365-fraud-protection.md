@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 629daa968d548c06d176e6349382ad51349a37a0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cf441108c9fd0ae87f265604f6f0706d92516746
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417154"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646550"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Kurz: Konfigurace ochrany proti podvodům v Microsoft Dynamics 365 pomocí Azure Active Directory B2C
 
-V tomto ukázkovém kurzu poskytujeme pokyny k integraci [ochrany před únikem informací v Microsoft Dynamics 365](https://docs.microsoft.com/dynamics365/fraud-protection/overview) (DFP) pomocí služby Azure Active Directory (AD) B2C.
+V tomto ukázkovém kurzu poskytujeme pokyny k integraci [ochrany před únikem informací v Microsoft Dynamics 365](/dynamics365/fraud-protection/overview) (DFP) pomocí služby Azure Active Directory (AD) B2C.
 
 Microsoft DFP poskytuje klientům možnost posoudit, jestli riziko pokusů o vytvoření nových účtů a pokusů o přihlášení k ekosystému klienta je podvodné. Společnost Microsoft DFP Assessment může být používána zákazníkem k blokování nebo výzvě podezřelých pokusů o vytvoření nových falešných účtů nebo k ohrožení stávajících účtů. Ochrana účtů zahrnuje pomocí otisků prstů zařízení, rozhraní API pro posuzování rizik v reálném čase, pravidla a seznam, optimalizaci rizikových strategií podle obchodních potřeb klienta a scorecard pro monitorování efektivity ochrany před únikem informací a trendy v ekosystému klienta.
 
@@ -32,7 +32,7 @@ Abyste mohli začít, budete potřebovat:
 
 - Předplatné Azure. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 
-- [Tenant Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant). Tenant je propojený s vaším předplatným Azure.
+- [Tenant Azure AD B2C](./tutorial-create-tenant.md). Tenant je propojený s vaším předplatným Azure.
 
 - Získejte [předplatné](https://dynamics.microsoft.com/pricing/#Sales)Microsoft DFPe. Můžete nastavit i [zkušební verzi klienta](https://dynamics.microsoft.com/ai/fraud-protection/signin/?RU=https%3A%2F%2Fdfp.microsoft.com%2Fsignin) .
 
@@ -56,7 +56,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ![Obrázek znázorňuje diagram architektury ochrany před podvody Microsoft dynamics365](./media/partner-dynamics365-fraud-protection/microsoft-dynamics-365-fraud-protection-diagram.png)
 
-|Krok | Description |
+|Krok | Popis |
 |:-----| :-----------|
 | 1. | Uživatel dostane přihlašovací stránku. Uživatelé si vyberou přihlášení a vytvoří nový účet a na stránce se zadají informace. Azure AD B2C shromažďuje atributy uživatele.
 | 2. | Azure AD B2C volá rozhraní API střední vrstvy a předá ho atributům uživatele.
@@ -67,36 +67,36 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ## <a name="set-up-the-solution"></a>Nastavení řešení
 
-1. [Vytvořte aplikaci Facebooku](https://docs.microsoft.com/azure/active-directory-b2c/identity-provider-facebook#create-a-facebook-application) nakonfigurovanou tak, aby povolovala Azure AD B2C federaci.
-2. [Přidejte tajný klíč Facebooku](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started#create-the-facebook-key) , který jste vytvořili jako klíč zásad rozhraní identity Experience Framework.
+1. [Vytvořte aplikaci Facebooku](./identity-provider-facebook.md#create-a-facebook-application) nakonfigurovanou tak, aby povolovala Azure AD B2C federaci.
+2. [Přidejte tajný klíč Facebooku](./custom-policy-get-started.md#create-the-facebook-key) , který jste vytvořili jako klíč zásad rozhraní identity Experience Framework.
 
 ## <a name="configure-your-application-under-microsoft-dfp"></a>Konfigurace aplikace v rámci Microsoft DFP
 
-[Nastavte tenanta Azure AD](https://docs.microsoft.com/dynamics365/fraud-protection/integrate-real-time-api) tak, aby používal Microsoft DFP.
+[Nastavte tenanta Azure AD](/dynamics365/fraud-protection/integrate-real-time-api) tak, aby používal Microsoft DFP.
 
 ## <a name="deploy-to-the-web-application"></a>Nasazení do webové aplikace
 
 ### <a name="implement-microsoft-dfp-service-fingerprinting"></a>Implementace otisku prstu služby Microsoft DFP
 
-[Otisky zařízení Microsoft DFP](https://docs.microsoft.com/dynamics365/fraud-protection/device-fingerprinting) je požadavek na ochranu účtu Microsoft DFP.
+[Otisky zařízení Microsoft DFP](/dynamics365/fraud-protection/device-fingerprinting) je požadavek na ochranu účtu Microsoft DFP.
 
 >[!NOTE]
 >Kromě Azure AD B2C stránek uživatelského rozhraní může zákazník také implementovat službu otisků prstů uvnitř kódu aplikace a komplexnější profilování zařízení. V této ukázce není zahrnutá služba otisků prstů v kódu aplikace.
 
 ### <a name="deploy-the-azure-ad-b2c-api-code"></a>Nasazení kódu rozhraní Azure AD B2C API
 
-Nasaďte [poskytnutý kód rozhraní API](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/API) do služby Azure. Kód lze [publikovat ze sady Visual Studio](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+Nasaďte [poskytnutý kód rozhraní API](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/API) do služby Azure. Kód lze [publikovat ze sady Visual Studio](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
 
 Nastavení CORS, přidání **povoleného původu**`https://{your_tenant_name}.b2clogin.com`
 
 >[!NOTE]
 >Později budete potřebovat adresu URL nasazené služby, abyste mohli nakonfigurovat Azure AD s požadovaným nastavením.
 
-Další informace najdete v [dokumentaci ke službě App Service](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-rest-api) .
+Další informace najdete v [dokumentaci ke službě App Service](../app-service/app-service-web-tutorial-rest-api.md) .
 
 ### <a name="add-context-dependent-configuration-settings"></a>Přidat nastavení konfigurace závislé na kontextu
 
-Nakonfigurujte nastavení aplikace ve [službě App Service v Azure](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings). To umožňuje zabezpečenou konfiguraci nastavení bez jejich vrácení se změnami do úložiště. Rozhraní REST API vyžaduje následující nastavení:
+Nakonfigurujte nastavení aplikace ve [službě App Service v Azure](../app-service/configure-common.md#configure-app-settings). To umožňuje zabezpečenou konfiguraci nastavení bez jejich vrácení se změnami do úložiště. Rozhraní REST API vyžaduje následující nastavení:
 
 | Nastavení aplikace | Zdroj | Poznámky |
 | :-------- | :------------| :-----------|
@@ -135,7 +135,7 @@ V části poskytnuté [vlastní zásady](https://github.com/azure-ad-b2c/partner
 
 ### <a name="call-microsoft-dfp-label-api"></a>Volání rozhraní Microsoft DFP Label API
 
-Zákazníci musí [implementovat rozhraní API pro označování](https://docs.microsoft.com/dynamics365/fraud-protection/integrate-ap-api). Další informace najdete v tématu [rozhraní API pro Microsoft DFP](https://apidocs.microsoft.com/services/dynamics365fraudprotection#/AccountProtection/v1.0) .
+Zákazníci musí [implementovat rozhraní API pro označování](/dynamics365/fraud-protection/integrate-ap-api). Další informace najdete v tématu [rozhraní API pro Microsoft DFP](https://apidocs.microsoft.com/services/dynamics365fraudprotection#/AccountProtection/v1.0) .
 
 `URI: < API Endpoint >/v1.0/label/account/create/<userId>`
 
@@ -148,7 +148,7 @@ Hodnota ID uživatele musí být stejná jako ta v odpovídající hodnotě konf
 
 1. Ve složce policies (zásady) vyberte [zásady Azure AD B2C](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/Policies) .
 
-2. Pomocí tohoto [dokumentu](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) stáhněte [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) .
+2. Pomocí tohoto [dokumentu](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) stáhněte [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) .
 
 3. Nakonfigurujte zásady pro klienta Azure AD B2C.
 
@@ -174,7 +174,7 @@ Hodnota ID uživatele musí být stejná jako ta v odpovídající hodnotě konf
 5. Po vytvoření atributu uživatele bude v průběhu toku volána služba Microsoft DFP. Pokud tok není úplný, ověřte, že uživatel není uložen v adresáři.
 
 >[!NOTE]
->Aktualizujte pravidla přímo na portálu Microsoft DFP, pokud používáte [modul pravidel Microsoft DFP](https://docs.microsoft.com/dynamics365/fraud-protection/rules).
+>Aktualizujte pravidla přímo na portálu Microsoft DFP, pokud používáte [modul pravidel Microsoft DFP](/dynamics365/fraud-protection/rules).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -182,6 +182,6 @@ Další informace najdete v následujících článcích:
 
 - [Ukázky Microsoft DFP](https://github.com/Microsoft/Dynamics-365-Fraud-Protection-Samples)
 
-- [Vlastní zásady v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Vlastní zásady v Azure AD B2C](./custom-policy-overview.md)
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Začínáme s vlastními zásadami v Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

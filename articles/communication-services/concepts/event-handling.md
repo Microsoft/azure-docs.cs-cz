@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b4e600581880ccca4f8716db02064e5bb353787c
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: cb253ebfd8269779adf02dcbc01d7998590ce78c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653777"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657158"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Zpracování událostí v komunikačních službách Azure
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Komunikační služby Azure se integrují s [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) , aby poskytovaly oznámení událostí v reálném čase spolehlivým, škálovatelným a zabezpečeným způsobem. Tento článek vám umožní nakonfigurovat aplikace tak, aby naslouchaly událostem komunikačních služeb. Například můžete chtít aktualizovat databázi, vytvořit pracovní položku a odeslat nabízené oznámení pokaždé, když se na základě telefonního čísla, které je přidruženo k vašemu prostředku služby Communication Services, pošle zpráva SMS.
 
@@ -31,7 +29,7 @@ Azure Event Grid je plně spravovaná služba Směrování událostí, která po
 
 ## <a name="events-types"></a>Typy událostí
 
-Event Grid používá [odběry událostí](../../event-grid/concepts.md#event-subscriptions) ke směrování zpráv událostí odběratelům. 
+Event Grid používá [odběry událostí](../../event-grid/concepts.md#event-subscriptions) ke směrování zpráv událostí odběratelům.
 
 Komunikační služby Azure emitují následující typy událostí:
 
@@ -207,7 +205,7 @@ V této části najdete příklad toho, jak by tato data vypadala jako u každé
 }]
 ```
 
-### <a name="microsoftcommunicationchatthreadcreatedwithuser-event"></a>Událost Microsoft. Communication. ChatThreadCreatedWithUser 
+### <a name="microsoftcommunicationchatthreadcreatedwithuser-event"></a>Událost Microsoft. Communication. ChatThreadCreatedWithUser
 
 ```json
 [{
@@ -265,7 +263,7 @@ V této části najdete příklad toho, jak by tato data vypadala jako u každé
 }]
 ```
 
-### <a name="microsoftcommunicationchatthreadpropertiesupdatedperuser-event"></a>Událost Microsoft. Communication. ChatThreadPropertiesUpdatedPerUser 
+### <a name="microsoftcommunicationchatthreadpropertiesupdatedperuser-event"></a>Událost Microsoft. Communication. ChatThreadPropertiesUpdatedPerUser
 
 ```json
 [{

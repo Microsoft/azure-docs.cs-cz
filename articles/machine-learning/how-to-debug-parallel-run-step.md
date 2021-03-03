@@ -11,12 +11,12 @@ ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: a0f813253520d76731a9b49a89b0bcace7c2ef34
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: a907bf61cb7ccb8b6d287840c12a00451cad782f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979160"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657855"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>Řešení potíží s třídou ParallelRunStep
 
@@ -119,7 +119,7 @@ Vytvořte ParallelRunStep pomocí skriptu, konfigurace prostředí a parametrů.
 - `parallel_run_config`: `ParallelRunConfig` Objekt, jak je definováno výše.
 - `inputs`: Jedna nebo více Azure Machine Learning datových sad s jedním typem, které mají být rozděleny na oddíly pro paralelní zpracování.
 - `side_inputs`: Jedno nebo více referenčních dat nebo datových sad, které se používají jako vstupy na straně, není nutné rozdělit na oddíly.
-- `output`: `PipelineData` Objekt, který odpovídá výstupnímu adresáři.
+- `output`: `OutputDatasetConfig` Nebo `PipelineData` objekt, který odpovídá výstupnímu adresáři.
 - `arguments`: Seznam argumentů předaných uživatelskému skriptu. Pomocí unknown_args je načtěte v vstupním skriptu (volitelné).
 - `allow_reuse`: Zda by měl krok při spuštění se stejnými nastaveními nebo vstupy znovu použít předchozí výsledky. Pokud je tento parametr `False` , nové spuštění bude pro tento krok vždy vygenerováno během provádění kanálu. (volitelné; výchozí hodnota je `True` .)
 

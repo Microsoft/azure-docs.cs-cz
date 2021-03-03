@@ -1,18 +1,18 @@
 ---
 title: Přehled služby Azure Arc
 description: Přečtěte si, co je Azure ARC a jak pomáhá zákazníkům povolit správu a řízení hybridních prostředků pomocí dalších služeb a funkcí Azure.
-ms.date: 09/23/2020
+ms.date: 03/02/2021
 ms.topic: overview
-ms.openlocfilehash: 8f39dff16037b5f52a050b7d07193b0ad7cab93d
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 33c9d6ca87c3d8d2d8920ff429902f5876bbdc59
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672682"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650188"
 ---
 # <a name="azure-arc-overview"></a>Přehled služby Azure Arc
 
-V současné době se společnosti působit potížey k řízení a řízení prostředí, které se bude lépe a komplexnější. Tato prostředí se šíří napříč datovými centry, několika cloudy a hraničními zařízeními. Každé prostředí a Cloud má vlastní sadu oddělených nástrojů pro správu, které se musí naučit a fungovat.
+V dnešní době si společnosti bojovati řídit a řídit stále složitá prostředí. Tato prostředí se šíří napříč datovými centry, několika cloudy a hraničními zařízeními. Každé prostředí a Cloud disponuje svou vlastní sadou oddělených nástrojů pro správu, které se musí naučit a pracovat.
 
 V paralelních případech je obtížné implementovat nové provozní modely DevOps a ITOps, protože stávající nástroje neposkytují podporu pro nové nativní vzory cloudu.
 
@@ -36,11 +36,11 @@ Mezi klíčové funkce Azure ARC patří:
 
 * Spravujte a spravujte clustery Kubernetes ve velkém měřítku.
 
-* Použijte konfiguraci založenou na GitOps jako správu kódu pro nasazení aplikací a konfigurací v rámci jednoho nebo více clusterů přímo ze správy zdrojového kódu, jako je GitHub.
+* Pomocí GitOps Nasaďte konfiguraci v jednom nebo víc clusterech z úložišť Git.
 
-* Pro clustery Kubernetes s využitím Azure Policy se neshodují dodržování předpisů a konfigurace.
+*  Dodržování předpisů a konfigurace pro clustery Kubernetes s nulovými gesty pomocí Azure Policy.
 
-* Spouštějte datové služby Azure v jakémkoli prostředí Kubernetes, konkrétně na spravované instanci Azure SQL a Azure Database for PostgreSQL škálování, s výhodami, jako jsou upgrady/aktualizace, zabezpečení a monitorování, jako kdyby běžely v Azure. Využijte elastické škálování, použijte aktualizace bez jakýchkoli výpadků aplikací, a to i v případě, že se nejedná o nepřetržité připojení k Azure.
+* Azure Data Services spouštějte v jakémkoli prostředí Kubernetes, jako by běželo v Azure (konkrétně spravovaná instance Azure SQL a Azure Database for PostgreSQL škálování, s využitím výhod, jako jsou upgrady, aktualizace, zabezpečení a monitorování). Používejte Elastické škálování a používejte aktualizace bez jakéhokoli výpadku aplikací, a to i bez nepřetržitého připojení k Azure.
 
 * Jednotné zobrazení prostředků s povolenou možností ARC Azure, ať už používáte Azure Portal, Azure CLI, Azure PowerShell nebo Azure REST API.
 
@@ -50,7 +50,7 @@ Níže jsou uvedeny podrobnosti o cenách pro funkce, které jsou dnes k dispozi
 
 ### <a name="arc-enabled-servers"></a>Servery s podporou služby Arc
 
-Funkce plochy ovládacího prvku ARC Azure se nabízí bez dalších poplatků. Sem patří:
+Následující funkce plochy ovládacího prvku ARC Azure se nabízí bez dalších poplatků:
 
 * Organizace prostředků prostřednictvím skupin a značek pro správu Azure
 
@@ -62,15 +62,15 @@ Funkce plochy ovládacího prvku ARC Azure se nabízí bez dalších poplatků. 
 
 * Správa aktualizací
 
-Všechny služby Azure, které se používají na serverech s podporou ARC, například Azure Security Center nebo Azure Monitor, se budou účtovat podle ceny za tuto službu. Další informace najdete na [stránce s cenami za Azure](https://azure.microsoft.com/pricing/).
+Všechny služby Azure, které se používají na serverech s podporou ARC, například Azure Security Center nebo Azure Monitor, se budou účtovat podle ceny za tuto službu. Další informace najdete na stránce s [cenami Azure](https://azure.microsoft.com/pricing/).
 
 ### <a name="azure-arc-enabled-kubernetes"></a>Kubernetes s podporou Azure Arc
 
-V aktuální fázi Preview se Kubernetes s povoleným Azure ARC bez dalších nákladů.
+Jakákoli služba Azure, která se používá v Kubernetes s povoleným Arcm, například Azure Security Center nebo Azure Monitor, se bude účtovat podle ceny za tuto službu. Další informace o cenách pro konfigurace nad Kubernetesem povoleným ARC Azure najdete na [stránce s cenami Azure](https://azure.microsoft.com/pricing/).
 
 ### <a name="azure-arc-enabled-data-services"></a>Datové služby s podporou služby Azure Arc
 
-V aktuální fázi Preview se datové služby s podporou ARC Azure nabízejí bez dalších nákladů.
+V aktuální fázi Preview jsou datové služby s podporou ARC Azure nabízeny bez dalších poplatků.
 
 ## <a name="next-steps"></a>Další kroky
 

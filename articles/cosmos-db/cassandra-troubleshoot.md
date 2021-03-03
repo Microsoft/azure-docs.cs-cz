@@ -5,14 +5,14 @@ author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
-ms.date: 12/01/2020
+ms.date: 03/02/2021
 ms.author: thvankra
-ms.openlocfilehash: 6d9a74729768a326379b5efddb864a4fee02fa59
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: f9b6e586879b8697660ced7aa6f1e75083e3ee29
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493208"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658567"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-db-cassandra-api"></a>Řešení běžných problémů v Azure Cosmos DB rozhraní API Cassandra
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -32,7 +32,7 @@ Některé oblíbené příčiny a řešení jsou následující:
 Může se zobrazit tato chyba: `Cannot connect to any host, scheduling retry in 600000 milliseconds` . 
 
 ### <a name="solution"></a>Řešení
-Může to být vyčerpání SNAT na straně klienta. Pro [odchozí připojení](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) k tomuto problému použijte postup v SNAT. Může to být také problém s nečinným časovým limitem, kdy služba Azure Load Balancer ve výchozím nastavení má 4 minuty časového limitu nečinnosti. V dokumentaci [vypršel časový limit nečinnosti nástroje pro vyrovnávání zatížení](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal). V nastavení ovladače povolte možnost TCP-keep alive (viz [níže](#enable-keep-alive-for-java-driver)) a nastavte `keepAlive` interval v operačním systému na méně než 4 minuty.
+Může to být vyčerpání SNAT na straně klienta. Pro [odchozí připojení](../load-balancer/load-balancer-outbound-connections.md) k tomuto problému použijte postup v SNAT. Může to být také problém s nečinným časovým limitem, kdy služba Azure Load Balancer ve výchozím nastavení má 4 minuty časového limitu nečinnosti. V dokumentaci [vypršel časový limit nečinnosti nástroje pro vyrovnávání zatížení](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal). V nastavení ovladače povolte možnost TCP-keep alive (viz [níže](#enable-keep-alive-for-java-driver)) a nastavte `keepAlive` interval v operačním systému na méně než 4 minuty.
 
  
 

@@ -2,18 +2,19 @@
 title: Zálohování a obnovení databáze Oracle Database 19c na virtuálním počítači Azure Linux pomocí Azure Backup
 description: Naučte se, jak zálohovat a obnovit Oracle Database databázi 19c pomocí služby Azure Backup.
 author: cro27
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: ac045694e8975509635e03221a8cb9cc84446b55
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 90f86a198ad36c2961f77336092d863953ee45ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806405"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673898"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>Zálohování a obnovení databáze Oracle Database 19c na virtuálním počítači Azure Linux pomocí Azure Backup
 
@@ -199,13 +200,13 @@ Tento krok předpokládá, že máte instanci Oracle (*test*), která je spušt�
      RMAN> backup as compressed backupset database plus archivelog;
      ```
 
-## <a name="using-azure-backup"></a>Použití služby Azure Backup
+## <a name="using-azure-backup-preview"></a>Použití Azure Backup (Preview)
 
 Služba Azure Backup poskytuje jednoduchá, zabezpečená a cenově výhodná řešení pro zálohování vašich dat a jejich obnovení z cloudu Microsoft Azure. Azure Backup poskytuje nezávislé a izolované zálohy pro ochranu proti náhodnému zničení původních dat. Zálohy jsou uloženy v trezoru služby Recovery Services s integrovanou správou bodů obnovení. Konfigurace a škálovatelnost jsou jednoduché, zálohy jsou optimalizované a můžete je snadno obnovit podle potřeby.
 
-Služba Azure Backup poskytuje [rozhraní](../../../backup/backup-azure-linux-app-consistent.md) pro zajištění konzistence aplikací během zálohování virtuálních počítačů s Windows a Linux pro různé aplikace, jako je Oracle, MySQL, Mongo DB, SAP Hana a PostGreSQL. To zahrnuje vyvolání předzálohovacího skriptu (k nečinnosti aplikací) před pořizováním snímku disků a voláním následného skriptu (příkazy pro uvolnění aplikací) po dokončení snímku, aby se aplikace vracely do normálního režimu. I když je na GitHubu k dispozici ukázka předzálohovacích a potištěných skriptů, je vytváření a údržba těchto skriptů vaše zodpovědnost. 
+Služba Azure Backup poskytuje [rozhraní](../../../backup/backup-azure-linux-app-consistent.md) pro zajištění konzistence aplikací během zálohování virtuálních počítačů s Windows a Linux pro různé aplikace, jako je Oracle, MySQL, Mongo DB a PostGreSQL. To zahrnuje vyvolání předzálohovacího skriptu (k nečinnosti aplikací) před pořizováním snímku disků a voláním následného skriptu (příkazy pro uvolnění aplikací) po dokončení snímku, aby se aplikace vracely do normálního režimu. I když je na GitHubu k dispozici ukázka předzálohovacích a potištěných skriptů, je vytváření a údržba těchto skriptů vaše zodpovědnost.
 
-Nyní Azure Backup poskytuje vylepšené rozhraní s předzálohovacími a pozálohovacími skripty, kde služba Azure Backup poskytne zabalené předběžné skripty a následné skripty pro vybrané aplikace. Azure Backup uživatelé pouze potřebují aplikaci pojmenovat a pak zálohování virtuálních počítačů Azure automaticky vyvolá příslušné skripty před odesláním. Zabalené předzálohovací skripty a post-Script budou spravovány Azure Backup týmem, aby se uživatelé mohli spolehnout na podporu, vlastnictví a platnost těchto skriptů. V současné době jsou podporované aplikace pro vylepšené rozhraní *Oracle* a *MySQL*.
+Nyní Azure Backup poskytuje vylepšené předzálohovací skripty a skripty po skriptu (**které jsou aktuálně ve verzi Preview**), kde služba Azure Backup poskytne zabalené předběžné skripty a následné skripty pro vybrané aplikace. Azure Backup uživatelé pouze potřebují aplikaci pojmenovat a pak zálohování virtuálních počítačů Azure automaticky vyvolá příslušné skripty před odesláním. Zabalené předzálohovací skripty a post-Script budou spravovány Azure Backup týmem, aby se uživatelé mohli spolehnout na podporu, vlastnictví a platnost těchto skriptů. V současné době jsou podporované aplikace pro vylepšené rozhraní *Oracle* a *MySQL*.
 
 V této části použijete Azure Backup Enhanced Framework k tomu, aby se snímky konzistentní vzhledem k aplikacím používaly ve spuštěném virtuálním počítači a databázi Oracle. Databáze bude umístěna do režimu zálohování, což umožňuje, aby při Azure Backup pořizování snímku disků virtuálních počítačů probíhalo reakční konzistentní online zálohování. Snímek bude úplnou kopií úložiště, a ne přírůstkovým nebo kopírovacím snímkem zápisu, takže se jedná o efektivní médium pro obnovení databáze z. Výhodou použití Azure Backup snímků konzistentních vzhledem k aplikacím je to, že jsou extrémně rychlé bez ohledu na to, jak velká je databáze, a snímek lze použít pro operace obnovení ihned po jejich pořízení, aniž by bylo nutné čekat na přenos do trezoru Recovery Services.
 
@@ -314,7 +315,7 @@ Pokud chcete použít Azure Backup k zálohování databáze, proveďte tyto kro
    sudo su -
    ```
 
-2. Vytvořte pracovní adresář zálohování konzistentní vzhledem k aplikacím:
+2. Vyhledejte složku atd/Azure. Pokud není k dispozici, vytvořte pracovní adresář zálohování konzistentní vzhledem k aplikacím:
 
    ```bash
    if [ ! -d "/etc/azure" ]; then
@@ -322,7 +323,7 @@ Pokud chcete použít Azure Backup k zálohování databáze, proveďte tyto kro
    fi
    ```
 
-3. Vytvořte soubor v adresáři *složce/etc/Azure* s názvem *úlohy. conf* s následujícím obsahem, který musí začínat na `[workload]` . V následujícím příkazu se vytvoří soubor a naplní se obsah:
+3. Vyhledejte ve složce úlohu. conf. Pokud není k dispozici, vytvořte soubor v adresáři *složce/etc/Azure* s názvem *úlohy. conf* s následujícím obsahem, který musí začínat na `[workload]` . Pokud soubor již existuje, stačí upravit pole tak, aby odpovídalo následujícímu obsahu. V opačném případě následující příkaz vytvoří soubor a naplní obsah:
 
    ```bash
    echo "[workload]
@@ -330,14 +331,6 @@ Pokud chcete použít Azure Backup k zálohování databáze, proveďte tyto kro
    command_path = /u01/app/oracle/product/19.0.0/dbhome_1/bin/
    timeout = 90
    linux_user = azbackup" > /etc/azure/workload.conf
-   ```
-
-4. Stáhněte si z [úložiště GitHubu](https://github.com/Azure/azure-linux-extensions/tree/master/VMBackup/main/workloadPatch/DefaultScripts) skripty preOracleMaster. SQL a postOracleMaster. SQL a zkopírujte je do adresáře *složce/etc/Azure* .
-
-5. Změnit oprávnění souboru
-
-```bash
-   chmod 744 workload.conf preOracleMaster.sql postOracleMaster.sql 
    ```
 
 ### <a name="trigger-an-application-consistent-backup-of-the-vm"></a>Aktivace zálohy virtuálního počítače konzistentního vzhledem k aplikacím
@@ -970,4 +963,4 @@ az group delete --name rg-oracle
 
 [Kurz: Vytvoření virtuálních počítačů s vysokou dostupností](../../linux/create-cli-complete.md)
 
-[Ukázky ukázek Azure CLI pro nasazení virtuálních počítačů](../../linux/cli-samples.md)
+[Ukázky ukázek Azure CLI pro nasazení virtuálních počítačů](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

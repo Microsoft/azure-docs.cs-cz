@@ -1,20 +1,23 @@
 ---
-title: Rychlý Start – připojení týmu ke schůzce
+title: Rychlý Start – připojení týmů na schůzku z webové aplikace
+description: V tomto kurzu se naučíte připojit týmy na schůzku pomocí komunikačních služeb Azure, které volají klientské knihovny pro JavaScript.
 author: chpalm
 ms.author: mikben
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: fa7f279e13e5dbb59af7eb3a7939be1edf0f7d5d
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d022d90aa4558ef5a4973668d4966a30f477a1da
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100552062"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660056"
 ---
+V tomto rychlém startu se dozvíte, jak se připojit k týmům pomocí komunikačních služeb Azure s voláním klientské knihovny pro JavaScript.
+
 ## <a name="prerequisites"></a>Požadavky
 
-- Funkční [komunikační služba volá aplikaci](../getting-started-with-calling.md).
+- Funkční [komunikační služby, které volají webovou aplikaci](../getting-started-with-calling.md).
 - [Nasazení týmů](/deployoffice/teams-install).
 
 
@@ -35,6 +38,7 @@ Textové pole se použije k zadání kontextu schůzky týmů a tlačítko se po
     <input id="teams-link-input" type="text" placeholder="Teams meeting link"
         style="margin-bottom:1em; width: 300px;" />
         <p>Call state <span style="font-weight: bold" id="call-state">-</span></p>
+        <p><span style="font-weight: bold" id="recording-state"></span></p>
     <div>
         <button id="join-meeting-button" type="button" disabled="false">
             Join Teams Meeting
@@ -55,6 +59,7 @@ Nahraďte obsah souboru client.js následujícím fragmentem kódu.
 
 ```javascript
 import { CallClient } from "@azure/communication-calling";
+import { Features } from "@azure/communication-calling";
 import { AzureCommunicationTokenCredential } from '@azure/communication-common';
 
 let call;
@@ -63,6 +68,7 @@ const meetingLinkInput = document.getElementById('teams-link-input');
 const hangUpButton = document.getElementById('hang-up-button');
 const teamsMeetingJoinButton = document.getElementById('join-meeting-button');
 const callStateElement = document.getElementById('call-state');
+const recordingStateElement = document.getElementById('recording-state');
 
 async function init() {
     const callClient = new CallClient();
@@ -86,9 +92,18 @@ teamsMeetingJoinButton.addEventListener("click", () => {
     // join with meeting link
     call = callAgent.join({meetingLink: meetingLinkInput.value}, {});
     
-    call.on('callStateChanged', () => {
+    call.on('stateChanged', () => {
         callStateElement.innerText = call.state;
     })
+
+    call.api(Features.Recording).on('isRecordingActiveChanged', () => {
+        if (call.api(Features.Recording).isRecordingActive) {
+            recordingStateElement.innerText = "This call is being recorded";
+        }
+        else {
+            recordingStateElement.innerText = "";
+        }
+    });
     // toggle button states
     hangUpButton.disabled = false;
     teamsMeetingJoinButton.disabled = true;

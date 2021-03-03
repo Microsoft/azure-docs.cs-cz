@@ -9,16 +9,14 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 80fdedb29f70c961431c987558a42d5fa46dfa7d
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 1a28ca967404bf6a5329f8d590a8f1f4f8715407
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760804"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657022"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Začínáme s příkladem skupiny Hero chat
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 <!----
 > [!WARNING]
@@ -36,13 +34,13 @@ V tomto rychlém startu se dozvíte, jak ukázka funguje před spuštěním uká
 
 ## <a name="overview"></a>Přehled
 
-Ukázka obsahuje aplikaci na straně klienta i aplikaci na straně serveru. **Aplikace na straně klienta** je webová aplikace reagující na Redux, která používá architekturu uživatelského rozhraní Fluent společnosti Microsoft. Tato aplikace posílá požadavky na ASP.NET Core **aplikace na straně serveru** , která pomáhá aplikaci na straně klienta připojit se k Azure. 
+Ukázka obsahuje aplikaci na straně klienta i aplikaci na straně serveru. **Aplikace na straně klienta** je webová aplikace reagující na Redux, která používá architekturu uživatelského rozhraní Fluent společnosti Microsoft. Tato aplikace posílá požadavky na ASP.NET Core **aplikace na straně serveru** , která pomáhá aplikaci na straně klienta připojit se k Azure.
 
 Ukázka vypadá takto:
 
 :::image type="content" source="./media/chat/landing-page.png" alt-text="Snímek obrazovky s úvodní stránkou ukázkové aplikace":::
 
-Po stisknutí tlačítka Spustit chat načte webová aplikace token přístupu uživatele z aplikace na straně serveru. Tento token se pak použije k připojení klientské aplikace ke komunikačním službám Azure. Po načtení tokenu se zobrazí výzva k zadání vašeho jména a Emoji, která bude představovat chat. 
+Po stisknutí tlačítka Spustit chat načte webová aplikace token přístupu uživatele z aplikace na straně serveru. Tento token se pak použije k připojení klientské aplikace ke komunikačním službám Azure. Po načtení tokenu se zobrazí výzva k zadání vašeho jména a Emoji, která bude představovat chat.
 
 :::image type="content" source="./media/chat/pre-chat.png" alt-text="Snímek obrazovky s obrazovkou předběžného chatu aplikace":::
 
@@ -54,7 +52,7 @@ Součásti hlavní obrazovky chatu:
 
 - **Hlavní oblast chatu**: Toto je základní prostředí pro chat, kde mohou uživatelé odesílat a přijímat zprávy. Chcete-li odesílat zprávy, můžete použít vstupní oblast a stisknout klávesu ENTER (nebo použít tlačítko Odeslat). Přijaté zprávy chatu jsou zařazeny do kategorie odesílatelem se správným názvem a emoji. V oblasti chatu se zobrazí dva typy oznámení: 1) psaní oznámení, když uživatel zadá a 2) odesílá a čte oznámení pro zprávy.
 - **Záhlaví**: uživateli se zobrazí název konverzačního vlákna a ovládací prvky pro přepnutí účastníků a nastavení a tlačítko opustit k ukončení relace chatu.
-- **Boční panel**: v tomto případě se zobrazí účastníci a informace o nastavení při přepínání pomocí ovládacích prvků v záhlaví. Boční panel účastníci obsahuje seznam účastníků v chatu a odkaz pro pozvání účastníků do relace chatu. Postranní panel nastavení vám umožní nakonfigurovat název vlákna chatu. 
+- **Boční panel**: v tomto případě se zobrazí účastníci a informace o nastavení při přepínání pomocí ovládacích prvků v záhlaví. Boční panel účastníci obsahuje seznam účastníků v chatu a odkaz pro pozvání účastníků do relace chatu. Postranní panel nastavení vám umožní nakonfigurovat název vlákna chatu.
 
 Níže najdete další informace o požadavcích a krocích pro nastavení ukázky.
 
@@ -86,7 +84,7 @@ Ukázku můžete otestovat místně tak, že otevřete několik relací prohlí�
 1. Přejít do složky chat a otevřít `Chat.csproj` řešení v aplikaci Visual Studio
 2. Spusťte projekt. Prohlížeč se otevře v localhost: 5000.
 
-#### <a name="troubleshooting"></a>Odstraňování potíží
+#### <a name="troubleshooting"></a>Řešení potíží
 
 - Řešení se nevytvoří, vyvolá chyby během instalace/buildu NPM.
 
@@ -104,7 +102,7 @@ Pokud chcete vyčistit a odebrat předplatné služby Communications Services, m
 
 ## <a name="next-steps"></a>Další kroky
 
->[!div class="nextstepaction"] 
+>[!div class="nextstepaction"]
 >[Stažení ukázky z GitHubu](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 Další informace najdete v následujících článcích:

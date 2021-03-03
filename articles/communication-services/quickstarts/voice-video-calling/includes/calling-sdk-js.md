@@ -4,16 +4,16 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 7d391998e7f20cff0f77f6aab7938bc375f75c9e
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 3830025d761c94e2b0b0bc3e66389d66794b946c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99616338"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661519"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Nasazený prostředek komunikačních služeb. [Vytvořte prostředek služby Communications](../../create-communication-resource.md).
 - A `User Access Token` povolí klienta volání. Další informace o [tom, jak získat `User Access Token` ](../../access-tokens.md)
 - Volitelné: dokončete rychlé [zprovoznění, abyste mohli začít s přidáváním volání do aplikace](../getting-started-with-calling.md) .
@@ -22,17 +22,23 @@ ms.locfileid: "99616338"
 
 ### <a name="install-the-client-library"></a>Instalace klientské knihovny
 
+> [!NOTE]
+> Tento dokument používá verzi 1.0.0-beta. 6 volání klientské knihovny.
+
 Pomocí `npm install` příkazu můžete nainstalovat volání služby Azure Communication Services a běžné klientské knihovny pro JavaScript.
+Tento dokument odkazuje na typy ve verzi 1.0.0-beta. 5 volání knihovny.
 
 ```console
+npm install @azure/communication-common --save
 npm install @azure/communication-calling --save
+
 ```
 
 ## <a name="object-model"></a>Objektový model
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce komunikačních služeb Azure, které volají klientskou knihovnu:
 
-| Název                             | Description                                                                                                                                 |
+| Název                             | Popis                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
 | CallClient                       | CallClient je hlavní vstupní bod pro volání klientské knihovny.                                                                       |
 | CallAgent                        | CallAgent se používá ke spouštění a správě volání.                                                                                            |
@@ -44,7 +50,7 @@ Následující třídy a rozhraní zpracovávají některé hlavní funkce komun
 
 Vytvoří instanci nové `CallClient` instance. Můžete ji nakonfigurovat s vlastními možnostmi, jako je například instance protokolovacího nástroje.
 Po vytvoření instance `CallClient` je možné vytvořit `CallAgent` instanci voláním `createCallAgent` metody na `CallClient` instanci. Tato funkce asynchronně vrátí `CallAgent` objekt instance.
-`createCallAgent`Metoda přijímá `CommunicationTokenCredential` jako argument, který přijímá [token přístupu uživatele](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens).
+`createCallAgent`Metoda přijímá `CommunicationTokenCredential` jako argument, který přijímá [token přístupu uživatele](../../access-tokens.md).
 Aby bylo možné získat přístup k `DeviceManager` instanci callAgent, je třeba nejprve vytvořit. Pak můžete použít `getDeviceManager` metodu na `CallClient` instanci a získat tak DeviceManager.
 
 ```js
@@ -57,27 +63,30 @@ const deviceManager = await callClient.getDeviceManager()
 
 ## <a name="place-an-outgoing-call"></a>Umístit odchozí volání
 
-Chcete-li vytvořit a spustit volání, potřebujete použít jedno z rozhraní API na CallAgent a zadat uživatele, kterého jste vytvořili prostřednictvím klientské knihovny pro správu komunikačních služeb.
+Chcete-li vytvořit a spustit volání, je nutné použít jedno z rozhraní API na CallAgent a zadat uživatele, kterého jste vytvořili prostřednictvím klientské knihovny služby Communications identity.
 
 Vytvoření a spuštění volání je synchronní. Instance volání umožňuje přihlásit se k odběru událostí volání.
 
 ## <a name="place-a-call"></a>Umístit volání
 
 ### <a name="place-a-11-call-to-a-user-or-pstn"></a>Nakonání volání 1:1 uživateli nebo veřejné telefonní síti
-Chcete-li umístit volání jinému uživateli komunikačních služeb, volejte `call` metodu na `callAgent` a předejte CommunicationUserIdentifier volaný:
+Chcete-li zavolat jinému uživateli komunikačních služeb, volejte `startCall` metodu na `callAgent` a předejte CommunicationUserIdentifier volaný, který jste [vytvořili pomocí knihovny pro správu služby Communication Services](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens).
 
 ```js
 const userCallee = { communicationUserId: '<ACS_USER_ID>' }
-const oneToOneCall = callAgent.call([userCallee]);
+const oneToOneCall = callAgent.startCall([userCallee]);
 ```
 
-Chcete-li umístit volání do veřejné telefonní sítě, zavolejte `call` metodu na `callAgent` a předejte PhoneNumberIdentifier volaný.
+Chcete-li umístit volání do veřejné telefonní sítě, zavolejte `startCall` metodu na `callAgent` a předejte PhoneNumberIdentifier volaný.
 Aby bylo možné volat do veřejné telefonní služby, musí být prostředek komunikačních služeb nakonfigurovaný.
-Při volání čísla veřejné telefonní číslo musíte zadat alternativní ID volajícího.
+Při volání čísla veřejné telefonní číslo musíte zadat alternativní ID volajícího. Alternativní ID volajícího odkazuje na telefonní číslo (na základě standardu E. 164) identifikující volajícího ve volání do veřejné telefonní sítě. Pokud například zadáte alternativní ID volajícího pro volání do veřejné telefonní sítě, bude toto telefonní číslo takové, jako to volaný volaný při příchozím volání.
+
+> [!WARNING]
+> Volání veřejné telefonní sítě je aktuálně v privátní verzi Preview. Pro přístup [použijte k programu předčasného](https://aka.ms/ACS-EarlyAdopter)připravení.
 ```js
 const pstnCalee = { phoneNumber: '<ACS_USER_ID>' }
 const alternateCallerId = {alternateCallerId: '<Alternate caller Id>'};
-const oneToOneCall = callAgent.call([pstnCallee], {alternateCallerId});
+const oneToOneCall = callAgent.startCall([pstnCallee], {alternateCallerId});
 ```
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>Nakonání volání 1: n s uživateli a PSTN
@@ -85,21 +94,23 @@ const oneToOneCall = callAgent.call([pstnCallee], {alternateCallerId});
 const userCallee = { communicationUserId: <ACS_USER_ID> }
 const pstnCallee = { phoneNumber: <PHONE_NUMBER>};
 const alternateCallerId = {alternateCallerId: '<Alternate caller Id>'};
-const groupCall = callAgent.call([userCallee, pstnCallee], {alternateCallerId});
+const groupCall = callAgent.startCall([userCallee, pstnCallee], {alternateCallerId});
+
 ```
 
 ### <a name="place-a-11-call-with-video-camera"></a>Vložení volání 1:1 s videokamerou
 > [!WARNING]
 > V tuto chvíli nemůže být k dispozici více než jeden odchozí datový proud v místním videu.
-Chcete-li umístit audiovizuální volání, je nutné vytvořit výčet místních fotoaparátů pomocí `getCameraList` rozhraní deviceManager API.
-Jakmile vyberete požadovanou kameru, použijte ji k vytvoření `LocalVideoStream` instance a předejte ji do `videoOptions` jako položku v rámci `localVideoStream` pole do `call` metody.
+Chcete-li umístit audiovizuální volání, je nutné vytvořit výčet místních fotoaparátů pomocí `getCameras()` rozhraní deviceManager API.
+Jakmile vyberete požadovanou kameru, použijte ji k vytvoření `LocalVideoStream` instance a předejte ji do `videoOptions` jako položku v rámci `localVideoStream` pole do `startCall` metody.
 Jakmile se vaše volání připojí, automaticky začne odesílat Stream videa od vybrané kamery k ostatním účastníkům. To platí také pro volání možnosti videa. přijmout () a CallAgent. Join ().
 ```js
 const deviceManager = await callClient.getDeviceManager();
-const videoDeviceInfo = deviceManager.getCameraList()[0];
+const cameras = await deviceManager.getCameras();
+videoDeviceInfo = cameras[0];
 localVideoStream = new LocalVideoStream(videoDeviceInfo);
 const placeCallOptions = {videoOptions: {localVideoStreams:[localVideoStream]}};
-const call = callAgent.call(['acsUserId'], placeCallOptions);
+const call = callAgent.startCall(['acsUserId'], placeCallOptions);
 
 ```
 
@@ -134,6 +145,9 @@ const call = callAgent.join(locator);
 
 ```js
 const incomingCallHander = async (args: { incomingCall: IncomingCall }) => {
+    //Get information about caller
+    var callerInfo = incomingCall.callerInfo
+    
     //accept the call
     var call = await incomingCall.accept();
 
@@ -163,14 +177,12 @@ const callId: string = call.id;
 const remoteParticipants = call.remoteParticipants;
 ```
 
-* Identita volajícího, pokud je volání příchozí. Identita je jedním z `CommunicationIdentifier` typů
+* Identifikátor volajícího, pokud je volání příchozí. Identifikátor je jedním z `CommunicationIdentifier` typů
 ```js
 
-const callerIdentity = call.callerInfo.identity;
+const callerIdentity = call.callerInfo.identifier;
 
-```
-
-* Získejte stav volání.
+* Get the state of the Call.
 ```js
 
 const callState = call.state;
@@ -183,7 +195,8 @@ Vrátí řetězec představující aktuální stav volání:
 * "Vyzvánění" – pro odchozí volání – indikuje, že volání bude vyzvánět pro vzdálené účastníky, je na jejich straně "příchozí".
 * ' EarlyMedia ' – označuje stav, ve kterém je přehráno oznámení před připojením volání
 * Připojeno – volání je připojené.
-* Blokováno – volání je blokováno, žádné médium neprobíhá mezi místním koncovým bodem a vzdáleným účastníkem (y).
+* ' LocalHold ' – volání je blokováno místním účastníkem, žádné médium neprobíhá mezi místním koncovým bodem a vzdáleným účastníkem (y).
+* ' RemoteHold ' – volání je blokováno vzdáleným účastníkem, žádné médium mezi místním koncovým bodem a vzdáleným účastníkem není předáváno.
 * "Odpojení" – přechodový stav před voláním do stavu "Odpojeno"
 * Odpojeno – stav konečného volání
   * Pokud dojde ke ztrátě síťového připojení, stav přejde na odpojeno po 2 minutách.
@@ -241,10 +254,10 @@ Chcete-li ztlumit nebo zrušit ztlumení místního koncového bodu, můžete po
 
 ```js
 
-//mute local device 
+//mute local device
 await call.mute();
 
-//unmute local device 
+//unmute local device
 await call.unmute();
 
 ```
@@ -252,7 +265,7 @@ await call.unmute();
 ### <a name="start-and-stop-sending-local-video"></a>Spuštění a zastavení odesílání místního videa
 
 
-Chcete-li spustit video, je nutné vytvořit výčet kamer pomocí `getCameraList` metody `deviceManager` objektu. Pak vytvořte novou instanci `LocalVideoStream` předání požadované kamery do `startVideo` metody jako argument:
+Chcete-li spustit video, je nutné vytvořit výčet kamer pomocí `getCameras` metody `deviceManager` objektu. Pak vytvořte novou instanci `LocalVideoStream` předání požadované kamery do `startVideo` metody jako argument:
 
 
 ```js
@@ -280,8 +293,8 @@ await call.stopVideo(localVideoStream);
 V době, kdy se video posílá vyvoláním na instanci, můžete přepínat na jiné zařízení fotoaparátu `switchSource` `localVideoStream` .
 
 ```js
-const source callClient.getDeviceManager().getCameraList()[1];
-localVideoStream.switchSource(source);
+const cameras = await callClient.getDeviceManager().getCameras();
+localVideoStream.switchSource(cameras[1]);
 
 ```
 
@@ -302,6 +315,7 @@ call.remoteParticipants; // [remoteParticipant, remoteParticipant....]
 Vzdálený účastník má sadu vlastností a kolekcí, které jsou k němu přidružené.
 #### <a name="communicationidentifier"></a>CommunicationIdentifier
 Získat identifikátor pro tohoto vzdáleného účastníka.
+Identita je jedním z typů CommunicationIdentifier:
 ```js
 const identifier = remoteParticipant.identifier;
 ```
@@ -319,6 +333,7 @@ const state = remoteParticipant.state;
 Stav může být jedna z
 * Nečinné – počáteční stav
 * Probíhá připojování – přechodový stav, zatímco se účastník připojuje k volání.
+* Cyklické volání – účastník se přechází
 * Připojeno – účastník je připojený k volání.
 * ' Hold ' – účastník je blokován
 * ' EarlyMedia ' – před připojením účastníka k volání se přehraje oznámení.
@@ -384,29 +399,31 @@ Pokud chcete zobrazit seznam streamů a sdílení obrazovky pro vzdálené úča
 
 ```js
 const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStreams[0];
-const streamType: MediaStreamType = remoteVideoStream.type;
+const streamType: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
- 
+
 Aby bylo možné vykreslit `RemoteVideoStream` , je nutné se přihlásit k odběru `isAvailableChanged` události.
 Pokud se `isAvailable` vlastnost změní na `true` , vzdálený účastník posílá datový proud.
 Jakmile k tomu dojde, vytvořte novou instanci `Renderer` a pak vytvořte novou `RendererView` instanci pomocí asynchronní `createView` metody.  Pak se můžete připojit `view.target` k libovolnému prvku uživatelského rozhraní.
 Vždy, když se změní dostupnost vzdáleného streamu, můžete zvolit zničení celého zobrazovacího panelu, jeho konkrétního `RendererView` nebo zachování, ale výsledkem bude zobrazení prázdného snímku videa.
 
 ```js
-let renderer: Renderer = new Renderer(remoteParticipantStream);
-const displayVideo = () => {
-    const view = await renderer.createView();
-    htmlElement.appendChild(view.target);
-}
-remoteParticipantStream.on('availabilityChanged', async () => {
-    if (remoteParticipantStream.isAvailable) {
-        displayVideo();
-    } else {
-        renderer.dispose();
+function subscribeToRemoteVideoStream(remoteVideoStream: RemoteVideoStream) {
+    let renderer: Renderer = new Renderer(remoteVideoStream);
+    const displayVideo = () => {
+        const view = await renderer.createView();
+        htmlElement.appendChild(view.target);
     }
-});
-if (remoteParticipantStream.isAvailable) {
-    displayVideo();
+    remoteVideoStream.on('availabilityChanged', async () => {
+        if (remoteVideoStream.isAvailable) {
+            displayVideo();
+        } else {
+            renderer.dispose();
+        }
+    });
+    if (remoteVideoStream.isAvailable) {
+        displayVideo();
+    }
 }
 ```
 
@@ -425,7 +442,7 @@ const size: {width: number; height: number} = remoteVideoStream.size;
 
 * `MediaStreamType` – může být ' video ' nebo ' ScreenSharing '
 ```js
-const type: MediaStreamType = remoteVideoStream.type;
+const type: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
 * `isAvailable` – Určuje, jestli vzdálený koncový bod účastníka aktivně posílá Stream.
 ```js
@@ -446,11 +463,11 @@ renderer.dispose()
 
 
 ### <a name="rendererview-methods-and-properties"></a>Metody a vlastnosti RendererView
-Při vytváření můžete `RendererView` zadat `scalingMode` a `mirrored` Vlastnosti.
-Pokud je zadaný, režim škálování může být Stretch, oříznutý nebo vešel `Mirrored` , vykreslený datový proud se Překlopí svisle.
+Při vytváření můžete `RendererView` zadat `scalingMode` a `isMirrored` Vlastnosti.
+Pokud je zadaný, režim škálování může být Stretch, oříznutý nebo vešel `isMirrored` , vykreslený datový proud se Překlopí svisle.
 
 ```js
-const rendererView: RendererView = renderer.createView({ scalingMode, mirrored });
+const rendererView: RendererView = renderer.createView({ scalingMode, isMirrored });
 ```
 Kterákoli `RendererView` z daných instancí má `target` vlastnost, která představuje plochu vykreslování. Tato akce musí být připojena v uživatelském rozhraní aplikace:
 ```js
@@ -478,18 +495,18 @@ const deviceManager = await callClient.getDeviceManager();
 
 ### <a name="enumerate-local-devices"></a>Zobrazení výčtu místních zařízení
 
-Chcete-li získat přístup k místním zařízením, můžete použít metody výčtu na Správce zařízení. Výčet je synchronní akce.
+Chcete-li získat přístup k místním zařízením, můžete použít metody výčtu na Správce zařízení. Výčet je asynchronní akce.
 
 ```js
 
 //  Get a list of available video devices for use.
-const localCameras = deviceManager.getCameraList(); // [VideoDeviceInfo, VideoDeviceInfo...]
+const localCameras = await deviceManager.getCameras(); // [VideoDeviceInfo, VideoDeviceInfo...]
 
 // Get a list of available microphone devices for use.
-const localMicrophones = deviceManager.getMicrophoneList(); // [AudioDeviceInfo, AudioDeviceInfo...]
+const localMicrophones = await deviceManager.getMicrophones(); // [AudioDeviceInfo, AudioDeviceInfo...]
 
 // Get a list of available speaker devices for use.
-const localSpeakers = deviceManager.getSpeakerList(); // [AudioDeviceInfo, AudioDeviceInfo...]
+const localSpeakers = await deviceManager.getSpeakers(); // [AudioDeviceInfo, AudioDeviceInfo...]
 
 ```
 
@@ -501,16 +518,16 @@ Pokud nejsou nastavené výchozí hodnoty klienta, komunikační služby se vrá
 ```js
 
 // Get the microphone device that is being used.
-const defaultMicrophone = deviceManager.getMicrophone();
+const defaultMicrophone = deviceManager.selectedMicrophone;
 
 // Set the microphone device to use.
-await deviceManager.setMicrophone(AudioDeviceInfo);
+await deviceManager.selectMicrophone(AudioDeviceInfo);
 
 // Get the speaker device that is being used.
-const defaultSpeaker = deviceManager.getSpeaker();
+const defaultSpeaker = deviceManager.selectedSpeaker;
 
 // Set the speaker device to use.
-await deviceManager.setSpeaker(AudioDeviceInfo);
+await deviceManager.selectSpeaker(AudioDeviceInfo);
 
 ```
 
@@ -519,7 +536,8 @@ await deviceManager.setSpeaker(AudioDeviceInfo);
 `DeviceManager` `Renderer` K zahájení vykreslování datových proudů z místní kamery můžete použít a. Tento datový proud se nebude posílat jiným účastníkům; je to místní kanál verze Preview. Toto je asynchronní akce.
 
 ```js
-const localVideoDevice = deviceManager.getCameraList()[0];
+const cameras = await deviceManager.getCameras();
+const localVideoDevice = cameras[0];
 const localCameraStream = new LocalVideoStream(localVideoDevice);
 const renderer = new Renderer(localCameraStream);
 const view = await renderer.createView();
@@ -532,7 +550,7 @@ document.body.appendChild(view.target);
 Vyzvat uživatele k udělení oprávnění pro fotoaparát a mikrofon s následujícími oprávněními:
 
 ```js
-const result = await deviceManager.askDevicePermission(audio: true, video: true);
+const result = await deviceManager.askDevicePermission({audio: true, video: true});
 ```
 Tato akce se vyřeší asynchronně s objektem, který označuje `audio` , jestli `video` byla udělená oprávnění:
 ```js
@@ -540,16 +558,6 @@ console.log(result.audio);
 console.log(result.video);
 ```
 
-Aktuální stav oprávnění pro daný typ lze zkontrolovat voláním `getPermissionState` :
-
-```js
-
-const result = deviceManager.getPermissionState('Microphone'); // for microphone permission state
-const result = deviceManager.getPermissionState('Camera'); // for camera permission state
-
-console.log(result); // 'Granted' | 'Denied' | 'Prompt' | 'Unknown';
-
-```
 
 ## <a name="call-recording-management"></a>Správa záznamů volání
 
@@ -573,7 +581,7 @@ const isRecordingActiveChangedHandler = () => {
 };
 
 callRecordingApi.on('isRecordingActiveChanged', isRecordingActiveChangedHandler);
-               
+
 ```
 
 ## <a name="call-transfer-management"></a>Správa přenosu hovorů
@@ -638,41 +646,71 @@ callTransferApi.on('transferRequested', args => {
 ```
 
 ## <a name="eventing-model"></a>Model událostí
-
-Můžete se přihlásit k odběru většiny vlastností a kolekcí, které budou oznamovány při změně hodnot.
+Musíte zkontrolovat aktuální hodnoty a přihlásit se k odběru událostí aktualizace pro budoucí hodnoty.
 
 ### <a name="properties"></a>Vlastnosti
-Přihlášení k odběru `property changed` událostí:
 
 ```js
+// Inspect current value
+console.log(object.property);
 
-const eventHandler = () => {
-    // check current value of a property, value is not passed to callback
-    console.log(object.property);
-};
-object.on('propertyNameChanged',eventHandler);
+// Subscribe to value updates
+object.on('propertyChanged', () => {
+    // Inspect new value
+    console.log(object.property)
+});
 
-// To unsubscribe:
+// Unsubscribe from updates:
+object.off('propertyChanged', () => {});
 
-object.off('propertyNameChanged',eventHandler);
 
+
+// Example for inspecting call state
+console.log(call.state);
+call.on('stateChanged', () => {
+    console.log(call.state);
+});
+call.off('stateChanged', () => {});
 ```
 
 ### <a name="collections"></a>Kolekce
-Přihlášení k odběru `collection updated` událostí:
-
 ```js
+// Inspect current collection
+object.collection.forEach(v => {
+    console.log(v);
+});
 
-const eventHandler = (e) => {
-    // check added elements
-    console.log(e.added);
-    // check removed elements
-    console.log(e.removed);
-};
-object.on('collectionNameUpdated',eventHandler);
+// Subscribe to collection updates
+object.on('collectionUpdated', e => {
+    // Inspect new values added to the collection
+    e.added.forEach(v => {
+        console.log(v);
+    });
+    // Inspect values removed from the collection
+    e.removed.forEach(v => {
+        console.log(v);
+    });
+});
 
-// To unsubscribe:
+// Unsubscribe from updates:
+object.off('collectionUpdated', () => {});
 
-object.off('collectionNameUpdated',eventHandler);
 
+
+// Example for subscribing to remote participants and their video streams
+call.remoteParticipants.forEach(p => {
+    subscribeToRemoteParticipant(p);
+})
+
+call.on('remoteParticipantsUpdated', e => {
+    e.added.forEach(p => { subscribeToRemoteParticipant(p) })
+    e.removed.forEach(p => { unsubscribeFromRemoteParticipant(p) })
+});
+
+function subscribeToRemoteParticipant(p) {
+    console.log(p.state);
+    p.on('stateChanged', () => { console.log(p.state); });
+    p.videoStreams.forEach(v => { subscribeToRemoteVideoStream(v) });
+    p.on('videoStreamsUpdated', e => { e.added.forEach(v => { subscribeToRemoteVideoStream(v) }) })
+}
 ```

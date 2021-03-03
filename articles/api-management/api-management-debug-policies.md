@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/22/2020
 ms.author: apimpm
-ms.openlocfilehash: a8ed834c9ab093ae063e386978bca4d73fa46543
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 2e45d1274cf7332dbca70eaa8fc51f0ac98e5359
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400722"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648012"
 ---
 # <a name="debug-azure-api-management-policies-in-visual-studio-code"></a>Ladění zásad Azure API Management v Visual Studio Code
 
@@ -25,10 +25,7 @@ ms.locfileid: "97400722"
 
 Tento článek popisuje, jak ladit zásady API Management pomocí [rozšíření Azure API Management pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement). 
 
-> [!NOTE]
-> Tato funkce je ve verzi Public Preview.
-
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pomocí tohoto [rychlého](get-started-create-service-instance.md) startu nejprve vytvořte API Management instanci vývojové vrstvy.
 
@@ -36,7 +33,7 @@ Tento článek popisuje, jak ladit zásady API Management pomocí [rozšíření
 
 * Importujte rozhraní API do instance API Management. Příklady kroků najdete v tématu [kurz: použití rozšíření API Management pro Visual Studio Code k importu a správě rozhraní API](visual-studio-code-tutorial.md).
 
-## <a name="restrictions-and-limitations"></a>Omezení a omezení
+## <a name="restrictions-and-limitations"></a>Omezení a limity
 
 Tato funkce je k dispozici pouze ve vývojářské úrovni API Management. Každá instance API Management podporuje jenom jednu souběžnou relaci ladění.
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/17/2021
-ms.openlocfilehash: 517b07eecdbc63754f46fcf1051bf5b987dbc20e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 8d7d482f38d58c8d6a8959acb51c94c0fb814697
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654201"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668431"
 ---
 # <a name="create-scoped-resource-set-configuration-rules"></a>Vytvořit pravidla konfigurace sady prostředků s vymezeným oborem
 
@@ -43,7 +43,7 @@ Pomocí následujících kroků vytvořte novou konfiguraci sady prostředků s 
 
 Při vytváření pravidel pro sadu prostředků s vymezeným oborem použijte následující syntaxi k určení, která pravidla prostředků se vztahují na.
 
-### <a name="static-replacers-single-brackets"></a>Statické přeapostrofy (samostatné závorky)
+### <a name="dynamic-replacers-single-brackets"></a>Dynamické odapostrofy (samostatné závorky)
 
 Jednoduché závorky se používají jako **dynamické** měnící se v pravidle sady prostředků s vymezeným oborem. Zadejte dynamickou Replacer v kvalifikovaném názvu pomocí formátu `{<replacerName:<replacerType>}` . V případě, že se shodují, dynamické oddálení se používají jako podmínka seskupení, která označuje, že prostředky by měly být reprezentovány jako sada prostředků. Pokud jsou prostředky seskupeny do sady prostředků, bude mít kvalifikovaná cesta nastavená na `{replacerName}` místo, kde byl zadán parametr replacer.
 
@@ -92,7 +92,7 @@ Níže je uvedené pořadí operací při aplikování pravidel sady prostředk�
 
 Extrakce dat SAP do úplných a rozdílových zátěží
 
-*Vstupy*
+#### <a name="inputs"></a>Vstupy
 
 Spis
 -   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_01.txt`
@@ -102,7 +102,7 @@ Spis
 -   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_02.txt`
 
 
-*Pravidlo sady prostředků s vymezeným oborem*
+#### <a name="scoped-resource-set-rule"></a>Pravidlo sady prostředků s vymezeným oborem 
 
 **Rozsah:**https://myazureblob.blob.core.windows.net/bar/
 
@@ -112,7 +112,7 @@ Spis
 
 **Sada prostředků:** true
 
-*Výstup*
+#### <a name="output"></a>Výstup 
 
 Jeden prostředek sady prostředků
 
@@ -124,7 +124,7 @@ Jeden prostředek sady prostředků
 
 Data IoT ve formátu Avro
 
-*Vstupy*
+#### <a name="inputs"></a>Vstupy 
 
 Spis
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
@@ -132,7 +132,7 @@ Spis
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-*Pravidla sady prostředků s vymezeným oborem*
+#### <a name="scoped-resource-set-rules"></a>Pravidla sady prostředků s vymezeným oborem 
 
 **Rozsah:**https://myazureblob.blob.core.windows.net/bar/
 
@@ -150,9 +150,9 @@ Pravidlo 2
 
 **Kvalifikovaný název:**`raw/machinename-90/{date:date}/{time:time}-{id:int}.avro`
 
-**Sada prostředků: true**
+#### <a name="resource-set-true"></a>*Sada prostředků: true* 
 
-*Výstupy*
+#### <a name="outputs"></a>Výstupy 
 
 2 sady prostředků 
 
@@ -172,7 +172,7 @@ Sada prostředků 2
 
 Data IoT ve formátu Avro
 
-*Vstupy*
+#### <a name="inputs"></a>Vstupy 
 
 Spis
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
@@ -180,7 +180,7 @@ Spis
 -   `https://myazureblob.blob.core.windows.netbar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-*Pravidlo sady prostředků s vymezeným oborem*
+#### <a name="scoped-resource-set-rule"></a>Pravidlo sady prostředků s vymezeným oborem 
 
 **Rozsah:**https://myazureblob.blob.core.windows.net/bar/
 
@@ -190,7 +190,7 @@ Spis
 
 **Sada prostředků:** true
 
-*Výstupy*
+#### <a name="outputs"></a>Výstupy 
 
 Sada prostředků 1
 
@@ -208,7 +208,7 @@ Sada prostředků 2
 
 Neseskupovat do sad prostředků
 
-*Vstupy*
+#### <a name="inputs"></a>Vstupy 
 
 Spis
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
@@ -216,7 +216,7 @@ Spis
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-*Pravidlo sady prostředků s vymezeným oborem*
+#### <a name="scoped-resource-set-rule"></a>Pravidlo sady prostředků s vymezeným oborem 
 
 **Rozsah:**https://myazureblob.blob.core.windows.net/bar/
 
@@ -226,7 +226,7 @@ Spis
 
 **Sada prostředků:** false
 
-*Výstupy*
+#### <a name="outputs"></a>Výstupy 
 
 4 jednotlivé prostředky
 

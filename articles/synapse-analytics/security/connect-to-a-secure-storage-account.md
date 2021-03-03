@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 02/10/2021
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 599cf17e1ab2b85aac77893e8b2d520d412e1cea
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5d43d6f56b48a34fa34baf727508ad8f1c151aa7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417357"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674310"
 ---
 # <a name="connect-to-a-secure-azure-storage-account-from-your-synapse-workspace"></a>Připojení k zabezpečenému účtu Azure Storage z pracovního prostoru synapse
 
@@ -21,7 +21,7 @@ V tomto článku se dozvíte, jak se připojit k zabezpečenému účtu Azure St
 
 
 ## <a name="secured-azure-storage-accounts"></a>Zabezpečené účty úložiště Azure
-Azure Storage poskytuje vrstvený model zabezpečení, který umožňuje zabezpečení a řízení přístupu k účtům úložiště. Můžete nakonfigurovat pravidla brány firewall protokolu IP pro udělení provozu z vybraných veřejných rozsahů IP adres k vašemu účtu úložiště. Můžete taky nakonfigurovat Síťová pravidla, která budou udělovat přenosy z vybraných virtuálních sítí přístup k vašemu účtu úložiště. Můžete kombinovat pravidla brány firewall protokolu IP, která umožňují přístup z vybraných rozsahů IP adres a síťových pravidel, která udělují přístup z vybraných virtuálních sítí ve stejném účtu úložiště. Tato pravidla se vztahují na veřejný koncový bod účtu úložiště. Nepotřebujete žádná pravidla přístupu, abyste mohli povolit provoz ze spravovaných privátních koncových bodů vytvořených v pracovním prostoru do účtu úložiště. Pravidla brány firewall pro úložiště je možné použít pro existující účty úložiště nebo pro nové účty úložiště při jejich vytváření. Další informace o zabezpečení účtu úložiště najdete [tady](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Azure Storage poskytuje vrstvený model zabezpečení, který umožňuje zabezpečení a řízení přístupu k účtům úložiště. Můžete nakonfigurovat pravidla brány firewall protokolu IP pro udělení provozu z vybraných veřejných rozsahů IP adres k vašemu účtu úložiště. Můžete taky nakonfigurovat Síťová pravidla, která budou udělovat přenosy z vybraných virtuálních sítí přístup k vašemu účtu úložiště. Můžete kombinovat pravidla brány firewall protokolu IP, která umožňují přístup z vybraných rozsahů IP adres a síťových pravidel, která udělují přístup z vybraných virtuálních sítí ve stejném účtu úložiště. Tato pravidla se vztahují na veřejný koncový bod účtu úložiště. Nepotřebujete žádná pravidla přístupu, abyste mohli povolit provoz ze spravovaných privátních koncových bodů vytvořených v pracovním prostoru do účtu úložiště. Pravidla brány firewall pro úložiště je možné použít pro existující účty úložiště nebo pro nové účty úložiště při jejich vytváření. Další informace o zabezpečení účtu úložiště najdete [tady](../../storage/common/storage-network-security.md).
 
 ## <a name="synapse-workspaces-and-virtual-networks"></a>Synapse pracovní prostory a virtuální sítě
 Když vytváříte pracovní prostor synapse, můžete se rozhodnout, že se k němu má přidružit spravovaná virtuální síť. Pokud při vytváření pracovního prostoru nepovolíte spravovanou virtuální síť, váš pracovní prostor je ve sdílené virtuální síti společně s jinými synapse pracovními prostory, ke kterým není přidružena spravovaná virtuální síť. Pokud jste při vytváření pracovního prostoru povolili spravovanou virtuální síť, je váš pracovní prostor přidružený k vyhrazené virtuální síti spravované službou Azure synapse. Tyto virtuální sítě se ve vašem zákaznickém předplatném nevytvoří. Proto nebude možné udělit provoz z těchto virtuálních sítí přístup k účtu zabezpečeného úložiště pomocí síťových pravidel popsaných výše.  

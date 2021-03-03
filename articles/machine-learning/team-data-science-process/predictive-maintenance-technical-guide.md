@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: 3edeee8f41c806c90f32208c0c4f174c76ba38d0
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/02/2021
 ms.locfileid: "93321982"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>Technický průvodce řešením pro prediktivní údržbu v programu Aerospace
@@ -64,7 +64,7 @@ Spouštějte skripty pro [podregistr](/archive/blogs/uk_faculty_connection/getti
 Předpovědi se na zbývající užitečnou životnost (RUL) konkrétního leteckého motoru pomocí vstupů přijatých ve [službě Azure Machine Learning Service](https://azure.microsoft.com/services/machine-learning/) (Orchestrované pomocí Azure Data Factory). 
 
 ## <a name="data-publishing"></a>Publikování dat
-### <a name="azure-sql-database"></a>Databáze Azure SQL
+### <a name="azure-sql-database"></a>Azure SQL Database
 Pomocí [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) můžete ukládat předpovědi obdržené Azure Machine Learning, které se pak spotřebovávají na řídicím panelu [Power BI](https://powerbi.microsoft.com) .
 
 ## <a name="data-consumption"></a>Využití dat
@@ -94,13 +94,15 @@ Dotaz Azure Stream Analytics lze najít pomocí:
 * Vyhledání Stream Analytics úloh ![ Stream Analytics ikonu ](./media/predictive-maintenance-technical-guide/icon-stream-analytics.png) , která byla generována při nasazení řešení (*například* **maintenancesa02asapbi** a **maintenancesa02asablob** pro řešení prediktivní údržby)
 * Kliknutím
   
-  * ***Vstupy** _ pro zobrazení vstupu dotazu _ ***dotaz** _ pro zobrazení vlastního dotazu _ ***výstupy** _ pro zobrazení různých výstupů
+  * ***Vstupy*** pro zobrazení vstupu dotazu
+  * ***Dotaz*** pro zobrazení samotného dotazu
+  * ***Výstupy*** pro zobrazení různých výstupů
 
 Informace o vytváření dotazů Azure Stream Analytics najdete v [odkazu na dotaz Stream Analytics](/stream-analytics-query/stream-analytics-query-language-reference) na webu MSDN.
 
 V tomto řešení dotazy nahlásí tři datové sady téměř v reálném čase s informacemi o příchozím datovém proudu na Power BI, které jsou součástí této šablony řešení. Vzhledem k tomu, že existují implicitní znalosti o formátu příchozích dat, je třeba tyto dotazy změnit na základě formátu dat.
 
-Dotaz ve druhé Stream Analytics úloze _ *maintenancesa02asablob** jednoduše vypíše všechny události [centra událostí](https://azure.microsoft.com/services/event-hubs/) do [Azure Storage](https://azure.microsoft.com/services/storage/) , takže nevyžaduje žádnou změnu bez ohledu na formát dat, protože úplné informace o události jsou streamované do úložiště.
+Dotaz ve druhé Stream Analytics úloze **maintenancesa02asablob** jednoduše vypíše všechny události [centra událostí](https://azure.microsoft.com/services/event-hubs/) a [Azure Storage](https://azure.microsoft.com/services/storage/) , takže nevyžaduje žádnou změnu bez ohledu na formát dat, protože úplné informace o události jsou streamované do úložiště.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 Služba [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) orchestruje přesun a zpracování dat. V šabloně řešení prediktivní údržby pro Aerospace se Datová továrna skládá ze tří [kanálů](../../data-factory/concepts-pipelines-activities.md) , které přesouvají a zpracovávají data pomocí různých technologií.  Přístup k objektu pro vytváření dat získáte tak, že otevřete uzel Data Factory v dolní části diagramu šablony řešení vytvořené pomocí nasazení řešení. Chyby v rámci vašich datových sad jsou způsobeny tím, že služba Data Factory je nasazena před spuštěním generátoru dat. Tyto chyby je možné ignorovat a nebránit v fungování vaší datové továrny.
@@ -118,20 +120,20 @@ Podobně jako u [Azure Stream Analytics](#azure-stream-analytics-1) dotazů maj�
 #### <a name="aggregateflightinfopipeline"></a>*AggregateFlightInfoPipeline*
 Tento [kanál](../../data-factory/concepts-pipelines-activities.md) obsahuje jednu aktivitu aktivity [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) pomocí [HDInsightLinkedService](/previous-versions/azure/dn893526(v=azure.100)) , která spouští skript [podregistru](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) , který umožňuje rozdělit data vložená do [Azure Storage](https://azure.microsoft.com/services/storage/) během [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) úlohy.
 
-Skript [podregistru](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) pro tento úkol dělení na oddíly je ***AggregateFlightInfo. HQL** _
+Skript [podregistru](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) pro tento úkol dělení na oddíly je ***AggregateFlightInfo. HQL.***
 
-#### <a name="_mlscoringpipeline"></a>_MLScoringPipeline *
+#### <a name="mlscoringpipeline"></a>*MLScoringPipeline*
 Tento [kanál](../../data-factory/concepts-pipelines-activities.md) obsahuje několik aktivit, jejichž konečný výsledek je předpovědi skóre z [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experimentu přidruženého k této šabloně řešení.
 
 Mezi zahrnuté aktivity patří:
 
 * [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) aktivitu pomocí [HDInsightLinkedService](/previous-versions/azure/dn893526(v=azure.100)) , který spouští skript v [podregistru](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) , aby prováděl agregace a funkce pro vývoj funkcí, které jsou nezbytné pro [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experimentování.
-  Skript [podregistru](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) pro tento úkol dělení na oddíly je ***PrepareMLInput. HQL** _.
-  _ Aktivita [kopírování](/previous-versions/azure/dn835035(v=azure.100)) , která přesouvá výsledky z aktivity [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) do jediného objektu BLOB [Azure Storage](https://azure.microsoft.com/services/storage/) , k němuž přistupovala aktivita [AzureMLBatchScoring](/previous-versions/azure/dn894009(v=azure.100)) .
+  Skript [podregistru](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) pro tento úkol dělení na oddíly je ***PrepareMLInput. HQL***.
+* Aktivita [kopírování](/previous-versions/azure/dn835035(v=azure.100)) , která přesouvá výsledky z aktivity [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) do jediného objektu BLOB [Azure Storage](https://azure.microsoft.com/services/storage/) , k němuž přistupovala aktivita [AzureMLBatchScoring](/previous-versions/azure/dn894009(v=azure.100)) .
 * Aktivita [AzureMLBatchScoring](/previous-versions/azure/dn894009(v=azure.100)) zavolá [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experiment s výsledky, které jsou umístěny v jednom [Azure Storage](https://azure.microsoft.com/services/storage/) objektu BLOB.
 
 #### <a name="copyscoredresultpipeline"></a>*CopyScoredResultPipeline*
-Tento [kanál](../../data-factory/concepts-pipelines-activities.md) obsahuje jednu aktivitu – aktivitu [kopírování](/previous-versions/azure/dn835035(v=azure.100)) , která přesouvá výsledky [Azure Machine Learning](#azure-machine-learning) experiment z ***MLScoringPipeline** _ do [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) zřízeného jako součást instalace šablony řešení.
+Tento [kanál](../../data-factory/concepts-pipelines-activities.md) obsahuje jednu aktivitu – aktivitu [kopírování](/previous-versions/azure/dn835035(v=azure.100)) , která přesouvá výsledky [Azure Machine Learning](#azure-machine-learning) experiment z ***MLScoringPipeline*** do [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) zřízeného v rámci instalace šablony řešení.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experiment, který se používá pro tuto šablonu řešení, poskytuje zbývající životnost (RUL) motoru letadla. Experiment je specifický pro spotřebovaný datovou sadu a vyžaduje změnu nebo náhradu, která je specifická pro data, která jsou v nástroji.
@@ -139,7 +141,7 @@ Tento [kanál](../../data-factory/concepts-pipelines-activities.md) obsahuje jed
 ## <a name="monitor-progress"></a>Průběh monitorování
 Po spuštění generátoru dat se kanál začne dehydratované a jednotlivé komponenty vašeho řešení začnou propustit do akce, které následují po příkazech vydaných datovou továrnou. Existují dva způsoby, jak kanál monitorovat.
 
-_ Jedna z Stream Analytics úloh zapisuje nezpracovaná příchozí data do úložiště objektů BLOB. Pokud kliknete na Blob Storage součásti řešení na obrazovce, kterou jste úspěšně nasadili řešení, a pak kliknete na tlačítko otevřít v pravém panelu, přejdete na [Azure Portal](https://portal.azure.com/). Potom klikněte na objekty blob. Na dalším panelu vidíte seznam kontejnerů. Klikněte na **maintenancesadata**. Na dalším panelu je složka **rawData** . Ve složce rawData jsou složky s názvy, jako je například hour = 17 a hodina = 18. Přítomnost těchto složek indikuje, že se v počítači generují nezpracovaná data a ukládají se do úložiště objektů BLOB. V těchto složkách byste měli vidět soubory CSV s omezenými velikostmi v MB.
+* Jedna z Stream Analytics úloh zapisuje nezpracovaná příchozí data do úložiště objektů BLOB. Pokud kliknete na Blob Storage součásti řešení na obrazovce, kterou jste úspěšně nasadili řešení, a pak kliknete na tlačítko otevřít v pravém panelu, přejdete na [Azure Portal](https://portal.azure.com/). Potom klikněte na objekty blob. Na dalším panelu vidíte seznam kontejnerů. Klikněte na **maintenancesadata**. Na dalším panelu je složka **rawData** . Ve složce rawData jsou složky s názvy, jako je například hour = 17 a hodina = 18. Přítomnost těchto složek indikuje, že se v počítači generují nezpracovaná data a ukládají se do úložiště objektů BLOB. V těchto složkách byste měli vidět soubory CSV s omezenými velikostmi v MB.
 * Posledním krokem kanálu je zápis dat (například předpovědi ze strojového učení) do SQL Database. Aby se data zobrazovala v SQL Database, možná budete muset počkat maximálně tři hodiny. Jedním ze způsobů, jak monitorovat, kolik dat je k dispozici ve vašem SQL Database, je prostřednictvím [Azure Portal](https://portal.azure.com/). Na levém panelu vyhledejte databáze SQL :::image type="icon" source="./media/predictive-maintenance-technical-guide/icon-SQL-databases.png" border="false"::: a klikněte na ni. Pak vyhledejte databázi **pmaintenancedb** a klikněte na ni. Na další stránce dole klikněte na spravovat.
    
     ![Spravovat ikonu](./media/predictive-maintenance-technical-guide/icon-manage.png)
@@ -175,9 +177,9 @@ Následující postup vás provede postupem připojení souboru pbix k SQL Datab
    * Ve složce, do které jste stáhli a stáhnete soubor generátoru, poklikejte na soubor **PowerBI \\ PredictiveMaintenanceAerospace. pbix** . Pokud se při otevření souboru zobrazí nějaké zprávy s upozorněním, ignorujte je. V horní části souboru klikněte na **Upravit dotazy**.
      
      ![Upravit dotazy](./media/predictive-maintenance-technical-guide/edit-queries.png)
-   * Zobrazí se dvě tabulky, **RemainingUsefulLife** a **PMResult**. Vyberte první tabulku a v ![ pravém podokně nastavení dotazu klikněte na ikonu nastavení dotazu ](./media/predictive-maintenance-technical-guide/icon-query-settings.png) vedle položky **zdroj** v části **použité kroky** .  Ignorujte všechny zobrazené varovné zprávy.
+   * Zobrazí se dvě tabulky, **RemainingUsefulLife** a **PMResult**. Vyberte první tabulku a v ![ pravém podokně nastavení dotazu klikněte na ikonu nastavení dotazu ](./media/predictive-maintenance-technical-guide/icon-query-settings.png) vedle položky **zdroj** v části **použité kroky** .  Ignorujte všechna upozornění, která se zobrazí.
    * V okně místní nabídky nahraďte **' Server '** a **' Database '** vlastními názvy serverů a databází a potom klikněte na tlačítko **' OK '**. V poli název serveru se ujistěte, že zadáváte port 1433 (**YourSolutionName.Database.Windows.NET, 1433**). Pole databáze nechte **pmaintenancedb**. Ignorujte varovné zprávy, které se zobrazí na obrazovce.
-   * V dalším okně místní nabídky se zobrazí dvě možnosti v levém podokně (**Windows** a **databáze**). Klikněte na **databáze**, vyplňte **uživatelské** jméno a **heslo** (uživatelské jméno a heslo, které jste zadali při prvním nasazení řešení a vytvořili Azure SQL Database). V **možnosti _Vyberte, která úroveň má použít tato nastavení pro_*_, zaškrtněte možnost úroveň databáze. Pak klikněte na _*"připojit"**.
+   * V dalším okně místní nabídky se zobrazí dvě možnosti v levém podokně (**Windows** a **databáze**). Klikněte na **databáze**, vyplňte **uživatelské** jméno a **heslo** (uživatelské jméno a heslo, které jste zadali při prvním nasazení řešení a vytvořili Azure SQL Database). V možnosti vybrat úroveň, pro kterou ***chcete použít tato nastavení***, zaškrtněte políčko na úrovni databáze. Pak klikněte na **připojit**.
    * Klikněte na druhou tabulku **PMResult** a potom klikněte na ![ ikonu navigace ](./media/predictive-maintenance-technical-guide/icon-navigation.png) vedle položky **zdroj** v části **použité kroky** na pravé straně **nastavení dotazu** a aktualizujte názvy serverů a databází jako v předchozích krocích a klikněte na OK.
    * Až budete s přechodem na předchozí stránku, okno zavřete. Zobrazí se zpráva – klikněte na **použít**. Nakonec kliknutím na tlačítko **Uložit** změny uložte. Váš soubor Power BI nyní navázal připojení k serveru. Pokud jsou vaše vizualizace prázdné, ujistěte se, že jste v pravém horním rohu legendy vymazali výběry pro vizualizaci všech dat kliknutím na ikonu gumy. Pomocí tlačítka Aktualizovat můžete odrážet nová data ve vizualizacích. Zpočátku se ve vašich vizualizacích zobrazí jenom data o počátečním stavu, ve kterém se naplánuje aktualizace služby Data Factory každé 3 hodiny. Po 3 hodinách se při aktualizaci dat v vizualizacích zobrazí nový předpovědi.
 3. Volitelné Publikujte řídicí panel pro studenou cestu a [Power BI online](https://www.powerbi.com/). Tento krok vyžaduje účet Power BI (nebo pracovní nebo školní účet).
@@ -210,14 +212,14 @@ Následující kroky popisují, jak vizualizovat výstup dat z Stream Analytics 
 2. Přihlášení k [Power BI online](https://www.powerbi.com)
    
    * V levém oddílu datové sady na levé straně v části můj pracovní prostor se musí zobrazit název ***DataSet** _ názvů _ * aircraftmonitor * *, **aircraftalert** a **flightsbyhour** . Toto je streamovaná data, která jste odeslali z Azure Stream Analytics v předchozím kroku. Datová sada **flightsbyhour** se nemůže zobrazit současně s ostatními dvěma datovými sadami z důvodu povaze dotazu SQL za ním. Měl by se ale zobrazovat po celou hodinu.
-   * Ujistěte se, že podokno ***vizualizace** _ je otevřené a zobrazuje se na pravé straně obrazovky.
+   * Ujistěte se, že je podokno ***vizualizace*** otevřené a zobrazuje se na pravé straně obrazovky.
 3. Jakmile budete mít data toků do Power BI, můžete začít vizualizovat streamovaná data. Níže je příklad řídicího panelu s některými vizualizacemi s aktivními cestami, které jsou k němu připnuté. Na základě příslušných datových sad můžete vytvořit další dlaždice řídicího panelu. V závislosti na tom, jak dlouho spouštíte generátor dat, se vaše čísla ve vizualizacích můžou lišit.
 
     ![Zobrazení řídicího panelu](media/predictive-maintenance-technical-guide/dashboard-view.png)
 
 1. Tady je několik kroků, jak vytvořit jednu z dlaždic – "zobrazení loďstva snímače 11 vs. Threshold 48,26" dlaždice:
    
-   _ Klikněte na datovou sadu **aircraftmonitor** v oddílu datové sady na levém panelu.
+   * V části datové sady na levém panelu klikněte na datová sada **aircraftmonitor** .
    * Klikněte na ikonu **spojnicového grafu** .
    * V podokně **pole** klikněte na **zpracované** a v podokně **vizualizace** se zobrazí v části osa.
    * Klikněte na "S11" a "S11 \_ Alert", aby se obě zobrazily v části "hodnoty". Klikněte na malou šipku vedle **S11** a **S11 \_ výstrahy**, změňte "Sum" na "Average".

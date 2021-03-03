@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 430ab980f51ff06ad5e39d6402abf5f649cc6d39
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 027d1bf005ac052bf48e2c0aa3a4a71fc29f36f2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593091"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647434"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Rychlý Start: registrace aplikace s platformou Microsoft identity
 
@@ -36,14 +36,14 @@ Při registraci aplikace se vytvoří vztah důvěryhodnosti mezi vaší aplikac
 
 Při vytváření registrace aplikace postupujte podle těchto kroků:
 
-1. Přihlaste se <a href="https://portal.azure.com/" target="_blank">k <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
+1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
 1. Máte-li přístup k více klientům, použijte v horní nabídce možnost **adresář + filtr předplatného** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
 1. Zadejte **název** vaší aplikace. Uživatelé vaší aplikace můžou tento název zobrazit. Později ji můžete změnit.
 1. Určete, kdo může používat aplikaci, někdy označovanou jako *přihlášená cílová skupina*.
 
-    | Podporované typy účtu | Description |
+    | Podporované typy účtu | Popis |
     |-------------------------|-------------|
     | **Účty jen v tomto organizačním adresáři** | Tuto možnost vyberte, pokud vytváříte aplikaci pro použití jenom pro uživatele (nebo hosty) ve *vašem* tenantovi.<br><br>Často se říká *obchodní* aplikace (LOB), tato aplikace je *jediná klientská* aplikace na platformě Microsoft identity. |
     | **Účty v libovolném organizačním adresáři** | Tuto možnost vyberte, pokud chcete, aby uživatelé v *jakémkoli* Azure Active Directoryovém Tenantovi (Azure AD) mohli aplikaci používat. Tato možnost je vhodná, pokud například vytváříte aplikaci typu software jako služba (SaaS), kterou máte v úmyslu poskytnout více organizacím.<br><br>Tento typ aplikace se označuje jako *víceklientské* aplikace na platformě Microsoft identity. |

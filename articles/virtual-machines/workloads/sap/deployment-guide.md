@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 1c4f1951-3613-4a5a-a0af-36b85750c84e
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: c70de186468eb3efacc82c1d5c8802612475fd4d
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: fe98ef297c6bed5ef3d982ed09db361244f75216
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232790"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675698"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení Azure Virtual Machines pro SAP NetWeaver
 
@@ -325,7 +324,7 @@ Azure Virtual Machines je řešení pro organizace, které potřebují výpočet
 
 V tomto článku jsme pokryli postup nasazení aplikací SAP na virtuálních počítačích v Azure, včetně alternativních možností nasazení a řešení potíží. Tento článek sestaví na informacích v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide]. Také doplňuje dokumentaci k instalaci SAP a poznámky SAP, které jsou primárními prostředky pro instalaci a nasazení softwaru SAP.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -371,7 +370,7 @@ Pro určení velikosti SAP si můžete sdělit následující informace:
 
 V Azure Resource Manager můžete použít skupiny prostředků ke správě všech prostředků aplikace ve vašem předplatném Azure. Další informace najdete v článku [Přehled Azure Resource Manageru][resource-group-overview].
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje informací
 
 ### <a name="sap-resources"></a><a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>Prostředky SAP
 
@@ -452,7 +451,7 @@ Průvodce vás provede nastavením požadovaných parametrů k vytvoření virtu
      * **Skupina zabezpečení sítě**: Další informace najdete v tématu [řízení toku síťového provozu pomocí skupin zabezpečení sítě][virtual-networks-nsg].
    * **Rozšíření**: rozšíření virtuálních počítačů můžete nainstalovat přidáním do nasazení. V tomto kroku nemusíte přidávat rozšíření. Rozšíření požadovaná pro podporu SAP se instalují později. Viz kapitola [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5] v této příručce.
    * **Vysoká dostupnost**: vyberte skupinu dostupnosti, nebo zadejte parametry pro vytvoření nové skupiny dostupnosti. Další informace najdete v tématu [skupiny dostupnosti Azure][planning-guide-3.2.3].
-   * **Sledování**
+   * **Monitorování**
      * **Diagnostika spouštění**: můžete vybrat možnost **Zakázat** pro diagnostiku spouštění.
      * **Diagnostika hostovaného operačního systému**: pro diagnostiku monitorování můžete vybrat **Zakázat** .
 
@@ -591,7 +590,7 @@ Průvodce vás provede nastavením požadovaných parametrů k vytvoření virtu
      * **Skupina zabezpečení sítě**: Další informace najdete v tématu [řízení toku síťového provozu pomocí skupin zabezpečení sítě][virtual-networks-nsg].
    * **Rozšíření**: rozšíření virtuálních počítačů můžete nainstalovat přidáním do nasazení. V tomto kroku nemusíte přidávat rozšíření. Rozšíření požadovaná pro podporu SAP se instalují později. Viz kapitola [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5] v této příručce.
    * **Vysoká dostupnost**: vyberte skupinu dostupnosti, nebo zadejte parametry pro vytvoření nové skupiny dostupnosti. Další informace najdete v tématu [skupiny dostupnosti Azure][planning-guide-3.2.3].
-   * **Sledování**
+   * **Monitorování**
      * **Diagnostika spouštění**: můžete vybrat možnost **Zakázat** pro diagnostiku spouštění.
      * **Diagnostika hostovaného operačního systému**: pro diagnostiku monitorování můžete vybrat **Zakázat** .
 
@@ -1510,7 +1509,7 @@ Postupujte podle kroků v části [Konfigurace rozšíření Azure pro SAP][depl
 
 Pokud chyby nezmizí, obraťte se na [podporu][deployment-guide-contact-support].
 
-#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kontaktování podpory
+#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kontaktujte podporu
 
 Neočekávaná chyba nebo neexistuje žádné známé řešení. Shromážděte soubor AzureEnhancedMonitoring_service. log umístěný ve složce C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Drop (Windows) nebo/var/log/Azure/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux (Linux) a požádejte o další pomoc podporu SAP.
 

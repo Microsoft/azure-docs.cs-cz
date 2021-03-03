@@ -3,19 +3,20 @@ title: Nasazení OpenShift kontejneru Platform 3,11 Self-Managed nabídky Market
 description: Nasaďte OpenShift Container Platform 3,11 Self-Managed nabídku Marketplace v Azure.
 author: haroldwongms
 manager: mdotson
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 36adf35c5fbfc3e88b7d9af425ebabc852707e69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f257ed1097f49074d70f45f59e9040265f6cedef
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374095"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670436"
 ---
 # <a name="configure-prerequisites"></a>Konfigurovat požadavky
 
@@ -64,7 +65,7 @@ Zadejte hodnoty pro vstupní parametry a klikněte na tlačítko **OK**.
 | Uživatelské jméno správce virtuálního počítače | Uživatel s oprávněními správce, který se má vytvořit na všech instancích virtuálních počítačů |
 | Veřejný klíč SSH pro uživatele s oprávněními správce | Veřejný klíč SSH, který se používá pro přihlášení k virtuálnímu počítači, nesmí mít přístupové heslo. |
 | Předplatné | Předplatné Azure, do kterého se má cluster nasadit |
-| Resource Group | Vytvořte novou skupinu prostředků nebo vyberte existující prázdnou skupinu prostředků pro prostředky clusteru. |
+| Skupina prostředků | Vytvořte novou skupinu prostředků nebo vyberte existující prázdnou skupinu prostředků pro prostředky clusteru. |
 | Umístění | Oblast Azure, do které se má cluster nasadit |
 
    ![Okno základy nabídky](media/openshift-marketplace-self-managed/ocp-basics.png)  
@@ -93,7 +94,7 @@ Zadejte hodnoty pro vstupní parametry a klikněte na tlačítko **OK**.
 
 **Změnit velikost**
 
-Pokud chcete vybrat jinou velikost virtuálního počítače, klikněte na ***změnit velikost***.  Otevře se okno Výběr virtuálního počítače.  Vyberte velikost virtuálního počítače, kterou chcete, a klikněte na **Vybrat**.
+Pokud chcete vybrat jinou velikost virtuálního počítače, klikněte na ***změnit velikost** _.  Otevře se okno Výběr virtuálního počítače.  Vyberte velikost virtuálního počítače, kterou chcete, a klikněte na _ * vybrat * *.
 
    ![Vyberte velikost virtuálního počítače.](media/openshift-marketplace-self-managed/ocp-selectvmsize.png)  
 <br>
@@ -185,7 +186,7 @@ Potvrďte kontaktní údaje na stránce koupit a kliknutím na **koupit** přijm
 
 ## <a name="connect-to-the-openshift-cluster"></a>Připojení ke clusteru OpenShift
 
-Až se nasazení dokončí, načtěte připojení z části výstup nasazení. Pomocí **adresy URL konzoly OpenShift**se připojte ke konzole OpenShift pomocí prohlížeče. k hostiteli bastionu můžete také přissh. Tady je příklad, kde uživatelské jméno správce je clusteradmin a plně kvalifikovaný název domény DNS bastionu pro veřejnou IP adresu je bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
+Až se nasazení dokončí, načtěte připojení z části výstup nasazení. Pomocí **adresy URL konzoly OpenShift** se připojte ke konzole OpenShift pomocí prohlížeče. k hostiteli bastionu můžete také přissh. Tady je příklad, kde uživatelské jméno správce je clusteradmin a plně kvalifikovaný název domény DNS bastionu pro veřejnou IP adresu je bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com

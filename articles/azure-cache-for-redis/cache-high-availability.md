@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: d9c8f5dd8b2647756087ce6f36ff3a25b2aaaadc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2005b24e9a5692adda8c8e3a5100a6450c67663c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387967"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653843"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Vysoká dostupnost pro Azure cache pro Redis
 
@@ -23,7 +23,7 @@ Azure cache pro Redis implementuje vysokou dostupnost pomocí několika virtuál
 | ------------------- | ------- | ------- | :------: | :---: | :---: |
 | [Standardní replikace](#standard-replication)| Konfigurace replikovaných dvou uzlů v jednom datovém centru s automatickým převzetím služeb při selhání | 99,9 % |✔|✔|-|
 | [Zónová redundance](#zone-redundancy) | Konfigurace replikovaného více uzlů v rámci AZs s automatickým převzetím služeb při selhání | 99,95% (úroveň Premium), 99,99% (úrovně Enterprise) |-|Preview|Preview|
-| [Geografická replikace](#geo-replication) | Propojené instance mezipaměti ve dvou oblastech s převzetím služeb při selhání řízených uživatelem | 99,9% (úroveň Premium, jedna oblast) |-|✔|-|
+| [Geografická replikace](#geo-replication) | Propojené instance mezipaměti ve dvou oblastech s převzetím služeb při selhání řízených uživatelem | 99,999% (úroveň Enterprise) |-|✔|-|
 
 ## <a name="standard-replication"></a>Standardní replikace
 
@@ -45,7 +45,7 @@ Primární uzel může přijít o službu jako součást plánované aktivity ú
 >
 >
 
-Kromě toho Azure cache for Redis umožňuje další uzly repliky na úrovni Premium. [Mezipaměť s více replikami](cache-how-to-multi-replicas.md) se dá nakonfigurovat až se třemi uzly repliky. Další repliky obecně zvyšují odolnost proti chybám, protože další uzly zálohují primární. I s více replikami může být mezipaměť Azure pro instanci Redis vážně ovlivněná výpadkem datového centra nebo AZ-WAN. Můžete zvýšit dostupnost mezipaměti pomocí několika replik v kombinaci s [redundancí zóny](#zone-redundancy).
+Kromě toho Azure cache for Redis umožňuje další uzly repliky na úrovni Premium. [Mezipaměť s více replikami](cache-how-to-multi-replicas.md) se dá nakonfigurovat až se třemi uzly repliky. Další repliky obecně zvyšují odolnost proti chybám, protože další uzly zálohují primární. I s více replikami může být mezipaměť Azure pro instanci Redis vážně ovlivněná výpadkem datového centra nebo AZ-Level. Můžete zvýšit dostupnost mezipaměti pomocí několika replik v kombinaci s [redundancí zóny](#zone-redundancy).
 
 ## <a name="zone-redundancy"></a>Zónová redundance
 
@@ -66,7 +66,7 @@ Azure cache pro Redis distribuuje uzly v zóně redundantní mezipaměti v kruho
 
 Zóna redundantní mezipaměť zajišťuje automatické převzetí služeb při selhání. Pokud aktuální primární uzel není k dispozici, bude jedna z replik přebírat. V případě, že se nový primární uzel nachází v jiném AZ, může vaše aplikace vyskytnout vyšší dobu odezvy na mezipaměť. AZs jsou geograficky oddělené. Přepínání z jednoho AZ na jiný změní fyzickou vzdálenost mezi tím, kde je vaše aplikace a mezipaměť hostovány. Tato změna ovlivní latenci sítě s přenosovou dobou z vaší aplikace do mezipaměti. Největší latence by měla spadat do přijatelného rozsahu pro většinu aplikací. Doporučujeme, abyste aplikaci otestovali, abyste zajistili, že bude fungovat dobře s redundantní mezipamětí zóny.
 
-### <a name="enterprise-and-enterprise-flash-tiers"></a>Úrovně Enterprise a Enterprise Flash
+### <a name="enterprise-tiers"></a>Podnikové úrovně
 
 Mezipaměť v podnikové vrstvě běží na clusteru Redis Enterprise. V každém okamžiku vyžaduje lichý počet uzlů serveru, aby bylo možné vytvořit kvorum. Ve výchozím nastavení se skládá ze tří uzlů, které jsou hostovány na vyhrazeném virtuálním počítači. Podniková mezipaměť má dva *datové uzly* stejné velikosti a jeden menší *uzel kvora*. Mezipaměť podnikového přehrávače má tři datové uzly stejné velikosti. Podnikový cluster rozdělí Redis data na oddíly interně. Každý oddíl má *primární* a alespoň jednu *repliku*. Každý datový uzel obsahuje jeden nebo více oddílů. Podnikový cluster zajišťuje, že primární a repliky libovolného oddílu nejsou nikdy společně umístěné na stejném datovém uzlu. Oddíly replikují data asynchronně z primárních dat na odpovídající repliky.
 
@@ -74,9 +74,27 @@ Když se datový uzel stane nedostupným nebo dojde k rozdělení sítě, dojde 
 
 ## <a name="geo-replication"></a>Geografická replikace
 
-[Geografická replikace](cache-how-to-geo-replication.md) je mechanismus pro propojení dvou mezipamětí Azure pro instance Redis, typicky pro ně pokrývá dvě oblasti Azure. Jedna mezipaměť je zvolena jako primární propojená mezipaměť a druhá jako sekundární propojená mezipaměť. Pouze primární propojená mezipaměť přijímá požadavky na čtení a zápis. Data zapsaná do primární mezipaměti se replikují do sekundární propojené mezipaměti. Sekundární propojenou mezipaměť lze použít k obsluze požadavků na čtení. Přenos dat mezi primárními a sekundárními instancemi mezipaměti je zabezpečený pomocí protokolu TLS.
+[Geografická replikace](cache-how-to-geo-replication.md) je mechanismus pro propojení dvou nebo více Azure cache pro instance Redis, typicky u dvou oblastí Azure. 
 
-Geografická replikace je navržena hlavně pro zotavení po havárii. Poskytuje možnost zálohovat data z mezipaměti do jiné oblasti. Ve výchozím nastavení vaše aplikace zapisuje a čte z primární oblasti. Volitelně je možné ji nakonfigurovat pro čtení ze sekundární oblasti. Geografická replikace neposkytuje automatické převzetí služeb při selhání kvůli problémům s přidáním latence sítě mezi oblastmi, pokud zbývající část aplikace zůstane v primární oblasti. Převzetí služeb při selhání budete muset spravovat a iniciovat tak, že odpojíte sekundární mezipaměť. Tím se zvýší úroveň této nové primární instance.
+### <a name="premium-tier"></a>Úroveň Premium
+
+>[!NOTE]
+>Geografická replikace v úrovni Premium je navržená hlavně pro zotavení po havárii.
+>
+>
+
+Pomocí [geografické replikace](cache-how-to-geo-replication.md) můžete propojit dvě instance mezipaměti úrovně Premium, abyste mohli zálohovat data z mezipaměti do jiné oblasti. Po propojení dohromady je jedna instance označena jako primární propojená mezipaměť a druhá jako sekundární propojená mezipaměť. Pouze primární mezipaměť přijímá požadavky na čtení a zápis. Data zapsaná do primární mezipaměti se replikují do sekundární mezipaměti. Aplikace přistupuje k mezipaměti prostřednictvím samostatných koncových bodů pro primární a sekundární mezipaměť. Aplikace musí odeslat všechny požadavky na zápis do primární mezipaměti, když je nasazena ve více oblastech Azure. Může číst buď z primární nebo sekundární mezipaměti. Obecně platí, že chcete, aby se instance výpočetních instancí aplikace načetly z nejbližších mezipamětí, aby se snížila latence. Přenos dat mezi dvěma instancemi mezipaměti je zabezpečený protokolem TLS.
+
+Geografická replikace neposkytuje automatické převzetí služeb při selhání kvůli problémům s přidáním doby odezvy sítě mezi oblastmi, pokud zbývající část aplikace zůstane v primární oblasti. Převzetí služeb při selhání budete muset spravovat a iniciovat tak, že odpojíte sekundární mezipaměť. Tím se zvýší úroveň této nové primární instance.
+
+### <a name="enterprise-tiers"></a>Podnikové úrovně
+
+>[!NOTE]
+>Tato verze je k dispozici ve verzi Preview.
+>
+>
+
+Podnikové úrovně podporují pokročilejší forma geografické replikace s názvem [Aktivní geografická replikace](cache-how-to-active-geo-replication.md). Redis Enterprise software, který využívá replikované datové typy bez konfliktů, podporuje zápisy do více instancí mezipaměti a postará se o sloučení změn a řešení konfliktů v případě potřeby. Dvě nebo víc instancí mezipaměti podnikové úrovně v různých oblastech Azure je možné připojit a vytvořit tak aktivní geograficky replikovanou mezipaměť. Aplikace používající takovou mezipaměť může číst a zapisovat do geograficky distribuovaných instancí mezipaměti prostřednictvím odpovídajících koncových bodů. Měl by používat co nejblíže každé výpočetní instanci, která poskytuje nejnižší latenci. Aplikace také potřebuje monitorovat instance mezipaměti a přejít do jiné oblasti, pokud jedna z instancí nebude k dispozici. Další informace o tom, jak aktivní geografická replikace funguje, najdete v tématu [aktivní – aktivní Geo-Distriubtion (založený na CRDTs)](https://redislabs.com/redis-enterprise/technology/active-active-geo-distribution/).
 
 ## <a name="next-steps"></a>Další kroky
 

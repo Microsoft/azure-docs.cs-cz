@@ -11,31 +11,33 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
 ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: bb63ac6de6c48bb3853bd235d908ee745ff5279d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 0bc247e473ea96f2f9301eeaebb543b3317c84c7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032843"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659660"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Připojení ke službám úložiště v Azure
 
-V tomto článku se dozvíte, jak se **připojit ke službám úložiště v Azure prostřednictvím Azure Machine Learning úložiště dat**. DataStore se bezpečně připojují ke službě Azure Storage bez nutnosti zadat přihlašovací údaje pro ověřování a integritu původního zdroje dat. Ukládají informace o připojení, například ID předplatného a autorizaci tokenu v [Key Vault](https://azure.microsoft.com/services/key-vault/) přidružené k pracovnímu prostoru, takže můžete bezpečně přistupovat k úložišti, aniž byste je museli zakódovat ve svých skriptech. K vytvoření a registraci úložišť dat můžete použít [sadu SDK Azure Machine Learning Python](#python) nebo [Azure Machine Learning Studio](how-to-connect-data-ui.md) .
+V tomto článku se dozvíte, jak se připojit ke službám Data Storage v Azure s Azure Machine Learning úložiště dat a [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 
-Pokud dáváte přednost vytváření a správě úložiště dat pomocí rozšíření Azure Machine Learning VS Code; Další informace najdete v tématu [Průvodce správou prostředků vs Code](how-to-manage-resources-vscode.md#datastores) .
-
-Z [těchto řešení Azure Storage](#matrix)můžete vytvořit úložiště dat. **Pro Nepodporovaná řešení úložišť** a za účelem úspory nákladů na výstup dat během experimentů ml [přesuňte data](#move) do podporovaného řešení úložiště Azure.  
+Data se bezpečně připojují k vaší službě úložiště v Azure bez nutnosti ukládat přihlašovací údaje pro ověřování a integritu původního zdroje dat. Ukládají informace o připojení, například ID předplatného a autorizaci tokenů ve vašem [Key Vault](https://azure.microsoft.com/services/key-vault/) , které jsou přidružené k pracovnímu prostoru, takže můžete bezpečně přistupovat k úložišti, aniž byste je museli zakódovat ve svých skriptech. Můžete vytvářet úložiště dat, která se připojují k [těmto řešením úložiště Azure](#matrix).
 
 Informace o tom, kde je úložiště dat vhodné v rámci celkového pracovního postupu pro přístup k datům v Azure Machine Learning, najdete v článku [zabezpečený přístup k datům](concept-data.md#data-workflow) .
 
+Pro používání s nízkým kódem si přečtěte téma jak použít [Azure Machine Learning Studio k vytvoření a registraci úložišť dat](how-to-connect-data-ui.md#create-datastores).
+
+>[!TIP]
+> V tomto článku se předpokládá, že se chcete ke službě úložiště připojit pomocí přihlašovacích údajů pro ověřování na základě přihlašovacích údajů, jako je instanční objekt nebo token sdíleného přístupového podpisu (SAS). Mějte na paměti, že pokud jsou přihlašovací údaje zaregistrované v úložišti dat, můžou tyto přihlašovací údaje načíst všichni uživatelé s rolí *čtenáře* pracovních prostorů. [Přečtěte si další informace o roli *čtenáře* pracovních prostorů.](how-to-assign-roles.md#default-roles) <br><br>Pokud se to týká, zjistěte, jak se [připojit ke službám úložiště s přístupem na základě identity](how-to-identity-based-data-access.md). <br><br>Tato funkce je [experimentální](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) funkcí ve verzi Preview a může se kdykoli změnit. 
+
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat:
-- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
 - Účet úložiště Azure s [podporovaným typem úložiště](#matrix).
 
-- [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)nebo přístup k [Azure Machine Learning Studiu](https://ml.azure.com/).
+- [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 
 - Pracovní prostor služby Azure Machine Learning.
   
@@ -59,7 +61,10 @@ Budete potřebovat:
 
 ## <a name="supported-data-storage-service-types"></a>Podporované typy služby úložiště dat
 
-Úložiště dat v současné době podporují ukládání informací o připojení do služby úložiště uvedené v následující matici.
+Úložiště dat v současné době podporují ukládání informací o připojení do služby úložiště uvedené v následující matici. 
+
+> [!TIP]
+> **Pro Nepodporovaná řešení úložišť** a za účelem úspory nákladů na výstup dat během experimentů ml [přesuňte data](#move) do podporovaného řešení úložiště Azure. 
 
 | &nbsp;Typ úložiště | &nbsp;Typ ověřování | [Azure &nbsp; Machine &nbsp; Learning Studio](https://ml.azure.com/) | [Sada SDK pro službu Azure &nbsp; Machine &nbsp; Learning &nbsp; Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) |  [Rozhraní příkazového &nbsp; řádku Azure Machine &nbsp; Learning](reference-azure-machine-learning-cli.md) | [&nbsp; &nbsp; &nbsp; Rozhraní REST API služby Azure Machine Learning](/rest/api/azureml/) | VS Code
 ---|---|---|---|---|---|---
@@ -88,7 +93,16 @@ Aby bylo zajištěno zabezpečené připojení ke službě Azure Storage, Azure 
 
 ### <a name="virtual-network"></a>Virtuální síť 
 
-Pokud je váš účet úložiště dat ve **virtuální síti**, jsou potřeba další kroky konfigurace, abyste zajistili, že Azure Machine Learning má přístup k vašim datům. Pokud chcete zajistit, aby se při vytváření a registraci úložiště dat používaly příslušné kroky konfigurace, přečtěte si téma [použití Azure Machine Learning studia ve službě Azure Virtual Network](how-to-enable-studio-virtual-network.md) .  
+Ve výchozím nastavení Azure Machine Learning nemůže komunikovat s účtem úložiště, který je za bránou firewall nebo v rámci virtuální sítě. Pokud je váš účet úložiště dat ve **virtuální síti**, jsou potřeba další kroky konfigurace, abyste zajistili, že Azure Machine Learning má přístup k vašim datům. 
+
+> [!NOTE]
+> Tyto pokyny platí i pro [úložiště dat vytvořená pomocí přístupu k datům založeným na identitě (Preview)](how-to-identity-based-data-access.md). 
+
+**Pro uživatele sady Python SDK** pro přístup k datům prostřednictvím školicího skriptu na cílovém výpočetním prostředí musí být výpočetní cíl ve stejné virtuální síti a podsíti úložiště.  
+
+**U Azure Machine Learning uživatelů studia** se několik funkcí spoléhá na možnost číst data z datové sady. například náhledy datových sad, profily a automatizované strojové učení. Aby tyto funkce fungovaly s úložištěm na virtuálních sítích, použijte [v studiu spravovanou identitu v pracovním prostoru](how-to-enable-studio-virtual-network.md) , která umožňuje Azure Machine Learning přístup k účtu úložiště mimo virtuální síť. 
+
+Azure Machine Learning může přijímat žádosti od klientů mimo virtuální síť. Aby bylo zajištěno, že entita požadující data ze služby je bezpečná, [nastavte pro svůj pracovní prostor privátní odkaz na Azure](how-to-configure-private-link.md).
 
 ### <a name="access-validation"></a>Ověření přístupu
 
@@ -204,18 +218,27 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
                                                              client_secret=client_secret) # the secret of service principal
 ```
 
-<a name="arm"></a>
 
-## <a name="create-datastores-using-azure-resource-manager"></a>Vytvoření úložiště dat pomocí Azure Resource Manager
+
+## <a name="create-datastores-with-other-azure-tools"></a>Vytváření úložiště dat s jinými nástroji Azure
+Kromě vytváření úložiště dat pomocí sady Python SDK a studia můžete také použít šablony Azure Resource Manager nebo rozšíření Azure Machine Learning VS Code. 
+
+<a name="arm"></a>
+### <a name="azure-resource-manager"></a>Azure Resource Manager
 
 [https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-datastore-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/)K vytvoření úložiště dat je možné použít několik šablon.
 
 Informace o použití těchto šablon naleznete v tématu [použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning](how-to-create-workspace-template.md).
 
+### <a name="vs-code-extension"></a>Rozšíření VS Code
+
+Pokud chcete vytvořit a spravovat úložiště dat pomocí rozšíření Azure Machine Learning VS Code, přečtěte si téma [Průvodce správou prostředků vs Code](how-to-manage-resources-vscode.md#datastores) , kde se dozvíte víc.
 <a name="train"></a>
 ## <a name="use-data-in-your-datastores"></a>Použití dat v úložišti dat
 
-Po vytvoření úložiště dat [vytvořte Azure Machine Learning datovou sadu](how-to-create-register-datasets.md) pro interakci s daty. Datové sady zabalí vaše data do laxně vytvářená vyhodnoceného spotřebního objektu pro úlohy strojového učení, jako je například školení. Také poskytují možnost [stahovat nebo připojovat](how-to-train-with-datasets.md#mount-vs-download) soubory libovolného formátu ze služeb Azure Storage, jako je Azure Blob Storage a adls Gen 2. Můžete je také použít k načtení tabulkových dat do datového rámce PANDAS nebo Spark.
+Po vytvoření úložiště dat [vytvořte Azure Machine Learning datovou sadu](how-to-create-register-datasets.md) pro interakci s daty. Datové sady zabalí vaše data do laxně vytvářená vyhodnoceného spotřebního objektu pro úlohy strojového učení, jako je například školení. 
+
+U datových sad můžete [Stáhnout nebo připojit](how-to-train-with-datasets.md#mount-vs-download) soubory libovolného formátu ze služeb Azure Storage pro účely školení modelů na výpočetním cíli. [Přečtěte si další informace o proškolování modelů ml pomocí datových sad](how-to-train-with-datasets.md).
 
 <a name="get"></a>
 

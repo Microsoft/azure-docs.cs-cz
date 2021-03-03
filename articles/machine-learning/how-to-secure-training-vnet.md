@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 9a937336e1628add54ab5f52cdd6ef475d463f7d
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 6a89d225b747f116ed75bbe2e6928ec2a74f9c5e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515984"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101655951"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Zabezpečení Azure Machine Learningho školicího prostředí s využitím virtuálních sítí
 
@@ -74,7 +74,7 @@ Pokud chcete ve virtuální síti použít [spravovaný Azure Machine Learning _
 > * Jeden nástroj pro vyrovnávání zatížení
 > 
 > V případě clusterů těchto prostředků se odstraní (a znovu vytvoří), když se cluster škáluje na 0 uzlů, ale u instance, na kterou se prostředky ukládají, ale do úplného odstranění instance (zastavování neodebere prostředky). 
-> Pro tyto prostředky platí omezení [kvót prostředků](../azure-resource-manager/management/azure-subscription-service-limits.md) předplatného. Pokud je skupina prostředků virtuální sítě zamčená, odebrání výpočetního clusteru/instance se nezdaří. Nástroj pro vyrovnávání zatížení nejde odstranit, dokud se neodstraní výpočetní cluster nebo instance.
+> Pro tyto prostředky platí omezení [kvót prostředků](../azure-resource-manager/management/azure-subscription-service-limits.md) předplatného. Pokud je skupina prostředků virtuální sítě zamčená, odebrání výpočetního clusteru/instance se nezdaří. Nástroj pro vyrovnávání zatížení nejde odstranit, dokud se neodstraní výpočetní cluster nebo instance. Také zajistěte, aby neexistovaly žádné zásady Azure, které zakazují vytváření skupin zabezpečení sítě.
 
 
 ### <a name="required-ports"></a><a id="mlcports"></a> Požadované porty
@@ -83,7 +83,7 @@ Pokud plánujete zabezpečit virtuální síť tím, že omezíte síťový prov
 
 Služba Batch přidá skupiny zabezpečení sítě (skupin zabezpečení sítě) na úrovni síťových rozhraní (nic) připojených k virtuálním počítačům. Tyto skupiny zabezpečení sítě automaticky konfigurují pravidla příchozích a odchozích přenosů, která povolují následující provoz:
 
-- Příchozí provoz TCP na portech 29876 a 29877 ze __značky služby__ __BatchNodeManagement__.
+- Příchozí provoz TCP na portech 29876 a 29877 ze __značky služby__ __BatchNodeManagement__. Přenosy přes tyto porty jsou šifrované a používají Azure Batch pro komunikaci v Plánovači nebo uzlu.
 
     ![Příchozí pravidlo, které používá značku služby BatchNodeManagement](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
 
@@ -93,7 +93,7 @@ Služba Batch přidá skupiny zabezpečení sítě (skupin zabezpečení sítě)
 
 - Odchozí provoz do internetu na jakémkoli portu.
 
-- Pro příchozí provoz TCP pro výpočetní instance na portu 44224 ze __značky služby__ __AzureMachineLearning__.
+- Pro příchozí provoz TCP pro výpočetní instance na portu 44224 ze __značky služby__ __AzureMachineLearning__. Provoz přes tento port je zašifrovaný a používá se Azure Machine Learning ke komunikaci s aplikacemi běžícími na výpočetních instancích.
 
 > [!IMPORTANT]
 > Pokud potřebujete upravit nebo přidat pravidla příchozích nebo odchozích přenosů ve skupinách zabezpečení sítě nakonfigurovaných službou Batch, postupujte obezřetně. Pokud NSG blokuje komunikaci s výpočetními uzly, služba COMPUTE nastaví stav výpočetních uzlů na nepoužitelné.

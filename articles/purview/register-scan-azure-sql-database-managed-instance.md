@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: f9791fa8932792398efdea39fe0d39a967420596
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: a30980ba61a1dfec918dce1a55e78f1be2a36dd7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491719"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677872"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Registrace a kontrola Azure SQL Database spravované instance
 
@@ -117,7 +117,7 @@ Je potřeba získat ID aplikace a tajný kód pro instanční objekt:
 
     :::image type="content" source="media/register-scan-azure-sql-database-managed-instance/set-up-the-sql-data-source.png" alt-text="Nastavení zdroje dat SQL":::
 
-1. Vybrat **Ruční zadání**
+1. Vyberte **z předplatného Azure**, vyberte příslušné předplatné z rozevíracího seznamu **předplatné Azure** a příslušný server z rozevíracího seznamu **název serveru** .
 
 1. Zadejte plně kvalifikovaný název domény a **číslo portu** **veřejného koncového bodu** . Pak vyberte **Dokončit** pro registraci zdroje dat.
 

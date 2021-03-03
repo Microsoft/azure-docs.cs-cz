@@ -9,22 +9,20 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fbd5d3c4489d124014e0d956359f64a8ec9c568a
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 5752f20cb433a417a684076338214cd2ea80bc8b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592785"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658093"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Začínáme s ukázkou webového volání
 
-Ukázka webového volání je webová aplikace, která slouží jako podrobný návod k různým funkcím poskytovaným klientským knihovnou webového volání komunikačních služeb. 
+Ukázka webového volání je webová aplikace, která slouží jako podrobný návod k různým funkcím poskytovaným klientským knihovnou webového volání komunikačních služeb.
 
 Tato ukázka byla sestavena pro vývojáře a usnadňuje vám práci s komunikačními službami. Jeho uživatelské rozhraní je rozdělené do několika oddílů, z nichž každý obsahuje tlačítko "Zobrazit kód", které umožňuje zkopírovat kód přímo z prohlížeče do vlastní aplikace komunikační služby.
 
 ## <a name="get-started-with-the-web-calling-sample"></a>Začínáme s ukázkou webového volání
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 > [!IMPORTANT]
 > [Tato ukázka je k dispozici na GitHubu.](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)..
@@ -36,7 +34,7 @@ Po spuštění [ukázky webové volání](https://github.com/Azure-Samples/commu
 
 :::image type="content" source="./media/web-calling-tutorial-page-2.png" alt-text="Kurz pro webové volání 2" lightbox="./media/web-calling-tutorial-page-2.png":::
 
-## <a name="user-provisioning-and-sdk-initialization"></a>Zřizování uživatelů a inicializace sady SDK 
+## <a name="user-provisioning-and-sdk-initialization"></a>Zřizování uživatelů a inicializace sady SDK
 
 Kliknutím na "zřizování uživatele a inicializaci sady SDK" můžete sadu SDK inicializovat pomocí tokenu zřízeného službou zřizování back-end tokenu. Tato služba back-end je v systému `/project/webpack.config.js` .
 
@@ -52,7 +50,7 @@ Teď jste připraveni začít umísťovat volání pomocí prostředku komunika�
 
 Sada SDK pro volání webu komunikačních služeb umožňuje **1:1**, **1: N** a volání **skupiny** .
 
-Pro 1:1 nebo 1: N odchozí volání můžete zadat více identit uživatelů komunikačních služeb pro volání pomocí hodnot oddělených čárkami. Můžete také zadat tradiční telefonní čísla (PSTN), která budou volána pomocí hodnot oddělených čárkami. 
+Pro 1:1 nebo 1: N odchozí volání můžete zadat více identit uživatelů komunikačních služeb pro volání pomocí hodnot oddělených čárkami. Můžete také zadat tradiční telefonní čísla (PSTN), která budou volána pomocí hodnot oddělených čárkami.
 
 Při volání telefonních čísel PSTN zadejte alternativní ID volajícího. Kliknutím na tlačítko "umístit volání" umístěte odchozí volání:
 
@@ -80,7 +78,7 @@ Tato ukázka také poskytuje fragmenty kódu pro následující funkce:
 
 ## <a name="next-steps"></a>Další kroky
 
->[!div class="nextstepaction"] 
+>[!div class="nextstepaction"]
 >[Stažení ukázky z GitHubu](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)
 
 Další informace najdete v následujících článcích:

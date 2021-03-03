@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f17f6eb913d1ea54e8db6acd369d165553e16ec
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c8cae19bd07e1cc87a0aaa25e47cf5f431d566ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091036"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653809"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Plánování a nasazení místní Azure Active Directory ochrany heslem
 
@@ -48,7 +48,7 @@ Je taky možné, že se silnější ověřování hesla bude týkat stávající
 * [Povýšení repliky řadiče domény se nepovedlo kvůli slabému heslu režimu opravy adresářových služeb.](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
 * [Degradování řadiče domény se nezdařilo kvůli slabému heslu místního správce.](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
-Po rozumnou dobu funguje v režimu auditu v režimu auditování, a pokud chcete *Vynutit* , aby se vyžadovalo bezpečnější heslo, můžete přepnout konfiguraci z *auditu* . Dalším monitorováním v této době je dobrý nápad.
+Po rozumnou dobu funguje v režimu auditu v režimu auditování, a pokud chcete *Vynutit* , aby se vyžadovalo bezpečnější heslo, můžete přepnout konfiguraci z *auditu* . Další monitorování v tuto chvíli je vhodné.
 
 Je důležité si uvědomit, že ochrana heslem Azure AD může ověřovat hesla jenom během operace změny a nastavení hesel. Hesla přijatá a uložená ve službě Active Directory před nasazením ochrany heslem služby Azure AD nikdy nebudou ověřená a budou dál fungovat tak, jak je. V průběhu času budou všichni uživatelé a účty nakonec začít používat hesla ověřená ochranou hesel služby Azure AD, protože jejich stávající hesla jsou normálně vypršet. Účty nakonfigurované s heslem bez vypršení platnosti jsou z této výjimky.
 
@@ -102,7 +102,8 @@ Na agenta řadiče domény služby Azure AD Password Protection platí následuj
 
 * Všechny počítače, ve kterých bude nainstalován software agenta pro řadič domény Azure AD pro ochranu heslem, musí používat Windows Server 2012 nebo novější, včetně edicí Windows serveru Core.
     * Doména nebo doménová struktura služby Active Directory nemusí být na úrovni funkčnosti domény (úrovni funkčnosti domény) nebo úrovně funkčnosti doménové struktury (FFL) systému Windows Server 2012. Jak je uvedeno v [zásadách návrhu](concept-password-ban-bad-on-premises.md#design-principles), není k dispozici žádný minimální úrovni funkčnosti domény ani FFL nutný pro spuštění agenta řadiče domény ani proxy serveru.
-* Všechny počítače, na kterých běží agent řadiče domény Azure AD pro ochranu heslem, musí mít nainstalované rozhraní .NET 4,5.
+* Všechny počítače, ve kterých bude nainstalovaná služba proxy ochrany heslem Azure AD, musí mít nainstalované rozhraní .NET 4.7.2.
+    * Pokud rozhraní .NET 4.7.2 ještě není nainstalované, Stáhněte a spusťte instalační program, který najdete v [instalačním programu .NET Framework 4.7.2 offline pro Windows](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2).
 * Jakákoli doména služby Active Directory, která spouští službu agenta řadiče domény Azure AD, musí používat replikaci služby systém souborů DFS (Distributed File System) (DFSR) pro replikaci adresáře SYSVOL.
    * Pokud vaše doména již nepoužívá službu DFSR, je nutné před instalací ochrany hesel služby Azure AD provést migraci. Další informace najdete v tématu [Průvodce migrací replikace SYSVOL: FRS pro replikace DFS](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
 
@@ -122,8 +123,8 @@ Na službu proxy ochrany heslem služby Azure AD platí následující požadavk
     > [!NOTE]
     > Nasazení služby proxy ochrany heslem Azure AD je povinný požadavek na nasazení ochrany heslem Azure AD, i když řadič domény může mít odchozí přímé připojení k Internetu.
 
-* Všechny počítače, ve kterých se služba proxy ochrany heslem Azure AD bude instalovat, musí mít nainstalované rozhraní .NET 4,7.
-    * Rozhraní .NET 4,7 by již mělo být nainstalováno na plně aktualizovaný systém Windows Server. V případě potřeby si stáhněte a spusťte instalační program, který najdete v [instalačním programu .NET Framework 4,7 offline pro Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
+* Všechny počítače, ve kterých bude nainstalovaná služba proxy ochrany heslem Azure AD, musí mít nainstalované rozhraní .NET 4.7.2.
+    * Pokud rozhraní .NET 4.7.2 ještě není nainstalované, Stáhněte a spusťte instalační program, který najdete v [instalačním programu .NET Framework 4.7.2 offline pro Windows](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2).
 * Všechny počítače, které hostují službu proxy ochrany heslem Azure AD, musí být nakonfigurované tak, aby řadičům domény udělily možnost přihlásit se k proxy službě. Tato možnost se ovládá přes přiřazení oprávnění "přístup k tomuto počítači ze sítě".
 * Všechny počítače, které hostují službu proxy ochrany heslem Azure AD, musí být nakonfigurované tak, aby umožňovaly odchozí přenosy TLS 1,2 HTTP.
 * Účet *globálního správce* nebo *Správce zabezpečení* , který zaregistruje službu proxy ochrany heslem Azure AD a doménovou strukturu pomocí Azure AD.
@@ -157,7 +158,7 @@ V další části nainstalujete agenty řadiče domény Azure AD pro ochranu hes
 Vyberte jeden nebo více serverů, které budou hostovat službu proxy ochrany heslem služby Azure AD. Pro servery platí následující požadavky:
 
 * Každá taková služba může poskytovat jenom zásady pro hesla pro jednu doménovou strukturu. Hostitelský počítač musí být připojený k jakékoli doméně v této doménové struktuře.
-* Podporuje instalaci proxy služby buď v kořenové doméně, nebo v podřízených doménách, nebo na jejich kombinaci.
+* Službu proxy můžete nainstalovat buď v kořenové doméně, nebo v podřízených doménách, nebo v jejich kombinaci.
 * Potřebujete připojení k síti mezi alespoň jedním ŘADIČEm domény v každé doméně doménové struktury a jedním proxy server ochrany heslem.
 * Službu proxy ochrany heslem Azure AD můžete spustit na řadiči domény pro účely testování, ale tento řadič domény pak vyžaduje připojení k Internetu. Toto připojení může být bezpečnostním problémem. Doporučujeme tuto konfiguraci pouze pro testování.
 * Pro zajištění redundance doporučujeme aspoň dva proxy servery ochrany heslem Azure AD na doménovou strukturu, jak je uvedeno v předchozí části týkající se [vysoké dostupnosti](#high-availability-considerations).
@@ -200,7 +201,7 @@ Pokud chcete nainstalovat službu Azure AD Password Protection proxy, proveďte 
 
     Tato rutina vyžaduje pro vašeho tenanta Azure buď pověření *globálního správce* nebo *Správce zabezpečení* . Tuto rutinu je taky potřeba spustit pomocí účtu s oprávněními místního správce.
 
-    Po úspěšném provedení tohoto příkazu pro službu proxy ochrany heslem služby Azure AD je další vyvolání úspěšné, ale nepotřebujeme je.
+    Po úspěšném provedení tohoto příkazu budou další vyvolání úspěšné, ale budou zbytečné.
 
     `Register-AzureADPasswordProtectionProxy`Rutina podporuje následující tři režimy ověřování. První dva režimy podporují Azure AD Multi-Factor Authentication ale třetí režim ne.
 

@@ -1,29 +1,26 @@
 ---
-title: Bezpečnostní klíč nezabezpečeného hesla – přihlášení k místním prostředkům (Preview) – Azure Active Directory
-description: Naučte se, jak povolit klíč zabezpečení nezaloženého na heslech k místním prostředkům pomocí Azure Active Directory (Preview).
+title: Klíč zabezpečení s nezabezpečenými hesly k místním prostředkům – Azure Active Directory
+description: Naučte se, jak povolit klíč zabezpečení nezaloženého na heslech k místním prostředkům pomocí Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/09/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1459442f7d99d1de88a685eed34493da530c1a4
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: db1b559bb4f6a1f8866116c287df5b814500210b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743475"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647468"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Povolení klíče zabezpečení bez hesla k místním prostředkům pomocí Azure Active Directory (Preview)
+# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>Povolení nezabezpečeného přihlášení k místním prostředkům pomocí klíče zabezpečení bez hesla Azure Active Directory 
 
 Tento dokument se zaměřuje na povolení ověřování bez hesla u místních prostředků pro prostředí, která jsou **připojená k Azure AD** i pro zařízení s Windows 10 **připojená k Azure AD** . Tato funkce poskytuje bezproblémové jednotné přihlašování (SSO) k místním prostředkům pomocí bezpečnostních klíčů kompatibilních s Microsoftem.
-
-> [!NOTE]
-> Bezpečnostní klíče FIDO2 jsou funkcí veřejné verze Preview Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 ## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>Jednotné přihlašování k místním prostředkům pomocí klíčů FIDO2
 
@@ -42,7 +39,7 @@ Objekt serveru Azure AD Kerberos se vytvoří v místní službě Active Directo
 
 ## <a name="requirements"></a>Požadavky
 
-Před dokončením kroků v tomto článku musí organizace provést postup, aby na [zařízeních s Windows 10 (Preview) nemuseli přihlašovat bezpečnostní klíč s heslem](howto-authentication-passwordless-security-key.md) .
+Před dokončením kroků v tomto článku musí organizace provést postup, aby na [zařízeních s Windows 10 nemuseli přihlašovat bezpečnostní klíč s heslem](howto-authentication-passwordless-security-key.md) .
 
 Organizace musí splňovat i tyto požadavky na software.
 
@@ -156,13 +153,13 @@ Přihlášení pomocí FIDO se zablokuje, pokud vypršela platnost hesla. Oček�
 
 ## <a name="troubleshooting-and-feedback"></a>Řešení potíží a zpětná vazba
 
-Pokud byste chtěli sdílet zpětnou vazbu nebo narazit na problémy při zobrazení náhledu této funkce, sdílejte ji přes aplikaci Windows Feedback Center pomocí následujících kroků:
+Pokud chcete sdílet zpětnou vazbu nebo narazit na problémy s touto funkcí, sdílejte ji přes aplikaci Windows Feedback Center pomocí následujících kroků:
 
 1. Spusťte **Centrum zpětné vazby** a ujistěte se, že jste přihlášení.
 1. Odeslat názor v rámci následující kategorizace:
    - Kategorie: zabezpečení a ochrana osobních údajů
    - Subcategory: FIDO
-1. Pokud chcete zaznamenávat protokoly, použijte možnost pro **opětovné vytvoření problému** .
+1. Chcete-li zachytit protokoly, použijte možnost k **opětovnému vytvoření problému**.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

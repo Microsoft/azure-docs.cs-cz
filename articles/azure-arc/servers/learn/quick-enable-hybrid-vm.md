@@ -3,14 +3,14 @@ title: Připojit hybridní počítač k serverům s podporou ARC Azure
 description: Naučte se připojit a zaregistrovat svůj hybridní počítač se servery s podporou ARC Azure.
 ms.topic: quickstart
 ms.date: 12/15/2020
-ms.openlocfilehash: 68869854cbfcf6d7297137e6239b2229a20c04a1
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: c52b8d1f7098a7a2a88a9770a3b768b7fea31775
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516779"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646822"
 ---
-# <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>Rychlý Start: připojení hybridního počítače se servery s podporou ARC Azure
+# <a name="quickstart-connect-hybrid-machines-with-azure-arc-enabled-servers"></a>Rychlý Start: připojení hybridních počítačů k serverům s podporou ARC Azure
 
 [Servery s podporou ARC Azure](../overview.md) vám umožňují spravovat a řídit počítače s Windows a Linux hostovanými v místních, hraničních i cloudových prostředích. V tomto rychlém startu nasadíte a nakonfigurujete agenta připojeného počítače na počítači se systémem Windows nebo Linux, který je hostovaný mimo Azure pro správu prostřednictvím serverů s podporou ARC.
 

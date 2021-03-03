@@ -10,22 +10,22 @@ ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 4901d73235778a3194fe75b95df9cb81aeeb093b
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 3839dd27d4ae380b268694a93e5910b323411847
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651676"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657277"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>Řešení potíží s nasazením vzdáleného modelu 
 
 Přečtěte si, jak řešit a řešit běžné chyby, ke kterým může dojít při nasazování modelu do Azure Container Instances (ACI) a Azure Kubernetes Service (AKS) pomocí Azure Machine Learning.
 
 > [!NOTE]
-> Pokud model nasazujete do služby Azure Kubernetes Service (AKS), doporučujeme vám povolit [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-enable-existing-clusters) pro tento cluster. Pomůže vám to pochopit celkový stav clusteru a využití prostředků. Můžete taky najít užitečné následující zdroje:
+> Pokud model nasazujete do služby Azure Kubernetes Service (AKS), doporučujeme vám povolit [Azure monitor](../azure-monitor/containers/container-insights-enable-existing-clusters.md) pro tento cluster. Pomůže vám to pochopit celkový stav clusteru a využití prostředků. Můžete taky najít užitečné následující zdroje:
 >
-> * [Kontrolovat Resource Health události, které mají vliv na váš cluster AKS](https://docs.microsoft.com/azure/aks/aks-resource-health)
-> * [Diagnostika služby Azure Kubernetes](https://docs.microsoft.com/azure/aks/concepts-diagnostics)
+> * [Kontrolovat Resource Health události, které mají vliv na váš cluster AKS](../aks/aks-resource-health.md)
+> * [Diagnostika služby Azure Kubernetes](../aks/concepts-diagnostics.md)
 >
 > Při pokusu o nasazení modelu do poškozeného nebo přetíženého clusteru se očekává, že dojde k problémům. Pokud potřebujete pomoc s řešením problémů s clustery AKS, obraťte se na podporu AKS.
 
@@ -114,7 +114,7 @@ Nastavení úrovně protokolování na ladění může způsobit, že budou prot
 
 ## <a name="function-fails-runinput_data"></a>Neúspěšná funkce: Run (input_data)
 
-Pokud se služba úspěšně nasadila, ale dojde k chybě při odesílání dat do koncového bodu, můžete do funkce Přidat příkaz pro zachycení chyb, `run(input_data)` aby se místo toho vrátila podrobná chybová zpráva. Příklad:
+Pokud se služba úspěšně nasadila, ale dojde k chybě při odesílání dat do koncového bodu, můžete do funkce Přidat příkaz pro zachycení chyb, `run(input_data)` aby se místo toho vrátila podrobná chybová zpráva. Například:
 
 ```python
 def run(input_data):

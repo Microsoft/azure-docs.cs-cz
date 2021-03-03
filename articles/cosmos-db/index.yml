@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentace k Azure Cosmos DB
-summary: Azure Cosmos DB – rychlá databáze NoSQL s rychlostí a dostupností, které zaručuje smlouva SLA, automatickou a okamžitou škálovatelností a opensourcovými rozhraními API pro MongoDB a Cassandra
+summary: Azure Cosmos DB – rychlá databáze NoSQL s rychlostí a dostupností zajištěnou smlouvou SLA, automatickou a okamžitou škálovatelností a open source rozhraní API pro MongoDB a Cassandra.
 metadata:
   title: Azure Cosmos DB
-  description: Azure Cosmos DB – rychlá databáze NoSQL s rychlostí a dostupností, které zaručuje smlouva SLA, automatickou a okamžitou škálovatelností a opensourcovými rozhraními API pro MongoDB a Cassandra
+  description: Azure Cosmos DB – rychlá databáze NoSQL s rychlostí a dostupností zajištěnou smlouvou SLA, automatickou a okamžitou škálovatelností a open source rozhraní API pro MongoDB a Cassandra.
   services: service
   ms.service: cosmos-db
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   author: SnehaGunda
   ms.author: sngun
   ms.date: 09/10/2019
-  ms.openlocfilehash: 7ee6db07facb1464428c6d1d8562fdd54216b883
-  ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
-  ms.translationtype: HT
+  ms.openlocfilehash: 0dda9cb110592c9fd9325f607b455d16c32da7f3
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/23/2020
-  ms.locfileid: "92485762"
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101658008"
 landingContent:
 - title: Informace o databázi Azure Cosmos
   linkLists:
@@ -91,7 +91,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Kompatibilita přenosového protokolu s MongoDB
-      url: mongodb-feature-support-36.md
+      url: mongodb-feature-support-40.md
     - text: Příkazy rozšíření MongoDB
       url: mongodb-custom-commands.md
     - text: Změna datových proudů

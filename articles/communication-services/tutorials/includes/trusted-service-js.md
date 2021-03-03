@@ -8,12 +8,12 @@ ms.author: dademath
 ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 3bf0831084b9dd6f16d8208def87033fc0be2900
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6790335e5aa63f515cd125f31a8ccd7877132c10
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100645352"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661324"
 ---
 ## <a name="download-code"></a>Stáhnout kód
 
@@ -23,8 +23,8 @@ Najděte finální kód pro tento rychlý Start na [GitHubu](https://github.com/
 
 - Účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Visual Studio Code](https://code.visualstudio.com/) na jedné z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms)
-- [Node.js](https://nodejs.org/), LTS a verze LTS údržby (doporučeno 10.14.1). Pomocí `node --version` příkazu ověřte svou verzi. 
-- [Rozšíření Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) pro Visual Studio Code 
+- [Node.js](https://nodejs.org/), LTS a verze LTS údržby (doporučeno 10.14.1). Pomocí `node --version` příkazu ověřte svou verzi.
+- [Rozšíření Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) pro Visual Studio Code
 - Aktivní prostředek komunikační služby a připojovací řetězec. [Vytvořte prostředek služby Communications](../../quickstarts/create-communication-resource.md).
 
 ## <a name="overview"></a>Přehled
@@ -76,7 +76,7 @@ Nyní budeme pokračovat k instalaci knihoven služby Azure Communication Servic
 
 `Identity`K vygenerování budeme použít knihovnu `User Access Tokens` .
 
-Pomocí `npm install` příkazu nainstalujte klientskou knihovnu pro správu služby Azure Communication Services pro JavaScript.
+Pomocí `npm install` příkazu nainstalujte klientskou knihovnu pro službu Azure Communications identity pro JavaScript.
 
 ```console
 
@@ -102,7 +102,7 @@ Další informace o načtení připojovacího řetězce najdete v [rychlém star
 const connectionString = 'INSERT YOUR RESOURCE CONNECTION STRING'
 ```
 
-Dále upravíte naši původní funkci k vygenerování `User Access Tokens` . 
+Dále upravíte naši původní funkci k vygenerování `User Access Tokens` .
 
 `User Access Tokens` jsou generovány vytvořením uživatele z `createUser` metody. Po vytvoření uživatele můžeme použít `issueToken` metodu k vygenerování tokenu pro tohoto uživatele, který vrátí funkce Azure.
 

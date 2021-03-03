@@ -1,6 +1,6 @@
 ---
-title: Komunikační služby Azure – známé problémy
-description: Přečtěte si o známých problémech s komunikačními službami Azure.
+title: Komunikační služby Azure – časté otázky/známé problémy
+description: Další informace o komunikačních službách Azure
 author: mikben
 manager: jken
 services: azure-communication-services
@@ -8,35 +8,35 @@ ms.author: mikben
 ms.date: 10/03/2020
 ms.topic: troubleshooting
 ms.service: azure-communication-services
-ms.openlocfilehash: e9e4b747d9d0ab39a1d0ecef6cf45e4cc0f9e2c5
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: e58335f1e266af651eb5867ca98e9ec979803b94
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99628136"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101655883"
 ---
-# <a name="known-issues-azure-communication-services"></a>Známé problémy: komunikační služby Azure
+# <a name="faq--known-issues"></a>Nejčastější dotazy/známé problémy
+Tento článek poskytuje informace o známých problémech a nejčastějších dotazech týkajících se komunikačních služeb Azure.
 
-Tento článek poskytuje informace o známých problémech spojených s komunikačními službami Azure.
+## <a name="faq"></a>Časté otázky
 
-## <a name="video-streaming-quality-on-chromeandroid"></a>Kvalita streamování videa v Chrome/Androidu 
+### <a name="why-is-the-quality-of-my-video-degraded"></a>Proč kvalita videa je degradovaná?
 
-Výkon streamování videa může být degradován v Chrome Androidu.
+Kvalita datových proudů videí je určena velikostí nástroje pro vykreslování na straně klienta, který se použil k inicializaci tohoto datového proudu. Když se přihlásíte k odběru vzdáleného datového proudu, příjemce určí své vlastní rozlišení založené na dimenzích vykreslování odesílatele na straně klienta.
 
-### <a name="possible-causes"></a>Možné příčiny
-Kvalita vzdálených datových proudů závisí na rozlišení vykreslování na straně klienta, které bylo použito k inicializaci tohoto datového proudu. Když se přihlásíte k odběru vzdáleného datového proudu, příjemce určí své vlastní rozlišení založené na dimenzích vykreslování odesílatele na straně klienta.
+### <a name="why-is-it-not-possible-to-enumerateselect-micspeaker-devices-on-safari"></a>Proč není možné vytvořit výčet a vybrat zařízení MIC/mluvčí v Safari?
 
-## <a name="bluetooth-headset-microphones-are-not-detected"></a>Mikrotelefony s mikrofonem Bluetooth se nezjistily
+Aplikace nemůžou vytvořit výčet/mluvčí zařízení (jako Bluetooth) v Safari iOS/iPadu. Jedná se o omezení operačního systému – existuje vždycky jenom jedno zařízení.
 
-Může docházet k problémům s připojením sluchátka s mikrofonem Bluetooth ke volání komunikačních služeb.
+Pro Safari v MacOS – aplikace nemůže zobrazit výčet/vybrat mluvčího prostřednictvím komunikačních služeb Správce zařízení – tyto musí být vybrány prostřednictvím operačního systému. Pokud používáte Chrome v MacOS, může aplikace zobrazit nebo vybrat zařízení prostřednictvím komunikačních služeb Správce zařízení.
 
-### <a name="possible-causes"></a>Možné příčiny
-K dispozici není možnost vybrat mikrofon Bluetooth v iOS.
+## <a name="known-issues"></a>Známé problémy
 
+V této části najdete informace o známých problémech spojených s komunikačními službami Azure.
 
-## <a name="repeatedly-switching-video-devices-may-cause-video-streaming-to-temporarily-stop"></a>Opakované přepínání grafických zařízení může způsobit, že se streamování videa dočasně zastaví.
+### <a name="repeatedly-switching-video-devices-may-cause-video-streaming-to-temporarily-stop"></a>Opakované přepínání grafických zařízení může způsobit, že se streamování videa dočasně zastaví.
 
 Přepínání mezi grafickými zařízeními může způsobit, že se datový proud videa během získání datového proudu z vybraného zařízení zastaví.
 
-### <a name="possible-causes"></a>Možné příčiny
+#### <a name="possible-causes"></a>Možné příčiny
 Streamování mezi mediálními zařízeními a přepínání mezi nimi je výpočetní výkon. Přepínání často může způsobit snížení výkonu. Vývojářům Doporučujeme zastavit jeden datový proud zařízení před tím, než začnete s jiným.

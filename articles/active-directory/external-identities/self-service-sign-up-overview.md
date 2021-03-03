@@ -5,23 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34b08e2e530843dd98c87e424812706247388228
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13023ef93cabcf46924cc2cc76dc2d868c4a1ddd
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87908480"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653557"
 ---
-# <a name="self-service-sign-up-preview"></a>Samoobslužná registrace (Preview)
-
-> [!NOTE]
-> Samoobslužná registrace je funkce veřejné verze Preview služby Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+# <a name="self-service-sign-up"></a>Samoobslužné přihlášení
 
 Když sdílíte aplikaci s externími uživateli, možná nebudete vždy znát předem, který bude potřebovat přístup k aplikaci. Jako alternativu k zasílání pozvánek přímo jednotlivcům můžete povolit externím uživatelům zaregistrovat se ke konkrétním aplikacím sami tím, že povolíte samoobslužné registrace. Přizpůsobené prostředí pro registraci můžete vytvořit přizpůsobením uživatelského toku samoobslužné registrace. Můžete například zadat možnosti pro registraci pomocí poskytovatelů služeb Azure AD nebo sociální identity a shromažďovat informace o uživateli během procesu registrace.
 

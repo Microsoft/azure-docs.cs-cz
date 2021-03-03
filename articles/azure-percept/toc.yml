@@ -1,0 +1,110 @@
+- name: Dokumentace ke službě Azure Percept
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Platforma Azure Percept
+      href: overview-azure-percept.md
+    - name: Azure Percept Studio
+      href: overview-azure-percept-studio.md
+    - name: Azure Percept DK
+      href: overview-azure-percept-dk.md
+    - name: Zvuk Azure Percept
+      href: overview-azure-percept-audio.md
+    - name: Modely AI pro Azure Percept
+      href: overview-ai-models.md
+    - name: Pokročilý vývoj
+      href: overview-advanced-code.md
+    - name: Zabezpečení Azure Percept
+      href: overview-percept-security.md
+    - name: integrace 80/20
+      href: overview-8020-integration.md
+    - name: Aktualizace zařízení Percept
+      href: overview-update-experience.md
+- name: Rychlé starty
+  items:
+    - name: Nastavení zařízení Azure Percept
+      items:
+        - name: Unbox a sestavte si Azure Percept DK
+          href: quickstart-percept-dk-unboxing.md
+        - name: Dokončete prostředí pro instalaci Azure Percept DK
+          href: quickstart-percept-dk-set-up.md
+        - name: Nastavení služby Azure Percept audio
+          href: quickstart-percept-audio-setup.md
+- name: Kurzy
+  items:
+    - name: Spuštění vytváření prototypů pomocí Azure Percept
+      items:
+        - name: Sestavení a nasazení řešení pro vize bez kódu
+          href: tutorial-nocode-vision.md
+        - name: Sestavení a nasazení řešení pro rozpoznávání řeči bez kódu
+          href: tutorial-no-code-speech.md
+    - name: Pokročilý vývoj
+      items:
+        - name: Kurz pro pokročilý vývoj (Cloud)
+          href: advanced-development-cloud.md
+        - name: Kurz pro pokročilý vývoj (místní)
+          href: advanced-development-local.md
+- name: Koncepty
+  items:
+    - name: Zvuk Azure Percept
+      items:
+        - name: Chování INDIKÁTORu a tlačítka
+          href: audio-button-led-behavior.md
+- name: Návody
+  items:
+    - name: Vývoj řešení Vision pomocí Azure Percept DK
+      items:
+        - name: Zobrazení streamu videa DevKit
+          href: how-to-view-video-stream.md
+        - name: Nasazení modelu AI do DevKit
+          href: how-to-deploy-model.md
+        - name: Zachycení imagí pro projekt vize
+          href: how-to-capture-images.md
+        - name: Zobrazení telemetrie DevKit
+          href: how-to-view-telemetry.md
+    - name: Vývoj řešení pro rozpoznávání řeči pomocí Azure Percept DK
+      items:
+        - name: Konfigurace hlasového asistenta v Azure Percept studiu
+          href: how-to-configure-voice-assistant.md
+        - name: Konfigurace hlasového asistenta v IoT Hub
+          href: how-to-manage-voice-assistant.md
+    - name: Aktualizace zařízení s Percept Azure
+      items:
+        - name: Nastavení aktualizací přes Air
+          href: how-to-set-up-over-the-air-updates.md
+        - name: Aktualizace Azure Percept DK přes Air
+          href: how-to-update-over-the-air.md
+        - name: Aktualizace Azure Percept DK přes USB
+          href: how-to-update-via-usb.md
+    - name: Připojení k Azure Percept DK
+      items:
+        - name: Připojit přes SSH
+          href: how-to-ssh-into-percept-dk.md
+        - name: Připojit přes sériové
+          href: how-to-connect-to-percept-dk-over-serial.md
+    - name: nástroje
+      items:
+        - name: Instalační program sady devtools Pack
+          href: dev-tools-installer.md
+    - name: Řešení potíží
+      items:
+        - name: Řešení potíží s instalačním prostředím
+          href: how-to-troubleshoot-setup.md
+        - name: Obecné řešení potíží s Azure Percept DK
+          href: troubleshoot-dev-kit.md
+        - name: Řešení potíží s řešením Vision
+          href: vision-solution-troubleshooting.md
+        - name: Řešení potíží se zvukem v Azure Percept
+          href: troubleshoot-audio-accessory-speech-module.md
+- name: Reference
+  items:
+    - name: Datové listy zařízení Azure Percept
+      items:
+        - name: Datový list Azure Percept DK
+          href: azure-percept-dk-datasheet.md
+        - name: Datový list Azure Percept Vision
+          href: azure-percept-vision-datasheet.md
+        - name: Datový list Azure Percept audio
+          href: azure-percept-audio-datasheet.md
+- name: Zdroje a prostředky
+  items: null

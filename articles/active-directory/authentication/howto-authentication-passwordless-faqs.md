@@ -1,24 +1,24 @@
 ---
 title: Nejčastější dotazy k nasazení FIDO2 zabezpečení klíčů pro hybridní nasazení – Azure Active Directory
-description: Přečtěte si o některých nejčastějších dotazech pro přihlášení k FIDO2 bezpečnostnímu klíči s heslem a pomocí Azure Active Directory (Preview).
+description: Přečtěte si o některých nejčastějších dotazech pro přihlášení k FIDO2 bezpečnostnímu klíči s neheslem pro hybridní použití pomocí Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 08/19/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98cb990ede7c4d6e261bba05b0b8c97d758e6c32
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ca4943293f9474d4089267d05460d6d8766b79e6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743526"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646380"
 ---
-# <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad-preview"></a>Nejčastější dotazy k nasazení (FAQ) pro klíče zabezpečení Hybrid FIDO2 ve službě Azure AD (Preview)
+# <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad"></a>Nejčastější dotazy k nasazení pro klíče zabezpečení Hybrid FIDO2 ve službě Azure AD 
 
 Tento článek obsahuje informace o nejčastějších dotazech k nasazení pro zařízení připojená k hybridní službě Azure AD a k tomu, aby se přihlásily k prostředkům Prem. Pomocí této funkce bez hesla můžete povolit ověřování Azure AD na zařízeních s Windows 10 pro zařízení připojená k hybridní službě Azure AD pomocí klíčů zabezpečení FIDO2. Uživatelé se můžou na svých zařízeních přihlašovat pomocí moderních přihlašovacích údajů, jako jsou FIDO2 klíče, a přistupovat k tradičním prostředkům založeném na Active Directory Domain Services (služba AD DS) s bezproblémové jednotné přihlašování (SSO) k Prem prostředkům.
 
@@ -32,9 +32,6 @@ Pokud chcete začít s klíči zabezpečení FIDO2 a s hybridním přístupem k 
 * [Klíče zabezpečení FIDO2 bez hesla](howto-authentication-passwordless-security-key.md)
 * [Windows 10 bez hesla](howto-authentication-passwordless-security-key-windows.md)
 * [Místní prostředí bez hesla](howto-authentication-passwordless-security-key-on-premises.md)
-
-> [!NOTE]
-> Bezpečnostní klíče FIDO2 jsou funkcí veřejné verze Preview Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 ## <a name="security-keys"></a>Klíče zabezpečení
 
@@ -69,7 +66,7 @@ Další informace o registraci a používání klíčů zabezpečení FIDO2 najd
 
 Ne, v tuto chvíli ne.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Funguje tato funkce, pokud není k dispozici připojení k Internetu?](#does-this-feature-work-if-theres-no-internet-connectivity)
 * [Jaké jsou konkrétní koncové body, které je potřeba otevřít ve službě Azure AD?](#what-are-the-specific-end-points-that-are-required-to-be-open-to-azure-ad)

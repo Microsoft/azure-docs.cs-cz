@@ -8,19 +8,18 @@ manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 0c2deb1ae1d41f8daaed8856f97c4b458930c616
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e753d810bbc2ed1079b58d20a0659bf5e2219d11
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484375"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671896"
 ---
 # <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>Průvodce plánováním a implementací platformy SAP BusinessObjects BI v Azure
 
@@ -184,7 +183,7 @@ Azure SQL Database nabízí následující tři nákupní modely:
 
 Azure Database for MySQL se dodává se třemi různými cenovými úrovněmi. Jsou rozlišené o množství výpočetních prostředků v virtuální jádra, paměti na vCore a technologii úložiště, která se používá k uložení data. Níže najdete podrobné informace o možnostech a další informace o různých atributech najdete v tématu [cenová úroveň](../../../mysql/concepts-pricing-tiers.md) pro Azure Database for MySQL.
 
-- Základní
+- Basic
 
   Používá se pro cílové úlohy, které vyžadují lehký výpočetní výkon a vstupně-výstupní výkon.
 

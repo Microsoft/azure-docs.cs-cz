@@ -96,6 +96,8 @@
   items:
     - name: Fulltextové vyhledávání
       href: search-lucene-query-architecture.md
+    - name: Sémantické vyhledávání
+      href: semantic-search-overview.md
     - name: Vyhodnocení relevance
       href: index-similarity-and-scoring.md
     - name: Indexery
@@ -218,6 +220,8 @@
           href: search-howto-schedule-indexers.md
         - name: Definování mapování polí
           href: search-indexer-field-mappings.md
+        - name: Vlastnosti metadat obsahu
+          href: search-blob-metadata-properties.md
         - name: Připojení s využitím spravovaných identit
           items:
             - name: Přehled spravovaných identit
@@ -228,6 +232,8 @@
               href: search-howto-managed-identities-cosmos-db.md
             - name: Databáze SQL
               href: search-howto-managed-identities-sql.md
+        - name: SharePoint Online
+          href: search-howto-index-sharepoint-online.md
         - name: Objekty blob Azure
           items:
             - name: Prohledávání objektů blob
@@ -248,8 +254,6 @@
               href: search-howto-index-json-blobs.md
             - name: Indexování šifrovaných objektů blob
               href: search-howto-index-encrypted-blobs.md
-            - name: Vlastnosti metadat pro obsah objektu BLOB
-              href: search-blob-metadata-properties.md
         - name: Tabulky Azure
           href: search-howto-indexing-azure-tables.md
         - name: Azure Cosmos DB
@@ -306,6 +310,10 @@
       items:
         - name: Vytvoření základního dotazu
           href: search-query-create.md
+        - name: Vytvořit sémantický dotaz
+          href: semantic-how-to-query-request.md
+        - name: Přidat kontrolu pravopisu do dotazů
+          href: speller-how-to-add.md
         - name: Sestavení a typy dotazů
           href: search-query-overview.md
         - name: Použití jednoduché syntaxe (příklady)
@@ -348,6 +356,8 @@
       items:
         - name: Práce s výsledky
           href: search-pagination-page-layout.md
+        - name: Strukturování sémantické odpovědi
+          href: semantic-how-to-query-response.md
         - name: Profily skórování
           href: index-add-scoring-profiles.md
         - name: Algoritmus podobnosti
@@ -388,6 +398,8 @@
           href: search-manage.md
         - name: PowerShell
           href: search-manage-powershell.md
+        - name: Azure CLI
+          href: search-manage-azure-cli.md
         - name: Přesun služby napříč oblastmi
           href: search-howto-move-across-regions.md
         - name: Přístup správce na základě role

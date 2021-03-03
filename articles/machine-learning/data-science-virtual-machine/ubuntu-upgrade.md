@@ -4,24 +4,23 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Přečtěte si, jak upgradovat z CentOS a Ubuntu 16,04 na nejnovější Ubuntu 18,04 Data Science Virtual Machine.
 keywords: obsáhlý Learning, AI, nástroje pro datové vědy, virtuální počítač pro datové vědy, vědecké zpracování týmových dat
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 5b98384d4d735f4c124c6af40d6edbff896900ce
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5b897ff7527d2d60234162ccbdeb08a00260bb1d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320974"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659456"
 ---
 # <a name="upgrade-your-data-science-virtual-machine-to-ubuntu-1804"></a>Upgrade prostředí Data Science Virtual Machine na Ubuntu 18.04
 
 Pokud máte Data Science Virtual Machine, na kterém běží starší verze, jako je například Ubuntu 16,04 nebo CentOS, měli byste migrovat DSVM na Ubuntu 18,04. Při migraci se zajistí, že získáte nejnovější opravy operačního systému, ovladače, předinstalovaný software a verze knihoven. V tomto dokumentu se dozvíte, jak migrovat z dřívějších verzí Ubuntu nebo z CentOS. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Znalost pomocí SSH a příkazového řádku pro Linux
 
@@ -38,7 +37,7 @@ V Azure Portal vyhledejte funkce **snímků** pomocí panelu hledání.
 
 :::image type="content" source="media/ubuntu_upgrade/azure-portal-search-bar.png" alt-text="Snímek obrazovky znázorňující Azure Portal a panel hledání se zvýrazněnými * * snímky * *":::
 
-1. Vyberte možnost **Přidat** , která vás převezme na stránku **vytvořit snímek** . Vyberte předplatné a skupinu prostředků virtuálního počítače. V poli **oblast** vyberte stejnou oblast, ve které existuje cílové úložiště. Vyberte disk úložiště DSVM a další možnosti zálohování. **HDD úrovně Standard** je vhodný typ úložiště pro tento scénář zálohování.
+1. Vyberte možnost **Přidat**, která vás převezme na stránku **vytvořit snímek** . Vyberte předplatné a skupinu prostředků virtuálního počítače. V poli **oblast** vyberte stejnou oblast, ve které existuje cílové úložiště. Vyberte disk úložiště DSVM a další možnosti zálohování. **HDD úrovně Standard** je vhodný typ úložiště pro tento scénář zálohování.
 
 :::image type="content" source="media/ubuntu_upgrade/create-snapshot-options.png" alt-text="Snímek obrazovky znázorňující možnosti vytvoření snímku":::
 
@@ -65,7 +64,7 @@ Dokončení procesu upgradu bude chvíli trvat. Po převzetí služeb při selh�
 
 Až se váš virtuální počítač Upgradoval a restartuje, pokusí se k němu znovu získat přístup přes SSH. IP adresa se mohla během restartování změnit, proto ji před pokusem o připojení potvrďte.
 
-Pokud se zobrazí chyba **Identifikace vzdáleného hostitele se změnila** , budete muset znovu vygenerovat přihlašovací údaje SSH.
+Pokud se zobrazí chyba **Identifikace vzdáleného hostitele se změnila**, budete muset znovu vygenerovat přihlašovací údaje SSH.
 
 :::image type="content" source="media/ubuntu_upgrade/remote-host-warning.png" alt-text="Snímek obrazovky PowerShellu ukazující upozornění na změnu identifikace vzdáleného hostitele":::
 
@@ -107,7 +106,7 @@ Pokud jste ještě nevytvořili snímek virtuálního počítače, jak je popsá
 
 :::image type="content" source="media/ubuntu_upgrade/portal-disks-search.png" alt-text="Snímek obrazovky Azure Portal stránky pro hledání disků a tlačítkem Přidat":::
 
-2. Nastavte **předplatné** , **skupinu prostředků** a **oblast** na hodnoty snímku virtuálního počítače. Vyberte **název** disku, který se má vytvořit.
+2. Nastavte **předplatné**, **skupinu prostředků** a **oblast** na hodnoty snímku virtuálního počítače. Vyberte **název** disku, který se má vytvořit.
 
 3. Jako **snímek** vyberte **typ zdroje** a jako **zdrojový snímek** vyberte snímek virtuálního počítače. Zkontrolujte a vytvořte disk. 
 

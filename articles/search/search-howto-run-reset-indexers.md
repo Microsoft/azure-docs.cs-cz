@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/09/2021
-ms.openlocfilehash: 06f9d336bb04aa26cea4ebcdae1cfd045e1c2a1b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bf8a4e51e23f438265af706914a6bc73ec30f64d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361243"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667659"
 ---
 # <a name="how-to-run-or-reset-indexers-skills-or-documents"></a>Spuštění nebo resetování indexerů, dovedností nebo dokumentů
 
@@ -101,7 +101,7 @@ Pokud nejsou zadané žádné dovednosti, spustí se celý dovednosti a pokud je
 > [!IMPORTANT] 
 > [Resetování dokumentů](/rest/api/searchservice/preview-api/reset-documents) je ve verzi Public Preview, dostupné jenom v rámci verze Preview REST API. Funkce ve verzi Preview se nabízejí tak, jak jsou, v části s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-[Rozhraní API pro resetování dokumentů](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-documents) přijímá seznam klíčů dokumentů, abyste mohli aktualizovat konkrétní dokumenty. Je-li tento parametr zadán, budou parametry obnovení jediným rozhodujícím významem, co bude zpracováno bez ohledu na jiné změny podkladových dat. Například když jste od posledního spuštění indexeru přidali nebo aktualizovali 20 objektů blob, ale jenom resetujete jenom jeden dokument, zpracuje se jenom jeden dokument.
+[Rozhraní API pro resetování dokumentů](/rest/api/searchservice/preview-api/reset-documents) přijímá seznam klíčů dokumentů, abyste mohli aktualizovat konkrétní dokumenty. Je-li tento parametr zadán, budou parametry obnovení jediným rozhodujícím významem, co bude zpracováno bez ohledu na jiné změny podkladových dat. Například když jste od posledního spuštění indexeru přidali nebo aktualizovali 20 objektů blob, ale jenom resetujete jenom jeden dokument, zpracuje se jenom jeden dokument.
 
 Na základě jednotlivých dokumentů se všechna pole v tomto dokumentu hledání aktualizují o hodnoty ze zdroje dat. Nemůžete vybrat a vybrat, která pole se mají aktualizovat. 
 

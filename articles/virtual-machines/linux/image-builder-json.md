@@ -3,17 +3,18 @@ title: Vytvoření šablony Azure image Builder (Preview)
 description: Naučte se, jak vytvořit šablonu pro použití s nástrojem Azure image Builder.
 author: danielsollondon
 ms.author: danis
-ms.date: 08/13/2020
+ms.date: 02/18/2021
 ms.topic: reference
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: image-builder
+ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: 9ae477dd04237e285915157615dcb6a6b841ca99
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: c2e4a2c2700af99a074dfd640177a6baefe763e2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678251"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670420"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -308,11 +309,28 @@ Přizpůsobení vlastností:
 - **sha256Checksum** -hodnota kontrolního součtu SHA256 souboru, vygenerujete ho místně a pak tvůrce imagí provede kontrolu kontrolního součtu a ověření.
     * K vygenerování sha256Checksum pomocí terminálu pro Mac/Linux spusťte: `sha256sum <fileName>`
 
-
-Příkazy, které se mají spustit s oprávněními superuživatele, musí mít předponu `sudo` .
-
 > [!NOTE]
 > Vložené příkazy jsou uloženy jako součást definice šablony obrázku. Tyto příkazy lze zobrazit při výpisu definice bitové kopie a tyto jsou také podpora Microsoftu v případě případu podpory pro účely řešení potíží. Pokud máte citlivé příkazy nebo hodnoty, důrazně doporučujeme, abyste je přesunuli do skriptů a pomocí identity uživatele ověřili Azure Storage.
+
+#### <a name="super-user-privileges"></a>Oprávnění super uživatele
+Příkazy, které se mají spustit s oprávněními superuživatele, musí být s předponou `sudo` , můžete je přidat do skriptů nebo použít vložené příkazy, například:
+```json
+                "type": "Shell",
+                "name": "setupBuildPath",
+                "inline": [
+                    "sudo mkdir /buildArtifacts",
+                    "sudo cp /tmp/index.html /buildArtifacts/index.html"
+```
+Příklad skriptu používajícího sudo, na který můžete odkazovat pomocí scriptUri:
+```bash
+#!/bin/bash -e
+
+echo "Telemetry: creating files"
+mkdir /myfiles
+
+echo "Telemetry: running sudo 'as-is' in a script"
+sudo touch /myfiles/somethingElevated.txt
+```
 
 ### <a name="windows-restart-customizer"></a>Restart Windows – úprav 
 Úpravce restartování vám umožní restartovat virtuální počítač s Windows a počkat na jeho návrat do režimu online. to vám umožní nainstalovat software, který vyžaduje restart.  
@@ -397,6 +415,10 @@ Podpora OS: Linux a Windows
 Vlastnosti úprav souborů:
 
 - **SourceUri** – dostupný koncový bod úložiště, může to být GitHub nebo Azure Storage. Můžete stáhnout pouze jeden soubor, nikoli celý adresář. Pokud potřebujete stáhnout adresář, použijte komprimovaný soubor a pak ho dekomprimujte pomocí úprav prostředí nebo úprav prostředí PowerShell. 
+
+> [!NOTE]
+> Pokud sourceUri je účet Azure Storage, nezávisle na tom, jestli je objekt BLOB označený jako Public, udělíte oprávnění identitě spravovaného uživatele pro přístup pro čtení objektu BLOB. Pokud chcete nastavit oprávnění úložiště, podívejte se prosím na tento [příklad](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity#create-a-resource-group) .
+
 - **cíl** – jedná se o úplnou cestu k cíli a název souboru. Musí existovat všechny odkazované cesty a podadresáře, pomocí prostředí PowerShell nebo úprav prostředí PowerShell je nastavit předem. Pomocí úprav skriptů můžete vytvořit cestu. 
 
 To je podporováno v adresářích systému Windows a cestách pro Linux, ale existují několik rozdílů: 
@@ -408,8 +430,6 @@ Pokud při pokusu o stažení souboru nebo jeho umístění do zadaného adresá
 
 > [!NOTE]
 > Soubor úprav souborů je vhodný jenom pro stahování malých souborů, < 20MB. U větších souborů ke stažení použijte skript nebo vložený příkaz, ke stažení souborů, jako je Linux `wget` nebo Windows, použijte kód `curl` `Invoke-WebRequest` .
-
-Soubory v úpravách souborů je možné stáhnout z Azure Storage pomocí [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
 
 ### <a name="windows-update-customizer"></a>web Windows Update úprav
 Tento úprav je postaven na [komunitě web Windows Update zřídí](https://packer.io/docs/provisioners/community-supported.html) pro balírnu, což je open source projekt udržovaný komunitou pro balení. Společnost Microsoft testuje a ověřuje ve službě image Builder službu pro vytváření imagí a bude podporovat zkoumání problémů s IT a řešení problémů, ale open source projekt není oficiálně podporován společností Microsoft. Podrobnou dokumentaci a nápovědu k web Windows Update zřídíte v úložišti projektu.

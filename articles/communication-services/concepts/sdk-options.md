@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: f59ebfdb1942c7eb9be6c2cf09e1ed677c3f22e3
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: e5a2114d09ac2a81d4a12c69a64ce806fd502100
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507672"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656087"
 ---
 # <a name="client-libraries-and-rest-apis"></a>Klientské knihovny a rozhraní REST API
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Funkce služby Azure Communication Services jsou koncepčně rozdělené do šesti oblastí. Některé oblasti mají plně Open Source klientské knihovny. Volající Klientská knihovna používá proprietární síťová rozhraní a je aktuálně uzavřená a knihovna konverzace obsahuje uzavřenou závislost na zdroji. Ukázky a další technické podrobnosti pro klientské knihovny jsou publikované v [úložišti GitHub služby Azure Communication Services](https://github.com/Azure/communication).
 
@@ -28,26 +26,27 @@ Funkce služby Azure Communication Services jsou koncepčně rozdělené do šes
 | ---------------------- | --------------------- | ---|-------------------------- | --------------------------------------------------------------------------- |
 | Azure Resource Manager | REST | Otevřít            | Azure. ResourceManager. Communication | Zřizování a Správa prostředků komunikačních služeb             |
 | Společné                 | REST | Otevřít               | Azure. Communication. Common          | Poskytuje základní typy pro jiné klientské knihovny. |
-| Správa         | REST | Otevřít               | Azure. Communications. Administration  | Spravujte uživatele, přístupové tokeny a telefonní čísla, přidělte STUN a zapněte servery. |
+| Identita         | REST | Otevřít               | Azure. Communication. identity  | Správa uživatelů, přístupové tokeny |
 | Chat                   | REST s proprietárními signály | Otevřít pomocí zavřeného balíčku zdrojového signálu    | Azure. Communication. chat            | Přidání textu založeného na textu v reálném čase do vašich aplikací  |
 | SMS                    | REST | Otevřít              | Azure. Communication. SMS             | Odesílání a příjem zpráv SMS |
 | Videohovory                | Proprietární přenos | Uzavřeno |Azure. Communication. Calling         | Využití hlasu, videa, sdílení obrazovky a dalších možností komunikace dat v reálném čase          |
 
-Všimněte si, že klientské knihovny Azure Resource Manager, správy a serveru SMS jsou zaměřené na integraci služeb a v mnoha případech dochází k problémům se zabezpečením při integraci těchto funkcí do aplikací koncových uživatelů. Společné a chatovací klientské knihovny jsou vhodné pro služby a klientské aplikace. Volající Klientská knihovna je navržena pro klientské aplikace. Klientská knihovna zaměřená na scénáře služby je ve vývoji.
+Všimněte si, že klientské knihovny Azure Resource Manager, identity a serveru SMS jsou zaměřené na integraci služeb a v mnoha případech dochází k problémům se zabezpečením při integraci těchto funkcí do aplikací koncových uživatelů. Společné a chatovací klientské knihovny jsou vhodné pro služby a klientské aplikace. Volající Klientská knihovna je navržena pro klientské aplikace. Klientská knihovna zaměřená na scénáře služby je ve vývoji.
 
 ### <a name="languages-and-publishing-locations"></a>Jazyky a umístění pro publikování
 
-Umístění pro publikování pro jednotlivé balíčky klientských knihoven jsou podrobně popsány níže. 
+Umístění pro publikování pro jednotlivé balíčky klientských knihoven jsou podrobně popsány níže.
 
 | Plošný           | JavaScript | .NET | Python | Java SE | iOS | Android | Jiné                          |
 | -------------- | ---------- | ---- | ------ | ---- | -------------- | -------------- | ------------------------------ |
 | Azure Resource Manager | -         | [NuGet](https://www.nuget.org/packages/Azure.ResourceManager.Communication)    |   [PyPi](https://pypi.org/project/azure-mgmt-communication/)    |  -  | -              | -  | [Přejít přes GitHub](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
-| Společné         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Common/)    | –      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases/tag/1.0.0-beta.1)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
-| Správa | [npm](https://www.npmjs.com/package/@azure/communication-administration)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Administration)    | [PyPi](https://pypi.org/project/azure-communication-administration/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-administration)   | -              | -              | -                            |
+| Společné         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Common/)    | –      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
+| Identita | [npm](https://www.npmjs.com/package/@azure/communication-identity)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Identity)    | [PyPi](https://pypi.org/project/azure-communication-identity/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-identity)   | -              | -              | -                            |
 | Chat           | [npm](https://www.npmjs.com/package/@azure/communication-chat)        | [NuGet](https://www.nuget.org/packages/Azure.Communication.Chat)     | [PyPi](https://pypi.org/project/azure-communication-chat/)     | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)  | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | -                              |
 | SMS            | [npm](https://www.npmjs.com/package/@azure/communication-sms)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Sms)    | [PyPi](https://pypi.org/project/azure-communication-sms/)       | [Maven](https://search.maven.org/artifact/com.azure/azure-communication-sms)   | -              | -              | -                              |
-| Videohovory        | [npm](https://www.npmjs.com/package/@azure/communication-calling)         | -      | -      | -     | [GitHub](https://github.com/Azure/Communication/releases/tag/v1.0.0-beta.2)     | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-calling/)            | -                              |
-| Referenční dokumentace     | [doc](https://azure.github.io/azure-sdk-for-js/communication.html)         | [doc](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [doc](http://azure.github.io/azure-sdk-for-java/communication.html)     | [doc](https://docs.microsoft.com/objectivec/communication-services/calling/)      | [doc](https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android)            | -                              |
+| Videohovory        | [npm](https://www.npmjs.com/package/@azure/communication-calling)         | -      | -      | -     | [GitHub](https://github.com/Azure/Communication/releases)     | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-calling/)            | -                              |
+| Referenční dokumentace     | [doc](https://azure.github.io/azure-sdk-for-js/communication.html)         | [doc](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [doc](http://azure.github.io/azure-sdk-for-java/communication.html)     | [doc](/objectivec/communication-services/calling/)      | [doc](/java/api/com.azure.communication.calling?view=communication-services-java-android)            | -                              |
+
 ## <a name="rest-apis"></a>Rozhraní REST API
 
 Rozhraní API komunikačních služeb jsou zdokumentována spolu s dalšími rozhraními REST API Azure v [docs.Microsoft.com](/rest/api/azure/). V této dokumentaci se dozvíte, jak strukturovat zprávy HTTP a pokyny k používání služby post. Tato dokumentace je také k dispozici ve formátu Swagger na [GitHubu](https://github.com/Azure/azure-rest-api-specs).
@@ -78,10 +77,25 @@ Podpora prostřednictvím .NET Core 2,0:
 - Xamarin iOS 10,14
 - Xamarin Mac 3,8
 
-## <a name="api-stability-expectations"></a>Očekávání stability rozhraní API 
+## <a name="calling-client-library-timeouts"></a>Volání klientských časových limitů klientské knihovny
+
+Pro komunikační služby, které volají klientské knihovny, platí následující časový limit:
+
+| Akce           | Časový limit v sekundách |
+| -------------- | ---------- |
+| Znovu připojit/odebrat účastníka | 120 |
+| Přidání nebo odebrání nové modální metody ze volání (spuštění/zastavení videa nebo screensharing) | 40 |
+| Časový limit operace přenosu volání | 60 |
+| časový limit pro zahájení volání 1:1 | 85 |
+| Časový limit pro vytvoření volání skupiny | 85 |
+| Časový limit pro vytvoření volání veřejné telefonní sítě | 115 |
+| Zvýšit úroveň volání 1:1 na časový limit volání skupiny | 115 |
+
+
+## <a name="api-stability-expectations"></a>Očekávání stability rozhraní API
 
 > [!IMPORTANT]
-> V této části najdete pokyny pro rozhraní REST API a klientské knihovny označené jako **stabilní**. Rozhraní API označená předběžná verze, verze Preview nebo beta můžou být **beze** změny nebo zastaralá. Služby Azure Communication Services jsou momentálně ve **verzi Public Preview** a rozhraní API jsou označená jako.
+> V této části najdete pokyny pro rozhraní REST API a klientské knihovny označené jako **stabilní**. Rozhraní API označená předběžná verze, verze Preview nebo beta můžou být **beze** změny nebo zastaralá.
 
 V budoucnu můžeme vyřadit verze klientských knihoven komunikačních služeb a můžeme začlenit zásadní změny v našich rozhraních REST API a vydané klientské knihovny. Komunikační služby Azure budou *obecně* splňovat dvě zásady podpory pro vyřazení verzí služby:
 

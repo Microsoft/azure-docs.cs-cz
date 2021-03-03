@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 93f90520f9a5f6ec424a7558418abfa4de4699ee
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ef013d97be8a5decbee46d25752ced7bd622a646
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364830"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657770"
 ---
 # <a name="chat-client-library-overview"></a>Přehled klientských knihoven pro chat
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Knihovny klienta služby Azure Communication Services slouží k přidávání bohatých konverzací v reálném čase do vašich aplikací.
 
@@ -50,7 +48,7 @@ Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici 
 |                    | Dostávat oznámení, když zadá jiný člen konverzačního vlákna                                                             | ✔️   | ❌    | ❌    | ❌  |
 |                    | Dostávat oznámení, když jiný člen přečte zprávu (stvrzenka pro čtení) ve vlákně chatu                               | ✔️   | ❌    | ❌    | ❌  |
 | Události             | Použití Event Grid k přihlášení k odběru aktivity uživatelů při konverzaci v vláknech a integraci vlastních služeb oznámení nebo obchodní logiky     | ✔️   | ✔️  | ✔️    | ✔️  |
-| Monitorování        | Monitorování využití z doručených zpráv                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
+| Sledování        | Monitorování využití z doručených zpráv                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
 |                    | Monitorování kvality a stavu požadavků rozhraní API provedených vaší aplikací a konfigurace výstrah prostřednictvím portálu                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
 |Další funkce | Pomocí [rozhraní API služeb Cognitive Services](../../../cognitive-services/index.yml) společně s klientskou knihovnou chatu můžete povolit inteligentní funkce *překladu jazyka & mínění analýzy příchozích zpráv v klientovi, konverzi řeči na text a vytvoření zprávy, když člen mluví atd.*                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
 

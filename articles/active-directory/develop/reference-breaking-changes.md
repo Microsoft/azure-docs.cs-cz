@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 5/4/2020
+ms.date: 2/22/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 94c34e6f7cb24ff749e5de95f1c28a496700af80
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c5e7f556f37a1d6d53e0a938490f1099a7be776a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348717"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647417"
 ---
 # <a name="whats-new-for-authentication"></a>Co je nového pro ověřování?
 
@@ -35,7 +35,28 @@ Systém ověřování mění a přidává funkce průběžně pro zlepšení dod
 
 ## <a name="upcoming-changes"></a>Nadcházející změny
 
-V tuto chvíli není naplánováno žádné.  Níže najdete informace o změnách, které se nacházejí v produktu nebo přicházejí do produkčního prostředí.
+### <a name="conditional-access-will-only-trigger-for-explicitly-requested-scopes"></a>Podmíněný přístup se spustí jenom pro explicitně požadované obory.
+
+**Datum účinnosti**: březen 2021
+
+**Ovlivněné koncové body**: v 2.0
+
+**Ovlivněný protokol**: všechny toky pomocí [dynamického souhlasu](v2-permissions-and-consent.md#requesting-individual-user-consent)
+
+Aplikacím, které používají k dynamickému souhlasu dnes, jsou uvedena všechna oprávnění, pro která mají souhlas, a to i v případě, že v `scope` parametru podle názvu nejsou požadovány.  To může způsobit, že aplikace požaduje, například `user.read` , ale s výslovným souhlasem `files.read` , aby bylo vynuceno předat podmíněný přístup přiřazený k tomuto `files.read` oprávnění. 
+
+Azure AD mění způsob, jakým jsou nevyžádaný obory k dispozici, aby bylo možné omezit počet nevyžádaných výzev pro podmíněný přístup, aby mohli pouze explicitně vyžádané obory aktivovat podmíněný přístup. Tato změna může způsobit, že se aplikace chovají na předchozí chování služby Azure AD (konkrétně poskytnutí všech oprávnění i v případě, že se nepožadovaly), protože u tokenů, které vyžádají, chybí oprávnění.
+
+Aplikace teď budou dostávat přístupové tokeny se kombinací oprávnění v těchto případech a také s uživateli, kteří mají souhlas, že nevyžadují výzvy podmíněného přístupu.  Obory přístupového tokenu se projeví v parametru odpovědi tokenu `scope` . 
+
+**Příklady**
+
+Aplikace má souhlas pro `user.read` , `files.readwrite` a `tasks.read` . `files.readwrite` má na něj použité zásady podmíněného přístupu, zatímco druhé dva ne. Pokud aplikace vytvoří požadavek na token `scope=user.read` a aktuálně přihlášený uživatel neprošl žádnými zásadami podmíněného přístupu, pak výsledný token bude pro `user.read` `tasks.read` oprávnění a. `tasks.read` je zahrnuto, protože aplikace má pro ni souhlas a nevyžaduje vynucení zásad podmíněného přístupu. 
+
+Pokud aplikace požaduje `scope=files.readwrite` , podmíněný přístup vyžadovaný klientem se aktivuje a aplikace vynutí zobrazení výzvy interaktivního ověřování, kde je možné splnit zásady podmíněného přístupu.  Vrácený token bude mít všechny tři obory. 
+
+Pokud aplikace potom vytvoří jednu poslední žádost o některý ze tří oborů (například `scope=tasks.read` ), Azure AD uvidí, že uživatel už dokončil zásady podmíněného přístupu potřebné pro `files.readwrite` , a znovu vydá token se všemi třemi oprávněními. 
+
 
 ## <a name="may-2020"></a>Květen 2020
 

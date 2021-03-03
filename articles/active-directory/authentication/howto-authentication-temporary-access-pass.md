@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 02/19/2021
 ms.author: justinha
 author: inbarckms
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56d45119fa86ab47e6a625c628d8cb9763db83bd
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: b0f49f39e6bc291c3242fe739866a015ac154a8b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520918"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651157"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>Konfigurace dočasného přístupového průchodu ve službě Azure AD pro registraci metod ověřování bez hesla (Preview)
 
@@ -75,6 +75,9 @@ Chcete-li vytvořit klepnutím:
 1. Pod tlačítkem **zvolit metodu** klikněte na **dočasný přístup Pass (Náhled)**.
 1. Definujte vlastní čas aktivace nebo dobu trvání a klikněte na **Přidat**.
 
+   >[!NOTE]
+   >Použití jednorázového klepnutí se nevynutilo, pokud je v tenantovi povolený možnost zůstat přihlášeni (políčko zůstat přihlášeni). Pokud vytváříte jednorázové klepnutí, ujistěte se, že políčko zůstat přihlášeni zakážete.
+
    ![Snímek obrazovky s postupem, jak vytvořit klepnutím](./media/how-to-authentication-temporary-access-pass/create.png)
 
 1. Po přidání se zobrazí podrobnosti o klepnutí. Poznamenejte si skutečnou hodnotu klepnutí. Tuto hodnotu zadáte uživateli. Po kliknutí na tlačítko **OK** nemůžete tuto hodnotu zobrazit.
@@ -125,6 +128,7 @@ Pamatujte na tato omezení:
 - Uživatelé typu Host se nemohou přihlásit pomocí klepnutí.
 - Uživatelům v oboru pro zásady registrace samoobslužného resetování hesla (SSPR) bude nutné zaregistrovat jednu z metod SSPR po přihlášení klepnutím. Pokud uživatel bude používat jenom FIDO2 klíč, vylučte je ze zásad SSPR nebo zakažte zásady registrace SSPR. 
 - Klepnutím se nedá použít s rozšířením serveru NPS (Network Policy Server) a adaptéru Active Directory Federation Services (AD FS) (AD FS).
+- Použití jednorázového klepnutí se nevynutilo, když je na tenantovi povolený políčko zůstat přihlášeni.
 - Pokud je v tenantovi zapnuté bezproblémové jednotné přihlašování, zobrazí se uživatelům výzva k zadání hesla. Odkaz **použít váš dočasný přístup** bude k dispozici pro uživatele, aby se přihlásil pomocí klepnutí.
 
 ![Snímek obrazovky s použitím klepnutí](./media/how-to-authentication-temporary-access-pass/alternative.png)

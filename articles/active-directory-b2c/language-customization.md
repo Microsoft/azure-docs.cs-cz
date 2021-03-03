@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e2aab537c2235fe3e008fa619c96a3098cfa7a27
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e29ef68bb6f02e329d0406cd80dceb25beab8932
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361209"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645904"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Přizpůsobení jazyka v Azure Active Directory B2C
 
@@ -115,6 +115,7 @@ Pokud chcete změnit řetězec pro vlastní atribut uživatele nebo ho chcete p�
       "Value": "<ExtensionAttributeValue>"
     }
     [...]
+  ]
 }
 ```
 
@@ -129,22 +130,24 @@ Pokud chcete poskytnout seznam sad hodnot pro odpovědi, je nutné vytvořit `Lo
 ```json
 {
   "LocalizedStrings": [...],
-  "LocalizedCollections": [{
+  "LocalizedCollections": [
+    {
       "ElementType":"ClaimType",
       "ElementId":"<UserAttribute>",
       "TargetCollection":"Restriction",
       "Override": true,
       "Items":[
-           {
-                "Name":"<Response1>",
-                "Value":"<Value1>"
-           },
-           {
-                "Name":"<Response2>",
-                "Value":"<Value2>"
-           }
-     ]
-  }]
+        {
+          "Name":"<Response1>",
+          "Value":"<Value1>"
+        },
+        {
+          "Name":"<Response2>",
+          "Value":"<Value2>"
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -181,7 +184,7 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 
 ## <a name="add-custom-languages"></a>Přidat vlastní jazyky
 
-Můžete také přidat jazyky, které Microsoft v současné době neposkytuje překlady pro. Budete muset zadat překlady pro všechny řetězce v toku uživatele. Kódy jazyků a kódů národního prostředí jsou omezené na ty, které jsou ve standardu ISO 639-1. Formát kódu národního prostředí by měl být "ISO_639-1_code"-"CountryCode" pro například en-GB. Další informace o formátech ID národního prostředí najdete v tématu. https://docs.microsoft.com/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a
+Můžete také přidat jazyky, které Microsoft v současné době neposkytuje překlady pro. Budete muset zadat překlady pro všechny řetězce v toku uživatele. Kódy jazyků a kódů národního prostředí jsou omezené na ty, které jsou ve standardu ISO 639-1. Formát kódu národního prostředí by měl být například "ISO_639-1_code"-"CountryCode" `en-GB` . Další informace o formátech ID národního prostředí najdete v tématu. https://docs.microsoft.com/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a
 
 1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
 2. Klikněte na tok uživatele, do kterého chcete přidat vlastní jazyky, a pak klikněte na **jazyky**.
@@ -429,7 +432,7 @@ V následujícím příkladu jsou vlastní řetězce anglické (EN) a španělš
 1. Vyberte zásady, které jste nahráli, a pak vyberte **Spustit nyní**.
 1. Měli byste vidět lokalizovanou stránku pro registraci nebo přihlášení.
 1. Klikněte na odkaz pro registraci a měli byste vidět lokalizovanou stránku pro registraci.
-1. Přepněte výchozí jazyk prohlížeče na španělštinu. Můžete také přidat parametr řetězce dotazu `ui_locales` k žádosti o autorizaci. Příklad: 
+1. Přepněte výchozí jazyk prohlížeče na španělštinu. Můžete také přidat parametr řetězce dotazu `ui_locales` k žádosti o autorizaci. Například: 
 
 ```http
 https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_signup_signin/oauth2/v2.0/authorize&client_id=0239a9cc-309c-4d41-12f1-31299feb2e82&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&ui_locales=es

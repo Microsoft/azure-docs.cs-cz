@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: a09594d1bc6037f252ba71855ae302208b4980d4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 91ae51b9a2785dbc40c55fa58b26763916e8d16c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182211"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644574"
 ---
 # <a name="tutorial-configure-tic-tac-mobile-for-automatic-user-provisioning"></a>Kurz: Konfigurace Tic-Tac Mobile pro Automatické zřizování uživatelů
 
@@ -34,7 +34,7 @@ Tento kurz popisuje kroky, které je třeba provést v Tic-Tac Mobile i Azure Ac
 > * Odeberte uživatele v Tic-Tac Mobile, když už nevyžadují přístup.
 > * Udržujte atributy uživatelů synchronizované mezi Azure AD a Tic-Tac Mobile.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -70,7 +70,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="configure-automatic-user-provisioning-for-tic-tac-mobile-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Tic-Tac Mobile ve službě Azure AD
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**  >  **všechny aplikace**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**  >  **všechny aplikace**.
 
     ![Snímek obrazovky, který zobrazuje podokno podnikové aplikace](common/enterprise-applications.png)
 
@@ -107,7 +107,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
    |name.familyName|Řetězec|
    |externalId|Řetězec|
    |title|Řetězec|
-   |e-maily [typ EQ "Work"]. Value|Řetězec|
+   |emails[type eq "work"].value|Řetězec|
    |preferredLanguage|Řetězec|
    |externalId|Řetězec|
    |userType|Řetězec|

@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c835ddcee332499ef7853d0d2fa4fcdbcf8a1cf
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: c767d114ad6a1b5cb8b9c6bf4c0fe4f2ccd1dae6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988866"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650120"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového v Azure Active Directory?
 
@@ -48,7 +48,7 @@ Tato stránka se aktualizuje měsíčně, takže ji můžete pravidelně znovu n
 
 V minulosti bylo pole tajného tokenu při nastavování zřizování u vlastní/BYOAé aplikace zachované prázdné. Tato funkce byla určena pouze pro testování. Aktualizujeme uživatelské rozhraní, aby bylo pole povinné. 
 
-Zákazníci můžou tento požadavek pro účely testování obejít pomocí příznaku funkce v adrese URL prohlížeče. [Přečtěte si další informace](../app-provisioning/use-scim-to-provision-users-and-groups.md#authorization-to-provisioning-connectors-in-the-application-gallery).
+Zákazníci můžou tento požadavek pro účely testování obejít pomocí příznaku funkce v adrese URL prohlížeče. [Další informace](../app-provisioning/use-scim-to-provision-users-and-groups.md#authorization-to-provisioning-connectors-in-the-application-gallery).
  
 ---
 
@@ -97,7 +97,7 @@ Zákazníci můžou přiřadit cloudovou skupinu k vlastním rolím Azure AD neb
  
 Azure AD Connect synchronizace cloudu je teď všeobecně dostupná pro všechny zákazníky.
 
-Azure AD Connect Cloud přesouvá velkou zvedací logiku transformace do cloudu, což snižuje vaše místní nároky. Pro zajištění vyšší dostupnosti synchronizace je navíc k dispozici více nasazení agentů s vysokou váhou. [Přečtěte si další informace](https://aka.ms/cloudsyncGA).
+Azure AD Connect Cloud přesouvá velkou zvedací logiku transformace do cloudu, což snižuje vaše místní nároky. Pro zajištění vyšší dostupnosti synchronizace je navíc k dispozici více nasazení agentů s vysokou váhou. [Další informace](https://aka.ms/cloudsyncGA).
  
 ---
 ### <a name="general-availability---attack-simulation-administrator-and-attack-payload-author-built-in-roles"></a>Obecná dostupnost – správce simulace útoků a šifrování datové části útoků – vytváření předdefinovaných rolí
@@ -125,7 +125,7 @@ Uživatelé v roli [autora datové části útoku](../roles/permissions-referenc
  
 Uživatelé s rolí čtenáře sestav Souhrn využití mají přístup ke agregovaným datům na úrovni tenanta a k souvisejícím přehledům v centru pro správu Microsoft 365 pro hodnocení využití a produktivity. Nemůžou ale získat přístup k podrobnostem na úrovni uživatele nebo přehledům. 
 
-V centru pro správu Microsoft 365 pro dvě sestavy rozlišujeme mezi agregovanými daty na úrovni tenanta a podrobnostmi na úrovni uživatele. Tato role přidává další vrstvu ochrany jednotlivých uživatelsky identifikovatelných dat. [Přečtěte si další informace](../roles/permissions-reference.md#usage-summary-reports-reader).
+V centru pro správu Microsoft 365 pro dvě sestavy rozlišujeme mezi agregovanými daty na úrovni tenanta a podrobnostmi na úrovni uživatele. Tato role přidává další vrstvu ochrany jednotlivých uživatelsky identifikovatelných dat. [Další informace](../roles/permissions-reference.md#usage-summary-reports-reader).
 
 ---
 
@@ -151,7 +151,7 @@ Další informace o tom, jak nastavit zásady podmíněného přístupu pro ochr
 **Kategorie služby:** B2B  
 **Schopnost produktu:** B2B/B2C
  
-E-mailová hesla umožňují organizacím po celém světě spolupracovat s kýmkoli odesláním odkazu nebo pozvánky prostřednictvím e-mailu. Pozvaní uživatelé můžou ověřit svoji identitu s jednorázovým heslem odesílaným do jejich e-mailu, aby měli přístup k prostředkům jejich partnera. [Přečtěte si další informace](../external-identities/one-time-passcode.md). 
+E-mailová hesla umožňují organizacím po celém světě spolupracovat s kýmkoli odesláním odkazu nebo pozvánky prostřednictvím e-mailu. Pozvaní uživatelé můžou ověřit svoji identitu s jednorázovým heslem odesílaným do jejich e-mailu, aby měli přístup k prostředkům jejich partnera. [Další informace](../external-identities/one-time-passcode.md). 
  
 ---
 
@@ -181,7 +181,7 @@ Další informace najdete v tématu [co je automatizované zřizování uživate
 
 V lednu 2021 jsme do Galerie aplikací přidali následující 29 nových aplikací s podporou federace:
 
-[mySCView](https://dev.myscview.com/), [talentech](https://talentech.com/contact/), [Bipsync](https://www.bipsync.com/), [OroTimesheet](https://app.orotimesheet.com/login.php), [Mio](https://app.m.io/auth/install/microsoft?scopetype=hub), [Sovelto Easy](https://login.soveltoeasy.fi/), [Supportbench](https://account.supportbench.net/agent/login/),[vytváření Bienvenue](https://formation.bienvenue.pro/login), [jednotné přihlašování Aida pro zdravotní péči](https://aidaforparents.com/login/organizations), [mezinárodní produkty pro SOS pomoc](../saas-apps/international-sos-assistance-products-tutorial.md), [NAVEX One](../saas-apps/navex-one-tutorial.md), [LabLog](../saas-apps/lablog-tutorial.md), [Oktopost SAML](../saas-apps/oktopost-saml-tutorial.md), [EPHOTO přehradit](../saas-apps/ephoto-dam-tutorial.md), vyrozuměl, Syndio, [Yello Enterprise](../saas-apps/yello-enterprise-tutorial.md), [timeclock 365 SAML](../saas-apps/timeclock-365-saml-tutorial.md), [NALCO E-data](https://www.ecolab.com/), [doplňování](https://app.vacancy-filler.co.uk/VFMVC/Account/Login) [,](../saas-apps/proware-tutorial.md) [Synerise, Imperva](../saas-apps/syndio-tutorial.md)pro [růst](../saas-apps/synerise-ai-growth-ecosystem-tutorial.md) [](../saas-apps/notion-tutorial.md) [uživatelského prostředí](../saas-apps/aruba-user-experience-insight-tutorial.md), [](../saas-apps/splan-visitor-tutorial.md) [Illusive](../saas-apps/imperva-data-security-tutorial.md) [SSO](../saas-apps/contentsquare-sso-tutorial.md), [hraniční 81](../saas-apps/perimeter-81-tutorial.md) [,](../saas-apps/illusive-networks-tutorial.md) [Splan Suite Enterprise Edition](https://docs.microsoft.com/azure/active-directory/saas-apps/burp-suite-enterprise-edition-tutorial)
+[mySCView](https://dev.myscview.com/), [talentech](https://talentech.com/contact/), [Bipsync](https://www.bipsync.com/), [OroTimesheet](https://app.orotimesheet.com/login.php), [Mio](https://app.m.io/auth/install/microsoft?scopetype=hub), [Sovelto Easy](https://login.soveltoeasy.fi/), [Supportbench](https://account.supportbench.net/agent/login/),[vytváření Bienvenue](https://formation.bienvenue.pro/login), [jednotné přihlašování Aida pro zdravotní péči](https://aidaforparents.com/login/organizations), [mezinárodní produkty pro SOS pomoc](../saas-apps/international-sos-assistance-products-tutorial.md), [NAVEX One](../saas-apps/navex-one-tutorial.md), [LabLog](../saas-apps/lablog-tutorial.md), [Oktopost SAML](../saas-apps/oktopost-saml-tutorial.md), [EPHOTO přehradit](../saas-apps/ephoto-dam-tutorial.md), vyrozuměl, Syndio, [Yello Enterprise](../saas-apps/yello-enterprise-tutorial.md), [timeclock 365 SAML](../saas-apps/timeclock-365-saml-tutorial.md), [NALCO E-data](https://www.ecolab.com/), [doplňování](https://app.vacancy-filler.co.uk/VFMVC/Account/Login) [,](../saas-apps/proware-tutorial.md) [Synerise, Imperva](../saas-apps/syndio-tutorial.md)pro [růst](../saas-apps/synerise-ai-growth-ecosystem-tutorial.md) [](../saas-apps/notion-tutorial.md) [uživatelského prostředí](../saas-apps/aruba-user-experience-insight-tutorial.md), [](../saas-apps/splan-visitor-tutorial.md) [Illusive](../saas-apps/imperva-data-security-tutorial.md) [SSO](../saas-apps/contentsquare-sso-tutorial.md), [hraniční 81](../saas-apps/perimeter-81-tutorial.md) [,](../saas-apps/illusive-networks-tutorial.md) [Splan Suite Enterprise Edition](../saas-apps/burp-suite-enterprise-edition-tutorial.md)
 
 Dokumentaci pro všechny aplikace můžete také najít tady. https://aka.ms/AppsTutorial
 
@@ -207,7 +207,7 @@ Po výběru možnosti schvalovatelé je teď v nástroji Správa nároků dostup
  
 Týmy teď můžete spouštět přímo z portálu pro přístup. 
 
-Provedete to tak, že se přihlásíte k přístupu ( https://myaccess.microsoft.com/) , přejdete na přístupové balíčky a pak přejdete na kartu aktivní) a zobrazíte všechny balíčky pro přístup, ke kterým už máte přístup. Když rozbalíte vybraný balíček pro přístup a najedete na týmy, můžete ho spustit kliknutím na tlačítko otevřít. [Přečtěte si další informace](../governance/entitlement-management-request-access.md).
+Provedete to tak, že se přihlásíte k přístupu ( https://myaccess.microsoft.com/) , přejdete na přístupové balíčky a pak přejdete na kartu aktivní) a zobrazíte všechny balíčky pro přístup, ke kterým už máte přístup. Když rozbalíte vybraný balíček pro přístup a najedete na týmy, můžete ho spustit kliknutím na tlačítko otevřít. [Další informace](../governance/entitlement-management-request-access.md).
  
 ---
 
@@ -539,7 +539,7 @@ Aktivita [služby SCIM Provisioning](../app-provisioning/user-provisioning.md) j
 Až se datum dokončí, poskytneme aktualizaci. Tato zastaralost není plánována pro kalendářní rok 2020. 
 
 > [!NOTE]
-> To nemá vliv na žádné události v protokolech auditu mimo události synchronizace emitované službou zřizování. Události, jako je vytvoření aplikace, zásada podmíněného přístupu, uživatel v adresáři atd. budou nadále vydávány v protokolech auditu. [Přečtěte si další informace](../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context).
+> To nemá vliv na žádné události v protokolech auditu mimo události synchronizace emitované službou zřizování. Události, jako je vytvoření aplikace, zásada podmíněného přístupu, uživatel v adresáři atd. budou nadále vydávány v protokolech auditu. [Další informace](../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context).
  
 
 ---
@@ -681,7 +681,7 @@ Konektory API jsou teď k dispozici pro použití s Azure Active Directory B2C. 
 
  Všechny připojené organizace teď budou mít další vlastnost s názvem "State". Stav bude řídit způsob, jakým se připojená organizace použije v zásadách, které odkazují na "všechny nakonfigurované propojené organizace". Hodnota bude buď "nakonfigurovaná" (což znamená, že organizace je v oboru zásad, které používají klauzuli All) nebo "navržené" (což znamená, že organizace není v oboru).  
 
-Ručně vytvořené propojené organizace budou mít nastavené výchozí nastavení. Mezitím budou automaticky vytvořená (vytvořená prostřednictvím zásad, které umožňují jakémukoli uživateli z Internetu vyžadovat přístup) výchozí nastavení "navrženo".  Všechny připojené organizace vytvořené před září 9 2020 budou nastavené na nakonfigurováno. Správci mohou tuto vlastnost podle potřeby aktualizovat. [Přečtěte si další informace](../governance/entitlement-management-organization.md#managing-a-connected-organization-programmatically).
+Ručně vytvořené propojené organizace budou mít nastavené výchozí nastavení. Mezitím budou automaticky vytvořená (vytvořená prostřednictvím zásad, které umožňují jakémukoli uživateli z Internetu vyžadovat přístup) výchozí nastavení "navrženo".  Všechny připojené organizace vytvořené před září 9 2020 budou nastavené na nakonfigurováno. Správci mohou tuto vlastnost podle potřeby aktualizovat. [Další informace](../governance/entitlement-management-organization.md#managing-a-connected-organization-programmatically).
  
 
 ---
@@ -738,7 +738,7 @@ Informace o použití této funkce najdete v tématu [Vysvětlení způsobu, jak
 **Kategorie služby:** Zpravodajský  
 **Schopnost produktu:** Monitorování & vytváření sestav
  
-Nyní můžete vlastníkům aplikace dovolit monitorovat aktivity pomocí služby zřizování a řešit problémy bez poskytnutí privilegované role nebo zrušení kritického bodu. [Přečtěte si další informace](../reports-monitoring/concept-provisioning-logs.md).
+Nyní můžete vlastníkům aplikace dovolit monitorovat aktivity pomocí služby zřizování a řešit problémy bez poskytnutí privilegované role nebo zrušení kritického bodu. [Další informace](../reports-monitoring/concept-provisioning-logs.md).
  
 ---
 
@@ -806,11 +806,11 @@ Azure AD Connect aktualizace cloudového zřizování ve verzi Public Preview dv
 
 - Možnosti mapování atributů prostřednictvím Azure Portal
 
-    Díky této funkci můžou správci IT mapovat atributy uživatelů, skupin nebo kontaktů ze služby AD na Azure AD pomocí různých typů mapování, které jsou dnes přítomné. Mapování atributů je funkce používaná ke standardizaci hodnot atributů, které se přenášejí ze služby Active Directory na Azure Active Directory. Jedna z nich může určit, jestli má být hodnota atributu přímo namapována z AD do služby Azure AD, nebo použít výrazy k transformaci hodnot atributů při zřizování uživatelů. [Další informace](../cloud-provisioning/how-to-attribute-mapping.md)
+    Díky této funkci můžou správci IT mapovat atributy uživatelů, skupin nebo kontaktů ze služby AD na Azure AD pomocí různých typů mapování, které jsou dnes přítomné. Mapování atributů je funkce používaná ke standardizaci hodnot atributů, které se přenášejí ze služby Active Directory na Azure Active Directory. Jedna z nich může určit, jestli má být hodnota atributu přímo namapována z AD do služby Azure AD, nebo použít výrazy k transformaci hodnot atributů při zřizování uživatelů. [Další informace](../cloud-sync/how-to-attribute-mapping.md)
 
 - Zřizování na vyžádání nebo testování uživatelského prostředí
 
-    Po nastavení konfigurace můžete chtít ověřit, zda transformace uživatele pracuje podle očekávání, a teprve potom ji použít pro všechny uživatele v oboru. Díky zřizování na vyžádání můžou správci IT zadat rozlišující název (DN) uživatele AD a zjistit, jestli se synchronizují podle očekávání. Zřizování na vyžádání poskytuje skvělý způsob, jak zajistit, že mapování atributů, které jste dříve pracovali, podle očekávání. [Další informace](../cloud-provisioning/how-to-on-demand-provision.md)
+    Po nastavení konfigurace můžete chtít ověřit, zda transformace uživatele pracuje podle očekávání, a teprve potom ji použít pro všechny uživatele v oboru. Díky zřizování na vyžádání můžou správci IT zadat rozlišující název (DN) uživatele AD a zjistit, jestli se synchronizují podle očekávání. Zřizování na vyžádání poskytuje skvělý způsob, jak zajistit, že mapování atributů, které jste dříve pracovali, podle očekávání. [Další informace](../cloud-sync/how-to-on-demand-provision.md)
  
 ---
 
@@ -1139,6 +1139,3 @@ Dříve mohl [vlastnost Extension](/graph/api/application-post-extensionproperty
 [Kumulativní balíček oprav hotfix (Build 4.6.263.0)](https://support.microsoft.com/help/4576473/hotfix-rollup-package-build-4-6-263-0-is-available-for-microsoft-ident) je k dispozici pro Microsoft Identity Manager (MIM) 2016 Service Pack 2 (SP2). Tento balíček kumulativní aktualizace obsahuje aktualizace pro MIM CM, Správce synchronizace MIM a komponenty PAM. Kromě toho sestavování obecných konektorů MIM 1.1.1301.0 zahrnuje aktualizace konektoru grafu.
 
 ---
- 
-
-

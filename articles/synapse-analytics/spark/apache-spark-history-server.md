@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 10/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 94c30cad1e09a01686a9042a6271a152d0f433fd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4471fed7b423fe05147db30afe57f6c845fe640e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995382"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670694"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Použití serveru historie rozšířených Apache Spark k ladění a diagnostice Apache Spark aplikací
 
@@ -22,7 +22,7 @@ V tomto článku najdete pokyny k použití serveru historie rozšířených Apa
 
 Rozšíření obsahuje kartu data, kartu grafu a kartu Diagnostika. Na kartě **data** můžete kontrolovat vstupní a výstupní data úlohy Spark. Na kartě **graf** se zobrazuje tok dat a přehrávání grafu úloh. Na kartě **Diagnostika** se zobrazuje  **zešikmení dat**, **zkosení času** a **Analýza využití prováděcího modulu**.
 
-## <a name="access-the-apache-spark-history-server"></a>Přístup k serveru historie Apache Spark
+## <a name="access-the-apache-spark-history-server"></a>Přístup k serveru historie Apache Sparku
 
 Server historie Apache Spark je webové uživatelské rozhraní pro dokončené a běžící aplikace Spark. Z analýzy Azure synapse můžete otevřít webové rozhraní serveru historie Apache Spark.
 
@@ -120,13 +120,13 @@ Uzel grafu zobrazuje barvy zobrazené v legendě heatmapu.
 
 Pokud chcete úlohu přehrát, vyberte **přehrávání**. Kdykoli můžete zastavit výběr **zastavit** . Barvy úlohy při přehrávání zobrazují různé stavy:
 
-|Color|Význam|
+|Barva|Význam|
 |-|-|
 |Green|Úspěch: úloha se úspěšně dokončila.|
 |Oranžový|Opakování: instance úloh, které selhaly, ale neovlivňují konečný výsledek úlohy. Tyto úlohy měly duplicitní nebo opakované instance, které mohou být později úspěšné.|
-|Modrý|Spuštěno: úloha je spuštěná.|
+|Blue|Spuštěno: úloha je spuštěná.|
 |White|Čekání nebo přeskočení: úloha čeká na spuštění, nebo se fáze přeskočila.|
-|Červený|Nezdařilo se: úloha se nezdařila.|
+|Red|Nezdařilo se: úloha se nezdařila.|
 
 Následující obrázek ukazuje zelenou, oranžovou a modrou stavovou barvu.
 
@@ -157,7 +157,7 @@ Když najedete myší na uzel grafu, zobrazí se popis tlačítka, když dojde k
 
 Na kartě graf úlohy mají fáze popis a zobrazí se malá ikona, pokud má úlohy, které splňují následující podmínky:
 
-|Stav|Description|
+|Podmínka|Popis|
 |-|-|
 |Zkosit data|velikost přečtených dat > Průměrná velikost čtení dat všech úkolů v této fázi * 2 a velikost pro čtení dat > 10 MB|
 |Časové zkosení|čas spuštění > Průměrná doba provádění všech úkolů v této fázi * 2 a doba spuštění > 2 minuty|
@@ -239,5 +239,5 @@ Vstupní a výstupní data s využitím odolných datových sad (RDD) se na kart
 ## <a name="next-steps"></a>Další kroky
 
 - [Azure Synapse Analytics](../overview-what-is.md)
-- [Dokumentace k rozhraní .NET pro Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Dokumentace k rozhraní .NET pro Apache Spark](/dotnet/spark)
 

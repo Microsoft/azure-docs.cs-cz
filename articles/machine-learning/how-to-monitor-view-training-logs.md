@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ea96e1056e6157cfddbdc2f0b6451ed55a74d1de
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 8b2a61a92a25e1c0da9f85439438e75969fcfbf0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97756054"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661014"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>Monitorování a zobrazování protokolů a metrik spuštění ML
 
@@ -78,6 +78,17 @@ Když použijete **ScriptRunConfig**, můžete použít ```run.wait_for_completi
 
 <a id="queryrunmetrics"></a>
 
+### <a name="logging-run-metrics"></a>Protokolování spuštění metrik 
+
+Pomocí následujících metod v rozhraních API protokolování můžete ovlivnit vizualizace metrik. Poznamenejte si [omezení služby](https://docs.microsoft.com/azure/machine-learning/resource-limits-quotas-capacity#metrics) pro tyto protokolované metriky. 
+
+|Hodnota protokolu|Příklad kódu| Formátování na portálu|
+|----|----|----|
+|Protokolování pole číselných hodnot| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|Spojnicový graf s jednou proměnnou|
+|Zaprotokoluje jednu číselnou hodnotu se stejným názvem metriky, který se opakovaně používá (například v rámci smyčky for).| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Spojnicový graf s jednou proměnnou|
+|Opakované zaznamenání řádku se dvěma číselnými sloupci|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Spojnicový graf se dvěma proměnnými|
+|Tabulka protokolu se dvěma číselnými sloupci|`run.log_table(name='Sine Wave', value=sines)`|Spojnicový graf se dvěma proměnnými|
+
 ## <a name="query-run-metrics"></a>Metriky spuštění dotazu
 
 Metriky proučeného modelu můžete zobrazit pomocí ```run.get_metrics()``` . Můžete ho například použít s výše uvedeným příkladem k určení nejlepšího modelu tím, že vyhledáte model s nejnižší hodnotou čtverce chyby (MSE).
@@ -95,18 +106,6 @@ Pro jednotlivé zobrazení experimentů vyberte kartu **všechny experimenty** .
 Můžete také upravit tabulku spustit seznam a vybrat vícenásobná spuštění a zobrazit buď hodnotu v poli Poslední, minimální nebo maximální hodnota protokolu. Přizpůsobte si grafy pro porovnání hodnot protokolovaných metrik a agregací napříč několika spuštěními. 
 
 ![Podrobnosti o spuštění v Azure Machine Learning Studiu](media/how-to-track-experiments/experimentation-tab.gif)
-
-### <a name="format-charts"></a>Formátování grafů 
-
-Pomocí následujících metod v rozhraních API protokolování můžete ovlivnit vizualizace metrik.
-
-|Hodnota protokolu|Příklad kódu| Formátování na portálu|
-|----|----|----|
-|Protokolování pole číselných hodnot| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|Spojnicový graf s jednou proměnnou|
-|Zaprotokoluje jednu číselnou hodnotu se stejným názvem metriky, který se opakovaně používá (například v rámci smyčky for).| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Spojnicový graf s jednou proměnnou|
-|Opakované zaznamenání řádku se dvěma číselnými sloupci|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Spojnicový graf se dvěma proměnnými|
-|Tabulka protokolu se dvěma číselnými sloupci|`run.log_table(name='Sine Wave', value=sines)`|Spojnicový graf se dvěma proměnnými|
-
 
 ### <a name="view-log-files-for-a-run"></a>Zobrazení souborů protokolu pro spuštění 
 

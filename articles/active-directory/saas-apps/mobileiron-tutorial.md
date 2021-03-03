@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/12/2021
+ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 5561a4cdeef725eba7e48d7767aa0ee5d3c6d9cf
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c47092b1488a79805db69308bcb9a8efde1c0d58
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625444"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653010"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Kurz: Azure Active Directory integrace s MobileIron
 
@@ -28,16 +28,16 @@ ms.locfileid: "98625444"
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s MobileIron potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* Předplatné s povoleným MobileIronm jednotným přihlašováním
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* MobileIron odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* MobileIron podporuje jednotné přihlašování (SSO) **a IDP** .
+* MobileIron podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
 
 ## <a name="add-mobileiron-from-the-gallery"></a>Přidání MobileIron z Galerie
 
@@ -98,7 +98,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a potom heslo zapište.
    1. Vyberte **Vytvořit**.
 
@@ -131,7 +131,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
     ![Tlačítko pro konfiguraci jednoho Sign-On metadat správců](./media/MobileIron-tutorial/tutorial_MobileIron_adminmetadata.png)
 
 
-##  <a name="create-mobileiron-test-user"></a>Vytvořit testovacího uživatele MobileIron
+### <a name="create-mobileiron-test-user"></a>Vytvořit testovacího uživatele MobileIron
 
 Aby se uživatelé Azure AD mohli přihlásit k MobileIron, musí se zřídit v MobileIron.  
 V případě MobileIron je zřizování ručním úkolem.
@@ -157,15 +157,16 @@ V případě MobileIron je zřizování ručním úkolem.
     d. Klikněte na **Hotovo**.
 
 ## <a name="test-sso"></a>Test SSO
+
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-## <a name="sp-initiated"></a>Zahájena SP:
+### <a name="sp-initiated"></a>Zahájena SP:
 
 * Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro přihlášení k MobileIron, kde můžete spustit tok přihlášení.  
 
 * Přejít na adresu URL pro přihlášení k MobileIron přímo a zahájit tok přihlášení.
 
-##  <a name="idp-initiated"></a>Iniciované IDP:
+### <a name="idp-initiated"></a>Iniciované IDP:
 
 * Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k MobileIron, pro které jste nastavili jednotné přihlašování.
 

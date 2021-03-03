@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90b2cd4521613a7b449598f0d097a7ec1c2958c6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a834d4d30c40b618b1601a7f8901c68143ef4912
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98724538"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648513"
 ---
 # <a name="resilience-through-monitoring-and-analytics"></a>Odolnost prostřednictvím monitorování a analýzy
 
@@ -49,7 +49,7 @@ Například můžete sledovat následující metriky, protože náhlé zrušení
 
    - **Předchozí období**: Vytvořte dočasné grafy, abyste zobrazili změny v celkových požadavcích a úspěšnosti (%). v některém z předchozích období pro referenční účely, například minulý týden.
 
-- **Upozornění**: pomocí Log Analytics definujte [výstrahy](../../azure-monitor/platform/alerts-log.md) , které se aktivují, když se v klíčových ukazatelích dostanou náhlé změny. Tyto změny mohou negativně ovlivnit slo. Výstrahy využívají různé formy metod oznámení, včetně e-mailu, SMS a webhooků. Začněte tím, že definujete kritérium, které funguje jako prahová hodnota, na které se výstraha aktivuje. Například:
+- **Upozornění**: pomocí Log Analytics definujte [výstrahy](../../azure-monitor/alerts/alerts-log.md) , které se aktivují, když se v klíčových ukazatelích dostanou náhlé změny. Tyto změny mohou negativně ovlivnit slo. Výstrahy využívají různé formy metod oznámení, včetně e-mailu, SMS a webhooků. Začněte tím, že definujete kritérium, které funguje jako prahová hodnota, na které se výstraha aktivuje. Například:
   - Výstraha proti náhlému poklesu celkového počtu požadavků: aktivuje výstrahu v případě, že celkový počet požadavků vynechává náhlé. Pokud je třeba 25% poklesu celkového počtu požadavků v porovnání s předchozím obdobím, vyvolejte výstrahu.  
   - Výstraha v důsledku významné míry poklesu úspěšnosti (%): aktivovat výstrahu, když je míra úspěšnosti vybrané zásady významně odložena.
   - Po přijetí výstrahy vyřešte problém pomocí [Log Analytics](../reports-monitoring/howto-install-use-log-analytics-views.md), [Application Insights](../../active-directory-b2c/troubleshoot-with-application-insights.md)a [rozšíření vs Code](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) pro Azure AD B2C. Po vyřešení problému a nasazení aktualizované aplikace nebo zásady bude nadále monitorovat klíčové indikátory, dokud se nevrátí zpět do normálního rozsahu.
@@ -57,7 +57,7 @@ Například můžete sledovat následující metriky, protože náhlé zrušení
 - **Výstrahy služby**: pomocí [Azure AD B2C výstrah na úrovni služby](../../service-health/service-health-overview.md) se dozvíte o problémech se službami, plánované údržbě, poradenském poradenství a poradním zpravodaji zabezpečení.
 
 - **Vytváření sestav**: pomocí [Log Analytics](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)můžete sestavovat sestavy, které vám pomůžou získat přehled o informacích o uživateli, technických výzev a možnostech růstu.
-  - **Řídicí panel stav**: vytvoření [vlastních řídicích panelů pomocí funkce řídicího panelu Azure](../../azure-monitor/learn/tutorial-app-dashboards.md) , která podporuje přidávání grafů pomocí Log Analytics dotazů. Například Identifikujte vzor úspěšných a neúspěšných přihlášení, důvody selhání a telemetrii o zařízeních použitých k vytvoření požadavků.
+  - **Řídicí panel stav**: vytvoření [vlastních řídicích panelů pomocí funkce řídicího panelu Azure](../../azure-monitor/app/tutorial-app-dashboards.md) , která podporuje přidávání grafů pomocí Log Analytics dotazů. Například Identifikujte vzor úspěšných a neúspěšných přihlášení, důvody selhání a telemetrii o zařízeních použitých k vytvoření požadavků.
   - **Opuštění Azure AD B2C cest**: pomocí [sešitu](https://github.com/azure-ad-b2c/siem#list-of-abandon-journeys) sledujte Seznam zrušených Azure AD B2Cch cest, kde uživatel spustil registraci nebo cestu k registraci, ale nikdy ji nedokončil. Poskytuje vám podrobné informace o ID zásad a rozdělení kroků, které uživatel provedl před opuštěním cesty.
   - **Azure AD B2C monitorování sešitů**: pomocí [sešitů monitorování](https://github.com/azure-ad-b2c/siem), které zahrnují Azure AD B2C řídicího panelu, služby Multi-Factor Authentication (MFA), sestavy podmíněného přístupu a protokoly hledání podle ID korelace, získáte lepší přehled o stavu vašeho Azure AD B2C prostředí.
   

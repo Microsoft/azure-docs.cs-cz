@@ -2,18 +2,18 @@
 title: Přehled Red Hat Enterprise Linux imagí v Azure
 description: Přečtěte si o Red Hat Enterprise Linuxch imagí v Microsoft Azure.
 author: asinn826
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: redhat
+ms.collection: linux
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
-ms.reviewer: cynthn
-ms.openlocfilehash: 0f3b36729fb07c6f5ae03a46e199e4cadb44a25e
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 03c033ac5d0f20bbfd4f5dccfb5c2900596d2a41
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635587"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673130"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Přehled Red Hat Enterprise Linuxch imagí
 

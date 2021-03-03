@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 711c1ba49ad0f347d30f2c8c40352ed95c1fd057
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 29150f229f1bd6adbbe6a335fdb91a44f3a2345b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221619"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675683"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale v Azure
 
@@ -96,9 +96,9 @@ Velký cluster pureScale DB2 může vyžadovat 200 terabajtů (TB) nebo více sd
 
 Společnost IBM doporučuje InfiniBand sítě pro všechny členy v clusteru DB2 pureScale. DB2 pureScale také používá přímý přístup do paměti vzdáleného počítače (RDMA), pokud je k dispozici pro CFs.
 
-Během instalace vytvoříte [skupinu prostředků](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) Azure, která bude obsahovat všechny virtuální počítače. Obecně platí, že se prostředky seskupují na základě jejich životnosti a kteří je spravují. Virtuální počítače v této architektuře vyžadují [urychlené síťové služby](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Jedná se o funkci Azure, která poskytuje konzistentní a extrémně nízkou latenci sítě prostřednictvím rozhraní SR-IOV (single-root I/O Virtualization) k virtuálnímu počítači.
+Během instalace vytvoříte [skupinu prostředků](../../../../azure-resource-manager/management/overview.md) Azure, která bude obsahovat všechny virtuální počítače. Obecně platí, že se prostředky seskupují na základě jejich životnosti a kteří je spravují. Virtuální počítače v této architektuře vyžadují [urychlené síťové služby](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Jedná se o funkci Azure, která poskytuje konzistentní a extrémně nízkou latenci sítě prostřednictvím rozhraní SR-IOV (single-root I/O Virtualization) k virtuálnímu počítači.
 
-Každý virtuální počítač Azure je nasazený do virtuální sítě, která má podsítě: Main, front-end Gluster FS (gfsfe), Gluster FS back-end (bfsbe), DB2 pureScale (db2be) a DB2 pureScale front-end (db2fe). Instalační skript také vytvoří primární [síťové adaptéry](https://docs.microsoft.com/azure/virtual-machines/windows/multiple-nics) na virtuálních počítačích v hlavní podsíti.
+Každý virtuální počítač Azure je nasazený do virtuální sítě, která má podsítě: Main, front-end Gluster FS (gfsfe), Gluster FS back-end (bfsbe), DB2 pureScale (db2be) a DB2 pureScale front-end (db2fe). Instalační skript také vytvoří primární [síťové adaptéry](../../../windows/multiple-nics.md) na virtuálních počítačích v hlavní podsíti.
 
 [Skupiny zabezpečení sítě](../../../../virtual-network/virtual-network-vnet-plan-design-arm.md) použijte k omezení síťového provozu v rámci virtuální sítě a k izolaci podsítí.
 

@@ -11,16 +11,16 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 9e4722933ec224712c8d649c0d9d850a9ee3e322
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 1c2a917712cbde95fda9321e56fe1c033ad444aa
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98872005"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659711"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Zabezpečení přístupu k datům v Azure Machine Learning
 
-Azure Machine Learning usnadňuje připojení k datům v cloudu.  Poskytuje abstraktní vrstvu nad základní službou úložiště, takže můžete bezpečně přistupovat k datům a pracovat s nimi, aniž byste museli psát kód, který je specifický pro váš typ úložiště. Azure Machine Learning také nabízí následující možnosti dat:
+Azure Machine Learning usnadňuje připojení k datům v cloudu. Poskytuje abstraktní vrstvu nad základní službou úložiště, takže můžete bezpečně přistupovat k datům a pracovat s nimi, aniž byste museli psát kód, který je specifický pro váš typ úložiště. Azure Machine Learning také nabízí následující možnosti dat:
 
 *    Interoperabilita s datovými rámečky PANDAS a Spark
 *    Správa verzí a sledování datových linií
@@ -53,7 +53,7 @@ Následující diagram nabízí vizuální ukázku tohoto doporučeného pracovn
 <a name="datastores"></a>
 ## <a name="connect-to-storage-with-datastores"></a>Připojení k úložišti s úložištěm dat
 
-Azure Machine Learning úložiště dat bezpečně udržují informace o připojení do služby Azure Storage, takže je nemusíte zakódovat ve svých skriptech. [Zaregistrujte a vytvořte úložiště dat](how-to-access-data.md) , abyste se mohli snadno připojit k účtu úložiště a přistupovat k datům v základní službě Azure Storage. 
+Azure Machine Learning úložiště dat bezpečně uchovávají informace o připojení k úložišti dat v Azure, takže je nemusíte ve svých skriptech zakódovat. [Zaregistrujte a vytvořte úložiště dat](how-to-access-data.md) , abyste se mohli snadno připojit k účtu úložiště a přistupovat k datům v základní službě úložiště. 
 
 Podporované cloudové služby úložiště v Azure, které se dají registrovat jako úložiště dat:
 
@@ -65,6 +65,9 @@ Podporované cloudové služby úložiště v Azure, které se dají registrovat
 + Azure Database for PostgreSQL
 + Systém souborů Databricks
 + Azure Database for MySQL
+
+>[!TIP]
+> Všeobecně dostupná funkce pro vytváření úložišť dat vyžaduje ověřování na základě přihlašovacích údajů pro přístup ke službám úložiště, jako je instanční objekt nebo token sdíleného přístupového podpisu (SAS). K těmto přihlašovacím údajům můžou přistupovat uživatelé, kteří mají přístup *Čtenář* k pracovnímu prostoru. <br><br>Pokud se to týká,  [vytvořte úložiště dat, které používá přístup k datům na základě identity ke službám úložiště (Preview)](how-to-identity-based-data-access.md). Tato funkce je [experimentální](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) funkcí ve verzi Preview a může se kdykoli změnit.
 
 <a name="datasets"></a>
 ## <a name="reference-data-in-storage-with-datasets"></a>Referenční data v úložišti s datovými sadami
@@ -100,7 +103,7 @@ S datovými sadami můžete provádět řadu úloh strojového učení prostřed
 + Naučte se modely strojového učení:
      + [automatizované experimenty ML](how-to-use-automated-ml-for-ml-models.md)
      + [Návrhář](tutorial-designer-automobile-price-train-score.md#import-data)
-     + [poznámkových bloků](how-to-train-with-datasets.md)
+     + [poznámkové bloky](how-to-train-with-datasets.md)
      + [Azure Machine Learning kanály](./how-to-create-machine-learning-pipelines.md)
 + Přístup k datovým sadám pro bodování pomocí [dávkového odvozování](./tutorial-pipeline-batch-scoring-classification.md) v [kanálech strojového učení](./how-to-create-machine-learning-pipelines.md).
 + Nastavte monitorování datových sad pro detekci [posunu dat](#drift) .

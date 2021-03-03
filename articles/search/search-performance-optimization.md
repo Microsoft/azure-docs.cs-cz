@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 5e8b873e0e4e89979769183cfbf0ad473069e897
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 60371888dbc4f0cbc33f1ad1b2a685dbb071c01a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096439"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670722"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Škálování pro výkon v Azure Kognitivní hledání
 
@@ -91,7 +91,7 @@ Vzhledem k tomu, že repliky jsou kopiemi vašich dat, může Azure Kognitivní 
 
 ### <a name="availability-zones"></a>Zóny dostupnosti
 
-[Zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview) rozdělit datová centra oblasti do samostatných skupin fyzického umístění tak, aby poskytovala vysokou dostupnost v rámci stejné oblasti. U Kognitivní hledání jednotlivé repliky představují jednotky pro přiřazení zóny. Vyhledávací služba běží v jedné oblasti. jeho repliky běží v různých zónách.
+[Zóny dostupnosti](../availability-zones/az-overview.md) rozdělit datová centra oblasti do samostatných skupin fyzického umístění tak, aby poskytovala vysokou dostupnost v rámci stejné oblasti. U Kognitivní hledání jednotlivé repliky představují jednotky pro přiřazení zóny. Vyhledávací služba běží v jedné oblasti. jeho repliky běží v různých zónách.
 
 Zóny dostupnosti se službou Azure Kognitivní hledání můžete využít tak, že do vyhledávací služby přidáte dvě nebo víc replik. Každá replika bude umístěna v jiné zóně dostupnosti v rámci dané oblasti. Pokud máte více replik, než Zóny dostupnosti, repliky budou rozloženy mezi Zóny dostupnosti, jak je to možné.
 

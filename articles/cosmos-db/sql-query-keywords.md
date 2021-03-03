@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: tisande
-ms.openlocfilehash: 09148e65e446d723fbfe7a54602db59ee0739f83
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4711401172c4a2b224c231db4a773e0c4219d3a7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599347"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659830"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Klíčová slova v Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -113,7 +113,7 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 Vrací logickou hodnotu v závislosti na tom, zda konkrétní řetězec znaků odpovídá zadanému vzoru. Vzor může obsahovat běžné znaky a zástupné znaky. Můžete psát logicky ekvivalentní dotazy pomocí `LIKE` klíčového slova nebo [RegexMatch](sql-query-regexmatch.md) systémové funkce. Můžete sledovat stejné využití indexu bez ohledu na to, kterou si zvolíte. Proto byste měli použít, `LIKE` Pokud dáváte přednost její syntaxi více než regulární výrazy.
 
 > [!NOTE]
-> Vzhledem `LIKE` k tomu, že může používat index, byste měli [vytvořit index rozsahu](indexing-policy.md) pro vlastnosti, které porovnáváte pomocí `LIKE` .
+> Vzhledem `LIKE` k tomu, že může používat index, byste měli [vytvořit index rozsahu](./index-policy.md) pro vlastnosti, které porovnáváte pomocí `LIKE` .
 
 Můžete použít následující zástupné znaky, jako například:
 

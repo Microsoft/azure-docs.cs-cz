@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 09/01/2020
+ms.date: 03/02/2021
 ms.author: chrande
-ms.openlocfilehash: 72e89a67f2d767c8a104982dbe9eb9e47aec015a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ced795385fdf00e706ea897db80f558b513a9f9d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574655"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656954"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Kroky před migrací pro migraci dat z MongoDB Azure Cosmos DB do rozhraní API pro MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -80,7 +80,7 @@ Podobným způsobem funkce dělení automaticky přičítá kapacitu a znovu vyv
 
 ## <a name="index-your-data"></a><a id="indexing"></a>Indexování vašich dat
 
-Rozhraní Azure Cosmos DB API pro server MongoDB verze 3,6 automaticky indexuje `_id` pole. Toto pole nelze vyřadit. Automaticky vynutila jedinečnost `_id` pole na horizontálních oddílů klíč. Pokud chcete indexovat další pole, můžete použít příkazy MongoDB index-management. Tyto výchozí zásady indexování se liší od rozhraní SQL API služby Azure Cosmos DB, které ve výchozím nastavení indexuje všechna pole.
+Rozhraní Azure Cosmos DB API pro server MongoDB verze 3,6 a vyšší automaticky indexuje `_id` pole pouze. Toto pole nelze vyřadit. Automaticky vynutila jedinečnost `_id` pole na horizontálních oddílů klíč. Chcete-li indexovat další pole, použijte [příkazy pro správu indexů MongoDB](mongodb-indexing.md). Tyto výchozí zásady indexování se liší od rozhraní SQL API služby Azure Cosmos DB, které ve výchozím nastavení indexuje všechna pole.
 
 Možnosti indexování poskytované Azure Cosmos DB zahrnují přidání složených indexů, jedinečných indexů a indexů TTL (Time-to-Live). Rozhraní pro správu indexů je namapováno na `createIndex()` příkaz. Další informace najdete [v článku o indexování v tématu Azure Cosmos DB API pro MongoDB](mongodb-indexing.md).
 

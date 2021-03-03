@@ -8,12 +8,12 @@ ms.topic: sample
 ms.service: virtual-machine-scale-sets
 ms.devlang: azurecli
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 493f479a09fc7b21bb857ebd98c35824c548b5d0
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 1abdf7ae15753d78ac8728f57e9b0cd5dcd9165e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539776"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672605"
 ---
 # <a name="create-and-manage-virtual-machine-scale-set"></a>Vytvoření a Správa sady škálování virtuálních počítačů
 
@@ -66,7 +66,7 @@ az disk update --resource-group MyResourceGroup --name myDataDisk --size-gb 200
 az vmss restart --resource-group MyResourceGroup --name myScaleSet --instance-ids 0
 ```
 
-Chcete-li použít rozšířený disk, rozbalte příslušný oddíl. Další informace najdete v tématu [rozšíření diskového oddílu a systému souborů](/azure/virtual-machines/linux/expand-disks#expand-a-disk-partition-and-filesystem).
+Chcete-li použít rozšířený disk, rozbalte příslušný oddíl. Další informace najdete v tématu [rozšíření diskového oddílu a systému souborů](../../virtual-machines/linux/expand-disks.md#expand-a-disk-partition-and-filesystem).
 
 V tomto příkladu se změnila velikost datového disku. Stejný postup můžete použít k aktualizaci disku s operačním systémem. Další informace o virtuálním počítači s Windows najdete v tématu [postup rozšíření jednotky operačního systému virtuálního počítače](../../virtual-machines/windows/expand-os-disk.md). Další informace o virtuálních počítačích se systémem Linux najdete v tématu věnovaném [rozbalení virtuálních pevných disků na virtuálním počítači se systémem Linux pomocí Azure CLI](../../virtual-machines/linux/expand-disks.md).
 

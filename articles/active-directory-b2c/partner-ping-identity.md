@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 430629f94695f0689422434c8d80fe4e1876e5dd
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 94e7ae93d05ae8ee35028882e14d8da74814d833
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900178"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650222"
 ---
 # <a name="tutorial-configure-ping-identity-with-azure-active-directory-b2c-for-secure-hybrid-access"></a>Kurz: Konfigurace identity pomocí Azure Active Directory B2C pro zabezpečený hybridní přístup
 
@@ -80,7 +80,7 @@ Abyste mohli začít, budete potřebovat:
 
 - Předplatné Azure. Pokud ho nemáte, Získejte [bezplatný účet](https://azure.microsoft.com/free/).
 
-- [Tenant Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) , který je propojený s vaším předplatným Azure.
+- [Tenant Azure AD B2C](./tutorial-create-tenant.md) , který je propojený s vaším předplatným Azure.
 
 - PingAccess a PingFederate nasazené v kontejnerech Docker nebo přímo na virtuálních počítačích Azure.
 
@@ -107,7 +107,7 @@ Pokud chcete postupovat podle této konvence, aktualizujte aktualizaci vystavite
 
 ![obrázek ukazuje nastavení tokenu](./media/partner-ping/token-setting.png)
 
-V pokročilých zásadách se dá nakonfigurovat pomocí elementu metadata **IssuanceClaimPattern** k **AuthorityWithTfp** hodnoty v [technickém profilu vystavitele tokenu JWT](https://docs.microsoft.com/azure/active-directory-b2c/jwt-issuer-technical-profile).
+V pokročilých zásadách se dá nakonfigurovat pomocí elementu metadata **IssuanceClaimPattern** k **AuthorityWithTfp** hodnoty v [technickém profilu vystavitele tokenu JWT](./jwt-issuer-technical-profile.md).
 
 ## <a name="configure-pingaccesspingfederate"></a>Konfigurace PingAccess/PingFederate
 
@@ -160,7 +160,7 @@ Pomocí těchto kroků vytvořte relaci webu:
 
 7. Do pole **tajný kód klienta** zadejte **klíč** , který jste vygenerovali pro aplikaci ve službě Azure AD.
 
-8. Volitelné – můžete vytvářet a používat vlastní deklarace identity pomocí rozhraní Microsoft Graph API. Pokud se rozhodnete tak učinit, vyberte možnost **Upřesnit** a zrušte výběr možnosti **Profil požadavku** a **Aktualizace atributů uživatele** . Další informace o používání vlastních deklarací identity najdete v tématu [použití vlastní deklarace identity](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#optional---use-a-custom-claim).
+8. Volitelné – můžete vytvářet a používat vlastní deklarace identity pomocí rozhraní Microsoft Graph API. Pokud se rozhodnete tak učinit, vyberte možnost **Upřesnit** a zrušte výběr možnosti **Profil požadavku** a **Aktualizace atributů uživatele** . Další informace o používání vlastních deklarací identity najdete v tématu [použití vlastní deklarace identity](../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers.md).
 
 9. Vyberte **Uložit**.
 
@@ -265,6 +265,6 @@ Nakonfigurujte zásady ověřování PingFederate tak, aby federovat na víc zpr
 
 Další informace najdete v následujících článcích.
 
-- [Vlastní zásady v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Vlastní zásady v Azure AD B2C](./custom-policy-overview.md)
 
-- [Začínáme s vlastními zásadami v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Začínáme s vlastními zásadami v Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

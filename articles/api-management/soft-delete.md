@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: vladvino
 ms.author: apimpm
 ms.date: 11/27/2020
-ms.openlocfilehash: 72e91715398b4920c62afae5f36aa09954a577f9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: e2842f3e428abb4f0eb628dbb8e446f2714d5d89
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092138"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652381"
 ---
 # <a name="api-management-soft-delete-preview"></a>API Management Soft-Delete (Preview)
 
 Pomocí API Managementho obnovitelného odstranění (Preview) můžete obnovit a obnovit nedávno odstraněné instance API Management (APIM).
 
 > [!IMPORTANT]
-> Jenom API Management instance odstraněné pomocí `2020-01-01-preview` a novější verze rozhraní API se odeberou a obnoví pomocí kroků popsaných v tomto článku. Instance APIM odstraněné pomocí předchozích verzí rozhraní API budou pořád pevně odstraněné. Azure PowerShell a rozhraní příkazového řádku Azure aktuálně nepoužívají `2020-06-01-preview` verzi a výsledkem bude také chování pevného odstranění.
+> Jenom API Management instance odstraněné pomocí `2020-06-01-preview` a novější verze rozhraní API se odeberou a obnoví pomocí kroků popsaných v tomto článku. Instance APIM odstraněné pomocí předchozích verzí rozhraní API budou pořád pevně odstraněné. Azure PowerShell a rozhraní příkazového řádku Azure aktuálně nepoužívají `2020-06-01-preview` verzi a výsledkem bude také chování pevného odstranění.
 
 ## <a name="supporting-interfaces"></a>Podpůrná rozhraní
 
@@ -29,16 +29,16 @@ Funkce obnovitelného odstranění je k dispozici prostřednictvím [REST API](/
 
 | Operace | Popis | Obor názvů API Management | Minimální verze rozhraní API |
 |--|--|--|--|
-| [Vytvořit nebo aktualizovat](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | Vytvoří nebo aktualizuje službu API Management.  | Služba API Management | Libovolný |
+| [Vytvořit nebo aktualizovat](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | Vytvoří nebo aktualizuje službu API Management.  | Služba API Management | Všechny |
 | [Vytvořit nebo aktualizovat](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) s `restore` vlastností nastavenou na **hodnotu true** | Odstraní API Management službu, pokud byla dříve odstraněna. Pokud `restore` je zadána a nastavena na `true` všechny ostatní vlastnosti, budou ignorovány.  | Služba API Management |  2020-06-01 – Preview |
-| [Odstranit](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/delete) | Odstraní existující službu API Management. | Služba API Management | 2020-01-01 – Preview|
+| [Odstranit](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/delete) | Odstraní existující službu API Management. | Služba API Management | 2020-06-01 – Preview|
 | [Získat podle názvu](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) | Získejte dočasná odstraněnou službu API Management podle názvu. | Odstraněné služby | 2020-06-01 – Preview |
 | [Seznam podle předplatného](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) | Vypíše všechny dočasně odstraněné služby, které jsou k dispozici pro odstranění daného předplatného. | Odstraněné služby | 2020-06-01 – Preview
 | [Odstraněna](/rest/api/apimanagement/2020-06-01-preview/deletedservices/purge) | Vyprázdní API Management službu (odstraní ji bez možnosti zrušení odstranění). | Odstraněné služby | 2020-06-01 – Preview
 
 ## <a name="soft-delete-behavior"></a>Chování obnovitelného odstranění
 
-Můžete použít libovolnou verzi rozhraní API k vytvoření instance API Management, ale budete muset použít `2020-01-01-preview` nebo novější verze, abyste mohli opravit instanci APIM (a máte možnost ji obnovit).
+Můžete použít libovolnou verzi rozhraní API k vytvoření instance API Management, ale budete muset použít `2020-06-01-preview` nebo novější verze, abyste mohli opravit instanci APIM (a máte možnost ji obnovit).
 
 Po odstranění instance API Management bude služba existovat v odstraněném stavu, takže nebude přístupná pro žádné operace APIM. V tomto stavu může být instance APIM jenom uvedená, obnovená nebo vyčištěná (trvale Odstraněná).
 

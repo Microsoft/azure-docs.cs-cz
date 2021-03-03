@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 521fd61f18d6673e21c23dbca4cfc12d2ee4bf0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9cbfc30b10373ad2a4f4304987dac426b5dcabe
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936334"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643571"
 ---
 # <a name="migrate-postgresql-database-to-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Migrace databáze PostgreSQL do skupiny serverů s povoleným PostgreSQL a škálováním na úrovni Azure
 
@@ -23,7 +23,7 @@ Tento dokument popisuje kroky pro získání existující databáze PostgreSQL (
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 PostgreSQL skupina serverů s podporou Azure ARC je verze komunity PostgreSQL a je spuštěná s povoleným rozšířením CitusData. Takže jakýkoli nástroj, který funguje na PostgreSQL mimo ARC Azure, by měl spolupracovat se skupinou serverů PostgreSQL s podporou škálování na úrovni Azure ARC.
 
@@ -53,20 +53,20 @@ Vezměte v úvahu následující nastavení:
 
 - **Tabulka**  
     Postgres Server běžící v prostředí Azure ARC a s názvem postgres01. Verze je 12. Nemá žádnou databázi s výjimkou standardní databáze Postgres.  
-    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination.jpg" alt-text="migrace – zdroj":::
+    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination.jpg" alt-text="Migrace – cíl":::
 
 
 ### <a name="take-a-backup-of-the-source-database-on-premises"></a>Pořídit zálohu zdrojové databáze místně
 
-:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup.jpg" alt-text="migrace – zdroj":::
+:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup.jpg" alt-text="Migrace – zdroj-záloha":::
 
 Nakonfigurovat:
 1. Zadat název souboru: **MySourceBackup**
 2. Nastavení formátu na **vlastní** 
- :::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup2.jpg" alt-text="migrace – zdroj":::
+ :::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup2.jpg" alt-text="migrace – zdroj-zálohování – konfigurace":::
 
 Zálohování bylo úspěšně dokončeno:  
-:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup3.jpg" alt-text="migrace – zdroj":::
+:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup3.jpg" alt-text="Migrace – zdroj-zálohování – dokončeno":::
 
 ### <a name="create-an-empty-database-on-the-destination-system-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Vytvoření prázdné databáze v cílovém systému v PostgreSQL skupině serverů s povoleným rozšířením Azure ARC
 
@@ -94,21 +94,23 @@ Vrátí výstup podobný tomuto:
 ]
 ```
 
-Pojďme pojmenovat cílovou databázi **RESTORED_MyOnPremPostgresDB**  
-:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg" alt-text="Migrace – cíl-DB-Create"lightbox="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg":::
+Pojďme pojmenovat cílovou databázi **RESTORED_MyOnPremPostgresDB**.
+
+:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg" alt-text="Migrace – cíl-DB-Create" lightbox="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg":::
 
 ### <a name="restore-the-database-in-your-arc-setup"></a>Obnovení databáze v nastavení ARC
-:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore.jpg" alt-text="migrace – zdroj":::
+
+:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore.jpg" alt-text="Migratre-DB – obnovení":::
 
 Nakonfigurujte obnovení:
 1. Najeďte na soubor obsahující zálohu, která se má obnovit: **MySourceBackup**
 2. Zachovat formát nastavený na **vlastní nebo tar** 
-    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore2.jpg" alt-text="migrace – zdroj":::
+    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore2.jpg" alt-text="migrace – DB-Restore-Configure":::
 
 3. Klikněte na **obnovit**.  
 
    Obnovení bylo úspěšné.  
-   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore3.jpg" alt-text="migrace – zdroj":::
+   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore3.jpg" alt-text="Migrace – DB-Restore-Completed":::
 
 ### <a name="verify-that-the-database-was-successfully-restored-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Ověřte, že se databáze úspěšně obnovila ve skupině serverů PostgreSQL s povoleným rozšířením Azure ARC.
 
@@ -118,7 +120,20 @@ Použijte jednu z následujících metod:
 
 Rozbalte instanci Postgres hostovanou v nastavení ARC Azure. Zobrazí se tabulka v databázi, kterou jste obnovili, a když vyberete data, která zobrazuje stejný řádek jako v místní instanci:
 
-   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestoreverif.jpg" alt-text="migrace – zdroj"
+   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestoreverif.jpg" alt-text="Migrace – DB-Restore-ověření":::
+
+**V `psql` rámci vašeho nastavení ARC Azure:**  
+
+V rámci nastavení ARC můžete použít `psql` pro připojení k instanci Postgres, nastavení kontextu databáze `RESTORED_MyOnPremPostgresDB` a dotazování na data:
+
+1. Seznam koncových bodů, které vám pomůžou s `psql` připojovacím řetězcem:
+
+   ```console
+   azdata arc postgres endpoint list -n postgres01
+   [
+     {
+       "Description": "PostgreSQL Instance",
+       "Endpoint": "postgresql://postgres:<replace with password>@12.345.123.456:1234"
      },
      {
        "Description": "Log Search Dashboard",
@@ -179,6 +194,6 @@ Rozbalte instanci Postgres hostovanou v nastavení ARC Azure. Zobrazí se tabulk
     * [Návrh databáze s více klienty](../../postgresql/tutorial-design-database-hyperscale-multi-tenant.md)*
     * [Návrh řídicího panelu pro analýzu v reálném čase](../../postgresql/tutorial-design-database-hyperscale-realtime.md)*
 
-> * V těchto dokumentech přeskočte oddíly **Přihlaste se k Azure Portal**a **Vytvořte Azure Database for Postgres – Citus (škálování)**. Implementujte zbývající kroky v nasazení ARC Azure. Tyto části jsou specifické pro Azure Database for PostgreSQL Citus (PaaS), které nabízíme jako službu v cloudu Azure, ale ostatní části dokumentů jsou přímo použitelné pro PostgreSQL škálování na úrovni Azure ARC.
+> * V těchto dokumentech přeskočte oddíly **Přihlaste se k Azure Portal** a **Vytvořte Azure Database for Postgres – Citus (škálování)**. Implementujte zbývající kroky v nasazení ARC Azure. Tyto části jsou specifické pro Azure Database for PostgreSQL Citus (PaaS), které nabízíme jako službu v cloudu Azure, ale ostatní části dokumentů jsou přímo použitelné pro PostgreSQL škálování na úrovni Azure ARC.
 
 - [Škálování skupiny serverů Azure Database for PostgreSQL Hyperscale na více instancí](scale-out-postgresql-hyperscale-server-group.md)

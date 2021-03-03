@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/14/2020
 ms.author: jeedes
-ms.openlocfilehash: ed136d06f18190124abe4598d580f40e41bf8592
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 20f49c174dde90bc7f1a9b34f3dea3132e9b177e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704216"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644676"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-splan-visitor"></a>Kurz: Integrace Azure Active Directory jednotného přihlašování (SSO) k návštěvníkovi Splan
 
@@ -120,8 +120,8 @@ Vytvořte testovacího uživatele s názvem **Britta Simon** v Splan návštěvn
 Otestujte konfiguraci jednotného přihlašování Azure AD pomocí jedné z následujících možností:
 
 * **Azure Portal**: vyberte možnost **testovat tuto aplikaci** , chcete-li se automaticky přihlásit k Splan návštěvníkovi, pro který jste nastavili jednotné přihlašování.
-* **Portál Microsoft moje aplikace**: Vyberte dlaždici **návštěvníka Splan** , která se automaticky přihlásí k Splan návštěvníkovi, pro který jste nastavili jednotné přihlašování. Další informace o portálu moje aplikace najdete v tématu [přihlášení a spouštění aplikací na portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* **Portál Microsoft moje aplikace**: Vyberte dlaždici **návštěvníka Splan** , která se automaticky přihlásí k Splan návštěvníkovi, pro který jste nastavili jednotné přihlašování. Další informace o portálu moje aplikace najdete v tématu [přihlášení a spouštění aplikací na portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování Splan návštěvníka se můžete [dozvědět, jak vynutili řízení relací v Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app). Ovládací prvky relace vám pomůžou chránit exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup.
+Po nakonfigurování Splan návštěvníka se můžete [dozvědět, jak vynutili řízení relací v Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app). Ovládací prvky relace vám pomůžou chránit exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup.

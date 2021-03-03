@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ca00785bfe8a99b8a3d620559c4fa492ee60c63
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f2bbc1c555824d4c632c5bf85a9cd0aa83087fc8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741741"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648721"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Řešení potíží: místní ochrana heslem Azure AD
 
@@ -259,6 +259,146 @@ Pokud se rozhodnete odinstalovat software ochrany heslem služby Azure AD a vyč
    `%windir%\sysvol\domain\Policies\AzureADPasswordProtection`
 
    Tato cesta se liší, pokud je sdílená složka SYSVOL nakonfigurovaná na jiném než výchozím umístění.
+
+## <a name="health-testing-with-powershell-cmdlets"></a>Testování stavu pomocí rutin prostředí PowerShell
+
+Modul AzureADPasswordProtection PowerShell obsahuje dvě rutiny související se stavem, které provádějí základní ověření, že je software nainstalovaný a funguje. Je vhodné spouštět tyto rutiny po nastavení nového nasazení a pravidelně následně a při vyšetřování problému.
+
+Každý jednotlivý test stavu vrátí základní výsledek úspěch nebo neúspěch a nepovinnou zprávu při selhání. V případech, kdy příčina selhání není jasné, vyhledejte zprávy protokolu událostí chyby, které mohou vysvětlit selhání. Povolení zpráv protokolu textu může být užitečné také. Další podrobnosti najdete v tématu [monitorování ochrany heslem Azure AD](howto-password-ban-bad-on-premises-monitor.md).
+
+## <a name="proxy-health-testing"></a>Testování stavu proxy serveru
+
+Rutina Test-AzureADPasswordProtectionProxyHealth podporuje dva testy stavu, které lze spustit jednotlivě. Třetí režim umožňuje spuštění všech testů, které nevyžadují žádné vstupy parametrů.
+
+### <a name="proxy-registration-verification"></a>Ověření registrace proxy serveru
+
+Tento test ověřuje, jestli je agent proxy správně zaregistrovaný v Azure a že je schopný ho ověřit v Azure. Úspěšné spuštění bude vypadat takto:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -VerifyProxyRegistration
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyRegistration Passed
+```
+
+Pokud je zjištěna chyba, test vrátí neúspěšný výsledek a volitelnou chybovou zprávu. Tady je příklad jedné možné chyby:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -VerifyProxyRegistration
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyRegistration Failed No proxy certificates were found - please run the Register-AzureADPasswordProtectionProxy cmdlet to register the proxy.
+```
+
+### <a name="proxy-verification-of-end-to-end-azure-connectivity"></a>Ověřování proxy serveru pro kompletní připojení Azure
+
+Tento test je nadmnožinou testu-VerifyProxyRegistration. Vyžaduje, aby byl agent proxy správně zaregistrován v Azure, aby se mohl ověřit v Azure a nakonec přidá kontrolu, že se může zpráva úspěšně odeslat do Azure a ověřit tak úplnou komunikaci, která bude fungovat.
+
+Úspěšné spuštění bude vypadat takto:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -VerifyAzureConnectivity
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyAzureConnectivity Passed
+```
+
+### <a name="proxy-verification-of-all-tests"></a>Ověřování proxy pro všechny testy
+
+Tento režim umožňuje hromadné spuštění všech testů podporovaných rutinou, které nevyžadují vstup parametru. Úspěšné spuštění bude vypadat takto:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -TestAll
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyTLSConfiguration  Passed
+VerifyProxyRegistration Passed
+VerifyAzureConnectivity Passed
+```
+
+## <a name="dc-agent-health-testing"></a>Testování stavu agenta řadiče domény
+
+Rutina Test-AzureADPasswordProtectionDCAgentHealth podporuje několik testů stavu, které lze spustit jednotlivě. Třetí režim umožňuje spuštění všech testů, které nevyžadují žádné vstupy parametrů.
+
+### <a name="basic-dc-agent-health-tests"></a>Základní testy stavu agenta řadiče domény
+
+Následující testy lze spustit jednotlivě a nepřijmout. Stručný popis
+
+|Test stavu agenta řadiče domény|Popis|
+| --- | :---: |
+|-VerifyPasswordFilterDll|Ověřuje, jestli je knihovna DLL filtru hesel aktuálně načtená a může volat službu agenta DC.|
+|-VerifyForestRegistration|Ověřuje, jestli je doménová struktura aktuálně zaregistrovaná.|
+|-VerifyEncryptionDecryption|Ověřuje, že základní šifrování a dešifrování funguje pomocí služby Microsoft KDS.|
+|-VerifyDomainIsUsingDFSR|Ověří, jestli aktuální doména používá DFSR pro replikaci SYSVOL.|
+|-VerifyAzureConnectivity|Ověří ucelenou komunikaci s Azure a pracuje s libovolným dostupným proxy serverem.|
+
+Tady je příklad předání testu-VerifyPasswordFilterDll; ostatní testy budou vypadat podobně jako při úspěchu:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyPasswordFilterDll
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyPasswordFilterDll Passed
+```
+
+### <a name="dc-agent-verification-of-all-tests"></a>Ověření agenta řadiče domény u všech testů
+
+Tento režim umožňuje hromadné spuštění všech testů podporovaných rutinou, které nevyžadují vstup parametru. Úspěšné spuštění bude vypadat takto:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -TestAll
+
+DiagnosticName             Result AdditionalInfo
+--------------             ------ --------------
+VerifyPasswordFilterDll    Passed
+VerifyForestRegistration   Passed
+VerifyEncryptionDecryption Passed
+VerifyDomainIsUsingDFSR    Passed
+VerifyAzureConnectivity    Passed
+```
+
+### <a name="connectivity-testing-using-specific-proxy-servers"></a>Testování připojení s použitím konkrétních proxy serverů
+
+Řada situací při řešení potíží zahrnuje šetření síťového připojení mezi agenty a proxy serverů řadiče domény. Existují dva testy stavu, které jsou k těmto problémům zaměřeny konkrétně. Tyto testy vyžadují, aby byl zadán konkrétní proxy server.
+
+#### <a name="verifying-connectivity-between-a-dc-agent-and-a-specific-proxy"></a>Ověření připojení mezi agentem DC a konkrétním proxy serverem
+
+Tento test ověřuje připojení přes první komunikační nožku od agenta řadiče domény k proxy serveru. Ověřuje, jestli proxy dostane hovor, ale nezabývá se tím žádná komunikace s Azure. Úspěšné spuštění vypadá takto:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyProxyConnectivity bpl2.bpl.com
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyConnectivity Passed
+```
+
+Tady je příklad stavu selhání, kdy se zastavila služba proxy serveru spuštěná na cílovém serveru:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyProxyConnectivity bpl2.bpl.com
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyConnectivity Failed The RPC endpoint mapper on the specified proxy returned no results; please check that the proxy service is running on that server.
+```
+
+#### <a name="verifying-connectivity-between-a-dc-agent-and-azure-using-a-specific-proxy"></a>Ověření připojení mezi agentem DC a Azure (pomocí konkrétního proxy serveru)
+
+Tento test ověří kompletní připojení mezi agentem DC a Azure pomocí konkrétního proxy serveru. Úspěšné spuštění vypadá takto:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyAzureConnectivityViaSpecificProxy bpl2.bpl.com
+
+DiagnosticName                          Result AdditionalInfo
+--------------                          ------ --------------
+VerifyAzureConnectivityViaSpecificProxy Passed
+```
 
 ## <a name="next-steps"></a>Další kroky
 

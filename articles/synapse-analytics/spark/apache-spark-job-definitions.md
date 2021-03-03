@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: b8c7792a09dd86e7d4ac043c572f69fc47ee6e63
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3f1e3fd360197310a89a67d43053649d904aeb18
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307171"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677608"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Kurz: vytvoření definice úlohy Apache Spark v synapse studiu
 
@@ -28,11 +28,11 @@ Tento kurz se zabývá následujícími úkony:
 > - Odeslání definice úlohy Apache Spark jako úlohy služby Batch
 > - Přidání definice úlohy Apache Spark do kanálu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem, ujistěte se, že splňujete následující požadavky:
 
-* Pracovní prostor analýzy Azure synapse. Pokyny najdete v tématu [Vytvoření pracovního prostoru Azure synapse Analytics](../../machine-learning/how-to-manage-workspace.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#create-a-workspace).
+* Pracovní prostor analýzy Azure synapse. Pokyny najdete v tématu [Vytvoření pracovního prostoru Azure synapse Analytics](../../machine-learning/how-to-manage-workspace.md).
 * Apache Spark fond bez serveru.
 * ADLS Gen2 účet úložiště. Musíte být **vlastníkem dat objektu BLOB úložiště** adls Gen2 systému souborů, se kterým chcete pracovat. Pokud ne, budete muset oprávnění přidat ručně.
 * Pokud nechcete používat výchozí úložiště pracovního prostoru, propojte požadovaný účet úložiště ADLS Gen2 v synapse studiu. 
@@ -43,7 +43,7 @@ V této části vytvoříte definici úlohy Apache Spark pro PySpark (Python).
 
 1. Otevřete [Azure synapse Studio](https://web.azuresynapse.net/).
 
-2. Můžete přejít na [ukázkové soubory pro vytvoření Apache Spark definice úloh](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) a stáhnout tak **ukázkové soubory pro python.zip** , rozbalit komprimovaný balíček a extrahovat soubory **WORDCOUNT.py** a **shakespeare.txt** . 
+2. Můžete přejít na [ukázkové soubory pro vytvoření Apache Spark definice úloh](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) a stáhnout tak **ukázkové soubory pro python.zip**, rozbalit komprimovaný balíček a extrahovat soubory **WORDCOUNT.py** a **shakespeare.txt** . 
 
      ![ukázkové soubory](./media/apache-spark-job-definitions/sample-files.png)
 
@@ -85,7 +85,7 @@ V této části vytvoříte definici úlohy Apache Spark pro Apache Spark (Scala
 
  1. Otevřete [Azure synapse Studio](https://web.azuresynapse.net/).
 
- 2. Můžete přejít na [ukázkové soubory pro vytvoření Apache Spark definice úloh](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Scala) a stáhnout tak **ukázkové soubory pro scala.zip** , rozbalit komprimovaný balíček a extrahovat soubory **WORDCOUNT. jar** a **shakespeare.txt** . 
+ 2. Můžete přejít na [ukázkové soubory pro vytvoření Apache Spark definice úloh](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Scala) a stáhnout tak **ukázkové soubory pro scala.zip**, rozbalit komprimovaný balíček a extrahovat soubory **WORDCOUNT. jar** a **shakespeare.txt** . 
  
      ![ukázkové soubory Scala](./media/apache-spark-job-definitions/sample-files-scala.png)
 
@@ -125,7 +125,7 @@ V této části vytvoříte definici úlohy Apache Spark pro Apache Spark (Scala
 V této části vytvoříte definici úlohy Apache Spark pro .NET Spark (C#/F #).
  1. Otevřete [Azure synapse Studio](https://web.azuresynapse.net/).
 
- 2. Můžete přejít na [ukázkové soubory pro vytvoření Apache Spark definice úloh](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET) a stáhnout tak **ukázkové soubory pro dotnet.zip** , rozbalit komprimovaný balíček a extrahovat soubory **wordcount.zip** a **shakespeare.txt** . 
+ 2. Můžete přejít na [ukázkové soubory pro vytvoření Apache Spark definice úloh](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET) a stáhnout tak **ukázkové soubory pro dotnet.zip**, rozbalit komprimovaný balíček a extrahovat soubory **wordcount.zip** a **shakespeare.txt** . 
 
      ![Ukázka dotnet](./media/apache-spark-job-definitions/sample-dotnet.png)
 

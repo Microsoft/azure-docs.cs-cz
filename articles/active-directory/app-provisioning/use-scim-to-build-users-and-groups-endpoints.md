@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 9fac8db6747d1e081fa884ed794e55b98f44577f
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b69e701177c6f017388521ed05c37de1271c7e60
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652033"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650154"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint"></a>Kurz: vývoj ukázkového koncového bodu SCIM
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="deploy-your-scim-endpoint-in-azure"></a>Nasazení koncového bodu SCIM v Azure
 
-Tento postup umožňuje nasadit koncový bod SCIM do služby pomocí sady [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) a [Azure App Service](https://docs.microsoft.com/azure/app-service/). Referenční kód SCIM lze také spustit místně, hostovaný místním serverem nebo nasadit do jiné externí služby.
+Tento postup umožňuje nasadit koncový bod SCIM do služby pomocí sady [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) a [Azure App Service](../../app-service/index.yml). Referenční kód SCIM lze také spustit místně, hostovaný místním serverem nebo nasadit do jiné externí služby.
 
 1. Z GitHubu můžete přejít na [referenční kód](https://github.com/AzureAD/SCIMReferenceCode) a vybrat **klonovat nebo stáhnout**.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 5010dc08b695a0376ace5dde935c63caf0c39633
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 98989a38a0c1a7f57fc8eba70e064e5d6f2cce8f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012067"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671528"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>Kurz: Vytvoření brány NAT pomocí Azure Portal
 
@@ -43,9 +43,9 @@ V této části budete muset v krocích níže nahradit následující parametry
 | **\<resource-group-name>**  | myResourceGroupNAT |
 | **\<virtual-network-name>** | myVNet          |
 | **\<region-name>**          | USA – východ 2      |
-| **\<IPv4-address-space>**   | 192.168.0.0 \ 16          |
+| **\<IPv4-address-space>**   | 192.168.0.0/16          |
 | **\<subnet-name>**          | mySubnet        |
-| **\<subnet-address-range>** | 192.168.0.0 \ 24          |
+| **\<subnet-address-range>** | 192.168.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -89,7 +89,7 @@ Tato část podrobně popisuje, jak můžete vytvořit a nakonfigurovat následu
 
 ### <a name="create-a-public-ip-address"></a>Vytvoření veřejné IP adresy
 
-1. V levém horním rohu portálu vyberte **vytvořit**  >  **Networking**  >  **veřejnou IP adresu** sítě prostředku nebo v hledání na webu Marketplace vyhledejte **veřejnou IP adresu** .
+1. V levém horním rohu portálu vyberte **vytvořit**  >    >  **veřejnou IP adresu** sítě prostředku nebo v hledání na webu Marketplace vyhledejte **veřejnou IP adresu** .
 
 2. V nástroji **vytvořit veřejnou IP adresu** zadejte nebo vyberte tyto informace:
 
@@ -97,7 +97,7 @@ Tato část podrobně popisuje, jak můžete vytvořit a nakonfigurovat následu
     | ------- | ----- |
     | Verze protokolu IP | Vyberte **IPv4**.
     | SKU | Vyberte **Standard**.
-    | Name | Zadejte **myPublicIP**. |
+    | Název | Zadejte **myPublicIP**. |
     | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte **myResourceGroupNAT**. |
     | Umístění | Vyberte **USA – východ 2**.|
@@ -106,7 +106,7 @@ Tato část podrobně popisuje, jak můžete vytvořit a nakonfigurovat následu
 
 ### <a name="create-a-public-ip-prefix"></a>Vytvoření předpony veřejné IP adresy
 
-1. V levém horním rohu portálu vyberte **vytvořit**  >  **Networking**  >  **předponu veřejné IP adresy** sítě prostředku nebo v hledání na webu Marketplace vyhledejte **předponu veřejné IP adresy** . 
+1. V levém horním rohu portálu vyberte **vytvořit**  >    >  **předponu veřejné IP adresy** sítě prostředku nebo v hledání na webu Marketplace vyhledejte **předponu veřejné IP adresy** . 
 
 2. V části **vytvořit předponu veřejné IP adresy** zadejte nebo vyberte následující hodnoty na kartě **základy** :
    - **Předplatné**  >  **Skupina prostředků**: vyberte **myResourceGroupNAT**>

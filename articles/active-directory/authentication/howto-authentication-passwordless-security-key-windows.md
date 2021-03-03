@@ -1,45 +1,42 @@
 ---
 title: Přihlášení k bezpečnostnímu klíči s nehesly do Windows – Azure Active Directory
-description: Naučte se, jak povolit přihlašování k bezpečnostnímu klíči s neFIDO2mi heslem pro Azure Active Directory pomocí klíčů zabezpečení (Preview).
+description: Naučte se, jak povolit přihlašování k bezpečnostnímu klíči s neheslem Azure Active Directory pomocí klíčů zabezpečení FIDO2.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/24/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04a46a691b2f629b64cfe09c22813b05c593af1c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 190e9c857f1ec9d19eb89493dc4b4a9fb68fac87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743458"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653503"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Povolení přihlášení k bezpečnostnímu klíči bez hesla pro zařízení s Windows 10 pomocí Azure Active Directory (Preview)
+# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory"></a>Povolení přihlášení k bezpečnostnímu klíči bez hesla pro zařízení s Windows 10 pomocí Azure Active Directory 
 
 Tento dokument se zaměřuje na povolení ověřování bez hesla založeného na klíčích zabezpečení FIDO2 u zařízení s Windows 10. Na konci tohoto článku se budete moct přihlásit k Azure AD i k hybridním zařízením s Windows 10 připojeným k Azure AD pomocí svého účtu služby Azure AD s použitím bezpečnostního klíče FIDO2.
-
-> [!NOTE]
-> Bezpečnostní klíče FIDO2 jsou funkcí veřejné verze Preview Azure Active Directory. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="requirements"></a>Požadavky
 
 | Typ zařízení | Připojené k Azure AD | k hybridní službě Azure AD. |
 | --- | --- | --- |
-| [Azure AD Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
-| [Souhrnná registrace informací o zabezpečení ve verzi Preview](concept-registration-mfa-sspr-combined.md) | X | X |
-| Kompatibilní [klíče zabezpečení FIDO2](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
-| Operace WebAuthN vyžaduje Windows 10 verze 1903 nebo vyšší. | X | X |
-| [Zařízení připojená k Azure AD](../devices/concept-azure-ad-join.md) vyžadují Windows 10 verze 1909 nebo vyšší. | X |   |
-| [Zařízení připojená k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md) vyžadují Windows 10 verze 2004 nebo vyšší. |   | X |
-| Plně opravené řadiče domény se systémem Windows Server 2016/2019. |   | X |
-| [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) verze 1.4.32.0 nebo novější |   | X |
-| [Microsoft Intune](/intune/fundamentals/what-is-intune) (volitelné) | X | X |
-| Zřizovací balíček (volitelné) | X | X |
-| Zásady skupiny (volitelné) |   | X |
+| [Azure AD Multi-Factor Authentication](howto-mfa-getstarted.md) | × | × |
+| [Registrace informací o kombinovaném zabezpečení](concept-registration-mfa-sspr-combined.md) | × | × |
+| Kompatibilní [klíče zabezpečení FIDO2](concept-authentication-passwordless.md#fido2-security-keys) | × | × |
+| Operace WebAuthN vyžaduje Windows 10 verze 1903 nebo vyšší. | × | × |
+| [Zařízení připojená k Azure AD](../devices/concept-azure-ad-join.md) vyžadují Windows 10 verze 1909 nebo vyšší. | × |   |
+| [Zařízení připojená k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md) vyžadují Windows 10 verze 2004 nebo vyšší. |   | × |
+| Plně opravené řadiče domény se systémem Windows Server 2016/2019. |   | × |
+| [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) verze 1.4.32.0 nebo novější |   | × |
+| [Microsoft Intune](/intune/fundamentals/what-is-intune) (volitelné) | × | × |
+| Zřizovací balíček (volitelné) | × | × |
+| Zásady skupiny (volitelné) |   | × |
 
 ### <a name="unsupported-scenarios"></a>Nepodporované scénáře
 
@@ -54,9 +51,9 @@ Následující scénáře nejsou podporovány:
 - Přihlášení nebo odemknutí zařízení s Windows 10 klíčem zabezpečení, který obsahuje několik účtů Azure AD. Tento scénář využívá Poslední účet přidaný do klíče zabezpečení. Operace WebAuthN umožňuje uživatelům zvolit účet, který chtějí použít.
 - Odemkněte zařízení s Windows 10 verze 1809. Pro dosažení optimálního prostředí použijte Windows 10 verze 1903 nebo vyšší.
 
-## <a name="prepare-devices-for-preview"></a>Příprava zařízení pro verzi Preview
+## <a name="prepare-devices"></a>Příprava zařízení
 
-Zařízení připojená ke službě Azure AD, která vytváříte za verzi Preview funkce, musí používat Windows 10 verze 1909 nebo vyšší.
+Zařízení připojená k Azure AD musí používat Windows 10 verze 1909 nebo vyšší.
 
 Hybridní zařízení připojená k Azure AD musí používat Windows 10 verze 2004 nebo novější.
 
@@ -78,7 +75,7 @@ Organizace se můžou rozhodnout použít jednu nebo více následujících meto
 
 Pokud chcete povolit použití klíčů zabezpečení pomocí Intune, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Přejděte na **Microsoft Intune**  >  **registrace zařízení registrace zařízení** s  >  **Windows registrace**  >  **Windows Hello pro firmy**–  >  **vlastnosti**.
 1. V části **Nastavení** nastavte **možnost použít klíče zabezpečení pro přihlášení** a **Povolit**.
 
@@ -88,7 +85,7 @@ Konfigurace klíčů zabezpečení pro přihlášení nezávisí na konfiguraci 
 
 Pokud chcete cílit na konkrétní skupiny zařízení a povolit poskytovatele přihlašovacích údajů, použijte následující vlastní nastavení přes Intune:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Přejděte na **Microsoft Intune**  >  **konfigurační**  >  **profily** zařízení  >  **vytvořit profil**.
 1. Nakonfigurujte nový profil s následujícím nastavením:
    - Název: bezpečnostní klíče pro Windows Sign-In
@@ -129,7 +126,7 @@ Pro zařízení, která nespravuje služba Intune, je možné nainstalovat zřiz
 
 ### <a name="enable-with-group-policy"></a>Povolit s Zásady skupiny
 
-Pro **zařízení připojená k hybridní službě Azure AD** můžou organizace nakonfigurovat následující nastavení zásady skupiny, aby se povolilo přihlášení k bezpečnostnímu klíči Fido. Toto nastavení najdete v části **Konfigurace počítače**  >  **šablony pro správu** přihlášení  >  **System**  >  **Logon**  >  **k nástroji zapnout bezpečnostní klíč**:
+Pro **zařízení připojená k hybridní službě Azure AD** můžou organizace nakonfigurovat následující nastavení zásady skupiny, aby se povolilo přihlášení k bezpečnostnímu klíči Fido. Toto nastavení najdete v části **Konfigurace počítače**  >  **šablony pro správu** přihlášení  >    >    >  **k nástroji zapnout bezpečnostní klíč**:
 
 - Nastavením této zásady na **povoleno** umožňuje uživatelům přihlašovat se pomocí bezpečnostních klíčů.
 - Nastavení této zásady na **zakázáno** nebo **Nenakonfigurováno** zabrání uživatelům v přihlašování pomocí bezpečnostních klíčů.
@@ -145,18 +142,18 @@ V níže uvedeném příkladu již uživatel s názvem Bala Sandhu zřídil svů
 ### <a name="manage-security-key-biometric-pin-or-reset-security-key"></a>Správa klíčového bezpečnostního biometriky, PIN kódu nebo resetování klíče zabezpečení
 
 * Windows 10 verze 1903 nebo vyšší
-   * Uživatelé můžou otevřít **nastavení Windows** na svém zařízení > **Accounts**  >  **klíč zabezpečení** účty.
+   * Uživatelé můžou otevřít **nastavení Windows** na svém zařízení >   >  **klíč zabezpečení** účty.
    * Uživatelé můžou změnit kód PIN, aktualizovat biometrika nebo obnovit svůj bezpečnostní klíč.
 
 ## <a name="troubleshooting-and-feedback"></a>Řešení potíží a zpětná vazba
 
-Pokud byste chtěli sdílet zpětnou vazbu nebo narazit na problémy při zobrazení náhledu této funkce, sdílejte ji přes aplikaci Windows Feedback Center pomocí následujících kroků:
+Pokud chcete sdílet zpětnou vazbu nebo narazit na problémy s touto funkcí, sdílejte ji přes aplikaci Windows Feedback Center pomocí následujících kroků:
 
 1. Spusťte **Centrum zpětné vazby** a ujistěte se, že jste přihlášení.
 1. Odeslat názor v rámci následující kategorizace:
    - Kategorie: zabezpečení a ochrana osobních údajů
    - Subcategory: FIDO
-1. Pokud chcete zaznamenávat protokoly, použijte možnost pro **opětovné vytvoření problému** .
+1. Chcete-li zachytit protokoly, použijte možnost k **opětovnému vytvoření problému**.
 
 ## <a name="next-steps"></a>Další kroky
 

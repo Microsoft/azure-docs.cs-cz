@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 33cd19f7bb1881b17f1ca9080a9634162014808a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f801d25a0d0f70daaaac1ade3e8966cf5f53affc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574286"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672758"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Použití Azure Monitor s pracovním prostorem Azure synapse Analytics
 
@@ -103,7 +103,7 @@ Přihlaste se k Azure Portal a vyberte **monitorování**  >  **výstrah** a vyt
 
 Tady jsou protokoly emitované pracovními prostory Azure synapse Analytics:
 
-| Název Log Analytics tabulky | Název kategorie protokolu                 | Description |
+| Název Log Analytics tabulky | Název kategorie protokolu                 | Popis |
 |-------------------------------|-------------------------------------------------|-------------|
 | SynapseGatewayApiRequests     | GatewayApiRequests             | Žádosti rozhraní API služby Azure synapse Gateway. |
 | SynapseRbacOperations         | SynapseRbacOperations          | Operace řízení přístupu založeného na rolích Azure synapse (SRBAC). |
@@ -112,7 +112,7 @@ Tady jsou protokoly emitované pracovními prostory Azure synapse Analytics:
 
 Tady jsou protokoly emitované vyhrazené fondy SQL:
 
-| Název Log Analytics tabulky        | Název kategorie protokolu             | Description |
+| Název Log Analytics tabulky        | Název kategorie protokolu             | Popis |
 |----------------------|--------------------------------------|-------------|
 | SynapseSqlPoolExecRequests  | ExecRequests | Informace o požadavcích a dotazech SQL ve vyhrazeném fondu SQL ve službě Azure synapse.
 | SynapseSqlPoolDmsWorkers    | DmsWorkers   | Informace o pracovních procesech, které dokončují kroky DMS ve vyhrazeném fondu SQL ve službě Azure synapse.
@@ -121,17 +121,17 @@ Tady jsou protokoly emitované vyhrazené fondy SQL:
 | SynapseSqlPoolWaits         | Čeká        | Informace o stavech čekání zjištěných během provádění požadavku nebo dotazu SQL ve vyhrazeném fondu SQL synapse Azure, včetně zámků a čekání na přenosové fronty.
 
 Další informace o těchto protokolech najdete v následujících informacích:
-- [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 
 ### <a name="apache-spark-pool-log"></a>Protokol fondu Apache Spark
 
 Tady je protokol vysílaný Apache Spark fondy:
 
-| Název Log Analytics tabulky               | Název kategorie protokolu              | Description                 |
+| Název Log Analytics tabulky               | Název kategorie protokolu              | Popis                 |
 |-----------------------------|---------------------------------------|-----------------------------|
 | SynapseBigDataPoolApplicationsEnded | BigDataPoolAppsEnded | Informace o ukončených Apache Sparkch aplikacích |
 

@@ -9,26 +9,25 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d6409c005e006372f55e77aeb4d977e6b1c45832
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: b3bdbef5680561d60ab4db6ee42033553e691ed3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936267"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660119"
 ---
 # <a name="quickstart-handle-sms-events"></a>Rychlý Start: zpracování událostí serveru SMS
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-Začínáme s komunikačními službami Azure pomocí Azure Event Grid k obsluze událostí služby SMS pro komunikaci. 
+Začínáme s komunikačními službami Azure pomocí Azure Event Grid k obsluze událostí služby SMS pro komunikaci.
 
 ## <a name="about-azure-event-grid"></a>O Azure Event Grid
 
 [Azure Event Grid](../../../event-grid/overview.md) je cloudová služba pro pokládání událostí. V tomto článku se dozvíte, jak se přihlásit k odběru událostí [služby Communication Service](../../concepts/event-handling.md)a aktivovat událost pro zobrazení výsledku. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. V tomto článku pošleme události do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
-## <a name="prerequisites"></a>Předpoklady
-- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+## <a name="prerequisites"></a>Požadavky
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Prostředek služby Azure Communication Service. Další podrobnosti najdete v rychlém startu [Vytvoření zdroje komunikace Azure](../create-communication-resource.md) .
 - Telefonní číslo s povoleným SMS. [Získejte telefonní číslo](./get-phone-number.md).
 
@@ -44,13 +43,13 @@ Na webu Azure Portal:
 2. Vyberte předplatné, které používáte pro službu Event Grid.
 3. V nabídce vlevo v části **Nastavení** vyberte **poskytovatelé prostředků**.
 4. Vyhledejte **Microsoft.EventGrid**.
-5. Pokud prostředek není zaregistrovaný, vyberte **Zaregistrovat**. 
+5. Pokud prostředek není zaregistrovaný, vyberte **Zaregistrovat**.
 
 Dokončení registrace může chvíli trvat. Stav můžete aktualizovat kliknutím na **Aktualizovat**. Jakmile se **Stav** změní na **Zaregistrováno**, můžete pokračovat.
 
 ### <a name="event-grid-viewer-deployment"></a>Nasazení Event Grid Vieweru
 
-V tomto rychlém startu použijeme [ukázku Azure Event Grid Viewer](/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) k zobrazení událostí téměř v reálném čase. Uživatel tak bude mít zkušenosti s informačním kanálem v reálném čase. Kromě toho by měly být k dispozici také datové části každé události pro kontrolu.  
+V tomto rychlém startu použijeme [ukázku Azure Event Grid Viewer](/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) k zobrazení událostí téměř v reálném čase. Uživatel tak bude mít zkušenosti s informačním kanálem v reálném čase. Kromě toho by měly být k dispozici také datové části každé události pro kontrolu.
 
 ## <a name="subscribe-to-the-sms-events-using-web-hooks"></a>Přihlášení k odběru událostí SMS pomocí webhooků
 
@@ -62,7 +61,7 @@ Klikněte na **přidat odběr události** a zadejte Průvodce vytvořením.
 
 Na stránce **vytvořit odběr události** zadejte **název** odběru události.
 
-Můžete se přihlásit k odběru konkrétních událostí a sdělit Event Grid, které události serveru SMS chcete sledovat a kam se mají události odesílat. Z rozevírací nabídky vyberte události, k jejichž odběru se chcete přihlásit. V případě serveru SMS máte možnost zvolit možnosti `SMS Received` a `SMS Delivery Report Received` . 
+Můžete se přihlásit k odběru konkrétních událostí a sdělit Event Grid, které události serveru SMS chcete sledovat a kam se mají události odesílat. Z rozevírací nabídky vyberte události, k jejichž odběru se chcete přihlásit. V případě serveru SMS máte možnost zvolit možnosti `SMS Received` a `SMS Delivery Report Received` .
 
 Pokud budete vyzváni k zadání **názvu systémového tématu**, můžete zadat jedinečný řetězec. Toto pole nemá žádný vliv na vaše prostředí a používá se pro účely interní telemetrie.
 
@@ -70,7 +69,7 @@ Podívejte se na úplný seznam událostí, které [podporuje komunikační slu�
 
 :::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="Snímek obrazovky s informacemi o přijetí služby SMS a oznámením o doručení SMS přijal vybrané typy událostí.":::
 
-Vyberte **webový Hook** pro **Typ koncového bodu**. 
+Vyberte **webový Hook** pro **Typ koncového bodu**.
 
 :::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="Snímek obrazovky s polem typu koncového bodu nastaveným na webový Hook":::
 
@@ -111,7 +110,7 @@ Pokud chcete vyčistit a odebrat předplatné služby Communications Services, m
 
 V tomto rychlém startu jste zjistili, jak spotřebovávat události serveru SMS. Zprávy SMS můžete přijímat vytvořením předplatného Event Grid.
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [Odeslat SMS](../telephony-sms/send.md)
 
 Můžete také chtít:

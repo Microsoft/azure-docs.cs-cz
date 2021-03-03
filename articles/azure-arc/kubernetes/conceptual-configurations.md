@@ -2,18 +2,18 @@
 title: Konfigurace a GitOps – Kubernetes s podporou ARC Azure
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/17/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Tento článek obsahuje koncepční přehled funkcí GitOps a konfigurací pro Kubernetes s podporou ARC Azure.
 keywords: Kubernetes, oblouk, Azure, kontejnery, konfigurace, GitOps
-ms.openlocfilehash: f8fe1522eee4cc855ae1f396d9c98323114a25ce
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: d016e2bae9fcef21642f00cf6f25a8b595d54710
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652543"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650362"
 ---
 # <a name="configurations-and-gitops-with-azure-arc-enabled-kubernetes"></a>Konfigurace a GitOps s povoleným Kubernetes ARC Azure
 
@@ -27,20 +27,20 @@ V souvislosti s Kubernetes je GitOps postup, který deklaruje požadovaný stav 
 
 [![Architektura ](./media/conceptual-configurations.png) konfigurací](./media/conceptual-configurations.png#lightbox)
 
-Připojení mezi clusterem a úložištěm Git se vytvoří jako `Microsoft.KubernetesConfiguration/sourceControlConfigurations` prostředek rozšíření na Kubernetes prostředku s povoleným ARC Azure (reprezentovaný `Microsoft.Kubernetes/connectedClusters` ) v Azure Resource Manager. 
+Připojení mezi clusterem a úložištěm Git je vytvořeno jako prostředek konfigurace ( `Microsoft.KubernetesConfiguration/sourceControlConfigurations` ) na Kubernetes prostředku s povoleným ARC Azure (reprezentovaný `Microsoft.Kubernetes/connectedClusters` ) v Azure Resource Manager. 
 
-`sourceControlConfiguration`Vlastnosti prostředku se používají k nasazení operátora toku v clusteru s příslušnými parametry, jako je třeba úložiště Git, ze kterého se mají načíst manifesty, a interval dotazování, ve kterém se mají načíst. `sourceControlConfiguration`Data jsou uložena v Azure Cosmos DB databázi zašifrovaná a v klidovém stavu, aby se zajistila důvěrnost dat.
+Vlastnosti prostředku konfigurace se používají k nasazení operátora toku v clusteru s příslušnými parametry, jako je třeba úložiště Git, ze kterého se mají načíst manifesty, a interval dotazování, ve kterém se mají načíst. Data prostředků konfigurace jsou uložená v klidovém stavu v Azure Cosmos DB databázi, aby se zajistila důvěrnost dat.
 
 Služba `config-agent` spuštěná v clusteru zodpovídá za:
-* Sledování nových nebo aktualizovaných `sourceControlConfiguration` prostředků rozšíření u prostředku Kubernetes s povoleným ARC Azure
-* Nasazení operátora toku pro sledování úložiště Git pro každý z nich `sourceControlConfiguration` .
-* Aplikují se jakékoli aktualizace, které jste udělali `sourceControlConfiguration` . 
+* Sleduje se nové nebo aktualizované prostředky konfigurace u prostředku Kubernetes s povoleným ARC Azure.
+* Nasazení operátora toku pro sledování úložiště Git pro každý prostředek konfigurace.
+* Aplikují se jakékoli aktualizace provedené u libovolného prostředku konfigurace. 
 
-Pro dosažení víceklientské architektury můžete vytvořit více prostředků s oborem názvů `sourceControlConfiguration` na jednom clusteru Kubernetes s povoleným ARC Azure.
+Pro dosažení víceklientské architektury můžete vytvořit více prostředků konfigurace s rozsahem oboru názvů na stejném clusteru Kubernetes s povoleným rozšířením Azure ARC.
 
 > [!NOTE]
-> * `config-agent` nepřetržitě monitoruje nové nebo aktualizované `sourceControlConfiguration` prostředky rozšíření dostupné v prostředku Kubernetes s povoleným obloukem Azure ARC. Proto agenti vyžadují konzistentní připojení pro vyžádání vlastností požadovaných stavů do clusteru. Pokud se agenti nepodaří připojit k Azure, požadovaný stav se v clusteru nepoužije.
-> * Citlivé vstupy zákazníka, jako je soukromý klíč, známý obsah hostitelů, uživatelské jméno HTTPS a token nebo heslo, se ukládají až 48 hodin v rámci povolených služeb Kubernetes ARC Azure. Pokud používáte citlivé vstupy pro konfigurace, převeďte clustery do online režimu, co je to možné.
+> * `config-agent` sleduje nové nebo aktualizované prostředky konfigurace, které jsou k dispozici v prostředku Kubernetes s povoleným ARC. Proto agenti vyžadují připojení k požadovanému stavu, který se má do clusteru připojit. Pokud se agenti nepodaří připojit k Azure, nastane zpoždění při rozšiřování požadovaného stavu do clusteru.
+> * Citlivé vstupy zákazníka, jako je soukromý klíč, známý obsah hostitelů, uživatelské jméno HTTPS a token/heslo, se neukládají po dobu více než 48 hodin v rámci povolených služeb Kubernetes ARC Azure. Pokud používáte citlivé vstupy pro konfigurace, převeďte clustery do online režimu, co je to možné.
 
 ## <a name="apply-configurations-at-scale"></a>Aplikování konfigurací ve velkém měřítku
 
@@ -50,6 +50,6 @@ Toto v rámci vynuceného navýšení zajišťuje společnou základní konfigur
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Připojit cluster ke službě Azure ARC](./connect-cluster.md)
+* [Připojit cluster ke službě Azure ARC](./quickstart-connect-cluster.md)
 * [Vytvoření konfigurací na clusteru Kubernetes s povoleným obloukem](./use-gitops-connected-cluster.md)
 * [Použití Azure Policy k aplikování konfigurací ve velkém měřítku](./use-azure-policy.md)

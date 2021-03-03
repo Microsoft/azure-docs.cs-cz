@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 12/10/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 168e5340842dca3c26e4fa48d2f14b8ade529cd9
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 18d93a1a6ac9661b18054611015b02e41219bc14
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505704"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659643"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK
 
@@ -32,7 +32,7 @@ Kanály ML se spouštějí na výpočetních cílech (viz [co jsou výpočetní 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Vytvořte [pracovní prostor Azure Machine Learning](how-to-manage-workspace.md) pro uložení všech prostředků kanálu.
 
@@ -92,6 +92,7 @@ from azureml.core import Dataset
 
 my_dataset = Dataset.File.from_files([(def_blob_store, 'train-images/')])
 ```
+
 Mezilehlé údaje (nebo výstup kroku) jsou reprezentovány objektem [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) . `output_data1` je vytvářen jako výstup kroku a slouží jako vstup jednoho nebo více budoucích kroků. `PipelineData` zavádí datovou závislost mezi kroky a vytvoří implicitní pořadí spouštění v kanálu. Tento objekt bude použit později při vytváření kroků kanálu.
 
 ```python
@@ -108,7 +109,7 @@ output_data1 = PipelineData(
 > Zachování mezilehlých dat mezi jednotlivými kroky kanálu je také možné u třídy Public Preview [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) . Příklad kódu, který používá `OutputFileDatasetConfig` třídu, najdete v tématu Postup [vytvoření dvou kroků kanálu ml](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).
 
 > [!TIP]
-> Nahrávat pouze soubory, které jsou relevantní pro úlohu. Jakékoli změny v souborech v adresáři dat se zobrazí jako důvod pro opětovné spuštění kroku při příštím spuštění kanálu i v případě, že je parametr znovu použit. 
+> Nahrávejte pouze soubory související s danou úlohou. Jakékoli změny v souborech v adresáři dat se zobrazí jako důvod pro opětovné spuštění kroku při příštím spuštění kanálu i v případě, že je parametr znovu použit. 
 
 ## <a name="set-up-a-compute-target"></a>Nastavení cíle výpočtů
 
@@ -116,7 +117,7 @@ output_data1 = PipelineData(
 V Azure Machine Learning pojem __výpočetní__ prostředí (neboli __cíl výpočetní__ služby) odkazuje na počítače nebo clustery, které provádějí výpočetní kroky v kanálu Machine Learning.   Seznamte se s [výpočetními cíli pro školení modelů](concept-compute-target.md#train) pro úplný seznam cílových výpočetních cílů a [vytvořte výpočetní cíle](how-to-create-attach-compute-studio.md) pro vytvoření a připojení k pracovnímu prostoru.   Proces vytvoření a připojení cíle výpočtů je stejný, bez ohledu na to, jestli provádíte školení modelu nebo spustíte krok kanálu. Po vytvoření a připojení cíle výpočetní služby použijte `ComputeTarget` objekt v [kroku kanálu](#steps).
 
 > [!IMPORTANT]
-> V rámci vzdálených úloh není podporováno provádění operací správy na cílech výpočtů. Vzhledem k tomu, že kanály strojového učení se odesílají jako Vzdálená úloha, nepoužívejte v rámci kanálu operace správy pro výpočetní cíle.
+> Provádění operací správy cílových výpočetních objektů se nepodporuje ze vzdálených úloh. Vzhledem k tomu, že se kanály strojového učení odesílají jako vzdálené úlohy, nepoužívejte v kanálu operace správy cílových výpočetních objektů.
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning COMPUTE
 

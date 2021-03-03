@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55de24975dadf27293f305611c6ba07522e8aa90
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a9024bc9fbd460f403db2da8a65af1e9bd2e771b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417182"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645612"
 ---
 # <a name="introduction-to-active-directory-service-accounts"></a>Seznámení s účty služby Active Directory
 
@@ -34,7 +34,7 @@ Na základě vašeho případu použití můžete použít účet spravované sl
 
 ### <a name="group-msa-accounts"></a>Skupinové účty MSA
 
-[Skupinové účty spravované služby](service-accounts-group-managed.md) (účty gMSA) používejte, kdykoli je to možné pro služby běžící v místním prostředí. Účty gMSA poskytují řešení s jedinou identitou pro službu spuštěnou v serverové farmě nebo za nástroj pro vyrovnávání zatížení sítě. Lze je také použít pro službu běžící na jednom serveru. [Účty gMSA mají specifické požadavky, které je třeba splnit.](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
+[Skupinové účty spravované služby](service-accounts-group-managed.md) (účty gMSA) používejte, kdykoli je to možné pro služby běžící v místním prostředí. Účty gMSA poskytují řešení s jedinou identitou pro službu spuštěnou v serverové farmě nebo za nástroj pro vyrovnávání zatížení sítě. Lze je také použít pro službu běžící na jednom serveru. [Účty gMSA mají specifické požadavky, které je třeba splnit.](/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
 
 ### <a name="standalone-msa-accounts"></a>Samostatné účty MSA
 
@@ -67,11 +67,11 @@ Místní uživatelský účet (formát názvu: ".\UserName") existuje pouze v da
 | Kritéria| gMSA| sMSA| Účet počítače| Uživatelský účet |
 | - | - | - | - | - |
 | Aplikace běží na jednom serveru.| Ano| Ano. Pokud je to možné, použijte gMSA| Ano. Pokud je to možné, použijte MSA| Ano. Pokud je to možné, použijte MSA. |
-| Aplikace běží na více serverech| Yes| No| No. Účet je svázán se serverem| Ano. Pokud je to možné, použijte MSA. |
-| Spuštění aplikace za nástroji pro vyrovnávání zatížení| Yes| No| No| Yes. Použijte jenom v případě, že nemůžete použít gMSA. |
-| Aplikace běží na Windows serveru 2008 R2.| No| Ano| Ano. Pokud je to možné, použijte MSA.| Ano. Pokud je to možné, použijte MSA. |
+| Aplikace běží na více serverech| Ano| Ne| No. Účet je svázán se serverem| Ano. Pokud je to možné, použijte MSA. |
+| Spuštění aplikace za nástroji pro vyrovnávání zatížení| Ano| Ne| No| Yes. Použijte jenom v případě, že nemůžete použít gMSA. |
+| Aplikace běží na Windows serveru 2008 R2.| Ne| Ano| Ano. Pokud je to možné, použijte MSA.| Ano. Pokud je to možné, použijte MSA. |
 | Běží na Windows Serveru 2012.| Ano| Ano. Pokud je to možné, použijte gMSA| Ano. Pokud je to možné, použijte MSA| Ano. Pokud je to možné, použijte MSA. |
-| Požadavek na omezení účtu služby na jeden server| No| Ano| Ano. Pokud je to možné, použijte sMSA| No. |
+| Požadavek na omezení účtu služby na jeden server| Ne| Ano| Ano. Pokud je to možné, použijte sMSA| No. |
 
 
  
@@ -138,4 +138,3 @@ Přečtěte si následující články týkající se zabezpečení účtů slu�
 
 * [Řízení účtů místních služeb](service-accounts-govern-on-premises.md)
 
- 

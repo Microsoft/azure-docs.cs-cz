@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: b13d03f05b7225a1c88f6b10b454749bd7b42477
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4cb3965d359980856c238cd563ed8b761754660b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588338"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667743"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Metriky Azure dosah v Azure Monitor
 
@@ -62,7 +62,7 @@ Chcete-li se seznámit s tím, jak používat část metriky v Azure Portal Pře
 
 Následující tabulka obsahuje seznam metrik, které lze prozkoumat v Azure Portal:
 
-| Název metriky | Obor názvů metriky | Typ agregace | Description |
+| Název metriky | Obor názvů metriky | Typ agregace | Popis |
 | ------------------- | ------------------- | ------------------- | ----------------- |
 | Kontrola zrušena | Automatizovaná kontrola | Sum <br> Počet | Agregovat zrušené kontroly zdrojů dat za časové období |
 | Kontrola dokončena | Automatizovaná kontrola | Sum <br> Počet | Agregovat dokončené kontroly zdrojů dat za časové období |
@@ -83,7 +83,7 @@ Postupujte podle pokynů pro vytvoření nastavení diagnostiky pro váš účet
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png" alt-text="Snímek obrazovky, který ukazuje přiřazení účtu úložiště pro diagnostický protokol." lightbox="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png":::
 
-Počkejte až 15 minut, než začnete přijímat protokoly v nově vytvořeném účtu úložiště. [Viz uchovávání dat a schéma protokolů prostředků v Azure Storage účet](../azure-monitor/platform/resource-logs.md#send-to-azure-storage). Po nakonfigurování diagnostických protokolů se události nasměrují do účtu úložiště.
+Počkejte až 15 minut, než začnete přijímat protokoly v nově vytvořeném účtu úložiště. [Viz uchovávání dat a schéma protokolů prostředků v Azure Storage účet](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage). Po nakonfigurování diagnostických protokolů se události nasměrují do účtu úložiště.
 
 ### <a name="scanstatuslogevent"></a>ScanStatusLogEvent
 

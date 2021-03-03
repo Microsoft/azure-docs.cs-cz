@@ -2,18 +2,18 @@
 title: Rozšířená podpora životního cyklu pro Red Hat Enterprise Linux
 description: Další informace o přidání podpory pro rozšíření Red Hat Enterprise Extended životní cyklus
 author: mathapli
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: redhat
+ms.collection: linux
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: mathapli
-ms.reviewer: cynthn
-ms.openlocfilehash: fd36d365eb02819352bc14caf9d8e258a8663c70
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 703732725ae7215d3ff59ad92a4c171a86251c20
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861392"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677197"
 ---
 # <a name="red-hat-enterprise-linux-rhel-extended-lifecycle-support"></a>Rozšířená podpora životního cyklu Red Hat Enterprise Linux (RHEL)
 Tento článek poskytuje informace o podpoře rozšířeného životního cyklu pro Image Red Hat Enterprise:

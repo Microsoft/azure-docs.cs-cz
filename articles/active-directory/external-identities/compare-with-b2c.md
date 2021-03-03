@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 10/23/2020
+ms.date: 03/02/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6be0720b7eafb251b262d5cd182bdf06e201402d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 78fd91e2ba7badb1936b8603c8ed089130b29ffb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173069"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644061"
 ---
 # <a name="what-are-external-identities-in-azure-active-directory"></a>Co jsou externí identity v Azure Active Directory?
 
@@ -27,7 +27,7 @@ S externími identitami v Azure AD můžete uživatelům mimo vaši organizaci u
 
 U externích identit Azure AD se u vaší organizace méně zaměřuje na vztah uživatele a další informace o tom, jak se uživatel chce přihlásit k vašim aplikacím a prostředkům. V rámci této architektury Azure AD podporuje řadu scénářů od spolupráce B2B (Business-to-Business) pro přístup ke správě pro aplikace pro spotřebitele, zákazníky a občany (z firmy na zákazníka nebo B2C).
 
-- **Sdílejte své aplikace a prostředky pomocí externích uživatelů (spolupráce B2B)**. Pozvání externích uživatelů do vlastního tenanta jako "host" uživatele, ke kterým můžete přiřadit oprávnění (pro autorizaci) a současně jim umožnit použití jejich stávajících přihlašovacích údajů (pro ověřování). Uživatelé se přihlásí ke sdíleným prostředkům pomocí jednoduchého procesu pozvání a uplatnění se svým pracovním, školním nebo jiným e-mailovým účtem. Můžete také použít [správu nároků Azure AD](../governance/entitlement-management-overview.md) ke konfiguraci zásad, které [spravují přístup pro externí uživatele](../governance/entitlement-management-external-users.md#how-access-works-for-external-users). A teď s dostupností [uživatelských toků samoobslužného přihlašování (Preview)](self-service-sign-up-overview.md)můžete dovolit externím uživatelům zaregistrovat se k aplikacím sami. Prostředí je možné přizpůsobit tak, aby umožňovalo registraci pomocí pracovní, školní nebo sociální identity (například Google nebo Facebook). Během procesu registrace můžete také shromažďovat informace o uživateli. Další informace najdete v [dokumentaci k Azure AD B2B](index.yml).
+- **Sdílejte své aplikace a prostředky pomocí externích uživatelů (spolupráce B2B)**. Pozvání externích uživatelů do vlastního tenanta jako "host" uživatele, ke kterým můžete přiřadit oprávnění (pro autorizaci) a současně jim umožnit použití jejich stávajících přihlašovacích údajů (pro ověřování). Uživatelé se přihlásí ke sdíleným prostředkům pomocí jednoduchého procesu pozvání a uplatnění se svým pracovním, školním nebo jiným e-mailovým účtem. Můžete také použít [správu nároků Azure AD](../governance/entitlement-management-overview.md) ke konfiguraci zásad, které [spravují přístup pro externí uživatele](../governance/entitlement-management-external-users.md#how-access-works-for-external-users). A teď s dostupností [uživatelských toků samoobslužné registrace](self-service-sign-up-overview.md)můžete uživatelům dovolit, aby si mohli zaregistrovat vlastní aplikace. Prostředí je možné přizpůsobit tak, aby umožňovalo registraci pomocí pracovní, školní nebo sociální identity (například Google nebo Facebook). Během procesu registrace můžete také shromažďovat informace o uživateli. Další informace najdete v [dokumentaci k Azure AD B2B](index.yml).
 
 - **Sestavování cest uživatelů pomocí řešení pro správu identit z bílého popisku pro aplikace zaměřené na uživatele a zákazníky (Azure AD B2C)**. Pokud jste podnikem nebo vývojářem vytváření zákaznických aplikací, můžete škálovat na miliony spotřebitelů, zákazníků nebo občanů pomocí Azure AD B2C. Vývojáři můžou Azure AD používat jako plně funkční systém pro správu zákaznických identit a přístupu (CIAM) pro své aplikace. Zákazníci se můžou přihlásit pomocí identity, kterou už vytvořili (například Facebook nebo Gmail). Pomocí Azure AD B2C můžete plně přizpůsobovat a řídit, jak se zákazníci při používání vašich aplikací registrují, přihlásí a spravují své profily. Další informace najdete v dokumentaci k [Azure AD B2C](../../active-directory-b2c/index.yml).
 

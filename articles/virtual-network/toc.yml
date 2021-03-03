@@ -99,6 +99,8 @@
           href: ipv6-public-ip-address-prefix.md
         - name: Předvolba směrování
           href: routing-preference-overview.md
+        - name: Neměřená priorita směrování
+          href: routing-preference-unmetered.md
         - name: Standardní hodnoty zabezpečení pro veřejné IP adresy
           href: public-ip-security-baseline.md
     - name: Zabezpečení
@@ -274,6 +276,10 @@
                       href: configure-routing-preference-virtual-machine-powershell.md
                     - name: Azure CLI
                       href: configure-routing-preference-virtual-machine-cli.md
+                - name: Konfigurace společné předvolby směrování pro virtuální počítač
+                  href: routing-preference-mixed-network-adapter-portal.md
+                - name: Konfigurace předvolby směrování pro cluster AKS
+                  href: routing-preference-azure-kubernetes-service-cli.md
     - name: Zabezpečení
       items:
         - name: Filtrování provozu sítě

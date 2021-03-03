@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: b62095a3dc48480d8b1d33328d2d0dc25470d763
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 78971a92f1815236bd4b360e8df01b02b4c40626
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461086"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677219"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Instalace ovladačů AMD GPU pro virtuální počítače řady N-Series s Windows
 
@@ -31,7 +31,13 @@ Základní specifikace, kapacity úložiště a podrobnosti o discích najdete v
 
 | Operační systém | Ovladač |
 | -------- |------------- |
-| Windows 10 Enterprise multi-session – Build 1903 <br/><br/>Windows 10 – Build 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. q 1.17](https://download.microsoft.com/download/d/e/f/def0fb44-15ab-4b83-959a-8094eb9d0dfe/AMD-Azure-NVv4-Driver-20Q1-Hotfix3.exe) (. exe) |
+| Windows 10 Enterprise multi-session – Build 1909 <br/><br/>Windows 10 – Build 1909<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. Q4](https://download.microsoft.com/download/f/1/6/f16e6275-a718-40cd-a366-9382739ebd39/AMD-Azure-NVv4-Driver-20Q4.exee) (. exe) |
+
+ > [!NOTE]
+   >  Pokud používáte Build 1903/1909, možná budete muset aktualizovat následující zásady skupiny pro zajištění optimálního výkonu. Tyto změny nejsou potřeba pro žádná další sestavení Windows.
+   >  
+   >  [Konfigurace počítače->zásady – >nastavení systému Windows – >Šablony pro správu->součásti systému Windows – >Vzdálená plocha – >Hostitel relace vzdálené plochy->prostředí vzdálené plochy] nastavte zásadu [použít pro připojení ke vzdálené ploše ovladač zobrazovací jednotka WDDM] k zakázání.
+   >  
 
 
 ## <a name="driver-installation"></a>Instalace ovladače
@@ -46,7 +52,7 @@ Základní specifikace, kapacity úložiště a podrobnosti o discích najdete v
 
 ## <a name="verify-driver-installation"></a>Ověřit instalaci ovladače
 
-Instalaci ovladače můžete ověřit v Device Manager. Následující příklad ukazuje úspěšnou konfiguraci karty Radeon Instinct MI25 na virtuálním počítači Azure NVv4.
+Instalaci ovladače můžete ověřit v Správce zařízení. Následující příklad ukazuje úspěšnou konfiguraci karty Radeon Instinct MI25 na virtuálním počítači Azure NVv4.
 <br />
 
 ![Snímek obrazovky, který zobrazuje úspěšnou konfiguraci karty Instinct MI25 na virtuálním počítači Azure NVv4.](./media/n-series-amd-driver-setup/device-manager.png)

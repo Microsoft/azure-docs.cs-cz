@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 92658584030fa83da067eceab391d9bba2f034c0
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 203abe2b6def478dc1747dd4ce638b5b62707612
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392295"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659218"
 ---
 # <a name="create-external-stream-transact-sql"></a>VYTVOŘIT externí datový proud (Transact-SQL)
 
@@ -27,7 +27,7 @@ Azure SQL Edge aktuálně podporuje jenom následující zdroje dat jako vstupy 
 | Typ zdroje dat | Vstup | Výstup | Popis |
 |------------------|-------|--------|------------------|
 | Centrum Azure IoT Edge | Y | Y | Zdroj dat pro čtení a zápis streamovaná data do centra Azure IoT Edge. Další informace najdete v tématu [IoT Edge hub](../iot-edge/iot-edge-runtime.md#iot-edge-hub).|
-| SQL Database | N | Y | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. Databáze může být místní databáze ve službě Azure SQL Edge nebo Vzdálená databáze ve SQL Server nebo Azure SQL Database.|
+| Databáze SQL | N | Y | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. Databáze může být místní databáze ve službě Azure SQL Edge nebo Vzdálená databáze ve SQL Server nebo Azure SQL Database.|
 | Kafka | Y | N | Zdroj dat pro čtení dat streamování z tématu Kafka. Podpora Kafka není k dispozici pro ARM64 verze Azure SQL Edge.|
 
 
@@ -94,12 +94,12 @@ WITH  ( <with_options> )
 
 - [DATA_SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql/)
 - [FILE_FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql/)
-- **Location** : Určuje název skutečných dat nebo umístění ve zdroji dat. 
+- **Location**: Určuje název skutečných dat nebo umístění ve zdroji dat. 
    - V případě objektů Edge nebo Kafka datových proudů určuje umístění název centra Edge nebo Kafka pro čtení nebo zápis do.
    - Pro objekty SQL Stream (SQL Server, Azure SQL Database nebo Azure SQL Edge) umístění Určuje název tabulky. Pokud je datový proud vytvořen ve stejné databázi a schématu jako cílová tabulka, stačí pouze název tabulky. V opačném případě musíte plně kvalifikovat (<název_databáze. schema_name. TABLE_NAME) název tabulky.
    - Pro umístění objektu služby Azure Blob Storage Stream odkazuje na vzor cesty, který se má použít uvnitř kontejneru objektů BLOB. Další informace o této funkci najdete v tématu (/articles/Stream-Analytics/Stream-Analytics-define-Outputs.MD # BLOB-Storage-and-Azure-Data-Lake-Gen2).
 
-- **INPUT_OPTIONS** : Zadejte možnosti jako páry klíč-hodnota pro služby, jako je například Kafka, IoT Edge centrum, které jsou vstupy pro streamování dotazů.
+- **INPUT_OPTIONS**: Zadejte možnosti jako páry klíč-hodnota pro služby, jako je například Kafka, IoT Edge centrum, které jsou vstupy pro streamování dotazů.
     - ODDÍLY: počet oddílů definovaných pro téma. Maximální počet oddílů, které lze použít, je omezen na 32.
       - Platí pro vstupní datové proudy Kafka
     - CONSUMER_GROUP: centra událostí a IoT omezují počet čtenářů v jedné skupině příjemců (na 5). Když necháte toto pole prázdné, použije se skupina příjemců $Default.
@@ -111,7 +111,7 @@ WITH  ( <with_options> )
     - OUT_OF_ORDER_EVENT_TOLERANCE: události se můžou po odeslání ze vstupu do dotazu streamování dorazit mimo pořadí. Tyto události se dají přijmout tak, jak jsou, nebo můžete zvolit, že se má nastavit období pro změnu uspořádání.
       - Vyhrazeno pro budoucí použití. Neplatí pro Azure SQL Edge.
         
-- **OUTPUT_OPTIONS** : Zadejte možnosti jako páry klíč-hodnota pro podporované služby, které jsou výstupem pro streamování dotazů. 
+- **OUTPUT_OPTIONS**: Zadejte možnosti jako páry klíč-hodnota pro podporované služby, které jsou výstupem pro streamování dotazů. 
   - REJECT_POLICY: DROP | Pokud dojde k chybám převodu dat, zkuste znovu nakládat zásady zpracování chyb dat. 
     - Platí pro všechny podporované výstupy. 
   - MINIMUM_ROWS:  
@@ -162,7 +162,7 @@ WITH
  
 CREATE EXTERNAL FILE FORMAT myFileFormat  
 WITH (  
-   FORMAT_TYPE = 'JSON', 
+   FORMAT_TYPE = JSON, 
 ); 
  
 CREATE EXTERNAL STREAM Stream_A  

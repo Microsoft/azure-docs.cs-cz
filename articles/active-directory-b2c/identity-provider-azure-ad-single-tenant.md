@@ -13,12 +13,12 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8a3cca7740adb6fa44b162e8c8740d1be1c7aa6b
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 9e315812f7e281cf281cad9e052ab4546bde05f9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953882"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645836"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Nastavení přihlášení pro konkrétní organizaci Azure Active Directory v Azure Active Directory B2C
 
@@ -44,7 +44,7 @@ Pokud chcete povolit přihlášení pro uživatele s účtem Azure AD z konkrét
 1. Ujistěte se, že používáte adresář, který obsahuje váš tenant organizace Azure AD (například contoso.com). V horní nabídce vyberte **Filtr adresář + odběr** a pak zvolte adresář, který obsahuje vašeho TENANTA Azure AD.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 1. Vyberte **Nová registrace**.
-1. Zadejte **název** vaší aplikace. Například `Azure AD B2C App`.
+1. Zadejte **název** vaší aplikace. Například, `Azure AD B2C App`.
 1. Přijměte výchozí výběr **účtů v tomto organizačním adresáři pouze** pro tuto aplikaci.
 1. Pro **identifikátor URI přesměrování** přijměte hodnotu **Web** a zadejte následující adresu URL na všechna malá písmena, kde `your-B2C-tenant-name` se nahradí názvem vašeho tenanta Azure AD B2C.
 
@@ -52,7 +52,7 @@ Pokud chcete povolit přihlášení pro uživatele s účtem Azure AD z konkrét
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
     ```
 
-    Například `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/oauth2/authresp`.
+    Například, `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/oauth2/authresp`.
 
 1. Vyberte **Zaregistrovat**. Poznamenejte si **ID aplikace (klienta)** pro použití v pozdějším kroku.
 1. Vyberte **certifikáty & tajných** kódů a pak vyberte **nový tajný klíč klienta**.
@@ -85,8 +85,8 @@ Pokud chcete získat `family_name` `given_name` deklarace identity a ze služby 
     https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
     ```
 
-    Například `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`.
-    Například `https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration`.
+    Například, `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`.
+    Například, `https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration`.
 
 1. Jako **ID klienta** zadejte ID aplikace, které jste si poznamenali dříve.
 1. Jako **tajný klíč klienta** zadejte tajný klíč klienta, který jste předtím nahráli.
@@ -126,7 +126,7 @@ Je potřeba uložit klíč aplikace, který jste vytvořili v tenantovi Azure AD
 1. V části **zásady** vyberte **Architektura prostředí identity**.
 1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
 1. Pro **Možnosti** vyberte možnost `Manual` .
-1. Zadejte **název** klíče zásad. Například `ContosoAppSecret`.  Předpona `B2C_1A_` se automaticky přidá do názvu klíče při jeho vytvoření, takže jeho odkaz v XML v následující části je *B2C_1A_ContosoAppSecret*.
+1. Zadejte **název** klíče zásad. Například, `ContosoAppSecret`.  Předpona `B2C_1A_` se automaticky přidá do názvu klíče při jeho vytvoření, takže jeho odkaz v XML v následující části je *B2C_1A_ContosoAppSecret*.
 1. Do **tajného klíče** zadejte tajný klíč klienta, který jste si poznamenali dříve.
 1. Pro **použití klíče** vyberte `Signature` .
 1. Vyberte **Vytvořit**.
@@ -195,7 +195,7 @@ Pokud chcete získat token z koncového bodu Azure AD, musíte definovat protoko
 1. Azure AD používá protokol OpenID Connect, takže se ujistěte, že hodnota pro **protokol** je `OpenIdConnect` .
 1. Nastavte hodnotu **metadat** na `https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration` , kde `tenant-name` je název vašeho tenanta Azure AD. Například `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`.
 1. Nastavte **client_id** na ID aplikace z registrace aplikace.
-1. V části **CryptographicKeys** aktualizujte hodnotu **StorageReferenceId** na název klíče zásad, který jste vytvořili dříve. Například `B2C_1A_ContosoAppSecret`.
+1. V části **CryptographicKeys** aktualizujte hodnotu **StorageReferenceId** na název klíče zásad, který jste vytvořili dříve. Například, `B2C_1A_ContosoAppSecret`.
 
 
 [!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]

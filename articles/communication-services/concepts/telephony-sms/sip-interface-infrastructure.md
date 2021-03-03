@@ -8,12 +8,12 @@ ms.author: bobazile
 ms.date: 02/09/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b258f2ef82e74073e3e4f1aa61b036d423c30300
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 432a9dab851bda65ecf8736d725b08c5e726ac16
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100422451"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659252"
 ---
 # <a name="sip-interface-infrastructure-requirements"></a>Požadavky na infrastrukturu rozhraní SIP 
 
@@ -31,7 +31,7 @@ Požadavky na infrastrukturu pro podporované sítě SBCs, domény a další po�
 |Kontroler ohraničení relace (mezipaměť softwarové sběrnice)|Podporované mezipaměť softwarové sběrnice. Další informace najdete v tématu [podporovaná SBCs](#supported-session-border-controllers-sbcs).|
 |Telefonní šachty připojené k mezipaměť softwarové sběrnice|Jeden nebo více zákabelů, které jsou připojené ke službě mezipaměť softwarové sběrnice. Na jednom konci se mezipaměť softwarové sběrnice připojuje ke službě Azure Communication Service prostřednictvím rozhraní SIP. MEZIPAMĚŤ softwarové sběrnice se může také připojit k entitám telefonního subsystému třetích stran, jako jsou PBXs, analogové telefonní adaptéry atd. Všechny možnosti připojení PSTN připojené k mezipaměť softwarové sběrnice budou fungovat. (Pro konfiguraci zástupných informací na mezipaměť softwarové sběrnice se podívejte na dodavatele mezipaměť softwarové sběrnice nebo poskytovatele vedení).|
 |Předplatné Azure|Předplatné Azure, které použijete k vytvoření prostředku ACS, a konfiguraci a připojení k mezipaměť softwarové sběrnice.|
-|Přístupový token služby Communication Services|Chcete-li volat, potřebujete platný přístupový token s `voip` oborem. Zobrazit [přístupové tokeny](https://docs.microsoft.com/azure/communication-services/concepts/identity-model#access-tokens)|
+|Přístupový token služby Communication Services|Chcete-li volat, potřebujete platný přístupový token s `voip` oborem. Zobrazit [přístupové tokeny](../identity-model.md#access-tokens)|
 |Veřejná IP adresa pro mezipaměť softwarové sběrnice|Veřejná IP adresa, která se dá použít pro připojení k mezipaměť softwarové sběrnice. V závislosti na typu mezipaměť softwarové sběrnice může mezipaměť softwarové sběrnice používat překlad adres (NAT).|
 |Plně kvalifikovaný název domény (FQDN) pro mezipaměť softwarové sběrnice|Plně kvalifikovaný název domény pro mezipaměť softwarové sběrnice, kde část domény doménového názvu FQDN neodpovídá registrovaným doménám ve vaší organizaci Microsoft 365 nebo Office 365. Další informace najdete v tématu [názvy domén mezipaměť softwarové sběrnice](#sbc-domain-names).|
 |Veřejné položky DNS pro mezipaměť softwarové sběrnice |Veřejné položky DNS mapují mezipaměť softwarové sběrnice plně kvalifikovaný název domény na veřejnou IP adresu. |
@@ -47,8 +47,8 @@ V následující tabulce jsou uvedeny příklady názvů DNS zaregistrovaných p
 
 |Název DNS|Dá se použít pro mezipaměť softwarové sběrnice plně kvalifikovaný název domény.|Příklady názvů plně kvalifikovaného názvu domény|
 |:--- |:--- |:--- |
-contoso.com|Yes|**Platné názvy:**<br/>sbc1.contoso.com<br/>ssbcs15.contoso.com<br/>europe.contoso.com|
-|contoso.onmicrosoft.com|No|Použití domén *. onmicrosoft.com se u názvů mezipaměť softwarové sběrnice nepodporuje.
+contoso.com|Ano|**Platné názvy:**<br/>sbc1.contoso.com<br/>ssbcs15.contoso.com<br/>europe.contoso.com|
+|contoso.onmicrosoft.com|Ne|Použití domén *. onmicrosoft.com se u názvů mezipaměť softwarové sběrnice nepodporuje.
 
 Pokud jste zákazníkem se sadou Office 365, název domény mezipaměť softwarové sběrnice nesmí souhlasit s registrací v doménách klienta sady Office 365. Níže je uveden příklad koexistence služeb Office 365 a Azure Communication Service:
 
@@ -187,7 +187,7 @@ Na nohy mezi procesorem cloudového média a aplikací ACS SDK se používá hed
 
 ## <a name="supported-session-border-controllers-sbcs"></a>Podporované řadiče pro ohraničení relací (SBCs)
 
-Probíhá certifikace. Mezitím můžou zákazníci použít [řadiče pro ohraničení certifikované relace](https://docs.microsoft.com/MicrosoftTeams/direct-routing-border-controllers). 
+Probíhá certifikace. Mezitím můžou zákazníci použít [řadiče pro ohraničení certifikované relace](/MicrosoftTeams/direct-routing-border-controllers). 
 
 ## <a name="next-steps"></a>Další kroky
 

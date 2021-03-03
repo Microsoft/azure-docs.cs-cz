@@ -10,17 +10,17 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: af42b83fc005397d4564b7570eedaff0305a8bc8
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 18282bbe902599c471775a853704e459ea44bac1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653536"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661622"
 ---
 ## <a name="prerequisites"></a>Požadavky
 Než začnete, nezapomeňte:
 
-- Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Nainstalovat [Node.js](https://nodejs.org/en/download/) aktivní LTS a verze LTS údržby (doporučeno 8.11.1 a 10.14.1).
 - Vytvořte prostředek služby Azure Communication Services. Podrobnosti najdete v tématu [vytvoření prostředku komunikace Azure](../../create-communication-resource.md). Pro tento rychlý Start budete muset **zaznamenat koncový bod prostředku** .
 - Vytvořte *tři* uživatele služby ACS a vydejte jim [token přístupu uživatele](../../access-tokens.md)k přístupovému tokenu. Nezapomeňte nastavit rozsah pro **chat** a **Poznamenejte si řetězec tokenu a také řetězec userId**. Úplná ukázka vytvoří vlákno se dvěma počátečními účastníky a pak přidá třetího účastníka do vlákna.
@@ -34,7 +34,7 @@ Nejdřív otevřete okno terminálu nebo příkazového řádku vytvořit nový 
 ```console
 mkdir chat-quickstart && cd chat-quickstart
 ```
-   
+
 Spusťte `npm init -y` , chcete-li vytvořit **package.js** pro soubor s výchozími nastaveními.
 
 ```console
@@ -48,7 +48,7 @@ Pomocí `npm install` příkazu nainstalujte níže uvedené klientské knihovny
 ```console
 npm install @azure/communication-common --save
 
-npm install @azure/communication-administration --save
+npm install @azure/communication-identity --save
 
 npm install @azure/communication-signaling --save
 
@@ -86,7 +86,7 @@ Vytvořte soubor v kořenovém adresáři vašeho projektu s názvem **client.js
 
 ### <a name="create-a-chat-client"></a>Vytvoření chatového klienta
 
-Pokud chcete ve webové aplikaci vytvořit chatovacího klienta, použijte **koncový bod** komunikační služby a **přístupový token** , který byl vygenerován jako součást požadavků. 
+Pokud chcete ve webové aplikaci vytvořit chatovacího klienta, použijte **koncový bod** komunikační služby a **přístupový token** , který byl vygenerován jako součást požadovaných kroků.
 
 Tokeny přístupu uživatele umožňují vytvářet klientské aplikace, které se přímo ověřují na komunikačních službách Azure. V tomto rychlém startu se nezabývá vytvořením úrovně služby pro správu tokenů pro vaši aplikaci chatu. Další informace o architektuře s přístupovými tokeny najdete v tématu věnovaném [konceptům](../../../concepts/chat/concepts.md) chatu a na [tokenech přístupu uživatele](../../access-tokens.md) .
 
@@ -122,10 +122,10 @@ V konzole nástroje pro vývojáře v prohlížeči byste měli vidět následuj
 Azure Communication Chat client created!
 ```
 
-## <a name="object-model"></a>Objektový model 
+## <a name="object-model"></a>Objektový model
 Následující třídy a rozhraní zpracovávají některé hlavní funkce služby Azure Communications Library chat pro JavaScript.
 
-| Název                                   | Description                                                                                                                                                                           |
+| Název                                   | Popis                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ChatClient | Tato třída je potřebná pro funkci chatu. Vytvoří se jeho instance s informacemi o předplatném a použije se k vytváření, získávání a odstraňování vláken. |
 | ChatThreadClient | Tato třída je potřebná pro funkci konverzačního vlákna. Získáte instanci prostřednictvím ChatClient a použijete ji k posílání, přijímání, aktualizaci a odstraňování zpráv, přidávání, odebírání a získávání uživatelů, odesílání oznámení o přečtení a čtení a čtení a k odběru událostí chatu. |
@@ -137,7 +137,7 @@ Použijte `createThread` metodu k vytvoření vlákna chatu.
 
 `createThreadRequest` slouží k popisu požadavku vlákna:
 
-- Použijte `topic` k poskytnutí tématu tomuto chatu; Téma lze aktualizovat poté, co je vlákno konverzace vytvořeno pomocí `UpdateThread` funkce. 
+- Slouží `topic` k poskytnutí tématu tomuto chatu. Témata lze aktualizovat po vytvoření vlákna konverzace pomocí `UpdateThread` funkce.
 - Slouží `participants` k vypsání účastníků, kteří mají být přidáni do konverzačního vlákna.
 
 Po vyřešení `createChatThread` Metoda vrátí hodnotu `CreateChatThreadResponse` . Tento model obsahuje `chatThread` vlastnost, kde můžete získat přístup k `id` nově vytvořenému vláknu. Pak můžete použít `id` k získání instance `ChatThreadClient` . `ChatThreadClient`Pak lze použít k provedení operace v rámci vlákna, jako je například odesílání zpráv nebo výpis účastníků.
@@ -203,7 +203,7 @@ Použijte `sendMessage` metodu k odeslání zprávy chatu k vláknu, které jste
 
 `sendMessageOptions` Popisuje volitelná pole žádosti o zprávu chatu:
 
-- Slouží `priority` k zadání úrovně priority zprávy chatu, jako je například Normal nebo high; tuto vlastnost lze použít k tomu, aby uživatel příjemce ve vaší aplikaci upozornil na zprávu nebo spustil vlastní obchodní logiku.   
+- Slouží `priority` k zadání úrovně priority zprávy chatu, například Normal nebo high. Tato vlastnost se dá použít k zobrazení indikátoru uživatelského rozhraní pro uživatele příjemce ve vaší aplikaci, aby se mohla zobrazit zpráva nebo spustit vlastní obchodní logiku.
 - Slouží `senderDisplayName` k zadání zobrazovaného jména odesílatele.
 
 Odpověď `sendChatMessageResult` obsahuje ID, které je jedinečným identifikátorem této zprávy.
@@ -246,7 +246,7 @@ chatClient.on("chatMessageReceived", (e) => {
 Přidejte tento kód místo `<RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>` komentáře v **client.js**.
 Aktualizujte kartu prohlížeče. v konzole nástroje by se měla zobrazit zpráva `Notification chatMessageReceived` .
 
-Alternativně můžete načíst zprávy konverzace pomocí cyklického dotazování `listMessages` metody v určených intervalech. 
+Alternativně můžete načíst zprávy konverzace pomocí cyklického dotazování `listMessages` metody v určených intervalech.
 
 ```JavaScript
 

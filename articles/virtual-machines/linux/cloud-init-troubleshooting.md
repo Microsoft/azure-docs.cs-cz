@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 6412036e3f16e2efb3bbf6669f6a31e9dc6e3584
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a18899ffc6b19be6226d9e0a3efd9a9519434601
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89434635"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666218"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>Řešení potíží se zřizováním virtuálních počítačů pomocí cloudu – init
 
@@ -58,7 +58,7 @@ I když je virtuální počítač spuštěný, budete potřebovat protokoly z vi
 
 - [Sériová konzola](../troubleshooting/serial-console-grub-single-user-mode.md)
 
-- Před vytvořením virtuálního počítače [Povolte diagnostiku spouštění](./tutorial-monitor.md#enable-boot-diagnostics) a pak je [Zobrazte](./tutorial-monitor.md#view-boot-diagnostics) během spouštění.
+- Před vytvořením virtuálního počítače [Povolte diagnostiku spouštění](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#enable-boot-diagnostics) a pak je [Zobrazte](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#view-boot-diagnostics) během spouštění.
 
 - [Spuštěním AZ VM oprava](../troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands.md) připojte a připojte disk s operačním systémem, který vám umožní shromáždit tyto protokoly:
 ```bash
@@ -133,4 +133,4 @@ Nejedná se o každé selhání v Cloud-init, které způsobí závažné selhá
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud stále nemůžete izolovat, proč Cloud-init nespouštěla konfiguraci, je nutné pozorovat přesněji na to, co se děje v každé fázi Cloud-init a kdy se moduly spouštějí. Další informace najdete v tématu [začnete hlouběji do konfigurace Cloud-init](./cloud-init-deep-dive.md) . 
+Pokud stále nemůžete izolovat, proč Cloud-init nespouštěla konfiguraci, je nutné pozorovat přesněji na to, co se děje v každé fázi Cloud-init a kdy se moduly spouštějí. Další informace najdete v tématu [začnete hlouběji do konfigurace Cloud-init](./cloud-init-deep-dive.md) .

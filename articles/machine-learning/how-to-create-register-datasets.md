@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 39973fe8c15364dc214392985cecd8b8bc7834ed
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 9a50d8402515cb7aafa9a1b02c8b8c18412f6618
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878201"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659388"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Vytváření datových sad služby Azure Machine Learning
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak vytvořit Azure Machine Learning datové sady 
 
 Vytvořením datové sady vytvoříte odkaz na umístění zdroje dat společně s kopií jeho metadat. Vzhledem k tomu, že data zůstanou ve svém stávajícím umístění, nebudete mít žádné dodatečné náklady na úložiště a nebudete mít na paměti integritu vašich zdrojů dat. Také jsou laxně vytvářená vyhodnocovány datové sady, což pomáhá zrychlit výkon pracovního postupu. Můžete vytvořit datové sady z úložišť dat, veřejných adres URL a [Azure Open DataSet](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md).
 
-Pro prostředí s nízkým kódem můžete [pomocí Azure Machine Learning studia vytvořit Azure Machine Learning datové sady.](how-to-connect-data-ui.md#create-datasets)
+Pro prostředí s nízkým kódem můžete [pomocí sady Azure Machine Learning Studio vytvořit Azure Machine Learning datové sady.](how-to-connect-data-ui.md#create-datasets)
 
 S Azure Machine Learningmi datovými sadami můžete:
 
@@ -82,7 +82,7 @@ Pomocí TabularDatasets můžete zadat časové razítko ze sloupce v datech neb
 Vytvořte TabularDataset pomocí [sady Python SDK](#create-a-tabulardataset) nebo [Azure Machine Learning studia](how-to-connect-data-ui.md#create-datasets).
 
 >[!NOTE]
-> Pracovní postupy AutoML vygenerované pomocí nástroje Azure Machine Learning Studio aktuálně podporují jenom TabularDatasets. 
+> [Automatizované](concept-automated-ml.md) WORKFLOWy ml vygenerované pomocí nástroje Azure Machine Learning Studio aktuálně podporují jenom TabularDatasets. 
 
 ## <a name="access-datasets-in-a-virtual-network"></a>Přístup k datovým sadám ve virtuální síti
 
@@ -90,15 +90,20 @@ Pokud je váš pracovní prostor ve virtuální síti, musíte nakonfigurovat da
 
 <a name="datasets-sdk"></a>
 
-## <a name="create-datasets"></a>Vytvoření datových sad
+## <a name="create-datasets-from-datastores"></a>Vytvoření datových sad z úložišť dat
 
-Aby data mohla být přístupná pomocí Azure Machine Learning, musí být datové sady vytvořené z cest v [Azure datastores](how-to-access-data.md) nebo adres URL veřejných webů. 
+Aby data mohla být přístupná pomocí Azure Machine Learning, musí být datové sady vytvořené z cest v [Azure Machine Learning úložiště](how-to-access-data.md) dat nebo webových adres URL. 
 
-Vytvoření datových sad z [úložiště Azure DataStore](how-to-access-data.md) pomocí sady Python SDK:
+> [!TIP] 
+> Datové sady můžete vytvořit přímo z adres URL úložiště s přístupem k datům založeným na identitě. Další informace najdete v [připojení k úložišti pomocí přístupu k datům na základě identity (Preview)](how-to-identity-based-data-access.md) .<br><br>
+Tato funkce je [experimentální](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) funkcí ve verzi Preview a může se kdykoli změnit. 
 
-1. Ověřte, že máte `contributor` nebo máte `owner` přístup k zaregistrovanému úložišti dat Azure.
+ 
+Vytvoření datových sad z úložiště dat pomocí sady Python SDK:
 
-2. Vytvořte datovou sadu pomocí odkazů na cesty v úložišti dat. Datovou sadu můžete vytvořit z více cest ve více úložišti dat. Neexistuje žádné omezení počtu souborů nebo velikosti dat, ze kterých lze vytvořit datovou sadu. 
+1. Ověřte, že máte `contributor` nebo máte `owner` přístup k základní službě úložiště registrovaného Azure Machine Learningho úložiště dat. [V Azure Portal Ověřte oprávnění účtu úložiště](../role-based-access-control/check-access.md).
+
+1. Vytvořte datovou sadu pomocí odkazů na cesty v úložišti dat. Datovou sadu můžete vytvořit z více cest ve více úložišti dat. Neexistuje žádné omezení počtu souborů nebo velikosti dat, ze kterých lze vytvořit datovou sadu. 
 
 > [!NOTE]
 > Pro každou cestu k datům se do služby úložiště pošle pár požadavků, aby se zkontrolovalo, jestli odkazuje na soubor nebo složku. Tato režie může vést ke snížení výkonu nebo selhání. Datová sada odkazující na jednu složku s 1000 soubory uvnitř se považuje za odkazování na jednu cestu k datům. Pro zajištění optimálního výkonu doporučujeme vytvořit datovou sadu odkazující na méně než 100 cest v úložišti dat.
@@ -169,7 +174,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-|Indexovacím|PassengerId (ID pasažéra)|Zachované|Pclass|Name|Sex|Věk|SibSp|Parch|Ticket (Lístek)|Vozov|Posádk|Nastoupilo
+|Indexovacím|PassengerId (ID pasažéra)|Zachované|Pclass|Název|Sex|Věk|SibSp|Parch|Ticket (Lístek)|Vozov|Posádk|Nastoupilo
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|Ne|3|Braund, Mr. Owen Harris|male (muž)|22,0|1|0|A/5 21171|7,2500||S
 1|2|Ano|1|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1|0|POČÍTAČ 17599|71,2833|C85|C
@@ -203,7 +208,7 @@ Pro TabularDatasets použijte [`to_pandas_dataframe()`](/python/api/azureml-core
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-|Indexovacím|PassengerId (ID pasažéra)|Zachované|Pclass|Name|Sex|Věk|SibSp|Parch|Ticket (Lístek)|Vozov|Posádk|Nastoupilo
+|Indexovacím|PassengerId (ID pasažéra)|Zachované|Pclass|Název|Sex|Věk|SibSp|Parch|Ticket (Lístek)|Vozov|Posádk|Nastoupilo
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|Ne|3|Braund, Mr. Owen Harris|male (muž)|22,0|1|0|A/5 21171|7,2500||S
 1|2|Ano|1|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1|0|POČÍTAČ 17599|71,2833|C85|C
@@ -261,7 +266,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 Informace o použití těchto šablon naleznete v tématu [použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning](how-to-create-workspace-template.md).
 
 
-## <a name="create-datasets-with-azure-open-datasets"></a>Vytváření datových sad pomocí otevřených datových sad Azure
+## <a name="create-datasets-from-azure-open-datasets"></a>Vytváření datových sad z Azure Open DataSet
 
 [Otevřené datové sady v Azure](https://azure.microsoft.com/services/open-datasets/) jsou spravované veřejné datové sady, které můžete použít k přidání funkcí specifických pro konkrétní scénář do řešení Machine Learning pro přesnější modely. Datové sady zahrnují data z veřejných domén pro počasí, sčítání, svátky, veřejné zabezpečení a umístění, které vám pomůžou naučit modely strojového učení a rozšířit prediktivní řešení. Otevřené datové sady jsou v cloudu na Microsoft Azure a jsou součástí sady SDK i sady Studio.
 
@@ -269,7 +274,7 @@ Naučte se vytvářet [Azure Machine Learning datové sady z Azure Open DataSets
 
 ## <a name="train-with-datasets"></a>Trénování s datovými sadami
 
-Využijte své datové sady ve zkušebních experimentech Machine Learning pro školení modelů ML. [Další informace o tom, jak naučit s datovými sadami](how-to-train-with-datasets.md)
+Využijte své datové sady ve zkušebních experimentech Machine Learning pro školení modelů ML. [Přečtěte si další informace o tom, jak naučit s datovými sadami](how-to-train-with-datasets.md).
 
 ## <a name="version-datasets"></a>Datové sady verze
 

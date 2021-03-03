@@ -7,19 +7,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 02/23/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ad9bd8dec94660d94cf3a106d31dafdad06f47a8
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 85d00b393ad169764a2f26e324295308ef49d3ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584506"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646570"
 ---
-# <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurace chování relace v Azure Active Directory B2C
+# <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurace chování relace ve službě Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -29,7 +29,7 @@ S jednotným přihlašováním se uživatelé přihlásí jedním účtem a zís
 
 Když se uživatel poprvé přihlásí k aplikaci, Azure AD B2C trvá relaci založenou na souborech cookie. Po následné žádosti o ověření Azure AD B2C přečte a ověří relaci založenou na souborech cookie a vydá přístupový token bez vyzvání uživatele k opětovnému přihlášení. Pokud platnost relace na základě souborů cookie vyprší nebo se stala neplatnou, zobrazí se uživateli výzva k opětovnému přihlášení.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -73,7 +73,7 @@ Můžete nakonfigurovat chování Azure AD B2C relace, včetně:
 
 - **Doba života relace webové aplikace (minuty)** – doba, po kterou je soubor cookie relace Azure AD B2C uložený v prohlížeči uživatele po úspěšném ověření. Dobu života relace můžete nastavit na hodnotu od 15 do 720 minut.
 
-- **Časový limit relace webové aplikace** – určuje, jak je relace rozšířena nastavením doby života relace nebo nastavením zůstat přihlášení.
+- **Časový limit relace webové aplikace** – určuje, jak je relace rozšířena nastavením doba života relace nebo nastavením zůstat přihlášení (políčko zůstat přihlášeni).
   -  Označuje, že relace je rozšířená pokaždé, když uživatel provede ověřování na základě souborů cookie (výchozí).
   - **Absolutní** – označuje, že se uživatel bude nucen znovu ověřit po zadaném časovém období.
 
@@ -82,9 +82,7 @@ Můžete nakonfigurovat chování Azure AD B2C relace, včetně:
   - **Aplikace** – toto nastavení umožňuje udržovat uživatelskou relaci exkluzivně pro aplikaci, nezávisle na jiných aplikacích. Toto nastavení můžete například použít, pokud chcete, aby se uživatel přihlásil ke společnosti Contoso farmacie bez ohledu na to, jestli je uživatel už přihlášený k nákupům společnosti Contoso.
   - **Zásady** – toto nastavení umožňuje udržovat relaci uživatele výhradně pro uživatelský tok, a to nezávisle na aplikacích, které ji používají. Pokud se například uživatel už přihlásil a dokončil krok vícefaktorového ověřování (MFA), může se uživateli udělit přístup k několika částem aplikace s vyšším zabezpečením, pokud relace vázaná na tok uživatele nevyprší.
   - **Disabled** – toto nastavení vynutí, aby uživatel při každém spuštění zásady spouštěl celý tok uživatele.
-::: zone pivot="b2c-custom-policy"
-- **Zůstat přihlášeni** – prodlouží dobu života relace pomocí trvalého souboru cookie. Relace zůstane aktivní, jakmile uživatel zavře a znovu otevře prohlížeč. Relace se odvolá jenom v případě, že se uživatel odhlásí. Funkce Keep jsem přihlášená platí jenom pro přihlášení pomocí místních účtů. Funkce Keep jsem přihlášená má přednost před časem životnosti relace. Pokud je zapnutá funkce zůstat přihlášená a uživatel ji vybere, tato funkce určí, kdy vyprší platnost relace. 
-::: zone-end
+- **Zůstat přihlášeni (políčko zůstat přihlášeni)** – rozšiřuje dobu života relace pomocí trvalého souboru cookie. Pokud je tato funkce povolená a uživatel ji vybere, zůstane relace aktivní, i když uživatel zavře a znovu otevře prohlížeč. Relace se odvolá jenom v případě, že se uživatel odhlásí. Funkce políčko zůstat přihlášeni se vztahuje pouze na přihlášení pomocí místních účtů. Funkce políčko zůstat přihlášeni má přednost před životností relace.
 
 ::: zone pivot="b2c-user-flow"
 
@@ -112,12 +110,43 @@ Chcete-li změnit chování relace a konfigurace jednotného přihlašování, p
    <SessionExpiryInSeconds>86400</SessionExpiryInSeconds>
 </UserJourneyBehaviors>
 ```
+::: zone-end
 
 ## <a name="enable-keep-me-signed-in-kmsi"></a>Povolit možnost zůstat přihlášeni (políčko zůstat přihlášeni)
 
-Pro uživatele vaší webové a nativní aplikace, které mají místní účty v adresáři Azure Active Directory B2C (Azure AD B2C), můžete povolit funkci zůstat přihlášeni. Tato funkce uděluje přístup uživatelům vraceným do vaší aplikace bez výzvy k zadání uživatelského jména a hesla. Tento přístup se odvolá, když se uživatel odhlásí.
+Funkci políčko zůstat přihlášeni můžete povolit pro uživatele vaší webové a nativní aplikace, které mají v adresáři Azure AD B2C místní účty. Když tuto funkci povolíte, můžou uživatelé zůstat přihlášení, takže po zavření prohlížeče zůstane relace aktivní. Pak můžou prohlížeč znovu otevřít, aniž by se zobrazila výzva k opětovnému zadání uživatelského jména a hesla. Tento přístup se odvolá, když se uživatel odhlásí.
 
 ![Příklad přihlašovací stránky pro přihlášení, která zobrazuje zaškrtávací políčko zůstat přihlášeni](./media/session-behavior/keep-me-signed-in.png)
+
+
+::: zone pivot="b2c-user-flow"
+
+POLÍČKO zůstat přihlášeni je možné konfigurovat na úrovni jednotlivých uživatelských toků. Před povolením políčko zůstat přihlášeni pro toky uživatelů Vezměte v úvahu následující skutečnosti:
+
+- POLÍČKO zůstat přihlášeni se podporuje jenom pro **Doporučené** verze registrací a přihlašování (SUSI), přihlašování a uživatelských toků úprav profilů. Pokud aktuálně máte verze **Standard** nebo **Legacy Preview-v2** těchto uživatelských toků a chcete povolit políčko zůstat přihlášeni, budete muset vytvořit nové, **Doporučené** verze těchto uživatelských toků.
+- POLÍČKO zůstat přihlášeni se nepodporuje s resetováním hesla nebo uživatelskými toky pro registraci.
+- Pokud chcete povolit políčko zůstat přihlášeni pro všechny aplikace ve vašem tenantovi, doporučujeme povolit políčko zůstat přihlášeni pro všechny toky uživatelů ve vašem tenantovi. Vzhledem k tomu, že se uživatel může během relace zobrazit s více zásadami, je možné, že může dojít k tomu, že políčko zůstat přihlášeni není povolený, což by v relaci odebralo soubor cookie políčko zůstat přihlášeni.
+- POLÍČKO zůstat přihlášeni by neměl být povolený na veřejných počítačích.
+
+### <a name="configure-kmsi-for-a-user-flow"></a>Konfigurace políčko zůstat přihlášeni pro tok uživatele
+
+Povolení políčko zůstat přihlášeni pro tok uživatele:
+
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr**   a zvolte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+3.  ****   V levém horním rohu Azure Portal vyberte všechny služby a pak vyhledejte a vyberte **Azure AD B2C**.
+4. Vyberte **toky uživatelů (zásady)**.
+5. Otevřete uživatelský tok, který jste vytvořili dříve.
+6. Vyberte **vlastnosti**.
+
+7. V části  **chování relace** vyberte **Povolit možnost zůstat přihlášeni v relaci**. Vedle pole po **přihlášení k relaci (dny)** zadejte hodnotu od 1 do 90 a zadejte počet dní, po který může relace zůstat otevřená.
+
+
+   ![Povolit možnost zůstat přihlášeni v relaci](media/session-behavior/enable-keep-me-signed-in.png)
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 Uživatelé by tuto možnost neměli na veřejných počítačích povolit.
 

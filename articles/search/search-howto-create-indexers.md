@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 5381c12253f3f301099d469639cc75e390ebceff
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 596eca0d73ffc4a590fae9b346658a2c31a1d68c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100360954"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676469"
 ---
 # <a name="creating-indexers-in-azure-cognitive-search"></a>Vytváření indexerů v Azure Kognitivní hledání
 
@@ -155,7 +155,7 @@ Způsob, jakým indexer podporuje detekci změn, se liší podle zdroje dat:
 
 U rozsáhlých zátěží indexování také indexovací člen sleduje poslední dokument, který zpracoval, prostřednictvím interní "horní značky". Značka se nikdy nezveřejňuje v rozhraní API, ale interně indexer udržuje přehled o tom, kde se zastavil. Když indexování pokračuje, ať už prostřednictvím naplánovaného spuštění nebo volání na vyžádání, indexer odkazuje na horní značku, aby mohl pokračovat tam, kde skončil.
 
-Pokud potřebujete vymazat horní značku a znovu indexovat, můžete použít možnost [resetovat indexer](https://docs.microsoft.com/rest/api/searchservice/reset-indexer). Pro další selektivní opakované indexování použijte [resetování dovedností](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) nebo [resetování dokumentů](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-documents). Prostřednictvím rozhraní API pro resetování můžete vymazat vnitřní stav a také mezipaměť vyprázdnit, pokud jste povolili [přírůstkové obohacení](search-howto-incremental-index.md). Další informace a porovnání jednotlivých možností obnovení najdete v tématu [spuštění nebo resetování indexerů, dovedností a dokumentů](search-howto-run-reset-indexers.md).
+Pokud potřebujete vymazat horní značku a znovu indexovat, můžete použít možnost [resetovat indexer](/rest/api/searchservice/reset-indexer). Pro další selektivní opakované indexování použijte [resetování dovedností](/rest/api/searchservice/preview-api/reset-skills) nebo [resetování dokumentů](/rest/api/searchservice/preview-api/reset-documents). Prostřednictvím rozhraní API pro resetování můžete vymazat vnitřní stav a také mezipaměť vyprázdnit, pokud jste povolili [přírůstkové obohacení](search-howto-incremental-index.md). Další informace a porovnání jednotlivých možností obnovení najdete v tématu [spuštění nebo resetování indexerů, dovedností a dokumentů](search-howto-run-reset-indexers.md).
 
 ## <a name="know-your-data"></a>Znát data
 
@@ -165,7 +165,7 @@ Pro sloučení relačních dat do sady řádků byste měli vytvořit zobrazení
 
 Kromě plochých dat je důležité vyžádat si pouze data, která lze prohledávat. Hledaná data jsou alfanumerické. Kognitivní hledání nemůže prohledávat binární data v libovolném formátu, i když může extrahovat a odvodit textové popisy souborů obrázků (viz [rozšíření AI](cognitive-search-concept-intro.md)) a vytvořit prohledávatelný obsah. Podobně použití obohacení AI může velký text analyzovat modely přirozeného jazyka, aby bylo možné najít strukturu nebo relevantní informace a generovat nový obsah, který můžete přidat do vyhledávacího dokumentu.
 
-Vzhledem k tomu, že indexery neopravují problémy s daty, mohou být potřeba další formy čištění nebo manipulace s daty. Další informace najdete v dokumentaci k produktu [Azure Database](/azure/?product=databases).
+Vzhledem k tomu, že indexery neopravují problémy s daty, mohou být potřeba další formy čištění nebo manipulace s daty. Další informace najdete v dokumentaci k produktu [Azure Database](../index.yml?product=databases).
 
 ## <a name="know-your-index"></a>Znát váš index
 

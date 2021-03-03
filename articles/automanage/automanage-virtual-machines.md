@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 7772d57937393da1c48fa2658818d8a1a2b28a1f
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 1d3b2174df5dd83852ce120ec6693ae187a3e795
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550780"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643510"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage pro virtuální počítače
 
@@ -28,27 +28,47 @@ Tento článek obsahuje informace o službě Azure automanage pro virtuální po
 
 ## <a name="overview"></a>Přehled
 
-Azure automanage pro virtuální počítače je služba, která eliminuje nutnost zjišťovat, poznat, jak připojit a jak nakonfigurovat určité služby v Azure, které by mohly být pro váš virtuální počítač výhodné. Tyto služby vám pomůžou zlepšit spolehlivost, zabezpečení a správu pro virtuální počítače a považují se za služby Azure Best Practices, jako je například [azure Update Management](../automation/update-management/overview.md) a [Azure Backup](../backup/backup-overview.md) -pouze pár názvů.
+Azure automanage pro virtuální počítače je služba, která eliminuje nutnost zjišťovat, poznat, jak připojit a jak nakonfigurovat určité služby v Azure, které by mohly být pro váš virtuální počítač výhodné. Tyto služby se považují za služby Azure Best Practices a zvyšují spolehlivost, zabezpečení a správu virtuálních počítačů. Mezi ukázkové služby patří [Azure Update Management](../automation/update-management/overview.md) a [Azure Backup](../backup/backup-overview.md).
 
-Po připojení virtuálních počítačů k automatické správě Azure automaticky nakonfiguruje každou službu osvědčených postupů na Doporučené nastavení. Osvědčené postupy se pro jednotlivé služby liší. Příkladem může být Azure Backup, kde osvědčeným postupem může být vytvoření zálohy virtuálního počítače jednou denně a doba uchování po dobu šesti měsíců.
+Po připojení virtuálních počítačů k Azure automanage je každá služba osvědčených postupů nakonfigurovaná na doporučená nastavení. Osvědčené postupy se pro jednotlivé služby liší. Příkladem může být Azure Backup, kde osvědčeným postupem může být vytvoření zálohy virtuálního počítače jednou denně a doba uchování po dobu šesti měsíců.
 
-Azure automanage také automaticky monitoruje při zjištění posunu a oprav. To znamená, že pokud je váš virtuální počítač připojen do Azure automanage, nebudeme ho konfigurovat jenom na osvědčené postupy Azure, ale monitoruje váš počítač, aby se zajistilo, že bude nadále dodržovat tyto osvědčené postupy napříč celým životním cyklem. Pokud váš virtuální počítač posune nebo odliší od těchto postupů, my ho Opravme a nahrajeme váš počítač zpátky do požadovaného stavu.
-
-A konečně prostředí je neuvěřitelně jednoduché.
-
+Azure automanage také automaticky monitoruje při zjištění posunu a oprav. To znamená, že pokud je váš virtuální počítač připojen do Azure automanage, nebudeme ho konfigurovat jenom na osvědčené postupy Azure, ale monitoruje váš počítač, aby se zajistilo, že bude nadále dodržovat tyto osvědčené postupy napříč celým životním cyklem. Pokud váš virtuální počítač posune nebo odchyluje od těchto postupů (například pokud je služba offboarded), Opravme ji a odešleme váš počítač zpátky do požadovaného stavu.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Před tím, než se pokusíte povolit službu Azure na virtuálních počítačích, je třeba zvážit několik požadavků.
 
-- Jenom virtuální počítače s Windows serverem
-- Virtuální počítače musí být v podporované oblasti (viz odstavec níže).
-- Uživatel musí mít správná oprávnění (viz odstavec níže).
+- Podporované [verze Windows serveru](automanage-windows-server.md#supported-windows-server-versions) a [Linux distribuce](automanage-linux.md#supported-linux-distributions-and-versions)
+- Virtuální počítače musí být v podporované oblasti (viz níže).
+- Uživatel musí mít správná oprávnění (viz níže).
 - Automanage v tuto chvíli nepodporuje odběry izolovaného prostoru (sandbox).
 
-Je také důležité si uvědomit, že automanage podporuje jenom virtuální počítače s Windows, které jsou v těchto oblastech: Západní Evropa, Východní USA, Západní USA 2, Kanada – střed, Středozápadní USA, Japonsko – východ.
+### <a name="supported-regions"></a>Podporované oblasti
+Automanage podporuje pouze virtuální počítače, které jsou umístěny v následujících oblastech:
+* West Europe
+* Severní Evropa
+* Střední USA
+* East US
+* USA – východ 2
+* USA – západ
+* Západní USA 2
+* Střední Kanada
+* USA – středozápad
+* Středojižní USA
+* Japan East
+* Spojené království – jih
+* Austrálie – východ
+* Austrálie – jihovýchod
 
-Abyste mohli povolit autosprávu na virtuálních počítačích pomocí stávajícího účtu pro správu, musíte mít ve skupině prostředků, která obsahuje vaše virtuální počítače, roli **Přispěvatel** . Pokud povolujete autosprávu pomocí nového účtu pro autosprávu, budete potřebovat následující oprávnění k vašemu předplatnému: role **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatele** .
+### <a name="required-rbac-permissions"></a>Požadovaná oprávnění RBAC
+V závislosti na tom, jestli povolujete správu pomocí nového účtu pro správu, bude váš účet trochu různě odlišných rolí RBAC.
+
+Pokud povolujete možnost autospráva pomocí nového účtu pro autosprávu:
+* Role **vlastníka** v předplatných, která obsahují vaše virtuální počítače, _**nebo**_
+* Role **Správce přístupu** **přispěvatelů** a uživatelů na předplatných, která obsahují vaše virtuální počítače
+
+Pokud povolujete možnost automanage s existujícím účtem automanage:
+* Role **Přispěvatel** ve skupině prostředků, která obsahuje vaše virtuální počítače
 
 > [!NOTE]
 > Pokud chcete použít automanage na virtuálním počítači, který je připojený k pracovnímu prostoru v jiném předplatném, musíte mít oprávnění popsaná výše v každém předplatném.
@@ -57,11 +77,13 @@ Abyste mohli povolit autosprávu na virtuálních počítačích pomocí stávaj
 
 :::image type="content" source="media\automanage-virtual-machines\intelligently-onboard-services.png" alt-text="Inteligentně zaregistrované služby.":::
 
-V tématu Virtual Machines osvědčené postupy pro úplný seznam zúčastněných služeb Azure a také na jejich podporované konfigurační profily viz [Azure automanage](virtual-machines-best-practices.md) .
+Úplný seznam zúčastněných služeb Azure a také jejich podporované prostředí najdete v následujících tématech:
+- [Spravovat pro Linux](automanage-linux.md)
+- [Autospravovat pro Windows Server](automanage-windows-server.md)
 
  Do těchto zúčastněných služeb vás automaticky připojíme. Jsou zásadní pro náš dokument white paper k osvědčeným postupům, který najdete v našem [cloudovém rozhraní pro přijetí](/azure/cloud-adoption-framework/manage/azure-server-management).
 
-Pro všechny tyto služby budeme automaticky připínat, automaticky konfigurovat, monitorovat a opravovat, pokud se zjistí posun.
+U všech těchto služeb se automaticky připojíte, automaticky nakonfigurujete, sledujete a nasadíte, pokud se zjistí posun.
 
 
 ## <a name="enabling-automanage-for-vms-in-azure-portal"></a>Povolení automanage pro virtuální počítače v Azure Portal
@@ -70,33 +92,37 @@ V Azure Portal můžete povolit automanage na existujícím virtuálním počít
 
 Pokud pro virtuální počítač používáte službu automanage poprvé, můžete hledat v Azure Portal pro možnost **automanage – osvědčené postupy pro virtuální počítače Azure**. Klikněte na **Povolit na existujícím virtuálním počítači**, vyberte virtuální počítače, které chcete připojit, klikněte na **Vybrat**, klikněte na **Povolit** a Vy jste hotovi.
 
-Jediná doba, kterou možná budete potřebovat k interakci s tímto virtuálním počítačem za účelem správy těchto služeb, je v události, kterou jsme se pokusili opravit váš virtuální počítač, ale to se nepovedlo. Pokud jsme váš virtuální počítač úspěšně napravili, převedeme ho zpátky do dodržování předpisů, aniž by vás upozornili na vás.
+Jediná doba, kterou možná budete potřebovat k interakci s tímto virtuálním počítačem za účelem správy těchto služeb, je v události, kterou jsme se pokusili opravit váš virtuální počítač, ale to se nepovedlo. Pokud jsme váš virtuální počítač úspěšně napravili, převedeme ho zpátky do dodržování předpisů, aniž by vás upozornili na vás. Další podrobnosti najdete v tématu [stav virtuálních počítačů](#status-of-vms).
 
 
-## <a name="configuration-profiles"></a>Konfigurační profily
+## <a name="environment-configuration"></a>Konfigurace prostředí
 
-Pokud povolujete pro virtuální počítač možnost automanage, je vyžadován konfigurační profil. Základem této služby jsou konfigurační profily. Definují přesně to, které služby tyto počítače zařadí do a do určité míry, jakou mají konfigurace těchto služeb.
+Pokud povolujete pro virtuální počítač možnost automanage, je nutné prostředí. Základem této služby jsou prostředí. Definují, které služby jsou vaše počítače připojené k a v určitém rozsahu, který bude mít konfiguraci těchto služeb.
 
-### <a name="default-configuration-profiles"></a>Výchozí konfigurační profily
+### <a name="default-environments"></a>Výchozí prostředí
 
-K dispozici jsou dva konfigurační profily, které jsou aktuálně k dispozici.
+K dispozici jsou dvě prostředí v současnosti.
 
-- **Osvědčené postupy pro virtuální počítače Azure –** konfigurační profil pro vývoj a testování je určený pro vývojové a testovací počítače.
-- **Osvědčené postupy pro virtuální počítače Azure –** konfigurační profil pro produkční prostředí je určen pro produkční prostředí.
+- **Vývojové a testovací** prostředí je navržené pro vývoj a testování počítačů.
+- **Produkční** prostředí je pro produkční prostředí.
 
 Důvodem pro tento rozdíl je, že některé služby jsou doporučené na základě spuštěné úlohy. Například v produkčním počítači se automaticky připojíme k Azure Backup. Pro vývoj/testování počítačů se však služba zálohování nejedná o zbytečné náklady, protože počítače pro vývoj/testování obvykle mají nižší dopad na firmu.
 
-### <a name="customizing-a-configuration-profile-using-preferences"></a>Přizpůsobení konfiguračního profilu pomocí předvoleb
+### <a name="customizing-an-environment-using-preferences"></a>Přizpůsobení prostředí pomocí předvoleb
 
-Kromě standardních služeb, na které vás připravujeme, vám umožníme nakonfigurovat určitou podmnožinu předvoleb. Tyto preference jsou povolené v rámci různých možností konfigurace, které neporušily osvědčené postupy. V případě Azure Backup vám například umožní definovat četnost zálohování a den v týdnu, ve kterém se vyskytuje. Nebudeme ale  moct úplně vypnout Azure Backup.
-
-> [!NOTE]
-> V konfiguračním profilu pro vývoj/testování se virtuální počítač vůbec nezálohuje.
-
-Nastavení výchozího konfiguračního profilu můžete upravit pomocí předvoleb. [Tady](virtual-machines-custom-preferences.md)se dozvíte, jak vytvořit preference.
+Kromě standardních služeb, na které vás připravujeme, vám umožníme nakonfigurovat určitou podmnožinu předvoleb. Tyto předvolby jsou povolené v rámci různých možností konfigurace. V případě Azure Backup vám například umožní definovat četnost zálohování a den v týdnu, ve kterém se vyskytuje.
 
 > [!NOTE]
-> Pokud je povolená možnost automanage, nemůžete změnit konfigurační profil na VIRTUÁLNÍm počítači. Pro tento virtuální počítač budete muset zakázat možnost automatického spravování a pak znovu povolit automanage s požadovaným konfiguračním profilem a preferencemi.
+> Ve vývojovém a testovacím prostředí nebudeme vůbec zálohovat virtuální počítač.
+
+Nastavení výchozího prostředí můžete upravit pomocí předvoleb. [Tady](virtual-machines-custom-preferences.md)se dozvíte, jak vytvořit preference.
+
+> [!NOTE]
+> Pokud je povolená možnost automanage, nemůžete změnit konfiguraci enivonrment na VIRTUÁLNÍm počítači. Pro tento virtuální počítač budete muset zakázat možnost automatického spravování a pak znovu povolit službu automanage s požadovaným prostředím a preferencemi.
+
+Úplný seznam zúčastněných služeb Azure a pokud podporují předvolby, najdete tady:
+- [Spravovat pro Linux](automanage-windows-server.md)
+- [Autospravovat pro Windows Server](automanage-windows-server.md)
 
 
 ## <a name="automanage-account"></a>Účet pro autosprávu
@@ -123,7 +149,7 @@ V Azure Portal přejdete na stránku s **osvědčenými postupy pro automatické
 
 :::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="Seznam nakonfigurovaných virtuálních počítačů.":::
 
-Pro každý uvedený virtuální počítač se zobrazí následující podrobnosti: název, konfigurační profil, předvolby konfigurace, stav, účet, předplatné a skupina prostředků.
+Pro každý uvedený virtuální počítač se zobrazí následující podrobnosti: název, prostředí, předvolby konfigurace, stav, operační systém, účet, předplatné a skupina prostředků.
 
 Sloupec **Status (stav** ) může zobrazit následující stavy:
 - *Probíhá – virtuální* počítač byl právě povolen a probíhá jeho konfigurace.
@@ -156,7 +182,7 @@ První a první, nebudeme virtuální počítač od žádné ze služeb, které 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se naučili, že automanage pro virtuální počítače poskytuje způsob, jakým můžete eliminovat nutnost znát, připojit a nakonfigurovat osvědčené postupy pro služby Azure. Kromě toho, pokud se počítač, který se připojí k automatické správě virtuálních počítačů, posune od nastavených konfiguračních profilů, automaticky ho vrátíme zpátky do dodržování předpisů.
+V tomto článku jste se naučili, že automanage pro virtuální počítače poskytuje způsob, jakým můžete eliminovat nutnost znát, připojit a nakonfigurovat osvědčené postupy pro služby Azure. Kromě toho, pokud se počítač, který se připojuje k automatické správě virtuálních počítačů, přeruší z nastavení prostředí, automaticky ho vrátíme zpátky do dodržování předpisů.
 
 Zkuste povolit automanage pro virtuální počítače v Azure Portal.
 

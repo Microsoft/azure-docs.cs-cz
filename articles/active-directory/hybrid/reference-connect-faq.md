@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fa195fd8d40c6b67a9c446f0b2320fe47d75259
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 29c0ae8ec210356f6027a46ed01f2a7126ea4a49
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092662"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644727"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy k Azure Active Directory Connect
 
@@ -201,7 +201,7 @@ V závislosti na velikosti prostředí může proces trvat několik hodin. Běhe
 **Otázka: zobrazil jsem se e-mail s oznámením, že můj automatický upgrade už nefunguje a potřebuji nainstalovat novou verzi. Proč je potřeba to udělat?**  
 Minulý rok jsme vydali verzi Azure AD Connect, že za určitých okolností může být funkce automatického upgradu na vašem serveru zakázaná. Vyřešili jsme problém v Azure AD Connect verze 1.1.750.0. Pokud jste to ovlivnili problémem, můžete ho zmírnit spuštěním skriptu PowerShellu k jeho opravě nebo ručním upgradem na nejnovější verzi Azure AD Connect. 
 
-Pokud chcete spustit skript PowerShellu, [Stáhněte si skript](https://aka.ms/repairaadconnect) a spusťte ho na serveru Azure AD Connect v okně pro správu prostředí PowerShell. Pokud se chcete dozvědět, jak skript spustit, podívejte se na [Toto krátké video](https://aka.ms/repairaadcau).
+Pokud chcete spustit skript PowerShellu, [Stáhněte si skript](/samples/browse/?redirectedfrom=TechNet-Gallery) a spusťte ho na serveru Azure AD Connect v okně pro správu prostředí PowerShell. Pokud se chcete dozvědět, jak skript spustit, podívejte se na [Toto krátké video](https://aka.ms/repairaadcau).
 
 Chcete-li provést ruční upgrade, je nutné stáhnout a spustit nejnovější verzi AADConnect.msi souboru.
  

@@ -1,29 +1,29 @@
 ---
 title: Vytvoření vlastní preference v Azure automanage pro virtuální počítače
-description: Přečtěte si, jak upravit konfigurační profil v Azure automanage pro virtuální počítače a nastavit vlastní předvolby.
+description: Naučte se, jak upravit konfiguraci prostředí v Azure, a nastavit vlastní předvolby.
 author: ju-shim
 ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 09/04/2020
+ms.date: 02/22/2021
 ms.author: jushiman
-ms.openlocfilehash: 377677c9e5e81487059241db68baff639a3de033
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 584a3503bf736fcf727a169611e6c79e0c374c90
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715032"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647925"
 ---
 # <a name="create-a-custom-preference-in-azure-automanage-for-vms"></a>Vytvoření vlastní preference v Azure automanage pro virtuální počítače
 
-Osvědčené postupy pro službu Azure automanage pro virtuální počítače mají výchozí konfigurační profily, které v případě potřeby můžete upravit. V tomto článku se dozvíte, jak můžete nastavit vlastní předvolby konfiguračního profilu, když povolíte možnost automanagement na novém nebo existujícím virtuálním počítači.
+Osvědčené postupy pro virtuální počítače v Azure jsou ve výchozím prostředí, které je možné v případě potřeby upravit. V tomto článku se dozvíte, jak můžete nastavit vlastní předvolby při povolování funkce automanagement na novém nebo existujícím virtuálním počítači.
 
 V současné době podporujeme přizpůsobení [Azure Backup](..\backup\backup-azure-arm-vms-prepare.md#create-a-custom-policy) a [antimalwaru Microsoftu](../security/fundamentals/antimalware.md#default-and-custom-antimalware-configuration).
 
 
 > [!NOTE]
-> V případě, že je povolená možnost automanage, nemůžete změnit konfigurační profil nebo Předvolby na VIRTUÁLNÍm počítači. Pro tento virtuální počítač budete muset zakázat možnost automatického spravování a pak znovu povolit automanage s požadovaným konfiguračním profilem a preferencemi.
+> Pokud je povolená možnost automanage, nemůžete změnit prostředí ani preference na VIRTUÁLNÍm počítači. Pro tento virtuální počítač budete muset zakázat možnost automatického spravování a pak znovu povolit správu pomocí požadovaných konfiguračních prostředí a předvoleb.
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -39,12 +39,12 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.mi
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 
 ## <a name="enable-automanage-for-vms-on-an-existing-vm"></a>Povolení automanage pro virtuální počítače na existujícím virtuálním počítači
 
-1. Na panelu hledání vyhledejte a vyberte možnost **automanage – osvědčené postupy pro virtuální počítače Azure**.
+1. Na panelu hledání vyhledejte a vyberte možnost **automanage – osvědčené postupy pro Azure Machine**.
 
 2. Vyberte **Povolit na stávajícím virtuálním počítači**.
 
@@ -55,15 +55,18 @@ Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
     :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-select-machine.png" alt-text="Vyberte existující virtuální počítač ze seznamu dostupných virtuálních počítačů.":::
 
-4. V části **konfigurační profil**klikněte na **Procházet a změňte profily a předvolby**.
+    > [!NOTE]
+    > Kliknutím na **Zobrazit neoprávněné počítače** zobrazíte seznam nepodporovaných počítačů a důvod. 
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-quick-create.png" alt-text="Vyberte existující virtuální počítač ze seznamu dostupných virtuálních počítačů.":::
+4. V části **Konfigurace** klikněte na **Porovnat prostředí**.
 
-5. V okně **vybrat konfigurační profil + Předvolby** vyberte profil na levé straně: *vývoj/testování* pro testování, *prod* pro produkci.
+    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-quick-create.png" alt-text="Porovnejte prostředí.":::
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\browse-production-profile.png" alt-text="Vyberte existující virtuální počítač ze seznamu dostupných virtuálních počítačů.":::
+5. V okně **Podrobnosti prostředí** vyberte prostředí z rozevírací nabídky: *vývoj/testování* pro testování, *prod* pro produkci a klikněte na **OK** .
 
-6. Ve vybraném profilu je v části **Předvolby konfigurace** k dispozici rozevírací seznam, ve kterém můžete upravit konkrétní služby.
+    :::image type="content" source="media\virtual-machine-custom-preferences\browse-production-profile.png" alt-text="Projděte si produkční prostředí.":::
+
+6. Po výběru prostředí můžete vybrat **Předvolby konfigurace**. Ve výchozím nastavení se použije předvolba Azure Best Practices. Tato předvolba obsahuje doporučená nastavení pro jednotlivé služby. Upravte tato nastavení tak, že vytvoříte vlastní preference: 
     1. Klikněte na **vytvořit nové předvolby**.
     1. V okně **vytvořit předvolby konfigurace** Vyplňte kartu základy:
         1. Předplatné
@@ -71,14 +74,14 @@ Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
         1. Název předvolby
         1. Oblast
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="Vyberte existující virtuální počítač ze seznamu dostupných virtuálních počítačů.":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="Vyplňte předvolby konfigurace.":::
 
-7. Přejít na kartu Předvolby a upravte požadované předvolby konfigurace.
+7. Upravte požadované předvolby konfigurace.
         
     > [!NOTE]
-    > Při změně konfigurace profilu budou povoleny pouze úpravy, které se vejdou v rámci osvědčených postupů horní a dolní meze.
+    > Při změně konfigurace prostředí budou povoleny pouze úpravy, které se vejdou v rámci osvědčených postupů horní a dolní meze.
 
-8. Zkontrolujte svůj konfigurační profil.
+8. Zkontrolujte podrobnosti o konfiguraci.
 9. Klikněte na tlačítko **Vytvořit**.
 
 10. Klikněte na tlačítko **Povolit**.
@@ -88,7 +91,7 @@ Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 Rychlé ukončení používání služby Azure automanage pro virtuální počítače zakázáním automatizované správy.
 
-:::image type="content" source="media\virtual-machine-custom-preferences\disable-step-1.png" alt-text="Vyberte existující virtuální počítač ze seznamu dostupných virtuálních počítačů.":::
+:::image type="content" source="media\virtual-machine-custom-preferences\disable-step-1.png" alt-text="Zakázání automanage na virtuálním počítači.":::
 
 1. Navštivte stránku pro automatické spravování **– osvědčené postupy pro virtuální počítače Azure** se seznamem všech vašich automatických spravovaných virtuálních počítačů.
 1. Zaškrtněte políčko vedle virtuálního počítače, který chcete zakázat.

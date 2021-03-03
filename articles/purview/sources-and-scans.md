@@ -8,12 +8,12 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9a73f9b734d5404d07e05dd37d5ad8571c1aab2e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3b19fab33d0c8f53025605fd14fe65f08e660392
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383887"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677924"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Podporované zdroje dat a typy souborů v Azure dosah
 
@@ -43,9 +43,12 @@ Azure dosah podporuje následující zdroje:
 
 Následující typy souborů jsou podporovány ke skenování, pro extrakci schématu a klasifikace, pokud je to možné:
 
-- Strukturované formáty souborů podporované příponou: AVRO, ORC, PARQUET, CSV, JSON, PSV, SSV, TSV, TXT, XML
+- Strukturované formáty souborů podporované příponou: AVRO, ORC, PARQUET, CSV, JSON, PSV, SSV, TSV, TXT, XML, GZIP
 - Formáty souborů dokumentů podporované příponou: DOC, DOCM, DOCX, DOT, ODP, ODS, ODT, PDF, POT, PPS, PPSX, PPT, PPTM, PPTX, XLC, XLS, XLSB, XLSM, XLSX, XLT
 - Dosah podporuje také vlastní přípony souborů a vlastní analyzátory.
+ 
+> [!Note]
+> Každý soubor gzip musí být namapován na jeden soubor CSV v rámci. Soubory GZIP podléhají systémovým a vlastním klasifikačním pravidlům. V současné době nepodporujeme skenování souboru gzip namapovaného na více souborů v rámci nebo jakéhokoli jiného typu souboru než CSV. 
 
 ## <a name="sampling-within-a-file"></a>Vzorkování v rámci souboru
 

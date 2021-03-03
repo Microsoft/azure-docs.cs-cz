@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08f560f076caf90c9c930cedfd6a7ba9c6c8b37d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 95c7ca826eaf7d72cb35985b154458f149ef4a0e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365442"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649307"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Uplatnění pozvánky ke spolupráci B2B v Azure Active Directory
 
@@ -28,21 +28,19 @@ Když do svého adresáře přidáte uživatele typu Host, má uživatelský ú�
    > - **Od 4. ledna 2021** je Google [zastaralá podpora přihlašování v nástroji WebView](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Pokud používáte Google Federation nebo samoobslužnou registraci pomocí služby Gmail, měli byste [testovat kompatibilitu vašich obchodních nativních aplikací](google-federation.md#deprecation-of-webview-sign-in-support).
    > - **Od října 2021** přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
 
-## <a name="redemption-through-the-invitation-email"></a>Vyplacení prostřednictvím e-mailu s pozvánkou
+## <a name="redemption-and-sign-in-through-a-common-endpoint"></a>Uplatnění a přihlášení prostřednictvím společného koncového bodu
 
-Když do svého adresáře přidáte uživatele typu host [pomocí Azure Portal](./b2b-quickstart-add-guest-users-portal.md), pošle se na hostovi v procesu e-mail s pozvánkou. Můžete také odeslat e-maily pozvánky, když [používáte PowerShell](./b2b-quickstart-invite-powershell.md) k přidání uživatelů typu Host do adresáře. Tady je Popis prostředí hosta při uplatnění odkazu v e-mailu.
+Uživatelé typu Host se teď můžou přihlašovat k aplikacím pro více tenantů nebo od Microsoftu prostřednictvím běžného koncového bodu (URL), například `https://myapps.microsoft.com` . Dřív by běžná adresa URL mohla přesměrovat uživatele typu host na svého svého svého svého klienta, nikoli na svého tenanta prostředků pro ověřování, takže byl vyžadován odkaz pro konkrétního tenanta (například `https://myapps.microsoft.com/?tenantid=<tenant id>` ). Uživatel typu Host může nyní přejít na běžnou adresu URL aplikace, zvolit **Možnosti přihlášení** a pak vybrat **Přihlásit se k organizaci**. Uživatel pak zadá název vaší organizace.
 
-1. Host dostane [e-mail pozvánky](./invitation-email-elements.md) , která se pošle z **pozvánky Microsoftu**.
-2. Host vybere **přijmout pozvánku** v e-mailu.
-3. Host bude používat vlastní přihlašovací údaje pro přihlášení k adresáři. Pokud host nemá účet, který může být federovaný pro váš adresář a funkce [e-mailového hesla (jednorázového hesla)](./one-time-passcode.md) není povolená; Host se zobrazí výzva k vytvoření osobního [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) nebo [samoobslužného účtu služby Azure AD](../enterprise-users/directory-self-service-signup.md). Podrobnosti najdete v tématu [postup pro uplatnění pozvánky](#invitation-redemption-flow) .
-4. Host se provede prostřednictvím [souhlasu](#consent-experience-for-the-guest) uživatele uvedeného níže.
+![Přihlášení ke společnému koncovému bodu](media/redemption-experience/common-endpoint-flow-small.png)
 
+Uživatel se pak přesměruje na koncový bod tenanta, kde se může přihlásit pomocí e-mailové adresy nebo vybrat zprostředkovatele identity, kterého jste nakonfigurovali.
 ## <a name="redemption-through-a-direct-link"></a>Uplatnění přes přímý odkaz
 
-Jako alternativu k e-mailu s pozvánkou můžete hostům poskytnout přímý odkaz na vaši aplikaci nebo portál. Nejdřív je potřeba přidat uživatele typu Host do adresáře prostřednictvím [Azure Portal](./b2b-quickstart-add-guest-users-portal.md) nebo [PowerShellu](./b2b-quickstart-invite-powershell.md). Pak můžete použít kterýkoli z [přizpůsobitelných způsobů, jak nasadit aplikace pro uživatele](../manage-apps/end-user-experiences.md), včetně odkazů přímo přihlašování. Když host použije přímý odkaz namísto e-mailu s pozvánkou, bude se dál nacházet pomocí prostředí pro vyjádření souhlasu po prvním čase.
+Jako alternativu k e-mailu s pozvánkou nebo k běžné adrese URL aplikace můžete hostům poskytnout přímý odkaz na vaši aplikaci nebo portál. Nejdřív je potřeba přidat uživatele typu Host do adresáře prostřednictvím [Azure Portal](./b2b-quickstart-add-guest-users-portal.md) nebo [PowerShellu](./b2b-quickstart-invite-powershell.md). Pak můžete použít kterýkoli z [přizpůsobitelných způsobů, jak nasadit aplikace pro uživatele](../manage-apps/end-user-experiences.md), včetně odkazů přímo přihlašování. Když host použije přímý odkaz namísto e-mailu s pozvánkou, bude se dál nacházet pomocí prostředí pro vyjádření souhlasu po prvním čase.
 
-> [!IMPORTANT]
-> Přímý odkaz musí být specifický pro tenanta. Jinými slovy, musí obsahovat ID tenanta nebo ověřenou doménu, aby bylo možné hosta ověřit ve vašem tenantovi, kde se nachází sdílená aplikace. Společná adresa URL, jako https://myapps.microsoft.com by se u hosta nefunguje, protože se přesměruje na svého domovského tenanta pro ověřování. Tady je několik příkladů přímých odkazů s kontextem tenanta:
+> [!NOTE]
+> Přímý odkaz je specifický pro tenanta. Jinými slovy, zahrnuje ID tenanta nebo ověřenou doménu, aby bylo možné hosta ověřit ve vašem tenantovi, kde se nachází sdílená aplikace. Tady je několik příkladů přímých odkazů s kontextem tenanta:
  > - Přístupový panel aplikací: `https://myapps.microsoft.com/?tenantid=<tenant id>`
  > - Přístupový panel aplikací pro ověřenou doménu: `https://myapps.microsoft.com/<;verified domain>`
  > - Azure Portal: `https://portal.azure.com/<tenant id>`
@@ -53,6 +51,14 @@ V některých případech se doporučuje e-mailem pozvánky používat přímý 
  - Někdy je možné, že objekt pozvaného uživatele nemá e-mailovou adresu z důvodu konfliktu s objektem Contact (například objekt kontaktu aplikace Outlook). V takovém případě musí uživatel v e-mailu s pozvánkou kliknout na adresu URL pro uplatnění.
  - Uživatel se může přihlásit pomocí aliasu e-mailové adresy, která byla pozvána. (Alias je další e-mailová adresa přidružená k e-mailovému účtu.) V takovém případě musí uživatel v e-mailu s pozvánkou kliknout na adresu URL pro uplatnění.
 
+## <a name="redemption-through-the-invitation-email"></a>Vyplacení prostřednictvím e-mailu s pozvánkou
+
+Když do svého adresáře přidáte uživatele typu host [pomocí Azure Portal](./b2b-quickstart-add-guest-users-portal.md), pošle se na hostovi v procesu e-mail s pozvánkou. Můžete také odeslat e-maily pozvánky, když [používáte PowerShell](./b2b-quickstart-invite-powershell.md) k přidání uživatelů typu Host do adresáře. Tady je Popis prostředí hosta při uplatnění odkazu v e-mailu.
+
+1. Host dostane [e-mail pozvánky](./invitation-email-elements.md) , která se pošle z **pozvánky Microsoftu**.
+2. Host vybere **přijmout pozvánku** v e-mailu.
+3. Host bude používat vlastní přihlašovací údaje pro přihlášení k adresáři. Pokud host nemá účet, který může být federovaný pro váš adresář a funkce [e-mailového hesla (jednorázového hesla)](./one-time-passcode.md) není povolená; Host se zobrazí výzva k vytvoření osobního [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) nebo [samoobslužného účtu služby Azure AD](../enterprise-users/directory-self-service-signup.md). Podrobnosti najdete v tématu [postup pro uplatnění pozvánky](#invitation-redemption-flow) .
+4. Host se provede prostřednictvím [souhlasu](#consent-experience-for-the-guest) uživatele uvedeného níže.
 ## <a name="invitation-redemption-flow"></a>Tok uplatnění pozvánky
 
 Když uživatel klikne na odkaz **přijmout pozvánku** v [e-mailu s pozvánkou](invitation-email-elements.md), Azure AD automaticky uplatní pozvánku na základě toku uplatnění, jak je znázorněno níže:

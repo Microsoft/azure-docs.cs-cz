@@ -16,19 +16,19 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bca7331722640547218ecb6aff7c3c5651efdfd0
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 7cadf5b7d92e26e561e570f824295e69ca421e16
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101098819"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644509"
 ---
 # <a name="integrate-with-sharepoint-saml"></a>Integrace se službou SharePoint (SAML)
 
-Tento podrobný průvodce vysvětluje, jak zabezpečit přístup k [Azure Active Directory integrovaným v místním SharePointu (SAML)](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial) pomocí Azure proxy aplikací služby AD, kde se uživatelé ve vaší organizaci (Azure AD, B2B) připojují k SharePointu přes Internet.
+Tento podrobný průvodce vysvětluje, jak zabezpečit přístup k [Azure Active Directory integrovaným v místním SharePointu (SAML)](../saas-apps/sharepoint-on-premises-tutorial.md) pomocí Azure proxy aplikací služby AD, kde se uživatelé ve vaší organizaci (Azure AD, B2B) připojují k SharePointu přes Internet.
 
 > [!NOTE] 
-> Pokud s Azure začínáte Proxy aplikací služby AD a chcete získat další informace, přečtěte si téma [vzdálený přístup k místním aplikacím prostřednictvím Azure proxy aplikací služby AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy).
+> Pokud s Azure začínáte Proxy aplikací služby AD a chcete získat další informace, přečtěte si téma [vzdálený přístup k místním aplikacím prostřednictvím Azure proxy aplikací služby AD](./application-proxy.md).
 
 Toto nastavení má tři hlavní výhody:
 
@@ -41,18 +41,18 @@ Tento proces vyžaduje dvě podnikové aplikace. Jedna je místní instance Shar
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení této konfigurace potřebujete tyto prostředky:
- - Farma SharePoint 2013 nebo novější. Sharepointová farma musí být [integrovaná se službou Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial).
+ - Farma SharePoint 2013 nebo novější. Sharepointová farma musí být [integrovaná se službou Azure AD](../saas-apps/sharepoint-on-premises-tutorial.md).
  - Tenant Azure AD s plánem, který zahrnuje proxy aplikace. Přečtěte si další informace o [plánech a cenách Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
- - [Vlastní ověřená doména](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain) v TENANTOVI Azure AD. Ověřená doména se musí shodovat s příponou adresy URL SharePointu.
- - Certifikát SSL je povinný. Podívejte se na podrobnosti v tématu [publikování vlastních domén](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain).
- - Místní uživatelé služby Active Directory musí být synchronizováni s Azure AD Connect a musí být nakonfigurováni pro [přihlášení k Azure](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin). 
- - Pro uživatele hostované jenom pro Cloud a B2B je potřeba [udělit přístup k účtu Guest k místnímu SharePointu v Azure Portal](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial#grant-access-to-a-guest-account-to-sharepoint-on-premises-in-the-azure-portal).
+ - [Vlastní ověřená doména](../fundamentals/add-custom-domain.md) v TENANTOVI Azure AD. Ověřená doména se musí shodovat s příponou adresy URL SharePointu.
+ - Certifikát SSL je povinný. Podívejte se na podrobnosti v tématu [publikování vlastních domén](./application-proxy-configure-custom-domain.md).
+ - Místní uživatelé služby Active Directory musí být synchronizováni s Azure AD Connect a musí být nakonfigurováni pro [přihlášení k Azure](../hybrid/plan-connect-user-signin.md). 
+ - Pro uživatele hostované jenom pro Cloud a B2B je potřeba [udělit přístup k účtu Guest k místnímu SharePointu v Azure Portal](../saas-apps/sharepoint-on-premises-tutorial.md#grant-access-to-a-guest-account-to-sharepoint-on-premises-in-the-azure-portal).
  - Konektor proxy aplikací nainstalovaný a spuštěný v počítači v podnikové doméně.
 
 
 ## <a name="step-1-integrate-sharepoint-on-premises-with-azure-ad"></a>Krok 1: integrace služby SharePoint v místním prostředí se službou Azure AD 
 
-1. Nakonfigurujte místní aplikaci SharePoint. Další informace najdete v tématu [kurz: Azure Active Directory integraci jednotného přihlašování s místním SharePointem](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial).
+1. Nakonfigurujte místní aplikaci SharePoint. Další informace najdete v tématu [kurz: Azure Active Directory integraci jednotného přihlašování s místním SharePointem](../saas-apps/sharepoint-on-premises-tutorial.md).
 2. Před přechodem k dalšímu kroku Ověřte konfiguraci. K ověření se pokuste získat přístup k místnímu SharePointu z interní sítě a potvrdit, že je interní přístupný. 
 
 
@@ -66,7 +66,7 @@ V tomto kroku vytvoříte v tenantovi Azure AD aplikaci, která používá proxy
    ![Snímek obrazovky zobrazující hodnotu adresy URL pro přihlášení](./media/application-proxy-integrate-with-sharepoint-server/sso-url-saml.png)
 
 
- 1. Vytvořte novou aplikaci Azure Proxy aplikací služby AD s vlastní doménou. Podrobné pokyny najdete v tématu [vlastní domény v Azure proxy aplikací služby AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain).
+ 1. Vytvořte novou aplikaci Azure Proxy aplikací služby AD s vlastní doménou. Podrobné pokyny najdete v tématu [vlastní domény v Azure proxy aplikací služby AD](./application-proxy-configure-custom-domain.md).
 
     - Interní adresa URL: https://portal.contoso.com/
     - Externí adresa URL: https://portal.contoso.com/
@@ -76,7 +76,7 @@ V tomto kroku vytvoříte v tenantovi Azure AD aplikaci, která používá proxy
 
         ![Snímek obrazovky zobrazující možnosti, které můžete použít k vytvoření aplikace](./media/application-proxy-integrate-with-sharepoint-server/create-application-azure-active-directory.png)
 
-2. Přiřaďte [stejné skupiny](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial#create-an-azure-ad-security-group-in-the-azure-portal) , které jste přiřadili do místní aplikace sharepointové galerie.
+2. Přiřaďte [stejné skupiny](../saas-apps/sharepoint-on-premises-tutorial.md#create-an-azure-ad-security-group-in-the-azure-portal) , které jste přiřadili do místní aplikace sharepointové galerie.
 
 3. Nakonec přejít do oddílu **vlastnosti** a nastavit jako **viditelné pro uživatele?** na **ne**. Tato možnost zajistí, že se na portálu moje aplikace zobrazí jenom ikona první aplikace ( https://myapplications.microsoft.com) .
 
@@ -85,4 +85,3 @@ V tomto kroku vytvoříte v tenantovi Azure AD aplikaci, která používá proxy
 ## <a name="step-3-test-your-application"></a>Krok 3: testování aplikace
 
 Pomocí prohlížeče z počítače v externí síti přejděte na adresu URL ( https://portal.contoso.com/) kterou jste nakonfigurovali během kroku publikování. Ujistěte se, že se můžete přihlásit pomocí zkušebního účtu, který jste nastavili.
-

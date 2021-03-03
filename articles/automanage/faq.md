@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: troubleshooting
-ms.date: 09/04/2020
+ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: b8f2b3e1ffde49c8df3c3a6d7c0b9b3751fda5fa
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 214730733780ef3492048f697b1c5e180434a527
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696172"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654013"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Nejčastější dotazy k Azure automanage pro virtuální počítače
 
@@ -27,7 +27,7 @@ Pokud váš problém s Azure není v tomto článku řešen, navštivte fóra Az
 **Jaké jsou všechny požadavky nutné k povolení Azure automanage?**
 
 Níže jsou uvedené předpoklady pro povolení služby Azure automanage:
-- Jenom virtuální počítače s Windows serverem
+- Podporované [verze Windows serveru](automanage-windows-server.md#supported-windows-server-versions) a [Linux distribuce](automanage-linux.md#supported-linux-distributions-and-versions)
 - Virtuální počítače musí být v podporované oblasti.
 - Uživatel musí mít správná oprávnění.
 - Jenom virtuální počítače bez škálování
@@ -42,12 +42,12 @@ Pokud při povolování používáte nový účet automanage, musíte mít roli 
 
 **Které oblasti jsou podporovány?**
 
-Podporovány jsou virtuální počítače v následujících oblastech: Západní Evropa, Východní USA, Západní USA 2, Kanada – střed, Středozápadní USA, Japonsko – východ.
+Úplný seznam podporovaných oblastí je k dispozici [zde](./automanage-virtual-machines.md#supported-regions).
 
 
 **Které funkce automatizuje Azure automanage?**
 
-Automaticky spravujte registraci, konfiguraci a monitorování v průběhu životního cyklu virtuálního počítače. [zde](virtual-machines-best-practices.md)jsou uvedené služby.
+Automaticky spravujte registraci, konfiguraci a monitorování v průběhu životního cyklu virtuálního počítače. [zde](automanage-virtual-machines.md)jsou uvedené služby.
 
 **Funguje Azure automanage s virtuálními počítači s podporou ARC Azure?**
 
@@ -55,12 +55,12 @@ Služba automanage aktuálně nepodporuje virtuální počítače s podporou ARC
 
 **Můžu přizpůsobit konfigurace v Azure automanage?**
 
-Zákazníci mohou přizpůsobit nastavení pro konkrétní služby, jako je například uchovávání Azure Backup, prostřednictvím předvoleb konfigurace. Úplný seznam nastavení, která se dají změnit, najdete v [naší dokumentaci.](virtual-machines-best-practices.md)
+Zákazníci mohou přizpůsobit nastavení pro konkrétní služby, jako je například uchovávání Azure Backup, prostřednictvím předvoleb konfigurace. Úplný seznam nastavení, která se dají změnit, najdete v [naší dokumentaci.](automanage-virtual-machines.md#customizing-an-environment-using-preferences)
 
 
 **Funguje Azure automanage i s virtuálními počítači se systémy Linux a Windows?**
 
-V současné době umožňuje automanage virtuální počítače Azure s Windows serverem.
+Ano, podívejte se na podporované [verze Windows serveru](automanage-windows-server.md#supported-windows-server-versions) a [Linux distribuce](automanage-linux.md#supported-linux-distributions-and-versions).
 
 
 **Můžu u sebe selektivně použít jenom tuto sadu virtuálních počítačů?**

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: aab1f99984ed5286692cbf9dae39fb4f7d28599c
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 3c1b4b3d57bdce4a66adb35717f46d8989ee2453
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652458"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648811"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: konfigurace deklarace identity role vydané v tokenu SAML pro podnikové aplikace
 
@@ -29,7 +29,7 @@ Pomocí Azure Active Directory (Azure AD) můžete přizpůsobit typ deklarace i
 - Předplatné s povoleným jednotným přihlašováním (SSO). Jednotné přihlašování je nutné nakonfigurovat u vaší aplikace.
 
 > [!NOTE]
-> Tento článek vysvětluje, jak vytvořit, aktualizovat nebo odstranit aplikační role u instančního objektu pomocí rozhraní API ve službě Azure AD. Pokud chcete použít nové uživatelské rozhraní pro role aplikace, podívejte se prosím na podrobnosti [tady](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps).
+> Tento článek vysvětluje, jak vytvořit, aktualizovat nebo odstranit aplikační role u instančního objektu pomocí rozhraní API ve službě Azure AD. Pokud chcete použít nové uživatelské rozhraní pro role aplikace, podívejte se prosím na podrobnosti [tady](./howto-add-app-roles-in-azure-ad-apps.md).
 
 ## <a name="when-to-use-this-feature"></a>Kdy použít tuto funkci
 

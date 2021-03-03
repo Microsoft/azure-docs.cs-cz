@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 654e1c163a16f427958320ea081c38338e0ab4e1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4206ba7617032e34310682d1468e6b1b661b8c8a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725388"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648583"
 ---
 # <a name="transition-to-governed-collaboration-with-azure-active-directory-b2b-collaboration"></a>Přechod na upravenou spolupráci s Azure Active Directory spolupráce B2B 
 
@@ -100,7 +100,7 @@ Určete, kdo může pozvat uživatele typu Host pro přístup k prostředkům.
 
 Pokud používáte správu nároků služby Azure AD, můžete nakonfigurovat otázky pro externí uživatele na odpověď. Otázky se pak zobrazí schvalovatelům, aby jim pomohli udělat rozhodnutí. Pro každou [zásadu balíčku přístupu](../governance/entitlement-management-access-package-approval-policy.md) můžete nakonfigurovat různé sady otázek, aby schvalovatelé mohli mít příslušné informace pro přístup, který schválí. Pokud je například jeden balíček pro přístup určen pro přístup od dodavatele, žadatel může požádat o číslo smlouvy dodavatele. Jiný přístupový balíček určený pro dodavatele se může zeptat na jejich zemi původu.
 
-Pokud používáte Samoobslužný portál, můžete k shromažďování dalších atributů uživatelů při registraci použít [konektory rozhraní API](../external-identities/api-connectors-overview.md) . Pak můžete tyto atributy použít k přiřazení přístupu. Například pokud během procesu registrace shromáždíte své ID dodavatele, můžete použít tento atribut k dynamickému přiřazování do skupiny nebo přístupu k balíčku pro daného dodavatele. V Azure Portal můžete vytvořit vlastní atributy a použít je v uživatelských tocích samoobslužné registrace. Tyto atributy můžete také číst a zapisovat pomocí [rozhraní Microsoft Graph API](../../active-directory-b2c/manage-user-accounts-graph-api.md). 
+Pokud používáte Samoobslužný portál, můžete k shromažďování dalších atributů uživatelů při registraci použít [konektory rozhraní API](../external-identities/api-connectors-overview.md) . Pak můžete tyto atributy použít k přiřazení přístupu. Například pokud během procesu registrace shromáždíte své ID dodavatele, můžete použít tento atribut k dynamickému přiřazování do skupiny nebo přístupu k balíčku pro daného dodavatele. V Azure Portal můžete vytvořit vlastní atributy a použít je v uživatelských tocích samoobslužné registrace. Tyto atributy můžete také číst a zapisovat pomocí [rozhraní Microsoft Graph API](../../active-directory-b2c/microsoft-graph-operations.md). 
 
 ### <a name="troubleshoot-invitation-redemption-to-azure-ad-users"></a>Řešení potíží s uplatněním pozvánky pro uživatele Azure AD
 

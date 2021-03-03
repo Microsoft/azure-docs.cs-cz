@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 8f5b7f8b5cd563f8b265d7051a57b0ac22598d1c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 60486c41ad843cf193ee0648dfcfef66f7668e47
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610733"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674985"
 ---
 # <a name="disk-performance-metrics"></a>Metriky výkonu disku
 Azure nabízí v Azure Portal metriky, které poskytují přehled o tom, jak vaše virtuální počítače a disky provádějí. Metriky lze také načíst prostřednictvím volání rozhraní API. Tento článek je rozdělen do 3 pododdílů:
@@ -129,6 +129,6 @@ Tato metrika nám oznamuje, že datové disky připojené k logickým jednotkám
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled metrik Azure Monitor](../azure-monitor/platform/data-platform-metrics.md)
-- [Vysvětlení agregace metrik](../azure-monitor/platform/metrics-aggregation-explained.md)
-- [Vytváření, zobrazení a správa upozornění na metriky pomocí služby Azure Monitor](../azure-monitor/platform/alerts-metric.md)
+- [Přehled metrik Azure Monitor](../azure-monitor/essentials/data-platform-metrics.md)
+- [Vysvětlení agregace metrik](../azure-monitor/essentials/metrics-aggregation-explained.md)
+- [Vytváření, zobrazení a správa upozornění na metriky pomocí služby Azure Monitor](../azure-monitor/alerts/alerts-metric.md)

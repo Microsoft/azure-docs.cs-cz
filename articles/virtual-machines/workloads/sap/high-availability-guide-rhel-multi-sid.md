@@ -8,19 +8,18 @@ manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/11/2021
 ms.author: radeltch
-ms.openlocfilehash: 746cd6cbbb79cd1f35c9d703fe182abbd988d36f
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: ec2121754a24a44288c158e630a4e84219c744e3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117958"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676911"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v Red Hat Enterprise Linux pro Průvodce pro aplikace SAP s více SID
 
@@ -806,7 +805,7 @@ Zobrazené testy jsou ve dvou uzlech, cluster s více identifikátory SID se tř
         rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started rhelmsscl1
    ```
 
-   Pokud existují zprávy o neúspěšných prostředcích, vyčistěte stav neúspěšných prostředků. Příklad:
+   Pokud existují zprávy o neúspěšných prostředcích, vyčistěte stav neúspěšných prostředků. Například:
 
    ```
    pcs resource cleanup rsc_sap_NW1_ERS02

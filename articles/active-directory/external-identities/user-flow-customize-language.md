@@ -7,21 +7,18 @@ manager: celestedg
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 03/02/2021
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cddb40a6a43c38079906699d9fa4865c4daf558
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: a199c207e8ea35f1471df9bfd0c4134551b9995f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837086"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653486"
 ---
-# <a name="language-customization-in-azure-active-directory-preview"></a>Přizpůsobení jazyka v Azure Active Directory (Preview)
-
-> [!NOTE]
-> Samoobslužná registrace je funkce veřejné verze Preview služby Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+# <a name="language-customization-in-azure-active-directory"></a>Přizpůsobení jazyka v Azure Active Directory
 
 Přizpůsobení jazyka v Azure Active Directory (Azure AD) umožňuje, aby tok uživatelů vyhovoval různým jazykům, aby vyhovoval potřebám vašich uživatelů. Společnost Microsoft poskytuje překlady pro [jazyky 36](#supported-languages). I v případě, že je vaše prostředí k dispozici pouze pro jeden jazyk, můžete přizpůsobit názvy atributů na stránce kolekce atributů.
 
@@ -39,7 +36,7 @@ Přizpůsobení jazyka umožňuje přizpůsobení libovolného řetězce v toku 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce.
 2. V části **služby Azure** vyberte **Azure Active Directory**.
 3. V nabídce vlevo vyberte **externí identity**.
-4. Vyberte **toky uživatelů (Preview)**.
+4. Vyberte **toky uživatelů**.
 3. Vyberte tok uživatele, který chcete povolit pro překlady.
 4. Vyberte **jazyky**.
 5. Na stránce **jazyky** toku uživatele vyberte jazyk, který chcete přizpůsobit.

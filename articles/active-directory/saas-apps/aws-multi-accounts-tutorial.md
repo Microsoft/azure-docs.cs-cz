@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
 ms.openlocfilehash: 0ddcb239ba106bcdc2f0a29d68eb395876fadc06
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/02/2021
 ms.locfileid: "100384108"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services"></a>Kurz: Azure Active Directory integrace s Amazon Web Services
@@ -116,7 +116,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a p
 
 1. V části **deklarace identity uživatelů** v podokně **atributy uživatele** NAKONFIGURUJTE atribut tokenu SAML pomocí hodnot v následující tabulce:
 
-    | Name  | Zdrojový atribut  | Obor názvů |
+    | Název  | Zdrojový atribut  | Obor názvů |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | User. userPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
     | Role | User. assignedroles | `https://aws.amazon.com/SAML/Attributes`|

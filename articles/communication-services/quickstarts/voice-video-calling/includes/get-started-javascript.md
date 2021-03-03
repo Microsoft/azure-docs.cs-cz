@@ -6,14 +6,18 @@ ms.author: nimag
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: e878aa00261d446d049f5a7b3c68b14bc2fe8a4e
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d27a79e180a0219773a3094fb85f842773d75183
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548489"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656606"
 ---
 V tomto rychlém startu se dozvíte, jak spustit volání pomocí komunikačních služeb Azure, které volají klientskou knihovnu pro JavaScript.
+Tento dokument odkazuje na typy ve verzi 1.0.0-beta. 5 volání knihovny.
+
+> [!NOTE]
+> Tento dokument používá verzi 1.0.0-beta. 6 volání klientské knihovny.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -102,7 +106,7 @@ Přidejte obslužnou rutinu události pro zahájení volání při `callButton` 
 callButton.addEventListener("click", () => {
     // start a call
     const userToCall = calleeInput.value;
-    call = callAgent.call(
+    call = callAgent.startCall(
         [{ communicationUserId: userToCall }],
         {}
     );

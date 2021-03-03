@@ -13,12 +13,12 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 981d3a0c5d01d70625fc0d022318c5bc866f23a0
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 6a173ed4dae9237d8aae991c943817ed70246eea
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95756396"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649051"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Kurz: použití režimu sdíleného zařízení v aplikaci pro Android
 
@@ -65,7 +65,7 @@ Další informace o nastavení konfiguračního souboru najdete v [dokumentaci k
 
 Možná neplánujete podporovat režim více účtů. To může být v případě, že nepoužíváte sdílené zařízení a uživatel se může přihlásit k aplikaci s více než jedním účtem ve stejnou dobu. Pokud ano, nastavte `"account_mode"` na `"SINGLE"` . To zaručuje, že vaše aplikace bude vždycky získávat `ISingleAccountPublicClientApplication` a významně zjednodušuje integraci MSAL. Výchozí hodnota `"account_mode"` je `"MULTIPLE"` , takže je důležité změnit tuto hodnotu v konfiguračním souboru, pokud používáte `"single account"` režim.
 
-Tady je příklad auth_config.jsv souboru zahrnutém do hlavního umístění v **aplikaci** > **main** > **res** > **raw** ukázkové aplikace:
+Tady je příklad auth_config.jsv souboru zahrnutém do hlavního umístění v **aplikaci** >  >  >  ukázkové aplikace:
 
 ```json
 {
@@ -96,7 +96,7 @@ Použijte `isSharedDevice()` k určení, jestli je aplikace spuštěná na zař�
 Zde je fragment kódu, který ukazuje, jak můžete použít `isSharedDevice()` .  Je z `SingleAccountModeFragment` třídy v ukázkové aplikaci:
 
 ```Java
-deviceModeTextView.setText(mSingleAccountApp.isSharedDevice() ?"Shared" :"Non-Shared");
+deviceModeTextView.setText(mSingleAccountApp.isSharedDevice() ? "Shared" : "Non-Shared");
 ```
 
 ### <a name="initialize-the-publicclientapplication-object"></a>Inicializovat objekt PublicClientApplication

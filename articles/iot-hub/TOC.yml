@@ -349,6 +349,16 @@
           href: iot-hub-azure-service-health-integration.md
         - name: Objednávka stavových událostí připojení zařízení z Event Gridu
           href: iot-hub-how-to-order-connection-state-events.md
+    - name: Nasazení aktualizací
+      items:
+        - name: Vytvoření účtu aktualizace zařízení
+          href: /iot-hub-device-update/create-device-update-account.md
+        - name: Importovat aktualizaci
+          href: /iot-hub-device-update/import-update.md
+        - name: Vytvořit skupinu aktualizací
+          href: /iot-hub-device-update/create-update-group.md
+        - name: Nasazení aktualizace
+          href: /iot-hub-device-update/deploy-update.md
     - name: Použití skutečných zařízení
       items:
         - name: Použití online simulátoru

@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 4b2777bfd9905a1caa8b69b78ff892b661e4dc4b
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 62801d40295762b0066f0d2887d7d528ee7b7c2a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097536"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656818"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Vytvoření popisku dat pro projekt a Export popisků 
 
@@ -107,12 +107,9 @@ Pokud máte v úmyslu přidat nové image do datové sady, použijte přírůstk
 
 K přidání dalších imagí do projektu použijte [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) k nahrání do příslušné složky v úložišti objektů BLOB. 
 
-Zaškrtněte políčko **Povolit přírůstkovou aktualizaci** , pokud chcete, aby projekt průběžně sledoval nová data v úložišti dat. Tato data budou do projektu načtena jednou denně, pokud je povoleno.
+Zaškrtněte políčko **Povolit přírůstkovou aktualizaci** , pokud chcete, aby projekt průběžně sledoval nová data v úložišti dat. Tato data budou do projektu načítána jednou za den, takže budete muset počkat, až přidáte nová data do úložiště dat, než se objeví ve vašem projektu.  Časové razítko pro čas poslední aktualizace dat najdete na kartě **Podrobnosti** v části **přírůstková aktualizace** pro váš projekt.
 
 Zrušte toto políčko, pokud nechcete, aby byly do projektu přidány nové obrázky, které se zobrazí v úložišti dat.
-
-Časové razítko pro nejnovější aktualizaci najdete v části **přírůstková aktualizace** na kartě **Podrobnosti** pro váš projekt.
-
 
 ## <a name="specify-label-classes"></a>Určení tříd popisků
 

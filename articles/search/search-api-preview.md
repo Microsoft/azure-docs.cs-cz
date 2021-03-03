@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: bf2ff2fc20d3581a297881fbd9e6db15d825814d
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.date: 03/02/2021
+ms.openlocfilehash: a03707133b384f7717a624e810d0f7a41267969d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518993"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670887"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Funkce ve verzi Preview v Azure Kognitivní hledání
 
@@ -23,6 +23,9 @@ Funkce ve verzi Preview, které se převádějí do všeobecné dostupnosti, se 
 
 |Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
 |---------|------------------|-------------|---------------|
+| [**Sémantické vyhledávání**](semantic-search-overview.md) | Relevance (bodování) | Algoritmus sémantického hodnocení, typ dotazu a odpověď na dotaz. | [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/) |
+| [**kontrolu pravopisu**](cognitive-search-aml-skill.md) | Dotaz | Volitelná Oprava pravopisu pro termíny dotazu pro jednoduché, úplné a sémantické dotazy. | [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/) |
+| Indexer SharePointu Online | Zdroj dat indexeru | Nový zdroj dat pro indexování obsahu SharePointu založeného na indexeru | [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/) |
 | [**Azure Machine Learning (AML) – dovednost**](cognitive-search-aml-skill.md) | Obohacení AI| Nový typ dovednosti pro integraci koncového bodu Inferencing z Azure Machine Learning. Začněte s [tímto kurzem](cognitive-search-tutorial-aml-custom-skill.md). | Použijte [Search REST API 2020-06-30-Preview](/rest/api/searchservice/) nebo 2019-05-06-Preview. K dispozici také na portálu v návrhu dovednosti, za předpokladu, že Kognitivní hledání a služby Azure ML se nasazují ve stejném předplatném. |
 | [**parametr featuresMode**](/rest/api/searchservice/preview-api/search-documents#query-parameters) | Relevance (bodování) | Rozšíření skóre relevance tak, aby zahrnovalo detaily: skóre podle pole, frekvence termínu pro pole a počet jedinečných tokenů, které se shodují. Tyto datové body můžete využívat ve [vlastních řešeních pro bodování](https://github.com/Azure-Samples/search-ranking-tutorial). | Přidejte tento parametr dotazu pomocí [vyhledávacích dokumentů (REST)](/rest/api/searchservice/preview-api/search-documents) s rozhraním API-Version = 2020-06 -30-preview nebo 2019-05-06-Preview. |
 | [**Relace ladění**](cognitive-search-debug-session.md) | Portál, obohacení AI (dovednosti) | Editor dovednosti v relaci, který se používá k prozkoumání a řešení problémů s dovednosti. Opravy, které se použijí během relace ladění, se dají uložit do dovednosti ve službě. | Pouze portál, pomocí odkazů na střední stránku na stránce Přehled otevřete relaci ladění. |

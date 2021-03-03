@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: e93f912915303ce903a32ceba4f079593657a4ac
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: ec563371ab505113117707f56c31f506f7fdf377
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576054"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659497"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Kurz: nasazení modelu strojového učení pomocí návrháře
 
@@ -42,7 +42,7 @@ Pokud chcete svůj kanál nasadit, musíte nejdřív převést kanál školení 
 
 1. Nad plátnem kanálu vyberte **vytvořit odvození kanálu**  >  **odvození kanálu v reálném čase**.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png"alt-text="Snímek obrazovky ukazující, kde najít tlačítko vytvořit kanál":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png" alt-text="Snímek obrazovky ukazující, kde najít tlačítko vytvořit kanál":::
 
     Váš kanál by teď měl vypadat takto: 
 
@@ -97,13 +97,13 @@ Až se dokončí zřizování služby AKS, vraťte se do kanálu Inferencing v r
 
 1. Vyberte cluster AKS, který jste vytvořili.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Snímek obrazovky ukazující, jak nastavit nový koncový bod v reálném čase":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png" alt-text="Snímek obrazovky ukazující, jak nastavit nový koncový bod v reálném čase":::
 
     Můžete také změnit **upřesňující** nastavení koncového bodu v reálném čase.
     
-    |Rozšířené nastavení|Description|
+    |Rozšířené nastavení|Popis|
     |---|---|
-    |Povolit diagnostiku Application Insights a shromažďování dat| Určuje, jestli se má povolit Azure Application Ingishts shromažďovat data z nasazených koncových bodů. </br> Ve výchozím nastavení: false |
+    |Povolit diagnostiku Application Insights a shromažďování dat| Určuje, jestli se má pro Azure Application Insights Povolit shromažďování dat z nasazených koncových bodů. </br> Ve výchozím nastavení: false |
     |Časový limit vyhodnocování| Časový limit (v milisekundách), který se má vymáhat pro volání bodování webové služby.</br>Ve výchozím nastavení: 60000|
     |Automatické škálování povoleno|   Určuje, zda má být povoleno automatické škálování webové služby.</br>Ve výchozím nastavení: true|
     |Minimální počet replik| Minimální počet kontejnerů, které se mají použít při automatickém škálování této webové služby.</br>Ve výchozím nastavení: 1|
@@ -137,6 +137,22 @@ Po dokončení nasazení můžete zobrazit koncový bod v reálném čase tak, �
 1. Pokud chcete otestovat koncový bod, klikněte na kartu **test** . Odtud můžete zadat testovací data a vybrat **test** ověřit výstup svého koncového bodu.
 
 Další informace o využívání webové služby najdete v tématu [Spotřeba modelu nasazeného jako WebService](how-to-consume-web-service.md) .
+
+## <a name="limitations"></a>Omezení
+
+Pokud provedete některé úpravy kanálu školení, měli byste znovu odeslat kanál školení, **aktualizovat** kanál odvození a znovu spustit kanál odvození.
+
+Všimněte si, že v kanálu odvození budou aktualizovány pouze proškolené modely, zatímco transformaci dat nebude aktualizováno.
+
+Chcete-li použít aktualizovanou transformaci v kanálu odvození, je třeba registrovat výstup transformace modulu transformace jako datovou sadu.
+
+![Snímek obrazovky, který ukazuje, jak registrovat datovou sadu transformace](./media/tutorial-designer-automobile-price-deploy/register-transformation-dataset.png)
+
+Pak ručně nahraďte modul **td** v kanálu odvození s registrovanou datovou sadou.
+
+![Snímek obrazovky ukazující, jak nahradit transformační modul](./media/tutorial-designer-automobile-price-deploy/replace-td-module.png)
+
+Pak můžete odeslat kanál odvození s aktualizovaným modelem a transformací a nasadit.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

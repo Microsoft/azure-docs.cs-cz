@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 666474b7c7b823114b6dee2925ed5f81973e212d
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: ed56d0cf69710173d41c5262e7a3121a0cad1304
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650928"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660136"
 ---
 # <a name="calling-client-library-overview"></a>Přehled klientských knihoven pro hovory
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Existují dvě samostatné rodiny volání klientských knihoven pro *klienty* a *služby.* Aktuálně dostupné klientské knihovny jsou určené pro prostředí koncových uživatelů: websites a Native Apps.
 
@@ -28,35 +26,35 @@ Knihovny klienta služby ještě nejsou k dispozici a poskytují přístup k nez
 
 Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici ve komunikačních službách Azure, které volají klientské knihovny.
 
-| Skupina funkcí | Schopnost                                                                                                          | JS  | Java (Android) | Objective-C (iOS) 
+| Skupina funkcí | Schopnost                                                                                                          | JS  | Java (Android) | Objective-C (iOS)
 | ----------------- | ------------------------------------------------------------------------------------------------------------------- | ---  | -------------- | -------------
-| Základní funkce | Jedno volání 1:1 mezi dva uživatele                                                                           | ✔️   | ✔️            | ✔️  
-|                   | Umístit skupinové volání s více než dvěma uživateli (až 350 uživatelů)                                                       | ✔️   | ✔️            | ✔️ 
-|                   | Zvýšení úrovně volání 1:1 se dvěma uživateli na skupinové volání s více než dvěma uživateli                                 | ✔️   | ✔️            | ✔️ 
-|                   | Připojit se k volání skupiny po jeho spuštění                                                                              | ✔️   | ✔️            | ✔️ 
+| Základní funkce | Jedno volání 1:1 mezi dva uživatele                                                                           | ✔️   | ✔️            | ✔️
+|                   | Umístit skupinové volání s více než dvěma uživateli (až 350 uživatelů)                                                       | ✔️   | ✔️            | ✔️
+|                   | Zvýšení úrovně volání 1:1 se dvěma uživateli na skupinové volání s více než dvěma uživateli                                 | ✔️   | ✔️            | ✔️
+|                   | Připojit se k volání skupiny po jeho spuštění                                                                              | ✔️   | ✔️            | ✔️
 |                   | Pozvat dalšího účastníka VoIP, aby se připojil k probíhajícímu volání skupiny                                                       | ✔️   | ✔️            | ✔️
-|                   | Zapnout/vypnout video                                                         | ✔️   | ✔️            | ✔️ 
-|                   | Ztlumení a ztlumení mikrofonu                                                                                                     | ✔️   | ✔️            | ✔️         
-|                   | Přepínání mezi fotoaparáty                                                                                              | ✔️   | ✔️            | ✔️           
-|                   | Místní blokování/zrušení blokování                                                                                                  | ✔️   | ✔️            | ✔️           
-|                   | Aktivní mluvčí                                                                                                      | ✔️   | ✔️            | ✔️           
-|                   | Zvolit mluvčí pro volání                                                                                            | ✔️   | ✔️            | ✔️           
-|                   | Volba mikrofonu pro volání                                                                                         | ✔️   | ✔️            | ✔️           
-|                   | Zobrazit stav účastníka<br/>*Nečinné, předčasné médium, připojení, připojení, blokováno, v předsálí, odpojeno*         | ✔️   | ✔️            | ✔️           
-|                   | Zobrazit stav volání<br/>*Předčasné médium, příchozí, připojení, vyzvánění, připojení, blokování, odpojování, odpojení* | ✔️   | ✔️            | ✔️           
-|                   | Zobrazit, zda je účastník ztlumený                                                                                      | ✔️   | ✔️            | ✔️           
-|                   | Zobrazit důvod, proč účastník opustí volání                                                                       | ✔️   | ✔️            | ✔️     
-| Sdílení obrazovky    | Sdílet celou obrazovku v rámci aplikace                                                                 | ✔️   | ❌            | ❌           
-|                   | Sdílet konkrétní aplikaci (ze seznamu spuštěných aplikací)                                                | ✔️   | ❌            | ❌           
-|                   | Sdílení karty webového prohlížeče ze seznamu otevřených karet                                                                  | ✔️   | ❌            | ❌           
-|                   | Účastník může zobrazit sdílenou složku na vzdálené obrazovce.                                                                            | ✔️   | ✔️            | ✔️         
-| Soupis            | Seznam účastníků                                                                                                   | ✔️   | ✔️            | ✔️           
-|                   | Odebrat účastníka                                                                                                | ✔️   | ✔️            | ✔️         
-| Veřejná              | Vložení volání 1:1 s účastníkem veřejné sítě                                                                     | ✔️   | ✔️            | ✔️   
+|                   | Zapnout/vypnout video                                                         | ✔️   | ✔️            | ✔️
+|                   | Ztlumení a ztlumení mikrofonu                                                                                                     | ✔️   | ✔️            | ✔️
+|                   | Přepínání mezi fotoaparáty                                                                                              | ✔️   | ✔️            | ✔️
+|                   | Místní blokování/zrušení blokování                                                                                                  | ✔️   | ✔️            | ✔️
+|                   | Aktivní mluvčí                                                                                                      | ✔️   | ✔️            | ✔️
+|                   | Zvolit mluvčí pro volání                                                                                            | ✔️   | ✔️            | ✔️
+|                   | Volba mikrofonu pro volání                                                                                         | ✔️   | ✔️            | ✔️
+|                   | Zobrazit stav účastníka<br/>*Nečinné, předčasné médium, připojení, připojení, blokováno, v předsálí, odpojeno*         | ✔️   | ✔️            | ✔️
+|                   | Zobrazit stav volání<br/>*Předčasné médium, příchozí, připojení, vyzvánění, připojení, blokování, odpojování, odpojení* | ✔️   | ✔️            | ✔️
+|                   | Zobrazit, zda je účastník ztlumený                                                                                      | ✔️   | ✔️            | ✔️
+|                   | Zobrazit důvod, proč účastník opustí volání                                                                       | ✔️   | ✔️            | ✔️
+| Sdílení obrazovky    | Sdílet celou obrazovku v rámci aplikace                                                                 | ✔️   | ❌            | ❌
+|                   | Sdílet konkrétní aplikaci (ze seznamu spuštěných aplikací)                                                | ✔️   | ❌            | ❌
+|                   | Sdílení karty webového prohlížeče ze seznamu otevřených karet                                                                  | ✔️   | ❌            | ❌
+|                   | Účastník může zobrazit sdílenou složku na vzdálené obrazovce.                                                                            | ✔️   | ✔️            | ✔️
+| Soupis            | Seznam účastníků                                                                                                   | ✔️   | ✔️            | ✔️
+|                   | Odebrat účastníka                                                                                                | ✔️   | ✔️            | ✔️
+| Veřejná              | Vložení volání 1:1 s účastníkem veřejné sítě                                                                     | ✔️   | ✔️            | ✔️
 |                   | Umístěte volání skupiny do účastníků veřejné telefonní sítě.                                                                           | ✔️   | ✔️            | ✔️
 |                   | Zvýšení úrovně volání 1:1 s účastníkem veřejné sítě na volání skupiny                                                 | ✔️   | ✔️            | ✔️
-|                   | Telefonické připojení z volání skupiny jako účastník veřejné sítě                                                                    | ✔️   | ✔️            | ✔️   
-| Obecné           | Testování mikrofonu, mluvčího a fotoaparátu pomocí služby zvukové testování (k dispozici při volání 8: echo123)                   |  ✔️  | ✔️            | ✔️   
+|                   | Telefonické připojení z volání skupiny jako účastník veřejné sítě                                                                    | ✔️   | ✔️            | ✔️
+| Obecné           | Testování mikrofonu, mluvčího a fotoaparátu pomocí služby zvukové testování (k dispozici při volání 8: echo123)                   |  ✔️  | ✔️            | ✔️
 
 ## <a name="javascript-calling-client-library-support-by-os-and-browser"></a>JavaScript – volání klientské podpory pomocí operačního systému a prohlížeče
 
@@ -96,7 +94,7 @@ Komunikační služby volající klientské knihovny podporují následující k
 
 |           |Web | Android/iOS|
 |-----------|----|------------|
-|**počet odchozích streamů, které se dají poslat současně** |1 audio/video nebo 1 sdílení zvuku/obrazovky | 1 zvuk/video | 
+|**počet odchozích streamů, které se dají poslat současně** |1 audio/video nebo 1 sdílení zvuku/obrazovky | 1 zvuk/video |
 |**počet příchozích streamů, které se dají vykreslovat současně** |1 audio/video nebo 1 sdílení zvuku/obrazovky| 6 audio/video nebo 1 sdílení obrazovky |
 
 Všimněte si, že ve scénářích skupiny je jeden smíšený zvukový stream použit k podpoře všech účastníků zvuku.
@@ -107,6 +105,6 @@ Všimněte si, že ve scénářích skupiny je jeden smíšený zvukový stream 
 > [Začínáme s voláním](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
 
 Další informace najdete v následujících článcích:
-- Seznamte se s obecnými [toky volání](../call-flows.md) 
+- Seznamte se s obecnými [toky volání](../call-flows.md)
 - Další informace o [typech volání](../voice-video-calling/about-call-types.md)
 - Další informace o [typech telefonních čísel](../telephony-sms/plan-solution.md)

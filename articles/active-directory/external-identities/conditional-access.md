@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b3c3d4d474c61cbe472b4122ac2f80f218bf8d
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 74bfa4987f584bbd3490bc5f4f187dee5bc1bd87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797264"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646278"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Podmíněný přístup pro uživatele spolupráce B2B
 
@@ -42,7 +42,7 @@ Následující diagram znázorňuje tok: ![ obrázek znázorňuje tok ověřová
 | Krok | Popis |
 |--------------|-----------------------|
 | 1. |Uživatel požaduje přístup k prostředku v jiném tenantovi. Prostředek přesměruje uživatele do svého tenanta prostředků, důvěryhodného IdP.|
-| 2. | Tenant prostředků identifikuje uživatele jako [externí e-mailové heslo (jednorázového hesla)](https://docs.microsoft.com/azure/active-directory/external-identities/one-time-passcode) a pošle mu E-mail s jednorázovým heslem.|
+| 2. | Tenant prostředků identifikuje uživatele jako [externí e-mailové heslo (jednorázového hesla)](./one-time-passcode.md) a pošle mu E-mail s jednorázovým heslem.|
 | 3. | Uživatel načte jednorázové heslo a odešle kód. Tenant prostředků vyhodnocuje uživatele proti zásadám certifikační autority.
 | 4. | Jakmile jsou všechny zásady certifikační autority splněné, tenant prostředku vydá token a přesměruje uživatele na jeho prostředek. |
 
@@ -64,7 +64,7 @@ Pro uživatele, kteří jsou pro Azure AD Multi-Factor Authentication, je vždyc
 
 5. Tento scénář je vhodný pro jakoukoli identitu – Azure AD nebo osobní účet Microsoft (MSA). Například pokud se uživatel v contoso ověřuje pomocí sociálního ID.
 
-6. Společnost Fabrikam musí mít dostatečný nárok na licence Azure AD, které podporují Multi-Factor Authentication služby Azure AD. Uživatel od společnosti Contoso pak tuto licenci spotřebuje od společnosti Fabrikam. Informace o licencích B2B najdete v tématu [Model fakturace pro externí identity Azure AD](https://docs.microsoft.com/azure/active-directory/external-identities/external-identities-pricing) .
+6. Společnost Fabrikam musí mít dostatečný nárok na licence Azure AD, které podporují Multi-Factor Authentication služby Azure AD. Uživatel od společnosti Contoso pak tuto licenci spotřebuje od společnosti Fabrikam. Informace o licencích B2B najdete v tématu [Model fakturace pro externí identity Azure AD](./external-identities-pricing.md) .
 
 >[!NOTE]
 >Multi-Factor Authentication Azure AD se provádí v architektuře prostředků, aby se zajistila předvídatelnost.
@@ -115,44 +115,43 @@ Existují různé faktory, které mají vliv na zásady certifikační autority 
 
 ### <a name="device-based-conditional-access"></a>Podmíněný přístup založený na zařízeních
 
-V certifikační autoritě je k dispozici možnost vyžadovat, [aby zařízení uživatele vyhovovalo předpisům nebo byl připojen k hybridní službě Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#device-state-preview). Uživatelé typu Host B2B můžou splnit dodržování předpisů jenom v případě, že je v tenantovi prostředků možné spravovat svoje zařízení. Zařízení se nedají spravovat v jednom okamžiku více než jedné organizaci. Uživatelé typu Host B2B nemůžou splnit připojení k hybridní službě Azure AD, protože nemají místní účet služby AD. Jenom v případě, že je zařízení uživatele typu Host nespravované, může zaregistrovat nebo zaregistrovat svoje zařízení v tenantovi prostředku a pak zajistit, aby zařízení odpovídalo. Uživatel pak může splnit řízení udělení.
+V certifikační autoritě je k dispozici možnost vyžadovat, [aby zařízení uživatele vyhovovalo předpisům nebo byl připojen k hybridní službě Azure AD](../conditional-access/concept-conditional-access-conditions.md#device-state-preview). Uživatelé typu Host B2B můžou splnit dodržování předpisů jenom v případě, že je v tenantovi prostředků možné spravovat svoje zařízení. Zařízení se nedají spravovat v jednom okamžiku více než jedné organizaci. Uživatelé typu Host B2B nemůžou splnit připojení k hybridní službě Azure AD, protože nemají místní účet služby AD. Jenom v případě, že je zařízení uživatele typu Host nespravované, může zaregistrovat nebo zaregistrovat svoje zařízení v tenantovi prostředku a pak zajistit, aby zařízení odpovídalo. Uživatel pak může splnit řízení udělení.
 
 >[!Note]
 >Nedoporučujeme vyžadovat spravované zařízení pro externí uživatele.
 
 ### <a name="mobile-application-management-policies"></a>Zásady správy mobilních aplikací
 
-Certifikační autorita udělí ovládací prvky, jako je **třeba vyžadovat schválené klientské aplikace** a **vyžadují zásady ochrany aplikací** , musí být zařízení zaregistrované v tenantovi. Tyto ovládací prvky se dají použít jenom pro [zařízení s iOS a Androidem](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#device-platforms). Ani jeden z těchto ovládacích prvků nelze použít u uživatelů typu Host B2B, pokud je zařízení uživatele již spravováno jinou organizací. Mobilní zařízení nelze zaregistrovat ve více než jednom klientovi současně. Pokud je mobilní zařízení spravováno jinou organizací, bude uživatel zablokován. Jenom v případě, že je zařízení uživatele typu Host nespravované, může zaregistrovat svoje zařízení v tenantovi prostředků. Uživatel pak může splnit řízení udělení.  
+Certifikační autorita udělí ovládací prvky, jako je **třeba vyžadovat schválené klientské aplikace** a **vyžadují zásady ochrany aplikací** , musí být zařízení zaregistrované v tenantovi. Tyto ovládací prvky se dají použít jenom pro [zařízení s iOS a Androidem](../conditional-access/concept-conditional-access-conditions.md#device-platforms). Ani jeden z těchto ovládacích prvků nelze použít u uživatelů typu Host B2B, pokud je zařízení uživatele již spravováno jinou organizací. Mobilní zařízení nelze zaregistrovat ve více než jednom klientovi současně. Pokud je mobilní zařízení spravováno jinou organizací, bude uživatel zablokován. Jenom v případě, že je zařízení uživatele typu Host nespravované, může zaregistrovat svoje zařízení v tenantovi prostředků. Uživatel pak může splnit řízení udělení.  
 
 >[!NOTE]
 >Nedoporučujeme vyžadovat zásady ochrany aplikací pro externí uživatele.
 
 ### <a name="location-based-conditional-access"></a>Podmíněný přístup na základě umístění
 
-[Zásady založené na umístěních](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#locations) založené na ROZSAHech IP adres je možné vyhovět, pokud může organizace vytvořit rozsah důvěryhodných IP adres, který definuje své partnerské organizace.
+[Zásady založené na umístěních](../conditional-access/concept-conditional-access-conditions.md#locations) založené na ROZSAHech IP adres je možné vyhovět, pokud může organizace vytvořit rozsah důvěryhodných IP adres, který definuje své partnerské organizace.
 
 Zásady je také možné vyhovět na základě **geografických umístění**.
 
 ### <a name="risk-based-conditional-access"></a>Podmíněný přístup založený na riziku
 
-[Zásady rizik přihlašování](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#sign-in-risk) se vynutily, pokud uživatel typu Host B2B splní řízení grantu. Organizace může například vyžadovat Multi-Factor Authentication Azure AD pro střední nebo vysoké riziko přihlašování. Pokud se ale uživatel dřív nezaregistroval pro Multi-Factor Authentication služby Azure AD v tenantovi prostředků, uživatel se zablokuje. K tomu je potřeba zabránit uživatelům se zlými úmysly v registraci vlastních přihlašovacích údajů služby Azure AD Multi-Factor Authentication v případě, že budou ohrozit heslo legitimního uživatele.
+[Zásady rizik přihlašování](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk) se vynutily, pokud uživatel typu Host B2B splní řízení grantu. Organizace může například vyžadovat Multi-Factor Authentication Azure AD pro střední nebo vysoké riziko přihlašování. Pokud se ale uživatel dřív nezaregistroval pro Multi-Factor Authentication služby Azure AD v tenantovi prostředků, uživatel se zablokuje. K tomu je potřeba zabránit uživatelům se zlými úmysly v registraci vlastních přihlašovacích údajů služby Azure AD Multi-Factor Authentication v případě, že budou ohrozit heslo legitimního uživatele.
 
-[Zásady rizik uživatelů](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#user-risk) se v tenantovi prostředků ale nedají přeložit. Pokud například požadujete změnu hesla pro vysoce rizikové uživatele typu Host, budou blokovány z důvodu nemožnostho resetování hesel v adresáři prostředků.
+[Zásady rizik uživatelů](../conditional-access/concept-conditional-access-conditions.md#user-risk) se v tenantovi prostředků ale nedají přeložit. Pokud například požadujete změnu hesla pro vysoce rizikové uživatele typu Host, budou blokovány z důvodu nemožnostho resetování hesel v adresáři prostředků.
 
 ### <a name="conditional-access-client-apps-condition"></a>Podmínka pro klientské aplikace podmíněného přístupu
 
-[Podmínky klientských aplikací](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps) se chovají stejně pro uživatele typu Host B2B jako u jakéhokoli jiného typu uživatele. Uživatelům typu Host můžete například zabránit v používání starších ověřovacích protokolů.
+[Podmínky klientských aplikací](../conditional-access/concept-conditional-access-conditions.md#client-apps) se chovají stejně pro uživatele typu Host B2B jako u jakéhokoli jiného typu uživatele. Uživatelům typu Host můžete například zabránit v používání starších ověřovacích protokolů.
 
 ### <a name="conditional-access-session-controls"></a>Ovládací prvky relace podmíněného přístupu
 
-[Ovládací prvky relace](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session) se chovají stejně pro uživatele typu Host B2B jako u jakéhokoli jiného typu uživatele.
+[Ovládací prvky relace](../conditional-access/concept-conditional-access-session.md) se chovají stejně pro uživatele typu Host B2B jako u jakéhokoli jiného typu uživatele.
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v následujících článcích o spolupráci Azure AD B2B:
 
-- [Co je spolupráce B2B ve službě Azure AD?](https://docs.microsoft.com/azure/active-directory/external-identities/what-is-b2b)
-- [Ochrana identit a uživatelé B2B](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-b2b)
+- [Co je spolupráce B2B ve službě Azure AD?](./what-is-b2b.md)
+- [Ochrana identit a uživatelé B2B](../identity-protection/concept-identity-protection-b2b.md)
 - [Externí identity – ceny](https://azure.microsoft.com/pricing/details/active-directory/)
-- [Nejčastější dotazy](https://docs.microsoft.com/azure/active-directory/external-identities/faq)
-
+- [Nejčastější dotazy](./faq.md)

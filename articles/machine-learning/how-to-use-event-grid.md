@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 1fd177273c9dafb04add64d8a8bfef1d81cc65d0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 06b871d29c26241c38be27c4ace8ab7461834fd1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319312"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101655713"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Aktivovat aplikace, procesy nebo pracovní postupy CI/CD na základě Azure Machine Learningch událostí (Preview)
 
@@ -30,10 +30,7 @@ Kdy použít Event Grid pro akce řízené událostmi:
 * Streamování událostí z Azure Machine Learning do různých koncových bodů
 * Aktivace kanálu ML při zjištění posunu
 
-> [!NOTE] 
-> V současné době se události runStatusChanged aktivují jenom v případě, že se stav spuštění **nezdařil** .
-
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Chcete-li použít Event Grid, potřebujete přístup přispěvatele nebo vlastníka k pracovnímu prostoru Azure Machine Learning, ve kterém vytvoříte události.
 
 ## <a name="the-event-model--types"></a>Typy & modelu událostí
@@ -84,7 +81,7 @@ Předplatná pro Azure Machine Learning události jsou chráněná řízením p�
   | `Microsoft.MachineLearningServices.DatasetDriftDetected` | `datadrift/{data.DataDriftId}/run/{data.RunId}` | `datadrift/4e694bf5-712e-4e40-b06a-d2a2755212d4/run/my_driftrun1_1550564444_fbbcdc0f` |
   | `Microsoft.MachineLearningServices.RunStatusChanged` | `experiments/{ExperimentId}/runs/{RunId}` | `experiments/b1d7966c-f73a-4c68-b846-992ace89551f/runs/my_exp1_1554835758_38dbaa94` | 
 
-+ **Rozšířené filtrování** : Azure Event Grid podporuje také rozšířené filtrování založené na publikovaných schématech událostí. Podrobnosti o schématu události Azure Machine Learning najdete v [Azure Event Grid schématu událostí pro Azure Machine Learning](../event-grid/event-schema-machine-learning.md).  Mezi příklady rozšířených filtrů, které můžete provádět, patří:
++ **Rozšířené filtrování**: Azure Event Grid podporuje také rozšířené filtrování založené na publikovaných schématech událostí. Podrobnosti o schématu události Azure Machine Learning najdete v [Azure Event Grid schématu událostí pro Azure Machine Learning](../event-grid/event-schema-machine-learning.md).  Mezi příklady rozšířených filtrů, které můžete provádět, patří:
 
   Pro `Microsoft.MachineLearningServices.ModelRegistered` událost, pokud chcete filtrovat hodnotu značky modelu:
 
@@ -120,7 +117,7 @@ Azure Event Grid umožňuje zákazníkům vytvářet nespojené obslužné rutin
 
     ![select-events-in-workspace.png](./media/how-to-use-event-grid/select-event.png)
 
-1. Vyberte typ události, který se má spotřebovat. Například následující snímek obrazovky má __zaregistrovaný model__ , byl __nasazen model__ , __dokončen běh__ a __byl zjištěn posun datových sad__ :
+1. Vyberte typ události, který se má spotřebovat. Například následující snímek obrazovky má __zaregistrovaný model__, byl __nasazen model__, __dokončen běh__ a __byl zjištěn posun datových sad__:
 
     ![Přidat typ události](./media/how-to-use-event-grid/add-event-type-updated.png)
 

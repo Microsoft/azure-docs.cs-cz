@@ -8,16 +8,14 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5ea4e4fcce380a3bd9c30312639f7aa10bf0bb90
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 8e08c531cd46d5112138a3feedf97b27307e3dca
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653461"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656189"
 ---
 # <a name="region-availability-and-data-residency"></a>Rezidence dat a dostupnost oblastí
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Komunikační služby Azure se zavazují, aby naši zákazníci mohli splnit požadavky na ochranu osobních údajů a osobní údaje. Jako vývojář, který používá komunikační služby s přímým vztahem na lidi, kteří používají aplikaci, jste si potenciálně kontrolují svá data. Vzhledem k tomu, že služba Azure Communication Services ukládá tato data vaším jménem, máme pravděpodobně procesor těchto dat. Tato stránka shrnuje, jak služba uchovává data a jak můžete tato data identifikovat, exportovat a odstranit.
 
@@ -65,7 +63,7 @@ Vlákna a zprávy chatu se uchovávají, dokud je explicitně neodstraníte. Po 
 
 ### <a name="sms"></a>SMS
 
-Odeslané a přijaté zprávy SMS jsou ephemerally zpracovávány službou a neuchovávají se. 
+Odeslané a přijaté zprávy SMS jsou ephemerally zpracovávány službou a neuchovávají se.
 
 ### <a name="pstn-voice-calling"></a>Volání hlasu veřejné telefonní sítě
 

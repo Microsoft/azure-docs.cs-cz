@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 70f5e17c4cc42201e9aa3d36c9937f6ceb9527d0
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 10904275d382c7f9dbf223ded78cab0adf14992a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880199"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661048"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Transformace dat v Návrháři Azure Machine Learning
 
@@ -76,7 +76,7 @@ V této části použijete [modul rozdělit data](algorithm-module-reference/spl
 
 Váš kanál by měl vypadat takto:
 
-:::image type="content" source="./media/how-to-designer-transform-data/split-data.png"alt-text="Snímek obrazovky ukazující, jak nakonfigurovat kanál a modul rozdělit data":::
+:::image type="content" source="./media/how-to-designer-transform-data/split-data.png" alt-text="Snímek obrazovky ukazující, jak nakonfigurovat kanál a modul rozdělit data":::
 
 
 ## <a name="save-the-datasets"></a>Uložení datových sad

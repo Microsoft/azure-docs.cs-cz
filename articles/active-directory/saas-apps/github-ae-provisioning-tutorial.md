@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4e43ebba9f5f3d0c52d1d03bbf6baca92d5b87a4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c3384effc961c6c588bc2d7f4f75bc386d63076b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96178683"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651568"
 ---
 # <a name="tutorial-configure-github-ae-for-automatic-user-provisioning"></a>Kurz: Konfigurace GitHubu AE pro Automatické zřizování uživatelů
 
@@ -34,7 +34,7 @@ Tento kurz popisuje kroky, které je třeba provést v GitHubu AE i Azure Active
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a GitHubem AE
 > * Jednotné přihlašování do [GitHubu AE](./github-ae-tutorial.md) (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -111,17 +111,27 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
    |název. formátovaný|Řetězec|
    |displayName|Řetězec|
 
-10. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny do GitHubu AE**.
 
-11. Pokud chcete povolit službu zřizování Azure AD pro GitHub AE, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+11. Zkontrolujte atributy skupiny synchronizované z Azure AD do GitHubu AE v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v GitHubu AE pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+
+      |Atribut|Typ|
+      |---|---|
+      |displayName|Řetězec|
+      |externalId|Řetězec|
+      |členy|Referenční informace|
+
+12. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+
+13. Pokud chcete povolit službu zřizování Azure AD pro GitHub AE, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
     ![Zapnutý přepínač Stav zřizování](common/provisioning-toggle-on.png)
 
-12. Definujte uživatele nebo skupiny, které chcete zřídit na GitHubu AE, a vyberte požadované hodnoty v **rozsahu** v části **Nastavení** .
+14. Definujte uživatele nebo skupiny, které chcete zřídit na GitHubu AE, a vyberte požadované hodnoty v **rozsahu** v části **Nastavení** .
 
     ![Rozsah zřizování](common/provisioning-scope.png)
 
-13. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
+15. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
 
     ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
@@ -133,6 +143,10 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 1. S využitím [protokolů zřizování](../reports-monitoring/concept-provisioning-logs.md) můžete zjistit, kteří uživatelé se zřídili úspěšně a kteří neúspěšně.
 2. Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md).
 3. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](../app-provisioning/application-provisioning-quarantine-status.md).  
+
+## <a name="change-log"></a>Protokol změn
+
+* 02/18/2021 – přidala se podpora pro zřizování skupin.
 
 ## <a name="additional-resources"></a>Další zdroje informací
 

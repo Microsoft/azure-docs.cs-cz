@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 87f592f0cff8504fbafba392d20f405640e2578a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e1a0f4f22411e506cab3b54e955a4cdc16986fe2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682966"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667502"
 ---
 # <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Fond SQL bez serveru ve službě Azure synapse Analytics 
 
@@ -75,7 +75,7 @@ Zabezpečení je možné vyhovět pomocí:
 
 Podporované T-SQL:
 
-- Plocha kompletního [výběru](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) je podporovaná, včetně většiny funkcí SQL.
+- Plocha kompletního [výběru](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) je podporovaná, včetně většiny funkcí SQL.
 - CETAS – VYTVOŘIT EXTERNÍ TABULKU JAKO SELECT
 - Příkazy DDL související s pohledy a zabezpečením
 
@@ -89,7 +89,7 @@ Neserverový fond SQL nemá žádné místní úložiště, ukládají se do dat
 
 ### <a name="extensions"></a>Rozšíření
 
-Aby bylo možné zapnout hladké prostředí pro účely zadávání dotazů na data umístěná v souborech v Data Lake, fond SQL bez serveru rozšiřuje stávající funkci [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) přidáním následujících možností:
+Aby bylo možné zapnout hladké prostředí pro účely zadávání dotazů na data umístěná v souborech v Data Lake, fond SQL bez serveru rozšiřuje stávající funkci [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql?view=azure-sqldw-latest&preserve-view=true) přidáním následujících možností:
 
 [Dotazování na více souborů nebo složek](query-data-storage.md#query-multiple-files-or-folders)
 
@@ -113,7 +113,7 @@ Fond SQL bez serveru nabízí mechanismy pro zabezpečení přístupu k datům.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Integrace s Azure Active Directory a vícefaktorové ověřování
 
-Fond SQL bez serveru umožňuje centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu pomocí [Azure Active Directory Integration](../../azure-sql/database/authentication-aad-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Tato možnost zjednodušuje správu oprávnění a zvyšuje zabezpečení. Azure Active Directory (Azure AD) podporuje [vícefaktorové ověřování](../../azure-sql/database/authentication-mfa-ssms-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) pro zvýšení zabezpečení dat a aplikací a současně podporuje proces jednotného přihlašování.
+Fond SQL bez serveru umožňuje centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu pomocí [Azure Active Directory Integration](../../azure-sql/database/authentication-aad-configure.md). Tato možnost zjednodušuje správu oprávnění a zvyšuje zabezpečení. Azure Active Directory (Azure AD) podporuje [vícefaktorové ověřování](../../azure-sql/database/authentication-mfa-ssms-configure.md) (MFA) pro zvýšení zabezpečení dat a aplikací a současně podporuje proces jednotného přihlašování.
 
 #### <a name="authentication"></a>Authentication
 
@@ -125,7 +125,7 @@ Ověřování fondu SQL bez serveru odkazuje na to, jak uživatelé při připoj
 
 - **Ověřování Azure Active Directory**:
 
-  Tato metoda ověřování používá identity spravované pomocí Azure Active Directory. Pro uživatele Azure AD můžete povolit službu Multi-Factor Authentication. [Kdykoliv to půjde](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), použijte ověřování pomocí Active Directory (integrované zabezpečení).
+  Tato metoda ověřování používá identity spravované pomocí Azure Active Directory. Pro uživatele Azure AD můžete povolit službu Multi-Factor Authentication. [Kdykoliv to půjde](/sql/relational-databases/security/choose-an-authentication-mode?view=azure-sqldw-latest&preserve-view=true), použijte ověřování pomocí Active Directory (integrované zabezpečení).
 
 #### <a name="authorization"></a>Autorizace
 

@@ -1,33 +1,33 @@
 ---
 title: Vlastnosti metadat obsahu
 titleSuffix: Azure Cognitive Search
-description: Vlastnosti metadat objektů BLOB můžou poskytovat obsah do polí indexu vyhledávání nebo informace, které v době běhu informují chování při indexování. Tento článek obsahuje seznam vlastností metadat podporovaných v Azure Kognitivní hledání.
+description: Vlastnosti metadat dokumentu můžou poskytovat obsah do polí indexu vyhledávání nebo informace, které v době běhu informují chování při indexování. Tento článek obsahuje seznam vlastností metadat podporovaných v Azure Kognitivní hledání.
 manager: nitinme
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: 79443785dbd8619e22358631c9c36a3da4ef2e84
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.date: 02/22/2021
+ms.openlocfilehash: cbb35f596a1d32816d1a73b462bf590d9dde0d52
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99477298"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668414"
 ---
-# <a name="content-metadata-properties-used-in-blob-indexing-in-azure-cognitive-search"></a>Vlastnosti metadat obsahu používané při indexování objektů BLOB v Azure Kognitivní hledání
+# <a name="content-metadata-properties-used-in-azure-cognitive-search"></a>Vlastnosti metadat obsahu používané v Azure Kognitivní hledání
 
-Objekty blob můžou obsahovat různé obsahy a mnohé z těchto typů obsahu mají vlastnosti metadat, které můžou být užitečné při indexování objektů BLOB. Stejně jako můžete vytvořit vyhledávací pole pro standardní vlastnosti objektů blob, jako je **`metadata_storage_name`** , můžete vytvořit pole pro vlastnosti metadat, které jsou specifické pro formát dokumentu.
+SharePoint Online a Azure Blob Storage můžou obsahovat různé obsahy a mnohé z těchto typů obsahu mají vlastnosti metadat, které mohou být užitečné pro index. Stejně jako můžete vytvořit vyhledávací pole pro standardní vlastnosti objektů blob, jako je **`metadata_storage_name`** , můžete vytvořit pole pro vlastnosti metadat, které jsou specifické pro formát dokumentu.
 
 ## <a name="supported-document-formats"></a>Podporované formáty dokumentů
 
-Kognitivní hledání podporuje indexování objektů BLOB pro následující formáty dokumentů:
+Kognitivní hledání podporuje indexování objektů BLOB a indexování dokumentů SharePointu Online pro následující formáty dokumentů:
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
 ## <a name="properties-by-document-format"></a>Vlastnosti podle formátu dokumentu
 
-Následující tabulka shrnuje zpracování pro jednotlivé formáty dokumentů a popisuje vlastnosti metadat extrahované indexerem objektů BLOB.
+Následující tabulka shrnuje zpracování pro jednotlivé formáty dokumentů a popisuje vlastnosti metadat extrahované indexerem objektů BLOB a indexerem služby SharePoint Online.
 
 | Formát dokumentu/typ obsahu | Extrahovaná metadata | Podrobnosti zpracování |
 | --- | --- | --- |
@@ -62,3 +62,4 @@ Následující tabulka shrnuje zpracování pro jednotlivé formáty dokumentů 
 * [Indexery ve službě Azure Cognitive Search](search-indexer-overview.md)
 * [Principy objektů BLOB pomocí AI](search-blob-ai-integration.md)
 * [Přehled indexování objektů BLOB](search-blob-storage-integration.md)
+* [Indexování SharePointu Online](search-howto-index-sharepoint-online.md)

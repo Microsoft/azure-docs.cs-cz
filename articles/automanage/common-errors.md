@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: alsin
-ms.openlocfilehash: 13388bf289c1d10a2e7da04a4dd5d26be109535e
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: df5133ad4bb3155afdc9d43e595591d9cfda4ea0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98697818"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644438"
 ---
 # <a name="troubleshoot-common-automanage-onboarding-errors"></a>Řešení běžných chyb při připojování běžných možností automanage
 Při autosprávě se nemusí na službu připojit počítač. Tento dokument vysvětluje, jak řešit potíže s nasazením, sdílí některé běžné důvody, proč nasazení můžou selhat, a popisuje možné další kroky při zmírnění rizik.
@@ -37,7 +37,7 @@ Pokud se v rámci skupiny prostředků nebo předplatného obsahujícího váš 
 Chyba |  Omezení rizik
 :-----|:-------------|
 Chyba při autosprávě účtu s nedostatečnými oprávněními | K tomu může dojít v případě, že jste nedávno přesunuli předplatné obsahující nový účet pro správu do nového tenanta. Postup, jak tento problém vyřešit, najdete [tady](./repair-automanage-account.md).
-Neshodující se požadavky na mapování oblastí v pracovním prostoru | Automatickou správou se nepovedlo připojit počítač, ale pracovní prostor Log Analytics, ke kterému je počítač aktuálně propojený, není namapovaný na podporovanou oblast automatizace. Ujistěte se, že je váš stávající pracovní prostor Log Analytics a účet Automation umístěný v [podporovaném mapování oblasti](https://docs.microsoft.com/azure/automation/how-to/region-mappings).
+Neshodující se požadavky na mapování oblastí v pracovním prostoru | Automatickou správou se nepovedlo připojit počítač, ale pracovní prostor Log Analytics, ke kterému je počítač aktuálně propojený, není namapovaný na podporovanou oblast automatizace. Ujistěte se, že je váš stávající pracovní prostor Log Analytics a účet Automation umístěný v [podporovaném mapování oblasti](../automation/how-to/region-mappings.md).
 "Přiřazení nebylo úspěšné; nejsou k dispozici žádné další informace. " | Otevřete prosím případ s podporou Microsoft Azure.
 
 ## <a name="next-steps"></a>Další kroky
@@ -46,4 +46,3 @@ Neshodující se požadavky na mapování oblastí v pracovním prostoru | Autom
 
 > [!div class="nextstepaction"]
 > [Povolit automanage pro virtuální počítače v Azure Portal](quick-create-virtual-machines-portal.md)
-

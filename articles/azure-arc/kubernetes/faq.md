@@ -2,18 +2,18 @@
 title: Nejčastější dotazy k Azure ARC s povoleným Kubernetes
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/17/2021
+ms.date: 02/19/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Tento článek obsahuje seznam nejčastějších dotazů souvisejících s povoleným Kubernetesem Azure ARC.
 keywords: Kubernetes, oblouk, Azure, kontejnery, konfigurace, GitOps, nejčastější dotazy
-ms.openlocfilehash: e0d7501dc1a82940571d0168222c396f61a70bce
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: dc12294b5d53372be5f2e1dd71436973fefbb194
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652492"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647859"
 ---
 # <a name="frequently-asked-questions---azure-arc-enabled-kubernetes"></a>Nejčastější dotazy – Kubernetes s povoleným obloukem Azure
 
@@ -32,6 +32,8 @@ No. Všechny funkce Kubernetes s podporou ARC Azure, včetně Azure Monitor a Az
 ## <a name="should-i-connect-my-aks-hci-cluster-and-kubernetes-clusters-on-azure-stack-hub-and-azure-stack-edge-to-azure-arc"></a>Mám připojit cluster AKS-HCI a clustery Kubernetes v centru Azure Stack a Azure Stack Edge do Azure ARC?
 
 Ano, propojíte cluster AKS-HCI nebo clustery Kubernetes v Azure Stack Edge nebo centrum Azure Stack do Azure ARC, které poskytuje clustery se reprezentacemi prostředků v Azure Resource Manager. Tato reprezentace prostředků rozšiřuje možnosti jako konfigurace clusteru, Azure Monitor a Azure Policy (gatekeeper) na připojené clustery Kubernetes.
+
+Pokud je cluster Kubernetes s podporou Azure ARC na Azure Stack Edge, AKS na Azure Stack HCl (>= duben 2021), nebo AKS v systému Windows Server 2019 Datacenter (>= duben 2021), bude konfigurace Kubernetes zapsána zdarma.
 
 ## <a name="how-to-address-expired-azure-arc-enabled-kubernetes-resources"></a>Jak vyřešíte neplatných prostředků Kubernetes s povoleným obloukem ARC Azure?
 
@@ -70,6 +72,6 @@ Tato funkce používá základní konfigurace (jako jsou zásady sítě, vazby r
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Připojit cluster ke službě Azure ARC](./connect-cluster.md)
+* [Připojit cluster ke službě Azure ARC](./quickstart-connect-cluster.md)
 * [Vytvoření konfigurací na clusteru Kubernetes s povoleným obloukem](./use-gitops-connected-cluster.md)
 * [Použití Azure Policy k aplikování konfigurací ve velkém měřítku](./use-azure-policy.md)

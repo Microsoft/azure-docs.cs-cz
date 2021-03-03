@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 503d5c5c8d605e56ca510f12cd9c6f5a1f21c0bc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 88fdfa1f449a0b65861ee09f2e78055a606c99d3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417186"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649202"
 ---
 # <a name="governing-on-premises-service-accounts"></a>Řízení účtů místních služeb
 
@@ -60,11 +60,11 @@ Při vytváření nového účtu služby použijte následující kritéria.
 
 U uživatelských účtů používaných jako účty služeb použijte následující nastavení:
 
-* [**Vypršení platnosti účtu**](https://docs.microsoft.com/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps): Nastavte účet služby tak, aby po dobu kontroly automaticky vyprší platnost nastaveného času, pokud se nezjistí, že by měl pokračovat.
+* [**Vypršení platnosti účtu**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps): Nastavte účet služby tak, aby po dobu kontroly automaticky vyprší platnost nastaveného času, pokud se nezjistí, že by měl pokračovat.
 
 *  **LogonWorkstations**: omezte oprávnění, kde se může účet služby přihlásit. Pokud se spustí místně na počítači a přistupuje pouze k prostředkům v tomto počítači, omezte jeho přihlášení na jiné místo.
 
-* [**Nelze změnit heslo**](https://docs.microsoft.com/powershell/module/addsadministration/set-aduser?view=win10-ps): zabrání účtu služby změnit jeho vlastní heslo nastavením parametru na hodnotu false.
+* [**Nelze změnit heslo**](/powershell/module/addsadministration/set-aduser?view=win10-ps): zabrání účtu služby změnit jeho vlastní heslo nastavením parametru na hodnotu false.
 
  
 ## <a name="build-a-lifecycle-management-process"></a>Sestavení procesu správy životního cyklu
@@ -149,17 +149,17 @@ Posouzení rizik, jakmile se pořídí a zdokumentující, může mít dopad na:
 
 Účet služby vytvořte jenom poté, co jsou důležité informace popsané ve vaší organizaci CMDB a provedete posouzení rizik. Omezení účtu by měla být zarovnaná na posouzení rizik. V případě potřeby zvažte následující omezení.:
 
-* [Vypršení platnosti účtu](https://docs.microsoft.com/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
+* [Vypršení platnosti účtu](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
 
-   * U všech uživatelských účtů používaných jako účty služeb definujte reálné a přesné datum ukončení, které se má použít. Tuto možnost nastavte pomocí příznaku "platnost účtu". Další podrobnosti najdete v tématu[ set-ADAccountExpiration](https://docs.microsoft.com/powershell/module/addsadministration/set-adaccountexpiration?view=win10-ps). 
+   * U všech uživatelských účtů používaných jako účty služeb definujte reálné a přesné datum ukončení, které se má použít. Tuto možnost nastavte pomocí příznaku "platnost účtu". Další podrobnosti najdete v tématu[ set-ADAccountExpiration](/powershell/module/addsadministration/set-adaccountexpiration?view=win10-ps). 
 
-* Přihlášení k ([LogonWorkstation](https://docs.microsoft.com/powershell/module/addsadministration/set-aduser?view=win10-ps))
+* Přihlášení k ([LogonWorkstation](/powershell/module/addsadministration/set-aduser?view=win10-ps))
 
-* Požadavky [zásad hesel](https://docs.microsoft.com/azure/active-directory-domain-services/password-policy)
+* Požadavky [zásad hesel](../../active-directory-domain-services/password-policy.md)
 
-* Vytvoření v [umístění organizační jednotky](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/delegating-administration-of-account-ous-and-resource-ous) , které zajišťuje správu pouze pro privilegované uživatele
+* Vytvoření v [umístění organizační jednotky](/windows-server/identity/ad-ds/plan/delegating-administration-of-account-ous-and-resource-ous) , které zajišťuje správu pouze pro privilegované uživatele
 
-* Nastavte a Shromážděte auditování [, které detekuje změny](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-changes) účtu služby – a [použití účtu služby](https://www.manageengine.com/products/active-directory-audit/how-to/audit-kerberos-authentication-events.html).
+* Nastavte a Shromážděte auditování [, které detekuje změny](/windows/security/threat-protection/auditing/audit-directory-service-changes) účtu služby – a [použití účtu služby](https://www.manageengine.com/products/active-directory-audit/how-to/audit-kerberos-authentication-events.html).
 
 Až budete připraveni do produkčního prostředí, udělte účtu služby zabezpečený přístup. 
 
@@ -193,7 +193,7 @@ Po odebrání všech oprávnění použijte tento postup k odebrání účtu.
 
 3. Odstraňte účet služby, jakmile bude splněna zásada zůstat zakázaná. 
 
-   * V případě účty spravované služby ho můžete [odinstalovat](https://docs.microsoft.com/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps) pomocí PowerShellu nebo ručně odstranit z kontejneru účtu spravované služby.
+   * V případě účty spravované služby ho můžete [odinstalovat](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps) pomocí PowerShellu nebo ručně odstranit z kontejneru účtu spravované služby.
 
    * V případě počítačů nebo uživatelských účtů můžete účet odstranit ručně ze služby Active Directory.
 

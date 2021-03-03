@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 09/09/2020
+ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 2ef125f65e13f7a9fa756553b1de148d4849babc
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: dda47d3ff561d4d57045dbb28f8c411e193086d5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553942"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657352"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Spuštění dávkového předpovědi pomocí návrháře Azure Machine Learning
 
@@ -51,7 +51,7 @@ Aby bylo možné vytvořit kanál Inferencing, musí být váš školicí kanál
 
 Teď, když je kanál školení spuštěný, můžete vytvořit kanál odvození dávky.
 
-1. Vedle **Odeslat** , vyberte Nový rozevírací seznam **vytvořit odvození kanálu**.
+1. Vedle **Odeslat**, vyberte Nový rozevírací seznam **vytvořit odvození kanálu**.
 
 1. Vyberte **kanál odvození dávky**.
 
@@ -144,6 +144,22 @@ Při publikování kanálu se můžete rozhodnout, že se pro tento koncový bod
 Na kartě **publikované kanály** vašeho koncového bodu můžete také nastavit nový výchozí kanál.
 
 ![Nastavení výchozího kanálu na stránce publikovaného kanálu](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
+
+## <a name="limitations"></a>Omezení
+
+Pokud provedete některé úpravy kanálu školení, měli byste znovu odeslat kanál školení, **aktualizovat**  kanál odvození a znovu spustit kanál odvození.
+
+Všimněte si, že v kanálu odvození budou aktualizovány pouze modely, zatímco transformace dat nebude aktualizována.
+
+Chcete-li použít aktualizovanou transformaci v kanálu odvození, je třeba registrovat výstup transformace modulu transformace jako datovou sadu.
+
+![Snímek obrazovky, který ukazuje, jak registrovat datovou sadu transformace](./media/how-to-run-batch-predictions-designer/register-transformation-dataset.png)
+
+Pak ručně nahraďte modul **td** v kanálu odvození s registrovanou datovou sadou.
+
+![Snímek obrazovky ukazující, jak nahradit transformační modul](./media/how-to-run-batch-predictions-designer/replace-td-module-batch-inference-pipeline.png)
+
+Pak můžete odeslat kanál odvození s aktualizovaným modelem a transformací a publikovat.
 
 ## <a name="next-steps"></a>Další kroky
 

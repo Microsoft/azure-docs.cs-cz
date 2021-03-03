@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.reviewer: sngun
-ms.openlocfilehash: 2b52a9227e8bd487a8929df11047eef4672f7f4a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2e9f3c877a5c4650d3e31fa414cac76837f4c9e8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100421773"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101655747"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-mongodb-native-tools"></a>Kurz: migrace MongoDB do rozhraní API služby Azure Cosmos DB pro MongoDB v režimu offline pomocí nativních nástrojů MongoDB
 
@@ -31,7 +31,7 @@ V tomto kurzu migrujete datovou sadu v MongoDB hostovaném na virtuálním poč�
 
 Nativní nástroje MongoDB můžou data přesouvat jenom tak rychle, jak to hostitelský hardware povoluje; nativní nástroje můžou být nejjednodušší řešení pro malé datové sady, kde celková doba migrace nepředstavuje žádný problém. [Konektor MongoDB Spark](https://docs.mongodb.com/spark-connector/current/), [Služba Azure Data MIGRATION Service (DMS)](../dms/tutorial-mongodb-cosmos-db.md)nebo [Azure Data Factory (ADF)](../data-factory/connector-azure-cosmos-db-mongodb-api.md) může být lepší alternativou, pokud potřebujete škálovatelný kanál migrace.
 
-Pokud ještě nemáte nastavený zdroj MongoDB, přečtěte si článek [instalace a konfigurace MongoDB na virtuálním počítači s Windows v Azure](../virtual-machines/windows/install-mongodb.md).
+Pokud ještě nemáte nastavený zdroj MongoDB, přečtěte si článek [instalace a konfigurace MongoDB na virtuálním počítači s Windows v Azure](/previous-versions/azure/virtual-machines/windows/install-mongodb).
 
 ## <a name="prerequisites"></a>Požadavky
 

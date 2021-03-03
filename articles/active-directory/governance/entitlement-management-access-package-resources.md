@@ -16,12 +16,12 @@ ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82247ae9817e5ff2e26d0862230654021876406b
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 65f69cf492ec3e28d7f4aa86971dc6c91b34bdf5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223261"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644169"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Změna rolí prostředků pro balíček přístupu v Azure AD – Správa nároků
 
@@ -90,7 +90,7 @@ Další informace najdete v tématu [porovnání skupin](/office365/admin/create
 
     Jakmile vyberete skupinu nebo tým, sloupec **Sub Type** zobrazí jeden z následujících podtypů:
 
-    | Dílčí typ | Description |
+    | Dílčí typ | Popis |
     | --- | --- |
     | Zabezpečení | Používá se pro udělení přístupu k prostředkům. |
     | Distribuce | Slouží k odesílání oznámení skupině lidí. |
@@ -144,13 +144,9 @@ Azure AD může automaticky přiřadit uživatele k webu SharePointu Online nebo
 
 1. Na stránce **Přidat role prostředků pro přístup k balíčku** kliknutím na **weby služby SharePoint** otevřete podokno vybrat weby SharePointu Online.
 
-    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-portal.png" alt-text="Přístup k balíčku – přidání rolí prostředků – výběr webů SharePointu – zobrazení portálu":::
+    :::image type="content" source="media/entitlement-management-access-package-resources/resource-sharepoint-add.png" alt-text="Přístup k balíčku – přidání rolí prostředků – výběr webů SharePointu – zobrazení portálu":::
 
-1. Pokud máte [více geograficky](https://docs.microsoft.com/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365?view=o365-worldwide) povolených pro SharePoint, vyberte prostředí, ze kterého chcete vybrat weby.
-    
-    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-select.png" alt-text="Přístup k balíčku – přidání rolí prostředků – výběr více geografických webů SharePointu":::
-
-1. Pokud není povoleno více geografických geografických umístění, nemusíte vybírat prostředí. Vyberte weby SharePointu Online, které chcete zahrnout do balíčku pro přístup.
+1. Vyberte weby SharePointu Online, které chcete zahrnout do balíčku pro přístup.
 
     ![Přístup k balíčku – přidání rolí prostředků – výběr webů SharePointu Online](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
 

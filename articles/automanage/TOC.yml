@@ -8,10 +8,13 @@
 - name: Koncepty
   expanded: true
   items:
-    - name: Virtuální počítače
-      href: automanage-virtual-machines.md
-    - name: Osvědčené postupy pro virtuální počítače
-      href: virtual-machines-best-practices.md
+    - name: Spravovat pro Linux
+      href: automanage-linux.md
+    - name: Autospravovat pro Windows Server
+      href: automanage-windows-server.md
+      items:
+        - name: Hotpatch pro nové virtuální počítače
+          href: automanage-hotpatch.md
 - name: Postup
   expanded: true
   items:

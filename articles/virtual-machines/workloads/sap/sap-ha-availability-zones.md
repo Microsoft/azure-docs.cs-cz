@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 887caaec-02ba-4711-bd4d-204a7d16b32b
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e098256a43add6df026ab136bcd6a6b549c147e7
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 842c56ef1fb6f68c3d8b82e2633d9a604db9fde2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98871311"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671628"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Konfigurace úloh SAP s využitím služby Zóny dostupnosti Azure
 Kromě nasazení různých vrstev architektury SAP v Azure Availability Sets se vám nedávno zavedené [zóny dostupnosti Azure](../../../availability-zones/az-overview.md) taky dají použít i pro nasazení úloh SAP. Zóna dostupnosti Azure je definovaná jako: "jedinečná fyzická umístění v rámci oblasti. Každá zóna se skládá z jednoho nebo více datových center vybavených nezávislým napájením, chlazením a sítěmi. Zóny dostupnosti Azure nejsou k dispozici ve všech oblastech. Pro oblasti Azure, které poskytují Zóny dostupnosti, se podívejte na [mapu oblastí Azure](https://azure.microsoft.com/global-infrastructure/geographies/). Tato mapa vám ukáže, které oblasti poskytují nebo jsou oznámeny k poskytování Zóny dostupnosti. 

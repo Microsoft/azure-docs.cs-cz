@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/19/2020
 ms.author: jlian
-ms.openlocfilehash: c6544e8ac00744602476207a89567aea5afe5b1d
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 6f83421d4ee56d56875e13ffbdd8ac9dbbf4b6bb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632356"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656359"
 ---
 # <a name="use-ip-filters"></a>Použití filtrů IP adres
 
@@ -20,7 +20,7 @@ Zabezpečení je důležitým aspektem řešení IoT založeného na Azure IoT H
 
 ## <a name="when-to-use"></a>Kdy je použít
 
-Použijte filtr IP pro příjem provozu jenom z určeného rozsahu IP adres a zamítnout všechno ostatní. Například používáte službu IoT Hub se službou [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) k vytváření privátních připojení mezi službou IoT Hub a místní infrastrukturou.
+Použijte filtr IP pro příjem provozu jenom z určeného rozsahu IP adres a zamítnout všechno ostatní. Například používáte službu IoT Hub se službou [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) k vytváření privátních připojení mezi službou IoT Hub a místní infrastrukturou.
 
 ## <a name="default-setting"></a>Výchozí nastavení
 
@@ -164,7 +164,7 @@ $iothubResource | Set-AzResource -Force
 ## <a name="update-ip-filter-rules-using-rest"></a>Aktualizace pravidel filtru IP pomocí REST
 
 
-Můžete také načíst a upravit filtr IP IoT Hub pomocí koncového bodu REST poskytovatele prostředků Azure. Projděte si část `properties.networkRuleSets` v tématu o [metodě createorupdate](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate).
+Můžete také načíst a upravit filtr IP IoT Hub pomocí koncového bodu REST poskytovatele prostředků Azure. Projděte si část `properties.networkRuleSets` v tématu o [metodě createorupdate](/rest/api/iothub/iothubresource/createorupdate).
 
 ## <a name="ip-filter-classic-retirement"></a>Vyřazení filtru IP (klasické)
 
@@ -174,7 +174,7 @@ Klasický filtr IP adres je vyřazený. Další informace najdete v tématu [IoT
 
 Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
 
-* [IoT Hub metriky](iot-hub-metrics.md)
+* [IoT Hub metriky](./monitor-iot-hub.md)
 * [Podpora IoT Hub pro virtuální sítě s privátním odkazem a spravovanou identitou](virtual-network-support.md)
 * [Správa přístupu k veřejné síti ve službě IoT Hub](iot-hub-public-network-access.md)
 * [Monitorování IoT Hubu](monitor-iot-hub.md)

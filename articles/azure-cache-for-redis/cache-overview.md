@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 02/08/2021
-ms.openlocfilehash: 9b1176f579754d714490297e9ff960d7808bd834
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5a0389b1074737728bd0ffa5d6db90d077a9f45f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383156"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652162"
 ---
 # <a name="about-azure-cache-for-redis"></a>Informace o službě Azure Cache for Redis
 Azure cache pro Redis poskytuje úložiště dat v paměti založené na softwaru [Redis](https://redis.io/) . Redis vylepšuje výkon a škálovatelnost aplikace, která se používá v úložištích back-end dat. Může zpracovávat velké objemy žádostí o aplikace tím, že udržuje často používaná data v paměti serveru, na kterou je možné zapisovat a číst rychleji. Redis přináší pro moderní aplikace kritická řešení pro úložiště dat s nízkou latencí a vysokou propustností.
@@ -23,7 +23,7 @@ Mezipaměť Azure pro Redis se dá použít jako distribuovaná data nebo mezipa
 ## <a name="key-scenarios"></a>Klíčové scénáře
 Azure cache pro Redis vylepšuje výkon aplikace tím, že podporuje běžné vzory architektury aplikací. Mezi nejběžnější případy použití patří:
 
-| Vzor      | Description                                        |
+| Vzor      | Popis                                        |
 | ------------ | -------------------------------------------------- |
 | [Mezipaměť dat](cache-web-app-cache-aside-leaderboard.md) | Databáze jsou často příliš velké, aby se načetly přímo do mezipaměti. Je běžné použít model doplňování [mezipaměti](/azure/architecture/patterns/cache-aside) k načtení dat do mezipaměti, jak je potřeba. Když systém provede změny dat, může systém aktualizovat také mezipaměť, která je poté distribuována jiným klientům. Kromě toho může systém nastavit vypršení platnosti dat nebo použít zásadu vyřazení k aktivaci aktualizací dat do mezipaměti.|
 | [Mezipaměť obsahu](cache-aspnet-output-cache-provider.md) | Mnoho webových stránek se generuje ze šablon, které používají statický obsah, jako jsou záhlaví, zápatí a bannery. Tyto statické položky by se neměly často měnit. Použití mezipaměti v paměti poskytuje rychlý přístup ke statickému obsahu v porovnání s úložištěm dat back-endu. Tento model zkracuje dobu zpracování a zatížení serveru, což umožňuje webovým serverům rychlejší odezvu. Umožňuje snížit počet serverů potřebných ke zpracování zatížení. Azure cache pro Redis poskytuje poskytovateli výstupní mezipaměti Redis pro podporu tohoto vzoru s ASP.NET.|
@@ -39,13 +39,13 @@ Azure cache pro Redis podporuje OSS Redis verze 4. x a jako verzi Preview 6,0. P
 ## <a name="service-tiers"></a>Úrovně služby
 Mezipaměť Azure pro Redis je k dispozici na následujících úrovních:
 
-| Úroveň | Description |
+| Úroveň | Popis |
 |---|---|
 | Basic | Mezipaměť OSS Redis spuštěná na jednom virtuálním počítači. Tato úroveň nemá smlouvu o úrovni služeb (SLA) a je ideální pro vývoj a testování a méně důležité úlohy. |
 | Standard | Mezipaměť OSS Redis spuštěná na dvou virtuálních počítačích v replikované konfiguraci. |
 | Premium | Vysoce výkonné Redis mezipaměti OSS. Tato úroveň nabízí vyšší propustnost, nižší latenci, lepší dostupnost a další funkce. Mezipaměti úrovně Premium se nasazují na výkonnější virtuální počítače ve srovnání se základními a standardními mezipaměťmi. |
-| Enterprise (Preview) | Vysoce výkonné mezipaměti založené na Redis podnikovém softwaru Redis Labs. Tato vrstva podporuje Redis moduly, včetně RediSearch, RedisBloom a RedisTimeSeries. Kromě toho nabízí ještě vyšší dostupnost než úroveň Premium. |
-| Enterprise Flash (Preview) | Nákladově efektivní velké mezipaměti využívající software Redis Labs "Redis Enterprise software. Tato vrstva rozšiřuje Redis úložiště dat do nestálé paměti, která je levnější než DRAM na virtuálním počítači. Snižuje celkové náklady na GB paměti. |
+| Enterprise | Vysoce výkonné mezipaměti založené na Redis podnikovém softwaru Redis Labs. Tato vrstva podporuje Redis moduly, včetně RediSearch, RedisBloom a RedisTimeSeries. Kromě toho nabízí ještě vyšší dostupnost než úroveň Premium. |
+| Podnikový přehrávač | Nákladově efektivní velké mezipaměti využívající software Redis Labs "Redis Enterprise software. Tato vrstva rozšiřuje Redis úložiště dat do nestálé paměti, která je levnější než DRAM na virtuálním počítači. Snižuje celkové náklady na GB paměti. |
 
 ### <a name="feature-comparison"></a>Porovnání funkcí
 [Ceny Azure cache for Redis](https://azure.microsoft.com/pricing/details/cache/) poskytují podrobné porovnání každé úrovně. V následující tabulce jsou popsány některé funkce podporované jednotlivými vrstvami:
@@ -55,11 +55,11 @@ Mezipaměť Azure pro Redis je k dispozici na následujících úrovních:
 | [Smlouvy o úrovni služeb (SLA)](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) |-|✔|✔|✔|✔|
 | Šifrování dat |✔|✔|✔|✔|✔|
 | [Izolace sítě](cache-how-to-premium-vnet.md) |✔|✔|✔|✔|✔|
-| [Škálování](cache-how-to-scale.md) |✔|✔|✔|-|-|
+| [Škálování](cache-how-to-scale.md) |✔|✔|✔|✔|✔|
 | [Cluster OSS](cache-how-to-premium-clustering.md) |-|-|✔|✔|✔|
-| [Trvalost dat](cache-how-to-premium-persistence.md) |-|-|✔|-|-|
-| [Zónová redundance](cache-how-to-zone-redundancy.md) |-|-|Preview|Preview|Preview|
-| [Geografická replikace](cache-how-to-geo-replication.md) |-|-|✔|-|-|
+| [Trvalost dat](cache-how-to-premium-persistence.md) |-|-|✔|Preview|Preview|
+| [Zónová redundance](cache-how-to-zone-redundancy.md) |-|-|Preview|✔|✔|
+| [Geografická replikace](cache-how-to-geo-replication.md) |-|-|✔|Preview|Preview|
 | [Moduly](https://redis.io/modules) |-|-|-|✔|✔|
 | [Import/export](cache-how-to-import-export-data.md) |-|-|✔|✔|✔|
 | [Plánované aktualizace](cache-administration.md#schedule-updates) |✔|✔|✔|-|-|
@@ -73,19 +73,25 @@ Při výběru mezipaměti Azure pro úroveň Redis byste měli vzít v úvahu n�
 * **Výkon sítě**: Pokud máte zatížení, které vyžaduje vysokou propustnost, úroveň Premium nebo Enterprise nabízí větší šířku pásma v porovnání se základní nebo standardní. Kromě toho v každé vrstvě mají větší velikost mezipaměti větší šířku pásma kvůli základnímu virtuálnímu počítači, který hostuje mezipaměť. Další informace najdete v tématu [o výkonu služby Azure cache pro Redis](cache-planning-faq.md#azure-cache-for-redis-performance).
 * **Maximální počet připojení klientů**: úroveň Premium nabízí maximální počet klientů, kteří se mohou připojit k Redis s větším počtem připojení pro mezipaměti větší velikosti. Clustering nezvyšuje počet připojení dostupných pro clusterovou mezipaměť. Další informace najdete v tématu [ceny služby Azure cache pro Redis](https://azure.microsoft.com/pricing/details/cache/).
 * **Vysoká dostupnost**: Azure cache for Redis nabízí několik možností [vysoké dostupnosti](cache-high-availability.md) . Zaručuje, že mezipaměť Standard, Premium nebo Enterprise je dostupná podle naší [smlouvy SLA](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). Smlouva SLA pokrývá jenom připojení ke koncovým bodům mezipaměti. Smlouva SLA nepokrývá ochranu před ztrátou dat. Pro zvýšení odolnosti proti ztrátě dat doporučujeme používat funkci Redis data Persistence na úrovních Premium a Enterprise.
-* **Trvalost dat**: úrovně Premium a Enterprise umožňují uchovávat data z mezipaměti do účtu Azure Storage a spravovaného disku. Základní problémy s infrastrukturou můžou způsobit ztrátu dat. Pro zvýšení odolnosti proti ztrátě dat doporučujeme používat funkci trvalosti dat Redis v těchto úrovních. Azure cache pro Redis nabízí možnosti RDB i AOF (Preview). Podnikové úrovně mají při výchozím nastavení Trvalost dat povolené. Úroveň Premium najdete v tématu [Konfigurace trvalosti pro službu Azure cache Premium pro Redis](cache-how-to-premium-persistence.md).
+* **Trvalost dat**: úrovně Premium a Enterprise umožňují uchovávat data z mezipaměti do účtu Azure Storage a spravovaného disku. Základní problémy s infrastrukturou můžou způsobit ztrátu dat. Pro zvýšení odolnosti proti ztrátě dat doporučujeme používat funkci trvalosti dat Redis v těchto úrovních. Azure cache pro Redis nabízí možnosti RDB i AOF (Preview). Trvalost dat lze povolit prostřednictvím Azure Portal a CLI. Úroveň Premium najdete v tématu [Konfigurace trvalosti pro službu Azure cache Premium pro Redis](cache-how-to-premium-persistence.md).
 * **Izolace sítě**: nasazení privátního propojení azure a Virtual Network (VNET) poskytují vylepšenou izolaci zabezpečení a provozu pro službu Azure cache pro Redis. Virtuální síť umožňuje další omezení přístupu prostřednictvím zásad řízení přístupu k síti. Další informace najdete v tématu věnovaném [službě Azure cache pro Redis s privátním odkazem na Azure](cache-private-link.md) a [Konfigurace podpory Virtual Network podporu pro Azure cache Premium pro Redis](cache-how-to-premium-vnet.md).
 * **Rozšiřitelnost**: úrovně Enterprise podporují [RediSearch](https://docs.redislabs.com/latest/modules/redisearch/), [RedisBloom](https://docs.redislabs.com/latest/modules/redisbloom/) a [RedisTimeSeries](https://docs.redislabs.com/latest/modules/redistimeseries/). Tyto moduly přidávají nové datové typy a funkce do Redis.
 
 Po vytvoření můžete škálovat mezipaměť z úrovně Basic až na Premium. Horizontální navýšení kapacity na nižší úroveň se momentálně nepodporuje. Podrobné pokyny k škálování najdete v tématu [Jak škálovat Azure cache pro Redis](cache-how-to-scale.md) a [Jak automatizovat operaci škálování](cache-how-to-scale.md#how-to-automate-a-scaling-operation).
 
-### <a name="enterprise-and-enterprise-flash-tier-requirements"></a>Požadavky na úroveň Enterprise a Enterprise Flash
+### <a name="special-considerations-for-enterprise-tiers"></a>Zvláštní požadavky na úrovně Enterprise
 
 Podnikové úrovně spoléhají na Redis Enterprise, tedy na komerční variantu Redis z Redis Labs. Zákazníci obdrží licenci k tomuto softwaru a platíte za něj prostřednictvím nabídky Azure Marketplace. Azure cache pro Redis pomůže získání licence, takže je nebudete muset provádět samostatně. K nákupu v Azure Marketplace musíte mít následující požadavky:
 * Předplatné Azure má platný platební nástroj. Kredity Azure nebo bezplatné předplatné MSDN se nepodporují.
-* Jste vlastníkem nebo přispěvatelem předplatného.
 * Vaše organizace umožňuje [nákupy Azure Marketplace](../cost-management-billing/manage/ea-azure-marketplace.md#enabling-azure-marketplace-purchases).
 * Pokud používáte privátní tržiště, musí obsahovat nabídku Redis Labs Enterprise.
+
+> [!IMPORTANT]
+> Mezipaměť Azure pro Redis Enterprise vyžaduje standardní nástroje pro vyrovnávání zatížení sítě, které se účtují odděleně od samotných instancí mezipaměti. Další podrobnosti najdete v tématu [ceny Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/) . Pokud je podniková mezipaměť nakonfigurovaná na více Zóny dostupnosti, bude se přenos dat účtovat podle [standardních sazeb šířky pásma sítě](https://azure.microsoft.com/pricing/details/bandwidth/) od 1. července 2021.
+>
+> Trvalost dat navíc přidává Managed Disks. Používání těchto prostředků bude v rámci veřejné verze Preview pro trvalost podnikových dat zdarma. To se může změnit, pokud se funkce bude všeobecně dostupná.
+>
+>
 
 ## <a name="next-steps"></a>Další kroky
 * [Vytvoření open source mezipaměti Redis Cache](quickstart-create-redis.md)

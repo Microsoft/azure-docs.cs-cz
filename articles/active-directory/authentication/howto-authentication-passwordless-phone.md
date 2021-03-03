@@ -1,6 +1,6 @@
 ---
 title: Přihlášení bez hesla pomocí aplikace Microsoft Authenticator Azure Active Directory
-description: Povolení přihlášení neheslem do Azure AD pomocí aplikace Microsoft Authenticator (Preview)
+description: Povolení přihlášení neheslem do Azure AD pomocí aplikace Microsoft Authenticator
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62dea67f139857befc7ca24b8b8a105241b5c949
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 51e6cd7efcd0e851c15975aba5ff9b99c615eb7d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626151"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653469"
 ---
-# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Povolení přihlášení bez hesla pomocí aplikace Microsoft Authenticator (Preview)
+# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>Povolení přihlášení bez hesla pomocí aplikace Microsoft Authenticator 
 
 Aplikaci Microsoft Authenticator můžete použít k přihlášení k jakémukoli účtu Azure AD bez použití hesla. Microsoft Authenticator používá ověřování na základě klíčů k povolení přihlašovacích údajů uživatele, které jsou vázané na zařízení, kde zařízení používá kód PIN nebo biometrické údaje. [Windows Hello pro firmy](/windows/security/identity-protection/hello-for-business/hello-identity-verification) používá podobnou technologii.
 
@@ -40,7 +40,7 @@ Pokud chcete používat přihlášení bez hesla pro telefonickou práci s aplik
 - Na zařízeních se systémem iOS 8,0 nebo vyšším je nainstalovaná nejnovější verze Microsoft Authenticator nebo Android 6,0 nebo novější.
 
 > [!NOTE]
-> Pokud jste povolili Microsoft Authenticator přihlášení bez hesla ve verzi Preview pomocí Azure AD PowerShellu, je povolený pro celý adresář. Pokud povolíte použití této nové metody, bude nahrazena zásadou PowerShellu. Doporučujeme povolit pro všechny uživatele ve vašem tenantovi prostřednictvím nové nabídky *metody ověřování* , jinak se uživatelé, kteří nejsou v nové zásadě, už nebudou moct přihlásit bez hesla.
+> Pokud jste povolili Microsoft Authenticator přihlašování bez hesla pomocí Azure AD PowerShellu, je povolený pro celý adresář. Pokud povolíte použití této nové metody, bude nahrazena zásadou PowerShellu. Doporučujeme povolit pro všechny uživatele ve vašem tenantovi prostřednictvím nové nabídky *metody ověřování* , jinak se uživatelé, kteří nejsou v nové zásadě, už nebudou moct přihlásit bez hesla.
 
 ## <a name="enable-passwordless-authentication-methods"></a>Povolit metody ověřování nejenom pro hesla
 
@@ -58,7 +58,7 @@ Pokud chcete metodu ověřování povolit pro přihlášení telefon bez hesla, 
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu *globálního správce* .
 1. Vyhledejte a vyberte *Azure Active Directory* a pak přejděte do zásad **zabezpečení**  >  **metody ověřování**  >  .
-1. V části **Microsoft Authenticator (Preview)** vyberte následující možnosti:
+1. V části **Microsoft Authenticator** vyberte následující možnosti:
    1. **Povolit** – Ano nebo ne
    1. **Cíl** – všichni uživatelé nebo vybrat uživatele
 1. Každá přidaná skupina nebo uživatel je ve výchozím nastavení povolená, aby používala Microsoft Authenticator v režimech nabízených oznámení bez hesla i v režimu nabízených oznámení ("libovolný"). To můžete změnit pro každý řádek:
@@ -104,7 +104,7 @@ Když uživatel použije přihlašování pomocí telefonu bez hesla, aplikace b
 
 ## <a name="known-issues"></a>Známé problémy
 
-V aktuálním prostředí Preview existují následující známé problémy.
+Existují následující známé problémy.
 
 ### <a name="not-seeing-option-for-passwordless-phone-sign-in"></a>Nezobrazuje se možnost pro přihlášení bez hesla pro telefonování
 

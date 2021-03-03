@@ -11,16 +11,16 @@ ms.date: 10/26/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 937041bbb48f112e2c8ed7d222dc7c7ef7ea8d81
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e5168d5e5e3935da267fb26f38735a88bdfd7837
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631389"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654472"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Vyžádání přístupového tokenu ve službě Azure Active Directory B2C
 
-*Přístupový token* obsahuje deklarace identity, pomocí kterých můžete v Azure Active Directory B2C (Azure AD B2C) identifikovat oprávnění udělená vašim rozhraním API. Při volání serveru prostředků musí požadavek HTTP obsahovat přístupový token. Přístupový token se v odpovědích služby Azure AD B2C označuje textem **access_token** .
+*Přístupový token* obsahuje deklarace identity, pomocí kterých můžete v Azure Active Directory B2C (Azure AD B2C) identifikovat oprávnění udělená vašim rozhraním API. Při volání serveru prostředků musí požadavek HTTP obsahovat přístupový token. Přístupový token se v odpovědích služby Azure AD B2C označuje textem **access_token**.
 
 V tomto článku se dozvíte, jak požádat o přístupový token pro webovou aplikaci a webové rozhraní API. Další informace o tokenech v Azure AD B2C najdete v [přehledu tokenů v Azure Active Directory B2C](tokens-overview.md).
 
@@ -71,7 +71,7 @@ V následujícím příkladu nahraďte tyto hodnoty:
 - `<tenant-name>` – název domény tenanta Azure AD B2C.
 - `<policy-name>` – název vlastní zásady nebo toku uživatele.
 - `<application-ID>` – identifikátor webové aplikace, kterou jste zaregistrovali za účelem zpracování toku uživatele.
-- `<redirect-uri>` – **identifikátor URI pro přesměrování** , který jste zadali při registraci klientské aplikace.
+- `<redirect-uri>` – **identifikátor URI pro přesměrování**, který jste zadali při registraci klientské aplikace.
 
 ```http
 GET https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
@@ -91,7 +91,7 @@ https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 Po úspěšném přijetí autorizačního kódu můžete kód použít k vyžádání přístupového tokenu:
 
 ```http
-POST <tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
+POST <tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 

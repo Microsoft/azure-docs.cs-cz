@@ -3,19 +3,18 @@ title: Prozkoumat data a model ve Windows
 titleSuffix: Azure Data Science Virtual Machine
 description: Provádění úloh zkoumání a modelování dat na Data Science Virtual Machine Windows.
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 ms.custom: devx-track-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 09a4dc8467b9b3c11c8daeb5ca8c62a0e26e79de
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c44c40f2ddab53cf0beb5ecd48127d126fdb4333
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575002"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657396"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Datové vědy s Data Science Virtual Machine Windows
 
@@ -40,7 +39,7 @@ V tomto článku se dozvíte, jak používat DSVM k provádění úkolů s datov
 > 
 > 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Potřebujete předplatné Azure. Můžete si [zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 * Pokyny pro zřízení Data Science Virtual Machine v Azure Portal jsou k dispozici v [tématu Vytvoření virtuálního počítače](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016).
@@ -58,7 +57,7 @@ Po spuštění Jupyter přejděte do `/notebooks` adresáře, kde najdete ukázk
 
 * Vyberte Poznámkový blok pro zobrazení kódu.
 * Spusťte každou buňku výběrem SHIFT + ENTER.
-* Spusťte celý Poznámkový blok **Cell** výběrem možnosti  >  **spuštění** buněk.
+* Spusťte celý Poznámkový blok výběrem možnosti  >  **spuštění** buněk.
 * Vytvořte nový Poznámkový blok tak, že vyberete ikonu Jupyter (v levém horním rohu), kliknete na tlačítko **Nový** a pak zvolíte jazyk poznámkového bloku (označovaný také jako jádra).   
 
 > [!NOTE]
@@ -77,7 +76,7 @@ Pro Python můžete použít integrované vývojové prostředí (IDE), jako je 
 
 1. Vytvořte vlastní prostředí pro každou verzi tak, že přejdete na **nástroje**  >  **Python Tools**  >  **Python prostředí** a potom v edici Visual Studio Community Edition vyberete **+ Custom** .
 1. Zadejte popis a nastavte cestu k předponě prostředí jako **c:\anaconda\envs\python2** pro anaconda Python 2,7.
-1. **Auto Detect**  >  Chcete-li uložit prostředí, vyberte možnost automaticky zjišťovat **použití** .
+1.   >  Chcete-li uložit prostředí, vyberte možnost automaticky zjišťovat **použití** .
 
 Další podrobnosti o tom, jak vytvářet prostředí Pythonu, najdete v [dokumentaci k PTVS](/visualstudio/python/) .
 
@@ -156,7 +155,7 @@ Další informace o tom, jak pomocí Gitu pracovat s úložištěm GitHubu, najd
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 Azure Blob Storage je spolehlivá, ekonomická služba pro cloudové úložiště pro velké a malé objemy dat. Tato část popisuje, jak můžete přesouvat data do úložiště objektů BLOB a přistupovat k datům uloženým v objektu blob Azure.
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
 * Vytvořte účet Azure Blob Storage z [Azure Portal](https://portal.azure.com).
 
@@ -330,5 +329,5 @@ Kromě ukázek založených na rozhraní můžete získat sadu komplexních náv
 
 - [Klasifikace textových dokumentů](https://github.com/anargyri/lstm_han): Tento návod ukazuje, jak vytvořit a vyškolit dvě neuronové síťové architektury: hierarchická síť s upozorněním a dlouhodobě krátkodobá paměť (LSTM). Tyto sítě neuronové používají rozhraní Keras API pro obsáhlý Learning ke klasifikaci textových dokumentů. 
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 Tento článek popisuje některé z věcí, které můžete provádět na Data Science Virtual Machine Microsoftu. Existuje mnoho dalších věcí, které můžete využít k tomu, aby DSVM efektivní analytické prostředí.

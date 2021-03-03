@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 962054943a68aa61ac681de97eeebc10fe3f2b0a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: cb556466a5a76cbb9447538e98a5a2385f7b5614
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216627"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660997"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>PyTorch se škálováním modelů pomocí Azure Machine Learning
 
@@ -285,35 +285,90 @@ src = ScriptRunConfig(source_directory=project_folder,
 ### <a name="distributeddataparallel"></a>DistributedDataParallel
 Pokud používáte vestavěný [DistributedDataParallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html) modul PyTorch, který je vytvořen pomocí balíčku **Torch. Distributed** v kódu školení, můžete také spustit distribuovanou úlohu prostřednictvím Azure ml.
 
-Aby bylo možné spustit distribuovanou úlohu PyTorch pomocí DistributedDataParallel, zadejte [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) do `distributed_job_config` parametru konstruktoru ScriptRunConfig. Pokud chcete použít back-end NCCL pro Torch. Distributed, zadejte `communication_backend='Nccl'` v PyTorchConfiguration. Níže uvedený kód nakonfiguruje distribuovanou úlohu se dvěma uzly. Back-end NCCL je doporučeným back-end pro školení distribuovaného GPU pro PyTorch.
+Pokud chcete spustit distribuovanou úlohu PyTorch v Azure ML, máte dvě možnosti:
+1. Spuštění pro jednotlivé procesy: Určete celkový počet pracovních procesů, které chcete spustit, a Azure ML zpracuje každý proces.
+2. Spuštění pro jednotlivé uzly pomocí `torch.distributed.launch` : zadejte `torch.distributed.launch` příkaz, který chcete spustit na každém uzlu. Nástroj pro spuštění Torch bude zpracovávat spuštěné pracovní procesy na jednotlivých uzlech.
 
-V případě distribuovaných PyTorch úloh nakonfigurovaných prostřednictvím PyTorchConfiguration nastaví Azure ML na uzlech cílového cíle následující proměnné prostředí:
+Mezi možnostmi spuštění neexistují žádné zásadní rozdíly. je v podstatě až do preference uživatele nebo konvence rozhraní nebo knihoven postavených na Vanilla PyTorch (například blesk nebo Hugging obličej).
 
-* `AZ_BATCHAI_PYTORCH_INIT_METHOD`: Adresa URL pro inicializaci sdíleného systému souborů skupiny procesů
-* `AZ_BATCHAI_TASK_INDEX`: globální pořadí pracovního procesu
+#### <a name="per-process-launch"></a>Spuštění pro jednotlivé procesy
+Pokud chcete tuto možnost použít ke spuštění distribuované úlohy PyTorch, postupujte takto:
+1. Zadat školicí skript a argumenty
+2. Vytvořte [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) a zadejte a `process_count` také `node_count` . `process_count`Odpovídá celkovému počtu procesů, které chcete pro vaši úlohu spustit. Hodnota by se obvykle rovnala počtu GPU na uzel vynásobeným počtem uzlů. Pokud `process_count` parametr není zadán, bude služba Azure ml ve výchozím nastavení spouštět jeden proces na uzel.
 
-Tyto proměnné prostředí můžete zadat pro odpovídající argumenty školicího skriptu prostřednictvím `arguments` parametru ScriptRunConfig.
+V Azure ML se nastaví následující proměnné prostředí:
+* `MASTER_ADDR` -IP adresa počítače, který bude hostitelem procesu s pořadím 0.
+* `MASTER_PORT` – Bezplatný port na počítači, který bude hostitelem procesu s pořadím 0.
+* `NODE_RANK` – Pořadí uzlu pro školení s více uzly. Možné hodnoty jsou 0 až (celkový počet uzlů-1).
+* `WORLD_SIZE` – Celkový počet procesů. Hodnota by měla být stejná jako celková hodnota zařízení (GPU) použitá pro distribuované školení.
+* `RANK` – Pořadí (globální) aktuálního procesu. Možné hodnoty jsou 0 – (World Size-1).
+* `LOCAL_RANK` – Místní (relativní) pořadí procesu v rámci uzlu. Možné hodnoty jsou 0 – (počet procesů na uzlu-1).
+
+Vzhledem k tomu, že požadované proměnné prostředí vám pro vás nastaví Azure ML, můžete k inicializaci skupiny procesů ve školicím kódu použít [výchozí inicializační proměnnou prostředí](https://pytorch.org/docs/stable/distributed.html#environment-variable-initialization) .
+
+Následující fragment kódu konfiguruje úlohu PyTorch se dvěma uzly na jednom uzlu:
+```python
+from azureml.core import ScriptRunConfig
+from azureml.core.runconfig import PyTorchConfiguration
+
+curated_env_name = 'AzureML-PyTorch-1.6-GPU'
+pytorch_env = Environment.get(workspace=ws, name=curated_env_name)
+distr_config = PyTorchConfiguration(process_count=4, node_count=2)
+
+src = ScriptRunConfig(
+  source_directory='./src',
+  script='train.py',
+  arguments=['--epochs', 25],
+  compute_target=compute_target,
+  environment=pytorch_env,
+  distributed_job_config=distr_config,
+)
+
+run = Experiment(ws, 'experiment_name').submit(src)
+```
+
+> [!WARNING]
+> Aby bylo možné použít tuto možnost pro školení zaměřené na více procesů, budete muset použít Azure ML Python SDK >= 1.22.0, jak `process_count` bylo zavedeno v 1.22.0.
+
+> [!TIP]
+> Pokud váš školicí skript předává informace, jako je místní pořadí nebo pořadí jako argumenty skriptu, můžete odkazovat na proměnné prostředí v argumentech: `arguments=['--epochs', 50, '--local_rank', $LOCAL_RANK]` .
+
+#### <a name="per-node-launch-with-torchdistributedlaunch"></a>Spuštění pro jednotlivé uzly s `torch.distributed.launch`
+PyTorch poskytuje nástroj pro spuštění v [Torch. Distributed. Launch](https://pytorch.org/docs/stable/distributed.html#launch-utility) , který mohou uživatelé použít ke spuštění více procesů na jeden uzel. `torch.distributed.launch`Modul v každém z uzlů vytvoří více školicích procesů.
+
+Následující kroky demonstrují, jak nakonfigurovat úlohu PyTorch pomocí spouštěče uzlů na Azure ML, která bude mít za chodu následující příkaz:
+
+```shell
+python -m torch.distributed.launch --nproc_per_node <num processes per node> \
+  --nnodes <num nodes> --node_rank $NODE_RANK --master_addr $MASTER_ADDR \
+  --master_port $MASTER_PORT --use_env \
+  <your training script> <your script arguments>
+```
+
+1. Zadejte `torch.distributed.launch` příkaz do `command` parametru `ScriptRunConfig` konstruktoru. Azure ML spustí tento příkaz na všech uzlech školicího clusteru. `--nproc_per_node` hodnota by měla být menší nebo rovna počtu GPU dostupných na jednotlivých uzlech. `MASTER_ADDR`, `MASTER_PORT` a `NODE_RANK` jsou všechny nastavené pomocí Azure ml, takže můžete v příkazu odkazovat jenom na proměnné prostředí. Azure ML nastaví `MASTER_PORT` na 6105, ale pokud chcete, můžete předat jinou hodnotu `--master_port` argumentu `torch.distributed.launch` příkazu. (Spouštěcí nástroj obnoví proměnné prostředí.)
+2. Vytvořte `PyTorchConfiguration` a zadejte `node_count` . Nemusíte nastavovat `process_count` , protože Azure ml se použije jako výchozí pro spuštění jednoho procesu na jeden uzel, který spustí zadaný příkaz pro spuštění.
 
 ```python
 from azureml.core import ScriptRunConfig
 from azureml.core.runconfig import PyTorchConfiguration
 
-args = ['--dist-backend', 'nccl',
-        '--dist-url', '$AZ_BATCHAI_PYTORCH_INIT_METHOD',
-        '--rank', '$AZ_BATCHAI_TASK_INDEX',
-        '--world-size', 2]
+curated_env_name = 'AzureML-PyTorch-1.6-GPU'
+pytorch_env = Environment.get(workspace=ws, name=curated_env_name)
+distr_config = PyTorchConfiguration(node_count=2)
+launch_cmd = "python -m torch.distributed.launch --nproc_per_node 2 --nnodes 2 --node_rank $NODE_RANK --master_addr $MASTER_ADDR --master_port $MASTER_PORT --use_env train.py --epochs 50".split()
 
-src = ScriptRunConfig(source_directory=project_folder,
-                      script='pytorch_mnist.py',
-                      arguments=args,
-                      compute_target=compute_target,
-                      environment=pytorch_env,
-                      distributed_job_config=PyTorchConfiguration(communication_backend='Nccl', node_count=2))
+src = ScriptRunConfig(
+  source_directory='./src',
+  command=launch_cmd,
+  compute_target=compute_target,
+  environment=pytorch_env,
+  distributed_job_config=distr_config,
+)
+
+run = Experiment(ws, 'experiment_name').submit(src)
 ```
 
-Pokud místo toho chcete použít back-end Gloo pro distribuované školení, zadejte `communication_backend='Gloo'` místo toho. Pro distribuované školení procesoru se doporučuje Gloo back-end.
-
-Úplný kurz pro spouštění distribuovaných PyTorch v Azure ML najdete v tématu [Distributed PyTorch with DistributedDataParallel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/pytorch/distributed-pytorch-with-nccl-gloo).
+Úplný kurz pro spouštění distribuovaných PyTorch v Azure ML najdete v tématu [Distributed PyTorch with DistributedDataParallel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/pytorch/distributed-pytorch-with-distributeddataparallel).
 
 ### <a name="troubleshooting"></a>Řešení potíží
 

@@ -6,15 +6,15 @@ ms.author: jagaveer
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: spot
-ms.date: 03/25/2020
+ms.date: 02/26/2021
 ms.reviewer: cynthn
-ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 265f78970f17fe7321db8786c2fb8dd2304bb578
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 33aa553e688b595551c20e8b1432163152865537
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558668"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675018"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Azure spot Virtual Machines pro Virtual Machine Scale Sets 
 
@@ -46,19 +46,38 @@ V současné době jsou podporovány následující [typy nabídek](https://azur
 -   Smlouva Enterprise
 -   003P kódu nabídky s průběžnými platbami
 -   Financovan
-- Pro poskytovatele cloudových služeb (CSP) se obraťte na svého partnera.
+- Pro poskytovatele cloudových služeb (CSP) si přečtěte téma [Partnerské centrum](https://docs.microsoft.com/partner-center/azure-plan-get-started) nebo se obraťte přímo na svého partnera.
 
 ## <a name="eviction-policy"></a>Zásady vyřazení
 
-Při vytváření služby Azure bodových škálování virtuálních počítačů můžete nastavit zásady vyřazení, aby se nastavilo zrušení *přidělení* (výchozí) nebo *odstranění*. 
+Při vytváření sady škálování pomocí služby Azure spot Virtual Machines můžete nastavit zásadu vyřazení, aby se nastavilo zrušení *přidělení* (výchozí) nebo *odstranění*. 
 
 Zásady zrušení *přidělení* přesouvá vaše vyřazené instance do stavu Zastaveno (přidělení zrušeno), což vám umožní znovu nasadit vyřazené instance. Neexistuje však záruka, že přidělení bude úspěšné. Navrácené virtuální počítače se budou počítat s kvótou instance sady škálování a budou se vám účtovat vaše základní disky. 
 
-Pokud chcete, aby se vaše instance v rámci sady škálování virtuálních počítačů Azure při jejich vyřazení odstranily, můžete nastavit zásadu vyřazení, která se má *Odstranit*. Když je zásada vyřazení nastavená tak, aby se odstranila, můžete vytvořit nové virtuální počítače tím, že zvýšíte vlastnost počet instancí sady škálování. Vyřazení virtuálních počítačů se odstraní společně s jejich podkladovým diskům, takže se za úložiště nebudete účtovat. K automatickému vyzkoušení a kompenzaci vydaných virtuálních počítačů můžete použít také funkci automatického škálování sad škálování, ale nezaručujeme, že přidělení bude úspěšné. Při nastavování zásad vyřazení do služby Virtual Machine Scale Sets se doporučuje používat jenom funkci automatického škálování ve službě Azure bodových škálování virtuálních počítačů, abyste se vyhnuli nákladům na vaše disky a omezením kvót. 
+Pokud chcete, aby se vaše instance odstranily při jejich vyřazení, můžete nastavit zásadu vyřazení, která se má *Odstranit*. Když je zásada vyřazení nastavená tak, aby se odstranila, můžete vytvořit nové virtuální počítače tím, že zvýšíte vlastnost počet instancí sady škálování. Vyřazení virtuálních počítačů se odstraní společně s jejich podkladovým diskům, takže se za úložiště nebudete účtovat. K automatickému vyzkoušení a kompenzaci vydaných virtuálních počítačů můžete použít také funkci automatického škálování sad škálování, ale nezaručujeme, že přidělení bude úspěšné. Při nastavování zásad vyřazení do služby Virtual Machine Scale Sets se doporučuje používat jenom funkci automatického škálování ve službě Azure bodových škálování virtuálních počítačů, abyste se vyhnuli nákladům na vaše disky a omezením kvót. 
 
 Uživatelé se můžou přihlásit k přijímání oznámení v rámci virtuálního počítače prostřednictvím [Azure Scheduled Events](../virtual-machines/linux/scheduled-events.md). To vám upozorní na to, jestli se virtuální počítače vyloučí a že budete mít 30 sekund na dokončení všech úloh a před vyřazením provést úlohy vypnutí. 
 
+<a name="bkmk_try"></a>
+## <a name="try--restore-preview"></a>Vyzkoušet & obnovení (Preview)
+
+Tato nová funkce na úrovni platformy použije AI k automatickému pokusu o obnovení vyřazení instancí virtuálních počítačů se systémem Azure v rámci škálované sady za účelem zachování počtu cílových instancí. 
+
+> [!IMPORTANT]
+> Zkuste & obnovení je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Vyzkoušejte & výhod obnovení:
+- Povoluje se ve výchozím nastavení při nasazení virtuálního počítače se systémem Azure do sady škálování.
+- Došlo k pokusu o obnovení služby Azure bodový Virtual Machines vyřazení z důvodu kapacity.
+- U obnovených Virtual Machines Azure se očekává, že se spustí delší dobu, s nižší pravděpodobností aktivované vyřazením kapacity.
+- Zvyšuje životnost virtuálního počítače na místě Azure, takže úlohy běží delší dobu.
+- Pomáhá Virtual Machine Scale Sets udržovat počet cílů pro Azure Virtual Machines na místě, podobně jako údržba funkcí počtu cílů, které už existují pro virtuální počítače s průběžnými platbami.
+
+Zkuste & obnovení je v sadách škálování, které používají [Automatické škálování](virtual-machine-scale-sets-autoscale-overview.md), zakázané. Počet virtuálních počítačů v sadě škálování je založený na pravidlech automatického škálování.
+
 ## <a name="placement-groups"></a>Skupiny umístění
+
 Skupina umístění je konstrukce podobná sadě dostupnosti Azure s vlastními doménami selhání a upgradovacími doménami. Ve výchozím nastavení škálovací sada obsahuje jedinou skupinu umístění s maximální velikostí 100 virtuálních počítačů. Pokud je vlastnost Set stupnice nazvaná `singlePlacementGroup` nastavena na *false*, sada škálování se může skládat z více skupin umístění a má rozsah 0 až 1 000 virtuálních počítačů. 
 
 > [!IMPORTANT]
@@ -137,7 +156,25 @@ Přidejte `priority` vlastnosti a `evictionPolicy` `billingProfile` do `"virtual
 
 Chcete-li odstranit instanci poté, co byla vyřazena, změňte `evictionPolicy` parametr na `Delete` .
 
-## <a name="faq"></a>Nejčastější dotazy
+
+## <a name="simulate-an-eviction"></a>Simulace vyřazení
+
+Můžete [simulovat vyřazení](https://docs.microsoft.com/rest/api/compute/virtualmachines/simulateeviction) virtuálních počítačů se systémem Azure na místě, abyste otestovali, jak dobře bude aplikace reagovat na náhlé vyřazení. 
+
+Pro vaše informace nahraďte následující údaje: 
+
+- `subscriptionId`
+- `resourceGroupName`
+- `vmName`
+
+
+```rest
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+```
+
+`Response Code: 204` znamená, že simulované vyřazení bylo úspěšné. 
+
+## <a name="faq"></a>Časté otázky
 
 **Otázka:** Po vytvoření je instance virtuálního počítače Azure, která je stejná jako standardní instance?
 

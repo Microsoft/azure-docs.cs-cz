@@ -2,18 +2,17 @@
 title: Nasazení SAP S/4HANA nebo ČERNOBÍLé/4HANA na virtuálním počítači Azure | Microsoft Docs
 description: Nasazení SAP S/4HANA nebo ČERNOBÍLé/4HANA na virtuálním počítači Azure
 author: hermanndms
-ms.service: virtual-machines
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 09/15/2016
 ms.author: hermannd
 ms.reviewer: cynthn
-ms.openlocfilehash: 6492e770479042a5a1b4da6f61917832adad4873
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4b739efcf2695a5385351f531efb6201bbea1cd5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021414"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671942"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Nasazení SAP S/4HANA nebo ČERNOBÍLé/4HANA v Azure
 Tento článek popisuje, jak nasadit S/4HANA v Azure pomocí knihovny cloudových zařízení SAP (SAP CAL) 3,0. Pokud chcete nasadit další řešení založená na SAP HANA, jako je například ČERNOBÍLé/4HANA, postupujte podle stejných kroků.

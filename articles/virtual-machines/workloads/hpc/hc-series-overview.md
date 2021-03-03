@@ -3,17 +3,17 @@ title: Přehled virtuálních počítačů s funkcí HC-Series – Azure Virtual
 description: Přečtěte si o podpoře verze Preview pro velikost virtuálního počítače s rozhraním HC-Series v Azure.
 author: vermagit
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: hpc
 ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: b9fe978da9accd28ea0e538f458325f10c9c5d8d
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 746c7ec91c888d9a55722c00f8765915d0043a98
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831886"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666073"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>Základní informace o virtuálním počítači řady HC-Series
 
@@ -40,7 +40,7 @@ Následující diagram znázorňuje oddělení jader rezervovaných pro Azure hy
 | Cores                            | 44 (HT-zakázáno)                 |
 | Procesor                              | Intel Xeon Platinum 8168         |
 | Frekvence procesoru (ne AVX)          | 3,7 GHz (Single core), 2.7-3.4 GHz (všechny jádra) |
-| Paměť                           | 8 GB/jádro (352 celkem)            |
+| Memory (Paměť)                           | 8 GB/jádro (352 celkem)            |
 | Místní disk                       | 700 GB SSD                       |
 | InfiniBand                       | 100 GB EDR Mellanox ConnectX-5   |
 | Síť                          | 50 GB Ethernet (40 GB použitelné) Azure Second gen SmartNIC    |

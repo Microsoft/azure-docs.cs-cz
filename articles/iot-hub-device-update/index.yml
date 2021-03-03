@@ -1,0 +1,76 @@
+### YamlMime:Landing
+title: Dokumentace k aktualizaci zařízení pro IoT Hub
+summary: Aktualizace zařízení pro IoT Hub je služba, která umožňuje nasazení OTA (Over-The-Air) do zařízení IoT.
+metadata:
+  title: Dokumentace k aktualizaci zařízení pro IoT Hub
+  description: Aktualizace zařízení pro IoT Hub je služba, která umožňuje nasazení OTA (Over-The-Air) do zařízení IoT.
+  services: iot-hub
+  ms.service: iot-hub
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  manager: philmea
+  ms.date: 2/17/2021
+  ms.openlocfilehash: 2b47f8b51cf4150659c1d5b8ed1dc145997252ef
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101665748"
+landingContent:
+- title: O aktualizaci zařízení
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je aktualizace zařízení pro IoT Hub?
+      url: understand-device-update.md
+  - linkListType: concept
+    links:
+    - text: Jak aktualizace zařízení používá technologie Plug and Play
+      url: device-update-plug-and-play.md
+    - text: Porozumění ověřování a autorizaci aktualizace zařízení
+      url: device-update-control-access.md
+    - text: Princip agenta aktualizace zařízení
+      url: device-update-agent-overview.md
+    - text: Pochopení importu aktualizace zařízení
+      url: import-concepts.md
+    - text: Principy skupin aktualizací zařízení
+      url: device-update-groups.md
+- title: Prozkoumejte s kurzy
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Aktualizace zařízení v malinu PI
+      url: device-update-raspberry-pi.md
+  - linkListType: tutorial
+    links:
+    - text: Aktualizace zařízení na simulátoru
+      url: device-update-simulator.md
+  - linkListType: tutorial
+    links:
+    - text: Aktualizace zařízení v agentovi balíčku Ubuntu Server 18,04 x64
+      url: device-update-ubuntu-agent.md
+- title: Informace o tom, jak aktualizovat zařízení
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření účtu aktualizace zařízení
+      url: create-device-update-account.md
+  - linkListType: how-to-guide
+    links:
+    - text: Importovat aktualizaci
+      url: import-update.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvořit skupinu aktualizací
+      url: create-update-group.md
+  - linkListType: how-to-guide
+    links:
+    - text: Nasazení aktualizace
+      url: deploy-update.md
+- title: Příručka pro vývojáře
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Sestavování, spouštění a změny agenta aktualizace zařízení
+      url: device-update-agent-provisioning.md

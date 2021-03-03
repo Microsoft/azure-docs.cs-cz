@@ -1,21 +1,21 @@
 ---
 title: 'Rychlý Start: volání Microsoft Graph z konzolové aplikace Node.js | Azure'
 titleSuffix: Microsoft identity platform
-description: V tomto rychlém startu se dozvíte, jak Node.js Konzolová aplikace může získat přístupový token a volat rozhraní API chráněné koncovým bodem platformy Microsoft identity, a to pomocí vlastní identity aplikace.
+description: V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, jak Node.js Konzolová aplikace může získat přístupový token a volat rozhraní API chráněné koncovým bodem Microsoft Identity Platform pomocí vlastní identity aplikace.
 services: active-directory
 author: derisen
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
-ms.date: 02/11/2021
+ms.date: 02/17/2021
 ms.author: v-doeris
-ms.openlocfilehash: c550cc8009f0138b9f1803399fbc592b34efbfab
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 4360810d460c5fc8598ce302ad8b82f65d2d819e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100562183"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653741"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-nodejs-console-app-using-apps-identity"></a>Rychlý Start: získání tokenu a volání Microsoft Graph API z konzolové aplikace Node.js pomocí identity aplikace
 
@@ -29,12 +29,12 @@ V tomto rychlém startu se k [udělení přihlašovacích údajů klienta](v2-oa
 * [Visual Studio Code](https://code.visualstudio.com/download) nebo jiný Editor kódu
 
 > [!div renderon="docs"]
-> ## <a name="register-and-download-your-quickstart-application"></a>Registrace a stažení aplikace pro rychlý Start
+> ## <a name="register-and-download-the-sample-application"></a>Registrace a stažení ukázkové aplikace
 >
 > Začněte tím, že Projděte následující kroky.
 >
 > [!div renderon="docs"]
-> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
+> #### <a name="step-1-register-the-application"></a>Krok 1: registrace aplikace
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
 > 1. Přihlaste se na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
@@ -50,9 +50,9 @@ V tomto rychlém startu se k [udělení přihlašovacích údajů klienta](v2-oa
 > 1. V části **uživatelský** uzel vyberte **uživatel. číst. vše** a pak vyberte **Přidat oprávnění**.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="download-and-configure-your-quickstart-app"></a>Stažení a konfigurace aplikace pro rychlý Start
+> ### <a name="download-and-configure-the-sample-app"></a>Stažení a konfigurace ukázkové aplikace
 >
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Nakonfigurujte si aplikaci na portálu Azure Portal
+> #### <a name="step-1-configure-the-application-in-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal
 > Aby ukázka kódu pro tento rychlý Start fungovala, je nutné vytvořit tajný klíč klienta a přidat **uživatele Graph API. číst. všechna** oprávnění aplikace.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Provést tyto změny pro mě]()
@@ -60,7 +60,7 @@ V tomto rychlém startu se k [udělení přihlašovacích údajů klienta](v2-oa
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Už nakonfigurované](media/quickstart-v2-netcore-daemon/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
 
-#### <a name="step-2-download-your-nodejs-project"></a>Krok 2: stažení projektu Node.js
+#### <a name="step-2-download-the-nodejs-sample-project"></a>Krok 2: stažení ukázkového projektu Node.js
 
 > [!div renderon="docs"]
 > [Stažení ukázky kódu](https://github.com/azure-samples/ms-identity-javascript-nodejs-console/archive/main.zip)
@@ -73,7 +73,7 @@ V tomto rychlém startu se k [udělení přihlašovacích údajů klienta](v2-oa
 > > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-your-nodejs-project"></a>Krok 3: konfigurace projektu Node.js
+> #### <a name="step-3-configure-the-nodejs-sample-project"></a>Krok 3: Konfigurace ukázkového projektu Node.js
 >
 > 1. Extrahujte soubor zip do místní složky blízko kořene disku, například *C:/Azure-Samples*.
 > 1. Upravte *. env* a nahraďte hodnoty polí `TENANT_ID` , `CLIENT_ID` a `CLIENT_SECRET` následujícím fragmentem kódu:
@@ -172,7 +172,7 @@ const msalConfig = {
         clientId: "Enter_the_Application_Id_Here",
         authority: "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
         clientSecret: "Enter_the_Client_Secret_Here",
-   } 
+   }
 };
 const cca = new msal.ConfidentialClientApplication(msalConfig);
 ```

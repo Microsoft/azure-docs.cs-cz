@@ -321,11 +321,14 @@
             - name: Vytváření datových sad s popisky
               displayName: 'data, labels, torchvision'
               href: how-to-use-labeled-dataset.md
-        - name: Získání dat
+        - name: Získat & Příprava dat
           items:
             - name: Příjem dat s využitím Azure Data Factory
               displayName: 'data, ingestion, adf'
               href: how-to-data-ingest-adf.md
+            - name: Příprava dat pomocí Azure synapse
+              displayName: 'data, data prep, spark, spark pool, cluster, spark cluster,dataset, datastore'
+              href: how-to-data-prep-synapse-spark-pool.md
             - name: DevOps pro příjem dat
               displayName: 'data, ingestion, devops'
               href: how-to-cicd-data-ingestion.md
@@ -337,6 +340,9 @@
             - name: Připojení k úložišti Azure (Python)
               displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
+            - name: Přístup k datům na základě identity na úložiště
+              displayName: 'blob, access, data lake, datastore, managed identity'
+              href: how-to-identity-based-data-access.md
             - name: Získání dat z úložiště dat (Python)
               displayName: 'data, data set, register, access data'
               href: how-to-create-register-datasets.md
@@ -385,8 +391,8 @@
             - name: Povolení protokolů
               displayName: 'troubleshoot, log, files, tracing'
               href: how-to-track-experiments.md
-            - name: Zobrazení protokolů
-              displayName: 'troubleshoot, log, files, tracing'
+            - name: Zobrazit protokoly a metriky pro spuštění
+              displayName: 'troubleshoot, log, files, tracing, metrics'
               href: how-to-monitor-view-training-logs.md
             - name: Vizualizace spuštění s využitím TensorBoardu
               displayName: 'log, monitor, metrics'
@@ -531,6 +537,8 @@
           href: how-to-move-data-in-out-of-pipelines.md
         - name: Nasazování kanálů ML (Python)
           href: how-to-deploy-pipelines.md
+        - name: Použití fondů Azure synapse Apache Spark v kanálu ML (Python)
+          href: how-to-use-synapsesparkstep.md
         - name: Aktivace kanálu
           href: how-to-trigger-published-pipeline.md
         - name: Designer (přetahování)

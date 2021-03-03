@@ -11,16 +11,16 @@ author: knicholasa
 manager: martinco
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8ed99338a10eb226823c4bd4857d812038ff632
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 039dd8b6fa0769b6798630e666bfbf6de48ccf14
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094513"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649236"
 ---
 # <a name="browser-support-of-fido2-passwordless-authentication"></a>Podpora prohlížeče pro FIDO2 ověřování s nehesly
 
-Azure Active Directory povoluje použití [klíčů zabezpečení FIDO2](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#fido2-security-keys) jako zařízení s neplatným heslem. Dostupnost ověřování FIDO2 pro účty Microsoft byla [oznámena v 2018](https://techcommunity.microsoft.com/t5/identity-standards-blog/all-about-fido2-ctap2-and-webauthn/ba-p/288910). Jak je popsáno v oznámení, musí být pro podporu zabezpečeného ověřování s účty Microsoft a Azure Active Directory implementovány některé volitelné funkce a rozšíření pro FIDO2 CTAP specifikace. Následující diagram ukazuje, které prohlížeče a kombinace operačních systémů podporují ověřování bez hesla pomocí ověřovacích klíčů FIDO2 s Azure Active Directory.
+Azure Active Directory povoluje použití [klíčů zabezpečení FIDO2](./concept-authentication-passwordless.md#fido2-security-keys) jako zařízení s neplatným heslem. Dostupnost ověřování FIDO2 pro účty Microsoft byla [oznámena v 2018](https://techcommunity.microsoft.com/t5/identity-standards-blog/all-about-fido2-ctap2-and-webauthn/ba-p/288910). Jak je popsáno v oznámení, musí být implementovány některé volitelné funkce a rozšíření FIDO2 CTAP pro podporu zabezpečeného ověřování pomocí účtů Microsoft a Azure Active Directory. Následující diagram ukazuje, které prohlížeče a kombinace operačních systémů podporují ověřování bez hesla pomocí ověřovacích klíčů FIDO2 s Azure Active Directory.
 
 ## <a name="supported-browsers"></a>Podporované prohlížeče
 
@@ -44,18 +44,21 @@ Následující kombinace operačních systémů a prohlížečů nejsou podporov
 | Android | Chrome |
 | ChromeOS | Chrome |
 
-## <a name="operating-system-versions-tested"></a>Testované verze operačního systému
+## <a name="minimum-browser-version"></a>Minimální verze prohlížeče
 
-Informace v tabulce výše byly testovány pro následující verze operačního systému.
+Níže jsou uvedené minimální požadavky na verzi prohlížeče. 
 
-| Operační systém | Poslední testovaná verze |
-| --- | --- |
-| Windows | Windows 10 20H2 |
-| macOS | OS X 11 Big Sur |
-| Linux | Pracovní stanice Fedora 32 |
+| Prohlížeč | Minimální verze |
+| ---- | ---- |
+| Chrome | 76 |
+| Edge | Windows 10 verze 1903<sup>1</sup> |
+| Firefox | Chrome |
+| ChromeOS | 66 |
+
+<sup>1</sup> Všechny verze nového Microsoft Edge na bázi Chromu podporují Fido2. Do 1903 se přidala podpora pro Microsoft Edge starší verze.
 
 ## <a name="next-steps"></a>Další kroky
-[Povolit přihlašování k bezpečnostnímu klíči s nezabezpečenými hesly (Preview)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key)
+[Povolit přihlašování k bezpečnostnímu klíči s nezabezpečenými hesly (Preview)](./howto-authentication-passwordless-security-key.md)
 
 <!--Image references-->
 [y]: ./media/fido2-compatibility/yes.png

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: eca0b9986c4da30adeeb02bc3d90d1e3d2892df7
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 94b765cbcbdd81505b08052845207ee1d93a28d9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552639"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667801"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-purview"></a>Nejčastější dotazy k Azure dosah
 
@@ -30,14 +30,14 @@ V této části Nejčastější dotazy jsou odpovědi na nejčastější dotazy,
 
 |Azure|Mimo Azure|
 |---------|---------|
-|Úložiště objektů blob v Azure|Power BI|
+|Azure Blob Storage|Power BI|
 |Azure Synapse Analytics (SQL DW)|SQL Server |
 |Azure Cosmos DB|Teradata (k dispozici po konci 2020)|
 |Spravovaná instance Azure SQL|SAP ECC (k dispozici po konci 2020)|
 |Průzkumník dat Azure|SAP S/4 HANA (k dispozici po konci 2020)|
 |Azure Data Lake Storage Gen1|Podregistr metastore (k dispozici po konci 2020)|
-|Azure Data Lake Storage Gen2|--|
-|Soubory Azure|--|
+|Azure Data Lake Storage Gen2|Amazon S3|
+|Azure Files|--|
 |Azure SQL Database|--|
 
 ### <a name="what-data-systemsprocessors-can-we-connect-and-get-lineage"></a>Jaké datové systémy/procesory se mohou připojit a získat zavedené řádky?

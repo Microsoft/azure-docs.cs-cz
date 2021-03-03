@@ -3,17 +3,17 @@ title: Diagnostika a řešení potíží s dostupností sad Azure Cosmos SDK v p
 description: Seznamte se s chováním dostupnosti sady SDK Azure Cosmos při provozu ve více regionálních prostředích.
 author: ealsur
 ms.service: cosmos-db
-ms.date: 02/16/2021
+ms.date: 02/18/2021
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 641b7d44407f8f3760c673f45d69dcfdc8b363b8
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 0720eb01920e39a9bee27e4d00d97acba55b0ad5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650979"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661422"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>Diagnostika a řešení potíží s dostupností sad Azure Cosmos SDK v prostředí s více oblastmi
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,13 +47,13 @@ Pokud **nenastavíte upřednostňovanou oblast**, klient sady SDK bude ve výcho
 > Pokud se hodnoty zadané jako místní preference neshodují se stávajícími oblastmi Azure, budou ignorovány. Pokud se shodují s existující oblastí, ale do ní účet není replikovaný, klient se připojí k další upřednostňované oblasti, která odpovídá nebo k primární oblasti.
 
 > [!WARNING]
-> Zakázáním opakovaného zjišťování koncových bodů (tj. nastavení na hodnotu false) v konfiguraci klienta zakážete všechny převzetí služeb při selhání a dostupnost, které jsou popsány v tomto dokumentu.
-> Tato konfigurace je dostupná v každé sadě Azure Cosmos SDK pomocí následujících parametrů:
+> Logika převzetí služeb při selhání a dostupnosti popsaná v tomto dokumentu může být v konfiguraci klienta zakázaná, což není doporučeno, pokud uživatelská aplikace nebude zpracovávat samotné chyby dostupnosti. To může dosáhnout:
 >
-> * Vlastnost [ConnectionPolicy. EnableEndpointRediscovery](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.enableendpointdiscovery) v sadě .NET v2 SDK.
-> * Metoda [CosmosClientBuilder. endpointDiscoveryEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.endpointdiscoveryenabled) v sadě Java v4 SDK.
-> * Parametr [CosmosClient.enable_endpoint_discovery](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) v sadě Python SDK.
-> * Parametr [CosmosClientOptions. ConnectionPolicy. enableEndpointDiscovery](/javascript/api/@azure/cosmos/connectionpolicy#enableEndpointDiscovery) v sadě js SDK.
+> * Nastavení vlastnosti [ConnectionPolicy. EnableEndpointRediscovery](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.enableendpointdiscovery) v sadě .NET v2 SDK na hodnotu false.
+> * Nastavení vlastnosti [CosmosClientOptions. LimitToEndpoint](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.limittoendpoint) v sadě .NET V3 SDK na hodnotu true.
+> * Nastavení metody [CosmosClientBuilder. endpointDiscoveryEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.endpointdiscoveryenabled) v jazyce Java v4 SDK na hodnotu false.
+> * Nastavení parametru [CosmosClient.enable_endpoint_discovery](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) v Python SDK na false.
+> * Nastavení parametru [CosmosClientOptions. ConnectionPolicy. enableEndpointDiscovery](/javascript/api/@azure/cosmos/connectionpolicy#enableEndpointDiscovery) v sadě js SDK na hodnotu false.
 
 Za normálních okolností se klient SDK připojí k upřednostňované oblasti (Pokud je nastavená místní předvolba) nebo do primární oblasti (Pokud není nastavená žádná předvolba) a operace budou omezené na tuto oblast, pokud nedošlo k žádnému z následujících scénářů.
 

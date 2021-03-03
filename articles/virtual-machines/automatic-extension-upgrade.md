@@ -3,16 +3,17 @@ title: Automatický upgrade rozšíření pro virtuální počítače a sady šk
 description: Naučte se, jak povolit automatickou aktualizaci rozšíření pro virtuální počítače a službu Virtual Machine Scale Sets v Azure.
 author: mayanknayar
 ms.service: virtual-machines
+ms.subservice: automatic-extension-upgrades
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: manayar
-ms.openlocfilehash: acc014785105d14c3109cfa420f0e9402ca3f534
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 104eada6dc342c21b8da2f409756e9f34c103936
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417213"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668329"
 ---
 # <a name="preview-automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>Preview: automatický upgrade rozšíření pro virtuální počítače a sady škálování v Azure
 
@@ -21,7 +22,7 @@ Automatický upgrade rozšíření je k dispozici ve verzi Preview pro virtuáln
  Automatický upgrade rozšíření má následující funkce:
 - Podporováno pro virtuální počítače Azure a Azure Virtual Machine Scale Sets. Service Fabric Virtual Machine Scale Sets nejsou aktuálně podporovány.
 - Upgrady se používají v modelu nasazení s první dostupností (popsané níže).
-- Při použití na Virtual Machine Scale Sets v jedné dávce nebude upgradováno více než 20% Virtual Machine Scale Sets virtuálních počítačů (za předpokladu, že minimálně jeden virtuální počítač na dávku).
+- V případě sady škálování virtuálních počítačů se v jedné dávce upgraduje maximálně 20% virtuálních počítačů sady škálování. Minimální velikost dávky je jeden virtuální počítač.
 - Funguje pro všechny velikosti virtuálních počítačů a pro rozšíření systému Windows i Linux.
 - Automatické upgrady můžete kdykoli odhlásit.
 - Automatickou aktualizaci rozšíření lze povolit na Virtual Machine Scale Sets libovolné velikosti.
@@ -36,24 +37,9 @@ Automatický upgrade rozšíření je k dispozici ve verzi Preview pro virtuáln
 
 
 ## <a name="how-does-automatic-extension-upgrade-work"></a>Jak funguje upgrade automatického rozšíření?
-Proces upgradu rozšíření funguje tak, že nahrazuje stávající verzi rozšíření na virtuálním počítači s novou verzí rozšíření publikovanou vydavatelem rozšíření. Stav virtuálního počítače se sleduje po instalaci nového rozšíření. Pokud virtuální počítač není v dobrém stavu do 5 minut od dokončení upgradu, nová verze rozšíření se vrátí zpět na předchozí verzi.
+Proces upgradu rozšíření nahradí existující verzi rozšíření na virtuálním počítači novou verzí stejného rozšíření, kterou publikoval Vydavatel rozšíření. Stav virtuálního počítače se sleduje po instalaci nového rozšíření. Pokud virtuální počítač není v dobrém stavu během 5 minut od dokončení upgradu, verze rozšíření se vrátí zpět na předchozí verzi.
 
 Neúspěšná aktualizace rozšíření se automaticky zopakuje. Opakovaný pokus o opakování probíhá každých několik dní automaticky bez zásahu uživatele.
-
-
-## <a name="upgrade-process-for-virtual-machine-scale-sets"></a>Proces upgradu pro Virtual Machine Scale Sets
-1. Před zahájením procesu upgradu ověří Orchestrator, že v celé sadě škálování není v pořádku (z jakéhokoli důvodu není k dispozici více než 20% virtuálních počítačů).
-
-2. Upgrade Orchestrator identifikuje dávku instancí virtuálních počítačů, které se mají upgradovat, přičemž každá z nich může mít maximálně 20% z celkového počtu virtuálních počítačů, a to za předpokladu, že je minimální velikost dávky jednoho virtuálního počítače.
-
-3. Pro škálované sady s nakonfigurovanými sondami stavu aplikace nebo rozšíření stavu aplikace čeká upgrade až na 5 minut (nebo na definovanou konfiguraci sondy stavu), aby se virtuální počítač stal v dobrém stavu, než se přejde na upgrade další dávky. Pokud virtuální počítač po upgradu neobnoví svůj stav, pak se ve výchozím nastavení přeinstaluje předchozí verze rozšíření pro daný virtuální počítač.
-
-4. Nástroj upgrade Orchestrator také sleduje procento virtuálních počítačů, které se po upgradu stanou špatnými. Upgrade se zastaví, pokud během procesu upgradu dojde k nesprávnému více než 20% upgradovaných instancí.
-
-Výše uvedený proces pokračuje, dokud nebudou upgradovány všechny instance v sadě škálování.
-
-Nástroj Orchestrator upgrade Orchestrator před upgradem každé dávky kontroluje celkový stav nastavené stupnice. Při upgradu dávky mohou existovat i jiné souběžné plánované nebo neplánované aktivity údržby, které by mohly ovlivnit stav virtuálních počítačů sady škálování. V takových případech, pokud se více než 20% instancí sady škálování stane špatným, se upgrade sady škálování zastaví na konci aktuální dávky.
-
 
 ### <a name="availability-first-updates"></a>Dostupnost – první aktualizace
 Model dostupnosti-First pro aktualizace Orchestrované platformou zajistí, že Konfigurace dostupnosti v Azure se budou respektovat napříč různými úrovněmi dostupnosti.
@@ -62,7 +48,7 @@ Pro skupinu virtuálních počítačů, které projdeme aktualizaci, bude platfo
 
 **Napříč oblastmi:**
 - Aktualizace se v rámci Azure v rámci celého režimu přesune globálně, aby se předešlo chybám nasazení v rámci Azure.
-- "Fáze" může představovat jednu nebo více oblastí a aktualizace se přesune napříč fázemi pouze v případě, že jsou oprávněné virtuální počítače ve fázi úspěšně aktualizovány.
+- "Fáze" může mít jednu nebo více oblastí a aktualizace se pohybuje napříč fázemi pouze v případě, že jsou oprávněné virtuální počítače v předchozí fázi úspěšně aktualizovány.
 - Geografické spárované oblasti se neaktualizují současně a nemohou být ve stejné oblastní fázi.
 - Úspěšnost aktualizace se měří sledováním stavu aktualizace po aktualizaci virtuálního počítače. Stav virtuálního počítače se sleduje prostřednictvím indikátorů stavu platformy pro virtuální počítač. V případě Virtual Machine Scale Sets je stav virtuálního počítače sledován prostřednictvím sond stavu aplikace nebo rozšíření stavu aplikace, pokud se používá pro sadu škálování.
 
@@ -75,6 +61,18 @@ Pro skupinu virtuálních počítačů, které projdeme aktualizaci, bude platfo
 - Virtuální počítače ve společné skupině dostupnosti se aktualizují v rámci hraničních domén aktualizací a virtuální počítače napříč více aktualizačními doménami se neaktualizují současně.  
 - Virtuální počítače ve společné sadě škálování virtuálních počítačů se seskupují v dávkách a aktualizovaly v rámci hranic aktualizačních domén.
 
+### <a name="upgrade-process-for-virtual-machine-scale-sets"></a>Proces upgradu pro Virtual Machine Scale Sets
+1. Před zahájením procesu upgradu ověří Orchestrator, že v celé sadě škálování není v pořádku (z jakéhokoli důvodu není k dispozici více než 20% virtuálních počítačů).
+
+2. Upgrade Orchestrator identifikuje dávku instancí virtuálních počítačů, které se mají upgradovat. Dávka upgradu může mít maximálně 20% z celkového počtu virtuálních počítačů v závislosti na minimální velikosti dávky v jednom virtuálním počítači.
+
+3. Pro škálované sady s nakonfigurovanými sondami stavu aplikace nebo rozšíření stavu aplikace čeká upgrade až na 5 minut (nebo na definovanou konfiguraci sondy stavu), aby se virtuální počítač před upgradem další dávky stal v pořádku. Pokud virtuální počítač po upgradu neobnoví svůj stav, pak se ve výchozím nastavení přeinstaluje předchozí verze rozšíření na virtuálním počítači.
+
+4. Nástroj upgrade Orchestrator také sleduje procento virtuálních počítačů, které se po upgradu stanou špatnými. Upgrade se zastaví, pokud během procesu upgradu dojde k nesprávnému více než 20% upgradovaných instancí.
+
+Výše uvedený proces pokračuje, dokud nebudou upgradovány všechny instance v sadě škálování.
+
+Nástroj Orchestrator upgrade Orchestrator před upgradem každé dávky kontroluje celkový stav nastavené stupnice. Při upgradu dávky mohou existovat i jiné souběžné plánované nebo neplánované aktivity údržby, které by mohly ovlivnit stav virtuálních počítačů sady škálování. V takových případech, pokud se více než 20% instancí sady škálování stane špatným, se upgrade sady škálování zastaví na konci aktuální dávky.
 
 ## <a name="supported-extensions"></a>Podporovaná rozšíření
 Verze Preview automatického upgradu rozšíření podporuje následující rozšíření (a pravidelně se přidávají):
@@ -258,13 +256,13 @@ az vmss extension set \
 
 ## <a name="extension-upgrades-with-multiple-extensions"></a>Upgrady rozšíření s více rozšířeními
 
-Virtuální počítač nebo sada škálování virtuálního počítače můžou mít kromě dalších rozšíření bez automatických rozšíření rozšíření povolené víc rozšíření s povoleným automatickým upgradem rozšíření.  
+Virtuální počítač nebo sada škálování virtuálního počítače můžou mít více rozšíření s povoleným automatickým upgradem rozšíření. Stejný virtuální počítač nebo sada škálování můžou mít taky další rozšíření bez povoleného automatického upgradu rozšíření.  
 
-Je-li pro virtuální počítač k dispozici více upgradů rozšíření, mohou být tyto inovace dávkově spojeny. Každý upgrade rozšíření se ale použije samostatně na virtuálním počítači. Selhání u jednoho rozšíření nemá vliv na ostatní rozšíření, která by mohla být upgradována. Pokud je třeba pro upgrade naplánovaná dvě rozšíření a první upgrade rozšíření selže, bude se dál upgradovat druhé rozšíření.
+Je-li pro virtuální počítač k dispozici více upgradů rozšíření, mohou být upgradovány společně, ale každý upgrade rozšíření je použit individuálně na virtuálním počítači. Selhání u jednoho rozšíření nemá vliv na ostatní rozšíření, která by mohla být upgradována. Pokud je třeba pro upgrade naplánovaná dvě rozšíření a první upgrade rozšíření selže, bude se dál upgradovat druhé rozšíření.
 
-Automatické upgrady rozšíření je možné použít i v případě, že virtuální počítač nebo sada škálování virtuálního počítače mají několik rozšíření nakonfigurovaných pomocí [sekvence rozšíření](../virtual-machine-scale-sets/virtual-machine-scale-sets-extension-sequencing.md). Sekvence rozšíření se vztahují na první nasazení virtuálního počítače a všechny následné upgrady rozšíření na rozšíření se použijí nezávisle.
+Automatické upgrady rozšíření je možné použít i v případě, že virtuální počítač nebo sada škálování virtuálního počítače mají několik rozšíření nakonfigurovaných pomocí [sekvence rozšíření](../virtual-machine-scale-sets/virtual-machine-scale-sets-extension-sequencing.md). Sekvence rozšíření se vztahují na první nasazení virtuálního počítače a jakékoli budoucí upgrady rozšíření se aplikují nezávisle na rozšíření.
 
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Přečtěte si o rozšíření pro stav aplikace](./windows/automatic-vm-guest-patching.md)
+> [Přečtěte si o rozšíření pro stav aplikace](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md)

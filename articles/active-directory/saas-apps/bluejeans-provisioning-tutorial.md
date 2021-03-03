@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: d029f033a3c452587dbeeadf69c46cc99f604031
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 58cd69ebe97d9d0965d7e648b0ded012ac71cd0d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053809"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646116"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Kurz: Konfigurace BlueJeans pro Automatické zřizování uživatelů
 
@@ -27,7 +27,7 @@ Tento kurz popisuje kroky, které je třeba provést v BlueJeans i Azure Active 
 > * Vytváření uživatelů v BlueJeans
 > * Odebrat uživatele v BlueJeans, když už nevyžadují přístup
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a BlueJeans
-> * [Jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/bluejeans-tutorial) k BlueJeans (doporučeno)
+> * [Jednotné přihlašování](./bluejeans-tutorial.md) k BlueJeans (doporučeno)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -141,7 +141,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů definovanýc
 Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomocí následujících prostředků:
 
 1. S využitím [protokolů zřizování](../reports-monitoring/concept-provisioning-logs.md) můžete zjistit, kteří uživatelé se zřídili úspěšně a kteří neúspěšně.
-2. Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user).
+2. Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md).
 3. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](../app-provisioning/application-provisioning-quarantine-status.md).  
 
 ## <a name="connector-limitations"></a>Omezení konektoru

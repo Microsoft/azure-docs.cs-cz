@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40bfa27dba905cb2e9a363c7739f0a43e7c2afdf
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ad99c8d319a22f8b5388838b9d537de2f610478a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101240"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650987"
 ---
 # <a name="monitoring-application-sign-in-health-for-resilience"></a>Monitorování stavu přihlašování aplikací pro odolnost
 
@@ -51,7 +51,7 @@ Tento článek vás provede nastavením sešitu stavu přihlášení, který mon
 
 * Log Analytics pracovní prostor v předplatném Azure pro odesílání protokolů do protokolů Azure Monitor. 
 
-   * Informace o tom, jak [vytvořit pracovní prostor Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
+   * Informace o tom, jak [vytvořit pracovní prostor Log Analytics](../../azure-monitor/logs/quick-create-workspace.md)
 
 * Protokoly služby Azure AD integrované s protokoly Azure Monitor
 
@@ -94,7 +94,7 @@ Pomocí následujících pokynů můžete vytvořit e-mailová upozornění zalo
 
  Pokud chcete nakonfigurovat základní dotaz a nastavit upozornění, proveďte následující kroky. Vzorový dotaz použijete jako základ pro vaši konfiguraci. Na konci této části se zobrazí vysvětlení struktury dotazu.
 
-Další informace o tom, jak vytvářet, zobrazovat a spravovat výstrahy protokolu pomocí Azure Monitor najdete v tématu [Správa výstrah protokolu](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log).
+Další informace o tom, jak vytvářet, zobrazovat a spravovat výstrahy protokolu pomocí Azure Monitor najdete v tématu [Správa výstrah protokolu](../../azure-monitor/alerts/alerts-log.md).
 
  
 1. V sešitu vyberte **Upravit** a pak vyberte **ikonu dotazu** hned nad pravou stranu grafu.   
@@ -280,10 +280,9 @@ Po nastavení dotazu a výstrah vytvořte obchodní procesy pro správu výstrah
 
 ## <a name="next-steps"></a>Další kroky
 
-[Další informace o sešitech](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks)
+[Další informace o sešitech](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
  
 
  
 
- 

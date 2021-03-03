@@ -158,6 +158,8 @@
       href: howto-authentication-temporary-access-pass.md
     - name: Použít ověřování pomocí serveru SMS
       href: howto-authentication-sms-signin.md
+    - name: Dvoucestné nepodporované SMS
+      href: how-to-authentication-two-way-sms-unsupported.md
     - name: Použít přihlášení k e-mailovým adresám
       href: howto-authentication-use-email-signin.md
     - name: Inteligentní uzamykání Azure AD
@@ -173,7 +175,7 @@
               href: active-directory-certificate-based-authentication-ios.md
     - name: Vytváření sestav
       items:
-        - name: Přehledy a využití
+        - name: Aktivita metod ověřování
           href: howto-authentication-methods-usage-insights.md
         - name: Sestavy SSPR
           href: howto-sspr-reporting.md

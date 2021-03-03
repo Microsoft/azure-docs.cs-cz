@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: jlian
-ms.openlocfilehash: 70cea7a388c07bee9caa2e25e4061a3d3bb2b460
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 6f326bafb311acedc48c5a349c78f1cd6bcebc87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633899"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661150"
 ---
 # <a name="iot-hub-classic-ip-filter-and-how-to-upgrade"></a>IoT Hub klasický filtr IP adres a postup upgradu 
 
@@ -30,7 +30,7 @@ Abyste se vyhnuli přerušení služby, musíte provést upgrade s asistencí p�
 5.  Vzhledem k tomu, že nový filtr IP blokuje veškerou IP adresu ve výchozím nastavení, upgrade odebere vaše jednotlivá pravidla zamítnutí, ale nabídne možnost je před uložením zkontrolovat. Pečlivě zkontrolujte pravidla, abyste se ujistili, že budou fungovat za vás.
 6.  Podle pokynů dokončete upgrade.
 
-## <a name="whats-new"></a>Co je nového
+## <a name="whats-new"></a>Novinky
 
 ### <a name="secure-by-default"></a>Zabezpečení ve výchozím nastavení
 
@@ -88,7 +88,7 @@ Zabezpečení je důležitým aspektem řešení IoT založeného na Azure IoT H
 
 Existují dva konkrétní případy použití, když je užitečné zablokovat IoT Hub koncových bodů pro určité IP adresy:
 
-* Vaše centrum IoT by mělo přijímat přenosy jenom z určeného rozsahu IP adres a zamítnout všechno ostatní. Například používáte službu IoT Hub se službou [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) k vytváření privátních připojení mezi službou IoT Hub a místní infrastrukturou.
+* Vaše centrum IoT by mělo přijímat přenosy jenom z určeného rozsahu IP adres a zamítnout všechno ostatní. Například používáte službu IoT Hub se službou [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) k vytváření privátních připojení mezi službou IoT Hub a místní infrastrukturou.
 
 * Musíte odmítnout provoz z IP adres, které správce služby IoT Hub identifikoval jako podezřelé.
 
@@ -141,7 +141,7 @@ Pokud chcete některé pravidlo filtru IP adres odstranit, vyberte na přísluš
 
 ### <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>Načtení a aktualizace filtrů IP adres pomocí Azure CLI
 
-Filtry IP IoT Hub můžete načíst a aktualizovat prostřednictvím rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/).
+Filtry IP IoT Hub můžete načíst a aktualizovat prostřednictvím rozhraní příkazového [řádku Azure CLI](/cli/azure/).
 
 Chcete-li načíst aktuální filtry IP IoT Hub, spusťte příkaz:
 
@@ -215,7 +215,7 @@ $iothubResource | Set-AzResource -Force
 
 ### <a name="update-ip-filter-rules-using-rest"></a>Aktualizace pravidel filtru IP pomocí REST
 
-Můžete také načíst a upravit filtr IP IoT Hub pomocí koncového bodu REST poskytovatele prostředků Azure. Projděte si část `properties.ipFilterRules` v tématu o [metodě createorupdate](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate).
+Můžete také načíst a upravit filtr IP IoT Hub pomocí koncového bodu REST poskytovatele prostředků Azure. Projděte si část `properties.ipFilterRules` v tématu o [metodě createorupdate](/rest/api/iothub/iothubresource/createorupdate).
 
 ### <a name="ip-filter-rule-evaluation"></a>Vyhodnocení pravidel filtru IP adres
 

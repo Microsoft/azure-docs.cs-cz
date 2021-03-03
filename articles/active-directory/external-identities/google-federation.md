@@ -5,23 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/11/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53d2369e93052ef28191dd1862034c1aaa488add
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a9e7ec5569dd0de3b0535c3b0e3b3304848a5207
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355592"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653311"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Přidat Google jako zprostředkovatele identity pro uživatele typu Host B2B
 
-Nastavením federace s Google můžete pozvaným uživatelům přihlašovat se ke sdíleným aplikacím a prostředkům pomocí vlastních účtů Gmail, aniž byste museli vytvářet účty Microsoft. 
+Nastavením federace s Google můžete pozvaným uživatelům přihlašovat se ke sdíleným aplikacím a prostředkům pomocí vlastních účtů Gmail, aniž byste museli vytvářet účty Microsoft.
+
+Po přidání Google jako jedné z možností přihlašování vaší aplikace může uživatel na **přihlašovací** stránce jednoduše zadat e-mail, který používají pro přihlášení k Google, nebo může vybrat **Možnosti přihlášení** a zvolit možnost **Přihlásit se pomocí Google**. V obou případech se budou přesměrovány na přihlašovací stránku Google pro ověřování.
+
+![Možnosti přihlášení pro uživatele Google](media/google-federation/sign-in-with-google-overview.png)
 
 > [!NOTE]
 > Google Federation je navržený speciálně pro uživatele gmail. K federovatí s doménami G Suite použijte [přímou federaci](direct-federation.md).
@@ -30,13 +34,33 @@ Nastavením federace s Google můžete pozvaným uživatelům přihlašovat se k
 > **Od 4. ledna 2021** je Google [zastaralá podpora přihlašování v nástroji WebView](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Pokud používáte Google Federation nebo samoobslužnou registraci pomocí služby Gmail, měli byste [testovat kompatibilitu vašich obchodních nativních aplikací](google-federation.md#deprecation-of-webview-sign-in-support).
 
 ## <a name="what-is-the-experience-for-the-google-user"></a>Jaké jsou možnosti pro uživatele Google?
-Po odeslání pozvánky uživatelům služby Google Gmail by měli uživatelé typu Host přístup k vašim sdíleným aplikacím nebo prostředkům pomocí odkazu, který zahrnuje kontext tenanta. Jejich možnosti se liší v závislosti na tom, jestli jsou už přihlášení k Google:
-  - Uživatelům typu Host, kteří nejsou přihlášení k Google, se zobrazí výzva k tomu.
-  - Uživatelům typu Host, kteří už byli přihlášení k Google, se zobrazí výzva k výběru účtu, který chtějí použít. Musí zvolit účet, který jste použili k jejich pozvání.
+
+Když uživatel Google uplatňuje vaše pozvání, jejich prostředí se liší podle toho, jestli jsou už přihlášená k Google:
+
+- Uživatelům typu Host, kteří nejsou přihlášení k Google, se zobrazí výzva k tomu.
+- Uživatelům typu Host, kteří už byli přihlášení k Google, se zobrazí výzva k výběru účtu, který chtějí použít. Musí zvolit účet, který jste použili k jejich pozvání.
 
 Uživatelé typu Host, kteří vidí chybu "hlavička je příliš dlouhá", mohou vymazat soubory cookie nebo otevřít soukromé nebo anonymním okno a pokusit se znovu přihlásit.
 
 ![Snímek obrazovky zobrazující přihlašovací stránku Google](media/google-federation/google-sign-in.png)
+
+## <a name="sign-in-endpoints"></a>Koncové body přihlášení
+
+Uživatelé typu Host Google se teď můžou přihlašovat k aplikacím pro více tenantů nebo Microsoftu pomocí [společného koncového bodu](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) (jinými slovy Obecná adresa URL aplikace, která neobsahuje váš kontext tenanta). Následují příklady běžných koncových bodů:
+
+- `https://teams.microsoft.com`
+- `https://myapps.microsoft.com`
+- `https://portal.azure.com`
+
+Během procesu přihlašování uživatel typu Host zvolí **Možnosti přihlášení** a pak vybere možnost **Přihlásit se k organizaci**. Uživatel pak zadá název vaší organizace a pokračuje v přihlašování pomocí přihlašovacích údajů Google.
+
+Uživatelé typu Host Google můžou také používat koncové body aplikací, které obsahují informace o vašem tenantovi, například:
+
+  * `https://myapps.microsoft.com/?tenantid=<your tenant ID>`
+  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
+  * `https://portal.azure.com/<your tenant ID>`
+
+Uživatelům Google hosta můžete také poskytnout přímý odkaz na aplikaci nebo prostředek tím, že zahrnete informace o vašem tenantovi, například `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` .
 
 ## <a name="deprecation-of-webview-sign-in-support"></a>Vyřazení podpory přihlašování v nástroji WebView
 
@@ -66,23 +90,13 @@ Pokračujeme v testování různých platforem a scénářů a tento článek ak
    - Pokud vaše aplikace pro Windows používá vložené WebView nebo WebAccountManager (WAM) ve starší verzi Windows, aktualizujte na nejnovější verzi Windows.
    - Upravte své aplikace tak, aby se k přihlášení používal prohlížeč systému. Podrobnosti najdete v tématu [vložené webové uživatelské rozhraní vs-System](../develop/msal-net-web-browsers.md#embedded-vs-system-web-ui) v dokumentaci k MSAL.NET.  
 
-## <a name="sign-in-endpoints"></a>Koncové body přihlášení
 
-Týmy plně podporují uživatele typu Host Google na všech zařízeních. Uživatelé Google se můžou přihlásit ke týmům ze společného koncového bodu `https://teams.microsoft.com` , jako je.
-
-Společné koncové body jiných aplikací možná nepodporují uživatele Google. Uživatelé typu Host Google se musí přihlásit pomocí odkazu, který obsahuje informace o vašem tenantovi. Následují příklady:
-  * `https://myapps.microsoft.com/?tenantid=<your tenant ID>`
-  * `https://portal.azure.com/<your tenant ID>`
-  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
-
-   Pokud se uživatelé Google Guest pokusí použít odkaz jako `https://myapps.microsoft.com` nebo, zobrazí se `https://portal.azure.com` Chyba.
-
-Uživatelům Google hosta můžete také poskytnout přímý odkaz na aplikaci nebo prostředek, pokud tento odkaz obsahuje informace o vašem tenantovi. Například `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`. 
 ## <a name="step-1-configure-a-google-developer-project"></a>Krok 1: konfigurace projektu pro vývojáře Google
 Nejdřív vytvořte nový projekt v konzole pro vývojáře Google, abyste získali ID klienta a tajný klíč klienta, které můžete později přidat do Azure Active Directory (Azure AD). 
 1. Přejít na rozhraní Google API na adrese https://console.developers.google.com a přihlaste se pomocí svého účtu Google. Doporučujeme použít sdílený týmový účet Google.
 2. Pokud budete vyzváni, přijměte podmínky služby.
-3. Vytvořit nový projekt: na řídicím panelu vyberte **vytvořit projekt**, zadejte název projektu (například **Azure AD B2B**) a pak vyberte **vytvořit**: 
+3. Vytvořit nový projekt: v levém horním rohu stránky vyberte seznam projektu a pak na stránce **Vyberte projekt** vyberte **Nový projekt**.
+4. Na stránce **Nový projekt** zadejte název projektu (například **Azure AD B2B**) a pak vyberte **vytvořit**: 
    
    ![Snímek obrazovky, který zobrazuje novou stránku projektu.](media/google-federation/google-new-project.png)
 

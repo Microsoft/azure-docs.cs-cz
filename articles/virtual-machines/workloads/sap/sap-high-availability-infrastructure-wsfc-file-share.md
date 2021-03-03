@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 2ce38add-1078-4bb9-a1da-6f407a9bc910
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 62803bd450db351290bbc12d650d23a4148a4536
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f539a63907bb7cbe9d04dc3249427357d79d7c87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022339"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673600"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Příprava infrastruktury Azure na vysokou dostupnost pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složky pro instance SAP ASCS/SCS
 
@@ -219,8 +218,8 @@ Než začnete s instalací, přečtěte si následující článek:
 | --- | --- | --- | --- |
 | Cluster ASCS/SCS prvního uzlu clusteru | ASCS-1 | 10.0.6.4 | ASCS jako |
 | Druhý cluster node ASCS/SCS | ASCS – 2 | 10.0.6.5 | ASCS jako |
-| Název sítě s clustery |ASCS – CL | 10.0.6.6 | neuvedeno |
-| Název sítě clusteru SAP PR1 ASCS |PR1 – ASCS | 10.0.6.7 | neuvedeno |
+| Název sítě s clustery |ASCS – CL | 10.0.6.6 | Není k dispozici |
+| Název sítě clusteru SAP PR1 ASCS |PR1 – ASCS | 10.0.6.7 | Není k dispozici |
 
 
 **Tabulka 1**: cluster ASCS/SCS
@@ -237,8 +236,8 @@ Než začnete s instalací, přečtěte si následující článek:
 | První uzel clusteru | SOFS-1 | 10.0.6.10 | SOFS jako |
 | Druhý uzel clusteru | SOFS – 2 | 10.0.6.11 | SOFS jako |
 | Třetí uzel clusteru | SOFS-3 | 10.0.6.12 | SOFS jako |
-| Název sítě s clustery | SOFS – CL | 10.0.6.13 | neuvedeno |
-| Název globálního hostitele SAP | sapglobal | Použít IP adresy všech uzlů clusteru | neuvedeno |
+| Název sítě s clustery | SOFS – CL | 10.0.6.13 | Není k dispozici |
+| Název globálního hostitele SAP | sapglobal | Použít IP adresy všech uzlů clusteru | Není k dispozici |
 
 **Tabulka 3**: Scale-Out clusteru souborových serverů
 

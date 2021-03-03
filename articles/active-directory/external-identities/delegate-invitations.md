@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68ed67afc949b3a67936f20a098bca8b6906a598
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 747fa3005930414832878757664f4787157302d5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365544"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645819"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Povolení externí spolupráce B2B a správa toho, kdo může zvát hosty
 
@@ -78,11 +78,11 @@ Ve výchozím nastavení mohou všichni uživatelé, včetně hostů, pozvat už
    >
    >![Povolit přístup k jednorázovému heslu pro odesílání e-mailů](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-7. V části **Povolit samoobslužnou registraci hostů pomocí toků uživatelů (Preview)** vyberte **Ano** , pokud chcete mít možnost vytvářet uživatelské toky, které umožní uživatelům zaregistrovat se k aplikacím. Další informace o tomto nastavení najdete v tématu [Přidání uživatelského toku samoobslužné registrace do aplikace (Preview)](self-service-sign-up-user-flow.md).
+7. V části **Povolit samoobslužnou registraci hosta prostřednictvím toků uživatelů** vyberte **Ano** , pokud chcete mít možnost vytvářet toky uživatelů, které umožňují uživatelům zaregistrovat se k aplikacím. Další informace o tomto nastavení najdete v tématu [Přidání uživatelského toku samoobslužné registrace do aplikace](self-service-sign-up-user-flow.md).
 
     ![Samoobslužná registrace pomocí nastavení toků uživatelů](./media/delegate-invitations/self-service-sign-up-setting.png)
 
-7. V části **omezení spolupráce** zvolte, jestli chcete povolit nebo odepřít pozvánky k zadaným doménám. Další informace najdete v tématu [Povolení nebo blokování pozvánek uživatelům B2B z konkrétních organizací](allow-deny-list.md).
+7. V části **omezení spolupráce** můžete zvolit, zda chcete povolit nebo odepřít pozvánky k zadaným doménám a zadat konkrétní názvy domén v textových polích. V případě více domén zadejte každou doménu na nový řádek. Další informace najdete v tématu [Povolení nebo blokování pozvánek uživatelům B2B z konkrétních organizací](allow-deny-list.md).
 
     ![Nastavení omezení spolupráce](./media/delegate-invitations/collaboration-restrictions.png)
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>Přiřazení role pozvánky hosta uživateli

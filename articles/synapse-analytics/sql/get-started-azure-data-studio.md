@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: f82a1279a69bf91f37400d5614e8f7b121e72f47
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 6b039d934993d2acee630205c5b5e5d8e0f6145e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258893"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667611"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio"></a>Připojení k synapse SQL pomocí Azure Data Studio
 
@@ -26,7 +26,7 @@ ms.locfileid: "99258893"
 > * [Sqlcmd](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-[Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) můžete použít pro připojení k SQL a dotazování synapse v Azure synapse Analytics. 
+[Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio?view=azure-sqldw-latest&preserve-view=true) můžete použít pro připojení k SQL a dotazování synapse v Azure synapse Analytics. 
 
 ## <a name="connect"></a>Připojit
 
@@ -73,7 +73,7 @@ Po úspěšném přihlášení byste měli vidět řídicí panel podobný tomut
 
 ## <a name="query"></a>Dotaz
 
-Po připojení můžete dotazovat synapse SQL pomocí podporovaných příkazů [jazyka Transact-SQL (T-SQL)](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) na instanci. Začněte tím, že vyberete **Nový dotaz** v zobrazení řídicího panelu.
+Po připojení můžete dotazovat synapse SQL pomocí podporovaných příkazů [jazyka Transact-SQL (T-SQL)](/sql/t-sql/language-reference?view=azure-sqldw-latest&preserve-view=true) na instanci. Začněte tím, že vyberete **Nový dotaz** v zobrazení řídicího panelu.
 
 ![Nový dotaz](./media/get-started-azure-data-studio/5-new-query.png)
 

@@ -1,7 +1,7 @@
 ---
 title: Rychlý Start – vytvoření a Správa přístupových tokenů
 titleSuffix: An Azure Communication Services quickstart
-description: Naučte se spravovat identity a přístupové tokeny pomocí klientské knihovny pro správu služby Azure Communication Services.
+description: Naučte se spravovat identity a přístupové tokeny pomocí klientské knihovny Azure Communications Services identity.
 author: tomaschladek
 manager: nmurav
 services: azure-communication-services
@@ -10,18 +10,16 @@ ms.date: 08/20/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 246b8041e7e12ea1a1391cb4690d02892bc31b63
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 8937210b366981d9768e5329989a8ad14f5e8f35
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325285"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657051"
 ---
 # <a name="quickstart-create-and-manage-access-tokens"></a>Rychlý Start: vytváření a Správa přístupových tokenů
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
-Začněte s komunikačními službami Azure pomocí klientské knihovny pro správu komunikačních služeb. Umožňuje vytvářet identity a spravovat přístupové tokeny. Identita představuje entitu aplikace ve službě Azure Communication Service (například uživatel nebo zařízení). Přístupové tokeny umožňují konverzaci a volání klientských knihoven přímo s komunikačními službami Azure. Pro službu na straně serveru doporučujeme generovat přístupové tokeny. Přístupové tokeny se pak používají k inicializaci klientských knihoven komunikačních služeb na klientských zařízeních.
+Začněte s komunikačními službami Azure pomocí klientské knihovny identity služby Communication Services. Umožňuje vytvářet identity a spravovat přístupové tokeny. Identita představuje entitu aplikace ve službě Azure Communication Service (například uživatel nebo zařízení). Přístupové tokeny umožňují konverzaci a volání klientských knihoven přímo s komunikačními službami Azure. Pro službu na straně serveru doporučujeme generovat přístupové tokeny. Přístupové tokeny se pak používají k inicializaci klientských knihoven komunikačních služeb na klientských zařízeních.
 
 Všechny ceny zobrazené v rámci tohoto kurzu jsou pouze pro demonstrační účely.
 
@@ -69,7 +67,7 @@ V tomto rychlém startu jste se naučili:
 > [!div class="checklist"]
 > * Správa identit
 > * Vystavení přístupových tokenů
-> * Použití klientské knihovny pro správu komunikačních služeb
+> * Použití klientské knihovny identity komunikačních služeb
 
 
 > [!div class="nextstepaction"]
@@ -80,4 +78,3 @@ Můžete také chtít:
  - [Další informace o ověřování](../concepts/authentication.md)
  - [Přidání chatu do aplikace](./chat/get-started.md)
  - [Informace o architektuře klientů a serverů](../concepts/client-and-server-architecture.md)
- 

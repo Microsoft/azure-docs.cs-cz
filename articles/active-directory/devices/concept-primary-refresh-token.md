@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f2b059bb6ae63d7f427ce970b2538da922e2dec
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 46cc8ef1158c02190f905cbe8eb1d12ea7be50a2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837259"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644931"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Co je primární obnovovací token?
 
@@ -103,7 +103,7 @@ PRT je chráněn pomocí vazby na zařízení, ke kterému se uživatel přihlá
 * **Při prvním přihlášení**: při prvním přihlášení je PRT vydaný pomocí podepisování požadavků pomocí klíče zařízení kryptograficky generované při registraci zařízení. V zařízení s platným a fungujícím čipem TPM je klíč zařízení zabezpečený čipem TPM, který brání jakémukoli škodlivému přístupu. PRT se nevydá, pokud se odpovídající podpis klíče zařízení nedá ověřit.
 * **Během žádosti a obnovení tokenu**: když se vydá PRT, Azure AD taky vystaví šifrovaný klíč relace do zařízení. Je zašifrovaný pomocí veřejného přenosového klíče (tkpub) vygenerovaného a odeslaného do Azure AD jako součást registrace zařízení. Tento klíč relace lze dešifrovat pouze pomocí privátního transportního klíče (tkpriv) zabezpečeného čipem TPM. Klíč relace je klíč kontrolního bodu (POP) pro všechny požadavky odeslané do služby Azure AD.  Klíč relace je také chráněn čipem TPM a žádná jiná součást operačního systému k ní nemá přístup. Požadavky na tokeny nebo požadavky na obnovení PRT jsou zabezpečeny podepsány tímto klíčem relace prostřednictvím čipu TPM, a proto nemohou být úmyslně poškozeny. Služba Azure AD zruší platnost všech požadavků ze zařízení, které nejsou podepsané odpovídajícím klíčem relace.
 
-Díky zabezpečení těchto klíčů s čipem TPM nemohou škodlivé aktéri ukrást klíče ani přehrávat PRT jinde, protože čip TPM je nepřístupný, i když má útočník fyzické vlastnictví zařízení.  Proto použití čipu TPM značně vylepšuje zabezpečení připojených k Azure AD, připojené k hybridní službě Azure AD a zařízením registrovaným v Azure AD proti krádeži přihlašovacích údajů. Pro výkon a spolehlivost je pro všechny scénáře registrace zařízení Azure AD ve Windows 10 doporučená verze TPM 2,0.
+Díky zabezpečení těchto klíčů s čipem TPM vylepšujeme zabezpečení PRT od škodlivých objektů Actor, které se pokoušejí ukrást klíče, nebo PRT.  Používání TPM proto výrazně vylepšuje zabezpečení připojených ke službě Azure AD, připojené k hybridní službě Azure AD a zaregistrovaná zařízení Azure AD proti krádeži přihlašovacích údajů. Pro výkon a spolehlivost je pro všechny scénáře registrace zařízení Azure AD ve Windows 10 doporučená verze TPM 2,0. Pokud se spouští Windows 10, 1903, služba Azure AD nepoužívá čip TPM 1,2 pro žádný z výše uvedených klíčů kvůli problémům s spolehlivostí. 
 
 ### <a name="how-are-app-tokens-and-browser-cookies-protected"></a>Jak jsou tokeny aplikace a soubory cookie prohlížeče chráněné?
 
@@ -111,7 +111,7 @@ Díky zabezpečení těchto klíčů s čipem TPM nemohou škodlivé aktéri ukr
 
 **Soubory cookie v prohlížeči**: ve Windows 10 podporuje Azure AD jednotné přihlašování prohlížeče v Internet Exploreru a Microsoft Edge nativně nebo v Google Chrome prostřednictvím rozšíření účtů Windows 10. Zabezpečení je postavené nejen k ochraně souborů cookie, ale také k koncovým bodům, na které se soubory cookie odesílají. Soubory cookie prohlížeče jsou chráněny stejným způsobem jako PRT, protože využívají klíč relace k podepisování a ochraně souborů cookie.
 
-Když uživatel zahájí interakci s prohlížečem, prohlížeč (nebo rozšíření) vyvolá hostitele nativního klienta modelu COM. Hostitel nativního klienta zajišťuje, aby se stránka nastavila z jedné z povolených domén. Prohlížeč může odeslat jiné parametry do nativního hostitele klienta, včetně hodnoty nonce, ale nativní hostitel klienta garantuje ověření názvu hostitele. Nativní klient klienta požaduje PRT-cookie z modulu plug-in CloudAP, který vytvoří a podepíše ho pomocí klíče relace chráněného čipem TPM. Vzhledem k tomu, že PRT-cookie je podepsán klíčem relace, nemůže být poškozen. Tento PRT soubor cookie je obsažen v hlavičce žádosti pro Azure AD za účelem ověření zařízení, ze kterého pochází. Pokud používáte prohlížeč Chrome, může to vyvolat pouze rozšíření explicitně definované v manifestu nativního klientského hostitele, které brání libovolným rozšířením v provádění těchto požadavků. Jakmile Azure AD ověří soubor cookie PRT, vydá do prohlížeče soubor cookie relace. Tento soubor cookie relace obsahuje také stejný klíč relace vydaný pomocí PRT. Během následujících požadavků se klíč relace efektivně ověří a naváže se soubor cookie k zařízení a zabrání se dalšímu hraní z jiných míst.
+Když uživatel zahájí interakci s prohlížečem, prohlížeč (nebo rozšíření) vyvolá hostitele nativního klienta modelu COM. Hostitel nativního klienta zajišťuje, aby se stránka nastavila z jedné z povolených domén. Prohlížeč může odeslat jiné parametry do nativního hostitele klienta, včetně hodnoty nonce, ale nativní hostitel klienta garantuje ověření názvu hostitele. Nativní klient klienta požaduje PRT-cookie z modulu plug-in CloudAP, který vytvoří a podepíše ho pomocí klíče relace chráněného čipem TPM. Vzhledem k tomu, že PRT-cookie je podepsán klíčem relace, je velmi obtížné manipulovat s. Tento PRT soubor cookie je obsažen v hlavičce žádosti pro Azure AD za účelem ověření zařízení, ze kterého pochází. Pokud používáte prohlížeč Chrome, může to vyvolat pouze rozšíření explicitně definované v manifestu nativního klientského hostitele, které brání libovolným rozšířením v provádění těchto požadavků. Jakmile Azure AD ověří soubor cookie PRT, vydá do prohlížeče soubor cookie relace. Tento soubor cookie relace obsahuje také stejný klíč relace vydaný pomocí PRT. Během následujících požadavků se klíč relace efektivně ověří a naváže se soubor cookie k zařízení a zabrání se dalšímu hraní z jiných míst.
 
 ## <a name="when-does-a-prt-get-an-mfa-claim"></a>Kdy PRT získá deklaraci MFA?
 
@@ -196,7 +196,7 @@ Následující diagramy znázorňují základní podrobnosti o vydávání, obno
 | A | Uživatel se do Windows přihlásí pomocí svých přihlašovacích údajů, aby mohl získat PRT. Jakmile uživatel otevře prohlížeč, prohlížeč (nebo rozšíření) načte adresy URL z registru. |
 | B | Když uživatel otevře přihlašovací adresu URL služby Azure AD, prohlížeč nebo rozšíření ověří adresu URL pomocí těch, které jsou získány z registru. Pokud se shodují, prohlížeč vyvolá nativního klientského hostitele pro získání tokenu. |
 | C | Nativní klient klienta ověří, jestli adresy URL patří poskytovatelům identity Microsoftu (účet Microsoft nebo Azure AD), extrahuje hodnotu NONCE odeslanou z adresy URL a vyvolá volání modulu plug-in CloudAP pro získání souboru cookie PRT. |
-| D | Modul plug-in CloudAP vytvoří soubor cookie PRT, přihlaste se pomocí klíče relace vázané na čip TPM a odešlete ho zpátky do nativního klientského hostitele. V případě, že je soubor cookie podepsán klíčem relace, nemůže být poškozen. |
+| D | Modul plug-in CloudAP vytvoří soubor cookie PRT, přihlaste se pomocí klíče relace vázané na čip TPM a odešlete ho zpátky do nativního klientského hostitele. |
 | E | Nativní klient klienta vrátí tento soubor cookie PRT do prohlížeče, který bude obsahovat jako součást hlavičky požadavku s názvem x-MS-RefreshTokenCredential a žádosti o tokeny od Azure AD. |
 | F | Azure AD ověří signaturu klíče relace v souboru cookie PRT, ověří hodnotu nonce, ověří, že je zařízení v tenantovi platné, a vydá token ID pro webovou stránku a šifrovaný soubor cookie relace pro prohlížeč. |
 

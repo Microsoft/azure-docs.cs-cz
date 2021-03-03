@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 26e39b8f0429995bfa336c4971c76f90d903ff55
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 3b2fb1c4e7a08619a0321e188b54bb581f97fd6d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99628944"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661518"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -21,6 +21,9 @@ ms.locfileid: "99628944"
 ## <a name="setting-up"></a>Nastavení
 
 ### <a name="install-the-package"></a>Instalace balíčku
+
+> [!NOTE]
+> Tento dokument používá verzi 1.0.0-beta. 8 volání klientské knihovny.
 
 <!-- TODO: update with instructions on how to download, install and add package to project -->
 Vyhledejte na úrovni projektu Build. Gradle a ujistěte se, že jste přidali `mavenCentral()` do seznamu úložišť v části `buildscript` a. `allprojects`
@@ -48,7 +51,7 @@ Pak v sestavení na úrovni modulu přidejte následující řádky do oddílu z
 ```groovy
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.8'
     ...
 }
 
@@ -58,11 +61,12 @@ dependencies {
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce komunikačních služeb Azure, které volají klientskou knihovnu:
 
-| Název                                  | Description                                                  |
+| Název                                  | Popis                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | CallClient| CallClient je hlavní vstupní bod pro volání klientské knihovny.|
 | CallAgent | CallAgent se používá ke spouštění a správě volání. |
-| CommunicationUserCredential | CommunicationUserCredential se používá jako přihlašovací údaje tokenu pro vytvoření instance CallAgent.|
+| CommunicationTokenCredential | CommunicationTokenCredential se používá jako přihlašovací údaje tokenu pro vytvoření instance CallAgent.|
+| CommunicationIdentifier | CommunicationIdentifier se používá jako jiný typ účastníka, který by mohl být součástí volání.|
 
 ## <a name="initialize-the-callclient-create-a-callagent-and-access-the-devicemanager"></a>Inicializujte CallClient, vytvořte CallAgent a získejte přístup k DeviceManager
 
@@ -73,28 +77,28 @@ Pro přístup k rozhraní `DeviceManager` musí být nejprve vytvořena instance
 ```java
 String userToken = '<user token>';
 CallClient callClient = new CallClient();
-CommunicationUserCredential tokenCredential = new CommunicationUserCredential(userToken);
+CommunicationTokenCredential tokenCredential = new CommunicationTokenCredential(userToken);
 android.content.Context appContext = this.getApplicationContext(); // From within an Activity for instance
-CallAgent callAgent = await callClient.createCallAgent((appContext, tokenCredential).get();
-DeviceManage deviceManager = await callClient.getDeviceManager().get();
+CallAgent callAgent = callClient.createCallAgent((appContext, tokenCredential).get();
+DeviceManage deviceManager = callClient.getDeviceManager().get();
 ```
 Chcete-li nastavit zobrazovaný název volajícího, použijte tuto alternativní metodu:
 
 ```java
 String userToken = '<user token>';
 CallClient callClient = new CallClient();
-CommunicationUserCredential tokenCredential = new CommunicationUserCredential(userToken);
+CommunicationTokenCredential tokenCredential = new CommunicationTokenCredential(userToken);
 android.content.Context appContext = this.getApplicationContext(); // From within an Activity for instance
 CallAgentOptions callAgentOptions = new CallAgentOptions();
 callAgentOptions.setDisplayName("Alice Bob");
-CallAgent callAgent = await callClient.createCallAgent((appContext, tokenCredential, callAgentOptions).get();
-DeviceManage deviceManager = await callClient.getDeviceManager().get();
+CallAgent callAgent = callClient.createCallAgent((appContext, tokenCredential, callAgentOptions).get();
+DeviceManage deviceManager = callClient.getDeviceManager().get();
 ```
 
 
 ## <a name="place-an-outgoing-call-and-join-a-group-call"></a>Umístěte odchozí volání a připojte se k volání skupiny.
 
-Chcete-li vytvořit a spustit volání, je třeba zavolat `CallAgent.call()` metodu a zadat `Identifier` volaného (y).
+Chcete-li vytvořit a spustit volání, je třeba zavolat `CallAgent.startCall()` metodu a zadat `Identifier` volaného (y).
 Chcete-li se připojit k volání skupiny, je třeba zavolat `CallAgent.join()` metodu a poskytnout identifikátor skupiny. ID skupin musí být ve formátu GUID nebo UUID.
 
 Vytvoření a spuštění volání jsou synchronní. Instance volání umožňuje přihlásit se k odběru všech událostí volání.
@@ -104,9 +108,9 @@ Chcete-li umístit volání jinému uživateli komunikačních služeb, volejte 
 ```java
 StartCallOptions startCallOptions = new StartCallOptions();
 Context appContext = this.getApplicationContext();
-CommunicationUser acsUserId = new CommunicationUser(<USER_ID>);
-CommunicationUser participants[] = new CommunicationUser[]{ acsUserId };
-call oneToOneCall = callAgent.call(appContext, participants, startCallOptions);
+CommunicationUserIdentifier acsUserId = new CommunicationUserIdentifier(<USER_ID>);
+CommunicationUserIdentifier participants[] = new CommunicationUserIdentifier[]{ acsUserId };
+call oneToOneCall = callAgent.startCall(appContext, participants, startCallOptions);
 ```
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>Nakonání volání 1: n s uživateli a PSTN
@@ -116,17 +120,17 @@ call oneToOneCall = callAgent.call(appContext, participants, startCallOptions);
 Chcete-li umístit volání 1: n uživateli a číslo veřejné telefonní číslo, musíte zadat telefonní číslo volaného.
 Aby bylo možné volat do veřejné telefonní služby, je potřeba nakonfigurovat prostředek komunikačních služeb:
 ```java
-CommunicationUser acsUser1 = new CommunicationUser(<USER_ID>);
-PhoneNumber acsUser2 = new PhoneNumber("<PHONE_NUMBER>");
+CommunicationUserIdentifier acsUser1 = new CommunicationUserIdentifier(<USER_ID>);
+PhoneNumberIdentifier acsUser2 = new PhoneNumberIdentifier("<PHONE_NUMBER>");
 CommunicationIdentifier participants[] = new CommunicationIdentifier[]{ acsUser1, acsUser2 };
 StartCallOptions startCallOptions = new StartCallOptions();
 Context appContext = this.getApplicationContext();
-Call groupCall = callAgent.call(participants, startCallOptions);
+Call groupCall = callAgent.startCall(participants, startCallOptions);
 ```
 
 ### <a name="place-a-11-call-with-video-camera"></a>Vložení volání 1:1 s videokamerou
 > [!WARNING]
-> V současné době se podporuje jenom jeden odchozí datový proud místního videa, který zadává volání s videem, takže je nutné vytvořit výčet místních kamer pomocí `deviceManager` `getCameraList` rozhraní API.
+> V současné době se podporuje jenom jeden odchozí datový proud místního videa, který zadává volání s videem, takže je nutné vytvořit výčet místních kamer pomocí `deviceManager` `getCameras` rozhraní API.
 Jakmile vyberete požadovanou kameru, použijte ji k vytvoření `LocalVideoStream` instance a předejte ji do `videoOptions` jako položku v `localVideoStream` poli do `call` metody.
 Po připojení se volání automaticky spustí odeslání streamu videa z vybrané kamery do ostatních účastníků.
 
@@ -135,7 +139,7 @@ Po připojení se volání automaticky spustí odeslání streamu videa z vybran
 Další podrobnosti najdete v tématu [místní videokamera ve verzi Preview](#local-camera-preview) .
 ```java
 Context appContext = this.getApplicationContext();
-VideoDeviceInfo desiredCamera = callClient.getDeviceManager().get().getCameraList().get(0);
+VideoDeviceInfo desiredCamera = callClient.getDeviceManager().get().getCameras().get(0);
 LocalVideoStream currentVideoStream = new LocalVideoStream(desiredCamera, appContext);
 VideoOptions videoOptions = new VideoOptions(currentVideoStream);
 
@@ -145,20 +149,20 @@ View uiView = previewRenderer.createView(new RenderingOptions(ScalingMode.Fit));
 // Attach the uiView to a viewable location on the app at this point
 layout.addView(uiView);
 
-CommunicationUser[] participants = new CommunicationUser[]{ new CommunicationUser("<acs user id>") };
+CommunicationUserIdentifier[] participants = new CommunicationUserIdentifier[]{ new CommunicationUserIdentifier("<acs user id>") };
 StartCallOptions startCallOptions = new StartCallOptions();
 startCallOptions.setVideoOptions(videoOptions);
-Call call = callAgent.call(context, participants, startCallOptions);
+Call call = callAgent.startCall(context, participants, startCallOptions);
 ```
 
 ### <a name="join-a-group-call"></a>Připojit se k volání skupiny
 Chcete-li spustit nové volání skupiny nebo se zapojit do průběžného volání skupiny, musíte zavolat metodu JOIN a předat objektu `groupId` vlastnost. Hodnota musí být identifikátor GUID.
 ```java
 Context appContext = this.getApplicationContext();
-GroupCallContext groupCallContext = new groupCallContext("<GUID>");
+GroupCallLocator groupCallLocator = new GroupCallLocator("<GUID>");
 JoinCallOptions joinCallOptions = new JoinCallOptions();
 
-call = callAgent.join(context, groupCallContext, joinCallOptions);
+call = callAgent.join(context, groupCallLocator, joinCallOptions);
 ```
 
 ### <a name="accept-a-call"></a>Přijmout volání
@@ -166,37 +170,31 @@ Chcete-li přijmout volání, zavolejte metodu Accept objektu volání.
 
 ```java
 Context appContext = this.getApplicationContext();
-Call incomingCall = retrieveIncomingCall();
-incomingCall.accept(context).get();
+IncomingCall incomingCall = retrieveIncomingCall();
+Call call = incomingCall.accept(context).get();
 ```
 
 Přijetí volání videokamery na:
 
 ```java
 Context appContext = this.getApplicationContext();
-Call incomingCall = retrieveIncomingCall();
+IncomingCall incomingCall = retrieveIncomingCall();
 AcceptCallOptions acceptCallOptions = new AcceptCallOptions();
 VideoDeviceInfo desiredCamera = callClient.getDeviceManager().get().getCameraList().get(0);
 acceptCallOptions.setVideoOptions(new VideoOptions(new LocalVideoStream(desiredCamera, appContext)));
-incomingCall.accept(context, acceptCallOptions).get();
+Call call = incomingCall.accept(context, acceptCallOptions).get();
 ```
 
-Příchozí volání lze získat přihlášením k odběru `CallsUpdated` události `callAgent` objektu a opakováním prostřednictvím přidaných volání:
+Příchozí volání lze získat přihlášením k odběru `onIncomingCall` události `callAgent` objektu:
 
 ```java
 // Assuming "callAgent" is an instance property obtained by calling the 'createCallAgent' method on CallClient instance 
 public Call retrieveIncomingCall() {
-    Call incomingCall;
-    callAgent.addOnCallsUpdatedListener(new CallsUpdatedListener() {
-        void onCallsUpdated(CallsUpdatedEvent callsUpdatedEvent) {
+    IncomingCall incomingCall;
+    callAgent.addOnIncomingCallListener(new IncomingCallListener() {
+        void onIncomingCall(IncomingCall inboundCall) {
             // Look for incoming call
-            List<Call> calls = callsUpdatedEvent.getAddedCalls();
-            for (Call call : calls) {
-                if (call.getState() == CallState.Incoming) {
-                    incomingCall = call;
-                    break;
-                }
-            }
+            incomingCall = inboundCall;
         }
     });
     return incomingCall;
@@ -320,11 +318,12 @@ Do tohoto souboru přidejte následující definici služby `AndroidManifest.xml
         </service>
 ```
 
-- Jakmile je datová část načtena, může být předána klientské knihovně *komunikačních služeb* , aby byla zpracována voláním metody *HandlePushNotification* v instanci *CallAgent* . `CallAgent`Instance je vytvořena voláním `createCallAgent(...)` metody `CallClient` třídy.
+- Jakmile je datová část načtena, může být předána klientské knihovně *komunikačních služeb* , aby je bylo možné analyzovat do interního objektu *IncomingCallInformation* , který bude zpracován voláním metody *handlePushNotification* na instanci *CallAgent* . `CallAgent`Instance je vytvořena voláním `createCallAgent(...)` metody `CallClient` třídy.
 
 ```java
 try {
-    callAgent.handlePushNotification(pushNotificationMessageDataFromFCM).get();
+    IncomingCallInformation notification = IncomingCallInformation.fromMap(pushNotificationMessageDataFromFCM);
+    Future handlePushNotificationFuture = callAgent.handlePushNotification(notification).get();
 }
 catch(Exception e) {
     System.out.println("Something went wrong while handling the Incoming Calls Push Notifications.");
@@ -354,7 +353,7 @@ Můžete získat přístup k vlastnostem volání a provádět různé operace b
 Získat jedinečné ID pro toto volání:
 
 ```java
-String callId = call.getCallId();
+String callId = call.getId();
 ```
 
 Další informace o dalších účastníkůch v kolekci inspekce volání `remoteParticipant` v `call` instanci:
@@ -377,12 +376,12 @@ CallState callState = call.getState();
 
 Vrátí řetězec představující aktuální stav volání:
 * None – počáteční stav volání
-* ' Příchozí ' – označuje, že volání je příchozí, musí být buď přijato, nebo odmítnuto.
 * Probíhá připojování – počáteční přechodový stav po umístění nebo přijetí volání.
-* "Vyzvánění" – pro odchozí volání – indikuje, že volání bude vyzvánět pro vzdálené účastníky, jedná se o "příchozí", ale na svou stranu
+* "Vyzvánění" – pro odchozí volání – indikuje, že volání bude vyzvánět pro vzdálené účastníky
 * ' EarlyMedia ' – označuje stav, ve kterém je přehráno oznámení před připojením k volání.
 * Připojeno – volání je připojené.
-* Blokováno – volání je blokováno, žádné médium neprobíhá mezi místním koncovým bodem a vzdáleným účastníkem (y).
+* ' LocalHold ' – volání je blokováno místním účastníkem, žádné médium neprobíhá mezi místním koncovým bodem a vzdáleným účastníkem (y).
+* ' RemoteHold ' – volání je blokováno vzdáleným účastníkem, žádné médium neprobíhá mezi místním koncovým bodem a vzdáleným účastníkem (y).
 * "Odpojení" – přechodový stav před voláním do stavu "Odpojeno"
 * Odpojeno – stav konečného volání
 
@@ -395,16 +394,24 @@ int code = callEndReason.getCode();
 int subCode = callEndReason.getSubCode();
 ```
 
-Chcete-li zjistit, zda aktuální volání je příchozí volání, zkontrolujte `isIncoming` vlastnost:
+Chcete-li zjistit, zda je aktuální volání příchozí nebo odchozí volání, zkontrolujte `callDirection` vlastnost:
 
 ```java
-boolean isIncoming = call.getIsIncoming();
+CallDirection callDirection = call.getCallDirection(); 
+// callDirection == CallDirection.Incoming for incoming call
+// callDirection == CallDirection.Outgoing for outgoing call
 ```
 
 Pokud chcete zjistit, jestli je aktuální mikrofon ztlumený, zkontrolujte `muted` vlastnost:
 
 ```java
 boolean muted = call.getIsMicrophoneMuted();
+```
+
+Chcete-li zjistit, zda je aktuální volání zaznamenáváno, zkontrolujte `isRecordingActive` vlastnost:
+
+```java
+boolean recordinggActive = call.getIsRecordingActive();
 ```
 
 Pokud chcete zkontrolovat aktivní streamy videa, zkontrolujte `localVideoStreams` kolekci:
@@ -429,27 +436,27 @@ Chcete-li spustit video, je nutné vytvořit výčet fotoaparátů pomocí `getC
 ```java
 VideoDeviceInfo desiredCamera = <get-video-device>;
 Context appContext = this.getApplicationContext();
-currentVideoStream = new LocalVideoStream(desiredCamera, appContext);
-videoOptions = new VideoOptions(currentVideoStream);
-Future startVideoFuture = call.startVideo(currentVideoStream);
+LocalVideoStream currentLocalVideoStream = new LocalVideoStream(desiredCamera, appContext);
+VideoOptions videoOptions = new VideoOptions(currentLocalVideoStream);
+Future startVideoFuture = call.startVideo(currentLocalVideoStream);
 startVideoFuture.get();
 ```
 
 Po úspěšném spuštění odesílání videa `LocalVideoStream` bude instance přidána do `localVideoStreams` kolekce v instanci volání.
 
 ```java
-currentVideoStream == call.getLocalVideoStreams().get(0);
+currentLocalVideoStream == call.getLocalVideoStreams().get(0);
 ```
 
-Pokud chcete zastavit místní video, předejte `localVideoStream` instanci dostupnou v `localVideoStreams` kolekci:
+Pokud chcete zastavit místní video, předejte `LocalVideoStream` instanci dostupnou v `localVideoStreams` kolekci:
 
 ```java
-call.stopVideo(localVideoStream).get();
+call.stopVideo(currentLocalVideoStream).get();
 ```
 
-V době, kdy se video posílá vyvoláním na instanci, můžete přepínat na jiné zařízení fotoaparátu `switchSource` `localVideoStream` .
+V době, kdy se video posílá vyvoláním na instanci, můžete přepínat na jiné zařízení fotoaparátu `switchSource` `LocalVideoStream` .
 ```java
-localVideoStream.switchSource(source).get();
+currentLocalVideoStream.switchSource(source).get();
 ```
 
 ## <a name="remote-participants-management"></a>Vzdálená správa účastníků
@@ -468,7 +475,7 @@ Každý vzdálený účastník má k sadu vlastností a kolekcí, které jsou k 
 * Získat identifikátor pro tohoto vzdáleného účastníka.
 Identita je jedním z typů identifikátorů.
 ```java
-CommunicationIdentifier participantIdentity = remoteParticipant.getIdentifier();
+CommunicationIdentifier participantIdentifier = remoteParticipant.getIdentifier();
 ```
 
 * Získat stav tohoto vzdáleného účastníka.
@@ -477,10 +484,12 @@ ParticipantState state = remoteParticipant.getState();
 ```
 Stav může být jedna z
 * Nečinné – počáteční stav
+* ' EarlyMedia ' – před připojením účastníka k volání se přehraje oznámení.
+* Cyklické volání – volání účastníka je cyklické.
 * Probíhá připojování – přechodový stav, zatímco se účastník připojuje k volání.
 * Připojeno – účastník je připojený k volání.
 * ' Hold ' – účastník je blokován
-* ' EarlyMedia ' – před připojením účastníka k volání se přehraje oznámení.
+* ' Inpředsálí ' – účastník čeká na přijetí v předsálí. Aktuálně se používá jenom ve scénáři spolupráce týmů.
 * ' Odpojeno ' – konečný stav – účastník je odpojen od volání
 
 
@@ -510,10 +519,11 @@ List<RemoteVideoStream> videoStreams = remoteParticipant.getVideoStreams(); // [
 Chcete-li přidat účastníka do volání (buď uživatele, nebo telefonní číslo), můžete vyvolat `addParticipant` . Tím se synchronně vrátí instance vzdáleného účastníka.
 
 ```java
-const acsUser = new CommunicationUser("<acs user id>");
-const acsPhone = new PhoneNumber("<phone number>");
+const acsUser = new CommunicationUserIdentifier("<acs user id>");
+const acsPhone = new PhoneNumberIdentifier("<phone number>");
 RemoteParticipant remoteParticipant1 = call.addParticipant(acsUser);
-RemoteParticipant remoteParticipant2 = call.addParticipant(acsPhone);
+AddPhoneNumberOptions addPhoneNumberOptions = new AddPhoneNumberOptions(new PhoneNumberIdentifier("<alternate phone number>"));
+RemoteParticipant remoteParticipant2 = call.addParticipant(acsPhone, addPhoneNumberOptions);
 ```
 
 ### <a name="remove-participant-from-a-call"></a>Odebrat účastníka volání
@@ -521,9 +531,10 @@ Chcete-li odebrat účastníka ze volání (buď uživatele, nebo telefonního �
 Tím se asynchronně vyřeší po odebrání účastníka z volání.
 Účastník bude také odebrán z `remoteParticipants` kolekce.
 ```java
-RemoteParticipant remoteParticipant = call.getParticipants().get(0);
-call.removeParticipant(acsUser).get();
-call.removeParticipant(acsPhone).get();
+RemoteParticipant acsUserRemoteParticipant = call.getParticipants().get(0);
+RemoteParticipant acsPhoneRemoteParticipant = call.getParticipants().get(1);
+call.removeParticipant(acsUserRemoteParticipant).get();
+call.removeParticipant(acsPhoneRemoteParticipant).get();
 ```
 
 ## <a name="render-remote-participant-video-streams"></a>Vykreslovat streamy videa vzdáleného účastníka
@@ -635,13 +646,13 @@ Chcete-li získat přístup k místním zařízením, můžete použít metody v
 
 ```java
 //  Get a list of available video devices for use.
-List<VideoDeviceInfo> localCameras = deviceManager.getCameraList(); // [VideoDeviceInfo, VideoDeviceInfo...]
+List<VideoDeviceInfo> localCameras = deviceManager.getCameras(); // [VideoDeviceInfo, VideoDeviceInfo...]
 
 // Get a list of available microphone devices for use.
-List<AudioDeviceInfo> localMicrophones = deviceManager.getMicrophoneList(); // [AudioDeviceInfo, AudioDeviceInfo...]
+List<AudioDeviceInfo> localMicrophones = deviceManager.getMicrophones(); // [AudioDeviceInfo, AudioDeviceInfo...]
 
 // Get a list of available speaker devices for use.
-List<AudioDeviceInfo> localSpeakers = deviceManager.getSpeakerList(); // [AudioDeviceInfo, AudioDeviceInfo...]
+List<AudioDeviceInfo> localSpeakers = deviceManager.getSpeakers(); // [AudioDeviceInfo, AudioDeviceInfo...]
 ```
 
 ### <a name="set-default-microphonespeaker"></a>Nastavit výchozí mikrofon/mluvčí
@@ -652,13 +663,13 @@ Pokud nejsou nastavené výchozí hodnoty klienta, komunikační služby se vrá
 ```java
 
 // Get the microphone device that is being used.
-AudioDeviceInfo defaultMicrophone = deviceManager.getMicrophoneList().get(0);
+AudioDeviceInfo defaultMicrophone = deviceManager.getMicrophones().get(0);
 
 // Set the microphone device to use.
 deviceManager.setMicrophone(defaultMicrophone);
 
 // Get the speaker device that is being used.
-AudioDeviceInfo defaultSpeaker = deviceManager.getSpeakerList().get(0);
+AudioDeviceInfo defaultSpeaker = deviceManager.getSpeakers().get(0);
 
 // Set the speaker device to use.
 deviceManager.setSpeaker(defaultSpeaker);
@@ -697,10 +708,10 @@ PropertyChangedListener callStateChangeListener = new PropertyChangedListener()
         Log.d("The call state has changed.");
     }
 }
-call.addOnCallStateChangedListener(callStateChangeListener);
+call.addOnStateChangedListener(callStateChangeListener);
 
 //unsubscribe
-call.removeOnCallStateChangedListener(callStateChangeListener);
+call.removeOnStateChangedListener(callStateChangeListener);
 ```
 
 ### <a name="collections"></a>Kolekce

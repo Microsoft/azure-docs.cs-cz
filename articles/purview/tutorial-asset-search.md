@@ -6,13 +6,13 @@ ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
-ms.date: 12/01/2020
-ms.openlocfilehash: f778a55c206e012884b44c1fea0a63e2de6b481a
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.date: 02/22/2020
+ms.openlocfilehash: 5285d5b2c7cbe6845fb6043fa1096f94254602e7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693337"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677829"
 ---
 # <a name="tutorial-navigate-the-azure-purview-preview-home-page-and-search-for-an-asset"></a>Kurz: navigace na domovské stránce Azure dosah (Preview) a hledání prostředku
 
@@ -45,7 +45,7 @@ Následující kroky vás provedou na domovské stránce Azure dosah.
 
 1. V Azure Portal přejděte do svého prostředku Azure dosah a vyberte **otevřít dosah Studio**. Automaticky přejdete na domovskou stránku aplikace dosah Studio.
 
-   V horní části domovské stránky se zobrazuje název vašeho katalogu a sada katalogových analýz. Zahrnuje počet uživatelů, datových assetů a pojmů. V souhrnu vidíte, že v části Total a 113 glosáře se nachází více než 200 prostředků. Toto číslo se aktualizuje v rámci vaší organizace a přidává další výrazy do Azure dosah.
+   V horní části domovské stránky se zobrazuje název vašeho katalogu a sada katalogových analýz. Zahrnuje počet zdrojů, datových assetů a pojmů. V souhrnu vidíte, že v části Total a 113 glosáře se nachází více než 200 prostředků. Toto číslo se aktualizuje v rámci vaší organizace a přidává další výrazy do Azure dosah.
 
    :::image type="content" source="./media/tutorial-asset-search/purview-home-page.png" alt-text="Snímek obrazovky, na které se zobrazuje Domovská stránka Azure dosah":::
 

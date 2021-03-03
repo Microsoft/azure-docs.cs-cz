@@ -2,18 +2,18 @@
 title: Nasazení Azure IoT Edgech úloh (Preview)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/10/2021
+ms.date: 02/19/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Nasazení Azure IoT Edgech úloh
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
-ms.openlocfilehash: f228b79f14ab24281415cd4bd5964fc86a095d3c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c352455b69360df0b26f5aac38fc40ccb30fb9de
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390432"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650409"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>Nasazení Azure IoT Edgech úloh (Preview)
 
@@ -43,7 +43,7 @@ Následující diagram znázorňuje vztah Azure ARC a Azure IoT Edge:
   $ kubectl create secret generic dcs --from-file=fully-qualified-path-to-values.yaml --namespace iotedge
   ```
 
-  Můžete ji také nastavit vzdáleně pomocí [příkladu konfigurace clusteru](./use-gitops-connected-cluster.md).
+  Můžete ji také nastavit vzdáleně pomocí [příkladu konfigurace clusteru](./tutorial-use-gitops-connected-cluster.md).
 
 ## <a name="connect-a-cluster"></a>Připojení clusteru
 
@@ -57,10 +57,10 @@ Následující diagram znázorňuje vztah Azure ARC a Azure IoT Edge:
 
 [Ukázkové úložiště Git](https://github.com/veyalla/edgearc) odkazuje na graf IoT Edge Helm a odkazuje na tajný kód vytvořený v části požadavky.
 
-Pomocí `az` rozšíření Azure CLI `k8sconfiguration` vytvořte konfiguraci, která propojuje připojený cluster s úložištěm git:
+Pomocí `az` rozšíření Azure CLI `k8s-configuration` vytvořte konfiguraci, která propojuje připojený cluster s úložištěm git:
 
   ```
-  az k8sconfiguration create --name iotedge --cluster-name AzureArcIotEdge --resource-group AzureArcTest --operator-instance-name iotedge --operator-namespace azure-arc-iot-edge --enable-helm-operator --helm-operator-chart-version 0.6.0 --helm-operator-chart-values "--set helm.versions=v3" --repository-url "git://github.com/veyalla/edgearc.git" --cluster-scoped
+  az k8s-configuration create --name iotedge --cluster-name AzureArcIotEdge --resource-group AzureArcTest --operator-instance-name iotedge --operator-namespace azure-arc-iot-edge --enable-helm-operator --helm-operator-chart-version 0.6.0 --helm-operator-chart-values "--set helm.versions=v3" --repository-url "git://github.com/veyalla/edgearc.git" --cluster-scoped
   ```
 
 Během několika minut byste měli vidět moduly IoT Edge úloh nasazené do `iotedge` oboru názvů vašeho clusteru. 
@@ -72,7 +72,7 @@ Podívejte se na `SimulatedTemperatureSensor` protokoly pod v tomto oboru názv�
 Odeberte konfiguraci pomocí:
 
 ```
-az k8sconfiguration delete -g AzureArcTest --cluster-name AzureArcIotEdge --name iotedge
+az k8s-configuration delete -g AzureArcTest --cluster-name AzureArcIotEdge --name iotedge
 ```
 
 ## <a name="next-steps"></a>Další kroky

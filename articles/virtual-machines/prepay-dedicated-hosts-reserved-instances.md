@@ -4,16 +4,17 @@ description: Naučte se koupit rezervované instance vyhrazené hostitele Azure 
 services: virtual-machines
 author: yashar
 ms.service: virtual-machines
+ms.subservice: dedicated-hosts
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: cac7a6dfcd98b9de61fabdb8e43ca1cdfd4023c2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 1450f03ae72e79daca5a5ae2c04506e6bee5180b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598299"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672277"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>Úspora nákladů pomocí rezervací vyhrazených hostitelů Azure
 
@@ -70,11 +71,11 @@ Pokud máte smlouvu EA, můžete k rychlému přidání dalších instancí pou�
 
 | **Pole**           | **Popis**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Předplatné        | Předplatné použité pro platbu za rezervaci. Náklady na kapacitu se účtují pomocí způsobu platby zvoleného pro toto předplatné. Typ předplatného musí být smlouva Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P), zákaznická smlouva Microsoftu nebo jednotlivá předplatná s tarify průběžných plateb (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). Poplatky se odečítají od předplatného Azure (dříve nazývaného peněžní závazek), pokud jsou dostupné, nebo se účtují jako nadlimitní využití. U předplatného s tarify průběžných plateb se poplatky účtují na základě platební karty nebo platby na faktuře v rámci předplatného. |
+| Předplatné        | Předplatné použité pro platbu za rezervaci. Náklady na kapacitu se účtují pomocí způsobu platby zvoleného pro toto předplatné. Typ předplatného musí být smlouva Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P), zákaznická smlouva Microsoftu nebo jednotlivá předplatná s tarify průběžných plateb (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). Poplatky se strhávají z Azure Prepaymentu (dřív označovaný jako peněžní závazek), pokud je k dispozici, nebo se účtují jako nadlimitní využití. U předplatného s tarify průběžných plateb se poplatky účtují na základě platební karty nebo platby na faktuře v rámci předplatného. |
 | Obor               | Rozsah rezervace může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | Oblast              | Oblast Azure, která je pokrytá rezervací.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | Vyhrazená velikost hostitele | Velikost vyhrazených instancí hostitele.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| Pojem                | Jeden rok nebo tři roky.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Označení                | Jeden rok nebo tři roky.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | Množství            | Počet instancí zakoupených v rámci rezervace. Množství je počet spuštěných vyhrazených instancí hostitele, které mohou získat fakturační slevu.                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 - Rozsah **Jedna skupina prostředků** – sleva za rezervaci se uplatní jenom u odpovídajících prostředků ve vybrané skupině prostředků.
@@ -105,7 +106,7 @@ Po nákupu nemůžete provést následující typy změn přímo:
 
 - Existující oblast rezervace
 
-- Skladová položka
+- SKU
 
 - Množství
 

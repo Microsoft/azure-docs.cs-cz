@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 39ba8a5884abb4be9fa0b8e32a292e06738e1550
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5caa41b852bf55a11489db6c0bab871b20720e05
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935648"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670656"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Kurz: Vytvoření aplikace Machine Learning pomocí Apache Spark MLlib a Azure synapse Analytics
 
@@ -197,7 +197,7 @@ Teď, když existují dva datarámce, je dalším úkolem vytvořit vzor modelu 
 > [!Note]
 > Pokud chcete model uložit, budete potřebovat roli Azure pro *přispěvatele dat objektů BLOB úložiště* . V rámci svého účtu úložiště, přejít na **Access Control (IAM)** a vyberte **Přidat přiřazení role**. Přiřaďte roli Přispěvatel dat objektů BLOB úložiště k vašemu serveru Azure SQL Database. Tento krok mohou provádět pouze členové s oprávněními vlastníka. 
 >
->Informace o různých předdefinovaných rolích Azure najdete v [této příručce](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+>Informace o různých předdefinovaných rolích Azure najdete v [této příručce](../../role-based-access-control/built-in-roles.md).
 
 ```python
 ## Create a new logistic regression object for the model
@@ -256,9 +256,9 @@ Po dokončení spuštění aplikace vypněte Poznámkový blok a uvolněte ho za
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Dokumentace k rozhraní .NET pro Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Dokumentace k rozhraní .NET pro Apache Spark](/dotnet/spark)
 - [Azure Synapse Analytics](../index.yml)
 - [Apache Spark oficiální dokumentace](https://spark.apache.org/docs/2.4.5/)
 
 >[!NOTE]
-> Některé oficiální dokumentace Apache Spark spoléhá na použití konzoly Spark, která není k dispozici v Apache Spark ve službě Azure synapse Analytics. Místo toho používejte [Poznámkový blok](../quickstart-apache-spark-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) nebo [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
+> Některé oficiální dokumentace Apache Spark spoléhá na použití konzoly Spark, která není k dispozici v Apache Spark ve službě Azure synapse Analytics. Místo toho používejte [Poznámkový blok](../quickstart-apache-spark-notebook.md) nebo [IntelliJ](../spark/intellij-tool-synapse.md) .

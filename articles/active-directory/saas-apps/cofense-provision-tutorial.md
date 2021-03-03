@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: Zhchia
-ms.openlocfilehash: 084592a8db47a94a0fcd683105f749f514c05ea3
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 70766fd93f0a70ecf6b5ee54dbdba3571f783878
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247569"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646040"
 ---
 # <a name="tutorial-configure-cofense-recipient-sync-for-automatic-user-provisioning"></a>Kurz: Konfigurace synchronizace příjemců Cofense pro Automatické zřizování uživatelů
 
@@ -33,7 +33,7 @@ Tento kurz popisuje kroky, které je třeba provést v rámci synchronizace Cofe
 > * Odebrat uživatele v synchronizaci Cofense příjemcům, kteří už nevyžadují přístup
 > * Udržování uživatelských atributů synchronizovaných mezi službou Azure AD a synchronizací příjemců Cofense
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -117,11 +117,11 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
    |name.givenName|Řetězec|
    |name.familyName|Řetězec|
    |název. honorificSuffix|Řetězec|
-   |phoneNumbers [typ EQ "Work"]. Value|Řetězec|
+   |phoneNumbers[type eq "work"].value|Řetězec|
    |phoneNumbers [typ EQ "domů"]. hodnota|Řetězec|
    |phoneNumbers [typ EQ "other"]. hodnota|Řetězec|
    |phoneNumbers [typ EQ "pager"]. Value|Řetězec|
-   |phoneNumbers [Type EQ "mobilní"]. Value|Řetězec|
+   |phoneNumbers[type eq "mobile"].value|Řetězec|
    |phoneNumbers [typ EQ "fax"]. hodnota|Řetězec|
    |adresy [Type EQ "ostatní"]. formátovaný|Řetězec|
    |adresy [Type EQ "Work"]. formátovaný|Řetězec|

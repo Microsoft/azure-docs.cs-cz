@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 129897d3288a900803efbfba8abf86c276077fa8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 66687f5954894d962a67767669081de15a30c7c3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966067"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672626"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozšíření a funkce virtuálních počítačů pro Linux
 
@@ -33,7 +33,7 @@ Tento článek poskytuje přehled rozšíření virtuálních počítačů, pře
 K dispozici je několik různých rozšíření virtuálních počítačů Azure, z nichž každý má konkrétní případ použití. Možné příklady:
 
 - Použijte konfiguraci požadovaného stavu PowerShellu na virtuální počítač s rozšířením DSC pro Linux. Další informace najdete v tématu [rozšíření konfigurace požadovaného stavu Azure](https://github.com/Azure/azure-linux-extensions/tree/master/DSC).
-- Nakonfigurujte monitorování virtuálního počítače pomocí rozšíření virtuálního počítače Microsoft Monitoring Agent. Další informace najdete v tématu [monitorování virtuálního počítače se systémem Linux](../linux/tutorial-monitor.md).
+- Nakonfigurujte monitorování virtuálního počítače pomocí rozšíření virtuálního počítače Microsoft Monitoring Agent. Další informace najdete v tématu [monitorování virtuálního počítače se systémem Linux](/previous-versions/azure/virtual-machines/linux/tutorial-monitor).
 - Nakonfigurujte monitorování infrastruktury Azure pomocí rozšíření pro začínající nebo služby Datadog. Další informace najdete v dokumentaci k [docs](https://docs.chef.io/azure_portal.html) nebo na [blogu služby Datadog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
 Kromě rozšíření specifických pro procesy je k dispozici rozšíření vlastních skriptů pro virtuální počítače s Windows i Linux. Rozšíření vlastních skriptů pro Linux umožňuje spustit libovolný skript bash na virtuálním počítači. Vlastní skripty jsou užitečné pro navrhování nasazení Azure, která vyžadují konfiguraci, a to nad rámec toho, co můžou využít nativní nástroje Azure. Další informace najdete v tématu [rozšíření vlastních skriptů pro virtuální počítače Linux](custom-script-linux.md).

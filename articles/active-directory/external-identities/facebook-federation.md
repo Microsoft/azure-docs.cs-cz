@@ -5,23 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 547b455dc776b7304e413b3b6f1330e7cedcf2a2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d68f83bd042af6612b91807f2adeed54d24bfe01
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441993"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648610"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>Přidat Facebook jako zprostředkovatele identity pro externí identity
 
-Facebook můžete přidat do uživatelských toků samoobslužné registrace (Preview), aby se uživatelé mohli k vašim aplikacím přihlašovat pomocí vlastních účtů Facebook. Pokud chcete uživatelům povolit, aby se přihlásili pomocí Facebooku, nejdřív musíte [Povolit samoobslužnou registraci](self-service-sign-up-user-flow.md) pro vašeho tenanta. Po přidání Facebooku jako poskytovatele identity nastavte pro aplikaci tok uživatele a jako jednu z možností přihlášení vyberte Facebook.
+Facebook můžete přidat do uživatelských toků samoobslužné registrace, aby se uživatelé mohli k vašim aplikacím přihlašovat pomocí vlastních účtů Facebook. Pokud chcete uživatelům povolit, aby se přihlásili pomocí Facebooku, nejdřív musíte [Povolit samoobslužnou registraci](self-service-sign-up-user-flow.md) pro vašeho tenanta. Po přidání Facebooku jako poskytovatele identity nastavte pro aplikaci tok uživatele a jako jednu z možností přihlášení vyberte Facebook.
+
+Po přidání Facebooku jako jedné z možností přihlašování vaší aplikace může uživatel na **přihlašovací** stránce jednoduše zadat e-mail, který používají pro přihlášení do Facebooku, nebo vybrat **Možnosti přihlášení** a zvolit možnost **Přihlásit se pomocí Facebooku**. V obou případech budou přesměrovány na přihlašovací stránku Facebooku pro ověřování.
+
+![Možnosti přihlášení pro uživatele Facebooku](media/facebook-federation/sign-in-with-facebook-overview.png)
 
 > [!NOTE]
 > Uživatelé můžou pomocí svých účtů Facebooku registrovat aplikace pomocí samoobslužných registračních a uživatelských toků. Uživatele nelze pozvat a uplatnit jejich pozvánku pomocí účtu Facebook.
@@ -33,7 +37,7 @@ Chcete-li použít účet Facebook jako [poskytovatele identity](identity-provid
 > [!NOTE]  
 > V krocích 9 a 16 níže použijte následující adresy URL.
 > - Do pole **Adresa URL webu** zadejte adresu vaší aplikace, například `https://contoso.com` .
-> - Pro **platné identifikátory URI pro přesměrování OAuth**zadejte `https://login.microsoftonline.com/te/<tenant-id>/oauth2/authresp` . `<tenant-ID>`V okně přehled Azure Active Directory najdete.
+> - Pro **platné identifikátory URI pro přesměrování OAuth** zadejte `https://login.microsoftonline.com/te/<tenant-id>/oauth2/authresp` . `<tenant-ID>`V okně přehled Azure Active Directory najdete.
 
 
 1. Přihlaste se ke [službě Facebook pro vývojáře](https://developers.facebook.com/) s přihlašovacími údaji k účtu Facebook.
@@ -43,15 +47,15 @@ Chcete-li použít účet Facebook jako [poskytovatele identity](identity-provid
 5. Vyberte **vytvořit ID aplikace**. To může vyžadovat, abyste přijali zásady platformy Facebook a dokončili online kontrolu zabezpečení.
 6. Vyberte **Nastavení**  >  **základní**.
 7. Vyberte **kategorii**, například Business a stránky. Tuto hodnotu vyžaduje Facebook, ale nepoužívá se pro Azure AD.
-8. V dolní části stránky vyberte **Přidat platformu**a pak vyberte **Web**.
-9. Do pole **Adresa URL webu**zadejte příslušnou adresu URL (uvedeno výše).
-10. Do pole **Adresa URL zásad ochrany osobních údajů**zadejte adresu URL stránky, kde udržujete informace o ochraně osobních údajů pro aplikaci, například `http://www.contoso.com` .
+8. V dolní části stránky vyberte **Přidat platformu** a pak vyberte **Web**.
+9. Do pole **Adresa URL webu** zadejte příslušnou adresu URL (uvedeno výše).
+10. Do pole **Adresa URL zásad ochrany osobních údajů** zadejte adresu URL stránky, kde udržujete informace o ochraně osobních údajů pro aplikaci, například `http://www.contoso.com` .
 11. Vyberte **Uložit změny**.
 12. V horní části stránky zkopírujte hodnotu **ID aplikace**.
 13. Vyberte **Zobrazit** a zkopírujte hodnotu **tajného kódu aplikace**. Pomocí obou z nich můžete nakonfigurovat Facebook jako poskytovatele identity ve vašem tenantovi. **Tajný klíč aplikace** je důležité bezpečnostní pověření.
-14. Vyberte znaménko plus vedle položky **produkty**a potom vyberte možnost **nastavit** v části **přihlášení do Facebooku**.
-15. V části **přihlášení na Facebooku**vyberte **Nastavení**.
-16. V poli **platné identifikátory URI pro přesměrování OAuth**zadejte příslušnou adresu URL (uvedeno výše).
+14. Vyberte znaménko plus vedle položky **produkty** a potom vyberte možnost **nastavit** v části **přihlášení do Facebooku**.
+15. V části **přihlášení na Facebooku** vyberte **Nastavení**.
+16. V poli **platné identifikátory URI pro přesměrování OAuth** zadejte příslušnou adresu URL (uvedeno výše).
 17. V dolní části stránky vyberte **Uložit změny** .
 18. Pokud chcete, aby byla aplikace Facebook dostupná pro Azure AD, vyberte selektor stavu v pravém horním rohu stránky a zapněte **ho,** aby se aplikace zajistila jako veřejná, a pak vyberte **Přepnout režim**. V tomto okamžiku se stav změní z **vývoje** na **Live**.
     
@@ -60,11 +64,11 @@ Teď nastavíte ID klienta Facebooku a tajný kód klienta, a to tak, že ho zad
 
 ### <a name="to-configure-facebook-federation-in-the-azure-ad-portal"></a>Konfigurace federace Facebooku na portálu Azure AD
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce vašeho TENANTA Azure AD.
-2. V části **služby Azure**vyberte **Azure Active Directory**.
+2. V části **služby Azure** vyberte **Azure Active Directory**.
 3. V nabídce vlevo vyberte **externí identity**.
-4. Vyberte **všichni zprostředkovatelé identity**a pak vyberte **Facebook**.
-5. Jako **ID klienta**zadejte **ID** aplikace Facebook, kterou jste vytvořili dříve.
-6. Pro **tajný klíč klienta**zadejte **tajný kód aplikace** , který jste si poznamenali.
+4. Vyberte **všichni zprostředkovatelé identity** a pak vyberte **Facebook**.
+5. Jako **ID klienta** zadejte **ID** aplikace Facebook, kterou jste vytvořili dříve.
+6. Pro **tajný klíč klienta** zadejte **tajný kód aplikace** , který jste si poznamenali.
 
    ![Snímek obrazovky se stránkou přidat poskytovatele sociální identity](media/facebook-federation/add-social-identity-provider-page.png)
 
@@ -84,7 +88,7 @@ Teď nastavíte ID klienta Facebooku a tajný kód klienta, a to tak, že ho zad
 Můžete odstranit nastavení federace pro Facebook. Pokud to uděláte, všichni uživatelé, kteří se zaregistrovali pomocí toků uživatelů s účty Facebook, se už nebudou moct přihlásit. 
 
 ### <a name="to-delete-facebook-federation-in-the-azure-ad-portal"></a>Odstranění federace Facebooku na portálu Azure AD: 
-1. Přejděte na web [Azure Portal](https://portal.azure.com). V levém podokně vyberte **Azure Active Directory**. 
+1. Přejděte na [Azure Portal](https://portal.azure.com). V levém podokně vyberte **Azure Active Directory**. 
 2. Vyberte **externí identity**.
 3. Vyberte **všechny zprostředkovatele identity**.
 4. Na řádku **Facebook** vyberte kontextovou nabídku (**...**) a pak vyberte **Odstranit**. 
@@ -92,7 +96,7 @@ Můžete odstranit nastavení federace pro Facebook. Pokud to uděláte, všichn
 
 ### <a name="to-delete-facebook-federation-by-using-powershell"></a>Odstranění federace Facebooku pomocí prostředí PowerShell: 
 1. Nainstalujte nejnovější verzi Azure AD PowerShellu pro modul Graph ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)).
-2. Je nutné spustit `Connect-AzureAD`.  
+2. Spusťte `Connect-AzureAD`.  
 4. V příkazovém řádku pro přihlášení se přihlaste pomocí účtu spravovaného globálního správce.  
 5. Zadejte následující příkaz:
 

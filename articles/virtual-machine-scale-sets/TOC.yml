@@ -164,6 +164,8 @@
     - name: Schválené linuxové distribuce
       href: ../virtual-machines/linux/endorsed-distros.md
       maintainContext: true
+    - name: Režimy orchestrace (Preview)
+      href: virtual-machine-scale-sets-orchestration-modes.md
     - name: Údržba a aktualizace
       items:
         - name: Přehled
@@ -210,7 +212,7 @@
           href: security-baseline.md
       maintainContext: true
     - name: Monitorování
-      href: ../azure-monitor/insights/monitor-vm-azure.md
+      href: ../azure-monitor/vm/monitor-vm-azure.md
       maintainContext: true
     - name: Aspekty nasazování
       items:
@@ -304,7 +306,7 @@
             - name: Použití webu Azure Portal
               href: virtual-machine-scale-sets-autoscale-portal.md
             - name: Pokročilé automatické škálování
-              href: ../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md
+              href: ../azure-monitor/autoscale/autoscale-virtual-machine-scale-sets.md
               maintainContext: true
             - name: Řešení potíží s automatickým škálováním
               href: virtual-machine-scale-sets-troubleshoot.md

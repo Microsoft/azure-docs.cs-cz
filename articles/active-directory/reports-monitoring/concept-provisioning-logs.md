@@ -17,12 +17,12 @@ ms.date: 1/29/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad69df37d2635156873dc59d6fbf700a67ade548
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 284b554581534a8493225fba0b70b074fb7dd982
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091928"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651933"
 ---
 # <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>Přehled zřizování protokolů v Azure Portal (Preview)
 
@@ -60,8 +60,8 @@ Pokud chcete zobrazit sestavu aktivity zřizování, ke svému klientovi musí b
 Zákazníci můžou s protokoly zřizování spolupracovat čtyřmi způsoby:
 
 - Přístup k protokolům z Azure Portal, jak je popsáno v následující části.
-- Streamování zřizovacích protokolů do [Azure monitor](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics). Tato metoda umožňuje rozšířené uchovávání dat a sestavování vlastních řídicích panelů, výstrah a dotazů.
-- Dotazování [rozhraní API pro Microsoft Graph](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) pro protokoly zřizování
+- Streamování zřizovacích protokolů do [Azure monitor](../app-provisioning/application-provisioning-log-analytics.md). Tato metoda umožňuje rozšířené uchovávání dat a sestavování vlastních řídicích panelů, výstrah a dotazů.
+- Dotazování [rozhraní API pro Microsoft Graph](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) pro protokoly zřizování
 - Stahují se protokoly zřizování jako soubor CSV nebo JSON.
 
 ## <a name="access-the-logs-from-the-azure-portal"></a>Přístup k protokolům z Azure Portal
@@ -207,7 +207,7 @@ Soubor JSON se stáhne ve formátu minifikovaného, aby se snížila velikost so
 
 Tady jsou některé ukázkové příkazy pro práci se souborem JSON pomocí PowerShellu. Můžete použít libovolný programovací jazyk, se kterým jste spokojeni.  
 
-Nejprve [si přečtěte soubor JSON](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) spuštěním tohoto příkazu:
+Nejprve [si přečtěte soubor JSON](/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) spuštěním tohoto příkazu:
 
 ` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
 
@@ -243,7 +243,7 @@ Zde jsou některé tipy a doporučení pro sestavy zřizování:
 
 Pomocí následující tabulky můžete lépe pochopit, jak vyřešit chyby, které najdete v protokolech zřizování. U všech chybových kódů, které chybí, poskytněte zpětnou vazbu pomocí odkazu v dolní části této stránky. 
 
-|Kód chyby|Description|
+|Kód chyby|Popis|
 |---|---|
 |Konflikt, EntryConflict|Opravte konfliktní hodnoty atributu buď v Azure AD, nebo v aplikaci. Nebo si přečtěte odpovídající konfiguraci atributu, pokud by byl konfliktní uživatelský účet shodný a převzatý z něj. Další informace o konfiguraci atributů odpovídajícího atributu najdete v [dokumentaci](../app-provisioning/customize-application-attributes.md) .|
 |TooManyRequests|Cílová aplikace odmítla tento pokus o aktualizaci uživatele, protože je přetížený a přijímá příliš mnoho požadavků. Žádná akce není k dispozici. Tento pokus bude automaticky vyřazen. Společnost Microsoft si také oznámila tento problém.|

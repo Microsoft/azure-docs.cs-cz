@@ -10,19 +10,19 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/05/2021
 ms.author: akjosh
-ms.openlocfilehash: d45535f11568fddd10130d506af3329dcdfb0484
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 741db5ea10847e2fe6711e7ca01d65efb1f09dea
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580275"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667307"
 ---
 # <a name="use-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>Monitorování metrik a protokolů pomocí diagnostického rozšíření Linux 4,0
 
 Tento dokument popisuje verzi 4,0 a novější diagnostické rozšíření pro Linux.
 
 > [!IMPORTANT]
-> Informace o verzi 3. * najdete v  [tomto dokumentu](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux-v3). Informace o verzi 2,3 a starší najdete v [tomto dokumentu](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2).
+> Informace o verzi 3. * najdete v  [tomto dokumentu](./diagnostics-linux-v3.md). Informace o verzi 2,3 a starší najdete v [tomto dokumentu](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2).
 
 ## <a name="introduction"></a>Úvod
 
@@ -108,7 +108,7 @@ Spustitelný soubor python2 musí mít alias na *Python*. Následuje jedna metod
 Ukázková konfigurace stažená v těchto příkladech shromažďuje sadu standardních dat a odesílá je do úložiště tabulek. Adresa URL pro ukázkovou konfiguraci a její obsah se může změnit. Ve většině případů byste si měli stáhnout kopii souboru JSON s nastavením portálu a přizpůsobit ho vašim potřebám, potom budete mít všechny šablony nebo automatizace, které vytvoříte, místo stažení této adresy URL použili vlastní verzi konfiguračního souboru.
 
 > [!NOTE]
-> Aby bylo možné novou jímku Azure Monitor povolit, musí mít virtuální počítače povolenou identitu přiřazenou systémem pro generování ověřovacího tokenu MSI. To se dá udělat při vytváření virtuálního počítače nebo po vytvoření virtuálního počítače. Postup povolení identity přiřazené systémem prostřednictvím portálu, rozhraní příkazového řádku, PowerShellu a Resource Manageru  [tady](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)jsou uvedené podrobnosti. 
+> Aby bylo možné novou jímku Azure Monitor povolit, musí mít virtuální počítače povolenou identitu přiřazenou systémem pro generování ověřovacího tokenu MSI. To se dá udělat při vytváření virtuálního počítače nebo po vytvoření virtuálního počítače. Postup povolení identity přiřazené systémem prostřednictvím portálu, rozhraní příkazového řádku, PowerShellu a Resource Manageru  [tady](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)jsou uvedené podrobnosti. 
 
 #### <a name="azure-cli-sample"></a>Ukázka Azure CLI
 
@@ -238,7 +238,7 @@ Tato sada informací o konfiguraci obsahuje citlivé informace, které by měly 
 }
 ```
 
-Name | Hodnota
+Název | Hodnota
 ---- | -----
 storageAccountName | Název účtu úložiště, ve kterém se má rozšíření zapsat data
 storageAccountEndPoint | volitelné Koncový bod identifikující Cloud, ve kterém existuje účet úložiště. Pokud toto nastavení chybí, LAD se výchozí nastavení pro veřejný cloud Azure, `https://core.windows.net` . Pokud chcete použít účet úložiště v Azure Německo, Azure Government nebo Azure Čína, nastavte tuto hodnotu odpovídajícím způsobem.
@@ -490,7 +490,7 @@ Příklady zahrnují `LinuxSyslog20170410` a `LinuxSyslog20170609` .
 Tato volitelná část určuje, jak se kromě účtu úložiště a výchozího okna metriky hosta povolí odesílání metrik do Azure Monitor jímky.
 
 > [!NOTE]
-> K tomu je potřeba, aby byla na virtuálních počítačích/VMSS povolená identita přiřazená systému. To se dá udělat prostřednictvím portálu, rozhraní příkazového řádku, PowerShellu a Resource Manageru. [Tady](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)jsou uvedené podrobné pokyny. Postup, jak to povolit, je uvedený také v ukázkách instalace pro AZ CLI, PowerShell atd. výše. 
+> K tomu je potřeba, aby byla na virtuálních počítačích/VMSS povolená identita přiřazená systému. To se dá udělat prostřednictvím portálu, rozhraní příkazového řádku, PowerShellu a Resource Manageru. [Tady](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)jsou uvedené podrobné pokyny. Postup, jak to povolit, je uvedený také v ukázkách instalace pro AZ CLI, PowerShell atd. výše. 
 
 ```json
   "sinksConfig": {

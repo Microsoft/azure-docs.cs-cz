@@ -1,6 +1,6 @@
 ---
 title: Připojení pomocí sqlcmd
-description: Pomocí nástroje příkazového řádku Sqlcmd se můžete připojit k synapse fondu SQL a dotazovat se na něj.
+description: Pomocí nástroje příkazového řádku Sqlcmd se můžete připojit k vyhrazenému fondu SQL a dotazovat se na něj ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3d1d8d3ce3afece5a979aadc27cd82dc7ddaf0d5
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f8b4d54585bc70c3ee5f24846e216f75e985cf84
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676220"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675731"
 ---
-# <a name="connect-to-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>Připojení k fondu SQL ve službě Azure synapse Analytics pomocí sqlcmd
+# <a name="connect-to-a-dedicated-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>Připojení k vyhrazenému fondu SQL ve službě Azure synapse Analytics pomocí sqlcmd
 
 > [!div class="op_single_selector"]
 >
@@ -28,15 +28,15 @@ ms.locfileid: "98676220"
 > * [Sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
-K připojení a dotazování fondu SQL použijte nástroj příkazového řádku [Sqlcmd] [Sqlcmd].  
+K připojení a dotazování vyhrazeného fondu SQL použijte nástroj příkazového řádku [Sqlcmd] [Sqlcmd].  
 
 ## <a name="1-connect"></a>1. připojení
 
-Pokud chcete začít s [Sqlcmd] [Sqlcmd], otevřete příkazový řádek a zadejte příkaz **Sqlcmd** následovaný připojovacím řetězcem pro váš fond SQL. Připojovací řetězec bude muset mít následující parametry:
+Chcete-li začít s nástrojem [Sqlcmd] [Sqlcmd], otevřete příkazový řádek a zadejte příkaz **Sqlcmd** následovaný připojovacím řetězcem pro vyhrazený fond SQL. Připojovací řetězec bude muset mít následující parametry:
 
 * **Server (-S):** Server v následující podobě: `<`název serveru`>`.database.windows.net
-* **Databáze (-d):** Název fondu SQL
-* **Povolit identifikátory v uvozovkách (-I):** Aby bylo možné připojit se k instanci fondu SQL, musí být povolené identifikátory v uvozovkách.
+* **Databáze (-d):** vyhrazený název fondu SQL.
+* **Povolit identifikátory v uvozovkách (-I):** Aby bylo možné se připojit k vyhrazené instanci fondu SQL, musí být povolené identifikátory v uvozovkách.
 
 Chcete-li používat ověřování systému SQL Server, je třeba přidat parametry uživatelského jména a hesla:
 

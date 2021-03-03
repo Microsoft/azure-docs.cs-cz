@@ -6,7 +6,7 @@
   items:
     - name: Co je Data Science Virtual Machine (DVSM)?
       href: overview.md
-    - name: 'Nástroje, které jsou součástí prostředí Data Science Virtual Machine'
+    - name: Nástroje v Data Science Virtual Machine
       href: tools-included.md
 - name: Rychlé starty
   expanded: true

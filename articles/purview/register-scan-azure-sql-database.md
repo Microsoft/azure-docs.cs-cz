@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: b3503dead21eeca32d82e896f889b99d11435642
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 62f4b6c76cafab5c6cc46a73851abce1e38551a1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879727"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677744"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Registrace a kontrola Azure SQL Database
 
@@ -149,9 +149,7 @@ Pokud chcete zaregistrovat nový Azure SQL Database v katalogu dat, udělejte to
 Na obrazovce **Registrovat zdroje (Azure SQL Database)** udělejte toto:
 
 1. Zadejte **název** , se kterým bude zdroj dat uveden v katalogu.
-1. Vyberte, jak chcete odkazovat na požadovaný účet úložiště:
-   1. Vyberte **z předplatného Azure**, vyberte příslušné předplatné z rozevíracího seznamu **předplatné Azure** a příslušný server z rozevíracího seznamu **název serveru** .
-   1. Případně můžete vybrat možnost **zadat ručně** a zadat **název serveru**.
+1. Vyberte **z předplatného Azure**, vyberte příslušné předplatné z rozevíracího seznamu **předplatné Azure** a příslušný server z rozevíracího seznamu **název serveru** .
 1. **Dokončete** registraci zdroje dat.
 
 :::image type="content" source="media/register-scan-azure-sql-database/add-azure-sql-database.png" alt-text="Možnosti registrace zdrojů" border="true":::

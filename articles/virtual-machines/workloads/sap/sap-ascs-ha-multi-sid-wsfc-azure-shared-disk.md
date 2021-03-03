@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4dfbffcaedb6c544a34e347633d5adc173fab33e
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 8b216fafad5cd2f7406320dce3ec28b8830015d7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655981"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673749"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>Vysoká dostupnost služby SAP ASCS/SCS instance multi-SID s využitím clusteringu s podporou převzetí služeb při selhání Windows serveru a sdíleného disku Azure
 
@@ -104,11 +103,11 @@ Kromě **existující instance clusteru** SAP **PR1** ASCS/SCS budeme instalovat
 | --- | --- | --- |---| ---|
 | cluster ASCS/SCS prvního uzlu clusteru |PR1-ASCS-10 |10.0.0.4 |PR1-ASCS-avset |PR1PPG |
 | druhý cluster uzlu clusteru ASCS/SCS |PR1-ASCS-11 |10.0.0.5 |PR1-ASCS-avset |PR1PPG |
-| Název sítě s clustery | pr1clust |10.0.0.42 (**pouze** pro cluster se Win 2016) | neuvedeno | neuvedeno |
-| **SID1** Název sítě clusteru ASCS | pr1-ascscl |10.0.0.43 | neuvedeno | neuvedeno |
-| **SID1** Název sítě clusteru OLAJÍCÍCH (**jenom** pro ERS2) | pr1-erscl |10.0.0.44 | neuvedeno | neuvedeno |
-| **SID2** Název sítě clusteru ASCS | pr2-ascscl |10.0.0.45 | neuvedeno | neuvedeno |
-| **SID2** Název sítě clusteru OLAJÍCÍCH (**jenom** pro ERS2) | pr1-erscl |10.0.0.46 | neuvedeno | neuvedeno |
+| Název sítě s clustery | pr1clust |10.0.0.42 (**pouze** pro cluster se Win 2016) | Není k dispozici | Není k dispozici |
+| **SID1** Název sítě clusteru ASCS | pr1-ascscl |10.0.0.43 | Není k dispozici | Není k dispozici |
+| **SID1** Název sítě clusteru OLAJÍCÍCH (**jenom** pro ERS2) | pr1-erscl |10.0.0.44 | Není k dispozici | Není k dispozici |
+| **SID2** Název sítě clusteru ASCS | pr2-ascscl |10.0.0.45 | Není k dispozici | Není k dispozici |
+| **SID2** Název sítě clusteru OLAJÍCÍCH (**jenom** pro ERS2) | pr1-erscl |10.0.0.46 | Není k dispozici | Není k dispozici |
 
 ### <a name="create-azure-internal-load-balancer"></a>Vytvoření interního nástroje pro vyrovnávání zatížení Azure
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d71c44ebaba5b0cbcb03afa41ad15237dceaef
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1e40ad90910f7b2244401386fb01a4e4fefe03ca
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547470"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647400"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Konfigurace zásad vypršení platnosti pro skupiny Microsoft 365
 
@@ -42,7 +42,7 @@ Informace o tom, jak stáhnout a nainstalovat rutiny Azure AD PowerShellu, najde
 
 ## <a name="activity-based-automatic-renewal"></a>Automatické obnovení na základě aktivity
 
-Pomocí služby Azure AD Intelligence se teď skupiny automaticky Obnovují na základě toho, jestli se nedávno používaly. Tato funkce eliminuje nutnost ručních akcí podle vlastníků skupin, protože je založená na aktivitě uživatelů ve skupinách napříč Microsoft 365 službami, jako je Outlook, SharePoint nebo Teams. Pokud například vlastník nebo člen skupiny nahraje dokument do SharePointu, navštíví kanál týmů nebo pošle e-mailovou zprávu do skupiny v Outlooku, skupina se automaticky obnoví a vlastník nezíská žádná oznámení o obnovení.
+Pomocí služby Azure AD Intelligence se teď skupiny automaticky Obnovují na základě toho, jestli se nedávno používaly. Tato funkce eliminuje nutnost ručních akcí podle vlastníků skupin, protože je založená na aktivitě uživatelů ve skupinách napříč Microsoft 365 službami, jako je Outlook, SharePoint nebo Teams. Pokud například vlastník nebo člen skupiny nahraje dokument do SharePointu, navštíví kanál týmů nebo pošle e-mail do skupiny v Outlooku, skupina se automaticky prodlouží přibližně 35 dní před vypršením platnosti skupiny a vlastník nezíská žádná oznámení o obnovení.
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>Aktivity, které automaticky Obnovují vypršení platnosti skupiny
 
@@ -65,7 +65,7 @@ Níže jsou uvedené role, které můžou nakonfigurovat a používat vypršení
 Role | Oprávnění
 -------- | --------
 Globální správce, správce skupiny nebo Správce uživatelů | Může vytvořit, číst, aktualizovat nebo odstranit nastavení zásad vypršení platnosti skupin Microsoft 365.<br>Může obnovit libovolnou skupinu Microsoft 365.
-Uživatel | Může obnovit Microsoft 365 skupinu, kterou vlastní.<br>Může obnovit Microsoft 365 skupinu, kterou vlastní.<br>Může číst nastavení zásad vypršení platnosti.
+User | Může obnovit Microsoft 365 skupinu, kterou vlastní.<br>Může obnovit Microsoft 365 skupinu, kterou vlastní.<br>Může číst nastavení zásad vypršení platnosti.
 
 Další informace o oprávněních k obnovení odstraněné skupiny najdete [v tématu Obnovení odstraněné Microsoft 365 skupiny v Azure Active Directory](groups-restore-deleted.md).
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 9ffc450294f186b77cc7a6c44c10eecf266161d3
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 1857eab485e8651c05959f82cf11e69b6353c575
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526683"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673523"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Přihlašovací údaje pro ověřování zdroje v Azure dosah
 
@@ -85,8 +85,9 @@ V dosah se podporují tyto typy přihlašovacích údajů:
 - Instanční objekt: **klíč instančního objektu** přidáte jako tajný klíč do trezoru klíčů.
 - Ověřování SQL: **heslo** přidáte jako tajný kód do trezoru klíčů.
 - Klíč účtu: **klíč účtu** přidáte jako tajný klíč do trezoru klíčů.
+- ARN role: pro zdroj dat Amazon S3 přidejte svoji **roli ARN** v AWS. 
 
-Další informace najdete v tématu [Přidání tajného klíče do Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
+Další informace najdete v tématu [Přidání tajného klíče do Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault) a [Vytvoření nové role AWS pro dosah](register-scan-amazon-s3.md#create-a-new-aws-role-for-purview).
 
 Po uložení tajných kódů do trezoru klíčů:
 

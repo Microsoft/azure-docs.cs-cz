@@ -6,19 +6,19 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/24/2020
-ms.openlocfilehash: dffecb48a8faa869cb3df450cc220e86195bbc87
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/17/2021
+ms.openlocfilehash: bb8ac82b2e59ec86db89c7eba0ce607fcfc0ac2d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199372"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676568"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Přehledy o vašich datech v Azure dosah s popisem citlivosti
 
 Tato příručka popisuje, jak získat přístup, zobrazit a filtrovat přehledy zabezpečení poskytované na základě popisků citlivosti použitých pro vaše data.
 
-Mezi podporované zdroje dat patří: Azure Blob Storage, Azure Data Lake Storage (ADLS) fin 1, Azure Data Lake Storage (ADLS) GEN 2, SQL Server, Azure SQL Database, spravovaná instance Azure SQL.
+Mezi podporované zdroje dat patří: Azure Blob Storage, Azure Data Lake Storage (ADLS) fin 1, Azure Data Lake Storage (ADLS) GEN 2, SQL Server, Azure SQL Database, spravovaná instance Azure SQL, sady Amazon S3.
 
 V této příručce se dozvíte, jak:
 
@@ -40,7 +40,7 @@ Než začnete s dosah přehledy, ujistěte se, že jste dokončili následujíc�
 
 - [Rozšířená Microsoft 365 popisky citlivosti na assety v Azure dosah](create-sensitivity-label.md)a vytvořily nebo vybraly popisky, které chcete použít pro vaše data.
 
-- Nastavení a dokončení kontroly dat testu v každém zdroji dat
+- Nastavení a dokončení kontroly testovacích dat v jednotlivých zdrojích dat. Další informace najdete v tématu [Správa zdrojů dat ve službě Azure dosah (Preview)](manage-data-sources.md) a [Vytvoření sady pravidel skenování](create-a-scan-rule-set.md).
 
 - Přihlásili jste se k dosah pomocí účtu s [rolí data Reader nebo data kurátor](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles).
 
@@ -78,7 +78,7 @@ Dosah používá stejné klasifikace, označované také jako [typy citlivých i
 
    Hlavní stránka s **popisem citlivosti popisky** zobrazuje následující oblasti:
 
-   |Plošný  |Description  |
+   |Plošný  |Popis  |
    |---------|---------|
    |**Přehled zdrojů s popisky citlivosti**     |Zobrazí dlaždice, které poskytují: <br>– Počet odběrů nalezených ve vašich datech. <br>– Počet jedinečných popisků citlivosti použitých na vaše data <br>– Počet zdrojů s použitými popisky citlivosti <br>– Počet souborů a tabulek nalezených s použitými popisky citlivosti|
    |**Hlavní zdroje s popisky dat (posledních 30 dní)**     | Zobrazuje trend, za posledních 30 dní, z počtu zdrojů s použitými popisky citlivosti.       |
@@ -97,7 +97,7 @@ V některém z níže uvedených **citlivostních grafů s popisem přehledů** 
 - **Horní popisky použité v tabulkách**
 - **Označení aktivity označování > s popisky dat**
 
-Příklad:
+Například:
 
 :::image type="content" source="media/insights/sensitivity-label-drilldown-small.png" alt-text="Podrobnosti popisku citlivosti" lightbox="media/insights/sensitivity-label-drilldown.png":::
 

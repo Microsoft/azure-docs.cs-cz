@@ -3,17 +3,17 @@ title: Přehled virtuálních počítačů s funkcí neřady-Series – Azure Vi
 description: Přečtěte si o podpoře verze Preview pro velikost virtuálního počítače s rozhraním \ řady v Azure.
 author: vermagit
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: hpc
 ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 1e37f13bc6e819079c63c583a1eeda12af5e213c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b0e8e2e0ee7ce730f6bf00d7e5ef4bd4eae65ce7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965455"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666942"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>Přehled virtuálních počítačů s více než jednou řadou
 
@@ -40,7 +40,7 @@ Následující diagram znázorňuje oddělení jader rezervovaných pro Azure hy
 | Cores                            | 60 (SMT zakázané)                |
 | Procesor                              | AMD EPYC 7551                    |
 | Frekvence procesoru (ne AVX)          | ~ 2,55 GHz (jedna + všechna jádra)   |
-| Paměť                           | 4 GB/jádro (celkem 240 GB)         |
+| Memory (Paměť)                           | 4 GB/jádro (celkem 240 GB)         |
 | Místní disk                       | 700 GB SSD                       |
 | InfiniBand                       | 100 GB EDR Mellanox ConnectX-5 |
 | Síť                          | 50 GB Ethernet (40 GB použitelné) Azure Second gen SmartNIC |

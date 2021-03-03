@@ -3,7 +3,7 @@ title: Vytvoření & Správa katalogu prostředků v rámci správy nároků –
 description: Naučte se vytvořit nový kontejner prostředků a přistupovat k balíčkům v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: HANKI
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
 ms.date: 12/23/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b87fdd7c73d089c46d456491c02d49cb6f8883d
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 8ae3ee8cb96453bae1ce581ea92bdb77854c02d8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97745959"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644135"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Vytvoření a správa katalogu prostředků v Azure AD – Správa nároků
 
@@ -80,6 +80,14 @@ Aby bylo možné zahrnout prostředky do balíčku pro přístup, musí tyto pro
 1. Po dokončení klikněte na tlačítko **Přidat**.
 
     Tyto prostředky teď můžou být zahrnuté do balíčků přístupu v katalogu.
+
+### <a name="add-a-multi-geo-sharepoint-site"></a>Přidat web s více geografickými weby služby SharePoint
+
+1. Pokud máte [více geograficky](https://docs.microsoft.com/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365?view=o365-worldwide) povolených pro SharePoint, vyberte prostředí, ze kterého chcete vybrat weby.
+    
+    :::image type="content" source="media/entitlement-management-catalog-create/sharepoint-multigeo-select.png" alt-text="Přístup k balíčku – přidání rolí prostředků – výběr více geografických webů SharePointu":::
+
+1. Pak vyberte lokality, které chcete přidat do katalogu. 
 
 ### <a name="adding-a-resource-to-a-catalog-programmatically"></a>Programové přidání prostředku do katalogu
 

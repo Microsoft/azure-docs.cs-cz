@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8642f4284770df54704a4e7066054d3bb4640486
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: a75896dde7a23ea346e0af73ed145094e78812ca
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545863"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654489"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Ukázky kódu pro Azure Active Directory B2C
 
@@ -27,8 +27,8 @@ Následující tabulka obsahuje odkazy na ukázky pro aplikace, včetně ukázek
 |--------| ----------- |
 | [ios-swift-native-msal](https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal) | Ukázka pro iOS v jazyce Swift, která ověřuje uživatele Azure AD B2C a volá rozhraní API s použitím OAuth 2.0 |
 | [android-native-msal](https://github.com/Azure-Samples/ms-identity-android-java#b2cmodefragment-class) | Jednoduchá aplikace pro Android, která ukazuje použití MSAL k ověřování uživatelů prostřednictvím Azure Active Directory B2C a přístup k webovému rozhraní API s použitím výsledných tokenů. |
-| [ios-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth) | Ukázka způsobu použití knihovny třetí strany k sestavení aplikace pro iOS v Objective-C, která ověřuje uživatele s identitou Microsoft ve službě identit Azure AD B2C. |
-| [android-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth) | Ukázka způsobu použití knihovny třetí strany k sestavení aplikace pro Android, která ověřuje uživatele s identitou Microsoft ve službě identit Azure AD B2C a volá webové rozhraní API s použitím přístupových tokenů OAuth 2.0. |
+| [ios-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth) | Ukázka, která ukazuje, jak můžete použít knihovnu třetí strany k sestavení aplikace pro iOS v cíli – C, která ověřuje uživatele identity od Microsoftu k naší Azure AD B2C službě identity. |
+| [android-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth) | Ukázka, která ukazuje, jak můžete pomocí knihovny třetích stran vytvořit aplikaci pro Android, která ověřuje uživatele identity Microsoftu na naši službu B2C identity a volá webové rozhraní API s použitím přístupových tokenů OAuth 2,0. |
 | [dotnet-desktop](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) | Ukázka způsobu, jakým desktopová aplikace .NET pro Windows (WPF) může přihlásit uživatele pomocí Azure AD B2C, získat přístupový token pomocí MSAL.NET a volat rozhraní API. |
 | [xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Jednoduchá aplikace Xamarin Forms, která ukazuje použití MSAL k ověřování uživatelů prostřednictvím Azure Active Directory B2C a přístup k webovému rozhraní API s použitím výsledných tokenů. |
 
@@ -47,8 +47,16 @@ Následující tabulka obsahuje odkazy na ukázky pro aplikace, včetně ukázek
 
 | Ukázka | Popis |
 |--------| ----------- |
-| [MS-identity – B2C-JavaScript – Spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) | Jednostránková aplikace (SPA) volající webové rozhraní API. Ověřování se provádí s Azure AD B2C pomocí MSAL.js. Tato ukázka používá tok autorizačního kódu s PKCE. |
-| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Jednostránková aplikace (SPA) volající webové rozhraní API. Ověřování se provádí s Azure AD B2C pomocí MSAL.js. Tato ukázka používá implicitní tok.|
+| [MS-identity – B2C-JavaScript – Spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) | Jediná stránková aplikace (SPA), která volá webové rozhraní API. Ověřování se provádí s Azure AD B2C pomocí MSAL.js. Tato ukázka používá tok autorizačního kódu s PKCE. |
+| [JavaScript – NodeJS – Správa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter1) | Jediná stránková aplikace (SPA) volá Microsoft Graph pro správu uživatelů v adresáři B2C. Ověřování se provádí s Azure AD B2C pomocí MSAL.js. Tato ukázka používá tok autorizačního kódu s PKCE.|
+| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Jediná stránková aplikace (SPA), která volá webové rozhraní API. Ověřování se provádí s Azure AD B2C pomocí MSAL.js. Tato ukázka používá implicitní tok.|
+
+## <a name="consoledaemon-apps"></a>Aplikace pro konzolu nebo démona
+
+| Ukázka | Popis |
+|--------| ----------- |
+| [JavaScript – NodeJS – Správa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter2) | Aplikace démona konzoly Node.js a Express volá Microsoft Graph s vlastní identitou pro správu uživatelů v adresáři B2C. Ověřování se provádí pomocí Azure AD B2C pomocí uzlu MSAL. Tato ukázka používá tok autorizačního kódu.|
+| [dotnetcore-B2C – Správa účtů](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) | Konzolová aplikace .NET Core volá Microsoft Graph s vlastní identitou pro správu uživatelů v adresáři B2C. Ověřování se provádí s Azure AD B2C pomocí MSAL.NET. Tato ukázka používá tok autorizačního kódu.|
 
 ## <a name="saml-test-application"></a>Testovací aplikace SAML
 
@@ -72,7 +80,7 @@ Následující tabulky obsahují odkazy na ukázky kódu pro využití webových
 ### <a name="automated-fraud-protection-services--captcha"></a>Automatické služby ochrany před podvody & CAPTCHA
 | Ukázka                                                                                                            | Popis                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| [Podvod a ochrana před zneužitím v Arkose Labs](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose) | V této ukázce se dozvíte, jak pomocí služby Arkose Labs a ochrany před zneužitím chránit uživatele při registraci uživatelů. |
+| [Podvod a ochrana před zneužitím v Arkose Labs](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose) | V této ukázce se dozvíte, jak chránit vaše uživatelské přihlašování pomocí Arkose Labs a služby ochrany před zneužitím. |
 | [reCAPTCHA](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-captcha) | V této ukázce se dozvíte, jak chránit uživatele pomocí reCAPTCHA výzvy k tomu, abyste zabránili automatizovanému zneužití. |
 
 
@@ -84,7 +92,7 @@ Následující tabulky obsahují odkazy na ukázky kódu pro využití webových
 | [Experian](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-experian-identity-verification) | V této ukázce se dozvíte, jak ověřit identitu uživatele v rámci vašich registračních toků pomocí konektoru rozhraní API pro integraci s Experian. |
 
 
-### <a name="other"></a>Další
+### <a name="other"></a>Jiné
 
 | Ukázka                                                                                                            | Popis                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 9a905dd61bcc267b47dcd075f54a0ed6563a3797
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 507dd224ddeb935cc8b3718bb2e2628be36066f4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879625"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676020"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>Řešení potíží s galeriemi sdílených imagí v Azure
 
@@ -52,9 +52,13 @@ Pokud máte problémy s prováděním jakýchkoli operací v galeriích sdílen�
 **Příčina**: Pokusili jste se odstranit galerii, která obsahuje alespoň jednu existující definici obrázku. Galerie musí být prázdná, aby ji bylo možné odstranit.  
 **Alternativní řešení**: Odstraňte všechny definice obrázků v galerii a pak pokračujte v odstraňování galerie. Pokud definice image obsahuje verze imagí, je nutné před odstraněním definic imagí odstranit verze imagí.
 
+*Název galerie <název galerie není \> jedinečný v rámci předplatného <subscriptionId> . Vyberte prosím jiný název galerie.*  
+**Příčina**: máte stávající galerii se stejným názvem a pokusili jste se vytvořit další galerii se stejným názvem.  
+**Alternativní řešení**: pro galerii vyberte jiný název.
+
 *Prostředek <Gallery \> již existuje v umístění <oblasti \_ 1 \> ve skupině prostředků <skupina prostředků \> . Prostředek se stejným názvem se nedá vytvořit v umístění <oblasti \_ 2 \> . Vyberte prosím nový název prostředku.*  
-**Příčina**: ve skupině prostředků máte existující galerii se stejným názvem a pokusili jste se vytvořit další galerii se stejným názvem, ale v jiné oblasti.  
-**Alternativní řešení**: buď použijte jinou galerii, nebo použijte jinou skupinu prostředků.
+**Příčina**: máte stávající galerii se stejným názvem a pokusili jste se vytvořit další galerii se stejným názvem.  
+**Alternativní řešení**: pro galerii vyberte jiný název.
 
 ## <a name="creating-or-modifying-image-definitions"></a>Vytvoření nebo úprava definicí obrázků ##
 

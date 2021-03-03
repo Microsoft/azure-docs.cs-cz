@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0211388f3b638080c79a58330ba1fff1989def7d
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 41a63d7d0c5844e7837be44b359b6d04a9009eb4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095872"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651821"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -85,12 +85,12 @@ Role [správce zásad ověřování](#authentication-policy-administrator) má o
 
 | Role | Umožňuje spravovat metody ověřování uživatele. | Správa MFA pro jednotlivé uživatele | Správa nastavení vícefaktorového ověřování | Správa zásad metod ověřování | Spravovat zásady ochrany heslem |
 | ---- | ---- | ---- | ---- | ---- | ---- | 
-| Správce ověřování | Ano pro některé uživatele (viz výše) | Ano pro některé uživatele (viz výše) | No | No | No | 
-| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele | No | No | No | 
-| Správce zásad ověřování | No |No | Yes | Yes | Yes | 
+| Správce ověřování | Ano pro některé uživatele (viz výše) | Ano pro některé uživatele (viz výše) | Ne | Ne | Ne | 
+| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele | Ne | Ne | Ne | 
+| Správce zásad ověřování | Ne |Ne | Ano | Ano | Ano | 
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
+> Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
 >
 >* Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům ověřování. Prostřednictvím této cesty může správce ověřování předpokládat identitu vlastníka aplikace a následně převzít identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >* Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -99,7 +99,7 @@ Role [správce zásad ověřování](#authentication-policy-administrator) má o
 >* Nesprávci jako vedoucí pracovníci, právní poradce a zaměstnanci lidských zdrojů, kteří mohou mít přístup k citlivým nebo soukromým informacím.
 
 > [!IMPORTANT]
-> Tato role v tuto chvíli není schopná spravovat MFA pro uživatele na portálu pro správu starší verze MFA. Stejné funkce můžete provést pomocí modulu [set-MsolUser](https://docs.microsoft.com/powershell/module/msonline/set-msoluser) RUTINY Azure AD PowerShell.
+> Tato role v tuto chvíli není schopná spravovat MFA pro uživatele na portálu pro správu starší verze MFA. Stejné funkce můžete provést pomocí modulu [set-MsolUser](/powershell/module/msonline/set-msoluser) RUTINY Azure AD PowerShell.
 
 ### <a name="authentication-policy-administrator"></a>[Správce zásad ověřování](#authentication-policy-administrator-permissions)
 
@@ -109,9 +109,9 @@ Role správce [ověřování](#authentication-administrator) a [správce privile
 
 | Role | Umožňuje spravovat metody ověřování uživatele. | Správa MFA pro jednotlivé uživatele | Správa nastavení vícefaktorového ověřování | Správa zásad metod ověřování | Spravovat zásady ochrany heslem |
 | ---- | ---- | ---- | ---- | ---- | ---- | 
-| Správce ověřování | Ano pro některé uživatele (viz výše) | Ano pro některé uživatele (viz výše) | No | No | No | 
-| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele | No | No | No | 
-| Správce zásad ověřování | No | No | Yes | Yes | Yes | 
+| Správce ověřování | Ano pro některé uživatele (viz výše) | Ano pro některé uživatele (viz výše) | Ne | Ne | Ne | 
+| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele | Ne | Ne | Ne | 
+| Správce zásad ověřování | Ne | Ne | Ano | Ano | Ano | 
 
 > [!IMPORTANT]
 > Tato role v tuto chvíli není schopná spravovat nastavení vícefaktorového ověřování na portálu pro správu starších verzí.
@@ -279,7 +279,7 @@ Uživatelé v této roli můžou spravovat Azure Active Directory pozvání uži
 Uživatelé s touto rolí můžou měnit hesla, zrušit platnost tokenů aktualizace, spravovat žádosti o služby a monitorovat stav služby. Zrušení platnosti aktualizačního tokenu vynutí, aby se uživatel znovu přihlásil. Zda může správce helpdesku resetovat heslo uživatele a zrušit platnost tokenů aktualizace, závisí na roli, kterou uživatel přiřadí. Seznam rolí, u kterých správce helpdesku může resetovat hesla pro a zrušit platnost obnovovacích tokenů, najdete v tématu [oprávnění k resetování hesla](#password-reset-permissions).
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
+> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
 >
 >- Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům helpdesku. Prostřednictvím této cesty může správce helpdesku předpokládat identitu vlastníka aplikace a následně převzít identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >- Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -391,12 +391,12 @@ Role [správce zásad ověřování](#authentication-policy-administrator) má o
 
 | Role | Umožňuje spravovat metody ověřování uživatele. | Správa MFA pro jednotlivé uživatele | Správa nastavení vícefaktorového ověřování | Správa zásad metod ověřování | Spravovat zásady ochrany heslem |
 | ---- | ---- | ---- | ---- | ---- | ---- | 
-| Správce ověřování | Ano pro některé uživatele (viz výše) | Ano pro některé uživatele (viz výše) | No | No | No | 
-| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele | No | No | No | 
-| Správce zásad ověřování | No | No | Yes | Yes | Yes | 
+| Správce ověřování | Ano pro některé uživatele (viz výše) | Ano pro některé uživatele (viz výše) | Ne | Ne | Ne | 
+| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele | Ne | Ne | Ne | 
+| Správce zásad ověřování | Ne | Ne | Ano | Ano | Ano | 
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
+> Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
 >
 >* Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům ověřování. Prostřednictvím této cesty může správce ověřování předpokládat identitu vlastníka aplikace a následně převzít identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >* Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -406,7 +406,7 @@ Role [správce zásad ověřování](#authentication-policy-administrator) má o
 
 
 > [!IMPORTANT]
-> Tato role v tuto chvíli není schopná spravovat MFA pro uživatele na portálu pro správu starší verze MFA. Stejné funkce můžete provést pomocí modulu [set-MsolUser](https://docs.microsoft.com/powershell/module/msonline/set-msoluser) RUTINY Azure AD PowerShell.
+> Tato role v tuto chvíli není schopná spravovat MFA pro uživatele na portálu pro správu starší verze MFA. Stejné funkce můžete provést pomocí modulu [set-MsolUser](/powershell/module/msonline/set-msoluser) RUTINY Azure AD PowerShell.
 
 ### <a name="privileged-role-administrator"></a>[Správce privilegovaných rolí](#privileged-role-administrator-permissions)
 
@@ -537,7 +537,7 @@ Uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny asp
 | Zrušit platnost obnovovacích tokenů<br/>Resetování hesla | Seznam rolí, které může správce uživatelů resetovat a devalidate aktualizovat tokeny, najdete v tématu oprávnění k [resetování hesla](#password-reset-permissions). |
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
+> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
 >
 >- Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům uživatelů. Prostřednictvím této cesty může správce uživatelů předpokládat identitu vlastníka aplikace a pak dále předpokládat identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >- Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.

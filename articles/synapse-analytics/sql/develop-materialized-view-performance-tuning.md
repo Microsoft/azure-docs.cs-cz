@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: d10b7084cfc49d60e9d14c3c857d1ade839398ac
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e6c3987e2de7f9592a1f7f6086657592e1bf0c16
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305097"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676600"
 ---
 # <a name="performance-tuning-with-materialized-views-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Optimalizace výkonu s materializovaná zobrazeními pomocí vyhrazeného fondu SQL ve službě Azure synapse Analytics
 
@@ -29,9 +29,9 @@ Standardní zobrazení vypočítá data při každém použití zobrazení.  Na 
 
 Materializované zobrazení předběžně počítá, ukládá a uchovává jeho data ve vyhrazeném fondu SQL stejně jako tabulka.  Při každém použití materializované zobrazení není potřeba recompute.  To je důvod, proč dotazy, které používají všechny nebo podmnožiny dat v materializovaná zobrazení, mohou získat rychlejší výkon.  I lepší, dotazy mohou používat materializovaná zobrazení bez přímého odkazu na něj, takže není nutné měnit kód aplikace.  
 
-Většina standardních požadavků zobrazení se pořád vztahuje na materializované zobrazení. Podrobnosti o syntaxi materializované zobrazení a dalších požadavcích najdete v tématu věnovaném [Vytvoření materializované zobrazení jako příkazu SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+Většina standardních požadavků zobrazení se pořád vztahuje na materializované zobrazení. Podrobnosti o syntaxi materializované zobrazení a dalších požadavcích najdete v tématu věnovaném [Vytvoření materializované zobrazení jako příkazu SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest&preserve-view=true).
 
-| Porovnání                     | Zobrazit                                         | Materialized View
+| Porovnání                     | Zobrazení                                         | Materialized View
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
 |Zobrazení definice                 | Uložené v Azure Data Warehouse.              | Uložené v Azure Data Warehouse.
 |Zobrazení obsahu                    | Vygenerováno pokaždé, když je použito zobrazení.   | Předzpracovaná a uložená v Azure Data Warehouse během vytváření zobrazení. Aktualizováno při přidání dat do podkladových tabulek.
@@ -55,8 +55,8 @@ Správně navržené materializované zobrazení přináší následující výh
 Ve srovnání s jinými poskytovateli datového skladu poskytují materializovaná zobrazení implementovaná ve vyhrazeném fondu SQL také tyto další výhody:
 
 - Automatická a synchronní aktualizace dat se změnami dat v základních tabulkách Není vyžadována žádná akce uživatele.
-- Podpora široké agregační funkce Viz téma [Vytvoření materializované zobrazení jako Select (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
-- Podpora doporučení pro materializované zobrazení pro konkrétní dotazy  Viz [vysvětlení (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+- Podpora široké agregační funkce Viz téma [Vytvoření materializované zobrazení jako Select (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest&preserve-view=true).
+- Podpora doporučení pro materializované zobrazení pro konkrétní dotazy  Viz [vysvětlení (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="common-scenarios"></a>Obvyklé scénáře  
 
@@ -147,7 +147,7 @@ Optimalizátor datového skladu může automaticky využívat nasazená material
 
 Materializované zobrazení je uloženo v datovém skladu stejně jako tabulka s clusterovaným indexem columnstore (Ski).  Čtení dat z materializované zobrazení zahrnuje skenování indexu a použití změn z rozdílového úložiště.  Pokud je počet řádků ve rozdílovém úložišti příliš vysoký, řešení dotazu z materializované zobrazení může trvat déle než přímé dotazování na základní tabulky.  
 
-Aby se zabránilo snížení výkonu dotazů, je vhodné spustit [příkaz DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) a monitorovat overhead_ratio zobrazení (total_rows/base_view_row).  Pokud je overhead_ratio příliš vysoká, zvažte nové sestavení materializované zobrazení, aby všechny řádky v rozdílovém úložišti byly přesunuty do indexu columnstore.  
+Aby se zabránilo snížení výkonu dotazů, je vhodné spustit [příkaz DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest&preserve-view=true) a monitorovat overhead_ratio zobrazení (total_rows/base_view_row).  Pokud je overhead_ratio příliš vysoká, zvažte nové sestavení materializované zobrazení, aby všechny řádky v rozdílovém úložišti byly přesunuty do indexu columnstore.  
 
 **Materializované zobrazení a ukládání sad výsledků do mezipaměti**
 

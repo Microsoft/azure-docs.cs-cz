@@ -3,18 +3,19 @@ title: Nasazení OpenShift kontejneru Platform 4. x v Azure
 description: Nasaďte OpenShift kontejner Platform 4. x v Azure.
 author: haroldwongms
 manager: mdotson
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: f2fb1657c26fce3e1fdd67f36b0c6511b78dd216
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8650802b4add9b33664205367bb3242b32b9754
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373534"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670394"
 ---
 # <a name="deploy-openshift-container-platform-4x-in-azure"></a>Nasazení OpenShift kontejneru Platform 4. x v Azure
 
@@ -32,7 +33,7 @@ Nasazení OpenShift Container Platform (OCP) 4,2 se teď podporuje v Azure prost
 
 | Popis problému | Kontaktní bod |
 |-------------------|---------------|
-| Problémy specifické pro Azure (AAD, SP, předplatné Azure atd.)                              | Partnerský vztah Microsoftu |
+| Problémy specifické pro Azure (AAD, SP, předplatné Azure atd.)                              | Microsoft |
 | Problémy specifické pro OpenShift (selhání instalace/chyby, předplatné Red Hat atd.) |  Red Hat  |
 
 

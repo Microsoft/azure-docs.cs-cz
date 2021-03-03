@@ -2,18 +2,18 @@
 title: Architektura agenta Kubernetes povoleného ARC Azure
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/17/2021
+ms.date: 02/19/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Tento článek poskytuje přehled architektury agentů Kubernetes s povoleným ARC Azure.
 keywords: Kubernetes, oblouk, Azure, kontejnery
-ms.openlocfilehash: 287ffdd40dc9ffdb91abb58b305d8b35b0bc3674
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b4fb836cc7782f4026a28f4af0ca372c76486a31
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652560"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650528"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Architektura agenta Kubernetes povoleného ARC Azure
 
@@ -42,7 +42,7 @@ Většina Prem Datacenter vynutila striktní Síťová pravidla, která zabraňu
 
         | Agent | Description |
         | ----- | ----------- |
-        | `deployment.apps/clusteridentityoperator` | Kubernetes s povoleným ARC Azure aktuálně podporuje jenom [identity přiřazené systémem](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). `clusteridentityoperator` Inicializuje první odchozí komunikaci. Tato první komunikace načte certifikát Identita spravované služby (MSI), který používají jiní agenti pro komunikaci s Azure. |
+        | `deployment.apps/clusteridentityoperator` | Kubernetes s povoleným ARC Azure aktuálně podporuje jenom [identity přiřazené systémem](../../active-directory/managed-identities-azure-resources/overview.md). `clusteridentityoperator` Inicializuje první odchozí komunikaci. Tato první komunikace načte certifikát Identita spravované služby (MSI), který používají jiní agenti pro komunikaci s Azure. |
         | `deployment.apps/config-agent` | Sleduje připojený cluster pro prostředky konfigurace správy zdrojového kódu použité v clusteru. Aktualizuje stav dodržování předpisů. |
         | `deployment.apps/controller-manager` | Operátor obsluhy, který orchestruje interakce mezi komponentami ARC Azure. |    
         | `deployment.apps/metrics-agent` | Shromažďuje metriky jiných agentů ARC k ověření optimálního výkonu. |
@@ -85,7 +85,7 @@ Většina Prem Datacenter vynutila striktní Síťová pravidla, která zabraňu
 
 ## <a name="understand-connectivity-modes"></a>Principy režimů připojení
 
-| Režim připojení | Description |
+| Režim připojení | Popis |
 | ----------------- | ----------- |
 | Plně připojeno | Agenti můžou konzistentně komunikovat s Azure s malým zpožděním při rozšiřování konfigurací GitOps, vynucování zásad Azure Policy a gatekeeper a shromažďování metrik úloh a protokolů v Azure Monitor. |
 | Částečně připojeno | Certifikát MSI vydaný v `clusteridentityoperator` je platný až 90 dní před vypršením platnosti certifikátu. Po vypršení platnosti přestane prostředek Kubernetes s povoleným ARC Azure fungovat. Pokud chcete znovu aktivovat všechny funkce ARC Azure v clusteru, odstraňte a znovu vytvořte prostředky a agenty s povoleným Kubernetes ARC Azure. Během 90 dnů připojte cluster alespoň jednou za 30 dní. |
@@ -93,5 +93,5 @@ Většina Prem Datacenter vynutila striktní Síťová pravidla, která zabraňu
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Připojit cluster ke službě Azure ARC](./connect-cluster.md)
+* [Připojit cluster ke službě Azure ARC](./quickstart-connect-cluster.md)
 * [Koncepční přehled konfigurací](./conceptual-configurations.md)

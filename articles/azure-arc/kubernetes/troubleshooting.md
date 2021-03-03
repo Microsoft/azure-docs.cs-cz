@@ -1,36 +1,38 @@
 ---
-title: Řešení běžných problémů Kubernetes s podporou ARC Azure (Preview)
+title: Řešení běžných problémů Kubernetes s podporou ARC Azure
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 03/02/2020
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Řešení běžných problémů s Kubernetes clustery s podporou ARC.
 keywords: Kubernetes, oblouk, Azure, kontejnery
-ms.openlocfilehash: 0827386eb6ec089cf7951e8fa513a77fc78aef22
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e1f4e84f16c6b584f1ffbd918a86c251f47efcca
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684085"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653996"
 ---
-# <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>Řešení potíží s Kubernetesem v Azure ARC (Preview)
+# <a name="azure-arc-enabled-kubernetes-troubleshooting"></a>Kubernetes řešení potíží s podporou ARC Azure
 
-Tento dokument popisuje některé běžné scénáře řešení potíží s připojením, oprávněními a agenty.
+Tento dokument popisuje příručky pro odstraňování problémů s připojením, oprávněními a agenty.
 
 ## <a name="general-troubleshooting"></a>Obecné řešení potíží
 
-### <a name="azure-cli-set-up"></a>Nastavení Azure CLI
-Než použijete příkaz AZ connectedk8s nebo AZ k8sconfiguration CLI, zajistěte, aby byl AZ nastavený na práci se správným předplatným Azure.
+### <a name="azure-cli"></a>Azure CLI
+
+Než začnete používat `az connectedk8s` příkazy nebo příkazy rozhraní příkazového `az k8s-configuration` řádku, ověřte, že je v Azure CLI nastavené fungování na správné předplatné Azure.
 
 ```azurecli
 az account set --subscription 'subscriptionId'
 az account show
 ```
 
-### <a name="azure-arc-agents"></a>agenti Azure – ARC
-Všichni agenti pro Kubernetes s povoleným ARC Azure se v oboru názvů nasazují jako lusky `azure-arc` . V rámci normálních operací by měly být spuštěné všechny lusky a musí se předávat kontroly stavu.
+### <a name="azure-arc-agents"></a>Agenti ARC Azure
+
+Všichni agenti pro Kubernetes s povoleným ARC Azure se v oboru názvů nasazují jako lusky `azure-arc` . Všechny lusky by měly běžet a předávat kontroly stavu.
 
 Nejdřív ověřte verzi Helm ARC Azure:
 
@@ -44,9 +46,9 @@ REVISION: 5
 TEST SUITE: None
 ```
 
-Pokud se Helm verze nenajde nebo chybí, zkuste cluster znovu připojit.
+Pokud se verze Helm nenajde nebo chybí, zkuste znovu [připojit cluster ke službě Azure ARC](./connect-cluster.md) .
 
-Pokud je k dispozici verze Helm a `STATUS: deployed` Určete stav agentů pomocí `kubectl` :
+Pokud se verze Helm nachází v systému `STATUS: deployed` , ověřte stav agentů pomocí `kubectl` :
 
 ```console
 $ kubectl -n azure-arc get deployments,pods
@@ -69,45 +71,42 @@ pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
 pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 ```
 
-Všechny lusky by `STATUS` se měly zobrazovat jako `Running` a `READY` by měly být buď `3/3` nebo `2/2` . Načte protokoly a popište lusky, které vrací `Error` nebo `CrashLoopBackOff` . Pokud je některá z těchto lusků zablokovaná ve `Pending` stavu, může to být způsobeno nedostatečnými prostředky v uzlech clusteru. Při vertikálním [navýšení kapacity clusteru](https://kubernetes.io/docs/tasks/administer-cluster/) budou tyto lusky přecházet do `Running` stavu.
+Všechny lusky by měly být zobrazeny `STATUS` `Running` buď ve sloupci, `3/3` nebo `2/2` `READY` . Načte protokoly a popište lusky vracející `Error` nebo `CrashLoopBackOff` . Pokud se některé lusky zablokují ve `Pending` stavu, můžou být na uzlech clusteru nedostatečné prostředky. [Horizontální navýšení kapacity clusteru](https://kubernetes.io/docs/tasks/administer-cluster/) může získat tyto lusky do `Running` stavu přechodu.
 
 ## <a name="connecting-kubernetes-clusters-to-azure-arc"></a>Připojení clusterů Kubernetes ke službě Azure ARC
 
-Připojení clusterů k Azure vyžaduje přístup k předplatnému Azure a `cluster-admin` přístup k cílovému clusteru. Pokud cluster není dostupný nebo má nedostatečná oprávnění k registraci, dojde k chybě.
+Připojení clusterů k Azure vyžaduje přístup k předplatnému Azure a `cluster-admin` přístup k cílovému clusteru. Pokud se nemůžete připojit ke clusteru nebo nemáte dostatečná oprávnění, připojení clusteru ke službě Azure Arc se nezdaří.
 
 ### <a name="insufficient-cluster-permissions"></a>Nedostatečná oprávnění clusteru
 
-Pokud zadaný soubor kubeconfig nemá dostatečná oprávnění k instalaci agentů Azure ARC, příkaz Azure CLI vrátí při pokusu o volání rozhraní API Kubernetes chybu.
+Pokud zadaný soubor kubeconfig nemá dostatečná oprávnění k instalaci agentů Azure ARC, příkaz Azure CLI vrátí chybu.
 
 ```azurecli
 $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
-Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
 This operation might take a while...
 
 Error: list: failed to list: secrets is forbidden: User "myuser" cannot list resource "secrets" in API group "" at the cluster scope
 ```
 
-Vlastník clusteru by měl používat uživatele Kubernetes s oprávněními správce clusteru.
+Uživatel připojující cluster ke službě Azure ARC by měl mít `cluster-admin` přiřazenou roli v clusteru.
 
 ### <a name="installation-timeouts"></a>Vypršení časových limitů instalace
 
-Instalace agenta Azure ARC vyžaduje spuštění sady kontejnerů v cílovém clusteru. Pokud cluster běží přes pomalé připojení k Internetu, může převzetí služeb při selhání image kontejneru trvat déle než vypršení časových limitů Azure CLI.
+Připojení clusteru Kubernetes k Kubernetes s povoleným ARC Azure vyžaduje instalaci agentů Azure ARC v clusteru. Pokud je cluster spuštěný přes pomalé připojení k Internetu, může stažení Image kontejneru pro agenty trvat déle, než je časový limit Azure CLI.
 
 ```azurecli
 $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
-Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
 This operation might take a while...
 ```
 
 ### <a name="helm-issue"></a>Problém Helm
 
-Helm verze obsahuje problém s tím, že se při `v3.3.0-rc.1` instalaci nebo upgradu Helm (za použití v rámci rozšíření digestoře CONNECTEDK8S CLI) spustí všechny háky, což vede k následující chybě: [](https://github.com/helm/helm/pull/8527)
+Helm `v3.3.0-rc.1` verze obsahuje [problém](https://github.com/helm/helm/pull/8527) s tím, že při instalaci nebo upgradu Helm (používaný `connectedk8s` rozšířením CLI) dojde ke spuštění všech háčků, což vede k následující chybě:
 
 ```console
 $ az connectedk8s connect -n shasbakstest -g shasbakstest
-Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding.
 This operation might take a while...
 
@@ -117,7 +116,7 @@ ValidationError: Unable to install helm release: Error: customresourcedefinition
 
 Pokud chcete tento problém obnovit, postupujte takto:
 
-1. Odstraňte prostředek Kubernetes s povolenou podporou Azure ARC ve Azure Portal.
+1. Odstraňte prostředek Kubernetes s povoleným ARC Azure v Azure Portal.
 2. Na svém počítači spusťte následující příkazy:
     
     ```console
@@ -132,15 +131,16 @@ Pokud chcete tento problém obnovit, postupujte takto:
 ## <a name="configuration-management"></a>Správa konfigurace
 
 ### <a name="general"></a>Obecné
-Chcete-li pomoct řešit problémy s konfigurací správy zdrojového kódu, spusťte příkaz AZ Commands with--Debug.
+Pokud chcete pomoct s řešením potíží s prostředkem konfigurace, spusťte příkaz AZ Commands se `--debug` zadaným parametrem.
 
 ```console
 az provider show -n Microsoft.KubernetesConfiguration --debug
-az k8sconfiguration create <parameters> --debug
+az k8s-configuration create <parameters> --debug
 ```
 
-### <a name="create-source-control-configuration"></a>Vytvořit konfiguraci správy zdrojového kódu
-Role Přispěvatel v prostředku Microsoft. Kubernetes/connectedCluster je nezbytná a dostatečná pro vytvoření prostředku Microsoft. KubernetesConfiguration/sourceControlConfiguration.
+### <a name="create-configurations"></a>Vytvoření konfigurací
+
+Oprávnění k zápisu pro prostředek Kubernetes s povoleným ARC Azure ( `Microsoft.Kubernetes/connectedClusters/Write` ) jsou nezbytná a dostatečná pro vytváření konfigurací v tomto clusteru.
 
 ### <a name="configuration-remains-pending"></a>Konfigurace zůstává `Pending`
 
@@ -185,7 +185,7 @@ metadata:
   resourceVersion: ""
   selfLink: ""
 ```
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 Azure Monitor pro kontejnery vyžaduje spuštění DaemonSet v privilegovaném režimu. Chcete-li úspěšně vytvořit kanonický cluster Charmed Kubernetes pro monitorování, spusťte následující příkaz:
 

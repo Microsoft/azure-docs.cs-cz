@@ -8,17 +8,48 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: BlackMist
-ms.date: 09/10/2020
-ms.openlocfilehash: c54034ef927bb49a955ef6121f5a8d56b57f0bd3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: b19c5e8ca1f7984f33a5cedf37a2774532c79350
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375557"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661099"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
 V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) .
+
+__Informační kanál RSS__: po aktualizaci této stránky se zobrazí upozornění zkopírováním a vložením následující adresy URL do čtečky informačních kanálů: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+## <a name="2021-02-16"></a>2021-02-16
+
+### <a name="azure-machine-learning-sdk-for-python-v1230"></a>Sada SDK Azure Machine Learning pro Python v 1.23.0
++ **Nové funkce**
+  + **azureml-core**
+    + [Experimentální funkce] Přidání podpory pro propojení pracovního prostoru synapse do AML jako propojené služby
+    + [Experimentální funkce] Přidání podpory pro připojení fondu synapse Spark do AML jako výpočetní prostředí
+    + [Experimentální funkce] Přidejte podporu pro přístup k datům založeným na identitě. Uživatelé můžou Registrovat úložiště dat nebo datové sady bez zadání přihlašovacích údajů. V takovém případě se pro ověřování použijí tokeny AAD uživatelů nebo spravovaná identita služby COMPUTE Target. Další informace najdete [tady](https://aka.ms/data-access).
+  + **azureml-pipeline-steps**
+    + [Experimentální funkce] Přidání podpory pro [SynapseSparkStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.synapsesparkstep?preserve-view=true&view=azure-ml-py)
+  + **azureml-synapse**
+    + [Experimentální funkce] Přidáním podpory Spark Magic spustíte interaktivní relaci ve fondu synapse Spark.
++ **Opravy chyb a vylepšení**
+  + **azureml-automl-runtime**
+    + V této aktualizaci jsme přidali exponenciální vyhlazení Holt zima do sady nástrojů sady AutoML SDK pro předpověď. S ohledem na časovou řadu se nejlepší model vybere pomocí [Akaikeho kritéria AICc (korigované podle údajů)](https://otexts.com/fpp3/selecting-predictors.html#selecting-predictors) a vrátí se.
+    + AutoML nyní vygeneruje dva soubory protokolu místo jednoho. Příkazy log se přejdou na jeden nebo druhý v závislosti na tom, který proces byl vygenerován v příkazu log.
+    + Odstraňte nepotřebnou předpověď v ukázce během školení modelu s křížovým ověřením. To může v některých případech snížit dobu školení modelu, zejména pro modely prognózy časových řad.
+  + **azureml-contrib-fairness**
+    + Přidejte schéma JSON pro nahrávání dashboardDictionary.
+  + **azureml-contrib-interpret**
+    + AzureML-contrib-Interpret souboru READme, aby odrážel, že balíček bude v další aktualizaci odebrán od října, použijte místo toho balíček AzureML-Interpret.
+  + **azureml-core**
+    + Dřív bylo možné vytvořit konfiguraci zřizování s minimálním počtem uzlů menším, než je maximální počet uzlů. Nyní byl opraven. Pokud se teď pokusíte vytvořit konfiguraci zřizování pomocí `min_nodes < max_nodes` sady SDK, vyvolá se `ComputeTargetException` .
+    +  Opravuje chybu v wait_for_completion v AmlCompute, která způsobila, že funkce vrátila tok řízení před samotným dokončením operace.
+    + Rutina. Fail () je nyní zastaralá, pomocí rutiny run. Tag () označte neúspěšné spuštění nebo použijte příkaz run. Cancel (), který označí běh jako zrušený.
+    + Zobrazení chybové zprávy ' očekával se název prostředí ' str {} . Nalezeno ', pokud zadaný název prostředí není řetězec.
+  + **azureml-train-automl-client**
+    + Opravili jsme chybu, která zabránila rušení AutoML experimentů provedených v Azure Databricksch clusterech.
 
 
 ## <a name="2021-02-09"></a>2021-02-09
@@ -54,11 +85,11 @@ V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referen
 ### <a name="azure-machine-learning-studio-notebooks-experience-january-update"></a>Prostředí poznámkových bloků Azure Machine Learning Studio (aktualizace od ledna)
 + **Nové funkce**
   + Nativní editor Markdownu v AzureML. Uživatelé teď můžou v nástroji AzureML studia nativně vykreslovat a upravovat soubory Markdownu.
-  + [Tlačítko spustit pro skripty (. py,. R a. sh)](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#run-a-notebook-or-python-script). Uživatelé teď můžou skript Pythonu, R a bash v AzureML snadno spustit.
-  + [Průzkumník proměnných](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#explore-variables-in-the-notebook). Prozkoumejte obsah proměnných a datových snímků v rozbalovacím panelu. Uživatelé můžou snadno kontrolovat datový typ, velikost a obsah.
-  + [Tabulka obsahu](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#navigate-with-a-toc). Přejděte k oddílům vašeho poznámkového bloku, které jsou označeny hlavičkou Markdownu.
+  + [Tlačítko spustit pro skripty (. py,. R a. sh)](./how-to-run-jupyter-notebooks.md#run-a-notebook-or-python-script). Uživatelé teď můžou skript Pythonu, R a bash v AzureML snadno spustit.
+  + [Průzkumník proměnných](./how-to-run-jupyter-notebooks.md#explore-variables-in-the-notebook). Prozkoumejte obsah proměnných a datových snímků v rozbalovacím panelu. Uživatelé můžou snadno kontrolovat datový typ, velikost a obsah.
+  + [Tabulka obsahu](./how-to-run-jupyter-notebooks.md#navigate-with-a-toc). Přejděte k oddílům vašeho poznámkového bloku, které jsou označeny hlavičkou Markdownu.
   + Exportujte svůj Poznámkový blok jako latex/HTML/py. Vytváření snadno sdílených souborů poznámkových bloků exportem do LaTex, HTML nebo. py
-  + Intellicode. Výsledky založené na ML poskytují vylepšené [inteligentní prostředí automatického dokončování](https://docs.microsoft.com/visualstudio/intellicode/overview).
+  + Intellicode. Výsledky založené na ML poskytují vylepšené [inteligentní prostředí automatického dokončování](/visualstudio/intellicode/overview).
 
 + **Opravy chyb a vylepšení**
   + Vylepšené doby načítání stránek
@@ -971,7 +1002,7 @@ Teď můžete vytvářet, upravovat a sdílet notebooky a soubory ve strojovém 
 
 Z studia získáte přístup k následujícím webovým nástrojům pro vytváření obsahu:
     
-| Webový nástroj  |     Description  |
+| Webový nástroj  |     Popis  |
 |---|---|
 | Notebooky Azure ML Studio   |     První vytváření obsahu pro soubory poznámkových bloků a podpora všech operací, které jsou dostupné v sadě SDK Azure ML Python SDK. | 
 
@@ -1483,7 +1514,7 @@ Z studia můžete provádět výukové, testovací, nasazování a správu Azure
 
 Z studia získáte přístup k následujícím webovým nástrojům pro vytváření obsahu:
 
-| Webový nástroj | Description | 
+| Webový nástroj | Popis | 
 |-|-|-|
 | Virtuální počítač poznámkového bloku (Preview) | Plně spravovaná cloudová pracovní stanice | 
 | [Automatizované Machine Learning](tutorial-first-experiment-automated-ml.md) (Preview) | Neexistují žádné zkušenosti s kódem pro automatizaci vývoje modelů strojového učení. | 

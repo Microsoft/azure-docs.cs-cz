@@ -10,12 +10,12 @@ ms.author: sagopal
 ms.date: 12/3/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: 7ddd5dec87a122a0b36fee17b5434c8a49dcf434
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5b2f62e8e04bddadc7068eb75405bcf1568f5713
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881631"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657294"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>Řešení potíží s sestaveními imagí prostředí
 
@@ -153,8 +153,8 @@ Pokud chcete řešit možné chyby na straně služby, přečtěte si následuj�
 
 Možné problémy:
 - Název cesty k registru kontejnerů nemusí být správně vyřešen. Ověřte, že názvy obrázků používají dvojitá lomítka a směr lomítka v systémech Linux a hostitelů Windows je správný.
-- Pokud registr kontejneru za virtuální sítí používá privátní koncový bod v [nepodporované oblasti](/azure/private-link/private-link-overview#availability), nakonfigurujte registr kontejneru pomocí koncového bodu služby (veřejného přístupu) z portálu a zkuste to znovu.
-- Po umístění registru kontejneru za virtuální sítí spusťte [šablonu Azure Resource Manager](/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry) , aby pracovní prostor mohl komunikovat s instancí registru kontejneru.
+- Pokud registr kontejneru za virtuální sítí používá privátní koncový bod v [nepodporované oblasti](../private-link/private-link-overview.md#availability), nakonfigurujte registr kontejneru pomocí koncového bodu služby (veřejného přístupu) z portálu a zkuste to znovu.
+- Po umístění registru kontejneru za virtuální sítí spusťte [šablonu Azure Resource Manager](./how-to-network-security-overview.md) , aby pracovní prostor mohl komunikovat s instancí registru kontejneru.
 
 ### <a name="you-get-a-401-error-from-a-workspace-container-registry"></a>Zobrazí se chyba 401 z registru kontejneru pracovního prostoru.
 
@@ -166,7 +166,7 @@ Když se pokračuje v sestavení bitové kopie, conda klient sady SDK zamkne. Po
 
 ### <a name="your-custom-docker-image-isnt-in-the-registry"></a>Vlastní image Docker není v registru.
 
-Ověřte, zda je použita [správná značka](/azure/machine-learning/how-to-use-environments#create-an-environment) a zda `user_managed_dependencies = True` . `Environment.python.user_managed_dependencies = True` zakáže conda a použije nainstalované balíčky uživatele.
+Ověřte, zda je použita [správná značka](./how-to-use-environments.md#create-an-environment) a zda `user_managed_dependencies = True` . `Environment.python.user_managed_dependencies = True` zakáže conda a použije nainstalované balíčky uživatele.
 
 ### <a name="you-get-one-of-the-following-common-virtual-network-issues"></a>Získáte jeden z následujících běžných problémů s virtuální sítí.
 
@@ -184,9 +184,9 @@ Ověřte, zda je použita [správná značka](/azure/machine-learning/how-to-use
 
 ### <a name="you-cant-run-experiments-when-storage-has-network-security-enabled"></a>Nemůžete spouštět experimenty, pokud má úložiště zapnuté zabezpečení sítě.
 
-Pokud používáte výchozí image Docker a povolíte závislosti spravované uživatelem, použijte [značky služby](/azure/machine-learning/how-to-enable-virtual-network) MicrosoftContainerRegistry a AzureFrontDoor. FirstParty pro povolených Azure Container registry a jeho závislosti.
+Pokud používáte výchozí image Docker a povolíte závislosti spravované uživatelem, použijte [značky služby](./how-to-network-security-overview.md) MicrosoftContainerRegistry a AzureFrontDoor. FirstParty pro povolených Azure Container registry a jeho závislosti.
 
- Další informace najdete v tématu [Povolení virtuálních sítí](/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry).
+ Další informace najdete v tématu [Povolení virtuálních sítí](./how-to-network-security-overview.md).
 
 ### <a name="you-need-to-create-an-icm"></a>Je potřeba vytvořit ICM.
 

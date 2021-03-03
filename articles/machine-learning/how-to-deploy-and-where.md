@@ -12,12 +12,12 @@ ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
 adobe-target: true
-ms.openlocfilehash: d8c6a9cc000d307490745b923a1f1ba6c93abf53
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: f8865c9e6726a19e5e215886f92507734ebf0662
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652220"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657311"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>Nasazení modelů strojového učení do Azure
 
@@ -315,22 +315,22 @@ Během nasazování modelu se může zobrazit Změna stavu služby během plnéh
 
 Následující tabulka popisuje různé stavy služby:
 
-| Stav WebService | Description | Konečný stav?
+| Stav WebService | Popis | Konečný stav?
 | ----- | ----- | ----- |
-| Přechod | Služba je v procesu nasazení. | No |
-| Není v pořádku | Služba je nasazená, ale v tuto chvíli není dostupná.  | No |
-| Unschedulable | Službu nyní nelze nasadit z důvodu nedostatku prostředků. | No |
-| Neúspěšný | Nasazení služby se nezdařilo z důvodu chyby nebo selhání. | Yes |
-| V pořádku | Služba je v pořádku a koncový bod je k dispozici. | Yes |
+| Přechod | Služba je v procesu nasazení. | Ne |
+| Není v pořádku | Služba je nasazená, ale v tuto chvíli není dostupná.  | Ne |
+| Unschedulable | Službu nyní nelze nasadit z důvodu nedostatku prostředků. | Ne |
+| Neúspěšný | Nasazení služby se nezdařilo z důvodu chyby nebo selhání. | Ano |
+| V pořádku | Služba je v pořádku a koncový bod je k dispozici. | Ano |
 
 > [!TIP]
 > Při nasazování jsou image Docker pro cíle výpočtů sestavené a načtené z Azure Container Registry (ACR). Ve výchozím nastavení Azure Machine Learning vytvoří ACR, který používá *základní* úroveň služby. Změna ACR pro váš pracovní prostor na úroveň Standard nebo Premium může zkrátit dobu potřebnou k sestavování a nasazování imagí do vašich výpočetních cílů. Další informace najdete v tématu [Azure Container Registry úrovně služeb](../container-registry/container-registry-skus.md).
 
 > [!NOTE]
-> Pokud model nasazujete do služby Azure Kubernetes Service (AKS), doporučujeme vám povolit [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-enable-existing-clusters) pro tento cluster. Pomůže vám to pochopit celkový stav clusteru a využití prostředků. Můžete taky najít užitečné následující zdroje:
+> Pokud model nasazujete do služby Azure Kubernetes Service (AKS), doporučujeme vám povolit [Azure monitor](../azure-monitor/containers/container-insights-enable-existing-clusters.md) pro tento cluster. Pomůže vám to pochopit celkový stav clusteru a využití prostředků. Můžete taky najít užitečné následující zdroje:
 >
-> * [Kontrolovat Resource Health události, které mají vliv na váš cluster AKS](https://docs.microsoft.com/azure/aks/aks-resource-health)
-> * [Diagnostika služby Azure Kubernetes](https://docs.microsoft.com/azure/aks/concepts-diagnostics)
+> * [Kontrolovat Resource Health události, které mají vliv na váš cluster AKS](../aks/aks-resource-health.md)
+> * [Diagnostika služby Azure Kubernetes](../aks/concepts-diagnostics.md)
 >
 > Při pokusu o nasazení modelu do poškozeného nebo přetíženého clusteru se očekává, že dojde k problémům. Pokud potřebujete pomoc s řešením problémů s clustery AKS, obraťte se na podporu AKS.
 

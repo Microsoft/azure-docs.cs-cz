@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 98c1ce9367e9bf2aa1a381a772b3cbc73f96b519
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 515921c4e69b7c2cff8e1055182503b5ce89971c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650942"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657141"
 ---
 # <a name="voice-and-video-concepts"></a>Koncepce hlasových hovorů a videohovorů
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Pomocí komunikačních služeb Azure můžete vytvořit a přijmout jedno pro jedno nebo více skupin volání hlasu a videa. Vaše volání se dají provádět na jiných zařízeních připojených k Internetu a na obyčejných telefonních hovorech. Klientské knihovny pro komunikační služby JavaScript, Android nebo iOS můžete použít k sestavování aplikací, které umožňují uživatelům vzájemně mluvit v privátních konverzacích nebo v diskusích skupin. Komunikační služby Azure podporují volání a ze služeb nebo roboty.
 
@@ -26,7 +24,7 @@ Pomocí komunikačních služeb Azure můžete vytvořit a přijmout jedno pro j
 
 V komunikačních službách Azure můžete provádět různé typy volání. Typ volání zjistíte podle schématu signalizace, toků přenosů multimédií a cenového modelu.
 
-### <a name="voice-over-ip-voip"></a>VoIP (Voice over IP) 
+### <a name="voice-over-ip-voip"></a>VoIP (Voice over IP)
 
 Když uživatel vaší aplikace volá jiného uživatele vaší aplikace přes Internet nebo datové připojení, volání se provede přes VoIP (Voice over IP). V takovém případě je přes Internet signalizace i tok médií.
 
@@ -43,14 +41,14 @@ Pokud se jeden z vašich uživatelů připojuje k jinému uživateli pomocí jed
 Volání skupiny ve službě Azure Communication Services se stane, když se na sebe připojí tři nebo více účastníků. Jakákoli kombinace uživatelů VoIP a PSTN propojených přes síť PSTN může být k dispozici ve skupině volání. Volání typu 1:1 lze převést na volání skupiny přidáním dalších účastníků do volání. Jedním z těchto účastníků může být robot.
 
 ### <a name="supported-video-standards"></a>Podporované standardy videí
-Podporujeme H. 264 (MPEG-4). 
+Podporujeme H. 264 (MPEG-4).
 
 ### <a name="video-quality"></a>Kvalita videa
-V nativních sadách (iOS, Android) SDK podporujeme až v plném rozsahu HD 1080p. Pro web (JS) SDK podporujeme Standard HD 720p. Kvalita závisí na dostupné šířce pásma.  
+V nativních sadách (iOS, Android) SDK podporujeme až v plném rozsahu HD 1080p. Pro web (JS) SDK podporujeme Standard HD 720p. Kvalita závisí na dostupné šířce pásma.
 
 ### <a name="rooms-concept"></a>Koncept místností
 Místnosti jsou sadou rozhraní API a sad SDK, které vám umožňují snadno přidat zvuk, video, sdílení obrazovky, veřejné servery a interakce služby SMS na váš web nebo nativní aplikaci.
-V rámci verze Preview můžete ke stejné konverzaci použít ID skupiny. Můžete vytvořit tolik ID skupin, kolik potřebujete, a oddělit uživatele podle "místností". Přesunutím do popředí zavedete více ovládacích prvků kolem "místností". 
+V rámci verze Preview můžete ke stejné konverzaci použít ID skupiny. Můžete vytvořit tolik ID skupin, kolik potřebujete, a oddělit uživatele podle "místností". Přesunutím do popředí zavedete více ovládacích prvků kolem "místností".
 
 ## <a name="next-steps"></a>Další kroky
 

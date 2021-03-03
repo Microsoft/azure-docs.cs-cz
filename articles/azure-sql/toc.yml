@@ -33,6 +33,16 @@
           href: database/features-comparison.md
         - name: Funkce s více modely
           href: multi-model-features.md
+        - name: Plánovaná údržba
+          items:
+            - name: Časové období údržby
+              href: database/maintenance-window.md
+            - name: Konfigurovat časový interval pro správu a údržbu
+              href: database/maintenance-window-configure.md
+            - name: Nejčastější dotazy k časovému období údržby
+              href: database/maintenance-window-faq.yml
+            - name: Oznámení předem
+              href: database/advance-notifications.md
         - name: OLTP v paměti
           href: in-memory-oltp-overview.md
         - name: Dočasné tabulky

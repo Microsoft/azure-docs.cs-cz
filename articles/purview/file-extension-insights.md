@@ -6,23 +6,23 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/24/2020
-ms.openlocfilehash: 246a9dcfa35498d99fd403f10e5c17d7707efe84
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/17/2021
+ms.openlocfilehash: 5cbfb41d50e055f745864e4d5f8bc15a55d925e7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202619"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668565"
 ---
 # <a name="file-extension-insights-about-your-data-from-azure-purview"></a>Přehled o rozšířeních souborů z Azure dosah 
 
 Tato příručka popisuje, jak získat přístup, zobrazit a filtrovat informace o příponách souborů nebo typech souborů, které se nacházejí ve vašich datech.
 
-Mezi podporované zdroje dat patří: Azure Blob Storage, Azure Data Lake Storage (ADLS) fin 1, Azure Data Lake Storage (ADLS) GEN 2.
+Mezi podporované zdroje dat patří: Azure Blob Storage, Azure Data Lake Storage (ADLS) fin 1, Azure Data Lake Storage (ADLS) GEN 2, Amazon S3.
 
 V této příručce se dozvíte, jak:
 > [!div class="checklist"]
-> * Spusťte účet dosah z Azure. 
+> * Spuštění účtu dosah z Azure 
 > - Zobrazit informace o rozšířeních souborů pro vaše data
 > - Přechod k podrobnostem o dalších rozšířeních souborů pro vaše data
 
@@ -32,7 +32,7 @@ Než začnete s dosah přehledy, ujistěte se, že jste dokončili následujíc�
 
 - Nastavte prostředky Azure a vyplníte příslušné účty testovacími daty
 
-- Nastavení a dokončení kontroly dat testu v každém zdroji dat
+- Nastavení a dokončení kontroly testovacích dat v jednotlivých zdrojích dat. Další informace najdete v tématu [Správa zdrojů dat ve službě Azure dosah (Preview)](manage-data-sources.md) a [Vytvoření sady pravidel skenování](create-a-scan-rule-set.md).
 
 - Přihlásili jste se k dosah pomocí účtu s [rolí data Reader nebo data kurátor](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles).
 
@@ -70,7 +70,7 @@ Při kontrole prostředků dokáže Azure dosah rozpoznat typy souborů nalezen�
 
 Až si zobrazíte informace vysoké úrovně o typech souborů, které se nacházejí v datovém majetku, můžete přejít k podrobnostem o tom, kde se nacházejí, a zda je možné prohledávat citlivá data.
 
-Příklad:
+Například:
 
 :::image type="content" source="media/file-extension-insights/file-extension-drilldown-small.png" alt-text="Sestava přípony souboru – podrobné procházení" lightbox="media/file-extension-insights/file-extension-drilldown.png":::
 

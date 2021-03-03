@@ -5,15 +5,15 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 03/02/2021
 ms.author: chrande
 ms.custom: devx-track-js
-ms.openlocfilehash: 2fd2fa7620e57c58f72dad73c1012a19190e8fbc
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: deba6696eb71287902fa3970ed2d83d0b09ac08d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359642"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658482"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Použití příkazů rozšíření MongoDB ke správě dat uložených v rozhraní API Azure Cosmos DB pro MongoDB 
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -24,11 +24,11 @@ Díky rozhraní API Azure Cosmos DB pro MongoDB můžete využívat výhod Cosmo
 
 ## <a name="mongodb-protocol-support"></a>Podpora protokolu MongoDB
 
-Rozhraní API Azure Cosmos DB pro MongoDB je kompatibilní s MongoDB serverem verze 3,2 a 3,6. Další podrobnosti najdete v tématu [podporované funkce a syntaxe](mongodb-feature-support.md) . 
+Rozhraní API Azure Cosmos DB pro MongoDB je kompatibilní s MongoDB serverem verze 4,0, 3,6 a 3,2. Další podrobnosti najdete v článku podporované funkce a syntaxe v článcích [4,0](mongodb-feature-support-40.md), [3,6](mongodb-feature-support-36.md)a [3,2](mongodb-feature-support.md) . 
 
 Následující příkazy rozšíření poskytují možnost vytvářet a upravovat prostředky specifické pro Azure Cosmos DB přes požadavky databáze:
 
-* [Vytvoření databáze](#create-database)
+* [Vytvořit databázi](#create-database)
 * [Aktualizovat databázi](#update-database)
 * [Získat databázi](#get-database)
 * [Vytvořit kolekci](#create-collection)
@@ -90,7 +90,7 @@ db.runCommand({customAction: "CreateDatabase", autoScaleSettings: { maxThroughpu
 
 ## <a name="update-database"></a><a id="update-database"></a> Aktualizovat databázi
 
-Příkaz aktualizovat databázi rozšíření aktualizuje vlastnosti přidružené k zadané databázi. Následující tabulka popisuje parametry v rámci příkazu:
+Příkaz aktualizovat databázi rozšíření aktualizuje vlastnosti přidružené k zadané databázi. Změna databáze ze zřízené propustnosti na automatické škálování a naopak se podporuje jenom na webu Azure Portal. Následující tabulka popisuje parametry v rámci příkazu:
 
 |**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
@@ -206,8 +206,8 @@ Příkaz vytvořit rozšíření kolekce vytvoří novou kolekci MongoDB. Název
   customAction: "CreateCollection",
   collection: "<Collection Name>",
   shardKey: "<Shard key path>",
-  offerThroughput: (int), // Amount of throughput allocated to a specific collection
-
+  // Replace the line below with "autoScaleSettings: { maxThroughput: (int) }" to use Autoscale instead of Provisioned Throughput. Fill the required Autoscale max throughput setting.
+  offerThroughput: (int) // Provisioned Throughput enabled with required throughput amount set
 }
 ```
 
@@ -292,13 +292,14 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", s
 
 ## <a name="update-collection"></a><a id="update-collection"></a> Aktualizovat kolekci
 
-Příkaz rozšíření kolekce aktualizací aktualizuje vlastnosti přidružené k zadané kolekci.
+Příkaz rozšíření kolekce aktualizací aktualizuje vlastnosti přidružené k zadané kolekci. Změna kolekce ze zřízené propustnosti na automatické škálování a naopak se podporuje jenom na webu Azure Portal.
 
 ```javascript
 {
   customAction: "UpdateCollection",
   collection: "<Name of the collection that you want to update>",
-  offerThroughput: (int) // New throughput that will be set to the collection
+  // Replace the line below with "autoScaleSettings: { maxThroughput: (int) }" if using Autoscale instead of Provisioned Throughput. Fill the required Autoscale max throughput setting. Changing between Autoscale and Provisioned throughput is only supported in the Azure Portal.
+  offerThroughput: (int) // Provisioned Throughput enabled with required throughput amount set
 }
 ```
 

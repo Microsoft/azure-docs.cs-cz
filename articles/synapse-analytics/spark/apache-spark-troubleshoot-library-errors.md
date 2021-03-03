@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: conceptual
 ms.date: 01/04/2021
-ms.openlocfilehash: 60ea97ea2df271f867febec3fa0f0826a18dbbbf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e812fa47d35889a9cf8c671a4df6034812272a6a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417173"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670629"
 ---
 # <a name="troubleshoot-library-installation-errors"></a>Řešení chyb při instalaci knihovny 
 Chcete-li zpřístupnit aplikaci třetí straně nebo místně sestavený kód, můžete nainstalovat knihovnu na jeden z Apache Spark fondů bez serveru. Balíčky uvedené v souboru requirements.txt se stáhnou z PyPi v době spuštění fondu. Tento soubor požadavků se používá při každém vytvoření instance Spark z tohoto fondu Spark. Jakmile je knihovna nainstalována pro fond Spark, je k dispozici pro všechny relace používající stejný fond. 
@@ -54,7 +54,7 @@ df = spark.createDataFrame(data=data2,schema=schema)
 df.write.csv("abfss://<<ENTER NAME OF FILE SYSTEM>>@<<ENTER NAME OF PRIMARY STORAGE ACCOUNT>>.dfs.core.windows.net/validate_permissions.csv")
 
 ```
-Pokud se zobrazí chybová zpráva, pravděpodobně chybí požadovaná oprávnění. Další informace o tom, jak získat požadovaná oprávnění, najdete v tomto dokumentu: [přiřazení oprávnění Přispěvatel dat objektu BLOB úložiště nebo oprávnění vlastníka dat objektu BLOB úložiště](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-an-azure-built-in-role).
+Pokud se zobrazí chybová zpráva, pravděpodobně chybí požadovaná oprávnění. Další informace o tom, jak získat požadovaná oprávnění, najdete v tomto dokumentu: [přiřazení oprávnění Přispěvatel dat objektu BLOB úložiště nebo oprávnění vlastníka dat objektu BLOB úložiště](../../storage/common/storage-auth-aad-rbac-portal.md#assign-an-azure-built-in-role).
 
 Kromě toho, pokud používáte kanál, musí mít MSI v pracovním prostoru také oprávnění přispěvatele dat objektů BLOB úložiště nebo přispěvatele dat objektu BLOB úložiště. Informace o tom, jak udělit vašemu pracovnímu prostoru oprávnění k tomuto oprávnění, najdete v tématu: [udělení oprávnění pro identitu spravovanou pracovním prostorem](../security/how-to-grant-workspace-managed-identity-permissions.md).
 
@@ -98,4 +98,3 @@ Opětovné vytvoření prostředí a ověření aktualizací:
 
 ## <a name="next-steps"></a>Další kroky
 - Zobrazení výchozích knihoven: [podpora Apache Spark verzí](apache-spark-version-support.md)
-

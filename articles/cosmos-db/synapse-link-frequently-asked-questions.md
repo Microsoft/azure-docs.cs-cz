@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: cef5f178ea879ba98df90da36ec9c4b639dd100a
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 885aab68c769c0705994bad34bee6aaa4fdc3f3d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627767"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658465"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Nejčastější dotazy k Azure Synapse Linku pro Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -67,6 +67,12 @@ Ano, analytické úložiště je možné povolit u kontejnerů s zřízenou prop
 ### <a name="is-there-any-effect-on-azure-cosmos-db-transactional-store-provisioned-rus"></a>Existují nějaké vliv na Azure Cosmos DB zřízené transakční úložiště ru?
 
 Azure Cosmos DB garantuje izolaci výkonu mezi transakčními a analytickými úlohami. Povolení analytického úložiště na kontejneru nebude mít vliv na RU/s zřízené v Azure Cosmos DB transakčním úložišti. Transakce (čtení & zápisu) a náklady na úložiště pro analytické úložiště se účtují samostatně. Další podrobnosti najdete v tématu [ceny za Azure Cosmos DB analytické úložiště](analytical-store-introduction.md#analytical-store-pricing) .
+
+### <a name="can-i-restrict-access-to-azure-cosmos-db-analytical-store"></a>Můžu omezit přístup k Azure Cosmos DB analytickému obchodu?
+
+Ano, můžete nakonfigurovat [spravovaný privátní koncový bod](analytical-store-private-endpoints.md) a omezit přístup k síti z analytického úložiště do Azure synapse spravované virtuální sítě. Spravované soukromé koncové body vytvoří privátní odkaz na analytické úložiště. Tento soukromý koncový bod taky omezí přístup k zápisu do transakčního úložiště, a to mezi další datové služby Azure.
+
+Do stejného Azure Cosmos DB účtu v pracovním prostoru Azure synapse Analytics můžete přidat jak transakční, tak i i analytické úložiště. Pokud chcete pouze spustit analytické dotazy, budete pravděpodobně chtít mapovat pouze privátní koncový bod analýzy.
 
 ### <a name="are-delete-and-update-operations-on-the-transactional-store-reflected-in-the-analytical-store"></a>Projeví se operace odstranění a aktualizace v transakčním úložišti v analytickém úložišti?
 

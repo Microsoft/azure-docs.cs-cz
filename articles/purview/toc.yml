@@ -104,6 +104,8 @@ items:
                 href: register-scan-on-premises-sql-server.md
               - name: Tenant Power BI – portál
                 href: register-scan-power-bi-tenant.md
+              - name: Amazon S3
+                href: register-scan-amazon-s3.md
       - name: Obchodní glosář
         items:
           - name: 'Vytvoření, import a export termínů glosáře'

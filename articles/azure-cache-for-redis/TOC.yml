@@ -100,8 +100,10 @@
           href: cache-private-link.md
         - name: Povolení zónové redundance
           href: cache-how-to-zone-redundancy.md
-        - name: Nastavení geografické replikace
+        - name: Nastavení geografické replikace OSS
           href: cache-how-to-geo-replication.md
+        - name: Nastavení podnikové aktivní geografické replikace
+          href: cache-how-to-active-geo-replication.md
         - name: Uložení s využitím rezervované kapacity
           href: cache-reserved-pricing.md
         - name: Migrace na Azure Cache for Redis

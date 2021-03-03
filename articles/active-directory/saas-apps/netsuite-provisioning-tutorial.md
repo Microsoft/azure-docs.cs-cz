@@ -10,19 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 294870d3448886b9cea573a0e79b3ac436941f89
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: b1c03bafd6d97dd6a60defee00d4efe854315631
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696485"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648080"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Kurz: Konfigurace NetSuite pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je Ukázat kroky, které musíte provést v NetSuite OneWorld a Azure AD a automaticky zřizovat a zrušit zřizování uživatelských účtů z Azure AD až po NetSuite.
 
 > [!WARNING]
-> Tato zřizování integrace přestanou v únoru 2020 fungovat, protože došlo ke změně rozhraní NetSuite API, které společnost Microsoft používá ke zřízení uživatelů do NetSuite. V důsledku toho se brzy odeberou funkce zřizování aplikace NetSuite v galerii aplikací Azure Active Directory Enterprise. Funkce jednotného přihlašování do aplikace zůstane beze změny. Microsoft spolupracuje s NetSuite, aby vytvořil novou moderní integraci zřizování, ale v současné době se v tuto chvíli nedokončí.
+> Tato zřizování integrace přestanou v důsledku změny NetSuite rozhraní API, která společnost Microsoft používá ke zřizování uživatelů v NetSuite, v rámci vydání NetSuite aktualizace na jaře 2021.  Tato aktualizace bude kontaktovat NetSuite zákazníky mezi únorem a duben 2021. V důsledku toho se brzy odeberou funkce zřizování aplikace NetSuite v galerii aplikací Azure Active Directory Enterprise. Funkce jednotného přihlašování do aplikace zůstane beze změny. Microsoft spolupracuje s NetSuite, aby vytvořil novou moderní integraci zřizování, ale v současné době se v tuto chvíli nedokončí.
 
 ## <a name="prerequisites"></a>Požadavky
 

@@ -5,13 +5,13 @@ author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 05/10/2019
-ms.openlocfilehash: a0ea9a0871dd57088473999b28553258ff210038
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 02/18/2021
+ms.openlocfilehash: 6601cd31cf6e332bf292cd887b498a92946d8af7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628760"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668295"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Možnosti dostupnosti pro virtuální počítače v Azure
 
@@ -52,6 +52,10 @@ Azure Virtual Machine Scale Sets vám umožní vytvořit a spravovat skupinu vir
 **Domény selhání a aktualizační domény**
 
 Služba Virtual Machine Scale Sets zjednodušuje návrh vysoké dostupnosti tím, že zarovnává domény selhání a aktualizační domény. Pro sadu škálování budete muset definovat jenom počet domén selhání. Počet domén selhání dostupných pro sadu škálování se může v jednotlivých oblastech lišit. Viz [Správa dostupnosti virtuálních počítačů v Azure](./manage-availability.md).
+
+**Režimy orchestrace pro sady škálování**
+
+Režimy orchestrace virtuálních počítačů umožňují lepší kontrolu nad tím, jak jsou instance virtuálních počítačů spravovány sadou škálování. V sadě škálování můžete povolit jednotný nebo flexibilní režim orchestrace. Jednotná orchestrace je optimalizovaná pro rozsáhlá Bezstavová zatížení se stejnými instancemi. Flexibilní orchestrace (Preview) je určena pro vysokou dostupnost ve velkém měřítku se stejnými nebo více typy virtuálních počítačů. Přečtěte si další informace o těchto [režimech orchestrace](./virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) a o tom, jak je povolit.
 
 
 ## <a name="availability-sets"></a>Skupiny dostupnosti

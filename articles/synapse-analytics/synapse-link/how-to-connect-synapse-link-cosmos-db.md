@@ -1,20 +1,20 @@
 ---
-title: Připojení ke službě Azure synapse Link (Preview) pro Azure Cosmos DB
+title: Připojení k Azure Synapse Linku pro Azure Cosmos DB
 description: Naučte se připojit databázi Azure Cosmos DB k pracovnímu prostoru Azure synapse s odkazem na Azure synapse.
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: synapse-link
-ms.date: 04/21/2020
+ms.date: 03/02/2021
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5316f74ee38f597592ae4582aef31837f0f05fda
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 5850644aac9c3324d9ffb17817195cbaaa6020ae
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119828"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667552"
 ---
 # <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Připojení k Azure Synapse Linku pro Azure Cosmos DB
 
@@ -26,9 +26,6 @@ Před připojením databáze Azure Cosmos DB k pracovnímu prostoru budete potř
 
 * Existující databáze Azure Cosmos DB nebo vytvořte nový účet pomocí postupu v části [rychlý Start: Správa účtu Azure Cosmos DB](../../cosmos-db/how-to-manage-database-account.md).
 * Stávající pracovní prostor Azure synapse nebo vytvořte nový pracovní prostor podle kroků v části [rychlý Start: vytvoření pracovního prostoru synapse](../quickstart-create-workspace.md).
-
-> [!IMPORTANT]
-> Odkaz na službu Azure synapse pro Azure Cosmos DB je aktuálně podporován pro pracovní prostory, které nemají povolenou spravovanou virtuální síť.
 
 ## <a name="enable-synapse-link-on-an-azure-cosmos-db-database-account"></a>Povolit synapse odkaz na účet databáze Azure Cosmos DB
 
@@ -70,4 +67,5 @@ Kliknutím pravým tlačítkem na kontejner zobrazíte seznam gest, která aktiv
 ## <a name="next-steps"></a>Další kroky
 
 * [Přečtěte si, co je podporováno v rámci Azure synapse a Azure Cosmos DB](./concept-synapse-link-cosmos-db-support.md)
+* [Konfigurace privátních koncových bodů pro Azure Cosmos DB analytické úložiště](../cosmos-db/analytical-store-private-endpoints.md)
 * [Naučte se dotazovat analytické úložiště pomocí Sparku.](./how-to-query-analytical-store-spark.md)

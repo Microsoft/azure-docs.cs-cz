@@ -104,7 +104,7 @@
     - name: Změna hostování mainframů
       href: ./workloads/mainframe-rehosting/overview.md
     - name: SQL na Virtual Machines
-      href: 'https://docs.microsoft.com/azure/azure-sql/virtual-machines/'
+      href: ../azure-sql/virtual-machines/index.yml
     - name: Vysokovýkonné výpočetní prostředí (HPC)
       href: /azure/architecture/topics/high-performance-computing/
 - name: Instance
@@ -164,6 +164,8 @@
               href: ev4-esv4-series.md
             - name: Řada M
               href: m-series.md
+            - name: Řady střední paměti Msv2 a Mdsv2
+              href: msv2-mdsv2-series.md
             - name: Řada Mv2
               href: mv2-series.md
             - name: Virtuální procesory s omezením
@@ -255,7 +257,7 @@
     - name: Vyhrazení hostitelé
       items:
         - name: Přehled
-          href: ./linux/dedicated-hosts.md
+          href: dedicated-hosts.md
         - name: Rozhraní příkazového řádku
           href: ./linux/dedicated-hosts-cli.md
         - name: Portál
@@ -293,7 +295,7 @@
         - name: Rezervované instance
           items:
             - name: Předplacení pro virtuální počítače
-              href: ./linux/prepay-reserved-vm-instances.md
+              href: ./prepay-reserved-vm-instances.md
             - name: Předplacení pro služby Dedicated Host
               href: prepay-dedicated-hosts-reserved-instances.md
             - name: Co jsou rezervace Azure?
@@ -363,7 +365,7 @@
         - name: Použití Javy
           href: ./windows/java.md
         - name: Python
-          href: 'https://docs.microsoft.com/samples/azure-samples/virtual-machines-python-manage/azure-virtual-machines-management-samples---python/?context=/azure/virtual-machines/context/context'
+          href: /samples/azure-samples/virtual-machines-python-manage/azure-virtual-machines-management-samples---python/?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: Použití šablony ARM
           displayName: Azure Resource Manager template
           href: ./windows/ps-template.md
@@ -447,7 +449,7 @@
             - name: Agent Azure Monitoru
               href: ../azure-monitor/agents/azure-monitor-agent-install.md?context=/azure/virtual-machines/context/context
             - name: Rozšíření diagnostiky
-              href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/diagnostics-extension-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Log Analytics
               items:
                 - name: Linux
@@ -642,7 +644,7 @@
     - name: Galerie sdílených imagí
       items:
         - name: Přehled
-          href: ./linux/shared-image-galleries.md
+          href: ./shared-image-galleries.md
         - name: Rozhraní příkazového řádku
           items:
             - name: Vytvoření galerie
@@ -786,13 +788,13 @@
     - name: Dostupnost
       href: availability.md
     - name: Společné umístění
-      href: ./linux/co-location.md
+      href: co-location.md
     - name: Výkon sítě
       href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?context=/azure/virtual-machines/context/context
     - name: Stavy a životní cyklus
       href: states-lifecycle.md
     - name: Automatické škálování
-      href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+      href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md?context=/azure/virtual-machines/context/context
     - name: Vysoká dostupnost
       href: manage-availability.md
     - name: Skupiny dostupnosti
@@ -822,6 +824,8 @@
       href: managed-disks-overview.md
     - name: Výběr typu disku pro virtuální počítače IaaS
       href: disks-types.md
+    - name: Možnosti redundance disku
+      href: disks-redundancy.md
     - name: Sdílené disky
       href: disks-shared.md
     - name: Povolení sdílených disků
@@ -952,8 +956,10 @@
           href: premium-storage-performance.md
         - name: Metriky související s diskem
           href: disks-metrics.md
-        - name: Zvládání výkonových špiček disků
+        - name: Modely shlukování disku
           href: disk-bursting.md
+        - name: Povolit shlukování na vyžádání
+          href: disks-enable-bursting.md
         - name: Úrovně výkonu disků
           href: disks-change-performance.md
         - name: Změnit úroveň výkonu disku
@@ -1157,6 +1163,12 @@
           href: ./windows/security-baseline.md
     - name: Doporučení
       href: security-recommendations.md
+    - name: Důvěryhodné spuštění
+      items:
+        - name: Přehled
+          href: trusted-launch.md
+        - name: Nasazení pomocí portálu
+          href: trusted-launch-portal.md
     - name: Přístup za běhu
       href: ../security-center/security-center-just-in-time.md
     - name: Zásady
@@ -1181,7 +1193,7 @@
         - name: Vytvoření opevněného hostitelského počítače
           items:
             - name: Portál
-              href: ../bastion/bastion-create-host-portal.md
+              href: ../bastion/tutorial-create-host-portal.md
             - name: PowerShell
               href: ../bastion/bastion-create-host-powershell.md
             - name: Rozhraní příkazového řádku
@@ -1231,9 +1243,9 @@
     - name: Přehled
       href: maintenance-and-updates.md
     - name: Automatické opravy hosta virtuálního počítače (Preview)
-      href: ./windows/automatic-vm-guest-patching.md
+      href: automatic-vm-guest-patching.md
     - name: Automatický upgrade rozšíření (Preview)
-      href: ./automatic-extension-upgrade.md
+      href: automatic-extension-upgrade.md
     - name: Řízení údržby
       items:
         - name: Oznámení o údržbě
@@ -1281,7 +1293,7 @@
 - name: Monitorování
   items:
     - name: Přehled
-      href: ../azure-monitor/insights/monitor-vm-azure.md?context=/azure/virtual-machines/context/context
+      href: ../azure-monitor/vm/monitor-vm-azure.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
     - name: Monitorování virtuálních počítačů
       items:
         - name: Windows
@@ -1295,7 +1307,7 @@
         - name: Rozšíření Azure Diagnostics
           items:
             - name: Přehled
-              href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/diagnostics-extension-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Rozšíření linuxové diagnostiky
               items:
                 - name: 'Verze 4,0'
@@ -1303,16 +1315,16 @@
                 - name: 'Verze 3,0'
                   href: ../virtual-machines/extensions/diagnostics-linux-v3.md?context=/azure/virtual-machines/context/context
                 - name: Shromažďování metrik s využitím Telegrafu
-                  href: ../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/essentials/collect-custom-metrics-linux-telegraf.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                   displayname: diagnostics extension
         - name: Agent Log Analytics
           items:
             - name: Přehled
-              href: ../azure-monitor/platform/log-analytics-agent.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/log-analytics-agent.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Agenti systému Linux
               href: ../azure-monitor/agents/agent-linux.md?context=/azure/virtual-machines/context/context
             - name: Brána Log Analytics
-              href: ../azure-monitor/platform/gateway.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/gateway.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Správa agentů
               href: ../azure-monitor/agents/agent-manage.md?context=/azure/virtual-machines/context/context
             - name: Stav agenta
@@ -1334,11 +1346,11 @@
                 - name: Vlastní protokoly
                   href: ../azure-monitor/agents/data-sources-custom-logs.md?context=/azure/virtual-machines/context/context
                 - name: Vlastní pole
-                  href: ../azure-monitor/platform/custom-fields.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/logs/custom-fields.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: Řešení potíží
           items:
             - name: Rozšíření Log Analytics pro virtuální počítače
-              href: ../azure-monitor/platform/vmext-troubleshoot.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/visualize/vmext-troubleshoot.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
               displayname: 'troubleshoot, troubleshooting'
             - name: Linuxový agent Log Analytics
               href: ../azure-monitor/agents/agent-linux-troubleshoot.md?context=/azure/virtual-machines/context/context
@@ -1346,37 +1358,37 @@
         - name: Azure Monitor pro virtuální počítače
           items:
             - name: Přehled
-              href: ../azure-monitor/insights/vminsights-overview.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Nejčastější dotazy k všeobecné dostupnosti
-              href: ../azure-monitor/insights/vminsights-ga-release-faq.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-ga-release-faq.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Nejčastější dotazy
               href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#azure-monitor-for-vms
             - name: Povolení monitorování
               items:
                 - name: Povolení přehledu monitorování
-                  href: ../azure-monitor/insights/vminsights-enable-overview.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: Povolení pro jeden virtuální počítač Azure
-                  href: ../azure-monitor/insights/vminsights-enable-portal.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-portal.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: Povolení s využitím Azure Policy
-                  href: ../azure-monitor/insights/vminsights-enable-policy.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-policy.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: Povolení s využitím Azure Powershellu
-                  href: ../azure-monitor/insights/vminsights-enable-powershell.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-powershell.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: Povolení pro hybridní prostředí
-                  href: ../azure-monitor/insights/vminsights-enable-hybrid.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-hybrid.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Závislosti map
-              href: ../azure-monitor/insights/vminsights-maps.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-maps.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Monitorování výkonu
-              href: ../azure-monitor/insights/vminsights-performance.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-performance.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Analýza dat s využitím dotazů na protokoly
-              href: ../azure-monitor/insights/vminsights-log-search.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-log-search.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Vizualizace dat s využitím sešitů
-              href: ../azure-monitor/insights/vminsights-workbooks.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-workbooks.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Vytváření pravidel upozornění
-              href: ../azure-monitor/insights/vminsights-alerts.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-alerts.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Upgrade agenta závislostí
-              href: ../azure-monitor/insights/vminsights-dependency-agent-maintenance.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-dependency-agent-maintenance.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Zákaz monitorování
-              href: ../azure-monitor/insights/vminsights-optout.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-optout.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
     - name: Využití virtuálních počítačů
       href: vm-usage.md
     - name: Označení virtuálního počítače
@@ -1422,7 +1434,7 @@
         - name: Zálohování několika virtuálních počítačů
           href: ../backup/tutorial-backup-vm-at-scale.md
         - name: Možnosti obnovení
-          href: /azure/backup/backup-azure-arm-restore-vms
+          href: ../backup/backup-azure-arm-restore-vms.md
         - name: Matice podpory
           href: ../backup/backup-support-matrix-iaas.md
         - name: Ceny
@@ -1479,15 +1491,15 @@
     - name: Vlastní data
       href: custom-data.md
     - name: Ansible
-      href: 'https://docs.microsoft.com/azure/developer/ansible/'
+      href: /azure/developer/ansible/
     - name: Terraform
-      href: 'https://docs.microsoft.com/azure/developer/terraform/'
+      href: /azure/developer/terraform/
     - name: Jenkins
-      href: 'https://docs.microsoft.com/en-us/azure/developer/jenkins/'
+      href: /azure/developer/jenkins/
     - name: Azure DevOps
       href: ./linux/tutorial-azure-devops-blue-green-strategy.md
 - name: Řešení potíží
-  href: 'https://docs.microsoft.com/troubleshoot/azure/virtual-machines/welcome-virtual-machines'
+  href: /troubleshoot/azure/virtual-machines/welcome-virtual-machines
 - name: Zdroje a prostředky
   items:
     - name: Architektura přechodu na cloud

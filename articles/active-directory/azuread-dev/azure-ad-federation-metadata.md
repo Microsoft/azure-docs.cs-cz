@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: bcc44f61ccb7b4a19e7df39ab979669c5aa37da1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f3bd8851fe723461c618499e539c987d79c0d68
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80154895"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650137"
 ---
 # <a name="federation-metadata"></a>Metadata federování
 
@@ -36,7 +36,7 @@ Koncové body nezávislé na klientovi poskytují informace, které jsou společ
 ## <a name="federation-metadata-endpoints"></a>Koncové body federačních metadat
 Azure AD publikuje federační metadata na adrese `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml` .
 
-U **koncových bodů specifických**pro klienta `TenantDomainName` může být jedním z následujících typů:
+U **koncových bodů specifických** pro klienta `TenantDomainName` může být jedním z následujících typů:
 
 * Registrovaný název domény tenanta Azure AD, například: `contoso.onmicrosoft.com` .
 * Neměnné ID klienta domény, například `72f988bf-86f1-41af-91ab-2d7cd011db45` .
@@ -96,7 +96,7 @@ V části specifické pro WS-Federation by WS-Federation čtecí modul metadat n
 Následující metadata ukazují vzorový `RoleDescriptor` prvek.
 
 ```
-<RoleDescriptor xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:fed="https://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType"protocolSupportEnumeration="https://docs.oasis-open.org/wsfed/federation/200706">
+<RoleDescriptor xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:fed="https://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType" protocolSupportEnumeration="https://docs.oasis-open.org/wsfed/federation/200706">
 ```
 
 V části specifické pro SAML by WS-Federation čtecí modul metadat přečetl certifikáty z `IDPSSODescriptor` elementu.

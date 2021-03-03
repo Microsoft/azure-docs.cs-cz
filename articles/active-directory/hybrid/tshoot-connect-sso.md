@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bc638eec174a52d501120d5e53bb2dc9e35b688
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: eef58f6e84fb3b4dec947fa3614b6ec1043ff89e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591170"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644642"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Řešení potíží s Azure Active Directory bezproblémovému jednoduchému Sign-On
 
@@ -32,6 +32,7 @@ Tento článek vám pomůže najít informace o řešení běžných problémů 
 - Microsoft 365 klienti Win32 (Outlook, Word, Excel a další) s verzemi 16.0.8730. xxxx a vyšší se podporují pomocí neinteraktivního toku. Jiné verze se nepodporují. na těchto verzích uživatelé zadají své uživatelské jméno, ale ne hesla, aby se mohli přihlásit. Pro OneDrive budete muset pro tiché přihlašování aktivovat [funkci bezobslužné konfigurace OneDrive](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) .
 - Bezproblémové jednotné přihlašování v prohlížeči Firefox nefunguje v privátním režimu procházení.
 - Bezproblémové jednotné přihlašování v Internet Exploreru nefunguje, když je zapnutý Rozšířený chráněný režim.
+- Bezproblémové jednotné přihlašování nefunguje v privátním režimu procházení na Microsoft Edge (starší verze).
 - Bezproblémové jednotné přihlašování nefunguje na mobilních prohlížečích v iOS a Androidu.
 - Pokud je uživatel součástí příliš velkého počtu skupin ve službě Active Directory, lístek protokolu Kerberos uživatele bude pravděpodobně příliš velký, aby mohl být zpracován, což způsobí bezproblémové přihlášení k selhání. Požadavky služby Azure AD HTTPS můžou mít hlavičky s maximální velikostí 50 KB; Lístky protokolu Kerberos musí být menší než omezení, aby vyhovovaly dalším artefaktům Azure AD (obvykle 2-5 KB), jako jsou soubory cookie. Naším doporučením je snížit členství uživatele ve skupinách a zkusit to znovu.
 - Pokud provádíte synchronizaci 30 nebo více doménových struktur služby Active Directory, nemůžete povolit bezproblémové přihlašování prostřednictvím Azure AD Connect. Jako alternativní řešení můžete funkci v tenantovi [Povolit ručně](#manual-reset-of-the-feature) .

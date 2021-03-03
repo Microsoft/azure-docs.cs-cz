@@ -2,18 +2,18 @@
 title: Přehled serverů s podporou ARC Azure
 description: Naučte se používat servery s podporou ARC Azure ke správě serverů hostovaných mimo Azure, jako je prostředek Azure.
 keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu, Správa aktualizací, sledování změn, inventarizace, Runbooky, Python, grafický, hybridní
-ms.date: 11/12/2020
+ms.date: 02/18/2021
 ms.topic: overview
-ms.openlocfilehash: be5955e9bf02e591fdbba3f080d034c126379c2f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 615835e5a11fac0b09a56e10084249ea493d794d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584794"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651106"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Co jsou servery s podporou služby Azure Arc?
 
-Servery s podporou ARC Azure umožňují spravovat počítače se systémem Windows a Linux hostované mimo Azure, ve vaší podnikové síti nebo v jiném cloudovém poskytovateli konzistentním se správou nativních virtuálních počítačů Azure. Když je hybridní počítač připojený k Azure, bude se jednat o připojený počítač, který se považuje za prostředek v Azure. Každý připojený počítač má ID prostředku, je součástí skupiny prostředků a přináší výhody standardních konstrukcí Azure, jako jsou Azure Policy a použití značek. Poskytovatelé služeb, kteří spravují místní infrastrukturu zákazníka, můžou spravovat své hybridní počítače stejným způsobem jako v současnosti s nativními prostředky Azure, a to v rámci více zákaznických prostředí pomocí [Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) s využitím Azure ARC.
+Servery s podporou ARC Azure umožňují spravovat fyzické servery a virtuální počítače s Windows a Linux hostovaných *mimo* Azure, ve vaší podnikové síti nebo v jiném poskytovateli cloudu. Tato prostředí pro správu jsou navržená tak, aby odpovídala způsobu správy nativních virtuálních počítačů Azure. Když je hybridní počítač připojený k Azure, bude se jednat o připojený počítač, který se považuje za prostředek v Azure. Každý připojený počítač má ID prostředku, je součástí skupiny prostředků a přináší výhody standardních konstrukcí Azure, jako jsou Azure Policy a použití značek. Poskytovatelé služeb, kteří spravují místní infrastrukturu zákazníka, můžou spravovat své hybridní počítače stejným způsobem jako v současnosti s nativními prostředky Azure, a to v rámci více zákaznických prostředí pomocí [Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) s využitím Azure ARC.
 
 Aby bylo možné doručovat toto prostředí do vašich hybridních počítačů hostovaných mimo Azure, musí být na každém počítači, který plánujete připojit k Azure, nainstalovaný agent připojeného počítače Azure. Tento agent nedoručuje žádné jiné funkce a nenahrazuje [agenta Azure Log Analytics](../../azure-monitor/agents/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je nutný, pokud chcete aktivně monitorovat operační systém a úlohy běžící v počítači, spravovat je pomocí runbooků nebo řešení automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-introduction.md).
 
@@ -44,7 +44,7 @@ Data protokolu shromážděná a uložená v Log Analytics pracovním prostoru z
 
 Konečný seznam podporovaných oblastí se servery s podporou ARC Azure najdete na stránce [produkty Azure podle oblastí](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc) .
 
-Ve většině případů umístění, které vyberete při vytváření instalačního skriptu, by mělo být oblast Azure geograficky nejblíže umístění vašeho počítače. Uložená data se ukládají do geografické oblasti Azure, která obsahuje oblast, kterou určíte, což může mít vliv na zvolenou oblast, i když máte požadavky na data na úrovni. Pokud je oblast Azure, ke které je počítač připojený, ovlivněná výpadkem, připojený počítač to neovlivní, ale operace správy používající Azure nemusí být možné dokončit. Pokud máte v případě regionálního výpadku více umístění, která podporují geograficky redundantní služby, je nejlepší připojit počítače v každém umístění do jiné oblasti Azure.
+Ve většině případů umístění, které vyberete při vytváření instalačního skriptu, by mělo být oblast Azure geograficky nejblíže umístění vašeho počítače. Uložená data se ukládají do geografické oblasti Azure, která obsahuje oblast, kterou určíte, což může mít vliv na zvolenou oblast, i když máte požadavky na data na úrovni. Pokud je oblast Azure, ke které je počítač připojený, ovlivněná výpadkem, připojený počítač to neovlivní, ale operace správy používající Azure nemusí být možné dokončit. Pokud dojde k oblastnímu výpadku a pokud máte více umístění, která podporují geograficky redundantní službu, je nejlepší připojit počítače v každém umístění do jiné oblasti Azure.
 
 Následující informace o metadatech připojeného počítače se shromažďují a ukládají v oblasti, ve které je nakonfigurovaný prostředek počítače Azure ARC:
 
@@ -54,6 +54,13 @@ Následující informace o metadatech připojeného počítače se shromažďuj�
 - Verze agenta připojeného počítače
 
 Například pokud je počítač zaregistrován pomocí ARC Azure v oblasti Východní USA, tato data jsou uložena v oblasti USA.
+
+### <a name="supported-environments"></a>Podporovaná prostředí
+
+Servery s podporou ARC podporují správu fyzických serverů a virtuálních počítačů hostovaných *mimo* Azure. Konkrétní informace o tom, která hybridní cloudová prostředí hostující virtuální počítače jsou podporovaná, najdete v tématu [agent – přehled. MD # Supported-Environments].
+
+> [!NOTE]
+> Servery s podporou ARC nejsou navržené ani nepodporované a umožňují správu virtuálních počítačů spuštěných v Azure.
 
 ### <a name="agent-status"></a>Stav agenta
 

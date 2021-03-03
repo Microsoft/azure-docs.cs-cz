@@ -14,12 +14,12 @@ ms.date: 02/05/2021
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd33f9e0b249db6b7c6bd0a0a556d0bb4cf79312
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 0c1a0be0b7834632ba79af7dfe6c3a4fa25c0316
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101276"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645507"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>Migrace ověřování aplikace na Azure Active Directory
 
@@ -55,13 +55,13 @@ Vaše aplikace budou nejspíš používat následující typy ověřování:
 
 **Aby uživatelé mohli snadno a bezpečně přistupovat k aplikacím, vaším cílem je mít v místních i cloudových prostředích jednu sadu řízení přístupu a zásad.**
 
-[Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) nabízí univerzální platformu pro identitu, která poskytuje vašim lidem, partnerům a zákazníkům jedinou identitu pro přístup k aplikacím, které chtějí, a spolupráci z jakékoli platformy a zařízení.
+[Azure Active Directory (Azure AD)](../fundamentals/active-directory-whatis.md) nabízí univerzální platformu pro identitu, která poskytuje vašim lidem, partnerům a zákazníkům jedinou identitu pro přístup k aplikacím, které chtějí, a spolupráci z jakékoli platformy a zařízení.
 
 ![Diagram připojení Azure Active Directory](media/migrating-application-authentication-to-azure-active-directory-1.jpg)
 
-Azure AD má [plnou sadu funkcí pro správu identit](/azure/active-directory/fundamentals/active-directory-whatis#which-features-work-in-azure-ad). Standardizace ověřování aplikací a autorizace do Azure AD vám umožní získat výhody, které tyto funkce poskytují.
+Azure AD má [plnou sadu funkcí pro správu identit](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad). Standardizace ověřování aplikací a autorizace do Azure AD vám umožní získat výhody, které tyto funkce poskytují.
 
-Zobrazit další prostředky migrace na [https://aka.ms/migrateapps](https://aka.ms/migrateapps)
+Zobrazit další prostředky migrace na [https://aka.ms/migrateapps](./migration-resources.md)
 
 ## <a name="benefits-of-migrating-app-authentication-to-azure-ad"></a>Výhody migrace ověřování aplikace do služby Azure AD
 
@@ -71,9 +71,9 @@ Přesunutí ověřování aplikace do služby Azure AD vám pomůže se správou
 
 Ochrana vašich aplikací vyžaduje, abyste měli úplný přehled o všech rizikových faktorech. Migrace vašich aplikací do Azure AD slučuje vaše řešení zabezpečení. Díky tomu můžete:
 
-- Vylepšete zabezpečený přístup uživatelů k aplikacím a přidruženým podnikovým datům pomocí [zásad podmíněného přístupu](/azure/active-directory/active-directory-conditional-access-azure-portal), [Multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-howitworks)a technologií [ochrany identity](/azure/active-directory/active-directory-identityprotection) na základě rizik v reálném čase.
+- Vylepšete zabezpečený přístup uživatelů k aplikacím a přidruženým podnikovým datům pomocí [zásad podmíněného přístupu](../conditional-access/overview.md), [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)a technologií [ochrany identity](../identity-protection/overview-identity-protection.md) na základě rizik v reálném čase.
 
-- Chraňte přístup privilegovaných uživatelů k vašemu prostředí pomocí přístupu správce [za běhu](/azure/managed-applications/request-just-in-time-access) .
+- Chraňte přístup privilegovaných uživatelů k vašemu prostředí pomocí přístupu správce [za běhu](../../azure-resource-manager/managed-applications/request-just-in-time-access.md) .
 
 - K nejdůležitějším obchodním potřebám můžete využít [Azure AD pro více tenantů, geograficky distribuovanou a vysokou dostupnost](https://cloudblogs.microsoft.com/enterprisemobility/2014/09/02/azure-ad-under-the-hood-of-our-geo-redundant-highly-available-distributed-cloud-directory/).
 
@@ -85,30 +85,30 @@ Vaše organizace může mít několik řešení pro správu přístupu k identit
 
 **Pomocí Azure AD můžete snížit náklady na infrastrukturu pomocí:**
 
-- Poskytování zabezpečeného vzdáleného přístupu k místním aplikacím pomocí [Azure proxy aplikací služby AD](/azure/active-directory/manage-apps/application-proxy).
+- Poskytování zabezpečeného vzdáleného přístupu k místním aplikacím pomocí [Azure proxy aplikací služby AD](./application-proxy.md).
 
-- Odpojuje aplikace od přístupu k přihlašovacím údajům Prem ve vašem tenantovi [nastavením Azure AD jako důvěryhodného poskytovatele Universal identity](/azure/active-directory/hybrid/plan-connect-user-signin#choosing-the-user-sign-in-method-for-your-organization).
+- Odpojuje aplikace od přístupu k přihlašovacím údajům Prem ve vašem tenantovi [nastavením Azure AD jako důvěryhodného poskytovatele Universal identity](../hybrid/plan-connect-user-signin.md#choosing-the-user-sign-in-method-for-your-organization).
 
 ### <a name="increase-productivity"></a>Zvýšení produktivity
 
 Ekonomické a bezpečnostní výhody přinášejí organizacím k přijetí Azure AD, ale plné přijetí a dodržování předpisů je pravděpodobnější, pokud uživatelé mají výhodu i vy. Pomocí Azure AD můžete:
 
-- Pomocí bezproblémového a zabezpečeného přístupu k libovolné aplikaci, a to z libovolného zařízení a libovolného umístění, zvyšte přístup koncových uživatelů k [jednomu Sign-On (SSO)](/azure/active-directory/manage-apps/what-is-single-sign-on) .
+- Pomocí bezproblémového a zabezpečeného přístupu k libovolné aplikaci, a to z libovolného zařízení a libovolného umístění, zvyšte přístup koncových uživatelů k [jednomu Sign-On (SSO)](./what-is-single-sign-on.md) .
 
-- Využijte samoobslužné možnosti IAM, jako je [Samoobslužné resetování hesla](/azure/active-directory/authentication/concept-sspr-howitworks) a [Správa skupin samoobslužný](/azure/active-directory/users-groups-roles/groups-self-service-management).
+- Využijte samoobslužné možnosti IAM, jako je [Samoobslužné resetování hesla](../authentication/concept-sspr-howitworks.md) a [Správa skupin samoobslužný](../enterprise-users/groups-self-service-management.md).
 
 - Správa jenom jedné identity pro každého uživatele napříč cloudem a místními prostředími vám pomůže snížit administrativní režii:
 
-  - [Automatizace zřizování](/azure/active-directory/active-directory-saas-app-provisioning) uživatelských účtů (v [galerii Azure AD](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)) na základě identit Azure AD
+  - [Automatizace zřizování](../app-provisioning/user-provisioning.md) uživatelských účtů (v [galerii Azure AD](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)) na základě identit Azure AD
   - Přístup ke všem aplikacím z panelu MyApp v [Azure Portal ](https://portal.azure.com/)
 
-- Umožněte vývojářům zabezpečený přístup ke svým aplikacím a zlepšení prostředí koncových uživatelů pomocí [platformy Microsoft Identity](/azure/active-directory/develop/about-microsoft-identity-platform) Library s Microsoft Authentication Library (MSAL).
+- Umožněte vývojářům zabezpečený přístup ke svým aplikacím a zlepšení prostředí koncových uživatelů pomocí [platformy Microsoft Identity](../develop/v2-overview.md) Library s Microsoft Authentication Library (MSAL).
 
-- Umožněte svým partnerům přístup k prostředkům v cloudu pomocí [Spolupráce B2B v Azure AD](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Tím se odstraní režie konfigurace typu Point-to-Point s vašimi partnery.
+- Umožněte svým partnerům přístup k prostředkům v cloudu pomocí [Spolupráce B2B v Azure AD](../external-identities/what-is-b2b.md). Tím se odstraní režie konfigurace typu Point-to-Point s vašimi partnery.
 
 ### <a name="address-compliance-and-governance"></a>Řešení dodržování předpisů a zásad správného řízení
 
-Dodržování zákonných zásad přístupu a sledování přístupu uživatelů k aplikacím a přidruženým datům pomocí integrovaných nástrojů auditu a rozhraní API zajistí dodržování zákonných požadavků. Pomocí Azure AD můžete monitorovat přihlášení aplikací prostřednictvím sestav, které využívají nástroje pro řízení [událostí a Siem (Event monitor)](/azure/active-directory/reports-monitoring/plan-monitoring-and-reporting). K sestavám můžete přistupovat z portálu nebo rozhraní API a programově auditovat, kdo má přístup k vašim aplikacím, a odebrat přístup k neaktivním uživatelům prostřednictvím kontrol přístupu.
+Dodržování zákonných zásad přístupu a sledování přístupu uživatelů k aplikacím a přidruženým datům pomocí integrovaných nástrojů auditu a rozhraní API zajistí dodržování zákonných požadavků. Pomocí Azure AD můžete monitorovat přihlášení aplikací prostřednictvím sestav, které využívají nástroje pro řízení [událostí a Siem (Event monitor)](../reports-monitoring/plan-monitoring-and-reporting.md). K sestavám můžete přistupovat z portálu nebo rozhraní API a programově auditovat, kdo má přístup k vašim aplikacím, a odebrat přístup k neaktivním uživatelům prostřednictvím kontrol přístupu.
 
 ## <a name="plan-your-migration-phases-and-project-strategy"></a>Plánování fází migrace a strategie projektu
 
@@ -214,11 +214,11 @@ Prvním rozhodovacím bodem migrace aplikace je to, které aplikace se mají mig
 
 **Shromažďování správného inventáře aplikací pomocí Active Directory Federation Services (AD FS) (AD FS):**
 
-- **Použití Azure AD Connect Health** Pokud máte licenci Azure AD Premium, doporučujeme nasadit [Azure AD Connect Health](/azure/active-directory/hybrid/how-to-connect-health-adfs) k analýze využití aplikací v místním prostředí. Pomocí [sestavy aplikace AD FS](/azure/active-directory/manage-apps/migrate-adfs-application-activity) (Preview) můžete zjistit, které aplikace ADFS se dají migrovat, a vyhodnotit připravenost aplikace, která se má migrovat. Po dokončení migrace nasaďte [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery) , které vám umožní průběžně monitorovat stínové IT ve vaší organizaci, když jste v cloudu.
+- **Použití Azure AD Connect Health** Pokud máte licenci Azure AD Premium, doporučujeme nasadit [Azure AD Connect Health](../hybrid/how-to-connect-health-adfs.md) k analýze využití aplikací v místním prostředí. Pomocí [sestavy aplikace AD FS](./migrate-adfs-application-activity.md) (Preview) můžete zjistit, které aplikace ADFS se dají migrovat, a vyhodnotit připravenost aplikace, která se má migrovat. Po dokončení migrace nasaďte [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery) , které vám umožní průběžně monitorovat stínové IT ve vaší organizaci, když jste v cloudu.
 
-- **Analýza protokolu AD FS**. Pokud licence Azure AD Premium nemáte, doporučujeme použít službu AD FS na nástroje pro migraci aplikací Azure AD, které jsou založené na [PowerShellu.](https://github.com/AzureAD/Deployment-Plans/tree/master/ADFS%20to%20AzureAD%20App%20Migration) Přečtěte si [Průvodce řešením](https://aka.ms/migrateapps/adfssolutionguide):
+- **Analýza protokolu AD FS**. Pokud licence Azure AD Premium nemáte, doporučujeme použít službu AD FS na nástroje pro migraci aplikací Azure AD, které jsou založené na [PowerShellu.](https://github.com/AzureAD/Deployment-Plans/tree/master/ADFS%20to%20AzureAD%20App%20Migration) Přečtěte si [Průvodce řešením](./migrate-adfs-apps-to-azure.md):
 
-[Migrují se aplikace z Active Directory Federation Services (AD FS) (AD FS) do Azure AD.](https://aka.ms/migrateapps/adfssolutionguide)
+[Migrují se aplikace z Active Directory Federation Services (AD FS) (AD FS) do Azure AD.](./migrate-adfs-apps-to-azure.md)
 
 ### <a name="using-other-identity-providers-idps"></a>Používání jiných zprostředkovatelů identity (zprostředkovatelů identity)
 
@@ -270,7 +270,7 @@ Jakmile najdete své aplikace, zjistíte tyto typy aplikací ve vaší organizac
 
 Již moderní aplikace jsou pravděpodobně přesunuty do Azure AD. Tyto aplikace už používají moderní ověřovací protokoly (například SAML nebo OpenID Connect) a dají se překonfigurovat pro ověřování pomocí Azure AD.
 
-Kromě možností v [galerii aplikací Azure AD](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) se může jednat o aplikace, které už existují ve vaší organizaci, nebo na jakékoli aplikace třetích stran od dodavatele, který není součástí Galerie Azure AD ([aplikace mimo galerii)](/azure/active-directory/manage-apps/add-non-gallery-app).
+Kromě možností v [galerii aplikací Azure AD](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) se může jednat o aplikace, které už existují ve vaší organizaci, nebo na jakékoli aplikace třetích stran od dodavatele, který není součástí Galerie Azure AD ([aplikace mimo galerii)](./add-application-portal.md).
 
 Starší verze aplikací, které se rozhodnete modernizovat
 
@@ -288,13 +288,13 @@ U některých aplikací využívajících starší verze ověřovacích protokol
 
 - Aplikace vyvinuté pomocí místních standardů ověřování, u kterých nemáte žádné plány k přesunu
 
-Azure AD může těmto starším aplikacím přinést skvělé výhody, protože můžete povolit moderní funkce zabezpečení Azure AD a zásad správného řízení, jako je [Multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-howitworks), [podmíněný přístup](/azure/active-directory/conditional-access/overview), [ochrana identit](/azure/active-directory/identity-protection/), [delegovaný přístup k aplikacím](/azure/active-directory/manage-apps/access-panel-manage-self-service-access)a kontroly [přístupu k](https://docs.microsoft.com/azure/active-directory/governance/manage-user-access-with-access-reviews#create-and-perform-an-access-review) těmto aplikacím, aniž byste museli aplikaci vůbec dotýkat!
+Azure AD může těmto starším aplikacím přinést skvělé výhody, protože můžete povolit moderní funkce zabezpečení Azure AD a zásad správného řízení, jako je [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md), [podmíněný přístup](../conditional-access/overview.md), [ochrana identit](../identity-protection/index.yml), [delegovaný přístup k aplikacím](./access-panel-manage-self-service-access.md)a kontroly [přístupu k](../governance/manage-user-access-with-access-reviews.md#create-and-perform-an-access-review) těmto aplikacím, aniž byste museli aplikaci vůbec dotýkat!
 
-Začněte tím, že **tyto aplikace rozšíříte do cloudu** s využitím služby Azure AD [Application proxy](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-password-vaulting) pomocí jednoduchých způsobů ověřování (jako je třeba trezor hesel), abyste mohli snadno migrovat uživatele nebo prostřednictvím našich [integrací partnerů](https://azure.microsoft.com/services/active-directory/sso/secure-hybrid-access/) s řadiči pro doručování aplikací, které jste už nasadili.
+Začněte tím, že **tyto aplikace rozšíříte do cloudu** s využitím služby Azure AD [Application proxy](./application-proxy-configure-single-sign-on-password-vaulting.md) pomocí jednoduchých způsobů ověřování (jako je třeba trezor hesel), abyste mohli snadno migrovat uživatele nebo prostřednictvím našich [integrací partnerů](https://azure.microsoft.com/services/active-directory/sso/secure-hybrid-access/) s řadiči pro doručování aplikací, které jste už nasadili.
 
 ### <a name="new-line-of-business-lob-apps"></a>Nové obchodní aplikace (LoB)
 
-Obvykle vyvíjíte obchodní aplikace pro interní použití vaší organizace. Pokud máte v kanálu nové aplikace, doporučujeme implementovat OpenID Connect pomocí [platformy Microsoft Identity](/azure/active-directory/develop/about-microsoft-identity-platform) .
+Obvykle vyvíjíte obchodní aplikace pro interní použití vaší organizace. Pokud máte v kanálu nové aplikace, doporučujeme implementovat OpenID Connect pomocí [platformy Microsoft Identity](../develop/v2-overview.md) .
 
 ### <a name="apps-to-deprecate"></a>Aplikace, které mají být zastaralé
 
@@ -316,10 +316,10 @@ V této fázi jste úspěšně provedli následující kroky:
 
   - K jakým systémům se tyto aplikace připojují o o a o tom, k jakým prostředkům mají přístup uživatelé
 
-  - Zda budou migrovány, zastaralé nebo připojeny k [Azure AD Connect](/azure/active-directory/hybrid/whatis-azure-ad-connect).
+  - Zda budou migrovány, zastaralé nebo připojeny k [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md).
 
 > [!NOTE]
-> Můžete si stáhnout [list zjišťování aplikací](https://download.microsoft.com/download/2/8/3/283F995C-5169-43A0-B81D-B0ED539FB3DD/Application%20Discovery%20worksheet.xlsx) a zaznamenat aplikace, které chcete migrovat do ověřování Azure AD, a ty, které chcete opustit, ale spravovat je pomocí [Azure AD Connect](/azure/active-directory/hybrid/whatis-azure-ad-connect).
+> Můžete si stáhnout [list zjišťování aplikací](https://download.microsoft.com/download/2/8/3/283F995C-5169-43A0-B81D-B0ED539FB3DD/Application%20Discovery%20worksheet.xlsx) a zaznamenat aplikace, které chcete migrovat do ověřování Azure AD, a ty, které chcete opustit, ale spravovat je pomocí [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md).
 
 ## <a name="phase-2-classify-apps-and-plan-pilot"></a>Fáze 2: klasifikace aplikací a plánování pilotního nasazení
 
@@ -351,7 +351,7 @@ Můžete zvolit, že se má migrace aplikace zahájit buď s aplikacemi s nejni�
 
 V případě, kdy nemáte zkušenosti s používáním služeb Azure AD a identity, zvažte nejprve přesunutí **aplikací s nejnižší prioritou** do služby Azure AD. Tím se minimalizuje váš dopad na váš podnik a můžete vytvořit potenciál. Až tyto aplikace úspěšně přesunete a získali jistotu účastníků, můžete pokračovat v migraci ostatních aplikací.
 
-Pokud není jasné, měli byste zvážit přesunutí aplikací, které jsou v [galerii Azure AD](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) , a podporu více zprostředkovatelů identity (AD FS nebo okta), protože je snazší je integrovat. Je možné, že tyto aplikace jsou ve vaší organizaci **aplikace s nejvyšší prioritou** . Abychom vám pomohli integrovat aplikace SaaS s Azure AD, vyvinuli jsme kolekci [kurzů](/azure/active-directory/saas-apps/tutorial-list) , které vás provedou konfigurací.
+Pokud není jasné, měli byste zvážit přesunutí aplikací, které jsou v [galerii Azure AD](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) , a podporu více zprostředkovatelů identity (AD FS nebo okta), protože je snazší je integrovat. Je možné, že tyto aplikace jsou ve vaší organizaci **aplikace s nejvyšší prioritou** . Abychom vám pomohli integrovat aplikace SaaS s Azure AD, vyvinuli jsme kolekci [kurzů](../saas-apps/tutorial-list.md) , které vás provedou konfigurací.
 
 Když máte konečný termín k migraci aplikací, bude mít tento kontejner aplikací s nejvyšší prioritou hlavní zatížení. Nakonec můžete vybrat aplikace s nižší prioritou, protože se nemění náklady, i když jste konečný termín přesunuli. I v případě, že je nutné licenci prodloužit, bude to pro malou částku.
 
@@ -399,7 +399,7 @@ Jakmile budete svoji aplikaci klasifikovat a popsali si podrobnosti, ujistěte s
 
 ### <a name="plan-a-pilot"></a>Plánování pilotního projektu
 
-Aplikace, které vyberete pro pilotní projekt, by měly představovat klíčovou identitu a požadavky na zabezpečení vaší organizace a Vy musíte mít jasné předplatné z vlastníků aplikací. Pilotní nástroje se obvykle spouštějí v samostatném testovacím prostředí. [Doporučené postupy pro pilotní](/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot) nasazení najdete na stránce plány nasazení.
+Aplikace, které vyberete pro pilotní projekt, by měly představovat klíčovou identitu a požadavky na zabezpečení vaší organizace a Vy musíte mít jasné předplatné z vlastníků aplikací. Pilotní nástroje se obvykle spouštějí v samostatném testovacím prostředí. [Doporučené postupy pro pilotní](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) nasazení najdete na stránce plány nasazení.
 
 **Nezapomeňte o vašich externích partnerech.** Ujistěte se, že se účastní plánů migrace a testování. Nakonec se ujistěte, že mají způsob, jak získat přístup k helpdesku v případě narušení problému.
 
@@ -409,7 +409,7 @@ I když se některé aplikace dají snadno migrovat, můžou trvat delší dobu,
 
 Mnoho dodavatelů aplikací SaaS se účtuje za změnu připojení SSO. Podívejte se na ně a naplánujte ji.
 
-Azure AD má také [omezení a omezení služeb](/azure/active-directory/users-groups-roles/directory-service-limits-restrictions) , o kterých byste měli vědět.
+Azure AD má také [omezení a omezení služeb](../enterprise-users/directory-service-limits-restrictions.md) , o kterých byste měli vědět.
 
 ### <a name="app-owner-sign-off"></a>Přihlášení vlastníka aplikace
 
@@ -421,9 +421,9 @@ Než zahájíte proces migrace, je potřeba plně zvážit stav zabezpečení, k
 
 ### <a name="identities-and-data"></a>Identity a data
 
-Většina organizací má specifické požadavky na identity a ochranu dat, které se v rámci organizací liší podle odvětví a funkcí úloh. V tématu [Konfigurace identit a přístupu k zařízením](/microsoft-365/enterprise/microsoft-365-policies-configurations) najdete doporučení, včetně předepsané sady [zásad podmíněného přístupu](/azure/active-directory/active-directory-conditional-access-azure-portal) a souvisejících možností.
+Většina organizací má specifické požadavky na identity a ochranu dat, které se v rámci organizací liší podle odvětví a funkcí úloh. V tématu [Konfigurace identit a přístupu k zařízením](/microsoft-365/enterprise/microsoft-365-policies-configurations) najdete doporučení, včetně předepsané sady [zásad podmíněného přístupu](../conditional-access/overview.md) a souvisejících možností.
 
-Tyto informace můžete použít k ochraně přístupu ke všem službám integrovaným s Azure AD. Tato doporučení jsou [v rámci služby Azure AD](/azure/active-directory/fundamentals/identity-secure-score)zarovnaná s bezpečnostním skóre Microsoftu a hodnocením identity. Toto skóre vám umožní:
+Tyto informace můžete použít k ochraně přístupu ke všem službám integrovaným s Azure AD. Tato doporučení jsou [v rámci služby Azure AD](../fundamentals/identity-secure-score.md)zarovnaná s bezpečnostním skóre Microsoftu a hodnocením identity. Toto skóre vám umožní:
 
 - Objektivně změřit stav zabezpečení vaší identity
 
@@ -431,7 +431,7 @@ Tyto informace můžete použít k ochraně přístupu ke všem službám integr
 
 - Posoudit úspěšnost těchto vylepšení
 
-Pomůže vám to také při implementaci těchto [pěti kroků k zabezpečení infrastruktury identity](/azure/security/azure-ad-secure-steps). Použijte pokyny jako výchozí bod vaší organizace a upravte zásady tak, aby splňovaly konkrétní požadavky vaší organizace.
+Pomůže vám to také při implementaci těchto [pěti kroků k zabezpečení infrastruktury identity](../../security/fundamentals/steps-secure-identity.md). Použijte pokyny jako výchozí bod vaší organizace a upravte zásady tak, aby splňovaly konkrétní požadavky vaší organizace.
 
 ### <a name="who-is-accessing-your-data"></a>Kdo přistupuje k vašim datům?
 
@@ -439,11 +439,11 @@ Existují dvě hlavní kategorie uživatelů vašich aplikací a prostředků, k
 
 - **Interní:** Zaměstnanci, dodavatelé a dodavatelé, kteří mají účty v rámci vašeho zprostředkovatele identity. To může potřebovat další pivoty s různými pravidly pro vedoucí nebo vedoucí pracovníky a jiné zaměstnance.
 
-- **Externí:** Dodavatelé, dodavatelé, distributoři nebo jiní obchodní partneři, kteří komunikují s vaší organizací v pravidelných firmách s [spoluprací B2B v Azure AD.](/azure/active-directory/b2b/what-is-b2b)
+- **Externí:** Dodavatelé, dodavatelé, distributoři nebo jiní obchodní partneři, kteří komunikují s vaší organizací v pravidelných firmách s [spoluprací B2B v Azure AD.](../external-identities/what-is-b2b.md)
 
-Můžete definovat skupiny pro tyto uživatele a tyto skupiny naplnit různými způsoby. Můžete se rozhodnout, že správce musí do skupiny ručně přidat členy, nebo můžete povolit členství ve skupině samoobslužný. Lze vytvořit pravidla, která automaticky přidají členy do skupin na základě zadaných kritérií pomocí [dynamických skupin](/azure/active-directory/users-groups-roles/groups-dynamic-membership).
+Můžete definovat skupiny pro tyto uživatele a tyto skupiny naplnit různými způsoby. Můžete se rozhodnout, že správce musí do skupiny ručně přidat členy, nebo můžete povolit členství ve skupině samoobslužný. Lze vytvořit pravidla, která automaticky přidají členy do skupin na základě zadaných kritérií pomocí [dynamických skupin](../enterprise-users/groups-dynamic-membership.md).
 
-Externí uživatelé můžou také odkazovat na zákazníky, kteří vyžadují zvláštní pozornost. [Azure AD B2C](/azure/active-directory-b2c/active-directory-b2c-overview)samostatný produkt podporuje ověřování zákazníků. Je však mimo rozsah tohoto dokumentu.
+Externí uživatelé můžou také odkazovat na zákazníky, kteří vyžadují zvláštní pozornost. [Azure AD B2C](../../active-directory-b2c/overview.md)samostatný produkt podporuje ověřování zákazníků. Je však mimo rozsah tohoto dokumentu.
 
 ### <a name="devicelocation-used-to-access-data"></a>Zařízení/umístění, které se používá pro přístup k datům
 
@@ -451,7 +451,7 @@ Důležité je také zařízení a umístění, které uživatel používá pro 
 
 ![Diagram znázorňující relaci mezi umístěním uživatele a přístupem k datům](media/migrating-application-authentication-to-azure-active-directory-6.jpg)
 
-S těmito aspekty prostředků, uživatelů a zařízení se můžete rozhodnout použít možnosti [podmíněného přístupu Azure AD](/azure/active-directory/active-directory-conditional-access-azure-portal) . Podmíněný přístup překračuje oprávnění uživatele: vychází z kombinace faktorů, například identity uživatele nebo skupiny, sítě, ke které je uživatel připojený, zařízení a aplikace, které používají, a typu dat, ke kterým se snaží získat přístup. Přístup udělený uživateli se přizpůsobí této širší sadě podmínek.
+S těmito aspekty prostředků, uživatelů a zařízení se můžete rozhodnout použít možnosti [podmíněného přístupu Azure AD](../conditional-access/overview.md) . Podmíněný přístup překračuje oprávnění uživatele: vychází z kombinace faktorů, například identity uživatele nebo skupiny, sítě, ke které je uživatel připojený, zařízení a aplikace, které používají, a typu dat, ke kterým se snaží získat přístup. Přístup udělený uživateli se přizpůsobí této širší sadě podmínek.
 
 ### <a name="exit-criteria"></a>Výstupní kritéria
 
@@ -475,13 +475,13 @@ Po zakoupení firemního nákupu je dalším krokem zahájení migrace těchto a
 
 Pomocí níže uvedených nástrojů a pokynů proveďte přesné kroky potřebné k migraci vašich aplikací do Azure AD:
 
-- **Obecné pokyny k migraci** – pomocí dotazníku dokumentů White Paper, nástrojů, e-mailových šablon a aplikací v sadě [nástrojů pro migraci aplikací Azure AD](https://aka.ms/migrateapps) můžete zjišťovat, klasifikovat a migrovat vaše aplikace.
+- **Obecné pokyny k migraci** – pomocí dotazníku dokumentů White Paper, nástrojů, e-mailových šablon a aplikací v sadě [nástrojů pro migraci aplikací Azure AD](./migration-resources.md) můžete zjišťovat, klasifikovat a migrovat vaše aplikace.
 
-- **SaaS aplikace** – Podívejte se na náš seznam [stovek výukových kurzů SaaS](/azure/active-directory/active-directory-saas-tutorial-list) a kompletní [plán nasazení služby Azure AD SSO](https://aka.ms/ssodeploymentplan) , který vás provede celým procesem.
+- **SaaS aplikace** – Podívejte se na náš seznam [stovek výukových kurzů SaaS](../saas-apps/tutorial-list.md) a kompletní [plán nasazení služby Azure AD SSO](https://aka.ms/ssodeploymentplan) , který vás provede celým procesem.
 
-- **Aplikace spuštěné místně** – Přečtěte si všechno [o proxy aplikací služby AD Azure](/azure/active-directory/manage-apps/application-proxy) a využijte kompletní [plán nasazení Azure proxy aplikací služby AD](https://aka.ms/AppProxyDPDownload) , abyste mohli rychle začít.
+- **Aplikace spuštěné místně** – Přečtěte si všechno [o proxy aplikací služby AD Azure](./application-proxy.md) a využijte kompletní [plán nasazení Azure proxy aplikací služby AD](https://aka.ms/AppProxyDPDownload) , abyste mohli rychle začít.
 
-- **Aplikace, které vyvíjíte** – Přečtěte si náš postup pro [integraci](/azure/active-directory/develop/active-directory-integrating-applications) a pokyny k [registraci](/azure/active-directory/develop/active-directory-v2-app-registration) .
+- **Aplikace, které vyvíjíte** – Přečtěte si náš postup pro [integraci](../develop/quickstart-register-app.md) a pokyny k [registraci](../develop/quickstart-register-app.md) .
 
 Po migraci můžete odeslat komunikaci informující o uživatelích úspěšného nasazení a připomenout jim všechny nové kroky, které musí provést.
 
@@ -489,7 +489,7 @@ Po migraci můžete odeslat komunikaci informující o uživatelích úspěšné
 
 Během procesu migrace může být v aplikaci již během pravidelných nasazení použito testovací prostředí. Pro testování migrace můžete pokračovat v používání tohoto prostředí. Pokud testovací prostředí není aktuálně k dispozici, může být možné nastavit ho pomocí Azure App Service nebo Azure Virtual Machines v závislosti na architektuře aplikace. Můžete se rozhodnout nastavit samostatného testovacího tenanta Azure AD, který se použije při vývoji konfigurací aplikace. Tento tenant se spustí v čistém stavu a nebude nakonfigurovaný pro synchronizaci s žádným systémem.
 
-Každou aplikaci můžete testovat tak, že se přihlásíte pomocí testovacího uživatele a zajistěte, aby všechny funkce byly stejné jako před migrací. Pokud během testování určíte, že uživatelé budou muset aktualizovat nastavení [MFA](/active-directory/authentication/howto-mfa-userstates) nebo [SSPR](/azure/active-directory/authentication/quickstart-sspr)nebo přidáváte tuto funkci během migrace, nezapomeňte ji přidat do plánu komunikace s koncovým uživatelem. [Seznamte se s](https://aka.ms/mfatemplates) [SSPRmi](https://aka.ms/ssprtemplates) komunikačními šablonami pro koncové uživatele.
+Každou aplikaci můžete testovat tak, že se přihlásíte pomocí testovacího uživatele a zajistěte, aby všechny funkce byly stejné jako před migrací. Pokud během testování určíte, že uživatelé budou muset aktualizovat nastavení [MFA](/active-directory/authentication/howto-mfa-userstates) nebo [SSPR](../authentication/tutorial-enable-sspr.md)nebo přidáváte tuto funkci během migrace, nezapomeňte ji přidat do plánu komunikace s koncovým uživatelem. [Seznamte se s](https://aka.ms/mfatemplates) [SSPRmi](https://aka.ms/ssprtemplates) komunikačními šablonami pro koncové uživatele.
 
 Po migraci aplikací přejdete na [portál Azure Portal](https://aad.portal.azure.com/) a otestujete, jestli migrace proběhla úspěšně. Postupujte podle následujících pokynů:
 
@@ -497,20 +497,21 @@ Po migraci aplikací přejdete na [portál Azure Portal](https://aad.portal.azur
 
 - Vyberte **Spravovat &gt; uživatele a skupiny** a přiřaďte aplikaci aspoň jednoho uživatele nebo skupinu.
 
-- Vyberte **Spravovat &gt; podmíněný přístup**. Zkontrolujte seznam zásad a ujistěte se, že neblokujete přístup k aplikaci pomocí [zásad podmíněného přístupu](/azure/active-directory/active-directory-conditional-access-azure-portal).
+- Vyberte **Spravovat &gt; podmíněný přístup**. Zkontrolujte seznam zásad a ujistěte se, že neblokujete přístup k aplikaci pomocí [zásad podmíněného přístupu](../conditional-access/overview.md).
 
 V závislosti na konfiguraci aplikace ověřte, že jednotné přihlašování funguje správně.
 
 | Typ ověřování      | Testování                                             |
 | ------------------------ | --------------------------------------------------- |
 | **OAuth/OpenID Connect** | Vyberte **&gt; oprávnění podnikových aplikací** a ujistěte se, že jste souhlasili s tím, že se má aplikace používat ve vaší organizaci v nastavení uživatele pro vaši aplikaci. |
-| **Jednotné přihlašování založené na SAML** | Použijte tlačítko [Test nastavení SAML](/azure/active-directory/develop/howto-v1-debug-saml-sso-issues) , které se nachází v části **jednotné přihlašování.** |
-| **Jednotné přihlašování založené na heslech** | Stáhněte a nainstalujte si [rozšíření pro zabezpečené přihlašování aplikace MyApp](/azure/active-directory/user-help/active-directory-saas-access-panel-introduction#my-apps-secure-sign-in-extension). Toto rozšíření vám pomůže začít používat cloudové aplikace vaší organizace, které vyžadují použití procesu jednotného přihlašování. |
-| **[Proxy aplikací](/azure/active-directory/manage-apps/application-proxy)** | Ujistěte se, že váš konektor je spuštěný a přiřazený k vaší aplikaci. Další pomoc najdete v [Průvodci odstraňováním potíží s proxy aplikací](/azure/active-directory/manage-apps/application-proxy-troubleshoot) . |
+| **Jednotné přihlašování založené na SAML** | Použijte tlačítko [Test nastavení SAML](./debug-saml-sso-issues.md) , které se nachází v části **jednotné přihlašování.** |
+| **Jednotné přihlašování založené na heslech** | Stáhněte a nainstalujte si [rozšíření pro zabezpečené přihlašování aplikace MyApp](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension). Toto rozšíření vám pomůže začít používat cloudové aplikace vaší organizace, které vyžadují použití procesu jednotného přihlašování. |
+
+| **[Proxy aplikace](./application-proxy.md)** | Ujistěte se, že váš konektor je spuštěný a přiřazený k vaší aplikaci. Další pomoc najdete v [Průvodci odstraňováním potíží s proxy aplikací](./application-proxy-troubleshoot.md) . |
 
 ### <a name="troubleshoot"></a>Řešení potíží
 
-Pokud narazíte na problémy, podívejte se na naše [Průvodce odstraňováním potíží s aplikacemi](https://aka.ms/troubleshoot-apps) , kde získáte nápovědu. Viz také [problémy s přihlašováním do aplikace s vlastním vývojem](/azure/active-directory/manage-apps/application-sign-in-problem-custom-dev).
+Pokud narazíte na problémy, podívejte se na naše [Průvodce odstraňováním potíží s aplikacemi](../app-provisioning/isv-automatic-provisioning-multi-tenant-apps.md) , kde získáte nápovědu. Viz také [problémy s přihlašováním do aplikace s vlastním vývojem](./application-sign-in-problem-federated-sso-gallery.md).
 
 ### <a name="plan-rollback"></a>Naplánování vrácení zpět
 
@@ -554,19 +555,21 @@ Po migraci aplikací můžete rozšířit uživatelské prostředí mnoha způso
 
 **Nastavit aplikace jako zjistitelného**
 
-**Nasměrujte uživatele** na možnosti na portálu [MyApp](/azure/active-directory/user-help/my-apps-portal-end-user-access#my-apps-secure-sign-in-extension). V tomto případě mají přístup ke všem cloudovým aplikacím, aplikacím, které zpřístupníte pomocí [Azure AD Connect](/azure/active-directory/hybrid/whatis-azure-ad-connect), a aplikací, které používají [proxy aplikace](/azure/active-directory/manage-apps/application-proxy) , ale mají oprávnění pro přístup k těmto aplikacím.
+**Nasměrujte uživatele** na možnosti na portálu [MyApp](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension). V tomto případě mají přístup ke všem cloudovým aplikacím, aplikacím, které zpřístupníte pomocí [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md), a aplikací, které používají [proxy aplikace](./application-proxy.md) , ale mají oprávnění pro přístup k těmto aplikacím.
+
 
 Můžete se seznámit s uživateli, jak zjišťovat jejich aplikace:
 
-- Pomocí [existující funkce jednotného přihlašování](/azure/active-directory/active-directory-saas-custom-apps#existing-single-sign-on) můžete **propojit uživatele s libovolnou aplikací** .
+- Pomocí [existující funkce jednotného přihlašování](./view-applications-portal.md) můžete **propojit uživatele s libovolnou aplikací** .
 
-- Povolení [samoobslužného přístupu](/azure/active-directory/application-access-self-service-how-to)k aplikaci a umožnění **uživatelům přidávají aplikace, které máte** v provozu
 
-- [Skrýt aplikace od koncových uživatelů](/azure/active-directory/manage-apps/hide-application-from-user-portal) (výchozí aplikace Microsoftu nebo jiné aplikace) k **zajištění, že aplikace potřebují více zjistitelné**
+- Povolení [samoobslužného přístupu](./manage-self-service-access.md)k aplikaci a umožnění **uživatelům přidávají aplikace, které máte** v provozu
+
+- [Skrýt aplikace od koncových uživatelů](./hide-application-from-user-portal.md) (výchozí aplikace Microsoftu nebo jiné aplikace) k **zajištění, že aplikace potřebují více zjistitelné**
 
 ### <a name="make-apps-accessible"></a>Usnadnění přístupu k aplikacím
 
-**Umožněte uživatelům přístup k aplikacím z jejich mobilních zařízení**. Uživatelé mají přístup k portálu MyApp pomocí prohlížeče spravovaného Intune na zařízeních s [iOS](/azure/active-directory/manage-apps/hide-application-from-user-portal) 7,0 nebo novějším nebo [Androidem](/azure/active-directory/manage-apps/hide-application-from-user-portal) .
+**Umožněte uživatelům přístup k aplikacím z jejich mobilních zařízení**. Uživatelé mají přístup k portálu MyApp pomocí prohlížeče spravovaného Intune na zařízeních s [iOS](./hide-application-from-user-portal.md) 7,0 nebo novějším nebo [Androidem](./hide-application-from-user-portal.md) .
 
 Uživatelé si můžou stáhnout **prohlížeč spravovaný přes Intune**:
 
@@ -580,7 +583,7 @@ Uživatelé [si můžou stáhnout rozšíření pro zabezpečené přihlašován
 
 - **Vyhledejte své aplikace a zobrazí se jejich naposledy používané aplikace.**
 
-- **Automaticky převeďte interní adresy URL** , které jste nakonfigurovali v [proxy aplikace](/azure/active-directory/manage-apps/application-proxy) , na příslušné externí adresy URL. Uživatelé teď můžou pracovat s odkazy, které znají, bez ohledu na to, kde jsou.
+- **Automaticky převeďte interní adresy URL** , které jste nakonfigurovali v [proxy aplikace](./application-proxy.md) , na příslušné externí adresy URL. Uživatelé teď můžou pracovat s odkazy, které znají, bez ohledu na to, kde jsou.
 
 **Umožněte uživatelům otevírat své aplikace z Office.com.**
 
@@ -590,11 +593,11 @@ Uživatelé můžou přejít na [Office.com](https://www.office.com/) **a vyhled
 
 Azure AD poskytuje centralizované umístění přístupu pro správu migrovaných aplikací. Přejít na [Azure Portal](https://portal.azure.com/) a povolit následující možnosti:
 
-- **Zabezpečte přístup uživatelů k aplikacím.** Povolte [zásady podmíněného přístupu](/azure/active-directory/active-directory-conditional-access-azure-portal)nebo [ochranu identity](/azure/active-directory/active-directory-identityprotection)a zabezpečte přístup uživatelů k aplikacím na základě stavu zařízení, umístění a dalších.
+- **Zabezpečte přístup uživatelů k aplikacím.** Povolte [zásady podmíněného přístupu](../conditional-access/overview.md)nebo [ochranu identity](../identity-protection/overview-identity-protection.md)a zabezpečte přístup uživatelů k aplikacím na základě stavu zařízení, umístění a dalších.
 
-- **Automatické zřizování.** Nastavte [Automatické zřizování uživatelů](/azure/active-directory/manage-apps/user-provisioning) s nejrůznějšími aplikacemi SaaS třetích stran, ke kterým mají uživatelé přístup. Kromě vytváření identit uživatelů zahrnuje i údržbu a odebírání identit uživatelů jako změny stavu nebo rolí.
+- **Automatické zřizování.** Nastavte [Automatické zřizování uživatelů](../app-provisioning/user-provisioning.md) s nejrůznějšími aplikacemi SaaS třetích stran, ke kterým mají uživatelé přístup. Kromě vytváření identit uživatelů zahrnuje i údržbu a odebírání identit uživatelů jako změny stavu nebo rolí.
 
-- **Delegovat správu přístupu uživatelů**  V případě potřeby povolte Samoobslužný přístup k aplikacím a *přiřaďte mu obchodního schvalovatele k schválení přístupu k těmto aplikacím*. Používejte [samoobslužnou správu](/azure/active-directory/users-groups-roles/groups-self-service-management)skupin pro skupiny přiřazené ke kolekcím aplikací.
+- **Delegovat správu přístupu uživatelů**  V případě potřeby povolte Samoobslužný přístup k aplikacím a *přiřaďte mu obchodního schvalovatele k schválení přístupu k těmto aplikacím*. Používejte [samoobslužnou správu](../enterprise-users/groups-self-service-management.md)skupin pro skupiny přiřazené ke kolekcím aplikací.
 
 - **Delegovat přístup správce.** pomocí **role adresáře** můžete uživateli přiřadit roli správce (například správce aplikace, správce cloudové aplikace nebo vývojář aplikace).
 
@@ -602,13 +605,13 @@ Azure AD poskytuje centralizované umístění přístupu pro správu migrovaný
 
 [Azure Portal](https://portal.azure.com/) taky můžete použít k auditování všech svých aplikací z centralizovaného umístění.
 
-- **Auditujte svoji aplikaci** pomocí **podnikových aplikací, proveďte audit** nebo získejte přístup ke stejným informacím z [rozhraní API pro vytváření sestav Azure AD](/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) a integrujte je do oblíbených nástrojů.
+- **Auditujte svoji aplikaci** pomocí **podnikových aplikací, proveďte audit** nebo získejte přístup ke stejným informacím z [rozhraní API pro vytváření sestav Azure AD](../reports-monitoring/concept-reporting-api.md) a integrujte je do oblíbených nástrojů.
 
 - **Zobrazení oprávnění pro aplikaci** pomocí **podnikových aplikací, oprávnění** pro aplikace využívající OAuth/OpenID Connect.
 
-- **Získejte přehledy o přihlašování** pomocí **podnikových aplikací, přihlášení**. Přístup ke stejným informacím z [rozhraní API pro vytváření sestav Azure AD.](/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)
+- **Získejte přehledy o přihlašování** pomocí **podnikových aplikací, přihlášení**. Přístup ke stejným informacím z [rozhraní API pro vytváření sestav Azure AD.](../reports-monitoring/concept-reporting-api.md)
 
-- **Vizualizace využití vaší aplikace** z [balíčku obsahu Azure AD PowerBI](/azure/active-directory/active-directory-reporting-power-bi-content-pack-how-to)
+- **Vizualizace využití vaší aplikace** z [balíčku obsahu Azure AD PowerBI](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
 ### <a name="exit-criteria"></a>Výstupní kritéria
 
@@ -622,7 +625,7 @@ V této fázi jste úspěšně provedli následující kroky:
 
 Plány nasazení vás seznámí s obchodní hodnotou, plánováním, implementací kroků a správou řešení Azure AD, včetně scénářů migrace aplikací. Přinášejí dohromady vše, co potřebujete ke spuštění nasazení a získání hodnoty z možností Azure AD. Příručky pro nasazení obsahují obsah, jako jsou doporučené osvědčené postupy Microsoftu, komunikace koncových uživatelů, příručky pro plánování, implementační kroky, testovací případy a další.
 
-K dispozici je spousta [plánů nasazení](https://aka.ms/deploymentplans) a pořád ještě máme spoustu!
+K dispozici je spousta [plánů nasazení](../fundamentals/active-directory-deployment-plans.md) a pořád ještě máme spoustu!
 
 ### <a name="contact-support"></a>Kontaktování podpory
 

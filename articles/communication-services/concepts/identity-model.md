@@ -9,12 +9,12 @@ ms.author: tchladek
 ms.date: 10/26/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: dd2ffacb176ed3733acba8699d4e870b15dd3c42
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 254d35331459e70ad56bcef43569f51ff6f50a93
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888704"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656206"
 ---
 # <a name="identity-model"></a>Model identit
 
@@ -28,15 +28,15 @@ Místo duplikace informací v systému zachováte vztah mapování, který váš
 
 ## <a name="identity"></a>Identita
 
-Identity můžete vytvořit pomocí knihovny pro správu služby Azure Communication Services. Identita slouží jako identifikátor v konverzacích. Používá se k vytváření přístupových tokenů. Stejná identita se může účastnit několika souběžných relací napříč různými zařízeními. Identita může mít několik aktivních přístupových tokenů současně. 
+Identity můžete vytvořit pomocí knihovny identity Communications Services Azure. Identita slouží jako identifikátor v konverzacích. Používá se k vytváření přístupových tokenů. Stejná identita se může účastnit několika souběžných relací napříč různými zařízeními. Identita může mít několik aktivních přístupových tokenů současně.
 
-Odstranění identity, prostředku nebo předplatného zruší platnost všech přístupových tokenů. Tato akce také odstraní všechna data uložená pro danou identitu. Odstraněná identita nemůže vytvářet nové přístupové tokeny nebo získávat přístup k dříve uloženým datům (například zprávy chatu). 
+Odstranění identity, prostředku nebo předplatného zruší platnost všech přístupových tokenů. Tato akce také odstraní všechna data uložená pro danou identitu. Odstraněná identita nemůže vytvářet nové přístupové tokeny nebo získávat přístup k dříve uloženým datům (například zprávy chatu).
 
-Neúčtují se vám poplatky za počet identit. Místo toho se vám účtuje použití primitivních hodnot. Počet vašich identit nemusí omezovat, jak namapovat identity aplikace na identity komunikačních služeb Azure. 
+Neúčtují se vám poplatky za počet identit. Místo toho se vám účtuje použití primitivních hodnot. Počet vašich identit nemusí omezovat, jak namapovat identity aplikace na identity komunikačních služeb Azure.
 
 Díky svobodě mapování se dostane odpovědnost za ochranu osobních údajů. Pokud se chce uživatel z vašeho systému odstranit, musíte odstranit všechny identity přidružené k tomuto uživateli.
 
-Komunikační služby Azure neposkytují speciální identity pro anonymní uživatele. Neudržuje mapování mezi uživateli a identitami a nemůže určit, jestli je identita anonymní. Koncept identity můžete navrhnout tak, aby vyhovoval vašim potřebám. Naším doporučením je vytvořit novou identitu pro každého anonymního uživatele v každé aplikaci. 
+Komunikační služby Azure neposkytují speciální identity pro anonymní uživatele. Neudržuje mapování mezi uživateli a identitami a nemůže určit, jestli je identita anonymní. Koncept identity můžete navrhnout tak, aby vyhovoval vašim potřebám. Naším doporučením je vytvořit novou identitu pro každého anonymního uživatele v každé aplikaci.
 
 Kdokoli, kdo má platný přístupový token, má přístup k aktuálnímu obsahu identity. Uživatelé můžou například získat přístup k odeslaným zprávám chatu. Přístup je omezený jenom na obory, které jsou součástí přístupového tokenu. Další informace najdete v části [přístupové tokeny](#access-tokens) v tomto článku.
 
@@ -44,7 +44,7 @@ Kdokoli, kdo má platný přístupový token, má přístup k aktuálnímu obsah
 
 Komunikační služby Azure nereplikují funkce systému Azure Identity Management. Neposkytuje zákazníkům způsob, jak používat identity specifické pro zákazníka. Zákazníci například nemohou použít telefonní číslo nebo e-mailovou adresu. Místo toho poskytují komunikační služby Azure jedinečné identifikátory. K identitám vaší aplikace můžete přiřadit tyto jedinečné identifikátory. Komunikační služby Azure neukládají žádné typy informací, které by mohly odhalit skutečnou identitu vašich uživatelů.
 
-Abyste se vyhnuli duplicitě informací v systému, naplánujte, jak namapovat uživatele z vaší domény identity na identity komunikačních služeb Azure. Můžete postupovat podle jakéhokoli druhu vzoru. Můžete například použít 1:1, 1: N, N:1 nebo M:N. Rozhodněte, zda je jeden uživatel namapován na jedinou identitu nebo na více identit. 
+Abyste se vyhnuli duplicitě informací v systému, naplánujte, jak namapovat uživatele z vaší domény identity na identity komunikačních služeb Azure. Můžete postupovat podle jakéhokoli druhu vzoru. Můžete například použít 1:1, 1: N, N:1 nebo M:N. Rozhodněte, zda je jeden uživatel namapován na jedinou identitu nebo na více identit.
 
 Při vytvoření nové identity uložte své mapování na uživatele nebo uživatele vaší aplikace. Vzhledem k tomu, že identity vyžadují přístupové tokeny, aby používaly primitivní prvky, musí být identita známa uživateli nebo uživatelům vaší aplikace.
 
@@ -52,14 +52,14 @@ Pokud k ukládání informací o uživatelích používáte relační databázi,
 
 ## <a name="access-tokens"></a>Přístupové tokeny
 
-Přístupový token je JSON Web Token (JWT), který se dá použít k získání přístupu k primitivám komunikační služby Azure. Přístupový token, který je vydaný, má ochranu integrity. To znamená, že jeho deklarace se po jeho vydání nedají změnit. V důsledku ruční změny vlastností, jako jsou identity, vypršení platnosti nebo obory, dojde k zrušení platnosti přístupového tokenu. Pokud se pro neověřené tokeny používají primitivní prvky, přístup k primitivním elementům se odmítne. 
+Přístupový token je JSON Web Token (JWT), který se dá použít k získání přístupu k primitivám komunikační služby Azure. Přístupový token, který je vydaný, má ochranu integrity. To znamená, že jeho deklarace se po jeho vydání nedají změnit. V důsledku ruční změny vlastností, jako jsou identity, vypršení platnosti nebo obory, dojde k zrušení platnosti přístupového tokenu. Pokud se pro neověřené tokeny používají primitivní prvky, přístup k primitivním elementům se odmítne.
 
 Vlastnosti přístupového tokenu jsou:
 * Odcizen.
 * Vypršení platnosti.
 * Oboru.
 
-Přístupový token je vždycky platný po dobu 24 hodin. Po vypršení platnosti je přístupový token neověřený a nedá se použít pro přístup k žádné primitivní. 
+Přístupový token je vždycky platný po dobu 24 hodin. Po vypršení platnosti je přístupový token neověřený a nedá se použít pro přístup k žádné primitivní.
 
 Identita vyžaduje způsob, jak požádat o nový přístupový token ze služby na straně serveru. Parametr *Scope* definuje neprázdnou sadu primitivních elementů, které lze použít. Komunikační služby Azure podporují následující obory pro přístupové tokeny.
 
@@ -69,13 +69,13 @@ Identita vyžaduje způsob, jak požádat o nový přístupový token ze služby
 |VoIP|  Udělí možnost volat identity a telefonní čísla.|
 
 
-K odvolání přístupového tokenu před jeho časem vypršení platnosti použijte knihovnu pro správu služby Azure Communication Services. Odvolání tokenu není okamžité. Rozšíření bude trvat až 15 minut. Odebrání identity, prostředku nebo předplatného odvolá všechny přístupové tokeny. 
+K odvolání přístupového tokenu před jeho časem vypršení platnosti použijte knihovnu identity Communications Services Azure. Odvolání tokenu není okamžité. Rozšíření bude trvat až 15 minut. Odebrání identity, prostředku nebo předplatného odvolá všechny přístupové tokeny.
 
 Pokud chcete odebrat možnost uživatele pro přístup k určitým funkcím, Odvolejte všechny přístupové tokeny. Pak vydejte nový přístupový token, který má více omezené sady oborů.
 
-V komunikačních službách Azure zavolá rotace přístupových klíčů všechny aktivní přístupové tokeny, které byly vytvořené pomocí předchozího přístupového klíče. Všechny identity ztratí přístup ke komunikačním službám Azure a musí vydávat nové přístupové tokeny. 
+V komunikačních službách Azure zavolá rotace přístupových klíčů všechny aktivní přístupové tokeny, které byly vytvořené pomocí předchozího přístupového klíče. Všechny identity ztratí přístup ke komunikačním službám Azure a musí vydávat nové přístupové tokeny.
 
-V rámci serverové služby doporučujeme vystavovat přístupové tokeny, které se v aplikaci klienta nevyskytují. Důvodem je, že vydávání vyžaduje přístupový klíč nebo spravovanou identitu. Z bezpečnostních důvodů se nedoporučuje sdílení přístupových klíčů s aplikací klienta. 
+V rámci serverové služby doporučujeme vystavovat přístupové tokeny, které se v aplikaci klienta nevyskytují. Důvodem je, že vydávání vyžaduje přístupový klíč nebo spravovanou identitu. Z bezpečnostních důvodů se nedoporučuje sdílení přístupových klíčů s aplikací klienta.
 
 Klientská aplikace by měla používat koncový bod důvěryhodné služby, který může ověřit vaše klienty. Koncový bod by měl svým jménem vystavovat přístupové tokeny. Další informace najdete v tématu [Architektura klienta a serveru](./client-and-server-architecture.md).
 

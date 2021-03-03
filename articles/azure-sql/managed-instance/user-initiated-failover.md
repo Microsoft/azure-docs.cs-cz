@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 02/17/2021
-ms.openlocfilehash: ecd97efbf12fb149037a94749bc899169f2c5a92
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.date: 02/23/2021
+ms.openlocfilehash: c154699b7701b584e465ebea7950d4fe50be961f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096515"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660793"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Ruční převzetí služeb při selhání iniciované uživatelem ve službě SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,7 +34,7 @@ V některých z následujících důvodů můžete zvážit spuštění [ruční
 - V některých případech snížení výkonu dotazů může ruční převzetí služeb při potížích s výkonem snížit riziko.
 
 > [!NOTE]
-> Zajištění odolnosti před převzetím služeb při selhání před nasazením do produkčního prostředí vám pomůže zmírnit riziko chyb aplikací v produkčním prostředí a přispívat k dostupnosti aplikací pro vaše zákazníky.
+> Zajištění odolnosti před převzetím služeb při selhání před nasazením do produkčního prostředí vám pomůže zmírnit riziko chyb aplikací v produkčním prostředí a přispívat k dostupnosti aplikací pro vaše zákazníky. Přečtěte si další informace o testování připravenosti na Cloud s využitím [testování připravenosti cloudu pro zajištění odolnosti při selhání pomocí překódování videa spravované instance SQL](https://youtu.be/FACWYLgYDL8) .
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>Iniciovat ruční převzetí služeb při selhání na spravované instanci SQL
 
@@ -43,7 +43,7 @@ V některých z následujících důvodů můžete zvážit spuštění [ruční
 Uživatel, který iniciuje převzetí služeb při selhání, bude muset mít jednu z následujících rolí Azure:
 
 - Role vlastníka předplatného nebo
-- Role přispěvatele spravované instance nebo
+- Role [přispěvatele spravované instance](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) nebo
 - Vlastní role s následujícím oprávněním:
   - `Microsoft.Sql/managedInstances/failover/action`
 
@@ -153,6 +153,6 @@ Krátkodobá ztráta připojení z klienta během převzetí služeb při selhá
 > - Převzetí služeb při selhání nebude povoleno, dokud nebude první úplné zálohování nové databáze dokončeno automatizovanými zálohovacími systémy.
 
 ## <a name="next-steps"></a>Další kroky
-
+- Přečtěte si další informace o testování připravenosti na Cloud s využitím [testování připravenosti cloudu pro zajištění odolnosti při selhání pomocí překódování videa spravované instance SQL](https://youtu.be/FACWYLgYDL8) .
 - Přečtěte si další informace o vysoké dostupnosti spravované instance s [vysokou dostupností pro Azure SQL Managed instance](../database/high-availability-sla.md).
 - Přehled najdete v tématu [co je Azure SQL Managed instance?](sql-managed-instance-paas-overview.md).

@@ -12,32 +12,28 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66a6317b0cb59d656cdb2e402c5ade1b78ed60aa
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 646c2216c3d71aa441d33dde0ab3e2ef7bb4fd89
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258316"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643554"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Udělení souhlasu správce v rámci celého tenanta aplikaci
 
-Naučte se, jak zjednodušit uživatelské prostředí tím, že aplikaci udělíte souhlas správce pro celé tenanta. Tento článek popisuje různé způsoby, jak toho dosáhnout. Metody se vztahují na všechny koncové uživatele v tenantovi Azure Active Directory (Azure AD).
+  Přečtěte si, jak udělit aplikaci souhlas správce na úrovni tenanta. Tento článek popisuje různé způsoby, jak toho dosáhnout.
 
 Další informace o tom, jak se předávají aplikacím, najdete v tématu [Azure Active Directory souhlasu Framework](../develop/consent-framework.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Udělení souhlasu správce pro celé tenanta vyžaduje, abyste se přihlásili jako [globální správce](../roles/permissions-reference.md#global-administrator), [správce aplikace](../roles/permissions-reference.md#application-administrator)nebo [správce cloudové aplikace](../roles/permissions-reference.md#cloud-application-administrator).
-
-> [!IMPORTANT]
-> Pokud se aplikaci udělí souhlas správce na úrovni tenanta, všichni uživatelé se budou moct k aplikaci přihlásit, pokud není nakonfigurovaná tak, aby vyžadovala přiřazení uživatele. Chcete-li omezit, kteří uživatelé se mohou přihlašovat k aplikaci, vyžadovat přiřazení uživatele a pak přiřadit uživatele nebo skupiny k aplikaci. Další informace najdete v tématu [metody přiřazení uživatelů a skupin](./assign-user-or-group-access-portal.md).
->
-> Role globálního správce je nutná k poskytnutí souhlasu správce pro oprávnění aplikace Microsoft Graph API.
+Udělení souhlasu správce pro celé tenanta vyžaduje, abyste se přihlásili jako uživatel, který je oprávněn k souhlasu jménem organizace. To zahrnuje správce [globálních správců](../roles/permissions-reference.md#global-administrator) a [privilegovaných rolí](../roles/permissions-reference.md#privileged-role-administrator)a pro některé aplikace, správce [aplikací](../roles/permissions-reference.md#application-administrator) a [správce cloudových aplikací](../roles/permissions-reference.md#cloud-application-administrator). Uživatel může být také autorizován pro udělení souhlasu v rámci tenanta, pokud se jim přiřadí [role vlastního adresáře](../roles/custom-create.md) , která zahrnuje [oprávnění pro udělení oprávnění aplikacím](../roles/custom-consent-permissions.md).
 
 > [!WARNING]
 > Udělení souhlasu správce na úrovni tenanta aplikaci udělí aplikaci a vydavateli aplikace přístup k datům vaší organizace. Pečlivě zkontrolujte oprávnění, která aplikace požaduje před udělením souhlasu.
->
-> Role globálního správce je nutná k poskytnutí souhlasu správce pro oprávnění aplikace Microsoft Graph API.
+
+> [!IMPORTANT]
+> Pokud se aplikaci udělí souhlas správce na úrovni tenanta, všichni uživatelé se budou moct k aplikaci přihlásit, pokud není nakonfigurovaná tak, aby vyžadovala přiřazení uživatele. Chcete-li omezit, kteří uživatelé se mohou přihlašovat k aplikaci, vyžadovat přiřazení uživatele a pak přiřadit uživatele nebo skupiny k aplikaci. Další informace najdete v tématu [metody přiřazení uživatelů a skupin](./assign-user-or-group-access-portal.md).
 
 ## <a name="grant-admin-consent-from-the-azure-portal"></a>Udělit souhlas správce od Azure Portal
 
@@ -101,4 +97,4 @@ Jako vždy pečlivě zkontrolujte oprávnění, která aplikace požaduje, před
 
 [Oprávnění a souhlas na platformě Microsoft identity](../develop/v2-permissions-and-consent.md)
 
-[Azure AD v Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+[Azure AD v Microsoft Q&A](/answers/topics/azure-active-directory.html)

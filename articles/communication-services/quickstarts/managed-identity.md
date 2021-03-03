@@ -1,31 +1,30 @@
 ---
-title: Použití spravovaných identit ve komunikačních službách (.NET)
+title: Použití spravovaných identit ve komunikačních službách
 titleSuffix: An Azure Communication Services quickstart
 description: Spravované identity umožňují autorizovat přístup ke komunikačním službám Azure z aplikací běžících na virtuálních počítačích Azure, aplikacích Function App a dalších prostředcích.
 services: azure-communication-services
-author: stefang931
+author: peiliu
 ms.service: azure-communication-services
 ms.topic: how-to
-ms.date: 12/04/2020
-ms.author: gistefan
+ms.date: 2/24/2021
+ms.author: peiliu
 ms.reviewer: mikben
-ms.openlocfilehash: 9fd8a17deeb49d836ff5902042bdb88696e29f31
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0d25e5dc97c700daf6655ecd270bfda469a9d353
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417389"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657612"
 ---
-# <a name="use-managed-identities-net"></a>Použití spravovaných identit (.NET)
+# <a name="use-managed-identities"></a>Použití spravovaných identit
+Začněte s komunikačními službami Azure pomocí spravovaných identit. Identita komunikačních služeb a klientské knihovny SMS podporují ověřování Azure Active Directory (Azure AD) se [spravovanými identitami pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Začněte s komunikačními službami Azure pomocí spravovaných identit v .NET. Správa komunikačních služeb a klientské knihovny SMS podporují ověřování Azure Active Directory (Azure AD) se [spravovanými identitami pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
-
-V tomto rychlém startu se dozvíte, jak autorizovat přístup k klientským knihovnám pro správu a SMS z prostředí Azure, které podporuje spravované identity. Také popisuje, jak testovat kód ve vývojovém prostředí.
+V tomto rychlém startu se dozvíte, jak autorizovat přístup k klientským knihovnám identit a SMS z prostředí Azure, které podporuje spravované identity. Také popisuje, jak testovat kód ve vývojovém prostředí.
 
 ## <a name="prerequisites"></a>Požadavky
 
  - Účet Azure s aktivním předplatným. [Vytvořit účet zdarma](https://azure.microsoft.com/free)
- - Aktivní prostředek komunikační služby a připojovací řetězec. [Vytvořte prostředek služby Communications](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp).
+ - Aktivní prostředek komunikační služby a připojovací řetězec. [Vytvořte prostředek služby Communications](./create-communication-resource.md?pivots=platform-azp&tabs=windows).
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -54,77 +53,18 @@ U prostředků Azure, které autorizujete, by měly být povolené spravované i
 
 Pokud chcete přiřadit role a oprávnění pomocí PowerShellu, přečtěte si téma [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure PowerShell](../../../articles/role-based-access-control/role-assignments-powershell.md)
 
-## <a name="add-managed-identity-to-your-communication-services-solution"></a>Přidání spravované identity do řešení komunikačních služeb
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [.NET](./includes/managed-identity-net.md)]
+::: zone-end
 
-### <a name="install-the-client-library-packages"></a>Instalace balíčků klientské knihovny
+::: zone pivot="programming-language-java"
+[!INCLUDE [Java](./includes/managed-identity-java.md)]
+::: zone-end
 
-```console
-dotnet add package Azure.Communication.Identity
-dotnet add package Azure.Communication.Configuration
-dotnet add package Azure.Communication.Sms
-dotnet add package Azure.Identity
-```
+::: zone pivot="programming-language-javascript"
+[!INCLUDE [JavaScript](./includes/managed-identity-js.md)]
+::: zone-end
 
-### <a name="use-the-client-library-packages"></a>Použití balíčků klientské knihovny
-
-Přidejte následující `using` direktivy do kódu, abyste mohli použít klientské knihovny Azure identity a Azure Storage.
-
-```csharp
-using Azure.Identity;
-using Azure.Communication.Identity;
-using Azure.Communication.Configuration;
-using Azure.Communication.Sms;
-```
-
-Níže uvedené příklady používají rozhraní [DefaultAzureCredential](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential). Tato pověření jsou vhodná pro produkční a vývojové prostředí.
-
-### <a name="create-an-identity-and-issue-a-token"></a>Vytvoření identity a vydání tokenu
-
-Následující příklad kódu ukazuje, jak vytvořit objekt klienta služby s Azure Active Directory tokeny a pak použít klienta k vydání tokenu pro nového uživatele:
-
-```csharp
-     public async Task<Response<CommunicationUserToken>> CreateIdentityAndIssueTokenAsync(Uri resourceEdnpoint) 
-     {
-          TokenCredential credential = new DefaultAzureCredential();
-     
-          var client = new CommunicationIdentityClient(resourceEndpoint, credential);
-          var identityResponse = await client.CreateUserAsync();
-     
-          var tokenResponse = await client.IssueTokenAsync(identity, scopes: new [] { CommunicationTokenScope.VoIP });
-
-          return tokenResponse;
-     }
-```
-
-### <a name="send-an-sms-with-azure-active-directory-tokens"></a>Odeslání SMS s tokeny Azure Active Directory
-
-Následující příklad kódu ukazuje, jak vytvořit objekt klienta služby s Azure Active Directory tokeny a pak pomocí klienta odeslat zprávu SMS:
-
-```csharp
-
-     public async Task SendSmsAsync(Uri resourceEndpoint, PhoneNumber from, PhoneNumber to, string message)
-     {
-          TokenCredential credential = new DefaultAzureCredential();
-     
-          SmsClient smsClient = new SmsClient(resourceEndpoint, credential);
-          smsClient.Send(
-               from: from,
-               to: to,
-               message: message,
-               new SendSmsOptions { EnableDeliveryReport = true } // optional
-          );
-     }
-```
-
-## <a name="next-steps"></a>Další kroky
-
-> [!div class="nextstepaction"]
-> [Další informace o ověřování](../concepts/authentication.md)
-
-Můžete také chtít:
-
-- [Další informace o řízení přístupu na základě role v Azure](../../../articles/role-based-access-control/index.yml)
-- [Další informace o službě Azure identity Library pro .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)
-- [Vytváření tokenů přístupu uživatele](../quickstarts/access-tokens.md)
-- [Odeslání zprávy SMS](../quickstarts/telephony-sms/send.md)
-- [Další informace o SMS](../concepts/telephony-sms/concepts.md)
+::: zone pivot="programming-language-python"
+[!INCLUDE [Python](./includes/managed-identity-python.md)]
+::: zone-end

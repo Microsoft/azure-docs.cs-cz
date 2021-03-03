@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08a919338789a02d50cbb6976ee50b214cb0d612
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d081754616b40a21b3b842758844eb13e2752569
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417178"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650953"
 ---
 # <a name="securing-standalone-managed-service-accounts"></a>Zabezpečení samostatných účtů spravované služby
 
@@ -44,7 +44,7 @@ sMSAs nabízí lepší zabezpečení než uživatelské účty používané jako
 
    * Název DNS hostitelského počítače se změní.
 
-   * Přidání nebo odebrání dalších parametrů Sam-Account nebo DNS-hostname pomocí [prostředí PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-adserviceaccount?view=win10-ps)
+   * Přidání nebo odebrání dalších parametrů Sam-Account nebo DNS-hostname pomocí [prostředí PowerShell](/powershell/module/addsadministration/set-adserviceaccount?view=win10-ps)
 
 ## <a name="when-to-use-smsas"></a>Kdy použít sMSAs
 
@@ -53,7 +53,7 @@ sMSAs může zjednodušit úlohy správy a zabezpečení. SMSAs použijte, když
 > [!NOTE] 
 > I když můžete sMSAs použít pro více než jednu službu, doporučujeme, aby každá služba měla svou vlastní identitu pro účely auditování. 
 
-Pokud tvůrce softwaru nemůže sdělit, jestli může používat MSA, musíte otestovat svoji aplikaci. Pokud to chcete udělat, vytvořte testovací prostředí a ujistěte se, že má přístup ke všem požadovaným prostředkům. Podrobné pokyny najdete v tématu [Vytvoření a instalace SMSA](https://docs.microsoft.com/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) .
+Pokud tvůrce softwaru nemůže sdělit, jestli může používat MSA, musíte otestovat svoji aplikaci. Pokud to chcete udělat, vytvořte testovací prostředí a ujistěte se, že má přístup ke všem požadovaným prostředkům. Podrobné pokyny najdete v tématu [Vytvoření a instalace SMSA](/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) .
 
 ### <a name="assess-security-posture-of-smsas"></a>Posouzení stav zabezpečení sMSAs
 
@@ -112,7 +112,7 @@ Pro správu sMSAs můžete použít následující rutiny PowerShellu služby Ac
 
 ## <a name="move-to-smsas"></a>Přesunout na sMSAs
 
-Pokud Aplikační služba podporuje sMSA, ale ne účty gMSA a aktuálně používá uživatelský účet nebo účet počítače pro kontext zabezpečení, [vytvořte a nainstalujte SMSA](https://docs.microsoft.com/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) na serveru. 
+Pokud Aplikační služba podporuje sMSA, ale ne účty gMSA a aktuálně používá uživatelský účet nebo účet počítače pro kontext zabezpečení, [vytvořte a nainstalujte SMSA](/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) na serveru. 
 
 V ideálním případě přesuňte prostředky do Azure a použijte spravované identity nebo instanční objekty Azure.
 
@@ -133,4 +133,3 @@ Přečtěte si následující články týkající se zabezpečení účtů slu�
 
 * [Řízení účtů místních služeb](service-accounts-govern-on-premises.md)
 
- 

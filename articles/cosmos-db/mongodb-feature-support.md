@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: d9e01ee8b1f6c1cd04e665ad9f7bc57155abfaab
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 652be939136139620f6ec024fe98463113c6fb4a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028977"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657515"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB (verze 3.2): Podporované funkce a syntax
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -22,7 +22,7 @@ Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro
 Díky rozhraní API Azure Cosmos DB pro MongoDB můžete využívat výhody MongoDB, ke kterému jste se přihlásili, se všemi podnikovými funkcemi, které Cosmos DB poskytuje: [globální distribuce](distribute-data-globally.md), [Automatické horizontálního dělení](partitioning-overview.md), dostupnost a záruky latence, automatické indexování každého pole, místnímu šifrování v klidovém umístění, zálohování a mnoho dalšího.
 
 > [!NOTE]
-> Tento článek je určen pro rozhraní Azure Cosmos DB API pro MongoDB 3,2. Informace o verzi MongoDB 3,6 najdete v tématu [podporované funkce a syntaxe pro MongoDB 3,6](mongodb-feature-support-36.md).
+> Tento článek je určen pro rozhraní Azure Cosmos DB API pro MongoDB 3,2. Informace o verzích MongoDB 3,6 a 4,0 najdete v článku [MongoDB 3,6 podporované funkce a syntaxe](mongodb-feature-support-36.md) a [MongoDB 4,0 podporované funkce a syntaxe](mongodb-feature-support-40.md) .
 
 ## <a name="protocol-support"></a>Podpora protokolů
 
@@ -43,7 +43,7 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ### <a name="query-and-write-operation-commands"></a>Příkazy pro dotazovací a zápisové operace
 
-- odstranění
+- delete
 - find
 - findAndModify
 - getLastError
@@ -367,5 +367,3 @@ Azure Cosmos DB podporuje automatický sharding na straně serveru. Spravuje hor
 - Naučte se [používat Studio 3T](mongodb-mongochef.md) s rozhraním API Azure Cosmos DB pro MongoDB.
 - Naučte se [používat Robo 3T](mongodb-robomongo.md) s rozhraním API Azure Cosmos DB pro MongoDB.
 - Prozkoumejte [ukázky](mongodb-samples.md) MONGODB s rozhraním API Azure Cosmos DB pro MongoDB.
-
-<sup>Poznámka: Tento článek popisuje funkci Azure Cosmos DB, která poskytuje kompatibilitu s protokolem sítě s databázemi MongoDB. Společnost Microsoft nespouští MongoDB databáze pro poskytování této služby. K Azure Cosmos DB není přidružena společnost MongoDB, Inc.</sup>

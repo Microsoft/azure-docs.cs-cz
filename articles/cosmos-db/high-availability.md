@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 16d2bf39d61961e2f83910735db1d0ddf1c91849
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: f22d97f8a4ab5e5b6e275c405cce523e8a7b8e72
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627361"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656546"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Jak Azure Cosmos DB poskytovat vysokou dostupnost
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -80,7 +80,7 @@ Ve výjimečných případech regionálního výpadku Azure Cosmos DB zajišťuj
 
 * Při výpadku oblasti čtení budou účty Azure Cosmos s využitím jakékoli úrovně konzistence nebo silné konzistence se třemi nebo více oblastmi pro čtení pořád vysoce dostupné pro čtení a zápisy.
 
-* Účty Azure Cosmos s využitím silné konzistence se třemi nebo méně celkovými oblastmi (jeden zápis, dvě čtení) ztratí dostupnost zápisu během výpadku oblasti čtení. Zákazníci se čtyřmi nebo více celkovými oblastmi se ale můžou přihlásit k používání kvora dynamického čtení odesláním lístku podpory. Účty, které udržují alespoň dvě oblasti čtení v této konfiguraci, budou mít k dispozici oprávnění k zápisu.
+* Účty Azure Cosmos s využitím silné konzistence se třemi oblastmi (jeden zápis, dvě čtení) zachovávají dostupnost zápisu během výpadku oblasti čtení. U účtů se dvěma oblastmi a s povoleným automatickým převzetím služeb při selhání přestane účet přijímat zápisy, dokud se tato oblast neoznačí jako neúspěšná a dojde k automatickému
 
 * Ovlivněná oblast je automaticky odpojena a bude označena jako offline. Sady [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) přesměrují volání čtení do další dostupné oblasti v seznamu upřednostňovaných oblastí.
 
@@ -110,7 +110,7 @@ Následující tabulka shrnuje schopnost vysoké dostupnosti u různých konfigu
 |SLA dostupnosti pro čtení  | 99,99 % | 99,995% | 99,995% | 99,999 % |
 |Selhání zón – ztráta dat | Ztráta dat | Žádná ztráta dat | Žádná ztráta dat | Žádná ztráta dat |
 |Selhání zón – dostupnost | Ztráta dostupnosti | Žádná ztráta dostupnosti | Žádná ztráta dostupnosti | Žádná ztráta dostupnosti |
-|Oblastní výpadek – ztráta dat | Ztráta dat |  Ztráta dat | Závislá na úrovni konzistence. Další informace najdete v tématu [konzistence, dostupnost a kompromisy](consistency-levels-tradeoffs.md) týkající se výkonu. | Závislá na úrovni konzistence. Další informace najdete v tématu [konzistence, dostupnost a kompromisy](consistency-levels-tradeoffs.md) týkající se výkonu.
+|Oblastní výpadek – ztráta dat | Ztráta dat |  Ztráta dat | Závislá na úrovni konzistence. Další informace najdete v tématu [konzistence, dostupnost a kompromisy](./consistency-levels.md) týkající se výkonu. | Závislá na úrovni konzistence. Další informace najdete v tématu [konzistence, dostupnost a kompromisy](./consistency-levels.md) týkající se výkonu.
 |Oblastní výpadek – dostupnost | Ztráta dostupnosti | Ztráta dostupnosti | Neztráta dostupnosti pro neúspěch oblasti čtení, dočasné pro selhání oblasti zápisu | Žádná ztráta dostupnosti |
 |Cena (***1** _) | – | Zřízená sazba za RU/s × 1,25 | Zřízená sazba za RU/s x 1,25 (_ *_2_* *) | Rychlost zápisu ve více oblastech |
 

@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: alehall
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 43f07bc26e75b440cde6d26db8ac8fb80aa3e39c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: a19d1f26616697e15ae4c39a63c44bdaf83f78f9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796910"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675763"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-powershell"></a>Rychlý Start: vytvoření pracovního prostoru Azure synapse s využitím Azure PowerShell
 
@@ -27,7 +27,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Účet úložiště Azure Data Lake Storage Gen2](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Účet úložiště Azure Data Lake Storage Gen2](../storage/common/storage-account-create.md)
 
     > [!IMPORTANT]
     > Pracovní prostor Azure synapse musí být schopný číst a zapisovat na vybraný ADLS Gen2 účet. Pro libovolný účet úložiště, který propojíte jako primární účet úložiště, musíte povolit **hierarchický obor názvů** při vytváření účtu úložiště, jak je popsáno v tématu [Vytvoření účtu úložiště](../storage/common/storage-account-create.md?tabs=azure-powershell#create-a-storage-account).
@@ -59,7 +59,7 @@ Install-Module -Name Az.Synapse
    | StorageAccountResourceGroup | Název existující skupiny prostředků účtu úložiště ADLS Gen2                                             |
    | FileShareName               | Název existujícího systému souborů úložiště.                                                                  |
    | SynapseResourceGroup        | Vyberte nový název skupiny prostředků Azure synapse.                                                    |
-   | Region (Oblast)                      | Vyberte jednu z [oblastí Azure](https://azure.microsoft.com/global-infrastructure/geographies/#overview). |
+   | Oblast                      | Vyberte jednu z [oblastí Azure](https://azure.microsoft.com/global-infrastructure/geographies/#overview). |
    | SynapseWorkspaceName        | Vyberte jedinečný název pro nový pracovní prostor Azure synapse.                                                  |
    | SqlUser                     | Vyberte hodnotu pro nové uživatelské jméno.                                                                          |
    | SqlPassword                 | Vyberte zabezpečené heslo.                                                                                   |

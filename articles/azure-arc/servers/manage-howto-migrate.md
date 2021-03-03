@@ -3,12 +3,12 @@ title: Postup migrace serverů s podporou ARC Azure v různých oblastech
 description: Přečtěte si, jak migrovat server s podporou Azure ARC z jedné oblasti do druhé.
 ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: d4e0f1e41e928ab489f7c2c167eea31785d9bc21
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 251a347205d93af715add52db293d8000438df44
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417349"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650171"
 ---
 # <a name="how-to-migrate-azure-arc-enabled-servers-across-regions"></a>Postup migrace serverů s podporou ARC Azure v různých oblastech
 
@@ -36,4 +36,4 @@ Pokud chcete migrovat server s podporou Azure ARC z jedné oblasti Azure na jin�
 
 * Informace o řešení potíží najdete v části [Poradce při potížích s agentem připojeného počítače](troubleshoot-agent-onboard.md).
 
-* Naučte se, jak spravovat počítač pomocí [Azure Policy](../../governance/policy/overview.md), jako je [Konfigurace hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače, ověření, že se počítač hlásí k očekávanému log Analyticsmu pracovnímu prostoru, povolit monitorování pomocí [Azure monitor zásad virtuálních počítačů](../../azure-monitor/insights/vminsights-enable-policy.md) a spoustu dalších věcí.
+* Naučte se, jak spravovat počítač pomocí [Azure Policy](../../governance/policy/overview.md), jako je [Konfigurace hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače, ověření, že se počítač hlásí k očekávanému log Analyticsmu pracovnímu prostoru, povolit monitorování pomocí [Azure monitor zásad virtuálních počítačů](../../azure-monitor/vm/vminsights-enable-policy.md) a spoustu dalších věcí.

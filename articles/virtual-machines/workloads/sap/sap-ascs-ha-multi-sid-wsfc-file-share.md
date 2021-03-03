@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/24/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b204aa508370c62aaf33688aeb7ec63d3f8f1b0e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 125563255bac48de5b4b293ab00004e151fec950
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019357"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673677"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>Vysoká dostupnost ASCS/SCS instance SAP s Clustering s podporou převzetí služeb při selhání Windows serveru a sdílenou složkou v Azure
 
@@ -100,7 +99,7 @@ _**Obrázek 3:** SOFS s více SID je stejný jako název globálního hostitele 
 
 > [!IMPORTANT]
 >Pro druhý systém **SAP \<SID2>** se použije stejný Volume1 a stejný **\<SAPGlobalHost>** název sítě.
->Vzhledem k tomu, že jste již nastavili **SAPMNT** jako název sdílené složky pro různé systémy SAP, budete muset použít stejný Volume1, aby bylo možné znovu použít **\<SAPGlobalHost>** název sítě. **Volume1**
+>Vzhledem k tomu, že jste již nastavili **SAPMNT** jako název sdílené složky pro různé systémy SAP, budete muset použít stejný Volume1, aby bylo možné znovu použít **\<SAPGlobalHost>** název sítě. 
 >
 >Cesta k souboru pro \<SID2> globálního hostitele je C:\ClusterStorage \\ **Volume1**\usr\sap \<SID2> \SYS\.
 >

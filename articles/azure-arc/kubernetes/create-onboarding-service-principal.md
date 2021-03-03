@@ -1,5 +1,5 @@
 ---
-title: Vytvoření instančního objektu s povolenou službou Azure ARC (Preview)
+title: Vytvoření instančního objektu pro Kubernetes povoleného ARC Azure
 services: azure-arc
 ms.service: azure-arc
 ms.date: 02/09/2021
@@ -8,20 +8,20 @@ author: mlearned
 ms.author: mlearned
 description: 'Vytvoření instančního objektu s povoleným připojením ARC Azure '
 keywords: Kubernetes, oblouk, Azure, kontejnery
-ms.openlocfilehash: 8772cf7634d9a833af120784e3e7868b41d202c4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bda088bdae5c866493718db94c9a2da89cada8c9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390483"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650342"
 ---
-# <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Vytvoření instančního objektu s povolenou službou Azure ARC (Preview)
+# <a name="create-an-onboarding-service-principal-for-azure-arc-enabled-kubernetes"></a>Vytvoření instančního objektu pro Kubernetes povoleného ARC Azure
 
 ## <a name="overview"></a>Přehled
 
 Clustery Kubernetes můžete připojit ke službě Azure ARC pomocí instančních objektů s přiřazením rolí s omezenými oprávněními. Tato funkce je užitečná v kanálech průběžné integrace a průběžného nasazování (CI/CD), jako jsou Azure Pipelines a akce GitHubu.
 
-Projděte si následující postup, ve kterém se dozvíte, jak používat instanční objekty pro připojování clusterů Kubernetes do Azure ARC.
+Projděte si následující postup, ve kterém se dozvíte, jak používat instanční objekty pro připojení clusterů Kubernetes ke službě Azure ARC.
 
 ## <a name="create-a-new-service-principal"></a>Vytvořit nový instanční objekt
 
@@ -49,11 +49,11 @@ Přiřaďte roli "cluster Kubernetes-Azure ARC" do nově vytvořeného instančn
 
 S ohledem na omezené možnosti můžou zákazníci snadno použít tento objekt zabezpečení k připojování více clusterů.
 
-Můžete omezit oprávnění a při přiřazení role předat příslušnému `--scope` argumentu. To zákazníkům umožňuje omezit registraci clusteru. V různých parametrech jsou podporovány následující scénáře `--scope` :
+Můžete omezit oprávnění a při přiřazení role předat příslušnému `--scope` argumentu. To správcům umožňuje omezit registraci clusteru na předplatné nebo obor skupiny prostředků. V různých parametrech jsou podporovány následující scénáře `--scope` :
 
 | Prostředek  | Argument `scope`| Účinek |
 | ------------- | ------------- | ------------- |
-| Předplatné | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Instanční objekt může zaregistrovat libovolný cluster v existující skupině prostředků v daném předplatném. |
+| Předplatné | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Instanční objekt může zaregistrovat cluster v jakékoli skupině prostředků v rámci tohoto předplatného. |
 | Skupina prostředků | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Instanční objekt může registrovat __jenom__ clustery ve skupině prostředků `myGroup` . |
 
 ```console

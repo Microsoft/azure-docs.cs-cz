@@ -6,16 +6,16 @@ author: dlepow
 ms.author: apimpm
 ms.topic: tutorial
 ms.date: 12/10/2020
-ms.openlocfilehash: 6cf5c6f716912689b39264ed71f6a7c55f944ad2
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 0dea8e43d5f09b84c5795bc257cf3331ad919fcb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97439491"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649542"
 ---
 # <a name="tutorial-use-the-api-management-extension-for-visual-studio-code-to-import-and-manage-apis"></a>Kurz: použití rozšíření API Management pro Visual Studio Code k importu a správě rozhraní API
 
-V tomto kurzu se naučíte používat rozšíření API Management Extension Preview pro Visual Studio Code pro běžné operace v API Management. Pomocí známého Visual Studio Code prostředí můžete importovat, aktualizovat, testovat a spravovat rozhraní API.
+V tomto kurzu se naučíte používat rozšíření API Management pro Visual Studio Code pro běžné operace v API Management. Pomocí známého Visual Studio Code prostředí můžete importovat, aktualizovat, testovat a spravovat rozhraní API.
 
 Získáte informace o těchto tématech:
 
@@ -30,9 +30,9 @@ Získáte informace o těchto tématech:
 
 Úvod k dalším funkcím API Management najdete v kurzech API Management pomocí [Azure Portal](import-and-publish.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - Vysvětlení [terminologie služby Azure API Management](api-management-terminology.md)
-- Ujistěte se, že máte nainstalované [Visual Studio Code](https://code.visualstudio.com/) a nejnovější [rozšíření Azure API Management pro Visual Studio Code (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview) .
+- Ujistěte se, že máte nainstalované [Visual Studio Code](https://code.visualstudio.com/) a nejnovější [rozšíření Azure API Management pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview)
 - [Vytvoření instance API Management](vscode-create-service-instance.md)
 
 ## <a name="import-an-api"></a>Import rozhraní API
@@ -85,7 +85,7 @@ V této části se dozvíte, jak na rozhraní API použít některé běžné od
     * Druhá `set-header` zásada odstraní hlavičku **X-The-by** , pokud existuje. Tato hlavička může odhalit aplikační rozhraní používané v back-endu rozhraní API a vydavatelé ji často odstraní.
     * `redirect-content-urls`Zásady přepisují odkazy (masky) v těle odpovědi tak, aby odkazovaly na ekvivalentní odkazy prostřednictvím API Management brány.
     
-1. Uložte soubor. Pokud se zobrazí výzva, vyberte **nahrát** a nahrajte soubor do cloudu.
+1. Soubor uložte. Pokud se zobrazí výzva, vyberte **nahrát** a nahrajte soubor do cloudu.
 
 ## <a name="test-the-api"></a>Testování rozhraní API
 

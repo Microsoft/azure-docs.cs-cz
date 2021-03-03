@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 1/29/2021
 ms.author: nichola
 ms.custom: aaddev
-ms.openlocfilehash: 5abece0e272d4b72ba6f787ad44b091df5d45226
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e7193ee5d076538689078ce634b8170926df20b6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417206"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653248"
 ---
 # <a name="support-passwordless-authentication-with-fido2-keys-in-apps-you-develop"></a>Podpora ověřování bez hesla s FIDO2 klíči v aplikacích, které vyvíjíte
 
@@ -47,7 +47,7 @@ Přihlašovací metoda, která byla naposledy používána uživatelem, bude uve
 Doporučené možnosti pro implementaci ověřování jsou v uvedeném pořadí:
 
 - Desktopové aplikace .NET, které používají knihovnu Microsoft Authentication Library (MSAL), by měly používat Správce ověřování systému Windows (WAM). Tato integrace a její výhody jsou [zdokumentovány na GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/wam).
-- [WebView2](https://docs.microsoft.com/microsoft-edge/webview2/) můžete použít k podpoře FIDO2 v vloženém prohlížeči.
+- [WebView2](/microsoft-edge/webview2/) můžete použít k podpoře FIDO2 v vloženém prohlížeči.
 - Použijte prohlížeč systému. Tyto metody standardně používají knihovny MSAL pro stolní platformy. Můžete se obrátit na naši stránku kompatibility prohlížeče FIDO2 a ujistit se, že používaný prohlížeč podporuje ověřování FIDO2.
 
 ### <a name="mobile"></a>Mobilní

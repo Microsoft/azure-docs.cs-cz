@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 02/26/2021
 ms.author: jushiman
-ms.openlocfilehash: 61897a790da8a5f52b1b8f8e208629e7755690fa
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: dcc599daaa8d124c7188165ff5e024767a5e3cd7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97759734"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672640"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Podpora virtuálních počítačů 2. generace v Azure
 
@@ -79,11 +79,13 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 
 | Funkce generace 2                | Místní Hyper-V | Azure |
 |-------------------------------------|---------------------|-------|
-| Zabezpečené spuštění                         | :heavy_check_mark:  | znak   |
+| Zabezpečené spuštění                         | :heavy_check_mark:  | Pomocí důvěryhodného spuštění (Preview)   |
 | Chráněný virtuální počítač                         | :heavy_check_mark:  | znak   |
-| vTPM                                | :heavy_check_mark:  | znak   |
-| Zabezpečení založené na virtualizaci (VBS) | :heavy_check_mark:  | znak   |
+| vTPM                                | :heavy_check_mark:  | Pomocí důvěryhodného spuštění (Preview)  |
+| Zabezpečení založené na virtualizaci (VBS) | :heavy_check_mark:  | Pomocí důvěryhodného spuštění (Preview)   |
 | Formát VHDX                         | :heavy_check_mark:  | znak   |
+
+Další informace najdete v tématu [důvěryhodné spuštění (Preview)](trusted-launch.md).
 
 ## <a name="features-and-capabilities"></a>Funkce a možnosti
 
@@ -105,7 +107,7 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 | Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | Zálohování a obnovení                    | :heavy_check_mark: | :heavy_check_mark: |
 | Galerie sdílených imagí              | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | znak                |
+| [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | :heavy_check_mark:                |
 | [Šifrování na straně serveru](disk-encryption.md)            | :heavy_check_mark: | :heavy_check_mark: |
 
 ## <a name="creating-a-generation-2-vm"></a>Vytvoření virtuálního počítače 2. generace
@@ -168,7 +170,7 @@ Virtuální počítače 2. generace můžete vytvořit také pomocí sady Virtua
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 * **Jsou virtuální počítače generace 2 dostupné ve všech oblastech Azure?**  
-    Yes. Ale ne všechny [velikosti virtuálních počítačů 2. generace](#generation-2-vm-sizes) jsou dostupné v každé oblasti. Dostupnost virtuálního počítače 2. generace závisí na dostupnosti velikosti virtuálního počítače.
+    Ano. Ale ne všechny [velikosti virtuálních počítačů 2. generace](#generation-2-vm-sizes) jsou dostupné v každé oblasti. Dostupnost virtuálního počítače 2. generace závisí na dostupnosti velikosti virtuálního počítače.
 
 * **Existuje cenový rozdíl mezi virtuálními počítači generace 1 a generace 2?**  
    No.
@@ -203,16 +205,16 @@ Virtuální počítače 2. generace můžete vytvořit také pomocí sady Virtua
   Může se zobrazit upozornění na disky s operačním systémem větší než 2 TiB. Upozornění se nevztahuje na virtuální počítače 2. generace. Velikosti disků s operačním systémem větší než 4 TiB se ale nepodporují.
 
 * **Podporují virtuální počítače generace 2 urychlené síťové služby?**  
-    Yes. Další informace najdete v tématu [Vytvoření virtuálního počítače s akcelerovanými síťovými](../virtual-network/create-vm-accelerated-networking-cli.md)službami.
+    Ano. Další informace najdete v tématu [Vytvoření virtuálního počítače s akcelerovanými síťovými](../virtual-network/create-vm-accelerated-networking-cli.md)službami.
 
 * **Podporují virtuální počítače generace 2 v Azure zabezpečené spouštění nebo vTPM?**
-    Virtuální počítače 1. generace a 2. generace v Azure nepodporují zabezpečené spouštění ani vTPM. 
+    VTPM i zabezpečené spouštění jsou funkce důvěryhodného spuštění (Preview) pro virtuální počítače 2. generace. Další informace najdete v tématu věnovaném [důvěryhodnému spuštění](trusted-launch.md).
     
 * **Podporuje se VHDX na generaci 2?**  
     Ne, virtuální počítače 2. generace podporují jenom virtuální pevný disk.
 
 * **Podporují virtuální počítače generace 2 Azure Ultra Disk Storage?**  
-    Yes.
+    Ano.
 
 * **Můžu migrovat virtuální počítač z generace 1 na generaci 2?**  
     Ne, generaci virtuálního počítače po jeho vytvoření nemůžete změnit. Pokud potřebujete přepínat mezi generací virtuálních počítačů, vytvořte nový virtuální počítač jiné generace.
@@ -225,5 +227,7 @@ Virtuální počítače 2. generace můžete vytvořit také pomocí sady Virtua
     1. Ověřte, že hledáte [Velikost virtuálního počítače, která podporuje virtuální počítače s Gen2](#generation-2-vm-sizes).
 
 ## <a name="next-steps"></a>Další kroky
+
+Přečtěte si další informace o [důvěryhodném spuštění (Preview)](trusted-launch-portal.md) s virtuálními počítači 2. generace.
 
 Seznamte [se s virtuálními počítači generace 2 v Hyper-V](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).

@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 12/11/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1333bd08f8a79969817bcb21aa4580d1994d09ce
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: d2df7255980ca00d405cf80a9fff69ff0511bd17
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594722"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659303"
 ---
 # <a name="call-flow-topologies"></a>Topologie toků volání
 Tento článek popisuje topologie toků volání komunikačních služeb Azure. Jedná se o skvělý článek, který vám umožní zkontrolovat, jestli jste zákazníkem, který integruje komunikační služby v rámci sítě, kterou spravujete. Úvod do toků volání komunikačních služeb najdete v [Koncepční dokumentaci k tokům volání](./call-flows.md).
@@ -26,7 +26,7 @@ Než si prohlédnete topologie toků volání, definujeme některé výrazy, kte
 
 **Síť zákazníka** obsahuje všechny segmenty sítě, které spravujete. To může zahrnovat drátové a bezdrátové sítě v rámci kanceláře nebo mezi kancelářemi, datovými centry a poskytovateli internetových služeb.
 
-Síť zákazníka obvykle obsahuje několik hraničních sítí s branami firewall nebo proxy servery, které vynutily zásady zabezpečení vaší organizace. Pro zajištění optimálního výkonu a kvality komunikačního řešení doporučujeme provést [komplexní hodnocení sítě](https://docs.microsoft.com/microsoftteams/3-envision-evaluate-my-environment) .
+Síť zákazníka obvykle obsahuje několik hraničních sítí s branami firewall nebo proxy servery, které vynutily zásady zabezpečení vaší organizace. Pro zajištění optimálního výkonu a kvality komunikačního řešení doporučujeme provést [komplexní hodnocení sítě](/microsoftteams/3-envision-evaluate-my-environment) .
 
 **Síť komunikačních služeb** je segment sítě, který podporuje komunikační služby Azure. Tato síť je spravovaná Microsoftem a je distribuována po celém světě s okraji blízko k většině zákaznických sítí. Tato síť zodpovídá za přenosový přenos, zpracování médií pro volání skupin a další komponenty, které podporují multimediální komunikaci v reálném čase.
 
@@ -199,4 +199,3 @@ Následující dokumenty můžou být zajímavé:
 
 - Další informace o [typech volání](../concepts/voice-video-calling/about-call-types.md)
 - Informace o [architektuře klient-server](./client-and-server-architecture.md)
-

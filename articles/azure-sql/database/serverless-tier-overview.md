@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 12/8/2020
-ms.openlocfilehash: 1b8be7fc6295c6332d26718b5752d2fd8f2a6f73
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 2/22/2021
+ms.openlocfilehash: 4dd7bbe613b30df2611bfe6631950e121235204a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393237"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658584"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bez serveru
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -103,11 +103,11 @@ Všimněte si, že pokud je využití procesoru nízké, může využití aktivn
 
 Mezipaměť SQL roste, protože data se načítají z disku stejným způsobem a se stejnou rychlostí jako u zřízených databází. Pokud je databáze zaneprázdněná, může být velikost mezipaměti až do maximálního limitu paměti neomezená.
 
-## <a name="auto-pause-and-auto-resume"></a>Automatické pozastavení a automatické obnovení
+## <a name="auto-pausing-and-auto-resuming"></a>Automatické pozastavení a automatické obnovení
 
-### <a name="auto-pause"></a>Automatické pozastavení
+### <a name="auto-pausing"></a>Automatické pozastavení
 
-Automatické pozastavení se aktivuje, pokud jsou všechny následující podmínky splněné po dobu trvání prodlevy automatického pozastavení:
+Automatické pauzy se aktivují, pokud jsou splněné všechny následující podmínky po dobu trvání prodlevy automatického pozastavení:
 
 - Počet relací = 0
 - CPU = 0 pro úlohy uživatele běžící ve fondu uživatelů
@@ -258,7 +258,7 @@ Změna maximálního nebo minimálního zpoždění virtuální jádra a prodlev
 Změna maximálního nebo minimálního zpoždění virtuální jádra a prodlevy při automatickém pozastavení se provádí pomocí příkazu [AZ SQL DB Update](/cli/azure/sql/db#az-sql-db-update) v Azure CLI pomocí `capacity` `min-capacity` argumentů, a `auto-pause-delay` .
 
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 ### <a name="resources-used-and-billed"></a>Využité a fakturované prostředky
 

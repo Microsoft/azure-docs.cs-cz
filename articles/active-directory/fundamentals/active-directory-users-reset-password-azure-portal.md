@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 397c74203aae2f52ce81844695266cc36fdf3042
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0b42ac7b4e379559d86942279eaa19fe58533840
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370895"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651883"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Resetování hesla uživatele pomocí Azure Active Directory
 
@@ -50,6 +50,10 @@ Jako správce můžete resetovat heslo uživatele, pokud je zapomenuté heslo, p
 
     >[!Note]
     >Dočasné heslo je platné i po vypršení platnosti. Až se uživatel příště přihlásí, heslo bude pořád fungovat bez ohledu na to, kolik času uplynulo od vygenerování dočasného hesla.
+
+> [!IMPORTANT]
+> Pokud správce nemůže resetovat heslo uživatele a v protokolech událostí aplikace na Azure AD Connect serveru se zobrazí následující kód chyby HR = 80231367, zkontrolujte atributy uživatele ve službě Active Directory.  Pokud je atribut **AdminCount** nastaven na hodnotu 1, znemožní vám správce resetování hesla uživatele.  Aby správci mohli resetovat heslo uživatele, musí být atribut **AdminCount** nastaven na hodnotu 0.
+
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,15 +5,15 @@ author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
 ms.subservice: cosmosdb-mongo
-ms.date: 10/12/2020
+ms.date: 03/02/2021
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 88ef081c75a64b5cb7517ba6994834b3a64a0e6f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 5302cb7bb3f4683d200f6f9ea106991bb934fc17
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340885"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659898"
 ---
 # <a name="troubleshoot-query-issues-when-using-the-azure-cosmos-db-api-for-mongodb"></a>Řešení potíží s dotazy při použití rozhraní Azure Cosmos DB API pro MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -30,7 +30,7 @@ Pokud omezíte poplatek za dotaz, obvykle se sníží latence.
 Tento článek popisuje příklady, které můžete znovu vytvořit pomocí [nutriční datové sady](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json).
 
 > [!NOTE] 
-> V tomto článku se předpokládá, že používáte rozhraní API verze 3,6 Azure Cosmos DB s pro MongoDB. Některé dotazy, které nesplní ve verzi 3,2, mají významná vylepšení verze 3,6. Proveďte upgrade na verzi 3,6 tím, že [požádáte žádost o podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+> V tomto článku se předpokládá, že používáte rozhraní API Azure Cosmos DB pro účty MongoDB s verzí 3,6 a vyšší. Některé dotazy, které nesplní ve verzi 3,2, mají ve verzích 3.6 + významná vylepšení. Proveďte upgrade na verzi 3,6 tím, že [požádáte žádost o podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="use-explain-command-to-get-metrics"></a>Použití příkazu $explain k získání metrik
 
@@ -113,7 +113,7 @@ db.coll.find({foodGroup: "Baby Foods"}).explain({"executionStatistics": true })
 
 `$explain`Výstup příkazu má délku a obsahuje podrobné informace o spuštění dotazu. Obecně platí, že existuje několik oddílů, kde byste se měli zaměřit na optimalizaci výkonu dotazů:
 
-| Metrika | Popis | 
+| Metric | Popis | 
 | ------ | ----------- |
 | `timeInclusiveMS` | Latence dotazů back-endu |
 | `pathsIndexed` | Zobrazí indexy používané dotazem. | 
@@ -348,4 +348,4 @@ Hodnota `estimatedDelayFromRateLimitingInMilliseconds` poskytuje smysl výhod po
 ## <a name="next-steps"></a>Další kroky
 
 * [Řešení potíží s výkonem dotazů (SQL API)](troubleshoot-query-performance.md)
-* [Správa indexování v rozhraní Azure Cosmos DB API pro MongoDB](mongodb-indexing.md)
+* [Správa indexování v rozhraní API služby Azure Cosmos DB pro MongoDB](mongodb-indexing.md)

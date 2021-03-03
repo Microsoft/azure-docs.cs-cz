@@ -6,14 +6,17 @@ ms.author: marobert
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 02cf175fc0a29795428ce1b3651469532ff3867c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b4719fcf046ce7ef5d74ccf1863b0400c2c52845
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92438689"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656608"
 ---
 V tomto rychlém startu se dozvíte, jak spustit volání pomocí komunikačních služeb Azure, které volají klientskou knihovnu pro Android.
+
+> [!NOTE]
+> Tento dokument používá verzi 1.0.0-beta. 8 volání klientské knihovny.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -32,9 +35,11 @@ V Android Studio vyberte spustit nový projekt Android Studio.
 
 V části telefon a tablet vyberte šablonu projektu "prázdná aktivita".
 
-:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Snímek obrazovky s tlačítkem ' spustit nový Android Studio projekt ' vybraný v Android Studio." nebo vyšší.
+:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Snímek obrazovky s vybranou možností prázdná aktivita na obrazovce šablony projektu":::
 
-:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Snímek obrazovky s tlačítkem ' spustit nový Android Studio projekt ' vybraný v Android Studio.":::
+Vyberte minimální klientskou knihovnu "rozhraní API 26: Android 8,0 (Oreo)" nebo vyšší.
+
+:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Snímek obrazovky s vybranou možností prázdná aktivita na obrazovce šablony projektu 2":::
 
 
 ### <a name="install-the-package"></a>Instalace balíčku
@@ -76,7 +81,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.8'
     ...
 }
 ```
@@ -178,8 +183,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.azure.android.communication.common.CommunicationUser;
-import com.azure.android.communication.common.CommunicationUserCredential;
+import com.azure.android.communication.common.CommunicationUserIdentifier;
+import com.azure.android.communication.common.CommunicationTokenCredential;
 import com.azure.communication.calling.CallAgent;
 import com.azure.communication.calling.CallClient;
 import com.azure.communication.calling.StartCallOptions;
@@ -262,6 +267,7 @@ Následující třídy a rozhraní zpracovávají některé hlavní funkce komun
 | CallClient| CallClient je hlavní vstupní bod pro volání klientské knihovny.|
 | CallAgent | CallAgent se používá ke spouštění a správě volání. |
 | CommunicationUserCredential | CommunicationUserCredential se používá jako přihlašovací údaje tokenu pro vytvoření instance CallAgent.|
+| CommunicationIdentifier | CommunicationIdentifier se používá jako jiný typ účastníka, který by mohl být součástí volání.|
 
 ## <a name="create-an-agent-from-the-user-access-token"></a>Vytvoření agenta z přístupového tokenu uživatele
 
@@ -276,7 +282,7 @@ private void createAgent() {
     String userToken = "<User_Access_Token>";
 
     try {
-        CommunicationUserCredential credential = new CommunicationUserCredential(userToken);
+        CommunicationTokenCredential credential = new CommunicationTokenCredential(userToken);
         callAgent = new CallClient().createCallAgent(getApplicationContext(), credential).get();
     } catch (Exception ex) {
         Toast.makeText(getApplicationContext(), "Failed to create call agent.", Toast.LENGTH_SHORT).show();
@@ -301,7 +307,7 @@ private void startCall() {
 
     callAgent.call(
         getApplicationContext(),
-        new CommunicationUser[] {new CommunicationUser(calleeId)},
+        new CommunicationUserIdentifier[] {new CommunicationUserIdentifier(calleeId)},
         options);
 }
 ```
@@ -311,7 +317,7 @@ private void startCall() {
 
 Aplikaci teď můžete spustit pomocí tlačítka Spustit aplikaci na panelu nástrojů (Shift + F10). Ověřte, že je možné volat voláním `8:echo123` . Předem zaznamenaná zpráva se spustí a znovu se vrátí zpět na vaši zprávu.
 
-:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Snímek obrazovky s tlačítkem ' spustit nový Android Studio projekt ' vybraný v Android Studio.":::
+:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Snímek obrazovky znázorňující dokončenou aplikaci":::
 
 ## <a name="sample-code"></a>Příklad kódu
 

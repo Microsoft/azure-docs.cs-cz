@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af2c848fe06d9ebc44443bdcce61af0c8de08b2d
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 2270ff360c7bb923555c9b4ffb0c35ccd4382d0e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99536997"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647485"
 ---
 # <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Metody ověřování ve Azure Active Directory – tokeny OATH
 
@@ -29,15 +29,13 @@ Aplikace ověřovatele automaticky generuje kódy při nastavení nabízených o
 
 Některé hardwarové tokeny OATH TOTP jsou programovatelné, což znamená, že nepocházejí s tajným klíčem nebo předinstalovaným předplatným. Tyto programovatelné hardwarové tokeny je možné nastavit pomocí tajného klíče nebo počáteční hodnoty získané z toku nastavení softwarového tokenu. Zákazníci si můžou tyto tokeny koupit od dodavatele podle svého výběru a použít tajný klíč nebo osivo v procesu instalace jeho dodavatele.
 
-## <a name="oath-hardware-tokens-preview"></a>Hardwarové tokeny OATH (Preview)
+## <a name="oath-hardware-tokens"></a>Hardwarové tokeny OATH
 
 Azure AD podporuje použití tokenů SHA-1 TOTP OATH, které aktualizují kódy každých 30 nebo 60 sekund. Zákazníci si můžou tyto tokeny koupit od dodavatele dle svého výběru.
 
 Tokeny OATH TOTP jsou obvykle dodávány s tajným klíčem neboli osivem předem naprogramované v tokenu. Tyto klíče musí být zadané ve službě Azure AD, jak je popsáno v následujících krocích. Tajné klíče jsou omezené na 128 znaků, které nemusí být kompatibilní se všemi tokeny. Tajný klíč může obsahovat pouze znaky *a-z* nebo *a-z* a číslice *2-7* a musí být kódovány v *Base32*.
 
 Programovatelné hardwarové tokeny OATH TOTP, které je možné znovu vyhodnotit, můžete nastavit pomocí Azure AD v toku nastavení softwarového tokenu.
-
-Hardwarové tokeny OATH jsou podporovány v rámci verze Public Preview. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 ![Nahrávají se tokeny OATH do okna tokeny OATH MFA.](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 

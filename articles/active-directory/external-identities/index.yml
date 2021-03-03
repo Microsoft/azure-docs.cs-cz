@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: ecc69f8e2e281b4456861397bdd5af4ba41448e8
-  ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
-  ms.translationtype: HT
+  ms.openlocfilehash: 578eb6859114eeef9672e7b58e6bb6b56189dc5a
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/23/2020
-  ms.locfileid: "92441755"
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101647366"
 landingContent:
 - title: Informace o externích identitách
   linkLists:
@@ -69,7 +69,7 @@ landingContent:
     links:
     - text: Vytváření toků uživatelů v Azure AD B2C
       url: ../../active-directory-b2c/tutorial-create-user-flows.md
-- title: Toky samoobslužné registrace pro uživatele typu host B2B (Preview)
+- title: Samoobslužné registrační toky pro uživatele typu Host B2B
   linkLists:
   - linkListType: overview
     links:

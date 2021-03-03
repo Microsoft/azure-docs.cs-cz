@@ -12,12 +12,12 @@ ms.date: 02/01/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 35efcd4059ab654178fb87c133a6f64721caf7d2
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1445e7959906966c58730521123ae03590bef1b3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989067"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652092"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Kurz: vývoj a plánování zřizování pro koncový bod SCIM
 
@@ -882,7 +882,7 @@ V ukázkovém kódu se požadavky ověřují pomocí balíčku Microsoft. AspNet
 
 Nosný token je také vyžadován pro použití poskytovaných [testů post](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) a provádí místní ladění pomocí místního hostitele. Vzorový kód používá ASP.NET Core prostředí pro změnu možností ověřování během fáze vývoje a povolení použití tokenu podepsaného svým držitelem.
 
-Další informace o více prostředích v ASP.NET Core najdete v tématu [použití více prostředí v ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/environments).
+Další informace o více prostředích v ASP.NET Core najdete v tématu [použití více prostředí v ASP.NET Core](/aspnet/core/fundamentals/environments).
 
 Následující kód vynutil, že požadavky na některý z koncových bodů služby jsou ověřovány pomocí nosných tokenů podepsaných vlastním klíčem:
 

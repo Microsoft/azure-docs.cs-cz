@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59cc50274b291c23aeec4620ec7a09312cc0c1fb
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: e49ed356f294baca6e339faeebe92ca02b2723df
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762246"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644778"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý Start
 
@@ -161,10 +161,10 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
     ![Snímek obrazovky s vybraným registrem a položkou registru](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. Do příslušných polí zadejte následující hodnoty a klikněte na **OK**.
-   - **Cesta ke klíči**: **_Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon_* _
-   - _* Název hodnoty * *: **_https_*_
-   - _* Typ hodnoty * *: **_REG_DWORD_*_
-   - _* Data hodnoty * *: **_00000001_*_
+   - **Cesta ke klíči**: **_Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon_**
+   - **Název hodnoty**: **_https_**
+   - **Typ hodnoty**: **_REG_DWORD_**
+   - **Data hodnoty**: **_00000001_**
  
      ![Snímek obrazovky se zobrazeným oknem "nové vlastnosti registru".](./media/how-to-connect-sso-quick-start/sso16.png)
  
@@ -176,7 +176,7 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
 
 Mozilla Firefox nepoužívá automatické ověřování pomocí protokolu Kerberos. Každý uživatel musí do svého nastavení Firefox ručně přidat adresu URL služby Azure AD pomocí následujících kroků:
 1. Spusťte Firefox a `about:config` do adresního řádku zadejte. Zavřete všechna oznámení, která vidíte.
-2. Vyhledejte rozhraní _ *Network. Negotiate-auth. Trusted-URI** preference. Tato předvolby obsahuje seznam důvěryhodných lokalit prohlížeče Firefox pro ověřování protokolem Kerberos.
+2. Vyhledejte **síť. vyjednat-auth. Trusted-URI** preference. Tato předvolby obsahuje seznam důvěryhodných lokalit prohlížeče Firefox pro ověřování protokolem Kerberos.
 3. Klikněte pravým tlačítkem a vyberte **Upravit**.
 4. `https://autologon.microsoftazuread-sso.com`Do pole zadejte.
 5. Vyberte **OK** a pak znovu otevřete prohlížeč.
@@ -205,7 +205,7 @@ Použití rozšíření služby Active Directory Zásady skupiny třetích stran
 
 #### <a name="known-browser-limitations"></a>Známá omezení prohlížeče
 
-Bezproblémové jednotné přihlašování nefunguje v privátním režimu procházení v prohlížeči Firefox a v prohlížečích Microsoft Edge. Nefunguje také v aplikaci Internet Explorer, pokud prohlížeč běží v rozšířeném chráněném režimu. Pro další verzi Microsoft Edge založenou na Chromu nebude fungovat v režimu InPrivate a hosta podle návrhu.
+Bezproblémové jednotné přihlašování nefunguje v privátním režimu procházení pro Firefox a prohlížeče Microsoft Edge (starší verze). Nefunguje také v aplikaci Internet Explorer, pokud prohlížeč běží v rozšířeném chráněném režimu. Bezproblémové jednotné přihlašování podporuje další verzi Microsoft Edge založenou na Chromu a funguje v režimu InPrivate a hosta podle návrhu.
 
 ## <a name="step-4-test-the-feature"></a>Krok 4: testování funkce
 
@@ -216,10 +216,10 @@ Chcete-li otestovat funkci pro konkrétního uživatele, ujistěte se, že jsou 
   - Tuto [funkci](#step-3-roll-out-the-feature) jste do tohoto uživatele zavedli prostřednictvím zásady skupiny.
 
 Chcete-li otestovat scénář, ve kterém uživatel zadá pouze uživatelské jméno, ale ne heslo:
-   - Přihlaste se k `https://myapps.microsoft.com/` nové privátní relaci prohlížeče.
+   - Přihlaste se k https://myapps.microsoft.com/ . Nezapomeňte buď vymazat mezipaměť prohlížeče, nebo použít novou privátní relaci prohlížeče s jakýmkoli podporovaným prohlížečem v privátním režimu.
 
 Chcete-li otestovat situaci, kdy uživatel nemusí zadávat uživatelské jméno nebo heslo, použijte jeden z následujících kroků: 
-   - Přihlaste se k `https://myapps.microsoft.com/contoso.onmicrosoft.com` nové privátní relaci prohlížeče. Nahraďte *Contoso* názvem vašeho tenanta.
+   - Přihlaste se a `https://myapps.microsoft.com/contoso.onmicrosoft.com` nezapomeňte buď vymazat mezipaměť prohlížeče, nebo použít novou privátní relaci prohlížeče s jakýmkoli podporovaným prohlížečem v privátním režimu. Nahraďte *Contoso* názvem vašeho tenanta.
    - Přihlaste se k `https://myapps.microsoft.com/contoso.com` nové privátní relaci prohlížeče. Nahraďte *contoso.com* ověřenou doménou (ne federované domény) ve vašem tenantovi.
 
 ## <a name="step-5-roll-over-keys"></a>Krok 5: Převeďte klíče

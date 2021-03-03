@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 2/2/2021
 ms.author: mimckitt
 ms.custom: rybaker, chmimckitt
-ms.openlocfilehash: 744f265251e9f58ce91085f0e5dd5d1ad13eec69
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 6e6f6ced1cdba429abd914354a5eba861ab127ec
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99625107"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670045"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Jak nasadit Windows 10 v Azure s právy pro hostování s více klienty 
 Pro zákazníky s Windows 10 Enterprise E3/E5 podle uživatele nebo přístup k virtuálnímu počítači s Windows na úrovni uživatele (licence pro předplatné uživatele nebo licence k předplatnému uživatele) umožňuje víceklientské hostování pro Windows 10 přístup k cloudu a spouštění Windows 10 Virtual Machines v Azure bez placení na jinou licenci. Práva pro hostování více tenantů jsou dostupná jenom pro Windows 10 (verze 1703 nebo novější).
@@ -26,7 +26,7 @@ Další informace najdete v tématu [hostování víceklientské architektury pr
 
 ## <a name="subscription-licenses-that-qualify-for-multitenant-hosting-rights"></a>Licence pro předplatné, které mají nárok na práva hostování s více klienty
 
-Pomocí [centra pro správu Microsoft](https://docs.microsoft.com/microsoft-365/admin/admin-overview/about-the-admin-center?view=o365-worldwide&preserve-view=true)můžete ověřit, jestli se uživateli přiřadila podporovaná licence pro Windows 10.
+Pomocí [centra pro správu Microsoft](/microsoft-365/admin/admin-overview/about-the-admin-center?preserve-view=true&view=o365-worldwide)můžete ověřit, jestli se uživateli přiřadila podporovaná licence pro Windows 10.
 
 > [!IMPORTANT]
 > Aby uživatelé mohli používat image Windows 10 v Azure, musí mít jednu z následujících licencí předplatného. Pokud nemáte jednu z těchto licencí předplatného, můžete si ji koupit prostřednictvím svého [partnera cloudových služeb](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/) nebo přímo prostřednictvím [Microsoftu](https://www.microsoft.com/microsoft-365?rtc=1).
