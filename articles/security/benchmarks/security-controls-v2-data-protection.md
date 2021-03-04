@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c8d907062835f18393946b04f1f1e9d5ec345411
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 50358eed580bbd83f25386feb0068a252060672b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735756"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037111"
 ---
 # <a name="security-control-v2-data-protection"></a>Řízení zabezpečení v2: Ochrana dat
 
 Ochrana dat pokrývá kontrolu ochrany dat v klidovém provozu, při přenosu a prostřednictvím autorizovaných mechanismů přístupu. To zahrnuje zjišťování, klasifikaci, ochranu a monitorování citlivých datových prostředků pomocí řízení přístupu, šifrování a protokolování v Azure.
 
-Pokud se chcete podívat na příslušný integrovaný Azure Policy, přečtěte si [Podrobnosti o integrované iniciativě dodržování předpisů Azure Security test legislativ: Ochrana dat](../../governance/policy/samples/azure-security-benchmark#data-protection)
+Pokud se chcete podívat na příslušný integrovaný Azure Policy, přečtěte si [Podrobnosti o integrované iniciativě dodržování předpisů Azure Security test legislativ: Ochrana dat](../../governance/policy/samples/azure-security-benchmark.md#data-protection)
 
 ## <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1: Zjišťování, klasifikace a označení citlivých dat
 

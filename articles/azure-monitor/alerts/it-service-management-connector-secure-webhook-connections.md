@@ -1,17 +1,16 @@
 ---
 title: IT Service Management Connector – zabezpečený export v Azure Monitor
 description: V tomto článku se dozvíte, jak připojit své ITSM produkty/služby k zabezpečenému exportu v Azure Monitor centrálně monitorovat a spravovat pracovní položky ITSM.
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: b1295904f25d38c97578fa6fd6ede4ecd50c0456
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 330b97e66ba1a9b95f2ef7a34a7ea046414b8bd8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728973"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037508"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Připojení Azure k nástrojům ITSM pomocí zabezpečeného exportu
 

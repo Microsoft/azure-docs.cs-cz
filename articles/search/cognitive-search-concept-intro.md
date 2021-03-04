@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 09e7a39a2d97626dd01a00fdaef9bc4d711d557b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.openlocfilehash: 22d7c1bbe03d8b3c0e3b6026c9bac039f0651548
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828095"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037247"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Obohacení AI v Azure Kognitivní hledání
 
@@ -32,6 +33,17 @@ Mezi integrované dovednosti patří tyto kategorie:
 Integrované dovednosti v Azure Kognitivní hledání jsou založené na předem vyškolených modelech strojového učení v rozhraní API služeb Cognitive Services: [počítačové zpracování obrazu](../cognitive-services/computer-vision/index.yml) a [Analýza textu](../cognitive-services/text-analytics/overview.md). Prostředek Cognitive Services můžete připojit, pokud chcete během zpracování obsahu tyto prostředky využít.
 
 Během fáze příjmu dat se použije přirozený jazyk a zpracování obrazu s výsledky, které se stanou součástí kompozice dokumentu v prohledávatelných indexech v Azure Kognitivní hledání. Data se nastavují jako datová sada Azure a pak se provedou prostřednictvím kanálu indexování s použitím libovolných [integrovaných dovedností](cognitive-search-predefined-skills.md) , které potřebujete.  
+
+## <a name="feature-availability"></a>Dostupnost funkcí
+
+Rozšíření AI je dostupné v oblastech, kde jsou dostupné taky služby Azure Cognitive Services.  Aktuální dostupnost rozšíření AI můžete kontrolovat na stránce [produkty Azure dostupné v oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=search) .  Rozšíření AI je k dispozici ve všech podporovaných oblastech kromě těchto:
+
++ Austrálie – jihovýchod
++ Čína – sever 2
++ Norsko – východ
++ Německo – středozápad
+
+Pokud je vaše vyhledávací služba umístěná v jedné z těchto oblastí, nebudete moct vytvářet a používat dovednosti, ale všechny ostatní funkce služby Search jsou dostupné a plně podporované.
 
 ## <a name="when-to-use-ai-enrichment"></a>Kdy použít obohacení AI
 

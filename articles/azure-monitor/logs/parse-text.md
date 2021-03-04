@@ -1,17 +1,16 @@
 ---
 title: Analyzovat textová data v protokolech Azure Monitor | Microsoft Docs
 description: Popisuje různé možnosti analýzy dat protokolu v Azure Monitor záznamy, když se data ingestují a když se načtou v dotazu, a porovnává si relativní výhody pro každou z nich.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
-ms.openlocfilehash: 8f6c35fd1bb6b46f512f9245d8e3d41df428692b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2e2babd39dc9dadf06c9a3ca3292e021e0c1deaa
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733937"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037179"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Analyzovat textová data v protokolech Azure Monitor
 Některá data protokolu shromážděná pomocí Azure Monitor budou obsahovat více informací v jedné vlastnosti. Analýza těchto dat na více vlastností usnadňuje jejich použití v dotazech. Běžným příkladem je [vlastní protokol](../agents/data-sources-custom-logs.md) , který shromažďuje celou položku protokolu s více hodnotami do jedné vlastnosti. Vytvořením samostatných vlastností pro různé hodnoty můžete vyhledávat a agregovat na každé z nich.

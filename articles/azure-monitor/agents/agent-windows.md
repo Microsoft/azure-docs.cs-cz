@@ -1,17 +1,16 @@
 ---
 title: Instalace agenta Log Analytics na počítačích s Windows
 description: Tento článek popisuje, jak připojit počítače s Windows hostované v jiných cloudech nebo místně, aby se Azure Monitor s agentem Log Analytics pro Windows.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/03/2020
-ms.openlocfilehash: 50bfed0ee4346955a9e478e7567f00610d8184f1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: aec39b86f9651539028efce93ba6a88c3be75b0c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708658"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038306"
 ---
 # <a name="install-log-analytics-agent-on-windows-computers"></a>Instalace agenta Log Analytics na počítačích s Windows
 Tento článek poskytuje podrobné informace o instalaci agenta Log Analytics v počítačích s Windows pomocí následujících metod:

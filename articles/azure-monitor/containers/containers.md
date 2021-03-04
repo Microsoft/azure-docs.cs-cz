@@ -1,17 +1,16 @@
 ---
 title: Řešení monitorování kontejnerů v Azure Monitor | Microsoft Docs
 description: Řešení pro monitorování kontejnerů v Azure Monitor vám pomůže zobrazit a spravovat hostitele kontejnerů pro Docker a Windows v jednom umístění.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/06/2020
-ms.openlocfilehash: bd7301d6fa70edd8a52a7af34122f0a8672dfde8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 59f81103e72be6c0f1b629981fdb53c8467000a9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609483"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037417"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Řešení pro monitorování kontejnerů v Azure Monitor
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 02/17/2021
 ms.author: jushiman
-ms.openlocfilehash: d00a9c6012da7ad8d1566ef82bce628c7d47e7a7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5f5f1e70d9ae309c90291ccac1e6dd61e7a9d056
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686977"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038368"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>Rychlý Start: povolení služby Azure automanage pro virtuální počítače v Azure Portal
 
@@ -88,7 +88,7 @@ Pokud chcete vytvořit nový virtuální počítač a povolit možnost automanag
 1. Vyplňte kartu **základy** s podrobnostmi o vašem virtuálním počítači.
 
 > [!NOTE]
-> Podívejte se na [podporované oblasti](automanage-virtual-machines#supported-regions) pro automanage a pro automanage podporované verze systému [Linux distribuce](automanage-linux.md#supported-linux-distributions-and-versions) a [Windows Server](automanage-windows-server.md#supported-windows-server-versions).
+> Podívejte se na [podporované oblasti](automanage-virtual-machines.md#supported-regions) pro automanage a pro automanage podporované verze systému [Linux distribuce](automanage-linux.md#supported-linux-distributions-and-versions) a [Windows Server](automanage-windows-server.md#supported-windows-server-versions).
 
 2. Přejděte na kartu **Správa** a vyberte své prostředí pro automatické **spravování**.
 

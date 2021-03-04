@@ -1,24 +1,23 @@
 ---
 title: IT Service Management Connector – zabezpečený export v Azure Monitor – konfigurace Azure
 description: V tomto článku se dozvíte, jak nakonfigurovat Azure za účelem připojení ITSM produktů nebo služeb k zabezpečenému exportu v Azure Monitor k centrálnímu monitorování a správě pracovních položek ITSM.
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/03/2021
-ms.openlocfilehash: 62167b8fd72c660e50378a9492528aa5b70bbee7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8eb9430e3d280c52cf84c61f0a44cb12152ac054
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612809"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037536"
 ---
 # <a name="configure-azure-to-connect-itsm-tools-using-secure-export"></a>Konfigurace Azure pro připojení nástrojů ITSM pomocí zabezpečeného exportu
 
 Tento článek poskytuje informace o tom, jak nakonfigurovat Azure tak, aby používal "zabezpečený export".
 Chcete-li použít "zabezpečený export", postupujte následovně:
 
-1. [Zaregistrovat aplikaci v Azure AD](./itsm-connector-secure-webhook-connections-azure-configuration.md#register-with-azure-active-directory)
+1. [Zaregistrujte svoji aplikaci ve službě Azure AD.](./itsm-connector-secure-webhook-connections-azure-configuration.md#register-with-azure-active-directory)
 1. [Definujte instanční objekt.](./itsm-connector-secure-webhook-connections-azure-configuration.md#define-service-principal)
 1. [Vytvořte zabezpečenou skupinu akcí Webhooku.](./itsm-connector-secure-webhook-connections-azure-configuration.md#create-a-secure-webhook-action-group)
 1. Nakonfigurujte své partnerské prostředí.
@@ -30,7 +29,7 @@ Chcete-li použít "zabezpečený export", postupujte následovně:
 
 Pomocí těchto kroků zaregistrujete aplikaci do služby Azure AD:
 
-1. Postupujte podle kroků v části [Registrace aplikace s platformou Microsoft Identity](../../active-directory/develop/quickstart-register-app.md).
+1. Postupujte podle kroků uvedených v tématu [Registrace aplikace na platformě Microsoft Identity Platform](../../active-directory/develop/quickstart-register-app.md).
 2. V Azure AD vyberte **zveřejnit aplikaci**.
 3. Vyberte **sadu** pro **identifikátor URI ID aplikace**.
 
@@ -44,7 +43,7 @@ V případě volitelného kroku můžete definovat aplikační roli v manifestu 
 
 Tento krok lze provést pomocí stejných [příkazů PowerShellu](../alerts/action-groups.md#secure-webhook-powershell-script).
 
-## <a name="create-a-secure-webhook-action-group"></a>Vytvoří zabezpečenou skupinu akcí Webhooku.
+## <a name="create-a-secure-webhook-action-group"></a>Vytvořte skupinu akcí zabezpečeného webhooku.
 
 Po registraci vaší aplikace ve službě Azure AD můžete vytvářet pracovní položky v nástroji ITSM založené na výstrahách Azure pomocí akce zabezpečený Webhook ve skupinách akcí.
 
