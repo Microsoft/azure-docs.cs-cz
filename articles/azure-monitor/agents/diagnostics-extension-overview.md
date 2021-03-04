@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 3c0e348e62184f839ce38e4c364fb5c6b81f1131
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 90addb74811819dec563ba072e9a6aea2cf72ca4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726219"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036533"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Přehled rozšíření Azure Diagnostics
 Azure Diagnostics rozšíření je [Agent v Azure monitor](../agents/agents-overview.md) , který shromažďuje data monitorování z hostovaného operačního systému výpočetních prostředků Azure, včetně virtuálních počítačů. Tento článek obsahuje přehled rozšíření Azure Diagnostics, včetně specifických funkcí, které podporuje, a možností instalace a konfigurace. 
@@ -78,7 +78,7 @@ Nakonfigurujte jednu nebo více *datových umyvadel* pro odesílání dat do dal
 | Objekty blob Azure Storage | Zápis do dat do objektů BLOB v Azure Storage kromě tabulek. |
 | Application Insights | Shromažďovat data z aplikací běžících ve vašem VIRTUÁLNÍm počítači a Application Insights je integrovat s ostatními monitorováním aplikací. Viz [odeslání diagnostických dat do Application Insights](diagnostics-extension-to-application-insights.md). |
 
-Data WAD můžete také shromažďovat z úložiště do pracovního prostoru Log Analytics, abyste je mohli analyzovat pomocí protokolů Azure Monitor, i když se pro tuto funkci obvykle používá agent Log Analytics. Může odesílat data přímo do pracovního prostoru Log Analytics a podporuje řešení a přehledy, které poskytují další funkce.  Viz [shromáždění diagnostických protokolů Azure z Azure Storage](../essentials/diagnostics-extension-logs.md). 
+Data WAD můžete také shromažďovat z úložiště do pracovního prostoru Log Analytics, abyste je mohli analyzovat pomocí protokolů Azure Monitor, i když se pro tuto funkci obvykle používá agent Log Analytics. Může odesílat data přímo do pracovního prostoru Log Analytics a podporuje řešení a přehledy, které poskytují další funkce.  Viz [shromáždění diagnostických protokolů Azure z Azure Storage](../agents/diagnostics-extension-logs.md). 
 
 
 ### <a name="linux-diagnostics-extension-lad"></a>Diagnostické rozšíření pro Linux (LAD)

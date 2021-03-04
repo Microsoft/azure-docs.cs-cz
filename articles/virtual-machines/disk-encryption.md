@@ -2,18 +2,18 @@
 title: Šifrování na straně serveru Azure Managed disks
 description: Azure Storage chrání vaše data tím, že je před tím, než je zachová v clusterech úložiště, v klidovém prostředí. Pomocí klíčů spravovaných zákazníkem můžete spravovat šifrování pomocí vlastních klíčů, nebo můžete spoléhat na klíče spravované Microsoftem pro šifrování svých spravovaných disků.
 author: roygara
-ms.date: 10/22/2020
+ms.date: 03/02/2021
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: f9152e341ac04209754bbf5f008cd56373967b9f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a1fbd536943023d3e6724b9c1638f7a0bd97d847
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677439"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036941"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Šifrování na straně serveru Azure Disk Storage
 
@@ -66,6 +66,8 @@ Automatické střídání klíčů je ve verzi Preview a je dostupné jenom v n�
 > [!IMPORTANT]
 > Klíče spravované zákazníkem spoléhají na spravované identity prostředků Azure, což je funkce Azure Active Directory (Azure AD). Při konfiguraci klíčů spravovaných zákazníkem se spravovaná identita automaticky přiřadí k vašim prostředkům v rámci pokrývání. Pokud později přesunete předplatné, skupinu prostředků nebo spravovaný disk z jednoho adresáře služby Azure AD do jiného, nebude se spravovaná identita přidružená ke spravovaným diskům přenášet do nového tenanta, takže klíče spravované zákazníkem už možná nebudou fungovat. Další informace najdete v tématu [přenos předplatného mezi adresáři služby Azure AD](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).
 
+Postup povolení klíčů spravovaných zákazníkem pro službu Managed disks najdete v článcích, které pokrývají, jak ji povolit s [modulem Azure PowerShell](windows/disks-enable-customer-managed-keys-powershell.md), rozhraním [Azure CLI](linux/disks-enable-customer-managed-keys-cli.md) nebo [Azure Portal](disks-enable-customer-managed-keys-portal.md). Informace o tom, jak povolit klíče spravované zákazníkem pomocí automatického střídání klíčů, najdete v tématu [nastavení Azure Key Vault a DiskEncryptionSet s automatickým otočením klíče (Preview)](windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-with-automatic-key-rotation-preview).
+
 ## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>Šifrování v rámci hostitele – komplexní šifrování pro data virtuálních počítačů
 
 Pokud povolíte šifrování na hostiteli, toto šifrování se spustí na samotném hostiteli virtuálního počítače, na server Azure, ke kterému je váš virtuální počítač přiřazený. Data pro dočasné mezipaměti disku a jednotky s operačním systémem a datovým diskem se ukládají na tomto hostiteli virtuálního počítače. Po povolení šifrování na hostiteli jsou všechna tato data zašifrovaná v klidovém stavu a toky zašifrované do služby úložiště, kde jsou trvalé. Šifrování v rámci hostitele v podstatě šifruje vaše data z kompletního na konci. Šifrování na hostiteli nevyužívá procesor vašeho virtuálního počítače a nemá vliv na výkon vašeho virtuálního počítače. 
@@ -84,6 +86,8 @@ Dočasné disky a dočasné disky s operačním systémem jsou v klidovém stavu
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
 
+Pokud chcete povolit kompletní šifrování pomocí šifrování na hostiteli, přečtěte si naše články, které vám pokrývají, jak je povolit, pomocí [modulu Azure PowerShell](windows/disks-enable-host-based-encryption-powershell.md), rozhraní příkazového [řádku Azure](linux/disks-enable-host-based-encryption-cli.md)nebo [Azure Portal](disks-enable-host-based-encryption-portal.md).
+
 ## <a name="double-encryption-at-rest"></a>Dvojité šifrování v klidovém umístění
 
 Zákazníci s vysokým zabezpečením, kteří se týkají rizik spojených s jakýmkoli konkrétním šifrovacím algoritmem, implementací nebo klíčem, se teď můžou rozhodnout pro další vrstvu šifrování pomocí jiného šifrovacího algoritmu nebo režimu v infrastruktuře, který používá šifrovací klíče spravované platformou. Tato nová vrstva se dá použít pro trvalý operační systém a datové disky, snímky a image, které se zašifrují v klidovém stavu s dvojitým šifrováním.
@@ -91,6 +95,8 @@ Zákazníci s vysokým zabezpečením, kteří se týkají rizik spojených s ja
 ### <a name="supported-regions"></a>Podporované oblasti
 
 Dvojité šifrování je k dispozici ve všech oblastech, které jsou k dispozici na spravovaných discích.
+
+Pokud chcete povolit dvojité šifrování v klidovém umístění pro Managed disks, přečtěte si naše články, které vám pokrývají, jak ho povolit s [modulem Azure PowerShell](windows/disks-enable-double-encryption-at-rest-powershell.md), rozhraním [Azure CLI](linux/disks-enable-double-encryption-at-rest-cli.md) nebo [Azure Portal](disks-enable-double-encryption-at-rest-portal.md).
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Šifrování na straně serveru oproti službě Azure Disk Encryption
 

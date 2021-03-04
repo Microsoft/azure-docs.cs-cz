@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 8a4a4153261b93b3b17641e8561962c274570bd0
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 5dd960dde72b879515bd948c4731ead135bef4b0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104208"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035046"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Postup: Vytvoření aplikace Azure AD a instančního objektu s přístupem k prostředkům pomocí portálu
 
@@ -45,7 +45,7 @@ Musíte mít dostatečná oprávnění k registraci aplikace ve vašem tenantovi
 1. V levém podokně vyberte **nastavení uživatele**.
 1. Ověřte nastavení **Registrace aplikací** . Tuto hodnotu může nastavit jenom správce. Pokud je nastaveno na **Ano**, každý uživatel v TENANTOVI Azure AD může zaregistrovat aplikaci.
 
-Pokud je nastavení registrace aplikací nastaveno na **ne**, můžou tyto typy aplikací registrovat jenom uživatelé s rolí správce. Další informace o dostupných rolích správců a konkrétních oprávněních v Azure AD, která jsou udělena jednotlivým rolím, najdete v tématu [dostupné role](../roles/permissions-reference.md#available-roles) a [oprávnění role](../roles/permissions-reference.md#role-permissions) . Pokud má váš účet přiřazenou roli uživatele, ale nastavení registrace aplikace je omezené na uživatele s právy pro správu, požádejte správce, aby vám přidělil jednu z rolí správce, která může vytvářet a spravovat všechny aspekty registrací aplikací, nebo umožnit uživatelům registrovat aplikace.
+Pokud je nastavení registrace aplikací nastaveno na **ne**, můžou tyto typy aplikací registrovat jenom uživatelé s rolí správce. Další informace o dostupných rolích správce a specifických oprávněních v Azure AD, která jsou předána jednotlivým rolím, najdete v tématu [předdefinované role Azure AD](../roles/permissions-reference.md#all-roles) . Pokud má váš účet přiřazenou roli uživatele, ale nastavení registrace aplikace je omezené na uživatele s právy pro správu, požádejte správce, aby vám přidělil jednu z rolí správce, která může vytvářet a spravovat všechny aspekty registrací aplikací, nebo umožnit uživatelům registrovat aplikace.
 
 ### <a name="check-azure-subscription-permissions"></a>Ověřit oprávnění pro předplatné Azure
 
@@ -55,7 +55,7 @@ Ověření oprávnění k předplatnému:
 
 1. Vyhledejte a vyberte **předplatná** nebo vyberte **předplatná** na **domovské** stránce.
 
-   ![Hledat](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![Search](./media/howto-create-service-principal-portal/select-subscription.png)
 
 1. Vyberte předplatné, ve kterém chcete vytvořit instanční objekt.
 

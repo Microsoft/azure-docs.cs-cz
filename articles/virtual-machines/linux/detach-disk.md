@@ -8,12 +8,12 @@ ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7e618475d7d0160bce5aee39c267bb191a3a9f0a
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: d8694a715e53f820556231ae6a549e98b2963fa1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897135"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035700"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Jak odpojit datový disk od virtuálního počítače s Linuxem
 
@@ -108,13 +108,10 @@ Disk zůstává v úložišti, ale už není připojený k virtuálnímu počít
 
 1. V nabídce vlevo vyberte **Virtual Machines**.
 1. V okně virtuálního počítače vyberte **disky**.
-1. V horní části okna **disky** vyberte **Upravit**.
-1. V okně **disky** v pravém dolním rohu datového disku, který chcete odpojit, klikněte na tlačítko Odpojit ![ Obrázek tlačítka odpojit ](./media/detach-disk/detach.png) .
-1. Po odebrání disku klikněte na **Uložit** v horní části okna.
+1. V okně **disky** v pravém dolním rohu datového disku, který chcete odpojit, vyberte tlačítko **X** a odpojte disk.
+1. Po odebrání disku vyberte **Uložit** v horní části okna.
 
-Disk zůstává v úložišti, ale už není připojený k virtuálnímu počítači.
-
-
+Disk zůstává v úložišti, ale už není připojený k virtuálnímu počítači. Disk není odstraněný.
 
 ## <a name="next-steps"></a>Další kroky
 Pokud chcete znovu použít datový disk, můžete [ho jednoduše připojit k jinému virtuálnímu počítači](add-disk.md).

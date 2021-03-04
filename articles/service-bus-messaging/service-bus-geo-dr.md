@@ -3,12 +3,12 @@ title: Azure Service Bus geograficky zotavení po havárii | Microsoft Docs
 description: Použití geografických oblastí k převzetí služeb při selhání a zotavení po havárii v Azure Service Bus
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: 86d35465e5b31514f4d215095932b857ce7dcb35
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3e8050cdaaae7e16a0f5125292df4b89b3690ed3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384290"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035390"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geografické zotavení po havárii
 
@@ -47,11 +47,7 @@ V tomto článku se používají následující výrazy:
 -  *Alias*: název pro konfiguraci zotavení po havárii, kterou jste nastavili. Alias poskytuje jediný stabilní řetězec plně kvalifikovaného názvu domény (FQDN). Aplikace používají tento připojovací řetězec aliasu pro připojení k oboru názvů. Použití aliasu zajistí, že se připojovací řetězec při aktivaci převzetí služeb při selhání nezměnil.
 
 -  *Primární nebo sekundární obor názvů*: obory názvů, které odpovídají aliasu. Primární obor názvů je "aktivní" a přijímá zprávy (může to být existující nebo nový obor názvů). Sekundární obor názvů je "pasivní" a nepřijímá zprávy. Metadata mezi oběma je synchronizována, takže obě můžou bezproblémově přijímat zprávy bez nutnosti změny kódu aplikace nebo připojovacího řetězce. Chcete-li zajistit, že pouze aktivní obor názvů přijímá zprávy, je nutné použít alias. 
-
-    > [!IMPORTANT]
-    > Funkce geografického zotavení po havárii vyžaduje, aby předplatné a skupina prostředků byly stejné pro primární a sekundární obory názvů.
 -  *Metadata*: entity, jako jsou fronty, témata a předplatná; a jejich vlastnosti služby, které jsou přidruženy k oboru názvů. Automaticky se replikují jenom entity a jejich nastavení. Zprávy nejsou replikovány.
-
 -  *Převzetí služeb při selhání*: proces aktivace sekundárního oboru názvů.
 
 ## <a name="setup"></a>Nastavení
@@ -63,13 +59,13 @@ V následující části je přehled nastavení párování mezi obory názvů.
 Nejprve vytvoříte nebo použijete existující primární obor názvů a nový sekundární obor názvů a potom oba dvojici. Toto párování vám poskytne alias, který můžete použít k připojení. Protože používáte alias, nemusíte měnit připojovací řetězce. Do párování převzetí služeb při selhání se dají přidat jenom nové obory názvů. 
 
 1. Vytvořte primární obor názvů.
-1. Vytvořte sekundární obor názvů v předplatném a skupině prostředků, která má primární obor názvů, ale v jiné oblasti. Tento krok je volitelný. Sekundární obor názvů můžete vytvořit při vytváření párování v dalším kroku. 
+1. Vytvořte sekundární obor názvů v jiné oblasti. Tento krok je volitelný. Sekundární obor názvů můžete vytvořit při vytváření párování v dalším kroku. 
 1. V Azure Portal přejděte k primárnímu oboru názvů.
 1. V nabídce vlevo vyberte **geografické obnovení** a na panelu nástrojů vyberte **Zahájit párování** . 
 
     :::image type="content" source="./media/service-bus-geo-dr/primary-namspace-initiate-pairing-button.png" alt-text="Iniciace párování z primárního oboru názvů":::    
 1. Na stránce **Zahájit párování** proveďte tyto kroky:
-    1. Vyberte existující sekundární obor názvů nebo ho vytvořte v předplatném a skupině prostředků, která má primární obor názvů. V tomto příkladu je použit existující obor názvů jako sekundární obor názvů.  
+    1. Vyberte existující sekundární obor názvů nebo ho vytvořte v jiné oblasti. V tomto příkladu je použit existující obor názvů jako sekundární obor názvů.  
     1. Jako **alias** zadejte alias pro párování geografického Dr. 
     1. Potom vyberte **Vytvořit**. 
 

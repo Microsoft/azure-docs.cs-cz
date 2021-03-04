@@ -13,13 +13,13 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
-ms.date: 2/24/2021
-ms.openlocfilehash: b829d7045ac520cfe908c3c8809ae17702d6175d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 3/02/2021
+ms.openlocfilehash: 3d64336184450514d52095097343a4588213f111
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691429"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034893"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Pochopení a řešení potíží s blokováním Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -208,7 +208,7 @@ AND object_name(p.object_id) = '<table_name>';
 
 ## <a name="gather-information-from-extended-events"></a>Shromažďování informací z rozšířených událostí
 
-Kromě výše uvedených informací je často nutné zachytit trasování aktivit na serveru, aby bylo možné důkladně prozkoumat problém blokující Azure SQL Database. Například pokud relace spustí více příkazů v rámci transakce, bude zastoupen pouze poslední příkaz, který byl odeslán. Jeden z předchozích příkazů však může být v případě, že zámky jsou stále uchovávány. Trasování vám umožní zobrazit všechny příkazy spouštěné relací v rámci aktuální transakce.
+Kromě předchozích informací je často nutné zachytit trasování aktivit na serveru, aby bylo možné důkladně prozkoumat problém blokující Azure SQL Database. Například pokud relace spustí více příkazů v rámci transakce, bude zastoupen pouze poslední příkaz, který byl odeslán. Jeden z předchozích příkazů však může být v případě, že zámky jsou stále uchovávány. Trasování vám umožní zobrazit všechny příkazy spouštěné relací v rámci aktuální transakce.
 
 Existují dva způsoby, jak zachytit trasování v SQL Server. Rozšířené události (XEvents) a trasování profileru. [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) je ale už Nepodporovaná technologie trasování, která se Azure SQL Database nepodporuje. [Rozšířené události](/sql/relational-databases/extended-events/extended-events) jsou novější technologie trasování, která umožňuje větší univerzálnost a menší dopad na zjištěný systém a jeho rozhraní je integrováno do SQL Server Management Studio (SSMS). 
 
@@ -238,7 +238,7 @@ Přečtěte si dokument, který vysvětluje, jak používat [Průvodce vytvořen
 
 ## <a name="identify-and-resolve-common-blocking-scenarios"></a>Identifikace a řešení běžných blokujících scénářů
 
-Prozkoumáním výše uvedených informací můžete určit příčinu většiny potíží s blokováním. Zbytek tohoto článku je diskuze o tom, jak tyto informace použít k identifikaci a řešení některých běžných scénářů blokování. Tato diskuze předpokládá, že jste použili blokující skripty (odkazované dříve) k zachycení informací o blokujících SPIDs a zachytili aktivitu aplikace pomocí relace XEvent.
+Prozkoumáním předchozích informací můžete určit příčinu většiny potíží s blokováním. Zbytek tohoto článku je diskuze o tom, jak tyto informace použít k identifikaci a řešení některých běžných scénářů blokování. Tato diskuze předpokládá, že jste použili blokující skripty (odkazované dříve) k zachycení informací o blokujících SPIDs a zachytili aktivitu aplikace pomocí relace XEvent.
 
 ## <a name="analyze-blocking-data"></a>Analyzovat blokující data 
 
@@ -334,7 +334,7 @@ Tabulka níže mapuje běžné příznaky na jejich pravděpodobné příčiny.
 | 5 | NULL | \>0,8 | návrat | Ano. | Oznámení se může zobrazit v relaci rozšířených událostí pro toto ID SPID, která indikuje časový limit dotazu nebo zrušení, nebo byl vydán pouze příkaz ROLLBACK. |  
 | 6 | NULL | \>0,8 | režimu spánku | Takže. Pokud systém Windows NT zjistí, že relace již není aktivní, připojení Azure SQL Database bude přerušeno. | `last_request_start_time`Hodnota v sys.dm_exec_sessions je mnohem starší než aktuální čas. |
 
-Následující scénáře se v těchto scénářích rozšíří. 
+## <a name="detailed-blocking-scenarios"></a>Podrobné scénáře blokování
 
 1.  Blokování způsobené obvykle běžícím dotazem s dlouhou dobou spuštění
 
@@ -366,7 +366,7 @@ Následující scénáře se v těchto scénářích rozšíří.
 
     Výstup druhého dotazu indikuje, že úroveň vnořování transakce je jedna. Všechny zámky získané v transakci jsou stále uchovávány, dokud transakce nebyla potvrzena nebo vrácena zpět. Pokud aplikace explicitně otevřou a potvrdí transakce, může komunikace nebo jiná chyba opustit relaci a její transakci v otevřeném stavu. 
 
-    Pomocí výše uvedeného skriptu na sys.dm_tran_active_transactions Identifikujte aktuálně nepotvrzené transakce.
+    Použijte skript uvedený výše v tomto článku na základě sys.dm_tran_active_transactions k identifikaci aktuálně nepotvrzených transakcí napříč instancí.
 
     **Řešení**:
 
@@ -377,6 +377,7 @@ Následující scénáře se v těchto scénářích rozšíří.
             *    V obslužné rutině chyby klientské aplikace proveďte `IF @@TRANCOUNT > 0 ROLLBACK TRAN` následující chybu, i když klientská aplikace nevěří, že transakce je otevřená. Je vyžadována kontrola otevřených transakcí, protože uložená procedura volaná během dávky mohla spustit transakci bez vědomí klientské aplikace. Některé podmínky, jako je zrušení dotazu, zabrání proceduře v provedení po aktuálním příkazu, takže i v případě, že procedura obsahuje logiku pro kontrolu `IF @@ERROR <> 0` a přerušení transakce, nebude tento kód vrácení zpět proveden v takových případech.  
             *    Pokud se sdružování připojení používá v aplikaci, která otevírá připojení a spouští malý počet dotazů před uvolněním připojení zpět do fondu, jako je například webová aplikace, dočasné zakázání sdružování připojení může přispět k vyřešení problému, dokud není změněna klientská aplikace tak, aby správně zpracovala chyby. Když zabráníte sdružování připojení, uvolněním připojení dojde k fyzickému odpojení Azure SQL Databaseho připojení. Výsledkem je, že server vrátí otevřené transakce.  
             *    Použijte `SET XACT_ABORT ON` pro připojení nebo ve všech uložených procedurách, které začínají transakce a nečistí se po chybě. V případě chyby za běhu zruší toto nastavení všechny otevřené transakce a vrátí řízení klientovi. Další informace najdete v [nastavení XACT_ABORT (Transact-SQL)](/sql/t-sql/statements/set-xact-abort-transact-sql).
+
     > [!NOTE]
     > Připojení není obnovené, dokud se znovu nepoužije z fondu připojení, takže je možné, že uživatel může otevřít transakci a pak uvolnit připojení k fondu připojení, ale nemusí se znovu použít po dobu několika sekund, během které by transakce zůstala otevřená. Pokud se připojení znovu nepoužije, transakce se po vypršení časového limitu připojení a odebrání z fondu připojení zruší. Proto je optimální, aby klientská aplikace přerušila transakce v obslužné rutině chyb nebo používala `SET XACT_ABORT ON` k tomu, aby se předešlo této možné prodlevě.
 
@@ -385,14 +386,14 @@ Následující scénáře se v těchto scénářích rozšíří.
 
 1.  Blokování způsobené identifikátorem SPID, jehož odpovídající klientská aplikace nenačítal všechny řádky výsledků k dokončení
 
-    Po odeslání dotazu na server musí všechny aplikace okamžitě načíst všechny řádky výsledků, které mají být dokončeny. Pokud aplikace nenačte všechny řádky výsledků, můžou být zámky ponechány na tabulkách a blokují ostatní uživatele. Pokud používáte aplikaci, která transparentně odesílá příkazy SQL na server, aplikace musí načíst všechny řádky výsledků. Pokud není (a nemůžete ho nakonfigurovat tak, aby to provedl), možná nebudete schopni vyřešit problém s blokováním. Chcete-li se tomuto problému vyhnout, můžete omezit nedostatečně chovatcí aplikace na generování sestav nebo databáze podpory rozhodování.
+    Po odeslání dotazu na server musí všechny aplikace okamžitě načíst všechny řádky výsledků, které mají být dokončeny. Pokud aplikace nenačte všechny řádky výsledků, můžou být zámky ponechány na tabulkách a blokují ostatní uživatele. Pokud používáte aplikaci, která transparentně odesílá příkazy SQL na server, aplikace musí načíst všechny řádky výsledků. Pokud není (a nemůžete ho nakonfigurovat tak, aby to provedl), možná nebudete schopni vyřešit problém s blokováním. Chcete-li se tomuto problému vyhnout, můžete omezit nedostatečně chovající aplikace na databázi nebo databázi podpory pro rozhodování, a to odděleně od hlavní databáze OLTP.
     
     > [!NOTE]
     > Přečtěte si [pokyny pro logiku opakování](./troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors) pro aplikace, které se připojují k Azure SQL Database. 
     
     **Řešení**: aplikace musí být přepsána, aby se načetly všechny řádky výsledku do dokončení. Nejedná se o použití [posunu a načtení v klauzuli ORDER by](/sql/t-sql/queries/select-order-by-clause-transact-sql#using-offset-and-fetch-to-limit-the-rows-returned) dotazu k provedení stránkování na straně serveru.
 
-1.  Blokování způsobené identifikátorem SPID, který je ve stavu vrácení zpět
+1.  Blokování způsobené relací ve stavu vrácení zpět
 
     Dotaz na úpravu dat, který je ukončený nebo zrušený mimo uživatelsky definovanou transakci, se vrátí zpět. Tato situace může nastat i v případě, že se odpojuje relace klientské sítě nebo když je požadavek vybraný jako oběť zablokování. To lze často identifikovat pozorováním výstupu sys.dm_exec_requests, který může indikovat **příkaz** vrácení zpět a **Percent_complete sloupec** může zobrazit průběh. 
 

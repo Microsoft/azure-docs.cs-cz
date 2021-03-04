@@ -7,16 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, senzor, SDK, Hloubka, RGB, interní, externí, synchronizace, uzavřené řetězení, posun fáze
-ms.openlocfilehash: 914a29882277c11c388d3f81f0b1fe827fc2f156
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce0c72d3d708d5696a9775b3885f278f0c23cac1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277158"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034301"
 ---
 # <a name="capture-azure-kinect-device-synchronization"></a>Zaznamenat synchronizaci zařízení s Kinect Azure
 
-Hardware Azure Kinect může zarovnávat dobu zachycení barev a hloubkových obrázků. Mezi fotoaparáty na jednom zařízení je **interní synchronizace**. Řazení času zachycení mezi několika připojenými zařízeními je **externí synchronizace**.
+Hardware Azure Kinect může zarovnávat dobu zachycení barev a hloubkových obrázků. Mezi fotoaparáty na jednom zařízení je **interní synchronizace**. Řazení času zachycení mezi několika připojenými zařízeními je **externí synchronizace**. Pole Microphone funguje nezávisle na barvách a hloubce kamery.
 
 ## <a name="device-internal-synchronization"></a>Interní synchronizace zařízení
 

@@ -8,18 +8,18 @@ ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 742cff544886a1499bccfa575684edef708da7bd
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 9549e6ea30be0cd9eb1a8c200a5af4a4721793a6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028355"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034672"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>O dotazovacím jazyku pro digitální vlákna Azure
 
 Odvolat, že střed digitálních vláken Azure je [dvojitým grafem](concepts-twins-graph.md)vytvořeným z digitálních vláken a vztahů. 
 
-Tento graf se dá dotázat, aby se získaly informace o digitálních vztazích a vztazích, které obsahuje. Tyto dotazy se napíší ve vlastním dotazovacím jazyce podobném SQL, který se označuje jako **dotazovací jazyk digitálních vláken Azure**. To je podobné [dotazovacímu jazyku IoT Hub](../iot-hub/iot-hub-devguide-query-language.md) s mnoha srovnatelnými funkcemi.
+Tento graf se dá dotázat, aby se získaly informace o digitálních vztazích a vztazích, které obsahuje. Tyto dotazy se píšou ve vlastním dotazovacím jazyce podobném SQL, který se označuje jako **dotazovací jazyk Azure Digital Twins**. To je podobné [dotazovacímu jazyku IoT Hub](../iot-hub/iot-hub-devguide-query-language.md) s mnoha srovnatelnými funkcemi.
 
 Tento článek popisuje základy dotazovacího jazyka a jeho schopností. Podrobnější příklady syntaxe dotazů a spuštění požadavků na dotazy naleznete v tématu [*How to: Query*](how-to-query-graph.md)a requested Graph.
 
@@ -33,12 +33,17 @@ Pomocí jazyka dotazů digitálních vláken Azure můžete načíst digitální
 
 K odeslání dotazu do služby z klientské aplikace použijete [**rozhraní API pro dotazování**](/rest/api/digital-twins/dataplane/query)digitálních vláken Azure. Jedním ze způsobů, jak používat rozhraní API, je prostřednictvím jedné ze [sad SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) pro digitální vlákna Azure.
 
+### <a name="considerations-for-querying"></a>Pokyny pro dotazování
+
+Při psaní dotazů pro digitální vlákna Azure mějte na paměti následující skutečnosti:
+* Rozlišovat **velká a malá** písmena: u všech operací dotazů Azure Digital autoforms se rozlišují velká a malá písmena, proto je potřeba se starat o použití přesně názvů definovaných v modelech. Pokud jsou názvy vlastností špatně napsané nebo nesprávně použita, je sada výsledků prázdná a nevrátí se žádné chyby.
+* **Řídicí jednoduché uvozovky**: Pokud text dotazu obsahuje v datech jeden znak uvozovky, bude nutné, aby byla tato uvozovka uvozená `\` znakem. Tady je příklad, který se zabývá hodnotou vlastnosti *D'Souza*:
+
+  :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="EscapedSingleQuote":::
+
 ## <a name="reference-expressions-and-conditions"></a>Reference: výrazy a podmínky
 
 Tato část popisuje operátory a funkce, které jsou k dispozici pro zápis dotazů digitálních vláken Azure. Například dotazy, které ilustrují použití těchto funkcí, naleznete v tématu [*How to: Query a Remonstred Graph*](how-to-query-graph.md).
-
-> [!NOTE]
-> U všech operací dotazů na digitální vlákna Azure se rozlišují velká a malá písmena, proto je potřeba pečlivě použít přesné názvy definované v modelech. Pokud jsou názvy vlastností špatně napsané nebo nesprávně použita, je sada výsledků prázdná a nevrátí se žádné chyby.
 
 ### <a name="operators"></a>Operátory
 
@@ -50,7 +55,7 @@ Podporovány jsou následující operátory:
 | Porovnání | `=`, `!=`, `<`, `>`, `<=`, `>=` |
 | Contains | `IN`, `NIN` |
 
-### <a name="functions"></a>Funkce
+### <a name="functions"></a>Functions
 
 Podporují se následující funkce kontroly a přetypování typů:
 

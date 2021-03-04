@@ -1,17 +1,16 @@
 ---
 title: Připojení počítačů pomocí Log Analytics brány | Microsoft Docs
 description: Připojení zařízení a Operations Manager monitorovaných počítačů pomocí brány Log Analytics k odesílání dat do služby Azure Automation a Log Analytics, když nemají přístup k Internetu.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: d83ee4b53d4ccda9cb2af21fa0cb4c91822ec7c4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2c8b77e480f3a4f9ba342c6793a708ca6723ec34
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732016"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036567"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor
 

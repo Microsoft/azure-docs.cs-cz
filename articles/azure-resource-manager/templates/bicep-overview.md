@@ -2,21 +2,19 @@
 title: Bicep jazyk pro šablony Azure Resource Manager
 description: Popisuje jazyk bicep pro nasazení infrastruktury do Azure prostřednictvím šablon Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 6a2750dc99e82c9cf8c9b8b97d156d3a9fe30f31
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: 2fb13bca9e9d456889185d512ee2fc9d4cbbe673
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101745069"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036380"
 ---
 # <a name="what-is-bicep-preview"></a>Co je bicep (Preview)?
 
-Bicep je jazyk pro deklarativní nasazení prostředků Azure. Zjednodušuje prostředí pro vytváření, protože poskytuje stručnou syntaxi a lepší podporu pro modularitu a opětovné použití kódu. Bicep je jazyk specifický pro doménu (DSL), což znamená, že je navržený pro konkrétní scénář nebo doménu. Bicep není určený jako obecný programovací jazyk pro psaní aplikací.
+Bicep je jazyk pro deklarativní nasazení prostředků Azure. Zjednodušuje prostředí pro vytváření obsahu tím, že poskytuje stručnou syntaxi a lepší podporu pro opětovné použití kódu. Bicep je jazyk specifický pro doménu (DSL), což znamená, že je navržený pro konkrétní scénář nebo doménu. Bicep není určený jako obecný programovací jazyk pro psaní aplikací.
 
-Bicep je transparentní abstrakcí prostřednictvím šablon Azure Resource Manager (šablon ARM). Každý soubor bicep se zkompiluje na standardní šablonu ARM. Typy prostředků, verze rozhraní API a vlastnosti, které jsou platné v šabloně ARM, jsou platné v souboru bicep.
-
-[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
+V minulosti jste vyvinuli Azure Resource Manager šablon (šablony ARM) pomocí formátu JSON. Syntaxe JSON pro vytvoření šablony může být podrobná a vyžaduje složitý výraz. Bicep vylepšuje toto prostředí bez ztráty funkcí šablony JSON. Jedná se o transparentní abstrakci přes JSON pro šablony ARM. Každý soubor bicep se zkompiluje na standardní šablonu ARM. Typy prostředků, verze rozhraní API a vlastnosti, které jsou platné v šabloně ARM, jsou platné v souboru bicep.
 
 ## <a name="get-started"></a>Začínáme
 
@@ -30,7 +28,26 @@ Pokud máte existující šablonu ARM, kterou byste chtěli převést na bicep, 
 
 ## <a name="bicep-improvements"></a>Vylepšení bicep
 
-Bicep nabízí snadnější a přesnější syntaxi v porovnání s ekvivalentním JSON. Nepoužíváte `[...]` výrazy. Místo toho přímo voláte funkce, získávat hodnoty z parametrů a proměnných a odkazují na prostředky. Úplné porovnání syntaxe naleznete v tématu [porovnání formátu JSON a bicep pro šablony](compare-template-syntax.md).
+Bicep nabízí snadnější a přesnější syntaxi v porovnání s ekvivalentním JSON. Nepoužíváte `[...]` výrazy. Místo toho přímo voláte funkce a získáme hodnoty z parametrů a proměnných. Každému nasazenému prostředku udělíte symbolický název, který usnadňuje odkazování na prostředek ve vaší šabloně.
+
+Například následující JSON vrátí výstupní hodnotu z vlastnosti prostředku.
+
+```json
+"outputs": {
+  "hostname": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))).dnsSettings.fqdn]"
+    },
+}
+```
+
+Ekvivalentní výstupní výraz v bicep je snazší psát. Následující příklad vrátí stejnou vlastnost pomocí symbolického názvu **publicIP** pro prostředek, který je definován v rámci šablony:
+
+```bicep
+output hostname string = publicIP.properties.dnsSettings.fqdn
+```
+
+Úplné porovnání syntaxe naleznete v tématu [porovnání formátu JSON a bicep pro šablony](compare-template-syntax.md).
 
 Bicep automaticky spravuje závislosti mezi prostředky. Můžete se vyhnout nastavení, `dependsOn` když se symbolický název prostředku používá v jiné deklaraci prostředků.
 

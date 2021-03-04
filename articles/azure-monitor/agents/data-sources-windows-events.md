@@ -1,17 +1,16 @@
 ---
 title: Shromažďovat zdroje dat protokolu událostí systému Windows pomocí agenta Log Analytics v Azure Monitor
 description: V této části najdete popis postupu konfigurace shromažďování protokolů událostí systému Windows Azure Monitor a podrobností záznamů, které vytvoří.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: b747a4b58c9c460178d415d0b45ade814723d8fe
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: a3baa83e2ae306f1e43aee52e29a151bad6f85d9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719861"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036587"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Shromažďovat zdroje dat protokolu událostí systému Windows pomocí agenta Log Analytics
 Protokoly událostí systému Windows jsou jedním z nejběžnějších [zdrojů dat](../agents/agent-data-sources.md) pro agenty Log Analytics na virtuálních počítačích s Windows, protože mnoho aplikací zapisuje do protokolu událostí systému Windows.  Kromě určení libovolných vlastních protokolů vytvořených aplikacemi, které je třeba monitorovat, můžete shromažďovat události ze standardních protokolů, jako je například systém a aplikace.
@@ -22,13 +21,13 @@ Protokoly událostí systému Windows jsou jedním z nejběžnějších [zdrojů
 ![Události systému Windows](media/data-sources-windows-events/overview.png)     
 
 ## <a name="configuring-windows-event-logs"></a>Konfigurace protokolů událostí systému Windows
-[V nabídce data v části Upřesnit nastavení](../agents/agent-data-sources.md#configuring-data-sources) pro pracovní prostor Log Analytics Nakonfigurujte protokoly událostí systému Windows.
+Nakonfigurujte protokoly událostí systému Windows z [nabídky konfigurace agenti](../agents/agent-data-sources.md#configuring-data-sources) pro pracovní prostor Log Analytics.
 
 Azure Monitor shromažďuje pouze události z protokolů událostí systému Windows, které jsou zadány v nastavení.  Protokol událostí můžete přidat zadáním názvu protokolu a kliknutím **+** .  U každého protokolu se shromažďují jenom události s vybranými závažnostmi.  Ověřte závažnost konkrétního protokolu, který chcete shromáždit.  Nemůžete zadat žádná další kritéria pro filtrování událostí.
 
 Při zadávání názvu protokolu událostí Azure Monitor poskytuje návrhy běžných názvů protokolů událostí. Pokud se v seznamu nezobrazí protokol, který chcete přidat, můžete ho přidat tak, že zadáte úplný název protokolu. Úplný název protokolu můžete najít pomocí prohlížeče událostí. V prohlížeči událostí otevřete stránku *vlastností* protokolu a zkopírujte řetězec z pole *celé jméno* .
 
-![Konfigurace událostí systému Windows](media/data-sources-windows-events/configure.png)
+[![Konfigurace událostí systému Windows](media/data-sources-windows-events/configure.png)](media/data-sources-windows-events/configure.png#lightbox)
 
 > [!NOTE]
 > Kritické události z protokolu událostí systému Windows budou mít u protokolů Azure Monitor závažnost "Error".

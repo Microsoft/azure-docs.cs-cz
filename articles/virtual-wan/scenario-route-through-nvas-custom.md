@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8916fbc7c2a0b9789dcc73697324cee370f1fc1c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6291964aff7c215df7f738ab103947dcb9b1b1d4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704901"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036851"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>Scénář: směrování provozu prostřednictvím síťová virtuální zařízení pomocí vlastního nastavení
 
@@ -176,7 +176,7 @@ Pokud chcete nastavit směrování přes síťové virtuální zařízení, zva�
    >
    > * Uživatelé portálu musí povolit možnost rozšířit na výchozí trasu u připojení (VPN/ER/P2S/VNet), aby se projevila trasa 0.0.0.0/0.
    > * Uživatelé PS/CLI/REST musí nastavit příznak "enableinternetsecurity" na hodnotu true, aby se trasa 0.0.0.0/0 projevila.
-   >
+   > * Virtual Network připojení nepodporuje vícenásobnou IP adresu dalšího segmentu směrování (Multiple-Unique) k síťovému virtuálnímu zařízení ve virtuální síti s PAPRSKy. Pokud je jedna z tras s IP adresou dalšího směrování označená jako veřejná IP adresa nebo 0.0.0.0/0 (Internet)
 
 ## <a name="next-steps"></a>Další kroky
 

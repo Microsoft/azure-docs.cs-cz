@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a4f1c6e32bbc679a7ec946384903b2bda3887d05
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 29d4acc50ed872c37268a0b21c3e34837249a026
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720575"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035408"
 ---
 # <a name="security-control-v2-privileged-access"></a>Řízení zabezpečení v2: privilegovaný přístup
 
 Privilegovaný přístup pokrývá ovládací prvky pro ochranu privilegovaného přístupu k vašemu tenantovi a prostředkům Azure. To zahrnuje řadu ovládacích prvků pro ochranu modelu správy, účtů pro správu a pracovních stanic s privilegovaným přístupem proti úmyslnému a neúmyslnému riziku.
 
-Pokud se chcete podívat na příslušný integrovaný Azure Policy, přečtěte si [Podrobnosti o integrované iniciativě Azure Security test dodržování předpisů: privilegovaný přístup.](../../governance/policy/samples/azure-security-benchmark#privileged-access)
+Pokud se chcete podívat na příslušný integrovaný Azure Policy, přečtěte si [Podrobnosti o integrované iniciativě Azure Security test dodržování předpisů: privilegovaný přístup.](../../governance/policy/samples/azure-security-benchmark.md#privileged-access)
 
 ## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1: Ochrana a omezení vysoce privilegovaných uživatelů
 
@@ -160,8 +160,6 @@ Pomocí funkcí správy opravňujících ke službě Azure AD můžete automatiz
 Zabezpečené, izolované pracovní stanice jsou kriticky důležité pro zabezpečení citlivých rolí, jako je správce, vývojář a kritický operátor služby. Pro úlohy správy Používejte vysoce zabezpečené uživatelské pracovní stanice nebo Azure bastionu. K nasazení zabezpečené a spravované uživatelské pracovní stanice pro úlohy správy použijte Azure Active Directory, Microsoft Defender Advanced Threat Protection (ATP) nebo Microsoft Intune. Zabezpečená pracovní stanice se dají centrálně spravovat tak, aby vynutila zabezpečenou konfiguraci, včetně silného ověřování, standardních hodnot softwaru a hardwaru a omezeného logického a síťového přístupu. 
 
 - [Pochopení pracovních stanic s privilegovaným přístupem](/security/compass/privileged-access-deployment)
-
-- [Nasazení pracovní stanice s privilegovaným přístupem](../../active-directory/devices/howto-azure-managed-workstation)
 
 **Odpovědnost:** Zákazník
 

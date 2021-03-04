@@ -25,8 +25,12 @@
       href: tutorial-respond-threats-playbook.md
 - name: Koncepty
   items:
-    - name: Přiřazení oprávnění s využitím rolí
-      href: roles.md
+    - name: Správa přístupu
+      items:
+        - name: Oprávnění ve službě Azure Sentinel
+          href: roles.md
+        - name: Správa přístupu podle prostředku
+          href: resource-context-rbac.md
     - name: Pokročilá detekce útoků s více fázemi
       href: fusion.md
     - name: Použití vlastní platformy strojového učení
@@ -236,7 +240,7 @@
           href: connect-azure-stack.md
         - name: Monitorování stavu konektoru dat
           href: monitor-data-connector-health.md
-    - name: Povolení analýzy chování uživatelů a entit
+    - name: Povolit analýzu chování uživatelů a entit
       href: enable-entity-behavior-analytics.md
     - name: Správa několika tenantů (MSSP)
       href: multiple-tenants-service-providers.md
@@ -248,6 +252,8 @@
       href: create-incidents-from-alerts.md
     - name: Lepší správa SOC s využitím metrik pro incidenty
       href: manage-soc-with-incident-metrics.md
+    - name: Auditovat dotazy a aktivity Sentinel Azure
+      href: audit-sentinel-data.md
     - name: Vyhledávání
       href: hunting.md
       items:
@@ -259,6 +265,8 @@
           href: livestream.md
     - name: Odebrání Azure Sentinelu
       href: offboard.md
+    - name: Implementace rozšířených RBAC
+      items: null
 - name: Reference
   items:
     - name: Role Azure RBAC
@@ -293,8 +301,8 @@
   items:
     - name: Užitečné materiály
       href: resources.md
-    - name: 'Blog věnovaný zabezpečení, ochraně osobních údajů a dodržování předpisů v Azure'
-      href: /archive/blogs/azuresecurity/
+    - name: Blog Sentinel Azure
+      href: 'https://techcommunity.microsoft.com/t5/azure-sentinel/bg-p/AzureSentinelBlog'
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-sentinel'
     - name: Ceny

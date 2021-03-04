@@ -5,18 +5,28 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 02/24/2021
 ms.author: banders
-ms.openlocfilehash: 045ab35a35aa4caefb1e1bcbbf7bf78b726c09f7
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 9015cbcd669665467d3836112b152aa504176f2b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601466"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035989"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobslužné výměny a vrácení peněz za rezervace Azure
 
-Rezervace Azure vám dávají flexibilitu pro zvládání stále se vyvíjejících potřeb. Rezervaci si můžete vyměnit za jinou rezervaci stejného typu. Rezervaci virtuálního počítače můžete například vyměnit a koupit jinou rezervaci pro libovolnou jinou velikost virtuálního počítače nebo oblast. Podobně se dá rezervace databáze SQL PaaS vyměnit za nákup rezervace databáze SQL PaaS libovolného typu a v libovolné oblasti. Rezervace se dají také refundovat, ale celkový objem zrušených rezervací ve vašem rozsahu fakturace (jako je EA, Smlouva s partnerem Microsoftu a Smlouva se zákazníkem Microsoftu) nesmí za průběžné období 12 měsíců překročit 50 000 USD. Refundovat se nedá rezervovaná kapacita Azure Databricks, rezervace Řešení Azure VMware od CloudSimple, rezervace Azure Red Hat Open Shiftu, plány pro Red Hat a plány pro SUSE Linux.
+Rezervace Azure vám dávají flexibilitu pro zvládání stále se vyvíjejících potřeb. Můžete vyměnit rezervace pro jinou rezervaci stejného typu. Můžete například vracet více výpočetních rezervací, včetně vyhrazeného hostitele Azure, řešení Azure VMware a Azure Virtual Machines všech dalších najednou. Jinými slovy, rezervované produkty jsou vzájemně zaměnitelné, pokud se jedná o stejný typ rezervace. V jiném příkladu můžete vyměňovat několik typů rezervací SQL Database včetně spravovaných instancí a Elastický fond mezi sebou.
+
+Nemůžete ale vyměnit nepodobné rezervace. Například nemůžete vyměnit Cosmos DB rezervaci pro SQL Database.
+
+Můžete také vyměnit rezervaci k nákupu jiné rezervace podobného typu v jiné oblasti. Můžete například vyměňovat rezervaci, která je v Západní USA 2 pro jednu z Západní Evropa.
+
+Při výměně rezervovaného kurzu můžete změnit svůj termín na tři roky na tři roky.
+
+Rezervace se dají také refundovat, ale celkový objem zrušených rezervací ve vašem rozsahu fakturace (jako je EA, Smlouva s partnerem Microsoftu a Smlouva se zákazníkem Microsoftu) nesmí za průběžné období 12 měsíců překročit 50 000 USD.
+
+Refundovat se nedá rezervovaná kapacita Azure Databricks, rezervace Řešení Azure VMware od CloudSimple, rezervace Azure Red Hat Open Shiftu, plány pro Red Hat a plány pro SUSE Linux.
 
 Možnost samoobslužné výměny nebo zrušení není k dispozici pro zákazníky s předplatným US Government se smlouvou Enterprise. Podporují se i ostatní typy předplatného US Government, včetně předplatného s průběžnými platbami a CSP (Cloud Solution Provider).
 
@@ -37,9 +47,26 @@ K výměně rezervace můžete využít [Azure Portal](https://portal.azure.com/
 
 Pokud chcete vrátit peníze za rezervaci, přejděte do části **Podrobnosti o rezervaci** a vyberte **Refundace**.
 
+## <a name="exchange-multiple-reservations"></a>Výměna více rezervací
+
+V jedné akci můžete vracet podobné typy rezervací.
+
+Když vyměňujete rezervace, nová částka nákupní měny musí být vyšší než částka refundace. Pokud je vaše nová částka nákupu menší než částka náhrady, zobrazí se chyba. Pokud se zobrazí chyba, snižte množství, které chcete vrátit, nebo Zvyšte množství, které se má koupit.
+
+1. Přihlaste se k webu Azure Portal a přejděte k položce **Rezervace**.
+1. V seznamu rezervací zaškrtněte políčko pro každou rezervaci, kterou chcete vyměnit.
+1. V horní části stránky vyberte **Exchange**.
+1. V případě potřeby upravte množství, které se má vrátit pro každou rezervaci.
+1. Pokud vyberete automatické vyplňování vráceného množství, můžete zvolit možnost **refundace vše** , aby se seznam vyplnil úplným množstvím, které vlastníte pro každou rezervaci, nebo **optimalizací pro využití (7 dní)** pro vyplňování seznamu množství, které optimalizuje využití na základě posledních sedmi dnů využití. **Vyberte použít**.
+1. V dolní části stránky vyberte **Další: koupit**.
+1. Na kartě koupit vyberte dostupné produkty, pro které chcete vyměňovat. Můžete vybrat více produktů různých typů.
+1. V podokně vyberte produkt, který chcete koupit vyberte požadované produkty a pak vyberte **Přidat do košíku** a pak vyberte **Zavřít**.
+1. Až budete hotovi, vyberte **Další: zkontrolovat**.
+1. Zkontrolujte své rezervace a vraťte se a nové rezervace k nákupu a pak vyberte **Potvrdit Exchange**.
+
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Výměna služby jiného typu než Premium Storage za službu Premium Storage
 
-Rezervaci zakoupenou pro virtuální počítač, jehož velikost nepodporuje službu Premium Storage, můžete vyměnit za odpovídající virtuální počítač, jehož velikost tuto službu podporuje. Můžete například vyměnit _F1_ za _F1s_. Provedete to tak, že přejdete do části Podrobnosti o rezervaci a vyberete **Vyměnit**. Při výměně nedojde k obnově období rezervované instance, ani k vytvoření nové transakce. 
+Rezervaci zakoupenou pro virtuální počítač, jehož velikost nepodporuje službu Premium Storage, můžete vyměnit za odpovídající virtuální počítač, jehož velikost tuto službu podporuje. Můžete například vyměnit _F1_ za _F1s_. Provedete to tak, že přejdete do části Podrobnosti o rezervaci a vyberete **Vyměnit**. Při výměně nedojde k obnově období rezervované instance, ani k vytvoření nové transakce.
 
 ## <a name="how-transactions-are-processed"></a>Jak se zpracovávají transakce
 

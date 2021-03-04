@@ -3,12 +3,12 @@ title: Zabezpečené doručování webhooků pomocí Azure AD v Azure Event Grid
 description: Popisuje, jak doručovat události do koncových bodů HTTPS chráněných pomocí Azure Active Directory pomocí Azure Event Grid
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: b01f0342e185883c4d1552800ab9bdb30cea3040
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: be38edfb4edfee5b3a3b42d7b1c5a44c9d72ceef
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549148"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035441"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Publikování událostí do chráněných koncových bodů Azure Active Directory
 
@@ -26,7 +26,7 @@ Začněte vytvořením aplikace Azure AD pro chráněný koncový bod. Viz tří
 V této části se dozvíte, jak povolit Event Grid k používání aplikace Azure AD. 
 
 > [!NOTE]
-> Abyste mohli tento skript spustit, musíte být členem [role Správce aplikací Azure AD](../active-directory/roles/permissions-reference.md#available-roles) .
+> Abyste mohli tento skript spustit, musíte být členem [role Správce aplikací Azure AD](../active-directory/roles/permissions-reference.md#all-roles) .
 
 ### <a name="connect-to-your-azure-tenant"></a>Připojení k vašemu tenantovi Azure
 Nejdřív se připojte k tenantovi Azure pomocí `Connect-AzureAD` příkazu. 

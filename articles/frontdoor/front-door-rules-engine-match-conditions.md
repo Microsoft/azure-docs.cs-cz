@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2020
+ms.date: 03/01/2020
 ms.author: duau
-ms.openlocfilehash: 0e874ae3d29f4143a4f8a9275d5ffcde48d08e6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a352624fc802e4224aa1b60768c064c0054cdfd6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569769"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035870"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Podmínky shody stroje Azure pro pravidla front
 
@@ -142,7 +142,7 @@ Operátor | Adresa URL požadavku | Transformace případu
 
 #### <a name="key-information"></a>Informace o klíči
 
-- Když použijete tuto podmínku pravidla, nezapomeňte zahrnout informace o protokolu. Například: * https://www . \<yourdomain\> . model COM*.
+- Když použijete tuto podmínku pravidla, nezapomeňte zahrnout informace o protokolu. Příklad: `https://www.<yourdomain\>.com`.
 
 ## <a name="request-file-extension"></a>Žádost o příponu souboru
 
@@ -182,6 +182,10 @@ Operátor | Hodnota | Transformace případu
 ---------|-------|---------------
 [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Malá písmena, Velká písmena, střih, odebrat prázdné znaky, kódování URL, kódování adresy URL
 
+#### <a name="key-information"></a>Informace o klíči
+
+- Když použijete tuto podmínku pravidla, Všimněte si, že shoda začíná za první `/` z cesty. Například: `https://www.<yourdomain>.com/folder/page` by začaly odpovídat `folder/page` .
+
 ## <a name="standard-operator-list"></a>Seznam standardních operátorů
 
 Pro pravidla, která přijímají hodnoty ze seznamu standardních operátorů, platí následující operátory:
@@ -191,9 +195,9 @@ Pro pravidla, která přijímají hodnoty ze seznamu standardních operátorů, 
 - Contains 
 - Začíná na 
 - Končí na 
-- Je menší než
+- Menší než
 - Je menší než nebo rovno
-- Je větší než
+- Větší než
 - Je větší než nebo rovno
 - Ne žádné
 - Neobsahuje

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: cff40385edc89c0f6d2d105d089b66c046b0c04b
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d46a20079919f052ed343c9702ba02ce7f109b5c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545934"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "102036128"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Kurz: sestavení kompletního řešení
 
@@ -107,7 +107,7 @@ Zpět v okně aplikace Visual Studio, kde je otevřen projekt _**AdtE2ESample**_
 
 Před publikováním aplikace je vhodné se ujistit, že vaše závislosti jsou aktuální, a přitom se ujistěte, že máte nejnovější verzi všech zahrnutých balíčků.
 
-V podokně *Průzkumník řešení* rozbalte položku *SampleFunctionsApp > závislosti*. Klikněte pravým tlačítkem na položku *balíčky* a zvolte možnost *Spravovat balíčky NuGet...*.
+V podokně *Průzkumník řešení* rozbalte položku _**SampleFunctionsApp** > závislosti_. Klikněte pravým tlačítkem na položku *balíčky* a zvolte možnost *Spravovat balíčky NuGet...*.
 
 :::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio: Správa balíčků NuGet pro projekt SampleFunctionsApp" border="false":::
 
@@ -131,15 +131,17 @@ V Azure Cloud Shell pomocí následujícího příkazu nastavte nastavení aplik
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
-Výstupem je seznam nastavení funkce Azure Functions, která by teď měla obsahovat položku s názvem *ADT_SERVICE_URL*.
+Výstupem je seznam nastavení funkce Azure Functions, která by teď měla obsahovat položku s názvem **ADT_SERVICE_URL**.
 
-Pomocí následujícího příkazu vytvořte identitu spravovanou systémem. Poznamenejte si pole *principalId* ve výstupu.
+Pomocí následujícího příkazu vytvořte identitu spravovanou systémem. Ve výstupu vyhledejte pole **principalId** .
 
 ```azurecli-interactive
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-Pomocí hodnoty *principalId* z výstupu v následujícím příkazu přiřaďte identitu aplikace funkcí k roli *vlastníka dat digitálních vláken Azure* pro vaši instanci digitálních vláken Azure:
+Pomocí hodnoty **principalId** z výstupu v následujícím příkazu přiřaďte identitu aplikace funkcí k roli *vlastníka dat digitálních vláken Azure* pro vaši instanci digitálních vláken Azure.
+
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 ```azurecli-interactive
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
@@ -176,7 +178,7 @@ az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku 
 
 Výstupem tohoto příkazu jsou informace o vytvořeném službě IoT Hub.
 
-Uložte název, který jste přiřadili do služby IoT Hub. Budete jej později potřebovat.
+Uložte **název** , který jste přiřadili do služby IoT Hub. Budete jej později potřebovat.
 
 ### <a name="connect-the-iot-hub-to-the-azure-function"></a>Připojení centra IoT ke službě Azure Functions
 
@@ -269,7 +271,10 @@ V okně konzoly projektu, které se otevře, spusťte následující příkaz, k
 ObserveProperties thermostat67 Temperature
 ```
 
-Měli byste vidět živá aktualizované teploty *z instance digitálních vláken Azure* , které jsou protokolovány do konzoly každých 10 sekund.
+Měli byste vidět živá aktualizované teploty *z instance digitálních vláken Azure* , které jsou protokolovány do konzoly každé dvě sekundy.
+
+>[!NOTE]
+> Může trvat několik sekund, než se data ze zařízení šíří do vlákna. Prvních několika čtení teploty se může zobrazit jako 0 předtím, než se data začnou dorazit.
 
 :::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry.png" alt-text="Výstup konzoly zobrazující protokol teplotních zpráv z digitálního vlákna thermostat67":::
 
@@ -327,7 +332,7 @@ Vyhledejte `provisioningState` pole ve výstupu a zkontrolujte, zda je hodnota "
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="Výsledek dotazu koncového bodu zobrazující koncový bod s provisioningStateem úspěšného":::
 
-Uložte názvy, které jste zadali do svého tématu Event gridu, a Event Grid koncový bod v části digitální vlákna Azure. Později je budete používat.
+Uložte názvy, které jste zadali do svého **tématu Event gridu** , a Event Grid **koncový bod** v části digitální vlákna Azure. Později je budete používat.
 
 ### <a name="set-up-route"></a>Nastavení trasy
 
@@ -346,7 +351,7 @@ Výstupem z tohoto příkazu jsou některé informace o trasách, které jste vy
 
 Dále přihlaste *ProcessDTRoutedData* funkci Azure do tématu Event gridu, které jste vytvořili dříve, aby data telemetrie mohla být z *thermostat67* vyplněna prostřednictvím tématu Event gridu do funkce, která se vrátí do digitálních vláken Azure a odpovídajícím způsobem aktualizuje *room21* .
 
-Pokud to chcete provést, vytvoříte **Event Grid předplatné** z tématu Event gridu do *ProcessDTRoutedData* funkce Azure jako koncový bod.
+Uděláte to tak, že vytvoříte **předplatné Event Grid** , které odesílá data z **tématu Event gridu** , které jste vytvořili dříve, do služby Azure Functions v *ProcessDTRoutedData* .
 
 V [Azure Portal](https://portal.azure.com/)přejděte na téma Event gridu tak, že na horním panelu vyhledávání vyhledáte jeho název. Vyberte *+ Odběr události*.
 
@@ -381,7 +386,7 @@ V okně konzoly projektu, které se otevře, spusťte následující příkaz, k
 ObserveProperties thermostat67 Temperature room21 Temperature
 ```
 
-Měli byste vidět živá aktualizované teploty *z instance digitálních vláken Azure* , které jsou protokolovány do konzoly každých 10 sekund. Všimněte si, že teplota pro *room21* se aktualizuje tak, aby odpovídala aktualizacím *thermostat67*.
+Měli byste vidět živá aktualizované teploty *z instance digitálních vláken Azure* , které jsou protokolovány do konzoly každé dvě sekundy. Všimněte si, že teplota pro *room21* se aktualizuje tak, aby odpovídala aktualizacím *thermostat67*.
 
 :::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry-b.png" alt-text="Výstup konzoly zobrazující protokol teplotních zpráv, z termostatu a místnosti":::
 

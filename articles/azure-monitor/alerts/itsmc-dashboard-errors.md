@@ -1,17 +1,16 @@
 ---
 title: Chyby stavu konektoru na řídicím panelu ITSMC
 description: Seznamte se s běžnými chybami, které existují na řídicím panelu IT Service Management Connector.
-ms.subservice: alerts
 ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 0b0dd584aee4a7647a3028ea20b517c0d74a330a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5cc3c4a07cc698f3592a2ff2fd76e9f4bbef441b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734736"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036448"
 ---
 # <a name="connector-status-errors-in-the-itsmc-dashboard"></a>Chyby stavu konektoru na řídicím panelu ITSMC
 

@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: 6601cd31cf6e332bf292cd887b498a92946d8af7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c336c1632cf206cdf2bf7151dc191c4de5ef820d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101668295"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036924"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Možnosti dostupnosti pro virtuální počítače v Azure
 
@@ -55,7 +55,7 @@ Služba Virtual Machine Scale Sets zjednodušuje návrh vysoké dostupnosti tím
 
 **Režimy orchestrace pro sady škálování**
 
-Režimy orchestrace virtuálních počítačů umožňují lepší kontrolu nad tím, jak jsou instance virtuálních počítačů spravovány sadou škálování. V sadě škálování můžete povolit jednotný nebo flexibilní režim orchestrace. Jednotná orchestrace je optimalizovaná pro rozsáhlá Bezstavová zatížení se stejnými instancemi. Flexibilní orchestrace (Preview) je určena pro vysokou dostupnost ve velkém měřítku se stejnými nebo více typy virtuálních počítačů. Přečtěte si další informace o těchto [režimech orchestrace](./virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) a o tom, jak je povolit.
+Režimy orchestrace virtuálních počítačů umožňují lepší kontrolu nad tím, jak jsou instance virtuálních počítačů spravovány sadou škálování. V sadě škálování můžete povolit jednotný nebo flexibilní režim orchestrace. Jednotná orchestrace je optimalizovaná pro rozsáhlá Bezstavová zatížení se stejnými instancemi. Flexibilní orchestrace (Preview) je určena pro vysokou dostupnost ve velkém měřítku se stejnými nebo více typy virtuálních počítačů. Přečtěte si další informace o těchto [režimech orchestrace](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) a o tom, jak je povolit.
 
 
 ## <a name="availability-sets"></a>Skupiny dostupnosti

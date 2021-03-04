@@ -1,24 +1,24 @@
 ---
 title: Rychlý Start – prozkoumat vzorový scénář
 titleSuffix: Azure Digital Twins
-description: Rychlý Start – k vizualizaci a prozkoumání předdefinovaného scénáře použijte ukázku Průzkumníka ADT.
+description: Rychlý Start – ukázka použití Průzkumníka digitálních vláken Azure k vizualizaci a prozkoumání předdefinovaného scénáře.
 author: baanders
 ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 9d09bca246938f972a212f7ee71f03a618e16ac4
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: cb501dd8e548ea2f6ce8b63fbffb1c4b2403c9a6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575672"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035955"
 ---
-# <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Rychlý Start – Prozkoumejte ukázkový scénář digitálních vláken Azure pomocí Průzkumníka aplikace ADT
+# <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>Rychlý Start – Prozkoumejte ukázkový scénář digitálních vláken Azure pomocí Průzkumníka digitálních vláken Azure
 
 Pomocí digitálních vláken Azure můžete vytvářet a interagovat s živými modely vašich reálných prostředí. Nejprve modelujte jednotlivé prvky jako *digitální vlákna*. Pak je připojíte ke znalostnímu *diagramu* , který může reagovat na živé události a dotazovat se na informace.
 
-V tomto rychlém startu prozkoumáte předem sestavený graf digitálních vláken Azure s využitím ukázkové aplikace s názvem [Azure Digital (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Průzkumníka aplikace ADT použijete k těmto akcím:
+V tomto rychlém startu prozkoumáte předem sestavený graf digitálních vláken Azure s použitím ukázkové aplikace s názvem [Průzkumník digitálních vláken Azure](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Použijete Průzkumníka digitálních vláken Azure k těmto akcím:
 
 - Nahrajte digitální reprezentaci prostředí.
 - Zobrazení vizuálních obrázků vláken a grafů, které jsou vytvořeny tak, aby představovaly prostředí v rámci digitálních vláken Azure.
@@ -26,7 +26,7 @@ V tomto rychlém startu prozkoumáte předem sestavený graf digitálních vlák
 
 Rychlý Start obsahuje následující hlavní kroky:
 
-1. Nastavte instanci digitálních vláken Azure a Průzkumníka aplikace ADT.
+1. Nastavte instanci digitálních vláken Azure a Průzkumníka digitálních vláken Azure.
 1. Nahrajte předem sestavené modely a data grafu a vytvořte vzorový scénář.
 1. Prozkoumejte graf scénáře, který se vytvoří.
 1. Proveďte změny v grafu.
@@ -41,11 +41,11 @@ K dokončení tohoto rychlého startu budete potřebovat předplatné Azure. Pok
 
 Budete také potřebovat **Node.js** na svém počítači. Pokud chcete získat nejnovější verzi, přečtěte si téma [Node.js](https://nodejs.org/).
 
-Nakonec také budete muset stáhnout ukázku, která se má použít při rychlém startu. Ukázková aplikace je **průzkumníkem programu ADT**. Tato ukázka obsahuje aplikaci, kterou používáte v rychlém startu k načtení a prozkoumání scénáře digitálních vláken Azure. Obsahuje také ukázkové soubory scénáře. Ukázku získáte tak, že přejdete do [Průzkumníka digitálních vláken Azure (ADT)](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Vyberte tlačítko **Stáhnout ZIP** a Stáhněte si soubor. zip tohoto ukázkového kódu do vašeho počítače. Rozbalte složku **Azure_Digital_Twins__ADT__explorer.zip** a extrahujte soubory.
+Nakonec také budete muset stáhnout ukázku, která se má použít při rychlém startu. Ukázková aplikace je **Průzkumník digitálních vláken Azure**. Tato ukázka obsahuje aplikaci, kterou používáte v rychlém startu k načtení a prozkoumání scénáře digitálních vláken Azure. Obsahuje také ukázkové soubory scénáře. Ukázku získáte tak, že přejdete na [Průzkumník digitálních vláken Azure](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Vyberte tlačítko **Stáhnout ZIP** a Stáhněte si soubor. zip tohoto ukázkového kódu do vašeho počítače. Rozbalte složku **Azure_Digital_Twins__ADT__explorer.zip** a extrahujte soubory.
 
-## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Nastavení digitálních vláken Azure a Průzkumníka služby ADT
+## <a name="set-up-azure-digital-twins-and-azure-digital-twins-explorer"></a>Nastavení digitálních vláken Azure a Průzkumníka digitálních vláken Azure
 
-Prvním krokem při práci se službou Azure Digital proworking je nastavení instance digitálních vláken Azure. Po vytvoření instance služby a nastavení přihlašovacích údajů pro ověření v Průzkumníkovi aplikace ADT se můžete připojit k instanci v Průzkumníkovi aplikace ADT a naplnit ji pomocí ukázkových dat později v rychlém startu.
+Prvním krokem při práci se službou Azure Digital proworking je nastavení instance digitálních vláken Azure. Po vytvoření instance služby a nastavení přihlašovacích údajů pro ověřování pomocí Průzkumníka digitálních vláken Azure se můžete připojit k instanci v Průzkumníkovi digitálních vláken Azure a naplnit ji pomocí ukázkových dat později v rychlém startu.
 
 Zbytek této části vás provede následujícími kroky.
 
@@ -55,11 +55,11 @@ Zbytek této části vás provede následujícími kroky.
 
 ### <a name="set-up-local-azure-credentials"></a>Nastavit místní přihlašovací údaje Azure
 
-Aplikace Průzkumníka ADT používá [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) (součást `Azure.Identity` knihovny) k ověřování uživatelů s instancí digitálních vláken Azure, když ji spustíte na místním počítači. Další informace o různých způsobech, jak se klientská aplikace může ověřit pomocí digitálních vláken Azure, najdete v tématu [zápis ověřovacího kódu aplikace](how-to-authenticate-client.md).
+Aplikace Průzkumník digitálních vláken Azure používá [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) (součást `Azure.Identity` knihovny) k ověřování uživatelů s instancí digitálních vláken Azure, když ji spustíte na místním počítači. Další informace o různých způsobech, jak se klientská aplikace může ověřit pomocí digitálních vláken Azure, najdete v tématu [zápis ověřovacího kódu aplikace](how-to-authenticate-client.md).
 
-V případě tohoto typu ověřování bude Průzkumník aplikace ADT Hledat přihlašovací údaje v rámci místního prostředí, jako je například přihlášení Azure v místním rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) nebo v sadě Visual Studio nebo Visual Studio Code. Z tohoto důvodu byste se měli *k Azure přihlašovat místně* prostřednictvím jednoho z těchto mechanismů a nastavit přihlašovací údaje pro aplikaci v Průzkumníkovi ADT.
+V případě tohoto typu ověřování bude Průzkumník digitálních vláken Azure Hledat přihlašovací údaje v rámci místního prostředí, jako je například přihlášení Azure v místním rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) nebo v sadě Visual Studio nebo Visual Studio Code. Z tohoto důvodu byste se měli *k Azure přihlašovat místně* prostřednictvím jednoho z těchto mechanismů, abyste nastavili přihlašovací údaje pro aplikaci Průzkumník digitálních vláken Azure.
 
-Pokud už jste se k Azure přihlásili jedním z těchto způsobů, můžete přejít k [Další části](#run-and-configure-adt-explorer).
+Pokud už jste se k Azure přihlásili jedním z těchto způsobů, můžete přejít k [Další části](#run-and-configure-azure-digital-twins-explorer).
 
 V opačném případě můžete místní Azure CLI nainstalovat pomocí těchto kroků:
 
@@ -68,13 +68,13 @@ V opačném případě můžete místní Azure CLI nainstalovat pomocí těchto 
 1. Spusťte `az login` příkaz a podle pokynů k ověření se přihlaste ke svému účtu Azure.
 1. Možný poslední krok: Pokud v rámci tohoto účtu použijete více předplatných Azure, nastavte kontext ověřování na předplatné Azure, které obsahuje instanci digitálního vlákna Azure, a to spuštěním `az account set --subscription "<your-subscription-name-or-ID>"` (hodnota název nebo ID předplatného bude fungovat).
 
-Po přihlášení by měl Průzkumník aplikace ADT při spuštění v další části automaticky zvolit přihlašovací údaje Azure.
+Po přihlášení by měl Průzkumník digitálních vláken Azure automaticky vybírat přihlašovací údaje Azure při spuštění v další části.
 
 V případě potřeby můžete okno konzoly ověřování zavřít. Nebo ho můžete nechat otevřený pro použití v dalším kroku.
 
-### <a name="run-and-configure-adt-explorer"></a>Spuštění a konfigurace Průzkumníka aplikace ADT
+### <a name="run-and-configure-azure-digital-twins-explorer"></a>Spuštění a konfigurace Průzkumníka digitálních vláken Azure
 
-V dalším kroku spusťte aplikaci aplikace ADT Explorer a nakonfigurujte ji pro instanci digitálních vláken Azure.
+V dalším kroku spusťte aplikaci Průzkumník digitálních vláken Azure a nakonfigurujte ji pro instanci digitálních vláken Azure.
 
 1. Přejít do složky Downloaded and unzip **Azure_Digital_Twins__ADT__explorer** .
 Otevřete okno konzoly do umístění složky **Azure_Digital_Twins__ADT__explorer/Client/src**.
@@ -85,11 +85,11 @@ Otevřete okno konzoly do umístění složky **Azure_Digital_Twins__ADT__explor
 
    Po několika sekundách se otevře okno prohlížeče a aplikace se zobrazí v prohlížeči.
 
-   :::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="Okno prohlížeče zobrazující aplikaci spuštěnou na localhost: 3000. Aplikace se nazývá aplikace ADT Explorer a obsahuje pole pro Průzkumníka dotazů, zobrazení modelu, zobrazení grafu a Průzkumník vlastností. Ještě nejsou k dispozici žádná data na obrazovce." lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
+   :::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="Okno prohlížeče zobrazující aplikaci spuštěnou na localhost: 3000. Aplikace se nazývá Průzkumník digitálních vláken Azure a obsahuje pole pro Průzkumníka dotazů, zobrazení modelu, zobrazení grafu a Průzkumník vlastností. Ještě nejsou k dispozici žádná data na obrazovce." lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
 
-1. Vyberte tlačítko **Přihlásit** v pravém horním rohu okna, jak je znázorněno na následujícím obrázku, abyste mohli nakonfigurovat Průzkumníka aplikace ADT, aby fungoval s instancí, kterou jste nastavili.
+1. V pravém horním rohu okna vyberte tlačítko **Přihlásit** , jak je znázorněno na následujícím obrázku, abyste mohli nakonfigurovat Průzkumníka digitálních vláken Azure pro práci s instancí, kterou jste nastavili.
 
-   :::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="Průzkumník ADT – zvýrazní ikonu přihlášení v horní části okna. Ikona zobrazuje jednoduché Silhouette osoby překrývající Silhouette klíče." lightbox="media/quickstart-adt-explorer/sign-in.png":::
+   :::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="Průzkumník digitálních vláken Azure zvýrazňuje ikonu přihlášení v horní části okna. Ikona zobrazuje jednoduché Silhouette osoby překrývající Silhouette klíče." lightbox="media/quickstart-adt-explorer/sign-in.png":::
 
 1. Zadejte adresu URL instance digitálních vláken Azure, kterou jste shromáždili dříve v části [Nastavení instance digitálních vláken Azure](#set-up-an-azure-digital-twins-instance) , ve formátu *https://{instance hosta}*.
 
@@ -103,7 +103,7 @@ Pokud se zobrazí **oprávnění požadované** automaticky otevírané okno od 
 
 ## <a name="add-the-sample-data"></a>Přidat ukázková data
 
-V dalším kroku naimportujete vzorový scénář a graf do nástroje ADT Explorer. Ukázkový scénář je také umístěn ve složce **Azure_Digital_Twins__ADT__explorer** , kterou jste stáhli dříve.
+V dalším kroku naimportujete vzorový scénář a graf do Průzkumníka digitálních vláken Azure. Ukázkový scénář je také umístěn ve složce **Azure_Digital_Twins__ADT__explorer** , kterou jste stáhli dříve.
 
 ### <a name="models"></a>Modely
 
@@ -138,7 +138,7 @@ Pomocí těchto kroků nahrajte modely.
 >Pokud se zobrazí následující chybová zpráva: :::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="automaticky otevírané okno čte chybu: Chyba při načítání modelů: ClientAuthError: Chyba při otevírání překryvného okna. K tomu může dojít, pokud používáte Internet Explorer nebo pokud jsou automaticky otevíraná okna blokována v prohlížeči. tlačítko s tlačítkem Zavřít v dolní části." border="false"::: 
 > Zkuste zakázat blokování automaticky otevíraných oken nebo použít jiný prohlížeč.
 
-Průzkumník aplikace ADT nyní nahraje tyto soubory modelu do instance digitálního vlákna Azure. Měly by se zobrazit v poli **zobrazení modelu** a zobrazit jejich popisné názvy a úplná ID modelu. Můžete vybrat ikony Zobrazit informace o **modelu** , abyste si zobrazili kód DTDL za nimi.
+Průzkumník digitálních vláken Azure teď nahraje tyto soubory modelu do instance digitálního vlákna Azure. Měly by se zobrazit v poli **zobrazení modelu** a zobrazit jejich popisné názvy a úplná ID modelu. Můžete vybrat ikony Zobrazit informace o **modelu** , abyste si zobrazili kód DTDL za nimi.
 
 :::row:::
     :::column:::
@@ -173,7 +173,7 @@ Pomocí následujícího postupu naimportujte graf.
 
 2. V poli pro výběr souboru přejdete do složky **Azure_Digital_Twins__ADT__explorer/Client/Examples** a vyberete **buildingScenario.xlsx** soubor tabulky. Tento soubor obsahuje popis ukázkového grafu. Vyberte **OK**.
 
-   Po několika sekundách otevře Průzkumník služby ADT zobrazení **importu** , ve kterém se zobrazí náhled grafu, který se má načíst.
+   Po několika sekundách Průzkumník digitálních vláken Azure otevře zobrazení **importu** , ve kterém se zobrazí náhled grafu, který se má načíst.
 
 3. Pokud chcete potvrdit nahrávání grafu, vyberte ikonu **Uložit** v pravém horním rohu pole **zobrazení grafu** .
 
@@ -185,7 +185,7 @@ Pomocí následujícího postupu naimportujte graf.
     :::column-end:::
    :::row-end:::
 
-4. Průzkumník aplikace ADT nyní používá nahraný soubor k vytvoření požadovaných vláken a vztahů mezi nimi. Po dokončení se zobrazí dialogové okno. Vyberte **Zavřít**.
+4. Průzkumník digitálních vláken Azure teď pomocí nahraného souboru vytvoří požadované zdvojení a vztahy mezi nimi. Po dokončení se zobrazí dialogové okno. Vyberte **Zavřít**.
 
    :::row:::
     :::column:::
@@ -197,11 +197,11 @@ Pomocí následujícího postupu naimportujte graf.
     :::column-end:::
    :::row-end:::
 
-5. Graf byl nyní nahrán do Průzkumníka aplikace ADT. Chcete-li zobrazit graf, vyberte tlačítko **Spustit dotaz** v poli **Průzkumník grafu** v horní části okna Průzkumníka aplikace ADT.
+5. Graf se teď nahrál do Průzkumníka digitálních vláken Azure. Chcete-li zobrazit graf, vyberte tlačítko **Spustit dotaz** v poli **Průzkumník grafu** v horní části okna Průzkumníka digitálních vláken Azure.
 
    :::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="Zvýrazní se tlačítko spustit dotaz v pravém horním rohu okna." lightbox="media/quickstart-adt-explorer/run-query.png":::
 
-Tato akce spustí výchozí dotaz pro výběr a zobrazení všech digitálních vláken. Průzkumník aplikace ADT načte všechny vlákna a relace ze služby. Kreslí graf definovaný v poli **zobrazení grafu** .
+Tato akce spustí výchozí dotaz pro výběr a zobrazení všech digitálních vláken. Průzkumník digitálních vláken Azure načítá všechny vlákna a vztahy ze služby. Kreslí graf definovaný v poli **zobrazení grafu** .
 
 ## <a name="explore-the-graph"></a>Prozkoumat graf
 
@@ -262,7 +262,7 @@ Odvolání ze zobrazení vlastností s dvojitou platností dříve, než Room0 m
 
 ## <a name="edit-data-in-the-graph"></a>Úprava dat v grafu
 
-Pomocí Průzkumníka programu ADT můžete upravit vlastnosti vláken reprezentovaných v grafu. V této části zvýšíme teplotu Room0 až 76.
+Pomocí Průzkumníka digitálních vláken Azure můžete upravit vlastnosti vláken reprezentovaných v grafu. V této části zvýšíme teplotu Room0 až 76.
 
 Začněte tak, že vyberete **Room0** a zobrazíte jeho seznam vlastností v poli **Průzkumník vlastností** .
 
@@ -290,7 +290,7 @@ Teď, když se teplota Room0 změnila z 70 na 76, ve výsledku by se měla zobra
 
 ## <a name="review-and-contextualize-learnings"></a>Recenze a dát učení
 
-V tomto rychlém startu jste vytvořili instanci digitálních vláken Azure, připojili ji k Průzkumníkovi aplikace ADT a naplnili ji ukázkovým scénářem.
+V tomto rychlém startu jste vytvořili instanci digitálních vláken Azure, připojili ji k Průzkumníku digitálních vláken Azure a naplnili ji ukázkovým scénářem.
 
 Pak jste prozkoumali graf podle:
 
@@ -304,7 +304,7 @@ V tomto rychlém startu jste provedli aktualizaci teploty ručně. Je běžné, 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete zabalit práci pro tento rychlý Start, nejprve ukončete spuštěnou konzolovou aplikaci. Tato akce vypne připojení k aplikaci aplikace ADT Explorer v prohlížeči. V prohlížeči už nebudete moct zobrazovat živá data. Kartu prohlížeče můžete zavřít.
+Pokud chcete zabalit práci pro tento rychlý Start, nejprve ukončete spuštěnou konzolovou aplikaci. Tato akce vypne připojení k aplikaci Průzkumník digitálních vláken Azure v prohlížeči. V prohlížeči už nebudete moct zobrazovat živá data. Kartu prohlížeče můžete zavřít.
 
 Pak můžete zvolit prostředky, které chcete odebrat, podle toho, co byste chtěli udělat dál.
 

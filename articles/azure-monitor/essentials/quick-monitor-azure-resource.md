@@ -1,17 +1,16 @@
 ---
 title: Monitorování prostředku Azure pomocí Azure Monitor
 description: Naučte se shromažďovat a analyzovat data pro prostředek Azure v Azure Monitor.
-ms. subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 62afc0ab4e65da53adb35510503051d39e0edc4e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0bbc08ccf02f572fefd1c676e2b1d73157e169c9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734226"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033227"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>Rychlý Start: monitorování prostředku Azure pomocí Azure Monitor
 [Azure monitor](../overview.md) spustí shromažďování dat z prostředků Azure okamžikem, kdy se vytváří. V tomto rychlém startu najdete Stručný návod k datům, která se automaticky shromažďují pro určitý prostředek, a o tom, jak je zobrazit v Azure Portal pro konkrétní prostředek. Později můžete přidat konfiguraci pro shromažďování dalších dat a můžete přejít do nabídky Azure Monitor a použít stejné nástroje pro přístup k datům shromážděným pro všechny prostředky v rámci vašeho předplatného.

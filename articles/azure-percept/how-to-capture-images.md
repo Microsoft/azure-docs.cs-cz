@@ -1,20 +1,20 @@
 ---
-title: Nasazení modelu Vision AI do Azure Percept DK
-description: Naučte se nasadit model Vision AI do Azure Percept DK z Azure Percept studia.
+title: Zachycení imagí pro řešení vidění bez kódu v Azure Percept studiu
+description: Přečtěte si, jak zachytit image pomocí Azure Percept DK v Azure Percept studiu pro řešení vize bez kódu
 author: elqu20
 ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 5ad263f5ae3b0b8e91de30b620002e33086608b4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 44bf498af52f4d8a0d880dc1f1d5874d5b444cae
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662285"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035530"
 ---
-# <a name="capture-images-for-a-vision-project"></a>Zachycení imagí pro projekt vize
+# <a name="capture-images-for-a-vision-project-in-azure-percept-studio"></a>Zachycení imagí pro projekt Vision v Azure Percept studiu
 
 Použijte tento průvodce k zachycení imagí pomocí Vision SoM Azure Percept DK pro existující projekt Vision v Azure Percept studiu. Pokud jste ještě nevytvořili projekt vize, přečtěte si [kurz vize necode](./tutorial-nocode-vision.md).
 
@@ -56,7 +56,7 @@ Použijte tento průvodce k zachycení imagí pomocí Vision SoM Azure Percept D
         1. V části **rychlost zachytávání** vyberte upřednostňovanou rychlost zpracování obrazu.
         1. V části **cíl** vyberte celkový počet imagí, které chcete shromáždit.
 
-    :::image type="content" source="./media/how-to-capture-images/take-photo.png" alt-text="Stránka zařízení Percept s uvedenými dostupnými akcemi":::
+    :::image type="content" source="./media/how-to-capture-images/take-photo.png" alt-text="Obrazovka zachycení obrázku":::
 
 Všechny obrázky budou přístupné v [Custom Vision](https://www.customvision.ai/).
 

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 6e1ed39edfd3c395fbc3e4d26a4aa358d48a1d5b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 01bd3709050d8a2b57c1bf51920308188546fb31
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662422"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035479"
 ---
 # <a name="deploy-a-vision-ai-model-to-your-azure-percept-dk"></a>Nasazení modelu Vision AI do Azure Percept DK
 
@@ -40,13 +40,11 @@ Podle tohoto průvodce nasaďte model aplikace Vision AI do Azure Percept DK z A
 
 1. Na další stránce klikněte na **nasadit ukázkový model** , pokud chcete nasadit některý z předem vyškolených modelů ukázkových visionů. Pokud byste chtěli nasadit stávající [vlastní řešení pro revize bez kódu](./tutorial-nocode-vision.md), klikněte na **nasadit Custom Vision projekt**.
 
-    :::image type="content" source="./media/how-to-deploy-model/deploy-model.png" alt-text="Seznam zařízení Percept.":::
+    :::image type="content" source="./media/how-to-deploy-model/deploy-model.png" alt-text="Volby modelu pro nasazení.":::
 
 1. Pokud jste se rozhodli nasadit řešení pro vize bez kódu, vyberte svůj projekt a preferovaný model iterace a klikněte na **nasadit**.
 
 1. Pokud jste se rozhodli nasadit Vzorový model, vyberte model a klikněte na **nasadit do zařízení**.
-
-    :::image type="content" source="./media/how-to-deploy-model/select-sample-model.png" alt-text="Seznam zařízení Percept.":::
 
 1. Po úspěšném nasazení modelu se zobrazí stavová zpráva v pravém horním rohu obrazovky. Pokud chcete zobrazit Inferencing modelu v akci, klikněte na odkaz **Zobrazit stream** ve stavové zprávě a podívejte se na video stream RTSP z Vision SOM vašich DevKit.
 

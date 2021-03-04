@@ -2,15 +2,15 @@
 title: Nejčastější dotazy k šabloně ARM
 description: Nejčastější dotazy týkající se Azure Resource Manager šablon (šablony ARM).
 ms.topic: conceptual
-ms.date: 09/17/2020
+ms.date: 03/03/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 757dfa119649e21c6e1787671afa61ee18184300
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 24baa0dc7444f632040ddaf9fcc2266f9e4ccae5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561898"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036136"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Nejčastější dotazy týkající se šablon ARM
 
@@ -88,7 +88,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure
 
 * **Slyšeli jsme, že pracujete na novém jazyku šablony. Kde můžu získat další informace?**
 
-  Pokud chcete zobrazit náhled nového jazyka, přečtěte si téma [úložiště bicep projektu](https://github.com/Azure/bicep). Pokud chcete mít přehled o novém jazyku, [Zaregistrujte si oznámení](https://aka.ms/armLangUpdates).
+  Další informace o novém jazyce najdete v tématu [co je bicep (Preview)?](bicep-overview.md).
 
 * **Existuje plán na podporu vytváření šablon v YAML?**
 
@@ -100,7 +100,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure
 
 * **Budete nabízet Nástroj pro převod šablon JSON na nový jazyk šablony?**
 
-  Yes.
+  Ano. Viz [dekompilace JSON do bicep](compare-template-syntax.md#decompile-json-to-bicep).
 
 ## <a name="template-specs"></a>Specifikace šablon
 
@@ -182,7 +182,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure
 
 * **Můžu do Azure Pipelines integrovat šablony ARM?**
 
-  Yes. Vysvětlení používání šablon a kanálů najdete v tématu [kurz: průběžná integrace šablon ARM pomocí Azure Pipelines](deployment-tutorial-pipeline.md) a [integrace šablon ARM s Azure Pipelines](add-template-to-azure-pipelines.md).
+  Ano. Vysvětlení používání šablon a kanálů najdete v tématu [kurz: průběžná integrace šablon ARM pomocí Azure Pipelines](deployment-tutorial-pipeline.md) a [integrace šablon ARM s Azure Pipelines](add-template-to-azure-pipelines.md).
 
 * **Můžu k nasazení šablony použít akce GitHubu?**
 

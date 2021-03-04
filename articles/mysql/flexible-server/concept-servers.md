@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 2cce4810a9e1a4d7143e2bab384d4b26471b7238
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: b664dd406a1ab90b4ea5e85005a69935f345c609
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240745"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034655"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Koncepty serveru v Azure Database for MySQL flexibilním serveru (Preview)
 
@@ -38,7 +38,7 @@ Azure Database for MySQL flexibilní Server:
 - Poskytuje integraci virtuální sítě pro přístup k databázovému serveru.
 - Poskytuje způsob, jak ušetřit náklady tím, že se pozastaví flexibilní Server, když se nepoužívá.
 - Poskytuje obor pro zásady správy, které se vztahují na jeho databáze: přihlašovací jméno, brána firewall, uživatelé, role, konfigurace atd.
-- Se aktuálně podporuje s verzí MySQL 5,7. Další informace najdete v tématu [podporované verze modulu Azure Database for MySQL](./concepts-supported-versions.md).
+- Podporuje hlavní verzi MySQL 5,7 a MySQL 8,0. Další informace najdete v tématu [podporované verze modulu Azure Database for MySQL](./../concepts-supported-versions.md).
 
 V rámci Azure Database for MySQL flexibilního serveru můžete vytvořit jednu nebo více databází. Můžete se rozhodnout, že vytvoříte izolovanou databázi na jeden server, abyste mohli použít všechny prostředky, nebo vytvořit více databází pro sdílení prostředků. Ceny jsou strukturované na server, a to na základě konfigurace výpočetní vrstvy, virtuální jádra a úložiště (GB). Další informace najdete v tématu [COMPUTE a Storage](./concepts-compute-storage.md).
 

@@ -12,12 +12,12 @@ ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a7e9e523d3aae7cf1444c048c023ca1d85fde41f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: a8ff94acbd9ffd491bf628ae61ee87634a9c6dd6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98952222"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033618"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Správa Azure AD B2C s využitím Microsoft Graph
 
@@ -137,6 +137,14 @@ Azure AD B2C poskytuje adresář, který může obsahovat 100 vlastních atribut
 - [Vypsat protokoly auditu](/graph/api/directoryaudit-list)
 
 Další informace o přístupu k protokolům auditu Azure AD B2C najdete v tématu [přístup k protokolům auditu Azure AD B2C](view-audit-logs.md).
+
+## <a name="conditional-access"></a>Podmíněný přístup
+
+- [Seznam všech zásad podmíněného přístupu](/graph/api/resources/conditionalaccessroot-list-policies)
+- [Čtení vlastností a vztahů zásad podmíněného přístupu](/graph/api/conditionalaccesspolicy-get)
+- [Vytvořit nové zásady podmíněného přístupu](/graph/api/resources/application)
+- [Aktualizace zásad podmíněného přístupu](/graph/api/conditionalaccesspolicy-update)
+- [Odstranění zásad podmíněného přístupu](/graph/api/conditionalaccesspolicy-delete)
 
 ## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>Ukázka kódu: jak programově spravovat uživatelské účty
 

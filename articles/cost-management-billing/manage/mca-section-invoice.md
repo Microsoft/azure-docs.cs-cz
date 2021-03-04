@@ -8,18 +8,22 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 6424fc0ff49566fad949b3fba4718acb2bad4cd3
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
-ms.translationtype: HT
+ms.openlocfilehash: c3ee643d525cb5394369aba3b0e803bd1a94c852
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362763"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036230"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>Uspořádání nákladů přizpůsobením fakturačního účtu
 
 Fakturační účet pro smlouvu se zákazníkem Microsoftu poskytuje flexibilitu uspořádání nákladů podle vašich potřeb, ať už podle oddělení, projektu nebo vývojového prostředí.
 
 Tento článek popisuje, jak můžete pomocí webu Azure Portal uspořádat náklady. Týká se fakturačního účtu smlouvy se zákazníkem Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
+
+Podívejte se na informace o uspořádání, a [to přizpůsobením videa fakturačního účtu zákaznických smluv Microsoftu](https://www.youtube.com/watch?v=7RxTfShGHwU) a Naučte se, jak organizovat náklady na fakturační účet.
+
+>[!VIDEO https://www.youtube.com/embed/7RxTfShGHwU]
 
 ## <a name="structure-your-account-with-billing-profiles-and-invoice-sections"></a>Strukturujte účet pomocí fakturačních profilů a oddílů faktur
 

@@ -1,17 +1,16 @@
 ---
 title: Monitorování stavu Log Analytics pracovního prostoru v Azure Monitor
 description: Popisuje, jak monitorovat stav pracovního prostoru Log Analytics pomocí dat v tabulce Operations.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: 09df1c2ecb94089f23a88dd36c5343bb4cf2feea
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9eda0acc15badfe7bb2e754d887786aa990d6e24
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710936"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034961"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>Monitorování stavu Log Analytics pracovního prostoru v Azure Monitor
 Chcete-li zachovat výkon a dostupnost vašeho pracovního prostoru Log Analytics v Azure Monitor, je nutné být schopni aktivně detekovat všechny problémy, které vznikají. Tento článek popisuje, jak monitorovat stav Log Analytics pracovního prostoru pomocí dat v tabulce [Operations](/azure/azure-monitor/reference/tables/operation) . Tato tabulka je zahrnutá v každém pracovním prostoru Log Analytics a obsahuje chyby a varování, ke kterým dochází ve vašem pracovním prostoru. Tato data byste měli pravidelně kontrolovat a vytvářet výstrahy, které se budou aktivně informovat v případě, že v pracovním prostoru existují důležité incidenty.

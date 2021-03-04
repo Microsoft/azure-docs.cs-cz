@@ -1,17 +1,16 @@
 ---
 title: Shromáždění zdrojů dat výkonu pro Windows a Linux pomocí agenta Log Analytics v Azure Monitor
 description: Čítače výkonu jsou shromažďovány nástrojem Azure Monitor k analýze výkonu v agentech systému Windows a Linux.  Tento článek popisuje, jak nakonfigurovat shromažďování čítačů výkonu pro agenty Windows i Linux, podrobnosti o nich jsou uložené v pracovním prostoru a jak je analyzovat v Azure Portal.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: c06123b33c7f467e12742cf6180d821e647b5115
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: f4bddc1666d1165d6a1e4c749fdbc96ede37747a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711548"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036761"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Shromažďování zdrojů dat výkonu pro Windows a Linux pomocí agenta Log Analytics
 Čítače výkonu ve Windows a Linux poskytují přehled o výkonu hardwarových komponent, operačních systémů a aplikací.  Azure Monitor může shromažďovat čítače výkonu od agentů Log Analytics v častých intervalech pro analýzu téměř v reálném čase (NRT) společně s agregací údajů o výkonu pro dlouhodobé analýzy a generování sestav.
@@ -22,7 +21,7 @@ ms.locfileid: "101711548"
 ![Čítače výkonu](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>Konfigurace čítačů výkonu
-Nakonfigurujte čítače výkonu z [nabídky data v části Upřesnit nastavení](../agents/agent-data-sources.md#configuring-data-sources) pro pracovní prostor Log Analytics.
+Nakonfigurujte čítače výkonu z [nabídky konfigurace agenti](../agents/agent-data-sources.md#configuring-data-sources) pro pracovní prostor Log Analytics.
 
 Při první konfiguraci čítačů výkonu systému Windows nebo Linux pro nový pracovní prostor budete mít možnost rychle vytvořit několik běžných čítačů.  Jsou zobrazené v seznamu a vedle každého je zaškrtávací políčko.  Ujistěte se, že jsou zaškrtnuté všechny čítače, které chcete zpočátku vytvořit, a pak klikněte na **Přidat vybrané čítače výkonu**.
 
@@ -36,28 +35,28 @@ V případě čítačů výkonu systému Windows můžete zvolit konkrétní ins
 
 ### <a name="windows-performance-counters"></a>Čítače výkonu Windows
 
-![Konfigurace čítačů výkonu systému Windows](media/data-sources-performance-counters/configure-windows.png)
+[![Konfigurace čítačů výkonu systému Windows](media/data-sources-performance-counters/configure-windows.png)](media/data-sources-performance-counters/configure-windows.png#lightbox)
 
 Pomocí tohoto postupu můžete přidat nový čítač výkonu systému Windows, který se má shromáždit. Upozorňujeme, že čítače výkonu v2 pro Windows nejsou podporované.
 
-1. Do textového pole ve formátu *objekt (instance) \counter* zadejte název čítače.  Když začnete psát, zobrazí se seznam s vyhovujícími společnými čítači.  Můžete buď vybrat čítač ze seznamu, nebo zadat jednu z nich.  Můžete také vrátit všechny instance pro konkrétní čítač zadáním *object\counter*.  
+1. Klikněte na **Přidat čítač výkonu**.
+2. Do textového pole ve formátu *objekt (instance) \counter* zadejte název čítače.  Když začnete psát, zobrazí se seznam s vyhovujícími společnými čítači.  Můžete buď vybrat čítač ze seznamu, nebo zadat jednu z nich.  Můžete také vrátit všechny instance pro konkrétní čítač zadáním *object\counter*.  
 
     Když shromažďujete čítače výkonu SQL Server z pojmenovaných instancí, všechny pojmenované čítače instancí začínají na *MSSQL $* a za názvem instance.  Například pro shromáždění čítače poměru přístupů do mezipaměti protokolu pro všechny databáze z objektu výkonu databáze pro pojmenovanou instanci SQL INST2 zadejte `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio` .
 
-2. Chcete **+** -li přidat čítač do seznamu, klikněte nebo stiskněte klávesu **ENTER** .
-3. Když přidáte čítač, použije se výchozí hodnota 10 sekund pro svůj **interval vzorkování**.  Pokud chcete snížit požadavky na úložiště shromážděných dat o výkonu, můžete to změnit na vyšší hodnotu až na 1800 sekund (30 minut).
-4. Až budete s přidáváním čítačů hotovi, kliknutím na tlačítko **Uložit** v horní části obrazovky uložte konfiguraci.
+4. Když přidáte čítač, použije se výchozí hodnota 10 sekund pro svůj **interval vzorkování**.  Pokud chcete snížit požadavky na úložiště shromážděných dat o výkonu, můžete to změnit na vyšší hodnotu až na 1800 sekund (30 minut).
+5. Až budete s přidáváním čítačů hotovi, kliknutím na tlačítko **použít** v horní části obrazovky uložte konfiguraci.
 
 ### <a name="linux-performance-counters"></a>Čítače výkonu pro Linux
 
-![Konfigurace čítačů výkonu systému Linux](media/data-sources-performance-counters/configure-linux-1.png)
+[![Konfigurace čítačů výkonu systému Linux](media/data-sources-performance-counters/configure-linux.png)](media/data-sources-performance-counters/configure-linux.png#lightbox)
 
 Pomocí tohoto postupu můžete přidat nový čítač výkonu pro Linux, který se má shromáždit.
 
+1. Klikněte na **Přidat čítač výkonu**.
 1. Do textového pole ve formátu *objekt (instance) \counter* zadejte název čítače.  Když začnete psát, zobrazí se seznam s vyhovujícími společnými čítači.  Můžete buď vybrat čítač ze seznamu, nebo zadat jednu z nich.  
-1. Klikněte **+** nebo stiskněte klávesu **ENTER** , chcete-li přidat čítač do seznamu dalších čítačů pro daný objekt.
 1. Všechny čítače pro objekt používají stejný **interval vzorkování**.  Výchozí hodnota je 10 sekund.  Pokud chcete snížit požadavky na úložiště shromážděných dat výkonu, změňte tuto hodnotu na vyšší hodnotu až na 1800 sekund (30 minut).
-1. Až budete s přidáváním čítačů hotovi, kliknutím na tlačítko **Uložit** v horní části obrazovky uložte konfiguraci.
+1. Až budete s přidáváním čítačů hotovi, kliknutím na tlačítko **použít** v horní části obrazovky uložte konfiguraci.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Konfigurace čítačů výkonu systému Linux v konfiguračním souboru
 Místo konfigurace čítačů výkonu systému Linux pomocí Azure Portal máte možnost upravovat konfigurační soubory v agentovi systému Linux.  Metriky výkonu ke shromáždění se řídí konfigurací v **/etc/opt/Microsoft/omsagent/ \<workspace id\> /conf/omsagent.conf**.

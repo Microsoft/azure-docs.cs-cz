@@ -2,17 +2,16 @@
 title: Archivace dat z pracovního prostoru Log Analytics do Azure Storage pomocí aplikace logiky
 description: Popisuje metodu použití Azure Logic Apps k dotazování dat z pracovního prostoru Log Analytics a odeslání do Azure Storage.
 ms.service: azure-monitor
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: ae95580a8c192f0815623461fb21ec9ecf52ae26
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fd66aa1f10a32d94d515a1f0aa25c25331796a8d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700639"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035683"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>Archivace dat z pracovního prostoru Log Analytics do Azure Storage pomocí aplikace logiky
 Tento článek popisuje způsob, jak použít [Azure Logic Apps](../../logic-apps/index.yml) k dotazování dat z pracovního prostoru Log Analytics v Azure monitor a odeslání do Azure Storage. Tento postup použijte v případě, že potřebujete exportovat data protokolu Azure Monitor pro scénáře auditování a dodržování předpisů nebo pokud chcete, aby mohla jiná služba načíst tato data.  

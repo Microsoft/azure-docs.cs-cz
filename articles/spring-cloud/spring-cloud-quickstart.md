@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 3c07d64fd046766521e030b6ee1b88a590246e24
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 123be57566a31d9831bfd0172373d571be2bf294
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226165"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035165"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rychlý Start: nasazení první aplikace pro cloudovou službu Azure jaře
 
@@ -242,7 +242,7 @@ Následující postup sestaví a nasadí projekt, který jste vytvořili dříve
 1. Vytvořte aplikaci v instanci cloudu Azure jaře s přiřazeným veřejným koncovým bodem. Použijte stejný název aplikace "Hello World", který jste zadali v *appsettings.jszapnuto*.
 
    ```console
-   az spring-cloud app create -n hello-world -s <service instance name> -g <resource group name> --is-public --runtime-version NetCore_31
+   az spring-cloud app create -n hello-world -s <service instance name> -g <resource group name> --assign-endpoint --runtime-version NetCore_31
    ```
 
 1. Nasaďte do aplikace soubor *. zip* .
@@ -416,7 +416,7 @@ Následující postup sestaví a nasadí aplikaci pomocí rozhraní příkazové
 1. Vytvořte aplikaci s přiřazeným veřejným koncovým bodem:
 
     ```azurecli
-    az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --is-public true
+    az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --assign-endpoint true
     ```
 
 1. Nasadit soubor JAR pro aplikaci ( `target\hellospring-0.0.1-SNAPSHOT.jar` ve Windows):
