@@ -2,13 +2,13 @@
 title: Doporučené konfigurace pro klienty Apache Kafka – Azure Event Hubs
 description: Tento článek poskytuje doporučené konfigurace Apache Kafka pro klienty, kteří pracují s Azure Event Hubs pro Apache Kafka.
 ms.topic: reference
-ms.date: 01/07/2021
-ms.openlocfilehash: 713900a3cc7e2b9f6f176edb21455faa577098d6
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.date: 03/03/2021
+ms.openlocfilehash: be009aae41b2cb26ab02fdbe14bc4e18311ad235
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028824"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042347"
 ---
 # <a name="recommended-configurations-for-apache-kafka-clients"></a>Doporučené konfigurace pro klienty Apache Kafka
 Tady jsou doporučené konfigurace pro používání Azure Event Hubs z Apache Kafka klientských aplikací. 
@@ -33,7 +33,6 @@ Vlastnost | Doporučené hodnoty | Povolený rozsah | Poznámky
 `metadata.max.idle.ms` | 180000 | > 5000 | Určuje, jak dlouho bude producent uchovávat metadata v mezipaměti pro téma, které je nečinné. Pokud uplynulý čas od posledního vytvořeného tématu přesáhne dobu nečinnosti, bude metadata tohoto tématu zapomenuto a další přístup k němu vynutí požadavek na načtení metadat.
 `linger.ms` | > 0 | | V případě scénářů s vysokou propustností by měla být hodnota možnosti permanentní rovna nejvyšší přípustné hodnotě, aby bylo možné využít dávkování.
 `delivery.timeout.ms` | | | Nastavte podle vzorce ( `request.timeout.ms`  +  `linger.ms` ) * `retries` .
-`enable.idempotence` | false (nepravda) | | Idempotence se v tuto chvíli nepodporuje.
 `compression.type` | `none` | | Komprese aktuálně není podporovaná...
 
 ### <a name="consumer-configurations-only"></a>Jenom konfigurace příjemců
@@ -62,7 +61,6 @@ Vlastnost | Doporučené hodnoty | Povolený rozsah | Poznámky
 `retries` | > 0 | | Výchozí hodnota je 2. Tuto hodnotu Doporučujeme zachovat. 
 `request.timeout.ms` | 30000... 60000 | > 20000| EH interně nastaví jako výchozí minimální hodnotu 20 000 ms.  `librdkafka` Výchozí hodnota je 5000, což může být problematické. *I když jsou požadavky s nižšími hodnotami časového limitu přijaty, chování klienta není zaručeno.*
 `partitioner` | `consistent_random` | Viz dokumentace k librdkafka | `consistent_random` je výchozí a nejlepší.  Prázdné a null klíče jsou ve většině případů zpracovávány v ideálním případě.
-`enable.idempotence` | false (nepravda) | | Idempotence se v tuto chvíli nepodporuje.
 `compression.codec` | `none` || Komprese aktuálně není podporována.
 
 ### <a name="consumer-configurations-only"></a>Jenom konfigurace příjemců

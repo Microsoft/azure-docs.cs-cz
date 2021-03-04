@@ -1,5 +1,5 @@
 ---
-title: Co je nového?
+title: Co je nového
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Přečtěte si o nových funkcích a vylepšeních dokumentace pro Azure SQL Database & spravované instance SQL.
 services: sql-database
@@ -11,19 +11,19 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 607b588d3371b20c2b3fa9854e27a7ccdfe2e551
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 86687e8259e7abcb9ff0e97f8cb75d96c0abfca8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703763"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042500"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Co je nového v Azure SQL Database & spravované instance SQL?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 V tomto článku jsou uvedené Azure SQL Database a funkce spravované instance Azure SQL, které jsou momentálně ve verzi Public Preview. Aktualizace a vylepšení pro SQL Database a SQL spravované instance najdete v tématu [SQL Database & aktualizace služby Managed instance SQL](https://azure.microsoft.com/updates/?product=sql-database). Aktualizace a vylepšení dalších služeb Azure najdete v tématu [aktualizace služby](https://azure.microsoft.com/updates).
 
-## <a name="whats-new"></a>Co je nového?
+## <a name="whats-new"></a>Co je nového
 
 Dokumentace pro Azure SQL Database a Azure SQL Managed instance byla rozdělena do samostatných oddílů. Aktualizovali jsme také, jak odkazujeme na spravovanou instanci z *Azure SQL Database spravované instance* do *Azure SQL Managed instance*.
 
@@ -89,7 +89,7 @@ V modelu nasazení Managed instance SQL ve H1 2019 jsou povolené následující
   - Podpora pro <a href="/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> sharepoint 2016 a sharepoint 2019 </a> a <a href="/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central. </a>
   - Vytvořte spravovanou instanci s <a href="/azure/azure-sql/managed-instance/scripts/create-powershell-azure-resource-manager-template">kolací na úrovni instance</a> a zvoleným <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">časovým pásmem</a> .
   - Spravované instance jsou teď chráněné pomocí [integrované brány firewall](../managed-instance/management-endpoint-verify-built-in-firewall.md).
-  - Nakonfigurujte spravovanou instanci SQL tak, aby používala [veřejné koncové body](../managed-instance/public-endpoint-configure.md), připojení [přepsání proxy serveru](connectivity-architecture.md#connection-policy) , aby se dosáhlo lepšího výkonu sítě, <a href="https://aka.ms/four-cores-sql-mi-update"> 4 virtuální jádra na generaci hardwaru Gen5</a> nebo <a href="/azure/azure-sql/database/automated-backups-overview">Konfigurace uchovávání záloh až 35 dní</a> pro obnovení k bodu v čase. [Dlouhodobé uchovávání záloh](long-term-retention-overview.md#sql-managed-instance-support) (až 10 let) je aktuálně ve verzi Public Preview omezeno.  
+  - Nakonfigurujte spravovanou instanci SQL tak, aby používala [veřejné koncové body](../managed-instance/public-endpoint-configure.md), připojení [přepsání proxy serveru](connectivity-architecture.md#connection-policy) , aby se dosáhlo lepšího výkonu sítě, <a href="https://aka.ms/four-cores-sql-mi-update"> 4 virtuální jádra na generaci hardwaru Gen5</a> nebo <a href="/azure/azure-sql/database/automated-backups-overview">Konfigurace uchovávání záloh až 35 dní</a> pro obnovení k bodu v čase. [Dlouhodobé uchovávání záloh](long-term-retention-overview.md) (až 10 let) je aktuálně ve verzi Public Preview.  
   - Nové funkce umožňují <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">geograficky obnovit databázi do jiného datového centra pomocí prostředí PowerShell</a>, [Přejmenovat databázi](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), [odstranit virtuální cluster](../managed-instance/virtual-cluster-delete.md).
   - Nová Vestavěná [role přispěvatele instance](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) umožňuje oddělení povinností (SOD) dodržovat zásady zabezpečení a dodržování předpisů v podnikových normách.
   - Spravovaná instance SQL je k dispozici v následujících oblastech Azure Government pro GA (US Gov – Texas, US Gov – Arizona) a v Čína – sever 2 a Čína – východ 2. Je také k dispozici v následujících veřejných oblastech: Austrálie – střed, Austrálie – střed 2, Brazílie – jih, Francie – jih, Spojené arabské emiráty střed, Spojené arabské emiráty sever, Jižní Afrika sever, Jižní Afrika – západ.

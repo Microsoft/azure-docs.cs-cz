@@ -2,7 +2,6 @@
 title: Ověřování a autorizace rozhraní API – Azure Time Series Insights | Microsoft Docs
 description: Tento článek popisuje, jak nakonfigurovat ověřování a autorizaci pro vlastní aplikaci, která volá rozhraní Azure Time Series Insights API.
 ms.service: time-series-insights
-services: time-series-insights
 author: deepakpalled
 ms.author: shresha
 manager: dpalled
@@ -12,16 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 58c0f408e3ad80109efd3db79d6e4a0d881aed78
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 02d9edd555566f86fd8bb09cf4acef4956ae53e4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724166"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041208"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Ověřování a autorizace pro rozhraní API služby Azure Time Series Insights
 
-V závislosti na vašich obchodních potřebách může vaše řešení zahrnovat jednu nebo víc klientských aplikací, které používáte k interakci s [rozhraními api](https://docs.microsoft.com/en-us/rest/api/time-series-insights/reference-data-access-overview)Azure Time Series Insightsho prostředí. Azure Time Series Insights provádí ověřování pomocí [tokenů zabezpečení Azure AD na základě OAUTH 2,0](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims). Pokud chcete ověřit klienty, budete muset získat token nosiče se správnými oprávněními a předat ho spolu s vaším voláním rozhraní API. Tento dokument popisuje několik metod získání přihlašovacích údajů, které můžete použít k získání nosného tokenu a ověření.
+V závislosti na vašich obchodních potřebách může vaše řešení zahrnovat jednu nebo víc klientských aplikací, které používáte k interakci s [rozhraními api](/rest/api/time-series-insights/reference-data-access-overview)Azure Time Series Insightsho prostředí. Azure Time Series Insights provádí ověřování pomocí [tokenů zabezpečení Azure AD na základě OAUTH 2,0](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims). Pokud chcete ověřit klienty, budete muset získat token nosiče se správnými oprávněními a předat ho spolu s vaším voláním rozhraní API. Tento dokument popisuje několik metod získání přihlašovacích údajů, které můžete použít k získání nosného tokenu a ověření.
 
 
   Postup registrace aplikace v Azure Active Directory pomocí nového okna Azure Active Directory Aplikace zaregistrované v Azure Active Directory umožňují uživatelům ověřování a autorizaci používat rozhraní API služby Azure Time Series Insights přidružené k prostředí Azure Time Series Insights.
@@ -34,7 +33,7 @@ Následující části popisují, jak pomocí spravované identity z Azure Activ
 - Spravované identity můžete použít k ověření pro libovolnou službu Azure, která podporuje ověřování Azure AD, včetně Azure Key Vault.
 - Spravované identity lze použít bez jakýchkoli dalších nákladů.
 
-Další informace o těchto dvou typech spravovaných identit najdete v tématu [co jsou spravované identity pro prostředky Azure?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+Další informace o těchto dvou typech spravovaných identit najdete v tématu [co jsou spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md)
 
 Spravované identity můžete použít z těchto:
 
@@ -44,7 +43,7 @@ Spravované identity můžete použít z těchto:
 - Azure Container Instances
 - a další...
 
-Úplný seznam najdete v tématu [služby Azure, které podporují spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources) .
+Úplný seznam najdete v tématu [služby Azure, které podporují spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) .
 
 ## <a name="azure-active-directory-app-registration"></a>Registrace aplikace Azure Active Directory
 
@@ -54,9 +53,9 @@ Po dokončení registrace aplikace budete mít globálně jedinečnou instanci a
 
 Pokud zaregistrujete aplikaci na portálu, objekt aplikace a objekt instančního objektu se automaticky vytvoří v domovském tenantovi. Pokud zaregistrujete nebo vytvoříte aplikaci pomocí rozhraní Microsoft Graph API, vytvoří se objekt instančního objektu jako samostatný krok. Pro žádosti o tokeny je vyžadován objekt instančního objektu.
 
-Nezapomeňte si projít kontrolní seznam [zabezpečení](https://docs.microsoft.com/azure/active-directory/develop/identity-platform-integration-checklist#security) pro vaši aplikaci. Osvědčeným postupem je použití [přihlašovacích údajů k certifikátu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials), nikoli přihlašovacích údajů pro heslo (Client tajných klíčů).
+Nezapomeňte si projít kontrolní seznam [zabezpečení](../active-directory/develop/identity-platform-integration-checklist.md#security) pro vaši aplikaci. Osvědčeným postupem je použití [přihlašovacích údajů k certifikátu](../active-directory/develop/active-directory-certificate-credentials.md), nikoli přihlašovacích údajů pro heslo (Client tajných klíčů).
 
-Další podrobnosti najdete [v tématu aplikace a objekty zabezpečení služby v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) .
+Další podrobnosti najdete [v tématu aplikace a objekty zabezpečení služby v Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md) .
 
 ## <a name="step-1-create-your-managed-identity-or-app-registration"></a>Krok 1: vytvoření spravované identity nebo registrace aplikace
 
@@ -64,16 +63,16 @@ Jakmile zjistíte, jestli budete používat spravovanou identitu nebo registraci
 
 ### <a name="managed-identity"></a>Spravovaná identita
 
-Kroky, které použijete k vytvoření spravované identity, se budou lišit v závislosti na tom, kde se nachází váš kód, a to bez ohledu na to, jestli vytváříte identitu přiřazenou systémem nebo uživatelem přiřazenou uživateli. Pro pochopení rozdílu si přečtěte [spravované typy identity](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types) . Po výběru typu identity Najděte a postupujte podle správného kurzu v [dokumentaci k](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/)identitám spravovaným službou Azure AD. Najdete tady pokyny ke konfiguraci spravovaných identit pro:
+Kroky, které použijete k vytvoření spravované identity, se budou lišit v závislosti na tom, kde se nachází váš kód, a to bez ohledu na to, jestli vytváříte identitu přiřazenou systémem nebo uživatelem přiřazenou uživateli. Pro pochopení rozdílu si přečtěte [spravované typy identity](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) . Po výběru typu identity Najděte a postupujte podle správného kurzu v [dokumentaci k](../active-directory/managed-identities-azure-resources/index.yml)identitám spravovaným službou Azure AD. Najdete tady pokyny ke konfiguraci spravovaných identit pro:
 
-- [Virtuální počítače Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#enable-system-assigned-managed-identity-during-creation-of-a-vm)
-- [App Service a Azure Functions](https://docs.microsoft.com/azure/app-service/overview-managed-identity)
-- [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-managed-identity)
+- [Virtuální počítače Azure](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-during-creation-of-a-vm)
+- [App Service a Azure Functions](../app-service/overview-managed-identity.md)
+- [Azure Container Instances](../container-instances/container-instances-managed-identity.md)
 - a další...
 
 ### <a name="application-registration"></a>Registrace aplikací
 
-Postupujte podle kroků uvedených v části [Registrace aplikace](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#register-an-application).
+Postupujte podle kroků uvedených v části [Registrace aplikace](../active-directory/develop/quickstart-register-app.md#register-an-application).
 
 [!INCLUDE [Azure Active Directory app registration](../../includes/time-series-insights-aad-registration.md)]
 
@@ -81,16 +80,16 @@ Postupujte podle kroků uvedených v části [Registrace aplikace](https://docs.
 
 Když Azure Time Series Insights prostředí obdrží požadavek, nejdřív se ověří nosný token volajícího. Pokud ověření projde, volající se ověřil a pak se provede jiná kontrola, aby byl volající autorizovaný k provedení požadované akce. Pokud chcete autorizovat libovolného uživatele nebo instanční objekt, musíte jim nejdřív udělit přístup k prostředí tím, že jim přiřadíte roli Čtenář nebo Přispěvatel.
 
-- Pokud chcete udělit přístup prostřednictvím uživatelského rozhraní [Azure Portal](https://portal.azure.com/) , postupujte podle pokynů uvedených v článku [udělení přístupu k datům do prostředí](https://docs.microsoft.com/azure/time-series-insights/concepts-access-policies) . Při výběru uživatele můžete vyhledat spravovanou identitu nebo registraci aplikace podle jejího názvu nebo podle ID.
+- Pokud chcete udělit přístup prostřednictvím uživatelského rozhraní [Azure Portal](https://portal.azure.com/) , postupujte podle pokynů uvedených v článku [udělení přístupu k datům do prostředí](concepts-access-policies.md) . Při výběru uživatele můžete vyhledat spravovanou identitu nebo registraci aplikace podle jejího názvu nebo podle ID.
 
-- Pokud chcete udělit přístup pomocí Azure CLI, spusťte následující příkaz. Úplný seznam příkazů, které jsou k dispozici pro správu přístupu, najdete [v dokumentaci.](https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/tsi/access-policy?view=azure-cli-latest)
+- Pokud chcete udělit přístup pomocí Azure CLI, spusťte následující příkaz. Úplný seznam příkazů, které jsou k dispozici pro správu přístupu, najdete [v dokumentaci.](/cli/azure/ext/timeseriesinsights/tsi/access-policy)
 
    ```azurecli-interactive
    az tsi access-policy create --name "ap1" --environment-name "env1" --description "some description" --principal-object-id "aGuid" --roles Reader Contributor --resource-group "rg1"
    ```
 
 > [!Note]
-> Rozšíření timeseriesinsights pro rozhraní příkazového řádku Azure CLI vyžaduje verzi 2.11.0 nebo vyšší. Rozšíření se automaticky nainstaluje při prvním spuštění příkazu AZ TSI Access-Policy. [Přečtěte si další informace](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview) o rozšířeních.
+> Rozšíření timeseriesinsights pro rozhraní příkazového řádku Azure CLI vyžaduje verzi 2.11.0 nebo vyšší. Rozšíření se automaticky nainstaluje při prvním spuštění příkazu AZ TSI Access-Policy. [Přečtěte si další informace](/cli/azure/azure-cli-extensions-overview) o rozšířeních.
 
 ## <a name="step-3-requesting-tokens"></a>Krok 3: vyžadování tokenů
 
@@ -107,37 +106,37 @@ Jakmile se spravovaná identita nebo registrace aplikace zřídí a přiřadí r
 
 ### <a name="managed-identities"></a>Spravované identity
 
-Při přístupu z Azure App Service nebo funkcí postupujte podle pokynů v části [získání tokenů pro prostředky Azure](https://docs.microsoft.com/azure/app-service/overview-managed-identity).
+Při přístupu z Azure App Service nebo funkcí postupujte podle pokynů v části [získání tokenů pro prostředky Azure](../app-service/overview-managed-identity.md).
 
 > [!TIP]
-> Pro aplikace a funkce .NET je nejjednodušší způsob práce se spravovanou identitou prostřednictvím [klientské knihovny Azure identity](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme) pro .NET. 
+> Pro aplikace a funkce .NET je nejjednodušší způsob práce se spravovanou identitou prostřednictvím [klientské knihovny Azure identity](/dotnet/api/overview/azure/identity-readme) pro .NET. 
 
-Pro aplikace a funkce .NET je nejjednodušší způsob práce se spravovanou identitou prostřednictvím balíčku Microsoft. Azure. Services. AppAuthentication. Tento balíček je oblíbený z důvodu zjednodušení a zabezpečení. Vývojáři mohou napsat kód jednou a povolit klientské knihovně, aby určili, jak ověřit na základě prostředí aplikace – ať už na pracovní stanici pro vývojáře pomocí účtu vývojáře nebo nasazeného v Azure pomocí identity spravované služby. Pokyny k migraci z předchůdce knihovny AppAuthentication najdete v článku [pokyny pro migraci AppAuthentication na Azure. identity](https://docs.microsoft.com/dotnet/api/overview/azure/app-auth-migration?view=azure-dotnet).
+Pro aplikace a funkce .NET je nejjednodušší způsob práce se spravovanou identitou prostřednictvím balíčku Microsoft. Azure. Services. AppAuthentication. Tento balíček je oblíbený z důvodu zjednodušení a zabezpečení. Vývojáři mohou napsat kód jednou a povolit klientské knihovně, aby určili, jak ověřit na základě prostředí aplikace – ať už na pracovní stanici pro vývojáře pomocí účtu vývojáře nebo nasazeného v Azure pomocí identity spravované služby. Pokyny k migraci z předchůdce knihovny AppAuthentication najdete v článku [pokyny pro migraci AppAuthentication na Azure. identity](/dotnet/api/overview/azure/app-auth-migration).
 
 Vyžádání tokenu pro Azure Time Series Insights pomocí jazyka C# a klientské knihovny Azure identity pro .NET:
 
-    ```csharp
-    using Azure.Identity;
-    // ...
-    var credential = new DefaultAzureCredential();
-    var token = credential.GetToken(
-    new Azure.Core.TokenRequestContext(
-        new[] { "https://api.timeseries.azure.com/" }));
-   var accessToken = token. Klíčové
-    ```
+   ```csharp
+   using Azure.Identity;
+   // ...
+   var credential = new DefaultAzureCredential();
+   var token = credential.GetToken(
+   new Azure.Core.TokenRequestContext(
+       new[] { "https://api.timeseries.azure.com/" }));
+   var accessToken = token.Token;
+   ```
 
 ### <a name="app-registration"></a>Registrace aplikace
 
-* Vývojáři mohou pomocí [knihovny Microsoft Authentication Library](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) (MSAL) získat tokeny pro registraci aplikací.
+* Vývojáři mohou pomocí [knihovny Microsoft Authentication Library](../active-directory/develop/msal-overview.md) (MSAL) získat tokeny pro registraci aplikací.
 
 MSAL se dá použít v mnoha scénářích aplikací, včetně, ale ne omezení na:
 
-* [Jednostránkové aplikace (JavaScript)](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-overview.md)
-* [Webová aplikace, která přihlašuje uživatele a volá webové rozhraní API jménem uživatele](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-overview.md)
-* [Webové rozhraní API, které jménem přihlášeného uživatele volá jiné webové rozhraní API pro příjem dat](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-overview.md)
-* [Aplikace klasické pracovní plochy, která jménem přihlášeného uživatele volá webové rozhraní API](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-overview.md)
-* [Mobilní aplikace, která volá webové rozhraní API jménem uživatele, který je přihlášený interaktivně](https://docs.microsoft.com/azure/active-directory/develop/scenario-mobile-overview.md).
-* [Aplikace démona plochy/služby – volání webového rozhraní API jménem sebe sama](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-overview.md)
+* [Jednostránkové aplikace (JavaScript)](../active-directory/develop/scenario-spa-overview.md)
+* [Webová aplikace, která přihlašuje uživatele a volá webové rozhraní API jménem uživatele](../active-directory/develop/scenario-web-app-call-api-overview.md)
+* [Webové rozhraní API, které jménem přihlášeného uživatele volá jiné webové rozhraní API pro příjem dat](../active-directory/develop/scenario-web-api-call-api-overview.md)
+* [Aplikace klasické pracovní plochy, která jménem přihlášeného uživatele volá webové rozhraní API](../active-directory/develop/scenario-desktop-overview.md)
+* [Mobilní aplikace, která volá webové rozhraní API jménem uživatele, který je přihlášený interaktivně](../active-directory/develop/scenario-mobile-overview.md).
+* [Aplikace démona plochy/služby – volání webového rozhraní API jménem sebe sama](../active-directory/develop/scenario-daemon-overview.md)
 
 Vzorový kód jazyka C#, který ukazuje, jak získat token jako registraci aplikace a data dotazů z prostředí Gen2, najdete v ukázkové aplikaci na [GitHubu](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClientSampleApp/Program.cs) .
 

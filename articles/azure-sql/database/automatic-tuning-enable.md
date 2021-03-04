@@ -10,17 +10,16 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 12/03/2019
-ms.openlocfilehash: 35e2a73b0cfae104cee417e7d4a159e7fd169a17
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 03/03/2021
+ms.openlocfilehash: d60810c291984e0f57df1968f69678de8179273c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500899"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042517"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Povolit automatické ladění v Azure Portal pro monitorování dotazů a zlepšení výkonu úloh
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
-
 
 Azure SQL Database automaticky spravuje datové služby, které průběžně monitorují vaše dotazy a identifikují akci, kterou můžete provést za účelem zvýšení výkonu úloh. Můžete zkontrolovat doporučení a ručně je použít, nebo nechat Azure SQL Database automaticky použít opravné akce – jedná se o **Automatický režim optimalizace**.
 
@@ -111,11 +110,26 @@ Nastavení jednotlivé možnosti optimalizace na ZAPNUTo přepíše všechna nas
 
 Další možnosti sousedit s T-SQL pro konfiguraci automatického ladění najdete v tématu věnovaném [možnostem ALTER DATABASE set (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true).
 
-## <a name="disabled-by-the-system"></a>Zakázáno systémem
+## <a name="troubleshooting"></a>Řešení potíží
 
-Automatické ladění sleduje všechny akce, které v databázi provádí, a v některých případech může zjistit, že automatické ladění nemůže v databázi správně fungovat. V této situaci systém zakáže možnost optimalizace. Ve většině případů k tomu dochází, protože úložiště dotazů není povolené nebo je v konkrétní databázi ve stavu jen pro čtení.
+### <a name="automated-recommendation-management-is-disabled"></a>Automatizovaná správa doporučení je zakázaná.
 
-## <a name="permissions"></a>Oprávnění
+V případě chybových zpráv, které automatizovaná správa doporučení zakázala, nebo je jenom zakázaná systémem, nejběžnější příčiny:
+- Úložiště dotazů není povoleno, nebo
+- Úložiště dotazů je v režimu jen pro čtení pro zadanou databázi nebo
+- Úložiště dotazů bylo zastaveno, protože používalo přidělený prostor úložiště.
+
+K vyřešení tohoto problému je možné zvážit tyto kroky:
+- Vyčistěte úložiště dotazů nebo upravte dobu uchování dat na hodnotu "auto" pomocí T-SQL. Podívejte se, jak [nakonfigurovat Doporučené zásady uchovávání a zachytávání pro úložiště dotazů](/azure/azure-sql/database/query-performance-insight-use#recommended-retention-and-capture-policy).
+- Použijte SQL Server Management Studio (SSMS) a postupujte podle následujících kroků:
+  - Připojit k Azure SQL Database
+  - Klikněte pravým tlačítkem na databázi.
+  - Přejít na vlastnosti a kliknout na úložiště dotazů
+  - Změňte režim operace na Read-Write
+  - Změňte režim zachycení úložiště na automaticky.
+  - Změnit režim čištění založený na velikosti na automatické
+
+### <a name="permissions"></a>Oprávnění
 
 Vzhledem k tomu, že automatické ladění je funkce Azure, budete muset použít předdefinované role Azure. Použití pouze ověřování SQL nebude stačit k použití funkce z Azure Portal.
 
@@ -123,7 +137,7 @@ Chcete-li použít automatické ladění, je minimální požadovaná oprávněn
 
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>Konfigurace e-mailových oznámení automatického ladění
 
-Přečtěte si příručku pro [e-mailová oznámení automatického ladění](automatic-tuning-email-notifications-configure.md) .
+Pokud chcete dostávat automatizovaná e-mailová oznámení o doporučeních provedených automatickým laděním, přečtěte si příručku pro [e-mailová oznámení](automatic-tuning-email-notifications-configure.md)
 
 ## <a name="next-steps"></a>Další kroky
 

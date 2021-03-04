@@ -183,6 +183,8 @@
       href: core/concepts-telemetry-properties-commands.md
     - name: Připojení zařízení IoT
       href: core/concepts-iot-edge.md
+    - name: Osvědčené postupy
+      href: core/concepts-best-practices.md
 - name: Návody
   items:
     - name: Vývoj a připojení zařízení

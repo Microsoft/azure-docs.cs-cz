@@ -3,15 +3,14 @@ title: Převod návrháře zobrazení na dlaždice v sešitech Azure Monitor
 description: Podrobnosti pro převod dlaždic na sešity při přechodu ze zobrazení v Azure Monitor.
 author: austonli
 ms.author: aul
-ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 0fe1c5a4e6da1cb2955542c2651fcaf2d015b8f8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9b8d1840c0b1cea4c03312d38ed892fde94faa4c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611723"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043333"
 ---
 # <a name="azure-monitor-view-designer-tile-conversions"></a>Převody dlaždic návrháře zobrazení Azure Monitor
 [Návrhář zobrazení](view-designer.md) je funkce Azure monitor, která umožňuje vytvářet vlastní zobrazení, která vám pomohou vizualizovat data v pracovním prostoru Log Analytics s grafy, seznamy a časovými osami. Budou postupně vyladěny a nahrazeny sešity, které poskytují další funkce. Tento článek poskytuje podrobné informace pro převod různých dlaždic na sešity.

@@ -1,17 +1,16 @@
 ---
 title: Log Analytics zdrojů dat agenta v Azure Monitor
 description: Zdroje dat definují data protokolu, která Azure Monitor shromažďuje z agentů a dalších připojených zdrojů.  Tento článek popisuje koncept způsobu, jakým Azure Monitor používá zdroje dat, vysvětluje podrobnosti o tom, jak je nakonfigurovat, a poskytuje souhrn různých zdrojů dat, které jsou k dispozici.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: 8b0debed6e0865f39cd42c7003347b2510600f81
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: 51cdee9c899feeb003a7d6301d2da0749fad65e9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720014"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041926"
 ---
 # <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Log Analytics zdrojů dat agenta v Azure Monitor
 Data, která Azure Monitor shromažďuje z virtuálních počítačů pomocí agenta [Log Analytics](./log-analytics-agent.md) , jsou definovaná zdroji dat, které nakonfigurujete v [pracovním prostoru Log Analytics](../logs/data-platform-logs.md).   Každý zdroj dat vytvoří záznamy určitého typu s každým typem s vlastní sadou vlastností.
@@ -40,11 +39,11 @@ V následující tabulce jsou uvedeny zdroje dat agenta, které jsou aktuálně 
 
 
 ## <a name="configuring-data-sources"></a>Konfigurace zdrojů dat
-Chcete-li nakonfigurovat zdroje dat pro agenty Log Analytics, přejděte v Azure Portal do nabídky **pracovní prostory Log Analytics** a vyberte pracovní prostor. Klikněte na **Upřesnit nastavení** a pak na **data**. Vyberte zdroj dat, který chcete konfigurovat. Můžete postupovat podle odkazů v tabulce výše a dokumentace pro každý zdroj dat a podrobnosti o jejich konfiguraci.
+Chcete-li nakonfigurovat zdroje dat pro agenty Log Analytics, přejděte v Azure Portal do nabídky **pracovní prostory Log Analytics** a vyberte pracovní prostor. Klikněte na **Konfigurace agenti**. Vyberte kartu pro zdroj dat, který chcete konfigurovat. Můžete postupovat podle odkazů v tabulce výše a dokumentace pro každý zdroj dat a podrobnosti o jejich konfiguraci.
 
 Všechny konfigurace se doručí všem agentům připojeným k tomuto pracovnímu prostoru.  Z této konfigurace nemůžete vyloučit žádné připojené agenty.
 
-![Konfigurace událostí systému Windows](media/agent-data-sources/configure-events.png)
+[![Konfigurace událostí systému Windows](media/agent-data-sources/configure-events.png)](media/agent-data-sources/configure-events.png#lightbox)
 
 
 

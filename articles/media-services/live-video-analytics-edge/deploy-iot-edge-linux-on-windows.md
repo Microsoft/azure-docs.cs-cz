@@ -3,12 +3,12 @@ title: Nasazení na IoT Edge pro Linux ve Windows – Azure
 description: Tento článek poskytuje pokyny, jak nasadit na zařízení s Windows na IoT Edge pro Linux.
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: 5cf4184857f12065d808d7b528dbfe8258950cd8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b635070d6a4834da2c6d82cc768684b6cde9cd71
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744776"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042177"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>Nasazení na IoT Edge pro Linux v zařízení s Windows (EFLOW)
 
@@ -107,7 +107,7 @@ Následující část znázorňuje Celkový tok dokumentu a v 5 jednoduchých kr
 ## <a name="next-steps"></a>Další kroky
 
 * Vyzkoušejte si detekci pohybu spolu se záznamem relevantních videí v cloudu. Postupujte podle kroků v části [detekce pohybu, záznam videoklipů a Media Services](detect-motion-record-video-clips-media-services-quickstart.md#review-the-sample-video) rychlý Start.
-* Spustit [AI na živém videu](use-your-model-quickstart#overview) (můžete přeskočit nezbytnou instalaci, protože už byla dokončena výše)
+* Spustit [AI na živém videu](use-your-model-quickstart.md#overview) (můžete přeskočit nezbytnou instalaci, protože už byla dokončena výše)
 * Použijte naše [rozšíření vs Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) k zobrazení dalších mediálních grafů.
 * Místo používání simulátoru RTSP použijte [fotoaparát IP](https://en.wikipedia.org/wiki/IP_camera)  , který podporuje RTSP. Kamery protokolu IP, které podporují protokol RTSP, najdete na stránce vyhovující [ONVIF produktů](https://www.onvif.org/conformant-products/) . Vyhledejte zařízení, která jsou v souladu s profily G, S nebo T.
 

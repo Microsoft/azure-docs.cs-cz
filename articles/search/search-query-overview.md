@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: 7277ad060c57b44d633054c4fc4d29d151bd7192
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.date: 03/03/2021
+ms.openlocfilehash: 234a0137f0a9487a56b3e0343eaea375d2f9a1af
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400807"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043010"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Dotazování v Azure Kognitivní hledání
 
@@ -84,8 +84,8 @@ Je také možné, že budete potřebovat filtry k vyvolání specializovaného f
 
 | Scénář filtru | Popis |
 |-----------------|-------------|
-| Filtry rozsahu | V Azure Kognitivní hledání jsou dotazy Range sestaveny pomocí parametru Filter. Další informace a příklady najdete v tématu [příklad filtru rozsahu](search-query-simple-examples.md#example-4-range-filters). |
-| Hledání geografického umístění | Pokud je prohledávatelné pole [typu EDM. GeographyPoint](/rest/api/searchservice/supported-data-types), můžete vytvořit výraz filtru pro "najít blízko" nebo ovládací prvky hledání na základě mapy. Pole, která jednotky geografického hledání obsahují, obsahují souřadnice. Další informace a příklad najdete v [příkladu geografického hledání](search-query-simple-examples.md#example-5-geo-search). |
+| Filtry rozsahu | V Azure Kognitivní hledání jsou dotazy Range sestaveny pomocí parametru Filter. Další informace a příklady najdete v tématu [příklad filtru rozsahu](search-query-simple-examples.md#example-5-range-filters). |
+| Hledání geografického umístění | Pokud je prohledávatelné pole [typu EDM. GeographyPoint](/rest/api/searchservice/supported-data-types), můžete vytvořit výraz filtru pro "najít blízko" nebo ovládací prvky hledání na základě mapy. Pole, která jednotky geografického hledání obsahují, obsahují souřadnice. Další informace a příklad najdete v [příkladu geografického hledání](search-query-simple-examples.md#example-6-geo-search). |
 | Fasetová navigace | Navigační struktura omezující vlastnosti se bude instrumentovat v navigaci orientované na uživatele při vyvolání filtru v reakci na `onclick` událost s omezující vlastností. V takovém případě jsou omezující vlastnosti a filtry k dispozici. Pokud přidáte navigaci omezující vlastnosti, budete potřebovat filtry pro dokončení prostředí. Další informace najdete v tématu [postup sestavení filtru omezující vlastnosti](search-filters-facets.md). |
 
 > [!NOTE]
@@ -101,12 +101,12 @@ Rozšířený formulář dotazu závisí na úplném analyzátoru a operátorech
 
 | Typ dotazu | Využití | Příklady a další informace |
 |------------|--------|------------------------------|
-| [Hledání v poli](query-lucene-syntax.md#bkmk_fields) | **`search`**  ukazatele **`queryType=full`**  | Sestavení složeného výrazu dotazu zaměřeného na jedno pole. <br/>[Příklad hledání v poli](search-query-lucene-examples.md#example-2-fielded-search) |
-| [hledání přibližných výsledků](query-lucene-syntax.md#bkmk_fuzzy) | **`search`** ukazatele **`queryType=full`** | Odpovídá podmínkám, které mají podobnou konstrukci nebo pravopis. <br/>[Příklad přibližného hledání](search-query-lucene-examples.md#example-3-fuzzy-search) |
-| [hledání blízkosti](query-lucene-syntax.md#bkmk_proximity) | **`search`** ukazatele **`queryType=full`** | Vyhledá v dokumentu skoro stejné výrazy. <br/>[Příklad hledání blízkosti](search-query-lucene-examples.md#example-4-proximity-search) |
-| [zvyšování termínů](query-lucene-syntax.md#bkmk_termboost) | **`search`** ukazatele **`queryType=full`** | Rozhodne dokument větší, pokud obsahuje zvýšený termín vzhledem k ostatním, které ne. <br/>[Příklad zvyšování skóre termínu](search-query-lucene-examples.md#example-5-term-boosting) |
-| [hledání regulárních výrazů](query-lucene-syntax.md#bkmk_regex) | **`search`** ukazatele **`queryType=full`** | Odpovídá na základě obsahu regulárního výrazu. <br/>[Příklad regulárního výrazu](search-query-lucene-examples.md#example-6-regex) |
-|  [zástupné znaky nebo hledání předpon](query-lucene-syntax.md#bkmk_wildcard) | **`search`** parametr s * *_`~`_* nebo **`?`** , **`queryType=full`**| Odpovídá v závislosti na předponě a vlnovce () `~` nebo jednom znaku ( `?` ). <br/>[Příklad hledání pomocí zástupných znaků](search-query-lucene-examples.md#example-7-wildcard-search) |
+| [Hledání v poli](query-lucene-syntax.md#bkmk_fields) | **`search`**  ukazatele **`queryType=full`**  | Sestavení složeného výrazu dotazu zaměřeného na jedno pole. <br/>[Příklad hledání v poli](search-query-lucene-examples.md#example-1-fielded-search) |
+| [hledání přibližných výsledků](query-lucene-syntax.md#bkmk_fuzzy) | **`search`** ukazatele **`queryType=full`** | Odpovídá podmínkám, které mají podobnou konstrukci nebo pravopis. <br/>[Příklad přibližného hledání](search-query-lucene-examples.md#example-2-fuzzy-search) |
+| [hledání blízkosti](query-lucene-syntax.md#bkmk_proximity) | **`search`** ukazatele **`queryType=full`** | Vyhledá v dokumentu skoro stejné výrazy. <br/>[Příklad hledání blízkosti](search-query-lucene-examples.md#example-3-proximity-search) |
+| [zvyšování termínů](query-lucene-syntax.md#bkmk_termboost) | **`search`** ukazatele **`queryType=full`** | Rozhodne dokument větší, pokud obsahuje zvýšený termín vzhledem k ostatním, které ne. <br/>[Příklad zvyšování skóre termínu](search-query-lucene-examples.md#example-4-term-boosting) |
+| [hledání regulárních výrazů](query-lucene-syntax.md#bkmk_regex) | **`search`** ukazatele **`queryType=full`** | Odpovídá na základě obsahu regulárního výrazu. <br/>[Příklad regulárního výrazu](search-query-lucene-examples.md#example-5-regex) |
+|  [zástupné znaky nebo hledání předpon](query-lucene-syntax.md#bkmk_wildcard) | **`search`** parametr s * *_`~`_* nebo **`?`** , **`queryType=full`**| Odpovídá v závislosti na předponě a vlnovce () `~` nebo jednom znaku ( `?` ). <br/>[Příklad hledání pomocí zástupných znaků](search-query-lucene-examples.md#example-6-wildcard-search) |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,12 +3,12 @@ title: Ověřování pomocí spravované identity
 description: Poskytněte přístup k obrázkům v soukromém registru kontejneru pomocí uživatelsky přiřazené spravované identity Azure, která je přiřazená uživatelem nebo systémem.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 68564cc5743b1deb43bf39f897c239dc683c334c
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: e6c0d21f7bdefa94241655225589a52c02110f70
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987751"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041463"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Použití spravované identity Azure k ověření ve službě Azure Container Registry 
 
@@ -107,13 +107,13 @@ Ukončete relaci SSH.
 
 ### <a name="create-an-identity"></a>Vytvoření identity
 
-Pomocí příkazu [AZ identity Create](/cli/azure/identit#az-identity-create) vytvořte v předplatném identitu. Stejnou skupinu prostředků, kterou jste použili dříve, můžete použít k vytvoření registru kontejneru nebo virtuálního počítače nebo jiného.
+Pomocí příkazu [AZ identity Create](/cli/azure/identity#az_identity_create) vytvořte v předplatném identitu. Stejnou skupinu prostředků, kterou jste použili dříve, můžete použít k vytvoření registru kontejneru nebo virtuálního počítače nebo jiného.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRId
 ```
 
-Pokud chcete nakonfigurovat identitu v následujících krocích, pomocí příkazu [AZ identity show][az-identity-show] uložte ID prostředku identity a ID instančního objektu do proměnných.
+Pokud chcete nakonfigurovat identitu v následujících krocích, pomocí příkazu [az identity show] [az_identity_show] uložte ID prostředku identity a ID instančního objektu do proměnných.
 
 ```azurecli
 # Get resource ID of the user-assigned identity

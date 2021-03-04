@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/13/2020
-ms.openlocfilehash: 1d9f1c5beafb7b54c5fd0189dd738ff8e346a3e8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 911238efafb948b304455cf75cc4ec2c3c605c76
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695947"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042040"
 ---
 # <a name="deploy-the-metadata-extraction-abap-function-module-for-the-sap-r3-family-of-bridges"></a>Nasazení modulu ABAP funkce extrakce metadat pro skupinu SAP R3 pro mosty 
 Tento článek popisuje postup nasazení modulu funkcí ABAP na serveru SAP.
@@ -74,7 +74,7 @@ Po vytvoření modulu zadejte následující informace:
 
 3.  Přejděte na \" kartu zdrojový kód \" . Existují dva způsoby, jak nasadit kód pro funkci:
 
-    a.  Z hlavní nabídky nahrajte Z \_ MITI \_DOWNLOAD.txt soubor tak, že vyberete pomůcky = \> Další nástroje = \> nahrát/stáhnout = \> nahrát.
+    a.  Z hlavní nabídky nahrajte textový soubor [z \_ MITI \_ Stáhnout](https://github.com/Azure/Purview-Samples/tree/master/connectors/sap) soubor tak, že vyberete pomůcky = \> Další nástroje = \> nahrát/stáhnout = \> nahrát.
 
     b.  Případně otevřete soubor, zkopírujte jeho obsah a vložte ho do \" oblasti zdrojového kódu \" .
 

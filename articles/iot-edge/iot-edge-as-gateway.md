@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f95068b66fdd7907bf06086f855473b156738847
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ec0bf6330b7b2268db84d86dc5a0d141fc24ce74
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371090"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040647"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Jak se dá zařízení IoT Edge využít jako brána
 
@@ -95,7 +95,7 @@ V zařízeních IoT pro příjem dat pomocí parametru **gatewayHostname** v př
 
 <!-- 1.2.0 -->
 ::: moniker range=">=iotedge-2020-11"
-Na zařízeních IoT Edge pro příjem dat použijte parametr **parent_hostname** v souboru config. yaml a nasměrujte na nadřazené zařízení.
+Na zařízeních IoT Edge pro příjem dat použijte parametr **parent_hostname** v konfiguračním souboru k nasměrování na nadřazené zařízení.
 ::: moniker-end
 
 #### <a name="secure-connection"></a>Zabezpečené připojení

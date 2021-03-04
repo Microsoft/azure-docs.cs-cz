@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/10/2021
 ms.author: jodowns
 ms.custom: fasttrack-new
-ms.openlocfilehash: 9dc44b4b898603df88d1bdd8c36ddfb6449335ac
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 55951f288314d92cf5057e7d5c1e988f65cb3e14
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547192"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040375"
 ---
 # <a name="versions-in-azure-api-management"></a>Verze v Azure API Management
 
@@ -42,7 +42,7 @@ Při použití schématu správy verzí cesty musí být identifikátor verze za
 
 Například `https://apis.contoso.com/products/v1` a `https://apis.contoso.com/products/v2` může odkazovat na stejné `products` rozhraní API, ale na verze `v1` a `v2` v uvedeném pořadí.
 
-Formát adresy URL požadavku rozhraní API při použití správy verzí na základě hlaviček je: `https://{yourDomain}/{apiName}/{versionIdentifier}/{operationId}` .
+Formát adresy URL požadavku rozhraní API při použití správy verzí na základě cest je: `https://{yourDomain}/{apiName}/{versionIdentifier}/{operationId}` .
 
 ### <a name="header-based-versioning"></a>Správa verzí na základě hlaviček
 

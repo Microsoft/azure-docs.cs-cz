@@ -1,17 +1,16 @@
 ---
 title: Shromažďování vlastních protokolů s využitím agenta Log Analytics ve službě Azure Monitor
 description: Azure Monitor může shromažďovat události z textových souborů na počítačích s Windows i Linux.  Tento článek popisuje, jak definovat nový vlastní protokol a podrobnosti o záznamech, které vytvoří v Azure Monitor.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 9ea33c7dca55e22687bd1db873c281caa1a3c4cb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b66011ff41e1dd4a7439105862ca61355a95bd71
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719929"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042704"
 ---
 # <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>Shromažďování vlastních protokolů s využitím agenta Log Analytics ve službě Azure Monitor
 

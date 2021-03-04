@@ -4,14 +4,14 @@ description: Zjistěte, jak nakonfigurovat řízení přístupu na základě rol
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.author: thweiss
-ms.openlocfilehash: d83109f380a3044073cf2dd8d10f29027ebb9f41
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: acb82a66c8ef4adcfeef0fcb527c44512ad4feaf
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690902"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040868"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Konfigurace řízení přístupu na základě role pomocí Azure Active Directory pro účet Azure Cosmos DB (Preview)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -370,6 +370,7 @@ Tyto další informace se toků v kategorii protokolu **DataPlaneRequests** a sk
 - Můžete vytvořit až 100 definic rolí a přiřazení rolí 2 000 na účet Azure Cosmos DB.
 - Řešení skupiny Azure AD se v současné době nepodporuje u identit, které patří do více než 200 skupin.
 - Token Azure AD se v současnosti předává jako hlavička s každou jednotlivou žádostí odeslanou službě Azure Cosmos DB, čímž se zvyšuje celková velikost datové části.
+- Přístup k datům pomocí Azure AD prostřednictvím [Azure Cosmos DB Exploreru](data-explorer.md) se ještě nepodporuje. Použití Průzkumníka Azure Cosmos DB dál vyžaduje, aby měl uživatel k tomuto primárnímu klíči přístup.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

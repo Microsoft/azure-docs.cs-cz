@@ -3,12 +3,12 @@ title: Geografické zotavení po havárii – Azure Event Hubs | Microsoft Docs
 description: Použití geografických oblastí k převzetí služeb při selhání a zotavení po havárii v Azure Event Hubs
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: 2fd13ac98e80aa67a2a3150e8406a0b0b1b08d13
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: eb6ef1a7536b819d1bc973740a0da6fdf3d756d5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390670"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042364"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geografická zotavení po havárii 
 
@@ -44,11 +44,7 @@ V tomto článku se používají následující výrazy:
 -  *Alias*: název pro konfiguraci zotavení po havárii, kterou jste nastavili. Alias poskytuje jediný stabilní řetězec plně kvalifikovaného názvu domény (FQDN). Aplikace používají tento připojovací řetězec aliasu pro připojení k oboru názvů. 
 
 -  *Primární nebo sekundární obor názvů*: obory názvů, které odpovídají aliasu. Primární obor názvů je "aktivní" a přijímá zprávy (může se jednat o existující nebo nový obor názvů). Sekundární obor názvů je "pasivní" a nepřijímá zprávy. Metadata mezi oběma je synchronizována, takže obě můžou bezproblémově přijímat zprávy bez nutnosti změny kódu aplikace nebo připojovacího řetězce. Chcete-li zajistit, že pouze aktivní obor názvů přijímá zprávy, je nutné použít alias.
-
-    > [!IMPORTANT]
-    > Funkce geografického zotavení po havárii vyžaduje, aby předplatné a skupina prostředků byly stejné pro primární a sekundární obory názvů. 
 -  *Metadata*: entity, jako jsou centra událostí a skupiny uživatelů; a jejich vlastnosti služby, které jsou přidruženy k oboru názvů. Automaticky se replikují jenom entity a jejich nastavení. Zprávy a události nejsou replikovány. 
-
 -  *Převzetí služeb při selhání*: proces aktivace sekundárního oboru názvů.
 
 ## <a name="supported-namespace-pairs"></a>Podporované páry oboru názvů
@@ -56,10 +52,10 @@ Podporovány jsou následující kombinace primárních a sekundárních oborů 
 
 | Primární obor názvů | Sekundární obor názvů | Podporováno | 
 | ----------------- | -------------------- | ---------- |
-| Standard | Standard | Yes | 
-| Standard | Vyhrazená | Yes | 
-| Vyhrazená | Vyhrazená | Yes | 
-| Vyhrazená | Standard | No | 
+| Standard | Standard | Ano | 
+| Standard | Vyhrazená | Ano | 
+| Vyhrazená | Vyhrazená | Ano | 
+| Vyhrazená | Standard | Ne | 
 
 > [!NOTE]
 > Obory názvů, které jsou ve stejném vyhrazeném clusteru, nelze spárovat. Obory názvů, které jsou v samostatných clusterech, můžete spárovat. 
@@ -75,13 +71,13 @@ Následující část obsahuje přehled procesu převzetí služeb při selhán�
 Nejprve vytvoříte nebo použijete existující primární obor názvů a nový sekundární obor názvů a potom oba dvojici. Toto párování vám poskytne alias, který můžete použít k připojení. Protože používáte alias, nemusíte měnit připojovací řetězce. Do párování převzetí služeb při selhání se dají přidat jenom nové obory názvů. 
 
 1. Vytvořte primární obor názvů.
-1. Vytvořte sekundární obor názvů v předplatném a skupině prostředků, která má primární obor názvů, ale v jiné oblasti. Tento krok je volitelný. Sekundární obor názvů můžete vytvořit při vytváření párování v dalším kroku. 
+1. Vytvořte sekundární obor názvů v jiné oblasti. Tento krok je volitelný. Sekundární obor názvů můžete vytvořit při vytváření párování v dalším kroku. 
 1. V Azure Portal přejděte k primárnímu oboru názvů.
 1. V nabídce vlevo vyberte **geografické obnovení** a na panelu nástrojů vyberte **Zahájit párování** . 
 
     :::image type="content" source="./media/event-hubs-geo-dr/primary-namspace-initiate-pairing-button.png" alt-text="Iniciace párování z primárního oboru názvů":::    
 1. Na stránce **Zahájit párování** proveďte tyto kroky:
-    1. Vyberte existující sekundární obor názvů nebo ho vytvořte v předplatném a skupině prostředků, která má primární obor názvů. V tomto příkladu je vybrán existující obor názvů.  
+    1. Vyberte existující sekundární obor názvů nebo ho vytvořte v jiné oblasti. V tomto příkladu je vybrán existující obor názvů.  
     1. Jako **alias** zadejte alias pro párování geografického Dr. 
     1. Potom vyberte **Vytvořit**. 
 

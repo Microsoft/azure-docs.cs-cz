@@ -1,21 +1,24 @@
 ---
-title: Referenční informace pro vývojáře v jazyce C# Azure Functions
-description: Naučte se vyvíjet Azure Functions pomocí jazyka C#.
+title: Vývoj funkcí jazyka C# pomocí Azure Functions
+description: Naučte se používat jazyk C# k vývoji a publikování kódu, který běží v procesu, pomocí modulu runtime Azure Functions.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 335cc3017e7b016666324306181c90a0e405a956
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: e29b250b25bdafb2b3af26f5669f2ae5ed485457
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806328"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041191"
 ---
-# <a name="azure-functions-c-developer-reference"></a>Referenční informace pro vývojáře v jazyce C# Azure Functions
+# <a name="develop-c-functions-using-azure-functions"></a>Vývoj funkcí jazyka C# pomocí Azure Functions
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-reference-csharp.md -->
 
 Tento článek je Úvod k vývoji Azure Functions pomocí jazyka C# v knihovnách tříd .NET.
+
+>[!IMPORTANT]
+>Tento článek podporuje funkce knihovny tříd .NET, které běží v procesu s modulem runtime. Funkce také podporují rozhraní .NET 5. x spuštěním funkcí C# mimo proces a izolací z modulu runtime. Další informace najdete v tématu [funkce izolovaného procesu .NET](dotnet-isolated-process-guide.md).
 
 Jako vývojář v jazyce C# může být také zajímat některé z následujících článků:
 
@@ -31,9 +34,11 @@ Verze běhových funkcí fungují s konkrétními verzemi .NET. Následující t
 
 | Verze modulu runtime Functions | Maximální verze .NET |
 | ---- | ---- |
-| Funkce 3. x | .NET Core 3.1 |
+| Funkce 3. x | .NET Core 3.1<br/>.NET 5,0<sup>*</sup> |
 | Functions 2.x | .NET Core 2.2 |
 | Functions 1.x |  .NET Framework 4.7 |
+
+<sup>*</sup> Musí běžet [mimo proces](dotnet-isolated-process-guide.md).
 
 Další informace najdete v tématu [Přehled verzí Azure Functions runtime](functions-versions.md) .
 
@@ -94,9 +99,11 @@ Signatura metody může obsahovat parametry jiné než ta, která se používá 
 
 Pořadí parametrů v signatuře funkce nezáleží. Můžete například vložit parametry triggeru před nebo za jiné vazby a parametr protokolovacího nástroje můžete vložit před nebo po Trigger nebo parametry vazby.
 
-### <a name="output-binding-example"></a>Příklad výstupní vazby
+### <a name="output-bindings"></a>Výstupní vazby
 
-Následující příklad upravuje předchozí rozhraní přidáním vazby výstupní fronty. Tato funkce zapíše zprávu fronty, která aktivuje funkci do nové zprávy fronty v jiné frontě.
+Funkce může mít nula nebo jednu výstupní vazbu, která je definována pomocí parametrů Output. 
+
+Následující příklad upravuje předchozí rozhraní přidáním vazby výstupní fronty s názvem `myQueueItemCopy` . Funkce zapíše obsah zprávy, která aktivuje funkci, do nové zprávy v jiné frontě.
 
 ```csharp
 public static class SimpleExampleWithOutput
@@ -112,6 +119,8 @@ public static class SimpleExampleWithOutput
     }
 }
 ```
+
+Hodnoty přiřazené výstupním vazbám jsou zapsány při ukončení funkce. Můžete použít více než jednu výstupní vazbu ve funkci pouhým přiřazením hodnot k více výstupním parametrům. 
 
 Články s odkazy na vazby (například[fronty úložiště](functions-bindings-storage-queue.md)) vysvětlují typy parametrů, které můžete použít s atributy triggeru, vstupu a výstupu.
 
@@ -361,7 +370,7 @@ Tady je ukázková reprezentace dat ve formátu JSON `customDimensions` :
 }
 ```
 
-## <a name="log-custom-telemetry-in-c-functions"></a>Protokolování vlastní telemetrie ve funkcích jazyka C#
+### <a name="log-custom-telemetry"></a><a name="log-custom-telemetry-in-c-functions"></a>Vlastní telemetrie protokolu
 
 Verze Application Insights SDK specifická pro konkrétní funkce, kterou můžete použít k posílání vlastních dat telemetrie z vašich funkcí do Application Insights: [Microsoft. Azure. WebJobs. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights). K instalaci tohoto balíčku použijte následující příkaz z příkazového řádku:
 
@@ -618,7 +627,7 @@ public static class IBinderExample
 
 ### <a name="multiple-attribute-example"></a>Příklad více atributů
 
-Předchozí příklad získá nastavení aplikace pro připojovací řetězec hlavního účtu úložiště aplikace Function App (což je `AzureWebJobsStorage` ). Můžete zadat vlastní nastavení aplikace, které se má použít pro účet úložiště, a to přidáním [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předáním pole atributu do `BindAsync<T>()` . Použijte `Binder` parametr, ne `IBinder` .  Příklad:
+Předchozí příklad získá nastavení aplikace pro připojovací řetězec hlavního účtu úložiště aplikace Function App (což je `AzureWebJobsStorage` ). Můžete zadat vlastní nastavení aplikace, které se má použít pro účet úložiště, a to přidáním [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předáním pole atributu do `BindAsync<T>()` . Použijte `Binder` parametr, ne `IBinder` .  Například:
 
 ```cs
 public static class IBinderExampleMultipleAttributes

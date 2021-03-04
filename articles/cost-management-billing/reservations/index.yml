@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 04/30/2020
-  ms.openlocfilehash: db01f91401b3a0f33b8ad53e91eb60839ecbcb7f
-  ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+  ms.date: 03/01/2021
+  ms.openlocfilehash: b25d522d5db9f513628e43724cb1abde9f55e99c
+  ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 02/05/2021
-  ms.locfileid: "99576291"
+  ms.lasthandoff: 03/04/2021
+  ms.locfileid: "102040817"
 landingContent:
 - title: Nákup rezervací
   linkLists:
@@ -24,72 +24,28 @@ landingContent:
     links:
     - text: Co jsou rezervace Azure?
       url: save-compute-costs-reservations.md
-    - text: Výměny rezervací a vrácení peněz
-      url: exchange-and-refund-azure-reservations.md
-    - text: Nákup rezervace s měsíčními platbami
-      url: ./prepare-buy-reservation.md
   - linkListType: how-to-guide
     links:
+    - text: Nákup rezervace
+      url: prepare-buy-reservation.md
     - text: Obnovení rezervací
       url: reservation-renew.md
-    - text: Azure Synapse Analytics
-      url: prepay-sql-data-warehouse-charges.md
-    - text: Virtuální počítač
-      url: ../../virtual-machines/prepay-reserved-vm-instances.md?toc=%2fazure%2fcost-management-billing%2freservations%2ftoc.json
-    - text: Azure Storage
-      url: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
-    - text: Databáze Cosmos
-      url: ../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
-    - text: Databáze SQL
-      url: ../../azure-sql/database/reserved-capacity-overview.md?toc=%2fazure%2fcost-management-billing%2ftoc.json
-    - text: Průzkumník dat Azure
-      url: /azure/data-explorer/pricing-reserved-capacity?toc=/azure/cost-management-billing/toc.json
-    - text: Azure Databricks
-      url: prepay-databricks-reserved-capacity.md
-    - text: App Service
-      url: prepay-app-service.md
-    - text: Softwarové plány Azure
-      url: ../../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/cost-management-billing/toc.json
 - title: Informace o použití slev
   linkLists:
   - linkListType: concept
     links:
-    - text: Rezervované instance virtuálních počítačů
-      url: ../manage/understand-vm-reservation-charges.md
-    - text: Rezervovaná kapacita služby Azure Storage
-      url: understand-storage-charges.md
-    - text: Záložní kapacita Cosmos DB
-      url: understand-cosmosdb-reservation-charges.md
-    - text: Záložní kapacita služby Azure SQL Database
-      url: understand-reservation-charges.md
-    - text: Azure Synapse Analytics
-      url: reservation-discount-azure-sql-dw.md
-    - text: Průzkumník dat Azure
-      url: understand-azure-data-explorer-reservation-charges.md
-    - text: Azure Databricks
-      url: reservation-discount-databricks.md
-    - text: App Service
-      url: reservation-discount-app-service.md
-    - text: Poplatky za software Azure
-      url: understand-suse-reservation-charges.md
-- title: Použití slev pro Azure Database
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Azure Database for MySQL
-      url: understand-reservation-charges-mysql.md
-    - text: Azure Database for PostgreSQL
-      url: understand-reservation-charges-postgresql.md
-    - text: Azure Database for MariaDB
-      url: understand-reservation-charges-mariadb.md
+    - text: Jak se uplatňuje sleva za rezervaci
+      url: reservation-discount-application.md
 - title: Správa rezervací
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Správa rezervací
       url: manage-reserved-vm-instance.md
-    - text: Zobrazení rezervací
+    - text: Zobrazit rezervace a spravovat oprávnění
       url: view-reservations.md
+    - text: Výměna a refundace rezervací
+      url: exchange-and-refund-azure-reservations.md
   - linkListType: reference
     links:
     - text: Rozhraní API pro rezervace

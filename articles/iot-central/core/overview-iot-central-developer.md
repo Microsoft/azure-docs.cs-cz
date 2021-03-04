@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 326fed659be43be3115cae1d7c2b14d0708f4a96
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f69bbecfc2acc24cd63b87212197342b28723a9f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377801"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043095"
 ---
 # <a name="iot-central-device-development-guide"></a>Průvodce vývojem zařízení IoT Central
 
@@ -68,7 +68,7 @@ Použití DPS umožňuje:
 - K registraci zařízení v IoT Central můžete použít vlastní ID zařízení. Použití vlastních ID zařízení zjednodušuje integraci se stávajícími systémy Back-Office.
 - Jediný konzistentní způsob připojení zařízení k IoT Central.
 
-Další informace najdete v tématu věnovaném [připojení k Azure IoT Central](./concepts-get-connected.md).
+Další informace najdete v tématu věnovaném [připojení k Azure IoT Central](./concepts-get-connected.md) a [osvědčeným postupům](concepts-best-practices.md).
 
 ### <a name="security"></a>Zabezpečení
 

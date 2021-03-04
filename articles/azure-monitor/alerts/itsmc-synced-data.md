@@ -1,18 +1,17 @@
 ---
 title: Data synchronizovaná z vašeho produktu ITSM do pracovního prostoru LA
 description: Tento článek poskytuje přehled dat synchronizovaných z vašeho ITSM produktu do pracovního prostoru LA.
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/29/2020
 ms.custom: references_regions
-ms.openlocfilehash: fd570950190ceabac413aca2d68368e5e722a3da
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 83994c1b6e150342a777a079d79d6a594d30c3ff
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609531"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041599"
 ---
 # <a name="data-synced-from-your-itsm-product"></a>Data synchronizovaná z produktu ITSM
 
@@ -84,7 +83,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 - Plánované koncové datum
 - Datum zahájení práce
 - Datum ukončení práce
-- Description
+- Popis
 - Počítač
 
 ## <a name="servicenow-example"></a>Příklad ServiceNow 
@@ -132,7 +131,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 | PlannedEndDate_t  | Plánované koncové datum |
 | WorkStartDate_t  | Skutečné datum zahájení |
 | WorkEndDate_t | Skutečné datum ukončení|
-| Description_s | Description |
+| Description_s | Popis |
 | Počítač  | Položka konfigurace |
 
 ## <a name="next-steps"></a>Další kroky

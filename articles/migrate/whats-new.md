@@ -7,16 +7,20 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: cc207522048e3f0491e3aa54f2ae21d2e7e63bc2
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: f50737bdefc9065c9b16633ba3360bda1d028cd6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834030"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043044"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Co je nového v Azure Migrate
 
 [Azure Migrate](migrate-services-overview.md) pomáhá zjišťovat, vyhodnocovat a migrovat místní servery, aplikace a data do cloudu Microsoft Azure. Tento článek shrnuje nové verze a funkce v Azure Migrate.
+
+## <a name="update-march-2021"></a>Aktualizace (březen 2021)
+- Podpora poskytování více přihlašovacích údajů serveru v zařízení Azure Migrate pro zjišťování nainstalovaných aplikací (inventář softwaru), analýzy závislostí bez agentů a zjišťování SQL Server instancí a databází v prostředí VMware. [Další informace](tutorial-discover-vmware.md#provide-server-credentials)
+- Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. [Další informace](concepts-azure-sql-assessment-calculation.md)<br/>Chcete-li vyzkoušet tuto funkci, použijte [Tento odkaz](https://aka.ms/AzureMigrate/SQL) k vytvoření projektu v oblasti **Austrálie – východ** . Začněte tím, že najdete kurzy pro [zjišťování](tutorial-discover-vmware.md) a [hodnocení](tutorial-assess-sql.md) .
 
 ## <a name="update-january-2021"></a>Aktualizace (leden 2021)
 -  Azure Migrate: Nástroj pro migraci serveru teď umožňuje migrovat virtuální počítače VMware, fyzické servery a virtuální počítače z jiných cloudů na virtuální počítače Azure s disky šifrovanými pomocí šifrování na straně serveru pomocí klíčů spravovaných zákazníkem (CMK).
@@ -58,7 +62,7 @@ Azure Migrate podporuje nasazení v Azure Government.
 
 - Můžete zjišťovat a hodnotit virtuální počítače VMware, virtuální počítače Hyper-V a fyzické servery.
 - Do Azure můžete migrovat virtuální počítače VMware, virtuální počítače Hyper-V a fyzické servery.
-- Pro migraci VMware můžete použít migraci bez agentů nebo agenta na základě agentů. [Přečtěte si další informace](server-migrate-overview.md).
+- Pro migraci VMware můžete použít migraci bez agentů nebo agenta na základě agentů. [Další informace](server-migrate-overview.md).
 - [Kontrola](migrate-support-matrix.md#supported-geographies-azure-government) podporovaných geografických oblastí a oblastí pro Azure Government.
 - [Analýza závislostí založená na agentech](concepts-dependency-visualization.md#agent-based-analysis) není v Azure Government podporovaná.
 - Funkce ve verzi Preview jsou podporované v Azure Government, konkrétně v případě [analýzy závislostí bez agenta](concepts-dependency-visualization.md#agentless-analysis)a [zjišťování aplikací](how-to-discover-applications.md).
@@ -84,7 +88,7 @@ Do Azure Migrate bylo přidáno několik nových funkcí:
 
 Do Azure Migrate byly přidány nové nástroje pro posouzení a migraci:
 
-- **Rackware**: nabídka migrace do cloudu.
+- **RackWare**: nabídka migrace do cloudu.
 - **Stěhovací** společnost: posouzení nabídky.
 
 [Přečtěte si další informace](migrate-services-overview.md) o používání nástrojů a nabídek ISV pro posouzení a migraci v Azure Migrate.

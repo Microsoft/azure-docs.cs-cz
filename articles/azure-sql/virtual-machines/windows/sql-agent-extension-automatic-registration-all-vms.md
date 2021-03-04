@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/07/2020
-ms.openlocfilehash: 1ef7943586123a1870ed9a2d0c21aa8b5fd38c1c
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 139852949a3744fd603cb197b2e27fa32679aae0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359995"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042415"
 ---
 # <a name="automatic-registration-with-sql-iaas-agent-extension"></a>Automatická registrace pomocí rozšíření agenta SQL IaaS
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,12 +30,12 @@ Když zaregistrujete SQL Server virtuální počítač s [rozšířením agenta 
 
 Když je povolená Automatická registrace, úloha se denně spustí, aby se zjistilo, jestli je SQL Server nainstalovaná na všech neregistrovaných virtuálních počítačích v předplatném. To se provádí zkopírováním binárních souborů rozšíření agenta SQL IaaS na virtuální počítač a následným spuštěním jednorázového nástroje, který kontroluje SQL Server podregistr registru. Pokud se zjistí podregistr SQL Server, virtuální počítač se zaregistruje s rozšířením v jednoduchém režimu. Pokud v registru neexistuje žádný podregistr SQL Server, binární soubory se odeberou.
 
-Po povolení automatické registrace u předplatného se všechny aktuální a budoucí virtuální počítače, které mají nainstalovaný SQL Server, zaregistrují s rozšířením agenta SQL IaaS v jednoduchém režimu. Abyste mohli využít celou sadu funkcí, je nutné [ručně upgradovat na režim úplné správy](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full) . 
+Po povolení automatické registrace u předplatného se všechny aktuální a budoucí virtuální počítače, které mají nainstalovaný SQL Server, zaregistrují s rozšířením agenta SQL IaaS **v prostém režimu bez výpadků a bez restartování služby SQL Server**. Abyste mohli využít celou sadu funkcí, je nutné [ručně upgradovat na režim úplné správy](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full) . 
 
 > [!IMPORTANT]
 > Rozšíření agenta SQL IaaS shromažďuje data pro účely výslovného účelu poskytování dobrovolných výhod při používání SQL Server v rámci Azure Virtual Machines. Microsoft nebude tato data používat pro audity licencování bez předchozího souhlasu zákazníka. Další informace najdete v tématu [SQL Server ochrany osobních údajů](/sql/sql-server/sql-server-privacy#non-personal-data) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete zaregistrovat SQL Server virtuální počítač s rozšířením, budete potřebovat: 
 
@@ -93,7 +93,7 @@ To můžete provést pomocí těchto kroků:
 1. Spusťte skript a předejte SubscriptionIds jako parametry jako   
    `.\EnableBySubscription.ps1 -SubscriptionList SubscriptionId1,SubscriptionId2`
 
-   Příklad: 
+   Například: 
 
    ```console
    .\EnableBySubscription.ps1 -SubscriptionList a1a1a-aa11-11aa-a1a1-a11a111a1,b2b2b2-bb22-22bb-b2b2-b2b2b2bb

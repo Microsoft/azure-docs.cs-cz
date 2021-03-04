@@ -3,15 +3,14 @@ title: Souhrn a přístup návrháře zobrazení Azure Monitor pro sešity
 description: Oprávnění požadovaná pro přístup k sešitům při přechodu ze zobrazení v Azure Monitor.
 author: austonli
 ms.author: aul
-ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: c5b3096c4eb8cf71ff1d13476fa09cc65ef413a7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 42cb8db0f67d3a01b2e8443e6cb7c47f0fc44c4b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608994"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043386"
 ---
 # <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>Shrnutí a přístup k převodům návrháře zobrazení na sešity
 [Návrhář zobrazení](view-designer.md) je funkce Azure monitor, která umožňuje vytvářet vlastní zobrazení, která vám pomohou vizualizovat data v pracovním prostoru Log Analytics s grafy, seznamy a časovými osami. Budou postupně vyladěny a nahrazeny sešity, které poskytují další funkce. Tento článek podrobně popisuje, jak můžete vytvořit souhrn přehledu a oprávnění požadovaná pro přístup k sešitům.

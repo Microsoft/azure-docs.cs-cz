@@ -1,17 +1,16 @@
 ---
 title: Dotazy protokolu v Azure Monitor
 description: Referenční informace k dotazovacímu jazyku Kusto, který používá Azure Monitor. Obsahuje další prvky specifické pro Azure Monitor a elementy, které nejsou podporovány v dotazech protokolu Azure Monitor.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/09/2020
-ms.openlocfilehash: 7ce73fc69ac0ff88c6048aad39fd07ae802b978d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 529fc432bf8777ef7e2b527f08e9cb59e42bf156
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704221"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041021"
 ---
 # <a name="log-queries-in-azure-monitor"></a>Dotazy protokolu v Azure Monitor
 Protokoly Azure Monitor jsou založené na Azure Průzkumník dat a dotazy protokolu se zapisují pomocí stejného dotazovacího jazyka KQL (Kusto Query Language). Jedná se o bohatý jazyk navržený tak, aby bylo snadné ho číst a vytvářet, takže byste měli být schopni začít psát dotazy s některými základními pokyny.

@@ -3,12 +3,12 @@ title: Azure Service Bus – vypršení platnosti zprávy
 description: Tento článek vysvětluje vypršení platnosti a dobu provozu Azure Service Busch zpráv. Po uplynutí tohoto termínu se zpráva už nedoručuje.
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: 505a041d2f6129b159166e9f99ce7fef779e1e66
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 74df8909633c2fa048c23c559ffdd315a8616e11
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698361"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042823"
 ---
 # <a name="message-expiration-time-to-live"></a>Vypršení platnosti zpráv (hodnota TTL)
 Datová část ve zprávě nebo příkaz nebo dotaz, který zpráva předává přijímači, je téměř vždy v souladu s některými formami konečného termínu vypršení platnosti na úrovni aplikace. Po uplynutí tohoto termínu se obsah už nedoručuje nebo požadovaná operace se už nespustí.
@@ -21,7 +21,7 @@ Po **vypršení doby platnosti v čase UTC** se zprávy stanou neoprávněnými 
 
 I když je zpráva uzamčená, může být aplikace v držbě zprávy, jejíž platnost vypršela. Zda je aplikace ochotna pokračovat se zpracováním nebo se rozhodnete zrušit zprávu pro implementátora.
 
-Doporučujeme nastavit hodnotu **TTL (Time to Live** ) pro zprávu v řádu hodin nebo dnů. Pokud nastavíte tuto hodnotu na nízkou hodnotu v sekundách nebo milisekundách, může tato zpráva vypršet, aby ji spotřebitelé mohli využít. 
+Extrémně nízká hodnota TTL v řádu milisekund nebo sekund může způsobit, že zprávy vyprší před přijetím aplikace příjemce. Zvažte nejvyšší hodnotu TTL, která je pro vaši aplikaci vhodná.
 
 ## <a name="entity-level-expiration"></a>Vypršení platnosti úrovně entity
 Všechny zprávy odeslané do fronty nebo tématu podléhají výchozímu vypršení platnosti, které je nastaveno na úrovni entity. Dá se nastavit i na portálu během vytváření a později ho upravovat. Výchozí doba platnosti se používá pro všechny zprávy odesílané do entity, kde Time-to-Live není explicitně nastaveno. Výchozí hodnota vypršení platnosti funguje také jako mez pro hodnotu TTL (Time to Live). Zprávy, které mají delší dobu, než je výchozí hodnota, jsou před zařazováním do fronty tiše upraveny na výchozí hodnotu TTL (Time to Live).
