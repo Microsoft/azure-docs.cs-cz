@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/22/2020
-ms.openlocfilehash: 010cfc307d2b2c10c31168fce73673fb1fb611b8
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.date: 03/03/2021
+ms.openlocfilehash: 6a71999f0896a5d056b7d0b38be4d494c347e9f9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807644"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049368"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Jak připojit Azure Data Factory a Azure dosah
 
@@ -73,7 +73,7 @@ Pomocí následujících kroků připojte existující účty Data Factory ke Da
 
 Když uživatel dosah zaregistruje Data Factory ke kterému mají přístup, dojde k následujícím akcím v back-endu:
 
-1. **Data Factory MSI** se přidá do role dosah RBAC: **dosah data kurátor**.
+1. **Data Factory spravovaná identita** se přidá do role dosah RBAC: **dosah data kurátor**.
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/adf-msi.png" alt-text="Snímek obrazovky zobrazující Azure Data Factory MSI" lightbox="./media/how-to-link-azure-data-factory/adf-msi.png":::
      
@@ -88,76 +88,91 @@ Pokud chcete odebrat připojení k datové továrně, udělejte toto:
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="Snímek obrazovky ukazující, jak vybrat datové továrny pro odebrání připojení" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 
-## <a name="configure-a-self-hosted-ir-to-collect-lineage-from-on-prem-sql"></a>Konfigurace prostředí IR v místním prostředí pro shromažďování řádků z Prem SQL
+## <a name="configure-a-self-hosted-integration-runtime-to-collect-lineage"></a>Konfigurace Integration Runtime pro místní hostování za účelem shromáždění řádků
 
-Pro místní databáze SQL je k dispozici Data Factory aktivita kopírování. Pokud provozujete místní prostředí Integration runtime pro přesun dat pomocí Azure Data Factory a chcete zachytit dosah ve službě Azure, ujistěte se, že verze je 4.8.7418.1 nebo novější. Další informace o modulu Integration runtime v místním prostředí najdete v tématu [Vytvoření a konfigurace prostředí Integration runtime](../data-factory/create-self-hosted-integration-runtime.md)v místním prostředí.
+Pro místní úložiště dat, jako jsou databáze SQL, je pro aktivitu Data Factory kopírování k dispozici řádek. Pokud provozujete místní prostředí Integration runtime pro přesun dat pomocí Azure Data Factory a chcete zachytit dosah ve službě Azure, ujistěte se, že verze je 5,0 nebo novější. Další informace o modulu Integration runtime v místním prostředí najdete v tématu [Vytvoření a konfigurace prostředí Integration runtime](../data-factory/create-self-hosted-integration-runtime.md)v místním prostředí.
 
 ## <a name="supported-azure-data-factory-activities"></a>Podporované aktivity Azure Data Factory
 
 Azure dosah zachycuje za běhu z následujících aktivit Azure Data Factory:
 
-- Kopírování dat
-- Data Flow
-- Spustit balíček SSIS
+- [Kopírování dat](../data-factory/copy-activity-overview.md)
+- [Data Flow](../data-factory/concepts-data-flow-overview.md)
+- [Spustit balíček SSIS](../data-factory/how-to-invoke-ssis-package-ssis-activity.md)
 
 > [!IMPORTANT]
 > V případě, že zdroj nebo cíl používá nepodporovaný systém úložiště dat, služba Azure dosah zruší.
 
 Integrace mezi Data Factory a dosah podporuje pouze podmnožinu datových systémů, které Data Factory podporuje, jak je popsáno v následujících částech.
 
-### <a name="data-factory-copy-data-support"></a>Podpora Data Factory Kopírování dat
+### <a name="data-factory-copy-activity-support"></a>Podpora aktivity kopírování Data Factory
 
-| Systém úložiště dat | Podporováno jako zdroj | 
+| Úložiště dat | Podporováno | 
 | ------------------- | ------------------- | 
-| ADLS Gen1 | Yes | 
-| ADLS Gen2 | Yes | 
-| Azure Blob | Yes |
-| Azure Cosmos DB (SQL API) | Yes | 
-| Azure Cosmos DB (rozhraní API Mongo) | Yes |
-| Azure Cognitive Search | Yes | 
-| Průzkumník dat Azure | Yes | 
-| Databáze Azure Database for Marie DB \* | Yes | 
-| Azure Database for MYSQL \* | Yes | 
-| Azure Database for PostgreSQL \* | Yes |
+| Azure Blob Storage | Ano |
+| Azure Cognitive Search | Ano | 
+| Azure Cosmos DB (SQL API) \* | Ano | 
+| Rozhraní API pro MongoDB Azure Cosmos DB \* | Ano |
+| Průzkumník dat Azure \* | Yes | 
+| Azure Data Lake Storage Gen1 | Ano | 
+| Azure Data Lake Storage Gen2 | Ano | 
+| Databáze Azure Database for Marie DB \* | Ano | 
+| Azure Database for MySQL \* | Ano | 
+| Azure Database for PostgreSQL \* | Ano |
 | Azure File Storage | Ano | 
-| Azure Table Storage | Yes |
-| Azure SQL Database \* | Yes | 
-| Azure SQL MI \* | Yes | 
-| Azure synapse Analytics (dřív SQL DW) \* | Yes | 
-| SQL Server Prem  \* | Yes | 
-| Amazon S3 | Yes | 
-| Teradata | Yes | 
-| Konektor tabulky SAP | Yes |
-| SAP ECC | Yes | 
-| Hive | Yes | 
+| Azure SQL Database \* | Ano | 
+| Spravovaná instance Azure SQL \* | Ano | 
+| Azure synapse Analytics \* | Ano | 
+| Table Storage Azure \* | Ano |
+| SQL Server \* | Ano | 
+| Amazon S3 | Ano | 
+| Úlů \* | Ano | 
+| SAP ECC \* | Ano |
+| Tabulka SAP \* | Ano |
+| Teradata \* | Ano |
+
+*\* Azure dosah momentálně nepodporuje dotazy ani uloženou proceduru pro vystavování nebo skenování. U pořadu je omezené jenom na tabulky a zobrazení zdrojů.*
 
 > [!Note]
 > Funkce line má určité nároky na výkon v Data Factory aktivity kopírování. Pro ty, kteří nastavili připojení k datové továrně v dosah, se může stát, že některé úlohy kopírování trvá déle. Většinou je dopad na zanedbatelné. Pokud úlohy kopírování trvá déle než obvykle, kontaktujte prosím podporu s časovým porovnáním.
 
+#### <a name="known-limitations-on-copy-activity-lineage"></a>Známá omezení pro řádek aktivity kopírování
+
+V současné době platí, že pokud použijete následující funkce kopírování, tato Nepodporovaná čára ještě není podporována:
+
+- Kopírovat data do Azure Data Lake Storage Gen1 v binárním formátu.
+- Zkopírujte data do služby Azure synapse Analytics pomocí příkazu Base nebo COPY.
+- Nastavení komprese pro binární, oddělený text, Excel, JSON a soubory XML
+- Možnosti zdrojového oddílu pro Azure SQL Database, Azure SQL Managed instance, Azure synapse Analytics, SQL Server a SAP TABLE.
+- Kopírování dat do jímky založené na souborech s nastavením maximálního počtu řádků na soubor.
+- Přidat další sloupce během kopírování.
+
 ### <a name="data-factory-data-flow-support"></a>Data Factory podpora toku dat
 
-| Systém úložiště dat | Podporováno |
+| Úložiště dat | Podporováno |
 | ------------------- | ------------------- | 
-| ADLS Gen1 | Yes |
-| ADLS Gen2 | Yes |
-| Azure Blob | Yes |
-| Azure SQL Database \* | Yes |
-| Azure synapse Analytics (dřív SQL DW) \* | Yes |
+| Azure Blob Storage | Yes |
+| Azure Data Lake Storage Gen1 | Ano |
+| Azure Data Lake Storage Gen2 | Ano |
+| Azure SQL Database \* | Ano |
+| Azure synapse Analytics \* | Ano |
+
+*\* Azure dosah momentálně nepodporuje dotazy ani uloženou proceduru pro vystavování nebo skenování. U pořadu je omezené jenom na tabulky a zobrazení zdrojů.*
 
 ### <a name="data-factory-execute-ssis-package-support"></a>Data Factory provádění podpory balíčků SSIS
 
-| Systém úložiště dat | Podporováno |
+| Úložiště dat | Podporováno |
 | ------------------- | ------------------- |
-| Azure Blob | Yes |
-| ADLS Gen1 | Yes |
-| ADLS Gen2 | Yes |
-| Azure SQL Database \* | Yes |
-| Azure SQL MI \*| Yes |
-| Azure synapse Analytics (dřív SQL DW) \* | Yes |
-| SQL Server Prem \* | Yes |
-| Azure File Storage | Yes |
+| Azure Blob Storage | Yes |
+| Azure Data Lake Storage Gen1 | Ano |
+| Azure Data Lake Storage Gen2 | Ano |
+| Azure File Storage | Ano |
+| Azure SQL Database \* | Ano |
+| Spravovaná instance Azure SQL \*| Ano |
+| Azure synapse Analytics \* | Ano |
+| SQL Server \* | Ano |
 
-*\* V případě scénářů SQL (Azure a místních) nepodporuje Azure dosah uložené procedury nebo skripty pro kontrolu a zjišťování. U pořadu je omezené jenom na tabulky a zobrazení zdrojů.*
+*\* Azure dosah momentálně nepodporuje dotazy ani uloženou proceduru pro vystavování nebo skenování. U pořadu je omezené jenom na tabulky a zobrazení zdrojů.*
 
 > [!Note]
 > Platforma Azure Data Lake Storage Gen2 je teď obecně dostupná. Doporučujeme začít ji používat ještě dnes. Další informace najdete na [stránce produktu](https://azure.microsoft.com/en-us/services/storage/data-lake-storage/).
@@ -172,7 +187,7 @@ Některé další způsoby, jak najít informace v zobrazení počtu řádků, z
 
 - Na kartě **se** zarážkami myší na obrazce zobrazíte další informace o assetu v popisku.
 - Vyberte uzel nebo okraj pro zobrazení typu assetu, který patří, nebo přepněte prostředky.
-- Sloupce datové sady se zobrazí na levé straně karty vydaných **řádků** . Další informace o čárových úrovních na úrovni sloupce naleznete v tématu [Column-Level line](catalog-lineage-user-guide.md#column-level-lineage).
+- Sloupce datové sady se zobrazí na levé straně karty vydaných **řádků** . Další informace o čárových úrovních na úrovni sloupce najdete v tématu [čára sloupce datové sady](catalog-lineage-user-guide.md#dataset-column-lineage).
 
 ### <a name="data-lineage-for-11-operations"></a>Datové řádky pro 1:1 operace
 

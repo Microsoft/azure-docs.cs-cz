@@ -7,12 +7,13 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/31/2020
 ms.author: allensu
-ms.openlocfilehash: 7448e003771bea1e235d4e0776ebce3cb1beae17
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 4999d8b5d5ebe5d44aae782589b5c63324a4027b
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544084"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096509"
 ---
 # <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-powershell"></a>Kurz – připojení k serveru SQL Azure pomocí privátního koncového bodu Azure – Azure PowerShell
 
@@ -26,7 +27,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření serveru SQL Azure a privátního koncového bodu.
 > * Otestujte připojení k privátnímu koncovému bodu SQL serveru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.4.1 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte prostředí PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
@@ -336,6 +337,8 @@ V tomto kurzu jste vytvořili:
 * Azure SQL Server s privátním koncovým bodem.
 
 Virtuální počítač jste použili k zabezpečenému otestování připojení k SQL serveru v rámci privátního koncového bodu.
+
+V dalším kroku se může také zajímat [Webová aplikace s privátním připojením ke scénáři architektury Azure SQL Database](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app) , která připojuje webovou aplikaci mimo virtuální síť k privátnímu koncovému bodu databáze.
 
 Naučte se vytvořit službu privátního propojení:
 > [!div class="nextstepaction"]

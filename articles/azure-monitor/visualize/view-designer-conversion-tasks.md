@@ -3,15 +3,14 @@ title: Azure Monitor návrháře zobrazení na sešity převod běžných úloh
 description: Běžné úlohy při přechodu ze zobrazení do sešitů v Azure Monitor.
 author: austonli
 ms.author: aul
-ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 4e9d9e65dedae083138f3b29a2a609e124ce0fc8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d479e64620519491ba4847349ea33820747fcea7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611777"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043469"
 ---
 # <a name="view-designer-to-workbooks-conversion-common-tasks"></a>Úlohy návrháře zobrazení pro převod na sešity běžné úkoly
 [Návrhář zobrazení](view-designer.md) je funkce Azure monitor, která umožňuje vytvářet vlastní zobrazení, která vám pomohou vizualizovat data v pracovním prostoru Log Analytics s grafy, seznamy a časovými osami. Budou postupně vyladěny a nahrazeny sešity, které poskytují další funkce. Tento článek podrobně popisuje úlohy, které jsou běžné při převádění zobrazení na sešity.

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: d207a5629647ef3582f1e0490ef6ccc407f935f7
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: beba8e1d8126818f142e4873d551ed077af869d2
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584834"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035233"
 ---
 # <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>Povolení zotavení po havárii virtuálních počítačů Azure mezi zónami dostupnosti
 
@@ -20,7 +20,7 @@ Tento článek popisuje, jak replikovat, převzetí služeb při selhání a nav
 
 >[!NOTE]
 >
->- Podpora zóny pro zotavení po havárii zóny je aktuálně omezená na devět oblastí: jihovýchodní Asie, Japonsko – východ, Austrálie – východ, Velká Británie – jih, Západní Evropa, Severní Evropa, Střed USA, Východní USA a Západní USA 2.  
+>- Podpora zóny až po zotavení po havárii zóny je aktuálně omezená na následující oblasti: jihovýchodní Asie, Japonsko – východ, Austrálie – východ, Velká Británie – jih, Západní Evropa, Severní Evropa, Střed USA, Východní USA, východní USA 2 a Západní USA 2.  
 >- Site Recovery nepřesouvá ani neukládají zákaznická data mimo oblast, ve které je nasazená, když zákazník používá k zotavení po havárii zóny. Zákazníci si můžou vybrat Recovery Services trezor z jiné oblasti, pokud si si je vyberou. Trezor Recovery Services obsahuje metadata, ale žádná skutečná zákaznická data.
 
 Služba Site Recovery přispívá k strategii pro provozní kontinuitu a zotavení po havárii tím, že během plánovaných a neplánovaných výpadků udržuje podnikové aplikace v provozu. Tato možnost zotavení po havárii se doporučuje, aby vaše aplikace zůstaly v provozu a v případě regionálních výpadků.

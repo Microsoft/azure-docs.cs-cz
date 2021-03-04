@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 53884c2f6d9f2e8cbb5676e9ac10e8fb15ed919e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 13b57a8ef57e1d5f2fe066a9fc8b0b74382f066f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024275"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042840"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Použití řídicího panelu pro dělení na okruhy pomocí Azure jarního cloudu
 
@@ -46,9 +46,9 @@ Použijte postup a v [Azure CLI zřiďte instanci služby](./spring-cloud-quicks
 ## <a name="deploy-your-applications-to-azure-spring-cloud"></a>Nasazení vašich aplikací do jarního cloudu Azure
 Tyto aplikace nepoužívají **konfigurační server**, takže není nutné nastavovat **konfigurační server** pro jarní cloud Azure.  Vytvořte a nasaďte následujícím způsobem:
 ```azurecli
-az spring-cloud app create -n user-service --is-public
+az spring-cloud app create -n user-service --assign-endpoint
 az spring-cloud app create -n recommendation-service
-az spring-cloud app create -n hystrix-turbine --is-public
+az spring-cloud app create -n hystrix-turbine --assign-endpoint
 
 az spring-cloud app deploy -n user-service --jar-path user-service/target/user-service.jar
 az spring-cloud app deploy -n recommendation-service --jar-path recommendation-service/target/recommendation-service.jar

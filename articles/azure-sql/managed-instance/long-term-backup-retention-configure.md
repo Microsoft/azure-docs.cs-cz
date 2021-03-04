@@ -1,5 +1,5 @@
 ---
-title: 'Spravovaná instance Azure SQL: dlouhodobé uchovávání záloh (PowerShell)'
+title: 'Spravovaná instance Azure SQL: dlouhodobé uchovávání záloh'
 description: Naučte se ukládat a obnovovat automatizované zálohy na samostatných kontejnerech úložiště objektů BLOB v Azure pro spravovanou instanci Azure SQL pomocí PowerShellu.
 services: sql-database
 ms.service: sql-managed-instance
@@ -7,28 +7,88 @@ ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: how-to
-author: anosov1960
-ms.author: sashan
+author: shkale-msft
+ms.author: shkale
 ms.reviewer: mathoma, sstein
-ms.date: 04/29/2020
-ms.openlocfilehash: bb74a2e271473666332c627f6ad4324ca597e40c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/25/2021
+ms.openlocfilehash: f298f0f9d76750be932db79b5a08b6385e984f88
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593355"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052007"
 ---
 # <a name="manage-azure-sql-managed-instance-long-term-backup-retention-powershell"></a>Správa dlouhodobého uchovávání záloh spravované instance Azure SQL (PowerShell)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Ve spravované instanci Azure SQL můžete nakonfigurovat [dlouhodobé zásady uchovávání záloh](../database/long-term-retention-overview.md#sql-managed-instance-support) (LTR) jako omezené funkce Public Preview. Díky tomu můžete automaticky uchovávat zálohy databáze v samostatných kontejnerech úložiště objektů BLOB v Azure po dobu až 10 let. Pak můžete obnovit databázi pomocí těchto záloh pomocí PowerShellu.
+Ve spravované instanci Azure SQL můžete jako funkci Public Preview nakonfigurovat [dlouhodobé zásady uchovávání záloh](../database/long-term-retention-overview.md) (LTR). Díky tomu můžete automaticky uchovávat zálohy databáze v samostatných kontejnerech úložiště objektů BLOB v Azure po dobu až 10 let. Pak můžete obnovit databázi pomocí těchto záloh pomocí PowerShellu.
 
    > [!IMPORTANT]
-   > LTR pro spravované instance je aktuálně ve verzi omezené verze Preview a je k dispozici pro předplatné EA a CSP v případě jednotlivých případů. Pokud chcete požádat o registraci, vytvořte prosím [lístek podpory Azure](https://azure.microsoft.com/support/create-ticket/). Pro typ problému vyberte technický problém, u služby zvolte SQL Database spravovaná instance a pro typ problému vyberte **zálohování, obnovení a kontinuitu podnikových/dlouhodobého uchovávání záloh**. Ve vaší žádosti prosím uveďte stav, který chcete zaregistrovat pro spravovanou instanci v části omezené verze Public Preview LTR.
+   > LTR pro spravované instance je aktuálně k dispozici ve veřejné verzi Preview ve veřejných oblastech Azure. 
 
 V následujících částech se dozvíte, jak pomocí PowerShellu nakonfigurovat dlouhodobé uchovávání záloh, zobrazit zálohy ve službě Azure SQL Storage a obnovit je ze zálohy ve službě Azure SQL Storage.
 
-## <a name="azure-roles-to-manage-long-term-retention"></a>Role Azure pro správu dlouhodobého uchovávání
+
+## <a name="using-the-azure-portal"></a>Použití webu Azure Portal
+
+V následujících částech se dozvíte, jak pomocí Azure Portal nastavit dlouhodobé zásady uchovávání informací, spravovat dostupné dlouhodobé zálohy uchovávání a obnovit je z dostupné zálohy.
+
+### <a name="configure-long-term-retention-policies"></a>Konfigurace dlouhodobých zásad uchovávání informací
+
+Můžete nakonfigurovat spravovanou instanci SQL, která bude [uchovávat automatizované zálohy](../database/long-term-retention-overview.md) po dobu delší, než je doba uchování vaší úrovně služby.
+
+1. V Azure Portal vyberte spravovanou instanci a pak klikněte na **zálohování**. Na kartě **zásady uchovávání informací** vyberte databáze, u kterých chcete nastavit nebo upravit dlouhodobé zásady uchovávání záloh. Změny nebudou platit pro žádné databáze, které nejsou vybrané. 
+
+   ![odkaz Správa zálohování](./media/long-term-backup-retention-configure/ltr-configure-ltr.png)
+
+2. V podokně **Konfigurovat zásady** zadejte požadovanou dobu uchování pro týdenní, měsíční nebo roční zálohy. Vyberte dobu uchování 0, která označuje, že by se nemělo nastavit žádné dlouhodobé uchovávání záloh.
+
+   ![Konfigurace zásad](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
+
+3. Po dokončení klikněte na **použít**.
+
+> [!IMPORTANT]
+> Pokud povolíte dlouhodobé zásady uchovávání záloh, může trvat až 7 dní, než se první záloha zobrazí a bude dostupná pro obnovení. Podrobnosti o Cadance zálohování LTR najdete v tématu [dlouhodobé uchovávání záloh](../database/long-term-retention-overview.md).
+
+### <a name="view-backups-and-restore-from-a-backup"></a>Zobrazení záloh a obnovení ze zálohy
+
+Prohlédněte si zálohy, které jsou uchovány pro konkrétní databázi se zásadou LTR, a obnovte je z těchto záloh.
+
+1. V Azure Portal vyberte spravovanou instanci a pak klikněte na **zálohování**. Na kartě **dostupné zálohy** vyberte databázi, pro kterou chcete zobrazit dostupné zálohy. Klikněte na **Manage** (Spravovat).
+
+   ![vybrat databázi](./media/long-term-backup-retention-configure/ltr-available-backups-select-database.png)
+
+1. V podokně **Správa zálohování** zkontrolujte dostupné zálohy.
+
+   ![Zobrazit zálohy](./media/long-term-backup-retention-configure/ltr-available-backups.png)
+
+1. Vyberte zálohu, ze které chcete obnovit, klikněte na tlačítko **obnovit** a pak na stránce obnovit zadejte nový název databáze. Záloha a zdroj budou na této stránce předem vyplněny. 
+
+   ![vybrat zálohu pro obnovení](./media/long-term-backup-retention-configure/ltr-available-backups-restore.png)
+   
+   ![Obnovení](./media/long-term-backup-retention-configure/ltr-restore.png)
+
+1. Kliknutím na tlačítko **zkontrolovat + vytvořit** zkontrolujte podrobnosti o obnovení. Pak kliknutím na **vytvořit** obnovte databázi ze zvolené zálohy.
+
+1. Pokud chcete zobrazit stav úlohy obnovení, na panelu nástrojů klikněte na ikonu oznámení.
+
+   ![průběh úlohy obnovení](./media/long-term-backup-retention-configure/restore-job-progress-long-term.png)
+
+1. Po dokončení úlohy obnovení otevřete stránku **Přehled spravované instance** a zobrazte nově obnovenou databázi.
+
+> [!NOTE]
+> Odtud se můžete pomocí aplikace SQL Server Management Studio připojit k obnovené databázi a provádět požadované úlohy, jako je například [extrakce části dat z obnovené databáze a zkopírování do existující databáze nebo odstranění existující databáze a přejmenování obnovené databáze na název existující databáze](../database/recovery-using-backups.md#point-in-time-restore).
+
+
+## <a name="using-powershell"></a>Pomocí prostředí PowerShell
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+> [!IMPORTANT]
+> Modul Azure Resource Manager PowerShellu se pořád podporuje v Azure SQL Database, ale budoucí vývoj se provede v modulu AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
+
+V následujících částech se dozvíte, jak pomocí PowerShellu nakonfigurovat dlouhodobé uchovávání záloh, zobrazit zálohy ve službě Azure Storage a obnovit je ze zálohy ve službě Azure Storage.
+
+### <a name="azure-rbac-roles-to-manage-long-term-retention"></a>Role Azure RBAC pro správu dlouhodobého uchovávání
 
 Pro **Get-AzSqlInstanceDatabaseLongTermRetentionBackup** a **Restore-AzSqlInstanceDatabase** budete muset mít jednu z následujících rolí:
 
@@ -52,7 +112,7 @@ Oprávnění Azure RBAC se mohla udělit buď v rámci *předplatného* , nebo v
 
 - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete`
 
-## <a name="create-an-ltr-policy"></a>Vytvoření zásady LTR
+### <a name="create-an-ltr-policy"></a>Vytvoření zásady LTR
 
 ```powershell
 # get the Managed Instance
@@ -88,7 +148,7 @@ $LTRPolicy = @{
 Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy @LTRPolicy
 ```
 
-## <a name="view-ltr-policies"></a>Zobrazit zásady LTR
+### <a name="view-ltr-policies"></a>Zobrazit zásady LTR
 
 Tento příklad ukazuje, jak zobrazit seznam zásad LTR v rámci instance pro izolovanou databázi.
 
@@ -119,7 +179,7 @@ foreach($database in $Databases.Name){
  }
 ```
 
-## <a name="clear-an-ltr-policy"></a>Vymazat zásadu LTR
+### <a name="clear-an-ltr-policy"></a>Vymazat zásadu LTR
 
 Tento příklad ukazuje, jak vymazat zásadu LTR z databáze.
 
@@ -134,7 +194,7 @@ $LTRPolicy = @{
 Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy @LTRPolicy
 ```
 
-## <a name="view-ltr-backups"></a>Zobrazit zálohy LTR
+### <a name="view-ltr-backups"></a>Zobrazit zálohy LTR
 
 Tento příklad ukazuje, jak zobrazit seznam záloh LTR v rámci instance.
 
@@ -177,7 +237,7 @@ $LTRBackupParam = @{
 Get-AzSqlInstanceDatabaseLongTermRetentionBackup @LTRBackupParam 
 ```
 
-## <a name="delete-ltr-backups"></a>Odstranit zálohy LTR
+### <a name="delete-ltr-backups"></a>Odstranit zálohy LTR
 
 Tento příklad ukazuje, jak odstranit zálohu LTR ze seznamu záloh.
 
@@ -197,7 +257,7 @@ Remove-AzSqlInstanceDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.Resou
 > [!IMPORTANT]
 > Odstranění zálohy LTR je nevratné. Pokud chcete odstranit zálohu LTR po odstranění instance, musíte mít oprávnění k oboru předplatného. Můžete nastavit oznámení o každém odstranění v Azure Monitor filtrováním pro operaci odstraní zálohu pro dlouhodobé uchovávání. Protokol aktivit obsahuje informace o tom, kdo a kdy žádost odeslal. Podrobné pokyny najdete v tématu [vytvoření výstrah protokolu aktivit](../../azure-monitor/alerts/alerts-activity-log.md) .
 
-## <a name="restore-from-ltr-backups"></a>Obnovení ze zálohy LTR
+### <a name="restore-from-ltr-backups"></a>Obnovení ze zálohy LTR
 
 Tento příklad ukazuje, jak obnovit ze zálohy LTR. Všimněte si, že toto rozhraní se nezměnilo, ale parametr ID prostředku teď vyžaduje ID záložního prostředku LTR.
 

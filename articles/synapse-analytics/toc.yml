@@ -1,6 +1,6 @@
 - name: Azure Synapse Analytics
   href: index.yml
-- name: Přepnutí na vyhrazený fond SQL (dříve SQL DW)
+- name: Přepněte na vyhrazený fond SQL (dřív SQL DW) >
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
 - name: Přehled
   items:
@@ -48,17 +48,19 @@
   items:
     - name: Rychlé starty
       items:
-        - name: Vytvoření pracovního prostoru s využitím webu Azure Portal
-          href: quickstart-create-workspace.md
-          displayName: quickstart
-        - name: Vytvoření pracovního prostoru s využitím Azure CLI
-          href: quickstart-create-workspace-cli.md
-          displayName: quickstart
-        - name: Vytvoření pracovního prostoru s využitím Azure PowerShellu
-          href: quickstart-create-workspace-powershell.md
-          displayName: quickstart
-        - name: Nasazení s využitím šablony
-          href: quickstart-deployment-template-workspaces.md
+        - name: Vytvoření pracovního prostoru
+          items:
+            - name: portál Azure
+              href: quickstart-create-workspace.md
+              displayName: quickstart
+            - name: Azure CLI
+              href: quickstart-create-workspace-cli.md
+              displayName: quickstart
+            - name: Azure PowerShell
+              href: quickstart-create-workspace-powershell.md
+              displayName: quickstart
+            - name: Šablona ARM
+              href: quickstart-deployment-template-workspaces.md
           displayName: quickstart
         - name: Propojení pracovního prostoru Power BI
           href: quickstart-power-bi.md
@@ -586,6 +588,8 @@
               href: ./spark/apache-spark-manage-scala-packages.md
             - name: Řešení chyb při instalaci balíčku Pythonu
               href: ./spark/apache-spark-troubleshoot-library-errors.md
+            - name: Vytvoření privátního kanálu conda
+              href: ./spark/apache-spark-custom-conda-channel.md
         - name: Použití poznámkových bloků a nástrojů IDE
           items:
             - name: Správa poznámkových bloků

@@ -958,6 +958,14 @@ groups:
     title: Azure Arc
   - id: azure-portal
     title: Stránky portálu centra zabezpečení
+- id: manage-asc-initiatives
+  title: Správa iniciativ Security Center
+  prompt: Jak budete spravovat Security Center iniciativy?
+  pivots:
+  - id: azure-portal
+    title: Na webu Azure Portal
+  - id: rest-api
+    title: S rozhraními REST API
 - id: client-operating-system-macos-and-linux-windows-powershell
   title: Operační systém / konzola
   prompt: Volba operačního systému a konzoly
@@ -1045,9 +1053,9 @@ groups:
   - id: programming-language-kotlin
     title: Kotlin (Android)
 metadata:
-  ms.openlocfilehash: cd30fa892e20dc82c0e314c76d72c2c8d3583bd1
-  ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+  ms.openlocfilehash: 3e17c3c00f5df915394ee81646d8bc3883a8e1ee
+  ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102032445"
+  ms.locfileid: "102097508"

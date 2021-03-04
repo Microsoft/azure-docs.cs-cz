@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: overview
 ms.date: 02/18/2021
 ms.custom: template-overview
-ms.openlocfilehash: 0581e659eca0a59719db0dd0e48cf3628b64dd2a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 85b7f3a62324bc93cd78649cd39e0f4dc7d0baed
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665383"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098192"
 ---
 # <a name="introduction-to-azure-percept"></a>Seznámení s Azure Percept
 
@@ -22,21 +22,21 @@ Integrace při pokusu o nasazení řešení Edge AI ve velkém měřítku může
 
 - Identifikace a výběr správného silikonu k napájení řešení.
 - Zajištění kolektivního zabezpečení hardwaru, softwaru, modelů a dat.
-- Možnost vytvářet a spravovat řešení, která hladce fungují.
+- Možnost vytvářet a spravovat řešení, která hladce fungují, se škálováním.
 
 ## <a name="components-of-azure-percept"></a>Součásti Azure Percept
 
 Hlavní součásti Azure Percept jsou:
 
-- Návrh a certifikační programy Reference k hardwaru AI.
+1. Návrh a certifikační programy Reference k hardwaru AI.
 
     - Poskytuje ekosystém hardwarových vývojářů pomocí vzorů a osvědčených postupů pro vývoj hardwaru Edge AI, který je možné snadno integrovat se službami Azure AI a IoT.
 
-- Azure Percept DK (DevKit).
+2. Azure Percept DK (DevKit).
 
-    - Vývojová sada, která je dostatečně flexibilní pro podporu široké škály scénářů vytváření prototypů.
+    - Vývojová sada, která je dostatečně flexibilní pro podporu široké škály scénářů vytváření prototypů pro sestavovatele zařízení, sestavení řešení a zákazníky.
 
-- Služby a pracovní postupy pro zrychlení modelu AI Edge a vývoje řešení.
+3. Služby a pracovní postupy pro zrychlení modelu AI Edge a vývoje řešení.
 
     - Vývojové pracovní postupy a předem připravené modely přístupné z Azure Percept studia.
     - Vývojové služby modelu.

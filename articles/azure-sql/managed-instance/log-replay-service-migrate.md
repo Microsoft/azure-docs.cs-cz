@@ -4,17 +4,17 @@ description: Naučte se migrovat databáze z SQL Server do spravované instance 
 services: sql-database
 ms.service: sql-managed-instance
 ms.custom: seo-lt-2019, sqldbrb=1
-ms.devlang: ''
 ms.topic: how-to
 author: danimir
+ms.author: danil
 ms.reviewer: sstein
 ms.date: 03/01/2021
-ms.openlocfilehash: bc0dc72c7547c8f74aec53b7153fc5384c6b634b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 74403b7ec1469ce7cdaadc9931eb5ac95f55f6f5
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690783"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096832"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-using-log-replay-service-preview"></a>Migrace databází z SQL Server do spravované instance SQL pomocí služby opětovného přehrání protokolů (Preview)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,7 +56,7 @@ LRS lze spustit v režimu automatického dokončování nebo nepřetržitě. Po 
 
 Jakmile se LRS zastaví automaticky při automatickém dokončování nebo ručně v přímou migraci, proces obnovení se nedá obnovit pro databázi, která se napravila online na spravované instanci SQL. Aby bylo možné obnovit další záložní soubory po dokončení migrace prostřednictvím automatického dokončování, nebo ručně v přímou migraci, je nutné databázi odstranit a celý řetěz pro zálohování je nutné obnovit od nuly restartováním LRS.
 
-![Vysvětlení kroků orchestrace služby pro opětovné přehrání protokolu pro spravovanou instanci SQL](./media/log-replay-service-migrate/log-replay-service-conceptual.png)
+   :::image type="content" source="./media/log-replay-service-migrate/log-replay-service-conceptual.png" alt-text="Vysvětlení kroků orchestrace služby pro opětovné přehrání protokolu pro spravovanou instanci SQL" border="false":::
     
 | Operace | Podrobnosti |
 | :----------------------------- | :------------------------- |
@@ -193,18 +193,30 @@ WITH COMPRESSION, CHECKSUM
 Služba Azure Blob Storage slouží jako zprostředkující úložiště pro záložní soubory mezi SQL Server a SQL Managed instance. Ověřovací token SAS s oprávněním list a jen pro čtení musí být vygenerován pro použití službou LRS. To umožní službě LRS přistupovat k Azure Blob Storage a pomocí záložních souborů je obnovit ve spravované instanci SQL. Pomocí těchto kroků vygenerujte ověřování SAS pro LRS použití:
 
 1. Přístup k Průzkumník služby Storage z Azure Portal
+
 2. Rozbalit kontejnery objektů BLOB
-3. Pravým tlačítkem myši klikněte na kontejner objektů BLOB a vyberte získat sdílený přístupový podpis  ![ protokol opětovného přehrání. generovat ověřovací token SAS](./media/log-replay-service-migrate/lrs-sas-token-01.png)
+
+3. Klikněte pravým tlačítkem na kontejner objektů BLOB a vyberte získat sdílený přístupový podpis.
+
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-sas-token-01.png" alt-text="Služba pro opětovné přehrání protokolů – získání sdíleného přístupového podpisu":::
+
 4. Vyberte časový rámec vypršení platnosti tokenu. Zajistěte, aby byl token platný pro dobu trvání migrace.
+
 5. Vyberte časové pásmo pro token – UTC nebo místní čas.
-    - Časové pásmo tokenu a vaše spravovaná instance SQL se můžou neshodovat. Ujistěte se, že token SAS má patřičnou dobu platnosti, která bere v úvahu časová pásma. Pokud je to možné, nastavte časové pásmo na dřívější a pozdější čas plánovaného migračního okna.
+
+   - Časové pásmo tokenu a vaše spravovaná instance SQL se můžou neshodovat. Ujistěte se, že token SAS má patřičnou dobu platnosti, která bere v úvahu časová pásma. Pokud je to možné, nastavte časové pásmo na dřívější a pozdější čas plánovaného migračního okna.
+
 6. Výběr pouze oprávnění jen pro čtení a seznam
-    - Není nutné vybrat žádná další oprávnění, jinak LRS nebude možné spustit. Tento požadavek zabezpečení je záměrné.
-7. Klikněte na tlačítko vytvořit  ![ službu opětovného přehrání protokolu pro vygenerování ověřovacího tokenu SAS.](./media/log-replay-service-migrate/lrs-sas-token-02.png)
 
-Ověřování pomocí SAS se vygeneruje s dobou platnosti, kterou jste zadali dříve. Budete potřebovat verzi identifikátoru URI generovaného tokenu, jak je znázorněno na snímku obrazovky níže.
+   - Není nutné vybrat žádná další oprávnění, jinak LRS nebude možné spustit. Tento požadavek zabezpečení je záměrné.
 
-![Příklad identifikátoru URI ověřování SAS generovaných službou Log](./media/log-replay-service-migrate/lrs-generated-uri-token.png)
+7. Klikněte na tlačítko vytvořit.
+
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-sas-token-02.png" alt-text="Služba pro opětovné přehrání protokolů – vygenerování ověřovacího tokenu SAS":::
+
+   Ověřování pomocí SAS se vygeneruje s dobou platnosti, kterou jste zadali dříve. Budete potřebovat verzi identifikátoru URI generovaného tokenu, jak je znázorněno na snímku obrazovky níže.
+
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-generated-uri-token.png" alt-text="Služba pro opětovné přehrání protokolů – kopírování sdíleného přístupového podpisu URI":::
 
 ### <a name="copy-parameters-from-sas-token-generated"></a>Kopírovat parametry z generovaného tokenu SAS
 
@@ -212,7 +224,7 @@ Aby bylo možné správně použít token SAS ke spuštění LRS, musíme pochop
 - StorageContainerUri a 
 - StorageContainerSasToken, oddělený otazníkem (?), jak je znázorněno na obrázku níže.
 
-    ![Příklad identifikátoru URI ověřování SAS generovaných službou Log](./media/log-replay-service-migrate/lrs-token-structure.png)
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-token-structure.png" alt-text="Příklad identifikátoru URI ověřování SAS generovaných službou Log" border="false":::
 
 - První část začínající řetězcem "https://", dokud se nepoužije otazník (?) pro parametr StorageContainerURI, který je zadáván jako vstup do LRS. To poskytuje LRS informace o složce, ve které jsou uložené soubory zálohy databáze.
 - Druhá část, která začíná po otazníku (?), v příkladu "SP =" a všech způsobem až do konce řetězce je StorageContainerSasToken parametr. Toto je skutečný podepsaný ověřovací token platný po dobu určenou v čase. Tato součást nemusí nutně začínat na "SP =", jak je znázorněno, a že se váš případ může lišit.
@@ -221,11 +233,11 @@ Parametry zkopírujte následujícím způsobem:
 
 1. Zkopírujte první část tokenu, která začíná https://, až do otazníku (?) a použijete ho jako parametr StorageContainerUri v PowerShellu nebo rozhraní příkazového řádku pro spuštění LRS, jak je znázorněno na snímku obrazovky níže.
 
-    ![StorageContainerUri parametr kopírování služby pro opětovné přehrání protokolu](./media/log-replay-service-migrate/lrs-token-uri-copy-part-01.png)
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-token-uri-copy-part-01.png" alt-text="StorageContainerUri parametr kopírování služby pro opětovné přehrání protokolu":::
 
 2. Zkopírujte druhou část tokenu začínající otazníkem (?), a to až do konce řetězce, a použijte ho jako parametr StorageContainerSasToken v PowerShellu nebo CLI pro spuštění LRS, jak je znázorněno na snímku obrazovky níže.
 
-    ![StorageContainerSasToken parametr kopírování služby pro opětovné přehrání protokolu](./media/log-replay-service-migrate/lrs-token-uri-copy-part-02.png)
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-token-uri-copy-part-02.png" alt-text="StorageContainerSasToken parametr kopírování služby pro opětovné přehrání protokolu":::
 
 > [!IMPORTANT]
 > - Oprávnění pro token SAS pro Azure Blob Storage musí být jen pro čtení a seznam. Pokud jsou pro ověřovací token SAS udělená jiná oprávnění, spuštění služby LRS se nezdaří. Tyto požadavky na zabezpečení jsou záměrné.

@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c16f8233a2800025a8c6f601e236b86d2fd044fd
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1a07acedadfaf3d5158ba8e494d4527301655425
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480679"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035097"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>Použití geografické redundance k návrhu vysoce dostupných aplikací
 
@@ -148,6 +148,12 @@ Máte tři hlavní možnosti monitorování četnosti opakování v primární o
 
 * Přidejte obslužnou rutinu pro událost [**opakování**](/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) události na objekt [**OperationContext**](/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) , který předáte vašim požadavkům na úložiště – toto je metoda zobrazená v tomto článku a používaná v doprovodné ukázce. Tyto události se aktivují pokaždé, když klient opakuje požadavek, což vám umožní sledovat, jak často má klient v primárním koncovém bodě narazit opakované chyby.
 
+    # <a name="net-v12"></a>[.NET V12](#tab/current)
+
+    V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+    # <a name="net-v11"></a>[.NET v11](#tab/legacy)
+
     ```csharp
     operationContext.Retrying += (sender, arguments) =>
     {
@@ -156,8 +162,15 @@ Máte tři hlavní možnosti monitorování četnosti opakování v primární o
             ...
     };
     ```
+    ---
 
 * V metodě [**Evaluate**](/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) ve vlastních zásadách opakování můžete spustit vlastní kód vždy, když dojde k opakování. Kromě nahrávání, když dojde k opakování, vám to také umožní změnit chování při opakování.
+
+    # <a name="net-v12"></a>[.NET V12](#tab/current)
+
+    V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+    # <a name="net-v11"></a>[.NET v11](#tab/legacy)
 
     ```csharp
     public RetryInfo Evaluate(RetryContext retryContext,
@@ -184,6 +197,7 @@ Máte tři hlavní možnosti monitorování četnosti opakování v primární o
         return info;
     }
     ```
+    ---
 
 * Třetím přístupem je implementace vlastní součásti monitorování ve vaší aplikaci, která nepřetržitě otestuje pomocí testu koncového bodu primárního úložiště (například čtení malého objektu BLOB) a určí jeho stav. Tím se zabere několik prostředků, ale ne značná částka. Po zjištění problému, který dosáhne vaší prahové hodnoty, byste měli přepnout do režimu **SecondaryOnly** a jen pro čtení.
 
@@ -218,6 +232,13 @@ Informace o tom, jak ověřit čas poslední synchronizace, najdete v tématu [Z
 Je důležité, abyste otestovali, že se vaše aplikace chová podle očekávání, když nalezne chyby s opakováním. Například je třeba otestovat, že se aplikace přepne do sekundárního a do režimu jen pro čtení, když zjistí problém, a přepne zpět, jakmile bude primární region opět k dispozici. K tomu potřebujete způsob, jak simulovat opakované chyby a určit, jak často k nim dochází.
 
 Pomocí [Fiddler](https://www.telerik.com/fiddler) můžete zachytit a upravit odpovědi HTTP ve skriptu. Tento skript může identifikovat odpovědi, které pocházejí z primárního koncového bodu, a změnit stavový kód HTTP na ten, který Klientská knihovna pro úložiště rozpozná jako opakovanou chybu. Tento fragment kódu ukazuje jednoduchý příklad skriptu Fiddler, který zachycuje odpovědi na požadavky na čtení v tabulce **EmployeeData** , aby vrátil stav 502:
+
+
+# <a name="java-v12"></a>[Java V12](#tab/current)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v11"></a>[Java v11](#tab/legacy)
 
 ```java
 static function OnBeforeResponse(oSession: Session) {

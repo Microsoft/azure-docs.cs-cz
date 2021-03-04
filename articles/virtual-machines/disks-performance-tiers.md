@@ -8,12 +8,12 @@ ms.date: 03/02/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 161aafce1c04e5d09cf08529bcbf1baf6b8a86b1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 429845aa22b6d069b8d7233132de8eb3b24b2985
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674935"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043673"
 ---
 # <a name="change-your-performance-tier-using-the-azure-powershell-module-or-the-azure-cli"></a>Změna úrovně výkonu pomocí modulu Azure PowerShell nebo rozhraní příkazového řádku Azure
 
@@ -117,7 +117,7 @@ $disk.Tier
 
 ## <a name="change-the-performance-tier-of-a-disk-without-downtime-preview"></a>Změna úrovně výkonu disku bez výpadku (Preview)
 
-Úroveň výkonu můžete také změnit bez výpadků, takže nemusíte zrušit přidělení virtuálního počítače nebo odpojit disk, aby se změnila vrstva. Další informace a odkaz na registraci pro verzi Preview najdete v části [Změna úrovně výkonu bez výpadků (Preview)](#changing-performance-tier-without-downtime-preview) .
+Úroveň výkonu můžete také změnit bez výpadků, takže nemusíte zrušit přidělení virtuálního počítače nebo odpojit disk, aby se změnila vrstva. Další informace a odkaz na registraci pro verzi Preview najdete v části [Změna úrovně výkonu bez výpadků (Preview)](#change-performance-tier-without-downtime-preview) .
 
 
 Následující skript aktualizuje úroveň disku vyššího než základní úrovně pomocí ukázkové šablony [CreateUpdateDataDiskWithTier.jsv](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateDataDiskWithTier.json). Nahraďte `<yourSubScriptionID>` ,, `<yourResourceGroupName>` `<yourDiskName>` , `<yourDiskSize>` a `<yourDesiredPerformanceTier>` potom spusťte skript:

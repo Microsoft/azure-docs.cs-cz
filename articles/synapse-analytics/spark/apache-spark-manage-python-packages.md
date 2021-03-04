@@ -5,16 +5,16 @@ services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 296bd3a4a75cdd7f5dab3b6eb5fdcb00a889703d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4bb323e0e8f72456b6a522ede9a98d193e1c3c7e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695940"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098770"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Správa knihoven Pythonu pro Apache Spark ve službě Azure synapse Analytics
 
@@ -42,7 +42,7 @@ Existují dva základní způsoby, jak nainstalovat knihovnu v clusteru:
 > [!IMPORTANT]
 > - Pokud je balíček, který instalujete, velký nebo trvá jeho instalaci dlouhou dobu, bude to mít vliv na počáteční čas instance Spark.
 > - Změna verze PySpark, Python, Scala/Java, .NET nebo Spark se nepodporuje.
-> - Instalace balíčků z PyPI není v pracovních prostorech povolených pro DEP podporována.
+> - Instalace balíčků z externích úložišť jako PyPI, conda-zfalšovat nebo výchozích kanálů conda není v pracovních prostorech s povoleným programem DEP podporovaná.
 
 ### <a name="install-python-packages"></a>Instalovat balíčky Pythonu
 Balíčky Pythonu se dají nainstalovat z úložišť jako PyPI a Conda-Forge poskytnutím souboru specifikace prostředí. 
@@ -140,9 +140,6 @@ Přidání balíčků pracovního prostoru:
 
 ![Snímek obrazovky, který zvýrazní balíčky pracovních prostorů.](./media/apache-spark-azure-portal-add-libraries/studio-add-workspace-package.png "Zobrazit balíčky pracovních prostorů")
 
-> [!IMPORTANT]
-> Instalace balíčků pracovních prostorů zatím není v pracovních prostorech chráněných daty exfiltrace (DEP) podporovaná.
-
 ### <a name="storage-account"></a>Účet úložiště
 Vlastní balíčky kol lze nainstalovat do fondu Apache Spark tím, že všechny soubory kol nahrajete do účtu Azure Data Lake Storage (Gen2), který je propojený s pracovním prostorem synapse. 
 
@@ -160,8 +157,8 @@ Je možné, že budete muset přidat ```python``` složku do ```libraries``` slo
 >[!WARNING]
 > Když uživatelé zadávají vlastní soubory, nemůžou v účtu úložiště i v rozhraní knihovny pracovních prostorů poskytovat soubory kolečka. Pokud jsou zadány obě, nainstalují se jenom soubory kolečka zadané v seznamu balíčky pracovních prostorů. 
 
-## <a name="session-scoped-libraries-preview"></a>Knihovny s rozsahem relace (Preview)
-Kromě knihoven na úrovni fondu můžete také na začátku relace poznámkového bloku zadat knihovny s rozsahem relace.  Knihovny s rozsahem relace umožňují zadat a používat vlastní prostředí Pythonu v rámci relace poznámkového bloku. 
+## <a name="session-scoped-packages-preview"></a>Balíčky s rozsahem relace (Preview)
+Kromě balíčků na úrovni fondu můžete také na začátku relace poznámkového bloku zadat knihovny s rozsahem relace.  Knihovny s rozsahem relace umožňují zadat a používat vlastní prostředí Pythonu v rámci relace poznámkového bloku. 
 
 Při použití knihoven s rozsahem relace je důležité mít na paměti následující body:
    - Při instalaci knihoven s rozsahem relace má přístup k určeným knihovnám pouze aktuální Poznámkový blok. 
@@ -187,3 +184,4 @@ V některých případech můžete pro zobrazení verzí balíčku z conda potř
 ## <a name="next-steps"></a>Další kroky
 - Zobrazení výchozích knihoven: [podpora Apache Spark verzí](apache-spark-version-support.md)
 - Řešení chyb při instalaci knihovny: [řešení chyb v knihovně](apache-spark-troubleshoot-library-errors.md)
+- Vytvoření privátního conda kanálu pomocí účtu Azure Data Lake Storage: [privátní kanály conda](./spark/../apache-spark-custom-conda-channel.md)

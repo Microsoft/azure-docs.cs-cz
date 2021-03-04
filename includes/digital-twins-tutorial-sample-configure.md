@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: f5b332415f1abf7d4c1002bdd4f3bfcef12f1267
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ff9d1f0ff75a6df6c115ecfe2b8c5f71b12049e4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023246"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036129"
 ---
 ## <a name="configure-the-sample-project"></a>Konfigurace ukázkového projektu
 
@@ -22,7 +22,7 @@ Ve složce přejděte do _AdtSampleApp_. Otevřete _**AdtE2ESample. sln**_ v apl
 
 V aplikaci Visual Studio vyberte _SampleClientApp > **appsettings.jsv**_ souboru, aby se otevřela v okně pro úpravy. Tato akce bude sloužit jako předem nastavený soubor JSON s nezbytnými konfiguračními proměnnými pro spuštění projektu.
 
-V těle souboru změňte `instanceUrl` adresu URL *hostitele* instance digitálního vlákna Azure (s *https://* před ním, jak je znázorněno níže).
+V těle souboru změňte `instanceUrl` *adresu URL hostitele* instance digitálního vlákna Azure (přidáním **_https://_** před *název hostitele*, jak je znázorněno níže).
 
 ```json
 {
@@ -32,7 +32,7 @@ V těle souboru změňte `instanceUrl` adresu URL *hostitele* instance digitáln
 
 Uložte soubor a zavřete ho. 
 
-Dále nakonfigurujte *appsettings.js* pro soubor, který se má zkopírovat do výstupního adresáře při sestavování *SampleClientApp*. Provedete to tak, že v souboru kliknete pravým tlačítkem na *appsettings.js* a zvolíte *Vlastnosti.* V inspektoru *vlastností* změňte hodnotu vlastnosti *Kopírovat do výstupního adresáře* na *Kopírovat, pokud je novější*.
+Dále nakonfigurujte *appsettings.js* pro soubor, který se má zkopírovat do výstupního adresáře při sestavování *SampleClientApp*. Provedete to tak, že v souboru kliknete pravým tlačítkem na *appsettings.js* a zvolíte **vlastnosti**. V inspektoru **vlastností** vyhledejte vlastnost *Kopírovat do výstupního adresáře* . Změňte hodnotu na **Kopírovat, pokud není novější** , pokud už není nastavená na.
 
 :::image type="content" source="../articles/digital-twins/media/includes/copy-config.png" alt-text="Výňatek z okna sady Visual Studio zobrazující podokno Průzkumník řešení s appsettings.jsna zvýrazněné a podokno vlastností s vlastností kopírovat do výstupního adresáře nastavenou na kopírovat, pokud je novější" border="false" lightbox="../articles/digital-twins/media/includes/copy-config.png":::
 

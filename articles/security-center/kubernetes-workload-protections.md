@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.author: memildin
-ms.openlocfilehash: f024457ed9f20e6bab0852a53ab6a60ac85ed25a
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 6d0e660ecce1d45dab4d6003cdba391ba2eb4ee9
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546257"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095591"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Ochrana úloh Kubernetes
 
@@ -51,7 +51,7 @@ Azure Security Center zahrnuje sadu doporučení, která jsou k dispozici po ins
 
 Pokud chcete nakonfigurovat doporučení, nainstalujte  **doplněk Azure Policy pro Kubernetes**. 
 
-- Tento doplněk můžete automaticky nasadit, jak je vysvětleno v tématu [Povolení automatického zřizování rozšíření](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions). Pokud je Automatické zřizování pro doplněk nastavené na zapnuto, rozšíření je ve výchozím nastavení povolené ve všech stávajících i budoucích clusterech (které splňují požadavky na instalaci doplňku).
+- Tento doplněk můžete automaticky nasadit, jak je vysvětleno v tématu [Povolení automatického zřizování Log Analytics agenta a rozšíření](security-center-enable-data-collection.md#auto-provision-mma). Pokud je Automatické zřizování pro doplněk nastavené na zapnuto, rozšíření je ve výchozím nastavení povolené ve všech stávajících i budoucích clusterech (které splňují požadavky na instalaci doplňku).
 
     :::image type="content" source="media/defender-for-kubernetes-usage/policy-add-on-auto-provision.png" alt-text="Použití nástroje pro Automatické zřizování Security Center k instalaci doplňku zásad pro Kubernetes":::
 

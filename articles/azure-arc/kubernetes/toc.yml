@@ -10,6 +10,8 @@
   items:
     - name: Nasazení konfigurací s využitím GitOps
       href: tutorial-use-gitops-connected-cluster.md
+    - name: Implementace CI/CD pomocí GitOps
+      href: tutorial-gitops-ci-cd.md
 - name: Rychlé starty
   items:
     - name: Připojit cluster ke službě Azure ARC
@@ -20,6 +22,8 @@
       href: conceptual-agent-architecture.md
     - name: Konfigurace a GitOps
       href: conceptual-configurations.md
+    - name: Pracovní postup CI/CD pomocí GitOps
+      href: conceptual-gitops-ci-cd.md
     - name: Nejčastější dotazy
       href: faq.md
 - name: Návody

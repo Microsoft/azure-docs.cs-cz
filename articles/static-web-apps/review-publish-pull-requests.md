@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
-ms.openlocfilehash: f8f2e352ae458e3e2825c9701437ea652ba07375
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78d2f3b399e26ca0c6036fd74fa1fba49d1f21f4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825652"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042772"
 ---
 # <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>Kontrola žádostí o přijetí změn v předprodukčních prostředích ve službě Azure Static Web Apps ve verzi Preview
 
@@ -33,7 +33,7 @@ Používání předprodukčních prostředí přináší spoustu výhod. Můžet
 - Před nasazením do produkčního prostředí proveďte kontrolu správnosti.
 
 > [!NOTE]
-> Během období Preview je povolena [maximálně jedna Příprava pracovního prostředí](quotas.md) .
+> Během období Preview jsou povoleny [maximálně tři pracovní prostředí](quotas.md) .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -51,11 +51,11 @@ Začněte tím, že provedete změnu v úložišti. Můžete to provést přímo
 
 1. Přejděte do složky _aplikace_ a změňte nějaký textový obsah. Můžete například změnit název nebo odstavec. Po nalezení souboru, který chcete upravit, klikněte na **Upravit** a proveďte změnu.
 
-    :::image type="content" source="./media/review-publish-pull-requests/edit-file.png" alt-text="Vytvoření nové větve pomocí rozhraní GitHubu":::
+    :::image type="content" source="./media/review-publish-pull-requests/edit-file.png" alt-text="Tlačítko Upravit soubor v rozhraní GitHubu":::
 
 1. Po provedení změn klikněte na **potvrzení změn** a potvrďte provedené změny ve větvi.
 
-    :::image type="content" source="./media/review-publish-pull-requests/commit-changes.png" alt-text="Vytvoření nové větve pomocí rozhraní GitHubu":::
+    :::image type="content" source="./media/review-publish-pull-requests/commit-changes.png" alt-text="Tlačítko Potvrdit změny v rozhraní GitHubu":::
 
 ## <a name="create-a-pull-request"></a>Vytvoření žádosti o přijetí změn
 
@@ -63,13 +63,13 @@ Pak z této změny vytvořte žádost o přijetí změn.
 
 1. Otevřete kartu **žádosti** o přijetí změn svého projektu na GitHubu:
 
-    :::image type="content" source="./media/review-publish-pull-requests/tab.png" alt-text="Vytvoření nové větve pomocí rozhraní GitHubu":::
+    :::image type="content" source="./media/review-publish-pull-requests/tab.png" alt-text="Karta žádosti o získání dat v úložišti GitHub":::
 
 1. Klikněte na tlačítko **porovnat & žádosti** o přijetí změn ve vaší větvi.
 
-1. Volitelně můžete zadat nějaké podrobnosti o změnách a pak kliknout na **vytvořit žádost o**přijetí změn.
+1. Volitelně můžete zadat nějaké podrobnosti o změnách a pak kliknout na **vytvořit žádost o** přijetí změn.
 
-    :::image type="content" source="./media/review-publish-pull-requests/open.png" alt-text="Vytvoření nové větve pomocí rozhraní GitHubu":::
+    :::image type="content" source="./media/review-publish-pull-requests/open.png" alt-text="Vytvoření žádosti o získání dat v GitHubu":::
 
 V případě potřeby můžete přiřadit revidující a přidat komentáře k diskusi o změnách.
 
@@ -82,7 +82,7 @@ Po vytvoření žádosti o získání dat se spustí pracovní postup nasazení 
 
 Jakmile pracovní postup dokončí sestavování a nasazování vaší aplikace, robot na GitHubu přidá komentář k žádosti o přijetí změn, která obsahuje adresu URL předprodukčního prostředí. Kliknutím na tento odkaz si můžete zobrazit připravené změny.
 
-:::image type="content" source="./media/review-publish-pull-requests/bot-comment.png" alt-text="Vytvoření nové větve pomocí rozhraní GitHubu":::
+:::image type="content" source="./media/review-publish-pull-requests/bot-comment.png" alt-text="Komentář žádosti o získání dat s předprodukční adresou URL":::
 
 Kliknutím na vygenerovanou adresu URL zobrazíte změny.
 
@@ -96,7 +96,9 @@ Po schválení změn můžete své změny publikovat do produkčního prostřed�
 
 Klikněte na **Sloučit žádost o získání dat**:
 
-:::image type="content" source="./media/review-publish-pull-requests/merge.png" alt-text="Vytvoření nové větve pomocí rozhraní GitHubu" větev). Následně se pracovní postup nasazení spustí na sledované větvi a po opětovném vytvoření aplikace budou změny v provozu.
+:::image type="content" source="./media/review-publish-pull-requests/merge.png" alt-text="Tlačítko Sloučit žádost o získání dat v rozhraní GitHubu":::
+
+Sloučení kopíruje změny do sledované větve ("produkční" větev). Následně se pracovní postup nasazení spustí na sledované větvi a po opětovném vytvoření aplikace budou změny v provozu.
 
 Pokud chcete ověřit změny v produkčním prostředí, otevřete svou produkční adresu URL a načtěte živou verzi webu.
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 211bcbf27f3a9e885a4bc2c4e5edd27db7907edf
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 19675a92101ed1a13b07bc1a4039701cd029a020
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890764"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044081"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Přidání vrstvy vysunutí mnohoúhelníku na mapu
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak použít vrstvu vysunutí mnohoúhelníku k vy
 
 ## <a name="use-a-polygon-extrusion-layer"></a>Použití vrstvy vysunutí mnohoúhelníku
 
-Připojte [vrstvu vysunutí mnohoúhelníku](/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer) ke zdroji dat. Pak ho načtete na mapě. Vrstva vysunutí mnohoúhelníku vykresluje oblasti `Polygon` `MultiPolygon` funkcí a jako vytlačené obrazce. `height`Vlastnosti a `base` vrstvy vysunutí mnohoúhelníku definují základní vzdálenost od základu a výšky vytlačeného obrazce v **měřičích** . Následující kód ukazuje, jak vytvořit mnohoúhelník, přidat ho do zdroje dat a vykreslit pomocí třídy vrstev vytlačení mnohoúhelníku.
+Připojte [vrstvu vysunutí mnohoúhelníku](/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer) ke zdroji dat. Pak ho načtete na mapě. Vrstva vysunutí mnohoúhelníku vykresluje oblasti `Polygon` `MultiPolygon` funkcí a jako vytlačené obrazce. `height`Vlastnosti a `base` vrstvy vysunutí mnohoúhelníku definují základní vzdálenost od základu a výšky vytlačeného obrazce v **měřičích**. Následující kód ukazuje, jak vytvořit mnohoúhelník, přidat ho do zdroje dat a vykreslit pomocí třídy vrstev vytlačení mnohoúhelníku.
 
 > [!Note]
 > `base`Hodnota definovaná ve vrstvě vysunutí mnohoúhelníku by měla být menší než nebo rovna hodnotě `height` .
@@ -32,10 +32,9 @@ Připojte [vrstvu vysunutí mnohoúhelníku](/javascript/api/azure-maps-control/
 <iframe height="500" style="width: 100%;" scrolling="no" title="Vytlačený mnohoúhelník" src="https://codepen.io/azuremaps/embed/wvvBpvE?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/wvvBpvE'>vytlačené mnohoúhelníkem</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.</iframe>
 
-
 ## <a name="add-data-driven-polygons"></a>Přidat mnohoúhelníky řízené daty
 
-Mapu kartogramy lze vykreslit pomocí vrstvy vysunutí mnohoúhelníku. Nastavte `height` vlastnosti a `fillColor` vrstvy vytlačení na měření statistické proměnné v `Polygon` `MultiPolygon` geometrií funkcí a. Následující ukázka kódu ukazuje vytlačenou mapu kartogramyu U. S na základě měření hustoty populace podle stavu.
+Mapu kartogramy lze vykreslit pomocí vrstvy vysunutí mnohoúhelníku. Nastavte `height` vlastnosti a `fillColor` vrstvy vytlačení na měření statistické proměnné v `Polygon` `MultiPolygon` geometrií funkcí a. Následující ukázka kódu ukazuje vytlačenou kartogramy mapu USA na základě měření hustoty populace podle stavu.
 
 <br/>
 
@@ -45,7 +44,7 @@ Podívejte se na <a href='https://codepen.io/azuremaps/pen/eYYYNox'>mapu kartogr
 
 ## <a name="add-a-circle-to-the-map"></a>Přidání kruhu k mapě
 
-Azure Maps používá rozšířenou verzi schématu injson, která poskytuje definici pro kruhy, jak je uvedeno [zde](./extend-geojson.md#circle). Vytlačený kruh lze na mapě vykreslit vytvořením `point` funkce s `subType` vlastností `Circle` a číslovanou vlastností, která `Radius` představuje poloměr v **metrech** . Příklad:
+Azure Maps používá rozšířenou verzi schématu injson, která poskytuje definici pro kruhy, jak je uvedeno [zde](./extend-geojson.md#circle). Vytlačený kruh lze na mapě vykreslit vytvořením `point` funkce s `subType` vlastností `Circle` a číslovanou vlastností, která `Radius` představuje poloměr v **metrech**. Například:
 
 ```javascript
 {

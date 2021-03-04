@@ -10,12 +10,12 @@ metadata:
   author: elqu20
   ms.author: v-elqu
   ms.date: 02/11/2021
-  ms.openlocfilehash: 6c7479b33a78432d5b6aea2c02656e8b250b70c7
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: b979f147c67e8e877b5bb0e9d3dc557317c7aa50
+  ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101665744"
+  ms.lasthandoff: 03/04/2021
+  ms.locfileid: "102097491"
 landingContent:
 - title: Co je Azure Percept?
   linkLists:
@@ -45,8 +45,22 @@ landingContent:
       url: azure-percept-dk-datasheet.md
     - text: Datový list Azure Percept Vision
       url: azure-percept-vision-datasheet.md
+    - text: Řešení potíží
+      url: troubleshoot-dev-kit.md
+- title: Začínáme se službou Azure Percept audio
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Nastavení služby Azure Percept audio
+      url: quickstart-percept-audio-setup.md
+  - linkListType: reference
+    links:
     - text: Datový list Azure Percept audio
       url: azure-percept-audio-datasheet.md
+    - text: Řešení potíží se zvukem v Azure Percept
+      url: troubleshoot-audio-accessory-speech-module.md
+    - text: LED a tlačítko zvuku Azure Percept
+      url: audio-button-led-behavior.md
 - title: Sestavení prototypu pro revize bez kódu
   linkLists:
   - linkListType: tutorial
@@ -63,20 +77,10 @@ landingContent:
       url: how-to-capture-images.md
     - text: Zobrazení telemetrie DevKit
       url: how-to-view-telemetry.md
-- title: Začínáme se službou Azure Percept audio
-  linkLists:
-  - linkListType: quickstart
+  - linkListType: concept
     links:
-    - text: Nastavení služby Azure Percept audio
-      url: quickstart-percept-audio-setup.md
-  - linkListType: reference
-    links:
-    - text: Datový list Azure Percept audio
-      url: azure-percept-audio-datasheet.md
-    - text: Řešení potíží se zvukem v Azure Percept
-      url: troubleshoot-audio-accessory-speech-module.md
-    - text: LED a tlačítko zvuku Azure Percept
-      url: audio-button-led-behavior.md
+    - text: Práce s řešeními AI
+      url: overview-ai-models.md
 - title: Vytvoření řešení hlasového asistenta bez kódu
   linkLists:
   - linkListType: tutorial
@@ -85,22 +89,20 @@ landingContent:
       url: tutorial-no-code-speech.md
   - linkListType: how-to-guide
     links:
-    - text: Konfigurace hlasového asistenta
-      url: how-to-configure-voice-assistant.md
     - text: Správa hlasového asistenta
       url: how-to-manage-voice-assistant.md
+    - text: Konfigurace hlasového asistenta pomocí IoT Hub
+      url: how-to-configure-voice-assistant.md
 - title: Pokročilý vývoj s využitím Azure Percept
   linkLists:
   - linkListType: overview
     links:
     - text: Přehled pokročilého vývoje
       url: overview-advanced-code.md
-  - linkListType: tutorial
+  - linkListType: how-to-guide
     links:
-    - text: Pokročilý vývoj pomocí cloudových služeb
-      url: advanced-development-cloud.md
-    - text: Pokročilý vývoj pomocí místních nástrojů
-      url: advanced-development-local.md
+    - text: Instalační program sady nástrojů pro vývojáře
+      url: dev-tools-installer.md
 - title: Udržujte si aktuálnost Azure Percept DK v aktuálním stavu
   linkLists:
   - linkListType: overview
@@ -109,7 +111,7 @@ landingContent:
       url: overview-update-experience.md
   - linkListType: how-to-guide
     links:
-    - text: Nastavení aktualizací
+    - text: Nastavení aktualizací přes Air
       url: how-to-set-up-over-the-air-updates.md
     - text: Aktualizace přes Air
       url: how-to-update-over-the-air.md

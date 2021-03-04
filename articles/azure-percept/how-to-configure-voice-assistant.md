@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: ec3e06b2d161785b5e6978cdf4cc6415fc0eb592
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b22ef4ee0a8b5978bb2ec1c02fadf368815f3014
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662423"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095778"
 ---
 # <a name="configure-voice-assistant-application-using-azure-iot-hub"></a>Konfigurace aplikace hlasového asistenta pomocí Azure IoT Hub
 
@@ -20,7 +20,7 @@ Tento článek popisuje, jak nakonfigurovat aplikaci hlasového asistenta pomoc�
 
 ## <a name="update-your-voice-assistant-configuration"></a>Aktualizace konfigurace hlasového asistenta
 
-1. Otevřete [Azure Portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_Azure_Iothub=aduprod&microsoft_azure_marketplace_ItemHideKey=Microsoft_Azure_ADUHidden#home) a do panelu hledání zadejte **IoT Hub** . Kliknutím na ikonu otevřete stránku IoT Hub.
+1. Otevřete [Azure Portal](https://portal.azure.com) a do panelu hledání zadejte **IoT Hub** . Kliknutím na ikonu otevřete stránku IoT Hub.
 
 1. Na stránce IoT Hub vyberte IoT Hub, na které se zařízení zřídilo.
 
@@ -30,7 +30,7 @@ Tento článek popisuje, jak nakonfigurovat aplikaci hlasového asistenta pomoc�
 
 1. Klikněte na **nastavit moduly**.
 
-    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/set-modules.png" alt-text="Obrazu.":::
+    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/set-modules.png" alt-text="Obrazovka stránky zařízení se zvýrazněnou možností nastavit moduly":::
 
 1. Ověřte, že je v části **Container Registry přihlašovací údaje** k dispozici následující položka. V případě potřeby přidejte přihlašovací údaje.
 
@@ -40,30 +40,17 @@ Tento článek popisuje, jak nakonfigurovat aplikaci hlasového asistenta pomoc�
 
 1. V části **IoT Edge moduly** vyberte **azureearspeechclientmodule**.
 
-    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/modules.png" alt-text="Obrazu.":::
+    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/modules.png" alt-text="Snímek obrazovky zobrazující seznam všech modulů IoT Edge v zařízení.":::
 
 1. Klikněte na kartu **nastavení modulu** . Ověřte následující konfiguraci:
 
-    |Identifikátor URI image|Restartovat zásadu|Požadovaný stav|
-    |---------|--------------|--------------|
-    |azureedgedevices.azurecr.io/azureearspeechclientmodule:preload-devkit |stál|instalovanou|
+    Identifikátor URI image|Restartovat zásadu|Požadovaný stav
+    ---------|--------------|--------------
+    mcr.microsoft.com/azureedgedevices/azureearspeechclientmodule:preload-devkit|stál|instalovanou
 
     Pokud se nastavení neshodují, upravte je a klikněte na **aktualizovat**.
 
 1. Klikněte na kartu **proměnné prostředí** . Ověřte, zda nejsou definovány žádné proměnné prostředí.
-
-1. Klikněte na kartu **možnosti vytvoření kontejneru** . Ověřte, že nastavení **Hostconfig** se shodují s nastavením uvedenými níže. Pokud se neshodují, aktualizujte nastavení.
-
-    ```
-    {
-        "HostConfig": {
-            "Privileged": true,
-            "Binds": [
-                "/dev:/dev"
-            ]
-        }
-    }
-    ```
 
 1. Klikněte na kartu **nastavení s dvojitou** platností modulu. Aktualizujte část **speechConfigs** následujícím způsobem:
 
@@ -72,7 +59,7 @@ Tento článek popisuje, jak nakonfigurovat aplikaci hlasového asistenta pomoc�
         "appId": "<Application id for custom command project>",
         "key": "<Speech Resource key for custom command project>",
         "region": "<Region for the speech service>",
-        "keywordModelUrl": "https://aedspeechscenarios.blob.core.windows.net/keyword-tables/computer.table",
+        "keywordModelUrl": "https://aedsamples.blob.core.windows.net/speech/keyword-tables/computer.table",
         "keyword": "computer"
     }
     ```
@@ -88,16 +75,16 @@ Pokud chcete najít své **AppID**, **klíč** a **oblast**, přejděte na [ře�
 1. Na domovské stránce sady **Speech Studio** klikněte na **vlastní příkazy** v části **hlas asistenti**.
 1. Vyberte cílový projekt.
 
-    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/project.png" alt-text="Obrazu.":::
+    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/project.png" alt-text="Snímek stránky projektu v studiu řeči":::
 
 1. V levém panelu nabídek klikněte na **Nastavení** .
 1. **AppID** a **klíč** se nacházejí na kartě **Obecné** nastavení.
 
-    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/general-settings.png" alt-text="Obrazu.":::
+    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/general-settings.png" alt-text="Snímek obrazovky s obecným nastavením pro projekt řeči":::
 
 1. Pokud chcete najít vaši **oblast**, otevřete v nastavení kartu **prostředky Luis** . Výběr **prostředků pro vytváření obsahu** bude obsahovat informace o oblasti.
 
-    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/luis-resources.png" alt-text="Obrazu.":::
+    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/luis-resources.png" alt-text="Snímek obrazovky s LUIS prostředky projektu řeči":::
 
 1. Po zadání informací o **speechConfigs** klikněte na **aktualizovat**.
 
@@ -113,6 +100,8 @@ Pokud chcete najít své **AppID**, **klíč** a **oblast**, přejděte na [ře�
 
 1. Klikněte na **Vytvořit**.
 
+
 ## <a name="next-steps"></a>Další kroky
 
 Po aktualizaci konfigurace hlasového asistenta se vraťte do ukázky v Azure Percept studiu, abyste mohli pracovat s aplikací.
+

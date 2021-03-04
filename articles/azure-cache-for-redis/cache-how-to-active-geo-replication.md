@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: d52998e477e44f89a35a70f7e2b5d49cbc68e386
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: edf7a7cdbd24249205fedb4654aa092755700910
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662249"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035649"
 ---
 # <a name="configure-active-geo-replication-for-enterprise-azure-cache-for-redis-instances-preview"></a>Konfigurace aktivní geografické replikace pro Redis instance pro podnikovou mezipaměť (Preview)
 
@@ -36,7 +36,7 @@ Aktivní geografická replikace seskupuje dvě nebo víc podnikových mezipamět
 
 1. Klikněte na **Konfigurovat** a dokončete.
 
-    ![Propojení mezipamětí](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-configured.png)
+    ![Aktivní geografická replikace je nakonfigurovaná.](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-configured.png)
 
 1. Opakujte výše uvedené kroky pro každou další instanci mezipaměti v geograficky replikační skupině.
 

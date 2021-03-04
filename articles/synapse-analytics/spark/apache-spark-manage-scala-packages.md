@@ -5,16 +5,16 @@ services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 8d5c18eaaa4065eac515f38557664ceb44262adf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c70ecc4fc5469d728bc12d47024585ccf00ff98e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695933"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098702"
 ---
 # <a name="manage-scala-and-java-packages-for-apache-spark-in-azure-synapse-analytics"></a>Správa balíčků Scala a Java pro Apache Spark v Azure synapse Analytics
 
@@ -37,13 +37,10 @@ Balíčky pracovního prostoru můžou být vlastní nebo soukromé soubory jar.
 
 Přidání balíčků pracovního prostoru:
 1. Přejděte na kartu **Spravovat**  >  **balíčky pracovních prostorů** .
-2. Nahrajte soubory kol pomocí voliče souborů.
-3. Po nahrání souborů do pracovního prostoru Azure synapse můžete přidat tyto soubory kol do daného fondu Apache Spark.
+2. Soubory jar nahrajte pomocí voliče souborů.
+3. Po nahrání souborů do pracovního prostoru Azure synapse můžete tyto soubory jar přidat do daného fondu Apache Spark.
 
 ![Snímek obrazovky, který zvýrazní balíčky pracovních prostorů.](./media/apache-spark-azure-portal-add-libraries/studio-add-workspace-package.png "Zobrazit balíčky pracovních prostorů")
-
-> [!IMPORTANT]
-> Instalace balíčků pracovních prostorů zatím není v pracovních prostorech chráněných daty exfiltrace (DEP) podporovaná.
 
 ## <a name="pool-libraries"></a>Knihovny fondů
 Po identifikaci balíčků Scala a Java, které byste chtěli použít pro aplikaci Spark, je můžete nainstalovat do fondu Spark. Knihovny na úrovni fondu jsou dostupné všem poznámkovým blokům a úlohám, které jsou ve fondu spuštěné.
