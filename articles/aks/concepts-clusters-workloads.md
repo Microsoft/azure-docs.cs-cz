@@ -4,12 +4,12 @@ description: Seznamte se se základními komponentami clusterů a úloh Kubernet
 services: container-service
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 7485631660395e03c558167c321e6091c6fac755
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2a1718d906ab5f51ea71be9b304028576c9fffa0
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373228"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122438"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
 
@@ -61,7 +61,7 @@ Chcete-li spustit aplikace a podpůrné služby, potřebujete *uzel* Kubernetes.
 
 - `kubelet`Je agent Kubernetes, který zpracovává požadavky orchestrace z řídicí roviny a plánuje spouštění požadovaných kontejnerů.
 - Virtuální sítě zpracovává *Kube-proxy* na každém uzlu. Proxy směruje síťový provoz a spravuje přidělování IP adres pro služby a lusky.
-- *Modul runtime kontejneru* je komponenta, která umožňuje spuštění kontejnerových aplikací a interakce s dalšími prostředky, jako je například virtuální síť a úložiště. V AKS se jako modul runtime kontejneru používá Moby.
+- *Modul runtime kontejneru* je komponenta, která umožňuje spuštění kontejnerových aplikací a interakce s dalšími prostředky, jako je například virtuální síť a úložiště. Clustery AKS s využitím fondů uzlů Kubernetes verze 1,19 a větším využitím `containerd` jako modul runtime kontejneru. Clustery AKS využívající Kubernetes před a v 1.19 pro fondy uzlů používají jako svůj modul runtime kontejneru [Moby](https://mobyproject.org/) (nadřazený Docker).
 
 ![Virtuální počítač Azure a podpůrné prostředky pro uzel Kubernetes](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
@@ -69,7 +69,7 @@ Velikost virtuálního počítače Azure pro vaše uzly definuje, kolik procesor
 
 V AKS je image virtuálního počítače pro uzly v clusteru v současné době založená na Ubuntu Linux nebo Windows serveru 2019. Při vytváření clusteru AKS nebo při horizontálním navýšení kapacity počtu uzlů vytvoří platforma Azure požadovaný počet virtuálních počítačů a nakonfiguruje je. Neexistuje žádná ruční konfigurace, kterou byste mohli provést. Uzly agentů se účtují jako standardní virtuální počítače, takže se automaticky aplikují všechny slevy, které používáte pro velikost virtuálního počítače (včetně [rezervací Azure][reservation-discounts]).
 
-Pokud potřebujete použít jiný hostitelský operační systém, modul runtime kontejneru nebo zahrnout vlastní balíčky, můžete nasadit vlastní cluster Kubernetes pomocí [AKS-Engine][aks-engine]. Funkce pro odesílání dat `aks-engine` a poskytuje možnosti konfigurace, než jsou oficiálně podporované v clusterech AKS. Pokud například chcete použít modul runtime kontejneru jiný než Moby, můžete použít `aks-engine` ke konfiguraci a nasazení clusteru Kubernetes, který splňuje vaše aktuální potřeby.
+Pokud potřebujete použít jiný hostitelský operační systém, modul runtime kontejneru nebo zahrnout vlastní balíčky, můžete nasadit vlastní cluster Kubernetes pomocí [AKS-Engine][aks-engine]. Funkce pro odesílání dat `aks-engine` a poskytuje možnosti konfigurace, než jsou oficiálně podporované v clusterech AKS. Pokud například chcete použít modul runtime kontejneru jiný než `containerd` nebo Moby, můžete použít `aks-engine` ke konfiguraci a nasazení clusteru Kubernetes, který splňuje vaše aktuální potřeby.
 
 ### <a name="resource-reservations"></a>Rezervace prostředků
 

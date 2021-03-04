@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: 0f5eb6a2964cdb679c2a83bd9d9b6296e3e962ed
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f8ea2224020e6fa6c5dae135dc575cc77510efd5
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499284"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123934"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Verze Preview: použití klíčů spravovaných zákazníkem pro šifrování imagí
 
@@ -23,11 +23,11 @@ Pro šifrování imagí můžete spoléhat na klíče spravované platformou neb
 
 Šifrování na straně serveru prostřednictvím klíčů spravovaných zákazníkem používá Azure Key Vault. Můžete buď importovat [klíče RSA](../key-vault/keys/hsm-protected-keys.md) do trezoru klíčů, nebo vygenerovat nové klíče RSA v Azure Key Vault.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento článek vyžaduje, abyste již v každé oblasti, kam chcete replikovat bitovou kopii, nastavili šifrování disku:
 
-- Pokud chcete použít jenom klíč spravovaný zákazníkem, přečtěte si články o povolování klíčů spravovaných zákazníkem pomocí šifrování na straně serveru pomocí [Azure Portal](./disks-enable-customer-managed-keys-portal.md) nebo [PowerShellu](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset).
+- Pokud chcete použít jenom klíč spravovaný zákazníkem, přečtěte si články o povolování klíčů spravovaných zákazníkem pomocí šifrování na straně serveru pomocí [Azure Portal](./disks-enable-customer-managed-keys-portal.md) nebo [PowerShellu](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-without-automatic-key-rotation).
 
 - Pokud chcete použít jak klíče spravované platformou, tak zákazníkem spravované klíče (pro dvojité šifrování), přečtěte si články o povolení dvojitého šifrování v klidovém prostředí pomocí [Azure Portal](./disks-enable-double-encryption-at-rest-portal.md) nebo [PowerShellu](./windows/disks-enable-double-encryption-at-rest-powershell.md).
 

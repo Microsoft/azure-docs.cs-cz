@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: duau
-ms.openlocfilehash: ba23319c35aed1d09da652e6f84b60e5f8e9495e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: eefc42fb8e66e66c6388599df65c59ff642a6b59
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740881"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124104"
 ---
 # <a name="about-expressroute-fastpath"></a>Informace o službě ExpressRoute FastPath
 
@@ -34,7 +34,7 @@ Aby bylo možné konfigurovat FastPath, musí být brána virtuální sítě bu�
 * ErGw3AZ
 
 > [!IMPORTANT]
-> Pokud plánujete používat FastPath se soukromým partnerským vztahem využívajícím IPv6 přes ExpressRoute, nezapomeňte vybrat ErGw3AZ pro **SKU**.
+> Pokud plánujete používat FastPath se soukromým partnerským vztahem využívajícím IPv6 přes ExpressRoute, nezapomeňte vybrat ErGw3AZ pro **SKU**. Všimněte si, že je k dispozici pouze pro okruhy pomocí ExpressRoute Direct.
 > 
 >
 

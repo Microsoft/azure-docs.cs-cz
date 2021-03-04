@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 2/9/2021
 ms.author: duau
-ms.openlocfilehash: c305ee78abac7e175dc086666dfd1e2926f8da2b
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: ef6ea9017a9aaa98e153df0d67f0b54fe5a2b64d
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097818"
+ms.locfileid: "102124155"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-the-azure-portal-preview"></a>Přidání podpory protokolu IPv6 pro privátní partnerské vztahy pomocí Azure Portal (Preview)
 
@@ -88,7 +88,7 @@ Postupujte podle následujících kroků, pokud se chcete připojit k nové sad�
 
 2. [Vytvořte podsíť brány Dual-Stack](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager#create-the-gateway-subnet).
 
-3. [Vytvořte bránu virtuální sítě](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager#create-the-virtual-network-gateway) pomocí zóny – redundantní SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ). Pokud plánujete používat FastPath, použijte ErGw3AZ.
+3. [Vytvořte bránu virtuální sítě](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager#create-the-virtual-network-gateway) pomocí zóny – redundantní SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ). Pokud máte v úmyslu používat FastPath, použijte ErGw3AZ (Všimněte si, že je k dispozici pouze pro okruhy s přímým přístupem ExpressRoute).
 
 4. [Připojte svoji virtuální síť k okruhu ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager).
 
@@ -99,6 +99,8 @@ I když je podpora protokolu IPv6 dostupná pro připojení k nasazením v oblas
 * Připojení k nasazením v oblastech mimo AZ
 * Připojení Global Reach mezi okruhy ExpressRoute
 * Použití ExpressRoute s virtuální sítí WAN
+* FastPath s přímými okruhy ExpressRoute
+* Koexistence s VPN Gateway
 
 ## <a name="next-steps"></a>Další kroky
 

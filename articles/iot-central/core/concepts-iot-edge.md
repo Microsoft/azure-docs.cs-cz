@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 91869614aef03b819a5f7fbb355004f6e802d673
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1a464b9e039f256fae52c32d828b1ec39a20a228
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733005"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123271"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Připojení zařízení Azure IoT Edge k aplikaci Azure IoT Central
 
@@ -87,6 +87,20 @@ IoT Central používá [šablony zařízení](concepts-device-templates.md) k de
 * Příkazy, na které zařízení reaguje, aby IoT Central mohl zobrazit uživatelské rozhraní, které má operátor použít k volání příkazů.
 
 Zařízení IoT Edge může odesílat telemetrii, synchronizovat hodnoty vlastností a reagovat na příkazy stejným způsobem jako standardní zařízení. Zařízení IoT Edge například potřebuje šablonu zařízení v IoT Central.
+
+### <a name="iot-edge-device-templates"></a>IoT Edge šablony zařízení
+
+IoT Central šablony zařízení používají modely k popisu možností zařízení. Následující diagram znázorňuje strukturu modelu pro IoT Edge zařízení:
+
+:::image type="content" source="media/concepts-iot-edge/iot-edge-model.png" alt-text="Struktura modelu IoT Edgeho zařízení připojeného k IoT Central" border="false":::
+
+IoT Central modeluje IoT Edge zařízení následujícím způsobem:
+
+* Každá šablona zařízení IoT Edge má model schopností.
+* Pro každý vlastní modul uvedený v manifestu nasazení je vygenerován model schopností modulu.
+* Mezi jednotlivými modely schopností modulu a modelem zařízení je vytvořen vztah.
+* Model schopností modulu implementuje jedno nebo více rozhraní modulů.
+* Každé rozhraní modulů obsahuje telemetrii, vlastnosti a příkazy.
 
 ### <a name="iot-edge-deployment-manifests-and-iot-central-device-templates"></a>IoT Edge manifestů nasazení a IoT Central šablon zařízení
 

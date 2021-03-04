@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: fcdccf6701afe73ab0f11a7a907072b01a9d5aa4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b720e98fc83fd12744c289cb99814748b469b15d
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373299"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123679"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -42,13 +42,13 @@ Zde je ukázkový kód pro načtení všech metadat pro instanci. Chcete-li zís
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2020-09-01" | ConvertTo-Json -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance?api-version=2020-09-01" | ConvertTo-Json -Depth 64
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
 
 ```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2020-09-01"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2020-09-01" | jq
 ```
 
 ---
@@ -88,7 +88,7 @@ Obecně platí, že požadavky na IMDS jsou omezeny na 5 požadavků za sekundu.
 
 V současné době jsou podporovány následující příkazy protokolu HTTP:
 
-| Příkaz | Description |
+| Příkaz | Popis |
 |------|-------------|
 | `GET` | Načíst požadovaný prostředek
 
@@ -98,7 +98,7 @@ Koncové body můžou podporovat požadované nebo volitelné parametry. Podrobn
 
 ### <a name="query-parameters"></a>Parametry dotazů
 
-Koncové body IMDS podporují parametry řetězce dotazu HTTP. Příklad: 
+Koncové body IMDS podporují parametry řetězce dotazu HTTP. Například: 
 
 ```
 http://169.254.169.254/metadata/instance/compute?api-version=2019-06-04&format=json
@@ -106,7 +106,7 @@ http://169.254.169.254/metadata/instance/compute?api-version=2019-06-04&format=j
 
 Určuje parametry:
 
-| Name | Hodnota |
+| Název | Hodnota |
 |------|-------|
 | `api-version` | `2019-06-04`
 | `format` | `json`
@@ -191,12 +191,12 @@ by měl filtrovat na první prvek z `Network.interface` vlastnosti a vracet:
 
 Ve výchozím nastavení vrátí IMDS data ve formátu JSON ( `Content-Type: application/json` ). Nicméně koncové body, které podporují filtrování odpovědí (viz [parametry směrování](#route-parameters)), podporují i formát `text` .
 
-Pokud chcete získat přístup k nevýchozímu formátu odpovědi, v žádosti určete požadovaný formát jako parametr řetězce dotazu. Příklad:
+Pokud chcete získat přístup k nevýchozímu formátu odpovědi, v žádosti určete požadovaný formát jako parametr řetězce dotazu. Například:
 
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text" | ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -248,9 +248,7 @@ Pokud neurčíte verzi, zobrazí se chyba se seznamem nejnovějších podporovan
 - 2020-07-15
 - 2020-09-01
 - 2020-10-01
-
-> [!NOTE]
-> V tuto chvíli je nainstalovaná verze 2020-10-01 a v každé oblasti možná není dostupná.
+- 2020-12-01
 
 ### <a name="swagger"></a>Swagger
 
@@ -268,11 +266,12 @@ Kořenový koncový bod je `http://169.254.169.254/metadata` .
 
 Rozhraní IMDS API obsahuje několik kategorií koncového bodu, které představují různé zdroje dat, z nichž každý obsahuje jeden nebo více koncových bodů. Podrobnosti najdete v každé kategorii.
 
-| Kořen kategorie | Description | Představená verze |
+| Kořen kategorie | Popis | Představená verze |
 |---------------|-------------|--------------------|
 | `/metadata/attested` | Viz [Attestation data](#attested-data) | 2018-10-01
 | `/metadata/identity` | Viz [spravovaná identita prostřednictvím IMDS](#managed-identity) . | 2018-02-01
 | `/metadata/instance` | Viz [metadata instance](#instance-metadata) | 2017-04-02
+| `/metadata/loadbalancer` | Viz [načtení metadat Load Balancer přes IMDS](#load-balancer-metadata) . | 2020-10-01
 | `/metadata/scheduledevents` | Zobrazit [Scheduled Events přes IMDS](#scheduled-events) | 2017-08-01
 | `/metadata/versions` | Zobrazit [verze](#versions) | –
 
@@ -317,7 +316,7 @@ GET /metadata/instance
 
 #### <a name="parameters"></a>Parametry
 
-| Name | Požadováno/volitelné | Popis |
+| Název | Požadováno/volitelné | Popis |
 |------|-------------------|-------------|
 | `api-version` | Povinné | Verze, která se používá k obsluhování žádosti
 | `format` | Volitelné | Formát ( `json` nebo `text` ) odpovědi. * Poznámka: může být vyžadováno při použití parametrů Request
@@ -332,10 +331,11 @@ Rozpis schématu:
 
 **Výpočetní služby**
 
-| Data | Description | Představená verze |
+| Data | Popis | Představená verze |
 |------|-------------|--------------------|
 | `azEnvironment` | Prostředí Azure, ve kterém je spuštěný virtuální počítač | 2018-10-01
 | `customData` | Tato funkce je momentálně zakázaná. Tuto dokumentaci budeme aktualizovat, jakmile bude k dispozici. | 2019-02-01
+| `evictionPolicy` | Nastaví, jak bude [virtuální počítač s přímým](../articles/virtual-machines/spot-vms.md) vyřazením. | 2020-12-01
 | `isHostCompatibilityLayerVm` | Určuje, jestli se virtuální počítač spouští na vrstvě kompatibility hostitele. | 2020-06-01
 | `licenseType` | Typ licence pro [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit). Tato možnost je k dispozici pouze pro virtuální počítače s podporou AHB. | 2020-09-01
 | `location` | Oblast Azure, ve které je spuštěný virtuální počítač | 2017-04-02
@@ -349,6 +349,7 @@ Rozpis schématu:
 | `plan` | [Plánování](/rest/api/compute/virtualmachines/createorupdate#plan) obsahující název, produkt a vydavatele pro virtuální počítač, pokud se jedná o Azure Marketplace image | 2018-04-02
 | `platformUpdateDomain` |  [Aktualizujte doménu](../articles/virtual-machines/manage-availability.md) , ve které je spuštěný virtuální počítač. | 2017-04-02
 | `platformFaultDomain` | [Doména selhání](../articles/virtual-machines/manage-availability.md) , ve kterém je spuštěný virtuální počítač | 2017-04-02
+| `priority` | Priorita virtuálního počítače. Další informace najdete v části [virtuální počítače s přímým](../articles/virtual-machines/spot-vms.md) odkazem. | 2020-12-01
 | `provider` | Poskytovatel virtuálního počítače | 2018-10-01
 | `publicKeys` | [Kolekce veřejných klíčů](/rest/api/compute/virtualmachines/createorupdate#sshpublickey) přiřazených k virtuálnímu počítači a cestám | 2018-04-02
 | `publisher` | Vydavatel image virtuálního počítače | 2017-04-02
@@ -373,7 +374,7 @@ Profil úložiště virtuálního počítače je rozdělen do tří kategorií: 
 
 Objekt odkazu na bitovou kopii obsahuje následující informace o imagi operačního systému:
 
-| Data | Description |
+| Data | Popis |
 |------|-------------|
 | `id` | ID prostředku
 | `offer` | Nabídka platformy nebo Image Marketplace
@@ -383,7 +384,7 @@ Objekt odkazu na bitovou kopii obsahuje následující informace o imagi operač
 
 Objekt disku operačního systému obsahuje následující informace o disku s operačním systémem, který používá virtuální počítač:
 
-| Data | Description |
+| Data | Popis |
 |------|-------------|
 | `caching` | Požadavky na ukládání do mezipaměti
 | `createOption` | Informace o tom, jak byl virtuální počítač vytvořen
@@ -398,7 +399,7 @@ Objekt disku operačního systému obsahuje následující informace o disku s o
 
 Pole datových disků obsahuje seznam datových disků připojených k virtuálnímu počítači. Každý objekt datového disku obsahuje následující informace:
 
-Data | Description |
+Data | Popis |
 -----|-------------|
 | `caching` | Požadavky na ukládání do mezipaměti
 | `createOption` | Informace o tom, jak byl virtuální počítač vytvořen
@@ -414,7 +415,7 @@ Data | Description |
 
 **Síť**
 
-| Data | Description | Představená verze |
+| Data | Popis | Představená verze |
 |------|-------------|--------------------|
 | `ipv4.privateIpAddress` | Místní IPv4 adresa virtuálního počítače | 2017-04-02
 | `ipv4.publicIpAddress` | Veřejná IPv4 adresa virtuálního počítače | 2017-04-02
@@ -422,13 +423,6 @@ Data | Description |
 | `subnet.prefix` | Předpona podsítě, příklad 24 | 2017-04-02
 | `ipv6.ipAddress` | Místní IPv6 adresa virtuálního počítače | 2017-04-02
 | `macAddress` | Adresa MAC virtuálního počítače | 2017-04-02
-
-**Značky VM**
-
-Značky virtuálních počítačů jsou součástí rozhraní API instancí pod koncovým bodem instance/výpočty/značky.
-Na VIRTUÁLNÍm počítači Azure možná byly aplikovány značky, aby je bylo možné logicky uspořádat do taxonomie. Značky přiřazené k virtuálnímu počítači se dají načíst pomocí níže uvedeného požadavku.
-
-`tags`Pole je řetězec, jehož značky jsou odděleny středníky. Tento výstup může být problémem, pokud se středníky používají v samotných značkách. Pokud je analyzátor napsán pro programové extrakci značek, měli byste spoléhat na `tagsList` pole. `tagsList`Pole je pole JSON bez oddělovačů, a proto je snazší ho analyzovat.
 
 
 #### <a name="sample-1-tracking-vm-running-on-azure"></a>Ukázka 1: sledování virtuálního počítače běžícího na Azure
@@ -440,7 +434,7 @@ Jako poskytovatel služeb budete možná potřebovat sledovat počet virtuální
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"| ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -468,7 +462,7 @@ Tato data můžete zadávat přímo přes IMDS.
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text" | ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -485,7 +479,98 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 0
 ```
 
-#### <a name="sample-3-get-more-information-about-the-vm-during-support-case"></a>Ukázka 3: získání dalších informací o virtuálním počítači během případu podpory
+#### <a name="sample-3-get-vm-tags"></a>Ukázka 3: získání značek VM
+
+Značky virtuálních počítačů jsou součástí rozhraní API instancí pod koncovým bodem instance/výpočty/značky.
+Na VIRTUÁLNÍm počítači Azure možná byly aplikovány značky, aby je bylo možné logicky uspořádat do taxonomie. Značky přiřazené k virtuálnímu počítači se dají načíst pomocí níže uvedeného požadavku.
+
+**Žádost**
+
+#### <a name="windows"></a>[Windows](#tab/windows/)
+
+```powershell
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/tags?api-version=2017-08-01&format=text"
+```
+
+#### <a name="linux"></a>[Linux](#tab/linux/)
+
+```bash
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
+```
+
+---
+
+**Response** (Odpověď)
+
+```
+Department:IT;ReferenceNumber:123456;TestStatus:Pending
+```
+
+`tags`Pole je řetězec, jehož značky jsou odděleny středníky. Tento výstup může být problémem, pokud se středníky používají v samotných značkách. Pokud je analyzátor napsán pro programové extrakci značek, měli byste spoléhat na `tagsList` pole. `tagsList`Pole je pole JSON bez oddělovačů, a proto je snazší ho analyzovat. TagsList přiřazený k virtuálnímu počítači se dá načíst pomocí níže uvedeného požadavku.
+
+**Žádost**
+
+#### <a name="windows"></a>[Windows](#tab/windows/)
+
+```powershell
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04" | ConvertTo-Json -Depth 64
+```
+
+#### <a name="linux"></a>[Linux](#tab/linux/)
+
+```bash
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04" | jq
+```
+
+---
+
+**Response** (Odpověď)
+
+#### <a name="windows"></a>[Windows](#tab/windows/)
+
+```json
+{
+    "value":  [
+                  {
+                      "name":  "Department",
+                      "value":  "IT"
+                  },
+                  {
+                      "name":  "ReferenceNumber",
+                      "value":  "123456"
+                  },
+                  {
+                      "name":  "TestStatus",
+                      "value":  "Pending"
+                  }
+              ],
+    "Count":  3
+}
+```
+
+#### <a name="linux"></a>[Linux](#tab/linux/)
+
+```json
+[
+  {
+    "name": "Department",
+    "value": "IT"
+  },
+  {
+    "name": "ReferenceNumber",
+    "value": "123456"
+  },
+  {
+    "name": "TestStatus",
+    "value": "Pending"
+  }
+]
+```
+
+---
+
+
+#### <a name="sample-4-get-more-information-about-the-vm-during-support-case"></a>Ukázka 4: získání dalších informací o virtuálním počítači během případu podpory
 
 Jako poskytovatel služeb můžete obdržet volání podpory, kde byste chtěli získat další informace o virtuálním počítači. Dotazování zákazníků na sdílení výpočetních metadat může poskytnout základní informace o tom, že profesionální pracovník podpory ví o typu virtuálního počítače v Azure.
 
@@ -494,7 +579,7 @@ Jako poskytovatel služeb můžete obdržet volání podpory, kde byste chtěli 
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute?api-version=2020-09-01" | ConvertTo-Json -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute?api-version=2020-09-01" | ConvertTo-Json -Depth 64
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -510,6 +595,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 > [!NOTE]
 > Odpověď je řetězec JSON. Následující příklad odpovědi je poměrně vytištěn z důvodu čitelnosti.
 
+#### <a name="windows"></a>[Windows](#tab/windows/)
 ```json
 {
     "azEnvironment": "AZUREPUBLICCLOUD",
@@ -517,13 +603,13 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
     "licenseType":  "Windows_Client",
     "location": "westus",
     "name": "examplevmname",
-    "offer": "Windows",
+    "offer": "WindowsServer",
     "osProfile": {
         "adminUsername": "admin",
         "computerName": "examplevmname",
         "disablePasswordAuthentication": "true"
     },
-    "osType": "linux",
+    "osType": "Windows",
     "placementGroupId": "f67c14ab-e92c-408c-ae2d-da15866ec79a",
     "plan": {
         "name": "planName",
@@ -548,7 +634,108 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
         "secureBootEnabled": "true",
         "virtualTpmEnabled": "false"
     },
-    "sku": "Windows-Server-2012-R2-Datacenter",
+    "sku": "2019-Datacenter",
+    "storageProfile": {
+        "dataDisks": [{
+            "caching": "None",
+            "createOption": "Empty",
+            "diskSizeGB": "1024",
+            "image": {
+                "uri": ""
+            },
+            "lun": "0",
+            "managedDisk": {
+                "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+                "storageAccountType": "Standard_LRS"
+            },
+            "name": "exampledatadiskname",
+            "vhd": {
+                "uri": ""
+            },
+            "writeAcceleratorEnabled": "false"
+        }],
+        "imageReference": {
+            "id": "",
+            "offer": "WindowsServer",
+            "publisher": "MicrosoftWindowsServer",
+            "sku": "2019-Datacenter",
+            "version": "latest"
+        },
+        "osDisk": {
+            "caching": "ReadWrite",
+            "createOption": "FromImage",
+            "diskSizeGB": "30",
+            "diffDiskSettings": {
+                "option": "Local"
+            },
+            "encryptionSettings": {
+                "enabled": "false"
+            },
+            "image": {
+                "uri": ""
+            },
+            "managedDisk": {
+                "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+                "storageAccountType": "Standard_LRS"
+            },
+            "name": "exampleosdiskname",
+            "osType": "Windows",
+            "vhd": {
+                "uri": ""
+            },
+            "writeAcceleratorEnabled": "false"
+        }
+    },
+    "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+    "tags": "baz:bash;foo:bar",
+    "version": "15.05.22",
+    "vmId": "02aab8a4-74ef-476e-8182-f6d2ba4166a6",
+    "vmScaleSetName": "crpteste9vflji9",
+    "vmSize": "Standard_A3",
+    "zone": ""
+}
+```
+
+#### <a name="linux"></a>[Linux](#tab/linux/)
+```json
+{
+    "azEnvironment": "AZUREPUBLICCLOUD",
+    "isHostCompatibilityLayerVm": "true",
+    "licenseType":  "Windows_Client",
+    "location": "westus",
+    "name": "examplevmname",
+    "offer": "UbuntuServer",
+    "osProfile": {
+        "adminUsername": "admin",
+        "computerName": "examplevmname",
+        "disablePasswordAuthentication": "true"
+    },
+    "osType": "Linux",
+    "placementGroupId": "f67c14ab-e92c-408c-ae2d-da15866ec79a",
+    "plan": {
+        "name": "planName",
+        "product": "planProduct",
+        "publisher": "planPublisher"
+    },
+    "platformFaultDomain": "36",
+    "platformUpdateDomain": "42",
+    "publicKeys": [{
+            "keyData": "ssh-rsa 0",
+            "path": "/home/user/.ssh/authorized_keys0"
+        },
+        {
+            "keyData": "ssh-rsa 1",
+            "path": "/home/user/.ssh/authorized_keys1"
+        }
+    ],
+    "publisher": "Canonical",
+    "resourceGroupName": "macikgo-test-may-23",
+    "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/virtualMachines/examplevmname",
+    "securityProfile": {
+        "secureBootEnabled": "true",
+        "virtualTpmEnabled": "false"
+    },
+    "sku": "18.04-LTS",
     "storageProfile": {
         "dataDisks": [{
             "caching": "None",
@@ -593,7 +780,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
                 "storageAccountType": "Standard_LRS"
             },
             "name": "exampleosdiskname",
-            "osType": "Linux",
+            "osType": "linux",
             "vhd": {
                 "uri": ""
             },
@@ -610,7 +797,9 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 }
 ```
 
-#### <a name="sample-4-get-the-azure-environment-where-the-vm-is-running"></a>Ukázka 4: získání prostředí Azure, ve kterém je virtuální počítač spuštěný
+---
+
+#### <a name="sample-5-get-the-azure-environment-where-the-vm-is-running"></a>Ukázka 5: získání prostředí Azure, ve kterém je virtuální počítač spuštěný
 
 Azure má různé cloudy svrchovan jako [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Někdy potřebujete prostředí Azure, abyste mohli provádět určitá rozhodnutí za běhu. Následující příklad ukazuje, jak lze dosáhnout tohoto chování.
 
@@ -619,7 +808,7 @@ Azure má různé cloudy svrchovan jako [Azure Government](https://azure.microso
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text" | ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -646,14 +835,14 @@ Tady je uvedený Cloud a hodnoty prostředí Azure.
 | [Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/) | AzureGermanCloud
 
 
-#### <a name="sample-5-retrieve-network-information"></a>Ukázka 5: načtení informací o síti
+#### <a name="sample-6-retrieve-network-information"></a>Ukázka 6: načtení informací o síti
 
 **Žádost**
 
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01" | ConvertTo-Json  -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01" | ConvertTo-Json  -Depth 64
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -693,12 +882,12 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/ne
 }
 ```
 
-#### <a name="sample-6-retrieve-public-ip-address"></a>Ukázka 6: načtení veřejné IP adresy
+#### <a name="sample-7-retrieve-public-ip-address"></a>Ukázka 7: načtení veřejné IP adresy
 
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text" | ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -721,7 +910,7 @@ GET /metadata/attested/document
 
 #### <a name="parameters"></a>Parametry
 
-| Name | Požadováno/volitelné | Popis |
+| Název | Požadováno/volitelné | Popis |
 |------|-------------------|-------------|
 | `api-version` | Povinné | Verze, která se používá k obsluhování žádosti
 | `nonce` | Volitelné | Desítkový řetězec, který slouží jako kryptografická hodnota nonce. Pokud není zadána žádná hodnota, IMDS použije aktuální časové razítko UTC.
@@ -746,7 +935,7 @@ U virtuálních počítačů vytvořených pomocí modelu nasazení Classic `vmI
 
 Dekódování dokumentu obsahuje následující pole:
 
-| Data | Description | Představená verze |
+| Data | Popis | Představená verze |
 |------|-------------|--------------------|
 | `licenseType` | Typ licence pro [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit). Tato možnost je k dispozici pouze pro virtuální počítače s podporou AHB. | 2020-09-01
 | `nonce` | Řetězec, který může být volitelně poskytnutý požadavkem. Pokud `nonce` nebyla zadána žádná, použije se aktuální koordinovaný světový časový razítko. | 2018-10-01
@@ -792,7 +981,7 @@ Dodavatelé v Azure Marketplace chtějí zajistit, aby byl software licencován 
 
 ```powershell
 # Get the signature
-$attestedDoc = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/attested/document?api-version=2020-09-01
+$attestedDoc = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri http://169.254.169.254/metadata/attested/document?api-version=2020-09-01
 # Decode the signature
 $signature = [System.Convert]::FromBase64String($attestedDoc.signature)
 ```
@@ -913,8 +1102,12 @@ Pak můžete vyžádat tokeny pro spravované identity z IMDS. Tyto tokeny použ
 
 Podrobné pokyny k povolení této funkce najdete v tématu [získání přístupového tokenu](../articles/active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
 
+## <a name="load-balancer-metadata"></a>Load Balancer metadata
+Když umístíte virtuální počítač nebo instance sady virtuálních počítačů za Standard Load Balancer Azure, můžete pomocí IMDS načíst metadata týkající se nástroje pro vyrovnávání zatížení a instancí. Další informace najdete v tématu [načtení informací o nástroji pro vyrovnávání zatížení](../articles/load-balancer/instance-metadata-service-load-balancer.md).
+
 ## <a name="scheduled-events"></a>Naplánované události
 Stav naplánovaných událostí můžete získat pomocí IMDS. Pak může uživatel zadat sadu akcí, které se mají spustit na těchto událostech. Další informace najdete v tématu [naplánované události pro systém Linux](../articles/virtual-machines/linux/scheduled-events.md) nebo [naplánované události pro systém Windows](../articles/virtual-machines/windows/scheduled-events.md).
+
 
 ## <a name="sample-code-in-different-languages"></a>Ukázkový kód v různých jazycích
 
@@ -935,7 +1128,7 @@ V následující tabulce jsou uvedeny ukázky volání IMDS pomocí různých ja
 
 ## <a name="errors-and-debugging"></a>Chyby a ladění
 
-Pokud se nenašel datový prvek nebo dojde k chybnému požadavku, Instance Metadata Service vrátí standardní chyby protokolu HTTP. Příklad:
+Pokud se nenašel datový prvek nebo dojde k chybnému požadavku, Instance Metadata Service vrátí standardní chyby protokolu HTTP. Například:
 
 | Stavový kód HTTP | Důvod |
 |------------------|--------|
@@ -983,7 +1176,7 @@ Volání metadat je nutné provést z primární IP adresy přiřazené k primá
 
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
-1. Vypsat místní směrovací tabulku a vyhledat položku IMDS Příklad:
+1. Vypsat místní směrovací tabulku a vyhledat položku IMDS Například:
     ```console
     > route print
     IPv4 Route Table

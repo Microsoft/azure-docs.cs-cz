@@ -3,14 +3,14 @@ title: Přehled odebrání Azure Automation Start/Stop VMs during off-hours
 description: Tento článek popisuje, jak odebrat funkci Start/Stop VMs during off-hours a zrušit propojení účtu Automation s pracovním prostorem Log Analytics.
 services: automation
 ms.subservice: process-automation
-ms.date: 02/04/2021
+ms.date: 03/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: a201274bf0c06382da790dd051bf5023337970b8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0bab5d8e82ce432e9b3834fe4c003316545eb338
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723839"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122081"
 ---
 # <a name="remove-startstop-vms-during-off-hours-from-automation-account"></a>Odebrat Start/Stop VMs during off-hours z účtu Automation
 
@@ -24,21 +24,7 @@ Odstraněním této funkce se odeberou jenom přidružené Runbooky, neodstraní
 
 ## <a name="delete-the-dedicated-resource-group"></a>Odstranit vyhrazenou skupinu prostředků
 
-1. Přihlaste se k Azure na adrese [https://portal.azure.com](https://portal.azure.com) .
-
-2. Přejděte do svého účtu Automation a v části **související prostředky** vyberte **propojený pracovní prostor** .
-
-3. Vyberte **Přejít k pracovnímu prostoru**.
-
-4. V části **Obecné** klikněte na **řešení** .
-
-5. Na stránce řešení vyberte **Start-Stop-VM [pracovní prostor]**.
-
-6. Na stránce **VMManagementSolution [pracovní prostor]** v nabídce vyberte **Odstranit** .
-
-    ![Odstranit funkci správy virtuálních počítačů](media/automation-solution-vm-management/vm-management-solution-delete.png)
-
-7. Pokud chcete odstranit skupinu prostředků vytvořenou tak, aby podporovala pouze Start/Stop VMs during off-hours, postupujte podle kroků uvedených v článku [Azure Resource Manager skupiny prostředků a odstraňování prostředků](../azure-resource-manager/management/delete-resource-group.md) .
+Pokud chcete odstranit skupinu prostředků, postupujte podle kroků uvedených v článku [Azure Resource Manager skupiny prostředků a odstraňování prostředků](../azure-resource-manager/management/delete-resource-group.md) .
 
 ## <a name="delete-the-automation-account"></a>Odstranit účet Automation
 

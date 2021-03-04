@@ -6,12 +6,12 @@ ms.date: 02/04/2021
 ms.service: media-services
 ms.author: faneerde
 author: fvneerden
-ms.openlocfilehash: 62787bfb586f2847d984499cf966708749184ee1
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 282ab76c34405f19e7f81b2a8069c178b17ee0c1
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096339"
+ms.locfileid: "102124410"
 ---
 # <a name="tutorial-analyze-live-video-by-using-intel-openvino-dl-streamer--edge-ai-extension"></a>Kurz: Analýza živého videa pomocí rozšíření Intel OpenVINO™ DL načtení proudu ImageList – Edge AI 
 
@@ -327,7 +327,8 @@ Pokud chcete použít jiný model, budete muset změnit šablonu nasazení. Chce
 "PIPELINE_VERSION=vehicle_attributes_recognition"
 ],
 ```
-> [!TIP] Zkopírujte šablonu a uložte ji pod novým názvem pro každý možný kanál. Tímto způsobem můžete přepínat mezi modely vytvořením nového nasazení založeného na jedné z těchto šablon.
+> [!TIP]
+> Zkopírujte šablonu a uložte ji pod novým názvem pro každý možný kanál. Tímto způsobem můžete přepínat mezi modely vytvořením nového nasazení založeného na jedné z těchto šablon.
 
 Po změně proměnných můžete šablonu znovu nasadit do zařízení. Nyní můžete opakovat výše uvedené kroky a znovu spustit ukázkový program s novým kanálem. Výsledky odvození budou podobné (ve schématu), ale zobrazují více nebo méně informací v závislosti na zvoleném modelu kanálu.
 

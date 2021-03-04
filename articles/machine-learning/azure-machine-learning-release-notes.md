@@ -9,18 +9,36 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: b19c5e8ca1f7984f33a5cedf37a2774532c79350
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 69313b48b505bd0b53df6f15f636e2903f41ebfd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661099"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124002"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
 V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) .
 
 __Informační kanál RSS__: po aktualizaci této stránky se zobrazí upozornění zkopírováním a vložením následující adresy URL do čtečky informačních kanálů: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+## <a name="2021-02-28"></a>2021-02-28
+### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Prostředí poznámkových bloků Azure Machine Learning Studio (Únorová aktualizace)
++ **Nové funkce**
+  + [Nativní terminál (GA)](https://docs.microsoft.com/azure/machine-learning/how-to-access-terminal). Uživatelé teď budou mít přístup k integrovanému terminálu i k operaci Git prostřednictvím integrovaného terminálu.
+  + [Fragmenty poznámkových bloků (Preview)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets). Běžné výpisy kódu v Azure ML jsou teď dostupné na dosah ruky. Přejděte na panel fragmenty kódu, který je přístupný prostřednictvím panelu nástrojů, nebo aktivujte nabídku fragmenty kódu pomocí kombinace kláves CTRL + MEZERNÍK.  
+  + [Klávesové zkratky](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#shortcut-keys). Plná parita s klávesovými zkratkami, které jsou k dispozici v Jupyter. 
+  + Označuje parametry buňky. Zobrazí uživatele, kteří mají buňku v poznámkovém bloku, a můžou spouštět parametrizované poznámkové bloky přes [Papermill](https://github.com/nteract/papermill) ve výpočetní instanci.
+  + Terminál a správce relace jádra: uživatelé budou moct spravovat všechny jádra a relace Terminálové služby běžící na výpočetním prostředí.
+  + Tlačítko sdílení. Uživatelé teď můžou sdílet kterýkoli soubor v Průzkumníkovi souborů poznámkového bloku tak, že na něj klikne pravým tlačítkem a použijete tlačítko sdílet.
+
+
++ **Opravy chyb a vylepšení**
+  + Vylepšené doby načítání stránek
+  + Vyšší výkon 
+  + Vylepšená rychlost a spolehlivost jádra
+  + Přidání rotujícího kolečka pro zobrazení průběhu všech probíhajících [operací výpočetních instancí](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#status-indicators).
+  + Klikněte pravým tlačítkem myši v Průzkumníkovi souborů. Kliknutím pravým tlačítkem na libovolný soubor se teď otevřou souborové operace. 
 
 ## <a name="2021-02-16"></a>2021-02-16
 

@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 664733f3d4c4e4bf17440db0323580c5d2c8c2ce
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: fb42a0428f0439053375027481d38977b068e356
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555668"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122574"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>Konfigurace Azure Attestation pro logický Server Azure SQL
 
@@ -66,10 +66,14 @@ authorizationrules
 
 Výše uvedená zásada ověřuje:
 
-- Enklávy uvnitř Azure SQL Database nepodporuje ladění (což by snížilo úroveň ochrany poskytovanou enklávyou).
-- ID produktu knihovny v rámci enklávy je ID produktu přiřazené k Always Encrypted se zabezpečeným enclaves (4639).
-- ID verze (SVN) knihovny je větší než 0.
+- Enklávy uvnitř Azure SQL Database nepodporuje ladění. 
+  > Enclaves lze načíst s vypnutým nebo povoleným laděním. Podpora ladění je navržena tak, aby umožňovala vývojářům odstraňovat potíže s kódem spuštěným v enklávy. V produkčním systému může ladění povolit správci kontrolu obsahu enklávy, což by snížilo úroveň ochrany, kterou enklávy poskytuje. Doporučené zásady zakazují ladění, aby se zajistilo, že pokud se se zlými úmysly pokusí zapnout podporu ladění převzetím enklávy počítače, ověření identity se nezdaří. 
+- ID produktu enklávy se shoduje s ID produktu přiřazeným k Always Encrypted pomocí zabezpečení enclaves.
+  > Každý enklávy má jedinečné ID produktu, které odlišuje enklávy od jiných enclaves. ID produktu přiřazené k Always Encrypted enklávy je 4639. 
+- Číslo verze zabezpečení (SVN) knihovny je větší než 0.
+  > SVN umožňuje Microsoftu reagovat na potenciální chyby zabezpečení identifikované v kódu enklávy. V případě, že dojde k dekrytí a opravení potíží se zabezpečením, Microsoft nasadí novou verzi enklávy s novým (zvýšenou) SVN. Výše Doporučené zásady se aktualizují, aby odrážely nové SVN. Když aktualizujete zásady tak, aby odpovídala doporučeným zásadám, můžete zajistit, že pokud se správce se zlými úmysly pokusí načíst starší a nezabezpečený enklávy, ověření identity se nezdaří.
 - Knihovna v enklávy byla podepsána pomocí podpisového klíče společnosti Microsoft (hodnota deklarace x-MS-SGX-mrsigner je hodnota hash podpisového klíče).
+  > Jedním z hlavních cílů ověření identity je přesvědčit klienty, že binární soubor běžící v enklávy je binární soubor, který se má spustit. Zásady ověření identity poskytují pro tento účel dva mechanismy. Jedna je **mrenclave** deklarace identity, která představuje hodnotu hash binárního souboru, který má běžet v enklávy. Problém s **mrenclave** je, že se binární hodnota hash změní i v případě triviálních změn kódu, což usnadňuje revize kódu spuštěného v enklávy. Proto doporučujeme použití **mrsigner**, což je hodnota hash klíče, který se používá k podepsání binárního souboru enklávy. Když Microsoft revs enklávy, **mrsigner** zůstává stejný, dokud se podpisový klíč nemění. Tímto způsobem se dá chtít nasadit aktualizované binární soubory bez přerušujících aplikací zákazníků. 
 
 > [!IMPORTANT]
 > Poskytovatel ověření identity se vytvoří s výchozími zásadami pro Intel SGX enclaves, který neověřuje kód spuštěný uvnitř enklávy. Microsoft důrazně doporučuje nastavit výše uvedené doporučené zásady a nepoužívat výchozí zásady pro Always Encrypted s zabezpečeným enclaves.

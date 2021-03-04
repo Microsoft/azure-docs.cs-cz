@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a204db8453ec8126e1aa9033e10f739a6f8a0d43
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 5df7088551e7e7f616077342b762baca179f8640
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100095133"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123356"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Použití skupin cloudů ke správě přiřazení rolí v Azure Active Directory (Preview)
 
@@ -56,10 +56,10 @@ Následující scénáře se teď nepodporují:
 
 ## <a name="known-issues"></a>Známé problémy
 
-- Funkce **povolit dvoufázové zavedení pro funkci přihlašování spravovaného uživatele** nepodporuje přiřazování přes skupinu.
 - *Jenom licencovaní zákazníci Azure AD P2*: nepřiřazujte skupinu jako aktivní k roli prostřednictvím Azure AD a PRIVILEGED Identity Management (PIM). Konkrétně nepřiřazujte roli skupině přiřazení role, když se vytváří *, a* přiřaďte ji ke skupině pomocí Správce cloudu později. To povede k problémům, kde uživatelé nevidí jejich aktivní přiřazení role v PIM a zároveň neumožňují odebrání tohoto přiřazení PIM. V tomto scénáři nejsou ovlivněna oprávněná přiřazení. Pokud se pokusíte toto přiřazení provést, může se zobrazit neočekávané chování, například:
   - Čas ukončení přiřazení role se může zobrazit nesprávně.
   - Na portálu PIM můžou **Moje role** zobrazovat jenom jedno přiřazení role bez ohledu na to, kolik metod má přiřazení uděleno (přes jednu nebo víc skupin a přímo).
+- Funkce **povolit dvoufázové zavedení pro funkci přihlašování spravovaného uživatele** nepodporuje přiřazování přes skupinu.
 - *Jenom licencovaní zákazníci Azure AD P2* I po odstranění skupiny se stále zobrazuje oprávněný člen role v uživatelském rozhraní PIM. Funkční není žádný problém. je to jen problém s mezipamětí v Azure Portal.  
 - Použijte nové [Centrum pro správu Exchange](https://admin.exchange.microsoft.com/) pro přiřazení rolí prostřednictvím členství ve skupině. Původní centrum pro správu Exchange tuto funkci ještě nepodporuje. Rutiny prostředí Exchange PowerShell budou fungovat podle očekávání.
 - Portál Azure Information Protection (portál Classic) nerozpozná členství v rolích prostřednictvím skupiny. Můžete [migrovat na sjednocenou platformu označování citlivostí](/azure/information-protection/configure-policy-migrate-labels) a potom použít Centrum kompatibility Office 365 Security & k použití přiřazení skupin pro správu rolí.

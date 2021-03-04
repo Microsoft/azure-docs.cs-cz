@@ -147,6 +147,8 @@
       items:
         - name: Samodiagnostika a řešení problémů
           href: spring-cloud-howto-self-diagnose-solve.md
+        - name: Automatická diagnostika spuštěná ve virtuální síti
+          href: spring-cloud-howto-self-diagnose-running-in-vnet.md
         - name: Průvodce odstraňováním potíží
           href: spring-cloud-troubleshoot.md
     - name: Migrate

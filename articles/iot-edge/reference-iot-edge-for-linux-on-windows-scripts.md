@@ -8,12 +8,12 @@ ms.date: 02/16/2021
 ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f0af571f67862c91371b01bee6227d5fb6b291be
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0881363a3f13f0ddf34157a1fffe6c26d0c0b692
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101745081"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122846"
 ---
 # <a name="powershell-scripts-for-iot-edge-for-linux-on-windows"></a>Skripty PowerShellu pro IoT Edge pro Linux ve Windows
 
@@ -149,4 +149,4 @@ Naučte se používat tyto příkazy v následujícím článku:
 
 * [Nainstalovat Azure IoT Edge pro Linux ve Windows](how-to-install-iot-edge-windows.md)
 
-* Všechny příkazy dostupné prostřednictvím PowerShellu najdete v [referenčních informacích ke skriptům IoT Edge pro Linux v prostředí Windows PowerShell](reference-iot-edge-for-linux-on-windows-scripts.md#Deploy-Eflow) .
+* Všechny příkazy dostupné prostřednictvím PowerShellu najdete v [referenčních informacích ke skriptům IoT Edge pro Linux v prostředí Windows PowerShell](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow) .

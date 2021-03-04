@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 77cc509a9fac2a24b3cd70675c1ee4160ecdb24d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 06ad8bf169e2b4b44f4f6a8ec5155aa6722a038c
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741850"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124053"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Nejčastější dotazy pro přední dveře Azure
 
@@ -99,7 +99,7 @@ Pokud chcete aplikaci uzamknout, aby přijímala provoz jenom z vašich konkrét
 
 - Vyhledejte `Front Door ID` hodnotu v části Přehled na stránce portálu front dveří. Pak můžete filtrovat příchozí záhlaví **X-Azure-FDID** odesílané předními dveřmi do back-endu s touto hodnotou, abyste zajistili, že bude povolená jenom vaše vlastní specifická instance front-dveří (protože rozsahy IP adres výše jsou sdílené s jinými instancemi front-endu jiných zákazníků).
 
-- Na webovém serveru back-end použijte filtrování pravidel pro omezení provozu na základě výsledné hodnoty hlavičky X-Azure-FDID. Všimněte si, že některé služby, jako Azure App Service, poskytují tuto funkci [filtrování na základě hlaviček](../app-service/app-service-ip-restrictions#restrict-access-to-a-specific-azure-front-door-instance-preview) bez nutnosti změnit aplikaci nebo hostitele.
+- Na webovém serveru back-end použijte filtrování pravidel pro omezení provozu na základě výsledné hodnoty hlavičky X-Azure-FDID. Všimněte si, že některé služby, jako Azure App Service, poskytují tuto funkci [filtrování na základě hlaviček](../app-service/app-service-ip-restrictions.md#restrict-access-to-a-specific-azure-front-door-instance-preview) bez nutnosti změnit aplikaci nebo hostitele.
 
   Tady je příklad pro [Microsoft Internetová informační služba (IIS)](https://www.iis.net/):
 

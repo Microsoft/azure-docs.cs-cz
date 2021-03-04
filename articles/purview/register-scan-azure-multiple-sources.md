@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 2/26/2021
-ms.openlocfilehash: c57ac9ddbebcf02cb0118705b63f97fd1880b0f2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 098f62365971fd634001706ab99fd414a6b25056
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695959"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123560"
 ---
 # <a name="register-and-scan-azure-multiple-sources"></a>Registrace a skenování více zdrojů Azure
 
@@ -95,12 +95,12 @@ Pokud chcete vytvořit a spustit novou kontrolu, udělejte toto:
     1. Přihlašovací údaje můžete vybrat **na nadřazené úrovni** jako MSI nebo konkrétní pověření typu instančního objektu, které můžete použít pro všechny typy prostředků v rámci předplatného nebo skupiny prostředků.
     1. Můžete také konkrétně **Vybrat typ prostředku a použít** pro tento typ prostředku jiné přihlašovací údaje.
     1. Každé přihlašovací údaje se považují za metodu ověřování pro všechny prostředky v rámci určitého typu.
-    1. Musíte nastavit zvolené přihlašovací údaje k prostředkům, aby je bylo možné úspěšně zkontrolovat, jak je popsáno v této [části](#Setting-up-authentication-to-scan-resources-under-a-subscription-or-resource-group) výše.
+    1. Musíte nastavit zvolené přihlašovací údaje k prostředkům, aby je bylo možné úspěšně zkontrolovat, jak je popsáno v této [části](#setting-up-authentication-to-scan-resources-under-a-subscription-or-resource-group) výše.
 1. V rámci každého typu můžete vybrat buď kontrolu všech prostředků, nebo jejich podmnožinu podle názvu.
     1. Pokud ponecháte tuto možnost **, budou** se také prověřit budoucí prostředky tohoto typu v budoucích běhůch kontroly.
     1. Pokud vyberete možnost konkrétní účty úložiště nebo databáze SQL, nebudou se v rámci tohoto předplatného nebo skupiny prostředků vycházet z budoucích prostředků vytvořených v rámci tohoto předplatného nebo skupiny prostředků, pokud se kontrola v budoucnu explicitně neupraví.
  
-1.  Pokračujte kliknutím na **pokračovat** . Otestujeme přístup a zkontrolujeme, jestli jste jako čtecí modul pro předplatné nebo skupinu prostředků použili dosah MSI. Pokud se vyvolá chybová zpráva, postupujte [podle pokynů.](#Setting-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group)
+1.  Pokračujte kliknutím na **pokračovat** . Otestujeme přístup a zkontrolujeme, jestli jste jako čtecí modul pro předplatné nebo skupinu prostředků použili dosah MSI. Pokud se vyvolá chybová zpráva, postupujte [podle pokynů.](#setting-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group)
 
 1.  Vyberte možnost **Prohledat sady pravidel** pro každý typ prostředku, který jste zvolili v předchozím kroku. Můžete také vytvořit sady pravidel skenování inline.
   :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-scan-rule-set.png" alt-text="Výběr sady pravidel pro více kontrol Azure":::

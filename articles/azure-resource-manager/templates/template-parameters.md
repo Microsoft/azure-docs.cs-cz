@@ -3,12 +3,12 @@ title: Parametry v šablonách
 description: Popisuje definování parametrů v šabloně Azure Resource Manager (šablona ARM) a souboru bicep.
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: b23417766524204e490450568bb80b8c49e2d328
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a8608e4733960d7f5ba7e5f548c47f16a2b244bb
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043928"
+ms.locfileid: "102123390"
 ---
 # <a name="parameters-in-arm-templates"></a>Parametry v šablonách ARM
 
@@ -16,7 +16,7 @@ Tento článek popisuje, jak definovat a používat parametry ve vaší šablon�
 
 Správce prostředků řeší hodnoty parametrů před spuštěním operací nasazení. Všude, kde je parametr použit v šabloně, Správce prostředků ho nahradí vyřešenou hodnotou.
 
-Každý parametr musí být nastaven na jeden z [datových typů](template-syntax.md#data-types).
+Každý parametr musí být nastaven na jeden z [datových typů](data-types.md).
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 

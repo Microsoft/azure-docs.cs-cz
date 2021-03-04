@@ -3,12 +3,12 @@ title: Kubernetes monitorování pomocí kontejneru Insights | Microsoft Docs
 description: Tento článek popisuje, jak můžete zobrazit a analyzovat výkon clusteru Kubernetes s využitím služby Container Insights.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 432de02d22a418e92a7487001ae8c128323f3685
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 865a21e8c54d2cf569e04534fab6ec14f5519f34
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711344"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124308"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-container-insights"></a>Monitorování výkonu clusteru Kubernetes pomocí služby Container Insights
 
@@ -20,7 +20,7 @@ Informace o tom, jak povolit službu Container Insights, najdete v tématu [zpro
 
 Azure Monitor poskytuje zobrazení více clusterů, které zobrazuje stav všech monitorovaných clusterů Kubernetes se systémem Linux a Windows Server 2019 nasazených ve skupinách prostředků ve vašich předplatných. Zobrazuje clustery zjištěné ve všech prostředích, která nejsou monitorovaná řešením. Stav clusteru můžete okamžitě pochopit a z tohoto místa můžete přejít k podrobnostem na stránce s výkonem uzlů a kontroléru nebo přejít k zobrazení grafů výkonu pro cluster. U clusterů AKS, které byly zjištěny a identifikovány jako nemonitorované, můžete kdykoli povolit monitorování.
 
-Hlavní rozdíly v monitorování clusteru Windows serveru s využitím služby Container Insights v porovnání s clusterem Linux [jsou popsané v](container-insights-overview.md#what-does-azure-monitor-for-containers-provide) článku Přehled.
+Hlavní rozdíly v monitorování clusteru Windows serveru s využitím služby Container Insights v porovnání s clusterem Linux [jsou popsané v](container-insights-overview.md#what-does-container-insights-provide) článku Přehled.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 

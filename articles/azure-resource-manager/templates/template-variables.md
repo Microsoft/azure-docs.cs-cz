@@ -3,12 +3,12 @@ title: Proměnné v šablonách
 description: Popisuje definování proměnných v šabloně Azure Resource Manager (šablona ARM) a souboru bicep.
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: e00a9e8e1801725707bac2abdc67512477e2cf07
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3ab14c9acfcc2d6c9edd23fb3bc4d876cd5ac756
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700333"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123373"
 ---
 # <a name="variables-in-arm-templates"></a>Proměnné v šablonách ARM
 
@@ -20,7 +20,7 @@ Správce prostředků vyřeší proměnné před spuštěním operací nasazení
 
 ## <a name="define-variable"></a>Definovat proměnnou
 
-Při definování proměnné nezadáte [datový typ](template-syntax.md#data-types) pro proměnnou. Místo toho zadejte hodnotu nebo výraz šablony. Typ proměnné je odvozen z přeložené hodnoty. Následující příklad nastaví proměnnou na řetězec.
+Při definování proměnné nezadáte [datový typ](data-types.md) pro proměnnou. Místo toho zadejte hodnotu nebo výraz šablony. Typ proměnné je odvozen z přeložené hodnoty. Následující příklad nastaví proměnnou na řetězec.
 
 # <a name="json"></a>[JSON](#tab/json)
 

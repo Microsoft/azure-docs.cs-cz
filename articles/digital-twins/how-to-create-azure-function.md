@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b37277c660562721273ff9ae86dd677ee7ac7d55
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 2419761c195258c60561e284abf0227b915ed4f6
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049997"
+ms.locfileid: "102123628"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Připojení aplikací Function App v Azure pro zpracování dat
 
@@ -86,7 +86,7 @@ Potom ve Visual Studiu Průzkumník řešení otevřete soubor _function1.cs_ , 
 
 Nyní deklarujete proměnné na úrovni třídy a přidáte ověřovací kód, který umožní funkci přístup k digitálním Vlákenám Azure. Do souboru _function1.cs_ přidáte následující funkce.
 
-* Kód pro čtení adresy URL služby Azure Digital jako proměnné prostředí Je vhodné si přečíst adresu URL služby z proměnné prostředí, ale nemusíte ji pevně zakódovat do funkce.
+* Kód pro čtení adresy URL služby Azure Digital jako **proměnné prostředí** Je dobrým zvykem přečíst si adresu URL služby z proměnné prostředí, ale nemusíte ji pevně zakódovat do funkce. [Později v tomto článku](#set-up-security-access-for-the-function-app)nastavíte hodnotu této proměnné prostředí. Další informace o proměnných prostředí najdete v tématu [*Správa aplikace Function App*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal).
 
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="ADT_service_URL":::
 
@@ -134,7 +134,7 @@ Pomocí hodnoty _principalId_ v následujícím příkazu přiřaďte identitu a
 ```azurecli-interactive 
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
 ```
-Nakonec můžete nastavit proměnnou prostředí tak, aby se adresa URL instance digitálního vlákna Azure pro vaši funkci přístupná. Další informace o nastavení proměnných prostředí naleznete v tématu [*proměnné prostředí*](/sandbox/functions-recipes/environment-variables). 
+Nakonec zajistěte, aby byla adresa URL instance digitálního vlákna Azure dostupná pro vaši funkci nastavením **proměnné prostředí** pro ni. Další informace o proměnných prostředí najdete v tématu [*Správa aplikace Function App*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal). 
 
 > [!TIP]
 > Adresa URL instance digitálních vláken Azure se provede přidáním *https://* na začátek *názvu hostitele* instance digitálního vlákna Azure. Chcete-li zobrazit název hostitele spolu se všemi vlastnostmi vaší instance, můžete spustit `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
@@ -183,7 +183,7 @@ Pak podrobnosti uložte kliknutím na tlačítko _Uložit_ .
 
 ### <a name="configure-application-settings-using-azure-portal"></a>Konfigurace nastavení aplikace pomocí Azure Portal
 
-Adresu URL instance digitálního vlákna Azure, která je pro vaši funkci přístupná, můžete nastavit tak, že nastavíte proměnnou prostředí. Další informace najdete v tématu [*proměnné prostředí*](/sandbox/functions-recipes/environment-variables). Nastavení aplikace jsou vystavena jako proměnné prostředí pro přístup k instanci digitálního vlákna. 
+K tomu, aby byla adresa URL instance digitálního vlákna Azure dostupná pro vaši funkci, můžete pro ni nastavit **proměnnou prostředí** . Další informace o proměnných prostředí najdete v tématu [*Správa aplikace Function App*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal). Nastavení aplikace jsou vystavena jako proměnné prostředí pro přístup k instanci digitálních vláken Azure. 
 
 Pokud chcete nastavit proměnnou prostředí s adresou URL vaší instance, načtěte adresu URL tak, že vyhledáte název hostitele instance digitálního vlákna Azure. Na panelu hledání [Azure Portal](https://portal.azure.com) vyhledejte vaši instanci. Pak na levém navigačním panelu vyberte _Přehled_ a zobrazte _název hostitele_. Zkopírujte tuto hodnotu.
 

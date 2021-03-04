@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 09/16/2020
+ms.date: 02/16/2021
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0e230a975748fe2f737c4b8fe8491887351d387
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fd4374067fe0070c379a76ef5f59bb6aef5b29fc
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004666"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123101"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Přiřazení rolí Azure AD v Privileged Identity Management
 
@@ -101,7 +101,7 @@ Další informace o vytváření jednotek pro správu najdete v tématu [Přidá
 
 ## <a name="update-or-remove-an-existing-role-assignment"></a>Aktualizovat nebo odebrat existující přiřazení role
 
-Pomocí těchto kroků aktualizujete nebo odeberete existující přiřazení role.
+Pomocí těchto kroků aktualizujete nebo odeberete existující přiřazení role. **Jenom licencovaní zákazníci Azure AD P2**: nepřiřazujte skupinu jako aktivní k roli prostřednictvím Azure AD a PRIVILEGED Identity Management (PIM). Podrobné vysvětlení najdete v tématu [známé problémy](../roles/groups-concept.md#known-issues).
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 

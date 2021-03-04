@@ -9,12 +9,12 @@ ms.date: 03/01/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 76d3bdc8a6eb133daa2d241bdf4c3b73271f0173
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 38826451bbb8ec9303f61db53544cfe8ca2fcd41
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100198"
+ms.locfileid: "102123084"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Správa knihoven pro Apache Spark ve službě Azure synapse Analytics
 Knihovny poskytují opakovaně použitelný kód, který můžete chtít zahrnout do svých programů nebo projektů. 
@@ -38,6 +38,7 @@ Při vývoji vlastních aplikací nebo modelů může váš tým vyvíjet různ�
 V synapse mohou být balíčky pracovních prostorů vlastními nebo soukromými soubory nebo soubory jar. Tyto balíčky můžete nahrát do svého pracovního prostoru a později je přiřadit ke konkrétnímu fondu Spark. Po přiřazení se tyto balíčky pracovního prostoru automaticky nainstalují na všechny relace fondu Spark.
 
 Další informace o správě knihoven pracovních prostorů najdete v následujících průvodcích:
+
 - [Balíčky pracovního prostoru Pythonu (Preview): ](./apache-spark-manage-python-packages.md#install-wheel-files) Nahrajte soubory kolečka Pythonu jako balíček pracovního prostoru a později tyto balíčky přidejte do konkrétních Apache Sparkch fondů bez serveru.
 - [Balíčky pracovních prostorů Scala/Java (Preview): ](./apache-spark-manage-scala-packages.md#workspace-packages) Nahrajte soubory Scala a Java jar jako balíček pracovního prostoru a později tyto balíčky přidejte do konkrétních Apache Sparkch fondů bez serveru.
 
@@ -61,6 +62,7 @@ Při provádění interaktivní analýzy dat nebo strojového učení často zji
 Balíčky s rozsahem relace umožňují uživatelům definovat závislosti balíčků na začátku relace. Při instalaci balíčku s rozsahem relace má přístup k určeným balíčkům pouze aktuální relace. V důsledku toho tyto balíčky s rozsahem relace nebudou mít vliv na ostatní relace nebo úlohy pomocí stejného fondu Apache Spark. Kromě toho jsou tyto knihovny nainstalovány nad základními balíčky modulu runtime a na úrovni fondu. 
 
 Další informace o tom, jak spravovat balíčky s rozsahem relace, najdete v následujících průvodcích:
+
 - [Balíčky relací Pythonu (Preview):](./apache-spark-manage-python-packages.md) Na začátku relace poskytněte *prostředí conda. yml* pro instalaci dalších balíčků Pythonu z oblíbených úložišť. 
 - [Balíčky relací Scala/Java: ](./apache-spark-manage-scala-packages.md) Na začátku relace zadejte seznam souborů JAR, které se mají nainstalovat pomocí nástroje ```%%configure``` .
 

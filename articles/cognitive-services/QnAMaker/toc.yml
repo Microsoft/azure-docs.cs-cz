@@ -50,6 +50,8 @@
     - name: Správa prostředků Azure
       href: How-To/set-up-qnamaker-service-azure.md
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
+    - name: Izolace sítě pro prostředky Azure
+      href: How-To/network-isolation.md
     - name: Správa přístupu k prostředkům QnA Maker
       href: How-To/manage-qna-maker-app.md
     - name: Správa znalostní báze

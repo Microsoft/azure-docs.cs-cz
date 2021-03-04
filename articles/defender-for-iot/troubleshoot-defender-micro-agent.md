@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s agentem IoT Micro v Defenderu (Preview)
+title: Řešení potíží s agentem IoT Micro v programu Defender
 titleSuffix: Azure Defender for IoT
 description: Naučte se zvládnout neočekávané nebo nevysvětlující chyby.
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/24/2021
 ms.topic: reference
 ms.service: azure
-ms.openlocfilehash: 07198a5d0ef5d0a6c9eed97523c61826e451b7f5
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: dade0d0d5dc4d690ea94f20deaf956b1e079bad7
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809747"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124172"
 ---
-# <a name="defender-iot-micro-agent-troubleshooting-preview"></a>Řešení potíží s agentem IoT Micro v Defenderu (Preview)
+# <a name="defender-iot-micro-agent-troubleshooting"></a>Řešení potíží s agentem IoT Micro v programu Defender 
 
 V případě neočekávaných nebo nevysvětlujících chyb použijte při pokusu o vyřešení vašich potíží následující metody řešení potíží. Podle potřeby můžete také kontaktovat produktového týmu Azure Defender pro IoT.   
 

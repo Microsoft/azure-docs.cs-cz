@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: c9bc6e3822ac6c014b9ff00e9cd81bbe707628fe
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6dc687879eb646b4abd081b40bce292d20ff3186
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736062"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123985"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>Porozumění změnám v kořenové CA změna pro Azure Database for PostgreSQL jeden server
 
@@ -83,7 +83,7 @@ Naše doporučení pro uživatele: pomocí výše uvedených kroků vytvořte Ko
 
 ## <a name="what-if-we-removed-the-baltimorecybertrustroot-certificate"></a>Co když jsme odebrali certifikát BaltimoreCyberTrustRoot?
 
-Při připojování k serveru Azure Database for PostgreSQL začnete s připojením k chybám. Pro zachování připojení budete muset [nakonfigurovat SSL](howto-configure-ssl.md) pomocí certifikátu [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) .
+Při připojování k serveru Azure Database for PostgreSQL začnete s připojením k chybám. Pro zachování připojení budete muset nakonfigurovat SSL pomocí certifikátu [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) .
 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
