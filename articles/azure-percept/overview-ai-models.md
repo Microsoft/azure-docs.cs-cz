@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.custom: template-concept
-ms.openlocfilehash: 28a8de231f179cf69342da81e6a2ae1989d2a5d6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8a9ed564012e8b530436152d931f5a5f6470ff98
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041582"
+ms.locfileid: "102098362"
 ---
 # <a name="azure-percept-ai-models"></a>Modely AI pro Azure Percept
 
@@ -52,6 +52,8 @@ Předem vytvořená klíčová slova a příkazy hlasového asistenta jsou k dis
 
 ## <a name="advanced-development"></a>Pokročilý vývoj
 
-V případě pokročilých vývojářů je dostupný [Jupyter Poznámkový blok](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/Transferlearningusing_SSDLiteV2%20Model.ipynb) přenosu dat pomocí předem připraveného TensorFlow modelu (MobileNetSSDV2Lite) v Pythonu s vlastní datovou sadou pro detekci objektů. Poznámkový blok využívá vzdálené výpočetní instance prostřednictvím [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/#product-overview) a dá se spouštět v cloudu pomocí portálu AzureML nebo místně v [Visual Studio Code](https://code.visualstudio.com/).
+Podrobné pokyny, kurzy a příklady pro tyto věci najdete v tématu [Azure PERCEPT DK Advanced Development GitHub](https://github.com/microsoft/azure-percept-advanced-development) .
 
-K dispozici jsou také některé užitečné [skripty](https://github.com/microsoft/Project-Santa-Cruz-Preview/tree/main/Sample-Scripts-and-Notebooks/Official/Scripts) Pythonu pro správu datových sad a [instalační program sady nástrojů pro vývojáře](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/dev-tools-installer.md), který nainstaluje a nakonfiguruje všechny nástroje, které jsou nezbytné pro vývoj pokročilého řešení AI.
+* Zavedení vlastního modelu AI do zařízení
+* Aktualizace modelu, který už podporujeme s učením přenosu
+* A další

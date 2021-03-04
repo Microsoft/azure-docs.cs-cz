@@ -3,14 +3,14 @@ title: Spouštění úloh na nákladově efektivních virtuálních počítačí
 description: Naučte se zřizovat virtuální počítače s nízkou prioritou a snížit tak náklady na Azure Batch úlohy.
 author: mscurrell
 ms.topic: how-to
-ms.date: 02/02/2021
+ms.date: 03/03/2021
 ms.custom: seodec18
-ms.openlocfilehash: 9214ef83ec9b8bef4fb7bc7489aa0ab388f67c0d
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: cafc7216e8112640f823ecee1aea055ab78b3fc6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507265"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098464"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Použití virtuálních počítačů s nízkou prioritou se službou Batch
 
@@ -25,9 +25,9 @@ Virtuální počítače s nízkou prioritou se v porovnání s vyhrazenými virt
 > [!NOTE]
 > Virtuální počítače s [přímým](https://azure.microsoft.com/pricing/spot/) výskytem jsou teď dostupné pro [virtuální počítače s jednou instancí](../virtual-machines/spot-vms.md) a služby [VM Scale Sets](../virtual-machine-scale-sets/use-spot.md). Virtuální počítače s nízkou prioritou představují vývoj virtuálních počítačů s nízkou prioritou, ale liší se tím, že se ceny můžou lišit a volitelná maximální cena se dá nastavit při přidělování virtuálních počítačů na místě.
 >
-> Fondy Azure Batch začnou podporovat virtuální počítače s plochou během několika měsíců, které jsou všeobecně dostupné, s novými verzemi [rozhraní API a nástrojů služby Batch](./batch-apis-tools.md). Jakmile bude k dispozici podpora virtuálních počítačů, virtuální počítače s nízkou prioritou budou zastaralé – budou i nadále podporovány pomocí současných rozhraní API a verzí nástrojů po dobu nejméně 12 měsíců, aby bylo umožněno dostatek času pro migraci na virtuální počítače.
+>Fondy Azure Batch začnou v budoucnu podporovat virtuální počítače s novými verzemi [rozhraní API a nástrojů pro dávkování](./batch-apis-tools.md). Až bude dostupná podpora virtuálních počítačů, virtuální počítače s nízkou prioritou budou zastaralé – budou se nadále podporovat pomocí současných rozhraní API a verzí nástrojů po dobu nejméně 12 měsíců, aby bylo umožněno dostatek času pro migraci na virtuální počítače.
 >
-> Virtuální počítače s přímým odkazem se pro fondy [konfigurací cloudových služeb](/rest/api/batchservice/pool/add#cloudserviceconfiguration) nepodporují. Pokud chcete použít virtuální počítače s plochou, bude nutné, aby fondy cloudových služeb byly migrovány do fondů [Konfigurace virtuálních počítačů](/rest/api/batchservice/pool/add#virtualmachineconfiguration) .
+> Virtuální počítače s plochou budou podporované jenom pro fondy konfigurace virtuálních počítačů. Pokud chcete použít virtuální počítače s plochou, bude nutné, aby všechny fondy konfigurací cloudových služeb byly [migrovány do fondů konfigurace virtuálních počítačů](batch-pool-cloud-service-to-virtual-machine-configuration.md).
 
 ## <a name="batch-support-for-low-priority-vms"></a>Podpora služby Batch pro virtuální počítače s nízkou prioritou
 

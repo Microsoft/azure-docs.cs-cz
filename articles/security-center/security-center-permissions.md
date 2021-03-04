@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/01/2020
 ms.author: memildin
-ms.openlocfilehash: 668fe1436feeb0888f7d871144da6cb6b8e3864e
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 14ee9f23379a26c1756c622efb7d739f49dd0537
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922606"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099178"
 ---
 # <a name="permissions-in-azure-security-center"></a>Oprávnění ve službě Azure Security Center
 
@@ -59,6 +59,5 @@ Tento článek vysvětluje, jak Security Center používá službu Azure RBAC k 
 
 - [Nastavení zásad zabezpečení ve službě Security Center](tutorial-security-policy.md)
 - [Správa doporučení zabezpečení v Security Center](security-center-recommendations.md)
-- [Monitorování stavu zabezpečení prostředků Azure](security-center-monitoring.md)
 - [Správa a reakce na výstrahy zabezpečení v Security Center](security-center-managing-and-responding-alerts.md)
 - [Monitorování řešení zabezpečení pro partnery](./security-center-partner-integration.md)

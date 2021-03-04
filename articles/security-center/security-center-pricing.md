@@ -1,30 +1,23 @@
 ---
-title: Ceny Azure Security Center
-description: Azure Security Center se nabízí ve dvou režimech s Azure Defenderem a bez něj.
-services: security-center
-documentationcenter: na
+title: Povolený Azure Security Center zdarma vs Azure Defender
+description: Přečtěte si o výhodách povolení ochrany cloudových úloh v Azure Defenderu v Azure Security Center
 author: memildin
-manager: rkarlin
-ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
-ms.service: security-center
-ms.devlang: na
-ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/14/2021
 ms.author: memildin
-ms.openlocfilehash: 8d8ef4236a9dd993faaaa2aacfd40a7592e9017f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+manager: rkarlin
+ms.service: security-center
+ms.topic: overview
+ms.date: 02/14/2021
+ms.openlocfilehash: 7ca8a89cc93cc36d790eca7b19665e5bfed9695c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698667"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099099"
 ---
-# <a name="pricing-of-azure-security-center"></a>Ceny Azure Security Center
-Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami pro úlohy běžící v Azure, na místních systémech a v jiných cloudech. Poskytuje přehled a kontrolu nad úlohami hybridního cloudu, aktivní ochranou, která snižuje vaše nároky na hrozby a inteligentní zjišťování, které vám pomůže udržet krok s rychle se rozvíjejícími se internetovými riziky.
+# <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Povolený Azure Security Center zdarma vs Azure Defender
+Azure Defender je pro prvních 30 dnů zdarma. Po uplynutí 30 dnů se můžete rozhodnout, že budete službu dál používat, a automaticky začneme účtovat za využití.
 
-
-## <a name="security-center-free-vs-azure-defender-enabled"></a>Povolený Security Center zdarma vs Azure Defender
+## <a name="what-are-the-benefits-of-enabling-azure-defender"></a>Jaké jsou výhody povolení programu Azure Defender?
 
 Security Center se nabízí ve dvou režimech:
 
@@ -41,43 +34,22 @@ Security Center se nabízí ve dvou režimech:
     - Škálování **ochrany před hrozbami pro prostředky připojené k prostředí Azure** – Azure Defender zahrnuje ochranu před internetovými útoky v Azure, která je společná pro všechny vaše prostředky: Azure Resource Manager, Azure DNS, síťová vrstva azure a Azure Key Vault. Azure Defender má jedinečný přehled o vrstvě správy Azure a vrstvě Azure DNS a může proto chránit cloudové prostředky, které jsou k těmto vrstvám připojené.
 
 
-## <a name="try-azure-defender-free-for-30-days"></a>Vyzkoušení Azure Defenderu zdarma po dobu 30 dnů
-Azure Defender je pro prvních 30 dnů zdarma. Po uplynutí 30 dnů se můžete rozhodnout, že budete službu dál používat, a automaticky začneme účtovat za využití.
-
-## <a name="enable-azure-defender"></a>Povolení Azure Defenderu
-Můžete chránit celé předplatné Azure pomocí Azure Defenderu a všechny prostředky v rámci tohoto předplatného zdědí všechny jeho ochrany.
-
-Povolení služby Azure Defender:
-
-1. V hlavní nabídce Security Center vyberte **cenové & nastavení**.
-1. Vyberte předplatné, které chcete upgradovat.
-1. Pro upgrade vyberte **Azure Defender** .
-1. Vyberte **Uložit**.
-
-Níže najdete stránku s cenami za ukázkové předplatné. Všimnete si, že každý plán v Azure Defenderu se účtuje samostatně a dá se individuálně nastavit na hodnotu Zapnuto nebo vypnuto.
-
-:::image type="content" source="./media/security-center-pricing/pricing-tier-page.png" alt-text="Stránka s cenami Security Center na portálu":::
-
-> [!NOTE]
-> Pokud chcete povolit všechny Security Center funkce, včetně funkcí ochrany před hrozbami, musíte v předplatném, které obsahuje příslušné úlohy, povolit Azure Defender. Povolením na úrovni pracovního prostoru nepovolíte pro prostředky Azure přístup k virtuálnímu počítači za běhu, adaptivní řízení aplikací a zjišťování sítě. K dispozici jsou navíc jenom plány Azure Defenderu na úrovni pracovního prostoru, které jsou v Azure Defenderu pro servery a Azure Defender pro SQL servery na počítačích.
->
-> **Azure Defender můžete povolit pro účty úložiště** buď na úrovni předplatného, nebo na úrovni prostředků.
-> **Azure Defender pro SQL** můžete povolit buď na úrovni předplatného, nebo na úrovni prostředků.
-> Ochranu před hrozbami pro **Azure Database for MariaDB/MySQL/PostgreSQL** můžete povolit jenom na úrovni prostředků.
-
-
 ## <a name="faq---pricing-and-billing"></a>Nejčastější dotazy – ceny a fakturace 
 
-- [Jak mohu sledovat, kdo v organizaci povolil změny v Azure Defenderu v Azure Security Center?](#how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center)
-- [Jaké jsou plány, které nabízí Security Center?](#what-are-the-plans-offered-by-security-center)
-- [Jak pro předplatné povolím Azure Defender?](#how-do-i-enable-azure-defender-for-my-subscription)
-- [Můžu Azure Defender povolit pro podmnožinu serverů v mém předplatném?](#can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription)
-- [Pokud již mám licenci pro program Microsoft Defender pro koncový bod, mohu získat slevu na Azure Defender?](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
-- [Má předplatné Azure Defender pro servery povolené, mám platit za Nespuštěné servery?](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
-- [Budou se mi účtovat počítače bez nainstalovaného agenta Log Analytics?](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
-- [Pokud agent Log Analytics nahlásí do několika pracovních prostorů, bude se mi účtovat dvakrát?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
-- [Pokud agent Log Analytics nahlásí do více pracovních prostorů, je pro všechny z nich dostupná příjem dat 500 MB.](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
-- [Počítá se příjem dat o volném 500 MB pro celý pracovní prostor nebo výhradně pro každý počítač?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
+- [Povolený Azure Security Center zdarma vs Azure Defender](#azure-security-center-free-vs-azure-defender-enabled)
+  - [Jaké jsou výhody povolení programu Azure Defender?](#what-are-the-benefits-of-enabling-azure-defender)
+  - [Nejčastější dotazy – ceny a fakturace](#faq---pricing-and-billing)
+    - [Jak mohu sledovat, kdo v organizaci povolil změny v Azure Defenderu v Security Center?](#how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center)
+    - [Jaké jsou plány, které nabízí Security Center?](#what-are-the-plans-offered-by-security-center)
+    - [Jak pro předplatné povolím Azure Defender?](#how-do-i-enable-azure-defender-for-my-subscription)
+    - [Můžu Azure Defender povolit pro podmnožinu serverů v mém předplatném?](#can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription)
+    - [Pokud již mám licenci pro program Microsoft Defender pro koncový bod, mohu získat slevu na Azure Defender?](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
+    - [Má předplatné Azure Defender pro servery povolené, mám platit za Nespuštěné servery?](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
+    - [Budou se mi účtovat počítače bez nainstalovaného agenta Log Analytics?](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
+    - [Pokud agent Log Analytics nahlásí do několika pracovních prostorů, bude se mi účtovat dvakrát?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
+    - [Pokud agent Log Analytics nahlásí do více pracovních prostorů, je pro všechny z nich dostupná příjem dat 500 MB.](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
+    - [Počítá se příjem dat o volném 500 MB pro celý pracovní prostor nebo výhradně pro každý počítač?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
+  - [Další kroky](#next-steps)
 
 ### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>Jak mohu sledovat, kdo v organizaci povolil změny v Azure Defenderu v Security Center?
 K předplatným Azure může mít několik správců oprávnění ke změně nastavení cen. Chcete-li zjistit, který uživatel provedl změnu, použijte protokol aktivit Azure.
@@ -100,7 +72,7 @@ Pro povolení služby Azure Defender pro vaše předplatné můžete použít n�
 
 |Metoda  |Pokyny  |
 |---------|---------|
-|Azure Security Center stránky Azure Portal|[Povolení Azure Defenderu](#enable-azure-defender)|
+|Azure Security Center stránky Azure Portal|[Povolení Azure Defenderu](enable-azure-defender.md)|
 |REST API|[Rozhraní API pro ceny](/rest/api/securitycenter/pricings)|
 |Azure CLI|[AZ Security Price](/cli/azure/security/pricing)|
 |PowerShell|[Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)|

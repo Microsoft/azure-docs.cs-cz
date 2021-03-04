@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 474bad4c3d7250d93b3e926f6e71da6734d7a4d0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 07a36bb9b9e3baea2136c23208d268c2c196e70f
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702041"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099450"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Monitorování integrity souborů v Azure Security Center
 Naučte se konfigurovat monitorování integrity souborů (FIM) v Azure Security Center pomocí tohoto návodu.
@@ -120,7 +120,7 @@ FIM je k dispozici pouze ze stránek Security Center v Azure Portal. V tuto chv�
 
     - Přístup a zobrazení stavu a nastavení jednotlivých pracovních prostorů
 
-    - ![Ikona plánu upgradu ][4] upgradujte pracovní prostor tak, aby používal Azure Defender. Tato ikona označuje, že se pracovní prostor nebo předplatné nechrání pomocí Azure Defenderu. Pokud chcete používat funkce FIM, musí vaše předplatné chránit Azure Defender. Další informace najdete v tématu [Security Center bezplatné vs. Azure Defender povolený](security-center-pricing.md#security-center-free-vs-azure-defender-enabled).
+    - ![Ikona plánu upgradu ][4] upgradujte pracovní prostor tak, aby používal Azure Defender. Tato ikona označuje, že se pracovní prostor nebo předplatné nechrání pomocí Azure Defenderu. Pokud chcete používat funkce FIM, musí vaše předplatné chránit Azure Defender. Další informace najdete v tématu [Azure Security Center bezplatné vs. Azure Defender povolený](security-center-pricing.md).
 
     - ![Ikona povolit][3] Povolte FIM na všech počítačích v pracovním prostoru a nakonfigurujte možnosti FIM. Tato ikona označuje, že produkt FIM není pro tento pracovní prostor povolen.
 

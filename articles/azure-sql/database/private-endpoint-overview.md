@@ -6,15 +6,15 @@ ms.author: rohitna
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.service: sql-database
 ms.topic: overview
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, fasttrack-edit
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 7bc15b369bfa4964384d4f7910d6953bdfeaa664
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 506982a22fd53dfb4f8f3d94735c11fc491469eb
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094161"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097274"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Privátní odkaz Azure pro Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -61,6 +61,8 @@ Pomocí privátního propojení můžou zákazníci povolit přístup mezi různ
 Klienti se můžou připojit k privátnímu koncovému bodu ze stejné virtuální sítě, partnerské virtuální sítě ve stejné oblasti nebo přes virtuální síť přes připojení k virtuální síti napříč různými oblastmi. Klienti se navíc mohou připojit z místního prostředí pomocí ExpressRoute, privátního partnerského vztahu nebo tunelového propojení VPN. Níže je zjednodušený diagram znázorňující běžné případy použití.
 
  ![Diagram možností připojení][1]
+
+Kromě toho můžou služby, které neběží přímo ve virtuální síti, ale s ní integrovat (například App Service webové aplikace nebo funkce), taky může dosáhnout privátního připojení k databázi. Další informace o tomto konkrétním případu použití najdete v tématu [Webová aplikace s privátním připojením ke scénáři architektury Azure SQL Database](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app) .
 
 ## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network"></a>Otestujte připojení k SQL Database z virtuálního počítače Azure ve stejné virtuální síti.
 
@@ -183,6 +185,7 @@ Základ a příkaz COPY se běžně používá k načtení dat do služby Azure 
 
 - Přehled zabezpečení Azure SQL Database najdete v tématu [zabezpečení databáze](security-overview.md) .
 - Přehled připojení Azure SQL Database najdete v tématu [Architektura připojení k Azure SQL](connectivity-architecture.md) .
+- Může vás také zajímat [Webová aplikace s privátním připojením ke scénáři architektury Azure SQL Database](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app) , která spojuje webovou aplikaci mimo virtuální síť s privátním koncovým bodem databáze.
 
 <!--Image references-->
 [1]: media/quickstart-create-single-database/pe-connect-overview.png

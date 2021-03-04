@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 02292d4559697bc38d47811fe392dc86427515b4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d684311ef959ac13f3be8bac7ffbbb06a741962a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662333"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097699"
 ---
 # <a name="dev-tools-pack-installer-overview"></a>Přehled instalačního programu sady nástrojů pro vývojáře
 
@@ -84,6 +84,8 @@ Instalační program sady nástrojů pro vývojáře je řešení s jedním zast
 
         > [!NOTE]
         > Docker podporuje Docker Desktop na nejnovějších verzích macOS. To znamená aktuální vydání macOS a předchozích dvou verzí. Vzhledem k tomu, že jsou obecně dostupné nové hlavní verze macOS, Docker přestane podporovat nejstarší verzi a podporuje nejnovější verzi macOS (kromě předchozích dvou vydání). Docker Desktop aktuálně podporuje macOS Mojave, macOS Catalina a macOS Big Sur.
+        > 
+        - Instalační program není podporován v Apple M1.
 
 ## <a name="instructions"></a>Pokyny
 
@@ -99,7 +101,7 @@ Instalační program sady nástrojů pro vývojáře je řešení s jedním zast
     
         1. Po stažení přesuňte soubor Dev-Tools-Pack-Installer. app do složky Apps (aplikace).
         
-        1. Kliknutím na Dev-Tools-Pack-Installer. App otevřete Průvodce instalací nástroje.
+        1. Kliknutím na **dev-Tools-Pack-Installer. app** otevřete Průvodce instalací nástroje.
         
         1. Pokud se zobrazí dialogové okno zabezpečení neidentifikovaný vývojář:
         
@@ -123,7 +125,7 @@ Instalační program sady nástrojů pro vývojáře je řešení s jedním zast
                 
             1. Zadáním následujícího textu v terminálu zpřístupníte spustitelný soubor AppImage.
             
-                1. chmod + x dev-Tools-Pack – instalační program. AppImage
+                1. chmod + x **dev-Tools-Pack – instalační program. AppImage**
                 
             1. Do terminálu zadejte následující příkaz pro spuštění instalačního programu
             
@@ -141,11 +143,11 @@ Instalační program sady nástrojů pro vývojáře je řešení s jedním zast
 
 1. Na stránce **instalace instalačního programu sady nástrojů pro vývojáře** klikněte na **Zobrazit licenci** . zobrazí se licenční smlouvy každého softwarového balíčku, který je součástí instalačního programu. Pokud souhlasíte s podmínkami licenční smlouvy, zaškrtněte políčko a klikněte na **Další**.
 
-    ![Obrazovka licenční smlouva v instalačním programu.](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_license_agreements.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-license-agreements.png" alt-text="Obrazovka licenční smlouva v instalačním programu.":::
 
 1. Kliknutím na **prohlášení o zásadách ochrany osobních** údajů zkontrolujte prohlášení Microsoftu o zásadách ochrany osobních údajů. Pokud souhlasíte s podmínkami prohlášení o zásadách ochrany osobních údajů a chcete odeslat diagnostická data společnosti Microsoft, vyberte možnost **Ano** a klikněte na tlačítko **Další**. V opačném případě vyberte možnost **ne** a klikněte na tlačítko **Další**.
 
-    ![V instalačním programu se obrazovka smlouvy prohlášení o zásadách ochrany osobních údajů.](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_privacy_statement.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-privacy-statement.png" alt-text="V instalačním programu se obrazovka smlouvy prohlášení o zásadách ochrany osobních údajů.":::
 
 1. Na stránce **Konfigurovat součásti** vyberte volitelné nástroje, které chcete nainstalovat (ve výchozím nastavení se budou instalovat povinné nástroje).
 
@@ -153,11 +155,11 @@ Instalační program sady nástrojů pro vývojáře je řešení s jedním zast
 
     1. Pokud chcete pokračovat v instalaci, klikněte na **nainstalovat** .
 
-    ![Obrazovka instalačního programu zobrazující dostupné softwarové balíčky.](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_configure_components.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-configure-components.png" alt-text="Obrazovka instalačního programu zobrazující dostupné softwarové balíčky.":::
 
 1. Po úspěšné instalaci všech vybraných součástí Průvodce pokračuje na stránce **dokončení Průvodce instalací** . Kliknutím na tlačítko **Dokončit** ukončíte instalační program.
 
-    ![Obrazovka pro dokončení instalačního programu.](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_finish.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-finish.png" alt-text="Obrazovka pro dokončení instalačního programu.":::
 
 ## <a name="docker-status-check"></a>Kontroler stavu Docker
 
@@ -168,12 +170,12 @@ Pokud se instalační program upozorní na ověření, že je dokovací plocha v
       1. Rozbalte položku skryté ikony hlavního panelu systému:
       
          1. Rozbalte ikonu skrytého hlavního panelu systému, pokud je skrytá:
-         
-            * ![Hlavní panel systému](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/article_images/SystemTray.png)
+
+            :::image type="content" source="./media/dev-tools-installer/system-tray.png" alt-text="Hlavní panel systému.":::
          
          1. Ověřte, že ikona Docker desktopu zobrazuje "Docker Desktop běží":
-         
-            * ![Stav Docker](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/article_images/DockerStatusRunning.png)
+
+            :::image type="content" source="./media/dev-tools-installer/docker-status-running.png" alt-text="Stav Docker.":::
          
          1. Pokud se na hlavním panelu systému nezobrazuje ikona uvedená výše, spusťte z nabídky Start Docker Desktop.
          
@@ -181,4 +183,4 @@ Pokud se instalační program upozorní na ověření, že je dokovací plocha v
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete začít s pokročilým vývojem pro Azure Percept DK, Projděte si [kurz pokročilého vývoje (místní)](./advanced-development-local.md).
+Projděte si [Pokročilé vývojové úložiště Azure Percept](https://github.com/microsoft/azure-percept-advanced-development) a začněte s pokročilým vývojem pro Azure Percept DK.

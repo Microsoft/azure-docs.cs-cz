@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 9b8dc635781c96dcbd7aa423c77f60ff0556bd71
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: fc3774a01665b88ccae2e25ae8382497f8010c35
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634055"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096968"
 ---
 # <a name="continuously-export-security-center-data"></a>Průběžný export Security Center dat
 
@@ -44,7 +44,7 @@ Tento článek popisuje, jak nakonfigurovat průběžný export na Log Analytics
 |Stav vydaných verzí:|Obecná dostupnost (GA)|
 |Stanov|Free|
 |Požadované role a oprávnění:|<ul><li>**Správce zabezpečení** nebo **vlastník** skupiny prostředků</li><li>Oprávnění k zápisu pro cílový prostředek</li><li>Pokud používáte zásady Azure Policy ' DeployIfNotExist ' popsané níže, budete také potřebovat oprávnění k přiřazování zásad.</li></ul>|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov, jiné gov<br>![Yes](./media/icons/yes-icon.png) Čína gov (do centra událostí)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov, jiné gov<br>![Ano](./media/icons/yes-icon.png) Čína gov|
 |||
 
 
@@ -65,7 +65,7 @@ Průběžný export může exportovat následující datové typy, kdykoli se zm
 
 Průběžný export můžete nakonfigurovat ze Security Center stránek v Azure Portal, prostřednictvím REST API Security Center nebo ve velkém měřítku pomocí dodaných Azure Policy šablon. Níže můžete vybrat příslušnou kartu pro podrobnosti.
 
-### <a name="use-the-azure-portal"></a>[**Použití webu Azure Portal**](#tab/azure-portal)
+### <a name="use-the-azure-portal"></a>[**Použití Azure Portal**](#tab/azure-portal)
 
 ### <a name="configure-continuous-export-from-the-security-center-pages-in-azure-portal"></a>Konfigurace průběžného exportu ze stránek Security Center v Azure Portal
 
@@ -171,7 +171,7 @@ Pokud chcete analyzovat Azure Security Center Data v pracovním prostoru Log Ana
 
 ### <a name="log-analytics-tables-and-schemas"></a>Log Analytics tabulek a schémat
 
-Výstrahy a doporučení zabezpečení se ukládají do tabulek *SecurityAlert* a *SecurityRecommendations* . 
+Výstrahy a doporučení zabezpečení se ukládají do tabulek *SecurityAlert* a *SecurityRecommendation* . 
 
 Název Log Analyticsho řešení obsahujícího tyto tabulky závisí na tom, jestli máte povolený Azure Defender: Security (' Security and Audit ') nebo SecurityCenterFree. 
 

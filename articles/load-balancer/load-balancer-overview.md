@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: a514edef1ef1f67fba3efae883ceb46dee249d6e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 14e6990579f61b28c091f18b45a06d1ddcc00e89
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705496"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097529"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
 *Vyrovnávání zatížení* označuje rovnoměrně distribuci zatížení (příchozí síťový provoz) napříč skupinou back-end prostředků nebo serverů. 
 
-Azure Load Balancer funguje ve vrstvě čtyř modelu propojení Open Systems (OSI). Je jedním kontaktním bodem pro klienty. Load Balancer distribuuje příchozí toky, které dorazí na front-end služby Vyrovnávání zatížení do instancí fondu back-endu. Tyto toky jsou podle nakonfigurovaných pravidel vyrovnávání zatížení a sond stavu. Instance fondu back-endu můžou být Azure Virtual Machines nebo instancemi v sadě škálování virtuálního počítače.
+Azure Load Balancer funguje ve vrstvě 4 modelu Open Systems proconnection (OSI). Je jedním kontaktním bodem pro klienty. Nástroj pro vyrovnávání zatížení distribuuje příchozí toky, které dorazí na front-end služby Vyrovnávání zatížení do instancí fondu back-endu. Tyto toky jsou podle nakonfigurovaných pravidel vyrovnávání zatížení a sond stavu. Instance fondu back-endu můžou být Azure Virtual Machines nebo instancemi v sadě škálování virtuálního počítače.
 
 **[Veřejný Nástroj pro vyrovnávání zatížení](./components.md#frontend-ip-configurations)** může poskytovat odchozí připojení virtuálních počítačů v rámci vaší virtuální sítě. Tato připojení se provádí pomocí překladu svých privátních IP adres na veřejné IP adresy. Veřejné nástroje pro vyrovnávání zatížení se používají k vyrovnávání zatížení internetového provozu na vašich virtuálních počítačích.
 
@@ -39,10 +39,20 @@ Azure Load Balancer funguje ve vrstvě čtyř modelu propojení Open Systems (OS
 
 Další informace o jednotlivých součástech nástroje pro vyrovnávání zatížení najdete v tématu [Azure Load Balancer Components](./components.md).
 
-## <a name="why-use-azure-load-balancer"></a>Proč použít Azure Load Balancer?
-Pomocí Standard Load Balancer můžete škálovat aplikace a vytvářet vysoce dostupné služby. Nástroj pro vyrovnávání zatížení podporuje scénáře příchozího i odchozího přenosu. Load Balancer poskytuje nízkou latenci a vysokou propustnost a škáluje až milionů toků pro všechny aplikace TCP a UDP.
+>[!NOTE]
+> Azure pro vaše scénáře poskytuje sadu plně spravovaných řešení pro vyrovnávání zatížení. 
+> * Pokud chcete provést globální směrování na základě DNS **a nemáte požadavky** na ukončení protokolu TLS (Transport Layer Security) ("snižování zátěže SSL"), požadavky na protokol HTTP/HTTPS nebo zpracování aplikační vrstvy, přečtěte si [Traffic Manager](../traffic-manager/traffic-manager-overview.md). 
+> * Pokud chcete vyrovnávat zatížení mezi servery v oblasti aplikační vrstvy, přečtěte si [Application Gateway](../application-gateway/overview.md)
+> * Pokud potřebujete optimalizovat globální směrování webového provozu a optimalizovat výkon a spolehlivost koncového uživatele nejvyšší úrovně prostřednictvím rychlého globálního převzetí služeb při selhání, přečtěte si [část přední dveře](../frontdoor/front-door-overview.md) .
+> 
+> Vaše ucelené scénáře můžou v případě potřeby těžit z kombinace těchto řešení.
+> Porovnání možností vyrovnávání zatížení Azure najdete v tématu [Přehled možností vyrovnávání zatížení v Azure](/azure/architecture/guide/technology-choices/load-balancing-overview).
 
-Mezi klíčové scénáře, které můžete provádět pomocí Standard Load Balancer patří:
+
+## <a name="why-use-azure-load-balancer"></a>Proč použít Azure Load Balancer?
+Pomocí Azure Load Balancer můžete škálovat aplikace a vytvářet vysoce dostupné služby. Nástroj pro vyrovnávání zatížení podporuje scénáře příchozího i odchozího přenosu. Load Balancer poskytuje nízkou latenci a vysokou propustnost a škáluje až milionů toků pro všechny aplikace TCP a UDP.
+
+Mezi klíčové scénáře, které můžete provádět pomocí Azure Standard Load Balancer patří:
 
 - Vyrovnávání zatížení **[interního](./quickstart-load-balancer-standard-internal-portal.md)** a **[externího](./quickstart-load-balancer-standard-public-portal.md)** provozu do virtuálních počítačů Azure.
 
@@ -56,7 +66,7 @@ Mezi klíčové scénáře, které můžete provádět pomocí Standard Load Bal
 
 - Povolí podporu pro **[Vyrovnávání zatížení](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** **[IPv6](../virtual-network/ipv6-overview.md)**.
 
-- Standard Load Balancer poskytuje multidimenzionální metriky prostřednictvím [Azure monitor](../azure-monitor/overview.md).  Tyto metriky je možné filtrovat, seskupovat a rozdělit pro danou dimenzi.  Poskytují aktuální a historické poznatky o výkonu a stavu vaší služby. [Přehledy pro Azure Load Balancer](./load-balancer-insights.md) nabízí předkonfigurovaný řídicí panel s užitečnými vizualizacemi pro tyto metriky.  Podporuje se taky Resource Health. Další podrobnosti najdete v **[diagnostice Standard Load Balancer](load-balancer-standard-diagnostics.md)** .
+- Load Balancer úrovně Standard poskytuje multidimenzionální metriky prostřednictvím [Azure monitor](../azure-monitor/overview.md).  Tyto metriky je možné filtrovat, seskupovat a rozdělit pro danou dimenzi.  Poskytují aktuální a historické poznatky o výkonu a stavu vaší služby. [Přehledy pro Azure Load Balancer](./load-balancer-insights.md) nabízí předkonfigurovaný řídicí panel s užitečnými vizualizacemi pro tyto metriky.  Podporuje se taky Resource Health. Další podrobnosti najdete v **[diagnostice nástroje Load Balancer úrovně Standard](load-balancer-standard-diagnostics.md)** .
 
 - Vyrovnávání zatížení služeb na **[několika portech, několika IP adresách nebo obojím](./load-balancer-multivip-overview.md)**.
 
@@ -66,14 +76,21 @@ Mezi klíčové scénáře, které můžete provádět pomocí Standard Load Bal
 
 ### <a name="secure-by-default"></a><a name="securebydefault"></a>Zabezpečení ve výchozím nastavení
 
-Standard Load Balancer je ve svém jádru postavená na modelu zabezpečení nulové důvěryhodnosti sítě. Standard Load Balancer je ve výchozím nastavení zabezpečená a součástí vaší virtuální sítě. Virtuální síť je privátní a izolovaná síť.  To znamená, že standardní nástroje pro vyrovnávání zatížení a standardní veřejné IP adresy se do příchozích toků zavřou, pokud je neotevřou skupiny zabezpečení sítě. Skupin zabezpečení sítě se používají k explicitnímu povolení povoleného provozu.  Pokud nemáte NSG v podsíti nebo síťové kartě prostředku virtuálního počítače, přenosy nepovolují přístup k tomuto prostředku. Další informace o skupin zabezpečení sítě a o tom, jak je použít pro váš scénář, najdete v tématu [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md).
-Základní Load Balancer je ve výchozím nastavení otevřený pro Internet. Load Balancer navíc neukládají zákaznická data.
+* Load Balancer úrovně Standard je založený na modelu zabezpečení sítě s nulovým vztahem důvěryhodnosti.
+
+* Standard Load Balancer je ve výchozím nastavení zabezpečená a součástí vaší virtuální sítě. Virtuální síť je privátní a izolovaná síť.  
+
+* Standardní nástroje pro vyrovnávání zatížení a standardní veřejné IP adresy se zavřou na příchozí připojení, pokud je neotevřou skupiny zabezpečení sítě. Skupin zabezpečení sítě se používají k explicitnímu povolení povoleného provozu.  Pokud nemáte NSG v podsíti nebo síťové kartě svého prostředku virtuálního počítače, přenos nemá povolený přístup k tomuto prostředku. Další informace o skupin zabezpečení sítě a o tom, jak je použít pro váš scénář, najdete v tématu [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md).
+
+* Služba Load Balancer úrovně Basic je ve výchozím nastavení otevřená pro Internet. 
+
+* Load Balancer neukládá zákaznická data.
 
 ## <a name="pricing-and-sla"></a>Ceny a smlouvy SLA
 
-Informace o cenách Standard Load Balancer najdete v tématu [Load Balancer ceny](https://azure.microsoft.com/pricing/details/load-balancer/).
+Informace o cenách za službu Load Balancer úrovně Standard najdete v tématu [ceny služby Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/).
 Load Balancer úrovně Basic se nabízí zdarma.
-Load Balancer najdete v tématu [SLA](https://aka.ms/lbsla). Základní Load Balancer nemá žádnou smlouvu SLA.
+Podívejte se [na smlouvu SLA pro nástroj pro vyrovnávání zatížení](https://aka.ms/lbsla). Nástroj pro vyrovnávání zatížení úrovně Basic nemá žádnou smlouvu SLA.
 
 ## <a name="whats-new"></a>Co je nového
 

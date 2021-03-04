@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: 062956e4895287d943cfffa0e8e078ca8412dafc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-ms.translationtype: HT
+ms.openlocfilehash: 5bf486da8fc17b08c4e4cc3abf163312426d5f72
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186795"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096356"
 ---
->[!NOTE] 
->Informace o zobrazení nebo odstranění osobních údajů najdete v tématu věnovaném [žádostem subjektů údajů Azure podle GDPR](/microsoft-365/compliance/gdpr-dsr-azure). Další informace o GDPR najdete v [sekci GDPR na portálu Service Trust](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
+> [!NOTE]
+> Informace o zobrazení nebo odstranění osobních údajů najdete v tématu věnovaném [žádostem subjektů údajů Azure podle GDPR](/microsoft-365/compliance/gdpr-dsr-azure). Další informace o GDPR najdete v [části GDPR na webu Microsoft Trust Center](https://www.microsoft.com/trust-center/privacy/gdpr-overview) a v [části GDPR portálu pro důvěryhodnost služby](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).

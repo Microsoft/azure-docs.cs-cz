@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 8d150228be2cf6deff3bc2fd0a0599cca70d24ac
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8dda18271de9b7d65246f0882ee7a68191031c05
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662381"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096611"
 ---
 # <a name="connect-to-your-azure-percept-dk-over-ssh"></a>Připojení k Azure Percept DK přes SSH
 
@@ -25,6 +25,7 @@ Podle následujících pokynů nastavte připojení SSH ke službě Azure Percep
     - Pokud hostitelský [počítač používá systém Windows, je k](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) dismístě platný klient SSH a bude použit v rámci této příručky.
     - Pokud hostitelský počítač používá Linux nebo OS X, jsou služby SSH součástí těchto operačních systémů a lze je spustit bez samostatné klientské aplikace. Další informace o tom, jak spustit služby SSH, najdete v dokumentaci k produktu s operačním systémem.
 - Azure Percept DK
+- Nastavení přihlašovacího účtu SSH během [prostředí Azure PERCEPT DK pro zprovoznění](./quickstart-percept-dk-set-up.md)
 
 ## <a name="initiate-the-ssh-connection"></a>Iniciujte připojení SSH.
 
@@ -48,15 +49,8 @@ Podle následujících pokynů nastavte připojení SSH ke službě Azure Percep
 
     :::image type="content" source="./media/how-to-ssh-into-percept-dk/ssh-putty.png" alt-text="Obrazu.":::
 
-1. Přihlaste se k terminálu pro výstup. Pokud během procesu OOBE nastavíte uživatelské jméno a heslo SSH, po zobrazení výzvy zadejte přihlašovací údaje. V opačném případě zadejte následující:  
-
-    1. přihlášení jako: root
-    1. Heslo: p@ssw0rd
-
-    :::image type="content" source="./media/how-to-ssh-into-percept-dk/putty-terminal.png" alt-text="Okno terminálu pro výstup.":::  
+1. Přihlaste se k terminálu pro výstup pomocí uživatelského jména a hesla SSH vytvořeného během připojování.
 
 ## <a name="next-steps"></a>Další kroky
 
 Po úspěšném připojení k Azure Percept DK prostřednictvím protokolu SSH můžete provádět různé úlohy, včetně řešení potíží, aktualizací USB a spuštění nástroje DiagTool nebo SoftAP.
-
-

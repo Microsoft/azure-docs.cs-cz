@@ -166,6 +166,10 @@ items:
             href: sensitivity-insights.md
           - name: Zobrazení přehledů přípon souborů
             href: file-extension-insights.md
+      - name: Zabezpečení & sítě
+        items:
+          - name: Správa privátních koncových bodů
+            href: catalog-private-link.md
   - name: Reference
     items:
       - name: Podporované klasifikace

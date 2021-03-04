@@ -7,30 +7,28 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 451f239a0cad22ad61b513161163074b9b47e2d0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d850b47078f504b8ccb23d8c0a43811e99dc71d8
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662637"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098345"
 ---
 # <a name="azure-percept-studio-overview"></a>Přehled služby Azure Percept Studio
 
 Azure Percept Studio je jedním spouštěcím bodem pro vytváření modelů a řešení na hraničních AI. Azure Percept Studio vám umožňuje zjišťovat a doplňovat pracovní postupy s asistencí, které usnadňují integraci hardwaru s funkcí Edge AI a výkonné cloudové služby Azure AI a IoT.
 
-## <a name="features"></a>Funkce
-
 V studiu vidíte zařízení s funkcí Edge AI jako koncové body pro shromažďování počátečních a probíhajících školicích dat a také cílů nasazení pro iterace modelu. Přístup k zařízením a školicím datům umožňuje rychlé vytváření prototypů a vývoj modelů AI v případě scénářů pro [vize](./tutorial-nocode-vision.md) a [rozpoznávání řeči](./tutorial-no-code-speech.md) .
 
-![Tok projektu z domovské stránky v Azure Percept studiu.](./media/overview-azure-percept-studio/percept-studio-flow.png)
+:::image type="content" source="./media/overview-azure-percept-studio/percept-studio-flow.png" alt-text="Tok z domovské stránky v Azure Percept studiu.":::
 
 Pracovní postupy ve službě Azure Percept Studio integrují mnoho základních služeb Azure AI a IoT, jako jsou Azure IoT Hub, Custom Vision, Speech Studio a Azure ML Services, abyste je mohli využít k vytvoření uceleného řešení bez významného dřívějšího vědomí. Pokud už tyto služby Azure znáte, můžete se také připojit k existujícím prostředkům a upravovat je mimo Azure Percept Studio.
 
-![Tok zařízení v Azure Percept studiu.](./media/overview-azure-percept-studio/device-flow.png)
+:::image type="content" source="./media/overview-azure-percept-studio/device-flow.png" alt-text="Tok zařízení v Azure Percept studiu.":::
 
 Bez ohledu na to, jestli jste začátečník nebo pokročilejší model AI a vývojář řešení, pracujete na Prototype nebo přejdete do produkčního řešení, pro Speech nebo Vision Edge AI, nabízí Azure Percept Studio přístup k pracovním postupům, které můžete použít ke snížení tření při sestavování řešení AI pro Edge.
 
-![Tok zachycení obrázku v Azure Percept studiu.](./media/overview-azure-percept-studio/image-flow.png)
+:::image type="content" source="./media/overview-azure-percept-studio/image-flow.png" alt-text="Tok zachycení obrázku v Azure Percept studiu.":::
 
 ## <a name="next-steps"></a>Další kroky
 

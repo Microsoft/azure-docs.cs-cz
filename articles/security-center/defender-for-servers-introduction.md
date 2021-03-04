@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d9aaa00527462f5bbb999ddb76e125d1dfbee7a4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 36c32c4eefdaa1c7604f2b0f19e98cf6a6d4310d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701990"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096526"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Seznámení s Azure Defenderem pro servery
 
@@ -97,4 +97,4 @@ Související materiály najdete v následujících článcích:
 - Bez ohledu na to, jestli je výstraha vygenerovaná Security Center nebo přijatá Security Center z jiného bezpečnostního produktu, můžete ji exportovat. Pokud chcete exportovat výstrahy do Azure Sentinel, všech SIEM třetích stran nebo jakýchkoli jiných externích nástrojů, postupujte podle pokynů v tématu [Export výstrah do Siem](continuous-export.md).
 
 - > [!div class="nextstepaction"]
-    > [Povolení Azure Defenderu](security-center-pricing.md#enable-azure-defender)
+    > [Povolení Azure Defenderu](enable-azure-defender.md)

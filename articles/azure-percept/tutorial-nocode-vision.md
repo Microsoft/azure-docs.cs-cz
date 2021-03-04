@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 54d4f1fe983cf20b734351754bb8eba191894dbc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6de86cbc065b5352b3b643708dd55c6856b37dd7
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664703"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097903"
 ---
 # <a name="create-a-no-code-vision-solution-in-azure-percept-studio"></a>Vytvoření řešení pro vize bez kódu v Azure Percept studiu
 
@@ -23,6 +23,7 @@ Azure Percept Studio umožňuje vytvářet a nasazovat vlastní řešení pro po
 - Označení školicích imagí v [Custom Vision](https://www.customvision.ai/)
 - Výuka vlastního modelu detekce nebo klasifikace objektů
 - Nasazení modelu do DevKit
+- Vylepšení modelu nastavením přeškolení
 
 Tento kurz je vhodný pro vývojáře s malým množstvím bez použití AI a stejně jako Začínáme se službou Azure Percept.
 
@@ -30,15 +31,13 @@ Tento kurz je vhodný pro vývojáře s malým množstvím bez použití AI a st
 
 - Azure Percept DK (DevKit)
 - [Předplatné Azure](https://azure.microsoft.com/free/)
-- Integrované prostředí (OOBE): připojili jste své DevKit k síti Wi-Fi, vytvořili IoT Hub a připojili jste DevKit k IoT Hub
+- Prostředí pro instalaci Azure Percept DK: připojili jste DevKit k síti Wi-Fi, vytvořili IoT Hub a připojili jste DevKit k IoT Hub
 
 ## <a name="create-a-vision-prototype"></a>Vytvoření prototypu vize
 
 1. Spusťte prohlížeč a navštivte [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819).
 
-1. Na stránce Přehled klikněte na kartu **ukázky & kurzy** .
-
-    :::image type="content" source="./media/tutorial-nocode-vision/percept-studio-overview-inline.png" alt-text="Obrazovka s přehledem Azure Percept Studio" lightbox="./media/tutorial-nocode-vision/percept-studio-overview.png":::
+1. Na stránce Přehled klikněte na kartu **ukázky & kurzy** .  :::image type="content" source="./media/tutorial-nocode-vision/percept-studio-overview-inline.png" alt-text="Obrazovka s přehledem Azure Percept Studio" lightbox="./media/tutorial-nocode-vision/percept-studio-overview.png":::
 
 1. V části **kurzy a ukázky pro vize** klikněte na **vytvořit prototyp vize**.
 
@@ -142,11 +141,23 @@ Po zavření tohoto okna se můžete kdykoli vrátit a upravit projekt vize klik
 
 :::image type="content" source="./media/tutorial-nocode-vision/vision-project-inline.png" alt-text="Stránka projektu vize" lightbox="./media/tutorial-nocode-vision/vision-project.png":::
 
+## <a name="improve-your-model-by-setting-up-retraining"></a>Vylepšení modelu nastavením přeškolení
+
+Jakmile provedete svůj model a nasadíte ho do zařízení, můžete zvýšit výkon modelu nastavením parametrů přeškolení pro zachycení více školicích dat. Tato funkce se používá ke zlepšení výkonu vycvičeného modelu tím, že poskytuje možnost zachycení imagí na základě rozsahu pravděpodobnosti. Můžete například nastavit, aby zařízení zachytávání pouze školicích snímků, když je pravděpodobnost nízká. Tady je několik [dalších pokynů](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier) pro přidání dalších imagí a vyvážení školicích dat.
+
+1. Pokud chcete nastavit opětovné školení, vraťte se do **projektu** a pak na **Souhrn projektu** .
+1. Na kartě **zachycení obrázku** vyberte **Automatické zachycení obrázků** a **nastavte rekurzi**.
+1. Zaškrtnutím políčka **Automatické zachycení obrázku** nastavte automatický záznam obrázků pro shromažďování velkého množství imagí najednou.
+1. Vyberte preferovanou rychlost zpracování obrazu v části **rychlost zachycení** a celkový počet imagí, které chcete shromažďovat v rámci **cíle**.
+1. V části **Nastavení rekurze** vyberte iteraci, pro kterou chcete zachytit více školicích dat, a pak vyberte rozsah pravděpodobnosti. Do projektu se nahrají jenom obrázky, které splňují míru pravděpodobnosti.
+
+    :::image type="content" source="./media/tutorial-nocode-vision/vision-image-capture.png" alt-text="zachycení bitové kopie.":::
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud jste pro tento kurz vytvořili nový prostředek Azure a už nechcete vyvíjet ani používat řešení Vision, provedete následující kroky a odstraníte svůj prostředek:
 
-1. Přejděte na [Azure Portal](https://ms.portal.azure.com/#home).
+1. Přejděte na [Azure Portal](https://ms.portal.azure.com/).
 1. Klikněte na **všechny prostředky**.
 1. Klikněte na zaškrtávací políčko vedle prostředku vytvořeného v tomto kurzu. Typ prostředku bude uveden jako **Cognitive Services**.
 1. Klikněte na ikonu **Odstranit** v horní části obrazovky.

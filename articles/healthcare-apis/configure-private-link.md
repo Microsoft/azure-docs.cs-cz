@@ -6,18 +6,23 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 10/12/2020
-ms.author: matjazl
-ms.openlocfilehash: cdb41f12e8f050e3c74fccddb392d7a816c15b2f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 03/03/2021
+ms.author: zxue
+ms.openlocfilehash: 5e24c7666fd2ece7d284b7705bc481866d7604de
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621874"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097036"
 ---
 # <a name="configure-private-link"></a>Konfigurace privátního odkazu
 
 Privátní odkaz vám umožní přístup k Azure API pro FHIR přes soukromý koncový bod, síťové rozhraní, které vás připojuje soukromě a bezpečně pomocí privátní IP adresy z vaší virtuální sítě. Pomocí privátního odkazu můžete bezpečně přistupovat k našim službám z vaší virtuální sítě jako služby First Service, aniž byste museli projít veřejnou službou DNS. Tento článek vás provede vytvořením, otestováním a správou privátního koncového bodu pro Azure API pro FHIR.
+
+>[!Note]
+>Privátní odkaz ani rozhraní Azure API pro FHIR se nedají přesunout z jedné skupiny prostředků nebo předplatného na jiné, jakmile je povolené privátní propojení. Pokud chcete přesunout, nejprve odstraňte privátní odkaz a pak přesuňte rozhraní API Azure pro FHIR a po dokončení přesunu vytvořte nový privátní odkaz. Vyhodnotit potenciální důsledky zabezpečení před odstraněním privátního propojení.
+>
+>Pokud je pro Azure API pro FHIR povolený export protokolů auditu a metriky, aktualizujte nastavení exportu prostřednictvím nastavení diagnostiky z portálu.
 
 ## <a name="prerequisites"></a>Požadavky
 

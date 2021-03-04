@@ -7,24 +7,26 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: bd366c05be1b9d5b2a1bff238cfbaaa9dd290508
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f40d9a1285f1eb625a9e33387f2cc9fafcbc3322
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662485"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098396"
 ---
 # <a name="advanced-development-with-azure-percept"></a>Pokročilý vývoj s využitím Azure Percept
 S Azure Percept můžou vývojáři softwaru a odborníci přes data používat pokročilé pracovní postupy kódu pro správu životního cyklu AI. Díky rostoucí Open Source knihovně můžou pomocí ukázek začít pracovat s cestou pro vývoj AI a vytvářet řešení připravená pro produkci.
 
 ## <a name="get-started-with-the-advanced-development-tutorials"></a>Začínáme s kurzy pro pokročilé vývojové prostředí
 
-Tento [Poznámkový blok Jupyter](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/Transferlearningusing_SSDLiteV2%20Model.ipynb) provádí přenos s použitím předem připraveného TensorFlow modelu (MobileNetSSDV2Lite) na AzureML v Pythonu s vlastní datovou sadou k detekci bowls. K dispozici jsou dvě možnosti kurzu, které vám pomohou při práci s poznámkovým blokem a k učení a nasazení Bowl rozpoznávání do projektu Santa Cruz DevKit:
+Seznamte se se všemi dostupnými [modely AI pro Azure Percept](./overview-ai-models.md).
 
-- [Vývoj pro Cloud](./advanced-development-cloud.md): v tomto kurzu se Poznámkový blok spouští na [portálu Azure Machine Learning](https://ml.azure.com) se vzdálenou výpočetní instancí.
+Podrobné pokyny, kurzy a příklady pro tyto věci najdete v tématu [Azure PERCEPT DK Advanced Development GitHub](https://github.com/microsoft/azure-percept-advanced-development) .
 
-- [Místní vývoj](./advanced-development-local.md): v tomto kurzu se Poznámkový blok spouští lokálně v rámci vs Code se vzdálenou výpočetní instancí.
+* Zavedení vlastního modelu AI do zařízení
+* Aktualizace modelu, který už podporujeme s učením přenosu
+* A další
 
 ## <a name="next-steps"></a>Další kroky
 
-Seznamte se se všemi dostupnými [modely AI pro Azure Percept](./overview-ai-models.md).
+Seznamte se se všemi dostupnými [modely AI pro Azure Percept](./overview-ai-models.md). Pokud žádný z těchto modelů nevyhovuje vašim potřebám, můžete použít pokročilou jízdu kódu k převedení vlastního modelu nebo počítačového kanálu do Percept DK, a pokud se domníváte, že by pomohly ostatní, otevřete žádost o získání dat.

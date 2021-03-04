@@ -6,13 +6,13 @@ ms.service: marketplace
 ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 01/28/2021
-ms.openlocfilehash: 786ecbf553ace6a90515347e8138eeb6e022589b
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/22/2021
+ms.openlocfilehash: 7c02c41379cfb886fd7e6f84486d815d3cdbfb5b
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063092"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097172"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Soukromé nabídky na komerčním webu Microsoft Marketplace
 
@@ -22,11 +22,11 @@ Soukromé nabídky, nazývané také soukromé plány, umožňují vydavatelům 
 
 Když vytvoříte soukromé nabídky, můžou vydavatelé soukromě nabídnout přizpůsobená řešení cílovým zákazníkům s možnostmi, které podniky potřebují:
 
-- _Vysjednané ceny_ umožňují vydavatelům rozšířené slevy a ceny mimo seznam z veřejně dostupných nabídek.
-- _Soukromé podmínky a ujednání_ umožňují vydavatelům přizpůsobit podmínky a ujednání na konkrétního zákazníka.
-- _Specializované konfigurace_ umožňují vydavatelům přizpůsobit své Virtual Machines, aplikace Azure a software jako službu (SaaS) pro potřeby jednotlivých zákazníků. Tato možnost také umožňuje vydavatelům poskytovat přístup ke verzi Preview k novým funkcím produktu před jejich spuštěním pro všechny zákazníky.
+- *Vysjednané ceny* umožňují vydavatelům rozšířené slevy a ceny mimo seznam z veřejně dostupných nabídek.
+- *Soukromé podmínky a ujednání* umožňují vydavatelům přizpůsobit podmínky a ujednání na konkrétního zákazníka.
+- *Specializované konfigurace* umožňují vydavatelům přizpůsobit své Virtual Machines, aplikace Azure a software jako službu (SaaS) pro potřeby jednotlivých zákazníků. Tato možnost také umožňuje vydavatelům poskytovat přístup ke verzi Preview k novým funkcím produktu před jejich spuštěním pro všechny zákazníky.
 
-Soukromé nabídky umožňují vydavatelům využít výhod škálování a globální dostupnosti veřejného webu Marketplace s flexibilitou a řízením potřebnými k vyjednání a doručování vlastních obchodů a konfigurací. Podniky si teď můžou koupit a prodávat způsobem, který očekávají 
+Soukromé nabídky umožňují vydavatelům využít výhod škálování a globální dostupnosti veřejného webu Marketplace s flexibilitou a řízením potřebnými k vyjednání a doručování vlastních obchodů a konfigurací. Podniky si teď můžou koupit a prodávat způsobem, který očekávají.
 
 ## <a name="create-private-offers-using-plans"></a>Vytváření privátních nabídek pomocí plánů
 
@@ -41,7 +41,7 @@ Soukromé plány jsou k dispozici pro následující typy nabídek:
 - Spravovaná služba
 - Nabídky SaaS
 
-Soukromé plány jsou komponenty nabídky a jsou viditelné pouze cílovými zákazníky. Soukromé plány jsou viditelné jenom pro cílové zákazníky.  Soukromé plány je možné zpřístupnit zákazníkům v globálním i Azure Government Azure.
+Soukromé plány jsou komponenty nabídky a jsou viditelné pouze cílovými zákazníky. Soukromé plány jsou viditelné jenom pro cílové zákazníky. Soukromé plány je možné zpřístupnit zákazníkům v globálním i Azure Government Azure.
 
 Privátní plány můžou znovu použít základní Image nebo metadata nabídky, která už jsou publikovaná pro veřejný plán. Tato možnost umožňuje vydavatelům vytvořit více soukromých variant veřejné nabídky bez nutnosti publikování více verzí stejné základní image a metadat nabídky. Pro virtuální počítače Azure a aplikace Azure nabízí jenom v případě, že privátní plán sdílí základní image s veřejným plánem, všechny změny základní image nabídky se šíří napříč všemi veřejnými a soukromými plány pomocí této základní image.
 
@@ -70,13 +70,12 @@ Po přihlášení k Azure Portal můžou zákazníci pomocí těchto kroků vybr
 
 Soukromé nabídky se také zobrazí ve výsledcích vyhledávání a mohou být nasazeny prostřednictvím příkazového řádku a šablony Azure Resource Manager, stejně jako jakékoli jiné nabídky.
 
-![[Soukromé nabídky]](./media/marketplace-publishers-guide/private-offer.png)
+[![[Veřejné nabídky se zobrazují ve výsledcích hledání.]](media/marketplace-publishers-guide/private-offer.png)](media/marketplace-publishers-guide/private-offer.png#lightbox)
 
 Ve výsledcích hledání se zobrazí také soukromé nabídky. Stačí vyhledat **soukromou** badge.
 
 >[!Note]
 >Soukromé nabídky nejsou podporovány u předplatných vytvořených prostřednictvím prodejce programu Cloud Solution Provider (CSP).
-
 
 <!---
 ## Next steps

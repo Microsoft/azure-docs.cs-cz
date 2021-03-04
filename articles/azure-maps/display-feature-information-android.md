@@ -3,21 +3,24 @@ title: Zobrazit informace o funkcích v nástrojích pro mapování Androidu | M
 description: Naučte se zobrazovat informace, když uživatelé komunikují s funkcemi mapy. Pomocí Android SDK Azure Maps můžete zobrazit informační zprávy a jiné typy zpráv.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 08/08/2019
+ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 4e84bd821d53048b134db635c7ec541db74fbf11
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: b9926d5d6a70d959c0baacd9602341bb69abe924
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047705"
+ms.locfileid: "102097240"
 ---
 # <a name="display-feature-information"></a>Zobrazení informací o funkci
 
 Prostorová data jsou často reprezentovaná pomocí bodů, čar a mnohoúhelníků. Tato data často obsahují informace o metadatech, které jsou k ní přidružené. Například bod může představovat umístění restaurace a metadata o této restauraci může být jeho jméno, adresa a typ potravin, který IT oddělení obsluhuje. Tato metadata lze přidat jako vlastnosti pro vlastnost injson `Feature` . Následující kód vytvoří jednoduchou funkci Point s `title` vlastností, která má hodnotu "Hello World!".
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source and add it to the map.
@@ -34,9 +37,32 @@ feature.addStringProperty("title", "Hello World!");
 source.add(feature);
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a point feature.
+val feature = Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64))
+
+//Add a property to the feature.
+feature.addStringProperty("title", "Hello World!")
+
+//Create a point feature, pass in the metadata properties, and add it to the data source.
+source.add(feature)
+```
+
+::: zone-end
+
 Způsoby, jak vytvořit a přidat data na mapu, najdete v dokumentaci k [Vytvoření zdroje dat](create-data-source-android-sdk.md) .
 
 Když uživatel komunikuje s funkcí na mapě, můžou se události použít k reakci na tyto akce. Běžným scénářem je zobrazení zprávy z vlastností metadat funkce, se kterou uživatel pracuje. `OnFeatureClick`Událost je hlavní událost, která se používá k detekci, kdy uživatel klepne na funkci na mapě. K dispozici je také `OnLongFeatureClick` událost. Při přidávání `OnFeatureClick` události do mapy může být omezena na jednu vrstvu předáním ID vrstvy, na kterou se omezuje. Pokud není předáno žádné ID vrstvy, klepněte na mapě na libovolné funkci, bez ohledu na to, ve které vrstvě se nachází, by tato událost mohla vyvolat. Následující kód vytvoří vrstvu symbolů pro vykreslení dat bodů na mapě, poté přidá `OnFeatureClick` událost a omezí ji na tuto vrstvu symbolů.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a symbol and add it to the map.
@@ -52,9 +78,31 @@ map.events.add((OnFeatureClick) (features) -> {
 }, layer.getId());    //Limit this event to the symbol layer.
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a symbol and add it to the map.
+val layer = SymbolLayer(source)
+map.layers.add(layer)
+
+//Add a feature click event to the map.
+map.events.add(OnFeatureClick { features: List<Feature> ->
+    //Retrieve the title property of the feature as a string.
+    val msg = features[0].getStringProperty("title")
+
+    //Do something with the message.
+}, layer.getId()) //Limit this event to the symbol layer.
+```
+
+::: zone-end
+
 ## <a name="display-a-toast-message"></a>Zobrazit informační zprávy
 
 Zpráva informační zprávy je jedním z nejjednodušších způsobů zobrazení informací uživateli a je k dispozici ve všech verzích Androidu. Nepodporuje žádný typ vstupu uživatele a zobrazuje se jenom po krátkou dobu. Pokud chcete uživateli rychle informovat o tom, co se na něj klepnuli, může být informační zpráva vhodná. Následující kód ukazuje, jak lze v události použít informační zprávy `OnFeatureClick` .
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Add a feature click event to the map.
@@ -67,7 +115,24 @@ map.events.add((OnFeatureClick) (features) -> {
 }, layer.getId());    //Limit this event to the symbol layer.
 ```
 
-![Animace používané funkce a zobrazená zpráva informační zprávy](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Add a feature click event to the map.
+map.events.add(OnFeatureClick { features: List<Feature> ->
+    //Retrieve the title property of the feature as a string.
+    val msg = features[0].getStringProperty("title")
+
+    //Display a toast message with the title information.
+    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+}, layer.getId()) //Limit this event to the symbol layer.
+```
+
+::: zone-end
+
+![Animace používané funkce a zobrazená zpráva informační zprávy](media/display-feature-information-android/symbol-layer-click-toast-message.gif)
 
 Kromě informačních zpráv existuje mnoho dalších způsobů, jak prezentovat vlastnosti metadat funkce, jako například:
 
@@ -104,6 +169,8 @@ Azure Maps Android SDK poskytuje `Popup` třídu, která usnadňuje vytváření
 ```
 
 Za předpokladu, že výše uvedené rozložení je uloženo v souboru s názvem `popup_text.xml` ve `res -> layout` složce aplikace, následující kód vytvoří automaticky otevírané okno, přidá ho do mapy. Při kliknutí na funkci `title` se tato vlastnost zobrazí v `popup_text.xml` rozložení s použitím dolního středu rozložení, které je ukotveno na určenou pozici na mapě.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a popup and add it to the map.
@@ -144,8 +211,54 @@ map.events.add((OnFeatureClick)(feature) -> {
     //Open the popup.
     popup.open();
 });
-
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a popup and add it to the map.
+val popup = Popup()
+map.popups.add(popup)
+
+map.events.add(OnFeatureClick { feature: List<Feature> ->
+    //Get the first feature and it's properties.
+    val f = feature[0]
+    val props = f.properties()
+
+    //Retrieve the custom layout for the popup.
+    val customView: View = LayoutInflater.from(this).inflate(R.layout.popup_text, null)
+
+    //Access the text view within the custom view and set the text to the title property of the feature.
+    val tv: TextView = customView.findViewById(R.id.message)
+    tv.text = props!!["title"].asString
+
+    //Get the coordinates from the clicked feature and create a position object.
+    val c: List<Double> = (f.geometry() as Point?).coordinates()
+    val pos = Position(c[0], c[1])
+
+    //Set the options on the popup.
+    popup.setOptions( 
+        //Set the popups position.
+        position(pos),  
+
+        //Set the anchor point of the popup content.
+        anchor(AnchorType.BOTTOM),  
+
+        //Set the content of the popup.
+        content(customView) 
+
+        //Optionally, hide the close button of the popup.
+        //, closeButton(false)
+    )
+
+    //Open the popup.
+    popup.open()
+})
+```
+
+::: zone-end
 
 Následující snímek obrazovky ukazuje automaticky otevíraná okna, která se zobrazují při kliknutí na funkce a při přesunu do jejich zadaného umístění na mapě.
 

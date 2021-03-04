@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: bc54cc8dfc34db8aa88690c03ef0b18991e60776
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 16379380fc35bb2355c496dc857e9de3b41347f9
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797114"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096900"
 ---
 # <a name="the-azure-defender-dashboard"></a>Řídicí panel Azure Defender
 
@@ -33,11 +33,11 @@ Přístup k řídicímu panelu Azure Defenderu získáte tak, že v nabídce Sec
 
 1. **Pokrytí v Azure Defenderu** – tady vidíte typy prostředků, které jsou ve vašem předplatném a mají nárok na ochranu pomocí Azure Defenderu. Ať už je to důležité, budete mít možnost upgradovat. Pokud chcete upgradovat všechny možné opravňující prostředky, vyberte možnost **upgradovat vše**.
 
-1. **Oblast výstrahy zabezpečení** – když Azure Defender detekuje hrozbu v jakékoli oblasti vašeho prostředí, vygeneruje výstrahu. Tyto výstrahy popisují podrobnosti o ovlivněných prostředcích, navrhovaných krocích pro nápravu a v některých případech možnost aktivovat aplikaci logiky v reakci. Když vyberete libovolné místo v tomto grafu, otevře se **Stránka výstrahy zabezpečení**.
+2. **Výstrahy zabezpečení** – když Azure Defender detekuje hrozbu v jakékoli oblasti vašeho prostředí, vygeneruje výstrahu. Tyto výstrahy popisují podrobnosti o ovlivněných prostředcích, navrhovaných krocích pro nápravu a v některých případech možnost aktivovat aplikaci logiky v reakci. Když vyberete libovolné místo v tomto grafu, otevře se **Stránka výstrahy zabezpečení**.
 
-1. **Pokročilá ochrana** – Azure Defender zahrnuje mnoho pokročilých funkcí ochrany před internetovými útoky pro virtuální počítače, databáze SQL, kontejnery, webové aplikace, síť a další. V této části rozšířené ochrany uvidíte stav prostředků ve vybraných předplatných pro každou z těchto ochrany. Vyberte libovolné z nich, pokud chcete přejít přímo do oblasti konfigurace pro daný typ ochrany.
+3. **Pokročilá ochrana** – Azure Defender zahrnuje mnoho pokročilých funkcí ochrany před internetovými útoky pro virtuální počítače, databáze SQL, kontejnery, webové aplikace, síť a další. V této části rozšířené ochrany uvidíte stav prostředků ve vybraných předplatných pro každou z těchto ochrany. Vyberte libovolné z nich, pokud chcete přejít přímo do oblasti konfigurace pro daný typ ochrany.
 
-1. **Přehledy** – Toto souhrnné podokno novinek, navrhovaných čtení a výstrah s vysokou prioritou Security Center poskytuje přehled o tom, co je potřeba k tomu, aby se zobrazovaly informace o tom, jaké jsou důležité pro vás a vaše předplatné Najdete ho v podokně přehledy na **řídicím panelu Azure Defender**, ať už se jedná o seznam s vysokou závažností CVEs zjištěným na vašich virtuálních počítačích pomocí nástroje pro analýzu ohrožení zabezpečení nebo nového blogového příspěvku, který je členem týmu Security Center.
+4. **Přehledy** – Toto souhrnné podokno novinek, navrhovaných čtení a výstrah s vysokou prioritou Security Center poskytuje přehled o tom, co je potřeba k tomu, aby se zobrazovaly informace o tom, jaké jsou důležité pro vás a vaše předplatné Najdete ho v podokně přehledy na **řídicím panelu Azure Defender**, ať už se jedná o seznam s vysokou závažností CVEs zjištěným na vašich virtuálních počítačích pomocí nástroje pro analýzu ohrožení zabezpečení nebo nového blogového příspěvku, který je členem týmu Security Center.
 
 
 
@@ -49,4 +49,4 @@ V tomto článku jste se dozvěděli o řídicím panelu Azure Defender.
 Další informace o Azure Defenderu najdete v tématu [Úvod do Azure Defenderu](azure-defender.md) .
 
 > [!div class="nextstepaction"]
-> [Povolení Azure Defenderu](security-center-pricing.md#enable-azure-defender)
+> [Povolení Azure Defenderu](enable-azure-defender.md)

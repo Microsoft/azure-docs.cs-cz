@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2021
 ms.author: memildin
-ms.openlocfilehash: b9095d78d902bf5e44bffaba5db19bf2c26e0845
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a659ea897f013e504668789a7d5671420ff70a9f
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727001"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099076"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Ochrana koncových bodů pomocí integrovaného řešení EDR Security Center: Microsoft Defender pro koncové body
 
@@ -41,7 +41,7 @@ Microsoft Defender pro koncové body je holistický, cloudové řešení zabezpe
 | Aspekt                          | Podrobnosti                                                                                                                                                                                                                                                                                                       |
 |---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Stav vydaných verzí:                  | Všeobecně dostupná (GA)                                                                                                                                                                                                                                                                                      |
-| Stanov                        | Vyžaduje [Azure Defender pro servery](security-center-pricing.md) .                                                                                                                                                                                                                                             |
+| Stanov                        | Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .                                                                                                                                                                                                                                             |
 | Podporované platformy:            |  • Počítače Azure s Windows<br> • Počítače s obloukem v Azure, na kterých běží Windows|
 | Podporované verze systému Windows:  |   • **Obecná dostupnost (GA) –** detekce na Windows serveru 2016, 2012 R2 a 2008 R2 SP1<br> • Zjišťování **verze Preview** na windows serveru 2019, [Windows Virtual desktopu (WVD)](../virtual-desktop/overview.md)a [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (dřív Enterprise pro virtuální plochy (evd)<br>Monitorování koncového bodu serveru pomocí těchto integrací bylo pro zákazníky Office 365 RSZ zakázané.|
 | Nepodporované operační systémy:  |  • Windows 10 (jiné než EVD nebo WVD)<br> • Linux|
@@ -83,8 +83,7 @@ Po nakonfigurování umístění ho nemůžete změnit. Pokud máte vlastní lic
         - Pokud nasazujete Defender na koncový bod do místních počítačů, připojte ho ke službě Azure ARC, jak je vysvětleno v tématu [připojení hybridních počítačů se servery s podporou ARC Azure](../azure-arc/servers/learn/quick-enable-hybrid-vm.md) .
     - Pro **počítače s Windows serverem 2019** se navíc ujistěte, že běží na platném agentovi a že mají rozšíření MicrosoftMonitoringAgent.
 
-1. Povolte **Azure Defender pro servery**. Podívejte se [na ceny Azure Security Center](security-center-pricing.md#enable-azure-defender).
-
+1. Povolte **Azure Defender pro servery**. Další informace najdete v tématu [rychlý Start: povolení programu Azure Defender](enable-azure-defender.md).
 
 1. Pokud jste už na svých serverech licencovaný a nasazený program Microsoft Defender pro koncové body, odeberte ho pomocí postupu popsaného v tématu [odpojení Windows Servers](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers).
 1. V nabídce Security Center vyberte **cenové & nastavení**.

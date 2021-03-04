@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2020
 ms.author: memildin
-ms.openlocfilehash: ca3a1083b512709ad5ef070b6f5bd0e363baf80b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 432729417a65376533d9ecc201f2f6f52376cc58
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720745"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099399"
 ---
 # <a name="sql-information-protection-policy-in-azure-security-center"></a>Zásady SQL Information Protection v Azure Security Center
  
@@ -32,7 +32,7 @@ Klasifikační mechanizmus je založen na následujících dvou prvcích:
 Možnosti zásad ochrany informací v rámci Security Center poskytují předdefinovanou sadu popisků a typů informací, které slouží jako výchozí hodnoty pro modul klasifikace. Zásady můžete přizpůsobit podle potřeb vaší organizace, jak je popsáno níže.
 
 > [!IMPORTANT]
-> K přizpůsobení zásad služby Information Protection pro vašeho tenanta Azure budete potřebovat oprávnění správce pro kořenovou skupinu pro správu tenanta. Další informace najdete v informacích [o Azure Security Center v nejrůznějších klientech](security-center-management-groups.md).
+> K přizpůsobení zásad služby Information Protection pro vašeho tenanta Azure budete potřebovat oprávnění správce pro kořenovou skupinu pro správu tenanta. Další informace najdete v informacích [o udělení a vyžádání viditelnosti v nejrůznějších klientech](tenant-wide-permissions-management.md).
 
 :::image type="content" source="./media/security-center-info-protection-policy/sql-information-protection-policy-page.png" alt-text="Stránka zobrazující zásady služby SQL Information Protection":::
  
@@ -58,7 +58,7 @@ Každá z nich je zobrazena na příslušné kartě níže.
 Na stránce **ceny a nastavení** ze Security Center vyberte **SQL Information Protection**.
 
 > [!NOTE]
-> Tato možnost se zobrazí jenom pro uživatele s oprávněními na úrovni tenanta. [Udělte oprávnění pro všechny klienty sami sobě](./security-center-management-groups.md#grant-tenant-wide-permissions-to-yourself).
+> Tato možnost se zobrazí jenom pro uživatele s oprávněními na úrovni tenanta. [Udělte oprávnění pro všechny klienty sami sobě](tenant-wide-permissions-management.md#grant-tenant-wide-permissions-to-yourself).
 
 :::image type="content" source="./media/security-center-info-protection-policy/pricing-settings-link-to-information-protection.png" alt-text="Přístup k zásadám SQL Information Protection ze stránky ceny a nastavení Azure Security Center":::
 

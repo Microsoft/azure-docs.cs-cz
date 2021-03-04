@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: a47ece762f2df3fa18cf2b79d338c28d4069c4ad
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 490f94c71611e07e765f5882cb4e3eec13033a6a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633467"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099331"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Správa a reakce na výstrahy zabezpečení v Azure Security Center
 
 V tomto tématu se dozvíte, jak zobrazit a zpracovat výstrahy Security Center a chránit vaše prostředky.
 
-Rozšířené detekce, které aktivují výstrahy zabezpečení, jsou k dispozici pouze v Azure Defenderu. K dispozici je bezplatná zkušební verze. Informace o upgradu najdete v tématu [Povolení Azure Defenderu](security-center-pricing.md#enable-azure-defender).
+Rozšířené detekce, které aktivují výstrahy zabezpečení, jsou k dispozici pouze v Azure Defenderu. K dispozici je bezplatná zkušební verze. Informace o upgradu najdete v tématu [Povolení Azure Defenderu](enable-azure-defender.md).
 
 ## <a name="what-are-security-alerts"></a>Co jsou výstrahy zabezpečení?
 Security Center automaticky shromažďuje, analyzuje a integruje data protokolu z vašich prostředků Azure, sítě a připojených partnerských řešení, jako jsou brány firewall a řešení ochrany koncových bodů, aby se zjistily skutečné hrozby a snížil počet falešných poplachů. Seznam upřednostňovaných výstrah zabezpečení se zobrazí ve službě Security Center spolu s informacemi, které potřebujete k rychlému prozkoumání problému, a doporučeními týkajícími se řešení útoku.

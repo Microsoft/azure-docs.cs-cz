@@ -1,23 +1,20 @@
 ---
 title: Referenční tabulka pro všechny výstrahy zabezpečení v Azure Security Center
-description: V tomto článku jsou uvedené výstrahy zabezpečení, které se zobrazují v řídicím panelu Azure Defenderu Azure Security Center.
+description: V tomto článku jsou uvedené výstrahy zabezpečení viditelné v Azure Security Center řídicím panelu Azure Defenderu.
 services: security-center
 documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/21/2021
+ms.date: 03/03/2021
 ms.author: memildin
-ms.openlocfilehash: a9ba66580d6b98cfde0abe934f53f05d27edc57f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e8ebf47420150c82c8e94299291e9ea6bd7d4d88
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735841"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096951"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Upozornění zabezpečení – Referenční příručka
 
@@ -278,6 +275,9 @@ V dolní části této stránky je uvedena tabulka popisující Azure Security C
 
 ## <a name="alerts-for-containers---host-level"></a><a name="alerts-containerhost"></a>Výstrahy pro kontejnery – úroveň hostitele
 
+Výstrahy Azure Defenderu pro hostitele kontejnerů nejsou omezeny na následující výstrahy. Mnohé z výstrah uvedených v části [výstrahy pro síťovou vrstvu Azure](#alerts-azurenetlayer), [výstrahy pro počítače s Windows](#alerts-windows)a [výstrahy pro počítače](#alerts-linux) se systémem Linux můžou být taky možné aktivovat na hostitelích kontejnerů. Globální tým pro analýzu hrozeb Microsoftu průběžně měří a optimalizuje mnoho typů výstrah proti clusterům Kubernetes za účelem optimalizace detekce a omezení falešně pozitivních hodnot.
+
+
 [Další podrobnosti a poznámky](defender-for-kubernetes-introduction.md)
 
 | Výstrahy                                                                          | Popis                                                                                                                                                                                                                                                                                                | MITRE taktiku<br>([Další informace](#intentions)) | Závažnost |
@@ -294,9 +294,7 @@ V dolní části této stránky je uvedena tabulka popisující Azure Security C
 
 ## <a name="alerts-for-sql-database-and-azure-synapse-analytics"></a><a name="alerts-sql-db-and-warehouse"></a>Výstrahy pro SQL Database a Azure synapse Analytics
 
-[Další podrobnosti a poznámky](defender-for-sql-introduction.md)
-
-| Výstrahy                                                    | Popis                                                                                                                                                                                                                                                                                                                                                                                                                               | MITRE taktiku<br>([Další informace](#intentions)) | Závažnost |
+[Další podrobnosti a poznámky](defender-for-sql-introduction.md)| Výstrahy                                                    | Popis                                                                                                                                                                                                                                                                                                                                                                                                                               | MITRE taktiku<br>([Další informace](#intentions)) | Závažnost |
 |----------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------:|----------|
 | **Možnou chybu zabezpečení při vkládání SQL**            | Aplikace vygenerovala v databázi chybný příkaz SQL. To může znamenat možnou zranitelnost vůči útokům prostřednictvím injektáže SQL. Existují dva možné důvody chybného příkazu. Závada v kódu aplikace může být vytvořena v chybném příkazu jazyka SQL. Nebo, kód aplikace nebo uložené procedury neopravily uživatelský vstup při vytváření chybného příkazu SQL, který lze zneužít pro vkládání SQL. | -                                            | Střední   |
 | **Došlo k pokusu o přihlášení potenciálně škodlivou aplikací.** | Potenciálně škodlivá aplikace se pokusila získat přístup k SQL serveru {Name}.                                                                                                                                                                                                                                                                                                                                                               | Předútok                                    | Vysoká     |
@@ -477,8 +475,7 @@ V dolní části této stránky je uvedena tabulka popisující Azure Security C
 
 ## <a name="security-incident-alerts"></a><a name="alerts-fusion"></a>Výstrahy týkající se incidentů zabezpečení
 
-[Další podrobnosti a poznámky](security-center-alerts-cloud-smart.md)
-
+[Další podrobnosti a poznámky](security-center-alerts-overview.md#cloud-smart-alert-correlation-in-azure-security-center-incidents)
 
 | Výstrahy                                   | Popis                                                          | MITRE taktiku<br>([Další informace](#intentions)) | Závažnost |
 |-----------------------------------------|----------------------------------------------------------------------|:----------------------------------:|----------|

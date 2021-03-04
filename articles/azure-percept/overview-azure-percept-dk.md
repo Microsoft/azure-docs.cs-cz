@@ -7,26 +7,27 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 4fd0a7cb575a109d1393527b48de3fa4e3446167
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4c2ace609d67cc48d1b73bdb044e7048ebda21e7
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662578"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098328"
 ---
 # <a name="azure-percept-dk-overview"></a>Přehled Azure Percept DK
 
-Azure Percept DK je špičková sada pro vývoj AI navržená pro vývoj konceptů v sadě Vision AI. V kombinaci s [Azure Percept Studio](./overview-azure-percept-studio.md)se jedná o výkonnou platformu, která se ještě snadno používá pro vytváření řešení AI na Edge pro široké spektrum aplikací pro AI. K nákupu můžete použít [online obchod Microsoftu](https://go.microsoft.com/fwlink/p/?LinkId=2155270).
+Azure Percept DK je špičková sada souborů AI a IoT Development Kit navržená pro vývoj konceptů a audio AI. V kombinaci se službou [Azure Percept Studio](./overview-azure-percept-studio.md) a [službou Azure Percept audio](./overview-azure-percept-audio.md)se to znamená, že se ještě nejedná o výkonnou platformu, kterou je možné snadno použít k vytváření řešení AI na Edge pro nejrůznější aplikace v oblasti Vision nebo audio AI. K nákupu můžete použít [online obchod Microsoftu](https://go.microsoft.com/fwlink/p/?LinkId=2155270).
 
-:::image type="content" source="./media/overview-azure-percept-dk/dk-image.png" alt-text="Obrazu.":::
+:::image type="content" source="./media/overview-azure-percept-dk/dk-image.png" alt-text="Zařízení Azure Percept DK.":::
 
 ## <a name="key-features"></a>Klíčové funkce
 
 - **Možnost spouštět AI na hraničních** zařízeních. Integrovaná hardwarová akcelerace může spouštět modely aplikace Vision AI bez připojení ke cloudu.
 - **Kořenový adresář hardwaru integrovaného zabezpečení důvěryhodnosti**. Další podrobnosti najdete v tomto přehledu o [zabezpečení Azure Percept](./overview-percept-security.md) .
 - **Bezproblémová integrace se službou [Azure Percept Studio](./overview-azure-percept-studio.md)** a dalšími službami Azure. Například Azure IoT Hub, Azure Cognitive Services a [Live video Analytics](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview)
+- **Bezproblémová integrace s volitelným [zvukem Azure Percept](./overview-azure-percept-audio.md)**
 - **Podpora hlavních platforem AI**. Například ONNX a TensorFlow.
-- **Integrace se systémem 80/20 kolejnice**. Vytváření prototypů v produkčních prostředích usnadňuje. Přečtěte si další informace o [integraci 8/20](./overview-8020-integration.md).
+- **Integrace se systémem 80/20 kolejnice**. Vytváření prototypů v produkčních prostředích usnadňuje. Přečtěte si další informace o [integraci 80/20](./overview-8020-integration.md).
 
 ## <a name="hardware-components"></a>Hardwarové součásti
 

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: de85c4f8cdcd9781345ee1488549aab23e38ec5c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3c5e6fd62e4f4db9ccc1306d32d09b8338cbf963
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664716"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098022"
 ---
 # <a name="create-a-voice-assistant-with-azure-percept-dk-and-azure-percept-audio"></a>Vytvoření hlasového asistenta pomocí Azure Percept DK a Azure Percept audio
 
@@ -24,30 +24,11 @@ Tato příručka vás provede procesem nastavení vašich zařízení, vytváře
 
 - Azure Percept DK (DevKit)
 - Zvuk Azure Percept
-- Mluvčí nebo sluchátka (volitelné)
+- Mluvčí nebo sluchátka, které se můžou připojit ke zvukové zdířkě 3,5 mm (volitelné)
 - [Předplatné Azure](https://azure.microsoft.com/free/)
 - [Prostředí pro instalaci Azure PERCEPT DK](./quickstart-percept-dk-set-up.md): připojili jste DevKit k síti Wi-Fi, vytvořili IoT Hub a připojili jste devkit k IoT Hub
+- [Nastavení služby Azure Percept audio](./quickstart-percept-audio-setup.md)
 
-## <a name="device-setup"></a>Nastavení zařízení
-
-1. (Volitelně) připojte mluvčí nebo sluchátka ke zvukovému modelu SoM přes konektor pro sluchátka, který je označený jako "řádek ven". To vám umožní slyšet zvukové odezvy hlasového asistenta. Pokud nepřipojíte mluvčí nebo sluchátka, budete moci v ukázkovém okně zobrazit odpovědi jako text.
-
-1. Připojte zvuk SoM na desku DevKit s integrovaným kabelem USB-A na Micro B.
-
-1. Zapněte DevKit.
-
-    - Indikátor LED l01 ve zvukovém modelu SoM se změní na plnou zelenou, aby označoval, že zařízení bylo zapnuté.
-    - Indikátor LED L02 se změní na blikající zelenou, aby označoval, že se ověřuje zvuk SoM.
-
-1. Počkejte na dokončení procesu ověřování – může to trvat až 3 minuty.
-
-1. Pokud vidíte jednu z následujících možností, přejděte k další části:
-
-    - Indikátor LED l01 vypne a L02 se změní na bílou. To znamená, že ověřování bylo dokončeno a DevKit ještě nebyl nakonfigurován s klíčovým slovem.
-    - Všechny tři diody LED se vypnou modře. To znamená, že ověřování je dokončeno a DevKit je nakonfigurován s klíčovým slovem.
-
-    > [!NOTE]
-    > Pokud se vaše DevKit neověřuje, obraťte se na podporu.
 
 ## <a name="create-a-voice-assistant-using-an-available-template"></a>Vytvoření hlasového asistenta pomocí dostupné šablony
 
@@ -119,6 +100,7 @@ Ukázka automobilu má teplého, odmrazení a termostat, se kterým můžete pra
 * "Nastavit teplotu na X stupňů." (X je požadovaná teplota, třeba 75.)
 * "Zvětšit/zmenšit teplotu o Y stupňů."
 
+
 :::image type="content" source="./media/tutorial-no-code-speech/auto-demo.png" alt-text="Snímek obrazovky s podoknem ukázky automobilu":::
 
 ### <a name="inventory-demo-commands"></a>Ukázkové příkazy inventáře
@@ -131,19 +113,30 @@ Ukázka inventarizace obsahuje výběr Virtual modrých, žlutých a zelených p
 * "Počet polí Y". (Y je barva polí, například žlutá.)
 * "Dodat všechno na skladě."
 
+
 :::image type="content" source="./media/tutorial-no-code-speech/inventory-demo.png" alt-text="Snímek obrazovky s ukázkovým oknem inventáře":::
 
 ## <a name="configure-your-keyword"></a>Konfigurace klíčového slova
 
-Chcete-li změnit klíčové slovo, klikněte na tlačítko **změnit** u **klíčového slova vlastní** v ukázkovém okně. Vyberte jedno z dostupných klíčových slov a klikněte na **Uložit**. Budete si moct vybrat z výběru předem sestavených klíčových slov a všech vlastních klíčových slov, která jste vytvořili.
+Můžete přizpůsobit klíčové slovo pro aplikaci hlasového asistenta.
 
-:::image type="content" source="./media/tutorial-no-code-speech/change-keyword.png" alt-text="Snímek obrazovky s výběrem dostupných klíčových slov":::
+1. V ukázkovém okně klikněte na **změnit** u **klíčového slova Custom** .
+
+1. Vyberte jedno z dostupných klíčových slov. Budete si moct vybrat z výběru ukázkových klíčových slov a všech vlastních klíčových slov, která jste vytvořili.
+
+1. Klikněte na **Uložit**.
 
 ### <a name="create-a-custom-keyword"></a>Vytvoření vlastního klíčového slova
 
-Chcete-li vytvořit vlastní klíčové slovo, klikněte na tlačítko **+ vytvořit vlastní klíčové slovo** v horní části okna ukázka. Zadejte požadované klíčové slovo, které může být jedno slovo nebo krátká fráze, vyberte **prostředek pro rozpoznávání řeči** (zobrazí se v ukázkovém okně vedle **vlastního příkazu** a obsahuje předponu vaší aplikace) a klikněte na **Uložit**. Školení vlastního klíčového slova může být dokončeno během několika sekund.
+Pro hlasovou aplikaci můžete vytvořit vlastní klíčové slovo. Školení vlastního klíčového slova může být dokončeno během několika minut.
 
-:::image type="content" source="./media/tutorial-no-code-speech/custom-keyword.png" alt-text="Snímek obrazovky s oknem pro vytvoření vlastního klíčového slova":::
+1. Klikněte na **+ vytvořit vlastní klíčové slovo** v horní části okna ukázka. 
+
+1. Zadejte požadované klíčové slovo, které může být jedno slovo nebo krátká fráze.
+
+1. Vyberte **prostředek řeči** (Tento příkaz se zobrazí v poli Ukázka vedle **vlastního příkazu** a obsahuje předponu vaší aplikace).
+
+1. Klikněte na **Uložit**. 
 
 ## <a name="create-a-custom-command"></a>Vytvoření vlastního příkazu
 
@@ -185,13 +178,13 @@ Další informace o vývoji vlastních příkazů najdete v [dokumentaci ke slu�
 
 ### <a name="voice-assistant-was-created-but-does-not-respond-to-commands"></a>Hlasový asistent se vytvořil, ale nereaguje na příkazy.
 
-Ověřte indikátory LED na zvukovém modelu SoM:
+Ověřte indikátory LED na vývěsce:
 
 * Tři plná modrá světla označují, že hlasový asistent je připravený a čeká na klíčové slovo.
 * Pokud je INDIKÁTORem středu (L02) bílá, dokončila se inicializace DevKit a musí být nakonfigurovaná pomocí klíčového slova.
-* Jakákoli kombinace zelených světel indikuje, že se ještě nedokončila inicializace zvukové SoM. Dokončení inicializace může trvat několik minut.
+* Pokud je na středovém LED (L02) nastavené blikání, zvuk SoM ještě nedokončil inicializaci. Dokončení inicializace může trvat několik minut.
 
-Další informace o indikátorech LED zvukového modelu SoM najdete v článku indikátoru LED.
+Další informace o indikátorech LED naleznete v [článku indikátoru LED](./audio-button-led-behavior.md).
 
 ### <a name="voice-assistant-does-not-respond-to-a-custom-keyword-created-in-speech-studio"></a>Hlasový asistent nereaguje na vlastní klíčové slovo vytvořené v studiu řeči.
 
@@ -207,22 +200,20 @@ Tato situace může nastat, pokud je modul řeči zastaralý. Pomocí těchto kr
 
 1. Podívejte se na verzi modulu Speech. Pokud je k dispozici aktualizace, zobrazí se vedle čísla verze tlačítko **aktualizace** .
 
-    :::image type="content" source="./media/tutorial-no-code-speech/devkit.png" alt-text="Snímek obrazovky s oknem nastavení DevKit řeči":::
-
 1. Kliknutím na **aktualizovat** nasadíte aktualizaci modulu Speech. Dokončení procesu aktualizace obvykle trvá 2-3 minut.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Po dokončení práce s aplikací hlasového asistenta pomocí těchto kroků vyčistěte prostředky pro rozpoznávání řeči, které jste nasadili během tohoto kurzu:
 
-1. Z [Azure Portal](https://ms.portal.azure.com/#home)v levém panelu nabídky vyberte **skupiny prostředků** nebo je zadejte do panelu hledání.
+1. Z [Azure Portal](https://portal.azure.com)v levém panelu nabídky vyberte **skupiny prostředků** nebo je zadejte do panelu hledání.
 
     :::image type="content" source="./media/tutorial-no-code-speech/azure-portal.png" alt-text="Snímek obrazovky domovské stránky Azure Portal zobrazující levou nabídku a skupiny prostředků.":::
 
 1. Vyberte skupinu prostředků.
 
 1. Vyberte všechny 6 prostředků obsahující předponu aplikace a klikněte na ikonu **Odstranit** v horním panelu nabídky.
-
+\
     :::image type="content" source="./media/tutorial-no-code-speech/select-resources.png" alt-text="Snímek obrazovky s prostředky řeči vybranými k odstranění":::
 
 1. Odstranění potvrďte tak, že v potvrzovacím poli zadáte **Ano** , ověříte, že jste vybrali správné prostředky a kliknete na **Odstranit**.

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 593d2ccadf814cb5af27a4bb738f28132f39ab7d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5e41dea3b47c608b9e82ac57fa1cfe5247ea6cc2
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662399"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099008"
 ---
 # <a name="managing-your-voice-assistant"></a>Správa hlasového asistenta
 
@@ -28,7 +28,7 @@ Klíčové slovo je slovo nebo krátká fráze sloužící k aktivaci hlasového
 
 1. Na stránce ukázka klikněte na **změnit** vedle **klíčového slova Custom** .
 
-    :::image type="content" source="./media/manage-voice-assistant/hospitality-demo.png" alt-text="Obrazu.":::
+    :::image type="content" source="./media/manage-voice-assistant/hospitality-demo.png" alt-text="Snímek obrazovky s ukázkovým oknem pohostinství":::
 
     Pokud nemáte otevřenou ukázkovou stránku, přejděte na stránku zařízení (viz níže) a kliknutím na **test hlasového asistenta** v části **Akce** Získejte přístup k ukázce.
 
@@ -40,17 +40,17 @@ Klíčové slovo je slovo nebo krátká fráze sloužící k aktivaci hlasového
 
 1. Na stránce Přehled v [Azure Percept studiu](https://go.microsoft.com/fwlink/?linkid=2135819)klikněte v levém podokně nabídky na **zařízení** .
 
-    :::image type="content" source="./media/manage-voice-assistant/portal-overview-devices.png" alt-text="Obrazu.":::
+    :::image type="content" source="./media/manage-voice-assistant/portal-overview-devices.png" alt-text="Snímek stránky s přehledem Azure Percept Studio se zvýrazněnými zařízeními":::
 
 1. Vyberte zařízení, na které se nasadila vaše aplikace hlasového asistenta.
 
 1. Otevřete kartu **řeč** .
 
-    :::image type="content" source="./media/manage-voice-assistant/device-page.png" alt-text="Obrazu.":::
+    :::image type="content" source="./media/manage-voice-assistant/device-page.png" alt-text="Snímek stránky hraničního zařízení se zvýrazněnou kartou pro rozpoznávání řeči":::
 
 1. Klikněte na **změnit** vedle **klíčového slova**.
 
-    :::image type="content" source="./media/manage-voice-assistant/change-keyword-device.png" alt-text="Obrazu.":::
+    :::image type="content" source="./media/manage-voice-assistant/change-keyword-device.png" alt-text="Snímek obrazovky s dostupnými akcemi řešení řeči":::
 
 1. Vyberte jedno z dostupných klíčových slov a kliknutím na **Uložit** změny aplikujte.
 

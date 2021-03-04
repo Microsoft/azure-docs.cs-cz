@@ -38,12 +38,6 @@
           href: tutorial-nocode-vision.md
         - name: Sestavení a nasazení řešení pro rozpoznávání řeči bez kódu
           href: tutorial-no-code-speech.md
-    - name: Pokročilý vývoj
-      items:
-        - name: Kurz pro pokročilý vývoj (Cloud)
-          href: advanced-development-cloud.md
-        - name: Kurz pro pokročilý vývoj (místní)
-          href: advanced-development-local.md
 - name: Koncepty
   items:
     - name: Zvuk Azure Percept
@@ -106,5 +100,3 @@
           href: azure-percept-vision-datasheet.md
         - name: Datový list Azure Percept audio
           href: azure-percept-audio-datasheet.md
-- name: Zdroje a prostředky
-  items: null

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: fe427150b15c6bccb97172ae751235d388c95c7b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: dbeb3cd4fccf80f434e6c7ac08c658632f64b135
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675022"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096849"
 ---
 # <a name="tutorial-configure-zscaler-private-access-with-azure-active-directory-b2c"></a>Kurz: konfigurace privátního přístupu Zscaler pomocí Azure Active Directory B2C
 
@@ -44,7 +44,7 @@ Následující diagram znázorňuje, jak se ZPA integruje s Azure AD B2C.
 
 Sekvence je popsána v následující tabulce:
 
-|Krok | Description |
+|Krok | Popis |
 | :-----:| :-----------|
 | 1 | Uživatel přirazí na portál ZPA User Portal nebo na aplikaci pro přístup přes prohlížeč ZPA.
 | 2 | ZPA vyžaduje informace o kontextu uživatele předtím, než se rozhodne, zda uživateli povolí přístup k webové aplikaci. K ověření uživatele ZPA provede přesměrování SAML na přihlašovací stránku Azure AD B2C.  
@@ -100,11 +100,11 @@ Informace o konfiguraci vlastních zásad v tenantovi Azure AD B2C najdete v té
 
 ### <a name="step-3-register-zpa-as-a-saml-application-in-azure-ad-b2c"></a>Krok 3: registrace ZPA jako aplikace SAML v Azure AD B2C
 
-Postup konfigurace aplikace SAML v Azure AD B2C najdete v tématu [Registrace aplikace SAML v Azure AD B2C](./connect-with-saml-service-providers.md). 
+Postup konfigurace aplikace SAML v Azure AD B2C najdete v tématu [Registrace aplikace SAML v Azure AD B2C](./saml-service-provider.md). 
 
-V kroku ["3,2 Nahrajte a otestujte metadata zásad"](./connect-with-saml-service-providers.md#32-upload-and-test-your-policy-metadata), zkopírujte nebo Poznamenejte si adresu URL metadat SAML IDP, kterou používá Azure AD B2C. Budete ho potřebovat později.
+V kroku [nahrajte zásadu](./saml-service-provider.md#upload-your-policy), zkopírujte nebo Poznamenejte si adresu URL metadat SAML IDP, kterou používá Azure AD B2C. Budete ho potřebovat později.
 
-Postupujte podle pokynů v kroku ["4,2 aktualizace manifestu aplikace"](./connect-with-saml-service-providers.md#42-update-the-app-manifest). V kroku 4,2 aktualizujte vlastnosti manifestu aplikace následujícím způsobem:
+Postupujte podle pokynů v kroku [Konfigurace aplikace v Azure AD B2C](./saml-service-provider.md#configure-your-application-in-azure-ad-b2c). V kroku 4,2 aktualizujte vlastnosti manifestu aplikace následujícím způsobem:
 
 - Pro **identifierUris**: použijte ID entity poskytovatele služby, které jste zkopírovali nebo poznamenali dříve v kroku 1.6. b.  
 - Pro **samlMetadataUrl**: tuto vlastnost můžete přeskočit, protože ZPA nehostuje adresu URL metadat SAML.  
@@ -150,6 +150,6 @@ Přejděte na ZPA User Portal nebo aplikace pro přístup přes prohlížeč a o
 Další informace najdete v následujících článcích:
 
 - [Začínáme s vlastními zásadami v Azure AD B2C](./custom-policy-get-started.md)
-- [Registrace aplikace SAML v Azure AD B2C](./connect-with-saml-service-providers.md)
+- [Registrace aplikace SAML v Azure AD B2C](./saml-service-provider.md)
 - [Podrobný průvodce konfigurací pro ZPA](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa)
 - [Konfigurace IdP pro jednotné přihlašování](https://help.zscaler.com/zpa/configuring-idp-single-sign)

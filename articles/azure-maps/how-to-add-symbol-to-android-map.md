@@ -3,17 +3,18 @@ title: Přidat vrstvu symbolů do map pro Android | Mapy Microsoft Azure
 description: Naučte se, jak přidat značku k mapě. Podívejte se na příklad, který používá Android SDK Azure Maps k přidání vrstvy symbolu, která obsahuje data založená na bodech ze zdroje dat.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/08/2020
+ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 1706b60a61bd3b507d9fbcf555e478b388f51168
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: edb758469a06dcb7914025ea449b9d952e939533
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047566"
+ms.locfileid: "102097206"
 ---
 # <a name="add-a-symbol-layer-android-sdk"></a>Přidat vrstvu symbolu (Android SDK)
 
@@ -32,6 +33,8 @@ Předtím, než můžete na mapu přidat vrstvu symbolů, je nutné provést ně
 
 Následující kód ukazuje, co by mělo být přidáno do mapy poté, co bylo načteno. Tato ukázka vykreslí jeden bod na mapě pomocí vrstvy symbolů.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 //Create a data source and add it to the map.
 DataSource source = new DataSource();
@@ -47,6 +50,27 @@ SymbolLayer layer = new SymbolLayer(source);
 map.layers.add(layer);
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a point and add it to the data source.
+source.add(Point.fromLngLat(0, 0))
+
+//Create a symbol layer to render icons and/or text at points on the map.
+val layer = SymbolLayer(source)
+
+//Add the layer to the map.
+map.layers.add(layer)
+```
+
+::: zone-end
+
 Existují tři různé typy datových bodů, které lze přidat do mapy:
 
 - Geometrická geometrie bodu JSON – tento objekt obsahuje pouze souřadnici bodu a nic jiného. `Point.fromLngLat`Statickou metodu lze použít k snadnému vytváření těchto objektů.
@@ -56,6 +80,8 @@ Existují tři různé typy datových bodů, které lze přidat do mapy:
 Další informace najdete v dokumentu [Vytvoření zdroje dat](create-data-source-android-sdk.md) při vytváření a přidávání dat na mapu.
 
 Následující ukázka kódu vytvoří geometrii geometrického bodu JSON a předá ji do funkce "geometrické JSON" a `title` přidá hodnotu do jejích vlastností. `title`Vlastnost se zobrazuje jako text nad ikonou symbolu na mapě.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source and add it to the map.
@@ -81,6 +107,36 @@ SymbolLayer layer = new SymbolLayer(source,
 map.layers.add(layer);
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a point feature.
+val feature = Feature.fromGeometry(Point.fromLngLat(0, 0))
+
+//Add a property to the feature.
+feature.addStringProperty("title", "Hello World!")
+
+//Add the feature to the data source.
+source.add(feature)
+
+//Create a symbol layer to render icons and/or text at points on the map.
+val layer = SymbolLayer(
+    source,  //Get the title property of the feature and display it on the map.
+    textField(get("title"))
+)
+
+//Add the layer to the map.
+map.layers.add(layer)
+```
+
+::: zone-end
+
 Následující snímek obrazovky ukazuje, že výše uvedený kód rending funkci Point pomocí ikony a textového popisku s vrstvou symbolů.
 
 ![Mapovat s bodem vykresleným pomocí vrstvy symbolů zobrazující ikonu a textový popisek pro funkci bodu](media/how-to-add-symbol-to-android-map/android-map-pin.png)
@@ -91,6 +147,8 @@ Následující snímek obrazovky ukazuje, že výše uvedený kód rending funkc
 ## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Přidání vlastní ikony do vrstvy symbolů
 
 Vrstvy symbolů se vykreslují pomocí WebGL. Jako takové všechny prostředky, například obrázky ikon, je nutné načíst do kontextu WebGL. Tento příklad ukazuje, jak přidat vlastní ikonu k prostředkům mapy. Tato ikona se pak použije k vykreslení dat bodů s vlastním symbolem na mapě. `textField`Vlastnost vrstvy symbolů vyžaduje, aby byl zadán výraz. V tomto případě chceme vykreslit vlastnost teploty. Vzhledem k tomu, že teplota je číslo, je nutné ji převést na řetězec. Navíc chceme k němu připojit "°F". Výraz lze použít k provedení tohoto zřetězení; `concat(Expression.toString(get("temperature")), literal("°F"))`.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Load a custom icon image into the image sprite of the map.
@@ -120,6 +178,39 @@ SymbolLayer layer = new SymbolLayer(source,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Load a custom icon image into the image sprite of the map.
+map.images.add("my-custom-icon", R.drawable.showers)
+
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a point feature.
+val feature = Feature.fromGeometry(Point.fromLngLat(-73.985708, 40.75773))
+
+//Add a property to the feature.
+feature.addNumberProperty("temperature", 64)
+
+//Add the feature to the data source.
+source.add(feature)
+
+//Create a symbol layer to render icons and/or text at points on the map.
+val layer = SymbolLayer(
+    source,
+    iconImage("my-custom-icon"),
+    iconSize(0.5f),  //Get the title property of the feature and display it on the map.
+    textField(concat(Expression.toString(get("temperature")), literal("°F"))),
+    textOffset(arrayOf(0f, -1.5f))
+)
+```
+
+::: zone-end
+
 V této ukázce byl do nakreslené složky aplikace načten následující obrázek.
 
 | ![Ikona počasí obrázek sprchových sprch](media/how-to-add-symbol-to-android-map/showers.png)|
@@ -135,13 +226,27 @@ Následující snímek obrazovky ukazuje, že výše uvedený kód rending funkc
 
 ## <a name="modify-symbol-colors"></a>Upravit barvy symbolů
 
-Azure Maps Android SDK obsahuje sadu předdefinovaných variací barev výchozí ikony značky. Například `marker-red` může být předán do `iconImage` Možnosti vrstvy symbolů pro vykreslení červené verze ikony značky v této vrstvě. 
+Azure Maps Android SDK obsahuje sadu předdefinovaných variací barev výchozí ikony značky. Například `marker-red` může být předán do `iconImage` Možnosti vrstvy symbolů pro vykreslení červené verze ikony značky v této vrstvě.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 SymbolLayer layer = new SymbolLayer(source,
     iconImage("marker-red")
 );
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = SymbolLayer(source,
+    iconImage("marker-red")
+)
+```
+
+::: zone-end
 
 V tabulce níže jsou uvedeny všechny dostupné názvy obrázků ikon. Všechny tyto značky vyžádají své barvy z barevných prostředků, které lze přepsat. Kromě přepsání hlavní barvy výplně této značky. Všimněte si však, že přepsání barvy jedné z těchto značek bude platit pro všechny vrstvy, které používají tuto ikonu obrázku.
 

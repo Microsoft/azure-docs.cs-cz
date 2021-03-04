@@ -3,17 +3,18 @@ title: Výrazy stylu založené na datech v mapách Androidu | Mapy Microsoft Az
 description: Přečtěte si o výrazech stylu založených na datech. Přečtěte si téma jak použít tyto výrazy v Azure Maps Android SDK k úpravě stylů v mapách.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/1/2020
+ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 7e4af0647a2810a27001c15a5030fca660828147
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 1babf1feb550109486089c45469ab4ce32f72cb3
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047736"
+ms.locfileid: "102097410"
 ---
 # <a name="data-driven-style-expressions-android-sdk"></a>Výrazy stylu řízené daty (Android SDK)
 
@@ -38,6 +39,9 @@ Azure Maps Android SDK podporuje téměř všechny stejné výrazy stylu jako ro
 | [Výrazy vazeb proměnných](#variable-binding-expressions) | Výrazy vazeb proměnných ukládají výsledky výpočtu do proměnné a odkazují jinde ve výrazu víckrát bez nutnosti přepočítat uloženou hodnotu. |
 | [Výraz lupy](#zoom-expression) | Načte aktuální úroveň přiblížení mapy v době vykreslování. |
 
+> [!NOTE]
+> Syntaxe výrazů je převážně v jazycích Java a Kotlin. Pokud máte dokumentaci nastavenou na Kotlin, ale viz bloky kódu pro Java, kód je v obou jazycích identický.
+
 Všechny příklady v této části dokumentu používají následující funkci k předvedení různých způsobů, jak lze tyto výrazy použít.
 
 ```json
@@ -47,7 +51,7 @@ Všechny příklady v této části dokumentu používají následující funkci
         "type": "Point",
         "coordinates": [-122.13284, 47.63699]
     },
-    "properties": { 
+    "properties": {
         "id": 123,
         "entityType": "restaurant",
         "revenue": 12345,
@@ -65,6 +69,8 @@ Všechny příklady v této části dokumentu používají následující funkci
 ```
 
 Následující kód ukazuje, jak ručně vytvořit tuto funkci pro zobrazení v angličtině v aplikaci.
+
+::: zone pivot="programming-language-java-android"
 
 ```Java
 //Create a point feature.
@@ -106,13 +112,73 @@ style.addProperty("fillColor", "red");
 feature.addProperty("_style", style);
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a point feature.
+val feature = Feature.fromGeometry(Point.fromLngLat(-100, 45))
+
+//Add properties to the feature.
+feature.addNumberProperty("id", 123)
+feature.addStringProperty("entityType", "restaurant")
+feature.addNumberProperty("revenue", 12345)
+feature.addStringProperty("subTitle", "Building 40")
+feature.addNumberProperty("temperature", 64)
+feature.addStringProperty("title", "Cafeteria")
+feature.addStringProperty("zoneColor", "purple")
+
+val abcArray = JsonArray()
+abcArray.add("a")
+abcArray.add("b")
+abcArray.add("c")
+
+feature.addProperty("abcArray", abcArray)
+
+val array1 = JsonArray()
+array1.add("a")
+array1.add("b")
+
+val array2 = JsonArray()
+array1.add("x")
+array1.add("y")
+
+val array2d = JsonArray()
+array2d.add(array1)
+array2d.add(array2)
+
+feature.addProperty("array2d", array2d)
+
+val style = JsonObject()
+style.addProperty("fillColor", "red")
+
+feature.addProperty("_style", style)
+```
+
+::: zone-end
+
 Následující kód ukazuje, jak rekonstruovat verzi dokument objektu JSON do funkce pro zobrazení objektivu JSON v aplikaci.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 String featureString = "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-122.13284,47.63699]},\"properties\":{\"id\":123,\"entityType\":\"restaurant\",\"revenue\":12345,\"subTitle\":\"Building 40\",\"temperature\":64,\"title\":\"Cafeteria\",\"zoneColor\":\"purple\",\"abcArray\":[\"a\",\"b\",\"c\"],\"array2d\":[[\"a\",\"b\"],[\"x\",\"y\"]],\"_style\":{\"fillColor\":\"red\"}}}";
 
 Feature feature = Feature.fromJson(featureString);
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val featureString = "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-122.13284,47.63699]},\"properties\":{\"id\":123,\"entityType\":\"restaurant\",\"revenue\":12345,\"subTitle\":\"Building 40\",\"temperature\":64,\"title\":\"Cafeteria\",\"zoneColor\":\"purple\",\"abcArray\":[\"a\",\"b\",\"c\"],\"array2d\":[[\"a\",\"b\"],[\"x\",\"y\"]],\"_style\":{\"fillColor\":\"red\"}}}"
+
+val feature = Feature.fromJson(featureString)
+```
+
+::: zone-end
 
 ## <a name="json-based-expressions"></a>Výrazy založené na formátu JSON
 
@@ -125,9 +191,21 @@ JSON.stringify(exp); // = "['get','title']"
 
 Dokument verze výše uvedeného výrazu by byla `"['get','title']"` a mohla by se číst do Android SDK následujícím způsobem.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 Expression exp = Expression.raw("['get','title']")
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val exp = Expression.raw("['get','title']")
+```
+
+::: zone-end
 
 Použití tohoto přístupu může zjednodušit opakované použití výrazů stylu mezi mobilními a webovými aplikacemi, které používají Azure Maps.
 
@@ -162,17 +240,34 @@ Následující výrazy stylu Web SDK nejsou podporovány v Android SDK:
 
 K vlastnostem funkce lze získat přímý pøístup ve výrazu pomocí `get` výrazu. V tomto příkladu je použita `zoneColor` hodnota funkce k určení vlastnosti Color pro bublinovou vrstvu.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     //Get the zoneColor value.
     bubbleColor(get("zoneColor"))
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    //Get the zoneColor value.
+    bubbleColor(get("zoneColor"))
+)
+```
+
+::: zone-end
+
 Výše uvedený příklad bude fungovat správně, pokud všechny funkce bodu mají `zoneColor` vlastnost. Pokud ne, barva se nejspíš vrátí na "Black". Chcete-li upravit záložní barvu, použijte `switchCase` výraz v kombinaci s `has` výrazem k ověření, zda vlastnost existuje. Pokud vlastnost neexistuje, vrátí se záložní barva.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     bubbleColor(
         //Use a conditional case expression.
         switchCase(
@@ -189,21 +284,73 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    bubbleColor(
+        //Use a conditional case expression.
+        switchCase(
+            //Check to see if feature has a "zoneColor" 
+            has("zoneColor"), 
+
+            //If it does, use it.
+            get("zoneColor"), 
+
+            //If it doesn't, default to blue.
+            literal("blue")
+        )
+    )
+)
+```
+
+::: zone-end
+
 Vrstvy bublinových a symbolů budou ve výchozím nastavení vykreslovat souřadnice všech tvarů ve zdroji dat. Toto chování může zvýraznit vrcholy mnohoúhelníku nebo čáry. `filter`Možnost vrstvy lze použít k omezení typu geometrie funkcí, které vykresluje, pomocí `geometryType` výrazu v rámci logického výrazu. Následující příklad omezuje bublinovou vrstvu tak, aby `Point` byly vykresleny pouze funkce.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     filter(eq(geometryType(), "Point"))
 );
 ```
 
-Následující příklad umožňuje vykreslení obou `Point` `MultiPoint` funkcí a. 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    filter(eq(geometryType(), "Point"))
+)
+```
+
+::: zone-end
+
+Následující příklad umožňuje vykreslení obou `Point` `MultiPoint` funkcí a.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     filter(any(eq(geometryType(), "Point"), eq(geometryType(), "MultiPoint")))
 );
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    filter(any(eq(geometryType(), "Point"), eq(geometryType(), "MultiPoint")))
+)
+```
+
+::: zone-end
 
 Podobně, obrys mnohoúhelníků se vykreslí do vrstev čar. Chcete-li toto chování zakázat v linkové vrstvě, přidejte filtr, který povoluje `LineString` pouze `MultiLineString` funkce a.  
 
@@ -250,7 +397,7 @@ Matematické výrazy poskytují matematické operátory pro provádění výpoč
 | `ln2()` | číslo | Vrátí matematickou konstantu `ln(2)` . |
 | `max(numbers... | expressions...)` | číslo | Vypočítá maximální počet v zadané sadě čísel. |
 | `min(numbers... | expressions...)` | číslo | Vypočítá minimální číslo v zadané sadě čísel. |
-| `mod(number, number)` \| | `mod(Expression, Expression)` | číslo | Vypočítá zbytek při dělení prvního čísla druhým číslem. Ekvivalentní výraz sady web SDK: `%` |
+| `mod(number, number)` \| `mod(Expression, Expression)` | číslo | Vypočítá zbytek při dělení prvního čísla druhým číslem. Ekvivalentní výraz sady web SDK: `%` |
 | `pi()` | číslo | Vrátí matematickou konstantu `PI` . |
 | `pow(number, number)` \| `pow(Expression, Expression)` | číslo | Vypočítá hodnotu první hodnoty vyvolanou mocninou druhého čísla. |
 | `product(numbers... | expressions...)` | číslo | Vynásobí zadaná čísla dohromady. Ekvivalentní výraz sady web SDK: `*` |
@@ -284,7 +431,7 @@ Při porovnávání hodnot je porovnání striktně typované. Hodnoty různých
 
 Podmíněné výrazy poskytují operace logiky, které jsou například if-statements.
 
-Následující výrazy provádějí Podmíněné logické operace na vstupních datech. Například `switchCase` výraz poskytuje logiku "if/then/else", zatímco `match` výraz je jako "Switch-Statement". 
+Následující výrazy provádějí Podmíněné logické operace na vstupních datech. Například `switchCase` výraz poskytuje logiku "if/then/else", zatímco `match` výraz je jako "Switch-Statement".
 
 ### <a name="switch-case-expression"></a>Výraz přepínače Case
 
@@ -307,8 +454,10 @@ switchCase(
 
 Následující příklad provádí v rámci různých logických podmínek, dokud nenajde ten, který je vyhodnocen jako `true` a následně vrací přidruženou hodnotu. Pokud se vyhodnotí žádná logická podmínka `true` , vrátí se záložní hodnota.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     bubbleColor(
         switchCase(
             //Check to see if the first boolean expression is true, and if it is, return its assigned result.
@@ -326,6 +475,31 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    bubbleColor(
+        switchCase(
+            //Check to see if the first boolean expression is true, and if it is, return its assigned result.
+            //If it has a zoneColor property, use its value as a color.
+            has("zoneColor"), toColor(get("zoneColor")),
+
+            //Check to see if the second boolean expression is true, and if it is, return its assigned result.
+            //If it has a temperature property with a value greater than or equal to 100, make it red.
+            all(has("temperature"), gte(get("temperature"), 100)), color(Color.RED),
+            
+            //Specify a default value to return. In this case green.
+            color(Color.GREEN)
+        )
+    )
+)
+```
+
+::: zone-end
+
 ### <a name="match-expression"></a>Výraz shody
 
 `match`Výraz je typ podmíněného výrazu, který poskytuje příkaz typu Switch-Logic. Vstup může být libovolný výraz `get( "entityType")` , například, který vrátí řetězec nebo číslo. Každé zastavení musí mít popisek, který je buď hodnotou jediného literálu, nebo polem hodnot literálů, jejichž hodnoty musí být všechny řetězce nebo všechna čísla. Vstup se shoduje, pokud kterákoli z hodnot v poli odpovídá. Každé označení zastavení musí být jedinečné. Pokud typ vstupu neodpovídá typu popisků, bude výsledkem výchozí záložní hodnota.
@@ -340,8 +514,10 @@ match(Expression input, Expression defaultOutput, Expression.Stop... stops)
 
 Následující příklad prohlíží `entityType` vlastnost bodu v bublinové vrstvě vyhledává shodu. Pokud najde shodu, je vrácena zadaná hodnota nebo vrátí záložní hodnotu.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     bubbleColor(
         match(
             //Get the input value to match.
@@ -362,10 +538,40 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    bubbleColor(
+        match(
+            //Get the input value to match.
+            get("entityType"),
+
+            //Specify a default value to return if no match is found.
+            color(Color.BLACK),
+
+            //List the values to match and the result to return for each match.
+
+            //If value is "restaurant" return "red".
+            stop("restaurant", color(Color.RED)),
+
+            //If value is "park" return "green".
+            stop("park", color(Color.GREEN))
+        )
+    )
+)
+```
+
+::: zone-end
+
 Následující příklad používá pole k vypsání sady popisků, které by měly vracet stejnou hodnotu. Tento přístup je mnohem efektivnější než uvedení každého popisku jednotlivě. V takovém případě, pokud `entityType` je vlastnost "restaurace" nebo "grocery_store", bude vrácena barva "Red".
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     bubbleColor(
         match(
             //Get the input value to match.
@@ -386,6 +592,34 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    bubbleColor(
+        match(
+            //Get the input value to match.
+            get("entityType"),
+
+            //Specify a default value to return if no match is found.
+            color(Color.BLACK),
+
+            //List the values to match and the result to return for each match.
+
+            //If value is "restaurant" or "grocery_store" return "red".
+            stop(arrayOf("restaurant", "grocery_store"), color(Color.RED)),
+
+            //If value is "park" return "green".
+            stop("park", color(Color.GREEN))
+        )
+    )
+)
+```
+
+::: zone-end
+
 ### <a name="coalesce-expression"></a>Výraz COALESCE
 
 `coalesce`Kroky výrazu pomocí sady výrazů, dokud není získána první hodnota, která není null, a vrátí tuto hodnotu.
@@ -398,10 +632,12 @@ coalesce(Expression... input)
 
 **Příklad**
 
-Následující příklad používá `coalesce` výraz pro nastavení `textField` Možnosti pro vrstvu symbolů. Pokud `title` vlastnost ve funkci chybí nebo je nastavená na `null` , výraz se pak pokusí vyhledat `subTitle` vlastnost, pokud chybí, nebo se `null` vrátí do prázdného řetězce. 
+Následující příklad používá `coalesce` výraz pro nastavení `textField` Možnosti pro vrstvu symbolů. Pokud `title` vlastnost ve funkci chybí nebo je nastavená na `null` , výraz se pak pokusí vyhledat `subTitle` vlastnost, pokud chybí, nebo se `null` vrátí do prázdného řetězce.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
-SymbolLayer layer = new SymbolLayer(dataSource,
+SymbolLayer layer = new SymbolLayer(source,
     textField(
         coalesce(
             //Try getting the title property.
@@ -416,6 +652,29 @@ SymbolLayer layer = new SymbolLayer(dataSource,
     )
 );
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = SymbolLayer(source,
+    textField(
+        coalesce(
+            //Try getting the title property.
+            get("title"),
+
+            //If there is no title, try getting the subTitle. 
+            get("subTitle"),
+
+            //Default to an empty string.
+            literal("")
+        )
+    )
+)
+```
+
+::: zone-end
 
 ## <a name="type-expressions"></a>Výrazy typu
 
@@ -452,8 +711,10 @@ Výrazy s barvami usnadňují vytváření a manipulaci s hodnotami barev.
 
 Následující příklad vytvoří hodnotu barvy RGB s *červenou* hodnotou `255` a *zelenou* a *modrou* hodnotou, která je vypočítána vynásobením `2.5` hodnotou `temperature` Vlastnosti. Při změně teploty se barva změní na různé odstíny *červené*.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     bubbleColor(
         //Create a RGB color value.
         rgb(
@@ -470,10 +731,36 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    bubbleColor(
+        //Create a RGB color value.
+        rgb(
+            //Set red value to 255. Wrap with literal expression since using expressions for other values.
+            literal(255f),    
+
+            //Multiple the temperature by 2.5 and set the green value.
+            product(literal(2.5f), get("temperature")), 
+
+            //Multiple the temperature by 2.5 and set the blue value.
+            product(literal(2.5f), get("temperature")) 
+        )
+    )
+)
+```
+
+::: zone-end
+
 Pokud jsou všechny parametry barev čísla, není nutné je zabalit pomocí `literal` výrazu. Například:
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     bubbleColor(
         //Create a RGB color value.
         rgb(
@@ -487,6 +774,27 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    bubbleColor(
+        //Create a RGB color value.
+        rgb(
+            255f,  //Set red value to 255.
+
+            150f,  //Set green value to 150.
+
+            0f     //Set blue value to 0.
+        )
+    )
+)
+```
+
+::: zone-end
+
 > [!TIP]
 > Hodnoty barvy řetězce lze převést na barvu pomocí `android.graphics.Color.parseColor` metody. Následující převede hexadecimální řetězec barvy na barevný výraz, který lze použít s vrstvou.
 >
@@ -496,7 +804,7 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 
 ## <a name="string-operator-expressions"></a>Výrazy operátorů řetězce
 
-Výrazy operátoru řetězce provádějí operace převodu na řetězcích, jako je zřetězení a převod případu. 
+Výrazy operátoru řetězce provádějí operace převodu na řetězcích, jako je zřetězení a převod případu.
 
 | Výraz | Návratový typ | Popis |
 |------------|-------------|-------------|
@@ -510,8 +818,10 @@ Výrazy operátoru řetězce provádějí operace převodu na řetězcích, jako
 
 Následující příklad převede `temperature` vlastnost bodu na řetězec a poté zřetězí "°F" na konci.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-SymbolLayer layer = new SymbolLayer(dataSource,
+SymbolLayer layer = new SymbolLayer(source,
     textField(
         concat(Expression.toString(get("temperature")), literal("°F"))
     ),
@@ -522,6 +832,25 @@ SymbolLayer layer = new SymbolLayer(dataSource,
     textColor("white")
 );
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = SymbolLayer(source,
+    textField(
+        concat(Expression.toString(get("temperature")), literal("°F"))
+    ),
+
+    //Some additional style options.
+    textOffset(new Float[] { 0f, -1.5f }),
+    textSize(12f),
+    textColor("white")
+)
+```
+
+::: zone-end
 
 Výše uvedený výraz vykreslí kód PIN na mapě s textem "64 °F", jak je znázorněno na obrázku níže.
 
@@ -545,15 +874,15 @@ interpolate(Expression.Interpolator interpolation, Expression number, Expression
 
 Existují tři typy metod interpolace, které lze použít ve `interpolate` výrazu:
 
-| Název | Popis | 
+| Název | Popis |
 |------|-------------|
 | `linear()` | Interpoluje linearitu mezi dvojicí zastávky.  |
 | `exponential(number)` \| `exponential(Expression)` | Interpoluje exponenciálně mezi zastávkami. Je určena "základní" a určuje rychlost, s jakou se výstup zvyšuje. Vyšší hodnoty zvyšují objem výstupu směrem k hornímu konci rozsahu. "Základní" hodnota blížící se 1 vytvoří výstup, který se zvýší lineárně.|
 | `cubicBezier(number x1, number y1, number x2, number y2)` \| `cubicBezier(Expression x1, Expression y1, Expression x2, Expression y2)` | Interpoluje použití [Bézierovy křivky krychle](https://developer.mozilla.org/docs/Web/CSS/timing-function) definované danými řídicími body. |
 
 `stop`Výraz má formát `stop(stop, value)` .
- 
-Tady je příklad toho, jak tyto různé typy interpolace vypadají. 
+
+Tady je příklad toho, jak tyto různé typy interpolace vypadají.
 
 | Lineární  | Exponenciální | Krychlová Bézierova krychle |
 |---------|-------------|--------------|
@@ -563,8 +892,10 @@ Tady je příklad toho, jak tyto různé typy interpolace vypadají.
 
 Následující příklad používá `linear interpolate` výraz pro nastavení `bubbleColor` vlastnosti bublinové vrstvy na základě `temperature` vlastnosti funkce Point. Pokud `temperature` je hodnota menší než 60, bude vrácena "modrá". Pokud je mezi 60 a menší než 70, vrátí se žlutá. Pokud je mezi 70 a menší než 80, vrátí se "oranžová" ( `#FFA500` ). Pokud je 80 nebo větší, vrátí se "Red".
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     bubbleColor(
         interpolate(
             linear(),
@@ -578,13 +909,34 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    bubbleColor(
+        interpolate(
+            linear(),
+            get("temperature"),
+            stop(50, color(Color.BLUE)),
+            stop(60, color(Color.YELLOW)),
+            stop(70, color(parseColor("#FFA500"))),
+            stop(80, color(Color.RED))
+        )
+    )
+)
+```
+
+::: zone-end
+
 Následující obrázek ukazuje, jak jsou vybrány barvy pro výše uvedený výraz.
 
 ![Příklad interpolování výrazu](media/how-to-expressions/interpolate-expression-example.png)
 
 ### <a name="step-expression"></a>Výraz kroku
 
-`step`Výraz lze použít pro výpočet diskrétních a nejovlivněných výsledných hodnot vyhodnocením [funkce konstantní](http://mathworld.wolfram.com/PiecewiseConstantFunction.html) , která je definována funkcí zastavení. 
+`step`Výraz lze použít pro výpočet diskrétních a nejovlivněných výsledných hodnot vyhodnocením [funkce konstantní](http://mathworld.wolfram.com/PiecewiseConstantFunction.html) , která je definována funkcí zastavení.
 
 `interpolate`Výraz má následující formáty:
 
@@ -606,14 +958,16 @@ step(number input, number defaultOutput, Expression... stops)
 step(number input, number defaultOutput, Expression.Stop... stops)
 ```
 
-Výrazy kroku vracejí výstupní hodnotu ukončení těsně před vstupní hodnotou nebo první vstupní hodnotu, pokud je vstup menší než první zarážka. 
+Výrazy kroku vracejí výstupní hodnotu ukončení těsně před vstupní hodnotou nebo první vstupní hodnotu, pokud je vstup menší než první zarážka.
 
 **Příklad**
 
 Následující příklad používá `step` výraz pro nastavení `bubbleColor` vlastnosti bublinové vrstvy na základě `temperature` vlastnosti funkce Point. Pokud `temperature` je hodnota menší než 60, bude vrácena "modrá". Pokud je mezi 60 a menší než 70, vrátí se "žlutá". Pokud je mezi 70 a menší než 80, bude vrácena "oranžová". Pokud je 80 nebo větší, vrátí se "Red".
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     bubbleColor(
         step(
             get("temperature"),
@@ -626,8 +980,28 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    bubbleColor(
+        step(
+            get("temperature"),
+            color(Color.BLUE),
+            stop(60, color(Color.YELLOW)),
+            stop(70, color(parseColor("#FFA500"))),
+            stop(80, color(Color.RED))
+        )
+    )
+)
+```
+
+::: zone-end
+
 Následující obrázek ukazuje, jak jsou vybrány barvy pro výše uvedený výraz.
- 
+
 ![Příklad výrazu kroku](media/how-to-expressions/step-expression-example.png)
 
 ## <a name="layer-specific-expressions"></a>Výrazy specifické pro vrstvu
@@ -643,10 +1017,12 @@ Výraz hustoty tepelné mapy načte hodnotu hustoty tepelné mapy pro každý pi
 
 **Příklad**
 
-Tento příklad používá výraz interpolace linie k vytvoření hladkého barevného přechodu pro vykreslování Heat mapy. 
+Tento příklad používá výraz interpolace linie k vytvoření hladkého barevného přechodu pro vykreslování Heat mapy.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
-HeatMapLayer layer = new HeatMapLayer(dataSource,
+HeatMapLayer layer = new HeatMapLayer(source,
     heatmapColor(
         interpolate(
             linear(),
@@ -660,10 +1036,33 @@ HeatMapLayer layer = new HeatMapLayer(dataSource,
 );
 ```
 
-Kromě použití hladkého přechodu na zabarvovat Heat mapy lze barvy zadat v rámci sady rozsahů pomocí `step` výrazu. Použití `step` výrazu pro Colorizing Heat mapy vizuálně rozdělí hustotu do rozsahů, které se podobají obrysu nebo rozvržení paprskového stylu.  
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = HeatMapLayer(source,
+    heatmapColor(
+        interpolate(
+            linear(),
+            heatmapDensity(),
+            stop(0, color(Color.TRANSPARENT)),
+            stop(0.01, color(Color.MAGENTA)),
+            stop(0.5, color(parseColor("#fb00fb"))),
+            stop(1, color(parseColor("#00c3ff")))
+        )
+    )
+)
+```
+
+::: zone-end
+
+Kromě použití hladkého přechodu na zabarvovat Heat mapy lze barvy zadat v rámci sady rozsahů pomocí `step` výrazu. Použití `step` výrazu pro Colorizing Heat mapy vizuálně rozdělí hustotu do rozsahů, které se podobají obrysu nebo rozvržení paprskového stylu.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
-HeatMapLayer layer = new HeatMapLayer(dataSource,
+HeatMapLayer layer = new HeatMapLayer(source,
     heatmapColor(
         step(
             heatmapDensity(),
@@ -678,6 +1077,28 @@ HeatMapLayer layer = new HeatMapLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = HeatMapLayer(source,
+    heatmapColor(
+        step(
+            heatmapDensity(),
+            color(Color.TRANSPARENT),
+            stop(0.01, color(parseColor("#000080"))),
+            stop(0.25, color(parseColor("#000080"))),
+            stop(0.5, color(Color.GREEN)),
+            stop(0.5, color(Color.YELLOW)),
+            stop(1, color(Color.RED))
+        )
+    )
+)
+```
+
+::: zone-end
+
 Další informace najdete v dokumentaci k [Přidání vrstvy Heat mapy](map-add-heat-map-layer-android.md) .
 
 ### <a name="line-progress-expression"></a>Výraz průběhu řádku
@@ -691,7 +1112,9 @@ Výraz průběhu řádku načítá průběh čáry přechodu v čárové vrstvě
 
 V tomto příkladu se používá `lineProgress()` výraz pro použití barevného přechodu na tah čáry.
 
-```javascript
+::: zone pivot="programming-language-java-android"
+
+```java
 LineLayer layer = new LineLayer(source,
     strokeGradient(
         interpolate(
@@ -707,6 +1130,29 @@ LineLayer layer = new LineLayer(source,
     )
 );
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = LineLayer(source,
+    strokeGradient(
+        interpolate(
+            linear(),
+            lineProgress(),
+            stop(0, color(Color.BLUE)),
+            stop(0.1, color(Color.argb(255, 65, 105, 225))), //Royal Blue
+            stop(0.3, color(Color.CYAN)),
+            stop(0.5, color(Color.argb(255,0, 255, 0))), //Lime
+            stop(0.7, color(Color.YELLOW)),
+            stop(1, color(Color.RED))
+        )
+    )
+)
+```
+
+::: zone-end
 
 [Zobrazit příklad v reálném čase](map-add-line-layer.md#line-stroke-gradient)
 
@@ -730,8 +1176,10 @@ K dispozici jsou následující možnosti formátu:
 
 Následující příklad formátuje textové pole přidáním tučného písma a vertikálního navýšení velikosti písma `title` vlastnosti funkce. Tento příklad také přidá `subTitle` vlastnost funkce na nový řádek, se zvětšenou velikostí písma.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-SymbolLayer layer = new SymbolLayer(dataSource,
+SymbolLayer layer = new SymbolLayer(source,
     textField(
         format(
             //Bold the title property and scale its font size up.
@@ -752,6 +1200,34 @@ SymbolLayer layer = new SymbolLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = SymbolLayer(source,
+    textField(
+        format(
+            //Bold the title property and scale its font size up.
+            formatEntry(
+                get("title"),
+                formatTextFont(arrayOf("StandardFont-Bold")),
+                formatFontScale(1.25)),
+
+            //Add a new line without any formatting.
+            formatEntry("\n"),
+
+            //Scale the font size down of the subTitle property.
+            formatEntry(
+                get("subTitle"),
+                formatFontScale(0.75))
+        )
+    )
+)
+```
+
+::: zone-end
+
 Tato vrstva bude vykreslovat funkci bodu, jak je znázorněno na následujícím obrázku:
 
 ![Obrázek funkce Point s formátovaným textovým polem](media/how-to-expressions/text-field-format-expression.png)
@@ -764,8 +1240,10 @@ Tato vrstva bude vykreslovat funkci bodu, jak je znázorněno na následujícím
 
 Ve výchozím nastavení mají poloměry datových bodů vykreslených v vrstvě Heat mapy u všech úrovní přiblížení pevný obraz v pixelech. Jak je mapa zvětšena, agregace dat a vrstva Heat mapy vypadá jinak. `zoom`Výraz lze použít k horizontálnímu škálování poloměru pro každou úroveň přiblížení tak, že každý datový bod pokrývá stejnou fyzickou oblast mapy. Vrstva Heat mapy bude mít víc statických a konzistentních. Každá úroveň přiblížení mapy má dvakrát a vodorovně tolik pixelů jako předchozí úroveň přiblížení. Změna velikosti poloměru, například při zdvojnásobení s každou úrovní přiblížení, vytvoří Heat mapu, která bude vypadat konzistentně na všech úrovních přiblížení. Dá se to provést pomocí `zoom` výrazu s `base 2 exponential interpolation` výrazem, který má nastavené poloměru pixelů pro minimální úroveň přiblížení a poloměr škálování pro maximální úroveň přiblížení, jak je `2 * Math.pow(2, minZoom - maxZoom)` znázorněno níže.
 
-```java 
-HeatMapLayer layer = new HeatMapLayer(dataSource,
+::: zone pivot="programming-language-java-android"
+
+```java
+HeatMapLayer layer = new HeatMapLayer(source,
     heatmapRadius(
         interpolate(
             exponential(2),
@@ -781,6 +1259,29 @@ HeatMapLayer layer = new HeatMapLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = HeatMapLayer(source,
+    heatmapRadius(
+        interpolate(
+            exponential(2),
+            zoom(),
+
+            //For zoom level 1 set the radius to 2 pixels.
+            stop(1, 2),
+
+            //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 2 * (maxZoom - minZoom)^2 pixels.
+            stop(19, 2 * Math.pow(2, 19 - 1))
+        )
+    )
+)
+```
+
+::: zone-end
+
 ## <a name="variable-binding-expressions"></a>Výrazy vazeb proměnných
 
 Výrazy vazeb proměnných ukládají výsledky výpočtu v proměnné. Takže je možné výsledky výpočtů odkazovat jinde ve výrazu vícekrát. Je užitečná optimalizace pro výrazy, které zahrnují mnoho výpočtů.
@@ -794,8 +1295,10 @@ Výrazy vazeb proměnných ukládají výsledky výpočtu v proměnné. Takže j
 
 V tomto příkladu se používá výraz, který vypočítá tržby vzhledem k poměru teploty a pak použije `case` výraz k vyhodnocení různých logických operací s touto hodnotou. `let`Výraz se používá k uložení výnosů vzhledem k poměru teploty, aby jej bylo nutné vypočítat pouze jednou. `var`Výraz odkazuje na tuto proměnnou tak často, jak je potřeba, aniž by bylo nutné je přepočítat.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     bubbleColor(           
         let(
             //Divide the point features `revenue` property by the `temperature` property and store it in a variable called `ratio`.
@@ -816,6 +1319,35 @@ BubbleLayer layer = new BubbleLayer(dataSource,
     )
 );
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    bubbleColor(           
+        let(
+            //Divide the point features `revenue` property by the `temperature` property and store it in a variable called `ratio`.
+            literal("ratio"), division(get("revenue"), get("temperature")),
+
+            //Evaluate the child expression in which the stored variable will be used.
+            switchCase(
+                //Check to see if the ratio is less than 100, return 'red'.
+                lt(var("ratio"), 100), color(Color.RED),
+
+                //Check to see if the ratio is less than 200, return 'green'.
+                lt(var("ratio"), 200), color(Color.GREEN),
+
+                //Return `blue` for values greater or equal to 200.
+                color(Color.BLUE)
+            )
+        )
+    )
+)
+```
+
+::: zone-end
 
 ## <a name="next-steps"></a>Další kroky
 
