@@ -11,14 +11,16 @@
       href: ../../virtual-machines/reserved-vm-instance-size-flexibility.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: Doporučení pro rezervace
       href: reserved-instance-purchase-recommendations.md?toc=/azure/cost-management-billing/reservations/toc.json
-    - name: Způsob uplatňování slevy za rezervaci Azure
-      href: reservation-discount-application.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: Postup při využití slev
       items:
+        - name: Způsob uplatňování slevy za rezervaci Azure
+          href: reservation-discount-application.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: App Service
           href: reservation-discount-app-service.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Azure Cache for Redis
           href: understand-azure-cache-for-redis-reservation-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Azure Data Factory
+          href: ../../data-factory/data-flow-understand-reservation-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Databáze Cosmos
           href: understand-cosmosdb-reservation-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Database for MariaDB
@@ -68,6 +70,8 @@
           href: prepay-app-service.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Rezervace Azure Cache for Redis
           href: ../../azure-cache-for-redis/cache-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Azure Data Factory
+          href: ../../data-factory/data-flow-reserved-capacity-overview.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Azure Database for MariaDB
           href: ../../mariadb/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Azure Database for MySQL
@@ -120,6 +124,8 @@
           href: reservation-renew.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: Řešení potíží
       items:
+        - name: Řešení potíží s přenosy mezi klienty
+          href: troubleshoot-reservation-transfers-between-tenants.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Žádné opravňující předplatné
           href: troubleshoot-no-eligible-subscriptions.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Řešení potíží s využitím rezervace

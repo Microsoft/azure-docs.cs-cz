@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: anithaa
-ms.openlocfilehash: 9b07af72983931e0e1cab9e7d5093fd845b363bc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2f15b397fbceb9e097d94080ba03fba50a96ed06
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692194"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048501"
 ---
 # <a name="configure-private-endpoints-for-azure-cosmos-db-analytical-store"></a>Konfigurace privátních koncových bodů pro Azure Cosmos DB analytické úložiště
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -118,7 +118,8 @@ Postup konfigurace izolace sítě pro tento účet z pracovního prostoru synaps
    az cosmosdb update --name MyCosmosDBDatabaseAccount --resource-group MyResourceGroup --network-acl-bypass AzureServices --network-acl-bypass-resource-ids "/subscriptions/subId/resourceGroups/rgName/providers/Microsoft.Synapse/workspaces/wsName"
    ```
 
-   > ZNAČTE Účet Azure Cosmos DB a pracovní prostor Azure synapse Analytics by měly být ve stejném Azure Active Directory (AD).
+   > [!NOTE]
+   > Účet Azure Cosmos DB a pracovní prostor Azure synapse Analytics by měly být ve stejném Azure Active Directory (AD).
 
 2. Nyní můžete získat přístup k účtu z neserverových fondů SQL pomocí dotazů T-SQL přes připojení Azure synapse. Pokud ale chcete zajistit izolaci sítě pro data v analytickém úložišti, musíte pro tento účet **Přidat spravovaný privátní** koncový bod. V opačném případě nebudou data v analytickém úložišti zablokována z veřejného přístupu.
 

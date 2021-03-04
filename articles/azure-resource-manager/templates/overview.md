@@ -2,13 +2,13 @@
 title: Přehled šablon
 description: V této části najdete popis výhod používání Azure Resource Manager šablon (šablon ARM) pro nasazení prostředků.
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: dd9207ca1d0397b7dce63eb826567f07b1d0b892
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 03/03/2021
+ms.openlocfilehash: 7f850d06066a6892db9f17ae86a6bba9496bad58
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621835"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046376"
 ---
 # <a name="what-are-arm-templates"></a>Co je šablona ARM?
 
@@ -17,6 +17,8 @@ Díky přesunu do cloudu mnoho týmů přijalo agilní metody vývoje. Tyto tým
 Aby bylo možné tyto výzvy splnit, můžete automatizovat nasazení a používat postupy infrastruktury jako kód. V kódu definujete infrastrukturu, která musí být nasazena. Kód infrastruktury se stal součástí vašeho projektu. Stejně jako kód aplikace ukládáte kód infrastruktury do zdrojového úložiště a jeho verzi. Libovolný tým v týmu může spustit kód a nasadit podobná prostředí.
 
 K implementaci infrastruktury jako kódu pro řešení Azure použijte šablony Azure Resource Manager (šablony ARM). Šablona je soubor JavaScript Object Notation (JSON), který definuje infrastrukturu a konfiguraci pro váš projekt. Tato šablona využívá deklarativní syntaxi, která umožňuje prohlásit, co máte v úmyslu vytvořit, aniž by k tomu bylo nutné psát sekvence programových příkazů. V šabloně určíte prostředky, které chcete nasadit, a vlastnosti těchto prostředků.
+
+Představili jsme nový jazyk pro vývoj šablon ARM. Jazyk má název bicep a je nyní ve verzi Preview. Šablony bicep a JSON nabízejí stejné možnosti. Můžete převádět šablonu mezi oběma jazyky. Bicep poskytuje syntaxi, kterou je snazší použít pro vytváření šablon. Další informace najdete v tématu [co je bicep (Preview)?](bicep-overview.md).
 
 ## <a name="why-choose-arm-templates"></a>Proč zvolit šablony ARM?
 
@@ -68,7 +70,7 @@ V rámci šablony můžete napsat [výrazy šablony](template-expressions.md) , 
 
 * [Uživatelsky definované funkce](template-user-defined-functions.md) – vytváření přizpůsobených funkcí, které zjednodušují vaši šablonu.
 
-* [Prostředky](template-syntax.md#resources) – zadejte prostředky, které chcete nasadit.
+* [Prostředky](resource-declaration.md) – zadejte prostředky, které chcete nasadit.
 
 * [Výstupy](template-outputs.md) – vrací hodnoty z nasazených prostředků.
 

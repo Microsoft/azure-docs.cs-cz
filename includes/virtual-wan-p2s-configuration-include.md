@@ -4,13 +4,15 @@ ms.author: cherylmc
 ms.date: 02/23/2021
 ms.service: virtual-wan
 ms.topic: include
-ms.openlocfilehash: b5c0bdbb29af7b8894d86233520ff09854faa201
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 567c0bb75c30a1f0ccdcde7ec1b0f04f5d6e54c5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732479"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048249"
 ---
+[!INCLUDE [Portal feature rollout](virtual-wan-portal-feature-rollout.md)]
+
 1. Přejděte na **všechny prostředky** a vyberte virtuální síť WAN, kterou jste vytvořili, a pak v nabídce na levé straně vyberte **konfigurace VPN uživatele** .
 1. Na stránce **Konfigurace sítě VPN uživatele** vyberte **+ vytvořit uživatel konfigurace sítě VPN** v horní části stránky a otevřete stránku **vytvořit novou konfiguraci VPN uživatele** .
 
@@ -23,7 +25,7 @@ ms.locfileid: "101732479"
    **IKEv2 VPN**
 
    * **Požadavky:** Když vyberete typ tunelového propojení **IKEv2** , zobrazí se vám zpráva s přímým přístupem k výběru metody ověřování. Pro IKEv2 můžete zadat jenom jednu metodu ověřování. Můžete zvolit certifikát Azure, Azure Active Directory nebo ověřování pomocí protokolu RADIUS.
- 
+
    * **Vlastní parametry protokolu IPSec:** Pokud chcete přizpůsobit parametry protokolu IKE fáze 1 a IKE Phase 2, přepněte přepínač IPsec na **Custom** a vyberte hodnoty parametru. Další informace o přizpůsobitelných parametrech najdete v článku o [vlastním protokolu IPSec](../articles/virtual-wan/point-to-site-ipsec.md) .
 
      :::image type="content" source="media/virtual-wan-p2s-configuration/custom.png" alt-text="Snímek obrazovky s přepínačem IPsec na vlastní":::

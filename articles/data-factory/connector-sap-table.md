@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/25/2021
-ms.openlocfilehash: c3c874b2e6362ceb5b4746f67614b5d85991efbc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: 63509262b8a75eebaffc34eca9861fe6748ff969
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712976"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048450"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopírování dat z tabulky SAP pomocí Azure Data Factory
 
@@ -66,7 +66,7 @@ Pokud chcete použít tento konektor tabulky SAP, musíte:
 - Uživatel SAP, který se používá ve službě Data Factory konektor tabulek SAP, musí mít následující oprávnění:
 
   - Autorizace pro použití cíle vzdáleného volání funkcí (RFC).
-  - Oprávnění k aktivitě Execute objektu S_SDSAUTH autorizace nebo oprávnění k aktivitě Execute objektu S_RFC: FUGR-RFC1, REST, SYSU FUNC-RFCPING, RFC_FUNCTION_SEARCH ACTVT – 16 autorizačního objektu. 
+  - Oprávnění k aktivitě Execute objektu autorizace S_SDSAUTH. Můžete se podívat na téma SAP Note 40089 na většině autorizačních objektů. Základní konektor NCo vyžaduje určité dokumenty RFC, například RFC_FUNCTION_SEARCH. 
 
 ## <a name="get-started"></a>Začínáme
 

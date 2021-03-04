@@ -36,6 +36,8 @@
           items:
             - name: Posouzení virtuálních počítačů VMware pro migraci na virtuální počítače Azure
               href: tutorial-assess-vmware-azure-vm.md
+            - name: Vyhodnocení instancí SQL pro migraci do Azure SQL
+              href: tutorial-assess-sql.md
             - name: Posouzení virtuálních počítačů VMware pro migraci do AVS
               href: tutorial-assess-vmware-azure-vmware-solution.md
         - name: Posouzení virtuálních počítačů Hyper-V pro migraci do Azure
@@ -102,6 +104,8 @@
       items:
         - name: Přehled hodnocení (migrace na virtuální počítače Azure)
           href: concepts-assessment-calculation.md
+        - name: Přehled posouzení (migrace do Azure SQL)
+          href: concepts-azure-sql-assessment-calculation.md
         - name: Přehled posouzení (migrace na AVS)
           href: concepts-azure-vmware-solution-assessment-calculation.md
         - name: Doporučené postupy pro hodnocení
@@ -144,8 +148,12 @@
               href: deploy-appliance-script-government.md
         - name: Omezení rozsahu zjišťování pro virtuální počítače VMware
           href: set-discovery-scope.md
+        - name: Postup přidání přihlašovacích údajů serveru
+          href: add-server-credentials.md
         - name: Zjišťování aplikací/rolí/funkcí
           href: how-to-discover-applications.md
+        - name: Vyhledat instance SQL v existujícím projektu
+          href: how-to-discover-sql-existing-project.md
         - name: Analýza závislostí počítačů (na základě agentů)
           href: how-to-create-group-machine-dependencies.md
         - name: Analýza závislostí počítačů (bez agentů)
@@ -158,6 +166,8 @@
           href: how-to-create-a-group.md
         - name: Vytvoření hodnocení virtuálních počítačů Azure
           href: how-to-create-assessment.md
+        - name: Vytvoření posouzení Azure SQL
+          href: how-to-create-azure-sql-assessment.md
         - name: Vytvoření hodnocení AVS
           href: how-to-create-azure-vmware-solution-assessment.md
         - name: Posouzení databáze SQL Serveru
@@ -176,6 +186,8 @@
       items:
         - name: Přidání nástrojů pro migraci
           href: how-to-migrate.md
+        - name: Replikace pomocí ExpressRoute
+          href: replicate-using-expressroute.md
         - name: Příprava počítačů na migraci
           href: prepare-for-migration.md
         - name: Příprava serverů Windows 2003 na migraci

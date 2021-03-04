@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 03/03/2021
 ms.author: cherylmc
-ms.openlocfilehash: c2efd9ac137c226c1d3a77e2cb6ebe17d75cb496
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 751d11fcd4b5d4c33145ee7f2b7b49971b8927ae
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051526"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048250"
 ---
 # <a name="manage-secure-access-to-resources-in-spoke-vnets-for-user-vpn-clients"></a>Správa zabezpečeného přístupu k prostředkům v paprskových virtuální sítě pro klienty VPN uživatelů
 
@@ -50,8 +50,6 @@ Při výběru metody ověřování máte tři možnosti. Každá z metod má kon
 * **Ověřování pomocí protokolu RADIUS:** Získejte IP adresu serveru RADIUS, tajný klíč serveru RADIUS a informace o certifikátu.
 
 * **Certifikáty Azure:** Pro tuto konfiguraci se vyžadují certifikáty. Musíte buď vygenerovat nebo získat certifikáty. Pro každého klienta je vyžadován klientský certifikát. Kromě toho je potřeba nahrát informace o kořenovém certifikátu (veřejný klíč). Další informace o vyžadovaných certifikátech najdete v tématu [generování a export certifikátů](../vpn-gateway/vpn-gateway-certificates-point-to-site.md).
-
-Následující příklad ukazuje ověřování certifikátů Azure.
 
 [!INCLUDE [Define parameters](../../includes/virtual-wan-p2s-configuration-include.md)]
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 1712cedab9cef23108fcc48b8e09bdc3e33065c4
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 25785ae7a214d6122fb90b80e8f0725a3468c48d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679468"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047590"
 ---
 # <a name="add-a-polygon-layer-to-the-map-android-sdk"></a>Přidat mnohoúhelníkovou vrstvu na mapu (Android SDK)
 
@@ -97,6 +97,47 @@ Následující snímek obrazovky ukazuje, že výše uvedený kód vykresluje mn
 > [!TIP]
 > Při sbalení mnohoúhelníku s vrstvou čáry Nezapomeňte uzavřít všechny prstence v mnohoúhelníkech tak, aby každé pole bodů bylo stejného počátečního a koncového bodu. Pokud tato funkce není hotova, čára čáry pravděpodobně nepřipojí poslední bod mnohoúhelníku k prvnímu bodu.
 
+## <a name="fill-a-polygon-with-a-pattern"></a>Naplnění mnohoúhelníku vzorem
+
+Kromě naplnění mnohoúhelníku barvou můžete mnohoúhelník vyplnit pomocí vzorku obrázku. Načtěte vzorek obrázku do prostředků mapy spritch obrázků a pak na tento obrázek odkázat pomocí `fillPattern` Možnosti mnohoúhelníkové vrstvy.
+
+```java
+//Load an image pattern into the map image sprite.
+map.images.add("fill-checker-red", R.drawable.fill_checker_red);
+
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
+
+//Create a polygon.
+source.add(Polygon.fromLngLats(
+    Arrays.asList(
+        Arrays.asList(
+            Point.fromLngLat(-50, -20),
+            Point.fromLngLat(0, 40),
+            Point.fromLngLat(50, -20),
+            Point.fromLngLat(-50, -20)
+        )
+    )
+));
+
+//Create and add a polygon layer to render the polygon on the map, below the label layer.
+map.layers.add(new PolygonLayer(source,
+        fillPattern("fill-checker-red"),
+        fillOpacity(0.5f)
+), "labels");
+```
+
+V této ukázce byl do nakreslené složky aplikace načten následující obrázek.
+
+| ![Obrázek ikony fialové šipky](media/how-to-add-shapes-to-android-map/fill-checker-red.png)|
+|:-----------------------------------------------------------------------:|
+| fill_checker_red.png                                                    |
+
+Níže je snímek obrazovky výše uvedeného kódu, který vykresluje mnohoúhelník se vzorkem výplně na mapě.
+
+![Mnohoúhelník se vzorkem výplně vykresleným na mapě](media/how-to-add-shapes-to-android-map/android-polygon-pattern.jpg)
+
 ## <a name="next-steps"></a>Další kroky
 
 Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
@@ -109,3 +150,6 @@ Další ukázky kódu pro přidání do vašich map najdete v následujících �
 
 > [!div class="nextstepaction"]
 > [Přidání řádkové vrstvy](android-map-add-line-layer.md)
+
+> [!div class="nextstepaction"]
+> [Přidání vysunuté mnohoúhelníkové vrstvy](map-extruded-polygon-android.md)

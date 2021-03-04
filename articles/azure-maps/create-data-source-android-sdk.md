@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 78b0cbbdccc7d6853d4ce2821bf659e888680a5f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: fc68dc25aad3671a55e5c11cbee094b4027e7070
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674639"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047668"
 ---
 # <a name="create-a-data-source-android-sdk"></a>Vytvoření zdroje dat (Android SDK)
 
@@ -360,14 +360,17 @@ Azure Maps dodržuje [specifikaci vektorové dlaždice Mapbox](https://github.co
 - [](/rest/api/maps/traffic/gettrafficflowtile)  |  [Podrobnosti o formátu dat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles) v dokumentaci toku provozu
 - Azure Maps Creator taky umožňuje vytvořit vlastní vektorové dlaždice a získat přístup přes [vykreslování dlaždice získat 2](/rest/api/maps/renderv2/getmaptilepreview) .
 
+> [!TIP]
+> Když použijete dlaždice vektorového nebo rastrového obrázku ze služby Azure Maps Renderer s webovou sadou SDK, můžete nahradit `atlas.microsoft.com` zástupným symbolem `azmapsdomain.invalid` . Tento zástupný symbol bude nahrazen stejnou doménou, kterou používá mapa, a automaticky bude automaticky připojovat stejné podrobnosti ověřování. To významně zjednodušuje ověřování pomocí služby vykreslování při použití Azure Active Directory ověřování.
+
 Chcete-li zobrazit data ze zdroje vektorové dlaždice na mapě, připojte zdroj k jedné z vrstev vykreslování dat. Všechny vrstvy, které používají zdroj vektorů, musí `sourceLayer` v možnostech určovat hodnotu. Následující kód načte službu Azure Maps Vector Flow Vector dlaždice jako zdroj vektorové dlaždice a pak ji zobrazí na mapě pomocí spojnicové vrstvy. Tento zdroj dlaždice vektoru má jednu sadu dat ve zdrojové vrstvě s názvem "přenosový tok". Řádková data v této datové sadě obsahují vlastnost s názvem `traffic_level` , která se používá v tomto kódu k výběru barvy a škálování velikosti řádků.
 
 ```java
 //Formatted URL to the traffic flow vector tiles, with the maps subscription key appended to it.
-String trafficFlowUrl = "https://atlas.microsoft.com/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}&subscription-key=" + AzureMaps.getSubscriptionKey();
+String trafficFlowUrl = "https://azmapsdomain.invalid/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}";
 
 //Create a vector tile source and add it to the map.
-VectorTileSource source = new VectorTileSource("flowLayer",
+VectorTileSource source = new VectorTileSource(
     tiles(new String[] { trafficFlowUrl }),
     maxSourceZoom(22)
 );

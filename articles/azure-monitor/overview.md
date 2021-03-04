@@ -1,17 +1,16 @@
 ---
 title: Přehled Azure Monitor | Microsoft Docs
 description: Přehled služeb a funkcí Microsoftu, které přispívají k úplné strategii monitorování aplikací a služeb Azure
-ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2019
-ms.openlocfilehash: 00f1bec4d4117d9ccebb4440e3649dd9dff32058
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 544d6937e412e3e1cfc2cf4e520c02f3f804fc8c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717345"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047158"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
@@ -145,7 +144,7 @@ K dispozici je více rozhraní API pro čtení a zápis metrik a protokolů do a
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace:
 
-* [Metriky a protokoly](data-platform.md) pro data shromažďovaná nástrojem Azure monitor.
+* [Metriky a protokoly](https://docs.microsoft.com/azure/azure-monitor/data-platform#metrics) pro data shromažďovaná nástrojem Azure monitor.
 * [Zdroje dat](agents/data-sources.md) pro způsob, jakým jednotlivé komponenty vaší aplikace odesílají telemetrii.
 * [Dotazy protokolu](logs/log-query-overview.md) pro analýzu shromážděných dat
 * [Osvědčené postupy](/azure/architecture/best-practices/monitoring) pro monitorování cloudových aplikací a služeb.

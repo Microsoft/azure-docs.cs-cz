@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 02/22/2021
-ms.openlocfilehash: 887245bbbefa1c0232313b638203206b623d506b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: c466d7717dd1dad0ea9ee3f44088d1400cee083f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729704"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048178"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Co je nového v Azure Sentinel
 
@@ -32,8 +32,44 @@ Vyznačené funkce jsou aktuálně ve verzi PREVIEW. [Doplňkové podmínky Azur
 
 ## <a name="february-2021"></a>Únor 2021
 
+- [Datové konektory třetích stran](#third-party-data-connectors)
 - [UEBA Insights na stránce entity](#ueba-insights-in-the-entity-page)
 - [Vylepšené vyhledávání incidentů](#improved-incident-search)
+
+### <a name="third-party-data-connectors"></a>Datové konektory třetích stran
+
+Naše kolekce integrace třetích stran se pořád zvětšuje, ale během posledních dvou měsíců se přidaly třicet konektory. Tady je seznam:
+
+- [Antivirová ochrana proti útokům phishing a ochrana značky](connect-agari-phishing-defense.md)
+- [Akamai události zabezpečení](connect-akamai-security-events.md)
+- [Alsid pro službu Active Directory](connect-alsid-active-directory.md)
+- [Server Apache HTTP](connect-apache-http-server.md)
+- [Aruba ClearPass](connect-aruba-clearpass.md)
+- [CylancePROTECT BlackBerry](connect-data-sources.md)
+- [Broadcom Symantec DLP](connect-broadcom-symantec-dlp.md)
+- [Cisco FirePOWER eStreamer](connect-data-sources.md)
+- [Cisco Meraki](connect-cisco-meraki.md)
+- [Cisco Umbrella](connect-cisco-umbrella.md)
+- [UCS (Cisco Unified Computing System)](connect-cisco-ucs.md)
+- [Společnost ESET Enterprise Inspector](connect-data-sources.md)
+- [Vyesetit Centrum správy zabezpečení](connect-data-sources.md)
+- [Pracovní prostor Google (dříve G sada)](connect-google-workspace.md)
+- [Imperva WAF Gateway](connect-imperva-waf-gateway.md)
+- [Juniper SRX](connect-juniper-srx.md)
+- [Netskope](connect-data-sources.md)
+- [NXLog protokoly DNS](connect-nxlog-dns.md)
+- [NXLog Linux – audit](connect-nxlog-linuxaudit.md)
+- [Platforma Onapsis](connect-data-sources.md)
+- [Zabezpečení e-mailů na vyžádání Proofpoint (POD)](connect-proofpoint-pod.md)
+- [Znalostní báze správy ohrožení zabezpečení Qualys](connect-data-sources.md)
+- [Cloud služeb Salesforce](connect-salesforce-service-cloud.md)
+- [SonicWall firewall](connect-data-sources.md)
+- [Sophos Cloud Optix](connect-sophos-cloud-optix.md)
+- [Squid Proxy](connect-squid-proxy.md)
+- [Endpoint Protection Symantec](connect-data-sources.md)
+- [Thycotic Secret Server](connect-thycotic-secret-server.md)
+- [Trend Micro XDR](connect-data-sources.md)
+- [VMWare ESXi](connect-vmware-esxi.md)
 
 ### <a name="ueba-insights-in-the-entity-page"></a>UEBA Insights na stránce entity
 
@@ -66,6 +102,7 @@ Při hledání incidentů ve službě Azure Sentinel teď můžete vyhledávat p
 - [Průvodce analytickým pravidlem: vylepšené možnosti úprav dotazů (verze Public Preview)](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
 - [AZ. SecurityInsights PowerShell Module (Public Preview)](#azsecurityinsights-powershell-module-public-preview)
 - [Konektor SQL Database](#sql-database-connector)
+- [Konektor Dynamics 365](#dynamics-365-connector)
 - [Vylepšené komentáře k incidentům](#improved-incident-comments)
 - [Vyhrazené Log Analytics clustery](#dedicated-log-analytics-clusters)
 - [Spravované identity Logic Apps](#logic-apps-managed-identities)
@@ -81,7 +118,7 @@ Průvodce pravidlo naplánované analýzy Azure Sentinel teď poskytuje následu
 -   Podpora rozšířeného automatického dokončování.
 -   Ověřování dotazů v reálném čase. Chyby v dotazu se teď v posuvníku zobrazují jako červený blok a jako červená tečka v názvu karty **logika pravidla nastavení** . Kromě toho nelze uložit dotaz s chybami.
 
-Další informace najdete v tématu [kurz: detekce hrozeb](tutorial-detect-threats-built-in.md)předem.
+Další informace najdete v tématu [kurz: vytvoření vlastních pravidel analýzy pro detekci hrozeb](tutorial-detect-threats-custom.md).
 ### <a name="azsecurityinsights-powershell-module-public-preview"></a>AZ. SecurityInsights PowerShell Module (Public Preview)
 
 Azure Sentinel teď podporuje nový modul PowerShellu [AZ. SecurityInsights](https://www.powershellgallery.com/packages/Az.SecurityInsights/) .
@@ -99,6 +136,12 @@ Azure Sentinel teď poskytuje konektor Azure SQL Database, který umožňuje str
 Azure SQL je plně spravovaný databázový stroj PaaS (platforma jako služba), který zpracovává většinu funkcí správy databází, jako je upgrade, opravy, zálohování a monitorování, bez zásahu uživatele.
 
 Další informace najdete v tématu [připojení protokolů diagnostiky a auditu služby Azure SQL Database](connect-azure-sql-logs.md).
+
+### <a name="dynamics-365-connector"></a>Konektor Dynamics 365
+
+Azure Sentinel teď poskytuje konektor pro Microsoft Dynamics 365, který umožňuje shromažďovat protokoly aktivit uživatelů, správců a podpory aplikace Dynamics 365 do Azure Sentinel. Tato data můžete použít k tomu, abyste vám pomohli auditovat celé akce zpracování dat a analyzovat je, aby mohlo dojít k narušení zabezpečení.
+
+Další informace najdete v tématu [připojení protokolů aktivit Dynamics 365 ke službě Azure Sentinel](connect-dynamics-365.md).
 
 ### <a name="improved-incident-comments"></a>Vylepšené komentáře k incidentům
 
@@ -185,15 +228,14 @@ Azure Sentinel používá agenta Log Analytics k posílání událostí do vaše
 Další informace najdete v dokumentaci k [Log Analytics](../azure-monitor/agents/log-analytics-agent.md) a v [poznámkách k verzi agenta Log Analytics](https://github.com/microsoft/OMS-Agent-for-Linux/releases).
 ## <a name="november-2020"></a>Listopad 2020
 
-- [Monitorování Logic Apps Playbooky ve službě Azure Sentinel](#monitor-your-logic-apps-playbooks-in-azure-sentinel)
+- [Monitorování stavu vašeho Playbookyu v Azure Sentinel](#monitor-your-playbooks-health-in-azure-sentinel)
 - [Konektor programu Microsoft 365 Defender (Public Preview)](#microsoft-365-defender-connector-public-preview)
-### <a name="monitor-your-logic-apps-playbooks-in-azure-sentinel"></a>Monitorování Logic Apps Playbooky ve službě Azure Sentinel
 
-Služba Azure Sentinel se teď integruje s [aplikacemi Azure log](../logic-apps/index.yml), což je cloudová služba, která vám pomůže plánovat, automatizovat a orchestrovat úkoly, obchodní procesy a pracovní postupy.
+### <a name="monitor-your-playbooks-health-in-azure-sentinel"></a>Monitorování stavu vašeho Playbookyu v Azure Sentinel
 
-Použijte aplikaci logiky Azure v Azure Sentinel jako PlayBook, která se dá automaticky vyvolat při vytvoření incidentu, nebo při třídění a práci s incidenty. 
+Služba Azure Sentinel playbooky vychází z pracovních postupů vytvořených v [Azure log Apps](../logic-apps/index.yml), což je cloudová služba, která pomáhá plánovat, automatizovat a orchestrovat úkoly, obchodní procesy a pracovní postupy. Playbooky se dá automaticky vyvolat při vytvoření incidentu nebo při třídění a práci s incidenty. 
 
-Pokud chcete poskytnout přehled o stavu, výkonu a využití vašich playbooky, včetně těch, které přidáte pomocí Azure Logic Apps, Přidali jsme do služby [Azure Workbook](../azure-monitor/visualize/workbooks-overview.md) s názvem **playbooky monitoring Health**. 
+Abychom vám poskytli přehled o stavu, výkonu a využití vašich playbooky, Přidali jsme [sešit](../azure-monitor/visualize/workbooks-overview.md) s názvem **monitorování stavu playbooky**. 
 
 Pomocí sešitu **sledování stavu playbooky** můžete monitorovat stav svého playbookyu, nebo se můžete podívat na anomálie v množství úspěšných nebo neúspěšných spuštění. 
 

@@ -1,23 +1,22 @@
 ---
 title: Co je to přehledy virtuálních počítačů?
 description: Přehled služby VM Insights, která monitoruje stav a výkon virtuálních počítačů Azure a automaticky zjišťuje a mapuje součásti aplikací a jejich závislosti.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2020
-ms.openlocfilehash: 967ff9672f55af3e9c5d2e7c3c3dbc7d2ff6cb3c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 18e1fdcdee347a057c452f6170f36ec7f1f43244
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707366"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046410"
 ---
 # <a name="overview-of-vm-insights"></a>Přehled nástroje VM Insights
 
 Cloud Insights monitoruje výkon a stav virtuálních počítačů a virtuálních počítačů, včetně jejich spuštěných procesů a závislostí na jiných prostředcích. Může přispět k předvídatelnému výkonu a dostupnosti důležitých aplikací tím, že identifikují problémová místa výkonu a problémy se sítí a také vám pomůže pochopit, jestli problém souvisí s jinými závislostmi.
 
-Přehledy virtuálních počítačů podporují operační systémy Windows a Linux na těchto počítačích:
+Přehledy virtuálních počítačů podporují operační systémy Windows a Linux na následujících počítačích:
 
 - Virtuální počítače Azure
 - Škálovací sady virtuálních počítačů Azure
@@ -39,7 +38,7 @@ Pro virtuální počítače nejsou k dispozici žádné přímé náklady, ale z
 - Pravidla výstrah na základě dat protokolů a stavu.
 - Oznámení se odesílají z pravidel výstrah.
 
-Velikost protokolu se liší podle délky řetězců čítačů výkonu a může se zvýšit počtem logických disků a síťových adaptérů, které jsou přiděleny virtuálnímu počítači. Pokud již používáte Service Map, zobrazí se jediná data o výkonu, která se odesílají do `InsightsMetrics` datového typu Azure monitor.
+Velikost protokolu se liší podle délky řetězců čítačů výkonu a může se zvýšit počtem logických disků a síťových adaptérů, které jsou přiděleny virtuálnímu počítači. Pokud už Service Map používáte, bude se jediná změna zobrazovat data o výkonu, která se odesílají do Azure Monitor `InsightsMetrics` datového typu.
 
 
 ## <a name="configuring-vm-insights"></a>Konfigurace Cloud Insights

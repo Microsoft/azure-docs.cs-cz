@@ -7,12 +7,12 @@ author: dlepow
 ms.author: danlep
 ms.service: container-registry
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 4f3210fb46d5b4a772cdbb125cc5481d7cdd5995
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 5dc5d27d0364bf64d9f8b695213c2f71cc822949
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100092995"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048484"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-container-registry"></a>Azure Policy předdefinované definice pro Azure Container Registry
 
@@ -26,6 +26,7 @@ Název každé předdefinované definice zásad odkazuje na definici zásady v A
 
 ## <a name="next-steps"></a>Další kroky
 
+- Pokyny k [přiřazování zásad a kontrole dodržování předpisů](container-registry-azure-policy.md)najdete v tématu.
 - Projděte si předdefinované možnosti v [úložišti služby Azure Policy na GitHubu](https://github.com/Azure/azure-policy).
 - Projděte si [strukturu definic Azure Policy](../governance/policy/concepts/definition-structure.md).
 - Projděte si [Vysvětlení efektů zásad](../governance/policy/concepts/effects.md).

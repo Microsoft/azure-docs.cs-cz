@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 61d7a295d86fd7da74dee03cd35c79feea0218ed
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 7e4af0647a2810a27001c15a5030fca660828147
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681492"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047736"
 ---
 # <a name="data-driven-style-expressions-android-sdk"></a>Výrazy stylu řízené daty (Android SDK)
 
@@ -470,7 +470,7 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 );
 ```
 
-Pokud jsou všechny parametry barev čísla, není nutné je zabalit pomocí `literal` výrazu. Příklad:
+Pokud jsou všechny parametry barev čísla, není nutné je zabalit pomocí `literal` výrazu. Například:
 
 ```java
 BubbleLayer layer = new BubbleLayer(dataSource,
@@ -662,7 +662,7 @@ HeatMapLayer layer = new HeatMapLayer(dataSource,
 
 Kromě použití hladkého přechodu na zabarvovat Heat mapy lze barvy zadat v rámci sady rozsahů pomocí `step` výrazu. Použití `step` výrazu pro Colorizing Heat mapy vizuálně rozdělí hustotu do rozsahů, které se podobají obrysu nebo rozvržení paprskového stylu.  
 
-```java 
+```java
 HeatMapLayer layer = new HeatMapLayer(dataSource,
     heatmapColor(
         step(
@@ -679,6 +679,36 @@ HeatMapLayer layer = new HeatMapLayer(dataSource,
 ```
 
 Další informace najdete v dokumentaci k [Přidání vrstvy Heat mapy](map-add-heat-map-layer-android.md) .
+
+### <a name="line-progress-expression"></a>Výraz průběhu řádku
+
+Výraz průběhu řádku načítá průběh čáry přechodu v čárové vrstvě a je definován jako `lineProgress()` . Tato hodnota je číslo mezi 0 a 1. Používá se v kombinaci s `interpolation` `step` výrazem or. Tento výraz lze použít pouze s `strokeGradient` možností čáry vrstvy.
+
+> [!NOTE]
+> `strokeGradient`Možnost čáry spojnice vyžaduje `lineMetrics` možnost nastavení zdroje dat na hodnotu `true` .
+
+**Příklad**
+
+V tomto příkladu se používá `lineProgress()` výraz pro použití barevného přechodu na tah čáry.
+
+```javascript
+LineLayer layer = new LineLayer(source,
+    strokeGradient(
+        interpolate(
+            linear(),
+            lineProgress(),
+            stop(0, color(Color.BLUE)),
+            stop(0.1, color(Color.argb(255, 65, 105, 225))), //Royal Blue
+            stop(0.3, color(Color.CYAN)),
+            stop(0.5, color(Color.argb(255,0, 255, 0))), //Lime
+            stop(0.7, color(Color.YELLOW)),
+            stop(1, color(Color.RED))
+        )
+    )
+);
+```
+
+[Zobrazit příklad v reálném čase](map-add-line-layer.md#line-stroke-gradient)
 
 ### <a name="text-field-format-expression"></a>Výraz formátu textového pole
 

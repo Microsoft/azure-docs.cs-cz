@@ -4,6 +4,8 @@
   items:
     - name: Co je šablona ARM?
       href: overview.md
+    - name: Bicep – přehled
+      href: bicep-overview.md
 - name: Rychlé starty
   items:
     - name: Vytváření šablon – portál
@@ -324,9 +326,7 @@
       href: template-best-practices.md
     - name: Bicep
       items:
-        - name: Přehled
-          href: bicep-overview.md
-        - name: Návrat z formátu JSON na bicep
+        - name: Porovnávání formátu JSON s bicep
           href: compare-template-syntax.md
     - name: Nejčastější dotazy
       href: frequently-asked-questions.md

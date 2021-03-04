@@ -1,17 +1,16 @@
 ---
 title: Používání řešení Service Map v Azure | Microsoft Docs
 description: Service Map je řešení v Azure, které automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikace mezi těmito službami. Tento článek poskytuje podrobné informace o nasazení Service Map ve vašem prostředí a jejich použití v nejrůznějších scénářích.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 688adcf0012f8871c4034cbba6ce2ddcacdbcc43
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ad3f8821189e6e7aabb5653e5f938bb73f57a34b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717141"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046988"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Používání řešení Service Map v Azure
 
@@ -26,7 +25,7 @@ Tento článek popisuje podrobnosti o připojování a používání Service Map
 * [Agent závislostí](vminsights-enable-overview.md#agents) nainstalovaný na počítači s Windows nebo na serveru se systémem Linux.
 
 >[!NOTE]
->Pokud jste už nasadili Service Map, můžete si teď také zobrazit vaše mapy v nástroji VM Insights, které obsahují další funkce pro monitorování stavu a výkonu virtuálních počítačů. Další informace najdete v tématu [Přehled virtuálních počítačů Insights](../vm/vminsights-overview.md). Další informace o rozdílech mezi funkcí Service Map řešení a mapa přehledů virtuálních počítačů najdete v následujících [nejčastějších dotazech](../faq.md#azure-monitor-for-vms).
+>Pokud jste už nasadili Service Map, můžete si teď také zobrazit vaše mapy v nástroji VM Insights, které obsahují další funkce pro monitorování stavu a výkonu virtuálních počítačů. Další informace najdete v tématu [Přehled virtuálních počítačů Insights](../vm/vminsights-overview.md). Další informace o rozdílech mezi funkcí Service Map řešení a mapa přehledů virtuálních počítačů najdete v následujících [nejčastějších dotazech](../faq.md#vm-insights).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 

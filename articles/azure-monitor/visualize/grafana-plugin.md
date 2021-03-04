@@ -1,15 +1,14 @@
 ---
 title: Monitorování služeb a aplikací Azure pomocí Grafana
 description: Směrovat Azure Monitor a Application Insights data, abyste je mohli zobrazit v Grafana.
-ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/06/2017
-ms.openlocfilehash: e882b9d19564dab1ef2c0abb34b5d557cb4a5821
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: decd0353bcb2cf048fd5591ea8c895cf22944809
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612592"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048654"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Monitorování služeb Azure v Grafana
 Služby a aplikace Azure teď můžete monitorovat z [Grafana](https://grafana.com/) pomocí [modulu plug-in zdroje dat Azure monitor](https://grafana.com/plugins/grafana-azure-monitor-datasource). Modul plug-in shromažďuje data o výkonu aplikací shromážděná Azure Monitor, včetně různých protokolů a metrik. Tato data pak můžete zobrazit na řídicím panelu Grafana.

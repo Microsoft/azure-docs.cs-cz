@@ -1,17 +1,16 @@
 ---
 title: Ukázky šablon Správce prostředků pro virtuální počítač Insights
 description: Ukázky Azure Resource Manager šablon pro nasazení a configureVM přehledy.
-ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: fa18a5f2af79d75c4eba8c6822f1a7ed8ca4efa8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2ee447b1e5f72ce916808a5832f999eea493994c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733750"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046835"
 ---
 # <a name="resource-manager-template-samples-for-vm-insights"></a>Ukázky šablon Správce prostředků pro virtuální počítač Insights
 Tento článek obsahuje vzorové [Azure Resource Manager šablony](../../azure-resource-manager/templates/template-syntax.md) , které umožňují PŘEHLEDy virtuálních počítačů na virtuálních počítačích. Každá ukázka obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.

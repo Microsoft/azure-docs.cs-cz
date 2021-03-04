@@ -1,6 +1,6 @@
 - name: Vyhrazený fond SQL (dříve SQL DW)
   href: sql-data-warehouse-overview-what-is.md
-- name: Přepnutí na Azure Synapse
+- name: Přepněte do Azure synapse >
   href: ../overview-what-is.md
 - name: Přehled
   items:

@@ -2,17 +2,16 @@
 title: Monitorování virtuálních počítačů Azure pomocí Azure Monitor
 description: Popisuje, jak shromažďovat a analyzovat data monitorování z virtuálních počítačů v Azure pomocí Azure Monitor.
 ms.service: azure-monitor
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 6209389843b19d933bdce2726b55946b8839a264
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2c93471436030f9260f4fa0d95d656c27d382346
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731370"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047039"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Monitorování virtuálních počítačů Azure pomocí Azure Monitor
 Tento článek popisuje, jak pomocí Azure Monitor shromažďovat a analyzovat data monitorování z virtuálních počítačů Azure a udržovat jejich stav. Virtuální počítače je možné monitorovat z hlediska dostupnosti a výkonu pomocí Azure Monitor jako u jakéhokoli [jiného prostředku Azure](../essentials/monitor-azure-resource.md), ale jsou jedinečné od jiných prostředků, protože potřebujete také monitorovat hostovaný operační systém a systémy a úlohy, které jsou v něm spuštěné. 
@@ -56,7 +55,7 @@ Chcete-li povolit všechny funkce Azure Monitor pro monitorování virtuálního
 | Krok konfigurace | Dokončené akce | Funkce povoleny |
 |:---|:---|:---|
 | Žádná konfigurace | – Metriky hostitelských platforem shromážděné do metrik.<br>– Byl shromážděn protokol aktivit. | – Průzkumník metrik pro hostitele.<br>– Výstrahy metrik pro hostitele.<br>– Výstrahy protokolu aktivit. |
-| [Povolit přehledy virtuálních počítačů](#enable-azure-monitor-for-vms) | -Log Analytics agenta nainstalováno.<br>– Byl nainstalován agent závislosti.<br>-Data o výkonu hosta shromážděna do protokolů.<br>-Podrobnosti o procesech a závislostech shromážděné do protokolů. | – Grafy výkonu a sešity pro data o výkonu hosta.<br>-V protokolu se dotazuje na data výkonu hostů.<br>– Výstrahy protokolu pro data výkonu hosta.<br>– Mapa závislostí. |
+| [Povolit přehledy virtuálních počítačů](#enable-vm-insights) | -Log Analytics agenta nainstalováno.<br>– Byl nainstalován agent závislosti.<br>-Data o výkonu hosta shromážděna do protokolů.<br>-Podrobnosti o procesech a závislostech shromážděné do protokolů. | – Grafy výkonu a sešity pro data o výkonu hosta.<br>-V protokolu se dotazuje na data výkonu hostů.<br>– Výstrahy protokolu pro data výkonu hosta.<br>– Mapa závislostí. |
 | [Instalace diagnostického rozšíření a agenta telegraf](#enable-diagnostics-extension-and-telegraf-agent) | – Údaje o výkonu hosta shromážděné do metrik. | – Průzkumník metrik pro hosta.<br>– Výstrahy metrik pro hosta.  |
 | [Nakonfigurujete pracovní prostor služby Log Analytics](#configure-log-analytics-workspace) | -Události shromážděné z hosta. | -Zaznamenává dotaz na události typu Host.<br>– Výstrahy protokolu pro události typu Host. |
 | [Vytvořit nastavení diagnostiky pro virtuální počítač](#collect-platform-metrics-and-activity-log) | – Metriky platformy shromážděné do protokolů.<br>-Protokol aktivit byl shromážděn do protokolů. | – Dotazy protokolu pro metriky hostitele.<br>– Výstrahy protokolu pro metriky hostitele.<br>– Protokoluje dotazy pro protokol aktivit.

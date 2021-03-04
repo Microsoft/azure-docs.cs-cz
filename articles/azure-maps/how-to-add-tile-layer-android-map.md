@@ -3,17 +3,18 @@ title: Přidat dlaždicovou vrstvu do map pro Android | Mapy Microsoft Azure
 description: Naučte se, jak přidat vrstvu dlaždice na mapu. Podívejte se na příklad, který používá Android SDK Azure Maps k přidání překrytí paprsků počasí na mapu.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/08/2020
+ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 8ea6f44c47c5cd4d223b053640f65827f46db482
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 6a920dc222cae4aedd77b667644de317637bbb69
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679287"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047498"
 ---
 # <a name="add-a-tile-layer-to-a-map-android-sdk"></a>Přidání vrstvy dlaždice na mapu (Android SDK)
 
@@ -36,6 +37,7 @@ Adresa URL dlaždice předaná do vrstvy dlaždice musí být adresa URL protoko
 * `{quadkey}` -Dlaždice quadkey identifikátor založený na konvenci pojmenování systému dlaždice mapy Bing.
 * `{bbox-epsg-3857}` – Řetězec ohraničujícího pole ve formátu `{west},{south},{east},{north}` v prostorovém referenčním systému EPSG 3857.
 * `{subdomain}` – Zástupný symbol pro hodnoty subdomény, pokud je zadána hodnota subdomény.
+* `azmapsdomain.invalid` – Zástupný symbol pro zarovnání domény a ověřování žádostí dlaždic se stejnými hodnotami, které používá mapa. Tuto hodnotu použijte při volání služby dlaždice hostované Azure Maps.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -44,6 +46,8 @@ Chcete-li dokončit proces v tomto článku, je nutné nainstalovat [Azure Maps 
 ## <a name="add-a-tile-layer-to-the-map"></a>Přidat na mapu dlaždicovou vrstvu
 
 Tento příklad ukazuje, jak vytvořit dlaždicovou vrstvu, která odkazuje na sadu dlaždic. V této ukázce se používá systém dlaždic x, y, lupy. Zdrojem této vrstvy dlaždic je [projekt OpenSeaMap](https://openseamap.org/index.php), který obsahuje námořní grafy s přeplněnými zdroji. Často se při prohlížení vrstev dlaždic je žádoucí, aby bylo možné jasně zobrazit popisky měst na mapě. Toto chování lze dosáhnout vložením vrstvy dlaždice pod vrstvy popisku mapy.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 TileLayer layer = new TileLayer(
@@ -57,16 +61,31 @@ TileLayer layer = new TileLayer(
 map.layers.add(layer, "labels");
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = TileLayer(
+    tileUrl("https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png"),
+    opacity(0.8f),
+    tileSize(256),
+    minSourceZoom(7),
+    maxSourceZoom(17)
+)
+
+map.layers.add(layer, "labels")
+```
+
+::: zone-end
+
 Následující snímek obrazovky ukazuje výše uvedený kód, který zobrazuje dlaždici na mapě s tmavým stylem stupňů šedi.
 
 ![Mapa Androidu znázorňující dlaždici vrstev](media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak nastavit styly mapy, najdete v následujícím článku.
+V následujícím článku se dozvíte více o způsobech překrytí snímků na mapě.
 
 > [!div class="nextstepaction"]
-> [Změna stylu mapy](set-android-map-styles.md)
-
-> [!div class="nextstepaction"]
-> [Přidat Heat mapu](map-add-heat-map-layer-android.md)
+> [Vrstva obrázku](map-add-image-layer-android.md)

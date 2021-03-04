@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 13ac18abd0a557d02435c3805e1ab86bcbf1ff84
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d9e3e0f96d235829928c1f7c79864b1dc732f9e4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391979"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046342"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Ověření podřízeného zařízení pro Azure IoT Hub
 
@@ -35,7 +35,7 @@ Proveďte kroky v části [konfigurace IoT Edge zařízení, které bude fungova
 
 Pokud používáte ověřování X. 509, vygenerujete certifikáty pro vaše zařízení pro příjem dat. Používejte stejný certifikát kořenové certifikační autority a skript pro generování certifikátů, který jste použili pro článek transparentní brány, který je k dispozici k opětovnému použití.
 
-Tento článek odkazuje na *název hostitele brány* na několika místech. Název hostitele brány je deklarovaný v parametru **hostname** souboru config. yaml na zařízení IoT Edge brány. Je odkazováno v připojovacím řetězci zařízení pro příjem dat. Název hostitele brány musí být přeložitelný na IP adresu, a to buď pomocí DNS, nebo zadáním souboru hostitele v zařízení pro příjem dat.
+Tento článek odkazuje na *název hostitele brány* na několika místech. Název hostitele brány je deklarovaný v parametru **hostname** konfiguračního souboru na zařízení IoT Edge brány. Je odkazováno v připojovacím řetězci zařízení pro příjem dat. Název hostitele brány musí být přeložitelný na IP adresu, a to buď pomocí DNS, nebo zadáním souboru hostitele v zařízení pro příjem dat.
 
 ## <a name="register-device-with-iot-hub"></a>Registrace zařízení pomocí IoT Hub
 
@@ -192,7 +192,7 @@ Připojovací řetězce pro zařízení pro příjem dat potřebují následují
 * Metoda ověřování, bez ohledu na certifikáty symetrického klíče nebo X. 509
   * Pokud používáte ověřování symetrického klíče, zadejte buď primární, nebo sekundární klíč: `SharedAccessKey={key}`
   * Pokud používáte ověřování pomocí certifikátu X. 509, zadejte příznak: `x509=true`
-* Zařízení brány, ke kterému se zařízení připojuje Zadejte hodnotu **názvu hostitele** ze souboru config. yaml zařízení IoT Edge brány: `GatewayHostName={gateway hostname}`
+* Zařízení brány, ke kterému se zařízení připojuje Zadejte hodnotu **názvu hostitele** z konfiguračního souboru zařízení IoT Edge brány: `GatewayHostName={gateway hostname}`
 
 Celý připojovací řetězec se všemi dohromady vypadá takto:
 
@@ -206,7 +206,7 @@ Ani
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
-Díky relaci nadřazený-podřízený můžete připojovací řetězec zjednodušit voláním brány přímo jako hostitele připojení. Příklad:
+Díky relaci nadřazený-podřízený můžete připojovací řetězec zjednodušit voláním brány přímo jako hostitele připojení. Například:
 
 ```console
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz

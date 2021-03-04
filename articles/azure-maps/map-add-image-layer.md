@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 43de832095e2c2dd674a156da914ed26f1e472d0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: f0c24940e606020dc45e5a000cfcb030fd806d4b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892940"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047481"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Přidat vrstvu obrázku do mapy
 
@@ -57,7 +57,7 @@ Zde je ukázka kompletního běžícího kódu předchozího kódu.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Jednoduchá vrstva obrázku' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>V CodePen () na se podívejte na Azure Maps <a href='https://codepen.io/azuremaps/pen/eQodRo/'>vrstvu obrázku jednoduchého</a> pera <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='Jednoduchá vrstva obrázku' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>V CodePen () na se podívejte na Azure Maps <a href='https://codepen.io/azuremaps/pen/eQodRo/'>vrstvu obrázku jednoduchého</a> pera <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="import-a-kml-file-as-ground-overlay"></a>Import souboru KML jako překryvné desky
@@ -71,13 +71,16 @@ Kód používá statickou `getCoordinatesFromEdges` funkci ze třídy [ImageLaye
 <iframe height='500' scrolling='no' title='Základní překrytí KML jako vrstva obrázku' src='//codepen.io/azuremaps/embed/EOJgpj/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/EOJgpj/'>překrytí KML pera jako obrázek</a> pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
+> [!TIP]
+> Pomocí `getPixels` funkcí a `getPositions` třídy obrazové vrstvy můžete převádět mezi geografickými souřadnicemi umístěné vrstvy obrazu a souřadnicích lokálních obrazových bodů.
+
 ## <a name="customize-an-image-layer"></a>Přizpůsobení vrstvy obrázku
 
 Vrstva obrázku má mnoho možností stylů. Tady je nástroj pro jejich vyzkoušení.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Možnosti vrstvy obrázku' src='//codepen.io/azuremaps/embed/RqOGzx/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>V CodePen () na se podívejte na Azure Maps <a href='https://codepen.io/azuremaps/pen/RqOGzx/'>Možnosti vrstvy obrázku</a> pera <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Možnosti vrstvy obrázku' src='//codepen.io/azuremaps/embed/RqOGzx/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>V CodePen () na se podívejte na Azure Maps <a href='https://codepen.io/azuremaps/pen/RqOGzx/'>Možnosti vrstvy obrázku</a> pera <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'></a>.
 </iframe>
 
 ## <a name="next-steps"></a>Další kroky

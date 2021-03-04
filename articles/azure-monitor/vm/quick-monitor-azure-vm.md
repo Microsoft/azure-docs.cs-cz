@@ -2,17 +2,16 @@
 title: Monitorování virtuálního počítače Azure pomocí Azure Monitor
 description: Naučte se shromažďovat a analyzovat data pro virtuální počítač Azure v Azure Monitor.
 ms.service: azure-monitor
-ms. subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: fa0360d6730293f3817d63e31b24464a0e4950ce
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7efd8baf54aeacbd2f55640240a15f2517dcd904
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725471"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046920"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Rychlý Start: monitorování virtuálního počítače Azure pomocí Azure Monitor
 [Azure monitor](../overview.md) spustí shromažďování dat z virtuálních počítačů Azure a okamžik jejich vytvoření. V tomto rychlém startu se dozvíte, jak se budou automaticky shromažďovat data pro virtuální počítač Azure a jak je zobrazit v Azure Portal. Pak pro virtuální počítač povolíte [přehledy pro virtuální](../vm/vminsights-overview.md) počítače, které umožní agentům na virtuálním počítači shromažďovat a analyzovat data z hostovaného operačního systému, včetně procesů a jejich závislostí.

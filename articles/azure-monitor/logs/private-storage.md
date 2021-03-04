@@ -1,17 +1,16 @@
 ---
 title: Používání účtů úložiště spravovaných zákazníkem v Log Analytics ve službě Azure Monitor
 description: Použití vlastního účtu úložiště pro Log Analytics scénáře
-ms.subservice: logs
 ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: 4161f2f4ced848eb02d395dfb2da35d64f0c0fb6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 69b5927c73dac14c76b94a4ee5bbb21449f8ec98
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723057"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047447"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Používání účtů úložiště spravovaných zákazníkem v Log Analytics ve službě Azure Monitor
 
@@ -23,7 +22,7 @@ Log Analytics spoléhá na Azure Storage v různých scénářích. Toto použit
 ## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>Ingestování protokolů rozšíření Azure Diagnostics (WAD/LAD)
 Agenti rozšíření Azure Diagnostics (označované také jako WAD a LAD agenti pro systémy Windows a Linux) shromažďují různé protokoly operačního systému a ukládají je do účtu úložiště spravovaného zákazníky. Pak můžete tyto protokoly ingestovat do Log Analytics, abyste je zkontrolovali a analyzovali.
 ### <a name="how-to-collect-azure-diagnostics-extension-logs-from-your-storage-account"></a>Jak shromažďovat protokoly rozšíření Azure Diagnostics z účtu úložiště
-Připojte účet úložiště k pracovnímu prostoru Log Analytics jako zdroj dat úložiště pomocí [Azure Portal](../essentials/diagnostics-extension-logs.md#collect-logs-from-azure-storage) nebo zavoláním [rozhraní API služby Storage Insights](/rest/api/loganalytics/storage%20insights/createorupdate).
+Připojte účet úložiště k pracovnímu prostoru Log Analytics jako zdroj dat úložiště pomocí [Azure Portal](../agents/diagnostics-extension-logs.md#collect-logs-from-azure-storage) nebo zavoláním [rozhraní API služby Storage Insights](/rest/api/loganalytics/storage%20insights/createorupdate).
 
 Podporované datové typy:
 * Syslog

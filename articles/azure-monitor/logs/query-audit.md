@@ -1,17 +1,16 @@
 ---
 title: Dotazy auditu v Azure Monitor dotazy protokolu
 description: Podrobnosti o protokolech auditu dotazů protokolu, které poskytují telemetrii o dotazech protokolů spouštěných v Azure Monitor.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
-ms.openlocfilehash: 70741e91830027e210afce75e93d931d70bdbed1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 28dfac7de8e73adf577b0a13e5fbd8740b1e3b06
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610780"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047413"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Auditovat dotazy v protokolech Azure Monitor (Preview)
 Protokoly auditu dotazů na protokol poskytují telemetrii o dotazech protokolů spouštěných v Azure Monitor. Obsahuje například informace o tom, kdy se dotaz spustil, kdo ho spustil, jaký nástroj se použil, text dotazu a Statistika výkonu popisující spuštění dotazu.
@@ -37,7 +36,7 @@ Můžete získat příklad Správce prostředků šablonu z [nastavení diagnost
 ## <a name="audit-data"></a>Data auditu
 Záznam auditu se vytvoří pokaždé, když se spustí dotaz. Pokud data odešlete do pracovního prostoru Log Analytics, uloží se do tabulky s názvem *LAQueryLogs*. Následující tabulka popisuje vlastnosti v jednotlivých záznamech dat auditu.
 
-| Pole | Description |
+| Pole | Popis |
 |:---|:---|
 | TimeGenerated         | Čas UTC při odeslání dotazu. |
 | CorrelationId         | Jedinečné ID pro identifikaci dotazu. Dá se použít při řešení potíží při kontaktování Microsoftu o pomoc. |

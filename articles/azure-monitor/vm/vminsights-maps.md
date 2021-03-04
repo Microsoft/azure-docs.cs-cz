@@ -1,17 +1,16 @@
 ---
 title: Zobrazení závislostí aplikace s využitím virtuálních počítačů Insights
 description: Mapa je funkce pro službu VM Insights. Automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Tento článek poskytuje podrobné informace o tom, jak používat funkci map v různých scénářích.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: 19da3e3e02581ce9fad080bb23bc48dcb9a3ceb3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 267ec0ed01fb85e9e29b0b8c9294d20d610db8fb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719640"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046563"
 ---
 # <a name="use-the-map-feature-of-vm-insights-to-understand-application-components"></a>Použití funkce map pro službu VM Insights k porozumění součástem aplikace
 V části VM Insights můžete zobrazit zjištěné součásti aplikace na virtuálních počítačích s Windows a Linux, které běží v Azure nebo ve vašem prostředí. Virtuální počítače můžete sledovat dvěma způsoby. Zobrazit mapu přímo z virtuálního počítače nebo zobrazit mapu z Azure Monitor, abyste viděli komponenty napříč skupinami virtuálních počítačů. Tento článek vám pomůže pochopit tyto dvě metody zobrazení a způsob použití funkce map. 

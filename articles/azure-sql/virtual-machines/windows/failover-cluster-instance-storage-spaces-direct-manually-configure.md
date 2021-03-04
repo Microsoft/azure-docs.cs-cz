@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 6ed5e11a8492314e99b9f105d259fa910dcdb77d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: aa19cf6b59b1efa4b14501fbf64e319da3e4c0b3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357802"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048637"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Vytvoření FCI s využitím Prostory úložiště s přímým přístupem (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -51,7 +51,7 @@ Předchozí diagram znázorňuje následující prostředky ve stejné skupině 
    > Celé řešení můžete vytvořit v Azure ze šablony. Příklad šablony je k dispozici na stránce [šablony Azure pro rychlý Start](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad) pro GitHub. Tento příklad není navržený nebo testován pro žádnou konkrétní úlohu. Můžete spustit šablonu a vytvořit SQL Server FCI s úložištěm Prostory úložiště s přímým přístupem připojeným k vaší doméně. Můžete vyhodnotit šablonu a upravit ji pro vaše účely.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před dokončením kroků v tomto článku byste už měli mít:
 
@@ -236,6 +236,8 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 Pokud chcete směrovat provoz odpovídající aktuálnímu primárnímu uzlu, nakonfigurujte možnost připojení, která je vhodná pro vaše prostředí. Můžete vytvořit [Nástroj pro vyrovnávání zatížení Azure](failover-cluster-instance-vnn-azure-load-balancer-configure.md) , nebo pokud používáte SQL Server 2019 CU2 (nebo novější) a Windows Server 2016 (nebo novější), můžete místo toho použít funkci [názvu distribuované sítě](failover-cluster-instance-distributed-network-name-dnn-configure.md) . 
 
+Další podrobnosti o možnostech připojení clusteru najdete v tématu [Směrování hadr připojení k SQL Server na virtuálních počítačích Azure](hadr-cluster-best-practices.md#connectivity). 
+
 ## <a name="limitations"></a>Omezení
 
 - Virtuální počítače Azure podporují službu Microsoft DTC (Distributed Transaction Coordinator) (MSDTC) na Windows serveru 2019 s úložištěm v CSV a [standardním nástrojem pro vyrovnávání zatížení](../../../load-balancer/load-balancer-overview.md).
@@ -250,6 +252,6 @@ Pokud Prostory úložiště s přímým přístupem není pro vás vhodné řeš
 
 Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) a [osvědčených postupech konfigurace clusteru](hadr-cluster-best-practices.md). 
 
-Další informace najdete tady: 
+Další informace naleznete v tématu: 
 - [Technologie clusterů Windows](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server instancí clusteru s podporou převzetí služeb při selhání](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

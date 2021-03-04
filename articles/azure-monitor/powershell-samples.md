@@ -1,18 +1,17 @@
 ---
 title: Ukázky Azure Monitor PowerShellu
 description: Použijte PowerShell k přístupu k funkcím Azure Monitor, jako je automatické škálování, výstrahy, Webhooky a vyhledávání protokolů aktivit.
-ms.subservice: ''
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9f43531e6b81b9bd4a294d70e9b8091463cf507a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1aa0d44dcb73a925494c0bc4aae43dc93e5a33d0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627057"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047056"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Ukázky Azure Monitor PowerShellu
 Tento článek ukazuje ukázky příkazů PowerShellu, které vám pomůžou při přístupu k funkcím Azure Monitor.
@@ -151,7 +150,7 @@ Následující tabulka popisuje parametry a hodnoty používané k vytvoření v
 
 | parameter | hodnota |
 | --- | --- |
-| Name |simpletestdiskwrite |
+| Název |simpletestdiskwrite |
 | Umístění tohoto pravidla výstrahy |East US |
 | ResourceGroup |montest |
 | Parametrem targetresourceid |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |

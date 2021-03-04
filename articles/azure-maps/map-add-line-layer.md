@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 9cf2f4876d62572ace118562fe5760f2b4010fa5
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: fedf1bc37661100404106859d3aef52b3eddf06d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891155"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048133"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>Přidat řádkovou vrstvu do mapy
 
@@ -66,7 +66,7 @@ Podívejte se na <a href='https://codepen.io/azuremaps/pen/drBJwX/'>šipku zobra
 
 ## <a name="add-a-stroke-gradient-to-a-line"></a>Přidání přechodu mezi tahy na čáru
 
-Pro čáru můžete použít jednu barvu tahu. Můžete také vyplnit řádek s přechodem barev pro zobrazení přechodu z jednoho segmentu čáry do dalšího segmentu čáry. Například barevné přechody lze použít k reprezentaci změn v průběhu času a vzdálenosti nebo různých teplot v rámci připojeného řádku objektů. Aby bylo možné tuto funkci použít na řádek, musí mít zdroj dat `lineMetrics` možnost nastavenou na hodnotu true a následně může být výraz barevného přechodu předána `strokeColor` Možnosti řádku. Výraz přechodu na tah musí odkazovat na `['line-progress']` datový výraz, který zpřístupňuje metriku počítaného řádku k výrazu.
+Pro čáru můžete použít jednu barvu tahu. Můžete také vyplnit řádek s přechodem barev pro zobrazení přechodu z jednoho segmentu čáry do dalšího segmentu čáry. Například barevné přechody lze použít k reprezentaci změn v průběhu času a vzdálenosti nebo různých teplot v rámci připojeného řádku objektů. Aby bylo možné tuto funkci použít na řádek, zdroj dat musí mít `lineMetrics` možnost nastavenou na hodnotu `true` a poté může být výraz barevného přechodu předána `strokeColor` Možnosti řádku. Výraz přechodu na tah musí odkazovat na `['line-progress']` datový výraz, který zpřístupňuje metriku počítaného řádku k výrazu.
 
 <br/>
 

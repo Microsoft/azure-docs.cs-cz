@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 37b5ab1c144ed81d995da40b87edeaccdcad7253
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 4e84bd821d53048b134db635c7ec541db74fbf11
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679991"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047705"
 ---
 # <a name="display-feature-information"></a>Zobrazení informací o funkci
 
@@ -75,6 +75,81 @@ Kromě informačních zpráv existuje mnoho dalších způsobů, jak prezentovat
 - [Dialogová](https://developer.android.com/guide/topics/ui/dialogs) okna – dialogové okno je malé okno s výzvou, aby uživatel zadal rozhodnutí nebo zavedl Další informace. Dialogové okno neplní obrazovku a obvykle se používá pro modální události, které vyžadují, aby uživatelé před pokračováním prohlédli akci.
 - Přidá [fragment](https://developer.android.com/guide/components/fragments) do aktuální aktivity.
 - Přejděte k jiné aktivitě nebo zobrazení.
+
+## <a name="display-a-popup"></a>Zobrazit místní nabídku
+
+Azure Maps Android SDK poskytuje `Popup` třídu, která usnadňuje vytváření prvků poznámek uživatelského rozhraní, které jsou ukotveny do pozice na mapě. Pro automaticky otevíraná okna musíte předat zobrazení s relativním rozložením do `content` Možnosti automaticky otevírané okno. Tady je jednoduchý příklad rozložení, který zobrazuje tmavý text nad chvíli na pozadí.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    android:layout_margin="8dp"
+    android:padding="10dp"
+
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:text=""
+        android:textSize="18dp"
+        android:textColor="#222"
+        android:layout_height="wrap_content"
+        android:width="200dp"/>
+
+</RelativeLayout>
+```
+
+Za předpokladu, že výše uvedené rozložení je uloženo v souboru s názvem `popup_text.xml` ve `res -> layout` složce aplikace, následující kód vytvoří automaticky otevírané okno, přidá ho do mapy. Při kliknutí na funkci `title` se tato vlastnost zobrazí v `popup_text.xml` rozložení s použitím dolního středu rozložení, které je ukotveno na určenou pozici na mapě.
+
+```java
+//Create a popup and add it to the map.
+Popup popup = new Popup();
+map.popups.add(popup);
+
+map.events.add((OnFeatureClick)(feature) -> {
+    //Get the first feature and it's properties.
+    Feature f = feature.get(0);
+    JsonObject props = f.properties();
+
+    //Retrieve the custom layout for the popup.
+    View customView = LayoutInflater.from(this).inflate(R.layout.popup_text, null);
+
+    //Access the text view within the custom view and set the text to the title property of the feature.
+    TextView tv = customView.findViewById(R.id.message);
+    tv.setText(props.get("title").getAsString());
+
+    //Get the coordinates from the clicked feature and create a position object.
+    List<Double> c = ((Point)(f.geometry())).coordinates();
+    Position pos = new Position(c.get(0), c.get(1));
+
+    //Set the options on the popup.
+    popup.setOptions(
+        //Set the popups position.
+        position(pos),
+
+        //Set the anchor point of the popup content.
+        anchor(AnchorType.BOTTOM),
+
+        //Set the content of the popup.
+        content(customView)
+
+        //Optionally, hide the close button of the popup.
+        //, closeButton(false)
+    );
+
+    //Open the popup.
+    popup.open();
+});
+
+```
+
+Následující snímek obrazovky ukazuje automaticky otevíraná okna, která se zobrazují při kliknutí na funkce a při přesunu do jejich zadaného umístění na mapě.
+
+![Animace zobrazeného překryvného okna a mapa přesunutá pomocí překryvného okna na pozici na mapě](./media/display-feature-information-android/android-popup.gif)
 
 ## <a name="next-steps"></a>Další kroky
 
