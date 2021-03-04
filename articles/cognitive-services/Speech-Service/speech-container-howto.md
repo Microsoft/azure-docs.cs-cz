@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/17/2020
+ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: místní, Docker, kontejner
-ms.openlocfilehash: 7bebaf7558de8ec5c1fcca3c9a4526330da1d695
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 4970b33d51ed7ef54727c1c15e2482ff10d70506
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575784"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032925"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Instalace a spuštění kontejnerů Docker pro rozhraní API služby pro rozpoznávání řeči 
 
@@ -348,7 +348,7 @@ Počínaje v v 2.6.0 kontejneru převodů textu na text byste měli místo verze
 > [!NOTE]
 > Rozhraní Analýza textu `v3.0` API není zpětně kompatibilní s analýza textu `v3.0-preview.1` . Pokud chcete získat nejnovější podporu funkcí mínění, použijte `v2.6.0` Image kontejneru převodu řeči na text a analýza textu `v3.0` .
 
-Počínaje v v 2.2.0 kontejneru převodu řeči na text můžete zavolat [rozhraní mínění Analysis V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) na výstup. K volání analýzy mínění budete potřebovat koncový bod prostředku rozhraní API pro analýzu textu. Příklad: 
+Počínaje v v 2.2.0 kontejneru převodu řeči na text můžete zavolat [rozhraní mínění Analysis V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) na výstup. K volání analýzy mínění budete potřebovat koncový bod prostředku rozhraní API pro analýzu textu. Například: 
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
 * `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
 
@@ -377,7 +377,7 @@ Počínaje v v 2.6.0 kontejneru převodu řeči na text můžete získat výstup
 
 * "Toto je věta **, kterou vysoké je, že** je to další věta."
 
-Chcete-li nakonfigurovat seznam frází, je nutné přidat vlastní fráze při volání. Příklad:
+Chcete-li nakonfigurovat seznam frází, je nutné přidat vlastní fráze při volání. Například:
 
 ```python
     phrase="the tall man"
@@ -439,7 +439,7 @@ Tento příkaz:
 
 
 #### <a name="base-model-download-on-the-custom-speech-to-text-container"></a>Stažení základního modelu na vlastní kontejner řeči na text  
-Počínaje v v 2.6.0 vlastního kontejneru řeči a textu můžete získat dostupné informace o základním modelu pomocí možnosti `BaseModelLocale=<locale>` . Tato možnost vám poskytne seznam dostupných základních modelů v tomto národním prostředí v rámci vašeho fakturačního účtu. Příklad:
+Počínaje v v 2.6.0 vlastního kontejneru řeči a textu můžete získat dostupné informace o základním modelu pomocí možnosti `BaseModelLocale=<locale>` . Tato možnost vám poskytne seznam dostupných základních modelů v tomto národním prostředí v rámci vašeho fakturačního účtu. Například:
 
 ```bash
 docker run --rm -it \
@@ -455,7 +455,7 @@ Tento příkaz:
 * Spustí kontejner *Custom Speech-to-text* z image kontejneru.
 * Zkontroluje a vrátí dostupné základní modely cílového národního prostředí.
 
-Výstup poskytuje seznam základních modelů s informacemi o národním prostředí, ID modelu a datum a čas vytvoření. Pomocí ID modelu můžete stáhnout a používat konkrétní základní model, který dáváte přednost. Příklad:
+Výstup poskytuje seznam základních modelů s informacemi o národním prostředí, ID modelu a datum a čas vytvoření. Pomocí ID modelu můžete stáhnout a používat konkrétní základní model, který dáváte přednost. Například:
 ```
 Checking available base model for en-us
 2020/10/30 21:54:20 [Info] Searching available base models for en-us

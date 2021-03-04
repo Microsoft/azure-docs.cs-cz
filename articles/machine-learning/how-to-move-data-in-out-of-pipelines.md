@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 5a83211654ad1abafff59d5968c191ec1fa63616
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3bcbe846d102b0ef821394246e10d2af4d48cacf
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692398"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032615"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Přesun dat kroků kanálu ML a mezi nimi (Python)
 
@@ -245,7 +245,7 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
 Azure neodstraní automaticky dočasná data zapsaná pomocí `OutputFileDatasetConfig` . Abyste se vyhnuli poplatkům za úložiště pro velké objemy nepotřebných dat, měli byste buď:
 
 * Programové odstranění zprostředkujících dat na konci spuštění kanálu, pokud už není potřeba
-* Použití BLOB Storage s krátkodobou zásadou úložiště pro mezilehlá data (viz [optimalizace nákladů díky automatizaci úrovní přístupu Azure Blob Storage](../storage/blobs/storage/blobs/storage-lifecycle-management-concepts.md)) 
+* Použití BLOB Storage s krátkodobou zásadou úložiště pro mezilehlá data (viz [optimalizace nákladů díky automatizaci úrovní přístupu Azure Blob Storage](../storage/blobs/storage-lifecycle-management-concepts.md)) 
 * Pravidelná kontrola a odstraňování již nepotřebných dat
 
 Další informace najdete v tématu [plánování a Správa nákladů pro Azure Machine Learning](concept-plan-manage-cost.md).

@@ -1,17 +1,16 @@
 ---
 title: Shromažďovat protokoly prostředků z prostředku Azure a analyzovat je pomocí Azure Monitor
 description: Kurz konfigurace nastavení diagnostiky pro shromažďování protokolů prostředků z prostředku Azure do Log Analyticsho pracovního prostoru, kde je lze analyzovat pomocí dotazu protokolu.
-ms.subservice: ''
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: d3c3eff32120438fd891cb32fe98d73424f82b7f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 43a9c88bc64b688bfd1171e331232bb254b0eebe
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734141"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032870"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Kurz: shromáždění a analýza protokolů prostředků z prostředku Azure
 

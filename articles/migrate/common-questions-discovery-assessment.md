@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 40afa1d743b8d074fa46dde46163f6479ebf87c2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6c4dfed27a105fad951ae12ca053b6d86772717a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589073"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032564"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Analýzy zjišťování, hodnocení a závislostí – běžné otázky
 
@@ -36,12 +36,17 @@ Můžete zjistit až 10 000 virtuálních počítačů VMware, až 5 000 virtuá
 
 - **Posouzení virtuálních počítačů Azure** použijte, když chcete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md), [virtuální počítače Hyper-V](how-to-set-up-appliance-hyper-v.md)a [fyzické servery](how-to-set-up-appliance-physical.md) pro migraci na virtuální počítače Azure. [Další informace](concepts-assessment-calculation.md)
 
+- Typ posouzení **Azure SQL** použijte, pokud chcete vyhodnotit místní SQL Server z prostředí VMware pro migraci do Azure SQL Database nebo spravované instance Azure SQL. [Další informace](concepts-assessment-calculation.md)
+
+    > [!Note]
+    > Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Chcete-li vyzkoušet tuto funkci, použijte [**Tento odkaz**](https://aka.ms/AzureMigrate/SQL) k vytvoření projektu v oblasti **Austrálie – východ** . Pokud projekt již máte v Austrálii – východ a chcete si vyzkoušet tuto funkci, ujistěte se, že jste tyto [**požadavky**](how-to-discover-sql-existing-project.md) dokončili na portálu.
+
 - Posouzení **Řešení Azure VMware (AVS)** použijte, když chcete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do [Řešení Azure VMware (AVS)](../azure-vmware/introduction.md) pomocí tohoto typu posouzení. [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
 
 - Ke spuštění obou typů hodnocení můžete použít společnou skupinu pouze s počítači VMware. Poznámka: Pokud ve službě Azure Migrate spouštíte hodnocení služby AVS poprvé, doporučujeme vytvořit novou skupinu počítačů VMware.
  
 
-## <a name="why-is-performance-data-missing-for-someall-vms-in-my-assessment-report"></a>Proč v sestavě posouzení chybí data o výkonu některých nebo všech virtuálních počítačů?
+## <a name="why-is-performance-data-missing-for-someall-servers-in-my-azure-vm-andor-avs-assessment-report"></a>Proč chybí data o výkonu pro některé nebo všechny servery v sestavě pro vyhodnocení virtuálních počítačů Azure a/nebo služby AVS?
 
 Pokud zařízení Azure Migrate nemůže shromáždit údaje o výkonu místních virtuálních počítačů, v sestavě posouzení na základě výkonu se zobrazí PercentageOfCoresUtilizedMissing nebo PercentageOfMemoryUtilizedMissing. Zkontrolujte následující:
 
@@ -50,24 +55,111 @@ Pokud zařízení Azure Migrate nemůže shromáždit údaje o výkonu místníc
 
 - Pokud chybí všechny čítače výkonu, zajistěte, aby odchozí připojení na portech 443 (HTTPS) byla povolená.
 
-Poznámka: Pokud jakýkoli čítač výkonu chybí, nástroj Azure Migrate: Hodnocení serverů se vrátí zpět k přiděleným jádrům a paměti v místním prostředí a na jejich základě doporučí velikost virtuálního počítače.
+    > [!Note]
+    > Pokud některý z čítačů výkonu chybí, Azure Migrate: posouzení serveru se vrátí do přidělených jader/paměti v místním prostředí a doporučuje odpovídající velikost virtuálního počítače.
+
+
+## <a name="why-is-performance-data-missing-for-someall-sql-instancesdatabases-in-my-azure-sql-assessment"></a>Proč v Azure SQL Assessment chybí data výkonu pro některé/všechny instance nebo databáze SQL?
+
+Pokud chcete zajistit, aby se data o výkonu shromáždila, zkontrolujte prosím:
+
+- Pokud jsou servery SQL zapnuté po dobu, po kterou vytváříte posouzení
+- Pokud je stav připojení agenta SQL v Azure Migrate "připojeno" a zkontroluje poslední prezenční signál 
+- Pokud Azure Migrate stav připojení pro všechny instance SQL je připojená v okně zjištěná instance SQL
+- Pokud chybí všechny čítače výkonu, zajistěte, aby odchozí připojení na portech 443 (HTTPS) byla povolená.
+
+Pokud některý z čítačů výkonu chybí, doporučí Azure SQL Assessment nejmenší konfiguraci Azure SQL pro tuto instanci nebo databázi.
 
 ## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>Proč je míra spolehlivosti mého hodnocení nízká?
 
 Míra spolehlivosti posouzení na základě výkonu se počítá na základě procentuální hodnoty [dostupných datových bodů](./concepts-assessment-calculation.md#ratings) potřebných k výpočtu posouzení. Níže jsou uvedené důvody, proč k hodnocení může být přidělená nízká míra spolehlivosti:
 
-- Neprofilovali jste své prostředí po dobu trvání, pro kterou vytváříte interní hodnocení. Například pokud vytváříte posouzení s dobou výkonu nastavenou na jeden týden, budete muset počkat alespoň jeden týden po spuštění zjišťování, aby se shromáždily všechny datové body. Pokud tuto dobu nemůžete počkat, snižte dobu výkonu a přepočítejte posouzení.
+- Neprofilovali jste své prostředí po dobu trvání, pro kterou vytváříte interní hodnocení. Například pokud vytváříte posouzení s dobou výkonu nastavenou na jeden týden, budete muset počkat alespoň jeden týden po spuštění zjišťování, aby se shromáždily všechny datové body. Pokud nemůžete počkat na dobu trvání, změňte dobu trvání výkonu na menší období a **přepočítejte** hodnocení.
  
-- Vyhodnocování serveru nemůže shromáždit údaje o výkonu pro některé nebo všechny virtuální počítače v období posouzení. Pro hodnocení s vysokou mírou jistoty Prosím zajistěte: 
-    - Virtuální počítače jsou napájené po dobu trvání posouzení.
+- Posouzení nemůže shromáždit údaje o výkonu pro některé nebo všechny servery v období posouzení. Pro hodnocení s vysokou mírou jistoty Prosím zajistěte: 
+    - Servery jsou napájené po dobu trvání posouzení.
     - Odchozí připojení na portech 443 jsou povolená.
-    - Pro virtuální počítače Hyper-V je povolená dynamická paměť. 
+    - Pro servery Hyper-V je dynamická paměť povolená. 
+    - Stav připojení agentů v Azure Migrate jsou "připojené" a zkontrolováno poslední prezenční signál
+    - Pro vyhodnocení Azure SQL je stav připojení Azure Migrate pro všechny instance SQL "připojené" v okně zjištěná instance SQL.
 
-    Přepočítejte posouzení, aby se projevily poslední změny míry spolehlivosti.
+    **Přepočítejte** prosím hodnocení, aby odráželo nejnovější změny v hodnocení spolehlivosti.
 
-- Po zahájení zjišťování v nástroji Hodnocení serverů se vytvořilo několik virtuálních počítačů. Například pokud vytváříte posouzení historie výkonu za poslední měsíc, ale před týdnem se v prostředí vytvořilo několik virtuálních počítačů. V takovém případě nebudou k dispozici data o výkonu nových virtuálních počítačů za celou dobu trvání a míra spolehlivosti bude nízká.
+- Pro vyhodnocení virtuálních počítačů a funkce AVS bylo po spuštění zjišťování vytvořeno několik serverů. Pokud například vytváříte vyhodnocení pro historii výkonu za poslední měsíc, ale několik serverů bylo vytvořeno v prostředí pouze před týdnem. V takovém případě nebudou údaje o výkonu pro nové servery k dispozici po celou dobu trvání a hodnocení spolehlivosti bude nízké. [Další informace](./concepts-assessment-calculation.md#confidence-ratings-performance-based)
 
-[Další informace](./concepts-assessment-calculation.md#confidence-ratings-performance-based) o míře spolehlivosti
+- Pro vyhodnocení SQL Azure se po spuštění zjišťování vytvořilo několik instancí SQL nebo databází. Pokud například vytváříte posouzení historie výkonu za poslední měsíc, ale v prostředí bylo vytvořeno několik instancí SQL nebo databází pouze před týdnem. V takovém případě nebudou údaje o výkonu pro nové servery k dispozici po celou dobu trvání a hodnocení spolehlivosti bude nízké. [Další informace](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
+
+## <a name="i-want-to-try-out-the-new-azure-sql-assessment-feature-in-azure-migrate"></a>Chci vyzkoušet novou funkci posouzení Azure SQL v Azure Migrate
+Chcete-li vyzkoušet tuto funkci, použijte [Tento odkaz](https://go.microsoft.com/fwlink/?linkid=2155668L) k vytvoření projektu v oblasti **Austrálie – východ** .
+- Začněte tím, že najdete kurzy pro [zjišťování](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware) a [hodnocení](https://docs.microsoft.com/azure/migrate/tutorial-assess-sql) .
+- Všimněte si, že zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je aktuálně ve verzi Preview.
+
+## <a name="i-cant-see-some-servers-when-i-am-creating-an-azure-sql-assessment"></a>Při vytváření posouzení Azure SQL nemůžu najít některé servery
+
+- Posouzení Azure SQL se dá udělat jenom na serverech, na kterých se zjistily instance SQL. Pokud nevidíte servery a instance SQL, které chcete vyhodnotit, počkejte prosím nějakou dobu, než se zjišťování dokončí, a pak vytvořte posouzení. 
+- Pokud během vytváření posouzení nemůžete zobrazit dříve vytvořenou skupinu, odeberte prosím z této skupiny všechny servery, které nepoužívají VMware, nebo žádný server bez instance SQL.
+- Pokud používáte posouzení SQL Azure v Azure Migrate poprvé, je vhodné vytvořit novou skupinu serverů.
+
+## <a name="i-want-to-understand-how-was-the-readiness-for-my-instance-computed"></a>Chci pochopit, jak bylo vypočítána připravenost pro moji instanci?
+Připravenost pro vaše instance SQL se vypočítala po kontrole kompatibility funkcí s cílovým typem nasazení SQL Azure (Azure SQL Database nebo Azure SQL Managed instance). [Další informace](./concepts-azure-sql-assessment-calculation.md#calculate-readiness)
+
+## <a name="why-is-the-readiness-for-all-my-sql-instances-marked-as-unknown"></a>Proč je připravenost všech mých instancí SQL označena jako neznámá?
+Pokud bylo zjišťování v poslední době spuštěno a stále probíhá, může se zobrazit připravenost pro některé nebo všechny instance SQL jako neznámé. Doporučujeme počkat určitou dobu, než zařízení profiluje prostředí, a pak posouzení přepočítejte.
+Zjišťování SQL se provádí jednou za 24 hodin a možná budete muset počkat až na poslední změny konfigurace, které se projeví. 
+
+## <a name="why-is-the-readiness-for-some-of-my-sql-instances-marked-as-unknown"></a>Proč je připravenost některých z mých instancí SQL označena jako neznámá?
+K tomu může dojít v těchto případech: 
+- Zjišťování stále probíhá. Doporučujeme počkat určitou dobu, než zařízení profiluje prostředí, a pak posouzení přepočítejte.
+- Některé problémy se zjišťováním je potřeba opravit v okně chyby a oznámení.
+
+Zjišťování SQL se provádí jednou za 24 hodin a možná budete muset počkat až na poslední změny konfigurace, které se projeví.
+
+## <a name="my-assessment-is-in-outdated-state"></a>Moje posouzení je v zastaralém stavu.
+
+### <a name="azure-vmavs-assessment"></a>Virtuální počítač Azure/posouzení služby AVS
+Pokud existují místní změny virtuálních počítačů, které jsou ve skupině, která je vyhodnocena, je posouzení označeno jako zastaralé. Posouzení může být označeno jako zastaralé v důsledku jedné nebo více změn v níže uvedených vlastnostech:
+- Počet jader procesoru
+- Přidělená paměť
+- Typ spuštění nebo firmware
+- Název operačního systému, verze a architektura
+- Počet disků
+- Počet síťových adaptérů
+- Změna velikosti disku (přidělené GB)
+- Aktualizují se vlastnosti síťové karty. Příklad: změny adres MAC, přidání IP adresy atd.
+
+**Přepočítejte** prosím hodnocení, aby odráželo nejnovější změny v posouzení.
+
+### <a name="azure-sql-assessment"></a>Posouzení Azure SQL
+Pokud dojde ke změnám místních instancí SQL a databází, které jsou ve skupině, která je vyhodnocena, je posouzení označeno jako **zastaralé**:
+- Instance SQL se přidala nebo odebrala ze serveru.
+- SQL Database se přidala nebo odebrala z instance SQL.
+- Celková velikost databáze v instanci SQL se změnila o více než 20%.
+- Změna počtu jader procesoru a/nebo přidělené paměti
+
+**Přepočítejte** prosím hodnocení, aby odráželo nejnovější změny v posouzení.
+
+## <a name="why-was-i-recommended-a-particular-target-deployment-type"></a>Proč byl doporučen určitý typ cílového nasazení?
+Azure Migrate doporučuje konkrétní typ nasazení Azure SQL, který je kompatibilní s vaší instancí SQL. Migrace na cíl doporučený od Microsoftu omezuje celkovou snahu migrace. Tato konfigurace Azure SQL (SKU) se doporučuje po zvážení charakteristik výkonu vaší instance SQL a databází, které spravuje. Pokud máte nárok na více konfigurací Azure SQL, doporučujeme tu, což je nákladově efektivní. [Další informace](./concepts-azure-sql-assessment-calculation.md#calculate-sizing)
+
+## <a name="what-deployment-target-should-i-choose-if-my-sql-instance-is-ready-for-azure-sql-db-and-azure-sql-mi"></a>Jaký cíl nasazení mám zvolit, pokud je moje instance SQL připravená pro Azure SQL DB a Azure SQL MI? 
+Pokud je vaše instance připravená pro Azure SQL DB i pro Azure SQL MI, doporučujeme cílový typ nasazení, pro který se odhadované náklady na konfiguraci Azure SQL sníží.
+
+## <a name="why-is-my-instance-marked-as-potentially-ready-for-azure-vm-in-my-azure-sql-assessment"></a>Proč je moje instance označená jako potenciálně připravená pro virtuální počítač Azure v Azure SQL Assessment?
+K tomu může dojít, když se **doporučuje** typ cílového nasazení zvolený ve vlastnostech posouzení a instance SQL není připravená na Azure SQL Database a Azure SQL Managed instance. Uživatel se doporučuje vytvořit posouzení v Azure migrovat s typem posouzení jako **virtuální počítač Azure** a zjistit, jestli je server, na kterém je instance spuštěná, připravený k migraci na virtuální počítač Azure.
+Uživatel se doporučuje vytvořit posouzení v Azure Migrate s typem posouzení jako **virtuálním počítačem Azure** , abyste zjistili, jestli je server, na kterém je instance spuštěná, připravený k migraci na virtuální počítač Azure.
+- Posouzení virtuálních počítačů Azure v Azure Migrate v současné době přenese fokus a nebere v úvahu konkrétní metriky výkonu pro spouštění instancí a databází SQL na virtuálním počítači Azure. 
+- Když spustíte posouzení virtuálního počítače Azure na serveru, doporučí se Doporučené velikosti a odhad nákladů pro všechny instance běžící na serveru a můžou být migrovány na virtuální počítač Azure pomocí nástroje pro migraci serveru. Před migrací [si přečtěte pokyny pro výkon](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) SQL Server na virtuálních počítačích Azure.
+
+## <a name="i-cant-see-some-databases-in-my-assessment-even-though-the-instance-is-part-of-the-assessment"></a>V posouzení nevidím některé databáze, i když je instance součástí posouzení
+
+Posouzení Azure SQL zahrnuje jenom databáze, které jsou ve stavu online. V případě, že se databáze nachází v jakémkoli jiném stavu, posouzení bude ignorovat připravenost, změnu velikosti a kalkulace nákladů pro tyto databáze. Pokud si přejete, abyste tyto databáze vyhodnotili, změňte prosím stav databáze a pokaždé přepočítejte vyhodnocení.
+
+## <a name="i-want-to-compare-costs-for-running-my-sql-instances-on-azure-vm-vs-azure-sql-databaseazure-sql-managed-instance"></a>Chci porovnat náklady na spuštění instancí SQL na virtuálním počítači Azure a Azure SQL Database/spravované instanci SQL Azure
+
+Můžete vytvořit posouzení pomocí typu **virtuální počítač Azure** ve stejné skupině, která se použila při vyhodnocování **Azure SQL** . Pak můžete dvě sestavy porovnat souběžně. Posouzení virtuálních počítačů Azure v Azure Migrate se ale v současnosti zaměřuje na přenesené a příchody a neberou v úvahu konkrétní metriky výkonu pro provoz SQL instancí a databází na virtuálním počítači Azure. Když spustíte posouzení virtuálního počítače Azure na serveru, doporučí se Doporučené velikosti a odhad nákladů pro všechny instance běžící na serveru a můžou být migrovány na virtuální počítač Azure pomocí nástroje pro migraci serveru. Před migrací [si přečtěte pokyny pro výkon](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) SQL Server na virtuálních počítačích Azure.
+
+## <a name="the-storage-cost-in-my-azure-sql-assessment-is-zero"></a>Náklady na úložiště v naší službě Azure SQL Assessment jsou nula.
+Pro spravovanou instanci Azure SQL se nepřidaly žádné náklady na úložiště pro první 32 GB/instanci/měsíc a další náklady na úložiště se přidají do úložiště v přírůstcích 32 GB. [Další informace](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)
 
 ## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>Při vytváření posouzení řešení Azure VMware (AVS) nejde zobrazit některé skupiny
 
@@ -138,7 +230,7 @@ V případě počítačů importovaných prostřednictvím souboru CSV není vý
 
 ## <a name="what-is-dependency-visualization"></a>Co je Vizualizace závislostí?
 
-Vizualizace závislostí vám může posuzovat skupiny virtuálních počítačů, které se budou migrovat s větší jistotou. Vizualizace závislostí křížově kontroluje závislosti počítačů před spuštěním posouzení. Pomáhá zajistit, aby nic nezůstalo a při migraci do Azure pomáhá zabránit neočekávanému výpadku. Azure Migrate používá řešení Service Map v Azure Monitor k povolení Vizualizace závislostí. [Přečtěte si další informace](concepts-dependency-visualization.md).
+Vizualizace závislostí vám může posuzovat skupiny virtuálních počítačů, které se budou migrovat s větší jistotou. Vizualizace závislostí křížově kontroluje závislosti počítačů před spuštěním posouzení. Pomáhá zajistit, aby nic nezůstalo a při migraci do Azure pomáhá zabránit neočekávanému výpadku. Azure Migrate používá řešení Service Map v Azure Monitor k povolení Vizualizace závislostí. [Další informace](concepts-dependency-visualization.md).
 
 > [!NOTE]
 > Analýza závislostí na základě agenta není v Azure Government k dispozici. Můžete použít analýzu závislostí bez agentů.
@@ -152,7 +244,7 @@ Rozdíly mezi vizualizacemi bez agentů a vizualizací na základě agentů jsou
 Podpora | Tato možnost je momentálně ve verzi Preview a je dostupná jenom pro virtuální počítače VMware. [Zkontrolujte](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) podporované operační systémy. | Obecně dostupná (GA).
 Agent | Není nutné instalovat agenty na počítačích, které chcete křížově kontrolovat. | Agenti, kteří se mají nainstalovat na každý místní počítač, který chcete analyzovat: [Microsoft Monitoring Agent (MMA)](../azure-monitor/agents/agent-windows.md)a [Agent závislostí](../azure-monitor/agents/agents-overview.md#dependency-agent). 
 Požadavky | [Projděte si](concepts-dependency-visualization.md#agentless-analysis) požadavky a požadavky na nasazení. | [Projděte si](concepts-dependency-visualization.md#agent-based-analysis) požadavky a požadavky na nasazení.
-Log Analytics | Nevyžadují se. | Azure Migrate používá řešení [Service map](../azure-monitor/vm/service-map.md) v [protokolech Azure monitor](../azure-monitor/logs/log-query-overview.md) pro vizualizaci závislostí. [Přečtěte si další informace](concepts-dependency-visualization.md#agent-based-analysis).
+Log Analytics | Nevyžadují se. | Azure Migrate používá řešení [Service map](../azure-monitor/vm/service-map.md) v [protokolech Azure monitor](../azure-monitor/logs/log-query-overview.md) pro vizualizaci závislostí. [Další informace](concepts-dependency-visualization.md#agent-based-analysis).
 Jak to funguje | Zachycuje data připojení TCP na počítačích, které jsou povoleny pro vizualizaci závislostí. Po zjištění se data shromáždí v intervalech po pěti minutách. | Agenti Service Map nainstalovaná na počítači shromažďují data o procesech TCP a příchozích a odchozích připojeních pro jednotlivé procesy.
 Data | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port. | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port.<br/><br/> Pro Log Analytics dotazy se shromažďují a k dispozici informace o počtu připojení, latenci a přenosu dat. 
 Vizualizace | Mapa závislostí jednoho serveru se dá zobrazit po dobu od 1 hodiny do 30 dnů. | Mapa závislostí pro jeden server.<br/><br/> Mapu lze zobrazit pouze za hodinu.<br/><br/> Mapa závislostí skupiny serverů.<br/><br/> Přidejte nebo odeberte servery ve skupině z zobrazení mapy.

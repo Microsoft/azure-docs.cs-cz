@@ -1,15 +1,14 @@
 ---
 title: Protokoly prostředků Azure Monitor podporují služby a kategorie.
 description: Referenční informace o Azure Monitorch pochopit podporované služby a schéma událostí pro protokoly prostředků Azure.
-ms.subservice: logs
 ms.topic: reference
 ms.date: 01/29/2021
-ms.openlocfilehash: 39ff78cd97682096fb284e137868c246dfdd7f14
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9a04d0f470522dd4689d604756ffd25e70c5d456
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610367"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033142"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Podporované kategorie pro protokoly prostředků Azure
 
@@ -38,944 +37,944 @@ Pokud se domníváte, že chybí něco, můžete otevřít komentář k GitHubu 
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|AccountLogon|AccountLogon|No|
-|Službu AccountManagement|Službu AccountManagement|No|
-|DetailTracking|DetailTracking|No|
-|DirectoryServiceAccess|DirectoryServiceAccess|No|
-|LogonLogoff|LogonLogoff|No|
-|ObjectAccess|ObjectAccess|No|
-|PolicyChange|PolicyChange|No|
-|PrivilegeUse|PrivilegeUse|No|
-|SystemSecurity|SystemSecurity|No|
+|AccountLogon|AccountLogon|Ne|
+|Službu AccountManagement|Službu AccountManagement|Ne|
+|DetailTracking|DetailTracking|Ne|
+|DirectoryServiceAccess|DirectoryServiceAccess|Ne|
+|LogonLogoff|LogonLogoff|Ne|
+|ObjectAccess|ObjectAccess|Ne|
+|PolicyChange|PolicyChange|Ne|
+|PrivilegeUse|PrivilegeUse|Ne|
+|SystemSecurity|SystemSecurity|Ne|
 
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft. AnalysisServices/servery
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|Modul|Modul|No|
-|Služba|Služba|No|
+|Modul|Modul|Ne|
+|Služba|Služba|Ne|
 
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|GatewayLogs|Protokoly související s bránou ApiManagement|No|
+|GatewayLogs|Protokoly související s bránou ApiManagement|Ne|
 
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft. AppConfiguration/configurationStores
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|HttpRequest|Požadavky HTTP|Yes|
+|HttpRequest|Požadavky HTTP|Ano|
 
 
 ## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/pružina
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|ApplicationConsole|Konzola aplikace|No|
-|SystemLogs|Systémové protokoly|No|
+|ApplicationConsole|Konzola aplikace|Ne|
+|SystemLogs|Systémové protokoly|Ne|
 
 
 ## <a name="microsoftattestationattestationproviders"></a>Microsoft. Attestation/attestationProviders
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|AuditEvent|Kategorie protokolu zpráv AuditEvent|No|
-|Výměna|Kategorie protokolu chybových zpráv.|No|
-|INF|Kategorie protokolu informativní zprávy|No|
-|WRN|Kategorie protokolu zpráv s upozorněním|No|
+|AuditEvent|Kategorie protokolu zpráv AuditEvent|Ne|
+|Výměna|Kategorie protokolu chybových zpráv.|Ne|
+|INF|Kategorie protokolu informativní zprávy|Ne|
+|WRN|Kategorie protokolu zpráv s upozorněním|Ne|
 
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|DscNodeStatus|Stav uzlu DSC|No|
-|JobLogs|Protokoly úloh|No|
-|JobStreams|Datové proudy úloh|No|
+|DscNodeStatus|Stav uzlu DSC|Ne|
+|JobLogs|Protokoly úloh|Ne|
+|JobStreams|Datové proudy úloh|Ne|
 
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|ServiceLog|Protokoly služby|No|
+|ServiceLog|Protokoly služby|Ne|
 
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/Workspaces
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|BaiClusterEvent|BaiClusterEvent|No|
-|BaiClusterNodeEvent|BaiClusterNodeEvent|No|
-|BaiJobEvent|BaiJobEvent|No|
+|BaiClusterEvent|BaiClusterEvent|Ne|
+|BaiClusterNodeEvent|BaiClusterNodeEvent|Ne|
+|BaiJobEvent|BaiJobEvent|Ne|
 
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft. blockchain/blockchainMembers
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|BlockchainApplication|Aplikace blockchain|No|
-|FabricOrderer|Řazení prostředků infrastruktury|No|
-|FabricPeer|Partnerský uzel Fabric|No|
-|Proxy server|Proxy server|No|
+|BlockchainApplication|Aplikace blockchain|Ne|
+|FabricOrderer|Řazení prostředků infrastruktury|Ne|
+|FabricPeer|Partnerský uzel Fabric|Ne|
+|Proxy server|Proxy server|Ne|
 
 
 ## <a name="microsoftblockchaincordamembers"></a>Microsoft. blockchain/cordaMembers
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|BlockchainApplication|Aplikace blockchain|No|
+|BlockchainApplication|Aplikace blockchain|Ne|
 
 
 ## <a name="microsoftbotservicebotservices"></a>Microsoft. botservice/botservices
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|BotRequest|Požadavky z kanálů na robota|No|
-|DependencyRequest|Požadavky na závislosti|No|
+|BotRequest|Požadavky z kanálů na robota|Ne|
+|DependencyRequest|Požadavky na závislosti|Ne|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|WebApplicationFirewallLogs|Protokoly brány firewall pro web spustí aplikace|No|
+|WebApplicationFirewallLogs|Protokoly brány firewall pro web spustí aplikace|Ne|
 
 
 ## <a name="microsoftcdnprofiles"></a>Microsoft. CDN/profily
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|AzureCdnAccessLog|Protokol přístupu k síti Azure CDN|No|
-|FrontDoorAccessLog|Protokol přístupu FrontDoor|Yes|
-|FrontDoorHealthProbeLog|Protokol sondy stavu FrontDoor|Yes|
-|FrontDoorWebApplicationFirewallLog|Protokol WebApplicationFirewall FrontDoor|Yes|
+|AzureCdnAccessLog|Protokol přístupu k síti Azure CDN|Ne|
+|FrontDoorAccessLog|Protokol přístupu FrontDoor|Ano|
+|FrontDoorHealthProbeLog|Protokol sondy stavu FrontDoor|Ano|
+|FrontDoorWebApplicationFirewallLog|Protokol WebApplicationFirewall FrontDoor|Ano|
 
 
 ## <a name="microsoftcdnprofilesendpoints"></a>Microsoft. CDN/Profiles/koncových bodů
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|CoreAnalytics|Získá metriky koncového bodu, například šířku pásma, odchozí přenos atd.|No|
+|CoreAnalytics|Získá metriky koncového bodu, například šířku pásma, odchozí přenos atd.|Ne|
 
 
 ## <a name="microsoftclassicnetworknetworksecuritygroups"></a>Microsoft. ClassicNetwork/networksecuritygroups
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|Událost toku pravidla skupiny zabezpečení sítě|Událost toku pravidla skupiny zabezpečení sítě|No|
+|Událost toku pravidla skupiny zabezpečení sítě|Událost toku pravidla skupiny zabezpečení sítě|Ne|
 
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. Cognitiveservices Account/účty
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|Auditování|Protokoly auditu|No|
-|Operace RequestResponse|Protokoly žádostí a odpovědí|No|
-|Trasování|Protokoly trasování|No|
+|Auditování|Protokoly auditu|Ne|
+|Operace RequestResponse|Protokoly žádostí a odpovědí|Ne|
+|Trasování|Protokoly trasování|Ne|
 
 
 ## <a name="microsoftcommunicationcommunicationservices"></a>Microsoft. Communication/CommunicationServices
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|ChatOperational|Protokoly provozního chatu|No|
-|SMSOperational|Provozní protokoly SMS|No|
-|Využití|Záznamy o využití|No|
+|ChatOperational|Protokoly provozního chatu|Ne|
+|SMSOperational|Provozní protokoly SMS|Ne|
+|Využití|Záznamy o využití|Ne|
 
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft. ContainerRegistry/Registry
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|ContainerRegistryLoginEvents|Události přihlášení|No|
-|ContainerRegistryRepositoryEvents|Protokoly RepositoryEvent|No|
+|ContainerRegistryLoginEvents|Události přihlášení|Ne|
+|ContainerRegistryRepositoryEvents|Protokoly RepositoryEvent|Ne|
 
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft. ContainerService/managedClusters
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|cluster – automatické škálování|Automatické škálování clusteru Kubernetes|No|
-|chráněn|chráněn|No|
-|kube-apiserver|Server Kubernetes API|No|
-|Kube – audit|Kubernetes audit|No|
-|Kube – audit – správce|Protokoly správce auditu Kubernetes|No|
-|Kube-Controller-Manager|Správce kontroleru Kubernetes|No|
-|Kube – Scheduler|Plánovač Kubernetes|No|
+|cluster – automatické škálování|Automatické škálování clusteru Kubernetes|Ne|
+|chráněn|chráněn|Ne|
+|kube-apiserver|Server Kubernetes API|Ne|
+|Kube – audit|Kubernetes audit|Ne|
+|Kube – audit – správce|Protokoly správce auditu Kubernetes|Ne|
+|Kube-Controller-Manager|Správce kontroleru Kubernetes|Ne|
+|Kube – Scheduler|Plánovač Kubernetes|Ne|
 
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|AuditLogs|Protokoly auditu pro volání MiniRP|No|
+|AuditLogs|Protokoly auditu pro volání MiniRP|Ne|
 
 
 ## <a name="microsoftd365customerinsightsinstances"></a>Microsoft. D365CustomerInsights/instance
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|Auditování|Auditování událostí|No|
-|Provoz|Provozní události|No|
+|Auditování|Auditování událostí|Ne|
+|Provoz|Provozní události|Ne|
 
 
 ## <a name="microsoftdatabricksworkspaces"></a>Microsoft. datacihly/pracovní prostory
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|accounts|Účty datacihlů|No|
-|existující|Clustery datacihlů|No|
-|dBFS|Systém souborů Databricks|No|
-|instancePools|Fondy instancí|No|
-|úlohy|Úlohy datacihlů|No|
-|poznámkový blok|Poznámkový blok Databricks|No|
-|záleží|Tajné kódy datacihlů|No|
-|sqlPermissions|Datacihly SQLPermissions|No|
-|protokoly|SSH datacihlů|No|
-|pracovní prostor|Pracovní prostor datacihly|No|
+|accounts|Účty datacihlů|Ne|
+|existující|Clustery datacihlů|Ne|
+|dBFS|Systém souborů Databricks|Ne|
+|instancePools|Fondy instancí|Ne|
+|úlohy|Úlohy datacihlů|Ne|
+|poznámkový blok|Poznámkový blok Databricks|Ne|
+|záleží|Tajné kódy datacihlů|Ne|
+|sqlPermissions|Datacihly SQLPermissions|Ne|
+|protokoly|SSH datacihlů|Ne|
+|pracovní prostor|Pracovní prostor datacihly|Ne|
 
 
 ## <a name="microsoftdatacollaborationworkspaces"></a>Spolupráce a pracovní prostory Microsoft.
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|CollaborationAudit|Audit spolupráce|Yes|
-|Datové prostředky|Datové Assety|No|
-|Pipelines|Pipelines|No|
-|Nabídek|Nabídek|No|
-|Skripty|Skripty|No|
+|CollaborationAudit|Audit spolupráce|Ano|
+|Datové prostředky|Datové Assety|Ne|
+|Pipelines|Pipelines|Ne|
+|Nabídek|Nabídek|Ne|
+|Skripty|Skripty|Ne|
 
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/továrny
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|ActivityRuns|Spuštění protokolu aktivity kanálu|No|
-|PipelineRuns|Protokol spuštění kanálu|No|
-|SSISIntegrationRuntimeLogs|Protokoly SSIS Integration runtime|No|
-|SSISPackageEventMessageContext|Kontext zprávy události balíčku SSIS|No|
-|SSISPackageEventMessages|Zprávy o událostech balíčku SSIS|No|
-|SSISPackageExecutableStatistics|SSIS – Statistika spustitelných balíčků|No|
-|SSISPackageExecutionComponentPhases|Fáze součástí provádění balíčku SSIS|No|
-|SSISPackageExecutionDataStatistics|Statistiky dat exeution balíčku SSIS|No|
-|TriggerRuns|Aktivační událost spuštění protokolu|No|
+|ActivityRuns|Spuštění protokolu aktivity kanálu|Ne|
+|PipelineRuns|Protokol spuštění kanálu|Ne|
+|SSISIntegrationRuntimeLogs|Protokoly SSIS Integration runtime|Ne|
+|SSISPackageEventMessageContext|Kontext zprávy události balíčku SSIS|Ne|
+|SSISPackageEventMessages|Zprávy o událostech balíčku SSIS|Ne|
+|SSISPackageExecutableStatistics|SSIS – Statistika spustitelných balíčků|Ne|
+|SSISPackageExecutionComponentPhases|Fáze součástí provádění balíčku SSIS|Ne|
+|SSISPackageExecutionDataStatistics|Statistiky dat exeution balíčku SSIS|Ne|
+|TriggerRuns|Aktivační událost spuštění protokolu|Ne|
 
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft. DataLakeAnalytics/účty
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|Auditování|Protokoly auditu|No|
-|Žádosti|Protokoly žádostí|No|
+|Auditování|Protokoly auditu|Ne|
+|Žádosti|Protokoly žádostí|Ne|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft. DataLakeStore/účty
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|Auditování|Protokoly auditu|No|
-|Žádosti|Protokoly žádostí|No|
+|Auditování|Protokoly auditu|Ne|
+|Žádosti|Protokoly žádostí|Ne|
 
 
 ## <a name="microsoftdatashareaccounts"></a>Microsoft. datashare/Accounts
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|ReceivedShareSnapshots|Přijaté snímky sdílené složky|No|
-|SentShareSnapshots|Odeslané sdílené snímky|No|
-|Sdílené složky|Sdílené složky|No|
-|ShareSubscriptions|Sdílet předplatná|No|
+|ReceivedShareSnapshots|Přijaté snímky sdílené složky|Ne|
+|SentShareSnapshots|Odeslané sdílené snímky|Ne|
+|Sdílené složky|Sdílené složky|Ne|
+|ShareSubscriptions|Sdílet předplatná|Ne|
 
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft. DBforMariaDB/servery
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|MySqlAuditLogs|Protokoly auditu MariaDB|No|
-|MySqlSlowLogs|Protokoly serveru MariaDB|No|
+|MySqlAuditLogs|Protokoly auditu MariaDB|Ne|
+|MySqlSlowLogs|Protokoly serveru MariaDB|Ne|
 
 
 ## <a name="microsoftdbformysqlflexibleservers"></a>Microsoft. DBforMySQL/flexibleServers
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|MySqlAuditLogs|Protokoly auditu MySQL|No|
-|MySqlSlowLogs|Pomalé protokoly MySQL|No|
+|MySqlAuditLogs|Protokoly auditu MySQL|Ne|
+|MySqlSlowLogs|Pomalé protokoly MySQL|Ne|
 
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft. DBforMySQL/servery
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|MySqlAuditLogs|Protokoly auditu MySQL|No|
-|MySqlSlowLogs|Protokoly serveru MySQL|No|
+|MySqlAuditLogs|Protokoly auditu MySQL|Ne|
+|MySqlSlowLogs|Protokoly serveru MySQL|Ne|
 
 
 ## <a name="microsoftdbforpostgresqlflexibleservers"></a>Microsoft. DBforPostgreSQL/flexibleServers
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|PostgreSQLLogs|Protokoly serveru PostgreSQL|No|
+|PostgreSQLLogs|Protokoly serveru PostgreSQL|Ne|
 
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/servery
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|PostgreSQLLogs|Protokoly serveru PostgreSQL|No|
-|QueryStoreRuntimeStatistics|Statistiky za běhu úložiště dotazů PostgreSQL|No|
-|QueryStoreWaitStatistics|Statistiky čekání na úložiště dotazů PostgreSQL|No|
+|PostgreSQLLogs|Protokoly serveru PostgreSQL|Ne|
+|QueryStoreRuntimeStatistics|Statistiky za běhu úložiště dotazů PostgreSQL|Ne|
+|QueryStoreWaitStatistics|Statistiky čekání na úložiště dotazů PostgreSQL|Ne|
 
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft. DBforPostgreSQL/serversv2
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|PostgreSQLLogs|Protokoly serveru PostgreSQL|No|
+|PostgreSQLLogs|Protokoly serveru PostgreSQL|Ne|
 
 
 ## <a name="microsoftdesktopvirtualizationapplicationgroups"></a>Microsoft. DesktopVirtualization/applicationgroups
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|CheckPoint|CheckPoint|No|
-|Chyba|Chyba|No|
-|Správa|Správa|No|
+|CheckPoint|CheckPoint|Ne|
+|Chyba|Chyba|Ne|
+|Správa|Správa|Ne|
 
 
 ## <a name="microsoftdesktopvirtualizationhostpools"></a>Microsoft. DesktopVirtualization/hostpools
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|AgentHealthStatus|AgentHealthStatus|No|
-|CheckPoint|CheckPoint|No|
-|Připojení|Připojení|No|
-|Chyba|Chyba|No|
-|HostRegistration|HostRegistration|No|
-|Správa|Správa|No|
+|AgentHealthStatus|AgentHealthStatus|Ne|
+|CheckPoint|CheckPoint|Ne|
+|Připojení|Připojení|Ne|
+|Chyba|Chyba|Ne|
+|HostRegistration|HostRegistration|Ne|
+|Správa|Správa|Ne|
 
 
 ## <a name="microsoftdesktopvirtualizationworkspaces"></a>Microsoft. DesktopVirtualization/pracovní prostory
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|CheckPoint|CheckPoint|No|
-|Chyba|Chyba|No|
-|Informační kanál|Informační kanál|No|
-|Správa|Správa|No|
+|CheckPoint|CheckPoint|Ne|
+|Chyba|Chyba|Ne|
+|Informační kanál|Informační kanál|Ne|
+|Správa|Správa|Ne|
 
 
 ## <a name="microsoftdeviceselasticpoolsiothubtenants"></a>Microsoft. Devices/ElasticPools/IotHubTenants
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|C2DCommands|Příkazy C2D|No|
-|C2DTwinOperations|C2D – zdvojené operace|No|
-|Konfigurace|Konfigurace|No|
-|Připojení|Připojení|No|
-|D2CTwinOperations|D2CTwinOperations|No|
-|DeviceIdentityOperations|Operace identity zařízení|No|
-|DeviceStreams|Datové proudy zařízení (Preview)|No|
-|DeviceTelemetry|Telemetrie zařízení|No|
-|DirectMethods|Přímé metody|No|
-|DistributedTracing|Distribuované trasování (Preview)|No|
-|FileUploadOperations|Operace nahrávání souborů|No|
-|JobsOperations|Operace úloh|No|
-|Trasy|Trasy|No|
-|TwinQueries|Zdvojené dotazy|No|
+|C2DCommands|Příkazy C2D|Ne|
+|C2DTwinOperations|C2D – zdvojené operace|Ne|
+|Konfigurace|Konfigurace|Ne|
+|Připojení|Připojení|Ne|
+|D2CTwinOperations|D2CTwinOperations|Ne|
+|DeviceIdentityOperations|Operace identity zařízení|Ne|
+|DeviceStreams|Datové proudy zařízení (Preview)|Ne|
+|DeviceTelemetry|Telemetrie zařízení|Ne|
+|DirectMethods|Přímé metody|Ne|
+|DistributedTracing|Distribuované trasování (Preview)|Ne|
+|FileUploadOperations|Operace nahrávání souborů|Ne|
+|JobsOperations|Operace úloh|Ne|
+|Trasy|Trasy|Ne|
+|TwinQueries|Zdvojené dotazy|Ne|
 
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft. Devices/IotHubs
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|C2DCommands|Příkazy C2D|No|
-|C2DTwinOperations|C2D – zdvojené operace|No|
-|Konfigurace|Konfigurace|No|
-|Připojení|Připojení|No|
-|D2CTwinOperations|D2CTwinOperations|No|
-|DeviceIdentityOperations|Operace identity zařízení|No|
-|DeviceStreams|Datové proudy zařízení (Preview)|No|
-|DeviceTelemetry|Telemetrie zařízení|No|
-|DirectMethods|Přímé metody|No|
-|DistributedTracing|Distribuované trasování (Preview)|No|
-|FileUploadOperations|Operace nahrávání souborů|No|
-|JobsOperations|Operace úloh|No|
-|Trasy|Trasy|No|
-|TwinQueries|Zdvojené dotazy|No|
+|C2DCommands|Příkazy C2D|Ne|
+|C2DTwinOperations|C2D – zdvojené operace|Ne|
+|Konfigurace|Konfigurace|Ne|
+|Připojení|Připojení|Ne|
+|D2CTwinOperations|D2CTwinOperations|Ne|
+|DeviceIdentityOperations|Operace identity zařízení|Ne|
+|DeviceStreams|Datové proudy zařízení (Preview)|Ne|
+|DeviceTelemetry|Telemetrie zařízení|Ne|
+|DirectMethods|Přímé metody|Ne|
+|DistributedTracing|Distribuované trasování (Preview)|Ne|
+|FileUploadOperations|Operace nahrávání souborů|Ne|
+|JobsOperations|Operace úloh|Ne|
+|Trasy|Trasy|Ne|
+|TwinQueries|Zdvojené dotazy|Ne|
 
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft. Devices/provisioningServices
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|DeviceOperations|Operace zařízení|No|
-|ServiceOperations|Operace služby|No|
+|DeviceOperations|Operace zařízení|Ne|
+|ServiceOperations|Operace služby|Ne|
 
 
 ## <a name="microsoftdigitaltwinsdigitaltwinsinstances"></a>Microsoft. DigitalTwins/digitalTwinsInstances
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|DigitalTwinsOperation|DigitalTwinsOperation|No|
-|EventRoutesOperation|EventRoutesOperation|No|
-|ModelsOperation|ModelsOperation|No|
-|QueryOperation|QueryOperation|No|
+|DigitalTwinsOperation|DigitalTwinsOperation|Ne|
+|EventRoutesOperation|EventRoutesOperation|Ne|
+|ModelsOperation|ModelsOperation|Ne|
+|QueryOperation|QueryOperation|Ne|
 
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|CassandraRequests|CassandraRequests|No|
-|ControlPlaneRequests|ControlPlaneRequests|No|
-|DataPlaneRequests|DataPlaneRequests|No|
-|GremlinRequests|GremlinRequests|No|
-|MongoRequests|MongoRequests|No|
-|PartitionKeyRUConsumption|PartitionKeyRUConsumption|No|
-|PartitionKeyStatistics|PartitionKeyStatistics|No|
-|QueryRuntimeStatistics|QueryRuntimeStatistics|No|
+|CassandraRequests|CassandraRequests|Ne|
+|ControlPlaneRequests|ControlPlaneRequests|Ne|
+|DataPlaneRequests|DataPlaneRequests|Ne|
+|GremlinRequests|GremlinRequests|Ne|
+|MongoRequests|MongoRequests|Ne|
+|PartitionKeyRUConsumption|PartitionKeyRUConsumption|Ne|
+|PartitionKeyStatistics|PartitionKeyStatistics|Ne|
+|QueryRuntimeStatistics|QueryRuntimeStatistics|Ne|
 
 
 ## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/domény
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|DeliveryFailures|Protokoly chyb doručení|No|
-|PublishFailures|Protokoly chyb publikování|No|
+|DeliveryFailures|Protokoly chyb doručení|Ne|
+|PublishFailures|Protokoly chyb publikování|Ne|
 
 
 ## <a name="microsofteventgridpartnernamespaces"></a>Microsoft. EventGrid/partnerNamespaces
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|DeliveryFailures|Protokoly chyb doručení|No|
-|PublishFailures|Protokoly chyb publikování|No|
+|DeliveryFailures|Protokoly chyb doručení|Ne|
+|PublishFailures|Protokoly chyb publikování|Ne|
 
 
 ## <a name="microsofteventgridpartnertopics"></a>Microsoft. EventGrid/partnerTopics
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|DeliveryFailures|Protokoly chyb doručení|No|
+|DeliveryFailures|Protokoly chyb doručení|Ne|
 
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft. EventGrid/systemTopics
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|DeliveryFailures|Protokoly chyb doručení|No|
+|DeliveryFailures|Protokoly chyb doručení|Ne|
 
 
 ## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/témata
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|DeliveryFailures|Protokoly chyb doručení|No|
-|PublishFailures|Protokoly chyb publikování|No|
+|DeliveryFailures|Protokoly chyb doručení|Ne|
+|PublishFailures|Protokoly chyb publikování|Ne|
 
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft. EventHub/obory názvů
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|ArchiveLogs|Protokoly archivu|No|
-|AutoScaleLogs|Protokoly automatického škálování|No|
-|CustomerManagedKeyUserLogs|Protokoly zákaznických klíčů spravovaných zákazníky|No|
-|EventHubVNetConnectionEvent|Protokoly připojení k virtuální síti nebo filtrování IP adres|No|
-|KafkaCoordinatorLogs|Protokoly koordinátora Kafka|No|
-|KafkaUserErrorLogs|Protokoly chyb uživatele Kafka|No|
-|OperationalLogs|Provozní protokoly|No|
+|ArchiveLogs|Protokoly archivu|Ne|
+|AutoScaleLogs|Protokoly automatického škálování|Ne|
+|CustomerManagedKeyUserLogs|Protokoly zákaznických klíčů spravovaných zákazníky|Ne|
+|EventHubVNetConnectionEvent|Protokoly připojení k virtuální síti nebo filtrování IP adres|Ne|
+|KafkaCoordinatorLogs|Protokoly koordinátora Kafka|Ne|
+|KafkaUserErrorLogs|Protokoly chyb uživatele Kafka|Ne|
+|OperationalLogs|Provozní protokoly|Ne|
 
 
 ## <a name="microsoftexperimentationexperimentworkspaces"></a>Microsoft. experimentování/experimentWorkspaces
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|Žádost|Žádost|No|
+|Žádost|Žádost|Ne|
 
 
 ## <a name="microsofthealthcareapisservices"></a>Microsoft. HealthcareApis/Services
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|AuditLogs|Protokoly auditu|No|
+|AuditLogs|Protokoly auditu|Ne|
 
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft. Insights/autoscalesettings
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|AutoscaleEvaluations|Vyhodnocení automatického škálování|No|
-|AutoscaleScaleActions|Akce škálování automatického škálování|No|
+|AutoscaleEvaluations|Vyhodnocení automatického škálování|Ne|
+|AutoscaleScaleActions|Akce škálování automatického škálování|Ne|
 
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft. Insights/Components
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|AppAvailabilityResults|Výsledky dostupnosti|No|
-|AppBrowserTimings|Časování prohlížeče|No|
-|AppDependencies|Závislosti|No|
-|AppEvents|Události|No|
-|AppExceptions|Výjimky|No|
-|AppMetrics|Metriky|No|
-|AppPageViews|Zobrazení stránek|No|
-|AppPerformanceCounters|Čítače výkonu|No|
-|AppRequests|Žádosti|No|
-|AppSystemEvents|Systémové události|No|
-|AppTraces|Trasování|No|
+|AppAvailabilityResults|Výsledky dostupnosti|Ne|
+|AppBrowserTimings|Časování prohlížeče|Ne|
+|AppDependencies|Závislosti|Ne|
+|AppEvents|Události|Ne|
+|AppExceptions|Výjimky|Ne|
+|AppMetrics|Metriky|Ne|
+|AppPageViews|Zobrazení stránek|Ne|
+|AppPerformanceCounters|Čítače výkonu|Ne|
+|AppRequests|Žádosti|Ne|
+|AppSystemEvents|Systémové události|Ne|
+|AppTraces|Trasování|Ne|
 
 
 ## <a name="microsoftiotspacesgraph"></a>Microsoft. IoTSpaces/Graph
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|Auditování|Auditování|No|
-|Výchozí přenos dat|Výchozí přenos dat|No|
-|Příchozí přenos dat|Příchozí přenos dat|No|
-|Provoz|Provoz|No|
-|Trasování|Trasování|No|
-|UserDefinedFunction|UserDefinedFunction|No|
+|Auditování|Auditování|Ne|
+|Výchozí přenos dat|Výchozí přenos dat|Ne|
+|Příchozí přenos dat|Příchozí přenos dat|Ne|
+|Provoz|Provoz|Ne|
+|Trasování|Trasování|Ne|
+|UserDefinedFunction|UserDefinedFunction|Ne|
 
 
 ## <a name="microsoftkeyvaultmanagedhsms"></a>Microsoft. managedhsms – trezor/
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|AuditEvent|Událost auditu|No|
+|AuditEvent|Událost auditu|Ne|
 
 
 ## <a name="microsoftkeyvaultvaults"></a>Trezory a trezory Microsoft.
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|AuditEvent|Protokoly auditu|No|
+|AuditEvent|Protokoly auditu|Ne|
 
 
 ## <a name="microsoftkustoclusters"></a>Microsoft. Kusto/clustery
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|Příkaz|Příkaz|No|
-|FailedIngestion|Neúspěšné operace ingestování|No|
-|IngestionBatching|Dávkování příjmu dat|No|
-|Dotaz|Dotaz|No|
-|SucceededIngestion|Úspěšné operace ingestování|No|
-|TableDetails|Podrobnosti tabulky|No|
-|TableUsageStatistics|Statistiky využití tabulek|No|
+|Příkaz|Příkaz|Ne|
+|FailedIngestion|Neúspěšné operace ingestování|Ne|
+|IngestionBatching|Dávkování příjmu dat|Ne|
+|Dotaz|Dotaz|Ne|
+|SucceededIngestion|Úspěšné operace ingestování|Ne|
+|TableDetails|Podrobnosti tabulky|Ne|
+|TableUsageStatistics|Statistiky využití tabulek|Ne|
 
 
 ## <a name="microsoftlogicintegrationaccounts"></a>Microsoft. Logic/integrationAccounts
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|IntegrationAccountTrackingEvents|Účet pro integraci sleduje události|No|
+|IntegrationAccountTrackingEvents|Účet pro integraci sleduje události|Ne|
 
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft. Logic/Workflows
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|Modul|Diagnostické události modulu runtime pracovního postupu|No|
+|Modul|Diagnostické události modulu runtime pracovního postupu|Ne|
 
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft. MachineLearningServices/pracovní prostory
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|AmlComputeClusterEvent|AmlComputeClusterEvent|No|
-|AmlComputeClusterNodeEvent|AmlComputeClusterNodeEvent|No|
-|AmlComputeCpuGpuUtilization|AmlComputeCpuGpuUtilization|No|
-|AmlComputeJobEvent|AmlComputeJobEvent|No|
-|AmlRunStatusChangedEvent|AmlRunStatusChangedEvent|No|
+|AmlComputeClusterEvent|AmlComputeClusterEvent|Ne|
+|AmlComputeClusterNodeEvent|AmlComputeClusterNodeEvent|Ne|
+|AmlComputeCpuGpuUtilization|AmlComputeCpuGpuUtilization|Ne|
+|AmlComputeJobEvent|AmlComputeJobEvent|Ne|
+|AmlRunStatusChangedEvent|AmlRunStatusChangedEvent|Ne|
 
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft. Media/MediaServices
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|KeyDeliveryRequests|Požadavky na doručení klíčů|No|
+|KeyDeliveryRequests|Požadavky na doručení klíčů|Ne|
 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft. Network/applicationGateways
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|ApplicationGatewayAccessLog|Protokol Application Gateway Access|No|
-|ApplicationGatewayFirewallLog|Protokol brány Application Gateway firewall|No|
-|ApplicationGatewayPerformanceLog|Protokol výkonu Application Gateway|No|
+|ApplicationGatewayAccessLog|Protokol Application Gateway Access|Ne|
+|ApplicationGatewayFirewallLog|Protokol brány Application Gateway firewall|Ne|
+|ApplicationGatewayPerformanceLog|Protokol výkonu Application Gateway|Ne|
 
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft. Network/azurefirewalls
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|AzureFirewallApplicationRule|Azure Firewall pravidlo aplikace|No|
-|AzureFirewallDnsProxy|Azure Firewall DNS proxy|No|
-|AzureFirewallNetworkRule|Azure Firewall síťové pravidlo|No|
+|AzureFirewallApplicationRule|Azure Firewall pravidlo aplikace|Ne|
+|AzureFirewallDnsProxy|Azure Firewall DNS proxy|Ne|
+|AzureFirewallNetworkRule|Azure Firewall síťové pravidlo|Ne|
 
 
 ## <a name="microsoftnetworkbastionhosts"></a>Microsoft. Network/bastionHosts
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|BastionAuditLogs|Protokoly auditu bastionu|No|
+|BastionAuditLogs|Protokoly auditu bastionu|Ne|
 
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft. Network/expressRouteCircuits
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|PeeringRouteLog|Protokoly tabulky směrování partnerských vztahů|No|
+|PeeringRouteLog|Protokoly tabulky směrování partnerských vztahů|Ne|
 
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft. Network/frontdoors
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|FrontdoorAccessLog|Protokol přístupu Frontdoor|No|
-|FrontdoorWebApplicationFirewallLog|Protokol Frontdoor firewallu webových aplikací|No|
+|FrontdoorAccessLog|Protokol přístupu Frontdoor|Ne|
+|FrontdoorWebApplicationFirewallLog|Protokol Frontdoor firewallu webových aplikací|Ne|
 
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft. Network/loadBalancers
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|LoadBalancerAlertEvent|Load Balancer události výstrahy|No|
-|LoadBalancerProbeHealthStatus|Stav testu Load Balancer|No|
+|LoadBalancerAlertEvent|Load Balancer události výstrahy|Ne|
+|LoadBalancerProbeHealthStatus|Stav testu Load Balancer|Ne|
 
 
 ## <a name="microsoftnetworknetworksecuritygroups"></a>Microsoft. Network/networksecuritygroups
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|NetworkSecurityGroupEvent|Událost skupiny zabezpečení sítě|No|
-|NetworkSecurityGroupFlowEvent|Událost toku pravidla skupiny zabezpečení sítě|No|
-|NetworkSecurityGroupRuleCounter|Čítač pravidla skupiny zabezpečení sítě|No|
+|NetworkSecurityGroupEvent|Událost skupiny zabezpečení sítě|Ne|
+|NetworkSecurityGroupFlowEvent|Událost toku pravidla skupiny zabezpečení sítě|Ne|
+|NetworkSecurityGroupRuleCounter|Čítač pravidla skupiny zabezpečení sítě|Ne|
 
 
 ## <a name="microsoftnetworkp2svpngateways"></a>Microsoft. Network/p2sVpnGateways
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|GatewayDiagnosticLog|Diagnostické protokoly brány|No|
-|IKEDiagnosticLog|Diagnostické protokoly IKE|No|
-|P2SDiagnosticLog|Diagnostické protokoly P2S|No|
+|GatewayDiagnosticLog|Diagnostické protokoly brány|Ne|
+|IKEDiagnosticLog|Diagnostické protokoly IKE|Ne|
+|P2SDiagnosticLog|Diagnostické protokoly P2S|Ne|
 
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft. Network/publicIPAddresses
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|DDoSMitigationFlowLogs|Protokoly DDoSch rozhodnutí o zmírnění rizik|No|
-|DDoSMitigationReports|Sestavy zmírnění hrozeb DDoS|No|
-|DDoSProtectionNotifications|Oznámení o ochraně DDoS|No|
+|DDoSMitigationFlowLogs|Protokoly DDoSch rozhodnutí o zmírnění rizik|Ne|
+|DDoSMitigationReports|Sestavy zmírnění hrozeb DDoS|Ne|
+|DDoSProtectionNotifications|Oznámení o ochraně DDoS|Ne|
 
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft. Network/trafficManagerProfiles
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|ProbeHealthStatusEvents|Událost výsledků testu stavu Traffic Manager|No|
+|ProbeHealthStatusEvents|Událost výsledků testu stavu Traffic Manager|Ne|
 
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft. Network/virtualNetworkGateways
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|GatewayDiagnosticLog|Diagnostické protokoly brány|No|
-|IKEDiagnosticLog|Diagnostické protokoly IKE|No|
-|P2SDiagnosticLog|Diagnostické protokoly P2S|No|
-|RouteDiagnosticLog|Protokoly diagnostiky směrování|No|
-|TunnelDiagnosticLog|Protokoly diagnostiky tunelu|No|
+|GatewayDiagnosticLog|Diagnostické protokoly brány|Ne|
+|IKEDiagnosticLog|Diagnostické protokoly IKE|Ne|
+|P2SDiagnosticLog|Diagnostické protokoly P2S|Ne|
+|RouteDiagnosticLog|Protokoly diagnostiky směrování|Ne|
+|TunnelDiagnosticLog|Protokoly diagnostiky tunelu|Ne|
 
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft. Network/virtualNetworks
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|VMProtectionAlerts|Výstrahy ochrany virtuálních počítačů|No|
+|VMProtectionAlerts|Výstrahy ochrany virtuálních počítačů|Ne|
 
 
 ## <a name="microsoftnetworkvpngateways"></a>Microsoft. Network/vpnGateways
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|GatewayDiagnosticLog|Diagnostické protokoly brány|No|
-|IKEDiagnosticLog|Diagnostické protokoly IKE|No|
-|RouteDiagnosticLog|Protokoly diagnostiky směrování|No|
-|TunnelDiagnosticLog|Protokoly diagnostiky tunelu|No|
+|GatewayDiagnosticLog|Diagnostické protokoly brány|Ne|
+|IKEDiagnosticLog|Diagnostické protokoly IKE|Ne|
+|RouteDiagnosticLog|Protokoly diagnostiky směrování|Ne|
+|TunnelDiagnosticLog|Protokoly diagnostiky tunelu|Ne|
 
 
 ## <a name="microsoftnotificationhubsnamespaces"></a>Microsoft. NotificationHubs/obory názvů
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|OperationalLogs|Provozní protokoly|No|
+|OperationalLogs|Provozní protokoly|Ne|
 
 
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft. OperationalInsights/pracovní prostory
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|Auditování|Protokoly auditu|No|
+|Auditování|Protokoly auditu|Ne|
 
 
 ## <a name="microsoftpowerbitenants"></a>Microsoft. PowerBI/tenants
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|Modul|Modul|No|
+|Modul|Modul|Ne|
 
 
 ## <a name="microsoftpowerbitenantsworkspaces"></a>Microsoft. PowerBI/klienti/pracovní prostory
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|Modul|Modul|No|
+|Modul|Modul|Ne|
 
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft. PowerBIDedicated/– kapacity
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|Modul|Modul|No|
+|Modul|Modul|Ne|
 
 
 ## <a name="microsoftprojectbabylonaccounts"></a>Microsoft. ProjectBabylon/účty
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|ScanStatusLogEvent|ScanStatus|No|
+|ScanStatusLogEvent|ScanStatus|Ne|
 
 
 ## <a name="microsoftpurviewaccounts"></a>Microsoft. dosah/účty
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|ScanStatusLogEvent|ScanStatus|No|
+|ScanStatusLogEvent|ScanStatus|Ne|
 
 
 ## <a name="microsoftrecoveryservicesvaults"></a>Microsoft. RecoveryServices/trezory
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|AddonAzureBackupAlerts|Doplněk Azure Backup data výstrah|No|
-|AddonAzureBackupJobs|Doplněk Azure Backup data úlohy|No|
-|AddonAzureBackupPolicy|Doplněk Azure Backup data zásad|No|
-|AddonAzureBackupProtectedInstance|Doplněk Azure Backup data chráněné instance|No|
-|AddonAzureBackupStorage|Doplněk Azure Backup data úložiště|No|
-|AzureBackupReport|Azure Backup data vytváření sestav|No|
-|AzureSiteRecoveryEvents|Události Azure Site Recovery|No|
-|AzureSiteRecoveryJobs|Úlohy Azure Site Recovery|No|
-|AzureSiteRecoveryProtectedDiskDataChurn|Azure Site Recovery přenos dat chráněných disků|No|
-|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery bodů obnovení|No|
-|AzureSiteRecoveryReplicatedItems|Azure Site Recovery replikované položky|No|
-|AzureSiteRecoveryReplicationDataUploadRate|Frekvence nahrávání dat replikace Azure Site Recovery|No|
-|AzureSiteRecoveryReplicationStats|Statistika replikace Azure Site Recovery|No|
-|CoreAzureBackup|Základní data Azure Backup|No|
+|AddonAzureBackupAlerts|Doplněk Azure Backup data výstrah|Ne|
+|AddonAzureBackupJobs|Doplněk Azure Backup data úlohy|Ne|
+|AddonAzureBackupPolicy|Doplněk Azure Backup data zásad|Ne|
+|AddonAzureBackupProtectedInstance|Doplněk Azure Backup data chráněné instance|Ne|
+|AddonAzureBackupStorage|Doplněk Azure Backup data úložiště|Ne|
+|AzureBackupReport|Azure Backup data vytváření sestav|Ne|
+|AzureSiteRecoveryEvents|Události Azure Site Recovery|Ne|
+|AzureSiteRecoveryJobs|Úlohy Azure Site Recovery|Ne|
+|AzureSiteRecoveryProtectedDiskDataChurn|Azure Site Recovery přenos dat chráněných disků|Ne|
+|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery bodů obnovení|Ne|
+|AzureSiteRecoveryReplicatedItems|Azure Site Recovery replikované položky|Ne|
+|AzureSiteRecoveryReplicationDataUploadRate|Frekvence nahrávání dat replikace Azure Site Recovery|Ne|
+|AzureSiteRecoveryReplicationStats|Statistika replikace Azure Site Recovery|Ne|
+|CoreAzureBackup|Základní data Azure Backup|Ne|
 
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft. Relay/obory názvů
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|HybridConnectionsEvent|Události HybridConnections|No|
-|HybridConnectionsLogs|HybridConnectionsLogs|No|
+|HybridConnectionsEvent|Události HybridConnections|Ne|
+|HybridConnectionsLogs|HybridConnectionsLogs|Ne|
 
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft. Search/searchServices
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|OperationLogs|Protokoly operací|No|
+|OperationLogs|Protokoly operací|Ne|
 
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft. ServiceBus/obory názvů
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|OperationalLogs|Provozní protokoly|No|
+|OperationalLogs|Provozní protokoly|Ne|
 
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft. SignalRService/Signaler
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|AllLogs|Protokoly služby signalizace Azure|No|
+|AllLogs|Protokoly služby signalizace Azure|Ne|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|DevOpsOperationsAudit|Protokoly auditu operací DevOps|No|
-|ResourceUsageStats|Statistika využití prostředků|No|
-|SQLSecurityAuditEvents|Událost auditu zabezpečení SQL|No|
+|DevOpsOperationsAudit|Protokoly auditu operací DevOps|Ne|
+|ResourceUsageStats|Statistika využití prostředků|Ne|
+|SQLSecurityAuditEvents|Událost auditu zabezpečení SQL|Ne|
 
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft. SQL/managedInstances/databáze
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|Chyby|Chyby|No|
-|QueryStoreRuntimeStatistics|Statistiky za běhu úložiště dotazů|No|
-|QueryStoreWaitStatistics|Statistika čekání na úložiště dotazů|No|
-|SQLInsights|Přehledy SQL|No|
+|Chyby|Chyby|Ne|
+|QueryStoreRuntimeStatistics|Statistiky za běhu úložiště dotazů|Ne|
+|QueryStoreWaitStatistics|Statistika čekání na úložiště dotazů|Ne|
+|SQLInsights|Přehledy SQL|Ne|
 
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft. SQL/servery/databáze
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|AutomaticTuning|Automatické ladění|No|
-|Bloky|Bloky|No|
-|DatabaseWaitStatistics|Statistika čekání databáze|No|
-|Zablokování|Zablokování|No|
-|DevOpsOperationsAudit|Protokoly auditu operací DevOps|No|
-|DmsWorkers|Pracovní procesy DMS|No|
-|Chyby|Chyby|No|
-|ExecRequests|Požadavky exec|No|
-|QueryStoreRuntimeStatistics|Statistiky za běhu úložiště dotazů|No|
-|QueryStoreWaitStatistics|Statistika čekání na úložiště dotazů|No|
-|RequestSteps|Kroky žádosti|No|
-|SQLInsights|Přehledy SQL|No|
-|SqlRequests|Požadavky SQL|No|
-|SQLSecurityAuditEvents|Událost auditu zabezpečení SQL|No|
-|Časové limity|Časové limity|No|
-|Čeká|Čeká|No|
+|AutomaticTuning|Automatické ladění|Ne|
+|Bloky|Bloky|Ne|
+|DatabaseWaitStatistics|Statistika čekání databáze|Ne|
+|Zablokování|Zablokování|Ne|
+|DevOpsOperationsAudit|Protokoly auditu operací DevOps|Ne|
+|DmsWorkers|Pracovní procesy DMS|Ne|
+|Chyby|Chyby|Ne|
+|ExecRequests|Požadavky exec|Ne|
+|QueryStoreRuntimeStatistics|Statistiky za běhu úložiště dotazů|Ne|
+|QueryStoreWaitStatistics|Statistika čekání na úložiště dotazů|Ne|
+|RequestSteps|Kroky žádosti|Ne|
+|SQLInsights|Přehledy SQL|Ne|
+|SqlRequests|Požadavky SQL|Ne|
+|SQLSecurityAuditEvents|Událost auditu zabezpečení SQL|Ne|
+|Časové limity|Časové limity|Ne|
+|Čeká|Čeká|Ne|
 
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft. Storage/storageAccounts/blobServices
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|StorageDelete|StorageDelete|Yes|
-|StorageRead|StorageRead|Yes|
-|StorageWrite|StorageWrite|Yes|
+|StorageDelete|StorageDelete|Ano|
+|StorageRead|StorageRead|Ano|
+|StorageWrite|StorageWrite|Ano|
 
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft. Storage/storageAccounts/služby
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|StorageDelete|StorageDelete|Yes|
-|StorageRead|StorageRead|Yes|
-|StorageWrite|StorageWrite|Yes|
+|StorageDelete|StorageDelete|Ano|
+|StorageRead|StorageRead|Ano|
+|StorageWrite|StorageWrite|Ano|
 
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft. Storage/storageAccounts/queueServices
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|StorageDelete|StorageDelete|Yes|
-|StorageRead|StorageRead|Yes|
-|StorageWrite|StorageWrite|Yes|
+|StorageDelete|StorageDelete|Ano|
+|StorageRead|StorageRead|Ano|
+|StorageWrite|StorageWrite|Ano|
 
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft. Storage/storageAccounts/tableServices
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|StorageDelete|StorageDelete|Yes|
-|StorageRead|StorageRead|Yes|
-|StorageWrite|StorageWrite|Yes|
+|StorageDelete|StorageDelete|Ano|
+|StorageRead|StorageRead|Ano|
+|StorageWrite|StorageWrite|Ano|
 
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft. StreamAnalytics/streamingjobs
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|Vytváření obsahu|Vytváření obsahu|No|
-|Spuštění|Spuštění|No|
+|Vytváření obsahu|Vytváření obsahu|Ne|
+|Spuštění|Spuštění|Ne|
 
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft. synapse/pracovní prostory
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|BuiltinSqlReqsEnded|Byly ukončeny předdefinované požadavky na fond SQL.|No|
-|GatewayApiRequests|Žádosti rozhraní API brány synapse|No|
-|SQLSecurityAuditEvents|Událost auditu zabezpečení SQL|No|
-|SynapseRbacOperations|Synapse operace RBAC|No|
+|BuiltinSqlReqsEnded|Byly ukončeny předdefinované požadavky na fond SQL.|Ne|
+|GatewayApiRequests|Žádosti rozhraní API brány synapse|Ne|
+|SQLSecurityAuditEvents|Událost auditu zabezpečení SQL|Ne|
+|SynapseRbacOperations|Synapse operace RBAC|Ne|
 
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft. synapse/pracovní prostory/bigDataPools
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|BigDataPoolAppsEnded|Aplikace s velkým objemem dat se ukončily|No|
+|BigDataPoolAppsEnded|Aplikace s velkým objemem dat se ukončily|Ne|
 
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft. synapse/pracovní prostory/sqlPools
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|DmsWorkers|Pracovní procesy DMS|No|
-|ExecRequests|Požadavky exec|No|
-|RequestSteps|Kroky žádosti|No|
-|SqlRequests|Požadavky SQL|No|
-|SQLSecurityAuditEvents|Událost auditu zabezpečení SQL|No|
-|Čeká|Čeká|No|
+|DmsWorkers|Pracovní procesy DMS|Ne|
+|ExecRequests|Požadavky exec|Ne|
+|RequestSteps|Kroky žádosti|Ne|
+|SqlRequests|Požadavky SQL|Ne|
+|SQLSecurityAuditEvents|Událost auditu zabezpečení SQL|Ne|
+|Čeká|Čeká|Ne|
 
 
 ## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft. TimeSeriesInsights/prostředí
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|Příchozí přenos dat|Příchozí přenos dat|No|
-|Správa|Správa|No|
+|Příchozí přenos dat|Příchozí přenos dat|Ne|
+|Správa|Správa|Ne|
 
 
 ## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft. TimeSeriesInsights/prostředí/EventSources
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|Příchozí přenos dat|Příchozí přenos dat|No|
-|Správa|Správa|No|
+|Příchozí přenos dat|Příchozí přenos dat|Ne|
+|Správa|Správa|Ne|
 
 
 ## <a name="microsoftwebhostingenvironments"></a>Microsoft. Web/hostingenvironments
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|AppServiceEnvironmentPlatformLogs|App Service Environment protokoly platformy|No|
+|AppServiceEnvironmentPlatformLogs|App Service Environment protokoly platformy|Ne|
 
 
 ## <a name="microsoftwebsites"></a>Microsoft. Web/weby
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|AppServiceAntivirusScanAuditLogs|Sestava protokolů auditu antivirové ochrany|No|
-|AppServiceAppLogs|App Service protokoly aplikací|No|
-|AppServiceAuditLogs|Přístup k protokolům auditu|No|
-|AppServiceConsoleLogs|Protokoly konzoly App Service|No|
-|AppServiceFileAuditLogs|Protokoly změny obsahu webu|No|
-|AppServiceHTTPLogs|Protokoly HTTP|No|
-|AppServiceIPSecAuditLogs|Protokoly auditu IPSecurity|No|
-|AppServicePlatformLogs|App Service protokoly platformy|No|
-|FunctionAppLogs|Protokoly aplikací funkcí|No|
+|AppServiceAntivirusScanAuditLogs|Sestava protokolů auditu antivirové ochrany|Ne|
+|AppServiceAppLogs|App Service protokoly aplikací|Ne|
+|AppServiceAuditLogs|Přístup k protokolům auditu|Ne|
+|AppServiceConsoleLogs|Protokoly konzoly App Service|Ne|
+|AppServiceFileAuditLogs|Protokoly změny obsahu webu|Ne|
+|AppServiceHTTPLogs|Protokoly HTTP|Ne|
+|AppServiceIPSecAuditLogs|Protokoly auditu IPSecurity|Ne|
+|AppServicePlatformLogs|App Service protokoly platformy|Ne|
+|FunctionAppLogs|Protokoly aplikací funkcí|Ne|
 
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft. Web/weby/sloty
 
 |Kategorie|Zobrazovaný název kategorie|Náklady k exportu|
 |---|---|---|
-|AppServiceAntivirusScanAuditLogs|Sestava protokolů auditu antivirové ochrany|No|
-|AppServiceAppLogs|App Service protokoly aplikací|No|
-|AppServiceAuditLogs|Přístup k protokolům auditu|No|
-|AppServiceConsoleLogs|Protokoly konzoly App Service|No|
-|AppServiceFileAuditLogs|Protokoly změny obsahu webu|No|
-|AppServiceHTTPLogs|Protokoly HTTP|No|
-|AppServiceIPSecAuditLogs|Protokoly auditu IPSecurity|No|
-|AppServicePlatformLogs|App Service protokoly platformy|No|
-|FunctionAppLogs|Protokoly aplikací funkcí|No|
+|AppServiceAntivirusScanAuditLogs|Sestava protokolů auditu antivirové ochrany|Ne|
+|AppServiceAppLogs|App Service protokoly aplikací|Ne|
+|AppServiceAuditLogs|Přístup k protokolům auditu|Ne|
+|AppServiceConsoleLogs|Protokoly konzoly App Service|Ne|
+|AppServiceFileAuditLogs|Protokoly změny obsahu webu|Ne|
+|AppServiceHTTPLogs|Protokoly HTTP|Ne|
+|AppServiceIPSecAuditLogs|Protokoly auditu IPSecurity|Ne|
+|AppServicePlatformLogs|App Service protokoly platformy|Ne|
+|FunctionAppLogs|Protokoly aplikací funkcí|Ne|
 
 
 

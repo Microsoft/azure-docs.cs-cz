@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c9df24a255d640c463bd62e8bdfe8a576df3b09
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: eaad4995abcf54e9ca7040d570c7a9abbdbc9cf5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693040"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032385"
 ---
 # <a name="securing-service-principals"></a>Zabezpečení instančních objektů
 
@@ -107,7 +107,7 @@ Nejde spravovat instanční objekty pomocí podmíněného přístupu.| Monitoro
 ## <a name="move-from-a-user-account-to-a-service-principal"></a>Přesun z uživatelského účtu na instanční objekt  
 Pokud jako instanční objekt používáte uživatelský účet Azure, vyhodnoťte, jestli se můžete přesunout do [spravované identity](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) nebo instančního objektu. Pokud nemůžete použít spravovanou identitu, zřiďte instanční objekt, který má pouze dostatečná oprávnění a rozsah ke spuštění požadovaných úloh. Instanční objekt můžete vytvořit tak, že [zaregistrujete aplikaci](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)nebo [PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell).
 
-Pokud používáte Microsoft Graph, Projděte si dokumentaci konkrétního rozhraní API, [jako v tomto příkladu](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-5.0.0), a ujistěte se, že typ oprávnění pro aplikaci se zobrazuje jako podporovaný.
+Pokud používáte Microsoft Graph, Projděte si dokumentaci konkrétního rozhraní API, [jako v tomto příkladu](/powershell/azure/create-azure-service-principal-azureps), a ujistěte se, že typ oprávnění pro aplikaci se zobrazuje jako podporovaný.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -115,7 +115,7 @@ Pokud používáte Microsoft Graph, Projděte si dokumentaci konkrétního rozhr
 
 [Vytvoření instančního objektu](../develop/howto-create-service-principal-portal.md)
 
- [Monitorování přihlašovacích objektů instančního objektu](../reports-monitoring/concept-all-sign-ins#sign-ins-report.md)
+ [Monitorování přihlašovacích objektů instančního objektu](../reports-monitoring/concept-all-sign-ins.md#sign-ins-report)
 
 **Další informace o zabezpečení účtů služeb:**
 
@@ -125,4 +125,4 @@ Pokud používáte Microsoft Graph, Projděte si dokumentaci konkrétního rozhr
 
 [Řízení účtů služeb Azure](service-accounts-governing-azure.md)
 
-[Seznámení s místními účty služeb](service-accounts-on-poremises.md)
+[Seznámení s místními účty služeb](service-accounts-on-premises.md)

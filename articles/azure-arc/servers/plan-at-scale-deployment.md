@@ -3,12 +3,12 @@ title: Postup při plánování nasazení serverů s povoleným rozšířením A
 description: Naučte se, jak povolit velké množství počítačů pro servery s podporou ARC Azure a zjednodušit tak konfiguraci základních funkcí zabezpečení, správy a monitorování v Azure.
 ms.date: 02/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: fd02e7c0b4d65efde13fbc428a15d60adab174d4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0e77fc00f94f2f46c60bb2c5dcecc10a4e2e3bc5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693028"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032224"
 ---
 # <a name="planing-for-an-at-scale-deployment-of-azure-arc-enabled-servers"></a>Plánování nasazení serverů s povoleným rozšířením Azure ARC na úrovni
 
@@ -71,7 +71,7 @@ V dalším kroku přidáme do základu ve fázi 1, když připravujete nasazení
 
 |Úkol |Podrobnosti |Doba trvání |
 |-----|-------|---------|
-| Stažení předem definovaného instalačního skriptu | Přečtěte si a přizpůsobte předem definovaný instalační skript pro nasazení připojeného strojového agenta v rámci škálování, aby se podporovaly požadavky na automatizované nasazení.<br><br> Ukázka prostředků připojování v měřítku:<br><br> * [Základní skript pro nasazení ve velkém měřítku](servers/onboard-service-principal.md)<br><br> * [Připojování VMware vSphere virtuálních počítačů s Windows serverem v měřítku](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)<br><br> * [Připojování virtuálních počítačů se systémem VMware vSphere Linux v měřítku](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)<br><br> * [Připojování instancí AWS EC2 pomocí Ansible v měřítku](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)<br><br> * [Nasazení během škálování pomocí vzdálené komunikace PowerShellu](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (jenom Windows)| Jeden nebo více dní v závislosti na požadavcích, organizační procesy (například změna a Release Management) a použitá metoda automatizace. |
+| Stažení předem definovaného instalačního skriptu | Přečtěte si a přizpůsobte předem definovaný instalační skript pro nasazení připojeného strojového agenta v rámci škálování, aby se podporovaly požadavky na automatizované nasazení.<br><br> Ukázka prostředků připojování v měřítku:<br><br> <ul><li> [Základní skript pro nasazení ve velkém měřítku](onboard-service-principal.md)</ul></li> <ul><li>[Připojování VMware vSphere virtuálních počítačů s Windows serverem v měřítku](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)</ul></li> <ul><li>[Připojování virtuálních počítačů se systémem VMware vSphere Linux v měřítku](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)</ul></li> <ul><li>[Připojování instancí AWS EC2 pomocí Ansible v měřítku](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)</ul></li> <ul><li>[Nasazení během škálování pomocí vzdálené komunikace PowerShellu](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (jenom Windows)</ul></li>| Jeden nebo více dní v závislosti na požadavcích, organizační procesy (například změna a Release Management) a použitá metoda automatizace. |
 | [Vytvoření instančního objektu](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) |Vytvořte instanční objekt pro připojení počítačů neinteraktivně pomocí Azure PowerShell nebo na portálu.| Jedna hodina |
 | Nasazení agenta připojeného počítače na cílové servery a počítače |Pomocí nástroje pro automatizaci nasaďte skripty na vaše servery a připojte je k Azure.| Jeden nebo více dní v závislosti na plánu vydání a při dvoufázové zavedení. |
 
@@ -83,7 +83,7 @@ Fáze 3 se dohlíží na správce nebo systémové techniky, které umožňují 
 |-----|-------|---------|
 |Vytvoření výstrahy Resource Health |Pokud server zastaví odesílání prezenčních signálů do Azure déle než 15 minut, může to znamenat, že je offline, síťové připojení je blokované nebo agent neběží. Vytvořte plán, jak budete reagovat a prozkoumat tyto incidenty, a pomocí [výstrah Resource Health dostávat upozornění](../..//service-health/resource-health-alert-monitor-guide.md) na jejich spuštění.<br><br> Při konfiguraci výstrahy zadejte následující:<br> **Typ prostředku**  =  **Servery s podporou ARC Azure**<br> **Aktuální stav prostředku**  =  **Nedostupné**<br> **Stav**  =  předchozího prostředku **K dispozici** | Jedna hodina |
 |Vytvoření výstrahy Azure Advisor | Pro zajištění nejlepšího prostředí a nejnovějších oprav zabezpečení a chyb doporučujeme udržovat agenta serverů s podporou ARC Azure v aktuálním stavu. Neaktuální agenti budou identifikováni pomocí [výstrahy Azure Advisor](../../advisor/advisor-alerts-portal.md).<br><br> Při konfiguraci výstrahy zadejte následující:<br> **Typ doporučení**  =  **Upgradujte na nejnovější verzi agenta připojeného počítače Azure** . | Jedna hodina |
-|[Přiřazení zásad Azure](../../governance/policy/assign-policy-portal.md) ke svému předplatnému nebo rozsahu skupiny prostředků |Přiřaďte zásady **Enable Azure monitor pro virtuální počítače** a další, které splňují vaše požadavky na předplatné nebo rozsah skupiny prostředků, aby se zajistilo, že všechny servery s povoleným obloukem budou automaticky nakonfigurovány pro monitorování pomocí Azure monitor pro virtuální počítače.| Různé |
+|[Přiřazení zásad Azure](../../governance/policy/assign-policy-portal.md) ke svému předplatnému nebo rozsahu skupiny prostředků |Přiřaďte k oboru předplatného nebo rozsahu skupiny prostředků [zásadu](../../azure-monitor/vm/vminsights-enable-policy.md) **Povolit Azure monitor pro virtuální počítače** (a další, které vyhovují vašim potřebám). Azure Policy vám umožní přiřadit definice zásad, které nainstalují požadované agenty pro Azure Monitor pro virtuální počítače ve vašem prostředí.| Různé |
 |[Povolit Update Management pro servery s povoleným obloukem](../../automation/update-management/enable-from-automation-account.md) |Nakonfigurujte Update Management v Azure Automation ke správě aktualizací operačního systému pro virtuální počítače s Windows a Linux zaregistrované u serverů s podporou ARC. | 15 minut |
 
 ## <a name="next-steps"></a>Další kroky

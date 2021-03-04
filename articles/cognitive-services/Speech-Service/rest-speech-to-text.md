@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 70c5593f29b5e83d5d3f318179d365a9235849ca
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 24cc7773d281d98b6a0943f5e0a61b6f547991ee
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790609"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032819"
 ---
 # <a name="speech-to-text-rest-api"></a>Rozhraní REST API pro převod řeči na text
 
@@ -152,7 +152,7 @@ var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 Při odesílání zvukových dat důrazně doporučujeme nahrávání streamování (blokování), což může výrazně snížit latenci. Jak povolit streamování, najdete [v tématu vzorový kód v různých programovacích jazycích](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment) .
 
 >[!NOTE]
->Funkce posouzení výslovnosti je aktuálně dostupná pouze v `westus` `eastasia` oblastech a `centralindia` . A tato funkce je aktuálně dostupná jenom pro `en-US` jazyk.
+>Funkce hodnocení výslovnosti je aktuálně dostupná jenom pro `en-US` jazyk.
 
 ### <a name="sample-request"></a>Ukázková žádost
 

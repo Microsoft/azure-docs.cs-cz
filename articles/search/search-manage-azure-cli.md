@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: bb132baf3e93242c1b228f0ac7f0cfb7f41e1164
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6287215233ae9baa220df37c6b820c1d1bec7720
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679400"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032513"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-the-azure-cli"></a>Správa služby Azure Kognitivní hledání pomocí Azure CLI
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ V rámci služby probíhá vytváření a Správa obsahu prostřednictvím [Sear
 
 Příklady v tomto článku jsou interaktivní a vyžadují zvýšená oprávnění. Rozhraní příkazového řádku Azure musí být nainstalované. Další informace najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
-Azure CLI teď můžete spustit pomocí `az` příkazu buď z příkazového řádku Windows, PowerShellu, nebo z [Azure Cloud Shell](../cloud-shell/overview). PowerShell nabízí některé funkce dokončování pomocí tabulátoru, které příkazový řádek ve Windows neposkytuje. 
+Azure CLI teď můžete spustit pomocí `az` příkazu buď z příkazového řádku Windows, PowerShellu, nebo z [Azure Cloud Shell](../cloud-shell/overview.md). PowerShell nabízí některé funkce dokončování pomocí tabulátoru, které příkazový řádek ve Windows neposkytuje. 
 
 ### <a name="check-the-azure-cli-version"></a>Podívejte se na verzi Azure CLI.
 
@@ -152,7 +152,7 @@ az search service show --name <service-name> --resource-group <resource-group-na
 
 ## <a name="create-or-delete-a-service"></a>Vytvoření nebo odstranění služby
 
-Chcete-li [vytvořit novou vyhledávací službu](search-create-service-portal), použijte příkaz [**AZ Search Service Create**](/cli/azure/search/service#az_search_service_show) .
+Chcete-li [vytvořit novou vyhledávací službu](search-create-service-portal.md), použijte příkaz [**AZ Search Service Create**](/cli/azure/search/service#az_search_service_show) .
 
 ```azurecli-interactive
 az search service create \

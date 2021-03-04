@@ -150,6 +150,8 @@
           displayName: 'AD-FS, ADFS'
         - name: Amazon
           href: identity-provider-amazon.md
+        - name: Apple (Preview)
+          href: identity-provider-apple-id.md
         - name: Azure AD (jeden tenant)
           href: identity-provider-azure-ad-single-tenant.md
         - name: Azure AD (více tenantů)
@@ -217,11 +219,11 @@
           href: configure-tokens.md
     - name: Definování vlastních atributů
       href: user-flow-custom-attributes.md
-    - name: Ochrana identity a podmíněný přístup
+    - name: Ověřování na základě rizika
       items:
-        - name: Nastavení ochrany identity a podmíněného přístupu
-          href: conditional-access-identity-protection-setup.md
-        - name: Přidání podmíněného přístupu
+        - name: Prozkoumat riziko pomocí Identity Protection
+          href: identity-protection-investigate-risk.md
+        - name: Konfigurace podmíněného přístupu
           href: conditional-access-user-flow.md
     - name: Konfigurace ověřování věku
       href: basic-age-gating.md
@@ -327,9 +329,6 @@
                       href: aad-sspr-technical-profile.md
                     - name: Transformace deklarací identity
                       href: claims-transformation-technical-profile.md
-                    - name: Podmíněný přístup
-                      href: conditional-access-technical-profile.md
-                      displayName: ca
                     - name: Tip tokenu ID
                       href: id-token-hint.md
                     - name: Vydavatel tokenu JWT

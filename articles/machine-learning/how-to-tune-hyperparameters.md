@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 0212ed1378dbb1d2165e9333a38fa911598c4c6d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 768d2011ae3f2826b42befa8f0d40f0e56b993fd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691480"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032683"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Ladění modelu pomocí Azure Machine Learning
 
@@ -332,7 +332,7 @@ hd_config = HyperDriveConfig(run_config=script_run_config,
                              max_concurrent_runs=4)
 ```
 
-`HyperDriveConfig`Nastaví parametry předané do `ScriptRunConfig script_run_config` . `script_run_config`Zase předává parametry do skriptu pro školení. Výše uvedený fragment kódu je pořízen z ukázkového výukového poznámkového bloku [, pomocí ladění a nasazení pomocí PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch). V této ukázce `learning_rate` `momentum` budou vyladěny parametry a. Předčasné zastavování spuštění bude určeno pomocí `BanditPolicy` , což zastaví běh, jehož primární metrika spadá mimo `slack_factor` (viz [Referenční dokumentace třídy BanditPolicy](python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py)). 
+`HyperDriveConfig`Nastaví parametry předané do `ScriptRunConfig script_run_config` . `script_run_config`Zase předává parametry do skriptu pro školení. Výše uvedený fragment kódu je pořízen z ukázkového výukového poznámkového bloku [, pomocí ladění a nasazení pomocí PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch). V této ukázce `learning_rate` `momentum` budou vyladěny parametry a. Předčasné zastavování spuštění bude určeno pomocí `BanditPolicy` , což zastaví běh, jehož primární metrika spadá mimo `slack_factor` (viz [Referenční dokumentace třídy BanditPolicy](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy)). 
 
 Následující kód z ukázky ukazuje, jak jsou přiladěny hodnoty přijímány, analyzovány a předány funkci školicího skriptu `fine_tune_model` :
 
