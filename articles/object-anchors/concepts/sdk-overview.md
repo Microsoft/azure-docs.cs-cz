@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-object-anchors
 ms.author: crtreasu
-ms.date: 02/19/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
 ms.service: azure-object-anchors
-ms.openlocfilehash: 020f727674449523a57a608e8930d67e0f239cf6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 74663f05c5ff995a090c7cd35e4edf46a754da17
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101745041"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034604"
 ---
 # <a name="runtime-sdk-overview"></a>Přehled sady SDK modulu runtime
 
@@ -25,7 +25,7 @@ Všechny níže popsané typy lze nalézt v oboru názvů **Microsoft. MixedReal
 
 ### <a name="objectmodel"></a>ObjectModel
 
-[ObjectModel](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectmodel) představuje geometrii fyzických objektů a kóduje potřebné parametry pro detekci a odhad pozice. Musí být vytvořen pomocí [služby ukotvení objektů](../quickstarts/get-started-model-ingestion.md). Aplikace pak může načíst vygenerovaný soubor modelu pomocí rozhraní API kotev objektu a zadat dotaz na síť vloženou v tomto modelu pro vizualizaci.
+[ObjectModel](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectmodel) představuje geometrii fyzických objektů a kóduje potřebné parametry pro detekci a odhad pozice. Musí být vytvořen pomocí [služby ukotvení objektů](../quickstarts/get-started-model-conversion.md). Aplikace pak může načíst vygenerovaný soubor modelu pomocí rozhraní API kotev objektu a zadat dotaz na síť vloženou v tomto modelu pro vizualizaci.
 
 ### <a name="objectsearcharea"></a>ObjectSearchArea
 
@@ -103,7 +103,7 @@ if(status != ObjectObserverStatus.Allowed)
 }
 ```
 
-V dalším kroku aplikace vytvoří pozorovatele objektu a nahraje nezbytné modely vygenerované službou ingestování [objektů pro ukotvení objektů](../quickstarts/get-started-model-ingestion.md).
+V dalším kroku aplikace vytvoří pozorovatele objektu a nahraje nezbytné modely generované [službou konverze modelu kotev objektu](../quickstarts/get-started-model-conversion.md).
 
 ```cs
 var observer = new ObjectObserver();

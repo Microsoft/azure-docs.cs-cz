@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9abf389eb7f8862440f860c53a0dbd8b10315c67
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: d33634c08b85ad633fdad3f709b2b2182571d7de
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558138"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034757"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Principy modelů dvojčat v Azure Digital Twins
 
@@ -65,7 +65,7 @@ Rozdíl mezi vlastnostmi a telemetrie pro modely digitálních vláken Azure je 
 
 Výsledkem je, že při navrhování modelu v digitálních proobjektech Azure budete pravděpodobně ve většině případů používat **vlastnosti** pro modelování vláken. To vám umožní mít k dispozici záložní úložiště a možnost číst datová pole a dotazovat se na ně.
 
-Telemetrii a vlastnosti často spolupracují na zpracování dat ze zařízení. Vzhledem k to, že všechny příchozí přenosy dat do Azure jsou prostřednictvím [rozhraní API](how-to-use-apis-sdks.md), obvykle použijete funkci příchozího přenosu dat ke čtení telemetrie nebo událostí vlastností ze zařízení a nastavíte vlastnost v ADT v reakci. 
+Telemetrii a vlastnosti často spolupracují na zpracování dat ze zařízení. Vzhledem k to, že všechny příchozí přenosy dat do Azure jsou prostřednictvím [rozhraní API](how-to-use-apis-sdks.md), obvykle použijete funkci příchozího přenosu dat ke čtení událostí telemetrie nebo vlastností ze zařízení a nastavíte vlastnost v digitálních událostech Azure v reakci. 
 
 Můžete také publikovat událost telemetrie z rozhraní API digitálních vláken Azure. Stejně jako u jiné telemetrie, jedná se o krátkodobou událost, která vyžaduje, aby naslouchací proces zpracoval.
 
@@ -154,7 +154,7 @@ Pokud ale máte mnoho modelů, které se mají nahrát – nebo pokud mají mnoh
 
 _**Pro vizualizaci modelů**_
 
-Po nahrání modelů do instance digitálního vlákna Azure můžete zobrazit modely v instanci digitálních vláken Azure, včetně všech vztahů dědičnosti a modelu, pomocí [**Vizualizér modelů ADT**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer). Tato ukázka je aktuálně ve stavu konceptu. Doporučujeme, aby komunita pro vývoj digitálních vláken rozšířila a přispívala k ukázce. 
+Po nahrání modelů do instance digitálního vlákna Azure můžete zobrazit modely v instanci digitálních vláken Azure, včetně všech vztahů dědičnosti a modelu, pomocí [**Vizualizér modelu digitálních vláken Azure**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer). Tato ukázka je aktuálně ve stavu konceptu. Doporučujeme, aby komunita pro vývoj digitálních vláken rozšířila a přispívala k ukázce. 
 
 ## <a name="next-steps"></a>Další kroky
 

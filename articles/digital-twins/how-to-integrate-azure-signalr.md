@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8828b2dc48a8865e43a176757dc973a5cf85b784
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a39b91304c4123b216a0b508dcea0547cae5ab43
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702970"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041497"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Integrace digitálních vláken Azure s využitím služby Azure Signal
 
@@ -51,7 +51,7 @@ Nejdřív stáhněte požadované ukázkové aplikace. Budete potřebovat obě z
 
     Tím se na váš počítač stáhne kopie ukázkového úložiště, jak **digital-twins-samples-master.zip**. Rozbalte složku.
 * [**Ukázka webové aplikace pro integraci signálů**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/): Jedná se o ukázkovou webovou aplikaci, která bude využívat data telemetrie Azure s digitálními podsítěmi ze služby signalizace Azure.
-    -  Přejděte na vzorový odkaz a stisknutím tlačítka *Stáhnout ZIP* Stáhněte kopii ukázky do vašeho počítače, jak _**Azure_Digital_Twins_SignalR_integration_web_app_sample.zip**_. Rozbalte složku.
+    -  Přejděte na vzorový odkaz a pomocí stejného procesu stahování Stáhněte kopii ukázky do vašeho počítače, jak _**digitaltwins-signalr-webapp-sample-main.zip**_. Rozbalte složku.
 
 [!INCLUDE [Create instance](../azure-signalr/includes/signalr-quickstart-create-instance.md)]
 
@@ -139,7 +139,7 @@ Dále nakonfigurujete ukázkovou klientskou webovou aplikaci. Začněte shromaž
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Azure Portal zobrazení funkce Negotiate. Tlačítko získat adresu URL funkce je zvýrazněné a část adresy URL od začátku do '/API '.":::
 
-1. Pomocí sady Visual Studio nebo jakéhokoli editoru kódu, který jste si vybrali, otevřete složku pro _**odAzure_Digital_Twins_SignalR_integration_web_app_sample**_ , kterou jste si stáhli v části [*stažení ukázkových aplikací*](#download-the-sample-applications) .
+1. Pomocí sady Visual Studio nebo jakéhokoli editoru kódu, který jste si vybrali, otevřete složku _**getdigitaltwins-Signal-WebApp-Sample-Main**_ , kterou jste si stáhli v části [*stažení ukázkových aplikací*](#download-the-sample-applications) .
 
 1. Otevřete soubor *Src/App.js* a nahraďte adresu URL funkce v `HubConnectionBuilder` rámci pomocí adresy URL koncového bodu http funkce **Negotiate** , kterou jste uložili v předchozím kroku:
 
@@ -148,7 +148,7 @@ Dále nakonfigurujete ukázkovou klientskou webovou aplikaci. Začněte shromaž
             .withUrl('<Function URL>')
             .build();
     ```
-1. V aplikaci Visual Studio *Developer Command Prompt* nebo jakémkoli okně příkazového řádku na svém počítači přejděte do složky *Azure_Digital_Twins_SignalR_integration_web_app_sample \src* . Spuštěním následujícího příkazu nainstalujte balíčky závislého uzlu:
+1. V aplikaci Visual Studio *Developer Command Prompt* nebo jakémkoli okně příkazového řádku na svém počítači přejděte do složky *digitaltwins-SignalR-WebApp-Sample-main\src* . Spuštěním následujícího příkazu nainstalujte balíčky závislého uzlu:
 
     ```cmd
     npm install
@@ -175,7 +175,7 @@ V této konzole nemusíte nic dalšího dělat, ale ponechte je spuštěná, zat
 
 ### <a name="see-the-results"></a>Zobrazení výsledků
 
-Pokud chcete zobrazit výsledky v akci, spusťte **ukázku webové aplikace pro integraci signálu**. To můžete provést z jakéhokoli okna konzoly na Azure_Digital_Twins_SignalR_integration_web_app_sample umístění *\src* spuštěním tohoto příkazu:
+Pokud chcete zobrazit výsledky v akci, spusťte **ukázku webové aplikace pro integraci signálu**. To můžete provést z jakéhokoli okna konzoly v umístění *digitaltwins-SignalR-WebApp-Sample-main\src* spuštěním tohoto příkazu:
 
 ```cmd
 npm start
@@ -203,7 +203,7 @@ Pomocí Azure Cloud Shell nebo místních rozhraní příkazového řádku Azure
 az group delete --name <your-resource-group>
 ```
 
-Nakonec odstraňte ukázkové složky projektu, které jste stáhli do místního počítače (*digital-twins-samples-master.zip* a *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*).
+Nakonec odstraňte ukázkové složky projektu, které jste stáhli do místního počítače (*digital-twins-samples-master.zip*, *digitaltwins-signalr-webapp-sample-main.zip* a jejich protějšky pro oddálení).
 
 ## <a name="next-steps"></a>Další kroky
 

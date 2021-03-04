@@ -8,12 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: b527cd7b3f841b6cb3dcf2dce6930f3bd9bcc184
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 8300a7c120ce816c8068a88fa69f4f978fa664ca
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681970"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034502"
 ---
 # <a name="tutorial-load-geojson-data-into-azure-maps-android-sdk"></a>Kurz: načtení dat typu injson do Azure Maps Android SDK
 
@@ -24,20 +25,23 @@ Tento kurz vás provede procesem importu dat umístění geografického souboru 
 > * Vytvořte zdroj dat a načtěte ho v souboru. JSON z místního souboru nebo webu.
 > * Zobrazte data na mapě.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. Dokončete [rychlý Start: Vytvoření aplikace pro Android](quick-android-map.md). V tomto kurzu se rozšiřuje kód používaný v tomto rychlém startu.
 2. Stáhněte si [ukázkové body důležitého](https://raw.githubusercontent.com/Azure-Samples/AzureMapsCodeSamples/master/AzureMapsCodeSamples/Common/data/geojson/SamplePoiDataSet.json) souboru JSON.
 
 ### <a name="import-geojson-data-from-web-or-assets-folder"></a>Importovat data o nedůležitém formátu JSON ze složky web nebo Assets
 
-Většina souborů. JSON zabalí všechna data v rámci `FeatureCollection` . Je-li to v případě, že soubory. JSON jsou načteny do aplikace jako řetězec, mohou být předány do statické metody kolekce funkcí `fromJson` , která provede deserializaci řetězce do objektu typu objektiv JSON `FeatureCollection` , který lze přidat k mapě.
+Většina souborů. JSON zabalí všechna data v rámci `FeatureCollection` . Je-li to v případě, že soubory. JSON jsou načteny do aplikace jako řetězec, mohou být předány do statické metody kolekce funkcí `fromJson` , čímž dojde k deserializaci řetězce do `FeatureCollection` objektu. JSON, který lze přidat do mapy.
 
 Následující kroky ukazují, jak naimportovat soubor. JSON do aplikace a deserializovat ho jako objekt pro použití jako soubor `FeatureCollection` . JSON.
 
 1. Dokončete [rychlé zprovoznění: Vytvoření aplikace pro Android](quick-android-map.md) jako následujících kroků sestavích nad touto aplikací.
 2. Na panelu projekt v Android studiu klikněte pravým tlačítkem na složku **aplikace** a přejděte na `New > Folder > Assets Folder` .
 3. Přetáhněte [ukázkové body důležitého](https://raw.githubusercontent.com/Azure-Samples/AzureMapsCodeSamples/master/AzureMapsCodeSamples/Common/data/geojson/SamplePoiDataSet.json) souboru. JSON do složky assety.
+
+::: zone pivot="programming-language-java-android"
+
 4. Vytvořte nový soubor s názvem **utils. Java** a do tohoto souboru přidejte následující kód. Tento kód poskytuje statickou metodu s názvem `importData` , která asynchronně importuje soubor ze `assets` složky aplikace nebo z webu pomocí adresy URL jako řetězce a vrátí jej zpět do vlákna uživatelského rozhraní pomocí jednoduché metody zpětného volání.
 
     ```java
@@ -248,7 +252,7 @@ Následující kroky ukazují, jak naimportovat soubor. JSON do aplikace a deser
         });
     ```
 
-6. Teď, když je kód pro načtení dat o data ze své třídy do mapy pomocí zdroje dat, je potřeba určit, jak se mají tato data na mapě zobrazovat. K dispozici je několik různých vrstev vykreslování pro data bodů; Nejčastěji používané vrstvy jsou [bublinová vrstva](map-add-bubble-layer-android.md), vrstva [symbolů](how-to-add-symbol-to-android-map.md)a [vrstva Heat mapy](map-add-heat-map-layer-android.md) . Přidejte následující kód, který vykreslí data v bublinové vrstvě ve zpětném volání pro `mapControl.onReady` událost po kódu pro import dat.
+6. Pomocí kódu načtete zdroj dat pro data o injson. teď je potřeba určit, jak se mají tato data na mapě zobrazovat. K dispozici je několik různých vrstev vykreslování pro data bodů; Nejčastěji používané vrstvy jsou [bublinová vrstva](map-add-bubble-layer-android.md), vrstva [symbolů](how-to-add-symbol-to-android-map.md)a [vrstva Heat mapy](map-add-heat-map-layer-android.md) . Přidejte následující kód, který vykreslí data v bublinové vrstvě ve zpětném volání pro `mapControl.onReady` událost po kódu pro import dat.
 
     ```java
     //Create a layer and add it to the map.
@@ -256,10 +260,122 @@ Následující kroky ukazují, jak naimportovat soubor. JSON do aplikace a deser
     map.layers.add(layer);
     ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+4. Vytvořte nový soubor s názvem **utils. kt** a do tohoto souboru přidejte následující kód. Tento kód poskytuje statickou metodu s názvem `importData` , která asynchronně importuje soubor ze `assets` složky aplikace nebo z webu pomocí adresy URL jako řetězce a vrátí jej zpět do vlákna uživatelského rozhraní pomocí jednoduché metody zpětného volání.
+
+    ```kotlin
+    //Modify the package name as needed to align with your application.
+    package com.example.myapplication;
+
+    import android.content.Context
+    import android.os.Handler
+    import android.os.Looper
+    import android.webkit.URLUtil
+    import java.net.URL
+    import java.util.concurrent.ExecutorService
+    import java.util.concurrent.Executors
+    
+    class Utils {
+        companion object {
+    
+            /**
+             * Imports data from a web url or asset file name and returns it to a callback.
+             * @param urlOrFileName A web url or asset file name that points to data to load.
+             * @param context The context of the app.
+             * @param callback The callback function to return the data to.
+             */
+            fun importData(urlOrFileName: String?, context: Context, callback: (String?) -> Unit) {
+                importData(urlOrFileName, context, callback, null)
+            }
+    
+            /**
+             * Imports data from a web url or asset file name and returns it to a callback.
+             * @param urlOrFileName A web url or asset file name that points to data to load.
+             * @param context The context of the app.
+             * @param callback The callback function to return the data to.
+             * @param error A callback function to return errors to.
+             */
+            public fun importData(urlOrFileName: String?, context: Context, callback: (String?) -> Unit, error: ((String?) -> Unit)?) {
+                if (urlOrFileName != null && callback != null) {
+                    val executor: ExecutorService = Executors.newSingleThreadExecutor()
+                    val handler = Handler(Looper.getMainLooper())
+                    executor.execute {
+                        var data: String? = null
+                        
+                        try {
+                            data = if (URLUtil.isNetworkUrl(urlOrFileName)) {
+                                URL(urlOrFileName).readText()
+                            } else { //Assume file is in assets folder.
+                                context.assets.open(urlOrFileName).bufferedReader().use{
+                                    it.readText()
+                                }
+                            }
+    
+                            handler.post {
+                                //Ensure the resulting data string is not null or empty.
+                                if (data != null && !data.isEmpty()) {
+                                    callback(data)
+                                } else {
+                                    error!!("No data imported.")
+                                }
+                            }
+                        } catch (e: Exception) {
+                            error!!(e.message)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    ```
+
+5. Do souboru **MainActivity. kt** vložte a přidejte následující kód do zpětného volání pro `mapControl.onReady` událost, který se nachází uvnitř `onCreate` metody. Tento kód používá nástroj pro import ke čtení v **SamplePoiDataSet.js** souboru jako řetězec a pak ho deserializace jako kolekci funkcí pomocí statické `fromJson` metody `FeatureCollection` třídy. Tento kód také vypočítává oblast ohraničovacího rámečku pro všechna data v kolekci funkcí a používá je k nastavení kamery mapy pro zaměření na data.
+
+    ```kotlin
+    //Create a data source and add it to the map.
+    DataSource source = new DataSource();
+    map.sources.add(source);
+    
+    //Import the GeoJSON data and add it to the data source.
+    Utils.importData("SamplePoiDataSet.json", this) { 
+        result: String? ->
+            //Parse the data as a GeoJSON Feature Collection.
+             val fc = FeatureCollection.fromJson(result!!)
+    
+            //Add the feature collection to the data source.
+            source.add(fc)
+    
+            //Optionally, update the maps camera to focus in on the data.
+    
+            //Calculate the bounding box of all the data in the Feature Collection.
+            val bbox = MapMath.fromData(fc);
+
+            //Update the maps camera so it is focused on the data.
+            map.setCamera(
+                bounds(bbox),
+
+                //Padding added to account for pixel size of rendered points.
+                padding(20)
+            )
+        }
+    ```
+
+6. Pomocí kódu načtete zdroj dat pro data o injson. teď je potřeba určit, jak se mají tato data na mapě zobrazovat. K dispozici je několik různých vrstev vykreslování pro data bodů; Nejčastěji používané vrstvy jsou [bublinová vrstva](map-add-bubble-layer-android.md), vrstva [symbolů](how-to-add-symbol-to-android-map.md)a [vrstva Heat mapy](map-add-heat-map-layer-android.md) . Přidejte následující kód, který vykreslí data v bublinové vrstvě ve zpětném volání pro `mapControl.onReady` událost po kódu pro import dat.
+
+    ```kotlin
+    //Create a layer and add it to the map.
+    val layer = new BubbleLayer(source)
+    map.layers.add(layer)
+    ```
+
+::: zone-end
+
 7. Spusťte aplikaci. Mapa se zobrazí v rámci USA s překrytím kruhů pro každé umístění v souboru geografického souboru JSON.
 
     ![Mapa USA s daty ze zobrazeného souboru. JSON](media/tutorial-load-geojson-file-android/android-import-geojson.png)
-
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

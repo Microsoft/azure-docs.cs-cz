@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 02/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 7e71719d83426a3444435ed78d0d63a2599a9157
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8a02bb7c70df4fed55c354638fe6662b85e6c164
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748550"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049618"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-cwinrt-and-directx"></a>Rychlý Start: Vytvoření aplikace HoloLens pomocí kotev objektů Azure v C++/WinRT a DirectX
 
@@ -23,7 +23,6 @@ Dozvíte se, jak provést tyto akce:
 > [!div class="checklist"]
 > * Vytvoření a navýšení zátěže aplikace HoloLens
 > * Zjištění objektu a vizualizace jeho modelu
-> * Zachytit diagnostiku modulu runtime
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -64,7 +63,7 @@ Pokud chcete aplikaci spustit a ladit, vyberte **ladit > spustit ladění**. Chc
 
 ## <a name="ingest-object-model-and-detect-its-instance"></a>Ingestování objektového modelu a zjištění jeho instance
 
-Abyste mohli spustit ukázkovou aplikaci, budete muset vytvořit objektový model. Předpokládejme, že už máte ve svém prostoru buď model CAD, nebo naskenovaný model 3D mřížky objektu. Informace o tom, jak vytvořit model, najdete v tématu [rychlý Start:](./get-started-model-ingestion.md) ingestování 3D modelu.
+Abyste mohli spustit ukázkovou aplikaci, budete muset vytvořit objektový model. Předpokládejme, že už máte ve svém prostoru buď model CAD, nebo naskenovaný model 3D mřížky objektu. Informace o tom, jak vytvořit model, najdete v tématu [rychlý Start:](./get-started-model-conversion.md) ingestování 3D modelu.
 
 Stáhněte si tento model, **židli. ou** v našem případě do vašeho počítače. Pak na portálu zařízení HoloLens vyberte **systém > Průzkumník souborů > LocalAppData > AoaSampleApp > LocalState** a vyberte **Procházet...**. Pak vyberte soubor modelu, **židli. ou** a vyberte **nahrát**. Pak byste měli vidět soubor modelu v místní mezipaměti.
 
@@ -86,7 +85,7 @@ Aplikace úzce zarovnává 3D model fyzickému protějšku. Uživatel může kle
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Rychlý Start: ingestování 3D modelu](./get-started-model-ingestion.md)
+> [Rychlý Start: ingestování 3D modelu](./get-started-model-conversion.md)
 
 > [!div class="nextstepaction"]
 > [Koncepty: Přehled sady SDK](../concepts/sdk-overview.md)

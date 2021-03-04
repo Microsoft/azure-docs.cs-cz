@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 09/01/2020
+ms.date: 03/03/2021
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b17706f908613336714bb7daf08fdf3bfd5eaf64
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: e2ec8af824d573493d1da743923956e587ded62e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928388"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033822"
 ---
 # <a name="identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Identity Protection a podmíněný přístup pro Azure AD B2C
 
@@ -49,21 +49,21 @@ Identity Protection a podmíněný přístup v Azure AD B2C obecně fungují ste
 
 - V Azure AD B2C tenantech jsou detekce rizik v oblasti Identity Protection dostupné jenom pro místní účty B2C, a ne pro sociální identity, jako je Google nebo Facebook.
 
-- V Azure AD B2C tenantů je k dispozici podmnožina detekce rizik ochrany identity. Viz [nastavení Identity Protection](conditional-access-identity-protection-setup.md#set-up-identity-protection).
+- V Azure AD B2C tenantů je k dispozici podmnožina detekce rizik ochrany identity. Podívejte se na téma [šetření rizik pomocí Identity Protection](identity-protection-investigate-risk.md)a [přidejte podmíněný přístup k tokům uživatelů](conditional-access-user-flow.md).
 
 - Funkce dodržování předpisů pro zařízení s podmíněným přístupem není v Azure AD B2C klientech k dispozici.
 
 
 ## <a name="integrate-conditional-access-with-user-flows-and-custom-policies"></a>Integrace podmíněného přístupu s uživatelskými toky a vlastními zásadami
 
-V Azure AD B2C můžete aktivovat podmínky podmíněného přístupu z vestavěných toků uživatelů. Podmíněný přístup můžete také začlenit do vlastních zásad. Podobně jako u dalších aspektů toku uživatele B2C je zasílání zpráv s činnostmi koncových uživatelů možné přizpůsobit na základě hlasu, značky a možností zmírnění rizik ve vaší organizaci. Viz [definice technického profilu podmíněného přístupu](conditional-access-technical-profile.md).
+V Azure AD B2C můžete aktivovat podmínky podmíněného přístupu z předdefinovaných toků uživatelů. Podmíněný přístup můžete také začlenit do vlastních zásad. Podobně jako u dalších aspektů toku uživatele B2C je zasílání zpráv s činnostmi koncových uživatelů možné přizpůsobit na základě hlasu, značky a možností zmírnění rizik ve vaší organizaci. Viz [přidání podmíněného přístupu do toků uživatelů](conditional-access-user-flow.md).
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-Zásady podmíněného přístupu můžete spravovat také v Azure AD B2C pomocí rozhraní API Microsoft Graph. Podrobnosti najdete v dokumentaci k [podmíněnému přístupu](../active-directory/conditional-access/overview.md) a v [referenčním Microsoft Graph](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta).
+Zásady podmíněného přístupu můžete spravovat také v Azure AD B2C pomocí rozhraní API Microsoft Graph. Podrobnosti najdete v dokumentaci k [podmíněnému přístupu](../active-directory/conditional-access/overview.md) a v [Microsoft Graphch operacích](microsoft-graph-operations.md#conditional-access).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Nastavení Identity Protection a podmíněného přístupu pro Azure AD B2C](conditional-access-identity-protection-setup.md)
+- [Přidání podmíněného přístupu do toků uživatelů](conditional-access-user-flow.md)
 - [Další informace o identitě identity v Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 - [Další informace o podmíněném přístupu](../active-directory/conditional-access/overview.md)

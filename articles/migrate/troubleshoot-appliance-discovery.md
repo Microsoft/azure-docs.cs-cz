@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 810ea58c5d88dec53463b9a2b04750169c70e137
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: f3331504540e8c23c3a83fe245bae27ca6c49385
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704023"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041276"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Řešení potíží s Azure Migrate zařízením a zjišťováním
 
@@ -27,7 +27,7 @@ Tento článek vám pomůže při řešení potíží při nasazování zaříze
 
 Pokud se zobrazí chyba "zadaný soubor manifestu je neplatný: Neplatná položka manifestu OVF", udělejte toto:
 
-1. Zkontrolujte jeho hodnotu hash tak, že zkontrolujete, jestli se soubor vajíček Azure Migrate zařízení správně stáhl. [Přečtěte si další informace](./tutorial-discover-vmware.md). Pokud hodnota hash neodpovídá, Stáhněte si znovu soubor vajíček a spusťte nasazení znovu.
+1. Zkontrolujte jeho hodnotu hash tak, že zkontrolujete, jestli se soubor vajíček Azure Migrate zařízení správně stáhl. [Další informace](./tutorial-discover-vmware.md). Pokud hodnota hash neodpovídá, Stáhněte si znovu soubor vajíček a spusťte nasazení znovu.
 2. Pokud se nasazení stále nedaří a k nasazení souboru OVF používáte klienta VMware vSphere, zkuste ho nasadit prostřednictvím webového klienta vSphere. Pokud nasazení ještě neproběhne úspěšně, zkuste použít jiný webový prohlížeč.
 3. Pokud používáte webového klienta vSphere a pokusíte se ho nasadit na vCenter Server 6,5 nebo 6,7, zkuste nasadit VAJÍČKu přímo na hostiteli ESXi:
    - Připojte se k hostiteli ESXi přímo (místo vCenter Server) s webovým klientem ( *IP adresa hostitele* https://<>/UI).
@@ -125,7 +125,7 @@ Chyba 50004: Nelze se připojit k hostiteli nebo clusteru, protože název serve
 - Zajistěte, aby ze zařízení bylo připojení k serveru.
 - Pokud se jedná o server Linux, zajistěte, aby ověřování na základě hesla bylo povoleno pomocí následujících kroků:
     1. Přihlaste se k počítači se systémem Linux a otevřete konfigurační soubor SSH pomocí příkazu "VI/etc/ssh/sshd_config".
-    2. Nastavte možnost PasswordAuthentication na Ano. Uložte soubor.
+    2. Nastavte možnost PasswordAuthentication na Ano. Soubor uložte.
     3. Restartujte službu SSH spuštěním příkazu Service sshd restart.
 - Pokud se jedná o Windows Server, zajistěte, aby byl port 5985 otevřený pro vzdálenou volání rozhraní WMI.
 - Pokud zjišťujete Server GCP Linux a použijete uživatele root, změňte výchozí nastavení pro kořenové přihlášení pomocí následujících příkazů.
@@ -137,7 +137,7 @@ Chyba 50004: Nelze se připojit k hostiteli nebo clusteru, protože název serve
 
 Zajistěte, aby na serveru se systémem Linux bylo povoleno ověřování na základě hesla, a to pomocí následujících kroků:
     1. Přihlaste se k počítači se systémem Linux a otevřete konfigurační soubor SSH pomocí příkazu "VI/etc/ssh/sshd_config".
-    2. Nastavte možnost PasswordAuthentication na Ano. Uložte soubor.
+    2. Nastavte možnost PasswordAuthentication na Ano. Soubor uložte.
     3. Restartujte službu SSH spuštěním příkazu Service sshd restart.
 
 
@@ -166,6 +166,19 @@ Pokud se zjištěné virtuální počítače nezobrazí na portálu nebo pokud j
 ## <a name="deleted-vms-appear-in-portal"></a>Odstraněné virtuální počítače se zobrazí na portálu.
 
 Pokud virtuální počítače odstraníte a pořád se zobrazí na portálu, počkejte 30 minut. Pokud se pořád zobrazují, aktualizujte je tak, jak je popsáno výše.
+
+## <a name="discovered-applications-and-sql-server-instances-and-databases-not-in-portal"></a>Zjištěné aplikace a instance SQL Server a databáze, které nejsou na portálu
+
+Po zahájení zjišťování na zařízení může trvat až 24 hodin, než se data inventáře na portálu začnou zobrazovat.
+
+Pokud jste v nástroji Configuration Manager pro zařízení nezadali přihlašovací údaje pro ověřování systému Windows nebo SQL Server pověření, přidejte přihlašovací údaje, aby je zařízení mohl používat k připojení k příslušným SQL Server instancí.
+
+Po připojení zařízení shromáždí údaje o konfiguraci a výkonu SQL Server instance a databáze. Konfigurační data SQL Server se aktualizují jednou za 24 hodin a data o výkonu se zaznamenávají každých 30 sekund. Proto jakékoli změny vlastností instance SQL Server a databází, jako je stav databáze, úroveň kompatibility atd. může trvat až 24 hodin, než se aktualizuje na portálu.
+
+## <a name="sql-server-instance-is-showing-up-in-not-connected-state-on-portal"></a>Na portálu se zobrazuje stav Nepřipojeno SQL Server instance.
+Pokud chcete zobrazit problémy zjištěné během zjišťování SQL Server instancí a databází, klikněte na stránce zjištěné servery v projektu na stav Nepřipojeno ve sloupci Stav připojení.
+
+Vytváření posouzení na serverech, které obsahují instance SQL, které se zcela nezjistily nebo jsou v nepřipojeném stavu, může vést k připravenosti označenou jako "neznámá".
 
 ## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Nezobrazují se údaje o výkonu pro některé síťové adaptéry na mých fyzických serverech.
 
@@ -199,9 +212,9 @@ Typické chyby zjišťování aplikací jsou shrnuté v tabulce.
 
 | **Chyba** | **Příčina** | **Akce** |
 |--|--|--|
-| 9000: nelze zjistit stav nástroje VMware. | Nástroje VMWare pravděpodobně nejsou nainstalovány nebo jsou poškozeny. | Zajistěte, aby byly na virtuálním počítači nainstalované a spuštěné nástroje VMware. |
-| 9001: nástroje VMware nejsou nainstalovány. | Nástroje VMWare pravděpodobně nejsou nainstalovány nebo jsou poškozeny. | Zajistěte, aby byly na virtuálním počítači nainstalované a spuštěné nástroje VMware. |
-| 9002: nástroje VMware nejsou spuštěny. | Nástroje VMWare pravděpodobně nejsou nainstalovány nebo jsou poškozeny. | Zajistěte, aby byly na virtuálním počítači nainstalované a spuštěné nástroje VMware. |
+| 9000: nelze zjistit stav nástroje VMware. | Nástroje VMware pravděpodobně nejsou nainstalovány nebo jsou poškozeny. | Zajistěte, aby byly na virtuálním počítači nainstalované a spuštěné nástroje VMware. |
+| 9001: nástroje VMware nejsou nainstalovány. | Nástroje VMware pravděpodobně nejsou nainstalovány nebo jsou poškozeny. | Zajistěte, aby byly na virtuálním počítači nainstalované a spuštěné nástroje VMware. |
+| 9002: nástroje VMware nejsou spuštěny. | Nástroje VMware pravděpodobně nejsou nainstalovány nebo jsou poškozeny. | Zajistěte, aby byly na virtuálním počítači nainstalované a spuštěné nástroje VMware. |
 | 9003: typ operačního systému se pro zjišťování virtuálních počítačů hosta nepodporuje. | Operační systém spuštěný na serveru není ani Windows ani Linux. | Podporované typy operačních systémů jsou pouze systémy Windows a Linux. Pokud je server ve skutečnosti Windows nebo Linux, ověřte typ operačního systému zadaný v vCenter Server. |
 | 9004: virtuální počítač není spuštěný. | Virtuální počítač je vypnutý. | Ujistěte se, že je virtuální počítač zapnutý. |
 | 9005: typ operačního systému se pro zjišťování virtuálních počítačů hosta nepodporuje. | Typ operačního systému se pro zjišťování virtuálních počítačů hosta nepodporuje. | Podporované typy operačních systémů jsou pouze systémy Windows a Linux. |

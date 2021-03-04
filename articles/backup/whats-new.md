@@ -3,12 +3,12 @@ title: Co je nového ve službě Azure Backup
 description: Seznamte se s novými funkcemi v Azure Backup.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: dd9546002e63072ce9631f5b8e7ac09ab0f5352b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 48c8c189d956c4003d24511a54975fe86a982832
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728174"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095710"
 ---
 # <a name="whats-new-in-azure-backup"></a>Co je nového ve službě Azure Backup
 
@@ -18,6 +18,9 @@ Další informace o nových vydaných verzích najdete v tématu popisujícím t
 
 ## <a name="updates-summary"></a>Souhrn aktualizací
 
+- Březen 2021
+  - [Centrum zálohování je teď všeobecně dostupné](#backup-center-is-now-generally-available)
+  - [Podpora archivní vrstvy pro Azure Backup (ve verzi Preview)](#archive-tier-support-for-azure-backup-in-preview)
 - Únor 2021
   - [Zálohování objektů blob Azure (ve verzi Preview)](#backup-for-azure-blobs-in-preview)
 - Leden 2021
@@ -36,6 +39,18 @@ Další informace o nových vydaných verzích najdete v tématu popisujícím t
   - [Zálohování SAP HANA v RHEL Azure Virtual Machines (ve verzi Preview)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [Redundantní úložiště zóny (ZRS) pro zálohovaná data (ve verzi Preview)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Obnovitelné odstranění pro úlohy SQL Server a SAP HANA na virtuálních počítačích Azure](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="backup-center-is-now-generally-available"></a>Centrum zálohování je teď všeobecně dostupné
+
+Centrum zálohování zjednodušuje správu ochrany dat ve velkém měřítku tím, že umožňuje zjišťovat, řídit, monitorovat, pracovat a optimalizovat správu zálohování z jedné centrální konzoly.
+
+Další informace najdete v tématu [Přehled centra zálohování](backup-center-overview.md).
+
+## <a name="archive-tier-support-for-azure-backup-in-preview"></a>Podpora archivní vrstvy pro Azure Backup (ve verzi Preview)
+
+Azure Backup teď umožňuje snížit náklady na dlouhodobé zálohy uchovávání s využitím úrovně archivace pro virtuální počítače Azure a SQL Server na virtuálních počítačích Azure.
+
+Další informace najdete v tématu [Podpora úrovně archivu (Preview)](archive-tier-support.md).
 
 ## <a name="backup-for-azure-blobs-in-preview"></a>Zálohování objektů blob Azure (ve verzi Preview)
 

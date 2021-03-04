@@ -3,12 +3,12 @@ title: Service Fabric spravované clustery (Preview)
 description: Service Fabric spravované clustery představují vývoj modelu prostředků clusteru Azure Service Fabric, který zjednodušuje správu nasazení a clusterů.
 ms.topic: overview
 ms.date: 02/15/2021
-ms.openlocfilehash: 8b90b73ef5f3202788ac7857875427673ebb562b
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 271852214097ee96ba6b10de7a94904981cd8ef8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635141"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041225"
 ---
 # <a name="service-fabric-managed-clusters-preview"></a>Service Fabric spravované clustery (Preview)
 
@@ -59,8 +59,8 @@ Service Fabric spravované clustery jsou k dispozici v jednotkách Basic a Stand
 | Minimální počet uzlů (instance virtuálního počítače) | 3 | 5 |
 | Maximální počet uzlů na typ uzlu | 100 | 100 |
 | Maximální počet typů uzlů | 1 | 20 |
-| Přidat nebo odebrat typy uzlů | No | Yes |
-| Zónová redundance | No | Yes |
+| Přidat nebo odebrat typy uzlů | Ne | Ano |
+| Zónová redundance | Ne | Ano |
 
 ## <a name="whats-new-for-service-fabric-managed-clusters"></a>Co je nového u Service Fabric spravovaných clusterů
 
@@ -69,7 +69,7 @@ Nejnovější funkce pro Service Fabric spravované clustery ve verzi Preview za
 * [Nasazení aplikací pomocí šablon ARM](how-to-managed-cluster-app-deployment-template.md)
 * [Automatické upgrady operačního systému](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades)
 * [Šifrování disku](how-to-enable-managed-cluster-disk-encryption.md)
-* [Použití pravidel NSG](how-to-managed-cluster-configuration.md#apply-nsg-rules)
+* [Použití pravidel NSG](how-to-managed-cluster-networking.md)
 
 Mezi funkce, které se mají přidat v nadcházejících verzích, patří:
 

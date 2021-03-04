@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b53cac6e732fb568ba799534d9ad9168fd65eab1
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 3393856b25040cff603ea2ef51e8adbcba78dc26
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100561390"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034689"
 ---
 # <a name="what-is-an-ontology"></a>Co je Ontology? 
 
@@ -58,7 +58,7 @@ Bez ohledu na to, jakou strategii si zvolíte pro integraci Ontology do digitál
 
 V takovém případě byste měli být schopni používat vaše modely v instanci digitálních vláken Azure. 
 
-Můžete je vizualizovat pomocí ukázek, jako je [Azure Digital (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) nebo [Vizualizér modelů ADT](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer), nebo je použít k vytváření [digitálních vláken](concepts-twins-graph.md).
+Můžete je vizualizovat pomocí ukázek, jako je [Průzkumník digitálních vláken Azure](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) nebo [Vizualizér digitálních vláken Azure](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer), nebo můžete přejít na jeho použití k vytváření [digitálních vláken](concepts-twins-graph.md).
 
 ## <a name="next-steps"></a>Další kroky
 

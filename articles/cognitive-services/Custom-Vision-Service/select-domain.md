@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 2259d0114d91af2e688df66ff8dc4e8d293c2b03
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 0b1358f67e2b10078e24168bdb779cd708ac2403
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624826"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095659"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Vyberte doménu pro Custom Vision projekt.
 
@@ -37,7 +37,7 @@ Na kartě nastavení v Custom Vision projektu můžete vybrat doménu pro svůj 
 |Doména|Účel|
 |---|---|
 |__Obecné__| Optimalizováno pro širokou škálu úloh detekce objektů. Pokud žádná z ostatních domén není vhodná nebo si nejste jisti, kterou doménu si zvolíte, vyberte možnost Obecná doména. ÚČET `da2e3a8a-40a5-4171-82f4-58522f70fbc1`|
-|__Obecné [a1]__| Optimalizováno pro lepší přesnost s srovnatelným časem odvození jako obecnou doménou. Doporučuje se pro přesnější potřeby umístění oblastí, větší datové sady nebo složitější scénáře uživatelů. Tato doména vyžaduje více času školení a výsledky nejsou deterministické: očekává se, že rozdíl v mapě +-1% se stejnými školicími daty je k dispozici. ÚČET `9c616dff-2e7d-ea11-af59-1866da359ce6`|
+|__Obecné [a1]__| Optimalizováno pro lepší přesnost s srovnatelným časem odvození jako obecnou doménou. Doporučuje se pro přesnější potřeby umístění oblastí, větší datové sady nebo složitější scénáře uživatelů. Tato doména vyžaduje více času školení a výsledky nejsou deterministické: očekává se rozdílová hodnota +-1% střední přesnost (mapa) se stejnými školicími daty. ÚČET `9c616dff-2e7d-ea11-af59-1866da359ce6`|
 |__Logo__|Optimalizováno pro hledání loga značky v obrázcích. ÚČET `1d8ffafe-ec40-4fb2-8f90-72b3b6cecea4`|
 |__Produkty na police__|Optimalizováno pro zjišťování a klasifikaci produktů v police. ÚČET `3780a898-81c3-4516-81ae-3a139614e1f3`|
 |__Kompaktní domény__| Optimalizováno pro omezení detekce objektů v reálném čase u hraničních zařízení.|

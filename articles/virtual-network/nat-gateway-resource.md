@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: 5c1f52fda2edfa0a03caa72fcd7fa8dc02d0a607
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 5c70c575464d82f714022291406418cdd1ca0f8d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954660"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102094962"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Navrhování virtuálních sítí pomocí prostředků brány NAT
 
@@ -224,7 +224,7 @@ I když se zdá, že se tento scénář bude pracovat, jeho model stavu a režim
 >Vlastnost Zones prostředku brány NAT není proměnlivá.  Znovu nasaďte prostředek brány NAT pomocí zamýšleného regionu nebo Předvolby zóny.
 
 >[!NOTE] 
->IP adresy samy sebe nejsou v zóně – redundantní, pokud není zadaná žádná zóna.  Front [-end Standard Load Balancer je redundantní v zóně](../load-balancer/load-balancer-standard-availability-zones.md#frontend) , pokud IP adresa není vytvořená v konkrétní zóně.  To se nevztahuje na překlad adres (NAT).  Podporovaná je jenom regionální nebo izolovaný izolaci zón.
+>IP adresy samy sebe nejsou v zóně – redundantní, pokud není zadaná žádná zóna.  Front [-end Standard Load Balancer je redundantní v zóně](../load-balancer/load-balancer-standard-availability-zones.md) , pokud IP adresa není vytvořená v konkrétní zóně.  To se nevztahuje na překlad adres (NAT).  Podporovaná je jenom regionální nebo izolovaný izolaci zón.
 
 ## <a name="performance"></a>Výkon
 
@@ -350,20 +350,3 @@ Chceme zjistit, jak můžeme službu vylepšit. Chybí funkce? Udělejte si př�
 * Přečtěte si o službě [NAT pro virtuální sítě](nat-overview.md).
 * Seznamte [se s metrikami a upozorněními pro prostředky brány NAT](nat-metrics.md).
 * Přečtěte si informace o [řešení potíží s prostředky brány NAT](troubleshoot-nat.md).
-* Kurz pro ověření brány NAT
-  - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)
-  - [PowerShell](tutorial-create-validate-nat-gateway-powershell.md)
-  - [Azure Portal](tutorial-create-validate-nat-gateway-portal.md)
-* Rychlý Start pro nasazení prostředku brány NAT
-  - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
-  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
-  - [Azure Portal](./quickstart-create-nat-gateway-portal.md)
-  - [Šablona](./quickstart-create-nat-gateway-template.md)
-* Další informace o rozhraní API prostředků brány NAT
-  - [REST API](/rest/api/virtualnetwork/natgateways)
-  - [Azure CLI](/cli/azure/network/nat/gateway)
-  - [PowerShell](/powershell/module/az.network/new-aznatgateway)
-* Přečtěte si o [zónách dostupnosti](../availability-zones/az-overview.md).
-* Přečtěte si o [službě Load Balancer úrovně Standard](../load-balancer/load-balancer-overview.md).
-* Seznamte [se se zónami dostupnosti a standardním nástrojem pro vyrovnávání zatížení](../load-balancer/load-balancer-standard-availability-zones.md).
-* [Řekněte nám, co se má sestavit příště pro Virtual Network překlad adres (NAT) ve službě UserVoice](https://aka.ms/natuservoice).

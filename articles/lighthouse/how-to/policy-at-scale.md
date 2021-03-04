@@ -1,14 +1,14 @@
 ---
 title: Nasazení Azure Policy k delegovaným předplatným ve velkém měřítku
 description: Přečtěte si, jak vám Azure Lighthouse umožňuje nasadit definici zásady a přiřazení zásad napříč více klienty.
-ms.date: 11/09/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 5af938c61ad3e42e36360a15c6011b54fa1e823d
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 48354c3cca7574b1d5acf71865218564591bc23e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412064"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049776"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Nasazení Azure Policy k delegovaným předplatným ve velkém měřítku
 
@@ -51,6 +51,9 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 }
 ```
 
+> [!NOTE]
+> I když můžete nasadit zásady napříč více klienty, v současné době nemůžete [Zobrazit podrobnosti o dodržování předpisů](../../governance/policy/how-to/determine-non-compliance.md#compliance-details) pro prostředky, které nedodržují předpisy v těchto klientech.
+
 ## <a name="validate-the-policy-deployment"></a>Ověření nasazení zásad
 
 Po nasazení Azure Resource Manager šablony si můžete ověřit, že se definice zásady úspěšně použila při pokusu o vytvoření účtu úložiště s **EnableHttpsTrafficOnly** nastaveným na **hodnotu false** v jednom z vašich delegovaných předplatných. Vzhledem k přiřazení zásad by neměl být možné vytvořit tento účet úložiště.  
@@ -90,9 +93,6 @@ foreach ($ManagedSub in $ManagedSubscriptions)
     }
 }
 ```
-
-> [!NOTE]
-> I když můžete nasadit zásady napříč více klienty, v současné době nemůžete [Zobrazit podrobnosti o dodržování předpisů](../../governance/policy/how-to/determine-non-compliance.md#compliance-details) pro prostředky, které nedodržují předpisy v těchto klientech.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.title: include
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5ef61502d0b2fccc92ca606992e965b45764baa0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5687fb99c27b8b2141e0a2a817327cfbb124951a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744861"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109065"
 ---
 ## <a name="create-a-manually-triggered-webjob"></a><a name="CreateOnDemand"></a> Vytvoření ručně aktivované webové úlohy
 
@@ -28,8 +28,8 @@ ms.locfileid: "101744861"
 
     ![Snímek obrazovky zobrazující nastavení, které je potřeba nastavit pro vytvoření ručně aktivované webové úlohy](../media/web-sites-create-web-jobs/addwjtriggered.png)
     
-    | Nastavení      | Ukázková hodnota   | Popis  |
-    | ------------ | ----------------- | ------------ |
+    | Nastavení      | Ukázková hodnota   | 
+    | ------------ | ----------------- | 
    | <abbr title="Název, který je jedinečný v rámci aplikace App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než `-` a `_` .">Název</abbr> | myTriggeredWebJob | 
     | <abbr title="Soubor *. zip* , který obsahuje spustitelný soubor nebo soubor skriptu a všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu.">Nahrání souboru</abbr> | ConsoleApp.zip |
     | <abbr title="Mezi typy patří průběžné, aktivované.">Typ</abbr> | Aktivuje | 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 061b190af6e66cf0c7e8095251a3ef77d9aaf247
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 3a8429d9dc6820b1f79c49d325872b61833f988d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341681"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095540"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Nejčastější dotazy – obecné otázky týkající se Azure Security Center
 
@@ -29,7 +29,7 @@ Security Center používá agenta Log Analytics ke shromažďování a ukládán
 
 
 ## <a name="how-do-i-get-azure-security-center"></a>Návody získat Azure Security Center?
-Azure Security Center je povolená u vašeho předplatného Microsoft Azure a ke kterému se dostanete z [Azure Portal](https://azure.microsoft.com/features/azure-portal/). Pokud k němu chcete získat přístup, [Přihlaste se k portálu](https://portal.azure.com), vyberte **Procházet**a přejděte na **Security Center**.
+Azure Security Center je povolená u vašeho předplatného Microsoft Azure a ke kterému se dostanete z [Azure Portal](https://azure.microsoft.com/features/azure-portal/). Pokud k němu chcete získat přístup, [Přihlaste se k portálu](https://portal.azure.com), vyberte **Procházet** a přejděte na **Security Center**.
 
 
 ## <a name="which-azure-resources-are-monitored-by-azure-security-center"></a>Které prostředky Azure monitoruje Azure Security Center?
@@ -46,10 +46,10 @@ Na stránce **přehled Security Center** se zobrazuje celkové stav zabezpečen�
 
 
 
-## <a name="what-is-a-security-policy"></a>Co je zásada zabezpečení?
-Zásady zabezpečení definují sadu ovládacích prvků, které jsou doporučeny pro prostředky v rámci zadaného předplatného. V Azure Security Center definujete zásady pro vaše předplatná Azure podle požadavků na zabezpečení vaší společnosti a typu aplikací nebo citlivosti dat v jednotlivých předplatných.
+## <a name="what-is-a-security-initiative"></a>Co je iniciativa zabezpečení?
+Iniciativa zabezpečení definuje sadu ovládacích prvků (zásad), které se doporučují pro prostředky v rámci zadaného předplatného. V Azure Security Center přiřadíte iniciativy pro vaše předplatná Azure podle požadavků na zabezpečení vaší společnosti a typu aplikací nebo citlivosti dat v jednotlivých předplatných.
 
-Zásady zabezpečení, které jsou povolené v Azure Security Center, doporučení zabezpečení a monitorování. Další informace o zásadách zabezpečení najdete v tématu [monitorování stavu zabezpečení v Azure Security Center](security-center-monitoring.md).
+Zásady zabezpečení, které jsou povolené v Azure Security Center, doporučení zabezpečení a monitorování. Další informace najdete v informacích o [zásadách zabezpečení, iniciativách a doporučeních](security-policy-concept.md).
 
 
 ## <a name="who-can-modify-a-security-policy"></a>Kdo může upravit zásady zabezpečení?

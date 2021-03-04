@@ -1,17 +1,16 @@
 ---
 title: Odeslání protokolu aktivit Azure do Log Analytics pracovního prostoru pomocí Azure Portal
 description: Použijte Azure Portal k vytvoření pracovního prostoru Log Analytics a nastavení diagnostiky pro odeslání protokolu aktivit do protokolů Azure Monitor.
-ms.subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 1316512badd69b545e39a47ea5da3ca6a0902482
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fec1f4f3ae13f6c9ed5fdd7ffbcd143e5c5e5f52
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734277"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033244"
 ---
 # <a name="send-azure-activity-log-to-log-analytics-workspace-using-azure-portal"></a>Odeslání protokolu aktivit Azure do Log Analytics pracovního prostoru pomocí Azure Portal
 Protokol aktivit je protokol platformy v Azure, který poskytuje přehled o událostech na úrovni předplatného. Obsahuje například informace o úpravách prostředků nebo spouštění virtuálních počítačů. Protokol aktivit můžete zobrazit v Azure Portal nebo načíst položky pomocí PowerShellu a rozhraní příkazového řádku. V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit pracovní prostor Log Analytics a nastavení diagnostiky k odeslání protokolu aktivit do Azure Monitor protokolů, kde je můžete analyzovat pomocí [dotazů protokolu](../logs/log-query-overview.md) a povolit další funkce, jako jsou například výstrahy a [sešity](../visualize/workbooks-overview.md) [protokolu](../alerts/alerts-log-query.md) . 

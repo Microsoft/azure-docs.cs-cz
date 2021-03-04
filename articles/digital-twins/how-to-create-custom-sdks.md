@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: e0c0d18dbb3596733d02430554fd40ec16180c64
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: e7239bfdca1dc464048c0db08488029b0868deb5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980656"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049793"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Vytváření vlastních sad SDK pro digitální vlákna Azure pomocí AutoRest
 
@@ -44,10 +44,10 @@ Pokud chcete spustit AutoRest proti souboru Swagger digitálních vláken Azure,
 3. Spusťte AutoRest pomocí následujícího příkazu. `<language>`Zástupný text nahraďte vaším jazykem podle vlastního výběru: `python` , `java` , `go` a tak dále. (Můžete najít úplný seznam možností v [souboru Readme pro AutoRest](https://github.com/Azure/autorest).)
 
 ```cmd/sh
-autorest --input-file=digitaltwins.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
+autorest --input-file=digitaltwins.json --<language> --output-folder=DigitalTwinsApi --add-credentials --azure-arm --namespace=DigitalTwinsApi
 ```
 
-V důsledku toho se v pracovním adresáři zobrazí nová složka s názvem *ADTApi* . Vygenerované soubory sady SDK budou mít obor názvů *ADTApi*. Tento obor názvů budete používat i v ostatních příkladech použití v tomto článku.
+V důsledku toho se v pracovním adresáři zobrazí nová složka s názvem *DigitalTwinsApi* . Vygenerované soubory sady SDK budou mít obor názvů *DigitalTwinsApi*. Tento obor názvů budete používat i v ostatních příkladech použití v tomto článku.
 
 AutoRest podporuje široké spektrum generátorů kódů jazyka.
 
@@ -60,8 +60,8 @@ V této části jsou uvedeny pokyny k sestavení sady SDK jako knihovny tříd, 
 Tady je postup:
 
 1. Vytvoření nového řešení sady Visual Studio pro knihovnu tříd
-2. Jako název projektu použijte *ADTApi*
-3. V Průzkumníku řešení klikněte pravým tlačítkem na projekt *ADTApi* vygenerovaného řešení a zvolte *Přidat > existující položku...*
+2. Jako název projektu použijte *DigitalTwinsApi*
+3. V Průzkumníku řešení klikněte pravým tlačítkem na projekt *DigitalTwinsApi* vygenerovaného řešení a zvolte *Přidat > existující položku...*
 4. Najděte složku, do které jste sadu SDK vygenerovali, a vyberte soubory na kořenové úrovni.
 5. Stiskněte OK
 6. Přidejte do projektu složku (kliknutím pravým tlačítkem vyberte projekt v Průzkumník řešení a zvolte *přidat > nová složka*).

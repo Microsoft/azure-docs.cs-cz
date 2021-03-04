@@ -6,13 +6,13 @@ ms.author: sunila
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 09/22/2020
-ms.openlocfilehash: b4df91f4654f39780f81e0a27139677431926238
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 03/03/2021
+ms.openlocfilehash: d36dcfccb6843947991b2548af6dd98b81adb40e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532658"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049504"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL – flexibilní Server
 
@@ -56,7 +56,7 @@ Následující obrázek ukazuje přechod pro virtuální počítač a selhání 
 
 Pokud je nakonfigurovaná vysoká dostupnost zóny, služba zřídí a udržuje aktivní pohotovostní server napříč zónou dostupnosti v rámci stejné oblasti Azure. Změny dat na zdrojovém serveru se synchronně replikují na pohotovostní server, aby se zajistila nulová ztráta dat. Pokud se po aktivaci plánované nebo neplánované události převzetí služeb při selhání spustí záložní server s vysokou dostupností, bude pohotovostní server okamžitě online a bude k dispozici pro zpracování příchozích transakcí. To umožňuje odolnost služby před selháním zóny dostupnosti v oblasti Azure, která podporuje více zón dostupnosti, jak je znázorněno na obrázku níže.
 
- :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="Flexibilní selhání serveru – virtuální počítače a úložiště":::
+ :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="Redundantní vysoká dostupnost zóny":::
 
  Další podrobnosti najdete v [dokumentu vysoké dostupnosti](./concepts-high-availability.md) .
 
@@ -85,6 +85,24 @@ Flexibilní servery umožňují úplný privátní přístup k serverům pomocí
 ## <a name="monitoring-and-alerting"></a>Monitorování a upozorňování
 
 Flexibilní serverová služba je vybavená integrovanými funkcemi pro monitorování výkonu a upozorňování. Všechny metriky Azure mají četnost jednosměrných minut a každá metrika poskytuje historii 30 dnů. Výstrahy můžete nakonfigurovat pro metriky. Služba zpřístupňuje metriky hostitelského serveru pro monitorování využití prostředků a umožňuje konfigurovat protokoly pomalých dotazů. Pomocí těchto nástrojů můžete rychle optimalizovat vaše úlohy a nakonfigurovat server tak, aby co nejlépe vyzpůsobil výkon.
+
+## <a name="azure-regions"></a>Oblast Azure
+
+Jednou z výhod spouštění úloh v Azure je globální dosah. Flexibilní Server je k dispozici v dnešní době v následujících oblastech Azure:
+
+| Oblast | Dostupnost | Redundantní HA zóny | 
+| --- | --- | --- |
+| West Europe | :heavy_check_mark: | :heavy_check_mark: |
+| Severní Evropa | :heavy_check_mark: | :heavy_check_mark: |
+| Spojené království – jih | :heavy_check_mark: | :heavy_check_mark: | 
+| USA – východ 2 | :heavy_check_mark: | :heavy_check_mark: |
+| Západní USA 2 | :heavy_check_mark: | :heavy_check_mark: |
+| USA – střed | :heavy_check_mark: | :heavy_check_mark: | 
+| East US | :heavy_check_mark: | :heavy_check_mark: | 
+| Southeast Asia | :heavy_check_mark: | :heavy_check_mark: |
+| Japonsko – východ | :heavy_check_mark: | :heavy_check_mark: | 
+
+Dál se přidávají nové oblasti. 
 
 ## <a name="migration"></a>Migrace
 

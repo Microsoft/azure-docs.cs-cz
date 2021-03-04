@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: c7ee2289680bb50fabb8e6eb2a3ea0466bd58afb
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1d956e33a84b5509c16400c8f5f8e813d116411a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662566"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095744"
 ---
 # <a name="azure-percept-audio-button-and-led-behavior"></a>Zvukové tlačítko a chování LED pro Azure Percept
 
@@ -25,7 +25,7 @@ K řízení chování zařízení můžete použít tlačítka.
 |Stav tlačítka|  Chování|
 |------------|----------|
 |Vypnutí|  Stisknutím klávesy ztlumení nebo zrušení ztlumení mikrofonu. Událost tlačítka je vydaná vydaná vydaná po stisknutí.|
-|PTT/PTS|   Stisknutím PTT obejít stav klíčového slova hledání a aktivujte stav naslouchání příkazu. Opětovným stisknutím klávesy zastavte aktivní dialog agenta a vraťte se do hledání stavu klíčového slova.|
+|PTT/PTS|   Stisknutím PTT obejít stav klíčového slova hledání a aktivujte stav naslouchání příkazu. Opětovným stisknutím klávesy zastavte aktivní dialog agenta a vraťte se do hledání stavu klíčového slova. Událost tlačítka je vydaná vydaná vydaná po stisknutí. PTS funguje pouze v případě, že je stisknuto tlačítko při mluvení agenta, nikoli v případě, že agent naslouchá nebo je uvažujete.|
 
 ## <a name="led-behavior"></a>Chování INDIKÁTORu
 
@@ -35,7 +35,7 @@ Pomocí indikátorů LED můžete pochopit, ve kterém stavu je zařízení.
 |---|------------|----------------| 
 |L02|   na1x bílé, statické na |Zapnout |
 |L02|   na1x bílá, 0,5 Hz – bliknutí|  Probíhá ověřování. |
-|L01 & L02 & L03|   3x Blue, static on|     Zjištěno klíčové slovo|
+|L01 & L02 & L03|   3x Blue, static on|     Čekání na klíčové slovo|
 |L01 & L02 & L03|   Blikání pole LED, 20fps | Naslouchat nebo mluvit|
 |L01 & L02 & L03|   Pole LED, 20fps|    Uvažujete|
 |L01 & L02 & L03|   3x Red, static on | Vypnutí|

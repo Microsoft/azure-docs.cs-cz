@@ -1,17 +1,16 @@
 ---
 title: Instalace agenta Azure Monitor
 description: Možnosti pro instalaci agenta Azure Monitor (AMA) na virtuální počítače Azure a servery s podporou ARC Azure
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 17c7609afeef8b5129e3bfe252def74b45cb4208
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6bf0e8b90ca50a90f84c18981ab6accae8477b46
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719946"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034302"
 ---
 # <a name="install-the-azure-monitor-agent-preview"></a>Instalace agenta Azure Monitor (Preview)
 Tento článek poskytuje různé možnosti, které jsou aktuálně k dispozici pro instalaci [agenta Azure monitor](azure-monitor-agent-overview.md) na virtuálních počítačích Azure i serverech s podporou ARC Azure a také možnosti vytváření [přidružení s pravidly shromažďování dat](data-collection-rule-azure-monitor-agent.md) , která určují, která data má agent shromažďovat.

@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6dda65be98934ce90e985b241078ae8019afb7e0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e344d85bbdac92aa372fc5d5e59ef90b11dfac6c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361260"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095727"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ ms.locfileid: "100361260"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-V tomto článku se dozvíte, jak povolit přihlášení AD FS uživatelského účtu pomocí [vlastních zásad](custom-policy-overview.md) v Azure Active Directory B2C (Azure AD B2C). Přihlášení povolíte přidáním [technického profilu zprostředkovatele identity SAML](saml-identity-provider-technical-profile.md) do vlastních zásad.
+V tomto článku se dozvíte, jak povolit přihlášení AD FS uživatelského účtu pomocí [vlastních zásad](custom-policy-overview.md) v Azure Active Directory B2C (Azure AD B2C). Přihlášení povolíte přidáním [poskytovatele identity SAML](identity-provider-generic-saml.md) do vlastní zásady.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -62,7 +62,7 @@ Certifikát musíte uložit do svého tenanta Azure AD B2C.
 
 Pokud chcete, aby se uživatelé přihlásili pomocí účtu AD FS, musíte účet definovat jako zprostředkovatele deklarací identity, se kterým Azure AD B2C může komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací, které používá Azure AD B2C k ověření, že konkrétní uživatel byl ověřen.
 
-Účet AD FS můžete definovat jako zprostředkovatele deklarací tak, že ho přidáte do prvku **ClaimsProviders** v souboru rozšíření zásady. Další informace najdete v tématu [definice technického profilu zprostředkovatele identity SAML](saml-identity-provider-technical-profile.md).
+Účet AD FS můžete definovat jako zprostředkovatele deklarací tak, že ho přidáte do prvku **ClaimsProviders** v souboru rozšíření zásady. Další informace najdete v tématu [definice zprostředkovatele identity SAML](identity-provider-generic-saml.md).
 
 1. Otevřete *TrustFrameworkExtensions.xml*.
 1. Vyhledejte element **ClaimsProviders** . Pokud neexistuje, přidejte jej pod kořenový element.
@@ -217,7 +217,7 @@ Tato chyba označuje, že požadavek SAML odeslaný pomocí Azure AD B2C není p
 
 #### <a name="option-1-set-the-signature-algorithm-in-azure-ad-b2c"></a>Možnost 1: nastavte algoritmus podpisu v Azure AD B2C  
 
-Můžete nakonfigurovat, jak podepsat požadavek SAML v Azure AD B2C. Metadata [XmlSignatureAlgorithm](saml-identity-provider-technical-profile.md#metadata) řídí hodnotu `SigAlg` parametru (řetězec dotazu nebo parametr post) v požadavku SAML. Následující příklad nakonfiguruje Azure AD B2C k použití `rsa-sha256` algoritmu podpisu.
+Můžete nakonfigurovat, jak podepsat požadavek SAML v Azure AD B2C. Metadata [XmlSignatureAlgorithm](identity-provider-generic-saml.md) řídí hodnotu `SigAlg` parametru (řetězec dotazu nebo parametr post) v požadavku SAML. Následující příklad nakonfiguruje Azure AD B2C k použití `rsa-sha256` algoritmu podpisu.
 
 ```xml
 <Metadata>

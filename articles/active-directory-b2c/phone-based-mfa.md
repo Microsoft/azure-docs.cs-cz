@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/01/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3ca73e020009817001f309ddf29c2984a8541026
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: cc9e0be90c138ba33e1b4dfe11ea6f9c8b7da297
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527347"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033550"
 ---
 # <a name="securing-phone-based-multi-factor-authentication-mfa"></a>Zabezpečení vícefaktorového ověřování Multi-Factor Authentication (MFA)
 
@@ -89,7 +89,7 @@ Proveďte následující akce, které vám pomůžou zmírnit podvodné podepiso
 - Použijte **Doporučené** verze uživatelských toků k následujícím akcím:
      
    - [Povolte funkci](phone-authentication-user-flows.md) jednorázového hesla pro použití e-mailu pro MFA (platí pro toky registrace i přihlášení).
-   - [Nakonfigurujte zásady podmíněného přístupu](conditional-access-identity-protection-setup.md) , které blokují přihlášení na základě umístění (platí jenom pro toky přihlašování, ne pro toky registrace).
+   - [Nakonfigurujte zásady podmíněného přístupu](conditional-access-user-flow.md) , které blokují přihlášení na základě umístění (platí jenom pro toky přihlašování, ne pro toky registrace).
    - Použijte konektory rozhraní API pro [integraci s řešením anti-bot, jako je reCAPTCHA](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-captcha) (platí pro toky registrace).
 
 - Z rozevírací nabídky, kde si uživatel ověří své telefonní číslo (Tato změna bude platit pro budoucí přihlašování), odeberte kódy zemí, které nejsou relevantní pro vaši organizaci:

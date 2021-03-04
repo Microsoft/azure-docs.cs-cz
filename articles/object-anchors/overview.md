@@ -4,15 +4,15 @@ description: Přečtěte si, jak kotvy objektů Azure pomáhají detekovat objek
 author: craigktreasure
 manager: vriveras
 ms.author: crtreasu
-ms.date: 02/18/2021
+ms.date: 03/02/2021
 ms.topic: overview
 ms.service: azure-object-anchors
-ms.openlocfilehash: 099307ba1085ff6d24bc6bb4000a592aabc8f8f6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cbe52004dddbe74aa02347c026028a8ffd4cf8d7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748553"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034183"
 ---
 # <a name="azure-object-anchors-overview"></a>Přehled kotev objektů Azure
 
@@ -37,7 +37,7 @@ Mezi příklady případů použití povolené kotvami objektů Azure patří:
 V následujících částech najdete informace o tom, jak začít používat a sestavovat aplikace pomocí kotev objektů Azure.
 
 > [!div class="nextstepaction"]
-> [Přijímání modelů](quickstarts/get-started-model-ingestion.md)
+> [Přijímání modelů](quickstarts/get-started-model-conversion.md)
 
 > [!div class="nextstepaction"]
 > [Unity HoloLens](quickstarts/get-started-unity-hololens.md)

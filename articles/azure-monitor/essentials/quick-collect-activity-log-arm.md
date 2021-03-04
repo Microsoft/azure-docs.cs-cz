@@ -1,18 +1,17 @@
 ---
 title: Odeslání protokolu aktivit Azure do Log Analytics pracovního prostoru pomocí šablony Azure Resource Manager
 description: Použijte šablony ARM k vytvoření pracovního prostoru Log Analytics a nastavení diagnostiky pro odeslání protokolu aktivit do protokolů Azure Monitor.
-ms.subservice: logs
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 0a740b4c6c6e89c9a4990651779ea4f0b376c971
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 56810cffcb9665810c452276be34e6924fd992b2
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734345"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033261"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>Rychlý Start: odeslání protokolu aktivit Azure do Log Analytics pracovního prostoru pomocí šablony ARM
 
