@@ -5,25 +5,25 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: mrohera
-ms.date: 4/3/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bfb61a5434089fffab9d8ceb9c7b0fbca528cac5
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 73d1d873df58c672e9db6b9e4e17ed58e1a6397e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430607"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046189"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Vytvoření a zřízení zařízení IoT Edge pomocí ověřování symetrického klíče
 
 Zařízení Azure IoT Edge se dají automaticky zřídit pomocí [služby Device Provisioning](../iot-dps/index.yml) , stejně jako zařízení, která nejsou povolená přes hranice. Pokud neznáte proces automatického zřizování, přečtěte si přehled [zřizování](../iot-dps/about-iot-dps.md#provisioning-process) a teprve potom pokračujte.
 
-V tomto článku se dozvíte, jak vytvořit službu Device Provisioning pomocí ověření symetrického klíče na zařízení IoT Edge pomocí následujících kroků:
+V tomto článku se dozvíte, jak vytvořit registraci jednotlivce nebo skupiny služby Device Provisioning pomocí ověřování symetrického klíče na zařízení s IoT Edge pomocí následujících kroků:
 
 * Vytvořte instanci IoT Hub Device Provisioning Service (DPS).
-* Vytvořte jednotlivou registraci zařízení.
+* Vytvořte registraci zařízení.
 * Nainstalujte modul runtime IoT Edge a připojte se k IoT Hub.
 
 Symetrický ověření identity je jednoduchý přístup k ověřování zařízení pomocí instance služby Device Provisioning. Tato metoda ověření identity představuje prostředí "Hello World" pro vývojáře, kteří jsou noví v zřizování zařízení, nebo nemají přísné požadavky na zabezpečení. Ověření zařízení pomocí [čipu TPM](../iot-dps/concepts-tpm-attestation.md) nebo [X. 509](../iot-dps/concepts-x509-attestation.md) je bezpečnější a mělo by se používat pro přísnější požadavky na zabezpečení.
@@ -72,8 +72,8 @@ Když vytvoříte registraci v DPS, budete mít možnost deklarovat **počáteč
 
    1. Vyberte **hodnotu true** , pokud chcete deklarovat, že registrace je určena pro IoT Edge zařízení. V případě registrace skupiny musí být všechna zařízení IoT Edge nebo žádná z nich nemůžete.
 
-   > [!TIP]
-   > V Azure CLI můžete vytvořit [registraci](/cli/azure/ext/azure-iot/iot/dps/enrollment) nebo [skupinu registrace](/cli/azure/ext/azure-iot/iot/dps/enrollment-group) a pomocí příznaku s **povoleným okrajem** určit, že zařízení nebo skupina zařízení je IoT Edge zařízení.
+      > [!TIP]
+      > V Azure CLI můžete vytvořit [registraci](/cli/azure/ext/azure-iot/iot/dps/enrollment) nebo [skupinu registrace](/cli/azure/ext/azure-iot/iot/dps/enrollment-group) a pomocí příznaku s **povoleným okrajem** určit, že zařízení nebo skupina zařízení je IoT Edge zařízení.
 
    1. Přijměte výchozí hodnotu ze zásad přidělení služby Device Provisioning pro **způsob, jakým chcete přiřadit zařízení k rozbočovačům** , nebo vyberte jinou hodnotu, která je specifická pro tento zápis.
 
@@ -81,7 +81,7 @@ Když vytvoříte registraci v DPS, budete mít možnost deklarovat **počáteč
 
    1. Vyberte **, jak chcete, aby se data zařízení při opětovném zřizování zpracovala** při zřizování zařízení po prvním přihlášení.
 
-   1. Pokud chcete, přidejte hodnotu značky do **počátečního stavového vlákna zařízení** . Pomocí značek můžete cílit skupiny zařízení na nasazení modulů. Příklad:
+   1. Pokud chcete, přidejte hodnotu značky do **počátečního stavového vlákna zařízení** . Pomocí značek můžete cílit skupiny zařízení na nasazení modulů. Například:
 
       ```json
       {
@@ -169,10 +169,12 @@ Připravte si následující informace:
 * **Primární klíč** , který jste zkopírovali z registrace DPS
 
 > [!TIP]
-> Pro zápis skupin potřebujete místo registračního klíče každého zařízení [odvozený klíč](#derive-a-device-key) každého zařízení.
+> U skupinových registrací budete potřebovat [odvozený klíč](#derive-a-device-key) každého zařízení, a ne primární klíč registrace DPS.
 
 ### <a name="linux-device"></a>Zařízení se systémem Linux
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 1. Otevřete konfigurační soubor na zařízení IoT Edge.
 
    ```bash
@@ -197,15 +199,66 @@ Připravte si následující informace:
    #  dynamic_reprovisioning: false
    ```
 
-   Volitelně můžete pomocí `always_reprovision_on_startup` řádků nebo `dynamic_reprovisioning` nakonfigurovat chování při opětovném zřizování zařízení. Pokud je zařízení nastavené tak, aby se při spuštění znovu zřídilo, vždy se nejprve pokusí zřídit pomocí DPS a pak se vrátit k záložnímu zálohování, pokud se nezdaří. Pokud je zařízení nastavené tak, aby se dynamicky znovu zřídilo, IoT Edge se restartuje a znovu zřídí, pokud se zjistí událost opětovného zřízení. Další informace najdete v tématu [IoT Hub konceptů opětovného zřízení zařízení](../iot-dps/concepts-device-reprovision.md).
-
 1. Aktualizujte hodnoty `scope_id` , `registration_id` a `symmetric_key` pomocí informací DPS a Device.
+
+1. Volitelně můžete pomocí `always_reprovision_on_startup` řádků nebo `dynamic_reprovisioning` nakonfigurovat chování při opětovném zřizování zařízení. Pokud je zařízení nastavené tak, aby se při spuštění znovu zřídilo, vždy se nejprve pokusí zřídit pomocí DPS a pak se vrátit k záložnímu zálohování, pokud se nezdaří. Pokud je zařízení nastavené tak, aby se dynamicky znovu zřídilo, IoT Edge se restartuje a znovu zřídí, pokud se zjistí událost opětovného zřízení. Další informace najdete v tématu [IoT Hub konceptů opětovného zřízení zařízení](../iot-dps/concepts-device-reprovision.md).
 
 1. Restartujte modul runtime IoT Edge, aby provedl všechny změny konfigurace, které jste v zařízení provedli.
 
    ```bash
    sudo systemctl restart iotedge
    ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. Vytvořte konfigurační soubor pro vaše zařízení na základě souboru šablony, který je součástí instalace IoT Edge.
+
+   ```bash
+   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   ```
+
+1. Otevřete konfigurační soubor na zařízení IoT Edge.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+1. Vyhledejte oddíl **zřizování** souboru. Odkomentujte řádky pro zřizování DPS pomocí symetrického klíče a zajistěte, aby byly všechny další řádky pro zřizování zakomentovány.
+
+   ```toml
+   # DPS provisioning with symmetric key
+   [provisioning]
+   source = "dps"
+   global_endpoint = "https://global.azure-devices-provisioning.net"
+   id_scope = "<SCOPE_ID>"
+   
+   [provisioning.attestation]
+   method = "symmetric_key"
+   registration_id = "<REGISTRATION_ID>"
+
+   symmetric_key = "<PRIMARY_KEY OR DERIVED_KEY>"
+   ```
+
+1. Aktualizujte hodnoty `id_scope` , `registration_id` a `symmetric_key` pomocí informací DPS a Device.
+
+   Parametr symetrického klíče může přijmout hodnotu vloženého klíče, identifikátor URI souboru nebo identifikátor URI PKCS # 11. Odkomentujte pouze jeden symetrický klíčový řádek, na základě formátu, který používáte.
+
+   Pokud používáte jakékoli identifikátory URI PKCS # 11, vyhledejte v konfiguračním souboru oddíl **PKCS # 11** a poskytněte informace o konfiguraci PKCS # 11.
+
+1. Soubor config. toml uložte a zavřete.
+
+1. Použijte změny konfigurace, které jste provedli v IoT Edge.
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ### <a name="windows-device"></a>Zařízení s Windows
 
@@ -228,6 +281,9 @@ Pokud se modul runtime úspěšně spustil, můžete přejít do svého IoT Hub 
 
 ### <a name="linux-device"></a>Zařízení se systémem Linux
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 Zkontrolujte stav služby IoT Edge.
 
 ```cmd/sh
@@ -245,6 +301,31 @@ Vypíše spuštěné moduly.
 ```cmd/sh
 iotedge list
 ```
+
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+Zkontrolujte stav služby IoT Edge.
+
+```cmd/sh
+sudo iotedge system status
+```
+
+Projděte si protokoly služby.
+
+```cmd/sh
+sudo iotedge system logs
+```
+
+Vypíše spuštěné moduly.
+
+```cmd/sh
+sudo iotedge list
+```
+
+:::moniker-end
 
 ### <a name="windows-device"></a>Zařízení s Windows
 

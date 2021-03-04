@@ -8,12 +8,12 @@ ms.date: 11/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c5f28e2c2d370329dbee0fb76284a4b76b2b945e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d46ad8238faa42ca657b18b3997407d91a224537
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100376506"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045917"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Řešení potíží s IoT Edgem zařízením
 
@@ -42,7 +42,7 @@ iotedge check
 
 Nástroj pro řešení potíží spustí mnoho kontrol, které jsou seřazené do těchto tří kategorií:
 
-* *Kontroly konfigurace* prozkoumají podrobnosti, které by mohly bránit IoT Edge zařízením v připojení ke cloudu, včetně problémů s *config. yaml* a modulem kontejnerů.
+* *Kontroly konfigurace* prozkoumají podrobnosti, které by mohly bránit IoT Edge zařízením v připojení ke cloudu, včetně problémů s konfiguračním souborem a modulem kontejnerů.
 * *Kontroly připojení* ověřují, zda IoT Edge runtime má přístup k portům na hostitelském zařízení a že se všechny součásti IoT Edge mohou připojit k IoT Hub. Tato sada kontrol vrátí chyby, pokud je zařízení IoT Edge za proxy serverem.
 * *Kontroly připravenosti na produkci* hledají Doporučené provozní postupy, jako je například stav certifikátů certifikační autorita zařízení (CA) a konfigurace souboru protokolu modulu.
 
@@ -102,6 +102,9 @@ Tento příkaz zobrazí výstup všech [hlášených vlastností](./module-edgea
 
 V systému Linux:
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 * Zobrazit stav správce zabezpečení IoT Edge:
 
    ```bash
@@ -110,32 +113,68 @@ V systému Linux:
 
 * Zobrazit protokoly IoT Edge Security Manageru:
 
-    ```bash
-    sudo journalctl -u iotedge -f
-    ```
+   ```bash
+   sudo journalctl -u iotedge -f
+   ```
 
 * Zobrazit podrobnější protokoly IoT Edge Security Manageru:
 
-  * Upravte nastavení IoT Edge démona:
+  1. Upravte nastavení IoT Edge démona:
 
-      ```bash
-      sudo systemctl edit iotedge.service
-      ```
+     ```bash
+     sudo systemctl edit iotedge.service
+     ```
 
-  * Aktualizujte následující řádky:
+  2. Aktualizujte následující řádky:
 
-      ```bash
-      [Service]
-      Environment=IOTEDGE_LOG=edgelet=debug
-      ```
+     ```bash
+     [Service]
+     Environment=IOTEDGE_LOG=edgelet=debug
+     ```
 
-  * Restartujte proces démona zabezpečení IoT Edge:
+  3. Restartujte proces démona zabezpečení IoT Edge:
 
-      ```bash
-      sudo systemctl cat iotedge.service
-      sudo systemctl daemon-reload
-      sudo systemctl restart iotedge
-      ```
+     ```bash
+     sudo systemctl cat iotedge.service
+     sudo systemctl daemon-reload
+     sudo systemctl restart iotedge
+     ```
+<!--end 1.1 -->
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+* Zobrazit stav IoT Edge systémových služeb:
+
+   ```bash
+   sudo iotedge system status
+   ```
+
+* Zobrazení protokolů IoT Edge systémových služeb:
+
+   ```bash
+   sudo iotedge system logs -- -f
+   ```
+
+* Povolit protokoly na úrovni ladění pro zobrazení podrobnějších protokolů IoT Edge systémových služeb:
+
+  1. Povolte protokoly na úrovni ladění.
+
+     ```bash
+     sudo iotedge system set-log-level debug
+     sudo iotedge system restart
+     ```
+
+  1. Po ladění přepněte zpět na výchozí protokoly na úrovni informací.
+
+     ```bash
+     sudo iotedge system set-log-level info
+     sudo iotedge system restart
+     ```
+
+<!-- end 1.2 -->
+:::moniker-end
 
 Ve Windows:
 
@@ -159,52 +198,17 @@ Ve Windows:
 
 * Zobrazit podrobnější protokoly IoT Edge Security Manageru:
 
-  * Přidat proměnnou prostředí na úrovni systému:
+  1. Přidat proměnnou prostředí na úrovni systému:
 
-      ```powershell
-      [Environment]::SetEnvironmentVariable("IOTEDGE_LOG", "debug", [EnvironmentVariableTarget]::Machine)
-      ```
+     ```powershell
+     [Environment]::SetEnvironmentVariable("IOTEDGE_LOG", "debug", [EnvironmentVariableTarget]::Machine)
+     ```
 
-  * Restartujte proces démona zabezpečení IoT Edge:
+  2. Restartujte proces démona zabezpečení IoT Edge:
 
-      ```powershell
-      Restart-Service iotedge
-      ```
-
-### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Pokud IoT Edge Security Manager není spuštěný, ověřte konfigurační soubor YAML.
-
-> [!WARNING]
-> Soubory YAML nemůžou jako odsazení obsahovat tabulátory. Místo toho použijte 2 mezery. Elementy na nejvyšší úrovni by neměly mít žádné úvodní mezery.
-
-V systému Linux:
-
-   ```bash
-   sudo nano /etc/iotedge/config.yaml
-   ```
-
-Ve Windows:
-
-   ```cmd
-   notepad C:\ProgramData\iotedge\config.yaml
-   ```
-
-### <a name="restart-the-iot-edge-security-manager"></a>Restartujte správce zabezpečení IoT Edge
-
-Pokud je problém stále přetrvává, můžete zkusit restartovat správce zabezpečení IoT Edge.
-
-V systému Linux:
-
-   ```cmd
-   sudo systemctl restart iotedge
-   ```
-
-Ve Windows:
-
-   ```powershell
-   Stop-Service iotedge -NoWait
-   sleep 5
-   Start-Service iotedge
-   ```
+     ```powershell
+     Restart-Service iotedge
+     ```
 
 ## <a name="check-container-logs-for-issues"></a>Kontrolovat problémy v protokolech kontejnerů
 
@@ -217,6 +221,9 @@ iotedge logs <container name>
 Můžete také použít přímé volání [metody](how-to-retrieve-iot-edge-logs.md#upload-module-logs) do modulu v zařízení k nahrání protokolů tohoto modulu do Azure Blob Storage.
 
 ## <a name="view-the-messages-going-through-the-iot-edge-hub"></a>Zobrazení zpráv, které procházejí centrem centra IoT Edge
+
+<!--1.1 -->
+:::moniker range="iotedge-2018-06"
 
 Zprávy můžete zobrazit prostřednictvím centra IoT Edge a shromažďovat přehledy z podrobných protokolů z kontejnerů modulu runtime. Pokud chcete zapnout podrobné protokoly těchto kontejnerů, nastavte `RuntimeLogLevel` v konfiguračním souboru YAML. Otevření souboru:
 
@@ -256,7 +263,29 @@ Nahradit `env: {}` :
 
 Uložte soubor a restartujte správce zabezpečení IoT Edge.
 
-Můžete zkontrolovat také zprávy odesílané mezi službou IoT Hub a hraničními zařízeními IoT. Zobrazte tyto zprávy pomocí [rozšíření Azure IoT Hub pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). Další informace najdete v tématu [praktický nástroj při vývoji s využitím Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
+<!-- end 1.1 -->
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+Zprávy můžete zobrazit prostřednictvím centra IoT Edge a shromažďovat přehledy z kontejnerů modulu runtime z podrobných protokolů. Chcete-li zapnout podrobné protokoly těchto kontejnerů, nastavte `RuntimeLogLevel` proměnnou prostředí v manifestu nasazení.
+
+Chcete-li zobrazit zprávy procházející centrem IoT Edge, nastavte `RuntimeLogLevel` proměnnou prostředí `debug` pro modul edgeHub.
+
+Moduly edgeHub i edgeAgent mají tuto proměnnou prostředí protokolu modulu runtime s výchozí hodnotou nastavenou na `info` . Tato proměnná prostředí může mít následující hodnoty:
+
+* závažná
+* error
+* upozornění
+* příjemce
+* ladit
+* verbose
+
+<!-- end 1.2 -->
+:::moniker-end
+
+Můžete také kontrolovat zprávy odesílané mezi IoT Hub a zařízeními IoT. Zobrazte tyto zprávy pomocí [rozšíření Azure IoT Hub pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). Další informace najdete v tématu [praktický nástroj při vývoji s využitím Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
 
 ## <a name="restart-containers"></a>Restartovat kontejnery
 

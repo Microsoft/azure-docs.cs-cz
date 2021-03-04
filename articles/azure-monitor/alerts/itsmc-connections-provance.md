@@ -1,17 +1,16 @@
 ---
 title: Připojit prokázání pomocí konektoru pro správu služeb IT
 description: Tento článek poskytuje informace o tom, jak prokázat pomocí konektoru IT Service Management Connector (ITSMC) v Azure Monitor centrálně monitorovat a spravovat pracovní položky ITSM.
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 38aff6bf0851e97558fb8870a08f33bb0bcb0392
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 542b127823a73058f319e6a39c001bd563f042ae
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611111"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045373"
 ---
 # <a name="connect-provance-with-it-service-management-connector"></a>Připojit prokázání pomocí konektoru pro správu služeb IT
 

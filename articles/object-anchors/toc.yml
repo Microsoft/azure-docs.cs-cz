@@ -14,7 +14,7 @@
   expanded: true
   items:
     - name: Vytvoření modelu
-      href: quickstarts/get-started-model-ingestion.md
+      href: quickstarts/get-started-model-conversion.md
     - name: Vytvoření aplikace Unity
       expanded: true
       items:

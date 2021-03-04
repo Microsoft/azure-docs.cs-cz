@@ -28,6 +28,8 @@
           href: dns-forwarding.md
     - name: Storage
       items:
+        - name: Šifrování virtuálních okruhů pomocí klíče spravovaného zákazníkem (Preview)
+          href: howto-encrypt-data-disks.md
         - name: Vytvoření třídy Azure Files Storage
           href: howto-create-a-storageclass.md
         - name: Použití integrovaného registru kontejneru

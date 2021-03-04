@@ -1,17 +1,16 @@
 ---
 title: Ukázky šablon Správce prostředků pro agenty
 description: Ukázky Azure Resource Manager šablon pro nasazení a konfiguraci agentů virtuálních počítačů v Azure Monitor.
-ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 4d4f9b7caed81f8c01e7e2d7e9f94ec3acf3ba92
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9aae62b9f4ca74b11c4f62c44f6d310628d36316
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737337"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045764"
 ---
 # <a name="resource-manager-template-samples-for-agents-in-azure-monitor"></a>Ukázky šablon Správce prostředků pro agenty v Azure Monitor
 Tento článek obsahuje ukázkové [Azure Resource Manager šablony](../../azure-resource-manager/templates/template-syntax.md) pro nasazení a konfiguraci [agenta Log Analytics](./log-analytics-agent.md) a [rozšíření diagnostiky](./diagnostics-extension-overview.md) pro virtuální počítače v Azure monitor. Každá ukázka obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.

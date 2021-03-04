@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/23/2020
+ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: místní, OCR, Docker, kontejner
-ms.openlocfilehash: 843000963bc05cab5415c9bb1db32b3272c8dc9f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 93d59e78241dcc94785ca139818d72908c7184a4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391762"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043911"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Nainstalovat čtení kontejnerů Docker pro optické rozpoznávání znaků (Preview) 
 
@@ -436,7 +436,7 @@ Kontejnery Cognitive Services odesílají informace o fakturaci do Azure pomocí
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Další informace o těchto možnostech najdete v tématu [konfigurace kontejnerů](./computer-vision-resource-container-config.md).
+Další informace o těchto možnostech najdete v tématu [konfigurace kontejnerů](./computer-vision-resource-container-config.md). 
 
 ## <a name="summary"></a>Souhrn
 

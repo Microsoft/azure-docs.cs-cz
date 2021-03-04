@@ -4,12 +4,12 @@ description: Vysvětlení, jak vyvíjet funkce pomocí Pythonu
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 78965a1a09272663c52469b8ccd91988f30b53cc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0829ef9a6b63866c2527e521ed7edf48a3249392
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708692"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044251"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -22,7 +22,7 @@ Jako vývojář v Pythonu se může také zajímat jedna z následujících čl�
 | <ul><li>[Funkce Pythonu používající Visual Studio Code](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[Funkce Pythonu s terminálem/Command Prompt](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[Příručka pro vývojáře](functions-reference.md)</li><li>[Možnosti hostování](functions-scale.md)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li></ul> | <ul><li>[Klasifikace obrázků s využitím PyTorchu](machine-learning-pytorch.md)</li><li>[Ukázka Azure Automation](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[Machine learning s TensorFlow](functions-machine-learning-tensorflow.md)</li><li>[Procházet ukázky v Pythonu](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 > [!NOTE]
-> I když můžete [vyvíjet Azure Functions založené na Pythonu místně ve Windows](./azure-functions/create-first-function-vs-code-python#run-the-function-locally), Python se podporuje jenom v plánu hostování založeném na systému Linux, pokud je spuštěný v Azure. Podívejte se na seznam podporovaných kombinací [operačního systému a modulu runtime](./azure-functions/functions-scale#operating-systemruntime) .
+> I když můžete [vyvíjet Azure Functions založené na Pythonu místně ve Windows](create-first-function-vs-code-python.md#run-the-function-locally), Python se podporuje jenom v plánu hostování založeném na systému Linux, pokud je spuštěný v Azure. Podívejte se na seznam podporovaných kombinací [operačního systému a modulu runtime](functions-scale.md#operating-systemruntime) .
 
 ## <a name="programming-model"></a>Programovací model
 

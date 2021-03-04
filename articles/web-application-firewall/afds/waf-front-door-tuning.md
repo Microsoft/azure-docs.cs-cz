@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: mohitku
 ms.reviewer: tyao
-ms.openlocfilehash: 4c710792dd7966fad76b33954fdf7c2253cf18f0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8752886bc5304de420083212d29ccd3e1cb14084
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488234"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043690"
 ---
 # <a name="tuning-web-application-firewall-waf-for-azure-front-door"></a>Ladění firewallu webových aplikací (WAF) pro přední dveře Azure
  
@@ -38,9 +38,17 @@ UserId=20&captchaId=7&captchaId=15&comment="1=1"&rating=3
 
 Pokud si vyzkoušíte požadavek, WAF blokuje přenos, který obsahuje váš *1 = 1* řetězec v jakémkoli parametru nebo poli. Toto je řetězec často spojený s útokem na injektáže SQL. Můžete procházet protokoly a zobrazit časové razítko požadavku a pravidla, která jsou blokovaná/spárována.
  
-V následujícím příkladu prozkoumáme `FrontdoorWebApplicationFirewallLog` protokol generovaný z důvodu shody pravidla.
+V následujícím příkladu prozkoumáme `FrontdoorWebApplicationFirewallLog` protokol generovaný z důvodu shody pravidla. K vyhledání požadavků, které jsou zablokované během posledních 24 hodin, se dá použít následující Log Analytics dotaz:
+
+```kusto
+AzureDiagnostics
+| where Category == 'FrontdoorWebApplicationFirewallLog'
+| where TimeGenerated > ago(1d)
+| where action_s == 'Block'
+
+```
  
-V poli "requestUri" vidíte, že žádost byla provedena `/api/Feedbacks/` konkrétně. Dál najdete ID pravidla `942110` v poli "Rule". Pokud znáte ID pravidla, můžete přejít do [oficiálního úložiště OWASP sady pravidel ModSecurity](https://github.com/coreruleset/coreruleset) a vyhledat ho podle ID tohoto [pravidla](https://github.com/coreruleset/coreruleset/blob/v3.1/dev/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf) a přesně pochopit, na kterém pravidle odpovídá. 
+V `requestUri` poli vidíte, že žádost byla provedena `/api/Feedbacks/` konkrétně. Dál najdete ID pravidla `942110` v `ruleName` poli. Pokud znáte ID pravidla, můžete přejít do [oficiálního úložiště OWASP sady pravidel ModSecurity](https://github.com/coreruleset/coreruleset) a vyhledat ho podle ID tohoto [pravidla](https://github.com/coreruleset/coreruleset/blob/v3.1/dev/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf) a přesně pochopit, na kterém pravidle odpovídá. 
  
 Poté, co zkontrolujete `action` pole, uvidíme, že toto pravidlo je nastavené na blokování požadavků na základě porovnání, a potvrzujeme, že žádost byla ve skutečnosti BLOKOVANÁ WAF, protože `policyMode` je nastavená na `prevention` . 
  
@@ -125,7 +133,7 @@ S těmito informacemi a znalostmi, které pravidlo 942110 odpovídá `1=1` řet�
   * Další informace o akcích, které je možné provést, když požadavek odpovídá podmínkám pravidla, najdete v tématu [WAF Actions](afds-overview.md#waf-actions) .
 * Použít vlastní pravidla
   * Další informace o vlastních pravidlech najdete v tématu [vlastní pravidla pro Firewall webových aplikací pomocí služby Azure front-dveří](waf-front-door-custom-rules.md) .
-* Zakázat pravidla 
+* Zakázání pravidel 
 
 > [!TIP]
 > Když vybíráte přístup, který povoluje legitimní požadavky prostřednictvím WAF, zkuste to udělat tak, jak se dá dělat co nejpřesněji. Je například lepší použít seznam vyloučení, než pravidlo zcela zakážete.
@@ -196,6 +204,9 @@ Zakázání pravidla ale představuje globální nastavení, které platí pro v
 Pokud chcete zakázat spravované pravidlo pomocí Azure PowerShell, přečtěte si [`PSAzureManagedRuleOverride`](/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject?preserve-view=true&view=azps-4.7.0) dokumentaci k objektu. Pokud chcete použít rozhraní příkazového řádku Azure, přečtěte si [`az network front-door waf-policy managed-rules override`](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/override?preserve-view=true&view=azure-cli-latest) dokumentaci.
 
 ![Pravidla WAF](../media/waf-front-door-tuning/waf-rules.png)
+
+> [!TIP]
+> Je vhodné zdokumentovat všechny změny, které provedete v zásadách WAF. Zahrňte příklady požadavků na ilustraci falešně pozitivního zjišťování a jasně vysvětlete, proč jste přidali vlastní pravidlo, zakázal pravidlo nebo RuleSet, nebo jste přidali výjimku. Tato dokumentace může být užitečná v případě, že aplikaci v budoucnu přenavrhujete a potřebujete ověřit, zda jsou vaše změny stále platné. Může také pomáhat s tím, že jste někdy auditováni nebo potřebujete odůvodnit, proč jste překonfigurovali zásady WAF z výchozího nastavení.
 
 ## <a name="finding-request-fields"></a>Hledání polí žádosti
 

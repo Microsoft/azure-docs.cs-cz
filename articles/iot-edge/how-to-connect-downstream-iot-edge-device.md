@@ -4,7 +4,7 @@ description: Jak nakonfigurovat zařízení IoT Edge pro připojení k zařízen
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 1258fd4b5c69b399b70d1f2db1be63765771e631
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 709b986cc06aada45a0f541142b89fc3537f8ba8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629399"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046087"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>Připojení zařízení IoT Edge pro příjem dat k bráně Azure IoT Edge (Preview)
 
@@ -25,6 +25,8 @@ Tento článek poskytuje pokyny pro vytvoření důvěryhodného připojení mez
 
 >[!NOTE]
 >Tato funkce vyžaduje IoT Edge verze 1,2, která je ve verzi Public Preview, spouští se kontejnery Linux.
+>
+>Tento článek popisuje nejnovější verzi Preview verze IoT Edge 1,2. Ujistěte se, že je ve vašem zařízení spuštěná verze [1.2.0-RC4](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc4) nebo novější. Postup získání nejnovější verze Preview v zařízení najdete v tématu [instalace Azure IoT Edge pro Linux (verze 1,2)](how-to-install-iot-edge.md) nebo [aktualizace IoT Edge na verzi 1,2](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12).
 
 V případě brány může IoT Edge zařízení jak bránu, tak i zařízení pro příjem dat. Několik bran IoT Edge lze rozvrstvit a vytvořit tak hierarchii zařízení. Zařízení pro příjem dat (nebo podřízená) můžou ověřovat a odesílat nebo přijímat zprávy přes jejich bránu (nebo nadřazenou) zařízení.
 
@@ -103,9 +105,6 @@ Vytvořte následující certifikáty:
 * Všechny **zprostředkující certifikáty** , které chcete zahrnout do kořenového řetězu certifikátů.
 * **Certifikát certifikační autority zařízení** a jeho **privátní klíč** vygenerovaný kořenovými a zprostředkujícími certifikáty. Pro každé zařízení IoT Edge v hierarchii brány potřebujete jeden jedinečný certifikát CA zařízení.
 
->[!NOTE]
->V současné době omezení libiothsm brání použití certifikátů, jejichž platnost vyprší, od 1. ledna 2038.
-
 Můžete použít buď certifikační autoritu podepsané svým držitelem, nebo si ji koupit od důvěryhodné Komerční certifikační autority, jako je Baltimore, VeriSign, DigiCert nebo GlobalSign.
 
 Pokud nemáte vlastní certifikáty, které byste měli použít, můžete [Vytvořit Ukázkové certifikáty pro testování IoT Edgech funkcí zařízení](how-to-create-test-certificates.md). Podle kroků v tomto článku vytvořte jednu sadu kořenových a zprostředkujících certifikátů a pak vytvořte certifikáty IoT Edge zařízení pro každé z vašich zařízení.
@@ -124,7 +123,7 @@ Kroky v této části odkazují na certifikát **kořenové certifikační autor
 
 Pomocí následujících kroků můžete na svém zařízení nakonfigurovat IoT Edge.
 
-V systému Linux se ujistěte, že uživatel **iotedge** má oprávnění ke čtení pro adresář, který obsahuje certifikáty a klíče.
+Ujistěte se, že uživatel **iotedge** má oprávnění ke čtení pro adresář, který obsahuje certifikáty a klíče.
 
 1. Nainstalujte **certifikát kořenové certifikační autority** do tohoto IoT Edge zařízení.
 
@@ -140,19 +139,16 @@ V systému Linux se ujistěte, že uživatel **iotedge** má oprávnění ke čt
 
    Tento příkaz by měl mít výstup, který do/etc/SSL/certs. přidal jeden certifikát.
 
-1. Otevřete konfigurační soubor démona zabezpečení IoT Edge.
+1. Otevřete konfigurační soubor IoT Edge.
 
    ```bash
-   sudo nano /etc/iotedge/config.yaml
+   sudo nano /etc/aziot/config.toml
    ```
 
-1. V souboru config. yaml vyhledejte část **certifikáty** . Aktualizujte pole tří certifikátů tak, aby odkazovala na vaše certifikáty. Zadejte cesty k identifikátorům URI souboru, které mají formát `file:///<path>/<filename>` .
+   >[!TIP]
+   >Pokud konfigurační soubor ještě v zařízení neexistuje, použijte `/etc/aziot/config.toml.edge.template` k jeho vytvoření jako šablonu.
 
-   * **device_ca_cert**: cesta k identifikátoru URI souboru pro certifikát certifikační autority zařízení je pro toto zařízení jedinečná.
-   * **device_ca_pk**: cesta k identifikátoru URI souboru pro toto zařízení je pro privátní klíč certifikační autority zařízení jedinečná.
-   * **trusted_ca_certs**: cesta k identifikátoru URI souboru pro kořenový certifikát certifikační autority, kterou sdílí všechna zařízení v hierarchii brány.
-
-1. V souboru config. yaml vyhledejte parametr **hostname** . Aktualizujte název hostitele tak, aby byl plně kvalifikovaný název domény (FQDN) nebo IP adresa IoT Edgeho zařízení.
+1. V konfiguračním souboru vyhledejte oddíl **hostname** . Odkomentujte řádek, který obsahuje `hostname` parametr, a aktualizujte hodnotu na plně kvalifikovaný název domény (FQDN) nebo IP adresu zařízení IoT Edge.
 
    Hodnota tohoto parametru je to, co budou podřízená zařízení používat k připojení k této bráně. Název hostitele ve výchozím nastavení používá název počítače, ale k připojení podřízených zařízení se vyžaduje plně kvalifikovaný název domény nebo IP adresa.
 
@@ -160,33 +156,38 @@ V systému Linux se ujistěte, že uživatel **iotedge** má oprávnění ke čt
 
    Je konzistentní se vzorem názvu hostitele napříč hierarchií brány. Použijte buď plně kvalifikované názvy domény nebo IP adresy, ale ne obojí.
 
-1. **Pokud je toto zařízení podřízené**, vyhledejte parametr **parent_hostname** . Aktualizujte pole **parent_hostname** tak, aby se jednalo o plně kvalifikovaný název domény nebo IP adresu nadřazeného zařízení, a to podle toho, co bylo zadáno jako název hostitele v souboru config. yaml nadřazeného objektu.
+1. *Pokud je toto zařízení podřízené*, najděte oddíl **nadřazený název hostitele** . Odkomentujte a aktualizujte `parent_hostname` parametr tak, aby byl plně kvalifikovaný název domény nebo IP adresa nadřazeného zařízení, a to podle toho, co se zadalo jako název hostitele v konfiguračním souboru nadřazeného zařízení.
+
+1. Vyhledejte část **certifikát sady Trust** . Odkomentujte a aktualizujte `trust_bundle_cert` parametr pomocí identifikátoru URI souboru na certifikát kořenové certifikační autority na vašem zařízení.
 
 1. I když je tato funkce ve verzi Public Preview, musíte zařízení IoT Edge nakonfigurovat tak, aby při spuštění používala verzi Public Preview agenta IoT Edge.
 
-   Vyhledejte část **Agent** YAML a aktualizujte hodnotu image na obrázek verze Public Preview:
+   Najděte **výchozí část agent Edge** a aktualizujte hodnotu image na obrázek verze Public Preview:
 
-   ```yml
-   agent:
-     name: "edgeAgent"
-     type: "docker"
-     env: {}
-     config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
-       auth: {}
+   ```toml
+   [agent.config]
+   image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4"
    ```
 
-1. Uložte ( `Ctrl+O` ) a zavřete ( `Ctrl+X` ) soubor config. yaml.
+1. V konfiguračním souboru vyhledejte část **certifikát hraniční autority** . Odkomentujte řádky v této části a zadejte cesty k identifikátorům URI souborů certifikátu a klíčů na zařízení IoT Edge.
+
+   ```toml
+   [edge_ca]
+   cert = "file:///<path>/<device CA cert>"
+   pk = "file:///<path>/<device CA key>"
+   ```
+
+1. Uložte ( `Ctrl+O` ) a zavřete ( `Ctrl+X` ) konfiguračního souboru.
 
 1. Pokud jste předtím používali jiné certifikáty pro IoT Edge, odstraňte soubory z následujících dvou adresářů, abyste se ujistili, že se nové certifikáty použijí:
 
-   * `/var/lib/iotedge/hsm/certs`
-   * `/var/lib/iotedge/hsm/cert_keys`
+   * `/var/lib/aziot/certd/certs`
+   * `/var/lib/aziot/keyd/keys`
 
-1. Restartujte službu IoT Edge, aby se změny projevily.
+1. Provedené změny použijte.
 
    ```bash
-   sudo systemctl restart iotedge
+   sudo iotedge config apply
    ```
 
 1. Vyhledejte všechny chyby v konfiguraci.
@@ -202,16 +203,16 @@ V systému Linux se ujistěte, že uživatel **iotedge** má oprávnění ke čt
 
 I když je tato funkce ve verzi Public Preview, musíte zařízení IoT Edge nakonfigurovat tak, aby používala verze Public Preview modulů IoT Edge runtime. V předchozí části najdete postup konfigurace edgeAgent při spuštění. Také je nutné nakonfigurovat moduly modulu runtime v nasazeních pro vaše zařízení.
 
-1. Nakonfigurujte modul edgeHub tak, aby používal image Public Preview: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` .
+1. Nakonfigurujte modul edgeHub tak, aby používal image Public Preview: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4` .
 
 1. Pro modul edgeHub nakonfigurujte následující proměnné prostředí:
 
-   | Name | Hodnota |
+   | Název | Hodnota |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. Nakonfigurujte modul edgeAgent tak, aby používal image Public Preview: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` .
+1. Nakonfigurujte modul edgeAgent tak, aby používal image Public Preview: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4` .
 
 ## <a name="network-isolate-downstream-devices"></a>Síť s izolací pro příjem dat
 
@@ -302,7 +303,7 @@ Modul API proxy byl navržený tak, aby zpracovával nejběžnější scénáře
    1. Na kartě **nastavení modulu** , **identifikátor URI obrázku**: `registry:latest`
    1. Na kartě **proměnné prostředí** přidejte následující proměnné prostředí:
 
-      * **Název**: `REGISTRY_PROXY_REMOTEURL` **hodnota**: adresa URL registru kontejneru, na který chcete mapovat tento modul registru. Například `https://myregistry.azurecr`.
+      * **Název**: `REGISTRY_PROXY_REMOTEURL` **hodnota**: adresa URL registru kontejneru, na který chcete mapovat tento modul registru. Například, `https://myregistry.azurecr`.
 
         Modul registru lze mapovat pouze na jeden registr kontejneru, proto doporučujeme mít všechny image kontejneru v jednom privátním registru kontejneru.
 
@@ -356,21 +357,20 @@ Pokud nechcete, aby zařízení s nižší vrstvou prováděla žádosti o přij
 
 Agent IoT Edge je první komponenta modulu runtime, která se má spustit na jakémkoli IoT Edgem zařízení. Musíte zajistit, aby všechna IoT Edgeá zařízení, která při spuštění mají přístup k imagi modulu edgeAgent, a pak mohli získat přístup k nasazením a začít zbytek imagí modulu.
 
-Když přejdete do souboru config. yaml na zařízení IoT Edge, abyste mohli poskytovat informace o jeho ověřování, certifikátech a nadřazeném názvu hostitele, aktualizujte také image kontejneru edgeAgent.
+Když přejdete do konfiguračního souboru na zařízení IoT Edge, abyste mohli poskytovat informace o jeho ověřování, certifikátech a nadřazeném názvu hostitele, aktualizujte také image kontejneru edgeAgent.
 
 Pokud je zařízení brány nejvyšší úrovně nakonfigurované tak, aby zpracovávala požadavky na Image kontejneru, nahraďte `mcr.microsoft.com` nadřazeným názvem hostitele a portem naslouchání proxy serveru rozhraní API. V manifestu nasazení můžete použít `$upstream` jako zástupce, ale to vyžaduje, aby modul edgeHub zpracovávala směrování a tento modul v tomto okamžiku nezačal. Například:
 
-```yml
-agent:
-  name: "edgeAgent"
-  type: "docker"
-  env: {}
-  config:
-    image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc2"
-    auth: {}
+```toml
+[agent]
+name = "edgeAgent"
+type = "docker"
+
+[agent.config]
+image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc4"
 ```
 
-Pokud používáte místní registr kontejnerů nebo pokud chcete na zařízení ručně poskytnout image kontejneru, aktualizujte soubor config. yaml odpovídajícím způsobem.
+Pokud používáte místní registr kontejnerů nebo pokud chcete na zařízení ručně poskytnout image kontejneru, aktualizujte konfigurační soubor odpovídajícím způsobem.
 
 #### <a name="configure-runtime-and-deploy-proxy-module"></a>Konfigurace modulu runtime a nasazení proxy
 

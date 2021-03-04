@@ -4,16 +4,16 @@ description: Vytvářejte testovací certifikáty, nainstalujte je a spravujte j
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/02/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1f07f9d481ca8ede29c8b8443dad81a442962a71
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6a4cade6a740bffc33695c40663609df38ba6e7a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044135"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044897"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Správa certifikátů na zařízení IoT Edge
 
@@ -31,7 +31,7 @@ Další informace o různých typech certifikátů a jejich rolích najdete v t�
 >[!NOTE]
 >Pojem "Kořenová CA", který se používá v celém tomto článku, odkazuje na veřejný certifikát certifikační autority pro vaše řešení IoT. Nemusíte používat kořen certifikátu pro neoprávněnou certifikační autoritu nebo kořen certifikační autority vaší organizace. V mnoha případech je ve skutečnosti veřejný certifikát zprostředkující certifikační autority.
 
-### <a name="prerequisites"></a>Požadované součásti
+### <a name="prerequisites"></a>Požadavky
 
 * Zařízení IoT Edge.
 
@@ -51,8 +51,13 @@ Pro vytvoření následujících souborů byste měli použít vlastní certifik
 
 V tomto článku, na který odkazujeme jako na *kořenovou certifikační autoritu* , není pro organizaci nejvyšší certifikační autorita. Je to nejvyšší certifikační autorita pro IoT Edge scénář, kterou modul IoT Edge hub, uživatelské moduly a jakákoli podřízená zařízení používají k navázání vztahu důvěryhodnosti mezi sebou.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 > [!NOTE]
 > V současné době omezení libiothsm brání použití certifikátů, jejichž platnost vyprší, od 1. ledna 2038.
+
+:::moniker-end
 
 Pokud chcete zobrazit příklad těchto certifikátů, přečtěte si téma Vytvoření ukázkových certifikátů v tématu [Správa certifikátů testovací CA pro ukázky a kurzy](https://github.com/Azure/iotedge/tree/master/tools/CACertificates).
 
@@ -60,22 +65,23 @@ Pokud chcete zobrazit příklad těchto certifikátů, přečtěte si téma Vytv
 
 Nainstalujte svůj řetěz certifikátů na zařízení IoT Edge a nakonfigurujte modul runtime IoT Edge tak, aby odkazoval na nové certifikáty.
 
+Zkopírujte tři certifikáty a soubory klíčů do zařízení IoT Edge. K přesunutí souborů certifikátů můžete použít službu, jako je [Azure Key Vault](../key-vault/index.yml) , nebo funkci, jako je [protokol Secure Copy](https://www.ssh.com/ssh/scp/) .  Pokud jste certifikáty vygenerovali na samotném IoT Edge zařízení, můžete tento krok přeskočit a použít cestu k pracovnímu adresáři.
+
 Pokud jste například použili ukázkové skripty k [Vytvoření ukázkových certifikátů](how-to-create-test-certificates.md), zkopírujte do zařízení IoT-Edge následující soubory:
 
 * Certifikát certifikační autority zařízení: `<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
 * Privátní klíč certifikační autority zařízení: `<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
 * Kořenová certifikační autorita: `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
-1. Zkopírujte tři certifikáty a soubory klíčů do zařízení IoT Edge.
-
-   K přesunutí souborů certifikátů můžete použít službu, jako je [Azure Key Vault](../key-vault/index.yml) , nebo funkci, jako je [protokol Secure Copy](https://www.ssh.com/ssh/scp/) .  Pokud jste certifikáty vygenerovali na samotném IoT Edge zařízení, můžete tento krok přeskočit a použít cestu k pracovnímu adresáři.
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 1. Otevřete konfigurační soubor démona zabezpečení IoT Edge.
 
-   * Systému `C:\ProgramData\iotedge\config.yaml`
-   * Linux `/etc/iotedge/config.yaml`
+   * Windows: `C:\ProgramData\iotedge\config.yaml`
+   * Linux: `/etc/iotedge/config.yaml`
 
-1. V souboru config. yaml nastavte vlastnosti **certifikátu** na cestu k identifikátoru URI souboru certifikátu a souborů klíčů na zařízení IoT Edge. Odeberte `#` znak předtím, než vlastnosti certifikátu Odkomentujte čtyři řádky. Ujistěte se, že **certifikáty:** řádek neobsahuje žádné předchozí prázdné znaky a že vnořené položky jsou odsazeny o dva mezery. Příklad:
+1. V souboru config. yaml nastavte vlastnosti **certifikátu** na cestu k identifikátoru URI souboru certifikátu a souborů klíčů na zařízení IoT Edge. Odeberte `#` znak předtím, než vlastnosti certifikátu Odkomentujte čtyři řádky. Ujistěte se, že **certifikáty:** řádek neobsahuje žádné předchozí prázdné znaky a že vnořené položky jsou odsazeny o dva mezery. Například:
 
    * Windows:
 
@@ -102,6 +108,41 @@ Pokud jste například použili ukázkové skripty k [Vytvoření ukázkových c
    * Windows: `C:\ProgramData\iotedge\hsm\certs` a `C:\ProgramData\iotedge\hsm\cert_keys`
 
    * Linux: `/var/lib/iotedge/hsm/certs` a `/var/lib/iotedge/hsm/cert_keys`
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. Otevřete konfigurační soubor démona zabezpečení IoT Edge: `/etc/aziot/config.toml`
+
+1. Vyhledá `trust_bundle_cert` parametr na začátku souboru. Odkomentujte tento řádek a zadejte identifikátor URI certifikátu kořenové certifikační autority na vašem zařízení.
+
+   ```toml
+   trust_bundle_cert = "file:///<path>/<root CA cert>"
+   ```
+
+1. Vyhledejte `[edge_ca]` část v souboru config. toml. Odkomentujte řádky v této části a zadejte cesty k identifikátorům URI souborů certifikátu a klíčů na zařízení IoT Edge.
+
+   ```toml
+   [edge_ca]
+   cert = "file:///<path>/<device CA cert>"
+   pk = "file:///<path>/<device CA key>"
+   ```
+
+1. Ujistěte se, že uživatel **iotedge** má oprávnění ke čtení pro adresář, který obsahuje certifikáty.
+
+1. Pokud jste na zařízení používali jiné certifikáty pro IoT Edge, před spuštěním nebo restartováním IoT Edge odstraňte soubory z následujících dvou adresářů:
+
+   * `/var/lib/aziot/certd/certs`
+   * `/var/lib/aziot/keyd/keys`
+
+:::moniker-end
+<!-- end 1.2 -->
+
+<!-- 1.1. -->
+<!-- Temporarily, customizable certificate lifetime not available in 1.2. Update before GA. -->
+:::moniker range="iotedge-2018-06"
 
 ## <a name="customize-certificate-lifetime"></a>Přizpůsobení životnosti certifikátu
 
@@ -112,31 +153,29 @@ IoT Edge automaticky vygeneruje certifikáty v zařízení v několika případe
 
 Další informace o funkci různých certifikátů na zařízení IoT Edge najdete v tématu [Vysvětlení způsobu, jakým Azure IoT Edge používá certifikáty](iot-edge-certs.md).
 
-Pro tyto dva automaticky vygenerované certifikáty máte možnost nastavit příznak **auto_generated_ca_lifetime_days** v souboru config. yaml a nakonfigurovat tak počet dní pro dobu života certifikátů.
+Pro tyto dva automaticky vygenerované certifikáty máte možnost nastavit příznak **auto_generated_ca_lifetime_days** v konfiguračním souboru pro konfiguraci počtu dní pro dobu života certifikátů.
 
 >[!NOTE]
 >K dispozici je třetí automaticky generovaný certifikát, který IoT Edge Security Manager vytvoří, **certifikát serveru IoT Edge hub**. Tento certifikát má vždy dobu 90 dne, ale před vypršením platnosti se automaticky obnoví. Hodnota **auto_generated_ca_lifetime_days** nemá vliv na tento certifikát.
 
-Chcete-li nakonfigurovat vypršení platnosti certifikátu na jinou hodnotu než výchozí 90 dní, přidejte hodnotu ve dnech do části **certifikáty** v souboru **config. yaml** .
+Po vypršení platnosti po zadaném počtu dnů se IoT Edge musí restartovat, aby se znovu vygeneroval certifikát certifikační autority zařízení. Certifikát certifikační autority zařízení se nebude automaticky obnovovat.
 
-Po vypršení platnosti po zadaném počtu dnů se musí restartovat démon zabezpečení IoT Edge, aby se znovu vygeneroval certifikát certifikační autority zařízení. nebude se automaticky obnovovat.
+1. Chcete-li nakonfigurovat vypršení platnosti certifikátu na jinou hodnotu než výchozí 90 dní, přidejte hodnotu ve dnech do části **certifikáty** konfiguračního souboru.
 
-```yaml
-certificates:
-  device_ca_cert: "<ADD URI TO DEVICE CA CERTIFICATE HERE>"
-  device_ca_pk: "<ADD URI TO DEVICE CA PRIVATE KEY HERE>"
-  trusted_ca_certs: "<ADD URI TO TRUSTED CA CERTIFICATES HERE>"
-  auto_generated_ca_lifetime_days: <value>
-```
+   ```yaml
+   certificates:
+     device_ca_cert: "<ADD URI TO DEVICE CA CERTIFICATE HERE>"
+     device_ca_pk: "<ADD URI TO DEVICE CA PRIVATE KEY HERE>"
+     trusted_ca_certs: "<ADD URI TO TRUSTED CA CERTIFICATES HERE>"
+     auto_generated_ca_lifetime_days: <value>
+   ```
 
-> [!NOTE]
-> V současné době omezení libiothsm brání použití certifikátů, jejichž platnost vyprší, od 1. ledna 2038.
+   > [!NOTE]
+   > V současné době omezení libiothsm brání použití certifikátů, jejichž platnost vyprší, od 1. ledna 2038.
 
-Po zadání hodnoty v souboru config. yaml proveďte následující kroky:
+1. Odstraňte obsah `hsm` složky, abyste odebrali všechny dříve vygenerované certifikáty.
 
-1. Odstraňte obsah `hsm` složky.
-
-   Windows: `C:\ProgramData\iotedge\hsm\certs and C:\ProgramData\iotedge\hsm\cert_keys` Linux: `/var/lib/iotedge/hsm/certs and /var/lib/iotedge/hsm/cert_keys`
+   Windows: `C:\ProgramData\iotedge\hsm\certs` a `C:\ProgramData\iotedge\hsm\cert_keys` Linux: `/var/lib/iotedge/hsm/certs` a `/var/lib/iotedge/hsm/cert_keys`
 
 1. Restartujte službu IoT Edge.
 
@@ -167,6 +206,42 @@ Po zadání hodnoty v souboru config. yaml proveďte následující kroky:
    ```
 
    Podívejte se na výstup kontroly **připravenosti na provoz:** vypíše počet dní, než vyprší platnost automaticky generovaných certifikátů certifikační autority zařízení.
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 
+<!-- 1.2 --
+:::moniker range=">=iotedge-2020-11"
+
+1. To configure the certificate expiration to something other than the default 90 days, add the value in days to the **certificates** section of the config file.
+
+   ```toml
+   [certificates]
+   device_ca_cert = "<ADD URI TO DEVICE CA CERTIFICATE HERE>"
+   device_ca_pk = "<ADD URI TO DEVICE CA PRIVATE KEY HERE>"
+   trusted_ca_certs = "<ADD URI TO TRUSTED CA CERTIFICATES HERE>"
+   auto_generated_ca_lifetime_days = <value>
+   ```
+
+1. Delete the contents of the `certd` and `keyd` folders to remove any previously generated certificates: `/var/lib/aziot/certd/certs` `/var/lib/aziot/keyd/keys`
+
+1. Restart IoT Edge.
+
+   ```bash
+   sudo iotedge system restart
+   ```
+
+1. Confirm the new lifetime setting.
+
+   ```bash
+   sudo iotedge check --verbose
+   ```
+
+   Check the output of the **production readiness: certificates** check, which lists the number of days until the automatically generated device CA certificates expire.
+:::moniker-end
+<!-- end 1.2 --
+-->
 
 ## <a name="next-steps"></a>Další kroky
 

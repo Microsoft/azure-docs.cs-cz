@@ -6,14 +6,14 @@ ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 03/03/2021
 ms.author: cynthn
-ms.openlocfilehash: a995cd1d02438ae3be7091ba55e945549558829d
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 509b6efbbd8f40b0787ea2cc9a4bdc1b3370a0f0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055191"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044353"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Jak odpojit datový disk od virtuálního počítače s Windows
 
@@ -53,10 +53,10 @@ Můžete odstranit *datový* disk, ale zajistěte, aby tento disk aktivně nepou
 1. V nabídce vlevo vyberte **Virtual Machines**.
 1. Vyberte virtuální počítač s datovým diskem, který chcete odpojit.
 1. V části **Nastavení** vyberte **Disky**.
-1. V podokně **disky** v pravém dolním rohu datového disku, který chcete odpojit, klikněte na tlačítko **X odpojit** .
+1. V podokně **disky** v pravém dolním rohu datového disku, který chcete odpojit, vyberte tlačítko **X** , které chcete odpojit.
 1. V horní části stránky vyberte **Uložit** a uložte provedené změny.
 
-Disk zůstává v úložišti, ale už není připojený k virtuálnímu počítači.
+Disk zůstává v úložišti, ale už není připojený k virtuálnímu počítači. Disk není odstraněný.
 
 ## <a name="next-steps"></a>Další kroky
 

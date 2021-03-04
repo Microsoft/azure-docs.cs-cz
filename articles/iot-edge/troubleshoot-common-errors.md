@@ -4,19 +4,19 @@ description: Pomocí tohoto článku můžete vyřešit běžné problémy zjiš
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e1605f45dc8a7a1c03b5481ea17478064414df59
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a3e646f44978e8897c22d579639efcef0fcd2205
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382204"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045968"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
@@ -75,7 +75,7 @@ Ve výchozím nastavení IoT Edge spouští moduly ve vlastní izolované síti 
 
 **Možnost 1: nastavení serveru DNS v nastavení modulu pro vytvoření kontejneru**
 
-Zadejte server DNS pro vaše prostředí v nastavení modulu container Engine, který bude platit pro všechny moduly kontejneru spouštěné modulem. Vytvořte soubor s názvem `daemon.json` Určení serveru DNS, který chcete použít. Příklad:
+Zadejte server DNS pro vaše prostředí v nastavení modulu container Engine, který bude platit pro všechny moduly kontejneru spouštěné modulem. Vytvořte soubor s názvem `daemon.json` Určení serveru DNS, který chcete použít. Například:
 
 ```json
 {
@@ -103,7 +103,7 @@ Restartujte modul kontejnerů, aby se aktualizace projevily.
 
 **Možnost 2: nastavení serveru DNS v nasazení IoT Edge na modul**
 
-Můžete nastavit server DNS pro *createOptions* modulu v nasazení IoT Edge. Příklad:
+Můžete nastavit server DNS pro *createOptions* modulu v nasazení IoT Edge. Například:
 
 ```json
 "createOptions": {
@@ -216,6 +216,9 @@ Modul runtime IoT Edge může podporovat pouze názvy hostitelů, které jsou kr
 
 Když se zobrazí tato chyba, můžete ji vyřešit tak, že nakonfigurujete název DNS virtuálního počítače a pak nastavíte název DNS jako název hostitele v příkazu pro instalaci.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. V Azure Portal přejděte na stránku Přehled vašeho virtuálního počítače.
 2. V části název DNS vyberte **Konfigurovat** . Pokud má váš virtuální počítač už nakonfigurovaný název DNS, nemusíte konfigurovat nový.
 
@@ -236,6 +239,39 @@ Když se zobrazí tato chyba, můžete ji vyřešit tak, že nakonfigurujete ná
       ```cmd
       notepad C:\ProgramData\iotedge\config.yaml
       ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. V Azure Portal přejděte na stránku Přehled vašeho virtuálního počítače.
+
+2. V části název DNS vyberte **Konfigurovat** . Pokud má váš virtuální počítač už nakonfigurovaný název DNS, nemusíte konfigurovat nový.
+
+   ![Konfigurace názvu DNS virtuálního počítače](./media/troubleshoot/configure-dns.png)
+
+3. Zadejte hodnotu **jmenovky názvu DNS** a vyberte **Uložit**.
+
+4. Zkopírujte nový název DNS, který by měl být ve formátu **\<DNSnamelabel\> . \<vmlocation\> . cloudapp.azure.com**.
+
+5. Na zařízení IoT Edge otevřete konfigurační soubor.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+6. Nahraďte hodnotu `hostname` názvem DNS.
+
+7. Uložte a zavřete soubor a pak použijte změny IoT Edge.
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>Nelze získat protokoly IoT Edge démona v systému Windows.
 
@@ -343,7 +379,7 @@ Démon IoT Edge je aktivní s platným konfiguračním souborem, ale nemůže sp
 
 **Hlavní příčina:**
 
-Zařízení IoT Edge za bránou získají své image modulu z nadřazeného IoT Edge zařízení zadaného v `parent_hostname` poli config. yaml. Tato `Could not perform HTTP request` chyba znamená, že podřízené zařízení není schopné získat přístup k nadřazenému zařízení přes HTTP.
+Zařízení IoT Edge za bránou získají své image modulu z nadřazeného IoT Edge zařízení zadaného v `parent_hostname` poli konfiguračního souboru. Tato `Could not perform HTTP request` chyba znamená, že podřízené zařízení není schopné získat přístup k nadřazenému zařízení přes HTTP.
 
 **Rozhodnutí**
 

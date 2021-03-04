@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6cafbff86a55ad0bed7da17fcef1aea2b0a53d1b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f0f3baf1bf56f958408f789961812c0555f289f1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679333"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043639"
 ---
 # <a name="redundancy-options-for-managed-disks"></a>Možnosti redundance pro spravované disky
 
@@ -34,7 +34,7 @@ Pokud váš pracovní postup nepodporuje synchronní zápisy na úrovni aplikace
 
 Zóna – redundantní úložiště (ZRS) replikuje spravovaný disk Azure synchronně ve třech zónách dostupnosti Azure ve vybrané oblasti. Každá zóna dostupnosti je samostatné fyzické umístění s nezávislým napájením, chlazením a sítí. 
 
-Disky ZRS umožňují obnovení z chyb v zónách dostupnosti. Pokud se celá zóna vypnula, může se k virtuálnímu počítači v jiné zóně připojit ZRS disk. Disky ZRS můžete také použít v kombinaci se sdílenými disky a poskytovat tak vylepšenou dostupnost pro clusterované nebo distribuované aplikace, jako je SQL FCI, SAP ASCS/SCS nebo GFS2. Sdílený ZRS disk můžete připojit k primárnímu a sekundárnímu virtuálnímu počítači v různých zónách, abyste mohli využít ZRS i [zóny dostupnosti](../availability-zones/az-overview.md). Pokud vaše primární zóna selže, můžete k sekundárnímu virtuálnímu počítači rychle převzít služby při selhání pomocí [trvalé rezervace SCSI](disks-shared-enable.md#supported-scsi-pr-commands).
+Disky ZRS umožňují obnovení z chyb v zónách dostupnosti. Pokud se celá zóna vypnula, může se k virtuálnímu počítači v jiné zóně připojit ZRS disk. K zajištění vylepšené dostupnosti pro clusterované nebo distribuované aplikace, jako je SQL FCI, SAP ASCS/SCS nebo GFS2, můžete také použít disky ZRS jako sdílený disk. Sdílený ZRS disk můžete připojit k primárnímu a sekundárnímu virtuálnímu počítači v různých zónách, abyste mohli využít ZRS i [zóny dostupnosti](../availability-zones/az-overview.md). Pokud vaše primární zóna selže, můžete k sekundárnímu virtuálnímu počítači rychle převzít služby při selhání pomocí [trvalé rezervace SCSI](disks-shared-enable.md#supported-scsi-pr-commands).
 
 ### <a name="limitations"></a>Omezení
 
@@ -56,7 +56,7 @@ S výjimkou větší latence zápisu jsou disky používající ZRS stejné jako
 
 ### <a name="create-zrs-managed-disks"></a>Vytvoření ZRS spravovaných disků
 
-`2020-12-01`K vytvoření disku ZRS je nutné použít rozhraní API s šablonou Azure Resource Manager.
+`2020-12-01`K vytvoření disku ZRS použijte rozhraní API s šablonou Azure Resource Manager.
 
 #### <a name="create-a-vm-with-zrs-disks"></a>Vytvoření virtuálního počítače s ZRS disky
 
@@ -120,3 +120,7 @@ New-AzResourceGroupDeployment -ResourceGroupName zrstesting `
 -osDiskType "StandardSSD_LRS" `
 -dataDiskType "Premium_ZRS" `
 ```
+
+## <a name="next-steps"></a>Další kroky
+
+- Pomocí těchto ukázkových [Azure Resource Manager šablon můžete vytvořit virtuální počítač s disky s ZRS](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/ZRSDisks).

@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 1a276915f8132f2941bfb4425011c2d34454093b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3350ff7aa05232173e5fd3b21451a76a0a40683d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693879"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043707"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Verze Preview: režimy orchestrace pro Virtual Machine Scale Sets v Azure 
 
@@ -73,7 +73,7 @@ Upřednostňovanou metodou je použití Azure Resource graphu k dotazování na 
 | order by resourceGroup desc, name desc 
 ```
 
-Dotazování na prostředky pomocí [Azure Resource graphu](../governance/resource-graph/overview) je pohodlný a účinný způsob dotazování prostředků Azure a minimalizace volání rozhraní API poskytovateli prostředků. Azure Resource Graph je nakonec konzistentní mezipaměť, kde se nové nebo aktualizované prostředky nemusí projevit po dobu až 60 sekund. Další možnosti:
+Dotazování na prostředky pomocí [Azure Resource graphu](../governance/resource-graph/overview.md) je pohodlný a účinný způsob dotazování prostředků Azure a minimalizace volání rozhraní API poskytovateli prostředků. Azure Resource Graph je nakonec konzistentní mezipaměť, kde se nové nebo aktualizované prostředky nemusí projevit po dobu až 60 sekund. Další možnosti:
 - Vypíše virtuální počítače v rámci skupiny prostředků nebo předplatného.
 - Pomocí možnosti Rozbalit načtěte zobrazení instance (přiřazení domény selhání, stavy napájení a zřizování) pro všechny virtuální počítače v rámci vašeho předplatného.
 - K získání modelu a zobrazení instancí pro jednu instanci použijte příkaz získat rozhraní API a příkazy Get VM.

@@ -1,17 +1,16 @@
 ---
 title: Ukázky šablon Správce prostředků pro sešity
 description: Ukázka Azure Resource Manager šablon pro nasazení Azure Monitor sešitů.
-ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 1a3a67ff223199663d35ffad3b39cdbf0c020d98
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bcd477d30c74f12e2836f41facec23103547c31b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627355"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043503"
 ---
 # <a name="resource-manager-template-samples-for-workbooks-in-azure-monitor"></a>Ukázky šablon Správce prostředků pro sešity v Azure Monitor
 Tento článek obsahuje vzorové [Azure Resource Manager šablony](../../azure-resource-manager/templates/template-syntax.md) pro vytváření sešitů v Azure monitor. Každá ukázka obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.

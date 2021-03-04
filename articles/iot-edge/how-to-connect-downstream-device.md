@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 35bb17a5cdfcc6aff4a513a594a08283ab1f1305
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 44fe128658b90d2327f17f22b2a33aaa1d4da1fc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437027"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046121"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Připojení podřízeného zařízení k bráně služby Azure IoT Edge
 
@@ -214,7 +214,7 @@ Výstup tohoto příkazu může být dlouhý, včetně informací o všech certi
 
 Pokud má vaše listové zařízení přerušované připojení k zařízení brány, zkuste k řešení použít následující postup.
 
-1. Je název hostitele brány v připojovacím řetězci stejný jako hodnota názvu hostitele v souboru IoT Edge config. yaml na zařízení brány?
+1. Je název hostitele brány v připojovacím řetězci stejný jako hodnota názvu hostitele v souboru IoT Edge konfigurace na zařízení brány?
 2. Je název hostitele brány přeložitelný na IP adresu? Přerušovaná připojení můžete vyřešit buď pomocí DNS, nebo přidáním položky souboru hostitele na listovém zařízení.
 3. Jsou v bráně firewall otevřené komunikační porty? Komunikace založená na použitém protokolu (MQTTS: 8883/AMQPS: 5671/HTTPS: 433) musí být mezi podřízenými zařízeními a transparentním IoT Edge.
 

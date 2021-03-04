@@ -4,12 +4,12 @@ description: Monitorování volání závislostí z vaší místní nebo Microso
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 05b6c29b121cbf42cf0ebe12b2879e50735db7ea
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 124b8d3de59d1645379d50360e69a5fdbd5587e5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651999"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045288"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Sledování závislostí v Azure Application Insights 
 
@@ -88,6 +88,9 @@ Pokud chcete přepnout na standardní modul sledování závislostí, odeberte o
 Pro webové stránky Application Insights JavaScript SDK automaticky shromáždí volání AJAX jako závislosti.
 
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Rozšířené sledování SQL pro získání úplného dotazu SQL
+
+> [!NOTE]
+> Azure Functions vyžaduje pro povolení shromažďování textu SQL samostatné nastavení, další informace najdete v tématu [Konfigurace monitorování pro Azure Functions](../../azure-functions/configure-monitoring.md) .
 
 V případě volání SQL se název serveru a databáze vždycky shromažďují a ukládají se jako název shromážděné služby `DependencyTelemetry` . K dispozici je další pole s názvem data, které může obsahovat úplný text dotazu SQL.
 

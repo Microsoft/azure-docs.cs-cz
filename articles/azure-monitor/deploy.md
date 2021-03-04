@@ -1,17 +1,16 @@
 ---
 title: Nasazení Azure Monitoru
 description: V této části najdete popis různých kroků nezbytných pro kompletní implementaci Azure Monitor pro monitorování všech prostředků ve vašem předplatném Azure.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: f5855d7ab1f7ba8e11334f1373fb10166f47003a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7656efeb26a8a8b3c752ea996c8e644c68a48626
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708250"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043996"
 ---
 # <a name="deploy-azure-monitor"></a>Nasazení Azure Monitoru
 Povolením Azure Monitor monitorování všech vašich prostředků Azure je kombinace konfigurace Azure Monitor komponent a konfigurace prostředků Azure pro generování dat monitorování pro Azure Monitor shromažďování. Tento článek popisuje různé kroky potřebné k dokončení implementace Azure Monitor s využitím společné konfigurace pro monitorování všech prostředků ve vašem předplatném Azure. Základní popisy jednotlivých kroků jsou k dispozici s odkazy na další dokumentaci pro podrobné požadavky na konfiguraci.
