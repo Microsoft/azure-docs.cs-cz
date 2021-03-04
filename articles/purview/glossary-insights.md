@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/20/2020
-ms.openlocfilehash: f61d99a61cb50886d70489b586d948bfa751e196
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: eb1d59ae41b04be60dec90aaee4b2305b6d39ca6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576770"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095846"
 ---
 # <a name="glossary-insights-on-your-data-in-azure-purview"></a>Glosář přehledů vašich dat v Azure dosah
 
@@ -24,7 +24,7 @@ V této příručce se dozvíte, jak:
 > - Přejít na přehledy z účtu dosah
 > - Získejte pohled na vaše data na základě perspektivy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s dosah přehledy, ujistěte se, že jste dokončili následující kroky:
 
@@ -54,19 +54,27 @@ V Azure dosah můžete vytvořit pojem Glosář a připojit je k assetům. Pozd�
 
 1. V oblasti **přehledy** :::image type="icon" source="media/glossary-insights/ico-insights.png" border="false"::: Vyberte **Glosář** , aby se zobrazila sestava dosah **Glosář Insights** .
 
-Stránka **Glosář Insights** obsahuje následující oblasti:
-1. **Klíčové ukazatele výkonu** pro zobrazení pojmů Glosář a uživatelů katalogu
+**Glosář Insights** nabízí jako firemního uživatele cenné informace, které udržují dobře definovaný Glosář pro vaši organizaci.
 
-2. V **hlavních glosářích a počtu prostředků** se zobrazuje prvních 5 pojmů s připojenými prostředky k nim. Všechny ostatní prostředky se v grafu účtují v kategorii jiné.
+1. Sestava začíná **klíčovými ukazateli výkonu** , které ***v účtu dosah* zobrazují _celkové výrazy_ _, za _schválené výrazy bez prostředků_*_ a _*_vypršení platnosti s assety_**. Každá z těchto hodnot vám pomůže identifikovat stav glosáře.
 
-3. **Glosář termínů podle termínu** zobrazuje distribuci termínů glosáře podle stavu, jako je například "koncept", "Schváleno", "Výstraha" a "vypršela platnost". 
+   :::image type="content" source="./media/glossary-insights/glossary-kpi.png" alt-text="Zobrazit klíčový ukazatel výkonu Glosář Insights"::: 
 
-1. Najeďte myší nebo klikněte na řez grafu se stavem a poznamenejte si počet podmínek s tímto stavem.
 
-1. **Distribuce rolí podle počtu uživatelů** zobrazuje distribuci rolí podle počtu uživatelů na roli v dosah.
+2. Část **snímku podmínek** (zobrazená výše) zobrazuje termín " **_koncept_*_, _*_schválen_*_, _*_Výstraha_*_ a*"_vypršela platnost_** pro podmínky s prostředky a termíny bez assetů.
 
-   :::image type="content" source="./media/glossary-insights/glossary-insights1.png" alt-text="Zobrazit Glosář Insights":::
+3. Klikněte na **Zobrazit více** a podívejte se na názvy s různými stavy a dalšími podrobnostmi o **_expertích_ _Stewards_*_ a _***. 
+
+   :::image type="content" source="./media/glossary-insights/glossary-view-more.png" alt-text="Snímek podmínek s prostředky a bez nich":::  
+
+4. Když kliknete na Zobrazit další pro ***schválené podmínky s prostředky** _, Insights vám umožní přejít na stránku *Glosář* _ * termín, kde můžete dál přejít na seznam prostředků s připojenými podmínkami. 
+
+   :::image type="content" source="./media/glossary-insights/navigate-to-glossary-detail.png" alt-text="Přehledy pro Glosář"::: 
+
+4. Na stránce Glosář Insights Zobrazte distribuci **neúplných podmínek** podle typu chybějící informace. Graf zobrazuje počet podmínek s **_chybějící definicí_*_, _*_chybějících znalců_*_, _*_chybějících Steward_*_ a _*_chybějících více_** polí.
+
+1. Kliknutím na ***Zobrazit další** _ z _ * neúplné výrazy * * zobrazíte výrazy, které obsahují chybějící informace. Chcete-li zadat chybějící informace a zajistit, aby byl termín Glosář dokončen, můžete přejít na stránku podrobností o termínu Glosář.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o sestavách Azure dosah Insight prostřednictvím [Asset Insights](./asset-insights.md)
+Přečtěte si další informace o tom, jak vytvořit Glosář pojmu pomocí [glosáře](./how-to-create-import-export-glossary.md) .

@@ -1,17 +1,16 @@
 ---
 title: Přehled Log Analytics v Azure Monitor
 description: Popisuje Log Analytics, který je nástrojem v Azure Portal použitém k úpravám a spouštění dotazů protokolu pro analýzu dat v protokolech Azure Monitor.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
-ms.openlocfilehash: ef8be3d1fd815362971d5ae2beb27edf47766c94
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d83cc4045f09ed0f704a0d61c6b303406835eb44
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723159"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052292"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>Přehled Log Analytics v Azure Monitor
 Log Analytics je nástroj v Azure Portal, který se používá k úpravě a spouštění dotazů protokolu s daty v protokolech Azure Monitor. Můžete napsat jednoduchý dotaz, který vrátí sadu záznamů, a pak pomocí funkcí Log Analytics řadit, filtrovat a analyzovat. Nebo můžete napsat pokročilejší dotaz, který provede statistickou analýzu a vizualizuje výsledky v grafu, aby identifikoval konkrétní trend. Ať už pracujete s výsledky dotazů interaktivně nebo je použijete s jinými Azure Monitor funkcemi, jako jsou výstrahy nebo sešity dotazů protokolu, Log Analytics je nástroj, který budete používat pro zápis a testování. 

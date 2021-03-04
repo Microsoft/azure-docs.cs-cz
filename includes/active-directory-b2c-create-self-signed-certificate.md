@@ -5,14 +5,14 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 01/27/2021
 ms.author: mimart
-ms.openlocfilehash: 3458a4f3ba337d4c470c21fa5d89b28f5f2701a3
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 41d9962657aa81dbe34a52302d1b68ec655f2893
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916912"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095285"
 ---
-Pokud ještě certifikát nemáte, můžete pro tento kurz použít certifikát podepsaný svým držitelem. Certifikát podepsaný svým držitelem je certifikát zabezpečení, který není podepsaný certifikační autoritou (CA). Neposkytují všechny záruky zabezpečení certifikátu podepsaného certifikační autoritou. 
+Pokud ještě certifikát nemáte, můžete použít certifikát podepsaný svým držitelem. Certifikát podepsaný svým držitelem je certifikát zabezpečení, který není podepsaný certifikační autoritou (CA), a neposkytuje bezpečnostní záruky certifikátu podepsaného certifikační autoritou. 
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
@@ -31,25 +31,25 @@ Ve Windows použijte k vygenerování certifikátu rutinu [New-SelfSignedCertifi
         -CertStoreLocation "Cert:\CurrentUser\My"
     ```
 
-1. Otevřete **Spravovat uživatelské certifikáty**  >  **aktuální uživatel**  >  **osobní**  >  **certifikáty**  >  *YourAppName.yourtenant.onmicrosoft.com* .
-1. Vyberte certifikát > **akci**  >  **všechny úkoly**  >  **exportovat** .
-1. Vyberte **Ano**  >    >  **, další Ano, exportovat privátní klíč**  >  **Další** .
-1. Přijměte výchozí hodnoty pro **Formát souboru pro export** .
+1. Otevřete **Spravovat uživatelské certifikáty**  >  **aktuální uživatelé**  >  **osobní**  >  **certifikáty**  >  *YourAppName.yourtenant.onmicrosoft.com*.
+1. Vyberte certifikát a potom vyberte **akci**  >  **všechny úkoly**  >  **exportovat**.
+1. Vyberte **Ano**  >    >  **, další Ano, exportovat privátní klíč**  >  .
+1. Přijměte výchozí hodnoty pro **Formát souboru pro export**.
 1. Zadejte heslo pro certifikát.
 
-Aby Azure AD B2C přijímalo heslo k souboru. pfx, musí být heslo šifrováno pomocí možnosti TripleDES-SHA1 v nástroji pro export certifikátů Windows, a to na rozdíl od AES256-SHA256.
+Aby Azure AD B2C přijímalo heslo k souboru. pfx, musí být heslo zašifrované pomocí možnosti TripleDES-SHA1 v nástroji pro export certifikátů Windows, a to na rozdíl od AES256-SHA256.
 
 # <a name="macos"></a>[macOS](#tab/macos)
 
 V macOS použijte k vygenerování certifikátu [pomocníka certifikátů](https://support.apple.com/guide/keychain-access/aside/glosa3ed0609/11.0/mac/11.0) v řetězci klíčů.
 
-1. Postupujte podle pokynů v tématu [Vytvoření certifikátů podepsaných svým držitelem v přístupu pomocí řetězce klíčů na Macu](https://support.apple.com/guide/keychain-access/kyca8916/mac).
+1. Postupujte podle pokynů pro [Vytvoření certifikátů podepsaných svým držitelem v přístupu k řetězci klíčů na Macu](https://support.apple.com/guide/keychain-access/kyca8916/mac).
 1. V aplikaci pro přístup k řetězci klíčů na Macu vyberte certifikát, který jste vytvořili.
-1. Vyberte soubor > exportovat položky.
-1. Vyberte název souboru a uložte svůj certifikát. Například **certifikát podepsaný svým držitelem. p12**. 
+1. Vyberte   >  **položky exportu** souborů.
+1. Vyberte název souboru a uložte svůj certifikát. Například **certifikát podepsaný svým držitelem. p12**.
 1. Jako **Formát souboru** vyberte **Personal Information Exchange (. P12)**.
 1. Vyberte **Uložit**.
 1. Zadejte **heslo** a pak **Ověřte** heslo.
-1. Nahraďte příponu souboru na `.pfx` . Například **self-signed-certificate. pfx**. 
+1. Nahraďte příponu souboru na `.pfx` . Například **self-signed-certificate. pfx**.
 
 ---

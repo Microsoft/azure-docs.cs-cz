@@ -352,13 +352,13 @@
     - name: Nasazení aktualizací
       items:
         - name: Vytvoření účtu aktualizace zařízení
-          href: /iot-hub-device-update/create-device-update-account.md
+          href: ../iot-hub-device-update/create-device-update-account.md
         - name: Importovat aktualizaci
-          href: /iot-hub-device-update/import-update.md
+          href: ../iot-hub-device-update/import-update.md
         - name: Vytvořit skupinu aktualizací
-          href: /iot-hub-device-update/create-update-group.md
+          href: ../iot-hub-device-update/create-update-group.md
         - name: Nasazení aktualizace
-          href: /iot-hub-device-update/deploy-update.md
+          href: ../iot-hub-device-update/deploy-update.md
     - name: Použití skutečných zařízení
       items:
         - name: Použití online simulátoru

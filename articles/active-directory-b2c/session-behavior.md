@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 85d00b393ad169764a2f26e324295308ef49d3ba
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e0516c25a69f22f5e66dd3ed083805cd4a9f1a61
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101646570"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096135"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurace chování relace ve službě Azure Active Directory B2C
 
@@ -251,7 +251,7 @@ Po žádosti o odhlášení Azure AD B2C:
 3. Pokusy o odhlášení od federovaných zprostředkovatelů identity:
    - OpenId Connect – Pokud se ve správném koncovém bodu konfigurace poskytovatele identity Určuje `end_session_endpoint` umístění.
    - OAuth2 – Pokud [metadata zprostředkovatele identity](oauth2-technical-profile.md#metadata) obsahují `end_session_endpoint` umístění.
-   - SAML – Pokud [metadata zprostředkovatele identity](saml-identity-provider-technical-profile.md#metadata) obsahují `SingleLogoutService` umístění.
+   - SAML – Pokud [metadata zprostředkovatele identity](identity-provider-generic-saml.md) obsahují `SingleLogoutService` umístění.
 4. Volitelně můžete odhlásit z jiných aplikací. Další informace najdete v části věnované [jednotnému odhlašování](#single-sign-out) .
 
 > [!NOTE]

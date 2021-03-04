@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 18a3216855516156792524dc577ecef725d3119d
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 76dcb9aec935dd4ea4f57a1362953d9741d8eaf0
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99218770"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095795"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Poznámky pro vývojáře pro vlastní zásady v Azure Active Directory B2C
 
@@ -70,7 +70,7 @@ Možnosti vlastních zásad jsou v rámci Stálého vývoje. V následující ta
 | [OAuth2 implicitní tok](implicit-flow-single-page-application.md) |  |  | × |  |
 | [Přihlašovací údaje pro heslo vlastníka prostředku OAuth2](ropc-custom.md) |  | × |  |  |
 | [OIDC připojit](openid-connect.md) |  |  | × |  |
-| [TYPU Saml2](connect-with-saml-service-providers.md)  |  |  |×  | Vystavení a přesměrování vazeb. |
+| [TYPU Saml2](saml-service-provider.md)  |  |  |×  | Vystavení a přesměrování vazeb. |
 | OAuth1 |  |  |  | Nepodporováno |
 | WSFED | × |  |  |  |
 
@@ -81,7 +81,7 @@ Možnosti vlastních zásad jsou v rámci Stálého vývoje. V následující ta
 | [OpenID Connect](openid-connect-technical-profile.md) |  |  | × | Například Google +.  |
 | [OAuth2](oauth2-technical-profile.md) |  |  | × | Například Facebook.  |
 | [OAuth1](oauth1-technical-profile.md) |  | × |  | Například Twitter. |
-| [TYPU Saml2](saml-identity-provider-technical-profile.md) |  |   | × | Například Salesforce, ADFS. |
+| [TYPU Saml2](identity-provider-generic-saml.md) |  |   | × | Například Salesforce, ADFS. |
 | WSFED| × |  |  |  |
 
 

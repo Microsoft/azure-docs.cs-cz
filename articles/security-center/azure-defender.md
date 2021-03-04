@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 23d00acc03ee879036a823f0c3d7fe2f67902e31
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: aafd4c6695101042cb30a44e1d2bd30611256779
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797018"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096152"
 ---
 # <a name="introduction-to-azure-defender"></a>Úvod do Azure Defenderu
 
@@ -99,4 +99,4 @@ Další informace najdete na následujících stránkách:
 V tomto článku jste se dozvěděli o výhodách Azure Defenderu. 
 
 > [!div class="nextstepaction"]
-> [Povolení Azure Defenderu](security-center-pricing.md#enable-azure-defender)
+> [Povolení Azure Defenderu](enable-azure-defender.md)

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6fd28c9392d760888eafde37471a49ffaa2e4423
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a3dc0b9e83af5a29172189f75e5a2174dc4d393d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694134"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096118"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>Vytvoření pracovního prostoru s povolenou službou data exfiltrace Protection
 Tento článek popisuje, jak vytvořit pracovní prostor s povolenou službou data exfiltrace Protection a jak spravovat schválené klienty Azure AD pro tento pracovní prostor.
@@ -50,7 +50,9 @@ Můžete vytvořit spravované privátní koncové body pro připojení k prost�
 >Prostředky v klientech jiných než tenant pracovního prostoru musí blokovat pravidla brány firewall, aby se k nim fondy SQL připojovaly. Prostředky v rámci spravované virtuální sítě pracovního prostoru, jako jsou například Clustery Spark, se mohou připojit prostřednictvím spravovaných privátních odkazů na prostředky chráněné bránou firewall.
 
 ## <a name="known-limitations"></a>Známá omezení
-Uživatelé můžou poskytnout konfigurační soubor prostředí pro instalaci balíčků Pythonu z veřejných úložišť, jako je PyPI. V pracovních prostorech chráněných daty exfiltrace jsou připojení k odchozím úložištím blokovaná. V důsledku toho není podporována knihovna Pythonu, která je nainstalována z veřejných úložišť, jako je PyPI. Alternativně mohou uživatelé vytvořit privátní kanál v rámci svého primárního Azure Data Lake Storage účtu a odkazovat tak, že v rámci jejich konfiguračního souboru prostředí conda. 
+Uživatelé můžou poskytnout konfigurační soubor prostředí pro instalaci balíčků Pythonu z veřejných úložišť, jako je PyPI. V pracovních prostorech chráněných daty exfiltrace jsou připojení k odchozím úložištím blokovaná. V důsledku toho není podporována knihovna Pythonu, která je nainstalována z veřejných úložišť, jako je PyPI. 
+
+Alternativně mohou uživatelé nahrávat balíčky pracovního prostoru nebo vytvořit privátní kanál v rámci svého primárního Azure Data Lake Storage účtu. Další informace najdete v téma [Správa balíčků v Azure synapse Analytics](./spark/../../spark/apache-spark-azure-portal-add-libraries.md) . 
   
 ## <a name="next-steps"></a>Další kroky
 

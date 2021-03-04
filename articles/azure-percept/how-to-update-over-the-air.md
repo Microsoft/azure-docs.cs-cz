@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: aa8f696b6a26e812256be4e93975844f2c721b6e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b8f9e6f4bc091abbd1bb08ecbd649c1411e5ab20
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662380"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095387"
 ---
 # <a name="update-your-azure-percept-dk-over-the-air"></a>Aktualizace Azure Percept DK přes Air
 
@@ -92,7 +92,7 @@ Požadavky na značky skupiny:
 1. Potvrďte, že je jako cílová skupina zařízení vybrána správná skupina zařízení. Vyberte **počáteční datum** a **čas spuštění** nasazení a pak klikněte na **vytvořit nasazení**. 
 
     >[!CAUTION]
-    >Nastavení času spuštění v minulosti spustí nasazení hned.
+    >Nastavením počátečního času v minulosti dojde k okamžitému aktivaci nasazení.
  
 1. Podívejte se na graf dodržování předpisů. Měla by se zobrazit, že aktualizace probíhá.
  

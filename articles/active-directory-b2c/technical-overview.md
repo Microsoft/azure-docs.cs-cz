@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3a044faf5546a22c997b8358d8809e240d563ac9
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 77dab865b2b023f59e6776349b4045107bdb3a29
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556817"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095489"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technický přehled funkcí Azure Active Directory B2C
 
@@ -115,7 +115,7 @@ Přečtěte si další informace o toku uživatelů v [toku uživatelů v Azure 
 
 Vlastní zásady odemkněte přístup k celému výkonu modulu pro orchestraci identit v architektuře IEF (identity Experience Framework). Díky vlastním zásadám můžete využít IEF k sestavení téměř všech ověřování, registrace uživatelů nebo možností úprav profilů, které si můžete představit.
 
-Rozhraní identity Experience Framework poskytuje možnost vytvářet cesty uživatelů pomocí libovolné kombinace kroků. Příklad:
+Rozhraní identity Experience Framework poskytuje možnost vytvářet cesty uživatelů pomocí libovolné kombinace kroků. Například:
 
 * Federovat s jinými zprostředkovateli identity
 * První a další výzvy k Multi-Factor Authentication (MFA) třetích stran
@@ -134,7 +134,7 @@ Přečtěte si další informace o vlastních zásadách ve [vlastních zásadá
 
 ## <a name="protocols-and-tokens"></a>Protokoly a tokeny
 
-- Pro aplikace Azure AD B2C podporuje protokoly [OAuth 2,0](protocols-overview.md), [OpenID Connect](openid-connect.md)a [SAML](connect-with-saml-service-providers.md) pro cesty uživatelů. Vaše aplikace spouští cestu uživatele tím, že vydává žádosti o ověření Azure AD B2C. Výsledkem požadavku na Azure AD B2C je token zabezpečení, jako je token [ID, přístupový token](tokens-overview.md)nebo token SAML. Tento token zabezpečení definuje identitu uživatele v rámci aplikace.
+- Pro aplikace Azure AD B2C podporuje protokoly [OAuth 2,0](protocols-overview.md), [OpenID Connect](openid-connect.md)a [SAML](saml-service-provider.md) pro cesty uživatelů. Vaše aplikace spouští cestu uživatele tím, že vydává žádosti o ověření Azure AD B2C. Výsledkem požadavku na Azure AD B2C je token zabezpečení, jako je token [ID, přístupový token](tokens-overview.md)nebo token SAML. Tento token zabezpečení definuje identitu uživatele v rámci aplikace.
 
 - Pro externí identity Azure AD B2C podporuje federaci s libovolnými zprostředkovateli identity OAuth 1,0, OAuth 2,0, OpenID Connect a SAML.
 

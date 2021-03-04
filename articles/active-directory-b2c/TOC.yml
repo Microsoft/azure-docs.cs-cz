@@ -101,9 +101,14 @@
           href: tutorial-register-applications.md
         - name: Registrace jednostránkové aplikace (SPA)
           href: tutorial-register-spa.md
-        - name: Registrace poskytovatele služeb SAML
-          href: connect-with-saml-service-providers.md
-          displayName: 'SP, RP, service provider, connect'
+        - name: Aplikace SAML
+          items:
+            - name: Konfigurace aplikace SAML
+              href: saml-service-provider.md
+              displayName: 'SP, service provider'
+            - name: Konfigurace možností aplikace SAML
+              href: saml-service-provider-options.md
+              displayName: 'SP, service provider'
         - name: Registrace aplikace Microsoft Graph
           href: microsoft-graph-get-started.md
           displayName: 'migrate, migration, microsoft graph'
@@ -160,8 +165,14 @@
           href: identity-provider-azure-ad-b2c.md
         - name: Facebook
           href: identity-provider-facebook.md
-        - name: Zprostředkovatelé obecných identit
+        - name: Obecné OpenId Connect
           href: identity-provider-generic-openid-connect.md
+        - name: Obecný zprostředkovatel identity SAML
+          items:
+            - name: Konfigurace zprostředkovatele identity SAML
+              href: identity-provider-generic-saml.md
+            - name: Konfigurace možností zprostředkovatele identity SAML
+              href: identity-provider-generic-saml-options.md
         - name: GitHubu
           href: identity-provider-github.md
         - name: Google

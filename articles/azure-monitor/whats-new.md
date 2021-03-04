@@ -1,17 +1,16 @@
 ---
 title: Co je nového v dokumentaci k Azure Monitor
 description: Důležité aktualizace Azure Monitor dokumentace se každý měsíc aktualizovaly.
-ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2021
-ms.openlocfilehash: b21e5ea8e25844e3e025915b0b9f15162c642f25
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: dd6c44587ce3f4e2b5de940ef831a20a4079c4ef
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713435"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051918"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Co je nového v dokumentaci k Azure Monitor?
 
@@ -48,7 +47,7 @@ Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové
 
 ### <a name="logs"></a>Protokoly    
 - [Azure monitor klíč spravovaný zákazníkem](./logs/customer-managed-keys.md) – zavádí spravovanou identitu přiřazenou uživatelem.
-- [Azure monitor protokoluje vyhrazené clustery](./logs/logs-dedicated-clusters.md) – kód aktualizované odezvy.
+- [Azure monitor protokolovat vyhrazené clustery](./logs/logs-dedicated-clusters.md) – aktualizovaný kód odpovědi.
 - [Dotaz na různé služby – Azure monitor a Azure Průzkumník dat (Preview)](/azure/azure-monitor/platform/azure-data-explorer-monitor-cross-service-query) – nový článek
 
 ### <a name="metrics"></a>Metriky
@@ -721,7 +720,7 @@ Více aktualizací jako součást přepisu obsahu diagnostického rozšíření.
 
 - [Přehled agentů monitorování Azure](agents/agents-overview.md) – restrukturované tabulky pro lepší objasnění jedinečných funkcí každého agenta.
 - [Přehled rozšíření Azure Diagnostics](agents/diagnostics-extension-overview.md) – dokončení přepisu
-- [Použijte úložiště objektů BLOB pro službu IIS a úložiště tabulek pro události v Azure monitor](essentials/diagnostics-extension-logs.md) – obecné přepsání pro aktualizace a přehlednost.
+- [Použijte úložiště objektů BLOB pro službu IIS a úložiště tabulek pro události v Azure monitor](agents/diagnostics-extension-logs.md) – obecné přepsání pro aktualizace a přehlednost.
 - [Nainstalujte a nakonfigurujte rozšíření Windows Azure Diagnostics (WAD)](agents/diagnostics-extension-windows-install.md) – nový článek. 
 - [Schéma rozšíření Windows Diagnostics](agents/diagnostics-extension-schema-windows.md) – změna uspořádání.
 - [Posílání dat z rozšíření Windows Azure Diagnostics do Azure Event Hubs](agents/diagnostics-extension-stream-event-hubs.md) – kompletně přepsáno a aktualizováno.

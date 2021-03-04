@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/26/2019
+ms.date: 03/03/2021
 ms.author: duau
-ms.openlocfilehash: fa8dba12a050e42e258e4224f29e379ff53f09d8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 163436ad82ea6f5067ad41b7fdd7e315db6dc29a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576678"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095013"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Nejčastější dotazy Traffic Manager
 
@@ -447,7 +447,18 @@ Pokud není k dispozici žádné vlastní nastavení záhlaví hostitele, bude H
 
 ### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>Jaké jsou IP adresy, ze kterých pocházejí kontroly stavu?
 
-Kliknutím [sem](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json) zobrazíte soubor JSON, který obsahuje seznam IP adres, ze kterých můžou nacházet Traffic Manager kontroly stavu. Zkontrolujte IP adresy uvedené v souboru JSON, abyste zajistili, že příchozí připojení z těchto IP adres jsou v koncových bodech povolená pro kontrolu stavu.
+Kliknutím [sem](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) zjistíte, jak načíst seznamy IP adres, ze kterých můžou nacházet Traffic Manager kontroly stavu. K načtení nejnovějšího seznamu můžete použít REST API, Azure CLI nebo Azure PowerShell. Zkontrolujte uvedené IP adresy, aby se zajistilo, že příchozí připojení z těchto IP adres se v koncových bodech povolí pro kontrolu jejího stavu.
+
+Příklad použití Azure PowerShell:
+
+```azurepowershell-interactive
+$serviceTags = Get-AzNetworkServiceTag -Location eastus
+$result = $serviceTags.Values | Where-Object { $_.Name -eq "AzureTrafficManager" }
+$result.Properties.AddressPrefixes
+```
+
+> [!NOTE]
+> Veřejné IP adresy se mohou změnit bez předchozího upozornění. Zajistěte, aby se nejnovější informace načetly pomocí rozhraní API zjišťování značek služby nebo souborů JSON ke stažení.
 
 ### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>Kolik kontrol stavu do mého koncového bodu je možné očekávat od Traffic Manager?
 

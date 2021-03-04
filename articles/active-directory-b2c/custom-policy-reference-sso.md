@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 453042766c427b05ec1ee1090a0702f64065542d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: f690f4a416e86b02de0d35fc673849c1293df577
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508046"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095761"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Správa relací jednotného přihlašování v Azure Active Directory B2C
 
@@ -135,7 +135,7 @@ Tento zprostředkovatel se používá ke správě Azure AD B2Cch relací mezi OA
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Tento zprostředkovatel se používá ke správě Azure AD B2C relací SAML mezi aplikací předávající strany nebo poskytovatelem federované identity SAML. Při použití poskytovatele jednotného přihlašování pro uložení relace zprostředkovatele identity SAML `RegisterServiceProviders` musí být nastavená na `false` . `SM-Saml-idp` [Technický profil zprostředkovatele identity SAML](saml-identity-provider-technical-profile.md)používá následující technický profil.
+Tento zprostředkovatel se používá ke správě Azure AD B2C relací SAML mezi aplikací předávající strany nebo poskytovatelem federované identity SAML. Při použití poskytovatele jednotného přihlašování pro uložení relace zprostředkovatele identity SAML `RegisterServiceProviders` musí být nastavená na `false` . `SM-Saml-idp` [Zprostředkovatel identity SAML](identity-provider-generic-saml.md)používá následující technický profil.
 
 ```xml
 <TechnicalProfile Id="SM-Saml-idp">
@@ -149,7 +149,7 @@ Tento zprostředkovatel se používá ke správě Azure AD B2C relací SAML mezi
 
 Při použití poskytovatele pro ukládání relace SAML B2C `RegisterServiceProviders` musí být nastavená na `true` . Odhlášení relace SAML vyžaduje `SessionIndex` a `NameID` k dokončení.
 
-`SM-Saml-issuer` [Technický profil vystavitele SAML](saml-issuer-technical-profile.md) používá následující technický profil
+`SM-Saml-issuer` [Technický profil vystavitele SAML](saml-service-provider.md) používá následující technický profil
 
 ```xml
 <TechnicalProfile Id="SM-Saml-issuer">

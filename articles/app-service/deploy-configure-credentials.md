@@ -5,17 +5,20 @@ ms.topic: article
 ms.date: 02/11/2021
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 2a53ecb1b3411561da50f7dbf3be79f9d70b42bc
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: c7d3c7c8b5da40a4e9ccd9085af5a850b9ebc3dd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560420"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052343"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Nakonfigurovat přihlašovací údaje nasazení pro Azure App Service
 Aby bylo možné zabezpečit nasazení aplikace z místního počítače, [Azure App Service](./overview.md) podporuje dva typy přihlašovacích údajů pro nasazení [místního úložiště Git](deploy-local-git.md) a [FTP/S](deploy-ftp.md). Tyto přihlašovací údaje nejsou stejné jako přihlašovací údaje vašeho předplatného Azure.
 
 [!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
+
+> [!NOTE]
+> Stránka **centra pro vývoj (Classic)** v Azure Portal, což je staré prostředí pro nasazení, bude zastaralá v březnu 2021. Tato změna nebude mít vliv na žádná existující nastavení nasazení v aplikaci a můžete pokračovat ve správě nasazení aplikace na stránce **centra nasazení** .
 
 ## <a name="configure-user-scope-credentials"></a><a name="userscope"></a>Konfigurace přihlašovacích údajů uživatele do oboru
 
@@ -71,13 +74,13 @@ Vzhledem k tomu, že přihlašovací údaje oboru uživatele jsou propojené s u
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Pomocí příkazu [AZ WebApp Deployment list-Publishing-Profiles](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_profiles) Získejte přihlašovací údaje rozsahu aplikace. Příklad:
+Pomocí příkazu [AZ WebApp Deployment list-Publishing-Profiles](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_profiles) Získejte přihlašovací údaje rozsahu aplikace. Například:
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles --resource-group <group-name> --name <app-name>
 ```
 
-Pro [místní nasazení Git](deploy-local-git.md)můžete k získání vzdáleného identifikátoru URI Git pro vaši aplikaci použít taky příkaz [AZ WebApp Deployment list-Publish-Credentials](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_credentials) , kde jsou už vložené přihlašovací údaje rozsahu aplikace. Příklad:
+Pro [místní nasazení Git](deploy-local-git.md)můžete k získání vzdáleného identifikátoru URI Git pro vaši aplikaci použít taky příkaz [AZ WebApp Deployment list-Publish-Credentials](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_credentials) , kde jsou už vložené přihlašovací údaje rozsahu aplikace. Například:
 
 ```azurecli-interactive
 az webapp deployment list-publishing-credentials --resource-group <group-name> --name <app-name> --query scmUri
@@ -85,7 +88,7 @@ az webapp deployment list-publishing-credentials --resource-group <group-name> -
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
-Pomocí příkazu [Get-AzWebAppPublishingProfile](/powershell/module/az.websites/get-azwebapppublishingprofile) Získejte přihlašovací údaje rozsahu aplikace. Příklad:
+Pomocí příkazu [Get-AzWebAppPublishingProfile](/powershell/module/az.websites/get-azwebapppublishingprofile) Získejte přihlašovací údaje rozsahu aplikace. Například:
 
 ```azurepowershell-interactive
 Get-AzWebAppPublishingProfile -ResourceGroupName <group-name> -Name <app-name>

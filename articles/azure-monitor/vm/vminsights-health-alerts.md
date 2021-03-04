@@ -1,17 +1,16 @@
 ---
 title: Upozornění na stav hosta pro virtuální počítače v Insights (Preview)
 description: Popisuje výstrahy vytvořené stavem hosta virtuálních počítačů Insights, včetně způsobu jejich povolení a konfigurace oznámení.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: a32ba9f1c4cf5d6bb9de69e1a6860c858e3ee2a6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1b5fd10b3e0bd84aa7d34a918f4f2376130d2e45
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707502"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052258"
 ---
 # <a name="vm-insights-guest-health-alerts-preview"></a>Upozornění na stav hosta pro virtuální počítače v Insights (Preview)
 Stav hosta pro virtuální počítač Insights umožňuje zobrazit stav virtuálního počítače podle definice sady měření výkonu, které jsou v pravidelných intervalech vzorkované. Výstraha se dá vytvořit, když se virtuální počítač nebo monitor změní na stav není v pořádku. Tato upozornění můžete zobrazovat a spravovat pomocí těch, která [jsou vytvořená pomocí pravidel upozornění v Azure monitor](../alerts/alerts-overview.md) , a při vytváření nové výstrahy se rozhodnout, že se budou aktivně informovat.

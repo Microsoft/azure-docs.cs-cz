@@ -1,17 +1,16 @@
 ---
 title: Stav hosta pro virtuální počítače Insights (Preview)
 description: Přehled funkce Health Insights v rámci virtuálních počítačů, včetně toho, jak můžete zobrazit stav virtuálních počítačů a přijímat výstrahy, když se virtuální počítač stává stavem není v pořádku.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/27/2020
-ms.openlocfilehash: 3db6c2f4da28bba2d12aacc90b2fa8e420aa6fbf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2922ca4068531c45e6acad0ce54aa96624c6238e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707451"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052122"
 ---
 # <a name="vm-insights-guest-health-preview"></a>Stav hosta pro virtuální počítače Insights (Preview)
 Stav hosta pro virtuální počítače Insights umožňuje zobrazit stav virtuálních počítačů na základě sady měření výkonu, které jsou v pravidelných intervalech odebírány z hostovaného operačního systému. Můžete rychle zjistit stav všech virtuálních počítačů v rámci předplatného nebo skupiny prostředků, přejít k podrobnostem o podrobném stavu konkrétního virtuálního počítače nebo ho aktivně upozornit, když se virtuální počítač neobjeví v pořádku. 
